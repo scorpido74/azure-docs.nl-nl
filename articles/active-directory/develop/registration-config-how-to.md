@@ -1,5 +1,6 @@
 ---
-title: Eindpunten configureren
+title: De eind punten voor een Azure AD-App-registratie ophalen
+titleSuffix: Microsoft identity platform
 description: De verificatie-eind punten zoeken voor een aangepaste toepassing die u ontwikkelt of registreert met Azure AD.
 services: active-directory
 author: rwike77
@@ -9,30 +10,29 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: 043dc4f6e57620f58a1cf5f76db755703421800f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778733"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926677"
 ---
-# <a name="how-to-configure-endpoints"></a>Eind punten configureren
+# <a name="how-to-discover-endpoints"></a>Eind punten detecteren
 
 U kunt de verificatie-eind punten voor uw toepassing vinden in de [Azure Portal](https://portal.azure.com).
 
--   Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory**.
+1. Selecteer onder **beheren**de optie **app-registraties**en selecteer **eind punten** in het bovenste menu.
 
--   Klik in het navigatie deel venster links op **Azure Active Directory**.
-
--   Klik op **app-registraties** en kies **eind punten**.
-
--   Hiermee opent u de pagina **eind punten** , die alle verificatie-eind punten voor uw Tenant vermeldt.
-
--   Gebruik het endpoint dat specifiek is voor het verificatie protocol dat u gebruikt, in combi natie met de toepassings-ID om de verificatie aanvraag te maken die specifiek is voor uw toepassing.
+    De pagina **eind punten** wordt weer gegeven, met de verificatie-eind punten voor uw Tenant.
+    
+    Gebruik het eind punt dat overeenkomt met het verificatie protocol dat u gebruikt in combi natie met de **client-id** van de toepassing om de verificatie aanvraag te maken die specifiek is voor uw toepassing.
 
 **Nationale Clouds** (bijvoorbeeld Azure AD China, Duitsland en de Amerikaanse overheid) hebben hun eigen app-registratie Portal en Azure AD-verificatie-eind punten. Meer informatie vindt u in het [overzicht van nationale Clouds](authentication-national-cloud.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Ontwikkelaarshandleiding voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+
+Voor meer informatie over eind punten in de verschillende Azure-omgevingen raadpleegt u het [overzicht van nationale Clouds](authentication-national-cloud.md).

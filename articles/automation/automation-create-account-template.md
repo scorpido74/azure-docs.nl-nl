@@ -7,25 +7,25 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165821"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927857"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Een Automation-account maken met Azure Resource Manager sjabloon
+# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
 
-U kunt [Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md) gebruiken om een Azure Automation-account in uw resource groep te maken. Dit artikel bevat een voorbeeld sjabloon waarmee het volgende kan worden geautomatiseerd:
+U kunt [Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md) gebruiken om een Azure Automation-account in uw resource groep te maken. Dit artikel bevat een voorbeeld sjabloon die:
 
-* Het maken van een Azure Monitor Log Analytics werk ruimte.
-* Het maken van een Azure Automation-account.
+* Automatiseert het maken van een Azure Monitor Log Analytics-werk ruimte.
+* Automatiseert het maken van een Azure Automation-account.
 * Koppelt het Automation-account aan de Log Analytics-werk ruimte.
 
-De sjabloon automatiseert niet de onboarding van een of meer virtuele machines van Azure of niet-Azure, of oplossingen. 
+Met de sjabloon wordt het onboarding van virtuele machines of oplossingen van Azure of niet-Azure geautomatiseerd. 
 
 >[!NOTE]
->Het maken van het uitvoeren als-account voor Automation wordt niet ondersteund bij het gebruik van een Azure Resource Manager sjabloon. Zie [Run as-account beheren](manage-runas-account.md)als u een uitvoeren als-account hand matig wilt maken vanuit de portal of met Power shell.
+>Het maken van het uitvoeren als-account voor Automation wordt niet ondersteund wanneer u een Azure Resource Manager sjabloon gebruikt. Zie [Run as-accounts beheren](manage-runas-account.md)als u een uitvoeren als-account hand matig wilt maken vanuit de portal of met Power shell.
 
 ## <a name="api-versions"></a>API-versies
 
@@ -36,40 +36,40 @@ De volgende tabel geeft een overzicht van de API-versie voor de resources die in
 | Werkruimte | werkruimten | 2017-03-15-preview |
 | Automation-account | automation | 2015-10-31 | 
 
-## <a name="before-using-the-template"></a>Voordat u de sjabloon gebruikt
+## <a name="before-you-use-the-template"></a>Voordat u de sjabloon gebruikt
 
-Als u Power shell lokaal wilt installeren en gebruiken, is voor dit artikel de Azure PowerShell AZ-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure. Met Azure PowerShell maakt de implementatie gebruik van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Als u Power shell lokaal wilt installeren en gebruiken, is voor dit artikel de Azure PowerShell AZ-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure. Met Power Shell maakt de implementatie gebruik van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Met Azure CLI maakt deze implementatie gebruik van [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Met de Azure CLI maakt deze implementatie gebruik van [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 De JSON-sjabloon is zo geconfigureerd dat u wordt gevraagd om:
 
-* De naam van de werk ruimte
-* De regio waarin u de werk ruimte wilt maken
-* De naam van het Automation-account
-* De regio waarin het account moet worden gemaakt
+* De naam van de werk ruimte.
+* De regio waarin u de werk ruimte wilt maken.
+* De naam van het Automation-account.
+* De regio waarin het account moet worden gemaakt.
 
 De volgende para meters in de sjabloon zijn ingesteld met een standaard waarde voor de Log Analytics-werk ruimte:
 
-* SKU: wordt standaard ingesteld op de nieuwe prijs categorie per GB die is uitgebracht in het prijs model van april 2018
-* bewaren van gegevens-standaard ingesteld op dertig dagen
-* capaciteits reservering: de standaard instelling is 100 GB
+* *SKU* wordt standaard ingesteld op de prijs categorie per GB die is uitgebracht in het prijs model van april 2018.
+* *dataRetention* standaard ingesteld op 30 dagen.
+* *capacityReservationLevel* wordt standaard ingesteld op 100 GB.
 
 >[!WARNING]
->Als u een Log Analytics-werk ruimte maakt of configureert in een abonnement dat is aangemeld met het nieuwe prijs model van april 2018, is de enige geldige Log Analytics prijs categorie **PerGB2018**.
+>Als u een Log Analytics-werk ruimte wilt maken of configureren in een abonnement dat is aangemeld bij het prijs model van april 2018, is de enige geldige Log Analytics prijs categorie *PerGB2018*.
 >
 
 Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk worden gebruikt als een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
 
-Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen ervaring hebt met Azure Automation en Azure Monitor, om fouten te voor komen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
+Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang rijk dat u de volgende configuratie details kent. Ze kunnen u helpen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld. 
 
 * Bekijk [aanvullende informatie](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om de configuratie opties voor de werk ruimte volledig te begrijpen, zoals de toegangs beheer modus, de prijs categorie en de retentie en het capaciteits reserverings niveau.
 
-* Omdat alleen bepaalde regio's worden ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement, raadpleegt u [werkruimte toewijzingen](how-to/region-mappings.md) om de ondersteunde regio's inline of in een parameter bestand op te geven.
+* Bekijk [werkruimte toewijzingen](how-to/region-mappings.md) om de ondersteunde regio's inline of in een parameter bestand op te geven. Alleen bepaalde regio's worden ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement.
 
-* Als u geen ervaring hebt met Azure Monitor-logboeken en nog geen werk ruimte hebt geïmplementeerd, raadpleegt u de richt lijnen voor het ontwerpen van de [werk ruimte](../azure-monitor/platform/design-logs-deployment.md) voor meer informatie over toegangs beheer en inzicht in de ontwerp implementatie strategieën die voor uw organisatie worden aanbevolen.
+* Als u geen ervaring hebt met Azure Monitor-logboeken en nog geen werk ruimte hebt geïmplementeerd, moet u de [richt lijnen voor werkruimte ontwerp](../azure-monitor/platform/design-logs-deployment.md)door nemen. Het helpt u meer te weten te komen over toegangs beheer en inzicht te krijgen in de ontwerp implementatie strategieën die worden aanbevolen voor uw organisatie.
 
-## <a name="deploy-template"></a>Sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Kopieer en plak de volgende JSON-syntaxis in het bestand:
 
@@ -96,7 +96,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             ],
             "defaultValue": "pergb2018",
             "metadata": {
-                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
             }
         },
         "dataRetention": {
@@ -105,14 +105,14 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
+                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
             }
         },
         "immediatePurgeDataOn30Days": {
             "type": "bool",
             "defaultValue": "[bool('false')]",
             "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
             }
         },
         "location": {
@@ -139,7 +139,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             },
             "sampleGraphicalRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "sampleGraphicalRunbookContentUri": {
                 "type": "String",
@@ -151,7 +151,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             },
             "samplePowerShellRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePowerShellRunbookContentUri": {
                 "type": "String",
@@ -163,7 +163,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
             },
             "samplePython2RunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePython2RunbookContentUri": {
                 "type": "String",
@@ -290,7 +290,7 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
 
 3. Sla dit bestand op als deployAzAutomationAccttemplate. json naar een lokale map.
 
-4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de Azure CLI gebruiken. Wanneer u wordt gevraagd om een naam voor de werk ruimte en het Automation-account, geeft u een naam op die wereld wijd uniek is voor alle Azure-abonnementen.
+4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de Azure CLI gebruiken. Wanneer u wordt gevraagd om een naam voor de werk ruimte en het Automation-account, geeft u een naam op die wereld wijd uniek is voor al uw Azure-abonnementen.
 
     **PowerShell**
 
@@ -304,10 +304,14 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, ziet u een bericht dat lijkt op het volgende:
+    Het kan een paar minuten duren voordat de implementatie is voltooid. Als dit het geval is, ziet u een bericht zoals het volgende, inclusief het resultaat.
 
     ![Voor beeld van resultaat wanneer de implementatie is voltooid](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een Automation-account hebt, kunt u runbooks maken en hand matige processen automatiseren.
+
+* Zie [een Power shell-Runbook maken](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met Power shell-runbooks.
+* Zie [een Power shell workflow-Runbook maken](automation-first-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
+* Zie [een python-Runbook maken](automation-first-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.

@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6817ac4ebc272747776eab8b11dba62f318e4ed
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80582261"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690726"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -281,13 +281,13 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
+|**voert** | n.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**draaien** | n.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | n.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
 |**queueName**|**QueueName**|De naam van de wachtrij.  Stel deze waarde alleen in als u wachtrij berichten verzendt, niet voor een onderwerp.
 |**onderwerpnaam**|**Onderwerpnaam**|De naam van het onderwerp. Stel deze waarde alleen in als er onderwerp-berichten worden verzonden, niet voor een wachtrij.|
 |**verbinding**|**Combi**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard service bus connection string in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp.|
-|**accessRights**|**Toegang**|Toegangs rechten voor de connection string. Beschik bare `manage` waarden `listen`zijn en. De standaard waarde `manage`is, waarmee wordt aangegeven `connection` dat de de machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt `accessRights` u in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
+|**accessRights** (alleen v1)|**Toegang**|Toegangs rechten voor de connection string. Beschik bare `manage` waarden `listen`zijn en. De standaard waarde `manage`is, waarmee wordt aangegeven `connection` dat de de machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt `accessRights` u in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -366,9 +366,9 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
         "serviceBus": {
             "prefetchCount": 100,
             "messageHandlerOptions": {
-                "autoComplete": false,
+                "autoComplete": true,
                 "maxConcurrentCalls": 32,
-                "maxAutoRenewDuration": "00:55:00"
+                "maxAutoRenewDuration": "00:05:00"
             },
             "sessionHandlerOptions": {
                 "autoComplete": false,
@@ -380,13 +380,15 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
     }
 }
 ```
+Als u hebt `isSessionsEnabled` ingesteld op `true`, wordt `sessionHandlerOptions` de gehonoreerd.  Als u hebt `isSessionsEnabled` ingesteld op `false`, wordt `messageHandlerOptions` de gehonoreerd.
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |prefetchCount|0|Hiermee wordt het aantal berichten opgehaald of ingesteld dat de ontvanger van het bericht tegelijk kan aanvragen.|
 |maxAutoRenewDuration|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.|
-|Automatisch aanvullen|waar|Hiermee wordt aangegeven of de trigger het bericht onmiddellijk moet markeren als voltooid (automatisch aanvullen) of wacht totdat de functie is afgesloten.|
-|maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de retour aanroep dat de bericht pomp moet initiëren. De functie runtime verwerkt standaard meerdere berichten tegelijk. Als u wilt dat de runtime slechts één wachtrij of onderwerp bericht per keer verwerkt, stelt `maxConcurrentCalls` u in op 1. |
+|Automatisch aanvullen|waar|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.|
+|maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de call back dat de bericht pomp moet initiëren per geschaald exemplaar. De functie runtime verwerkt standaard meerdere berichten tegelijk.|
+|maxConcurrentSessions|2000|Het maximum aantal sessies dat gelijktijdig kan worden verwerkt per geschaald exemplaar.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

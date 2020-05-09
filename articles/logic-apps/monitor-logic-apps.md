@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76907771"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731999"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>De uitvoerings status controleren, de trigger geschiedenis controleren en waarschuwingen instellen voor Azure Logic Apps
 
@@ -19,7 +19,8 @@ Nadat u [een logische app hebt gemaakt en uitgevoerd](../logic-apps/quickstart-c
 
 Voor real-time gebeurtenis bewaking en uitgebreidere fout opsporing kunt u diagnostische logboek registratie voor uw logische app instellen met behulp van [Azure monitor-logboeken](../azure-monitor/overview.md). Deze Azure-service helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. U kunt vervolgens gebeurtenissen zoeken en weer geven, zoals trigger gebeurtenissen, uitvoerings gebeurtenissen en actie gebeurtenissen. Door deze informatie op te slaan in [Azure monitor logboeken](../azure-monitor/platform/data-platform-logs.md), kunt u [logboek query's](../azure-monitor/log-query/log-query-overview.md) maken waarmee u deze informatie vindt en analyseert. U kunt deze diagnostische gegevens ook gebruiken met andere Azure-Services, zoals Azure Storage en Azure Event Hubs. Zie [Logic apps bewaken met behulp van Azure monitor](../logic-apps/monitor-logic-apps-log-analytics.md)voor meer informatie.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Als uw Logic apps worden uitgevoerd in een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) die is gemaakt om een [intern toegangs punt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)te gebruiken, kunt u in *het virtuele netwerk*invoer en uitvoer bekijken en openen vanuit de geschiedenis van de uitvoering van de logische app. Zorg ervoor dat u verbinding hebt met het netwerk tussen de privé-eind punten en de computer van waaruit u de geschiedenis van uitvoeringen wilt openen. Uw client computer kan bijvoorbeeld bestaan in het virtuele netwerk van de ISE of binnen een virtueel netwerk dat is verbonden met het virtuele netwerk van de ISE, bijvoorbeeld via peering of een virtueel particulier netwerk. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. 
 
 <a name="review-runs-history"></a>
 
@@ -50,7 +51,7 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
    | **Geannuleerd** | De werk stroom is uitgevoerd, maar er is een annulerings aanvraag ontvangen |
    | **Mislukt** | Ten minste één actie is mislukt en er zijn geen latere acties in de werk stroom ingesteld voor het afhandelen van de fout |
    | **Wordt uitgevoerd** | De werk stroom wordt momenteel uitgevoerd. <p>Deze status kan ook worden weer gegeven voor vertraagde werk stromen of vanwege het huidige prijs plan. Zie de [pagina met prijzen voor de actie limieten](https://azure.microsoft.com/pricing/details/logic-apps/)voor meer informatie. Als u [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps.md)instelt, kunt u informatie ophalen over eventuele vertragings gebeurtenissen die plaatsvinden. |
-   | **Geslaagd** | Alle acties zijn voltooid. <p>**Opmerking**: als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een latere actie in de werk stroom verwerkt. |
+   | **Is voltooid** | Alle acties zijn voltooid. <p>**Opmerking**: als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een latere actie in de werk stroom verwerkt. |
    | **Wachten** | De werk stroom is niet gestart of is onderbroken, bijvoorbeeld vanwege een eerdere werk stroom die nog steeds wordt uitgevoerd. |
    |||
 
@@ -119,7 +120,7 @@ De uitvoering van elke logische app begint met een trigger. De trigger geschiede
    |--------|-------------|
    | **Mislukt** | Er is een fout opgetreden. Als u gegenereerde fout berichten voor een mislukte trigger wilt controleren, selecteert u de trigger poging en kiest u **uitvoer**. U kunt bijvoorbeeld invoer zoeken die niet geldig is. |
    | **Overgeslagen** | De trigger heeft het eind punt gecontroleerd, maar er zijn geen gegevens gevonden. |
-   | **Geslaagd** | De trigger heeft het eind punt gecontroleerd en beschik bare gegevens gevonden. Normaal gesp roken wordt naast deze status ook de status ' geactiveerd ' weer gegeven. Als dat niet het geval is, kan de definitie van `SplitOn` de trigger een voor waarde of een opdracht hebben die niet is voldaan. <p>Deze status kan van toepassing zijn op een hand matige trigger, een herhalings trigger of een polling-trigger. Een trigger kan worden uitgevoerd, maar de uitvoeringsrun zelf kan echter nog steeds mislukken wanneer de acties onverwerkte fouten genereren. |
+   | **Is voltooid** | De trigger heeft het eind punt gecontroleerd en beschik bare gegevens gevonden. Normaal gesp roken wordt naast deze status ook de status ' geactiveerd ' weer gegeven. Als dat niet het geval is, kan de definitie van `SplitOn` de trigger een voor waarde of een opdracht hebben die niet is voldaan. <p>Deze status kan van toepassing zijn op een hand matige trigger, een herhalings trigger of een polling-trigger. Een trigger kan worden uitgevoerd, maar de uitvoeringsrun zelf kan echter nog steeds mislukken wanneer de acties onverwerkte fouten genereren. |
    |||
 
    > [!TIP]
