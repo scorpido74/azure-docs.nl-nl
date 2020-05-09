@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617343"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787359"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -51,15 +51,15 @@ De minimale vereisten voor een Windows-Hybrid Runbook Worker zijn:
 
 Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de netwerk vereisten voor de Hybrid Runbook Worker.
 
-### <a name="server-onboarding-for-management-with-automation-dsc"></a>Server onboarding voor beheer met Automation DSC
+### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>Server onboarding voor beheer met status configuratie (DSC)
 
-Zie voor meer informatie over het onboarden van servers voor beheer met DSC [onboarding-machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md).
+Zie voor meer informatie over het onboarden van servers voor beheer met state Configuration (DSC) [onboarding computers voor beheer door status configuratie (DSC)](automation-dsc-onboarding.md).
 
-Als u de [updatebeheer-oplossing](../operations-management-suite/oms-solution-update-management.md) inschakelt, wordt automatisch elke Windows-computer die is verbonden met uw log Analytics-werk ruimte geconfigureerd als een Hybrid Runbook worker voor de ondersteuning van runbooks die zijn opgenomen in de oplossing. Deze werk nemer is echter niet geregistreerd bij Hybrid Runbook Worker groepen die al zijn gedefinieerd in uw Automation-account.
+Als u [updatebeheer](automation-update-management.md) inschakelt, wordt elke Windows-computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook worker ter ondersteuning van Runbook-updates. Deze werk nemer is echter niet geregistreerd bij Hybrid Runbook Worker groepen die al zijn gedefinieerd in uw Automation-account.
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>De computer toevoegen aan een Hybrid Runbook Worker groep
 
-U kunt de werk computer toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account. Houd er rekening mee dat u Automation-runbooks moet ondersteunen als u hetzelfde account gebruikt voor zowel de oplossing als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
+U kunt de werk computer toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account. Houd er rekening mee dat u Automation-runbooks moet ondersteunen als u hetzelfde account gebruikt voor zowel de Azure Automation-functie als de Hybrid Runbook Worker groepslid maatschap. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
 
 ## <a name="automated-deployment"></a>Geautomatiseerde implementatie
 
@@ -81,7 +81,7 @@ Down load het script **New-OnPremiseHybridWorker. ps1** van de [PowerShell Galle
 | `WorkspaceName` | Optioneel | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
 
 > [!NOTE]
-> Bij het inschakelen van oplossingen ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
+> Bij het inschakelen van functies ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Stap 2: Windows Power shell-opdracht regel shell openen
 
@@ -115,9 +115,9 @@ Voer de eerste twee stappen voor uw automatiserings omgeving uit op de doel comp
 
 Als u nog geen Log Analytics-werk ruimte hebt, raadpleegt u de [richt lijnen voor het Azure monitor vastleggen](../azure-monitor/platform/design-logs-deployment.md) van het logboek voordat u de werk ruimte maakt.
 
-### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>Stap 2: de automatiserings oplossing toevoegen aan de Log Analytics-werk ruimte
+### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>Stap 2: een Azure Automation-functie toevoegen aan de Log Analytics-werk ruimte
 
-De Automation-oplossing voegt functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u de oplossing toevoegt aan uw Log Analytics-werk ruimte, pusht deze automatisch naar de agent computer van de worker-onderdelen die u installeert zoals beschreven in de volgende stap.
+Een Automation-functie voegt functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een oplossing aan uw Log Analytics-werk ruimte toevoegt, wordt deze automatisch naar de agent computer gepusht. de worker-onderdelen die u installeert zoals beschreven in de volgende stap.
 
 Voer de volgende Power shell-cmdlet uit om de automatiserings oplossing toe te voegen aan uw werk ruimte.
 
@@ -177,13 +177,38 @@ U kunt de informatie die vereist is voor deze cmdlet, ophalen via de pagina sleu
 
 Runbooks kunnen gebruikmaken van de activiteiten en cmdlets die zijn gedefinieerd in de modules die in uw Azure Automation omgeving zijn geïnstalleerd. Omdat deze modules niet automatisch worden geïmplementeerd op on-premises computers, moet u ze hand matig installeren. De uitzonde ring hierop is de Azure-module. Deze module wordt standaard geïnstalleerd en biedt toegang tot cmdlets voor alle Azure-Services en-activiteiten voor Azure Automation.
 
-Omdat het primaire doel van de functie van het Hybrid Runbook Worker is om lokale bronnen te beheren, moet u waarschijnlijk de modules installeren die deze bronnen ondersteunen, met `PowerShellGet` name de module. Zie [Windows Power shell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)voor meer informatie over het installeren van Windows Power shell-modules.
+Omdat het primaire doel van de Hybrid Runbook Worker is om lokale bronnen te beheren, moet u waarschijnlijk de modules installeren die deze bronnen ondersteunen, met name de `PowerShellGet` module. Zie [Windows Power shell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)voor meer informatie over het installeren van Windows Power shell-modules.
 
 Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar `PSModulePath` wordt verwezen door de omgevings variabele, zodat de Hybrid worker deze automatisch kan importeren. Zie [Installing modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)(Engelstalig) voor meer informatie.
+
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>De Hybrid Runbook Worker verwijderen van een on-premises Windows-computer
+
+1. Ga in het Azure Portal naar uw Automation-account.
+2. Onder **account instellingen**selecteert u **sleutels** en noteert u de waarden voor **URL** en **primaire toegangs sleutel**.
+
+3. Open een Power shell-sessie in de beheerders modus en voer de volgende opdracht uit met uw URL en primaire toegangs sleutel waarden. Gebruik de `Verbose` para meter voor een gedetailleerd logboek van het verwijderings proces. Als u verouderde machines uit uw Hybrid Worker groep wilt verwijderen `machineName` , gebruikt u de optionele para meter.
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+## <a name="remove-a-hybrid-worker-group"></a>Een Hybrid Worker-groep verwijderen
+
+Als u een Hybrid Runbook Worker groep wilt verwijderen, moet u eerst de Hybrid Runbook Worker verwijderen van elke computer die lid is van de groep. Gebruik vervolgens de volgende stappen om de groep te verwijderen:
+
+1. Open het Automation-account in de Azure Portal.
+2. Selecteer **Hybrid worker groups** onder **Process Automation**. Selecteer de groep die u wilt verwijderen. De eigenschappen pagina voor die groep wordt weer gegeven.
+
+   ![De pagina Eigenschappen](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+
+3. Selecteer op de pagina eigenschappen voor de geselecteerde groep de optie **verwijderen**. Er wordt een bericht gevraagd om deze actie te bevestigen. Selecteer **Ja** als u zeker weet dat u wilt door gaan.
+
+   ![Bevestigingsbericht](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+
+   Het kan enkele seconden duren voordat dit proces is voltooid. U kunt de voortgang bijhouden onder **Meldingen** in het menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md)voor meer informatie over het configureren van uw runbooks om processen te automatiseren in uw on-premises Data Center of andere cloud omgeving.
-* Zie [Azure Automation Hybrid Runbook Workers verwijderen](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)voor instructies voor het verwijderen van Hybrid runbook Workers.
 * Zie [problemen met Windows Hybrid Runbook Workers oplossen](troubleshoot/hybrid-runbook-worker.md#windows)voor meer informatie over het oplossen van problemen met uw Hybrid runbook Workers.
-* Zie [updatebeheer: Troubleshooting](troubleshoot/update-management.md)(Engelstalig) voor aanvullende stappen voor het oplossen van problemen met update beheer.
+

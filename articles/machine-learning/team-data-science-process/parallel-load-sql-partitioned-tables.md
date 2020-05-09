@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721333"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891688"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tabellen maken en optimaliseren voor snelle parallelle invoer van gegevens in een SQL Server op een virtuele machine van Azure
 
@@ -99,7 +99,7 @@ Zie [gepartitioneerde tabellen en indexen maken](https://msdn.microsoft.com/libr
 * Wijzig [de data base om het](https://msdn.microsoft.com/library/bb522682.aspx) transactie logboek schema te wijzigen in BULK_LOGGED om de overhead van logboek registratie te minimaliseren, bijvoorbeeld:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Om het laden van gegevens te versnellen, start u de bulksgewijze import bewerkingen parallel. Zie [1 TB in minder dan 1 uur laden](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)voor tips over het versnellen van het bulksgewijs importeren van big data in SQL server-data bases.
+* Om het laden van gegevens te versnellen, start u de bulksgewijze import bewerkingen parallel. Zie [1 TB in minder dan 1 uur laden](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)voor tips over het versnellen van het bulksgewijs importeren van big data in SQL server-data bases.
 
 Het volgende Power shell-script is een voor beeld van het laden van parallelle gegevens met behulp van BCP.
 

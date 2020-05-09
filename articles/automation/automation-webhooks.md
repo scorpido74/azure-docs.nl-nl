@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367020"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582435"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Een Azure Automation-runbook starten met een webhook
 
@@ -88,7 +88,7 @@ U kunt logica binnen een runbook toevoegen om te bepalen of deze wordt aangeroep
 
 Een andere strategie is ervoor te hebben dat het runbook enige validatie van een externe voor waarde uitvoert wanneer er een webhook-aanvraag wordt ontvangen. Denk bijvoorbeeld aan een runbook dat wordt aangeroepen door GitHub telkens wanneer er een nieuwe door Voer is voor een GitHub-opslag plaats. Het runbook kan verbinding maken met GitHub om te controleren of er een nieuwe commit heeft plaatsgevonden voordat u doorgaat.
 
-## <a name="creating-a-webhook"></a>Een webhook maken
+## <a name="create-a-webhook"></a>Een webhook maken
 
 Gebruik de volgende procedure om een nieuwe webhook te maken die is gekoppeld aan een runbook in de Azure Portal.
 
@@ -106,7 +106,7 @@ Gebruik de volgende procedure om een nieuwe webhook te maken die is gekoppeld aa
 1. Klik op **para meters** om waarden voor de runbook-para meters op te geven. Als het runbook verplichte para meters bevat, kunt u de webhook alleen maken als u waarden opgeeft.
 1. Klik op **Maken** om de webhook te maken.
 
-## <a name="using-a-webhook"></a>Een webhook gebruiken
+## <a name="use-a-webhook"></a>Een webhook gebruiken
 
 Als u een webhook wilt gebruiken nadat deze is gemaakt, moet uw client een HTTP `POST` -aanvraag uitgeven met de URL voor de webhook. De syntaxis is:
 
@@ -131,7 +131,7 @@ Ervan uitgaande dat de aanvraag is geslaagd, bevat de webhook-respons de taak-ID
 
 De client kan niet bepalen wanneer de runbook-taak is voltooid of de voltooiings status van de webhook. Deze informatie kan worden gevonden met behulp van de taak-ID met een ander mechanisme, zoals [Windows Power shell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) of de [Azure Automation-API](/rest/api/automation/job).
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>Een webhook vernieuwen
+## <a name="renew-a-webhook"></a>Een webhook vernieuwen
 
 Wanneer er een webhook wordt gemaakt, heeft deze een tijds periode van tien jaar, waarna deze automatisch verloopt. Zodra een webhook is verlopen, kunt u deze niet opnieuw activeren. U kunt het bestand alleen verwijderen en vervolgens opnieuw maken. 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>Het voor beeld testen
+## <a name="test-the-sample"></a>Het voor beeld testen
 
 In het volgende voor beeld wordt Windows Power shell gebruikt om een runbook te starten met een webhook. Elke taal die een HTTP-aanvraag kan maken, kan een webhook gebruiken. Windows Power shell wordt hier als voor beeld gebruikt.
 

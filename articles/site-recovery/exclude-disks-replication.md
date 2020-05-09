@@ -3,12 +3,12 @@ title: Schijven uitsluiten van replicatie met Azure Site Recovery
 description: Schijven uitsluiten van replicatie naar Azure met Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281845"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900284"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Schijven uitsluiten van herstel na nood gevallen
 
@@ -26,7 +26,7 @@ U kunt schijven uitsluiten van replicatie zoals in de tabel wordt samenvatten.
 
 **Azure naar Azure** | **VMware naar Azure** | **Hyper-V naar Azure** 
 --- | --- | ---
-Ja (met Power shell) | Ja | Ja 
+Ja | Ja | Ja 
 
 ## <a name="exclude-limitations"></a>Beperkingen uitsluiten
 
@@ -35,7 +35,7 @@ Ja (met Power shell) | Ja | Ja
 **Schijf typen** | U kunt basis schijven uitsluiten van replicatie.<br/><br/> U kunt geen besturingssysteem schijven of dynamische schijven uitsluiten. Tijdelijke schijven worden standaard uitgesloten. | U kunt basis schijven uitsluiten van replicatie.<br/><br/> U kunt geen besturingssysteem schijven of dynamische schijven uitsluiten. | U kunt basis schijven uitsluiten van replicatie.<br/><br/> Besturingssysteemschijven kunt u niet uitsluiten. We raden u aan geen dynamische schijven uit te sluiten. Site Recovery kan niet identificeren welke VHS Basic of Dynamic is in de gast-VM. Als niet alle afhankelijke dynamische volume schijven worden uitgesloten, wordt de beveiligde dynamische schijf een defecte schijf op een failover-VM. de gegevens op de schijf zijn dan niet toegankelijk.
 **Schijf repliceren** | U kunt een schijf die wordt gerepliceerd niet uitsluiten.<br/><br/> Schakel replicatie voor de virtuele machine uit en opnieuw in. |  U kunt een schijf die wordt gerepliceerd niet uitsluiten. |  U kunt een schijf die wordt gerepliceerd niet uitsluiten.
 **Mobility service (VMware)** | Niet relevant | U kunt alleen schijven uitsluiten op Vm's waarop de Mobility-service is geïnstalleerd.<br/><br/> Dit betekent dat u de Mobility-service hand matig moet installeren op de virtuele machines waarvoor u schijven wilt uitsluiten. U kunt het mechanisme push installatie niet gebruiken omdat de Mobility-service pas wordt geïnstalleerd nadat replicatie is ingeschakeld. | Niet relevant.
-**Toevoegen/verwijderen** | U kunt schijven toevoegen aan en verwijderen uit virtuele Azure-machines met beheerde schijven. | U kunt geen schijven toevoegen of verwijderen nadat de replicatie is ingeschakeld. Schakel de replicatie uit en weer in om een schijf toe te voegen. | U kunt geen schijven toevoegen of verwijderen nadat de replicatie is ingeschakeld. Schakel de replicatie uit en weer in.
+**Toevoegen/verwijderen** | U kunt beheerde schijven toevoegen aan Azure-Vm's met replicatie mogelijkheden met beheerde schijven. U kunt geen schijven verwijderen van Azure-Vm's die zijn ingeschakeld voor replicatie. | U kunt geen schijven toevoegen of verwijderen nadat de replicatie is ingeschakeld. Schakel de replicatie uit en weer in om een schijf toe te voegen. | U kunt geen schijven toevoegen of verwijderen nadat de replicatie is ingeschakeld. Schakel de replicatie uit en weer in.
 **Failover** | Als een app een door u uitgesloten schijf nodig heeft, moet u na de failover de schijf hand matig maken zodat de gerepliceerde app kan worden uitgevoerd.<br/><br/> U kunt de schijf ook tijdens een VM-failover maken door Azure Automation te integreren in een herstel plan. | Als u een schijf uitsluit die nodig is voor een app, maakt u deze hand matig in azure na een failover. | Als u een schijf uitsluit die nodig is voor een app, maakt u deze hand matig in azure na een failover.
 **On-premises failback-schijven die hand matig zijn gemaakt** | Niet relevant | **Windows-vm's**: schijven die hand matig zijn gemaakt in azure, worden niet meer weer gegeven. Als u bijvoorbeeld een failover hebt uitgevoerd voor drie schijven en twee schijven rechtstreeks op een virtuele Azure-machine maakt, worden alleen de drie schijven waarvoor een failover is voltooid, teruggezet.<br/><br/> **Linux-vm's**: schijven die hand matig zijn gemaakt in azure, worden teruggezet. Als u bijvoorbeeld een failover hebt uitgevoerd voor drie schijven en er twee schijven op een virtuele Azure-machine maakt, wordt er een fout weer gegeven. U kunt geen schijven die handmatig zijn gemaakt, uitsluiten van failback. | Schijven die hand matig zijn gemaakt in azure, worden niet meer weer gegeven. Als u bijvoorbeeld een failover hebt uitgevoerd voor drie schijven en twee schijven rechtstreeks op een virtuele Azure-machine maakt, worden er slechts drie schijven met een failover-fout weer gegeven.
 **On-premises failback-uitgesloten schijven** | Niet relevant | Als u terugkeert naar de oorspronkelijke computer, bevat de failback-VM-schijf configuratie geen uitgesloten schijven. Schijven die zijn uitgesloten van VMware naar Azure-replicatie, zijn niet beschikbaar op de failback-VM. | Wanneer failback naar de oorspronkelijke Hyper-V-locatie gaat, blijft de schijf configuratie van de failback-VM hetzelfde als die van de oorspronkelijke bron-VM-schijf. Schijven die zijn uitgesloten van Hyper-V-site naar Azure-replicatie, zijn beschikbaar op de failback-VM.

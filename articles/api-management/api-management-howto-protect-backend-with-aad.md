@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804364"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778971"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2.0 met Azure Active Directory en API Management
 
@@ -79,7 +79,7 @@ Elke client toepassing die de API aanroept, moet ook worden geregistreerd als ee
     - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, zoals *client-app*. 
     - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory (een Azure AD-Directory-multi tenant)**. 
 
-1. Selecteer `Web` en voer de URL `https://contoso5.portal.azure-api.net/signin`in de sectie **omleidings-URI** in.
+1. Selecteer `Web` in de sectie **omleidings-URI** het veld URL voor nu leeg.
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 
@@ -149,9 +149,9 @@ In dit voor beeld is de ontwikkelaars console de client-app. In de volgende stap
 
 1. Selecteer **Maken**.
 
-1. Ga terug naar de client-app en selecteer **verificatie**.
+1. Ga terug naar de registratie van uw client-app in Azure Active Directory en selecteer **verificatie**.
 
-1. Selecteer onder **omleidings-uri's**het type als **Web**, plak de **redirect_url** onder **omleidings-URI**en sla het bestand op.
+1. Klik onder **platform configuraties** op **een platform toevoegen**en selecteer het type als **Web**, plak de **redirect_url** onder **omleidings-URI**en klik vervolgens op de knop **configureren** om op te slaan.
 
 Nu u een OAuth 2,0-autorisatie server hebt geconfigureerd, kan de ontwikkelaars console toegangs tokens van Azure AD verkrijgen. 
 

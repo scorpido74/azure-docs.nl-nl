@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294121"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983326"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -55,15 +55,14 @@ Wanneer u replicatie voor een virtuele machine inschakelt, geeft Site Recovery u
 U kunt doel resources als volgt beheren:
 
 - U kunt doel instellingen wijzigen terwijl u replicatie inschakelt.
-- U kunt doel instellingen wijzigen nadat de replicatie al is uitgevoerd. De uitzonde ring is het beschikbaarheids type (één instantie, set of zone). Als u deze instelling wilt wijzigen, dient u replicatie uit te scha kelen, de instelling te wijzigen en vervolgens weer in te scha kelen.
-
+- U kunt doel instellingen wijzigen nadat de replicatie al is uitgevoerd. Houd er rekening mee dat de standaard-SKU voor de doel regio-VM hetzelfde is als de SKU van de bron-VM (of de volgende beste beschik bare SKU in vergelijking met de bron-VM-SKU). Net als bij andere resources, zoals de doel resource groep, de doel naam en andere, kan de VM-SKU van het doel gebied ook worden bijgewerkt nadat de replicatie is uitgevoerd. Een resource die niet kan worden bijgewerkt, is het beschikbaarheids type (één exemplaar, set of zone). Als u deze instelling wilt wijzigen, dient u replicatie uit te scha kelen, de instelling te wijzigen en vervolgens weer in te scha kelen. 
 
 
 ## <a name="replication-policy"></a>Beleid voor replicatie 
 
 Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw replicatie beleid maken met de standaard instellingen in de tabel.
 
-**Beleidsinstelling** | **Nadere** | **Prijs**
+**Beleidsinstelling** | **Details** | **Standaard**
 --- | --- | ---
 **Bewaar periode van het herstel punt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
 **Frequentie van de app-consistente moment opname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
@@ -97,13 +96,13 @@ In de volgende tabel worden verschillende soorten consistentie beschreven.
 
 ### <a name="crash-consistent"></a>Crash-consistent
 
-**Beschrijving** | **Nadere** | **Aanbeveling**
+**Beschrijving** | **Details** | **Aanbeveling**
 --- | --- | ---
 Een crash consistente moment opname legt gegevens vast die zich op de schijf bevonden toen de moment opname werd gemaakt. Het bevat niets in het geheugen.<br/><br/> Het bevat het equivalent van de gegevens op de schijf die aanwezig zouden zijn als de virtuele machine is vastgelopen of het netsnoer van de server is opgehaald op het moment dat de moment opname werd gemaakt.<br/><br/> Een crash consistent garandeert geen gegevens consistentie voor het besturings systeem of voor apps op de virtuele machine. | Met Site Recovery worden standaard crash consistente herstel punten in elke vijf minuten gemaakt. Deze instelling kan niet worden gewijzigd.<br/><br/>  | Vandaag kunnen de meeste apps goed worden hersteld met crash-consistente punten.<br/><br/> Crash-consistente herstel punten zijn doorgaans voldoende voor de replicatie van besturings systemen en apps, zoals DHCP-servers en afdruk servers.
 
 ### <a name="app-consistent"></a>App-consistent
 
-**Beschrijving** | **Nadere** | **Aanbeveling**
+**Beschrijving** | **Details** | **Aanbeveling**
 --- | --- | ---
 App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) wanneer een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van kopieën uit op het volume.<br/><br/>   2) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   3) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
@@ -129,7 +128,7 @@ Wanneer u replicatie voor een virtuele machine van Azure inschakelt, gebeurt het
 
 Als uitgaande toegang voor virtuele machines wordt beheerd met Url's, kunt u deze Url's toestaan.
 
-| **URL** | **Nadere** |
+| **URL** | **Details** |
 | ------- | ----------- |
 | *.blob.core.windows.net | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
 | login.microsoftonline.com | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
@@ -145,7 +144,7 @@ Details van de vereisten voor netwerk connectiviteit vindt u in het [technisch d
 
 #### <a name="source-region-rules"></a>Regels voor bron regio's
 
-**Regel** |  **Nadere** | **Servicetag**
+**Regel** |  **Details** | **Servicetag**
 --- | --- | --- 
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad. \<regio-naam>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD)  | AzureActiveDirectory
@@ -156,7 +155,7 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azur
 
 #### <a name="target-region-rules"></a>Doel regio regels
 
-**Regel** |  **Nadere** | **Servicetag**
+**Regel** |  **Details** | **Servicetag**
 --- | --- | --- 
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de doel regio | Opslagpad. \<regio-naam>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD  | AzureActiveDirectory
