@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67078610"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561855"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Release opmerkingen bij Azure Data Box Edge en Azure Data Box Gateway 1905
 
@@ -21,7 +21,7 @@ ms.locfileid: "67078610"
 
 De volgende opmerkingen bij de release identificeren de kritieke openstaande problemen en de opgeloste problemen voor de 1905-release voor Azure Data Box Edge en Azure Data Box Gateway.
 
-De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Data Box Edge/Data Box Gateway implementeert.
+De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Data Box Edge/Data Box Gateway implementeert. 
 
 Deze release komt overeen met de software versies:
 
@@ -33,7 +33,7 @@ Deze release komt overeen met de software versies:
 
 ## <a name="whats-new"></a>Nieuwe functies
 
-- **Verbeteringen in de logboek registratie van de Programmeer bare gate array (FPGA)** -in deze release hebben we logboek registratie-en waarschuwings verbeteringen aangebracht die betrekking hebben op FPGA. Dit is een vereiste update voor Data Box Edge als u de functie Edge Compute gebruikt met de FPGA. Zie [gegevens transformeren met Edge Compute op uw data Box Edge](data-box-edge-deploy-configure-compute-advanced.md)voor meer informatie.
+- **Verbeteringen in de logboek registratie van de Programmeer bare gate array (FPGA)** -in deze release hebben we logboek registratie-en waarschuwings verbeteringen aangebracht die betrekking hebben op FPGA. Dit is een vereiste update voor Data Box Edge als u de functie Edge Compute gebruikt met de FPGA. Zie [gegevens transformeren met Edge Compute op uw data Box Edge](azure-stack-edge-deploy-configure-compute-advanced.md)voor meer informatie.
 
 ## <a name="known-issues-in-ga-release"></a>Bekende problemen in GA release
 
@@ -43,4 +43,4 @@ Er worden geen nieuwe problemen vermeld voor deze release. Alle vermelde release
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorbereidingen voor de implementatie van Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Voorbereidingen voor de implementatie van Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [Voorbereidingen voor de implementatie van Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

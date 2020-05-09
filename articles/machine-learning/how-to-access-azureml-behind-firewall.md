@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning achter een firewall gebruiken
+title: Een firewall gebruiken
 titleSuffix: Azure Machine Learning
-description: Gebruik veilig Azure Machine Learning achter Azure Firewall. Meer informatie over de hosts die u moet toestaan via de firewall om Azure Machine Learning correct te laten functioneren.
+description: Toegang tot Azure Machine Learning-werk ruimten beheren met Azure-firewalls. Meer informatie over de hosts die u moet toestaan via de firewall om Azure Machine Learning correct te laten functioneren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 2c5fe9d46ef408775cc4b99d4820a652a91683c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196320"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981962"
 ---
-# <a name="use-azure-machine-learning-workspace-behind-azure-firewall"></a>Azure Machine Learning werk ruimte gebruiken achter Azure Firewall
+# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
-Dit artikel bevat informatie over het configureren van Azure Firewall voor gebruik met Azure Machine Learning.
+In dit artikel leert u hoe u Azure Firewall kunt configureren voor gebruik met een Azure Machine Learning-werk ruimte.
 
 Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte.
 

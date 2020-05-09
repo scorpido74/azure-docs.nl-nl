@@ -122,8 +122,6 @@
       href: remotefx-graphics-performance-counters.md
 - name: Naslaginformatie
   items:
-    - name: Aanbevolen procedures voor beveiliging
-      href: security-guide.md
     - name: Linux Support
       href: linux-overview.md
     - name: Ondersteunde RDP-bestandsinstellingen

@@ -5,20 +5,30 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29a72eb1fe7b8be18cd2160fc63160e408378585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617448"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690780"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dynamische groepen gebruiken met Updatebeheer
 
-Met Updatebeheer kunt u een dynamische groep van Azure-of niet-Azure-Vm's richten op update-implementaties. Deze groepen, die door query's worden gedefinieerd, worden geëvalueerd tijdens de implementatie, zodat u de implementatie niet hoeft te bewerken om computers toe te voegen.
+Met Updatebeheer kunt u een dynamische groep van Azure-of niet-Azure-Vm's richten op update-implementaties. Als u een dynamische groep gebruikt, hoeft u uw implementatie niet te bewerken om machines bij te werken.
 
-## <a name="azure-machines"></a>Azure-machines
+> [!NOTE]
+> Dynamische groepen werken niet met klassieke Vm's.
 
-Dynamische groepen werken niet met klassieke Vm's. Bij het definiëren van uw query kunnen de volgende items samen worden gebruikt om een dynamische groep te vullen:
+U kunt dynamische groepen voor Azure-of niet-Azure-machines definiëren op basis van **Update beheer** in de Azure Portal. Zie [updates voor meerdere virtuele machines van Azure beheren](manage-update-multi.md).
+
+Een dynamische groep wordt gedefinieerd door een query die Azure Automation evalueert tijdens de implementatie. Zelfs als een dynamische groeps query een groot aantal machines ophaalt, kan Azure Automation Maxi maal 1000 machines tegelijk verwerken. Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management). 
+
+> [!NOTE]
+> Als u verwacht dat u meer dan 1000 computers wilt bijwerken, raden we u aan om de updates te splitsen in meerdere update planningen. 
+
+## <a name="define-dynamic-groups-for-azure-machines"></a>Dynamische groepen voor Azure-machines definiëren
+
+Bij het definiëren van een dynamische groeps query voor Azure-machines, kunt u de volgende items gebruiken om de dynamische groep te vullen:
 
 * Abonnement
 * Resourcegroepen
@@ -27,13 +37,13 @@ Dynamische groepen werken niet met klassieke Vm's. Bij het definiëren van uw qu
 
 ![Groepen selecteren](./media/automation-update-management/select-groups.png)
 
-Als u de resultaten van een dynamische groep wilt bekijken, klikt u op **voor beeld**. In het voor beeld wordt het groepslid maatschap op de huidige tijd weer gegeven. In het voor beeld wordt gezocht naar computers die de tag `Role` voor de groep **BackendServer**hebben. Als deze tag wordt toegevoegd aan meer computers, worden deze toegevoegd aan toekomstige implementaties op basis van die groep.
+Klik op **voor beeld**om de resultaten van uw dynamische groeps query te bekijken. In het voor beeld wordt het groepslid maatschap op de huidige tijd weer gegeven. In het voor beeld wordt gezocht naar computers die de tag `Role` voor de groep **BackendServer**hebben. Als deze tag wordt toegevoegd aan meer computers, worden deze toegevoegd aan toekomstige implementaties op basis van die groep.
 
 ![Preview-groepen](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Niet-Azure-machines
+## <a name="define-dynamic-groups-for-non-azure-machines"></a>Dynamische groepen voor niet-Azure-machines definiëren
 
-Voor niet-Azure-machines worden opgeslagen Zoek opdrachten, ook wel computer groepen genoemd, gebruikt om de dynamische groep te maken. Zie [een computer groep maken](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)voor meer informatie over het maken van een opgeslagen zoek opdracht. Zodra de groep is gemaakt, kunt u deze selecteren in de lijst met opgeslagen Zoek opdrachten. Klik op **voor beeld** om op dat moment een voor beeld van de computers in de opgeslagen zoek opdracht te bekijken.
+Een dynamische groep voor niet-Azure-machines gebruikt opgeslagen Zoek opdrachten, ook wel computer groepen genoemd. Zie [een computer groep maken](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)voor meer informatie over het maken van een opgeslagen zoek opdracht. Zodra uw opgeslagen zoek opdracht is gemaakt, kunt u deze selecteren in de lijst met opgeslagen Zoek **opdrachten in het** Azure Portal. Klik op **voor beeld** om de computers in de opgeslagen zoek opdracht te bekijken.
 
 ![Groepen selecteren](./media/automation-update-management/select-groups-2.png)
 
