@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 3a99ad12af7f6eecb74f6c0d52a269770fd5ed7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91f1f69db7f3faa9e1bbdae7966716c974a4dfa5
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837824"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930281"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Werk van anderen kopiëren om gegevenswetenschap uit te voeren
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: gegevens wetenschap voor beginners-serie
@@ -92,4 +92,4 @@ Bekijk de andere Video's in "data Science for beginners" van Microsoft Azure Mac
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Probeer uw eerste proef versie van data Science met Azure Machine Learning Studio (klassiek)](create-experiment.md)
-* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

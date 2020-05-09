@@ -62,6 +62,9 @@
   items:
     - name: Azure PowerShell
       href: platform/powershell-samples.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Wat kunt u bewaken?
@@ -442,8 +445,6 @@
               href: app/custom-data-correlation.md
             - name: Verbindingsreeksen
               href: app/sdk-connection-string.md
-            - name: Verbindingsreeksen
-              href: app/sdk-connection-string.md
             - name: GetMetric
               displayname: 'get metric, custom metrics, metrics, TrackMetric'
               href: app/get-metric.md
@@ -750,8 +751,6 @@
           href: insights/containers.md
     - name: Andere resources bewaken
       items:
-        - name: Key Vault
-          href: insights/key-vault-insights-overview.md
         - name: Storage
           items:
             - name: Azure Monitor voor Storage
@@ -927,6 +926,10 @@
               href: platform/workbooks-data-sources.md
             - name: Implementeren met Azure Resource Manager
               href: platform/workbooks-automate.md
+            - name: Groepen
+              href: platform/workbooks-groups.md
+            - name: JSON-gegevens transformeren met JSONPath
+              href: platform/workbooks-jsonpath.md
             - name: Configuratie
               items:
                 - name: Toegangsbeheer

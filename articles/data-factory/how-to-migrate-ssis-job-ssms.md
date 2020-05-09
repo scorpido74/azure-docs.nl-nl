@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455084"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627582"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-taken migreren naar ADF met SSMS
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bij het [migreren van de workloads van on-premises SQL Server Integration Services (SSIS) naar SSIS in ADF](scenario-ssis-migration-overview.md), kunt u nadat SSIS-pakketten zijn gemigreerd, batch migratie van SQL Server Agent taken uitvoeren met het type taak stap van SQL Server Integration services pakket naar Azure Data Factory (ADF) pijp lijnen/activiteiten/plannings triggers via SQL Server Management Studio (SSMS) **SSIS-taak migratie wizard**.
 

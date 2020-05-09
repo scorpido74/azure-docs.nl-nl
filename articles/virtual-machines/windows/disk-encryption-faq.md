@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082591"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901288"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -21,7 +21,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Disk Encrypt
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Wat is Azure Disk Encryption voor virtuele Windows-machines?
 
-Azure Disk Encryption voor Windows-Vm's maakt gebruik van de BitLocker-functie van Windows voor het versleutelen van de volledige schijf versleuteling van de besturingssysteem schijf en de gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke bron schijf wanneer de [para meter VolumeType is](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  De inhouds stromen zijn versleuteld van de virtuele machine naar de back-end van de opslag. Het leveren van end-to-end-versleuteling met een door de klant beheerde sleutel.
+Azure Disk Encryption voor Windows-Vm's maakt gebruik van de BitLocker-functie van Windows voor het versleutelen van de volledige schijf versleuteling van de besturingssysteem schijf en de gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke schijf wanneer de [para meter VolumeType is](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  De inhouds stromen zijn versleuteld van de virtuele machine naar de back-end van de opslag. Het leveren van end-to-end-versleuteling met een door de klant beheerde sleutel.
  
 Zie [ondersteunde vm's en besturings systemen](disk-encryption-overview.md#supported-vms-and-operating-systems).
  
@@ -61,7 +61,7 @@ Versleuteling van de opslag server versleutelt Azure Managed disks in Azure Stor
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Hoe wijkt Azure Disk Encryption af van de versleuteling van opslag server met door de klant beheerde sleutel en wanneer moet ik elke oplossing gebruiken?
 
-Azure Disk Encryption biedt end-to-end-versleuteling voor de besturingssysteem schijf, gegevens schijven en de tijdelijke bron schijf met een door de klant beheerde sleutel.
+Azure Disk Encryption biedt end-to-end-versleuteling voor de besturingssysteem schijf, gegevens schijven en de tijdelijke schijf met een door de klant beheerde sleutel.
 
 - Als uw vereisten het versleutelen van alle bovenstaande en end-to-end-versleuteling bevatten, gebruikt u Azure Disk Encryption. 
 - Als uw vereisten het versleutelen van alleen gegevens in rust met door de klant beheerde sleutel bevatten, gebruikt u [versleuteling aan de server zijde met door de klant beheerde sleutels](disk-encryption.md). U kunt een schijf niet versleutelen met zowel Azure Disk Encryption als opslag server versleuteling met door de klant beheerde sleutels.
@@ -129,9 +129,6 @@ Azure Disk Encryption selecteert de versleutelings methode in BitLocker op basis
 \*AES 256 bits met diffuser wordt niet ondersteund in Windows 2012 en hoger.
 
 Als u de versie van het Windows-besturings systeem wilt bepalen, voert u het hulp programma winver uit in de virtuele machine.
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Als ik EncryptFormatAll gebruik en alle volume typen Specificeer, worden de gegevens op de gegevens stations die al zijn versleuteld, gewist?
-Nee, er worden geen gegevens gewist van gegevens stations die al zijn versleuteld met Azure Disk Encryption. Net als bij de manier waarop EncryptFormatAll het OS-station niet opnieuw versleutelt, wordt het al versleutelde gegevens station niet opnieuw versleuteld. 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Kan ik een back-up maken van een versleutelde VM en deze herstellen? 
 

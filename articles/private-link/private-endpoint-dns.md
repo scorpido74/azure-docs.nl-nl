@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209023"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928598"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -36,57 +36,58 @@ Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van
 
 Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de volgende tabel:
 
-|Resource type voor persoonlijke koppelingen   |Subbron  |Zone naam  |
-|---------|---------|---------|
-|SQL-data base (micro soft. SQL/servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure Synapse Analytics (micro soft. SQL/servers)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
-|Opslag account (micro soft. Storage/Storage accounts)    |  BLOB (BLOB, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Opslag account (micro soft. Storage/Storage accounts)    |    Tabel (tabel, table_secondary)      |   privatelink.table.core.windows.net       |
-|Opslag account (micro soft. Storage/Storage accounts)    |    Wachtrij (wachtrij, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Opslag account (micro soft. Storage/Storage accounts)   |    Bestand (bestand, file_secondary)      |    privatelink.file.core.windows.net      |
-|Opslag account (micro soft. Storage/Storage accounts)     |  Web (Web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake File System Gen2 (micro soft. Storage/Storage accounts)  |  Data Lake File System Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Tabel|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL-één server (micro soft. DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL (micro soft. DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB (micro soft. DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (micro soft.-sleutel kluis/kluizen)|kluis|privatelink.vaultcore.azure.net|
-|Azure Kubernetes-service-Kubernetes-API (micro soft. container service/managedClusters)    | managedCluster | {GUID}. privatelink. {Region}. azmk8s. io|
-|Azure Search (micro soft. Search/searchServices)|searchService|privatelink.search.windows.net|   
-|Azure Container Registry (micro soft. ContainerRegistry/registers) | registry | privatelink.azurecr.io |
-|Azure-app configuratie (micro soft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|
-|Azure Backup (micro soft. Recovery Services/kluizen)| kluis |privatelink. {Region}. backup. windowsazure. com|
-|Azure Event hub (micro soft. EventHub/naam ruimten)| naamruimte |privatelink.servicebus.windows.net|
-|Azure Service Bus (micro soft. ServiceBus/naam ruimten) | naamruimte |privatelink.servicebus.windows.net|
-|Azure Relay (micro soft. relay/naam ruimten) | naamruimte |privatelink.servicebus.windows.net|
-|Azure Event Grid (micro soft. EventGrid/topics)     | onderwerp | thematische. {Region}. privatelink. eventgrid. Azure. net|
-|Azure Event Grid (micro soft. EventGrid/Domains) | domein | domeinen. {Region}. privatelink. eventgrid. Azure. net |
-|Azure webapps (micro soft. web/sites)    | site | privatelink.azurewebsites.net |
-|Azure Machine Learning (micro soft. MachineLearningServices/werk ruimten)    | werkruimte | privatelink.api.azureml.ms |
+| Resource type voor persoonlijke koppelingen/subresource |Privé-DNS zone naam | Naam van open bare DNS-zone |
+|---|---|---|---|
+| SQL-data base (micro soft. SQL/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (micro soft. SQL/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Opslag account (micro soft. Storage/Storage accounts)/BLOB (BLOB, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
+| Opslag account (micro soft. Storage/Storage accounts)/tabel (tabel, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
+| Opslag account (micro soft. Storage/Storage accounts)/wachtrij (wachtrij, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
+| Opslag account (micro soft. Storage/Storage accounts)/bestand (bestand, file_secondary) | privatelink.file.core.windows.net | file.core.windows.net |
+| Opslag account (micro soft. Storage/Storage accounts)/Web (Web, web_secondary) | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake File System Gen2 (micro soft. Storage/Storage accounts)/Data Lake File System Gen2 (DFS, dfs_secondary) | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)/Table | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| Azure Database for PostgreSQL-één server (micro soft. DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| Azure Database for MySQL (micro soft. DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| Azure Database for MariaDB (micro soft. DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault (micro soft. de sleutel kluis/kluizen)/kluis | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes service-Kubernetes-API (micro soft. container service/managedClusters)/managedCluster | privatelink. {Region}. azmk8s. io | {Region}. azmk8s. io |
+| Azure Search (micro soft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure Container Registry (micro soft. ContainerRegistry/registers)/REGI ster | privatelink.azurecr.io | azurecr.io |
+| Azure-app configuratie (micro soft. AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure Backup (micro soft. Recovery Services/kluizen)/kluis | privatelink. {Region}. backup. windowsazure. com | {Region}. backup. windowsazure. com |
+| Azure Event hub (micro soft. EventHub/naam ruimten)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Service Bus (micro soft. ServiceBus/namespaces)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Relay (micro soft. relay/naam ruimten)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Event Grid (micro soft. EventGrid/topics)/topic | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure Event Grid (micro soft. EventGrid/domeinen)/domein | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure webapps (micro soft. web/sites)/site | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Machine Learning (micro soft. MachineLearningServices/werk ruimten)/werk ruimte | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>DNS-configuratie scenario's
 
-Met de FQDN-namen van de Services wordt een openbaar IP-adres omgezet, moet u de DNS-configuratie wijzigen om het privé-IP-adres van het privé-eind punt op te lossen.
+De FQDN-namen van de services worden automatisch omgezet in een openbaar IP-adres, dus als u wilt omzetten naar het privé-IP-adres van het privé-eind punt, moet u de DNS-configuratie dienovereenkomstig wijzigen.
 
 DNS is een essentieel onderdeel om de toepassing correct te laten werken door op een juiste manier het IP-adres van het particuliere eind punt op te lossen.
 
 Op basis van uw voor keuren zijn de volgende scenario's beschikbaar voor geïntegreerde omzetting van DNS:
 
-- [Virtual Network workloads zonder aangepaste DNS-server](#virtual-network-workloads-without-custom-dns-server)
+- [Virtuele netwerk werkbelastingen zonder aangepaste DNS-server](#virtual-network-workloads-without-custom-dns-server)
+- [On-premises workloads met behulp van een DNS-doorstuur server](#on-premises-workloads-using-a-dns-forwarder)
 
-
-## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtual Network workloads zonder aangepaste DNS-server
+## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtuele netwerk werkbelastingen zonder aangepaste DNS-server
 
 Deze configuratie is geschikt voor werk belastingen voor virtuele netwerken zonder aangepaste DNS-server. In dit scenario vraagt de client om het IP-adres van het privé-eind punt naar Azure DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). Azure DNS is verantwoordelijk voor de DNS-omzetting van de privé-DNS-zones.
 
 
- > [!NOTE]
+> [!NOTE]
 > In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone. Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
 
 Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
@@ -99,16 +100,60 @@ Als u de juiste configuratie wilt configureren, hebt u de volgende resources nod
 
 In het volgende diagram ziet u de DNS-omzettings volgorde van virtuele netwerk werkbelastingen met behulp van een privé-DNS-zone
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Eén virtueel netwerk en Azure DNS-server":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Eén virtueel netwerk en door Azure verschafte DNS":::
 
 Dit model kan worden uitgebreid naar meerdere peered virtuele netwerken die zijn gekoppeld aan hetzelfde persoonlijke eind punt. U kunt dit doen door [nieuwe virtuele netwerk koppelingen toe te voegen](../dns/private-dns-virtual-network-links.md) aan de privé-DNS-zone voor alle gekoppelde virtuele netwerken.
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  Er is één privé-DNS-zone vereist voor deze configuratie; het maken van meerdere zones met dezelfde naam voor verschillende virtuele netwerken zou hand matige bewerkingen nodig hebben om de DNS-records samen te voegen
 
 In dit scenario is er sprake van een [hub & spoke](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) -netwerk topologie met de spoke-netwerken die een gemeen schappelijk persoonlijk eind punt delen en alle spoke-virtuele netwerken zijn gekoppeld aan dezelfde privé-DNS-zone. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="hub en spoke met door Azure verschafte DNS":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub en spoke met door Azure verschafte DNS":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>On-premises workloads met behulp van een DNS-doorstuur server
+ 
+Voor on-premises werk belastingen om een FQDN-naam van een persoonlijk eind punt in het privé-IP-adres op te lossen, moet u een DNS-doorstuur server gebruiken om de oplossing te maken van de [open bare DNS-zone](#azure-services-dns-zone-configuration) van Azure service die in Azure is geïmplementeerd.
+
+
+Het volgende scenario is geschikt voor een on-premises netwerk dat een DNS-doorstuur server heeft in azure, die op zijn beurt verantwoordelijk is voor het omzetten van alle DNS-query's via een doorstuur server van het niveau van het Azure- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
+
+> [!NOTE]
+> In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
+
+Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
+
+- On-premises netwerk
+- Virtueel netwerk [verbonden met on-premises](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- DNS-doorstuur server geïmplementeerd in azure 
+- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) met [een record typen](../dns/dns-zones-records.md#record-types)
+- Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
+
+In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat gebruikmaakt van een DNS-doorstuur server die is geïmplementeerd in azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="On-premises met Azure DNS":::
+
+Deze configuratie kan worden uitgebreid voor een on-premises netwerk waarop al een DNS-oplossing aanwezig is. 
+De on-premises DNS-oplossing moet worden geconfigureerd om DNS-verkeer door te sturen naar de Azure DNS via een [voorwaardelijke doorstuur server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) die verwijst naar de DNS-doorstuur server die is geïmplementeerd in Azure.
+
+> [!NOTE]
+> In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
+
+Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
+
+
+- On-premises netwerk met een aangepaste DNS-oplossing 
+- Virtueel netwerk [verbonden met on-premises](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- DNS-doorstuur server geïmplementeerd in azure
+- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)  met [een record typen](../dns/dns-zones-records.md#record-types)
+- Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
+
+In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat DNS-verkeer voorwaardelijk doorstuurt naar Azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk
+
+> [!IMPORTANT]
+> De voorwaardelijke door sturing moet worden uitgevoerd naar de [open bare DNS-zone](#azure-services-dns-zone-configuration) ex: `database.windows.net` in plaats van **privatelink**. database.Windows.net
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="On-premises door sturen naar Azure DNS":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

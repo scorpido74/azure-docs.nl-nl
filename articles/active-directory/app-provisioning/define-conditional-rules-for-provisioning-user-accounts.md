@@ -2,25 +2,20 @@
 title: Apps inrichten met bereik filters | Microsoft Docs
 description: Meer informatie over het gebruik van bereik filters om te voor komen dat objecten in apps die ondersteuning bieden voor automatische gebruikers inrichting, worden ingericht als een object niet voldoet aan uw zakelijke vereisten.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138532"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593741"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -125,7 +120,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 |----|----|----|----|
 |userPrincipalName|OVEREENKOMENDE REGEX|.\*@domain.com |Alle gebruikers met userPrincipal die het domein @domain.com hebben, zijn in het bereik voor inrichting.|
 |userPrincipalName|GEEN REGEX-OVEREENKOMST|.\*@domain.com|Alle gebruikers met userPrincipal die het domein @domain.com hebben, zijn buiten het bereik voor het inrichten|
-|department|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
+|afdeling|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
 |workerID|OVEREENKOMENDE REGEX|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| Alle werk nemers met workerIDs tussen 1000000 en 2000000 zijn binnen het bereik van de inrichting.|
 
 ## <a name="related-articles"></a>Verwante artikelen:
