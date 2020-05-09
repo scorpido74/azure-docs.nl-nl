@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050886"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926983"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -31,7 +31,7 @@ Wanneer u directe Federatie instelt met de IdP van een partner, kunnen nieuwe ga
 > Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp van een koppeling die de Tenant context `https://myapps.microsoft.com/?tenantid=<tenant id>` bevat `https://portal.azure.com/<tenant id>`(bijvoorbeeld of, of in het geval van een `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`geverifieerd domein). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als bijvoorbeeld, of `https://myapps.microsoft.com` `https://teams.microsoft.com` wordt `https://portal.azure.com`gebruikt, resulteert dit in een fout.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wanneer is een gast gebruiker geverifieerd met directe Federatie?
-Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Hier volgen enkele voorbeelden:
+Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Enkele voorbeelden:
  - Als gast gebruikers al uitnodigingen van u hebben ingewisseld en u vervolgens direct Federation hebt ingesteld met hun organisatie, blijven deze gast gebruikers dezelfde verificatie methode gebruiken die ze hebben gebruikt voordat u directe Federatie hebt ingesteld.
  - Als u directe Federatie hebt ingesteld met een partner organisatie en gast gebruikers uitnodigt en vervolgens de partner organisatie later naar Azure AD verplaatst, blijven de gast gebruikers die al ingedeelde uitnodigingen hebben ingewisseld, gebruikmaken van directe Federatie, zolang het directe Federatie beleid in uw Tenant bestaat.
  - Als u directe Federatie met een partner organisatie verwijdert, kunnen gast gebruikers die momenteel direct Federation gebruiken, zich niet aanmelden.
@@ -50,10 +50,13 @@ Het domein waarmee u wilt communiceren, mag ***niet*** door DNS worden geverifie
 
 ### <a name="authentication-url"></a>Verificatie-URL
 Directe Federatie is alleen toegestaan voor beleids regels waarbij het domein van de authenticatie-URL overeenkomt met het doel domein of waarbij de verificatie-URL een van deze toegestane id-providers is (deze lijst kan worden gewijzigd):
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com

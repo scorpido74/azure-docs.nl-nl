@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300152"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857041"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Grid: 
@@ -92,10 +92,9 @@ In de volgende tabel worden de verschillende statussen van de verbinding met het
 Voor een geslaagde publicatie moet de verbindings status van het particuliere eind punt worden **goedgekeurd**. Als een verbinding wordt geweigerd, kan deze niet worden goedgekeurd met behulp van de Azure Portal. De enige mogelijkheid is de verbinding te verwijderen en in plaats daarvan een nieuwe te maken.
 
 ## <a name="pricing-and-quotas"></a>Prijzen en quota
-**Privé-eind punten** zijn alleen beschikbaar voor onderwerpen en domeinen uit de Premium-laag. Event Grid kunnen Maxi maal 64 persoonlijke eindpunt verbindingen worden gemaakt per onderwerp of domein. Zie het artikel [prijs categorie bijwerken](update-tier.md) als u een upgrade wilt uitvoeren van de Basic-laag naar de Premium-laag.
+**Privé-eind punten** zijn beschikbaar in de lagen basis en premium van Event grid. Event Grid kunnen Maxi maal 64 persoonlijke eindpunt verbindingen worden gemaakt per onderwerp of domein. 
 
 De functie **IP-firewall** is beschikbaar in de lagen basis en premium van Event grid. U kunt Maxi maal 16 IP-firewall regels maken per onderwerp of domein.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt IP-Firewall voor uw Event Grid-bron configureren om de toegang via het open bare Internet te beperken tot alleen een select set met IP-adressen of IP-adresbereiken. Zie [Configure IP firewall](configure-firewall.md)(Engelstalig) voor stapsgewijze instructies.

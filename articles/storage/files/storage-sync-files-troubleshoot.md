@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 11942a08d46f4b46dc5478fca4b64796b9ce0a7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176121"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801313"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -213,7 +213,7 @@ Een server eindpunt kan de synchronisatie activiteit niet registreren gedurende 
 > [!Note]  
 > Als de status van de server op de Blade geregistreerde servers ' offline weer gegeven ' is, voert u de stappen uit die worden beschreven in het [Server-eind punt de status ' geen activiteit ' of ' in behandeling ' en de status van de server op de Blade geregistreerde servers is ' offline weer gegeven '](#server-endpoint-noactivity) .
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchroniseren
 <a id="afs-change-detection"></a>**Hoe lang duurt het om het bestand te synchroniseren met servers in de synchronisatie groep als ik een bestand rechtstreeks in mijn Azure-bestands share heb gemaakt via SMB of via de portal?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -807,12 +807,9 @@ Deze fout treedt op vanwege een intern probleem met de synchronisatiedatabase. D
 | **Fouttekenreeks** | ECS_E_INVALID_AAD_TENANT |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op omdat Azure File Sync op dit moment geen ondersteuning biedt voor het verplaatsen van het abonnement naar een andere Azure Active Directory-tenant.
+Zorg ervoor dat u de nieuwste Azure File Sync-agent hebt. Vanaf agent V10 toevoegen biedt Azure File Sync ondersteuning voor het verplaatsen van het abonnement naar een andere Azure Active Directory-Tenant.
  
-Kies een of meer van de volgende opties om dit probleem op te lossen:
-
-- **Optie 1 (aanbevolen)**: Verplaats het abonnement terug naar de oorspronkelijke Azure Active Directory Tenant
-- **Optie 2**: de huidige synchronisatie groep verwijderen en opnieuw maken. Als opslag in cloudlagen zijn ingeschakeld op het servereindpunt, verwijdert u de synchronisatiegroep en voert u vervolgens de stappen uit die worden beschreven in de sectie [Opslag in cloudlagen]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) om de zwevende bestanden uit de cloudlagen te verwijderen voordat u de synchronisatiegroepen opnieuw maakt. 
+Zodra u de nieuwste versie van de agent hebt, moet u de toepassing micro soft. StorageSync toegang geven tot het opslag account (Zie [controleren of Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)).
 
 <a id="-2134364010"></a>**De synchronisatie is mislukt omdat de firewall en de uitzonde ring voor het virtuele netwerk niet zijn geconfigureerd**  
 
@@ -998,7 +995,7 @@ if ($fileShare -eq $null) {
 
     Als de service **micro soft. StorageSync** of **Hybrid file sync** niet in de lijst wordt weer gegeven, voert u de volgende stappen uit:
 
-    - Klik op **Add**.
+    - Klik op **Toevoegen**.
     - Selecteer in het veld **rol** de optie **lezer en gegevens toegang**.
     - Typ **micro soft. StorageSync**in het veld **selecteren** , selecteer de rol en klik op **Opslaan**.
 
@@ -1248,7 +1245,25 @@ Als u problemen ondervindt met Azure File Sync op een server, moet u eerst de vo
 3. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
     - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
-Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit:
+Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit en verzendt u de zip-bestands uitvoer naar de ondersteunings technicus die aan uw aanvraag is toegewezen voor verdere diagnose.
+
+Voor Agent versie V11 en hoger:
+
+1. Open een Power shell-venster met verhoogde bevoegdheden en voer de volgende opdrachten uit (druk na elke opdracht op ENTER):
+
+    > [!NOTE]
+    >AFSDiag maakt de uitvoermap en een tijdelijke map daarin voordat de logboeken worden verzameld en verwijdert de tijdelijke map na de uitvoering. Geef een uitvoer locatie op die geen gegevens bevat.
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. Reproduceer het probleem. Wanneer u klaar bent, voert u **D**in.
+3. Een zip-bestand dat Logboeken en tracerings bestanden bevat, wordt opgeslagen in de uitvoermap die u hebt opgegeven. 
+
+Voor Agent versie V10 toevoegen en eerder:
 1. Maak een map waar de uitvoer van de AFSDiag wordt opgeslagen (bijvoorbeeld C:\Output).
     > [!NOTE]
     >AFSDiag verwijdert alle inhoud in de uitvoermap voordat logboeken worden verzameld. Geef een uitvoer locatie op die geen gegevens bevat.
@@ -1265,7 +1280,7 @@ Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit:
 5. Reproduceer het probleem. Wanneer u klaar bent, voert u **D**in.
 6. Een zip-bestand dat Logboeken en tracerings bestanden bevat, wordt opgeslagen in de uitvoermap die u hebt opgegeven.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)
 - [Veelgestelde vragen over Azure Files](storage-files-faq.md)
 - [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)

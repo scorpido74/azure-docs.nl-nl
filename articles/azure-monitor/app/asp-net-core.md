@@ -2,19 +2,19 @@
 title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Docs
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145265"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652778"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
 In dit artikel wordt beschreven hoe u Application Insights inschakelt voor een [ASP.net core](https://docs.microsoft.com/aspnet/core) toepassing. Wanneer u de instructies in dit artikel hebt voltooid, verzamelt Application Insights aanvragen, afhankelijkheden, uitzonde ringen, prestatie meter items, heartbeats en logboeken van uw ASP.NET Core toepassing.
 
-Het voor beeld dat hier wordt gebruikt, is een [MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) - `netcoreapp2.2`toepassing die gericht is. U kunt deze instructies Toep assen op alle ASP.NET Core-toepassingen.
+Het voor beeld dat hier wordt gebruikt, is een [MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) - `netcoreapp3.0`toepassing die gericht is. U kunt deze instructies Toep assen op alle ASP.NET Core-toepassingen.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -28,7 +28,7 @@ Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/M
 * **IDE**: Visual Studio, VS code of opdracht regel.
 
 > [!NOTE]
-> Als u ASP.NET Core 3. X gebruikt in combi natie met Application Insights, gebruikt u de [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) -versie of hoger. Dit is de enige versie die ASP.NET Core 3. X ondersteunt.
+> ASP.NET Core 3. X vereist [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) of hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -109,7 +109,9 @@ Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/M
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    `APPINSIGHTS_INSTRUMENTATIONKEY` Geeft doorgaans de instrumentatie sleutel voor toepassingen die zijn geïmplementeerd op Azure web apps.
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`wordt doorgaans gebruikt in [Azure web apps](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net), maar kan ook worden gebruikt op alle plaatsen waar deze SDK wordt ondersteund. (Als u de bewaking van web-apps met code uitvoert, is deze indeling vereist als u geen verbindings reeksen gebruikt.)
+
+    In plaats van het instellen van instrumentatie sleutels kunt u nu ook [verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)gebruiken.
 
     > [!NOTE]
     > Een instrumentatie sleutel die is opgegeven in code WINS via de `APPINSIGHTS_INSTRUMENTATIONKEY`omgevings variabele, die WINS over andere opties overneemt.
@@ -209,7 +211,7 @@ Volledige lijst met instellingen in`ApplicationInsightsServiceOptions`
 |EnableAzureInstanceMetadataTelemetryModule   |  Inschakelen/uitschakelen`AzureInstanceMetadataTelemetryModule` | waar
 |EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
 |EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartBeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartbeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
 |AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
 |RequestCollectionOptions.TrackExceptions | Rapportage van niet-verwerkte uitzonderings tracering door de verzamelings module voor aanvragen in-of uitschakelen. | False in netstandard 2.0 (omdat uitzonde ringen worden bijgehouden met ApplicationInsightsLoggerProvider), anders waar.
 

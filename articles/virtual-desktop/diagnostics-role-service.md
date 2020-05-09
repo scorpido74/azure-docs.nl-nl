@@ -5,153 +5,51 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cffc6393ef6f5c1a33be615d9d5d4b8729ab711f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254259"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611854"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problemen identificeren en diagnosticeren
 
-Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
+>[!IMPORTANT]
+>Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>
+> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-* Activiteiten voor feed-abonnementen: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met hun feed via Microsoft Extern bureaublad toepassingen.
-* Verbindings activiteiten: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met een bureau blad of RemoteApp via Microsoft Extern bureaublad toepassingen.
-* Beheer activiteiten: de beheerder activeert deze activiteiten wanneer ze beheer bewerkingen uitvoeren op het systeem, zoals het maken van hostgroepen, het toewijzen van gebruikers aan app-groepen en het maken van roltoewijzingen.
+Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Zie [log Analytics gebruiken voor de functie diagnostische gegevens voor](diagnostics-log-analytics.md)meer informatie over de diagnostische mogelijkheden van Windows virtueel bureau blad.
   
 Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de eind gebruiker problemen met de netwerk verbinding ondervindt.
-
-Als u aan de slag wilt gaan, [downloadt en importeert u de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-## <a name="diagnose-issues-with-powershell"></a>Problemen vaststellen met Power shell
-
-De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haken, zoals `<tenantName>`, moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
-
->[!IMPORTANT]
->De functie diagnostische gegevens is voor het oplossen van problemen met één gebruiker. Alle query's die gebruikmaken van Power shell moeten de para meters *-username* of *-ActivityID* bevatten. Gebruik Log Analytics voor bewakings mogelijkheden. Zie [log Analytics voor de diagnostische functie gebruiken](diagnostics-log-analytics.md) voor meer informatie over het verzenden van diagnostische gegevens naar uw werk ruimte. 
-
-### <a name="filter-diagnostic-activities-by-user"></a>Diagnostische activiteiten filteren op gebruiker
-
-De para meter **-username** retourneert een lijst met diagnostische activiteiten die door de opgegeven gebruiker zijn gestart, zoals wordt weer gegeven in de volgende voor beeld-cmdlet.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-De para meter **-username** kan ook worden gecombineerd met andere optionele filter parameters.
-
-### <a name="filter-diagnostic-activities-by-time"></a>Diagnostische activiteiten filteren op tijd
-
-U kunt de geretourneerde lijst met diagnostische activiteiten filteren met de para meter **-StartTime** en **-EndTime** . De para meter **-StartTime** retourneert een lijst met diagnostische activiteiten vanaf een specifieke datum, zoals wordt weer gegeven in het volgende voor beeld.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
-```
-
-De para meter **-EndTime** kan worden toegevoegd aan een cmdlet met de para meter **-StartTime** om een specifieke periode op te geven waarvoor u resultaten wilt ontvangen. De volgende voor beeld-cmdlet retourneert een lijst met diagnostische activiteiten van 1 augustus tot en met 10 augustus.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-De para meters **-StartTime** en **-EndTime** kunnen ook worden gecombineerd met andere optionele filter parameters.
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnostische activiteiten filteren op activiteitstype
-
-U kunt ook diagnostische activiteiten filteren op activiteitstype met de para meter **-Activity** type. Met de volgende cmdlet wordt een lijst met eind gebruikers verbindingen geretourneerd:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
-```
-
-Met de volgende cmdlet wordt een lijst met beheerders beheer taken geretourneerd:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-De cmdlet **Get-RdsDiagnosticActivities** biedt momenteel geen ondersteuning voor het opgeven van feeds als activity type.
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnostische activiteiten filteren op resultaat
-
-U kunt de geretourneerde lijst met diagnostische activiteiten filteren op uitkomst met de para meter **-Result** . Met de volgende voorbeeld cmdlet wordt een lijst met geslaagde diagnostische activiteiten geretourneerd.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
-```
-
-Met de volgende voor beeld-cmdlet wordt een lijst met mislukte diagnostische activiteiten geretourneerd.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-De para meter **-resultaat** kan ook worden gecombineerd met andere optionele filter parameters.
-
-### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Een specifieke diagnostische activiteit ophalen op basis van de activiteits-ID
-
-De para meter **-ActivityId** retourneert een specifieke diagnostische activiteit als deze bestaat, zoals wordt weer gegeven in de volgende voor beeld-cmdlet.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
-```
-
-### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Fout berichten weer geven voor een mislukte activiteit op activiteits-ID
-
-Als u de fout berichten voor een mislukte activiteit wilt weer geven, moet u de cmdlet uitvoeren met de para meter **-detail** . U kunt de lijst met fouten weer geven door de **Select-object-** cmdlet uit te voeren.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
-```
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>Gedetailleerde diagnostische activiteiten ophalen
-
-De para meter **-detail** bevat aanvullende informatie voor elke geretourneerde diagnostische activiteit. De notatie voor elke activiteit is afhankelijk van het type activiteit. De para meter **-detail** kan worden toegevoegd aan een **Get-RdsDiagnosticActivities-** query, zoals wordt weer gegeven in het volgende voor beeld.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
-```
 
 ## <a name="common-error-scenarios"></a>Veelvoorkomende foutscenario's
 
 Fout scenario's worden intern gecategoriseerd voor de service en extern naar virtueel bureau blad van Windows.
 
-* Intern probleem: Hiermee geeft u scenario's op die niet kunnen worden verholpen door de Tenant beheerder en moeten worden omgezet als ondersteunings probleem. Wanneer u feedback geeft via de [technische community van het Windows-bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), neemt u de activiteits-id en het geschatte tijds bestek op wanneer het probleem is opgetreden.
-* Extern probleem: gerelateerd aan scenario's die door de systeem beheerder kunnen worden verholpen. Dit zijn externe virtuele Bureau bladen van Windows.
+* Intern probleem: Hiermee geeft u scenario's op die niet door de klant kunnen worden verminderd en moeten worden omgezet als een ondersteunings probleem. Wanneer u feedback geeft via de [technische community van het Windows-bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), neemt u de correlatie-id en het geschatte tijds bestek op wanneer het probleem is opgetreden.
+* Extern probleem: houdt rekening met scenario's die door de klant kunnen worden verminderd. Dit zijn externe virtuele Bureau bladen van Windows.
 
 De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uitgevoerd.
 
 >[!NOTE]
 >Deze lijst bevat de meest voorkomende fouten en wordt bijgewerkt op een gewone uitgebracht. Om ervoor te zorgen dat u de meest recente informatie hebt, moet u dit artikel ten minste één keer per maand opnieuw controleren.
 
-### <a name="external-management-error-codes"></a>Externe beheer fout codes
+## <a name="management-errors"></a>Beheer fouten
 
-|Numerieke code|Foutcode|Voorgestelde oplossing|
-|---|---|---|
-|3|UnauthorizedAccess|De gebruiker die de Power shell-cmdlet voor beheer heeft geprobeerd uit te voeren, heeft geen machtigingen om dit te doen of heeft een niet-getypte gebruikers naam.|
-|1000|TenantNotFound|De naam van de Tenant die u hebt ingevoerd, komt niet overeen met bestaande tenants. Controleer de naam van de Tenant voor type fouten en probeer het opnieuw.|
-|1006|TenantCannotBeRemovedHasSessionHostPools|U kunt een Tenant niet verwijderen zolang deze objecten bevat. Verwijder eerst de Session Host-Pools en probeer het opnieuw.|
-|2000|HostPoolNotFound|De naam van de hostgroep die u hebt opgegeven, komt niet overeen met de bestaande hostgroepen. Controleer de naam van de hostgroep op typfouten en probeer het opnieuw.|
-|2005|HostPoolCannotBeRemovedHasApplicationGroups|U kunt een hostgroep niet verwijderen zolang deze objecten bevat. Verwijder eerst alle app-groepen in de hostgroep.|
-|2004|HostPoolCannotBeRemovedHasSessionHosts|Verwijder eerst alle sessies hosts voordat u de groep Session Host verwijdert.|
-|5001|SessionHostNotFound|De sessiemap die u hebt opgevraagd, is mogelijk offline. Controleer de status van de hostgroep.|
-|5008|SessionHostUserSessionsExist |U moet alle gebruikers op de sessiehost afmelden voordat u de beoogde beheer activiteit uitvoert.|
-|6000|AppGroupNotFound|De naam van de app-groep die u hebt ingevoerd, komt niet overeen met de bestaande app-groepen. Controleer de naam van de app-groep op type fouten en probeer het opnieuw.|
-|6022|RemoteAppNotFound|De opgegeven RemoteApp-naam komt niet overeen met de RemoteApps. Controleer de RemoteApp-naam voor type fouten en probeer het opnieuw.|
-|6010|PublishedItemsExist|De naam van de resource die u wilt publiceren, is hetzelfde als een resource die al bestaat. Wijzig de resource naam en probeer het opnieuw.|
-|7002|NameNotValidWhiteSpace|Gebruik geen spaties in de naam.|
-|8000|InvalidAuthorizationRoleScope|De naam van de rol die u hebt ingevoerd, komt niet overeen met de namen van bestaande rollen. Controleer de rolnaam voor type fouten en probeer het opnieuw. |
-|8001|UserNotFound |De gebruikers naam die u hebt ingevoerd, komt niet overeen met bestaande gebruikers namen. Controleer de naam voor type fouten en probeer het opnieuw.|
-|8005|UserNotFoundInAAD |De gebruikers naam die u hebt ingevoerd, komt niet overeen met bestaande gebruikers namen. Controleer de naam voor type fouten en probeer het opnieuw.|
-|8008|TenantConsentRequired|Volg de instructies [hier](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) om toestemming te geven voor uw Tenant.|
+|Foutbericht|Voorgestelde oplossing|
+|---|---|
+|Kan de registratie sleutel niet maken |Registratie token kan niet worden gemaakt. Probeer het opnieuw te maken met een kortere verloop tijd (tussen 1 uur en 1 maand). |
+|Kan de registratie sleutel niet verwijderen|Het registratie token kan niet worden verwijderd. Probeer de app opnieuw te verwijderen. Als het nog steeds niet werkt, gebruikt u Power shell om te controleren of het token nog steeds aanwezig is. Als dat het geval is, kunt u deze verwijderen met Power shell.|
+|Kan de verwerkings modus voor de sessie-host niet wijzigen |De afvoer modus kan niet worden gewijzigd op de VM. Controleer de status van de virtuele machine. Als de virtuele machine niet beschikbaar is, kan de afvoer modus niet worden gewijzigd.|
+|Kan geen verbinding met gebruikers sessies verbreken |De verbinding van de gebruiker met de virtuele machine is mislukt. Controleer de status van de virtuele machine. Als de virtuele machine niet beschikbaar is, kan de gebruikers sessie niet worden verbroken. Als de virtuele machine beschikbaar is, controleert u de status van de gebruikers sessie om te zien of de verbinding is verbroken. |
+|Kan niet alle gebruiker (s) in de sessiehost afmelden |Kan de gebruikers niet aanmelden bij de virtuele machine. Controleer de status van de virtuele machine. Als deze niet beschikbaar is, kunnen gebruikers niet worden afgemeld. Controleer de status van de gebruikers sessie om te zien of ze al zijn afgemeld. U kunt afmelden met Power shell afdwingen. |
+|Kan de toewijzing van de gebruiker aan de toepassings groep niet opheffen|Kan de publicatie van een app-groep voor een gebruiker niet ongedaan maken. Controleer of er een gebruiker beschikbaar is in azure AD. Controleer of de gebruiker deel uitmaakt van een gebruikers groep waarvan de app-groep wordt gepubliceerd. |
+|Er is een fout opgetreden bij het ophalen van de beschik bare locaties |Controleer de locatie van de virtuele machine die wordt gebruikt in de wizard hostgroep maken. Als de installatie kopie niet beschikbaar is op die locatie, voegt u een installatie kopie toe op die locatie of kiest u een andere VM-locatie. |
 
 ### <a name="external-connection-error-codes"></a>Fout codes voor externe verbindingen
 
@@ -162,7 +60,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 |-2146233088|ConnectionFailedClientDisconnect|Als deze fout regel matig wordt weer geven, controleert u of de computer van de gebruiker is verbonden met het netwerk.|
 |-2146233088|ConnectionFailedNoHealthyRdshAvailable|De sessie waarmee de host-gebruiker probeerde verbinding te maken, is niet in orde. Fouten opsporen in de virtuele machine.|
 |-2146233088|ConnectionFailedUserNotAuthorized|De gebruiker is niet gemachtigd om toegang te krijgen tot de gepubliceerde app of het bureau blad. De fout kan worden weer gegeven nadat de beheerder gepubliceerde resources heeft verwijderd. Vraag de gebruiker om de feed in de Extern bureaublad toepassing te vernieuwen.|
-|2|FileNotFound|De toepassing waartoe de gebruiker toegang probeerde te krijgen, is onjuist geïnstalleerd of ingesteld op een onjuist pad.|
+|2|FileNotFound|De toepassing waartoe de gebruiker toegang probeerde te krijgen, is onjuist geïnstalleerd of ingesteld op een onjuist pad.<br><br>Bij het publiceren van nieuwe apps terwijl de gebruiker een actieve sessie heeft, heeft de gebruiker geen toegang tot deze app. De sessie moet worden afgesloten en opnieuw worden gestart voordat de gebruiker toegang kan krijgen tot de app. |
 |3|InvalidCredentials|De gebruikers naam of het wacht woord die de gebruiker heeft ingevoerd, komt niet overeen met de bestaande gebruikers namen of wacht woorden. Controleer de referenties voor type fouten en probeer het opnieuw.|
 |8|ConnectionBroken|De verbinding tussen de client en de gateway of server is verbroken. Er is geen actie vereist, tenzij deze onverwacht plaatsvindt.|
 |14|UnexpectedNetworkDisconnect|De verbinding met het netwerk is verbroken. Vraag de gebruiker om opnieuw verbinding te maken.|

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204216"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929278"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u kunt doen op de Windows-Data Science Virtual Machine
 
@@ -68,7 +68,7 @@ De Jupyter Notebook biedt een op een browser gebaseerde IDE voor het verkennen e
 
 Als u de Jupyter Notebook wilt starten, selecteert u het pictogram **Jupyter notebook** in het menu **Start** of op het bureau blad. In de DSVM-opdracht prompt kunt u ook de opdracht ```jupyter notebook``` uitvoeren vanuit de directory waarin u bestaande notitie blokken hebt of waar u nieuwe notitie blokken wilt maken.  
 
-Nadat u Jupyter hebt gestart, ziet u een map met enkele voor beelden van notebooks die vooraf zijn verpakt in de DSVM. U kunt nu:
+Nadat u Jupyter hebt gestart, gaat u `/notebooks` naar de map voor bijvoorbeeld notebooks die vooraf zijn verpakt in de DSVM. U kunt nu:
 
 * Selecteer het notitie blok om de code te zien.
 * Voer elke cel uit door SHIFT + ENTER te selecteren.
