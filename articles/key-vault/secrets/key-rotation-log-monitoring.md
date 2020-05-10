@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430251"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995983"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault instellen met de functie voor het draaien en controleren van sleutels
 
@@ -85,23 +85,35 @@ Eerst moet u uw toepassing registreren bij Azure Active Directory. Vertel vervol
 > [!NOTE]
 > Uw toepassing moet worden gemaakt op dezelfde Azure Active Directory Tenant als uw sleutel kluis.
 
-1. Open **Azure Active Directory**.
-2. Selecteer **app-registraties**. 
-3. Selecteer **nieuwe toepassing registreren** om een toepassing toe te voegen aan Azure Active Directory.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek. Stel uw portal-sessie in op de gewenste Azure AD-Tenant.
+1. Zoek naar **Azure Active Directory** en selecteer deze optie. Selecteer **App-registraties** onder **Beheren**.
+1. Selecteer **nieuwe registratie**.
+1. In **een toepassing registreren**voert u een zinvolle toepassings naam in om weer te geven voor gebruikers.
+1. Geef als volgt op wie de toepassing kan gebruiken:
 
-    ![Toepassingen openen in Azure Active Directory](../media/keyvault-keyrotation/azure-ad-application.png)
+    | Ondersteunde accounttypen | Beschrijving |
+    |-------------------------|-------------|
+    | **Alleen accounts in deze organisatiemap** | Selecteer deze optie als u een LOB-toepassing (Line-Of-Business) bouwt. Deze optie is niet beschikbaar als u de toepassing niet registreert in een directory.<br><br>Deze optie wordt alleen toegewezen aan Azure AD met één tenant.<br><br>Deze optie is standaard ingeschakeld, tenzij u de app buiten een directory registreert. In gevallen waarbij de app is geregistreerd buiten een map, is de standaardinstelling Azure AD met meerdere tenants en persoonlijke Microsoft-accounts. |
+    | **Accounts in elke organisatiemap** | Selecteer deze optie als u alle zakelijke klanten en onderwijsinstellingen wilt bereiken.<br><br>Deze optie wordt alleen toegewezen aan Azure AD met meerdere tenants.<br><br>Als u de app als alleen Azure AD hebt geregistreerd, kunt u deze bijwerken naar Azure AD multi tenant en teruggaan naar een enkele Tenant via de **verificatie** pagina. |
+    | **Accounts in elke organisatiemap en persoonlijke Microsoft-accounts** | Selecteer deze optie om de breedste groep klanten te bereiken.<br><br>Deze optie wordt toegewezen aan Azure AD met meerdere tenants en persoonlijke Microsoft-accounts.<br><br>Als u de app als Azure AD-multi tenant en persoonlijke micro soft-accounts hebt geregistreerd, kunt u deze instelling niet wijzigen in de gebruikers interface. In plaats hiervan moet u de editor voor het toepassingsmanifest gebruiken om de ondersteunde accounttypen te wijzigen. |
 
-4. Laat het toepassings type onder **maken**staan als **Web-app/API** en geef uw toepassing een naam. Geef uw toepassing een **aanmeldings-URL**. Deze URL kan alles zijn wat u wilt voor deze demo.
+1. Onder **omleidings-URI (optioneel)** selecteert u het type app dat u wilt maken: **Web** of **open bare client (mobiele & bureau blad)**. Voer vervolgens de omleidings-URI of antwoord-URL in voor uw toepassing.
 
-    ![Toepassings registratie maken](../media/keyvault-keyrotation/create-app.png)
+    * Geef voor webtoepassingen de basis-URL van de app op. `https://localhost:31544` kan bijvoorbeeld de URL zijn van een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden.
+    * Geef voor openbare clienttoepassingen de URI op die in Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor de toepassing, zoals `myapp://auth`.
 
-5. Nadat de toepassing is toegevoegd aan Azure Active Directory, wordt de pagina toepassing geopend. Selecteer **instellingen**en selecteer vervolgens **Eigenschappen**. Kopieer de waarde van de **toepassings-id** . U hebt deze nodig in latere stappen.
+1. Selecteer **Registreren** wanneer u klaar bent.
 
-Genereer vervolgens een sleutel voor uw toepassing, zodat deze kan communiceren met Azure Active Directory. Als u een sleutel wilt maken, selecteert u **sleutels** onder **instellingen**. Noteer de zojuist gegenereerde sleutel voor uw Azure Active Directory-toepassing. U hebt deze in een latere stap nodig. De sleutel is niet beschikbaar nadat u deze sectie verlaat. 
+    ![Toont het scherm om een nieuwe toepassing te registreren in de Azure Portal](../media/new-app-registration.png)
 
-![App-sleutels Azure Active Directory](../media/keyvault-keyrotation/create-key.png)
+Azure AD wijst een unieke toepassing of client ID toe aan uw app. De portal opent de **overzichts** pagina van uw toepassing. Noteer de waarde van de **toepassings-id (client)** .
 
-Voordat u aanroepen van uw toepassing in de sleutel kluis tot stand brengt, moet u de sleutel kluis informeren over uw toepassing en de bijbehorende machtigingen. De volgende opdracht maakt gebruik van de naam van de kluis en de toepassings-ID van uw Azure Active Directory-app om de **toepassing toegang te geven tot uw** sleutel kluis.
+Als u mogelijkheden wilt toevoegen aan uw toepassing, kunt u andere configuratie opties selecteren, zoals een huis stijl, certificaten en geheimen, API-machtigingen en meer.
+
+![Voor beeld van een nieuw geregistreerde app-overzichts pagina](../media//new-app-overview-page-expanded.png)
+
+Voordat u aanroepen van uw toepassing in de sleutel kluis tot stand brengt, moet u de sleutel kluis informeren over uw toepassing en de bijbehorende machtigingen. De volgende opdracht maakt gebruik van de naam van de kluis en de **toepassing (client)** van uw Azure Active Directory-app om de **toepassing toegang te geven tot uw** sleutel kluis.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get

@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983723"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995339"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
@@ -140,17 +140,19 @@ De aanvraag trigger verwacht standaard een POST-aanvraag. U kunt een andere meth
 
    ![Selecteer een aanvraag methode die wordt verwacht door de trigger](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>Para meters accepteren in eind punt-URL
+<a name="endpoint-url-parameters"></a>
 
-Als u wilt dat uw eind punt-URL parameter waarden accepteert via de URL van het eind punt, hebt u de volgende opties:
+## <a name="pass-parameters-through-endpoint-url"></a>Para meters door geven via eind punt-URL
+
+Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de volgende opties:
 
 * [Waarden accepteren via Get para meters](#get-parameters) of URL-para meters.
 
-  Deze waarden worden door gegeven als naam/waarde-paren bij het verzenden van de aanvraag naar de URL van het eind punt. Voor deze optie moet u de methode GET gebruiken in uw aanvraag trigger. In een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer met behulp van de `triggerOutputs()` functie in een expressie.
+  Deze waarden worden door gegeven als naam/waarde-paren in de URL van het eind punt. Voor deze optie moet u de methode GET gebruiken in uw aanvraag trigger. In een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer met behulp van de `triggerOutputs()` functie in een expressie.
 
 * [Accepteer waarden via een relatief pad](#relative-path) voor de para meters in de aanvraag trigger.
 
-  Deze waarden worden door gegeven bij het verzenden van de aanvraag naar de URL van het eind punt. U moet ook expliciet [de methode selecteren](#select-method) die de trigger verwacht. Bij een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer door rechtstreeks naar die uitvoer te verwijzen.
+  Deze waarden worden door gegeven via een relatief pad in de URL van het eind punt. U moet ook expliciet [de methode selecteren](#select-method) die de trigger verwacht. Bij een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer door rechtstreeks naar die uitvoer te verwijzen.
 
 <a name="get-parameters"></a>
 

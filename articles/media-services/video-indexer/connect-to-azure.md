@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 89360f062f0198a6b0c857395b4956caa1109e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097160"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995717"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
 Wanneer u een Video Indexer account maakt, kunt u kiezen voor een gratis proef account (waarbij u een bepaald aantal minuten voor de indexering krijgt) of een betaalde optie (waarbij u niet beperkt bent door het quotum). Met een gratis proef versie biedt Video Indexer tot 600 minuten gratis indexering voor website gebruikers en tot 2400 minuten gratis indexering naar API-gebruikers. Met de betaalde optie maakt u een Video Indexer-account dat is verbonden met uw Azure-abonnement en een Azure Media Services-account. U betaalt voor minuten en de bijbehorende kosten voor het Media-account.
 
 In dit artikel wordt beschreven hoe u een Video Indexer-account maakt dat is gekoppeld aan een Azure-abonnement en een Azure Media Services-account. Het onderwerp bevat stappen voor het maken van verbinding met Azure met behulp van de automatische stroom (standaard). Ook wordt uitgelegd hoe u hand matig verbinding maakt met Azure (Geavanceerd).
+
+Als u overstapt van een *proef versie* naar *betaald* video indexer account, kunt u ervoor kiezen om alle Video's en model aanpassingen te kopiëren naar het nieuwe account, zoals wordt beschreven in de [inhoud van de proef account importeren](#import-your-content-from-the-trial-account).
 
 ## <a name="prerequisites"></a>Vereisten
 

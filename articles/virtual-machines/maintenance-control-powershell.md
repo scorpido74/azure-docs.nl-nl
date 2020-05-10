@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136529"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996479"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Updates beheren met onderhouds beheer en Azure PowerShell
 
@@ -20,11 +20,17 @@ Met de onderhouds controle kunt u bepalen wanneer u updates wilt Toep assen op u
  
 ## <a name="enable-the-powershell-module"></a>De Power shell-module inschakelen
 
-Zorg ervoor `PowerShellGet` dat het up-to-date is.
+Zorg ervoor `PowerShellGet` dat het up-to-date is.    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+Installeer de `Az.Maintenance` Power shell-module.     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 Als u lokaal installeert, moet u ervoor zorgen dat u de Power shell-prompt opent als beheerder.
 

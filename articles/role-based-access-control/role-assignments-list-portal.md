@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983020"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996647"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
@@ -130,7 +130,7 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
 
 ## <a name="list-number-of-role-assignments"></a>Aantal roltoewijzingen weer geven
 
-U kunt Maxi maal **2000** roltoewijzingen in elk abonnement hebben. Het tabblad roltoewijzingen bevat een grafiek **waarin het aantal** roltoewijzingen voor het huidige abonnement wordt vermeld, zodat u deze limiet kunt bijhouden.
+U kunt Maxi maal **2000** roltoewijzingen in elk abonnement hebben. Deze limiet omvat roltoewijzingen voor het abonnement, de resource groep en de resource scopes. Het tabblad roltoewijzingen bevat een grafiek **waarin het aantal** roltoewijzingen voor het huidige abonnement wordt vermeld, zodat u deze limiet kunt bijhouden.
 
 ![Toegangs beheer-aantal roltoewijzingen grafiek](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

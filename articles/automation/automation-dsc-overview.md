@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Automation status configuratie
-description: Een overzicht van Azure Automation State Configuration (DSC), de voor waarden en bekende problemen
+description: Een overzicht van Azure Automation status configuratie, de voor waarden en bekende problemen
 keywords: Power shell DSC, desired state Configuration, Power shell DSC Azure
 services: automation
 ms.service: automation
@@ -10,20 +10,34 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406186"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993858"
 ---
-# <a name="state-configuration-overview"></a>Overzicht van State Configuration
+# <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
-Azure Automation status configuratie is een Azure-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations)kunt schrijven, beheren en compileren. De service importeert ook [DSC-resources](/powershell/scripting/dsc/resources/resources)en wijst configuraties toe aan doel knooppunten, allemaal in de Cloud.
+Azure Automation status configuratie is een Azure Configuration Management-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations) kunt schrijven, beheren en compileren voor knoop punten in elke Cloud of on-premises Data Center. De service importeert ook [DSC-resources](/powershell/scripting/dsc/resources/resources)en wijst configuraties toe aan doel knooppunten, allemaal in de Cloud. U kunt de configuratie van Azure Automation status in de Azure Portal openen door **State Configuration (DSC)** te selecteren onder **configuratie beheer**. 
+
+U kunt Azure Automation status configuratie gebruiken voor het beheren van verschillende computers:
+
+- Virtuele machines van Azure
+- Azure virtual machines (klassiek)
+- Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
+- Fysieke/virtuele Linux-machines on-premises, in azure of in een andere Cloud dan Azure
+
+Als u de configuratie van de computer niet wilt beheren vanuit de Cloud, kunt u de configuratie van Azure Automation status gebruiken als een eind punt voor alleen een rapport. Met deze functie kunt u configuratie (push) configuraties via DSC instellen en rapportage details weer geven in Azure Automation.
+
+> [!NOTE]
+> Het beheer van Azure-Vm's met de configuratie van Azure Automation status is gratis inbegrepen als de geïnstalleerde versie van de configuratie uitbreiding voor de gewenste Azure VM groter is dan 2,70. Zie de [**pagina met prijzen voor Automation**](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Waarom Azure Automation status configuratie gebruiken?
 
-Azure Automation status configuratie biedt verschillende voor delen ten opzichte van het gebruik van DSC buiten Azure.
+Azure Automation status configuratie biedt verschillende voor delen ten opzichte van het gebruik van DSC buiten Azure. Met deze service kan de schaal baarheid van duizenden machines snel en eenvoudig worden uitgebreid vanaf een centrale, veilige locatie. U kunt computers eenvoudig inschakelen, ze declaratieve configuraties toewijzen en rapporten weer geven waarin de naleving van elke computer wordt aangegeven met de gewenste status die u opgeeft.
+
+De Azure Automation State Configuration-service is van DSC wat Azure Automation runbooks zijn voor het uitvoeren van Power shell-scripts. Met andere woorden, op dezelfde manier als Azure Automation u bij het beheren van Power shell-scripts, kunt u ook DSC-configuraties beheren. 
 
 ### <a name="built-in-pull-server"></a>Ingebouwde pull-server
 
@@ -41,7 +55,7 @@ Knoop punten die worden beheerd met Azure Automation status configuratie, verzen
 
 ## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Vereisten voor het gebruik van Azure Automation status configuratie
 
-Houd rekening met de volgende vereisten wanneer u Azure Automation State configuratie voor DSC gebruikt.
+Houd rekening met de vereisten in deze sectie wanneer u Azure Automation status configuratie gebruikt.
 
 ### <a name="operating-system-requirements"></a>Vereisten voor het besturingssysteem
 
@@ -63,9 +77,9 @@ Voor knoop punten waarop Linux wordt uitgevoerd, ondersteunt de DSC Linux-extens
 
 ### <a name="dsc-requirements"></a>DSC-vereisten
 
-Voor alle Windows-knoop punten die worden uitgevoerd in azure, is [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) geïnstalleerd tijdens de onboarding. Voor knoop punten met Windows Server 2012 en Windows 7 is [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) ingeschakeld.
+Voor alle Windows-knoop punten die worden uitgevoerd in azure, wordt [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) geïnstalleerd wanneer machines zijn ingeschakeld. Voor knoop punten met Windows Server 2012 en Windows 7 is [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) ingeschakeld.
 
-Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell DSC voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) geïnstalleerd tijdens de onboarding.
+Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell DSC voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) geïnstalleerd wanneer machines zijn ingeschakeld.
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Configuratie van particuliere netwerken
 
@@ -80,7 +94,7 @@ Als u gebruikmaakt van DSC-resources die communiceren tussen knoop punten, zoals
 
 #### <a name="proxy-support"></a>Proxy ondersteuning
 
-Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en hoger. Deze optie wordt ingeschakeld door de waarden in te `ProxyURL` stellen `ProxyCredential` voor en in het- [configuratie script](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) dat wordt gebruikt voor het registreren van knoop punten.
+Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en hoger. Deze optie wordt ingeschakeld door de waarden in te `ProxyURL` stellen `ProxyCredential` voor en in het- [configuratie script](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) dat wordt gebruikt voor het registreren van knoop punten.
 
 >[!NOTE]
 >Azure Automation status configuratie biedt geen ondersteuning voor DSC-proxy voor eerdere versies van Windows.
@@ -93,7 +107,7 @@ Het is raadzaam om de hieronder vermelde adressen te gebruiken bij het definiër
 
 Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio, kunt u de communicatie beperken tot dat regionale Data Center. De volgende tabel bevat de DNS-record voor elke regio:
 
-| **Regio** | **DNS-record** |
+| **Deel** | **DNS-record** |
 | --- | --- |
 | VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
@@ -121,7 +135,7 @@ Gebruikers van Azure ExpressRoute moeten weten dat dit bestand wordt gebruikt om
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie aan de slag [met de configuratie van Azure Automation status](automation-dsc-getting-started.md)om aan de slag te gaan met DSC in azure Automation status configuratie.
-- Zie voor meer informatie over het voorbereiden van knoop punten op [onboarding machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).
+- Zie voor meer informatie over het inschakelen van knoop punten [computers inschakelen voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).
 - Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )(Engelstalig) voor een Power shell-cmdlet-verwijzing.

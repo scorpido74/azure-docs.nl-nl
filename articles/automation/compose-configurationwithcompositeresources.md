@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682932"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993778"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>DSC-configuraties in de Azure Automation status configuratie samen stellen met samengestelde resources
 
@@ -34,9 +34,9 @@ Voordat u een configuratie kunt toewijzen van samengestelde resources in de Azur
 1. In de stap **para meters** wordt de para meter voor elke samengestelde resource weer gegeven, zodat waarden kunnen worden opgegeven. Als een para meter een beschrijving heeft, wordt deze weer gegeven naast het veld para meter. Als een para meter van `PSCredential` het type is, geeft de vervolg keuzelijst een lijst met **referentie** objecten in het huidige Automation-account. Er is ook een optie voor het **toevoegen van referenties** beschikbaar. Als alle vereiste para meters zijn opgegeven, klikt u op **opslaan en compileren**.
    ![Scherm afbeelding van de stap para meters van de pagina opstellen van de configuratie](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Zodra de nieuwe configuratie is opgeslagen, wordt deze voor compilatie verzonden. De status van de compilatie taak kan worden weer gegeven zoals bij elke geïmporteerde configuratie. Zie [een compilatie taak weer geven](automation-dsc-getting-started.md#viewing-a-compilation-job)voor meer informatie.
+Zodra de nieuwe configuratie is opgeslagen, wordt deze voor compilatie verzonden. De status van de compilatie taak kan worden weer gegeven zoals bij elke geïmporteerde configuratie. Zie [een compilatie taak weer geven](automation-dsc-getting-started.md#view-a-compilation-job)voor meer informatie.
 
-Wanneer de compilatie is voltooid, wordt de nieuwe configuratie weer gegeven op het tabblad **gecompileerde configuraties** . Vervolgens kunt u de configuratie toewijzen aan een beheerd knoop punt met behulp van de stappen in [een knoop punt opnieuw toewijzen aan een andere knooppunt configuratie](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
+Wanneer de compilatie is voltooid, wordt de nieuwe configuratie weer gegeven op het tabblad **gecompileerde configuraties** . Vervolgens kunt u de configuratie toewijzen aan een beheerd knoop punt met behulp van de stappen in [een knoop punt opnieuw toewijzen aan een andere knooppunt configuratie](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration).
 
 ## <a name="next-steps"></a>Volgende stappen
 

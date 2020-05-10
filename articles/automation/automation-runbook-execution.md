@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927918"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994746"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -68,7 +68,7 @@ Uw runbooks moeten logica bevatten om te kunnen omgaan met [resources](https://d
 
 ## <a name="security"></a>Beveiliging
 
-Azure Automation gebruikt de [Azure Security Center (ASC)](https://docs.microsoft.com/azure/security-center/security-center-introAzure) voor de beveiliging van uw resources en het detecteren van inbreuken in Linux-systemen. Er wordt beveiliging gegeven in uw workloads, ongeacht of de resources zich in azure bevinden. Zie [Inleiding tot verificatie in azure Automation](automation-security-overview.md).
+Azure Automation gebruikt de [Azure Security Center (ASC)](../security-center/security-center-intro.md) voor de beveiliging van uw resources en het detecteren van inbreuken in Linux-systemen. Er wordt beveiliging gegeven in uw workloads, ongeacht of de resources zich in azure bevinden. Zie [Inleiding tot verificatie in azure Automation](automation-security-overview.md).
 
 Met ASC worden beperkingen ingesteld voor gebruikers die scripts kunnen uitvoeren, hetzij ondertekend of niet ondertekend, op een virtuele machine. Als u een gebruiker bent met hoofd toegang tot een VM, moet u de computer expliciet configureren met een digitale hand tekening of uitschakelen. Anders kunt u alleen een script uitvoeren om updates van het besturings systeem toe te passen na het maken van een Automation-account en de juiste functie in te scha kelen.
 

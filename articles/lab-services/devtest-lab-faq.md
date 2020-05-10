@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270782"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996902"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -209,6 +209,9 @@ Uw bestaande Vm's kopiëren naar DevTest Labs:
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Kan ik meerdere schijven aan mijn Vm's koppelen?
 
 Ja, u kunt meerdere schijven koppelen aan uw Vm's.
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Worden gen 2-afbeeldingen ondersteund door DevTest Labs?
+Nee. De DevTest Labs-service biedt geen ondersteuning voor [generatie 2-installatie kopieën](../virtual-machines/windows/generation-2.md). Als zowel versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, toont DevTest Labs alleen de versie 1 van de installatie kopie bij het maken van een virtuele machine. Er wordt geen installatie kopie weer geven als er slechts een versie van gen 2 beschikbaar is. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Als ik een installatie kopie van een Windows-besturings systeem wil gebruiken voor mijn tests, moet ik dan een MSDN-abonnement aanschaffen?
 Voer een van de volgende stappen uit om Windows-client installatie kopieën (Windows 7 of een hogere versie) te gebruiken voor het ontwikkelen of testen in Azure:

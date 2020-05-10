@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927969"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997014"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Problemen met Linux Update agent oplossen
 
@@ -82,14 +82,14 @@ Met deze controle wordt bepaald of de agent op meerdere werk ruimten rapporteert
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het Hybrid Runbook Worker-pakket heeft. Dit pakket is vereist om Updatebeheer te kunnen werken.
+Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het Hybrid Runbook Worker-pakket heeft. Dit pakket is vereist om Updatebeheer te kunnen werken. Zie voor meer informatie [de log Analytics-agent voor Linux wordt niet uitgevoerd](hybrid-runbook-worker.md#oms-agent-not-running).
+
+Updatebeheer downloadt Hybrid Runbook Worker pakketten van het eind punt van de bewerking. Als de Hybrid Runbook Worker niet wordt uitgevoerd en het [eind punt](#operations-endpoint) van de bewerking mislukt, kan de update dus mislukken.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker status
 
-Met deze controle wordt gecontroleerd of de Hybrid Runbook Worker op de computer wordt uitgevoerd. De volgende processen moeten aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd. Zie [problemen met de log Analytics-agent voor Linux oplossen](hybrid-runbook-worker.md#oms-agent-not-running)voor meer informatie.
+Met deze controle wordt gecontroleerd of de Hybrid Runbook Worker op de computer wordt uitgevoerd. De processen in het onderstaande voor beeld moeten aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd.
 
-> [!NOTE]
-> Als de Hybrid Runbook Worker niet wordt uitgevoerd en het eind punt van de bewerking is mislukt, kan de update mislukken. Updatebeheer downloadt de Hybrid worker-pakketten van het eind punt van de bewerking.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ Met deze controle wordt gecontroleerd of de computer toegang heeft tot internet.
 
 Met deze controle wordt bepaald of de Hybrid Runbook Worker goed kan communiceren met Azure Automation in de Log Analytics-werk ruimte.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ### <a name="operations-endpoint"></a>Eind punt van bewerkingen
 
-Met deze controle wordt bepaald of de agent goed kan communiceren met de taak runtime data service.
+Met deze controle wordt bepaald of de Log Analytics-agent correct kan communiceren met de taak runtime data service.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics eind punt 1
 

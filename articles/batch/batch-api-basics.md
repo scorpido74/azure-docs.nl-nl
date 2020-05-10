@@ -4,12 +4,12 @@ description: Informatie over de functies van de Batch-service en de API's ervan,
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: c983588bd3d135729541bf6bf51e5dc9d979ca84
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509190"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994270"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Grootschalige parallelle rekenoplossingen ontwikkelen met Batch
 
@@ -29,7 +29,7 @@ De volgende werkstroom op hoog niveau is gangbaar voor bijna alle toepassingen e
 1. Upload de **gegevensbestanden** die u wilt verwerken voor een [Azure-opslagaccount][azure_storage]. Batch bevat ingebouwde ondersteuning voor toegang tot Azure-blobopslag en uw taken kunnen deze bestanden downloaden naar [rekenknooppunten](#compute-node) wanneer de taken worden uitgevoerd.
 2. Upload de **toepassingsbestanden** die uw taken gaan uitvoeren. Deze bestanden kunnen binaire bestanden of scripts en ervan afhankelijke elementen zijn, en worden uitgevoerd door de taken in uw jobs. Uw taken kunnen deze bestanden downloaden uit uw opslagaccount, maar u kunt ook de functie voor [toepassingspakketten](#application-packages) van Batch voor het beheren en implementeren van toepassingen gebruiken.
 3. Maak een [pool](#pool) van reken knooppunten. Wanneer u een pool maakt, geeft u het aantal rekenknooppunten voor de pool, de grootte en het besturingssysteem op. Wanneer elke taak in de job wordt uitgevoerd, wordt deze voor uitvoering toegewezen aan een van de knooppunten in uw pool.
-4. Maak een [job](#job). Een job beheert een verzameling van taken. U koppelt elke job aan een specifieke pool waar de taken van die job worden uitgevoerd.
+4. Een [taak](#job)maken. Een job beheert een verzameling van taken. U koppelt elke job aan een specifieke pool waar de taken van die job worden uitgevoerd.
 5. Voeg [taken](#task) toe aan de job. Elke taak voert de toepassing of het script uit die door u is geüpload voor het verwerken van de uit uw opslagaccount gedownloade gegevensbestanden. Wanner een taak is voltooid, kunt u de uitvoer ervan uploaden naar Azure Storage.
 6. Bewaak de voortgang van de taak en haal de taakuitvoer op uit Azure Storage.
 
@@ -429,7 +429,7 @@ Een formule voor vergroten/verkleinen kan op de volgende metrische gegevens word
 * **Metrische gegevens voor resources** zijn gebaseerd op CPU-gebruik, bandbreedtegebruik, geheugengebruik en het aantal knooppunten.
 * **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid*.
 
-Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat het instellen van de `taskcompletion` toewijzing `retaineddata` van het knoop punt als of voor komt dat de grootte van de pool wordt gewijzigd totdat alle taken zijn voltooid, of dat alle taken retentiegerelateerde Peri Oden respectievelijk zijn verlopen.
+Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat bij `taskcompletion` het instellen van de `retaineddata` toewijzing van het knoop punt de optie voor het ongedaan maken van de grootte van de groep wordt ingesteld, totdat alle taken zijn voltooid of alle Bewaar perioden van de taak zijn verlopen.
 
 Zie [Automatically scale compute nodes in an Azure Batch pool](batch-automatic-scaling.md) (Rekenknooppunten in een Azure Batch-pool automatisch vergroten/verkleinen) voor meer informatie over het automatisch vergroten/verkleinen van een toepassing.
 
@@ -586,4 +586,4 @@ In situaties waarin een aantal taken mislukken, kan uw Batch-clienttoepassing of
 [rest_offline]: https://msdn.microsoft.com/library/azure/mt637904.aspx
 [rest_online]: https://msdn.microsoft.com/library/azure/mt637907.aspx
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

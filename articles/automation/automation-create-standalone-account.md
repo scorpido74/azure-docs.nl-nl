@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f291bdea2df67e07b1aca2dcc6326c3c9864ad2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392292"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995796"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
-In dit artikel wordt beschreven hoe u een Azure Automation-account maakt in de Azure Portal. U kunt het portal Automation-account gebruiken om te evalueren en meer te weten te komen over Automation zonder extra beheer oplossingen of integratie met Azure Monitor-logboeken te gebruiken. U kunt deze beheer oplossingen toevoegen of de integratie met Azure Monitor logboeken voor geavanceerde bewaking van runbook-taken op elk gewenst moment in de toekomst.
+In dit artikel wordt beschreven hoe u een Azure Automation-account maakt in de Azure Portal. U kunt het portal Automation-account gebruiken om te evalueren en meer te weten te komen over Automation zonder extra beheer functies te gebruiken of te integreren met Azure Monitor-Logboeken. U kunt beheer functies toevoegen of integreren met Azure Monitor logboeken voor een geavanceerde bewaking van runbook-taken op elk gewenst moment in de toekomst.
 
 Met een Automation-account kunt u runbooks verifiëren door resources te beheren in een Azure Resource Manager of het klassieke implementatie model. Met één Automation-account kunt u resources in alle regio's en abonnementen voor een bepaalde tenant beheren.
 

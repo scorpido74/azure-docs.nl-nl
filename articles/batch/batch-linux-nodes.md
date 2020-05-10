@@ -4,12 +4,12 @@ description: Meer informatie over het verwerken van uw parallelle Compute-werk b
 ms.topic: article
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7abdab248a6f19ec4d57018d65f883fdc838da21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31e7a9558590ee3c6943e7a50c67c93f713908c7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116788"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993830"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -33,7 +33,7 @@ De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtu
 
 Wanneer u een verwijzing naar een installatie kopie van een virtuele machine configureert, geeft u de eigenschappen van de installatie kopie van de virtuele machine op. De volgende eigenschappen zijn vereist wanneer u een verwijzing naar een installatie kopie van een virtuele machine maakt:
 
-| **Eigenschappen van afbeeldings verwijzing** | **Voorbeeld** |
+| **Eigenschappen van afbeeldings verwijzing** | **Hierbij** |
 | --- | --- |
 | Uitgever |Canonical |
 | Aanbieding |UbuntuServer |
@@ -308,5 +308,5 @@ De [python-code voorbeelden][github_samples_py] in de opslag plaats [Azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
 [py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

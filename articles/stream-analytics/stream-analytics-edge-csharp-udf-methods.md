@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598144"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994488"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken (preview-versie)
 
@@ -51,7 +51,7 @@ Voor Azure Stream Analytics waarden die in C# moeten worden gebruikt, moeten ze 
 |nvarchar (max) | tekenreeks |
 |datum/tijd | DateTime |
 |Record | Woordenboek\<teken reeks, object> |
-|Matrix | >\<van Matrix object |
+|Matrix | Object [] |
 
 Hetzelfde geldt wanneer gegevens moeten worden gemarshald van C# naar Azure Stream Analytics, wat gebeurt bij de uitvoer waarde van een UDF. In de volgende tabel ziet u welke typen worden ondersteund:
 
@@ -63,7 +63,7 @@ Hetzelfde geldt wanneer gegevens moeten worden gemarshald van C# naar Azure Stre
 |DateTime  |  dateTime   |
 |bouw  |  Record   |
 |object  |  Record   |
-|>\<van Matrix object  |  Matrix   |
+|Object []  |  Matrix   |
 |Woordenboek\<teken reeks, object>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -140,6 +140,43 @@ Vouw de sectie **Configuratie van de door de gebruiker gedefinieerde code** uit 
    |Container voor aangepaste code opslag|< uw opslag container >|
    |Assembly bron aangepaste code|Bestaande assembly pakketten uit de Cloud|
    |Assembly bron aangepaste code|UserCustomCode. zip|
+
+## <a name="user-logging"></a>Gebruikers logboek registratie
+Met het mechanisme voor logboek registratie kunt u aangepaste gegevens vastleggen terwijl een taak wordt uitgevoerd. U kunt logboek gegevens gebruiken om fouten op te sporen of de juistheid van de aangepaste code in realtime te evalueren.
+
+Met `StreamingContext` de-klasse kunt u Diagnostische gegevens `StreamingDiagnostics.WriteError` publiceren met behulp van de functie. De volgende code toont de interface die wordt weer gegeven door Azure Stream Analytics.
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext`wordt door gegeven als invoer parameter voor de UDF-methode en kan worden gebruikt in de UDF voor het publiceren van aangepaste logboek gegevens. In het onderstaande voor beeld `MyUdfMethod` definieert u een **gegevens** invoer, die wordt opgegeven door de query en een **context** invoer als de `StreamingContext`, die wordt opgegeven door de runtime-engine. 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+De `StreamingContext` waarde hoeft niet door de SQL-query worden door gegeven. Azure Stream Analytics biedt automatisch een context object als er een invoer parameter aanwezig is. Het gebruik van de `MyUdfMethod` wordt niet gewijzigd, zoals wordt weer gegeven in de volgende query:
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+U kunt logboek berichten openen via de [Diagnostische logboeken](data-errors.md).
 
 ## <a name="limitations"></a>Beperkingen
 De UDF-preview heeft momenteel de volgende beperkingen:

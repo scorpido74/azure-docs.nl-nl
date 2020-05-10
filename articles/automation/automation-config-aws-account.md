@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bf60d17af1d9866de6a62ac538fa0bd9a15ce52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92919d2e0cc7ca685d2b60a8e7a8cf20433bbefc
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113388"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994715"
 ---
 # <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>Azure Automation-runbooks verifiëren met Amazon Web Services
 
@@ -33,4 +33,4 @@ Nadat u uw AWS-beveiligingssleutels hebt gemaakt en gekopieerd, moet u een refer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees het oplossingsartikel [Implementatie van een virtuele machine in Amazon Web Services automatiseren](automation-scenario-aws-deployment.md) voor informatie over het maken van runbooks om taken in AWS te automatiseren.
+* Bekijk [de automatische implementatie van een virtuele machine in Amazon Web Services](automation-scenario-aws-deployment.md) voor meer informatie over het maken van runbooks om taken in AWS te automatiseren.

@@ -1,16 +1,14 @@
 ---
 title: Timers en herinneringen Reliable Actors
 description: Inleiding tot timers en herinneringen voor Service Fabric Reliable Actors, met inbegrip van de richt lijnen voor het gebruik ervan.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75639612"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996356"
 ---
 # <a name="actor-timers-and-reminders"></a>Actor timers en herinneringen
 Actors kunnen periodiek werk op zichzelf plannen door timers of herinneringen te registreren. Dit artikel laat u zien hoe u timers en herinneringen kunt gebruiken en hoe u de verschillen tussen deze time-out.
@@ -122,12 +120,17 @@ De volgende periode van de timer begint nadat de retour aanroep is voltooid. Dit
 
 Met de functie actors worden wijzigingen opgeslagen die zijn aangebracht in de status Manager van de actor wanneer de call back is voltooid. Als er een fout optreedt bij het opslaan van de status, wordt dat actor-object gedeactiveerd en wordt er een nieuw exemplaar geactiveerd.
 
+In tegens telling tot [herinneringen](#actor-reminders)kunnen timers niet worden bijgewerkt. Als `RegisterTimer` opnieuw wordt aangeroepen, wordt een nieuwe timer geregistreerd.
+
 Alle timers worden gestopt wanneer de actor wordt gedeactiveerd als onderdeel van de garbagecollection. Er worden geen timer retour aanroepen uitgevoerd. De actors-runtime bewaart ook geen informatie over de timers die werden uitgevoerd vóór het deactiveren. Het is aan de actor om timers te registreren die nodig zijn wanneer deze in de toekomst opnieuw wordt geactiveerd. Zie de sectie over [actor-garbage](service-fabric-reliable-actors-lifecycle.md)Collection voor meer informatie.
 
 ## <a name="actor-reminders"></a>Herinneringen voor Actors
-Herinneringen zijn een mechanisme voor het activeren van permanente retour aanroepen op een actor op opgegeven tijden. De functionaliteit is vergelijkbaar met timers. Maar in tegens telling tot timers worden herinneringen onder alle omstandigheden geactiveerd totdat de actor expliciet de registratie ervan ongedaan maakt of de actor expliciet is verwijderd. In het bijzonder worden herinneringen geactiveerd voor het deactiveren van actors en failovers, omdat de actors-runtime informatie persistent maakt over de herinneringen van de actor met de actor State-provider. Houd er rekening mee dat de betrouw baarheid van herinneringen is gekoppeld aan de gegarandeerde betrouw baarheid van de status provider van de actor. Dit betekent dat voor actors waarvan de status persistentie is ingesteld op none, de herinneringen na een failover niet worden geactiveerd. 
+Herinneringen zijn een mechanisme voor het activeren van permanente retour aanroepen op een actor op opgegeven tijden. De functionaliteit is vergelijkbaar met timers. Maar in tegens telling tot timers worden herinneringen onder alle omstandigheden geactiveerd totdat de actor expliciet de registratie ervan ongedaan maakt of de actor expliciet is verwijderd. In het bijzonder worden herinneringen geactiveerd voor het deactiveren van actors en failovers, omdat de actors-runtime informatie persistent maakt over de herinneringen van de actor met de actor State-provider. Ook als timers kunnen bestaande herinneringen worden bijgewerkt door de registratie methode (`RegisterReminderAsync`) opnieuw aan te roepen met dezelfde *aanmaningskop*.
 
-Als u een herinnering wilt registreren, roept een `RegisterReminderAsync` actor de methode aan die is gegeven in de basis klasse, zoals wordt weer gegeven in het volgende voor beeld:
+> [!NOTE]
+> De betrouw baarheid van herinneringen is gebonden aan de betrouw baarheid van de status van de actor State-provider. Dit betekent dat voor actors waarvan de status persistentie is ingesteld op *none*, de herinneringen na een failover niet worden geactiveerd.
+
+Als u een herinnering wilt registreren, roept een [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) actor de methode aan die is gegeven in de basis klasse, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 protected override async Task OnActivateAsync()

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891207"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996320"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -49,7 +49,7 @@ De volgende scherm afbeelding toont de kosten raming door gebruik te maken van d
 
 Wanneer u nieuwe resources aan uw werk ruimte toevoegt, keert u terug naar deze reken machine en voegt u hier dezelfde resource toe om uw kosten ramingen bij te werken.
 
-Hoewel de Enter prise Edition een preview-versie is, is er geen extra toeslag. Als de Enter prise-editie algemeen beschikbaar wordt, heeft deze een machine learning toeslag (voor training en dezicht).  [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie.
+Hoewel de Enter prise Edition een preview-versie is, is er geen extra toeslag. Als de Enter prise-editie algemeen beschikbaar wordt, heeft deze een toeslag (voor training en dezicht).  Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie.
 
 ## <a name="get-cost-alerts"></a>Kosten waarschuwingen ophalen
 
@@ -59,7 +59,7 @@ Maak [budgetten](../cost-management/tutorial-acm-create-budgets.md) om de kosten
 
 Als u resources met Azure Machine Learning gebruikt, worden er kosten in rekening gebracht. De kosten voor de Azure resource usage-eenheid variëren per tijds interval (seconden, minuten, uren en dagen) of per aanvraag eenheids gebruik. Zodra het gebruik van Azure Machine Learning wordt gestart, worden de kosten in rekening gebracht. Bekijk deze kosten in het deel venster [kosten analyse](../cost-management/quick-acm-cost-analysis.md) in de Azure Portal.
 
-Bekijk kosten in grafieken en tabellen voor verschillende tijds intervallen. Enkele voor beelden zijn dag, actueel, voor gaande maand en jaar. Bekijk ook de kosten voor budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends identificeren en zien waar overuitgave mogelijk is opgetreden. Als u budgetten hebt gemaakt, raadpleegt u waar ze zijn overschreden.  
+U kunt de kosten in grafieken en tabellen weer geven voor verschillende tijds intervallen. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen op meer weer gaven, kunt u uitgaven trends identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, raadpleegt u waar ze zijn overschreden.  
 
 Er wordt geen apart service gebied voor Machine Learning weer geven.  In plaats daarvan ziet u de verschillende resources die u hebt toegevoegd aan uw Machine Learning-werk ruimten.
 
@@ -67,18 +67,22 @@ Er wordt geen apart service gebied voor Machine Learning weer geven.  In plaats 
 
 Met gegevens die voortdurend worden gewijzigd, moet u snelle en gestroomlijnde model training en retraining volgen om nauw keurige modellen te onderhouden. Doorlopende training is echter een kost prijs, met name voor diepe leer modellen op Gpu's. 
 
-Azure Machine Learning gebruikers kunnen gebruikmaken van het beheerde Azure Machine Learning Compute-Cluster, ook wel AmlCompute genoemd. AmlCompute ondersteunt diverse GPU-en CPU-opties. De AmlCompute wordt intern gehost namens uw abonnement door Azure Machine Learning, maar biedt dezelfde zakelijke beveiliging, naleving en governance op Azure IaaS-Cloud schaal.
+Azure Machine Learning gebruikers kunnen gebruikmaken van het beheerde Azure Machine Learning Compute-Cluster, ook wel AmlCompute genoemd. AmlCompute ondersteunt diverse GPU-en CPU-opties. De AmlCompute wordt intern gehost namens uw abonnement door Azure Machine Learning. Het biedt dezelfde zakelijke beveiliging, naleving en governance op Azure IaaS-Cloud schaal.
 
 Omdat deze reken groepen zich bevinden in de IaaS-infra structuur van Azure, kunt u uw training implementeren, schalen en beheren met dezelfde beveiligings-en nalevings vereisten als de rest van uw infra structuur.  Deze implementaties worden uitgevoerd in uw abonnement en voldoen aan de regels voor beheer. Meer informatie over [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Trainings clusters configureren voor automatisch schalen
 
-Door clusters automatisch te schalen op basis van de vereisten van uw workload, kunt u uw kosten verlagen, zodat u alleen de gewenste functies gebruikt. AmlCompute-clusters zijn ontworpen om dynamisch automatisch te schalen op basis van de vereisten van uw werk belasting. Het cluster kan worden geschaald naar het maximum aantal knoop punten dat is ingericht en binnen het quotum dat is toegewezen aan het abonnement. Wanneer de uitvoering is voltooid, worden knoop punten door het cluster vrijgegeven en automatisch geschaald naar het toegewezen minimum aantal knoop punten.
+Door clusters automatisch te schalen op basis van de vereisten van uw workload, kunt u uw kosten verlagen, zodat u alleen de gewenste functies gebruikt.
 
-Naast het instellen van het minimale en maximum aantal knoop punten, verfijnt u de hoeveelheid tijd die het knoop punt inactief is voordat u omlaag schaalt. Standaard wordt de niet-actieve tijd vóór de schaal ingesteld op 120 seconden.
+AmlCompute-clusters zijn zodanig ontworpen dat ze dynamisch kunnen worden geschaald op basis van uw werk belasting. Het cluster kan worden geschaald naar het maximum aantal knoop punten dat u configureert. Wanneer de uitvoering is voltooid, worden knoop punten door het cluster vrijgegeven en geschaald naar het geconfigureerde minimum aantal knoop punten.
+
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
+
+U kunt ook configureren hoe lang het knoop punt inactief moet zijn voordat omlaag wordt geschaald. Standaard wordt de niet-actieve tijd vóór de schaal ingesteld op 120 seconden.
 
 + Als u minder iteratieve experimenten uitvoert, moet u deze tijd beperken om kosten te besparen. 
-+ Als u een sterk iteratief dev/test-experiment wilt uitvoeren, moet u dit mogelijk verhogen zodat u niet betaalt voor constante schaling omhoog en omlaag na elke wijziging in uw trainings script of-omgeving.
++ Als u een sterk iteratief dev/test-experiment wilt uitvoeren, moet u mogelijk de tijd verhogen zodat u niet betaalt voor constante schaling omhoog en omlaag na elke wijziging in uw trainings script of-omgeving.
 
 AmlCompute-clusters kunnen worden geconfigureerd voor uw gewijzigde werkbelasting vereisten in Azure Portal, met behulp van de [AMLCOMPUTE SDK-klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) [AmlCompute cli](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute), met de [rest api's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
@@ -88,24 +92,24 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 ## <a name="set-quotas-on-resources"></a>Quota instellen voor resources
 
-Net als andere Azure Compute-bronnen wordt AmlCompute geleverd met een inherente [quotum configuratie (of limiet)](how-to-manage-quotas.md#azure-machine-learning-compute). Dit quotum is van de VM-serie (bijvoorbeeld dv2-serie, NCv3-serie) en varieert per regio voor elk abonnement. Abonnementen beginnen met kleine standaard waarden om aan de slag te gaan, maar u kunt deze instelling gebruiken om te bepalen hoeveel Amlcompute resources beschikbaar zijn in uw abonnement. 
+AmlCompute wordt geleverd met een [quotum configuratie (of limiet)](how-to-manage-quotas.md#azure-machine-learning-compute). Dit quotum is van de VM-serie (bijvoorbeeld dv2-serie, NCv3-serie) en varieert per regio voor elk abonnement. Abonnementen beginnen met kleine standaard waarden om aan de slag te gaan, maar u kunt deze instelling gebruiken om te bepalen hoeveel Amlcompute resources beschikbaar zijn in uw abonnement. 
 
-Configureer ook het [quotum van het werkruimte niveau per VM-serie](how-to-manage-quotas.md#workspace-level-quota)voor elke werk ruimte in een abonnement. Zo kunt u meer gedetailleerde controle over de kosten die elke werk ruimte kan opleveren en bepaalde VM-families beperken. 
+Configureer ook het [quotum van het werkruimte niveau per VM-serie](how-to-manage-quotas.md#workspace-level-quota)voor elke werk ruimte in een abonnement. Als u dit doet, kunt u meer nauw keurigere controle over de kosten die elke werk ruimte mogelijk maakt en bepaalde VM-families beperken. 
 
-Als u quota's op het niveau van de werk ruimte wilt instellen, begint u in de [Azure Portal](https://portal.azure.com).  Selecteer een werk ruimte in uw abonnement en selecteer **gebruik en quota's** in het linkerdeel venster. Selecteer vervolgens het tabblad **Quota's configureren** om de quota's weer te geven. U hebt bevoegdheden nodig bij het abonnements bereik om dit quotum in te stellen, omdat het een instelling is die van invloed is op meerdere werk ruimten.
+Als u quota's op het niveau van de werk ruimte wilt instellen, begint u in de [Azure Portal](https://portal.azure.com).  Selecteer een werk ruimte in uw abonnement en selecteer **gebruik en quota's** in het linkerdeel venster. Selecteer vervolgens het tabblad **Quota's configureren** om de quota's weer te geven. U hebt bevoegdheden nodig voor het abonnements bereik om het quotum in te stellen, omdat het een instelling is die van invloed is op meerdere werk ruimten.
 
-## <a name="set-run-auto-termination-policies"></a>Beleid voor automatische beëindiging van uitvoering instellen 
+## <a name="set-run-autotermination-policies"></a>Beleid voor het uitvoeren van autoterminaters instellen 
 
-Configureer uw trainings uitvoeringen om de duur te beperken of om ze vroegtijdig te beëindigen in het geval van bepaalde voor waarden, met name wanneer u gebruikmaakt van de ingebouwde afstemming tuning of geautomatiseerde Machine Learning mogelijkheden van Azure Machine Learning. 
+In sommige gevallen moet u uw trainings uitvoeringen configureren om de duur te beperken of ze vroegtijdig te beëindigen. Als u bijvoorbeeld gebruikmaakt van de ingebouwde afstemming-afstemming of geautomatiseerde machine learning van Azure Machine Learning.
 
 Hier volgen enkele opties die u hebt:
 * Definieer een para meter `max_run_duration_seconds` in uw RunConfiguration om de maximale duur te bepalen dat een uitvoering kan worden uitgebreid naar de compute die u kiest (lokale of externe Cloud Compute).
-* Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Daarnaast kunt u ook para meters gebruiken `max_total_runs` , `max_duration_minutes` zoals of om de verschillende afstemming-sweeps verder te beheren.
+* Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Gebruik para meters zoals of `max_total_runs` `max_duration_minutes`als u afstemming-sweeps verder wilt beheren.
 * Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid `enable_early_stopping` in met behulp van de vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
 
 ## <a name="use-low-priority-vms"></a>Virtuele machines met lage prioriteit gebruiken
 
-Met Azure kunt u overtollige ongebruikte capaciteit gebruiken als virtuele machines met lage prioriteit voor virtuele-machine schaal sets, batch en de Machine Learning service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen raden we u aan om virtuele machines met lage prioriteit te gebruiken voor batch-workloads of waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor het afleiden van batches) of via het opnieuw opstarten (voor uitgebreide trainingen met controle punten).
+Met Azure kunt u overtollige ongebruikte capaciteit gebruiken als virtuele machines met lage prioriteit voor virtuele-machine schaal sets, batch en de Machine Learning service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen kunt u het beste virtuele machines met lage prioriteit gebruiken voor batch-workloads. U moet ze ook gebruiken waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor batch destorie) of via het opnieuw opstarten (voor diepe trainingen met controle punten).
 
 Virtuele machines met lage prioriteit hebben één quotum gescheiden van de toegewezen quota waarde, die wordt door de VM-serie. Meer informatie [over AmlCompute-quota's](how-to-manage-quotas.md).
 
@@ -131,9 +135,9 @@ Stel op een van de volgende manieren de prioriteit van de virtuele machine in:
 
 ## <a name="use-reserved-instances"></a>Gereserveerde instanties gebruiken
 
-Azure gereserveerde VM-instantie biedt een andere manier om grote besparingen te verkrijgen op reken resources door over te gaan op een termijn van één of drie jaar. Deze kortingen variëren van Maxi maal 72% van de betalen naar gebruik-prijzen en worden direct toegepast op uw maandelijkse Azure-factuur.
+Een andere manier om geld te besparen op reken resources is een door Azure gereserveerd VM-exemplaar. Met deze aanbieding gaat u naar een periode van één of drie jaar. Deze kortingen variëren van Maxi maal 72% van de betalen naar gebruik-prijzen en worden direct toegepast op uw maandelijkse Azure-factuur.
 
-Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Als u dus een gereserveerd exemplaar van één jaar of drie jaar hebt aangeschaft, worden de gereserveerde exemplaar korting automatisch toegepast op de beheerde Compute die wordt gebruikt binnen Azure Machine Learning zonder dat er extra instellingen hoeven te worden ingesteld van uw end.
+Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Als u een gereserveerde instantie van één jaar of drie jaar aanschaft, wordt automatisch korting toegepast op uw Azure Machine Learning beheerde reken kracht.
 
 
 ## <a name="next-steps"></a>Volgende stappen

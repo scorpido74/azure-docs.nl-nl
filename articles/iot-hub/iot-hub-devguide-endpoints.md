@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730316"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996957"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -54,9 +54,9 @@ In de volgende lijst worden de eind punten beschreven:
 
   * *Ontvang direct-methode aanvragen*. Een apparaat gebruikt dit eind punt om te Luis teren naar aanvragen van [directe methoden](iot-hub-devguide-direct-methods.md).
 
-    Deze eind punten worden beschikbaar gemaakt met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP is ook beschikbaar via [Websockets](https://tools.ietf.org/html/rfc6455) op poort 443.
+    Deze eind punten worden beschikbaar gemaakt met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP en MQTT zijn ook beschikbaar via [Websockets](https://tools.ietf.org/html/rfc6455) op poort 443.
 
-* **Service-eind punten**. Elke IoT hub biedt een set eind punten voor de back-end van uw oplossing om met uw apparaten te communiceren. Met één uitzonde ring worden deze eind punten alleen weer gegeven met behulp van het [AMQP](https://www.amqp.org/) -protocol. Het eind punt van de methode aanroep wordt weer gegeven via het HTTPS-protocol.
+* **Service-eind punten**. Elke IoT hub biedt een set eind punten voor de back-end van uw oplossing om met uw apparaten te communiceren. Met één uitzonde ring worden deze eind punten alleen weer gegeven met de protocollen [AMQP](https://www.amqp.org/) en AMQP over websockets. Het eind punt voor het aanroepen van de directe methode wordt weer gegeven via het HTTPS-protocol.
   
   * *Apparaat-naar-Cloud-berichten ontvangen*. Dit eind punt is compatibel met [Azure Event hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Een back-end-service kan deze gebruiken om de [apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-d2c.md) te lezen die door uw apparaten worden verzonden. U kunt naast dit ingebouwde eind punt aangepaste eind punten maken op uw IoT-hub.
   

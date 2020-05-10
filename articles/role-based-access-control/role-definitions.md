@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735535"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996618"
 ---
 # <a name="understand-azure-role-definitions"></a>Informatie over Azure Role-definities
 
@@ -28,7 +28,9 @@ Als u wilt weten hoe een Azure-rol werkt of als u uw eigen [aangepaste Azure-rol
 
 ## <a name="role-definition"></a>Roldefinitie ophalen
 
-Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die niet kunnen worden uitgevoerd of bewerkingen met betrekking tot onderliggende gegevens. Een roldefinitie heeft de volgende eigenschappen:
+Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die zijn uitgesloten van toegestane bewerkingen of bewerkingen met betrekking tot onderliggende gegevens.
+
+Hieronder ziet u een voor beeld van de eigenschappen in een roldefinitie wanneer deze worden weer gegeven met Azure PowerShell:
 
 ```
 Name
@@ -42,17 +44,33 @@ NotDataActions []
 AssignableScopes []
 ```
 
+Hieronder ziet u een voor beeld van de eigenschappen in een roldefinitie wanneer deze worden weer gegeven met de Azure Portal, Azure CLI of de REST API:
+
+```
+roleName
+name
+type
+description
+actions []
+notActions []
+dataActions []
+notDataActions []
+assignableScopes []
+```
+
+In de volgende tabel wordt beschreven wat de functie-eigenschappen betekenen.
+
 | Eigenschap | Beschrijving |
 | --- | --- |
-| `Name` | De weergave naam van de rol. |
-| `Id` | De unieke ID van de rol. |
-| `IsCustom` | Hiermee wordt aangegeven of dit een aangepaste rol is. Ingesteld op `true` voor aangepaste rollen. |
-| `Description` | De beschrijving van de rol. |
-| `Actions` | Een matrix met teken reeksen die de beheer bewerkingen specificeert die de rol kan uitvoeren. |
-| `NotActions` | Een matrix met teken reeksen die de beheer bewerkingen specificeert die zijn uitgesloten van `Actions`de toegestane. |
-| `DataActions` | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. |
-| `NotDataActions` | Een matrix met teken reeksen die de gegevens bewerkingen specificeert die worden uitgesloten van `DataActions`de toegestane waarde. |
-| `AssignableScopes` | Een matrix met teken reeksen die de bereiken specificeert waarvan de rol beschikbaar is voor toewijzing. |
+| `Name`</br>`roleName` | De weergave naam van de rol. |
+| `Id`</br>`name` | De unieke ID van de rol. |
+| `IsCustom`</br>`roleType` | Hiermee wordt aangegeven of dit een aangepaste rol is. Ingesteld op `true` of `CustomRole` voor aangepaste rollen. Ingesteld op `false` of `BuiltInRole` voor ingebouwde rollen. |
+| `Description`</br>`description` | De beschrijving van de rol. |
+| `Actions`</br>`actions` | Een matrix met teken reeksen die de beheer bewerkingen specificeert die de rol kan uitvoeren. |
+| `NotActions`</br>`notActions` | Een matrix met teken reeksen die de beheer bewerkingen specificeert die zijn uitgesloten van `Actions`de toegestane. |
+| `DataActions`</br>`dataActions` | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. |
+| `NotDataActions`</br>`notDataActions` | Een matrix met teken reeksen die de gegevens bewerkingen specificeert die worden uitgesloten van `DataActions`de toegestane waarde. |
+| `AssignableScopes`</br>`assignableScopes` | Een matrix met teken reeksen die de bereiken specificeert waarvan de rol beschikbaar is voor toewijzing. |
 
 ### <a name="operations-format"></a>Bewerkingen-indeling
 
@@ -72,7 +90,9 @@ Het `{action}` gedeelte van een bewerkings reeks geeft u het type bewerkingen op
 
 ### <a name="role-definition-example"></a>Voor beeld van Role definition
 
-Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
+Hier ziet u [de roldefinitie-rol zoals](built-in-roles.md#contributor) deze wordt weer gegeven in azure PowerShell en Azure cli. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
+
+De rol Inzender zoals weer gegeven in Azure PowerShell:
 
 ```json
 {
@@ -86,13 +106,47 @@ Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling
   "NotActions": [
     "Microsoft.Authorization/*/Delete",
     "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Authorization/elevateAccess/Action",
+    "Microsoft.Blueprint/blueprintAssignments/write",
+    "Microsoft.Blueprint/blueprintAssignments/delete"
   ],
   "DataActions": [],
   "NotDataActions": [],
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Rol Inzender zoals weer gegeven in azure CLI:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage everything except access to resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "permissions": [
+    {
+      "actions": [
+        "*"
+      ],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -116,6 +170,8 @@ Voor de ondersteuning van gegevens bewerkingen zijn nieuwe gegevens eigenschappe
 
 Hier ziet u de definitie van de rol van [BLOB-gegevens lezer](built-in-roles.md#storage-blob-data-reader) , die bewerkingen `Actions` bevat `DataActions` in de eigenschappen en. Met deze rol kunt u de BLOB-container en ook de onderliggende BLOB-gegevens lezen.
 
+Rol van gegevens lezer van opslag-BLOB zoals weer gegeven in Azure PowerShell:
+
 ```json
 {
   "Name": "Storage Blob Data Reader",
@@ -123,7 +179,8 @@ Hier ziet u de definitie van de rol van [BLOB-gegevens lezer](built-in-roles.md#
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
   "Actions": [
-    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
   ],
   "NotActions": [],
   "DataActions": [
@@ -133,6 +190,35 @@ Hier ziet u de definitie van de rol van [BLOB-gegevens lezer](built-in-roles.md#
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Rol van gegevens lezer van opslag-BLOB zoals weer gegeven in azure CLI:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage blob containers and data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Blob Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -159,9 +245,11 @@ Inzender voor Storage BLOB-gegevens
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
 Aangezien Anne een actie Joker teken`*`() heeft op een abonnements bereik, worden de machtigingen ervan overgenomen zodat ze alle beheer acties kunnen uitvoeren. Anja kan containers lezen, schrijven en verwijderen. Anja kan echter geen gegevens bewerkingen uitvoeren zonder extra stappen te nemen. Zo kan Anja de blobs in een container bijvoorbeeld standaard niet lezen. Om de blobs te lezen, zou Anne de toegangs sleutels voor opslag moeten ophalen en gebruiken om toegang te krijgen tot de blobs.
