@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335838"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004749"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
@@ -71,12 +71,12 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     > Domein namen met Joker tekens, `*.contoso.com` zoals worden ondersteund in alle lagen, behalve de laag verbruik.
 
     > [!TIP]
-    > U kunt het beste Azure Key Vault gebruiken voor het beheren van certificaten en het instellen hiervan op automatisch draaien.
+    > U kunt het beste [Azure Key Vault gebruiken voor het beheren van certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) en het instellen ervan op autorenew.
     > Als u Azure Key Vault gebruikt om het TLS/SSL-certificaat van het aangepaste domein te beheren, moet u ervoor zorgen dat het certificaat wordt ingevoegd in Key Vault [als een _certificaat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), niet als een _geheim_.
     >
     > Als u een TLS/SSL-certificaat wilt ophalen, moet API Management de lijst hebben en geheimen machtigingen krijgen voor de Azure Key Vault met het certificaat. Wanneer u Azure Portal gebruikt, worden alle benodigde configuratie stappen automatisch voltooid. Wanneer u opdracht regel Programma's of beheer-API gebruikt, moeten deze machtigingen hand matig worden verleend. Dit gebeurt in twee stappen. Gebruik eerst Managed Identities pagina op uw API Management-exemplaar om er zeker van te zijn dat de beheerde identiteit is ingeschakeld en noteer de principal-id die op die pagina wordt weer gegeven. Ten tweede geeft u de machtigingen lijst op en krijgt u een geheimen aan deze principal-id op het Azure Key Vault met het certificaat.
     >
-    > Als het certificaat is ingesteld op autorotate, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
+    > Als het certificaat is ingesteld op autorenew, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
 
 1. Klik op Toep assen.
 

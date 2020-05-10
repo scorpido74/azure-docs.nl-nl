@@ -1,0 +1,282 @@
+---
+title: Werken met JSON in Azure Cosmos DB
+description: Meer informatie over het opvragen en openen van geneste JSON-eigenschappen en het gebruik van speciale tekens in Azure Cosmos DB
+author: timsander1
+ms.service: cosmos-db
+ms.topic: conceptual
+ms.date: 05/08/2020
+ms.author: tisande
+ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006350"
+---
+# <a name="working-with-json-in-azure-cosmos-db"></a>Werken met JSON in Azure Cosmos DB
+
+In de SQL-API (core) van Azure Cosmos DB worden items opgeslagen als JSON. Het type systeem en expressies zijn beperkt tot het verwerken van JSON-typen. Zie voor meer informatie de [JSON-specificatie](https://www.json.org/).
+
+We beschrijven een aantal belang rijke aspecten van het werken met JSON:
+
+- JSON-objecten beginnen altijd met `{` een accolade links en eindigen met `}` een rechter accolade
+- U kunt JSON-eigenschappen binnen elkaar [nesten](#nested-properties)
+- Waarden van JSON-eigenschappen kunnen matrices zijn
+- JSON-eigenschapnamen zijn hoofdletter gevoelig
+- De naam van de JSON-eigenschap kan een wille keurige teken reeks waarde zijn (inclusief spaties of tekens die geen letters zijn)
+
+## <a name="nested-properties"></a>Geneste eigenschappen
+
+U kunt geneste JSON openen met een punt-accessor. U kunt geneste JSON-eigenschappen in uw query's op dezelfde manier gebruiken als u andere eigenschappen kunt gebruiken.
+
+Hier volgt een document met geneste JSON:
+
+```JSON
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+In dit geval zijn de `state`, `country`en `city` de eigenschappen genest binnen de `address` eigenschap.
+
+In het volgende voor beeld worden twee geneste eigenschappen geprojecteerd: `f.address.state` en. `f.address.city`
+
+```sql
+    SELECT f.address.state, f.address.city
+    FROM Families f
+    WHERE f.id = "AndersenFamily"
+```
+
+U ziet deze uitvoer:
+
+```json
+    [{
+      "state": "WA",
+      "city": "Seattle"
+    }]
+```
+
+## <a name="working-with-arrays"></a>Werken met matrices
+
+Naast geneste eigenschappen ondersteunt JSON ook matrices.
+
+Hier volgt een voor beeld van een-document met een matrix:
+
+```json
+{
+  "id": "WakefieldFamily",
+  "children": [
+      {
+        "familyName": "Merriam",
+        "givenName": "Jesse",
+        "gender": "female",
+        "grade": 1,
+      },
+      {
+        "familyName": "Miller",
+         "givenName": "Lisa",
+         "gender": "female",
+         "grade": 8
+      }
+  ],
+}
+```
+
+Wanneer u met matrices werkt, kunt u een specifiek element binnen de matrix openen door te verwijzen naar de positie:
+
+```sql
+SELECT *
+FROM Families f
+WHERE f.children[0].givenName = "Jesse"
+```
+
+In de meeste gevallen gebruikt u echter een [subquery](sql-query-subquery.md) of [Self-koppeling](sql-query-join.md) wanneer u met matrices werkt.
+
+Hier ziet u bijvoorbeeld een document waarin het dagelijkse saldo van de Bank rekening van een klant wordt weer gegeven.
+
+```json
+{
+  "id": "Contoso-Checking-Account-2020",
+  "balance": [
+      {
+        "checkingAccount": 1000,
+        "savingsAccount": 5000
+      },
+      {
+        "checkingAccount": 100,
+        "savingsAccount": 5000
+      },
+      {
+        "checkingAccount": -10,
+        "savingsAccount": 5000,
+      },
+      {
+        "checkingAccount": 5000,
+        "savingsAccount": 5000,
+      }
+         ...
+  ]
+}
+```
+
+Als u een query wilt uitvoeren die alle klanten heeft geleerd die op een bepaald moment een negatief saldo hebben [, kunt u gebruiken met](sql-query-subquery.md#exists-expression) een subquery:
+
+```sql
+SELECT c.id
+FROM c
+WHERE EXISTS(
+    SELECT VALUE n
+    FROM n IN c.balance
+    WHERE n.checkingAccount < 0
+)
+```
+
+## <a name="reserved-keywords-and-special-characters-in-json"></a>Gereserveerde sleutel woorden en speciale tekens in JSON
+
+U kunt eigenschappen openen met behulp van de `[]`operator voor de geciteerde eigenschap. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap wilt escapepen die spaties, speciale tekens bevat of dezelfde naam heeft als een SQL-tref woord of gereserveerd woord.
+
+Hier ziet u bijvoorbeeld een document met een eigenschap met de `order` naam en een `price($)` eigenschap die speciale tekens bevat:
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+Als u een query uitvoert die de `order` eigenschap of `price($)` eigenschap bevat, wordt er een syntaxis fout weer gegeven.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+
+Het resultaat is:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+U moet dezelfde query's opnieuw schrijven zoals hieronder wordt beschreven:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
+```
+
+## <a name="json-expressions"></a>JSON-expressies
+
+Projectie biedt ook ondersteuning voor JSON-expressies, zoals wordt weer gegeven in het volgende voor beeld:
+
+```sql
+    SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
+    FROM Families f
+    WHERE f.id = "AndersenFamily"
+```
+
+U ziet deze uitvoer:
+
+```json
+    [{
+      "$1": {
+        "state": "WA",
+        "city": "Seattle",
+        "name": "AndersenFamily"
+      }
+    }]
+```
+
+In het voor gaande voor beeld `SELECT` moet de component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de naam `$1`van de impliciete argument variabele. Met de volgende query worden twee impliciete argument `$1` variabelen `$2`geretourneerd: en.
+
+```sql
+    SELECT { "state": f.address.state, "city": f.address.city },
+           { "name": f.id }
+    FROM Families f
+    WHERE f.id = "AndersenFamily"
+```
+
+U ziet deze uitvoer:
+
+```json
+    [{
+      "$1": {
+        "state": "WA",
+        "city": "Seattle"
+      },
+      "$2": {
+        "name": "AndersenFamily"
+      }
+    }]
+```
+
+## <a name="aliasing"></a>Aliasing
+
+U kunt expliciet alias waarden in query's. Als een query twee eigenschappen met dezelfde naam heeft, gebruikt u aliasing om de naam van een of beide eigenschappen te wijzigen, zodat ze in het verwachte resultaat worden disambiguated.
+
+### <a name="examples"></a>Voorbeelden
+
+Het `AS` tref woord dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld bij `NameInfo`het projecteren van de tweede waarde als:
+
+```sql
+    SELECT
+           { "state": f.address.state, "city": f.address.city } AS AddressInfo,
+           { "name": f.id } NameInfo
+    FROM Families f
+    WHERE f.id = "AndersenFamily"
+```
+
+U ziet deze uitvoer:
+
+```json
+    [{
+      "AddressInfo": {
+        "state": "WA",
+        "city": "Seattle"
+      },
+      "NameInfo": {
+        "name": "AndersenFamily"
+      }
+    }]
+```
+
+### <a name="aliasing-with-reserved-keywords-or-special-characters"></a>Aliasing met gereserveerde sleutel woorden of speciale tekens
+
+U kunt aliasing niet gebruiken om een waarde te projecteren als een eigenschaps naam met een spatie, een speciaal teken of een gereserveerd woord. Als u de projectie van een waarde wilt wijzigen in bijvoorbeeld een eigenschaps naam met een spatie, kunt u een [JSON-expressie](#json-expressions)gebruiken.
+
+Hier volgt een voorbeeld:
+
+```sql
+    SELECT
+           {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
+           { "JSON expression with a special character": { "name": f.id }}
+    FROM Families f
+    WHERE f.id = "AndersenFamily"
+```
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Aan de slag](sql-query-getting-started.md)
+- [SELECT-component](sql-query-select.md)
+- [WHERE-component](sql-query-where.md)

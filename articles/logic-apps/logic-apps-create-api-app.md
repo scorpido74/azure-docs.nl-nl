@@ -3,15 +3,15 @@ title: Web-Api's maken & REST-Api's voor Azure Logic Apps
 description: Maak Web-Api's & REST-Api's om uw Api's, services of systemen aan te roepen voor systeem integratie in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270535"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005254"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
 
@@ -136,11 +136,13 @@ Stel voor dit patroon twee eind punten in op uw controller: `subscribe` en`unsub
 
 ![Actie patroon van webhook](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van webhook-eind punten via Swagger. Daarom moet u voor dit patroon een [ **webhook** -actie](../connectors/connectors-native-webhook.md) toevoegen en de URL, headers en hoofd tekst voor uw aanvraag opgeven. Zie ook [werk stroom acties en triggers](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
+Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van webhook-eind punten via Swagger. Daarom moet u voor dit patroon een [ **webhook** -actie](../connectors/connectors-native-webhook.md) toevoegen en de URL, headers en hoofd tekst voor uw aanvraag opgeven. Zie ook [werk stroom acties en triggers](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Bekijk voor een voor beeld van een webhook-patroon deze voor beeld [van een webhook-trigger in github](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Bekijk voor een voor beeld van een webhook-patroon deze voor beeld [van een webhook-trigger in github](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Hier volgen enkele andere tips en opmerkingen:
+
+* Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
+
+* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het `unsubscribe` eind punt niet aan te roepen nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ Webhook-triggers functioneren op dezelfde manier als de [webhook-acties](#webhoo
 
 ![Patroon van de webhook-trigger](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van webhook-eind punten via Swagger. Daarom moet u voor dit patroon een [ **webhook** -trigger](../connectors/connectors-native-webhook.md) toevoegen en de URL, headers en hoofd tekst voor uw aanvraag opgeven. Zie ook [HTTPWebhook-trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
->
-> Om te voor komen dat dezelfde gegevens meerdere keren worden verwerkt, moet de trigger gegevens opschonen die al zijn gelezen en zijn door gegeven aan de logische app.
+Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van webhook-eind punten via Swagger. Daarom moet u voor dit patroon een [ **webhook** -trigger](../connectors/connectors-native-webhook.md) toevoegen en de URL, headers en hoofd tekst voor uw aanvraag opgeven. Zie ook [HTTPWebhook-trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Voor een voor beeld van een webhook-patroon controleert u deze [webhook trigger-voor beeld in github](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Voor een voor beeld van een webhook-patroon controleert u deze [webhook trigger-voor beeld in github](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Hier volgen enkele andere tips en opmerkingen:
+
+* Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
+
+* Om te voor komen dat dezelfde gegevens meerdere keren worden verwerkt, moet de trigger gegevens opschonen die al zijn gelezen en zijn door gegeven aan de logische app.
+
+* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het `unsubscribe` eind punt niet aan te roepen nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Verbeter de beveiliging van aanroepen naar uw Api's vanuit Logic apps
 

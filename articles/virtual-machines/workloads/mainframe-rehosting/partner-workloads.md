@@ -7,15 +7,15 @@ author: njray
 manager: edprice
 editor: edprice
 ms.author: larryme
-ms.date: 04/02/2019
+ms.date: 05/09/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: cf02ff7078fe5d33f220c0abc2d941d483e5c125
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293501"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006122"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Mainframe-workloads die worden ondersteund in azure
 
@@ -25,20 +25,24 @@ Raadpleeg het [Azure mainframe-migratie centrum](https://azure.microsoft.com/mig
 
 ## <a name="migrate-mainframe-closer-to-azure"></a>Mainframe dichter naar Azure migreren
 
+- [ASNA Visual RPG voor .net](https://asna.com/us/products/visual-rpg) -compiler voor de .NET Framework via Visual Studio-invoeg toepassing.
+- [ASYSCO Amt COBOL](https://www.asysco.com/cobol/) Development Environment (Unisys, IBM-mainframes en andere COBOL-dialecten, zoals micro focus COBOL).
+- [ASYSCO Amt go](https://www.asysco.com/amt-go/) cloud-gebaseerde implementatie architectuur voor high-end workloads.
+- [ASYSCO Amt Transform](https://www.asysco.com/amt-transform/) voor het converteren van gegevens, code, Scripting, beveiliging, interfaces en andere mainframe artefacten.
+- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) -hulpprogram ma's voor ontwikkeling en integratie.
 - [Micro focus](https://www.microfocus.com/products/visual-cobol/) -hulpprogram Ma's voor Visual COBOL ontwikkelen en integreren.
 - [Micro focus pl/i](https://www.microfocus.com/campaign/download/pli-modernization/) verouderde compiler voor het .NET-platform, met ondersteuning voor de syntaxis van mainframe pl/i, gegevens typen en gedrag.
 - [Micro focus Enter prise server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframe Integration platform.
-- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) -hulpprogram ma's voor ontwikkeling en integratie.
+- [Moderne systemen met CTU (COBOL-to-Universal)](https://modernsystems.com/automatic-cobol-to-java-conversion/) ontwikkelings-en integratie hulpprogramma's.
 - [NTT data Enter PRISE COBOL](https://us.nttdata.com/en/digital/application-development-and-modernization) Development and integration tools.
 - [NTT open pl/i](https://us.nttdata.com/en/digital/application-development-and-modernization) legacy compiler voor het .NET-platform, met ondersteuning voor de syntaxis van mainframe pl/i, gegevens typen en gedrag.
 - Ontwikkel-en integratie hulpprogramma's voor [RAINCODE COBOL compileren](https://www.raincode.com/products/cobol/) .
 - [RAINCODE pl/i-compiler](https://www.raincode.com/products/pli/) voor het .NET-platform ondersteunt mainframe pl/i-syntaxis, gegevens typen en gedrag.
 - [RAINCODE ASM370-compiler](https://www.raincode.com/technical-landscape/asm370/) voor de assembler 370-en HLASM-syntaxis van mainframe.
-- [ASNA Visual RPG voor .net](https://asna.com/us/products/visual-rpg) -compiler voor de .NET Framework via Visual Studio-invoeg toepassing.
-- [Moderne systemen met CTU (COBOL-to-Universal)](https://modernsystems.com/automatic-cobol-to-java-conversion/) ontwikkelings-en integratie hulpprogramma's.
 
 ## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>Een emulatie omgeving implementeren voor online-en batch verwerking
 
+- [ASYSCO Amt go](https://www.asysco.com/amt-go/) -implementatie architectuur die CICS, IMS, tip, HVTIP en andere veelgebruikte mainframe omgevingen ondersteunt.
 - [Micro focus Enter prise server](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframe Integration platform.
 - [NTT data mainframe rehoste ontwikkel omgeving](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) systeem eigen transactie verwerkings omgeving.
 - [NTT data batch processing Environment](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf) (BPE), inclusief JCL-transactie mogelijkheden.
@@ -47,10 +51,11 @@ Raadpleeg het [Azure mainframe-migratie centrum](https://azure.microsoft.com/mig
 
 ## <a name="code-conversion"></a>Code conversie
 
-- [Asysco](https://www.asysco.com/azure-cloud/) -bron code conversie.
-- Door [LzLabs software gedefinieerde mainframe](https://www.lzlabs.com/) beheerde software container voor het migreren van mainframe-toepassingen naar Linux-computers of privé-, open bare en hybride Cloud omgevingen.
+- [Asysco](https://www.asysco.com/azure-cloud/) -systeem conversie technologie die betrekking heeft op bron code, gegevens, batch, planning, TP monitors, interfaces, beveiliging, beheer en meer.
+- [ASYSCO Amt Services](https://www.asysco.com/migration-services/) end-to-end-services voor migratie projecten, met inbegrip van inventaris en analyse, ontwerp training, kleding tryes, go-live en ondersteuning na de migratie.
 - [Blu-Age](https://www.bluage.com/) -hulpprogram ma's voor het digitizer van verouderde zakelijke toepassingen en data bases.
 - [Heirloom computing](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) Services om mainframe Cobol, CICS en VSAM naar Java te converteren.
+- Door [LzLabs software gedefinieerde mainframe](https://www.lzlabs.com/) beheerde software container voor het migreren van mainframe-toepassingen naar Linux-computers of privé-, open bare en hybride Cloud omgevingen.
 
 ## <a name="modernization-services"></a>Moderniserings Services
 

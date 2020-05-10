@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995717"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005932"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
@@ -23,7 +23,7 @@ Wanneer u een Video Indexer account maakt, kunt u kiezen voor een gratis proef a
 
 In dit artikel wordt beschreven hoe u een Video Indexer-account maakt dat is gekoppeld aan een Azure-abonnement en een Azure Media Services-account. Het onderwerp bevat stappen voor het maken van verbinding met Azure met behulp van de automatische stroom (standaard). Ook wordt uitgelegd hoe u hand matig verbinding maakt met Azure (Geavanceerd).
 
-Als u overstapt van een *proef versie* naar *betaald* video indexer account, kunt u ervoor kiezen om alle Video's en model aanpassingen te kopiëren naar het nieuwe account, zoals wordt beschreven in de [inhoud van de proef account importeren](#import-your-content-from-the-trial-account).
+Als u van een *proef versie* overgaat naar een *betaalde* video indexer account, kunt u ervoor kiezen om alle Video's en het model aan te passen aan het nieuwe account, zoals wordt beschreven in de sectie [uw inhoud uit de proef account importeren](#import-your-content-from-the-trial-account) .
 
 ## <a name="prerequisites"></a>Vereisten
 

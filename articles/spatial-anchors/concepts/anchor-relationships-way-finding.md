@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270602"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006022"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Verankeringen en manier om te vinden in azure ruimtelijke ankers
 
@@ -73,7 +73,7 @@ U kunt door gaan met deze procedure voor meer ankers en meer sessies gedurende e
 
 ### <a name="verify-anchor-connections"></a>Anker verbindingen controleren
 
-De app kan controleren of twee ankers zijn verbonden door een query uit te geven voor naburige ankers. Wanneer het resultaat van de query het doel ankerpunt bevat, wordt de koppeling van het anker gecontroleerd. Als de ankers niet zijn verbonden, kan de app deze opnieuw proberen verbinding te maken.
+De app kan controleren of twee ankers zijn verbonden door een query uit te geven voor naburige ankers, die u doet `NearAnchorCriteria` door de `CloudSpatialAnchorWatcher`op a in te stellen. Wanneer het resultaat van de query het doel ankerpunt bevat, wordt de koppeling van het anker gecontroleerd. Als de ankers niet zijn verbonden, kan de app deze opnieuw proberen verbinding te maken.
 
 Hier volgen enkele redenen waarom ankers geen verbinding kunnen maken:
 

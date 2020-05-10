@@ -4,22 +4,22 @@ description: Meer informatie over de SQL-syntaxis en voor beeld voor de componen
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587682"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005862"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
 
 De component FROM`FROM <from_specification>`() is optioneel, tenzij de bron wordt gefilterd of later in de query wordt geprojecteerd. Een query zoals `SELECT * FROM Families` een inventarisatie van de `Families` gehele container. U kunt ook de speciale id-HOOFDMAP voor de container gebruiken in plaats van de container naam te gebruiken.
 
-De component FROM dwingt de volgende regels per query af:
+De `FROM` component afdwingt de volgende regels per query af:
 
-* Voor de container kunt u een alias gebruiken, zoals `SELECT f.id FROM Families AS f` of gewoon `SELECT f.id FROM Families f`. Dit `f` is de alias voor `Families`. Net als een optioneel sleutel woord voor het [aliassen](sql-query-aliasing.md) van de id.  
+* Voor de container kunt u een alias gebruiken, zoals `SELECT f.id FROM Families AS f` of gewoon `SELECT f.id FROM Families f`. Dit `f` is de alias voor `Families`. Net als een optioneel sleutel woord voor het [aliassen](sql-query-working-with-json.md#aliasing) van de id.  
 
 * Als de alias is gewijzigd, kan de oorspronkelijke bron naam niet worden gebonden. De syntaxis `SELECT Families.id FROM Families f` is bijvoorbeeld ongeldig omdat de id `Families` van de alias is en kan niet meer worden omgezet.  
 
@@ -30,15 +30,15 @@ De component FROM dwingt de volgende regels per query af:
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -51,9 +51,9 @@ FROM <from_specification>
   
   Hiermee geeft u een gegevens bron, met of zonder een alias. Als er geen alias is opgegeven, wordt deze afgeleid van de `<container_expression>` volgende regels:  
   
-  -  Als de expressie een container_name is, wordt container_name als alias gebruikt.  
+-  Als de expressie een container_name is, wordt container_name als alias gebruikt.  
   
-  -  Als de expressie is `<container_expression>`, dan property_name, wordt property_name als alias gebruikt. Als de expressie een container_name is, wordt container_name als alias gebruikt.  
+-  Als de expressie is `<container_expression>`, dan property_name, wordt property_name als alias gebruikt. Als de expressie een container_name is, wordt container_name als alias gebruikt.  
   
 - ALSOOK`input_alias`  
   
@@ -99,9 +99,9 @@ Als een container expressie toegang heeft tot eigenschappen of matrix elementen 
   
 Een container expressie kan container-scoped of document-Scoped zijn:  
   
--   Een expressie is container-scoped als de onderliggende bron van de container expressie ROOT of `container_name`ofwel is. Een dergelijke expressie vertegenwoordigt een set documenten die rechtstreeks uit de container is opgehaald en is niet afhankelijk van de verwerking van andere container expressies.  
+- Een expressie is container-scoped als de onderliggende bron van de container expressie ROOT of `container_name`ofwel is. Een dergelijke expressie vertegenwoordigt een set documenten die rechtstreeks uit de container is opgehaald en is niet afhankelijk van de verwerking van andere container expressies.  
   
--   Een expressie is een document bereik, als de onderliggende bron van de container expressie eerder in `input_alias` de query is geïntroduceerd. Een dergelijke expressie vertegenwoordigt een reeks documenten die zijn verkregen door de container expressie te evalueren in het bereik van elk document dat deel uitmaakt van de set die is gekoppeld aan de container met alias.  De resulterende set is een samen voeging van sets die zijn verkregen door de container expressie te evalueren voor elk van de documenten in de onderliggende set. 
+- Een expressie is een document bereik, als de onderliggende bron van de container expressie eerder in `input_alias` de query is geïntroduceerd. Een dergelijke expressie vertegenwoordigt een reeks documenten die zijn verkregen door de container expressie te evalueren in het bereik van elk document dat deel uitmaakt van de set die is gekoppeld aan de container met alias. De resulterende set is een samen voeging van sets die zijn verkregen door de container expressie te evalueren voor elk van de documenten in de onderliggende set.
 
 ## <a name="examples"></a>Voorbeelden
 

@@ -10,17 +10,18 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430875"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005821"
 ---
 # <a name="common-parameters-and-headers"></a>Algemene parameters en headers
 
 De volgende informatie is gebruikelijk voor alle bewerkingen die u kunt uitvoeren in verband met Key Vault resources:
 
+- De HTTP `Host` -header moet altijd aanwezig zijn en moet de kluis hostnaam opgeven. Bijvoorbeeld: `Host: contoso.vault.azure.net`. Houd er rekening mee dat de meeste `Host` client technologieën de header van de URI vullen. Bijvoorbeeld: `GET https://contoso.vault.azure.net/secrets/mysecret{...}` de `Host` as wordt ingesteld als `contoso.vault.azure.net`. Dit betekent dat als u Key Vault gebruikt voor onbewerkte IP `GET https://10.0.0.23/secrets/mysecret{...}`-adressen, de automatische `Host` waarde van de koptekst onjuist is en u hand matig zeker weet dat de `Host` header de kluis-hostnaam bevat.
 - Vervang `{api-version}` door de API-versie in de URI.
 - Vervang `{subscription-id}` door de id van uw abonnement in de URI
 - Vervang `{resource-group-name}` door de resource groep. Zie Resource groepen gebruiken om Azure-resources te beheren voor meer informatie.

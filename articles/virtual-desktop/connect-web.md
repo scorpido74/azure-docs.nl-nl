@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70fd29944d31682de5a6a34f76fdf27e3ff7d3ff
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f17d04d94546f31c5613fa9944c7399ea7db10ae
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607840"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006054"
 ---
 # <a name="connect-with-the-web-client"></a>Verbinding maken met de webclient
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bureau blad-resources zonder het langdurige installatie proces.
@@ -43,6 +43,9 @@ Hoewel een voor HTML5 geschikte browser zou moeten werken, ondersteunen we de vo
 ## <a name="access-remote-resources-feed"></a>Toegang tot externe resources-feed
 
 Ga in een browser naar de [webclient met virtueel bureau blad van Windows](https://rdweb.wvd.microsoft.com/arm/webclient) en meld u aan met uw gebruikers account.
+
+>[!NOTE]
+>Als u de versie van het Windows-bureau blad van Virtual Desktop 2019 gebruikt, gebruikt u de koppeling webclient in [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) om verbinding te maken met uw resources.
 
 >[!NOTE]
 >Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.

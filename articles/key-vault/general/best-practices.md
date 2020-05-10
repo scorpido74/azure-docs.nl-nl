@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf8d461485cefd37b9508031f5cce7ae0a070ef5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653199"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005854"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Aanbevolen procedures voor het gebruik van Key Vault
 
@@ -35,7 +35,7 @@ Onze aanbeveling is een kluis per toepassing per omgeving te gebruiken (ontwikke
 
 ## <a name="backup"></a>Backup
 
-Zorg ervoor dat u regel matig back-ups van uw [kluis](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) onderneemt op het bijwerken/verwijderen/maken van objecten in een kluis.
+Zorg ervoor dat u regel matig back-ups van uw kluis onderneemt op het bijwerken/verwijderen/maken van objecten in een kluis.
 
 ## <a name="turn-on-logging"></a>Logboek registratie inschakelen
 

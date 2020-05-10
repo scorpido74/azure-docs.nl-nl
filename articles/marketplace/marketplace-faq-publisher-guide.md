@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 38d1a15f471d353595f57b86df5137257eaf63a5
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857623"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005160"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -300,7 +300,7 @@ Ga voor meer informatie naar het [uitbetalings account en de BTW-formulieren](ht
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Worden er retour-en restituties ondersteund voor de commerciële Marketplace?
 
-Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven periode abonnementen annuleren. Aanbiedingen die worden gefactureerd op basis van gebruik nadat een oplossing is gebruikt, komen niet in aanmerking voor restituties.
+Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven periode abonnementen annuleren. Voor maandelijkse abonnementen is het 24 uur en voor jaarlijkse abonnementen 14 dagen. Aanbiedingen die worden gefactureerd op basis van verbruik nadat een oplossing is gebruikt, komen niet in aanmerking voor restituties.
 
 ## <a name="resources"></a>Resources
 

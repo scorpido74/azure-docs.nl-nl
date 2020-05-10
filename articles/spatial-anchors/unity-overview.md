@@ -8,16 +8,17 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471083"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006136"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Bouwen op basis van een eenheid met Azure ruimtelijke ankers
 
-Ontwikkel aars kunnen eenheid kiezen voor het maken en implementeren van toepassingen voor gemengde realiteit die gebruikmaken van Azure spatiale ankers. De volgende platforms worden ondersteund:
+Ontwikkel aars kunnen eenheid kiezen voor het maken en implementeren van toepassingen voor gemengde realiteit die gebruikmaken van Azure spatiale ankers.
+De volgende platforms worden ondersteund:
 
 **Eenheid voor HoloLens**
 

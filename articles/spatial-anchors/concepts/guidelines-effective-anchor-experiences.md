@@ -8,20 +8,24 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270526"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005531"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Een effectief anker maken met behulp van ruimtelijke bewerkings punten van Azure
 
-Dit artikel bevat richt lijnen en overwegingen om u te helpen bij het effectief maken en vinden van ankers met behulp van ruimtelijke ankers.
+Dit artikel bevat richt lijnen en overwegingen om u te helpen bij het effectief maken en vinden van ankers met behulp van ruimtelijke beankeringen van Azure.
+
+## <a name="anchor-improvement-over-time"></a>Anker verbetering na verloop van tijd
+
+Met behulp van Azure spatiale ankers proberen we elke keer dat u ankers vindt, de kwaliteit van toekomstige Zoek bewerkingen te verbeteren. We doen dit met behulp van de omgevings gegevens die worden verzameld om de visuele informatie op de gewenste ankers te verbeteren. Dit proces wordt uitgevoerd op de achtergrond en is een offline optimalisatie die door de Azure spatiale ankers-service wordt uitgevoerd om te optimaliseren voor uw omgeving. De extra gegevens die tijdens elke bewerking zijn verzameld, opbouwen een sterker beeld van de omgeving. Dit verbetert de kwaliteit en stelt u in staat om ankers beter te vinden door de omgevings wijziging, het door sturen van tijd en voor gebruikers die naar ankers van verschillende hoeken en perspectieven kijken.
 
 ## <a name="good-anchors"></a>Goede ankers
 
-Ruimtelijke ankers helpen u bij het maken van goede ankers. Het is belang rijk om tijd te investeren in de gebruikers ervaring (UX) om een goede anker te maken. Door te investeren in het maken van goede ankers vooraan, helpt u eind gebruikers om op betrouw bare wijze ankers te vinden:
+Terwijl Azure spatiale ankers de kwaliteit van ankers in de loop van de tijd proberen te verbeteren, is het ook belang rijk om de tijd te investeren in het onderbrengen of verfijnen van gebruikers in uw gebruikers ervaring (UX) om goede ankers te maken. Door te investeren in het maken van goede ankers vooraan, helpt u eind gebruikers om op betrouw bare wijze ankers te vinden:
 
 - Op verschillende apparaten.
 - Op verschillende tijdstippen.
@@ -100,7 +104,7 @@ Visuele tracking systemen zijn afhankelijk van de visuele functies in een omgevi
 
 Volg de algemene richt lijnen in deze sectie om een UX te maken die een nuttige scan van de omgeving aanmoedigt.
 
-Als de gebruiker niet binnen een paar seconden een anker heeft gevonden, moet de app de gebruikers aanmoedigen om het apparaat te verplaatsen om meer perspectieven vast te leggen. De app kan ook gebruikers aanmoedigen om zichzelf over de omgeving te bewegen om vanuit meer perspectieven naar het anker te zoeken. Hoe meer functies u kunt gebruiken, hoe beter het apparaat ziet.
+Als de gebruiker niet binnen een paar seconden een anker heeft gevonden, moet de app de gebruikers aanmoedigen om het apparaat te verplaatsen om meer perspectieven vast te leggen. De app kan ook gebruikers aanmoedigen om zichzelf over de omgeving te bewegen om vanuit meer perspectieven naar het anker te zoeken. De meer functie perspectieven die het apparaat ziet, hoe beter, naarmate er meer kans bestaat dat een anker zich bevindt, en verzamelt ook meer omgevings gegevens die worden gebruikt om de kwaliteit van het anker te verbeteren.
 
 Voor doel scenario's vraagt u de gebruiker om het doel te verplaatsen zodat deze vanuit verschillende perspectieven kan worden weer gegeven. Met andere woorden, vraag de gebruiker om het doel op te nemen vanaf nieuwe perspectieven totdat het anker zich bevindt.
 

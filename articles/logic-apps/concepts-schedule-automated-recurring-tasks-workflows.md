@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234091"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005205"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps
 
@@ -48,13 +48,13 @@ In dit artikel worden de mogelijkheden beschreven voor het plannen van ingebouwd
 
 ## <a name="schedule-triggers"></a>Triggers plannen
 
-U kunt de werk stroom van de logische app starten met behulp van de trigger voor terugkeer patroon of schuif venster, die niet is gekoppeld aan een specifieke service of systeem, bijvoorbeeld Office 365 Outlook of SQL Server. Met deze triggers wordt uw werk stroom gestart en uitgevoerd op basis van uw opgegeven terugkeer patroon, waar u het interval en de frequentie selecteert, zoals het aantal seconden, minuten en uren voor beide triggers, of het aantal dagen, weken of maanden voor de terugkeer patroon trigger. U kunt ook de start datum en-tijd instellen, evenals de tijd zone. Telkens wanneer een trigger wordt geactiveerd, wordt door Logic Apps een nieuw werk stroom exemplaar gemaakt en uitgevoerd voor uw logische app.
+U kunt de werk stroom van de logische app starten met behulp van de trigger voor terugkeer patroon of het schuif venster, die niet is gekoppeld aan een specifieke service of systeem. Met deze triggers wordt uw werk stroom gestart en uitgevoerd op basis van uw opgegeven terugkeer patroon, waar u het interval en de frequentie selecteert, zoals het aantal seconden, minuten, uren, dagen, weken of maanden. U kunt ook de start datum en-tijd instellen, evenals de tijd zone. Telkens wanneer een trigger wordt geactiveerd, wordt door Logic Apps een nieuw werk stroom exemplaar gemaakt en uitgevoerd voor uw logische app.
 
 Dit zijn de verschillen tussen deze triggers:
 
 * **Terugkeer patroon**: voert uw werk stroom met regel matige tijds intervallen uit op basis van de opgegeven planning. Als er herhalingen worden gemist, worden de gemiste terugkeer patronen niet door de trigger geactiveerd, maar worden herhalingen opnieuw gestart met het volgende geplande interval. U kunt ook een start datum en-tijd en de tijd zone opgeven. Als u dag selecteert, kunt u uren van de dag en minuten van het uur opgeven, bijvoorbeeld elke dag om 2:30. Als u week selecteert, kunt u ook dagen van de week selecteren, bijvoorbeeld woensdag en zaterdag. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md).
 
-* **Schuif venster**: voert uw werk stroom uit met regel matige tijds intervallen die gegevens verwerken in doorlopende segmenten. Als er geen terugkerende items worden weer gegeven, wordt het schuif venster geactiveerd en worden de gemiste terugkeer patronen verwerkt. U kunt een start datum en-tijd, een tijd zone en een duur opgeven om elk terugkeer patroon in uw werk stroom te vertragen. Deze trigger heeft geen opties om dagen, weken en maanden, uren van de dag, minuten van het uur en dagen van de week op te geven. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md).
+* **Schuif venster**: voert uw werk stroom uit met regel matige tijds intervallen die gegevens verwerken in doorlopende segmenten. Als er geen terugkerende items worden weer gegeven, wordt het schuif venster geactiveerd en worden de gemiste terugkeer patronen verwerkt. U kunt een start datum en-tijd, een tijd zone en een duur opgeven om elk terugkeer patroon in uw werk stroom te vertragen. Deze trigger biedt geen ondersteuning voor geavanceerde schema's, bijvoorbeeld specifieke uren van de dag, minuten van het uur en dagen van de week. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -126,7 +126,7 @@ Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05**
 
 Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de triggers die ondersteuning bieden voor de opties:
 
-| Trigger | Terugkeerpatroon | Interval | Frequency | Begintijd | Deze dagen | Deze uren | Deze minuten | Opmerking |
+| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Deze dagen | Deze uren | Deze minuten | Opmerking |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (geen begin datum en-tijd) | 15 | Minuut | geen | niet beschikbaar | geen | geen | Dit schema wordt onmiddellijk gestart, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (met begin datum en-tijd) | 15 | Minuut | *start date* T*Start*tijd Z | niet beschikbaar | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |

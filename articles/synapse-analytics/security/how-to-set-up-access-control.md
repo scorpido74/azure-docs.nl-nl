@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983207"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006073"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -89,7 +89,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 - Open de Azure Portal
 - STG1 zoeken
 - Ga naar CNT1
-- Zorg ervoor dat het MSI (Managed Service Identity) voor WS1 is toegewezen aan de rol **Azure Blob data contributor** op CNT1
+- Zorg ervoor dat het MSI-bestand (Managed Service Identity) voor WS1 is toegewezen aan de rol van de **BLOB-gegevens bijdrager voor opslag** op CNT1
   - Als de toewijzing niet wordt weer geven, wijst u deze toe.
   - Het MSI-bestand heeft dezelfde naam als de werk ruimte. In dit geval is dit &quot;WS1.&quot;
 

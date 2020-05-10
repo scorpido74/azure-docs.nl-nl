@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791915"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005801"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -36,7 +36,7 @@ Een veld toewijzing bestaat uit drie delen:
 
 1. A `sourceFieldName`, waarmee een veld in de gegevens bron wordt aangeduid. Deze eigenschap is vereist.
 2. Een optioneel `targetFieldName`, waarmee een veld in uw zoek index wordt aangeduid. Als u dit weglaat, wordt dezelfde naam gebruikt als voor de gegevens bron.
-3. Een optioneel `mappingFunction`, waarmee u uw gegevens kunt transformeren met behulp van een van de vooraf gedefinieerde functies. [Hieronder](#mappingFunctions)vindt u de volledige lijst met functies.
+3. Een optioneel `mappingFunction`, waarmee u uw gegevens kunt transformeren met behulp van een van de vooraf gedefinieerde functies. Dit kan worden toegepast op de veld Toewijzingen invoer en uitvoer. [Hieronder](#mappingFunctions)vindt u de volledige lijst met functies.
 
 Veld toewijzingen worden toegevoegd aan de `fieldMappings` matrix van de definitie van de Indexeer functie.
 

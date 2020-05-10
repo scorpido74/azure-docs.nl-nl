@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e42a4d738d375b4bceeb32f6159b4476843cf281
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612653"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006006"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Problemen met de Extern bureaublad-client oplossen
 
@@ -59,6 +59,12 @@ Als uw browser wordt gestart of niet meer werkt terwijl u de webclient gebruikt,
 2. Wis browser cookies. Zie [cookie bestanden verwijderen in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 3. Wis de browsercache. Zie [browser cache wissen voor uw browser](https://binged.it/2RKyfdU).
 4. Open de browser in de persoonlijke modus.
+
+## <a name="web-client-does-not-show-my-resources"></a>De webclient geeft geen resources weer
+
+Controleer eerst het Azure Active Directory account dat u gebruikt. Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor Winodws virtueel bureau blad, moet u ons ondertekenen of een persoonlijk browser venster gebruiken.
+
+Als u de versie van het Windows-bureau blad van Virtual Desktop 2019 gebruikt, gebruikt u de koppeling webclient in [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) om verbinding te maken met uw resources.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webclient reageert niet meer of de verbinding wordt verbroken
 

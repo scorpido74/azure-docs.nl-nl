@@ -1,98 +1,99 @@
 ---
 title: Platte bestanden coderen of decoderen
-description: Versleutelen of decoderen van platte bestanden voor Enter prise Integration met Azure Logic Apps en Enterprise Integration Pack
+description: Versleutelen of decoderen van platte bestanden voor bedrijfs integratie in Azure Logic Apps met behulp van de Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/08/2016
-ms.openlocfilehash: 2d6182ba01507c2fb361628e01bb52e1ea821f44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2020
+ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152649"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005288"
 ---
-# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Versleutelen of decoderen van platte bestanden met Azure Logic Apps en Enterprise Integration Pack
+# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Platte bestanden coderen en decoderen in Azure Logic Apps met behulp van de Enterprise Integration Pack
 
-U kunt XML-inhoud coderen voordat u deze naar een zakelijke partner verzendt in een Business-to-business-scenario (B2B). In een logische app kunt u de connector voor platte bestands codering gebruiken om dit te doen. De logische app die u maakt, kan de XML-inhoud ophalen uit verschillende bronnen, waaronder van een HTTP-aanvraag trigger, vanuit een andere toepassing of zelfs van een van de vele [connectors](../connectors/apis-list.md). Zie de [documentatie van Logic apps](logic-apps-overview.md "Meer informatie over Logic apps")voor meer informatie over Logic apps.  
+Voordat u XML-inhoud naar een zakelijke partner verzendt in een Business-to-business-scenario (B2B), wilt u die inhoud mogelijk eerst coderen. Door een logische app te maken, kunt u platte bestanden coderen en decoderen met behulp van de connector voor **platte** bestanden. Uw logische app kan deze XML-inhoud ophalen uit verschillende bronnen, zoals de trigger voor aanvragen, een andere app of andere [connectors die door Azure Logic apps worden ondersteund](../connectors/apis-list.md). Zie [Wat is Azure Logic apps](logic-apps-overview.md)? voor meer informatie.
 
-## <a name="create-the-flat-file-encoding-connector"></a>De plat file encoding-connector maken
-Volg deze stappen om een plat file encoding-connector toe te voegen aan uw logische app.
+## <a name="prerequisites"></a>Vereisten
 
-1. Maak een logische app en [koppel deze aan uw integratie account](logic-apps-enterprise-integration-accounts.md "Meer informatie over het koppelen van een integratie account aan een logische app"). Dit account bevat het schema dat u gaat gebruiken voor het coderen van de XML-gegevens.  
+* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-1. Voeg in de ontwerp functie voor logische apps de trigger **Wanneer een HTTP-aanvraag is ontvangen** , toe aan uw logische app.
+* De logische app waarvoor u de **platte bestands** connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De connector voor **platte bestanden** biedt alleen acties, niet voor triggers. U kunt de trigger of een andere actie gebruiken voor het invoeren van de XML-inhoud in uw logische app voor het coderen of decoderen. Als u geen ervaring hebt met Logic apps, raadpleegt u [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Voeg de actie voor het coderen van platte bestanden als volgt toe:
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en dat is [gekoppeld aan de logische app](logic-apps-enterprise-integration-accounts.md#link-account) , waar u van plan bent om de **platte bestands** connector te gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
-   a. Selecteer het **plus** teken.
+* Een plat bestands [schema](logic-apps-enterprise-integration-schemas.md) dat u hebt geüpload naar uw integratie account voor het coderen of decoderen van de XML-inhoud
 
-   b. Selecteer de koppeling **actie toevoegen** (wordt weer gegeven nadat u het plus teken hebt geselecteerd).
+* Ten minste twee [handels partners](logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratie account
 
-   c. Voer in het zoekvak *plat* in om alle acties te filteren die u wilt gebruiken.
+## <a name="add-flat-file-encode-action"></a>Actie voor het coderen van plat bestand toevoegen
 
-   d. Selecteer de optie voor **platte bestands codering** in de lijst.   
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-      ![Scherm afbeelding van de optie voor het coderen van een plat bestand](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
 
-1. Selecteer in het dialoog venster **platte bestands codering** het tekstvak **inhoud** .  
+   > [!TIP]
+   > Het opgeven van een JSON-schema is optioneel. Als u een voor beeld van een nettolading van de inkomende aanvraag hebt, selecteert u **voor beeld Payload gebruiken om een schema te genereren**, voert u de voor beeld-nettolading in en selecteert u **gereed**. Het schema wordt weer gegeven in het vak **JSON-schema van aanvraag tekst** .
 
-   ![Scherm afbeelding van het tekstvak voor inhoud](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
+1. Onder **Kies een actie**, voert `flat file`u in. Selecteer in de lijst acties deze actie: **platte bestands codering**
 
-1. Selecteer de code Body als de inhoud die u wilt coderen. Met het label body wordt het inhouds veld ingevuld.     
+   ![Selecteer actie voor plat bestand coderen](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
-   ![Scherm afbeelding van hoofd code](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
+1. Klik in het vak **inhoud** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst, in de sectie **Wanneer een HTTP-aanvraag wordt ontvangen** , de eigenschap **Body** , die de uitvoer van de aanvraag tekst bevat van de trigger en de inhoud die moet worden gecodeerd.
 
-1. Selecteer de keuze lijst **schema naam** en kies het schema dat u wilt gebruiken voor het coderen van de invoer inhoud.    
+   ![Inhoud selecteren die moet worden gecodeerd vanuit de lijst met dynamische inhoud](./media/logic-apps-enterprise-integration-flatfile/select-content-to-encode.png)
 
-   ![Scherm opname van de keuze lijst schema naam](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
+   > [!TIP]
+   > Als de eigenschap **Body** niet wordt weer geven in de lijst met dynamische inhoud, selecteert u **meer weer geven** naast het gedeelte label **Wanneer een HTTP-aanvraag is ontvangen** .
+   > U kunt de inhoud die u wilt decoderen ook rechtstreeks invoeren in het vak **inhoud** .
 
-1. Sla uw werk op.
+1. Selecteer in de lijst **schema naam** het schema dat zich in het gekoppelde integratie account bevindt dat voor code ring moet worden gebruikt, bijvoorbeeld:
 
-   ![Scherm afbeelding van pictogram opslaan](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
+   ![Selecteer het schema dat voor de code ring moet worden gebruikt](./media/logic-apps-enterprise-integration-flatfile/select-schema-for-encoding.png)
 
-U bent nu klaar met het instellen van uw plat file encoding-connector. In een echte wereld toepassing kunt u de versleutelde gegevens in een line-of-Business-toepassing opslaan, zoals Sales Force. Of u kunt die gecodeerde gegevens verzenden naar een handels partner. U kunt eenvoudig een actie toevoegen om de uitvoer van de coderings actie te verzenden naar Sales Force of naar uw handels partner, door gebruik te maken van een van de andere connectors.
+   > [!NOTE]
+   > Als er geen schema in de lijst wordt weer gegeven, bevat uw integratie account geen schema bestanden voor code ring. Upload het schema dat u wilt gebruiken voor uw integratie account.
 
-U kunt de connector nu testen door een aanvraag naar het HTTP-eind punt te verzenden en de XML-inhoud in de hoofd tekst van de aanvraag op te nemen.  
+1. Sla uw logische app op. Als u uw connector wilt testen, maakt u een aanvraag voor het HTTPS-eind punt, dat wordt weer gegeven in de **http post-URL-** eigenschap van de trigger van de aanvraag, en neemt u de XML-inhoud op die u wilt coderen in de hoofd tekst van de aanvraag.
 
-## <a name="create-the-flat-file-decoding-connector"></a>De gedecodeerde connector voor platte bestanden maken
+U bent nu klaar met het instellen van de actie voor het coderen van platte bestanden. In een echte wereld-app wilt u mogelijk de gecodeerde gegevens opslaan in een LOB-app (line-of-Business), zoals Sales Force. Of u kunt de gecodeerde gegevens verzenden naar een handels partner. Als u de uitvoer van de coderings actie naar Sales Force of naar uw handels partner wilt verzenden, gebruikt u de andere [Connect oren die beschikbaar zijn in azure Logic apps](../connectors/apis-list.md).
 
-> [!NOTE]
-> Als u deze stappen wilt uitvoeren, moet er al een schema bestand zijn geüpload naar het integratie account.
+## <a name="add-flat-file-decode-action"></a>Actie voor decoderen van plat bestand toevoegen
 
-1. Voeg in de ontwerp functie voor logische apps de trigger **Wanneer een HTTP-aanvraag is ontvangen** , toe aan uw logische app.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Voeg als volgt de actie voor het decoderen van platte bestanden toe:
+1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
 
-   a. Selecteer het **plus** teken.
+   > [!TIP]
+   > Het opgeven van een JSON-schema is optioneel. Als u een voor beeld van een nettolading van de inkomende aanvraag hebt, selecteert u **voor beeld Payload gebruiken om een schema te genereren**, voert u de voor beeld-nettolading in en selecteert u **gereed**. Het schema wordt weer gegeven in het vak **JSON-schema van aanvraag tekst** .
 
-   b. Selecteer de koppeling **actie toevoegen** (wordt weer gegeven nadat u het plus teken hebt geselecteerd).
+1. Onder **Kies een actie**, voert `flat file`u in. Selecteer in de lijst acties deze actie: **plat bestand decoderen**
 
-   c. Voer in het zoekvak *plat* in om alle acties te filteren die u wilt gebruiken.
+   ![De actie voor het decoderen van een plat bestand selecteren](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 
-   d. Selecteer de optie voor het **decoderen van plat bestand** in de lijst.   
+1. Klik in het vak **inhoud** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst, in de sectie **Wanneer een HTTP-aanvraag wordt ontvangen** , de eigenschap **Body** , die de uitvoer van de aanvraag tekst bevat van de trigger en de inhoud die moet worden gedecodeerd.
 
-      ![Scherm afbeelding van de optie voor het decoderen van een plat bestand](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+   ![Inhoud selecteren om uit de lijst met dynamische inhoud te decoderen](./media/logic-apps-enterprise-integration-flatfile/select-content-to-decode.png)
 
-1. Selecteer het **inhouds** besturings element. Dit resulteert in een lijst met de inhoud van eerdere stappen die u kunt gebruiken als de inhoud die u wilt decoderen. U ziet dat de *hoofd tekst* van de binnenkomende HTTP-aanvraag kan worden gebruikt als de inhoud die moet worden ontsleuteld. U kunt ook de inhoud invoeren die rechtstreeks naar het **inhouds** besturings element moet worden gedecodeerd.     
+   > [!TIP]
+   > Als de eigenschap **Body** niet wordt weer geven in de lijst met dynamische inhoud, selecteert u **meer weer geven** naast het gedeelte label **Wanneer een HTTP-aanvraag is ontvangen** . U kunt de inhoud die u wilt decoderen ook rechtstreeks invoeren in het vak **inhoud** .
 
-1. Selecteer de tag *hoofd tekst* . U ziet dat het label body nu in het **inhouds** besturings element staat.
+1. Selecteer in de lijst **schema naam** het schema dat zich in het gekoppelde integratie account bevindt dat moet worden gebruikt voor het decoderen, bijvoorbeeld:
 
-1. Selecteer de naam van het schema dat u wilt gebruiken om de inhoud te decoderen. In de volgende scherm afbeelding ziet u dat *OrderFile* de geselecteerde schema naam is. Deze schema naam is eerder geüpload naar het integratie account.
+   ![Schema selecteren dat moet worden gebruikt voor het decoderen](./media/logic-apps-enterprise-integration-flatfile/select-schema-for-decoding.png)
 
-   ![Scherm opname van het dialoog venster voor het decoderen van een plat bestand](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png) 
+   > [!NOTE]
+   > Als er geen schema in de lijst wordt weer gegeven, bevat uw integratie account geen schema bestanden voor het decoderen. Upload het schema dat u wilt gebruiken voor uw integratie account.
 
-1. Sla uw werk op.  
+1. Sla uw logische app op. Als u uw connector wilt testen, maakt u een aanvraag voor het HTTPS-eind punt, dat wordt weer gegeven in de **http post-URL-** eigenschap van de aanvraag trigger, en neemt u de XML-inhoud op die u wilt decoderen in de hoofd tekst van de aanvraag.
 
-   ![Scherm afbeelding van pictogram opslaan](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
-
-U bent nu klaar met het instellen van de coderings connector voor platte bestanden. In een echte wereld toepassing wilt u mogelijk de gedecodeerde gegevens opslaan in een line-of-Business-toepassing, zoals Sales Force. U kunt eenvoudig een actie toevoegen om de uitvoer van de decodeer actie naar Sales Force te verzenden.
-
-U kunt de connector nu testen door een aanvraag naar het HTTP-eind punt te verzenden en de XML-inhoud die u wilt decoderen, op te nemen in de hoofd tekst van de aanvraag.  
+U bent nu klaar met het instellen van de actie voor het decoderen van platte bestanden. In een echte wereld-app wilt u mogelijk de gedecodeerde gegevens opslaan in een LOB-app (line-of-Business), zoals Sales Force. U kunt ook de gedecodeerde gegevens verzenden naar een handels partner. Als u de uitvoer wilt verzenden van de decodeer actie naar Sales Force of naar uw handels partner, gebruikt u de andere [connectors die beschikbaar zijn in azure Logic apps](../connectors/apis-list.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer [informatie over de Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack").  
 
+* Meer informatie over de [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

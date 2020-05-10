@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74280970"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005496"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
 
 In dit artikel leert u hoe u verrijkte invoer velden kunt toewijzen aan uitvoer velden in een Doorzoek bare index. Zodra u [een vaardig heden hebt gedefinieerd](cognitive-search-defining-skillset.md), moet u de uitvoer velden toewijzen van alle vaardig heden waarmee waarden rechtstreeks worden bijgedragen aan een bepaald veld in uw zoek index. 
 
 Uitvoer veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.  Het verrijkte document is in feite een structuur van informatie en hoewel er wel sprake is van ondersteuning voor complexe typen in de index, wilt u mogelijk de gegevens van de uitgebreide boom structuur transformeren naar een eenvoudigere type (bijvoorbeeld een matrix met teken reeksen). Met de toewijzingen van het uitvoer veld kunt u gegevens vorm transformaties uitvoeren door gegevens af te vlakken.
+
+> [!NOTE]
+> We hebben onlangs de functionaliteit van toewijzings functies ingeschakeld voor uitvoer veld toewijzingen. Zie [veld toewijzings functies](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) voor meer informatie over het toewijzen van functies
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
 Als u velden wilt toewijzen `outputFieldMappings` , voegt u deze toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
@@ -50,7 +53,10 @@ De hoofd tekst van de aanvraag is als volgt gestructureerd:
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

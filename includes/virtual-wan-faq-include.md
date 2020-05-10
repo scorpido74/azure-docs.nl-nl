@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82997718"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006440"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub en spoke met SD-WAN/VPN-apparaten hebben om virtueel WAN van Azure te gebruiken?
 
@@ -190,8 +190,8 @@ De totale VPN-door Voer van een hub is Maxi maal 20 Gbps op basis van de gekozen
 Ga naar de VPN-gateway in een hub op de portal en klik op de schaal eenheid om deze naar de juiste instelling te wijzigen.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Staat Virtual WAN toe dat het on-premises apparaat meerdere Isp's parallel kan gebruiken of dat het altijd één VPN-tunnel is?
+On-premises apparaat-oplossingen kunnen Traffic-beleid Toep assen om verkeer over meerdere tunnels naar Azure te sturen.
 
-Een verbinding die zich in een virtueel WAN VPN bevindt, is altijd een actief/actief-tunnel (voor tolerantie binnen dezelfde hub/regio) met behulp van een koppeling die beschikbaar is op de vertakking. Deze koppeling kan een ISP-koppeling zijn op de on-premises vertakking. Virtuele WAN ' VPNSite ' biedt de mogelijkheid om koppelings gegevens toe te voegen aan de site. Als u meerdere Isp's in het filiaal hebt en alle Isp's een koppeling hebben opgegeven, kan deze informatie worden ingesteld in de gegevens van de VPN-site in Azure. Het beheren van failover over Isp's in de vertakking is echter volledig een vertakkings gerichte routerings bewerking.
 
 ### <a name="what-is-global-transit-architecture"></a>Wat is een wereld wijde doorvoer architectuur?
 

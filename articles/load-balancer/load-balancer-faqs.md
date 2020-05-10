@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3648bb102d539156067cdc259c1cf9b6e73d6a49
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884486"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005154"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ## <a name="what-types-of-load-balancer-exist"></a>Welke soorten Load Balancer bestaan?
-Interne load balancers die verkeer verdelen binnen een VNET en externe load balancers die verkeer van en naar een Internet verbonden eind punt balanceren. Zie [Load Balancer types] (https://docs.microsoft.com/azure/load-balancer/concepts-limitations#load-balancer-types)) voor meer informatie. 
+Interne load balancers die verkeer verdelen binnen een VNET en externe load balancers die verkeer van en naar een Internet verbonden eind punt balanceren. Zie [Load Balancer typen](components.md#frontend-ip-configurations)voor meer informatie. 
 
-Voor beide typen biedt Azure een basis-SKU en een standaard-SKU met verschillende functies voor functionaliteit, prestaties, beveiliging en status bijhouden. Deze verschillen worden uitgelegd in onze [SKU-vergelijking]https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) (artikel.
+Voor beide typen biedt Azure een basis-SKU en een standaard-SKU met verschillende functies voor functionaliteit, prestaties, beveiliging en status bijhouden. Deze verschillen worden beschreven in het artikel over het vergelijken van de [SKU](skus.md) .
 
  ## <a name="how-can-i-upgrade-from-a-basic-to-a-standard-load-balancer"></a>Hoe kan ik een upgrade uitvoeren van een basis versie naar een Standard Load Balancer?
 Zie de [upgrade van Basic naar Standard](upgrade-basic-standard.md) -artikel voor een geautomatiseerd script en richt lijnen voor het bijwerken van een load BALANCER-SKU.
