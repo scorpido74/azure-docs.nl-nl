@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844884"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004474"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Veelgestelde vragen over Azure Spatial Anchors
 
@@ -49,6 +49,10 @@ Zie het [overzicht van Azure Spatial Anchors](overview.md) voor meer informatie.
 
 **A:** Ankers worden geïsoleerd door Azure-account. Alleen apps die u toegang tot uw account verleent, hebben toegang tot ankers binnen het account.
 
+**V: hoe worden gegevens in azure spatiale ankers opgeslagen?**
+
+**A:** Alle gegevens worden opgeslagen en versleuteld met een door micro soft beheerde gegevens versleutelings sleutel.
+
 **V: welke informatie over een omgeving wordt verzonden en opgeslagen op de service bij gebruik van Azure spatiale ankers? Worden afbeeldingen van de omgeving verzonden en opgeslagen?**
 
 **A**: wanneer u ankers maakt of zoekt, worden afbeeldingen van de omgeving op het apparaat verwerkt in een afgeleide indeling. Deze afgeleide indeling wordt verzonden naar en opgeslagen in de service.
@@ -59,7 +63,6 @@ Azure Spatial Anchors voldoet aan de [voorwaarden van de serviceovereenkomst van
 
 ![Een omgeving en het afgeleide sparse-punt Cloud](./media/sparse-point-cloud.png)
 *afbeelding 1: een omgeving en de afgeleide sparse-punt Cloud*
-
 
 **V: is er een manier om diagnostische gegevens naar micro soft te verzenden?**
 

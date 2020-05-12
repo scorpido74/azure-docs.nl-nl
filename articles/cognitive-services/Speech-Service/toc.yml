@@ -426,13 +426,31 @@
           items:
             - name: Veelgestelde vragen over spraakassistenten
               href: faq-voice-assistants.md
+    - name: Spraakassistenten op Windows
+      items:
+        - name: Overzicht van spraakassistenten op Windows
+          href: windows-voice-assistants-overview.md
+        - name: Instructiegidsen
+          items:
+            - name: Begin uw assistent te ontwikkelen met Windows
+              href: how-to-windows-voice-assistants-get-started.md
+            - name: Spraakactivering inschakelen
+              href: windows-voice-assistants-implementation-guide.md
+        - name: Resources
+          items:
+            - name: Privacyvereisten en richtlijnen
+              href: windows-voice-assistants-automatic-enablement-guidelines.md
+            - name: Best practices voor assistentervaringen
+              href: windows-voice-assistants-best-practices.md
+            - name: Voorbeelden en veelgestelde vragen
+              href: windows-voice-assistants-faq.md
     - name: Aangepast trefwoord
       items:
         - name: Overzicht van aangepaste trefwoorden
           href: custom-keyword-overview.md
         - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
           href: speech-devices-sdk-kws-guidelines.md
-        - name: Aangepaste herkenning van trefwoorden
+        - name: Aangepaste trefwoordherkenning
           href: speech-devices-sdk-create-kws.md
 - name: Hosting
   items:

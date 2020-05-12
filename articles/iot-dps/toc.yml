@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-sjabloon
           href: quick-setup-auto-provision-rm.md
-    - name: Een enkel gesimuleerd apparaat inrichten
+    - name: Eén apparaat inrichten
       items:
         - name: Attestation met behulp van een symmetrische sleutel
           items:
