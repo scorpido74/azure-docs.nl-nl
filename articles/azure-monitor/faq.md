@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/11/2020
+ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732033"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117781"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -196,11 +196,15 @@ De weer gave Designer is alleen beschikbaar voor gebruikers die zijn toegewezen 
 * [Diagnostische gegevens van Azure](platform/diagnostics-extension-to-application-insights.md)
 * [Java-web-app](app/java-troubleshoot.md)
 
-*Ik krijg geen gegevens van mijn server*
+*Ik krijg geen gegevens van mijn server:*
 
 * [Firewall-uitzonde ringen instellen](app/ip-addresses.md)
 * [Een ASP.NET-Server instellen](app/monitor-performance-live-website-now.md)
 * [Een Java-Server instellen](app/java-agent.md)
+
+*Hoeveel Application Insights moet ik implementeren?:*
+
+* [Hoe kunt u uw Application Insights-implementatie ontwerpen: een versus veel Application Insights bronnen?](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>Kan ik Application Insights gebruiken met...?
 
@@ -247,13 +251,13 @@ De details zijn afhankelijk van het type project. Voor een webtoepassing:
 * Hiermee worden items ingevoegd in:
   * Web.config
   * packages. config
-* (Alleen nieuwe projecten: als u [Application Insights toevoegt aan een bestaand project][start], moet u dit hand matig doen.) Hiermee worden fragmenten ingevoegd in de client-en server code om ze te initialiseren met de Application Insights Resource-ID. In een MVC-app wordt bijvoorbeeld code ingevoegd in de basis pagina weergaven/gedeeld/\_layout. cshtml
+* (Alleen nieuwe projecten: als u [Application Insights toevoegt aan een bestaand project][start], moet u dit hand matig doen.) Hiermee worden fragmenten ingevoegd in de client-en server code om ze te initialiseren met de Application Insights Resource-ID. In een MVC-app wordt bijvoorbeeld code ingevoegd in de basis pagina weergaven/gedeeld/ \_ Layout. cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hoe kan ik upgrade van oudere SDK-versies?
 Zie de [release opmerkingen](app/release-notes.md) voor de SDK die geschikt is voor uw type toepassing.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?
-Klik `ApplicationInsights.config` in Solution Explorer met de rechter muisknop en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
+Klik in Solution Explorer met de rechter muisknop `ApplicationInsights.config` en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Kan ik gebruiken `providers('Microsoft.Insights', 'components').apiVersions[0]` in mijn Azure Resource Manager-implementaties?
 
@@ -305,11 +309,11 @@ Meer informatie voor [ASP.net](app/api-filtering-sampling.md) of [Java](app/java
 We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Browser-telemetrie: we verzamelen het IP-adres van de afzender.
-* Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Als `X-Forwarded-For` is ingesteld, wordt deze niet verzameld.
+* Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Als is ingesteld, wordt deze niet verzameld `X-Forwarded-For` .
 * Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
 
 
-U kunt de `ClientIpHeaderTelemetryInitializer` configureren om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP`. [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+U kunt de configureren `ClientIpHeaderTelemetryInitializer` om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP` . [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 U kunt [Power bi gebruiken](app/export-power-bi.md ) om uw aanvraag-telemetrie weer te geven op een kaart.
 
@@ -378,7 +382,7 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 
 Door [steek proeven](app/sampling.md) wordt het aantal telemetriegegevens (aanvragen, aangepaste gebeurtenissen, enzovoort) verminderd die daad werkelijk vanuit uw app naar de portal worden verzonden. In de zoek opdracht ziet u het aantal items dat daad werkelijk is ontvangen. In metrische grafieken die een aantal gebeurtenissen weer geven, ziet u het aantal oorspronkelijke gebeurtenissen dat heeft plaatsgevonden. 
 
-Elk item dat wordt verzonden, bevat een `itemCount` eigenschap die laat zien hoeveel oorspronkelijke gebeurtenissen een item vertegenwoordigt. Als u de bemonsterings bewerking wilt observeren, kunt u deze query uitvoeren in Analytics:
+Elk item dat wordt verzonden `itemCount` , bevat een eigenschap die laat zien hoeveel oorspronkelijke gebeurtenissen een item vertegenwoordigt. Als u de bemonsterings bewerking wilt observeren, kunt u deze query uitvoeren in Analytics:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -436,7 +440,7 @@ Hiermee staat u toe dat uw webserver telemetrie naar onze eind punten verzendt.
 
 Verkeer van uw server naar een gateway op uw intranet routeren door eind punten in uw configuratie te overschrijven. Als deze eigenschappen van het eind punt niet aanwezig zijn in uw configuratie, gebruiken deze klassen de standaard waarden die hieronder worden weer gegeven in het voor beeld ApplicationInsights. config. 
 
-Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden door `http://<your.gateway.address>/<relative path>`.
+Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden door `http://<your.gateway.address>/<relative path>` .
 
 
 ##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voor beeld van ApplicationInsights. config met standaard eindpunten:
@@ -515,7 +519,7 @@ Dit zijn niet-container processen die op uw knoop punt worden uitgevoerd.
 
 Hoe kunnen we dit berekenen?
 
-**Andere processen** = het*totale gebruik van het CAdvisor* - -*gebruik van een container proces*
+**Andere processen**  =  *Totaal gebruik van CAdvisor*  -  *Gebruik van container proces*
 
 De **andere processen** omvatten:
 
@@ -537,7 +541,7 @@ Voor Agent versie ciprod12042019 en hoger worden deze twee eigenschappen standaa
 
 Neem deel aan andere tabellen om deze eigenschaps waarden in de resultaten op te nemen.
 
-Wijzig uw query's zodat de eigenschappen van afbeeldingen en ImageTag worden ```ContainerInventory``` toegevoegd aan de tabel door lid te worden van de eigenschap ContainerID. U kunt de eigenschap name (zoals deze eerder in de tabel is ```ContainerLog``` weer gegeven) in het veld ContaineName van de KubepodInventory-tabel toevoegen door lid te worden van de eigenschap ContainerID. Dit is de aanbevolen optie.
+Wijzig uw query's zodat de eigenschappen van afbeeldingen en ImageTag worden toegevoegd aan de tabel door lid te worden van de ```ContainerInventory``` eigenschap ContainerID. U kunt de eigenschap name (zoals deze eerder in de tabel is weer gegeven) in het ```ContainerLog``` veld ContaineName van de KubepodInventory-tabel toevoegen door lid te worden van de eigenschap ContainerID. Dit is de aanbevolen optie.
 
 In het volgende voor beeld wordt uitgelegd hoe u deze veld waarden ophaalt met samen voegingen.
 
@@ -565,7 +569,7 @@ ContainerLog
 
 Schakel de verzameling voor deze eigenschappen voor elke container logboek regel opnieuw in.
 
-Als de eerste optie niet handig is als gevolg van wijzigingen in de query, kunt u het verzamelen van deze velden opnieuw inschakelen door ```log_collection_settings.enrich_container_logs``` de instelling in de configuratie-instellingen voor de [gegevens verzameling](insights/container-insights-agent-config.md)in te scha kelen.
+Als de eerste optie niet handig is als gevolg van wijzigingen in de query, kunt u het verzamelen van deze velden opnieuw inschakelen door de instelling ```log_collection_settings.enrich_container_logs``` in de configuratie-instellingen voor de [gegevens verzameling](insights/container-insights-agent-config.md)in te scha kelen.
 
 > [!NOTE]
 > De tweede optie wordt niet aanbevolen voor grote clusters met meer dan 50 knoop punten, omdat hiermee de API-server aanroepen van elk knoop punt in het cluster worden gegenereerd om deze verrijking uit te voeren. Met deze optie wordt ook de gegevens grootte voor elke verzamelde logboek regel verhoogd.
@@ -628,7 +632,7 @@ Raadpleeg de volgende [github-koppeling](https://github.com/moby/moby/issues/229
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hoe kan ik Azure AD-fouten oplossen wanneer ik live-logboeken inschakel? 
 
-Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn\>geconfigureerd voor de toepassing: ' <-toepassings-id '**. De oplossing voor het oplossen hiervan vindt u in het artikel [informatie over container gegevens in realtime weer geven met Azure monitor voor containers](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: ' <-toepassings-id \> '**. De oplossing voor het oplossen hiervan vindt u in het artikel [informatie over container gegevens in realtime weer geven met Azure monitor voor containers](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Waarom kan ik het cluster niet upgraden na het onboarden?
 
