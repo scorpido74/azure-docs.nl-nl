@@ -3,14 +3,14 @@ title: Azure Functions controleren met Azure Monitor-logboeken
 description: Meer informatie over het gebruik van Azure Monitor-logboeken met Azure Functions voor het bewaken van functie-uitvoeringen.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649871"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121621"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
@@ -25,20 +25,26 @@ Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/)
 
 ## <a name="setting-up"></a>Instellen
 
-Selecteer **Diagnostische instellingen** in het gedeelte **bewaking** en klik vervolgens op **Diagnostische instelling toevoegen**.
+1. Selecteer in de sectie **bewaking** van de functie-app [Azure portal](https://portal.azure.com)in het Azure Portal **Diagnostische instellingen**en selecteer vervolgens **Diagnostische instelling toevoegen**.
 
-![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Diagnostische instellingen selecteren":::
 
-Kies op de pagina **Diagnostische instellingen** de optie **verzenden naar log Analytics**en selecteer vervolgens uw log Analytics-werk ruimte. Onder **logboek** kiest u **FunctionAppLogs**. deze tabel bevat de gewenste Logboeken.
+1. Kies op de pagina **Diagnostische instellingen** onder **categorie Details** en **logboek**de optie **FunctionAppLogs**.
 
-![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/choose-table.png)
+   De tabel **FunctionAppLogs** bevat de gewenste Logboeken.
+
+1. Klik onder **Details van bestemming**op **verzenden naar log Analytics**en selecteer vervolgens uw **log Analytics werk ruimte**. 
+
+1. Voer een naam in voor de **Diagnostische instellingen**en selecteer vervolgens **Opslaan**.
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Een diagnostische instelling toevoegen":::
 
 ## <a name="user-generated-logs"></a>Door de gebruiker gegenereerde logboeken
 
-Als u aangepaste logboeken wilt genereren, kunt u de specifieke registratie-instructie gebruiken, afhankelijk van uw taal. Hier volgen enkele voor beelden van code fragmenten:
+Als u aangepaste logboeken wilt genereren, gebruikt u de registratie-instructie die specifiek is voor uw taal. Hier volgen enkele voor beelden van code fragmenten:
 
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
@@ -56,7 +62,7 @@ context.getLogger().info("My app logs here.");
 context.log('My app logs here.');
 ```
 
-# <a name="powershell"></a>[Zo](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Query's uitvoeren op de logboeken
 
-Als u de gegenereerde logboeken wilt doorzoeken, gaat u naar de Log Analytics-werk ruimte die u hebt geconfigureerd om de functie Logboeken te verzenden naar en klikt u op **Logboeken**.
+Query's uitvoeren op de gegenereerde logboeken:
+ 
+1. Selecteer **Diagnostische instellingen**uit de functie-app. 
 
-![Query venster in de werk ruimte van LA](media/functions-monitor-log-analytics/querying.png)
+1. Selecteer in de lijst **Diagnostische instellingen** de log Analytics werk ruimte die u hebt geconfigureerd voor het verzenden van de functie Logboeken naar. 
 
-Azure Functions worden alle logboeken naar de tabel **FunctionAppLogs** geschreven. Dit zijn enkele voor beelden van query's.
+1. Selecteer op de pagina **log Analytics werk ruimte** **Logboeken**.
+
+   Azure Functions schrijft alle logboeken naar de tabel **FunctionAppLogs** onder **LogManagement**. 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Query venster in Log Analytics werk ruimte":::
+
+Hier volgen enkele voor beelden van query's:
 
 ### <a name="all-logs"></a>Alle logboeken
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Een specifieke functie Logboeken
+### <a name="specific-function-logs"></a>Specifieke functie Logboeken
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk het [Azure functions overzicht](functions-overview.md)
-- Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)
+- Bekijk het [Azure functions overzicht](functions-overview.md).
+- Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md).
 - Meer informatie over de [query taal](../azure-monitor/log-query/get-started-queries.md).

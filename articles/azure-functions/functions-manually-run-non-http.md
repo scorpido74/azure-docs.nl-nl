@@ -3,14 +3,14 @@ title: Handmatig niet door HTTP geactiveerde Azure-functies uitvoeren
 description: Een HTTP-aanvraag gebruiken om niet door HTTP geactiveerde Azure-functies uit te voeren
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892356"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121738"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Handmatig een niet door HTTP geactiveerde functie uitvoeren
 
@@ -37,11 +37,17 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
 
 ## <a name="get-the-functions-master-key"></a>De hoofdsleutel van de functie ophalen
 
-Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie **Hostsleutels**. Klik in de rij *_master* op de knop **Kopiëren** om de hoofdsleutel naar het klembord te kopiëren.
+1. Navigeer naar uw functie in de Azure Portal en selecteer **functie toetsen**. Selecteer vervolgens de functie sleutel die u wilt kopiëren. 
 
-![Hoofdsleutel vanaf scherm Functiebeheer kopiëren](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
-Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te gaan naar het venster met het codebestand. Klik vervolgens op het tabblad **Logboeken** . U ziet berichten uit de functie die hier worden vastgelegd wanneer u de functie hand matig uitvoert vanuit postman.
+1. Kopieer de sleutel waarde in het gedeelte **sleutel bewerken** naar het klem bord en selecteer **OK**.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopieer de hoofd sleutel naar het klem bord." border="true":::
+
+1. Nadat u de *_master* sleutel hebt gekopieerd, selecteert u **code + test**en selecteert u vervolgens **Logboeken**. Hier zijn de berichten van de functie gelogd als u de functie handmatig in Postman uitvoert.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Bekijk de logboeken om de resultaten van de hoofd sleutel test weer te geven." border="true":::
 
 > [!CAUTION]  
 > Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren.
@@ -51,27 +57,27 @@ Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te g
 Open Postman en volg deze stappen:
 
 1. Voer de **aanvraaglocatie in het URL-tekstvak in**.
-2. Zorg ervoor dat de HTTP-methode is ingesteld op **POST**.
-3. **Klik** op het tabblad **Headers**.
-4. Voer **x-functions-key** in als de eerste **sleutel** en plak de hoofdsleutel (vanaf het klembord) in het vak **waarde**.
-5. Voer **Content-Type** in als de tweede **sleutel** en voer **application/json** in als de **waarde**.
+1. Zorg ervoor dat de HTTP-methode is ingesteld op **POST**.
+1. Selecteer het tabblad **kopteksten** .
+1. Typ **x-functions-Key** als de eerste sleutel en plak de hoofd sleutel (van het klem bord) als waarde.
+1. Typ **Content-type** als tweede sleutel en typ **Application/JSON** als waarde.
 
-    ![Instellingen voor de Postman-headers](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Instellingen van Postman-headers." border="true":::
 
-6. **Klik** op het tabblad **Hoofdtekst**.
-7. Voer **{ "input": "test" }** in als de hoofdtekst voor de aanvraag.
+1. Selecteer het tabblad **Hoofdtekst**.
+1. Typ **{"input": "test"}** als de hoofd tekst van de aanvraag.
 
-    ![Instellingen voor de Postman-hoofdtekst](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Instellingen van de Postman-hoofd tekst." border="true":::
 
-8. Klik op **Verzenden**.
+1. Selecteer **Verzenden**.
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Verzend een aanvraag met een bericht." border="true":::
 
-    ![Een aanvraag verzenden met Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    Postman rapporteert vervolgens de status **202 - Geaccepteerd**.
 
-Postman rapporteert vervolgens de status **202 - Geaccepteerd**.
+1. Ga vervolgens terug naar uw functie in de Azure-portal. Bekijk de logboeken en er worden berichten weer geven die afkomstig zijn van de hand matige aanroep van de functie.
 
-Ga vervolgens terug naar uw functie in de Azure-portal. Ga naar het venster *Logboeken* en u ziet berichten verschijnen die afkomstig zijn van de handmatige aanroep naar de functie.
-
-![Resultaten in het logboek van de functie na handmatige aanroep](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Bekijk de logboeken om de resultaten van de hoofd sleutel test weer te geven." border="true":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
