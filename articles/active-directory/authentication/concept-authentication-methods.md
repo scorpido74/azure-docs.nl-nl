@@ -1,64 +1,201 @@
 ---
-title: Verificatie methoden-Azure Active Directory
-description: Verificatie methoden die beschikbaar zijn in azure AD voor MFA en SSPR
+title: Verificatie methoden en-functies-Azure Active Directory
+description: Meer informatie over de verschillende verificatie methoden en-functies die beschikbaar zijn in Azure Active Directory om aanmeldings gebeurtenissen te verbeteren en te beveiligen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968774"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116376"
 ---
-# <a name="what-are-authentication-methods"></a>Wat zijn verificatiemethoden?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke verificatie-en verificatie methoden zijn er beschikbaar in Azure Active Directory?
 
-Als beheerder kiest u verificatie methoden voor Azure Multi-Factor Authentication en self-service voor wachtwoord herstel (SSPR). het wordt aanbevolen dat u gebruikers verplicht om meerdere verificatie methoden te registreren. Wanneer een verificatie methode niet beschikbaar is voor een gebruiker, kunnen ze ervoor kiezen om te verifiëren met een andere methode.
+Als onderdeel van de aanmeldings ervaring voor accounts in Azure Active Directory (Azure AD), zijn er verschillende manieren waarop een gebruiker zichzelf kan verifiëren. Een gebruikers naam en wacht woord zijn de meest voorkomende manier waarop een gebruiker historische referenties zou opgeven. Met moderne verificatie-en beveiligings functies in azure AD kan het basis wachtwoord worden aangevuld of worden vervangen door extra verificatie methoden.
 
-Beheerders kunnen in beleid definiëren welke authenticatie methoden beschikbaar zijn voor gebruikers van SSPR en MFA. Sommige verificatie methoden zijn mogelijk niet beschikbaar voor alle functies. Zie voor meer informatie over het configureren van uw beleid de artikelen [over het implementeren van selfservice voor wachtwoord herstel](howto-sspr-deployment.md) en het [plannen van een Azure multi-factor Authentication](howto-mfa-getstarted.md) voor de Cloud
+Een gebruiker in azure AD kan ervoor kiezen om te verifiëren met behulp van een van de volgende verificatie methoden:
 
-Micro soft raadt beheerders ten zeerste aan dat gebruikers meer dan het minimale vereiste aantal authenticatie methoden kunnen selecteren voor het geval ze geen toegang tot één hebben.
+* Traditionele gebruikers naam en wacht woord
+* Aanmelding met wacht woord voor app Microsoft Authenticator
+* OATH-hardware-token of FIDO2-beveiligings sleutel
+* Aanmelden op basis van een wacht woord zonder wachtwoord aanmelding
 
-|Verificatiemethode|Gebruik|
-| --- | --- |
-| Wachtwoord | MFA en SSPR |
-| Beveiligingsvragen | Alleen SSPR |
-| E-mailadres | Alleen SSPR |
-| Microsoft Authenticator-app | MFA en SSPR |
-| OATH-hardware-token | Open bare Preview voor MFA en SSPR |
-| Sms | MFA en SSPR |
-| Spraakoproep | MFA en SSPR |
-| App-wachtwoorden | Alleen in bepaalde gevallen MFA |
+Veel accounts in azure AD zijn ingeschakeld voor Self-service voor wachtwoord herstel (SSPR) of Azure Multi-Factor Authentication. Deze functies omvatten aanvullende verificatie methoden, zoals een telefoon gesprek of beveiligings vragen. Het is raadzaam dat u gebruikers verplicht om meerdere verificatie methoden te registreren. Wanneer een methode niet beschikbaar is voor een gebruiker, kunnen ze ervoor kiezen om te verifiëren met een andere methode.
+
+De volgende tabel bevat een overzicht van de verificatie-en verificatie methoden die beschikbaar zijn voor de verschillende scenario's:
+
+| Methode | Gebruiken bij aanmelding | Gebruiken tijdens verificatie |
+| --- | --- | --- |
+| [Wachtwoord](#password) | Ja | MFA en SSPR |
+| [Microsoft Authenticator-app](#microsoft-authenticator-app) | Ja (preview-versie) | MFA en SSPR |
+| [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Ja | Alleen MFA |
+| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens) | Ja | SSPR en MFA |
+| [Sms](#phone-options) | Ja (preview-versie) | MFA en SSPR |
+| [Spraakoproep](#phone-options) | Nee | MFA en SSPR |
+| [Beveiligingsvragen](#security-questions) | Nee | Alleen SSPR |
+| [E-mailadres](#email-address) | Nee | Alleen SSPR |
+| [App-wachtwoorden](#app-passwords) | Nee | Alleen in bepaalde gevallen MFA |
+
+Dit artikel bevat een overzicht van de verschillende verificatie-en verificatie methoden die beschikbaar zijn in azure AD en alle specifieke beperkingen of beperkingen.
 
 ![Verificatie methoden die in gebruik zijn op het aanmeldings scherm](media/concept-authentication-methods/overview-login.png)
 
-|     |
-| --- |
-| OATH-hardware-tokens voor MFA en SSPR zijn open bare preview-functies van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
-|     |
-
 ## <a name="password"></a>Wachtwoord
 
-Uw Azure AD-wacht woord wordt beschouwd als een verificatie methode. Het is de enige methode die **niet kan worden uitgeschakeld**.
+Een Azure AD-wacht woord is vaak een van de primaire verificatie methoden. U kunt de verificatie methode voor wacht woorden niet uitschakelen.
+
+Zelfs als u een verificatie methode gebruikt, zoals een [aanmelding op basis van SMS](howto-authentication-sms-signin.md) als de gebruiker niet het wacht woord gebruikt om te ondertekenen, blijft een wacht woord als een beschik bare verificatie methode.
+
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-app
+
+De verificator-app biedt een extra beveiligings niveau voor uw Azure AD-werk-of school account of uw Microsoft-account en is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594), [IOS](https://go.microsoft.com/fwlink/?linkid=866594)en [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Met de Microsoft Authenticator-app kunnen gebruikers tijdens de aanmelding of als extra verificatie optie worden geverifieerd tijdens de selfservice voor het opnieuw instellen van wacht woorden (SSPR) of Azure Multi-Factor Authentication-gebeurtenissen.
+
+Gebruikers kunnen een melding ontvangen via de mobiele app om ze goed te keuren of te weigeren, of de verificator-app gebruiken voor het genereren van een OATH-verificatie code die kan worden ingevoerd in een aanmeldings interface. Als u zowel een melding als een verificatie code inschakelt, kunnen gebruikers die de verificator-app registreren, een van beide methoden gebruiken om hun identiteit te verifiëren.
+
+Als u de verificator-app bij een aanmeldings prompt wilt gebruiken in plaats van een combi natie van gebruikers naam en wacht woord, raadpleegt u [aanmelden zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)](howto-authentication-passwordless-phone.md).
+
+> [!NOTE]
+> Gebruikers hebben geen optie om hun mobiele app te registreren wanneer ze SSPR inschakelen. In plaats daarvan kunnen gebruikers hun mobiele app registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) of als onderdeel van de registratie van gecombineerde beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+
+### <a name="notification-through-mobile-app"></a>Melding via mobiele app
+
+De verificator-app kan helpen voor komen dat onbevoegde toegang tot accounts en frauduleuze trans acties wordt afgebroken door een melding naar uw smartphone of Tablet te pushen. Gebruikers zien de melding en als deze legitiem is, selecteert u **verifiëren**. Als dat niet het geval is, kunnen ze **weigeren**selecteren.
+
+![Scherm afbeelding van voor beeld webbrowser prompt voor verificator-app-melding voor het volt ooien van het aanmeldings proces](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+
+> [!NOTE]
+> Als uw organisatie mede werkers in de volks Republiek China heeft of op reis gaat, werkt de *melding via de mobiele app* -methode op Android-apparaten niet in dat land. Alternatieve verificatie methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
+
+### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
+
+De verificator-app kan worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code in die is opgegeven door de verificator-app in de aanmeldings interface. De verificatiecode biedt een tweede vorm van verificatie.
+
+Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens of verificator-toepassingen, zoals de app Microsoft Authenticator, die op elk gewenst moment worden geconfigureerd voor gebruik.
+
+> [!WARNING]
+> Een verificatie code is de enige optie die beschikbaar is voor gebruikers, om ervoor te zorgen dat het hoogste beveiligings niveau voor de selfservice voor het opnieuw instellen van wacht woorden wanneer er slechts één methode vereist is voor opnieuw instellen.
+>
+> Wanneer twee methoden zijn vereist, kunnen gebruikers een melding of verificatie code gebruiken naast andere ingeschakelde methoden.
+
+## <a name="fido2-security-keys"></a>FIDO2-beveiligings sleutels
+
+De FIDO-Alliantie (Fast IDentity online) helpt u bij het promo veren van open-verificatie standaarden en de gebruiker van wacht woorden te beperken als een vorm van verificatie. FIDO2 is de nieuwste standaard die de webverificatie (webauth)-standaard bevat.
+
+Als u FIDO2-beveiligings sleutels wilt gebruiken bij een aanmeldings prompt in plaats van een combi natie van gebruikers naam en wacht woord, raadpleegt u [wacht woordloze FIDO2 beveiligings sleutel aanmelden inschakelen (preview)](howto-authentication-passwordless-security-key.md).
+
+Gebruikers kunnen zich registreren en vervolgens een FIDO2-beveiligings sleutel bij de aanmeldings interface selecteren als hun belangrijkste verificatie methode. Deze FIDO2-beveiligings sleutels zijn doorgaans USB-apparaten, maar kunnen ook Bluetooth of NFC gebruiken. Met een hardwareapparaat dat de verificatie afhandelt, wordt de beveiliging van een account verhoogd omdat er geen wacht woord is dat kan worden weer gegeven of geraden.
+
+FIDO2-beveiligings sleutels in azure AD zijn momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+
+## <a name="oath-hardware-tokens"></a>OATH-hardwaretokens
+
+OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. Azure AD biedt ondersteuning voor het gebruik van OATH-mobiele TOTP SHA-1-tokens van het 30-Second-of 60-Second-RAS. Klanten kunnen deze tokens aanschaffen bij de leverancier van hun keuze.
+
+Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutel mag alleen de tekens *a-z* of *a-* z en cijfers *1-7*bevatten en moet worden gecodeerd in *Base32*.
+
+OATH-hardware-tokens in azure AD zijn momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+
+![OATH-tokens uploaden naar het venster MFA OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+
+Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals wordt weer gegeven in het volgende voor beeld:
+
+```csv
+upn,serial number,secret key,time interval,manufacturer,model
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt.
+
+Als een beheerder zich de juiste indeling als een CSV-bestand heeft aangemeld, kunt u zich aanmelden bij de Azure Portal, naar **Azure Active Directory**  >  **beveiligings**  >  **MFA**  >  **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
+
+Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Selecteer de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u moet oplossen. De veld namen in het gedownloade CSV-bestand wijken af van de geüploade versie.
+
+Zodra er fouten zijn opgelost, kan de beheerder elke sleutel activeren door **Activate** voor het token te selecteren en de otp op te geven die op het token wordt weer gegeven.
+
+Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens of verificator-toepassingen, zoals de app Microsoft Authenticator, die op elk gewenst moment worden geconfigureerd voor gebruik.
+
+## <a name="phone-options"></a>Telefoon opties
+
+Voor directe verificatie met een tekst bericht kunt u [gebruikers configureren en inschakelen voor verificatie op basis van SMS (preview-versie)](howto-authentication-sms-signin.md). Aanmelding op basis van SMS is uitstekend voor front-line werk nemers. Met aanmelden op basis van SMS hoeven gebruikers geen gebruikers naam en wacht woord te kennen om toegang te krijgen tot toepassingen en services. De gebruiker voert het geregistreerde mobiele telefoon nummer in, ontvangt een SMS-bericht met een verificatie code en voert die in de aanmeldings interface in.
+
+Gebruikers kunnen zich ook zelf verifiëren via een mobiele telefoon of een zakelijke telefoon als een secundaire vorm van verificatie die wordt gebruikt tijdens Azure Multi-Factor Authentication of selfservice voor wachtwoord herstel (SSPR).
+
+Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld *+ 1 4251234567*.
+
+> [!NOTE]
+> Er moet een spatie zijn tussen de land code en het telefoon nummer.
+>
+> Het opnieuw instellen van wacht woorden biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de *+ 1-4251234567X12345* worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
+
+### <a name="mobile-phone-verification"></a>Verificatie van mobiele telefoon
+
+Voor Azure Multi-Factor Authentication of SSPR kunnen gebruikers ervoor kiezen om een SMS-bericht te ontvangen met een verificatie code om in te voeren in de aanmeldings interface, of om een telefoon gesprek te ontvangen met een prompt om hun gedefinieerde pincode in te voeren.
+
+Als gebruikers niet willen dat hun mobiele telefoon nummer wordt weer gegeven in de map, maar u dit wilt gebruiken voor het opnieuw instellen van wacht woorden, moeten beheerders het telefoon nummer in de map niet vullen. In plaats daarvan moeten gebruikers hun kenmerk voor de verificatie van de **telefoon** invullen via de registratie van gecombineerde beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Beheerders kunnen deze informatie zien in het profiel van de gebruiker, maar ze worden niet elders gepubliceerd.
+
+![Scherm afbeelding van de Azure Portal waarin de verificatie methoden met een ingevuld telefoon nummer worden weer gegeven](media/concept-authentication-methods/user-authentication-methods.png)
+
+Micro soft biedt geen garantie voor consistente op SMS of spraak gebaseerde Azure Multi-Factor Authentication prompts met hetzelfde nummer. In het belang van onze gebruikers kunnen we op elk gewenst moment korte codes toevoegen of verwijderen, omdat we route aanpassingen aanbrengen om de bezorgings mogelijkheden van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
+
+#### <a name="text-message-verification"></a>Verificatie van SMS-berichten
+
+Met de verificatie van SMS-berichten tijdens SSPR of Azure Multi-Factor Authentication, wordt er een sm's verzonden naar het mobiele telefoon nummer met een verificatie code. Om het aanmeldings proces te volt ooien, wordt de opgegeven verificatie code ingevoerd in de aanmeldings interface.
+
+#### <a name="phone-call-verification"></a>Verificatie via telefoon oproep
+
+Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
+
+### <a name="office-phone-verification"></a>Verificatie op bedrijfs telefoon
+
+Het kenmerk Office Phone wordt beheerd door de Azure AD-beheerder en kan niet worden geregistreerd door een gebruiker zelf.
+
+Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
+
+### <a name="troubleshooting-phone-options"></a>Problemen met telefoonopties oplossen
+
+Als u problemen ondervindt met telefoon verificatie voor Azure AD, raadpleegt u de volgende stappen voor probleem oplossing:
+
+* De geblokkeerde beller-ID op één apparaat.
+   * Bekijk alle geblokkeerde nummers die op het apparaat zijn geconfigureerd.
+* Onjuist telefoon nummer of onjuiste land code of Verwar ring tussen privé telefoon nummer en telefoon nummer van werk.
+   * Problemen oplossen met het gebruikers object en de geconfigureerde verificatie methoden. Controleer of de juiste telefoon nummers zijn geregistreerd.
+* Verkeerde pincode ingevoerd.
+   * Bevestig dat de gebruiker de juiste pincode heeft gebruikt als geregistreerd voor hun account.
+* Oproep doorgestuurd naar Voice mail.
+   * Zorg ervoor dat de telefoon is ingeschakeld voor de gebruiker en dat de service beschikbaar is in hun gebied of gebruik een alternatieve methode.
+* Gebruiker is geblokkeerd
+   * Laat een Azure AD-beheerder de gebruiker blok keren in de Azure Portal.
+* SMS is niet geabonneerd op het apparaat.
+   * Laat de gebruiker methoden wijzigen of SMS activeren op het apparaat.
+* Defecte telecommunicatie providers, zoals geen telefoon invoer gedetecteerd, ontbrekende DTMF Toon problemen, een geblokkeerde beller-ID op meerdere apparaten of geblokkeerde SMS-computers op meerdere apparaten.
+   * Micro soft gebruikt meerdere telecom providers om telefoon gesprekken en SMS-berichten voor verificatie te routeren. Als u een van de bovenstaande problemen ziet, moet een gebruiker de methode ten minste vijf keer binnen vijf minuten gebruiken en de gegevens van die gebruiker beschikbaar hebben als u contact opneemt met micro soft ondersteuning.
 
 ## <a name="security-questions"></a>Beveiligingsvragen
 
-Beveiligings vragen zijn **alleen beschikbaar in azure AD self-service voor wachtwoord herstel** naar niet-beheerders accounts.
+Beveiligings vragen worden niet als een verificatie methode gebruikt tijdens een aanmeldings gebeurtenis. In plaats daarvan kunnen beveiligings vragen worden gebruikt tijdens het SSPR-proces (self-service voor wachtwoord herstel) om te bevestigen wie u bent. Beheerders accounts kunnen geen beveiligings vragen als verificatie methode gebruiken met SSPR.
 
-Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi natie met een andere methode. Beveiligings vragen kunnen minder veilig zijn dan andere methoden omdat sommige mensen de antwoorden op de vragen van een andere gebruiker kunnen kennen.
+Wanneer gebruikers zich registreren voor SSPR, wordt u gevraagd de verificatie methoden te kiezen die u wilt gebruiken. Als ze ervoor kiezen om beveiligings vragen te gebruiken, kiezen ze uit een set vragen om te vragen en ze vervolgens hun eigen antwoorden te geven.
+
+![Scherm afbeelding van de Azure Portal waarin de verificatie methoden en-opties voor beveiligings vragen worden weer gegeven](media/concept-authentication-methods/security-questions-authentication-method.png)
 
 > [!NOTE]
 > Beveiligings vragen worden privé opgeslagen en beveiligd op een gebruikers object in de Directory en kunnen alleen worden beantwoord door gebruikers tijdens de registratie. Het is niet mogelijk dat een beheerder de vragen of antwoorden van een gebruiker kan lezen of wijzigen.
->
+
+Beveiligings vragen kunnen minder veilig zijn dan andere methoden omdat sommige mensen de antwoorden op de vragen van een andere gebruiker kunnen kennen. Als u beveiligings vragen met SSPR gebruikt, is het raadzaam deze te gebruiken in combi natie met een andere methode. Een gebruiker kan worden gevraagd om de Microsoft Authenticator app of telefoon verificatie te gebruiken om hun identiteit te verifiëren tijdens het SSPR-proces en om alleen beveiligings vragen te kiezen als ze hun telefoon of geregistreerd apparaat niet hebben.
 
 ### <a name="predefined-questions"></a>Vooraf gedefinieerde vragen
+
+De volgende vooraf gedefinieerde beveiligings vragen zijn beschikbaar voor gebruik als een verificatie methode met SSPR. Al deze beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Office 365-talen op basis van de browser land instelling van de gebruiker:
 
 * In welke stad hebt u uw eerste partner ontmoet?
 * In welke stad hebben uw ouders elkaar ontmoet?
@@ -96,15 +233,15 @@ Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi n
 * Wanneer u jonger was, wat wilt u doen wanneer u ingroeit?
 * Wie is de meest beroemde persoon die u ooit hebt ontmoet?
 
-Alle vooraf gedefinieerde beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Office 365-talen op basis van de browser land instelling van de gebruiker.
-
 ### <a name="custom-security-questions"></a>Aangepaste beveiligings vragen
 
-Aangepaste beveiligings vragen zijn niet gelokaliseerd. Alle aangepaste vragen worden weer gegeven in dezelfde taal als die in de gebruikers interface voor beheer, zelfs als de browser land instelling van de gebruiker verschillend is. Als u gelokaliseerde vragen nodig hebt, moet u de vooraf gedefinieerde vragen gebruiken.
+Voor extra flexibiliteit kunt u uw eigen aangepaste beveiligings vragen definiëren. De maximale lengte van een aangepaste beveiligings vraag is 200 tekens.
 
-De maximale lengte van een aangepaste beveiligings vraag is 200 tekens.
+Aangepaste beveiligings vragen worden niet automatisch gelokaliseerd zoals bij de standaard beveiligings vragen. Alle aangepaste vragen worden weer gegeven in dezelfde taal als die in de gebruikers interface voor beheer, zelfs als de browser land instelling van de gebruiker verschillend is. Als u gelokaliseerde vragen nodig hebt, moet u de vooraf gedefinieerde vragen gebruiken.
 
 ### <a name="security-question-requirements"></a>Vereisten voor beveiligings vragen
+
+Voor zowel standaard als aangepaste beveiligings vragen gelden de volgende vereisten en beperkingen:
 
 * De minimale antwoord teken limiet is drie tekens.
 * De maximale antwoord teken limiet is 40 tekens.
@@ -115,154 +252,39 @@ De maximale lengte van een aangepaste beveiligings vraag is 200 tekens.
 
 ## <a name="email-address"></a>E-mailadres
 
-E-mail adres is **alleen beschikbaar in de self-service voor wachtwoord herstel van Azure AD**.
+Een e-mail adres kan niet worden gebruikt als directe verificatie methode. E-mail adres is alleen beschikbaar als verificatie optie voor Self-service voor wachtwoord herstel (SSPR). Wanneer e-mail adres is geselecteerd tijdens SSPR, wordt er een e-mail bericht verzonden naar de gebruiker om het verificatie-en verificatie proces te volt ooien.
 
-Micro soft adviseert het gebruik van een e-mail account waarvoor het Azure AD-wacht woord van de gebruiker niet voor toegang is vereist.
+Tijdens de registratie voor SSPR geeft een gebruiker het e-mail adres op dat moet worden gebruikt. Het is raadzaam om een ander e-mail account dan hun bedrijfs account te gebruiken om er zeker van te zijn dat ze toegang hebben tijdens SSPR.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-app
+## <a name="app-passwords"></a>App-wachtwoorden
 
-De Microsoft Authenticator-app biedt een extra beveiligings niveau voor uw Azure AD-werk-of school account of uw Microsoft-account.
+Bepaalde oudere, niet-browser-apps begrijpen onderbrekingen of onderbrekingen in het verificatie proces niet. Als een gebruiker is ingeschakeld voor multi-factor Authentication en probeert een van deze oudere, niet-browser-apps te gebruiken, kunnen ze meestal niet goed worden geverifieerd. Met een app-wacht woord kunnen gebruikers zonder onderbreking blijven verifiëren met oudere, niet-browser-apps.
 
-De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) en [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
+Standaard kunnen gebruikers geen app-wacht woorden maken. Als u wilt toestaan dat gebruikers app-wacht woorden maken, selecteert u de optie **gebruikers toestaan app-wacht woorden te maken om zich aan te melden bij niet-browser-apps** onder *Service-instellingen* voor Azure multi-factor Authentication-eigenschappen van de gebruiker.
 
-> [!NOTE]
-> Gebruikers kunnen hun mobiele app niet registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel. In plaats daarvan kunnen gebruikers hun mobiele app registreren [https://aka.ms/mfasetup](https://aka.ms/mfasetup) op of in de preview-versie van [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)de registratie van beveiligings gegevens op.
->
+![Scherm afbeelding van de Azure Portal waarin de service-instellingen voor multi-factor Authentication worden weer gegeven om de gebruiker van app-wacht woorden toe te staan](media/concept-authentication-methods/app-password-authentication-method.png)
 
-### <a name="notification-through-mobile-app"></a>Melding via mobiele app
+Als u Azure Multi-Factor Authentication afdwingt met behulp van beleid voor voorwaardelijke toegang en niet via MFA per gebruiker, kunt u geen app-wacht woorden maken. Moderne toepassingen die gebruikmaken van beleid voor voorwaardelijke toegang om toegang te beheren, hoeven geen app-wacht woorden te hebben.
 
-De Microsoft Authenticator-app kan helpen voor komen dat onbevoegde toegang tot accounts en frauduleuze trans acties wordt gestopt door een melding naar uw smartphone of Tablet te pushen. Gebruikers zien de melding en als deze legitiem is, selecteert u verifiëren. Als dat niet het geval is, kunnen ze weigeren selecteren.
+Als uw organisatie federatief is voor eenmalige aanmelding (SSO) met Azure AD en u Azure Multi-Factor Authentication gebruikt, zijn de volgende overwegingen van toepassing:
 
-> [!WARNING]
-> Voor een self-service voor het opnieuw instellen van wacht woorden wanneer er slechts één methode vereist is voor opnieuw instellen, is verificatie code de enige optie die voor gebruikers beschikbaar is voor **het hoogste beveiligings niveau**.
->
-> Wanneer twee methoden vereist zijn, kunnen gebruikers naast andere ingeschakelde methoden opnieuw worden ingesteld met behulp van **een** melding **of** verificatie code.
->
-
-Als u het gebruik van beide meldingen via de mobiele app en de verificatie code van de mobiele app inschakelt, kunnen gebruikers die de Microsoft Authenticator-app via een melding registreren, beide meldingen en code gebruiken om hun identiteit te verifiëren.
-
-> [!NOTE]
-> Als uw organisatie mede werkers heeft in of reist naar China, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
-
-### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
-
-De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatiecode biedt een tweede vorm van verificatie.
-
-> [!WARNING]
-> Voor selfservice voor het opnieuw instellen van wacht woorden wanneer er slechts één methode vereist is voor het opnieuw instellen van de verificatie code is de enige optie beschikbaar voor gebruikers **om het hoogste beveiligings niveau te garanderen**.
->
-
-Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens of verificator-toepassingen, zoals de Microsoft Authenticator-app die op elk gewenst moment is geconfigureerd voor gebruik.
-
-## <a name="oath-hardware-tokens-public-preview"></a>OATH-hardware-tokens (open bare preview)
-
-OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. Azure AD biedt ondersteuning voor het gebruik van OATH-mobiele TOTP SHA-1-tokens van de 30-seconden of 60-Second-variëteit. Klanten kunnen deze tokens van de leverancier van hun keuze aanschaffen. Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutel mag alleen de tekens *a-z* of *a-* z en cijfers *1-7*bevatten en moet worden gecodeerd in Base32.
-
-![OATH-tokens uploaden naar de Blade MFA OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
-
-OATH-hardware-tokens worden ondersteund als onderdeel van een open bare preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews
-
-Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals wordt weer gegeven in het volgende voor beeld:
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
-
-> [!NOTE]
-> Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt.
-
-Als een beheerder zich de juiste indeling als een CSV-bestand heeft aangemeld, kunt u zich aanmelden bij de Azure Portal, naar **Azure Active Directory** > **beveiligings** > **MFA** > **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
-
-Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Klik op de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u kunt oplossen. De veld namen in het gedownloade CSV-bestand wijken af van de geüploade versie.
-
-Zodra er fouten zijn opgelost, kan de beheerder elke sleutel activeren door te klikken op **activeren** voor het token dat wordt geactiveerd en de otp op het token in te voeren.
-
-Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens of verificator-toepassingen, zoals de Microsoft Authenticator-app die op elk gewenst moment is geconfigureerd voor gebruik.
-
-## <a name="phone-options"></a>Telefoon opties
-
-### <a name="mobile-phone"></a>Mobiele telefoon
-
-Er zijn twee opties beschikbaar voor gebruikers met mobiele telefoons.
-
-Als gebruikers niet willen dat hun mobiele telefoon nummer wordt weer gegeven in de adres lijst, maar ze nog steeds willen gebruiken voor het opnieuw instellen van wacht woorden, moeten beheerders deze niet in de adres lijst invullen. Gebruikers moeten hun kenmerk voor **authenticatie** via de [registratie portal voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup)invullen. Beheerders kunnen deze informatie zien in het profiel van de gebruiker, maar ze worden niet elders gepubliceerd.
-
-Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld + 1 4255551234.
-
-> [!NOTE]
-> Er moet een spatie zijn tussen de land code en het telefoon nummer.
->
-> Het opnieuw instellen van een wacht woord biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de + 1-4255551234X12345 worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
-
-Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Multi-Factor Authentication op hetzelfde nummer. In het belang van onze gebruikers mag micro soft op elk gewenst moment korte codes toevoegen of verwijderen, aangezien we route aanpassingen aanbrengen om de levering van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
-
-#### <a name="text-message"></a>Sms-bericht
-
-Er wordt een SMS-bericht verzonden naar het mobiele telefoon nummer met een verificatie code. Voer de verificatie code in die is opgegeven in de aanmeldings interface om door te gaan.
-
-#### <a name="phone-call"></a>Telefoongesprek
-
-Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Vraag de oproep af en druk op # in het telefoon blok om te verifiëren
-
-> [!IMPORTANT]
-> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
-
-### <a name="office-phone"></a>Zakelijke telefoon
-
-Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Beantwoord het gesprek en druk op # in het telefoon blok om te verifiëren.
-
-Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld + 1 4255551234.
-
-Het kenmerk Office Phone wordt beheerd door de beheerder.
-
-> [!IMPORTANT]
-> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
-
-> [!NOTE]
-> Er moet een spatie zijn tussen de land code en het telefoon nummer.
->
-> Het opnieuw instellen van een wacht woord biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de + 1-4255551234X12345 worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
-
-### <a name="troubleshooting-phone-options"></a>Problemen met telefoonopties oplossen
-
-Algemene problemen met betrekking tot verificatie methoden met behulp van een telefoon nummer:
-
-* ID van de geblokkeerde beller op één apparaat
-   * Problemen met apparaat oplossen
-* Onjuist telefoon nummer, onjuiste land code, telefoon nummer thuis versus telefoon nummer werk
-   * Problemen met het gebruikers object en de geconfigureerde verificatie methoden oplossen. Controleer of de juiste telefoon nummers zijn geregistreerd.
-* Verkeerde pincode ingevoerd
-   * Bevestig dat de gebruiker de juiste pincode heeft gebruikt die in de Azure MFA-server is geregistreerd.
-* Oproep doorgestuurd naar Voice mail
-   * Zorg ervoor dat de gebruiker telefoon is ingeschakeld en dat de service beschikbaar is op hun gebied of gebruik een alternatieve methode.
-* Gebruiker is geblokkeerd
-   * Laat de beheerder de gebruiker blok keren in de Azure Portal.
-* SMS is niet geabonneerd op het apparaat
-   * Laat de gebruiker methoden wijzigen of SMS activeren op het apparaat.
-* Defecte telecommunicatie providers (geen telefoon invoer gevonden, ontbrekende DTMF-Toon problemen, geblokkeerde beller-ID op meerdere apparaten of geblokkeerde SMS-computers op meerdere apparaten)
-   * Micro soft gebruikt meerdere telecom providers om telefoon gesprekken en SMS-berichten voor verificatie te routeren. Als een van de bovenstaande problemen wordt weer gegeven, kan een gebruiker de methode ten minste 5 keer binnen vijf minuten gebruiken en de gegevens van die gebruiker beschikbaar hebben als u contact opneemt met micro soft ondersteuning.
-
-## <a name="app-passwords"></a>App-wacht woorden
-
-Bepaalde niet-browser-apps ondersteunen multi-factor Authentication niet, als een gebruiker is ingeschakeld voor multi-factor Authentication en probeert om niet-browser-apps te gebruiken, kunnen ze niet worden geverifieerd. Met een app-wacht woord kunnen gebruikers blijven verifiëren
-
-Als u Multi-Factor Authentication afdwingt via beleids regels voor voorwaardelijke toegang en niet via MFA per gebruiker, kunt u geen app-wacht woorden maken. Toepassingen die gebruikmaken van beleids regels voor voorwaardelijke toegang om toegang te beheren, hoeven geen app-wacht woorden te hebben.
-
-Als uw organisatie federatief is voor eenmalige aanmelding met Azure AD en u Azure MFA wilt gebruiken, moet u rekening houden met de volgende details:
-
-* Het app-wacht woord wordt geverifieerd door Azure AD en daarom wordt Federatie omzeild. Federatie wordt alleen gebruikt bij het instellen van app-wacht woorden. Voor federatieve gebruikers (SSO) worden wacht woorden opgeslagen in de organisatie-ID. Als de gebruiker het bedrijf verlaat, moet dat informatie naar de organisatie-ID stromen met behulp van DirSync. Het kan tot drie uur duren voordat het account is uitgeschakeld of verwijderd, waardoor het uitschakelen/verwijderen van app-wacht woorden in azure AD wordt vertraagd.
-* On-premises instellingen voor toegangsbeheer van client worden niet herkend door het app-wachtwoord.
-* Er is geen on-premises verificatie-logboek registratie/controle mogelijkheid beschikbaar voor app-wacht woorden.
-* Voor bepaalde geavanceerde architecturale ontwerpen moet u een combi natie van gebruikers naam en wacht woord en app-wacht woorden gebruiken wanneer verificatie in twee stappen wordt gebruikt met clients, afhankelijk van waar ze worden geverifieerd. Voor clients die worden geverifieerd aan de hand van een on-premises infra structuur, gebruikt u een gebruikers naam en wacht woord voor de organisatie. Voor clients die met Azure AD worden geverifieerd, gebruikt u het app-wacht woord.
-* Standaard kunnen gebruikers geen app-wacht woorden maken. Als u wilt toestaan dat gebruikers app-wacht woorden maken, selecteert u de **optie gebruikers toestaan app-wacht woorden te maken om zich aan te melden bij niet-browser toepassingen** onder service-instellingen.
+* Het app-wacht woord wordt geverifieerd door Azure AD, dus heeft geen Federatie over. Federatie wordt alleen gebruikt bij het instellen van app-wacht woorden. Voor federatieve gebruikers (SSO) worden wacht woorden opgeslagen in de organisatie-ID. Als de gebruiker het bedrijf verlaat, moet dat informatie naar de organisatie-ID stromen met behulp van DirSync. Het kan tot drie uur duren voordat het account is uitgeschakeld of verwijderd, waardoor het uitschakelen/verwijderen van app-wacht woorden in azure AD wordt vertraagd.
+* De on-premises Client Access Control instellingen worden niet gehonoreerd door app-wacht woorden.
+* Er is geen on-premises verificatie logboek registratie of controle mogelijkheid beschikbaar voor app-wacht woorden.
+* Bepaalde geavanceerde architecturale ontwerpen kunnen vereisen dat er een combi natie van gebruikers naam en wacht woord en app-wacht woorden wordt gebruikt wanneer u multi-factor Authentication gebruikt, afhankelijk van de locatie van de verificatie.
+    * Voor clients die worden geverifieerd aan de hand van een on-premises infra structuur, gebruikt u een gebruikers naam en wacht woord voor de organisatie.
+    * Voor clients die met Azure AD worden geverifieerd, gebruikt u het app-wacht woord.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Selfservice voor het opnieuw instellen van wacht woorden inschakelen voor uw organisatie](quickstart-sspr.md)
+Als u aan de slag wilt gaan, raadpleegt u de [zelf studie voor selfservice voor wachtwoord herstel (SSPR)][tutorial-sspr] en [Azure multi-factor Authentication][tutorial-azure-mfa].
 
-[Azure Multi-Factor Authentication inschakelen voor uw organisatie](howto-mfa-getstarted.md)
+Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer informatie over SSPR-concepten.
 
-[Gecombineerde registratie inschakelen in uw Tenant](howto-registration-mfa-sspr-combined.md)
+Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over MFA-concepten.
 
-[Documentatie voor de verificatie methode van de eind gebruiker](https://aka.ms/securityinfoguide)
+<!-- INTERNAL LINKS -->
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

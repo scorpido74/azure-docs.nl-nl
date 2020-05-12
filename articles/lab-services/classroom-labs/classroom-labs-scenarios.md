@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717981"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115112"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Klassikale Labs gebruiken voor trainingen
-U kunt een Lab instellen voor trainingen. Met de klassikale Labs van Azure Lab Services kunt u een lab maken voor uw training, waar elke getrainde gebruikmaakt van identieke en geïsoleerde omgevingen voor training. U kunt beleids regels Toep assen om ervoor te zorgen dat de trainings omgevingen alleen beschikbaar zijn voor elke getrainde wanneer ze deze nodig hebben en voldoende resources bevatten, zoals virtuele machines, die vereist zijn voor de training. 
+Met Azure Labs Services kunnen docenten, trainers of onderwijs assistenten snel en eenvoudig een online Lab maken om vooraf geconfigureerde leer omgevingen in te richten voor de trainees. Elke getrainde moet gebruik kunnen maken van identieke en geïsoleerde omgevingen voor de training. Beleids regels kunnen worden toegepast om ervoor te zorgen dat de trainings omgevingen alleen beschikbaar zijn voor elke trainer wanneer ze ze nodig hebben en voldoende resources bevatten, zoals virtuele machines, die vereist zijn voor de training. 
 
 ![Klas Lab](../media/classroom-labs-scenarios/classroom.png)
 

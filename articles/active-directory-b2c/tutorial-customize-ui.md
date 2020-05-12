@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186247"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116523"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
@@ -63,8 +63,8 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
  Azure AD B2C-code in een browser gebruikt een moderne en standaard benadering voor het laden van aangepaste inhoud vanuit een URL die u opgeeft in een gebruikers stroom. Met CORS (cross-Origin Resource Sharing) kunnen beperkte resources op een webpagina worden aangevraagd vanuit andere domeinen.
 
 1. Selecteer **CORS**in het menu.
-2. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
-3. Voor **toegestane methoden**selecteert u `GET`,`PUT`en `OPTIONS`.
+2. Voer in voor **toegestane oorsprongen** `https://your-tenant-name.b2clogin.com` . Vervang door `your-tenant-name` de naam van uw Azure AD B2C-Tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
+3. Voor **toegestane methoden**selecteert u `GET` , `PUT` en `OPTIONS` .
 4. Voer een asterisk (*) in bij **toegestane headers**.
 5. Voer een asterisk (*) in voor **weer gegeven headers**.
 6. Voer 200 in als **maximum leeftijd**.
@@ -75,9 +75,9 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
 
 ### <a name="create-the-customization-files"></a>De aanpassings bestanden maken
 
-Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u beginnen met het maken van een eenvoudig HTML-en CSS-bestand. U kunt uw HTML op elke gewenste manier configureren, maar deze moet een **div** -element met een id van `api`hebben. Bijvoorbeeld `<div id="api"></div>`. Azure AD B2C worden elementen in de `api` container geïnjecteerd wanneer de pagina wordt weer gegeven.
+Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u beginnen met het maken van een eenvoudig HTML-en CSS-bestand. U kunt uw HTML op elke gewenste manier configureren, maar deze moet een **div** -element met een id van hebben `api` . Bijvoorbeeld `<div id="api"></div>`. Azure AD B2C worden elementen in de `api` container geïnjecteerd wanneer de pagina wordt weer gegeven.
 
-1. Maak in een lokale map het volgende bestand en zorg ervoor dat u de naam `your-storage-account` van het opslag account en `your-container` de naam van de door u gemaakte container wijzigt. Bijvoorbeeld `https://store1.blob.core.windows.net/b2c/style.css`.
+1. Maak in een lokale map het volgende bestand en zorg ervoor dat u de `your-storage-account` naam van het opslag account en `your-container` de naam van de door u gemaakte container wijzigt. Bijvoorbeeld `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -166,4 +166,4 @@ In dit artikel hebt u het volgende geleerd:
 > * De aangepaste gebruikers interface testen
 
 > [!div class="nextstepaction"]
-> [Taal aanpassing in Azure Active Directory B2C](user-flow-language-customization.md)
+> [De gebruikers interface in Azure Active Directory B2C aanpassen](customize-ui-overview.md)

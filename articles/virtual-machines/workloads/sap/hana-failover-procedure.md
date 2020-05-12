@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617143"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117204"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedure bij failover van het noodherstel
 
@@ -34,7 +34,7 @@ Er zijn twee gevallen waarin u rekening moet houden bij een failover naar een DR
 >[!NOTE]
 >De volgende stappen moeten worden uitgevoerd in de HANA-eenheid voor grote instanties, waarmee de DR-eenheid wordt aangeduid. 
  
-Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen in ' Full DR failover-azure_hana_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
+Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen in ' Full DR failover-azure_hana_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf). 
 
 Als u meerdere exemplaren van SAP HANA failover wilt uitvoeren, voert u de azure_hana_dr_failover opdracht verschillende keren uit. Geef desgevraagd de SAP HANA SID op waarvoor u een failover wilt uitvoeren en die u wilt herstellen. 
 
@@ -115,7 +115,7 @@ Volg deze stappen:
 
 ## <a name="monitor-disaster-recovery-replication"></a>Replicatie voor herstel na nood gevallen controleren
 
-Voer het script `azure_hana_replication_status`uit om de status van de voortgang van de opslag replicatie te controleren. Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
+Voer het script uit om de status van de voortgang van de opslag replicatie te controleren `azure_hana_replication_status` . Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
 
 Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)voor meer informatie over de opdracht en de uitvoer.
 

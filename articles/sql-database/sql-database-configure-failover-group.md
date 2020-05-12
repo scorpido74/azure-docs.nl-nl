@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461800"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115129"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 
@@ -362,7 +362,7 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
 
    ![Gateway toevoegen voor primair beheerde exemplaar](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Nadat de subnet gateway is gemaakt, selecteert u **een resource maken** in het navigatie deel venster links en `Virtual network gateway` typt u in het zoekvak. Selecteer de bron van de **virtuele netwerk gateway** die is gepubliceerd door **micro soft**. 
+1. Nadat de subnet gateway is gemaakt, selecteert u **een resource maken** in het navigatie deel venster links en typt u `Virtual network gateway` in het zoekvak. Selecteer de bron van de **virtuele netwerk gateway** die is gepubliceerd door **micro soft**. 
 
    ![Een nieuwe gateway voor het virtuele netwerk maken](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -374,10 +374,10 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
     | --- | --- |
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
     | **Naam** | De naam voor de gateway van uw virtuele netwerk. | 
-    | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
+    | **Deel** | De regio waar uw secundaire beheerde instantie zich bevindt. |
     | **Gateway type** | Selecteer **VPN**. |
     | **VPN-type** | **Op route gebaseerd** selecteren |
-    | **SKU**| De standaard waarde `VpnGw1`van wijzigen. |
+    | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
     | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk voor uw secundaire beheerde exemplaar. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
@@ -434,15 +434,15 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Veld** | Waarde |
    | --- | --- |
    | **Abonnement** |  Het abonnement waar uw secundaire beheerde instantie zich bevindt. |
-   | **Naam** | De naam van de gateway van uw virtuele netwerk, `secondary-mi-gateway`zoals. | 
-   | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
+   | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . | 
+   | **Deel** | De regio waar uw secundaire beheerde instantie zich bevindt. |
    | **Gateway type** | Selecteer **VPN**. |
    | **VPN-type** | **Op route gebaseerd** selecteren |
-   | **SKU**| De standaard waarde `VpnGw1`van wijzigen. |
+   | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
    | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
-   | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary`. |
+   | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary` . |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, `secondary-gateway-IP`zoals. |
+   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Instellingen van secundaire gateway](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -500,11 +500,11 @@ Maak verbindingen tussen de twee gateways met behulp van de Azure Portal.
     1. Selecteer de resource groep voor uw beheerde instantie in de vervolg keuzelijst. 
     1. Selecteer de locatie van uw primaire beheerde instantie in de vervolg keuzelijst 
 1. Op het tabblad **instellingen** selecteert of voert u de volgende waarden in en selecteert u **OK**:
-    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `Primary-Gateway`.  
-    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `Secondary-Gateway`. 
+    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `Primary-Gateway` .  
+    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `Secondary-Gateway` . 
     1. Schakel het selectie vakje in naast **bidirectionele connectiviteit instellen**. 
     1. Wijzig de standaard naam van de primaire verbinding of geef deze de gewenste waarde. 
-    1. Geef een **gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk`. 
+    1. Geef een **gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk` . 
 
    ![Gateway verbinding maken](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
@@ -644,17 +644,30 @@ Test de failover van de failovergroep met behulp van Power shell.
 
 ---
 
+## <a name="use-private-link"></a>Private Link gebruiken
+
+Met behulp van een persoonlijke koppeling kunt u een logische server koppelen aan een specifiek privé IP-adres binnen het virtuele netwerk en subnet. 
+
+Ga als volgt te werk om een persoonlijke koppeling met uw failover-groep te gebruiken:
+
+1. Zorg ervoor dat de primaire en secundaire servers zich in een [gekoppelde regio](/azure/best-practices-availability-paired-regions)bevinden. 
+1. Maak het virtuele netwerk en het subnet in elke regio voor het hosten van persoonlijke eind punten voor primaire en secundaire servers, zodat ze niet-overlappende IP-adres ruimten hebben. Het primaire adres bereik van het virtuele netwerk van 10.0.0.0/16 en het secundaire virtuele netwerk adres bereik van 10.0.0.1/16 overlapt bijvoorbeeld. Zie voor meer informatie over de adresbereiken van het virtuele netwerk de blog [Azure virtuele netwerken ontwerpen](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/).
+1. Maak een [persoonlijk eind punt en Azure privé-DNS zone voor de primaire server](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
+1. Maak ook een persoonlijk eind punt voor de secundaire server, maar deze keer u ervoor kiest om dezelfde Privé-DNS zone die is gemaakt voor de primaire server, opnieuw te gebruiken. 
+1. Zodra de persoonlijke koppeling tot stand is gebracht, kunt u de failovergroep maken volgens de stappen die eerder in dit artikel zijn beschreven. 
+
+
 ## <a name="locate-listener-endpoint"></a>Listener-eind punt zoeken
 
 Als uw failovergroep is geconfigureerd, werkt u de connection string voor uw toepassing bij naar het listener-eind punt. Hierdoor blijft uw toepassing verbonden met de failover-groep-listener, in plaats van de primaire data base, elastische pool of het beheerde exemplaar. Op die manier hoeft u de connection string niet hand matig bij te werken telkens wanneer er een failover wordt uitgevoerd voor uw Azure SQL database-entiteit, en verkeer wordt doorgestuurd naar de entiteit die momenteel primair is. 
 
-Het listener-eind punt bevindt zich `fog-name.database.windows.net`in de vorm van en wordt weer gegeven in de Azure portal bij het weer geven van de failovergroep:
+Het listener-eind punt bevindt zich in de vorm van `fog-name.database.windows.net` en wordt weer gegeven in de Azure portal bij het weer geven van de failovergroep:
 
 ![connection string failover-groep](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Als u een failovergroep voor een enkele of gegroepeerde Data Base verwijdert, wordt de replicatie niet gestopt en wordt de gerepliceerde data base niet verwijderd. U moet de geo-replicatie hand matig stoppen en de data base van de secundaire server verwijderen als u één of een gegroepeerde Data Base wilt toevoegen aan een failovergroep nadat deze is verwijderd. Als u dit niet doet, kan dit resulteren in een fout die `The operation cannot be performed due to multiple errors` vergelijkbaar is met het toevoegen van de data base aan de failovergroep. 
+- Als u een failovergroep voor een enkele of gegroepeerde Data Base verwijdert, wordt de replicatie niet gestopt en wordt de gerepliceerde data base niet verwijderd. U moet de geo-replicatie hand matig stoppen en de data base van de secundaire server verwijderen als u één of een gegroepeerde Data Base wilt toevoegen aan een failovergroep nadat deze is verwijderd. Als u dit niet doet, kan dit resulteren in een fout die vergelijkbaar is met `The operation cannot be performed due to multiple errors` het toevoegen van de data base aan de failovergroep. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

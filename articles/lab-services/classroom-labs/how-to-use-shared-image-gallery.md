@@ -11,20 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a270107033590e340db49b85e8a67acbbb701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190446"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116863"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
-In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie van een virtuele machine van een sjabloon kan opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Deze installatie kopieën worden opgeslagen in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md)van Azure. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
+In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een sjabloon installatie kopie van een virtuele machine kan opslaan in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md) , zodat deze door anderen kan worden gebruikt om Labs te maken. 
 
-> [!NOTE]
-> Op dit moment biedt Azure Lab Services alleen ondersteuning voor het maken van sjabloon-Vm's op basis van alleen **gegeneraliseerde** VM-installatie kopieën (geen gespecialiseerde installatie kopieën) in een galerie met gedeelde installatie kopieën. 
+## <a name="scenarios"></a>Scenario's
+Hier volgen enkele scenario's die door deze functie worden ondersteund: 
+
+- Een Lab-account beheerder koppelt een galerie met gedeelde afbeeldingen aan het lab-account en uploadt een afbeelding naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Vervolgens kunnen Lab-ontwikkel aars die installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken om Labs te maken. 
+- Een Lab-account beheerder koppelt een galerie met gedeelde afbeeldingen aan het lab-account. Met een Lab Creator (docent) wordt de aangepaste afbeelding van zijn/haar Lab opgeslagen in de galerie met gedeelde afbeeldingen. Vervolgens kunnen andere Lab-makers deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun Labs te maken. 
+
+    Wanneer een afbeelding wordt opgeslagen in een galerie met gedeelde afbeeldingen, Azure Lab Services de opgeslagen installatie kopie repliceren naar andere regio's die beschikbaar zijn in dezelfde [geografie](https://azure.microsoft.com/global-infrastructure/geographies/). Het zorgt ervoor dat de installatie kopie beschikbaar is voor Labs die is gemaakt in andere regio's in dezelfde geografie. Het opslaan van afbeeldingen naar een galerie met gedeelde afbeeldingen brengt extra kosten met zich mee voor alle gerepliceerde installatie kopieën. Deze kosten zijn gescheiden van de kosten voor het Azure Lab Services gebruik. Voor meer informatie over de prijzen voor de galerie met gedeelde afbeeldingen raadpleegt u [Galerie met gedeelde afbeeldingen-facturering]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
+
+    > [!NOTE]
+    > Azure Lab Services ondersteunt het maken van sjabloon-Vm's op basis van **gegeneraliseerde** en **gespecialiseerde** installatie kopieën in een galerie met gedeelde installatie kopieën. 
+
 
 ## <a name="prerequisites"></a>Vereisten
 - Maak een galerie met gedeelde installatie kopieën met behulp van [Azure PowerShell](../../virtual-machines/windows/shared-images.md) of [Azure cli](../../virtual-machines/linux/shared-images.md).
@@ -47,7 +56,12 @@ Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-ac
 
     ![Exporteren is voltooid](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
+    > [!NOTE]
+    > Nadat u de installatie kopie in de galerie met gedeelde afbeeldingen hebt opgeslagen, kunt u deze installatie kopie uit de galerie gebruiken bij het maken van een ander lab. 
+    > 
+    > U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
+
+    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Een installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken
 Een docent/docent kan een aangepaste afbeelding kiezen die beschikbaar is in de galerie met gedeelde afbeeldingen voor de sjabloon tijdens het maken van een nieuwe lab.

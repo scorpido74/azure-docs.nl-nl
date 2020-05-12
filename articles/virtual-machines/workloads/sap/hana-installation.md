@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617094"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117118"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
 
@@ -35,7 +35,7 @@ Valideer het volgende voordat u begint met de HANA-installatie:
 - [HLI-eenheid (s)](#validate-the-hana-large-instance-units)
 - [Configuratie van het besturings systeem](#operating-system)
 - [Netwerkconfiguratie](#networking)
-- [Opslagconfiguratie](#storage)
+- [Opslag configuratie](#storage)
 
 
 ## <a name="validate-the-hana-large-instance-units"></a>Valideer de HANA-eenheid voor grote instanties
@@ -90,7 +90,7 @@ Zie [Resource Library/White papers](https://www.suse.com/products/sles-for-sap/r
 Hieronder vindt u aanvullende en nuttige SAP op SUSE-gerelateerde koppelingen:
 
 - [SAP HANA op SUSE Linux-site](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Aanbevolen procedures voor SAP: in wachtrij plaatsen van replicatie – SAP net-Weaver op SUSE Linux Enter prise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Aanbevolen procedures voor SAP: in wachtrij plaatsen van replicatie – SAP net-Weaver op SUSE Linux Enter prise 12](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [ClamSAP – SLES-virus beveiliging voor SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (inclusief SLES 12 voor SAP-toepassingen)
 
 Hieronder vindt u SAP-ondersteunings opmerkingen die van toepassing zijn op het implementeren van SAP HANA op SLES 12:
@@ -117,7 +117,7 @@ Hieronder vindt u SAP-ondersteunings opmerkingen die van toepassing zijn op het 
 
 ### <a name="time-synchronization"></a>Tijdsynchronisatie
 
-SAP-toepassingen die zijn gebouwd op basis van de SAP NetWeaver-architectuur, zijn gevoelig voor tijd verschillen voor de verschillende onderdelen waaruit het SAP-systeem bestaat. SAP ABAP Short dumps met de fout titel van ZDATE\_groot\_tijd\_verschil zijn waarschijnlijk bekend. Dat komt doordat deze korte dumps worden weer gegeven wanneer de systeem tijd van de verschillende servers of Vm's te ver uit elkaar liggen.
+SAP-toepassingen die zijn gebouwd op basis van de SAP NetWeaver-architectuur, zijn gevoelig voor tijd verschillen voor de verschillende onderdelen waaruit het SAP-systeem bestaat. SAP ABAP Short dumps met de fout titel van ZDATE \_ groot \_ tijd \_ verschil zijn waarschijnlijk bekend. Dat komt doordat deze korte dumps worden weer gegeven wanneer de systeem tijd van de verschillende servers of Vm's te ver uit elkaar liggen.
 
 Voor SAP HANA op Azure (grote instanties), is de tijd synchronisatie die wordt uitgevoerd in azure niet van toepassing op de reken eenheden van de grote instantie stempels. Deze synchronisatie is niet van toepassing op het uitvoeren van SAP-toepassingen in systeem eigen Azure-Vm's, omdat Azure zeker weet dat de tijd van het systeem correct is gesynchroniseerd. 
 
@@ -144,8 +144,8 @@ De naam conventies van de opslag volumes worden weer gegeven in de volgende tabe
 
 | Opslag gebruik | Naam van koppeling | Volume naam | 
 | --- | --- | ---|
-| HANA-gegevens | /hana/data/SID/mnt0000\<m> | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-logboek | /hana/log/SID/mnt0000\<m> | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-gegevens | /hana/data/SID/mnt0000 \< m> | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-logboek | /hana/log/SID/mnt0000 \< m> | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-logboek back-up | /hana/log/backups | Opslag-IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA gedeeld | /hana/shared/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/sap | /usr/sap/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -164,7 +164,7 @@ De HANA/logboek/back-upvolume is niet het volume voor database back-ups. Het for
 
 Naast de opslag die wordt weer gegeven, kunt u extra opslag capaciteit kopen in stappen van 1 TB. Deze extra opslag ruimte kan worden toegevoegd als nieuwe volumes aan een HANA grote instantie.
 
-In het geval van een onboarding met SAP HANA op Azure `service management`specificeert de klant een gebruikers-id (UID) en groeps-id (GID) voor de groep sidadm gebruiker en sapsys (bijvoorbeeld: 1.000.500). Tijdens de installatie van het SAP HANA-systeem moet u dezelfde waarden gebruiken. Omdat u meerdere HANA-instanties wilt implementeren op een eenheid, krijgt u meerdere sets volumes (één set voor elk exemplaar). Als gevolg hiervan moet u bij de implementatie tijd het volgende definiëren:
+In het geval van een onboarding met SAP HANA op Azure `service management` specificeert de klant een gebruikers-id (UID) en groeps-id (GID) voor de groep sidadm gebruiker en sapsys (bijvoorbeeld: 1.000.500). Tijdens de installatie van het SAP HANA-systeem moet u dezelfde waarden gebruiken. Omdat u meerdere HANA-instanties wilt implementeren op een eenheid, krijgt u meerdere sets volumes (één set voor elk exemplaar). Als gevolg hiervan moet u bij de implementatie tijd het volgende definiëren:
 
 - De SID van de verschillende HANA-instanties (sidadm is afgeleid van de instantie).
 - De geheugen grootten van de verschillende HANA-exemplaren. De geheugen grootte per exemplaar bepaalt de grootte van de volumes in elke afzonderlijke volumeset.

@@ -2,26 +2,26 @@
 title: Functies in Azure Functions uitschakelen
 description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions.
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/08/2020
+ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686888"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115559"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
 In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitschakelen. Als u een functie wilt *uitschakelen* , moet u ervoor zorgen dat de runtime de automatische trigger die voor de functie is gedefinieerd, negeert. Zo kunt u voor komen dat een specifieke functie wordt uitgevoerd zonder de volledige functie-app te stoppen.
 
-De aanbevolen manier om een functie uit te scha kelen is door gebruik te maken van `AzureWebJobs.<FUNCTION_NAME>.Disabled`een app-instelling in de indeling. U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
+De aanbevolen manier om een functie uit te scha kelen is door gebruik te maken van een app-instelling in de indeling `AzureWebJobs.<FUNCTION_NAME>.Disabled` . U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
 
 > [!NOTE]  
 > Wanneer u een door HTTP geactiveerde functie uitschakelt met behulp van de methoden die in dit artikel worden beschreven, kan het eind punt nog steeds toegankelijk zijn wanneer het wordt uitgevoerd op de lokale computer.  
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In azure CLI gebruikt u de [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) opdracht om de app-instelling te maken en te wijzigen. Met de volgende opdracht wordt een functie uitgeschakeld die `QueueTrigger` wordt genoemd door het maken van `AzureWebJobs.QueueTrigger.Disabled` een app- `true`instelling met de naam ingesteld op. 
+In azure CLI gebruikt u de [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) opdracht om de app-instelling te maken en te wijzigen. Met de volgende opdracht wordt een functie uitgeschakeld die `QueueTrigger` wordt genoemd door het maken van een app-instelling met de naam `AzureWebJobs.QueueTrigger.Disabled` ingesteld op `true` . 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -29,7 +29,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
-Als u de functie opnieuw wilt inschakelen, voert u dezelfde opdracht opnieuw uit met `false`de waarde.
+Als u de functie opnieuw wilt inschakelen, voert u dezelfde opdracht opnieuw uit met de waarde `false` .
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <myFunctionApp> \
@@ -39,12 +39,12 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>De portal gebruiken
 
-U kunt ook de **functie status** switch op het tabblad **beheren** van de functie gebruiken. De switch werkt door het maken en verwijderen `AzureWebJobs.<FUNCTION_NAME>.Disabled` van de app-instelling.
+U kunt ook de knoppen **inschakelen** en **uitschakelen** op de **overzichts** pagina van de functie gebruiken. Deze knoppen werken door het maken en verwijderen van de `AzureWebJobs.<FUNCTION_NAME>.Disabled` app-instelling.
 
 ![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
 > [!NOTE]  
-> De door de portal geïntegreerde test functionaliteit negeert `Disabled` de instelling. Dit betekent dat een uitgeschakelde functie nog steeds wordt uitgevoerd wanneer deze wordt gestart vanuit het **test** venster in de portal. 
+> De door de portal geïntegreerde test functionaliteit negeert de `Disabled` instelling. Dit betekent dat een uitgeschakelde functie nog steeds wordt uitgevoerd wanneer deze wordt gestart vanuit het **test** venster in de portal. 
 
 ## <a name="other-methods"></a>Andere methoden
 
@@ -87,7 +87,7 @@ public static class QueueFunctions
 Met deze methode kunt u de functie in-en uitschakelen door de app-instelling te wijzigen zonder opnieuw te compileren of opnieuw te implementeren. Als u een app-instelling wijzigt, wordt de functie-app opnieuw gestart, zodat de status wijziging in de modus onmiddellijk wordt herkend.
 
 > [!IMPORTANT]
-> Het `Disabled` kenmerk is de enige manier om een klassen bibliotheek functie uit te scha kelen. Het gegenereerde *Function. json* -bestand voor een klassen bibliotheek functie is niet bedoeld om rechtstreeks te worden bewerkt. Als u het bestand bewerkt, heeft alles wat u naar `disabled` de eigenschap doet geen effect.
+> Het `Disabled` kenmerk is de enige manier om een klassen bibliotheek functie uit te scha kelen. Het gegenereerde *Function. json* -bestand voor een klassen bibliotheek functie is niet bedoeld om rechtstreeks te worden bewerkt. Als u het bestand bewerkt, heeft alles wat u naar de `disabled` eigenschap doet geen effect.
 >
 > Hetzelfde geldt voor de **functie status** switch op het tabblad **beheren** , omdat deze werkt door het bestand *Function. json* te wijzigen.
 >
@@ -120,11 +120,10 @@ of
     "disabled": "IS_DISABLED"
 ```
 
-In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is en is ingesteld `true` op of 1.
+In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is en is ingesteld op `true` of 1.
 
-U kunt het bestand bewerken in de Azure Portal of de schakel optie **status** op het tabblad **beheren** van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
+U kunt het bestand bewerken in de Azure Portal of de knoppen **inschakelen** en **uitschakelen** op de **overzichts** pagina van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
 
-![Functie status schakelaar](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

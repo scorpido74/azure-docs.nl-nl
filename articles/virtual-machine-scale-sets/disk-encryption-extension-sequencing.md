@@ -1,17 +1,20 @@
 ---
 title: Schaal sets voor Azure Disk Encryption en Azure virtual machine scaleset
 description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure schijf versleuteling voor virtuele Linux IaaS-machines.
-author: msmbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279032"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117254"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines
 
@@ -26,7 +29,7 @@ In beide gevallen geeft de `provisionAfterExtensions` eigenschap aan welke exten
 
 ## <a name="sample-azure-templates"></a>Voor beelden van Azure-sjablonen
 
-Als u Azure Disk Encryption na een andere uitbrei ding wilt Toep assen, `provisionAfterExtensions` plaatst u de eigenschap in het AzureDiskEncryption-extensie blok. 
+Als u Azure Disk Encryption na een andere uitbrei ding wilt Toep assen, plaatst u de `provisionAfterExtensions` eigenschap in het AzureDiskEncryption-extensie blok. 
 
 Hier volgt een voor beeld van het gebruik van ' CustomScriptExtension ', een Power shell-script voor het initialiseren en Format teren van een Windows-schijf, gevolgd door ' AzureDiskEncryption ':
 
@@ -84,7 +87,7 @@ Hier volgt een voor beeld van het gebruik van ' CustomScriptExtension ', een Pow
 }
 ```
 
-Als u Azure Disk Encryption wilt Toep assen vóór een andere uitbrei ding, `provisionAfterExtensions` plaatst u de eigenschap in het blok van de uitbrei ding die moet worden gevolgd.
+Als u Azure Disk Encryption wilt Toep assen vóór een andere uitbrei ding, plaatst u de `provisionAfterExtensions` eigenschap in het blok van de uitbrei ding die moet worden gevolgd.
 
 Hier volgt een voor beeld van het gebruik van ' AzureDiskEncryption ', gevolgd door ' VMDiagnosticsSettings ', een uitbrei ding die de bewakings-en diagnostische mogelijkheden biedt voor een Azure-VM op basis van Windows:
 

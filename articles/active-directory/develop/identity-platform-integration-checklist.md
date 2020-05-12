@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050500"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115894"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen van micro soft Identity platform
 
@@ -26,6 +26,9 @@ In dit artikel worden aanbevolen procedures, aanbevelingen en algemene toezichte
 Als u net aan de slag gaat, raadpleegt u de [documentatie voor micro soft Identity platform](index.yml) voor meer informatie over de basis principes van verificatie, toepassings scenario's in het micro soft-identiteits platform en nog veel meer.
 
 Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effectief wordt geïntegreerd met het [micro soft Identity-platform](https://docs.microsoft.com/azure/active-directory/develop/).
+
+> [!TIP]
+> De *integratie-assistent* in de Azure Portal kan u helpen bij het Toep assen van veel van deze aanbevolen procedures en aanbevelingen. Selecteer een van de [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in de Azure Portal en selecteer vervolgens het menu **-item voor de integratie-assistent (preview)** om aan de slag te gaan met de-assistent.
 
 ## <a name="basics"></a>Basisbeginselen
 
@@ -56,7 +59,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 
 |   |   |
 |---|---|
-| ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw omleidings-Uri's beheren: <ul><li>Behoud het eigendom van alle omleidings-Uri's en behoud de DNS-records voor deze.</li><li>Gebruik geen joker tekens (*) in uw Uri's.</li><li>Zorg ervoor dat alle Uri's beveiligd en versleuteld zijn (bijvoorbeeld met behulp van HTTPS-schema's) voor web-apps.</li><li>Gebruik voor open bare clients platformspecifieke omleidings-Uri's, indien van toepassing (voornamelijk voor iOS en Android). Gebruik anders omleidings-Uri's met een grote hoeveelheid wille keurigheid om conflicten te voor komen bij het terugbellen naar uw app.</li><li>Als uw app wordt gebruikt vanuit een geïsoleerde webagent, kunt u gebruiken `https://login.microsoftonline.com/common/oauth2/nativeclient`.</li><li>Alle ongebruikte of overbodige omleidings-Uri's regel matig controleren en bijsnijden.</li></ul> |
+| ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) | Uw omleidings-Uri's beheren: <ul><li>Behoud het eigendom van alle omleidings-Uri's en behoud de DNS-records voor deze.</li><li>Gebruik geen joker tekens (*) in uw Uri's.</li><li>Zorg ervoor dat alle Uri's beveiligd en versleuteld zijn (bijvoorbeeld met behulp van HTTPS-schema's) voor web-apps.</li><li>Gebruik voor open bare clients platformspecifieke omleidings-Uri's, indien van toepassing (voornamelijk voor iOS en Android). Gebruik anders omleidings-Uri's met een grote hoeveelheid wille keurigheid om conflicten te voor komen bij het terugbellen naar uw app.</li><li>Als uw app wordt gebruikt vanuit een geïsoleerde webagent, kunt u gebruiken `https://login.microsoftonline.com/common/oauth2/nativeclient` .</li><li>Alle ongebruikte of overbodige omleidings-Uri's regel matig controleren en bijsnijden.</li></ul> |
 | ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) | Als uw app is geregistreerd in een directory, kunt u de lijst met app-registratie-eigen aren minimaliseren en hand matig bewaken. |
 | ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) | Schakel de ondersteuning voor de [OAuth2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) niet in, tenzij expliciet vereist. Meer informatie over het geldige [scenario.](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant) |
 | ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) | Verplaatsen buiten gebruikers naam/wacht woord. Gebruik geen [wacht woord](v2-oauth-ropc.md)voor de ROPC van de resource-eigenaar, waarmee de wacht woorden van gebruikers rechtstreeks worden verwerkt. Deze stroom vereist een hoge mate van vertrouwen en gebruikers belichting en mag alleen worden gebruikt als andere, veiliger, stromen niet kunnen worden gebruikt. Deze stroom is nog steeds nodig in sommige scenario's (zoals DevOps), maar houd er wel rekening mee dat het gebruik ervan beperkingen oplegt aan uw toepassing.  Lees [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)voor meer moderne benaderingen.|

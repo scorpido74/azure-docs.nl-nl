@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2854e3d92462ced3958afd1cf1e7e99d7e9892f6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984679"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116710"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pull-model voor feed wijzigen in Azure Cosmos DB
 
@@ -24,23 +24,23 @@ Met het pull-model voor wijzigings invoer kunt u de Azure Cosmos DB wijzigings f
 
 ## <a name="consuming-an-entire-containers-changes"></a>De wijzigingen van een hele container gebruiken
 
-U kunt een `FeedIterator` maken om de wijzigings feed te verwerken met het pull-model. Wanneer u voor het eerst `FeedIterator`een maakt, kunt u een `StartTime` optioneel binnen `ChangeFeedRequestOptions`opgeven. Als u niets opgeeft, wordt `StartTime` de huidige tijd.
+U kunt een maken `FeedIterator` om de wijzigings feed te verwerken met het pull-model. Wanneer u voor het eerst een maakt `FeedIterator` , kunt u een optioneel `StartTime` binnen opgeven `ChangeFeedRequestOptions` . Als u niets opgeeft, `StartTime` wordt de huidige tijd.
 
-De `FeedIterator` is beschikbaar in twee soorten. Naast de voor beelden hieronder die entiteits objecten retour neren, kunt u ook het antwoord verkrijgen `Stream` met ondersteuning. Met streams kunt u gegevens lezen zonder dat deze eerst worden gedeserialiseerd, op client bronnen worden opgeslagen.
+De `FeedIterator` is beschikbaar in twee soorten. Naast de voor beelden hieronder die entiteits objecten retour neren, kunt u ook het antwoord verkrijgen met `Stream` ondersteuning. Met streams kunt u gegevens lezen zonder dat deze eerst worden gedeserialiseerd, op client bronnen worden opgeslagen.
 
-Hier volgt een voor beeld voor het `FeedIterator` verkrijgen van het retour neren van entiteits objecten `User` , in dit geval een object:
+Hier volgt een voor beeld voor het verkrijgen van het `FeedIterator` retour neren van entiteits objecten, in dit geval een `User` object:
 
 ```csharp
 FeedIterator<User> iteratorWithPOCOS = container.GetChangeFeedIterator<User>();
 ```
 
-Hier volgt een voor beeld voor het `FeedIterator` verkrijgen van een `Stream`:
+Hier volgt een voor beeld voor het verkrijgen van een `FeedIterator` `Stream` :
 
 ```csharp
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-Met behulp van een `FeedIterator`kunt u eenvoudig de wijzigings feed van een hele container in uw eigen tempo verwerken. Hier volgt een voorbeeld:
+Met behulp `FeedIterator` van een kunt u eenvoudig de wijzigings feed van een hele container in uw eigen tempo verwerken. Hier volgt een voorbeeld:
 
 ```csharp
 FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -76,7 +76,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
 
 ## <a name="using-feedrange-for-parallelization"></a>FeedRange gebruiken voor parallel Lise ring
 
-In de [Change feed-processor](change-feed-processor.md)wordt werk automatisch verspreid over meerdere gebruikers. In het pull-model voor het wijzigen van de feed `FeedRange` kunt u de gebruiken om de parallelliseren van de wijzigings feed te verwerken. Een `FeedRange` vertegenwoordigt een bereik van partitie sleutel waarden.
+In de [Change feed-processor](change-feed-processor.md)wordt werk automatisch verspreid over meerdere gebruikers. In het pull-model voor het wijzigen van de feed kunt u de gebruiken `FeedRange` om de parallelliseren van de wijzigings feed te verwerken. Een `FeedRange` vertegenwoordigt een bereik van partitie sleutel waarden.
 
 Hier volgt een voor beeld waarin wordt getoond hoe u een lijst met bereiken voor uw container kunt verkrijgen:
 
@@ -86,12 +86,12 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 
 Wanneer u een lijst met FeedRanges voor uw container ontvangt, krijgt u één `FeedRange` per [fysieke partitie](partition-data.md#physical-partitions).
 
-Met behulp van een `FeedRange`kunt u vervolgens `FeedIterator` een parallelliseren maken om de verwerking van de wijzigings feed op meerdere computers of threads te verwerken. In tegens telling tot het vorige voor beeld dat laat zien `FeedIterator` hoe u één voor de hele container kunt verkrijgen `FeedRange` , kunt u de gebruiken om meerdere FeedIterators te verkrijgen die de wijzigings feed parallel kunnen verwerken.
+Met behulp `FeedRange` van een kunt u vervolgens een `FeedIterator` parallelliseren maken om de verwerking van de wijzigings feed op meerdere computers of threads te verwerken. In tegens telling tot het vorige voor beeld dat laat zien hoe `FeedIterator` u één voor de hele container kunt verkrijgen, kunt u de gebruiken `FeedRange` om meerdere FeedIterators te verkrijgen die de wijzigings feed parallel kunnen verwerken.
 
 In het geval waar u FeedRanges wilt gebruiken, moet u een Orchestrator-proces hebben dat FeedRanges verkrijgt en distribueert naar deze machines. Deze distributie kan het volgende zijn:
 
-* Deze `FeedRange.ToJsonString` teken reeks waarde gebruiken en distribueren. De consumenten kunnen deze waarde gebruiken met`FeedRange.FromJsonString`
-* Als de distributie in het proces wordt uitgevoerd, wordt `FeedRange` de object verwijzing door gegeven.
+* `FeedRange.ToJsonString`Deze teken reeks waarde gebruiken en distribueren. De consumenten kunnen deze waarde gebruiken met`FeedRange.FromJsonString`
+* Als de distributie in het proces wordt uitgevoerd, wordt de `FeedRange` object verwijzing door gegeven.
 
 Hier volgt een voor beeld waarin wordt uitgelegd hoe u vanaf het begin van de wijzigings feed van de container kunt lezen met behulp van twee hypothetische afzonderlijke machines die parallel worden gelezen:
 
@@ -127,7 +127,7 @@ while (iteratorB.HasMoreResults)
 
 ## <a name="saving-continuation-tokens"></a>Bezig met opslaan van vervolg tokens
 
-U kunt de positie van uw `FeedIterator` opslaan door een vervolg token te maken. Een vervolg token is een teken reeks waarde waarmee de laatst verwerkte wijzigingen van de FeedIterator worden bijgehouden. Hierdoor kan de `FeedIterator` service op dit moment later worden hervat. Met de volgende code wordt de wijzigings feed gelezen sinds het maken van de container. Nadat er geen wijzigingen meer beschikbaar zijn, wordt er een vervolg token bewaard, zodat het gebruik van de wijzigings toevoer later kan worden hervat.
+U kunt de positie van uw opslaan `FeedIterator` door een vervolg token te maken. Een vervolg token is een teken reeks waarde waarmee de laatst verwerkte wijzigingen van de FeedIterator worden bijgehouden. Hierdoor kan de service `FeedIterator` op dit moment later worden hervat. Met de volgende code wordt de wijzigings feed gelezen sinds het maken van de container. Nadat er geen wijzigingen meer beschikbaar zijn, wordt er een vervolg token bewaard, zodat het gebruik van de wijzigings toevoer later kan worden hervat.
 
 ```csharp
 FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -137,9 +137,9 @@ string continuation = null;
 while (iterator.HasMoreResults)
 {
    FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = orders.ContinuationToken;
+   continuation = users.ContinuationToken;
 
-   foreach (User user in Users)
+   foreach (User user in users)
     {
         Console.WriteLine($"Detected change for user with id {user.id}");
     }

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006350"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117016"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Werken met JSON in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ In de SQL-API (core) van Azure Cosmos DB worden items opgeslagen als JSON. Het t
 
 We beschrijven een aantal belang rijke aspecten van het werken met JSON:
 
-- JSON-objecten beginnen altijd met `{` een accolade links en eindigen met `}` een rechter accolade
+- JSON-objecten beginnen altijd met een `{` accolade links en eindigen met een `}` rechter accolade
 - U kunt JSON-eigenschappen binnen elkaar [nesten](#nested-properties)
 - Waarden van JSON-eigenschappen kunnen matrices zijn
 - JSON-eigenschapnamen zijn hoofdletter gevoelig
@@ -45,9 +45,9 @@ Hier volgt een document met geneste JSON:
 }
 ```
 
-In dit geval zijn de `state`, `country`en `city` de eigenschappen genest binnen de `address` eigenschap.
+In dit geval zijn de `state` , `country` en de `city` Eigenschappen genest binnen de `address` eigenschap.
 
-In het volgende voor beeld worden twee geneste eigenschappen geprojecteerd: `f.address.state` en. `f.address.city`
+In het volgende voor beeld worden twee geneste eigenschappen geprojecteerd: `f.address.state` en `f.address.city` .
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -141,9 +141,9 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Gereserveerde sleutel woorden en speciale tekens in JSON
 
-U kunt eigenschappen openen met behulp van de `[]`operator voor de geciteerde eigenschap. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap wilt escapepen die spaties, speciale tekens bevat of dezelfde naam heeft als een SQL-tref woord of gereserveerd woord.
+U kunt eigenschappen openen met behulp van de operator voor de geciteerde eigenschap `[]` . Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap wilt escapepen die spaties, speciale tekens bevat of dezelfde naam heeft als een SQL-tref woord of gereserveerd woord.
 
-Hier ziet u bijvoorbeeld een document met een eigenschap met de `order` naam en een `price($)` eigenschap die speciale tekens bevat:
+Hier ziet u bijvoorbeeld een document met een eigenschap met de naam `order` en een eigenschap `price($)` die speciale tekens bevat:
 
 ```json
 {
@@ -160,7 +160,7 @@ Hier ziet u bijvoorbeeld een document met een eigenschap met de `order` naam en 
 }
 ```
 
-Als u een query uitvoert die de `order` eigenschap of `price($)` eigenschap bevat, wordt er een syntaxis fout weer gegeven.
+Als u een query uitvoert die de `order` eigenschap of eigenschap bevat, wordt er `price($)` een syntaxis fout weer gegeven.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -208,7 +208,7 @@ U ziet deze uitvoer:
     }]
 ```
 
-In het voor gaande voor beeld `SELECT` moet de component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de naam `$1`van de impliciete argument variabele. Met de volgende query worden twee impliciete argument `$1` variabelen `$2`geretourneerd: en.
+In het voor gaande voor beeld `SELECT` moet de component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de naam van de impliciete argument variabele `$1` . Met de volgende query worden twee impliciete argument variabelen geretourneerd: `$1` en `$2` .
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +237,7 @@ U kunt expliciet alias waarden in query's. Als een query twee eigenschappen met 
 
 ### <a name="examples"></a>Voorbeelden
 
-Het `AS` tref woord dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld bij `NameInfo`het projecteren van de tweede waarde als:
+Het `AS` tref woord dat wordt gebruikt voor aliasing is optioneel, zoals wordt weer gegeven in het volgende voor beeld bij het projecteren van de tweede waarde als `NameInfo` :
 
 ```sql
     SELECT
@@ -270,7 +270,7 @@ Hier volgt een voorbeeld:
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```

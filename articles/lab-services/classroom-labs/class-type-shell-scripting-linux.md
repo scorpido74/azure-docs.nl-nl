@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443547"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115061"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
 Dit artikel laat u zien hoe u een lab kunt instellen om shell scripting op Linux te leren. Scripting is een nuttig onderdeel van systeem beheer waarmee beheerders terugkerende taken kunnen voor komen. In dit voorbeeld scenario bestrijkt de klasse traditionele bash-scripts en uitgebreide scripts. Uitgebreide scripts zijn scripts die bash-opdrachten en Ruby combi neren. Met deze benadering kan ruby gegevens rond en bash opdrachten door geven om met de shell te communiceren. 
@@ -32,22 +32,22 @@ Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het
 
 | Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-installatie kopieën | Schakel de [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](specify-marketplace-images.md)voor meer informatie. | 
+| Marketplace-installatie kopieën | Schakel de Ubuntu Server 18,04 LTS-installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](specify-marketplace-images.md)voor meer informatie. | 
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
 | Grootte van virtuele machine (VM) | Klein  |
-| VM-installatie kopie | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| VM-installatie kopie | Ubuntu Server 18,04 LTS |
 | Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines met behulp van extern bureau blad (RDP). Zie voor meer informatie [extern bureau blad inschakelen voor virtuele Linux-machines in een lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Desktop-en xrdp installeren
-De [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie heeft geen extern bureau blad-server standaard geïnstalleerd. Volg de instructies in de [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md) artikel om de pakketten te installeren die nodig zijn op de sjabloon computer om verbinding te maken via het Remote Desktop Protocol.
+De Ubuntu Server 18,04 LTS-installatie kopie heeft geen extern bureau blad-server standaard geïnstalleerd. Volg de instructies in de [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md) artikel om de pakketten te installeren die nodig zijn op de sjabloon computer om verbinding te maken via het Remote Desktop Protocol.
 
 ## <a name="install-ruby"></a>Ruby installeren
-Ruby is een open-source dynamische taal die kan worden gecombineerd met bash-scripts. In deze sectie wordt beschreven hoe `apt-get` u gebruikt om de meest recente versie van [ruby](https://www.ruby-lang.org/)te installeren.
+Ruby is een open-source dynamische taal die kan worden gecombineerd met bash-scripts. In deze sectie wordt beschreven hoe u gebruikt `apt-get` om de meest recente versie van [ruby](https://www.ruby-lang.org/)te installeren.
 
 1. Installeer updates door de volgende opdrachten uit te voeren:
 

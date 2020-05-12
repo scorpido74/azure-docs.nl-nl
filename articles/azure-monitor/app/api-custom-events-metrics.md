@@ -2,13 +2,13 @@
 title: Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens | Microsoft Docs
 description: Voeg een paar regels code toe aan de apparaat-of bureau blad-app, de webpagina of de service om het gebruik en de diagnose problemen op te sporen.
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/11/2020
+ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927935"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115656"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -16,7 +16,7 @@ Voeg een paar regels code in uw toepassing toe om erachter te komen wat gebruike
 
 ## <a name="api-summary"></a>API-overzicht
 
-De core-API is gelijkmatig op alle platforms, van enkele variaties zoals `GetMetric`(alleen .net).
+De core-API is gelijkmatig op alle platforms, van enkele variaties zoals `GetMetric` (alleen .net).
 
 | Methode | Gebruikt voor |
 | --- | --- |
@@ -54,9 +54,9 @@ Als u nog geen verwijzing hebt over Application Insights SDK:
 
 ## <a name="get-a-telemetryclient-instance"></a>Een TelemetryClient-exemplaar ophalen
 
-Een exemplaar van ( `TelemetryClient` behalve in Java script) ophalen van webpagina's:
+Een exemplaar van `TelemetryClient` (behalve in Java script) ophalen van webpagina's:
 
-Voor [ASP.net core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps en [niet-http/werk nemers voor .net/.net core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps, wordt u aangeraden een exemplaar van `TelemetryClient` te verkrijgen van de container voor het inspuiten van afhankelijkheden, zoals wordt uitgelegd in hun respectieve documentatie.
+Voor [ASP.net core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps en [niet-http/werk nemers voor .net/.net core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) -apps, wordt u aangeraden een exemplaar van te verkrijgen van `TelemetryClient` de container voor het inspuiten van afhankelijkheden, zoals wordt uitgelegd in hun respectieve documentatie.
 
 Als u AzureFunctions v2 + of Azure WebJobs V3 + gebruikt, volgt u dit document:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
@@ -103,7 +103,7 @@ telemetry.getContext().getUser().setId("...");
 telemetry.getContext().getDevice().setId("...");
 ```
 
-In node. js-projecten kunt u gebruiken `new applicationInsights.TelemetryClient(instrumentationKey?)` om een nieuw exemplaar te maken, maar dit wordt alleen aanbevolen voor scenario's waarvoor een geïsoleerde configuratie van `defaultClient`de singleton is vereist.
+In node. js-projecten kunt u gebruiken `new applicationInsights.TelemetryClient(instrumentationKey?)` om een nieuw exemplaar te maken, maar dit wordt alleen aanbevolen voor scenario's waarvoor een geïsoleerde configuratie van de singleton is vereist `defaultClient` .
 
 ## <a name="trackevent"></a>Track Event
 
@@ -145,9 +145,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Aangepaste gebeurtenissen in Analytics
 
-De telemetrie is beschikbaar in `customEvents` de tabel in [Application Insights Analytics](analytics.md). Elke rij vertegenwoordigt een aanroep naar `trackEvent(..)` in uw app.
+De telemetrie is beschikbaar in de `customEvents` tabel in [Application Insights Analytics](analytics.md). Elke rij vertegenwoordigt een aanroep naar `trackEvent(..)` in uw app.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar track Event (), het steekproef proces slechts een van deze toegezonden. Als u een correct aantal aangepaste gebeurtenissen wilt ontvangen, moet u dus code gebruiken, `customEvents | summarize sum(itemCount)`zoals.
+Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar track Event (), het steekproef proces slechts een van deze toegezonden. Als u een correct aantal aangepaste gebeurtenissen wilt ontvangen, moet u dus code gebruiken, zoals `customEvents | summarize sum(itemCount)` .
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -162,9 +162,9 @@ Application Insights kan metrische gegevens van grafieken die niet zijn gekoppel
 
 Als u metrische gegevens naar Application Insights wilt verzenden, kunt u de `TrackMetric(..)` API gebruiken. Er zijn twee manieren om een metrische waarde te verzenden:
 
-* Enkele waarde. Telkens wanneer u een meting in uw toepassing uitvoert, verzendt u de overeenkomstige waarde naar Application Insights. Stel dat u een metriek hebt met een beschrijving van het aantal items in een container. Tijdens een bepaalde periode plaatst u eerst drie items in de container en verwijdert u vervolgens twee items. Daarom zou u twee maal `TrackMetric` aanroepen: eerst de waarde `3` en vervolgens de waarde `-2`door geven. Application Insights namens u beide waarden opslaat.
+* Enkele waarde. Telkens wanneer u een meting in uw toepassing uitvoert, verzendt u de overeenkomstige waarde naar Application Insights. Stel dat u een metriek hebt met een beschrijving van het aantal items in een container. Tijdens een bepaalde periode plaatst u eerst drie items in de container en verwijdert u vervolgens twee items. Daarom zou u `TrackMetric` twee maal aanroepen: eerst de waarde `3` en vervolgens de waarde door geven `-2` . Application Insights namens u beide waarden opslaat.
 
-* Aggregatie. Bij het werken met metrische gegevens is elke meting altijd van belang. In plaats daarvan is een samen vatting van wat er is gebeurd tijdens een bepaalde periode belang rijk. Een dergelijke samen vatting wordt _aggregatie_genoemd. In het bovenstaande voor beeld is `1` de som van de cumulatieve metrische gegevens voor die tijds periode en het aantal meet waarden `2`. Wanneer u de aggregatie aanpak gebruikt, moet u `TrackMetric` één keer per periode aanroepen en de cumulatieve waarden verzenden. Dit is de aanbevolen benadering, omdat het de kosten en de prestaties aanzienlijk kan verminderen door minder gegevens punten naar Application Insights te verzenden, terwijl alle relevante informatie wordt verzameld.
+* Aggregatie. Bij het werken met metrische gegevens is elke meting altijd van belang. In plaats daarvan is een samen vatting van wat er is gebeurd tijdens een bepaalde periode belang rijk. Een dergelijke samen vatting wordt _aggregatie_genoemd. In het bovenstaande voor beeld is de som van de cumulatieve metrische gegevens voor die tijds periode `1` en het aantal meet waarden `2` . Wanneer u de aggregatie aanpak gebruikt, moet u `TrackMetric` één keer per periode aanroepen en de cumulatieve waarden verzenden. Dit is de aanbevolen benadering, omdat het de kosten en de prestaties aanzienlijk kan verminderen door minder gegevens punten naar Application Insights te verzenden, terwijl alle relevante informatie wordt verzameld.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -201,9 +201,9 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Aangepaste metrische gegevens in analyse
 
-De telemetrie is beschikbaar in `customMetrics` de tabel in [Application Insights Analytics](analytics.md). Elke rij vertegenwoordigt een aanroep naar `trackMetric(..)` in uw app.
+De telemetrie is beschikbaar in de `customMetrics` tabel in [Application Insights Analytics](analytics.md). Elke rij vertegenwoordigt een aanroep naar `trackMetric(..)` in uw app.
 
-* `valueSum`-Dit is de som van de metingen. Delen door `valueCount`om de gemiddelde waarde op te halen.
+* `valueSum`-Dit is de som van de metingen. Delen door om de gemiddelde waarde op te halen `valueCount` .
 * `valueCount`-Het aantal metingen dat is geaggregeerd in deze `trackMetric(..)` aanroep.
 
 ## <a name="page-views"></a>Pagina weergaven
@@ -250,8 +250,8 @@ Standaard worden de tijden gerapporteerd als **pagina weergave laad tijd** gemet
 
 In plaats daarvan kunt u het volgende doen:
 
-* Stel een expliciete duur in de [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) - `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`aanroep in:.
-* Gebruik de pagina weergave timing `startTrackPage` aanroepen `stopTrackPage`en.
+* Stel een expliciete duur in de [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) -aanroep in: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);` .
+* Gebruik de pagina weergave timing aanroepen `startTrackPage` en `stopTrackPage` .
 
 *Javascript*
 
@@ -333,7 +333,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 } // When operation is disposed, telemetry item is sent.
 ```
 
-Samen met het instellen van een bewerkings context maakt een telemetrie- `StartOperation` item van het type dat u opgeeft. Het verzendt het telemetrie-item wanneer u de bewerking ongedaan maakt, of `StopOperation`als u het expliciet aanroept. Als u gebruikt `RequestTelemetry` als het type telemetrie, wordt de duur ingesteld op het tijds interval tussen start en stoppen.
+Samen met het instellen van een bewerkings context `StartOperation` maakt een telemetrie-item van het type dat u opgeeft. Het verzendt het telemetrie-item wanneer u de bewerking ongedaan maakt, of als u het expliciet aanroept `StopOperation` . Als u gebruikt `RequestTelemetry` als het type telemetrie, wordt de duur ingesteld op het tijds interval tussen start en stoppen.
 
 De items die binnen een bereik van de bewerking zijn gerapporteerd, worden ' kinderen ' van deze bewerking. Bewerkings contexten kunnen worden genest.
 
@@ -436,7 +436,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-De meeste belang rijke stack-informatie is al in afzonderlijke variabelen geëxtraheerd, maar u kunt de `details` structuur splitsen om meer te krijgen. Omdat deze structuur dynamisch is, moet u het resultaat afstemmen op het type dat u verwacht. Bijvoorbeeld:
+De meeste belang rijke stack-informatie is al in afzonderlijke variabelen geëxtraheerd, maar u kunt de structuur splitsen `details` om meer te krijgen. Omdat deze structuur dynamisch is, moet u het resultaat afstemmen op het type dat u verwacht. Bijvoorbeeld:
 
 ```kusto
 exceptions
@@ -496,7 +496,7 @@ Een diagnostische gebeurtenis vastleggen, zoals het invoeren of verlaten van een
 
 U kunt zoeken op bericht inhoud, maar (in tegens telling tot eigenschaps waarden) kan er niet op worden gefilterd.
 
-De limiet voor de `message` grootte van is veel hoger dan de limiet voor eigenschappen.
+De limiet voor de grootte van `message` is veel hoger dan de limiet voor eigenschappen.
 Een voor deel van TrackTrace is dat u relatief lange gegevens in het bericht kunt plaatsen. U kunt bijvoorbeeld POST-gegevens coderen.  
 
 Daarnaast kunt u een Ernst niveau aan uw bericht toevoegen. En, net als bij andere telemetrie, kunt u eigenschaps waarden toevoegen om u te helpen bij het filteren of zoeken naar verschillende sets traceringen. Bijvoorbeeld:
@@ -522,9 +522,9 @@ In de [Zoek opdracht](../../azure-monitor/app/diagnostic-search.md)kunt u vervol
 
 ### <a name="traces-in-analytics"></a>Traces in Analytics
 
-In [Application Insights Analytics](analytics.md)worden aanroepen naar TrackTrace weer gegeven in `traces` de tabel.
+In [Application Insights Analytics](analytics.md)worden aanroepen naar TrackTrace weer gegeven in de `traces` tabel.
 
-Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat bij 10 aanroepen naar `trackTrace()`het steekproef proces slechts één daarvan wordt verzonden. Als u het juiste aantal tracerings aanroepen wilt krijgen, moet u dus code `traces | summarize sum(itemCount)`gebruiken, zoals.
+Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat bij 10 aanroepen naar `trackTrace()` het steekproef proces slechts één daarvan wordt verzonden. Als u het juiste aantal tracerings aanroepen wilt krijgen, moet u dus code gebruiken, zoals `traces | summarize sum(itemCount)` .
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -597,11 +597,11 @@ In Java kunnen bepaalde afhankelijkheids aanroepen automatisch worden gevolgd me
 
 U gebruikt deze aanroep als u aanroepen wilt bijhouden die niet worden onderschept door automatische tracking of als u de agent niet wilt installeren.
 
-Als u de standaard module voor het bijhouden van afhankelijkheden in C# wilt uitschakelen, bewerkt u [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) en verwijdert u de verwijzing naar `DependencyCollector.DependencyTrackingTelemetryModule`. In Java moet u de Java-Agent niet installeren als u niet automatisch standaard afhankelijkheden wilt verzamelen.
+Als u de standaard module voor het bijhouden van afhankelijkheden in C# wilt uitschakelen, bewerkt u [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) en verwijdert u de verwijzing naar `DependencyCollector.DependencyTrackingTelemetryModule` . In Java moet u de Java-Agent niet installeren als u niet automatisch standaard afhankelijkheden wilt verzamelen.
 
 ### <a name="dependencies-in-analytics"></a>Afhankelijkheden in Analytics
 
-In [Application Insights Analytics](analytics.md)worden trackDependency-aanroepen weer gegeven `dependencies` in de tabel.
+In [Application Insights Analytics](analytics.md)worden trackDependency-aanroepen weer gegeven in de `dependencies` tabel.
 
 Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, wordt in de eigenschap itemCount een waarde weer gegeven die groter is dan 1. Bijvoorbeeld itemCount = = 10 betekent dat er bij 10 aanroepen naar trackDependency (), het steekproef proces slechts een van deze toegezonden. Als u het juiste aantal afhankelijkheden wilt ophalen dat is gesegmenteerd door het doel onderdeel, gebruikt u de volgende code:
 
@@ -679,7 +679,7 @@ In een ASP.NET Web MVC-toepassing, bijvoorbeeld:
 }
 ```
 
-Het is niet nodig om de werkelijke aanmeldings naam van de gebruiker te gebruiken. Het moet alleen een ID zijn die uniek is voor die gebruiker. Het mag geen spaties of een van de tekens `,;=|`bevatten.
+Het is niet nodig om de werkelijke aanmeldings naam van de gebruiker te gebruiken. Het moet alleen een ID zijn die uniek is voor die gebruiker. Het mag geen spaties of een van de tekens bevatten `,;=|` .
 
 De gebruikers-ID wordt ook ingesteld in een sessie cookie en verzonden naar de server. Als de server SDK is geïnstalleerd, wordt de geverifieerde gebruikers-ID verzonden als onderdeel van de context eigenschappen van zowel de client als de server-telemetrie. U kunt deze vervolgens filteren en ernaar zoeken.
 
@@ -804,7 +804,7 @@ telemetry.TrackEvent(event);
 ```
 
 > [!WARNING]
-> Gebruik niet dezelfde instantie van het telemetrische`event` item (in dit voor beeld) om meerdere keren een tracering * () aan te roepen. Dit kan ertoe leiden dat telemetrie wordt verzonden met een onjuiste configuratie.
+> Gebruik niet dezelfde instantie van het telemetrische item ( `event` in dit voor beeld) om meerdere keren een tracering * () aan te roepen. Dit kan ertoe leiden dat telemetrie wordt verzonden met een onjuiste configuratie.
 >
 >
 
@@ -821,8 +821,8 @@ requests
 
 U ziet dat:
 
-* Wanneer u een waarde ophaalt uit de JSON customDimensions of customMeasurements, heeft deze een dynamisch type en daarom moet u `tostring` deze `todouble`casten of.
-* Gebruik `sum(itemCount)`, om rekening te houden met de mogelijkheid van `count()` [steek proeven](../../azure-monitor/app/sampling.md).
+* Wanneer u een waarde ophaalt uit de JSON customDimensions of customMeasurements, heeft deze een dynamisch type en daarom moet u deze casten `tostring` of `todouble` .
+* Gebruik, om rekening te houden met de mogelijkheid van [steek proeven](../../azure-monitor/app/sampling.md) `sum(itemCount)` `count()` .
 
 ## <a name="timing-events"></a><a name="timed"></a>Timing gebeurtenissen
 
@@ -925,9 +925,9 @@ Gebruik *voor Java script-webclients*java script-telemetrie-initialisatie functi
 
 U kunt code schrijven voor het verwerken van uw telemetrie voordat deze wordt verzonden vanuit de SDK. De verwerking omvat gegevens die worden verzonden vanuit de standaard-telemetrie-modules, zoals verzameling van HTTP-aanvragen en afhankelijkheids verzamelingen.
 
-[Eigenschappen](../../azure-monitor/app/api-filtering-sampling.md#add-properties) aan telemetrie toevoegen door `ITelemetryInitializer`de implementatie uit te voeren. U kunt bijvoorbeeld versie nummers of waarden toevoegen die worden berekend op basis van andere eigenschappen.
+[Eigenschappen](../../azure-monitor/app/api-filtering-sampling.md#add-properties) aan telemetrie toevoegen door de implementatie uit te voeren `ITelemetryInitializer` . U kunt bijvoorbeeld versie nummers of waarden toevoegen die worden berekend op basis van andere eigenschappen.
 
-Door `ITelemetryProcessor`te [implementeren kunt u](../../azure-monitor/app/api-filtering-sampling.md#filtering) telemetrie wijzigen of verwijderen voordat deze vanuit de SDK wordt verzonden. U bepaalt wat er wordt verzonden of verwijderd, maar u moet rekening houden met het effect van uw metrische gegevens. Afhankelijk van hoe u items verwijdert, kan de mogelijkheid om te navigeren tussen verwante items verloren gaan.
+Door [te implementeren kunt u](../../azure-monitor/app/api-filtering-sampling.md#filtering) telemetrie wijzigen of verwijderen voordat deze vanuit de SDK wordt verzonden `ITelemetryProcessor` . U bepaalt wat er wordt verzonden of verwijderd, maar u moet rekening houden met het effect van uw metrische gegevens. Afhankelijk van hoe u items verwijdert, kan de mogelijkheid om te navigeren tussen verwante items verloren gaan.
 
 [Steek proeven](../../azure-monitor/app/api-filtering-sampling.md) zijn een verpakte oplossing om het volume aan gegevens te beperken dat vanuit uw app naar de portal wordt verzonden. Dit gebeurt zonder dat dit van invloed is op de weer gegeven metrische gegevens. En dit heeft geen invloed op de mogelijkheid om problemen op te lossen door te navigeren tussen verwante items, zoals uitzonde ringen, aanvragen en pagina weergaven.
 
@@ -991,7 +991,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-Voor node. js kunt u de ontwikkelaars modus inschakelen door interne logboek registratie in `setInternalLogging` te scha `maxBatchSize` kelen via en in te stellen op 0, waardoor de telemetrie wordt verzonden zodra deze wordt verzameld.
+Voor node. js kunt u de ontwikkelaars modus inschakelen door interne logboek registratie in te scha kelen via `setInternalLogging` en `maxBatchSize` in te stellen op 0, waardoor de telemetrie wordt verzonden zodra deze wordt verzameld.
 
 ```js
 applicationInsights.setup("ikey")
@@ -1096,16 +1096,14 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
 * [Java-referentie](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [Java script-referentie](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-
 ## <a name="sdk-code"></a>SDK-code
 
-* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server-pakketten](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [Windows Server-pakketten](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java-SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-
 
 ## <a name="questions"></a>Vragen
 

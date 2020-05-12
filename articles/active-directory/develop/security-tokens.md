@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926575"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115792"
 ---
 # <a name="security-tokens"></a>Beveiligings tokens
 
@@ -31,7 +31,7 @@ Toegangs tokens zijn alleen geldig gedurende korte tijd, waardoor autorisatie se
 **Id-tokens** worden verzonden naar de client toepassing als onderdeel van een [OpenID Connect Connect](v2-protocols-oidc.md) -stroom. Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren. Zie [id-tokens](id-tokens.md)voor meer informatie over het oplossen van problemen met id-tokens van micro soft Identity platform.
 
 > [!NOTE]
-> In dit artikel worden beveiligings tokens beschreven voor de Connect-protocollen OAuth2 en OpenID Connect. Veel zakelijke toepassingen gebruiken SAML om gebruikers te verifiëren. Zie overzicht van [Azure AD SAML-tokens](reference-saml-tokens.md) voor informatie over SAML-bevestigingen.
+> In dit artikel worden beveiligings tokens beschreven die worden gebruikt door de Connect-protocollen OAuth2 en OpenID Connect. Veel zakelijke toepassingen gebruiken SAML om gebruikers te verifiëren. Zie overzicht van [Azure AD SAML-tokens](reference-saml-tokens.md) voor informatie over SAML-bevestigingen.
 
 ## <a name="validating-security-tokens"></a>Beveiligings tokens valideren
 
@@ -42,11 +42,11 @@ Tokens zijn alleen geldig voor een beperkte periode. Doorgaans biedt de STS een 
 * Een toegangs token voor toegang tot de toepassing of beveiligde bron en
 * Een vernieuwings token dat wordt gebruikt voor het vernieuwen van het toegangs token wanneer het toegangs token bijna is verlopen.
 
-Toegangs tokens worden door gegeven aan een web-API als het Bearer- `Authorization` token in de header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
+Toegangs tokens worden door gegeven aan een web-API als het Bearer-token in de `Authorization` header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON-webtokens (JWTs) en claims
 
-Het micro soft Identity-platform implementeert beveiligings tokens als **JSON-Webtokens (JWTs)** die **claims**bevatten.
+Het micro soft Identity-platform implementeert beveiligings tokens als **JSON-Webtokens (JWTs)** die **claims**bevatten. Aangezien JWTs als beveiligings tokens worden gebruikt, wordt deze vorm van verificatie ook wel **JWT-verificatie**genoemd.
 
 Een [claim](developer-glossary.md#claim) biedt bevestigingen over één entiteit, zoals een client toepassing of [resource-eigenaar](developer-glossary.md#resource-owner), naar een andere entiteit, zoals een resource server. Een claim kan ook worden aangeduid als een JWT-claim of JSON Web Token claim.
 
@@ -82,7 +82,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
 
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar `response_mode` de `query` browser `fragment`(waarbij of).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben `groups` deze tokens geen `wids` claims.
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` `query` of `fragment` ).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben deze tokens geen `groups` `wids` claims.
 
 ## <a name="next-steps"></a>Volgende stappen
 

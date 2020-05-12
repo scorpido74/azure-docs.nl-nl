@@ -3,16 +3,16 @@ title: Grote berichten afhandelen met behulp van Chunking
 description: Meer informatie over het verwerken van grote bericht grootten met behulp van chunks in geautomatiseerde taken en werk stromen die u maakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: shae-hurst
-ms.author: shhurst
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456550"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117560"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met Chunking in Azure Logic Apps
 
@@ -41,7 +41,7 @@ Services die communiceren met Logic Apps kunnen hun eigen bericht grootte limiet
 Voor connectors die ondersteuning bieden voor Chunking, is het onderliggende Chunking-protocol onzichtbaar voor eind gebruikers. Niet alle connectors ondersteunen echter Chunking, dus genereren deze connectors fouten wanneer binnenkomende berichten de limieten voor de grootte van de connector overschrijden.
 
 > [!NOTE]
-> Voor acties die gebruikmaken van Chunking, kunt u de hoofd tekst `@triggerBody()?['Content']` van de trigger niet door geven of expressies gebruiken zoals in die acties. In plaats daarvan kunt u voor inhoud van tekst of JSON-bestand proberen de [actie **opstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) te gebruiken of [een variabele te maken](../logic-apps/logic-apps-create-variables-store-values.md) om die inhoud af te handelen. Als de hoofd tekst van de trigger andere inhouds typen bevat, zoals media bestanden, moet u andere stappen uitvoeren om die inhoud af te handelen.
+> Voor acties die gebruikmaken van Chunking, kunt u de hoofd tekst van de trigger niet door geven of expressies gebruiken zoals `@triggerBody()?['Content']` in die acties. In plaats daarvan kunt u voor inhoud van tekst of JSON-bestand proberen de [actie **opstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) te gebruiken of [een variabele te maken](../logic-apps/logic-apps-create-variables-store-values.md) om die inhoud af te handelen. Als de hoofd tekst van de trigger andere inhouds typen bevat, zoals media bestanden, moet u andere stappen uitvoeren om die inhoud af te handelen.
 
 <a name="set-up-chunking"></a>
 
@@ -51,7 +51,7 @@ In algemene HTTP-scenario's kunt u grote inhoud downloaden en uploads via HTTP o
 
 Als een eind punt Chunking heeft ingeschakeld voor down loads of uploads, worden met de HTTP-acties in uw logische app automatisch grote berichten gesegmenteerd. Anders moet u de ondersteuning voor segmentering instellen voor het eind punt. Als u het eind punt of de connector niet bezit of beheert, hebt u mogelijk niet de mogelijkheid om Chunking in te stellen.
 
-Als een HTTP-actie nog niet is ingeschakeld, moet u ook Chunking instellen in de eigenschap van `runTimeConfiguration` de actie. U kunt deze eigenschap in de actie instellen, hetzij rechtstreeks in de code weergave-editor, zoals later beschreven, of in de Logic Apps Designer, zoals hier wordt beschreven:
+Als een HTTP-actie nog niet is ingeschakeld, moet u ook Chunking instellen in de eigenschap van de actie `runTimeConfiguration` . U kunt deze eigenschap in de actie instellen, hetzij rechtstreeks in de code weergave-editor, zoals later beschreven, of in de Logic Apps Designer, zoals hier wordt beschreven:
 
 1. Klik in de rechter bovenhoek van de http-actie op de knop met het weglatings teken (**...**) en kies vervolgens **instellingen**.
 
@@ -75,17 +75,17 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
 1. Uw logische app verzendt een HTTP GET-aanvraag naar het eind punt.
 
-   De aanvraag header kan optioneel een `Range` veld bevatten waarin een byte bereik voor het aanvragen van inhouds segmenten wordt beschreven.
+   De aanvraag header kan optioneel een veld bevatten `Range` waarin een byte bereik voor het aanvragen van inhouds segmenten wordt beschreven.
 
 2. Het eind punt reageert met de status code ' 206 ' en een HTTP-bericht tekst.
 
-    Details over de inhoud van dit segment worden weer gegeven in de `Content-Range` koptekst van het antwoord, met inbegrip van informatie die helpt Logic apps het begin en het einde van het segment te bepalen, plus de totale grootte van de volledige inhoud voordat deze wordt gesegmenteerd.
+    Details over de inhoud van dit segment worden weer gegeven in de koptekst van het antwoord `Content-Range` , met inbegrip van informatie die helpt Logic apps het begin en het einde van het segment te bepalen, plus de totale grootte van de volledige inhoud voordat deze wordt gesegmenteerd.
 
 3. Uw logische app verzendt automatisch opvolgings aanvragen voor HTTP GET.
 
     Uw logische app verzendt aanvragen voor opvolging totdat de volledige inhoud is opgehaald.
 
-Deze actie definitie toont bijvoorbeeld een HTTP GET-aanvraag waarmee de `Range` header wordt ingesteld. De header *geeft* aan dat het eind punt moet reageren met gesegmenteerde inhoud:
+Deze actie definitie toont bijvoorbeeld een HTTP GET-aanvraag waarmee de header wordt ingesteld `Range` . De header *geeft* aan dat het eind punt moet reageren met gesegmenteerde inhoud:
 
 ```json
 "getAction": {
@@ -107,7 +107,7 @@ De GET-aanvraag stelt de ' Range '-header in op ' bytes = 0-1023 ', wat het bere
 
 ## <a name="upload-content-in-chunks"></a>Inhoud uploaden in segmenten
 
-Voor het uploaden van gesegmenteerde inhoud van een HTTP-actie moet de actie Chunking-ondersteuning hebben ingeschakeld `runtimeConfiguration` via de eigenschap van de actie. Met deze instelling kan de actie het Chunking-protocol starten. Uw logische app kan vervolgens een eerste POST of een bericht naar het doel eindpunt verzenden. Nadat het eind punt reageert met een voorgestelde segment grootte, wordt de logische app gevolgd door HTTP-PATCH aanvragen te verzenden die de inhouds segmenten bevatten.
+Voor het uploaden van gesegmenteerde inhoud van een HTTP-actie moet de actie Chunking-ondersteuning hebben ingeschakeld via de eigenschap van de actie `runtimeConfiguration` . Met deze instelling kan de actie het Chunking-protocol starten. Uw logische app kan vervolgens een eerste POST of een bericht naar het doel eindpunt verzenden. Nadat het eind punt reageert met een voorgestelde segment grootte, wordt de logische app gevolgd door HTTP-PATCH aanvragen te verzenden die de inhouds segmenten bevatten.
 
 In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt voor het uploaden van gesegmenteerde inhoud van uw logische app naar een eind punt:
 
@@ -148,7 +148,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
    | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
    ||||
 
-Deze actie definitie toont bijvoorbeeld een HTTP POST-aanvraag voor het uploaden van gesegmenteerde inhoud naar een eind punt. In de eigenschap van `runTimeConfiguration` de actie wordt `contentTransfer` de eigenschap `transferMode` ingesteld `chunked`op:
+Deze actie definitie toont bijvoorbeeld een HTTP POST-aanvraag voor het uploaden van gesegmenteerde inhoud naar een eind punt. In de eigenschap van de actie `runTimeConfiguration` `contentTransfer` wordt de eigenschap `transferMode` ingesteld op `chunked` :
 
 ```json
 "postAction": {

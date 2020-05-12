@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 28e76a93e309112d965c49f25be232ced789ad66
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983190"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117390"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -23,6 +23,10 @@ ms.locfileid: "82983190"
 U kunt de totale kosten voor het implementeren van virtuele Windows-Bureau bladen verlagen door uw virtuele machines (Vm's) te schalen. Dit betekent dat de virtuele machines van de host worden afgesloten en opnieuw worden toegewezen tijdens gebruiks uren en vervolgens weer worden ingeschakeld en opnieuw worden toegewezen tijdens piek uren.
 
 In dit artikel vindt u meer informatie over het hulp programma voor schalen dat is gemaakt met Azure Automation en Azure Logic Apps waarmee de virtuele machines van de sessiehost automatisch worden geschaald in uw virtuele Windows-desktop omgeving. Voor meer informatie over het gebruik van het hulp programma schalen gaat u verder met [vereisten](#prerequisites).
+
+## <a name="report-issues"></a>Problemen melden
+
+Probleem rapporten voor het hulp programma voor schalen worden momenteel verwerkt op GitHub in plaats van Microsoft Ondersteuning. Als u problemen ondervindt met het hulp programma voor schalen, kunt u ze melden dat Bu een GitHub-probleem met de naam ' 4a-WVD-scaling-logicapps ' op de [pagina RDS github](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)opent.
 
 ## <a name="how-the-scaling-tool-works"></a>De werking van het hulp programma voor schalen
 
@@ -43,7 +47,7 @@ Tijdens de piek duur van het gebruik controleert de taak het huidige aantal sess
 
 Tijdens de gebruiks tijd bepaalt de taak welke host-Vm's moeten worden afgesloten op basis van de para meter *MinimumNumberOfRDSH* . Met de taak worden de Vm's van de sessie-host ingesteld op de afvoer modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter *LimitSecondsToForceLogOffUser* instelt op een positieve waarde die niet gelijk is aan nul, wordt door de taak een melding verzonden naar gebruikers die momenteel zijn aangemeld om hun werk op te slaan, de geconfigureerde tijds duur te wachten en vervolgens af te dwingen dat de gebruikers zich afmelden. Zodra alle gebruikers sessies op de sessiehost van de host-VM zijn afgemeld, wordt de VM door de taak afgesloten.
 
-Als u de para meter *LimitSecondsToForceLogOffUser* instelt op nul, kan de sessie configuratie-instelling in opgegeven groeps beleid voor het afmelden van gebruikers sessies worden afgehandeld. Als u dit groeps beleid wilt zien, gaat u naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **Terminal Services** > **Terminal Server** > **sessie tijds limieten**. Als er actieve sessies op een host-VM zijn, wordt de VM van de host in de sessie uitgevoerd. Als er geen actieve sessies zijn, wordt de host-VM van de sessie afgesloten met de taak.
+Als u de para meter *LimitSecondsToForceLogOffUser* instelt op nul, kan de sessie configuratie-instelling in opgegeven groeps beleid voor het afmelden van gebruikers sessies worden afgehandeld. Als u dit groeps beleid wilt zien, gaat u naar **computer configuratie**  >  **beleid**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Terminal Services**  >  **Terminal Server**  >  **sessie tijds limieten**. Als er actieve sessies op een host-VM zijn, wordt de VM van de host in de sessie uitgevoerd. Als er geen actieve sessies zijn, wordt de host-VM van de sessie afgesloten met de taak.
 
 De taak wordt regel matig uitgevoerd op basis van een ingesteld interval van het terugkeer patroon. U kunt dit interval wijzigen op basis van de grootte van uw virtueel-bureaublad omgeving van Windows, maar houd er rekening mee dat het starten en afsluiten van virtuele machines enige tijd kan duren. Vergeet dus niet om de vertraging te onthouden. We raden u aan het interval voor het terugkeer patroon in te stellen op elke 15 minuten.
 
@@ -258,6 +262,3 @@ Ga naar het runbook (de standaard naam is WVDAutoScaleRunbook) in de resource gr
 
 ![Een afbeelding van het uitvoer venster voor het hulp programma voor schalen.](../media/tool-output.png)
 
-## <a name="report-issues"></a>Problemen melden
-
-Als u problemen ondervindt met het hulp programma voor schalen, kunt u ze op de [pagina RDS github](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)melden.

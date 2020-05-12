@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629589"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116965"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
 
@@ -28,11 +28,11 @@ U hebt een functie-app met een door HTTP geactiveerde functie nodig.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Als u in .net ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) toe aan uw functie `Microsoft.Azure.EventGrid` voor het [NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Voor de voor beelden in dit artikel is versie 1.4.0 of hoger vereist.
+Als u in .NET ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) toe aan uw functie voor het `Microsoft.Azure.EventGrid` [NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Voor de voor beelden in dit artikel is versie 1.4.0 of hoger vereist.
 
-Sdk's voor andere talen zijn beschikbaar via de naslag informatie over het [publiceren van sdk's](./sdk-overview.md#data-plane-sdks) . Deze pakketten hebben de modellen voor systeem eigen gebeurtenis typen zoals `EventGridEvent`, `StorageBlobCreatedEventData`en `EventHubCaptureFileCreatedEventData`.
+Sdk's voor andere talen zijn beschikbaar via de naslag informatie over het [publiceren van sdk's](./sdk-overview.md#data-plane-sdks) . Deze pakketten hebben de modellen voor systeem eigen gebeurtenis typen zoals `EventGridEvent` , `StorageBlobCreatedEventData` en `EventHubCaptureFileCreatedEventData` .
 
-Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel venster van de portal van Azure functions) en maak een bestand met de naam project. json. Voeg de volgende inhoud toe aan `project.json` het bestand en sla het op:
+Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel venster van de portal van Azure functions) en maak een bestand met de naam project. json. Voeg de volgende inhoud toe aan het `project.json` bestand en sla het op:
 
  ```json
 {
@@ -50,9 +50,9 @@ Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel
 
 ## <a name="endpoint-validation"></a>Eindpunt validatie
 
-Het eerste wat u wilt doen, is het `Microsoft.EventGrid.SubscriptionValidationEvent` verwerken van gebeurtenissen. Telkens wanneer iemand zich abonneert op een gebeurtenis, stuurt Event Grid een validatie gebeurtenis naar het eind punt `validationCode` met een in de gegevens lading. Het eind punt is vereist om dit terug te echo's in de antwoord tekst, om aan te [tonen dat het eind punt geldig is en het eigendom van u is](webhook-event-delivery.md). Als u een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een door een webhook geactiveerde functie, wordt de eindpunt validatie voor u afgehandeld. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT](https://ifttt.com/)), is het mogelijk dat u de validatie code niet programmatisch kunt echo. Voor die services kunt u het abonnement hand matig valideren met behulp van een validatie-URL die wordt verzonden in de validatie gebeurtenis van het abonnement. Kopieer de URL in de `validationUrl` eigenschap en verzend een GET-aanvraag via een rest-client of uw webbrowser.
+Het eerste wat u wilt doen, is het verwerken van `Microsoft.EventGrid.SubscriptionValidationEvent` gebeurtenissen. Telkens wanneer iemand zich abonneert op een gebeurtenis, stuurt Event Grid een validatie gebeurtenis naar het eind punt met een `validationCode` in de gegevens lading. Het eind punt is vereist om dit terug te echo's in de antwoord tekst, om aan te [tonen dat het eind punt geldig is en het eigendom van u is](webhook-event-delivery.md). Als u een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een door een webhook geactiveerde functie, wordt de eindpunt validatie voor u afgehandeld. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com/home) of [IFTTT](https://ifttt.com/)), is het mogelijk dat u de validatie code niet programmatisch kunt echo. Voor die services kunt u het abonnement hand matig valideren met behulp van een validatie-URL die wordt verzonden in de validatie gebeurtenis van het abonnement. Kopieer de URL in de `validationUrl` eigenschap en verzend een GET-aanvraag via een rest-client of uw webbrowser.
 
-In C# deserialiseren de `DeserializeEventGridEvents()` functie de Event grid-gebeurtenissen. Het deserialiseren van de gebeurtenis gegevens in het juiste type, zoals StorageBlobCreatedEventData. Gebruik de `Microsoft.Azure.EventGrid.EventTypes` -klasse om ondersteunde gebeurtenis typen en-namen op te halen.
+In C# `DeserializeEventGridEvents()` deserialiseren de functie de Event grid-gebeurtenissen. Het deserialiseren van de gebeurtenis gegevens in het juiste type, zoals StorageBlobCreatedEventData. Gebruik de- `Microsoft.Azure.EventGrid.EventTypes` klasse om ondersteunde gebeurtenis typen en-namen op te halen.
 
 Gebruik de volgende code om de validatie code programmatisch te echo's. U kunt verwante voor beelden vinden op [Event grid voor beeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)van de consument.
 
@@ -140,7 +140,7 @@ Wanneer u op uitvoeren klikt, moet de uitvoer 200 OK en `{"ValidationResponse":"
 
 ## <a name="handle-blob-storage-events"></a>Blob Storage-gebeurtenissen afhandelen
 
-Nu gaan we de functie uitbreiden om te verwerken `Microsoft.Storage.BlobCreated`:
+Nu gaan we de functie uitbreiden om te verwerken `Microsoft.Storage.BlobCreated` :
 
 ```cs
 using System.Net;
@@ -257,7 +257,7 @@ Tot slot kunt u de functie nog één keer uitbreiden zodat deze ook aangepaste g
 
 In C# ondersteunt de SDK de toewijzing van een gebeurtenis type naam aan het gegevens type gebeurtenis. Gebruik de `AddOrUpdateCustomEventMapping()` functie om de aangepaste gebeurtenis toe te wijzen.
 
-Voeg een controle toe voor uw `Contoso.Items.ItemReceived`gebeurtenis. De uiteindelijke code moet er als volgt uitzien:
+Voeg een controle toe voor uw gebeurtenis `Contoso.Items.ItemReceived` . De uiteindelijke code moet er als volgt uitzien:
 
 ```cs
 using System.Net;

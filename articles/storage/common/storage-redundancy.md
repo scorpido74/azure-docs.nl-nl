@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872013"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117713"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -102,7 +102,7 @@ Geo-zone-redundante opslag (GZRS) is een combi natie van de hoge Beschik baarhei
 
 Met een GZRS-opslag account kunt u door gaan met het lezen en schrijven van gegevens als een beschikbaarheids zone niet meer beschikbaar is of niet kan worden hersteld. Daarnaast zijn uw gegevens ook duurzaam in het geval van een volledige regionale onderbreking of een nood situatie waarin de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden.
 
-Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS en RA-GZRS. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts. GZRS en RA-GZRS ondersteunen blok-blobs, pagina-blobs (met uitzonde ring van VHD-schijven), bestanden, tabellen en wacht rijen. GZRS en RA-GZRS zijn beschikbaar in alle Azure-regio's.
+Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS en RA-GZRS. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts. GZRS en RA-GZRS ondersteunen blok-blobs, pagina-blobs (met uitzonde ring van VHD-schijven), bestanden, tabellen en wacht rijen.
 
 GZRS en RA-GZRS worden ondersteund in de volgende regio's:
 
@@ -126,7 +126,7 @@ Geografisch redundante opslag (met GRS of GZRS) repliceert uw gegevens naar een 
 
 Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire regio, kunt u uw toepassingen zo ontwerpen dat de gegevens van de secundaire regio naadloos worden gelezen als de primaire regio om welke reden dan ook niet beschikbaar is. De secundaire regio is altijd beschikbaar voor lees toegang, zodat u uw toepassing kunt testen om er zeker van te zijn dat deze van de secundaire wordt gelezen in het geval van een storing. Zie [geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)voor meer informatie over het ontwerpen van uw toepassingen voor maximale Beschik baarheid.
 
-Wanneer lees toegang tot de secundaire is ingeschakeld, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net`, is `myaccount-secondary.blob.core.windows.net`het secundaire eind punt. De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
+Wanneer lees toegang tot de secundaire is ingeschakeld, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net` , is het secundaire eind punt `myaccount-secondary.blob.core.windows.net` . De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
 
 ### <a name="check-the-last-sync-time-property"></a>De eigenschap Laatst gesynchroniseerd controleren
 
