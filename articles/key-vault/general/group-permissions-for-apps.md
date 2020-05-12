@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9ba568f3a6b6e85ce90db7d6b4d72c2c0d958da1
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: abb61afab3391f9a53ada4881cb186aa9fae3187
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982714"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005914"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -107,6 +107,9 @@ In de uitvoer wordt de objectId vermeld als `Id`:
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
+
+> [!WARNING]
+> Azure ad-groepen bieden geen ondersteuning voor beheerde identiteiten. Alleen service-en gebruikers-principals worden ondersteund.
 
 #### <a name="users"></a>Gebruikers
 

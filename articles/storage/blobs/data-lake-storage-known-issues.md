@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767974"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007476"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ In deze sectie worden de problemen en beperkingen beschreven met het gebruik van
 
 * U kunt niet zowel BLOB-Api's als Data Lake Storage Api's gebruiken om naar hetzelfde exemplaar van een bestand te schrijven. Als u naar een bestand schrijft met behulp van Data Lake Storage Gen2 Api's, zijn de blokken van dat bestand niet zichtbaar voor aanroepen naar de BLOB-API voor [blok keren ophalen](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . U kunt een bestand overschrijven door gebruik te maken van Data Lake Storage Gen2 Api's of BLOB-Api's. Dit heeft geen invloed op de bestands eigenschappen.
 
-* Wanneer u de bewerking [lijst-blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidings teken op te geven, bevatten de resultaten zowel directory's als blobs. Als u ervoor kiest om een scheidings teken te gebruiken, gebruikt u`/`alleen een slash (). Dit is het enige ondersteunde scheidings teken.
+* Wanneer u de bewerking [lijst-blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidings teken op te geven, bevatten de resultaten zowel directory's als blobs. Als u ervoor kiest om een scheidings teken te gebruiken, gebruikt u alleen een slash ( `/` ). Dit is het enige ondersteunde scheidings teken.
 
 * Als u de [Delete BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API gebruikt om een map te verwijderen, wordt die map alleen verwijderd als deze leeg is. Dit betekent dat u de BLOB-API niet recursief kunt gebruiken.
 
@@ -70,12 +70,11 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 ## <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 
-* Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund.  
+Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. 
 
 ## <a name="archive-tier"></a>Laag van archief
 
 Er is momenteel een bug die van invloed is op de Access-laag voor archieven.
-
 
 ## <a name="blobfuse"></a>Blobfuse
 
@@ -91,7 +90,7 @@ Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https:
 
 ## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
-Gebruik alleen versies `1.6.0` of hoger.
+Gebruik alleen versies  `1.6.0`   of hoger.
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven wer
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Toegangs beheer lijsten (ACL) en anonieme lees toegang
 
 Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>Premium-prestaties blok-Blob Storage-accounts
+
+### <a name="diagnostic-logs"></a>Diagnostische logboeken
+
+Diagnostische logboeken kunnen nog niet worden ingeschakeld met behulp van de Azure Portal. U kunt deze inschakelen met behulp van Power shell. Bijvoorbeeld:
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
+
+- Levenscyclus beheer beleid wordt nog niet ondersteund in Premium-opslag accounts voor blok-blobs. 
+
+- Gegevens kunnen niet worden verplaatst van de Premium-laag naar lagere lagen. 
+
+- De actie **BLOB verwijderen** wordt momenteel niet ondersteund. 
+
+### <a name="hdinsight-support"></a>HDInsight-ondersteuning
+
+Wanneer u een n HDInsight-cluster maakt, kunt u nog geen blok-Blob-opslag account selecteren waarop de functie voor hiërarchische naam ruimte is ingeschakeld. U kunt het account echter koppelen aan het cluster nadat u het hebt gemaakt.
+
+### <a name="dremio-support"></a>Dremio-ondersteuning
+
+Dremio maakt nog geen verbinding met een blok-Blob Storage-account waarvoor de functie voor hiërarchische naam ruimte is ingeschakeld. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Stuur programma voor Windows Azure Storage Blob (WASB) (niet ondersteund met Data Lake Storage Gen2)
 

@@ -5,21 +5,22 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536901"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007306"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
 Met het soort BlockBlobStorage-account kunt u blok-blobs maken met Premium-prestatie kenmerken. Dit type opslag account is geoptimaliseerd voor workloads met hoge transactie tarieven of voor zeer snelle toegangs tijden. In dit artikel wordt beschreven hoe u een BlockBlobStorage-account maakt met behulp van de Azure Portal, de Azure CLI of Azure PowerShell.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account is in open bare preview en is beschikbaar in de Verenigde Staten Oost, VS Oost 2, VS centraal, VS Zuid-Centraal, VS West 2, UK-zuid, Canada-centraal en Australië-oost regio's. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) en [bekende problemen](data-lake-storage-known-issues.md)als u beperkingen wilt bekijken. Zie [dit formulier](https://aka.ms/adlspremiumonboard)als u zich wilt inschrijven voor de preview-versie.
 
 Zie [overzicht van Azure-opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over BlockBlobStorage-accounts.
 
@@ -31,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Geen.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Voor dit procedure-artikel is de Azure PowerShell AZ versie 1.2.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om uw huidige versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
@@ -64,9 +65,9 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
+Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de instructies op het scherm om te verifiëren.
 
 ```powershell
 Connect-AzAccount
@@ -91,53 +92,62 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
 
 1. Selecteer in de Azure Portal **alle services** > de **opslag** categorie > **opslag accounts**.
 
-1. Selecteer onder **opslag accounts**de optie **toevoegen**.
+2. Selecteer onder **opslag accounts**de optie **toevoegen**.
 
-1. Selecteer in het veld **abonnement** het abonnement waarin u het opslag account wilt maken.
+3. Selecteer in het veld **abonnement** het abonnement waarin u het opslag account wilt maken.
 
-1. Selecteer in het veld **resource groep** een bestaande resource groep of selecteer **nieuwe maken**en voer een naam in voor de nieuwe resource groep.
+4. Selecteer in het veld **resource groep** een bestaande resource groep of selecteer **nieuwe maken**en voer een naam in voor de nieuwe resource groep.
 
-1. Voer in het veld **naam van opslag account** een naam in voor het account. Houd rekening met de volgende richt lijnen:
+5. Voer in het veld **naam van opslag account** een naam in voor het account. Houd rekening met de volgende richt lijnen:
 
    - De naam moet uniek zijn binnen Azure.
    - De naam moet tussen de 3 en 24 tekens lang zijn.
    - De naam mag alleen cijfers en kleine letters bevatten.
 
-1. Selecteer in het veld **locatie** een locatie voor het opslag account of gebruik de standaard locatie.
+6. Selecteer in het veld **locatie** een locatie voor het opslag account of gebruik de standaard locatie.
 
-1. Configureer voor de rest van de instellingen het volgende:
+7. Configureer voor de rest van de instellingen het volgende:
 
    |Veld     |Waarde  |
    |---------|---------|
-   |**Prestaties**    |  Selecteer **Premium**.   |
+   |**Nemen**    |  Selecteer **Premium**.   |
    |**Soort account**    | Selecteer **BlockBlobStorage**.      |
    |**Replicatie**    |  Behoud de standaard instelling van **lokaal redundante opslag (LRS)**.      |
 
    ![Geeft een portal-gebruikers interface weer voor het maken van een blok-Blob-opslag account](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Selecteer **controleren + maken** om de instellingen voor het opslag account te controleren.
+8. Kies het tabblad **Geavanceerd** .
 
-1. Selecteer **Maken**.
+9. Als u uw opslag account voor gegevens analyse wilt optimaliseren, stelt u **hiërarchische naam ruimte** in op **ingeschakeld**. Als dat niet het geval is, moet u deze optie instellen op de standaard waarde.
 
-## <a name="azure-powershell"></a>[Azure Power shell](#tab/azure-powershell)
+   Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie.
+
+   > [!NOTE]
+   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account is in open bare preview en is beschikbaar in de Verenigde Staten Oost, VS Oost 2, VS centraal, VS Zuid-Centraal, VS West 2, UK-zuid, Canada-centraal en Australië-oost regio's. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) en [bekende problemen](data-lake-storage-known-issues.md)als u beperkingen wilt bekijken. Zie [dit formulier](https://aka.ms/adlspremiumonboard)als u zich wilt inschrijven voor de preview-versie.
+
+8. Selecteer **controleren + maken** om de instellingen voor het opslag account te controleren.
+
+9. Selecteer **Maken**.
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 1. Open een Windows Power shell-sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 
-1. Voer de volgende opdracht uit om te controleren of de meest recente `Az` versie van de Power shell-module is geïnstalleerd.
+2. Voer de volgende opdracht uit om te controleren of de meest recente versie van de `Az` Power shell-module is geïnstalleerd.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Open een nieuwe Power shell-console en meld u aan met uw Azure-account.
+3. Open een nieuwe Power shell-console en meld u aan met uw Azure-account.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. Maak indien nodig een nieuwe resource groep. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
+4. Maak indien nodig een nieuwe resource groep. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +155,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Maak het BlockBlobStorage-account. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
+5. Maak het BlockBlobStorage-account. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -154,6 +164,10 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
+   Als u uw opslag account wilt optimaliseren voor gegevens analyse, voegt u toe `-EnableHierarchicalNamespace $True` aan de opdracht. Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie.
+
+   > [!NOTE]
+   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account is in open bare preview en is beschikbaar in de Verenigde Staten Oost, VS Oost 2, VS centraal, VS Zuid-Centraal, VS West 2, UK-zuid, Canada-centraal en Australië-oost regio's. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) en [bekende problemen](data-lake-storage-known-issues.md)als u beperkingen wilt bekijken. Zie [dit formulier](https://aka.ms/adlspremiumonboard)als u zich wilt inschrijven voor de preview-versie.
 
 ## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -165,7 +179,7 @@ Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moe
    az login
    ```
 
-1. Maak indien nodig een nieuwe resource groep. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
+2. Maak indien nodig een nieuwe resource groep. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
 
    ```azurecli
    az group create \
@@ -173,7 +187,7 @@ Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moe
     --location "<location>"
    ```
 
-1. Maak het BlockBlobStorage-account. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
+3. Maak het BlockBlobStorage-account. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
 
    ```azurecli
    az storage account create \
@@ -184,6 +198,11 @@ Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moe
     --sku "Premium_LRS"
    ```
 
+   Als u uw opslag account wilt optimaliseren voor gegevens analyse, voegt u toe `--hierarchical-namespace true` aan de opdracht. Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie.
+
+   > [!NOTE]
+   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account is in open bare preview en is beschikbaar in de Verenigde Staten Oost, VS Oost 2, VS centraal, VS Zuid-Centraal, VS West 2, UK-zuid, Canada-centraal en Australië-oost regio's. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) en [bekende problemen](data-lake-storage-known-issues.md)als u beperkingen wilt bekijken. Zie [dit formulier](https://aka.ms/adlspremiumonboard)als u zich wilt inschrijven voor de preview-versie.
+   
 ---
 
 ## <a name="next-steps"></a>Volgende stappen

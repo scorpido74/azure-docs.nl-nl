@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1a928726665a743cb874a2f8a51ee63fcf64d9ad
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204318"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007527"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen labelen in een label project
 
@@ -65,11 +65,13 @@ Nadat u labels voor de gegevens hebt verzonden, vernieuwt Azure de pagina met ee
 
 ### <a name="assisted-machine-learning"></a>Ondersteunde machine learning 
 
-Machine learning-algoritmen kunnen worden geactiveerd tijdens een classificatie taak met meerdere klassen of meerdere labels. Als deze algoritmen in uw project zijn ingeschakeld, ziet u mogelijk het volgende:
+Machine learning-algoritmen kunnen worden geactiveerd. Als deze algoritmen in uw project zijn ingeschakeld, ziet u mogelijk het volgende:
 
 * Nadat een aantal installatie kopieën zijn gelabeld, ziet u mogelijk taken die boven aan het scherm worden **geclusterd** naast de project naam.  Dit betekent dat installatie kopieën samen worden gegroepeerd om Vergelijk bare afbeeldingen op dezelfde pagina te presen teren.  Als dit het geval is, gaat u naar een van de weer gaven met meerdere afbeeldingen om de groepering te benutten.  
 
 * Op een later tijdstip ziet u mogelijk taken met een **Label** naast de project naam.  Afbeeldingen worden weer gegeven met een aanbevolen label dat afkomstig is van een machine learning classificatie model. Geen van de machine learning model heeft een nauw keurigheid van 100%. We gebruiken alleen installatie kopieën waarvoor het model betrouwbaar is, maar deze installatie kopieën zijn mogelijk nog niet goed gelabeld.  Wanneer u deze labels ziet, corrigeert u de verkeerde labels voordat u de pagina verzendt.  
+
+* Voor object detectie modellen ziet u mogelijk selectie vakjes en labels die al aanwezig zijn.  Corrigeer deze fouten voordat u de pagina verzendt.
 
 Met name in een label project is het machine learning model mogelijk alleen nauw keurig genoeg om een kleine subset van afbeeldingen te labelen. Zodra deze afbeeldingen zijn gelabeld, keert het labelen project terug naar hand matige labeling om meer gegevens te verzamelen voor de volgende ronde van model training. In de loop van de tijd zal het model meer vertrouwen hebben over een hoger gedeelte van de installatie kopieën, wat resulteert in meer prelabel-taken verderop in het project.
 
