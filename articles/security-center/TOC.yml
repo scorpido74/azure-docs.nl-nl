@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: Beveiligingswaarschuwingen beheren
           href: security-center-managing-and-responding-alerts.md
+        - name: Onderdrukkingsregels voor beveiligingswaarschuwingen
+          href: alerts-suppression-rules.md
         - name: Beveiligingsincidenten beheren
           href: security-center-incident.md
         - name: Correlatie van Cloud Smart Alert (incidenten)

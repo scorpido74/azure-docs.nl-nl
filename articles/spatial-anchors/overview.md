@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657304"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006096"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Overzicht van Azure Spatial Anchors
 
@@ -26,7 +26,7 @@ Deze interessante locaties worden ook wel Spatial Anchors genoemd.
 
 Enkele voorbeelden van gebruik dat mogelijk wordt gemaakt door Spatial Anchors zijn onder andere:
 
-- [Ervaringen voor meerdere gebruikers](tutorials/tutorial-share-anchors-across-devices.md). Met Spatial Anchors kunnen mensen op dezelfde locatie deelnemen aan mixed reality-toepassingen voor meerdere gebruikers. Twee personen kunnen bijvoorbeeld een mixed reality-schaakspel spelen door een virtueel schaakbord op een tafel te zetten. Vervolgens kunnen ze door hun apparaat op de tafel te richten het virtuele schaakspel zien en samen een schaakpartij spelen.
+- [Ervaringen voor meerdere gebruikers](tutorials/tutorial-share-anchors-across-devices.md). Dankzij Azure spatiale ankers kunnen mensen op dezelfde plaats deel nemen aan toepassingen voor gemengde realiteit voor meerdere gebruikers. Twee personen kunnen bijvoorbeeld een mixed reality-schaakspel spelen door een virtueel schaakbord op een tafel te zetten. Vervolgens kunnen ze door hun apparaat op de tafel te richten het virtuele schaakspel zien en samen een schaakpartij spelen.
 
 - [Way-finding](concepts/anchor-relationships-way-finding.md). Ontwikkelaars kunnen Spatial Anchors ook samen verbinden en er relaties tussen maken. Een app kan bijvoorbeeld een ervaring bevatten die twee of meer interessante locaties heeft waarmee een gebruiker moet communiceren om een taak te voltooien. Deze interessante locaties kunnen met elkaar worden verbonden. Later, wanneer de gebruiker de uit meerdere stappen bestaande taak heeft voltooid, kan de app vragen om ankers die zich in de buurt van het huidige bevinden om de gebruiker naar de volgende stap in de taak te leiden.
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors bestaat uit een beheerde service en client-SDK's voor onde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw eerste app maken met Spatial Anchors.
+Maak uw eerste app met Azure spatiale ankers.
 
 > [!div class="nextstepaction"]
 > [Eenheid (HoloLens)](quickstarts/get-started-unity-hololens.md)

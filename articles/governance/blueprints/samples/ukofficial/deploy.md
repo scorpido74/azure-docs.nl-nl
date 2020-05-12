@@ -1,14 +1,14 @@
 ---
 title: Voor beelden van UK officiële & UK NHS blauw drukken
 description: Implementeer stappen voor de voor beelden van de blauw druk van het Verenigd Konink rijk en UK NHS, inclusief blauw drukken-artefact parameter Details.
-ms.date: 06/26/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 3d69f4477163618aa225150ac6352a16e901f826
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7fa78eab463c9a3202b2ec08e1952e275e51b20d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546402"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005591"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>De NHS blauw drukken-voor beelden van het Verenigd Konink rijk en UK gebruiken
 

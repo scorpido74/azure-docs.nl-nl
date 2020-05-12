@@ -127,6 +127,8 @@
               items:
                 - name: Evaluatie van beveiligingsproblemen
                   href: sql-vulnerability-assessment.md
+                - name: Evaluatieregels van beveiligingsproblemen
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: VA-scans opslaan achter firewalls en VNets
                   href: sql-database-vulnerability-assessment-storage.md
             - name: Advanced Threat Protection

@@ -59,6 +59,8 @@
               href: storage-quickstart-blobs-php.md
             - name: Ruby
               href: storage-quickstart-blobs-ruby.md
+            - name: Xamarin
+              href: storage-quickstart-blobs-xamarin.md
     - name: Zelfstudies
       items:
         - name: Een installatiekopie uploaden en verwerken
@@ -700,8 +702,10 @@
       items:
         - name: Maken
           items:
-            - name: Een opslagaccount voor algemeen gebruik v2 maken
+            - name: Een opslagaccount maken (algemeen gebruik v2)
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Een opslagaccount maken (blok-blob)
+              href: storage-blob-create-account-block-blob.md
         - name: Migreren
           items:
             - name: Migreren van Data Lake Storage Gen1

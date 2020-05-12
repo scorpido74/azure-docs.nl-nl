@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van Engelse, officiële & UK NHS blauw drukken-besturings elementen
 description: De toewijzing van de voor beelden van het Verenigd Konink rijk-en UK-NHS blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851363"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005615"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Controle van de toewijzing van de voor beelden van het Verenigd Konink rijk en UK NHS blauw drukken
 
@@ -27,9 +27,6 @@ De blauw druk helpt u ervoor te zorgen dat de overdracht van gegevens met Azure-
 - Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld
 - Controle resultaten weer geven van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- De laatste TLS-versie moet worden gebruikt in uw API-app
-- De laatste TLS-versie moet worden gebruikt in uw web-app
-- De meest recente versie van TLS moet worden gebruikt in uw functie-app
 
 ## <a name="23-data-at-rest-protection"></a>2,3 gegevens bij rust beveiliging
 
@@ -129,8 +126,8 @@ Met deze blauw druk kunt u ook de toegang tot Azure-resources beheren door Azure
 
 - \[Voor\]beeld: vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
 - \[Voor\]beeld: vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
-- \[Voor\]beeld: Linux-vm's met accounts zonder wacht woorden controleren
-- \[Preview\]: Linux-vm's controleren die externe verbindingen toestaan van accounts zonder wacht woorden
+- \[Voor\]beeld: controle resultaten weer geven van Linux-vm's met accounts zonder wacht woorden
+- \[Voor\]beeld: controle resultaten weer geven van Linux-vm's die externe verbindingen toestaan van accounts zonder wacht woorden
 - Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources
 - Virtuele machines controleren die geen beheerde schijven gebruiken
@@ -141,12 +138,10 @@ Behalve met het gebruik van meer dan 25 beleids regels voor het juiste veilige g
 
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
-- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
 - Toegang via Internet gericht eind punt moet worden beperkt
-- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
+- Aanbevelingen voor adaptieve netwerk beveiliging moeten worden toegepast op Internet gerichte virtuele machines
 - Endpoint Protection-oplossing moet worden geïnstalleerd op virtuele-machine schaal sets
 - Just-In-Time-netwerktoegangsbeheer moet worden toegepast op virtuele machines
-- Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
 - Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
@@ -179,13 +174,13 @@ Deze blauw druk wijst ook Azure Policy definities toe aan controle-accounts waar
 
 Deze blauw druk wijst ook een Azure Policy definitie toe waarmee de machtigingen van het Linux-VM-wacht woord worden gecontroleerd op waarschuwing als ze onjuist zijn ingesteld. Met dit ontwerp kunt u corrigerende maat regelen treffen om te voor komen dat verificators worden aangetast.
 
-- \[Preview\]: de machtigingen van de Linux VM/etc/passwd-bestanden controleren zijn ingesteld op 0644
+- \[Voor\]beeld: Bekijk de controle resultaten van Linux-vm's waarvoor de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
 
 ## <a name="13-audit-information-for-users"></a>13 controle-informatie voor gebruikers
 
 Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden vastgelegd door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die logboek instellingen op Azure-resources controleren. Een toegewezen beleid controleert ook of de virtuele machines geen logboeken verzenden naar een opgegeven log Analytics-werk ruimte.
 
-- Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Diagnostische instelling voor controleren
 - \[Preview\]: log Analytics-agent voor Linux-vm's implementeren
 - \[Preview\]: log Analytics-agent voor Windows-vm's implementeren
