@@ -11,16 +11,16 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cce871d2f38d7871bd1ba9c5cb7b086e514a6913
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598535"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120790"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
-Managed instance is een nieuwe implementatie optie van Azure SQL Database, die bijna 100% compatibel is met de meest recente data base-engine van SQL Server on-premises (Enter prise Edition), waarbij een VNet-implementatie (native [Virtual Network](../virtual-network/virtual-networks-overview.md) ) wordt geboden die veelvoorkomende beveiligings problemen behandelt, en een [bedrijfs model](https://azure.microsoft.com/pricing/details/sql-database/) dat voor on-premises SQL Server klanten kan worden gebruikt. Met het implementatie model voor beheerde instanties kunnen bestaande SQL Server klanten hun on-premises toepassingen naar de Cloud verplaatsen en naar een andere data base overzetten met minimale toepassings-en database wijzigingen. Tegelijkertijd behoudt de implementatie optie Managed instance alle PaaS-mogelijkheden (automatische patches en versie-updates, automatische [back-ups](sql-database-automated-backups.md), [hoge Beschik baarheid](sql-database-high-availability.md) ), waarmee de overhead en TCO van het beheer drastisch worden verminderd.
+Managed instance is een nieuwe implementatie optie van Azure SQL Database, die bijna 100% compatibel is met de meest recente data base-engine van SQL Server on-premises (Enter prise Edition), waarbij een VNet-implementatie (native [Virtual Network](../virtual-network/virtual-networks-overview.md) ) wordt geboden die veelvoorkomende beveiligings problemen behandelt, en een [bedrijfs model](https://azure.microsoft.com/pricing/details/sql-database/) dat voor on-premises SQL Server klanten kan worden gebruikt. Met het implementatie model voor beheerde instanties kunnen bestaande SQL Server klanten hun on-premises toepassingen naar de Cloud verplaatsen en naar een andere data base overzetten met minimale toepassings-en database wijzigingen. Tegelijkertijd behoudt de implementatie optie Managed instance alle operationele mogelijkheden van PaaS met betrekking tot automatische patches en versie-updates, [automatische back-ups](sql-database-automated-backups.md)en [hoge Beschik baarheid](sql-database-high-availability.md), waarmee de overhead en TCO van het beheer aanzienlijk worden verminderd.
 
 > [!IMPORTANT]
 > Zie [ondersteunde regio's](sql-database-managed-instance-resource-limits.md#supported-regions)voor een lijst met regio's waarin de implementatie optie Managed Instance momenteel beschikbaar is.
@@ -46,7 +46,7 @@ Het beheerde exemplaar is een combi natie van de beste functies die beschikbaar 
 | --- | --- |
 |Geen hardware kopen en beheren <br>Geen beheer overhead voor het beheren van de onderliggende infra structuur <br>Snelle inrichting en service schalen <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevens Services |SLA voor 99,99% uptime  <br>Ingebouwde [hoge Beschik baarheid](sql-database-high-availability.md) <br>Gegevens die worden beveiligd met [automatische back-ups](sql-database-automated-backups.md) <br>Door de klant Configureer bare Bewaar periode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Herstel mogelijkheid voor Point-in-time database](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Beveiliging en naleving** | **Beheer**|
-|Geïsoleerde omgeving ([VNet-integratie](sql-database-managed-instance-connectivity-architecture.md), single tenant service, specifieke reken kracht en opslag) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD-verificatie](sql-database-aad-authentication.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan nalevings normen hetzelfde als Azure SQL database <br>[Controleren voor SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure Portal functionaliteit voor het hand matig inrichten en schalen van services <br>Data Migration Service
+|Geïsoleerde omgeving ([VNet-integratie](sql-database-managed-instance-connectivity-architecture.md), single tenant service, specifieke reken kracht en opslag) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD-verificatie](sql-database-aad-authentication.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan nalevings normen hetzelfde als Azure SQL database <br>[SQL-controle](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure Portal functionaliteit voor het hand matig inrichten en schalen van services <br>Data Migration Service
 
 > [!IMPORTANT]
 > Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
@@ -337,7 +337,7 @@ De volgende tabel bevat verschillende eigenschappen, toegankelijk via Transact S
 |`@@VERSION`|Micro soft SQL Azure (RTM)-12.0.2000.8 2018-03-07 copyright (C) 2018 micro soft Corporation.|Deze waarde is hetzelfde als in SQL Database. Dit duidt **niet** op SQL-engine versie 12 (SQL Server 2014). Beheerd exemplaar voert altijd de nieuwste stabiele SQL-engine versie uit, die gelijk is aan of hoger is dan de laatste beschik bare RTM-versie van SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Deze waarde is hetzelfde als in SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Deze waarde is een unieke aanduiding voor een beheerd exemplaar.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|De volledige DNS-naam van het exemplaar in`<instanceName>`de volgende indeling:. `<dnsPrefix>`. database.Windows.net, waarbij `<instanceName>` de naam van de klant wordt verstrekt, `<dnsPrefix>` terwijl automatisch een deel van de naam wordt gegenereerd dat de uniekheid van de globale DNS-naam garandeert (bijvoorbeeld ' wcus17662feb9ce98 ')|Voor beeld: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|De volledige DNS-naam van het exemplaar in de volgende indeling: `<instanceName>` . `<dnsPrefix>` . database.windows.net, waarbij `<instanceName>` de naam van de klant wordt verstrekt, terwijl `<dnsPrefix>` automatisch een deel van de naam wordt gegenereerd dat de uniekheid van de globale DNS-naam garandeert (bijvoorbeeld ' wcus17662feb9ce98 ')|Voor beeld: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Volgende stappen
 

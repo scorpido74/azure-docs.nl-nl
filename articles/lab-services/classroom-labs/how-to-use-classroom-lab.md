@@ -14,24 +14,28 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebda7ecec363abc1b58cdc3fc6c0799ca879adcc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501926"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118393"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
 
 ## <a name="register-to-the-lab"></a>Registreren bij het lab
 
-1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. Gebruik in plaats daarvan de URL [https://labs.azure.com](https://labs.azure.com):. Internet Explorer 11 wordt nog niet ondersteund. 
+1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. Gebruik in plaats daarvan de URL: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 wordt nog niet ondersteund. 
+
+    ![Registreren bij het lab](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Meld u aan bij de service met uw schoolaccount om de registratie te voltooien. 
 
     > [!NOTE]
     > Een Microsoft-account is vereist voor het gebruik van Azure Lab Services. Als u uw niet-Microsoft-account zoals Yahoo of Google-accounts wilt gebruiken om u aan te melden bij de portal, volgt u de instructies voor het maken van een Microsoft-account dat wordt gekoppeld aan uw niet-Microsoft-account. Volg vervolgens de stappen om het registratie proces te volt ooien. 
 1. Controleer nadat u zich hebt geregistreerd of u de virtuele machines ziet voor het lab waartoe u toegang hebt. 
+
+    ![Toegankelijke Vm's](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. Wacht tot de virtuele machine klaar is. Let op de volgende velden op de VM-tegel:
     1. Boven aan de tegel ziet u de **naam van het lab**.
     1. Aan de rechter kant ziet u het pictogram voor het **besturings systeem (OS)** van de virtuele machine. In dit voor beeld is het Windows-besturings systeem. 
@@ -80,7 +84,7 @@ De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aa
 ## <a name="view-all-the-classroom-labs"></a>Alle leslokaallabs weergeven
 Als u zich voor de labs registreert, kunt u alle leslokaallabs weergeven door de volgende stappen uit te voeren: 
 
-1. Ga naar [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
+1. Ga naar [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 wordt nog niet ondersteund. 
 2. Meld u aan bij de service met het gebruikersaccount waarmee u zich hebt geregistreerd voor het lab. 
 3. Controleer of u alle labs ziet waarvoor u toegangsrechten hebt. 
 

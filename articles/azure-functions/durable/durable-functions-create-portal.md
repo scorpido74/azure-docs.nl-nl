@@ -2,14 +2,14 @@
 title: Durable Functions maken met behulp van de Azure Portal
 description: Meer informatie over het installeren van de Durable Functions extensie voor Azure Functions voor portal ontwikkeling.
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769639"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120137"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
 
@@ -30,17 +30,19 @@ De functie-app die is gemaakt, maakt standaard gebruik van versie 2. x van de Az
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Het NPM-pakket met duurzame functies installeren (alleen Java script)
 
-Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-pakket](https://www.npmjs.com/package/durable-functions)installeren.
+Als u Java script-Durable Functions maakt, moet u het NPM- [ `durable-functions` pakket](https://www.npmjs.com/package/durable-functions)installeren:
 
-1. Selecteer de naam van uw functie-app, gevolgd door **platform functies**, en **Geavanceerde Hulpprogram ma's (kudu)**.
+1. Selecteer op de pagina van de functie-app **geavanceerde hulp** middelen onder **ontwikkelingsprogram ma's** in het linkerdeel venster.
 
-   ![Functies platform functies kiezen kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="Functies platform functies kiezen kudu":::
 
-2. Selecteer in de kudu-console **fout opsporing console** en vervolgens **cmd**.
+2. Selecteer op de pagina **geavanceerde hulp middelen** de optie **Go**.
 
-   ![Console voor fout opsporing kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. Selecteer in de kudu-console **fout opsporing console**en klik vervolgens op **cmd**.
 
-3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een `package.json` bestand uploaden door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet `package.json` u een voor beeld:
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Console voor fout opsporing kudu":::
+
+3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een bestand uploaden `package.json` door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet u een voor beeld `package.json` :
 
     ```json
     {
@@ -50,37 +52,31 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
     }
     ```
 
-   ![Kudu upload package. json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu upload package. json":::
 
-4. Nadat uw `package.json` is geüpload, voert u `npm install` de opdracht uit vanuit de kudu-console voor externe uitvoering.
+4. Nadat uw `package.json` is geüpload, voert u de `npm install` opdracht uit vanuit de kudu-console voor externe uitvoering.
 
    ![Kudu uitvoeren NPM installeren](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Een Orchestrator-functie maken
 
-1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Selecteer in de functie-app **functies** in het linkerdeel venster en selecteer vervolgens **toevoegen** in het bovenste menu. 
 
-   ![De Quick Start-pagina van Functions in Azure Portal](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. Voer in het zoek veld van de pagina **nieuwe functie** in `durable` en kies vervolgens de sjabloon **Durable functions http-starter** .
 
-1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Durable Functions HTTP-starter selecteren":::
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/durable-functions-create-portal/add-first-function.png)
+1. Voer voor de **nieuwe functie** naam in `HttpStart` en selecteer vervolgens **functie maken**.
 
-1. Typ `durable` in het zoek veld en kies vervolgens de sjabloon **Durable functions http-starter** .
+   De functie die wordt gemaakt, wordt gebruikt om de indeling te starten.
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** om de Azure DurableTask-extensie en eventuele afhankelijkheden in de functie-app te installeren. U hoeft de uitbreiding slechts eenmaal te installeren voor een functie-app voor geven. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Maak een andere functie in de functie-app, dit keer door gebruik te maken van de **Durable functions Orchestrator** -sjabloon. Geef een naam op voor de nieuwe Orchestration-functie `HelloSequence` .
 
-    ![Binding-extensies installeren](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. Wanneer de installatie is voltooid, kunt u de nieuwe `HttpStart` functie een naam en kies **maken**. De functie die wordt gemaakt, wordt gebruikt om de indeling te starten.
-
-1. Maak een andere functie in de functie-app, dit keer door gebruik te maken van de **Durable functions Orchestrator** -sjabloon. Geef een naam op voor de `HelloSequence`nieuwe Orchestration-functie.
-
-1. Maak een derde functie met `Hello` de naam met behulp van de sjabloon **Durable functions activiteit** .
+1. Maak een derde functie `Hello` met de naam met behulp van de sjabloon **Durable functions activiteit** .
 
 ## <a name="test-the-durable-function-orchestration"></a>De functie voor de integratie van duurzame functies testen
 
-1. Ga terug naar de functie **HttpStart** , kies **</> functie-URL ophalen** en **Kopieer** de URL. U gebruikt deze URL om de functie **HelloSequence** te starten.
+1. Ga terug naar de functie **HttpStart** , kies **functie-URL ophalen**en selecteer het pictogram **kopiëren naar klem bord** om de URL te kopiëren. U gebruikt deze URL om de functie **HelloSequence** te starten.
 
 1. Gebruik een HTTP-hulp programma zoals postman of krul om een POST-aanvraag te verzenden naar de URL die u hebt gekopieerd. Het volgende voor beeld is een krul opdracht waarmee een POST-aanvraag wordt verzonden naar de functie duurzame:
 
@@ -112,7 +108,7 @@ Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-
         }
     ```
 
-1. Ga door met `statusQueryGetUri` het aanroepen van het eind punt totdat de status is gewijzigd in **voltooid**en er een antwoord wordt weer geven, zoals in het volgende voor beeld:
+1. Ga door met het aanroepen van het `statusQueryGetUri` eind punt totdat de status is gewijzigd in **voltooid**en er een antwoord wordt weer geven, zoals in het volgende voor beeld:
 
     ```json
     {

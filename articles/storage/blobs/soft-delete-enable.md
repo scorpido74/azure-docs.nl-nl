@@ -1,24 +1,30 @@
 ---
-title: Voorlopig verwijderen voor blobs inschakelen
+title: Zacht verwijderen voor blobs inschakelen en beheren
 titleSuffix: Azure Storage
 description: Schakel zacht verwijderen voor blob-objecten in om uw gegevens eenvoudiger te herstellen wanneer deze foutief worden gewijzigd of verwijderd.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884681"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120093"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>Voorlopig verwijderen voor blobs inschakelen
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>Zacht verwijderen voor blobs inschakelen en beheren
 
-De volgende stappen laten zien hoe u aan de slag gaat met zacht verwijderen.
+Bij zacht verwijderen worden BLOB-gegevens per ongeluk of onbedoeld gewijzigd of verwijderd. Als zacht verwijderen is ingeschakeld voor een opslag account, kunnen blobs, Blob-versies (preview) en moment opnamen in dat opslag account worden hersteld nadat ze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
+
+Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, raadt micro soft aan om de functie voor voorlopig verwijderen in te scha kelen.
+
+In dit artikel wordt beschreven hoe u aan de slag gaat met zacht verwijderen.
+
+## <a name="enable-soft-delete"></a>Voorlopig verwijderen inschakelen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 U kunt controleren of de functie voor voorlopig verwijderen is ingeschakeld met behulp van de volgende opdracht:
 
 ```powershell
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>Volgende stappen
+
+- [Voorlopig verwijderen voor Blob Storage](soft-delete-overview.md)
+- [Versie beheer van BLOB (preview)](versioning-overview.md)

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183463"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118461"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
 IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.
@@ -124,16 +124,16 @@ Wanneer u aan de slag gaat met Azure Lab Services, raden we u aan om naam conven
 
 | Resourcetype | Rol | Voorgesteld patroon | Voorbeelden |
 | ------------- | ---- | ----------------- | -------- | 
-| Resourcegroep | Bevat een of meer Lab-accounts en een of meer galerie met gedeelde afbeeldingen | \<\>-\<omgeving\>voor de korte naam van de organisatie-RG<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**RG** staat voor het resource type: resource groep.</li></ul> | contosouniversitylabs-RG<br/>contosouniversitylabs-pilot-RG<br/>contosouniversitylabs-Prod-RG |
-| Lab-account | Bevat een of meer Labs | \<\>-\<omgeving\>voor de korte naam van de organisatie-La<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**La** staat voor het resource type: Lab-account.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs-pilot-La<br/>sciencedeptlabs-Prod-La |
-| Klas Lab | Bevat een of meer virtuele machines |\<id van\>-\<de\>-\<klassen naam periode docent\><ul><li>**Klassenaam** identificeert de naam van de klasse die door het lab wordt ondersteund.</li><li>**Tijds bestek** duidt de periode aan waarin de klasse wordt aangeboden.</li>**Onderwijs-id** identificeert de docenten die eigenaar zijn van het lab.</li></ul> | CS1234-fall2019-JANJANSEN<br/>CS1234-spring2019-JANJANSEN |
-| Galerie met gedeelde afbeeldingen | Bevat een of meer versies van VM-installatie kopieën | \<Galerie met korte\>namen van organisaties | contosouniversitylabsgallery |
+| Resourcegroep | Bevat een of meer Lab-accounts en een of meer galerie met gedeelde afbeeldingen | \<omgeving voor de korte naam van de organisatie \> - \< \> -RG<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**RG** staat voor het resource type: resource groep.</li></ul> | contosouniversitylabs-RG<br/>contosouniversitylabs-pilot-RG<br/>contosouniversitylabs-Prod-RG |
+| Lab-account | Bevat een of meer Labs | \<omgeving voor de korte naam van de organisatie \> - \< \> -La<ul><li>**Korte naam** van de organisatie identificeert de naam van de organisatie die de resource groep ondersteunt</li><li>**Omgeving** identificeert de omgeving voor de resource, zoals pilot of productie</li><li>**La** staat voor het resource type: Lab-account.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs-pilot-La<br/>sciencedeptlabs-Prod-La |
+| Klas Lab | Bevat een of meer virtuele machines |\<id van de klassen naam \> - \< periode \> - \< docent\><ul><li>**Klassenaam** identificeert de naam van de klasse die door het lab wordt ondersteund.</li><li>**Tijds bestek** duidt de periode aan waarin de klasse wordt aangeboden.</li>**Onderwijs-id** identificeert de docenten die eigenaar zijn van het lab.</li></ul> | CS1234-fall2019-JANJANSEN<br/>CS1234-spring2019-JANJANSEN |
+| Galerie met gedeelde afbeeldingen | Bevat een of meer versies van VM-installatie kopieën | \<Galerie met korte namen van organisaties \> | contosouniversitylabsgallery |
 
 Zie [naamgevings conventies voor Azure-resources](/azure/architecture/best-practices/naming-conventions)voor meer informatie over het benoemen van andere Azure-resources.
 
 ## <a name="regionslocations"></a>Regions\locations
 
-Wanneer u de resources van uw Azure Lab Services instelt, moet u een regio (of locatie) opgeven van het Data Center dat als host fungeert voor de resource. Hier vindt u meer informatie over de manier waarop de regio van invloed is op elk van de bronnen die zijn betrokken bij het instellen van een lab.
+Wanneer u de resources van uw Azure Lab Services instelt, moet u een regio (of locatie) opgeven van het Data Center dat als host fungeert voor de resource. Hier vindt u meer informatie over de invloed van de regio op elk van de resources die betrokken zijn bij het instellen van een lab.
 
 ### <a name="resource-group"></a>Resourcegroep
 

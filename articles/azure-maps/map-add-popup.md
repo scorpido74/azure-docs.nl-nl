@@ -1,20 +1,20 @@
 ---
 title: Een pop-upvenster toevoegen aan een punt op een kaart | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een pop-upvenster kunt toevoegen aan een punt met behulp van de Microsoft Azure Maps Web SDK.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cf6424d2a6cbcfb7c5052201b5a9190c81fddaff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7ca2f07e4568257baf72f2f298631b86f776c2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80055956"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119257"
 ---
 # <a name="add-a-popup-to-the-map"></a>Een pop-upvenster toevoegen aan de kaart
 
@@ -22,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u een pop-upvenster kunt toevoegen aan een pu
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-Met de volgende code wordt een punt functie met `name` en `description` eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de Symbol-laag om het openen en sluiten van de pop-up te activeren. Wanneer het markerings symbool wordt aangevallen, wordt `position` de eigenschap van het pop-upvenster bijgewerkt met de `content` positie van de markering en de optie wordt bijgewerkt met `name` een `description` aantal HTML-code die de eigenschappen van de punt en de plaats van de functie in de stand zet. De pop-up wordt vervolgens met behulp van `open` de functie weer gegeven op de kaart.
+Met de volgende code wordt een punt functie met `name` en `description` Eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de Symbol-laag om het openen en sluiten van de pop-up te activeren. Wanneer het markerings symbool wordt aangevallen, wordt de eigenschap van het pop-upvenster `position` bijgewerkt met de positie van de markering en de `content` optie wordt bijgewerkt met een aantal HTML-code die de `name` `description` Eigenschappen van de punt en de plaats van de functie in de stand zet. De pop-up wordt vervolgens met behulp van de functie weer gegeven op de kaart `open` .
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -80,7 +80,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een pop-up toevoegen met Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>een pop-up toevoegen met Azure Maps</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een pop-up toevoegen met Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>een pop-up toevoegen met Azure Maps</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Een pop-upvenster met meerdere punten opnieuw gebruiken
@@ -89,17 +89,17 @@ Er zijn gevallen waarin de beste aanpak is om één pop-up te maken en deze opni
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Opnieuw gebruiken van pop-up met meerdere pincodes' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen met behulp van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a> <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>met meerdere pincodes</a> .
+<iframe height='500' scrolling='no' title='Opnieuw gebruiken van pop-up met meerdere pincodes' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen met behulp van Azure Maps () op CodePen <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>met meerdere pincodes</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="customizing-a-popup"></a>Een pop-upvenster aanpassen
 
-Standaard heeft de pop-up een witte achtergrond, een aanwijzer pijl aan de onderkant en een knop Sluiten in de rechter bovenhoek. In het volgende voor beeld wordt de achtergrond kleur gewijzigd in `fillColor` zwart met behulp van de optie van de pop-up. De knop Sluiten wordt verwijderd door de `CloseButton` optie in te stellen op ONWAAR. De HTML-inhoud van de pop-up maakt gebruik van 10 pixels van de randen van de pop-up. De tekst wordt wit gemaakt, zodat deze fraai op de zwarte achtergrond wordt weer gegeven.  
+Standaard heeft de pop-up een witte achtergrond, een aanwijzer pijl aan de onderkant en een knop Sluiten in de rechter bovenhoek. In het volgende voor beeld wordt de achtergrond kleur gewijzigd in zwart met behulp `fillColor` van de optie van de pop-up. De knop Sluiten wordt verwijderd door de `CloseButton` optie in te stellen op ONWAAR. De HTML-inhoud van de pop-up maakt gebruik van 10 pixels van de randen van de pop-up. De tekst wordt wit gemaakt, zodat deze fraai op de zwarte achtergrond wordt weer gegeven.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Aangepaste pop-up" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>aangepaste</a> Pen door Azure Maps ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>op <a href='https://codepen.io'>CodePen</a>().
+Zie de <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>aangepaste</a> Pen door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>().
 </iframe>
 
 ## <a name="add-popup-templates-to-the-map"></a>Pop-upsjablonen toevoegen aan de kaart
@@ -112,16 +112,16 @@ Met pop-upsjablonen kunt u eenvoudig gegevensgestuurde indelingen voor pop-ups m
 > - Alle scripts, formulieren, aanwijzer vergrendeling en de bovenste navigatie functionaliteit zijn uitgeschakeld. Koppelingen mogen worden geopend op een nieuw tabblad wanneer erop wordt geklikt. 
 > - Oudere browsers die de `srcdoc` para meter niet op iframes ondersteunen, zijn beperkt tot het renderen van een kleine hoeveelheid inhoud.
 > 
-> Als u de gegevens die in pop-upvensters worden geladen, vertrouwt en u wilt dat deze scripts die in pop-upvensters worden geladen, toegang hebben tot `sandboxContent` uw toepassing, kunt u dit uitschakelen door de optie pop-upsjablonen in te stellen op false. 
+> Als u de gegevens die in pop-upvensters worden geladen, vertrouwt en u wilt dat deze scripts die in pop-upvensters worden geladen, toegang hebben tot uw toepassing, kunt u dit uitschakelen door de optie pop-upsjablonen `sandboxContent` in te stellen op false. 
 
 ### <a name="string-template"></a>Teken reeks sjabloon
 
-De teken reeks sjabloon vervangt tijdelijke aanduidingen door de waarden van de functie-eigenschappen. Aan de eigenschappen van de functie hoeft geen waarde van het type teken reeks te worden toegewezen. Een voor beeld `value1` bevat een geheel getal. Deze waarden worden vervolgens door gegeven aan de eigenschap content van `popupTemplate`. 
+De teken reeks sjabloon vervangt tijdelijke aanduidingen door de waarden van de functie-eigenschappen. Aan de eigenschappen van de functie hoeft geen waarde van het type teken reeks te worden toegewezen. Een voor beeld `value1` bevat een geheel getal. Deze waarden worden vervolgens door gegeven aan de eigenschap content van `popupTemplate` . 
 
-Met `numberFormat` de optie geeft u de indeling van het getal op dat moet worden weer gegeven. Als dat `numberFormat` niet is opgegeven, gebruikt de code de datum notatie voor de pop-up sjablonen. Met `numberFormat` de optie worden getallen opgemaakt met de functie [Number. toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) . Als u grote getallen wilt opmaken, kunt `numberFormat` u de optie gebruiken met functies van [NumberFormat. Format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format). In het onderstaande code fragment wordt bijvoorbeeld gebruikt `maximumFractionDigits` om het aantal breuk cijfers te beperken tot twee.
+`numberFormat`Met de optie geeft u de indeling van het getal op dat moet worden weer gegeven. Als `numberFormat` dat niet is opgegeven, gebruikt de code de datum notatie voor de pop-up sjablonen. `numberFormat`Met de optie worden getallen opgemaakt met de functie [Number. toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) . Als u grote getallen wilt opmaken, kunt u de `numberFormat` optie gebruiken met functies van [NumberFormat. Format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format). In het onderstaande code fragment wordt bijvoorbeeld gebruikt `maximumFractionDigits` om het aantal breuk cijfers te beperken tot twee.
 
 > [!Note]
-> Er is slechts één manier waarop de teken reeks sjabloon afbeeldingen kan genereren. Eerst moet de teken reeks sjabloon een afbeeldings code bevatten. De waarde die wordt door gegeven aan de afbeeldings code moet een URL naar een afbeelding zijn. Vervolgens moet de teken reeks sjabloon zijn `isImage` ingesteld op True in de. `HyperLinkFormatOptions` De `isImage` optie geeft aan dat de Hyper link voor een afbeelding is en de Hyper link wordt geladen in een afbeeldings code. Wanneer op de Hyper link wordt geklikt, wordt de afbeelding geopend.
+> Er is slechts één manier waarop de teken reeks sjabloon afbeeldingen kan genereren. Eerst moet de teken reeks sjabloon een afbeeldings code bevatten. De waarde die wordt door gegeven aan de afbeeldings code moet een URL naar een afbeelding zijn. Vervolgens moet de teken reeks sjabloon zijn `isImage` ingesteld op True in de `HyperLinkFormatOptions` . De `isImage` optie geeft aan dat de Hyper link voor een afbeelding is en de Hyper link wordt geladen in een afbeeldings code. Wanneer op de Hyper link wordt geklikt, wordt de afbeelding geopend.
 
 ```javascript
 var templateOptions = {
@@ -148,9 +148,9 @@ var popup = new atlas.Popup({
 
 ### <a name="propertyinfo-template"></a>Property info-sjabloon
 
-De Property info-sjabloon geeft de beschik bare eigenschappen van de functie weer. Met `label` de optie geeft u de tekst op die voor de gebruiker moet worden weer gegeven. Als `label` niet wordt opgegeven, wordt de Hyper link weer gegeven. En als de Hyper Link een afbeelding is, wordt de waarde die is toegewezen aan de tag ' Alt ' weer gegeven. `dateFormat` Hiermee geeft u de notatie van de datum op en als de datum notatie niet is opgegeven, wordt de datum weer gegeven als een teken reeks. Met `hyperlinkFormat` de optie worden klik bare koppelingen weer gegeven, op `email` dezelfde manier, de optie kan worden gebruikt voor het weer geven van klik bare e-mail adressen.
+De Property info-sjabloon geeft de beschik bare eigenschappen van de functie weer. `label`Met de optie geeft u de tekst op die voor de gebruiker moet worden weer gegeven. Als `label` niet wordt opgegeven, wordt de Hyper link weer gegeven. En als de Hyper Link een afbeelding is, wordt de waarde die is toegewezen aan de tag ' Alt ' weer gegeven. `dateFormat`Hiermee geeft u de notatie van de datum op en als de datum notatie niet is opgegeven, wordt de datum weer gegeven als een teken reeks. `hyperlinkFormat`Met de optie worden klik bare koppelingen weer gegeven, op dezelfde manier, de `email` optie kan worden gebruikt voor het weer geven van klik bare e-mail adressen.
 
-Voordat de Property info-sjabloon de eigenschappen weer geven voor de eind gebruiker, controleert het recursief of de eigenschappen inderdaad voor die functie zijn gedefinieerd. De weer gave van eigenschappen van stijl en titel wordt ook genegeerd. Er wordt bijvoorbeeld geen weer gegeven `color`, `size` `anchor`,, `strokeOpacity`, en `visibility`. Wanneer het controleren van de eigenschappen van de eigenschap is voltooid in de back-end, wordt de inhoud in een tabel indeling weer gegeven in de sjabloon info.
+Voordat de Property info-sjabloon de eigenschappen weer geven voor de eind gebruiker, controleert het recursief of de eigenschappen inderdaad voor die functie zijn gedefinieerd. De weer gave van eigenschappen van stijl en titel wordt ook genegeerd. Er wordt bijvoorbeeld geen weer gegeven `color` ,,, `size` `anchor` `strokeOpacity` , en `visibility` . Wanneer het controleren van de eigenschappen van de eigenschap is voltooid in de back-end, wordt de inhoud in een tabel indeling weer gegeven in de sjabloon info.
 
 ```javascript
 var templateOptions = {
@@ -246,13 +246,13 @@ var popup = new atlas.Popup({
 
 ### <a name="points-without-a-defined-template"></a>Punten zonder een gedefinieerde sjabloon
 
-Wanneer de pop-upsjabloon niet is gedefinieerd als een teken reeks sjabloon, een Property info-sjabloon of een combi natie van beide, worden de standaard instellingen gebruikt. Wanneer de `title` en `description` de enige toegewezen eigenschappen zijn, toont de pop-upsjabloon een witte achtergrond, een knop Sluiten in de rechter bovenhoek. En op kleine en middel grote schermen wordt een pijl onderaan weer gegeven. De standaard instellingen worden in een tabel weer gegeven voor alle eigenschappen, `title` met uitzonde ring van de `description`. Zelfs wanneer u terugkeert naar de standaard instellingen, kan de pop-upsjabloon nog steeds programmatisch worden gemanipuleerd. Gebruikers kunnen bijvoorbeeld de detectie van Hyper links uitschakelen en de standaard instellingen blijven van toepassing op andere eigenschappen.
+Wanneer de pop-upsjabloon niet is gedefinieerd als een teken reeks sjabloon, een Property info-sjabloon of een combi natie van beide, worden de standaard instellingen gebruikt. Wanneer de `title` en de `description` enige toegewezen eigenschappen zijn, toont de pop-upsjabloon een witte achtergrond, een knop Sluiten in de rechter bovenhoek. En op kleine en middel grote schermen wordt een pijl onderaan weer gegeven. De standaard instellingen worden in een tabel weer gegeven voor alle eigenschappen, met uitzonde ring van de `title` `description` . Zelfs wanneer u terugkeert naar de standaard instellingen, kan de pop-upsjabloon nog steeds programmatisch worden gemanipuleerd. Gebruikers kunnen bijvoorbeeld de detectie van Hyper links uitschakelen en de standaard instellingen blijven van toepassing op andere eigenschappen.
 
 Klik op de punten op de kaart in de CodePen. Er is een punt op de kaart voor elk van de volgende pop-upsjablonen: teken reeks sjabloon, Property info-sjabloon en meerdere inhouds sjablonen. Er zijn ook drie punten om weer te geven hoe sjablonen worden weer gegeven met de standaard instellingen.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> by Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="reuse-popup-template"></a>Pop-upsjabloon opnieuw gebruiken
@@ -261,7 +261,7 @@ Net als bij het opnieuw gebruiken van pop-up kunt u pop-upsjablonen opnieuw gebr
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> by Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="popup-events"></a>Pop-upgebeurtenisen
@@ -271,7 +271,7 @@ Pop-ups kunnen worden geopend, gesloten en gesleept. De pop-upklasse bevat gebeu
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Pop-upgebeurtenisen" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>pop-up gebeurtenissen</a> van de<a href='https://codepen.io/azuremaps'>@azuremaps</a>pen per Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie de <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>pop-up gebeurtenissen</a> van de Pen per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

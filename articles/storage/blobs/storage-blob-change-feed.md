@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883330"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120416"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
 
@@ -36,6 +36,8 @@ De ondersteuning voor het wijzigen van feeds is heel geschikt voor scenario's wa
   - Ontwikkel oplossingen voor het maken van een back-up, Mirror of replicatie van object status in uw account voor nood beheer of naleving.
 
   - Bouw verbonden toepassings pijplijnen die reageren op wijzigings gebeurtenissen of het plannen van uitvoeringen op basis van een gemaakt of gewijzigd object.
+  
+Wijzigings invoer is een vereiste functie voor [herstel naar een bepaald tijdstip voor blok-blobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
 > Wijzigings feed biedt een duurzaam, geordend logboek model van de wijzigingen die zich voordoen op een blob. Wijzigingen worden geschreven en beschikbaar gesteld in het wijzigingslog bestand binnen een bestelling van een paar minuten van de wijziging. Als uw toepassing sneller moet reageren op gebeurtenissen, kunt u in plaats daarvan [Blob Storage gebeurtenissen](storage-blob-event-overview.md) gebruiken. [Blob Storage gebeurtenissen](storage-blob-event-overview.md) biedt realtime eenmalige gebeurtenissen waarmee uw Azure functions of toepassingen snel kunnen reageren op wijzigingen die zich voordoen aan een blob. 
@@ -55,7 +57,7 @@ Hier volgen enkele dingen die u moet onthouden wanneer u de wijzigings feed insc
 - Alleen GPv2-en Blob Storage-accounts kunnen wijzigings toevoer inschakelen. Premium BlockBlobStorage-accounts en hiërarchische naam ruimte ingeschakelde accounts worden momenteel niet ondersteund. GPv1-opslag accounts worden niet ondersteund, maar kunnen wel worden bijgewerkt naar GPv2 zonder downtime. Zie [upgraden naar een GPv2 Storage-account](../common/storage-account-upgrade.md) voor meer informatie.
 
 > [!IMPORTANT]
-> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie. U moet uw abonnement registreren voordat u feed voor wijzigen kunt inschakelen voor uw opslag accounts.
+> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **West-Centraal VS**, **vs-west 2**, **Frankrijk-centraal**, **Frankrijk-Zuid**, **Canada-centraal**en **Canada-Oost** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie. U moet uw abonnement registreren voordat u feed voor wijzigen kunt inschakelen voor uw opslag accounts.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -89,7 +91,7 @@ Feed voor wijziging inschakelen met behulp van Power shell:
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
+4. Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de instructies op het scherm om te verifiëren.
 
    ```powershell
    Connect-AzAccount
@@ -154,7 +156,7 @@ Zie [Logboeken voor feed changes in Azure Blob Storage verwerken](storage-blob-c
 
 De wijzigings feed is een logboek met wijzigingen die zijn ingedeeld in **uren** *segmenten* , maar worden toegevoegd aan en bijgewerkt om de paar minuten. Deze segmenten worden alleen gemaakt wanneer er BLOB-wijzigings gebeurtenissen in dat uur optreden. Hierdoor kan uw client toepassing wijzigingen gebruiken die binnen bepaalde Peri Oden optreden zonder dat het hele logboek moet worden doorzocht. Zie de [specificaties](#specifications)voor meer informatie.
 
-Een beschikbaar segment van de wijzigings feed wordt beschreven in een manifest bestand dat de paden specificeert naar de wijzigings bestanden voor dat segment. In de lijst van `$blobchangefeed/idx/segments/` de virtuele map worden deze segmenten weer gegeven op tijd. Het pad van het segment beschrijft het begin van het uur tijd bereik dat het segment vertegenwoordigt. U kunt deze lijst gebruiken om de segmenten van de logboeken te filteren die voor u van belang zijn.
+Een beschikbaar segment van de wijzigings feed wordt beschreven in een manifest bestand dat de paden specificeert naar de wijzigings bestanden voor dat segment. In de lijst van de `$blobchangefeed/idx/segments/` virtuele map worden deze segmenten weer gegeven op tijd. Het pad van het segment beschrijft het begin van het uur tijd bereik dat het segment vertegenwoordigt. U kunt deze lijst gebruiken om de segmenten van de logboeken te filteren die voor u van belang zijn.
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -168,7 +170,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 > [!NOTE]
 > De `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` wordt automatisch gemaakt wanneer u de wijzigings feed inschakelt. U kunt dit bestand negeren. Het is een altijd leeg initialisatie bestand. 
 
-Het segment manifest bestand (`meta.json`) toont het pad van de wijzigings bestanden voor dat segment in de `chunkFilePaths` eigenschap. Hier volgt een voor beeld van een segment manifest bestand.
+Het segment manifest bestand ( `meta.json` ) toont het pad van de wijzigings bestanden voor dat segment in de `chunkFilePaths` eigenschap. Hier volgt een voor beeld van een segment manifest bestand.
 
 ```json
 {
@@ -207,7 +209,13 @@ Het segment manifest bestand (`meta.json`) toont het pad van de wijzigings besta
 
 De Change feed-bestanden bevatten een reeks wijzigings gebeurtenis records. Elke wijzigings gebeurtenis record komt overeen met één wijziging in een afzonderlijke blob. De records worden geserialiseerd en naar het bestand geschreven met behulp van de [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) Format-specificatie. De records kunnen worden gelezen met behulp van de Avro-bestands indeling. Er zijn verschillende bibliotheken beschikbaar voor het verwerken van bestanden in die indeling.
 
-Wijzigingen in de feed worden opgeslagen in `$blobchangefeed/log/` de virtuele map als [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Het eerste invoer bestand onder elk pad heeft `00000` de bestands naam (bijvoorbeeld `00000.avro`). De naam van elk volgende logboek bestand dat aan het pad wordt toegevoegd, wordt verhoogd met 1 ( `00001.avro`bijvoorbeeld:).
+Wijzigingen in de feed worden opgeslagen in de `$blobchangefeed/log/` virtuele map als [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Het eerste invoer bestand onder elk pad heeft `00000` de bestands naam (bijvoorbeeld `00000.avro` ). De naam van elk volgende logboek bestand dat aan het pad wordt toegevoegd, wordt verhoogd met 1 (bijvoorbeeld: `00001.avro` ).
+
+De volgende gebeurtenis typen worden vastgelegd in de gegevens van de wijzigings feed:
+- BlobCreated
+- BlobDeleted
+- BlobPropertiesUpdated
+- BlobSnapshotCreated
 
 Hier volgt een voor beeld van het wijzigen van de gebeurtenis record van het wijzigingslog bestand dat is geconverteerd naar JSON.
 
@@ -238,7 +246,7 @@ Hier volgt een voor beeld van het wijzigen van de gebeurtenis record van het wij
 }
 ```
 
-Zie [Azure Event grid-gebeurtenis schema voor Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)voor een beschrijving van elke eigenschap.
+Zie [Azure Event grid-gebeurtenis schema voor Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)voor een beschrijving van elke eigenschap. De BlobPropertiesUpdated-en BlobSnapshotCreated-gebeurtenissen zijn momenteel exclusief voor het wijzigen van de feed en worden nog niet ondersteund voor Blob Storage-gebeurtenissen.
 
 > [!NOTE]
 > De wijzigings bestanden voor een segment worden niet direct weer gegeven nadat een segment is gemaakt. De lengte van de vertraging ligt binnen het normale interval van de publicatie latentie van de wijzigings feed binnen een paar minuten van de wijziging.
@@ -255,15 +263,15 @@ Zie [Azure Event grid-gebeurtenis schema voor Blob Storage](https://docs.microso
 
 - Wijzigings gebeurtenis records worden geserialiseerd in het logboek bestand met behulp van de [Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) -indeling.
 
-- Wijzig gebeurtenis records waarbij de `eventType` waarde van `Control` een interne systeem record is en niet een wijziging in de objecten in uw account weerspiegelt. U kunt deze records gewoon negeren.
+- Wijzig gebeurtenis records waarbij de `eventType` waarde van een `Control` interne systeem record is en niet een wijziging in de objecten in uw account weerspiegelt. U kunt deze records gewoon negeren.
 
-- De waarden in `storageDiagnonstics` de eigenschappen verzameling zijn alleen voor intern gebruik en zijn niet bedoeld voor gebruik door uw toepassing. Uw toepassingen mogen geen contractuele afhankelijkheid op die gegevens hebben. U kunt deze eigenschappen gewoon negeren.
+- De waarden in de `storageDiagnonstics` Eigenschappen verzameling zijn alleen voor intern gebruik en zijn niet bedoeld voor gebruik door uw toepassing. Uw toepassingen mogen geen contractuele afhankelijkheid op die gegevens hebben. U kunt deze eigenschappen gewoon negeren.
 
 - De tijd die door het segment wordt weer gegeven, is bij **benadering** met een limiet van 15 minuten. Om ervoor te zorgen dat alle records binnen een opgegeven periode worden verbruikt, verbruikt u het opeenvolgende vorige en volgende uur segment.
 
-- Elk segment kan een ander aantal hebben als `chunkFilePaths` gevolg van een interne partitionering van de logboek stroom voor het beheren van de door Voer van de publicatie. De logboek bestanden in elk `chunkFilePath` van beide kunnen wederzijds exclusieve blobs bevatten en kunnen worden gebruikt en gelijktijdig worden verwerkt zonder dat de volg orde van wijzigingen per BLOB tijdens de herhaling wordt geschonden.
+- Elk segment kan een ander aantal hebben `chunkFilePaths` als gevolg van een interne partitionering van de logboek stroom voor het beheren van de door Voer van de publicatie. De logboek bestanden in elk van beide kunnen `chunkFilePath` wederzijds exclusieve blobs bevatten en kunnen worden gebruikt en gelijktijdig worden verwerkt zonder dat de volg orde van wijzigingen per BLOB tijdens de herhaling wordt geschonden.
 
-- De segmenten beginnen met `Publishing` de status. Zodra het toevoegen van de records aan het segment is voltooid, wordt het uitgevoerd `Finalized`. Logboek bestanden in een segment waarvan de naam na de datum van de `LastConsumable` eigenschap in het `$blobchangefeed/meta/Segments.json` bestand valt, mogen niet worden gebruikt door uw toepassing. Hier volgt een voor beeld van `LastConsumable`de eigenschap in `$blobchangefeed/meta/Segments.json` een bestand:
+- De segmenten beginnen met de `Publishing` status. Zodra het toevoegen van de records aan het segment is voltooid, wordt het uitgevoerd `Finalized` . Logboek bestanden in een segment waarvan de naam na de datum van de `LastConsumable` eigenschap in het `$blobchangefeed/meta/Segments.json` bestand valt, mogen niet worden gebruikt door uw toepassing. Hier volgt een voor beeld van de `LastConsumable` eigenschap in een `$blobchangefeed/meta/Segments.json` bestand:
 
 ```json
 {
@@ -310,13 +318,13 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>Voor waarden en bekende problemen (preview-versie)
 
 In deze sectie worden bekende problemen en voor waarden in de huidige open bare preview van de wijzigings feed beschreven. 
-- Voor de preview moet u eerst [uw abonnement registreren](#register) voordat u feed voor wijzigen kunt inschakelen voor uw opslag account in de regio's westcentralus of westus2. 
-- In de wijzigings feed worden alleen bewerkingen voor maken, bijwerken, verwijderen en kopiëren gemaakt. Meta gegevens updates worden momenteel niet opgenomen in de preview-versie.
+- Voor de preview moet u eerst [uw abonnement registreren](#register) voordat u feed Change kunt inschakelen voor uw opslag account in de regio's West-Centraal VS, VS-West 2, Frankrijk-centraal, Frankrijk-zuid, Canada-centraal en Canada-Oost. 
+- In de wijzigings feed worden alleen bewerkingen voor maken, bijwerken, verwijderen en kopiëren gemaakt. Wijzigingen in de BLOB-eigenschap en meta gegevens worden ook vastgelegd. De eigenschap Access-laag is momenteel niet vastgelegd. 
 - Het wijzigen van gebeurtenis records voor één wijziging kan meermaals voor komen in uw wijzigings feed.
-- U kunt de levens duur van wijzigingslog bestand bestanden nog niet beheren door op tijd gebaseerd Bewaar beleid in te stellen en u kunt de blobs niet verwijderen 
+- U kunt de levens duur van wijzigingslog bestand bestanden nog niet beheren door op tijd gebaseerd Bewaar beleid in te stellen en u kunt de blobs niet verwijderen.
 - De `url` eigenschap van het logboek bestand is momenteel altijd leeg.
-- De `LastConsumable` eigenschap van het bestand segmenten. json vermeldt niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in `LastConsumable` de eigenschap.
-- U kunt de **$blobchangefeed** -container momenteel niet zien wanneer u de LISTCONTAINERS-API aanroept en de container wordt niet weer gegeven op Azure Portal of Storage Explorer
+- De `LastConsumable` eigenschap van het bestand segmenten. json vermeldt niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in de `LastConsumable` eigenschap.
+- U kunt de **$blobchangefeed** -container momenteel niet zien wanneer u de LISTCONTAINERS-API aanroept en de container wordt niet weer gegeven op Azure Portal of Storage Explorer. U kunt de inhoud weer geven door de ListBlobs-API rechtstreeks aan te roepen op de $blobchangefeed-container.
 - Opslag accounts die eerder een account- [failover](../common/storage-disaster-recovery-guidance.md) hebben gestart, hebben mogelijk problemen met het logboek bestand dat niet wordt weer gegeven. Eventuele toekomstige account-failovers kunnen ook van invloed zijn op het logboek bestand tijdens de preview-fase.
 
 ## <a name="faq"></a>Veelgestelde vragen

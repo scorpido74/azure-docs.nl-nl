@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722958"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118155"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Naslag informatie over Azure Storage bewakings gegevens
 
@@ -131,18 +131,18 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 |:--- |:---|
 |**tegelijk** | De UTC-tijd (Universal Time Coordinated) wanneer de aanvraag is ontvangen door de opslag. Bijvoorbeeld: `2018/11/08 21:09:36.6900118`.|
 |**resourceId** | De resource-ID van het opslag account. Bijvoorbeeld: `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**rubriek** | De categorie van de aangevraagde bewerking. Bijvoorbeeld: `StorageRead`, `StorageWrite`of. `StorageDelete`|
+|**rubriek** | De categorie van de aangevraagde bewerking. Bijvoorbeeld: `StorageRead` , `StorageWrite` of `StorageDelete` .|
 |**operationName** | Het type REST bewerking dat is uitgevoerd. <br> Zie [Opslaganalyse logboeken en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor een volledige lijst met bewerkingen. |
 |**operationVersion** | De versie van de opslag service die tijdens het maken van de aanvraag is opgegeven. Dit is gelijk aan de waarde van de **x-MS-version-** header. Bijvoorbeeld: `2017-04-17`.|
 |**schemaVersion** | De schema versie van het logboek. Bijvoorbeeld: `1.0`.|
-|**Status code** | De HTTP-status code voor de aanvraag. Als de aanvraag wordt onderbroken, kan deze waarde worden ingesteld op `Unknown`. <br> Bijvoorbeeld: `206` |
+|**Status code** | De HTTP-status code voor de aanvraag. Als de aanvraag wordt onderbroken, kan deze waarde worden ingesteld op `Unknown` . <br> Bijvoorbeeld: `206` |
 |**statusText** | De status van de aangevraagde bewerking.  Zie [Opslaganalyse het onderwerp geregistreerde bewerkingen en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor een volledige lijst met status berichten. In versie 2017-04-17 en hoger wordt het status bericht `ClientOtherError` niet gebruikt. In plaats daarvan bevat dit veld een fout code. Bijvoorbeeld: `SASSuccess`  |
 |**durationMs** | De totale tijd, uitgedrukt in milliseconden, om de aangevraagde bewerking uit te voeren. Dit omvat de tijd voor het lezen van de inkomende aanvraag en het verzenden van het antwoord naar de aanvrager. Bijvoorbeeld: `12`.|
 |**callerIpAddress** | Het IP-adres van de aanvrager, inclusief het poort nummer. Bijvoorbeeld: `192.100.0.102:4362`. |
 |**correlationId** | De ID die wordt gebruikt voor het correleren van Logboeken tussen resources. Bijvoorbeeld: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**locatie** | De locatie van het opslag account. Bijvoorbeeld: `North Europe`. |
-|**Protocolsubstatus**|Het protocol dat wordt gebruikt voor de bewerking. Bijvoorbeeld: `HTTP` `HTTPS` `SMB`,, of`NFS`|
-| **URI** | Een uniform resource-id die wordt aangevraagd. Bijvoorbeeld: http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10. |
+|**Protocolsubstatus**|Het protocol dat wordt gebruikt voor de bewerking. Bijvoorbeeld:, `HTTP` , `HTTPS` `SMB` of`NFS`|
+| **URI** | Een uniform resource-id die wordt aangevraagd. Bijvoorbeeld: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>Velden die beschrijven hoe de bewerking is geverifieerd
 
@@ -177,7 +177,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 
 | Eigenschap | Beschrijving |
 |:--- |:---|
-|**identiteit/type** | Het type verificatie dat is gebruikt om de aanvraag uit te voeren. Bijvoorbeeld: `OAuth` `SAS Key` `Account Key`,, of`Anonymous` |
+|**identiteit/type** | Het type verificatie dat is gebruikt om de aanvraag uit te voeren. Bijvoorbeeld:, `OAuth` , `SAS Key` `Account Key` of`Anonymous` |
 |**identiteits-tokenHash**|Dit veld is alleen gereserveerd voor intern gebruik. |
 |**autorisatie/actie** | De actie die is toegewezen aan de aanvraag. Bijvoorbeeld: `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**autorisatie-roleAssignmentId** | De roltoewijzings-ID. Bijvoorbeeld: `4e2521b7-13be-4363-aeda-111111111111`.|
@@ -239,8 +239,8 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 |**clientRequestId** | De waarde voor de **x-MS-Client-Request-id** van de aanvraag. Bijvoorbeeld: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
 |**ETAG** | De ETag-id voor het geretourneerde object, in aanhalings tekens. Bijvoorbeeld: `0x8D101F7E4B662C4`.  |
 |**serverLatencyMs** | De totale tijd in milliseconden voor het uitvoeren van de aangevraagde bewerking. Deze waarde omvat geen netwerk latentie (de tijd voor het lezen van de inkomende aanvraag en het verzenden van het antwoord naar de aanvrager). Bijvoorbeeld: `22`. |
-|**Service** | De service die aan deze aanvraag is gekoppeld. Bijvoorbeeld: `blob`, `table` `files`, of. `queue` |
-|**operationCount** | Het aantal geregistreerde bewerkingen dat is betrokken bij de aanvraag. Dit aantal begint met een index van `0`. Voor sommige aanvragen is meer dan één bewerking vereist, zoals een aanvraag voor het kopiëren van een blob. De meeste aanvragen voeren slechts één bewerking uit. Bijvoorbeeld: `1`. |
+|**Service** | De service die aan deze aanvraag is gekoppeld. Bijvoorbeeld: `blob` ,, `table` `files` of `queue` . |
+|**operationCount** | Het aantal geregistreerde bewerkingen dat is betrokken bij de aanvraag. Dit aantal begint met een index van `0` . Voor sommige aanvragen is meer dan één bewerking vereist, zoals een aanvraag voor het kopiëren van een blob. De meeste aanvragen voeren slechts één bewerking uit. Bijvoorbeeld: `1`. |
 |**requestHeaderSize** | De grootte van de aanvraag header, uitgedrukt in bytes. Bijvoorbeeld: `578`. <br>Als een aanvraag mislukt, kan deze waarde leeg zijn. |
 |**requestBodySize** | De grootte van de aanvraag pakketten, uitgedrukt in bytes, die door de opslag service worden gelezen. <br> Bijvoorbeeld: `0`. <br>Als een aanvraag mislukt, kan deze waarde leeg zijn.  |
 |**responseHeaderSize** | De grootte van de reactie header, uitgedrukt in bytes. Bijvoorbeeld: `216`. <br>Als een aanvraag mislukt, kan deze waarde leeg zijn.  |

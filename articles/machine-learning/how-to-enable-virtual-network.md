@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927340"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119041"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Uw machine learning levenscyclus beveiligen met particuliere virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ In dit artikel leert u hoe u experimenteren/trainings taken en taken voor het af
 > - Gebruikers interface voor automatische machine learning
 > - Gebruikers interface voor het labelen van gegevens
 > - Gebruikers interface voor gegevens sets
+> - Notebooks
 > 
->  Als u probeert, wordt er een fout bericht weer gegeven bij het visualiseren van gegevens uit een opslag account in een virtueel netwerk dat lijkt op:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> Als u probeert, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>Wat is een VNET?
 
@@ -176,7 +177,7 @@ Als u gebruik wilt maken van geforceerde tunneling met de Machine Learning Compu
 
 * Stel een UDR in voor elk IP-adres dat wordt gebruikt door de Azure Batch-service in de regio waar uw resources bestaan. Deze Udr's inschakelen de batch-service om te communiceren met reken knooppunten voor het plannen van taken. Voeg ook het IP-adres voor de Azure Machine Learning-service toe waarin de resources bestaan, omdat dit vereist is voor toegang tot reken instanties. Gebruik een van de volgende methoden om een lijst met IP-adressen van de batch-service en Azure Machine Learning-service te verkrijgen:
 
-    * Down load de [Azure IP-bereiken en-service Tags](https://www.microsoft.com/download/details.aspx?id=56519) en zoek `BatchNodeManagement.<region>` het `AzureMachineLearning.<region>`bestand voor `<region>` en, waar is uw Azure-regio.
+    * Down load de [Azure IP-bereiken en-service Tags](https://www.microsoft.com/download/details.aspx?id=56519) en zoek het bestand voor `BatchNodeManagement.<region>` en `AzureMachineLearning.<region>` , waar `<region>` is uw Azure-regio.
 
     * Gebruik de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om de informatie te downloaden. In het volgende voor beeld worden de IP-adres gegevens gedownload en worden de gegevens voor de regio VS Oost 2 gefilterd:
 
@@ -185,7 +186,7 @@ Als u gebruik wilt maken van geforceerde tunneling met de Machine Learning Compu
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
 
-* Uitgaand verkeer naar Azure Storage mag niet worden geblokkeerd door uw on-premises netwerk apparaat. In het bijzonder zijn de url's in het `<account>.table.core.windows.net`formulier `<account>.queue.core.windows.net`, en `<account>.blob.core.windows.net`.
+* Uitgaand verkeer naar Azure Storage mag niet worden geblokkeerd door uw on-premises netwerk apparaat. In het bijzonder zijn de Url's in het formulier `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` en `<account>.blob.core.windows.net` .
 
 Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__. In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
 
@@ -201,7 +202,7 @@ Als u een Machine Learning Compute cluster wilt maken, gebruikt u de volgende st
 
 1. Selecteer __Compute__ aan de linkerkant.
 
-1. Selecteer __trainings clusters__ in het midden en selecteer __+__ deze.
+1. Selecteer __trainings clusters__ in het midden en selecteer deze __+__ .
 
 1. Vouw in het dialoog venster __nieuw trainings cluster__ het gedeelte __Geavanceerde instellingen__ uit.
 
@@ -213,7 +214,7 @@ Als u een Machine Learning Compute cluster wilt maken, gebruikt u de volgende st
 
    ![De instellingen van het virtuele netwerk voor Machine Learning Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-U kunt ook een Machine Learning Compute cluster maken met behulp van de Azure Machine Learning SDK. Met de volgende code wordt een nieuw Machine Learning Compute Cluster gemaakt `default` in het subnet van een virtueel `mynetwork`netwerk met de naam:
+U kunt ook een Machine Learning Compute cluster maken met behulp van de Azure Machine Learning SDK. Met de volgende code wordt een nieuw Machine Learning Compute Cluster gemaakt in het `default` subnet van een virtueel netwerk met de naam `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -288,7 +289,7 @@ Als u een Azure-opslag account wilt gebruiken voor de werk ruimte in een virtuee
 >
 > Het standaard opslag account wordt automatisch ingericht wanneer u een werk ruimte maakt.
 >
-> Voor niet-standaard opslag accounts kunt u `storage_account` met de para meter in de [ `Workspace.create()` functie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) een aangepast opslag account opgeven op basis van de Azure-resource-id.
+> Voor niet-standaard opslag accounts `storage_account` kunt u met de para meter in de [ `Workspace.create()` functie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) een aangepast opslag account opgeven op basis van de Azure-resource-id.
 
 
 <a id="aksvnet"></a>
@@ -309,7 +310,7 @@ Gebruik de volgende stappen om de Azure Kubernetes-service (AKS) in een virtueel
 
 1. Selecteer __Compute__ aan de linkerkant.
 
-1. Selecteer Afleidings __clusters__ in het midden en selecteer __+__ vervolgens.
+1. Selecteer Afleidings __clusters__ in het midden en selecteer vervolgens __+__ .
 
 1. Selecteer __Geavanceerd__ onder __netwerk configuratie__in het dialoog venster __Nieuw cluster__ voor uitgevallen.
 
@@ -330,7 +331,7 @@ Gebruik de volgende stappen om de Azure Kubernetes-service (AKS) in een virtueel
 
    [![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
-U kunt ook de Azure Machine Learning SDK gebruiken om de Azure Kubernetes-service toe te voegen aan een virtueel netwerk. Als u al een AKS-cluster in een virtueel netwerk hebt, koppelt u dit aan de werk ruimte, zoals wordt beschreven in [Deploying to aks](how-to-deploy-and-where.md). Met de volgende code wordt een nieuw AKS-exemplaar `default` gemaakt in het subnet van een `mynetwork`virtueel netwerk met de naam:
+U kunt ook de Azure Machine Learning SDK gebruiken om de Azure Kubernetes-service toe te voegen aan een virtueel netwerk. Als u al een AKS-cluster in een virtueel netwerk hebt, koppelt u dit aan de werk ruimte, zoals wordt beschreven in [Deploying to aks](how-to-deploy-and-where.md). Met de volgende code wordt een nieuw AKS-exemplaar gemaakt in het `default` subnet van een virtueel netwerk met de naam `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -439,9 +440,9 @@ Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u
 1. Als u subnet delegering wilt inschakelen voor het virtuele netwerk, gebruikt u de informatie in het artikel [een subnet delegering toevoegen of verwijderen](../virtual-network/manage-subnet-delegation.md) . U kunt delegeren inschakelen bij het maken van een virtueel netwerk of het toevoegen aan een bestaand netwerk.
 
     > [!IMPORTANT]
-    > Wanneer delegering wordt `Microsoft.ContainerInstance/containerGroups` ingeschakeld, gebruikt u als het __subnet aan service waarde delegeren__ .
+    > Wanneer delegering wordt ingeschakeld, gebruikt u `Microsoft.ContainerInstance/containerGroups` als het __subnet aan service waarde delegeren__ .
 
-2. Implementeer het model met behulp van [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), gebruik de `vnet_name` para meters en `subnet_name` . Stel deze para meters in op de naam van het virtuele netwerk en het subnet waar u delegering hebt ingeschakeld.
+2. Implementeer het model met behulp van [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), gebruik de `vnet_name` `subnet_name` para meters en. Stel deze para meters in op de naam van het virtuele netwerk en het subnet waar u delegering hebt ingeschakeld.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -475,7 +476,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
     ```
 
-    Met deze opdracht wordt een waarde geretourneerd `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`die vergelijkbaar is met. Het laatste deel van de teken reeks is de naam van de Azure Container Registry voor de werk ruimte.
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` . Het laatste deel van de teken reeks is de naam van de Azure Container Registry voor de werk ruimte.
 
 1. Als u de toegang tot het virtuele netwerk wilt beperken, gebruikt u de stappen in [netwerk toegang voor REGI ster configureren](../container-registry/container-registry-vnet.md#configure-network-access-for-registry). Wanneer u het virtuele netwerk toevoegt, selecteert u het virtuele netwerk en subnet voor uw Azure Machine Learning-resources.
 
@@ -618,7 +619,7 @@ Als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwer
 
     * Selecteer __AzureMachineLearning__in de vervolg keuzelijst __bron service label__ .
 
-    * Selecteer __*__ in de vervolg keuzelijst __bron poort bereik__ .
+    * Selecteer in de vervolg keuzelijst __bron poort bereik__ __*__ .
 
     * Selecteer in de vervolg keuzelijst __bestemming__ __een__.
 

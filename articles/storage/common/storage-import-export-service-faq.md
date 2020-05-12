@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519486"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120382"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export-service: veelgestelde vragen
 
@@ -109,7 +109,7 @@ Nadat het uploaden is voltooid, kan het proces om een of meer stations te retour
 
 De vereisten zijn afhankelijk van de specifieke beperkingen van het Azure-Data Center.
 
-- Er zijn enkele sites, zoals Australië, Duitsland en UK-zuid, waarvoor een inkomend ID-nummer van micro soft Data Center moet worden geschreven om veiligheids redenen. Voordat u uw stations of schijven naar het Data Center verzendt, neemt u contact opadbops@microsoft.commet Azure DataBox Operations () om dit aantal op te halen. Zonder dit nummer wordt het pakket geweigerd.
+- Er zijn enkele sites, zoals Australië, Duitsland en UK-zuid, waarvoor een inkomend ID-nummer van micro soft Data Center moet worden geschreven om veiligheids redenen. Voordat u uw stations of schijven naar het Data Center verzendt, neemt u contact op met Azure DataBox Operations ( adbops@microsoft.com ) om dit aantal op te halen. Zonder dit nummer wordt het pakket geweigerd.
 - De data centers in India vereisen de persoonlijke details van het stuur programma, zoals de Government ID-kaart of het bewijs nummer. (bijvoorbeeld PAN, AADHAR, DL), naam, contact en het nummer van de auto plaat om een doorgifte van de poort vermelding te verkrijgen. Informeer uw telecom bedrijf over deze vereisten om de bezorgings vertraging te voor komen.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bij het maken van een taak is het verzend adres een andere locatie dan de locatie van mijn opslag account. Wat moet ik doen?
@@ -153,7 +153,7 @@ Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Ondersteunt Azure import/export AES-256-versleuteling?
 
-Nee. Azure import/export-service maakt gebruik van AES-128 BitLocker-versleuteling.
+Ja. Azure import/export-service maakt gebruik van AES-256 BitLocker-versleuteling.
 
 ## <a name="next-steps"></a>Volgende stappen
 

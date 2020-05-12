@@ -3,7 +3,7 @@ title: Problemen met de implementatie van Linux-VM'S oplossen | Microsoft Docs
 description: Problemen met de implementatie van Resource Manager oplossen wanneer u een nieuwe virtuele Linux-machine in azure maakt
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
-ms.author: cjiang
-ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981406"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118223"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Problemen met de implementatie van Resource Manager oplossen met het maken van een nieuwe virtuele Linux-machine in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -74,7 +74,7 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
 * Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 * Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   * Stop alle virtuele machines in de beschikbaarheidsset.
-    Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+    Klik op **resource groepen**  >  *uw resource groep*  >  **resources**  >  *uw beschikbaarheidsset*  >  **virtual machines**  >  *de virtuele machine*wordt  >  **gestopt**.
   * Nadat alle Vm's zijn gestopt, maakt u de nieuwe virtuele machine op de gewenste grootte.
   * Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op **Start**.
 

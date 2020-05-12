@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521176"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119294"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
 
@@ -136,9 +136,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installeren via het [Office Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). U moet een herbruikbaar configuratie bestand maken met behulp van de [Office 365-client configuratie service](https://config.office.com/) om te kiezen welke architectuur, welke functies u nodig hebt vanuit Office en hoe vaak het wordt bijgewerkt.
 
 1. Ga naar de [Office 365-client configuratie service](https://config.office.com/) en down load uw eigen configuratie bestand.
-2. Down load [Office Deployment Tool](https://www.microsoft.com/download/details.aspx?id=49117).  Het gedownloade `setup.exe`bestand is.
-3. Voer `setup.exe /download configuration.xml` uit om Office-onderdelen te downloaden.
-4. Voer `setup.exe /configure configuration.xml` uit om Office-onderdelen te installeren.
+2. Down load [Office Deployment Tool](https://www.microsoft.com/download/details.aspx?id=49117).  Het gedownloade bestand is `setup.exe` .
+3. Voer uit `setup.exe /download configuration.xml` om Office-onderdelen te downloaden.
+4. Voer uit `setup.exe /configure configuration.xml` om Office-onderdelen te installeren.
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Het Microsoft Office 365-update kanaal wijzigen
 
@@ -211,11 +211,11 @@ Als u extra talen hebt geïnstalleerd op de virtuele machine, kunt u deze toevoe
 2. Zoeken naar taal pakket
 3. Selecteer de taal die u wilt installeren
 
-Als u al bent aangemeld bij de sjabloon-VM, gebruikt u de [snelkoppeling taal pakket installeren](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) om rechtstreeks naar de juiste instellingen pagina te gaan.
+Als u al bent aangemeld bij de sjabloon-VM, gebruikt u de snelkoppeling installeren taal pakket ( `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` ) om rechtstreeks naar de juiste instellingen pagina te gaan.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Overbodige ingebouwde apps verwijderen
 
-Windows 10 wordt geleverd met veel ingebouwde toepassingen die mogelijk niet nodig zijn voor uw specifieke klasse. Als u de machine installatie kopie voor studenten wilt vereenvoudigen, kunt u sommige toepassingen van de sjabloon computer verwijderen.  Als u een lijst met geïnstalleerde toepassingen wilt weer geven, `Get-AppxPackage` gebruikt u de Power shell-cmdlet.  In het onderstaande voor beeld ziet u alle geïnstalleerde toepassingen die kunnen worden verwijderd.
+Windows 10 wordt geleverd met veel ingebouwde toepassingen die mogelijk niet nodig zijn voor uw specifieke klasse. Als u de machine installatie kopie voor studenten wilt vereenvoudigen, kunt u sommige toepassingen van de sjabloon computer verwijderen.  Als u een lijst met geïnstalleerde toepassingen wilt weer geven, gebruikt u de Power shell- `Get-AppxPackage` cmdlet.  In het onderstaande voor beeld ziet u alle geïnstalleerde toepassingen die kunnen worden verwijderd.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name

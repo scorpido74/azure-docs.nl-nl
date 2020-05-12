@@ -5,18 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 09fd5326c2532e115dbab0752af31a809488f04c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559688"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120909"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
 AKS-clusters gebruiken standaard [kubenet][kubenet]en er worden voor u een virtueel Azure-netwerk en-subnet gemaakt. Met *kubenet*krijgen knoop punten een IP-adres uit het subnet van het virtuele Azure-netwerk. Pods krijgen een IP-adres van een logisch verschillende adresruimte van het subnet van het virtuele Azure-netwerk van de knooppunten. NAT (Network Address Translation) wordt vervolgens zo geconfigureerd dat de pods resources kunnen bereiken in het virtuele Azure-netwerk. Het bron-IP-adres van het verkeer is NAT naar het primaire IP-adres van het knoop punt. Met deze methode wordt het aantal IP-adressen dat u in uw netwerk ruimte moet reserveren, aanzienlijk verminderd voor gebruik.
 
-Met [Azure container Networking interface (cni)][cni-networking]haalt elke pod een IP-adres uit het subnet en kan het rechtstreeks worden geopend. Deze IP-adressen moeten uniek zijn binnen uw netwerk ruimte en moeten vooraf worden gepland. Elk knoop punt heeft een configuratie parameter voor het maximum aantal peulen dat wordt ondersteund. Het equivalente aantal IP-adressen per knoop punt wordt vervolgens vóór dat knoop punt gereserveerd. Deze aanpak vereist meer planning en leidt vaak tot een aflopende IP-adres afvoer of de nood zaak om clusters opnieuw te bouwen in een groter subnet naarmate uw toepassings vereisten groeien.
+Met [Azure container Networking interface (cni)][cni-networking]haalt elke pod een IP-adres uit het subnet en kan het rechtstreeks worden geopend. Deze IP-adressen moeten uniek zijn binnen uw netwerk ruimte en moeten vooraf worden gepland. Elk knoop punt heeft een configuratie parameter voor het maximum aantal peulen dat wordt ondersteund. Het equivalente aantal IP-adressen per knoop punt wordt vervolgens vóór dat knoop punt gereserveerd. Deze aanpak vereist meer planning en leidt vaak tot een aflopende IP-adres afvoer of de nood zaak om clusters opnieuw te bouwen in een groter subnet naarmate uw toepassings vereisten groeien. U kunt het Maxi maal te implementeren maximum aantal te configureren voor een knoop punt in een cluster maken of bij het maken van nieuwe knooppunt groepen. Als u maxPods niet opgeeft bij het maken van nieuwe knooppunt groepen, ontvangt u een standaard waarde van 110 voor kubenet.
 
 Dit artikel laat u zien hoe u *kubenet* -netwerken kunt gebruiken om een subnet van een virtueel netwerk voor een AKS-cluster te maken en te gebruiken. Zie [netwerk concepten voor Kubernetes en AKS][aks-network-concepts]voor meer informatie over netwerk opties en overwegingen.
 
@@ -24,7 +24,7 @@ Dit artikel laat u zien hoe u *kubenet* -netwerken kunt gebruiken om een subnet 
 
 * Het virtuele netwerk voor het AKS-cluster moet uitgaande Internet verbinding toestaan.
 * Maak niet meer dan één AKS-cluster in hetzelfde subnet.
-* AKS-clusters mogen, `169.254.0.0/16`, `172.30.0.0/16` `172.31.0.0/16`, of `192.0.2.0/24` voor het adres bereik van de Kubernetes-service niet worden gebruikt.
+* AKS-clusters mogen `169.254.0.0/16` , `172.30.0.0/16` , `172.31.0.0/16` , of `192.0.2.0/24` voor het adres bereik van de Kubernetes-service niet worden gebruikt.
 * De service-principal die wordt gebruikt door het AKS-cluster moet ten minste een rol voor [netwerkinzender](../role-based-access-control/built-in-roles.md#network-contributor) hebben in het subnet binnen het virtuele netwerk. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen * \<AppID>* op, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
+Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen * \< AppID>* op, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
 
-U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen Service-Principal * \<AppID>* en * \<wacht woord>*, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
+U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen Service-Principal * \< AppID>* en * \< wacht woord>*, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
 
 De volgende IP-adresbereiken worden ook gedefinieerd als onderdeel van het proces voor het maken van een cluster:
 

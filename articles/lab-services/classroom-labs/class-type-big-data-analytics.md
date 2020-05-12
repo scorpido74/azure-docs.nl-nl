@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538776"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118427"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Een Lab instellen voor het big data van analyses met behulp van docker-implementatie van HortonWorks-gegevens platform
 
@@ -102,7 +102,7 @@ In deze sectie implementeert u HDP sandbox en opent u vervolgens ook toegang tot
 1. Zodra de docker-containers voor HDP sandbox zijn geïmplementeerd en worden uitgevoerd, kunt u toegang krijgen tot de omgeving door uw browser te starten en de instructies van Cloudera te volgen voor het openen van de [welkomst pagina](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) van de sandbox en het HDP-dash board te starten.
 
     > [!NOTE] 
-    > Bij deze instructies wordt ervan uitgegaan dat u het lokale IP-adres van de sandbox-omgeving eerst hebt toegewezen aan de sandbox-hdp.hortonworks.com in het hostbestand op de VM van de sjabloon.  Als u deze toewijzing **niet** doet, kunt u toegang krijgen tot de welkomst pagina van de sandbox door [http://localhost:8080](http://localhost:8080)te navigeren naar.
+    > Bij deze instructies wordt ervan uitgegaan dat u het lokale IP-adres van de sandbox-omgeving eerst hebt toegewezen aan de sandbox-hdp.hortonworks.com in het hostbestand op de VM van de sjabloon.  Als u deze toewijzing **niet** doet, kunt u toegang krijgen tot de welkomst pagina van de sandbox door te navigeren naar `http://localhost:8080` .
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>Docker-containers automatisch starten wanneer studenten zich aanmelden
 

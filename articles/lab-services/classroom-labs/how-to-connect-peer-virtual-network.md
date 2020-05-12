@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188001"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118359"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Uw Lab-netwerk verbinden met een virtueel peer-netwerk in Azure Lab Services
 
@@ -48,7 +48,7 @@ Tijdens het maken van het nieuwe [Lab-account](tutorial-setup-lab-account.md)kun
 
 Er is ook een optie voor het opgeven van **adres bereik** voor virtuele machines voor de laboratoria.  De eigenschap **adres bereik** is alleen van toepassing als het **virtuele netwerk** van de peer is ingeschakeld voor het lab.  Als het adres bereik wordt verstrekt, worden alle virtuele machines in de Labs onder het lab-account in dat adres bereik gemaakt. Het adres bereik moet de CIDR-notatie hebben (bijvoorbeeld 10.20.0.0/20) en mag niet overlappen met de bestaande adresbereiken.  Wanneer u een adres bereik opgeeft, is het belang rijk om na te denken over het aantal *Labs* dat wordt gemaakt en een adres bereik op te geven dat u wilt bieden. Voor Lab-Services wordt uitgegaan van een maximum van 512 virtuele machines per Lab.  Een IP-bereik met '/23 ' kan bijvoorbeeld slechts één Lab maken.  Een bereik met een '/21 ' staat het maken van vier Labs toe.
 
-Als het **adres bereik** niet is opgegeven, gebruikt Lab Services het standaard adres bereik dat door Azure wordt verstrekt tijdens het maken van het virtuele netwerk om te worden gekoppeld aan uw virtuele netwerk.  Het bereik is vaak iets zoals 10. x. 0,0/16.  Dit kan leiden tot een overlap ping van het IP-bereik. Zorg er dus voor dat u het bereik opgeeft in de Lab-instellingen of dat u het adres bereik controleert van het virtuele netwerk dat wordt gekoppeld aan een peer.
+Als het **adres bereik** niet is opgegeven, gebruikt Lab Services het standaard adres bereik dat door Azure wordt verstrekt tijdens het maken van het virtuele netwerk om te worden gekoppeld aan uw virtuele netwerk.  Het bereik is vaak iets zoals 10. x. 0,0/16.  Dit kan leiden tot een overlap ping van het IP-bereik. Zorg er dus voor dat u een adres bereik opgeeft in de Lab-instellingen of Controleer het adres bereik van het virtuele netwerk dat wordt gekoppeld aan een peer.
 
 ## <a name="configure-after-the-lab-is-created"></a>Configureren nadat het lab is gemaakt
 
