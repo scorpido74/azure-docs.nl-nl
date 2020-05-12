@@ -1,18 +1,20 @@
 ---
 title: Automatisch schalen van Azure gebruiken met metrische gegevens van de gast in een sjabloon voor Linux-schaal sets
 description: Meer informatie over het automatisch schalen met behulp van metrische gegevens van een virtuele machine in een Linux-Schaalset
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 8021b7b8feb6dc06fb2e48bc4e825200a1baad33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273644"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124802"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatisch schalen met metrische gegevens van de gast in een sjabloon voor een Linux-schaalset
 
@@ -24,7 +26,7 @@ Voor metrische gegevens van de host is geen aanvullende installatie vereist omda
 
 In een [vorig artikel](virtual-machine-scale-sets-mvss-start.md) moesten we een basisschaalset-sjabloon maken. We gaan nu die eerdere sjabloon gebruiken en deze wijzigen om een sjabloon te maken waarmee een Linux-schaalset wordt geïmplementeerd met automatisch schalen op basis van de gast metriek.
 
-Voeg eerst para meters `storageAccountName` voor `storageAccountSasToken`en toe. In de diagnostische agent worden metrische gegevens opgeslagen in een [tabel](../cosmos-db/table-storage-how-to-use-dotnet.md) in dit opslag account. Vanaf de Linux Diagnostics agent versie 3,0, die een toegangs sleutel voor opslag gebruikt, wordt niet meer ondersteund. Gebruik in plaats daarvan een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Voeg eerst para meters voor `storageAccountName` en toe `storageAccountSasToken` . In de diagnostische agent worden metrische gegevens opgeslagen in een [tabel](../cosmos-db/table-storage-how-to-use-dotnet.md) in dit opslag account. Vanaf de Linux Diagnostics agent versie 3,0, die een toegangs sleutel voor opslag gebruikt, wordt niet meer ondersteund. Gebruik in plaats daarvan een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -103,7 +105,7 @@ Wijzig vervolgens de schaalset `extensionProfile` zodat deze de diagnostische ex
        }
 ```
 
-Voeg ten slotte een `autoscaleSettings` resource toe om automatisch schalen te configureren op basis van deze metrische gegevens. Deze resource bevat een `dependsOn` -component die verwijst naar de schaalset om ervoor te zorgen dat de schaalset bestaat voordat u deze automatisch kunt schalen. Als u een andere metriek kiest voor automatisch schalen, gebruikt u de `counterSpecifier` configuratie van de diagnostische gegevens extensie als de `metricName` in de configuratie voor automatisch schalen. Zie voor meer informatie over de configuratie van automatisch schalen de [Aanbevolen procedures voor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md) en de [referentie documentatie voor de Azure monitor rest API](/rest/api/monitor/autoscalesettings).
+Voeg ten slotte een `autoscaleSettings` resource toe om automatisch schalen te configureren op basis van deze metrische gegevens. Deze resource bevat een- `dependsOn` component die verwijst naar de schaalset om ervoor te zorgen dat de schaalset bestaat voordat u deze automatisch kunt schalen. Als u een andere metriek kiest voor automatisch schalen, gebruikt u de `counterSpecifier` configuratie van de diagnostische gegevens extensie als de `metricName` in de configuratie voor automatisch schalen. Zie voor meer informatie over de configuratie van automatisch schalen de [Aanbevolen procedures voor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md) en de [referentie documentatie voor de Azure monitor rest API](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

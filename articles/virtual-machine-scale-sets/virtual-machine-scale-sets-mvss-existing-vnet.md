@@ -1,19 +1,20 @@
 ---
 title: Verwijzen naar een bestaand virtueel netwerk in een Azure Scale set-sjabloon
 description: Meer informatie over het toevoegen van een virtueel netwerk aan een bestaande Azure virtual machine-schaal sets sjabloon
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273661"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124819"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Verwijzing naar een bestaand virtueel netwerk in een Azure-schaalset-sjabloon toevoegen
 
@@ -25,7 +26,7 @@ In een [vorig artikel](virtual-machine-scale-sets-mvss-start.md) moesten we een 
 
 Voeg eerst een `subnetId` para meter toe. Deze teken reeks wordt door gegeven aan de configuratie van de schaalset, waardoor de schaalset het vooraf gemaakte subnet kan identificeren voor het implementeren van virtuele machines in. Deze teken reeks moet de volgende indeling hebben:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Als u bijvoorbeeld de schaalset wilt implementeren in een bestaand virtueel netwerk met de `myvnet`naam, `mysubnet`het subnet, `myrg`de resource groep `00000000-0000-0000-0000-000000000000`en het abonnement, zou de `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`subnetId:.
+Als u bijvoorbeeld de schaalset wilt implementeren in een bestaand virtueel netwerk met `myvnet` de naam, `mysubnet` het subnet, `myrg` de resource groep en `00000000-0000-0000-0000-000000000000` het abonnement, zou de subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet` .
 
 ```diff
      },
@@ -38,7 +39,7 @@ Als u bijvoorbeeld de schaalset wilt implementeren in een bestaand virtueel netw
    },
 ```
 
-Verwijder vervolgens de bron van het virtuele netwerk uit `resources` de matrix, omdat u een bestaand virtueel netwerk gebruikt en niet hoeft een nieuwe te implementeren.
+Verwijder vervolgens de bron van het virtuele netwerk uit de `resources` matrix, omdat u een bestaand virtueel netwerk gebruikt en niet hoeft een nieuwe te implementeren.
 
 ```diff
    "variables": {},
@@ -82,7 +83,7 @@ Het virtuele netwerk bestaat al voordat de sjabloon wordt geïmplementeerd. Daar
          "capacity": 2
 ```
 
-Ga ten slotte door met `subnetId` de para meter die is ingesteld door de gebruiker `resourceId` (in plaats van te gebruiken om de id van een vnet op te halen in dezelfde implementatie. Dit is wat de basis sjabloon voor een levensvat bare schaalset is).
+Ga ten slotte door met de `subnetId` para meter die is ingesteld door de gebruiker (in plaats van `resourceId` te gebruiken om de id van een vnet op te halen in dezelfde implementatie. Dit is wat de basis sjabloon voor een levensvat bare schaalset is).
 
 ```diff
                        "name": "myIpConfig",

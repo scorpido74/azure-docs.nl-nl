@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB met Azure Monitor bewaken voor Cosmos DB (preview) | Microsoft Docs
+title: Azure Cosmos DB met Azure Monitor bewaken voor Cosmos DB | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor Cosmos DB functie beschreven waarmee Cosmos DB-eigen aars een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun CosmosDB-accounts.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250680"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195402"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor verkennen voor Azure Cosmos DB (preview-versie)
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor verkennen voor Azure Cosmos DB
 
-Azure Monitor voor Azure Cosmos DB (preview) biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB bronnen in een uniforme interactieve ervaring. In dit artikel vindt u meer informatie over de voor delen van deze nieuwe bewakings ervaring en hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.   
+Azure Monitor voor Azure Cosmos DB biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB bronnen in een uniforme interactieve ervaring. In dit artikel vindt u meer informatie over de voor delen van deze nieuwe bewakings ervaring en hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.   
 
 ## <a name="introduction"></a>Inleiding
 
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accou
 
     ![Zoekvak met het woord ' Monitor ' en een vervolg keuzelijst met de tekst ' Monitor ' met een snelheid van de schijf stijl](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Selecteer **Cosmos DB (preview)**.
+3. Selecteer **Cosmos DB**.
 
     ![Scherm opname van Cosmos DB werkmap overzicht](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -110,9 +110,9 @@ Als u alle vervolg keuzelijsten in de werkmap wilt uitvouwen of samen vouwen, se
 
 ![Pictogram werkmap uitvouwen](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor aanpassen voor Azure Cosmos DB (preview-versie)
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor voor Azure Cosmos DB aanpassen
 
-Omdat deze ervaring is gebaseerd op Azure monitor werkmap sjablonen, kunt u **Customize** > **bewerken** en een kopie van uw gewijzigde versie in een aangepaste werkmap **Opslaan** . 
+Omdat deze ervaring is gebaseerd op Azure monitor werkmap sjablonen, kunt u **Customize**  >  **bewerken** en een kopie van uw gewijzigde versie in een aangepaste werkmap **Opslaan** . 
 
 ![Balk aanpassen](./media/cosmosdb-insights-overview/customize.png)
 

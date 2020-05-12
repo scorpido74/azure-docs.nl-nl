@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983904"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115146"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -77,6 +77,6 @@ Abonneer u op de [updates van Lab Services](https://azure.microsoft.com/updates/
 Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen helpen om een antwoord te vinden.
 
 - Plaats een vraag aan het einde van deze veelgestelde vragen. 
-- Als u een breder publiek wilt bereiken, plaatst u een vraag op het [Azure Lab Services-stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- Als u een breder publiek wilt bereiken, kunt u een vraag stellen op de [Azure Lab Services: technisch Community-Forum](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). 
 - Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure Lab Services: gebruikers stem](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

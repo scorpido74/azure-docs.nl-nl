@@ -1,18 +1,20 @@
 ---
 title: Meer informatie over Orchestration-modi voor schaal sets voor virtuele machines in azure
 description: Meer informatie over Orchestration-modi voor schaal sets voor virtuele machines in Azure.
-author: shandilvarun
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 10/23/2019
-ms.author: vashan
-ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279064"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198388"
 ---
 # <a name="orchestration-mode-preview"></a>Orchestration-modus (preview-versie)
 

@@ -1,19 +1,20 @@
 ---
 title: Onderhouds meldingen voor virtuele-machine schaal sets in azure
 description: Bekijk onderhouds meldingen en start self-service onderhoud voor schaal sets voor virtuele machines in Azure.
-author: shants123
-tags: azure-service-management,azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 08/20/2019
-ms.author: shants
-ms.openlocfilehash: 53ebb7c4710c5455ef90701dc7e94f1b846a874a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062703"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200091"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
 
@@ -111,7 +112,7 @@ Nadat u het onderhoud hebt gestart, onderneemt de betrokken Vm's in de schaalset
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Onderhouds status controleren met behulp van Power shell
 
-U kunt Azure PowerShell gebruiken om te zien wanneer Vm's in uw schaal sets voor virtuele machines zijn gepland voor onderhoud. Informatie over gepland onderhoud is beschikbaar met behulp van de cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) wanneer `-InstanceView` u de para meter gebruikt.
+U kunt Azure PowerShell gebruiken om te zien wanneer Vm's in uw schaal sets voor virtuele machines zijn gepland voor onderhoud. Informatie over gepland onderhoud is beschikbaar met behulp van de cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) wanneer u de `-InstanceView` para meter gebruikt.
  
 Onderhouds informatie wordt alleen geretourneerd als het onderhoud is gepland. Als er geen onderhoud wordt gepland die van invloed is op het VM-exemplaar, retourneert de cmdlet geen onderhouds informatie. 
 
@@ -134,7 +135,7 @@ De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Onderhoud starten in uw VM-exemplaar met behulp van Power shell
 
-U kunt onderhoud starten op een VM als **IsCustomerInitiatedMaintenanceAllowed** is ingesteld op **True**. Gebruik de cmdlet [set-AzVmss](/powershell/module/az.compute/set-azvmss) met `-PerformMaintenance` de para meter.
+U kunt onderhoud starten op een VM als **IsCustomerInitiatedMaintenanceAllowed** is ingesteld op **True**. Gebruik de cmdlet [set-AzVmss](/powershell/module/az.compute/set-azvmss) met de `-PerformMaintenance` para meter.
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
@@ -164,7 +165,7 @@ De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Onderhoud starten op uw VM-exemplaar met behulp van de CLI
 
-De volgende aanroep initieert onderhoud voor een VM-exemplaar `IsCustomerInitiatedMaintenanceAllowed` als deze is ingesteld op **waar**:
+De volgende aanroep initieert onderhoud voor een VM-exemplaar als deze `IsCustomerInitiatedMaintenanceAllowed` is ingesteld op **waar**:
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id

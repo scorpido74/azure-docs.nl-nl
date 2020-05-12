@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801702"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196270"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -107,7 +107,7 @@ Windows 8 of hoger | 54.400 GB
 Windows 7 |1700 GB
 Windows Server 2012 of hoger | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 gegevensschijven<br/> Als u zich wilt aanmelden voor een beperkte preview van Vm's met 16 + schijven (Maxi maal 32 schijven), schrijft u naar ons opAskAzureBackupTeam@microsoft.com <br><br> Gegevensschijf van maximaal 32 TB
+Azure VM | Zie de [ondersteunings matrix voor Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>Hoe wordt de grootte van de gegevensbron bepaald?
 

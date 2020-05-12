@@ -9,28 +9,27 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428561"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201677"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Verbinding maken met Synapse SQL met Visual Studio en SSDT
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [Sqlcmd](get-started-connect-sqlcmd.md) 
+> * [sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
 Gebruik Visual Studio voor het opvragen van een SQL-pool met behulp van Azure Synapse Analytics. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogram ma's voor SQL on-demand (preview)
-
-Visual Studio wordt momenteel niet ondersteund voor SQL on-demand (preview). Azure data Studi (preview) o is echter een volledig ondersteund hulp programma. SQL Server Management Studio wordt gedeeltelijk ondersteund vanuit versie 18,4 en heeft beperkte functies, zoals verbinding maken en query's uitvoeren.
+> [!NOTE]
+> SQL on-demand (preview) wordt niet ondersteund door SSDT.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderdelen:
@@ -41,7 +40,7 @@ Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderd
 
 ## <a name="1-connect-to-sql-pool"></a>1. Maak verbinding met de SQL-groep
 1. Open Visual Studio 2019.
-2. Open de SQL Server-objectverkenner. Als u dit wilt doen, selecteert u**SQL Server-objectverkenner** **weer geven** > .
+2. Open de SQL Server-objectverkenner. Als u dit wilt doen, selecteert u SQL Server-objectverkenner **weer geven**  >  **SQL Server Object Explorer**.
    
     ![SQL Server-objectverkenner](./media/get-started-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.

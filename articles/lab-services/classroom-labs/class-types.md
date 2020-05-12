@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296724"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115027"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
 
@@ -61,6 +61,10 @@ U kunt een Lab instellen in Azure Lab Services om een inleidende klasse voor de 
 
 Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt u [een Lab instellen om de ontwikkeling van mobiele toepassingen te leren maken met Android Studio](class-type-mobile-dev-android-studio.md).
 
+## <a name="big-data-analytics"></a>Big data-analyse
+U kunt een Lab instellen om een big data Analytics-klasse te leren. Met dit type klasse leren cursisten hoe ze grote hoeveel heden gegevens verwerken en de algoritmen voor machine-en statistische lessen Toep assen om gegevens inzichten af te leiden. Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals het open-source software pakket van Apache Hadoop waarmee u big data kunt opslaan, beheren en verwerken. 
+
+Zie [een Lab instellen voor het Big data van analyses met docker-implementatie van HortonWorks-gegevens platform](class-type-big-data-analytics.md)voor gedetailleerde informatie over het instellen van dit type Lab.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,14 +4,14 @@ description: Meer informatie over het maken van een Azure-functie vanuit een Azu
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: how-to
-ms.date: 02/22/2019
+ms.date: 04/29/2020
 ms.author: alkarche
-ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756474"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122826"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 
@@ -21,78 +21,51 @@ Met micro soft *Azure for students starter* kunt u aan de slag met de Azure-prod
 
 Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren. [Meer informatie over functies vindt u hier.](./functions-overview.md)
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="create-a-function"></a>Een functie maken
 
- In dit onderwerp leert u hoe u functies kunt gebruiken om een HTTP-geactiveerde functie Hallo wereld te maken in de Azure Portal.
+ In dit artikel vindt u informatie over het gebruik van Azure Functions voor het maken van een ' Hallo wereld ' HTTP-trigger functie in de Azure Portal.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com>.
+Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
 U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
-1. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal. Selecteer vervolgens **reken** > **functie-app**.
-
-    ![Een functie-app maken in Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
-
-2. Gebruik voor de functie-app de instellingen die in de tabel onder de afbeelding zijn opgegeven.
-
-    <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
-
-    | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **App-naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
-    | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. | 
-    | **[Resource groep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-   | **[Abonnement/locatie App Service](./functions-scale.md)** | Nieuw | Het hosting abonnement dat bepaalt in welke regio uw functie-app wordt geïmplementeerd en wat de densiteit van uw resources is. Meerdere functie-apps die zijn geïmplementeerd op hetzelfde abonnement, delen dezelfde afzonderlijke gratis instantie. Dit is een beperking van het Student Starter-abonnement. De volledige hosting opties worden [hier beschreven.](./functions-scale.md)|
-    | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
-    |**[Application Insights](./functions-monitoring.md)**| Ingeschakeld | Application Insights wordt gebruikt om de logboeken van uw functie-app op te slaan en te analyseren. Deze optie is standaard ingeschakeld als u een locatie kiest die Application Insights ondersteunt. Application Insights kunnen voor elke functie worden ingeschakeld door hand matig een regio in de buurt te kiezen die u wilt implementeren Application Insights. Zonder Application Insights, kunt u alleen live streaming-logboeken weer geven.
-
-3. Selecteer hierboven **app service plan/locatie** om een andere locatie te kiezen
-
-4. Selecteer **nieuwe maken** en geef uw plan een unieke naam.
-
-5. Selecteer de locatie die het dichtst bij u ligt. [Bekijk hier een volledig overzicht van Azure-regio's.](https://azure.microsoft.com/global-infrastructure/regions/) 
-
-    <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
-
-6. Selecteer **Maken** om de functie-app in te richten en te implementeren.
-
-    <img src="./media/functions-create-student-starter/Function-create-end.png" width="315">
-
-7. Selecteer het meldingspictogram in de rechterbovenhoek van de portal en zoek het bericht **Implementatie voltooid**.
-
-    ![Instellingen voor nieuwe functie-apps definiëren](./media/functions-create-student-starter/function-app-create-notification.png)
-
-8. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken.
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 Vervolgens maakt u een functie in de nieuwe functie-app.
 
-## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Een door HTTP geactiveerde functie maken
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-trigger functie maken
 
-1. Vouw uw nieuwe functie-app uit, selecteer **+** de knop naast **functies**, kies **in-portal**en selecteer **door gaan**.
+1. Selecteer in het menu links van het venster **functies** de optie **functies**en selecteer vervolgens **toevoegen** in het bovenste menu. 
+ 
+1. Selecteer **http-trigger**in het venster **nieuwe functie** .
 
-    ![De Quick Start-pagina 'Kiezen' van het Functions-platform.](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
+    ![HTTP-trigger functie kiezen](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
-1. Kies **WebHook + API** en selecteer vervolgens **Maken**.
+1. Accepteer in het venster **nieuwe functie** de standaard naam voor de **nieuwe functie**of voer een nieuwe naam in. 
 
-    ![De Quick Start van Azure Functions in Azure Portal.](./media/functions-create-student-starter/function-app-quickstart-node-webhook.png)
+1. Kies **anoniem** in de vervolg keuzelijst **autorisatie niveau** en selecteer vervolgens **functie maken**.
 
-Een functie wordt gemaakt met een taalspecifieke sjabloon voor een door HTTP getriggerde functie.
-
-U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
+    Azure maakt de HTTP-activerings functie. U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Klik in de nieuwe functie rechtsboven op **</> Functie-URL ophalen**, selecteer **Standaard (functietoets)** en klik vervolgens op **Kopiëren**. 
+1. Selecteer in de nieuwe functie HTTP-trigger **code + test** in het menu links en selecteer **functie-URL ophalen** in het bovenste menu.
+
+    ![Functie-URL ophalen selecteren](./media/functions-create-student-starter/function-app-select-get-function-url.png)
+
+1. Selecteer in het dialoog venster **functie-URL ophalen** de optie **standaard** in de vervolg keuzelijst en selecteer vervolgens het pictogram **kopiëren naar klem bord** . 
 
     ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 
-2. Plak de URL van de functie in de adresbalk van uw browser. Voeg waarde `&name=<yourname>` voor de querytekenreeks toe aan het einde van deze URL, en druk op de toets `Enter` op het toetsenbord om de aanvraag uit te voeren. U ziet het geretourneerde antwoord van de functie nu in de browser.  
+1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de query reeks waarde `?name=<your_name>` toe aan het einde van deze URL en druk op ENTER om de aanvraag uit te voeren. 
 
     Het volgende voorbeeld toont het antwoord in de browser:
 
@@ -100,7 +73,7 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
     De aanvraag-URL bevat een sleutel die standaard is vereist, en waarmee u via HTTP toegang hebt tot de functie.
 
-3. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de traceringsuitvoer van de vorige uitvoering wilt zien, gaat u terug naar de functie in de portal en klikt u op de pijl onder aan het scherm om de **logboeken** uit te vouwen.
+1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de uitvoer van de tracering wilt zien, gaat u terug naar de pagina **code en test** in de portal en vouwt u de pijl **Logboeken** onder aan de pagina uit.
 
    ![De viewer voor functielogboeken in Azure Portal.](./media/functions-create-student-starter/function-view-logs.png)
 
@@ -126,7 +99,7 @@ In azure for students starter hebt u toegang tot de meeste functies van de Azure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een functie-app gemaakt met een eenvoudige HTTP-geactiveerde functie. U kunt nu de lokale tool, meer talen, bewaking en integraties verkennen.
+U bent nu klaar met het maken van een functie-app met een eenvoudige HTTP-activerings functie. Daarna kunt u het lokale hulp programma, meer talen, bewaking en integraties verkennen.
 
  * [Uw eerste functie maken met Visual Studio](./functions-create-your-first-function-visual-studio.md)
  * [Uw eerste functie maken met Visual Studio Code](./functions-create-first-function-vs-code.md)

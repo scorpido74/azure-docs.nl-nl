@@ -5,19 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670251"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201105"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app ()-expressie in Azure Monitor query
 
 De `app` expressie wordt gebruikt in een Azure monitor query om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit is handig om toepassings gegevens op te halen in een Azure Monitor-logboek query en om gegevens over meerdere toepassingen in een Application Insights query op te vragen.
 
-
+> [!IMPORTANT]
+> De app ()-expressie wordt niet gebruikt als u gebruikmaakt van een [Application Insights resource op basis van een werk ruimte](../app/create-workspace-resource.md) , aangezien logboek gegevens worden opgeslagen in een log Analytics-werk ruimte. Gebruik de log ()-expressie voor het schrijven van een query die toepassing bevat in meerdere werk ruimten. Voor meerdere toepassingen in dezelfde werk ruimte hebt u geen query op meerdere werk ruimten nodig.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -30,7 +31,7 @@ De `app` expressie wordt gebruikt in een Azure monitor query om gegevens op te h
 
 | Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
-| Resourcenaam | Door de mens lees bare naam van de app (ook wel "onderdeel naam") | app ("fabrikamapp") |
+| Resourcenaam | Door de mens lees bare naam van de app (ook wel ' component naam ' genoemd) | app ("fabrikamapp") |
 | Gekwalificeerde naam | Volledige naam van de app in de vorm: ' subscriptionname/resourceGroup/naam van onderdeel ' | app (' AI-prototype/fabrikam/fabrikamapp ') |
 | Id | GUID van de app | app ("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure-Resource-ID | Id voor de Azure-resource |app ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
