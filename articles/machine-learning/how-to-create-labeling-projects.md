@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231217"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007538"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevens label project maken en labels exporteren 
 
@@ -83,7 +83,7 @@ Een gegevensset maken op basis van gegevens die u al hebt opgeslagen in Azure Bl
     * Voeg "/* *" toe aan het pad om alle bestanden in de submappen van het geselecteerde pad op te kunnen bevatten.
     * Voeg "**/*. *" toe om alle gegevens in de huidige container en de submappen ervan op te halen.
 1. Geef een beschrijving op voor de gegevensset.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Bevestig de details. Selecteer **vorige** om de instellingen te wijzigen of **maken** om de gegevensset te maken.
 
 > [!NOTE]
@@ -99,7 +99,7 @@ Uw gegevens rechtstreeks uploaden:
 1. *Optioneel:* Selecteer **Geavanceerde instellingen** voor het aanpassen van de gegevens opslag, container en het pad naar uw data.
 1. Selecteer **Bladeren** om de lokale bestanden te selecteren die u wilt uploaden.
 1. Geef een beschrijving op voor de gegevensset.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Bevestig de details. Selecteer **vorige** om de instellingen te wijzigen of **maken** om de gegevensset te maken.
 
 De gegevens worden geüpload naar de standaard-BLOB Store ("workspaceblobstore") van uw Machine Learning-werk ruimte.
@@ -138,8 +138,6 @@ Voor selectie kaders zijn belang rijke vragen:
 
 Op de pagina met het **labelen** met de naam van ml kunt u automatische machine learning modellen activeren om de label taak te versnellen. Aan het begin van het label project worden de afbeeldingen in een wille keurige volg orde gerangschikt om de mogelijke afwijking te verminderen. Eventuele BIASS die aanwezig zijn in de gegevensset, worden echter wel weer gegeven in het getrainde model. Als bijvoorbeeld 80% van uw installatie kopieën van één klasse zijn, is ongeveer 80% van de gegevens die worden gebruikt om het model te trainen, van die klasse. Deze training omvat geen actief onderwijs.
 
-Deze functie is beschikbaar voor taken voor het classificeren van afbeeldingen (met meerdere klassen of meerdere labels).  
-
 Selecteer *ondersteuning voor het labelen van ml inschakelen* en geef een GPU op om ondersteuning van labeling in te scha kelen. deze bestaat uit twee fasen:
 * Clustering
 * Prelabelen
@@ -150,13 +148,15 @@ Omdat de uiteindelijke labels nog steeds afhankelijk zijn van de invoer van de L
 
 ### <a name="clustering"></a>Clustering
 
-Nadat een bepaald aantal labels is verzonden, begint het machine learning model samen met het groeperen van vergelijk bare afbeeldingen.  Deze vergelijk bare afbeeldingen worden weer gegeven aan de labels op hetzelfde scherm om hand matige labels te versnellen. Clustering is met name handig wanneer de Labeler een raster van 4, 6 of 9 afbeeldingen weergeeft. 
+Nadat een bepaald aantal labels is verzonden, begint het machine learning model voor de classificatie van installatie kopieën met gelijksoortige afbeeldingen te groeperen.  Deze vergelijk bare afbeeldingen worden weer gegeven aan de labels op hetzelfde scherm om hand matige labels te versnellen. Clustering is met name handig wanneer de Labeler een raster van 4, 6 of 9 afbeeldingen weergeeft. 
 
 Zodra een machine learning model is getraind op uw hand matig gelabelde gegevens, wordt het model afgekapt tot de laatste volledig verbonden laag. Niet-gelabelde afbeeldingen worden vervolgens door gegeven via het afgekapte model in een proces dat ook wel ' insluiten ' of ' parametrisatie ' wordt genoemd. Hiermee wordt elke afbeelding Inge sloten in een zeer dimensionale ruimte die wordt gedefinieerd door deze laag. Installatie kopieën die zich op de dichtstbijzijnde neighbors in de ruimte bevinden, worden gebruikt voor het clusteren van taken. 
 
+De clustering fase wordt niet weer gegeven voor object detectie modellen.
+
 ### <a name="prelabeling"></a>Prelabelen
 
-Nadat meer afbeeldings labels zijn verzonden, wordt een classificatie model gebruikt om afbeeldings Tags te voors pellen.  De Labeler ziet nu pagina's die voorspelde labels bevatten die al aanwezig zijn op elke afbeelding.  Deze labels worden vervolgens door de taak gecontroleerd en eventuele onjuist gelabelde afbeeldingen worden gecorrigeerd voordat de pagina wordt verzonden.  
+Wanneer voldoende afbeeldings labels zijn verzonden, wordt een classificatie model gebruikt om afbeeldings Tags te voors pellen. Of een model voor object detectie wordt gebruikt om selectie vakjes te voors pellen. De Labeler ziet nu pagina's die voorspelde labels bevatten die al aanwezig zijn op elke afbeelding. Voor object detectie worden voorspelde vakken ook weer gegeven. De taak wordt vervolgens door deze voor spellingen gecontroleerd en eventuele onjuist gelabelde afbeeldingen te corrigeren voordat u de pagina verzendt.  
 
 Zodra een machine learning model is getraind op uw hand matig gelabelde gegevens, wordt het model geëvalueerd op basis van een testset van hand matig gelabelde afbeeldingen om de nauw keurigheid van verschillende betrouwbaarheids drempels te bepalen. Dit evaluatie proces wordt gebruikt om een betrouwbaarheids drempelwaarde te bepalen waarboven het model nauw keurig genoeg is om vooraf labels weer te geven. Het model wordt vervolgens geëvalueerd op basis van niet-gelabelde gegevens. Afbeeldingen met voor spellingen die meer vertrouwen hebben dan deze drempel waarde, worden gebruikt voor het vooraf labelen.
 

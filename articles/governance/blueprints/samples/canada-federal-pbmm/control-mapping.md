@@ -1,14 +1,14 @@
 ---
 title: Voorbeeld besturings elementen voor Canada Federal PBMM Blue Print
 description: De toewijzing van de voor beelden van Canada Federal PBMM blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545257"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005718"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken
 
@@ -57,8 +57,8 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 - Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement
 - Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
-- Virtuele Windows-machines controleren waarin de groep Administrators een van de opgegeven leden bevat
-- Virtuele Windows-machines controleren waarbij de groep Administrators niet alle opgegeven leden bevat
+- Controle resultaten weer geven van Windows-Vm's waarin de groep Administrators een van de opgegeven leden bevat
+- Controle resultaten weer geven van Windows-Vm's waarbij de groep Administrators niet alle opgegeven leden bevat
 - Vereisten implementeren voor het controleren van Windows-Vm's waarbij de groep Administrators een van de opgegeven leden bevat
 - Vereisten implementeren voor het controleren van Windows-Vm's waarbij de groep Administrators niet alle opgegeven leden bevat
 
@@ -68,8 +68,8 @@ Azure implementeert op [rollen gebaseerd toegangs beheer](../../../../role-based
 
 - Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement
 - Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
-- Virtuele Windows-machines controleren waarin de groep Administrators een van de opgegeven leden bevat
-- Virtuele Windows-machines controleren waarbij de groep Administrators niet alle opgegeven leden bevat
+- Controle resultaten weer geven van Windows-Vm's waarin de groep Administrators een van de opgegeven leden bevat
+- Controle resultaten weer geven van Windows-Vm's waarbij de groep Administrators niet alle opgegeven leden bevat
 - Vereisten implementeren voor het controleren van Windows-Vm's waarbij de groep Administrators een van de opgegeven leden bevat
 - Vereisten implementeren voor het controleren van Windows-Vm's waarbij de groep Administrators niet alle opgegeven leden bevat
 
@@ -85,7 +85,7 @@ De mogelijkheden voor gegevens detectie en-classificatie van geavanceerde gegeve
 
 Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azure Policy](../../../policy/overview.md) definities toe te wijzen om te controleren of externe fout opsporing voor Azure app service toepassing is uitgeschakeld. De blauw druk wijst ook beleids definities toe waarmee virtuele Linux-machines worden gecontroleerd die externe verbindingen van accounts zonder wacht woorden toestaan. Daarnaast wijst de blauw druk een Azure Policy definitie toe waarmee u onbeperkte toegang tot opslag accounts kunt controleren. Door deze indica toren te bewaken, kunt u ervoor zorgen dat externe toegangs methoden voldoen aan uw beveiligings beleid.
 
-- \[Preview\]: Linux-vm's controleren die externe verbindingen toestaan van accounts zonder wacht woorden
+- \[Voor\]beeld: controle resultaten weer geven van Linux-vm's die externe verbindingen toestaan van accounts zonder wacht woorden
 - \[Voor\]beeld: vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen toestaan van accounts zonder wacht woorden
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
@@ -107,7 +107,7 @@ Logboek gegevens die door Azure Monitor worden verzameld, worden opgeslagen in e
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe die de configuratie van controles en logboek registratie controleren. Het bewaken van deze configuraties kan een indicatie van een storing in een controle systeem of een verkeerde configuratie geven en helpt u bij het uitvoeren van corrigerende maat regelen.
 
 - Diagnostische instelling voor controleren
-- Controle-instellingen op SQL server-niveau controleren
+- Controle op SQL Server moet zijn ingeschakeld
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 
@@ -131,7 +131,7 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 - \[Preview\]: log Analytics-agent voor Linux-vm's implementeren
 - \[Preview\]: log Analytics-agent voor Windows-vm's implementeren
 - Diagnostische instelling voor controleren
-- Controle-instellingen op SQL server-niveau controleren
+- Controle op SQL Server moet zijn ingeschakeld
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
@@ -167,8 +167,8 @@ Deze blauw druk helpt u om bevoegde toegang te beperken en te beheren door [Azur
 
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee virtuele Linux-machines worden gecontroleerd die externe verbindingen toestaan van accounts zonder wacht woorden en/of onjuiste machtigingen hebben ingesteld voor het passwd-bestand. Deze blauw druk wijst ook beleids definities toe waarmee de configuratie van het type wachtwoord versleuteling voor virtuele Windows-machines wordt gecontroleerd. Door deze indica toren te controleren, zorgt u ervoor dat systeem verificaties voldoen aan het identificatie-en verificatie beleid van uw organisatie.
 
-- \[Preview\]: Linux-vm's controleren waarvoor geen passwd-bestands machtigingen zijn ingesteld op 0644
-- \[Voor\]beeld: Linux-vm's met accounts zonder wacht woorden controleren
+- \[Voor\]beeld: Bekijk de controle resultaten van Linux-vm's waarvoor de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
+- \[Voor\]beeld: controle resultaten weer geven van Linux-vm's met accounts zonder wacht woorden
 - \[Voor\]beeld: vereisten implementeren voor het controleren van virtuele Linux-machines waarop de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644
 - \[Voor\]beeld: vereisten implementeren voor het controleren van virtuele Linux-machines met accounts zonder wacht woorden
 
@@ -176,11 +176,11 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 
 Deze blauw druk helpt u bij het afdwingen van sterke wacht woorden door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die virtuele Windows-machines controleren die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van virtuele machines met een schending van het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle gebruikers accounts van de virtuele machine voldoen aan het wachtwoord beleid van uw organisatie.
 
-- \[Preview\]: Windows-vm's controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Preview\]: Windows-vm's controleren die geen maximale wachtwoord duur van 70 dagen hebben
-- \[Preview\]: Windows-vm's met een minimale wachtwoord leeftijd van 1 dag controleren
-- \[Voor\]beeld: Windows-vm's controleren waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
-- \[Voor\]beeld: Windows-vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Voor\]beeld: controle resultaten weer geven van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Voor\]beeld: controle resultaten weer geven van Windows-vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Voor\]beeld: controle resultaten weer geven van Windows-vm's die geen minimale wachtwoord duur van 1 dag hebben
+- \[Voor\]beeld: controle resultaten weer geven van Windows-vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
+- \[Voor\]beeld: controle resultaten weer geven van Windows-vm's die de minimale wachtwoord lengte niet beperken tot 14 tekens
 - \[Voor\]beeld: vereisten implementeren voor het controleren van Windows-vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 - \[Voor\]beeld: vereisten implementeren voor het controleren van Windows-vm's die geen maximale wachtwoord duur van 70 dagen hebben
 - \[Preview\]: vereisten implementeren voor het controleren van Windows-vm's die geen minimale wachtwoord duur van 1 dag hebben
@@ -217,10 +217,9 @@ De Standard-laag DDoS (Distributed Denial of service) van Azure biedt extra func
 Deze blauw druk helpt u bij het beheren en best uren van de systeem grens door een [Azure Policy](../../../policy/overview.md) definitie toe te wijzen die de aanbevelingen voor de beveiliging van netwerk beveiligings groepen in azure Security Center controleert. Azure Security Center analyseert de verkeers patronen van Internet gerichte virtuele machines en biedt regel aanbevelingen voor de netwerk beveiligings groep om de mogelijke kwets baarheid te verminderen.
 Daarnaast wijst deze blauw druk ook beleids definities toe waarmee onbeveiligde eind punten, toepassingen en opslag accounts worden bewaakt. Eind punten en toepassingen die niet zijn beveiligd door een firewall en opslag accounts met onbeperkte toegang, kunnen onbedoelde toegang tot gegevens in het informatie systeem toestaan.
 
-- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
+- Aanbevelingen voor adaptieve netwerk beveiliging moeten worden toegepast op Internet gerichte virtuele machines
 - Toegang via Internet gericht eind punt moet worden beperkt
 - Onbeperkte netwerk toegang tot opslag accounts controleren
-- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) grens beveiliging | Toegangs punten
 
@@ -239,7 +238,7 @@ Met Just-in-time (JIT) toegang tot virtuele machines wordt het binnenkomende ver
 Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden informatie te beschermen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die u helpen bij het bewaken van het cryptografische mechanisme dat is geïmplementeerd voor communicatie protocollen. Zorg ervoor dat de communicatie op de juiste wijze wordt versleuteld, zodat u de vereisten van uw organisatie kunt nagaan of informatie beschermt tegen onbevoegde openbaar making en wijzigingen
 
 - De API-app mag alleen toegankelijk zijn via HTTPS
-- Windows-webservers controleren die geen protocollen voor beveiligde communicatie gebruiken
+- Controle resultaten weer geven van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
 - functie-app mag alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld

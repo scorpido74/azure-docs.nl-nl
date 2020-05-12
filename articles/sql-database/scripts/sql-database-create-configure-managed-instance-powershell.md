@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a4ba4d69b560307e52c277f5c695bbba718cd1d3
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73691640"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005833"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Power shell gebruiken voor het maken van een Azure SQL Database beheerd exemplaar
 
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script maakt gebruik van een van de volgende opdrachten. Voor meer informatie over gebruikte en andere opdrachten in de onderstaande tabel klikt u op de koppelingen naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

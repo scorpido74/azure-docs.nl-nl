@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726443"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005875"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Over sleutels, geheimen en certificaten
 
@@ -46,7 +46,7 @@ Raadpleeg de JOSE-specificaties voor relevante gegevens typen voor sleutels, ver
 
 Objecten die zijn opgeslagen in Key Vault, worden geversiond wanneer er een nieuw exemplaar van een object wordt gemaakt. Aan elke versie wordt een unieke id en URL toegewezen. Wanneer een object voor het eerst wordt gemaakt, wordt er een unieke versie-id gegeven en als de huidige versie van het object gemarkeerd. Het maken van een nieuw exemplaar met dezelfde object naam geeft het nieuwe object een unieke versie-id, waardoor het de huidige versie wordt.  
 
-Objecten in Key Vault kunnen worden geadresseerd met de huidige ID of een versie-specifieke id. Als er bijvoorbeeld een sleutel met de naam `MasterKey`wordt gebruikt voor het uitvoeren van bewerkingen met de huidige ID, heeft het systeem de meest recente beschik bare versie. Door bewerkingen uit te voeren met de versie-specifieke id wordt het systeem gebruikt die specifieke versie van het object.  
+Objecten in Key Vault kunnen worden geadresseerd door specifing van een versie of door de versie voor bewerkingen op de huidige versie van het object uit te laten gaan. Als er bijvoorbeeld een sleutel met de naam `MasterKey`wordt uitgevoerd en de uitvoering van bewerkingen zonder specifing-versie is, zorgt het systeem ervoor dat de meest recente beschik bare versie wordt gebruikt. Door bewerkingen uit te voeren met de versie-specifieke id wordt het systeem gebruikt die specifieke versie van het object.  
 
 Objecten worden uniek geïdentificeerd binnen Key Vault met behulp van een URL. Er zijn geen twee objecten in het systeem die dezelfde URL hebben, ongeacht de geografische locatie. De volledige URL naar een object wordt de object-id genoemd. De URL bestaat uit een voor voegsel waarmee de Key Vault, het object type, de door de gebruiker ingevoerde object naam en een object versie worden geïdentificeerd. De object naam is hoofdletter gevoelig en onveranderbaar. Id's die de object versie niet bevatten, worden aangeduid als basis-Id's.  
 
@@ -62,7 +62,7 @@ Waar:
 |-|-|  
 |`keyvault-name`|De naam voor een sleutel kluis in de Microsoft Azure Key Vault-service.<br /><br /> Key Vault namen worden geselecteerd door de gebruiker en zijn wereld wijd uniek.<br /><br /> Key Vault naam moet een teken reeks van 3-24 zijn die alleen 0-9, a-z, A-Z en-bevat.|  
 |`object-type`|Het type van het object, "sleutels", "geheimen" of "certificaten".|  
-|`object-name`|Een `object-name` is een door de gebruiker ingevoerde naam voor en moet uniek zijn binnen een Key Vault. De naam moet een teken reeks van 1-127 zijn die alleen 0-9, a-z, A-Z en-bevat.|  
+|`object-name`|Een `object-name` is een door de gebruiker ingevoerde naam voor en moet uniek zijn binnen een Key Vault. De naam moet een teken reeks van 1-127 zijn die begint met een letter en alleen 0-9, a-z, A-Z en-bevat.|  
 |`object-version`|Een `object-version` door het systeem gegenereerde 32 teken reeks-id die optioneel wordt gebruikt om een unieke versie van een object aan te pakken.|  
 
 ## <a name="next-steps"></a>Volgende stappen
