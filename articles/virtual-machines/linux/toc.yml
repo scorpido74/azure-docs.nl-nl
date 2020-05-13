@@ -303,6 +303,113 @@
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Veelgestelde vragen
           href: migration-classic-resource-manager-faq.md
+    - name: Installatiekopieën gebruiken
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Gedeelde installatiekopiegalerieën
+          items:
+            - name: CLI
+              items:
+                - name: Een galerie maken
+                  href: ../shared-images-cli.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-cli.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-cli.md
+                - name: App-registratie voor delen
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Een galerie maken
+                  href: ../shared-images-powershell.md
+                - name: De versie van een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-powershell.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-powershell.md
+            - name: Portal
+              items:
+                - name: 'Een galerie, afbeelding en virtuele machine maken'
+                  href: shared-images-portal.md
+            - name: Resource Manager-sjablonen
+              items:
+                - name: Een gedeelde installatiekopiegalerie maken
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Een installatiekopieversie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Een VM maken van een installatiekopieversie
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Problemen met gedeelde installatiekopieën oplossen
+              href: troubleshooting-shared-images.md
+            - name: Door klant beheerde sleutels gebruiken
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Functie voor het maken van installatiekopieën (preview)
+          items:
+            - name: Overzicht
+              href: image-builder-overview.md
+            - name: Azure CLI gebruiken
+              href: image-builder.md
+            - name: ARM-sjabloonreferentie
+              href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
+            - name: Compileren voor installatiekopiegalerieën
+              href: image-builder-gallery.md
+            - name: Een bestaande installatiekopie bijwerken
+              href: image-builder-gallery-update-image-version.md
+            - name: Problemen oplossen
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: Installatiekopieën zoeken en gebruiken
+          href: cli-ps-findimage.md
+        - name: Aangepaste installatiekopie maken
+          items:
+            - name: Algemene stappen
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Een virtuele machine vastleggen in een installatiekopie
+          href: capture-image.md
+        - name: Een installatiekopie maken met Packer
+          href: build-image-with-packer.md
+        - name: Een bestaande schijf downloaden
+          href: download-vhd.md
     - name: Virtuele machines beveiligen
       items:
         - name: Aanbevelingen
@@ -461,110 +568,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Logboekwaarschuwingen maken
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Installatiekopieën gebruiken
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: Gedeelde installatiekopiegalerieën
-          items:
-            - name: CLI
-              items:
-                - name: Een galerie maken
-                  href: ../shared-images-cli.md
-                - name: Een installatiekopie maken
-                  items:
-                    - name: Vanaf een VM
-                      href: ../image-version-vm-cli.md
-                    - name: Migreren vanaf een beheerde installatiekopie
-                      href: ../image-version-managed-image-cli.md
-                    - name: Kopiëren uit een andere galerie
-                      href: ../image-version-another-gallery-cli.md
-                - name: Een virtuele machine maken
-                  items:
-                    - name: Gegeneraliseerd
-                      href: ../vm-generalized-image-version-cli.md
-                - name: Afbeeldingsresources bijwerken
-                  href: ../update-image-resources-cli.md
-                - name: App-registratie voor delen
-                  href: share-images-across-tenants.md
-            - name: PowerShell
-              items:
-                - name: Een galerie maken
-                  href: ../shared-images-powershell.md
-                - name: De versie van een installatiekopie maken
-                  items:
-                    - name: Vanaf een VM
-                      href: ../image-version-vm-powershell.md
-                    - name: Migreren vanaf een beheerde installatiekopie
-                      href: ../image-version-managed-image-powershell.md
-                    - name: Kopiëren uit een andere galerie
-                      href: ../image-version-another-gallery-powershell.md
-                - name: Een virtuele machine maken
-                  items:
-                    - name: Gegeneraliseerd
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: Gespecialiseerd
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: Afbeeldingsresources bijwerken
-                  href: ../update-image-resources-powershell.md
-            - name: Portal
-              items:
-                - name: 'Een galerie, afbeelding en virtuele machine maken'
-                  href: shared-images-portal.md
-            - name: Resource Manager-sjablonen
-              items:
-                - name: Een gedeelde installatiekopiegalerie maken
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: Een installatiekopieversie maken in een gedeelde installatiekopiegalerie
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: Een VM maken van een installatiekopieversie
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: Problemen met gedeelde installatiekopieën oplossen
-              href: troubleshooting-shared-images.md
-        - name: Functie voor het maken van installatiekopieën (preview)
-          items:
-            - name: Overzicht
-              href: image-builder-overview.md
-            - name: Azure CLI gebruiken
-              href: image-builder.md
-            - name: ARM-sjabloonreferentie
-              href: image-builder-json.md
-              displayName: 'ARM,Resource Manager'
-            - name: Compileren voor installatiekopiegalerieën
-              href: image-builder-gallery.md
-            - name: Een bestaande installatiekopie bijwerken
-              href: image-builder-gallery-update-image-version.md
-            - name: Problemen oplossen
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: Installatiekopieën zoeken en gebruiken
-          href: cli-ps-findimage.md
-        - name: Aangepaste installatiekopie maken
-          items:
-            - name: Algemene stappen
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Een virtuele machine vastleggen in een installatiekopie
-          href: capture-image.md
-        - name: Een installatiekopie maken met Packer
-          href: build-image-with-packer.md
-        - name: Een bestaande schijf downloaden
-          href: download-vhd.md
     - name: Beschikbaarheid en schaal
       items:
         - name: Automatisch schalen

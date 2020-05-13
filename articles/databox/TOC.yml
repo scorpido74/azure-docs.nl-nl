@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: Beheren via lokale webinterface
               href: data-box-local-web-ui-admin.md
+            - name: Door de klant beheerde sleutel inschakelen
+              href: data-box-customer-managed-encryption-key-portal.md
             - name: Gegevens verplaatsen naar een blob-laag
               href: data-box-how-to-set-data-tier.md
             - name: Het apparaat bekabelen
@@ -173,6 +175,8 @@
               href: data-box-portal-admin.md
             - name: Beheren via lokale webinterface
               href: data-box-local-web-ui-admin.md
+            - name: Door de klant beheerde sleutel inschakelen
+              href: data-box-customer-managed-encryption-key-portal.md
             - name: Apparaatproblemen oplossen
               href: data-box-troubleshoot.md
             - name: Gegevens verplaatsen naar een blob-laag

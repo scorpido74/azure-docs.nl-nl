@@ -94,11 +94,11 @@
                   items:
                     - name: Check Point
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Force Point-producten
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines
           href: connect-azure-stack.md
-    - name: Meerdere tenants (MSSP)
+    - name: Werken met meerdere tenants (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Werken met incidenten in meerdere werkruimten
+      href: multiple-workspace-view.md
     - name: Door de klant beheerde sleutels (CMK) instellen
       href: customer-managed-keys.md
     - name: Incidenten maken op basis van waarschuwingen
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'

@@ -162,6 +162,8 @@
               href: snapshots-overview.md
             - name: Feed wijzigen
               href: storage-blob-change-feed.md
+            - name: Terugzetten naar eerder tijdstip
+              href: point-in-time-restore-overview.md
         - name: Toegang- en prestatielagen
           items:
             - name: Toegangslagen
@@ -379,7 +381,7 @@
               href: storage-blob-immutability-policies-manage.md
         - name: Gegevensredundantie beheren
           items:
-            - name: Wijzigen hoe gegevens worden gerepliceerd
+            - name: Redundantieconfiguratie wijzigen
               href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Maximaal beschikbare toepassingen ontwerpen
               href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -393,6 +395,8 @@
               href: snapshots-manage-dotnet.md
             - name: Logboeken voor wijzigingenfeeds verwerken
               href: storage-blob-change-feed-how-to.md
+            - name: Herstel naar een bepaald tijdstip inschakelen
+              href: point-in-time-restore-manage.md
         - name: Herstel na noodgevallen beheren
           items:
             - name: De eigenschap Laatst gesynchroniseerd controleren

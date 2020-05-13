@@ -234,6 +234,11 @@
                       href: instance-generalized-image-version-cli.md
                 - name: Afbeeldingsresources bijwerken
                   href: ../virtual-machines/update-image-resources-cli.md
+            - name: Problemen met gedeelde installatiekopieën oplossen
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: Door klant beheerde sleutels gebruiken
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: Een sjabloon maken
       items:
         - name: Meer informatie over schaalsetsjablonen

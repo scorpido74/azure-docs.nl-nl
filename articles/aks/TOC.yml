@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: Een AKS-cluster upgraden
           href: upgrade-cluster.md
+        - name: SLA voor uptime gebruiken
+          href: uptime-sla.md
         - name: OS-updates van knooppunt verwerken
           href: node-updates-kured.md
         - name: Een AKS-cluster configureren
@@ -231,7 +233,7 @@
         - name: Integratie van Azure Active Directory inschakelen
           items:
             - name: Azure AD integreren (preview)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: Azure CLI gebruiken
               href: azure-ad-integration-cli.md
             - name: Azure Portal gebruiken

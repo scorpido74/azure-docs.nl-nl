@@ -212,6 +212,8 @@
     - name: Problemen oplossen
       items:
         - name: Handleiding voor het oplossen van problemen
+          href: troubleshooting-guide.md
+        - name: .NET-uitzonderingen
           href: event-hubs-messaging-exceptions.md
         - name: Uitzonderingen voor Resource Manager
           href: resource-manager-exceptions.md

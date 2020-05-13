@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Functiedekking voor Azure PaaS-resources
           href: features-paas.md
+    - name: Wat is er nieuw in Security Center?
+      href: release-notes.md
     - name: Aanbevelingen voor beveiliging
       href: recommendations-reference.md
     - name: Beveiligingswaarschuwingen en de kill chain voor intentie
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Bestaande gebruikers van Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Releaseopmerkingen
+    - name: Archief van wat er nieuw is in Security Center
+      href: release-notes-archive.md
+    - name: Azure-roadmapblog
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Buitengebruikstelling van functies en API (juli 2019)
       href: security-center-features-retirement-july2019.md

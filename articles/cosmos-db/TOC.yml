@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: Migreren van processorbibliotheek voor wijzigingenfeed
           href: how-to-migrate-from-change-feed-library.md
-        - name: Een Java SQL-toepassing maken met een wijzigingenfeed
+        - name: Wijzigingenfeed - Asynchroon Java-voorbeeld
           href: create-sql-api-java-changefeed.md
     - name: Ingebouwde analyse met Apache Spark
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: Gebruik van aanvraageenheden bewaken
               href: monitor-request-unit-usage.md
+            - name: Gebruik van genormaliseerde aanvraageenheden bewaken
+              href: monitor-normalized-request-units.md
         - name: Azure-bewakingslogboeken gebruiken
           items:
             - name: Diagnostische logboeken bewaken

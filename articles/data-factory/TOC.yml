@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Een data factory maken - Resource Manager-sjabloon
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Beveiliging - Door de klant beheerde sleutelversleuteling inschakelen
+      href: quickstart-enable-customer-managed-key.md
     - name: Gegevensstroom maken
       href: data-flow-create.md
 - name: Zelfstudies
