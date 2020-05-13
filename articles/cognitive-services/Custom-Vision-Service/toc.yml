@@ -89,5 +89,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Versleuteling
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: Releaseopmerkingen
       href: release-notes.md

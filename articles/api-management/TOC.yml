@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: Lokale metrische gegevens en logboeken voor zelf-hostende gateway configureren
           href: how-to-configure-local-metrics-logs.md
-        - name: Aanvragen registreren met Azure Application Insights
-          href: api-management-howto-app-insights.md
         - name: DR instellen met back-up/herstellen
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Gebruikersaccounts beheren
