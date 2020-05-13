@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383075"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201588"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -129,7 +129,7 @@ Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wordt geforceerde tunneling/keten van een virtueel netwerk apparaat ondersteund?
 
-Geforceerde tunneling wordt ondersteund. Zie [Azure firewall geforceerde tunneling (preview)](forced-tunneling.md)voor meer informatie. 
+Geforceerde tunneling wordt ondersteund. Zie [Azure firewall geforceerde tunneling](forced-tunneling.md)voor meer informatie. 
 
 Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 

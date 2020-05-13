@@ -3,12 +3,12 @@ title: Azure Files herstellen met Power shell
 description: In dit artikel leert u hoe u Azure Files kunt herstellen met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097639"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201962"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files herstellen met Power shell
 
@@ -17,7 +17,7 @@ In dit artikel wordt uitgelegd hoe u een volledige bestands share of specifieke 
 U kunt een volledige bestands share of specifieke bestanden op de share herstellen. U kunt herstellen naar de oorspronkelijke locatie of naar een andere locatie.
 
 > [!WARNING]
-> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Zie de [sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) overzicht van de vereiste voor deze wijziging voor meer informatie.
+> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Zie de [sectie](backup-azure-afs-automation.md#important-notice-backup-item-identification) overzicht van de vereiste voor deze wijziging voor meer informatie.
 
 >[!NOTE]
 >Azure Backup ondersteunt nu het terugzetten van meerdere bestanden of mappen naar de oorspronkelijke of alternatieve locatie met behulp van Power shell. Raadpleeg [deze sectie](#restore-multiple-files-or-folders-to-original-or-alternate-location) van het document voor meer informatie.

@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250008"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201353"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
@@ -31,7 +32,7 @@ ms.locfileid: "79250008"
 
 - Het USB-stuur programma met de BitLocker-sleutel aansluiten
 
-- U bent vergrendeld. Voer de herstel sleutel in om weer aan de slag te gaan (toetsenbord indeling: VS) de onjuiste aanmeldings gegevens zijn te vaak ingevoerd, waardoor uw PC is vergrendeld om uw privacy te beschermen. Als u de herstel sleutel wilt ophalen, https://windows.microsoft.com/recoverykeyfaq gaat u naar vanaf een andere PC of een mobiel apparaat. Als u het nodig hebt, is de sleutel-ID XXXXXXx. U kunt ook uw PC opnieuw instellen.
+- U bent vergrendeld. Voer de herstel sleutel in om weer aan de slag te gaan (toetsenbord indeling: VS) de onjuiste aanmeldings gegevens zijn te vaak ingevoerd, waardoor uw PC is vergrendeld om uw privacy te beschermen. Als u de herstel sleutel wilt ophalen, gaat u naar https://windows.microsoft.com/recoverykeyfaq vanaf een andere PC of een mobiel apparaat. Als u het nodig hebt, is de sleutel-ID XXXXXXx. U kunt ook uw PC opnieuw instellen.
 
 - Voer het wacht woord in om dit station te ontgrendelen [] Druk op de INSERT-toets om het wacht woord te zien terwijl u typt.
 - Voer uw herstel sleutel in om de herstel sleutel van een USB-apparaat te laden.
@@ -273,13 +274,13 @@ Voer de volgende stappen uit voor een Key Encryption Key-scenario:
 
 **Fout: kan bestand of assembly niet laden**
 
-Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de AZ-module alleen is geïnstalleerd voor de huidige gebruiker, zijn de ADAL-Assembly's te `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`vinden in.
+Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de AZ-module alleen is geïnstalleerd voor de huidige gebruiker, zijn de ADAL-Assembly's te vinden in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` .
 
 U kunt ook zoeken naar `Az.Accounts` een map om het juiste pad te vinden.
 
 **Fout: Get-AzKeyVaultSecret of Get-AzKeyVaultSecret wordt niet herkend als de naam van een cmdlet**
 
-Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen `Get-AzureKeyVaultSecret` in `Get-AzureKeyVaultSecret`en.
+Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen in `Get-AzureKeyVaultSecret` en `Get-AzureKeyVaultSecret` .
 
 **Voor beelden van para meters**
 

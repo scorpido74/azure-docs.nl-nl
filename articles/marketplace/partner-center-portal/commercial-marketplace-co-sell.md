@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80517929"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201455"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
 
@@ -22,11 +22,11 @@ De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige
 
 | **Aanbiedings type** | **Pagina voor co-sell beschikbaar in partner centrum** |
 |    -----------------------    |    -----------------------------  |
-| Software as a Service (SaaS) |     Algemene Beschik baarheid april 2020      |
+| Software as a Service (SaaS) |      Nu verkrijgbaar      |
 | Dynamics 365 voor klant betrokkenheid & PowerApps      |     Nu verkrijgbaar      |
 | Dynamics 365 for Operations     |     Nu verkrijgbaar       |
-| Dynamics 365 Business Central      |  Algemene Beschik baarheid april 2020     |
-| Azure Application     |     Algemene Beschik baarheid april 2020     |
+| Dynamics 365 Business Central      |   Nu verkrijgbaar     |
+| Azure Application     |      Nu verkrijgbaar     |
 | Virtuele Azure-machine      |     Moet worden aangekondigd       |
 | Azure-container     |     Moet worden aangekondigd       |
 | Adviesservice      |     Moet worden aangekondigd       |
@@ -58,7 +58,7 @@ Met typen oplossingen kunt u de scenario's definiëren die voor uw aanbieding zi
 
 Oplossings gebieden helpen u bij het verder bepalen van uw oplossing.
 
-U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, `Ctrl` gebruikt u de sleutel (op Windows) of de opdracht toets (op Mac OS).
+U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding. Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht toets (op Mac OS).
 
 ## <a name="documents"></a>Documenten
 

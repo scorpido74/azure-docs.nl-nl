@@ -3,13 +3,13 @@ title: De Batch Management .NET-bibliotheek gebruiken voor het beheren van accou
 description: U kunt Azure Batch account resources maken, verwijderen en wijzigen met behulp van de Batch Management .NET-bibliotheek.
 ms.topic: article
 ms.date: 04/24/2017
-ms.custom: seodec18
-ms.openlocfilehash: 69e3eb04352feff11ee50acab11328adb7900539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115989"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201641"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-accounts en-quota's beheren met de batch-beheer-client bibliotheek voor .NET
 
@@ -116,7 +116,7 @@ Console.WriteLine("You can create {0} accounts in the {1} region.", quotaRespons
 In het bovenstaande code fragment `creds` is een instantie van [TokenCloudCredentials][azure_tokencreds]. Zie het [AccountManagement][acct_mgmt_sample] -code voorbeeld op github voor een voor beeld van het maken van dit object.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Een batch-account voor reken resource quota's controleren
-Voordat u de reken resources in uw batch-oplossing verhoogt, kunt u controleren of de resources die u wilt toewijzen, de quota van het account niet overschrijden. In het onderstaande code fragment worden de quotum gegevens voor het batch-account met de `mybatchaccount`naam afgedrukt. In uw eigen toepassing kunt u deze informatie gebruiken om te bepalen of het account kan omgaan met de extra resources die moeten worden gemaakt.
+Voordat u de reken resources in uw batch-oplossing verhoogt, kunt u controleren of de resources die u wilt toewijzen, de quota van het account niet overschrijden. In het onderstaande code fragment worden de quotum gegevens voor het batch-account met de naam afgedrukt `mybatchaccount` . In uw eigen toepassing kunt u deze informatie gebruiken om te bepalen of het account kan omgaan met de extra resources die moeten worden gemaakt.
 
 ```csharp
 // First obtain the Batch account

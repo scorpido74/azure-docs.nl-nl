@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675321"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201534"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
 
@@ -141,7 +141,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Een webpagina openen om gegevens van uw IoT-hub te bekijken
 
-Open een browser naar `http://localhost:3000`.
+Open een browser naar `http://localhost:3000` .
 
 Selecteer uw apparaat in de lijst **een apparaat selecteren** om een actieve grafiek te zien van de laatste gegevens punten van 50-Tempe ratuur en vochtigheid die door het apparaat worden verzonden naar uw IOT-hub.
 
@@ -165,7 +165,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Richt nu een web-app in uw App Service-abonnement in. Met `--deployment-local-git` de para meter kan de web-app-code worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes. Zorg ervoor dat u versie 10,6 of hoger van het knoop `--runtime` punt opgeeft voor de para meter, afhankelijk van de versie van de node. js-runtime die u gebruikt. U kunt de `az webapp list-runtimes` opdracht gebruiken om een lijst met ondersteunde Runtimes weer te geven.
+2. Richt nu een web-app in uw App Service-abonnement in. `--deployment-local-git`Met de para meter kan de web-app-code worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes. Zorg ervoor dat u versie 10,6 of hoger van het knoop punt opgeeft voor de `--runtime` para meter, afhankelijk van de versie van de node. js-runtime die u gebruikt. U kunt de `az webapp list-runtimes` opdracht gebruiken om een lijst met ondersteunde Runtimes weer te geven.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -174,7 +174,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
 3. Voeg nu toepassings instellingen toe voor de omgevings variabelen waarmee de IoT hub-connection string en de Event hub-Consumer groep worden opgegeven. Afzonderlijke instellingen zijn ruimte gescheiden in de `-settings` para meter. Gebruik de service connection string voor uw IoT-hub en de Consumer-groep die u eerder in deze zelf studie hebt gemaakt. De waarden worden niet geciteerd.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Schakel het web sockets-protocol voor de web-app in en stel de web-app zo in dat alleen HTTPS-aanvragen worden ontvangen (HTTP-aanvragen worden omgeleid naar HTTPS).
@@ -198,7 +198,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Voeg een extern aan uw kloon toe die verwijst naar de Git-opslag plaats voor de web-app in App Service. Gebruik \<voor git kloon\>-URL de URL die u in de vorige stap hebt geretourneerd. Voer de volgende opdracht uit in het opdracht venster.
+7. Voeg een extern aan uw kloon toe die verwijst naar de Git-opslag plaats voor de web-app in App Service. \<Gebruik voor git kloon \> -URL de URL die u in de vorige stap hebt geretourneerd. Voer de volgende opdracht uit in het opdracht venster.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -251,9 +251,9 @@ Als u problemen ondervindt met dit voor beeld, probeert u de stappen in de volge
 
 * Ga in Azure Portal naar uw web-app. Selecteer onder **bewaking** in het linkerdeel venster de optie **app service logboeken**. Schakel **toepassings Logboeken (bestands systeem)** in op, stel **niveau** in op fout en selecteer vervolgens **Opslaan**. Open vervolgens **logboek stroom** (onder **bewaking**).
 
-* Vanuit uw web-app in Azure Portal selecteert u onder **ontwikkelingsprogram Ma's** **console** en valideert u node- `node -v` en `npm -v`NPM-versies met en.
+* Vanuit uw web-app in Azure Portal selecteert u onder **ontwikkelingsprogram Ma's** **console** en valideert u node-en NPM-versies met `node -v` en `npm -v` .
 
-* Als er een fout bericht wordt weer geven over het niet vinden van een pakket, kunt u de stappen in de juiste volg orde uitvoeren. Wanneer de site wordt geïmplementeerd (met `git push`), wordt de app `npm install`service uitgevoerd, die wordt uitgevoerd op basis van de huidige versie van het knoop punt dat is geconfigureerd. Als dat later in de configuratie wordt gewijzigd, moet u een betekenisloze wijziging aanbrengen in de code en de push bewerking opnieuw uitvoeren.
+* Als er een fout bericht wordt weer geven over het niet vinden van een pakket, kunt u de stappen in de juiste volg orde uitvoeren. Wanneer de site wordt geïmplementeerd (met `git push` ), wordt de app service uitgevoerd `npm install` , die wordt uitgevoerd op basis van de huidige versie van het knoop punt dat is geconfigureerd. Als dat later in de configuratie wordt gewijzigd, moet u een betekenisloze wijziging aanbrengen in de code en de push bewerking opnieuw uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
