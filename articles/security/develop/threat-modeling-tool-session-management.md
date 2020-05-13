@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203859"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198862"
 ---
 # <a name="security-frame-session-management"></a>Beveiligings kader: sessie beheer
 | Product/service | Artikel |
@@ -178,7 +179,7 @@ De instelling wordt afgedwongen, zelfs als HTTP wordt gebruikt voor toegang tot 
 | **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Kenmerken**              | EnvironmentType-premises |
 | **Verwijzingen**              | N.v.t.  |
-| **Stappen** | Wanneer de webtoepassing de Relying Party is en de IdP de ADFS-server is, kan het beveiligde kenmerk van het FedAuth-token worden geconfigureerd door requireSSL in `system.identityModel.services` te stellen op True in de sectie van web. config:|
+| **Stappen** | Wanneer de webtoepassing de Relying Party is en de IdP de ADFS-server is, kan het beveiligde kenmerk van het FedAuth-token worden geconfigureerd door requireSSL in te stellen op True in de `system.identityModel.services` sectie van web. config:|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -272,7 +273,7 @@ De volgende configuratie toont de juiste configuratie:
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [XSRF/CSRF voor komen in ASP.NET MVC en webpagina's](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Stappen** | Anti-CSRF en ASP.NET MVC-formulieren: gebruik `AntiForgeryToken` de hulp methode voor weer gaven. Zet een `Html.AntiForgeryToken()` in het formulier, bijvoorbeeld|
+| **Stappen** | Anti-CSRF en ASP.NET MVC-formulieren: gebruik de `AntiForgeryToken` Help-methode voor weer gaven; plaats een `Html.AntiForgeryToken()` in het formulier, bijvoorbeeld|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp

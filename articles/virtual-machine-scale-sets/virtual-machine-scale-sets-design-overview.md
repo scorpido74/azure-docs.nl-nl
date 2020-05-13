@@ -3,19 +3,19 @@ title: Ontwerp overwegingen voor Azure Virtual Machine Scale Sets
 description: Meer informatie over de ontwerp overwegingen voor uw Azure-Virtual Machine Scale Sets. Functies van schaal sets vergelijken met VM-functies.
 keywords: virtuele Linux-machine, schaal sets voor virtuele machines
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: vm-linux
-ms.topic: conceptual
-ms.date: 06/01/2017
 ms.author: mimckitt
-ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/01/2017
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273763"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200201"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
 In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](virtual-machine-scale-sets-overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
@@ -56,7 +56,7 @@ Een schaalset die niet is gedefinieerd met Azure Managed Disks, is afhankelijk v
 ## <a name="overprovisioning"></a>Overmatige inrichting
 Schaal sets worden op dit moment standaard ingesteld op het ' overinrichten ' van Vm's. Wanneer overprovisioning is ingeschakeld, draait de schaalset feitelijk meer virtuele machines uit dan u hebt gevraagd. vervolgens worden de extra Vm's verwijderd zodra het aangevraagde aantal Vm's is ingericht. Bij een overinrichting worden de succes percentages van de inrichting verbeterd en wordt de implementatie tijd verminderd. Er worden geen kosten in rekening gebracht voor de extra Vm's en ze tellen niet mee voor uw quotum limieten.
 
-Bij het overinrichten worden de succes percentages van het inrichten verbeterd, kan dit leiden tot verwarrende gedragingen voor een toepassing die niet is ontworpen voor het afhandelen van extra Vm's die worden weer gegeven en die vervolgens weer geven. Als u het overinrichten wilt uitschakelen, moet u ervoor zorgen dat u de volgende teken `"overprovision": "false"`reeks in uw sjabloon hebt:. Meer informatie vindt u in de [rest API documentatie van de schaalset](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+Bij het overinrichten worden de succes percentages van het inrichten verbeterd, kan dit leiden tot verwarrende gedragingen voor een toepassing die niet is ontworpen voor het afhandelen van extra Vm's die worden weer gegeven en die vervolgens weer geven. Als u het overinrichten wilt uitschakelen, moet u ervoor zorgen dat u de volgende teken reeks in uw sjabloon hebt: `"overprovision": "false"` . Meer informatie vindt u in de [rest API documentatie van de schaalset](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
 Als uw schaalset gebruikmaakt van door de gebruiker beheerde opslag en u het overinrichten uitschakelt, kunt u meer dan 20 Vm's per opslag account hebben, maar dit wordt niet aanbevolen om te beginnen met 40 om de oorzaak van de IO-prestaties. 
 

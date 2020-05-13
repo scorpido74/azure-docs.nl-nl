@@ -1,25 +1,25 @@
 ---
-title: Azure Storage services bewaken met Azure Monitor voor opslag (preview) | Microsoft Docs
+title: Azure Storage services bewaken met Azure Monitor voor opslag | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor opslag functie beschreven waarmee opslag beheerders een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun Azure Storage accounts.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691116"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199958"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslag service controleren met Azure Monitor voor opslag (preview-versie)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
-Azure Monitor voor opslag (preview) biedt uitgebreide controle over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U kunt de opslag capaciteit en prestaties op twee manieren observeren, rechtstreeks vanuit een opslag account of weer gave bekijken van Azure Monitor om over verschillende groepen opslag accounts te kijken. 
+Azure Monitor voor opslag biedt uitgebreide controle over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U kunt de opslag capaciteit en prestaties op twee manieren observeren, rechtstreeks vanuit een opslag account of weer gave bekijken van Azure Monitor om over verschillende groepen opslag accounts te kijken. 
 
-Dit artikel helpt u inzicht te krijgen in de ervaring Azure Monitor voor opslag (preview) voor het afleiden van onbestelbare kennis over de status en prestaties van opslag accounts op schaal, met een mogelijkheid om te focussen op HOTS pots en latentie, beperking en beschikbaarheids problemen te onderzoeken.
+Dit artikel helpt u inzicht te krijgen in de ervaring Azure Monitor voor opslag om op schaal bruikbare kennis te verkrijgen over de status en prestaties van opslag accounts, met een mogelijkheid om te focussen op HOTS pots en latentie, beperking en beschikbaarheids problemen te onderzoeken.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Inleiding tot Azure Monitor voor opslag (preview)
+## <a name="introduction-to-azure-monitor-for-storage"></a>Inleiding tot Azure Monitor voor opslag
 
 Voordat u aan de slag gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. Ongeacht of u de opslag functie rechtstreeks vanuit een opslag account of van Azure Monitor selecteert, is Azure Monitor voor opslag een consistente ervaring. 
 
@@ -46,9 +46,9 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts (preview)**.
+2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts**.
 
     ![Weer gave meerdere opslag accounts](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Direct toegang tot Azure Monitor voor VM's vanuit een opslag account:
 
 1. Selecteer opslag accounts in het Azure Portal.
 
-2. Kies een opslag account in de lijst. Klik in de sectie bewaking op inzichten (preview-versie).
+2. Kies een opslag account in de lijst. Kies inzichten in het gedeelte bewaking.
 
     ![Overzichts pagina voor de geselecteerde opslag account](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Het **overzicht** van meerdere abonnementen en opslag accounts of **capaciteits*
 
 ![Voor beeld van resultaat van werkmap raster exporteren](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor voor opslag aanpassen (preview-versie)
+## <a name="customize-azure-monitor-for-storage"></a>Azure Monitor voor opslag aanpassen
 
 In deze sectie worden algemene scenario's beschreven voor het bewerken van de werkmap om uw behoeften aan te passen aan uw gegevens analyse:
 
@@ -155,7 +155,7 @@ De aanpassingen worden opgeslagen in een aangepaste werkmap om te voor komen dat
 
 U kunt de volgende stappen uitvoeren om het **overzicht** van meerdere abonnementen en opslag accounts of **capaciteits** werkmappen te configureren voor een bepaald abonnement (en) of opslag account (s) voor elke uitvoering.
 
-1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts (preview)** in het linkerdeel venster.
+1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts** in het linkerdeel venster.
 
 2. Selecteer in de werk blad **overzicht** de optie **bewerken**in de opdracht balk.
 
@@ -176,7 +176,7 @@ In ons voor beeld werken we met de werkmap voor meerdere abonnementen en opslag 
 
 U kunt dezelfde wijzigingen uitvoeren op een van de vooraf gebouwde **fouten**, **prestaties**, **Beschik baarheid**en **capaciteits** werkmappen.
 
-1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts (preview)** in het linkerdeel venster.
+1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts** in het linkerdeel venster.
 
 2. Selecteer **capaciteit** om over te scha kelen naar de capaciteits werkmap en Selecteer vanuit de opdracht balk **bewerken** in de opdracht balk.
 
@@ -210,7 +210,7 @@ In dit voor beeld werken we met de werkmap capaciteit van opslag account en late
 
 1. Selecteer **opslag accounts** in de portal en selecteer vervolgens een opslag account in de lijst.
 
-2. Selecteer **inzichten (preview)** in het linkerdeel venster.
+2. Selecteer **inzichten** in het linkerdeel venster.
 
 3. Selecteer in de werkmap **Beschik baarheid** om over te scha kelen naar de beschikbaarheids werkmap en selecteer vervolgens **bewerken** in de opdracht balk. 
 
@@ -226,13 +226,13 @@ In dit voor beeld werken we met de werkmap capaciteit van opslag account en late
 
 7. Selecteer **Opslaan als** in de opdracht balk om een kopie van de werkmap met uw aanpassingen op te slaan en klik vervolgens op **gereed bewerken** om terug te keren naar de Lees modus.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
-Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor opslag (preview). Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
+Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor opslag. Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Problemen met prestaties, capaciteit of Beschik baarheid oplossen
 
-Raadpleeg de Azure Storage [probleemoplossings richtlijnen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)voor hulp bij het oplossen van problemen met de opslag die u aanduidt met Azure monitor voor opslag (preview).  
+Raadpleeg de Azure Storage [probleemoplossings richtlijnen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)voor hulp bij het oplossen van problemen met de opslag die u identificeert met Azure monitor voor opslag.  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Waarom kan ik alleen 200 opslag accounts zien?
 
@@ -311,8 +311,8 @@ De titel van de werkmap of werkmap stap die is vastgemaakt aan een dash board, b
 
 Als u de naam van een stap in uw opgeslagen werkmap wilt wijzigen, selecteert u bewerken onder de stap en selecteert u vervolgens het vistuig aan de onderkant van de instellingen.
 
-![Selecteer Bewerken onder aan de stap van een werkmap om de instellingen](./media/storage-insights-overview/fqa-edit.png)
-![in instellingen te openen Selecteer onder aan het vistuig de optie aan de onderkant, zodat de stap naam kan worden gewijzigd](./media/storage-insights-overview/fqa-change-name.png)
+![Selecteer Bewerken onder aan de stap van een werkmap om de instellingen ](./media/storage-insights-overview/fqa-edit.png)
+ ![ in instellingen te openen Selecteer onder aan het vistuig de optie aan de onderkant, zodat de stap naam kan worden gewijzigd](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

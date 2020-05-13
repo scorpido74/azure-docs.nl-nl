@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692151"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198887"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Zodra de beperking is gedetecteerd, heeft SQL op aanvraag ingebouwde verwerking 
 
 Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 
-- Conversie van CSV naar Parquet-Parquet is kolom indeling. Omdat het gecomprimeerd is, zijn de bestands grootten kleiner dan CSV-bestanden met dezelfde gegevens. SQL on-demand heeft minder tijd-en opslag aanvragen nodig om het te lezen.
+- Conversie van CSV en JSON naar Parquet-Parquet is kolom indeling. Omdat het gecomprimeerd is, zijn de bestands grootten kleiner dan CSV-of JSON-bestanden met dezelfde gegevens. SQL on-demand heeft minder tijd-en opslag aanvragen nodig om het te lezen.
 - Als een query is gericht op één groot bestand, kunt u deze in meerdere kleinere bestanden splitsen.
 - Bewaar de grootte van het CSV-bestand onder 10 GB.
 - Het is beter om even grote bestanden te hebben voor één OPENROWSET-pad of een externe tabel locatie.
@@ -118,7 +118,14 @@ Controleer voor meer informatie de functies [filename](develop-storage-files-ove
 > [!TIP]
 > Converteer het resultaat van filepath-en file info-functies altijd naar de juiste gegevens typen. Als u teken gegevens typen gebruikt, moet u ervoor zorgen dat de juiste lengte wordt gebruikt.
 
+> [!NOTE]
+> Functies die worden gebruikt voor de partitie-eliminatie, filepath en file info, worden momenteel niet ondersteund voor externe tabellen die niet automatisch worden gemaakt voor elke tabel die is gemaakt in Synapse Spark.
+
 Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partitioneren zodat u de functies voor het optimaliseren van query's die zijn gericht op die bestanden. Bij het uitvoeren van een [query op gepartitioneerde Spark-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch door de query gericht.
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>PARSER_VERSION 2,0 gebruiken voor het uitvoeren van query's in CSV-bestanden
+
+U kunt de geoptimaliseerde prestatie-parser gebruiken bij het uitvoeren van een query op CSV-bestanden. Raadpleeg [PARSER_VERSION](develop-openrowset.md) voor meer informatie.
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS gebruiken om de query prestaties te verbeteren en samen te voegen
 
@@ -127,6 +134,12 @@ Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partit
 U kunt CETAS gebruiken voor het opslaan van veelgebruikte delen van query's, zoals gekoppelde referentie tabellen, naar een nieuwe set bestanden. Vervolgens kunt u deel nemen aan deze afzonderlijke externe tabel in plaats van de algemene samen voegingen in meerdere query's te herhalen.
 
 Omdat CETAS Parquet-bestanden genereert, worden er automatisch statistieken gemaakt wanneer de eerste query de externe tabel bedoelt, wat resulteert in betere prestaties.
+
+## <a name="aad-pass-through-performance"></a>Prestaties van AAD Pass-Through
+
+Met SQL on-Demand kunt u toegang krijgen tot bestanden in de opslag met AAD Pass-Through of SAS-referentie. Mogelijk ondervindt u tragere prestaties met AAD Pass-Through vergeleken met SAS. 
+
+Als u betere prestaties nodig hebt, kunt u SAS-referenties gebruiken om toegang te krijgen tot opslag totdat AAD Pass-Through-prestaties zijn verbeterd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617668"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199555"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -76,15 +77,15 @@ Wanneer u de uitbrei ding installeert, hebt u de map-ID en de beheerders referen
 
 De NPS-server moet kunnen communiceren met de volgende Url's via de poorten 80 en 443.
 
-- https:\//adnotifications.windowsazure.com
+- https: \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https:\//credentials.Azure.com
+- https: \/ /credentials.Azure.com
 
 Daarnaast is connectiviteit met de volgende Url's vereist voor het volt ooien [van de installatie van de adapter met het opgegeven Power shell-script](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- https: \/ /provisioningapi.microsoftonline.com
+- https: \/ /aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -110,7 +111,7 @@ Afhankelijk van de VPN-oplossing die u gebruikt, verschillen de stappen voor het
 Deze stap is mogelijk al voltooid voor uw Tenant, maar het is een goed idee om te controleren of Azure AD Connect uw data bases onlangs hebt gesynchroniseerd.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-2. **Azure Active Directory** > selecteren**Azure AD CONNECT**
+2. **Azure Active Directory**selecteren  >  **Azure AD CONNECT**
 3. Controleer of de synchronisatie status is **ingeschakeld** en of de laatste synchronisatie minder dan een uur geleden is.
 
 Als u een nieuwe ronde van synchronisatie wilt starten, kunt u de instructies in [Azure AD Connect Sync: scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
@@ -172,7 +173,7 @@ Voer de volgende stappen uit als u een bestaande installatie van de NPS-extensie
 
 ### <a name="run-the-powershell-script"></a>Het PowerShell-script uitvoeren
 
-Het installatie programma maakt een Power shell-script op `C:\Program Files\Microsoft\AzureMfa\Config` deze locatie: (waarbij C:\ is het station van de installatie). Met dit Power shell-script worden de volgende acties uitgevoerd telkens wanneer het wordt uitgevoerd:
+Het installatie programma maakt een Power shell-script op deze locatie: `C:\Program Files\Microsoft\AzureMfa\Config` (waarbij C:\ is het station van de installatie). Met dit Power shell-script worden de volgende acties uitgevoerd telkens wanneer het wordt uitgevoerd:
 
 - Maak een zelfondertekend certificaat.
 - Koppel de open bare sleutel van het certificaat aan de Service-Principal in azure AD.
@@ -200,7 +201,7 @@ Herhaal deze stappen voor alle extra NPS-servers die u wilt instellen voor taak 
 Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is gegenereerd, moet u verlopen certificaten verwijderen. Verlopen certificaten kunnen leiden tot problemen met het starten van de NPS-extensie.
 
 > [!NOTE]
-> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN\<=\>TenantID, ou = micro soft NPS extension**zijn. 
+> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \< TenantID \> , ou = micro soft NPS extension**zijn. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Aanvullende stappen Microsoft Azure Government
 
@@ -223,7 +224,7 @@ Voor klanten die Azure Government Cloud gebruiken, zijn de volgende aanvullende 
 
 Met Release-1.0.1.32 van de NPS-extensie wordt het lezen van meerdere certificaten nu ondersteund. Met deze mogelijkheid kunnen Rolling certificaat updates worden vereenvoudigd voordat ze verlopen. Als uw organisatie een eerdere versie van de NPS-extensie uitvoert, moet u een upgrade uitvoeren naar versie 1.0.1.32 of hoger.
 
-Certificaten die zijn gemaakt `AzureMfaNpsExtnConfigSetup.ps1` door het script, zijn twee jaar geldig. IT-organisaties moeten certificaten controleren op verlopen. Certificaten voor de NPS-extensie worden onder persoonlijk in het certificaat archief van de lokale computer geplaatst en worden verleend aan de Tenant-ID die is opgegeven voor het script.
+Certificaten die zijn gemaakt door het `AzureMfaNpsExtnConfigSetup.ps1` script, zijn twee jaar geldig. IT-organisaties moeten certificaten controleren op verlopen. Certificaten voor de NPS-extensie worden onder persoonlijk in het certificaat archief van de lokale computer geplaatst en worden verleend aan de Tenant-ID die is opgegeven voor het script.
 
 Wanneer een certificaat de verval datum nadert, moet er een nieuw certificaat worden gemaakt om het te vervangen.  Dit proces wordt uitgevoerd door de `AzureMfaNpsExtnConfigSetup.ps1` bewerking opnieuw uit te voeren en dezelfde Tenant-id te houden wanneer u hierom wordt gevraagd. Dit proces moet worden herhaald op elke NPS-server in uw omgeving.
 
@@ -267,7 +268,7 @@ Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de 
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hoe kan ik controleren of het certificaat van de client is geïnstalleerd zoals verwacht?
 
-Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de **netwerk service**van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \<\>Tenantid, ou = micro soft NPS-extensie**
+Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de **netwerk service**van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \< tenantid \> , ou = micro soft NPS-extensie**
 
 Zelfondertekende certificaten die zijn gegenereerd door het script *AzureMfaNpsExtnConfigSetup. ps1* , hebben ook een levens duur van twee jaar. Wanneer u controleert of het certificaat is geïnstalleerd, moet u ook controleren of het certificaat niet is verlopen.
 

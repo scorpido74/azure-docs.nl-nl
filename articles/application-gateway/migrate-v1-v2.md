@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312039"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198803"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure-toepassing gateway en Web Application firewall migreren van v1 naar v2
 
@@ -50,18 +50,18 @@ Down load het migratie script van de [PowerShell Gallery](https://www.powershell
 
 Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw lokale Power shell-omgeving:
 
-* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, kunt u `Install-Script` het beste de optie gebruiken om het script uit te voeren.
+* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, kunt u het beste de `Install-Script` optie gebruiken om het script uit te voeren.
 * Als u de Azure AZ-modules wilt blijven gebruiken, is het verstandig om het script te downloaden en het rechtstreeks uit te voeren.
 
-Als u wilt weten of u de Azure AZ-modules hebt `Get-InstalledModule -Name az`geïnstalleerd, voert u uit. Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de `Install-Script` -methode gebruiken.
+Als u wilt weten of u de Azure AZ-modules hebt geïnstalleerd, voert u uit `Get-InstalledModule -Name az` . Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de- `Install-Script` methode gebruiken.
 
 ### <a name="install-using-the-install-script-method"></a>Installeren met behulp van de methode install-script
 
 Als u deze optie wilt gebruiken, moet u de Azure AZ-modules niet op uw computer installeren. Als ze zijn geïnstalleerd, wordt een fout weer gegeven in de volgende opdracht. U kunt de Azure AZ-modules verwijderen of de andere optie gebruiken om het script hand matig te downloaden en uit te voeren.
   
-Voer het script uit met de volgende opdracht:
+Voer het script uit met de volgende opdracht om de nieuwste versie op te halen:
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 Met deze opdracht worden ook de vereiste AZ-modules geïnstalleerd.  
 
@@ -75,7 +75,7 @@ Het script uitvoeren:
 
 1. Gebruiken `Import-Module Az` voor het importeren van de AZ-modules.
 
-1. Voer `Get-Help AzureAppGWMigration.ps1` uit om de vereiste para meters te controleren:
+1. Voer uit `Get-Help AzureAppGWMigration.ps1` om de vereiste para meters te controleren:
 
    ```
    AzureAppGwMigration.ps1
@@ -101,7 +101,7 @@ Het script uitvoeren:
 
    * **subnetAddressRange: [teken reeks]: vereist** -dit is de IP-adres ruimte die u hebt toegewezen (of die u wilt toewijzen) voor een nieuw subnet dat uw nieuwe v2-gateway bevat. Dit moet worden opgegeven in de CIDR-notatie. Bijvoorbeeld: 10.0.0.0/24. U hoeft dit subnet niet vooraf te maken. Het script maakt het voor u als het niet bestaat.
    * **appgwName: [teken reeks]: optioneel**. Dit is een teken reeks die u opgeeft om te gebruiken als de naam voor de nieuwe Standard_v2 of WAF_v2 gateway. Als deze para meter niet wordt opgegeven, wordt de naam van uw bestaande v1-gateway gebruikt met het achtervoegsel *_v2* toegevoegd.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de TLS/SSL-certificaten van uw v1-gateway weer te geven, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van uw TLS/SSL-certificaten die zijn geconfigureerd voor uw Standard v1-of WAF v1-gateway, kunt u een nieuw PSApplicationGatewaySslCertificate `New-AzApplicationGatewaySslCertificate` -object maken via de opdracht die hier wordt weer gegeven. U hebt het pad naar uw TLS/SSL-certificaat bestand en het wacht woord nodig.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de TLS/SSL-certificaten van uw v1-gateway weer te geven, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van uw TLS/SSL-certificaten die zijn geconfigureerd voor uw Standard v1-of WAF v1-gateway, kunt u een nieuw PSApplicationGatewaySslCertificate-object maken via de `New-AzApplicationGatewaySslCertificate` opdracht die hier wordt weer gegeven. U hebt het pad naar uw TLS/SSL-certificaat bestand en het wacht woord nodig.
 
      Deze para meter is alleen optioneel als u geen HTTPS-listeners hebt geconfigureerd voor uw v1-gateway of WAF. Als u ten minste één HTTPS-listener-installatie hebt, moet u deze para meter opgeven.
 
@@ -115,7 +115,7 @@ Het script uitvoeren:
         -Password $password
       ```
 
-     U kunt in het `$mySslCert1, $mySslCert2` vorige voor beeld (door komma's gescheiden) door geven als waarden voor deze para meter in het script.
+     U kunt in `$mySslCert1, $mySslCert2` het vorige voor beeld (door komma's gescheiden) door geven als waarden voor deze para meter in het script.
    * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: optioneel**. Een door komma's gescheiden lijst met PSApplicationGatewayTrustedRootCertificate-objecten die u maakt om de [vertrouwde basis certificaten](ssl-overview.md) te vertegenwoordigen voor verificatie van uw back-end-instanties vanuit uw v2-gateway.
    
       ```azurepowershell
@@ -131,7 +131,7 @@ Het script uitvoeren:
 
 1. Voer het script uit met de juiste para meters. Het kan vijf tot zeven minuten duren voordat de bewerking is voltooid.
 
-    **Voorbeeld**
+    **Hierbij**
 
    ```azurepowershell
    AzureAppGWMigration.ps1 `
@@ -162,7 +162,7 @@ Hier volgen enkele scenario's waarin uw huidige toepassings gateway (standaard) 
 
   * Als u open bare IP-adressen in uw toepassings gateway gebruikt, kunt u een bewaakte, gedetailleerde migratie uitvoeren met behulp van een Traffic Manager profiel om het verkeer (gewogen verkeers routerings methode) incrementeel door te sturen naar de nieuwe v2-gateway.
 
-    U kunt dit doen door de DNS-labels van zowel de v1-als v2-toepassings gateways toe te voegen aan het [Traffic Manager-profiel](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)en uw aangepaste DNS- `www.contoso.com`record te CNAME (bijvoorbeeld) naar het Traffic Manager domein (bijvoorbeeld contoso.trafficmanager.net).
+    U kunt dit doen door de DNS-labels van zowel de v1-als v2-toepassings gateways toe te voegen aan het [Traffic Manager-profiel](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)en uw aangepaste DNS-record te CNAME (bijvoorbeeld `www.contoso.com` ) naar het Traffic Manager domein (bijvoorbeeld contoso.trafficmanager.net).
   * U kunt ook uw aangepaste DNS-domein record bijwerken zodat deze verwijst naar het DNS-label van de nieuwe v2-toepassings gateway. Afhankelijk van de TTL die op uw DNS-record is geconfigureerd, kan het enige tijd duren voordat al uw client verkeer naar uw nieuwe v2-gateway wordt gemigreerd.
 * **Uw clients maken verbinding met het frontend-IP-adres van uw toepassings gateway**.
 
@@ -196,7 +196,7 @@ Nee. Het script biedt momenteel geen ondersteuning voor certificaten in de sleut
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Er zijn problemen opgetreden bij het gebruik van dit script. Hoe kan ik hulp krijgen?
   
-U kunt een e-mail verzenden naar appgwmigrationsup@microsoft.com, een ondersteunings aanvraag openen met ondersteuning voor Azure of beide.
+U kunt contact opnemen met de ondersteuning van Azure in het onderwerp configuratie en installatie/migreren naar v2 SKU. Meer informatie over [ondersteuning voor Azure vindt u hier](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Volgende stappen
 

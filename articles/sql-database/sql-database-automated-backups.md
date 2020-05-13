@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061763"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198559"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -61,6 +61,8 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 SQL Database ondersteunt self-service voor PITR (Point-in-time Restore) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt en differentiële back-ups van data bases worden over het algemeen elke 12 uur gemaakt. Back-ups van transactie logboeken worden over het algemeen elke vijf tot tien minuten gemaakt. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit. 
 
 De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle databaseback-ups wordt bepaald door de SQL Database-service, omdat deze de algehele werkbelasting van het systeem evenredig verdeelt. U kunt de back-uptaken niet wijzigen of uitschakelen.
+
+### <a name="default-backup-retention-period"></a>Standaard retentie periode voor back-ups
 
 PITR-back-ups worden beveiligd met geografisch redundante opslag. Zie [Redundantie in Azure Storage](../storage/common/storage-redundancy.md) voor meer informatie.
 
@@ -156,7 +158,7 @@ Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld
 
 Het Azure SQL Database engineering team test voortdurend het herstellen van automatische database back-ups van data bases die zijn geplaatst in logische servers en Pools voor elastische data bases. (Deze test is niet beschikbaar in een beheerd exemplaar.) Bij herstel naar een bepaald tijdstip ontvangen data bases ook DBCC CHECKDB-integriteits controles.
 
-Een beheerd exemplaar maakt automatische initiële back `CHECKSUM` -ups van data bases `RESTORE` die zijn hersteld met de systeem eigen opdracht of met Azure Data Migration service nadat de migratie is voltooid.
+Een beheerd exemplaar maakt automatische initiële back-ups `CHECKSUM` van data bases die zijn hersteld met de systeem eigen `RESTORE` opdracht of met Azure Data Migration service nadat de migratie is voltooid.
 
 Problemen die tijdens de integriteits controle worden gevonden, zullen leiden tot een waarschuwing voor het technische team. Zie [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)voor meer informatie.
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263372"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199489"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Verificatie met eenmalige e-mail code voor e-mail (preview-versie)
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u eenmalige verificatie via E-mail voor B2B-
 Deze functie is momenteel beschikbaar voor preview (Zie [de preview-versie in het voor beeld](#opting-in-to-the-preview) hieronder). Na de preview-versie wordt deze functie standaard ingeschakeld voor alle tenants.
 
 > [!NOTE]
-> Eenmalige wachtwoord code gebruikers moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat ( `https://myapps.microsoft.com/?tenantid=<tenant id>` bijvoorbeeld `https://portal.azure.com/<tenant id>`of, of in het geval van een geverifieerd domein `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Gast gebruikers kunnen zich momenteel niet aanmelden met eind punten die geen Tenant context hebben. Als u bijvoorbeeld, `https://myapps.microsoft.com`of `https://portal.azure.com`het gemeen schappelijke eind punt van de teams gebruikt, resulteert dit in een fout. 
+> Eenmalige wachtwoord code gebruikers moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>` , of in het geval van een geverifieerd domein `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Gast gebruikers kunnen zich momenteel niet aanmelden met eind punten die geen Tenant context hebben. Als u bijvoorbeeld `https://myapps.microsoft.com` , `https://portal.azure.com` of het gemeen schappelijke eind punt van de teams gebruikt, resulteert dit in een fout. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Gebruikers ervaring voor eenmalige wachtwoord code gast gebruikers
 Met verificatie met eenmalige wachtwoord code kan de gast gebruiker de uitnodiging inwisselen door te klikken op een directe koppeling of door de uitnodiging-e-mail te gebruiken. In beide gevallen geeft een bericht in de browser aan dat een code wordt verzonden naar het e-mail adres van de gast gebruiker. De gast gebruiker selecteert **Verzend code**:
@@ -52,11 +52,11 @@ De gast gebruiker is nu geverifieerd en ze kunnen de gedeelde bron zien of zich 
 Wanneer een gast gebruiker een uitnodiging heeft ingewisseld of een koppeling gebruikt naar een resource die met hen is gedeeld, ontvangt deze een eenmalige wachtwoord code als:
 - Ze hebben geen Azure AD-account 
 - Ze hebben geen Microsoft-account 
-- De uitnodigende Tenant heeft geen Google-Federatie ingesteld @gmail.com voor @googlemail.com en gebruikers 
+- De uitnodigende Tenant heeft geen Google-Federatie ingesteld voor @gmail.com en @googlemail.com gebruikers 
 
 Op het moment van de uitnodiging is er geen indicatie dat de gebruiker die u uitnodigt, gebruikmaakt van verificatie met een eenmalige wachtwoord code. Maar wanneer de gast gebruiker zich aanmeldt, is verificatie met een eenmalige wachtwoord code de terugval methode als er geen andere verificatie methoden kunnen worden gebruikt. 
 
-U kunt**gast gebruikers die** > zich verifiëren met een eenmalige wachtwoord code in de Azure portal weer geven door naar **Azure Active Directory** > te gaan met de**gebruikers van andere organisaties**.
+U kunt gast gebruikers die zich verifiëren met eenmalige wachtwoord codes in de Azure portal weer geven door naar **Azure Active Directory**  >  **gebruikers**te gaan.
 
 ![Scherm afbeelding met een eenmalige wachtwoord code gebruiker met bron waarde van OTP](media/one-time-passcode/otp-users.png)
 
@@ -72,8 +72,7 @@ Het kan enkele minuten duren voordat de opt-in-actie van kracht wordt. Daarna ge
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aanmelden met de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
-3.  Selecteer onder **beheren**de optie **organisatie relaties**.
-4.  **Instellingen**selecteren.
+3.  Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aanmelden met Power shell
@@ -139,8 +138,7 @@ Het kan enkele minuten duren voordat de opt-out-actie van kracht wordt. Als u de
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>De preview-versie uitschakelen met behulp van de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
-3.  Selecteer onder **beheren**de optie **organisatie relaties**.
-4.  **Instellingen**selecteren.
+3.  Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>De preview-versie uitschakelen met Power shell

@@ -1,5 +1,5 @@
 ---
-title: Architectuur van SD-WAN-connectiviteit
+title: SD-WAN-connectiviteitsarchitectuur
 titleSuffix: Azure Virtual WAN
 description: Meer informatie over het verbinden van een privé-SD-WAN met Azure Virtual WAN
 services: virtual-wan
@@ -8,16 +8,16 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 15e44b9c048f167935fe8660228581e5bac0f43d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 34b2282421b9c95ad99ad040cb11847a30d3b52c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006259"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199984"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architectuur van de SD-WAN-verbinding met Azure Virtual WAN
 
-Azure Virtual WAN is een netwerk service die veel Cloud connectiviteits-en beveiligings Services met één operationele interface samen brengt. Deze services omvatten onder andere vertakking (via site-naar-site-VPN), externe gebruiker (punt-naar-site-VPN), persoonlijke (ExpressRoute)-connectiviteit en intra-Cloud transitieve connectiviteit voor Vnets, VPN en ExpressRoute interconnectiviteit, route ring, Azure Firewall en versleuteling voor persoonlijke connectiviteit.
+Azure Virtual WAN is een netwerk service die veel Cloud connectiviteits-en beveiligings Services met één operationele interface samen brengt. Deze services omvatten onder andere vertakking (via site-naar-site-VPN), externe gebruiker (punt-naar-site-VPN), persoonlijke (ExpressRoute) verbinding, intra-Cloud transitieve connectiviteit voor Vnets, VPN en ExpressRoute interconnectiviteit, route ring, Azure Firewall en versleuteling voor persoonlijke connectiviteit.
 
 Hoewel Azure Virtual WAN zelf een door software gedefinieerde WAN (SD-WAN) is, is het ook ontworpen om naadloze verbinding mogelijk te maken met de op premises gebaseerde SD-WAN-technologieën en-services. Veel van deze services worden aangeboden door ons [virtuele WAN](virtual-wan-locations-partners.md) -ecosysteem en Azure Network Managed Services partners [(msp's)](../networking/networking-partners-msp.md). Ondernemingen die hun particuliere WAN transformeren naar SD-WAN, hebben opties bij het interkoppelen van hun particuliere SD-WAN met Azure Virtual WAN. Ondernemingen kunnen kiezen uit de volgende opties:
 
@@ -39,7 +39,7 @@ Het SD-WAN CPE blijft de plek waar het verkeer wordt geoptimaliseerd en het sele
 
 In dit model worden bepaalde eigen verkeer optimalisaties op basis van real-time verkeers kenmerken mogelijk niet ondersteund, omdat de verbinding met Virtual WAN via IPsec verloopt en het IPsec VPN wordt beëindigd op de virtuele WAN-VPN-gateway. Dynamische paden kunnen bijvoorbeeld worden geselecteerd bij het vertakkings verschil als gevolg van het vertakkings apparaat waarbij verschillende netwerk pakket gegevens worden uitgewisseld met een ander SD-WAN-knoop punt, waardoor de beste koppeling kan worden gebruikt voor verschillende verkeer dat dynamisch wordt geprioriteerd op het filiaal. Deze functie kan nuttig zijn in gebieden waar de optimalisatie van de laatste mijl (vertakking naar de dichtstbijzijnde micro soft-POP) is vereist.
 
-Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit is een op beleid gebaseerde Padselectie op meerdere ISP-koppelingen van het vertakkings CPE tot virtuele WAN-gateways. Met Virtual WAN kunt u meerdere koppelingen (paden) naar dezelfde SD-WAN-vertakking CPE instellen, waarbij elke koppeling wordt beëindigd op een andere open bare IP-interface van het SD-WAN-CPE. Leveranciers van SD-WANs kunnen profiteren van deze functie om het meest optimale pad naar Azure te selecteren op basis van het verkeers beleid dat specifiek is voor deze paden.
+Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit is een op beleid gebaseerde Padselectie op meerdere ISP-koppelingen van het vertakkings CPE tot virtuele WAN-gateways. Met Virtual WAN kunt u meerdere koppelingen (paden) van dezelfde SD-WAN-vertakking CPE instellen. elke koppeling vertegenwoordigt een dubbele tunnel verbinding van een uniek openbaar IP-adres van het SD-WAN-netwerk tot twee verschillende exemplaren van Azure Virtual WAN VPN gateway. Leveranciers van SD-WAN kunnen het meest optimale pad naar Azure implementeren op basis van het Traffic-beleid dat is ingesteld door hun beleids engine op de CPE-koppelingen.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model voor indirecte Interconnect
 

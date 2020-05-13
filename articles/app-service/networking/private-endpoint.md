@@ -4,17 +4,17 @@ description: Privé verbinden met een web-app met behulp van een persoonlijk Azu
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756272"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198825"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -28,7 +28,7 @@ Als u een persoonlijk eind punt gebruikt voor uw web-app, kunt u het volgende do
 - Beveilig uw web-app door het persoonlijke eind punt te configureren, waardoor de open bare bloot stelling wordt geëlimineerd.
 - Maak veilig verbinding met de web-app vanuit on-premises netwerken die verbinding maken met het VNet met behulp van een VPN-of ExpressRoute privé-peering.
 
-Als u alleen een beveiligde verbinding tussen uw VNet en uw web-app nodig hebt, is een service-eind punt de eenvoudigste oplossing. Als u de web-app ook van on-premises moet bereiken via een Azure-gateway, is een regionaal peered VNet of een globaal peered VNet, het persoonlijke eind punt is de oplossing.  
+Als u alleen een beveiligde verbinding tussen uw VNet en uw web-app nodig hebt, is een service-eind punt de eenvoudigste oplossing. Als u de web-app ook van on-premises moet bereiken via een Azure-gateway, een regionaal gepeerd VNet of een globaal peered VNet, is de oplossing.  
 
 Zie [service-eind punten][serviceendpoint]voor meer informatie.
 
@@ -63,13 +63,21 @@ In de web-HTTP-logboeken van uw web-app vindt u het bron-IP-adres van de client.
 ## <a name="dns"></a>DNS
 
 Omdat deze functie in preview is, wordt de DNS-vermelding niet gewijzigd tijdens de preview-versie. U moet de DNS-vermelding in uw privé-DNS-server of Azure DNS privé zone zelf beheren.
-Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [aangepaste DNS-validatie][dnsvalidation] voor meer informatie.
+Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [Custom DNS Validation][dnsvalidation](Engelstalig) voor meer informatie.
+
+Als u de kudu-console wilt gebruiken, of kudu REST API (bijvoorbeeld implementatie met Azure DevOps self-hosted agenten), moet u twee records maken in uw Azure DNS persoonlijke zone of uw aangepaste DNS-server. 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
 
 ## <a name="pricing"></a>Prijzen
 
 Zie [prijzen voor persoonlijke Azure-koppelingen][pricing]voor prijs informatie.
 
 ## <a name="limitations"></a>Beperkingen
+
+Wanneer u de functie Azure gebruikt in een elastisch Premium-abonnement met een privé-eind punt, moet u directe toegang tot het netwerk hebben of u een HTTP 403-fout ontvangen om de functies in azure Web Portal uit te voeren of uit te voeren. Met andere woorden, uw browser moet het persoonlijke eind punt kunnen bereiken om de functie uit te voeren vanuit de Azure-webportal. 
+
+Tijdens de preview-versie wordt alleen de productie sleuf weer gegeven achter het persoonlijke eind punt, kunnen andere sleuven alleen worden bereikt door een openbaar eind punt.
 
 De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden regel matig verbeterd. Raadpleeg [dit artikel][pllimitations] voor actuele informatie over beperkingen.
 

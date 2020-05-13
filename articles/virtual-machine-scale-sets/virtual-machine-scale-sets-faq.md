@@ -2,18 +2,19 @@
 title: Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 description: Krijg antwoorden op veelgestelde vragen over schaal sets voor virtuele machines in Azure.
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: faq
+ms.date: 05/24/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611395"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200166"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 
@@ -233,7 +234,7 @@ Zie [de sjabloon 101-VM-Sshkey github Quick](https://github.com/Azure/azure-quic
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wanneer ik voer `Update-AzVmss` na het toevoegen van meer dan één certificaat uit dezelfde sleutel kluis, wordt het volgende bericht weer gegeven:
 
->Update-AzVmss: List Secret bevat herhaalde exemplaren van\<de/Subscriptions/mijn abonnement-id>/ResourceGroups/Internal-RG-dev/providers/Microsoft.keyvault/vaults/Internal-keyvault-dev, wat niet is toegestaan.
+>Update-AzVmss: List Secret bevat herhaalde exemplaren van \< de/Subscriptions/mijn abonnement-id>/ResourceGroups/Internal-RG-dev/providers/Microsoft.keyvault/vaults/Internal-keyvault-dev, wat niet is toegestaan.
 
 Dit kan gebeuren als u probeert dezelfde kluis opnieuw toe te voegen in plaats van een nieuw kluis certificaat te gebruiken voor de bestaande bron kluis. De `Add-AzVmssSecret` opdracht werkt niet goed als u extra geheimen toevoegt.
 
@@ -251,7 +252,7 @@ Nieuwe Vm's hebben niet het oude certificaat. Vm's met het certificaat en die al
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Kan ik certificaten pushen naar de schaalset voor virtuele machines zonder het wacht woord op te geven wanneer het certificaat zich in het archief van de geheime sleutel bevindt?
 
-U hoeft geen wacht woorden in scripts vast te maken. U kunt wacht woorden dynamisch ophalen met de machtigingen die u gebruikt om het implementatie script uit te voeren. Als u een script hebt waarmee een certificaat uit de sleutel kluis van het geheime archief wordt verplaatst, `get certificate` wordt met de opdracht voor een geheim archief ook het wacht woord van het pfx-bestand uitgevoerd.
+U hoeft geen wacht woorden in scripts vast te maken. U kunt wacht woorden dynamisch ophalen met de machtigingen die u gebruikt om het implementatie script uit te voeren. Als u een script hebt waarmee een certificaat uit de sleutel kluis van het geheime archief wordt verplaatst, wordt met de opdracht voor een geheim archief `get certificate` ook het wacht woord van het pfx-bestand uitgevoerd.
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>Hoe werkt de eigenschap geheimen van virtualMachineProfile. osProfile voor een schaalset voor virtuele machines? Waarom heb ik de waarde sourceVault nodig wanneer ik de absolute URI voor een certificaat moet opgeven met behulp van de eigenschap certificateUrl?
 
@@ -301,7 +302,7 @@ Als u een virtuele machine maakt en vervolgens uw geheim in de sleutel kluis bij
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>Mijn team werkt met verschillende certificaten die naar ons worden gedistribueerd als. CER-open bare sleutels. Wat is de aanbevolen benadering voor het implementeren van deze certificaten voor een schaalset voor virtuele machines?
 
-Als u open bare CER-sleutels wilt implementeren in een schaalset voor virtuele machines, kunt u een. pfx-bestand genereren dat alleen CER-bestanden bevat. Gebruik `X509ContentType = Pfx`hiervoor. Laad bijvoorbeeld het CER-bestand als een x509Certificate2-object in C# of Power shell en roep vervolgens de methode aan.
+Als u open bare CER-sleutels wilt implementeren in een schaalset voor virtuele machines, kunt u een. pfx-bestand genereren dat alleen CER-bestanden bevat. Gebruik hiervoor `X509ContentType = Pfx` . Laad bijvoorbeeld het CER-bestand als een x509Certificate2-object in C# of Power shell en roep vervolgens de methode aan.
 
 Zie [X509Certificate. export Method (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))voor meer informatie.
 
@@ -359,7 +360,7 @@ $vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
-U kunt de waarde van de Extensienaam `$vmss`vinden in.
+U kunt de waarde van de Extensienaam vinden in `$vmss` .
 
 ### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Is er een voor beeld van een sjabloon voor virtuele-machine schaal sets die kan worden geïntegreerd met Azure Monitor-logboeken?
 
@@ -638,7 +639,7 @@ Als u de schaalset van de virtuele machine wilt bijwerken naar een nieuwe instal
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kan ik de bewerking voor het opnieuw instellen van het image gebruiken om een virtuele machine opnieuw in te stellen zonder de installatie kopie te wijzigen? (Dat wil zeggen, ik wil een virtuele machine opnieuw instellen op de fabrieks instellingen in plaats van naar een nieuwe installatie kopie.)
 
-Ja, u kunt de bewerking opnieuw instellen gebruiken om een virtuele machine opnieuw in te stellen zonder de installatie kopie te wijzigen. Als uw virtuele-machine schaalset echter verwijst naar een platform installatie `version = latest`kopie met, kan uw VM worden bijgewerkt naar een latere installatie kopie `reimage`van het besturings systeem wanneer u aanroept.
+Ja, u kunt de bewerking opnieuw instellen gebruiken om een virtuele machine opnieuw in te stellen zonder de installatie kopie te wijzigen. Als uw virtuele-machine schaalset echter verwijst naar een platform installatie kopie met `version = latest` , kan uw VM worden bijgewerkt naar een latere installatie kopie van het besturings systeem wanneer u aanroept `reimage` .
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Is het mogelijk om schaal sets te integreren met Azure Monitor-logboeken?
 
@@ -683,13 +684,13 @@ Wanneer er een nieuwe virtuele machine wordt gemaakt, worden in de eigenschap In
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Hoe kan ik informatie over de eigenschap voor elke VM ophalen zonder meerdere aanroepen uit te voeren? Hoe krijg ik bijvoorbeeld het fout domein voor elk van de 100 Vm's in mijn schaalset voor virtuele machines?
 
-Als u informatie over de eigenschappen voor elke VM wilt ophalen zonder meerdere aanroepen `ListVMInstanceViews` te maken, kunt `GET` u aanroepen door een rest API te doen op de volgende bron-URI:
+Als u informatie over de eigenschappen voor elke VM wilt ophalen zonder meerdere aanroepen te maken, kunt u aanroepen `ListVMInstanceViews` door een rest API te doen `GET` op de volgende bron-URI:
 
 /Subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines? $expand = instanceView&$select = instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Kan ik verschillende extensie argumenten door geven aan verschillende Vm's in een schaalset voor virtuele machines?
 
-Nee, u kunt geen andere extensie argumenten door geven aan verschillende virtuele machines in een schaalset met virtuele machines. Uitbrei dingen kunnen echter wel reageren op basis van de unieke eigenschappen van de virtuele machine waarop ze worden uitgevoerd, zoals op de computer naam. Uitbrei dingen kunnen ook meta gegevens http://169.254.169.254 van exemplaren opvragen voor meer informatie over de virtuele machine.
+Nee, u kunt geen andere extensie argumenten door geven aan verschillende virtuele machines in een schaalset met virtuele machines. Uitbrei dingen kunnen echter wel reageren op basis van de unieke eigenschappen van de virtuele machine waarop ze worden uitgevoerd, zoals op de computer naam. Uitbrei dingen kunnen ook meta gegevens van exemplaren opvragen voor http://169.254.169.254 meer informatie over de virtuele machine.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Waarom zijn er hiaten tussen de VM-computer namen en VM-Id's van de virtuele-machine schaal sets? Bijvoorbeeld: 0, 1, 3...
 
@@ -699,12 +700,12 @@ U kunt deze eigenschap instellen op **Onwaar**. Voor kleine virtuele-machine sch
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Wat is het verschil tussen het verwijderen van een virtuele machine in een VM-schaalset en het ongedaan toewijzen van de toewijzing van de VM? Wanneer moet ik een van de andere kiezen?
 
-Het belangrijkste verschil tussen het verwijderen van een virtuele machine in een VM-schaalset en het ongedaan `deallocate` maken van de toewijzing van de VM is dat de virtuele harde schijven (vhd's) niet worden verwijderd. Er zijn opslag kosten gekoppeld aan het `stop deallocate`uitvoeren van. U kunt een van de volgende redenen gebruiken:
+Het belangrijkste verschil tussen het verwijderen van een virtuele machine in een VM-schaalset en het ongedaan maken van de toewijzing van de VM is dat de `deallocate` virtuele harde schijven (vhd's) niet worden verwijderd. Er zijn opslag kosten gekoppeld aan het uitvoeren van `stop deallocate` . U kunt een van de volgende redenen gebruiken:
 
 - U wilt stoppen met het betalen van reken kosten, maar u wilt de schijf status van de Vm's blijven gebruiken.
 - U wilt een serie Vm's sneller starten dan het schalen van een schaalset voor virtuele machines.
   - Met betrekking tot dit scenario hebt u mogelijk uw eigen engine voor automatisch schalen gemaakt en wilt u een snelle end-to-end-schaal.
-- U hebt een schaalset voor virtuele machines die onevenredig wordt verdeeld over fout domeinen of update domeinen. Dit kan zijn omdat u een selectief verwijderde Vm's hebt gemaakt, of omdat de virtuele machines zijn verwijderd na de inrichting. Wordt `stop deallocate` uitgevoerd, `start` gevolgd door de schaalset van de virtuele machine, verdeelt de vm's gelijkmatig over fout domeinen of update domeinen.
+- U hebt een schaalset voor virtuele machines die onevenredig wordt verdeeld over fout domeinen of update domeinen. Dit kan zijn omdat u een selectief verwijderde Vm's hebt gemaakt, of omdat de virtuele machines zijn verwijderd na de inrichting. Wordt uitgevoerd `stop deallocate` , gevolgd door `start` de schaalset van de virtuele machine, verdeelt de vm's gelijkmatig over fout domeinen of update domeinen.
 
 ### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Hoe kan ik een moment opname van een virtuele-machine Scale set-exemplaar maken?
 Maak een moment opname van een exemplaar van een virtuele-machine schaalset.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272903"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199437"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen
 
@@ -36,11 +36,9 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 ### <a name="to-configure-external-collaboration-settings"></a>Externe samenwerkings instellingen configureren:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Tenant beheerder.
-2. Selecteer **Azure Active Directory** >  > **gebruikers****instellingen**.
-3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
-   > [!NOTE]
-   > De **instellingen voor externe samen werking** zijn ook beschikbaar op de pagina relaties van de **organisatie** . Ga in azure Active Directory naar de**instellingen**van **organisatie relaties** > onder **beheren**.
-4. Kies op de pagina **instellingen voor externe samen werking** de beleids regels die u wilt inschakelen.
+2. Selecteer **Azure Active Directory**.
+3. Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
+6. Kies op de pagina **instellingen voor externe samen werking** de beleids regels die u wilt inschakelen.
 
    ![Instellingen voor externe samenwerking](./media/delegate-invitations/control-who-to-invite.png)
 

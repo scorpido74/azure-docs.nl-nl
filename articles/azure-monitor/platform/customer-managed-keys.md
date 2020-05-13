@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/07/2020
-ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2838051d8e75ffbe3b7ecc9fbc655f24b57199e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198683"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -20,10 +20,6 @@ Dit artikel bevat achtergrond informatie en stappen voor het configureren van do
 U wordt aangeraden [beperkingen en beperkingen](#limitations-and-constraints) hieronder vóór de configuratie te bekijken.
 
 ## <a name="disclaimers"></a>Disclaimers
-
-- Azure Monitor CMK is een functie voor vroegtijdige toegang en ingeschakeld voor geregistreerde abonnementen.
-
-- De CMK-implementatie die in dit artikel wordt beschreven, wordt geleverd in de productie kwaliteit en wordt ondersteund als dusdanig, hoewel het een vroege Access-functie is.
 
 - De CMK-functionaliteit wordt geleverd op een toegewezen Log Analytics cluster, een fysiek cluster en een gegevens archief dat geschikt is voor klanten die 1 TB per dag of langer verzenden
 
@@ -42,7 +38,7 @@ Opgenomen gegevens in de afgelopen 14 dagen worden ook opgeslagen in een hot-cac
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hoe CMK werkt in Azure Monitor
 
-Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen.Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource. De identiteit van het toegewezen Log Analytics cluster wordt ondersteund op het cluster niveau en dit bepaalt dat de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster. Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster* resource wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten. Dit concept houdt de identiteit bij tussen het toegewezen Log Analytics cluster en de Log Analytics *cluster* resource, terwijl de gegevens van gekoppelde werk ruimten worden beveiligd met uw Key Vault sleutel. De toegewezen Log Analytics cluster opslag maakt gebruik van de beheerde\'identiteit die aan de *cluster* bron is gekoppeld om uw Azure Key Vault via Azure Active Directory te verifiëren en te openen.
+Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen.Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource. De identiteit van het toegewezen Log Analytics cluster wordt ondersteund op het cluster niveau en dit bepaalt dat de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster. Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster* resource wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten. Dit concept houdt de identiteit bij tussen het toegewezen Log Analytics cluster en de Log Analytics *cluster* resource, terwijl de gegevens van gekoppelde werk ruimten worden beveiligd met uw Key Vault sleutel. De toegewezen Log Analytics cluster opslag maakt gebruik van de beheerde identiteit die \' aan de *cluster* bron is gekoppeld om uw Azure Key Vault via Azure Active Directory te verifiëren en te openen.
 
 ![Overzicht van CMK](media/customer-managed-keys/cmk-overview-8bit.png)
 1.    Key Vault van de klant.
@@ -72,7 +68,7 @@ De volgende regels zijn van toepassing:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-inrichtings procedure
 
-1. Abonnements white list: dit is vereist voor deze vroege Access-functie
+1. Abonnements white list: om ervoor te zorgen dat we de vereiste capaciteit hebben in uw regio voor toegewezen Log Analytics cluster, moeten we uw abonnement vooraf verifiëren en white list
 2. Azure Key Vault maken en de sleutel opslaan
 3. Een *cluster* bron maken
 5. Machtigingen verlenen aan uw Key Vault
@@ -173,7 +169,7 @@ Deze instellingen zijn beschikbaar via CLI en Power shell:
 
 Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw Log Analytics-werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn white list, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden.
 
-U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 LAIngestionRate@microsoft.comGB per dag, neemt u contact met ons op. [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
     
 De eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* bron en de bijbehorende gegevens:
 - *cluster* (standaard): de facturering wordt toegeschreven aan het abonnement dat als host fungeert voor uw *cluster* bron
@@ -420,16 +416,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>Intrekken van CMK (KEK)
 
-U kunt uw toegang tot uw gegevens intrekken door de sleutel uit te scha kelen of het *cluster* bron toegangs beleid in uw Key Vault te verwijderen. Met Azure Monitor opslag worden de wijzigingen in de sleutel machtigingen binnen een uur altijd in acht genomen, normaal gesp roken binnenkort en opslag wordt niet meer beschikbaar. Alle gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster* bron, worden verwijderd en mislukken van query's. Voorheen opgenomen gegevens blijven ontoegankelijk in Azure Monitor opslag, zolang u uw *cluster* bron niet verwijdert en uw werk ruimten niet worden verwijderd. Ontoegankelijke gegevens zijn onderworpen aan het Bewaar beleid voor gegevens en worden verwijderd wanneer de Bewaar termijn wordt bereikt. 
+U kunt de toegang tot gegevens intrekken door de sleutel uit te scha kelen of door het toegangs beleid van het *cluster* bron in uw Key Vault te verwijderen. De toegewezen Log Analytics cluster opslag respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur of eerder, en opslag wordt niet meer beschikbaar. Alle gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster* bron, worden verwijderd en mislukken van query's. Voorheen opgenomen gegevens blijven ontoegankelijk in de opslag, omdat uw *cluster* bron en uw werk ruimten niet worden verwijderd. Ontoegankelijke gegevens zijn onderworpen aan het Bewaar beleid voor gegevens en worden verwijderd wanneer de Bewaar termijn wordt bereikt. 
 
-Opgenomen gegevens in de afgelopen 14 dagen worden ook opgeslagen in een hot-cache (met SSD-back-ups) voor een efficiënte bewerking van query-engine. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar worden verwijderd bij het intrekken van sleutels en worden ook ontoegankelijk.
+Opgenomen gegevens in de afgelopen 14 dagen worden ook opgeslagen in een hot-cache (met SSD-back-ups) voor een efficiënte bewerking van query-engine. Dit wordt verwijderd bij het verwijderen van de sleutel en wordt ook niet toegankelijk.
 
-Met opslag worden uw Key Vault periodiek gecontroleerd om te proberen de versleutelings sleutel op te slaan en eenmaal te zijn geopend, gegevens opname en query's te hervatten binnen 30 minuten.
+Met opslag worden uw Key Vault periodiek gecontroleerd om te proberen om de versleutelings sleutel op te slaan en na het openen van de gegevens en het hervatten van query's binnen 30 minuten.
 
 ## <a name="cmk-kek-rotation"></a>CMK (KEK)
 
-Voor de draaiing van CMK is een expliciete update van de *cluster* bron vereist met de nieuwe sleutel versie in azure Key Vault. Volg de instructies in *cluster* resource bijwerken met sleutel-id details om Azure monitor bij te werken met de nieuwe sleutel versie. Als u de sleutel versie bijwerkt in Key Vault en de nieuwe sleutel-id-details niet bijwerkt in de *cluster* bron, blijft Azure monitor opslag uw vorige sleutel gebruiken.
-Al uw gegevens zijn toegankelijk na de bewerking voor het wijzigen van de sleutel, inclusief gegevens die zijn opgenomen vóór de draaiing en daarna, omdat alle gegevens worden versleuteld door de versleutelings sleutel van het account (AEK) terwijl AEK nu wordt versleuteld door de nieuwe Key Encryption Key (KEK)-versie.
+Voor de draaiing van CMK is een expliciete update van de *cluster* bron vereist met de nieuwe sleutel versie in azure Key Vault. Volg de instructies in de stap *cluster* resource bijwerken met sleutel-id Details. Als u de nieuwe sleutel-id-Details in de *cluster* bron niet bijwerkt, blijft de toegewezen log Analytics cluster opslag de vorige sleutel gebruiken.
+
+Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sleutel, inclusief gegevens die zijn opgenomen vóór de draaiing en daarna, omdat gegevens altijd zijn versleuteld met de versleutelings sleutel van het account (AEK) terwijl AEK nu wordt versleuteld met uw nieuwe Key Encryption Key (KEK)-versie in Key Vault.
 
 ## <a name="limitations-and-constraints"></a>Beperkingen en beperkingen
 
@@ -575,8 +572,7 @@ Al uw gegevens zijn toegankelijk na de bewerking voor het wijzigen van de sleute
 
 - **Uw *cluster* bron en uw gegevens herstellen** 
   
-  Een *cluster* bron die in de afgelopen 14 dagen is verwijderd, is in de status voorlopig verwijderen en kan worden hersteld. Dit wordt op dit moment hand matig uitgevoerd door de product groep. Gebruik uw micro soft-kanaal voor herstel aanvragen.
-
+  Een *cluster* bron die in de afgelopen 14 dagen is verwijderd, is in de status voorlopig verwijderen en kan worden hersteld met de bijbehorende gegevens. Aangezien alle werk ruimten die zijn gekoppeld aan de *cluster* bron bij het verwijderen, moeten u uw werk ruimten na het herstel voor CMK-versleuteling opnieuw koppelen. De herstel bewerking wordt momenteel hand matig uitgevoerd door de product groep. Gebruik uw micro soft-kanaal voor herstel aanvragen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 - Gedrag met Key Vault Beschik baarheid
@@ -595,3 +591,10 @@ Al uw gegevens zijn toegankelijk na de bewerking voor het wijzigen van de sleute
 - Als er een conflict fout optreedt tijdens het maken van een *cluster* bron, is het mogelijk dat u de *cluster* resource in de afgelopen 14 dagen hebt verwijderd en een tijdelijke periode hebt om te verwijderen. De *cluster* bron naam blijft gereserveerd tijdens de tijdelijke periode en u kunt geen nieuw cluster met die naam maken. De naam wordt vrijgegeven na de periode voor voorlopig verwijderen wanneer de *cluster* bron permanent wordt verwijderd.
 
 - Als u de *cluster* bron bijwerkt terwijl er een bewerking wordt uitgevoerd, mislukt de bewerking.
+
+- Als u de *cluster* bron niet implementeert, controleert u of uw Azure Key Vault, *cluster*   bron en gekoppelde log Analytics-werk ruimten zich in dezelfde regio bevinden. De kan zich in verschillende abonnementen bevindt.
+
+- Als u de sleutel versie bijwerkt in Key Vault en de nieuwe sleutel-id-details niet bijwerkt in de *cluster* bron, blijft de log Analytics cluster uw vorige sleutel gebruiken en worden uw gegevens niet meer toegankelijk. De nieuwe sleutel-id-gegevens in de *cluster* bron bijwerken om gegevens opname en de mogelijkheid om gegevens op te vragen, te hervatten.
+
+- Gebruik uw contact personen in micro soft voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.
+

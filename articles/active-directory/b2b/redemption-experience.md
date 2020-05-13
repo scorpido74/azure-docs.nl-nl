@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160734"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199492"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inwisseling uitnodiging Azure Active Directory B2B-samen werking
 
@@ -42,9 +42,9 @@ Als alternatief voor de uitnodigings-e-mail kunt u een gast een rechtstreekse ko
 
 > [!IMPORTANT]
 > De directe koppeling moet Tenant-specifiek zijn. Met andere woorden, het moet een Tenant-ID of geverifieerd domein bevatten zodat de gast kan worden geverifieerd in uw Tenant, waar de gedeelde app zich bevindt. Een gemeen schappelijke URL https://myapps.microsoft.com kan niet worden gebruikt voor een gast omdat deze wordt omgeleid naar hun eigen Tenant voor authenticatie. Hier volgen enkele voor beelden van directe koppelingen met de context van de Tenant:
- > - Toegangs venster voor apps https://myapps.microsoft.com/?tenantid=&lt:; Tenant-id&gt; 
- > - Toegangs paneel voor apps voor een geverifieerd domein https://myapps.microsoft.com/&lt:; geverifieerd domein&gt;
- > - Azure Portal: https://portal.azure.com/&lt; Tenant-id&gt;
+ > - Toegangs venster voor apps: https://myapps.microsoft.com/?tenantid=&lt ; Tenant-id&gt; 
+ > - Toegangs paneel voor apps voor een geverifieerd domein: https://myapps.microsoft.com/&lt ; geverifieerd domein&gt;
+ > - Azure Portal: https://portal.azure.com/&lt ; Tenant-id&gt;
  > - Afzonderlijke app: zie een [koppeling voor direct aanmelden](../manage-apps/end-user-experiences.md#direct-sign-on-links) gebruiken
 
 Er zijn enkele gevallen waarin de e-mail uitnodiging wordt aanbevolen via een directe koppeling. Als deze speciale gevallen belang rijk zijn voor uw organisatie, raden we u aan gebruikers uit te nodigen met behulp van methoden die nog steeds de uitnodigings-e-mail verzenden:
@@ -99,7 +99,7 @@ Wanneer een gast zich voor de eerste keer aanmeldt voor toegang tot resources in
 
    ![Scherm opname met nieuwe gebruiks voorwaarden](media/redemption-experience/terms-of-use-accept.png) 
 
-   U kunt de [gebruiks voorwaarden configureren voor](../governance/active-directory-tou.md) het **beheren** > van**organisatie relaties** > **Gebruiksvoorwaarden**.
+   U kunt [gebruiks voorwaarden](../governance/active-directory-tou.md) configureren in **organisatie relaties** (of **externe identiteiten**) > **Gebruiksvoorwaarden**.
 
 3. Tenzij anders vermeld, wordt de gast omgeleid naar het toegangs venster voor apps, met daarin de toepassingen die de gast kan openen.
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926983"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199442"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "82926983"
 In dit artikel wordt beschreven hoe u directe Federatie kunt instellen met een andere organisatie voor B2B-samen werking. U kunt directe Federatie instellen met elke organisatie waarvan de ID-provider (IdP) ondersteuning biedt voor het SAML 2,0-of WS-inschakel protocol.
 Wanneer u directe Federatie instelt met de IdP van een partner, kunnen nieuwe gast gebruikers uit dat domein hun eigen door IdP beheerd organisatie account gebruiken om zich aan te melden bij uw Azure AD-Tenant en samen met u aan de slag te gaan. De gast gebruiker hoeft geen afzonderlijk Azure AD-account te maken.
 > [!NOTE]
-> Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp van een koppeling die de Tenant context `https://myapps.microsoft.com/?tenantid=<tenant id>` bevat `https://portal.azure.com/<tenant id>`(bijvoorbeeld of, of in het geval van een `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`geverifieerd domein). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als bijvoorbeeld, of `https://myapps.microsoft.com` `https://teams.microsoft.com` wordt `https://portal.azure.com`gebruikt, resulteert dit in een fout.
+> Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>` , of in het geval van een geverifieerd domein `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als bijvoorbeeld, `https://myapps.microsoft.com` `https://portal.azure.com` of wordt gebruikt, `https://teams.microsoft.com` resulteert dit in een fout.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wanneer is een gast gebruiker geverifieerd met directe Federatie?
 Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Enkele voorbeelden:
@@ -61,7 +61,7 @@ Directe Federatie is alleen toegestaan voor beleids regels waarbij het domein va
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Wanneer u bijvoorbeeld directe Federatie voor **fabrikam.com**instelt, wordt de verificatie-URL `https://fabrikam.com/adfs` door gegeven aan de validatie. Er wordt bijvoorbeeld `https://sts.fabrikam.com/adfs`ook een host in hetzelfde domein door gegeven. De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
+Wanneer u bijvoorbeeld directe Federatie voor **fabrikam.com**instelt, wordt de verificatie-URL `https://fabrikam.com/adfs` door gegeven aan de validatie. Er wordt bijvoorbeeld ook een host in hetzelfde domein door gegeven `https://sts.fabrikam.com/adfs` . De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
 
 ### <a name="signing-certificate-renewal"></a>Certificaat vernieuwing ondertekenen
 Als u de meta gegevens-URL in de instellingen van de identiteits provider opgeeft, wordt het handtekening certificaat door Azure AD automatisch vernieuwd wanneer het verloopt. Als het certificaat echter om een of andere reden vóór de verloop tijd wordt geroteerd, of als u geen meta gegevens-URL opgeeft, kan Azure AD deze niet vernieuwen. In dit geval moet u het handtekening certificaat hand matig bijwerken.
@@ -146,8 +146,8 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Direct Federatie configureren in de Azure AD-Portal
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**.
-3. Selecteer **id-providers**en selecteer vervolgens **nieuwe SAML/WS-IDP**.
+2. Selecteer **organisatie relaties**  >  **alle id-providers** (of **externe identiteiten**van  >  **alle id-providers**).
+3. Selecteer en selecteer vervolgens **nieuwe SAML/WS-IDP**.
 
     ![Scherm afbeelding met de knop voor het toevoegen van een nieuwe SAML-of WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -174,7 +174,7 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
    Connect-AzureAD
    ```
 1. Meld u bij de aanmeldings prompt aan met het Managed Global Administrator-account. 
-2. Voer de volgende opdrachten uit en vervang de waarden uit het bestand met federatieve meta gegevens. Voor AD FS server en Okta is het Federatie bestand federationmetadata. XML, bijvoorbeeld: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
+2. Voer de volgende opdrachten uit en vervang de waarden uit het bestand met federatieve meta gegevens. Voor AD FS server en Okta is het Federatie bestand federationmetadata. XML, bijvoorbeeld: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -194,8 +194,8 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Een directe Federatie relatie Hoe kan ik bewerken?
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**.
-3. **Id-providers** selecteren
+2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+3. **Alle id-providers** selecteren
 4. Selecteer de provider onder **SAML/WS-id-providers**.
 5. Werk de waarden bij in het detail venster van de identiteits provider.
 6. Selecteer **Opslaan**.
@@ -205,8 +205,8 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
 U kunt uw directe Federatie-instellingen verwijderen. Als u dit doet, kunnen gebruikers met een directe Federatie gast die hun uitnodigingen al hebben ingewisseld, zich niet aanmelden. Maar u kunt ze ook weer toegang geven tot uw resources door ze te verwijderen uit de map en ze opnieuw uit te nodigen. Directe Federatie verwijderen met een id-provider in de Azure AD-portal:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**.
-3. Selecteer **id-providers**.
+2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+3. Selecteer **alle id-providers**.
 4. Selecteer de ID-provider en selecteer vervolgens **verwijderen**. 
 5. Selecteer **Ja** om de verwijdering te bevestigen. 
 

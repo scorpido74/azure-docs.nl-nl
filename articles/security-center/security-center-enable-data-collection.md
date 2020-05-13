@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1edb0791e80a8503e5ecba3154d7b421206272c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189817"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198621"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte.
@@ -72,7 +72,7 @@ Een werk ruimte selecteren die is gemaakt door Security Center:
 
 1. Klik op **Opslaan**.<br>
     Security Center maakt een nieuwe resource groep en standaardwerk ruimte in die geolocatie en verbindt de agent met die werk ruimte. De naam Conventie voor de werk ruimte en de resource groep is:<br>
-   **Werk ruimte: DefaultWorkspace-[abonnement-ID]-[geo<br> ] resource groep: DefaultResourceGroup-[geo]**
+   **Werk ruimte: DefaultWorkspace-[abonnement-ID]-[geo] <br> resource groep: DefaultResourceGroup-[geo]**
 
    Als een abonnement Vm's uit meerdere geolocaties bevat, worden Security Center meerdere werk ruimten gemaakt. Er zijn meerdere werk ruimten gemaakt voor het onderhouden van regels voor gegevens bescherming.
 1. Security Center wordt automatisch een Security Center oplossing op de werk ruimte ingeschakeld per de prijs categorie die voor het abonnement is ingesteld. 
@@ -126,7 +126,7 @@ Een bestaande Log Analytics-werk ruimte selecteren:
     a.  Selecteer in het hoofd menu van Security Center **prijzen & instellingen**.
      
     b.  Selecteer de gewenste werk ruimte waarin u de agent wilt verbinden.
-        ![Selecteer werk][7] ruimte c. Stel de prijs categorie in.
+        ![Selecteer werk ruimte ][7] c. Stel de prijs categorie in.
         ![Prijs categorie selecteren][9]
    
    >[!NOTE]
@@ -223,9 +223,8 @@ U kunt op elk gewenst moment automatische inrichting van resources uitschakelen 
 
 Als automatisch inrichten is uitgeschakeld (uitgeschakeld), wordt de sectie standaard configuratie van werk ruimte niet weer gegeven.
 
-Als u automatische inrichting uitschakelt nadat dit eerder is gedaan:
--   Agents worden niet ingericht op nieuwe Vm's.
--   Security Center stopt met het verzamelen van gegevens uit de standaardwerk ruimte.
+Als u automatische inrichting uitschakelt nadat het eerder op agents was, worden er geen nieuwe Vm's meer ingericht.
+
  
 > [!NOTE]
 >  Als u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van Azure-Vm's waar de agent is ingericht. Zie [Hoe kan ik OMS-extensies verwijderen die door Security Center zijn geïnstalleerd](faq-data-collection-agents.md#remove-oms)voor meer informatie over het verwijderen van de OMS-extensie.

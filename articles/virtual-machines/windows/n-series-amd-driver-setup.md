@@ -1,6 +1,6 @@
 ---
-title: Azure N-serie AMD GPU-stuurprogramma-installatie voor Windows
-description: AMD GPU-stuurprogramma's instellen voor VM's uit de N-serie met Windows Server of Windows in Azure
+title: Setup voor Azure N-serie AMD GPU-stuur programma voor Windows
+description: AMD GPU-Stuur Programma's instellen voor virtuele machines uit de N-serie met Windows Server of Windows in azure
 author: vikancha
 manager: jkabat
 ms.service: virtual-machines-windows
@@ -8,52 +8,56 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 63114bdf60c1feb2b6cb1092ef78397efdc5b666
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865763"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197997"
 ---
-# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installeer AMD GPU-stuurprogramma's op VM's uit de N-serie met Windows
+# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
-Om te profiteren van de GPU-mogelijkheden van de nieuwe Azure NVv4-serie VM's met Windows, moeten AMD GPU-stuurprogramma's worden geïnstalleerd. De AMD driver extensie zal beschikbaar zijn in de komende weken. In dit artikel worden ondersteunde besturingssystemen, stuurprogramma's en handmatige installatie- en verificatiestappen weergegeven.
+Als u gebruik wilt maken van de GPU-mogelijkheden van de nieuwe virtuele machines uit de Azure NVv4-serie met Windows, moeten de AMD GPU-Stuur Programma's zijn geïnstalleerd. Met de [uitbrei ding van het AMD GPU-stuur programma](../extensions/hpccompute-amd-gpu-windows.md) worden AMD GPU-Stuur Programma's geïnstalleerd op een NVv4-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over de uitbrei ding van de AMD GPU-stuur programma](../extensions/hpccompute-amd-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen.
 
-Zie [GPU Windows VM-formaten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basisspecificaties, opslagcapaciteiten en schijfdetails.
+Als u ervoor kiest om de AMD GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde besturings systemen, stuur Programma's en installatie-en verificatie stappen beschreven.
+
+Alleen GPU-Stuur Programma's die door micro soft zijn gepubliceerd, worden ondersteund op NVv4 Vm's. Installeer geen GPU-Stuur Programma's vanuit een andere bron.
+
+Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basis specificaties, opslag capaciteit en schijf Details.
 
 
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
-| OS | Stuurprogramma |
+| Besturingssysteem | Stuurprogramma |
 | -------- |------------- |
-| Windows 10 EVD - Build 1903 <br/><br/>Windows 10 - Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 EVD-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
 
 
-## <a name="driver-installation"></a>Installatie van stuurprogramma's
+## <a name="driver-installation"></a>Installatie van Stuur Programma's
 
-1. Maak verbinding via Extern bureaublad met elke VM uit de NVv4-serie.
+1. Verbind door Extern bureaublad naar elke VM van de NVv4-serie.
 
-2. Als u een NVv4 preview-klant bent, stopt u de VM en wacht tot deze wordt verplaatst naar de status Gestopt (Deallocated).
+2. Als u een NVv4 preview-klant bent, stopt u de virtuele machine en wacht u totdat deze is verplaatst naar de status gestopt (toewijzing ongedaan gemaakt).
 
-3. Start de VM en download de nieuwste [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Verwijder het bestaande stuurprogramma door "amdcleanuputility-x64.exe" uit te voeren. Gebruik geen bestaand opruimprogramma dat bij het vorige stuurprogramma is geïnstalleerd.  
+3. Start de virtuele machine en down load het nieuwste [hulp programma voor het opschonen van AMD](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Verwijder het bestaande stuur programma door ' amdcleanuputility-x64. exe ' uit te voeren. Gebruik geen bestaand hulp programma voor opschoning dat is geïnstalleerd met het vorige stuur programma.  
 
-4. Download en installeer het nieuwste stuurprogramma.
+4. Down load en installeer het meest recente stuur programma.
 
 5. Start de VM opnieuw op.
 
-## <a name="verify-driver-installation"></a>De installatie van het stuurprogramma controleren
+## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
 
-U de installatie van stuurprogramma's verifiëren in Apparaatbeheer. In het volgende voorbeeld wordt een succesvolle configuratie van de Radeon Instinct MI25-kaart op een Azure NVv4 VM weergegeven.
+U kunt de installatie van Stuur Programma's controleren in Apparaatbeheer. In het volgende voor beeld ziet u een geslaagde configuratie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
 <br />
-![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/device-manager.png)
+![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/device-manager.png)
 
-U dxdiag gebruiken om de gpu-weergave-eigenschappen te verifiëren, waaronder het video-RAM-geheugen. In het volgende voorbeeld ziet u een 1/2 partitie van de Radeon Instinct MI25-kaart op een Azure NVv4 VM.
+U kunt Dxdiag gebruiken om de eigenschappen van de GPU-weer gave te controleren, inclusief de video-RAM. In het volgende voor beeld ziet u een 1/2-partitie van de Radeon instinct MI25-kaart op een Azure NVv4-VM.
 <br />
-![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/dxdiag-output.png)
 
-Als u Windows 10 build 1903 of hoger uitvoert, wordt er geen informatie weergegeven op het tabblad 'Weergeven'. Gebruik de optie 'Alle informatie opslaan' onderaan en het uitvoerbestand toont de informatie met betrekking tot AMD MI25 GPU.
+Als u Windows 10 build 1903 of hoger gebruikt, wordt in Dxdiag geen informatie weer gegeven op het tabblad weer geven. Gebruik de optie ' alle gegevens opslaan ' onderaan en in het uitvoer bestand worden de gegevens weer gegeven die betrekking hebben op AMD MI25 GPU.
 
-![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/dxdiag-details.png)
+![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/dxdiag-details.png)
 
 

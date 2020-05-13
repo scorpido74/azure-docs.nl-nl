@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: fb6092b7ccb3d1a4214f8d26119d9dc50b0ed317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81482052"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125754"
 ---
 # <a name="topic-filters-and-actions"></a>Onderwerpfilters en acties
 
@@ -29,7 +29,7 @@ Service Bus ondersteunt drie filter voorwaarden:
 
 -   *Booleaanse filters* : de **TrueFilter** en **FalseFilter** leiden ertoe dat alle berichten (**waar**) of geen van de binnenkomende berichten (**False**) worden geselecteerd voor het abonnement.
 
--   *SQL-filters* -een **SQLFILTER** bevat een SQL-achtige voorwaardelijke expressie die in de Broker wordt geëvalueerd op basis van de door de gebruiker gedefinieerde eigenschappen en systeem eigenschappen van de binnenkomende berichten. Alle systeem eigenschappen moeten worden voorafgegaan door `sys.` in de voorwaardelijke expressie. De [SQL-taal deel verzameling voor filter voorwaarden](service-bus-messaging-sql-filter.md) test op het bestaan van eigenschappen`EXISTS`(), null-waarden`IS NULL`(), logische not/en/of relationele Opera Tors, eenvoudig numeriek reken kundig en eenvoudig tekst patroon `LIKE`dat overeenkomt met.
+-   *SQL-filters* -een **SQLFILTER** bevat een SQL-achtige voorwaardelijke expressie die in de Broker wordt geëvalueerd op basis van de door de gebruiker gedefinieerde eigenschappen en systeem eigenschappen van de binnenkomende berichten. Alle systeem eigenschappen moeten worden voorafgegaan door `sys.` in de voorwaardelijke expressie. De [SQL-taal deel verzameling voor filter voorwaarden](service-bus-messaging-sql-filter.md) test op het bestaan van eigenschappen ( `EXISTS` ), null-waarden ( `IS NULL` ), logische not/en/of relationele Opera Tors, eenvoudig numeriek reken kundig en eenvoudig tekst patroon dat overeenkomt met `LIKE` .
 
 -   *Correlatie filters* : een **CorrelationFilter** bevat een set voor waarden die overeenkomen met een of meer van de gebruikers-en systeem eigenschappen van een inkomend bericht. Een veelgebruikte toepassing is om te vergelijken met de eigenschap **CorrelationId** , maar deze kan er ook voor kiezen om te zoeken op basis van de volgende eigenschappen:
 
@@ -71,8 +71,6 @@ Bekijk de volgende voor beelden:
 
 - [.NET-eenvoudige zelf studie verzenden en ontvangen met filters](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET-onderwerp filters](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Javascript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/javascript/advanced/topicFilters.js)
-- [Type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/typescript/src/advanced/topicFilters.ts)
 - [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
 

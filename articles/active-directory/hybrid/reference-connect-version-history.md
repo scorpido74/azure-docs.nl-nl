@@ -12,12 +12,13 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: has-adal-ref
+ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981983"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200975"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -87,9 +88,9 @@ Met deze hotfix-build wordt een probleem met build 1.5.18.0 opgelost als u de fu
 > Voer de volgende stappen uit als onderdeel van de upgrade als u de regel **in vanuit de groep voor het samen voegen van AD-groepslid** maatschap hebt gekloond en de upgrade niet hebt gekloond van de regel voor **algemene synchronisatie van AD-groep** en wilt upgraden.
 > 1. Schakel tijdens de upgrade de optie het **synchronisatie proces starten wanneer de configuratie is voltooid**uit.
 > 2. Bewerk de gekloonde samenvoegings regel en voeg de volgende twee trans formaties toe:
->     - Stel directe stroom `objectGUID` in `sourceAnchorBinary`op.
->     - Stel de expressie `ConvertToBase64([objectGUID])` stroom `sourceAnchor`in op.     
-> 3. Activeer de scheduler met `Set-ADSyncScheduler -SyncCycleEnabled $true`behulp van.
+>     - Stel directe stroom `objectGUID` in op `sourceAnchorBinary` .
+>     - Stel de expressie stroom `ConvertToBase64([objectGUID])` in op `sourceAnchor` .     
+> 3. Activeer de scheduler met behulp van `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 
@@ -209,7 +210,7 @@ Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten da
 >[!IMPORTANT]
 >Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de O365-Portal niet overeenkomt met de bijgewerkte versie, zelfs als Azure AD Connect is bijgewerkt.
 >
-> Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren`Set-ADSyncDirSyncConfiguration` en vervolgens de Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
+> Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren en vervolgens de `Set-ADSyncDirSyncConfiguration` Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
 >
 >1. Open Power shell in de modus beheerder.
 >2. Voer `Import-Module "ADSync"` uit.
@@ -772,7 +773,7 @@ Status: juli 23 2017
   * De functie voor het terugschrijven van gebruikers is ingeschakeld.
   
   >[!NOTE]
-  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect- `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`server:. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade naar artikel [Azure AD Connect: automatische upgrade](how-to-connect-install-automatic-upgrade.md).
+  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect-server: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade naar artikel [Azure AD Connect: automatische upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115580"></a>1.1.558.0
 Status: wordt niet vrijgegeven. Wijzigingen in deze build zijn opgenomen in versie 1.1.561.0.
@@ -800,7 +801,7 @@ Status: wordt niet vrijgegeven. Wijzigingen in deze build zijn opgenomen in vers
   * De functie voor het terugschrijven van gebruikers is ingeschakeld.
   
   >[!NOTE]
-  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect- `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`server:. Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade naar artikel [Azure AD Connect: automatische upgrade](how-to-connect-install-automatic-upgrade.md).
+  >De bereik uitbreiding van de functie voor automatische upgrades is van invloed op klanten met Azure AD Connect build 1.1.105.0 en after. Als u niet wilt dat uw Azure AD Connect-server automatisch wordt bijgewerkt, moet u de volgende cmdlet uitvoeren op uw Azure AD Connect-server: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Raadpleeg voor meer informatie over het in-en uitschakelen van automatische upgrade naar artikel [Azure AD Connect: automatische upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115570"></a>1.1.557.0
 Status: juli 2017
@@ -940,12 +941,12 @@ CBool(
 #### <a name="issues-fixed"></a>Problemen opgelost
 
 * De volgende Url's zijn nieuwe WS-Federation-eind punten die worden geïntroduceerd door Azure AD om de tolerantie tegen de onderbreking van de verificatie te verbeteren en wordt toegevoegd aan de configuratie van een on-premises AD FS van de Relying Party-vertrouwens relatie:
-  * https:\//Ests.login.microsoftonline.com/login.SRF
-  * https:\//stamp2.login.microsoftonline.com/login.SRF
+  * https: \/ /Ests.login.microsoftonline.com/login.SRF
+  * https: \/ /stamp2.login.microsoftonline.com/login.SRF
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   
-* Er is een probleem opgelost waardoor AD FS onjuiste claim waarde voor IssuerID genereren. Het probleem treedt op als er meerdere geverifieerde domeinen in de Azure AD-Tenant zijn en het domein achtervoegsel van het kenmerk userPrincipalName dat wordt gebruikt voor het genereren van de IssuerID-claim ten minste 3 johndoe@us.contoso.comniveaus diep is (bijvoorbeeld). Het probleem wordt opgelost door de regex bij te werken die wordt gebruikt door de claim regels.
+* Er is een probleem opgelost waardoor AD FS onjuiste claim waarde voor IssuerID genereren. Het probleem treedt op als er meerdere geverifieerde domeinen in de Azure AD-Tenant zijn en het domein achtervoegsel van het kenmerk userPrincipalName dat wordt gebruikt voor het genereren van de IssuerID-claim ten minste 3 niveaus diep is (bijvoorbeeld johndoe@us.contoso.com ). Het probleem wordt opgelost door de regex bij te werken die wordt gebruikt door de claim regels.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Voorheen kan de AD FS-functie voor certificaat beheer van Azure AD Connect alleen worden gebruikt met ADFS-Farms die worden beheerd via Azure AD Connect. Nu kunt u de functie gebruiken met ADFS-Farms die niet worden beheerd met Azure AD Connect.
@@ -1155,7 +1156,7 @@ Uitgebracht: augustus 2016
 **Opgeloste problemen:**
 
 * Wijzigingen in het synchronisatie-interval worden pas uitgevoerd nadat de volgende synchronisatie cyclus is voltooid.
-* Azure AD Connect wizard accepteert geen Azure AD-account waarvan de gebruikers naam begint met een onderstrepings teken (\_).
+* Azure AD Connect wizard accepteert geen Azure AD-account waarvan de gebruikers naam begint met een onderstrepings teken ( \_ ).
 * Het Azure AD-account kan niet worden geverifieerd met de wizard Azure AD Connect als het wacht woord van het account te veel speciale tekens bevat. Fout bericht ' kan de referenties niet valideren. Er is een onverwachte fout opgetreden. wordt geretourneerd.
 * Als u de faserings server verwijdert, wordt wachtwoord synchronisatie in azure AD-Tenant uitgeschakeld en mislukt de wachtwoord synchronisatie met de actieve server.
 * Wachtwoord synchronisatie mislukt in ongebruikelijke gevallen wanneer er geen wacht woord-hash is opgeslagen op de gebruiker.
@@ -1230,7 +1231,7 @@ Uitgebracht: februari 2016
 
 * [Automatische upgrade](how-to-connect-install-automatic-upgrade.md) functie voor klanten van snelle instellingen.
 * Ondersteuning voor de globale beheerder met behulp van Azure Multi-Factor Authentication en Privileged Identity Management in de installatie wizard.
-  * U moet ervoor zorgen dat uw proxy ook verkeer toestaat https://secure.aadcdn.microsoftonline-p.com als u multi-factor Authentication gebruikt.
+  * U moet ervoor zorgen dat uw proxy ook verkeer toestaat https://secure.aadcdn.microsoftonline-p.com Als u multi-factor Authentication gebruikt.
   * U moet toevoegen https://secure.aadcdn.microsoftonline-p.com aan de lijst met vertrouwde websites om multi-factor Authentication goed te kunnen werken.
 * Het wijzigen van de aanmeldings methode van de gebruiker na de initiële installatie toestaan.
 * [Domein-en OE-filtering](how-to-connect-install-custom.md#domain-and-ou-filtering) toestaan in de installatie wizard. Hierdoor kunt u ook verbinding maken met forests waar niet alle domeinen beschikbaar zijn.

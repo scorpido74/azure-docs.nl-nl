@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801430"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199866"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -112,7 +112,7 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestands servers en 448 voor app-ser
 
 ## <a name="support-for-file-level-restore"></a>Ondersteuning voor herstel op bestands niveau
 
-**Herstellen** | **Geboden**
+**Herstellen** | **Ondersteund**
 --- | ---
 Bestanden herstellen over besturings systemen | U kunt bestanden herstellen op elke computer die hetzelfde (of compatibel) besturings systeem heeft als de back-up van de virtuele machine. Zie de [tabel met compatibele besturings systemen](backup-azure-restore-files-from-vm.md#system-requirements).
 Bestanden herstellen van versleutelde Vm's | Niet ondersteund.
@@ -125,7 +125,7 @@ Bestanden herstellen met speciale netwerk instellingen | Terugzetten wordt niet 
 
 De volgende tabel bevat een overzicht van de ondersteuning voor back-ups tijdens taken voor VM-beheer, zoals het toevoegen of vervangen van VM-schijven.
 
-**Herstellen** | **Geboden**
+**Herstellen** | **Ondersteund**
 --- | ---
 Herstellen in het abonnement/de regio/zone. | Niet ondersteund.
 Herstellen naar een bestaande virtuele machine | Gebruik de optie schijf vervangen.
@@ -158,7 +158,7 @@ Gen2 Vm's | Ondersteund <br> Azure Backup ondersteunt het maken van back-ups en 
 
 **Component** | **Ondersteuning**
 --- | ---
-Azure VM-gegevensschijven | Maak een back-up van een virtuele machine met Maxi maal 16 gegevens schijven.<BR> Als u zich wilt aanmelden voor een beperkte preview van Vm's met 16 + schijven (Maxi maal 32 schijven), schrijft u naar ons opAskAzureBackupTeam@microsoft.com
+Azure VM-gegevensschijven | Ondersteuning voor het maken van back-ups van virtuele Azure-machines met Maxi maal 32 schijven is in [deze regio's](#backup-of-azure-virtual-machines-with-up-to-32-disks)open bare preview.<br><br> Ondersteuning voor het maken van back-ups van virtuele Azure-machines met onbeheerde schijven of klassieke Vm's is Maxi maal 16 schijven.
 Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
@@ -169,6 +169,13 @@ Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.
 Gedeelde opslag| Het maken van back-ups van virtuele machines met Cluster Shared Volume (CSV) of Scale-out bestandsserver wordt niet ondersteund. CSV-schrijvers mislukken waarschijnlijk tijdens het maken van de back-up. Bij het terugzetten kunnen schijven met CSV-volumes mogelijk niet worden opgehaald.
 [Gedeelde schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Niet ondersteund.
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Back-ups van virtuele machines van Azure met Maxi maal 32 schijven
+
+Azure Backup ondersteunt nu back-ups van virtuele Azure-machines met Maxi maal 32 gekoppelde schijven.  Deze functie is beschikbaar in de open bare preview in West-Centraal vs.  Als u geïnteresseerd bent in deze functie in andere regio's, kunt u zich aanmelden voor de beperkte preview door te schrijven naar ons AskAzureBackupTeam@microsoft.com .  
+
+>[!NOTE]
+>Azure Backup ondersteunt Maxi maal 16 schijven voor virtuele Azure-machines met onbeheerde schijven of klassieke Vm's.
 
 ## <a name="vm-network-support"></a>VM-netwerk ondersteuning
 

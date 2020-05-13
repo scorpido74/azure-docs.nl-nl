@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249592"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199015"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Query bereik en tijds bereik in Azure Monitor vastleggen Log Analytics
 Wanneer u een [logboek query](log-query-overview.md) uitvoert in [Log Analytics in het Azure Portal](get-started-portal.md), is de set gegevens die door de query wordt geëvalueerd, afhankelijk van het bereik en het tijds bereik dat u selecteert. In dit artikel worden de bereik-en tijds periode beschreven en wordt uitgelegd hoe u deze kunt instellen, afhankelijk van uw vereisten. Ook wordt het gedrag van verschillende soorten bereiken beschreven.
@@ -25,6 +25,9 @@ De scope wordt altijd linksboven in het Log Analytics-venster weer gegeven. Een 
 ![Bereik](media/scope/scope.png)
 
 Het bereik wordt bepaald door de methode die u gebruikt om Log Analytics te starten. in sommige gevallen kunt u het bereik wijzigen door erop te klikken. De volgende tabel geeft een lijst van de verschillende soorten bereiken die worden gebruikt en de verschillende Details voor elk bereik.
+
+> [!IMPORTANT]
+> Als u APM 2,1 gebruikt, worden Application Insights-toepassingen opgeslagen in een Log Analytics-werk ruimte met alle andere logboek gegevens en is het Application Insights bereik niet beschikbaar. Als u **Logboeken** selecteert in het Application Insights menu, fungeert deze hetzelfde als het andere bereik van **Azure-resources** en worden alleen de gegevens van die toepassing in de Application Insights tabellen beschikbaar.
 
 | Querybereik | Records in bereik | Het selecteren van | Bereik wijzigen |
 |:---|:---|:---|:---|

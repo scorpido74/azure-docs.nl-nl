@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269807"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201117"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
 
@@ -35,15 +36,15 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 ## <a name="create-a-console-application"></a>Een consoletoepassing maken
 
 1. Start Visual Studio. 
-1. Klik in het menu **bestand** op **Nieuw** > **project**. 
+1. Klik in het menu **bestand** op **Nieuw**  >  **project**. 
 1. Maak een **.net core** -console toepassing.
 
-De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code maakt gebruik van ' async Main ', dat beschikbaar is vanaf C# 7,1. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
+De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code maakt gebruik van ' async Main ', dat beschikbaar is vanaf C# 7,1. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
 
 ## <a name="add-required-nuget-packages"></a>Vereiste NuGet-pakketten toevoegen
 
-1. Selecteer in Visual Studio **extra** > **NuGet package manager** > **NuGet Manager-console**.
-2. In het venster **Package Manager-console** gebruikt `Install-Package` u de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
+1. Selecteer in Visual Studio **extra**  >  **NuGet package manager**  >  **NuGet Manager-console**.
+2. In het venster **Package Manager-console** gebruikt u `Install-Package` de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
 |Pakket|Beschrijving|
 |---|---|
@@ -57,7 +58,7 @@ De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code m
 
 ### <a name="create-appsettingsjson"></a>AppSettings. json maken
 
-1. Go-bestand voor **algemene** > **tekst**.
+1. Go-bestand voor **algemene**  >  **tekst**.
 1. Noem het bestand appSettings. json.
 1. Stel de eigenschap kopiëren naar uitvoermap van het JSON-bestand in op ' kopiëren indien nieuwer ' (zodat de toepassing toegang kan krijgen tot de map wanneer deze wordt gepubliceerd).
 
@@ -70,7 +71,7 @@ Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api'
 Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appSettings. json.
 
 1. Voeg een nieuwe. cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
-1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat `ConsoleApp1`u de naam ruimte hebt).
+1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat u de naam ruimte hebt `ConsoleApp1` ).
 
 ```csharp
 using System;

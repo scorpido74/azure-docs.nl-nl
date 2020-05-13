@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410230"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199010"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problemen met Azure Data Factory-connectors oplossen
 
@@ -30,7 +31,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: probleem met het aanraken van Blob-opslag.
 
-- **Aanbeveling**: Raadpleeg de fout voor meer informatie. Raadpleeg het Help-document van https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesblob:. Neem contact op met het opslag team als u hulp nodig hebt.
+- **Aanbeveling**: Raadpleeg de fout voor meer informatie. Raadpleeg het Help-document van blob: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Neem contact op met het opslag team als u hulp nodig hebt.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Fout code: AzureBlobServiceNotReturnExpectedDataLength
@@ -134,7 +135,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: wanneer het fout bericht ' verboden ' bevat, is voor de service-principal of beheerde identiteit die u gebruikt mogelijk niet voldoende machtigingen voor toegang tot de ADLS Gen2.
 
-- **Aanbeveling**: Raadpleeg het Help-document: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+- **Aanbeveling**: Raadpleeg het Help-document: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
 
 - **Oorzaak**: wanneer het fout bericht ' InternalServerError ' bevat, wordt de fout geretourneerd door ADLS Gen2.
 
@@ -198,11 +199,11 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: als het fout bericht ' SQLException ' bevat, genereert SQL database de fout die aangeeft dat een bepaalde bewerking is mislukt.
 
-- **Aanbeveling**: Zoek op SQL-fout code in dit referentie document voor meer informatie: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
+- **Aanbeveling**: Zoek op SQL-fout code in dit referentie document voor meer informatie: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
 
 - **Oorzaak**: als het fout bericht ' client met IP-adres '... ' bevat heeft geen toegang tot de server, en u probeert verbinding te maken met Azure SQL Database. dit wordt meestal veroorzaakt door Azure SQL Database firewall probleem.
 
-- **Aanbeveling**: Schakel in configuratie van Azure SQL Server firewall de optie ' Azure-Services en-bronnen toestaan voor toegang tot deze server ' in. Verwijzings document https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure:.
+- **Aanbeveling**: Schakel in configuratie van Azure SQL Server firewall de optie ' Azure-Services en-bronnen toestaan voor toegang tot deze server ' in. Verwijzings document: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Fout code: SqlOperationFailed
@@ -211,8 +212,8 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: als het fout bericht ' SQLException ' bevat, genereert SQL database de fout die aangeeft dat een bepaalde bewerking is mislukt.
 
-- **Aanbeveling**: als SQL-fout niet duidelijk is, probeert u de data base te wijzigen in het meest recente compatibiliteits niveau ' 150 '. Het kan de meest recente versie van SQL-fouten genereren. Raadpleeg het detail document: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat.
-        Zoek in dit referentie document naar SQL-fout code voor meer informatie over het oplossen van problemen met https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsSQL:. Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
+- **Aanbeveling**: als SQL-fout niet duidelijk is, probeert u de data base te wijzigen in het meest recente compatibiliteits niveau ' 150 '. Het kan de meest recente versie van SQL-fouten genereren. Raadpleeg het detail document: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat .
+        Zoek in dit referentie document naar SQL-fout code voor meer informatie over het oplossen van problemen met SQL: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
 
 - **Oorzaak**: als het fout bericht ' PdwManagedToNativeInteropException ' bevat, wordt dit meestal veroorzaakt door een niet-overeenkomende waarde voor de grootte van de bron-en Sink-kolom.
 
@@ -220,7 +221,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: als het fout bericht ' InvalidOperationException ' bevat, wordt dit meestal veroorzaakt door ongeldige invoer gegevens.
 
-- **Aanbeveling**: als u wilt identificeren in welke rij het probleem zich voordoet, schakelt u de functie fout tolerantie in op Kopieer activiteit, waarmee u problematische rij (en) kunt omleiden naar de opslag voor verdere onderzoek. Verwijzings document https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance:.
+- **Aanbeveling**: als u wilt identificeren in welke rij het probleem zich voordoet, schakelt u de functie fout tolerantie in op Kopieer activiteit, waarmee u problematische rij (en) kunt omleiden naar de opslag voor verdere onderzoek. Verwijzings document: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Fout code: SqlUnauthorizedAccess
@@ -323,7 +324,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: het bulksgewijs kopiëren van SQL is mislukt omdat er een ongeldige kolom lengte is ontvangen van de BCP-client.
 
-- **Aanbeveling**: als u wilt identificeren in welke rij het probleem zich voordoet, schakelt u de functie fout tolerantie in op Kopieer activiteit, waarmee u problematische rij (en) kunt omleiden naar de opslag voor verdere onderzoek. Verwijzings document https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance:.
+- **Aanbeveling**: als u wilt identificeren in welke rij het probleem zich voordoet, schakelt u de functie fout tolerantie in op Kopieer activiteit, waarmee u problematische rij (en) kunt omleiden naar de opslag voor verdere onderzoek. Verwijzings document: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Fout code: SqlConnectionIsClosed
@@ -545,7 +546,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: de Parquet-indeling wordt niet ondersteund in azure Data Factory.
 
-- **Aanbeveling**: dubbel Controleer de bron gegevens. Raadpleeg het document: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Aanbeveling**: dubbel Controleer de bron gegevens. Raadpleeg het document: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Fout code: ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: de gegevens kunnen niet worden geconverteerd naar het type dat is opgegeven in de toewijzingen. source
 
-- **Aanbeveling**: dubbel Controleer de bron gegevens of geef het juiste gegevens type voor deze kolom op in de kolom toewijzing van de Kopieer activiteit. Raadpleeg het document: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Aanbeveling**: dubbel Controleer de bron gegevens of geef het juiste gegevens type voor deze kolom op in de kolom toewijzing van de Kopieer activiteit. Raadpleeg het document: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Fout code: ParquetDataCountNotMatchColumnCount

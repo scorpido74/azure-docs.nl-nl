@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426501"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200387"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Referentie gegevens van een SQL Database gebruiken voor een Azure Stream Analytics taak
 
@@ -101,7 +101,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. Dubbel klik op **input. json** in de **Solution Explorer**.
 
-3. Vul de **Stream Analytics invoer configuratie**in. Kies de database naam, de server naam, het vernieuwings type en de vernieuwings frequentie. Geef de vernieuwings frequentie in `DD:HH:MM`de notatie op.
+3. Vul de **Stream Analytics invoer configuratie**in. Kies de database naam, de server naam, het vernieuwings type en de vernieuwings frequentie. Geef de vernieuwings frequentie in de notatie op `DD:HH:MM` .
 
    ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
@@ -147,7 +147,7 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
    ```
 2. Maak een auteur van de momentopname query. 
 
-   Gebruik de ** \@** para meter snapshotTime om de stream Analytics runtime te instrueren de referentie gegevensverzameling te verkrijgen van SQL database tijdelijke tabel die op de systeem tijd geldig is. Als u deze para meter niet opgeeft, krijgt u een risico dat er een onnauwkeurige basis referentie gegevens worden ingesteld vanwege de klok scheefheid. Hieronder ziet u een voor beeld van een volledige momentopname query:
+   Gebruik de para meter ** \@ snapshotTime** om de stream Analytics runtime te instrueren de referentie gegevensverzameling te verkrijgen van SQL database tijdelijke tabel die op de systeem tijd geldig is. Als u deze para meter niet opgeeft, krijgt u een risico dat er een onnauwkeurige basis referentie gegevens worden ingesteld vanwege de klok scheefheid. Hieronder ziet u een voor beeld van een volledige momentopname query:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
  
 2. Ontwerp de Delta-query. 
    
-   Met deze query worden alle rijen in uw SQL database opgehaald die zijn ingevoegd of verwijderd binnen een begin tijd, ** \@deltaStartTime**en een eind tijd ** \@deltaEndTime**. De Delta query moet dezelfde kolommen retour neren als de momentopname query, evenals de kolom **_bewerking_**. Deze kolom definieert of de rij wordt ingevoegd of verwijderd tussen ** \@deltaStartTime** en ** \@deltaEndTime**. De resulterende rijen worden gemarkeerd als **1** als de records zijn ingevoegd, of **2** indien verwijderd. 
+   Met deze query worden alle rijen in uw SQL database opgehaald die zijn ingevoegd of verwijderd binnen een begin tijd, ** \@ deltaStartTime**en een eind tijd ** \@ deltaEndTime**. De Delta query moet dezelfde kolommen retour neren als de momentopname query, evenals de kolom **_bewerking_**. Deze kolom definieert of de rij wordt ingevoegd of verwijderd tussen ** \@ deltaStartTime** en ** \@ deltaEndTime**. De resulterende rijen worden gemarkeerd als **1** als de records zijn ingevoegd, of **2** indien verwijderd. De query moet ook een **water merk** toevoegen uit de SQL Server-zijde om ervoor te zorgen dat alle updates in de Delta periode op de juiste wijze worden vastgelegd. Het gebruik van een Delta query zonder **water merk** kan resulteren in een onjuiste referentie gegevensset.  
 
    Voor records die zijn bijgewerkt, houdt de tijdelijke tabel boekingen toe door het invoegen en verwijderen van een bewerking. De resultaten van de Delta query worden vervolgens toegepast op de vorige moment opname om de referentie gegevens up-to-date te houden. Stream Analytics Hieronder ziet u een voor beeld van een Delta query:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

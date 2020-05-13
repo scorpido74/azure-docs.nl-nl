@@ -5,15 +5,18 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/05/2019
-ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249605"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199915"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Query's tussen bronnen en logboeken uitvoeren in Azure Monitor  
+
+> [!IMPORTANT]
+> Als u een [Application Insights resource-](../app/create-workspace-resource.md) telemetrie op basis van een werk ruimte gebruikt, wordt deze opgeslagen in een log Analytics werk ruimte met alle andere logboek gegevens. Gebruik de log ()-expressie voor het schrijven van een query die toepassing bevat in meerdere werk ruimten. Voor meerdere toepassingen in dezelfde werk ruimte hebt u geen query op meerdere werk ruimten nodig.
 
 Azure Monitor voorheen kon u alleen gegevens uit de huidige werk ruimte analyseren, maar u kunt ook een query uitvoeren op meerdere werk ruimten die in uw abonnement zijn gedefinieerd.  Daarnaast kunt u alleen vanuit uw webtoepassing verzamelde telemetriegegevens doorzoeken met Application Insights rechtstreeks in Application Insights of vanuit Visual Studio. Hierdoor is het ook een uitdaging om operationele en toepassings gegevens samen te analyseren.
 

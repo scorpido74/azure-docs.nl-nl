@@ -3,12 +3,12 @@ title: Een nieuwe Azure-toepassing Insights-resource maken | Microsoft Docs
 description: Stel Application Insights bewaking hand matig in voor een nieuwe Live-toepassing.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537573"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200666"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
@@ -26,9 +26,10 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
 
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Naam**      | Unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
-   | **Resource groep**     | myResourceGroup      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
-   | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Naam**      | `Unique value` | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
+   | **Resource groep**     | `myResourceGroup`      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
+   | **Deel** | `East US` | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Resource modus** | `Classic` of `Workspace-based` | Resources op basis van een werk ruimte zijn momenteel beschikbaar als open bare preview-versie en u kunt uw Application Insights telemetrie verzenden naar een algemene Log Analytics-werk ruimte. Zie het [artikel over resources op basis van werk ruimte](create-workspace-resource.md)voor meer informatie.
 
 > [!NOTE]
 > Hoewel u dezelfde resource naam in verschillende resource groepen kunt gebruiken, kan het nuttig zijn om een wereld wijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent om [query's voor meerdere resources uit te voeren](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) terwijl het de vereiste syntaxis vereenvoudigt.
@@ -96,13 +97,13 @@ Raadpleeg de [documentatie van Azure PowerShell](https://docs.microsoft.com/powe
 
 ### <a name="azure-cli-preview"></a>Azure CLI (preview-versie)
 
-Als u de preview-Application Insights Azure CLI-opdrachten wilt gebruiken, moet u eerst het volgende doen:
+Als u toegang wilt krijgen tot de preview-Application Insights Azure CLI-opdrachten, moet u eerst het volgende uitvoeren:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-Als u de `az extension add` opdracht niet uitvoert, wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Als u de opdracht niet uitvoert `az extension add` , wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 U kunt nu het volgende uitvoeren om uw Application Insights-resource te maken:
 

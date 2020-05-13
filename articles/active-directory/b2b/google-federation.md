@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126651"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199538"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
@@ -37,20 +37,20 @@ Als de gast gebruiker de fout bericht ' header is te lang ' ziet, kan hij of zij
 
 ## <a name="limitations"></a>Beperkingen
 
-Teams bieden volledige ondersteuning voor Google gast-gebruikers op alle apparaten. Google-gebruikers kunnen zich aanmelden bij teams vanaf een gemeen `https://teams.microsoft.com`schappelijk eind punt, zoals.
+Teams bieden volledige ondersteuning voor Google gast-gebruikers op alle apparaten. Google-gebruikers kunnen zich aanmelden bij teams vanaf een gemeen schappelijk eind punt, zoals `https://teams.microsoft.com` .
 
 De algemene eind punten van andere toepassingen bieden mogelijk geen ondersteuning voor Google-gebruikers. Google gast gebruikers moeten zich aanmelden met een koppeling die uw Tenant gegevens bevat. Hier volgen enkele voorbeelden:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
 
-   Als gebruikers van Google gast een koppeling proberen te gebruiken zoals `https://myapps.microsoft.com` of `https://portal.azure.com`, krijgen ze een fout melding.
+   Als gebruikers van Google gast een koppeling proberen te gebruiken zoals `https://myapps.microsoft.com` of `https://portal.azure.com` , krijgen ze een fout melding.
 
-U kunt Google gast gebruikers ook een rechtstreekse koppeling geven naar een toepassing of resource, mits deze koppeling uw Tenant gegevens bevat `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+U kunt Google gast gebruikers ook een rechtstreekse koppeling geven naar een toepassing of resource, mits deze koppeling uw Tenant gegevens bevat `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` . 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>Stap 1: een Google-ontwikkelaars project configureren
 Maak eerst een nieuw project in de Google developers-console om een client-ID en een client geheim op te halen dat u later kunt toevoegen aan Azure AD. 
-1. Ga naar de Google-Api's https://console.developers.google.comop en meld u aan met uw Google-account. We raden u aan een Google-account voor een gedeeld team te gebruiken.
+1. Ga naar de Google-Api's op https://console.developers.google.com en meld u aan met uw Google-account. We raden u aan een Google-account voor een gedeeld team te gebruiken.
 2. Een nieuw project maken: Selecteer in het dash board **project maken**en selecteer vervolgens **maken**. Voer op de pagina nieuw project een **project naam**in en selecteer **maken**.
    
    ![Scherm opname met een nieuwe project pagina voor Google](media/google-federation/google-new-project.png)
@@ -77,7 +77,7 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waar `<directory id>` is uw directory-id)
    
      > [!NOTE]
-     > Om uw directory-ID te vinden, https://portal.azure.comgaat u naar en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **map-id**.
+     > Om uw directory-ID te vinden, gaat u naar https://portal.azure.com en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **map-id**.
 
    ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
 
@@ -90,15 +90,15 @@ Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federation configureren in de Azure AD-Portal 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**.
-3. Selecteer **id-providers**en klik vervolgens op de knop **Google** .
+2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+3. Selecteer **alle id-providers**en klik vervolgens op de knop **Google** .
 4. Voer een naam in. Voer vervolgens de client-ID en het client geheim in die u eerder hebt verkregen. Selecteer **Opslaan**. 
 
    ![Scherm afbeelding van de pagina Google-ID-provider toevoegen](media/google-federation/google-identity-provider.png)
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>Google Federation configureren met behulp van Power shell
 1. Installeer de nieuwste versie van de Azure AD Power shell for Graph-module ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Voer de volgende opdracht uit `Connect-AzureAD`:.
+2. Voer de volgende opdracht uit: `Connect-AzureAD` .
 3. Meld u bij de aanmeldings prompt aan met het Managed Global Administrator-account.  
 4. Voer de volgende opdracht uit: 
    
@@ -112,8 +112,8 @@ U kunt de installatie van Google Federation verwijderen. Als u dit doet, kunnen 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Google Federation verwijderen in de Azure AD-portal: 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**.
-3. Selecteer **id-providers**.
+2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+3. Selecteer **alle id-providers**.
 4. Selecteer op de **Google** -regel het snelmenu (**...**) en selecteer vervolgens **verwijderen**. 
    
    ![Scherm afbeelding van de optie verwijderen voor de sociale ID-provider](media/google-federation/google-social-identity-providers.png)

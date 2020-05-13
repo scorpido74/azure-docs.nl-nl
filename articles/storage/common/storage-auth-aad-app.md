@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268481"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201074"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -178,7 +179,7 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 Voeg vervolgens een methode toe die een token aanvraagt uit Azure AD namens de gebruiker. Met deze methode wordt het bereik gedefinieerd waarvoor machtigingen moeten worden toegekend. Zie [machtigingen en toestemming in het micro soft Identity platform-eind punt](../../active-directory/develop/v2-permissions-and-consent.md)voor meer informatie over machtigingen en bereiken.
 
-Gebruik de resource-ID om het bereik te maken waarvoor het token moet worden verkregen. In het voor beeld wordt het bereik gemaakt met behulp van de resource-ID in `user_impersonation` combi natie met het ingebouwde bereik. Dit geeft aan dat het token wordt aangevraagd namens de gebruiker.
+Gebruik de resource-ID om het bereik te maken waarvoor het token moet worden verkregen. In het voor beeld wordt het bereik gemaakt met behulp van de resource-ID in combi natie met het ingebouwde `user_impersonation` bereik. Dit geeft aan dat het token wordt aangevraagd namens de gebruiker.
 
 Houd er rekening mee dat u de gebruiker mogelijk moet presen teren met een interface die de gebruiker in staat stelt om toestemming te geven om de tokens in hun naam aan te vragen. Wanneer toestemming nodig is, wordt de **MsalUiRequiredException** door het voor beeld onderschept en wordt een andere methode aangeroepen om de aanvraag voor toestemming te vergemakkelijken:
 
@@ -202,7 +203,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment `scope` nodig heeft in de para meter. Zie de sectie met de titel **incrementele en dynamische toestemming** in [Waarom update to micro soft Identity platform (v 2.0)? (Engelstalig)](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
+Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment nodig heeft in de `scope` para meter. Zie de sectie met de titel **incrementele en dynamische toestemming** in [Waarom update to micro soft Identity platform (v 2.0)? (Engelstalig)](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
 
 De volgende methode bouwt de verificatie-eigenschappen voor het aanvragen van een incrementele toestemming:
 

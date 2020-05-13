@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261229"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197850"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -19,7 +19,7 @@ Er is sprake van een brede push naar het exclusieve gebruik van Transport Layer 
 
 Als onderdeel van deze inspanning brengen we de volgende wijzigingen aan in azure cache voor redis:
 
-* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren. (Dit wordt gebruikt als TLS 1,0.) Bestaande cache-exemplaren worden op dit moment niet bijgewerkt. U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit. Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
+* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren (voorheen TLS 1,0).  Bestaande cache-exemplaren worden op dit moment niet bijgewerkt. U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit. Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
 * **Fase 2:** De ondersteuning van TLS-versies 1,0 en 1,1 wordt gestopt. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren.
 
 Als onderdeel van deze wijziging wordt de ondersteuning voor oudere, onveilige coderings-suites ook verwijderd.  Onze ondersteunde coderings-suites worden beperkt tot het volgende wanneer de cache is geconfigureerd met een minimale TLS-versie van 1,2.
@@ -33,7 +33,7 @@ De datums waarop deze wijzigingen van kracht worden, zijn:
 
 | Cloud               | Begin datum fase 1 | Begin datum fase 2      |
 |---------------------|--------------------|-------------------------|
-| Azure (globaal)      |  13 januari 2020  | 11 mei 2020 (uitgebreid) |
+| Azure (globaal)      |  13 januari 2020  | 11 mei 2020            |
 | Azure Government    |  13 maart 2020    | 11 mei 2020            |
 | Azure Duitsland       |  13 maart 2020    | 11 mei 2020            |
 | Azure China         |  13 maart 2020    | 11 mei 2020            |

@@ -4,19 +4,19 @@ description: Meer informatie over het gebruik van multi-factor Authentication me
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e551ac54414cb3114a7d0905b1b2e59b0d16580a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627361"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198550"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 
@@ -38,7 +38,7 @@ De volgende stappen laten zien hoe u verbinding maakt met SQL Database of SAzure
 
 1. Als u verbinding wilt maken met behulp van universele verificatie, selecteert u in het dialoog venster **verbinding maken met server** de optie **Active Directory-Universal met MFA-ondersteuning**. (Als u **Active Directory universele verificatie** ziet, bent u niet de nieuwste versie van SSMS.)  
    ![1mfa-Universal-Connect][1]  
-2. Vul het vak **gebruikers naam** in met de Azure Active Directory referenties in de indeling `user_name@domain.com`.  
+2. Vul het vak **gebruikers naam** in met de Azure Active Directory referenties in de indeling `user_name@domain.com` .  
    ![1mfa-universele-Connect-gebruiker](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Als u verbinding maakt als een gast gebruiker, hoeft u niet langer het veld AD-domein naam of Tenant-ID voor gast gebruikers te volt ooien omdat SSMS 18. x of hoger deze automatisch herkent. Zie voor meer informatie [universele verificatie met SQL database en Azure Synapse (SSMS-ondersteuning voor MFA)](sql-database-ssms-mfa-authentication.md).
    ![MFA-geen-Tenant-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
@@ -46,7 +46,7 @@ De volgende stappen laten zien hoe u verbinding maakt met SQL Database of SAzure
    Als u echter verbinding maakt als een gast gebruiker met behulp van SSMS 17. x of ouder, moet u op **Opties**klikken, in het dialoog venster **verbindings eigenschap** en het vak **AD-domein naam of Tenant-id** invullen.
    ![MFA-Tenant-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. Zoals gebruikelijk voor SQL Database en Azure Synapse moet u op **Opties** klikken en de data base opgeven in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil joe@outlook.comzeggen), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en Azure Synapse (SSMS-ondersteuning voor MFA)](sql-database-ssms-mfa-authentication.md). Klik vervolgens op **Verbinden**.  
+4. Zoals gebruikelijk voor SQL Database en Azure Synapse moet u op **Opties** klikken en de data base opgeven in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil zeggen joe@outlook.com ), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en Azure Synapse (SSMS-ondersteuning voor MFA)](sql-database-ssms-mfa-authentication.md). Klik vervolgens op **Verbinden**.  
 5. Wanneer het dialoog venster **Aanmelden bij uw account** wordt weer gegeven, geeft u het account en het wacht woord op van uw Azure Active Directory identiteit. Er is geen wacht woord vereist als een gebruiker deel uitmaakt van een domein dat is federatief met Azure AD.  
    ![2mfa-aanmelden][2]  
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263502"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199508"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
 
@@ -42,9 +42,6 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan d
 
    ![Laat zien waar een nieuwe gast gebruiker zich in de gebruikers interface bevindt](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > De optie **nieuwe gast gebruiker** is ook beschikbaar op de pagina **relaties organisatie** . Selecteer in **Azure Active Directory** **organisatie relaties**onder **beheren**.
-
 5. Selecteer op de pagina **nieuwe gebruiker** de optie **gebruiker uitnodigen** en voeg vervolgens de gegevens van de gast gebruiker toe. 
 
     > [!NOTE]
@@ -85,7 +82,7 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan e
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory** op elke pagina.
-3. Selecteer onder **beheren**de optie **bedrijfs toepassingen** > **alle toepassingen**.
+3. Selecteer onder **beheren**de optie **bedrijfs toepassingen**  >  **alle toepassingen**.
 4. Selecteer de toepassing waaraan u gast gebruikers wilt toevoegen.
 5. Selecteer op het dash board van de toepassing **totale gebruikers** om het deel venster **gebruikers en groepen** te openen.
 
@@ -104,7 +101,7 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan e
 9. De gast gebruiker wordt weer gegeven in de lijst **gebruikers en groepen** van de toepassing met de toegewezen rol van **standaard toegang**. Als u de rol wilt wijzigen, gaat u als volgt te werk:
    - Selecteer de gast gebruiker en selecteer vervolgens **bewerken**. 
    - Klik onder **toewijzing bewerken**op **rol selecteren**en selecteer de rol die u aan de geselecteerde gebruiker wilt toewijzen.
-   - Klik op **selecteren**.
+   - Klik op **Selecteren**.
    - Klik op **Toewijzen**.
  
 ## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gastgebruikers opnieuw verzenden

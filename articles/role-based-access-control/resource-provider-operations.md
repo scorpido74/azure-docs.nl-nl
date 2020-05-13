@@ -13,20 +13,18 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839093"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199566"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
-In dit artikel worden de bewerkingen vermeld die beschikbaar zijn voor elke Azure Resource Manager-resourceprovider. Deze bewerkingen kunnen worden gebruikt in [aangepaste Azure-rollen](custom-roles.md) om nauw keurig toegangs beheer te bieden voor resources in Azure. Bewerkings reeksen hebben de volgende `{Company}.{ProviderName}/{resourceType}/{action}`indeling:. Zie [overeenkomen met de resource provider voor service](../azure-resource-manager/management/azure-services-resource-providers.md)voor een lijst met de manier waarop naam ruimten van de resource provider worden toegewezen aan Azure-Services.
+In dit artikel worden de bewerkingen vermeld die beschikbaar zijn voor elke Azure Resource Manager-resourceprovider. Deze bewerkingen kunnen worden gebruikt in [aangepaste Azure-rollen](custom-roles.md) om nauw keurig toegangs beheer te bieden voor resources in Azure. Bewerkings reeksen hebben de volgende indeling: `{Company}.{ProviderName}/{resourceType}/{action}` . Zie [overeenkomen met de resource provider voor service](../azure-resource-manager/management/azure-services-resource-providers.md)voor een lijst met de manier waarop naam ruimten van de resource provider worden toegewezen aan Azure-Services.
 
 De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de meest recente bewerkingen wilt downloaden, gebruikt u de [bewerkings lijst](/cli/azure/provider/operation#az-provider-operation-list)van de [AzProviderOperation-](/powershell/module/az.resources/get-azprovideroperation) of AZ-provider.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Micro soft. AAD
 
@@ -705,7 +703,7 @@ Azure-service: [Azure Resource Manager](../azure-resource-manager/index.yml)
 > | Actie | Micro soft. Authorization/Operations/Read | Hiermee wordt de lijst met bewerkingen opgehaald |
 > |  | **bevoegdheden** |  |
 > | Actie | Micro soft. Authorization/permissions/Read | Een lijst met alle machtigingen die de aanroeper heeft voor een bepaald bereik. |
-> |  | **policies** |  |
+> |  | **restrictie** |  |
 > | Actie | Micro soft. Authorization/Policies/audit/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' controle ' |
 > | Actie | Micro soft. Authorization/Policies/auditIfNotExists/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' auditIfNotExists ' |
 > | Actie | Micro soft. Authorization/Policies/Deny/Action | De actie die wordt ondernomen als gevolg van de evaluatie van Azure Policy met het effect ' deny ' |
@@ -2137,7 +2135,7 @@ Azure-service: [Cognitive Services](../cognitive-services/index.yml)
 > | DataAction | Micro soft. CognitiveServices/accounts/spelling/spelling/actie | Resultaat van een spelling controle query ophalen via GET of POST. |
 > |  | **accounts/TextAnalytics** |  |
 > | DataAction | Micro soft. CognitiveServices/accounts/TextAnalytics/talen/actie | De API retourneert de gedetecteerde taal en een numerieke score tussen 0 en 1. Scores dicht bij 1 geven aan dat er 100% zekerheid is dat de geïdentificeerde taal waar is. Er worden in totaal 120 talen ondersteund. |
-> | DataAction | Micro soft. CognitiveServices/accounts/TextAnalytics/entities/actie | De API retourneert een lijst met bekende entiteiten en algemene benoemde entiteiten (\"persoon\", \"locatie\", \"organisatie\" enz.) in een bepaald document. |
+> | DataAction | Micro soft. CognitiveServices/accounts/TextAnalytics/entities/actie | De API retourneert een lijst met bekende entiteiten en algemene benoemde entiteiten ( \" persoon \" , \" locatie \" , \" organisatie \" enz.) in een bepaald document. |
 > | DataAction | Micro soft. CognitiveServices/accounts/TextAnalytics/woordgroepen/actie | De API retourneert een lijst met teken reeksen die de sleutel pratende punten in de invoer tekst identificeren. |
 > | DataAction | Micro soft. CognitiveServices/accounts/TextAnalytics/sentiment/actie | De API retourneert een numerieke score tussen 0 en 1.<br>Scores dicht bij 1 duiden op een positief gevoel en scores dicht bij 0 op een negatief gevoel.<br>Een Score van 0,5 geeft het gebrek aan sentiment aan (bijvoorbeeld<br>een factoid-instructie). |
 > |  | **accounts/VideoSearch** |  |
@@ -2299,7 +2297,7 @@ Azure-service: [virtual machines](../virtual-machines/index.yml), [Virtual Machi
 > | Actie | Micro soft. Compute/sharedVMImages/versies/repliceren/actie | Een SharedVMImageVersion repliceren naar doel regio's |
 > |  | **voorraad** |  |
 > | Actie | Micro soft. Compute/sku's/lezen | Hiermee wordt de lijst met micro soft. Compute-Sku's die beschikbaar zijn voor uw abonnement opgehaald |
-> |  | **momentopnamen** |  |
+> |  | **moment opnamen** |  |
 > | Actie | Micro soft. Compute/moment opnamen/lezen | De eigenschappen van een moment opname ophalen |
 > | Actie | Micro soft. Compute/moment opnamen/schrijven | Een nieuwe moment opname maken of een bestaand abonnement bijwerken |
 > | Actie | Micro soft. Compute/moment opnamen/verwijderen | Een moment opname verwijderen |
@@ -8691,7 +8689,7 @@ Azure-service: [Security Center](../security-center/index.yml)
 > | Actie | Micro soft. beveiliging/locaties/taken/oplossen/actie | Een beveiligings aanbeveling oplossen |
 > | Actie | Micro soft. beveiliging/locaties/taken/activeren/actie | Een beveiligings aanbeveling activeren |
 > | Actie | Micro soft. beveiliging/locaties/taken/sluiten/actie | Een beveiligings aanbeveling negeren |
-> |  | **policies** |  |
+> |  | **restrictie** |  |
 > | Actie | Micro soft. Security/Policies/lezen | Hiermee wordt het beveiligings beleid opgehaald |
 > | Actie | Micro soft. Security/Policies/schrijven | Hiermee wordt het beveiligings beleid bijgewerkt |
 > |  | **prijzen** |  |

@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995539"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199047"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -29,6 +29,10 @@ De prijzen voor [Azure-toepassing Insights][start] is een model voor **betalen n
 Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
 De Application Insights optie om [waarschuwingen in te scha kelen op aangepaste metrische dimensies](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) kan ook extra kosten genereren, omdat dit kan leiden tot het maken van aanvullende preaggregatie gegevens. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) over metrische gegevens op basis van het logboek en vooraf geaggregeerde metrieken in Application Insights en over de [prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor Azure monitor aangepaste metrische gegevens.
+
+### <a name="workspace-based-application-insights"></a>Application Insights op basis van een werk ruimte
+
+Voor Application Insights resources die hun gegevens verzenden naar een Log Analytics-werk ruimte, een [Application Insights resources op basis](create-workspace-resource.md)van een werk ruimte genoemd, wordt de facturering voor gegevens opname en-retentie uitgevoerd door de werk ruimte waarin de Application Insights gegevens zich bevinden. Hierdoor kunnen klanten alle opties van het Log Analytics- [prijs model](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model) gebruiken, inclusief de capaciteits reserveringen naast betalen per gebruik. Log Analytics heeft ook meer opties voor het bewaren van gegevens, inclusief het [bewaren van gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type). Application Insights gegevens typen in de werk ruimte 90 dagen met retentie ontvangen zonder dat er kosten in rekening worden gebracht. Gebruik van webtests en het inschakelen van waarschuwingen op aangepaste metrische dimensies wordt nog steeds gerapporteerd via Application Insights. Meer informatie over het bijhouden van gegevens opname en de retentie kosten in Log Analytics met behulp van het [gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs), [Azure Cost Management + facturering](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill) en [log Analytics query's](#data-volume-for-workspace-based-application-insights-resources). 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten
 
@@ -75,7 +79,7 @@ Als u meer wilt weten over uw gegevens volumes, selecteert u de **metrieken** vo
 
 ### <a name="queries-to-understand-data-volume-details"></a>Query's om details van gegevens volumes te begrijpen
 
-Er zijn twee benaderingen voor het onderzoeken van gegevens volumes voor Application Insights. De eerste gebruikt geaggregeerde informatie in de `systemEvents` tabel en de tweede gebruikt de `_BilledSize` eigenschap, die beschikbaar is voor elke opgenomen gebeurtenis.
+Er zijn twee benaderingen voor het onderzoeken van gegevens volumes voor Application Insights. De eerste gebruikt geaggregeerde informatie in de `systemEvents` tabel en de tweede gebruikt de `_BilledSize` eigenschap, die beschikbaar is voor elke opgenomen gebeurtenis. `systemEvents`heeft geen informatie over de grootte van de gegevens voor [op werk ruimte gebaseerde toepassing-inzichten](#data-volume-for-workspace-based-application-insights-resources).
 
 #### <a name="using-aggregated-data-volume-information"></a>Informatie over geaggregeerd gegevens volume gebruiken
 
@@ -127,6 +131,47 @@ dependencies
 | render barchart  
 ```
 
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>Gegevens volume voor op werk ruimte gebaseerde Application Insights resources
+
+Ga naar de werk ruimte Log Analytics en voer de volgende query uit om de trends van het gegevens volume te bekijken voor alle [Application Insights resources op basis van werk ruimten](create-workspace-resource.md) in een werk ruimte voor de afgelopen week:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+Als u een query wilt uitvoeren op de gegevens volume trends op type voor een specifieke Application Insights resource op basis van een werk ruimte, in de Log Analytics werkruimte gebruiken:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
+```
+
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights gebruik op uw Azure-factuur weer geven
 
 Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Zo kunt u met de functionaliteit ' cost analysis ' uw uitgaven voor Azure-resources weer geven. Door een filter toe te voegen op resource type (aan micro soft. Insights/onderdelen voor Application Insights), kunt u uw uitgaven bijhouden. Selecteer vervolgens ' groeperen op ' om ' meter categorie ' of ' meter ' te selecteren.  Voor Application Insights resources in de huidige prijs plannen wordt het meeste gebruik weer gegeven als Log Analytics voor de categorie meter, aangezien er één back-end van een logboek is voor alle Azure Monitor-onderdelen. 
@@ -174,11 +219,11 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
-Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt u de eigenschap `dailyQuota`in.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse Cap instellen. `warningThreshold`
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt u de eigenschap in `dailyQuota` .  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse Cap instellen `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Waarschuwingen voor het dagelijkse kapje maken
 
-Met de Application Insights Daily Cap maakt u een gebeurtenis in het Azure-activiteiten logboek wanneer de opgenomen gegevens volumes het waarschuwings niveau of het niveau van de dagelijkse Cap betrefferen.  U kunt [een waarschuwing maken op basis van deze gebeurtenissen in het activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). De signaal namen voor deze gebeurtenissen zijn:
+De Application Insights Daily Cap maakt een gebeurtenis in het Azure-activiteiten logboek wanneer de opgenomen gegevens volumes het waarschuwings niveau of het niveau van de dagelijkse Cap bereikt.  U kunt [een waarschuwing maken op basis van deze gebeurtenissen in het activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). De signaal namen voor deze gebeurtenissen zijn:
 
 * Waarschuwings drempelwaarde voor dagelijkse Cap Application Insights-onderdeel bereikt
 
@@ -220,7 +265,7 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 
 Als de retentie is verlaagd, is er een respijt periode van een enkele dag voordat de oudste gegevens worden verwijderd.
 
-De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de `retentionInDays` para meter. Als u de gegevens retentie instelt op 30 dagen, kunt u een onmiddellijke verwijdering van oudere gegevens activeren met behulp `immediatePurgeDataOn30Days` van de para meter, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. De dagelijkse herstel tijd voor de limiet voor het gegevens volume kan worden geconfigureerd met behulp `dailyQuotaResetTime` van Azure Resource Manager om de para meter in te stellen.
+De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de `retentionInDays` para meter. Als u de gegevens retentie instelt op 30 dagen, kunt u een onmiddellijke verwijdering van oudere gegevens activeren met behulp van de `immediatePurgeDataOn30Days` para meter, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. De dagelijkse herstel tijd voor de limiet voor het gegevens volume kan worden geconfigureerd met behulp van Azure Resource Manager om de para meter in te stellen `dailyQuotaResetTime` .
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
 

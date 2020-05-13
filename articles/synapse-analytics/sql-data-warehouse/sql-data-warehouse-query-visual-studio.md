@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 444cb2c8378ad873beb61116c5c4387ad3c59761
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416039"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200344"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Verbinding maken met Azure Synapse Analytics met Visual Studio en SSDT
 > [!div class="op_single_selector"]
+> * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -39,7 +39,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. Maak verbinding met de SQL-groep
 1. Open Visual Studio 2019.
-2. Open SQL Server-objectverkenner door SQL Server-objectverkenner **weer geven** > **SQL Server Object Explorer**te selecteren.
+2. Open SQL Server-objectverkenner door SQL Server-objectverkenner **weer geven**te selecteren  >  **SQL Server Object Explorer**.
    
     ![SQL Server-objectverkenner](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -69,7 +69,7 @@ Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit door op de groene pijl te klikken of de volgende `CTRL` + `SHIFT` + `E`snelkoppeling te gebruiken:.
+4. Voer de query uit door op de groene pijl te klikken of de volgende snelkoppeling te gebruiken: `CTRL` + `SHIFT` + `E` .
    
     ![Query uitvoeren](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.
