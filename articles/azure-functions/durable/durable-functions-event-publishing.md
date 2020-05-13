@@ -2,13 +2,13 @@
 title: Durable Functions publiceren naar Azure Event Grid (preview-versie)
 description: Meer informatie over het configureren van automatische Azure Event Grid publicatie voor Durable Functions.
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/25/2020
+ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535482"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124237"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publiceren naar Azure Event Grid (preview-versie)
 
@@ -30,7 +30,7 @@ Hier volgen enkele scenario's waarin deze functie nuttig is:
 
 ## <a name="create-a-custom-event-grid-topic"></a>Een aangepast Event Grid onderwerp maken
 
-Maak een Event Grid onderwerp voor het verzenden van gebeurtenissen vanuit Durable Functions. De volgende instructies laten zien hoe u een onderwerp maakt met behulp van Azure CLI. U kunt dit ook doen met behulp van [Power shell](../../event-grid/custom-event-quickstart-powershell.md) of met [behulp van de Azure Portal](../../event-grid/custom-event-quickstart-portal.md).
+Maak een Event Grid onderwerp voor het verzenden van gebeurtenissen vanuit Durable Functions. De volgende instructies laten zien hoe u een onderwerp maakt met behulp van Azure CLI. U kunt het onderwerp ook maken met behulp van [Power shell](../../event-grid/custom-event-quickstart-powershell.md) of via [de Azure Portal](../../event-grid/custom-event-quickstart-portal.md).
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -50,13 +50,13 @@ az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 
 ## <a name="get-the-endpoint-and-key"></a>Het eind punt en de sleutel ophalen
 
-Het eind punt van het onderwerp ophalen. Vervang `<topic_name>` door de naam die u hebt gekozen.
+Het eind punt van het onderwerp ophalen. Vervang door `<topic_name>` de naam die u hebt gekozen.
 
 ```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
-Haal de sleutel van het onderwerp op. Vervang `<topic_name>` door de naam die u hebt gekozen.
+Haal de sleutel van het onderwerp op. Vervang door `<topic_name>` de naam die u hebt gekozen.
 
 ```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
@@ -66,11 +66,11 @@ U kunt nu gebeurtenissen verzenden naar het onderwerp.
 
 ## <a name="configure-event-grid-publishing"></a>Event Grid publicatie configureren
 
-Zoek het `host.json` bestand In uw Durable functions-project.
+Zoek het bestand in uw Durable Functions-project `host.json` .
 
 ### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
-`eventGridKeySettingName` Een `eventGridTopicEndpoint` `durableTask` eigenschap toevoegen.
+`eventGridTopicEndpoint` `eventGridKeySettingName` Een `durableTask` eigenschap toevoegen.
 
 ```json
 {
@@ -83,7 +83,7 @@ Zoek het `host.json` bestand In uw Durable functions-project.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
-Een `notifications` sectie toevoegen aan de `durableTask` eigenschap van het bestand, vervangen `<topic_name>` door de naam die u hebt gekozen. Als de `durableTask` or `extensions` -eigenschappen niet bestaan, maakt u deze zoals in dit voor beeld:
+Een `notifications` sectie toevoegen aan de `durableTask` eigenschap van het bestand, vervangen `<topic_name>` door de naam die u hebt gekozen. Als de `durableTask` of `extensions` -Eigenschappen niet bestaan, maakt u deze zoals in dit voor beeld:
 
 ```json
 {
@@ -101,9 +101,9 @@ Een `notifications` sectie toevoegen aan de `durableTask` eigenschap van het bes
 }
 ```
 
-De mogelijke Azure Event Grid configuratie-eigenschappen vindt u in de [host. json-documentatie](../functions-host-json.md#durabletask). Nadat u het `host.json` bestand hebt geconfigureerd, verzendt uw functie-app levenscyclus gebeurtenissen naar het event grid onderwerp. Dit werkt wanneer u de functie-app zowel lokaal als in azure uitvoert.
+De mogelijke Azure Event Grid configuratie-eigenschappen vindt u in de [host. json-documentatie](../functions-host-json.md#durabletask). Nadat u het bestand hebt geconfigureerd `host.json` , verzendt uw functie-app levenscyclus gebeurtenissen naar het event grid onderwerp. Deze actie wordt gestart wanneer u de functie-app zowel lokaal als in azure uitvoert.
 
-Stel de app-instelling in voor de sleutel van het onderwerp `local.settings.json`in de functie-app en. De volgende JSON is een voor beeld van `local.settings.json` de voor lokale fout opsporing. Vervang `<topic_key>` door de sleutel van het onderwerp.  
+Stel de app-instelling in voor de sleutel van het onderwerp in de functie-app en `local.settings.json` . De volgende JSON is een voor beeld van de `local.settings.json` voor lokale fout opsporing. Vervang door `<topic_key>` de sleutel van het onderwerp.  
 
 ```json
 {
@@ -116,7 +116,7 @@ Stel de app-instelling in voor de sleutel van het onderwerp `local.settings.json
 }
 ```
 
-Als u de [opslag emulator](../../storage/common/storage-use-emulator.md) gebruikt (alleen Windows), controleert u of deze werkt. Het is een goed idee om de opdracht `AzureStorageEmulator.exe clear all` uit te voeren voordat u het programma uitvoert.
+Als u de [opslag emulator](../../storage/common/storage-use-emulator.md) gebruikt (alleen Windows), controleert u of deze werkt. Het is een goed idee om de opdracht uit te voeren voordat u het programma `AzureStorageEmulator.exe clear all` uitvoert.
 
 Als u een bestaand Azure Storage-account gebruikt, vervangt `UseDevelopmentStorage=true` u `local.settings.json` het door de Connection String.
 
@@ -126,58 +126,71 @@ Maak met behulp van de Azure Portal een andere functie-app om te Luis teren naar
 
 ### <a name="create-an-event-grid-trigger-function"></a>Een Event Grid-trigger functie maken
 
-Maak een functie om de levenscyclus gebeurtenissen te ontvangen. Selecteer **aangepaste functie**.
+1. Selecteer in de functie-app **functies**en selecteer vervolgens **+ toevoegen** 
 
-![Selecteer een aangepaste functie maken.](./media/durable-functions-event-publishing/functions-portal.png)
+   :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Een functie toevoegen in de Azure Portal." border="true":::
 
-Kies Event Grid trigger en selecteer een taal.
+1. Zoek naar **Event grid**en selecteer vervolgens de **trigger sjabloon Azure Event grid** . 
 
-![Selecteer de trigger Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Selecteer de trigger sjabloon voor gebeurtenis raster in het Azure Portal." border="true":::
 
-Voer de naam van de functie in en selecteer `Create`.
+1. Geef de nieuwe trigger een naam en selecteer vervolgens **functie maken**.
 
-![Maak de Event Grid-trigger.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Geef de trigger Event grid een naam in de Azure Portal." border="true":::
 
-Er wordt een functie gemaakt met de volgende code:
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+    Er wordt een functie gemaakt met de volgende code:
 
-```csharp
-#r "Newtonsoft.Json"
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
+    # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-public static void Run(JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
+    ```csharp
+    #r "Newtonsoft.Json"
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Microsoft.Extensions.Logging;
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+    public static void Run(JObject eventGridEvent, ILogger log)
+    {
+        log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+    }
+    ```
 
-```javascript
-module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
-}
-```
+   # <a name="javascript"></a>[Javascript](#tab/javascript)
+
+   ```javascript
+   module.exports = async function(context, eventGridEvent) {
+       context.log(typeof eventGridEvent);
+       context.log(eventGridEvent);
+   }
+   ```
 
 ---
 
-Selecteer `Add Event Grid Subscription`. Met deze bewerking wordt een Event Grid-abonnement toegevoegd voor het Event Grid onderwerp dat u hebt gemaakt. Zie [concepten in azure Event grid](https://docs.microsoft.com/azure/event-grid/concepts) voor meer informatie
+### <a name="add-an-event-grid-subscription"></a>Een Event Grid-abonnement toevoegen
 
-![Selecteer de koppeling Trigger Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+U kunt nu een Event Grid-abonnement toevoegen voor het Event Grid onderwerp dat u hebt gemaakt. Zie [concepten in azure Event grid](https://docs.microsoft.com/azure/event-grid/concepts)voor meer informatie.
 
-Selecteer `Event Grid Topics` voor **type onderwerp**. Selecteer de resource groep die u hebt gemaakt voor het Event Grid onderwerp. Selecteer vervolgens het exemplaar van het onderwerp Event Grid. Druk `Create`op.
+1. Selecteer in de nieuwe functie **integratie** en selecteer vervolgens **Event grid trigger (eventGridEvent)**. 
 
-![Hiermee wordt een Event Grid-abonnement gemaakt.](./media/durable-functions-event-publishing/eventsubscription.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Selecteer de koppeling Trigger Event Grid." border="true":::
+
+1. Selecteer **Beschrijving van Event Grid maken**.
+
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Maak het Event Grid-abonnement." border="true":::
+
+1. Geef uw gebeurtenis abonnement een naam en selecteer het onderwerp type **Event grid topics** . 
+
+1. Selecteer het abonnement. Selecteer vervolgens de resource groep en de resource die u hebt gemaakt voor het Event Grid onderwerp. 
+
+1. Selecteer **Maken**.
+
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Een Event Grid-abonnement maken." border="true":::
 
 Nu bent u klaar om levenscyclus gebeurtenissen te ontvangen.
 
 ## <a name="run-durable-functions-app-to-send-the-events"></a>Durable Functions-app uitvoeren om de gebeurtenissen te verzenden
 
-Start in het Durable Functions project dat u eerder hebt geconfigureerd, de fout opsporing op uw lokale computer en start een indeling. De app publiceert Durable Functions levenscyclus gebeurtenissen naar Event Grid. Controleer of Event Grid de functie van de listenerfunctie activeert die u hebt gemaakt door de logboeken in de Azure Portal te controleren.
+Start in het Durable Functions project dat u eerder hebt geconfigureerd, de fout opsporing op uw lokale computer en start een indeling. De app publiceert Durable Functions levenscyclus gebeurtenissen naar Event Grid. Controleer of Event Grid de listenerfunctie activeert die u hebt gemaakt door de logboeken in de Azure Portal te controleren.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -224,7 +237,7 @@ Start in het Durable Functions project dat u eerder hebt geconfigureerd, de fout
 In de volgende lijst wordt het schema voor levenscyclus gebeurtenissen uitgelegd:
 
 * **`id`**: De unieke id voor de Event Grid gebeurtenis.
-* **`subject`**: Pad naar het gebeurtenis onderwerp. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`is `Running`, `Completed` `Failed`, en `Terminated`.  
+* **`subject`**: Pad naar het gebeurtenis onderwerp. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`is `Running` ,, `Completed` en `Failed` `Terminated` .  
 * **`data`**: Durable Functions specifieke para meters.
   * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) -naam.
   * **`functionName`**: Functie naam van Orchestrator.

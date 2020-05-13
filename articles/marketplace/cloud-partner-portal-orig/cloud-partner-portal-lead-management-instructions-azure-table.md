@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280351"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124700"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Instructies voor het beheer van de Table-opslag
 
@@ -98,7 +98,7 @@ In de volgende reeks stappen maakt u verbinding met uw opslag tabel en stelt u d
 
    - **Filter query**: wanneer u dit veld selecteert, wordt het pictogram **laatste tijd ophalen** weer gegeven in een pop-upvenster. Selecteer **vorige tijd** als u deze waarde wilt gebruiken als tijds tempel om de query te filteren. U kunt ook de volgende functie in het veld plakken:
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![De functie filter query instellen](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

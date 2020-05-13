@@ -1,19 +1,19 @@
 ---
 title: Zoom niveaus en tegel raster | Microsoft Azure kaarten
 description: In dit artikel vindt u meer informatie over zoom niveaus en tegel rasters in Microsoft Azure kaarten.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530288"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123901"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
@@ -140,12 +140,12 @@ Dit is het zoom raster voor zoom niveau 1:
 
 ## <a name="quadkey-indices"></a>Quadkey-indexen
 
-Sommige toewijzings platforms gebruiken `quadkey` een naamgevings Conventie voor indexering die de tegel zy coördineert in een teken `quadtree` reeks met `quadkeys` één dimensie, met de naam Keys of short. Elke `quadkey` unieke id identificeert één tegel op een bepaald detail niveau en kan worden gebruikt als een sleutel in algemene data base B-structuur indexen. De Azure Maps Sdk's bieden ondersteuning voor het bedekken van Tegel lagen `quadkey` die gebruikmaken van de naamgevings Conventie naast andere naam conventies zoals beschreven in het document [tegel laag toevoegen](map-add-tile-layer.md) .
+Sommige toewijzings platforms gebruiken een `quadkey` naamgevings Conventie voor indexering die de tegel zy coördineert in een teken reeks met één dimensie, met de naam `quadtree` Keys of `quadkeys` short. Elke `quadkey` unieke id identificeert één tegel op een bepaald detail niveau en kan worden gebruikt als een sleutel in algemene data base B-structuur indexen. De Azure Maps Sdk's bieden ondersteuning voor het bedekken van Tegel lagen die gebruikmaken van de `quadkey` naamgevings Conventie naast andere naam conventies zoals beschreven in het document [tegel laag toevoegen](map-add-tile-layer.md) .
 
 > [!NOTE]
 > De `quadkeys` naamgevings Conventie werkt alleen voor zoom niveaus van een of meer. De ondersteuning van het zoom niveau voor de Azure Maps SDK is 0, een enkele kaart tegel voor de hele wereld. 
 
-Als u de tegel coördinaten wilt `quadkey`omzetten in een, zijn de bits van de Y-en X-coördinaten Interleaved en wordt het resultaat geïnterpreteerd als een getal met grondtal 4 (waarbij voorloop nullen worden bijgehouden) en omgezet in een teken reeks. Voor de `quadkey` gegeven tegel xy-coördinaten van (3, 5) op niveau 3 wordt als volgt bepaald:
+Als u de tegel coördinaten wilt omzetten in een `quadkey` , zijn de bits van de Y-en X-coördinaten Interleaved en wordt het resultaat geïnterpreteerd als een getal met grondtal 4 (waarbij voorloop nullen worden bijgehouden) en omgezet in een teken reeks. Voor de gegeven tegel XY-coördinaten van (3, 5) op niveau 3 `quadkey` wordt als volgt bepaald:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,19 +155,19 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`verschillende interessante eigenschappen hebben. Ten eerste is de lengte van `quadkey` een (het aantal cijfers) gelijk aan het zoom niveau van de corresponderende tegel. Ten tweede begint `quadkey` de tegel met de `quadkey` van de bovenliggende Tegel (de bevatde tegel op het vorige niveau). Zoals u in het onderstaande voor beeld ziet, is tegel 2 het bovenliggende element van de tegels 20 tot en met 23:
+`Qquadkeys`verschillende interessante eigenschappen hebben. Ten eerste is de lengte van een `quadkey` (het aantal cijfers) gelijk aan het zoom niveau van de corresponderende tegel. Ten tweede `quadkey` begint de tegel met de van de `quadkey` bovenliggende Tegel (de bevatde tegel op het vorige niveau). Zoals u in het onderstaande voor beeld ziet, is tegel 2 het bovenliggende element van de tegels 20 tot en met 23:
 
 <center>
 
 ![Tegel piramide Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Ten slotte `quadkeys` kunt u een eendimensionale index sleutel opgeven die gewoonlijk de nabijheid van tegels in de xy-ruimte behoudt. Met andere woorden, twee tegels met een nabijgelegen XY-coördinaten `quadkeys` hebben meestal relatief dicht bij elkaar. Dit is belang rijk voor het optimaliseren van de prestaties van de data base, omdat naburige tegels vaak worden aangevraagd in groepen. het is wenselijk dat deze tegels op dezelfde schijf blokken worden bewaard, zodat het aantal lees bewerkingen van de schijf wordt geminimaliseerd.
+Ten slotte kunt u `quadkeys` een eendimensionale index sleutel opgeven die gewoonlijk de nabijheid van tegels in de xy-ruimte behoudt. Met andere woorden, twee tegels met een nabijgelegen XY-coördinaten hebben meestal `quadkeys` relatief dicht bij elkaar. Dit is belang rijk voor het optimaliseren van de prestaties van de data base, omdat naburige tegels vaak worden aangevraagd in groepen. het is wenselijk dat deze tegels op dezelfde schijf blokken worden bewaard, zodat het aantal lees bewerkingen van de schijf wordt geminimaliseerd.
 
 ## <a name="tile-math-source-code"></a>Mathematische bron code van Tegel
 
 De volgende voorbeeld code laat zien hoe u de functies implementeert die in dit document worden beschreven. Deze functies kunnen gemakkelijk naar behoefte worden vertaald in andere programmeer talen.
 
-#### <a name="c"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 using System;

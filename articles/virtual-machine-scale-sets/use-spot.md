@@ -2,17 +2,19 @@
 title: Een schaalset maken die gebruikmaakt van Azure spot-Vm's
 description: Meer informatie over het maken van virtuele-machine schaal sets van Azure die gebruikmaken van behulp van de functie voor het besparen van kosten.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545943"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125040"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -26,7 +28,7 @@ De hoeveelheid beschik bare capaciteit kan variëren op basis van grootte, regio
 Prijzen voor spot instanties zijn variabel, op basis van de regio en de SKU. Zie prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)voor meer informatie. 
 
 
-Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765`is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1`, wordt het exemplaar niet op basis van de prijs verwijderd. De prijs voor de instantie is de huidige prijs voor de steun waarde of de prijs voor een standaard exemplaar, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
+Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765` is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1` , wordt het exemplaar niet op basis van de prijs verwijderd. De prijs voor de instantie is de huidige prijs voor de steun waarde of de prijs voor een standaard exemplaar, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
 
 ## <a name="eviction-policy"></a>Verwijderings beleid
 
@@ -49,12 +51,12 @@ Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de 
 
 ## <a name="portal"></a>Portal
 
-Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een schaalset implementeert, kunt u kiezen voor het instellen van de vlag spot en het verwijderings beleid ![: een schaalset maken met behulp van een vaste virtuele machine](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een schaalset implementeert, kunt u kiezen voor het instellen van de vlag spot en het verwijderings beleid: ![ een schaalset maken met behulp van een vaste virtuele machine](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Het proces voor het maken van een schaalset met stapsgewijze Vm's is hetzelfde als die in het [artikel aan](quick-create-cli.md)de slag. Voeg alleen de '---Priority spot ' toe `--max-price`en voeg toe. In dit voor beeld gebruiken `-1` we voor `--max-price` dat het exemplaar niet wordt verwijderd op basis van de prijs.
+Het proces voor het maken van een schaalset met stapsgewijze Vm's is hetzelfde als die in het [artikel aan](quick-create-cli.md)de slag. Voeg alleen de '---Priority spot ' toe en voeg toe `--max-price` . In dit voor beeld gebruiken we `-1` voor `--max-price` dat het exemplaar niet wordt verwijderd op basis van de prijs.
 
 ```azurecli
 az vmss create \
@@ -71,7 +73,7 @@ az vmss create \
 ## <a name="powershell"></a>PowerShell
 
 Het proces voor het maken van een schaalset met stapsgewijze Vm's is hetzelfde als die in het [artikel aan](quick-create-powershell.md)de slag.
-Voeg alleen '-Priority spot ' toe en geef `-max-price` er een op bij de [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
+Voeg alleen '-Priority spot ' toe en geef er een `-max-price` op bij de [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). 
 
-Gebruik`"apiVersion": "2019-03-01"` of hoger voor implementaties van steun sjablonen. Voeg de `priority`eigenschappen `evictionPolicy` en `billingProfile` toe aan de `"virtualMachineProfile":` sectie in de sjabloon: 
+Gebruik of hoger voor implementaties van steun sjablonen `"apiVersion": "2019-03-01"` . Voeg de `priority` `evictionPolicy` Eigenschappen en toe `billingProfile` aan de `"virtualMachineProfile":` sectie in de sjabloon: 
 
 ```json
                 "priority": "Spot",
@@ -97,7 +99,7 @@ Gebruik`"apiVersion": "2019-03-01"` of hoger voor implementaties van steun sjabl
                 }
 ```
 
-Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt u `evictionPolicy` de para `Delete`meter in.
+Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionPolicy` u de para meter in `Delete` .
 
 ## <a name="faq"></a>Veelgestelde vragen
 
@@ -126,9 +128,9 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt u `evictio
 **A:** Nee, het instellen `Spot` van de vlag wordt alleen ondersteund tijdens de aanmaak tijd.
 
 
-**V:** Als ik heb gebruikt `low` voor schaal sets met lage prioriteit, moet ik dan in plaats daarvan `Spot` aan de slag gaan met?
+**V:** Als ik heb gebruikt `low` voor schaal sets met lage prioriteit, moet ik `Spot` dan in plaats daarvan aan de slag gaan met?
 
-**A:** Voor nu geldt dat `low` beide `Spot` en werken, maar u moet overstappen op gebruiken `Spot`.
+**A:** Voor nu geldt `low` dat beide en `Spot` werken, maar u moet overstappen op gebruiken `Spot` .
 
 
 **V:** Kan ik een schaalset maken met zowel normale virtuele machines als virtuele machines met spot mogelijkheden?

@@ -3,7 +3,7 @@ title: Problemen met Azure VM-toewijzings fouten oplossen | Microsoft Docs
 description: Toewijzings fouten oplossen bij het maken, opnieuw opstarten of het wijzigen van het formaat van een virtuele machine in azure
 services: virtual-machines
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: felixwu
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
@@ -11,13 +11,13 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
-ms.author: cjiang
-ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484397"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124785"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
 
@@ -25,11 +25,11 @@ Wanneer u een virtuele machine (VM) maakt, opnieuw opstarten gestopt (toewijzing
 
 **Fout code**: AllocationFailed of ZonalAllocationFailed
 
-**Fout bericht**: ' toewijzing is mislukt. Er zijn onvoldoende capaciteit voor de aangevraagde VM-grootte in deze regio. Meer informatie over het verbeteren van de kans op een succes\/volle toewijzing op https:/aka.MS/Allocation-guidance "
+**Fout bericht**: ' toewijzing is mislukt. Er zijn onvoldoende capaciteit voor de aangevraagde VM-grootte in deze regio. Meer informatie over het verbeteren van de kans op een succes volle toewijzing op https: \/ /aka.MS/Allocation-guidance "
 
 In dit artikel worden de oorzaken beschreven van enkele algemene toewijzings fouten en worden mogelijke oplossingen voorgesteld.
 
-Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de [Azure-forums op MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums of @AzureSupport op Twitter plaatsen. U kunt ook een Azure-ondersteunings aanvraag indienen door ondersteuning te selecteren op de [ondersteunings](https://azure.microsoft.com/support/options/) site van Azure.
+Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de [Azure-forums op MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums of op @AzureSupport Twitter plaatsen. U kunt ook een Azure-ondersteunings aanvraag indienen door ondersteuning te selecteren op de [ondersteunings](https://azure.microsoft.com/support/options/) site van Azure.
 
 Totdat uw voorkeurs VM-type beschikbaar is in uw voorkeurs regio, adviseren we klanten die implementatie problemen ondervinden om de richt lijnen in de volgende tabel als tijdelijke oplossing te beschouwen. 
 

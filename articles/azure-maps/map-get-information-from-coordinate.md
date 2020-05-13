@@ -1,20 +1,20 @@
 ---
 title: Informatie over een coördinaat op een kaart weer geven | Microsoft Azure kaarten
 description: Informatie over het weer geven van gegevens over een adres op de kaart wanneer een gebruiker een coördinaat selecteert.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371421"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123986"
 ---
 # <a name="get-information-from-a-coordinate"></a>Informatie ophalen uit een coördinaat
 
@@ -24,7 +24,7 @@ Er zijn twee manieren om een omgekeerde adres zoekactie te maken. Een manier is 
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Een Reverse Search-aanvraag maken via de service module
 
-<iframe height='500' scrolling='no' title='Informatie ophalen uit een coördinaat (Service module)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>informatie ophalen uit een coördinaat (Service module)</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Informatie ophalen uit een coördinaat (Service module)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>informatie ophalen uit een coördinaat (Service module)</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 In de bovenstaande code maakt het eerste blok een kaart object en stelt het verificatie mechanisme in voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.
@@ -33,7 +33,7 @@ Het tweede code blok maakt een `TokenCredential` voor de verificatie van HTTP-aa
 
 Met het derde code blok wordt de stijl van de muis aanwijzer naar een wijzer bijgewerkt en wordt een [pop](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) -upobject gemaakt. U kunt [een pop-upvenster toevoegen op de kaart](./map-add-popup.md) voor instructies.
 
-Het vierde code blok voegt een gebeurtenislistener toe aan een [muis klik.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) Als deze wordt geactiveerd, wordt er een zoek query gemaakt met de coördinaten van het geklikte punt. Vervolgens wordt de methode [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)gebruikt om een query uit te zoeken naar de [Reverse-API Get-adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) voor het adres van de coördinaten. Er wordt vervolgens een verzameling geojson-onderdelen geëxtraheerd met `geojson.getFeatures()` behulp van de methode van het antwoord.
+Het vierde code blok voegt een gebeurtenislistener toe aan een [muis klik.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) Als deze wordt geactiveerd, wordt er een zoek query gemaakt met de coördinaten van het geklikte punt. Vervolgens wordt de methode [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)gebruikt om een query uit te zoeken naar de [Reverse-API Get-adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) voor het adres van de coördinaten. Er wordt vervolgens een verzameling geojson-onderdelen geëxtraheerd met behulp `geojson.getFeatures()` van de methode van het antwoord.
 
 Met het vijfde code blok wordt de inhoud van het HTML-pop-upvenster ingesteld om het antwoord adres voor de geklikte coördinaat positie weer te geven.
 
@@ -43,7 +43,7 @@ De wijziging van de cursor, het pop-upobject en de Click-gebeurtenis worden alle
 
 Klik op de kaart om een reverse Geocode-aanvraag voor die locatie te maken met behulp van ophalen.
 
-<iframe height='500' scrolling='no' title='Informatie ophalen uit een coördinaat' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>informatie ophalen uit een coördinaat</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Informatie ophalen uit een coördinaat' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>informatie ophalen uit een coördinaat</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 In de bovenstaande code bouwt het eerste code blok een kaart object in en stelt het verificatie mechanisme in voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.

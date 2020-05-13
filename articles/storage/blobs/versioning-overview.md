@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993965"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123833"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
 
@@ -167,7 +167,7 @@ In het volgende diagram ziet u wat er gebeurt wanneer u een moment opname van ee
 U kunt toegang tot BLOB-versies toestaan met een van de volgende benaderingen:
 
 - Door gebruik te maken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
-- Door gebruik te maken van een Shared Access Signature (SAS) om de toegang tot BLOB-versies te delegeren. Geef de versie-ID voor het ondertekende bron `bv`type op, die een BLOB-versie vertegenwoordigt, om een SAS-token te maken voor bewerkingen op een specifieke versie. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
+- Door gebruik te maken van een Shared Access Signature (SAS) om de toegang tot BLOB-versies te delegeren. Geef de versie-ID voor het ondertekende bron type op `bv` , die een BLOB-versie vertegenwoordigt, om een SAS-token te maken voor bewerkingen op een specifieke versie. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
 - Door de toegangs sleutels voor het account te gebruiken om bewerkingen te autoriseren op BLOB-versies met gedeelde sleutel. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 
 BLOB-versie beheer is ontworpen om uw gegevens te beschermen tegen onbedoeld of kwaad aardige verwijdering. Voor het verbeteren van de beveiliging zijn speciale machtigingen vereist voor het verwijderen van een BLOB-versie. In de volgende secties worden de machtigingen beschreven die nodig zijn voor het verwijderen van een BLOB-versie.
@@ -183,7 +183,7 @@ In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwi
 
 ### <a name="shared-access-signature-sas-parameters"></a>Para meters voor Shared Access Signature (SAS)
 
-De ondertekende resource voor een BLOB-versie `bv`is. Zie [een service-SAS maken](/rest/api/storageservices/create-service-sas) of [een gebruikers delegering sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie.
+De ondertekende resource voor een BLOB-versie is `bv` . Zie [een service-SAS maken](/rest/api/storageservices/create-service-sas) of [een gebruikers delegering sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie.
 
 De volgende tabel bevat de vereiste machtiging voor een SAS om een BLOB-versie te verwijderen.
 
@@ -224,9 +224,10 @@ Als u zich wilt inschrijven voor de preview-versie van de blob, gebruikt u Power
 Als u zich bij Power shell wilt registreren, roept u de opdracht [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) aan.
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
@@ -308,7 +309,7 @@ In scenario 3 is de BLOB bijgewerkt, maar de versie niet. Blok 3 is vervangen do
 
 #### <a name="scenario-4"></a>Scenario 4
 
-In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke &mdash; blokken vier in de basis-Blob en vier in de vorige versie. Dit scenario kan zich voordoen als u naar een BLOB schrijft met de put-BLOB-bewerking, omdat deze de volledige inhoud van de basis-BLOB vervangt.
+In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken &mdash; vier in de basis-Blob en vier in de vorige versie. Dit scenario kan zich voordoen als u naar een BLOB schrijft met de put-BLOB-bewerking, omdat deze de volledige inhoud van de basis-BLOB vervangt.
 
 ![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-4.png)
 

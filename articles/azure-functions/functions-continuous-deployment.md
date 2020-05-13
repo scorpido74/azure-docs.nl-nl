@@ -4,12 +4,12 @@ description: Gebruik de continue implementatie functies van Azure App Service om
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277022"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123661"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Doorlopende implementatie voor Azure Functions
 
@@ -32,50 +32,34 @@ Voor een continue implementatie moet uw mapstructuur compatibel zijn met de basi
 >[!NOTE]  
 > Continue implementatie wordt nog niet ondersteund voor Linux-apps die worden uitgevoerd op een verbruiks abonnement. 
 
-## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Doorlopende implementatie instellen
+## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Continue implementatie instellen
 
 Voer de volgende stappen uit om een continue implementatie voor een bestaande functie-app te configureren. De stappen illustreren de integratie met een GitHub-opslag plaats, maar soort gelijke stappen zijn van toepassing voor Azure opslag plaatsen of andere opslag plaatsen voor bron codes.
 
-1. Selecteer in de functie-app [Azure portal](https://portal.azure.com)in de Azure Portal **platform functies** > **Deployment Center**.
+1. Selecteer in de functie-app [Azure portal](https://portal.azure.com)in het Azure Portal **implementatie centrum**, selecteer **github**en selecteer vervolgens **autoriseren**. Als u GitHub al hebt geautoriseerd, selecteert u **door gaan** en slaat u de volgende stap over. 
 
-    ![Implementatie centrum openen](./media/functions-continuous-deployment/platform-features.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Azure App Service implementatie centrum":::
 
-2. Selecteer **github**in het **implementatie centrum**en selecteer vervolgens **autoriseren**. Als u GitHub al hebt geautoriseerd, selecteert u **door gaan**. 
+3. In GitHub selecteert u **AzureAppService autoriseren**.
 
-    ![Azure App Service implementatie centrum](./media/functions-continuous-deployment/github.png)
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service autoriseren":::
 
-3. Selecteer in GitHub de knop **AzureAppService autoriseren** . 
-
-    ![Azure App Service autoriseren](./media/functions-continuous-deployment/authorize.png)
-    
-    Selecteer **door gaan**in **implementatie centrum** in de Azure Portal.
+    Voer uw GitHub-wacht woord in en selecteer vervolgens **door gaan**.
 
 4. Selecteer een van de volgende Build-providers:
 
     * **App service build-service**: het beste wanneer u geen build nodig hebt of als u een generieke build nodig hebt.
     * **Azure-pijp lijnen (preview)**: het beste wanneer u meer controle nodig hebt over de build. Deze provider is momenteel beschikbaar als preview-versie.
 
-    ![Een build-provider selecteren](./media/functions-continuous-deployment/build.png)
+    Selecteer **Doorgaan**.
 
 5. Configureer informatie die specifiek is voor de bron beheer optie die u hebt opgegeven. Voor GitHub moet u waarden voor **organisatie**, **opslag plaats**en **vertakking**invoeren of selecteren. De waarden zijn gebaseerd op de locatie van uw code. Selecteer vervolgens **door gaan**.
 
-    ![GitHub configureren](./media/functions-continuous-deployment/github-specifics.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub configureren":::
 
 6. Bekijk alle gegevens en selecteer vervolgens **volt ooien** om de configuratie van de implementatie te volt ooien.
 
-    ![Samenvatting](./media/functions-continuous-deployment/summary.png)
-
 Wanneer het proces is voltooid, wordt alle code uit de opgegeven bron in uw app geïmplementeerd. Op dat moment activeren wijzigingen in de implementatie bron een implementatie van die wijzigingen in de functie-app in Azure.
-
-## <a name="deployment-scenarios"></a>Implementatiescenario's
-
-<a name="existing"></a>
-
-### <a name="move-existing-functions-to-continuous-deployment"></a>Bestaande functies verplaatsen naar doorlopende implementatie
-
-Als u al functies hebt geschreven in de [Azure Portal](https://portal.azure.com) en u de inhoud van uw app wilt downloaden voordat u overschakelt naar doorlopende implementatie, gaat u naar het tabblad **overzicht** van de functie-app. Selecteer de knop **app-inhoud downloaden** .
-
-![App-inhoud downloaden](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
 > Nadat u doorlopende integratie hebt geconfigureerd, kunt u de bron bestanden niet meer bewerken in de functions-Portal.

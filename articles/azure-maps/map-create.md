@@ -1,20 +1,20 @@
 ---
 title: Een kaart maken met Azure Maps | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een kaart op een webpagina kunt weer geven met behulp van de Microsoft Azure Maps Web SDK.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802328"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124020"
 ---
 # <a name="create-a-map"></a>Een kaart maken
 
@@ -22,12 +22,12 @@ Dit artikel laat u zien hoe u een kaart maakt en een kaart kunt animeren.
 
 ## <a name="loading-a-map"></a>Een kaart laden
 
-Als u een kaart wilt laden, maakt u een nieuw exemplaar van de [kaart klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map). Wanneer u de kaart initialiseert, geeft u de ID van een DIV-element door om de kaart weer te geven en een set opties te geven die moeten worden gebruikt bij het laden van de kaart. Als er geen standaard verificatie gegevens zijn opgegeven `atlas` in de naam ruimte, moet deze informatie worden opgegeven in de kaart opties bij het laden van de kaart. De kaart laadt verschillende bronnen asynchroon voor prestaties. Koppel, na het maken van het exemplaar van de kaart `ready` , `load` een of-gebeurtenis aan de kaart en voeg vervolgens extra code toe die met de kaart communiceert met de gebeurtenis-handler. De `ready` gebeurtenis wordt geactiveerd zodra de kaart voldoende resources heeft geladen om via een programma te communiceren. De `load` gebeurtenis wordt geactiveerd nadat het laden van de eerste kaart weergave volledig is voltooid. 
+Als u een kaart wilt laden, maakt u een nieuw exemplaar van de [kaart klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map). Wanneer u de kaart initialiseert, geeft u de ID van een DIV-element door om de kaart weer te geven en een set opties te geven die moeten worden gebruikt bij het laden van de kaart. Als er geen standaard verificatie gegevens zijn opgegeven in de `atlas` naam ruimte, moet deze informatie worden opgegeven in de kaart opties bij het laden van de kaart. De kaart laadt verschillende bronnen asynchroon voor prestaties. Koppel, na het maken van het exemplaar van de kaart, een `ready` of- `load` gebeurtenis aan de kaart en voeg vervolgens extra code toe die met de kaart communiceert met de gebeurtenis-handler. De `ready` gebeurtenis wordt geactiveerd zodra de kaart voldoende resources heeft geladen om via een programma te communiceren. De `load` gebeurtenis wordt geactiveerd nadat het laden van de eerste kaart weergave volledig is voltooid. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Eenvoudige kaart belasting" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>Basic map load</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>Basic map load</a> by Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -35,12 +35,12 @@ Zie de pen <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>Basic map load</a>
 
 ## <a name="show-a-single-copy-of-the-world"></a>Eén exemplaar van de wereld weer geven
 
-Wanneer de kaart op een breed scherm wordt ingezoomd, worden meerdere kopieën van de wereld horizon taal weer gegeven. Deze optie is ideaal voor sommige scenario's, maar voor andere toepassingen is het wenselijk om één exemplaar van de wereld te bekijken. Dit gedrag wordt geïmplementeerd door de toewijzings `renderWorldCopies` optie in `false`te stellen op.
+Wanneer de kaart op een breed scherm wordt ingezoomd, worden meerdere kopieën van de wereld horizon taal weer gegeven. Deze optie is ideaal voor sommige scenario's, maar voor andere toepassingen is het wenselijk om één exemplaar van de wereld te bekijken. Dit gedrag wordt geïmplementeerd door de toewijzings `renderWorldCopies` optie in te stellen op `false` .
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = False" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = False</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = False</a> by Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -53,7 +53,7 @@ Wanneer u een kaart maakt, zijn er verschillende soorten opties die kunnen worde
 - [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) worden gebruikt om op te geven dat de kaart moet worden opgemaakt en gerenderd.
 - [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) worden gebruikt om op te geven hoe de kaart moet worden bereikt wanneer de gebruiker met de kaart communiceert. 
 
-Deze opties kunnen ook worden bijgewerkt nadat de kaart is `setCamera`geladen met de `setServiceOptions` `setStyle` `setUserInteraction` functies,, en. 
+Deze opties kunnen ook worden bijgewerkt nadat de kaart is geladen met de `setCamera` functies, `setServiceOptions` , en `setStyle` `setUserInteraction` . 
 
 ## <a name="controlling-the-map-camera"></a>De kaart camera beheren
 
@@ -63,7 +63,7 @@ Er zijn twee manieren om het weer gegeven gebied van de kaart in te stellen met 
 
 ### <a name="set-the-camera"></a>De camera instellen
 
-De kaart camera bepaalt wat wordt weer gegeven in de View Port van het canvas van de kaart. Camera opties kunnen worden door gegeven aan de kaart opties wanneer deze worden geïnitialiseerd of door gegeven aan `setCamera` de functie Maps.
+De kaart camera bepaalt wat wordt weer gegeven in de View Port van het canvas van de kaart. Camera opties kunnen worden door gegeven aan de kaart opties wanneer deze worden geïnitialiseerd of door gegeven aan de `setCamera` functie Maps.
 
 ```javascript
 //Set the camera options when creating the map.
@@ -85,7 +85,7 @@ In de volgende code wordt een [kaart object](https://docs.microsoft.com/javascri
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een kaart maken via CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>een kaart `CameraOptions` maken </a>met behulp van<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Location Based Services () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een kaart maken via CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>een kaart `CameraOptions` maken </a>met behulp van Azure Location Based Services ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <a id="setCameraBoundsOptions"></a>
@@ -101,11 +101,11 @@ map.setCamera({
 });
 ```
 
-In de volgende code wordt een [kaart object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) gemaakt via `new atlas.Map()`. Kaart eigenschappen zoals `CameraBoundsOptions` kan worden gedefinieerd via de functie [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) van de klasse map. Eigenschappen voor grenzen en opvulling worden ingesteld met `setCamera`.
+In de volgende code wordt een [kaart object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) gemaakt via `new atlas.Map()` . Kaart eigenschappen zoals `CameraBoundsOptions` kan worden gedefinieerd via de functie [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) van de klasse map. Eigenschappen voor grenzen en opvulling worden ingesteld met `setCamera` .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een kaart maken via CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>een kaart `CameraBoundsOptions` maken </a>met behulp van<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een kaart maken via CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>een kaart `CameraBoundsOptions` maken </a>met behulp van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ### <a name="animate-map-view"></a>Kaart weergave animeren
@@ -125,7 +125,7 @@ In de volgende code wordt in het eerste code blok een kaart gemaakt en worden de
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Kaart weergave animeren' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/WayvbO/'>kaart weergave</a> van de pen animeren per Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Kaart weergave animeren' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/WayvbO/'>kaart weergave</a> van de pen animeren per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="try-out-the-code"></a>De code uitproberen

@@ -2,17 +2,19 @@
 title: Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure
 description: Meer informatie over het inschakelen van beëindigings meldingen voor instanties van de schaalset voor virtuele machines van Azure
 author: avirishuv
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 02/26/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250749"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125176"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. De oplossing voegt een andere gebeurtenis – Terminate toe aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.

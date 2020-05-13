@@ -3,20 +3,20 @@ title: Een door Azure Cosmos DB geactiveerde functie maken
 description: Gebruik Azure Functions om een functie zonder server te maken die wordt aangeroepen wanneer gegevens worden toegevoegd aan een database in Azure Cosmos DB.
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
-ms.date: 10/02/2018
+ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 6045c61dc9837667bfaf01c685f687fcf5816e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754210"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123734"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Een door Azure Cosmos DB geactiveerde functie maken
 
 Leer hoe u een functie maakt die wordt geactiveerd wanneer gegevens worden toegevoegd of gewijzigd in Azure Cosmos DB. Zie [Azure Cosmos DB: Serverless database computing using Azure Functions](../cosmos-db/serverless-computing-database.md) (Azure Cosmos DB: database berekenen zonder server met Azure Functions) voor meer informatie over Azure Cosmos DB.
 
-![Bekijk het bericht in de logboeken.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
+:::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Azure Cosmos DB code":::
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,6 +26,9 @@ Vereisten om deze zelfstudie te voltooien:
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
+
+## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-account.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
@@ -43,39 +46,37 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Een Azure Cosmos DB-trigger maken
 
-1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Selecteer in de functie-app **functies** in het menu links en selecteer vervolgens **toevoegen** in het bovenste menu. 
 
-   ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
+1. Voer op de pagina **nieuwe functie** `cosmos` in het zoek veld in en kies vervolgens de sjabloon **Azure Cosmos DB trigger** .
 
-1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="De pagina functies in het Azure Portal":::
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
-1. Typ `cosmos` in het zoekveld en kies vervolgens de sjabloon **Azure Cosmos DB-trigger**.
-
-1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Cosmos DB-extensie in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
-
-    ![Binding-extensies installeren](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
-
-1. Configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
-
-    ![Maak de door Azure Cosmos DB geactiveerde functie](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
+1. Configureer de nieuwe trigger met de instellingen zoals opgegeven in de volgende tabel:
 
     | Instelling      | Voorgestelde waarde  | Beschrijving                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Naam** | Standaard | Gebruik de standaardnaam voor de functie die wordt voorgesteld in de sjabloon.|
-    | **Verbinding met het Azure Cosmos DB-account** | Nieuwe instelling | Selecteer **Nieuw** en kies vervolgens uw **abonnement**, het **Database-account** dat u eerder hebt gemaakt, en **Selecteren**. Hiermee maakt u een toepassingsinstelling voor uw accountverbinding. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
-    | **Container naam** | Items | De naam van de container die moet worden bewaakt. |
-    | **Een lease container maken als deze nog niet bestaat** | Geselecteerd | De container bestaat niet en maakt deze dus. |
-    | **Database naam** | Taken | De naam van de data base met de container die moet worden bewaakt. |
+    | **Nieuwe functie** | Accepteer de standaard naam | De naam van de functie. |
+    | **Cosmos DB-accountverbinding** | De standaard nieuwe naam accepteren | Selecteer **Nieuw**, het **Database account** dat u eerder hebt gemaakt en klik vervolgens op **OK**. Met deze actie wordt een toepassings instelling voor uw account verbinding gemaakt. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
+    | **Database naam** | Taken | De naam van de data base die de verzameling bevat die moet worden bewaakt. |
+    | **Naam van verzameling** | Items | De naam van de verzameling die moet worden bewaakt. |
+    | **Naam van de verzameling voor leases** | leases | De naam van de verzameling waarin de leases moeten worden opgeslagen. |
+    | **Een lease verzameling maken als deze nog niet bestaat** | Ja | Controleert op de aanwezigheid van de lease verzameling en maakt deze automatisch. |
 
-1. Klik op **Maken** om de door Azure Cosmos DB geactiveerde functie te maken. Nadat de functie is gemaakt, wordt de functiecode op basis van een sjabloon weergegeven.  
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Maak de door Azure Cosmos DB geactiveerde functie":::
 
-    ![Cosmos DB-functiesjabloon in C#](./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png)
+1. Selecteer **functie maken**. 
+
+    Azure maakt de functie trigger Cosmos DB.
+
+1. Als u de functie code op basis van een sjabloon wilt weer geven, selecteert u **code + testen**.
+
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB-functiesjabloon in C#":::
 
     Met deze functiesjabloon worden het aantal documenten en de eerste document-id naar de logboeken geschreven.
 
-Vervolgens gaat u verbinding maken met uw Azure Cosmos DB-account en `Items` maakt u de `Tasks` container in de-data base.
+Vervolgens gaat u verbinding maken met uw Azure Cosmos DB-account en maakt u de `Items` container in de- `Tasks` Data Base.
 
 ## <a name="create-the-items-container"></a>De container items maken
 
@@ -110,7 +111,7 @@ Nadat de container die in de functie binding is opgegeven, bestaat, kunt u de fu
 
 1. Vouw de container nieuwe **items** in Data Explorer uit, kies **items**en selecteer vervolgens **Nieuw item**.
 
-    ![Een item in de items container maken](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Een item in de items container maken":::
 
 1. Vervang de inhoud van het nieuwe item door de volgende inhoud en kies vervolgens **Opslaan**.
 

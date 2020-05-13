@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419541"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121339"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -50,7 +50,7 @@ Zie [Azure app service beperkingen voor statische toegang](../app-service/app-se
 Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals een virtueel Azure-netwerk.
 
 * Toegang tot persoonlijke sites is beschikbaar in de [Premium](./functions-premium-plan.md)-, [verbruiks](functions-scale.md#consumption-plan)-en [app service](functions-scale.md#app-service-plan) plannen wanneer service-eind punten zijn geconfigureerd.
-    * Service-eind punten kunnen per app worden geconfigureerd onder **platform functies** > **netwerk** > **toegangs beperkingen** > configureren**regel toevoegen**. Virtuele netwerken kunnen nu worden geselecteerd als regel type.
+    * Service-eind punten kunnen per app worden geconfigureerd onder **platform functies**  >  **netwerk**  >  **toegangs beperkingen configureren**  >  **regel toevoegen**. Virtuele netwerken kunnen nu worden geselecteerd als regel type.
     * Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
     * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
 * Toegang tot privé-sites is ook beschikbaar in een App Service Environment dat is geconfigureerd met een interne load balancer (ILB). Zie [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md)voor meer informatie.
@@ -102,9 +102,9 @@ Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op t
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
 
-Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De **ondersteunings** instelling voor het activeren van virtuele netwerken vindt u in de [Azure Portal](https://portal.azure.com) onder **functie-app-instellingen**.
+Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De **ondersteunings** instelling voor het activeren van virtuele netwerken vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie**-  >  **functie**.
 
-![Scha kelen tussen virtueel netwerk](media/functions-networking-options/virtual-network-trigger-toggle.png)
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
 U kunt ook virtuele netwerk triggers inschakelen met behulp van de volgende Azure CLI-opdracht:
 
@@ -146,7 +146,7 @@ Zie de [app service-documentatie voor hybride verbindingen voor](../app-service/
 
 Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service plan of App Service Environment. U kunt uitgaande beperkingen configureren voor het virtuele netwerk waar uw App Service Environment wordt geïmplementeerd.
 
-Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door de toepassings instelling `WEBSITE_VNET_ROUTE_ALL=1`toe te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
+Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door de toepassings instelling toe `WEBSITE_VNET_ROUTE_ALL=1` te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

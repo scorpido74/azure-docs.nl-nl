@@ -1,19 +1,20 @@
 ---
 title: Een schaalset voor virtuele Azure-machines wijzigen
 description: Meer informatie over hoe u een schaalset voor virtuele Azure-machines wijzigt en bijwerkt met de REST Api's, Azure PowerShell en Azure CLI
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: management
 ms.date: 03/10/2020
-ms.author: mimckitt
-ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476821"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121011"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset wijzigen
 
@@ -156,7 +157,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Deze eigenschappen beschrijven de configuratie van een VM-exemplaar binnen een schaalset, niet de configuratie van de schaalset als geheel. Het model Scale set heeft `overprovision` bijvoorbeeld een eigenschap, terwijl het model voor een VM-exemplaar binnen een schaalset niet. Dit verschil is omdat het overinrichten een eigenschap is van de volledige schaalset, niet de afzonderlijke VM-exemplaren in de schaalset (Zie [ontwerp overwegingen voor schaal sets](virtual-machine-scale-sets-design-overview.md#overprovisioning)) voor meer informatie over overinrichting.
+Deze eigenschappen beschrijven de configuratie van een VM-exemplaar binnen een schaalset, niet de configuratie van de schaalset als geheel. Het model Scale set heeft bijvoorbeeld `overprovision` een eigenschap, terwijl het model voor een VM-exemplaar binnen een schaalset niet. Dit verschil is omdat het overinrichten een eigenschap is van de volledige schaalset, niet de afzonderlijke VM-exemplaren in de schaalset (Zie [ontwerp overwegingen voor schaal sets](virtual-machine-scale-sets-design-overview.md#overprovisioning)) voor meer informatie over overinrichting.
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>De weer gave van de VM-instantie voor schaal sets
@@ -272,11 +273,11 @@ Als u een eigenschap van een globale schaalset wilt bijwerken, moet u de eigensc
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Als u de schaalset eerder met de `az vmss create` opdracht hebt geïmplementeerd, kunt u de `az vmss create` opdracht opnieuw uitvoeren om de schaalset bij te werken. Zorg ervoor dat alle eigenschappen in de `az vmss create` opdracht hetzelfde zijn als voorheen, met uitzonde ring van de eigenschappen die u wilt wijzigen.
+    - Als u de schaalset eerder met de opdracht hebt geïmplementeerd `az vmss create` , kunt u de `az vmss create` opdracht opnieuw uitvoeren om de schaalset bij te werken. Zorg ervoor dat alle eigenschappen in de `az vmss create` opdracht hetzelfde zijn als voorheen, met uitzonde ring van de eigenschappen die u wilt wijzigen.
 
 - U kunt ook [resources.Azure.com](https://resources.azure.com) of de [Azure sdk's](https://azure.microsoft.com/downloads/)gebruiken.
 
-Zodra het model voor de schaalset is bijgewerkt, is de nieuwe configuratie van toepassing op alle nieuwe Vm's die in de schaalset worden gemaakt. De modellen voor de bestaande virtuele machines in de schaalset moeten echter wel up-to-date zijn met het meest recente model van de schaalset. In het model voor elke VM is een Booleaanse eigenschap met `latestModelApplied` de naam die aangeeft of de virtuele machine up-to-date is met het laatste model van de schaalset (`true` dit betekent dat de virtuele machine up-to-date is met het meest recente model).
+Zodra het model voor de schaalset is bijgewerkt, is de nieuwe configuratie van toepassing op alle nieuwe Vm's die in de schaalset worden gemaakt. De modellen voor de bestaande virtuele machines in de schaalset moeten echter wel up-to-date zijn met het meest recente model van de schaalset. In het model voor elke VM is een Booleaanse eigenschap met `latestModelApplied` de naam die aangeeft of de virtuele machine up-to-date is met het laatste model van de schaalset ( `true` Dit betekent dat de virtuele machine up-to-date is met het meest recente model).
 
 
 ## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Vm's up-to-date zetten met het nieuwste model voor schaal sets

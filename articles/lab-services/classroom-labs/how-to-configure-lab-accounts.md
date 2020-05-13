@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14f66701d3a375807829493f866dcb91b131f2e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284302"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121079"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Lab-accounts configureren in Azure Lab Services 
 In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. 
@@ -38,6 +38,9 @@ Hier volgen enkele beperkingen bij het opgeven van het adres bereik dat u moet o
 
 1. Selecteer op de pagina **Lab-account** de optie **Labs-instellingen** in het menu links.
 2. Geef in het veld **adres bereik** het adres bereik op voor virtuele machines die in het lab worden gemaakt. Het adres bereik moet in de CIDR-notatie (Classless Inter-Domain Routing) staan (voor beeld: 10.20.0.0/23). Virtuele machines in het lab worden gemaakt in dit adres bereik.
+
+    > [!NOTE]
+    > De eigenschap adres bereik is alleen van toepassing als het virtuele netwerk van de peer is ingeschakeld voor het lab. 
 3. Selecteer **Opslaan** op de werkbalk. 
 
     ![Adres bereik configureren](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)

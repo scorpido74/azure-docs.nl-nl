@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202410"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121528"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -29,7 +29,7 @@ De volledige lijst met Application Insights functies die beschikbaar zijn voor u
 
 Als [Application Insights integratie is ingeschakeld](#enable-application-insights-integration), kunt u telemetrie-gegevens weer geven op het tabblad **monitor** .
 
-1. Selecteer op de pagina functie-app een functie die ten minste eenmaal is uitgevoerd nadat Application Insights is geconfigureerd. Selecteer vervolgens het tabblad **monitor** . Selecteer regel matig **vernieuwen** , totdat de lijst met functie aanroepen wordt weer gegeven.
+1. Selecteer op de pagina functie-app een functie die ten minste eenmaal is uitgevoerd nadat Application Insights is geconfigureerd. Selecteer vervolgens **monitor** in het linkerdeel venster. Selecteer regel matig **vernieuwen** totdat de lijst met functie aanroepen wordt weer gegeven.
 
    ![Lijst met aanroepen](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +40,9 @@ Als [Application Insights integratie is ingeschakeld](#enable-application-insigh
 
    ![Details van aanroep](media/functions-monitoring/invocation-details-ai.png)
 
-1. Kies de koppeling **uitvoeren in Application Insights** om de bron van de query te bekijken die de Azure monitor logboek gegevens ophaalt in azure log als dit de eerste keer is dat Azure log Analytics in uw abonnement wordt gebruikt, wordt u gevraagd om in te scha kelen.
+1. Kies **uitvoeren in Application Insights** om de bron van de query weer te geven waarmee de Azure monitor logboek gegevens worden opgehaald in het Azure-logboek. Als dit de eerste keer is dat u Azure Log Analytics gebruikt in uw abonnement, wordt u gevraagd om dit in te scha kelen.
 
-1. Wanneer u deze koppeling kiest en ervoor kiest om logboek analyse in te scha kelen. de volgende query wordt weer gegeven. U kunt zien dat de query resultaten beperkt zijn tot de laatste 30 dagen (`where timestamp > ago(30d)`). Daarnaast worden de resultaten niet meer dan 20 rijen (`take 20`) weer gegeven. De lijst met aanroep Details voor uw functie is daarentegen voor de afgelopen 30 dagen zonder limiet.
+1. Nadat u Log Analytics hebt ingeschakeld, wordt de volgende query weer gegeven. U kunt zien dat de query resultaten beperkt zijn tot de laatste 30 dagen ( `where timestamp > ago(30d)` ). Daarnaast worden de resultaten niet meer dan 20 rijen () weer gegeven `take 20` . De lijst met aanroep Details voor uw functie is daarentegen voor de afgelopen 30 dagen zonder limiet.
 
    ![Application Insights analyse aanroep lijst](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,7 +50,7 @@ Zie voor meer informatie [Query's uitvoeren op telemetriegegevens](#query-teleme
 
 ## <a name="view-telemetry-in-application-insights"></a>Telemetrie in Application Insights weer geven
 
-Als u Application Insights vanuit een functie-app in de Azure Portal wilt openen, gaat u naar de **overzichts** pagina van de functie-app. Onder **geconfigureerde onderdelen**selecteert u **Application Insights**.
+Als u Application Insights wilt openen vanuit een functie-app in de Azure Portal, selecteert u **Application Insights** onder **instellingen** op de linkerpagina. Als dit de eerste keer is dat Application Insights met uw abonnement wordt gebruikt, wordt u gevraagd om dit in te scha kelen: Selecteer **Application Insights inschakelen**en selecteer vervolgens **Toep assen** op de volgende pagina.
 
 ![Open Application Insights op de pagina overzicht van functie-app](media/functions-monitoring/ai-link.png)
 
@@ -63,7 +63,7 @@ De volgende gebieden van Application Insights kunnen nuttig zijn bij het evaluer
 | Onderzoeken | Beschrijving |
 | ---- | ----------- |
 | **[Fouten](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
-| **[Prestaties](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
+| **[Nemen](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
 | **[Metrische gegevens](../azure-monitor/app/metrics-explorer.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
 | **[Live Metrics](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
 
@@ -97,14 +97,14 @@ De tabellen die beschikbaar zijn, worden weer gegeven op het tabblad **schema** 
 
 De andere tabellen zijn voor beschikbaarheids testen en voor client-en browser-telemetrie. U kunt aangepaste telemetrie implementeren om er gegevens aan toe te voegen.
 
-In elke tabel bevindt zich een deel van de functions- `customDimensions` specifieke gegevens in een veld.  De volgende query haalt bijvoorbeeld alle traceringen op die logboek niveau `Error`hebben.
+In elke tabel bevindt zich een deel van de functions-specifieke gegevens in een `customDimensions` veld.  De volgende query haalt bijvoorbeeld alle traceringen op die logboek niveau hebben `Error` .
 
 <pre>
 traces 
 | where customDimensions.LogLevel == "Error"
 </pre>
 
-De runtime levert de `customDimensions.LogLevel` velden `customDimensions.Category` en. U kunt extra velden opgeven in de logboeken die u in uw functie code schrijft. Zie [gestructureerde logboek registratie](#structured-logging) verderop in dit artikel.
+De runtime levert de `customDimensions.LogLevel` `customDimensions.Category` velden en. U kunt extra velden opgeven in de logboeken die u in uw functie code schrijft. Zie [gestructureerde logboek registratie](#structured-logging) verderop in dit artikel.
 
 ## <a name="configure-categories-and-log-levels"></a>Categorieën en logboek niveaus configureren
 
@@ -116,16 +116,16 @@ De Azure Functions-logboeken bevatten een *categorie* voor elk logboek. De categ
 
 | Categorie | Beschrijving |
 | ----- | ----- | 
-| Host.Results | In deze logboeken worden de **aanvragen** weer gegeven in Application Insights. Hiermee wordt aangegeven of een functie is geslaagd of mislukt. Al deze logboeken worden geschreven op `Information` niveau. Als u filtert `Warning` op of hoger, worden deze gegevens niet weer gegeven. |
-| Host. aggregator | Deze logboeken bieden aantallen en gemiddelden van functie aanroepen gedurende een [Configureer bare](#configure-the-aggregator) periode. De standaard periode is 30 seconden of 1.000 resultaten, afhankelijk van wat het eerste komt. De logboeken zijn beschikbaar in de **customMetrics** -tabel in Application Insights. Voor beelden zijn het aantal uitvoeringen, het slagings percentage en de duur. Al deze logboeken worden geschreven op `Information` niveau. Als u filtert `Warning` op of hoger, worden deze gegevens niet weer gegeven. |
+| Host.Results | In deze logboeken worden de **aanvragen** weer gegeven in Application Insights. Hiermee wordt aangegeven of een functie is geslaagd of mislukt. Al deze logboeken worden geschreven op `Information` niveau. Als u filtert op `Warning` of hoger, worden deze gegevens niet weer gegeven. |
+| Host. aggregator | Deze logboeken bieden aantallen en gemiddelden van functie aanroepen gedurende een [Configureer bare](#configure-the-aggregator) periode. De standaard periode is 30 seconden of 1.000 resultaten, afhankelijk van wat het eerste komt. De logboeken zijn beschikbaar in de **customMetrics** -tabel in Application Insights. Voor beelden zijn het aantal uitvoeringen, het slagings percentage en de duur. Al deze logboeken worden geschreven op `Information` niveau. Als u filtert op `Warning` of hoger, worden deze gegevens niet weer gegeven. |
 
 Alle logboeken voor andere categorieën dan deze zijn beschikbaar in de **tracerings** tabel in Application Insights.
 
-Alle logboeken met categorieën die beginnen `Host` met, worden geschreven door de functions-runtime. De **functie gestart** en **voltooide** logboeken van de `Host.Executor`functie hebben een categorie. Voor geslaagde uitvoeringen zijn `Information` deze logboeken niveau. Uitzonde ringen worden `Error` op niveau vastgelegd. De runtime maakt `Warning` ook niveau logboeken, bijvoorbeeld: wachtrij berichten die zijn verzonden naar de verontreinigde wachtrij.
+Alle logboeken met categorieën die beginnen met `Host` , worden geschreven door de functions-runtime. De **functie gestart** en **voltooide** logboeken van de functie hebben een categorie `Host.Executor` . Voor geslaagde uitvoeringen zijn deze logboeken `Information` niveau. Uitzonde ringen worden op `Error` niveau vastgelegd. De runtime maakt ook `Warning` niveau logboeken, bijvoorbeeld: wachtrij berichten die zijn verzonden naar de verontreinigde wachtrij.
 
-Met de functie runtime worden logboeken gemaakt met een categorie die begint met ' host '. In versie 1. x, de `function started`, `function executed`en `function completed` logboeken hebben de categorie `Host.Executor`. Vanaf versie 2. x hebben deze logboeken de categorie `Function.<YOUR_FUNCTION_NAME>`.
+Met de functie runtime worden logboeken gemaakt met een categorie die begint met ' host '. In versie 1. x, de `function started` , `function executed` en `function completed` Logboeken hebben de categorie `Host.Executor` . Vanaf versie 2. x hebben deze logboeken de categorie `Function.<YOUR_FUNCTION_NAME>` .
 
-Als u Logboeken in uw functie code schrijft, is de categorie `Function.<YOUR_FUNCTION_NAME>.User` en kan elk logboek niveau zijn. In versie 1. x van de functions runtime is `Function`de categorie.
+Als u Logboeken in uw functie code schrijft, is de categorie `Function.<YOUR_FUNCTION_NAME>.User` en kan elk logboek niveau zijn. In versie 1. x van de functions runtime is de categorie `Function` .
 
 ### <a name="log-levels"></a>Logboekniveaus
 
@@ -184,13 +184,13 @@ Versie v2. x en latere versies van de functions runtime gebruiken de [.net core 
 
 In dit voor beeld worden de volgende regels ingesteld:
 
-* Voor logboeken met `Host.Results` een `Function`categorie of, `Error` alleen niveau en hierboven verzenden naar Application Insights. Logboeken `Warning` voor niveau en hieronder worden genegeerd.
-* Voor logboeken met `Host.Aggregator`categorie verzendt u alle logboeken naar Application Insights. Het `Trace` logboek niveau is hetzelfde als wat sommige logboeken aanroepen `Verbose`, maar in `Trace` het bestand [host. json] gebruiken.
-* Voor alle andere logboeken moet u `Information` alleen het niveau en de bovenstaande berichten verzenden naar Application Insights.
+* Voor logboeken met een categorie `Host.Results` of `Function` , alleen `Error` niveau en hierboven verzenden naar Application Insights. Logboeken voor `Warning` niveau en hieronder worden genegeerd.
+* Voor logboeken met categorie `Host.Aggregator` verzendt u alle logboeken naar Application Insights. Het `Trace` logboek niveau is hetzelfde als wat sommige logboeken aanroepen `Verbose` , maar `Trace` in het bestand [host. json] gebruiken.
+* Voor alle andere logboeken moet `Information` u alleen het niveau en de bovenstaande berichten verzenden naar Application Insights.
 
-De categorie waarde in [host. json] bepaalt de logboek registratie voor alle categorieën die met dezelfde waarde beginnen. `Host`in [host. json] beheert de logboek `Host.General`registratie `Host.Executor`voor `Host.Results`,,, enzovoort.
+De categorie waarde in [host. json] bepaalt de logboek registratie voor alle categorieën die met dezelfde waarde beginnen. `Host`in [host. json] beheert de logboek registratie voor `Host.General` , `Host.Executor` , `Host.Results` , enzovoort.
 
-Als [host. json] meerdere categorieën bevat die beginnen met dezelfde teken reeks, worden de langere reeksen eerst vergeleken. Stel dat u wilt dat alles uit de `Host.Aggregator` runtime, met `Error` uitzonde ring van logboek `Host.Aggregator` op niveau, maar `Information` u wilt aanmelden op het niveau:
+Als [host. json] meerdere categorieën bevat die beginnen met dezelfde teken reeks, worden de langere reeksen eerst vergeleken. Stel dat u wilt dat alles uit de runtime, met uitzonde ring van `Host.Aggregator` logboek op `Error` niveau, maar u wilt `Host.Aggregator` aanmelden op het `Information` niveau:
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
@@ -225,7 +225,7 @@ Als [host. json] meerdere categorieën bevat die beginnen met dezelfde teken ree
 }
 ```
 
-Als u alle logboeken voor een categorie wilt onderdrukken, kunt u `None`het logboek niveau gebruiken. Er zijn geen logboeken met deze categorie geschreven en hiervoor is geen logboek niveau meer beschikbaar.
+Als u alle logboeken voor een categorie wilt onderdrukken, kunt u het logboek niveau gebruiken `None` . Er zijn geen logboeken met deze categorie geschreven en hiervoor is geen logboek niveau meer beschikbaar.
 
 ## <a name="configure-the-aggregator"></a>De aggregator configureren
 
@@ -281,9 +281,9 @@ U kunt Logboeken schrijven in uw functie code die wordt weer gegeven als traceri
 
 ### <a name="ilogger"></a>ILogger
 
-Gebruik een [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) -para meter in uw functies in `TraceWriter` plaats van een para meter. Logboeken gemaakt met `TraceWriter` behulp van go naar `ILogger` Application Insights, maar u kunt [gestructureerde logboek registratie](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)uitvoeren.
+Gebruik een [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) -para meter in uw functies in plaats van een `TraceWriter` para meter. Logboeken gemaakt met behulp van `TraceWriter` Go naar Application Insights, maar `ILogger` u kunt [gestructureerde logboek registratie](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)uitvoeren.
 
-Met een `ILogger` -object roept `Log<level>` u [uitbreidings methoden aan op ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) om logboeken te maken. Met de volgende code `Information` worden logboeken geschreven met de functie. <YOUR_FUNCTION_NAME>. Gebruiker.
+Met een `ILogger` -object roept u `Log<level>` [uitbreidings methoden aan op ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) om logboeken te maken. Met de volgende code worden `Information` Logboeken geschreven met de functie. <YOUR_FUNCTION_NAME>. Gebruiker.
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -305,11 +305,11 @@ Als u dezelfde bericht teken reeks behoudt en de volg orde van de para meters om
 
 Tijdelijke aanduidingen worden op deze manier verwerkt, zodat u gestructureerde logboek registratie kunt uitvoeren. Application Insights slaat de parameter naam/waarde-paren en de bericht teken reeks op. Het resultaat is dat de bericht argumenten worden velden waarop u kunt zoeken.
 
-Als de aanroep van de traceer methode lijkt op het vorige voor beeld, kunt u `customDimensions.prop__rowKey`het veld opvragen. Het `prop__` voor voegsel wordt toegevoegd om ervoor te zorgen dat er geen conflicten zijn tussen velden die door de runtime worden toegevoegd en de velden die door de functie code worden toegevoegd.
+Als de aanroep van de traceer methode lijkt op het vorige voor beeld, kunt u het veld opvragen `customDimensions.prop__rowKey` . Het `prop__` voor voegsel wordt toegevoegd om ervoor te zorgen dat er geen conflicten zijn tussen velden die door de runtime worden toegevoegd en de velden die door de functie code worden toegevoegd.
 
-U kunt ook een query uitvoeren op de oorspronkelijke bericht teken reeks door te `customDimensions.prop__{OriginalFormat}`verwijzen naar het veld.  
+U kunt ook een query uitvoeren op de oorspronkelijke bericht teken reeks door te verwijzen naar het veld `customDimensions.prop__{OriginalFormat}` .  
 
-Hier volgt een voor beeld van een `customDimensions` JSON-weer gave van gegevens:
+Hier volgt een voor beeld van een JSON-weer gave van `customDimensions` gegevens:
 
 ```json
 {
@@ -330,7 +330,7 @@ In C#-script functies kunt u de `LogMetric` uitbreidings methode gebruiken `ILog
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Deze code is een alternatief voor het `TrackMetric` aanroepen van met behulp van de Application INSIGHTS-API voor .net.
+Deze code is een alternatief voor het aanroepen `TrackMetric` van met behulp van de Application Insights-API voor .net.
 
 ## <a name="write-logs-in-javascript-functions"></a>Logboeken schrijven in JavaScript-functies
 
@@ -348,7 +348,7 @@ Wanneer u werkt met [versie 1. x](functions-versions.md#creating-1x-apps) van de
 context.log.metric("TestMetric", 1234);
 ```
 
-Deze code is een alternatief voor het `trackMetric` aanroepen van met behulp van de node. js-SDK voor Application Insights.
+Deze code is een alternatief voor het aanroepen `trackMetric` van met behulp van de node. js-SDK voor Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Aangepaste telemetrie voor logboeken in C#-functies
 
@@ -368,13 +368,13 @@ Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VE
 
 ---
 
-Vervang `<VERSION>` in deze opdracht door een versie van dit pakket die de geïnstalleerde versie van [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)ondersteunt. 
+Vervang in deze opdracht door `<VERSION>` een versie van dit pakket die de geïnstalleerde versie van [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)ondersteunt. 
 
 In de volgende C#-voor beelden wordt de [aangepaste telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md)gebruikt. Het voor beeld is voor een .NET-klassebibliotheek, maar de Application Insights code is hetzelfde voor het C#-script.
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
-Versie 2. x en latere versies van de runtime gebruiken nieuwere functies in Application Insights om telemetrie automatisch te correleren met de huidige bewerking. U hoeft de bewerking `Id`, `ParentId`of `Name` velden, niet hand matig in te stellen.
+Versie 2. x en latere versies van de runtime gebruiken nieuwere functies in Application Insights om telemetrie automatisch te correleren met de huidige bewerking. U hoeft de bewerking `Id` , of velden, niet hand matig in te stellen `ParentId` `Name` .
 
 ```cs
 using System;
@@ -527,9 +527,9 @@ namespace functionapp0915
 }
 ```
 
-U kunt `TrackRequest` niet `StartOperation<RequestTelemetry>` bellen of omdat er dubbele aanvragen voor een functie aanroep worden weer geven.  Met de functie runtime worden aanvragen automatisch bijgehouden.
+`TrackRequest`U kunt niet bellen of `StartOperation<RequestTelemetry>` omdat er dubbele aanvragen voor een functie aanroep worden weer geven.  Met de functie runtime worden aanvragen automatisch bijgehouden.
 
-Niet instellen `telemetryClient.Context.Operation.Id`. Deze globale instelling veroorzaakt een onjuiste correlatie wanneer er meerdere functies tegelijkertijd worden uitgevoerd. Maak in plaats daarvan een nieuwe telemetrie`DependencyTelemetry`- `EventTelemetry`instantie (,) `Context` en wijzig de bijbehorende eigenschap. Geef vervolgens de telemetrie-instantie door aan `Track` de overeenkomstige `TelemetryClient` methode`TrackDependency()`op `TrackEvent()`( `TrackMetric()`,,). Deze methode zorgt ervoor dat de telemetrie de juiste correlatie details heeft voor de huidige functie aanroep.
+Niet instellen `telemetryClient.Context.Operation.Id` . Deze globale instelling veroorzaakt een onjuiste correlatie wanneer er meerdere functies tegelijkertijd worden uitgevoerd. Maak in plaats daarvan een nieuwe telemetrie-instantie ( `DependencyTelemetry` , `EventTelemetry` ) en wijzig de bijbehorende `Context` eigenschap. Geef vervolgens de telemetrie-instantie door aan de overeenkomstige `Track` methode op `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` , `TrackMetric()` ). Deze methode zorgt ervoor dat de telemetrie de juiste correlatie details heeft voor de huidige functie aanroep.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Aangepaste telemetrie voor logboeken in JavaScript-functies
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 };
 ```
 
-Met `tagOverrides` de para meter `operation_Id` wordt de aanroep-id van de functie ingesteld. Met deze instelling kunt u alle automatisch gegenereerde en aangepaste telemetrie voor een bepaalde functie aanroep correleren.
+`tagOverrides`Met de para meter wordt de `operation_Id` aanroep-id van de functie ingesteld. Met deze instelling kunt u alle automatisch gegenereerde en aangepaste telemetrie voor een bepaalde functie aanroep correleren.
 
 ## <a name="dependencies"></a>Afhankelijkheden
 
@@ -605,7 +605,7 @@ Als u wilt controleren welke Application Insights resource wordt gemaakt, select
 
 ![Application Insights inschakelen tijdens het maken van een functie-app](media/functions-monitoring/enable-ai-new-function-app.png)
 
-Wanneer u **maken**kiest, wordt er een Application Insights resource gemaakt met uw functie-app, die `APPINSIGHTS_INSTRUMENTATIONKEY` de set in toepassings instellingen bevat. Alles is klaar voor gebruik.
+Wanneer u **maken**kiest, wordt er een Application Insights resource gemaakt met uw functie-app, die de `APPINSIGHTS_INSTRUMENTATIONKEY` set in toepassings instellingen bevat. Alles is klaar voor gebruik.
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Toevoegen aan een bestaande functie-app 
@@ -688,7 +688,7 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 Als u Application Insights inschakelt, schakelt u de ingebouwde logboek registratie uit die gebruikmaakt van Azure Storage. De ingebouwde logboek registratie is handig voor het testen met lichte werk belastingen, maar is niet bedoeld voor productie gebruik met een hoge belasting. Voor productie bewaking wordt aangeraden Application Insights. Als ingebouwde logboek registratie in productie wordt gebruikt, is de registratie record mogelijk onvolledig vanwege beperking op Azure Storage.
 
-Als u de ingebouwde logboek registratie wilt uitschakelen, `AzureWebJobsDashboard` verwijdert u de app-instelling. Voor informatie over het verwijderen van app-instellingen in de Azure Portal, zie de sectie **Toepassings instellingen** in [hoe u een functie-app beheert](functions-how-to-use-azure-function-app-settings.md#settings). Voordat u de app-instelling verwijdert, moet u ervoor zorgen dat er voor geen van de bestaande functies in dezelfde functie-app de instelling voor Azure Storage triggers of bindingen wordt gebruikt.
+Als u de ingebouwde logboek registratie wilt uitschakelen, verwijdert u de `AzureWebJobsDashboard` app-instelling. Voor informatie over het verwijderen van app-instellingen in de Azure Portal, zie de sectie **Toepassings instellingen** in [hoe u een functie-app beheert](functions-how-to-use-azure-function-app-settings.md#settings). Voordat u de app-instelling verwijdert, moet u ervoor zorgen dat er voor geen van de bestaande functies in dezelfde functie-app de instelling voor Azure Storage triggers of bindingen wordt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

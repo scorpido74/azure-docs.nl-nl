@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854242"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123816"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -127,6 +127,8 @@ Windows Server-ondersteuning voor de knooppunt groep bevat enkele beperkingen di
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biedt AKS een service overeenkomst?
 
+AKS biedt de mogelijkheid om 99,95% Beschik baarheid te beleven voor de API-server met [uptime SLA] [uptime-sla.md].
+
 In een Service Level Agreement (SLA) stemt de provider ermee in om de kosten van de service te vergoeden als niet aan het gepubliceerde service niveau wordt voldaan. Omdat AKS gratis is, zijn er geen kosten beschikbaar voor schadeloosstelling, dus AKS heeft geen formele SLA. AKS zoekt echter de beschik baarheid van ten minste 99,5 procent voor de Kubernetes-API-server.
 
 Het is belang rijk dat u het onderscheid herkent tussen de beschik baarheid van de AKS-service, die verwijst naar de uptime van het Kubernetes-besturings vlak en de beschik baarheid van uw specifieke werk belasting die wordt uitgevoerd op Azure Virtual Machines. Hoewel het besturings vlak mogelijk niet beschikbaar is als het besturings element niet gereed is, kunnen de werk belastingen van uw cluster die worden uitgevoerd op virtuele machines van Azure, nog steeds functioneren. De gegeven Azure-Vm's zijn betaalde bronnen die door een financiële SLA worden ondersteund. Lees [hier meer informatie](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) over de sla van de Azure-VM en hoe u deze Beschik baarheid kunt verg Roten met functies als [Beschikbaarheidszones][availability-zones].
@@ -173,7 +175,7 @@ Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de 
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kan ik de Api's voor de schaalset van de virtuele machine gebruiken om hand matig te schalen?
 
-Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund. Gebruik de AKS-Api's`az aks scale`().
+Nee, schaal bewerkingen met behulp van de virtuele-machine Scale set-Api's worden niet ondersteund. Gebruik de AKS-Api's ( `az aks scale` ).
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Kan ik de schaal sets van virtuele machines gebruiken om hand matig te schalen naar 0 knoop punten?
 
@@ -209,6 +211,7 @@ Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[uptime-SLA]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

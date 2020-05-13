@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 28a909c3b4011b55fb3fb67d9d64ab57a310cb86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207257"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125227"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -66,7 +67,7 @@ In de volgende tabel ziet u voor beelden van prijzen en zijn alleen bedoeld ter 
 
 Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/application-gateway/)voor meer informatie over prijzen. 
 
-**Voor beeld 1**
+**Voorbeeld 1**
 
 Een Application Gateway Standard_v2 is ingericht zonder automatisch te schalen in hand matige schaal modus met vaste capaciteit van vijf exemplaren.
 
@@ -75,7 +76,7 @@ Capaciteits eenheden = 744 (uur) * 10 capaciteits eenheid per instantie * 5 exem
 
 Totale prijs = $148,8 + $297,6 = $446,4
 
-**Voor beeld 2**
+**Voorbeeld 2**
 
 Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van nul instanties en gedurende deze tijd 25 nieuwe TLS-verbindingen per seconde, gemiddelde van 8,88-Mbps-gegevens overdracht. Als er verbinding is met de korte levens duur, is uw prijs:
 
@@ -132,8 +133,16 @@ Totale prijs = $267,84 + $85,71 = $353,55
 
 Application Gateway en WAF kunnen worden geconfigureerd om in twee modi te schalen:
 
-- Automatisch **schalen** : als automatische schaling is ingeschakeld, worden de Application Gateway-en WAF v2-sku's omhoog of omlaag geschaald op basis van de vereisten voor toepassings verkeer. Deze modus biedt een betere elasticiteit voor uw toepassing en elimineert de nood zaak om de grootte van de toepassings gateway of het aantal instanties te raden. Met deze modus kunt u ook kosten besparen door te voor komen dat de gateway op piek ingerichte capaciteit wordt uitgevoerd voor de verwachte maximale belasting van het verkeer. U moet een minimum en optioneel maximum aantal exemplaren opgeven. De minimale capaciteit zorgt ervoor dat Application Gateway en WAF v2 niet onder het opgegeven minimum aantal instanties vallen, zelfs als er geen verkeer is. Elk exemplaar telt als 10 extra gereserveerde capaciteits eenheden. Nul geeft geen gereserveerde capaciteit aan en is uitsluitend automatisch geschaald. Houd er rekening mee dat bij nul extra minimum instanties nog steeds hoge Beschik baarheid van de service wordt gegarandeerd die altijd is opgenomen in een vaste prijs. U kunt eventueel ook een maximum aantal exemplaren opgeven, waardoor het Application Gateway niet groter wordt dan het opgegeven aantal exemplaren. U wordt gefactureerd voor de hoeveelheid verkeer die door de gateway wordt geleverd. Het aantal exemplaren kan variëren van 0 tot en met 125. De standaard waarde voor het maximum aantal exemplaren is 20 als deze niet is opgegeven.
+- Automatisch **schalen** : als automatische schaling is ingeschakeld, worden de Application Gateway-en WAF v2-sku's omhoog of omlaag geschaald op basis van de vereisten voor toepassings verkeer. Deze modus biedt een betere elasticiteit voor uw toepassing en elimineert de nood zaak om de grootte van de toepassings gateway of het aantal instanties te raden. Met deze modus kunt u ook kosten besparen door te voor komen dat de gateway op piek ingerichte capaciteit wordt uitgevoerd voor de verwachte maximale belasting van het verkeer. U moet een minimum en optioneel maximum aantal exemplaren opgeven. De minimale capaciteit zorgt ervoor dat Application Gateway en WAF v2 niet onder het opgegeven minimum aantal instanties vallen, zelfs als er geen verkeer is. Elk exemplaar is ongeveer gelijk aan 10 extra gereserveerde capaciteits eenheden. Nul geeft geen gereserveerde capaciteit aan en is uitsluitend automatisch geschaald. U kunt eventueel ook een maximum aantal exemplaren opgeven, waardoor het Application Gateway niet groter wordt dan het opgegeven aantal exemplaren. Er worden alleen kosten in rekening gebracht voor de hoeveelheid verkeer die door de gateway wordt geleverd. Het aantal exemplaren kan variëren van 0 tot en met 125. De standaard waarde voor het maximum aantal exemplaren is 20 als deze niet is opgegeven.
 - **Hand matig** : u kunt ook hand matige modus kiezen waarbij de gateway niet automatisch wordt geschaald. Als er in deze modus meer verkeer is dan wat Application Gateway of WAF kan verwerken, kan dit leiden tot verlies van verkeer. Bij hand matige modus wordt het aantal exemplaren opgegeven dat verplicht is. Aantal exemplaren kan variëren van 1 tot 125 exemplaren.
+
+## <a name="autoscaling-and-high-availability"></a>Automatisch schalen en hoge Beschik baarheid
+
+Azure-toepassing gateways worden altijd op een Maxi maal beschik bare manier geïmplementeerd. De service is gemaakt met meerdere exemplaren die zijn gemaakt als geconfigureerd (als automatisch schalen is uitgeschakeld) of die vereist zijn voor het laden van de toepassing (als automatisch schalen is ingeschakeld). Houd er rekening mee dat u in het oogpunt van de gebruiker niet per se de afzonderlijke instanties kunt zien, maar alleen in de Application Gateway Service als geheel. Als er een probleem is met een bepaald exemplaar en er wordt gestaakt, wordt door Azure-toepassing gateway transparant een nieuw exemplaar gemaakt.
+
+Houd er rekening mee dat zelfs als u automatisch schalen configureert met een minimum aantal instanties, de service nog steeds Maxi maal beschikbaar is, wat altijd is opgenomen in de vaste prijs.
+
+Het maken van een nieuw exemplaar kan echter ongeveer zes of zeven minuten duren. Als u geen gebruik wilt maken van deze downtime, kunt u dus een minimum aantal exemplaren van 2 configureren, in het ideale geval met ondersteuning voor de beschikbaarheids zone. Op deze manier hebt u onder normale omstandigheden ten minste twee exemplaren in uw Azure-toepassing-gateway, dus als er een probleem is met de andere, wordt er tijdens het moment dat er een nieuwe instantie wordt gemaakt, met het verkeer gecommuniceerd. Houd er rekening mee dat een instantie van de Azure-toepassing-gateway ongeveer 10 capaciteits eenheden kan ondersteunen, dus afhankelijk van hoeveel verkeer u normaal gesp roken wilt, kunt u de instelling voor de minimale automatische schaal aanpassing configureren op een waarde hoger dan 2.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Vergelijking van functies tussen v1 SKU en v2 SKU
 
@@ -167,15 +176,15 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elke SKU.
 
 |Verschil|Details|
 |--|--|
-|Verificatie certificaat|Wordt niet ondersteund.<br>Zie [overzicht van end-to-end-TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie.|
+|Verificatie certificaat|Niet ondersteund.<br>Zie [overzicht van end-to-end-TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie.|
 |Standard_v2 en standaard Application Gateway op hetzelfde subnet mengen|Niet ondersteund|
 |Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie over ondersteunde scenario's.|
 |NSG voor binnenkomend poort bereik| -65200 tot 65535 voor Standard_v2 SKU<br>-65503 tot 65534 voor standaard-SKU.<br>Raadpleeg de [Veelgestelde vragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)voor meer informatie.|
-|Prestatie Logboeken in azure Diagnostics|Wordt niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
+|Prestatie Logboeken in azure Diagnostics|Niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
 |Billing|De facturering is gepland om te beginnen op 1 juli 2019.|
 |FIPS-modus|Deze worden momenteel niet ondersteund.|
 |Modus alleen ILB|Dit wordt momenteel niet ondersteund. De open bare en ILB modus samen worden ondersteund.|
-|Netwerk-Watcher-integratie|Wordt niet ondersteund.|
+|Netwerk-Watcher-integratie|Niet ondersteund.|
 |Azure Security Center-integratie|Nog niet beschikbaar.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migreren van v1 naar v2

@@ -3,58 +3,50 @@ title: Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functio
 description: Gebruik Azure Functions om een functie zonder server te maken die wordt aangeroepen met een HTTP-aanvraag, en waarmee een bericht worden gemaakt in een Azure Storage-wachtrij.
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
-ms.date: 09/19/2017
+ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756641"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121988"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
 
-In Azure Functions bieden invoer- en uitvoerbindingen een verklarende manier om gegevens van externe services beschikbaar te maken voor uw code. In deze snelstartgids gebruikt u een uitvoerbinding om een bericht in een wachtrij te maken wanneer een functie wordt geactiveerd met een HTTP-aanvraag. U gebruikt Azure Storage Explorer om de wachtrijberichten weer te geven die worden gemaakt met uw functie:
-
-![Wachtrijbericht weergegeven in Storage Explorer](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
+In Azure Functions bieden invoer- en uitvoerbindingen een verklarende manier om gegevens van externe services beschikbaar te maken voor uw code. In deze snelstartgids gebruikt u een uitvoerbinding om een bericht in een wachtrij te maken wanneer een functie wordt geactiveerd met een HTTP-aanvraag. U gebruikt Azure storage-container om de wachtrij berichten weer te geven die door de functie worden gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Dit zijn de vereisten voor het voltooien van deze snelstart:
 
-* Volg de instructies in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md) en voer de stap **Resources opschonen** niet uit. In deze snelstartgids worden de functie-app en de functie gemaakt die u hier gebruikt.
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-* Installeer [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Dit is een hulpprogramma dat u gebruikt om wachtrijberichten te onderzoeken die worden gemaakt met de uitvoerbinding.
+- Volg de instructies in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md) en voer de stap **Resources opschonen** niet uit. In deze snelstartgids worden de functie-app en de functie gemaakt die u hier gebruikt.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Een uitvoerbinding toevoegen
 
-In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Storage-uitvoerbinding toe te voegen aan de functie die u eerder hebt gemaakt. Met deze binding kunt u minimale code schrijven om een bericht te maken in een wachtrij. U hoeft geen code te schrijven voor taken zoals het openen van een opslagverbinding, het maken van een wachtrij of het krijgen van een verwijzing naar een wachtrij. Deze taken worden voor u verwerkt via Azure Functions-runtime en Queue Storage-uitvoerbinding.
+In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Storage-uitvoerbinding toe te voegen aan de functie die u eerder hebt gemaakt. Deze binding maakt het mogelijk om minimale code te schrijven om een bericht in een wachtrij te maken. U hoeft geen code te schrijven voor taken zoals het openen van een opslagverbinding, het maken van een wachtrij of het krijgen van een verwijzing naar een wachtrij. Deze taken worden voor u verwerkt via Azure Functions-runtime en Queue Storage-uitvoerbinding.
 
-1. Open in Azure Portal de pagina Functie-app voor de functie-app die u hebt gemaakt in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md). Selecteer hiervoor **Alle services > Functie-apps** en selecteer vervolgens de functie-app.
+1. Open in Azure Portal de pagina Functie-app voor de functie-app die u hebt gemaakt in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md). Als u de pagina wilt openen, zoekt en selecteert u **functie-app**. Selecteer vervolgens de functie-app.
 
-1. Selecteer de functie die u in deze eerdere snelstartgids hebt gemaakt.
+1. Selecteer de functie-app en selecteer vervolgens de functie die u hebt gemaakt in die eerdere Snelstartgids.
 
-1. Selecteer **> nieuwe uitvoer > Azure Queue Storage integreren**.
+1. Selecteer **integratie**en selecteer **+ uitvoer toevoegen**.
 
-1. Klik op **selecteren**.
+   :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding.png" alt-text="Maak een uitvoer binding voor uw functie." border="true":::
 
-    ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
+1. Selecteer het bindings type van **Azure Queue Storage** en voeg de instellingen toe zoals opgegeven in de tabel die volgt op deze scherm afbeelding: 
 
-1. Als een bericht **Extensies niet geïnstalleerd** wordt weergegeven, kiest u **Installeren** om de Storage-bindingenextensie te installeren in de functie-app. Dit kan een paar minuten duren.
-
-    ![De Storage-bindingextensie installeren](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
-
-1. Gebruik bij **Azure Queue Storage-uitvoer** de instellingen die zijn opgegeven in de tabel na deze schermopname: 
-
-    ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
-
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal." border="true":::
+    
     | Instelling      |  Voorgestelde waarde   | Beschrijving                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam van de berichtparameter** | outputQueueItem | De naam van de uitvoerbindingparameter. | 
+    | **Wachtrijnaam**   | outqueue  | De naam van de wachtrij waarmee u verbinding moet maken in uw opslagaccount. |
     | **Opslagaccountverbinding** | AzureWebJobsStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |
-    | **Wachtrijnaam**   | outqueue    | De naam van de wachtrij waarmee u verbinding moet maken in uw opslagaccount. |
 
-1. Klik op **Opslaan** om de binding toe te voegen.
+1. Selecteer **OK** om de binding toe te voegen.
 
 Nu u een uitvoerbinding hebt gedefinieerd, moet u de code bijwerken, zodat u de binding kunt gebruiken om berichten aan een wachtrij toe te voegen.  
 
@@ -62,7 +54,7 @@ Nu u een uitvoerbinding hebt gedefinieerd, moet u de code bijwerken, zodat u de 
 
 In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uitvoerwachtrij. Het bericht bevat de waarde die wordt doorgegeven aan de HTTP-trigger in de querytekenreeks. Als de querytekenreeks bijvoorbeeld `name=Azure` bevat, is het wachtrijbericht: *Naam wordt doorgegeven aan de functie: Azure*.
 
-1. Selecteer de functie om de functiecode in de editor weer te geven.
+1. Selecteer in de functie **code + test** om de functie code in de editor weer te geven.
 
 1. Werk de functiecode bij, afhankelijk van de functietaal:
 
@@ -99,53 +91,39 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Nadat de codewijzigingen zijn opgeslagen, selecteert u **Uitvoeren**. 
+1. Nadat de code wijzigingen zijn opgeslagen, selecteert u **testen**.
+1. Bevestig dat uw test overeenkomt met de onderstaande installatie kopie en selecteer **uitvoeren**. 
 
-    ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Test de binding van de wachtrij opslag in de Azure Portal." border="true":::
 
     U ziet dat de **Aanvraagtekst** de waarde `name`*Azure* bevat. Deze waarde ziet u in het wachtrijbericht dat wordt gemaakt wanneer de functie wordt aangeroepen.
     
     In plaats van hier **Uitvoeren** te selecteren, kunt u de functie aanroepen door een URL in te voeren in een browser en de waarde `name` op te geven in de querytekenreeks. De browsermethode kunt u bekijken in de [vorige snelstartgids](functions-create-first-azure-function.md#test-the-function).
 
-2. Raadpleeg de logboeken om er zeker van te zijn dat de functie is voltooid. 
+1. Raadpleeg de logboeken om er zeker van te zijn dat de functie is voltooid. 
 
-Wanneer de uitvoerbinding voor het eerst wordt gebruikt, wordt er door de runtime van Functions een nieuwe wachtrij met de naam **outqueue** gemaakt in uw opslagaccount. U gebruikt Storage Explorer om te controleren of de wachtrij en een bijbehorend bericht zijn gemaakt.
+Wanneer de uitvoerbinding voor het eerst wordt gebruikt, wordt er door de runtime van Functions een nieuwe wachtrij met de naam **outqueue** gemaakt in uw opslagaccount. U gebruikt Storage-account om te controleren of de wachtrij en een bericht in het bestand zijn gemaakt.
 
-### <a name="connect-storage-explorer-to-your-account"></a>Storage Explorer verbinden met uw account
+### <a name="find-the-storage-account-connected-to-azurewebjobsstorage"></a>Het opslag account zoeken dat is verbonden met AzureWebJobsStorage
 
-Sla deze sectie over als u Storage Explorer al hebt geïnstalleerd en hebt verbonden met het opslagaccount dat u gebruikt voor deze snelstartgids.
 
-1. Voer het hulpprogramma [Microsoft Azure Storage Explorer](https://storageexplorer.com/) uit, selecteer het verbindingspictogram aan de linkerkant, kies **Een opslagaccountnaam en -sleutel gebruiken** en selecteer **Volgende**.
+1. Ga naar de functie-app en selecteer **configuratie**.
 
-    ![Voer het hulpprogramma Storage Account Explorer uit.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
+1. Onder **Toepassings instellingen**selecteert u **AzureWebJobsStorage**.
 
-1. Selecteer in Azure Portal, op de pagina Functie-app, de betreffende functie, en selecteer vervolgens **Integreren**.
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Zoek het opslag account dat is verbonden met AzureWebJobsStorage." border="true":::
 
-1. Selecteer de **Azure Queue Storage**-uitvoerbinding die u in een eerdere stap hebt toegevoegd.
+1. Zoek de naam van het account en noteer deze.
 
-1. Vouw onder aan de pagina de sectie **Documentatie** uit. 
-
-   In de portal ziet u referenties die u in Storage Explorer kunt gebruiken om verbinding te maken met het opslagaccount.
-
-   ![Haal de verbindingsreferenties voor het opslagaccount op.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
-
-1. Kopieer de waarde **Accountnaam** in de portal en plak deze in het vak **Accountnaam** in Storage Explorer.
- 
-1. Klik op het pictogram weergeven/verbergen naast **Accountsleutel** om de waarde weer te geven. Kopieer vervolgens de waarde **Accountsleutel** en plak deze in het vak **Accountsleutel** in Storage Explorer.
-  
-1. Selecteer **Volgende > Verbinding maken**.
-
-   ![Plak de opslagreferenties en maak verbinding.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Zoek het opslag account dat is verbonden met AzureWebJobsStorage." border="true":::
 
 ### <a name="examine-the-output-queue"></a>De uitvoerwachtrij controleren
 
-1. Selecteer in Storage Explorer het opslagaccount dat u gebruikt voor deze snelstartgids.
+1. Selecteer in de resource groep voor de functie-app het opslag account dat u voor deze Quick Start gebruikt.
 
-1. Vouw het knooppunt **Wachtrijen** uit en selecteer vervolgens de wachtrij met de naam **outqueue**. 
+1. Selecteer onder **Queue-service** **wacht rijen** en selecteer de wachtrij met de naam **outwachtrij**. 
 
    De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde `name` van *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
-
-    ![Wachtrijbericht weergegeven in Storage Explorer](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
 1. Voer de functie opnieuw uit. Er wordt nu een nieuw bericht weergegeven in de wachtrij.  
 

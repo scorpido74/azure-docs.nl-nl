@@ -2,23 +2,24 @@
 title: Een sjabloon voor schaalsets converteren voor gebruik van beheerde schijven
 description: Een Azure Resource Manager sjabloon voor een schaalset voor virtuele machines converteren naar een sjabloon met een beheerde schijf schaalset.
 keywords: schaalsets voor virtuele machines
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 5/18/2017
-ms.author: mimckitt
-ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270652"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124887"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Een sjabloon voor schaal sets converteren naar een sjabloon voor een schaalset voor beheerde schijven
 
-Klanten met een resource manager-sjabloon voor het maken van een schaalset die geen gebruik maakt van een beheerde schijf, kan deze wijzigen voor het gebruik van beheerde schijven. In dit artikel wordt uitgelegd hoe u Managed disks gebruikt, als een voor beeld van een pull-aanvraag van de [Azure Quick](https://github.com/Azure/azure-quickstart-templates)start-sjablonen, een door de Community gestuurde opslag plaats voor voorbeeld sjablonen van Resource Manager. De volledige pull-aanvraag kan hier worden weer [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)gegeven: en de relevante delen van het verschil zijn hieronder, samen met uitleg:
+Klanten met een resource manager-sjabloon voor het maken van een schaalset die geen gebruik maakt van een beheerde schijf, kan deze wijzigen voor het gebruik van beheerde schijven. In dit artikel wordt uitgelegd hoe u Managed disks gebruikt, als een voor beeld van een pull-aanvraag van de [Azure Quick](https://github.com/Azure/azure-quickstart-templates)start-sjablonen, een door de Community gestuurde opslag plaats voor voorbeeld sjablonen van Resource Manager. De volledige pull-aanvraag kan hier worden weer gegeven: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) en de relevante delen van het verschil zijn hieronder, samen met uitleg:
 
 ## <a name="making-the-os-disks-managed"></a>De beheerde schijven van het besturings systeem maken
 
@@ -85,7 +86,7 @@ In het volgende verschil wordt de bron van het opslag account volledig uit de re
        "location": "[resourceGroup().location]",
 ```
 
-In het volgende voor komt, kunnen we zien dat de component afhankelijk is van het verwijderen van de-schaalset naar de lus die opslag accounts heeft gemaakt. In de oude sjabloon was dit ervoor te zorgen dat de opslag accounts zijn gemaakt voordat de schaalset wordt gemaakt, maar deze component niet langer nodig is met beheerde schijf. De eigenschap VHD containers wordt ook verwijderd, samen met de naam eigenschap van de besturingssysteem schijf, omdat deze eigenschappen automatisch worden afgehandeld op de schermen van de beheerde schijf. U kunt de `"managedDisk": { "storageAccountType": "Premium_LRS" }` configuratie ' osDisk ' toevoegen als u wilt dat er Premium-besturingssysteem schijven zijn. Alleen Vm's met een hoofd letters of kleine letters in de VM-SKU kunnen Premium-schijven gebruiken.
+In het volgende voor komt, kunnen we zien dat de component afhankelijk is van het verwijderen van de-schaalset naar de lus die opslag accounts heeft gemaakt. In de oude sjabloon was dit ervoor te zorgen dat de opslag accounts zijn gemaakt voordat de schaalset wordt gemaakt, maar deze component niet langer nodig is met beheerde schijf. De eigenschap VHD containers wordt ook verwijderd, samen met de naam eigenschap van de besturingssysteem schijf, omdat deze eigenschappen automatisch worden afgehandeld op de schermen van de beheerde schijf. U kunt `"managedDisk": { "storageAccountType": "Premium_LRS" }` de configuratie ' osDisk ' toevoegen als u wilt dat er Premium-besturingssysteem schijven zijn. Alleen Vm's met een hoofd letters of kleine letters in de VM-SKU kunnen Premium-schijven gebruiken.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -131,7 +132,7 @@ Met de bovenstaande wijzigingen maakt de schaalset gebruik van beheerde schijven
 ]
 ```
 
-Als u schijven `n` in deze matrix opgeeft, haalt `n` elke virtuele machine in de schaalset gegevens schijven op. Houd er echter rekening mee dat deze gegevens schijven onbewerkte apparaten zijn. Ze zijn niet ingedeeld. Het is de klant om de schijven te koppelen, partitioneren en Format teren voordat ze worden gebruikt. U kunt eventueel ook opgeven `"managedDisk": { "storageAccountType": "Premium_LRS" }` in elk gegevens schijf object om aan te geven dat het een Premium-gegevens schijf moet zijn. Alleen Vm's met een hoofd letters of kleine letters in de VM-SKU kunnen Premium-schijven gebruiken.
+Als u `n` schijven in deze matrix opgeeft, haalt elke virtuele machine in de schaalset `n` gegevens schijven op. Houd er echter rekening mee dat deze gegevens schijven onbewerkte apparaten zijn. Ze zijn niet ingedeeld. Het is de klant om de schijven te koppelen, partitioneren en Format teren voordat ze worden gebruikt. U kunt eventueel ook opgeven `"managedDisk": { "storageAccountType": "Premium_LRS" }` in elk gegevens schijf object om aan te geven dat het een Premium-gegevens schijf moet zijn. Alleen Vm's met een hoofd letters of kleine letters in de VM-SKU kunnen Premium-schijven gebruiken.
 
 Zie [dit artikel](./virtual-machine-scale-sets-attached-disks.md)voor meer informatie over het gebruik van gegevens schijven met schaal sets.
 

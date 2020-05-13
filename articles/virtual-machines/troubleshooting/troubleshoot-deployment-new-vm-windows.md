@@ -3,7 +3,7 @@ title: Problemen met de implementatie van Windows VM in azure oplossen | Microso
 description: Problemen met de implementatie van Resource Manager oplossen wanneer u een nieuwe virtuele Windows-machine maakt in azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981389"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120960"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Implementatie problemen oplossen bij het maken van een nieuwe Windows-VM in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -51,7 +51,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 **N<sup>2</sup>:** Als het besturings systeem Windows gespecialiseerd is en het is geüpload als gegeneraliseerd, krijgt u een inrichtings fout bij de virtuele machine die is vastgelopen in het OOBE-scherm, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord.
 
-**Afsluiting**
+**Oplossing**
 
 Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VHD te uploaden](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), die on-premises beschikbaar is, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst Sysprep uitvoeren.
 
@@ -61,7 +61,7 @@ Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VH
 
 **N<sup>4</sup>:** Als het besturings systeem Windows gespecialiseerd is en het is vastgelegd als gegeneraliseerd, ontvangt u een fout bij het inrichten, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord. De oorspronkelijke virtuele machine kan ook niet worden gebruikt omdat deze is gemarkeerd als gespecialiseerd.
 
-**Afsluiting**
+**Oplossing**
 
 Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../windows/create-vm-specialized.md) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 
@@ -75,7 +75,7 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
 * Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 * Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   * Stop alle virtuele machines in de beschikbaarheidsset.
-    Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+    Klik op **resource groepen**  >  *uw resource groep*  >  **resources**  >  *uw beschikbaarheidsset*  >  **virtual machines**  >  *de virtuele machine*wordt  >  **gestopt**.
   * Nadat alle Vm's zijn gestopt, maakt u de nieuwe virtuele machine op de gewenste grootte.
   * Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op **Start**.
 

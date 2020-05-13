@@ -1,19 +1,20 @@
 ---
 title: Voor beeld van proximity placement groups voor schaal sets voor virtuele machines
 description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor schaal sets voor virtuele Windows-machines in Azure.
-author: cynthn
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.subservice: availability
 ms.date: 07/01/2019
-ms.author: cynthn
-ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273623"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124343"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Voor beeld: proximity-plaatsings groepen maken en gebruiken met Power shell
 
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
 
-Maak een schaal in de locatie van de Proximity `-ProximityPlacementGroup $ppg.Id` -plaatsings groep met om te verwijzen naar de locatie van de plaatsings groep bij gebruik van [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om de schaalset te maken.
+Maak een schaal in de locatie van de Proximity-plaatsings groep met `-ProximityPlacementGroup $ppg.Id` om te verwijzen naar de locatie van de plaatsings groep bij gebruik van [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om de schaalset te maken.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

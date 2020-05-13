@@ -1,21 +1,20 @@
 ---
 title: Een Schaalset voor virtuele machines implementeren met behulp van Visual Studio
 description: Virtual Machine Scale Sets implementeren met behulp van Visual Studio en een resource manager-sjabloon
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: visual-studio
 ms.date: 09/09/2019
-ms.author: mimckitt
-ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273338"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124360"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Een Schaalset voor virtuele machines maken met Visual Studio
 
@@ -65,7 +64,7 @@ Met de load balancer kunt u verbinding maken met de virtuele-machine-instanties 
 
 Implementeer de Azure Resource Manager sjabloon om de resource voor de Schaalset voor virtuele machines te maken:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project en kies**nieuwe** **implementeren** > .
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **Deploy**en kies  >  **nieuwe**implementeren.
 
     ![Uw project implementeren](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -85,7 +84,7 @@ Implementeer de Azure Resource Manager sjabloon om de resource voor de Schaalset
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>Uw Schaalset voor virtuele machines verkennen<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Selecteer**Cloud Verkenner** **weer geven** > om de nieuwe schaalset voor virtuele machines weer te geven. Gebruik **Alles vernieuwen**, indien nodig.
+Selecteer **View**  >  **Cloud Verkenner** weer geven om de nieuwe schaalset voor virtuele machines weer te geven. Gebruik **Alles vernieuwen**, indien nodig.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 
@@ -95,4 +94,4 @@ Met **Cloud Explorer** kunt u Azure-resources beheren in Visual Studio tijdens h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra u Virtual Machine Scale Sets met Visual Studio hebt geïmplementeerd, kunt u uw project verder aanpassen aan de vereisten van uw toepassing. Configureer bijvoorbeeld automatisch schalen door een **Insights** -resource toe te voegen. U kunt een infra structuur toevoegen aan uw sjabloon, zoals zelfstandige virtuele machines, of toepassingen implementeren met behulp van de aangepaste script extensie. Goede voorbeeld sjablonen vindt u in de GitHub-opslag plaats van de [Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen. Zoeken naar `vmss`.
+Zodra u Virtual Machine Scale Sets met Visual Studio hebt geïmplementeerd, kunt u uw project verder aanpassen aan de vereisten van uw toepassing. Configureer bijvoorbeeld automatisch schalen door een **Insights** -resource toe te voegen. U kunt een infra structuur toevoegen aan uw sjabloon, zoals zelfstandige virtuele machines, of toepassingen implementeren met behulp van de aangepaste script extensie. Goede voorbeeld sjablonen vindt u in de GitHub-opslag plaats van de [Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen. Zoek naar `vmss`.

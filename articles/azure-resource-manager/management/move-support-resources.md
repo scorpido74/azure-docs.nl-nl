@@ -3,12 +3,12 @@ title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 81d545066ea6bcc1d3e2eecd884671324155d796
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900982"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124683"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -1253,8 +1253,7 @@ Ga naar de naam ruimte van een resource provider:
 
 > [!IMPORTANT]
 > Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
-
-> [!IMPORTANT]
+> 
 > U kunt geen werk ruimten verplaatsen die een gekoppeld Automation-account hebben. Zorg ervoor dat u alle Automation-accounts ontkoppelt voordat u begint met een Verplaats bewerking.   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1677,8 +1676,8 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | account | Nee | Nee |
-> | account/extensie | Ja | Ja |
-> | account/project | Ja | Ja |
+> | account/extensie | Nee | Nee |
+> | account/project | Nee | Nee |
 
 > [!IMPORTANT]
 > Als u het abonnement voor Azure DevOps wilt wijzigen, raadpleegt u [het Azure-abonnement wijzigen dat wordt gebruikt voor facturering](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
@@ -1705,8 +1704,8 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
-> | plant | Ja | Ja |
+> | accounts | Nee | Nee |
+> | plant | Nee | Nee |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 

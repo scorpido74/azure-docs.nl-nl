@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2a35b75d2896f6e04c68d7562ed9f5455006ae4d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983258"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121317"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -85,201 +85,79 @@ In de volgende voorbeeld sjabloon ziet u hoe u een werk ruimte met drie instelli
 
 Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "workspaceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the Azure Machine Learning workspace."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "southcentralus",
-      "allowedValues": [
-        "eastus",
-        "eastus2",
-        "southcentralus",
-        "southeastasia",
-        "westcentralus",
-        "westeurope",
-        "westus2"
-      ],
-      "metadata": {
-        "description": "Specifies the location for all resources."
-      }
-    },
-    "sku":{
-      "type": "string",
-      "defaultValue": "basic",
-      "allowedValues": [
-        "basic",
-        "enterprise"
-      ],
-      "metadata": {
-        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
-      }
-    },
-    "high_confidentiality":{
-      "type": "string",
-      "defaultValue": "false",
-      "allowedValues": [
-        "false",
-        "true"
-      ],
-      "metadata": {
-        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
-      }
-    },
-    "encryption_status":{
-      "type": "string",
-      "defaultValue": "Disabled",
-      "allowedValues": [
-        "Enabled",
-        "Disabled"
-      ],
-      "metadata": {
-        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
-      }
-    },
-    "cmk_keyvault":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault Resource Manager ID."
-      }
-    },
-    "resource_cmk_uri":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault key uri."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
-    "storageAccountType": "Standard_LRS",
-    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
-    "tenantId": "[subscription().tenantId]",
-    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
-    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2018-07-01",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {
-        "encryption": {
-          "services": {
-            "blob": {
-              "enabled": true
-            },
-            "file": {
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        },
-        "supportsHttpsTrafficOnly": true
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2018-02-14",
-      "name": "[variables('keyVaultName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "tenantId": "[variables('tenantId')]",
-        "sku": {
-          "name": "standard",
-          "family": "A"
-        },
-        "accessPolicies": []
-      }
-    },
-    {
-      "type": "Microsoft.Insights/components",
-      "apiVersion": "2015-05-01",
-      "name": "[variables('applicationInsightsName')]",
-      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
-      "kind": "web",
-      "properties": {
-        "Application_Type": "web"
-      }
-    },
-    {
-      "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2017-10-01",
-      "name": "[variables('containerRegistryName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard"
-      },
-      "properties": {
-        "adminUserEnabled": true
-      }
-    },
-    {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2020-01-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
-        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
-        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
-      ],
-      "identity": {
-        "type": "systemAssigned"
-      },
-      "sku": {
-            "tier": "[parameters('sku')]",
-            "name": "[parameters('sku')]"
-      },
-      "properties": {
-        "friendlyName": "[parameters('workspaceName')]",
-        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
-        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
-        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
-        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
-         "encryption": {
-                "status": "[parameters('encryption_status')]",
-                "keyVaultProperties": {
-                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
-                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
-                  }
-            },
-        "hbiWorkspace": "[parameters('high_confidentiality')]"
-      }
-    }
-  ]
-}
-```
+> [!IMPORTANT]
+> Er zijn enkele specifieke vereisten waaraan uw abonnement moet voldoen voordat u deze sjabloon gebruikt:
+> * De __Azure machine learning__ toepassing moet een __bijdrager__ zijn voor uw Azure-abonnement.
+> * U moet een bestaande Azure Key Vault hebben die een versleutelings sleutel bevat.
+> * U moet een toegangs beleid hebben in de Azure Key Vault waarmee u de toegang tot de __Azure Cosmos DB__ toepassing __krijgt__, __verpakt__en __terugloopt__ .
+> * De Azure Key Vault moet zich in dezelfde regio bevinden waar u van plan bent de Azure Machine Learning-werk ruimte te maken.
+> * Uw abonnement moet door de __klant beheerde sleutels__ ondersteunen voor Azure Cosmos db.
 
-U kunt de Azure CLI gebruiken om de ID van de Key Vault op te halen en de sleutel-URI die nodig is voor deze sjabloon. Met de volgende opdracht wordt de Key Vault-ID opgehaald:
+Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender toe te voegen__:
 
-```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
-```
+1. Als u wilt verifiëren bij Azure vanuit de CLI, gebruikt u de volgende opdracht:
 
-Met deze opdracht wordt een waarde geretourneerd `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`die vergelijkbaar is met.
+    ```azurecli-interactive
+    az login
+    ```
+    
+    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
 
-Als u de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:
+1. Gebruik de volgende opdracht om de object-ID van de Azure Machine Learning-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
 
-```azurecli-interactive
-az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
-```
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
 
-Met deze opdracht wordt een waarde geretourneerd `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`die vergelijkbaar is met.
+    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID.
+
+1. Als u de object-ID als Inzender wilt toevoegen aan uw abonnement, gebruikt u de volgende opdracht. Vervang door `<object-ID>` de GUID uit de vorige stap. Vervang door `<subscription-ID>` de naam of id van uw Azure-abonnement:
+
+    ```azurecli-interactive
+    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
+    ```
+
+__Als u een sleutel aan uw Azure Key Vault wilt toevoegen__, gebruikt u de informatie in de sectie [een sleutel, geheim of certificaat toevoegen aan de sleutel kluis](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) van het artikel __Manage Key Vault using Azure cli__ .
+
+__Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sleutel kluis__:
+
+1. Gebruik de volgende opdracht om de object-ID van de Azure Cosmos DB-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
+
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
+    
+    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID.
+
+1. Als u het beleid wilt instellen, gebruikt u de volgende opdracht. Vervang door `<keyvault-name>` de naam van de bestaande Azure Key Vault. Vervang door `<object-ID>` de GUID uit de vorige stap:
+
+    ```azurecli-interactive
+    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
+    ```
+
+__Als u door de klant beheerde sleutels wilt inschakelen voor Azure Cosmos DB__, stuurt u een e-mail naar azurecosmosdbcmk@service.microsoft.com met de id van uw Azure-abonnement. Zie door [de klant beheerde sleutels voor uw Azure Cosmos-account configureren](..//cosmos-db/how-to-setup-cmk.md)voor meer informatie.
+
+__Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resource_cmk_uri` para meters (Key URI) wilt ophalen die nodig zijn voor deze sjabloon, gebruikt u de volgende stappen:
+
+1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:
+
+    ```azurecli-interactive
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    ```
+
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+
+1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:
+
+    ```azurecli-interactive
+    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    ```
+
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
+
+__Voorbeeld sjabloon__
+
+:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
@@ -298,7 +176,7 @@ Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-m
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -311,7 +189,7 @@ Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell]
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -346,7 +224,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Zie de [AccessPolicyEntry-object verwijzing](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)voor meer informatie over het gebruik van de `accessPolicies` sectie van de sjabloon.
+    `accessPolicies`Zie de [AccessPolicyEntry-object verwijzing](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)voor meer informatie over het gebruik van de sectie van de sjabloon.
 
 * Controleer of de Key Vault resource al bestaat. Als dit het geval is, moet u het niet opnieuw maken via de sjabloon. Als u bijvoorbeeld de bestaande Key Vault wilt gebruiken in plaats van een nieuwe te maken, moet u de volgende wijzigingen aanbrengen in de sjabloon:
 
@@ -381,7 +259,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
         },
         ```
 
-    * **Verwijder** de `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` regel uit de `dependsOn` sectie van de werk ruimte. **Wijzig** ook de `keyVault` vermelding in de `properties` sectie van de werk ruimte om te `keyVaultId` verwijzen naar de para meter:
+    * **Verwijder** de `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` regel uit de `dependsOn` sectie van de werk ruimte. **Wijzig** ook de `keyVault` vermelding in de `properties` sectie van de werk ruimte om te verwijzen naar de `keyVaultId` para meter:
 
         ```json
         {
@@ -409,7 +287,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
         }
         ```
 
-    Nadat u deze wijzigingen hebt aangebracht, kunt u de ID van de bestaande Key Vault resource opgeven wanneer u de sjabloon uitvoert. Vervolgens wordt de Key Vault door de sjabloon opnieuw gebruikt door `keyVault` de eigenschap van de werk ruimte in te stellen op de bijbehorende id.
+    Nadat u deze wijzigingen hebt aangebracht, kunt u de ID van de bestaande Key Vault resource opgeven wanneer u de sjabloon uitvoert. Vervolgens wordt de Key Vault door de sjabloon opnieuw gebruikt door de `keyVault` eigenschap van de werk ruimte in te stellen op de bijbehorende id.
 
     Als u de ID van de Key Vault wilt ophalen, kunt u verwijzen naar de uitvoer van de oorspronkelijke sjabloon run of de Azure CLI gebruiken. De volgende opdracht is een voor beeld van het gebruik van de Azure CLI om de Key Vault Resource-ID op te halen:
 

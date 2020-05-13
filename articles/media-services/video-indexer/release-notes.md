@@ -12,16 +12,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131214"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124581"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` en te plakken: in uw RSS-feed-lezer.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` in uw RSS-feed-lezer.
 
 Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
 
@@ -34,9 +34,9 @@ Dit artikel bevat informatie over het volgende om up-to-date te blijven met de m
 
 ### <a name="new-widget-parameters-capabilities"></a>Mogelijkheden van nieuwe widget parameters
 
-De widget **inzichten** bevat nieuwe para meters: `language` en `control`.
+De widget **inzichten** bevat nieuwe para meters: `language` en `control` .
 
-De **Player** -widget heeft een `locale` nieuwe para meter. De `locale` para `language` meters en zijn van invloed op de taal van de speler.
+De **Player** -widget heeft een nieuwe `locale` para meter. `locale` `language` De para meters en zijn van invloed op de taal van de speler.
 
 Zie de sectie [typen widget](video-indexer-embed-widgets.md#widget-types) voor meer informatie. 
 
@@ -54,18 +54,18 @@ Er is een nieuwe Player-weer gave gestart met een bijgewerkt ontwerp.
     * [Get-accounts-with-token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
     Het account object heeft een `Url` veld dat verwijst naar de locatie van de [video indexer website](https://www.videoindexer.ai/).
-Voor betaalde accounts verwijst `Url` het veld momenteel naar een interne URL in plaats van naar de open bare website.
+Voor betaalde accounts `Url` verwijst het veld momenteel naar een interne URL in plaats van naar de open bare website.
 In de komende weken wordt dit gewijzigd en wordt de URL van de [video indexer website](https://www.videoindexer.ai/) voor alle accounts (proef en betaalde) geretourneerd.
 
     Gebruik niet de interne Url's, u moet de [video indexer open bare api's](https://api-portal.videoindexer.ai/)gebruiken.
-* Als u Video Indexer Url's insluit in uw toepassingen en de Url's niet verwijzen naar de [video indexer website](https://www.videoindexer.ai/) of het [video indexer API-eind punt](https://api.videoindexer.ai) , maar in plaats van naar een regionaal eind punt `https://wus2.videoindexer.ai`(bijvoorbeeld), genereert u de url's opnieuw.
+* Als u Video Indexer Url's insluit in uw toepassingen en de Url's niet verwijzen naar de [video indexer website](https://www.videoindexer.ai/) of het video indexer API-eind punt ( `https://api.videoindexer.ai` ), maar in plaats van naar een regionaal eind punt (bijvoorbeeld `https://wus2.videoindexer.ai` ), genereert u de url's opnieuw.
 
    U kunt dit doen door een van de volgende handelingen uit te voeren:
 
     * Door de URL te vervangen door een URL die verwijst naar de Video Indexer-widget-Api's (bijvoorbeeld de [widget Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * De Video Indexer-website gebruiken om een nieuwe Inge sloten URL te genereren:
          
-         Druk op **Play** om naar de pagina van de video te gaan > Klik op de ** &lt; / &gt; knop insluiten** -> de URL naar uw toepassing kopiëren:
+         Druk op **Play** om naar de pagina van de video te gaan > Klik op de knop ** &lt; / &gt; insluiten** -> de URL naar uw toepassing kopiëren:
    
     De regionale Url's worden niet ondersteund en worden in de komende weken geblokkeerd.
 
@@ -73,7 +73,7 @@ In de komende weken wordt dit gewijzigd en wordt de URL van de [video indexer we
  
 ### <a name="custom-language-support-for-additional-languages"></a>Aangepaste taal ondersteuning voor extra talen
 
-Video indexer ondersteunt nu aangepaste taal modellen voor `ar-SY` , `en-UK`en `en-AU` (alleen API).
+Video Indexer ondersteunt nu aangepaste taal modellen voor `ar-SY` , `en-UK` en `en-AU` (alleen API).
  
 ### <a name="delete-account-timeframe-action-update"></a>Update van tijds bestek actie verwijderen
 
@@ -127,7 +127,7 @@ De status code 409 wordt nu geretourneerd door de [video opnieuw te indexeren](h
  
 * Ondersteuning voor Koreaanse aangepaste taal modellen
 
-    Video indexer ondersteunt nu aangepaste taal modellen in Koreaans (`ko-KR`) in zowel de API als de portal. 
+    Video indexer ondersteunt nu aangepaste taal modellen in Koreaans ( `ko-KR` ) in zowel de API als de portal. 
 * Nieuwe talen die worden ondersteund voor spraak naar tekst (STT)
 
     Video Indexer-Api's bieden nu ondersteuning voor STT in Arabische Levantine (AR-SY), Engels UK dialect (en-GB) en Engels Australisch dialect (en-AU).

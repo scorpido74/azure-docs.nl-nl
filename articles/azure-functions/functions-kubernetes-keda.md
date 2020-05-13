@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301672"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121691"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions op Kubernetes met KEDA
 
@@ -28,11 +28,11 @@ Als u functies wilt uitvoeren op uw Kubernetes-cluster, moet u het onderdeel KED
 
 ### <a name="installing-with-helm"></a>Installeren met helm
 
-Er zijn verschillende manieren om KEDA te installeren in elk Kubernetes-cluster, met inbegrip van helm.  Implementatie opties zijn gedocumenteerd op de [KEDA-site](https://keda.sh/deploy/).
+Er zijn verschillende manieren om KEDA te installeren in elk Kubernetes-cluster, met inbegrip van helm.  Implementatie opties zijn gedocumenteerd op de [KEDA-site](https://keda.sh/docs/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Een functie-app implementeren op Kubernetes
 
-U kunt elke functie-app implementeren in een Kubernetes-cluster met KEDA.  Omdat uw functies worden uitgevoerd in een docker-container, heeft het `Dockerfile`project een nodig.  Als dat nog niet het geval is, kunt u een Dockerfile toevoegen door de volgende opdracht uit te voeren in de hoofdmap van uw functions-project:
+U kunt elke functie-app implementeren in een Kubernetes-cluster met KEDA.  Omdat uw functies worden uitgevoerd in een docker-container, heeft het project een nodig `Dockerfile` .  Als dat nog niet het geval is, kunt u een Dockerfile toevoegen door de volgende opdracht uit te voeren in de hoofdmap van uw functions-project:
 
 ```cli
 func init --docker-only
@@ -41,23 +41,23 @@ func init --docker-only
 Voer de volgende opdracht uit om een installatie kopie te maken en uw functies te implementeren op Kubernetes:
 
 > [!NOTE]
-> De kern Hulpprogramma's maken gebruik van de docker-CLI voor het bouwen en publiceren van de installatie kopie. Zorg ervoor dat docker al is geïnstalleerd en met uw account is verbonden `docker login`met.
+> De kern Hulpprogramma's maken gebruik van de docker-CLI voor het bouwen en publiceren van de installatie kopie. Zorg ervoor dat docker al is geïnstalleerd en met uw account is verbonden met `docker login` .
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> Vervang `<name-of-function-deployment>` door de naam van uw functie-app.
+> Vervang door `<name-of-function-deployment>` de naam van uw functie-app.
 
-Hiermee maakt u een `Deployment` Kubernetes-resource `ScaledObject` , een resource `Secrets`en, die omgevings variabelen bevat die `local.settings.json` uit het bestand zijn geïmporteerd.
+Hiermee maakt u een Kubernetes `Deployment` -resource, een `ScaledObject` resource en `Secrets` , die omgevings variabelen bevat die uit het bestand zijn geïmporteerd `local.settings.json` .
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Een functie-app implementeren vanuit een persoonlijk REGI ster
 
-De bovenstaande stroom werkt ook voor persoonlijke registers.  Als u de container installatie kopie uit een persoonlijk REGI ster haalt, neemt u `--pull-secret` de vlag op die verwijst naar het Kubernetes-geheim dat de persoonlijke `func kubernetes deploy`register referenties bevat wanneer u uitvoert.
+De bovenstaande stroom werkt ook voor persoonlijke registers.  Als u de container installatie kopie uit een persoonlijk REGI ster haalt, neemt u de `--pull-secret` vlag op die verwijst naar het Kubernetes-geheim dat de persoonlijke register referenties bevat wanneer u uitvoert `func kubernetes deploy` .
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Een functie-app uit Kubernetes verwijderen
 
-Na de implementatie kunt u een functie verwijderen door de bijbehorende `Deployment`, `ScaledObject`, een `Secrets` gemaakte, te verwijderen.
+Na de implementatie kunt u een functie verwijderen door de bijbehorende `Deployment` , `ScaledObject` , een gemaakte, te verwijderen `Secrets` .
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

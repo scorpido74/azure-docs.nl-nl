@@ -5,16 +5,16 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754859"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123605"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
 
-Met Azure Functions kunt u uw code in een serverloze omgeving uitvoeren zonder dat u eerst een virtuele machine (VM) hoeft te maken of een webtoepassing moet publiceren. In dit artikel leert u hoe u Azure Functions kunt gebruiken om een ' Hello World ' HTTP-geactiveerde functie in de Azure Portal te maken.
+Met Azure Functions kunt u uw code in een serverloze omgeving uitvoeren zonder dat u eerst een virtuele machine (VM) hoeft te maken of een webtoepassing moet publiceren. In dit artikel leert u hoe u Azure Functions kunt gebruiken om een ' Hallo wereld ' HTTP-trigger functie te maken in de Azure Portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,29 +32,31 @@ U moet een functie-app hebben die als host fungeert voor de uitvoering van uw fu
 
 Maak vervolgens een functie in de nieuwe functie-app.
 
-## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Een door HTTP geactiveerde functie maken
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-trigger functie maken
 
-1. Vouw uw nieuwe functie-app uit, **+** Selecteer de knop naast **functies**, kies **in-portal**en selecteer vervolgens **door gaan**.
+1. Selecteer in het menu links van het venster **functies** de optie **functies**en selecteer vervolgens **toevoegen** in het bovenste menu. 
+ 
+1. Selecteer **http-trigger**in het venster **nieuwe functie** .
 
-    ![Functies Quick start voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![HTTP-trigger functie kiezen](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. Kies **webhook + API**en selecteer vervolgens **maken**.
+1. Accepteer in het venster **nieuwe functie** de standaard naam voor de **nieuwe functie**of voer een nieuwe naam in. 
 
-    ![De Quick Start van Azure Functions in Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+1. Kies **anoniem** in de vervolg keuzelijst **autorisatie niveau** en selecteer vervolgens **functie maken**.
 
-   Een functie wordt gemaakt met een taalspecifieke sjabloon voor een door HTTP getriggerde functie.
-
-U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
+    Azure maakt de HTTP-activerings functie. U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Selecteer in de nieuwe functie in de rechter bovenhoek **</> functie-URL ophalen** . 
+1. Selecteer in de nieuwe functie HTTP-trigger **code + test** in het menu links en selecteer **functie-URL ophalen** in het bovenste menu.
 
-1. In de **functie-URL ophalen** in het dialoog venster, selecteer **standaard (functie toets)** in de vervolg keuzelijst en selecteer vervolgens **kopiëren**. 
+    ![Functie-URL ophalen selecteren](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. Selecteer in het dialoog venster **functie-URL ophalen** de optie **standaard** in de vervolg keuzelijst en selecteer vervolgens het pictogram **kopiëren naar klem bord** . 
 
     ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de query reeks waarde `&name=<your_name>` toe aan het einde van deze URL en druk op ENTER om de aanvraag uit te voeren. 
+1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de query reeks waarde `?name=<your_name>` toe aan het einde van deze URL en druk op ENTER om de aanvraag uit te voeren. 
 
     Het volgende voorbeeld toont het antwoord in de browser:
 
@@ -62,7 +64,7 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
     De aanvraag-URL bevat een sleutel die standaard is vereist, en waarmee u via HTTP toegang hebt tot de functie.
 
-1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de tracerings uitvoer van de vorige uitvoering wilt zien, gaat u terug naar de functie in de portal en selecteert u de pijl aan de onderkant van het scherm om de **Logboeken**uit te vouwen.
+1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de uitvoer van de tracering wilt zien, gaat u terug naar de pagina **code en test** in de portal en vouwt u de pijl **Logboeken** onder aan de pagina uit.
 
    ![De viewer voor functielogboeken in Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 

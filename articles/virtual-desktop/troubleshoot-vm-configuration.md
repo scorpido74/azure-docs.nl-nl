@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cada61f8fa1dfd163062ce22527f41e65291b3f8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607245"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125111"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -87,7 +87,7 @@ De aanbevolen manier om virtuele machines in te richten, is met behulp van de sj
 
 Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en om te controleren op fout berichten.
 
-1. Controleer of de twee onderdelen zijn geïnstalleerd door**Program** > ma's**en onderdelen**van het **configuratie scherm** > te controleren. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
+1. Controleer of de twee onderdelen zijn geïnstalleerd door Program ma's **Control Panel**  >  **Programs**  >  **en onderdelen**van het configuratie scherm te controleren. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
 2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\ScriptLog.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
 3. Als het bestand **C:\Windows\Temp\ScriptLog.log** aanwezig is, opent u het en controleert u op fout berichten.
 
@@ -234,7 +234,7 @@ De virtuele machine die wordt gebruikt voor het uitvoeren van herstel, moet zich
 Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en domein:
 
 1. Maak verbinding met Standard Remote Desktop Protocol (RDP) naar de VM vanaf waar de oplossing wordt toegepast.
-2. Down load PsExec https://docs.microsoft.com/sysinternals/downloads/psexecvan.
+2. Down load PsExec van https://docs.microsoft.com/sysinternals/downloads/psexec .
 3. Pak het gedownloade bestand uit.
 4. Start de opdracht prompt als lokale beheerder.
 5. Ga naar map waar PsExec is uitgepakt.
@@ -310,7 +310,7 @@ Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>De groeps beleids instelling Extern bureaublad licentie modus uitschakelen
 
-Controleer de groeps beleids instelling door de Groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad host** > -**licentie verlening** > **de Extern bureaublad licentie modus instellen**. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
+Controleer de groeps beleids instelling door de Groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen**  >  **Windows-onderdelen**  >  **extern bureaublad-services**  >  **extern bureaublad host**-  >  **licentie verlening**  >  **de Extern bureaublad licentie modus instellen**. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
 
 >[!NOTE]
 >Als u groeps beleid via uw domein instelt, schakelt u deze instelling uit voor beleids regels die zijn gericht op deze Windows 10 Enter prise-Vm's met meerdere sessies.
@@ -335,6 +335,12 @@ Als uw versie nummer 1809 is, installeert u [de update KB4516077](https://suppor
 ### <a name="version-1903"></a>Versie 1903
 
 Implementeer het hostbesturingssysteem opnieuw met de nieuwste versie van de installatie kopie van Windows 10, versie 1903 van de Azure Gallery.
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>Er kan geen verbinding worden gemaakt met de externe computer vanwege een beveiligings fout
+
+Als uw gebruikers een fout melding krijgen dat er geen verbinding kan worden gemaakt met de externe PC vanwege een beveiligings fout. Als dit probleem zich blijft voordoen, vraagt u uw beheerder of technische ondersteuning voor hulp, "Valideer alle bestaande beleids regels die standaard-RDP-machtigingen wijzigen. Een beleids regel die ervoor kan zorgen dat deze fout wordt weer gegeven, is ' aanmelden toestaan via Extern bureaublad-services beveiligings beleid '.
+
+Zie [Aanmelden via Extern bureaublad-services toestaan](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)voor meer informatie over dit beleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692246"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124632"
 ---
 # <a name="known-issues"></a>Bekende problemen #
 
@@ -41,6 +41,7 @@ De huidige versie heeft de volgende bekende problemen:
 
 - Ads kan problemen ondervinden bij het invoegen (op aanvraag of Live) wanneer een ad-blocker in de browser is geïnstalleerd
 - Op mobiele apparaten kunnen problemen optreden bij het afspelen van advertenties.
+- MP4 midroll Ads wordt momenteel niet ondersteund door Azure Media Player.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -62,7 +63,7 @@ De huidige versie heeft de volgende bekende problemen:
 
 - Ontbrekende onderdelen
 - Tech-en HTTP-fouten (zoals 404 time-outs in het netwerk), neemt de speler langer in beslag dan andere technische instellingen.
-- Voor het afspelen van Safari en Firefox op Mac met Silverlight moet de bron expliciet worden gedefinieerd `"http://` `https://`
+- Voor het afspelen van Safari en Firefox op Mac met Silverlight moet de bron expliciet worden gedefinieerd `"http://` `https://` .
 - Als er voor deze tech een API ontbreekt, wordt in het algemeen Null geretourneerd.
 - Als op de gebruiker Flash is geïnstalleerd, maar niet is gemachtigd om deze te laden op de site, kan er oneindig draaiend worden uitgevoerd. Dit komt omdat de speler denkt dat de invoeg toepassing is geïnstalleerd en beschikbaar is en dat de inhoud wordt uitgevoerd door de invoeg toepassing. Java script-code is verzonden, maar de browser instellingen hebben de uitvoering van de invoeg toepassing geblokkeerd totdat de gebruiker de prompt accepteert om de invoeg toepassing toe te staan. Dit kan in alle browsers optreden.  
 

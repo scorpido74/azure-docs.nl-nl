@@ -7,30 +7,30 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7db02546b562f1b542080efdbda8968940655e95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928598"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121276"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
 
-Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een Fully Qualified Domain Name (FQDN) als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Deze moet worden overschreven om verbinding te maken via uw persoonlijke eind punt. 
+Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een Fully Qualified Domain Name (FQDN) als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Deze configuratie moet worden overschreven om verbinding te maken via uw persoonlijke eind punt. 
  
 De netwerk interface die aan het persoonlijke eind punt is gekoppeld, bevat de volledige set informatie die nodig is voor het configureren van uw DNS, inclusief FQDN-en privé IP-adressen die zijn toegewezen voor een bepaalde persoonlijke koppelings bron. 
  
 U kunt de volgende opties gebruiken om uw DNS-instellingen voor privé-eind punten te configureren: 
 - **Het hostbestand gebruiken (alleen aanbevolen voor testen)**. U kunt het hostbestand op een virtuele machine gebruiken om de DNS te vervangen.  
 - **Gebruik een privé-DNS-zone**. U kunt [privé-DNS-zones](../dns/private-dns-privatednszone.md) gebruiken om de DNS-omzetting voor een bepaald persoonlijk eind punt te negeren. Een persoonlijke DNS-zone kan worden gekoppeld aan uw virtuele netwerk om specifieke domeinen op te lossen.
-- **Gebruik uw aangepaste DNS-server**. U kunt uw eigen DNS-server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
+- **Gebruik uw DNS-doorstuur server (optioneel)**. U kunt de DNS-doorstuur server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
  
 > [!IMPORTANT]
 > Het is niet raadzaam om een zone die actief is in gebruik te onderdrukken om open bare eind punten op te lossen. Verbindingen met bronnen kunnen niet correct worden omgezet zonder dat DNS naar de open bare DNS doorstuurt. Als u problemen wilt voor komen, maakt u een andere domein naam of volgt u de voorgestelde naam voor elke service hieronder. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Configuratie van DNS-zone voor Azure-Services
-Azure-Services maken een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde persoonlijke domein namen. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
+Azure-Services maken een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde persoonlijke domein naam. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
  
 Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van het gebruik van een open bare DNS-server wordt nu omgezet naar uw privé-eind punten. Het proces heeft geen invloed op uw bestaande toepassingen. 
 
@@ -90,7 +90,7 @@ Deze configuratie is geschikt voor werk belastingen voor virtuele netwerken zond
 > [!NOTE]
 > In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone. Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
 
-Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
+U hebt de volgende resources nodig om correct te configureren:
 
 - Virtueel netwerk van de client
 
@@ -113,47 +113,47 @@ In dit scenario is er sprake van een [hub & spoke](https://docs.microsoft.com/az
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>On-premises workloads met behulp van een DNS-doorstuur server
  
-Voor on-premises werk belastingen om een FQDN-naam van een persoonlijk eind punt in het privé-IP-adres op te lossen, moet u een DNS-doorstuur server gebruiken om de oplossing te maken van de [open bare DNS-zone](#azure-services-dns-zone-configuration) van Azure service die in Azure is geïmplementeerd.
+Voor on-premises workloads om een FQDN-naam van een persoonlijk eind punt in het privé-IP-adres op te lossen, moet u een DNS-doorstuur server gebruiken om de oplossing te maken van de [open bare DNS-zone](#azure-services-dns-zone-configuration) van de Azure-service die in Azure is geïmplementeerd.
 
 
-Het volgende scenario is geschikt voor een on-premises netwerk dat een DNS-doorstuur server heeft in azure, die op zijn beurt verantwoordelijk is voor het omzetten van alle DNS-query's via een doorstuur server van het niveau van het Azure- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
+Het volgende scenario is geschikt voor een on-premises netwerk dat een DNS-doorstuur server heeft in azure, dat op zijn beurt verantwoordelijk is voor het omzetten van alle DNS-query's via een doorstuur server van het niveau van de [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) naar de door Azure verschafte DNS-service 
 
 > [!NOTE]
 > In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
 
-Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
+U hebt de volgende resources nodig om correct te configureren:
 
 - On-premises netwerk
 - Virtueel netwerk [verbonden met on-premises](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
 - DNS-doorstuur server geïmplementeerd in azure 
-- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) met [een record typen](../dns/dns-zones-records.md#record-types)
+- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)   met [een record typen](../dns/dns-zones-records.md#record-types)
 - Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
 
 In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat gebruikmaakt van een DNS-doorstuur server die is geïmplementeerd in azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk.
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="On-premises met Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="On-premises met Azure DNS":::
 
-Deze configuratie kan worden uitgebreid voor een on-premises netwerk waarop al een DNS-oplossing aanwezig is. 
+Deze configuratie kan worden uitgebreid voor een on-premises netwerk waarin al een DNS-oplossing aanwezig is. 
 De on-premises DNS-oplossing moet worden geconfigureerd om DNS-verkeer door te sturen naar de Azure DNS via een [voorwaardelijke doorstuur server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) die verwijst naar de DNS-doorstuur server die is geïmplementeerd in Azure.
 
 > [!NOTE]
 > In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
 
-Als u de juiste configuratie wilt configureren, hebt u de volgende resources nodig:
+U hebt de volgende resources nodig om correct te configureren:
 
 
 - On-premises netwerk met een aangepaste DNS-oplossing 
 - Virtueel netwerk [verbonden met on-premises](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
 - DNS-doorstuur server geïmplementeerd in azure
-- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)  met [een record typen](../dns/dns-zones-records.md#record-types)
+- Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)    met [een record typen](../dns/dns-zones-records.md#record-types)
 - Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
 
 In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat DNS-verkeer voorwaardelijk doorstuurt naar Azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk
 
 > [!IMPORTANT]
-> De voorwaardelijke door sturing moet worden uitgevoerd naar de [open bare DNS-zone](#azure-services-dns-zone-configuration) ex: `database.windows.net` in plaats van **privatelink**. database.Windows.net
+> De voorwaardelijke door sturing moet worden uitgevoerd naar de [open bare DNS-zone](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   in plaats van **privatelink**. database.Windows.net
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="On-premises door sturen naar Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="On-premises door sturen naar Azure DNS":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

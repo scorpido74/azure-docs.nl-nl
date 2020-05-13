@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427781"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121113"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Variabelen instellen
 
-Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourResourceGroupName>tijdelijke <YourStorageAccountName>aanduidingen <YourKeyVaultName> ,,, en $keyVaultSpAppId instelt op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals opgegeven in de [Service Principal Application id](#service-principal-application-id)hierboven).
+Stel eerst de variabelen in die moeten worden gebruikt door de Power shell-cmdlets in de volgende stappen. Zorg ervoor dat u de <YourResourceGroupName> <YourStorageAccountName> tijdelijke aanduidingen,,, en <YourKeyVaultName> $keyVaultSpAppId instelt op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals opgegeven in de [Service Principal Application id](#service-principal-application-id)hierboven).
 
 We gebruiken ook de cmdlets Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) en [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) om uw gebruikers-id en de context van uw Azure Storage-account op te halen.
 
@@ -84,14 +84,18 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> Gebruik voor klassiek opslag account ' primair ' en ' secundair ' voor $storageAccountKey <br>
+> Gebruik ' Get-AzResource-name ' ClassicStorageAccountName '-ResourceGroupName $resourceGroupName ' in plaats of'Get-AzStorageAccount ' voor een klassiek opslag account
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault toegang geven tot uw opslag account
 
@@ -134,7 +138,7 @@ Houd er rekening mee dat machtigingen voor opslag accounts niet beschikbaar zijn
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Een beheerd opslag account toevoegen aan uw Key Vault-exemplaar
 
-Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) voor het maken van een beheerd opslag account in uw Key Vault-exemplaar. Met `-DisableAutoRegenerateKey` de schakel optie wordt de sleutel van het opslag account niet opnieuw gegenereerd.
+Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) voor het maken van een beheerd opslag account in uw Key Vault-exemplaar. `-DisableAutoRegenerateKey`Met de schakel optie wordt de sleutel van het opslag account niet opnieuw gegenereerd.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Sleutel opnieuw genereren inschakelen
 
-Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u de cmdlet Azure PowerShell [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) gebruiken om een nieuwe periode in te stellen. In dit voor beeld stellen we een regeneratie periode van drie dagen in. Na drie dagen genereert Key Vault Key2 opnieuw en wordt de actieve sleutel van Key2 naar Key1 gewisseld.
+Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u de cmdlet Azure PowerShell [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) gebruiken om een nieuwe periode in te stellen. In dit voor beeld stellen we een regeneratie periode van drie dagen in. Na drie dagen zal Key Vault ' Key2 ' opnieuw genereren en de actieve sleutel van ' Key2 ' naar ' Key1 ' wisselen (vervangen door ' primair ' en ' secundair ' voor klassieke opslag accounts).
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -192,7 +196,7 @@ De opdrachten in deze sectie voeren de volgende acties uit:
 
 - Stel de definitie van een gedeelde toegangs handtekening voor een account in. 
 - Maak een account voor Shared Access Signature-token voor blob-, bestands-, tabel-en wachtrij Services. Het token is gemaakt voor resource type-service,-container en-object. Het token wordt gemaakt met alle machtigingen, via https en met de opgegeven begin-en eind datum.
-- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type `account` Shared Access Signature en is N dagen geldig.
+- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type Shared Access Signature `account` en is N dagen geldig.
 - Controleer of de Shared Access-hand tekening is opgeslagen in de sleutel kluis als een geheim.
 - 
 ### <a name="set-variables"></a>Variabelen instellen
@@ -205,7 +209,7 @@ We gebruiken ook de Azure PowerShell [New-AzStorageContext](/powershell/module/a
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>Een token voor een Shared Access-hand tekening maken
@@ -252,7 +256,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-U kunt nu de cmdlet [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) en de eigenschap Secret `Name` gebruiken om de inhoud van dat geheim weer te geven.
+U kunt nu de cmdlet [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) en de eigenschap Secret gebruiken `Name` om de inhoud van dat geheim weer te geven.
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>

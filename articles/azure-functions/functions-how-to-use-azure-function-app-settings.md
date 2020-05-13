@@ -3,14 +3,14 @@ title: Instellingen voor functie-apps in azure configureren
 description: Meer informatie over het configureren van instellingen voor Azure function-apps.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276944"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122291"
 ---
 # <a name="manage-your-function-app"></a>Uw functie-app beheren 
 
@@ -27,9 +27,11 @@ In dit artikel wordt beschreven hoe u uw functie-apps configureert en beheert.
 
 ## <a name="get-started-in-the-azure-portal"></a>Aan de slag in de Azure-portal
 
-Als u wilt beginnen, gaat u naar de [Azure Portal] en meldt u zich aan bij uw Azure-account. Typ de naam van uw functie-app in de zoekbalk boven in de portal en selecteer deze in de lijst. Nadat u de functie-app hebt geselecteerd, ziet u de volgende pagina:
+1. Als u wilt beginnen, gaat u naar de [Azure Portal] en meldt u zich aan bij uw Azure-account. Voer in de zoek balk boven in de Portal de naam van uw functie-app in en selecteer deze in de lijst. 
 
-![Overzicht van functie-app in de Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. Selecteer **configuratie**onder **instellingen** in het linkerdeel venster.
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Overzicht van functie-app in de Azure Portal":::
 
 U kunt navigeren naar alles wat u nodig hebt om uw functie-app te beheren op de pagina overzicht, met name de **[Toepassings instellingen](#settings)** en **[platform functies](#platform-features)**.
 
@@ -52,7 +54,7 @@ az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-Met [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) de opdracht wordt een toepassings instelling toegevoegd of bijgewerkt. In het volgende voor beeld wordt een instelling gemaakt met `CUSTOM_FUNCTION_APP_SETTING` een sleutel met de `12345`naam en een waarde van:
+Met de [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) opdracht wordt een toepassings instelling toegevoegd of bijgewerkt. In het volgende voor beeld wordt een instelling gemaakt met een sleutel met de naam `CUSTOM_FUNCTION_APP_SETTING` en een waarde van `12345` :
 
 
 ```azurecli-interactive
@@ -69,9 +71,7 @@ Wanneer u een functie-app lokaal ontwikkelt, moet u lokale kopieën van deze waa
 
 ## <a name="platform-features"></a>Platform functies
 
-![Tabblad functie app platform-functies.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-Functie-apps worden uitgevoerd in en worden onderhouden door het Azure App Service-platform. Als zodanig hebben uw functie-apps toegang tot de meeste functies van het hoofd platform voor webhosting van Azure. Op het tabblad **platform functies** krijgt u toegang tot de vele functies van het app service-platform dat u kunt gebruiken in uw functie-apps. 
+Functie-apps worden uitgevoerd in en worden beheerd door, het Azure App Service-platform. Als zodanig hebben uw functie-apps toegang tot de meeste functies van het hoofd platform voor webhosting van Azure. In het linkerdeel venster krijgt u toegang tot de vele functies van het App Service-platform dat u kunt gebruiken in uw functie-apps. 
 
 > [!NOTE]
 > Niet alle App Service-functies zijn beschikbaar wanneer een functie-app wordt uitgevoerd op het verbruiks hosting plan.
@@ -87,7 +87,7 @@ De rest van dit artikel richt zich op de volgende App Service functies in de Azu
 
 Zie [Azure app service-instellingen configureren](../app-service/configure-common.md)voor meer informatie over het werken met app service-instellingen.
 
-### <a name="app-service-editor"></a><a name="editor"></a>App Service-editor
+### <a name="app-service-editor"></a><a name="editor"></a>App Service editor
 
 ![De App Service editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -120,11 +120,11 @@ Om te voor komen dat schadelijke code wordt uitgevoerd op de client, blok keren 
 
 #### <a name="portal"></a>Portal
 
-Wanneer u de lijst met **toegestane oorsprongen** voor uw functie-app `Access-Control-Allow-Origin` configureert, wordt de header automatisch toegevoegd aan alle antwoorden van http-eind punten in uw functie-app. 
+Wanneer u de lijst met **toegestane oorsprongen** voor uw functie-app configureert, `Access-Control-Allow-Origin` wordt de header automatisch toegevoegd aan alle antwoorden van http-eind punten in uw functie-app. 
 
 ![De CORS-lijst van de functie-app configureren](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Wanneer het Joker teken`*`() wordt gebruikt, worden alle andere domeinen genegeerd. 
+Wanneer het Joker teken ( `*` ) wordt gebruikt, worden alle andere domeinen genegeerd. 
 
 Gebruik de [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) opdracht om een domein toe te voegen aan de lijst toegestane oorsprongen. In het volgende voor beeld wordt het contoso.com-domein toegevoegd:
 

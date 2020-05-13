@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78192911"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121249"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische gegevens maskering voor Azure SQL Database en Azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Dynamische gegevens maskering kan worden geconfigureerd door de rollen Azure SQL
 
 | Maskerings functie | Logica maskeren |
 | --- | --- |
-| **Prijs** |**Volledige maskering volgens de gegevens typen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder XS als de grootte van het veld kleiner is dan 4 tekens voor teken reeks gegevens typen (NCHAR, ntext, nvarchar).<br/>• Gebruik de waarde nul voor numerieke gegevens typen (bigint, bit, Decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Gebruik 01-01-1900 voor datum-en tijd gegevens typen (datum, DATETIME2, datetime, date time offset, smalldatetime, time).<br/>• Voor SQL-variant wordt de standaard waarde van het huidige type gebruikt.<br/>• Voor XML wordt het \<document gemaskeerd/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevens typen (Time Stamp-tabel, hierarchyid, GUID, binary, afbeelding, type Spatial). |
+| **Standaard** |**Volledige maskering volgens de gegevens typen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder XS als de grootte van het veld kleiner is dan 4 tekens voor teken reeks gegevens typen (NCHAR, ntext, nvarchar).<br/>• Gebruik de waarde nul voor numerieke gegevens typen (bigint, bit, Decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Gebruik 01-01-1900 voor datum-en tijd gegevens typen (datum, DATETIME2, datetime, date time offset, smalldatetime, time).<br/>• Voor SQL-variant wordt de standaard waarde van het huidige type gebruikt.<br/>• Voor XML wordt het document \< gemaskeerd/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevens typen (Time Stamp-tabel, hierarchyid, GUID, binary, afbeelding, type Spatial). |
 | **Creditcard** |**Maskerings methode, waarmee de laatste vier cijfers van de aangewezen velden worden** weer gegeven en een constante teken reeks als voor voegsel wordt toegevoegd in de vorm van een credit card.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-mail** |**Maskerings methode, waarmee de eerste letter wordt weer gegeven en het domein wordt vervangen door xxx.com** met behulp van een constante voor voegsel van een teken reeks in de vorm van een e-mail adres.<br/><br/>aXX@XXXX.com |
 | **Wille keurig getal** |**Maskerings methode, waarmee een wille keurig getal wordt gegenereerd** op basis van de geselecteerde grenzen en de werkelijke gegevens typen. Als de aangewezen grenzen gelijk zijn, is de maskerings functie een constant getal.<br/><br/>![Navigatiedeelvenster](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
@@ -58,8 +58,28 @@ De DDM-engine voor aanbevelingen, markeert bepaalde velden uit uw data base als 
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Dynamische gegevens maskering instellen voor uw data base met behulp van Power shell-cmdlets
 
-Zie [Azure SQL database-cmdlets](https://docs.microsoft.com/powershell/module/az.sql).
+### <a name="data-masking-policy"></a>Beleid voor gegevens maskering
+
+- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+
+### <a name="data-masking-rules"></a>Regels voor gegevens maskering
+
+- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [New-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Dynamische gegevens maskering instellen voor uw data base met behulp van REST API
 
-Zie [bewerkingen voor Azure SQL database](https://docs.microsoft.com/rest/api/sql/).
+U kunt de REST API gebruiken om beleid en regels voor gegevens maskering programmatisch te beheren. De gepubliceerde REST API ondersteunt de volgende bewerkingen:
+
+### <a name="data-masking-policies"></a>Beleid voor gegevensmaskering
+
+- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt het gevoeligheids label van de opgegeven kolom gemaakt of bijgewerkt.
+- [Ophalen](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Hiermee wordt een beleid voor database gegevens maskering opgehaald. 
+
+### <a name="data-masking-rules"></a>Regels voor gegevens maskering
+
+- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): Hiermee wordt een regel voor database gegevens maskering gemaakt of bijgewerkt.
+- [Lijst op data base](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): Hiermee wordt een lijst met regels voor database gegevens maskering opgehaald.

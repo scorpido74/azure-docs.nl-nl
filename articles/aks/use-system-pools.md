@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van groepen met systeem k
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790555"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125244"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
@@ -50,6 +50,7 @@ U kunt de volgende bewerkingen uitvoeren met knooppunt groepen:
 * Gebruikers knooppunt groepen verwijderen.
 * U kunt systeem knooppunt groepen verwijderen. u hebt een andere groep van het systeem knooppunt nodig om in het AKS-cluster te plaatsen.
 * Een AKS-cluster kan meerdere systeem knooppunt groepen bevatten en moet ten minste één groep systeem knooppunten hebben.
+* Als u verschillende onveranderbare instellingen voor bestaande knooppunt groepen wilt wijzigen, kunt u nieuwe knooppunt groepen maken om ze te vervangen. Een voor beeld hiervan is het toevoegen van een nieuwe groep van een knoop punt met een nieuwe maxPods-instelling en het verwijderen van de oude knooppunt groep.
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Een nieuw AKS-cluster maken met een systeem knooppunt groep
 

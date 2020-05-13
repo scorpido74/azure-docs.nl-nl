@@ -3,14 +3,14 @@ title: GitHub-acties gebruiken om code-updates te maken in Azure Functions
 description: Leer hoe u GitHub-acties kunt gebruiken om een werk stroom te definiëren voor het bouwen en implementeren van Azure Functions projecten in GitHub.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878201"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122325"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -18,7 +18,7 @@ Met [github acties](https://github.com/features/actions) kunt u een werk stroom 
 
 In GitHub acties is een [werk stroom](https://help.github.com/articles/about-github-actions#workflow) een geautomatiseerd proces dat u in uw github-opslag plaats definieert. Dit proces vertelt u GitHub hoe u uw functions-app-project bouwt en implementeert op GitHub. 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
 
 Voor een Azure Functions werk stroom heeft het bestand drie secties: 
 
@@ -46,22 +46,24 @@ In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw a
 
 ## <a name="download-the-publishing-profile"></a>Het publicatie profiel downloaden
 
-U kunt het publicatie Profiel van uw functie-app downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
+Het publicatie Profiel van uw functie-app downloaden:
 
-   ![Publicatie profiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
+1. Selecteer de pagina **overzicht** van de functie-app en selecteer vervolgens **publicatie profiel ophalen**.
 
-Kopieer de inhoud van het bestand.
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Publicatie profiel downloaden":::
+
+1. Sla de inhoud van het bestand met publicatie-instellingen op en kopieer het.
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-1. Blader in [github](https://github.com)naar uw opslag plaats en selecteer **instellingen** > **geheimen** > **een nieuw geheim toevoegen**.
+1. Blader in [github](https://github.com)naar uw opslag plaats en selecteer **instellingen**  >  **geheimen**  >  **een nieuw geheim toevoegen**.
 
-   ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Geheim toevoegen":::
 
 1. Voeg een nieuw geheim toe.
 
-   * Als u de Service-Principal gebruikt die u hebt gemaakt met behulp van de Azure `AZURE_CREDENTIALS` CLI, gebruikt u voor de **naam**. Plak vervolgens de gekopieerde JSON-object uitvoer voor **waarde**en selecteer **geheim toevoegen**.
-   * Als u een publicatie profiel gebruikt, gebruikt `SCM_CREDENTIALS` u voor de **naam**. Vervolgens gebruikt u de bestands inhoud van het publicatie profiel voor **waarde**en selecteert u **geheim toevoegen**.
+   * Als u de Service-Principal gebruikt die u hebt gemaakt met behulp van de Azure CLI, gebruikt u `AZURE_CREDENTIALS` voor de **naam**. Plak vervolgens de gekopieerde JSON-object uitvoer voor **waarde**en selecteer **geheim toevoegen**.
+   * Als u een publicatie profiel gebruikt, gebruikt u `SCM_CREDENTIALS` voor de **naam**. Vervolgens gebruikt u de bestands inhoud van het publicatie profiel voor **waarde**en selecteert u **geheim toevoegen**.
 
 GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
@@ -71,7 +73,7 @@ Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u het deel van de werk `actions/setup-node` stroom dat gebruikmaakt van de actie voor het instellen van de omgeving:
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-node` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -86,7 +88,7 @@ In het volgende voor beeld ziet u het deel van de werk `actions/setup-node` stro
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u het deel van de werk `actions/setup-python` stroom dat gebruikmaakt van de actie voor het instellen van de omgeving:
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-python` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -99,9 +101,9 @@ In het volgende voor beeld ziet u het deel van de werk `actions/setup-python` st
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
-In het volgende voor beeld ziet u het deel van de werk `actions/setup-dotnet` stroom dat gebruikmaakt van de actie voor het instellen van de omgeving:
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-dotnet` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -116,7 +118,7 @@ In het volgende voor beeld ziet u het deel van de werk `actions/setup-dotnet` st
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u het deel van de werk `actions/setup-java` stroom dat gebruikmaakt van de actie voor het instellen van de omgeving:
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-java` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -167,7 +169,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app
         popd
 ```
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -205,7 +207,7 @@ Als u uw code wilt implementeren in een functie-app, moet u de `Azure/functions-
 |_**sleuf naam**_ | Beschrijving De naam van de [implementatie sleuf](functions-deployment-slots.md) waarnaar u wilt implementeren. De sleuf moet al zijn gedefinieerd in uw functie-app. |
 
 
-In het volgende voor beeld wordt versie 1 `functions-action`van gebruikt:
+In het volgende voor beeld wordt versie 1 van gebruikt `functions-action` :
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +219,7 @@ In het volgende voor beeld wordt versie 1 `functions-action`van gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://aka.ms/functions-actions-samples) die in de naam staan `functionapp` . U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
+Als u een volledig werk stroom. yaml-bestand wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://aka.ms/functions-actions-samples) met `functionapp` de naam. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over GitHub-acties](https://help.github.com/en/articles/about-github-actions)

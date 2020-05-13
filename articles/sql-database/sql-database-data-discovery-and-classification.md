@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766978"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123850"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens detectie & classificatie voor Azure SQL Database en Azure Synapse Analytics
 
@@ -113,7 +113,7 @@ Nadat u het beleid voor de hele organisatie hebt gedefinieerd, kunt u afzonderli
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Toegang tot gevoelige gegevens controleren
 
-Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het audit logboek met de naam `data_sensitivity_information`. Dit veld registreert de gevoeligheids classificaties (labels) van de gegevens die door een query zijn geretourneerd. Hier volgt een voorbeeld:
+Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het audit logboek met de naam `data_sensitivity_information` . Dit veld registreert de gevoeligheids classificaties (labels) van de gegevens die door een query zijn geretourneerd. Hier volgt een voorbeeld:
 
 ![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -152,18 +152,6 @@ Zie de volgende verwijzingen voor meer informatie over het gebruik van T-SQL voo
 - De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven op de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>De rest-API gebruiken
-
-U kunt de REST API gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST API ondersteunt de volgende bewerkingen:
-
-- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): Hiermee wordt het gevoeligheids label van de opgegeven kolom gemaakt of bijgewerkt.
-- [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): Hiermee verwijdert u het gevoeligheids label van de opgegeven kolom.
-- [Aanbeveling uitschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): Hiermee worden de gevoeligheids aanbevelingen voor de opgegeven kolom uitgeschakeld.
-- [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): Hiermee schakelt u gevoeligheids aanbevelingen in voor de opgegeven kolom. (Aanbevelingen zijn standaard ingeschakeld voor alle kolommen.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): haalt het gevoeligheids label van de opgegeven kolom op.
-- [Lijst actueel op data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Hiermee wordt de huidige sensitivity-labels van de opgegeven Data Base opgehaald.
-- [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Hiermee wordt de aanbevolen gevoeligheids labels van de opgegeven Data Base opgehaald.
-
 ### <a name="use-powershell-cmdlets"></a>PowerShell-cmdlets gebruiken
 U kunt Power shell gebruiken om classificaties en aanbevelingen voor Azure SQL Database en beheerde exemplaren te beheren.
 
@@ -185,6 +173,17 @@ U kunt Power shell gebruiken om classificaties en aanbevelingen voor Azure SQL D
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>De rest-API gebruiken
+
+U kunt de REST API gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST API ondersteunt de volgende bewerkingen:
+
+- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): Hiermee wordt het gevoeligheids label van de opgegeven kolom gemaakt of bijgewerkt.
+- [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): Hiermee verwijdert u het gevoeligheids label van de opgegeven kolom.
+- [Aanbeveling uitschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): Hiermee worden de gevoeligheids aanbevelingen voor de opgegeven kolom uitgeschakeld.
+- [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): Hiermee schakelt u gevoeligheids aanbevelingen in voor de opgegeven kolom. (Aanbevelingen zijn standaard ingeschakeld voor alle kolommen.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): haalt het gevoeligheids label van de opgegeven kolom op.
+- [Lijst actueel op data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Hiermee wordt de huidige sensitivity-labels van de opgegeven Data Base opgehaald.
+- [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Hiermee wordt de aanbevolen gevoeligheids labels van de opgegeven Data Base opgehaald.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Volgende stappen
 

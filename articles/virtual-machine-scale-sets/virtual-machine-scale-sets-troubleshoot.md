@@ -1,23 +1,23 @@
 ---
 title: Problemen met automatisch schalen oplossen met Virtual Machine Scale Sets
 description: Problemen met automatisch schalen oplossen met Virtual Machine Scale Sets. Krijg inzicht in veelvoorkomende problemen en hoe u deze kunt oplossen.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
+author: avirishuv
+ms.author: avverma
+ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: windows
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 11/16/2017
-ms.author: mimckitt
-ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviwer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273372"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125142"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
-**Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale :: u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
+**Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 Hieronder vindt u enkele dingen die u moet overwegen:
@@ -46,7 +46,7 @@ Hieronder vindt u enkele dingen die u moet overwegen:
     De Azure Resource Explorer is een onmisbaar hulp programma voor probleem oplossing waarmee u de status van uw Azure Resource Manager resources kunt zien. Klik op uw abonnement en Bekijk de resource groep die u wilt oplossen. Bekijk de virtuele-machine schaalset die u hebt gemaakt in de compute-resource provider en controleer de weer gave van de instantie. hier ziet u de status van een implementatie. Controleer ook de weer gave van de instantie van Vm's in de schaalset voor virtuele machines. Ga vervolgens naar de resource provider micro soft. Insights en controleer of de regels voor automatisch schalen naar rechts zoeken.
 * Werkt de diagnostische uitbrei ding en worden prestatie gegevens verzonden?
   
-    **Update:** Automatisch schalen van Azure is verbeterd voor het gebruik van een op een host gebaseerde metrische pijp lijn, waarvoor geen diagnostische uitbrei dingen meer nodig zijn om te worden geïnstalleerd. De volgende alinea's zijn niet meer van toepassing als u een toepassing voor automatisch schalen maakt met behulp van de nieuwe pijp lijn. Hier vindt u een voor beeld van Azure-sjablonen die zijn geconverteerd om de host-pijp lijn https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscalete gebruiken:. 
+    **Update:** Automatisch schalen van Azure is verbeterd voor het gebruik van een op een host gebaseerde metrische pijp lijn, waarvoor geen diagnostische uitbrei dingen meer nodig zijn om te worden geïnstalleerd. De volgende alinea's zijn niet meer van toepassing als u een toepassing voor automatisch schalen maakt met behulp van de nieuwe pijp lijn. Hier vindt u een voor beeld van Azure-sjablonen die zijn geconverteerd om de host-pijp lijn te gebruiken: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale . 
   
     Het gebruik van metrische gegevens op basis van een host voor automatisch schalen is beter om de volgende redenen:
   

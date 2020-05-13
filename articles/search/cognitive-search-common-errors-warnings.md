@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e18fcc5dc23bdbd9027de62a5bee0fb7d4ceff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086606"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125091"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -21,7 +21,7 @@ In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en 
 
 Het indexeren stopt wanneer het aantal fouten groter is dan [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
 
-Als u wilt dat Indexeer functies deze fouten negeren (en overs Laan over ' mislukte documenten '), kunt `maxFailedItems` u `maxFailedItemsPerBatch` overwegen om de en zoals [hier](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)wordt beschreven, bij te werken.
+Als u wilt dat Indexeer functies deze fouten negeren (en overs Laan over ' mislukte documenten '), kunt u overwegen om de `maxFailedItems` en `maxFailedItemsPerBatch` zoals [hier](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)wordt beschreven, bij te werken.
 
 > [!NOTE]
 > Elk mislukt document samen met de document sleutel (indien beschikbaar) wordt weer gegeven als een fout in de uitvoerings status van de Indexeer functie. U kunt de index- [API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) gebruiken om de documenten op een later tijdstip hand matig te uploaden als u de Indexeer functie hebt ingesteld op het verdragen van fouten.
@@ -30,14 +30,14 @@ De fout informatie in dit artikel kan u helpen bij het oplossen van fouten, waar
 
 Waarschuwingen worden niet gestopt met indexeren, maar ze doen wel voor waarden die kunnen leiden tot onverwachte resultaten. Of u actie onderneemt of niet afhankelijk is van de gegevens en uw scenario.
 
-Met ingang van API `2019-05-06`-versie kunnen indexerings fouten en waarschuwingen op item niveau worden gestructureerd, zodat u meer duidelijkheid krijgt over oorzaken en de volgende stappen. Ze bevatten de volgende eigenschappen:
+Met ingang van API `2019-05-06` -versie kunnen indexerings fouten en waarschuwingen op item niveau worden gestructureerd, zodat u meer duidelijkheid krijgt over oorzaken en de volgende stappen. Ze bevatten de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Voorbeeld |
 | --- | --- | --- |
-| sleutel | De document-ID van het document dat wordt beïnvloed door de fout of waarschuwing. | https:\//coromsearch.blob.core.Windows.net/JFK-1k/docid-32112954.PDF |
+| sleutel | De document-ID van het document dat wordt beïnvloed door de fout of waarschuwing. | https: \/ /coromsearch.blob.core.Windows.net/JFK-1k/docid-32112954.PDF |
 | name | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName projectie. SearchIndex. MergeOrUpload. myIndexName-projectie. KnowledgeStore. table. myTableName |
 | message | Een beschrijving van de fout of waarschuwing op hoog niveau. | Kan de vaardigheid niet uitvoeren omdat de Web-API-aanvraag is mislukt. |
-| nadere | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... rest van Stack tracering... |
+| nadere | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... rest van Stack tracering... |
 | documentationLink | Een koppeling naar relevante documentatie met gedetailleerde informatie voor het opsporen van fouten en het oplossen van het probleem. Deze koppeling wijst vaak naar een van de onderstaande secties op deze pagina. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -48,7 +48,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| Inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. De kolom `'{47.6,-122.1}'` AUTHORS kan niet worden opgeslagen.  Verwacht type is JArray. "  Fout bij het converteren van het gegevens type nvarchar naar float.  ' De conversie is mislukt tijdens het converteren van de nvarchar-waarde ' 12 maanden ' naar het gegevens type int '.  "Aritmetische overflow fout bij het converteren van de expressie naar het gegevens type int." | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als het eerste document `'startTime'` veld bijvoorbeeld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
+| Inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. De kolom AUTHORS kan niet worden opgeslagen `'{47.6,-122.1}'` .  Verwacht type is JArray. "  Fout bij het converteren van het gegevens type nvarchar naar float.  ' De conversie is mislukt tijdens het converteren van de nvarchar-waarde ' 12 maanden ' naar het gegevens type int '.  "Aritmetische overflow fout bij het converteren van de expressie naar het gegevens type int." | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als het eerste document `'startTime'` veld bijvoorbeeld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
 | fouten van de onderliggende service van de gegevens bron | (van Cosmos DB)`{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
 | tijdelijke problemen | Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 
@@ -59,7 +59,7 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud of meta gegevens niet 
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| de BLOB overschrijdt de maximale grootte | Het document `'150441598'` is bytes, wat groter is dan de `'134217728'` maximale grootte voor documenten extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| de BLOB overschrijdt de maximale grootte | Het document is `'150441598'` bytes, wat groter is dan de maximale grootte `'134217728'` voor documenten extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | de BLOB heeft een niet-ondersteund inhouds type | Het inhouds type van het document is niet ondersteund`'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB is versleuteld | Het document kan niet worden verwerkt omdat het mogelijk is versleuteld of met een wacht woord is beveiligd. | U kunt de BLOB overs laan met [BLOB-instellingen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
 | tijdelijke problemen | "Fout bij verwerken van blob: de aanvraag is afgebroken: de aanvraag is geannuleerd." Er is een time-out opgetreden tijdens het verwerken van het document. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
@@ -73,8 +73,13 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 | --- | --- | --- |
 | De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben |
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
-| Kan de veld toewijzing niet Toep assen op een veld | Kan toewijzings functie `'functionName'` niet Toep assen `'fieldName'`op veld. Matrix kan niet null zijn. Parameter naam: bytes | Controleer of de [veld Toewijzingen](search-indexer-field-mappings.md) die zijn gedefinieerd op de Indexeer functie dubbel zijn en vergelijk met de gegevens van het opgegeven veld van het mislukte document. Het kan nodig zijn om de veld toewijzingen of de document gegevens te wijzigen. |
-| Kan de veld waarde niet lezen | Kan de waarde van de kolom `'fieldName'` bij de index `'fieldIndex'`niet lezen. Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host.) | Deze fouten worden meestal veroorzaakt door onverwachte verbindings problemen met de onderliggende service van de gegevens bron. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
+| Kan de veld toewijzing niet Toep assen op een veld | Kan toewijzings functie niet Toep assen `'functionName'` op veld `'fieldName'` . Matrix kan niet null zijn. Parameter naam: bytes | Controleer of de [veld Toewijzingen](search-indexer-field-mappings.md) die zijn gedefinieerd op de Indexeer functie dubbel zijn en vergelijk met de gegevens van het opgegeven veld van het mislukte document. Het kan nodig zijn om de veld toewijzingen of de document gegevens te wijzigen. |
+| Kan de veld waarde niet lezen | Kan de waarde van de kolom bij de index niet lezen `'fieldName'` `'fieldIndex'` . Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host.) | Deze fouten worden meestal veroorzaakt door onverwachte verbindings problemen met de onderliggende service van de gegevens bron. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
+
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>Fout: kan het uitvoer veld niet toewijzen `xyz` aan de zoek index vanwege een probleem met de serialisatie tijdens het Toep assen van de toewijzings functie `abc`
+Het kan zijn dat de uitvoer toewijzing is mislukt omdat de uitvoer gegevens de verkeerde indeling hebben voor de toewijzings functie die u gebruikt. Als u bijvoorbeeld de functie Base64Encode mapping toepast op binaire gegevens, wordt deze fout gegenereerd. Om het probleem op te lossen, moet u de Indexeer functie opnieuw uitvoeren zonder een toewijzing op te geven of de toewijzings functie compatibel met het gegevens type van het uitvoer veld. Zie [uitvoer veld toewijzing](cognitive-search-output-field-mapping.md) voor meer informatie.
 
 <a name="could-not-execute-skill"/>
 
@@ -110,7 +115,7 @@ Veel van de ingebouwde cognitieve vaardig heden, zoals taal detectie, entiteits 
 Als deze fout blijft optreden in hetzelfde document voor een ingebouwde cognitieve vaardigheid, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen om hulp te krijgen, omdat dit niet wordt verwacht.
 
 ### <a name="custom-skills"></a>Aangepaste vaardigheden
-Als er een time-outfout optreedt bij een aangepaste vaardigheid die u hebt gemaakt, kunt u het volgende proberen. Controleer eerst uw aangepaste vaardigheid en zorg ervoor dat deze niet vastloopt in een oneindige lus en dat het resultaat consistent wordt geretourneerd. Nadat u hebt bevestigd dat het het geval is, bepaalt u wat de uitvoerings tijd van uw vaardigheid is. Als u geen `timeout` expliciete waarde op uw aangepaste vaardigheids definitie hebt ingesteld, is `timeout` de standaard instelling 30 seconden. Als 30 seconden niet lang genoeg is om uw vaardigheid uit te voeren, kunt u een hogere `timeout` waarde opgeven op uw aangepaste vaardigheids definitie. Hier volgt een voor beeld van een aangepaste vaardigheids definitie waarbij de time-out is ingesteld op 90 seconden:
+Als er een time-outfout optreedt bij een aangepaste vaardigheid die u hebt gemaakt, kunt u het volgende proberen. Controleer eerst uw aangepaste vaardigheid en zorg ervoor dat deze niet vastloopt in een oneindige lus en dat het resultaat consistent wordt geretourneerd. Nadat u hebt bevestigd dat het het geval is, bepaalt u wat de uitvoerings tijd van uw vaardigheid is. Als u geen expliciete `timeout` waarde op uw aangepaste vaardigheids definitie hebt ingesteld, is de standaard instelling `timeout` 30 seconden. Als 30 seconden niet lang genoeg is om uw vaardigheid uit te voeren, kunt u een hogere `timeout` waarde opgeven op uw aangepaste vaardigheids definitie. Hier volgt een voor beeld van een aangepaste vaardigheids definitie waarbij de time-out is ingesteld op 90 seconden:
 
 ```json
   {
@@ -134,11 +139,11 @@ Als er een time-outfout optreedt bij een aangepaste vaardigheid die u hebt gemaa
       }
 ```
 
-De maximum waarde die u voor de `timeout` para meter kunt instellen, is 230 seconden.  Als uw aangepaste vaardigheid niet consistent kan worden uitgevoerd binnen 230 seconden, kunt u overwegen om uw `batchSize` aangepaste vaardigheid te verminderen zodat deze minder documenten heeft om te verwerken binnen één uitvoering.  Als u uw `batchSize` op 1 al hebt ingesteld, moet u de vaardigheid opnieuw schrijven zodat deze binnen 230 seconden kan worden uitgevoerd. u kunt deze ook op andere manieren splitsen in meerdere aangepaste vaardig heden, zodat de uitvoerings tijd voor een enkele aangepaste vaardigheid maxi maal 230 seconden is. Raadpleeg de [documentatie voor aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) voor meer informatie.
+De maximum waarde die u voor de `timeout` para meter kunt instellen, is 230 seconden.  Als uw aangepaste vaardigheid niet consistent kan worden uitgevoerd binnen 230 seconden, kunt u overwegen om `batchSize` uw aangepaste vaardigheid te verminderen zodat deze minder documenten heeft om te verwerken binnen één uitvoering.  Als u uw op 1 al hebt ingesteld `batchSize` , moet u de vaardigheid opnieuw schrijven zodat deze binnen 230 seconden kan worden uitgevoerd. u kunt deze ook op andere manieren splitsen in meerdere aangepaste vaardig heden, zodat de uitvoerings tijd voor een enkele aangepaste vaardigheid Maxi maal 230 seconden is. Raadpleeg de [documentatie voor aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) voor meer informatie.
 
 <a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
 
-## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Fout: kan niet`MergeOrUpload`| '`Delete`' document naar de zoek index
+## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Fout: kan niet `MergeOrUpload` | ' `Delete` ' document naar de zoek index
 
 Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevoegen aan de zoek index. Dit kan gebeuren vanwege:
 
@@ -146,7 +151,7 @@ Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevo
 | --- | --- | --- |
 | Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
 | Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
-| Het document bevat te veel objecten in de verzameling | Een verzameling in uw document overschrijdt het [maximum aantal elementen voor alle complexe verzamelingen limieten](search-limits-quotas-capacity.md#index-limits) . het document `'1000052'` met `'4303'` de sleutel bevat objecten in verzamelingen (JSON-matrices). De meeste `'3000'` objecten mogen zich in verzamelingen in het hele document bevinden. Verwijder objecten uit verzamelingen en probeer het document opnieuw te indexeren. " | We raden u aan de grootte van de complexe verzameling in het document onder de limiet te verminderen en gebruik van hoge opslag te voor komen.
+| Het document bevat te veel objecten in de verzameling | Een verzameling in uw document overschrijdt het [maximum aantal elementen voor alle complexe verzamelingen limieten](search-limits-quotas-capacity.md#index-limits) . het document met de sleutel `'1000052'` bevat `'4303'` objecten in verzamelingen (JSON-matrices). De meeste `'3000'` objecten mogen zich in verzamelingen in het hele document bevinden. Verwijder objecten uit verzamelingen en probeer het document opnieuw te indexeren. " | We raden u aan de grootte van de complexe verzameling in het document onder de limiet te verminderen en gebruik van hoge opslag te voor komen.
 | Er is een probleem opgetreden bij het maken van verbinding met de doel index (die blijft bestaan na nieuwe pogingen), omdat de service wordt uitgevoerd onder andere belasting, zoals het uitvoeren van query's of het indexeren. | Kan geen verbinding maken met update-index. De zoek service wordt zwaar belast. | [De zoek service omhoog schalen](search-capacity-planning.md)
 | De zoek service wordt bijgewerkt voor service-updates of bevindt zich in het midden van de herconfiguratie van een topologie. | Kan geen verbinding maken met update-index. De zoek service is momenteel niet beschikbaar en de zoek service gaat naar een overgang. | Service configureren met ten minste 3 replica's voor een Beschik baarheid van 99,9% per [Sla-documentatie](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Fout in de onderliggende Compute/Networking-Resource (zeldzaam) | Kan geen verbinding maken met update-index. Er is een onbekende fout opgetreden. | Indexeer functies zodanig configureren dat [ze worden uitgevoerd volgens een](search-howto-schedule-indexers.md) mislukte status.
@@ -186,8 +191,8 @@ Deze fout treedt op wanneer de Indexeer functie probeert [gegevens te projectere
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| Kan projectie-BLOB `'blobUri'` niet bijwerken in container`'containerName'` |De opgegeven container bestaat niet. | Met de Indexeer functie wordt gecontroleerd of de opgegeven container eerder is gemaakt en wordt deze zo nodig gemaakt, maar wordt deze controle slechts eenmaal uitgevoerd per Indexeer functie. Deze fout betekent dat de container na deze stap is verwijderd.  Probeer dit probleem op te lossen door de gegevens van uw opslag account op te slaan. wacht totdat de Indexeer functie is voltooid en voer de Indexeer functie opnieuw uit. |
-| Kan projectie-BLOB `'blobUri'` niet bijwerken in container`'containerName'` |Kan geen gegevens schrijven naar de transport verbinding: een bestaande verbinding is geforceerd gesloten door de externe host. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
+| Kan projectie-BLOB niet bijwerken `'blobUri'` in container`'containerName'` |De opgegeven container bestaat niet. | Met de Indexeer functie wordt gecontroleerd of de opgegeven container eerder is gemaakt en wordt deze zo nodig gemaakt, maar wordt deze controle slechts eenmaal uitgevoerd per Indexeer functie. Deze fout betekent dat de container na deze stap is verwijderd.  Probeer dit probleem op te lossen door de gegevens van uw opslag account op te slaan. wacht totdat de Indexeer functie is voltooid en voer de Indexeer functie opnieuw uit. |
+| Kan projectie-BLOB niet bijwerken `'blobUri'` in container`'containerName'` |Kan geen gegevens schrijven naar de transport verbinding: een bestaande verbinding is geforceerd gesloten door de externe host. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
 | Kan rij `'projectionRow'` in tabel niet bijwerken`'tableName'` | De server is bezet. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
@@ -197,13 +202,13 @@ Er ontbreekt een invoer voor de vaardigheid, het verkeerde type of is ongeldig. 
 1) Kan de kwalificatie niet uitvoeren
 2) Vaardigheid uitgevoerd, maar kan onverwachte resultaten hebben
 
-Cognitieve vaardig heden hebben vereiste invoer en optionele invoer. De [belangrijkste frase extractie vaardigheid](cognitive-search-skill-keyphrases.md) heeft bijvoorbeeld twee vereiste invoer `text`, `languageCode`en geen optionele invoer. Aangepaste vaardigheids invoer worden alle beschouwd als optionele invoer.
+Cognitieve vaardig heden hebben vereiste invoer en optionele invoer. De [belangrijkste frase extractie vaardigheid](cognitive-search-skill-keyphrases.md) heeft bijvoorbeeld twee vereiste invoer `text` , `languageCode` en geen optionele invoer. Aangepaste vaardigheids invoer worden alle beschouwd als optionele invoer.
 
 Als vereiste invoer ontbreekt of als een invoer niet het juiste type is, wordt de vaardigheid overgeslagen en wordt er een waarschuwing gegenereerd. Overgeslagen vaardig heden genereren geen uitvoer, dus als andere vaardig heden uitvoer van de overgeslagen vaardigheid gebruiken, kunnen ze extra waarschuwingen genereren.
 
 Als een optionele invoer ontbreekt, wordt de vaardigheid nog steeds uitgevoerd, maar kan er onverwachte uitvoer ontstaan als gevolg van de ontbrekende invoer.
 
-In beide gevallen kan deze waarschuwing worden verwacht als gevolg van de vorm van uw gegevens. Als u bijvoorbeeld een document hebt met informatie over personen met de `firstName`velden, `middleName`en `lastName`, hebt u mogelijk documenten waarvoor geen vermelding voor `middleName`is. Als u een invoer `middleName` wilt door geven aan een vaardigheid in de pijp lijn, wordt verwacht dat deze vaardigheids invoer enige tijd ontbreekt. U moet uw gegevens en scenario evalueren om te bepalen of er een actie moet worden uitgevoerd als gevolg van deze waarschuwing.
+In beide gevallen kan deze waarschuwing worden verwacht als gevolg van de vorm van uw gegevens. Als u bijvoorbeeld een document hebt met informatie over personen met de velden `firstName` , en, `middleName` `lastName` hebt u mogelijk documenten waarvoor geen vermelding voor is `middleName` . Als u een `middleName` invoer wilt door geven aan een vaardigheid in de pijp lijn, wordt verwacht dat deze vaardigheids invoer enige tijd ontbreekt. U moet uw gegevens en scenario evalueren om te bepalen of er een actie moet worden uitgevoerd als gevolg van deze waarschuwing.
 
 Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer, kunt u de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md) gebruiken om een standaard waarde te genereren en vervolgens de uitvoer van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md) gebruiken als de vaardigheids invoer.
 
@@ -223,18 +228,18 @@ Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer,
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| De vaardigheids invoer is van het verkeerde type | De vereiste vaardigheids invoer is niet van het verwachte `String`type. Naam: `text`, Bron: `/document/merged_content`. "  ' De vereiste vaardigheids invoer heeft niet de verwachte indeling. Naam: `text`, Bron: `/document/merged_content`. "  "Kan niet nalopen over niet `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`-matrix".  ' Kan niet selecteren `0` in niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`' | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment](cognitive-search-skill-sentiment.md) -kwalificaties `text` verwacht een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van `*` de vaardigheid en de invoer op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer `*` bron eindigen op voor-matrices. |
-| Vaardigheids invoer ontbreekt | De vereiste vaardigheids invoer ontbreekt. Naam: `text`, Bron: `/document/merged_content`"" ontbrekende waarde `/document/normalized_images/0/imageTags`. "  Kan niet selecteren `0` in de matrix `/document/pages` met een `0`lengte. | Als in al uw documenten deze waarschuwing wordt weer gegeven, is het waarschijnlijk dat er een type fout is in de invoer paden en moet u de naam van `*` de eigenschap name hoofdletter, extra of ontbrekend in het pad controleren en ervoor zorgen dat de documenten uit de gegevens bron de vereiste invoer hebben. |
-| De invoer voor de taal code van de bekwaamheid is ongeldig | De vaardigheids invoer `languageCode` heeft de volgende `X,Y,Z`taal codes, ten minste één is ongeldig. | Meer details vindt u [hieronder](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
+| De vaardigheids invoer is van het verkeerde type | De vereiste vaardigheids invoer is niet van het verwachte type `String` . Naam: `text` , Bron: `/document/merged_content` . "  ' De vereiste vaardigheids invoer heeft niet de verwachte indeling. Naam: `text` , Bron: `/document/merged_content` . "  "Kan niet nalopen over niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` ".  ' Kan niet selecteren `0` in niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` ' | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment-kwalificaties](cognitive-search-skill-sentiment.md) verwacht `text` een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van de vaardigheid en `*` de invoer op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer bron eindigen `*` op voor-matrices. |
+| Vaardigheids invoer ontbreekt | De vereiste vaardigheids invoer ontbreekt. Naam: `text` , Bron: `/document/merged_content` "" ontbrekende waarde `/document/normalized_images/0/imageTags` . "  Kan niet selecteren `0` in de matrix `/document/pages` met een lengte `0` . | Als in al uw documenten deze waarschuwing wordt weer gegeven, is het waarschijnlijk dat er een type fout is in de invoer paden en moet u de naam van de eigenschap name hoofdletter, extra of ontbrekend `*` in het pad controleren en ervoor zorgen dat de documenten uit de gegevens bron de vereiste invoer hebben. |
+| De invoer voor de taal code van de bekwaamheid is ongeldig | De vaardigheids invoer `languageCode` heeft de volgende taal codes `X,Y,Z` , ten minste één is ongeldig. | Meer details vindt u [hieronder](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Waarschuwing: de vaardigheids invoer language code heeft de volgende taal codes X, Y, Z, ten minste één is ongeldig.
-Een of meer van de waarden die zijn door gegeven `languageCode` aan de optionele invoer van een stroomafwaartse vaardigheid, wordt niet ondersteund. Dit kan gebeuren als u de uitvoer van de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) doorgeeft aan de volgende vaardig heden en de uitvoer bestaat uit meer talen dan wordt ondersteund in deze downstream-vaardig heden.
+Een of meer van de waarden die zijn door gegeven aan de optionele `languageCode` invoer van een stroomafwaartse vaardigheid, wordt niet ondersteund. Dit kan gebeuren als u de uitvoer van de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) doorgeeft aan de volgende vaardig heden en de uitvoer bestaat uit meer talen dan wordt ondersteund in deze downstream-vaardig heden.
 
 Als u weet dat uw gegevensset zich in één taal bevindt, moet u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en de `languageCode` vaardigheids invoer verwijderen en `defaultLanguageCode` in plaats daarvan de para meter vaardig heden voor die vaardigheid gebruiken, ervan uitgaande dat de taal wordt ondersteund voor die kwalificatie.
 
-Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en `languageCode` de invoer nodig hebt, kunt u overwegen een [ConditionalSkill](cognitive-search-skill-conditional.md) toe te voegen om de tekst te filteren op talen die niet worden ondersteund voordat de tekst wordt door gegeven aan de downstream-vaardigheid.  Hier volgt een voor beeld van wat er in het EntityRecognitionSkill eruit kan zien:
+Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) en de invoer nodig hebt `languageCode` , kunt u overwegen een [ConditionalSkill](cognitive-search-skill-conditional.md) toe te voegen om de tekst te filteren op talen die niet worden ondersteund voordat de tekst wordt door gegeven aan de downstream-vaardigheid.  Hier volgt een voor beeld van wat er in het EntityRecognitionSkill eruit kan zien:
 
 ```json
 {
@@ -259,7 +264,7 @@ Hier volgen enkele referenties voor de momenteel ondersteunde talen voor elk van
 ## <a name="warning-skill-input-was-truncated"></a>Waarschuwing: vaardigheids invoer is afgekapt
 Cognitieve vaardig heden hebben limieten voor de lengte van de tekst die tegelijk kan worden geanalyseerd. Als de tekst invoer van deze vaardig heden deze limiet overschrijdt, wordt de tekst afgekapt om aan de limiet te voldoen en wordt de verrijking op die afgekapte tekst uitgevoerd. Dit betekent dat de vaardigheid wordt uitgevoerd, maar niet meer dan al uw gegevens.
 
-In het onderstaande voor beeld LanguageDetectionSkill kan `'text'` het invoer veld deze waarschuwing activeren als het boven de teken limiet ligt. U kunt de invoer limieten voor vaardig heden vinden in de [documentatie over vaardig heden](cognitive-search-predefined-skills.md).
+In het onderstaande voor beeld LanguageDetectionSkill `'text'` kan het invoer veld deze waarschuwing activeren als het boven de teken limiet ligt. U kunt de invoer limieten voor vaardig heden vinden in de [documentatie over vaardig heden](cognitive-search-predefined-skills.md).
 
 ```json
  {
@@ -289,9 +294,9 @@ Deze waarschuwing treedt alleen op voor Cosmos DB gegevens bronnen.
 
 Incrementele voortgang tijdens het indexeren zorgt ervoor dat als de uitvoering van de Indexeer functie wordt onderbroken door tijdelijke fouten of limiet voor uitvoerings tijd, de Indexeer functie kan ophalen waar de volgende keer wordt uitgevoerd, in plaats van de volledige verzameling helemaal opnieuw te indexeren. Dit is vooral belang rijk bij het indexeren van grote verzamelingen.
 
-De mogelijkheid om een onvoltooide indexerings taak te hervatten, is een predikaat waarbij documenten `_ts` worden gesorteerd op basis van de kolom. De Indexeer functie maakt gebruik van de tijds tempel om te bepalen welk document er volgende moet worden opgehaald. Als de `_ts` kolom ontbreekt of als de Indexeer functie niet kan bepalen of er een aangepaste query wordt gesorteerd, wordt de Indexeer functie gestart om te starten. deze waarschuwing wordt weer gegeven.
+De mogelijkheid om een onvoltooide indexerings taak te hervatten, is een predikaat waarbij documenten worden gesorteerd op basis van de `_ts` kolom. De Indexeer functie maakt gebruik van de tijds tempel om te bepalen welk document er volgende moet worden opgehaald. Als de `_ts` kolom ontbreekt of als de Indexeer functie niet kan bepalen of er een aangepaste query wordt gesorteerd, wordt de Indexeer functie gestart om te starten. deze waarschuwing wordt weer gegeven.
 
-Het is mogelijk om dit gedrag te negeren, waardoor er incrementele voortgang kan worden gemaakt en deze waarschuwing `assumeOrderByHighWatermarkColumn` wordt onderdrukt door gebruik te maken van de configuratie-eigenschap.
+Het is mogelijk om dit gedrag te negeren, waardoor er incrementele voortgang kan worden gemaakt en deze waarschuwing wordt onderdrukt door gebruik te maken van de `assumeOrderByHighWatermarkColumn` configuratie-eigenschap.
 
 Zie [incrementele voortgang en aangepaste query's](search-howto-index-cosmosdb.md#IncrementalProgress)voor meer informatie.
 
@@ -311,7 +316,12 @@ Zie voor meer informatie [indexerings limieten](search-limits-quotas-capacity.md
 <a name="could-not-map-output-field-x-to-search-index"/>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>Waarschuwing: kan het uitvoer veld ' X ' niet toewijzen aan de zoek index
-Uitvoer veld toewijzingen die naar niet-bestaande/null-gegevens verwijzen, genereren waarschuwingen voor elk document en resulteren in een leeg index veld. Om dit probleem op te lossen, controleert u de bron paden van de uitvoer veld toewijzing voor mogelijke typfouten of stelt u een standaard waarde in met behulp van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist).
+Uitvoer veld toewijzingen die naar niet-bestaande/null-gegevens verwijzen, genereren waarschuwingen voor elk document en resulteren in een leeg index veld. Om dit probleem op te lossen, controleert u de bron paden van de uitvoer veld toewijzing voor mogelijke typfouten of stelt u een standaard waarde in met behulp van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist). Zie [uitvoer veld toewijzing](cognitive-search-output-field-mapping.md) voor meer informatie.
+
+| Reden | Details/voor beeld | Oplossing |
+| --- | --- | --- |
+| Kan niet nalopen over niet-matrix | "Kan niet nalopen over niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` ". | Deze fout treedt op wanneer de uitvoer geen matrix is. Als u denkt dat de uitvoer een matrix moet zijn, controleert u het pad naar het aangegeven uitvoer Bron veld op fouten. U kunt bijvoorbeeld een ontbrekend of extra naam hebben `*` in de bron veldnaam. Het is ook mogelijk dat de invoer voor deze vaardigheid null is, wat resulteert in een lege matrix. Zoek vergelijk bare gegevens in [het gedeelte vaardigheids invoer is ongeldig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) .    |
+| Kan niet selecteren `0` in niet-matrix | ' Kan niet selecteren `0` in niet-matrix `/document/pages` '. | Dit kan gebeuren als de vaardigheids uitvoer geen matrix produceert en de naam van het uitvoer Bron veld een matrix index of het `*` bijbehorende pad heeft. Controleer de paden die zijn opgegeven in de namen van de uitvoer bron velden en de veld waarde voor de aangegeven veld naam. Zoek vergelijk bare gegevens in [het gedeelte vaardigheids invoer is ongeldig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) .  |
 
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
 

@@ -2,18 +2,19 @@
 title: Virtual Machine Scale Sets beheren met Azure PowerShell
 description: Algemene Azure PowerShell-cmdlets voor het beheren van Virtual Machine Scale Sets, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 5794fb40b49a575c12f6855292c41014fabf3b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 68b5aa21f861009dd78f48428fa0ffdc5b5ae3a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011596"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124865"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Een schaalset voor virtuele machines beheren met Azure PowerShell
 
@@ -38,7 +39,7 @@ Gebruik [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)om een lijst m
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-Als u meer informatie wilt weer geven over een specifiek VM- `-InstanceId` exemplaar, voegt u de para meter toe aan [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) en geeft u een instantie op die u wilt weer geven. In het volgende voor beeld wordt informatie weer gegeven over het VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
+Als u meer informatie wilt weer geven over een specifiek VM-exemplaar, voegt `-InstanceId` u de para meter toe aan [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) en geeft u een instantie op die u wilt weer geven. In het volgende voor beeld wordt informatie weer gegeven over het VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -95,7 +96,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Vm's uit een schaalset verwijderen
-Als u een of meer virtuele machines in een schaalset wilt verwijderen, gebruikt u [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). Met `-InstanceId` de para meter kunt u een of meer vm's opgeven die moeten worden verwijderd. Als u geen exemplaar-ID opgeeft, worden alle Vm's in de schaalset verwijderd. Als u meerdere Vm's wilt verwijderen, moet u elke exemplaar-ID scheiden met een komma.
+Als u een of meer virtuele machines in een schaalset wilt verwijderen, gebruikt u [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). Met de `-InstanceId` para meter kunt u een of meer vm's opgeven die moeten worden verwijderd. Als u geen exemplaar-ID opgeeft, worden alle Vm's in de schaalset verwijderd. Als u meerdere Vm's wilt verwijderen, moet u elke exemplaar-ID scheiden met een komma.
 
 In het volgende voor beeld wordt instantie *0* verwijderd uit de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . U kunt als volgt uw eigen waarden opgeven:
 

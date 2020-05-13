@@ -3,20 +3,18 @@ title: Een functie maken die wordt uitgevoerd volgens een planning in azure
 description: Ontdek hoe u in Azure een functie maakt die wordt uitgevoerd op basis van een schema dat u definieert.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
-ms.date: 03/28/2018
+ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: e100a2d3a3718b302a44cbdecf462a99d9c823e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756492"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123397"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
 Meer informatie over het gebruik van Azure Functions om een functie zonder [Server](https://azure.microsoft.com/solutions/serverless/) te maken die wordt uitgevoerd op basis van een schema dat u definieert.
-
-![Functie-app maken in Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,46 +26,54 @@ Vereisten om deze zelfstudie te voltooien:
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![De functie-app is gemaakt.](./media/functions-create-first-azure-function/function-app-create-success.png)
+Uw nieuwe functie-app is klaar voor gebruik. Vervolgens maakt u een functie in de nieuwe functie-app.
 
-Vervolgens maakt u een functie in de nieuwe functie-app.
+:::image type="content" source="./media/functions-create-scheduled-function/function-app-create-success.png" alt-text="De functie-app is gemaakt." border="true":::
 
 <a name="create-function"></a>
 
 ## <a name="create-a-timer-triggered-function"></a>Een door een timer geactiveerde functie maken
 
-1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Als dat niet het geval is, gaat u naar stap 3.
+1. Selecteer in de functie-app **functies**en selecteer vervolgens **+ toevoegen** 
 
-   ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Een functie toevoegen in de Azure Portal." border="true":::
 
-2. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
+1. Selecteer de **trigger** sjabloon voor timer. 
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-scheduled-function/add-first-function.png)
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Selecteer de trigger timer in het Azure Portal." border="true":::
 
-3. Typ `timer` in het zoekveld en configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
+1. Configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding en selecteer vervolgens **functie maken**.
 
-    ![Maak een door een timer geactiveerde functie in Azure Portal.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
-
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Selecteer de trigger timer in het Azure Portal." border="true":::
+    
     | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
     | **Naam** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
-    | **Planning** | 0 \*/1 \* \* \*\* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
+    | **Planning** | 0 \* /1 \* \* \*\* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
 
-4. Klik op **maken**. Er wordt een functie gemaakt in de taal die elke minuut wordt uitgevoerd, op de minuut.
+## <a name="test-the-function"></a>De functie testen
 
-5. Controleer of dit correct wordt uitgevoerd door de traceringsinformatie die naar logboeken wordt geschreven te bekijken.
+1. Selecteer in uw functie **code + test** en vouw de logboeken uit.
 
-    ![De viewer voor functielogboeken in Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Test de timer trigger in het Azure Portal." border="true":::
+
+1. Controleer de uitvoering door de informatie weer te geven die naar de logboeken wordt geschreven.
+
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Bekijk de trigger timer in de Azure Portal." border="true":::
 
 U kunt het schema van de functie nu wijzigen zodat deze één keer per uur wordt uitgevoerd in plaats van elke minuut.
 
 ## <a name="update-the-timer-schedule"></a>Het timerschema bijwerken
 
-1. Vouw de functie uit en klik op **Integreren**. Dit is waar u de invoer- en uitvoerbindingen voor de functie definieert en het schema instelt. 
+1. Selecteer in de functie **integratie**. Hier definieert u de invoer-en uitvoer bindingen voor uw functie en stelt u ook de planning in. 
 
-2. Voer een nieuwe waarde voor **Planning** per uur in van `0 0 */1 * * *` in, en klik vervolgens op **Opslaan**.  
+1. Selecteer **Timer (myTimer)**.
 
-![Het timerschema voor het bijwerken van functies in Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Werk de timer planning bij in de Azure Portal." border="true":::
+
+1. Werk de **plannings** waarde bij naar `0 0 */1 * * *` en selecteer vervolgens **Opslaan**.  
+
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Het timerschema voor het bijwerken van functies in Azure Portal." border="true":::
 
 U hebt nu een functie die één keer per uur wordt uitgevoerd, op het uur.
 

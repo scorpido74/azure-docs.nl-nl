@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612466"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121062"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -41,7 +41,7 @@ Eerst moet u de installatie kopie van het besturings systeem ophalen die u voor 
      >[!NOTE]
      >U moet lid zijn van het Windows Insider-programma om toegang te krijgen tot de Windows Insider-Portal. Raadpleeg onze [Windows Insider-documentatie](/windows-insider/at-home/)voor meer informatie over het Windows Insider-programma.
 
-2. Schuif omlaag naar de sectie **Select Edition** en selecteer **Windows 10 Insider preview Enter prise (Fast) – Build 19035** of hoger.
+2. Schuif omlaag naar de sectie **Select Edition** en selecteer **Windows 10 Insider preview Enter prise (Fast) – Build 19041** of hoger.
 
 3. Selecteer **bevestigen**, selecteer de taal die u wilt gebruiken en selecteer vervolgens opnieuw **bevestigen** .
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de heuvel-VHD-opdracht voor fase ring en ontkoppeling-VHD gebruikt voor het destage. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>Bij deze wijziging moet u de virtuele machine opnieuw opstarten.
 
 Bereid vervolgens de VM-VHD voor Azure voor en upload de resulterende VHD-schijf naar Azure. Zie [een VHD-master installatie kopie voorbereiden en aanpassen](set-up-customize-master-image.md)voor meer informatie.
 
@@ -211,7 +219,7 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
 5.  Open een opdracht prompt en voer **mountvol**in. Met deze opdracht wordt een lijst met volumes en de bijbehorende GUID'S weer gegeven. Kopieer de GUID van het volume waar de stationsletter overeenkomt met het station waarnaar u uw VHD hebt gekoppeld in stap 2.
 
-    Als u bijvoorbeeld in dit voor beeld uitvoer voor de opdracht mountvol hebt gekoppeld, kunt u de bovenstaande `C:\`waarde alleen kopiëren als u de VHD op station C hebt geplaatst:
+    Als u bijvoorbeeld in dit voor beeld uitvoer voor de opdracht mountvol hebt gekoppeld, kunt u de bovenstaande waarde alleen kopiëren als u de VHD op station C hebt geplaatst `C:\` :
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

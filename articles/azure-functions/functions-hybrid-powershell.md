@@ -3,14 +3,14 @@ title: Externe on-premises resources beheren met behulp van Power shell-functies
 description: Meer informatie over het configureren van Hybride verbindingen in Azure Relay om een Power shell-functie-app te verbinden met on-premises resources, die vervolgens kan worden gebruikt om de on-premises resource op afstand te beheren.
 author: eamono
 ms.topic: conceptual
-ms.date: 9/5/2019
+ms.date: 04/26/2020
 ms.author: eamono
-ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74226938"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122125"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hybride omgevingen beheren met Power shell in Azure Functions en App Service Hybride verbindingen
 
@@ -50,31 +50,47 @@ cmd.exe /C $Cmd
 
 De functie App Service Hybride verbindingen is alleen beschikbaar in de abonnementen Basic, Standard en geïsoleerd. Wanneer u de functie-app met Power Shell maakt, maakt of selecteert u een van deze plannen.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **+ een resource maken** in het menu aan de linkerkant en selecteer vervolgens functie- **app**.
+1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 
-1. Voor het **hosting plan**selecteert u **app service plan**en selecteert u vervolgens **app service plan/locatie**.
+1. Selecteer op de pagina **Nieuw** de optie **reken**  >  **functie-app**.
 
-1. Selecteer **Nieuw maken**, typ een naam voor het **app service plan** , kies een **locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die uw functies gebruiken en selecteer vervolgens **prijs categorie**.
+1. Gebruik de instellingen voor de functie-app, zoals opgegeven in de volgende tabel op de pagina **basis beginselen** .
 
-1. Kies het standaard abonnement S1 en selecteer vervolgens **Toep assen**.
-
-1. Selecteer **OK** om het plan te maken en configureer vervolgens de resterende **functie-app** -instellingen zoals opgegeven in de tabel direct na de volgende scherm afbeelding:
-
-    ![Power shell Core-functie-app](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
-
-    | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **App-naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
-    | **Resource groep** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. U kunt ook de voorgestelde waarde gebruiken. |
-    | **Besturingssysteem** | Voorkeurs besturingssysteem | selecteer Windows. |
+    | **[Resource groep](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9` en `-` .  |
+    |**Publiceren**| Code | Optie voor het publiceren van codebestanden of een Docker-container. |
     | **Runtimestack** | Voorkeurstaal | Kies Power shell core. |
-    | **Storage** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken.
-    | **Application Insights** | Standaard | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te breiden, kunt u de **nieuwe resource naam** wijzigen of een andere **locatie** kiezen in een regio van [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
+    |**Versie**| Versienummer | Kies de versie van de geïnstalleerde runtime.  |
+    |**Deel**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
-1. Nadat uw instellingen zijn gevalideerd, selecteert u **maken**.
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="Maak een functie-app-basis." border="true":::
 
-1. Selecteer het **meldings** pictogram in de rechter bovenhoek van de portal en wacht op het bericht implementatie voltooid.
+1. Selecteer **volgende: hosten**. Voer op de **Hosting** pagina de volgende instellingen in.
+
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
+    | **[Storage-account](../storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Besturingssysteem**| Voor keur besturings systeem | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
+    | **[Type abonnement](../azure-functions/functions-scale.md)** | **App service-plan** | Kies **app service-plan**. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../azure-functions/functions-scale.md) beheren.  |
+
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Maak een functie-app-hosting." border="true":::
+
+1. Selecteer **volgende: bewaken**. Voer op de pagina **controle** de volgende instellingen in.
+
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Standaard | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **nieuwe maken**te selecteren, kunt u de naam van de Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
+
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Maak een functie-app-bewaking." border="true":::
+
+1. Selecteer **controleren + maken** om de selecties van de app-configuratie te controleren.
+
+1. Controleer uw instellingen op de pagina **controleren en maken** en selecteer vervolgens **maken** om de functie-app in te richten en te implementeren.
+
+1. Selecteer het pictogram **meldingen** in de rechter bovenhoek van de portal en Bekijk het bericht **implementatie voltooid** .
 
 1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.
 
@@ -82,42 +98,53 @@ De functie App Service Hybride verbindingen is alleen beschikbaar in de abonneme
 
 Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de functie-app:
 
-1. Selecteer het tabblad **platform functies** in de functie-app en selecteer vervolgens **netwerken**. 
-   ![App-overzicht voor platform netwerken](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. Selecteer **netwerken**onder **instellingen** in de functie-app die u zojuist hebt gemaakt. 
 1. Selecteer **de eind punten voor uw hybride verbindingen configureren**.
-   ![Netwerken](./media/functions-hybrid-powershell/select-network-feature.png)  
+   
+    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="De hybride verbindings eindpunten configureren." border="true":::
+
 1. Selecteer **hybride verbinding toevoegen**.
-   ![Hybride verbinding](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+   
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="Een hybride verbinding toevoegen." border="true":::
+
 1. Voer informatie in over de hybride verbinding zoals deze wordt weer gegeven na de volgende scherm afbeelding. U hebt de mogelijkheid om de instelling **endpoint host** te laten overeenkomen met de hostnaam van de on-premises server, zodat u de server gemakkelijker later kunt onthouden wanneer u externe opdrachten uitvoert. De poort komt overeen met de standaard Windows Remote Management-service poort die eerder op de server is gedefinieerd.
-  ![Hybride verbinding toevoegen](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+  
+      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="Hybride verbinding toevoegen." border="true":::
 
-    **Naam van hybride verbinding**: ContosoHybridOnPremisesServer
-    
-    **Eindpunt host**: finance1
-    
-    **Eindpunt poort**: 5986
-    
-    **Servicebus naam ruimte**: nieuwe maken
-    
-    **Locatie**: Kies een beschik bare locatie
-    
-    **Naam**: contosopowershellhybrid
+    | Instelling      | Voorgestelde waarde  |
+    | ------------ | ---------------- |
+    | **Naam van hybride verbinding** | ContosoHybridOnPremisesServer |
+    | **Endpoint-host** | finance1 |
+    | **Eindpunt poort** | 5986 |
+    | **Servicebus-naam ruimte** | Nieuwe maken |
+    | **Locatie** | Een beschik bare locatie kiezen |
+    | **Naam** | contosopowershellhybrid | 
 
-5. Selecteer **OK** om de hybride verbinding te maken.
+1. Selecteer **OK** om de hybride verbinding te maken.
 
 ## <a name="download-and-install-the-hybrid-connection"></a>De hybride verbinding downloaden en installeren
 
-1. Selecteer **verbindings beheer downloaden** om het MSI-bestand lokaal op uw computer op te slaan.
-![Installatie programma downloaden](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. Kopieer het MSI-bestand van uw lokale computer naar de on-premises server.
+1. Selecteer **verbindings beheer downloaden** om het *MSI* -bestand lokaal op uw computer op te slaan.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="Down load het installatie programma." border="true":::
+
+1. Kopieer het *MSI* -bestand van uw lokale computer naar de on-premises server.
 1. Voer het Hybrid Connection Manager-installatie programma uit om de service op de on-premises server te installeren.
-![Hybride verbinding installeren](./media/functions-hybrid-powershell/hybrid-installation.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="Installeer de hybride verbinding." border="true":::
+
 1. Open de hybride verbinding vanuit de portal en kopieer de gateway connection string naar het klem bord.
-![Hybride connection string kopiëren](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="Kopieer de hybride connection string." border="true":::
+
 1. Open de Hybrid Connection Manager gebruikers interface op de on-premises server.
-![Gebruikers interface voor hybride verbinding openen](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. Selecteer de knop **hand matig invoeren** en plak de Connection String van het klem bord.
-![Verbinding plakken](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="Open de gebruikers interface van de hybride verbinding." border="true":::
+
+1. Selecteer **hand matig invoeren** en plak de Connection String van het klem bord.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="Plak de hybride verbinding." border="true":::
+
 1. Start de Hybrid Connection Manager van Power shell als deze niet wordt weer gegeven als verbonden.
     ```powershell
     Restart-Service HybridConnectionManager
@@ -125,19 +152,33 @@ Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de fun
 
 ## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Een app-instelling maken voor het wacht woord van een beheerders account
 
-1. Selecteer het tabblad **platform functies** in de functie-app.
-1. Onder **algemene instellingen**selecteert u **configuratie**.
-![Platform configuratie selecteren](./media/functions-hybrid-powershell/select-configuration.png)  
-1. Vouw de **instelling nieuwe toepassing** uit om een nieuwe instelling voor het wacht woord te maken.
-1. Noem de instelling _ContosoUserPassword_en voer het wacht woord in.
-1. Selecteer **OK** en vervolgens opslaan om het wacht woord op te slaan in de functie toepassing.
-![App-instelling voor wacht woord toevoegen](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Selecteer **configuratie**onder **instellingen** voor de functie-app. 
+1. Selecteer **+ nieuwe toepassings instelling**.
 
-## <a name="create-a-function-http-trigger-to-test"></a>Een http-trigger functie maken om te testen
+    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Configureer een wacht woord voor het beheerders account." border="true":::
 
-1. Maak een nieuwe HTTP-trigger functie vanuit de functie-app.
-![Nieuwe HTTP-trigger maken](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. Vervang de Power shell-code uit de sjabloon door de volgende code:
+1. Noem de instelling **ContosoUserPassword**en voer het wacht woord in. Selecteer **OK**.
+1. Selecteer **Opslaan** om het wacht woord op te slaan in de functie toepassing.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Sla het wacht woord voor het beheerders account op." border="true":::
+
+## <a name="create-a-function-http-trigger"></a>Een HTTP-trigger functie maken
+
+1. Selecteer in de functie-app **functies**en selecteer vervolgens **+ toevoegen**.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Maak een nieuwe HTTP-trigger." border="true":::
+
+1. Selecteer de sjabloon **http-trigger** .
+
+    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="Selecteer de sjabloon HTTP-trigger." border="true":::
+
+1. Noem de nieuwe functie en selecteer **functie maken**.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="Geef een naam op en maak de nieuwe HTTP-trigger functie." border="true":::
+
+## <a name="test-the-function"></a>De functie testen
+
+1. Selecteer in de nieuwe functie **code + test**. Vervang de Power shell-code uit de sjabloon door de volgende code:
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -172,8 +213,13 @@ Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de fun
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. Selecteer **Opslaan** en **uitvoeren** om de functie te testen.
-![De functie-app testen](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+1. Selecteer **Opslaan**.
+
+    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Wijzig de Power shell-code en sla de HTTP-trigger functie op." border="true":::
+
+ 1. Selecteer **testen**en selecteer vervolgens **uitvoeren** om de functie te testen. Controleer de logboeken om te controleren of de test is geslaagd.
+
+     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="Test de HTTP-activerings functie." border="true":::
 
 ## <a name="managing-other-systems-on-premises"></a>On-premises andere systemen beheren
 

@@ -1,20 +1,20 @@
 ---
 title: Toewijzings gebeurtenissen verwerken | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een interactieve Web-SDK kunt koppelen met toewijzings gebeurtenissen met behulp van de Microsoft Azure Maps Web SDK.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534895"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124003"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 
@@ -26,7 +26,7 @@ Speel met de onderstaande kaart en Bekijk de bijbehorende muis gebeurtenissen di
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interactie met de kaart – muis gebeurtenissen' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interactie met de kaart – muis gebeurtenissen</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interactie met de kaart – muis gebeurtenissen' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interactie met de kaart – muis gebeurtenissen</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Communiceren met kaart lagen
@@ -35,7 +35,7 @@ Met de volgende code wordt de gebrande gebeurtenis gemarkeerd tijdens de interac
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interactie met de gebeurtenissen van de kaart-laag' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interactie met de gebeurtenissen van de kaart-laag</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interactie met de gebeurtenissen van de kaart-laag' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interactie met de gebeurtenissen van de kaart-laag</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interactie met HTML-markering
@@ -44,7 +44,7 @@ Met de volgende code worden java script-toewijzings gebeurtenissen toegevoegd aa
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interactie met de kaart-HTML-markerings gebeurtenissen' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interactie met de markerings gebeurtenissen van de kaart-HTML</a> per<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Interactie met de kaart-HTML-markerings gebeurtenissen' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interactie met de markerings gebeurtenissen van de kaart-HTML</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van de kaart klasse.
@@ -57,9 +57,9 @@ De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van d
 | `close`             | Deze gebeurtenis wordt gestart wanneer de pop-up hand matig of programmatisch wordt gesloten.|
 | `contextmenu`       | Deze gebeurtenis wordt gestart wanneer op de rechter knop van de muis wordt geklikt.|
 | `data`              | Wordt geactiveerd wanneer kaart gegevens worden geladen of gewijzigd. |
-| `dataadded`         | Wordt geactiveerd wanneer vormen worden toegevoegd aan de `DataSource`.|
-| `dataremoved`       | Wordt geactiveerd wanneer vormen uit de `DataSource`worden verwijderd.|
-| `datasourceupdated` | Deze gebeurtenis wordt gestart `DataSource` wanneer het object wordt bijgewerkt.|
+| `dataadded`         | Wordt geactiveerd wanneer vormen worden toegevoegd aan de `DataSource` .|
+| `dataremoved`       | Wordt geactiveerd wanneer vormen uit de worden verwijderd `DataSource` .|
+| `datasourceupdated` | Deze gebeurtenis wordt gestart wanneer het `DataSource` object wordt bijgewerkt.|
 | `dblclick`          | Deze gebeurtenis wordt gestart wanneer twee keer op een aanwijs apparaat wordt geklikt op hetzelfde punt op de kaart.|
 | `drag`              | Wordt herhaaldelijk geactiveerd tijdens een interactie ' slepen naar pan ' op de markering kaart, pop-up of HTML.|
 | `dragend`           | Wordt geactiveerd wanneer de interactie ' slepen naar pan ' op de kaart, pop-up of HTML-markering eindigt.|

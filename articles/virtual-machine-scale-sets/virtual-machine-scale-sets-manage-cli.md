@@ -2,17 +2,19 @@
 title: Virtual Machine Scale Sets beheren met de Azure CLI
 description: Algemene Azure CLI-opdrachten voor het beheren van Virtual Machine Scale Sets, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011579"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124326"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een schaalset voor virtuele machines beheren met de Azure CLI
 Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. Bovendien wilt u misschien scripts maken die verschillende levenscyclustaken automatiseren. In dit artikel vindt u meer informatie over de algemene Azure CLI-opdrachten waarmee u deze taken kunt uitvoeren.
@@ -38,7 +40,7 @@ az vmss list-instances \
     --output table
 ```
 
-Als u meer informatie wilt weer geven over een specifiek VM- `--instance-id` exemplaar, voegt u de para meter toe aan [AZ vmss Get-instance-View](/cli/azure/vmss) en geeft u een instantie op die u wilt weer geven. In het volgende voor beeld wordt informatie weer gegeven over het VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
+Als u meer informatie wilt weer geven over een specifiek VM-exemplaar, voegt `--instance-id` u de para meter toe aan [AZ vmss Get-instance-View](/cli/azure/vmss) en geeft u een instantie op die u wilt weer geven. In het volgende voor beeld wordt informatie weer gegeven over het VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
 
 ```azurecli
 az vmss get-instance-view \
@@ -120,7 +122,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Vm's uit een schaalset verwijderen
-Als u een of meer virtuele machines in een schaalset wilt verwijderen, gebruikt u [AZ vmss delete-instances](/cli/azure/vmss). Met `--instance-ids` de para meter kunt u een of meer vm's opgeven die moeten worden verwijderd. Als u * opgeeft voor de exemplaar-ID, worden alle Vm's in de schaalset verwijderd. Als u meerdere Vm's wilt verwijderen, moet u elke exemplaar-ID scheiden met een spatie.
+Als u een of meer virtuele machines in een schaalset wilt verwijderen, gebruikt u [AZ vmss delete-instances](/cli/azure/vmss). Met de `--instance-ids` para meter kunt u een of meer vm's opgeven die moeten worden verwijderd. Als u * opgeeft voor de exemplaar-ID, worden alle Vm's in de schaalset verwijderd. Als u meerdere Vm's wilt verwijderen, moet u elke exemplaar-ID scheiden met een spatie.
 
 In het volgende voor beeld wordt instantie *0* verwijderd uit de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . U kunt als volgt uw eigen waarden opgeven:
 

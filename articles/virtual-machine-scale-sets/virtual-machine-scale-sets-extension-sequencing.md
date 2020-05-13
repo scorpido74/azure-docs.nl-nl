@@ -1,18 +1,20 @@
 ---
 title: Uitbrei ding van extensie gebruiken met virtuele-machine schaal sets van Azure
 description: Meer informatie over het inrichten van Sequence-extensies bij het implementeren van meerdere uitbrei dingen in virtuele-machine schaal sets.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273746"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121028"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Inrichten van Sequence-extensie in virtuele-machine schaal sets
 Extensies voor virtuele Azure-machines bieden mogelijkheden zoals configuratie en beheer na de implementatie, bewaking, beveiliging en meer. Productie-implementaties gebruiken meestal een combi natie van meerdere uitbrei dingen die zijn geconfigureerd voor de VM-exemplaren om de gewenste resultaten te krijgen.
@@ -166,7 +168,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Als ExtensionC eerder is gedefinieerd in het model voor de schaalset en u nu de afhankelijkheden ervan wilt toevoegen, kunt `PATCH` u een uitvoeren om de al geïmplementeerde extensie-eigenschappen te bewerken.
+Als ExtensionC eerder is gedefinieerd in het model voor de schaalset en u nu de afhankelijkheden ervan wilt toevoegen, kunt u een uitvoeren `PATCH` om de al geïmplementeerde extensie-eigenschappen te bewerken.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`

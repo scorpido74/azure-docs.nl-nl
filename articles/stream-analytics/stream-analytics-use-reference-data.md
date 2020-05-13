@@ -6,20 +6,20 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.date: 5/11/2020
+ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006153"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124071"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
 Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd in aard, die wordt gebruikt om een zoek actie uit te voeren of om uw gegevens stromen te verbeteren. In een IoT-scenario kunt u bijvoorbeeld meta gegevens over Sens oren opslaan (die niet vaak veranderen) in referentie gegevens en deze koppelen aan real time IoT-gegevensstreams. Azure Stream Analytics laadt referentie gegevens in het geheugen om stroom verwerking met lage latentie te garanderen. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. 
 
 ## <a name="example"></a>Voorbeeld  
- Als er een bedrijfs voertuig is geregistreerd bij het niet-bewerkings bedrijf, kunnen ze door de telefoon stand worden geleid zonder dat ze voor inspecties worden gestopt. We gebruiken een opzoek tabel voor registratie van bedrijfs voertuigen om alle commerciële Voer tuigen te identificeren waarvoor de registratie is verlopen.  
+U kunt een real-time stream van gebeurtenissen die worden gegenereerd wanneer auto's een telefoon stand door geven. Het bewerkings hokje kan de product plaat in realtime vastleggen en samen voegen met een statische gegevensset met registratie gegevens voor het identificeren van de voor de verval periode van de licentie platen.  
   
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
@@ -62,13 +62,13 @@ Als uw referentie gegevens een langzaam gewijzigde gegevensset zijn, wordt de on
 Azure Stream Analytics automatisch wordt gescand op vernieuwde referentie gegevens-blobs met een interval van één minuut. Als een blob met tijds tempel 10:30:00 met een kleine vertraging is geüpload (bijvoorbeeld 10:30:30), ziet u een kleine vertraging in Stream Analytics taak die naar deze BLOB verwijst. Om dergelijke scenario's te voor komen, is het raadzaam om de BLOB vóór de effectief beoogde doel tijd (10:30:00 in dit voor beeld) te uploaden om de Stream Analytics taak genoeg tijd te geven om deze in het geheugen te detecteren en te laden en bewerkingen uit te voeren. 
 
 > [!NOTE]
-> Momenteel Stream Analytics taken alleen voor het vernieuwen van blobs kijken wanneer de machine tijd overgaat op de tijd die in de naam van de blob is gecodeerd. De taak zoekt bijvoorbeeld `sample/2015-04-16/17-30/products.csv` zo snel mogelijk, maar niet eerder dan 5:30 uur op zestien April, 2015 UTC-tijd zone. Er wordt *nooit* gezocht naar een blob met een gecodeerde tijd die ouder is dan de laatste die is gedetecteerd.
+> Momenteel Stream Analytics taken alleen voor het vernieuwen van blobs kijken wanneer de machine tijd overgaat op de tijd die in de naam van de blob is gecodeerd. De taak zoekt bijvoorbeeld `sample/2015-04-16/17-30/products.csv` zo snel mogelijk, maar niet eerder dan 5:30 uur op zestien april, 2015 UTC-tijd zone. Er wordt *nooit* gezocht naar een blob met een gecodeerde tijd die ouder is dan de laatste die is gedetecteerd.
 > 
-> Zodra de taak de BLOB `sample/2015-04-16/17-30/products.csv` heeft gevonden, worden alle bestanden met een versleutelde datum die ouder is dan 5:30 uur, 16 April, 2015, dus als `sample/2015-04-16/17-25/products.csv` er een late aankomtde BLOB wordt gemaakt in dezelfde container die de taak niet gebruikt.
+> Zodra de taak de BLOB heeft gevonden, `sample/2015-04-16/17-30/products.csv` worden alle bestanden met een versleutelde datum die ouder is dan 5:30 uur, 16 april, 2015, dus als er een late aankomtde `sample/2015-04-16/17-25/products.csv` BLOB wordt gemaakt in dezelfde container die de taak niet gebruikt.
 > 
-> `sample/2015-04-16/17-30/products.csv` De taak zal dit bestand ook gebruiken op basis van 10:03 tot 16 april 2015, maar er is geen blob met een eerdere datum aanwezig in de container. deze wordt vanaf 10:03 uur vanaf 16 april, 2015 en de vorige referentie gegevens gebruikt tot dan.
+> `sample/2015-04-16/17-30/products.csv`De taak zal dit bestand ook gebruiken op basis van 10:03 tot 16 april 2015, maar er is geen blob met een eerdere datum aanwezig in de container. deze wordt vanaf 10:03 uur vanaf 16 april, 2015 en de vorige referentie gegevens gebruikt tot dan.
 > 
-> Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt de volgende diagnose weer gegeven `Initializing input without a valid reference data blob for UTC time <start time>`in de taak:.
+> Een uitzonde ring hierop is wanneer de taak gegevens in een keer opnieuw moet verwerken of wanneer de taak voor het eerst wordt gestart. Op het moment dat de taak wordt gezocht naar de meest recente blob die is geproduceerd voordat de begin tijd van de taak is opgegeven. Dit wordt gedaan om ervoor te zorgen dat er een **niet-lege** referentie gegevensverzameling is wanneer de taak wordt gestart. Als er geen kan worden gevonden, wordt de volgende diagnose weer gegeven in de taak: `Initializing input without a valid reference data blob for UTC time <start time>` .
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kan worden gebruikt om de taak te organiseren van het maken van de bijgewerkte blobs die vereist zijn door stream Analytics om definities van referentie gegevens bij te werken. Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory ondersteunt het [maken van verbinding met een groot aantal Cloud-en on-premises gegevens opslag](../data-factory/copy-activity-overview.md) en het verplaatsen van gegevens eenvoudig volgens een regel matig schema dat u opgeeft. Bekijk dit github-voor [beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)voor meer informatie en stapsgewijze instructies voor het instellen van een Data Factory pijp lijn voor het genereren van referentie gegevens voor stream Analytics die worden vernieuwd op basis van een vooraf gedefinieerd schema.
 
@@ -111,15 +111,13 @@ U kunt [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/
 
 ## <a name="size-limitation"></a>Grootte beperken
 
-Stream Analytics ondersteunt referentie gegevens met een **maximale grootte van 300 MB**. De limiet van 300 MB voor de maximale grootte van referentie gegevens is alleen haalbaar voor eenvoudige query's. Naarmate de complexiteit van de query toeneemt met stateful verwerking, zoals statistische gegevens over het venster, tijdelijke samen voegingen en tijdelijke analytische functies, wordt ervan uitgegaan dat de Maxi maal ondersteunde grootte van de referentie data afneemt. Als Azure Stream Analytics de referentie gegevens niet kan laden en complexe bewerkingen kunt uitvoeren, kan de taak geen geheugen meer gebruiken. In dergelijke gevallen is het gebruik van metrische gegevens van% en een bereik van 100%.    
+Het is raadzaam om referentie gegevens sets te gebruiken die kleiner zijn dan 300 MB voor de beste prestaties. Het gebruik van referentie gegevens van meer dan 300 MB wordt ondersteund in taken met 6 SUs of meer. Deze functionaliteit is beschikbaar als preview-versie en mag niet worden gebruikt in de productie omgeving. Het gebruik van een zeer grote referentie gegevens kan van invloed zijn op de prestaties van uw taak. Naarmate de complexiteit van de query toeneemt met stateful verwerking, zoals statistische gegevens over het venster, tijdelijke samen voegingen en tijdelijke analytische functies, wordt ervan uitgegaan dat de Maxi maal ondersteunde grootte van de referentie data afneemt. Als Azure Stream Analytics de referentie gegevens niet kan laden en complexe bewerkingen kunt uitvoeren, kan de taak geen geheugen meer gebruiken. In dergelijke gevallen is het gebruik van metrische gegevens van% en een bereik van 100%.    
 
-|**Aantal streaming-eenheden**  |**Ondersteuning voor Maxi maal ondersteunde grootte (in MB)**  |
+|**Aantal streaming-eenheden**  |**Aanbevolen grootte**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|6 en hoger   |300   |
-
-Wanneer het aantal streaming-eenheden van een taak groter wordt dan 6, wordt de Maxi maal ondersteunde grootte van referentie gegevens niet verhoogd.
+|1   |50 MB of lager   |
+|3   |150 MB of lager   |
+|6 en hoger   |300 MB of lager. Het gebruik van referentie gegevens groter dan 300 MB wordt ondersteund in Preview en kan invloed hebben op de prestaties van uw taak.    |
 
 Ondersteuning voor compressie is niet beschikbaar voor referentie gegevens.
 

@@ -1,20 +1,20 @@
 ---
 title: Zoek resultaten weer geven op een kaart | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een zoek opdracht kunt uitvoeren met Microsoft Azure Maps Web SDK en de resultaten op de kaart kunt weer geven.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e82a1daee381c7bad19c83fa735d0028bef2010e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da67c27f590e60c7ae4eecbe8e139c5519e39e31
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371402"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123952"
 ---
 # <a name="show-search-results-on-the-map"></a>Zoek resultaten weer geven op de kaart
 
@@ -24,7 +24,7 @@ Er zijn twee manieren om te zoeken naar een locatie van belang. Een van de manie
 
 ## <a name="make-a-search-request-via-service-module"></a>Een zoek aanvraag indienen via de service module
 
-<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart (Service module)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Zoek resultaten weer geven op een kaart (Service module)</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart (Service module)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Zoek resultaten weer geven op een kaart (Service module)</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 In de bovenstaande code maakt het eerste blok een kaart object en stelt het verificatie mechanisme in voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.
@@ -33,7 +33,7 @@ Het tweede code blok maakt een `TokenCredential` om HTTP-aanvragen te verifiëre
 
 Met het derde code blok wordt een gegevens bron object gemaakt met behulp van de klasse [Data Source](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) en worden er Zoek resultaten aan toegevoegd. Een [symbool laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) maakt gebruik van tekst of pictogrammen voor het weer geven van op punten gebaseerde gegevens die in de [gegevens bron](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) zijn verpakt als symbolen op de kaart.  Vervolgens wordt er een symbool laag gemaakt. De gegevens bron wordt toegevoegd aan de Symbol-laag, die vervolgens wordt toegevoegd aan de kaart.
 
-Het vierde code blok maakt gebruik van de methode [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) in de [module service](how-to-use-services-module.md). U kunt met behulp van de zoek actie voor het maken van een vrije tekst zoeken naar interessante [rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) . Aanvragen ophalen voor de zoek actie voor fuzzy-API kan elke combi natie van fuzzy invoer verwerken. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de `geojson.getFeatures()` -methode en toegevoegd aan de gegevens bron, die automatisch resulteert in de gegevens die worden weer gegeven op de kaart via de laag van het symbool.
+Het vierde code blok maakt gebruik van de methode [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) in de [module service](how-to-use-services-module.md). U kunt met behulp van de zoek actie voor het maken van een vrije tekst zoeken naar interessante [rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) . Aanvragen ophalen voor de zoek actie voor fuzzy-API kan elke combi natie van fuzzy invoer verwerken. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de- `geojson.getFeatures()` methode en toegevoegd aan de gegevens bron, die automatisch resulteert in de gegevens die worden weer gegeven op de kaart via de laag van het symbool.
 
 Het laatste code blok past de camera grenzen voor de kaart aan met behulp van de eigenschap [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
 
@@ -42,7 +42,7 @@ De zoek aanvraag, de gegevens bron, de symbool-laag en de camera grenzen bevinde
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Een zoek aanvraag indienen via de API voor ophalen
 
-<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Zoek resultaten weer geven op een kaart</a> op basis<a href='https://codepen.io/azuremaps'>@azuremaps</a>van Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Zoek resultaten weer geven op een kaart</a> op basis van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 In de bovenstaande code maakt het eerste code blok een kaart object. Het verificatie mechanisme wordt ingesteld voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f4c9fab3caf1089b97265d93db7d945604a59fd3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9ba151aa1ddc7f4b14d5f4ec7f1990e2fd760602
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82723010"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121232"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB-index Tags (preview) gebruiken om gegevens te beheren en te zoeken in Azure Blob-opslag
 
@@ -32,7 +32,7 @@ Zie voor meer informatie over de BLOB-index [gegevens beheren en zoeken op Azure
 # <a name="net"></a>[.NET](#tab/net)
 Als blob-index bevindt zich in de open bare preview-versie, wordt het .NET-opslag pakket vrijgegeven in de preview-NuGet-feed. Deze bibliotheek is onderhevig aan wijzigingen tussen nu en wanneer deze officieel wordt. 
 
-1. Voeg in Visual Studio de URL `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` toe aan uw NuGet-pakket bronnen. 
+1. Voeg in Visual Studio de URL toe `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` aan uw NuGet-pakket bronnen. 
 
    Zie [pakket bronnen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)voor meer informatie.
 
@@ -204,6 +204,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
+      // Blob Index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -254,9 +255,9 @@ static async Task FindBlobsByTagsExample()
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
           List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          foreach (Page<FilterBlobItem> page in serviceClient.FindBlobsByTags(queryToUse).AsPages())
+          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.AddRange(page.Values);
+              blobs.Add(filterBlobItem);
           }
 
           foreach (var filteredBlob in blobs)
@@ -284,9 +285,9 @@ static async Task FindBlobsByTagsExample()
 
 3. Selecteer *regel toevoegen* en vul vervolgens de velden voor de actie sets in
 
-4. Filterset selecteren om een optioneel filter toe te voegen voor voorvoegsel overeenkomst ![en overeenkomende BLOB-index label filters voor levenscyclus beheer toevoegen](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Filterset selecteren om een optioneel filter toe te voegen voor voorvoegsel overeenkomst en overeenkomende BLOB-index ![ Label filters voor levenscyclus beheer toevoegen](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
-5. Selecteer **controleren + toevoegen** om het voor beeld van ![de regel instellingen levenscyclus beheer regel met filter voor BLOB index Tags te bekijken](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+5. Selecteer **controleren + toevoegen** om het ![ voor beeld van de regel instellingen levenscyclus beheer regel met filter voor BLOB index Tags te bekijken](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 6. Selecteer **toevoegen** om de nieuwe regel toe te passen op het levenscyclus beheer beleid
 
