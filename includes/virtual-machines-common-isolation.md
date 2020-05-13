@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77123171"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343317"
 ---
 Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant.  Deze virtuele-machine grootten zijn het meest geschikt voor werk belastingen die een hoge mate van isolatie van andere klanten vereisen voor workloads met elementen zoals naleving en regelgeving.  Klanten kunnen er ook voor kiezen om de resources van deze geïsoleerde virtuele machines verder te onderverdelen met behulp [van Azure-ondersteuning voor geneste virtuele machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -23,11 +23,11 @@ Het gebruik van een geïsoleerde grootte garandeert dat uw virtuele machine de e
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
+* Standard_DS15_v2<sup>*</sup>
+* Standard_D15_v2<sup>*</sup>
 * Standard_F72s_v2
 
-[Hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)vindt u meer informatie over elke beschik bare, geïsoleerde grootte.
+<sup>*</sup>De isolatie garantie wordt op 15 mei 2020 buiten gebruik gesteld
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>D15_v2/DS15_v2-isolatie buiten gebruik stellen op 15 mei 2020
 **Bijwerken op 10 februari 2020: de buiten gebruiks telling van de werk tijd ' isolatie ' is verlengd tot 15 mei 2020 '**
@@ -51,7 +51,7 @@ Als u voor de isolatie een vereiste hebt, vóór 15 mei 2020, moet u het volgend
 Zie hieronder voor meer informatie:
 
 ## <a name="timeline"></a>Tijdlijn
-| Date | Bewerking | 
+| Date | Actie | 
 | --- | --- |
 | 18 november 2019 | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) |
 | 14 mei 2020  | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 

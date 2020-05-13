@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595295"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343300"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -257,32 +257,6 @@ Alle Azure-regio's ondersteunen nu Standard-SSD-schijven.
 **Is Azure Backup beschikbaar als standaard-Ssd's wordt gebruikt?**
 Ja, Azure Backup is nu beschikbaar.
 
-**Standard-SSD schijven Hoe kan ik maken?**
-U kunt Standard-SSD schijven maken met behulp van Azure Resource Manager sjablonen, SDK, Power shell of CLI. Hieronder vindt u de para meters die nodig zijn in het Resource Manager-sjabloon om Standard-SSD schijven te maken:
-
-* *apiVersion* voor micro soft. Compute moet worden `2018-04-01` ingesteld als (of hoger)
-* Geef *managedDisk. storageAccountType* op als`StandardSSD_LRS`
-
-In het volgende voor beeld ziet u de sectie *Properties. storageProfile. osDisk* voor een virtuele machine die gebruikmaakt van Standard-SSD schijven:
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-Zie [een virtuele machine maken op basis van een Windows-installatie kopie met Standard-SSD-gegevens schijven](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)voor een volledig sjabloon voor beeld van het maken van een Standard-SSD schijf met een sjabloon.
-
-**Kan ik mijn bestaande schijven converteren naar Standard-SSD?**
-Ja, dat is mogelijk. Raadpleeg de [opslag voor Azure Managed disks converteren van Standard naar Premium en](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) omgekeerd voor de algemene richt lijnen voor het converteren van Managed disks. En gebruik de volgende waarde om het schijf type bij te werken naar Standard-SSD.
--Account type StandardSSD_LRS
-
 **Wat is het voor deel van het gebruik van Standard-SSD schijven in plaats van HDD?**
 Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en betrouw baarheid in vergelijking met HDD-schijven. Werk belastingen van toepassingen worden veel soepeler uitgevoerd op Standard-SSD vanwege dat. Houd er rekening mee dat Premium-SSD schijven de aanbevolen oplossing zijn voor de meeste IO-intensieve productie workloads.
 
@@ -332,9 +306,9 @@ Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks en Storage Service Encryption
 
-**Is Azure Storage service versleuteling standaard ingeschakeld bij het maken van een beheerde schijf?**
+**Is versleuteling aan server zijde standaard ingeschakeld wanneer ik een beheerde schijf Maak?**
 
-Ja.
+Ja. Managed Disks zijn versleuteld met versleuteling aan de server zijde met door het platform beheerde sleutels. 
 
 **Is het opstart volume standaard versleuteld op een beheerde schijf?**
 
@@ -342,30 +316,27 @@ Ja. Standaard worden alle beheerde schijven versleuteld, met inbegrip van de bes
 
 **Wie beheert de versleutelings sleutels?**
 
-Micro soft beheert de versleutelings sleutels.
+Door het platform beheerde sleutels worden beheerd door micro soft. U kunt ook uw eigen sleutels gebruiken en beheren die zijn opgeslagen in Azure Key Vault. 
 
-**Kan ik Storage Service Encryption voor mijn beheerde schijven uitschakelen?**
+**Kan ik versleuteling aan de server zijde voor mijn beheerde schijven uitschakelen?**
 
 Nee.
 
-**Is Storage Service Encryption alleen beschikbaar in bepaalde regio's?**
+**Is versleuteling aan server zijde alleen beschikbaar in bepaalde regio's?**
 
-Nee. Het is beschikbaar in alle regio's waar Managed Disks beschikbaar zijn. Managed Disks is beschikbaar in alle open bare regio's en Duitsland. Het is ook alleen beschikbaar in China, maar alleen voor door micro soft beheerde sleutels, niet door de klant beheerde sleutels.
+Nee. Versleuteling aan de server zijde met de door het platform en door de klant beheerde sleutels is beschikbaar in alle regio's waar Managed Disks beschikbaar zijn. 
 
-**Hoe kan ik erachter komen of mijn beheerde schijf is versleuteld?**
+**Ondersteunt Azure Site Recovery versleuteling aan de server zijde met door de klant beheerde sleutel voor on-premises naar Azure en Azure tot Azure nood herstel scenario's?**
 
-U kunt de tijd nagaan waarop een beheerde schijf is gemaakt op basis van de Azure Portal, de Azure CLI en Power shell. Als de tijd na 9 juni 2017 is, wordt uw schijf versleuteld.
+Ja. 
 
-**Hoe kan ik mijn bestaande schijven die zijn gemaakt vóór 10 juni 2017 versleuteld?**
+**Kan ik back-ups maken Managed Disks versleuteld met versleuteling aan de server zijde met door de klant beheerde sleutel met behulp van Azure Backup-Service?**
 
-Vanaf 10 juni 2017 worden nieuwe gegevens die naar bestaande beheerde schijven worden geschreven, automatisch versleuteld. We zijn ook van plan om bestaande gegevens te versleutelen en de versleuteling wordt asynchroon op de achtergrond uitgevoerd. Als u nu bestaande gegevens moet versleutelen, maakt u een kopie van uw schijf. Nieuwe schijven worden versleuteld.
-
-* [Beheerde schijven kopiëren met behulp van de Azure CLI](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Beheerde schijven kopiëren met behulp van Power shell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+Ja.
 
 **Worden beheerde moment opnamen en installatie kopieën versleuteld?**
 
-Ja. Alle beheerde moment opnamen en installatie kopieën die zijn gemaakt na 9 juni 2017, worden automatisch versleuteld. 
+Ja. Alle beheerde moment opnamen en installatie kopieën worden automatisch versleuteld. 
 
 **Kan ik Vm's converteren met onbeheerde schijven die zich bevinden op de opslag accounts die eerder zijn versleuteld op beheerde schijven?**
 
