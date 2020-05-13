@@ -7,25 +7,22 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945829"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125550"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search (preview-versie)
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
 
-In dit artikel kunt u de portal gebruiken om een nieuw exemplaar van Azure Cognitive Search service te maken dat niet toegankelijk is via een openbaar IP-adres. Vervolgens configureert u een virtuele Azure-machine in hetzelfde virtuele netwerk, en gebruikt u deze om toegang te krijgen tot de zoek service via een persoonlijk eind punt.
+In dit artikel gebruikt u de Azure Portal voor het maken van een nieuw exemplaar van Azure Cognitive Search service dat niet via internet toegankelijk is. Vervolgens configureert u een virtuele Azure-machine in hetzelfde virtuele netwerk en gebruikt u deze om toegang te krijgen tot de zoek service via een persoonlijk eind punt.
 
 > [!Important]
-> Ondersteuning voor privé-eind punten voor Azure Cognitive Search is als een preview-versie beschikbaar [op aanvraag](https://aka.ms/SearchPrivateLinkRequestAccess) . Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
->
-> Zodra u toegang tot de preview hebt gekregen, kunt u persoonlijke eind punten voor uw service configureren met behulp van de Azure Portal of het [beheer rest API versie 2019-10-06-preview](https://docs.microsoft.com/rest/api/searchmanagement/).
->   
+> Ondersteuning voor privé-eind punten voor Azure Cognitive Search kan worden geconfigureerd met behulp van de Azure Portal of het [beheer rest API versie 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
 
-## <a name="why-use-private-endpoint-for-secure-access"></a>Waarom een persoonlijk eind punt gebruiken voor beveiligde toegang?
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>Waarom een persoonlijk eind punt gebruiken voor beveiligde toegang?
 
 [Privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search een client in een virtueel netwerk in staat stellen om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de [adres ruimte van het virtuele netwerk](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) voor uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Raadpleeg de [sectie Beschik baarheid](../private-link/private-link-overview.md#availability) in de product documentatie voor een lijst met andere PaaS-services die persoonlijke koppelingen ondersteunen.
 
@@ -35,47 +32,29 @@ Met persoonlijke eind punten voor uw zoek service kunt u het volgende doen:
 - Verbeter de beveiliging van het virtuele netwerk door u in staat te stellen exfiltration van gegevens van het virtuele netwerk te blok keren.
 - Maak veilig verbinding met uw zoek service vanuit on-premises netwerken die verbinding maken met het virtuele netwerk via [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
 
-> [!NOTE]
-> Er zijn momenteel enkele beperkingen in de preview-versie waarvan u rekening moet houden:
-> * Alleen beschikbaar voor zoek services op de laag **basis** . 
-> * Beschikbaar in de Verenigde Staten West 2, VS-West-Centraal, VS-Oost, Zuid-Centraal, Australië-oost en Australië-zuidoost regio's.
-> * Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
-> * Wanneer het service-eind punt privé is, moet u de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/) gebruiken om documenten te uploaden naar de index.
-> * U moet de volgende koppeling gebruiken om de ondersteunings optie voor privé-eind punten weer te geven in de Azure Portal:https://portal.azure.com/?feature.enablePrivateEndpoints=true
-
-
-
-## <a name="request-access"></a>Toegang aanvragen 
-
-Klik op [toegang aanvragen](https://aka.ms/SearchPrivateLinkRequestAccess) om u aan te melden voor deze preview-functie. Het formulier vraagt informatie over u, uw bedrijf en algemene netwerk topologie. Zodra we uw aanvraag hebben gecontroleerd, ontvangt u een bevestigings-e-mail met aanvullende instructies.
-
 ## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
 In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de virtuele machine die wordt gebruikt om toegang te krijgen tot het privé-eind punt van uw zoek service.
 
-1. Selecteer op Azure Portal het tabblad Start **een resource** > **netwerk** > **virtueel netwerk**maken.
+1. Selecteer op Azure Portal het tabblad Start **een resource**  >  **netwerk**  >  **virtueel netwerk**maken.
 
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | *MyVirtualNetwork* invoeren |
-    | Adresruimte | Voer *10.1.0.0/16* in |
     | Abonnement | Selecteer uw abonnement|
     | Resourcegroep | Selecteer **nieuwe maken**, Voer *myResourceGroup*in en selecteer **OK** . |
-    | Locatie | Selecteer **VS-West** of welke regio u gebruikt|
-    | Subnet - Naam | *MySubnet* invoeren |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in |
+    | Naam | *MyVirtualNetwork* invoeren |
+    | Regio | Selecteer de gewenste regio |
     |||
 
-1. Laat de rest als standaard en selecteer **maken**.
-
+1. Laat de standaard waarden voor de overige instellingen ongewijzigd. Klik op **beoordeling + maken** en vervolgens op **maken**
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>Een zoek service met een persoonlijk eind punt maken
 
 In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoonlijk eind punt. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource** > **maken web** > **Azure Cognitive Search**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken**  >  **Web**  >  **Azure Cognitive Search**.
 
 1. In **nieuwe Search service basis principes**voert u de volgende gegevens in of selecteert u deze:
 
@@ -86,8 +65,8 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **EXEMPLAARDETAILS** |  |
     | URL | Voer een unieke naam in. |
-    | Locatie | Selecteer de regio die u hebt opgegeven bij het aanvragen van toegang tot deze preview-functie. |
-    | Prijscategorie | Selecteer **prijs categorie wijzigen** en kies **basis**. Deze laag is vereist voor de preview-versie. |
+    | Locatie | Selecteer de gewenste regio. |
+    | Prijscategorie | Selecteer **prijs categorie wijzigen** en kies de gewenste servicelaag. (Niet ondersteund op de laag **gratis** . Moet **Basic** of hoger zijn.) |
     |||
   
 1. Selecteer **volgende: schalen**.
@@ -129,7 +108,7 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal een**virtuele machine**voor het > **berekenen** > van **een resource maken**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een**  >  **Compute**  >  **virtuele machine**voor het berekenen van een resource maken.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -193,7 +172,7 @@ Down load en maak vervolgens als volgt verbinding met de VM- *myVm* :
     1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+        > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
@@ -206,7 +185,7 @@ Down load en maak vervolgens als volgt verbinding met de VM- *myVm* :
 
 In deze sectie gaat u de persoonlijke netwerk toegang tot de zoek service controleren en een persoonlijke verbinding maken met het gebruik van het persoonlijke eind punt.
 
-Intrekken van de inleiding die voor alle interacties met de zoek service de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/)vereist. De portal en .NET SDK worden niet ondersteund in deze preview-versie.
+Wanneer het eind punt van de zoek service privé is, zijn sommige Portal functies uitgeschakeld. U kunt instellingen voor het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en verschillende andere onderdelen in de service, zoals de definities index, Indexer en vaardig heden, is beperkt om veiligheids redenen.
 
 1. Open Power shell in de Extern bureaublad van *myVM*.
 
@@ -232,9 +211,9 @@ Intrekken van de inleiding die voor alle interacties met de zoek service de [zoe
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, de zoek service en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat:
-1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* in de zoek resultaten. 
+1. Voer *myResourceGroup*   in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup*   in de zoek resultaten. 
 1. Selecteer **Resourcegroep verwijderen**. 
-1. Voer *myResourceGroup* in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
+1. Voer *myResourceGroup*   in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u een VM gemaakt in een virtueel netwerk en een zoek service met een persoonlijk eind punt. U hebt verbinding gemaakt met de virtuele machine via internet en u kunt deze veilig door gegeven aan de zoek service met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](../private-link/private-endpoint-overview.md)voor meer informatie over privé-eind punten.

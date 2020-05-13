@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410612"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125703"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
@@ -64,10 +64,10 @@ De verbindings reeks bestaat uit een lijst met instellingen die worden weer gege
 - `EndpointSuffix`(bijvoorbeeld: applicationinsights.azure.cn) Als u het eind punt achtervoegsel instelt, wordt de SDK geïnstrueerd waarmee de Azure-Cloud verbinding maakt. De SDK stelt de rest van het eind punt samen voor afzonderlijke services.
 - Expliciete eind punten.
   Elke service kan expliciet worden overschreven in de connection string.
-   - `IngestionEndpoint`kadehttps://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`kadehttps://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`kadehttps://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`kadehttps://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`(bijvoorbeeld: `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint`(bijvoorbeeld: `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint`(bijvoorbeeld: `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint`(bijvoorbeeld: `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Eindpunt schema
 
@@ -106,10 +106,10 @@ In dit voor beeld is alleen de instrumentatie sleutel ingesteld.
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op de [standaard instellingen](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) van de SDK en er wordt verbinding gemaakt met de open bare wereld wijde Azure:
-   - Opnamehttps://dc.services.visualstudio.com/
-   - Live metrische gegevens:https://rt.services.visualstudio.com/
-   - Profilerhttps://agent.azureserviceprofiler.net/
-   - Foutopsporingsversiehttps://agent.azureserviceprofiler.net/  
+   - Opname`https://dc.services.visualstudio.com/`
+   - Live metrische gegevens:`https://rt.services.visualstudio.com/`
+   - Profiler`https://agent.azureserviceprofiler.net/`
+   - Foutopsporingsversie`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ In dit voor beeld geeft deze connection string het eindpunt achtervoegsel op en 
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op het gegeven eind punt achtervoegsel: 
-   - Opnamehttps://dc.ai.contoso.com
-   - Live metrische gegevens:https://live.ai.contoso.com
-   - Profilerhttps://profiler.ai.contoso.com 
-   - Foutopsporingsversiehttps://snapshot.ai.contoso.com   
+   - Opname`https://dc.ai.contoso.com`
+   - Live metrische gegevens:`https://live.ai.contoso.com`
+   - Profiler`https://profiler.ai.contoso.com`
+   - Foutopsporingsversie`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ In dit voor beeld geeft deze connection string expliciete onderdrukkingen voor e
 - Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
 - Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
 - De regionale service-Uri's zijn gebaseerd op de expliciete onderdrukkings waarden: 
-   - Opname: https:\//Custom.com:111/
-   - Live metrieken: https:\//Custom.com:222/
-   - Profiler: https:\//Custom.com:333/ 
-   - Fout opsporing: https\/:/Custom.com:444/   
+   - Opname`https://custom.com:111/`
+   - Live metrische gegevens:`https://custom.com:222/`
+   - Profiler`https://custom.com:333/`
+   - Foutopsporingsversie`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Een connection string instellen

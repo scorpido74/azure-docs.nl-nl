@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888795"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195904"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
@@ -124,9 +124,9 @@ Diagnostische gebeurtenissen worden verzonden naar Log Analytics wanneer deze zi
 
 Log Analytics alleen rapporten in deze tussenliggende status voor verbindings activiteiten:
 
-- Gestart
-- Verbonden
-- Voltooid
+- Gestart: wanneer een gebruiker een app of bureau blad in de Extern bureaublad-client selecteert en hiermee verbinding maakt.
+- Verbonden: wanneer de gebruiker verbinding maakt met de virtuele machine waarop de app of het bureau blad wordt gehost.
+- Voltooid: wanneer de gebruiker of de server de sessie verbreekt, wordt de activiteit uitgevoerd in.
 
 ## <a name="example-queries"></a>Voorbeelden van query's
 

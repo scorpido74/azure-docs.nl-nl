@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/11/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203196"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196990"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
 <a name="required-ports"> </a> Wanneer een API Management service-exemplaar wordt gehost in een VNET, worden de poorten in de volgende tabel gebruikt.
 
-| Bron/doel poort (en) | Richting          | Transport Protocol |   [Service Tags](../virtual-network/security-overview.md#service-tags) <br> Bron/doel   | Doel (\*)                                                 | Virtual Network type |
+| Bron/doel poort (en) | Richting          | Transport Protocol |   [Service Tags](../virtual-network/security-overview.md#service-tags) <br> Bron/doel   | Doel ( \* )                                                 | Virtual Network type |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Inkomend            | TCP                | INTERNET/VIRTUAL_NETWORK            | Client communicatie met API Management                      | Extern             |
 | */3443                     | Inkomend            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Beheer eindpunt voor Azure Portal en Power shell         | Externe & intern  |
@@ -136,22 +136,22 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Openbare Azure-peering      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-black.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-red.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Openbare Azure-peering      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-black.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-red.prod.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-red.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > De wijziging van de bovenstaande clusters met DNS-zone **. nsatc.net** naar **. microsoftmetrics.com** is doorgaans een DNS-wijziging. Het IP-adres van het cluster wordt niet gewijzigd.
 
 + **Regionale service Tags**: NSG regels voor het toestaan van uitgaande connectiviteit naar opslag-, SQL-en Event hubs-service tags kunnen de regionale versies van deze tags gebruiken die overeenkomen met de regio die het API Management-exemplaar bevat (bijvoorbeeld Storage. westus voor een API Management-exemplaar in de regio vs-West). In implementaties met meerdere regio's moet de NSG in elke regio verkeer naar de service tags voor die regio en de primaire regio toestaan.
 
-+ **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder `smtpi-co1.msn.com`de `smtpi-ch1.msn.com`host `smtpi-db3.msn.com`, `smtpi-sin.msn.com` , en`ies.global.microsoft.com`
++ **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de host `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` en`ies.global.microsoft.com`
 
-+ **Ontwikkelaars Portal CAPTCHA**: uitgaand netwerk connectiviteit voor de CAPTCHA van de ontwikkelaars Portal, die wordt omgezet `client.hip.live.com` onder `partner.hip.live.com`de hosts en.
++ **Ontwikkelaars Portal CAPTCHA**: uitgaand netwerk connectiviteit voor de CAPTCHA van de ontwikkelaars Portal, die wordt omgezet onder de hosts `client.hip.live.com` en `partner.hip.live.com` .
 
-+ **Azure Portal diagnostische gegevens**: als u de stroom van Diagnostische logboeken van Azure Portal wilt inschakelen wanneer u de extensie API management binnen een Virtual Network `dc.services.visualstudio.com` gebruikt, is uitgaande toegang tot op poort 443 vereist. Dit helpt bij het oplossen van problemen die u kunt tegen komen wanneer u uitbrei ding gebruikt.
++ **Azure Portal diagnostische gegevens**: als u de stroom van Diagnostische logboeken van Azure Portal wilt inschakelen wanneer u de extensie API management binnen een Virtual Network gebruikt, is uitgaande toegang tot `dc.services.visualstudio.com` op poort 443 vereist. Dit helpt bij het oplossen van problemen die u kunt tegen komen wanneer u uitbrei ding gebruikt.
 
-+ **Azure Load Balancer**: het toestaan van een inkomend verzoek van een service `AZURE_LOAD_BALANCER` label `Developer` is geen vereiste voor de SKU, omdat er slechts één reken eenheid achter wordt geïmplementeerd. Maar inkomend van [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wordt van cruciaal belang bij het schalen `Premium`naar een hogere SKU, zoals bij het mislukken van de status test van Load Balancer, mislukt een implementatie.
++ **Azure Load Balancer**: het toestaan van een inkomend verzoek van een service label `AZURE_LOAD_BALANCER` is geen vereiste voor de `Developer` SKU, omdat er slechts één reken eenheid achter wordt geïmplementeerd. Maar inkomend van [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wordt van cruciaal belang bij het schalen naar een hogere SKU, `Premium` zoals bij het mislukken van de status test van Load Balancer, mislukt een implementatie.
 
 + **Verkeer naar een on-premises firewall forceren via Express route of virtueel netwerk apparaat**: een algemene klant configuratie is het definiëren van een eigen standaard route (0.0.0.0/0) die ervoor zorgt dat alle verkeer van het API Management overgedragen subnet wordt gestroomd via een on-premises firewall of een virtueel netwerk apparaat. Deze verkeers stroom invariably verbreekt de connectiviteit met Azure API Management, omdat het uitgaande verkeer on-premises of NAT zou worden geblokkeerd door een niet-herken bare set adressen die niet meer werken met verschillende Azure-eind punten. Voor de oplossing moet u een aantal dingen doen:
 
@@ -203,7 +203,7 @@ Voor elke extra schaal eenheid van API Management zijn twee meer IP-adressen ver
 
 De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor binnenkomende aanvragen dat is gemarkeerd met **Global** moet worden white list samen met het specifieke IP-adres van de **regio** .
 
-| **Azure-omgeving**|   **Regio**|  **IP-adres**|
+| **Azure-omgeving**|   **Deel**|  **Het IP-adres**|
 |-----------------|-------------------------|---------------|
 | Openbare Azure-peering| VS Zuid-Centraal (wereld wijd)| 104.214.19.224|
 | Openbare Azure-peering| VS Noord-Centraal (wereld wijd)| 52.162.110.80|

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871158"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195242"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor de import/export-service
 
@@ -99,9 +99,10 @@ Als u fouten met betrekking tot de door de klant beheerde sleutel ontvangt, gebr
 
 | Foutcode     |Details     | Herstel bare?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | Er is een door de klant beheerde sleutel toegepast, maar de toegang tot de sleutel is momenteel ingetrokken. Zie How to [Enable the key Access](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)(Engelstalig) voor meer informatie.                                                      | Ja, controleren of: <ol><li>Sleutel kluis heeft nog steeds de MSI in het toegangs beleid.</li><li>Toegangs beleid voorziet in machtigingen voor ophalen, teruglopen, in-en uitpakken.</li><li>Als de sleutel kluis zich in een vNet achter de firewall bevindt, controleert u of **micro soft Trusted Services toestaan** is ingeschakeld.</li></ol>                                                                                            |
-| CmkErrorKeyDisabled      | Er is een door de klant beheerde sleutel toegepast, maar de sleutel is uitgeschakeld. Zie How to [Enable the key](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)(Engelstalig) voor meer informatie.                                                                             | Ja, door de sleutel versie in te scha kelen     |
-| CmkErrorKeyNotFound      | Er is een door de klant beheerde sleutel toegepast, maar de sleutel kluis die is gekoppeld aan de sleutel is niet gevonden.<br>Als u de sleutel kluis hebt verwijderd, kunt u de door de klant beheerde sleutel niet herstellen.  Als u de sleutel kluis naar een andere Tenant hebt gemigreerd, raadpleegt u [een sleutel kluis Tenant-id wijzigen nadat een abonnement is verplaatst](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Als u de sleutel kluis hebt verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis een Tenant migratie heeft ontvangen, ja, kan deze worden hersteld met behulp van een van de volgende stappen: <ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer `Identity = SystemAssigned`in op. Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get`, `Wrap`, en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
+| CmkErrorAccessRevoked | De toegang tot de door de klant beheerde sleutel is ingetrokken.                                                       | Ja, controleren of: <ol><li>Sleutel kluis heeft nog steeds de MSI in het toegangs beleid.</li><li>Voor het toegangs beleid zijn de machtigingen ophalen, verpakken en uitpakken ingeschakeld.</li><li>Als de sleutel kluis zich in een VNet achter de firewall bevindt, controleert u of **micro soft Trusted Services toestaan** is ingeschakeld.</li><li>Controleer of de MSI van de taak resource is ingesteld op het `None` gebruik van api's.<br>Zo ja, dan stelt u de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit voor de taak resource opnieuw gemaakt.<br>Nadat de nieuwe identiteit is gemaakt, ingeschakeld `Get` , `Wrap` en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | De door de klant beheerde sleutel is uitgeschakeld.                                         | Ja, door de sleutel versie in te scha kelen     |
+| CmkErrorKeyNotFound      | De door de klant beheerde sleutel is niet gevonden. | Ja, als de sleutel is verwijderd, maar deze nog steeds binnen de duur van het opschonen valt, met behulp van [sleutel kluis ongedaan maken verwijderen](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Hierin <ol><li>Ja, als de klant een back-up van de sleutel heeft gemaakt en deze herstelt.</li><li>Nee, anders.</li></ol>
+| CmkErrorVaultNotFound |Kan de sleutel kluis van de door de klant beheerde sleutel niet vinden. |   Als de sleutel kluis is verwijderd:<ol><li>Ja, als het zich in de duur van de schone beveiliging bevindt, gebruikt u de stappen in [een sleutel kluis herstellen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Nee, als het na de duur van de schone beveiliging valt.</li></ol><br>Als de sleutel kluis is gemigreerd naar een andere Tenant, ja, kan deze worden hersteld met behulp van een van de volgende stappen:<ol><li>Herstel de sleutel kluis terug naar de oude Tenant.</li><li>Stel `Identity = None` in en stel vervolgens de waarde weer in op `Identity = SystemAssigned` . Hiermee wordt de identiteit verwijderd en opnieuw gemaakt zodra de nieuwe identiteit is gemaakt. Inschakelen `Get` , `Wrap` , en `Unwrap` machtigingen voor de nieuwe identiteit in het toegangs beleid van de sleutel kluis.</li></ol>|
 
 ## <a name="next-steps"></a>Volgende stappen
 

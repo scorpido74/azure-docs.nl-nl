@@ -2,20 +2,19 @@
 title: Automatische herstel van instanties met virtuele-machine schaal sets van Azure
 description: Meer informatie over het configureren van het beleid voor automatische herstel bewerkingen voor VM-exemplaren in een schaalset
 author: avirishuv
-manager: vashan
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
-ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/28/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603668"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197042"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische herstel bewerkingen voor virtuele-machine schaal sets van Azure
 
@@ -154,7 +153,7 @@ az vmss create \
   --generate-ssh-keys \
   --load-balancer <existingLoadBalancer> \
   --health-probe <existingHealthProbeUnderLoaderBalancer> \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 In het bovenstaande voor beeld wordt een bestaande load balancer en status test gebruikt voor het bewaken van de toepassings status van instanties. Als u liever een toepassings status extensie wilt gebruiken voor bewaking, kunt u een schaalset maken, de uitbrei ding van de toepassings status configureren en vervolgens het beleid voor automatische exemplaar reparatie inschakelen met de *Update AZ vmss*, zoals wordt uitgelegd in de volgende sectie.
@@ -217,7 +216,7 @@ az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>De service status van het beleid voor automatische exemplaar reparaties weer geven en bijwerken

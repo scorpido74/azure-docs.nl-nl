@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100274"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196182"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migratie van SQL Server naar Azure SQL Database beheerde instantie
 
@@ -43,9 +43,7 @@ Op hoog niveau ziet het database migratie proces er als volgt uit:
 
 Bepaal eerst of het beheerde exemplaar compatibel is met de database vereisten van uw toepassing. De implementatie optie Managed instance is ontworpen voor een eenvoudige lift-en verschuivings migratie voor de meeste bestaande toepassingen die gebruikmaken van SQL Server on-premises of op virtuele machines. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
 
-Gebruik [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. DMA biedt nog geen ondersteuning voor het beheerde exemplaar als migratie bestemming, maar het wordt aanbevolen om de evaluatie uit te voeren op Azure SQL Database en zorgvuldig een lijst te bekijken met de gerapporteerde pariteits-en compatibiliteits problemen met de product documentatie. Zie [Azure SQL database functies](sql-database-features.md) om te controleren of er bepaalde blokkerings problemen zijn die niet worden geblokkeerd in het beheerde exemplaar, omdat de meeste belemmeringen problemen verhinderen dat een migratie naar Azure SQL database is verwijderd met een beheerd exemplaar. Zo zijn functies als query's voor meerdere data bases, trans acties voor meerdere data bases binnen hetzelfde exemplaar, gekoppelde server naar andere SQL-bronnen, CLR, globale tijdelijke tabellen, weer gaven op instantie niveau, Service Broker en soort gelijke gegevens beschikbaar in beheerde exemplaren.
-
-Als er een aantal problemen met het blok keren van de implementatie wordt opgelost die niet worden verwijderd met de optie Managed instance Deployment, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op virtuele machines van Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Hier volgen enkele voorbeelden:
+Gebruik [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk rekening houden met een alternatieve optie, zoals [SQL Server op virtuele machines van Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
 
 - Als u rechtstreeks toegang tot het besturings systeem of het bestands systeem nodig hebt, bijvoorbeeld om een derde of aangepaste agents te installeren op dezelfde virtuele machine met SQL Server.
 - Als u strikte afhankelijkheid hebt voor functies die nog niet worden ondersteund, zoals FileStream/bestands tabel, poly base en trans acties met meerdere exemplaren.
@@ -53,6 +51,7 @@ Als er een aantal problemen met het blok keren van de implementatie wordt opgelo
 - Als uw reken vereisten veel lager zijn dan de aanbiedingen voor beheerde instanties (één vCore, bijvoorbeeld) en de optie voor het samen voegen van data bases is niet acceptabel.
 
 Als u alle geïdentificeerde migratie blokkeringen hebt opgelost en de migratie naar een beheerd exemplaar hebt voortgezet, moet u er rekening mee houden dat sommige wijzigingen van invloed kunnen zijn op de prestaties van uw workload:
+
 - Een verplicht volledig herstel model en een regel matig geautomatiseerd back-upschema kunnen invloed hebben op de prestaties van uw werk belasting of onderhouds-en ETL-acties als u regel matig eenvoudig of bulksgewijs geregistreerd model hebt gebruikt of back-ups op aanvraag hebt gestopt.
 - Verschillende configuraties op server-of database niveau zoals traceer vlaggen of compatibiliteits niveaus
 - Nieuwe functies die u gebruikt, zoals TDE (transparent data base Encryption) of groepen voor automatische failover, kunnen invloed hebben op CPU-en IO-gebruik.
@@ -107,7 +106,7 @@ Managed instance is een beheerde service waarmee u enkele van de reguliere DBA-a
 Het beheerde exemplaar ondersteunt de volgende database migratie opties (momenteel zijn dit de enige migratie methoden die worden ondersteund):
 
 - Azure Database Migration Service-migratie met bijna nul uitval tijd,
-- Systeem `RESTORE DATABASE FROM URL` eigen-maakt gebruik van systeem eigen back-ups van SQL Server en vergt enige downtime.
+- Systeem eigen `RESTORE DATABASE FROM URL` -maakt gebruik van systeem eigen back-ups van SQL Server en vergt enige downtime.
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -181,7 +180,7 @@ Breng de wijziging van de para meters aan of werk de service lagen bij om de opt
 Managed instance biedt veel geavanceerde hulpprogram ma's voor het controleren en oplossen van problemen, en u moet ze gebruiken om de prestaties van uw exemplaar te bewaken. Enkele van de para meters die u moet bewaken, zijn:
 - CPU-gebruik op het exemplaar om te bepalen heeft het aantal vCores dat u hebt ingericht, het juiste resultaat voor uw werk belasting.
 - Pagina-Life verwachting op uw beheerde instantie om te bepalen hebt [u meer geheugen nodig](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Wacht op de `INSTANCE_LOG_GOVERNOR` statistieken `PAGEIOLATCH` , zoals of die aangeven dat u opslag-i/o-problemen hebt, met name voor het algemeen niveau waar u mogelijk bestanden vooraf moet toewijzen om betere IO-prestaties te krijgen.
+- Wacht `INSTANCE_LOG_GOVERNOR` `PAGEIOLATCH` op de statistieken, zoals of die aangeven dat u opslag-i/o-problemen hebt, met name voor het algemeen niveau waar u mogelijk bestanden vooraf moet toewijzen om betere IO-prestaties te krijgen.
 
 ## <a name="leverage-advanced-paas-features"></a>Maak gebruik van geavanceerde PaaS-functies
 

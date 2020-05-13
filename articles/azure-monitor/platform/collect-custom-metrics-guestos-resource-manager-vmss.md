@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733242"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125771"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
 
@@ -238,8 +238,8 @@ Sla beide bestanden op en sluit deze.
 Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShell:  
 
 1. Start PowerShell. 
-1. Meld u aan bij Azure `Login-AzAccount`met.
-1. Haal uw lijst met abonnementen op met `Get-AzSubscription`behulp van.
+1. Meld u aan bij Azure met `Login-AzAccount` .
+1. Haal uw lijst met abonnementen op met behulp van `Get-AzSubscription` .
 1. Stel het abonnement in dat u maakt of werk de virtuele machine bij: 
 
    ```powershell
@@ -252,7 +252,7 @@ Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShe
    ```
 
    > [!NOTE]  
-   > Vergeet niet om een Azure-regio te gebruiken waarvoor aangepaste metrische gegevens zijn ingeschakeld. Vergeet niet om een [Azure-regio te gebruiken waarvoor aangepaste metrische gegevens zijn ingeschakeld](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions).
+   > Vergeet niet om een Azure-regio te gebruiken waarvoor aangepaste metrische gegevens zijn ingeschakeld. Vergeet niet om een [Azure-regio te gebruiken waarvoor aangepaste metrische gegevens zijn ingeschakeld](./metrics-custom-overview.md#supported-regions).
  
 1. Voer de volgende opdrachten uit om de virtuele machine te implementeren:  
 
@@ -285,7 +285,7 @@ Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShe
 
 1. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**. 
 
-1. Selecteer in de vervolg keuzelijst metrische gegevens **geheugen\%toegewezen bytes in gebruik**.  
+1. Selecteer in de vervolg keuzelijst metrische gegevens **geheugen \% toegewezen bytes in gebruik**.  
 
 U kunt er ook voor kiezen om de dimensies op deze metrische waarde te gebruiken om deze te tekenen voor een bepaalde virtuele machine of om elke virtuele machine in de schaalset te zetten. 
 

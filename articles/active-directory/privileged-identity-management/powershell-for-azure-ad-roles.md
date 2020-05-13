@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c42c0dd3848ec913f991e4b07612669c5a25c9f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233989"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197270"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Power shell voor Azure AD-rollen in Privileged Identity Management
 
@@ -45,12 +45,12 @@ Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. Zoek de Tenant-id voor uw Azure AD-organisatie door naar de map met **Azure Active Directory** > **Properties** > **-** eigenschappen te gaan. Gebruik in de sectie cmdlets deze ID wanneer u de resourceId wilt opgeven.
+1. Zoek de Tenant-id voor uw Azure AD-organisatie door naar de map met **Azure Active Directory**  >  **Properties**  >  **-** eigenschappen te gaan. Gebruik in de sectie cmdlets deze ID wanneer u de resourceId wilt opgeven.
 
     ![De organisatie-ID in de eigenschappen voor de Azure AD-organisatie zoeken](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management. U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de organisatie-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
+> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de organisatie-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Roldefinities ophalen
 
@@ -122,11 +122,10 @@ Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten wor
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-Als u de functie-instelling wilt bijwerken, moet u eerst als volgt een instellings object definiëren:
+Als u de functie-instelling wilt bijwerken, moet u het bestaande instellings object voor een bepaalde rol ophalen en wijzigingen aanbrengen:
 
-    $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
-    $setting.RuleIdentifier = "JustificationRule"
-    $setting.Setting = "{'required':false}"
+    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+    $setting.UserMemberSetting.justificationRule = '{"required":false}'
 
 U kunt de instelling vervolgens vooraf Toep assen op een van de objecten voor een bepaalde rol, zoals hieronder wordt weer gegeven. De ID is hier de instellings-ID van de rol die kan worden opgehaald uit het resultaat van de cmdlet lijst rolinstellingen.
 

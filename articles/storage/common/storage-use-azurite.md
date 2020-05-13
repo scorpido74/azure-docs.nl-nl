@@ -7,12 +7,12 @@ ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872578"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195944"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor het ontwikkelen en testen van lokale Azure Storage (preview-versie)
 
@@ -70,7 +70,7 @@ De volgende instellingen worden ondersteund:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 
-Deze installatie methode vereist dat [node. js versie 8,0 of hoger](https://nodejs.org) is geïnstalleerd. Node Package Manager (NPM) is het hulp programma pakket beheer dat bij elke node. js-installatie is opgenomen. Na de installatie van node. js voert u `npm` de volgende opdracht uit om Azurite te installeren.
+Deze installatie methode vereist dat [node. js versie 8,0 of hoger](https://nodejs.org) is geïnstalleerd. Node Package Manager (NPM) is het hulp programma pakket beheer dat bij elke node. js-installatie is opgenomen. Na de installatie van node. js voert u de volgende `npm` opdracht uit om Azurite te installeren.
 
 ```console
 npm install -g azurite
@@ -97,7 +97,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 
 **De locatie van de werk ruimte opgeven**:
 
-In het volgende voor beeld geeft `-v c:/azurite:/data` de para meter *c:/Azurite* op als de persistente gegevens locatie Azurite. De map, *c:/Azurite*, moet worden gemaakt voordat u de opdracht docker uitvoert.
+In het volgende voor beeld `-v c:/azurite:/data` geeft de para meter *c:/Azurite* op als de persistente gegevens locatie Azurite. De map, *c:/Azurite*, moet worden gemaakt voordat u de opdracht docker uitvoert.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -150,7 +150,7 @@ In deze sectie vindt u meer informatie over de opdracht regel parameters die bes
 
 ### <a name="help"></a>Help
 
-**Optioneel** : Get opdracht regel Help met behulp van `-h` de `--help` of-schakel optie.
+**Optioneel** : Get opdracht regel Help met behulp van de `-h` of- `--help` Schakel optie.
 
 ```console
 azurite -h
@@ -248,7 +248,7 @@ azurite --location c:\azurite
 
 ### <a name="access-log"></a>Access-logboek
 
-**Optioneel** : het toegangs logboek wordt standaard weer gegeven in het console venster. Schakel de weer gave van het toegangs logboek uit met `-s` behulp van de of `--silent` -switch.
+**Optioneel** : het toegangs logboek wordt standaard weer gegeven in het console venster. Schakel de weer gave van het toegangs logboek uit met behulp van de `-s` of- `--silent` Switch.
 
 ```console
 azurite -s
@@ -256,7 +256,7 @@ azurite --silent
 ```
 ### <a name="debug-log"></a>Logboek voor fout opsporing
 
-**Optioneel** : het logboek voor fout opsporing bevat gedetailleerde informatie over elke aanvraag en uitzonderings Stack tracering. Schakel het logboek voor fout opsporing in door een geldig lokaal bestandspad naar `-d` de `--debug` of-switch op te geven.
+**Optioneel** : het logboek voor fout opsporing bevat gedetailleerde informatie over elke aanvraag en uitzonderings Stack tracering. Schakel het logboek voor fout opsporing in door een geldig lokaal bestandspad naar de of-switch op te geven `-d` `--debug` .
 
 ```console
 azurite -d path/debug.log
@@ -265,7 +265,7 @@ azurite --debug path/debug.log
 
 ### <a name="loose-mode"></a>Losse modus
 
-**Optioneel** : standaard past Azurite de strikte modus toe om niet-ondersteunde aanvraag headers en-para meters te blok keren. Schakel de strikte modus uit met `-L` behulp van de of `--loose` -switch. Noteer het hoofd letter ' L '.
+**Optioneel** : standaard past Azurite de strikte modus toe om niet-ondersteunde aanvraag headers en-para meters te blok keren. Schakel de strikte modus uit met behulp van de `-L` of- `--loose` Switch. Noteer het hoofd letter ' L '.
 
 ```console
 azurite -L
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>Versie
 
-**Optioneel** : Geef het geïnstalleerde versie nummer van de Azurite weer `-v` met `--version` behulp van de of-schakel optie.
+**Optioneel** : Geef het geïnstalleerde versie nummer van de Azurite weer met behulp van de `-v` of- `--version` Schakel optie.
 
 ```console
 azurite -v
@@ -282,15 +282,15 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>Certificaat configuratie (HTTPS)
 
-**Optioneel** : standaard maakt Azurite gebruik van het HTTP-protocol. Schakel de HTTPS-modus in door een pad naar een Privacy Enhanced Mail-certificaat bestand (. pem) of [Personal Information Exchange (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) op de `--cert` switch op te geven.
+**Optioneel** : standaard maakt Azurite gebruik van het HTTP-protocol. Schakel de HTTPS-modus in door een pad naar een Privacy Enhanced Mail-certificaat bestand (. pem) of [Personal Information Exchange (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) op de switch op te geven `--cert` .
 
-Wanneer `--cert` u een PEM-bestand opgeeft, moet u een overeenkomende `--key` switch opgeven.
+Wanneer `--cert` u een PEM-bestand opgeeft, moet u een overeenkomende `--key` Switch opgeven.
 
 ```console
 azurite --cert path/server.pem --key path/key.pem
 ```
 
-Wanneer `--cert` u een pfx-bestand opgeeft, moet u een overeenkomende `--pwd` switch opgeven.
+Wanneer `--cert` u een pfx-bestand opgeeft, moet u een overeenkomende `--pwd` Switch opgeven.
 
 ```console
 azurite --cert path/server.pfx --pwd pfxpassword
@@ -300,22 +300,22 @@ Zie [https Setup](https://github.com/Azure/Azurite/blob/master/README.md#https-s
 
 ### <a name="oauth-configuration"></a>OAuth-configuratie
 
-**Optioneel** : Schakel OAuth-verificatie voor Azurite in met `--oauth` behulp van de switch.
+**Optioneel** : Schakel OAuth-verificatie voor Azurite in met behulp van de `--oauth` Switch.
 
 ```console
 azurite --oauth basic --cert path/server.pem --key path/key.pem
 ```
 
 > [!NOTE]
-> OAuth vereist een HTTPS-eind punt. Zorg ervoor dat HTTPS is ingeschakeld door `--cert` de switch samen met `--oauth` de switch op te geven.
+> OAuth vereist een HTTPS-eind punt. Zorg ervoor dat HTTPS is ingeschakeld door `--cert` de switch samen met de switch op te geven `--oauth` .
 
-Azurite ondersteunt basis verificatie door de `basic` para meter op te `--oauth` geven voor de switch. Azurite voert basis verificatie uit, zoals het valideren van het binnenkomende Bearer-token, het controleren van de verlener, de doel groep en de verval datum. Azurite controleert de hand tekening van het token of de machtigingen niet.
+Azurite ondersteunt basis verificatie door de `basic` para meter op te geven voor de `--oauth` Switch. Azurite voert basis verificatie uit, zoals het valideren van het binnenkomende Bearer-token, het controleren van de verlener, de doel groep en de verval datum. Azurite controleert de hand tekening van het token of de machtigingen niet.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisatie voor hulpprogram ma's en Sdk's
 
 Maak verbinding met Azurite van Azure Storage Sdk's of hulpprogram ma's, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), met behulp van een verificatie strategie. Verificatie is vereist. Azurite ondersteunt verificatie met OAuth, gedeelde sleutel en Shared Access signatures (SAS). Azurite biedt ook ondersteuning voor anonieme toegang tot open bare containers.
 
-Als u de Azure Sdk's gebruikt, start u Azurite met de `--oauth basic and --cert --key/--pwd` opties.
+Als u de Azure Sdk's gebruikt, start u Azurite met de `--oauth basic and --cert --key/--pwd` Opties.
 
 ### <a name="well-known-storage-account-and-key"></a>Bekende opslag account en-sleutel
 
@@ -326,7 +326,7 @@ Azurite accepteert hetzelfde bekende account en dezelfde sleutel die wordt gebru
 
 ### <a name="custom-storage-accounts-and-keys"></a>Aangepaste opslag accounts en-sleutels
 
-Azurite ondersteunt aangepaste opslag accountnamen en-sleutels door de `AZURITE_ACCOUNTS` omgevings variabele in te stellen in de `account1:key1[:key2];account2:key1[:key2];...`volgende indeling:.
+Azurite ondersteunt aangepaste opslag accountnamen en-sleutels door de `AZURITE_ACCOUNTS` omgevings variabele in te stellen in de volgende indeling: `account1:key1[:key2];account2:key1[:key2];...` .
 
 Gebruik bijvoorbeeld een aangepast opslag account met één sleutel:
 
@@ -461,20 +461,22 @@ U kunt Storage Explorer gebruiken om de gegevens weer te geven die zijn opgeslag
 
 Maak in Storage Explorer verbinding met Azurite door de volgende stappen uit te voeren:
 
- 1. Selecteer **een account toevoegen** pictogram
+ 1. Selecteer het pictogram **accounts beheren**
+ 1. Selecteer **een account toevoegen**
  1. Selecteer **koppelen aan een lokale emulator**
  1. Selecteer **volgende**
+ 1. Bewerk het veld **weergave naam** op een naam van uw keuze
  1. Selecteer **volgende** opnieuw
  1. **Verbinding maken** selecteren
 
 #### <a name="connect-to-azurite-using-https"></a>Verbinding maken met Azurite met behulp van HTTPS
 
-Standaard Storage Explorer geen HTTPS-eind punt openen dat gebruikmaakt van een zelfondertekend certificaat. Als u Azurite met HTTPS uitvoert, gebruikt u waarschijnlijk een zelfondertekend certificaat. In Storage Explorer kunt u SSL-certificaten importeren via het dialoog venster**SSL-certificaten** ->  **bewerken** -> **certificaten importeren** .
+Standaard Storage Explorer geen HTTPS-eind punt openen dat gebruikmaakt van een zelfondertekend certificaat. Als u Azurite met HTTPS uitvoert, gebruikt u waarschijnlijk een zelfondertekend certificaat. In Storage Explorer kunt u SSL-certificaten importeren **Edit**via het  ->  dialoog venster**SSL-certificaten**bewerken  ->  **certificaten importeren** .
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Certificaat importeren in Storage Explorer
 
 1. Zoek het certificaat op uw lokale computer.
-1. Ga in Storage Explorer naar **bewerken** -> **SSL-certificaten** -> **certificaten importeren** en Importeer uw certificaat.
+1. Ga in Storage Explorer naar **bewerken**  ->  **SSL-certificaten**  ->  **certificaten importeren** en Importeer uw certificaat.
 
 Als u geen certificaat importeert, krijgt u een fout melding:
 
@@ -541,7 +543,7 @@ Azurite is uitgelijnd met Azure Storage fout bij het verwerken van fouten, maar 
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite ondersteunt geo-redundante replicatie met lees toegang (RA-GRS). Voor opslag bronnen opent `-secondary` u de secundaire locatie door toe te voegen aan de account naam. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van de alleen-lezen secundair in Azurite:
+Azurite ondersteunt geo-redundante replicatie met lees toegang (RA-GRS). Voor opslag bronnen opent u de secundaire locatie door toe te voegen `-secondary` aan de account naam. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van de alleen-lezen secundair in Azurite:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

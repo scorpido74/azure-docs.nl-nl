@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676937"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197603"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
@@ -34,7 +34,7 @@ Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query w
 
 ### <a name="automatic-creation-of-statistics"></a>Automatisch statistieken maken
 
-De SQL-groep analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS `ON`optie is ingesteld op.  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. Deze functie wordt gebruikt om de schattingen voor de kardinaliteit van het query plan te verbeteren.
+De SQL-groep analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS optie is ingesteld op `ON` .  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. Deze functie wordt gebruikt om de schattingen voor de kardinaliteit van het query plan te verbeteren.
 
 > [!IMPORTANT]
 > Automatisch maken van statistieken is momenteel standaard ingeschakeld.
@@ -239,7 +239,7 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u de vo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor *de\_product categorie*. Statistieken voor meerdere kolommen worden berekend voor *product\_categorie* - *en\_product sub_category*:
+In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Omdat er een correlatie bestaat *tussen\_product categorie* en *\_product\_subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
+Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Statistieken maken voor alle kolommen in een tabel
 
@@ -423,7 +423,7 @@ De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee 
 > [!NOTE]
 > Wanneer alle statistieken voor een tabel worden bijgewerkt, voert SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
 
-Zie [tijdelijke tabellen](develop-tables-temporary.md)voor een `UPDATE STATISTICS` implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor `CREATE STATISTICS` gaande procedure, maar het resultaat is hetzelfde.
+`UPDATE STATISTICS`Zie [tijdelijke tabellen](develop-tables-temporary.md)voor een implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor gaande `CREATE STATISTICS` procedure, maar het resultaat is hetzelfde.
 Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor de volledige syntaxis.
 
 ### <a name="statistics-metadata"></a>Statistieken meta gegevens
@@ -519,7 +519,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 
 #### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>Een of meer onderdelen van DBCC SHOW_STATISTICS () weer geven
 
-Als u alleen specifieke onderdelen wilt weer geven, gebruikt u de `WITH` -component en geeft u op welke onderdelen u wilt zien:
+Als u alleen specifieke onderdelen wilt weer geven, gebruikt u de- `WITH` component en geeft u op welke onderdelen u wilt zien:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
@@ -611,6 +611,8 @@ In de volgende voor beelden ziet u hoe u verschillende opties kunt gebruiken om 
 
 > [!NOTE]
 > U kunt op dit moment alleen statistieken voor één kolom maken.
+>
+> De naam van de procedure sp_create_file_statistics wordt gewijzigd in sp_create_openrowset_statistics. De rol van de open bare server heeft machtiging voor BULK bewerkingen beheren die is verleend terwijl de open bare databaserol uitvoer machtigingen heeft voor sp_create_file_statistics en sp_drop_file_statistics. Dit kan in de toekomst worden gewijzigd.
 
 De volgende opgeslagen procedure wordt gebruikt om statistieken te maken:
 
@@ -695,6 +697,9 @@ Als u statistieken wilt bijwerken, moet u statistieken verwijderen en maken. De 
 ```sql
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
+
+> [!NOTE]
+> De naam van de procedure sp_drop_file_statistics wordt gewijzigd in sp_drop_openrowset_statistics. De rol van de open bare server heeft machtiging voor BULK bewerkingen beheren die is verleend terwijl de open bare databaserol uitvoer machtigingen heeft voor sp_create_file_statistics en sp_drop_file_statistics. Dit kan in de toekomst worden gewijzigd.
 
 Argumenten: [ @stmt =] N ' statement_text '-Hiermee geeft u de Transact-SQL-instructie op die wordt gebruikt wanneer de statistieken zijn gemaakt.
 

@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738079"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196292"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
 
 ## <a name="overview"></a>Overzicht
 Gegevens in Azure Monitor logboeken worden opgeslagen in een Log Analytics-werk ruimte of een Application Insights-toepassing. Beide worden aangedreven door [Azure Data Explorer](/azure/data-explorer/) wat inhoudt dat ze de krachtige gegevens engine en query taal gebruiken.
+
+> [!IMPORTANT]
+> Als u een [Application Insights resource op basis van een werk ruimte](../app/create-workspace-resource.md)gebruikt, wordt de telemetrie opgeslagen in een log Analytics werk ruimte met alle andere logboek gegevens. De naam van de tabellen is gewijzigd en de tabel wordt opnieuw gestructureerd, maar heeft dezelfde informatie als de tabellen in de Application Insights toepassing.
 
 Gegevens in beide werk ruimten en toepassingen zijn ingedeeld in tabellen, waarmee verschillende soorten gegevens worden opgeslagen en een eigen unieke set eigenschappen heeft. De meeste [gegevens bronnen](../platform/data-sources.md) schrijven naar hun eigen tabellen in een log Analytics-werk ruimte, terwijl Application Insights naar een vooraf gedefinieerde set tabellen in een Application Insights-toepassing wordt geschreven. Logboek query's zijn zeer flexibel, waarmee u eenvoudig gegevens uit meerdere tabellen kunt combi neren en zelfs een query voor meerdere bronnen kunt gebruiken om gegevens uit tabellen in meerdere werk ruimten te combi neren of om query's te schrijven die werk ruimte-en toepassings gegevens combi neren.
 
@@ -48,23 +51,26 @@ Zie de documentatie voor elke gegevens bron voor meer informatie over de tabelle
 Zie de [implementatie van een Azure monitor-logboeken ontwerpen](../platform/design-logs-deployment.md) om inzicht te krijgen in de strategie en aanbevelingen voor het toegangs beheer om toegang te bieden tot gegevens in een werk ruimte. Naast het verlenen van toegang tot de werk ruimte zelf, kunt u de toegang tot afzonderlijke tabellen beperken met behulp van het [tabel niveau RBAC](../platform/manage-access.md#table-level-rbac).
 
 ## <a name="application-insights-application"></a>Application Insights toepassing
+
+> [!IMPORTANT]
+> Als u een [Application Insights resource-](../app/create-workspace-resource.md) telemetrie op basis van een werk ruimte gebruikt, wordt deze opgeslagen in een log Analytics werk ruimte met alle andere logboek gegevens. De namen van de tabellen zijn gewijzigd, maar hebben dezelfde informatie als de tabellen in een klassieke Application Insights resource.
+
 Wanneer u een toepassing maakt in Application Insights, wordt er automatisch een bijbehorende toepassing gemaakt in Azure Monitor Logboeken. Er is geen configuratie vereist om gegevens te verzamelen. de toepassing schrijft automatisch bewakings gegevens zoals pagina weergaven, aanvragen en uitzonde ringen.
 
 In tegens telling tot een Log Analytics-werk ruimte heeft een Application Insights-toepassing een vaste set tabellen. U kunt geen andere gegevens bronnen configureren om naar de toepassing te schrijven, zodat er geen extra tabellen kunnen worden gemaakt. 
 
 | Tabel | Beschrijving | 
 |:---|:---|
-| availabilityResults   | Samenvattings gegevens van beschikbaarheids testen.
-| browserTimings      |     Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken.
-| customEvents        | Aangepaste gebeurtenissen die door uw toepassing zijn gemaakt.
-| customMetrics       | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt.
-| elkaar        | Aanroepen van de toepassing naar andere onderdelen (waaronder externe onderdelen) die zijn vastgelegd via TrackDependency (), bijvoorbeeld aanroepen naar REST API, data base of een bestands systeem. 
-| uitzonderingen            | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing, legt zowel server-als client-side-uitzonde ringen vast.
-| Page views           | Gegevens over elke website weergave met browser informatie.
-| Performance Counters   | Prestatie metingen van de reken bronnen die de toepassing ondersteunen, bijvoorbeeld Windows-prestatie meter items.
-| aanvragen            | Aanvragen die door uw toepassing zijn ontvangen. Een afzonderlijke aanvraag record wordt bijvoorbeeld vastgelegd voor elke HTTP-aanvraag die uw web-app ontvangt. 
-| traceringen                | Gedetailleerde logboeken (traceringen) die worden verzonden via toepassings code/logboek registratie raamwerken vastgelegd via TrackTrace ().
-
+| availabilityResults | Samenvattings gegevens van beschikbaarheids testen. |
+| browserTimings      | Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken. |
+| customEvents        | Aangepaste gebeurtenissen die door uw toepassing zijn gemaakt. |
+| customMetrics       | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt. |
+| elkaar        | Aanroepen van de toepassing naar andere onderdelen (waaronder externe onderdelen) die zijn vastgelegd via TrackDependency (), bijvoorbeeld aanroepen naar REST API, data base of een bestands systeem. |
+| uitzonderingen          | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing, legt zowel server-als client-side-uitzonde ringen vast.|
+| Page views           | Gegevens over elke website weergave met browser informatie. |
+| Performance Counters | Prestatie metingen van de reken bronnen die de toepassing ondersteunen, bijvoorbeeld Windows-prestatie meter items. |
+| aanvragen            | Aanvragen die door uw toepassing zijn ontvangen. Een afzonderlijke aanvraag record wordt bijvoorbeeld vastgelegd voor elke HTTP-aanvraag die uw web-app ontvangt.  |
+| traceringen              | Gedetailleerde logboeken (traceringen) die worden verzonden via toepassings code/logboek registratie raamwerken vastgelegd via TrackTrace (). |
 
 U kunt het schema voor elke tabel weer geven op het tabblad **schema** in log Analytics voor de toepassing.
 

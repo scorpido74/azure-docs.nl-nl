@@ -1,20 +1,20 @@
 ---
 title: Maak een Azure-schaalset die gebruikmaakt van Beschikbaarheidszones
 description: Meer informatie over het maken van schaal sets voor virtuele Azure-machines die gebruikmaken van Beschikbaarheidszones voor verhoogde redundantie tegen storingen
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 08/08/2018
-ms.author: jushiman
-ms.openlocfilehash: a23164215376bee291c07d49c88bd9e916d710bf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207833"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197360"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een schaalset voor virtuele machines maken die gebruikmaakt van Beschikbaarheidszones
 
@@ -39,7 +39,7 @@ Wanneer u een schaalset implementeert, hebt u ook de mogelijkheid om te implemen
 
 ### <a name="zone-balancing"></a>Zone-verdeling
 
-Ten slotte, voor schaal sets die zijn geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid om "Best effort zone balances" of "strikte zone balans" te kiezen. Een schaalset wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of +\\-1 virtuele machines in alle andere zones voor de schaalset heeft. Bijvoorbeeld:
+Ten slotte, voor schaal sets die zijn geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid om "Best effort zone balances" of "strikte zone balans" te kiezen. Een schaalset wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of + \\ -1 virtuele machines in alle andere zones voor de schaalset heeft. Bijvoorbeeld:
 
 - Een schaalset met 2 Vm's in zone 1, 3 Vm's in zone 2 en 3 virtuele machines in zone 3 wordt als evenwichtig beschouwd. Er is slechts één zone met een ander aantal VM'S en de waarde 1 is kleiner dan de andere zones. 
 - Een schaalset met 1 virtuele machine in zone 1, 3 Vm's in zone 2 en 3 Vm's in zone 3 wordt als niet-Balanced beschouwd. Zone 1 heeft twee virtuele machines dan zones 2 en 3.
@@ -94,7 +94,7 @@ Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bro
 
 Als u een zone-redundante schaalset wilt maken, gebruikt u een openbaar IP-adres en load balancer voor de *standaard* -SKU. Voor uitgebreide redundantie maakt de *standaard* -SKU zone-redundante netwerk bronnen. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
-Als u een zone-redundante schaalset wilt maken, geeft u `--zones` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere zones op met de `--zones` para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
 
 ```azurecli
 az vmss create \
@@ -130,7 +130,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Als u een zone-redundante schaalset wilt maken, geeft u `-Zone` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerk resources voor het virtuele netwerk, het open bare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere zones op met de `-Zone` para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerk resources voor het virtuele netwerk, het open bare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```powershell
 New-AzVmss `
@@ -193,7 +193,7 @@ Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bro
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Als u een zone-redundante schaalset wilt maken, geeft u `zones` meerdere waarden op in de eigenschap voor het resource type *micro soft. Compute/virtualMachineScaleSets* . In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere waarden op in de `zones` eigenschap voor het resource type *micro soft. Compute/virtualMachineScaleSets* . In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*:
 
 ```json
 {

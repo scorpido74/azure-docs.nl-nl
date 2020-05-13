@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928275"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195668"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -145,10 +145,10 @@ Met het beveiligde VNet-naar-VNet-verkeer kan VNets met elkaar verbinding maken 
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet-naar-Internet of een beveiligings service van derden (i)
 
-Met de beveiligde door Voer van VNet-naar-Internet of van derden kan VNets verbinding maken met internet of een ondersteunde beveiligings service van derden via de Azure Firewall in de virtuele WAN-hub.
+Met VNet-naar-Internet kan VNets verbinding maken met Internet via de Azure Firewall in de virtuele WAN-hub. Verkeer naar Internet via ondersteunde beveiligings services van derden stroomt niet via de Azure Firewall. U kunt het pad voor de Vnet-naar-Internet configureren via de ondersteunde beveiligings service van derden met behulp van Azure Firewall Manager.  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Branch-to-Internet of een beveiligings service van derden (j)
-Met behulp van de beveiligde door Voer van Branch-to-Internet of een derde partij kunnen filialen verbinding maken met internet of een ondersteunde beveiligings services van derden via de Azure Firewall in de virtuele WAN-hub.
+Via de vertakking-naar-Internet kunnen filialen verbinding maken met Internet via de Azure Firewall in de virtuele WAN-hub. Verkeer naar Internet via ondersteunde beveiligings services van derden stroomt niet via de Azure Firewall. U kunt het pad van de filiaal naar het Internet configureren via de ondersteunde beveiligings service van derden met behulp van Azure Firewall Manager. 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Hoe kan ik standaard route (0.0.0.0/0) in een beveiligde virtuele hub inschakelen
 

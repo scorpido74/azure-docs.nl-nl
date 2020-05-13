@@ -4,15 +4,15 @@ description: Meer informatie over het maken, publiceren en schalen van apps in e
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586124"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125805"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
@@ -36,7 +36,7 @@ Als u geen ASE hebt, kunt u er een maken door de instructies in [Create a app se
 
 Een app maken in een ASE:
 
-1. Selecteer **een resource** > maken**Web en mobiel** > **Web-app**.
+1. Selecteer **een resource maken**  >  **Web en mobiel**  >  **Web-app**.
 
 1. voer een naam voor de app in. Als u al een App Service plan in een ASE hebt geselecteerd, komt de domein naam voor de app overeen met de domein naam van de ASE:
 
@@ -104,14 +104,14 @@ Front-end-resources zijn het HTTP/HTTPS-eind punt voor de ASE. Met de standaard 
 
 ## <a name="app-access"></a>App-toegang
 
-In een externe ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van apps *.&lt; asename&gt;. p.azurewebsites.net*. Als uw ASE de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, kunt u deze op de volgende url's bereiken:
+In een externe ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van apps *. &lt; asename &gt; . p.azurewebsites.net*. Als uw ASE de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, kunt u deze op de volgende url's bereiken:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 Zie [een app service Environment maken][MakeExternalASE]voor informatie over het maken van een externe ASE.
 
-In een ILB-ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van apps *.&lt; asename&gt;. appserviceenvironment.net*. Als uw ASE de naam _ILB-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, kunt u deze op de volgende url's bereiken:
+In een ILB-ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van apps *. &lt; asename &gt; . appserviceenvironment.net*. Als uw ASE de naam _ILB-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, kunt u deze op de volgende url's bereiken:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ De SCM-URL wordt gebruikt voor toegang tot de kudu-console of voor het publicere
 
 ### <a name="dns-configuration"></a>DNS-configuratie 
 
-Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Met een ILB-ASE moet u uw eigen DNS beheren. 
+Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Er zijn geen extra stappen in een externe ASE voor uw apps die openbaar beschikbaar moeten zijn. Met een ILB-ASE moet u uw eigen DNS beheren. U kunt dit doen in uw eigen DNS-server of met Azure DNS particuliere zones.
 
-DNS configureren met uw ILB ASE:
+DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. een zone maken voor <ASE name> . appserviceenvironment.net
+1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
+1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
+1. Maak een zone in <ASE name> . appserviceenvironment.net met de naam SCM
+1. een A-record maken in de SCM-zone die * verwijst naar het IP-adres van de ILB
 
-De DNS-instellingen voor uw ASE-standaard domein achtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domein naam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar * &lt;op&gt;Appname. scm&lt; . asename&gt;. appserviceenvironment.net*. 
+DNS configureren in Azure DNS particuliere zones:
 
-De zone met de naam *.&lt; asename&gt;. appserviceenvironment.net* is wereld wijd uniek. Voordat 2019, kunnen klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u *. contoso.com* wilt gebruiken voor het domein achtervoegsel, kunt u dit doen en dat zou de SCM-site zouden kunnen bevatten. Er zijn problemen met dat model, waaronder; het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste voor het gebruik van een certificaat met Joker tekens beheren. Het ILB ASE standaard certificaat upgrade proces is ook verstoord en de oorzaak van het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domein achtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van micro soft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB as gemaakt na mei 2019. Bestaande ILB as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
+1. Maak een Azure DNS persoonlijke zone met de naam <ASE name> . appserviceenvironment.net
+1. een A-record in die zone maken die verwijst naar * naar het IP-adres van de ILB
+1. een A-record in die zone maken die verwijst naar @ naar het IP-adres van de ILB
+1. een A-record in die zone maken die verwijst naar *. scm naar het IP-adres van de ILB
+
+De DNS-instellingen voor uw ASE-standaard domein achtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domein naam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op * &lt; AppName &gt; . scm. &lt; asename &gt; . appserviceenvironment.net*. 
+
+De zone met de naam *. &lt; asename &gt; . appserviceenvironment.net* is wereld wijd uniek. Voordat 2019, kunnen klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u *. contoso.com* wilt gebruiken voor het domein achtervoegsel, kunt u dit doen en dat zou de SCM-site zouden kunnen bevatten. Er zijn problemen met dat model, waaronder; het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste voor het gebruik van een certificaat met Joker tekens beheren. Het ILB ASE standaard certificaat upgrade proces is ook verstoord en de oorzaak van het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domein achtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van micro soft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB as gemaakt na mei 2019. Bestaande ILB as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
 
 ## <a name="publishing"></a>Publiceren
 
@@ -152,11 +159,11 @@ Met een ILB-ASE zijn de publicatie-eind punten alleen beschikbaar via de ILB. De
 
 Zonder extra wijzigingen werken op internet gebaseerde CI-systemen zoals GitHub en Azure DevOps niet met een ILB ASE omdat het publicatie-eind punt niet toegankelijk is via internet. U kunt publiceren naar een ILB ASE inschakelen vanuit Azure DevOps door een zelf-hostende release agent te installeren in het virtuele netwerk dat de ILB ASE bevat. U kunt ook een CI-systeem gebruiken dat gebruikmaakt van een pull-model, zoals Dropbox.
 
-De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. U kunt dit zien in het publicatie Profiel van de app en in het deel venster van de app-Portal (in **overzichts** > **kernen** en ook in **Eigenschappen**).
+De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. U kunt dit zien in het publicatie Profiel van de app en in het deel venster van de app-Portal (in **overzichts**  >  **kernen** en ook in **Eigenschappen**).
 
 ## <a name="storage"></a>Storage
 
-Een ASE heeft 1 TB opslag ruimte voor alle apps in de ASE. Een App Service plan in de geïsoleerde prijs-SKU heeft standaard een limiet van 250 GB. Als u vijf of meer App Service-abonnementen hebt, moet u ervoor zorgen dat u de limiet van 1 TB van de ASE niet overschrijdt. Als u meer dan de limiet van 250 GB per App Service abonnement nodig hebt, neemt u contact op met de ondersteuning om de limiet voor het App Service plan te wijzigen in een maximum van 1 TB. Wanneer de limiet voor het abonnement is aangepast, is er nog steeds een limiet van 1 TB voor alle App Service plannen in het ASE.
+Een ASE heeft 1 TB opslag ruimte voor alle apps in de ASE. Een App Service plan in de geïsoleerde prijs-SKU heeft een limiet van 250 GB. In een ASE wordt 250 GB aan opslag ruimte toegevoegd per App Service de limiet van 1 TB te plannen. U kunt meer App Service plannen hebben dan slechts vier, maar er is geen opslag meer toegevoegd dan de limiet van 1 TB.
 
 ## <a name="logging"></a>Logboekregistratie
 
@@ -164,16 +171,16 @@ U kunt uw ASE integreren met Azure Monitor voor het verzenden van logboeken over
 
 | Hiervan | Bericht |
 |---------|----------|
-| ASE is beschadigd | De opgegeven ASE is beschadigd vanwege een ongeldige configuratie van het virtuele netwerk. De ASE wordt onderbroken als de status slecht wordt voortgezet. Zorg ervoor dat de hier gedefinieerde richt lijnen https://docs.microsoft.com/azure/app-service/environment/network-infoworden gevolgd:. |
+| ASE is beschadigd | De opgegeven ASE is beschadigd vanwege een ongeldige configuratie van het virtuele netwerk. De ASE wordt onderbroken als de status slecht wordt voortgezet. Zorg ervoor dat de hier gedefinieerde richt lijnen worden gevolgd: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | Het ASE-subnet heeft bijna geen ruimte meer | De opgegeven ASE bevindt zich in een subnet dat bijna geen ruimte meer heeft. Er zijn {0} nog andere adressen. Zodra deze adressen zijn uitgeput, kan de ASE niet worden geschaald.  |
-| De limiet voor het aantal exemplaren van de ASE is bijna bereikt | De opgegeven ASE is bijna de limiet voor het aantal exemplaren van de ASE. Het bevat {0} momenteel app service plan exemplaren van maxi maal 201 exemplaren. |
-| ASE kan geen afhankelijkheid bereiken | De opgegeven ASE kan niet worden bereikt {0}.  Zorg ervoor dat de hier gedefinieerde richt lijnen https://docs.microsoft.com/azure/app-service/environment/network-infoworden gevolgd:. |
+| De limiet voor het aantal exemplaren van de ASE is bijna bereikt | De opgegeven ASE is bijna de limiet voor het aantal exemplaren van de ASE. Het bevat momenteel {0} app service plan exemplaren van Maxi maal 201 exemplaren. |
+| ASE kan geen afhankelijkheid bereiken | De opgegeven ASE kan niet worden bereikt {0} .  Zorg ervoor dat de hier gedefinieerde richt lijnen worden gevolgd: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | ASE is onderbroken | De opgegeven ASE is onderbroken. De ASE-suspensie kan worden veroorzaakt door een account tekort of een ongeldige configuratie van het virtuele netwerk. Los de hoofd oorzaak op en hervat de ASE om verkeer door te sturen. |
 | Upgrade van ASE is gestart | Een platform upgrade naar de opgegeven ASE is gestart. Verwachte vertragingen bij het schalen van bewerkingen. |
 | De ASE-upgrade is voltooid | Een platform upgrade naar de opgegeven ASE is voltooid. |
-| Schaal bewerkingen zijn gestart | Een App Service plan ({0}) is begonnen met schalen. Gewenste status: {1} ik{2} werk nemers.
-| Schaal bewerkingen zijn voltooid | Het schalen van een{0}app service plan () is voltooid. Huidige status: {1} ik{2} werk nemers. |
-| Schaal bewerkingen zijn mislukt | Het schalen van een{0}app service plan () is mislukt. Huidige status: {1} ik{2} werk nemers. |
+| Schaal bewerkingen zijn gestart | Een App Service plan ( {0} ) is begonnen met schalen. Gewenste status: {1} ik {2} werk nemers.
+| Schaal bewerkingen zijn voltooid | Het schalen van een App Service plan ( {0} ) is voltooid. Huidige status: {1} ik {2} werk nemers. |
+| Schaal bewerkingen zijn mislukt | Het schalen van een App Service plan ( {0} ) is mislukt. Huidige status: {1} ik {2} werk nemers. |
 
 Logboek registratie inschakelen voor uw ASE:
 
@@ -200,16 +207,16 @@ Volg de instructies in [logboek waarschuwingen maken, weer geven en beheren met 
 
 ## <a name="upgrade-preference"></a>Upgrade voorkeur
 
-Als u meerdere as hebt, is het mogelijk dat u wilt dat sommige as worden bijgewerkt vóór andere. In het object ASE **Hosting Environment Resource Manager** kunt u een waarde instellen voor **upgradePreference**. De instelling **upgradePreference** kan worden geconfigureerd met behulp van een sjabloon, ARMClient https://resources.azure.comof. De drie mogelijke waarden zijn:
+Als u meerdere as hebt, is het mogelijk dat u wilt dat sommige as worden bijgewerkt vóór andere. In het object ASE **Hosting Environment Resource Manager** kunt u een waarde instellen voor **upgradePreference**. De instelling **upgradePreference** kan worden geconfigureerd met behulp van een sjabloon, ARMClient of https://resources.azure.com . De drie mogelijke waarden zijn:
 
 - **Geen**: Azure zal uw ASE bijwerken in een bepaalde batch. Dit is de standaardwaarde.
 - **Vroeg**: uw ASE wordt bijgewerkt in de eerste helft van de app service upgrades.
 - **Te laat**: uw ASE wordt bijgewerkt in de tweede helft van de app service upgrades.
 
-Als u gebruikt https://resources.azure.com, voert u de volgende stappen uit om de **upgradePreferences** -waarde in te stellen:
+Als u gebruikt https://resources.azure.com , voert u de volgende stappen uit om de **upgradePreferences** -waarde in te stellen:
 
 1. Ga naar resources.azure.com en meld u aan met uw Azure-account.
-1. \/\[Ga door naar de abonnementen van de abonnements\]\/naam\/\[resourceGroups resource groep\]\/naam\/providers micro soft\/.\/\[Web hostingEnvironments\]ASE name.
+1. Ga door naar de abonnementen van de \/ \[ abonnements naam \] \/ resourceGroups \/ \[ resource groep naam \] \/ providers \/ micro soft. web \/ hostingEnvironments \/ \[ ASE name \] .
 1. Selecteer bovenaan **lezen/schrijven** .
 1. Selecteer **bewerken**.
 1. Stel **upgradePreference** in op een van de drie gewenste waarden.

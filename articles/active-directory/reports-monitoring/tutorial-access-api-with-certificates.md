@@ -16,12 +16,13 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081707"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196883"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelf studie: gegevens ophalen met behulp van de API voor Azure Active Directory rapportage met certificaten
 
@@ -44,7 +45,7 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
     - Toegangstokens van gebruiker, toepassingssleutels en certificaten met behulp van ADAL
     - Afhandeling van pagina's met zoekresultaten door Graph API
 
-6. Als dit de eerste keer is dat u de module **install-MSCloudIdUtilsModule**uitvoert, kunt u deze ook importeren met de Power shell **-opdracht import-module** . Uw sessie moet er ongeveer als volgt uitzien ![: Windows Power shell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Als dit de eerste keer is dat u de module **install-MSCloudIdUtilsModule**uitvoert, kunt u deze ook importeren met de Power shell **-opdracht import-module** . Uw sessie moet er ongeveer als volgt uitzien: ![ Windows Power shell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Gebruik de **New-SelfSignedCertificate** Power shell-commandlet om een test certificaat te maken.
 

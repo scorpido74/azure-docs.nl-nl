@@ -1,18 +1,18 @@
 ---
-title: Telemetrie scheiden in Azure-toepassing Insights
+title: 'Hoe kunt u uw Application Insights-implementatie ontwerpen: een VS veel bronnen?'
 description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-, test-en productie tempels.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562148"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125686"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Telemetrie scheiden van ontwikkeling, testen en productie
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
 
-Wanneer u de volgende versie van een webtoepassing ontwikkelt, wilt u niet de [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrie uit de nieuwe versie en de reeds uitgebrachte versie samen stellen. Om Verwar ring te voor komen, verzendt u de telemetrie vanuit verschillende ontwikkelings fasen om Application Insights resources te scheiden, met afzonderlijke instrumentatie sleutels (ikeys). Om het gemakkelijker te maken om de instrumentatie sleutel te wijzigen wanneer een versie van de ene fase naar een andere gaat, kan het nuttig zijn om de iKey in te stellen in code in plaats van in het configuratie bestand. 
+Wanneer u de volgende versie van een webtoepassing ontwikkelt, wilt u niet de [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrie uit de nieuwe versie en de reeds uitgebrachte versie samen stellen. Om Verwar ring te voor komen, verzendt u de telemetrie vanuit verschillende ontwikkelings fasen om Application Insights resources te scheiden, met afzonderlijke instrumentatie sleutels (ikeys). Om het gemakkelijker te maken om de instrumentatie sleutel te wijzigen wanneer een versie van de ene fase naar een andere gaat, kan het nuttig zijn om de iKey in te stellen in code in plaats van in het configuratie bestand.
 
 (Als uw systeem een Azure-Cloud service is, is er [een andere methode voor het instellen van afzonderlijke ikeys](../../azure-monitor/app/cloudservices.md).)
 
@@ -22,7 +22,7 @@ Wanneer u Application Insights bewaking voor uw web-app instelt, maakt u een App
 
 Elke Application Insights resource wordt geleverd met metrische gegevens die beschikbaar zijn. Als u volledig afzonderlijke onderdelen rapporteert aan dezelfde Application Insights resource, is het mogelijk dat deze metrische gegevens niet zinvol zijn voor dash board/waarschuwing op.
 
-### <a name="use-a-single-application-insights-resource"></a>Eén Application Insights Resource gebruiken
+### <a name="when-to-use-a-single-application-insights-resource"></a>Wanneer moet u één Application Insights Resource gebruiken?
 
 -   Voor toepassings onderdelen die samen worden geïmplementeerd. Meestal ontwikkeld door één team, dat wordt beheerd door dezelfde set DevOps/ITOps-gebruikers.
 -   Als het zinvol is om Key Performance Indica tors (Kpi's) te verzamelen, zoals reactie duur, fout frequenties in dash board, enzovoort, standaard (u kunt kiezen om te segmenteren op rol naam in de Metrics Explorer-ervaring).
@@ -93,7 +93,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
 * Verpakken die regel in een [telemetrie-initialisatie functie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) om ervoor te zorgen dat alle TelemetryClient-instanties consistent zijn ingesteld.
-* [ASP.NET] Stel de versie in `BuildInfo.config`. De WEBMODULE haalt de versie op uit het BuildLabel-knoop punt. Neem dit bestand op in uw project en vergeet niet om de eigenschap Copy always in te stellen in Solution Explorer.
+* [ASP.NET] Stel de versie in `BuildInfo.config` . De WEBMODULE haalt de versie op uit het BuildLabel-knoop punt. Neem dit bestand op in uw project en vergeet niet om de eigenschap Copy always in te stellen in Solution Explorer.
 
     ```XML
 
@@ -108,7 +108,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Genereer BuildInfo. config automatisch in MSBuild. U kunt dit doen door een paar regels aan uw `.csproj` bestand toe te voegen:
+* [ASP.NET] Genereer BuildInfo. config automatisch in MSBuild. U kunt dit doen door een paar regels aan uw bestand toe te voegen `.csproj` :
 
     ```XML
 
@@ -121,7 +121,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
 
     Het build-label bevat een tijdelijke aanduiding (AutoGen_...) wanneer u met Visual Studio bouwt. Maar wanneer het is gebouwd met MSBuild, wordt het ingevuld met het juiste versie nummer.
 
-    Als u wilt toestaan dat MSBuild versie nummers genereert, stelt u `1.0.*` de versie in op AssemblyReference.cs
+    Als u wilt toestaan dat MSBuild versie nummers genereert, stelt u de versie `1.0.*` in op AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Versie en release bijhouden
 Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config` wordt gegenereerd door het Microsoft Build Engine-proces. Voeg het `.csproj` volgende toe aan het bestand:  

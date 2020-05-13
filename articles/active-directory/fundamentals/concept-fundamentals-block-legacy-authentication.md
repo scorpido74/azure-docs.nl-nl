@@ -11,12 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309198"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196395"
 ---
 # <a name="blocking-legacy-authentication"></a>Verouderde verificatie blok keren
  
@@ -31,10 +32,10 @@ De meeste pogingen om zich aan te melden, zijn tegenwoordig afkomstig van veroud
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
-1. Navigeer naar het **Azure Portal** > **Azure Active Directory** > **-Azure Active Directory aanmeldingen**.
-1. Voeg de kolom **client** toepassing toe als deze niet wordt weer gegeven door te klikken op de **client-app** **Columns** >.
-1. Filteren op **client app**  > alle **verouderde** opties voor verificatie-clients controleren.
-1. Filteren op **status** > **geslaagd**. 
+1. Navigeer naar het **Azure Portal**   >  **Azure Active Directory**   >  **-Azure Active Directory aanmeldingen**.
+1. Voeg de kolom **client** toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**   >  **Client App**.
+1. Filteren op **Client App**  > alle **verouderde** opties voor verificatie-clients controleren.
+1. Filteren op **status**  >  **geslaagd**. 
 1. Breid het datum bereik uit, indien nodig, met behulp van het **datum** filter.
 
 Door te filteren worden alleen geslaagde aanmeldings pogingen weer gegeven die zijn gemaakt door de geselecteerde verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In de kolom client-app of het veld client-app onder het tabblad basis informatie nadat u een afzonderlijke rij gegevens selecteert, wordt aangegeven welk verouderde verificatie protocol is gebruikt. In deze logboeken wordt aangegeven welke gebruikers nog steeds afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatie aanvragen uit te voeren. Voor gebruikers die niet in deze logboeken worden weer gegeven en worden bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het basislijn beleid in: verouderde verificatie blok keren voor deze gebruikers.
@@ -49,8 +50,8 @@ Deze sectie bevat een stapsgewijze overzicht van het bijwerken van uw omgeving n
 
 De eerste stap bij het inschakelen van moderne verificatie is dat uw Directory ondersteuning biedt voor moderne verificatie. Moderne authenticatie is standaard ingeschakeld voor mappen die zijn gemaakt op of na 1 augustus 2017. Als uw map vóór deze datum is gemaakt, moet u de volgende stappen gebruiken om moderne verificatie voor uw directory hand matig in te scha kelen:
 
-1. Controleer of uw directory al ondersteuning biedt voor moderne verificatie door uit `Get-CsOAuthConfiguration` te voeren vanuit de [Skype voor bedrijven online Power shell-module](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Als uw opdracht een lege `OAuthServers` eigenschap retourneert, wordt moderne verificatie uitgeschakeld. Werk de instelling bij om moderne authenticatie `Set-CsOAuthConfiguration`in te scha kelen met. Als uw `OAuthServers` eigenschap een vermelding bevat, bent u klaar om te gaan.
+1. Controleer of uw directory al ondersteuning biedt voor moderne verificatie door uit te voeren  `Get-CsOAuthConfiguration`   vanuit de [Skype voor bedrijven online Power shell-module](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
+1. Als uw opdracht een lege  `OAuthServers`   eigenschap retourneert, wordt moderne verificatie uitgeschakeld. Werk de instelling bij om moderne authenticatie in te scha kelen met  `Set-CsOAuthConfiguration` . Als uw  `OAuthServers`   eigenschap een vermelding bevat, bent u klaar om te gaan.
 
 Zorg ervoor dat u deze stap uitvoert voordat u verdergaat. Het is essentieel dat uw Directory configuraties eerst worden gewijzigd omdat ze bepalen welk protocol door alle Office-clients wordt gebruikt. Zelfs als u Office-clients gebruikt die moderne authenticatie ondersteunen, wordt standaard verouderde protocollen gebruikt als moderne verificatie is uitgeschakeld voor uw Directory.
 
@@ -58,7 +59,7 @@ Zorg ervoor dat u deze stap uitvoert voordat u verdergaat. Het is essentieel dat
 
 Zodra u moderne verificatie hebt ingeschakeld in uw directory, kunt u beginnen met het bijwerken van toepassingen door moderne verificatie voor Office-clients in te scha kelen. Clients met Office 2016 of hoger ondersteunen standaard moderne verificatie. Er zijn geen extra stappen vereist.
 
-Als u Office 2013 Windows-clients of ouder gebruikt, raden we u aan om een upgrade uit te voeren naar Office 2016 of hoger. Zelfs na het volt ooien van de vorige stap voor het inschakelen van moderne verificatie in uw directory, blijven de oudere Office-toepassingen gebruikmaken van verouderde verificatie protocollen. Als u Office 2013-clients gebruikt en niet onmiddellijk een upgrade kunt uitvoeren naar Office 2016 of hoger, volgt u de stappen in het volgende artikel om [moderne authenticatie voor Office 2013 op Windows-apparaten in te scha kelen](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Als u uw account wilt beschermen terwijl u verouderde verificatie gebruikt, raden we u aan om sterke wacht woorden te gebruiken in uw Directory. Bekijk [Azure AD-wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) om zwakke wacht woorden in uw directory te verzwakken.
+Als u Office 2013 Windows-clients of ouder gebruikt, raden we u aan om een upgrade uit te voeren naar Office 2016 of hoger. Zelfs na het volt ooien van de vorige stap voor het inschakelen van moderne verificatie in uw directory, blijven de oudere Office-toepassingen gebruikmaken van verouderde verificatie protocollen. Als u Office 2013-clients gebruikt en niet onmiddellijk een upgrade kunt uitvoeren naar Office 2016 of hoger, volgt u de stappen in het volgende artikel om [moderne authenticatie voor Office 2013 op Windows-apparaten in te scha kelen](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Als u uw account wilt beschermen terwijl u verouderde verificatie gebruikt, raden we u aan om sterke wacht woorden te gebruiken in uw Directory. Bekijk [Azure AD-wachtwoord beveiliging](../authentication/concept-password-ban-bad.md)   om zwakke wacht woorden in uw directory te verzwakken.
 
 Office 2010 biedt geen ondersteuning voor moderne verificatie. U moet alle gebruikers met Office 2010 upgraden naar een recentere versie van Office. U wordt aangeraden om een upgrade uit te voeren naar Office 2016 of hoger, omdat deze standaard verouderde verificatie blokkeert.
 

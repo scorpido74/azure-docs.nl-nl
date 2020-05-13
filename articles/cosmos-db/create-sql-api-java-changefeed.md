@@ -1,19 +1,19 @@
 ---
 title: Een end-to-end Azure Cosmos DB Java SDK v4-toepassings voorbeeld maken met behulp van Change feed
-description: In deze hand leiding wordt uitgelegd hoe u een eenvoudige Java SQL API-toepassing gebruikt waarmee documenten in een Azure Cosmos DB container worden ingevoegd, terwijl een gerealiseerde weer gave van de container met behulp van Change feed wordt gehandhaafd.
-author: anfeldma
+description: In deze hand leiding wordt uitgelegd hoe u een eenvoudige Java SQL API-toepassing gebruikt waarmee documenten worden ingevoegd in een Azure Cosmos DB container, terwijl een gerealiseerde weer gave van de container wordt behouden met behulp van Change feed.
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5e8656e891d250547174aa3deb27a94eebaa0ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996515"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125669"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Een Java-toepassing maken die gebruikmaakt van Azure Cosmos DB SQL-API en de feed-processor wijzigen
 
@@ -73,7 +73,7 @@ mvn clean package
 
     Ga vervolgens terug naar het Azure Portal Data Explorer in uw browser. U ziet dat er een Data Base **GroceryStoreDatabase** is toegevoegd met drie lege containers: 
 
-    * **InventoryContainer** : het inventaris record voor onze voor beeld-boodschappen opslag, gepartitioneerd ```id``` op een item dat een uuid is.
+    * **InventoryContainer** : het inventaris record voor onze voor beeld-boodschappen opslag, gepartitioneerd op ```id``` een item dat een uuid is.
     * **InventoryContainer-pktype** -een gerealiseerde weer gave van de inventaris record, geoptimaliseerd voor query's over het item```type```
     * **InventoryContainer-leases** -er is altijd een leases-container nodig voor wijzigings invoer. leases volgen de voortgang van de app bij het lezen van de wijzigings feed.
 
@@ -100,7 +100,7 @@ mvn clean package
         })
         .subscribe();
 
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start
+    while (!isProcessorRunning.get()); //Wait for change feed processor start
     ```
 
     ```"SampleHost_1"```is de naam van de werk nemer van de wijzigings feed-processor. ```changeFeedProcessorInstance.start()```Hiermee wordt de wijzigings verwerkings processor daad werkelijk gestart.
@@ -138,19 +138,19 @@ mvn clean package
     }
     ```
 
-1. Sta toe dat de code 5-10SEC uitvoert. Ga vervolgens terug naar het Azure Portal Data Explorer en navigeer naar **InventoryContainer > items**. U ziet dat de items worden ingevoegd in de inventarisatie container; Noteer de partitie sleutel (```id```).
+1. Sta toe dat de code 5-10SEC uitvoert. Ga vervolgens terug naar het Azure Portal Data Explorer en navigeer naar **InventoryContainer > items**. U ziet dat de items worden ingevoegd in de inventarisatie container; Noteer de partitie sleutel ( ```id``` ).
 
     ![Feed-container](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. In Data Explorer gaat u nu naar **InventoryContainer-pktype > items**. Dit is de gerealiseerde weer gave: de items in deze container spiegel **InventoryContainer** omdat ze in een programma zijn ingevoegd door de wijzigings feed. Noteer de partitie sleutel (```type```). Deze gerealiseerde weer gave is daarom geoptimaliseerd voor query's die ```type```worden gefilterd. Dit zou inefficiënt zijn op **InventoryContainer** omdat deze ```id```is gepartitioneerd op.
+1. In Data Explorer gaat u nu naar **InventoryContainer-pktype > items**. Dit is de gerealiseerde weer gave: de items in deze container spiegel **InventoryContainer** omdat ze in een programma zijn ingevoegd door de wijzigings feed. Noteer de partitie sleutel ( ```type``` ). Deze gerealiseerde weer gave is daarom geoptimaliseerd voor query's die worden gefilterd ```type``` . Dit zou inefficiënt zijn op **InventoryContainer** omdat deze is gepartitioneerd op ```id``` .
 
     ![Gerealiseerde weergave](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. We gaan een document verwijderen uit zowel **InventoryContainer** als **InventoryContainer-pktype** met slechts één ```upsertItem()``` gesprek. Bekijk eerst Azure Portal Data Explorer. We verwijderen het document waarvoor ```/type == "plums"```; deze wordt in rood encircled
+1. We gaan een document verwijderen uit zowel **InventoryContainer** als **InventoryContainer-pktype** met slechts één ```upsertItem()``` gesprek. Bekijk eerst Azure Portal Data Explorer. We verwijderen het document waarvoor het ```/type == "plums"``` encircled in rood is.
 
     ![Gerealiseerde weergave](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
-    Klik opnieuw op ENTER om de functie ```deleteDocument()``` in de voorbeeld code aan te roepen. Deze functie, zoals hieronder weer gegeven, upsert een nieuwe versie van het ```/ttl == 5```document met, waarmee de TTL (time-to-Live) van het document wordt ingesteld op 5sec. 
+    Klik opnieuw op ENTER om de functie ```deleteDocument()``` in de voorbeeld code aan te roepen. Deze functie, zoals hieronder weer gegeven, upsert een nieuwe versie van het document met ```/ttl == 5``` , waarmee de TTL (time-to-Live) van het document wordt ingesteld op 5sec. 
     
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
 
@@ -181,7 +181,7 @@ mvn clean package
     }    
     ```
 
-    De wijzigings ```feedPollDelay``` feed is ingesteld op 100 MS; Daarom reageert Change feed deze update bijna onmiddellijk en de hierboven weer ```updateInventoryTypeMaterializedView()``` gegeven oproepen. Met deze aanroep van de laatste functie wordt het nieuwe upsert-document met TTL van 5sec naar **InventoryContainer-pktype**.
+    De wijzigings feed ```feedPollDelay``` is ingesteld op 100 MS; daarom reageert Change feed op deze update bijna onmiddellijk en de ```updateInventoryTypeMaterializedView()``` hierboven weer gegeven oproepen. Met deze aanroep van de laatste functie wordt het nieuwe upsert-document met TTL van 5sec naar **InventoryContainer-pktype**.
 
     Het resultaat is dat na ongeveer vijf seconden het document verloopt en uit beide containers wordt verwijderd.
 

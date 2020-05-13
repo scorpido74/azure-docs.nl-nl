@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985878"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125788"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -105,11 +105,11 @@ Als u uitvoert met een App Service-abonnement, moet u de instelling **altijd aan
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Zelfs met Always ingeschakeld, wordt de time-out voor de uitvoering van afzonderlijke `functionTimeout` functies bepaald door de instelling in het JSON-project bestand van de [host.](functions-host-json.md#functiontimeout)
+Zelfs met Always ingeschakeld, wordt de time-out voor de uitvoering van afzonderlijke functies bepaald door de `functionTimeout` instelling in het JSON-project bestand van de [host.](functions-host-json.md#functiontimeout)
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Het hosting plan van een bestaande toepassing bepalen
 
-Zie **app service plan/prijs categorie** in het tabblad **overzicht** voor de functie-app in de [Azure Portal](https://portal.azure.com)om het hosting plan te bepalen dat door uw functie-app wordt gebruikt. Voor App Service plannen wordt de prijs categorie ook aangegeven.
+Zie **app service plan** op het tabblad **overzicht** voor de functie-app in de [Azure Portal](https://portal.azure.com)om het hosting plan te bepalen dat door uw functie-app wordt gebruikt. Als u de prijs categorie wilt zien, selecteert u de naam van het **app service plan**en selecteert u vervolgens **Eigenschappen** in het linkerdeel venster.
 
 ![Schaal plan weer geven in de portal](./media/functions-scale/function-app-overview-portal.png)
 
@@ -120,11 +120,11 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Wanneer de uitvoer van deze opdracht is `dynamic`, bevindt uw functie-app zich in het verbruiks abonnement. Wanneer de uitvoer van deze opdracht is `ElasticPremium`, is uw functie-app in het Premium-abonnement. Alle andere waarden geven verschillende lagen van een App Service plan aan.
+Wanneer de uitvoer van deze opdracht is `dynamic` , bevindt uw functie-app zich in het verbruiks abonnement. Wanneer de uitvoer van deze opdracht is `ElasticPremium` , is uw functie-app in het Premium-abonnement. Alle andere waarden geven verschillende lagen van een App Service plan aan.
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
-Voor een wille keurig abonnement is voor een functie-app een algemeen Azure Storage account vereist, dat Azure Blob, wachtrij, bestanden en tabel opslag ondersteunt. Dit komt omdat functies afhankelijk zijn van Azure Storage voor bewerkingen, zoals het beheren van triggers en de uitvoering van logboek functies, maar sommige opslag accounts bieden geen ondersteuning voor wacht rijen en tabellen. Deze accounts, waaronder alleen Blob Storage-accounts (inclusief Premium Storage) en opslag accounts voor algemeen gebruik met zone-redundante opslag replicatie, worden uitgefilterd op basis van uw bestaande **opslag** accounts geselecteerd wanneer u een functie-app maakt.
+Voor een wille keurig abonnement is voor een functie-app een algemeen Azure Storage account vereist, dat Azure Blob, wachtrij, bestanden en tabel opslag ondersteunt. Dit komt omdat Azure Functions afhankelijk is van Azure Storage voor bewerkingen, zoals het beheren van triggers en de uitvoering van logboek functies, maar sommige opslag accounts bieden geen ondersteuning voor wacht rijen en tabellen. Deze accounts, waaronder alleen Blob Storage-accounts (inclusief Premium Storage) en opslag accounts voor algemeen gebruik met zone-redundante opslag replicatie, worden uitgefilterd op basis van uw bestaande **opslag** accounts geselecteerd wanneer u een functie-app maakt.
 
 Het opslag account dat wordt gebruikt door uw functie-app kan ook worden gebruikt door uw triggers en bindingen om uw toepassings gegevens op te slaan. Voor Storage-intensieve bewerkingen moet u echter een afzonderlijk opslag account gebruiken.  
 
@@ -162,7 +162,7 @@ Schalen kan variëren op basis van een aantal factoren en op verschillende manie
 
 Er zijn veel aspecten van een functie-app die van invloed zijn op de manier waarop deze worden geschaald, met inbegrip van hostconfiguratie, runtime footprint en resource-efficiëntie.  Zie de [sectie schaal baarheid in het artikel over prestatie overwegingen](functions-best-practices.md#scalability-best-practices)voor meer informatie. U moet ook weten hoe verbindingen zich gedragen als uw functie-app wordt geschaald. Zie [verbindingen beheren in azure functions](manage-connections.md)voor meer informatie.
 
-Voor meer informatie over schalen in Python en node. js raadpleegt u de [Azure functions python-ontwikkelaars handleiding voor het schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-concurrency) en [het Azure functions van node. js-ontwikkelaars handleiding-schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency).
+Zie voor meer informatie over het schalen van python en node. js [Azure functions python-ontwikkelaars handleiding-schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-concurrency) en [Azure functions node. js-ontwikkelaars handleiding voor het schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Factureringsmodel
 

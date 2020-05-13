@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617883"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196535"
 ---
 # <a name="network-requirements"></a>Netwerkvereisten
 
@@ -20,7 +20,7 @@ Een stabiele netwerk verbinding met lage latentie met een Azure-Data Center is e
 
 De exacte netwerk vereisten zijn afhankelijk van uw specifieke use-case, zoals het aantal en de frequentie van wijzigingen in het externe scène diagram en de complexiteit van de weer gave, maar er zijn een aantal richt lijnen om ervoor te zorgen dat uw ervaring zo goed mogelijk is:
 
-* Uw Internet connectiviteit moet ten minste **50 Mbps downstream** en **10 Mbps upstream** consistent ondersteunen voor één gebruikers sessie van Azure remote rendering, ervan uitgaande dat er geen concurrerend verkeer op het netwerk is. We raden hogere tarieven aan voor betere ervaring. Met meer gebruikers op hetzelfde netwerk worden deze vereisten dienovereenkomstig geschaald.
+* Uw Internet connectiviteit moet ten minste **40 Mbps downstream** en **5 Mbps upstream** consistent ondersteunen voor één gebruikers sessie van Azure remote rendering, ervan uitgaande dat er geen concurrerend verkeer op het netwerk is. We raden hogere tarieven aan voor betere ervaring. Met meer gebruikers op hetzelfde netwerk worden deze vereisten dienovereenkomstig geschaald.
 * Met behulp van de **5-GHz Wi-Fi-band** worden doorgaans betere resultaten geproduceerd dan de 2,4-GHz Wi-Fi-band, maar beide moeten werken.
 * Als er andere Wi-Fi-netwerken in de buurt zijn, vermijd dan het gebruik van Wi-Fi-kanalen die door deze andere netwerken worden gebruikt. U kunt de hulpprogram ma's voor netwerk scans zoals [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gebruiken om te controleren of de kanalen die uw Wi-Fi-netwerk gebruikt, geen concurrerend verkeer zijn.
 * **Vermijd het gebruik van Wi-Fi-verplaatsingen** of LAN-over-via-elektrische verzen ding.

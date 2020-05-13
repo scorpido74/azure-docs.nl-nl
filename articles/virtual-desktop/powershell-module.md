@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653137"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195132"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>De Power shell-module voor Windows virtueel bureau blad instellen
 
@@ -46,7 +46,7 @@ Voer vervolgens de volgende cmdlet uit om verbinding te maken met Azure:
 Connect-AzAccount
 ```
 
-Als u zich aanmeldt bij uw Azure-account, moet er een code worden gegenereerd wanneer u de Connect-cmdlet uitvoert. Als u zich wilt aanmelden, <https://microsoft.com/devicelogin>gaat u naar, voert u de code in en meldt u zich aan met de referenties van uw Azure-beheerder.
+Als u zich aanmeldt bij uw Azure-account, moet er een code worden gegenereerd wanneer u de Connect-cmdlet uitvoert. Als u zich wilt aanmelden, gaat u naar <https://microsoft.com/devicelogin> , voert u de code in en meldt u zich aan met de referenties van uw Azure-beheerder.
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Hiermee wordt u rechtstreeks aangemeld bij het abonnement dat standaard is voor 
 Als u het standaard abonnement wilt wijzigen nadat u zich hebt aangemeld, voert u deze cmdlet uit:
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 Wanneer u een nieuw abonnement selecteert, hoeft u de abonnements-ID niet op te geven in cmdlets die u later uitvoert. Met de volgende cmdlet wordt bijvoorbeeld een specifieke sessiehost opgehaald zonder dat hiervoor de abonnements-ID is vereist:

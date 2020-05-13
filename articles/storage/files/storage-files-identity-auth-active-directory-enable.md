@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: rogarana
-ms.openlocfilehash: 6309219b31c22f1f1d090cc9de9931609e3423f7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: febb796a47b9f5e78906d513c115b62b35c7c7d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792974"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196507"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>On-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares
 
-[Azure files](storage-files-introduction.md) ondersteunt verificatie op basis van identiteiten via SMB (Server Message Block) via twee typen Domain Services: Azure Active Directory Domain Services (Azure AD DS) en on-premises Active Directory Domain Services (AD DS) (preview). Dit artikel richt zich op de nieuw geïntroduceerde (preview)-ondersteuning van het gebruik van Active Directory-domein-service voor verificatie voor Azure-bestands shares. Raadpleeg [ons artikel over het onderwerp](storage-files-identity-auth-active-directory-domain-service-enable.md)als u de Azure AD DS (ga)-verificatie voor Azure-bestands shares wilt inschakelen.
+[Azure files](storage-files-introduction.md)   biedt ondersteuning voor verificatie op basis van identiteit via Server Message Block (SMB) via twee typen Domain Services: Azure Active Directory Domain Services (Azure AD DS) en on-premises Active Directory Domain Services (AD DS) (preview). Dit artikel richt zich op de nieuw geïntroduceerde (preview)-ondersteuning van het gebruik van Active Directory-domein-service voor verificatie voor Azure-bestands shares. Raadpleeg [ons artikel over het onderwerp](storage-files-identity-auth-active-directory-domain-service-enable.md)als u de Azure AD DS (ga)-verificatie voor Azure-bestands shares wilt inschakelen.
 
 > [!NOTE]
 > Azure-bestands shares bieden alleen ondersteuning voor verificatie op basis van één domein service, hetzij Azure Active Directory Domain Service (Azure AD DS) of on-premises Active Directory Domain Services (AD DS). 
@@ -95,12 +95,12 @@ In het volgende diagram ziet u de end-to-end werk stroom voor het inschakelen va
 
 ## <a name="1-enable-ad-ds-authentication-for-your-account"></a>1 AD DS verificatie inschakelen voor uw account 
 
-Als u AD DS verificatie via SMB voor Azure-bestands shares wilt inschakelen, moet u eerst uw opslag account bij AD DS registreren en vervolgens de vereiste domein eigenschappen instellen voor het opslag account. Wanneer de functie is ingeschakeld op het opslag account, is dit van toepassing op alle nieuwe en bestaande bestands shares in het account. Down load de AzFilesHybrid Power shell- `join-AzStorageAccountForAuth` module en gebruik deze om de functie in te scha kelen. U vindt de gedetailleerde beschrijving van de end-to-end werk stroom in het script in deze sectie. 
+Als u AD DS verificatie via SMB voor Azure-bestands shares wilt inschakelen, moet u eerst uw opslag account bij AD DS registreren en vervolgens de vereiste domein eigenschappen instellen voor het opslag account. Wanneer de functie is ingeschakeld op het opslag account, is dit van toepassing op alle nieuwe en bestaande bestands shares in het account. Down load de AzFilesHybrid Power shell-module en gebruik `join-AzStorageAccountForAuth` deze om de functie in te scha kelen. U vindt de gedetailleerde beschrijving van de end-to-end werk stroom in het script in deze sectie. 
 
 > [!IMPORTANT]
-> Met `Join-AzStorageAccountForAuth` de cmdlet worden wijzigingen aangebracht in uw AD-omgeving. Lees de volgende uitleg om beter te begrijpen wat er gebeurt om ervoor te zorgen dat u over de juiste machtigingen beschikt om de opdracht uit te voeren en dat de toegepaste wijzigingen worden uitgelijnd met het nalevings-en beveiligings beleid. 
+> `Join-AzStorageAccountForAuth`Met de cmdlet worden wijzigingen aangebracht in uw AD-omgeving. Lees de volgende uitleg om beter te begrijpen wat er gebeurt om ervoor te zorgen dat u over de juiste machtigingen beschikt om de opdracht uit te voeren en dat de toegepaste wijzigingen worden uitgelijnd met het nalevings-en beveiligings beleid. 
 
-Met `Join-AzStorageAccountForAuth` de cmdlet wordt het equivalent van een offline domein toegevoegd namens het opgegeven opslag account. Het script gebruikt de cmdlet voor het maken van een account in uw AD-domein, hetzij een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Als u ervoor kiest om dit hand matig te doen, moet u het account selecteren dat het meest geschikt is voor uw omgeving.
+Met de `Join-AzStorageAccountForAuth` cmdlet wordt het equivalent van een offline domein toegevoegd namens het opgegeven opslag account. Het script gebruikt de cmdlet voor het maken van een account in uw AD-domein, hetzij een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Als u ervoor kiest om dit hand matig te doen, moet u het account selecteren dat het meest geschikt is voor uw omgeving.
 
 Het AD DS-account dat is gemaakt door de cmdlet vertegenwoordigt het opslag account in het AD-domein. Als het AD DS-account wordt gemaakt onder een organisatie-eenheid (OE) die het verlopen van wacht woorden afdwingt, moet u het wacht woord bijwerken vóór de maximale wachtwoord duur. Als het account wachtwoord niet kan worden bijgewerkt, zullen er verificatie fouten optreden bij het openen van Azure-bestands shares. Zie [AD DS account wachtwoord bijwerken](#5-update-the-password-of-your-storage-account-identity-in-ad-ds)voor meer informatie over het bijwerken van het wacht woord.
 
@@ -141,13 +141,13 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
-# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account (default parameter value), depends on the AD permission you have and preference. 
 # You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` # Default set to "ComputerAccount" if this parameter is not provided
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
         -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, go to Azure Files FAQ.
@@ -155,10 +155,10 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ```
 
-De volgende beschrijving bevat een overzicht van alle acties die `Join-AzStorageAccountForAuth` worden uitgevoerd wanneer de cmdlet wordt uitgevoerd. U kunt deze stappen hand matig uitvoeren als u de opdracht liever niet gebruikt:
+De volgende beschrijving bevat een overzicht van alle acties die worden uitgevoerd wanneer de `Join-AzStorageAccountForAuth` cmdlet wordt uitgevoerd. U kunt deze stappen hand matig uitvoeren als u de opdracht liever niet gebruikt:
 
 > [!NOTE]
-> Als u het `Join-AzStorageAccountForAuth` bovenstaande script al hebt uitgevoerd, gaat u naar de volgende sectie "1,3 bevestigen dat de functie is ingeschakeld". U hoeft de bewerkingen niet opnieuw uit te voeren.
+> Als u het bovenstaande script al hebt uitgevoerd `Join-AzStorageAccountForAuth` , gaat u naar de volgende sectie "1,3 bevestigen dat de functie is ingeschakeld". U hoeft de bewerkingen niet opnieuw uit te voeren.
 
 #### <a name="a-checking-environment"></a>a. Omgeving controleren
 
@@ -166,7 +166,7 @@ Eerst controleert het script uw omgeving. Met name wordt gecontroleerd of [Activ
 
 #### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b. Een identiteit maken die het opslag account in uw AD hand matig weergeeft
 
-Als u dit account hand matig wilt maken, maakt u een nieuwe Kerberos-sleutel `New-AzStorageAccountKey -KeyName kerb1`voor uw opslag account met behulp van. Gebruik vervolgens die Kerberos-sleutel als wacht woord voor uw account. Deze sleutel wordt alleen gebruikt tijdens het instellen en kan niet worden gebruikt voor beheer-of gegevenslaag bewerkingen voor het opslag account.
+Als u dit account hand matig wilt maken, maakt u een nieuwe Kerberos-sleutel voor uw opslag account met behulp van `New-AzStorageAccountKey -KeyName kerb1` . Gebruik vervolgens die Kerberos-sleutel als wacht woord voor uw account. Deze sleutel wordt alleen gebruikt tijdens het instellen en kan niet worden gebruikt voor beheer-of gegevenslaag bewerkingen voor het opslag account.
 
 Wanneer u deze sleutel hebt, moet u een service-of computer account maken onder uw organisatie-eenheid. Gebruik de volgende specificatie: SPN: ' CIFS/uw-Storage-account-name-hier. file. core. Windows. net ' wacht woord: Kerberos-sleutel voor uw opslag account.
 
@@ -220,7 +220,7 @@ U hebt nu AD DS verificatie via SMB ingeschakeld en er is een aangepaste rol toe
 
 Als u de AD DS identiteit/account die uw opslag account vertegenwoordigt, hebt geregistreerd bij een organisatie-eenheid die de verval tijd van het wacht woord afdwingt, moet u het wacht woord voor de maximale wachtwoord duur draaien. Als u het wacht woord van het AD DS-account niet bijwerkt, zullen er verificatie fouten optreden voor toegang tot Azure-bestands shares.  
 
-Als u het draaien van wacht woorden wilt activeren `Update-AzStorageAccountADObjectPassword` , kunt u de opdracht uitvoeren vanuit de module AzFilesHybrid. De cmdlet voert acties uit die vergelijkbaar zijn met de rotatie van de opslag account sleutel. Hiermee wordt de tweede Kerberos-sleutel van het opslag account opgehaald en gebruikt om het wacht woord van het geregistreerde account in AD DS bij te werken. Vervolgens wordt de Kerberos-doel sleutel van het opslag account opnieuw gegenereerd en wordt het wacht woord van het geregistreerde account in AD DS bijgewerkt. U moet deze cmdlet uitvoeren in een on-premises AD DS aan een domein gekoppelde omgeving.
+Als u het draaien van wacht woorden wilt activeren, kunt u de `Update-AzStorageAccountADObjectPassword` opdracht uitvoeren vanuit de module AzFilesHybrid. De cmdlet voert acties uit die vergelijkbaar zijn met de rotatie van de sleutel van het opslagaccount. Hiermee wordt de tweede Kerberos-sleutel van het opslag account opgehaald en gebruikt om het wacht woord van het geregistreerde account in AD DS bij te werken. Vervolgens wordt de Kerberos-doel sleutel van het opslag account opnieuw gegenereerd en wordt het wacht woord van het geregistreerde account in AD DS bijgewerkt. U moet deze cmdlet uitvoeren in een on-premises AD DS aan een domein gekoppelde omgeving.
 
 ```PowerShell
 # Update the password of the AD DS account registered for the storage account

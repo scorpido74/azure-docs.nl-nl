@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982204"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196249"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)en [Azure Automation](../../automation/automation-intro.md).
@@ -115,11 +115,11 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
 >Als u gebruikmaakt van een distributie of-versie die momenteel niet wordt ondersteund en niet is afgestemd op ons ondersteunings model, wordt u aangeraden deze opslag plaats te splitsen en te bevestigen dat micro soft support geen ondersteuning biedt voor gevorkeerde agent versies.
 
 * Amazon Linux 2017,09 (x64)
-* CentOS Linux 6 (x86/x64) en 7 (x64)  
-* Oracle Linux 6 en 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) en 7 (x64)
-* Debian GNU/Linux 8 en 9 (x86/x64)
-* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x86/x64) en 18,04 LTS (x64)
+* CentOS Linux 6 (x64) en 7 (x64)  
+* Oracle Linux 6 en 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64), 7 (x64) en 8 (x64)
+* Debian GNU/Linux 8 en 9 (x64)
+* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x64) en 18,04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) en 15 (x64)
 
 >[!NOTE]
@@ -201,7 +201,7 @@ Voor de Linux-agent wordt de proxy server tijdens de installatie of [na de insta
 Bijvoorbeeld: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Als u speciale tekens zoals '\@' in uw wacht woord gebruikt, ontvangt u een proxy verbindings fout omdat de waarde onjuist is geparseerd.  U kunt dit probleem omzeilen door het wacht woord in de URL te coderen met een hulp programma zoals [UrlDecode](https://www.urldecoder.org/).  
+> Als u speciale tekens zoals ' \@ ' in uw wacht woord gebruikt, ontvangt u een proxy verbindings fout omdat de waarde onjuist is geparseerd.  U kunt dit probleem omzeilen door het wacht woord in de URL te coderen met een hulp programma zoals [UrlDecode](https://www.urldecoder.org/).  
 
 
 

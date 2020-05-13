@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/18/2019
-ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274474"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196235"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standaard eigenschappen in Azure Monitor logboeken
 Gegevens in Azure Monitor logboeken worden [opgeslagen als een set records in een log Analytics werk ruimte of Application Insights toepassing](../log-query/logs-structure.md), elk met een bepaald gegevens type met een unieke set eigenschappen. Veel gegevens typen hebben standaard eigenschappen die gemeen schappelijk zijn voor meerdere typen. In dit artikel worden deze eigenschappen beschreven en vindt u voor beelden van hoe u deze kunt gebruiken in query's.
+
+> [!IMPORTANT]
+> Als u APM 2,1 gebruikt, worden Application Insights-toepassingen opgeslagen in een Log Analytics-werk ruimte met alle andere logboek gegevens. De naam van de tabellen is gewijzigd en de tabel wordt opnieuw gestructureerd, maar heeft dezelfde informatie als de tabellen in de Application Insights toepassing. Deze nieuwe tabellen hebben dezelfde standaard eigenschappen als andere tabellen in de werk ruimte Log Analytics.
 
 > [!NOTE]
 > Sommige van de standaard eigenschappen worden niet weer gegeven in de schema weergave of IntelliSense in Log Analytics en ze worden niet weer gegeven in query resultaten tenzij u de eigenschap expliciet opgeeft in de uitvoer.
@@ -46,7 +49,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-De ** \_eigenschap TimeReceived** bevat de datum en tijd waarop de record is ontvangen door het Azure monitor opname punt in de Azure-Cloud. Dit kan handig zijn om latentie problemen tussen de gegevens bron en de cloud te identificeren. Een voor beeld hiervan is een netwerk probleem dat een vertraging veroorzaakt bij het verzenden van gegevens van een agent. Zie [opname tijd van logboek gegevens in azure monitor](data-ingestion-time.md) voor meer informatie.
+De eigenschap ** \_ TimeReceived** bevat de datum en tijd waarop de record is ontvangen door het Azure monitor opname punt in de Azure-Cloud. Dit kan handig zijn om latentie problemen tussen de gegevens bron en de cloud te identificeren. Een voor beeld hiervan is een netwerk probleem dat een vertraging veroorzaakt bij het verzenden van gegevens van een agent. Zie [opname tijd van logboek gegevens in azure monitor](data-ingestion-time.md) voor meer informatie.
 
 De volgende query geeft de gemiddelde latentie per uur voor gebeurtenis records van een agent. Dit omvat de tijd van de agent naar de Cloud en de totale tijd voor de record die beschikbaar is voor logboek query's.
 
@@ -60,7 +63,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Typ en item type
-De eigenschappen van het **type** (log Analytics werk ruimte) en het eigenschaps **item** (Application Insights toepassing) bevatten de naam van de tabel waaruit de record is opgehaald, die ook als het record type kan worden beschouwd. Deze eigenschap is handig in query's die records uit meerdere tabellen combi neren, zoals de gegevens die gebruikmaken `search` van de operator om onderscheid te maken tussen records van verschillende typen. **$Table** kan in plaats van het **type** op sommige locaties worden gebruikt.
+De eigenschappen van het **type** (log Analytics werk ruimte) en het eigenschaps **item** (Application Insights toepassing) bevatten de naam van de tabel waaruit de record is opgehaald, die ook als het record type kan worden beschouwd. Deze eigenschap is handig in query's die records uit meerdere tabellen combi neren, zoals de gegevens die gebruikmaken van de `search` operator om onderscheid te maken tussen records van verschillende typen. **$Table** kan in plaats van het **type** op sommige locaties worden gebruikt.
 
 ### <a name="examples"></a>Voorbeelden
 Met de volgende query wordt het aantal records geretourneerd op basis van het type dat in het afgelopen uur is verzameld.
@@ -72,11 +75,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-De ** \_eigenschap Itemid** bevat een unieke id voor de record.
+De eigenschap ** \_ Itemid** bevat een unieke id voor de record.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-De ** \_eigenschap ResourceID** bevat een unieke id voor de resource waaraan de record is gekoppeld. Dit geeft u een standaard eigenschap die u kunt gebruiken om uw query te beperken tot alleen records van een bepaalde resource, of om gerelateerde gegevens over meerdere tabellen samen te voegen.
+De eigenschap ** \_ ResourceID** bevat een unieke id voor de resource waaraan de record is gekoppeld. Dit geeft u een standaard eigenschap die u kunt gebruiken om uw query te beperken tot alleen records van een bepaalde resource, of om gerelateerde gegevens over meerdere tabellen samen te voegen.
 
 Voor Azure-resources is de waarde van **_ResourceId** de [URL van de Azure-resource-id](../../azure-resource-manager/templates/template-functions-resource.md). De eigenschap is momenteel beperkt tot Azure-resources, maar wordt uitgebreid naar bronnen buiten Azure, zoals on-premises computers.
 
@@ -122,7 +125,7 @@ union withsource = tt *
 Gebruik deze `union withsource = tt *` query's spaarzaam als scans over gegevens typen duur zijn om uit te voeren.
 
 ## <a name="_isbillable"></a>\_IsBillable
-De ** \_eigenschap IsBillable** geeft aan of geconsumeerde gegevens Factureerbaar zijn. Gegevens waarbij ** \_IsBillable** gelijk is aan _False_ , worden gratis verzameld en worden niet in rekening gebracht voor uw Azure-account.
+De eigenschap ** \_ IsBillable** geeft aan of geconsumeerde gegevens Factureerbaar zijn. Gegevens met ** \_ IsBillable** gelijk aan `false` worden gratis verzameld en worden niet in rekening gebracht voor uw Azure-account.
 
 ### <a name="examples"></a>Voorbeelden
 Gebruik de volgende query om een lijst op te halen met computers die gefactureerde gegevens typen verzenden:
@@ -149,11 +152,11 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-De ** \_eigenschap BilledSize** geeft de grootte in bytes aan gegevens aan die worden gefactureerd naar uw Azure-account als ** \_IsBillable** waar is.
+De eigenschap ** \_ BilledSize** geeft de grootte in bytes aan gegevens aan die worden gefactureerd naar uw Azure-account als ** \_ IsBillable** waar is.
 
 
 ### <a name="examples"></a>Voorbeelden
-Als u de grootte van het aantal factureer bare gebeurtenissen per computer wilt zien `_BilledSize` , gebruikt u de eigenschap die de grootte in bytes levert:
+Als u de grootte van het aantal factureer bare gebeurtenissen per computer wilt zien, gebruikt u de `_BilledSize` eigenschap die de grootte in bytes levert:
 
 ```Kusto
 union withsource = tt * 
