@@ -16,12 +16,12 @@ ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0b7070502059eee7f87e82812e06095e56d578
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: bf34f808e2c59e32990a83c817b98ee899e769ac
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582667"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402237"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Product namen en service plan-id's voor licentie verlening
 
@@ -38,7 +38,8 @@ Bij het beheren van licenties in [het Azure Portal](https://portal.azure.com/#bl
 
 | Productnaam | Teken reeks-ID | GUID | Inbegrepen service plannen | Inbegrepen service abonnementen (beschrijvende namen) |
 | --- | --- | --- |--- | --- |
-| AUDIO VERGADERINGEN | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 |MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | AUDIO CONFERENCING (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
+| APP CONNECT IW | SPZA_IW |  8f0c5670-4e56-4892-b06d-91c085d7004f | SPZA (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE_S_FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) | APP-verbinding (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) |
+| AUDIO VERGADERINGEN | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 | MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | AUDIO CONFERENCING (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | AZURE ACTIVE DIRECTORY BASIC  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) | MICRO soft AZURE ACTIVE DIRECTORY BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) |
 | AZURE ACTIVE DIRECTORY PREMIUM P1 | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-BC02-4b7c-bd55-b576c07bb09d)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | AZURE ACTIVE DIRECTORY PREMIUM P1 (41781fb2-BC02-4b7c-bd55-b576c07bb09d)<br/>MICRO soft AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY-detectie (932ad362-64a8-4783-9106-97849a1a30b9) |
 | AZURE ACTIVE DIRECTORY PREMIUM P2 | AAD_PREMIUM_P2    | 84a661c4-e949-4bd2-a560-ed7766fcaf2b  | AAD_PREMIUM (41781fb2-BC02-4b7c-bd55-b576c07bb09d)<br/>AAD_PREMIUM_P2 (eec0eb4f-6444-4f95-aba0-50c24d67f998)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | AZURE ACTIVE DIRECTORY PREMIUM P1 (41781fb2-BC02-4b7c-bd55-b576c07bb09d)<br/>MICRO soft AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY-detectie (932ad362-64a8-4783-9106-97849a1a30b9)<br/>AZURE ACTIVE DIRECTORY PREMIUM P2 (eec0eb4f-6444-4f95-aba0-50c24d67f998) |
@@ -130,7 +131,7 @@ Bij het beheren van licenties in [het Azure Portal](https://portal.azure.com/#bl
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>Service abonnementen die niet tegelijkertijd kunnen worden toegewezen
 
-Sommige producten bevatten service plannen die op hetzelfde moment niet aan dezelfde gebruiker kunnen worden toegewezen. Als u bijvoorbeeld *office 365 E1* en *Office 365 E3* in uw Azure AD-organisatie hebt en u probeert beide licenties aan dezelfde gebruiker toe te wijzen, mislukt de bewerking. Dit komt doordat het E3-product de volgende service plannen bevat die conflicteren met de tegen Hangers van E1:
+Sommige producten bevatten service plannen die op hetzelfde moment niet aan dezelfde gebruiker kunnen worden toegewezen. Als u bijvoorbeeld *office 365 E1* en *Office 365 E3* in uw Tenant hebt, en u probeert beide licenties aan dezelfde gebruiker toe te wijzen, mislukt de bewerking. Dit komt doordat het E3-product de volgende service plannen bevat die conflicteren met de tegen Hangers van E1:
 
 -   Share point online (abonnement 2) is in conflict met share point online (abonnement 1).
 -   Exchange Online (abonnement 2) veroorzaakt een conflict met Exchange Online (abonnement 1).

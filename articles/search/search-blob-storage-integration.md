@@ -1,19 +1,19 @@
 ---
 title: Zoek opdracht in volledige tekst toevoegen aan Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Inhoud extra heren en structuur toevoegen aan Azure-blobs bij het bouwen van een index voor zoeken in volledige tekst in azure cognitieve eken.
+description: Inhoud extra heren en structuur toevoegen aan Azure-blobs bij het bouwen van een zoek index in volledige tekst in azure cognitieve Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83308f42fb1f2ea3408b5c1a63d88d21a8e7830a
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73496463"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402081"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Zoek opdracht in volledige tekst toevoegen aan Azure Blob-gegevens met behulp van Azure Cognitive Search
 
@@ -58,6 +58,11 @@ Door een BLOB Indexeer functie uit te voeren via een container, kunt u tekst en 
 ### <a name="indexing-blob-metadata"></a>BLOB-meta gegevens indexeren
 
 Een veelvoorkomend scenario waarmee u gemakkelijk kunt sorteren op blobs van elk inhouds type is het indexeren van zowel aangepaste meta gegevens als systeem eigenschappen voor elke blob. Op deze manier wordt informatie voor alle blobs geïndexeerd, ongeacht het document type dat is opgeslagen in een index in uw zoek service. Met de nieuwe index kunt u vervolgens door gaan met het sorteren, filteren en facet voor alle inhoud van de Blob-opslag.
+
+> [!NOTE]
+> BLOB-index Tags worden standaard geïndexeerd door de Blob Storage-service en beschikbaar gesteld voor het uitvoeren van query's. Als de sleutel/waarde-kenmerken van uw blobs indexerings-en filter functies vereisen, moeten BLOB-index Tags worden gebruikt in plaats van meta gegevens.
+>
+> Zie [gegevens beheren en zoeken op Azure Blob Storage met Blob-index](../storage/blobs/storage-manage-find-blobs.md)voor meer informatie over blob-indexen.
 
 ### <a name="indexing-json-blobs"></a>JSON-blobs indexeren
 Indexeer functies kunnen worden geconfigureerd voor het extra heren van gestructureerde inhoud gevonden in blobs die JSON bevatten. Een Indexeer functie kan JSON-blobs lezen en de gestructureerde inhoud parseren in de juiste velden van een zoek document. Indexeer functies kunnen ook blobs maken die een matrix van JSON-objecten bevatten en elk element toewijzen aan een afzonderlijk Zoek document. U kunt een parseringsfout instellen om het type van het JSON-object te beïnvloeden dat door de Indexeer functie is gemaakt.

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790674"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402073"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -38,7 +38,7 @@ De AKS-Cluster service-principal moet ook machtigingen hebben om netwerk bronnen
 
 Als u een bestaand cluster hebt met de basis-SKU Load Balancer, zijn er belang rijke verschillen in de gedrags bij het migreren om een cluster te gebruiken met de standaard-SKU Load Balancer.
 
-Een voor beeld: het maken van Blue/groen-implementaties voor het migreren van clusters `load-balancer-sku` is een veelvoorkomende procedure op basis van het type van een cluster kan alleen worden gedefinieerd in een cluster create time. *Basic SKU* load balancers maken echter gebruik van *elementaire SKU* -IP-adressen die niet compatibel zijn met *Standard SKU* load balancers, aangezien hiervoor *standaard-SKU* -IP-adressen zijn vereist. Bij het migreren van clusters om Load Balancer Sku's te upgraden, is een nieuw IP-adres met een compatibele IP-adres-SKU vereist.
+Een voor beeld: het maken van Blue/groen-implementaties voor het migreren van clusters is een veelvoorkomende procedure `load-balancer-sku` op basis van het type van een cluster kan alleen worden gedefinieerd in een cluster create time. *Basic SKU* load balancers maken echter gebruik van *elementaire SKU* -IP-adressen die niet compatibel zijn met *Standard SKU* load balancers, aangezien hiervoor *standaard-SKU* -IP-adressen zijn vereist. Bij het migreren van clusters om Load Balancer Sku's te upgraden, is een nieuw IP-adres met een compatibele IP-adres-SKU vereist.
 
 Voor meer overwegingen over het migreren van clusters raadpleegt u de [documentatie over migratie overwegingen](aks-migration.md) om een lijst met belang rijke onderwerpen weer te geven waarmee u rekening moet houden bij de migratie. De onderstaande beperkingen zijn ook belang rijke verschillen in de situatie bij het gebruik van standaard SKU load balancers in AKS.
 
@@ -64,7 +64,7 @@ Wanneer u een AKS-cluster maakt, wordt standaard de *standaard* -SKU Load Balanc
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Configureer de load balancer intern
 
-U kunt ook configureren dat de load balancer intern is en geen openbaar IP-adres weergeeft. Als u de load balancer als intern wilt configureren `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` , voegt u als aantekening toe aan de *Load Balancer* -service. [Hier][internal-lb-yaml]ziet u een voor beeld van een yaml-manifest, evenals meer informatie over een intern Load Balancer.
+U kunt ook configureren dat de load balancer intern is en geen openbaar IP-adres weergeeft. Als u de load balancer als intern wilt configureren, voegt `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` u als aantekening toe aan de *Load Balancer* -service. [Hier][internal-lb-yaml]ziet u een voor beeld van een yaml-manifest, evenals meer informatie over een intern Load Balancer.
 
 ## <a name="scale-the-number-of-managed-public-ips"></a>Het aantal beheerde open bare Ip's schalen
 
@@ -81,7 +81,7 @@ az aks update \
 
 In het bovenstaande voor beeld wordt het aantal beheerde uitgaande open bare Ip's ingesteld op *2* voor het *myAKSCluster* -cluster in *myResourceGroup*. 
 
-U kunt ook de para meter met *taak verdeling-beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare IP-adressen in te stellen bij het maken van het `--load-balancer-managed-outbound-ip-count` cluster door de para meter toe te voegen en op de gewenste waarde in te stellen. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
+U kunt ook de para meter met *taak verdeling-beheerde IP-aantal* gebruiken om het eerste aantal beheerde uitgaande open bare IP-adressen in te stellen bij het maken van het cluster door de `--load-balancer-managed-outbound-ip-count` para meter toe te voegen en op de gewenste waarde in te stellen. Het standaard aantal beheerde uitgaande open bare Ip's is 1.
 
 ## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Geef uw eigen open bare Ip's of voor voegsels voor uitgang op
 
@@ -89,12 +89,17 @@ Wanneer u een *standaard* -SKU Load Balancer gebruikt, wordt in het AKS-cluster 
 
 Door meerdere IP-adressen of voor voegsels te maken, kunt u meerdere services voor het aanbrengen van een back-up definiëren wanneer u het IP-adres achter een enkel load balancer-object definieert. Het uitgaand eind punt van specifieke knoop punten is afhankelijk van de service waaraan ze zijn gekoppeld.
 
-> [!IMPORTANT]
-> U moet de *standaard* -SKU open bare ip's gebruiken om uw Load Balancer te doen met uw *standaard* SKU. U kunt de SKU van uw open bare Ip's controleren met behulp van de opdracht [AZ Network public-ip show][az-network-public-ip-show] :
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Vereisten voor het maken van uw eigen IP-adressen of IP-voor voegsels
+1. U moet de *standaard* -SKU open bare ip's gebruiken om uw Load Balancer te doen met uw *standaard* SKU. U kunt de SKU van uw open bare Ip's controleren met behulp van de opdracht [AZ Network public-ip show][az-network-public-ip-show] :
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. De open bare Ip's en IP-voor voegsels moeten zich in dezelfde regio bevinden en deel uitmaken van hetzelfde abonnement als uw AKS-cluster.
+ 1. De open bare Ip's en IP-voor voegsels kunnen geen IP-adressen zijn die door AKS zijn gemaakt als een beheerd IP-adres. Zorg ervoor dat alle IP-adressen die zijn opgegeven als aangepaste Ip's hand matig zijn gemaakt en niet de AKS-service zijn.
+ 1. De open bare Ip's en IP-voor voegsels kunnen niet worden gebruikt door een andere resource of service.
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Uw eigen open bare IP of voor voegsels voor een bestaand cluster definiëren
 
 Gebruik de opdracht [AZ Network public-ip show][az-network-public-ip-show] om de id's van uw open bare ip's weer te geven.
 
@@ -131,9 +136,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> De open bare Ip's en IP-voor voegsels moeten zich in dezelfde regio bevinden en deel uitmaken van hetzelfde abonnement als uw AKS-cluster. 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Uw eigen open bare IP of voor voegsels definiëren op het moment dat het cluster wordt gemaakt
 
@@ -222,7 +224,7 @@ Bij het wijzigen van de para meters van de *Load Balancer-uitgaand-poorten* en d
 ### <a name="required-quota-for-customizing-allocatedoutboundports"></a>Vereist quotum voor het aanpassen van allocatedOutboundPorts
 U moet voldoende uitgaande IP-capaciteit hebben op basis van het aantal VM-knoop punten en de gewenste toegewezen uitgaande poorten. Gebruik de volgende formule om te controleren of u voldoende uitgaande IP-capaciteit hebt: 
  
-*outboundIPs* \* 64.000 \> *nodeVMs* nodeVMs \* *desiredAllocatedOutboundPorts*.
+*outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Als u bijvoorbeeld drie *nodeVMs*en 50.000 *desiredAllocatedOutboundPorts*hebt, moet u Mini maal drie *outboundIPs*hebben. Het wordt aanbevolen dat u extra uitgaande IP-capaciteit opneemt dan wat u nodig hebt. Daarnaast moet u de cluster automatisch schalen en de mogelijkheid van upgrades van knooppunt groepen voor het berekenen van de uitgaande IP-capaciteit. Bekijk het huidige aantal knoop punten en het maximum aantal knoop punten en gebruik de hogere waarde voor het cluster automatisch schalen. Voor het uitvoeren van een upgrade moet u een extra VM-knoop punt voor elke knooppunt groep waarmee een upgrade kan worden uitgevoerd.
  

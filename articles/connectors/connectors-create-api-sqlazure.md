@@ -3,16 +3,16 @@ title: Verbinding maken met SQL Server of Azure SQL Database
 description: Automatiseer taken voor SQL-data bases on-premises of in de Cloud met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789189"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402597"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
@@ -86,7 +86,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    ![Nieuwe stap toevoegen aan uw logische app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Onder **Kies een actie**, voert u in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst acties de gewenste SQL-actie.
 
@@ -129,6 +129,20 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
   * [SQL-paginering voor bulk overdracht van gegevens met Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT-ORDER BY-component](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Dynamische bulk gegevens verwerken
+
+Soms is de geretourneerde uitvoer dynamisch, wanneer u een opgeslagen procedure aanroept in de SQL Server-connector. In dit scenario voert u de volgende stappen uit:
+
+1. Open **Logic apps Designer**.
+1. Voer een test uitvoering van uw logische app uit om de uitvoer indeling te bekijken. Kopieer de uitvoer van uw voor beeld.
+1. Selecteer in de ontwerp functie, onder de actie waar u de opgeslagen procedure aanroept, de optie **nieuwe stap**.
+1. Zoek onder **Kies een actie**naar en selecteer de actie [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
+1. Selecteer in de actie **JSON parseren** **voorbeeld lading gebruiken om schema te genereren**.
+1. Plak in het venster **een voor beeld van een JSON-nettolading invoeren of plakken** de uitvoer van het voor beeld en selecteer vervolgens **gereed**.
+1. Als er een fout bericht wordt weer gegeven dat Logic Apps geen schema kan genereren, controleert u of de syntaxis van de voorbeeld uitvoer correct is ingedeeld. Als u het schema nog steeds niet kunt genereren, voert u het hand matig in het vak **schema** in.
+1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Gebruik de gegevens tokens die worden weer gegeven in de lijst met dynamische inhoud onder de [actie **JSON parseren** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)om toegang te krijgen tot de eigenschappen van de JSON-inhoud.
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 

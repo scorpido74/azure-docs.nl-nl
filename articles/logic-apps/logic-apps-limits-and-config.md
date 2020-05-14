@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 807949d7ed0c68edd44fba95109f118e97c59b5a
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901249"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402543"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -143,7 +143,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| Uitgaande aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van uitgaande aanvragen zijn aanroepen van HTTP-triggers. <p><p>**Tip**: gebruik een [asynchroon polling-patroon](../logic-apps/logic-apps-create-api-app.md#async-pattern) of een [until-lus](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)voor het uitvoeren van bewerkingen die langer worden uitgevoerd. |
+| Uitgaande aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van uitgaande aanvragen zijn aanroepen van HTTP-triggers. <p><p>**Tip**: gebruik een [asynchroon polling-patroon](../logic-apps/logic-apps-create-api-app.md#async-pattern) of een [until-lus](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)voor het uitvoeren van bewerkingen die langer worden uitgevoerd. Als u de time-outlimieten wilt omzeilen wanneer u een andere logische app aanroept die een [aanroepbaar eind punt](logic-apps-http-endpoint.md)heeft, kunt u in plaats daarvan de ingebouwde Azure Logic apps actie gebruiken, die u kunt vinden in de connector kiezer onder **ingebouwde**. |
 | Inkomende aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van inkomende aanvragen zijn oproepen die worden ontvangen door de aanvraag triggers en webhook-triggers. <p><p>**Opmerking**: voor de oorspronkelijke beller om het antwoord te krijgen, moeten alle stappen in het antwoord binnen de limiet worden voltooid, tenzij u een andere logische app als geneste werk stroom aanroept. Zie [Logic apps aanroepen, activeren of nesten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie. |
 |||||
 
@@ -161,7 +161,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 
 | Naam | Opmerkingen |
 |------|-------|
-| Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()`, `@base64()`, `@string()` expressies mogen niet langer zijn dan deze limiet. |
+| Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()` , `@base64()` , `@string()` expressies mogen niet langer zijn dan deze limiet. |
 | Maximum aantal tekens van aanvraag-URL | 16.384 tekens |
 |||
 

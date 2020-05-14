@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7af6bd0f36f5a1fc11acbd7906088d7d5c17d32
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f91ec2fb004ed3745afafd59f4e64e08c11f76a9
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996806"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402276"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -95,6 +95,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **China Telecom Global** |Ondersteund |Ondersteund |Hong Kong, Hongkong Kong2 |
 | **Unicom-China-wereld wijd** |Ondersteund |Ondersteund | Singapore2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Ondersteund |Ondersteund |Taipei |
+| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | Ondersteund | Ondersteund | Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Ondersteund |Ondersteund |Chicago, Groningen, Montreal, Toronto, Vancouver, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londen, London2, Newport, New York, Osaka, Parijs, silicium dal, Silicon Valley2, Singapore2, Tokio, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Ondersteund |Ondersteund |Chicago, Silicon Valley, Washington DC |
@@ -158,7 +159,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Ondersteund |Ondersteund |Melbourne, Singapore, Sydney |
 | **[Telus](https://www.telus.com)** |Ondersteund |Ondersteund |Montreal, Seattle, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Ondersteund |Ondersteund |Kaapstad, Johannesburg |
-| **[TIJD dotCom](https://www.time.com.my/enterprise/connectivity/cloud-interconnect)** | Ondersteund | Ondersteund | Kuala Lumpur |
+| **[TIJD dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Ondersteund | Ondersteund | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Ondersteund |Ondersteund |Dallas, Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Ondersteund |Ondersteund |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Hongkong SAR, Londen, Mumbai, silicium dal, Singapore, Sydney, Tokio, Toronto, Washington DC |

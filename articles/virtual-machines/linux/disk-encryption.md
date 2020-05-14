@@ -7,20 +7,23 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a9266f20d276b0b8d315cc83cd96fc235c79e773
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff6722fbc825ff736a9870618984bbe2c735acfa
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198956"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402427"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan de server zijde van Azure Managed disks
 
-Met Azure Managed disks worden uw gegevens standaard automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling aan de server zijde beveiligt uw gegevens en helpt u te voldoen aan de verplichtingen voor beveiliging en naleving van uw organisatie. Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2.   
+Met Azure Managed disks worden uw gegevens standaard automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. 
 
-Versleuteling heeft geen invloed op de prestaties van Managed disks. Er zijn geen extra kosten voor het versleutelen van de versleuteling.
+Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2. Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
 
-Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
+Versleuteling heeft geen invloed op de prestaties van beheerde schijven en er zijn geen extra kosten voor de versleuteling. 
+
+> [!NOTE]
+> Tijdelijke schijven zijn geen beheerde schijven en worden niet versleuteld door SSE; Zie [overzicht van Managed disks: Disk roles](managed-disks-overview.md#disk-roles)(Engelstalig) voor meer informatie over tijdelijke schijven.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
@@ -233,7 +236,7 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Versleuteling aan de server zijde versus Azure Disk Encryption
 
-[Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM.  Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
+[Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM.  Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

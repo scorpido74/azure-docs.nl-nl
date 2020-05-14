@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 04/24/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 51cd464da417bfd1d6d4ff52e2a2595a7ce77fe6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201700"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402377"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -38,7 +38,7 @@ De Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/power
 Net als bij Azure CLI-opdrachten, zoals [AZ account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) , worden de **HomeTenantId** -en **managedByTenants** -kenmerken weer gegeven.
 
 > [!TIP]
-> Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te `az account clear` wissen door `az login --identity`uit te voeren, gevolgd door.
+> Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .
 
 We bieden ook Api's die specifiek zijn voor het uitvoeren van Azure gedelegeerde resource beheer taken. Zie de sectie **Naslag informatie** voor meer informatie.
 
@@ -113,6 +113,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 - Azure-Sentinel-resources beheren [in de tenants van de klant](../../sentinel/multiple-tenants-service-providers.md)
 - [Aanvallen bijhouden en beveiligings waarschuwingen weer geven voor meerdere tenants van klanten](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Incidenten weer geven](../../sentinel/multiple-workspace-view.md) in meerdere Sentinel-werk ruimten die zijn verspreid over de tenants van de klant
 
 [Azure service Health](../../service-health/index.yml):
 
@@ -138,7 +139,7 @@ Ondersteunings aanvragen:
 ## <a name="current-limitations"></a>Huidige beperkingen
 Houd bij alle scenario's rekening met de volgende beperkingen:
 
-- Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze `https://management.azure.com`aanvragen beginnen met. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar `https://myaccount.blob.core.windows.net` , `https://mykeyvault.vault.azure.net/`zoals of. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
+- Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com` . Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/` . De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
 - Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](../../role-based-access-control/built-in-roles.md)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar of ingebouwde rollen met [DataActions](../../role-based-access-control/role-definitions.md#dataactions) -machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 - Hoewel u abonnementen kunt opdoen die gebruikmaken van Azure Databricks, kunnen gebruikers in de Tenant beheren Azure Databricks werk ruimten op dit moment niet starten.
 - U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](../../role-based-access-control/deny-assignments.md) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).

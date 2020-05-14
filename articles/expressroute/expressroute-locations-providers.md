@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6c73f9d73a9e93bd6c47d6e748dba1352b21450
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 0de95fb725c260ae8c93152884d860e2817b7a5c
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005752"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402405"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -102,14 +102,14 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 | **Hongkong Kong2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n.v.t. | 10G | China Telecom Global |
 | **Jakarta** | Telkom Indonesië | 4 | n.v.t. | 10G | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Zuid-Afrika - noord | 10G | BCX, British Telecom, Internet Solutions-Cloud Connect, Liquid Telecom, oranje, Teraco |
-| **Kuala Lumpur** | [TIJD dotCom Menara doel stellingen](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | n.v.t. | n.v.t. | TIME dotCom |
+| **Kuala Lumpur** | [TIJD dotCom Menara doel stellingen](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | n.v.t. | n.v.t. | TIME dotCom |
 | **Las Vegas** | [LV wijzigen](https://www.switch.com/las-vegas) | 1 | n.v.t. | n.v.t. | CenturyLink Cloud Connect, Megaport |
 | **Londen** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Verenigd Koninkrijk Zuid | 10G, 100G | BIJ&T netbond, British Telecom, Colt, Equinix, euNetworks, intercloud, Internet Solutions-Cloud Connect, Interxion, jisc, Level 3 Communications, Mega Port, MTN, NTT Communications, oranje, PCCW Global Limited, Tata Communications, telehouse-KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | [Twee-House-Noord](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Verenigd Koninkrijk Zuid | 10G, 100G | CenturyLink Cloud Connect, Colt, IX REACH, Equinix, Mega Port, telehouse-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | n.v.t. | n.v.t. | CoreSite, Equinix, Mega Port, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Frankrijk - zuid | n.v.t. | DE CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Australië - zuidoost | 10G, 100G | AARNet, Devoli, Equinix, Mega Port, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
-| **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n.v.t. | 10G | C3ntro, Equinix, Mega Port, Neutrona netwerken |
+| **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n.v.t. | 10G | Claro, C3ntro, Equinix, Mega Port, Neutrona netwerken |
 | **Milaan** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n.v.t. | 10G | |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n.v.t. | 10G, 100G | Bell Canada, Cologix, Mega Port, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | India - west | 10G | Global CloudXchange (GCX), revertrouwen Jio, Sify, Tata Communications, Verizon |

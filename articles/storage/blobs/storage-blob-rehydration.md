@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684058"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402663"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
 
@@ -34,6 +34,9 @@ Terwijl een BLOB zich in de Access-laag Archive bevindt, wordt deze als offline 
 Als u de archief-BLOB niet opnieuw wilt laten worden gehydrateerd, kunt u ervoor kiezen om een [Kopieer-BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) bewerking uit te voeren. De oorspronkelijke BLOB blijft ongewijzigd in archief terwijl er een nieuwe BLOB wordt gemaakt in de online hot of cool-laag, zodat u kunt werken. In de bewerking BLOB kopiëren kunt u ook de optionele *x-MS-autohydrat-Priority-* eigenschap instellen op Standard of High om de prioriteit op te geven waarop u de BLOB-kopie wilt maken.
 
 Het kopiëren van een BLOB uit het archief kan uren duren, afhankelijk van de geselecteerde opnieuw te maken prioriteit. Achter de schermen leest de bewerking **BLOB kopiëren** de bron-blob van het archief om een nieuwe online-Blob in de geselecteerde doellaag te maken. De nieuwe blob is mogelijk zichtbaar wanneer u blobs vermeldte, maar de gegevens zijn pas beschikbaar als de Lees bewerking van de blob van het bron archief is voltooid en de gegevens naar de nieuwe online-doel-BLOB zijn geschreven. De nieuwe blob is een onafhankelijke kopie en een wijziging of verwijdering hiervan heeft geen invloed op de bron archief-blob.
+
+> [!IMPORTANT]
+> Verwijder de bron-BLOB pas als de Kopieer bewerking is voltooid op het doel. Als de bron-BLOB wordt verwijderd, wordt de doel-BLOB mogelijk niet volledig gekopieerd en is deze leeg. U kunt de *x-MS-Copy-status* controleren om de status van de Kopieer bewerking te bepalen.
 
 Archief-blobs kunnen alleen worden gekopieerd naar online doel lagen binnen hetzelfde opslag account. Het kopiëren van een archief-BLOB naar een andere archief-BLOB wordt niet ondersteund. De volgende tabel geeft de mogelijkheden van CopyBlob aan.
 
@@ -74,10 +77,10 @@ Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gea
 
 1. Selecteer onder **Opslaan** onder.
 
-![De status van de](media/storage-tiers/blob-access-tier.png)
-![rehydratie controle van de laag van het opslag account wijzigen](media/storage-tiers/rehydrate-status.png)
+![De status van de ](media/storage-tiers/blob-access-tier.png)
+ rehydratie controle van de laag van het opslag account wijzigen ![](media/storage-tiers/rehydrate-status.png)
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de BLOB-laag van een archief-BLOB te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$containerName` variabele moet worden geïnitialiseerd met de container naam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van de blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -99,7 +102,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ---
 
 ### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Een archief-BLOB kopiëren naar een nieuwe blob met een online-laag
-Het volgende Power shell-script kan worden gebruikt om een Archive-BLOB te kopiëren naar een nieuwe BLOB binnen hetzelfde opslag account. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$srcContainerName` variabelen `$destContainerName` en moeten worden geïnitialiseerd met de container namen. De `$srcBlobName` variabelen `$destBlobName` en moeten worden geïnitialiseerd met de namen van de blobs. 
+Het volgende Power shell-script kan worden gebruikt om een Archive-BLOB te kopiëren naar een nieuwe BLOB binnen hetzelfde opslag account. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$srcContainerName` `$destContainerName` variabelen en moeten worden geïnitialiseerd met de container namen. De `$srcBlobName` `$destBlobName` variabelen en moeten worden geïnitialiseerd met de namen van de blobs. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

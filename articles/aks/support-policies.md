@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593577"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402465"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -38,11 +38,6 @@ Micro soft beheert en bewaakt de volgende onderdelen via het deel venster beheer
 AKS is geen volledig beheerde cluster oplossing. Sommige onderdelen, zoals worker-knoop punten, hebben *gedeelde verantwoordelijkheid*, waar gebruikers het AKS-cluster moeten onderhouden. Gebruikers invoer is vereist, bijvoorbeeld om een beveiligings patch van een werk knooppunt besturings systeem (OS) toe te passen.
 
 De services worden *beheerd* in de zin dat micro soft en het AKS-team implementeert, werkt en verantwoordelijk is voor de beschik baarheid en functionaliteit van de service. Klanten kunnen deze beheerde onderdelen niet wijzigen. Micro soft beperkt de aanpassing tot een consistente en schaal bare gebruikers ervaring. Zie de [AKS-engine](https://github.com/Azure/aks-engine)voor een volledig aanpas bare oplossing.
-
-> [!NOTE]
-> AKS worker-knoop punten worden weer gegeven in de Azure Portal als normale Azure IaaS-resources. Deze virtuele machines worden echter geïmplementeerd in een aangepaste Azure-resource groep (voorafgegaan door MC\\*). Het is mogelijk om AKS worker-knoop punten te wijzigen. U kunt bijvoorbeeld Secure Shell (SSH) gebruiken om AKS worker-knoop punten te wijzigen op de manier waarop u normale virtuele machines wijzigt (u kunt de basis installatie kopie van het besturings systeem niet wijzigen, en wijzigingen kunnen mogelijk niet worden doorgevoerd tijdens het bijwerken of opnieuw opstarten) en u kunt andere Azure-resources koppelen aan AKS worker-knoop punten. Maar wanneer u wijzigingen aanbrengt *buiten-band beheer en-aanpassing,* kan het AKS-cluster niet meer worden ondersteund. Vermijd het wijzigen van worker-knoop punten tenzij Microsoft Ondersteuning u wijzigingen aanbrengt.
-
-Als er niet-ondersteunde bewerkingen worden uitgevoerd, zoals hierboven gedefinieerd, zoals de buiten-band toewijzing van alle agent knooppunten, wordt het cluster niet ondersteund weer gegeven. AKS behoudt zich het recht voor om besturings plannen te archiveren die zijn geconfigureerd met ondersteunings richtlijnen voor langere Peri Oden van meer dan 30 dagen. AKS onderhoudt back-ups van etcd-meta gegevens van het cluster en kan het cluster eenvoudig opnieuw toewijzen. Deze hertoewijzing kan worden geïnitieerd door een PUT-bewerking, waarbij het cluster weer wordt ondersteund, zoals een upgrade of schalen naar actieve agent knooppunten.
 
 ## <a name="shared-responsibility"></a>Gedeelde verantwoordelijkheid
 
@@ -104,8 +99,22 @@ Micro soft start werk knooppunten niet automatisch opnieuw op om patches op best
 
 Klanten zijn verantwoordelijk voor het uitvoeren van Kubernetes-upgrades. Ze kunnen upgrades uitvoeren via het configuratie scherm van Azure of de Azure CLI. Dit geldt voor updates die verbeteringen in de beveiliging of functionaliteit van Kubernetes bevatten.
 
+#### <a name="user-customization-of-worker-nodes"></a>Gebruikers aanpassing van worker-knoop punten
 > [!NOTE]
-> Omdat AKS een *beheerde service*is, bevatten de eind doelen van het proces de verantwoordelijkheid voor patches, updates en logboek verzameling, zodat het Service beheer meer volledig en hand kan worden uitgevoerd. Omdat de capaciteit van de service voor end-to-end-beheer toeneemt, kunnen toekomstige releases sommige functies achterwege laten (bijvoorbeeld het opnieuw opstarten van knoop punten en automatische patching).
+> AKS worker-knoop punten worden weer gegeven in de Azure Portal als normale Azure IaaS-resources. Deze virtuele machines worden echter geïmplementeerd in een aangepaste Azure-resource groep (voorafgegaan door MC \\ *). Het is mogelijk om AKS worker-knoop punten uit hun basis configuraties te verbeteren. U kunt bijvoorbeeld Secure Shell (SSH) gebruiken om AKS worker-knoop punten te wijzigen op de manier waarop u normale virtuele machines wijzigt. U kunt de basis installatie kopie van het besturings systeem echter niet wijzigen. Aangepaste wijzigingen worden mogelijk niet behouden tijdens een upgrade, schalen, bijwerken of opnieuw opstarten. Het is **echter wel**mogelijk om de *AKS-API buiten de band te brengen en buiten het bereik van het* AKS-cluster. Vermijd het wijzigen van worker-knoop punten tenzij Microsoft Ondersteuning u wijzigingen aanbrengt.
+
+Als er niet-ondersteunde bewerkingen worden uitgevoerd, zoals hierboven gedefinieerd, zoals de buiten-band toewijzing van alle agent knooppunten, wordt het cluster niet ondersteund weer gegeven. AKS behoudt zich het recht voor om besturings plannen te archiveren die zijn geconfigureerd met ondersteunings richtlijnen voor langere Peri Oden van meer dan 30 dagen. AKS onderhoudt back-ups van etcd-meta gegevens van het cluster en kan het cluster eenvoudig opnieuw toewijzen. Deze hertoewijzing kan worden geïnitieerd door een PUT-bewerking, waarbij het cluster weer wordt ondersteund, zoals een upgrade of schalen naar actieve agent knooppunten.
+
+AKS beheert de levens cyclus en bewerkingen van worker-knoop punten namens klanten-het wijzigen van de IaaS-resources die zijn gekoppeld aan de worker-knoop punten worden **niet ondersteund**. Een voor beeld van een niet-ondersteunde bewerking is het aanpassen van een VM-Schaalset van een knooppunt groep door de configuratie van de VMSS via de VMSS-portal of VMSS-API hand matig te wijzigen.
+ 
+Voor specifieke werkbelasting configuraties of-pakketten raadt AKS aan gebruik te maken van [Kubernetes daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+
+Met Kubernetes privileged daemonsets en init-containers kunnen klanten software van derden op cluster worker-knoop punten zetten/wijzigen of installeren. Voor beelden van dergelijke aanpassingen zijn het toevoegen van aangepaste beveiligings scan software of het bijwerken van sysctl-instellingen.
+
+Hoewel dit een aanbevolen pad is als de bovenstaande vereisten van toepassing zijn, kan AKS engineering en ondersteuning niet helpen bij het oplossen van problemen of diagnose van defecte/niet-functionele wijzigingen of die die het knoop punt niet beschikbaar maken door een door de klant geïmplementeerde daemonset.
+
+> [!NOTE]
+> AKS als een *beheerde service* heeft eind doelen zoals het verwijderen van de verantwoordelijkheid voor patches, updates en logboek verzameling om het Service beheer te volt ooien en hands-en-klaar te maken. Omdat de capaciteit van de service voor end-to-end-beheer toeneemt, kunnen toekomstige releases sommige functies achterwege laten (bijvoorbeeld het opnieuw opstarten van knoop punten en automatische patching).
 
 ### <a name="security-issues-and-patching"></a>Beveiligings problemen en patches
 

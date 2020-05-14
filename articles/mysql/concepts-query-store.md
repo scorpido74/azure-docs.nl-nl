@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d138c2fb8ed667d5b3c961c9f567264fa40edaee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/12/2020
+ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537037"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402245"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Azure Database for MySQL prestaties bewaken met query Store
 
-**Van toepassing op:** Azure Database for MySQL 5,7
+**Van toepassing op:** Azure Database for MySQL 5,7, 8,0
 
 De functie query Store in Azure Database for MySQL biedt een manier om query prestaties na verloop van tijd bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in de **MySQL** -schema database in het Azure database for MySQL-exemplaar.
 
@@ -87,7 +87,7 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Bepaalde** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALLE | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ De volgende opties zijn beschikbaar voor het configureren van query Store-para m
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Bepaalde** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |
@@ -104,7 +104,7 @@ De volgende opties zijn specifiek van toepassing op wacht statistieken.
 > [!NOTE]
 > Op dit moment is **query_store_capture_mode** vervangen door deze configuratie, wat betekent dat zowel **query_store_capture_mode** als **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** moeten worden ingeschakeld om alle wacht statistieken te kunnen gebruiken. Als **query_store_capture_mode** is uitgeschakeld, is de wacht tijd van de statistieken uitgeschakeld, omdat wacht tijden worden gebruikt voor de performance_schema ingeschakeld en de query_text vastgelegd door query Store.
 
-Gebruik de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md) om een andere waarde voor een para meter op te halen of in te stellen.
+Gebruik de [Azure Portal](howto-server-parameters.md)   of [Azure cli](howto-configure-server-parameters-using-cli.md)   om een andere waarde voor een para meter op te halen of in te stellen.
 
 ## <a name="views-and-functions"></a>Weer gaven en functies
 
@@ -116,7 +116,7 @@ Query's worden genormaliseerd door de structuur te bekijken na het verwijderen v
 
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID.
 
-| **Naam** | **Gegevenstype** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam** | **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Naam van het schema |
 | `query_id`| bigint (20) | NO| De unieke ID die voor de specifieke query is gegenereerd, als dezelfde query in een ander schema wordt uitgevoerd, wordt een nieuwe ID gegenereerd |
@@ -149,7 +149,7 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-| **Naam**| **Gegevenstype** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam**| **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
 | `interval_start` | tijdstempel | NO| Begin van het interval (toename van 15 minuten)|
 | `interval_end` | tijdstempel | NO| Einde van het interval (toename van 15 minuten)|
@@ -171,10 +171,10 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-- Als een MySQL-server de para `default_transaction_read_only` meter op heeft, kan de query Store geen gegevens vastleggen.
-- De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's\>worden aangetroffen (= 6000 bytes).
+- Als een MySQL-server de para meter `default_transaction_read_only` op heeft, kan de query Store geen gegevens vastleggen.
+- De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's worden aangetroffen ( \> = 6000 bytes).
 - De Bewaar periode voor wacht statistieken is 24 uur.
-- Wacht statistieken gebruiken voor beeld om een fractie van gebeurtenissen vast te leggen. De frequentie kan worden gewijzigd met behulp `query_store_wait_sampling_frequency`van de para meter.
+- Wacht statistieken gebruiken voor beeld om een fractie van gebeurtenissen vast te leggen. De frequentie kan worden gewijzigd met behulp van de para meter `query_store_wait_sampling_frequency` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

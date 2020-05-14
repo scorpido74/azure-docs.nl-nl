@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 99393ed518df590140f79933623a9f7ec96edc85
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612075"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402267"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -55,7 +55,7 @@ Apps en Desk tops die worden uitgevoerd in configuraties met meerdere sessies wo
 
 1. Maak verbinding met het bureau blad van de virtuele machine met een account met lokale Administrator bevoegdheden.
 2. Open het menu Start en typ ' gpedit. msc ' om de groepsbeleid editor te openen.
-3. Navigeer in de structuur naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > **externe sessie omgeving**.
+3. Navigeer in de structuur naar **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **extern bureaublad-services**  >  **extern bureaublad Session Host**  >  **externe sessie omgeving**.
 4. Beleid selecteren **Gebruik de standaard grafische hardware-adapter voor alle extern bureaublad-services sessies** en stel dit beleid in op **ingeschakeld** om GPU-rendering in de externe sessie in te scha kelen.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-versnelde frame codering configureren
@@ -80,7 +80,7 @@ Extern bureaublad codeert alle afbeeldingen die worden weer gegeven door apps en
 
 Voer een van de volgende handelingen uit om te controleren of apps de GPU gebruiken voor Rendering:
 
-* Voor virtuele Azure-machines met een NVIDIA GPU gebruikt `nvidia-smi` u het hulp programma zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik bij het uitvoeren van uw apps.
+* Voor virtuele Azure-machines met een NVIDIA GPU gebruikt u het `nvidia-smi` hulp programma zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik bij het uitvoeren van uw apps.
 * In ondersteunde besturingssysteem versies kunt u taak beheer gebruiken om te controleren op GPU-gebruik. Selecteer de GPU op het tabblad prestaties om te zien of apps gebruikmaken van de GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU-versneld frame codering controleren
@@ -88,7 +88,7 @@ Voer een van de volgende handelingen uit om te controleren of apps de GPU gebrui
 Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 
 1. Maak verbinding met het bureau blad van de virtuele machine met behulp van de Windows-client voor virtueel bureau blad.
-2.  > Start de logboeken en ga naar het volgende knoop punt: **Logboeken toepassingen en services****micro soft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **operationeel**
+2. Start de logboeken en ga naar het volgende knoop punt: **Logboeken toepassingen en services**  >  **micro soft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **operationeel**
 3. Zoek naar gebeurtenis-ID 170 om te bepalen of GPU-versneld coderen wordt gebruikt. Als u ' AVC hardware encoder enabled: 1 ' ziet, wordt GPU-code ring gebruikt.
 4. Zoek naar gebeurtenis-ID 162 om te bepalen of de AVC 444-modus wordt gebruikt. Als u ' AVC available: 1 eerste profiel: 2048 ' ziet, wordt het gebruik van AVC 444 gebruikt.
 
@@ -96,5 +96,5 @@ Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 
 Deze instructies moeten u uitvoeren met GPU-versnelling op één sessiehost (één virtuele machine). Enkele aanvullende overwegingen voor het inschakelen van GPU-versnelling in een grotere hostgroep:
 
-* U kunt een [VM-extensie](/azure/virtual-machines/extensions/overview) gebruiken om de installatie van het stuur programma en updates van een aantal virtuele machines te vereenvoudigen. Gebruik de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor VM'S met NVIDIA-gpu's en gebruik de extensie van het AMD GPU-stuur programma (binnenkort beschikbaar) voor VM'S met AMD-gpu's.
+* U kunt een [VM-extensie](/azure/virtual-machines/extensions/overview) gebruiken om de installatie van het stuur programma en updates van een aantal virtuele machines te vereenvoudigen. Gebruik de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor VM'S met NVIDIA-gpu's en gebruik de extensie van het [AMD GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-amd-gpu-windows) voor Vm's met AMD-gpu's.
 * Overweeg het gebruik van Active Directory groepsbeleid om de configuratie van groeps beleid te vereenvoudigen over een aantal Vm's. Zie [werken met Groepsbeleid-objecten](https://go.microsoft.com/fwlink/p/?LinkId=620889)voor meer informatie over het implementeren van Groepsbeleid in het Active Directory domein.
