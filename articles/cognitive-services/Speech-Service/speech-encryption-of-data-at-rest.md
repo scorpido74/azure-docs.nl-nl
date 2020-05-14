@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372357"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198669"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Spraak service versleuteling van gegevens in rust
 
@@ -42,13 +42,10 @@ Als u toegang wilt aanvragen om uw eigen opslag te maken, vult u het [BYOS-aan
 > [!IMPORTANT]
 > Als u door het systeem toegewezen beheerde identiteiten uitschakelt, wordt de toegang tot het opslag account verwijderd. Dit zorgt ervoor dat de onderdelen van de spraak service die toegang tot het opslag account vereisen, niet meer werken.  
 
-## <a name="regional-availability"></a>Regionale beschikbaarheid
+De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van BYOS, zodat u vergelijk bare gegevens besturings elementen kunt gebruiken om te [klanten-lockbox](../../security/fundamentals/customer-lockbox-overview.md). Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
 
-BYOS is momenteel beschikbaar in deze regio's:
-
-* US - zuid-centraal
-* VS - west 2
-* VS - oost
+> [!IMPORTANT]
+> Micro soft gebruikt **geen** klant gegevens om de spraak modellen te verbeteren. Als eindpunt logboek registratie is uitgeschakeld en er geen aanpassingen worden gebruikt, worden er geen klant gegevens opgeslagen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,13 +3,13 @@ author: erhopf
 ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/23/2019
-ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: ddc61a0d0cb5a630282a9ba0589cef6fda29c4b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78262410"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343460"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
 
@@ -101,3 +101,19 @@ In dit voor beeld wordt een wacht woord gebruikt voor het verifiëren van de Ser
    ```
 
 U kunt de Service-Principal ook verifiëren met een certificaat. Naast de service-principal wordt ook User Principal ondersteund door de machtigingen te delegeren via een andere AAD-toepassing. In dit geval, in plaats van wacht woorden of certificaten, wordt gebruikers gevraagd om twee ledige verificatie bij het ophalen van token.
+
+## <a name="authorize-access-to-managed-identities"></a>Toegang tot beheerde identiteiten toestaan
+ 
+Cognitive Services ondersteuning voor Azure Active Directory (Azure AD)-verificatie met [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Beheerde identiteiten voor Azure-resources kunnen toegang tot Cognitive Services resources toestaan via Azure AD-referenties van toepassingen die worden uitgevoerd in azure virtual machines (Vm's), functie-apps, schaal sets voor virtuele machines en andere services. Door beheerde identiteiten voor Azure-resources te gebruiken in combi natie met Azure AD-verificatie kunt u voor komen dat referenties worden opgeslagen in uw toepassingen die in de cloud worden uitgevoerd.  
+
+### <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten op een virtuele machine inschakelen
+
+Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om toegang te verlenen tot Cognitive Services resources van uw VM, moet u beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
+
+- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
+- [Azure-CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Client bibliotheken Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+
+Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie over beheerde identiteiten.
