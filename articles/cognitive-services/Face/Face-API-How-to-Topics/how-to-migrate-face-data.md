@@ -3,19 +3,19 @@ title: Uw gezichts gegevens migreren via abonnementen-gezicht
 titleSuffix: Azure Cognitive Services
 description: Deze hand leiding laat zien hoe u uw opgeslagen gezichts gegevens kunt migreren van het ene gezichts abonnement naar het andere.
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169814"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120807"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Uw gezichts gegevens migreren naar een ander gezichts abonnement
 
@@ -62,7 +62,7 @@ Vul de abonnements sleutel waarden en eind punt-Url's in voor uw bron-en doel ab
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Een PersonGroup voorbereiden voor migratie
 
-U hebt de ID van de PersonGroup in uw bron abonnement nodig om deze te migreren naar het doel abonnement. Gebruik de methode [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) om een lijst van uw PersonGroup-objecten op te halen. Haal vervolgens de eigenschap [PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) op. Dit proces ziet er anders uit op basis van de PersonGroup-objecten die u hebt. In deze hand leiding wordt de bron-PersonGroup-ID `personGroupId`opgeslagen in.
+U hebt de ID van de PersonGroup in uw bron abonnement nodig om deze te migreren naar het doel abonnement. Gebruik de methode [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) om een lijst van uw PersonGroup-objecten op te halen. Haal vervolgens de eigenschap [PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) op. Dit proces ziet er anders uit op basis van de PersonGroup-objecten die u hebt. In deze hand leiding wordt de bron-PersonGroup-ID opgeslagen in `personGroupId` .
 
 > [!NOTE]
 > Met de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) wordt een nieuwe PersonGroup gemaakt en getraind die kan worden gemigreerd. In de meeste gevallen moet u al een PersonGroup hebben om te gebruiken.
@@ -85,7 +85,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>De moment opname-ID ophalen
 
-De methode die wordt gebruikt om moment opnamen te maken, is asynchroon, dus u moet wachten tot de bewerking is voltooid. Momentopname bewerkingen kunnen niet worden geannuleerd. In deze code bewaakt de `WaitForOperation` methode de asynchrone aanroep. Hiermee wordt de status elke 100 MS gecontroleerd. Wanneer de bewerking is voltooid, haalt u een bewerkings- `OperationLocation` id op door het veld te parseren. 
+De methode die wordt gebruikt om moment opnamen te maken, is asynchroon, dus u moet wachten tot de bewerking is voltooid. Momentopname bewerkingen kunnen niet worden geannuleerd. In deze code bewaakt de `WaitForOperation` methode de asynchrone aanroep. Hiermee wordt de status elke 100 MS gecontroleerd. Wanneer de bewerking is voltooid, haalt u een bewerkings-ID op door het veld te parseren `OperationLocation` . 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
@@ -127,7 +127,7 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-Na de bewerkings `Succeeded`status wordt de moment opname-id opgehaald `ResourceLocation` door het veld van het geretourneerde OperationStatus-exemplaar te parseren.
+Na de bewerkings status wordt `Succeeded` de moment opname-id opgehaald door het `ResourceLocation` veld van het geretourneerde OperationStatus-exemplaar te parseren.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
@@ -152,7 +152,7 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > Een momentopname object is slechts 48 uur geldig. Maak een moment opname alleen als u deze binnenkort wilt gebruiken voor gegevens migratie.
 
-Een aanvraag voor het Toep assen van een moment opname retourneert een andere bewerking-ID. Als u deze ID wilt ophalen, `OperationLocation` parseert u het veld van het geretourneerde applySnapshotResult-exemplaar. 
+Een aanvraag voor het Toep assen van een moment opname retourneert een andere bewerking-ID. Als u deze ID wilt ophalen, parseert u het `OperationLocation` veld van het geretourneerde applySnapshotResult-exemplaar. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);

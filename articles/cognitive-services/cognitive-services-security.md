@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80131538"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202013"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
-De beveiliging moet worden beschouwd als een topprioriteit bij het ontwikkelen van alle toepassingen. Met het begin van kunst matige intelligentie-toepassingen is de beveiliging nog belang rijker. In dit artikel worden verschillende aspecten van Azure Cognitive Services beveiliging beschreven, zoals het gebruik van trans port Layer Security, authenticatie en het veilig configureren van gevoelige gegevens.
+De beveiliging moet worden beschouwd als een topprioriteit bij het ontwikkelen van alle toepassingen. Met het begin van kunst matige intelligentie-toepassingen is de beveiliging nog belang rijker. In dit artikel worden verschillende aspecten van Azure Cognitive Services beveiliging beschreven, zoals het gebruik van trans port Layer Security, authenticatie, het veilig configureren van gevoelige gegevens en Klanten-lockbox voor toegang tot klant gegevens.
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
@@ -28,13 +28,13 @@ Alle Cognitive Services-eind punten die worden weer gegeven via HTTP afdwingen T
 * De taal (en het platform) waarmee de HTTP-aanroep moet TLS 1,2 opgeven als onderdeel van de aanvraag
   * Afhankelijk van de taal en het platform wordt het opgeven van TLS impliciet of expliciet uitgevoerd
 
-Neem voor .NET-gebruikers rekening met de <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aanbevolen <span class="docon docon-navigate-external x-hidden-focus"> </span>procedures voor Transport Layer Security </a>.
+Neem voor .NET-gebruikers rekening met de <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aanbevolen <span class="docon docon-navigate-external x-hidden-focus"></span> procedures voor Transport Layer Security </a>.
 
 ## <a name="authentication"></a>Verificatie
 
-Bij het bespreken van verificatie zijn er verschillende veelvoorkomende problemen. Verificatie en autorisatie worden vaak voor elkaar verward. De identiteit is ook een belang rijk onderdeel van de beveiliging. Een identiteit is een verzameling gegevens over een <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Principal <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Id-providers (IdP) bieden identiteiten aan verificatie services. Verificatie is het verifiëren van de identiteit van een gebruiker. Autorisatie is de specificatie van toegangs rechten en bevoegdheden voor bronnen voor een bepaalde identiteit. Diverse Cognitive Services-aanbiedingen, waaronder op rollen gebaseerd toegangs beheer (RBAC). RBAC kan worden gebruikt om een aantal van de ceremonie bij het hand matig beheren van principals te vereenvoudigen. Zie [op rollen gebaseerd toegangs beheer voor Azure-resources](../role-based-access-control/overview.md)voor meer informatie.
+Bij het bespreken van verificatie zijn er verschillende veelvoorkomende problemen. Verificatie en autorisatie worden vaak voor elkaar verward. De identiteit is ook een belang rijk onderdeel van de beveiliging. Een identiteit is een verzameling gegevens over een <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Principal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Id-providers (IdP) bieden identiteiten aan verificatie services. Verificatie is het verifiëren van de identiteit van een gebruiker. Autorisatie is de specificatie van toegangs rechten en bevoegdheden voor bronnen voor een bepaalde identiteit. Diverse Cognitive Services-aanbiedingen, waaronder op rollen gebaseerd toegangs beheer (RBAC). RBAC kan worden gebruikt om een aantal van de ceremonie bij het hand matig beheren van principals te vereenvoudigen. Zie [op rollen gebaseerd toegangs beheer voor Azure-resources](../role-based-access-control/overview.md)voor meer informatie.
 
-Zie <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">aanvragen verifiëren voor Azure Cognitive Services<span class="docon docon-navigate-external x-hidden-focus"></span></a>voor meer informatie over verificatie met abonnements sleutels, toegangs tokens en Azure Active Directory (Aad).
+Zie <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">aanvragen verifiëren voor Azure Cognitive Services <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie over verificatie met abonnements sleutels, toegangs tokens en Azure Active Directory (Aad).
 
 ## <a name="environment-variables-and-application-configuration"></a>Omgevings variabelen en toepassings configuratie
 
@@ -48,7 +48,7 @@ Omgevings variabelen zijn naam/waarde-paren, die zijn opgeslagen in een specifie
 
 ### <a name="set-environment-variable"></a>Omgevings variabele instellen
 
-Als u omgevings variabelen wilt instellen, gebruikt u een van de `ENVIRONMENT_VARIABLE_KEY` volgende opdrachten: waarbij de `value` de benoemde sleutel is en de waarde is die is opgeslagen in de omgevings variabele.
+Als u omgevings variabelen wilt instellen, gebruikt u een van de volgende opdrachten: waarbij de de `ENVIRONMENT_VARIABLE_KEY` benoemde sleutel is en `value` de waarde is die is opgeslagen in de omgevings variabele.
 
 # <a name="command-line"></a>[Opdracht regel](#tab/command-line)
 
@@ -108,11 +108,11 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 ### <a name="get-environment-variable"></a>Omgevings variabele ophalen
 
-Als u een omgevings variabele wilt ophalen, moet deze in het geheugen worden gelezen. Afhankelijk van de taal die u gebruikt, moet u rekening houden met de volgende code fragmenten. Deze code fragmenten laten zien hoe u de omgevings variabele kunt `ENVIRONMENT_VARIABLE_KEY` ophalen en toewijzen aan een variabele `value`met de naam.
+Als u een omgevings variabele wilt ophalen, moet deze in het geheugen worden gelezen. Afhankelijk van de taal die u gebruikt, moet u rekening houden met de volgende code fragmenten. Deze code fragmenten laten zien hoe u de omgevings variabele kunt ophalen `ENVIRONMENT_VARIABLE_KEY` en toewijzen aan een variabele met de naam `value` .
 
 # <a name="c"></a>[G #](#tab/csharp)
 
-<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```csharp
 using static System.Environment;
@@ -131,7 +131,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +146,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```java
 import java.lang.*;
@@ -163,7 +163,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +173,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```python
 import os
@@ -184,7 +184,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -193,6 +193,21 @@ NSString* value =
 ```
 
 ---
+
+## <a name="customer-lockbox"></a>Klanten-lockbox
+
+[Klanten-lockbox voor Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag. Zie [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md)voor informatie over hoe klanten-lockbox aanvragen worden gestart, bijgehouden en opgeslagen voor latere beoordelingen en controles. 
+
+Klanten-lockbox is beschikbaar voor deze cognitieve service:
+
+* Vertaler
+
+Voor Language Understanding heeft micro soft-technici geen toegang tot klant gegevens in de E0-SKU. Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u het [aanvraag formulier](https://aka.ms/cogsvc-cmk)voor de Luis in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
+
+De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van BYOS, zodat u vergelijk bare gegevens besturings elementen kunt gebruiken om te [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md). Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
+
+> [!IMPORTANT]
+> Micro soft gebruikt **geen** klant gegevens om de spraak modellen te verbeteren. Als eindpunt logboek registratie is uitgeschakeld en er geen aanpassingen worden gebruikt, worden er geen klant gegevens opgeslagen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

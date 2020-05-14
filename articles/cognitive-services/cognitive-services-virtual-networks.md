@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79371219"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202081"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
 
@@ -55,7 +55,7 @@ Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst
 
 Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot de *centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *VS-West 2*, *wereld wijd*en *US gov-Virginia* Azure-regio's.
 > [!div class="checklist"]
-> * [Translator Text](./translator/index.yml)
+> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Servicetags
 Naast het ondersteunen van service-eind punten voor virtuele netwerken voor de bovenstaande services, ondersteunt Cognitive Services ook een servicetag voor de configuratie van uitgaande netwerk regels. De volgende services zijn opgenomen in het CognitiveServicesManagement-service label.
@@ -339,12 +339,12 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
 
 U kunt Cognitive Services resources zodanig configureren dat toegang vanaf specifieke IP-adresbereiken voor het Internet wordt toegestaan. Met deze configuratie wordt toegang verleend tot specifieke services en on-premises netwerken, waardoor het algemene Internet verkeer effectief wordt geblokkeerd.
 
-Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in het formulier `16.17.18.0/24` of `16.17.18.19`als afzonderlijke IP-adressen, zoals.
+Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in het formulier `16.17.18.0/24` of als afzonderlijke IP-adressen, zoals `16.17.18.19` .
 
    > [!Tip]
    > Kleine adresbereiken die gebruikmaken van de grootte van het voor voegsel/31 of/32, worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke IP-adres regels.
 
-IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met `10.*`, `172.16.*`  -  `172.31.*`en `192.168.*`.
+IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met `10.*` , `172.16.*`  -  `172.31.*` en `192.168.*` .
 
    > [!NOTE]
    > IP-netwerk regels hebben geen invloed op aanvragen die afkomstig zijn uit dezelfde Azure-regio als de Cognitive Services resource. Gebruik [regels voor virtuele netwerken](#grant-access-from-a-virtual-network) om aanvragen van dezelfde regio toe te staan.
@@ -369,11 +369,11 @@ U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure 
 
 1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in [CIDR-indeling](https://tools.ietf.org/html/rfc4632)) in onder **firewall** > **adressen**. Alleen geldige open bare IP-adressen (niet-gereserveerd) worden geaccepteerd.
+1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in [CIDR-indeling](https://tools.ietf.org/html/rfc4632)) in onder **firewall**  >  **adressen**. Alleen geldige open bare IP-adressen (niet-gereserveerd) worden geaccepteerd.
 
    ![IP-bereik toevoegen](media/vnet/virtual-network-add-ip-range.png)
 
-1. Als u een IP-netwerk regel wilt verwijderen, selecteert <span class="docon docon-delete x-hidden-focus"></span> u het prullenbak pictogram naast het adres bereik.
+1. Als u een IP-netwerk regel wilt verwijderen, selecteert u het Prullenbak <span class="docon docon-delete x-hidden-focus"></span> pictogram naast het adres bereik.
 
    ![IP-bereik verwijderen](media/vnet/virtual-network-delete-ip-range.png)
 
