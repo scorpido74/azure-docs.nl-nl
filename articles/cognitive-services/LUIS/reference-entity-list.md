@@ -2,13 +2,13 @@
 title: Entiteits type van lijst-LUIS
 description: Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor lijst entiteiten. Gebruik de functie aanbevolen om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken.
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097571"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588884"
 ---
 # <a name="list-entity"></a>Lijstentiteit
 
@@ -52,7 +52,7 @@ Een lijst entiteit is niet door de machine geleerd. Het is een exacte tekst over
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Stel dat de app een lijst heeft met `Cities`de naam, waarmee u namen van steden kunt variëren, waaronder de plaats van de lucht haven (zeekaas), luchthaven code (zee), post code (98101) en telefoon netnummer (206).
+Stel dat de app een lijst heeft met de naam `Cities` , waarmee u namen van steden kunt variëren, waaronder de plaats van de lucht haven (zeekaas), luchthaven code (zee), post code (98101) en telefoon netnummer (206).
 
 |Lijst item|Item synoniemen|
 |---|---|
@@ -84,7 +84,7 @@ In de vorige utterance wordt het woord `paris` toegewezen aan het item Parijs al
 #### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 
-Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=false` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=true` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -132,4 +132,7 @@ Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](tutorial-list-entity.md)leert u hoe u een **lijst entiteit** kunt gebruiken om exacte overeenkomsten met tekst te extra heren uit een lijst met bekende items.
+Meer informatie over entiteiten:
+
+* [Concepten](luis-concept-entity-types.md)
+* [Het maken van](luis-how-to-add-entities.md)

@@ -1,7 +1,7 @@
 ---
-title: Translator Text-API methode BreakSentence
+title: Vertaal BreakSentence methode
 titleSuffix: Azure Cognitive Services
-description: Met de Translator Text-API methode BreakSentence wordt de plaatsing van de begrenzing van zinnen in een stuk tekst bepaald.
+description: Met de methode Translator BreakSentence wordt de plaatsing van de begrenzing van zinnen in een stuk tekst bepaald.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548115"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588629"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Text-API 3,0: BreakSentence
+# <a name="translator-30-breaksentence"></a>Translator 3,0: BreakSentence
 
 Hiermee wordt de positie van zinnen in een stuk tekst bepaald.
 
@@ -35,22 +35,22 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
 | Query parameter | Beschrijving |
 | -------| ----------- |
-| api-versie <img width=200/>   | **Vereiste query parameter**.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0`. |
+| api-versie <img width=200/>   | **Vereiste query parameter**.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0` . |
 | language | **Optionele query parameter**.<br/>Taal code die de taal van de invoer tekst aangeeft. Als er geen code is opgegeven, wordt automatische taal detectie toegepast. |
 | uit    | **Optionele query parameter**.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.  | 
 
 Aanvraag headers zijn onder andere:
 
-| Headers | Beschrijving |
+| Kopteksten | Beschrijving |
 | ------- | ----------- |
 | Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
-| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
+| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` . |
 | Content-length    | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst.  | 
-| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId`.  | 
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` .  | 
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks `Text`eigenschap met de naam. De grenzen van zinnen worden berekend voor de waarde van `Text` de eigenschap. Een voor beeld van een aanvraag tekst met een tekst fragment ziet er als volgt uit:
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text` . De grenzen van zinnen worden berekend voor de waarde van de `Text` eigenschap. Een voor beeld van een aanvraag tekst met een tekst fragment ziet er als volgt uit:
 
 ```json
 [
@@ -77,7 +77,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
      * `score`: Een float-waarde waarmee het vertrouwen in het resultaat wordt aangegeven. De Score ligt tussen nul en een en een lage score geeft een lage betrouw baarheid aan.
      
-    Houd er rekening `detectedLanguage` mee dat de eigenschap alleen aanwezig is in het resultaat object als automatische taal detectie is aangevraagd.
+    Houd er rekening mee dat de `detectedLanguage` eigenschap alleen aanwezig is in het resultaat object als automatische taal detectie is aangevraagd.
 
 Een voor beeld van een JSON-antwoord is:
 
@@ -96,7 +96,7 @@ Een voor beeld van een JSON-antwoord is:
 ## <a name="response-headers"></a>Antwoordheaders
 
 <table width="100%">
-  <th width="20%">Headers</th>
+  <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
     <td>X-aanvraag-}</td>
@@ -113,7 +113,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   <th>Beschrijving</th>
   <tr>
     <td>200</td>
-    <td>Geslaagd.</td>
+    <td>Voltooid.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -133,15 +133,15 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>500</td>
-    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
+    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header `X-RequestId` en client-id uit aanvraag header `X-ClientTraceId` .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
+    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header `X-RequestId` en client-id uit aanvraag header `X-ClientTraceId` .</td>
   </tr>
 </table> 
 
-Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [pagina v3-Translator text-API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [referentie pagina van v3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Voorbeelden
 

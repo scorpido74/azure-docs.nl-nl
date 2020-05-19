@@ -13,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005773"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590261"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
 
 Op deze pagina vindt u informatie over het oplossen van problemen met basis-en standaard Veelgestelde vragen over Azure Load Balancer. Zie [Standard Load Balancer Overview](load-balancer-standard-diagnostics.md)voor meer informatie over Standard Load Balancer.
 
@@ -98,7 +97,7 @@ Als een virtuele machine niet reageert op het gegevens verkeer, komt dit mogelij
 **Validatie en oplossing**
 
 1. Meld u aan bij de back-end-VM. 
-2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de  gegevens poort: netstat-a 
+2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de gegevens poort:   netstat-a 
 3. Als de poort niet wordt vermeld met de status Luis TEREn, configureert u de juiste listener-poort 
 4. Als de poort is gemarkeerd als luistert, controleert u de doel toepassing op die poort voor mogelijke problemen.
 

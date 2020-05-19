@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 528c3613549ee49009f99d45e5bd9c2cf1745d78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779991"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588255"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Toegang tot Azure Event Grid-bronnen verifiëren
 In dit artikel vindt u informatie over de volgende scenario's:  
@@ -28,19 +28,25 @@ U neemt de verificatie waarde op in de HTTP-header. Voor SAS gebruikt u **AEG-SA
 
 ### <a name="key-authentication"></a>Sleutel verificatie
 
-Sleutel verificatie is de eenvoudigste vorm van verificatie. Gebruik de volgende indeling:`aeg-sas-key: <your key>`
+Sleutel verificatie is de eenvoudigste vorm van verificatie. Gebruik de indeling: `aeg-sas-key: <your key>` in de header van het bericht.
 
 U geeft bijvoorbeeld een sleutel door:
 
 ```
-aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
+aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+```
+
+U kunt ook `aeg-sas-key` een query parameter opgeven. 
+
+```
+https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 ### <a name="sas-tokens"></a>SAS-tokens
 
-SAS-tokens voor Event Grid bevatten de resource, een verloop tijd en een hand tekening. De indeling van de SAS-token is `r={resource}&e={expiration}&s={signature}`:.
+SAS-tokens voor Event Grid bevatten de resource, een verloop tijd en een hand tekening. De indeling van de SAS-token is: `r={resource}&e={expiration}&s={signature}` .
 
-De resource is het pad naar het event grid-onderwerp waarnaar u gebeurtenissen verzendt. Een geldig bronpad is bijvoorbeeld: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`. Zie [resource typen micro soft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)voor een overzicht van alle ondersteunde API-versies. 
+De resource is het pad naar het event grid-onderwerp waarnaar u gebeurtenissen verzendt. Een geldig bronpad is bijvoorbeeld: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Zie [resource typen micro soft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)voor een overzicht van alle ondersteunde API-versies. 
 
 U kunt de hand tekening genereren op basis van een sleutel.
 

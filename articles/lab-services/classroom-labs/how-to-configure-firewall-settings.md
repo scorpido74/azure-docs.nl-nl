@@ -3,15 +3,15 @@ title: Firewall-instellingen voor Azure Lab Services
 description: Informatie over het bepalen van het open bare IP-adres en het poort nummer bereik van virtuele machines in een Lab zodat informatie kan worden toegevoegd aan de firewall regels.
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443449"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589530"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Firewall-instellingen voor Azure Lab Services
 
@@ -24,7 +24,7 @@ Elk Lab maakt gebruik van één openbaar IP-adres en meerdere poorten.  Alle Vm'
 
 ## <a name="find-public-ip-for-a-lab"></a>Een openbaar IP-adres voor een Lab zoeken
 
-De open bare IP-adressen voor elk lab worden weer gegeven op de pagina **alle Labs** van het lab-account voor Lab-Services.  Zie [Labs beheren in een Lab-account](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)voor instructies voor het vinden van de pagina **alle Labs** .  
+De open bare IP-adressen voor elk lab worden weer gegeven op de pagina **alle Labs** van het lab-account voor Lab-Services.  Zie [Labs weer geven in een Lab-account](manage-labs.md#view-labs-in-a-lab-account)voor instructies voor het vinden van de pagina **alle Labs** .  
 
 > [!div class="mx-imgBorder"]
 > ![Pagina alle Labs](../media/how-to-configure-firewall-settings/all-labs-properties.png)

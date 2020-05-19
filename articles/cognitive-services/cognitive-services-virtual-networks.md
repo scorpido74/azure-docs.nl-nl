@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202081"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588334"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
 
@@ -50,7 +50,7 @@ Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst
 > * [Form Recognizer](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Tekstanalyse](./text-analytics/index.yml)
+> * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 
 Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot de *centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *VS-West 2*, *wereld wijd*en *US gov-Virginia* Azure-regio's.
@@ -68,9 +68,9 @@ Naast het ondersteunen van service-eind punten voor virtuele netwerken voor de b
 > * [Form Recognizer](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Tekstanalyse](./text-analytics/index.yml)
+> * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](./translator/index.yml)
+> * [Translator](./translator/index.yml)
 > * [Speech Service](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Standaardregel voor netwerktoegang wijzigen
@@ -335,7 +335,7 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
 > [!IMPORTANT]
 > Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen via een IP-adres bereik van Internet
+## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-bereik
 
 U kunt Cognitive Services resources zodanig configureren dat toegang vanaf specifieke IP-adresbereiken voor het Internet wordt toegestaan. Met deze configuratie wordt toegang verleend tot specifieke services en on-premises netwerken, waardoor het algemene Internet verkeer effectief wordt geblokkeerd.
 

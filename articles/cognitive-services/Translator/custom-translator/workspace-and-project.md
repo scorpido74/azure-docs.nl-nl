@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a67e199af1ee6e68f00dbde9a0a43d02e4c7d638
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219432"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588663"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Wat is een aangepaste Translator-werk ruimte?
 
@@ -39,9 +39,9 @@ In dezelfde werk ruimte kunt u projecten maken voor hetzelfde taal paar in versc
 
 Met aangepaste vertaler kunt u een project label toewijzen aan uw project. Het project label onderscheidt tussen meerdere projecten met hetzelfde taal paar en dezelfde-categorie. Vermijd het gebruik van project etiketten als best practice, tenzij dat nodig is.
 
-Het project label wordt gebruikt als onderdeel van de CategoryID. Als het project label wordt in-of uitgesteld op hetzelfde niveau is ingesteld voor projecten, delen projecten met dezelfde categorie en *verschillende* taal paren hetzelfde CategoryID. Deze methode is handig omdat u of uw klant kunt overschakelen tussen talen wanneer u de Text Translator-API gebruikt zonder dat u zich zorgen hoeft te maken over een CategoryID dat uniek is voor elk project.
+Het project label wordt gebruikt als onderdeel van de CategoryID. Als het project label wordt in-of uitgesteld op hetzelfde niveau is ingesteld voor projecten, delen projecten met dezelfde categorie en *verschillende* taal paren hetzelfde CategoryID. Deze methode is handig omdat u of uw klant kunt overschakelen tussen talen wanneer u het conversie programma gebruikt zonder dat u zich zorgen hoeft te maken over een CategoryID dat uniek is voor elk project.
 
-Als ik bijvoorbeeld vertalingen in het technologie domein wil inschakelen van Engels naar Frans en van Frans naar Engels, zou ik twee projecten maken: één voor Engels-\> Frans en één voor Frans-\> Engels. Ik zou dezelfde categorie (technologie) voor beide opgeven en het project label leeg laten. De CategoryID voor beide projecten zou overeenkomen, dus kan ik de API voor zowel Engelse als Franse vertalingen opvragen zonder mijn categorie nummer te wijzigen.
+Als ik bijvoorbeeld vertalingen in het technologie domein wil inschakelen van Engels naar Frans en van Frans naar Engels, zou ik twee projecten maken: één voor Engels- \> Frans en één voor Frans- \> Engels. Ik zou dezelfde categorie (technologie) voor beide opgeven en het project label leeg laten. De CategoryID voor beide projecten zou overeenkomen, dus kan ik de API voor zowel Engelse als Franse vertalingen opvragen zonder mijn categorie nummer te wijzigen.
 
 Als u een taal serviceprovider bent en meerdere klanten wilt voorzien van verschillende modellen die hetzelfde categorie-en taal paar behouden, kunt u een project label gebruiken om onderscheid te maken tussen klanten.
 

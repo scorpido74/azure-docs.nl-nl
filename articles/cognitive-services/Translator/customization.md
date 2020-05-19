@@ -1,5 +1,5 @@
 ---
-title: Aanpassing van vertalingen-Translator Text-API
+title: Aanpassing van vertalingen-Translator
 titleSuffix: Azure Cognitive Services
 description: Gebruik de micro soft Translator-hub om uw eigen machine-Vertaal systeem te bouwen met behulp van de gewenste terminologie en stijl.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71257626"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588646"
 ---
 # <a name="customize-your-text-translations"></a>Uw tekst vertalingen aanpassen
 
-Micro soft Custom Translator is een functie van de micro soft Translator-service, waarmee gebruikers de geavanceerde Neural machine vertalingen van micro soft Translator kunnen aanpassen bij het vertalen van tekst met behulp van de Translator Text-API (alleen versie 3).
+Het aangepaste conversie programma is een functie van de Translator-service, waarmee gebruikers de geavanceerde Neural machine vertalingen van micro soft Translator kunnen aanpassen bij het vertalen van tekst met behulp van Translator (alleen versie 3).
 
 De functie kan ook worden gebruikt om spraak omzetting aan te passen wanneer u deze gebruikt met [Cognitive Services speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
@@ -33,7 +33,7 @@ Gebruik uw eerder vertaalde documenten (folders, webpagina's, documentatie enz.)
 
 Het systeem accepteert ook gegevens die parallel zijn op document niveau, maar die nog niet zijn afgestemd op het niveau van de zin. Als gebruikers toegang hebben tot versies van dezelfde inhoud in meerdere talen, maar in afzonderlijke documenten aangepaste vertalers kunnen automatisch worden afgestemd op de verschillende documenten.  Het systeem kan ook Monolingual-gegevens in een of beide talen gebruiken om de parallelle trainings gegevens aan te vullen om de vertalingen te verbeteren.
 
-Het aangepaste systeem is vervolgens beschikbaar via een regel matige oproep naar de micro soft-Translator Text-API met behulp van de para meter Category.
+Het aangepaste systeem is vervolgens beschikbaar via een regel matige aanroep naar Translator met de para meter Category.
 
 Gezien het passende type en de juiste hoeveelheid trainings gegevens, is het niet ongebruikelijk om te verwachten dat er geen winst meer is tussen 5 en 10, of zelfs meer BLEU punten op Vertaal kwaliteit door gebruik te maken van aangepaste vertalers.
 
@@ -59,7 +59,7 @@ Meer informatie over de verschillende aanpassings niveaus op basis van beschik b
 ## <a name="collaborative-translations-framework"></a>Framework voor gezamenlijke vertalingen
 
 > [!NOTE]
-> Vanaf 1 februari 2018, AddTranslation () en AddTranslationArray () zijn niet meer beschikbaar voor gebruik met de Translator Text-API V 2.0. Deze methoden mislukken en er worden niets geschreven. De Translator Text-API V 3.0 biedt geen ondersteuning voor deze methoden.
+> Vanaf 1 februari 2018, AddTranslation () en AddTranslationArray () zijn niet meer beschikbaar voor gebruik met Translator v 2.0. Deze methoden mislukken en er worden niets geschreven. Translator v 3.0 biedt geen ondersteuning voor deze methoden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

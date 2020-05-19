@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589853"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Afgedrukte en handgeschreven tekst herkennen
 
@@ -26,10 +26,9 @@ Computer Vision biedt een aantal services voor het detecteren en uitpakken van g
 
 De Lees-API detecteert tekst inhoud in een afbeelding met onze meest recente herkennings modellen en zet de geïdentificeerde tekst om in een door een machine Lees bare teken stroom. Het is geoptimaliseerd voor tekst-zware afbeeldingen (zoals documenten die digitaal zijn gescand) en voor afbeeldingen met veel visuele ruis. Hiermee wordt bepaald welk herkennings model moet worden gebruikt voor elke tekst regel, met ondersteuning voor afbeeldingen met zowel gedrukte als handgeschreven tekst. De Lees-API wordt asynchroon uitgevoerd omdat grotere documenten enkele minuten kunnen duren om een resultaat te retour neren.
 
-Met de Lees bewerking worden de oorspronkelijke regel groepen van herkende woorden in de uitvoer bijgehouden. Elke regel wordt geleverd met coördinaten van het selectie kader en elk woord in de regel heeft ook een eigen coördinaten. Als een woord is herkend met een lage betrouw baarheid, wordt die informatie ook overgebracht. Raadpleeg de naslag documenten [lezen API v 2.0/referentie](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) docs of [Lees API v 3.0 Preview](https://go.microsoft.com/fwlink/?linkid=2118322) voor meer informatie.
+Met de Lees bewerking worden de oorspronkelijke regel groepen van herkende woorden in de uitvoer bijgehouden. Elke regel wordt geleverd met coördinaten van het selectie kader en elk woord in de regel heeft ook een eigen coördinaten. Als een woord is herkend met een lage betrouw baarheid, wordt die informatie ook overgebracht. Raadpleeg de naslag documentatie over [API v 2.0 lezen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) of Raadpleeg [API v 3.0 referentie documenten](https://aka.ms/computer-vision-v3-ref) voor meer informatie.
 
-> [!NOTE]
-> Deze functie is alleen beschikbaar voor de Engelse en Spaanse (v 3.0 Preview) tekst.
+De Lees bewerking kan tekst herkennen in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlands.
 
 ### <a name="image-requirements"></a>Vereisten voor installatiekopieën
 

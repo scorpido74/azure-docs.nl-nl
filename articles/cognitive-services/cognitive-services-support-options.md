@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258422"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590533"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Ondersteuning en feedback opties voor Azure Cognitive Services
 
@@ -33,7 +33,7 @@ Bekijk het bereik van de [ondersteunings opties voor Azure en kies het abonnemen
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
@@ -83,7 +83,7 @@ De opmerkingen bij de Cognitive Services-release worden bijgewerkt wanneer er ni
  - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Spraak Services](speech-service/releasenotes.md)
  - [SDK voor speech Services](speech-service/devices-sdk-release-notes.md)
- - [Tekstanalyse](text-analytics/whats-new.md)
+ - [Text Analytics](text-analytics/whats-new.md)
  - [Video Indexer](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure Blog
@@ -131,8 +131,8 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee√
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Spraakservices               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Tekstanalyse                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator Text               | https://cognitive.uservoice.com/forums/558796-translator |
+| Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Fouten rapporteren

@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695157"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588901"
 ---
-# <a name="composite-entity"></a>Samengestelde entiteit 
+# <a name="composite-entity"></a>Samengestelde entiteit
 
-Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressies en lijst entiteiten. De afzonderlijke entiteiten vormen een hele entiteit. 
+Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressies en lijst entiteiten. De afzonderlijke entiteiten vormen een hele entiteit.
+
+> [!CAUTION]
+> Deze entiteit is **afgeschaft**. Migreer naar de door de [machine geleerde entiteit](reference-entity-machine-learned-entity.md).
 
 **Deze entiteit is geschikt voor de volgende gegevens:**
 
-* Zijn aan elkaar gerelateerd. 
+* Zijn aan elkaar gerelateerd.
 * Ze zijn aan elkaar gerelateerd in de context van de utterance.
 * Verschillende typen entiteit gebruiken.
 * Moeten worden gegroepeerd en verwerkt door de client toepassing als een gegevens eenheid.
@@ -33,17 +36,17 @@ Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde 
 
 ## <a name="example-json"></a>Voor beeld JSON
 
-Overweeg een samengestelde entiteit van vooraf `number` gebouwde `Location::ToLocation` en met de volgende utterance:
+Overweeg een samengestelde entiteit van vooraf gebouwde `number` en `Location::ToLocation` met de volgende utterance:
 
 `book 2 tickets to cairo`
 
-U ziet `2`dat, het nummer en `cairo`, de ToLocation woorden hebben die geen deel uitmaken van een van de entiteiten. De groene onderstreping, die wordt gebruikt in een gelabelde utterance in de [Luis](luis-reference-regions.md) -website, geeft een samengestelde entiteit aan.
+U ziet dat `2` , het nummer en `cairo` , de ToLocation woorden hebben die geen deel uitmaken van een van de entiteiten. De groene onderstreping, die wordt gebruikt in een gelabelde utterance in de [Luis](luis-reference-regions.md) -website, geeft een samengestelde entiteit aan.
 
 ![Samengestelde entiteit](./media/luis-concept-data-extraction/composite-entity.png)
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
-Samengestelde entiteiten worden geretourneerd in een `compositeEntities` matrix en alle entiteiten binnen de samen stelling worden ook geretourneerd in `entities` de matrix:
+Samengestelde entiteiten worden geretourneerd in een `compositeEntities` matrix en alle entiteiten binnen de samen stelling worden ook geretourneerd in de `entities` matrix:
 
 ```JSON
   "entities": [
@@ -87,11 +90,11 @@ Samengestelde entiteiten worden geretourneerd in een `compositeEntities` matrix 
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=false` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -108,7 +111,7 @@ Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=true` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -169,7 +172,7 @@ Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
 }
 ```
 
-* * * 
+* * *
 
 
 |Gegevens object|Entiteitsnaam|Waarde|
@@ -179,4 +182,7 @@ Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-tutorial-composite-entity.md)voegt u een **samengestelde entiteit** toe om geëxtraheerde gegevens van verschillende typen te bundelen in één container met een entiteit. Door de gegevens te bundelen, kan de client toepassing eenvoudig gerelateerde gegevens in verschillende gegevens typen ophalen.
+Meer informatie over entiteiten:
+
+* [Concepten](luis-concept-entity-types.md)
+* [Het maken van](luis-how-to-add-entities.md)

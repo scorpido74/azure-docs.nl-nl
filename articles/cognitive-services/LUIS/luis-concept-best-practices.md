@@ -2,14 +2,14 @@
 title: Aanbevolen procedures voor het bouwen van uw LUIS-app
 description: Meer informatie over de aanbevolen procedures voor het verkrijgen van de beste resultaten van het model van uw LUIS-app.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382393"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589802"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Aanbevolen procedures voor het bouwen van een LUIS-app (Language memorandum)
 Gebruik het ontwerp proces voor apps om uw LUIS-app te bouwen:
@@ -31,11 +31,11 @@ De volgende lijst bevat aanbevolen procedures voor LUIS-apps:
 
 |Wel doen|Niet doen|
 |--|--|
-|[Afzonderlijke intenties definiëren](#do-define-distinct-intents)<br>[Descriptors aan intenties toevoegen](#do-add-descriptors-to-intents) |[Een groot aantal voor beelden uitingen toevoegen aan intenties](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
+|[Afzonderlijke intenties definiëren](#do-define-distinct-intents)<br>[Functies toevoegen aan intenties](#do-add-features-to-intents) |[Een groot aantal voor beelden uitingen toevoegen aan intenties](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
 |[Vind een zoete vlek tussen te algemeen en te specifiek voor elke intentie](#do-find-sweet-spot-for-intents)|[LUIS als trainings platform gebruiken](#dont-use-luis-as-a-training-platform)|
 |[Uw app iteratief bouwen met versies](#do-build-your-app-iteratively-with-versions)<br>[Entiteiten bouwen voor model ontleding](#do-build-for-model-decomposition)|[Een groot aantal voor beeld-uitingen met dezelfde indeling toevoegen en andere indelingen negeren](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Patronen in latere iteraties toevoegen](#do-add-patterns-in-later-iterations)|[De definitie van intenties en entiteiten combi neren](#dont-mix-the-definition-of-intents-and-entities)|
-|[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voor beeld uitingen toevoegen aan geen intentie](#do-add-example-utterances-to-none-intent)|[Descriptors maken met alle mogelijke waarden](#dont-create-descriptors-with-all-the-possible-values)|
+|[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voor beeld uitingen toevoegen aan geen intentie](#do-add-example-utterances-to-none-intent)|[Woordgroepen lijsten met alle mogelijke waarden maken](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Gebruik de functie Voorst Ellen voor actief leren](#do-leverage-the-suggest-feature-for-active-learning)|[Te veel patronen toevoegen](#dont-add-many-patterns)|
 |[De prestaties van uw app bewaken met batch tests](#do-monitor-the-performance-of-your-app)|[Train en publiceer met elk enkel voor beeld utterance toegevoegd](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -51,11 +51,11 @@ Bekijk het volgende voor beeld uitingen:
 |Een vlucht boeken|
 |Een hotel boeken|
 
-`Book a flight`en `Book a hotel` gebruiken dezelfde woorden lijst van `book a `. Deze indeling is hetzelfde, zodat deze hetzelfde doel moet zijn met de verschillende woorden van `flight` en `hotel` als geëxtraheerde entiteiten.
+`Book a flight`en `Book a hotel` gebruiken dezelfde woorden lijst van `book a ` . Deze indeling is hetzelfde, zodat deze hetzelfde doel moet zijn met de verschillende woorden van `flight` en `hotel` als geëxtraheerde entiteiten.
 
-## <a name="do-add-descriptors-to-intents"></a>Voeg descriptors toe aan de intenties
+## <a name="do-add-features-to-intents"></a>Functies toevoegen aan intenties
 
-Descriptoren helpen bij het beschrijven van functies voor een intentie. Een descriptor kan een woordgroepen lijst zijn met woorden die belang rijk zijn voor dat doel of een entiteit die belang rijk is voor dat doel.
+Functies beschrijven concepten voor een intentie. Een functie kan een woordgroepen lijst zijn met woorden die belang rijk zijn voor dat doel of een entiteit die belang rijk is voor dat doel.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Vind een zoete plaats voor intenties
 Gebruik Voorspellings gegevens uit LUIS om te bepalen of uw intentie elkaar overlappen. Overlappende intentiesen verwarren LUIS. Het resultaat is dat de bovenste Score intentie te dicht bij een andere intentie is. Omdat LUIS niet exact hetzelfde pad door de gegevens voor de training gebruikt, heeft een overlappende intentie een kans op het eerste of tweede in de training. U wilt dat de Score van de utterance voor elke intentie verder uit elkaar komt, zodat deze flip/flop niet plaatsvindt. Een goed onderscheiding voor intenties moet elke keer op de verwachte beste intentie worden uitgevoerd.
@@ -73,17 +73,22 @@ Model ontleding heeft een typisch proces van:
 * **opzet** maken op basis van de bedoelingen van de gebruiker van de client-app
 * 15-30-voor beeld uitingen toevoegen op basis van de werkelijke gebruikers invoer
 * Label gegevens concept op het hoogste niveau in voor beeld utterance
-* gegevens concept in subonderdelen opsplitsen
-* descriptors (onderdelen) toevoegen aan subonderdelen
-* descriptors (onderdelen) aan doel toevoegen
+* gegevens concept in subentiteiten opsplitsen
+* onderdelen toevoegen aan subentiteiten
+* functies toevoegen aan intenties
 
 Wanneer u de intentie hebt gemaakt en voor beeld-uitingen hebt toegevoegd, wordt in het volgende voor beeld de entiteit ontleding beschreven.
 
-Begin met het identificeren van de volledige gegevens concepten die u wilt uitpakken in een utterance. Dit is uw door de computer geleerde entiteit. Splits de woord groep vervolgens in de bijbehorende onderdelen. Dit omvat het identificeren van subonderdelen (als entiteiten), samen met descriptors en beperkingen.
+Begin met het identificeren van de volledige gegevens concepten die u wilt uitpakken in een utterance. Dit is uw door de computer geleerde entiteit. Splits de woord groep vervolgens in de bijbehorende onderdelen. Dit omvat het identificeren van subentiteiten en onderdelen.
 
-Als u bijvoorbeeld een adres wilt extra heren, kan de door de machine geleerde entiteit worden `Address`aangeroepen. Identificeer tijdens het maken van het adres een aantal subonderdelen, zoals het adres, de plaats, de provincie en de post code.
+Als u bijvoorbeeld een adres wilt extra heren, kan de door de machine geleerde entiteit worden aangeroepen `Address` . Identificeer tijdens het maken van het adres een aantal subentiteiten, zoals het adres, de plaats, de provincie en de post code.
 
-Ga door met het ontsamen stellen van deze elementen door de post code te **beperken** tot een reguliere expressie. Het adres afbreken in delen van een straat nummer (met een vooraf samengesteld nummer), een straat naam en een straat type. Het type straat kan worden beschreven met een lijst met **descriptors** , zoals de naam, cirkel, weg en Lane.
+Ga door met het ontsamen stellen van deze elementen door:
+* Het toevoegen van een vereiste functie van de post code als een reguliere expressie-entiteit.
+* De samen stellen van het adres in delen:
+    * Een **straat nummer** met een vereiste functie van een vooraf samengestelde entiteit van het nummer.
+    * Een **straat naam**.
+    * Een **straat type** met een vereiste functie van een lijst-entiteit, met inbegrip van woorden zoals verdenken, cirkel, weg en Lane.
 
 Met de V3 authoring API kunt u model ontleden.
 
@@ -145,9 +150,9 @@ Maak een intentie voor elke actie die uw bot gaat ondernemen. Gebruik entiteiten
 
 Voor een bot die vlieg vluchten gaat boeken, maakt u een **BookFlight** intentie. Maak geen intentie voor elke luchtvaart maatschappij of voor elke bestemming. Gebruik deze gegevens als [entiteiten](luis-concept-entity-types.md) en markeer deze in het voor beeld uitingen.
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Geen descriptors met alle mogelijke waarden maken
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Geen woordgroepen lijsten met alle mogelijke waarden maken
 
-Geef een aantal voor beelden in de [woordgroepen lijst](luis-concept-feature.md) met descriptors, maar niet elk woord. LUIS generaliseert en houdt rekening met de context.
+Geef enkele voor beelden in de [woordgroepen lijsten](luis-concept-feature.md) , maar niet alle woorden of woord groepen. LUIS generaliseert en houdt rekening met de context.
 
 ## <a name="dont-add-many-patterns"></a>Geen veel patronen toevoegen
 

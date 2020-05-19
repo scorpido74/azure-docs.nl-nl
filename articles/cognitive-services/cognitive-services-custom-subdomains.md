@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590635"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomein namen voor Cognitive Services
 
@@ -51,7 +51,7 @@ Ja. Het gebruik van een aangepaste subdomeinnaam heeft geen invloed op de region
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Wat zijn de vereisten voor een aangepaste subdomeinnaam?
 
-De naam van een aangepast subdomein is uniek voor uw resource. De naam mag alleen alfanumerieke tekens en het `-` teken bevatten. de waarde moet tussen 2 en 64 tekens lang zijn en mag niet eindigen op `-`een.
+De naam van een aangepast subdomein is uniek voor uw resource. De naam mag alleen alfanumerieke tekens en het `-` teken bevatten. deze moet tussen 2 en 64 tekens lang zijn en mag niet eindigen op een `-` .
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Kan ik een aangepaste domein naam wijzigen?
 
@@ -66,11 +66,11 @@ Elke aangepaste subdomeinnaam is uniek, dus als u een aangepaste subdomeinnaam d
 Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Cognitive Services-resources.
 
 > [!NOTE]
-> De Translator Text-API en Bing Zoeken-API's globale eind punten gebruiken.
+> De Translator-service en Bing Zoeken-API's globale eind punten gebruiken.
 
 | Type eind punt | Regio | Eindpunt |
 |---------------|--------|----------|
-| Public | Global (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
+| Public | Global (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazilië - zuid | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Canada - midden | `https://canadacentral.api.cognitive.microsoft.com` |

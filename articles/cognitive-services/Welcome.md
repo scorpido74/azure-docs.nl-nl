@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169095"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588289"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Wat zijn Azure Cognitive Services?
 
@@ -49,24 +49,24 @@ Azure Cognitive Services zijn Api's, Sdk's en services die beschikbaar zijn om o
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Taal begrijpen")|Met de Language Understanding-service (LUIS) kan uw toepassing begrijpen wat een persoon in hun eigen woorden wil.|
+|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Taalbegrip")|Met de Language Understanding-service (LUIS) kan uw toepassing begrijpen wat een persoon in hun eigen woorden wil.|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Met QnA Maker kunt u een vraag-en-antwoord service maken op basis van uw semi-gestructureerde inhoud.|
-|[Tekstanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Tekstanalyse")|Text Analytics voorziet in natuurlijke taal verwerking via onbewerkte tekst voor sentiment analyse, extractie van sleutel zinnen en taal detectie.|
-|[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Vertaal tekst voorziet in bijna realtime voor het vertalen van tekst op basis van een computer.|
+|[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Tekstanalyse")|Text Analytics voorziet in natuurlijke taal verwerking via onbewerkte tekst voor sentiment analyse, extractie van sleutel zinnen en taal detectie.|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Translator biedt tekst vertaling op basis van een computer bijna in realtime.|
 
 
 ## <a name="search-apis"></a>Api's zoeken
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Zoeken in Bing Nieuws](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Zoeken in Bing Nieuws")|Bing News Search retourneert een lijst met nieuws artikelen die relevant zijn voor de query van de gebruiker.|
-|[Bing Video's zoeken](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing Video's zoeken")|Bing Video Search retourneert een lijst met Video's waarvan is vastgesteld dat deze relevant zijn voor de query van de gebruiker.|
-|[Bing Webzoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Webzoekopdrachten")|Bing Web Search retourneert een lijst met zoek resultaten die relevant zijn voor de query van de gebruiker.|
+|[Bing News Search](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Zoeken in Bing Nieuws")|Bing News Search retourneert een lijst met nieuws artikelen die relevant zijn voor de query van de gebruiker.|
+|[Bing Video Search](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing Video's zoeken")|Bing Video Search retourneert een lijst met Video's waarvan is vastgesteld dat deze relevant zijn voor de query van de gebruiker.|
+|[Bing Web Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web Search")|Bing Web Search retourneert een lijst met zoek resultaten die relevant zijn voor de query van de gebruiker.|
 |[Bing Automatische suggesties](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing Automatische suggesties")|Met Bing Automatische suggesties kunt u een term voor een gedeeltelijke Zoek query naar Bing verzenden en een lijst met voorgestelde query's terughalen.|
-|[Bing Aangepaste zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Aangepaste zoekopdrachten")|Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoek functies maken voor onderwerpen die u bevalt.|
-|[Bing Entiteiten zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entiteiten zoeken")|Bing Entity Search retourneert informatie over entiteiten die worden bepaald door Bing, zijn relevant voor de query van een gebruiker.|
-|[Bing Afbeeldingen zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Afbeeldingen zoeken")|Bing Image Search retourneert een weer gave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
-|[Bing Visuele zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing Visuele zoekopdrachten")|Bing Visual Search biedt inzichten over een afbeelding, zoals visueel vergelijk bare afbeeldingen, Shop ping-bronnen voor producten gevonden in de installatie kopie en gerelateerde zoek opdrachten.|
+|[Bing Custom Search](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoek functies maken voor onderwerpen die u bevalt.|
+|[Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entity Search")|Bing Entity Search retourneert informatie over entiteiten die worden bepaald door Bing, zijn relevant voor de query van een gebruiker.|
+|[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Image Search")|Bing Image Search retourneert een weer gave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
+|[Bing Visual Search](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search biedt inzichten over een afbeelding, zoals visueel vergelijk bare afbeeldingen, Shop ping-bronnen voor producten gevonden in de installatie kopie en gerelateerde zoek opdrachten.|
 |[Bing Zoeken naar lokale bedrijven](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Zoeken naar lokale bedrijven")| Met Bing Local Business Search-API kunnen uw toepassingen contact-en locatie gegevens vinden over lokale bedrijven op basis van zoek query's.|
 |[Bing Spellingcontrole](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Spellingcontrole")|Met Bing Spellingcontrole kunt u contextuele grammatica en spelling controle uitvoeren.|
 

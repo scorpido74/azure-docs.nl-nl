@@ -1,14 +1,14 @@
 ---
 title: 'Zelf studie: bedoelingen voors pellen-Luis'
-description: In deze zelfstudie maakt u een aangepaste app waarmee de intentie van een gebruiker wordt voorspeld. Deze app is het eenvoudigste type LUIS-app omdat de app geen verschillende gegevenselementen uit de utterancetekst extraheert, zoals e-mailadressen of datums.
+description: Maak een aangepaste app waarmee de bedoeling van een gebruiker wordt voor speld op basis van de utterance (tekst) in deze zelf studie.
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80286741"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588932"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Zelf studie: een LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen
 
@@ -37,7 +37,7 @@ Deze intenties worden onderverdeeld in **Intents**.
 |`ModifyOrder`|De pizza-volg orde van de gebruiker bepalen.|
 |`Greeting`|Begin met bot-gesprek.|
 |`ConfirmOrder`|Bevestig de pizza-volg orde.|
-|`None`|Bepaal of de gebruiker vraagt om iets dat de app niet moet reageren. Deze intent is geleverd als onderdeel van het maken van de app en kan niet worden verwijderd. |
+|`None`|Bepaal of de gebruiker vraagt om iets dat de LUIS-app niet is ontworpen om te reageren. Deze intentie wordt meegeleverd als onderdeel van het maken van apps en kan niet worden verwijderd. |
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 
@@ -49,7 +49,7 @@ Een intentie wordt gebruikt om gebruikers uitingen te classificeren op basis van
 
 Voor het classificeren van een utterance heeft de bedoeling een voor beeld van een gebruikers uitingen nodig dat met deze intentie moet worden geclassificeerd.
 
-1. Selecteer in de sectie **bouwen** op de pagina **intenties** **+ maken** om een nieuwe intentie te maken. Voer de naam van de nieuwe intentie `OrderPizza`in, en selecteer vervolgens **gereed**.
+1. Selecteer in de sectie **bouwen** op de pagina **intenties** **+ maken** om een nieuwe intentie te maken. Voer de naam van de nieuwe intentie in, `OrderPizza` en selecteer vervolgens **gereed**.
 
     De `OrderPizza` intentie wordt voor speld wanneer een gebruiker een pizza wil best Ellen.
 
@@ -64,9 +64,10 @@ Voor het classificeren van een utterance heeft de bedoeling een voor beeld van e
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![Voorbeelden van utterances toevoegen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het toevoegen van voor beeld-uitingen in de LUIS-Portal op de pagina intentie](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Door _bijvoorbeeld uitingen_te bieden, traint u Luis over welke soorten uitingen voor dit doel moeten worden voor speld.
+    Door _bijvoorbeeld uitingen_te bieden, traint u Luis over welke soorten uitingen voor dit doel moeten worden voor speld. Dit zijn positieve voor beelden. De uitingen in alle andere intenties worden beschouwd als negatieve voor beelden voor dit doel.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -142,7 +143,7 @@ Voor het classificeren van een utterance heeft de bedoeling een voor beeld van e
 
     De matrix entities is leeg, omdat deze app momenteel geen entiteiten heeft (de gegevens eenheid in het utterance dat moet worden opgehaald).
 
-    Het JSON-resultaat identificeert de bovenste Score intentie **`prediction.topIntent`** als eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 liggen.
+    Het JSON-resultaat identificeert de bovenste Score intentie als **`prediction.topIntent`** eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 liggen.
 
 1. Wijzig de URL- **query** parameter in de **begroetings** intentie:
 
@@ -178,6 +179,8 @@ Voor het classificeren van een utterance heeft de bedoeling een voor beeld van e
 
 ## <a name="client-application-next-steps"></a>Volgende stappen voor clienttoepassing
 
+In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model.
+
 Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag. LUIS geeft geen antwoord op deze utterances van gebruikers, maar stelt alleen vast om wat voor soort informatie er wordt gevraagd in natuurlijke taal. De gespreksopvolging wordt uitgevoerd met de clienttoepassing, bijvoorbeeld een Azure-bot.
 
 
@@ -193,8 +196,6 @@ Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-
-In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model.
 
 > [!div class="nextstepaction"]
 > [Een opstel bare entiteit toevoegen aan deze app](tutorial-machine-learned-entity.md)
