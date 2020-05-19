@@ -72,7 +72,7 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Wanneer het Runbook is gemaakt, gaat het automatisch naar de bewerkings modus.  Selecteer **publiceren**.
+5. Wanneer het Runbook is gemaakt, gaat het automatisch naar de bewerkings modus.  Selecteer **Publiceren**.
 
     ![Runbook publiceren](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -101,7 +101,7 @@ Dit kan als volgt worden geconfigureerd:
  
     ![Planning maken](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Klik op **planning** > **een nieuw schema maken**en vul de details in.
+2. Klik op **planning**  >  **een nieuw schema maken**en vul de details in.
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -147,7 +147,7 @@ De **hoofd tekst** is een JSON-document dat de volgende eigenschappen moet bevat
 |Eigenschap  |Waarde  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |De naam van de Azure Analysis Services Data Base <br/> Voor beeld: AdventureWorksDB         |
-|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voor beeld: https\/:/westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voor beeld: https: \/ /westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Het type vernieuwing dat moet worden uitgevoerd. <br/> Voor beeld: volledig         |
 
 Voor beeld van JSON-hoofd tekst:
@@ -175,7 +175,7 @@ Een virtuele machine van Azure met een statisch openbaar IP-adres kan worden geb
 >
 >Zie [Hybrid Runbook worker Installation](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)(Engelstalig) voor meer informatie over het configureren van Azure Automation Hybrid Workers.
 
-Nadat een Hybrid Worker is geconfigureerd, maakt u een webhook zoals beschreven in de sectie [die wordt gebruikt met Data Factory](#consume-with-data-factory).  Het enige verschil is hier het selecteren van de optie **uitvoeren op** > **Hybrid worker** bij het configureren van de webhook.
+Nadat een Hybrid Worker is geconfigureerd, maakt u een webhook zoals beschreven in de sectie [die wordt gebruikt met Data Factory](#consume-with-data-factory).  Het enige verschil is hier het selecteren van de optie **uitvoeren op**  >  **Hybrid worker** bij het configureren van de webhook.
 
 Voor beeld-webhook met Hybrid Worker:
 

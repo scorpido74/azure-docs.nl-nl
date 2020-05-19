@@ -47,7 +47,7 @@ Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de 
 - [Azure Portal](#portal)
 - [Azure-CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Azure Resource Manager-sjablonen](#resource-manager-templates)
+- [Azure Resource Manager sjablonen](#resource-manager-templates)
 
 ## <a name="portal"></a>Portal
 

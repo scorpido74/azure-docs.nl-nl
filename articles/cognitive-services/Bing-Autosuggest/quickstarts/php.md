@@ -1,25 +1,25 @@
 ---
 title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel aan de slag kunt met de Automatische suggestie-API voor Bing.
+description: Meer informatie over hoe u snel zoek termen in realtime kunt bekijken met de Automatische suggestie-API voor Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0aa309ba34abdfbe91493498ae6ec49785e0e0d4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238987"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930179"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP
 
-Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische suggestie-API voor Bing en het verkrijgen van het JSON-antwoord. Met deze eenvoudige PHP-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Volg deze Quick start voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige PHP-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,8 +31,8 @@ Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische su
 
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 2. Voeg de onderstaande code toe.
-3. Vervang de waarde `subscriptionKey` door een geldige toegangssleutel voor uw abonnement.
-4. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+3. Vervang de `subscriptionKey` waarde door een toegangs sleutel die geldig is voor uw abonnement.
+4. Gebruik het globale eind punt in de code of gebruik het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 5. Voer het programma uit.
 
 ```php
@@ -80,7 +80,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-### <a name="response"></a>Antwoord
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld: 
 

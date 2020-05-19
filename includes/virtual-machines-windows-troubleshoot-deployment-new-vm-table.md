@@ -13,7 +13,7 @@ ms.locfileid: "67176035"
 ---
 De volgende tabel geeft een lijst van de mogelijke upload-en vastleg combinaties van installatie kopieën van het Windows-besturings systeem (gen.) en specialist (spec.). De combi naties die zonder fouten worden verwerkt, worden aangegeven met een Y en die fouten veroorzaken, worden aangegeven door een N. De oorzaken en oplossingen voor de verschillende fouten die u kunt uitvoeren, worden weer gegeven onder de tabel.
 
-| OS | Specificatie uploaden. | Upload gen. | Specificatie vastleggen. | Alg. vastleggen |
+| Besturingssysteem | Specificatie uploaden. | Upload gen. | Specificatie vastleggen. | Alg. vastleggen |
 | --- | --- | --- | --- | --- |
 | Windows gen. |N<sup>1</sup> |J |N<sup>3</sup> |J |
 | Windows spec. |J |N<sup>2</sup> |J |N<sup>4</sup> |

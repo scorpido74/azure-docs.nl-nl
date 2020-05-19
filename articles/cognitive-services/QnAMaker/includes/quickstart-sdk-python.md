@@ -3,12 +3,12 @@ title: 'Snelstartgids: QnA Maker-client bibliotheek voor python'
 description: In deze Quick start ziet u hoe u aan de slag gaat met de QnA Maker-client bibliotheek voor python.
 ms.topic: include
 ms.date: 04/27/2020
-ms.openlocfilehash: ccd046ad8e511517abd9f45072781e736f0e79b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8a180096e21203dd45d806ceca14794c985d664a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204008"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876065"
 ---
 Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 
@@ -19,7 +19,7 @@ Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 * Wachten op langlopende taken
 * Knowledge Base verwijderen
 
-[Naslag Gids](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | voor pypi ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [package)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python samples](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) van de documentatie bibliotheek
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker)  |  van bibliotheek [Pakket (pypi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/)  |  [Python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) -voor beelden
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -29,7 +29,7 @@ Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 * [Python 3. x](https://www.python.org/)
 * Wanneer u uw Azure-abonnement hebt, maakt u een [QnA Maker resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) in de Azure Portal om uw ontwerp sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, selecteert **u Ga naar resource**.
     * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de QnA Maker-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie (`F0`) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -37,7 +37,7 @@ Gebruik de QnA Maker-client bibliotheek voor python voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine.
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die worden gevonden in de Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de resource met de naam `QNAMAKER_KEY` en `QNAMAKER_HOST` . Gebruik de sleutel-en eindpunt waarden die worden gevonden in de Azure Portal.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>Installeer de python-bibliotheek voor QnA Maker
 
@@ -53,7 +53,7 @@ Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/ms
 
 Nadat de client is gemaakt, gebruikt u de [Knowledge Base](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python) om uw Knowledge Base te maken, te beheren en te publiceren.
 
-Voor directe bewerkingen retourneert een methode meestal een JSON-object dat de status aangeeft. Voor langlopende bewerkingen is het antwoord de bewerkings-ID. Roep de [client aan. Methode Operations. getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) met de bewerkings-id om de [status van de aanvraag](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)te bepalen.
+Voor directe bewerkingen retourneert een methode meestal een JSON-object dat de status aangeeft. Voor langlopende bewerkingen is het antwoord de bewerkings-ID. Roep de [client aan. Methode Operations. getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) met de bewerkings-id om de [status van de aanvraag](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python)te bepalen.
 
 
 ## <a name="code-examples"></a>Codevoorbeelden
@@ -78,13 +78,13 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 |Omgevingsvariabele|variabeletype|Voorbeeld|
 |--|--|--|
 |`QNAMAKER_KEY`|`subscription_key`|De sleutel is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker-resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.|
-|`QNAMAKER_HOST`|`host`| Uw ontwerp eind punt in de indeling van bevat `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.|
+|`QNAMAKER_HOST`|`host`| Uw ontwerp eind punt in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.|
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak vervolgens een CognitiveServicesCredentials-object met uw sleutel en gebruik dit met uw eind punt om een [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python) -object te maken.
+Maak vervolgens een CognitiveServicesCredentials-object met uw sleutel en gebruik dit met uw eind punt om een [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.qnamakerclient?view=azure-python) -object te maken.
 
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]
@@ -141,7 +141,7 @@ De _setTimeout_ -aanroep in het volgende code blok wordt gebruikt voor het simul
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit `python knowledgebase_quickstart.py` met de opdracht uit de toepassingsmap.
+Voer de toepassing uit met de `python knowledgebase_quickstart.py` opdracht uit de toepassingsmap.
 
 Alle code fragmenten in dit artikel zijn [beschikbaar](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) en kunnen als één bestand worden uitgevoerd.
 

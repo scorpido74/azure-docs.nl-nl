@@ -28,7 +28,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
    | ------------- |:-------------|:-----|
    | **Naam**      | `Unique value` | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
    | **Resource groep**     | `myResourceGroup`      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
-   | **Deel** | `East US` | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Regio** | `East US` | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
    | **Resource modus** | `Classic` of `Workspace-based` | Resources op basis van een werk ruimte zijn momenteel beschikbaar als open bare preview-versie en u kunt uw Application Insights telemetrie verzenden naar een algemene Log Analytics-werk ruimte. Zie het [artikel over resources op basis van werk ruimte](create-workspace-resource.md)voor meer informatie.
 
 > [!NOTE]

@@ -20,7 +20,7 @@ ms.locfileid: "82984705"
 > Raadpleeg voor meer informatie over deze SDK de Azure Cosmos DB Java SDK v4-release opmerkingen, de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4- [prestatie tips](performance-tips-java-sdk-v4-sql.md)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md)).
 >
 
-In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-toepassing die gebruikmaakt van een oudere Azure Cosmos DB Java-SDK naar de nieuwere Azure Cosmos DB Java SDK 4,0 voor Core-API (SQL). Azure Cosmos DB Java SDK v4 correspondeert met `com.azure.cosmos` het pakket. U kunt de instructies in dit document gebruiken als u uw toepassing migreert van een van de volgende Azure Cosmos DB Java-Sdk's: 
+In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-toepassing die gebruikmaakt van een oudere Azure Cosmos DB Java-SDK naar de nieuwere Azure Cosmos DB Java SDK 4,0 voor Core-API (SQL). Azure Cosmos DB Java SDK v4 correspondeert met het `com.azure.cosmos` pakket. U kunt de instructies in dit document gebruiken als u uw toepassing migreert van een van de volgende Azure Cosmos DB Java-Sdk's: 
 
 * Java SDK 2. x. x synchroniseren
 * Asynchrone Java SDK 2. x. x
@@ -30,7 +30,7 @@ In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-
 
 De volgende tabel geeft een lijst van verschillende Azure Cosmos DB Java-Sdk's, de pakket naam en de release-informatie:
 
-| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-naslaginformatie   | Opmerkingen bij de release  |
+| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-verwijzing   | Opmerkingen bij de release  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Juni 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-async-java.md) |
 | Synchronisatie 2. x. x     | Sept 2018    | Synchroniseren   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-java.md)  |
@@ -57,13 +57,13 @@ Hieronder vindt u een overzicht van de API-wijzigingen in Azure Cosmos DB Java S
 
 ![Naamgevings conventies voor Azure Cosmos DB Java SDK](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
 
-* De Azure Cosmos DB Java SDK 3. x. x en 4,0 verwijzen naar de client resources `Cosmos<resourceName>`als. Bijvoorbeeld `CosmosClient`,, `CosmosDatabase`,. `CosmosContainer` Overwegende dat in versie 2. x. x de Azure Cosmos DB Java-Sdk's geen uniform naam schema hebben.
+* De Azure Cosmos DB Java SDK 3. x. x en 4,0 verwijzen naar de client resources als `Cosmos<resourceName>` . Bijvoorbeeld,, `CosmosClient` `CosmosDatabase` , `CosmosContainer` . Overwegende dat in versie 2. x. x de Azure Cosmos DB Java-Sdk's geen uniform naam schema hebben.
 
 * Azure Cosmos DB Java SDK 3. x. x en 4,0 bieden synchronisatie-en async-Api's.
 
-  * **Java SDK 4,0** : alle klassen behoren tot de API Sync, tenzij de naam van `Async` de klasse wordt toegevoegd. `Cosmos`
+  * **Java SDK 4,0** : alle klassen behoren tot de API Sync, tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: alle klassen behoren tot de ASYNC-API tenzij de naam van `Async` de klasse wordt toegevoegd. `Cosmos`
+  * **Java SDK 3. x. x**: alle klassen behoren tot de ASYNC-API tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
 
   * **Asynchrone Java SDK 2. x. x**: de namen van klassen zijn vergelijkbaar met het synchroniseren van Java SDK 2. x. x, maar de naam begint met *async*.
 
@@ -88,7 +88,7 @@ In de Azure Cosmos DB Java SDK 3. x. x wordt het `CosmosItemProperties` object b
 * De Azure Cosmos DB Java SDK 4,0-pakketten beginnen met`com.azure.cosmos`
   * Azure Cosmos DB Java SDK 3. x. x-pakketten beginnen met`com.azure.data.cosmos`
 
-* Azure Cosmos DB Java SDK 4,0 worden verschillende klassen in een genest `com.azure.cosmos.models`pakket geplaatst. Enkele van deze pakketten zijn:
+* Azure Cosmos DB Java SDK 4,0 worden verschillende klassen in een genest pakket geplaatst `com.azure.cosmos.models` . Enkele van deze pakketten zijn:
 
   * `CosmosContainerResponse`
   * `CosmosDatabaseResponse`
@@ -102,9 +102,9 @@ In de Azure Cosmos DB Java SDK 3. x. x wordt het `CosmosItemProperties` object b
 
 ### <a name="accessors"></a>Accessors
 
-Azure Cosmos DB Java SDK 4,0 bevat `get` en `set` methoden om toegang te krijgen tot de exemplaar leden. Bijvoorbeeld het `CosmosContainer` exemplaar heeft `container.getId()` en `container.setId()` -methoden.
+Azure Cosmos DB Java SDK 4,0 bevat `get` en `set` methoden om toegang te krijgen tot de exemplaar leden. Bijvoorbeeld het `CosmosContainer` exemplaar heeft en- `container.getId()` `container.setId()` methoden.
 
-Dit wijkt af van Azure Cosmos DB Java SDK 3. x. x, waarmee een fluent interface wordt weer gegeven. Bijvoorbeeld: een `CosmosSyncContainer` exemplaar `container.id()` dat is overbelast om de `id` waarde op te halen of in te stellen.
+Dit wijkt af van Azure Cosmos DB Java SDK 3. x. x, waarmee een fluent interface wordt weer gegeven. Bijvoorbeeld: een `CosmosSyncContainer` exemplaar `container.id()` dat is overbelast om de waarde op te halen of in te stellen `id` .
 
 ## <a name="code-snippet-comparisons"></a>Vergelijking van code fragmenten
 

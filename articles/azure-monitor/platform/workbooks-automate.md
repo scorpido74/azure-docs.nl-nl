@@ -34,12 +34,12 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
 
 1. Open een werkmap die u programmatisch wilt implementeren.
 2. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
-3. Open de _Geavanceerde editor_ met behulp van de _</>_ knop op de werk balk.
+3. Open de _Geavanceerde editor_ met behulp _</>_ van de knop op de werk balk.
 4. Zorg ervoor dat u zich op het tabblad _Galerie sjabloon_ bevindt.
 
     ![Tabblad Galerie sjabloon](./media/workbooks-automate/gallery-template.png)
 1. Kopieer de JSON in de galerie sjabloon naar het klem bord.
-2. Hieronder ziet u een voor beeld Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt geïmplementeerd voor Azure Monitor werkmap galerie. Plak de JSON die u hebt gekopieerd in `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`plaats van. Een referentie Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt gemaakt, vindt u [hier](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
+2. Hieronder ziet u een voor beeld Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt geïmplementeerd voor Azure Monitor werkmap galerie. Plak de JSON die u hebt gekopieerd in plaats van `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` . Een referentie Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt gemaakt, vindt u [hier](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
 
     ```json
     {
@@ -77,7 +77,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
         ]
     }
     ```
-1. Vul in `galleries` het object de `name` en `category` -sleutels in met uw waarden. Meer informatie over [para meters](#parameters) vindt u in de volgende sectie.
+1. Vul in het `galleries` object de `name` en- `category` sleutels in met uw waarden. Meer informatie over [para meters](#parameters) vindt u in de volgende sectie.
 2. Implementeer deze Azure Resource Manager sjabloon met behulp van de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), de [opdracht regel interface](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell), enzovoort.
 3. Open de Azure Portal en navigeer naar de galerie met werkmappen die u hebt gekozen in de sjabloon Azure Resource Manager. Navigeer in de voorbeeld sjabloon naar de Azure Monitor werkmap galerie:
     1. Open de Azure Portal en ga naar Azure Monitor
@@ -98,7 +98,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
 | `gallery.category`       | De groep in de galerie waarin de sjabloon moet worden geplaatst.                                                     |
 | `gallery.order`          | Een getal dat de volg orde van de sjabloon in een categorie in de galerie bepaalt. Een lagere volg orde betekent een hogere prioriteit. |
 | `gallery.resourceType`   | Het resource type dat overeenkomt met de galerie. Dit is doorgaans de bron type teken reeks die overeenkomt met de resource (bijvoorbeeld micro soft. operationalinsights/Workspaces). |
-|`gallery.type`            | Dit is een unieke sleutel die wordt onderscheiden van de galerie in een resource type. Application Insights bijvoorbeeld typen `workbook` hebben en `tsg` overeenkomen met verschillende werkmap galerieën. |
+|`gallery.type`            | Dit is een unieke sleutel die wordt onderscheiden van de galerie in een resource type. Application Insights bijvoorbeeld typen hebben `workbook` en `tsg` overeenkomen met verschillende werkmap galerieën. |
 
 ### <a name="galleries"></a>Galerieën
 
@@ -120,7 +120,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
 
 1. Open een werkmap die u programmatisch wilt implementeren.
 2. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
-3. Open de _Geavanceerde editor_ met behulp van de _</>_ knop op de werk balk.
+3. Open de _Geavanceerde editor_ met behulp _</>_ van de knop op de werk balk.
 4. Schakel in de editor van het _sjabloon type_ over naar de _Resource Manager-sjabloon_.
 5. De Resource Manager-sjabloon voor het maken van wordt weer gegeven in de editor. Kopieer de inhoud en gebruik deze as-is of voeg deze samen met een grotere sjabloon waarmee ook de doel resource wordt geïmplementeerd.
 
@@ -193,7 +193,7 @@ In deze sjabloon ziet u hoe u een eenvoudige werkmap implementeert waarin een ' 
 | Parameter | Uitleg |
 | :------------- |:-------------|
 | `workbookDisplayName` | De beschrijvende naam voor de werkmap die wordt gebruikt in de galerie of de opgeslagen lijst. Moet uniek zijn binnen het bereik van de resource groep en de bron |
-| `workbookType` | De galerie waarin de werkmap wordt weer gegeven. Ondersteunde waarden zijn: werkmap `tsg`,, Azure monitor, enzovoort. |
+| `workbookType` | De galerie waarin de werkmap wordt weer gegeven. Ondersteunde waarden zijn: werkmap, `tsg` , Azure monitor, enzovoort. |
 | `workbookSourceId` | De ID van het resource-exemplaar waaraan de werkmap wordt gekoppeld. De nieuwe werkmap wordt weer gegeven met betrekking tot deze resource-instantie, bijvoorbeeld in de tabel met inhoud onder _werkmap_van de resource. Als u wilt dat uw werkmap wordt weer gegeven in de galerie met werkmappen in Azure Monitor, gebruikt u de teken reeks _Azure monitor_ in plaats van een resource-id. |
 | `workbookId` | De unieke GUID voor dit exemplaar van de werkmap. Gebruik _[newGuid ()]_ om automatisch een nieuwe GUID te maken. |
 | `kind` | Wordt gebruikt om op te geven of de gemaakte werkmap gedeeld of privé is. Gebruik een waarde die wordt _gedeeld_ voor gedeelde werkmappen en de _gebruiker_ voor persoonlijk. |
@@ -210,7 +210,7 @@ Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van d
 | `usage` | De galerie _meer_ onder _gebruik_ in Application Insights |
 
 ### <a name="limitations"></a>Beperkingen
-Dit mechanisme kan om een technische reden niet worden gebruikt voor het maken van werkmap exemplaren in de galerie met _werkmappen_ van Application Insights. We werken aan het adresseren van deze beperking. In de tussen tijd raden we u aan de galerie met probleemoplossings gids (workbookType `tsg`:) te gebruiken om Application Insights gerelateerde werkmappen te implementeren.
+Dit mechanisme kan om een technische reden niet worden gebruikt voor het maken van werkmap exemplaren in de galerie met _werkmappen_ van Application Insights. We werken aan het adresseren van deze beperking. In de tussen tijd raden we u aan de galerie met probleemoplossings gids (workbookType: `tsg` ) te gebruiken om Application Insights gerelateerde werkmappen te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

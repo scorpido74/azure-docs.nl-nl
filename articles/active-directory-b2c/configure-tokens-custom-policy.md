@@ -55,9 +55,9 @@ De volgende waarden zijn ingesteld in het vorige voor beeld:
 - **Toegangs token levensduur** : de waarde voor de levens duur van het toegangs token is ingesteld met **token_lifetime_secs** meta gegevens item. De standaard waarde is 3600 seconden (60 minuten).
 - **Levens duur van id-token** : de waarde voor de levens duur van het id-token is ingesteld met het **id_token_lifetime_secs** meta gegevens item. De standaard waarde is 3600 seconden (60 minuten).
 - **Levens duur van het token vernieuwen** : de waarde voor de levens duur van het vernieuwings token is ingesteld met het **refresh_token_lifetime_secs** meta gegevens item. De standaard waarde is 1209600 seconden (14 dagen).
-- De **levens duur van het token sliding window vernieuwen** : als u een sliding window levensduur wilt instellen voor het vernieuwings token, stelt u de waarde van **rolling_refresh_token_lifetime_secs** meta gegevens item in. De standaard waarde is 7776000 (90 dagen). Als u geen sliding window levensduur wilt afdwingen, vervangt u het item door `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
-- **Claim verlener (ISS)** : de claim verlener (ISS) is ingesteld met het meta gegevens item **IssuanceClaimPattern** . De toepasselijke waarden zijn `AuthorityAndTenantGuid` en `AuthorityWithTfp`.
-- **Claim instellen die beleids-id vertegenwoordigt** : de opties voor het instellen `TFP` van deze waarde zijn (vertrouwens raamwerk beleid) en `ACR` (Naslag informatie over de verificatie context). `TFP`is de aanbevolen waarde. Stel **AuthenticationContextReferenceClaimPattern** in met de waarde `None`.
+- De **levens duur van het token sliding window vernieuwen** : als u een sliding window levensduur wilt instellen voor het vernieuwings token, stelt u de waarde van **rolling_refresh_token_lifetime_secs** meta gegevens item in. De standaard waarde is 7776000 (90 dagen). Als u geen sliding window levensduur wilt afdwingen, vervangt u het item door `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` .
+- **Claim verlener (ISS)** : de claim verlener (ISS) is ingesteld met het meta gegevens item **IssuanceClaimPattern** . De toepasselijke waarden zijn `AuthorityAndTenantGuid` en `AuthorityWithTfp` .
+- **Claim instellen die beleids-id vertegenwoordigt** : de opties voor het instellen van deze waarde zijn `TFP` (vertrouwens raamwerk beleid) en `ACR` (Naslag informatie over de verificatie context). `TFP`is de aanbevolen waarde. Stel **AuthenticationContextReferenceClaimPattern** in met de waarde `None` .
 
     Voeg dit element toe aan het element **ClaimsSchema** :
 
@@ -76,7 +76,7 @@ De volgende waarden zijn ingesteld in het vorige voor beeld:
 
     Voor ACR verwijdert u het item **AuthenticationContextReferenceClaimPattern** .
 
-- **Onderwerp (sub) claim** : deze optie wordt standaard ingesteld op ObjectID. Als u deze instelling wilt wijzigen in `Not Supported`, vervangt u deze regel:
+- **Onderwerp (sub) claim** : deze optie wordt standaard ingesteld op ObjectID. Als u deze instelling wilt wijzigen in `Not Supported` , vervangt u deze regel:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />

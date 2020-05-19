@@ -80,7 +80,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -257,7 +257,7 @@ az role definition delete --name "$imageRoleDefName"
 az identity delete --ids $imgBuilderId
 ```
 
-De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor `0.`afbeeldingen, dit wordt altijd gestart met en vervolgens de versie van de installatie kopie verwijderen
+De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor afbeeldingen, dit wordt altijd gestart met `0.` en vervolgens de versie van de installatie kopie verwijderen
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

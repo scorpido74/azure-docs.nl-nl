@@ -100,4 +100,4 @@ De stappen voor het inschakelen van moderne verificatie vindt u in de volgende a
 
 - [Exchange Server on-premises configureren voor het gebruik van hybride, moderne authenticatie](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Moderne verificatie (ADAL) gebruiken met Skype voor bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Verouderde verificatie blokkeren](../conditional-access/block-legacy-authentication.md)
+- [Verouderde verificatie blok keren](../conditional-access/block-legacy-authentication.md)

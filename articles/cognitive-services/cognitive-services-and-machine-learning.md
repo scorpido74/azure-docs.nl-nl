@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75531476"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584617"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -98,7 +98,7 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
-|[Insluitende lezer](./immersive-reader/overview.md)|x|||
+|[Immersive Reader](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|BxDxH|BxDxH|x|
@@ -106,10 +106,10 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Spreker-herkenning](./speaker-recognition/home.md)||x||
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
-|[Spraakomzetting](speech-service/speech-translation.md)|x|||
-|[Tekstanalyse](./text-analytics/overview.md)|x|||
-|[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
+|[Speech Translation](speech-service/speech-translation.md)|x|||
+|[Text Analytics](./text-analytics/overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
 
 * Personaler vereist alleen trainings gegevens die door de service worden verzameld (zoals deze in realtime actief zijn) om uw beleid en gegevens te evalueren. Personaler heeft geen grote historische gegevens sets nodig voor de voor-en hands-training. 
 
@@ -131,7 +131,7 @@ Cognitive Services die export modellen bieden voor andere machine learning-hulpp
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 * [Architectuur handleiding-wat zijn de machine learning producten van micro soft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine learning-Inleiding tot diep gaande informatie versus machine learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)

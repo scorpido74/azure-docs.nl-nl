@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 5ff25155529b9a763bcf5af6cfb15593e9da9853
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b38857cd5ea12767f872690dfcdcb84dcbbb3f7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585012"
 ---
 Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Om licentie redenen GStreamer binaire bestanden niet worden gecompileerd en gekoppeld aan de spraak-SDK. Ontwikkel aars moeten verschillende afhankelijkheden en invoeg toepassingen installeren.
 
@@ -23,7 +23,7 @@ gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-ugly
 ```
 
-# <a name="rehl--centos"></a>[REHL/CentOS](#tab/centos)
+# <a name="rhelcentos-78"></a>[RHEL/CentOS 7/8](#tab/centos)
 
 ```sh
 sudo yum install gstreamer1 \
@@ -34,6 +34,10 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
-> Volg de instructies in RHEL/CentOS voor het [configureren van openssl voor Linux](../../../../how-to-configure-openssl-linux.md).
+> - Volg op RHEL/CentOS 7 de instructies voor het [configureren van RHEL/CentOS 7 voor Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
+> [!IMPORTANT]
+> De Opus audio-coderings indeling wordt niet ondersteund door de Speech SDK op RHEL/CentOS 7.
 
 ---

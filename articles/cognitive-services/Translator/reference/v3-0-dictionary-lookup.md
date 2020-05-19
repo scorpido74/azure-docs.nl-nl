@@ -1,5 +1,5 @@
 ---
-title: Zoek methode voor Translator Text-API woordenlijst
+title: Zoek methode voor Translator Dictionary
 titleSuffix: Azure Cognitive Services
 description: De Zoek methode voor de woorden lijst bevat alternatieve vertalingen voor een woord en een klein aantal idiomatisch-zinnen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548948"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584736"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text-API 3,0: opzoeken in woorden lijst
+# <a name="translator-30-dictionary-lookup"></a>Translator 3,0: opzoeken in woorden lijst
 
 Biedt alternatieve vertalingen voor een woord en een klein aantal idiomatisch-zinnen. Elke vertaling heeft een deel van spraak en een lijst met back-vertalingen. Met de back-vertalingen kunnen gebruikers de vertaling in context begrijpen. Met de [voorbeeld bewerking voor de woorden lijst](./v3-0-dictionary-examples.md) kunt u verder inzoomen om het voor beeld van elk Vertaal paar te bekijken.
 
@@ -42,16 +42,16 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
 Aanvraag headers zijn onder andere:
 
-| Headers  | Beschrijving |
+| Kopteksten  | Beschrijving |
 | ------ | ----------- |
 | Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
-| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
+| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` . |
 | Content-length   | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst. |
-| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt `ClientTraceId`met behulp van een query parameter met de naam. |
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` . |
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks `Text`eigenschap met de naam, die de term vertegenwoordigt die moet worden gezocht.
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met `Text` de naam, die de term vertegenwoordigt die moet worden gezocht.
 
 ```json
 [
@@ -76,7 +76,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     * `normalizedTarget`: Een teken reeks met de genormaliseerde vorm van deze term in de doel taal. Deze waarde moet worden gebruikt als invoer voor [Zoek voorbeelden](./v3-0-dictionary-examples.md).
 
-    * `displayTarget`: Een teken reeks waarmee de term in de doel taal en in een formulier wordt weer gegeven die het meest geschikt is voor weergave van eind gebruikers. Over het algemeen geldt dit alleen voor het `normalizedTarget` hoofdletter gebruik. Een voor beeld: een eigen zelfstandig naam woord zoals ' Juan `normalizedTarget = "juan"` ' `displayTarget = "Juan"`heeft en.
+    * `displayTarget`: Een teken reeks waarmee de term in de doel taal en in een formulier wordt weer gegeven die het meest geschikt is voor weergave van eind gebruikers. Over het algemeen geldt dit alleen voor het `normalizedTarget` hoofdletter gebruik. Een voor beeld: een eigen zelfstandig naam woord zoals ' Juan ' heeft `normalizedTarget = "juan"` en `displayTarget = "Juan"` .
 
     * `posTag`: Een teken reeks waarmee deze term wordt gekoppeld aan een deel van een spraak label.
 
@@ -105,16 +105,16 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
         * `displayText`: Een teken reeks die de bron term bevat die een back-upconversie van het doel is in een formulier dat het meest geschikt is voor weer gave op de eind gebruiker.
 
-        * `numExamples`: Een geheel getal dat het aantal voor beelden voor deze Vertaal paar voor stelt. De werkelijke voor beelden moeten worden opgehaald met een afzonderlijke aanroep naar [lookup-voor beelden](./v3-0-dictionary-examples.md). Het nummer is voornamelijk bedoeld om weer gave in een UX te vergemakkelijken. Zo kan een gebruikers interface een Hyper Link toevoegen aan de back-translatie als het aantal voor beelden groter is dan nul en de back-vertalingen als tekst zonder opmaak weer geven als er geen voor beelden zijn. Houd er rekening mee dat het werkelijke aantal voor beelden dat wordt geretourneerd door een aanroep van de `numExamples`voor beelden van de [Zoek opdracht](./v3-0-dictionary-examples.md) , kan kleiner zijn dan, omdat extra filters op de vlucht kunnen worden toegepast om "onjuiste" voor beelden te verwijderen.
+        * `numExamples`: Een geheel getal dat het aantal voor beelden voor deze Vertaal paar voor stelt. De werkelijke voor beelden moeten worden opgehaald met een afzonderlijke aanroep naar [lookup-voor beelden](./v3-0-dictionary-examples.md). Het nummer is voornamelijk bedoeld om weer gave in een UX te vergemakkelijken. Zo kan een gebruikers interface een Hyper Link toevoegen aan de back-translatie als het aantal voor beelden groter is dan nul en de back-vertalingen als tekst zonder opmaak weer geven als er geen voor beelden zijn. Houd er rekening mee dat het werkelijke aantal voor beelden dat wordt geretourneerd door een aanroep van de [voor beelden van de zoek opdracht](./v3-0-dictionary-examples.md) , kan kleiner zijn dan `numExamples` , omdat extra filters op de vlucht kunnen worden toegepast om "onjuiste" voor beelden te verwijderen.
         
         * `frequencyCount`: Een geheel getal dat de frequentie van dit vertaal paar in de gegevens vertegenwoordigt. Het belangrijkste doel van dit veld is een gebruikers interface te bieden met een manier om back-vertalingen te sorteren, zodat de meest voorkomende voor waarden het eerst zijn.
 
     > [!NOTE]
-    > Als de term die wordt gezocht, niet in de woorden lijst voor komt, is de reactie 200 (OK), `translations` maar is de lijst een lege lijst.
+    > Als de term die wordt gezocht, niet in de woorden lijst voor komt, is de reactie 200 (OK), maar `translations` is de lijst een lege lijst.
 
 ## <a name="examples"></a>Voorbeelden
 
-In dit voor beeld ziet u hoe u alternatieve vertalingen in het Spaans van `fly` de Engelse periode kunt opzoeken.
+In dit voor beeld ziet u hoe u alternatieve vertalingen in het Spaans van de Engelse periode kunt opzoeken `fly` .
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -167,7 +167,7 @@ In dit voor beeld ziet u wat er gebeurt wanneer de term die wordt gezocht, niet 
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
 
-Omdat de term niet in de woorden lijst voor komt, bevat de antwoord tekst een `translations` lege lijst.
+Omdat de term niet in de woorden lijst voor komt, bevat de antwoord tekst een lege `translations` lijst.
 
 ```
 [

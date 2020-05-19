@@ -8,36 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e1084c1962db3c04b951245361da80bee098329a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238910"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199822"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met C # 
 
-Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing is geschreven in C#, is de Bing Custom Search-API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
+Gebruik deze Quick Start om te leren hoe u zoek resultaten kunt aanvragen van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing is geschreven in C#, is de Bing Custom Search-API een REST-webservice die compatibel is met de meeste programmeer talen. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md) voor meer informatie.
-- Micro soft [.net core](https://www.microsoft.com/net/download/core)
-- Elke versie van [Visual Studio 2019 of hoger](https://www.visualstudio.com/downloads/)
+- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md)voor meer informatie.
+- [Microsoft .net kern](https://www.microsoft.com/net/download/core).
+- Een versie van [Visual Studio 2019 of hoger](https://www.visualstudio.com/downloads/).
 - Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
-- Het NuGet-pakket van [Bing aangepaste zoekopdrachten](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) . 
-    - Klik vanuit **Solution Explorer** in Visual Studio met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren** in het menu. Installeer het `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-pakket. Met de installatie van het NuGet-pakket Custom Search worden ook de volgende assembly's geïnstalleerd:
-        - Microsoft.Rest.ClientRuntime
-        - Microsoft.Rest.ClientRuntime.Azure
-        - Newtonsoft.Json
+- Het NuGet-pakket van [Bing aangepaste zoekopdrachten](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) . 
+
+   Dit pakket installeren in Visual Studio: 
+     1. Klik met de rechter muisknop op uw project in **Solution Explorer**en selecteer vervolgens **NuGet-pakketten beheren**. 
+     2. Zoek en selecteer *micro soft. Azure. CognitiveServices. Search. CustomSearch*en installeer vervolgens het pakket.
+
+   Wanneer u het Bing Aangepaste zoekopdrachten NuGet-pakket installeert, installeert Visual Studio ook de volgende pakketten:
+     - **Microsoft.Rest.ClientRuntime**
+     - **Micro soft. rest. ClientRuntime. Azure**
+     - **Newtonsoft.Json**
+
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak in Visual Studio een nieuwe C#-consoletoepassing. Voeg vervolgens de volgende pakketten toe aan uw project.
+1. Maak in Visual Studio een nieuwe C#-consoletoepassing. Voeg vervolgens de volgende pakketten toe aan uw project:
 
     ```csharp
     using System;
@@ -46,7 +52,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     using Newtonsoft.Json;
     ```
 
-2. Maak de volgende klassen om de zoekresultaten op te slaan die door de Bing Custom Search-API worden geretourneerd.
+2. Maak de volgende klassen om de zoek resultaten op te slaan die worden geretourneerd door de Bing Custom Search-API:
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -70,7 +76,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     }
     ```
 
-3. Maak in de hoofdmethode van uw project variabelen voor uw abonnementssleutel van de Bing Custom Search-API, de aangepaste configuratie-ID van uw zoekexemplaar en een zoekterm.
+3. Maak in de hoofd methode van uw project de volgende variabelen voor uw Bing Custom Search-API-abonnements sleutel, de aangepaste configuratie-ID van het exemplaar en de zoek term:
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +84,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Stel de aanvraag-URL samen door uw zoekterm toe te voegen aan de queryparameter `q=`, en de aangepaste configuratie-id van uw zoekinstantie aan `customconfig=`. Scheid de parameters van elkaar met een `&`-teken. `url`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
+4. Maak de aanvraag-URL door uw zoek term toe te voegen aan de `q=` query parameter en de aangepaste configuratie-id van uw Zoek instantie te koppelen aan de `customconfig=` para meter. Scheid de para meters met een en-teken ( `&` ). Voor de `url` waarde van de variabele kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -102,9 +108,9 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-   ## <a name="process-and-view-the-results"></a>De resultaten verwerken en weergeven
+## <a name="process-and-view-the-results"></a>De resultaten verwerken en weergeven
 
-3. Doorloop het reactieobject om informatie weer te geven over elk zoekresultaat, waaronder de naam, de URL en de datum waarop de webpagina voor het laatst is gecrawld.
+- Doorloop het reactieobject om informatie weer te geven over elk zoekresultaat, waaronder de naam, de URL en de datum waarop de webpagina voor het laatst is gecrawld.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

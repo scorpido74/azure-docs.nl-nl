@@ -16,7 +16,7 @@ ms.locfileid: "82927765"
 
 In dit artikel vindt u voor beelden van Azure Resource Manager sjablonen voor het in de wachtrij plaatsen van een snelle taak, vergelijkbaar met een die u hand matig kunt maken met de opdracht [AZ ACR build][az-acr-build] .
 
-Een resource manager-sjabloon voor het in de wachtrij plaatsen van een taak uitvoering is handig in automatiserings scenario's en breidt de functionaliteit van uit `az acr build`. Bijvoorbeeld:
+Een resource manager-sjabloon voor het in de wachtrij plaatsen van een taak uitvoering is handig in automatiserings scenario's en breidt de functionaliteit van uit `az acr build` . Bijvoorbeeld:
 
 * Een sjabloon gebruiken om een container register te maken en een taak uit te voeren in een wachtrij om een container installatie kopie te bouwen en te pushen
 * Extra resources maken of inschakelen die u kunt gebruiken in een snelle taak uitvoering, zoals een beheerde identiteit voor Azure-resources
@@ -28,8 +28,8 @@ Een resource manager-sjabloon voor het in de wachtrij plaatsen van een taak uitv
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Github-account** : Maak een account https://github.com op als u er nog geen hebt. 
-* Voor **beeld-opslag plaats splitsen** : voor de taak voorbeelden die hier worden weer gegeven, gebruikt u de GitHub-gebruikers interface om de https://github.com/Azure-Samples/acr-build-helloworld-nodevolgende voorbeeld opslagplaats te splitsen in uw github-account:. Deze opslag plaats bevat voorbeeld Dockerfiles en bron code voor het bouwen van kleine container installatie kopieën.
+* **Github-account** : Maak een account op https://github.com Als u er nog geen hebt. 
+* Voor **beeld-opslag plaats splitsen** : voor de taak voorbeelden die hier worden weer gegeven, gebruikt u de GitHub-gebruikers interface om de volgende voorbeeld opslagplaats te splitsen in uw github-account: https://github.com/Azure-Samples/acr-build-helloworld-node . Deze opslag plaats bevat voorbeeld Dockerfiles en bron code voor het bouwen van kleine container installatie kopieën.
 
 ## <a name="example-create-registry-and-queue-task-run"></a>Voor beeld: maken van Regi ster-en wachtrij taak uitvoeren
 
@@ -44,7 +44,7 @@ Voor dit voor beeld geeft u waarden op voor de volgende sjabloon parameters:
 |registerpad     |De unieke naam van het REGI ster dat is gemaakt         |
 |opslag plaats     |Doel opslagplaats voor Build-taak        |
 |taskRunName     |De naam van de taak uitvoering, waarmee de afbeeldings code wordt opgegeven |
-|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld https://github.com/Azure-Samples/acr-build-helloworld-node. De Dockerfile in de opslag plaats-hoofdmap bouwt een container installatie kopie voor een kleine node. js-web-app. Gebruik, indien gewenst, uw Fork van de opslag plaats als de context van de build.         |
+|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld https://github.com/Azure-Samples/acr-build-helloworld-node . De Dockerfile in de opslag plaats-hoofdmap bouwt een container installatie kopie voor een kleine node. js-web-app. Gebruik, indien gewenst, uw Fork van de opslag plaats als de context van de build.         |
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -112,7 +112,7 @@ De uitvoer toont het logboek voor taak uitvoering.
 U kunt ook het logboek voor taak uitvoering weer geven in de Azure Portal. 
 
 1. Ga naar het container register
-2. Onder **Services**selecteert u **taken** > **uitvoeren**.
+2. Onder **Services**selecteert u **taken**  >  **uitvoeren**.
 3. Selecteer de run-ID, in dit geval *Ca1*. 
 
 In de portal wordt het taak uitvoer logboek weer gegeven.
@@ -139,7 +139,7 @@ Voor demonstratie doeleinden maakt u een afzonderlijk container register als het
 
 ### <a name="create-new-dockerfile"></a>Nieuwe Dockerfile maken
 
-Maak een Dockerfile die de basis installatie kopie uit het basis register ophaalt. Voer de volgende stappen uit in uw lokale Fork van de GitHub-opslag plaats, bijvoorbeeld `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
+Maak een Dockerfile die de basis installatie kopie uit het basis register ophaalt. Voer de volgende stappen uit in uw lokale Fork van de GitHub-opslag plaats, bijvoorbeeld `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
 1. Selecteer in de GitHub-gebruikers interface de optie **nieuw bestand maken**.
 1. Geef het bestand de naam *Dockerfile-test* en plak de volgende inhoud. Vervang de register naam door de *mybaseregistry*.
@@ -187,7 +187,7 @@ Voor dit voor beeld geeft u waarden op voor de volgende sjabloon parameters:
 |userAssignedIdentity |Resource-ID van de door de gebruiker toegewezen identiteit die in de taak is ingeschakeld|
 |customRegistryIdentity | De client-ID van de door de gebruiker toegewezen identiteit die in de taak wordt gebruikt voor verificatie met een aangepast REGI ster |
 |customRegistry |De naam van de aanmeldings server van het aangepaste REGI ster dat in de taak wordt geopend, bijvoorbeeld *mybaseregistry.azurecr.io*|
-|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node.* |
+|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node .* |
 |dockerFilePath | Het pad naar de Dockerfile in de externe context, die wordt gebruikt om de installatie kopie te bouwen. |
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a09b79992f669c296fe0a674179fde5f38e8fc8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149380"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587876"
 ---
 Ga aan de slag met de face-client bibliotheek voor go. Volg deze stappen om de bibliotheek te installeren en onze voor beelden voor basis taken uit te proberen. De face-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -26,7 +26,7 @@ Gebruik de client bibliotheek van Face service voor Ga naar:
 * [Een gezicht identificeren](#identify-a-face)
 * [Een moment opname maken voor gegevens migratie](#take-a-snapshot-for-data-migration)
 
-[Naslag informatie over](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | de[bron code](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | -[SDK](https://github.com/Azure/azure-sdk-for-go) van de documentatie bibliotheek
+[Referentie documentatie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Bron code](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  van bibliotheek [SDK downloaden](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -79,9 +79,9 @@ export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
 
 Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
-#### <a name="macos"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[MacOS](#tab/unix)
 
-Bewerk uw `.bash_profile`en voeg de omgevings variabele toe:
+Bewerk uw `.bash_profile` en voeg de omgevings variabele toe:
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -93,7 +93,7 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanui
 
 ### <a name="create-a-go-project-directory"></a>Een go-projectmap maken
 
-Maak in een console venster (cmd, Power shell, Terminal, bash) een nieuwe werk ruimte voor uw Go-project `my-app`met de naam en navigeer ernaar.
+Maak in een console venster (cmd, Power shell, Terminal, bash) een nieuwe werk ruimte voor uw Go-project `my-app` met de naam en navigeer ernaar.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -104,17 +104,17 @@ Uw werk ruimte bevat drie mappen:
 
 * **src** -deze map bevat bron code en pakketten. Alle pakketten die met de `go get` opdracht zijn geïnstalleerd, bevindt zich in deze map.
 * **pakket** -deze map bevat de gecompileerde go package-objecten. Deze bestanden hebben allemaal een `.a` uitbrei ding.
-* **bin** : deze map bevat de binaire uitvoer bare bestanden die worden gemaakt wanneer u uitvoert `go install`.
+* **bin** : deze map bevat de binaire uitvoer bare bestanden die worden gemaakt wanneer u uitvoert `go install` .
 
 > [!TIP]
-> Zie de [Go-taal documentatie](https://golang.org/doc/code.html#Workspaces)voor meer informatie over de structuur van een go-werk ruimte. Deze hand leiding bevat informatie over `$GOPATH` het `$GOROOT`instellen van en.
+> Zie de [Go-taal documentatie](https://golang.org/doc/code.html#Workspaces)voor meer informatie over de structuur van een go-werk ruimte. Deze hand leiding bevat informatie over het instellen van `$GOPATH` en `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>De client bibliotheek voor Go installeren
 
 Installeer vervolgens de client bibliotheek voor Go:
 
 ```bash
-go get -u https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
+go get -u github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
 ```
 
 of, als u dep gebruikt, binnen de uitvoer van de opslagplaats:
@@ -125,7 +125,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Een go-toepassing maken
 
-Maak vervolgens een bestand in de **src** -map met `sample-app.go`de naam:
+Maak vervolgens een bestand in de **src** -map met de naam `sample-app.go` :
 
 ```bash
 cd src
@@ -166,7 +166,7 @@ Deze code voorbeelden laten zien hoe u basis taken kunt uitvoeren met behulp van
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE] 
-> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw `FACE_SUBSCRIPTION_KEY` gezichts sleutel en eind punt, met de naam en `FACE_ENDPOINT` respectievelijk.
+> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw gezichts sleutel en eind punt, met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT` respectievelijk.
 
 Maak een **hoofd** functie en voeg de volgende code toe om een client met uw eind punt en sleutel te instantiëren. U maakt een **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** -object met uw sleutel en gebruikt dit met uw eind punt om een **[client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** object te maken. Deze code maakt ook een instantie van een context object, dat nodig is voor het maken van client-objecten. Er wordt ook een externe locatie gedefinieerd waar enkele van de voorbeeld afbeeldingen in deze Snelstartgids worden gevonden.
 
@@ -214,9 +214,9 @@ Met de volgende code worden de overeenkomende gegevens in de-console afgedrukt.
 
 ## <a name="create-and-train-a-person-group"></a>Een persoons groep maken en trainen
 
-Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/imagesproject:.
+Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw project: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-Deze groep met installatie kopieën bevat drie sets installatie kopieën met één gezicht die overeenkomen met drie verschillende personen. Met de code worden drie **PersonGroup person** -objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die `woman`beginnen `man`met, `child`en.
+Deze groep met installatie kopieën bevat drie sets installatie kopieën met één gezicht die overeenkomen met drie verschillende personen. Met de code worden drie **PersonGroup person** -objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die beginnen met `woman` , `man` en `child` .
 
 ### <a name="create-persongroup"></a>PersonGroup maken
 
@@ -251,7 +251,7 @@ De volgende code neemt een afbeelding met meerdere gezichten en zoekt naar de id
 
 ### <a name="get-a-test-image"></a>Een test installatie kopie ophalen
 
-De volgende code zoekt in de hoofdmap van het project naar een afbeelding _Test-Image-person-Group. jpg_ en laadt deze in het programma geheugen. U kunt deze installatie kopie vinden in dezelfde opslag plaats als de installatie kopieën die worden gebruikt voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+De volgende code zoekt in de hoofdmap van het project naar een afbeelding _Test-Image-person-Group. jpg_ en laadt deze in het programma geheugen. U kunt deze installatie kopie vinden in dezelfde opslag plaats als de installatie kopieën die worden gebruikt voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -347,7 +347,7 @@ Zodra u deze stappen hebt voltooid, kunt u toegang krijgen tot uw gezichts gegev
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer uw Go-toepassing uit `go run [arguments]` met de opdracht uit de toepassingsmap.
+Voer uw Go-toepassing uit met de `go run [arguments]` opdracht uit de toepassingsmap.
 
 ```bash
 go run sample-app.go

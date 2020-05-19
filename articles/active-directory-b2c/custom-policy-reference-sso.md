@@ -22,7 +22,7 @@ ms.locfileid: "82926116"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Sessie beheer voor eenmalige aanmelding (SSO)](session-overview.md) maakt gebruik van dezelfde semantiek als andere technische profielen in aangepast beleid. Wanneer een Orchestration-stap wordt uitgevoerd, wordt het technische profiel dat is gekoppeld aan de stap, opgevraagd `UseTechnicalProfileForSessionManagement` voor een verwijzing. Als dat het geval is, wordt de SSO-sessie provider waarnaar wordt verwezen, gecontroleerd om te zien of de gebruiker een deel nemer voor de sessie is. Als dit het geval is, wordt de SSO-sessie provider gebruikt om de sessie opnieuw in te vullen. Op dezelfde manier wordt de provider gebruikt voor het opslaan van gegevens in de sessie als er een SSO-sessie provider is opgegeven, wanneer de uitvoering van een Orchestration-stap is voltooid.
+[Sessie beheer voor eenmalige aanmelding (SSO)](session-overview.md) maakt gebruik van dezelfde semantiek als andere technische profielen in aangepast beleid. Wanneer een Orchestration-stap wordt uitgevoerd, wordt het technische profiel dat is gekoppeld aan de stap, opgevraagd voor een `UseTechnicalProfileForSessionManagement` verwijzing. Als dat het geval is, wordt de SSO-sessie provider waarnaar wordt verwezen, gecontroleerd om te zien of de gebruiker een deel nemer voor de sessie is. Als dit het geval is, wordt de SSO-sessie provider gebruikt om de sessie opnieuw in te vullen. Op dezelfde manier wordt de provider gebruikt voor het opslaan van gegevens in de sessie als er een SSO-sessie provider is opgegeven, wanneer de uitvoering van een Orchestration-stap is voltooid.
 
 Azure AD B2C heeft een aantal SSO-sessie providers gedefinieerd die kunnen worden gebruikt:
 
@@ -37,7 +37,7 @@ Azure AD B2C heeft een aantal SSO-sessie providers gedefinieerd die kunnen worde
 
 
 
-SSO-beheer klassen worden opgegeven met `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` behulp van het-element van een technisch profiel.
+SSO-beheer klassen worden opgegeven met behulp van het- `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` element van een technisch profiel.
 
 ## <a name="input-claims"></a>Invoer claims
 
@@ -87,7 +87,7 @@ Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er 
 ```
 
 
-Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Dit technische profiel beheert de multi-factor Authentication-sessie.
+Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa` . Dit technische profiel beheert de multi-factor Authentication-sessie.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -138,7 +138,7 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C sessies tussen
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML id `RegisterServiceProviders` -provider sessie, `false`moet u deze instellen op. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische profiel van de SAML-identiteits provider](saml-identity-provider-technical-profile.md).
+Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML ID-provider sessie, `RegisterServiceProviders` moet u deze instellen op `false` . Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische profiel van de SAML-identiteits provider](saml-identity-provider-technical-profile.md).
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -150,7 +150,7 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies t
 </TechnicalProfile>
 ```
 
-Wanneer u de provider gebruikt voor het opslaan van de B2C SAML `RegisterServiceProviders` -sessie, `true`moet de worden ingesteld op. Voor het afmelden van `SessionIndex` de `NameID` SAML-sessie is de en voltooid.
+Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, `RegisterServiceProviders` moet de worden ingesteld op `true` . Voor het afmelden van de SAML-sessie is de `SessionIndex` en `NameID` voltooid.
 
 Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-Uitgever technisch profiel](saml-issuer-technical-profile.md)
 
@@ -166,7 +166,7 @@ Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-U
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
 | IncludeSessionIndex | Nee | Momenteel niet gebruikt, kan worden genegeerd.|
-| RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false`.|
+| RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false` .|
 
 
 ## <a name="next-steps"></a>Volgende stappen

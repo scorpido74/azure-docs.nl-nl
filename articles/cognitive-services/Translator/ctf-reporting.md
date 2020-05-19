@@ -1,5 +1,5 @@
 ---
-title: Reportingive Translation Framework (COLLABORATIVE)-rapportage-Translator Text-API
+title: Reportingive Translatoring Framework (COLLABORATIVE)-conversie
 titleSuffix: Azure Cognitive Services
 description: COLLABORATIVE-rapportage (Collaborative Translatoring Framework) gebruiken.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584668"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>CTF-rapportage (Collaborative Translation Framework) gebruiken
 
 > [!NOTE]
-> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van de Translator Text-API.
+> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van Translator.
 > 
-> Het Framework voor gezamenlijke vertalingen (COLLABORATIVE), dat voorheen beschikbaar was voor V 2.0 van het Translator Text-API, werd afgeschaft vanaf 1 februari 2018. Met de functies AddTranslation en AddTranslationArray kunnen gebruikers correcties inschakelen via het Framework voor samen werking. Na 31 januari 2018 hebben deze twee functies geen nieuwe zin-inzendingen geaccepteerd en ontvangen gebruikers een fout bericht. Deze functies zijn buiten gebruik gesteld en worden niet vervangen.
+> Het Framework voor gezamenlijke vertalingen (COLLABORATIVE), dat voorheen beschikbaar was voor V 2.0 of Translator, werd vanaf 1 februari 2018 afgeschaft. Met de functies AddTranslation en AddTranslationArray kunnen gebruikers correcties inschakelen via het Framework voor samen werking. Na 31 januari 2018 hebben deze twee functies geen nieuwe zin-inzendingen geaccepteerd en ontvangen gebruikers een fout bericht. Deze functies zijn buiten gebruik gesteld en worden niet vervangen.
 
 De rapportage-API voor samen werking van het samenwerkings raamwerk (COLLABORATIVE) retourneert statistieken en de werkelijke inhoud in de COLLABORATIVE-opslag. Deze API wijkt af van de methode GetTranslations (), omdat:
 * Retourneert de vertaalde inhoud en het totale aantal van uw account (appId of Azure Marketplace-account).
@@ -30,11 +30,10 @@ De rapportage-API voor samen werking van het samenwerkings raamwerk (COLLABORATI
 * Retourneert niet de automatische vertaling (machine vertaling).
 
 ## <a name="endpoint"></a>Eindpunt
-Het eind punt van de COLLABORATIVE-rapportage-API ishttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-
+Het eind punt van de COLLABORATIVE-rapportage-API is https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Methoden
-| Naam |    Beschrijving|
+| Naam | Beschrijving|
 |:---|:---|
 | Methode GetUserTranslationCounts | Aantal vertalingen ophalen dat door de gebruiker is gemaakt. |
 | Methode GetUserTranslations | Hiermee worden de vertalingen opgehaald die door de gebruiker zijn gemaakt. |
@@ -108,7 +107,7 @@ De resultatenset bevat de matrix van de **UserTranslationCount**. Elke UserTrans
 | Uitzondering | Bericht | Voorwaarden |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | De para meter '**maxDateUtc**' moet groter zijn dan of gelijk zijn aan '**minDateUtc**'.| De waarde van de para meter **maxDateUtc** is kleiner dan de waarde van de para meter **minDateUtc**.|
-| TranslateApiException | Het IP-adres overschrijdt het quotum.| <ul><li>De limiet voor het aantal aanvragen per minuut is bereikt.</li><li>De aanvraag grootte blijft beperkt tot 10000 tekens.</li><li>Een uur en een dagelijks quotum beperken het aantal tekens dat de micro soft Translator-API accepteert.</li></ul>|
+| TranslateApiException | Het IP-adres overschrijdt het quotum.| <ul><li>De limiet voor het aantal aanvragen per minuut is bereikt.</li><li>De aanvraag grootte blijft beperkt tot 10000 tekens.</li><li>Een uur en een dagelijks quotum beperken het aantal tekens dat door de vertaler wordt geaccepteerd.</li></ul>|
 | TranslateApiException | AppId overschrijdt het quotum.| De toepassings-ID heeft het uurtarief of het dagelijkse quotum overschreden.|
 
 > [!NOTE]
@@ -156,7 +155,7 @@ Met deze methode worden de vertalingen opgehaald die door de gebruiker zijn gema
 | minDateUtc| **Optioneel** De datum vanaf wanneer u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben.|
 | maxDateUtc| **Optioneel** De datum totdat u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben.|
 | skip| **Optioneel** Het aantal resultaten dat u wilt overs laan op een pagina. Als u bijvoorbeeld de eerste twintig rijen van de resultaten wilt overs Laan en wilt weer geven uit de 21e resultaten record, geeft u 20 op voor deze para meter. De standaard waarde voor deze para meter is 0.|
-| Houd| **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaard waarde is 50.|
+| Houd| **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaardwaarde is 50.|
 
 > [!NOTE]
 > De para meters overs Laan en aanvraag volgen inschakelen paginering voor een groot aantal resultaat records.
@@ -181,7 +180,7 @@ De resultatenset bevat de matrix van de **UserTranslation**. Elke UserTranslatio
 | Uitzondering | Bericht | Voorwaarden |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | De para meter '**maxDateUtc**' moet groter zijn dan of gelijk zijn aan '**minDateUtc**'.| De waarde van de para meter **maxDateUtc** is kleiner dan de waarde van de para meter **minDateUtc**.|
-| TranslateApiException | Het IP-adres overschrijdt het quotum.| <ul><li>De limiet voor het aantal aanvragen per minuut is bereikt.</li><li>De aanvraag grootte blijft beperkt tot 10000 tekens.</li><li>Een uur en een dagelijks quotum beperken het aantal tekens dat de micro soft Translator-API accepteert.</li></ul>|
+| TranslateApiException | Het IP-adres overschrijdt het quotum.| <ul><li>De limiet voor het aantal aanvragen per minuut is bereikt.</li><li>De aanvraag grootte blijft beperkt tot 10000 tekens.</li><li>Een uur en een dagelijks quotum beperken het aantal tekens dat door de vertaler wordt geaccepteerd.</li></ul>|
 | TranslateApiException | AppId overschrijdt het quotum.| De toepassings-ID heeft het uurtarief of het dagelijkse quotum overschreden.|
 
 > [!NOTE]

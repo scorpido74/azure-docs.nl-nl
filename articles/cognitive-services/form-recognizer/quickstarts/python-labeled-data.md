@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531097"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594165"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van REST API en python
 
 In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het trainen van een aangepast model met hand matig gelabelde gegevens. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,7 +63,7 @@ U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bi
 
 1. Roep de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API voor analyse op de container Lees indeling aan met het invoer bestand als onderdeel van de hoofd tekst van de aanvraag. Sla de ID op die is gevonden in de koptekst van de **bewerkings locatie** van de reactie.
 1. Roep de resultaat-API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan met behulp van de bewerkings-id uit de vorige stap.
-1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bron formulier moet aan het bijbehorende OCR-bestand de oorspronkelijke bestands naam worden toegevoegd `.ocr.json`. De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [OCR-voorbeeld bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voor beeld. 
+1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bron formulier moet aan het bijbehorende OCR-bestand de oorspronkelijke bestands naam worden toegevoegd `.ocr.json` . De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [OCR-voorbeeld bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voor beeld. 
 
     ```json
     {
@@ -118,9 +118,9 @@ U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bi
 
 Label bestanden bevatten koppelingen naar sleutel waarden die een gebruiker hand matig heeft ingevoerd. Ze zijn nodig voor gelabelde gegevens training, maar niet elk bron bestand moet een bijbehorend label bestand hebben. Bron bestanden zonder labels worden behandeld als gewone trainings documenten. We raden vijf of meer gelabelde bestanden aan voor een betrouw bare training.
 
-Wanneer u een label bestand maakt, kunt u optioneel regio's&mdash;op exacte posities van waarden in het document opgeven. Hiermee krijgt de training nog nauw keuriger. Regio's worden ingedeeld als een set van acht waarden die overeenkomen met vier X, Y-coördinaten: linksboven, rechtsboven, rechtsonder en linksonder. Coördinaat waarden liggen tussen nul en één, geschaald naar de afmetingen van de pagina.
+Wanneer u een label bestand maakt, kunt u optioneel regio's &mdash; op exacte posities van waarden in het document opgeven. Hiermee krijgt de training nog nauw keuriger. Regio's worden ingedeeld als een set van acht waarden die overeenkomen met vier X, Y-coördinaten: linksboven, rechtsboven, rechtsonder en linksonder. Coördinaat waarden liggen tussen nul en één, geschaald naar de afmetingen van de pagina.
 
-Voor elk bron formulier moet de oorspronkelijke bestands naam worden toegevoegd aan `.labels.json`het bijbehorende label bestand. Het label bestand moet de volgende indeling hebben. Zie het [voorbeeld label bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) voor een volledig voor beeld.
+Voor elk bron formulier moet de oorspronkelijke bestands naam worden toegevoegd aan het bijbehorende label bestand `.labels.json` . Het label bestand moet de volgende indeling hebben. Zie het [voorbeeld label bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) voor een volledig voor beeld.
 
 ```json
 {
@@ -195,9 +195,9 @@ Voor elk bron formulier moet de oorspronkelijke bestands naam worden toegevoegd 
 
 Als u een model met gelabelde gegevens wilt trainen, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door de URL van het eind punt voor de resource voor uw formulier herkenning.
-1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
-1. Vervang `<Blob folder name>` door de naam van de map in de BLOB-container waar de invoer gegevens zich bevinden. Als uw gegevens zich in de hoofdmap bevindt, laat u deze leeg en `"prefix"` verwijdert u het veld uit de hoofd tekst van de HTTP-aanvraag.
+1. Vervang door `<Endpoint>` de URL van het eind punt voor de resource voor uw formulier herkenning.
+1. Vervang door `<SAS URL>` de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. Vervang door `<Blob folder name>` de naam van de map in de BLOB-container waar de invoer gegevens zich bevinden. Als uw gegevens zich in de hoofdmap bevindt, laat u deze leeg en verwijdert u het `"prefix"` veld uit de hoofd tekst van de HTTP-aanvraag.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -346,7 +346,7 @@ Kopieer de `"modelId"` waarde voor gebruik in de volgende stappen.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Wanneer het proces is voltooid, ontvangt u een `202 (Success)` reactie met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De hoofd sleutel/waarde-koppelingen bevinden `"documentResults"` zich in het knoop punt. De lay-Outapi-resultaten (de inhoud en posities van alle tekst in het document) bevinden zich in het `"readResults"` knoop punt.
+Wanneer het proces is voltooid, ontvangt u een `202 (Success)` reactie met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De hoofd sleutel/waarde-koppelingen bevinden zich in het `"documentResults"` knoop punt. De lay-Outapi-resultaten (de inhoud en posities van alle tekst in het document) bevinden zich in het `"readResults"` knoop punt.
 
 ```json
 { 
@@ -486,11 +486,8 @@ Wanneer het proces is voltooid, ontvangt u een `202 (Success)` reactie met JSON-
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
-                }
-              ],
-              "fieldName":"total"
+                "#/analyzeResult/readResults/0/lines/15/words/0"
+              ]
             },
             "invoice #":{ 
               "type":"string",
@@ -509,11 +506,8 @@ Wanneer het proces is voltooid, ontvangt u een `202 (Success)` reactie met JSON-
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
-                }
-              ],
-              "fieldName":"invoice #"
+                "#/analyzeResult/readResults/0/lines/12/words/0"
+              ]
             },
             "vat":{ 
               "type":"string",
@@ -532,11 +526,8 @@ Wanneer het proces is voltooid, ontvangt u een `202 (Success)` reactie met JSON-
               "page":1,
               "confidence":0.9839357733726502,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
-                }
-              ],
-              "fieldName":"vat"
+                "#/analyzeResult/readResults/0/lines/16/words/0"
+              ]
             },
             ...
           }

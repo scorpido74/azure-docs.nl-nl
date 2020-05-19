@@ -23,7 +23,7 @@ Voor deze methode moet u beheerders rechten op de computer hebben om de agent te
 
 Voordat u aan de slag gaat, moet u de [vereisten](overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Het installatie script genereren op basis van de Azure Portal
 
@@ -48,7 +48,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 1. Selecteer op de pagina **script genereren** in de vervolg keuzelijst **besturings systeem** het besturings systeem waarop het script wordt uitgevoerd.
 
 1. Als de computer communiceert via een proxy server om verbinding te maken met internet, selecteert u **volgende: proxy server**. 
-1. Geef op het tabblad **proxy server** het IP-adres van de proxy server of de naam en het poort nummer op dat door de computer wordt gebruikt om te communiceren met de proxy server. Voer de waarde in de notatie `http://<proxyURL>:<proxyport>`in. 
+1. Geef op het tabblad **proxy server** het IP-adres van de proxy server of de naam en het poort nummer op dat door de computer wordt gebruikt om te communiceren met de proxy server. Voer de waarde in de notatie in `http://<proxyURL>:<proxyport>` . 
 1. Selecteer **controleren + genereren**.
 
 1. Controleer de overzichts gegevens op het tabblad **controleren en genereren** en selecteer vervolgens **downloaden**. Als u nog wijzigingen wilt aanbrengen, selecteert u **vorige**.
@@ -63,7 +63,7 @@ U kunt de aangesloten machine agent hand matig installeren door het Windows Inst
 > * Als u de agent wilt installeren of verwijderen, moet u over *beheerders* machtigingen beschikken.
 > * U moet eerst het installatie pakket downloaden en kopiëren naar een map op de doel server of vanuit een gedeelde netwerkmap. Als u het installatie pakket zonder opties uitvoert, wordt een installatie wizard gestart die u kunt volgen om de agent interactief te installeren.
 
-Als de machine moet communiceren via een proxy server met de-service, moet u na de installatie van de agent een opdracht uitvoeren die verderop in het artikel wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de `https_proxy`proxy server in.
+Als de machine moet communiceren via een proxy server met de-service, moet u na de installatie van de agent een opdracht uitvoeren die verderop in het artikel wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` .
 
 Als u niet bekend bent met de opdracht regel opties voor Windows Installer-pakketten, raadpleegt u [Msiexec Standard-opdracht regel opties](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) en [Msiexec-opdracht regel opties](https://docs.microsoft.com/windows/win32/msi/command-line-options).
 
@@ -73,7 +73,7 @@ Voer bijvoorbeeld het installatie programma uit met de `/?` para meter om de opt
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Voer de volgende opdracht uit om de agent op de achtergrond te installeren en `C:\Support\Logs` een installatie logboek bestand te maken in de map die bestaat.
+Voer de volgende opdracht uit om de agent op de achtergrond te installeren en een installatie logboek bestand te maken in de `C:\Support\Logs` map die bestaat.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
@@ -87,7 +87,7 @@ Bestanden voor de verbonden machine agent worden standaard in *C:\Program Files\
 
 1. Open een PowerShell-opdrachtprompt met verhoogde bevoegdheid.
 
-1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer deze uit op de server door het `./OnboardingScript.ps1` script uit te voeren.
+1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer deze uit op de server door het script uit te voeren `./OnboardingScript.ps1` .
 
 ### <a name="configure-the-agent-proxy-setting"></a>De proxy-instelling voor de agent configureren
 
@@ -118,7 +118,7 @@ De verbonden machine agent voor Linux is opgenomen in de voorkeurs pakket indeli
 - Hiermee configureert u de hostmachine voor het downloaden van het agent pakket van packages.microsoft.com.
 - Hiermee wordt het Hybrid resource provider-pakket geïnstalleerd.
 
-Desgewenst kunt u de agent met uw proxy gegevens configureren door de `--proxy "{proxy-url}:{proxy-port}"` para meter op te nemen.
+Desgewenst kunt u de agent met uw proxy gegevens configureren door de para meter op te nemen `--proxy "{proxy-url}:{proxy-port}"` .
 
 Het script bevat ook logica voor het identificeren van ondersteunde en niet-ondersteunde distributies en controleert de machtigingen die nodig zijn om de installatie uit te voeren. 
 
@@ -132,7 +132,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Voer de volgende opdrachten uit om de agent te `--proxy` downloaden en te installeren, met inbegrip van de para meter voor het configureren van de agent om te communiceren via uw proxy server:
+Voer de volgende opdrachten uit om de agent te downloaden en te installeren, met inbegrip `--proxy` van de para meter voor het configureren van de agent om te communiceren via uw proxy server:
 
 ```bash
 # Download the installation package.

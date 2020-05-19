@@ -1,7 +1,7 @@
 ---
-title: Translator Text-API Vertaal methode
+title: Vertaal methode voor Translator
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de para meters, kopteksten en hoofd berichten voor de Cognitive Services Translator Text-API Vertaal methode voor Azure voor het vertalen van tekst.
+description: Meer informatie over de para meters, kopteksten en hoofd berichten voor de Vertaal methode van Azure Cognitive Services Translator om tekst te vertalen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858539"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584634"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text-API 3,0: vertalen
+# <a name="translator-30-translate"></a>Translator 3,0: vertalen
 
 Vertaalt tekst.
 
@@ -40,11 +40,11 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   <th>Beschrijving</th>
   <tr>
     <td>api-versie</td>
-    <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn <code>3.0</code>.</td>
+    <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn <code>3.0</code> .</td>
   </tr>
   <tr>
     <td>tot</td>
-    <td><em>Vereiste para meter</em>.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de <a href="./v3-0-languages.md">ondersteunde talen</a> zijn die in het <code>translation</code> bereik zijn opgenomen. Gebruik <code>to=de</code> bijvoorbeeld om naar Duits te vertalen.<br/>Het is mogelijk om naar meerdere talen tegelijk te vertalen door de para meter in de query teken reeks te herhalen. Gebruik <code>to=de&to=it</code> bijvoorbeeld om te vertalen naar Duits en Italiaans.</td>
+    <td><em>Vereiste para meter</em>.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de <a href="./v3-0-languages.md">ondersteunde talen</a> zijn die in het <code>translation</code> bereik zijn opgenomen. Gebruik bijvoorbeeld <code>to=de</code> om naar Duits te vertalen.<br/>Het is mogelijk om naar meerdere talen tegelijk te vertalen door de para meter in de query teken reeks te herhalen. Gebruik bijvoorbeeld <code>to=de&to=it</code> om te vertalen naar Duits en Italiaans.</td>
   </tr>
 </table>
 
@@ -55,23 +55,23 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   <th>Beschrijving</th>
   <tr>
     <td>from</td>
-    <td><em>Optionele para meter</em>.<br/>Geeft de taal van de invoer tekst aan. Ga na welke talen kunnen worden vertaald door <a href="./v3-0-languages.md">ondersteunde talen</a> te zoeken met behulp <code>translation</code> van de scope. Als de <code>from</code> para meter niet is opgegeven, wordt automatische taal detectie toegepast om de bron taal te bepalen. <br/><br/>U moet de <code>from</code> para meter gebruiken in plaats van automatische detectie wanneer u de functie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamische woorden lijst</a> gebruikt.</td>
+    <td><em>Optionele para meter</em>.<br/>Geeft de taal van de invoer tekst aan. Ga na welke talen kunnen worden vertaald door <a href="./v3-0-languages.md">ondersteunde talen</a> te zoeken met behulp van de <code>translation</code> Scope. Als de <code>from</code> para meter niet is opgegeven, wordt automatische taal detectie toegepast om de bron taal te bepalen. <br/><br/>U moet de <code>from</code> para meter gebruiken in plaats van automatische detectie wanneer u de functie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamische woorden lijst</a> gebruikt.</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee wordt bepaald of de tekst die wordt vertaald tekst zonder opmaak of HTML-tekst is. Een HTML-bestand moet een goed gevormd, volledig element zijn. Mogelijke waarden zijn: <code>plain</code> (standaard) of <code>html</code>.</td>
+    <td><em>Optionele para meter</em>.<br/>Hiermee wordt bepaald of de tekst die wordt vertaald tekst zonder opmaak of HTML-tekst is. Een HTML-bestand moet een goed gevormd, volledig element zijn. Mogelijke waarden zijn: <code>plain</code> (standaard) of <code>html</code> .</td>
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Optionele para meter</em>.<br/>Een teken reeks waarmee de categorie (domein) van de vertaling wordt opgegeven. Deze para meter wordt gebruikt voor het ophalen van vertalingen van een aangepast systeem dat is gebouwd met <a href="../customization.md">aangepaste vertaler</a>. Voeg de categorie-ID uit de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Project gegevens</a> van uw aangepaste vertaler toe aan deze para meter om uw geïmplementeerde aangepaste systeem te gebruiken. De standaard waarde is <code>general</code>:.</td>
+    <td><em>Optionele para meter</em>.<br/>Een teken reeks waarmee de categorie (domein) van de vertaling wordt opgegeven. Deze para meter wordt gebruikt voor het ophalen van vertalingen van een aangepast systeem dat is gebouwd met <a href="../customization.md">aangepaste vertaler</a>. Voeg de categorie-ID uit de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Project gegevens</a> van uw aangepaste vertaler toe aan deze para meter om uw geïmplementeerde aangepaste systeem te gebruiken. De standaard waarde is: <code>general</code> .</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op hoe scheld woorden moeten worden behandeld in vertalingen. Mogelijke waarden zijn: <code>NoAction</code> (standaard) <code>Marked</code> of <code>Deleted</code>. Zie voor het <a href="#handle-profanity">afhandelen</a>van scheld woorden.</td>
+    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op hoe scheld woorden moeten worden behandeld in vertalingen. Mogelijke waarden zijn: <code>NoAction</code> (standaard) <code>Marked</code> of <code>Deleted</code> . Zie voor het <a href="#handle-profanity">afhandelen</a>van scheld woorden.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op hoe scheld woorden moeten worden gemarkeerd in vertalingen. Mogelijke waarden zijn: <code>Asterisk</code> (standaard) of <code>Tag</code>. Zie voor het <a href="#handle-profanity">afhandelen</a>van scheld woorden.</td>
+    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op hoe scheld woorden moeten worden gemarkeerd in vertalingen. Mogelijke waarden zijn: <code>Asterisk</code> (standaard) of <code>Tag</code> . Zie voor het <a href="#handle-profanity">afhandelen</a>van scheld woorden.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
@@ -95,7 +95,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat. Mogelijke waarden zijn: <code>true</code> (standaard) of <code>false</code>.<br/><br/><code>allowFallback=false</code>Hiermee geeft u op dat de vertaling alleen systeem getraind moet gebruiken voor het <code>category</code> opgegeven door de aanvraag. Als voor een vertaling voor taal X naar taal Y een koppeling is vereist via een draai taal E, moeten alle systemen in de keten (X->E en E->Y) aangepast zijn en dezelfde categorie hebben. Als er geen systeem met de specifieke categorie wordt gevonden, wordt door de aanvraag een 400-status code geretourneerd. <code>allowFallback=true</code>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat.
+    <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat. Mogelijke waarden zijn: <code>true</code> (standaard) of <code>false</code> .<br/><br/><code>allowFallback=false</code>Hiermee geeft u op dat de vertaling alleen systeem getraind moet gebruiken voor het <code>category</code> opgegeven door de aanvraag. Als voor een vertaling voor taal X naar taal Y een koppeling is vereist via een draai taal E, moeten alle systemen in de keten (X->E en E->Y) aangepast zijn en dezelfde categorie hebben. Als er geen systeem met de specifieke categorie wordt gevonden, wordt door de aanvraag een 400-status code geretourneerd. <code>allowFallback=true</code>Hiermee geeft u op dat de service een algemeen systeem mag terugvallen wanneer er geen aangepast systeem bestaat.
 </td>
   </tr>
 </table> 
@@ -103,7 +103,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 Aanvraag headers zijn onder andere:
 
 <table width="100%">
-  <th width="20%">Headers</th>
+  <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
     <td>Verificatie header (s)</td>
@@ -111,7 +111,7 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op.<br/> De geaccepteerde <code>application/json; charset=UTF-8</code>waarde is.</td>
+    <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op.<br/> De geaccepteerde waarde is <code>application/json; charset=UTF-8</code> .</td>
   </tr>
   <tr>
     <td>Content-length</td>
@@ -119,13 +119,13 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>Optioneel</em>.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt <code>ClientTraceId</code>met behulp van een query parameter met de naam.</td>
+    <td><em>Optioneel</em>.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam <code>ClientTraceId</code> .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks `Text`eigenschap met de naam, die de teken reeks vertegenwoordigt die moet worden vertaald.
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met `Text` de naam, die de teken reeks vertegenwoordigt die moet worden vertaald.
 
 ```json
 [
@@ -150,13 +150,13 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     De `detectedLanguage` eigenschap is alleen aanwezig in het resultaat object als automatische taal detectie is aangevraagd.
 
-  * `translations`: Een matrix met Vertaal resultaten. De grootte van de matrix komt overeen met het aantal doel talen dat is `to` opgegeven met behulp van de query parameter. Elk element in de matrix bevat:
+  * `translations`: Een matrix met Vertaal resultaten. De grootte van de matrix komt overeen met het aantal doel talen dat is opgegeven met behulp van de `to` query parameter. Elk element in de matrix bevat:
 
     * `to`: Een teken reeks die de taal code van de doel taal aangeeft.
 
     * `text`: Een teken reeks met de vertaalde tekst.
 
-    * `transliteration`: Een object met de vertaalde tekst in het script dat `toScript` is opgegeven met de para meter.
+    * `transliteration`: Een object met de vertaalde tekst in het script dat is opgegeven met de `toScript` para meter.
 
       * `script`: Een teken reeks waarmee het doel script wordt opgegeven.   
 
@@ -164,7 +164,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     Het `transliteration` object wordt niet opgenomen als het vele niet wordt uitgevoerd.
 
-    * `alignment`: Een object met een enkele teken reeks eigenschap `proj`met de naam, waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de `includeAlignment` aanvraag `true`parameter is. Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende indeling `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`:.  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
+    * `alignment`: Een object met een enkele teken reeks eigenschap met de naam `proj` , waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de aanvraag parameter `includeAlignment` is `true` . Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende indeling: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` .  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
 
     * `sentLen`: Een object dat zin retourneert in de invoer-en uitvoer teksten.
 
@@ -172,16 +172,16 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
       * `transSentLen`: Een matrix met gehele getallen die de lengte van de zinnen in de vertaalde tekst aangeeft. De lengte van de matrix is het aantal zinnen en de waarden zijn de lengte van elke zin.
 
-    Grenzen van zinnen worden alleen opgenomen wanneer de aanvraag `includeSentenceLength` parameter `true`is.
+    Grenzen van zinnen worden alleen opgenomen wanneer de aanvraag parameter `includeSentenceLength` is `true` .
 
-  * `sourceText`: Een object met een enkele teken reeks eigenschap `text`met de naam, die de invoer tekst in het standaard script van de bron taal levert. `sourceText`de eigenschap is alleen beschikbaar wanneer de invoer wordt uitgedrukt in een script dat niet het gebruikelijke script is voor de taal. Als de invoer bijvoorbeeld Arabisch is geschreven in Latijns schrift, `sourceText.text` zou de Arabische tekst in het Arabische script worden omgezet.
+  * `sourceText`: Een object met een enkele teken reeks eigenschap met `text` de naam, die de invoer tekst in het standaard script van de bron taal levert. `sourceText`de eigenschap is alleen beschikbaar wanneer de invoer wordt uitgedrukt in een script dat niet het gebruikelijke script is voor de taal. Als de invoer bijvoorbeeld Arabisch is geschreven in Latijns schrift, `sourceText.text` zou de Arabische tekst in het Arabische script worden omgezet.
 
 Voor beeld van JSON-antwoorden vindt u in de sectie [voor beelden](#examples) .
 
 ## <a name="response-headers"></a>Antwoordheaders
 
 <table width="100%">
-  <th width="20%">Headers</th>
+  <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
     <tr>
     <td>X-aanvraag-}</td>
@@ -218,7 +218,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>408</td>
-    <td>De aanvraag kan niet worden voltooid omdat er een resource ontbreekt. Controleer het fout bericht Details. Wanneer u een aangepast <code>category</code>gebruikt, geeft dit vaak aan dat het aangepaste Vertaal systeem nog niet beschikbaar is voor het leveren van aanvragen. De aanvraag moet opnieuw worden uitgevoerd na een wacht tijd (bijvoorbeeld 1 minuut).</td>
+    <td>De aanvraag kan niet worden voltooid omdat er een resource ontbreekt. Controleer het fout bericht Details. Wanneer u een aangepast gebruikt <code>category</code> , geeft dit vaak aan dat het aangepaste Vertaal systeem nog niet beschikbaar is voor het leveren van aanvragen. De aanvraag moet opnieuw worden uitgevoerd na een wacht tijd (bijvoorbeeld 1 minuut).</td>
   </tr>
   <tr>
     <td>429</td>
@@ -226,15 +226,15 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>500</td>
-    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag <code>X-RequestId</code>-id van antwoord header en client <code>X-ClientTraceId</code>-id uit aanvraag header.</td>
+    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header <code>X-RequestId</code> en client-id uit aanvraag header <code>X-ClientTraceId</code> .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag <code>X-RequestId</code>-id van antwoord header en client <code>X-ClientTraceId</code>-id uit aanvraag header.</td>
+    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header <code>X-RequestId</code> en client-id uit aanvraag header <code>X-ClientTraceId</code> .</td>
   </tr>
 </table> 
 
-Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [pagina v3-Translator text-API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [referentie pagina van v3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -359,7 +359,7 @@ De antwoord tekst is:
 
 Normaal gesp roken behoudt de Translator-service inhoud die aanwezig is in de bron in de vertaling. De mate van scheld woorden en de context die het grove woord van de Culture Cultuur afwijkt, en als gevolg hiervan kan de mate van groveheid in de doel taal worden versterkt of gereduceerd.
 
-Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanwezigheid van scheld woorden in de bron tekst, kunt u de filter optie voor scheld woorden gebruiken. Met deze optie kunt u kiezen of u ongepaste woorden wilt weer geven, of u woorden met de juiste tags wilt markeren (zodat u de optie hebt om uw eigen verwerking toe te voegen) of u wilt geen actie ondernemen. De geaccepteerde waarden `ProfanityAction` van `Deleted`zijn `Marked` , `NoAction` en (standaard).
+Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanwezigheid van scheld woorden in de bron tekst, kunt u de filter optie voor scheld woorden gebruiken. Met deze optie kunt u kiezen of u ongepaste woorden wilt weer geven, of u woorden met de juiste tags wilt markeren (zodat u de optie hebt om uw eigen verwerking toe te voegen) of u wilt geen actie ondernemen. De geaccepteerde waarden van `ProfanityAction` zijn `Deleted` , `Marked` en `NoAction` (standaard).
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
@@ -381,12 +381,12 @@ Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanw
   <tr>
     <td><code>Marked</code></td>
     <td>Ongepaste woorden worden vervangen door een markering in de uitvoer. De markering is afhankelijk van de <code>ProfanityMarker</code> para meter.<br/><br/>
-Voor <code>ProfanityMarker=Asterisk</code>zijn ongepaste woorden vervangen door <code>***</code>:<br/>
+Voor <code>ProfanityMarker=Asterisk</code> zijn ongepaste woorden vervangen door <code>***</code> :<br/>
     <strong>Voorbeeld bron (Japans)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Voor beeld van vertaling (Engels)</strong>: hij \* \* \*is een.<br/><br/>
-Voor <code>ProfanityMarker=Tag</code>zijn ongepaste woorden omgeven door XML- &lt;tags&gt; , Gods &lt;taal&gt;en/profanity:<br/>
+    <strong>Voor beeld van vertaling (Engels)</strong>: hij is een \* \* \* .<br/><br/>
+Voor <code>ProfanityMarker=Tag</code> zijn ongepaste woorden omgeven door XML-tags &lt; , Gods taal &gt; en &lt; /profanity &gt; :<br/>
     <strong>Voorbeeld bron (Japans)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Voor beeld van een vertaling (Engels)</strong>: &lt;hij is&gt;een&lt;Gods&gt;-Jackass/profanity.
+    <strong>Voor beeld van een vertaling (Engels)</strong>: hij is een &lt; Gods- &gt; Jackass &lt; /profanity &gt; .
   </tr>
 </table> 
 
@@ -427,7 +427,7 @@ Die laatste aanvraag retourneert:
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Inhoud vertalen met markeringen en bepalen wat er wordt vertaald
 
-Het is gebruikelijk om inhoud te vertalen die aantekeningen bevat zoals inhoud van een HTML-pagina of inhoud van een XML-document. Neem een query `textType=html` parameter op voor het vertalen van inhoud met tags. Daarnaast is het soms handig specifieke inhoud uit te sluiten van de vertaling. U kunt het kenmerk `class=notranslate` gebruiken om inhoud op te geven die in de oorspronkelijke taal moet blijven. In het volgende voor beeld wordt de inhoud in het `div` eerste element niet vertaald, terwijl de inhoud van het tweede `div` element wordt vertaald.
+Het is gebruikelijk om inhoud te vertalen die aantekeningen bevat zoals inhoud van een HTML-pagina of inhoud van een XML-document. Neem een query parameter `textType=html` op voor het vertalen van inhoud met tags. Daarnaast is het soms handig specifieke inhoud uit te sluiten van de vertaling. U kunt het kenmerk gebruiken `class=notranslate` om inhoud op te geven die in de oorspronkelijke taal moet blijven. In het volgende voor beeld wordt de inhoud in het eerste `div` element niet vertaald, terwijl de inhoud van het tweede `div` element wordt vertaald.
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -462,7 +462,7 @@ Voor beeld van een uitlijnings teken reeks: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 
 
 Met andere woorden, de dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spaties scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. De methode retourneert in dat geval geen fout.
 
-Als u uitlijnings gegevens `includeAlignment=true` wilt ontvangen, geeft u op de query teken reeks op.
+Als u uitlijnings gegevens wilt ontvangen, geeft u `includeAlignment=true` op de query teken reeks op.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -484,7 +484,7 @@ Het antwoord is:
 ]
 ```
 
-De uitlijnings gegevens `0:2-0:1`beginnen met, wat betekent dat de eerste drie tekens in de bron`The`tekst () worden toegewezen aan de eerste twee tekens in de`La`vertaalde tekst ().
+De uitlijnings gegevens beginnen met `0:2-0:1` , wat betekent dat de eerste drie tekens in de bron tekst ( `The` ) worden toegewezen aan de eerste twee tekens in de vertaalde tekst ( `La` ).
 
 #### <a name="limitations"></a>Beperkingen
 Het verkrijgen van informatie over uitlijning is een experimentele functie die is ingeschakeld voor het prototypen van onderzoek en ervaringen met mogelijke woordgroepen toewijzingen. We kunnen ervoor kiezen deze in de toekomst niet meer te ondersteunen. Hier volgen enkele van de belangrijkste beperkingen waarbij uitlijningen niet worden ondersteund:
@@ -500,7 +500,7 @@ Het verkrijgen van informatie over uitlijning is een experimentele functie die i
 
 ### <a name="obtain-sentence-boundaries"></a>Grenzen van zinnen verkrijgen
 
-Als u informatie over de lengte van de zin wilt ontvangen in de bron tekst `includeSentenceLength=true` en de vertaalde tekst, geeft u op de query teken reeks op.
+Als u informatie over de lengte van de zin wilt ontvangen in de bron tekst en de vertaalde tekst, geeft u `includeSentenceLength=true` op de query teken reeks op.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
@@ -550,4 +550,4 @@ Het resultaat is:
 ]
 ```
 
-Deze functie werkt op dezelfde manier met `textType=text` of met `textType=html`. De functie moet spaarzaam worden gebruikt. De juiste en veel betere manier om de vertaling aan te passen, is door aangepaste Translator te gebruiken. Aangepaste vertaler maakt volledig gebruik van context-en statistische kansen. Als u trainings gegevens hebt of kunt gebruiken die uw werk of zin in context weer geven, krijgt u veel betere resultaten. Meer [informatie over Custom Translator](../customization.md).
+Deze functie werkt op dezelfde manier met `textType=text` of met `textType=html` . De functie moet spaarzaam worden gebruikt. De juiste en veel betere manier om de vertaling aan te passen, is door aangepaste Translator te gebruiken. Aangepaste vertaler maakt volledig gebruik van context-en statistische kansen. Als u trainings gegevens hebt of kunt gebruiken die uw werk of zin in context weer geven, krijgt u veel betere resultaten. Meer [informatie over Custom Translator](../customization.md).

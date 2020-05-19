@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6330a77f5971348c3f63fdaa7602ebba9ddf45ec
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186336"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691340"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
 In deze Quick Start gebruikt u de REST API formulier Recognizer met het hulp programma voor het labelen van het voor beeld om een aangepast model met hand matig gelabelde gegevens te trainen. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +37,7 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het labelen van voor beelden. Volg deze stappen om de docker-container in te stellen. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.
 
 > [!TIP]
-> Het hulp programma voor het labelen van OCR-formulieren is ook beschikbaar als een open-source project op GitHub. Het hulp programma is een webtoepassing die is gebouwd met reageren op + Redux en is geschreven in type script. Zie [OCR Form labeling tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)(Engelstalig) voor meer informatie of bijdragen.
+> Het hulp programma voor het labelen van OCR-formulieren is ook beschikbaar als een open-source project op GitHub. Het hulp programma is een type script-webtoepassing die is gebouwd met reageren + Redux. Zie voor meer informatie of bijdragen de [OCR Form labeling tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) opslag plaats. Als u het hulp programma online wilt uitproberen, gaat u naar de [FOTT-website](https://fott.azurewebsites.net/).   
 
 1. Installeer eerst docker op een hostcomputer. In deze hand leiding wordt uitgelegd hoe u een lokale computer als host kunt gebruiken. Als u een docker-hosting service in azure wilt gebruiken, raadpleegt u de hand leiding voor [het hulp programma voor beeld label implementeren](../deploy-label-tool.md) . 
 
@@ -49,14 +49,14 @@ U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het l
 
    Installeer docker op uw computer door de juiste instructies te volgen voor uw besturings systeem: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [MacOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-1. Haal de voor beeld-container van het hulp `docker pull` programma op met de opdracht.
+1. Haal de voor beeld-container van het hulp programma op met de `docker pull` opdracht.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. U bent nu klaar om de container uit te `docker run`voeren met.
+1. U bent nu klaar om de container uit te voeren met `docker run` .
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
@@ -75,7 +75,7 @@ Zorg er eerst voor dat alle trainings documenten dezelfde indeling hebben. Als u
 Schakel CORS in voor uw opslag account. Selecteer uw opslag account in de Azure Portal en klik op het tabblad **CORS** in het linkerdeel venster. Vul op de onderste regel de volgende waarden in. Klik vervolgens bovenaan op **Opslaan** .
 
 * Toegestane oorsprongen = * 
-* Toegestane methoden = \[alles selecteren\]
+* Toegestane methoden = \[ Alles selecteren\]
 * Toegestane headers = *
 * Weer gegeven headers = * 
 * Max. leeftijd = 200
@@ -95,7 +95,7 @@ Vul de velden in met de volgende waarden:
 
 * **Weergave naam** : de weergave naam van de verbinding.
 * **Beschrijving** : de beschrijving van uw project.
-* **SAS-URL** : de URL voor Shared Access Signature (SAS) van uw Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Stel de verloop tijd in op enige tijd nadat u de service hebt gebruikt. Zorg ervoor dat de machtigingen **lezen**, **schrijven**, **verwijderen**en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
+* **SAS-URL** : de URL voor Shared Access Signature (SAS) van uw Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Stel de verloop tijd in op enige tijd nadat u de service hebt gebruikt. Zorg ervoor dat de machtigingen **lezen**, **schrijven**, **verwijderen**en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ![Verbindings instellingen van het hulp programma voor het labelen van voor beelden](../media/label-tool/connections.png)
 
@@ -141,7 +141,7 @@ Vervolgens maakt u tags (labels) en past u deze toe op de tekst elementen die u 
     > * Elke tag kan slechts eenmaal per pagina worden toegepast. Als een waarde meerdere keren op hetzelfde formulier wordt weer gegeven, maakt u voor elk exemplaar verschillende labels. Bijvoorbeeld: factuur # 1, factuur # 2, enzovoort.
     > * Labels kunnen niet over meerdere pagina's heen worden verdeeld.
     > * Label waarden zoals ze in het formulier worden weer gegeven. Probeer geen waarde te splitsen in twee delen met twee verschillende Tags. Een adres veld moet bijvoorbeeld worden gelabeld met één tag, zelfs als het meerdere regels omvat.
-    > * Geen sleutels in uw gelabelde&mdash;velden bevatten alleen de waarden.
+    > * Geen sleutels in uw gelabelde velden bevatten &mdash; alleen de waarden.
     > * Tabel gegevens moeten automatisch worden gedetecteerd en beschikbaar zijn in het uiteindelijke uitvoer-JSON-bestand. Als het model echter niet alle tabel gegevens detecteert, kunt u deze velden ook hand matig labelen. Elke cel in de tabel labelen met een ander label. Als uw formulieren tabellen met een wisselend aantal rijen bevatten, moet u ervoor zorgen dat u ten minste één formulier met de grootste mogelijke tabel labelt.
 
 ![Venster van de hoofd editor van het hulp programma voor het labelen van voor beelden](../media/label-tool/main-editor.png)
@@ -157,11 +157,11 @@ U kunt desgewenst het verwachte gegevens type instellen voor elke tag. Open het 
 
 De volgende waardetypen en variaties worden momenteel ondersteund:
 * `string`
-    * standaard, `no-whitespaces`,`alphanumeric`
+    * standaard, `no-whitespaces` ,`alphanumeric`
 * `number`
     * prijs`currency`
 * `date` 
-    * standaard, `dmy`, `mdy`,`ymd`
+    * standaard, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
 

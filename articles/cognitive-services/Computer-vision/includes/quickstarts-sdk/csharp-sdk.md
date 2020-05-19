@@ -9,21 +9,21 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81791651"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595241"
 ---
 <a name="HOLTop"></a>
 
-[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | NuGet-voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [package)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  |  [Bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  van bibliotheek [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  Voor [beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
+* De nieuwste versie van de [.net core SDK](https://dotnet.microsoft.com/download/).
 
 ## <a name="setting-up"></a>Instellen
 
@@ -34,21 +34,21 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het `COMPUTER_VISION_SUBSCRIPTION_KEY` eind `COMPUTER_VISION_ENDPOINT`punt-URL, respectievelijk met de naam en.
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
 Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE. 
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt u de `dotnet new` opdracht om een nieuwe console-app met de naam `computer-vision-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *ComputerVisionQuickstart.cs*.
+In een console venster (zoals cmd, Power shell of bash) gebruikt `dotnet new` u de opdracht om een nieuwe console-app met de naam te maken `computer-vision-quickstart` . Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *ComputerVisionQuickstart.cs*.
 
-```console
+```dotnetcli
 dotnet new console -n computer-vision-quickstart
 ```
 
 Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -74,7 +74,7 @@ Maak in de **programma** klasse van de toepassing variabelen voor het Azure-eind
 
 Installeer de Computer Vision-client bibliotheek voor .NET in de toepassingsmap met de volgende opdracht:
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
 ```
 
@@ -101,21 +101,21 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw `COMPUTER_VISION_SUBSCRIPTION_KEY` computer vision `COMPUTER_VISION_ENDPOINT` sleutel en eind punt, met de naam en respectievelijk.
+> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw computer vision sleutel en eind punt, met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT` respectievelijk.
 
 In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** -object met uw sleutel en gebruik het met uw eind punt om een **[ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** -object te maken.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
-Waarschijnlijk wilt u deze methode in de `Main` -methode aanroepen.
+Waarschijnlijk wilt u deze methode in de-methode aanroepen `Main` .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Een afbeelding analyseren
 
-Met de volgende code wordt een methode `AnalyzeImageUrl`gedefinieerd, die gebruikmaakt van het-client object om een externe installatie kopie te analyseren en de resultaten af te drukken. De methode retourneert een beschrijving van de tekst, categorisatie, lijst met tags, gedetecteerde gezichten, inhouds vlaggen voor volwassenen, hoofd kleuren en afbeeldings type.
+Met de volgende code wordt een methode gedefinieerd, `AnalyzeImageUrl` die gebruikmaakt van het-client object om een externe installatie kopie te analyseren en de resultaten af te drukken. De methode retourneert een beschrijving van de tekst, categorisatie, lijst met tags, gedetecteerde gezichten, inhouds vlaggen voor volwassenen, hoofd kleuren en afbeeldings type.
 
-Voeg de methode aanroep toe aan `Main` de methode.
+Voeg de methode aanroep toe aan de `Main` methode.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyzeinmain)]
 
@@ -210,15 +210,15 @@ Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in d
 
 ### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
 
-Met de volgende code wordt informatie over het type afbeelding&mdash;afgedrukt, ongeacht of het een illustratie of lijn tekening is.
+Met de volgende code wordt informatie over het type afbeelding afgedrukt &mdash; , ongeacht of het een illustratie of lijn tekening is.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Gedrukte en handgeschreven tekst lezen
 
-Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom. De code in deze sectie definieert een methode, `ExtractTextUrl`die gebruikmaakt van het-client object om gedrukte of handgeschreven tekst in de afbeelding te detecteren en uit te pakken.
+Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom. De code in deze sectie definieert een methode, `ExtractTextUrl` die gebruikmaakt van het-client object om gedrukte of handgeschreven tekst in de afbeelding te detecteren en uit te pakken.
 
-Voeg de methode aanroep toe aan `Main` de methode.
+Voeg de methode aanroep toe aan de `Main` methode.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
@@ -251,9 +251,9 @@ Voeg de volgende code toe om de opgehaalde tekst gegevens te parseren en weer te
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit vanuit de map van uw `dotnet run` toepassing met de opdracht.
+Voer de toepassing uit vanuit de map van uw toepassing met de `dotnet run` opdracht.
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 

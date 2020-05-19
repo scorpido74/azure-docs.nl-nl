@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7c9f713d50e31557999c9127cd219bfe9b3a8c82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238880"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199863"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met Java
 
-Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing is geschreven in Java, is de Bing Aangepaste zoekopdrachten-API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+Gebruik deze Quick Start om te leren hoe u zoek resultaten kunt aanvragen van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing wordt geschreven in Java, is de Bing Custom Search-API een betrouw bare webservice die compatibel is met de meeste programmeer talen. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md) voor meer informatie.
+- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md)voor meer informatie.
 
-- Nieuwste [Java SE Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- De meest recente [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-- De [Gson-bibliotheek](https://github.com/google/gson)
+- De [Gson-bibliotheek](https://github.com/google/gson).
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken.
+1. Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken:
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     import com.google.gson.JsonParser;
     ```
 
-2. Maak een klasse met `CustomSrchJava`de naam en maak variabelen voor uw abonnements sleutel, het aangepaste zoek eindpunt en de aangepaste configuratie-id van uw Zoek instantie. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak een klasse `CustomSrchJava` met de naam en maak vervolgens variabelen voor uw abonnements sleutel, het aangepaste zoek eindpunt en de aangepaste configuratie-id van het zoek exemplaar. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -88,7 +88,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
 
 ## <a name="send-and-receive-a-search-request"></a>Een zoekaanvraag verzenden en ontvangen 
 
-1. Maak een functie met de naam `SearchWeb()` waarmee een aanvraag wordt verzonden en een `SearchResults`-object geretourneerd. Maak de aanvraag-URL door de gegevens voor de id, de query en het eindpunt van de aangepaste configuratie te combineren. Voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
+1. Maak een functie met de naam `SearchWeb()` waarmee een aanvraag wordt verzonden en een `SearchResults`-object geretourneerd. Maak de aanvraag-URL door uw aangepaste configuratie-ID, query en eindpunt gegevens te combi neren. Voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
         }
     ```
 
-3. Roep in de hoofdmethode van uw toepassing `SearchWeb()` aan met uw zoekterm. 
+3. Het JSON-antwoord afdrukken.
 
     ```java
     System.out.println("\nJSON Response:\n");

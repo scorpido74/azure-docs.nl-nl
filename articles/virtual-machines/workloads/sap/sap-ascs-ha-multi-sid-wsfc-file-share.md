@@ -70,17 +70,17 @@ Het doel is om meerdere SAP-geclusterde ASCS-exemplaren (Advanced Business Appli
 
 _**Afbeelding 2:** SAP multi-SID-configuratie in twee clusters_
 
-De installatie van een extra **SAP \<SID2->** systeem is identiek aan de installatie van \<één sid> systeem. Er zijn twee extra voorbereidings stappen vereist in het ASCS/SCS-cluster en op de bestands share SOFS cluster.
+De installatie van een extra **SAP \< SID2->** systeem is identiek aan de installatie van één \< sid> systeem. Er zijn twee extra voorbereidings stappen vereist in het ASCS/SCS-cluster en op de bestands share SOFS cluster.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>De infra structuur voorbereiden voor een SAP multi-SID-scenario
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>De infra structuur op de domein controller voorbereiden
 
-Maak het domein groep ** \<domein> \ SAP_\<SID2>_GlobalAdmin**bijvoorbeeld met \<SID2> = PR2. De naam van de domein \<groep is domein> \ SAP_PR2_GlobalAdmin.
+Maak het domein groep ** \< domein> \ SAP_ \< SID2>_GlobalAdmin**bijvoorbeeld met \< SID2> = PR2. De naam van de domein groep is \< domein> \ SAP_PR2_GlobalAdmin.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>De infra structuur voorbereiden op het ASCS/SCS-cluster
 
-U moet de infra structuur voorbereiden op het bestaande ASCS/SCS-cluster voor een \<tweede SAP-sid>:
+U moet de infra structuur voorbereiden op het bestaande ASCS/SCS-cluster voor een tweede SAP- \< SID>:
 
 * Maak een virtuele-hostnaam voor het geclusterde SAP ASCS/SCS-exemplaar op de DNS-server.
 * Voeg een IP-adres toe aan een bestaande Azure interne load balancer met behulp van Power shell.
@@ -90,22 +90,22 @@ Deze stappen worden beschreven in de [voor bereiding van de infra structuur voor
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>De infra structuur voorbereiden op een SOFS-cluster met behulp van de bestaande SAP Global host
 
-U kunt de bestaande \<SAPGlobalHost-> en Volume1 van het eerste SAP \<SID1>-systeem opnieuw gebruiken.
+U kunt de bestaande \< SAPGlobalHost-> en Volume1 van het eerste SAP \< SID1>-systeem opnieuw gebruiken.
 
 ![Afbeelding 3: multi-SID SOFS is hetzelfde als de naam van de globale SAP-host][sap-ha-guide-figure-8014]
 
 _**Afbeelding 3:** Multi-SID SOFS is hetzelfde als de naam van de globale SAP-host_
 
 > [!IMPORTANT]
->Voor de tweede **SAP \<SID2->** systeem worden dezelfde Volume1 en dezelfde ** \<SAPGlobalHost>** -netwerk naam gebruikt.
->Omdat u **SAPMNT** al hebt ingesteld als de share naam voor verschillende SAP-systemen, moet u dezelfde **Volume1**gebruiken om de ** \<SAPGlobalHost>** -netwerk naam te hergebruiken.
+>Voor de tweede **SAP \< SID2->** systeem worden dezelfde Volume1 en dezelfde ** \< SAPGlobalHost>** -netwerk naam gebruikt.
+>Omdat u **SAPMNT** al hebt ingesteld als de share naam voor verschillende SAP-systemen, moet u dezelfde **Volume1**gebruiken om de ** \< SAPGlobalHost>** -netwerk naam te hergebruiken.
 >
->Het bestandspad \<voor de SID2> Global host is C:\ClusterStorage\\**Volume1**\usr\sap\<SID2> \sys\.
+>Het bestandspad voor de \< SID2> Global host is C:\ClusterStorage \\ **Volume1**\usr\sap \< SID2> \sys\.
 >
 
-Voor het \<SID2-> systeem moet u de SAP Global host voorbereiden. \SYS\.. in het SOFS-cluster.
+Voor het \< SID2-> systeem moet u de SAP Global host voorbereiden. \SYS \. . in het SOFS-cluster.
 
-Voer het volgende Power shell-script uit \<om de SAP Global host voor te bereiden voor de SID2-> instantie:
+Voer het volgende Power shell-script uit om de SAP Global host voor te bereiden voor de \< SID2-> instantie:
 
 
 ```powershell
@@ -156,13 +156,13 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>De infra structuur op het SOFS-cluster voorbereiden met behulp van een andere SAP Global host
 
-U kunt de tweede SOFS configureren (bijvoorbeeld de tweede SOFS-cluster functie met ** \<SAPGlobalHost2>** en een andere **Volume2** voor de tweede ** \<SID2>**).
+U kunt de tweede SOFS configureren (bijvoorbeeld de tweede SOFS-cluster functie met ** \< SAPGlobalHost2>** en een andere **Volume2** voor de tweede ** \< SID2>**).
 
 ![Afbeelding 4: multi-SID SOFS is hetzelfde als de SAP GLOBAL host name 2][sap-ha-guide-figure-8015]
 
 _**Afbeelding 4:** Multi-SID SOFS is hetzelfde als SAP GLOBAL host name 2_
 
-Als u de tweede SOFS-functie \<wilt maken met SAPGlobalHost2>, voert u dit Power shell-script uit:
+Als u de tweede SOFS-functie wilt maken met \< SAPGlobalHost2>, voert u dit Power shell-script uit:
 
 ```powershell
 # Create SOFS with SAP Global Host Name 2
@@ -180,7 +180,7 @@ New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_
 
 _**Afbeelding 5:** Tweede Volume2 in Failoverclusterbeheer_
 
-Maak een SAP-map voor het tweede \<SID2> en stel bestands beveiliging in.
+Maak een SAP-map voor het tweede \< SID2> en stel bestands beveiliging in.
 
 Dit Power shell-script uitvoeren:
 
@@ -223,7 +223,7 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-Als u een SAPMNT-bestands share wilt maken op Volume2 met de * \<SAPGlobalHost2>* hostnaam voor de \<tweede SAP SID2->, start u de wizard **Bestands share toevoegen** in Failoverclusterbeheer.
+Als u een SAPMNT-bestands share wilt maken op Volume2 met de * \< SAPGlobalHost2>* hostnaam voor de tweede SAP \< SID2->, start u de wizard **Bestands share toevoegen** in Failoverclusterbeheer.
 
 Klik met de rechter muisknop op de **saoglobal2** SOFS-cluster groep en selecteer **Bestands share toevoegen**.
 
@@ -258,7 +258,7 @@ _**Afbeelding 10:** Alle instellingen uitschakelen_
 <br>
 
 Wijs machtigingen voor *volledig beheer* toe aan bestanden en sapmnt delen voor:
-* De gebruikers groep voor de **\<SAP_ sid>_GlobalAdmin** domein
+* De gebruikers groep voor de **SAP_ \< sid>_GlobalAdmin** domein
 * Computer object van de ASCS/SCS-cluster knooppunten **ASCS-$1** en **ASCS-$2**
 
 ![Afbeelding 11: machtigingen voor volledig beheer toewijzen aan gebruikers groep-en computer accounts][sap-ha-guide-figure-8022]
@@ -281,9 +281,9 @@ _**Afbeelding 13:** De tweede sapmnt die is gebonden aan sapglobal2-host en Volu
 
 ## <a name="install-sap-netweaver-multi-sid"></a>SAP NetWeaver multi-SID installeren
 
-### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>SAP \<SID2> ASCS/SCS-en ers-instanties installeren
+### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>SAP \< SID2> ASCS/SCS-en ers-instanties installeren
 
-Volg dezelfde installatie-en configuratie stappen zoals eerder beschreven voor één SAP \<-sid>.
+Volg dezelfde installatie-en configuratie stappen zoals eerder beschreven voor één SAP- \< SID>.
 
 ### <a name="install-dbms-and-sap-application-servers"></a>DBMS-en SAP-toepassings servers installeren
 Installeer de DBMS-en SAP-toepassings servers zoals eerder beschreven.

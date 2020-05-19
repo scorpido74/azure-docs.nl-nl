@@ -2,13 +2,13 @@
 title: Personalizer configureren
 description: Service configuratie bevat de manier waarop de service beloningen behandelt, hoe vaak de service bekijkt, hoe vaak het model opnieuw wordt getraind en hoeveel gegevens worden opgeslagen.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219355"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584651"
 ---
 # <a name="configure-personalizer-learning-loop"></a>De learning-lus van Personaler configureren
 
@@ -18,6 +18,23 @@ Configureer de learning-lus op de pagina **configuratie** , in de Azure portal v
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>Configuratie wijzigingen plannen
+
+Omdat sommige configuratie wijzigingen [uw model opnieuw instellen](#settings-that-include-resetting-the-model), moet u de configuratie wijzigingen plannen.
+
+Als u de leerling- [modus](concept-apprentice-mode.md)wilt gebruiken, moet u de configuratie van uw persoonlijker controleren voordat u overschakelt naar de modus van de leerling.
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>Instellingen voor het opnieuw instellen van het model
+
+Met de volgende acties wordt een retraining van het model geactiveerd met behulp van gegevens die beschikbaar zijn in de afgelopen twee dagen.
+
+* Communityleden
+* Verkennen
+
+Als u al uw gegevens wilt [wissen](how-to-manage-model.md) , gebruikt u de pagina **model-en leer instellingen** .
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>Beloningen voor de feedback-lus configureren
 
@@ -66,16 +83,7 @@ Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
 Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>Instellingen voor het opnieuw instellen van het model
-
-De volgende acties omvatten een onmiddellijke retraining van het model met de laatste 2 dagen aan gegevens.
-
-* Communityleden
-* Verkennen
-
-Als u al uw gegevens wilt [wissen](how-to-manage-model.md) , gebruikt u de pagina voor model-en leer instellingen * *.
 
 ## <a name="next-steps"></a>Volgende stappen
 

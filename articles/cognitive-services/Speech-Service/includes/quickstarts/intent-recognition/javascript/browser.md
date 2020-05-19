@@ -1,0 +1,286 @@
+---
+author: IEvangelist
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82979656"
+---
+## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+
+Laten we een code toevoegen die als een skelet voor het project werkt.
+
+```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Microsoft Cognitive Services Speech SDK JavaScript Quickstart</title>
+    <meta charset="utf-8" />
+    </head>
+    <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+    </body>
+    </html>
+```
+## <a name="add-ui-elements"></a>UI-elementen toevoegen
+
+Nu gaan we enkele eenvoudige gebruikers interface toevoegen voor invoer vakken, verwijzen naar de Java script van de Speech SDK en een autorisatie Token ophalen, indien beschikbaar.
+
+```html  
+<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+  <div id="content" style="display:none">
+    <table width="100%">
+      <tr>
+        <td></td>
+        <td><h1 style="font-weight:500;">Microsoft Cognitive Services Speech SDK JavaScript Quickstart</h1></td>
+      </tr>
+      <tr>
+        <td align="right"><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started" target="_blank">Subscription</a>:</td>
+        <td><input id="subscriptionKey" type="text" size="40" value="subscription"></td>
+      </tr>
+      <tr>
+        <td align="right">Region</td>
+        <td><input id="serviceRegion" type="text" size="40" value="YourServiceRegion"></td>
+      </tr>
+      <tr>
+        <td align="right">Application ID:</td>
+        <td><input id="appId" type="text" size="60" value="YOUR_LANGUAGE_UNDERSTANDING_APP_ID"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button id="startIntentRecognizeAsyncButton">Start Intent Recognition</button></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">Input Text</td>
+        <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">Result</td>
+        <td><textarea id="statusDiv" style="display: inline-block;width:500px;height:100px"></textarea></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+
+  <script>
+  // Note: Replace the URL with a valid endpoint to retrieve
+  //       authorization tokens for your subscription.
+  var authorizationEndpoint = "token.php";
+
+  function RequestAuthorizationToken() {
+    if (authorizationEndpoint) {
+      var a = new XMLHttpRequest();
+      a.open("GET", authorizationEndpoint);
+      a.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      a.send("");
+      a.onload = function() {
+                var token = JSON.parse(atob(this.responseText.split(".")[1]));
+                serviceRegion.value = token.region;
+                authorizationToken = this.responseText;
+                subscriptionKey.disabled = true;
+                subscriptionKey.value = "using authorization token (hit F5 to refresh)";
+                console.log("Got an authorization token: " + token);
+      }
+    }
+  }
+  </script>
+
+  <script>
+    // status fields and start button in UI
+    var phraseDiv;
+    var statusDiv;
+    var startIntentRecognizeAsyncButton;
+
+    // subscription key, region, and appId for LUIS services.
+    var subscriptionKey, serviceRegion, appId;
+    var authorizationToken;
+    var SpeechSDK;
+    var recognizer;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      startIntentRecognizeAsyncButton = document.getElementById("startIntentRecognizeAsyncButton");
+      subscriptionKey = document.getElementById("subscriptionKey");
+      serviceRegion = document.getElementById("serviceRegion");
+      appId = document.getElementById("appId");
+      phraseDiv = document.getElementById("phraseDiv");
+      statusDiv = document.getElementById("statusDiv");
+
+      startIntentRecognizeAsyncButton.addEventListener("click", function () {
+        startIntentRecognizeAsyncButton.disabled = true;
+        phraseDiv.innerHTML = "";
+        statusDiv.innerHTML = "";
+      });
+
+      if (!!window.SpeechSDK) {
+        SpeechSDK = window.SpeechSDK;
+        startIntentRecognizeAsyncButton.disabled = false;
+
+        document.getElementById('content').style.display = 'block';
+        document.getElementById('warning').style.display = 'none';
+
+        // in case we have a function for getting an authorization token, call it.
+        if (typeof RequestAuthorizationToken === "function") {
+          RequestAuthorizationToken();
+        }
+      }
+    });
+  </script>
+```
+ 
+## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+
+Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code in de `startRecognizeOnceAsyncButton.addEventListener()` methode in.
+
+> [!NOTE]
+> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+
+
+```JavaScript
+        // if we got an authorization token, use the token. Otherwise use the provided subscription key
+        var speechConfig;
+        if (authorizationToken) {
+          speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, serviceRegion.value);
+        } else {
+          if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+            alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+            return;
+          }
+          startIntentRecognizeAsyncButton.disabled = false;
+          speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+        }
+
+        speechConfig.speechRecognitionLanguage = "en-US";
+```
+
+## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
+
+Nu moet u een `AudioConfig` object maken dat verwijst naar uw invoer devic3. Voeg deze code toe in de `startIntentRecognizeAsyncButton.addEventListener()` -methode, rechts onder uw spraak configuratie.
+
+```JavaScript
+        var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+```
+
+## <a name="initialize-a-intentrecognizer"></a>Een IntentRecognizer initialiseren
+
+Nu gaan we het object maken `IntentRecognizer` met behulp van de- `SpeechConfig` en- `AudioConfig` objecten die u eerder hebt gemaakt. Voeg deze code in de `startIntentRecognizeAsyncButton.addEventListener()` methode in.
+
+```JavaScript
+        recognizer = new SpeechSDK.IntentRecognizer(speechConfig, audioConfig);
+```
+
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
+
+U moet een `LanguageUnderstandingModel` met de intentie herkenning koppelen en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation.
+
+Voeg deze code toe onder uw `IntentRecognizer` . Zorg ervoor dat u vervangt door `"YourLanguageUnderstandingAppId"` de id van uw Luis-app. 
+
+```JavaScript
+        if (appId.value !== "" && appId.value !== "YOUR_LANGUAGE_UNDERSTANDING_APP_ID") {
+          var lm = SpeechSDK.LanguageUnderstandingModel.fromAppId(appId.value);
+
+          recognizer.addAllIntents(lm);
+        }
+```
+## <a name="recognize-an-intent"></a>Een intentie herkennen
+
+Vanuit het `IntentRecognizer` object roept u de- `recognizeOnceAsync()` methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+
+Voeg deze code toe onder de toevoeging van het model:
+
+```JavaScript
+        recognizer.recognizeOnceAsync(
+          function (result) {
+            window.console.log(result);
+  
+            phraseDiv.innerHTML = result.text + "\r\n";
+  
+            statusDiv.innerHTML += "(continuation) Reason: " + SpeechSDK.ResultReason[result.reason];
+            switch (result.reason) {
+              case SpeechSDK.ResultReason.RecognizedSpeech:
+                statusDiv.innerHTML += " Text: " + result.text;
+                break;
+              case SpeechSDK.ResultReason.RecognizedIntent:
+                statusDiv.innerHTML += " Text: " + result.text + " IntentId: " + result.intentId;
+                
+                // The actual JSON returned from Language Understanding is a bit more complex to get to, but it is available for things like
+                // the entity name and type if part of the intent.
+                statusDiv.innerHTML += " Intent JSON: " + result.properties.getProperty(SpeechSDK.PropertyId.LanguageUnderstandingServiceResponse_JsonResult);
+                phraseDiv.innerHTML += result.properties.getProperty(SpeechSDK.PropertyId.LanguageUnderstandingServiceResponse_JsonResult) + "\r\n";
+                break;
+              case SpeechSDK.ResultReason.NoMatch:
+                var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(result);
+                statusDiv.innerHTML += " NoMatchReason: " + SpeechSDK.NoMatchReason[noMatchDetail.reason];
+                break;
+              case SpeechSDK.ResultReason.Canceled:
+                var cancelDetails = SpeechSDK.CancellationDetails.fromResult(result);
+                statusDiv.innerHTML += " CancellationReason: " + SpeechSDK.CancellationReason[cancelDetails.reason];
+              
+              if (cancelDetails.reason === SpeechSDK.CancellationReason.Error) {
+                statusDiv.innerHTML += ": " + cancelDetails.errorDetails;
+              }
+            break;
+            }
+            statusDiv.innerHTML += "\r\n";
+            startIntentRecognizeAsyncButton.disabled = false;
+          },
+          function (err) {
+            window.console.log(err);
+    
+            phraseDiv.innerHTML += "ERROR: " + err;
+            startIntentRecognizeAsyncButton.disabled = false;
+          });
+```
+
+## <a name="check-your-code"></a>Controleer uw code
+
+ [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/index-intent-recognition.html)]
+
+## <a name="create-the-token-source-optional"></a>De tokenbron maken (optioneel)
+
+Als u de webpagina wilt hosten op een webserver, kunt u desgewenst een tokenbron opgeven voor uw voorbeeldtoepassing.
+Op die manier verlaat uw abonnementssleutel nooit uw server en is het gebruikers toegestaan gebruik te maken van spraakmogelijkheden zonder zelf een autorisatiecode in te hoeven voeren.
+
+Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we er van uit dat uw webserver de PHP-scripttaal ondersteunt. Voer de volgende code in:
+
+```php
+<?php
+header('Access-Control-Allow-Origin: ' . $_SERVER['SERVER_NAME']);
+
+// Replace with your own subscription key and service region (e.g., "westus").
+$subscriptionKey = 'YourSubscriptionKey';
+$region = 'YourServiceRegion';
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://' . $region . '.api.cognitive.microsoft.com/sts/v1.0/issueToken');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{}');
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Ocp-Apim-Subscription-Key: ' . $subscriptionKey));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+echo curl_exec($ch);
+?>
+```
+
+> [!NOTE]
+> Autorisatietokens hebben slechts een beperkte levensduur.
+> In dit eenvoudige voorbeeld wordt niet weergegeven hoe autorisatietokens automatisch worden vernieuwd. Als een gebruiker kunt u de pagina handmatig opnieuw laden of op F5 drukken om te vernieuwen.
+
+## <a name="build-and-run-the-sample-locally"></a>Het voorbeeld bouwen en lokaal uitvoeren
+
+Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.html met uw favoriete webbrowser. Er wordt een eenvoudige gebruikers interface weer gegeven waarin u uw LUIS-sleutel, [Luis-regio](../../../../regions.md)en Luis-toepassings-id kunt invoeren. Zodra deze velden zijn ingevoerd, kunt u op de juiste knop klikken om een herkenning te activeren met behulp van de microfoon.
+
+> [!NOTE]
+> Deze methode werkt niet in de Safari-browser.
+> Op Safari moet de voorbeeld webpagina worden gehost op een webserver. Met Safari kunnen websites die zijn geladen uit een lokaal bestand niet worden gebruikt voor het gebruik van de microfoon.
+
+## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
+
+Als u uw app wilt starten, opent u uw favoriete webbrowser en wijst u deze naar de open bare URL waar u de map als host voor hebt, voert u de [Luis-regio](../../../../regions.md) in, geeft u ook uw Luis-toepassings-id op en start u een herkenning met behulp van de microfoon. Als deze is geconfigureerd, wordt er een token opgehaald uit uw token bron en worden gesp roken opdrachten herkend.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[!INCLUDE [footer](footer.md)]

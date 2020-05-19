@@ -29,12 +29,12 @@ Alter Row-trans formaties worden alleen toegepast op Data Base-of CosmosDB-sinks
 
 ## <a name="specify-a-default-row-policy"></a>Een standaard beleid voor rijen opgeven
 
-Een alter Row trans formatie maken en een rij-beleid met een voor `true()`waarde van opgeven. Elke rij die niet overeenkomt met een van de eerder gedefinieerde expressies, wordt gemarkeerd voor het opgegeven Row-beleid. Standaard wordt elke rij die niet overeenkomt met een voorwaardelijke expressie gemarkeerd voor `Insert`.
+Een alter Row trans formatie maken en een rij-beleid met een voor waarde van opgeven `true()` . Elke rij die niet overeenkomt met een van de eerder gedefinieerde expressies, wordt gemarkeerd voor het opgegeven Row-beleid. Standaard wordt elke rij die niet overeenkomt met een voorwaardelijke expressie gemarkeerd voor `Insert` .
 
 ![Alter Row Policy](media/data-flow/alter-row4.png "Alter Row Policy")
 
 > [!NOTE]
-> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de `true()`voor waarde als opgeven.
+> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de voor waarde als opgeven `true()` .
 
 ## <a name="view-policies-in-data-preview"></a>Beleids regels weer geven in voor beeld van gegevens
 
@@ -67,7 +67,7 @@ Hier volgen manieren om dit op te lossen:
 
 1. Ga naar de instellingen voor Sink-trans formatie en stel ' Schrijf sleutel kolommen overs Laan ' in. Dit geeft aan dat de kolom die u hebt geselecteerd als de sleutel waarde voor uw toewijzing niet wordt geschreven.
 
-2. Als deze sleutel kolom niet de kolom is die het probleem voor identiteits kolommen veroorzaakt, kunt u de volgende SQL-optie voor het verwerken van Sink- ```SET IDENTITY_INSERT tbl_content ON```trans formatie gebruiken:. Schakel deze vervolgens uit met de SQL-eigenschap na de verwerking: ```SET IDENTITY_INSERT tbl_content OFF```.
+2. Als deze sleutel kolom niet de kolom is die het probleem voor identiteits kolommen veroorzaakt, kunt u de volgende SQL-optie voor het verwerken van Sink-trans formatie gebruiken: ```SET IDENTITY_INSERT tbl_content ON``` . Schakel deze vervolgens uit met de SQL-eigenschap na de verwerking: ```SET IDENTITY_INSERT tbl_content OFF``` .
 
 3. Voor zowel het identiteits-als het kolom distributie-object kunt u uw logica overschakelen van Upsert naar het gebruik van een afzonderlijke update voorwaarde en een afzonderlijke invoeg voorwaarde met behulp van een voorwaardelijke Splits-trans formatie. Op deze manier kunt u de toewijzing instellen op het pad van de update om de sleutel kolom toewijzing te negeren.
 
@@ -87,7 +87,7 @@ Hier volgen manieren om dit op te lossen:
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een alter rij Transformation `CleanData` met de naam die een `SpecifyUpsertConditions` inkomende stroom gebruikt en drie Alter Row-voor waarden maakt. In de vorige trans formatie wordt een kolom `alterRowCondition` met de naam berekend die bepaalt of een rij wordt ingevoegd, bijgewerkt of verwijderd in de-data base. Als de waarde van de kolom een teken reeks waarde heeft die overeenkomt met de regel Alter Row, wordt dat beleid toegewezen.
+Het onderstaande voor beeld is een alter rij Transformation `CleanData` met de naam die een inkomende stroom gebruikt `SpecifyUpsertConditions` en drie Alter Row-voor waarden maakt. In de vorige trans formatie wordt een kolom `alterRowCondition` met de naam berekend die bepaalt of een rij wordt ingevoegd, bijgewerkt of verwijderd in de-data base. Als de waarde van de kolom een teken reeks waarde heeft die overeenkomt met de regel Alter Row, wordt dat beleid toegewezen.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

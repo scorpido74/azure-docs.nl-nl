@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769876"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734328"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelf studie: Custom Vision gebruiken met een IoT-apparaat om de visuele statussen te melden
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u hoe u het volgende kunt doen:
 > * Gebruik de app voor het trainen van uw Custom Vision-project.
 > * Gebruik de app om nieuwe afbeeldingen in realtime te scoren en de resultaten naar Azure te verzenden.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,7 +62,7 @@ De volgende bestanden verwerken de belangrijkste functionaliteit van de app.
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Deze code bepaalt het gedrag van de XAML-gebruikers interface. Het bevat de verwerkings code van de status machine.|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Deze klasse is een wrapper waarmee de integratie met de Custom Vision Service wordt afgehandeld.|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Deze klasse is een wrapper die de integratie afhandelt met Windows ML voor het laden van het ONNX-model en het scoren van afbeeldingen.|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Deze klasse is een wrapper waarmee de integratie met IoT Hub voor het uploaden van Score resultaten naar Azure wordt verwerkt.|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) | Deze klasse is een wrapper waarmee de integratie met IoT Hub voor het uploaden van Score resultaten naar Azure wordt verwerkt.|
 
 ## <a name="set-up-the-visual-alerts-app"></a>De app Visual Alerts instellen
 
@@ -76,7 +76,7 @@ Volg deze stappen om de app IoT Visual Alerts op uw PC of IoT-apparaat op te hal
     1. Werk de `targetCVSProjectGuid` variabele bij met de corresponderende id van het Custom Vision project dat u wilt gebruiken. 
 1. Stel de IoT Hub resource in:
     1. Werk in het script _IoTHub\IotHubWrapper.cs_ de `s_connectionString` variabele met de juiste Connection String voor uw apparaat. 
-    1. Op de Azure Portal, laadt u uw IoT Hub-exemplaar, klikt u op **IOT-apparaten** onder **Explorers**, selecteert u op uw doel apparaat (of maakt u een indien nodig) en zoekt u de Connection String onder **primaire verbindings reeks**. De teken reeks bevat uw IoT Hub naam, apparaat-ID en gedeelde toegangs sleutel. het heeft de volgende indeling: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
+    1. Op de Azure Portal, laadt u uw IoT Hub-exemplaar, klikt u op **IOT-apparaten** onder **Explorers**, selecteert u op uw doel apparaat (of maakt u een indien nodig) en zoekt u de Connection String onder **primaire verbindings reeks**. De teken reeks bevat uw IoT Hub naam, apparaat-ID en gedeelde toegangs sleutel. het heeft de volgende indeling: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>De app uitvoeren
 
@@ -90,7 +90,7 @@ Wanneer u de app voor de eerste keer uitvoert, heeft deze geen kennis van de vis
 
 Als u een model wilt instellen, moet u de app in de status van de **trainings afbeeldingen vastleggen** opnemen. Voer een van de volgende stappen uit:
 * Als u de app op de PC uitvoert, gebruikt u de knop in de rechter bovenhoek van de gebruikers interface.
-* Als u de app op een IoT-apparaat uitvoert, roept u `EnterLearningMode` de methode op het apparaat aan via de IOT hub. U kunt deze aanroepen via de vermelding apparaat in het menu IoT Hub op het Azure Portal of met een hulp programma zoals [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Als u de app op een IoT-apparaat uitvoert, roept u de `EnterLearningMode` methode op het apparaat aan via de IOT hub. U kunt deze aanroepen via de vermelding apparaat in het menu IoT Hub op het Azure Portal of met een hulp programma zoals [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp).
  
 Wanneer de app de status van de **trainings afbeeldingen voor vastleggen** opgeeft, worden de twee installatie kopieën elke seconde vastgelegd totdat het doel aantal installatie kopieën is bereikt. Standaard is het doel 30 afbeeldingen, maar u kunt deze para meter instellen door het gewenste getal als argument door te geven aan de `EnterLearningMode` IOT hub methode. 
 
@@ -116,17 +116,17 @@ Als u dit proces wilt herhalen met uw eigen scenario:
 
 Zodra de app het getrainde model downloadt, wordt er overgeschakeld naar de **Score** status en wordt het Score beeld van de camera in een doorlopende lus gestart.
 
-Voor elke vastgelegde installatie kopie wordt de bovenste tag weer gegeven op het scherm. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten**weer gegeven. De app stuurt deze berichten ook naar de IoT Hub, en als er een klasse wordt gedetecteerd, bevat het bericht het label, de betrouwbaarheids Score en een eigenschap `detectedClassAlert`die kan worden gebruikt door IOT hub-clients die zijn geïnteresseerd in een snelle bericht routering op basis van eigenschappen.
+Voor elke vastgelegde installatie kopie wordt de bovenste tag weer gegeven op het scherm. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten**weer gegeven. De app stuurt deze berichten ook naar de IoT Hub, en als er een klasse wordt gedetecteerd, bevat het bericht het label, de betrouwbaarheids Score en een eigenschap `detectedClassAlert` die kan worden gebruikt door IOT hub-clients die zijn geïnteresseerd in een snelle bericht routering op basis van eigenschappen.
 
 Daarnaast gebruikt het voor beeld een [Sense-Hat-bibliotheek](https://github.com/emmellsoft/RPi.SenseHat) om te detecteren wanneer deze wordt uitgevoerd op een Raspberry Pi met een Sense Hat-eenheid, zodat deze kan worden gebruikt als een uitvoer weergave door alle weergave lichten op rood in te stellen wanneer er een klasse wordt gedetecteerd en deze leeg is wanneer er niets wordt gedetecteerd.
 
 ## <a name="reuse-the-app"></a>De app opnieuw gebruiken
 
-Als u de oorspronkelijke staat van de app opnieuw wilt instellen, kunt u dit doen door te klikken op de knop in de rechter bovenhoek van de gebruikers interface of door de methode `DeleteCurrentModel` aan te roepen via de IOT hub.
+Als u de oorspronkelijke staat van de app opnieuw wilt instellen, kunt u dit doen door te klikken op de knop in de rechter bovenhoek van de gebruikers interface of door de methode aan te roepen `DeleteCurrentModel` via de IOT hub.
 
-U kunt op elk gewenst moment de stap voor het uploaden van trainings afbeeldingen herhalen door te klikken op de knop rechtsboven op de `EnterLearningMode` gebruikers interface of de methode opnieuw aan te roepen.
+U kunt op elk gewenst moment de stap voor het uploaden van trainings afbeeldingen herhalen door te klikken op de knop rechtsboven op de gebruikers interface of de methode opnieuw aan te roepen `EnterLearningMode` .
 
-Als u de app op een apparaat uitvoert en het IP-adres opnieuw moet ophalen (bijvoorbeeld om een externe verbinding te maken via de [Windows IOT externe client](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)), kunt u de `GetIpAddress` methode aanroepen via IOT hub.
+Als u de app op een apparaat uitvoert en het IP-adres opnieuw moet ophalen (bijvoorbeeld om een externe verbinding te maken via de [Windows IOT externe client](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)), kunt u de methode aanroepen `GetIpAddress` via IOT hub.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

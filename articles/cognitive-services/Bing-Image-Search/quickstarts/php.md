@@ -9,39 +9,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fffe56986a3b3a64910678d19321e2d04b8fcc55
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 50ce929904df7d4cf4e6ee83d77a9ad16c5f8cff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478563"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118855"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en PHP
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. De eenvoudige toepassing in dit artikel stuurt een zoekquery en toont de onbewerkte resultaten.
 
-Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met elke programmeertaal die HTTP-aanvragen kan doen en JSON kan parseren.
+Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice die compatibel is met elke programmeer taal die HTTP-aanvragen kan maken en JSON kan parseren.
 
 De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [PHP 5.6.x of later](https://php.net/downloads.php).
+* [PHP 5.6. x of hoger](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-Volg deze stappen om deze toepassing uit te voeren.
+Volg deze stappen voor het uitvoeren van deze toepassing:
 
-1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini`-bestand. In Windows bevindt dit bestand zich in `C:\windows`.
+1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini`-bestand. Dit bestand bevindt zich in Windows *C:\Windows*.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
-3. Definieer het API-eind punt, uw abonnements sleutel en zoek term. het eind punt kan het volgende globale eind punt zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+3. Definieer het API-eind punt, uw abonnements sleutel en zoek term. Het eind punt kan het globale eind punt in de volgende code zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -138,9 +138,9 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden gereto
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is Bing Afbeeldingen zoeken?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
-* [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Wat is de Bing Afbeeldingen zoeken-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Probeer een online interactieve demo](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/). 
+* [Prijs informatie voor de Bing zoeken-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+* [Ontvang een gratis Cognitive Services toegangs sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
+* [Bing afbeeldingen zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

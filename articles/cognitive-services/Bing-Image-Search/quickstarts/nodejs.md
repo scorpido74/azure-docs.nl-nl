@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: zoeken naar installatie kopieën met behulp van de Bing Image Search REST API en node. js'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om Zoek opdrachten voor afbeeldingen naar het Bing Image Search te verzenden REST API met behulp van Java script en een JSON-antwoord te ontvangen.
+description: Gebruik deze Quick Start om Zoek opdrachten voor afbeeldingen naar het Bing Image Search te verzenden REST API met behulp van Java script en JSON-reacties.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 597a12353fa573c628162b110f4e08e6d3a69b86
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478592"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118921"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Snelstartgids: zoeken naar installatie kopieën met behulp van de Bing Image Search REST API en node. js
 
-Gebruik deze quickstart om zoekaanvragen naar de Bing Afbeeldingen zoeken-API te leren sturen. Deze JavaScript-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze Quick Start om te leren hoe u zoek aanvragen naar de Bing Afbeeldingen zoeken-API verzendt. Deze JavaScript-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) met aanvullende fout afhandeling en annotaties.
 
@@ -29,22 +29,22 @@ De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/A
 
 * Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
 
-* De [JavaScript-aanvragenbibliotheek](https://github.com/request/request)  
+* De [Java script-aanvraag bibliotheek](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor, en stel de vereisten voor striktheid en https in.
+1. Maak een nieuw Java script-bestand in uw favoriete IDE of editor en stel de beperkende en HTTPS-vereisten in.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm. `host`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm. Voor `host` kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -55,7 +55,7 @@ Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.mic
 
 ## <a name="construct-the-search-request-and-query"></a>Compileer de zoekopdracht en een query.
 
-1. Gebruik de variabelen uit de laatste stap om een zoek-URL voor de API-aanvraag te formatteren. Uw zoekterm moet URL-gecodeerd zijn voordat deze wordt verzonden naar de API.
+1. Gebruik de variabelen uit de laatste stap om een zoek-URL voor de API-aanvraag te formatteren. URL: Codeer uw zoek term voordat u deze naar de API verzendt.
 
     ```javascript
     let request_params = {
@@ -68,7 +68,7 @@ Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.mic
     };
     ```
 
-2. Gebruik de aanvraagbibliotheek om uw query naar de API te verzenden. `response_handler` wordt gedefinieerd in de volgende sectie.
+2. Gebruik de aanvraagbibliotheek om uw query naar de API te verzenden. 
     ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
@@ -76,32 +76,34 @@ Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.mic
 
 ## <a name="handle-and-parse-the-response"></a>Het antwoord verwerken en parseren
 
-1. definieer een functie met de naam `response_handler` en als parameter de HTTP-aanroep `response`. Voer binnen deze functie de volgende stappen uit:
+1. Definieer een functie met de naam `response_handler` en als parameter de HTTP-aanroep `response`. 
 
-    1. Definieer een variabele voor de hoofdtekst van het JSON-antwoord.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+2. In deze functie definieert u een variabele die de hoofd tekst van het JSON-antwoord bevat. 
 
-    2. De hoofdtekst van het antwoord opslaan wanneer de **gegevens**vlag wordt aangeroepen
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-    3. Wanneer een **finishvlag** wordt weergegeven, krijgt u het eerste resultaat vanuit het JSON-antwoord. Druk de URL van de eerste afbeelding af, samen met het totale aantal geretourneerde afbeeldingen.
+3. Sla de hoofd tekst van het antwoord op wanneer de `data` markering wordt aangeroepen.
 
-        ```javascript
-        response.on('end', function () {
-            let firstImageResult = imageResults.value[0];
-            console.log(`Image result count: ${imageResults.value.length}`);
-            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
-            console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
-         });
-        ```
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. Wanneer een `end` vlag is gesignaleerd, haalt u het eerste resultaat op uit het JSON-antwoord. Druk de URL van de eerste afbeelding af, samen met het totale aantal geretourneerde afbeeldingen.
+
+    ```javascript
+    response.on('end', function () {
+        let firstImageResult = imageResults.value[0];
+        console.log(`Image result count: ${imageResults.value.length}`);
+        console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+        console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
+     });
+    ```
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
@@ -158,9 +160,9 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden gereto
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is Bing Afbeeldingen zoeken?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
-* [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Wat is de Bing Afbeeldingen zoeken-API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Probeer een online interactieve demo](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
+* [Prijs informatie voor de Bing zoeken-API's](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+* [Ontvang een gratis Cognitive Services toegangs sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
+* [Bing afbeeldingen zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

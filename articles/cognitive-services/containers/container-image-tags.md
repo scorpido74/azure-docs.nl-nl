@@ -9,35 +9,33 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925997"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584600"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
 
 Azure Cognitive Services biedt veel container installatie kopieën. De container registers en de bijbehorende opslag plaatsen variëren tussen container installatie kopieën. De naam van elke container installatie kopie biedt meerdere labels. Een container afbeeldings code is een mechanisme voor het versie beheer van de container installatie kopie. Dit artikel is bedoeld om te worden gebruikt als een uitgebreide verwijzing voor het weer geven van alle Cognitive Services container installatie kopieën en de beschik bare Tags.
 
 > [!TIP]
-> Wanneer u [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)gebruikt, moet u zorgvuldig letten op de behuizing van het container register, de opslag plaats, de naam van de container installatie kopie en de bijbehorende tag. Dit zijn **hoofdletter gevoelig**.
+> Wanneer u gebruikt [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) , moet u zorgvuldig letten op de behuizing van het container register, de opslag plaats, de naam van de container installatie kopie en de bijbehorende tag. Dit zijn **hoofdletter gevoelig**.
 
 ## <a name="anomaly-detector"></a>Anomaly Detector
 
-De [afwijkende detector][ad-containers] container installatie kopie vindt u in `containerpreview.azurecr.io` het container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-anomaly-detector`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector`kopie is,.
+De [afwijkende detector][ad-containers] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `anomaly-detector` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 | Afbeeldings Tags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
-| `1.1.009301-amd64-preview`    |       |
-| `1.1.008500001-amd64-preview` |       |
 
 ## <a name="computer-vision"></a>Computer Vision
 
-De [Computer Vision][cv-containers] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-read`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-read`kopie is,.
+De [Computer Vision][cv-containers] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-read` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -50,7 +48,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="face"></a>Face
 
-De [Face][fa-containers] -container installatie kopie vindt u in `containerpreview.azurecr.io` het container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-face`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-face`kopie is,.
+De [Face][fa-containers] -container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-face` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-face` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -68,7 +66,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
-De container installatie kopie voor de [formulier herkenning][fr-containers] vindt u in `containerpreview.azurecr.io` het container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-form-recognizer`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer`kopie is,.
+De container installatie kopie voor de [formulier herkenning][fr-containers] vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-form-recognizer` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -81,7 +79,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="language-understanding-luis"></a>Language Understanding (LUIS)
 
-De [Luis][lu-containers] -container installatie kopie vindt u in `mcr.microsoft.com` het container register Syndicate. Deze bevindt `azure-cognitive-services` zich in de opslag `luis`plaats en heet. De volledig gekwalificeerde naam van de container installatie `mcr.microsoft.com/azure-cognitive-services/luis`kopie is,.
+De [Luis][lu-containers] -container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `luis` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/luis` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -99,7 +97,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="custom-speech-to-text"></a>Custom Speech-naar-tekst
 
-De [Custom speech-naar-tekst][sp-cstt] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-custom-speech-to-text`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text`kopie is,.
+De [Custom speech-naar-tekst][sp-cstt] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-custom-speech-to-text` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -114,7 +112,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="custom-text-to-speech"></a>Aangepaste tekst-naar-spraak
 
-De [aangepaste tekst-naar-spraak-][sp-ctts] container installatie kopie vindt u in `containerpreview.azurecr.io` het container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-custom-text-to-speech`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech`kopie is,.
+De [aangepaste tekst-naar-spraak-][sp-ctts] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-custom-text-to-speech` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -125,505 +123,505 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-De afbeelding voor de [spraak-naar-tekst-][sp-stt] container kan worden `containerpreview.azurecr.io` gevonden in het container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-speech-to-text`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`kopie is,.
+De afbeelding voor de [spraak-naar-tekst-][sp-stt] container kan worden gevonden in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-speech-to-text` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 | Afbeeldings Tags                  | Opmerkingen                                    |
 |-----------------------------|:-----------------------------------------|
-| `latest`                    | Container installatie kopie met `en-US` de land instelling. |
-| `2.2.0-amd64-ar-ae-preview` | Container installatie kopie met `ar-AE` de land instelling. |
-| `2.2.0-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.2.0-amd64-ar-kw-preview` | Container installatie kopie met `ar-KW` de land instelling. |
-| `2.2.0-amd64-ar-qa-preview` | Container installatie kopie met `ar-QA` de land instelling. |
-| `2.2.0-amd64-ar-sa-preview` | Container installatie kopie met `ar-SA` de land instelling. |
-| `2.2.0-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.2.0-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.2.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.2.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.2.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.2.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.2.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.2.0-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.2.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.2.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.2.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.2.0-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.2.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.2.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.2.0-amd64-gu-in-preview` | Container installatie kopie met `gu-IN` de land instelling. |
-| `2.2.0-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.2.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.2.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.2.0-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.2.0-amd64-mr-in-preview` | Container installatie kopie met `mr-IN` de land instelling. |
-| `2.2.0-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.2.0-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.2.0-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.2.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.2.0-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.2.0-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.2.0-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.2.0-amd64-ta-in-preview` | Container installatie kopie met `ta-IN` de land instelling. |
-| `2.2.0-amd64-te-in-preview` | Container installatie kopie met `te-IN` de land instelling. |
-| `2.2.0-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.2.0-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.2.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.2.0-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.2.0-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `2.1.1-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.1.1-amd64-ar-ae-preview` | Container installatie kopie met `ar-AE` de land instelling. |
-| `2.1.1-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.1.1-amd64-ar-kw-preview` | Container installatie kopie met `ar-KW` de land instelling. |
-| `2.1.1-amd64-ar-qa-preview` | Container installatie kopie met `ar-QA` de land instelling. |
-| `2.1.1-amd64-ar-sa-preview` | Container installatie kopie met `ar-SA` de land instelling. |
-| `2.1.1-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.1.1-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.1.1-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.1.1-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.1.1-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.1.1-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.1.1-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.1.1-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.1.1-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.1.1-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.1.1-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.1.1-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.1.1-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.1.1-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.1.1-amd64-gu-in-preview` | Container installatie kopie met `gu-IN` de land instelling. |
-| `2.1.1-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.1.1-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.1.1-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.1.1-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.1.1-amd64-mr-in-preview` | Container installatie kopie met `mr-IN` de land instelling. |
-| `2.1.1-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.1.1-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.1.1-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.1.1-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.1.1-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.1.1-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.1.1-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.1.1-amd64-ta-in-preview` | Container installatie kopie met `ta-IN` de land instelling. |
-| `2.1.1-amd64-te-in-preview` | Container installatie kopie met `te-IN` de land instelling. |
-| `2.1.1-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.1.1-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.1.1-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.1.1-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.1.1-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `2.1.0-amd64-ar-ae-preview` | Container installatie kopie met `ar-AE` de land instelling. |
-| `2.1.0-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.1.0-amd64-ar-kw-preview` | Container installatie kopie met `ar-KW` de land instelling. |
-| `2.1.0-amd64-ar-qa-preview` | Container installatie kopie met `ar-QA` de land instelling. |
-| `2.1.0-amd64-ar-sa-preview` | Container installatie kopie met `ar-SA` de land instelling. |
-| `2.1.0-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.1.0-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.1.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.1.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.1.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.1.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.1.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.1.0-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.1.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.1.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.1.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.1.0-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.1.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.1.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.1.0-amd64-gu-in-preview` | Container installatie kopie met `gu-IN` de land instelling. |
-| `2.1.0-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.1.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.1.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.1.0-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.1.0-amd64-mr-in-preview` | Container installatie kopie met `mr-IN` de land instelling. |
-| `2.1.0-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.1.0-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.1.0-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.1.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.1.0-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.1.0-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.1.0-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.1.0-amd64-ta-in-preview` | Container installatie kopie met `ta-IN` de land instelling. |
-| `2.1.0-amd64-te-in-preview` | Container installatie kopie met `te-IN` de land instelling. |
-| `2.1.0-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.1.0-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.1.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.1.0-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.1.0-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `2.0.3-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.0.2-amd64-ar-ae-preview` | Container installatie kopie met `ar-AE` de land instelling. |
-| `2.0.2-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.0.2-amd64-ar-kw-preview` | Container installatie kopie met `ar-KW` de land instelling. |
-| `2.0.2-amd64-ar-qa-preview` | Container installatie kopie met `ar-QA` de land instelling. |
-| `2.0.2-amd64-ar-sa-preview` | Container installatie kopie met `ar-SA` de land instelling. |
-| `2.0.2-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.0.2-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.0.2-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.0.2-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.0.2-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.0.2-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.0.2-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.0.2-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.0.2-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.0.2-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.0.2-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.0.2-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.0.2-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.0.2-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.0.2-amd64-gu-in-preview` | Container installatie kopie met `gu-IN` de land instelling. |
-| `2.0.2-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.0.2-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.0.2-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.0.2-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.0.2-amd64-mr-in-preview` | Container installatie kopie met `mr-IN` de land instelling. |
-| `2.0.2-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.0.2-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.0.2-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.0.2-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.0.2-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.0.2-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.0.2-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.0.2-amd64-ta-in-preview` | Container installatie kopie met `ta-IN` de land instelling. |
-| `2.0.2-amd64-te-in-preview` | Container installatie kopie met `te-IN` de land instelling. |
-| `2.0.2-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.0.2-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.0.2-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.0.2-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.0.2-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `2.0.1-amd64-ar-ae-preview` | Container installatie kopie met `ar-AE` de land instelling. |
-| `2.0.1-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.0.1-amd64-ar-kw-preview` | Container installatie kopie met `ar-KW` de land instelling. |
-| `2.0.1-amd64-ar-qa-preview` | Container installatie kopie met `ar-QA` de land instelling. |
-| `2.0.1-amd64-ar-sa-preview` | Container installatie kopie met `ar-SA` de land instelling. |
-| `2.0.1-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.0.1-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.0.1-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.0.1-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.0.1-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.0.1-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.0.1-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.0.1-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.0.1-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.0.1-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.0.1-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.0.1-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.0.1-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.0.1-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.0.1-amd64-gu-in-preview` | Container installatie kopie met `gu-IN` de land instelling. |
-| `2.0.1-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.0.1-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.0.1-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.0.1-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.0.1-amd64-mr-in-preview` | Container installatie kopie met `mr-IN` de land instelling. |
-| `2.0.1-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.0.1-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.0.1-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.0.1-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.0.1-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.0.1-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.0.1-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.0.1-amd64-ta-in-preview` | Container installatie kopie met `ta-IN` de land instelling. |
-| `2.0.1-amd64-te-in-preview` | Container installatie kopie met `te-IN` de land instelling. |
-| `2.0.1-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.0.1-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.0.1-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.0.1-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.0.1-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `2.0.0-amd64-ar-eg-preview` | Container installatie kopie met `ar-EG` de land instelling. |
-| `2.0.0-amd64-ca-es-preview` | Container installatie kopie met `ca-ES` de land instelling. |
-| `2.0.0-amd64-da-dk-preview` | Container installatie kopie met `da-DK` de land instelling. |
-| `2.0.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `2.0.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `2.0.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `2.0.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `2.0.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `2.0.0-amd64-en-nz-preview` | Container installatie kopie met `en-NZ` de land instelling. |
-| `2.0.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `2.0.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `2.0.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `2.0.0-amd64-fi-fi-preview` | Container installatie kopie met `fi-FI` de land instelling. |
-| `2.0.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `2.0.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `2.0.0-amd64-hi-in-preview` | Container installatie kopie met `hi-IN` de land instelling. |
-| `2.0.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `2.0.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `2.0.0-amd64-ko-kr-preview` | Container installatie kopie met `ko-KR` de land instelling. |
-| `2.0.0-amd64-nb-no-preview` | Container installatie kopie met `nb-NO` de land instelling. |
-| `2.0.0-amd64-nl-nl-preview` | Container installatie kopie met `nl-NL` de land instelling. |
-| `2.0.0-amd64-pl-pl-preview` | Container installatie kopie met `pl-PL` de land instelling. |
-| `2.0.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `2.0.0-amd64-pt-pt-preview` | Container installatie kopie met `pt-PT` de land instelling. |
-| `2.0.0-amd64-ru-ru-preview` | Container installatie kopie met `ru-RU` de land instelling. |
-| `2.0.0-amd64-sv-se-preview` | Container installatie kopie met `sv-SE` de land instelling. |
-| `2.0.0-amd64-th-th-preview` | Container installatie kopie met `th-TH` de land instelling. |
-| `2.0.0-amd64-tr-tr-preview` | Container installatie kopie met `tr-TR` de land instelling. |
-| `2.0.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `2.0.0-amd64-zh-hk-preview` | Container installatie kopie met `zh-HK` de land instelling. |
-| `2.0.0-amd64-zh-tw-preview` | Container installatie kopie met `zh-TW` de land instelling. |
-| `1.2.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.2.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.2.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.2.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.2.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.2.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.2.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.2.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.2.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.2.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.2.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.2.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.2.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.2.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `1.1.3-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.1.3-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.1.3-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.1.3-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.1.3-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.1.3-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.1.3-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.1.3-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.1.3-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.1.3-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.1.3-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.1.3-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.1.3-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.1.3-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `1.1.2-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.1.2-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.1.2-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.1.2-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.1.2-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.1.2-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.1.2-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.1.2-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.1.2-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.1.2-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.1.2-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.1.2-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.1.2-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.1.2-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `1.1.1-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.1.1-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.1.1-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.1.1-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.1.1-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.1.1-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.1.1-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.1.1-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.1.1-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.1.1-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.1.1-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.1.1-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.1.1-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.1.1-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `1.1.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.1.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.1.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.1.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.1.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.1.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.1.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.1.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.1.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.1.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.1.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.1.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.1.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.1.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
-| `1.0.0-amd64-de-de-preview` | Container installatie kopie met `de-DE` de land instelling. |
-| `1.0.0-amd64-en-au-preview` | Container installatie kopie met `en-AU` de land instelling. |
-| `1.0.0-amd64-en-ca-preview` | Container installatie kopie met `en-CA` de land instelling. |
-| `1.0.0-amd64-en-gb-preview` | Container installatie kopie met `en-GB` de land instelling. |
-| `1.0.0-amd64-en-in-preview` | Container installatie kopie met `en-IN` de land instelling. |
-| `1.0.0-amd64-en-us-preview` | Container installatie kopie met `en-US` de land instelling. |
-| `1.0.0-amd64-es-es-preview` | Container installatie kopie met `es-ES` de land instelling. |
-| `1.0.0-amd64-es-mx-preview` | Container installatie kopie met `es-MX` de land instelling. |
-| `1.0.0-amd64-fr-ca-preview` | Container installatie kopie met `fr-CA` de land instelling. |
-| `1.0.0-amd64-fr-fr-preview` | Container installatie kopie met `fr-FR` de land instelling. |
-| `1.0.0-amd64-it-it-preview` | Container installatie kopie met `it-IT` de land instelling. |
-| `1.0.0-amd64-ja-jp-preview` | Container installatie kopie met `ja-JP` de land instelling. |
-| `1.0.0-amd64-pt-br-preview` | Container installatie kopie met `pt-BR` de land instelling. |
-| `1.0.0-amd64-zh-cn-preview` | Container installatie kopie met `zh-CN` de land instelling. |
+| `latest`                    | Container installatie kopie met de `en-US` land instelling. |
+| `2.2.0-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
+| `2.2.0-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.2.0-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
+| `2.2.0-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
+| `2.2.0-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
+| `2.2.0-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.2.0-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.2.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.2.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.2.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.2.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.2.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.2.0-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.2.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.2.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.2.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.2.0-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.2.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.2.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.2.0-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
+| `2.2.0-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.2.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.2.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.2.0-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.2.0-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
+| `2.2.0-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.2.0-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.2.0-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.2.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.2.0-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.2.0-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.2.0-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.2.0-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
+| `2.2.0-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
+| `2.2.0-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.2.0-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.2.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.2.0-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.2.0-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `2.1.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.1.1-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
+| `2.1.1-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.1.1-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
+| `2.1.1-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
+| `2.1.1-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
+| `2.1.1-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.1.1-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.1.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.1.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.1.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.1.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.1.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.1.1-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.1.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.1.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.1.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.1.1-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.1.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.1.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.1.1-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
+| `2.1.1-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.1.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.1.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.1.1-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.1.1-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
+| `2.1.1-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.1.1-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.1.1-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.1.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.1.1-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.1.1-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.1.1-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.1.1-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
+| `2.1.1-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
+| `2.1.1-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.1.1-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.1.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.1.1-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.1.1-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `2.1.0-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
+| `2.1.0-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.1.0-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
+| `2.1.0-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
+| `2.1.0-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
+| `2.1.0-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.1.0-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.1.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.1.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.1.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.1.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.1.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.1.0-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.1.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.1.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.1.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.1.0-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.1.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.1.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.1.0-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
+| `2.1.0-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.1.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.1.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.1.0-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.1.0-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
+| `2.1.0-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.1.0-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.1.0-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.1.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.1.0-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.1.0-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.1.0-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.1.0-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
+| `2.1.0-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
+| `2.1.0-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.1.0-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.1.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.1.0-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.1.0-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `2.0.3-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.0.2-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
+| `2.0.2-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.0.2-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
+| `2.0.2-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
+| `2.0.2-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
+| `2.0.2-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.0.2-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.0.2-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.0.2-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.0.2-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.0.2-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.0.2-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.0.2-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.0.2-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.0.2-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.0.2-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.0.2-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.0.2-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.0.2-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.0.2-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
+| `2.0.2-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.0.2-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.0.2-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.0.2-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.0.2-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
+| `2.0.2-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.0.2-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.0.2-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.0.2-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.0.2-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.0.2-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.0.2-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.0.2-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
+| `2.0.2-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
+| `2.0.2-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.0.2-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.0.2-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.0.2-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.0.2-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `2.0.1-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
+| `2.0.1-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.0.1-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
+| `2.0.1-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
+| `2.0.1-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
+| `2.0.1-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.0.1-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.0.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.0.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.0.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.0.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.0.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.0.1-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.0.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.0.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.0.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.0.1-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.0.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.0.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.0.1-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
+| `2.0.1-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.0.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.0.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.0.1-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.0.1-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
+| `2.0.1-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.0.1-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.0.1-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.0.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.0.1-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.0.1-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.0.1-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.0.1-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
+| `2.0.1-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
+| `2.0.1-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.0.1-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.0.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.0.1-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.0.1-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `2.0.0-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
+| `2.0.0-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
+| `2.0.0-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
+| `2.0.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `2.0.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `2.0.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `2.0.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `2.0.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `2.0.0-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
+| `2.0.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `2.0.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `2.0.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `2.0.0-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
+| `2.0.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `2.0.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `2.0.0-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
+| `2.0.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `2.0.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `2.0.0-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
+| `2.0.0-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
+| `2.0.0-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
+| `2.0.0-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
+| `2.0.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `2.0.0-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
+| `2.0.0-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
+| `2.0.0-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
+| `2.0.0-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
+| `2.0.0-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
+| `2.0.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `2.0.0-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
+| `2.0.0-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
+| `1.2.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.2.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.2.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.2.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.2.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.2.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.2.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.2.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.2.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.2.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.2.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.2.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.2.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.2.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `1.1.3-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.1.3-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.1.3-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.1.3-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.1.3-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.1.3-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.1.3-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.1.3-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.1.3-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.1.3-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.1.3-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.1.3-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.1.3-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.1.3-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `1.1.2-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.1.2-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.1.2-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.1.2-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.1.2-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.1.2-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.1.2-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.1.2-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.1.2-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.1.2-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.1.2-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.1.2-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.1.2-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.1.2-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `1.1.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.1.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.1.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.1.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.1.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.1.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.1.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.1.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.1.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.1.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.1.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.1.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.1.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.1.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `1.1.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.1.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.1.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.1.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.1.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.1.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.1.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.1.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.1.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.1.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.1.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.1.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.1.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.1.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `1.0.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
+| `1.0.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
+| `1.0.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
+| `1.0.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
+| `1.0.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
+| `1.0.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
+| `1.0.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
+| `1.0.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
+| `1.0.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
+| `1.0.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
+| `1.0.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
+| `1.0.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
+| `1.0.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
+| `1.0.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 
-De [tekst-naar-spraak][sp-tts] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt `microsoft` zich in de opslag `cognitive-services-text-to-speech`plaats en heet. De volledig gekwalificeerde naam van de container installatie `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech`kopie is,.
+De [tekst-naar-spraak][sp-tts] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-text-to-speech` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 | Afbeeldings Tags                                  | Opmerkingen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Container installatie kopie met `en-US` de land `en-US-JessaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-ar-eg-hoda-preview`            | Container installatie kopie met `ar-EG` de land `ar-EG-Hoda` instellingen en de stem.            |
-| `1.3.0-amd64-ar-sa-naayf-preview`           | Container installatie kopie met `ar-SA` de land `ar-SA-Naayf` instellingen en de stem.           |
-| `1.3.0-amd64-bg-bg-ivan-preview`            | Container installatie kopie met `bg-BG` de land `bg-BG-Ivan` instellingen en de stem.            |
-| `1.3.0-amd64-ca-es-herenarus-preview`       | Container installatie kopie met `ca-ES` de land `ca-ES-HerenaRUS` instellingen en de stem.       |
-| `1.3.0-amd64-cs-cz-jakub-preview`           | Container installatie kopie met `cs-CZ` de land `cs-CZ-Jakub` instellingen en de stem.           |
-| `1.3.0-amd64-da-dk-hellerus-preview`        | Container installatie kopie met `da-DK` de land `da-DK-HelleRUS` instellingen en de stem.        |
-| `1.3.0-amd64-de-at-michael-preview`         | Container installatie kopie met `de-AT` de land `de-AT-Michael` instellingen en de stem.         |
-| `1.3.0-amd64-de-ch-karsten-preview`         | Container installatie kopie met `de-CH` de land `de-CH-Karsten` instellingen en de stem.         |
-| `1.3.0-amd64-de-de-hedda-preview`           | Container installatie kopie met `de-DE` de land `de-DE-Hedda` instellingen en de stem.           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-Hedda` instellingen en de stem.           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-HeddaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met `de-DE` de land `de-DE-Stefan-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-el-gr-stefanos-preview`        | Container installatie kopie met `el-GR` de land `el-GR-Stefanos` instellingen en de stem.        |
-| `1.3.0-amd64-en-au-catherine-preview`       | Container installatie kopie met `en-AU` de land `en-AU-Catherine` instellingen en de stem.       |
-| `1.3.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met `en-AU` de land `en-AU-HayleyRUS` instellingen en de stem.       |
-| `1.3.0-amd64-en-ca-heatherrus-preview`      | Container installatie kopie met `en-CA` de land `en-CA-HeatherRUS` instellingen en de stem.      |
-| `1.3.0-amd64-en-ca-linda-preview`           | Container installatie kopie met `en-CA` de land `en-CA-Linda` instellingen en de stem.           |
-| `1.3.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met `en-GB` de land `en-GB-George-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met `en-GB` de land `en-GB-HazelRUS` instellingen en de stem.        |
-| `1.3.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met `en-GB` de land `en-GB-Susan-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-en-ie-sean-preview`            | Container installatie kopie met `en-IE` de land `en-IE-Sean` instellingen en de stem.            |
-| `1.3.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met `en-IN` de land `en-IN-Heera-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met `en-IN` de land `en-IN-PriyaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met `en-IN` de land `en-IN-Ravi-Apollo` instellingen en de stem.     |
-| `1.3.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met `en-US` de land `en-US-BenjaminRUS` instellingen en de stem.     |
-| `1.3.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met `en-US` de land `en-US-Guy24kRUS` instellingen en de stem.       |
-| `1.3.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met `en-US` de land `en-US-Jessa24kRUS` instellingen en de stem.     |
-| `1.3.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met `en-US` de land `en-US-JessaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met `en-US` de land `en-US-ZiraRUS` instellingen en de stem.         |
-| `1.3.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met `es-ES` de land `es-ES-HelenaRUS` instellingen en de stem.       |
-| `1.3.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Laura-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Pablo-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met `es-MX` de land `es-MX-HildaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met `es-MX` de land `es-MX-Raul-Apollo` instellingen en de stem.     |
-| `1.3.0-amd64-fi-fi-heidirus-preview`        | Container installatie kopie met `fi-FI` de land `fi-FI-HeidiRUS` instellingen en de stem.        |
-| `1.3.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met `fr-CA` de land `fr-CA-Caroline` instellingen en de stem.        |
-| `1.3.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met `fr-CA` de land `fr-CA-HarmonieRUS` instellingen en de stem.     |
-| `1.3.0-amd64-fr-ch-guillaume-preview`       | Container installatie kopie met `fr-CH` de land `fr-CH-Guillaume` instellingen en de stem.       |
-| `1.3.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-HortenseRUS` instellingen en de stem.     |
-| `1.3.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met `fr-FR` de land `fr-FR-Julie-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-Paul-Apollo` instellingen en de stem.     |
-| `1.3.0-amd64-he-il-asaf-preview`            | Container installatie kopie met `he-IL` de land `he-IL-Asaf` instellingen en de stem.            |
-| `1.3.0-amd64-hi-in-hemant-preview`          | Container installatie kopie met `hi-IN` de land `hi-IN-Hemant` instellingen en de stem.          |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met `hi-IN` de land `hi-IN-Kalpana-Apollo` instellingen en de stem.  |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met `hi-IN` de land `hi-IN-Kalpana` instellingen en de stem.         |
-| `1.3.0-amd64-hi-in-kalpana-preview`         | Container installatie kopie met `hi-IN` de land `hi-IN-Kalpana` instellingen en de stem.         |
-| `1.3.0-amd64-hr-hr-matej-preview`           | Container installatie kopie met `hr-HR` de land `hr-HR-Matej` instellingen en de stem.           |
-| `1.3.0-amd64-hu-hu-szabolcs-preview`        | Container installatie kopie met `hu-HU` de land `hu-HU-Szabolcs` instellingen en de stem.        |
-| `1.3.0-amd64-id-id-andika-preview`          | Container installatie kopie met `id-ID` de land `id-ID-Andika` instellingen en de stem.          |
-| `1.3.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met `it-IT` de land `it-IT-Cosimo-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met `it-IT` de land `it-IT-LuciaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met `ja-JP` de land `ja-JP-Ayumi-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met `ja-JP` de land `ja-JP-HarukaRUS` instellingen en de stem.       |
-| `1.3.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met `ja-JP` de land `ja-JP-Ichiro-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met `ko-KR` de land `ko-KR-HeamiRUS` instellingen en de stem.        |
-| `1.3.0-amd64-ms-my-rizwan-preview`          | Container installatie kopie met `ms-MY` de land `ms-MY-Rizwan` instellingen en de stem.          |
-| `1.3.0-amd64-nb-no-huldarus-preview`        | Container installatie kopie met `nb-NO` de land `nb-NO-HuldaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-nl-nl-hannarus-preview`        | Container installatie kopie met `nl-NL` de land `nl-NL-HannaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-pl-pl-paulinarus-preview`      | Container installatie kopie met `pl-PL` de land `pl-PL-PaulinaRUS` instellingen en de stem.      |
-| `1.3.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met `pt-BR` de land `pt-BR-Daniel-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met `pt-BR` de land `pt-BR-HeloisaRUS` instellingen en de stem.      |
-| `1.3.0-amd64-pt-pt-heliarus-preview`        | Container installatie kopie met `pt-PT` de land `pt-PT-HeliaRUS` instellingen en de stem.        |
-| `1.3.0-amd64-ro-ro-andrei-preview`          | Container installatie kopie met `ro-RO` de land `ro-RO-Andrei` instellingen en de stem.          |
-| `1.3.0-amd64-ru-ru-ekaterinarus-preview`    | Container installatie kopie met `ru-RU` de land `ru-RU-EkaterinaRUS` instellingen en de stem.    |
-| `1.3.0-amd64-ru-ru-irina-apollo-preview`    | Container installatie kopie met `ru-RU` de land `ru-RU-Irina-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-ru-ru-pavel-apollo-preview`    | Container installatie kopie met `ru-RU` de land `ru-RU-Pavel-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-sk-sk-filip-preview`           | Container installatie kopie met `sk-SK` de land `sk-SK-Filip` instellingen en de stem.           |
-| `1.3.0-amd64-sl-si-lado-preview`            | Container installatie kopie met `sl-SI` de land `sl-SI-Lado` instellingen en de stem.            |
-| `1.3.0-amd64-sv-se-hedvigrus-preview`       | Container installatie kopie met `sv-SE` de land `sv-SE-HedvigRUS` instellingen en de stem.       |
-| `1.3.0-amd64-ta-in-valluvar-preview`        | Container installatie kopie met `ta-IN` de land `ta-IN-Valluvar` instellingen en de stem.        |
-| `1.3.0-amd64-te-in-chitra-preview`          | Container installatie kopie met `te-IN` de land `te-IN-Chitra` instellingen en de stem.          |
-| `1.3.0-amd64-th-th-pattara-preview`         | Container installatie kopie met `th-TH` de land `th-TH-Pattara` instellingen en de stem.         |
-| `1.3.0-amd64-tr-tr-sedarus-preview`         | Container installatie kopie met `tr-TR` de land `tr-TR-SedaRUS` instellingen en de stem.         |
-| `1.3.0-amd64-vi-vn-an-preview`              | Container installatie kopie met `vi-VN` de land `vi-VN-An` instellingen en de stem.              |
-| `1.3.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met `zh-CN` de land `zh-CN-HuihuiRUS` instellingen en de stem.       |
-| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met `zh-CN` de land `zh-CN-Kangkang-Apollo` instellingen en de stem. |
-| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met `zh-CN` de land `zh-CN-Yaoyao-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-zh-hk-danny-apollo-preview`    | Container installatie kopie met `zh-HK` de land `zh-HK-Danny-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-zh-hk-tracy-apollo-preview`    | Container installatie kopie met `zh-HK` de land `zh-HK-Tracy-Apollo` instellingen en de stem.    |
-| `1.3.0-amd64-zh-hk-tracyrus-preview`        | Container installatie kopie met `zh-HK` de land `zh-HK-TracyRUS` instellingen en de stem.        |
-| `1.3.0-amd64-zh-tw-hanhanrus-preview`       | Container installatie kopie met `zh-TW` de land `zh-TW-HanHanRUS` instellingen en de stem.       |
-| `1.3.0-amd64-zh-tw-yating-apollo-preview`   | Container installatie kopie met `zh-TW` de land `zh-TW-Yating-Apollo` instellingen en de stem.   |
-| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | Container installatie kopie met `zh-TW` de land `zh-TW-Zhiwei-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-Hedda` instellingen en de stem.           |
-| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-HeddaRUS` instellingen en de stem.        |
-| `1.2.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met `de-DE` de land `de-DE-Stefan-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-en-au-catherine-preview`       | Container installatie kopie met `en-AU` de land `en-AU-Catherine` instellingen en de stem.       |
-| `1.2.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met `en-AU` de land `en-AU-HayleyRUS` instellingen en de stem.       |
-| `1.2.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met `en-GB` de land `en-GB-George-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met `en-GB` de land `en-GB-HazelRUS` instellingen en de stem.        |
-| `1.2.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met `en-GB` de land `en-GB-Susan-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met `en-IN` de land `en-IN-Heera-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met `en-IN` de land `en-IN-PriyaRUS` instellingen en de stem.        |
-| `1.2.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met `en-IN` de land `en-IN-Ravi-Apollo` instellingen en de stem.     |
-| `1.2.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met `en-US` de land `en-US-BenjaminRUS` instellingen en de stem.     |
-| `1.2.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met `en-US` de land `en-US-Guy24kRUS` instellingen en de stem.       |
-| `1.2.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met `en-US` de land `en-US-Jessa24kRUS` instellingen en de stem.     |
-| `1.2.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met `en-US` de land `en-US-JessaRUS` instellingen en de stem.        |
-| `1.2.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met `en-US` de land `en-US-ZiraRUS` instellingen en de stem.         |
-| `1.2.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met `es-ES` de land `es-ES-HelenaRUS` instellingen en de stem.       |
-| `1.2.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Laura-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Pablo-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met `es-MX` de land `es-MX-HildaRUS` instellingen en de stem.        |
-| `1.2.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met `es-MX` de land `es-MX-Raul-Apollo` instellingen en de stem.     |
-| `1.2.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met `fr-CA` de land `fr-CA-Caroline` instellingen en de stem.        |
-| `1.2.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met `fr-CA` de land `fr-CA-HarmonieRUS` instellingen en de stem.     |
-| `1.2.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-HortenseRUS` instellingen en de stem.     |
-| `1.2.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met `fr-FR` de land `fr-FR-Julie-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-Paul-Apollo` instellingen en de stem.     |
-| `1.2.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met `it-IT` de land `it-IT-Cosimo-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met `it-IT` de land `it-IT-LuciaRUS` instellingen en de stem.        |
-| `1.2.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met `ja-JP` de land `ja-JP-Ayumi-Apollo` instellingen en de stem.    |
-| `1.2.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met `ja-JP` de land `ja-JP-HarukaRUS` instellingen en de stem.       |
-| `1.2.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met `ja-JP` de land `ja-JP-Ichiro-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met `ko-KR` de land `ko-KR-HeamiRUS` instellingen en de stem.        |
-| `1.2.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met `pt-BR` de land `pt-BR-Daniel-Apollo` instellingen en de stem.   |
-| `1.2.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met `pt-BR` de land `pt-BR-HeloisaRUS` instellingen en de stem.      |
-| `1.2.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met `zh-CN` de land `zh-CN-HuihuiRUS` instellingen en de stem.       |
-| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met `zh-CN` de land `zh-CN-Kangkang-Apollo` instellingen en de stem. |
-| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met `zh-CN` de land `zh-CN-Yaoyao-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-de-de-hedda-preview`           | Container installatie kopie met `de-DE` de land `de-DE-Hedda` instellingen en de stem.           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-Hedda` instellingen en de stem.           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met `de-DE` de land `de-DE-HeddaRUS` instellingen en de stem.        |
-| `1.1.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met `de-DE` de land `de-DE-Stefan-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-en-au-catherine-preview`       | Container installatie kopie met `en-AU` de land `en-AU-Catherine` instellingen en de stem.       |
-| `1.1.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met `en-AU` de land `en-AU-HayleyRUS` instellingen en de stem.       |
-| `1.1.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met `en-GB` de land `en-GB-George-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met `en-GB` de land `en-GB-HazelRUS` instellingen en de stem.        |
-| `1.1.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met `en-GB` de land `en-GB-Susan-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met `en-IN` de land `en-IN-Heera-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met `en-IN` de land `en-IN-PriyaRUS` instellingen en de stem.        |
-| `1.1.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met `en-IN` de land `en-IN-Ravi-Apollo` instellingen en de stem.     |
-| `1.1.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met `en-US` de land `en-US-BenjaminRUS` instellingen en de stem.     |
-| `1.1.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met `en-US` de land `en-US-Guy24kRUS` instellingen en de stem.       |
-| `1.1.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met `en-US` de land `en-US-Jessa24kRUS` instellingen en de stem.     |
-| `1.1.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met `en-US` de land `en-US-JessaRUS` instellingen en de stem.        |
-| `1.1.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met `en-US` de land `en-US-ZiraRUS` instellingen en de stem.         |
-| `1.1.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met `es-ES` de land `es-ES-HelenaRUS` instellingen en de stem.       |
-| `1.1.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Laura-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met `es-ES` de land `es-ES-Pablo-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met `es-MX` de land `es-MX-HildaRUS` instellingen en de stem.        |
-| `1.1.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met `es-MX` de land `es-MX-Raul-Apollo` instellingen en de stem.     |
-| `1.1.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met `fr-CA` de land `fr-CA-Caroline` instellingen en de stem.        |
-| `1.1.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met `fr-CA` de land `fr-CA-HarmonieRUS` instellingen en de stem.     |
-| `1.1.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-HortenseRUS` instellingen en de stem.     |
-| `1.1.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met `fr-FR` de land `fr-FR-Julie-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met `fr-FR` de land `fr-FR-Paul-Apollo` instellingen en de stem.     |
-| `1.1.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met `it-IT` de land `it-IT-Cosimo-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met `it-IT` de land `it-IT-LuciaRUS` instellingen en de stem.        |
-| `1.1.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met `ja-JP` de land `ja-JP-Ayumi-Apollo` instellingen en de stem.    |
-| `1.1.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met `ja-JP` de land `ja-JP-HarukaRUS` instellingen en de stem.       |
-| `1.1.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met `ja-JP` de land `ja-JP-Ichiro-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met `ko-KR` de land `ko-KR-HeamiRUS` instellingen en de stem.        |
-| `1.1.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met `pt-BR` de land `pt-BR-Daniel-Apollo` instellingen en de stem.   |
-| `1.1.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met `pt-BR` de land `pt-BR-HeloisaRUS` instellingen en de stem.      |
-| `1.1.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met `zh-CN` de land `zh-CN-HuihuiRUS` instellingen en de stem.       |
-| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met `zh-CN` de land `zh-CN-Kangkang-Apollo` instellingen en de stem. |
-| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met `zh-CN` de land `zh-CN-Yaoyao-Apollo` instellingen en de stem.   |
-| `1.0.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met `en-US` de land `en-US-BenjaminRUS` instellingen en de stem.     |
-| `1.0.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met `en-US` de land `en-US-Guy24kRUS` instellingen en de stem.       |
-| `1.0.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met `en-US` de land `en-US-Jessa24kRUS` instellingen en de stem.     |
-| `1.0.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met `en-US` de land `en-US-JessaRUS` instellingen en de stem.        |
-| `1.0.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met `en-US` de land `en-US-ZiraRUS` instellingen en de stem.         |
-| `1.0.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met `zh-CN` de land `zh-CN-HuihuiRUS` instellingen en de stem.       |
-| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met `zh-CN` de land `zh-CN-Kangkang-Apollo` instellingen en de stem. |
-| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met `zh-CN` de land `zh-CN-Yaoyao-Apollo` instellingen en de stem.   |
+| `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-JessaRUS` stem.        |
+| `1.3.0-amd64-ar-eg-hoda-preview`            | Container installatie kopie met de `ar-EG` land instellingen en de `ar-EG-Hoda` stem.            |
+| `1.3.0-amd64-ar-sa-naayf-preview`           | Container installatie kopie met de `ar-SA` land instellingen en de `ar-SA-Naayf` stem.           |
+| `1.3.0-amd64-bg-bg-ivan-preview`            | Container installatie kopie met de `bg-BG` land instellingen en de `bg-BG-Ivan` stem.            |
+| `1.3.0-amd64-ca-es-herenarus-preview`       | Container installatie kopie met de `ca-ES` land instellingen en de `ca-ES-HerenaRUS` stem.       |
+| `1.3.0-amd64-cs-cz-jakub-preview`           | Container installatie kopie met de `cs-CZ` land instellingen en de `cs-CZ-Jakub` stem.           |
+| `1.3.0-amd64-da-dk-hellerus-preview`        | Container installatie kopie met de `da-DK` land instellingen en de `da-DK-HelleRUS` stem.        |
+| `1.3.0-amd64-de-at-michael-preview`         | Container installatie kopie met de `de-AT` land instellingen en de `de-AT-Michael` stem.         |
+| `1.3.0-amd64-de-ch-karsten-preview`         | Container installatie kopie met de `de-CH` land instellingen en de `de-CH-Karsten` stem.         |
+| `1.3.0-amd64-de-de-hedda-preview`           | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Hedda` stem.           |
+| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Hedda` stem.           |
+| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-HeddaRUS` stem.        |
+| `1.3.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Stefan-Apollo` stem.   |
+| `1.3.0-amd64-el-gr-stefanos-preview`        | Container installatie kopie met de `el-GR` land instellingen en de `el-GR-Stefanos` stem.        |
+| `1.3.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-Catherine` stem.       |
+| `1.3.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-HayleyRUS` stem.       |
+| `1.3.0-amd64-en-ca-heatherrus-preview`      | Container installatie kopie met de `en-CA` land instellingen en de `en-CA-HeatherRUS` stem.      |
+| `1.3.0-amd64-en-ca-linda-preview`           | Container installatie kopie met de `en-CA` land instellingen en de `en-CA-Linda` stem.           |
+| `1.3.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-George-Apollo` stem.   |
+| `1.3.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-HazelRUS` stem.        |
+| `1.3.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-Susan-Apollo` stem.    |
+| `1.3.0-amd64-en-ie-sean-preview`            | Container installatie kopie met de `en-IE` land instellingen en de `en-IE-Sean` stem.            |
+| `1.3.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Heera-Apollo` stem.    |
+| `1.3.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-PriyaRUS` stem.        |
+| `1.3.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Ravi-Apollo` stem.     |
+| `1.3.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-BenjaminRUS` stem.     |
+| `1.3.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-Guy24kRUS` stem.       |
+| `1.3.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-Jessa24kRUS` stem.     |
+| `1.3.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instellingen en de `en-US-JessaRUS` stem.        |
+| `1.3.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instellingen en de `en-US-ZiraRUS` stem.         |
+| `1.3.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-HelenaRUS` stem.       |
+| `1.3.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Laura-Apollo` stem.    |
+| `1.3.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Pablo-Apollo` stem.    |
+| `1.3.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-HildaRUS` stem.        |
+| `1.3.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-Raul-Apollo` stem.     |
+| `1.3.0-amd64-fi-fi-heidirus-preview`        | Container installatie kopie met de `fi-FI` land instellingen en de `fi-FI-HeidiRUS` stem.        |
+| `1.3.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-Caroline` stem.        |
+| `1.3.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-HarmonieRUS` stem.     |
+| `1.3.0-amd64-fr-ch-guillaume-preview`       | Container installatie kopie met de `fr-CH` land instellingen en de `fr-CH-Guillaume` stem.       |
+| `1.3.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-HortenseRUS` stem.     |
+| `1.3.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Julie-Apollo` stem.    |
+| `1.3.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Paul-Apollo` stem.     |
+| `1.3.0-amd64-he-il-asaf-preview`            | Container installatie kopie met de `he-IL` land instellingen en de `he-IL-Asaf` stem.            |
+| `1.3.0-amd64-hi-in-hemant-preview`          | Container installatie kopie met de `hi-IN` land instellingen en de `hi-IN-Hemant` stem.          |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met de `hi-IN` land instellingen en de `hi-IN-Kalpana-Apollo` stem.  |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met de `hi-IN` land instellingen en de `hi-IN-Kalpana` stem.         |
+| `1.3.0-amd64-hi-in-kalpana-preview`         | Container installatie kopie met de `hi-IN` land instellingen en de `hi-IN-Kalpana` stem.         |
+| `1.3.0-amd64-hr-hr-matej-preview`           | Container installatie kopie met de `hr-HR` land instellingen en de `hr-HR-Matej` stem.           |
+| `1.3.0-amd64-hu-hu-szabolcs-preview`        | Container installatie kopie met de `hu-HU` land instellingen en de `hu-HU-Szabolcs` stem.        |
+| `1.3.0-amd64-id-id-andika-preview`          | Container installatie kopie met de `id-ID` land instellingen en de `id-ID-Andika` stem.          |
+| `1.3.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-Cosimo-Apollo` stem.   |
+| `1.3.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-LuciaRUS` stem.        |
+| `1.3.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ayumi-Apollo` stem.    |
+| `1.3.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-HarukaRUS` stem.       |
+| `1.3.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ichiro-Apollo` stem.   |
+| `1.3.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-HeamiRUS` stem.        |
+| `1.3.0-amd64-ms-my-rizwan-preview`          | Container installatie kopie met de `ms-MY` land instellingen en de `ms-MY-Rizwan` stem.          |
+| `1.3.0-amd64-nb-no-huldarus-preview`        | Container installatie kopie met de `nb-NO` land instellingen en de `nb-NO-HuldaRUS` stem.        |
+| `1.3.0-amd64-nl-nl-hannarus-preview`        | Container installatie kopie met de `nl-NL` land instellingen en de `nl-NL-HannaRUS` stem.        |
+| `1.3.0-amd64-pl-pl-paulinarus-preview`      | Container installatie kopie met de `pl-PL` land instellingen en de `pl-PL-PaulinaRUS` stem.      |
+| `1.3.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-Daniel-Apollo` stem.   |
+| `1.3.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-HeloisaRUS` stem.      |
+| `1.3.0-amd64-pt-pt-heliarus-preview`        | Container installatie kopie met de `pt-PT` land instellingen en de `pt-PT-HeliaRUS` stem.        |
+| `1.3.0-amd64-ro-ro-andrei-preview`          | Container installatie kopie met de `ro-RO` land instellingen en de `ro-RO-Andrei` stem.          |
+| `1.3.0-amd64-ru-ru-ekaterinarus-preview`    | Container installatie kopie met de `ru-RU` land instellingen en de `ru-RU-EkaterinaRUS` stem.    |
+| `1.3.0-amd64-ru-ru-irina-apollo-preview`    | Container installatie kopie met de `ru-RU` land instellingen en de `ru-RU-Irina-Apollo` stem.    |
+| `1.3.0-amd64-ru-ru-pavel-apollo-preview`    | Container installatie kopie met de `ru-RU` land instellingen en de `ru-RU-Pavel-Apollo` stem.    |
+| `1.3.0-amd64-sk-sk-filip-preview`           | Container installatie kopie met de `sk-SK` land instellingen en de `sk-SK-Filip` stem.           |
+| `1.3.0-amd64-sl-si-lado-preview`            | Container installatie kopie met de `sl-SI` land instellingen en de `sl-SI-Lado` stem.            |
+| `1.3.0-amd64-sv-se-hedvigrus-preview`       | Container installatie kopie met de `sv-SE` land instellingen en de `sv-SE-HedvigRUS` stem.       |
+| `1.3.0-amd64-ta-in-valluvar-preview`        | Container installatie kopie met de `ta-IN` land instellingen en de `ta-IN-Valluvar` stem.        |
+| `1.3.0-amd64-te-in-chitra-preview`          | Container installatie kopie met de `te-IN` land instellingen en de `te-IN-Chitra` stem.          |
+| `1.3.0-amd64-th-th-pattara-preview`         | Container installatie kopie met de `th-TH` land instellingen en de `th-TH-Pattara` stem.         |
+| `1.3.0-amd64-tr-tr-sedarus-preview`         | Container installatie kopie met de `tr-TR` land instellingen en de `tr-TR-SedaRUS` stem.         |
+| `1.3.0-amd64-vi-vn-an-preview`              | Container installatie kopie met de `vi-VN` land instellingen en de `vi-VN-An` stem.              |
+| `1.3.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-HuihuiRUS` stem.       |
+| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Kangkang-Apollo` stem. |
+| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Yaoyao-Apollo` stem.   |
+| `1.3.0-amd64-zh-hk-danny-apollo-preview`    | Container installatie kopie met de `zh-HK` land instellingen en de `zh-HK-Danny-Apollo` stem.    |
+| `1.3.0-amd64-zh-hk-tracy-apollo-preview`    | Container installatie kopie met de `zh-HK` land instellingen en de `zh-HK-Tracy-Apollo` stem.    |
+| `1.3.0-amd64-zh-hk-tracyrus-preview`        | Container installatie kopie met de `zh-HK` land instellingen en de `zh-HK-TracyRUS` stem.        |
+| `1.3.0-amd64-zh-tw-hanhanrus-preview`       | Container installatie kopie met de `zh-TW` land instellingen en de `zh-TW-HanHanRUS` stem.       |
+| `1.3.0-amd64-zh-tw-yating-apollo-preview`   | Container installatie kopie met de `zh-TW` land instellingen en de `zh-TW-Yating-Apollo` stem.   |
+| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | Container installatie kopie met de `zh-TW` land instellingen en de `zh-TW-Zhiwei-Apollo` stem.   |
+| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Hedda` stem.           |
+| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-HeddaRUS` stem.        |
+| `1.2.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Stefan-Apollo` stem.   |
+| `1.2.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-Catherine` stem.       |
+| `1.2.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-HayleyRUS` stem.       |
+| `1.2.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-George-Apollo` stem.   |
+| `1.2.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-HazelRUS` stem.        |
+| `1.2.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-Susan-Apollo` stem.    |
+| `1.2.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Heera-Apollo` stem.    |
+| `1.2.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-PriyaRUS` stem.        |
+| `1.2.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Ravi-Apollo` stem.     |
+| `1.2.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-BenjaminRUS` stem.     |
+| `1.2.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-Guy24kRUS` stem.       |
+| `1.2.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-Jessa24kRUS` stem.     |
+| `1.2.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instellingen en de `en-US-JessaRUS` stem.        |
+| `1.2.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instellingen en de `en-US-ZiraRUS` stem.         |
+| `1.2.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-HelenaRUS` stem.       |
+| `1.2.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Laura-Apollo` stem.    |
+| `1.2.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Pablo-Apollo` stem.    |
+| `1.2.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-HildaRUS` stem.        |
+| `1.2.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-Raul-Apollo` stem.     |
+| `1.2.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-Caroline` stem.        |
+| `1.2.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-HarmonieRUS` stem.     |
+| `1.2.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-HortenseRUS` stem.     |
+| `1.2.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Julie-Apollo` stem.    |
+| `1.2.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Paul-Apollo` stem.     |
+| `1.2.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-Cosimo-Apollo` stem.   |
+| `1.2.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-LuciaRUS` stem.        |
+| `1.2.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ayumi-Apollo` stem.    |
+| `1.2.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-HarukaRUS` stem.       |
+| `1.2.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ichiro-Apollo` stem.   |
+| `1.2.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-HeamiRUS` stem.        |
+| `1.2.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-Daniel-Apollo` stem.   |
+| `1.2.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-HeloisaRUS` stem.      |
+| `1.2.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-HuihuiRUS` stem.       |
+| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Kangkang-Apollo` stem. |
+| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Yaoyao-Apollo` stem.   |
+| `1.1.0-amd64-de-de-hedda-preview`           | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Hedda` stem.           |
+| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Hedda` stem.           |
+| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-HeddaRUS` stem.        |
+| `1.1.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-Stefan-Apollo` stem.   |
+| `1.1.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-Catherine` stem.       |
+| `1.1.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-HayleyRUS` stem.       |
+| `1.1.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-George-Apollo` stem.   |
+| `1.1.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-HazelRUS` stem.        |
+| `1.1.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-Susan-Apollo` stem.    |
+| `1.1.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Heera-Apollo` stem.    |
+| `1.1.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-PriyaRUS` stem.        |
+| `1.1.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instellingen en de `en-IN-Ravi-Apollo` stem.     |
+| `1.1.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-BenjaminRUS` stem.     |
+| `1.1.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-Guy24kRUS` stem.       |
+| `1.1.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-Jessa24kRUS` stem.     |
+| `1.1.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instellingen en de `en-US-JessaRUS` stem.        |
+| `1.1.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instellingen en de `en-US-ZiraRUS` stem.         |
+| `1.1.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-HelenaRUS` stem.       |
+| `1.1.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Laura-Apollo` stem.    |
+| `1.1.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-Pablo-Apollo` stem.    |
+| `1.1.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-HildaRUS` stem.        |
+| `1.1.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-Raul-Apollo` stem.     |
+| `1.1.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-Caroline` stem.        |
+| `1.1.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-HarmonieRUS` stem.     |
+| `1.1.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-HortenseRUS` stem.     |
+| `1.1.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Julie-Apollo` stem.    |
+| `1.1.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-Paul-Apollo` stem.     |
+| `1.1.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-Cosimo-Apollo` stem.   |
+| `1.1.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-LuciaRUS` stem.        |
+| `1.1.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ayumi-Apollo` stem.    |
+| `1.1.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-HarukaRUS` stem.       |
+| `1.1.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-Ichiro-Apollo` stem.   |
+| `1.1.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-HeamiRUS` stem.        |
+| `1.1.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-Daniel-Apollo` stem.   |
+| `1.1.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-HeloisaRUS` stem.      |
+| `1.1.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-HuihuiRUS` stem.       |
+| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Kangkang-Apollo` stem. |
+| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Yaoyao-Apollo` stem.   |
+| `1.0.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-BenjaminRUS` stem.     |
+| `1.0.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-Guy24kRUS` stem.       |
+| `1.0.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instellingen en de `en-US-Jessa24kRUS` stem.     |
+| `1.0.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instellingen en de `en-US-JessaRUS` stem.        |
+| `1.0.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instellingen en de `en-US-ZiraRUS` stem.         |
+| `1.0.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-HuihuiRUS` stem.       |
+| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Kangkang-Apollo` stem. |
+| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-Yaoyao-Apollo` stem.   |
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-De [Sleuteltermextractie][ta-kp] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt `azure-cognitive-services` zich in de opslag `keyphrase`plaats en heet. De volledig gekwalificeerde naam van de container installatie `mcr.microsoft.com/azure-cognitive-services/keyphrase`kopie is,.
+De [Sleuteltermextractie][ta-kp] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `keyphrase` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/keyphrase` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -638,7 +636,7 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="language-detection"></a>Taaldetectie
 
-De [taaldetectie][ta-la] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt `azure-cognitive-services` zich in de opslag `language`plaats en heet. De volledig gekwalificeerde naam van de container installatie `mcr.microsoft.com/azure-cognitive-services/language`kopie is,.
+De [taaldetectie][ta-la] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `language` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/language` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
@@ -653,14 +651,24 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-De [sentimentanalyse][ta-se] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt `azure-cognitive-services` zich in de opslag `sentiment`plaats en heet. De volledig gekwalificeerde naam van de container installatie `mcr.microsoft.com/azure-cognitive-services/sentiment`kopie is,.
+De [sentimentanalyse][ta-se] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslag plaats en heet `sentiment` . De volledig gekwalificeerde naam van de container installatie kopie is, `mcr.microsoft.com/azure-cognitive-services/sentiment` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
-|-------------------------------|:------|
-| `latest`                      |       |
-| `1.1.009301-amd64-preview`    |       |
+| Afbeeldings Tags | Opmerkingen                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0-en`   | Sentimentanalyse v3 (Engels)               |
+| `3.0-es`   | Sentimentanalyse v3 (Spaans)               |
+| `3.0-fr`   | Sentimentanalyse v3 (Frans)                |
+| `3.0-it`   | Sentimentanalyse v3 (Italiaans)               |
+| `3.0-de`   | Sentimentanalyse v3 (Duits)                |
+| `3.0-zh`   | Sentimentanalyse v3 (Chinees-vereenvoudigd)  |
+| `3.0-zht`  | Sentimentanalyse v3 (Chinees-traditioneel) |
+| `3.0-ja`   | Sentimentanalyse v3 (Japans)              |
+| `3.0-pt`   | Sentimentanalyse v3 (Portugees)            |
+| `3.0-nl`   | Sentimentanalyse v3 (Nederlands)                 |
+| `1.1.009301-amd64-preview`    | Sentimentanalyse v2      |
 | `1.1.008510001-amd64-preview` |       |
 | `1.1.007750002-amd64-preview` |       |
 | `1.1.007360001-amd64-preview` |       |

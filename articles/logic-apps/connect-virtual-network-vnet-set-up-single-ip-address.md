@@ -31,7 +31,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
 
    ![Route tabel selecteren met regel voor het omleiden van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. Als u [een nieuwe route wilt toevoegen](../virtual-network/manage-route-table.md#create-a-route), selecteert u in het menu route tabel **routes** > **toevoegen**.
+1. Als u [een nieuwe route wilt toevoegen](../virtual-network/manage-route-table.md#create-a-route), selecteert u in het menu route tabel **routes**  >  **toevoegen**.
 
    ![Route toevoegen voor het omleiden van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
@@ -61,13 +61,13 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
 
 ## <a name="set-up-network-rule"></a>Netwerk regel instellen
 
-1. Zoek en selecteer uw firewall in de Azure Portal. Selecteer in het menu Firewall onder **instellingen**de optie **regels**. Selecteer in het deel venster regels **netwerk regel verzameling** > **netwerk regel verzameling toevoegen**.
+1. Zoek en selecteer uw firewall in de Azure Portal. Selecteer in het menu Firewall onder **instellingen**de optie **regels**. Selecteer in het deel venster regels **netwerk regel verzameling**  >  **netwerk regel verzameling toevoegen**.
 
    ![Netwerk regel verzameling toevoegen aan firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
 1. Voeg in de verzameling een regel toe die verkeer naar het doel systeem toestaat.
 
-   Stel bijvoorbeeld dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-server. U maakt een netwerk regel verzameling met de naam `LogicApp_ISE_SFTP_Outbound`, die een netwerk regel bevat met `ISE_SFTP_Outbound`de naam. Deze regel staat verkeer toe van het IP-adres van elk subnet waar uw ISE wordt uitgevoerd in uw virtuele netwerk naar de doel-SFTP-server met behulp van het privé-IP-adres van uw firewall.
+   Stel bijvoorbeeld dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-server. U maakt een netwerk regel verzameling met de naam `LogicApp_ISE_SFTP_Outbound` , die een netwerk regel bevat met de naam `ISE_SFTP_Outbound` . Deze regel staat verkeer toe van het IP-adres van elk subnet waar uw ISE wordt uitgevoerd in uw virtuele netwerk naar de doel-SFTP-server met behulp van het privé-IP-adres van uw firewall.
 
    ![Netwerk regel voor Firewall instellen](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 

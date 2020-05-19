@@ -96,7 +96,7 @@ Hier is het bestand *Function. json* :
 
 In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code die wordt `HttpRequest`gekoppeld aan:
+Dit is de C#-script code die wordt gekoppeld aan `HttpRequest` :
 
 ```cs
 public static void Run(ILogger log)
@@ -105,7 +105,7 @@ public static void Run(ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
 
@@ -185,13 +185,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>Trigger-kenmerken
 
-In [C#-klassen bibliotheken](functions-dotnet-class-library.md)is `WarmupTrigger` het kenmerk beschikbaar voor het configureren van de functie.
+In [C#-klassen bibliotheken](functions-dotnet-class-library.md) `WarmupTrigger` is het kenmerk beschikbaar voor het configureren van de functie.
 
 # <a name="c"></a>[G #](#tab/csharp)
 
 In dit voor beeld ziet u hoe u het kenmerk [opwarm](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) gebruikt.
 
-Houd er rekening mee dat de functie ```Warmup``` moet worden aangeroepen en dat er slechts één opwarm-functie per app kan zijn.
+Houd er rekening mee dat de functie moet worden aangeroepen ```Warmup``` en dat er slechts één opwarm-functie per app kan zijn.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -208,7 +208,7 @@ Zie voor een volledig voor beeld het [voor beeld](#trigger---example)van de trig
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -224,12 +224,12 @@ De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
 
 ## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `WarmupTrigger` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `WarmupTrigger` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **voert** | n.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
-| **draaien** | n.v.t.| Vereist: moet worden ingesteld op `in`. |
+| **voert** | n.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
+| **draaien** | n.v.t.| Vereist: moet worden ingesteld op `in` . |
 | **naam** | n.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
 
 ## <a name="trigger---usage"></a>Trigger-gebruik

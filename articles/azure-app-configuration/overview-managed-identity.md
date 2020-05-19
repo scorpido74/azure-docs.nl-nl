@@ -89,7 +89,7 @@ Met de volgende stappen wordt u begeleid bij het maken van een door de gebruiker
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    In de uitvoer van deze opdracht noteert u de waarde van `id` de eigenschap.
+    In de uitvoer van deze opdracht noteert u de waarde van de `id` eigenschap.
 
 1. Voer de opdracht [AZ appconfig Identity Assign] uit om de nieuwe door de gebruiker toegewezen identiteit toe te wijzen aan deze configuratie opslag. Gebruik de waarde van de `id` eigenschap die u in de vorige stap hebt genoteerd.
 

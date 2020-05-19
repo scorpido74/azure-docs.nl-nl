@@ -33,7 +33,7 @@ De **genormaliseerde** metrische gegevens over het gebruik van ru worden ook geb
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>De metrische gegevens over het verbruik van de genormaliseerde aanvraag eenheden weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 

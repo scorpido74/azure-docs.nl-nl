@@ -1,39 +1,39 @@
 ---
 title: 'Quick Start: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van node. js | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Custom Search-instantie met behulp van Node.js.
+description: Gebruik deze Quick Start om te beginnen met het aanvragen van zoek resultaten van uw Bing Aangepaste zoekopdrachten-exemplaar met behulp van node. js.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 1c7bd97de4e46e1c8da467840006fe2520851caf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 34d64db9caefd26adc91471ed67e528a6e3196dc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238869"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199847"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van node. js
 
-Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing is geschreven in JavaScript, is de Bing Aangepaste zoekopdrachten-API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
+Gebruik deze Quick Start om te leren hoe u zoek resultaten kunt aanvragen van uw Bing Aangepaste zoekopdrachten-exemplaar. Hoewel deze toepassing wordt geschreven in Java script, is het Bing Custom Search-API een REST-webservice die compatibel is met de meeste programmeer talen. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md) voor meer informatie.
+- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](quick-start.md)voor meer informatie.
 
-- [Node.js](https://www.nodejs.org/)
+- [De node. js Java Script-runtime](https://www.nodejs.org/).
 
-- De [JavaScript-aanvragenbibliotheek](https://github.com/request/request)
+- De [Java script-aanvraag bibliotheek](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor en voeg een instructie `require()` toe voor de aanvragenbibliotheek. Maak variabelen voor de abonnementssleutel, de aangepaste configuratie-id en een zoekterm. 
+- Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor en voeg een instructie `require()` toe voor de aanvragenbibliotheek. Maak variabelen voor uw abonnements sleutel, aangepaste configuratie-ID en zoek term.
 
     ```javascript
     var request = require("request");
@@ -45,7 +45,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
 
 ## <a name="send-and-receive-a-search-request"></a>Een zoekaanvraag verzenden en ontvangen 
 
-1. Maak een variabele voor het opslaan van de gegevens die in uw aanvraag worden verzonden. Stel de aanvraag-URL samen door uw zoekterm toe te voegen aan de queryparameter `q=`, en de aangepaste configuratie-id van uw zoekinstantie aan `customconfig=`. Scheid de parameters van elkaar met een `&`-teken. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een variabele voor het opslaan van de gegevens die in uw aanvraag worden verzonden. Maak de aanvraag-URL door uw zoek term toe te voegen aan de `q=` query parameter en de aangepaste configuratie-id van uw Zoek instantie te koppelen aan de `customconfig=` para meter. Scheid de para meters met een en-teken ( `&` ). U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```javascript
     var info = {
@@ -58,7 +58,7 @@ Gebruik deze quickstart om te beginnen met het opvragen van zoekresultaten van u
     }
     ```
 
-1. Gebruik de JavaScript-aanvragenbibliotheek voor het verzenden van een zoekaanvraag naar uw Bing Custom Search-exemplaar en geef informatie weer over de resultaten, waaronder de naam, de URL en de datum waarop de webpagina voor het laatst is verkend.
+1. Gebruik de Java script-aanvraag bibliotheek om een zoek opdracht naar uw Bing Aangepaste zoekopdrachten-exemplaar te verzenden en om informatie over de resultaten af te drukken, met inbegrip van de naam, de URL en de datum waarop de webpagina voor het laatst is verkend.
 
     ```javascript
     request(info, function(error, response, body){
