@@ -2,13 +2,13 @@
 title: Limieten-LUIS
 description: Dit artikel bevat de bekende limieten van Azure Cognitive Services Language Understanding (LUIS). LUIS heeft verschillende limiet gebieden. De limiet voor het aantal besturings elementen voor modellen is intenties, entiteiten en functies in LUIS. Quotum limieten op basis van het sleutel type. Met toetscombinaties bepaalt u de LUIS-website.
 ms.topic: reference
-ms.date: 04/02/2020
-ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82103590"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593236"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Limieten voor uw LUIS-model en-sleutels
 LUIS heeft verschillende limiet gebieden. De eerste is de [model limiet](#model-limits), waarmee de intenties, entiteiten en onderdelen in Luis worden beheerd. Het tweede gebied is [quotum limieten](#key-limits) op basis van het sleutel type. Een derde gebied met limieten is de [toetscombinatie voor het beheren van de Luis](#keyboard-controls) -website. Een vierde gebied is de [wereld wijde toewijzing](luis-reference-regions.md) tussen de Luis-ontwerp website en de Luis- [eindpunt](luis-glossary.md#endpoint) api's.
@@ -19,7 +19,7 @@ LUIS heeft verschillende limiet gebieden. De eerste is de [model limiet](#model-
 
 Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [Luis-verzend](luis-concept-enterprise.md#dispatch-tool-and-model) -app te gebruiken of een [Luis-container](luis-container-howto.md)te gebruiken.
 
-|Onderwerp|Limiet|
+|Gebied|Limiet|
 |--|:--|
 | [App-naam][luis-get-started-create-app] | * Standaard teken Max |
 | Toepassingen| 500-toepassingen per Azure-ontwerp bron |
@@ -28,8 +28,8 @@ Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [L
 | Externe entiteiten | geen limieten |
 | [Intents][intents]|500 per toepassing: 499 aangepaste intenties en de vereiste _geen_ intentie.<br>[Op verzen ding gebaseerde](https://aka.ms/dispatch-tool) toepassing heeft corresponderende 500-verzend bronnen.|
 | [Entiteiten vermelden](./luis-concept-entity-types.md) | Bovenliggend item: 50, onderliggend: 20.000 items. Canonieke naam is * standaard teken Max. Synoniemen waarden hebben geen beperking voor lengte. |
-| Door [machines geleerde entiteiten + rollen](./luis-concept-entity-types.md):<br> werken<br>Simple<br>entiteits rol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, afhankelijk van het aantal gebruikers dat het eerst voor komt. Een rol telt als een entiteit voor het doel van deze limiet. Een voor beeld is een samen stelling met een eenvoudige entiteit, die twee rollen heeft: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.<br>Subonderdelen kunnen Maxi maal vijf niveaus worden genest.|
-|Model als onderdeel| Het maximum aantal modellen dat kan worden gebruikt als een descriptor (functie) voor een specifiek model om 10 modellen te zijn. Het maximum aantal woordgroepen lijsten dat als een descriptor (functie) voor een specifiek model wordt gebruikt, is 10 woordgroepen lijsten.|
+| Door [machines geleerde entiteiten + rollen](./luis-concept-entity-types.md):<br> werken<br>Simple<br>entiteits rol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, afhankelijk van het aantal gebruikers dat het eerst voor komt. Een rol telt als een entiteit voor het doel van deze limiet. Een voor beeld is een samen stelling met een eenvoudige entiteit, die twee rollen heeft: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.<br>Subentiteiten kunnen Maxi maal vijf niveaus genest zijn.|
+|Model als onderdeel| Het maximum aantal modellen dat kan worden gebruikt als onderdeel van een specifiek model om 10 modellen te zijn. Het maximum aantal woordgroepen lijsten dat als een functie voor een specifiek model wordt gebruikt, is 10 woordgroepen lijsten.|
 | [Preview-dynamische lijst entiteiten](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lijsten met een eindpunt aanvraag van ongeveer 1 KB per query|
 | [Patronen](luis-concept-patterns.md)|500 patronen per toepassing.<br>De maximale lengte van het patroon is 400 tekens.<br>3 patroon. alle entiteiten per patroon<br>Maxi maal 2 geneste optionele teksten in het patroon|
 | [Patroon. alle](./luis-concept-entity-types.md)|100 per toepassing, 3 patroon. alle entiteiten per patroon |
@@ -40,7 +40,7 @@ Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [L
 | [Utterance][utterances] | 500 tekens|
 | [Utterances][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie|
 | [Lager](luis-concept-version.md)| 100 versies per toepassing |
-| [Versie naam][luis-how-to-manage-versions] | 10 tekens beperkt tot alfanumeriek en punt (.) |
+| [Versie naam][luis-how-to-manage-versions] | 128 tekens |
 
 * Standaard teken Max is 50 tekens.
 
@@ -48,18 +48,14 @@ Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [L
 
 ## <a name="name-uniqueness"></a>Unieke naam
 
-Gebruik de volgende naamgevings regels voor uniekheid.
+Object namen moeten uniek zijn in vergelijking met andere objecten van hetzelfde niveau.
 
-Het volgende moet uniek zijn in een LUIS-app:
-
-* versie naam
-* bedoeling
-* vennootschap
-* rolls
-
-Het volgende moet uniek zijn binnen het bereik dat wordt toegepast:
-
-* woordgroepen lijst
+|Objecten|Beperkingen|
+|--|--|
+|Intentie, entiteit|Alle intentie-en entiteits namen moeten uniek zijn in een versie van een app.|
+|ML-entiteit onderdelen|Alle entiteits onderdelen die door machines zijn geleerd (onderliggende entiteiten), moeten binnen die entiteit uniek zijn voor onderdelen op hetzelfde niveau.|
+|Functies | Alle benoemde functies, zoals woordgroepen lijsten, moeten uniek zijn in een versie van een app.|
+|Entiteitsrollen|Alle rollen op een entiteits-of entiteits onderdeel moeten uniek zijn wanneer ze zich op hetzelfde niveau van de entiteit bevinden (bovenliggend, onderliggend, grandchild, enzovoort).|
 
 ## <a name="object-naming"></a>Naamgeving van objecten
 
@@ -78,7 +74,7 @@ Taal kennis heeft afzonderlijke resources, een type voor ontwerpen en één type
 
 ### <a name="authoring-resource-limits"></a>Resource limieten ontwerpen
 
-Gebruik de _soort_, `LUIS.Authoring`, wanneer u resources in de Azure Portal filtert. LUIS beperkt 500-toepassingen per Azure-ontwerp bron.
+Gebruik de _soort_, `LUIS.Authoring` , wanneer u resources in de Azure Portal filtert. LUIS beperkt 500-toepassingen per Azure-ontwerp bron.
 
 |Resource ontwerpen|TPS ontwerpen|
 |--|--|
@@ -91,7 +87,7 @@ Gebruik de _soort_, `LUIS.Authoring`, wanneer u resources in de Azure Portal fil
 
 ### <a name="query-prediction-resource-limits"></a>Resource limieten voor voor spelling query's
 
-Gebruik de _soort_, `LUIS`, wanneer u resources in de Azure Portal filtert. De LUIS-query Voorspellings eindpunt resource, die in de runtime wordt gebruikt, is alleen geldig voor eindpunt query's.
+Gebruik de _soort_, `LUIS` , wanneer u resources in de Azure Portal filtert. De LUIS-query Voorspellings eindpunt resource, die in de runtime wordt gebruikt, is alleen geldig voor eindpunt query's.
 
 |Query Voorspellings resource|Query TPS|
 |--|--|

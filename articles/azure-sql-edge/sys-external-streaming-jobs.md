@@ -1,0 +1,50 @@
+---
+title: sys. external_streaming_jobs (Transact-SQL)-Azure SQL Edge (preview-versie)
+description: Meer informatie over het gebruik van sys. external_streaming_jobs in Azure SQL Edge (preview)
+keywords: sys. external_streaming_jobs, SQL Edge
+services: sql-database-edge
+ms.service: sql-database-edge
+ms.topic: reference
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: sstein
+ms.date: 05/19/2019
+ms.openlocfilehash: 7d4f66375c5490906e773c6f105a029c3a88465c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83597273"
+---
+# <a name="sysexternal_streaming_jobs-transact-sql"></a>sys. external_streaming_jobs (Transact-SQL)
+
+Retourneert een rij voor elke externe streaming-taak die binnen het bereik van de data base is gemaakt.
+
+|Kolomnaam|Gegevenstype|Beschrijving|  
+|-----------------|---------------|-----------------|
+|**naam**|**sysname**|De naam van de stroom. Is uniek binnen de data base.|
+|**object_id**|**int**|object-id-nummer voor het Stream-object. Is uniek binnen de data base.|
+|**principal_id**|**int**|ID van de principal die eigenaar is van deze assembly|
+|**schema_id**|**int**| De ID van het schema dat het object bevat.|
+|**parent_object_id**|**id**| object-id-nummer voor het bovenliggende object voor deze stroom. In de huidige implementatie is deze waarde altijd Null|
+|**voert**|**char (2)**|Object type. Voor Stream-objecten is het type altijd ' EJ '|
+|**type_desc**|**nvarchar (60)**| Beschrijving van het object type. Voor Stream-objecten is het type altijd ' EXTERNAL_STREAMING_JOB '|
+|**create_date**|**datetime**| De datum waarop het object is gemaakt.|
+|**modify_date**|**datetime**| In de huidige implementatie is deze waarde hetzelfde als de create_date voor het Stream-object |
+|**is_ms_shipped**|**bit**| Object gemaakt door een intern onderdeel.|  
+|**is_published**|**bit**| Het object wordt gepubliceerd.|  
+|**is_schema_published**|**bit**|Alleen het schema van het object wordt gepubliceerd.|
+|**uses_ansi_nulls**|**bit**| Stream-object is gemaakt met de optie SET ANSI_NULLS Data Base op|
+|**rekeningen**|**varchar(max)**| De tekst van de stream Analytics-query voor de streaming-taak. Zie [sp_create_streaming_job](overview.md) voor meer informatie. |
+|**hebben**|**int**| De huidige status van de streaming-taak. De mogelijke waarden zijn <br /><br /> **Gemaakt** = 0. De streaming-taak is gemaakt, maar is nog niet gestart. <br /><br /> **Begin** = 1. De streaming-taak bevindt zich in de begin fase. <br /><br /> **Mislukt** = 6. De streaming-taak is mislukt. Dit is doorgaans een indicatie van een fatale fout tijdens de verwerking. <br /><br /> **Gestopt** = 4. De streaming-taak is gestopt. <br /><br /> **Inactief** = 7. De streaming-taak wordt uitgevoerd, maar er is geen invoer om te verwerken. <br /><br /> **Verwerken** = 8. De streaming-taak wordt uitgevoerd en verwerkt de invoer. Deze status geeft aan dat de streaming-taak een goede status heeft. <br /><br /> **Gedegradeerd** = 9. De streaming-taak wordt uitgevoerd, maar er zijn een aantal niet-fatale invoer/uitvoer-serialisatie/deserialisatie-fouten opgetreden tijdens de invoer verwerking. De invoer taak wordt nog steeds uitgevoerd, maar gaat weg van invoer die fouten tegen komt.|
+
+## <a name="permissions"></a>Machtigingen
+
+De zicht baarheid van de meta gegevens in catalogus weergaven is beperkt tot Beveilig bare items die eigendom zijn van een gebruiker of waarvoor de gebruiker toestemming heeft gekregen. Zie voor meer informatie [configuratie van zicht baarheid van meta gegevens](/sql/relational-databases/security/metadata-visibility-configuration/).
+
+## <a name="see-also"></a>Zie ook
+
+- [Catalogus weergaven voor T-SQL-streaming](overview.md)
+- [Catalogus weergaven (Transact-SQL)](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql/)
+- [Systeem weergaven (Transact-SQL)](/sql/t-sql/language-reference/)
+

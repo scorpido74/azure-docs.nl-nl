@@ -1,25 +1,25 @@
 ---
 title: Een container configureren voor anomalie detectie-API
 titleSuffix: Azure Cognitive Services
-description: De runtime-omgeving voor de anomalie detectie-API-container `docker run` wordt geconfigureerd met de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen.
+description: De runtime-omgeving voor de anomalie detectie-API-container wordt geconfigureerd met de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 569499002c5e047d7030575342790e9a074b9404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875177"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593304"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector-containers configureren
 
-De **afwijkende detector** container runtime-omgeving wordt geconfigureerd `docker run` met de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen. 
+De **afwijkende detector** container runtime-omgeving wordt geconfigureerd met de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen. 
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
@@ -37,11 +37,11 @@ Deze container bevat de volgende configuratie-instellingen:
 |Nee|[Koppelt](#mount-settings)|Gegevens lezen en schrijven van de hostcomputer naar de container en van de container terug naar de hostcomputer.|
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](anomaly-detector-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting) instellingen, en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders wordt de container niet gestart. Zie [facturering](anomaly-detector-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
 ## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-Met `ApiKey` deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _afwijkende detector_ -resource die [`Billing`](#billing-configuration-setting) is opgegeven voor de configuratie-instelling.
+`ApiKey`Met deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _afwijkende detector_ -resource die is opgegeven voor de [`Billing`](#billing-configuration-setting) configuratie-instelling.
 
 Deze instelling bevindt zich op de volgende locatie:
 
@@ -53,13 +53,13 @@ Deze instelling bevindt zich op de volgende locatie:
 
 ## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de bron voor de _afwijkings detector_ op Azure die wordt gebruikt om facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _afwijkende detector_ -resource in Azure.
+Met deze `Billing` instelling geeft u de eindpunt-URI op van de bron voor de _afwijkings detector_ op Azure die wordt gebruikt om facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _afwijkende detector_ -resource in Azure.
 
 Deze instelling bevindt zich op de volgende locatie:
 
 * Azure Portal: overzicht **van anomalie detectie** , gelabeld`Endpoint`
 
-|Vereist| Naam | Gegevenstype | Beschrijving |
+|Vereist| Name | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](anomaly-detector-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 
@@ -88,29 +88,29 @@ De afwijkende detector containers gebruiken geen invoer-of uitvoer koppelingen o
 
 De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppel locatie van de [hostcomputer](anomaly-detector-container-howto.md#the-host-computer)mogelijk niet toegankelijk als gevolg van een conflict tussen de machtigingen die worden gebruikt door het docker-service account en de machtigingen voor het koppelen van de host-locatie. 
 
-|Optioneel| Naam | Gegevenstype | Beschrijving |
+|Optioneel| Name | Gegevenstype | Beschrijving |
 |-------|------|-----------|-------------|
 |Niet toegestaan| `Input` | Tekenreeks | Afwijkende detector containers gebruiken deze niet.|
 |Optioneel| `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren 
 
-De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt.  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](anomaly-detector-container-howto.md#stop-the-container) .
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` .  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash `\`,, als een regel voortzettings teken voor een bash-shell. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. Het regel vervolg teken voor Windows is bijvoorbeeld een caret, `^`. Vervang de back slash door het caret. 
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash, `\` , als een regel voortzettings teken voor een bash-shell. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. Het regel vervolg teken voor Windows is bijvoorbeeld een caret, `^` . Vervang de back slash door het caret. 
 * **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 
-Vervang de waarde tussen vier Kante haken, `{}`met uw eigen waarden:
+Vervang de waarde tussen vier Kante haken, `{}` met uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Notatie of voor beeld |
 |-------------|-------|---|
-| **{API_KEY}** | De eindpunt sleutel van de `Anomaly Detector` resource op de pagina `Anomaly Detector` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Anomaly Detector` op de pagina overzicht van Azure.| Zie [vereiste para meters](anomaly-detector-container-howto.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
+| **{API_KEY}** | De eindpunt sleutel van de `Anomaly Detector` resource op de pagina Azure- `Anomaly Detector` sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar op de `Anomaly Detector` pagina overzicht van Azure.| Zie [vereiste para meters](anomaly-detector-container-howto.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](anomaly-detector-container-howto.md#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](anomaly-detector-container-howto.md#billing)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de pagina Azure anomalie detector-bron sleutels. 
 
 ## <a name="anomaly-detector-container-docker-examples"></a>Voor beelden van afwijkende detector container-docker
@@ -121,7 +121,7 @@ De volgende docker-voor beelden zijn voor de anomalie detectie container.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ De volgende docker-voor beelden zijn voor de anomalie detectie container.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

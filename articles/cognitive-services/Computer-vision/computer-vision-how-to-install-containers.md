@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593326"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
@@ -24,7 +24,7 @@ Met containers kunt u de Computer Vision-Api's uitvoeren in uw eigen omgeving. C
 
 Er is een afzonderlijke docker-container, *gelezen*, beschikbaar voor computer vision. De *Lees* container stelt u in staat om *gedrukte tekst* te detecteren en uit te pakken van afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. Daarnaast detecteert de *Lees* container *handgeschreven tekst* in afbeeldingen en biedt PDF, TIFF en ondersteuning voor meerdere pagina's. Zie de [Lees](concept-recognizing-text.md#read-api) API-documentatie voor meer informatie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -87,9 +87,9 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 
 ## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{ENDPOINT_URI}` `{API_KEY}` waarden en.
 
-[Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
+[Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht zijn beschikbaar.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -109,7 +109,7 @@ Met deze opdracht gebeurt het volgende:
 Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -121,17 +121,17 @@ Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#examp
 
 De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. 
 
-Gebruik de host, `http://localhost:5000`voor container-api's.
+Gebruik de host, `http://localhost:5000` voor container-api's.
 
 ### <a name="asynchronous-read"></a>Asynchroon lezen
 
-U kunt de `POST /vision/v2.0/read/core/asyncBatchAnalyze` -en `GET /vision/v2.0/read/operations/{operationId}` -bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
+U kunt de- `POST /vision/v2.0/read/core/asyncBatchAnalyze` en- `GET /vision/v2.0/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
-Selecteer in de Swagger-gebruikers interface `asyncBatchAnalyze` de om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out** > **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
+Selecteer in de Swagger-gebruikers interface de `asyncBatchAnalyze` om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out**  >  **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
 
 ![tabbladen versus spaties](media/tabs-vs-spaces.png)
 
-Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** status code geretourneerd. Als onderdeel van de reactie bevindt zich `operation-location` een kop die het eind punt voor de aanvraag bevat.
+Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** status code geretourneerd. Als onderdeel van de reactie bevindt zich een `operation-location` kop die het eind punt voor de aanvraag bevat.
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** sta
  server: Kestrel
 ```
 
-De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP Get. Dit is het JSON-antwoord van het uitvoeren `operation-location` van de URL van de vorige installatie kopie:
+De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP Get. Dit is het JSON-antwoord van het uitvoeren van de `operation-location` URL van de vorige installatie kopie:
 
 ```json
 {
@@ -194,7 +194,7 @@ U kunt de `POST /vision/v2.0/read/core/Analyze` bewerking gebruiken om een afbee
 }
 ```
 
-Het JSON-antwoord object heeft dezelfde object grafiek als de asynchrone versie. Als u een Java script-gebruiker bent en type veiligheid wilt, kan de volgende typen worden gebruikt voor het casten van `AnalyzeResult` het JSON-antwoord als een object.
+Het JSON-antwoord object heeft dezelfde object grafiek als de asynchrone versie. Als u een Java script-gebruiker bent en type veiligheid wilt, kan de volgende typen worden gebruikt voor het casten van het JSON-antwoord als een `AnalyzeResult` object.
 
 ```typescript
 export interface AnalyzeResult {
