@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e01f3ddde96903716cf1fcff0426791ff3a90e07
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836565"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587660"
 ---
 # <a name="create-a-project"></a>Een project maken
 
@@ -52,7 +52,7 @@ De landings pagina van het aangepaste conversie programma toont de eerste 10 pro
 
 Nadat u een project hebt geselecteerd, ziet u het volgende op de pagina project:
 
-- CategoryID: er wordt een categorie nummer gemaakt door het samen voegen van het WorkspaceID, het project label en de categorie code. U gebruikt de CategoryID met de Text Translator API om aangepaste vertalingen op te halen.
+- CategoryID: er wordt een categorie nummer gemaakt door het samen voegen van het WorkspaceID, het project label en de categorie code. U gebruikt de CategoryID met de Text Translator om aangepaste vertalingen op te halen.
 
 - Trein knop: gebruik deze knop om een [trainings model](how-to-train-model.md)te starten.
 

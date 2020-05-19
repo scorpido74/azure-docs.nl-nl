@@ -3,12 +3,12 @@ title: Wat is Personalizer?
 description: Personaler is een API-service in de Cloud waarmee u de beste ervaring kunt kiezen die aan uw gebruikers wordt weer gegeven, en leer vanuit hun realtime gedrag.
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687268"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586215"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -38,7 +38,7 @@ De __actie__ die wordt weer gegeven voor de gebruiker, wordt gekozen met machine
 
 Enkele voorbeeld scenario's zijn:
 
-|Inhoudstype|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
+|Type inhoud|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
 |--|--|--|--|
 |Nieuws lijst|a. `The president...`(National, politiek, [tekst])<br>b. `Premier League ...`(globaal, sport, [tekst, afbeelding, video])<br> c. `Hurricane in the ...`(regionaal, weer, [tekst, afbeelding]|Nieuws van apparaten lezen<br>Maand of seizoen<br>|één`The president...`|
 |Lijst met films|1. `Star Wars` (1977, [actie, Adventure, fictief], George Lucas)<br>2. `Hoop Dreams` (1994, [documentaire, sport], Stefan Jeroen<br>3. `Casablanca` (1942, [Romaans, drama, War], Michael Curtiz)|De film van het apparaat wordt bekeken<br>scherm grootte<br>Type gebruiker<br>|3D.`Casablanca`|
@@ -70,17 +70,24 @@ Omdat persoonlijke gegevens in bijna realtime worden gebruikt om het afzonderlij
 ## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Personalisatie ontwerpen en implementeren voor uw client toepassing
 
 1. [Ontwerp](concepts-features.md) en plan inhoud, **_acties_** en **_context_**. Bepaal het belonings algoritme voor de **_belonings_** Score.
-1. Elke [personaler-resource](how-to-settings.md) die u maakt, wordt beschouwd als 1 Learning-lus. De lus ontvangt zowel de rang-als belonings aanroepen voor die inhoud of gebruikers ervaring.
-1. Persoonlijker toevoegen aan uw website of inhouds systeem:
+1. Elke [personaler-resource](how-to-settings.md) die u maakt, wordt beschouwd als één Learning-lus. De lus ontvangt zowel de rang-als belonings aanroepen voor die inhoud of gebruikers ervaring.
+
+    |Resourcetype| Doel|
+    |--|--|
+    |[Leerling-modus](concept-apprentice-mode.md)`E0`|Train het Personaler-model zonder dat dit van invloed is op uw bestaande toepassing en implementeer vervolgens naar het online leer gedrag in een productie omgeving|
+    |Standaard`S0`|Online Leer gedrag in een productie omgeving|
+    |Macro's`F0`| Online Leer gedrag uitproberen in een niet-productie omgeving|
+
+1. Persoonlijker toevoegen aan uw toepassing, website of systeem:
     1. Voeg een **classificatie** oproep toe aan personaler in uw toepassing, website of systeem om het beste, één _inhouds_ item te bepalen voordat de inhoud wordt weer gegeven aan de gebruiker.
     1. Het beste, één _inhouds_ item weer geven, wat de geretourneerde _Actie-id_is voor de gebruiker.
-    1. Pas het _algoritme_ toe op verzamelde informatie over de manier waarop de gebruiker zich heeft gereageerd, om de **belonings** score te bepalen, zoals:
+    1. _Bedrijfs logica_ Toep assen op verzamelde informatie over de manier waarop de gebruiker zich heeft gereageerd, om de **belonings** score te bepalen, zoals:
 
-        |Gedrag|Berekende belonings Score|
-        |--|--|
-        |Gebruiker heeft het beste, één _inhouds_ item geselecteerd (actie-id beloning)|**1**|
-        |Door gebruiker geselecteerde andere inhoud|**0**|
-        |De gebruiker is tijdelijk gepauzeerd en er wordt niet meer geschuifd, voordat u het beste, één _inhouds_ item selecteert (actie-id beloning)|**0,5**|
+    |Gedrag|Berekende belonings Score|
+    |--|--|
+    |Gebruiker heeft het beste, één _inhouds_ item geselecteerd (actie-id beloning)|**1**|
+    |Door gebruiker geselecteerde andere inhoud|**0**|
+    |De gebruiker is tijdelijk gepauzeerd en er wordt niet meer geschuifd, voordat u het beste, één _inhouds_ item selecteert (actie-id beloning)|**0,5**|
 
     1. Een **belonings oproep toevoegen** die een belonings score tussen 0 en 1 verzendt
         * Direct na het weer geven van uw inhoud
@@ -94,6 +101,6 @@ Omdat persoonlijke gegevens in bijna realtime worden gebruikt om het afzonderlij
 * [Wat is versterking van het onderwijs?](concepts-reinforcement-learning.md)
 * [Meer informatie over de functies en acties voor de rang aanvraag](concepts-features.md)
 * [Meer informatie over het bepalen van de score voor de belonings aanvraag](concept-rewards.md)
-* [Snelstartgidsen](sdk-learning-loop.md)
+* [Snelstarts](sdk-learning-loop.md)
 * [Zelfstudie](tutorial-use-azure-notebook-generate-loop-data.md)
 * [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)

@@ -10,24 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a4973254c8a53917d99daf38b0d11e5dbecbb731
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 975efa9fdaff9175317794d8b6df7afbfc73cba8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875107"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585676"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomalie detectie container implementeren naar Azure Container Instances
 
 Meer informatie over het implementeren van de Cognitive Services [anomalie detectie](../anomaly-detector-container-howto.md) container naar Azure [container instances](https://docs.microsoft.com/azure/container-instances/). In deze procedure wordt het maken van een afwijkende detector-resource gedemonstreerd. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
-
-U moet eerst het [aanvraag formulier voor de afwijkings detectie container](https://aka.ms/adcontainer) volt ooien en verzenden om toegang tot de container aan te vragen.
-
-[!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]
 

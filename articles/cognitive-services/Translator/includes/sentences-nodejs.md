@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d7126acebae02a60e5c485b74716aaa84b99f781
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5a48e8d95d24e8385432f606445b3c2acafe8c85
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586715"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor 
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>De abonnements sleutel en het eind punt instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`deze omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd om de sleutel van het Vertaal abonnement en het eind punt te lezen uit deze omgevings variabelen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
 
 >[!NOTE]
-> Zie [Translator Text-API 3,0: Substore](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)voor meer informatie over eind punten, routes en aanvraag parameters.
+> Zie [Translator 3,0: Substore](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ```javascript
 let options = {
@@ -96,7 +96,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 node sentence-length.js
@@ -124,7 +124,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

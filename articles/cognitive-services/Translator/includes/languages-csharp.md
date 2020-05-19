@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906967"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586850"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -45,7 +45,7 @@ using Newtonsoft.Json;
 
 ## <a name="get-endpoint-information-from-an-environment-variable"></a>Eindpunt gegevens ophalen van een omgevings variabele
 
-Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan de `Program` klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
@@ -62,7 +62,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Een functie maken om een lijst met talen te verkrijgen
 
-Maak in `Program` de-klasse een functie met `GetLanguages`de naam. Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
+Maak in de `Program` -klasse een functie met de naam `GetLanguages` . Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
 
 ```csharp
 static void GetLanguages()
@@ -241,7 +241,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6943be033653d88b272817d2dcf58042aaaab616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430511"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587796"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
 [.Net voor Apache Spark](https://dot.net/spark) is gratis, open-source en platformoverschrijdende .net-ondersteuning voor Spark. .NET voor Apache Spark biedt .NET-bindingen voor Spark, waarmee u toegang tot Spark-Api's kunt krijgen via C# en F #. Met .NET voor Apache Spark hebt u de mogelijkheid om door de gebruiker gedefinieerde functies te schrijven en uit te voeren voor Spark met behulp van .NET. Met de .NET-Api's voor Spark kunt u toegang krijgen tot alle aspecten van Spark waarmee u uw gegevens kunt analyseren, waaronder Spark SQL en Structured streaming.
 
-U kunt gegevens met .NET voor Apache Spark analyseren met behulp van Spark batch-taak definities of met interactieve Azure Synapse Analytics-notebooks. In dit artikel leert u hoe u .NET kunt gebruiken voor Apache Spark met Azure Synapse met behulp van beide technieken. 
+U kunt gegevens met .NET voor Apache Spark analyseren met behulp van Spark batch-taak definities of met interactieve Azure Synapse Analytics-notebooks. In dit artikel leert u hoe u .NET kunt gebruiken voor Apache Spark met Azure Synapse met behulp van beide technieken.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Batch-taken verzenden met de Spark-taak definitie
 
@@ -52,11 +52,11 @@ Notebooks zijn een uitstekende optie voor het maken van prototypen van uw .NET v
 
 ### <a name="how-to-use-notebooks"></a>Notitie blokken gebruiken
 
-Wanneer u een nieuw notitie blok maakt, kiest u een taal-kernel waarmee u uw bedrijfs logica wilt uitdrukken. Er wordt kernel-ondersteuning geboden voor verschillende talen, waaronder C#. 
+Wanneer u een nieuw notitie blok maakt, kiest u een taal-kernel waarmee u uw bedrijfs logica wilt uitdrukken. Er wordt kernel-ondersteuning geboden voor verschillende talen, waaronder C#.
 
-Als u .NET wilt gebruiken voor Apache Spark in uw Azure Synapse Analytics-notebook, selecteert u **.net Spark (C#)** als uw kernel en koppelt u het notitie blok aan een bestaande Spark-groep. 
+Als u .NET wilt gebruiken voor Apache Spark in uw Azure Synapse Analytics-notebook, selecteert u **.net Spark (C#)** als uw kernel en koppelt u het notitie blok aan een bestaande Spark-groep.
 
-De .NET Spark-notebook is gebaseerd op de interactieve .NET-ervaring en biedt interactieve C#-ervaringen met de mogelijkheid om .NET voor Spark uit het vak te gebruiken, waarbij `spark` de Spark-sessie variabele al vooraf is gedefinieerd.
+De .NET Spark-notebook is gebaseerd op de interactieve .NET-ervaring en biedt interactieve C#-ervaringen met de mogelijkheid om .NET voor Spark uit het vak te gebruiken, waarbij de Spark-sessie variabele `spark` al vooraf is gedefinieerd.
 
 ### <a name="sparknet-c-kernel-features"></a>Spark.NET C#-kernel-functies
 
@@ -69,7 +69,7 @@ De volgende functies zijn beschikbaar wanneer u .NET for Apache Spark gebruikt i
 * Ondersteuning voor [C# 8,0-taal functies](/dotnet/csharp/whats-new/csharp-8?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 * Spark als een vooraf gedefinieerde variabele om u toegang te geven tot uw Apache Spark-sessie.
 * Ondersteuning voor het definiëren van [door de gebruiker gedefinieerde .NET-functies die in Apache Spark kunnen worden uitgevoerd](https://github.com/dotnet/spark/blob/master/examples/Microsoft.Spark.CSharp.Examples/Sql).
-* Ondersteuning voor het visualiseren van uitvoer van uw Spark-taken met behulp van verschillende grafieken (zoals een lijn, staaf of histogram) en indelingen (zoals één, overlappend, enzovoort) `XPlot.Plotly` met behulp van de-bibliotheek.
+* Ondersteuning voor het visualiseren van uitvoer van uw Spark-taken met behulp van verschillende grafieken (zoals een lijn, staaf of histogram) en indelingen (zoals één, overlappend, enzovoort) met behulp van de- `XPlot.Plotly` bibliotheek.
 * De mogelijkheid om NuGet-pakketten toe te voegen aan uw C#-notebook.
 
 ## <a name="next-steps"></a>Volgende stappen

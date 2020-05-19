@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: a40575340fc5b1c202be6b001807085954439f03
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598059"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588153"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Extern bureau blad voor virtuele Linux-machines in een Lab inschakelen in Azure Lab Services
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 
 - Extern bureau blad voor Linux VM inschakelen
-- Hoe docenten verbinding kan maken met de sjabloon-VM via Verbinding met extern bureaublad (RDP).
+- Hoe een docent verbinding kan maken met de sjabloon-VM via Verbinding met extern bureaublad (RDP).
 
 ## <a name="enable-remote-desktop-for-linux-vm"></a>Extern bureau blad voor Linux VM inschakelen
-Tijdens het maken van een Lab kunnen docenten **verbinding met extern bureau blad** inschakelen voor **Linux** -installatie kopieën. De optie **verbinding met extern bureaublad inschakelen** wordt weer gegeven wanneer een Linux-installatie kopie voor de sjabloon is geselecteerd. Wanneer deze optie is ingeschakeld, kunnen docenten verbinding maken met virtuele machine-en student-Vm's via RDP (Extern bureaublad). 
+Tijdens het maken van een Lab kunnen docenten **verbinding met extern bureau blad** inschakelen voor **Linux** -installatie kopieën. De optie **verbinding met extern bureaublad inschakelen** wordt weer gegeven wanneer een Linux-installatie kopie voor de sjabloon is geselecteerd. Als deze optie is ingeschakeld, kunnen docenten verbinding maken met virtuele machine-en student Vm's via RDP (Extern bureaublad). 
 
 ![Verbinding met extern bureau blad inschakelen voor een Linux-installatie kopie](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 

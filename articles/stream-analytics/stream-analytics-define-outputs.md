@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/8/2020
+ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475228"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585399"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Meer informatie over de uitvoer van Azure Stream Analytics
 
@@ -66,6 +66,33 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 |Partitie schema overnemen| Een optie voor het overnemen van het partitie schema van uw vorige query stap, om een volledig parallelle topologie met meerdere schrijvers voor de tabel in te scha kelen. Zie [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie.|
 |Maximum aantal batches| De aanbevolen bovengrens voor het aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie.|
 
+Er zijn twee adapters die uitvoer van Azure Stream Analytics naar Azure Synapse Analytics (voorheen SQL Data Warehouse): SQL Database en Azure Synapse. U kunt het beste de Azure Synapse Analytics-adapter kiezen in plaats van de SQL Database adapter als aan een van de volgende voor waarden wordt voldaan:
+
+* **Door Voer**: als de verwachte door Voer nu of in de toekomst groter is dan 10 MB per seconde, gebruikt u de Azure Synapse-uitvoer optie voor betere prestaties.
+
+* **Invoer partities**: als u acht of meer invoer partities hebt, gebruikt u de Azure Synapse-uitvoer optie voor beter uitschalen.
+
+## <a name="azure-synapse-analytics-preview"></a>Azure Synapse Analytics (preview-versie)
+
+[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (voorheen SQL Data Warehouse) is een oneindige analyse service waarmee bedrijfs gegevensopslag en Big data-analyses worden gecombineerd. 
+
+Azure Stream Analytics-taken kunnen worden uitgevoerd naar een SQL-groeps tabel in azure Synapse Analytics en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
+
+De SQL-groeps tabel moet bestaan voordat u deze als uitvoer kunt toevoegen aan uw Stream Analytics-taak. Het schema van de tabel moet overeenkomen met de velden en hun typen in de uitvoer van uw taak. 
+
+Als u Azure Synapse als uitvoer wilt gebruiken, moet u ervoor zorgen dat u het opslag account hebt geconfigureerd. Navigeer naar de instellingen van het opslag account om het opslag account te configureren. Alleen de typen opslag accounts die ondersteuning bieden voor tabellen zijn toegestaan: v2 en algemeen gebruik v1.   
+
+De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van de Azure Synapse Analytics-uitvoer.
+
+|Naam van eigenschap|Beschrijving|
+|-|-|
+|Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze data base te sturen. |
+|Database |De naam van de SQL-groep waarnaar u uw uitvoer wilt verzenden. |
+|Servernaam |Naam van de Azure Synapse-server.  |
+|Gebruikersnaam |De gebruikers naam die schrijf toegang tot de data base heeft. Stream Analytics ondersteunt alleen SQL-verificatie. |
+|Wachtwoord |Het wacht woord om verbinding te maken met de data base. |
+|Tabel  | De tabel naam waarin de uitvoer wordt geschreven. De tabel naam is hoofdletter gevoelig. Het schema van deze tabel moet exact overeenkomen met het aantal velden en de bijbehorende typen die uw taak uitvoer genereert.|
+
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob-opslag en Azure Data Lake Gen2
 
 Data Lake Storage Gen2 maakt Azure Storage de basis voor het bouwen van zakelijke gegevens meren op Azure. Data Lake Storage Gen2 is ontworpen met het starten van meerdere PETA bytes aan gegevens terwijl er honderden gigabits van de door voer worden gehouden, en waarmee u eenvoudig enorme hoeveel heden gegevens kunt beheren. Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een hiërarchische naam ruimte aan Blob Storage.
@@ -80,7 +107,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Storage-account     | De naam van het opslag account waarin u uw uitvoer wilt verzenden.               |
 | Sleutel van het opslag account | De geheime sleutel die is gekoppeld aan het opslag account.                              |
 | Opslag container   | Een logische groepering voor blobs die zijn opgeslagen in de Azure-Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven. |
-| Padpatroon | Optioneel. Het patroon van het bestandspad dat wordt gebruikt voor het schrijven van uw blobs binnen de opgegeven container. <br /><br /> In het pad patroon kunt u kiezen voor het gebruik van een of meer exemplaren van de variabelen datum en tijd om de frequentie op te geven waarmee blobs worden geschreven: <br /> {date}, {time} <br /><br />U kunt aangepaste BLOB-partitionering gebruiken om één aangepaste {Field}-naam van uw gebeurtenis gegevens op te geven voor het partitioneren van blobs. De naam van het veld is alfanumeriek en kan spaties, afbreek streepjes en onderstrepings tekens bevatten. De volgende beperkingen zijn van toepassing op aangepaste velden: <ul><li>Veld namen zijn niet hoofdletter gevoelig. De service kan bijvoorbeeld geen onderscheid maken tussen de kolom-ID en de kolom-id.</li><li>Geneste velden zijn niet toegestaan. Gebruik in plaats daarvan een alias in de taak query om het veld af te vlakken.</li><li>Expressies kunnen niet worden gebruikt als veld naam.</li></ul> <br />Met deze functie kunt u het gebruik van aangepaste configuraties voor datum/tijd-indeling in het pad. Aangepaste datum-en tijd notaties moeten een voor een worden opgegeven, omsloten door het sleutel\<woord {DateTime: specificatie>}. Toegestane invoer voor \<de specificatie> zijn jjjj, mm, M, dd, d, hh, H, mm, M, SS of s. Het sleutel woord {\<DateTime: aanduiding>} kan meermaals worden gebruikt in het pad naar aangepaste datum/tijd-configuraties. <br /><br />Voorbeelden: <ul><li>Voor beeld 1: cluster1/logboeken/{date}/{time}</li><li>Voor beeld 2: cluster1/logboeken/{date}</li><li>Voor beeld 3: cluster1/{client_id}/{date}/{time}</li><li>Voor beeld 4: cluster1/{DateTime: SS}/{myField} waarbij de query is: SELECT data. myField AS myField FROM input;</li><li>Voor beeld 5: cluster1/Year = {DateTime: jjjj}/month = {DateTime: MM}/Day = {DateTime: dd}</ul><br />De tijds tempel van de gemaakte mappen structuur volgt UTC en niet lokale tijd.<br /><br />Bestands namen gebruiken de volgende Conventie: <br /><br />{Path-voorvoegsel patroon}/schemaHashcode_Guid_Number. extensie<br /><br />Voorbeeld uitvoer bestanden:<ul><li>MYOUTPUT/20170901/00/45434_gguid_1. CSV</li>  <li>MYOUTPUT/20170901/01/45434_gguid_1. CSV</li></ul> <br />Zie [Azure stream Analytics aangepaste BLOB-uitvoer partitionering](stream-analytics-custom-path-patterns-blob-storage-output.md)voor meer informatie over deze functie. |
+| Padpatroon | Optioneel. Het patroon van het bestandspad dat wordt gebruikt voor het schrijven van uw blobs binnen de opgegeven container. <br /><br /> In het pad patroon kunt u kiezen voor het gebruik van een of meer exemplaren van de variabelen datum en tijd om de frequentie op te geven waarmee blobs worden geschreven: <br /> {date}, {time} <br /><br />U kunt aangepaste BLOB-partitionering gebruiken om één aangepaste {Field}-naam van uw gebeurtenis gegevens op te geven voor het partitioneren van blobs. De naam van het veld is alfanumeriek en kan spaties, afbreek streepjes en onderstrepings tekens bevatten. De volgende beperkingen zijn van toepassing op aangepaste velden: <ul><li>Veld namen zijn niet hoofdletter gevoelig. De service kan bijvoorbeeld geen onderscheid maken tussen de kolom-ID en de kolom-id.</li><li>Geneste velden zijn niet toegestaan. Gebruik in plaats daarvan een alias in de taak query om het veld af te vlakken.</li><li>Expressies kunnen niet worden gebruikt als veld naam.</li></ul> <br />Met deze functie kunt u het gebruik van aangepaste configuraties voor datum/tijd-indeling in het pad. Aangepaste datum-en tijd notaties moeten een voor een worden opgegeven, omsloten door het sleutel woord {DateTime: \< specificatie>}. Toegestane invoer voor de \< specificatie> zijn jjjj, mm, M, dd, d, hh, H, mm, M, SS of s. Het sleutel woord {DateTime: \< aanduiding>} kan meermaals worden gebruikt in het pad naar aangepaste datum/tijd-configuraties. <br /><br />Voorbeelden: <ul><li>Voor beeld 1: cluster1/logboeken/{date}/{time}</li><li>Voor beeld 2: cluster1/logboeken/{date}</li><li>Voor beeld 3: cluster1/{client_id}/{date}/{time}</li><li>Voor beeld 4: cluster1/{DateTime: SS}/{myField} waarbij de query is: SELECT data. myField AS myField FROM input;</li><li>Voor beeld 5: cluster1/Year = {DateTime: jjjj}/month = {DateTime: MM}/Day = {DateTime: dd}</ul><br />De tijds tempel van de gemaakte mappen structuur volgt UTC en niet lokale tijd.<br /><br />Bestands namen gebruiken de volgende Conventie: <br /><br />{Path-voorvoegsel patroon}/schemaHashcode_Guid_Number. extensie<br /><br />Voorbeeld uitvoer bestanden:<ul><li>MYOUTPUT/20170901/00/45434_gguid_1. CSV</li>  <li>MYOUTPUT/20170901/01/45434_gguid_1. CSV</li></ul> <br />Zie [Azure stream Analytics aangepaste BLOB-uitvoer partitionering](stream-analytics-custom-path-patterns-blob-storage-output.md)voor meer informatie over deze functie. |
 | Datum notatie | Optioneel. Als het datum token wordt gebruikt in het voorvoegsel pad, kunt u de datum notatie selecteren waarin uw bestanden zijn ingedeeld. Voor beeld: JJJJ/MM/DD |
 | Tijd notatie | Optioneel. Als de time-token wordt gebruikt in het pad van het voor voegsel, geeft u de tijd notatie op waarin uw bestanden zijn geordend. Op dit moment is de enige ondersteunde waarde HH. |
 | Serialisatie-indeling voor gebeurtenissen | Serialisatie-indeling voor uitvoer gegevens. JSON, CSV, AVRO en Parquet worden ondersteund. |
@@ -289,7 +316,7 @@ Ondersteunde uitvoer:
 * Service Bus-onderwerp 
 * Event Hub 
 
-In het volgende voor beeld voegen we de twee `DeviceId` velden `DeviceStatus` en toe aan de meta gegevens. 
+In het volgende voor beeld voegen we de twee velden `DeviceId` en `DeviceStatus` toe aan de meta gegevens. 
 * Ophalen`select *, DeviceId, DeviceStatus from iotHubInput`
 * Uitvoer configuratie:`DeviceId,DeviceStatus`
 
@@ -301,10 +328,10 @@ De volgende scherm afbeelding ziet u de eigenschappen van uitvoer berichten die 
 
 ## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Systeem eigenschappen voor de Service Bus wachtrij en onderwerp-uitvoer 
 U kunt query kolommen als [systeem eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten. Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) BrokeredMessage wordt gevuld met de query kolom waarden.
-Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 Teken reeks waarden van deze kolommen worden geparseerd als overeenkomend type eigenschaps waarde van het systeem en eventuele fouten bij het parseren worden behandeld als gegevens fouten.
 Dit veld wordt als een JSON-object indeling gegeven. Meer informatie over deze indeling is als volgt:
-* Omgeven door accolades {}.
+* Omgeven door accolades {} .
 * Geschreven in sleutel/waarde-paren.
 * Sleutels en waarden moeten teken reeksen zijn.
 * Sleutel is de naam en waarde van de systeem eigenschap is de kolom naam van de query.
@@ -316,7 +343,7 @@ Hier ziet u hoe u deze eigenschap gebruikt –
 * Ophalen`select *, column1, column2 INTO queueOutput FROM iotHubInput`
 * Kolom systeem eigenschappen:`{ "MessageId": "column1", "PartitionKey": "column2"}`
 
-Hiermee stelt u `MessageId` de service bus-wachtrij berichten `column1`in met de waarden en PartitionKey wordt `column2`ingesteld met de waarden.
+Hiermee stelt u de `MessageId` Service Bus-wachtrij berichten in met `column1` de waarden en PartitionKey wordt ingesteld met `column2` de waarden.
 
 ## <a name="partitioning"></a>Partitionering
 
@@ -326,7 +353,7 @@ De volgende tabel bevat een overzicht van de partitie-ondersteuning en het aanta
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ja | Gebruik {date} en {time} tokens in het pad voor voegsel patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Ja, moet zijn ingeschakeld. | Op basis van de component PARTITION BY in de query. | Wanneer de optie partitioneren overnemen is ingeschakeld, volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). Zie [Azure stream Analytics output to Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie over het verbeteren van de prestaties van schrijf doorvoer tijdens het laden van gegevens in Azure SQL database. |
-| Azure Blob Storage | Ja | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime\<: specificatie>}. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
+| Azure Blob Storage | Ja | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime: \< specificatie>}. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Ja | Ja | Is afhankelijk van de uitlijning van de partitie.<br /> Wanneer de partitie sleutel voor Event Hub uitvoer gelijk wordt uitgelijnd met de stap upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in Event Hub uitvoer. Elke schrijver maakt gebruik van de [EventHubSender-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) voor het verzenden van gebeurtenissen naar de specifieke partitie. <br /> Wanneer de partitie sleutel voor Event Hub uitvoer niet is afgestemd op de stap van de upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in die vorige stap. Elke schrijver maakt gebruik van de [SendBatchAsync-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient** om gebeurtenissen te verzenden naar alle uitvoer partities. |
 | Power BI | Nee | Geen | Niet van toepassing. |
 | Azure Table Storage | Ja | Een uitvoer kolom.  | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
@@ -335,7 +362,7 @@ De volgende tabel bevat een overzicht van de partitie-ondersteuning en het aanta
 | Azure Cosmos DB | Ja | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
 | Azure Functions | Ja | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
 
-Het aantal schrijvers van uitvoer kan ook worden beheerd met `INTO <partition count>` behulp van de component (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als uw uitvoer adapter niet is gepartitioneerd, heeft het ontbreken van gegevens in één invoer partitie tot een vertraging tot de duur van de late aankomst. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
+Het aantal schrijvers van uitvoer kan ook worden beheerd met behulp van de `INTO <partition count>` component (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als uw uitvoer adapter niet is gepartitioneerd, heeft het ontbreken van gegevens in één invoer partitie tot een vertraging tot de duur van de late aankomst. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
 
 ## <a name="output-batch-size"></a>Grootte van uitvoer batch
 Azure Stream Analytics gebruikt batches van het formaat variable om gebeurtenissen te verwerken en te schrijven naar uitvoer. Normaal gesp roken schrijft de Stream Analytics engine niet één bericht tegelijk en worden batches gebruikt voor efficiëntie. Wanneer het aantal binnenkomende en uitgaande gebeurtenissen hoog is, gebruikt Stream Analytics grotere batches. Wanneer het uitvoer bedrag laag is, worden kleinere batches gebruikt om latentie laag te blijven.
@@ -347,7 +374,7 @@ In de volgende tabel worden enkele van de overwegingen voor het uitvoeren van ba
 | Azure Data Lake Store | Zie [Data Lake Storage limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Gebruik Maxi maal 4 MB per schrijf bewerking. |
 | Azure SQL Database | Configureerbaar met behulp van maximum aantal batches. Maxi maal 10.000 minimale en 100 minimum rijen per bulk invoer standaard.<br />Zie [Azure SQL-limieten](../sql-database/sql-database-resource-limits.md). |  Elke batch wordt in eerste instantie bulksgewijs ingevoegd met een maximum aantal batches. Batch is gesplitst in tweeën (totdat het minimale aantal batches is) op basis van Herhaal bare fouten van SQL. |
 | Azure Blob Storage | Zie [Azure Storage limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | De maximale grootte van het BLOB-blok is 4 MB.<br />Het maximum aantal BLOB-Bock is 50.000. |
-| Azure Event Hubs    | 256 KB of 1 MB per bericht. <br />Zie [Event hubs limieten](../event-hubs/event-hubs-quotas.md). |    Wanneer invoer/uitvoer-partitionering niet is uitgelijnd, wordt elke gebeurtenis afzonderlijk `EventData` verpakt in en verzonden in een batch van Maxi maal de maximale bericht grootte. Dit gebeurt ook als [Eigenschappen van aangepaste meta gegevens](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer de invoer/uitvoer-partitionering is uitgelijnd, worden meerdere gebeurtenissen in één `EventData` exemplaar verpakt, tot de maximale bericht grootte en verzonden.    |
+| Azure Event Hubs    | 256 KB of 1 MB per bericht. <br />Zie [Event hubs limieten](../event-hubs/event-hubs-quotas.md). |    Wanneer invoer/uitvoer-partitionering niet is uitgelijnd, wordt elke gebeurtenis afzonderlijk verpakt in `EventData` en verzonden in een batch van Maxi maal de maximale bericht grootte. Dit gebeurt ook als [Eigenschappen van aangepaste meta gegevens](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer de invoer/uitvoer-partitionering is uitgelijnd, worden meerdere gebeurtenissen in één `EventData` exemplaar verpakt, tot de maximale bericht grootte en verzonden.    |
 | Power BI | Zie [Power bi-rest API-limieten](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zie [Azure Storage limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | De standaard waarde is 100 entiteiten per afzonderlijke trans actie. U kunt deze naar behoefte zo nodig naar een kleinere waarde configureren. |
 | Azure Service Bus-wachtrij    | 256 KB per bericht voor de Standard-laag, 1 MB voor de Premium-laag.<br /> Zie [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md). | Eén gebeurtenis per bericht gebruiken. |

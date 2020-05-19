@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: lengtes van de zinnen ophalen-Translator Text-API'
+title: 'Snelstartgids: lengtes van de zinnen ophalen-Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de lengte van de zin kunt bepalen met behulp van de Translator Text-API.
+description: In deze Quick Start leert u hoe u de lengte van de zin kunt bepalen met behulp van het conversie programma.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ca468993798c02c02380eeac7f68e4d3504ec1d8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525106"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586716"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Snelstartgids: de Translator Text-API gebruiken om de lengte van de zin te bepalen
+# <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>Quick Start: de vertaler gebruiken om de lengte van de zin te bepalen
 
-In deze Quick Start leert u hoe u de lengte van zinnen kunt bepalen met behulp van de Translator Text-API.
+In deze Quick Start leert u hoe u de lengte van zinnen kunt bepalen met behulp van het conversie programma.
 
-Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een Translator-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

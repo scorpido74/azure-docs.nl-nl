@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 649af0d3b1503a5607717c4ccbadd8f1d822be32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906933"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586851"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor 
 
 ## <a name="set-the-endpoint"></a>Het eind punt instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-eind punt te lezen op `TRANSLATOR_TEXT_ENDPOINT`basis van een omgevings variabele:. Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
+In dit voor beeld wordt geprobeerd uw Translator-eind punt te lezen vanuit een omgevings variabele: `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
 
 ```javascript
 lorum ipsum
@@ -42,7 +42,7 @@ lorum ipsum
 Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
 
 >[!NOTE]
-> Zie [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) voor meer informatie over eindpunten, routes en aanvraagparameters.
+> Zie [Translator 3,0: languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)(Engelstalig) voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 node get-languages.js
@@ -181,7 +181,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

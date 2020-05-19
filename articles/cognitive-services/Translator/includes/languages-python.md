@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a491249e21db433d878a59cad19f59f8987b638b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906899"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586848"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > Als u deze modules nog niet hebt gebruikt, moet u ze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests uuid` uit.
 
-Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. De vereiste modules worden dan geïmporteerd voor het lezen van uw abonnementssleutel uit een omgevingsvariabele, voor het opstellen van de HTTP-aanvraag, voor het maken van een unieke id en voor het verwerken van het JSON-antwoord dat door de Translator Text-API wordt geretourneerd.
+Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. Vervolgens worden de vereiste modules geïmporteerd om uw abonnements sleutel van een omgevings variabele te lezen, de HTTP-aanvraag te maken, een unieke id te creëren en het JSON-antwoord te verwerken dat door de vertaler is geretourneerd.
 
 ## <a name="set-the-endpoint-and-path"></a>Het eind punt en pad instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-eind punt te lezen op `TRANSLATOR_TEXT_ENDPOINT`basis van een omgevings variabele:. Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
+In dit voor beeld wordt geprobeerd uw Translator-eind punt te lezen vanuit een omgevings variabele: `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
 
 ```python
 endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
@@ -40,10 +40,10 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Het globaal eindpunt voor de Translator Text is ingesteld als de `endpoint`. Met `path` wordt de `languages`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
+Het globale eind punt van het conversie programma is ingesteld als `endpoint` . Met `path` wordt de `languages`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
 
 >[!NOTE]
-> Zie [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) voor meer informatie over eindpunten, routes en aanvraagparameters.
+> Zie [Translator 3,0: languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)(Engelstalig) voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ```python
 path = '/languages?api-version=3.0'
@@ -85,7 +85,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 python get-languages.py
@@ -189,7 +189,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

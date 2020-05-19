@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219509"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587227"
 ---
 # <a name="how-to-manage-settings"></a>Instellingen beheren
 
@@ -29,11 +29,11 @@ Toegang krijgen tot de pagina instellingen:
 
 ## <a name="associating-microsoft-translator-subscription"></a>Micro soft Translator-abonnement koppelen
 
-U moet beschikken over een micro soft Translator Text-API Subscription-sleutel die is gekoppeld aan uw werk ruimte om modellen te trainen of implementeren.
+U moet beschikken over een Translator-abonnements sleutel die is gekoppeld aan uw werk ruimte om modellen te trainen of implementeren.
 
 Als u geen abonnement hebt, volgt u de onderstaande stappen:
 
-1. Abonneer u op de micro soft-Translator Text-API. In dit artikel wordt beschreven hoe u zich kunt abonneren op de micro soft-Translator Text-API.
+1. Abonneer u op het conversie programma. In dit artikel wordt beschreven hoe u zich kunt abonneren op het conversie programma.
 2. Let op de sleutel voor uw Vertaal abonnement. Een van de Key1 of Key2 is acceptabel.
 3. Ga terug naar de portal voor aangepaste vertalers.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3dc58b68270707eb5e92214def85ec8cf9cb3f5b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69907044"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586952"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -45,7 +45,7 @@ using Newtonsoft.Json;
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
 
-Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan de `Program` klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -84,7 +84,7 @@ static void AltTranslation()
 
 ## <a name="construct-the-uri"></a>De URI maken
 
-Voeg deze regels toe aan de functie `AltTranslation`. U ziet dat samen met de `api-version`nog twee aanvullende para meters zijn gedeclareerd. Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
+Voeg deze regels toe aan de functie `AltTranslation`. U ziet dat samen met de `api-version` nog twee aanvullende para meters zijn gedeclareerd. Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
 
 ```csharp
 string route = "/dictionary/lookup?api-version=3.0";
@@ -208,7 +208,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

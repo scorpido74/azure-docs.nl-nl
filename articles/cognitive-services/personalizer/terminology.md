@@ -2,13 +2,13 @@
 title: Terminologie-persoonlijker
 description: Personaler maakt gebruik van terminologie van versterking van het onderwijs. Deze voor waarden worden gebruikt in de Azure Portal en de Api's.
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586300"
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -19,6 +19,15 @@ Personaler maakt gebruik van terminologie van versterking van het onderwijs. Dez
 * **Learning-lus**: u maakt een persoonlijke resource, een _Learning-lus_, voor elk deel van uw toepassing dat kan profiteren van personalisatie. Als u meer dan één ervaring hebt om persoonlijker te maken, maakt u een lus voor elke.
 
 * **Model**: een personalr model legt alle gegevens vast die zijn geleerd over het gedrag van gebruikers, en trainings gegevens ophalen uit de combi natie van de argumenten die u verzendt voor het classificeren en beloningen en met een opleidings gedrag dat door het leer beleid wordt bepaald.
+
+* **Online modus**: het standaard [leer gedrag](#learning-behavior) voor persoonlijke instellingen van uw leer proces, gebruikt machine learning om het model te bouwen waarmee de **meest voorkomende actie** voor uw inhoud wordt voor speld.
+
+* **Leerling-modus**: een [leer gedrag](#learning-behavior) waarmee u een personaler model kunt warmen om te trainen zonder dat dit van invloed is op de resultaten en acties van de toepassing.
+
+## <a name="learning-behavior"></a>Leer gedrag:
+
+* **Online modus**: de beste actie te retour neren. Uw model reageert op rang gesprekken met de beste actie en zal belonings gesprekken gebruiken om de selecties in de loop van de tijd te ontdekken en te verbeteren.
+* De **[leerling-modus](concept-apprentice-mode.md)**: leer als leerlingen. Uw model leert u door het gedrag van uw bestaande systeem te observeren. Rang gesprekken retour neren altijd de **standaard actie** (basis lijn) van de toepassing.
 
 ## <a name="personalizer-configuration"></a>Aangepaste configuratie
 
@@ -63,8 +72,21 @@ Personaler is geconfigureerd vanuit het [Azure Portal](https://portal.azure.com)
 
 * **Beloning**: een meting van de manier waarop de gebruiker heeft gereageerd op de geretourneerde actie-id van de absolute API, als een score tussen 0 en 1. De waarde van 0 tot 1 wordt ingesteld door uw bedrijfs logica, op basis van de manier waarop de keuze heeft geholpen bij het bereiken van uw zakelijke doel stellingen voor persoonlijke instellingen. De learning-lus slaat deze beloning niet op als afzonderlijke gebruikers geschiedenis.
 
-## <a name="offline-evaluations"></a>Offline evaluaties
+## <a name="evaluations"></a>Evaluaties
 
-* **Evaluatie**: een offline-evaluatie bepaalt het beste leer beleid voor uw lus op basis van de gegevens van uw lussen.
+### <a name="offline-evaluations"></a>Offline evaluaties
+
+* **Evaluatie**: een offline-evaluatie bepaalt het beste leer beleid voor uw lus op basis van de gegevens van uw toepassing.
 
 * **Trainings beleid**: hoe personaler een model voor elke gebeurtenis moet treinen, wordt bepaald door sommige para meters die van invloed zijn op de werking van het machine learning algoritme. Er wordt een nieuw leer proces gestart met een standaard **learningbeleid**, waarmee de prestaties kunnen worden vertraagd. Bij het uitvoeren van [evaluaties](concepts-offline-evaluation.md)maakt personaler een nieuw leer beleid dat speciaal is geoptimaliseerd voor de gebruiks voorbeelden van uw lus. Personaler presteert aanzienlijk beter met beleids regels die zijn geoptimaliseerd voor elke specifieke lus, die tijdens de evaluatie wordt gegenereerd. Het leer beleid heet de _leer instellingen_ voor de **model-en leer instellingen** voor de personaler-resource in de Azure Portal.
+
+### <a name="apprentice-mode-evaluations"></a>Evaluaties van de leerlingen-modus
+
+De leerling-modus biedt de volgende **metrische gegevens**over de evaluatie:
+* **Basis lijn**: gemiddelde beloning: gemiddelde beloningen van de standaard waarde van de toepassing (basis lijn).
+* **Persoonlijkere – gemiddelde beloning**: gemiddelde van het totale aantal beloningen personaler zou mogelijk zijn bereikt.
+* **Gemiddelde algemene compensatie**: verhouding van de prijs van de basis lijn en Personaliteit, genormaliseerd via de meest recente 1000-gebeurtenissen.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over de [ethiek en het verantwoordelijke gebruik](ethics-responsible-use.md)

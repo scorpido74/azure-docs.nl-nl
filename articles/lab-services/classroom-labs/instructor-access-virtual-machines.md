@@ -1,6 +1,6 @@
 ---
-title: Instructeur die toegang heeft tot Vm's in Azure Lab Services
-description: In dit artikel wordt uitgelegd hoe docenten toegang hebben tot de Vm's van studenten vanuit de docent. Een onderwijs assistent kan bijvoorbeeld een docent zijn voor één klasse, maar een student voor andere klassen.
+title: Docenten die toegang hebben tot Vm's in Azure Lab Services
+description: In dit artikel wordt uitgelegd hoe docenten toegang hebben tot de Vm's van studenten vanuit de weer gave voor docenten. Een onderwijs assistent kan bijvoorbeeld een docent zijn voor één klasse, maar een student voor andere klassen.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: c048a2f159784a5bd38f185af29cec314b31824f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 449ff8aafd6dec1e9c0ff16dc407155949fd1313
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641938"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586164"
 ---
-# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>Toegang tot virtuele machines als student vanuit de docenten weergave
-In dit artikel wordt uitgelegd hoe docenten toegang hebben tot hun Vm's voor klassen die ze als studenten bijwonen. 
+# <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Toegang tot virtuele machines als student vanuit de weer gave docenten
+In dit artikel wordt uitgelegd hoe docenten toegang kunnen krijgen tot hun Vm's voor klassen die ze als studenten bijwonen. 
 
-Hier volgt een scenario waarin deze functie helpt. Een onderwijs assistent is een docent voor één klasse, maar een student in andere klassen. En de docent wil de student-Vm's bekijken en openen vanuit de docenten weergave waarin de laboratoria zijn vermeld. 
+Hier volgt een scenario waarin deze functie helpt. Een onderwijs assistent is een docent voor één klasse, maar een student in andere klassen. En de onderwijs-assistent wil de Vm's van de student bekijken en openen vanuit de weer gave voor docenten, waarin de laboratoria worden weer gegeven. 
 
-## <a name="access-vms-from-instructor-view"></a>Toegang tot Vm's vanuit de weer gave docent
+## <a name="access-vms-from-educator-view"></a>Toegang tot Vm's vanuit de weer gave docenten
 
 1. Meld u aan bij de [Azure Lab Services-website](https://labs.azure.com). U ziet de Labs waarvan u de eigenaar bent. Deze labs kunnen Labs zijn die u zelf hebt gemaakt of de laboratoria die de beheerder aan u heeft toegewezen als eigenaar. Zie [aanvullende eigen aren toevoegen aan een bestaand Lab](how-to-add-user-lab-owner.md) voor meer informatie.
 2. Als u toegang wilt krijgen tot Vm's voor klassen die u als student bijwoont, selecteert u het pictogram computer in de rechter bovenhoek. Controleer of u de Vm's ziet die u als student kunt gebruiken. In het volgende voor beeld is de gebruiker een onderwijs assistent voor het python Lab, maar een student van het Java-Lab. De gebruiker ziet de VM dus in de vervolg keuzelijst van het Java-Lab. De gebruiker kan de virtuele machine starten en er verbinding mee maken. 

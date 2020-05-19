@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: woorden opzoeken met tweetalige woorden lijst-Translator Text-API'
+title: 'Snelstartgids: woorden opzoeken met tweetalige woorden lijst-Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
+description: In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en hoe u deze alternatieve vertalingen ook kunt gebruiken met behulp van het conversie programma.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525155"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586949"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Snelstartgids: woorden opzoeken met tweetalige woorden lijst
 
-In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
+In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en hoe u deze alternatieve vertalingen ook kunt gebruiken met behulp van het conversie programma.
 
-Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een Translator-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]

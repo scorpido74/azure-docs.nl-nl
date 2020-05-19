@@ -7,21 +7,21 @@ manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e2a74f69f575f4b9b332b98d7e19089418b29ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77371820"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585191"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Aanmelden bij de LUIS-Portal
 
 Een nieuwe gebruiker aan LUIS moet deze procedure volgen:
 
-1. Meld u aan bij de [Luis-Portal (preview)](https://preview.luis.ai), selecteer uw land en ga akkoord met de gebruiks voorwaarden. Als u in plaats daarvan **mijn apps** ziet, bestaat er al een Luis-resource en gaat u verder met het maken van een app.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai), selecteer uw land en ga akkoord met de gebruiks voorwaarden. Als u in plaats daarvan **mijn apps** ziet, bestaat er al een Luis-resource en gaat u verder met het maken van een app.
 
 1. Selecteer **Azure-resource maken** en selecteer vervolgens **een ontwerp bron maken om uw apps naar te migreren.**
 
@@ -40,7 +40,7 @@ Een nieuwe gebruiker aan LUIS moet deze procedure volgen:
     * **Locatie** : de locatie keuze is gebaseerd op de selectie van de **resource groep** .
     * **Prijs categorie** : de prijs categorie bepaalt de maximale trans actie per seconde en maand.
 
-1. Er wordt een samen vatting weer gegeven van de resource die moet worden gemaakt. Selecteer **Next**.
+1. Er wordt een samen vatting weer gegeven van de resource die moet worden gemaakt. Selecteer **Volgende**.
 
     ![Ontwerp bron maken](../media/sign-in/sign-in-confirm-key-selection.png)
 

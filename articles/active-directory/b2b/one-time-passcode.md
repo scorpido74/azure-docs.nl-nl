@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199489"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585913"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Verificatie met eenmalige e-mail code voor e-mail (preview-versie)
 
@@ -72,7 +72,7 @@ Het kan enkele minuten duren voordat de opt-in-actie van kracht wordt. Daarna ge
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aanmelden met de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
-3.  Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
+3.  Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aanmelden met Power shell
@@ -138,7 +138,7 @@ Het kan enkele minuten duren voordat de opt-out-actie van kracht wordt. Als u de
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>De preview-versie uitschakelen met behulp van de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
 2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
-3.  Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
+3.  Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
 5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>De preview-versie uitschakelen met Power shell

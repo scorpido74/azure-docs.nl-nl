@@ -12,18 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b2f1478391eccaabcc4dbcd150b54376494d3f56
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199465"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587524"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Een B2B-samenwerkings gebruiker controleren en rapporteren
 Met gast gebruikers hebt u controle mogelijkheden die vergelijkbaar zijn met gebruikers van leden. 
 
 ## <a name="access-reviews"></a>Toegangsbeoordelingen
-U kunt toegangs beoordelingen gebruiken om periodiek te controleren of gast gebruikers nog steeds toegang tot uw resources nodig hebben. De functie **toegangs beoordelingen** is beschikbaar in **Azure Active Directory** onder **organisatie relaties**  >  **toegangs beoordelingen** (of **externe identiteiten**  >  **toegangs beoordelingen** ). U kunt ook zoeken naar ' toegangs beoordelingen ' van **alle services** in de Azure Portal. Zie [gast toegang beheren met Azure AD-toegangs beoordelingen](../governance/manage-guest-access-with-access-reviews.md)voor meer informatie over het gebruik van toegangs Beoordelingen.
+U kunt toegangs beoordelingen gebruiken om periodiek te controleren of gast gebruikers nog steeds toegang tot uw resources nodig hebben. De functie **toegangs beoordelingen** is beschikbaar in **Azure Active Directory** onder **externe identiteiten**  >  **toegangs beoordelingen**. U kunt ook zoeken naar ' toegangs beoordelingen ' van **alle services** in de Azure Portal. Zie [gast toegang beheren met Azure AD-toegangs beoordelingen](../governance/manage-guest-access-with-access-reviews.md)voor meer informatie over het gebruik van toegangs Beoordelingen.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 

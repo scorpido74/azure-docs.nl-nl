@@ -1,23 +1,23 @@
 ---
 title: Azure Lab Services-informatie over ondersteuning weer geven (Lab-gebruiker)
-description: In dit artikel wordt uitgelegd hoe een Lab-gebruiker of-docent ondersteunings informatie kan bekijken die hij/zij kan gebruiken om hulp te krijgen.
+description: In dit artikel wordt uitgelegd hoe een test gebruiker of docenten ondersteunings informatie kan bekijken die hij/zij kan gebruiken om hulp te krijgen.
 author: spelluru
 ms.author: spelluru
 ms.date: 02/14/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: bd92d53e09774183edadff0f949820f8feec6180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45cfc327f8534336ba2d9fb404a50e9bd530dccb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109249"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585552"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Ondersteunings informatie (Lab-gebruiker in Azure Lab Services) weer geven
 In dit artikel wordt uitgelegd hoe u (als een Lab-gebruiker) de volgende ondersteunings informatie kunt bekijken:
 
 - URL
-- E-mail
+- Email
 - Telefoon
 - Aanvullende instructies
 

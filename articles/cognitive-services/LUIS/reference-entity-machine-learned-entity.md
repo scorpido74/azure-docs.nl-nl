@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551995"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585586"
 ---
 # <a name="machine-learned-entity"></a>Entiteit op basis van machine learning
 
@@ -38,13 +38,13 @@ Hier zijn enkele voorbeelden van utterances:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-Omdat een door een machine geleerde entiteit veel subonderdelen met beperkingen en descriptors kan hebben, is dit slechts een voor beeld. Deze moet worden beschouwd als een hand leiding voor wat uw entiteit retourneert.
+Omdat een door de machine geleerde entiteit veel subentiteiten heeft met de vereiste functies, is dit slechts een voor beeld. Deze moet worden beschouwd als een hand leiding voor wat uw entiteit retourneert.
 
 Bekijk de query:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=false` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
 
 ```
 
-Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=true` is ingesteld in de query reeks:
 
 ```json
 "entities": {

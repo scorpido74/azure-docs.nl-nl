@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742862"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585348"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in Synapse SQL-pool
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-Het kiezen van een distributie kolom is een belang rijke ontwerp beslissing omdat de waarden in deze kolom bepalen hoe de rijen worden gedistribueerd. De beste keuze is afhankelijk van verschillende factoren en is doorgaans van compromissen. Als u de beste kolom de eerste keer echter niet kiest, kunt u [Create Table als Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de tabel opnieuw te maken met een andere distributie kolom.
+Gegevens die zijn opgeslagen in de kolom distributie kunnen worden bijgewerkt. Het bijwerken van gegevens in de kolom distributie kan resulteren in een bewerking voor gegevens in wille keurige volg orde.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Kies een distributie kolom waarvoor geen updates nodig zijn
+Het kiezen van een distributie kolom is een belang rijke ontwerp beslissing omdat de waarden in deze kolom bepalen hoe de rijen worden gedistribueerd. De beste keuze is afhankelijk van verschillende factoren en is doorgaans van compromissen. Zodra een distributie kolom is gekozen, kunt u deze niet meer wijzigen.  
 
-U kunt een distributie kolom pas bijwerken als u de rij verwijdert en een nieuwe rij hebt ingevoegd met de bijgewerkte waarden. Selecteer daarom een kolom met statische waarden.
+Als u de beste kolom de eerste keer niet hebt gekozen, kunt u [Create Table als Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de tabel opnieuw te maken met een andere distributie kolom.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Een distributie kolom kiezen met gegevens die gelijkmatig worden gedistribueerd
 
@@ -117,8 +117,8 @@ Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene 
 
 Als u de verplaatsing van gegevens wilt minimaliseren, selecteert u een distributie kolom die:
 
-- Wordt gebruikt in `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`en `HAVING` -componenten. Wanneer twee grote feiten tabellen veelvuldig samen voegen, worden de query prestaties verbeterd wanneer u beide tabellen op een van de samenvoegings kolommen distribueert.  Wanneer een tabel niet wordt gebruikt in samen voegingen, kunt u overwegen om de tabel te distribueren in een kolom `GROUP BY` die regel matig voor komt in de component.
-- Wordt *niet* gebruikt in `WHERE` -componenten. Hierdoor kan de query worden beperkt zodat deze niet op alle distributies kan worden uitgevoerd.
+- Wordt gebruikt in `JOIN` , `GROUP BY` , `DISTINCT` , `OVER` en- `HAVING` componenten. Wanneer twee grote feiten tabellen veelvuldig samen voegen, worden de query prestaties verbeterd wanneer u beide tabellen op een van de samenvoegings kolommen distribueert.  Wanneer een tabel niet wordt gebruikt in samen voegingen, kunt u overwegen om de tabel te distribueren in een kolom die regel matig voor komt in de `GROUP BY` component.
+- Wordt *niet* gebruikt in- `WHERE` componenten. Hierdoor kan de query worden beperkt zodat deze niet op alle distributies kan worden uitgevoerd.
 - Is *geen* datum kolom. WHERE-componenten worden vaak op datum gefilterd.  Als dit gebeurt, kan alle verwerking alleen op enkele distributies worden uitgevoerd.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Wat te doen wanneer geen van de kolommen een goede distributie kolom is
@@ -169,7 +169,7 @@ Gegevens verplaatsing tijdens een koppeling voor komen:
 - De tabellen die deel uitmaken van de koppeling, moeten worden gedistribueerd naar hash op **een** van de kolommen die deel nemen aan de koppeling.
 - De gegevens typen van de samenvoegings kolommen moeten tussen beide tabellen overeenkomen.
 - De kolommen moeten worden gekoppeld aan een operator equals.
-- Het samenvoegings type mag geen `CROSS JOIN`zijn.
+- Het samenvoegings type mag geen zijn `CROSS JOIN` .
 
 Als u wilt zien of er query's zijn die gegevens verplaatsen, kunt u het query plan bekijken.  
 

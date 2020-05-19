@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996454"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588119"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Meer informatie over het [verzenden van experimenten](#submit) aan het einde van
 
 Om model training te vergemakkelijken met behulp van populaire frameworks, biedt de Azure Machine Learning python SDK een alternatieve abstractie op hoger niveau, de Estimator-klasse.  Met deze klasse kunt u eenvoudig uitvoerings configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren). We raden u aan om een Estimator for training te gebruiken omdat deze automatisch Inge sloten objecten, zoals een omgeving of RunConfiguration-objecten, voor u bouwt. Als u meer controle wilt hebben over de manier waarop deze objecten worden gemaakt en u wilt opgeven welke pakketten u wilt installeren voor uw experiment, voert u de [volgende stappen uit](#amlcompute) om uw trainings experimenten te verzenden met behulp van een RunConfiguration-object op een Azure machine learning compute.
 
-Voor PyTorch-, tensor flow-en Chainer-taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)en [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -schattingen om het gebruik van deze frameworks te vereenvoudigen.
+Azure Machine Learning biedt specifieke schattingen voor [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)en [Ray RLlib](how-to-use-reinforcement-learning.md).
 
 Meer informatie vindt u [in Train ml-modellen met schattingen](how-to-train-ml-models.md).
 
@@ -182,7 +182,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
 
     Wanneer u het cluster maakt, moet u een SSH-gebruikers naam en-wacht woord opgeven. Noteer deze waarden, omdat u ze nodig hebt om HDInsight als reken doel te gebruiken.
     
-    Nadat het cluster is gemaakt, maakt u een verbinding met de \<hostnaam clustername>-SSH.azurehdinsight.net, waarbij \<clustername> de naam is die u voor het cluster hebt ingesteld. 
+    Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \< clustername>-SSH.azurehdinsight.net, waarbij \< clustername> de naam is die u voor het cluster hebt ingesteld. 
 
 1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. De resource-ID van het HDInsight-cluster kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en het HDInsight-cluster met de volgende teken reeks indeling:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
@@ -266,7 +266,7 @@ U kunt toegang krijgen tot de reken doelen die zijn gekoppeld aan uw werk ruimte
 * [Een reken doel toevoegen](#portal-reuse) dat buiten de werk ruimte is gemaakt
 
 
-Nadat een doel is gemaakt en aan uw werk ruimte is gekoppeld, gebruikt u dit in uw uitvoerings configuratie met `ComputeTarget` een-object: 
+Nadat een doel is gemaakt en aan uw werk ruimte is gekoppeld, gebruikt u dit in uw uitvoerings configuratie met een- `ComputeTarget` object: 
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -393,7 +393,7 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> In dit voor beeld wordt standaard slechts één knoop punt gebruikt van het berekenings doel voor de training. Als u meer dan één knoop punt wilt gebruiken `node_count` , stelt u de uitvoerings configuratie in op het gewenste aantal knoop punten. Met de volgende code wordt bijvoorbeeld het aantal knoop punten ingesteld dat wordt gebruikt voor de training naar vier:
+> In dit voor beeld wordt standaard slechts één knoop punt gebruikt van het berekenings doel voor de training. Als u meer dan één knoop punt wilt gebruiken, stelt u de `node_count` uitvoerings configuratie in op het gewenste aantal knoop punten. Met de volgende code wordt bijvoorbeeld het aantal knoop punten ingesteld dat wordt gebruikt voor de training naar vier:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -401,7 +401,7 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 
 U kunt ook het volgende doen:
 
-* Dien het experiment in met `Estimator` een object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
+* Dien het experiment in met een `Estimator` object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
 * Verzend een HyperDrive-uitvoering voor [afstemming-afstemming](how-to-tune-hyperparameters.md).
 * Een experiment verzenden via de [VS code-extensie](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model).
 
@@ -409,7 +409,7 @@ Zie de documentatie voor [ScriptRunConfig](https://docs.microsoft.com/python/api
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Voer een configuratie uit en voer run uit met Azure Machine Learning CLI
 
-U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure Machine Learning-werkruimte hebt en u bent `az login` aangemeld bij Azure met behulp van de CLI-opdracht. 
+U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure Machine Learning-werkruimte hebt en u bent aangemeld bij Azure met behulp van de `az login` cli-opdracht. 
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -421,7 +421,7 @@ De eenvoudigste manier om een uitvoerings configuratie te maken is door de map t
 az ml folder attach
 ```
 
-Met deze opdracht maakt u een `.azureml` submap met configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
+Met deze opdracht maakt u een submap `.azureml` met configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
 
 ### <a name="structure-of-run-configuration-file"></a>Structuur van het configuratie bestand voor de uitvoering
 
@@ -484,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Let op de sectie *argumenten* in runconfig en de *parameter ruimte* in HyperDrive config. Ze bevatten de opdracht regel argumenten die moeten worden door gegeven aan het trainings script. De waarde in runconfig blijft hetzelfde voor elke iteratie, terwijl het bereik in HyperDrive config wordt herhaald. Geef in beide bestanden niet hetzelfde argument op.
 
-Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor ```az ml``` meer informatie over deze cli-opdrachten.
+```az ml```Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor meer informatie over deze cli-opdrachten.
 
 <a id="gitintegration"></a>
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 126a6f2f26d8eaaf6ea1a85f029e56bc8f4432f3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996765"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588170"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -61,7 +61,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 5. Voer de volgende stappen uit op de pagina **Lab-beleid** :
     1. Voer het aantal uren in dat is toegewezen aan elke gebruiker (**quotum voor elke gebruiker**) buiten de geplande tijd voor het lab. 
     2. Voor de optie voor het **automatisch afsluiten van virtuele machines** geeft u op of u wilt dat de virtuele machine automatisch wordt afgesloten wanneer de gebruiker de verbinding verbreekt. U kunt ook opgeven hoe lang de virtuele machine moet wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. Zie voor meer informatie [automatisch afsluiten van Vm's inschakelen bij het verbreken](how-to-enable-shutdown-disconnect.md)van de verbinding.
-    3. Selecteer vervolgens **volt ooien**. 
+    3. Selecteer vervolgens **Voltooien**. 
 
         ![Quotum voor elke gebruiker](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
     
@@ -102,7 +102,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 | Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
-| Middelgroot | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse | 
+| Normaal | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse | 
 | Gemiddeld (geneste virtualisatie) | 4 | 16 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. Deze grootte biedt ook ondersteuning voor geneste virtualisatie. <p>Deze omvang kan worden gebruikt in scenario's waarbij elke student meerdere Vm's nodig heeft. Docenten kunnen geneste virtualisatie gebruiken om een klein aantal geneste virtuele machines in de virtuele machine in te stellen. </p> |
 | Kleine GPU (Compute) | 6 | 56 GB | <p>Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en toepassingen voor diepe trainingen.</p><p>Azure Lab Services installeert en configureert de benodigde GPU-Stuur Programma's automatisch wanneer u een Lab met GPU-installatie kopieën maakt. </p> | 
 | Kleine GPU (visualisatie) | 6 | 56 GB | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. | 

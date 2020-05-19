@@ -9,24 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053438"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585654"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Uw actieve, getrainde app publiceren naar een staging-of productie-eind punt
 
-Wanneer u klaar bent met het bouwen, trainen en testen van uw actieve LUIS-app, moet u deze beschikbaar maken voor uw client toepassing door deze te publiceren naar het eind punt. 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+Wanneer u klaar bent met het bouwen, trainen en testen van uw actieve LUIS-app, moet u deze beschikbaar maken voor uw client toepassing door deze te publiceren naar het eind punt.
 
 ## <a name="publishing"></a>Publiceren
-
-1. Als u wilt publiceren naar het eind punt, selecteert u in het bovenste deel venster **publiceren** . 
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Als u wilt publiceren naar het eind punt, selecteert u in het bovenste deel venster **publiceren** .
 
     ![De knop publiceren in de bovenste navigatie balk, rechts](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -36,21 +35,21 @@ Wanneer u klaar bent met het bouwen, trainen en testen van uw actieve LUIS-app, 
 
 ### <a name="publishing-slots"></a>Publicatie sleuven
 
-Selecteer de juiste sleuf wanneer het pop-upvenster wordt weer gegeven: 
+Selecteer de juiste sleuf wanneer het pop-upvenster wordt weer gegeven:
 
 * Faseren
-* Productie 
+* Productie
 
-Door beide publicatie sleuven te gebruiken, kunt u op deze manier twee verschillende versies van uw app beschikbaar maken voor de gepubliceerde eind punten of dezelfde versie op twee verschillende eind punten. 
+Door beide publicatie sleuven te gebruiken, kunt u op deze manier twee verschillende versies van uw app beschikbaar maken voor de gepubliceerde eind punten of dezelfde versie op twee verschillende eind punten.
 
 ### <a name="publishing-regions"></a>Publicatie regio's
 
-De app wordt gepubliceerd naar alle regio's die zijn gekoppeld aan de Luis-Voorspellings eindpunt resources die zijn toegevoegd in de Luis-Portal op de pagina**[Azure-resources](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **beheren** -> . 
+De app wordt gepubliceerd naar alle regio's die zijn gekoppeld aan de Luis-Voorspellings eindpunt resources die zijn toegevoegd in **Manage**de Luis-Portal op de  ->  pagina**[Azure-resources](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** beheren.
 
 Als u bijvoorbeeld een app die is gemaakt op [www.Luis.ai](https://www.luis.ai), een Luis-resource in twee regio's, **westelijke** en **Oost**-as maakt en deze aan de app toevoegt als resources, wordt de app in beide regio's gepubliceerd. Zie [regio's](luis-reference-regions.md)voor meer informatie over Luis regio's.
 
 > [!TIP]
-> Er zijn drie ontwerp regio's. U moet ontwerpen in de regio waar u naar wilt publiceren. Als u naar alle regio's wilt publiceren, moet u uw ontwerp proces en het resulterende getrainde model in alle drie de ontwerp regio's beheren. 
+> Er zijn drie ontwerp regio's. U moet ontwerpen in de regio waar u naar wilt publiceren. Als u naar alle regio's wilt publiceren, moet u uw ontwerp proces en het resulterende getrainde model in alle drie de ontwerp regio's beheren.
 
 
 ## <a name="configuring-publish-settings"></a>Publicatie-instellingen configureren
@@ -59,25 +58,25 @@ Nadat u de sleuf hebt geselecteerd, configureert u de publicatie-instellingen vo
 
 * Sentimentanalyse
 * Spelling correctie-v2 alleen Voorspellings eindpunt
-* Spraak gebeuren 
+* Spraak gebeuren
 
-Nadat u hebt gepubliceerd, zijn deze instellingen beschikbaar voor controle op de pagina **publicatie-instellingen** van de sectie **beheren** . U kunt de instellingen wijzigen bij elke publicatie. Als u een publicatie annuleert, worden alle wijzigingen die u tijdens het publiceren hebt aangebracht, ook geannuleerd. 
+Nadat u hebt gepubliceerd, zijn deze instellingen beschikbaar voor controle op de pagina **publicatie-instellingen** van de sectie **beheren** . U kunt de instellingen wijzigen bij elke publicatie. Als u een publicatie annuleert, worden alle wijzigingen die u tijdens het publiceren hebt aangebracht, ook geannuleerd.
 
 ### <a name="when-your-app-is-published"></a>Wanneer uw app wordt gepubliceerd
 
-Als uw app is gepubliceerd, wordt boven aan de browser een melding over een geslaagde poging weer gegeven. De melding bevat ook een koppeling naar de eind punten. 
+Als uw app is gepubliceerd, wordt boven aan de browser een melding over een geslaagde poging weer gegeven. De melding bevat ook een koppeling naar de eind punten.
 
-Als u de URL van het eind punt nodig hebt, selecteert u de koppeling. U kunt ook naar de eind punt-Url's gaan door **beheren** te selecteren in het bovenste menu en vervolgens **Azure-resources** in het linkermenu te selecteren. 
+Als u de URL van het eind punt nodig hebt, selecteert u de koppeling. U kunt ook naar de eind punt-Url's gaan door **beheren** te selecteren in het bovenste menu en vervolgens **Azure-resources** in het linkermenu te selecteren.
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
 <a name="enable-sentiment-analysis"></a>
 
-Met sentiment analyse kan LUIS worden geïntegreerd met [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor het leveren van sentiment-en sleutel woordgroepen analyse. 
+Met sentiment analyse kan LUIS worden geïntegreerd met [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor het leveren van sentiment-en sleutel woordgroepen analyse.
 
-U hoeft geen Text Analytics sleutel op te geven en er worden geen kosten in rekening gebracht voor deze service voor uw Azure-account. 
+U hoeft geen Text Analytics sleutel op te geven en er worden geen kosten in rekening gebracht voor deze service voor uw Azure-account.
 
-Sentiment-gegevens is een score tussen 1 en 0 die de positieve waarde (dichter bij 1) of negatief (dichter bij 0) sentiment van de gegevens aangeeft. Het sentiment-label `positive`van `neutral`, en `negative` is per ondersteunde cultuur. Op dit moment worden alleen sentiment-labels in het Engels ondersteund. 
+Sentiment-gegevens is een score tussen 1 en 0 die de positieve waarde (dichter bij 1) of negatief (dichter bij 0) sentiment van de gegevens aangeeft. Het sentiment-label van `positive` , `neutral` en `negative` is per ondersteunde cultuur. Op dit moment worden alleen sentiment-labels in het Engels ondersteund.
 
 Zie [sentiment Analysis](luis-concept-data-extraction.md#sentiment-analysis) (Engelstalig) voor meer informatie over het JSON-eindpunt antwoord met sentiment analyse.
 

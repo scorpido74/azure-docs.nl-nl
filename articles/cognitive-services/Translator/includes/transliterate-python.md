@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9c3ccac9205e38c8df341a6f7ca286811d759b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586499"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69906512"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw project met behulp van uw favoriete IDE of editor of een nieuwe map met een `transliterate-text.py` bestand met de naam op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/bestand:
+Maak een nieuw project met behulp van uw favoriete IDE of editor of een nieuwe map met een bestand met de naam `transliterate-text.py` op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/bestand:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > Als u deze modules nog niet hebt gebruikt, moet u ze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests uuid` uit.
 
-Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. De vereiste modules worden dan geïmporteerd voor het lezen van uw abonnementssleutel uit een omgevingsvariabele, voor het opstellen van de HTTP-aanvraag, voor het maken van een unieke id en voor het verwerken van het JSON-antwoord dat door de Translator Text-API wordt geretourneerd.
+Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. Vervolgens worden de vereiste modules geïmporteerd om uw abonnements sleutel van een omgevings variabele te lezen, de HTTP-aanvraag te maken, een unieke id te creëren en het JSON-antwoord te verwerken dat door de vertaler is geretourneerd.
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnements sleutel, het eind punt en het pad instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`de omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd om de sleutel van het Vertaal abonnement en het eind punt te lezen uit de omgevings variabelen: `TRANSLATOR_TEXT_KEY` en `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Het globaal eindpunt voor de Translator Text is ingesteld als de `endpoint`. Met `path` wordt de `transliterate`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
+Het globale eind punt van het conversie programma is ingesteld als `endpoint` . Met `path` wordt de `transliterate`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
 
 De `params` worden gebruikt om de invoertaal, en het invoer- en uitvoerscript in te stellen. In dit voorbeeld is sprake van transliteratie van Japans naar het Latijnse alfabet.
 
 >[!NOTE]
-> Zie [Translator Text-API 3.0: Omzetten](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate) voor meer informatie over eindpunten, routes en aanvraagparameters.
+> Zie [Translator 3,0: transtranscribing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)(Engelstalig) voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -106,7 +106,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 python transliterate-text.py
@@ -131,7 +131,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

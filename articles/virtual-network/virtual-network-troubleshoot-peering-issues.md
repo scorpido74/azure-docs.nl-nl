@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 20580edb84a8c983c2342e6a5904c75a0986a3d7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801566"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587728"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Peering-problemen van virtueel netwerk oplossen
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=457b3ba7-7ac5-93be-981c-677553ad39dd" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
 
 Deze hand leiding bevat stappen die u helpen bij het oplossen van de meeste problemen met [peering in het virtuele netwerk](virtual-network-peering-overview.md) .
 
@@ -96,11 +95,11 @@ Zie [problemen met virtuele netwerk apparaten in azure](https://docs.microsoft.c
 
 Transit via globale Virtual Network-peering wordt nu ondersteund. De connectiviteit werkt niet via globale peering van het virtuele netwerk voor de volgende resources:
 
-* Vm's achter Basic ILB SKU
+* VM's achter Basic ILB SKU
 * Redis-cache (maakt gebruik van Basic ILB SKU)
 * Application Gateway (maakt gebruik van Basic ILB SKU)
 * Schaal sets (maakt gebruik van Basic ILB SKU)
-* Service Fabric clusters (maakt gebruik van Basic ILB SKU)
+* Service Fabric-clusters (maakt gebruik van Basic ILB SKU)
 * SQL Server always on (maakt gebruik van Basic ILB SKU)
 * App Service Environment (maakt gebruik van Basic ILB SKU)
 * API Management (maakt gebruik van Basic ILB SKU)
@@ -136,11 +135,11 @@ U kunt dit probleem als volgt oplossen:
    > [!Note]
    > U kunt geen verbinding maken met de volgende bron typen via globale virtuele netwerk peering (virtuele netwerken in verschillende regio's):
    >
-   > * Vm's achter Basic ILB SKU
+   > * VM's achter Basic ILB SKU
    > * Redis-cache (maakt gebruik van Basic ILB SKU)
    > * Application Gateway (maakt gebruik van Basic ILB SKU)
    > * Schaal sets (maakt gebruik van Basic ILB SKU)
-   > * Service Fabric clusters (maakt gebruik van Basic ILB SKU)
+   > * Service Fabric-clusters (maakt gebruik van Basic ILB SKU)
    > * SQL Server always on (maakt gebruik van Basic ILB SKU)
    > * App Service Environment (maakt gebruik van Basic ILB SKU)
    > * API Management (maakt gebruik van Basic ILB SKU)
@@ -197,11 +196,11 @@ Zie [service Chaining](https://docs.microsoft.com/azure/virtual-network/virtual-
 
 Transit via globale Virtual Network-peering wordt nu ondersteund. De connectiviteit werkt niet via globale peering van het virtuele netwerk voor de volgende resources:
 
-* Vm's achter Basic ILB SKU
+* VM's achter Basic ILB SKU
 * Redis-cache (maakt gebruik van Basic ILB SKU)
 * Application Gateway (maakt gebruik van Basic ILB SKU)
 * Schaal sets (maakt gebruik van Basic ILB SKU)
-* Service Fabric clusters (maakt gebruik van Basic ILB SKU)
+* Service Fabric-clusters (maakt gebruik van Basic ILB SKU)
 * SQL Server always on (maakt gebruik van Basic ILB SKU)
 * App Service Environment (maakt gebruik van Basic ILB SKU)
 * API Management (maakt gebruik van Basic ILB SKU)
@@ -224,7 +223,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Problemen met een configuratie fout bericht voor peering in virtuele netwerken oplossen 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>De huidige `<TENANT ID>` Tenant is niet gemachtigd om toegang te krijgen tot het gekoppelde abonnement
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>De huidige Tenant `<TENANT ID>` is niet gemachtigd om toegang te krijgen tot het gekoppelde abonnement
 
 Zie [peering maken-Azure cli](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)om dit probleem op te lossen.
 
@@ -238,12 +237,12 @@ U kunt dit probleem oplossen door de peering van het virtuele netwerk te configu
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Het externe virtuele netwerk heeft geen gateway
 
-Dit probleem doet zich voor wanneer u virtuele netwerken peert van verschillende tenants en deze `Use Remote Gateways`later wilt configureren. Een beperking van de Azure Portal is dat de aanwezigheid van een virtuele netwerk gateway in een virtueel netwerk van een andere Tenant niet kan worden gevalideerd.
+Dit probleem doet zich voor wanneer u virtuele netwerken peert van verschillende tenants en deze later wilt configureren `Use Remote Gateways` . Een beperking van de Azure Portal is dat de aanwezigheid van een virtuele netwerk gateway in een virtueel netwerk van een andere Tenant niet kan worden gevalideerd.
 
 Er zijn twee manieren om het probleem op te lossen:
 
  * Verwijder de Peerings en activeer de `Use Remote Gateways` optie wanneer u een nieuwe peering maakt.
- * Gebruik Power shell of CLI in plaats van de Azure Portal om in `Use Remote Gateways`te scha kelen.
+ * Gebruik Power shell of CLI in plaats van de Azure Portal om in te scha kelen `Use Remote Gateways` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

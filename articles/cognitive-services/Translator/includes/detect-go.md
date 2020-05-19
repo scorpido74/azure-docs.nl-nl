@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7f3824ba4683c5ade4ac5bb84b853caf72e1073b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71837531"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587137"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>De hoofdfunctie toevoegen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`deze omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voor beeld wordt geprobeerd om de sleutel van het Vertaal abonnement en het eind punt te lezen uit deze omgevings variabelen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-detect-the-text-language"></a>Een functie maken om de taal van tekst te detecteren
 
-U gaat nu een functie maken om de taal van een tekst te detecteren. Met deze functie wordt één argument gebruikt, uw Translator Text-abonnementssleutel.
+U gaat nu een functie maken om de taal van een tekst te detecteren. Deze functie moet één argument, uw abonnements sleutel van uw abonnement.
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -90,7 +90,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Zie [Translator Text-API 3.0: detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) voor meer informatie over eindpunten, routes en aanvraagparameters.
+> Zie [Translator 3,0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)(Engelstalig) voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ## <a name="create-a-struct-for-your-request-body"></a>Een structuur maken voor de aanvraagbody
 
@@ -108,7 +108,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>De aanvraag maken
 
-Nu u de aanvraagbody als JSON hebt gecodeerd, kunt u de POST-aanvraag maken en de Translator Text-API aanroepen.
+Nu u de hoofd tekst van de aanvraag hebt gecodeerd als JSON, kunt u uw POST-aanvraag bouwen en de vertaler aanroepen.
 
 ```go
 // Build the HTTP POST request
@@ -120,7 +120,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -146,7 +146,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 go run detect-language.go
@@ -189,7 +189,7 @@ Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Termina
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

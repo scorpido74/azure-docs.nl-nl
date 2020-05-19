@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906978"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586849"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69906978"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw go-project met behulp van uw favoriete IDE of editor of een nieuwe map op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/map in een bestand met `get-languages.go`de naam.
+Maak een nieuw go-project met behulp van uw favoriete IDE of editor of een nieuwe map op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/map in een bestand met de naam `get-languages.go` .
 
 ```go
 package main
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>De hoofdfunctie toevoegen
 
-We maken de hoofdfunctie voor de toepassing. U ziet dat deze bestaat uit één regel code. Dat komt doordat we één functie maken voor het ophalen en afdrukken van de lijst met ondersteunde talen voor Translator Text.
+We maken de hoofdfunctie voor de toepassing. U ziet dat deze bestaat uit één regel code. Dat komt doordat er één functie wordt gemaakt om de lijst met ondersteunde talen voor Translator op te halen en af te drukken.
 
-In dit voor beeld wordt geprobeerd uw Translator Text-eind punt te lezen op `TRANSLATOR_TEXT_ENDPOINT`basis van een omgevings variabele:. Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
+In dit voor beeld wordt geprobeerd uw Translator-eind punt te lezen vanuit een omgevings variabele: `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
 
 Kopieer deze code naar uw project:
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Zie [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) voor meer informatie over eindpunten, routes en aanvraagparameters.
+> Zie [Translator 3,0: languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)(Engelstalig) voor meer informatie over eind punten, routes en aanvraag parameters.
 
 ## <a name="build-the-request"></a>De aanvraag maken
 
-Nu u de aanvraagbody als JSON hebt gecodeerd, kunt u de POST-aanvraag maken en de Translator Text-API aanroepen.
+Nu u de hoofd tekst van de aanvraag hebt gecodeerd als JSON, kunt u uw POST-aanvraag bouwen en de vertaler aanroepen.
 
 ```go
 // Build the HTTP GET request
@@ -91,7 +91,7 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat was het. U hebt een eenvoudig programma gemaakt dat we de Translator Text-API zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u in het vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

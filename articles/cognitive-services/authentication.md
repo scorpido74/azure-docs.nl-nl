@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423940"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587677"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
 
@@ -35,15 +35,15 @@ U kunt uw abonnements sleutel ophalen uit de [Azure Portal](cognitive-services-a
 
 U kunt snel de verificatie headers bekijken die beschikbaar zijn voor gebruik met Azure Cognitive Services.
 
-| Header | Beschrijving |
+| Koptekst | Beschrijving |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Gebruik deze header om te verifiëren met een abonnements sleutel voor een specifieke service of een sleutel van een abonnement op meerdere services. |
-| OCP-APIM-abonnement-regio | Deze header is alleen vereist wanneer u een abonnements sleutel met meerdere services gebruikt met de [Translator text-API](./Translator/reference/v3-0-reference.md). Gebruik deze header om de regio van het abonnement op te geven. |
-| Autorisatie | Gebruik deze header als u een verificatie token gebruikt. De stappen voor het uitvoeren van een token uitwisseling worden beschreven in de volgende secties. De waarde die wordt gegeven, heeft `Bearer <TOKEN>`de volgende indeling:. |
+| OCP-APIM-abonnement-regio | Deze header is alleen vereist bij het gebruik van een sleutel voor meerdere services met de [Translator-service](./Translator/reference/v3-0-reference.md). Gebruik deze header om de regio van het abonnement op te geven. |
+| Autorisatie | Gebruik deze header als u een verificatie token gebruikt. De stappen voor het uitvoeren van een token uitwisseling worden beschreven in de volgende secties. De waarde die wordt gegeven, heeft de volgende indeling: `Bearer <TOKEN>` . |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Verifiëren met een abonnements sleutel van één service
 
-De eerste optie is het verifiëren van een aanvraag met een abonnements sleutel voor een specifieke service, zoals Translator Text. De sleutels zijn beschikbaar in het Azure Portal voor elke resource die u hebt gemaakt. Als u een abonnements sleutel wilt gebruiken om een aanvraag te verifiëren, moet deze worden door `Ocp-Apim-Subscription-Key` gegeven aan de header.
+De eerste optie is het verifiëren van een aanvraag met een abonnements sleutel voor een specifieke service, zoals Translator. De sleutels zijn beschikbaar in het Azure Portal voor elke resource die u hebt gemaakt. Als u een abonnements sleutel wilt gebruiken om een aanvraag te verifiëren, moet deze worden door gegeven aan de `Ocp-Apim-Subscription-Key` header.
 
 In deze voorbeeld aanvragen ziet u hoe u de `Ocp-Apim-Subscription-Key` koptekst kunt gebruiken. Houd er rekening mee dat u bij het gebruik van dit voor beeld een geldige abonnements sleutel moet toevoegen.
 
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dit is een voor beeld van een aanroep van de Translator Text-API:
+Dit is een voor beeld van een aanroep van de Translator-service:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -76,9 +76,9 @@ De abonnements sleutel wordt in elke aanvraag gegeven als de `Ocp-Apim-Subscript
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Wanneer u de sleutel voor meerdere service abonnementen gebruikt om een aanvraag in `api.cognitive.microsoft.com`te stellen, moet u de regio in de URL toevoegen. Bijvoorbeeld: `westus.api.cognitive.microsoft.com`.
+Wanneer u de sleutel voor meerdere service abonnementen gebruikt om een aanvraag in te stellen `api.cognitive.microsoft.com` , moet u de regio in de URL toevoegen. Bijvoorbeeld: `westus.api.cognitive.microsoft.com`.
 
-Wanneer u de sleutel voor een abonnement met meerdere services gebruikt met de Translator Text-API, moet u de regio `Ocp-Apim-Subscription-Region` van het abonnement opgeven met de koptekst.
+Wanneer u een sleutel voor meerdere services met de Translator-service gebruikt, moet u de regio van het abonnement met de `Ocp-Apim-Subscription-Region` header opgeven.
 
 Verificatie met meerdere services wordt in deze regio's ondersteund:
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dit is een voor beeld van een aanroep van de Translator Text-API:
+Dit is een voor beeld van een aanroep van de Translator-service:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -126,11 +126,11 @@ Sommige Azure Cognitive Services accepteren, en in sommige gevallen is een verif
 
 Voor verificatie tokens kunnen zowel één service als sleutels voor meerdere abonnementen worden uitgewisseld. Verificatie tokens zijn 10 minuten geldig.
 
-Verificatie tokens worden opgenomen in een aanvraag als de `Authorization` header. De gegeven token waarde moet worden voorafgegaan door `Bearer`, bijvoorbeeld: `Bearer YOUR_AUTH_TOKEN`.
+Verificatie tokens worden opgenomen in een aanvraag als de `Authorization` header. De gegeven token waarde moet worden voorafgegaan door `Bearer` , bijvoorbeeld: `Bearer YOUR_AUTH_TOKEN` .
 
 ### <a name="sample-requests"></a>Voorbeeld aanvragen
 
-Gebruik deze URL voor het uitwisselen van een abonnements sleutel voor een verificatie `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`token:.
+Gebruik deze URL voor het uitwisselen van een abonnements sleutel voor een verificatie token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` .
 
 ```cURL
 curl -v -X POST \
@@ -150,7 +150,7 @@ Deze meerdere service regio's ondersteunen token uitwisseling:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Nadat u een verificatie token hebt ontvangen, moet u dit in elke aanvraag door geven als de `Authorization` header. Dit is een voor beeld van een aanroep van de Translator Text-API:
+Nadat u een verificatie token hebt ontvangen, moet u dit in elke aanvraag door geven als de `Authorization` header. Dit is een voor beeld van een aanroep van de Translator-service:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \

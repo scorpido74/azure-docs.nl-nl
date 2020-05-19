@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446787"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586982"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
 U kunt uw [micro soft Translator hub](https://hub.microsofttranslator.com/) -werk ruimte en-projecten eenvoudig migreren naar aangepaste vertalers. Migratie wordt gestart vanuit micro soft hub door een werk ruimte of project te selecteren, vervolgens een werk ruimte te selecteren in Custom Translator en vervolgens de opleidingen te selecteren die u wilt overdragen. Nadat de migratie is gestart, worden de geselecteerde trainings instellingen met alle relevante documenten overgebracht. Geïmplementeerde modellen zijn getraind en kunnen na voltooiing automatisch worden geïmplementeerd.
 
 Deze acties worden uitgevoerd tijdens de migratie:
-* De namen van alle documenten en project definities worden overgebracht met de toevoeging ' hub_ ', voorafgegaan door de naam. Automatisch gegenereerde test-en afstemmings gegevens krijgen\<de naam hub_systemtune_ modelid\<> of hub_systemtest_ modelid>.
+* De namen van alle documenten en project definities worden overgebracht met de toevoeging ' hub_ ', voorafgegaan door de naam. Automatisch gegenereerde test-en afstemmings gegevens krijgen de naam hub_systemtune_ \< modelid> of hub_systemtest_ \< modelid>.
 * Alle trainingen die in de geïmplementeerde toestand waren toen de migratie plaatsvindt, worden automatisch getraind met behulp van de documenten van de hub-training. Deze training wordt niet in rekening gebracht voor uw abonnement. Als automatisch implementeren is geselecteerd voor de migratie, wordt het getrainde model na voltooiing geïmplementeerd. Normale hosting kosten worden toegepast.
 * Gemigreerde trainingen die zich niet in de geïmplementeerde status bevonden, worden in de gemigreerde concept status geplaatst. In deze status kunt u een model trainen met de gemigreerde definitie, maar er worden regel matig trainings kosten in rekening gebracht.
 * Op elk gewenst moment kunt u de BLEU-Score die vanuit de hub-training is gemigreerd, vinden op de pagina TrainingDetails van het model in de kop ' Bleu Score in MT hub '.
@@ -141,9 +141,9 @@ Deze tabel vergelijkt de functies tussen micro soft Translator hub en aangepaste
 
 ## <a name="new-languages"></a>Nieuwe talen
 
-Als u een community of organisatie bent die bezig is met het maken van een nieuw taal systeem voor micro soft [custommt@microsoft.com](mailto:custommt@microsoft.com) Translator, neem dan contact op met voor meer informatie.
+Als u een community of organisatie bent die bezig is met het maken van een nieuw taal systeem voor micro soft Translator, neem dan contact op met [custommt@microsoft.com](mailto:custommt@microsoft.com) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Train een model](how-to-train-model.md).
-- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [micro soft Translator text-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

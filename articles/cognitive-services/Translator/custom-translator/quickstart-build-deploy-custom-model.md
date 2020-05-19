@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370210"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587087"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
@@ -24,23 +24,23 @@ Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsystee
 
 1. Als u de [Custom Translator](https://portal.customtranslator.azure.ai)-portal wilt gebruiken, hebt u een [Microsoft-account](https://signup.live.com) of [Azure AD-account](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) nodig (organisatieaccount gehost in Azure) om u aan te melden.
 
-2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Een abonnement op het Translator via de Azure Portal. U hebt de abonnements sleutel van Translator nodig om te koppelen aan uw werk ruimte in Custom Translator. Lees [hoe u zich kunt registreren voor Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Wanneer u beide voor gaande hebt, meldt u zich aan bij de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal om werk ruimten, projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u voor de eerste keer een gebruiker bent, wordt u gevraagd om akkoord te gaan met de service voorwaarden, om een werk ruimte te maken en uw werk ruimte te koppelen aan het micro soft Translator Text-API-abonnement.
+Als u voor de eerste keer een gebruiker bent, wordt u gevraagd om akkoord te gaan met de service voorwaarden, een werk ruimte te maken en uw werk ruimte te koppelen aan het Vertaal abonnement.
 
-![](media/quickstart/terms-of-service.png)
-![](media/quickstart/create-workspace-1.png)
-![](media/quickstart/create-workspace-2.png)
-![Werk ruimte](media/quickstart/create-workspace-3.png)
-maken werk ruimte maken werk ruimte maken werk ruimte maken werk ruimte maken werkruimte maken werk ruimte maken![](media/quickstart/create-workspace-4.png)
-![](media/quickstart/create-workspace-5.png)
-![](media/quickstart/create-workspace-6.png)
+![Werk ruimte maken werk ruimte maken werk ruimte maken werk ruimte maken werk ruimte maken werkruimte maken werk ruimte maken ](media/quickstart/terms-of-service.png)
+ ![ ](media/quickstart/create-workspace-1.png)
+ ![ ](media/quickstart/create-workspace-2.png)
+ ![ ](media/quickstart/create-workspace-3.png)
+ ![ ](media/quickstart/create-workspace-4.png)
+ ![ ](media/quickstart/create-workspace-5.png)
+ ![](media/quickstart/create-workspace-6.png)
 
-Ga naar de pagina instellingen van de aangepaste Vertaal Portal, waar u uw werk ruimte kunt beheren, maak meer werk ruimten, koppel uw micro soft Translator Text-API-abonnements sleutel aan uw werk ruimten, voeg mede-eigen aars toe en wijzig een abonnements sleutel.
+Ga naar de pagina instellingen van de aangepaste Vertaal Portal, waar u uw werk ruimte kunt beheren, maak meer werk ruimten, koppel uw Vertaal abonnement sleutel aan uw werk ruimten, voeg mede-eigen aars toe en wijzig een abonnements sleutel.
 
 ## <a name="create-a-project"></a>Een project maken
 
@@ -83,7 +83,7 @@ Als u er klaar voor bent om het getrainde model te implementeren, klikt u op de 
 
 ## <a name="use-a-deployed-model"></a>Een geïmplementeerd model gebruiken
 
-U hebt toegang tot geïmplementeerde modellen via de Microsoft Translator [Text-API V3 door de Categorie-id op te geven](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Meer informatie over de Translator Text-API vindt u op de webpagina [API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+U hebt toegang tot geïmplementeerde modellen via de Microsoft Translator [Text-API V3 door de Categorie-id op te geven](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Meer informatie over het Vertaal programma vindt u op de [API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -webpagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 

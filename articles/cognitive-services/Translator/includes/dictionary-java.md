@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 63c524880a47c6e519649bd871a6216d6faeefce
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1d7e1156e55cec546bd620f0402ad0e5946002e4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69907028"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586954"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -88,7 +88,7 @@ public class AltTranslation {
 }
 ```
 
-Voeg deze regels toe aan de klasse `AltTranslation`. Eerst worden de abonnements sleutel en het eind punt gelezen van omgevings variabelen. U ziet dat samen met de `api-version`nog twee aanvullende para meters zijn toegevoegd aan de. `url` Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
+Voeg deze regels toe aan de klasse `AltTranslation`. Eerst worden de abonnements sleutel en het eind punt gelezen van omgevings variabelen. U ziet dat samen met de `api-version` nog twee aanvullende para meters zijn toegevoegd aan de `url` . Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -126,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Een functie maken voor het parseren van het antwoord
 
-Met deze eenvoudige functie wordt het JSON-antwoord van de Translator Text-service geparseerd en verfraaid.
+Met deze eenvoudige functie wordt het JSON-antwoord van de service Translator geparseerd en prettifies.
 
 ```java
 // This function prettifies the json response.
@@ -231,7 +231,7 @@ gradle run
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

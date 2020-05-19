@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637282"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585013"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Gecomprimeerde audio-invoer van codec gebruiken met de spraak-SDK
 
-De Speech Service SDK **gecomprimeerde audio input stream** API biedt een manier om gecomprimeerde audio naar de spraak service te streamen met `PullStream` behulp van een of `PushStream`.
+De Speech Service SDK **gecomprimeerde audio input stream** API biedt een manier om gecomprimeerde audio naar de spraak service te streamen met behulp van een `PullStream` of `PushStream` .
 
-Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor C#, C++, Java op Windows (UWP-toepassingen worden niet ondersteund) en Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Het wordt ook ondersteund voor java in Android en objectief-C in iOS-platform.
+Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor C#, C++, Java op Windows (UWP-toepassingen worden niet ondersteund) en Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8). Het wordt ook ondersteund voor java in Android en objectief-C in iOS-platform.
 * Speech SDK-versie 1.10.0 of hoger is vereist voor RHEL 8 en CentOS 8
 * Speech SDK versie 1.11.0 of hoger is vereist voor voor Windows.
 

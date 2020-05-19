@@ -4,21 +4,21 @@ description: Maak entiteiten voor het extra heren van belang rijke gegevens van 
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382150"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585569"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
 De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt laten overeenkomen, evenals woorden en [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die u wilt negeren. Het is **geen** reguliere expressie.
 
 > [!CAUTION]
-> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, geen subonderdelen.
+> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, niet voor subentiteiten.
 
-Entiteiten in patronen worden omgeven door accolades, `{}`. Patronen kunnen entiteiten en entiteiten met rollen bevatten. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
+Entiteiten in patronen worden omgeven door accolades, `{}` . Patronen kunnen entiteiten en entiteiten met rollen bevatten. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
@@ -69,14 +69,14 @@ Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van
 |Nee|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroon sjabloon
-Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?`.
+Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?` .
 
 |Patroon met entiteit|
 |--|
 |`Who does {Employee} manage?`|
 
 ## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis voor het toevoegen van een entiteit en rol aan een patroon sjabloon
-Een entiteits functie wordt aangeduid `{entity:role}` met de naam van de entiteit, gevolgd door een dubbele punt, en vervolgens de naam van de rol. Als u een entiteit met een rol wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit en de naam van de `Book a ticket from {Location:Origin} to {Location:Destination}`rol door accolades, zoals.
+Een entiteits functie wordt aangeduid `{entity:role}` met de naam van de entiteit, gevolgd door een dubbele punt, en vervolgens de naam van de rol. Als u een entiteit met een rol wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit en de naam van de rol door accolades, zoals `Book a ticket from {Location:Origin} to {Location:Destination}` .
 
 |Patroon met entiteits rollen|
 |--|
@@ -85,7 +85,7 @@ Een entiteits functie wordt aangeduid `{entity:role}` met de naam van de entitei
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis voor het toevoegen van een patroon. elke sjabloon voor een patroon
 Het patroon. elke entiteit kunt u een entiteit van een lengte van variërend aan het patroon toevoegen. Zolang de patroon sjabloon wordt gevolgd, is het patroon. elk kan elk wille keurig lengte zijn.
 
-Als u een **patroon wilt toevoegen. een wille keurige** entiteit in de patroon sjabloon, rondom het patroon. elke entiteit met de `How much does {Booktitle} cost and what format is it available in?`accolades, zoals.
+Als u een **patroon wilt toevoegen. een wille keurige** entiteit in de patroon sjabloon, rondom het patroon. elke entiteit met de accolades, zoals `How much does {Booktitle} cost and what format is it available in?` .
 
 |Patroon met patroon. elke entiteit|
 |--|
@@ -106,7 +106,7 @@ Maak een [expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/serv
 * Uw patroon bevat een [patroon.](luis-concept-entity-types.md#patternany-entity)
 * En met deze patroon syntaxis kan een onjuiste entiteits extractie worden uitgevoerd op basis van de utterance.
 
-Stel dat u een patroon hebt met zowel optionele syntaxis, `[]`als de syntaxis van de entiteit, `{}`, gecombineerd op een manier om gegevens onjuist op te halen.
+Stel dat u een patroon hebt met zowel optionele syntaxis, als de `[]` syntaxis van de entiteit, `{}` , gecombineerd op een manier om gegevens onjuist op te halen.
 
 Overweeg het patroon [Find] e-mail over {subject} [van {person}].
 
@@ -117,19 +117,19 @@ In de volgende uitingen worden het **onderwerp** en de **persoons** entiteit op 
 |e-mail over honden van Chris|onderwerp = honden<br>persoon = Chris|✔|
 |e-mail over de man van La Mancha|onderwerp = de man<br>persoon = La Mancha|X|
 
-In de voor gaande tabel moet het onderwerp ( `the man from La Mancha` de titel van een boek) zijn, maar omdat het onderwerp het `from`optionele woord bevat, is de titel onjuist voor speld.
+In de voor gaande tabel moet het onderwerp `the man from La Mancha` (de titel van een boek) zijn, maar omdat het onderwerp het optionele woord bevat `from` , is de titel onjuist voor speld.
 
-Als u deze uitzonde ring wilt herstellen naar `the man from la mancha` het patroon, voegt u als een expliciete lijst overeenkomst toe voor de entiteit {subject} met behulp [van de API voor het maken van expliciete lijsten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Als u deze uitzonde ring wilt herstellen naar het patroon, voegt u `the man from la mancha` als een expliciete lijst overeenkomst toe voor de entiteit {subject} met behulp [van de API voor het maken van expliciete lijsten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxis voor het markeren van optionele tekst in een sjabloon utterance
-Markeer optionele tekst in de utterance met de reguliere expressie vier Kante haakjes syntaxis `[]`. Met de optionele tekst kunnen vier Kante haken Maxi maal twee haken worden genest.
+Markeer optionele tekst in de utterance met de reguliere expressie vier Kante haakjes syntaxis `[]` . Met de optionele tekst kunnen vier Kante haken Maxi maal twee haken worden genest.
 
 |Patroon met optionele tekst|Betekenis|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find`en `from {person}` zijn optioneel|
 |' Kan ik me helpen [?]|Het lees teken is optioneel|
 
-Lees tekens (`?`, `!`, `.`) moeten worden genegeerd en u moet ze negeren met de syntaxis van het vier Kante haakje in patronen.
+Lees tekens ( `?` , `!` , `.` ) moeten worden genegeerd en u moet ze negeren met de syntaxis van het vier Kante haakje in patronen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

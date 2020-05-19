@@ -4,14 +4,14 @@ description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB te make
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.author: mjbrown
-ms.openlocfilehash: 501065875cafc035d491e606c016f3ad4dbfc5d4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a98aee61c3a330344b5b7fa0a5f7f53a65e5ecdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791626"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586147"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sjablonen voor Azure Cosmos DB
 
@@ -22,6 +22,7 @@ De volgende tabellen bevatten koppelingen naar Azure Resource Manager sjablonen 
 |**Sjabloon**|**Beschrijving**|
 |---|---|
 |[Een Azure Cosmos-account,-Data Base,-container maken met de door Voer van automatisch schalen](manage-sql-with-resource-manager.md#create-autoscale) | Met deze sjabloon maakt u een core (SQL) API-account in twee regio's, een Data Base en container met de door Voer van automatisch schalen. |
+|[Een Azure Cosmos-account, Data Base, container met een analytische opslag maken](manage-sql-with-resource-manager.md#create-analytical-store) | Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met de optie voor analyse-TTL ingeschakeld en selecteert u hand matig of automatisch schalen door voer. |
 |[Een Azure Cosmos-account, Data Base, container met de standaard doorvoer (hand matig) maken](manage-sql-with-resource-manager.md#create-manual) | Met deze sjabloon maakt u een core (SQL) API-account in twee regio's, een Data Base en container met een standaard doorvoer. |
 |[Een Azure Cosmos-account,-data base en-container maken met een opgeslagen procedure, trigger en UDF](manage-sql-with-resource-manager.md#create-sproc) | Met deze sjabloon maakt u een core-API-account (SQL) in twee regio's met een opgeslagen procedure, trigger en UDF voor een container. |
 |[Een persoonlijk eind punt maken voor een bestaand Azure Cosmos-account](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Met deze sjabloon maakt u een persoonlijk eind punt voor een bestaand Azure Cosmos core-API-account in een bestaand virtueel netwerk. |

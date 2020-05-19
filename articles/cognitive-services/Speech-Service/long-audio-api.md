@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401060"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587337"
 ---
 # <a name="long-audio-api-preview"></a>Lange audio-API (preview-versie)
 
-De lange audio-API is ontworpen voor asynchrone synthese van tekst in lange vorm naar spraak (bijvoorbeeld: audio boeken). Deze API retourneert geen getakte audio in realtime. in plaats daarvan is het raadzaam om de reactie (s) te controleren en de uitvoer (en) te gebruiken zodra deze vanuit de service beschikbaar worden gesteld. In tegens telling tot de tekst-naar-spraak-API die wordt gebruikt door de spraak-SDK, kan de lange audio-API meer dan tien minuten gesynthesizerde audio maken, waardoor deze ideaal is voor uitgevers en platforms voor audio-inhoud.
+De API voor lange audio is ontworpen voor asynchrone synthese van tekst in lange vorm naar spraak (bijvoorbeeld: audio boeken, nieuws artikelen en documenten). Deze API retourneert geen getakte audio in realtime. in plaats daarvan is het raadzaam om de reactie (s) te controleren en de uitvoer (en) te gebruiken zodra deze vanuit de service beschikbaar worden gesteld. In tegens telling tot de tekst-naar-spraak-API die wordt gebruikt door de spraak-SDK, kan de lange audio-API meer dan tien minuten gesynthesizerde audio maken, waardoor deze ideaal is voor uitgevers en platforms voor audio-inhoud.
 
 Aanvullende voor delen van de API voor lange audio:
 
-* De door de service geretourneerde gesynthesizerde spraak maakt gebruik van Neural stemmen, waarmee een hoge betrouw baarheid van audio-uitvoer wordt gegarandeerd.
-* Omdat realtime-antwoorden niet worden ondersteund, hoeft u geen spraak-eind punt te implementeren.
+* De gesynthesizerde spraak die door de service wordt geretourneerd, maakt gebruik van de beste Neural stemmen.
+* Het is niet nodig om een spraak eindpunt te implementeren omdat er stemmen zijn die geen real-time batch-modus hebben.
 
 > [!NOTE]
-> De lange audio-API ondersteunt nu alleen [aangepaste Neural-stem](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
+> De lange audio-API ondersteunt nu zowel [open bare Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) als [aangepaste Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
 
 ## <a name="workflow"></a>Werkstroom
 
@@ -52,14 +52,47 @@ Wanneer u het tekst bestand voorbereidt, moet u het volgende controleren:
 
 ## <a name="submit-synthesis-requests"></a>Synthese aanvragen verzenden
 
-Nadat u de invoer inhoud hebt voor bereid, volgt u de Quick Start van de [Audio synthese voor lange vorm](https://aka.ms/long-audio-python) om de aanvraag in te dienen. Als u meer dan één invoer bestand hebt, moet u meerdere aanvragen indienen. Er zijn enkele beperkingen waar u rekening mee moet houden: 
-* De client mag Maxi maal 5 aanvragen voor de server per seconde indienen voor elk account van een Azure-abonnement. Als deze de beperking overschrijdt, krijgt de client een fout code van 429 (te veel aanvragen). Verminder de aanvraag hoeveelheid per seconde
-* De server mag Maxi maal 120 aanvragen voor elk account van een Azure-abonnement uitvoeren en in de wachtrij plaatsen. Als de limiet wordt overschreden, retourneert de server een fout code van 429 (te veel aanvragen). Een ogen blik geduld en het verzenden van een nieuwe aanvraag voor komen totdat sommige aanvragen zijn voltooid
-* Server bewaart Maxi maal 20.000 aanvragen voor elk account van een Azure-abonnement. Als deze de beperking overschrijdt, moet u enkele aanvragen verwijderen alvorens nieuwe te verzenden
+Nadat u de invoer inhoud hebt voor bereid, volgt u de Quick Start van de [Audio synthese voor lange vorm](https://aka.ms/long-audio-python) om de aanvraag in te dienen. Als u meer dan één invoer bestand hebt, moet u meerdere aanvragen indienen. 
+
+De **HTTP-status codes** wijzen op veelvoorkomende fouten.
+
+| API | HTTP-statuscode | Beschrijving | Voorstel |
+|-----|------------------|-------------|----------|
+| Maken | 400 | De stem synthese is niet ingeschakeld in deze regio. | Wijzig de sleutel van het spraak abonnement met een ondersteunde regio. |
+|        | 400 | Alleen het **standaard** spraak abonnement voor deze regio is geldig. | Wijzig de code van het spraak abonnement in de prijs categorie Standard. |
+|        | 400 | Overschrijdt de limiet van 20.000 aanvragen voor het Azure-account. Verwijder enkele aanvragen voordat u nieuwe verzendt. | De server bewaart Maxi maal 20.000 aanvragen voor elk Azure-account. Enkele aanvragen verwijderen voordat nieuwe worden verzonden. |
+|        | 400 | Dit model kan niet worden gebruikt in de spraak-synthese: {modelID}. | Controleer of de status van de {modelID} juist is. |
+|        | 400 | De regio voor de aanvraag komt niet overeen met de regio voor het model: {modelID}. | Controleer of de regio van de {modelID} overeenkomt met de regio van de aanvraag. |
+|        | 400 | De spraak-synthese ondersteunt alleen het tekst bestand in UTF-8-code ring met de byte volgorde markering. | Zorg ervoor dat de invoer bestanden zich in UTF-8-code ring bevinden met de markering byte volgorde. |
+|        | 400 | Alleen geldige SSML-invoer waarden zijn toegestaan in de Voice Synthesis-aanvraag. | Controleer of de ingevoerde SSML-expressies juist zijn. |
+|        | 400 | De spraak naam {Voice name} is niet gevonden in het invoer bestand. | De stem naam van de invoer SSML is niet uitgelijnd met de model-ID. |
+|        | 400 | De hoeveelheid alinea's in het invoer bestand moet kleiner zijn dan 10.000. | Zorg ervoor dat de alinea in het bestand kleiner is dan 10.000. |
+|        | 400 | Het invoer bestand moet langer zijn dan 400 tekens. | Zorg ervoor dat uw invoer bestand langer is dan 400 tekens. |
+|        | 404 | Het model dat is gedeclareerd in de definitie van de audio-synthese, is niet gevonden: {modelID}. | Controleer of {modelID} juist is. |
+|        | 429 | De limiet voor actieve audio-synthese overschrijdt. Wacht tot sommige aanvragen zijn voltooid. | De server mag Maxi maal 120 aanvragen voor elk Azure-account uitvoeren en in de wachtrij plaatsen. Wacht tot er nieuwe aanvragen zijn verzonden totdat sommige aanvragen zijn voltooid. |
+| Alles       | 429 | Er zijn te veel aanvragen. | De client mag Maxi maal 5 aanvragen voor de server per seconde indienen voor elk Azure-account. Verminder de aanvraag hoeveelheid per seconde. |
+| Verwijderen    | 400 | De stem synthese taak is nog in gebruik. | U kunt alleen **voltooide** of **mislukte**aanvragen verwijderen. |
+| GetByID   | 404 | De opgegeven entiteit is niet gevonden. | Controleer of de synthese-ID juist is. |
+
+## <a name="regions-and-endpoints"></a>Regio's en eind punten
+
+De lange audio-API is beschikbaar in meerdere regio's met unieke eind punten.
+
+| Regio | Eindpunt |
+|--------|----------|
+| Australië - oost | `https://australiaeast.customvoice.api.speech.microsoft.com` |
+| Canada - midden | `https://canadacentral.customvoice.api.speech.microsoft.com` |
+| VS - oost | `https://eastus.customvoice.api.speech.microsoft.com` |
+| India - centraal | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| VS - zuid-centraal | `https://southcentralus.customvoice.api.speech.microsoft.com` |
+| Azië - zuidoost | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| Verenigd Koninkrijk Zuid | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| Europa -west | `https://westeurope.customvoice.api.speech.microsoft.com` |
+| VS - west 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>Indelingen audio-uitvoer
 
-Flexibele indelingen voor audio-uitvoer worden ondersteund. U kunt audio-uitvoer per alinea genereren of de audio in één uitvoer samen voegen door de para meter ' concatenateResult ' in te stellen. De volgende indelingen voor audio-uitvoer worden ondersteund door de lange audio-API:
+Flexibele indelingen voor audio-uitvoer worden ondersteund. U kunt audio-uitvoer per alinea genereren of de audio-uitvoer in één uitvoer samen voegen door de para meter ' concatenateResult ' in te stellen. De volgende indelingen voor audio-uitvoer worden ondersteund door de lange audio-API:
 
 > [!NOTE]
 > De standaard audio-indeling is RIFF-16khz-16-mono-PCM.
@@ -75,7 +108,7 @@ Flexibele indelingen voor audio-uitvoer worden ondersteund. U kunt audio-uitvoer
 * Audio-24khz-96kbitrate-mono-mp3
 * Audio-24khz-160kbitrate-mono-mp3
 
-## <a name="quickstarts"></a>Snelstartgidsen
+## <a name="quickstarts"></a>Snelstarts
 
 We bieden Quick starts die zijn ontworpen om u te helpen de lange audio-API uit te voeren. Deze tabel bevat een lijst met lange audio-API-Quick starts, geordend op taal.
 

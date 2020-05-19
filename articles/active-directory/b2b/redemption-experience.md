@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199492"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585892"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inwisseling uitnodiging Azure Active Directory B2B-samen werking
 
@@ -99,7 +99,7 @@ Wanneer een gast zich voor de eerste keer aanmeldt voor toegang tot resources in
 
    ![Scherm opname met nieuwe gebruiks voorwaarden](media/redemption-experience/terms-of-use-accept.png) 
 
-   U kunt [gebruiks voorwaarden](../governance/active-directory-tou.md) configureren in **organisatie relaties** (of **externe identiteiten**) > **Gebruiksvoorwaarden**.
+   U kunt [gebruiks voorwaarden](../governance/active-directory-tou.md) configureren in **externe identiteiten**  >  **Gebruiksvoorwaarden**.
 
 3. Tenzij anders vermeld, wordt de gast omgeleid naar het toegangs venster voor apps, met daarin de toepassingen die de gast kan openen.
 

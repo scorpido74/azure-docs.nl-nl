@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 77242ab35416fb24a3a815e7137280e5f3698c30
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906714"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586609"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -34,9 +34,9 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="select-the-c-language-version"></a>De versie van de C#-taal selecteren
 
-Voor deze Quick start is C# 7,1 of hoger vereist. Er zijn een aantal manieren om de C#-versie voor uw project te wijzigen. In deze hand leiding wordt uitgelegd hoe u het `translate-sample.csproj` bestand kunt aanpassen. Voor alle beschik bare opties, zoals het wijzigen van de taal in Visual Studio, raadpleegt [u de taal versie van C# selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+Voor deze Quick start is C# 7,1 of hoger vereist. Er zijn een aantal manieren om de C#-versie voor uw project te wijzigen. In deze hand leiding wordt uitgelegd hoe u het bestand kunt aanpassen `translate-sample.csproj` . Voor alle beschik bare opties, zoals het wijzigen van de taal in Visual Studio, raadpleegt [u de taal versie van C# selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Open het project en open `translate-sample.csproj`het. Zorg ervoor dat `LangVersion` is ingesteld op 7,1 of hoger. Als er geen eigenschaps groep voor de taal versie is, voegt u deze regels toe:
+Open het project en open het `translate-sample.csproj` . Zorg ervoor dat `LangVersion` is ingesteld op 7,1 of hoger. Als er geen eigenschaps groep voor de taal versie is, voegt u deze regels toe:
 
 ```xml
 <PropertyGroup>
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>Klassen maken voor het JSON-antwoord
 
-We gaan nu een set klassen maken die worden gebruikt bij het deserialiseren van het JSON-antwoord dat door de Translator Text-API is geretourneerd.
+We gaan nu een set klassen maken die worden gebruikt bij het deserialiseren van het JSON-antwoord dat door de vertaler wordt geretourneerd.
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TranslationResult
 {
@@ -107,7 +107,7 @@ public class SentenceLength
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
 
-Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan de `Program` klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -132,11 +132,11 @@ static Program()
 
 ## <a name="create-a-function-to-translate-text"></a>Een functie maken om tekst te vertalen
 
-Maak in `Program` de-klasse een asynchrone functie met `TranslateTextRequest()`de naam. Deze functie heeft vier argumenten: `subscriptionKey`, `host`, `route`en `inputText`.
+Maak in de `Program` -klasse een asynchrone functie met de naam `TranslateTextRequest()` . Deze functie heeft vier argumenten: `subscriptionKey` , `host` , en `route` `inputText` .
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
-// Async call to the Translator Text API
+// Async call to the Translator
 static public async Task TranslateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
@@ -148,7 +148,7 @@ static public async Task TranslateTextRequest(string subscriptionKey, string end
 
 ## <a name="serialize-the-translation-request"></a>De Vertaal aanvraag serialiseren
 
-Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat die u wilt vertalen. Denk eraan dat u meer dan één object in de `body`kunt door geven.
+Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat die u wilt vertalen. Denk eraan dat u meer dan één object in de kunt door geven `body` .
 
 ```csharp
 object[] body = new object[] { new { Text = inputText } };
@@ -212,7 +212,7 @@ Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u oo
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-In de laatste stap roept u `TranslateTextRequest()` aan in de functie `Main`. In dit voor beeld vertalen we naar Duits`de`(), Italiaans (`it`), Japans (`ja`) en Thai (`th`). Zoek `static void Main(string[] args)` en vervang deze door de volgende code:
+In de laatste stap roept u `TranslateTextRequest()` aan in de functie `Main`. In dit voor beeld vertalen we naar Duits ( `de` ), Italiaans (), `it` Japans ( `ja` ) en Thai ( `th` ). Zoek `static void Main(string[] args)` en vervang deze door de volgende code:
 
 ```csharp
 static async Task Main(string[] args)
@@ -232,7 +232,7 @@ static async Task Main(string[] args)
 }
 ```
 
-U `Main`ziet dat in, u declareert `subscriptionKey` `endpoint`, en. `route` Daarnaast vraagt u de gebruiker om invoer met `Console.Readline()` en wijst u de waarde toe aan. `textToTranslate`
+U ziet dat in `Main` , u declareert, `subscriptionKey` `endpoint` en `route` . Daarnaast vraagt u de gebruiker om invoer met `Console.Readline()` en wijst u de waarde toe aan `textToTranslate` .
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
@@ -293,7 +293,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
