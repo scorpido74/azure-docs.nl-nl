@@ -1,7 +1,7 @@
 ---
-title: N-beste vertalingen retour neren-Translator Text
+title: N-beste vertalingen retour neren-Translator
 titleSuffix: Azure Cognitive Services
-description: N-beste vertalingen retour neren met behulp van de Translator Text-API.
+description: N-beste vertalingen retour neren met behulp van het conversie programma.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
-ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837244"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592675"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-beste vertalingen retour neren
 
 > [!NOTE]
-> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van de Translator Text-API.
+> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van het conversie programma.
 
-De methoden GetTranslations () en GetTranslationsArray () van de micro soft Translator-API bevatten een optionele Booleaanse vlag "IncludeMultipleMTAlternatives".
+De methoden GetTranslations () en GetTranslationsArray () van de vertaler bevatten een optionele Booleaanse vlag "IncludeMultipleMTAlternatives".
 De-methode retourneert maxTranslations alternatieven waarbij de Delta wordt verstrekt uit de N-beste lijst van de Vertaal engine.
 
 De hand tekening is:

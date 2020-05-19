@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199442"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591213"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -146,7 +146,7 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Direct Federatie configureren in de Azure AD-Portal
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties**  >  **alle id-providers** (of **externe identiteiten**van  >  **alle id-providers**).
+2. Selecteer **externe identiteiten**  >  **alle id-providers**.
 3. Selecteer en selecteer vervolgens **nieuwe SAML/WS-IDP**.
 
     ![Scherm afbeelding met de knop voor het toevoegen van een nieuwe SAML-of WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
@@ -194,7 +194,7 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Een directe Federatie relatie Hoe kan ik bewerken?
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+2. Selecteer **externe identiteiten**.
 3. **Alle id-providers** selecteren
 4. Selecteer de provider onder **SAML/WS-id-providers**.
 5. Werk de waarden bij in het detail venster van de identiteits provider.
@@ -205,7 +205,7 @@ Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit 
 U kunt uw directe Federatie-instellingen verwijderen. Als u dit doet, kunnen gebruikers met een directe Federatie gast die hun uitnodigingen al hebben ingewisseld, zich niet aanmelden. Maar u kunt ze ook weer toegang geven tot uw resources door ze te verwijderen uit de map en ze opnieuw uit te nodigen. Directe Federatie verwijderen met een id-provider in de Azure AD-portal:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer de ID-provider en selecteer vervolgens **verwijderen**. 
 5. Selecteer **Ja** om de verwijdering te bevestigen. 

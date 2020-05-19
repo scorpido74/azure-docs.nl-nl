@@ -1,20 +1,33 @@
 ---
 title: Wat is er nieuw-Language Understanding (LUIS)
 description: Dit artikel wordt regel matig bijgewerkt met nieuws over de Azure Cognitive Services Language Understanding-API.
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097724"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592794"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
 Meer informatie over wat er nieuw is in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="may-2020---build"></a>Mei 2020-build
+
+* Uitgebracht als **algemeen beschikbaar** (ga):
+    * [Language Understanding-container](luis-container-howto.md)
+    * Voor beeld van portal gepromoveerd tot [huidige Portal](https://www.luis.ai), [vorige](https://previous.luis.ai) Portal is nog steeds beschikbaar
+    * Nieuwe, op computers gebaseerde ervaring voor het maken en labelen van entiteiten
+    * [Upgrade proces](migrate-from-composite-entity.md) van samengestelde en eenvoudige entiteiten naar door machines geleerde entiteiten
+    * Ondersteuning voor het normaliseren van woord varianten [instellen](how-to-application-settings-portal.md)
+* Voor beeld van ontwerp-API-wijzigingen
+    * App-schema 7. x voor geneste, door machines geleerde entiteiten
+    * [Migratie naar vereiste functie](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>Maart 2020
 
@@ -26,7 +39,7 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
 
 * Verbeterde productiviteit van ontwikkel aars
     * Algemene Beschik baarheid van ons [Voorspellings eindpunt v3](luis-migration-api-v3.md).
-    * De mogelijkheid om apps te importeren en exporteren met de. lu-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren.
+    * De mogelijkheid om apps te importeren en exporteren met de `.lu` indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren.
 * Taal uitbreiding
     * [Arabisch en Hindi](luis-language-support.md) in open bare preview.
 * Vooraf gemaakte modellen

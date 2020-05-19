@@ -8,22 +8,22 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: a2f907384326aa887c12c293feb8c988f42bbaf1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591961"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisch schalen van Azure Synapse Analytics Apache Spark Pools
 
-Met de functie voor automatisch schalen van Azure Synapse wordt het aantal knoop punten in een cluster exemplaar omhoog en omlaag geschaald. Tijdens het maken van een nieuwe Azure Synapse Spark-groep kan een minimum-en maximum aantal knoop punten worden ingesteld wanneer automatisch schalen is geselecteerd. Met automatisch schalen worden de resource vereisten van de belasting bewaakt en wordt het aantal knoop punten omhoog of omlaag geschaald. Er zijn geen extra kosten verbonden aan deze functie.
+Apache Spark voor de functie automatisch schalen van een Azure Synapse Analytics-groep schaalt het aantal knoop punten in een cluster exemplaar omhoog en omlaag. Tijdens het maken van een nieuwe Apache Spark voor de Azure Synapse Analytics-groep kan een minimum-en maximum aantal knoop punten worden ingesteld wanneer automatisch schalen is geselecteerd. Met automatisch schalen worden de resource vereisten van de belasting bewaakt en wordt het aantal knoop punten omhoog of omlaag geschaald. Er zijn geen extra kosten verbonden aan deze functie.
 
 ## <a name="metrics-monitoring"></a>Bewaking van metrische gegevens
 
 Automatisch schalen bewaakt het Spark-exemplaar voortdurend en verzamelt de volgende metrische gegevens:
 
-|Gegevens|Beschrijving|
+|Metrisch|Beschrijving|
 |---|---|
 |Totale CPU in behandeling|Het totale aantal kern geheugens dat nodig is om de uitvoering van alle knoop punten in behandeling te starten.|
 |Totaal geheugen in behandeling|Het totale geheugen (in MB) dat is vereist om de uitvoering van alle knoop punten in behandeling te starten.|

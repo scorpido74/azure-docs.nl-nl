@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856427"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591014"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -33,7 +33,7 @@ Met spraak containers kunnen klanten een spraak toepassings architectuur maken d
 | Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
 | Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,7 +47,7 @@ De volgende vereisten voordat u spraak containers gebruikt:
 
 ## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
 
-Vul het [aanvraag formulier voor de Cognitive Services spraak containers](https://aka.ms/speechcontainerspreview/) in en verzend het om toegang tot de container aan te vragen. 
+Vul het [aanvraag formulier voor de Cognitive Services containers](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen.
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -101,7 +101,7 @@ In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources vo
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
 
-Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
+Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van de `docker run` opdracht.
 
 > [!NOTE]
 > De minimale en aanbevolen waarde zijn gebaseerd op de limieten van docker, *niet* op de hostcomputer. Bijvoorbeeld: spraak naar tekst containers delen van een groot taal model en het wordt *Aanbevolen* dat het hele bestand in het geheugen past, wat een extra 4-6 GB is. Het is ook mogelijk dat de eerste uitvoering van een van de containers langer duurt, omdat modellen in het geheugen worden gewisseld.
@@ -155,7 +155,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>Spraak-naar-tekst-land instellingen
 
-Alle tags, met uitzonde ring van voor `latest` , hebben de volgende indeling en zijn hoofdletter gevoelig:
+Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en zijn hoofdletter gevoelig:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
@@ -193,11 +193,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> De `latest` tag haalt de land `en-US` instellingen en `jessarus` de stem op. Zie [land instellingen voor tekst naar spraak](#text-to-speech-locales)voor aanvullende land instellingen.
+> De `latest` tag haalt de `en-US` land instellingen en de `jessarus` Stem op. Zie [land instellingen voor tekst naar spraak](#text-to-speech-locales)voor aanvullende land instellingen.
 
 #### <a name="text-to-speech-locales"></a>Land instellingen voor tekst naar spraak
 
-Alle tags, met uitzonde ring van voor `latest` , hebben de volgende indeling en zijn hoofdletter gevoelig:
+Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en zijn hoofdletter gevoelig:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
@@ -212,7 +212,7 @@ De volgende code is een voor beeld van de indeling:
 Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#text-to-speech)voor alle ondersteunde land instellingen en overeenkomstige stemmen van de **tekst-naar-spraak** -container.
 
 > [!IMPORTANT]
-> Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice` element `name` met een kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van `en-US-JessaRUS`hebben.
+> Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice` element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van hebben `en-US-JessaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
@@ -238,11 +238,11 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 
 ## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{Endpoint_URI}` ophalen `{API_Key}` van de waarden en. Er zijn ook aanvullende `docker run` [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de opdracht beschikbaar.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{Endpoint_URI}` `{API_Key}` waarden en. Er zijn ook aanvullende [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar.
 
 # <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
-Voer de volgende `docker run` opdracht uit om de *spraak-naar-tekst* -container uit te voeren.
+Voer de volgende opdracht uit om de *spraak-naar-tekst* -container uit te voeren `docker run` .
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -302,7 +302,7 @@ De ID van het aangepaste spraak **model** is vereist voor het uitvoeren van de c
 
 ![Pagina aangepaste spraak training](media/custom-speech/custom-speech-model-training.png)
 
-Haal de **model-id** op die moet worden gebruikt als `ModelId` argument voor de `docker run` para meter van de opdracht.
+Haal de **model-id** op die moet worden gebruikt als argument voor de `ModelId` para meter van de `docker run` opdracht.
 <br>
 
 ![Details van het aangepaste spraak model](media/custom-speech/custom-speech-model-details.png)
@@ -316,7 +316,7 @@ De volgende tabel bevat de verschillende `docker run` para meters en de bijbehor
 | `{ENDPOINT_URI}` | Het eind punt is vereist voor het meten en factureren. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 | `{API_KEY}` | De API-sleutel is vereist. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 
-Als u de *Custom speech-naar-tekst* -container wilt uitvoeren, `docker run` voert u de volgende opdracht uit:
+Als u de *Custom speech-naar-tekst* -container wilt uitvoeren, voert u de volgende `docker run` opdracht uit:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -335,12 +335,12 @@ Met deze opdracht gebeurt het volgende:
 * Hiermee wordt het *Custom speech-naar-tekst-* model geladen vanuit de volume-invoer koppeling, bijvoorbeeld *C:\CustomSpeech*.
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Hiermee downloadt u het model `ModelId` op basis van (indien niet gevonden op het volume koppel).
-* Als het aangepaste model eerder is gedownload, wordt `ModelId` de genegeerd.
+* Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
 # <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
-Voer de volgende `docker run` opdracht uit om de *tekst-naar-spraak-* container uit te voeren.
+Voer de volgende opdracht uit om de *tekst-naar-spraak-* container uit te voeren `docker run` .
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -364,7 +364,7 @@ De *aangepaste tekst-naar-spraak* -container is afhankelijk van een aangepast sp
 
 ![Pagina aangepaste spraak training](media/custom-voice/custom-voice-model-training.png)
 
-Haal de **model-id** op die moet worden gebruikt als `ModelId` argument voor de para meter van de opdracht docker run.
+Haal de **model-id** op die moet worden gebruikt als argument voor de `ModelId` para meter van de opdracht docker run.
 <br>
 
 ![Aangepaste Details van het spraak model](media/custom-voice/custom-voice-model-details.png)
@@ -378,7 +378,7 @@ De volgende tabel bevat de verschillende `docker run` para meters en de bijbehor
 | `{ENDPOINT_URI}` | Het eind punt is vereist voor het meten en factureren. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 | `{API_KEY}` | De API-sleutel is vereist. Zie [vereiste para meters verzamelen](#gathering-required-parameters)voor meer informatie. |
 
-Als u de *aangepaste tekst-naar-spraak-* container wilt uitvoeren, `docker run` voert u de volgende opdracht uit:
+Als u de *aangepaste tekst-naar-spraak-* container wilt uitvoeren, voert u de volgende `docker run` opdracht uit:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -397,13 +397,13 @@ Met deze opdracht gebeurt het volgende:
 * Hiermee wordt het *aangepaste tekst-naar-spraak* -model geladen vanuit de volume-invoer koppeling, bijvoorbeeld *C:\CustomVoice*.
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Hiermee downloadt u het model `ModelId` op basis van (indien niet gevonden op het volume koppel).
-* Als het aangepaste model eerder is gedownload, wordt `ModelId` de genegeerd.
+* Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
 ***
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
@@ -425,7 +425,7 @@ Als u uw Text Analytics-API referenties [aan de container](#analyze-sentiment-on
 
 # <a name="simple-format"></a>[Eenvoudige indeling](#tab/simple-format)
 
-Als u de speech-client wilt configureren voor gebruik van een `"Sentiment"` eenvoudige indeling, voegt `Simple.Extensions`u als waarde voor toe. Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt `'latest'` u in `speechcontext-phraseDetection.sentimentAnalysis.modelversion` de configuratie van de eigenschap.
+Als u de speech-client wilt configureren voor gebruik van een eenvoudige indeling, voegt u `"Sentiment"` als waarde voor toe `Simple.Extensions` . Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt u `'latest'` in de configuratie van de `speechcontext-phraseDetection.sentimentAnalysis.modelversion` eigenschap.
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[Gedetailleerde indeling](#tab/detailed-format)
 
-De speech-client configureren voor het gebruik van een gedetailleerde indeling `"Sentiment"` , toevoegen als waarde `Detailed.Extensions`voor `Detailed.Options`, of beide. Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt `'latest'` u in `speechcontext-phraseDetection.sentimentAnalysis.modelversion` de configuratie van de eigenschap.
+De speech-client configureren voor het gebruik van een gedetailleerde indeling, toevoegen `"Sentiment"` als waarde voor `Detailed.Extensions` , `Detailed.Options` of beide. Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt u `'latest'` in de configuratie van de `speechcontext-phraseDetection.sentimentAnalysis.modelversion` eigenschap.
 
 ```python
 speech_config.set_service_property(
@@ -479,7 +479,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`biedt sentiment-resultaat in de hoofdlaag van het antwoord. `Detailed.Options`Hiermee geeft u het `NBest` resultaat in de laag van het antwoord. Ze kunnen afzonderlijk of samen worden gebruikt.
+`Detailed.Extensions`biedt sentiment-resultaat in de hoofdlaag van het antwoord. `Detailed.Options`Hiermee geeft u het resultaat in `NBest` de laag van het antwoord. Ze kunnen afzonderlijk of samen worden gebruikt.
 
 ```json
 {
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-Als u de sentiment-analyse volledig wilt uitschakelen, voegt `false` u een `sentimentanalysis.enabled`waarde toe aan.
+Als u de sentiment-analyse volledig wilt uitschakelen, voegt u een `false` waarde toe aan `sentimentanalysis.enabled` .
 
 ```python
 speech_config.set_service_property(

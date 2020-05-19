@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530965"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592148"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
 
@@ -40,24 +40,24 @@ Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis v
 * [Insluitende lezer (preview)](./immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
 * [QnA Maker](./qnamaker/overview/languages-supported.md)
-* [Tekstanalyse](./text-analytics/text-analytics-supported-languages.md)
-* [Translator Text](./translator/languages.md)
+* [Text Analytics](./text-analytics/text-analytics-supported-languages.md)
+* [Translator](./translator/languages.md)
 
-## <a name="speech"></a>Speech
+## <a name="speech"></a>Spraak
 
 * [Speech-Service: spraak naar tekst](./speech-service/supported-languages.md#speech-to-text)
 * [Speech-Service: tekst-naar-spraak](./speech-service/supported-languages.md#text-to-speech)
 * [Speech-Service: spraak omzetting](./speech-service/supported-languages.md#speech-translation)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
-* [Bing Aangepaste zoekopdrachten](./bing-custom-search/supported-countries-markets.md)
-* [Bing Afbeeldingen zoeken](./bing-image-search/supported-countries-markets.md)
-* [Zoeken in Bing Nieuws](./bing-news-search/supported-countries-markets.md)
+* [Bing Custom Search](./bing-custom-search/supported-countries-markets.md)
+* [Bing Image Search](./bing-image-search/supported-countries-markets.md)
+* [Bing News Search](./bing-news-search/supported-countries-markets.md)
 * [Bing Automatische suggesties](./Bing-Autosuggest/bing-autosuggest-supported-languages.md)
 * [Bing Spellingcontrole](./bing-spell-check/bing-spell-check-supported-languages.md)
-* [Bing Visuele zoekopdrachten](./bing-visual-search/supported-countries-markets.md)
-* [Bing Webzoekopdrachten](./bing-web-search/supported-countries-markets.md)
+* [Bing Visual Search](./bing-visual-search/supported-countries-markets.md)
+* [Bing Web Search](./bing-web-search/supported-countries-markets.md)
 
 ## <a name="decision"></a>Besluit
 

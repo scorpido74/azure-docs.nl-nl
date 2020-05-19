@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372236"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590890"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Conversie van gegevens in rust versleutelen
 
@@ -41,7 +41,7 @@ Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Do
 
 Volg deze stappen om door de klant beheerde sleutels voor Translator in te scha kelen:
 
-1. Maak uw nieuwe regionale Translator Text of regionale Cognitive Services resource. Dit werkt niet met een globale resource.
+1. Maak uw nieuwe regionale vertaler of regionale Cognitive Services resource. Dit werkt niet met een globale resource.
 2. Ingeschakelde beheerde identiteit in de Azure Portal en voeg de door de klant beheerde sleutel gegevens toe.
 3. Maak een nieuwe werk ruimte in Custom Translator en koppel deze abonnements gegevens.
 

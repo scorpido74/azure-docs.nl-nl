@@ -1,7 +1,7 @@
 ---
-title: Vertaling van inhoud voor komen-Translator Text-API
+title: Vertaling van inhoud voor komen-Translator
 titleSuffix: Azure Cognitive Services
-description: Omzetting van inhoud met de Translator Text-API voor komen. Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald.
+description: Omzetting van inhoud met het conversie programma voor komen. Met de vertaler kunt u inhoud labelen zodat deze niet wordt vertaald.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33939976a0824ce8afeb2e6f6fb19e7033098683
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052490"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592692"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Omzetting van inhoud met de Translator Text-API voor komen
+# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Omzetting van inhoud met de vertaler voor komen
 
-Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald. Stel dat u code, een merk naam of een woord/zin wilt labelen die niet zinvol is wanneer deze wordt gelokaliseerd.
+Met de vertaler kunt u inhoud labelen zodat deze niet wordt vertaald. Stel dat u code, een merk naam of een woord/zin wilt labelen die niet zinvol is wanneer deze wordt gelokaliseerd.
 
 ## <a name="methods-for-preventing-translation"></a>Methoden voor het voor komen van vertalingen
 
-1. Voorzie uw inhoud van `notranslate`met. Het ontwerp dat dit alleen werkt als de invoer textType is ingesteld als HTML
+1. Voorzie uw inhoud van met `notranslate` . Het ontwerp dat dit alleen werkt als de invoer textType is ingesteld als HTML
 
    Voorbeeld:
 
@@ -39,11 +39,11 @@ Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald.
 
 2. Gebruik de [dynamische woorden lijst](dynamic-dictionary.md) om een specifieke vertaling te bepalen.
 
-3. Geef de teken reeks niet door aan de Translator Text-API voor vertaling.
+3. Geef de teken reeks niet door aan de vertaler voor vertaling.
 
 4. Aangepaste vertaler: gebruik een [woorden lijst in het aangepaste conversie programma](custom-translator/what-is-dictionary.md) om de vertaling van een woord groep met een waarschijnlijkheid van 100% te bepalen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Vertaling in de API-aanroep van Translator vermijden](reference/v3-0-translate.md)
+> [Vertaling in uw Translator-oproep vermijden](reference/v3-0-translate.md)

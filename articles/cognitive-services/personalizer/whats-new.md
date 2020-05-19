@@ -8,20 +8,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21e1be094716ac1d43e1f4458b41e855315d1779
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192983"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591757"
 ---
 # <a name="whats-new-in-personalizer"></a>Wat is er nieuw in personaliseren?
 
 Meer informatie over wat er nieuw is in de service. Deze items kunnen opmerkingen bij de release, Video's, blog berichten en andere soorten informatie bevatten. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="may-2020---build-conference"></a>Mei 2020-build-conferentie
+
+De volgende opties zijn beschikbaar in de **open bare preview-versie**:
+
+ * De [leerling-modus](concept-apprentice-mode.md) als leer gedrag.
 
 ### <a name="march-2020"></a>Maart 2020
 

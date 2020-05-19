@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006073"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591978"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -28,7 +28,7 @@ Als u een Synapse-werk ruimte (preview-versie) wilt beveiligen, volgt u een patr
 - Synapse-rollen: deze rollen zijn uniek voor Synapse en zijn niet gebaseerd op Azure-functies. Er zijn drie rollen:
   - Synapse werkruimte beheerder
   - Synapse SQL-beheerder
-  - Synapse Spark-beheerder
+  - Apache Spark voor Azure Synapse Analytics-beheerder
 - Toegangs beheer voor gegevens in Azure Data Lake Storage gen 2 (ADLSGEN2).
 - Toegangs beheer voor Synapse SQL-en Spark-data bases
 
@@ -48,11 +48,11 @@ In dit document worden standaard namen gebruikt om de instructies te vereenvoudi
 
 Drie beveiligings groepen maken en invullen voor uw werk ruimte:
 
-- **WS1\_WSAdmins** – voor gebruikers die volledige controle over de werk ruimte moeten hebben
-- **WS1\_SparkAdmins** : voor gebruikers die volledige controle over de Spark-aspecten van de werk ruimte moeten hebben
-- **WS1\_SQLAdmins** – voor gebruikers die volledige controle over de SQL-aspecten van de werk ruimte moeten hebben
-- **WS1\_WSAdmins** toevoegen aan **WS1\_SQLAdmins**
-- **WS1\_WSAdmins** toevoegen aan **WS1\_SparkAdmins**
+- **WS1 \_ WSAdmins** : voor gebruikers die volledige controle over de werk ruimte moeten hebben
+- **WS1 \_ SparkAdmins** : voor gebruikers die volledige controle moeten hebben over de Spark-aspecten van de werk ruimte
+- **WS1 \_ SQLAdmins** : voor gebruikers die volledige controle over de SQL-aspecten van de werk ruimte moeten hebben
+- **WS1 \_ WSAdmins** toevoegen aan **WS1 \_ SQLAdmins**
+- **WS1 \_ WSAdmins** toevoegen aan **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>STAP 2: uw Data Lake Storage Gen2-account voorbereiden
 
@@ -65,9 +65,9 @@ Identificeer deze informatie over uw opslag:
 
 - Wijs de beveiligings groepen met behulp van de Azure Portal de volgende rollen toe aan CNT1
 
-  - **WS1\_WSAdmins** toewijzen aan de rol van gegevensbeheerderrol voor **opslag BLOB**
-  - **WS1\_SparkAdmins** toewijzen aan de rol van gegevensbeheerderrol voor **opslag BLOB**
-  - **WS1\_SQLAdmins** toewijzen aan de rol van gegevensbeheerderrol voor **opslag BLOB**
+  - **WS1 \_ WSAdmins** toewijzen aan de rol van Gegevensbeheerderrol voor **opslag BLOB**
+  - **WS1 \_ SparkAdmins** toewijzen aan de rol van Gegevensbeheerderrol voor **opslag BLOB**
+  - **WS1 \_ SQLAdmins** toewijzen aan de rol van Gegevensbeheerderrol voor **opslag BLOB**
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>STAP 3: uw Synapse-werk ruimte maken en configureren
 
@@ -77,10 +77,10 @@ Maak in het Azure Portal een Synapse-werk ruimte:
 - Kies STG1 voor het opslag account
 - Kies CNT1 voor de container die wordt gebruikt als het "Bestands systeem".
 - Open WS1 in Synapse Studio
-- Selecteer **beheren** > **Access Control** de beveiligings groepen toe te wijzen aan de volgende Synapse-rollen.
-  - **WS1\_WSAdmins** toewijzen aan Synapse-werkruimte beheerders
-  - **WS1\_SparkAdmins** aan Synapse Spark-beheerders toewijzen
-  - **WS1\_SQLAdmins** toewijzen aan Synapse SQL-Administrators
+- Selecteer **beheren**  >  **Access Control** de beveiligings groepen toe te wijzen aan de volgende Synapse-rollen.
+  - **WS1 \_ WSAdmins** toewijzen aan Synapse-werkruimte beheerders
+  - **WS1 \_ SparkAdmins** aan Synapse Spark-beheerders toewijzen
+  - **WS1 \_ SQLAdmins** toewijzen aan Synapse SQL-Administrators
 
 ## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>STAP 4: Data Lake Storage Gen2 configureren voor gebruik door de werk ruimte Synapse
 
@@ -91,14 +91,14 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 - Ga naar CNT1
 - Zorg ervoor dat het MSI-bestand (Managed Service Identity) voor WS1 is toegewezen aan de rol van de **BLOB-gegevens bijdrager voor opslag** op CNT1
   - Als de toewijzing niet wordt weer geven, wijst u deze toe.
-  - Het MSI-bestand heeft dezelfde naam als de werk ruimte. In dit geval is dit &quot;WS1.&quot;
+  - Het MSI-bestand heeft dezelfde naam als de werk ruimte. In dit geval is dit &quot; WS1 &quot; .
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>STAP 5: beheerders toegang voor SQL-groepen configureren
 
 - Open de Azure Portal
 - Ga naar WS1
 - Klik onder **instellingen**op **SQL Active Directory-beheerder**
-- Klik op **beheerder instellen** en kies\_WS1 SQLAdmins
+- Klik op **beheerder instellen** en kies WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintaining-access-control"></a>STAP 6: toegangs beheer onderhouden
 
@@ -119,7 +119,7 @@ Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 | 3 | Een Spark-groep maken | JA [1] | JA [1] | NO  |
 | 4 | Hiermee wordt het Parquet-bestand met een notitie blok gelezen | JA | JA | NO |
 | 5 | Een pijp lijn maken op basis van het notitie blok en de pijp lijn activeren om nu uit te voeren | JA | NO | NO |
-| 6 | Een SQL-groep maken en een SQL-script uitvoeren &quot;, zoals Select 1&quot; | JA [1] | NO | JA [1] |
+| 6 | Een SQL-groep maken en een SQL-script uitvoeren, zoals &quot; Select 1&quot; | JA [1] | NO | JA [1] |
 
 > [!NOTE]
 > [1] om SQL-of Spark-groepen te maken, moet de gebruiker ten minste Inzender rollen hebben in de werk ruimte Synapse.

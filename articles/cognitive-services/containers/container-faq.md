@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592182"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
 
@@ -22,16 +22,7 @@ ms.locfileid: "82690828"
 
 **V: wat is er beschikbaar?**
 
-**A:** [container ondersteuning in azure Cognitive Services](../cognitive-services-container-support.md) stelt ontwikkel aars in staat om gebruik te maken van dezelfde intelligente api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Container ondersteuning is momenteel beschikbaar als preview-versie voor een subset van Azure Cognitive Services, inclusief delen van:
-
-> [!div class="checklist"]
-> * [Anomaly Detector][ad-containers]
-> * [Computer Vision][cv-containers]
-> * [Face][fa-containers]
-> * [Form Recognizer][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
-> * [Speech Service-API][sp-containers]
-> * [Tekstanalyse][ta-containers]
+**A:** Met Azure Cognitive Services-containers kunnen ontwikkel aars gebruikmaken van dezelfde intelligente Api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Sommige containers zijn beschikbaar als [geteste preview](../cognitive-services-gating-process.md), waarvoor mogelijk een toepassing voor toegang is vereist. Andere containers zijn openbaar beschikbaar als een niet-gegate preview-versie of zijn algemeen beschikbaar. U kunt een volledige lijst met containers en hun Beschik baarheid vinden in de [container ondersteuning in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikel. 
 
 **V: is er een verschil tussen de Cognitive Services Cloud en de containers?**
 
@@ -62,7 +53,7 @@ Helaas worden de Cognitive Services containers *niet* systeem eigen ondersteund 
 
 **V: hoe worden containers bijgewerkt naar de nieuwste versie?**
 
-**A:** Klanten kunnen kiezen wanneer ze de containers moeten bijwerken die ze hebben geïmplementeerd. Containers worden gemarkeerd met standaard- [docker-Tags](https://docs.docker.com/engine/reference/commandline/tag/) , `latest` zoals om de meest recente versie aan te geven. We moedigen klanten aan om de meest recente versie van containers te halen wanneer ze worden uitgebracht, [Azure container Registry webhooks](../../container-registry/container-registry-webhook.md) uit te checken voor meer informatie over hoe ze een melding krijgen wanneer een installatie kopie wordt bijgewerkt.
+**A:** Klanten kunnen kiezen wanneer ze de containers moeten bijwerken die ze hebben geïmplementeerd. Containers worden gemarkeerd met standaard- [docker-Tags](https://docs.docker.com/engine/reference/commandline/tag/) , zoals `latest` om de meest recente versie aan te geven. We moedigen klanten aan om de meest recente versie van containers te halen wanneer ze worden uitgebracht, [Azure container Registry webhooks](../../container-registry/container-registry-webhook.md) uit te checken voor meer informatie over hoe ze een melding krijgen wanneer een installatie kopie wordt bijgewerkt.
  
 **V: welke versies worden ondersteund?**
 
@@ -80,7 +71,7 @@ Helaas worden de Cognitive Services containers *niet* systeem eigen ondersteund 
 
 **V: zijn deze containers compatibel met openshift?** 
 
-Containers worden niet getest met openshift, maar in het algemeen moeten Cognitive Services containers worden uitgevoerd op elk platform dat ondersteuning biedt voor docker-installatie kopieën. Als u openshift gebruikt, raden we u aan om de containers `root-user`uit te voeren als.
+Containers worden niet getest met openshift, maar in het algemeen moeten Cognitive Services containers worden uitgevoerd op elk platform dat ondersteuning biedt voor docker-installatie kopieën. Als u openshift gebruikt, raden we u aan om de containers uit te voeren als `root-user` .
 
 **V: Hoe kan ik de aanbevelingen voor product feedback en functies?**
 
@@ -98,7 +89,7 @@ Klanten moeten hun [ondersteunings plan voor Azure](https://azure.microsoft.com/
 
 Klanten kunnen het [Azure-kennis centrum](https://azure.microsoft.com/resources/knowledge-center/) verkennen voor het beantwoorden van vragen en ondersteunings problemen.
 
-### <a name="stack-overflow"></a>Stack Overflow
+### <a name="stack-overflow"></a>Stackoverloop
 
 > [Stack overflow](https://en.wikipedia.org/wiki/Stack_Overflow) is een vraag-en-antwoord site voor professionele en liefhebbers-programmeurs.
 
@@ -117,7 +108,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 * [Form Recognizer][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Speech Service-API][sp-containers-billing]
-* [Tekstanalyse][ta-containers-billing]
+* [Text Analytics][ta-containers-billing]
 
 > [!IMPORTANT]
 > Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens naar micro soft.
@@ -144,7 +135,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 * [Form Recognizer][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Speech Service-API][sp-containers-recommendations]
-* [Tekstanalyse][ta-containers-recommendations]
+* [Text Analytics][ta-containers-recommendations]
  
 **V: worden deze containers momenteel ondersteund in Windows?**
 

@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 294a270107033590e340db49b85e8a67acbbb701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8253b784a427ceb3842b6b4d585c52a2c30e0c4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116863"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592420"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
-In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een sjabloon installatie kopie van een virtuele machine kan opslaan in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md) , zodat deze door anderen kan worden gebruikt om Labs te maken. 
+In dit artikel wordt uitgelegd hoe docenten/Lab-beheerders een sjabloon installatie kopie van een virtuele machine kunnen opslaan in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md) , zodat deze door anderen kunnen worden gebruikt om Labs te maken. 
 
 ## <a name="scenarios"></a>Scenario's
 Hier volgen enkele scenario's die door deze functie worden ondersteund: 
@@ -41,7 +41,7 @@ Hier volgen enkele scenario's die door deze functie worden ondersteund:
 
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Een afbeelding opslaan in de galerie met gedeelde afbeeldingen
-Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-account beheerder of een docent een afbeelding opslaan in de galerie met gedeelde afbeeldingen, zodat deze door andere docenten opnieuw kan worden gebruikt. 
+Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-account beheerder of een docent een installatie kopie opslaan in de galerie met gedeelde afbeeldingen, zodat deze opnieuw kan worden gebruikt door andere docenten. 
 
 1. Op de **sjabloon** pagina voor het lab selecteert **u exporteren naar gedeelde installatie kopie galerie** op de werk balk.
 
@@ -64,7 +64,7 @@ Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-ac
     
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Een installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken
-Een docent/docent kan een aangepaste afbeelding kiezen die beschikbaar is in de galerie met gedeelde afbeeldingen voor de sjabloon tijdens het maken van een nieuwe lab.
+Een docent kan een aangepaste installatie kopie kiezen die beschikbaar is in de galerie met gedeelde afbeeldingen voor de sjabloon tijdens het maken van een nieuwe lab.
 
 ![Installatie kopie van virtuele machine uit de galerie gebruiken](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 

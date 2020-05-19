@@ -3,12 +3,12 @@ title: "&-eind punten voor het publiceren van regio's-LUIS"
 description: De regio die in de Azure Portal is opgegeven, is hetzelfde als waar u de LUIS-app publiceert en er wordt een eind punt-URL gegenereerd voor deze regio.
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 680887ecda0843bf770c62a4b9a4d88305ea9e73
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292086"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590907"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Ontwerpen en publiceren van regio's en de bijbehorende sleutels
 
@@ -21,9 +21,9 @@ Er zijn drie LUIS voor het ontwerpen van portals, gebaseerd op de regio. U moet 
 
 |LUIS|Ontwerp gebied|Naam van Azure-regio|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|U.S.<br>niet Europa<br>niet Australië| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Australië| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Europa|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|U.S.<br>niet Europa<br>niet Australië| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|Australië| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|Europa|`westeurope`|
 
 Voor het ontwerpen van regio's zijn er [gepaarde failover-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
@@ -45,7 +45,7 @@ LUIS-apps die https://www.luis.ai zijn gemaakt op, kunnen naar alle eind punten 
 
 ## <a name="publishing-to-europe"></a>Publiceren naar Europa
 
-Als u wilt publiceren naar de Europese regio's, maakt u https://eu.luis.ai alleen Luis-apps. Als u ergens anders probeert te publiceren met een sleutel in de regio Europa, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik https://eu.luis.aiin plaats daarvan. LUIS-apps die [https://eu.luis.ai][eu.luis.ai] zijn gemaakt in, worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
+Als u wilt publiceren naar de Europese regio's, maakt u alleen LUIS-apps https://eu.luis.ai . Als u ergens anders probeert te publiceren met een sleutel in de regio Europa, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik in plaats daarvan https://eu.luis.ai . LUIS-apps die zijn gemaakt in, [https://eu.luis.ai][eu.luis.ai] worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
 
 ## <a name="europe-publishing-regions"></a>Europa-publicatie regio's
 
@@ -58,7 +58,7 @@ Als u wilt publiceren naar de Europese regio's, maakt u https://eu.luis.ai allee
 
 ## <a name="publishing-to-australia"></a>Publiceren naar Australië
 
-Als u wilt publiceren naar de Australische regio's, maakt u https://au.luis.ai alleen Luis-apps. Als u ergens anders probeert te publiceren met een sleutel in de regio Australië, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik https://au.luis.aiin plaats daarvan. LUIS-apps die [https://au.luis.ai][au.luis.ai] zijn gemaakt in, worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
+Als u wilt publiceren naar de Australische regio's, maakt u alleen LUIS-apps https://au.luis.ai . Als u ergens anders probeert te publiceren met een sleutel in de regio Australië, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik in plaats daarvan https://au.luis.ai . LUIS-apps die zijn gemaakt in, [https://au.luis.ai][au.luis.ai] worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
 
 ## <a name="australia-publishing-regions"></a>Australië-publicatie regio's
 
@@ -68,7 +68,7 @@ Als u wilt publiceren naar de Australische regio's, maakt u https://au.luis.ai a
 
 ## <a name="publishing-to-other-regions"></a>Publiceren naar andere regio's
 
-Als u wilt publiceren naar de andere regio's, maakt u [https://www.luis.ai](https://www.luis.ai) alleen Luis-apps.
+Als u wilt publiceren naar de andere regio's, maakt u alleen LUIS-apps [https://www.luis.ai](https://www.luis.ai) .
 
 ## <a name="other-publishing-regions"></a>Andere publicatie regio's
 

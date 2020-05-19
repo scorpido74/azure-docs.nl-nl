@@ -2,13 +2,13 @@
 title: Wat is Language Understanding (LUIS)?
 description: Language Understanding (LUIS) is een API-cloudservice die aangepaste machine-learning-intelligence toepast op tekst in natuurlijke spreektaal van een gebruiker om daar de algemene betekenis en relevante detailinformatie uit te destilleren.
 ms.topic: overview
-ms.date: 02/23/2020
-ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053358"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592811"
 ---
 # <a name="what-is-language-understanding-luis"></a>Wat is Language Understanding (LUIS)?
 
@@ -29,10 +29,10 @@ Als de LUIS-app is gepubliceerd, worden uitingen (tekst) door een clienttoepassi
 
 ![Conceptuele installatie kopie van LUIS met behulp van de chat-bot om gebruikers tekst te voors pellen met natuurlijk language Standing (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele afbeelding van LUIS werken met de chat-bot om gebruikers tekst te voors pellen met natuurlijk taal begrip (NLP")
 
-|Stap|Bewerking|
+|Stap|Actie|
 |:--|:--|
 |1|De clienttoepassing verzendt een _uiting_ van de gebruiker (tekst in eigen woorden), zoals "Ik wil mijn contactpersoon van de afdeling HR bellen", naar het eindpunt van LUIS als een HTTP-aanvraag.|
-|2|Met LUIS kunt u uw aangepaste taal modellen maken om intelligentie toe te voegen aan uw toepassing. Door de computer geleerde taal modellen nemen de niet-gestructureerde invoer tekst van de gebruiker en retourneert een JSON-indelings antwoord met `HRContact`een hoofd intentie. Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de entiteit _type contact_ .|
+|2|Met LUIS kunt u uw aangepaste taal modellen maken om intelligentie toe te voegen aan uw toepassing. Door de computer geleerde taal modellen nemen de niet-gestructureerde invoer tekst van de gebruiker en retourneert een JSON-indelings antwoord met een hoofd intentie `HRContact` . Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de entiteit _type contact_ .|
 |3|De clienttoepassing maakt gebruik van het JSON-antwoord om beslissingen te nemen voor het afhandelen van de aanvragen van de gebruiker. Deze beslissingen kunnen beslissings structuur bevatten in de bot-Framework code en aanroepen naar andere services. |
 
 De LUIS-app levert intelligence zodat er slimme keuzen kunnen worden gemaakt in de clienttoepassing. Die keuzen worden niet gemaakt in LUIS.
@@ -55,9 +55,9 @@ Om te beginnen definieert u categorieën gebruikersintenties, ook wel kortweg **
 
 |Voorbeeld van een uiting van een gebruiker|Intentie|Geëxtraheerde gegevens|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|Seattle|
-|`When does your store __open__?`|StoreHoursAndLocation|open|
-|`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|13:00 uur, Bob|
+|`Book a flight to Seattle?`|BookFlight|Seattle|
+|`When does your store open?`|StoreHoursAndLocation|open|
+|`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|13:00 uur, Bob|
 
 ## <a name="query-prediction-endpoint"></a>Eindpunt queryvoorspelling
 

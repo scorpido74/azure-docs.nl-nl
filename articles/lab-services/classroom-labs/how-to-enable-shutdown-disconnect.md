@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0c7f5daa6bcd9ab5cb8f4d7b1a513a15cd1c708
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77117128"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591706"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Automatisch afsluiten van Vm's inschakelen bij het verbreken van de verbinding
 In dit artikel wordt beschreven hoe u automatisch afsluiten van **Windows 10** Lab-vm's (sjabloon of student) kunt in-of uitschakelen nadat een verbinding met een extern bureau blad is verbroken. U kunt ook opgeven hoe lang de Vm's moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten.
 
-Een Lab-account beheerder kan deze instelling configureren voor het lab-account waarin u Labs maakt. Zie voor meer informatie [automatisch afsluiten van Vm's configureren bij het verbreken van de verbinding met een Lab-account](how-to-configure-lab-accounts.md#automatic-shutdown-of-vms-on-disconnect). Als eigenaar van het lab kunt u de instelling onderdrukken wanneer u een Lab maakt of nadat het lab is gemaakt. 
+Een Lab-account beheerder kan deze instelling configureren voor het lab-account waarin u Labs maakt. Zie voor meer informatie [automatisch afsluiten van Vm's configureren bij het verbreken van de verbinding met een Lab-account](how-to-configure-lab-accounts.md). Als eigenaar van het lab kunt u de instelling onderdrukken wanneer u een Lab maakt of nadat het lab is gemaakt. 
 
 ## <a name="configure-when-creating-a-lab"></a>Configureren bij het maken van een Lab
 Op de pagina stap 3 van de wizard Lab maken kunt u deze functie in-of uitschakelen en opgeven hoe lang de virtuele machine moet wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. 

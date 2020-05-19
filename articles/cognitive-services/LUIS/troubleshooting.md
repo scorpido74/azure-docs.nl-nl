@@ -2,16 +2,16 @@
 title: Veelgestelde vragen (FAQ)-LUIS
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101107"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592845"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s) over Language Understanding
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 
@@ -66,7 +66,7 @@ Als u een LUIS-app wilt overdragen naar een ander Azure-abonnement, exporteert u
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf samengestelde entiteit is gelabeld in een voor beeld-utterance in plaats van mijn aangepaste entiteit. Hoe kan ik dit probleem oplossen?
 
-In de LUIS-Portal kunt u tekst labelen voor de exacte entiteit die u wilt uitpakken. Als de LUIS-Portal niet de juiste voor spelling van de entiteit weergeeft, moet u mogelijk meer uitingen toevoegen en de entiteit voorzien van een label in de tekst of een beschrijving (zoals een functie) toevoegen.
+In de LUIS-Portal kunt u tekst labelen voor de exacte entiteit die u wilt uitpakken. Als de LUIS-Portal niet de juiste voor spelling van de entiteit weergeeft, moet u mogelijk meer uitingen toevoegen en de entiteit voorzien van een label in de tekst of een functie toevoegen.
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ik heb geprobeerd een app of versie bestand te importeren, maar ik kreeg een fout melding. Wat is er gebeurd?
 
@@ -189,7 +189,7 @@ Bekijk [de trein met alle gegevens](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>App-publicatie
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Wat is de Tenant-ID in het venster ' een sleutel toevoegen aan uw app '?
-In azure vertegenwoordigt een Tenant de client of organisatie die aan een service is gekoppeld. Zoek uw Tenant-id in de Azure Portal in het vak **Directory-id** door **Azure Active Directory** > **Manage** > **Eigenschappen**beheren te selecteren.
+In azure vertegenwoordigt een Tenant de client of organisatie die aan een service is gekoppeld. Zoek uw Tenant-id in de Azure Portal in het vak **Directory-id** door **Azure Active Directory**  >  **Manage**  >  **Eigenschappen**beheren te selecteren.
 
 ![Tenant-ID in de Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -226,7 +226,7 @@ Bewerkings sleutels zijn beschikbaar in de LUIS-Portal na [de migratie naar de e
 Uw LUIS-app registreert standaard uitingen van gebruikers. Als u een logboek van uitingen wilt downloaden dat gebruikers naar uw LUIS-app verzenden, gaat u naar **mijn apps**en selecteert u de app. Selecteer op de contextuele werk balk de optie **eindpunt logboeken exporteren**. Het logboek wordt opgemaakt als een bestand met door komma's gescheiden waarden (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hoe kan ik de logboek registratie van uitingen uitschakelen?
-U kunt de logboek registratie van de gebruikers uitingen uitschakelen door `log=false` in te stellen in de eind punt-URL die door uw client toepassing wordt gebruikt voor het OPVRAGEN van Luis. Door logboek registratie uit te scha kelen, wordt de mogelijkheid van uw LUIS-app echter uitgeschakeld om uitingen te suggereren of de prestaties te verbeteren op basis van [actief leren](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Als u vanwege `log=false` problemen met de privacy hebt ingesteld, kunt u geen record van die gebruiker uitingen downloaden van Luis of deze uitingen gebruiken om uw app te verbeteren.
+U kunt de logboek registratie van de gebruikers uitingen uitschakelen door `log=false` in te stellen in de eind punt-URL die door uw client toepassing wordt gebruikt voor het opvragen van Luis. Door logboek registratie uit te scha kelen, wordt de mogelijkheid van uw LUIS-app echter uitgeschakeld om uitingen te suggereren of de prestaties te verbeteren op basis van [actief leren](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Als u `log=false` vanwege problemen met de privacy hebt ingesteld, kunt u geen record van die gebruiker uitingen downloaden van Luis of deze uitingen gebruiken om uw app te verbeteren.
 
 Logboek registratie is de enige opslag van uitingen.
 
@@ -271,7 +271,7 @@ Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem in Azure Bot Service oplossen
 
-Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat** als resultaat `Sorry, my bot code is having an issue`wordt gegeven, controleert u de logboeken:
+Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat** als resultaat wordt gegeven `Sorry, my bot code is having an issue` , controleert u de logboeken:
 
 1. In de Azure Portal, voor uw bot, in de sectie **bot Management** , selecteert u **Build**.
 1. Open de online code-editor.

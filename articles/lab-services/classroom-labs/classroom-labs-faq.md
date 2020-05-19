@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115146"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592607"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -28,8 +28,8 @@ Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Is het quotum per gebruiker of per week of per volledige duur van het lab? 
 Het quotum dat u voor een Lab hebt ingesteld, is voor elke student voor een volledige duur van het lab. En de [geplande uitvoerings tijd van vm's](how-to-create-schedules.md) telt niet op het quotum dat aan een gebruiker is toegewezen. Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt.  Zie [quota's voor gebruikers instellen](how-to-configure-student-usage.md#set-quotas-for-users)voor meer informatie over quota's.
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Als docent een student-VM inschakelt, heeft dit invloed op het student quotum? 
-Nee. Dit is niet het geval. Als professor de student-VM inschakelt, heeft dit geen invloed op het quotum dat aan de student is toegewezen. 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Als docenten een student-VM inschakelt, heeft dit invloed op het student quotum? 
+Nee. Dit is niet het geval. Wanneer docenten de student-VM inschakelt, heeft dit geen invloed op het quotum dat aan de student is toegewezen. 
 
 ## <a name="schedules"></a>Planningen
 

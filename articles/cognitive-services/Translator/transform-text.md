@@ -1,7 +1,7 @@
 ---
-title: Tekst Translator Text-API transformeren
+title: Tekst transformeren-Translator
 titleSuffix: Azure Cognitive Services
-description: Tekst transformeren met behulp van de Translator Text-API.
+description: Tekst transformeren met behulp van het conversie programma.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68594910"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592199"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>De methode TransformText gebruiken
 
 > [!NOTE]
-> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van de Translator Text-API.
+> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van het conversie programma.
 
 De methode TransformText is een tekstnormalisatie functie voor sociale media, waarmee een genormaliseerde vorm van de invoer wordt geretourneerd. De methode kan worden gebruikt als een voor bereiding voor het uitvoeren van een voor verwerking in machine vertalingen of andere toepassingen die een schone invoer tekst verwachten die niet normaal gesp roken wordt gevonden in sociale media of door gebruikers gegenereerde inhoud. De functie werkt momenteel alleen met Engelse invoer.
 

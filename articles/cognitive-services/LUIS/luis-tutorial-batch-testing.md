@@ -2,13 +2,13 @@
 title: 'Zelf studie: batch testen om problemen op te sporen-LUIS'
 description: In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250471"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592590"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Zelf studie: gegevens sets batch testen
 
@@ -37,11 +37,13 @@ Wanneer u een andere app dan deze zelf *studie gebruikt, mag u* de voor beeld-ui
 
 ## <a name="import-example-app"></a>Voorbeeld-app importeren
 
-Importeer een app die een pizza-volg orde gebruikt `1 pepperoni pizza on thin crust`, zoals.
+Importeer een app die een pizza-volg orde gebruikt, zoals `1 pepperoni pizza on thin crust` .
 
 1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) en sla het op.
 
-1. Gebruik de [Preview-Luis Portal](https://preview.luis.ai/), IMPORTEER de json in een nieuwe app, noem de `Pizza app`app.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Importeer de JSON in een nieuwe app en noem de app `Pizza app` .
+
 
 1. Selecteer **trainen** in de rechter bovenhoek van de navigatie om de app te trainen.
 
@@ -74,7 +76,7 @@ De JSON van het voor beeld bevat een utterance met een gelabelde entiteit die il
 
 4. De bestands locatie van het `pizza-with-machine-learned-entity-test.json` bestand kiezen.
 
-5. Geef de gegevensset `pizza test` een naam en selecteer **gereed**.
+5. Geef de gegevensset een naam `pizza test` en selecteer **gereed**.
 
     > [!div class="mx-imgBorder"]
     > ![Bestand selecteren](./media/luis-tutorial-batch-testing/import-dataset-modal.png)

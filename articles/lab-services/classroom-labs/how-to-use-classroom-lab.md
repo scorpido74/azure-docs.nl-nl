@@ -1,6 +1,6 @@
 ---
 title: Toegang tot een leslokaallab in Azure Lab Services | Microsoft Docs
-description: In deze zelfstudie hebt u toegang tot virtuele machines in een leslokaallab dat is ingesteld door een docent.
+description: In deze zelf studie hebt u toegang tot virtuele machines in een leslokaal Lab dat is ingesteld door een docent.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: ebda7ecec363abc1b58cdc3fc6c0799ca879adcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2430348a8bfbecda3f172361a40a96ef801f5bc4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118393"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592437"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
 
 ## <a name="register-to-the-lab"></a>Registreren bij het lab
 
-1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. Gebruik in plaats daarvan de URL: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 wordt nog niet ondersteund. 
+1. Ga naar de **registratie-URL** die u hebt ontvangen van de docenten. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. Gebruik in plaats daarvan de URL: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 wordt nog niet ondersteund. 
 
     ![Registreren bij het lab](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Meld u aan bij de service met uw schoolaccount om de registratie te voltooien. 
@@ -60,7 +60,7 @@ In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, al
 
     ![Verbinding maken met de virtuele machine](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Voer een van de volgende stappen uit: 
-    1. Sla het **RDP** -bestand op de harde schijf op voor virtuele **Windows** -machines. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikers naam** en het **wacht woord** die u van uw docent/docent krijgt om u aan te melden bij de computer. 
+    1. Sla het **RDP** -bestand op de harde schijf op voor virtuele **Windows** -machines. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikers naam** en het **wacht woord** die u van uw docent krijgt om u aan te melden bij de computer. 
     3. Voor virtuele **Linux** -machines kunt u **SSH** of **RDP** gebruiken (als deze is ingeschakeld) om er verbinding mee te maken. Zie [verbinding met extern bureau blad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md)voor meer informatie. 
     1. Als u een **Mac** gebruikt om verbinding te maken met de VM van het lab, volgt u de instructies in de volgende sectie. 
 

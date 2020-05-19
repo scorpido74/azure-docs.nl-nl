@@ -3,23 +3,23 @@ title: 'Azure Lab Services: ondersteunings informatie instellen (eigenaar van he
 description: Hierin wordt beschreven hoe de eigenaar van een Lab-account ondersteuning kan instellen voor contact gegevens. Lab-makers en Lab-gebruikers kunnen deze weer geven en gebruiken om hulp te krijgen.
 author: spelluru
 ms.author: spelluru
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: f387e6b8832d8e7144b8338a3fc887b6b27db789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a37a4b87b7efe1fc3f3c08824da01e83cbb660
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592403"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Ondersteunings informatie instellen (eigenaar van het lab-account in Azure Lab Services)
-In dit artikel wordt uitgelegd hoe u (als eigenaar van een Lab-account) ondersteunings informatie kunt opgeven die Lab-makers (docenten) en Lab-gebruikers (studenten) kunnen gebruiken om hulp te krijgen bij technische problemen met het gebruik van het lab-account of Lab. 
+In dit artikel wordt uitgelegd hoe u (als eigenaar van een Lab-account) ondersteunings gegevens kunt opgeven die Lab-makers (docenten) en Lab-gebruikers (studenten) kunnen gebruiken om hulp te krijgen bij technische problemen met het gebruik van het lab-account of Lab. 
 
 De ondersteunings informatie omvat:
 
 - URL
-- E-mail
+- Email
 - Telefoon
 - Aanvullende instructies 
 

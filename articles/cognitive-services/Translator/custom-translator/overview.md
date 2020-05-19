@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982692"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592760"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
@@ -34,7 +34,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 |[Bouw systemen met uw eigen vaktermen](what-are-parallel-documents.md)     |  Bouw vertaalsystemen en pas vertaalsystemen aan met behulp van parallelle documenten in de terminologie van uw eigen bedrijf en bedrijfstak.       |
 |[Een woordenlijst gebruiken om uw modellen te bouwen](what-is-dictionary.md)     |   Als u geen set met trainingsgegevens hebt, kunt u een model trainen met alleen de gegevens van een woordenlijst.       |
 |[Werk samen met anderen](how-to-manage-settings.md#share-your-workspace)     |   Werk samen met uw team door uw werk te delen met andere personen.     |
-|[Toegang tot uw aangepaste vertaalmodel](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Uw aangepaste vertaalmodel kan op elk gewenst moment worden geopend door uw bestaande toepassingen/programma's via Microsoft Translator Text-API V3.       |
+|[Toegang tot uw aangepaste vertaalmodel](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Uw aangepaste Vertaal model kan op elk gewenst moment worden geopend door uw bestaande toepassingen/Program ma's via Translator v3.       |
 
 ## <a name="get-better-translations"></a>Betere vertalingen verkrijgen
 
@@ -54,11 +54,11 @@ Met behulp van de beveiligde [Custom Translator](https://portal.customtranslator
 
 [Custom Translator](https://portal.customtranslator.azure.ai) is ook programmatisch toegankelijk via een [toewezen API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (momenteel als Preview-versie). Met de API kunnen gebruikers regelmatig trainingsgegevens maken, bijwerken en beheren via hun eigen app of webservice.
 
-De kosten voor het gebruik van een aangepast model voor het vertalen van inhoud zijn afhankelijk van de prijscategorie voor de Translator Text-API van de gebruiker. Zie de [webpagina met prijzen voor Translator Text-API](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) voor Cognitive Services voor meer informatie over de prijscategorieën.
+De kosten van het gebruik van een aangepast model voor het vertalen van inhoud is gebaseerd op de prijs categorie van de vertaling van de gebruiker. Zie de [pagina prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) van Cognitive Services Translator voor details van de prijs categorie.
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>Altijd en overal veilig vertalen in al uw apps en services
 
-Aangepaste systemen kunnen naadloos worden geopend en geïntegreerd in een product- of bedrijfswerkstroom, en op elk gewenst apparaat, via de Microsoft Translator Text-API met behulp van standaard REST-technologie.
+Aangepaste systemen kunnen naadloos worden geopend en geïntegreerd in alle product-of bedrijfs werk stromen, en op elk apparaat via de vertaler via standaard REST technologie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

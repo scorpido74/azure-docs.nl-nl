@@ -1,7 +1,7 @@
 ---
-title: Detectie methode Translator Text-API
+title: Translator-detectie methode
 titleSuffix: Azure Cognitive Services
-description: Identificeer de taal van een stuk tekst met de Cognitive Services Translator Text-API detectie methode van Azure.
+description: Identificeer de taal van een stuk tekst met de Azure Cognitive Services Translator-detectie methode.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837299"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592284"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text-API 3,0: detecteren
+# <a name="translator-30-detect"></a>Translator 3,0: detecteren
 
 Hiermee wordt de taal van een stuk tekst bepaald.
 
@@ -38,14 +38,14 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   <th>Beschrijving</th>
   <tr>
     <td>api-versie</td>
-    <td>*Vereiste para meter*.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0`.</td>
+    <td>*Vereiste para meter*.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0` .</td>
   </tr>
 </table> 
 
 Aanvraag headers zijn onder andere:
 
 <table width="100%">
-  <th width="20%">Headers</th>
+  <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
     <td>Verificatie header (s)</td>
@@ -53,7 +53,7 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`.</td>
+    <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` .</td>
   </tr>
   <tr>
     <td>Content-length</td>
@@ -61,13 +61,13 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId`.</td>
+    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks `Text`eigenschap met de naam. Taal detectie wordt toegepast op de waarde van de `Text` eigenschap. Een voor beeld van een aanvraag tekst ziet er als volgt uit:
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text` . Taal detectie wordt toegepast op de waarde van de `Text` eigenschap. Een voor beeld van een aanvraag tekst ziet er als volgt uit:
 
 ```json
 [
@@ -93,7 +93,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
   * `isTransliterationSupported`: Een Booleaanse waarde die waar is als de gedetecteerde taal een van de talen die worden ondersteund voor vele.
   
-  * `alternatives`: Een matrix met andere mogelijke talen. Elk element van de matrix is een ander object met dezelfde eigenschappen die hierboven worden `language`vermeld `score`: `isTranslationSupported` , `isTransliterationSupported`en.
+  * `alternatives`: Een matrix met andere mogelijke talen. Elk element van de matrix is een ander object met dezelfde eigenschappen die hierboven worden vermeld: `language` , `score` `isTranslationSupported` en `isTransliterationSupported` .
 
 Een voor beeld van een JSON-antwoord is:
 
@@ -125,7 +125,7 @@ Een voor beeld van een JSON-antwoord is:
 ## <a name="response-headers"></a>Antwoordheaders
 
 <table width="100%">
-  <th width="20%">Headers</th>
+  <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
     <td>X-aanvraag-}</td>
@@ -142,7 +142,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   <th>Beschrijving</th>
   <tr>
     <td>200</td>
-    <td>Geslaagd.</td>
+    <td>Voltooid.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -162,15 +162,15 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>500</td>
-    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
+    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header `X-RequestId` en client-id uit aanvraag header `X-ClientTraceId` .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
+    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van antwoord header `X-RequestId` en client-id uit aanvraag header `X-ClientTraceId` .</td>
   </tr>
 </table> 
 
-Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [pagina v3-Translator text-API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [referentie pagina van v3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Voorbeelden
 

@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30429653c024c669d273c45d12236afa8cdbb83
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742973"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591502"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Isolatie van de werkbelasting groep voor Azure Synapse (preview)
+# <a name="azure-synapse-analytics-workload-group-isolation"></a>Isolatie van de werkbelasting groep voor Azure Synapse Analytics
 
 In dit artikel wordt uitgelegd hoe werkbelasting groepen kunnen worden gebruikt voor het configureren van de isolatie van werk belastingen, het bevatten van resources en het Toep assen van runtime regels voor het uitvoeren van query's.
 
 ## <a name="workload-groups"></a>Werkbelasting groepen
 
-Werkbelasting groepen zijn containers voor een set aanvragen en vormen de basis voor de manier waarop werkbelasting beheer, waaronder isolatie van werk belasting, is geconfigureerd op een systeem.  Werkbelasting groepen worden gemaakt met de syntaxis [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Een eenvoudige configuratie van werkbelasting beheer kan het laden van gegevens en gebruikers query's beheren.  Zo definieert een werkbelasting groep met `wgDataLoads` de naam werkbelasting onderdelen voor gegevens die in het systeem worden geladen. Daarnaast definieert een werkbelasting groep `wgUserQueries` met de naam workload-aspecten voor gebruikers die query's uitvoeren om gegevens van het systeem te lezen.
+Werkbelasting groepen zijn containers voor een set aanvragen en vormen de basis voor de manier waarop werkbelasting beheer, waaronder isolatie van werk belasting, is geconfigureerd op een systeem.  Werkbelasting groepen worden gemaakt met de syntaxis [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Een eenvoudige configuratie van werkbelasting beheer kan het laden van gegevens en gebruikers query's beheren.  Zo definieert een werkbelasting groep met de naam `wgDataLoads` werkbelasting onderdelen voor gegevens die in het systeem worden geladen. Daarnaast definieert een werkbelasting groep `wgUserQueries` met de naam workload-aspecten voor gebruikers die query's uitvoeren om gegevens van het systeem te lezen.
 
 In de volgende secties wordt uitgelegd hoe werkbelasting groepen de mogelijkheid bieden om isolatie, containment en de resource definitie van de aanvraag te definiëren en om uitvoerings regels aan te houden.
 
@@ -32,9 +32,9 @@ In de volgende secties wordt uitgelegd hoe werkbelasting groepen de mogelijkheid
 
 Isolatie van werk belasting betekent dat resources gereserveerd zijn, uitsluitend voor een werkbelasting groep.  De isolatie van de werk belasting wordt bereikt door de para meter MIN_PERCENTAGE_RESOURCE in te stellen op een waarde groter dan nul in de syntaxis van de [groep werk belasting maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Voor doorlopende uitvoerings werkbelastingen die moeten voldoen aan de strakke Sla's, wordt door isolatie gegarandeerd dat resources altijd beschikbaar zijn voor de werkbelasting groep.
 
-Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd. Een werkbelasting groep met een `MIN_PERCENTAGE_RESOURCE` ingesteld op 30% en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid wordt gegarandeerd omdat 15-2%-sleuven van resources op elk moment worden gereserveerd in de werkbelasting groep (ongeacht hoe `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` dit is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` is groter dan `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE` aanvullende resources, worden per aanvraag toegevoegd.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gelijk is aan `CAP_PERCENTAGE_RESOURCE` en groter is `MIN_PERCENTAGE_RESOURCE`dan, is aanvullende gelijktijdigheid mogelijk.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
+Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd. Een werkbelasting groep met een `MIN_PERCENTAGE_RESOURCE` ingesteld op 30% en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid wordt gegarandeerd omdat 15-2%-sleuven van resources op elk moment worden gereserveerd in de werkbelasting groep (ongeacht hoe dit `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` is groter dan `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE` aanvullende resources, worden per aanvraag toegevoegd.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gelijk is aan en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE` , is aanvullende gelijktijdigheid mogelijk.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
 
-[Gegarandeerde gelijktijdigheid] =`MIN_PERCENTAGE_RESOURCE`[]/`REQUEST_MIN_RESOURCE_GRANT_PERCENT`[]
+[Gegarandeerde gelijktijdigheid] = [ `MIN_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > Er zijn specifieke minimale levensvat bare waarden voor het service niveau voor min_percentage_resource.  Zie voor meer informatie [doel treffende waarden](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) voor meer informatie.
@@ -54,7 +54,7 @@ Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid r
 
 Het configureren van een workload-containment definieert impliciet een maximum niveau van gelijktijdigheid.  Als een CAP_PERCENTAGE_RESOURCE is ingesteld op 60% en een REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 1%, is er Maxi maal 60-gelijktijdigheids niveau toegestaan voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van de maximale gelijktijdigheid:
 
-[Max. gelijktijdigheids] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
+[Max. gelijktijdigheids] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > De effectief CAP_PERCENTAGE_RESOURCE van een werkbelasting groep is 100% niet bereikt wanneer werkbelasting groepen met MIN_PERCENTAGE_RESOURCE op een hoger niveau dan nul worden gemaakt.  Zie [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.

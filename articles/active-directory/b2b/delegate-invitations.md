@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199437"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591281"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen
 
@@ -37,7 +37,7 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Tenant beheerder.
 2. Selecteer **Azure Active Directory**.
-3. Instellingen voor **organisatie relaties**selecteren  >  **Settings** (of **externe identiteiten**  >  **externe instellingen voor samen werking**selecteren).
+3. Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
 6. Kies op de pagina **instellingen voor externe samen werking** de beleids regels die u wilt inschakelen.
 
    ![Instellingen voor externe samenwerking](./media/delegate-invitations/control-who-to-invite.png)

@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561978"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592556"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Quick Start: asynchrone synthese voor lange-vorm audio in python (preview-versie)
 
 In deze Quick Start gebruikt u de lange audio-API om tekst asynchroon te converteren naar spraak en de audio-uitvoer op te halen uit een URI die door de service wordt verschaft. Deze REST API is ideaal voor inhouds providers waarvoor audio moet worden gesynthesizerd van tekst die groter is dan 5.000 tekens (of meer dan 10 minuten lang). Zie voor meer informatie [Long audio API](../../long-audio-api.md)(Engelstalig).
 
-> [!NOTE]
-> Asynchrone synthese voor lange-vorm audio kan alleen worden gebruikt met [aangepaste Neural stemmen](../../how-to-custom-voice.md#custom-neural-voices).
+Asynchrone synthese voor lange-vorm audio kan worden gebruikt met [open bare Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) en [aangepaste Neural stemmen](../../how-to-custom-voice.md#custom-neural-voices), die elk een specifieke taal en dialect ondersteunen. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +33,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer vervolgens dit code fragment naar een bestand met `voice_synthesis_client.py`de naam.
+Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer vervolgens dit code fragment naar een bestand met de naam `voice_synthesis_client.py` .
 
 ```python
 import argparse
@@ -56,7 +55,7 @@ Deze modules worden gebruikt voor het parseren van argumenten, het samen stellen
 
 ## <a name="get-a-list-of-supported-voices"></a>Een lijst met ondersteunde stemmen ophalen
 
-Met deze code wordt een lijst met beschik bare stemmen opgehaald die u kunt gebruiken om tekst naar spraak te converteren. Voeg de code toe `voice_synthesis_client.py`aan:
+Met deze code kunt u een volledige lijst met stemmen voor een specifieke regio/eind punt die u kunt gebruiken ophalen. Controleer het [ondersteunde gebied/eind punt](../../long-audio-api.md). Voeg de code toe aan `voice_synthesis_client.py` :
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -82,8 +81,8 @@ if args.voices:
 
 Laten we eens testen wat u tot nu toe hebt gedaan. U moet een paar dingen bijwerken in de onderstaande aanvraag:
 
-* Vervang `<your_key>` door uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<your_key>` uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<region>` de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus` ). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
 
 Voer deze opdracht uit:
 
@@ -100,13 +99,15 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+Als de para meter **PublicVoice** is ingesteld op **True**, is de stem open bare Neural-stem. Als dat niet het geval is, is de aangepaste Neural-stem. 
+
 ## <a name="prepare-input-files"></a>Invoer bestanden voorbereiden
 
 Een invoer tekst bestand voorbereiden. Dit kan onbewerkte tekst of SSML tekst zijn. Zie [inhoud voorbereiden voor synthese](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)voor de vereisten voor het invoer bestand.
 
 ## <a name="convert-text-to-speech"></a>Tekst naar spraak converteren
 
-Nadat u het invoer tekst bestand hebt voor bereid, voegt u deze code `voice_synthesis_client.py`voor spraak synthese toe aan:
+Nadat u het invoer tekst bestand hebt voor bereid, voegt u deze code voor spraak synthese toe aan `voice_synthesis_client.py` :
 
 > [!NOTE]
 > ' concatenateResult ' is een optionele para meter. Als deze para meter niet is ingesteld, worden de audio-uitvoer per alinea gegenereerd. U kunt de audio waarden ook samen voegen in 1 uitvoer door de para meter in te stellen. De audio-uitvoer wordt standaard ingesteld op RIFF-16khz-16-mono-PCM. Zie [audio-uitvoer indelingen](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)voor meer informatie over ondersteunde audio-uitvoer.
@@ -174,11 +175,11 @@ if args.submit:
 
 Laten we een aanvraag indienen voor het samen stellen van tekst met behulp van uw invoer bestand als bron. U moet een paar dingen bijwerken in de onderstaande aanvraag:
 
-* Vervang `<your_key>` door uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<input>` door het pad naar het tekst bestand dat u voor tekst naar spraak hebt voor bereid.
-* Vervang `<locale>` door de gewenste land instelling voor uitvoer. Zie [taal ondersteuning](../../language-support.md#neural-voices)voor meer informatie.
-* Vervang `<voice_guid>` door de gewenste uitvoer Voice. Gebruik een van de stemmen die worden geretourneerd door [een lijst met ondersteunde stemmen](#get-a-list-of-supported-voices)op te halen.
+* Vervang door `<your_key>` uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<region>` de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus` ). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<input>` het pad naar het tekst bestand dat u voor tekst naar spraak hebt voor bereid.
+* Vervang door `<locale>` de gewenste land instelling voor uitvoer. Zie [taal ondersteuning](../../language-support.md#neural-voices)voor meer informatie.
+* Vervang door `<voice_guid>` de gewenste uitvoer Voice. Gebruik een van de stemmen die worden geretourneerd door [een lijst met ondersteunde stemmen](#get-a-list-of-supported-voices)op te halen.
 
 Converteer tekst naar spraak met deze opdracht:
 
@@ -215,7 +216,7 @@ Het resultaat bevat de invoer tekst en de audio-uitvoer bestanden die door de se
 
 De server bewaart Maxi maal **20.000** aanvragen voor elk account van een Azure-abonnement. Als uw aanvraag bedrag deze beperking overschrijdt, moet u de vorige aanvragen verwijderen voordat u er nieuwe maakt. Als u geen bestaande aanvragen verwijdert, ontvangt u een fout melding.
 
-Voeg de code toe `voice_synthesis_client.py`aan:
+Voeg de code toe aan `voice_synthesis_client.py` :
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -250,8 +251,8 @@ if args.delete:
 
 We gaan nu kijken welke aanvragen u eerder hebt verzonden. Voordat u doorgaat, moet u enkele dingen in deze aanvraag bijwerken:
 
-* Vervang `<your_key>` door uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<your_key>` uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<region>` de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus` ). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
 
 Voer deze opdracht uit:
 
@@ -270,9 +271,9 @@ ID : xxx , Name : xxx : Succeeded
 
 Nu gaan we een eerder ingediende aanvraag verwijderen. U moet een paar dingen bijwerken in de onderstaande code:
 
-* Vervang `<your_key>` door uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<synthesis_id>` door de waarde die in de vorige aanvraag is geretourneerd.
+* Vervang door `<your_key>` uw abonnements sleutel voor uw spraak service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<region>` de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus` ). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang door `<synthesis_id>` de waarde die in de vorige aanvraag is geretourneerd.
 
 > [!NOTE]
 > Aanvragen met de status Running/Waiting kunnen niet worden verwijderd of verwijderd.

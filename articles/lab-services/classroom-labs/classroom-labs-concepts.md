@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115044"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592624"
 ---
 # <a name="classroom-labs-concepts"></a>Concepten van leslokaallabs
 
@@ -56,7 +56,7 @@ Een IT-beheerder van de cloud resources van de organisatie, die eigenaar is van 
 - Beleidsregels beheren en configureren voor alle labs.
 - Machtigingen verlenen aan personen binnen de organisatie voor het maken van een lab onder het lab-account.
 
-### <a name="professor"></a>Wetenschappers
+### <a name="educator"></a>Docent
 
 Normaal gesproken maken gebruikers, bijvoorbeeld een leraar of onlinedocent leslokaallabs in een labaccount. Een docent voert de volgende taken uit:
 

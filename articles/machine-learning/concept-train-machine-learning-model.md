@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592386"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -25,8 +25,8 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
     | Trainings methode | Beschrijving |
     | ----- | ----- |
     | [Configuratie uitvoeren](#run-configuration) | Een **algemene manier om modellen te trainen** is door een trainings script te gebruiken en de configuratie uit te voeren. De uitvoerings configuratie bevat de informatie die nodig is voor het configureren van de trainings omgeving die wordt gebruikt voor het trainen van uw model. U kunt een uitvoerings configuratie, uw trainings script en een berekenings doel (de trainings omgeving) maken en een trainings taak uitvoeren. |
-    | [Geautomatiseerde Machine Learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis**. Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
-    | [Schattingen](#estimators) | Met Estimator-klassen kunt u **eenvoudig modellen trainen op basis van populaire machine learning Frameworks**. Er zijn Estimator-klassen voor **Scikit-Learn**, **PyTorch**, **tensor flow**en **Chainer**. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen. |
+    | [Automatische machine learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis**. Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
+    | [Schattingen](#estimators) | Met Estimator-klassen kunt u **eenvoudig modellen trainen op basis van populaire machine learning Frameworks**. Er zijn Estimator-klassen voor **Scikit-leer-**, **PyTorch**-, **tensor flow**-, **Chainer**-en **Ray-RLlib**. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen. |
     | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen**die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning, schattingen en het uitvoeren van een configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>* **Gegevens bronnen, invoer en uitvoer** voor uw werk stroom bijhouden en controleren.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen**. Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
 
 + [Azure machine learning SDK voor python](#r-sdk): de SDK maakt gebruik van het Reticulate-pakket om een binding te maken met de PYTHON-sdk van Azure machine learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
@@ -73,7 +73,7 @@ Definieer de herhalingen, afstemming-instellingen, parametrisatie en andere inst
 
 ### <a name="estimators"></a>Schattingen
 
-Schattingen maken het eenvoudig om modellen te trainen met behulp van populaire ML-frameworks. Als u **Scikit-Learn**, **PyTorch**, **tensor flow**of **Chainer**gebruikt, kunt u overwegen een Estimator te gebruiken voor de training. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen.
+Schattingen maken het eenvoudig om modellen te trainen met behulp van populaire ML-frameworks. Als u **Scikit-leren**, **PyTorch**, **tensor flow**, **Chainer**of **Ray RLlib** gebruikt, kunt u overwegen een Estimator for training te gebruiken. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen.
 
 * [Wat zijn schattingen?](concept-azure-machine-learning-architecture.md#estimators)
 * [Zelf studie: classificatie modellen van een installatie kopie trainen met MNIST-gegevens en scikit-informatie met behulp van Azure Machine Learning](tutorial-train-models-with-aml.md)

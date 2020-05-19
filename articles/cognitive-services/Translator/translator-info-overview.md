@@ -1,7 +1,7 @@
 ---
-title: Wat is de Translator Text-API? - Tekst-API van Translator
+title: Wat is het conversie programma? -Translator
 titlesuffix: Azure Cognitive Services
-description: Integreer de Translator Text-API in uw toepassingen, websites, hulpprogramma's en andere oplossingen om gebruikerservaringen in meerdere talen te bieden.
+description: Integreer de vertaler in uw toepassingen, websites, hulpprogram ma's en andere oplossingen om gebruikers ervaring voor meerdere talen te bieden.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e4a1f2d778fb2b811d4c38dd26956e2eab51258a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331039"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592658"
 ---
-# <a name="what-is-the-translator-text-api"></a>Wat is de Translator Text-API?
+# <a name="what-is-the-translator"></a>Wat is het conversie programma?
 
-De Translator Text-API is makkelijk in uw toepassingen, websites, hulpprogramma's en oplossingen te integreren. U kunt er meertalige gebruikerservaringen in [meer dan zestig talen](languages.md) aan toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst naar tekst.
+Het conversie programma is eenvoudig te integreren in uw toepassingen, websites, hulpprogram ma's en oplossingen. U kunt er meertalige gebruikerservaringen in [meer dan zestig talen](languages.md) aan toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst naar tekst.
 
-De Translator Text-API is onderdeel van de Azure [Cognitive Services API](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-verzameling voor Machine Learning en AI-algoritmen in de cloud en is direct te gebruiken in uw ontwikkelprojecten.
+Het conversie programma maakt deel uit van de [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) verzameling van machine learning-en AI-algoritmen in de Cloud en is gemakkelijk te gebruiken in uw ontwikkelings projecten.
 
 ## <a name="about-microsoft-translator"></a>Over Microsoft Translator
 
-Microsoft Translator is een cloudservice voor machinevertaling. De basis van deze service is de Translator Text-API, die een aantal Microsoft-producten en -services aanstuurt en die door duizenden bedrijven over de hele wereld wordt gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
+Het conversie programma is een Cloud service voor automatische vertaling van services. De kern service is de vertaler, die een aantal micro soft-producten en-services aanstuurt, en wordt gebruikt door duizenden bedrijven wereld wijd in hun toepassingen en werk stromen, waardoor hun inhoud een wereld wijd publiek kan bereiken.
 
-Spraakomzetting, mogelijk gemaakt door de Translator Text-API, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert de functionaliteit van de Translator Speech-API en de Custom Speech Service in een geïntegreerde en volledig aanpas bare service.Speech Service vervangt de Translator Speech-API, die buiten bedrijf wordt genomen op 15 oktober 2019.
+Spraak omzetting, aangedreven door de vertaler, is ook beschikbaar via de [micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert de functionaliteit van de Translator Speech-API en de Custom Speech Service in een geïntegreerde en volledig aanpas bare service.Speech Service vervangt de Translator Speech-API, die buiten bedrijf wordt genomen op 15 oktober 2019.
 
 ## <a name="language-support"></a>Taalondersteuning
 
@@ -46,9 +46,9 @@ Meer informatie over [de werking van NMT](https://www.microsoft.com/en-us/transl
 
 ## <a name="language-customization"></a>Taal aanpassen
 
-Custom Translator is een uitbreiding op de Microsoft Translator-kernservice en kan samen met de Translator Text-API worden gebruikt om het neurale vertaalsysteem aan te passen en de vertalingen te verbeteren voor uw specifieke terminologie en stijl.
+Een uitbrei ding van de kern service van micro soft Translator kan aangepaste vertaler worden gebruikt in combi natie met de vertaler om u te helpen bij het aanpassen van het Neural-Vertaal systeem en de vertaling te verbeteren voor uw specifieke terminologie en stijl.
 
-Met Custom Translator kunt u vertaalsystemen maken waarin de terminologie wordt verwerkt die wordt gebruikt in uw bedrijf of sector. U kunt uw aangepaste vertaalsysteem vervolgens eenvoudig integreren in uw bestaande toepassingen, werkstromen en websites voor meerdere typen apparaten via de gewone Microsoft Translator Text-API, met behulp van de categorieparameter.
+Met Custom Translator kunt u vertaalsystemen maken waarin de terminologie wordt verwerkt die wordt gebruikt in uw bedrijf of sector. Uw aangepaste Vertaal systeem kan vervolgens met behulp van de categorie parameter eenvoudig worden geïntegreerd in uw bestaande toepassingen, werk stromen en websites, via de reguliere vertaler.
 
 Meer informatie over [taalaanpassing](customization.md)
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199538"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591230"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
@@ -90,7 +90,7 @@ Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federation configureren in de Azure AD-Portal 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**en klik vervolgens op de knop **Google** .
 4. Voer een naam in. Voer vervolgens de client-ID en het client geheim in die u eerder hebt verkregen. Selecteer **Opslaan**. 
 
@@ -112,7 +112,7 @@ U kunt de installatie van Google Federation verwijderen. Als u dit doet, kunnen 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Google Federation verwijderen in de Azure AD-portal: 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
-2. Selecteer **organisatie relaties** (of **externe identiteiten**).
+2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer op de **Google** -regel het snelmenu (**...**) en selecteer vervolgens **verwijderen**. 
    

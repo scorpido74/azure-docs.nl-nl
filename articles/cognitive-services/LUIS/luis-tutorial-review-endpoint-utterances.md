@@ -4,12 +4,12 @@ description: In deze zelf studie kunt u app-voor spellingen verbeteren door uiti
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548728"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592573"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelf studie: herstel onzekere voor spellingen door eind punt uitingen te controleren
 In deze zelf studie kunt u app-voor spellingen verbeteren door uitingen te verifiëren of corrigeren, ontvangen via het HTTPS-eind punt van LUIS, dat LUIS niet zeker is van. U moet eind punt uitingen bekijken als een standaard onderdeel van uw geplande LUIS onderhoud.
@@ -33,11 +33,11 @@ Door de eindpuntuitingen te boordelen, kunt u de voorspelde intenties controlere
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Voorbeeld-app importeren
+## <a name="download-json-file-for-app"></a>JSON-bestand voor de app downloaden
 
-Gebruik de volgende stappen om een app te importeren.
+Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) en sla het op.
 
-1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) en sla het op.
+## <a name="import-json-file-for-app"></a>JSON-bestand voor app importeren
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -80,9 +80,9 @@ Controleer de uitingen van het eind punt voor een juiste, afgestemde intentie. H
     > [!div class="mx-imgBorder"]
     > ![Schermafbeelding van de knop Eindpuntuitingen beoordelen in de navigatiebalk aan de linkerkant](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Deze utterance, `I'm looking for a job with Natural Language Processing`, is niet in de juiste intentie.
+    Deze utterance, `I'm looking for a job with Natural Language Processing` , is niet in de juiste intentie.
 
-1.  Als u deze utterance wilt uitlijnen, selecteert u in de rij utterance de juiste **uitgelijnde intentie** van `GetJobInformation`. Voeg het gewijzigde utterance toe aan de app door het selectie vakje in te scha kelen.
+1.  Als u deze utterance wilt uitlijnen, selecteert u in de rij utterance de juiste **uitgelijnde intentie** van `GetJobInformation` . Voeg het gewijzigde utterance toe aan de app door het selectie vakje in te scha kelen.
 
     > [!div class="mx-imgBorder"]
     > ![Schermafbeelding van de knop Eindpuntuitingen beoordelen in de navigatiebalk aan de linkerkant](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
@@ -101,7 +101,7 @@ Als u wilt controleren of het correct uitgelijnde voor beeld uitingen de voor sp
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door `Are there any natural language processing jobs in my department right now?`.
+1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door `Are there any natural language processing jobs in my department right now?` .
 
    ```json
     {

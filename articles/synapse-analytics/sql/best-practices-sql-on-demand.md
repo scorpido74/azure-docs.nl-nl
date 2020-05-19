@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198887"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592930"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -119,7 +119,7 @@ Controleer voor meer informatie de functies [filename](develop-storage-files-ove
 > Converteer het resultaat van filepath-en file info-functies altijd naar de juiste gegevens typen. Als u teken gegevens typen gebruikt, moet u ervoor zorgen dat de juiste lengte wordt gebruikt.
 
 > [!NOTE]
-> Functies die worden gebruikt voor de partitie-eliminatie, filepath en file info, worden momenteel niet ondersteund voor externe tabellen die niet automatisch worden gemaakt voor elke tabel die is gemaakt in Synapse Spark.
+> Functies die worden gebruikt voor de partitie-eliminatie, filepath en file info, worden momenteel niet ondersteund voor externe tabellen die niet automatisch worden gemaakt voor elke tabel die is gemaakt in Apache Spark voor Azure Synapse Analytics.
 
 Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partitioneren zodat u de functies voor het optimaliseren van query's die zijn gericht op die bestanden. Bij het uitvoeren van een [query op gepartitioneerde Spark-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch door de query gericht.
 

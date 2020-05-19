@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78933805"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592471"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -30,7 +30,7 @@ In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 ## <a name="update-the-lab-capacity"></a>De lab-capaciteit bijwerken
 Voer de volgende stappen uit om de lab-capaciteit (het aantal virtuele machines in een Lab) te verhogen of te verlagen:
 
-1. Selecteer op de pagina **groep van virtuele machines** de optie **Lab &lt;-&gt; capaciteit: aantal machines**.
+1. Selecteer op de pagina **groep van virtuele machines** de optie **lab-capaciteit: &lt; aantal &gt; machines**.
 2. Voer het nieuwe **aantal vm's** in dat u wilt in het lab. Dit getal moet groter zijn dan of gelijk zijn aan het aantal gebruikers dat is geregistreerd in het lab. 
 3. Selecteer vervolgens **Opslaan**. 
 
@@ -74,10 +74,10 @@ Selecteer **opnieuw instellen**in het dialoog venster **virtuele machine (s) opn
 
 
 ## <a name="set-password-for-vms"></a>Wacht woord instellen voor Vm's
-Een Lab-eigenaar (docent) kan het wacht woord voor Vm's instellen of opnieuw instellen op het moment van het maken van de Lab (wizard Lab maken) of nadat u het Lab hebt gemaakt op de **sjabloon** pagina. 
+Een Lab-eigenaar (docenten) kan het wacht woord voor Vm's instellen of opnieuw instellen op het moment van het maken van de Lab (wizard Lab maken) of na het maken van het lab op de **sjabloon** pagina. 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Wacht woord instellen op het moment dat het lab wordt gemaakt
-Een Lab-eigenaar (docent) kan een wacht woord voor virtuele machines in het lab instellen op de pagina referenties van de **virtuele machine** van de wizard voor het maken van het lab.
+Een Lab-eigenaar (docenten) kan een wacht woord voor virtuele machines in het lab instellen op de pagina referenties van de **virtuele machine** van de wizard Lab maken.
 
 ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
@@ -91,7 +91,7 @@ Door het **gebruik van hetzelfde wacht woord voor alle virtuele machines** op de
     ![Het dialoog venster wacht woord instellen](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>Verbinding maken met Vm's van studenten
-De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan de volgende voor waarden wordt voldaan: 
+De Lab Creator (docenten) kan verbinding maken met een student-VM als aan de volgende voor waarden wordt voldaan: 
 
 - De optie **hetzelfde wacht woord voor alle virtuele machines gebruiken** is geselecteerd tijdens het maken van het lab
 - De virtuele machine wordt uitgevoerd 
@@ -101,7 +101,7 @@ De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan d
 ![Knop verbinding maken met de VM van student](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Wanneer de docent de virtuele machine start en er verbinding mee maakt, heeft dit geen invloed op het quotum van de student. 
+> Wanneer de docenten de virtuele machine start en er verbinding mee maakt, wordt het quotum van de student niet beïnvloed. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Lijst met virtuele machines exporteren naar een CSV-bestand
 

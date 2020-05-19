@@ -2,13 +2,13 @@
 title: Goed voor beeld van uitingen-LUIS
 description: Uitingen zijn invoer van de gebruiker die uw app nodig heeft voor de interpretatie. Verzamel zinsdelen die u denkt dat gebruikers worden ingevoerd. Uitingen bevatten die hetzelfde zijn, maar die anders zijn gemaakt in woord lengte en woord plaatsing.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382291"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592862"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Begrijpen wat goede uitingen zijn voor uw LUIS-app
 
@@ -68,11 +68,27 @@ Het is beter om met een paar uitingen te beginnen en vervolgens [eind punt uitin
 
 ## <a name="utterance-normalization"></a>Utterance normalisatie
 
-Utterance normalisatie is het proces van het negeren van de effecten van interpunctie en diakritische tekens tijdens training en voor spellingen. Gebruik [Toepassings instellingen](luis-reference-application-settings.md) om te bepalen hoe utterance normalisatie van invloed is op utterance voor spellingen.
+Utterance normalisatie is het proces van het negeren van de effecten van typen tekst, zoals interpunctie en diakritische tekens, tijdens de training en voor spelling.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Utterance-normalisatie voor diakritische tekens en interpunctie
+De utterance normalisatie-instellingen zijn standaard uitgeschakeld. Deze instellingen omvatten:
 
-Utterance normalisatie wordt gedefinieerd wanneer u de app maakt of importeert, omdat het een instelling in het JSON-bestand van de app is. De utterance normalisatie-instellingen zijn standaard uitgeschakeld.
+* Word-formulieren
+* Diakritische tekens mag
+* Interpunctie
+
+Als u een normalisatie-instelling inschakelt, worden de scores in het **test** deel venster, batch tests en eindpunt query's gewijzigd voor alle uitingen voor die normalisatie-instelling.
+
+Wanneer u een versie in de LUIS-Portal kloont, gaan de versie-instellingen door naar de nieuwe gekloonde versie.
+
+Stel de versie-instellingen in via de LUIS-Portal, in de sectie **beheren** , op de pagina **Toepassings instellingen** of de [API-versie-instellingen bijwerken](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings). Meer informatie over deze normalisatie wijzigingen in de [verwijzing](luis-reference-application-settings.md).
+
+### <a name="word-forms"></a>Word-formulieren
+
+Als **woord vormen** worden genormaliseerd, worden de verschillen in woorden die buiten het hoofd gebied uitvouwen, genegeerd. Bijvoorbeeld, de woorden `run` , `running` en `runs` wijzigen op basis van de werkwoordsvormen.
+
+<a name="utterance-normalization-for-diacritics-and-punctuation"></a>
+
+### <a name="diacritics"></a>Diakritische tekens mag
 
 Diakritische tekens zijn tekens of tekens in de tekst, bijvoorbeeld:
 
@@ -80,24 +96,8 @@ Diakritische tekens zijn tekens of tekens in de tekst, bijvoorbeeld:
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Als uw app normalisatie inschakelt, worden de scores in het **test** deel venster, batch tests en eindpunt query's gewijzigd voor alle uitingen met diakritische tekens of interpunctie.
-
-Schakel utterance normalisatie voor diakritische tekens of interpunctie in voor uw LUIS JSON-app-bestand `settings` in de para meter.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"},
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
-
-Het normaliseren van **interpunctie** betekent dat voordat uw modellen worden getraind en voordat uw eindpunt query's worden voor speld, wordt interpunctie verwijderd uit de uitingen.
-
-Als **diakritische** tekens worden genormaliseerd, worden de tekens vervangen door accenten in uitingen. Bijvoorbeeld: `Je parle français` wordt `Je parle francais`.
-
-Norma Lise ring betekent niet dat er geen lees-en diakritische tekens worden weer geven in uw voor beeld-uitingen of Voorspellings reacties, alleen dat ze worden genegeerd tijdens de training en voor spellingen.
-
 ### <a name="punctuation-marks"></a>Lees tekens
+Het normaliseren van **interpunctie** betekent dat voordat uw modellen worden getraind en voordat uw eindpunt query's worden voor speld, wordt interpunctie verwijderd uit de uitingen.
 
 Interpunctie is een afzonderlijk token in LUIS. Een utterance die een punt bevat aan het einde en een utterance die geen punt aan het einde bevatten, zijn twee afzonderlijke uitingen en kunnen twee verschillende voor spellingen ontvangen.
 
@@ -109,9 +109,11 @@ Als interpunctie geen specifieke betekenis heeft in uw client toepassing, kunt u
 
 ### <a name="ignoring-words-and-punctuation"></a>Woorden en interpunctie negeren
 
-Als u specifieke woorden of interpunctie in patronen wilt negeren, gebruikt u een [patroon](luis-concept-patterns.md#pattern-syntax) met de syntaxis _negeren_ van de vier Kante haken, `[]`.
+Als u specifieke woorden of interpunctie in patronen wilt negeren, gebruikt u een [patroon](luis-concept-patterns.md#pattern-syntax) met de syntaxis _negeren_ van de vier Kante haken, `[]` .
 
-## <a name="training-utterances"></a>Trainings uitingen
+<a name="training-utterances"></a>
+
+## <a name="training-with-all-utterances"></a>Training met alle uitingen
 
 Training is doorgaans niet-deterministisch: de utterance-voor spelling kan enigszins variëren in verschillende versies of apps.
 U kunt niet-deterministische trainingen verwijderen door de API voor [versie](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -instellingen `UseAllTrainingData` te wijzigen met de naam/waarde-paar om alle trainings gegevens te gebruiken.
@@ -139,7 +141,7 @@ De volgende uitingen, het woord `fair` is een homograph. De spelling is hetzelfd
 |Wat voor soort graafschap komt in het gebied Seattle van deze zomer?|
 |Is de huidige beoordeling voor de Seattle-beoordeling eerlijk?|
 
-Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u `fair` het woord in het eerste utterance, maar niet in de tweede.
+Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u het woord `fair` in het eerste utterance, maar niet in de tweede.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,20 +5,20 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062605"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592131"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Gegevensversleuteling in Azure Cosmos DB 
 
 Versleuteling op rest is een zin die doorgaans verwijst naar de versleuteling van gegevens op niet-vluchtige opslag apparaten, zoals Solid-state drives (Ssd's) en harde schijven (Hdd's). Cosmos DB zijn de primaire data bases opgeslagen op Ssd's. De media bijlagen en back-ups worden opgeslagen in Azure Blob-opslag, waarvan een back-up wordt gemaakt door Hdd's. Met de release van versleuteling in rust voor Cosmos DB, worden al uw data bases, media bijlagen en back-ups versleuteld. Uw gegevens zijn nu versleuteld in door Voer (via het netwerk) en op rest (niet-vluchtige opslag), waardoor u end-to-end-versleuteling krijgt.
 
-Als PaaS-service is Cosmos DB heel eenvoudig te gebruiken. Omdat alle gebruikers gegevens die zijn opgeslagen in Cosmos DB, zijn versleuteld op rest en in Trans Port, hoeft u geen actie te ondernemen. Een andere manier om dit te doen is dat versleuteling op rest standaard is. Er zijn geen besturings elementen om deze in of uit te scha kelen. Azure Cosmos DB maakt gebruik van AES-256-versleuteling voor alle regio's waar het account wordt uitgevoerd. We bieden deze functie terwijl we kunnen voldoen aan onze [Beschik baarheid en prestaties](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Als PaaS-service is Azure Cosmos DB heel eenvoudig te gebruiken. Omdat alle gebruikers gegevens die zijn opgeslagen in Azure Cosmos DB, zijn versleuteld op rest en in Trans Port, hoeft u geen actie te ondernemen. Een andere manier om dit te doen is dat versleuteling op rest standaard is. Er zijn geen besturings elementen om deze in of uit te scha kelen. Azure Cosmos DB maakt gebruik van AES-256-versleuteling voor alle regio's waar het account wordt uitgevoerd. We bieden deze functie terwijl we kunnen voldoen aan onze [Beschik baarheid en prestaties](https://azure.microsoft.com/support/legal/sla/cosmos-db). Gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden automatisch en naadloos versleuteld met sleutels die worden beheerd door micro soft (door service beheerde sleutels). U kunt desgewenst een tweede laag versleuteling toevoegen met uw eigen sleutels zoals beschreven in het artikel door de [klant beheerde sleutels](how-to-setup-cmk.md) .
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementatie van versleuteling in rust voor Azure Cosmos DB
 
@@ -59,5 +59,6 @@ A: de emulator is een zelfstandig hulp programma voor ontwikkelen en testen en m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Cosmos data base Security](database-security.md)(Engelstalig) voor een overzicht van Cosmos DB beveiliging en de nieuwste verbeteringen.
-Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.
+* U kunt ervoor kiezen om een tweede laag versleuteling toe te voegen met uw eigen sleutels voor meer informatie, raadpleegt u het artikel door de [klant beheerde sleutels](how-to-setup-cmk.md) .
+* Zie [Azure Cosmos data base Security](database-security.md)(Engelstalig) voor een overzicht van Cosmos DB beveiliging en de nieuwste verbeteringen.
+* Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.

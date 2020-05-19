@@ -2,13 +2,13 @@
 title: 'Zelf studie: patronen-LUIS'
 description: Gebruik patronen om de intentie en de voor spelling van de entiteit te verg Roten met minder voor beeld-uitingen in deze zelf studie. Het patroon wordt geleverd als een sjabloon utterance-voor beeld, inclusief de syntaxis voor het identificeren van entiteiten en het negeren van tekst.
 ms.topic: tutorial
-ms.date: 04/14/2020
-ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380775"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592913"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Zelf studie: utterance-indelingen van algemene patroon Sjablonen toevoegen om voor spellingen te verbeteren
 
@@ -41,9 +41,10 @@ Voer de volgende stappen uit:
 
 1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)van de app op.
 
-1. Importeer de JSON in een nieuwe app in de [Preview-Luis Portal](https://preview.luis.ai). Selecteer op de pagina **mijn apps** **+ nieuwe app voor conversatie**en selecteer vervolgens **importeren als JSON**. Selecteer het bestand dat u in de vorige stap hebt gedownload.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Importeer de JSON in een nieuwe app in de [Luis-Portal](https://www.luis.ai). Selecteer op de pagina **mijn apps** **+ nieuwe app voor conversatie**en selecteer vervolgens **importeren als JSON**. Selecteer het bestand dat u in de vorige stap hebt gedownload.
 
-1. Selecteer in de sectie **beheren** op het tabblad **versies** de actieve versie en selecteer vervolgens **klonen**. Noem de gekloonde `patterns`versie. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
+1. Selecteer in de sectie **beheren** op het tabblad **versies** de actieve versie en selecteer vervolgens **klonen**. Noem de gekloonde versie `patterns` . Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Nieuwe intenties en de bijbehorende utterances maken
 
@@ -99,7 +100,7 @@ De twee intenties vinden de Manager of de directe ondergeschikten van de Manager
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door: `Who is the boss of Jill Jones?`.
+1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door: `Who is the boss of Jill Jones?` .
 
     ```json
     {
@@ -214,7 +215,7 @@ Dit zijn voorbeelden van sjabloon-utterances voor deze intent:
 |`Who does {Employee} report to[?]`|uitwisselbaar`{Employee}`<br>negeren`[?]`|
 |`Who reports to {Employee}[?]`|uitwisselbaar`{Employee}`<br>negeren`[?]`|
 
-De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele syntaxis, `[?]`, markeert woorden of [Lees tekens](luis-reference-application-settings.md#punctuation-normalization) die optioneel zijn. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
+De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele syntaxis, `[?]` , markeert woorden of [Lees tekens](luis-reference-application-settings.md#punctuation-normalization) die optioneel zijn. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
 
 Hoewel de syntaxis eruitziet als een reguliere expressie, is het geen reguliere expressie. Alleen de accolades, `{}`, en de vierkant haakjes, `[]`, worden als syntaxis ondersteund. Ze kunnen tot maximaal twee niveaus worden genest.
 
@@ -365,7 +366,7 @@ Voorbeelden van utterances zijn:
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-In elk van deze voorbeelden wordt gebruikgemaakt van een werkwoordsvorm, `was`, `is`, `will be`, evenals een datum, `March 3`, `now`, en `in a month`, die LUIS correct moet voorspellen. U ziet dat de laatste twee voor beelden in de tabel bijna dezelfde tekst gebruiken, `in` met `on`uitzonde ring van en.
+In elk van deze voorbeelden wordt gebruikgemaakt van een werkwoordsvorm, `was`, `is`, `will be`, evenals een datum, `March 3`, `now`, en `in a month`, die LUIS correct moet voorspellen. U ziet dat de laatste twee voor beelden in de tabel bijna dezelfde tekst gebruiken, met uitzonde ring van `in` en `on` .
 
 Voorbeeld sjabloon uitingen die deze optionele informatie toestaan:
 
@@ -424,7 +425,7 @@ Dit is het gebruik van patronen die zijn opgenomen:
 
 Enkele van de vorige sjabloon uitingens worden bijna gesloten. Gebruik de **groep** `()` en **of** `|` syntaxis om de sjabloon uitingen te reduceren.
 
-De volgende twee patronen kunnen in één patroon worden gecombineerd met behulp `()` van de `|` groep en of syntaxis.
+De volgende twee patronen kunnen in één patroon worden gecombineerd met behulp van de groep `()` en of `|` syntaxis.
 
 |Intentie|Voorbeeld-utterances met optionele tekst en voorafgemaakte entiteiten|
 |--|--|
@@ -435,9 +436,9 @@ Het nieuwe sjabloon utterance is:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-Dit maakt gebruik van een **groep** rond de vereiste term tien tallen `in` en `on` de optionele en met een **or** -pipe ertussen.
+Dit maakt gebruik van een **groep** rond de vereiste term tien tallen en de optionele `in` en `on` met een **or** -pipe ertussen.
 
-1. Selecteer op de pagina **patronen** het filter **organigram-Manager** . Verfijn de lijst door te zoeken `manager`.
+1. Selecteer op de pagina **patronen** het filter **organigram-Manager** . Verfijn de lijst door te zoeken `manager` .
 
 1. Behoud één versie van de sjabloon utterance (om in de volgende stap te bewerken) en verwijder de andere variaties.
 
@@ -464,37 +465,11 @@ Door meer patroon syntaxis te gebruiken, vermindert u het aantal sjabloon uiting
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>De utterance begin-en eind ankerpunten gebruiken
 
-De syntaxis van het patroon biedt het begin-en eind utterance-anker `^`syntaxis van een caret,. De begin-en eind utterance-ankers kunnen samen worden gebruikt om een zeer specifieke en mogelijk letterlijke utterance te bereiken of om afzonderlijk te worden gebruikt voor doel intentie.
+De syntaxis van het patroon biedt het begin-en eind utterance-anker syntaxis van een caret, `^` . De begin-en eind utterance-ankers kunnen samen worden gebruikt om een zeer specifieke en mogelijk letterlijke utterance te bereiken of om afzonderlijk te worden gebruikt voor doel intentie.
 
 ## <a name="using-patternany-entity"></a>Pattern.any-entiteit gebruiken
 
-Met de entiteit pattern.any kunt u vrije gegevens vinden waarbij het lastig is om uit de tekst van de entiteit het einde van de entiteit te bepalen op basis van de rest van de utterance.
-
-Deze Human Resources-app helpt medewerkers bij het zoeken van bedrijfsformulieren.
-
-|Utterance|
-|--|
-|Waar is **HRF-123456**?|
-|Wie is de auteur van **HRF 123234**?|
-|Is **HRF-456098** gepubliceerd in het Frans?|
-
-Elk formulier heeft echter zowel een opgemaakte naam, gebruikt in de voorgaande tabel, als een beschrijvende naam, zoals `Request relocation from employee new to the company 2018 version 5`.
-
-Utterances met de beschrijvende naam van het formulier zien er als volgt uit:
-
-|Utterance|
-|--|
-|Waar is de **Aanvraag voor relocatie van nieuwe medewerker in het bedrijf 2018 versie 5**?|
-|Wie heeft **Aanvraag voor relocatie van nieuwe medewerker in het bedrijf 2018 versie 5** geschreven?|
-|Is **Aanvraag voor relocatie van nieuwe medewerker in het bedrijf 2018 versie 5** gepubliceerd in het Frans?|
-
-De lengte varieert en er zijn woorden die verwarrend kunnen zijn voor LUIS om te bepalen waar de entiteit eindigt. Met behulp van een entiteit Pattern.any in een patroon, kunt u het begin en einde van de naam van het formulier opgeven, zodat de naam van het formulier correct worden geëxtraheerd door LUIS.
-
-|Voorbeeld van sjabloon-utterance|
-|--|
-|Waar is {FormName}[?]|
-|Wie heeft {FormName} geschreven[?]|
-|Is {FormName} gepubliceerd in het Frans[?]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>Voeg bijvoorbeeld uitingen toe met een patroon.
 
@@ -518,7 +493,7 @@ De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Het wer
 
 1. Selecteer **Entiteiten** in de linkernavigatiebalk.
 
-1. Selecteer **+ maken**, voer de naam `FormName`in en selecteer **patroon. elk** type. Selecteer **Maken**.
+1. Selecteer **+ maken**, voer de naam `FormName` in en selecteer **patroon. elk** type. Selecteer **Maken**.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Een patroon toevoegen dat gebruikmaakt van de Pattern.any
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77560895"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593168"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migreren van de Translator Speech-API naar de speech-service
 
@@ -37,7 +37,7 @@ Gebruik dit artikel om uw toepassingen van de micro soft-Translator Speech-API n
 | Meerdere talen vertaald in één aanvraag | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Sdk's beschikbaar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Raadpleeg de [documentatie](index.yml) van de speech-service voor beschik bare sdk's.                                                                                                                                                    |
 | Websockets verbindingen                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| API voor talen                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | De spraak service ondersteunt hetzelfde bereik aan talen dat wordt beschreven in het [naslag artikel over de conversie van API-talen](../translator-speech/languages-reference.md) . |
+| API voor talen                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | De spraak service ondersteunt hetzelfde bereik van talen als beschreven in het [naslag artikel over de Vertaal talen](../translator-speech/languages-reference.md) . |
 | Filter en markering voor scheld woorden                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . WAV/PCM als invoer                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Andere bestands typen als invoer                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ Als u of uw organisatie toepassingen in ontwikkeling of productie heeft die gebr
 
 * Als uw toepassing gebruik maakt van langdurige verbindingen en de beschik bare Sdk's niet kan gebruiken, kunt u een websockets-verbinding gebruiken. De time-outlimiet van 10 minuten beheren door opnieuw verbinding te maken met de juiste tijden.
 
-* Als uw toepassing gebruikmaakt van de Translator Text-API en Translator Speech-API om aangepaste Vertaal modellen in te scha kelen, kunt u categorie-Id's rechtstreeks toevoegen met behulp van de spraak service.
+* Als uw toepassing gebruikmaakt van de Translator-service en Translator Speech-API om aangepaste Vertaal modellen in te scha kelen, kunt u categorie-Id's rechtstreeks toevoegen met behulp van de spraak service.
 
 * In tegens telling tot de Translator Speech-API, kan de speech-service vertalingen in meerdere talen in één aanvraag volt ooien.
 

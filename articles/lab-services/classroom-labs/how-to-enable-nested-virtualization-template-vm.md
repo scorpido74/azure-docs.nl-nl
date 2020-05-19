@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7831e554fcca20134d5cf8608481ff0c82eb8a0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184670"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591995"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services
 
-Op dit moment kunt u met Azure Lab Services één sjabloon virtuele machine in een Lab instellen en één exemplaar beschikbaar maken voor elk van uw gebruikers. Als u een docent netwerk, beveiliging of IT-klassen bent, moet u mogelijk uw studenten voorzien van een omgeving waarin meerdere virtuele machines via een netwerk met elkaar kunnen communiceren.
+Op dit moment kunt u met Azure Lab Services één sjabloon virtuele machine in een Lab instellen en één exemplaar beschikbaar maken voor elk van uw gebruikers. Als u een docenten netwerk, beveiliging of IT-klassen hebt, moet u mogelijk elk van uw studenten een omgeving bieden waarin meerdere virtuele machines via een netwerk met elkaar kunnen communiceren.
 
 Met geneste virtualisatie kunt u een multi-VM-omgeving maken in de virtuele machine van een lab. Als u de sjabloon publiceert, wordt elke gebruiker in het lab voorzien van een virtuele machine die is ingesteld met meerdere virtuele machines in de test omgeving.  In dit artikel wordt beschreven hoe u een geneste virtualisatie instelt op een sjabloon machine in Azure Lab Services.
 

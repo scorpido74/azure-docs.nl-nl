@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80744145"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591043"
 ---
 # <a name="language-and-region-support-for-luis"></a>Taal-en regio ondersteuning voor LUIS
 
@@ -24,7 +24,7 @@ LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich 
 
 ## <a name="multi-language-luis-apps"></a>LUIS-apps met meerdere talen
 
-Als u een LUIS-client toepassing met meerdere talen nodig hebt, zoals een chatbot, hebt u een aantal opties. Als LUIS alle talen ondersteunt, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke App-ID en een eindpunt logboek. Als u taal inzicht moet bieden voor een taal LUIS ondersteunt, kunt u de [micro soft Translator-API](../Translator/translator-info-overview.md) gebruiken om de utterance te vertalen in een ondersteunde taal, de utterance naar het Luis-eind punt te verzenden en de resulterende scores te ontvangen.
+Als u een LUIS-client toepassing met meerdere talen nodig hebt, zoals een chatbot, hebt u een aantal opties. Als LUIS alle talen ondersteunt, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke App-ID en een eindpunt logboek. Als u taal inzicht moet bieden voor een taal LUIS ondersteunt, kunt u de [Translator-service](../Translator/translator-info-overview.md) gebruiken om de utterance te vertalen in een ondersteunde taal, de utterance naar het Luis-eind punt te verzenden en de resulterende scores te ontvangen.
 
 ## <a name="languages-supported"></a>Ondersteunde talen
 
@@ -74,7 +74,7 @@ Zie spraak [ondersteunde talen](../speech-service/speech-to-text.md) voor talen 
 Zie Bing Spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst met ondersteunde talen en status.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Zeldzame of afwijkende woorden in een toepassing
-In de `en-us` cultuur leert Luis om de meeste Engelse woorden, waaronder slang, te onderscheiden. In de `zh-cn` cultuur leert Luis om de meeste Chinese tekens te onderscheiden. Als u een zeldzaam woord in of `en-us` teken in `zh-cn`gebruikt, en u ziet dat Luis niet kan worden onderscheiden van dat woord of teken, kunt u dat woord of teken toevoegen aan een [lijst functie van woord groepen](luis-how-to-add-features.md). Bijvoorbeeld: woorden buiten de cultuur van de toepassing, dat wil zeggen afwijkende woorden--moeten worden toegevoegd aan een woordgroepen lijst functie.
+In de `en-us` cultuur leert Luis om de meeste Engelse woorden, waaronder slang, te onderscheiden. In de `zh-cn` cultuur leert Luis om de meeste Chinese tekens te onderscheiden. Als u een zeldzaam woord in `en-us` of teken in gebruikt `zh-cn` , en u ziet dat Luis niet kan worden onderscheiden van dat woord of teken, kunt u dat woord of teken toevoegen aan een [lijst functie van woord groepen](luis-how-to-add-features.md). Bijvoorbeeld: woorden buiten de cultuur van de toepassing, dat wil zeggen afwijkende woorden--moeten worden toegevoegd aan een woordgroepen lijst functie.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -113,10 +113,10 @@ De volgende cult uren hebben aangepaste tokenizer-versies:
 
 |Cultuur|Versie|Doel|
 |--|--|--|
-|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker als `Ich fahre einen krankenwagen` een utterance wordt ingevoerd, wordt deze ingeschakeld `Ich fahre einen kranken wagen`. Het markeren van en `kranken` `wagen` onafhankelijk van verschillende entiteiten toestaan.|
-|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker als `Ich fahre einen krankenwagen` een utterance wordt ingevoerd, blijft het één token. Is `krankenwagen` daarom gemarkeerd als één entiteit. |
-|Nederlands<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker als `Ik ga naar de kleuterschool` een utterance wordt ingevoerd, wordt deze ingeschakeld `Ik ga naar de kleuter school`. Het markeren van en `kleuter` `school` onafhankelijk van verschillende entiteiten toestaan.|
-|Nederlands<br>`de-de`|1.0.1|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker als `Ik ga naar de kleuterschool` een utterance wordt ingevoerd, blijft het één token. Is `kleuterschool` daarom gemarkeerd als één entiteit. |
+|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ich fahre einen kranken wagen` . Het markeren van `kranken` en `wagen` onafhankelijk van verschillende entiteiten toestaan.|
+|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, blijft het één token. `krankenwagen`Is daarom gemarkeerd als één entiteit. |
+|Nederlands<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ik ga naar de kleuter school` . Het markeren van `kleuter` en `school` onafhankelijk van verschillende entiteiten toestaan.|
+|Nederlands<br>`de-de`|1.0.1|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, blijft het één token. `kleuterschool`Is daarom gemarkeerd als één entiteit. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migreren tussen tokenizer-versies

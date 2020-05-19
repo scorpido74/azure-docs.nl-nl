@@ -1,7 +1,7 @@
 ---
-title: Taal ondersteuning-Translator Text-API
+title: Taal ondersteuning-Translator
 titleSuffix: Azure Cognitive Services
-description: De Translator Text-API ondersteunt de volgende talen voor tekst omzetting met Neural machine translation (NMT).
+description: Cognitive Services Translator ondersteunt de volgende talen voor tekst omzetting met Neural machine translation (NMT).
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684829"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592726"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning van talen en regio's voor de Translator Text-API
+# <a name="language-and-region-support-for-translator"></a>Taal-en regio ondersteuning voor Translator
 
-De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neural machine translation (NMT) is de nieuwe standaard voor automatische vertalingen van een hoge kwaliteit en is beschikbaar als de standaard waarde met behulp van v3 van de Translator Text-API wanneer er een Neural-systeem beschikbaar is.
+Het conversie programma ondersteunt de volgende talen voor tekst vertaling. Neural machine translation (NMT) is de nieuwe standaard voor automatische vertalingen van een hoge kwaliteit en is beschikbaar als de standaard waarde met behulp van v3 van Translator wanneer er een Neural-systeem beschikbaar is.
 
 [Meer informatie over hoe automatische vertaling werkt](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Omzetting
 
-**V2 Translator-API**
+**V2-vertaler**
 
 > [!NOTE]
 > V2 is op 30 april 2018 afgeschaft. Migreer uw toepassingen naar v3 om te kunnen profiteren van de nieuwe functionaliteit die alleen beschikbaar is in v3.
 
 * Alleen statistisch: er is geen Neural systeem beschikbaar voor deze taal.
-* Neural beschikbaar: er is een Neural-systeem beschikbaar. Gebruik de para `category=generalnn` meter om toegang te krijgen tot het Neural-systeem.
-* Neural standaard: Neural is het standaard Vertaal systeem. Gebruik de para `category=smt` meter om toegang te krijgen tot het statistische systeem voor gebruik met de micro soft Translator-hub.
+* Neural beschikbaar: er is een Neural-systeem beschikbaar. Gebruik de para meter `category=generalnn` om toegang te krijgen tot het Neural-systeem.
+* Neural standaard: Neural is het standaard Vertaal systeem. Gebruik de para meter `category=smt` om toegang te krijgen tot het statistische systeem voor gebruik met de micro soft Translator-hub.
 * Alleen Neural: alleen Neural-omzetting is beschikbaar.
 
-**V3 Translator-API** De V3 Translator-API is Neural standaard en statistische systemen zijn alleen beschikbaar als er geen Neural-systeem bestaat.
+**V3-vertaler** V3 Translator is Neural standaard en statistische systemen zijn alleen beschikbaar als er geen Neural-systeem bestaat.
 
 > [!NOTE]
 > Momenteel is een subset van de Neural-talen beschikbaar in het aangepaste conversie programma en worden er geleidelijk extra toegevoegd. [Talen weer geven die momenteel beschikbaar zijn in het aangepaste conversie programma](#customization).
@@ -87,7 +87,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Maltees|   `mt`    |   Statische|
 |Maori| `mi`  | Neural|
 |Marathi| `mr`  | Neural|
-|Norwegian| `nb`    |   Neural|
+|Noors| `nb`    |   Neural|
 |Perzisch|   `fa`    |   Neural|
 |Pools|    `pl`    |   Neural|
 |Portugees (Brazilië)|   `pt-br` |   Neural|
@@ -116,7 +116,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Yucatec Maya|  `yua`   |   Statische|
 
 > [!NOTE]
-> Taal code `pt` wordt standaard ingesteld `pt-br`op Portugees (Brazilië).
+> Taal code `pt` wordt standaard ingesteld op `pt-br` Portugees (Brazilië).
 
 ## <a name="transliteration"></a>Vele
 
@@ -183,7 +183,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Litouws      | `lt`          |
 | Maleisisch      | `ms`          |
 | Maltees      | `mt`          |
-| Norwegian      | `nb`          |
+| Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië)     | `pt-br`          |
@@ -204,12 +204,12 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 
 ## <a name="detect"></a>Detecteren
 
-Translator Text-API detecteert alle talen die beschikbaar zijn voor vertaal-en vele.
+Translator detecteert alle talen die beschikbaar zijn voor vertaal-en vele.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programmatisch toegang tot de lijst met Translator Text-API talen
+## <a name="access-the-translator-language-list-programmatically"></a>Programmatisch toegang tot de lijst met Vertaal talen
 
-U kunt een lijst met ondersteunde talen voor de Translator Text-API v 3.0 ophalen met behulp van de talen methode. U kunt de lijst weer geven op functie, taal code en de taal naam in het Engels of een andere ondersteunde taal. Deze lijst wordt automatisch bijgewerkt door de micro soft Translator-service wanneer er nieuwe talen beschikbaar worden gesteld.
+U kunt een lijst met ondersteunde talen voor Translator v 3.0 ophalen met behulp van de talen methode. U kunt de lijst weer geven op functie, taal code en de taal naam in het Engels of een andere ondersteunde taal. Deze lijst wordt automatisch bijgewerkt door de micro soft Translator-service wanneer er nieuwe talen beschikbaar worden gesteld.
 
 [Documentatie voor het bewerkings overzicht van talen weer geven](reference/v3-0-languages.md)
 
@@ -249,7 +249,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Litouws      | `lt`          |
 | Malagassische| `mg`    |
 | Maori| `mi`  |
-| Norwegian      | `nb`          |
+| Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië) | `pt-br` |
@@ -269,6 +269,6 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Toegang tot de lijst op de website van micro soft Translator
 
-Voor een beknopt overzicht van de talen bevat de micro soft Translator-website alle talen die worden ondersteund door de Translator Text-en spraak-Api's. Deze lijst bevat geen informatie die specifiek is voor de ontwikkelaar, zoals taal codes.
+Voor een beknopt overzicht van de talen bevat de micro soft Translator-website alle talen die worden ondersteund door de conversie-en spraak-Api's. Deze lijst bevat geen informatie die specifiek is voor de ontwikkelaar, zoals taal codes.
 
 [Bekijk de lijst met talen](https://www.microsoft.com/translator/languages.aspx)

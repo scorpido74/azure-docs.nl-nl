@@ -1,7 +1,7 @@
 ---
-title: Aanvraag limieten-Translator Text-API
+title: Aanvraag limieten-Translator
 titleSuffix: Azure Cognitive Services
-description: In dit artikel vindt u de aanvraag limieten voor de Translator Text-API. De kosten worden berekend op basis van het aantal tekens, niet de aanvraag frequentie met een limiet van 5.000 tekens per aanvraag. De teken limieten zijn gebaseerd op abonnementen, met F0 tot 2.000.000 tekens per uur.
+description: In dit artikel vindt u de aanvraag limieten voor het conversie programma. De kosten worden berekend op basis van het aantal tekens, niet de aanvraag frequentie met een limiet van 5.000 tekens per aanvraag. De teken limieten zijn gebaseerd op abonnementen, met F0 tot 2.000.000 tekens per uur.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79498929"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592233"
 ---
-# <a name="request-limits-for-translator-text"></a>Aanvraag limieten voor Translator Text
+# <a name="request-limits-for-translator"></a>Aanvraag limieten voor Translator
 
-Dit artikel bevat beperkings limieten voor de Translator Text-API. Services omvatten omzetting, vele, detectie van de lengte van de zinnen, taal detectie en alternatieve vertalingen.
+Dit artikel bevat beperkings limieten voor het conversie programma. Services omvatten omzetting, vele, detectie van de lengte van de zinnen, taal detectie en alternatieve vertalingen.
 
 ## <a name="character-and-array-limits-per-request"></a>Limieten voor tekens en matrices per aanvraag
 
 Elke Vertaal aanvraag is beperkt tot 5.000 tekens, in alle doel talen waarnaar u vertaalt. Als u bijvoorbeeld een Vertaal aanvraag van 1.500 tekens verzendt om te vertalen naar drie verschillende talen, resulteert dit in een aanvraag grootte van 1, 500x3 = 4.500 tekens, die voldoet aan de aanvraag limiet. U betaalt per teken, niet op het aantal aanvragen. Het wordt aanbevolen om kortere aanvragen te verzenden.
 
-De volgende tabel bevat een overzicht van matrix elementen en teken limieten voor elke bewerking van de Translator Text-API.
+De volgende tabel bevat een overzicht van matrix elementen en teken limieten voor elke bewerking van de vertaler.
 
 | Bewerking | Maximale grootte van matrix element |   Maximum aantal matrix elementen |  Maximale aanvraag grootte (tekens) |
 |:----|:----|:----|:----|
@@ -38,7 +38,7 @@ De volgende tabel bevat een overzicht van matrix elementen en teken limieten voo
 
 ## <a name="character-limits-per-hour"></a>Maximum aantal tekens per uur
 
-De teken limiet per uur is gebaseerd op uw Translator Text Subscription. 
+De teken limiet per uur is gebaseerd op uw Vertaal handelslaag. 
 
 Het quotum per uur moet gelijkmatig over het hele uur worden verbruikt. Bijvoorbeeld: bij de limiet van F0 van 2.000.000 tekens per uur moeten tekens worden verbruikt die niet sneller zijn dan ongeveer 33.300 tekens per minuut sliding window (2.000.000 tekens gedeeld door 60 minuten).
 
@@ -58,7 +58,7 @@ Deze limieten zijn beperkt tot de standaard Vertaal modellen van micro soft. Aan
 
 ## <a name="latency"></a>Latentie
 
-Het Translator Text-API heeft een maximale latentie van 15 seconden met standaard modellen en 120 seconden wanneer aangepaste modellen worden gebruikt. Normaal gesp roken worden antwoorden op *tekst binnen 100 tekens* geretourneerd in 150 milliseconden tot 300 milliseconden. De aangepaste Translator-modellen hebben vergelijk bare latentie kenmerken voor een continue aanvraag frequentie en kunnen een hogere latentie hebben wanneer uw aanvraag frequentie loopt. Reactie tijden variëren op basis van de grootte van de aanvraag en het taal paar. Als u binnen deze tijds Panne geen vertaling of een [fout](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) bericht ontvangt, controleert u uw code, uw netwerk verbinding en probeer het opnieuw. 
+Het conversie programma heeft een maximale latentie van 15 seconden met standaard modellen en 120 seconden wanneer aangepaste modellen worden gebruikt. Normaal gesp roken worden antwoorden op *tekst binnen 100 tekens* geretourneerd in 150 milliseconden tot 300 milliseconden. De aangepaste Translator-modellen hebben vergelijk bare latentie kenmerken voor een continue aanvraag frequentie en kunnen een hogere latentie hebben wanneer uw aanvraag frequentie loopt. Reactie tijden variëren op basis van de grootte van de aanvraag en het taal paar. Als u binnen deze tijds Panne geen vertaling of een [fout](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) bericht ontvangt, controleert u uw code, uw netwerk verbinding en probeer het opnieuw. 
 
 ## <a name="sentence-length-limits"></a>Maximale lengte van zin
 
@@ -82,4 +82,4 @@ Wanneer u de functie [BreakSentence](https://docs.microsoft.com/azure/cognitive-
 
 * [Prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionale beschikbaarheid](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator Text-API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [V3 Translator-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
