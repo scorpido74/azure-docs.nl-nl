@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878303"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83608998"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Preview-functies Azure Stream Analytics
 
@@ -21,6 +21,15 @@ Dit artikel bevat een overzicht van alle functies die momenteel als preview-vers
 ## <a name="public-previews"></a>Openbare previews
 
 De volgende functies zijn beschikbaar in de open bare preview-versie. U kunt deze functies vandaag nog gebruiken, maar niet in uw productie omgeving.
+
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Verifiëren voor SQL Database uitvoer met beheerde identiteiten
+
+Azure Stream Analytics ondersteunt [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor Azure SQL database uitvoer-Sinks. Beheerde identiteiten elimineren de beperkingen van verificatie methoden op basis van gebruikers, zoals de nood zaak om opnieuw te worden geverifieerd als gevolg van wachtwoord wijzigingen of verlopen van gebruikers tokens die elke 90 dagen worden uitgevoerd. Wanneer u de nood zaak om hand matig te verifiëren verwijdert, kunnen uw Stream Analytics-implementaties volledig worden geautomatiseerd.
+
+### <a name="output-to-azure-synapse-analytics"></a>Uitvoer naar Azure Synapse Analytics
+
+Azure Stream Analytics-taken kunnen worden uitgevoerd naar een SQL-groeps tabel in [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
+
 
 ### <a name="online-scaling"></a>Online schalen
 
