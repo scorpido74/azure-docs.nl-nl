@@ -6,7 +6,7 @@
     - name: Wat is Personalizer?
       href: what-is-personalizer.md
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
-    - name: Wat is er nieuw
+    - name: Nieuwe functies
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
 - name: Snelstartgidsen
@@ -39,6 +39,8 @@
         - name: Leerbeleid
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Leerlingmodus
+          href: concept-apprentice-mode.md
         - name: Actieve en inactieve gebeurtenissen
           href: concept-active-inactive-events.md
         - name: Voordelen
@@ -62,9 +64,11 @@
   items:
     - name: Een Personalizer-resource maken
       href: how-to-create-resource.md
-    - name: Een leerproces configureren
+    - name: Personalizer configureren
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: De leerlingmodus gebruiken
+      href: how-to-learning-behavior.md
     - name: Model- en leerinstellingen beheren
       href: how-to-manage-model.md
     - name: Analyseren met een offline evaluatie
@@ -73,7 +77,7 @@
   items:
     - name: Voorbeelden
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
-    - name: Naslaginformatie over REST API
+    - name: Naslaginformatie over REST-API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: SDK's
       items:
@@ -99,7 +103,7 @@
               href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
             - name: Pypi-pakket
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
-- name: Bronnen
+- name: Resources
   items:
     - name: Problemen oplossen
       href: troubleshooting.md

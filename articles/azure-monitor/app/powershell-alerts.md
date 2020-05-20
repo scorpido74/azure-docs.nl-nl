@@ -3,18 +3,18 @@ title: Power shell gebruiken om waarschuwingen in te stellen in Application Insi
 description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669842"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701832"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U kunt de configuratie van [waarschuwingen](../../azure-monitor/app/alerts.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md)automatiseren.
+U kunt de configuratie van [waarschuwingen](../../azure-monitor/platform/alerts-log.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md)automatiseren.
 
 Daarnaast kunt u [webhooks instellen om uw reactie op een waarschuwing te automatiseren](../../azure-monitor/platform/alerts-webhooks.md).
 

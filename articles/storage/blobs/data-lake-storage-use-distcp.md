@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255533"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698647"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2
 
@@ -23,11 +23,11 @@ DistCp biedt diverse opdracht regel parameters en we raden u ten zeerste aan om 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een bestaand Azure Storage-account zonder data Lake Storage Gen2 mogelijkheden (hiërarchische naam ruimte) ingeschakeld**.
-* **Een Azure Storage-account waarvoor data Lake Storage Gen2 functie is ingeschakeld**. Zie [een Azure data Lake Storage Gen2 Storage-account maken](data-lake-storage-quickstart-create-account.md) voor instructies over het maken van een.
-* **Een bestands systeem** dat is gemaakt in het opslag account waarvoor een hiërarchische naam ruimte is ingeschakeld.
-* **Azure HDInsight-cluster** met toegang tot een opslag account waarvoor data Lake Storage Gen2 is ingeschakeld. Zie [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
+* Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
+* Een bestaand Azure Storage-account zonder Data Lake Storage Gen2 mogelijkheden (hiërarchische naam ruimte) ingeschakeld.
+* Een Azure Storage account met Data Lake Storage Gen2 mogelijkheden (hiërarchische naam ruimte) ingeschakeld. Zie [een Azure Storage-account maken](../common/storage-account-create.md) voor meer informatie over het maken van deze.
+* Een container die is gemaakt in het opslag account waarvoor een hiërarchische naam ruimte is ingeschakeld.
+* Een Azure HDInsight-cluster met toegang tot een opslag account waarvoor de functie voor hiërarchische naam ruimte is ingeschakeld. Zie [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>DistCp gebruiken vanuit een HDInsight Linux-cluster
 
@@ -37,25 +37,25 @@ An HDInsight cluster wordt geleverd met het hulp programma DistCp, dat kan worde
 
 2. Controleer of u toegang hebt tot uw bestaande algemeen gebruik v2-account (zonder hiërarchische naam ruimte ingeschakeld).
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    De uitvoer moet een lijst met inhoud in de container bevatten.
+   De uitvoer moet een lijst met inhoud in de container bevatten.
 
 3. U kunt ook controleren of u toegang hebt tot het opslag account met een hiërarchische naam ruimte die is ingeschakeld in het cluster. Voer de volgende opdracht uit:
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-    De uitvoer moet een lijst met bestanden/mappen in het Data Lake Storage-account bevatten.
+    De uitvoer moet een lijst met bestanden/mappen in het opslag account van Data Lake bevatten.
 
 4. Gebruik DistCp om gegevens van WASB te kopiëren naar een Data Lake Storage-account.
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     Met de opdracht wordt de inhoud van de map **/example/data/Gutenberg/** in Blob Storage gekopieerd naar **/myfolder** in het data Lake Storage-account.
 
 5. Gebruik DistCp om gegevens te kopiëren van Data Lake Storage account naar Blob Storage (WASB).
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     De opdracht kopieert de inhoud van **/MyFolder** in de map Data Lake Store account naar **/example/data/Gutenberg/** in WASB.
 
@@ -65,7 +65,7 @@ Omdat de laagste granulatie van DistCp één bestand is, is het instellen van he
 
 **Voorbeeld**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hoe kan ik het aantal mappers bepalen dat moet worden gebruikt?
 

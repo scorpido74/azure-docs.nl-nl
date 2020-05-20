@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109819"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696511"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die van invloed kunnen zijn op de virtuele machine in Azure: ongepland onderhoud van hardware, onverwachte downtime en gepland onderhoud.
@@ -33,7 +33,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 * [Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie]
 * [Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken]
 * [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM'S](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets]
+* [Elke toepassingslaag configureren in afzonderlijke beschikbaarheids sets]
 * [Combineer het gebruik van een load balancer met beschikbaarheidssets]
 * [Beschikbaarheids zones gebruiken om te beschermen tegen fouten op datacenter niveau]
 
@@ -91,19 +91,12 @@ Als u Vm's met niet-beheerde schijven wilt gebruiken, volgt u de aanbevolen proc
 
 1. **Zorg dat alle schijven (gegevens en besturingssysteem) worden gekoppeld aan een virtuele machine op hetzelfde opslagaccount**
 2. **Controleer de [limieten](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) voor het aantal niet-beheerde schijven in een Azure Storage-account** voordat u meer vhd's toevoegt aan een opslag account
-3. **Gebruik een afzonderlijk opslag account voor elke virtuele machine in een Beschikbaarheidsset.** Deel opslagaccounts met meerdere VM's niet in dezelfde beschikbaarheidsset. Het is geschikt voor Vm's in verschillende beschikbaarheids sets om opslag accounts te delen als de aanbevolen procedures ![niet-beheerde schijven fd's](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Gebruik een afzonderlijk opslag account voor elke virtuele machine in een Beschikbaarheidsset.** Deel opslagaccounts met meerdere VM's niet in dezelfde beschikbaarheidsset. Het is geschikt voor Vm's in verschillende beschikbaarheids sets om opslag accounts te delen als de aanbevolen procedures niet- ![ beheerde schijven fd's](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM'S
 
 Wanneer u zich abonneert op [geplande gebeurtenissen](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), wordt uw virtuele machine op de hoogte gesteld van aanstaande onderhouds gebeurtenissen die van invloed kunnen zijn op uw VM. Wanneer geplande gebeurtenissen zijn ingeschakeld, krijgt de virtuele machine een minimale hoeveelheid tijd voordat de onderhouds activiteit wordt uitgevoerd. Zo kunnen host-OS-updates die van invloed zijn op uw virtuele machine, in de wachtrij worden geplaatst als gebeurtenissen waarmee de impact wordt opgegeven, evenals een tijd waarop het onderhoud wordt uitgevoerd als er geen actie wordt ondernomen. Schedule-gebeurtenissen worden ook in de wachtrij geplaatst wanneer Azure een onmiddellijke hardwarefout detecteert die van invloed kan zijn op uw virtuele machine, zodat u kunt bepalen wanneer het herstel moet worden uitgevoerd. Klanten kunnen de gebeurtenis gebruiken om taken uit te voeren vóór het onderhoud, zoals het opslaan van de status, het uitvoeren van een failover naar de secundaire, enzovoort. Nadat u uw logica hebt voltooid voor het op de juiste wijze verwerken van de onderhouds gebeurtenis, kunt u de uitstaande geplande gebeurtenis goed keuren zodat het platform kan door gaan met onderhoud.
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>Elke toepassingslaag configureren in afzonderlijke beschikbaarheids zones of beschikbaarheids sets
-Als uw virtuele machines bijna identiek zijn en hetzelfde doel hebben als uw toepassing, kunt u het beste een beschikbaarheids zone of beschikbaarheidsset configureren voor elke laag van uw toepassing.  Als u twee verschillende lagen in dezelfde beschikbaarheids zone of set plaatst, kunnen alle virtuele machines in dezelfde toepassingslaag tegelijk opnieuw worden opgestart. Door ten minste twee virtuele machines in een beschikbaarheids zone of set voor elke laag te configureren, garandeert u dat ten minste één virtuele machine in elke laag beschikbaar is.
-
-U kunt bijvoorbeeld alle virtuele machines in de front-end van uw toepassing waarop IIS, Apache en nginx worden uitgevoerd, in één beschikbaarheids zone of set zetten. Zorg ervoor dat alleen front-end virtuele machines in dezelfde beschikbaarheids zone of set worden geplaatst. Zorg er ook voor dat alleen virtuele machines met de gegevenslaag in hun eigen beschikbaarheids zone of set worden geplaatst, zoals uw gerepliceerde SQL Server virtuele machines, of uw virtuele machines met MySQL.
-
-<!--Image reference-->
-   ![Toepassingslagen](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Een load balancer met beschikbaarheids zones of sets combi neren
 Combi neer de [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) met een beschikbaarheids zone of stel in om de meeste toepassings tolerantie te verkrijgen. De Azure Load Balancer verdeelt het verkeer tussen meerdere virtuele machines. De Azure Load Balancer is voor virtuele machines uit de prijscategorie Standard bij de prijs inbegrepen. De Azure Load Balancer is niet bij alle prijscategorieën voor virtuele machines inbegrepen. Zie voor meer informatie over het gebruik van load balancers voor uw virtuele machines [Taakverdeling voor virtuele machines](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
@@ -115,8 +108,7 @@ Zie [Load Balancing vm's voor alle beschikbaarheids zones met behulp van de Azur
 
 <!-- Link references -->
 [Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
-[Combineer het gebruik van een load balancer met beschikbaarheidssets]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Een Load Balancer met beschikbaarheids sets combi neren]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken]: #use-managed-disks-for-vms-in-an-availability-set
 [Beschikbaarheids zones gebruiken om te beschermen tegen fouten op datacenter niveau]: #use-availability-zones-to-protect-from-datacenter-level-failures

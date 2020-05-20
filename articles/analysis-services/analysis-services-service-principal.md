@@ -4,15 +4,15 @@ description: Meer informatie over het maken van een service-principal voor het a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266141"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699078"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
@@ -50,7 +50,7 @@ De Service-Principal-appID en het wacht woord of-certificaat kunnen worden gebru
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule" />De module AZ. AnalysisServices gebruiken
 
-Gebruik `Connect-AzAccount` cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) . 
+Gebruik cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) `Connect-AzAccount` . 
 
 In het volgende voor beeld worden appID en een wacht woord gebruikt voor het uitvoeren van beheer bewerkingen voor synchronisatie met alleen-lezen replica's en omhoog/omlaag schalen:
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO en ADOMD 
 
-Bij het maken van verbinding met client toepassingen en web apps, [AMO en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in `app:AppID` verbindings reeksen met `cert:thumbprint`de volgende syntaxis: en wacht woord of. 
+Bij het maken van verbinding met client toepassingen en web apps, [AMO en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of `cert:thumbprint` . 
 
 In het volgende voor beeld `appID` en een `password` worden gebruikt voor het uitvoeren van een vernieuwings bewerking van een model database:
 
@@ -110,4 +110,5 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>Volgende stappen
 [Aanmelden met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)   
+[Een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)  
+[Power BI Premium werkruimte-en gegevensset taken automatiseren met Service-principals](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

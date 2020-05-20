@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732764"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701514"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Klanten dashboard in commerciële Marketplace-analyse
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Klant in Commerciële marketplace-analyses
 
 Dit artikel bevat informatie over het **dash board van klanten** in het partner centrum. Dit dash board geeft informatie weer over uw klanten, met inbegrip van groei trends, die worden weer gegeven in een grafische en download bare indeling.
 
@@ -97,7 +97,8 @@ In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klante
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als het record nummer groter is dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren datum, klant-e-mail, klant land/staat/plaats/post code, klant taal, enzovoort.
+- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren gegane datum, klant-e-mail, land/regio/plaats/post code, klant taal, enzovoort.
+- Wanneer een aanbieding wordt gekocht door een beveiligde klant, worden de gegevens van de **gedetailleerde gegevens** van de klant gemaskeerd (* * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Pagina filters van klant
 

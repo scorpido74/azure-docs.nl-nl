@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652075"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697061"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -62,19 +62,12 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 | **Mogelijke oorzaken**    | Het doel van de logboek back-up is mogelijk bijgewerkt van backint naar File System of het uitvoer bare bestand backint is gewijzigd |
 | **Aanbevolen actie** | Een volledige back-up activeren om het probleem op te lossen                   |
 
-### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
-
-| Foutbericht      | <span style="font-weight:normal">De bron-en doel systemen voor herstel zijn niet compatibel</span>    |
-| ------------------ | ------------------------------------------------------------ |
-| **Mogelijke oorzaken**    | Het doel systeem voor herstel is niet compatibel met de bron |
-| **Aanbevolen actie** | Raadpleeg SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) voor meer informatie over de typen herstel die momenteel worden ondersteund |
-
 ### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
 | Foutbericht      | <span style="font-weight:normal">Upgrade van dit SDC naar MDC is gedetecteerd</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Mogelijke oorzaken**    | Het SAP HANA-exemplaar is bijgewerkt van dit SDC naar MDC. Back-ups mislukken na de update. |
-| **Aanbevolen actie** | Volg de stappen die worden beschreven in de [sectie upgrades van SAP HANA 1,0 naar 2,0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) om het probleem op te lossen |
+| **Aanbevolen actie** | Volg de stappen in de [Dit SDC to MDC upgrade](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) om het probleem op te lossen |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
@@ -88,7 +81,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 |Foutbericht  |De bron-en doel systemen voor herstel zijn niet compatibel  |
 |---------|---------|
 |Mogelijke oorzaken   | De bron-en doel systemen die zijn geselecteerd voor herstel zijn niet compatibel        |
-|Aanbevolen actie   |   Zorg ervoor dat uw herstel scenario zich niet in de volgende lijst met mogelijk incompatibele herstelingen bevindt: <br><br>   Voor **Beeld 1:** De naam van de SYSTEMDB kan niet worden gewijzigd tijdens het herstellen.  <br><br> Voor **Beeld 2:** Bron-dit SDC en doel-MDC: de bron database kan niet worden teruggezet als SYSTEMDB of als Tenant database op het doel. <br><br> Voor **Beeld 3:** Bron-MDC en doel-dit SDC: de bron database (SYSTEMDB of Tenant-data base) kan niet worden hersteld naar het doel. <br><br>  Raadpleeg voor meer informatie de opmerking 1642148 in de [SAP support launchpad](https://launchpad.support.sap.com). |
+|Aanbevolen actie   |   Zorg ervoor dat het herstel scenario zich niet in de volgende lijst met mogelijk incompatibele herstelingen bevindt: <br><br>   Voor **Beeld 1:** De naam van de SYSTEMDB kan niet worden gewijzigd tijdens het herstellen.  <br><br> Voor **Beeld 2:** Bron-dit SDC en doel-MDC: de bron database kan niet worden teruggezet als SYSTEMDB of als Tenant database op het doel. <br><br> Voor **Beeld 3:** Bron-MDC en doel-dit SDC: de bron database (SYSTEMDB of Tenant-data base) kan niet worden hersteld naar het doel. <br><br>  Zie voor meer informatie opmerking **1642148** in de [SAP support launchpad](https://launchpad.support.sap.com). |
 
 ## <a name="restore-checks"></a>Controles herstellen
 
@@ -111,25 +104,83 @@ Houd rekening met de volgende punten:
 
 In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB + 1 of meer Tenant Db's. Als u een volledig SAP HANA exemplaar herstelt, moet u zowel de SYSTEMDB als de Tenant Db's herstellen. Eén herstelt SYSTEMDB eerst en gaat vervolgens verder met de Tenant-data base. Systeem-DB betekent in wezen dat de systeem gegevens op het geselecteerde doel worden overschreven. Deze herstel bewerking overschrijft ook de BackInt-gerelateerde informatie in het doel exemplaar. Nadat de systeem database is hersteld naar een doel exemplaar, voert u het pre-registratie script opnieuw uit. Alleen dan zullen de volgende Tenant-DB-herstel bewerkingen slagen.
 
-## <a name="upgrading-from-sap-hana-10-to-20"></a>Upgraden van SAP HANA 1,0 naar 2,0
+## <a name="back-up-a-replicated-vm"></a>Back-up maken van een gerepliceerde VM
 
-Als u SAP HANA 1,0-data bases beveiligt en een upgrade naar 2,0 wilt uitvoeren, voert u de volgende stappen uit:
+### <a name="scenario-1"></a>Scenario 1
 
-- [Stop de beveiliging](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) met behoud van gegevens voor de oude dit SDC-data base.
-- Voer de upgrade uit. Na voltooiing wordt de HANA nu MDC met een systeem database en een Tenant database (s)
-- Voer het script voor de [voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit met de juiste details van (sid en MDC).
-- De extensie voor dezelfde computer opnieuw registreren in Azure Portal (Details van de weer gave back->: > Selecteer de relevante Azure-VM-> opnieuw registreren.
-- Klik op Db's opnieuw detecteren voor dezelfde VM. Bij deze actie moet de nieuwe Db's in stap 2 worden weer gegeven met de juiste Details (SYSTEMDB en Tenant database, niet dit SDC).
-- Configureer de back-up voor deze nieuwe data bases.
+De oorspronkelijke VM is gerepliceerd met behulp van Azure Site Recovery of een back-up van Azure VM. De nieuwe virtuele machine is gebouwd om de oude virtuele machine te simuleren. Dat wil zeggen dat de instellingen precies hetzelfde zijn. (Dit komt doordat de oorspronkelijke virtuele machine is verwijderd en de herstel bewerking is uitgevoerd vanuit een back-up van de VM of Azure Site Recovery).
 
-## <a name="upgrading-without-an-sid-change"></a>Upgraden zonder SID-wijziging
+Dit scenario kan twee mogelijke gevallen omvatten. Meer informatie over het maken van een back-up van de gerepliceerde VM in beide gevallen:
 
-Upgrades naar besturings systeem of SAP HANA die geen SID-wijziging veroorzaken, kunnen worden verwerkt, zoals hieronder wordt beschreven:
+1. De nieuwe VM die is gemaakt, heeft dezelfde naam en bevindt zich in dezelfde resource groep en hetzelfde abonnement als de verwijderde VM.
 
-- [Beveiliging stoppen](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) met het bewaren van gegevens voor de data base
-- Voer de upgrade uit.
-- Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana)opnieuw uit. Doorgaans worden de benodigde rollen door het upgrade proces weer gegeven. Als u het script voor de voorafgaande registratie uitvoert, kunt u alle vereiste rollen controleren.
-- De beveiliging voor de data base opnieuw [hervatten](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)
+    - De uitbrei ding is al aanwezig op de VM, maar is niet zichtbaar voor een van de services
+    - Het pre-registratie script uitvoeren
+    - De extensie voor dezelfde computer opnieuw registreren in de Azure Portal (Details van de**back-**  ->  **upweergave** -> de relevante Azure-VM selecteren-> opnieuw registreren)
+    - De al bestaande back-updatabasen (van de verwijderde virtuele machine) moeten vervolgens worden gestart met een back-up
+
+2. De nieuwe virtuele machine die is gemaakt, heeft:
+
+    - een andere naam dan de verwijderde virtuele machine
+    - dezelfde naam als de verwijderde virtuele machine, maar bevindt zich in een andere resource groep of een ander abonnement (ten opzichte van de verwijderde VM)
+
+    Als dit het geval is, voert u de volgende stappen uit:
+
+    - De uitbrei ding is al aanwezig op de VM, maar is niet zichtbaar voor een van de services
+    - Het pre-registratie script uitvoeren
+    - Als u de nieuwe data bases detecteert en beveiligt, ziet u dat er dubbele actieve data bases in de portal worden weer gegeven. U kunt dit voor komen door de [beveiliging te stoppen met het bewaren van gegevens](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) voor de oude data bases. Ga vervolgens verder met de resterende stappen.
+    - De data bases ontdekken voor het inschakelen van back-ups
+    - Back-ups inschakelen voor deze data bases
+    - De al bestaande back-updatabasen (van de verwijderde virtuele machine) blijven opgeslagen in de kluis (waarbij de back-ups worden bewaard volgens het beleid)
+
+### <a name="scenario-2"></a>Scenario 2
+
+De oorspronkelijke VM is gerepliceerd met behulp van Azure Site Recovery of een back-up van Azure VM. De nieuwe virtuele machine is gebaseerd op de inhoud – om te worden gebruikt als sjabloon. Dit is een nieuwe VM met een nieuwe SID.
+
+Voer de volgende stappen uit om back-ups op de nieuwe virtuele machine in te scha kelen:
+
+- De uitbrei ding is al aanwezig op de VM, maar is niet zichtbaar voor een van de services
+- Voer het script voor de voorafgaande registratie uit. Op basis van de SID van de nieuwe VM kunnen er twee scenario's optreden:
+  - De oorspronkelijke VM en de nieuwe virtuele machine hebben dezelfde SID. Het script dat voorafgaat aan het registratie programma wordt uitgevoerd.
+  - De oorspronkelijke VM en de nieuwe VM hebben verschillende Sid's. Het vooraf registratie script mislukt. Neem contact op met de ondersteuning voor hulp bij dit scenario.
+- De data bases detecteren waarvan u een back-up wilt maken
+- Back-ups inschakelen voor deze data bases
+
+## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>Upgrade van dit SDC-versie of MDC-versie op dezelfde VM
+
+Upgrades naar het besturings systeem, de wijziging van de versie van de dit SDC of de wijziging van de MDC-versie die geen SID-wijziging veroorzaken, kunnen als volgt worden verwerkt:
+
+- Zorg ervoor dat de nieuwe versie van het besturings systeem, de dit SDC of de MDC momenteel wordt [ondersteund door Azure backup](sap-hana-backup-support-matrix.md#scenario-support)
+- [Beveiliging stoppen met het bewaren van gegevens](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) voor de data base
+- De upgrade of update uitvoeren
+- Voer het script voor de voorafgaande registratie opnieuw uit. Normaal gesp roken verwijdert het upgrade proces de benodigde rollen. Als u het script voor de voorafgaande registratie uitvoert, worden alle vereiste rollen gecontroleerd
+- De beveiliging voor de data base opnieuw hervatten
+
+## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>Dit SDC naar MDC upgrade zonder wijziging in SID
+
+Upgrades van dit SDC naar MDC die geen SID-wijziging veroorzaken, kunnen als volgt worden verwerkt:
+
+- Zorg ervoor dat de nieuwe MDC-versie momenteel wordt [ondersteund door Azure backup](sap-hana-backup-support-matrix.md#scenario-support)
+- [Beveiliging stoppen met het bewaren van gegevens](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) voor de oude dit SDC-data base
+- Voer de upgrade uit. Na voltooiing is het HANA-systeem nu MDC met een systeem database en Tenant Db's
+- Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit
+- De extensie voor dezelfde computer opnieuw registreren in de Azure Portal (Details van de**back-**  ->  **upweergave** -> de relevante Azure-VM selecteren-> opnieuw registreren)
+- Klik op **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
+- De oudere dit SDC-data base blijft aanwezig in de kluis en oudere back-upgegevens worden bewaard volgens het beleid
+- Back-up configureren voor deze data bases
+
+## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>Dit SDC naar MDC upgrade met een wijziging in SID
+
+Upgrades van dit SDC naar MDC die een SID-wijziging veroorzaken, kunnen als volgt worden verwerkt:
+
+- Zorg ervoor dat de nieuwe MDC-versie momenteel wordt [ondersteund door Azure backup](sap-hana-backup-support-matrix.md#scenario-support)
+- **Beveiliging stoppen met het bewaren van gegevens** voor de oude dit SDC-data base
+- Voer de upgrade uit. Na voltooiing is het HANA-systeem nu MDC met een systeem database en Tenant Db's
+- Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit met de juiste Details (nieuwe sid en MDC). Als gevolg van een wijziging in de SID, kunnen er problemen ontstaan met het uitvoeren van het script. Neem contact op met Azure Backup ondersteuning als u problemen ondervindt.
+- De extensie voor dezelfde computer opnieuw registreren in de Azure Portal (Details van de**back-**  ->  **upweergave** -> de relevante Azure-VM selecteren-> opnieuw registreren)
+- Klik op **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
+- De oudere dit SDC-data base blijft aanwezig in de kluis en de oude back-upgegevens worden bewaard volgens het beleid
+- Back-up configureren voor deze data bases
 
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 

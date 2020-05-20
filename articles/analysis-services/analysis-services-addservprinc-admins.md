@@ -4,16 +4,16 @@ description: Meer informatie over het toevoegen van een Automation-Service-Princ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408650"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697529"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
@@ -30,7 +30,7 @@ Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd 
 U kunt Server beheerders configureren met behulp van SQL Server Management Studio (SSMS). Als u deze taak wilt volt ooien, moet u beschikken over [Server beheerders](analysis-services-server-admins.md) machtigingen voor de Azure-server. 
 
 1. Maak in SSMS verbinding met uw Azure als server.
-2. Klik in **Server eigenschappen** > **beveiliging**op **toevoegen**.
+2. Klik in **Server eigenschappen**  >  **beveiliging**op **toevoegen**.
 3. In **een gebruiker of groep selecteren**zoekt u de geregistreerde app op naam, selecteert u en klikt u vervolgens op **toevoegen**.
 
     ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
@@ -44,7 +44,7 @@ U kunt Server beheerders configureren met behulp van SQL Server Management Studi
 U kunt Server beheerders ook configureren door de Analysis Services server te implementeren met behulp van een Azure Resource Manager sjabloon. De identiteit waarmee de implementatie wordt uitgevoerd, moet behoren tot de rol **Inzender** voor de resource in [Azure role-based Access Control (RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
-> De Service-Principal moet worden toegevoegd met de `app:{service-principal-client-id}@{azure-ad-tenant-id}`indeling.
+> De Service-Principal moet worden toegevoegd met de indeling `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
 
 De volgende Resource Manager-sjabloon implementeert een Analysis Services server met een opgegeven service-principal die is toegevoegd aan de Analysis Services beheerdersrol:
 

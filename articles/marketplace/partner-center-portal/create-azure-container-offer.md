@@ -1,31 +1,28 @@
 ---
 title: Een Azure-container aanbod maken-Azure Marketplace
-description: In dit artikel wordt uitgelegd hoe u een container aanbod maakt en publiceert naar Azure Marketplace.
+description: Meer informatie over het maken en publiceren van een container aanbod naar Azure Marketplace.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 75baddbefc2babf73fee18cafe07177a3f0fb6f2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791932"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701026"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
-
-> [!IMPORTANT]
-> We verplaatsen het beheer van uw Azure-container aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
 In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe** > **Azure-container**aanbod.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe**  >  **Azure-container**aanbod.
 
     ![Illustreert het navigatie menu.](./media/new-offer-azure-container.png)
 
@@ -37,7 +34,7 @@ In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplac
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -68,12 +65,12 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 
 1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden**. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
+   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+   - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
-> [!NOTE]
-> Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
+   > [!NOTE]
+   > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
@@ -129,7 +126,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -149,40 +146,11 @@ Een gedetailleerde beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens 
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Neem een of meer van de volgende opties op in uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- De waarde en belangrijkste voor delen van uw aanbieding bieden
-- Categorie-of branche koppelingen, of beide
-- Aankoop kansen in de app
-- Vereiste informatie
-
-Hier volgen enkele tips voor het schrijven van uw beschrijving:
-
-- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
-  - De beschrijving van de aanbieding.
-  - Het type gebruiker dat voor deel is van de aanbieding
-  - De klant heeft of de adressen van de aanbieding.
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
-- Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
-
-Als u de **Beschrijving** van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken. met nummeren, opsommings tekens, vet, cursief en inspringingen kunt u uw beschrijving beter leesbaar maken.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Illustreert de RTF-editor." border="false" :::
-
-- Gebruik deze vervolg keuzelijst om een alinea stijl toe te passen op tekst.
-
-    :::image type="content" source="media/text-editor3.png" alt-text="Illustreert het besturings element tekst stijl in de RTF-editor." border="false":::
-
-- Gebruik deze pictogrammen om nummering of opsommings tekens toe te passen op tekst.
-
-     :::image type="content" source="media/text-editor4.png" alt-text="Illustreert de besturings elementen met opsommings tekens en getallen in de RTF-editor." border="false":::
-
-- Gebruik deze pictogrammen om inspringing toe te voegen aan of te verwijderen uit tekst.
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Illustreert de inspringing-besturings elementen in de RTF-editor." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
@@ -216,7 +184,7 @@ Zie [Best practices](https://docs.microsoft.com/azure/marketplace/gtm-offer-list
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
@@ -390,11 +358,11 @@ Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagpl
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
-**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry** > **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
+**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het menu toegangs sleutel.":::
 
-**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/) > **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie.
 
 > [!NOTE]
 > Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
@@ -407,7 +375,7 @@ Klanten moeten automatisch updates kunnen ophalen van de Azure Marketplace wanne
 
 Dit veld moet een **laatste** tag bevatten die verwijst naar de nieuwste versie van uw installatie kopie op alle ondersteunde platforms. Het moet ook een versie label bevatten (bijvoorbeeld vanaf xx. xx. xx, waarbij XX een getal is). Klanten moeten [manifest Tags](https://github.com/estesp/manifest-tool) gebruiken om meerdere platforms te bereiken. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload.
 
-Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met **-** X. y of x. y. z-waarbij x, Y en z een geheel getal zijn. Als een van de **nieuwste** Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X. Y **-** of x. y. z-waarbij x, Y en z een geheel getal zijn. Als een van de **nieuwste** Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
 
 > [!NOTE]
 > Vergeet niet om een test code toe te voegen aan uw installatie kopie, zodat u de afbeelding tijdens het testen kunt identificeren.

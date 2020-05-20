@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: cfec905d61daf961d9ca71026e9b7ec82f852bd5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 7de57c9a69e60e8c342e067ff1e95a0f2cfadec8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734770"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699321"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -23,8 +23,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuw aanbod** > **Dynamics 365 voor klant betrokkenheid & PowerApps**.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuw aanbod**  >  **Dynamics 365 voor klant betrokkenheid & PowerApps**.
 
     ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-cepa.png)
 
@@ -36,7 +36,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -139,7 +139,7 @@ Geef hier Marketplace-Details op voor elke taal/markt, zoals aanbiedings naam, b
 > [!NOTE]
 > De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -149,26 +149,11 @@ Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschr
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Deze beschrijving wordt weer gegeven aan klanten in het overzicht van Marketplace-vermeldingen. Neem de toegevoegde waarde van de prijs van uw aanbod, belang rijke voor delen, categorie-en/of branche koppelingen, in-app aankoop kansen en eventuele vereiste informatie op.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Tips voor het schrijven van uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende informatie op in de toegevoegde waarde:
-  - Beschrijving van het product
-  - Het type gebruiker dat voor deel is van het product
-  - Klant behoeften of pijn dat de product adressen
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
-- Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert.  
-- Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.
-
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
-
-![De RTF-editor gebruiken](./media/rich-text-editor.png)
-
-| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
-| --- | --- | --- |
-| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
-
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 ### <a name="search-keywords"></a>Tref woorden zoeken
 
@@ -205,7 +190,7 @@ Geef hier ten minste één (en Maxi maal drie) gerelateerde marketing documenten
 Bied logo's en installatie kopieën voor uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben.
 
 >[!NOTE]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
@@ -323,9 +308,9 @@ Micro soft kan de complexiteit van het instellen van een test drive verwijderen 
 
 - **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft. Na deze periode wordt de sessie beëindigd en wordt een van uw licenties niet meer gebruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen in hele uren worden ingesteld (bijvoorbeeld ' 2 ' uur is geldig; "1,5" is niet). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
-- **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn `https://testdrive.crm.dynamics.com`geïnstalleerd (bijvoorbeeld).
+- **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld `https://testdrive.crm.dynamics.com` ).
 
-- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Bronnen** \&voor ontwikkel aars gt; **Web-API van het exemplaar (Service root URL)**, kopieer de URL die u hier `https://testdrive.crm.dynamics.com/api/data/v9.0`kunt vinden (bijvoorbeeld).
+- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \& gt; **Aanpassing** \& gt Bronnen voor ontwikkel **aars** \& gt **Web-API van het exemplaar (Service root URL)**, kopieer de URL die u hier kunt vinden (bijvoorbeeld `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Rolnaam** (vereist): Geef de naam op van de beveiligingsrol die u hebt gedefinieerd in uw aangepaste Dynamics 365-test drive. Deze beveiligingsrol naam wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 
@@ -355,7 +340,7 @@ Als u wilt dat micro soft de test drive namens u kan implementeren, maakt en ver
 
 - **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met de domein naam-URL [https://www.whatismytenantid.com](https://www.whatismytenantid.com)op.
+- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met de domein naam-URL op [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 

@@ -11,18 +11,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878541"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702149"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face-containers installeren en uitvoeren (preview-versie)
 
 Azure Cognitive Services gezicht biedt een gestandaardiseerde Linux-container voor docker die menselijke gezichten in afbeeldingen detecteert. Er worden ook kenmerken geïdentificeerd, waaronder gezichts bezienswaardigheden zoals neus en ogen, geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score. Gezicht kan ook gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook vergelijk bare gezichten in groepen organiseren door gebruik te maken van gedeelde visuele elementen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,12 +31,14 @@ U moet voldoen aan de volgende vereisten voordat u de face service-containers ge
 |Vereist|Doel|
 |--|--|
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> In Windows moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
-|Vertrouwd met docker | U hebt een basis informatie nodig over docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën. U hebt ook kennis nodig van `docker` basis opdrachten.| 
+|Vertrouwd met docker | U hebt een basis informatie nodig over docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën. U hebt ook kennis nodig van basis `docker` opdrachten.| 
 |Gezichts bron |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Face** -resource en de bijbehorende API-sleutel en de EINDPUNT-URI. Beide waarden zijn beschikbaar op het **overzicht** en op de pagina **sleutels** voor de resource. Ze zijn verplicht om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
+
+Vul het [aanvraag formulier](https://aka.ms/VisionContainersPreview) in en verzend het om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -55,7 +57,7 @@ In de volgende tabel worden de minimale en aanbevolen CPU-kernen en het geheugen
 * Elke kern moet ten minste 2,6 GHz of sneller zijn.
 * Trans acties per seconde (TPS).
 
-Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
+Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van de `docker run` opdracht.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Container installatie kopie ophalen met docker-pull
 
@@ -82,9 +84,9 @@ Nadat de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruik
 
 ## <a name="run-the-container-with-docker-run"></a>De container uitvoeren met docker-uitvoering
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{ENDPOINT_URI}` `{API_KEY}` waarden en.
 
-[Voor beelden](face-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
+[Voor beelden](face-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht zijn beschikbaar.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -104,7 +106,7 @@ Met deze opdracht gebeurt het volgende:
 Er zijn meer [voor beelden](./face-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren of de container start niet. Zie [facturering](#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren of de container start niet. Zie [facturering](#billing)voor meer informatie.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -113,7 +115,7 @@ Er zijn meer [voor beelden](./face-resource-container-config.md#example-docker-r
 
 De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. 
 
-Gebruik de host, `http://localhost:5000`voor container-api's.
+Gebruik de host, `http://localhost:5000` voor container-api's.
 
 
 <!--  ## Validate container is running -->

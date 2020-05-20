@@ -58,6 +58,7 @@
       items:
         - name: Overzicht van uitvoer
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Uitvoer naar Cosmos DB
           href: stream-analytics-documentdb-output.md
         - name: Uitvoer naar Azure SQL DB
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: Taken koppelen voor betrouwbaarheid
           href: stream-analytics-job-reliability.md
-        - name: Verifiëren met beheerde identiteit - ADLS Gen 1-uitvoer
-          href: stream-analytics-managed-identities-adls.md
         - name: SQL-referentiegegevens gebruiken
           href: sql-reference-data.md
-        - name: Verifiëren met beheerde identiteit - Blobuitvoer
-          href: blob-output-managed-identity.md
-        - name: Verifiëren met beheerde identiteit - Power BI
-          href: powerbi-output-managed-identity.md
+        - name: Verifiëren met beheerde identiteit
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob Storage
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL Database
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: Uw gegevens versleutelen
           href: data-protection.md
     - name: Oplossingen bouwen
@@ -226,6 +235,18 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: Gegevensfouten
           href: data-errors.md
+        - name: Foutcodes
+          items:
+            - name: Configuratiefouten
+              href: configuration-error-codes.md
+            - name: Gegevensfouten
+              href: data-error-codes.md
+            - name: Fouten in externe beschikbaarheid
+              href: external-availability-error-codes.md
+            - name: Externe fouten
+              href: external-error-codes.md
+            - name: Interne fouten
+              href: internal-error-codes.md
     - name: Integreren met machine learning
       items:
         - name: Sentimentanalyse met ML-modellen

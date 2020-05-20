@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 2cc8369c59905e1d1e1b794b8cbdefce1ede0a67
-  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.openlocfilehash: 21319a3de2bcd38cd5373ac68fc1c9733ab64ee4
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82739417"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593189"
 highlightedContent:
   items:
   - title: Introductiehandleiding voor Azure-ontwikkelaars
@@ -495,6 +495,13 @@ productDirectory:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
+  - title: Statische web-apps
+    summary: Bouw en implementeer full stack web-apps in Azure vanuit een GitHub-opslagplaats
+    imageSrc: ./media/index/static-apps.svg
+    azureCategories:
+    - compute
+    - web
+    url: static-web-apps/index.yml
   - title: Virtual Machine Scale Sets
     summary: Omhoog schalen naar duizenden virtuele Linux- en Windows-machines en deze beheren
     imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
@@ -599,13 +606,13 @@ productDirectory:
     - databases
     - hybrid
     url: sql-database/index.yml
-  - title: Azure SQL Database Edge (preview)
+  - title: Azure SQL Edge (preview)
     summary: Gegevensengine met kleine voetafdruk en ingebouwde AI, geoptimaliseerd voor Edge
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:
     - databases
     - iot
-    url: sql-database-edge/index.yml
+    url: azure-sql-edge/index.yml
   - title: Table Storage
     summary: NoSQL-sleutel/waarde-opslag op basis van semi-gestructureerde gegevenssets
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg

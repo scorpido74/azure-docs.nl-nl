@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254467"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701413"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Gegevens streamen als invoer in Stream Analytics
 
@@ -20,7 +20,7 @@ Stream Analytics heeft eersteklas integratie met Azure-gegevens stromen als invo
 
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
-- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) 
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of een ander abonnement.
 
@@ -30,7 +30,7 @@ Stream Analytics ondersteunt compressie voor alle invoer bronnen van de gegevens
 
 ## <a name="create-edit-or-test-inputs"></a>Invoer maken, bewerken of testen
 
-U kunt de [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-vs-code.md) gebruiken om bestaande invoer in uw streaming-taak toe te voegen en weer te geven of te bewerken. U kunt ook invoer verbindingen testen en [query's testen](stream-analytics-manage-job.md#test-your-query) vanuit voorbeeld gegevens uit de Azure Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)en [Visual Studio code](visual-studio-code-local-run.md). Wanneer u een query schrijft, vermeldt u de invoer in de component FROM. U kunt de lijst met beschik bare invoer gegevens ophalen van de **query** pagina in de portal. Als u meerdere invoer wilt gebruiken, kunt `JOIN` u er meerdere `SELECT` query's mee of schrijven.
+U kunt de [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-vs-code.md) gebruiken om bestaande invoer in uw streaming-taak toe te voegen en weer te geven of te bewerken. U kunt ook invoer verbindingen testen en [query's testen](stream-analytics-manage-job.md#test-your-query) vanuit voorbeeld gegevens uit de Azure Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)en [Visual Studio code](visual-studio-code-local-run.md). Wanneer u een query schrijft, vermeldt u de invoer in de component FROM. U kunt de lijst met beschik bare invoer gegevens ophalen van de **query** pagina in de portal. Als u meerdere invoer wilt gebruiken, kunt u er `JOIN` meerdere query's mee of schrijven `SELECT` .
 
 
 ## <a name="stream-data-from-event-hubs"></a>Gegevens streamen vanuit Event Hubs
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT Hub is een uiterst schaal bare publicatie event ingestor geoptimaliseerd voor IoT-scenario's.
 
-De standaardtime Stamp van gebeurtenissen die afkomstig zijn van een IoT Hub in Stream Analytics is het tijds tempel dat de gebeurtenis heeft ontvangen in `EventEnqueuedUtcTime`de IOT hub. Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
+De standaardtime Stamp van gebeurtenissen die afkomstig zijn van een IoT Hub in Stream Analytics is het tijds tempel dat de gebeurtenis heeft ontvangen in de IoT Hub `EventEnqueuedUtcTime` . Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
 
 ### <a name="iot-hub-consumer-groups"></a>IOT hub-consumenten groepen
 
@@ -130,11 +130,11 @@ Voor scenario's met grote hoeveel heden ongestructureerde gegevens die in de clo
 
 Logboek verwerking is een algemeen gebruikt scenario voor het gebruik van Blob Storage-invoer met Stream Analytics. In dit scenario zijn telemetriegegevens van een systeem vastgelegd en moeten ze worden geparseerd en verwerkt om zinvolle gegevens op te halen.
 
-De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de tijds tempel waarvan de BLOB voor het laatst `BlobLastModifiedUtcTime`is gewijzigd. Als een BLOB wordt geüpload naar een opslag account op 13:00 en de Azure Stream Analytics-taak is gestart met de optie *nu* op 13:01, wordt de BLOB niet opgehaald als gewijzigd tijd buiten de uitvoerings periode van de taak valt.
+De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de tijds tempel waarvan de BLOB voor het laatst is gewijzigd `BlobLastModifiedUtcTime` . Als een BLOB wordt geüpload naar een opslag account op 13:00 en de Azure Stream Analytics-taak is gestart met de optie *nu* op 13:01, wordt de BLOB niet opgehaald als gewijzigd tijd buiten de uitvoerings periode van de taak valt.
 
 Als een BLOB wordt geüpload naar een container voor opslag accounts op 13:00 en de Azure Stream Analytics-taak is gestart met *aangepaste tijd* op 13:00 of eerder, wordt de BLOB opgehaald als gewijzigd tijd binnen de taak uitvoerings periode valt.
 
-Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald.
+Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald. De tijds tempel die is toegewezen aan elke blob is alleen gebaseerd op `BlobLastModifiedTime` . De map waartoe de BLOB zich bevindt, heeft geen relatie met de toegewezen tijds tempel. Als er bijvoorbeeld een BLOB *2019/10-01/00/B1. txt* met een `BlobLastModifiedTime` van 2019-11-11 is, is de tijds tempel die is toegewezen aan deze BLOB 2019-11-11.
 
 Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens uit Azure Blob Storage-invoer elke seconde op als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
 
@@ -143,7 +143,7 @@ Voor invoer in CSV-indeling is een veldnamenrij vereist om velden voor de gegeve
 > [!NOTE]
 > Stream Analytics biedt geen ondersteuning voor het toevoegen van inhoud aan een bestaand blob-bestand. Stream Analytics elk bestand slechts één keer weer geven en alle wijzigingen die zich in het bestand voordoen nadat de taak de gegevens heeft gelezen, worden niet verwerkt. De aanbevolen procedure is om alle gegevens voor een blob-bestand tegelijk te uploaden en vervolgens extra nieuwere gebeurtenissen toe te voegen aan een ander, nieuw blob-bestand.
 
-Het uploaden van een zeer groot aantal blobs tegelijk kan ertoe leiden dat Stream Analytics lees enkele blobs in zeldzame gevallen overs laat. Het wordt aanbevolen blobs ten minste 2 seconden van de Blob-opslag te uploaden. Als deze optie niet haalbaar is, kunt u Event Hubs gebruiken om grote hoeveel heden gebeurtenissen te streamen. 
+In scenario's waarin veel blobs continu zijn toegevoegd en Stream Analytics het verwerken van de blobs als ze worden toegevoegd, is het mogelijk dat sommige blobs in zeldzame gevallen worden overgeslagen vanwege de granulatie van de `BlobLastModifiedTime` . U kunt dit verhelpen door blobs ten minste twee seconden van elkaar te uploaden. Als deze optie niet haalbaar is, kunt u Event Hubs gebruiken om grote hoeveel heden gebeurtenissen te streamen.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Blob-opslag configureren als een stroom invoer 
 
@@ -153,12 +153,12 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in de 
 | --- | --- |
 | **Invoer alias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
 | **Abonnement** | Kies het abonnement waarin de IoT Hub resource bestaat. | 
-| **Storage-account** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
+| **Opslag account** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
 | **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de Blob Storage-instellingen hand matig op te geven. |
 | **Verpakking** | De container voor de BLOB-invoer. Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Azure Blob Storage-service, moet u een container voor die BLOB opgeven. U kunt bestaande container **gebruiken** kiezen of **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
-| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}`, `{time}`, of`{partition}`<br/><br/>Voor beeld 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2:`cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
-| **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` |
-| **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel is `HH` de enige ondersteunde waarde voor uren. |
+| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}` , `{time}` , of`{partition}`<br/><br/>Voor beeld 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2:`cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
+| **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` <br/><br/> Wanneer BLOB-invoer `{date}` een of meer `{time}` paden heeft, worden de mappen in oplopende volg orde bekeken.|
+| **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel is de enige ondersteunde waarde `HH` voor uren. |
 | **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Encoding** | Voor CSV en JSON is UTF-8 momenteel de enige coderings indeling die wordt ondersteund. |

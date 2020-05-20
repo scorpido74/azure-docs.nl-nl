@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0792dd98bb554b7b430676472c27274f3312d381
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701363"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -121,7 +121,7 @@ Controleer voor meer informatie de functies [filename](develop-storage-files-ove
 > [!NOTE]
 > Functies die worden gebruikt voor de partitie-eliminatie, filepath en file info, worden momenteel niet ondersteund voor externe tabellen die niet automatisch worden gemaakt voor elke tabel die is gemaakt in Apache Spark voor Azure Synapse Analytics.
 
-Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partitioneren zodat u de functies voor het optimaliseren van query's die zijn gericht op die bestanden. Bij het uitvoeren van een [query op gepartitioneerde Spark-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch door de query gericht.
+Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partitioneren zodat u de functies voor het optimaliseren van query's die zijn gericht op die bestanden. Bij het uitvoeren van een [query op gepartitioneerde Apache Spark voor Azure Synapse-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch door de query gericht.
 
 ## <a name="use-parser_version-20-for-querying-csv-files"></a>PARSER_VERSION 2,0 gebruiken voor het uitvoeren van query's in CSV-bestanden
 

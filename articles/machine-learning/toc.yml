@@ -138,9 +138,6 @@
       href: concept-model-management-and-deployment.md
     - name: Modelportabiliteit (ONNX)
       href: concept-onnx.md
-    - name: Interpreteerbaarheid van modellen
-      displayName: explainability
-      href: how-to-machine-learning-interpretability.md
     - name: Machine learning-pijplijnen
       href: concept-ml-pipelines.md
     - name: Gereedheid en beveiliging voor bedrijven
@@ -172,6 +169,20 @@
           href: how-to-setup-authentication.md
         - name: Azure Machine Learning bewaken
           href: monitor-azure-machine-learning.md
+    - name: Verantwoordelijke ML
+      items:
+        - name: Overzicht van verantwoordelijke ML
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Interpreteerbaarheid van modellen
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Eerlijkheid in Machine Learning
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Differentiële privacy
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
 - name: Instructiegidsen
   items:
     - name: Werkruimten maken en beheren
@@ -273,6 +284,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Bekrachtigend leren
+          href: how-to-use-reinforcement-learning.md
     - name: Modellen interpreteren en uitleggen
       displayName: interpretability
       items:

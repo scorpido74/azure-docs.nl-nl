@@ -3,12 +3,12 @@ title: Hoe kan ik... in Azure-toepassing inzichten | Microsoft Docs
 description: Veelgestelde vragen in Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536859"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701955"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
 ## <a name="get-an-email-when-"></a>Een e-mail ontvangen wanneer...
@@ -16,7 +16,7 @@ ms.locfileid: "81536859"
 Stel een [Beschik baarheid-webtest](../../azure-monitor/app/monitor-web-app-availability.md)in.
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail als mijn site overbelast is
-Stel een [waarschuwing](../../azure-monitor/app/alerts.md) in voor de **reactie tijd**van de server. Een drempel waarde tussen 1 en 2 seconden zou moeten werken.
+Stel een [waarschuwing](../../azure-monitor/platform/alerts-log.md) in voor de **reactie tijd**van de server. Een drempel waarde tussen 1 en 2 seconden zou moeten werken.
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Als u een waarschuwing voor **Server uitzonderingen**wilt instellen, moet u moge
 
 ### <a name="email-on-exceptions"></a>E-mail op uitzonde ringen
 1. [Uitzonderings bewaking instellen](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Een waarschuwing instellen](../../azure-monitor/app/alerts.md) voor de metriek van het aantal uitzonde ringen
+2. [Een waarschuwing instellen](../../azure-monitor/platform/alerts-log.md) voor de metriek van het aantal uitzonde ringen
 
 ### <a name="email-on-an-event-in-my-app"></a>E-mail voor een gebeurtenis in mijn app
-Stel dat u een e-mail bericht wilt ontvangen wanneer er een specifieke gebeurtenis plaatsvindt. Application Insights biedt deze functie niet rechtstreeks, maar kan wel [een waarschuwing verzenden wanneer een metriek een drempel waarde overschrijdt](../../azure-monitor/app/alerts.md).
+Stel dat u een e-mail bericht wilt ontvangen wanneer er een specifieke gebeurtenis plaatsvindt. Application Insights biedt deze functie niet rechtstreeks, maar kan wel [een waarschuwing verzenden wanneer een metriek een drempel waarde overschrijdt](../../azure-monitor/platform/alerts-log.md).
 
 Waarschuwingen kunnen worden ingesteld op [aangepaste metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), maar geen aangepaste gebeurtenissen. Schrijf wat code om een metrische waarde te verg Roten wanneer de gebeurtenis zich voordoet:
 
@@ -65,11 +65,11 @@ Enkele punten om in overweging te nemen:
 * Omdat e-mail berichten beide op ' alert ' en ' in orde ' worden verzonden, kunt u de eenmalige gebeurtenis beschouwen als een voor waarde met twee status waarden. Een voor beeld: in plaats van de gebeurtenis ' taak voltooid ', een ' taak wordt uitgevoerd ', waarbij u e-mail berichten ontvangt aan het begin en einde van een taak.
 
 ### <a name="set-up-alerts-automatically"></a>Waarschuwingen automatisch instellen
-[Power shell gebruiken voor het maken van nieuwe waarschuwingen](../../azure-monitor/app/alerts.md#automation)
+[Power shell gebruiken voor het maken van nieuwe waarschuwingen](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Power shell gebruiken voor het beheren van Application Insights
 * [Nieuwe resources maken](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Nieuwe waarschuwingen maken](../../azure-monitor/app/alerts.md#automation)
+* [Nieuwe waarschuwingen maken](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Telemetrie scheiden van verschillende versies
 
@@ -137,10 +137,10 @@ Om het verzamelen en verzenden van telemetrie van de server **dynamisch te stopp
 ```
 
 ### <a name="other-applications"></a>Andere toepassingen
-Het is niet raadzaam Singleton te `TelemetryConfiguration.Active` gebruiken op console-of ASP.net core-toepassingen.
-Als u zelf `TelemetryConfiguration` een exemplaar hebt gemaakt `DisableTelemetry` : `true`ingesteld op.
+Het is niet raadzaam Singleton te gebruiken `TelemetryConfiguration.Active` op console-of ASP.net core-toepassingen.
+Als u zelf een exemplaar hebt gemaakt `TelemetryConfiguration` : ingesteld `DisableTelemetry` op `true` .
 
-Voor ASP.NET Core-toepassingen kunt u `TelemetryConfiguration` een instantie openen met behulp van [ASP.net core afhankelijkheids injectie](/aspnet/core/fundamentals/dependency-injection/). Meer informatie vindt u in [ApplicationInsights for ASP.net core applications](../../azure-monitor/app/asp-net-core.md) -artikel.
+Voor ASP.NET Core-toepassingen kunt u een `TelemetryConfiguration` instantie openen met behulp van [ASP.net core afhankelijkheids injectie](/aspnet/core/fundamentals/dependency-injection/). Meer informatie vindt u in [ApplicationInsights for ASP.net core applications](../../azure-monitor/app/asp-net-core.md) -artikel.
 
 ## <a name="disable-selected-standard-collectors"></a>Geselecteerde standaard verzamelaars uitschakelen
 U kunt standaard verzamelaars uitschakelen (bijvoorbeeld prestatie meter items, HTTP-aanvragen of afhankelijkheden)
@@ -156,7 +156,7 @@ De metrische gegevens die u kunt weer geven in Metrics Explorer zijn een set sys
 ### <a name="if-you-see-no-performance-counter-data"></a>Als er geen prestatie meter gegevens worden weer gegeven
 * **IIS-server** op uw eigen computer of op een virtuele machine. [Installeer status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Azure-website** : er worden nog geen prestatie meters ondersteund. Er zijn diverse metrische gegevens die u kunt ophalen als standaard onderdeel van het configuratie scherm van Azure web site.
-* **UNIX-server** - [installeren verzamelde](../../azure-monitor/app/java-collectd.md)
+* **UNIX-server**  -  [Verzamelde installeren](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Meer prestatie meter items weer geven
 * Voeg eerst [een nieuwe grafiek toe](../../azure-monitor/platform/metrics-charts.md) en kijk of de teller zich in de Basic-Set bevindt die wij bieden.

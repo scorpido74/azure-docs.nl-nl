@@ -1,14 +1,14 @@
 ---
-title: Firewall regels voor services configureren
+title: Open bare toegang tot het REGI ster configureren
 description: Configureer IP-regels voor toegang tot een Azure container Registry vanuit geselecteerde open bare IP-adressen of adresbereiken.
 ms.topic: article
-ms.date: 05/04/2020
-ms.openlocfilehash: f6459061ca486b4bf229409e6ec1ed1bd808a474
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984614"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702084"
 ---
 # <a name="configure-public-ip-network-rules"></a>Open bare IP-netwerk regels configureren
 
@@ -59,24 +59,46 @@ az acr network-rule add \
 
 ## <a name="disable-public-network-access"></a>Open bare netwerk toegang uitschakelen
 
-Schakel het open bare eind punt uit in het REGI ster om het verkeer naar virtuele netwerken met een [persoonlijke koppeling](container-registry-private-link.md)te beperken. Als u het open bare eind punt uitschakelt, worden alle firewall configuraties overschreven.
+U kunt het open bare eind punt ook uitschakelen in het REGI ster. Als u het open bare eind punt uitschakelt, worden alle firewall configuraties overschreven. U kunt bijvoorbeeld open bare toegang tot een REGI ster uitschakelen dat is beveiligd in een virtueel netwerk met behulp van een [persoonlijke koppeling](container-registry-private-link.md).
+
+### <a name="disable-public-access---cli"></a>Open bare toegang uitschakelen-CLI
+
+Als u open bare toegang wilt uitschakelen met behulp van de Azure CLI, voert u [AZ ACR update][az-acr-update] uit en stelt `--public-network-enabled` u in op `false` . 
+
+> [!NOTE]
+> Het `public-network-enabled` argument vereist Azure CLI 2.6.0 of hoger. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled false
+```
 
 ### <a name="disable-public-access---portal"></a>Open bare toegang uitschakelen-Portal
 
 1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
-1. Selecteer **uitgeschakeld**op het tabblad **open bare toegang** in **open bare toegang toestaan**. Selecteer vervolgens **Opslaan**.
+1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan**de optie **uitgeschakeld**. Selecteer vervolgens **Opslaan**.
 
 ![Open bare toegang uitschakelen][acr-access-disabled]
 
-## <a name="restore-default-registry-access"></a>Standaard toegang tot het REGI ster herstellen
 
-Als u het REGI ster wilt herstellen om standaard toegang toe te staan, werkt u de standaard actie bij. 
+## <a name="restore-public-network-access"></a>Open bare netwerk toegang herstellen
 
-### <a name="restore-default-registry-access---portal"></a>Standaard toegang tot het REGI ster herstellen-Portal
+Als u het open bare eind punt weer wilt inschakelen, werkt u de netwerk instellingen bij om open bare toegang toe te staan. Als het open bare eind punt wordt ingeschakeld, worden alle firewall configuraties overschreven. 
+
+### <a name="restore-public-access---cli"></a>Open bare toegang herstellen-CLI
+
+Voer [AZ ACR update][az-acr-update] en ingesteld `--public-network-enabled` op `true` . 
+
+> [!NOTE]
+> Het `public-network-enabled` argument vereist Azure CLI 2.6.0 of hoger. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled true
+```
+
+### <a name="restore-public-access---portal"></a>Open bare toegang herstellen-Portal
 
 1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
-1. Onder **firewall**selecteert u elk adres bereik en selecteert u vervolgens het pictogram verwijderen.
-1. Selecteer **alle netwerken**in **open bare toegang toestaan**op het tabblad **open bare toegang** . Selecteer vervolgens **Opslaan**.
+1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan** **alle netwerken**. Selecteer vervolgens **Opslaan**.
 
 ![Open bare toegang vanuit alle netwerken][acr-access-all-networks]
 

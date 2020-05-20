@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858dfa8282a06feab877bcea65de47b8455133dc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086348"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697304"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Aanbevolen procedures voor het ontwikkelen van Synapse-SQL
 In dit artikel worden richt lijnen en aanbevolen procedures beschreven voor het ontwikkelen van uw data warehouse-oplossing. 
@@ -154,7 +154,7 @@ Hierdoor krijgt u betere prestaties. Controleer voor meer informatie de functies
 
 Als uw gegevens in de opslag niet zijn gepartitioneerd, kunt u overwegen deze te partitioneren zodat u de query's met betrekking tot die bestanden optimaliseert.
 
-Bij het uitvoeren van een [query op gepartitioneerde Spark-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch in de query gericht.
+Bij het uitvoeren van een [query op gepartitioneerde Apache Spark voor externe tabellen van Azure Synapse](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden automatisch alleen de benodigde bestanden voor de query gericht.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS gebruiken om de query prestaties te verbeteren en samen te voegen
 

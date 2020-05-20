@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f230fc247c6ad94bfdfb3cdbc0f897d66313b039
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66242138"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696420"
 ---
 Hier volgt een lijst met de ondersteunde opslag accounts en de opslag typen voor het Data Box apparaat. Zie [typen opslag accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts)voor een volledige lijst van alle verschillende soorten opslag accounts en de volledige mogelijkheden hiervan.
 
@@ -24,6 +24,3 @@ Hier volgt een lijst met de ondersteunde opslag accounts en de opslag typen voor
 | Blob Storage-standaard |J | | |Zowel warm als koud worden ondersteund. |
 
 \**-Gegevens die zijn geüpload naar pagina-blobs, moeten 512 bytes, zoals vhd's, zijn uitgelijnd.*
-
->[!NOTE]
-> Gen 2-accounts van Azure Data Lake Storage worden niet ondersteund.

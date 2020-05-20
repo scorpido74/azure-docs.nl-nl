@@ -3,22 +3,22 @@ title: Gebeurtenis tellers in Application Insights | Microsoft Docs
 description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187092"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700430"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
 `EventCounter`is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
 
-Hoewel gebruikers aangepaste `EventCounters` kunnen publiceren om aan hun behoeften te voldoen, publiceert de .net Core 3,0-runtime standaard een set van deze prestatie meter items. Het document doorloopt de stappen die nodig zijn voor het verzamelen `EventCounters` en weer geven (door het systeem gedefinieerde of door de gebruiker gedefinieerde definitie) in azure-toepassing Insights.
+Hoewel gebruikers aangepaste kunnen publiceren `EventCounters` om aan hun behoeften te voldoen, publiceert de .net Core 3,0-runtime standaard een set van deze prestatie meter items. Het document doorloopt de stappen die nodig zijn voor het verzamelen en weer geven (door het `EventCounters` systeem gedefinieerde of door de gebruiker gedefinieerde definitie) in azure-toepassing Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters verzamelen met behulp van Application Insights
 
-Application Insights ondersteunt het `EventCounters` verzamelen met `EventCounterCollectionModule`de, die deel uitmaakt van het zojuist gepubliceerde Nuget-pakket [micro soft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`wordt automatisch ingeschakeld wanneer [AspNetCore](asp-net-core.md) of [WorkerService](worker-service.md)wordt gebruikt. `EventCounterCollectionModule`verzamelt tellers met een niet-Configureer bare verzamelings frequentie van 60 seconden. Er zijn geen speciale machtigingen vereist voor het verzamelen van EventCounters.
+Application Insights ondersteunt `EventCounters` het verzamelen met de `EventCounterCollectionModule` , die deel uitmaakt van het zojuist gepubliceerde nuget-pakket [micro soft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`wordt automatisch ingeschakeld wanneer [AspNetCore](asp-net-core.md) of [WorkerService](worker-service.md)wordt gebruikt. `EventCounterCollectionModule`verzamelt tellers met een niet-Configureer bare verzamelings frequentie van 60 seconden. Er zijn geen speciale machtigingen vereist voor het verzamelen van EventCounters.
 
 ## <a name="default-counters-collected"></a>Verzamelde standaard items
 
@@ -55,7 +55,7 @@ Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie me
 
 ## <a name="customizing-counters-to-be-collected"></a>Te verzamelen items aanpassen
 
-In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze aanpassing wordt uitgevoerd in de `ConfigureServices` methode van uw toepassing nadat Application Insights telemetrie-verzameling is ingeschakeld met `AddApplicationInsightsTelemetry()` ofwel `AddApplicationInsightsWorkerService()`of. Hieronder volgt een voorbeeld code van een ASP.NET Core-toepassing. Raadpleeg [Dit](worker-service.md#configuring-or-removing-default-telemetrymodules) document voor een ander type toepassingen.
+In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze aanpassing wordt uitgevoerd in de `ConfigureServices` methode van uw toepassing nadat Application Insights telemetrie-verzameling is ingeschakeld met ofwel `AddApplicationInsightsTelemetry()` of `AddApplicationInsightsWorkerService()` . Hieronder volgt een voorbeeld code van een ASP.NET Core-toepassing. Raadpleeg [Dit](worker-service.md#configuring-or-removing-default-telemetrymodules) document voor een ander type toepassingen.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -109,7 +109,7 @@ customMetrics | summarize avg(value) by name
 > [!div class="mx-imgBorder"]
 > ![Gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/analytics-event-counters.png)
 
-Voer de volgende query uit om een grafiek van een specifieke teller `ThreadPool Completed Work Item Count`te verkrijgen (bijvoorbeeld:) in de recente periode.
+Voer de volgende query uit om een grafiek van een specifieke teller te verkrijgen (bijvoorbeeld: `ThreadPool Completed Work Item Count` ) in de recente periode.
 
 ```Kusto
 customMetrics 
@@ -121,10 +121,10 @@ customMetrics
 > [!div class="mx-imgBorder"]
 > ![Chatten van een enkele teller in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Net als bij andere telemetrie heeft **customMetrics** ook `cloud_RoleInstance` een kolom die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
+Net als bij andere telemetrie heeft **customMetrics** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
 
 ## <a name="alerts"></a>Waarschuwingen
-Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/app/alerts.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
+Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/platform/alerts-log.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 

@@ -48,6 +48,8 @@
       items:
         - name: Door de klant beheerde sleutels met Azure Key Vault
           href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Netwerkrouternigsvoorkeur configureren
+      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nalevingsaanbiedingen
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ontwikkeling

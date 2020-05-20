@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660112"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701005"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -49,9 +49,9 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 Als u het script voor voorafgaande registratie uitvoert, worden de vereiste machtigingen ingesteld om Azure back-ups te maken van SAP HANA-data bases. U vindt [hier](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)meer informatie over het script dat vooraf wordt geregistreerd.
 
-### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Werkt de back-ups na de migratie van SAP HANA van 1,0 naar 2,0?
+### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>Werkt back-ups nadat SAP HANA van dit SDC naar MDC zijn gemigreerd?
 
-Raadpleeg [deze sectie](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) van de hand leiding voor het oplossen van problemen.
+Raadpleeg [deze sectie](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) van de hand leiding voor het oplossen van problemen.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Kan Azure HANA-back-ups worden ingesteld voor een virtueel IP-adres (load balancer) en niet op een virtuele machine?
 

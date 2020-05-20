@@ -3,12 +3,12 @@ title: Prestatie meter items in Application Insights | Microsoft Docs
 description: Systeem-en aangepaste .NET-prestatie meter items bewaken in Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 201338d3a904030ea961aede094b9877bfee3e36
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855107"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701476"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
 
@@ -21,16 +21,16 @@ In het deel venster metrische gegevens ziet u de standaard set prestatie meter i
 ![Prestatie meter items die zijn gerapporteerd in Application Insights](./media/performance-counters/performance-counters.png)
 
 De huidige standaard prestatie meter items die zijn geconfigureerd om te worden verzameld voor ASP.NET/ASP.NET core-webtoepassingen zijn:
-- Percentage processor\\tijd van proces
-- % Process\\processor tijd genormaliseerd
-- Geheugen\\beschik bare bytes
+- Percentage \\ processor tijd van proces
+- % Process \\ processor tijd genormaliseerd
+- Geheugen \\ beschik bare bytes
 - ASP.NET aanvragen per seconde
 - .NET CLR-uitzonde ringen per seconde
 - Uitvoerings tijd van ASP.NET ApplicationsRequest
-- Privé\\-bytes verwerken
-- I\\/o-gegevens bytes verwerken per seconde
-- Aanvragen voor\\ASP.NET-toepassingen in de toepassings wachtrij
-- Processor (_Total)\\% processor tijd
+- \\Privé-bytes verwerken
+- \\I/o-gegevens bytes verwerken per seconde
+- Aanvragen voor ASP.NET-toepassingen \\ in de toepassings wachtrij
+- Processor (_Total) \\ % processor tijd
 
 ## <a name="add-counters"></a>Items toevoegen
 
@@ -40,7 +40,7 @@ Als het gewenste prestatie meter item niet is opgenomen in de lijst met metrisch
 
     `Get-Counter -ListSet *`
 
-    (Zie [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx).)
+    (Zie [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
 2. Open ApplicationInsights. config.
 
    * Als u tijdens de ontwikkeling Application Insights aan uw app hebt toegevoegd, bewerkt u ApplicationInsights. config in uw project en implementeert u het vervolgens opnieuw op uw servers.
@@ -57,11 +57,11 @@ Als het gewenste prestatie meter item niet is opgenomen in de lijst met metrisch
     ```
 
 > [!NOTE]
-> ASP.NET Core-toepassingen hebben `ApplicationInsights.config`niet en daarom is de bovenstaande methode niet geldig voor ASP.net core toepassingen.
+> ASP.NET Core-toepassingen hebben niet `ApplicationInsights.config` en daarom is de bovenstaande methode niet geldig voor ASP.net core toepassingen.
 
 U kunt zowel standaard tellers vastleggen als de items die u zelf hebt geïmplementeerd. `\Objects\Processes`is een voor beeld van een standaard teller die beschikbaar is op alle Windows-systemen. `\Sales(photo)\# Items Sold`is een voor beeld van een aangepaste teller die kan worden geïmplementeerd in een webservice.
 
-De indeling is `\Category(instance)\Counter"`of voor categorieën die geen exemplaren hebben, alleen `\Category\Counter`.
+De indeling is `\Category(instance)\Counter"` of voor categorieën die geen exemplaren hebben, alleen `\Category\Counter` .
 
 `ReportAs`is vereist voor item namen die niet overeenkomen `[a-zA-Z()/-_ \.]+` -dat wil zeggen dat ze tekens bevatten die zich niet in de volgende sets bevinden: letters, ronde haken, slash, afbreek streepje, onderstrepings teken, spatie, punt.
 
@@ -89,7 +89,7 @@ U kunt ook hetzelfde doen met aangepaste metrische gegevens die u hebt gemaakt:
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>Prestatie meter items verzamelen in code voor ASP.NET Core-webtoepassingen
 
-Wijzig `ConfigureServices` de methode in `Startup.cs` uw klasse zoals hieronder.
+Wijzig `ConfigureServices` de methode in uw `Startup.cs` klasse zoals hieronder.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -111,7 +111,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Prestatie meter items in Analytics
 U kunt rapporten over prestatie meter items zoeken en weer geven in [Analytics](../../azure-monitor/app/analytics.md).
 
-Het **Performance Counters** -schema stelt de `category`, `counter` naam en `instance` naam van elk prestatie meter item in.  In de telemetrie voor elke toepassing ziet u alleen de items voor die toepassing. Als u bijvoorbeeld wilt zien welke items beschikbaar zijn: 
+Het **Performance Counters** -schema stelt de `category` , `counter` naam en `instance` naam van elk prestatie meter item in.  In de telemetrie voor elke toepassing ziet u alleen de items voor die toepassing. Als u bijvoorbeeld wilt zien welke items beschikbaar zijn: 
 
 ![Prestatie meter items in Application Insights Analytics](./media/performance-counters/analytics-performance-counters.png)
 
@@ -121,7 +121,7 @@ Een grafiek van het beschik bare geheugen voor de recente periode ophalen:
 
 ![Geheugen timechart in Application Insights Analytics](./media/performance-counters/analytics-available-memory.png)
 
-Net als bij andere telemetrie heeft **Performance Counters** ook `cloud_RoleInstance` een kolom die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. Als u bijvoorbeeld de prestaties van uw app op de verschillende computers wilt vergelijken: 
+Net als bij andere telemetrie heeft **Performance Counters** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. Als u bijvoorbeeld de prestaties van uw app op de verschillende computers wilt vergelijken: 
 
 ![Prestaties gesegmenteerd op rolinstantie in Application Insights Analytics](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -142,12 +142,12 @@ Zowel ASP.NET-als ASP.NET Core-toepassingen die zijn geïmplementeerd op Azure W
 De ondersteuning voor prestatie meter items in ASP.NET Core is beperkt:
 
 * Met [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) -versies 2.4.1 en hoger worden prestatie meter items verzameld als de toepassing wordt uitgevoerd in azure web apps (Windows).
-* Met SDK-versies 2.7.1 en hoger worden prestatie meter items verzameld als de toepassing wordt uitgevoerd `NETSTANDARD2.0` in Windows en doelen of hoger.
+* Met SDK-versies 2.7.1 en hoger worden prestatie meter items verzameld als de toepassing wordt uitgevoerd in Windows en doelen `NETSTANDARD2.0` of hoger.
 * Voor toepassingen die zijn gericht op de .NET Framework, worden alle versies van de SDK-prestatie meter items ondersteund.
 * SDK-versies 2.8.0 en hoger ondersteunen CPU/geheugen teller in Linux. Er wordt geen ander item ondersteund in Linux. De aanbevolen manier om systeem tellers op te halen in Linux (en andere niet-Windows-omgevingen) is met behulp van [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Waarschuwingen
-Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/app/alerts.md) om u te waarschuwen als een prestatie meter item buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
+Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/platform/alerts-log.md) om u te waarschuwen als een prestatie meter item buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Slimme detectie in Azure-toepassing Insights | Microsoft Docs
 description: Application Insights voert een automatische diep gaande analyse van uw app-telemetrie uit en waarschuwt u mogelijke problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536791"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700839"
 ---
 # <a name="smart-detection-in-application-insights"></a>Slimme detectie in Application Insights
  Slimme detectie waarschuwt automatisch mogelijke prestatie problemen en fout afwijkingen in uw webtoepassing. Er wordt proactieve analyse uitgevoerd van de telemetrie die uw app naar [Application Insights](../../azure-monitor/app/app-insights-overview.md)verzendt. Als er sprake is van een plotselinge toename van de fout frequentie of abnormale patronen in de prestaties van de client of server, ontvangt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing voldoende telemetrie verzendt.
@@ -59,6 +59,6 @@ Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecte
 
 Slimme detectie is volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
+* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md)
 * [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) 
 

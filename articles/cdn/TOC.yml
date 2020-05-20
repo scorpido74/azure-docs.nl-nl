@@ -67,6 +67,8 @@
           href: cdn-restrict-access-by-country.md
         - name: De prestaties verbeteren door bestanden te comprimeren
           href: cdn-improve-performance.md
+        - name: Eindpunt met meerdere origines
+          href: endpoint-multiorigin.md
         - name: Cachinggedrag beheren
           items:
             - name: Cachinggedrag beheren met cachingregels

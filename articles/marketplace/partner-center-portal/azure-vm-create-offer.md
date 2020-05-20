@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 05/19/2020
+ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745012"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701074"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken in azure Marketplace
 
@@ -61,8 +61,8 @@ Uw technische team moet inzicht hebben in de volgende micro soft-technologieën:
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe** > **Azure virtual machine**aanbieden.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe**  >  **Azure virtual machine**aanbieden.
 
     ![Illustreert het navigatie menu.](./media/new-offer-azure-vm.png)
 
@@ -74,7 +74,7 @@ Uw technische team moet inzicht hebben in de volgende micro soft-technologieën:
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en in Azure PowerShell en Azure CLI, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -104,7 +104,7 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
@@ -177,7 +177,7 @@ Op deze pagina kunt u details van het aanbod opgeven, zoals de naam, beschrijvin
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Naam
+#### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -197,32 +197,11 @@ Geef een langere beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens la
 
 #### <a name="description"></a>Beschrijving
 
-Geef een gedetailleerde beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van commerciële Marketplace-aanbiedingen.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Neem een of meer van de volgende opties op in uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- De waarde en belangrijkste voor delen van uw aanbieding
-- Categorie-of branche koppelingen, of beide
-- Aankoop kansen in de app
-- Vereiste informatie
-
-Hier volgen enkele tips voor het schrijven van uw beschrijving:
-
-- Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. De volgende items bevatten:
-  - Beschrijving van uw aanbieding.
-  - Het type gebruiker dat voor deel is van uw aanbieding.
-  - De behoeften van de klant of problemen die de offer-adressen hebben.
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.
-- Vertrouw niet op functies en functionaliteit om uw aanbieding te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Gebruik woorden die specifiek zijn voor de industrie of op voor delen.
-
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
-
-![De RTF-editor gebruiken](./media/rich-text-editor.png)
-
-| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
-| --- | --- | --- |
-| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
@@ -246,16 +225,16 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Dit wordt niet weer gegeven in de Marketplace.
 
-- Naam
-- E-mail
+- Name
+- Email
 - Telefoon
 
 ### <a name="engineering-contact"></a>Technische contact persoon
 
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Dit wordt niet weer gegeven in de Marketplace.
 
-- Naam
-- E-mail
+- Name
+- Email
 - Telefoon
 
 ### <a name="marketplace-media"></a>Media voor Marketplace
@@ -263,7 +242,7 @@ Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat https://upload.xboxlive.com uw lokale netwerk de service die wordt gebruikt door het partner centrum niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
 
 #### <a name="marketplace-logos"></a>Marketplace-logo's
 

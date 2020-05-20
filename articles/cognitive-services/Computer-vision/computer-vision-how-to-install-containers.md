@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f1b6b9ffb53972aa81d6dd1150640b8db9dd7be9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593326"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698570"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
@@ -37,6 +37,8 @@ U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 |Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
+
+Vul het [aanvraag formulier](https://aka.ms/VisionContainersPreview) in en verzend het om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b7580843bc5ad90ebc394c41e81f4d16f51ccb1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80891455"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701759"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-stroom logboeken van een Azure Resource Manager sjabloon configureren
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [Zo](network-watcher-nsg-flow-logging-powershell.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -110,7 +110,7 @@ Hieronder vindt u twee voor beelden van volledige sjablonen voor het instellen v
 ```
 
 > [!NOTE]
-> * De naam van de resource heeft de indeling ' bovenliggende resource>/Child-resource '. Hier is de bovenliggende resource het regionale Network Watcher exemplaar (indeling: NetworkWatcher_<RegionName>. Voor beeld: NetworkWatcher_centraluseuap)
+> * De naam van de resource heeft de indeling ' bovenliggende Resource_Child resource '. Hier is de bovenliggende resource het regionale Network Watcher exemplaar (indeling: NetworkWatcher_RegionName. Voor beeld: NetworkWatcher_centraluseuap)
 > * targetResourceId is de resource-ID van de doel-NSG
 > * Id is de resource-ID van het doel-opslag account
 
@@ -156,13 +156,18 @@ Hieronder vindt u twee voor beelden van volledige sjablonen voor het instellen v
 ## <a name="deploying-your-azure-resource-manager-template"></a>Uw Azure Resource Manager-sjabloon implementeren
 
 In deze zelf studie wordt ervan uitgegaan dat u een bestaande resource groep en een NSG hebt, waarmee u de stroom logboek registratie kunt inschakelen.
-U kunt elk van de bovenstaande voorbeeld sjablonen lokaal opslaan als `azuredeploy.json`. Werk de eigenschaps waarden zo bij dat ze verwijzen naar geldige resources in uw abonnement.
+U kunt elk van de bovenstaande voorbeeld sjablonen lokaal opslaan als `azuredeploy.json` . Werk de eigenschaps waarden zo bij dat ze verwijzen naar geldige resources in uw abonnement.
 
 Als u de sjabloon wilt implementeren, voert u de volgende opdracht uit in Power shell.
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> Met de bovenstaande opdrachten wordt een resource geïmplementeerd naar de resource groep NetworkWatcherRG en niet de resource groep met de NSG
 
 
 ## <a name="verifying-your-deployment"></a>Uw implementatie verifiëren

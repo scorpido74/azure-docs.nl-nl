@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST API-zelfstudies
       items:
+        - name: Plattegronden maken
+          href: tutorial-creator-indoor-maps.md
         - name: Een geofence instellen
           href: tutorial-geofence.md
         - name: Ruimtelijke analyse
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: De juiste prijscategorie kiezen
       href: choose-pricing-tier.md
+    - name: Creator voor plattegronden
+      items:
+        - name: Concepten van plattegronden
+          href: creator-indoor-maps.md
+        - name: Fouten en waarschuwingen over tekenconversies
+          href: drawing-conversion-error-codes.md
     - name: Dekking
       items:
         - name: Dekking voor geocodering
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: Prijscategorie beheren
           href: how-to-manage-pricing-tier.md
+        - name: Creator beheren
+          href: how-to-manage-creator.md
         - name: Metrische gegevens over het gebruik weergeven
           href: how-to-view-api-usage.md
     - name: Kaartgegevens van REST-API's ophalen
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Verkeergegevens weergeven
           href: how-to-show-traffic-android.md
+    - name: Ontwikkelen met plattegronden van Creator
+      items:
+        - name: Plattegrondmodule
+          href: how-to-use-indoor-module.md
+        - name: Dynamische opmaak voor plattegronden
+          href: indoor-map-dynamic-styling.md
+        - name: Visualisator van tekenfouten
+          href: drawing-error-visualizer.md
     - name: Gegevensfeedback geven
       href: how-to-use-feedback-tool.md
 - name: Naslaginformatie
   items:
     - name: API- en parameterextensies
       items:
+        - name: Vereisten voor tekenpakketten
+          href: drawing-requirements.md
         - name: Verbruiksmodel voor voertuig
           href: consumption-model.md
         - name: Uitgebreide GeoJSON-indeling
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: Ruimtelijke I/O-module
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: Plattegrondmoudle
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.maps/accounts
 - name: Resources

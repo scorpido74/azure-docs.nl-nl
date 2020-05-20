@@ -58,7 +58,7 @@ Het bereik van systeem sleutels wordt bepaald door de uitbrei ding, maar is in h
 
 De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sleutels:
 
-| Actie                                        | Bereik                    | Geldige sleutels         |
+| Bewerking                                        | Bereik                    | Geldige sleutels         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Een functie uitvoeren                            | Specifieke functie        | Functie           |
 | Een functie uitvoeren                            | Een functie             | Functie of host   |

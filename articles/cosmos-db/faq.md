@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675934"
+ms.locfileid: "83701390"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -93,7 +93,7 @@ De volgende voor waarden zijn van toepassing om Azure Cosmos DB-abonnementen te 
 * Globale replicatie is beschikbaar in de volgende [Azure-regio's](https://azure.microsoft.com/regions/): Centraal vs, Europa-Noord en Zuidoost-Azië
 * Maximale door Voer van 5 K RU/s wanneer ingericht op het niveau van de container.
 * Maximale door Voer van 20 K RU/s wanneer ingericht op database niveau.
-* Abonnementen verlopen na 30 dagen en kunnen worden verlengd tot een bedrag van Maxi maal 31 dagen.
+* Abonnementen verlopen na 30 dagen en kunnen worden verlengd tot een bedrag van Maxi maal 31 dagen. Na verloop van tijd wordt de informatie verwijderd.
 * Er kunnen geen ondersteunings tickets voor Azure worden gemaakt voor het proberen van Azure Cosmos DB accounts; Er wordt echter ondersteuning geboden voor abonnees met bestaande ondersteunings abonnementen.
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB instellen

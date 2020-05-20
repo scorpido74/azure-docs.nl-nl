@@ -5,14 +5,14 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06e5a1a7b107f949dbb4945ef4d3116b9fa6d076
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656594"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697340"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Wijzigingenfeed in Azure Cosmos DB lezen
 
@@ -20,7 +20,7 @@ U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een p
 
 Een pull-model, een server vraagt een werk op en vraagt deze vaak aan bij een centrale werk wachtrij. In dit geval heeft de client niet alleen bedrijfs logica voor het verwerken van wijzigingen, maar wordt ook de status opgeslagen voor de laatste verwerkte wijziging, verwerking van de taak verdeling over meerdere clients waarbij wijzigingen parallel worden verwerkt en fouten worden verwerkt.
 
-Bij het lezen van de Azure Cosmos DB wijzigings feed, wordt het gebruik van een push model meestal aanbevolen omdat u zich geen zorgen hoeft te maken over:
+Bij het lezen van de Azure Cosmos DB wijzigings feed raden wij u aan een push model te gebruiken omdat u zich geen zorgen hoeft te maken over:
 
 - De wijzigings feed wordt gecontroleerd op toekomstige wijzigingen.
 - Opslag status voor de laatst verwerkte wijziging. Bij het lezen van de wijzigings feed wordt dit automatisch opgeslagen in een [lease-container](change-feed-processor.md#components-of-the-change-feed-processor).
@@ -41,7 +41,7 @@ Het gebruik van een push model is de eenvoudigste manier om de wijzigings feed t
 
 Azure Functions is de eenvoudigste optie als u zojuist aan de slag gaat met het wijzigen van de feed. Als gevolg van de eenvoud is het ook de aanbevolen optie voor het gebruik van de meeste cases voor wijzigings invoer. Wanneer u een Azure Functions trigger voor Azure Cosmos DB maakt, selecteert u de container om verbinding te maken en wordt de functie Azure geactiveerd wanneer er een wijziging in de container optreedt. Omdat Azure Functions de Change feed-processor achter de schermen gebruikt, wordt parallelizes automatisch gewijzigd in de [partities](partition-data.md)van de container.
 
-Ontwikkelen met Azure Functions is een eenvoudige ervaring en kan sneller zijn dan de implementatie van de Change feed-processor zelf. Triggers kunnen worden gemaakt met behulp van de Azure Functions portal of via een programma met Sdk's. Visual Studio en VS code bieden ondersteuning voor het schrijven van Azure Functions, en u kunt zelfs de Azure Functions CLI gebruiken voor het ontwikkelen van meerdere platforms. U kunt de code op uw bureau blad schrijven en fouten opsporen en de functie vervolgens met één klik implementeren. Zie [serverloze database Computing met Azure functions](serverless-computing-database.md) en [gebruik change feed met Azure functions](change-feed-functions.md) artikelen voor meer informatie.
+Ontwikkelen met Azure Functions is een eenvoudige ervaring en kan sneller zijn dan de implementatie van de Change feed-processor zelf. Triggers kunnen worden gemaakt met behulp van de Azure Functions portal of programmatisch met behulp van Sdk's. Visual Studio en VS code bieden ondersteuning voor het schrijven van Azure Functions, en u kunt zelfs de Azure Functions CLI gebruiken voor het ontwikkelen van meerdere platforms. U kunt de code op uw bureau blad schrijven en fouten opsporen en de functie vervolgens met één klik implementeren. Zie [serverloze database Computing met Azure functions](serverless-computing-database.md) en [gebruik change feed met Azure functions](change-feed-functions.md) artikelen voor meer informatie.
 
 ### <a name="change-feed-processor-library"></a>De processor bibliotheek voor feeds wijzigen
 

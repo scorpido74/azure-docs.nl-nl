@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: SQL on-demand gebruiken
       href: quickstart-sql-on-demand.md
+    - name: Verbinding maken met Synapse Link voor Cosmos DB
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Zelfstudies
   items:
     - name: Apache Spark-toepassingen uitvoeren voor Spark-pools
@@ -80,7 +82,7 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Onderhoudsplanning
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Back-ups en herstellen
+        - name: Back-up en herstel
           href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Bewaking
       items:
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Resourceklassen
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Ondersteunde functies van Synapse Link
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 'Integratie van hulpprogramma''s (AI, ETL, BI)'
       items:
         - name: Problemen met Synapse Analytics Studio oplossen
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: Gegevens transformeren en analyseren
       items:
+        - name: Synapse Link
+          items:
+            - name: Verbinding maken met Azure Synapse Link voor Cosmos DB
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: Query uitvoeren op gegevens in opslag

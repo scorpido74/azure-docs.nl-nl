@@ -3,18 +3,18 @@ title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780484"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697922"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/app/alerts.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
+Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/platform/alerts-log.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
 
 De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). De basis procedure is: de JSON-definities van bestaande resources downloaden; para meters bepaalde waarden, zoals namen, en voer vervolgens de sjabloon uit wanneer u een nieuwe resource wilt maken. U kunt meerdere resources samenbundelen om ze allemaal in één keer te maken, bijvoorbeeld een app-monitor met beschikbaarheids tests, waarschuwingen en opslag voor continue export. Er zijn enkele finesses naar een aantal van de parameterizations, die hier wordt uitgelegd.
 
@@ -50,7 +50,7 @@ U kunt als volgt een nieuwe Application Insights resource maken met behulp van e
 
 ### <a name="create-the-azure-resource-manager-template"></a>De Azure Resource Manager sjabloon maken
 
-Maak een nieuw. JSON-bestand, zodat het in `template1.json` dit voor beeld kan worden aangeroepen. Kopieer deze inhoud hierin:
+Maak een nieuw. JSON-bestand, zodat het `template1.json` in dit voor beeld kan worden aangeroepen. Kopieer deze inhoud hierin:
 
 ```JSON
     {
@@ -245,7 +245,7 @@ $Resource | Set-AzResource -Force
 
 ### <a name="setting-data-retention-using-rest"></a>Gegevens bewaaring instellen met behulp van REST
 
-Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld `ARMClient`van om de huidige retentie te verkrijgen:
+Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld van `ARMClient` om de huidige retentie te verkrijgen:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -268,7 +268,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
 
 ### <a name="setting-data-retention-using-a-powershell-script"></a>Bewaren van gegevens met behulp van een Power shell-script
 
-Het volgende script kan ook worden gebruikt voor het wijzigen van de Bewaar periode. Kopieer dit script om op te `Set-ApplicationInsightsRetention.ps1`slaan.
+Het volgende script kan ook worden gebruikt voor het wijzigen van de Bewaar periode. Kopieer dit script om op te slaan `Set-ApplicationInsightsRetention.ps1` .
 
 ```PS
 Param(
@@ -350,7 +350,7 @@ armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="set-the-daily-cap-reset-time"></a>De tijd voor het instellen van de dagelijkse limiet instellen
 
-Als u de tijd voor het opnieuw instellen van dagelijks Cap wilt instellen, kunt u [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken. Hier volgt een voor beeld `ARMClient`van het gebruik van om de tijd voor opnieuw instellen in te stellen op een nieuw uur (in dit voor beeld 12:00 UTC):
+Als u de tijd voor het opnieuw instellen van dagelijks Cap wilt instellen, kunt u [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken. Hier volgt een voor beeld van het gebruik van `ARMClient` om de tijd voor opnieuw instellen in te stellen op een nieuw uur (in dit voor beeld 12:00 UTC):
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
@@ -365,13 +365,13 @@ Gebruik de cmdlet [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Als u het prijs plan wilt instellen, gebruikt u dezelfde `-PricingPlan` cmdlet met de opgegeven waarde:  
+Als u het prijs plan wilt instellen, gebruikt u dezelfde cmdlet met de `-PricingPlan` opgegeven waarde:  
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
 ```
 
-U kunt ook het prijs plan op een bestaande Application Insights resource instellen met behulp van de Resource Manager-sjabloon hierboven, waarbij de resource micro soft. Insights/onderdelen `dependsOn` en het knoop punt van de facturerings bron worden wegge laten. Als u dit bijvoorbeeld wilt instellen op het abonnement per GB (voorheen het basis abonnement genoemd), voert u de volgende handelingen uit:
+U kunt ook het prijs plan op een bestaande Application Insights resource instellen met behulp van de Resource Manager-sjabloon hierboven, waarbij de resource micro soft. Insights/onderdelen en het `dependsOn` knoop punt van de facturerings bron worden wegge laten. Als u dit bijvoorbeeld wilt instellen op het abonnement per GB (voorheen het basis abonnement genoemd), voert u de volgende handelingen uit:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -415,19 +415,19 @@ Als u beschikbaarheids testen wilt automatiseren, raadpleegt u het artikel over 
 
 Voor het automatiseren van het maken van een andere bron, maakt u hand matig een voor beeld en kopieert en para meters de code vervolgens uit [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeer omlaag `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`naar de resource van uw toepassing. 
+1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeer omlaag `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` naar de resource van uw toepassing. 
    
     ![Navigatie in Azure Resource Explorer](./media/powershell/01.png)
    
     *Onderdelen* zijn de basis bronnen van Application Insights voor het weer geven van toepassingen. Er zijn afzonderlijke resources voor de bijbehorende waarschuwings regels en beschikbaarheids webtests.
-2. Kopieer de JSON van het onderdeel naar de juiste plaats in `template1.json`.
+2. Kopieer de JSON van het onderdeel naar de juiste plaats in `template1.json` .
 3. Verwijder deze eigenschappen:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Open de `webtests` secties `alertrules` en en kopieer de JSON voor afzonderlijke items naar uw sjabloon. (Kopieer niet van de `webtests` knoop `alertrules` punten of: Ga naar de items daaronder.)
+4. Open de `webtests` secties en en `alertrules` Kopieer de JSON voor afzonderlijke items naar uw sjabloon. (Kopieer niet van de `webtests` `alertrules` knoop punten of: Ga naar de items daaronder.)
    
     Elke webtest heeft een bijbehorende waarschuwings regel, zodat u beide kunt kopiëren.
    
@@ -439,7 +439,7 @@ Voor het automatiseren van het maken van een andere bron, maakt u hand matig een
 ### <a name="parameterize-the-template"></a>De sjabloon para meters
 Nu moet u de specifieke namen vervangen door para meters. Als u [een sjabloon wilt para meters](../../azure-resource-manager/templates/template-syntax.md), schrijft u expressies met behulp [van een set hulp functies](../../azure-resource-manager/templates/template-functions.md). 
 
-U kunt niet slechts een deel van een teken reeks para meters `concat()` , zodat u teken reeksen kunt bouwen.
+U kunt niet slechts een deel van een teken reeks para meters, zodat u `concat()` teken reeksen kunt bouwen.
 
 Hier volgen enkele voor beelden van de vervangingen die u wilt maken. Er zijn verschillende exemplaren van elke vervanging. Mogelijk hebt u anderen nodig in uw sjabloon. In deze voor beelden worden de para meters en variabelen gebruikt die aan het begin van de sjabloon zijn gedefinieerd.
 

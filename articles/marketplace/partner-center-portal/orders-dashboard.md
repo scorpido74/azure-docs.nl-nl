@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261258"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699052"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dash board orders in commerciële Marketplace-analyse
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Bestellingen in Commerciële marketplace-analyses
 
 Dit artikel bevat informatie over het **dash board orders** in partner centrum. In dit dash board wordt informatie over uw orders weer gegeven in een grafische en download bare indeling.
 
@@ -104,6 +104,7 @@ In de tabel Order Details wordt een genummerde lijst met de 1000 belangrijkste o
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
 - Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op land, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, een gratis spoor, abonnements-ID, klant-ID en bedrijfs naam.
+- Omdat SaaS-aanbiedingen zijn gekocht via Azure Marketplace of AppSource geen Azure-abonnement vereist, wordt de Marketplace-abonnements-ID weer gegeven als 00000000-0000-0000-0000-000000000000 in de sectie **gedetailleerde order gegevens** .
 
 #### <a name="orders-page-filters"></a>Pagina filters voor orders
 

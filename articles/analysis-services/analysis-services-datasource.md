@@ -4,15 +4,15 @@ description: Hierin worden gegevens bronnen en connectors beschreven die worden 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71df537535003fe23902949c70b086a30a6b5049
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461654"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698135"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -87,17 +87,17 @@ Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Ana
 
 ## <a name="understanding-providers"></a>Wat zijn providers?
 
-Bij het maken van in tabel vorm 1400 en een hoger model project in Visual Studio, geeft u standaard geen gegevens provider op wanneer u verbinding maakt met een gegevens bron met behulp van **gegevens ophalen**. In tabel vorm 1400 en hogere modellen wordt gebruikgemaakt van [Power query](/power-query/power-query-what-is-power-query) connectors voor het beheren van verbindingen, gegevens query's en mashups tussen de gegevens bron en Analysis Services. Dit worden ook wel *gestructureerde* gegevens bron verbindingen genoemd in die instellingen voor de verbindings eigenschappen voor u zijn ingesteld. U kunt echter oudere gegevens bronnen inschakelen. Als u deze functie inschakelt, kunt u de **wizard tabel importeren** gebruiken om verbinding te maken met bepaalde gegevens bronnen die traditioneel worden ondersteund in tabel 1200 en lagere modellen als *verouderde*of gegevens bronnen van *providers* . Wanneer u de gegevens bron van een provider opgeeft, kunt u een bepaalde gegevens provider en andere geavanceerde verbindings eigenschappen opgeven. U kunt bijvoorbeeld verbinding maken met een on-premises SQL Server Data Warehouse of zelfs een Azure SQL Database als een verouderde gegevens bron. U kunt vervolgens het OLE DB stuur programma voor SQL Server MSOLEDBSQL-gegevens provider selecteren. In dit geval kan het selecteren van een OLE DB gegevens provider betere prestaties bieden ten opzichte van de Power Query-connector. 
+Bij het maken van in tabel vorm 1400 en een hoger model project in Visual Studio, geeft u standaard geen gegevens provider op wanneer u verbinding maakt met een gegevens bron met behulp van **gegevens ophalen**. In tabel vorm 1400 en hogere modellen wordt gebruikgemaakt van [Power query](/power-query/power-query-what-is-power-query) connectors voor het beheren van verbindingen, gegevens query's en mashups tussen de gegevens bron en Analysis Services. Dit worden ook wel *gestructureerde* gegevens bron verbindingen genoemd in die instellingen voor de verbindings eigenschappen voor u zijn ingesteld. U kunt echter verouderde gegevens bronnen inschakelen voor een model project in Visual Studio. Als u deze functie inschakelt, kunt u de **wizard tabel importeren** gebruiken om verbinding te maken met bepaalde gegevens bronnen die traditioneel worden ondersteund in tabel 1200 en lagere modellen als *verouderde*of gegevens bronnen van *providers* . Wanneer u de gegevens bron van een provider opgeeft, kunt u een bepaalde gegevens provider en andere geavanceerde verbindings eigenschappen opgeven. U kunt bijvoorbeeld verbinding maken met een on-premises SQL Server Data Warehouse of zelfs een Azure SQL Database als een verouderde gegevens bron. U kunt vervolgens het OLE DB stuur programma voor SQL Server MSOLEDBSQL-gegevens provider selecteren. In dit geval kan het selecteren van een OLE DB gegevens provider betere prestaties bieden ten opzichte van de Power Query-connector. 
 
 Wanneer u de wizard tabel importeren gebruikt in Visual Studio, is voor verbindingen met een gegevens bron een gegevens provider vereist. Er wordt een standaard gegevens provider voor u geselecteerd. U kunt de gegevens provider zo nodig wijzigen. Het type provider dat u kiest, kan afhankelijk zijn van de prestaties, ongeacht of het model gebruikmaakt van in-Memory opslag of DirectQuery, en op welke Analysis Services platform u uw model implementeert.
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Gegevens bronnen van providers opgeven in tabellaire 1400 en hoger model projecten
 
-Als u gegevens bronnen van providers wilt inschakelen, klikt u in Visual Studio op **extra** > **Opties** > **Analysis Services tabellaire** > **gegevens importeren**, selecteert u **verouderde gegevens bronnen inschakelen**.
+Als u gegevens bronnen van providers wilt inschakelen, klikt u in Visual Studio op **extra**  >  **Opties**  >  **Analysis Services tabellaire**  >  **gegevens importeren**, selecteert u **verouderde gegevens bronnen inschakelen**.
 
 ![Verouderde gegevens bronnen inschakelen](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
-Als verouderde gegevens bronnen zijn ingeschakeld, klikt u in **tabellaire model Verkenner**met de rechter muisknop op **gegevens bronnen** > **importeren uit gegevens bron (verouderd)**.
+Als verouderde gegevens bronnen zijn ingeschakeld, klikt u in **tabellaire model Verkenner**met de rechter muisknop op **gegevens bronnen**  >  **importeren uit gegevens bron (verouderd)**.
 
 ![Verouderde gegevens bronnen in Tabellaire model Verkenner](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
@@ -107,7 +107,7 @@ Net als bij tabellaire 1200 model projecten gebruikt u de **wizard tabel importe
 
 
 ## <a name="impersonation"></a>Imitatie
-In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio of SSMS.
+In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio of SQL Server Management Studio (SSMS).
 
 Voor on-premises gegevens bronnen:
 

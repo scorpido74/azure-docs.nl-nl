@@ -8,88 +8,210 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/19/2020
 ms.author: mimart
-ms.reviewer: arvindh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindh, luleon, phsignor
+ms.openlocfilehash: 2064ac929063fcdcf15c1e7495769c7d84aeef33
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519614"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698079"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eind gebruikers toestemming geven voor toepassingen
 
-Toepassingen kunnen worden geïntegreerd met het micro soft Identity-platform zodat gebruikers zich kunnen aanmelden met hun werk-of school account in Azure Active Directory (Azure AD) en om toegang te krijgen tot de gegevens van uw organisatie om uitgebreide gegevensgestuurde ervaringen te leveren. Met verschillende machtigingen kan de toepassing op verschillende manieren toegang krijgen tot de gegevens van uw gebruikers en uw organisatie.
+U kunt uw toepassingen integreren met het micro soft Identity-platform zodat gebruikers zich kunnen aanmelden met hun werk-of school account en toegang hebben tot de gegevens van uw organisatie om uitgebreide gegevensgestuurde ervaringen te leveren.
 
-Gebruikers kunnen standaard toestemming geven aan toepassingen die toegang hebben tot de gegevens van uw organisatie, maar alleen voor bepaalde machtigingen. Een gebruiker kan bijvoorbeeld standaard toestemming verlenen om een app toegang te geven tot hun eigen postvak of met de team gesprekken voor een team dat eigenaar is van de gebruiker, maar kan niet toestemming geven om een app zonder toezicht toe te staan om alle share point-sites in uw organisatie te lezen en te schrijven. Hoewel gebruikers in staat stellen om op zichzelf toestemming te geven, kunnen ze eenvoudig nuttige toepassingen verwerven die worden geïntegreerd met Microsoft 365, Azure en andere services. het kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd.
+Voordat een toepassing toegang kan krijgen tot de gegevens van uw organisatie, moet een gebruiker de toepassings machtigingen hiervoor verlenen. Met verschillende machtigingen kunnen verschillende toegangs niveaus worden toegestaan. Standaard kunnen alle gebruikers toestemming geven voor machtigingen waarvoor geen toestemming van de beheerder nodig is. Een gebruiker kan bijvoorbeeld standaard toestemming geven om toegang te krijgen tot het postvak van een app, maar kan niet toestemming geven om de toegang tot alle bestanden in uw organisatie te lezen en te schrijven voor een app onbelemmerde.
 
-Micro soft adviseert toekomstige acties voor de gebruikers toestemming uit te scha kelen om uw surface area te verminderen en dit risico te beperken. Als de toestemming van de gebruiker is uitgeschakeld, worden er nog steeds toestemming gegeven voor eerdere toestemmingen, maar moeten alle toekomstige toestemmings bewerkingen worden uitgevoerd door een beheerder. Toestemming van de beheerder voor de hele Tenant kan worden aangevraagd door gebruikers via een geïntegreerde [aanvraag werk stroom](configure-admin-consent-workflow.md) voor het beheer van toestemming of via uw eigen ondersteunings processen. Zie [vijf stappen voor het beveiligen van uw identiteits infrastructuur](../../security/fundamentals/steps-secure-identity.md) voor meer informatie.
+Door gebruikers toe te staan apps toegang te verlenen tot gegevens, kunnen gebruikers eenvoudig nuttige toepassingen verkrijgen en productief zijn. In sommige gevallen kan deze configuratie echter een risico vormen als deze niet zorgvuldig wordt bewaakt en beheerd.
 
-## <a name="configure-user-consent-to-applications"></a>Gebruikers toestemming voor toepassingen configureren
-### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Toestemming van de gebruiker voor de Azure Portal in-of uitschakelen
+## <a name="user-consent-settings"></a>Instellingen voor gebruikers toestemming
 
-U kunt de Azure Portal gebruiken om gebruikers in staat te stellen om toestemming te geven voor toepassingen die toegang hebben tot de gegevens van uw organisatie:
+Kies het toestemmings beleid dat wordt toegepast op alle gebruikers om te bepalen welke cases gebruikers toestemming kunnen geven voor toepassingen. Hier volgen de drie opties voor het toestemming beleid:
+
+* **Gebruikers toestemming uitschakelen** : gebruikers kunnen geen machtigingen toekennen aan toepassingen. Gebruikers kunnen zich blijven aanmelden bij apps die voorheen hebben gecommuniceerd naar of die zijn gemachtigd door beheerders in hun naam, maar ze mogen niet toestemming geven voor nieuwe machtigingen of aan nieuwe apps. Alleen gebruikers die een directory-rol met de machtiging voor het verlenen van toestemming hebben verleend, kunnen toestemming geven voor nieuwe machtigingen of nieuwe apps.
+
+* **Gebruikers kunnen toestemming geven voor apps van geverifieerde uitgevers, maar alleen voor door u geselecteerde machtigingen (preview)** : alle gebruikers kunnen alleen toestemming verlenen voor apps die zijn gepubliceerd door een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) en apps die zijn geregistreerd in uw Tenant. Gebruikers kunnen alleen toestemming geven voor de machtigingen die u hebt geclassificeerd als ' lage impact '.
+
+  Zorg ervoor dat u de [machtigingen classificeert](#configure-permission-classifications-preview) om te selecteren welke machtigingen gebruikers toestemming mogen geven.
+
+* **Gebruikers kunnen toestemming geven voor alle apps** : met deze optie kunnen alle gebruikers toestemming geven voor elke machtiging waarvoor geen beheerders toestemming is vereist voor elke toepassing. 
+
+   Om het risico te verkleinen dat kwaadwillende toepassingen gebruikers toegang geven tot de gegevens van uw organisatie, wordt u aangeraden alleen toestemming van de gebruiker toe te staan voor toepassingen die zijn gepubliceerd door een [gecontroleerde uitgever](../develop/publisher-verification-overview.md).
+
+### <a name="configure-user-consent-settings-from-the-azure-portal"></a>Instellingen voor gebruikers toestemming configureren van de Azure Portal
+
+Instellingen voor gebruikers toestemming configureren via de Azure Portal:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
-2. Selecteer **Azure Active Directory**en vervolgens **bedrijfs toepassingen**en vervolgens **gebruikers instellingen**.
-3. Toestemming van de gebruiker in-of uitschakelen met het besturings element met het label **gebruikers kan toestemming geven voor apps die namens hen toegang hebben tot Bedrijfs gegevens**.
-4. Beschrijving Configureer de [aanvraag werk stroom beheerder toestemming](configure-admin-consent-workflow.md) om ervoor te zorgen dat gebruikers die geen toestemming voor een app kunnen geven, goed keuring aanvragen.
+1. Selecteer **Azure Active Directory**  >  toestemming van**bedrijfs toepassingen**  >  **en machtigingen**  >  **instellingen voor gebruikers toestemming**.
+1. Selecteer onder **toestemming van de gebruiker voor toepassingen**de instelling van de toestemming die u wilt configureren voor alle gebruikers.
+1. Selecteer **Opslaan** om uw instellingen op te slaan.
+
+![Instellingen voor gebruikers toestemming](./media/configure-user-consent/configure-consent-setting-for-all-users.png)
 
 > [!TIP]
-> Om gebruikers in staat te stellen om de beoordeling van een toepassing te vragen dat de gebruiker niet toestemming mag geven (bijvoorbeeld omdat de gebruiker toestemming is gegeven, of omdat de toepassing machtigingen aanvraagt die de gebruiker niet mag verlenen), kunt u overwegen [de beheerder toestemming werk stroom te configureren](configure-admin-consent-workflow.md).
+> U kunt [de beheer goedkeurings werk stroom inschakelen](configure-admin-consent-workflow.md) om gebruikers toe te staan de controle en goed keuring van een beheerder aan te vragen van een toepassing waarbij de gebruiker niet toestemming mag geven, bijvoorbeeld wanneer toestemming van de gebruiker is uitgeschakeld of wanneer een toepassing machtigingen aanvraagt die de gebruiker niet mag verlenen.
 
-### <a name="disable-or-enable-user-consent-using-powershell"></a>Toestemming van de gebruiker in-of uitschakelen met Power shell
+### <a name="configure-user-consent-settings-using-powershell"></a>Instellingen voor gebruikers toestemming configureren met behulp van Power shell
 
-U kunt de Azure AD Power shell v1-module ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)) gebruiken voor het in-of uitschakelen van de mogelijkheid van gebruikers om toestemming te geven aan toepassingen die toegang hebben tot de gegevens van uw organisatie.
+U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview), gebruiken om te kiezen welk toestemmings beleid de gebruikers instemming voor toepassingen bepaalt.
 
-1. Meld u aan bij uw organisatie door deze cmdlet uit te voeren:
+* **Toestemming van de gebruiker uitschakelen** : als u de toestemming van de gebruiker wilt uitschakelen, stelt u het beleid voor toestemming in waarmee de toestemming van de gebruiker wordt geledigd
 
-    ```powershell
-    Connect-MsolService
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
+  ```
 
-2. Controleer of de toestemming van de gebruiker is ingeschakeld door deze cmdlet uit te voeren:
+* **Toestemming van de gebruiker toestaan voor apps van geverifieerde uitgevers, voor geselecteerde machtigingen (preview)** : om beperkte gebruikers toestemming alleen toe te staan voor apps van geverifieerde uitgevers en apps die zijn geregistreerd in uw Tenant, en alleen voor machtigingen die u als ' weinig impact ' hebt geclassificeerd, configureert u het ingebouwde toestemming beleid met de naam `microsoft-user-default-low` :
 
-    ```powershell
-    Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+  ```
 
-3. Toestemming van de gebruiker in-of uitschakelen. Als u bijvoorbeeld toestemming van de gebruiker wilt uitschakelen, voert u deze cmdlet uit:
+   Vergeet niet om [machtigingen te classificeren](#configure-permission-classifications-preview) om te selecteren welke machtigingen gebruikers toestemming mogen geven.
 
-    ```powershell
-    Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
-    ```
+* **Toestemming van de gebruiker voor alle apps toestaan** , zodat toestemming van de gebruiker voor alle apps is toegestaan:
+
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-legacy")
+  ```
+
+   Met deze optie kunnen alle gebruikers toestemming geven voor machtigingen waarvoor geen beheerders toestemming is vereist voor elke toepassing. We raden u aan om alleen toestemming van de gebruiker toe te staan voor apps van geverifieerde uitgevers.
+
+## <a name="configure-permission-classifications-preview"></a>Machtigings classificaties configureren (preview-versie)
+
+Met machtigings classificaties kunt u de invloed identificeren die verschillende machtigingen hebben volgens het beleid van uw organisatie en risico-evaluaties. U kunt bijvoorbeeld machtigings classificaties in toestemming beleid gebruiken om de set machtigingen te identificeren die gebruikers mogen toestemming geven.
+
+> [!NOTE]
+> Op dit moment wordt alleen de machtiging classificatie ' lage impact ' ondersteund. Alleen gedelegeerde machtigingen waarvoor geen beheerders toestemming is vereist, kunnen worden geclassificeerd als ' lage impact '.
+
+### <a name="classify-permissions-using-the-azure-portal"></a>Machtigingen classificeren met behulp van de Azure Portal
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+1. Selecteer **Azure Active Directory**  >  toestemming voor**bedrijfs toepassingen**  >  **en**  >  **classificaties**voor machtigingen.
+1. Kies **machtigingen toevoegen** om een andere machtiging als ' lage impact ' te classificeren. 
+1. Selecteer de API en selecteer vervolgens de gedelegeerde machtiging (en).
+
+In dit voor beeld hebben we de minimale set vereiste machtiging voor eenmalige aanmelding geclassificeerd:
+
+![Machtigings classificaties](./media/configure-user-consent/configure-permission-classifications.png)
+
+> [!TIP]
+> Voor de Microsoft Graph-API zijn de minimale machtigingen die nodig zijn voor eenvoudige enkelvoudige aanmelding `openid` ,, `profile` `User.Read` en `offline_access` . Met deze machtigingen kan een app de profiel gegevens van de aangemelde gebruiker lezen en kan deze toegang behouden, zelfs wanneer de gebruiker de app niet meer gebruikt.
+
+### <a name="classify-permissions-using-powershell"></a>Machtigingen classificeren met Power shell
+
+U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om machtigingen te classificeren. Machtigings classificaties worden geconfigureerd op het **ServicePrincipal** -object van de API die de machtigingen publiceert.
+
+#### <a name="to-read-the-current-permission-classifications-for-an-api"></a>De huidige machtigings classificaties voor een API lezen:
+
+1. Het **ServicePrincipal** -object voor de API ophalen. Hier ophalen we het ServicePrincipal-object voor de Microsoft Graph-API:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Lees de gedelegeerde machtigings classificaties voor de API:
+
+   ```powershell
+   Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId | Format-Table Id, PermissionName, Classification
+   ```
+
+#### <a name="to-classify-a-permission-as-low-impact"></a>Een machtiging als ' lage impact ' classificeren:
+
+1. Het **ServicePrincipal** -object voor de API ophalen. Hier ophalen we het ServicePrincipal-object voor de Microsoft Graph-API:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Zoek de gedelegeerde machtiging die u wilt classificeren:
+
+   ```powershell
+   $delegatedPermission = $api.OAuth2Permissions | Where-Object { $_.Value -eq "User.ReadBasic.All" }
+   ```
+
+1. Stel de machtigings classificatie in met behulp van de naam en ID van de machtiging:
+
+   ```powershell
+   Add-AzureADMSServicePrincipalDelegatedPermissionClassification `
+      -ServicePrincipalId $api.ObjectId `
+      -PermissionId $delegatedPermission.Id `
+      -PermissionName $delegatedPermission.Value `
+      -Classification "low"
+   ```
+
+#### <a name="to-remove-a-delegated-permission-classification"></a>Een gedelegeerde machtigings classificatie verwijderen:
+
+1. Het **ServicePrincipal** -object voor de API ophalen. Hier ophalen we het ServicePrincipal-object voor de Microsoft Graph-API:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Zoek de gedelegeerde machtigings classificatie die u wilt verwijderen:
+
+   ```powershell
+   $classifications = Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId
+   $classificationToRemove = $classifications | Where-Object {$_.PermissionName -eq "User.ReadBasic.All"}
+   ```
+
+1. De machtigings classificatie verwijderen:
+
+   ```powershell
+   Remove-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId `
+       -Id $classificationToRemove.Id
+   ```
 
 ## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Toestemming van groeps eigenaar configureren voor apps die toegang hebben tot groeps gegevens
 
-> [!IMPORTANT]
-> De volgende informatie is voor een aanstaande functie waarmee groeps eigenaren toepassingen toegang kunnen verlenen tot hun groeps gegevens. Wanneer deze mogelijkheid is uitgebracht, wordt deze standaard ingeschakeld. Hoewel deze functie nog niet algemeen is vrijgegeven, kunt u deze instructies gebruiken om de mogelijkheden van de release van tevoren uit te scha kelen.
+Groeps eigenaren kunnen toepassingen, zoals toepassingen die door leveranciers van derden worden gepubliceerd, machtigen om toegang te krijgen tot de gegevens van uw organisatie die aan een groep zijn gekoppeld. Een team eigenaar in micro soft teams kan bijvoorbeeld toestaan dat een app alle teams berichten in het team leest of het basis profiel van de leden van een groep vermeldt.
 
-Groeps eigenaren kunnen toepassingen (bijvoorbeeld toepassingen die door leveranciers van derden worden gepubliceerd) toestemming geven om toegang te krijgen tot de gegevens van uw organisatie die aan een groep zijn gekoppeld. Een team eigenaar (die de eigenaar is van de Office 365-groep voor het team) kan bijvoorbeeld toestaan dat een app alle teams berichten in het team leest of het basis profiel van de leden van een groep vermeldt.
+U kunt configureren welke gebruikers toestemming mogen geven om toegang te krijgen tot de gegevens van hun groepen, of u kunt deze functie uitschakelen.
 
-> [!NOTE]
-> Onafhankelijk van deze instelling mag een groeps eigenaar altijd toestaan om andere gebruikers of apps rechtstreeks als groeps eigenaren toe te voegen.
+### <a name="configure-group-owner-consent-using-the-azure-portal"></a>Toestemming van de groeps eigenaar configureren met behulp van de Azure Portal
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als [globale beheerder](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+2. Selecteer **Azure Active Directory**  >  toestemming van**bedrijfs toepassingen**  >  **en machtigingen**  >  **instellingen voor gebruikers toestemming**.
+3. Selecteer onder **toestemming van groeps eigenaar voor apps die toegang krijgen tot gegevens** de optie die u wilt inschakelen.
+4. Selecteer **Opslaan** om uw instellingen op te slaan.
+
+In dit voor beeld mogen alle groeps eigenaren toestemming geven voor apps die toegang hebben tot de gegevens van hun groepen:
+
+![Machtigings classificaties](./media/configure-user-consent/configure-group-owner-consent.png)
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Toestemming van groeps eigenaar configureren met behulp van Power shell
 
-U kunt de Azure AD Power shell preview-module ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) gebruiken om de mogelijkheid van groeps eigenaren in of uit te scha kelen, zodat toepassingen toegang krijgen tot de gegevens van uw organisatie voor de groepen waarvan ze eigenaar zijn.
+U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om de mogelijkheid van de groeps eigenaren in of uit te scha kelen, zodat toepassingen toegang krijgen tot de gegevens van uw organisatie voor de groepen waarvan ze eigenaar zijn.
 
-1. Zorg ervoor dat u de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) -module gebruikt (deze stap is belang rijk als u zowel de module [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) als de module [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) hebt geïnstalleerd).
+1. Zorg ervoor dat u de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) -module gebruikt. Deze stap is belang rijk als u de [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) -module en de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) -module hebt geïnstalleerd.
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-2. Verbinding maken met Azure AD Power shell.
+1. Verbinding maken met Azure AD Power shell.
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. Haal de huidige waarde op voor de instellingen van de map met instellingen voor het *toestemming beleid* in uw Tenant. Hiervoor moet worden gecontroleerd of de Directory-instellingen voor deze functie zijn gemaakt en als dat niet het geval is, gebruikt u de waarden uit de bijbehorende sjabloon voor Directory-instellingen.
+1. Haal de huidige waarde op voor de instellingen van de map met instellingen voor het **toestemming beleid** in uw Tenant. Hiervoor moet worden gecontroleerd of de Directory-instellingen voor deze functie zijn gemaakt en als dat niet het geval is, gebruikt u de waarden uit de bijbehorende sjabloon voor Directory-instellingen.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -104,14 +226,14 @@ U kunt de Azure AD Power shell preview-module ([AzureADPreview](https://docs.mic
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-4. Meer informatie over de instellings waarden. Er zijn twee instellingen waarden die bepalen welke gebruikers een app kunnen gebruiken om toegang te krijgen tot de gegevens van de groep:
+1. Meer informatie over de instellings waarden. Er zijn twee instellingen waarden die bepalen welke gebruikers een app kunnen gebruiken om toegang te krijgen tot de gegevens van de groep:
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Booleaans |  Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
+    | _EnableGroupSpecificConsent_   | Booleaans | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
 
-5. Update-instellingen waarden voor de gewenste configuratie:
+1. Update-instellingen waarden voor de gewenste configuratie:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -131,7 +253,7 @@ U kunt de Azure AD Power shell preview-module ([AzureADPreview](https://docs.mic
     $limitedToValue.Value = "{group-object-id}"
     ```
 
-6. Instellingen opslaan.
+1. Sla uw wijzigingen op.
 
     ```powershell
     if ($settings.Id) {
@@ -145,20 +267,20 @@ U kunt de Azure AD Power shell preview-module ([AzureADPreview](https://docs.mic
 
 ## <a name="configure-risk-based-step-up-consent"></a>Toestemming op basis van risico configuratie configureren
 
-Met behulp van op risico gebaseerde stapsgewijze toestemming kan de gebruiker minder bloot stellen aan schadelijke apps die [illegale toestemming aanvragen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)doen. Als micro soft een aanvraag voor een Risk ante toestemming van de eind gebruiker detecteert, heeft de aanvraag een ' stapsgewijs ' door gegeven aan de beheerder. Deze mogelijkheid is standaard ingeschakeld, maar dit resulteert alleen in een wijziging in het gedrag wanneer toestemming van de eind gebruiker is ingeschakeld.
+Met behulp van op risico gebaseerde stapsgewijze toestemming kan de gebruikers bloot stellen aan schadelijke apps die [illegale toestemming aanvragen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)doen. Als micro soft een aanvraag voor een Risk ante toestemming van de eind gebruiker detecteert, heeft de aanvraag een ' stapsgewijs ' door gegeven aan de beheerder. Deze mogelijkheid is standaard ingeschakeld, maar dit resulteert alleen in een wijziging in het gedrag wanneer toestemming van de eind gebruiker is ingeschakeld.
 
-Wanneer een Risk ante toestemming aanvraag wordt gedetecteerd, wordt in de toestemming prompt een bericht weer gegeven waarin wordt aangegeven dat de goed keuring van de beheerder nodig is. Als de [aanvraag werk stroom beheerder toestemming](configure-admin-consent-workflow.md) is ingeschakeld, kan de gebruiker de aanvraag naar een beheerder verzenden voor verdere controle, rechtstreeks vanuit de toestemming prompt. Als deze niet is ingeschakeld, wordt het volgende bericht weer gegeven:
+Wanneer een Risk ante toestemming aanvraag wordt gedetecteerd, wordt in de toestemming prompt een bericht weer gegeven waarin wordt aangegeven dat de goed keuring van de beheerder nodig is. Als de [aanvraag werk stroom beheerder toestemming](configure-admin-consent-workflow.md) is ingeschakeld, kan de gebruiker de aanvraag naar een beheerder verzenden voor verdere controle, rechtstreeks vanuit de toestemming prompt. Als de functie niet is ingeschakeld, wordt het volgende bericht weer gegeven:
 
-* **AADSTS90094:** &lt;clientAppDisplayName&gt; heeft toestemming nodig om toegang te krijgen tot resources in uw organisatie die alleen door een beheerder kunnen worden verleend. Vraag een beheerder om toestemming te verlenen voor deze app voordat u deze kunt gebruiken.
+* **AADSTS90094:** &lt; clientAppDisplayName &gt; heeft toestemming nodig om toegang te krijgen tot bronnen in uw organisatie die alleen door een beheerder kunnen worden verleend. Vraag een beheerder om toestemming te verlenen voor deze app voordat u deze kunt gebruiken.
 
-In dit geval wordt een controle gebeurtenis ook vastgelegd met de categorie ' ApplicationManagement ', het activiteitstype ' instemming met de toepassing ' en de status van ' Risk ante toepassing gedetecteerd '.
+In dit geval wordt er ook een controle gebeurtenis vastgelegd met de categorie ' ApplicationManagement ', het activiteitstype ' instemming met de toepassing ' en de status van ' Risk ante toepassing gedetecteerd '.
 
 > [!IMPORTANT]
-> Beheerders moeten [alle toestemming aanvragen zorgvuldig evalueren](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) voordat ze goed keuren, vooral wanneer micro soft risico heeft gedetecteerd.
+> Beheerders moeten [alle toestemming aanvragen zorgvuldig evalueren](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) voordat ze een aanvraag goed keuren, met name wanneer micro soft risico heeft gedetecteerd.
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Op risico gebaseerde Step-up van de stap uitschakelen of opnieuw inschakelen met behulp van Power shell
 
-U kunt de Azure AD Power shell preview-module ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) gebruiken om de stap-voor-beheerders toestemming uit te scha kelen die vereist is in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
+U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om de stap-tot-toestemming van de beheerder uit te scha kelen in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
 
 U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configureren van de toestemming van de [groeps eigenaar met behulp van Power shell](#configure-group-owner-consent-using-powershell), maar door een andere waarde voor de instellingen te vervangen. Er zijn drie verschillen in stappen: 
 
@@ -168,12 +290,13 @@ U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configure
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
-2. Vervang de volgende waarde in stap 3:
+1. Vervang de volgende waarde in stap 3:
 
     ```powershell
     $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
-3. Vervang een van de volgende opties in stap 5:
+    
+1. Vervang een van de volgende opties in stap 5:
 
     ```powershell
     # Disable risk-based step-up consent entirely
@@ -187,12 +310,12 @@ U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
+Zie voor meer informatie:
 
-[Meer informatie over het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen](manage-consent-requests.md)
+* [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
+* [Meer informatie over het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen](manage-consent-requests.md)
+* [Een toepassing beheerderstoestemming verlenen voor de hele tenant](grant-admin-consent.md)
+* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
 
-[Toestemming van de beheerder voor de hele Tenant verlenen aan een toepassing](grant-admin-consent.md)
-
-[Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
-
-[Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+Om hulp te krijgen of antwoorden op uw vragen te vinden:
+* [Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

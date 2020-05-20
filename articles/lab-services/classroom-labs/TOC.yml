@@ -28,6 +28,24 @@
       items:
         - name: Labs gebruiken om les te geven
           href: classroom-labs-scenarios.md
+        - name: Leslokaallabs - klastypen
+          items:
+            - name: Overzicht van klastypen
+              href: class-types.md
+            - name: Deep Learning in natuurlijke taalverwerking
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Shell-scripts in Linux
+              href: class-type-shell-scripting-linux.md
+            - name: Ethisch hacken
+              href: class-type-ethical-hacking.md
+            - name: Databasebeheer
+              href: class-type-database-management.md
+            - name: Python en Jupyter Notebooks
+              href: class-type-jupyter-notebook.md
+            - name: Ontwikkeling met Android Studio via de mobiele app
+              href: class-type-mobile-dev-android-studio.md
+            - name: Big data-analyse
+              href: class-type-big-data-analytics.md
 - name: Instructiegidsen
   items:
     - name: Beheerdershandleiding
@@ -36,29 +54,13 @@
       href: account-setup-guide.md
     - name: Handleiding voor versneld instellen van lab
       href: setup-guide.md
-    - name: Leslokaallabs - klastypen
-      items:
-        - name: Overzicht van klastypen
-          href: class-types.md
-        - name: Deep Learning in natuurlijke taalverwerking
-          href: class-type-deep-learning-natural-language-processing.md
-        - name: Shell-scripts in Linux
-          href: class-type-shell-scripting-linux.md
-        - name: Ethisch hacken
-          href: class-type-ethical-hacking.md
-        - name: Databasebeheer
-          href: class-type-database-management.md
-        - name: Python en Jupyter Notebooks
-          href: class-type-jupyter-notebook.md
-        - name: Ontwikkeling met Android Studio via de mobiele app
-          href: class-type-mobile-dev-android-studio.md
-        - name: Big data-analyse
-          href: class-type-big-data-analytics.md
     - name: Labaccounts maken en configureren (labaccounteigenaar)
       items:
         - name: Labaccounts maken en beheren
           href: how-to-manage-lab-accounts.md
-        - name: Labaccounts configureren
+        - name: Labs beheren in een labaccount
+          href: manage-labs.md
+        - name: Automatisch afsluiten configureren voor VM's
           href: how-to-configure-lab-accounts.md
         - name: Een labmaker toevoegen
           href: add-lab-creator.md
@@ -76,7 +78,7 @@
           href: specify-marketplace-images.md
         - name: Ondersteuningsinformatie opgeven (labaccounteigenaar)
           href: lab-account-owner-support-information.md
-    - name: Leslokaallabs maken en configureren (docent)
+    - name: Leslokaallabs maken en configureren (onderwijzer)
       items:
         - name: Leslokaallabs maken en beheren
           href: how-to-manage-classroom-labs.md
@@ -108,9 +110,9 @@
           href: how-to-prepare-windows-template.md
         - name: Het gedrag van Windows afsluiten bepalen
           href: how-to-windows-shutdown.md
-        - name: Ondersteuningsinformatie weergeven (docent)
+        - name: Ondersteuningsinformatie weergeven (onderwijzer)
           href: lab-creator-support-information.md
-        - name: Toegang tot VM's van studenten vanuit de docentenweergave
+        - name: Toegang tot VM's van studenten vanuit de onderwijzerweergave
           href: instructor-access-virtual-machines.md
     - name: Verbinding maken met VM's in leslokaallabs (student)
       items:

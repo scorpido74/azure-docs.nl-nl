@@ -9,6 +9,8 @@
       href: cognitive-services-and-machine-learning.md
     - name: Aangepaste subdomeinen voor Cognitive Services
       href: cognitive-services-custom-subdomains.md
+    - name: Cognitive Services-beperkingsproces
+      href: cognitive-services-gating-process.md
     - name: Taalondersteuning
       href: language-support.md
 - name: Snelstartgidsen

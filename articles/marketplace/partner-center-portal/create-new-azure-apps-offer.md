@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 22d6c37b59488633394d7f3ed5ca5b0c78371e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790684"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699516"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
-In dit artikel worden de stappen en overwegingen voor het maken van een nieuwe Azure-toepassings aanbieding in de commerciële Marketplace beschreven. U moet bekend zijn met deze concepten voordat u een nieuwe Azure-toepassings aanbieding maakt. 
+In dit artikel worden de stappen en overwegingen voor het maken van een nieuwe Azure-toepassings aanbieding in de commerciële Marketplace beschreven. U moet bekend zijn met deze concepten voordat u een nieuwe Azure-toepassings aanbieding maakt.
 
 Voordat u een nieuwe Azure-toepassings aanbieding kunt publiceren, [maakt u een commercieel Marketplace-account in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en zorgt u ervoor dat uw account is inge schreven in het commerciële Marketplace-programma.
 
@@ -90,7 +90,7 @@ Er zijn twee soorten Azure-toepassings abonnementen: oplossings sjablonen en beh
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
-Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` archief:
+Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` Archief:
 
 * Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 
@@ -107,16 +107,16 @@ Zie voor meer informatie over publicatie vereisten voor elk toepassings plan [op
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 
-1. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+1. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
 
-1. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **Azure-toepassing**.
+1. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Azure-toepassing**.
 
     ![Illustreert het navigatie menu.](./media/new-offer-azure-app.png)
 
 1. Voer op de pagina **nieuwe aanbieding** een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
      * Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-     * Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+     * Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
      * De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 1. Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -168,32 +168,25 @@ Op deze pagina kunt u de kopie en afbeeldingen voor uw aanbieding voor commerci�
 > [!NOTE]
 > De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-#### <a name="name"></a>Naam
+#### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
 #### <a name="search-results-summary"></a>Samen vatting van zoek resultaten
 
-Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens), die in de zoek resultaten kan worden gebruikt.
+Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten.
 
 #### <a name="long-summary"></a>Lange samen vatting
 
-Geef een langere beschrijving van uw aanbieding (Maxi maal 256 tekens). Deze beschrijving kan worden gebruikt in Zoek resultaten.
+Geef een langere beschrijving van uw aanbieding, Maxi maal 256 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten.
 
 #### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding (Maxi maal 3.000 tekens). Deze beschrijving wordt weer gegeven in de lijst met klanten in het overzicht. Neem de toegevoegde waarde van de prijs van uw aanbod, belang rijke voor delen, categorie-en/of branche koppelingen, in-app aankoop kansen en eventuele vereiste informatie op.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-SHere zijn enkele tips voor het schrijven van uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-* Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. De volgende items bevatten:
-  * Beschrijving van uw aanbieding.
-  * Het type gebruiker dat voor deel is van uw aanbieding.
-  * De behoeften van de klant of problemen die de offer-adressen hebben.
-* Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.
-* Vertrouw niet op functies en functionaliteit om uw aanbieding te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-* Gebruik woorden die specifiek zijn voor de industrie of op voor delen.
-* U kunt HTML-tags gebruiken om uw beschrijving te Format teren, zodat deze meer aantrekkelijker wordt.
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="search-keywords"></a>Tref woorden zoeken
 
@@ -216,7 +209,7 @@ Geef de naam, het e-mail adres en het telefoon nummer van een contact persoon vo
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat https://upload.xboxlive.com uw lokale netwerk de service die wordt gebruikt door het partner centrum niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
@@ -422,24 +415,24 @@ Op dit tabblad kunt u het implementatie pakket uploaden waarmee klanten uw plan 
 
 Op dit tabblad kunt u de concept versie van uw technische configuratie bewerken.
 
-**Versie** : wijs de huidige versie van de technische configuratie toe.  Verhoog deze versie telkens wanneer u een wijziging op deze pagina publiceert. De versie moet de indeling `{integer}.{integer}.{integer}`hebben.
+**Versie** : wijs de huidige versie van de technische configuratie toe.  Verhoog deze versie telkens wanneer u een wijziging op deze pagina publiceert. De versie moet de indeling hebben `{integer}.{integer}.{integer}` .
 
 **Pakket bestand** (. zip): dit pakket bevat alle sjabloon bestanden die nodig zijn voor dit plan en eventuele extra resources, verpakt als een `.zip` bestand.
 
-Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` archief bevatten:
+Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` Archief bevatten:
 
 * Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 * Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
 De maximale bestands grootte die wordt ondersteund zijn:
 
-* Tot 1 GB in totale gecomprimeerde `.zip` archief grootte
-* Maxi maal 1 GB voor elk afzonderlijk ongecomprimeerd bestand in het `.zip` archief  
+* Tot 1 GB in totale gecomprimeerde `.zip` Archief grootte
+* Maxi maal 1 GB voor elk afzonderlijk ongecomprimeerd bestand in het `.zip` Archief  
 
 Alle nieuwe aanbiedingen van Azure Application moeten ook een GUID voor [klant gebruik van Azure-partners](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) bevatten.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 Voor beheerde toepassings abonnementen is aanvullende informatie op dit tabblad vereist.
 
@@ -452,13 +445,13 @@ Op het tabblad **eerder gepubliceerde pakketten** kunt u alle gepubliceerde vers
 Selecteer deze optie om just-in-time-toegang (JIT) in te scha kelen voor dit abonnement.  Met JIT-toegang kunt u verhoogde toegang tot de resources van een beheerde toepassing aanvragen voor het oplossen van problemen of onderhoud. U hebt altijd alleen-lezen toegang tot de resources, maar gedurende een bepaalde periode kunt u meer toegang hebben.  Zie [just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access)voor meer informatie.  Als u wilt dat gebruikers van uw beheerde toepassing uw account permanente toegang geven, laat u deze optie uitgeschakeld.
 
 >[!Note]
->Zorg ervoor dat u het `createUiDefinition.json` bestand bijwerkt om deze functie te kunnen ondersteunen.  
+>Zorg ervoor dat u het bestand bijwerkt `createUiDefinition.json` om deze functie te kunnen ondersteunen.  
 
 #### <a name="deployment-mode"></a>Implementatie modus
 
 Selecteer of u de **volledige** of **incrementele implementatie modus** wilt configureren wanneer u dit plan implementeert: 
 
-* In de **volledige modus**leidt een herimplementatie van de toepassing door de klant tot het verwijderen van resources in de beheerde resource groep als de resources niet zijn gedefinieerd in de `mainTemplate.json`. 
+* In de **volledige modus**leidt een herimplementatie van de toepassing door de klant tot het verwijderen van resources in de beheerde resource groep als de resources niet zijn gedefinieerd in de `mainTemplate.json` . 
 * In de **incrementele modus**blijven bestaande resources ongewijzigd wanneer de toepassing opnieuw wordt geïmplementeerd.
 
 Zie [Azure Resource Manager-implementatie modi](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes)voor meer informatie over de implementatie modi.
@@ -469,7 +462,7 @@ Geef een HTTPS-webhook-eind punt op om meldingen over alle ruwe bewerkingen op b
 
 #### <a name="customize-allowed-customer-actions"></a>Toegestane klant acties aanpassen
 
-Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de`*/read`acties die standaard beschikbaar zijn. 
+Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de `*/read` acties die standaard beschikbaar zijn. 
 
 Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Zie Azure Resource Manager-bewerkingen voor de [resource provider](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)voor beschik bare acties. Als u bijvoorbeeld wilt toestaan dat gebruikers virtuele machines opnieuw opstarten, `Microsoft.Compute/virtualMachines/restart/action` moet u de toegestane acties toevoegen.
 
@@ -519,7 +512,7 @@ Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test 
 Als u wilt dat het test station namens u kan worden geïmplementeerd, maakt en geeft u een afzonderlijk, uniek Azure-abonnement (niet vereist voor Power BI test stations).
 
 * **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
-* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL [https://www.whatismytenantid.com](https://www.whatismytenantid.com)op:.
+* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 * **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links Navigator, selecteert u **app-registraties**en zoekt u naar het **toepassings-id** -nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)

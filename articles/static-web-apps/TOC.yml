@@ -1,0 +1,61 @@
+- name: Documentatie voor statische web-apps van Azure
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over statische web-apps
+      href: overview.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Uw eerste statische web-app bouwen
+      href: getting-started.md
+- name: Concepten
+  items:
+    - name: API-ondersteuning met Azure Functions
+      href: apis.md
+    - name: Routes
+      href: routes.md
+    - name: Verificatie en autorisatie
+      href: authentication-authorization.md
+    - name: Gebruikersgegevens openen
+      href: user-information.md
+    - name: Pull-aanvragen in de pre-productieomgevingen controleren
+      href: review-publish-pull-requests.md
+    - name: Aangepast domein
+      href: custom-domain.md
+    - name: Bouw- en werkstroomconfiguratie
+      href: github-actions-workflow.md
+- name: Instructiegidsen
+  items:
+    - name: Lokale ontwikkeling instellen
+      href: local-development.md
+    - name: Een API toevoegen
+      href: add-api.md
+    - name: App-instellingen configureren
+      href: application-settings.md
+- name: Zelfstudies
+  items:
+    - name: Publiceren vanuit een statische sitegenerator
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: Implementeren vanuit een framework
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: Resources
+  items:
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+      items:
+        - name: 'Een Angular-, React-, Svelte- of Vue JavaScript-app en -API publiceren'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Een statische web-app maken en publiceren met Gatsby
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Quota
+      href: quotas.md

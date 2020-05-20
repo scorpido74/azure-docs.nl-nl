@@ -4,15 +4,15 @@ description: Hierin wordt beschreven hoe u logboek registratie kunt instellen om
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128933"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701489"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
 
@@ -90,7 +90,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
 3. Klik op **Opslaan**.
 
-    Als er een fout bericht wordt weer gegeven dat het bijwerken van de diagnostische gegevens voor \<de werkruimte naam> is mislukt. \<De abonnements-id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
+    Als er een fout bericht wordt weer gegeven dat het bijwerken van de diagnostische gegevens voor de \< werkruimte naam> is mislukt. De abonnements \< -id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
 
     Als u wilt wijzigen hoe uw bron logboeken op elk moment in de toekomst worden opgeslagen, kunt u teruggaan naar deze pagina om de instellingen te wijzigen.
 
@@ -158,7 +158,7 @@ Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk r
 
 ![Opties voor logboek zoeken in het Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Vouw in de opbouw functie voor query's **LogManagement** > **AzureDiagnostics**uit. AzureDiagnostics bevat engine-en service gebeurtenissen. U ziet dat er aan de vlucht een query wordt gemaakt. Het veld\_EventClass s bevat xEvent-namen. Dit kan er als volgt uitzien als u xEvents hebt gebruikt voor on-premises logboek registratie. Klik **op\_EventClass s** of een van de gebeurtenis namen en log Analytics werk ruimte blijft een query maken. Vergeet niet om uw query's op te slaan, zodat u ze later opnieuw kunt gebruiken.
+Vouw in de opbouw functie voor query's **LogManagement**  >  **AzureDiagnostics**uit. AzureDiagnostics bevat engine-en service gebeurtenissen. U ziet dat er aan de vlucht een query wordt gemaakt. Het \_ veld EventClass s bevat xEvent-namen. Dit kan er als volgt uitzien als u xEvents hebt gebruikt voor on-premises logboek registratie. Klik op **EventClass \_ s** of een van de gebeurtenis namen en log Analytics werk ruimte blijft een query maken. Vergeet niet om uw query's op te slaan, zodat u ze later opnieuw kunt gebruiken.
 
 ### <a name="example-queries"></a>Voorbeelden van query's
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 U kunt een bestaand opslag account voor uw Logboeken gebruiken, op voor waarde dat het zich in hetzelfde abonnement als uw server bevindt. Voor deze zelf studie maakt u een nieuw opslag account dat is toegewezen aan Analysis Services Logboeken. Om het eenvoudig te maken, slaat u de details van het opslag account op in een variabele met de naam **sa**.
 
-U kunt ook dezelfde resource groep gebruiken als die waarin uw Analysis Services-server is opgenomen. Vervang waarden voor `awsales_resgroup`, `awsaleslogs`en `West Central US` door uw eigen waarden:
+U kunt ook dezelfde resource groep gebruiken als die waarin uw Analysis Services-server is opgenomen. Vervang waarden voor `awsales_resgroup` , `awsaleslogs` en door `West Central US` uw eigen waarden:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652568"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697877"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -646,11 +646,9 @@ De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met 
 
 * Wanneer u de API van een Azure Cosmos DB gebruikt voor een MongoDB-account met een persoonlijke koppeling, werken sommige hulpprogram ma's of bibliotheken mogelijk niet wanneer ze de `appName` para meter automatisch uit de Connection String verwijderen. Deze para meter is vereist om verbinding te maken met het account via een persoonlijk eind punt. Sommige hulpprogram ma's, zoals Visual Studio code, verwijderen deze para meter niet uit de connection string en zijn daarom compatibel.
 
-* U kunt een virtueel netwerk niet verplaatsen of verwijderen als het een persoonlijke koppeling bevat.
-
-* U kunt geen failover uitvoeren voor een Azure Cosmos-account naar een regio die niet is toegewezen aan alle persoonlijke eind punten die aan het account zijn gekoppeld.
-
 * Aan een netwerk beheerder moet ten minste de `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` machtiging voor het bereik van het Azure Cosmos-account worden verleend om automatisch goedgekeurde privé-eind punten te maken.
+
+* De directe modus wordt momenteel niet ondersteund in azure-regio's op basis van China.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Beperkingen voor de integratie van particuliere DNS-zones
 

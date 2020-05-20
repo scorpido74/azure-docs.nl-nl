@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 751c85559330272e84e628d22756d47c24b08711
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106437"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701663"
 ---
 # <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Toegang tot data bases verlenen aan geverifieerde gebruikers SQL Database en Azure Synapse Analytics met behulp van aanmeldingen en gebruikers accounts
 
@@ -25,7 +25,7 @@ In dit artikel vindt u meer informatie over:
 
 - Opties voor het configureren van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) om gebruikers in staat te stellen beheer taken uit te voeren en toegang te krijgen tot de gegevens die zijn opgeslagen in deze data bases.
 - De configuratie voor toegang en autorisatie na het maken van een nieuwe Azure SQL Database
-- Aanmeldingen en gebruikers accounts toevoegen aan de hoofd database en gebruikers accounts en vervolgens deze accounts beheer machtigingen verlenen
+- Aanmeldingen en gebruikers accounts toevoegen in de hoofd database en deze accounts vervolgens beheerders machtigingen verlenen
 - Gebruikers accounts toevoegen in gebruikers databases, gekoppeld aan aanmeldingen of als opgenomen gebruikers accounts
 - Gebruikers accounts met machtigingen in gebruikers databases configureren met behulp van database rollen en expliciete machtigingen
 
@@ -57,7 +57,7 @@ Wanneer u uw eerste Azure SQL-implementatie maakt, geeft u een beheerders aanmel
 
 - Er wordt een SQL-aanmelding met Administrator bevoegdheden gemaakt met behulp van de aanmeldings naam die u hebt opgegeven. Een [aanmelding](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) is een afzonderlijke gebruikers account voor aanmelding bij SQL database.
 - Aan deze aanmelding worden volledige beheerders machtigingen voor alle data bases verleend als [principal op server niveau](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Deze aanmelding heeft alle beschik bare machtigingen binnen SQL Database en kan niet worden beperkt. In een beheerd exemplaar wordt deze aanmelding toegevoegd aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (deze rol bestaat niet met één of gegroepeerde Data bases).
-- Een [gebruikers account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) met `dbo` de naam wordt gemaakt voor deze aanmelding in elke gebruikers database. De [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) -gebruiker heeft alle database machtigingen in de data base en is toegewezen `db_owner` aan de vaste databaserol. Aanvullende vaste database rollen worden verderop in dit artikel besproken.
+- Een [gebruikers account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) met de naam `dbo` wordt gemaakt voor deze aanmelding in elke gebruikers database. De [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) -gebruiker heeft alle database machtigingen in de data base en is toegewezen aan de `db_owner` vaste databaserol. Aanvullende vaste database rollen worden verderop in dit artikel besproken.
 
 Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad **Eigenschappen** van de server of het beheerde exemplaar.
 
@@ -89,12 +89,12 @@ Op dit moment wordt uw Azure SQL-exemplaar alleen geconfigureerd voor toegang me
 
   - Een extra SQL-aanmelding in de hoofd database maken voor een implementatie van één of gegroepeerde Data Base, of voor een implementatie van een beheerd exemplaar
   - Een gebruikers account maken in de hoofd database die is gekoppeld aan deze nieuwe aanmelding
-  - Voeg het gebruikers account toe aan `dbmanager`de, `loginmanager` de-rol of beide in `master` de-data base met behulp van de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (voor Azure Synapse Analytics gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
+  - Voeg het gebruikers account toe aan de `dbmanager` , de- `loginmanager` rol of beide in de- `master` Data Base met behulp van de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (voor Azure Synapse Analytics gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
   > `dbmanager`en `loginmanager` rollen hebben **geen** betrekking op implementaties van beheerde exemplaren.
 
-  Leden van deze [speciale hoofd database rollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) voor één of gegroepeerde Data bases kunnen de gebruikers een bevoegdheid bieden voor het maken en beheren van data bases of voor het maken en beheren van aanmeldingen. In data bases die zijn gemaakt door een gebruiker die lid `dbmanager` is van de rol, wordt het lid `db_owner` toegewezen aan de vaste databaserol en kan die data base worden aangemeld en `dbo` beheerd met behulp van het gebruikers account. Deze rollen hebben geen expliciete machtigingen buiten de hoofd database.
+  Leden van deze [speciale hoofd database rollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) voor één of gegroepeerde Data bases kunnen de gebruikers een bevoegdheid bieden voor het maken en beheren van data bases of voor het maken en beheren van aanmeldingen. In data bases die zijn gemaakt door een gebruiker die lid is van de `dbmanager` rol, wordt het lid toegewezen aan de `db_owner` vaste databaserol en kan die data base worden aangemeld en beheerd met behulp van het `dbo` gebruikers account. Deze rollen hebben geen expliciete machtigingen buiten de hoofd database.
 
   > [!IMPORTANT]
   > U kunt geen extra SQL-aanmelding met volledige beheerders machtigingen maken in een enkele of gegroepeerde Data Base.
@@ -116,7 +116,7 @@ U kunt met een van de volgende twee methoden accounts maken voor gebruikers die 
   Met deze methode worden de verificatie gegevens van de gebruiker opgeslagen in elke Data Base en automatisch gerepliceerd naar geo-gerepliceerde data bases. Als hetzelfde account echter bestaat in meerdere data bases en u SQL-verificatie gebruikt, moet u de wacht woorden hand matig synchroniseren. Als een gebruiker ook een account in verschillende data bases met verschillende wacht woorden heeft, kan het onthouden van die wacht woorden een probleem worden.
 
 > [!IMPORTANT]
-> Als u Inge sloten gebruikers wilt maken die zijn toegewezen aan Azure AD-identiteiten, moet u zijn aangemeld met een Azure AD-account dat een beheerder is in de SQL Database. In een beheerd exemplaar kan een SQL- `sysadmin` aanmelding met machtigingen ook een Azure AD-aanmelding of-gebruiker maken.
+> Als u Inge sloten gebruikers wilt maken die zijn toegewezen aan Azure AD-identiteiten, moet u zijn aangemeld met een Azure AD-account dat een beheerder is in de SQL Database. In een beheerd exemplaar kan een SQL-aanmelding met `sysadmin` machtigingen ook een Azure AD-aanmelding of-gebruiker maken.
 
 Voor voor beelden van het maken van aanmeldingen en gebruikers raadpleegt u:
 

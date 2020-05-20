@@ -1,0 +1,75 @@
+- name: Documentatie voor SQL Edge
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat is SQL Edge?
+      href: overview.md
+    - name: Ondersteunde edities en functies
+      href: features.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: SQL Edge implementeren
+      href: deploy-portal.md
+    - name: ONNX-modellen implementeren in SQL Edge
+      href: deploy-onnx.md
+- name: Zelfstudies
+  items:
+    - name: Gegevens synchroniseren met Azure Data Factory
+      href: tutorial-sync-data-factory.md
+    - name: Gegevens synchroniseren met SQL Data Sync
+      href: tutorial-sync-data-sync.md
+    - name: Een end-to-end IoT-oplossing bouwen met SQL Edge
+      items:
+        - name: Azure-resources instellen
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge-modules instellen
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Model implementeren in SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: Procedures
+  items:
+    - name: DAC-pakketten en Stream Analytics-taken
+      href: stream-analytics.md
+    - name: Replicatie configureren
+      href: configure-replication.md
+    - name: Gegevenswijzigingen bijhouden
+      href: track-data-changes.md
+    - name: T-SQL-streamingtaken beheren
+      href: create-stream-analytics-job.md
+    - name: Verbinding maken met SQL Edge
+      href: connect.md
+    - name: SQL Edge configureren
+      href: configure.md
+    - name: DAC-pakket implementeren
+      href: deploy-dacpac.md
+- name: Concepten
+  items:
+    - name: Machine learning en AI met ONNX trainen
+      href: onnx-overview.md
+    - name: Back-ups en herstellen
+      href: backup-restore.md
+    - name: Gegevensstreaming in SQL Edge
+      items:
+        - name: Gegevens streamen
+          href: stream-data.md
+        - name: Externe stroom maken (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: Externe stroom bewerken (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: Externe stroom stoppen (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: Weergaven en DMV's streamen
+          items:
+            - name: Weergaven en DMV's streamen
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: Tijdreeksgegevens verwerken
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md

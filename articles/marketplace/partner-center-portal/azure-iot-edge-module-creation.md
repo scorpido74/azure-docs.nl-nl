@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 21fc51aef664b2ea9360c4d8ca8e722bb7bbb349
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701156"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
@@ -21,8 +21,8 @@ In dit artikel wordt beschreven hoe u een Internet of Things (IoT) Edge-module a
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **IOT Edge module**.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **IOT Edge module**.
 
     ![Illustreert het navigatie menu.](./media/new-offer-iot-edge.png)
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u een Internet of Things (IoT) Edge-module a
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -91,7 +91,7 @@ Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het g
 
 #### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt. Op de pagina bladeren worden alle IOT Edge modules weer gegeven in de categorie **Internet of Things > IOT Edge module** .
+Selecteer mini maal één en Maxi maal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt. Op de pagina bladeren worden alle IoT Edge modules weer gegeven in de categorie **Internet of Things > IOT Edge module**   .
 
 #### <a name="legal"></a>Juridisch
 
@@ -126,7 +126,7 @@ Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeve
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -146,44 +146,15 @@ Geef een gedetailleerdere beschrijving van uw aanbieding. Dit kan Maxi maal 256 
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Neem een of meer van de volgende opties op in uw beschrijving:
+IoT Edge module-aanbiedingen moeten aan de onderkant van de beschrijving een alinea met minimale hardwarevereisten bevatten, zoals:
 
-- De waarde en belangrijkste voor delen van uw aanbieding bieden
-- Categorie-of branche koppelingen, of beide
-- Aankoop kansen in de app
-- Vereiste informatie
+- Minimale hardwarevereisten: Linux x64 en arm32 OS, 1 GB RAM, 500 MB aan opslag ruimte
 
-De IoT Edge module-aanbiedingen moeten onder aan de beschrijving een alinea met minimale hardwarevereisten bevatten. Bijvoorbeeld:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-*Minimale hardwarevereisten: Linux x64 en arm32 OS, 1 GB RAM, 500 MB aan opslag ruimte*
-
-Hier volgen enkele tips voor het schrijven van uw beschrijving:
-
-- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
-    - De beschrijving van de aanbieding.
-    - Het type gebruiker dat voor deel is van de aanbieding.
-    - De klant heeft of de adressen van de aanbieding.
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
-- Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
-
-Als u de **Beschrijving** van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken. Met de RTF-editor kunt u nummers, opsommings tekens, vet, cursief en inspringingen toevoegen om uw beschrijving beter leesbaar te maken.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Illustreert de RTF-editor." border="false":::
-
-- Als u de indeling van de inhoud wilt wijzigen, markeert u de tekst die u wilt opmaken en selecteert u een tekst stijl, zoals in deze scherm afbeelding wordt weer gegeven:
-
-     :::image type="content" source="media/text-editor3.png" alt-text="Illustreert het besturings element tekst stijl in de RTF-editor." border="false":::
-
-- Als u een lijst met opsommings tekens of nummering wilt toevoegen aan de tekst, gebruikt u de opties die worden weer gegeven in deze scherm opname:
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="Illustreert de besturings elementen met opsommings tekens en getallen in de RTF-editor." border="false":::
-
-- Als u een inspringing wilt toevoegen aan of verwijderen uit de tekst, gebruikt u de opties die worden weer gegeven in deze scherm opname:
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Illustreert de inspringing-besturings elementen in de RTF-editor." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>URL van privacybeleid
 
@@ -219,7 +190,7 @@ Zie [Aanbevolen procedures](https://docs.microsoft.com/azure/marketplace/gtm-off
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
@@ -397,11 +368,11 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
-**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry** > **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
+**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Illustreert het toegangs sleutel scherm in Azure Portal.":::
 
-**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/) > **opslagplaatsen**te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie. Houd er rekening mee dat de naam niet kan worden gewijzigd nadat deze is ingesteld. Gebruik een unieke naam voor elke aanbieding in uw account.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen**te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie. Houd er rekening mee dat de naam niet kan worden gewijzigd nadat deze is ingesteld. Gebruik een unieke naam voor elke aanbieding in uw account.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldings Tags voor nieuwe versies van uw aanbieding
 

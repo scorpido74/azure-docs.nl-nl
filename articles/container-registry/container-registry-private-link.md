@@ -2,13 +2,13 @@
 title: Persoonlijke koppeling instellen
 description: Een persoonlijk eind punt instellen in een container register en toegang inschakelen via een persoonlijke koppeling in een lokaal virtueel netwerk
 ms.topic: article
-ms.date: 05/07/2020
-ms.openlocfilehash: 46ec816d85a528fd3208026ef76dff8470154767
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982423"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701410"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
 
@@ -24,8 +24,8 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, wordt Azure CLI-versie 2.2.0 of hoger aanbevolen. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli]. Of voer uit in [Azure Cloud shell](../cloud-shell/quickstart.md).
-* Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en [importeert](container-registry-import-images.md) u een `hello-world` voorbeeld installatie kopie, bijvoorbeeld van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken.
+* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, wordt Azure CLI-versie 2.6.0 of hoger aanbevolen. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli]. Of voer uit in [Azure Cloud shell](../cloud-shell/quickstart.md).
+* Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en [importeert](container-registry-import-images.md) u een voorbeeld installatie kopie, bijvoorbeeld `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken.
 * Als u toegang tot het REGI ster wilt configureren met behulp van een persoonlijke koppeling in een ander Azure-abonnement, moet u de resource provider registreren voor Azure Container Registry in dat abonnement. Bijvoorbeeld:
 
   ```azurecli
@@ -114,7 +114,7 @@ REGISTRY_ID=$(az acr show --name $REGISTRY_NAME \
 
 Voer de opdracht [AZ Network private-endpoint Create][az-network-private-endpoint-create] uit om het persoonlijke eind punt van het REGI ster te maken.
 
-In het volgende voor beeld wordt het eind punt *myPrivateEndpoint* en de *myConnection*voor de service verbinding gemaakt. Als u een container register bron voor het eind punt wilt `--group-ids registry`opgeven, geeft u het volgende door:
+In het volgende voor beeld wordt het eind punt *myPrivateEndpoint* en de *myConnection*voor de service verbinding gemaakt. Als u een container register bron voor het eind punt wilt opgeven, geeft u het `--group-ids registry` volgende door:
 
 ```azurecli
 az network private-endpoint create \
@@ -160,7 +160,7 @@ DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
 
 ### <a name="create-dns-records-in-the-private-zone"></a>DNS-records in de privé zone maken
 
-Met de volgende opdrachten maakt u DNS-records in de privé zone voor het eind punt van het REGI ster en het bijbehorende gegevens eindpunt. Als u bijvoorbeeld een REGI ster met de naam *myregistry* in de *Europa West* -regio hebt, zijn `myregistry.azurecr.io` de namen `myregistry.westeurope.data.azurecr.io`van het eind punt en. 
+Met de volgende opdrachten maakt u DNS-records in de privé zone voor het eind punt van het REGI ster en het bijbehorende gegevens eindpunt. Als u bijvoorbeeld een REGI ster met de naam *myregistry* in de *Europa West* -regio hebt, zijn de namen van het eind punt `myregistry.azurecr.io` en `myregistry.westeurope.data.azurecr.io` . 
 
 > [!NOTE]
 > Als uw REGI ster [geo-gerepliceerd](container-registry-geo-replication.md)is, maakt u extra DNS-records voor het IP-adres van het gegevens eindpunt van de replica.
@@ -207,14 +207,14 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
 
 1. Wanneer u een REGI ster maakt in de portal, selecteert u op het tabblad **basis beginselen** in **SKU**de optie **Premium**.
 1. Selecteer het tabblad **netwerken** .
-1. Selecteer in **netwerk connectiviteit** **persoonlijke eind punt** > **+ toevoegen**.
+1. Selecteer in **netwerk connectiviteit** **persoonlijke eind punt**  >  **+ toevoegen**.
 1. Voer de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
-    | Naam | Voer een unieke naam in. |
+    | Name | Voer een unieke naam in. |
     | Subbron |**REGI ster** selecteren|
     | **Netwerken** | |
     | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
@@ -240,7 +240,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
     | **Exemplaar Details** |  |
-    | Naam | Voer een naam in. |
+    | Name | Voer een naam in. |
     |Regio|Selecteer een regio.|
     |||
 5. Selecteer **volgende: resource**.
@@ -282,7 +282,21 @@ Uw persoonlijke koppeling is nu geconfigureerd en gereed voor gebruik.
 
 ## <a name="disable-public-access"></a>Open bare toegang uitschakelen
 
-Voor veel scenario's schakelt u de toegang tot het REGI ster vanuit open bare netwerken uit. Deze configuratie voor komt dat clients buiten het virtuele netwerk de register eindpunten kunnen bereiken. Open bare toegang via de portal uitschakelen:
+Voor veel scenario's schakelt u de toegang tot het REGI ster vanuit open bare netwerken uit. Deze configuratie voor komt dat clients buiten het virtuele netwerk de register eindpunten kunnen bereiken. 
+
+### <a name="disable-public-access---cli"></a>Open bare toegang uitschakelen-CLI
+
+Als u open bare toegang wilt uitschakelen met behulp van de Azure CLI, voert u [AZ ACR update][az-acr-update] uit en stelt `--public-network-enabled` u in op `false` . 
+
+> [!NOTE]
+> Het `public-network-enabled` argument vereist Azure CLI 2.6.0 of hoger. 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
+
+### <a name="disable-public-access---portal"></a>Open bare toegang uitschakelen-Portal
 
 1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
 1. Selecteer **uitgeschakeld**op het tabblad **open bare toegang** in **open bare toegang toestaan**. Selecteer vervolgens **Opslaan**.
@@ -308,7 +322,7 @@ Name:   myregistry.privatelink.azurecr.io
 Address: 10.0.0.6
 ```
 
-Vergelijk dit resultaat met het open bare IP- `nslookup` adres in uitvoer voor hetzelfde REGI ster via een openbaar eind punt:
+Vergelijk dit resultaat met het open bare IP-adres in `nslookup` uitvoer voor hetzelfde REGI ster via een openbaar eind punt:
 
 ```console
 [...]
@@ -319,13 +333,13 @@ Address: 40.78.103.41
 
 ### <a name="registry-operations-over-private-link"></a>Register bewerkingen via een persoonlijke koppeling
 
-Controleer ook of u register bewerkingen kunt uitvoeren vanaf de virtuele machine in het subnet. Maak een SSH-verbinding met uw virtuele machine en voer [AZ ACR login][az-acr-login] uit om u aan te melden bij het REGI ster. Afhankelijk van uw VM-configuratie moet u mogelijk de volgende opdrachten voor voegsel met behulp `sudo`van.
+Controleer ook of u register bewerkingen kunt uitvoeren vanaf de virtuele machine in het subnet. Maak een SSH-verbinding met uw virtuele machine en voer [AZ ACR login][az-acr-login] uit om u aan te melden bij het REGI ster. Afhankelijk van uw VM-configuratie moet u mogelijk de volgende opdrachten voor voegsel met behulp van `sudo` .
 
 ```bash
 az acr login --name $REGISTRY_NAME
 ```
 
-Voer register bewerkingen uit, `docker pull` zoals het ophalen van een voorbeeld installatie kopie uit het REGI ster. Vervang `hello-world:v1` door een afbeelding en code die geschikt is voor uw REGI ster, voorafgegaan door de naam van de aanmeldings server van het REGI ster (alle kleine letters):
+Voer register bewerkingen uit, zoals `docker pull` het ophalen van een voorbeeld installatie kopie uit het REGI ster. Vervang door `hello-world:v1` een afbeelding en code die geschikt is voor uw REGI ster, voorafgegaan door de naam van de aanmeldings server van het REGI ster (alle kleine letters):
 
 ```bash
 docker pull myregistry.azurecr.io/hello-world:v1
@@ -348,9 +362,9 @@ Wanneer u een verbinding met een privé-eind punt instelt met behulp van de stap
 
 ## <a name="add-zone-records-for-replicas"></a>Zone records voor replica's toevoegen
 
-Als u in dit artikel een verbinding met een persoonlijk eind punt toevoegt aan een REGI ster, worden er DNS `privatelink.azurecr.io` -records in de zone gemaakt voor het REGI ster en de bijbehorende gegevens eindpunten in de regio's waarnaar het REGI ster wordt [gerepliceerd](container-registry-geo-replication.md). 
+Als u in dit artikel een verbinding met een persoonlijk eind punt toevoegt aan een REGI ster, worden er DNS-records in de `privatelink.azurecr.io` zone gemaakt voor het REGI ster en de bijbehorende gegevens eindpunten in de regio's waarnaar het REGI ster wordt [gerepliceerd](container-registry-geo-replication.md). 
 
-Als u later een nieuwe replica toevoegt, moet u hand matig een nieuwe zone record toevoegen voor het eind punt van de gegevens in die regio. Als u bijvoorbeeld een replica van *myregistry* op de locatie *northeurope* maakt, voegt u een zone record toe voor `myregistry.northeurope.data.azurecr.io`. Zie [DNS-records maken in de privé zone](#create-dns-records-in-the-private-zone) in dit artikel voor instructies.
+Als u later een nieuwe replica toevoegt, moet u hand matig een nieuwe zone record toevoegen voor het eind punt van de gegevens in die regio. Als u bijvoorbeeld een replica van *myregistry* op de locatie *northeurope* maakt, voegt u een zone record toe voor `myregistry.northeurope.data.azurecr.io` . Zie [DNS-records maken in de privé zone](#create-dns-records-in-the-private-zone) in dit artikel voor instructies.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. Gebruikersgegevens extraheren
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. Sentiment van uitingen van gebruiker ophalen
           href: tutorial-publish-settings.md
-    - name: Entiteiten maken en gebruiken
-      items:
-        - name: Entiteiten in de vorm van reguliere expressies
-          href: tutorial-regex-entity.md
-        - name: Entiteiten vermelden
-          href: tutorial-list-entity.md
-        - name: Entiteitsrollen
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: Gerelateerde gegevens met samengestelde entiteiten ophalen
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: App verbeteren
       items:
         - name: Onzekere voorspellingen herstellen
@@ -79,17 +67,19 @@
     - name: Uw app plannen
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: Gegevensverzameling
+      href: data-collection.md
     - name: App-modellen
       items:
         - name: Typen
           href: luis-concept-model.md
-        - name: Intents
+        - name: Intentie-uitingen classificeren
           href: luis-concept-intent.md
-        - name: Utterances
-          href: luis-concept-utterance.md
-        - name: Entiteiten
+        - name: Entiteitgegevens extraheren
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Voorbeelden van utterances
+          href: luis-concept-utterance.md
         - name: Vooraf gemaakte modellen
           href: luis-concept-prebuilt-model.md
         - name: Patronen
@@ -97,7 +87,7 @@
           displayName: roles
         - name: Functies
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: App uitbreiden tijdens runtime
           href: schema-change-prediction-runtime.md
     - name: Voorspellingsscore
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: Entiteit in uiting labelen
           href: label-entity-example-utterance.md
-        - name: Descriptor toevoegen
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: Functie toevoegen
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: Met REST-API's
           items:
             - name: App bouwen met behulp van Node.js
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: Lijstentiteit gebruiken om bijbehorende exacte tekst te zoeken met behulp van Node.js
-              href: luis-tutorial-list-entity.md
     - name: Integreren
       items:
         - name: Met Bing Spellingcontrole v7
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: Runtime queryvoorspelling
       href: luis-get-started-get-intent-from-browser.md
+    - name: Migreren
+      items:
+        - name: Migreren vanuit samengestelde entiteit
+          href: migrate-from-composite-entity.md
+        - name: Naar ontwerpresource migreren
+          items:
+            - name: Overzicht
+              href: luis-migration-authoring.md
+            - name: Migreren
+              href: luis-migration-authoring-steps.md
+        - name: Migreren naar V3-API
+          href: luis-migration-api-v3.md
     - name: Een app beheren
       items:
         - name: Azure-resources
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: Instellingen voor app en versie
+          href: how-to-application-settings-portal.md
         - name: Naar ontwerpresource migreren
           items:
             - name: Overzicht
@@ -216,6 +218,8 @@
       items:
         - name: Voor ontwikkelaars
           href: developer-reference-resource.md
+        - name: App-schema
+          href: app-schema-definition.md
         - name: Migreren naar V3-creatie-API's
           href: luis-migration-authoring-entities.md
         - name: Migreren naar V3-voorspellings-API's
@@ -259,6 +263,8 @@
         - name: Overzicht
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: App-schema
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: PowerShell voor Azure RM
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Limieten
       href: luis-limits.md
-    - name: Toepassingsinstellingen
+    - name: Instellingen voor app en versie
       href: luis-reference-application-settings.md
     - name: Vooraf gemaakte entiteitsverwijzing
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: Patroonsyntaxis
       href: reference-pattern-syntax.md
-    - name: Sentiment
+    - name: Sentimentverwijzing
       href: luis-reference-prebuilt-sentiment.md
 - name: Resources
   items:

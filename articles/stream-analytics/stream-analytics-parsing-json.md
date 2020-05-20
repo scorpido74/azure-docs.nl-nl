@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484584"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698254"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-en Avro-gegevens parseren in Azure Stream Analytics
 
@@ -19,7 +19,8 @@ Azure Stream Analytics ondersteuning voor het verwerken van gebeurtenissen in CS
 
 >[!NOTE]
 >AVRO-bestanden die zijn gemaakt door Event hub Capture, gebruiken een specifieke indeling waarvoor u de functie voor *aangepaste deserialisatie* moet gebruiken. Zie [invoer lezen in elke indeling met behulp van aangepaste .net-deserialisatie](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)voor meer informatie.
-
+>
+>Stream Analytics AVRO-deserialisatie biedt geen ondersteuning voor het toewijzings type. Stream Analytics kan geen EventHub Capture-blobs lezen, omdat EventHub Capture gebruikmaakt van de toewijzing.
 
 
 ## <a name="record-data-types"></a>Record gegevens typen
@@ -69,7 +70,7 @@ Het resultaat is:
 
 
 ### <a name="select-all-properties"></a>Alle eigenschappen selecteren
-U kunt alle eigenschappen van een geneste record selecteren met behulp van het Joker teken ' * '. Kijk een naar het volgende voorbeeld:
+U kunt alle eigenschappen van een geneste record selecteren met behulp van het Joker teken ' * '. Kijk eens naar het volgende voorbeeld:
 
 ```SQL
 SELECT

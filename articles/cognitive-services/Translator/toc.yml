@@ -1,10 +1,10 @@
-- name: Documentatie voor Translator Text
+- name: Documentatie voor Translator
   href: index.yml
-- name: Translator Text-API
+- name: Vertaler
   items:
     - name: Overzicht
       items:
-        - name: Wat is de Translator Text-API?
+        - name: Wat is Translator?
           href: translator-info-overview.md
     - name: Snelstartgidsen
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: Zelfstudies
       items:
-        - name: 'Een WPF-app maken voor Translator Text, C#'
+        - name: 'Een WPF-app maken voor Translator, C#'
           href: tutorial-wpf-translation-csharp.md
         - name: 'Een Flask-app voor vertaling maken, Python'
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: Instructiegidsen
       items:
-        - name: Aanmelden voor Translator Text-API
+        - name: Registreren voor Translator
           href: translator-text-how-to-signup.md
         - name: Migreren naar V3 Text-API
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Naslaginformatie
       items:
-        - name: v3 Translator Text-API-verwijzing
+        - name: v3 Translator-naslaginformatie
           href: reference/v3-0-reference.md
           items:
             - name: Talen
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: Voorbeelden in woordenlijst
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator Text-API-verwijzing (afgeschaft)
+        - name: v2 Translator-naslaginformatie (verouderd)
           href: reference/v2-0-reference.md
           items:
             - name: Tekst transformeren

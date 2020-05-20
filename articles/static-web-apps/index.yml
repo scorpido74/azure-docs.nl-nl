@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Documentatie voor statische web-apps van Azure
+summary: Met statische web-apps van Azure kunt u JavaScript-webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
+metadata:
+  title: Documentatie voor statische web-apps van Azure
+  description: Met statische web-apps van Azure kunt u JavaScript-webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593066"
+landingContent:
+- title: Over statische web-apps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is zijn statische web-apps van Azure?
+      url: overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Uw eerste Angular-app maken
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: Uw eerste React-app maken
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: Uw eerste Vue-app maken
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: Uw eerste app maken (zonder framework)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Een Angular-, React-, Svelte- of Vue JavaScript-app en -API publiceren
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: Belangrijkste concepten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Routes
+      url: routes.md
+    - text: Openbare API's
+      url: apis.md
+    - text: Faseren
+      url: review-publish-pull-requests.md
+    - text: Toegang beperken
+      url: authentication-authorization.md
+- title: Scenario's publiceren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Publiceren vanuit Gatsby
+      url: publish-gatsby.md
+    - text: Publiceren vanuit Hugo
+      url: publish-hugo.md
+    - text: Publiceren vanuit VuePress
+      url: publish-vuepress.md
+    - text: Implementeren vanuit Next.js
+      url: deploy-nextjs.md
+    - text: Implementeren vanuit Nuxt.js
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Een statische web-app publiceren met Gatsby
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

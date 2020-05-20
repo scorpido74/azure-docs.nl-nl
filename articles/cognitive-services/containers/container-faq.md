@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592182"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701811"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592182"
 
 **V: wat is er beschikbaar?**
 
-**A:** Met Azure Cognitive Services-containers kunnen ontwikkel aars gebruikmaken van dezelfde intelligente Api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Sommige containers zijn beschikbaar als [geteste preview](../cognitive-services-gating-process.md), waarvoor mogelijk een toepassing voor toegang is vereist. Andere containers zijn openbaar beschikbaar als een niet-gegate preview-versie of zijn algemeen beschikbaar. U kunt een volledige lijst met containers en hun Beschik baarheid vinden in de [container ondersteuning in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikel. 
+**A:** Met Azure Cognitive Services-containers kunnen ontwikkel aars gebruikmaken van dezelfde intelligente Api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Sommige containers zijn beschikbaar als geteste preview waarvoor een toepassing voor toegang nodig is. Andere containers zijn openbaar beschikbaar als een niet-gegate preview-versie of zijn algemeen beschikbaar. U kunt een volledige lijst met containers en hun Beschik baarheid vinden in de [container ondersteuning in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikel. 
 
 **V: is er een verschil tussen de Cognitive Services Cloud en de containers?**
 
@@ -89,7 +89,7 @@ Klanten moeten hun [ondersteunings plan voor Azure](https://azure.microsoft.com/
 
 Klanten kunnen het [Azure-kennis centrum](https://azure.microsoft.com/resources/knowledge-center/) verkennen voor het beantwoorden van vragen en ondersteunings problemen.
 
-### <a name="stack-overflow"></a>Stackoverloop
+### <a name="stack-overflow"></a>Stack Overflow
 
 > [Stack overflow](https://en.wikipedia.org/wiki/Stack_Overflow) is een vraag-en-antwoord site voor professionele en liefhebbers-programmeurs.
 
@@ -108,7 +108,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 * [Form Recognizer][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Speech Service-API][sp-containers-billing]
-* [Text Analytics][ta-containers-billing]
+* [Tekstanalyse][ta-containers-billing]
 
 > [!IMPORTANT]
 > Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens naar micro soft.
@@ -135,7 +135,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 * [Form Recognizer][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Speech Service-API][sp-containers-recommendations]
-* [Text Analytics][ta-containers-recommendations]
+* [Tekstanalyse][ta-containers-recommendations]
  
 **V: worden deze containers momenteel ondersteund in Windows?**
 

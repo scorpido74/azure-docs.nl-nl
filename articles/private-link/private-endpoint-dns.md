@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af7d47c98e4716df3a6cbd222c7d3c8def48e5fc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643613"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701637"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -36,7 +36,7 @@ Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van
 
 Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de volgende tabel:
 
-| Resource type voor persoonlijke koppelingen/subresource |Privé-DNS zone naam | Naam van open bare DNS-zone |
+| Resource type voor persoonlijke koppelingen/subresource |Privé-DNS zone naam | Doorstuur servers voor open bare DNS-zone |
 |---|---|---|---|
 | SQL-data base (micro soft. SQL/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure Synapse Analytics (micro soft. SQL/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -54,7 +54,7 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 | Azure Database for PostgreSQL-één server (micro soft. DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
 | Azure Database for MySQL (micro soft. DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (micro soft. DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
-| Azure Key Vault (micro soft. de sleutel kluis/kluizen)/kluis | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Key Vault (micro soft. de sleutel kluis/kluizen)/kluis | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
 | Azure Kubernetes service-Kubernetes-API (micro soft. container service/managedClusters)/managedCluster | privatelink. {Region}. azmk8s. io | {Region}. azmk8s. io |
 | Azure Search (micro soft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (micro soft. ContainerRegistry/registers)/REGI ster | privatelink.azurecr.io | azurecr.io |
@@ -150,7 +150,7 @@ U hebt de volgende resources nodig om correct te configureren:
 In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat DNS-verkeer voorwaardelijk doorstuurt naar Azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is [gekoppeld aan een virtueel netwerk.](../dns/private-dns-virtual-network-links.md)
 
 > [!IMPORTANT]
-> De voorwaardelijke door sturing moet worden uitgevoerd naar de [open bare DNS-zone](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   in plaats van **privatelink**. database.Windows.net
+> Het voorwaardelijk door sturen moet worden uitgevoerd naar de aanbevolen [**doorstuur server voor de open bare DNS-zone**](#azure-services-dns-zone-configuration)   :  `database.windows.net`   in plaats van **privatelink**. database.Windows.net
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="On-premises door sturen naar Azure DNS":::
 

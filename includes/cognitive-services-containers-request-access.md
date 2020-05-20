@@ -1,20 +1,20 @@
 ---
-author: IEvangelist
-ms.author: dapine
+author: aahill
+ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
-ms.openlocfilehash: 88d83676de1e7fa18c4c1dcbf347da8d685ba2fa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/18/2020
+ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593325"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698562"
 ---
-Vul het [aanvraag formulier voor de Cognitive Services containers](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. Het formulier vraagt informatie over u, uw bedrijf en het gebruikers scenario waarvoor u de container gaat gebruiken. Nadat u het formulier hebt verzonden, wordt het door het team van Azure Cognitive Services gecontroleerd om er zeker van te zijn dat u voldoet aan de criteria voor toegang tot het persoonlijke container register.
+Het formulier vraagt informatie over u, uw bedrijf en het gebruikers scenario waarvoor u de container gaat gebruiken. Nadat u het formulier hebt verzonden, wordt het door het team van Azure Cognitive Services gecontroleerd om er zeker van te zijn dat u voldoet aan de criteria voor toegang tot het persoonlijke container register.
 
 > [!IMPORTANT]
-> U moet een e-mail adres gebruiken dat is gekoppeld aan een micro soft-account (MSA) of een Azure Active Directory (Azure AD)-account in het formulier. Zie [Cognitive Services-beperking-proces](../articles/cognitive-services/cognitive-services-gating-process.md)voor meer informatie over de acceptatie criteria.
+> U moet een e-mail adres gebruiken dat is gekoppeld aan een micro soft-account (MSA) of een Azure Active Directory (Azure AD)-account in het formulier.
 
 Als uw aanvraag is goedgekeurd, ontvangt u een e-mail bericht met instructies voor het verkrijgen van uw referenties en het openen van het persoonlijke container register.
 
