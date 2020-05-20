@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259771"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635453"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Een toegangs token aanvragen in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u een toegangs token kunt aanvragen voor een
 
 ## <a name="scopes"></a>Bereiken
 
-Bereiken bieden een manier om machtigingen voor beveiligde bronnen te beheren. Wanneer een toegangs token wordt aangevraagd, moet de client toepassing de gewenste machtigingen opgeven in de **bereik** parameter van de aanvraag. Als u bijvoorbeeld de **bereik waarde** wilt opgeven van `read` voor de API met de **App-ID-URI** van `https://contoso.onmicrosoft.com/api`, zou het bereik `https://contoso.onmicrosoft.com/api/read`zijn.
+Bereiken bieden een manier om machtigingen voor beveiligde bronnen te beheren. Wanneer een toegangs token wordt aangevraagd, moet de client toepassing de gewenste machtigingen opgeven in de **bereik** parameter van de aanvraag. Als u bijvoorbeeld de **bereik waarde** wilt opgeven van `read` voor de API met de **App-ID-URI** van `https://contoso.onmicrosoft.com/api` , zou het bereik zijn `https://contoso.onmicrosoft.com/api/read` .
 
 Bereiken worden door de web-API gebruikt om toegangsbeheer op basis van een bereik te implementeren. Bijvoorbeeld: gebruikers van de web-API kunnen zowel lees- als schrijftoegang hebben of alleen leestoegang. Als u meerdere machtigingen in dezelfde aanvraag wilt ophalen, kunt u meerdere vermeldingen toevoegen in de para meter single **Scope** van de aanvraag, gescheiden door spaties.
 
@@ -54,11 +54,11 @@ Als u meer bereiken aanvraagt dan wat voor uw client toepassing wordt verleend, 
 - **OpenID Connect** : vraagt een id-token in.
 - **offline_access** : vraagt een vernieuwings token aan met behulp van [auth-code stromen](authorization-code-flow.md).
 
-Als de **response_type** -para meter `/authorize` in een `token`aanvraag bevat, moet de **bereik** parameter ten minste één resource bereik `openid` bevatten `offline_access` die wordt toegekend. Anders mislukt de `/authorize` aanvraag.
+Als de **response_type** -para meter in een `/authorize` aanvraag bevat `token` , moet de **bereik** parameter ten minste één resource bereik bevatten `openid` `offline_access` die wordt toegekend. Anders mislukt de `/authorize` aanvraag.
 
 ## <a name="request-a-token"></a>Een token aanvragen
 
-Als u een toegangs token wilt aanvragen, hebt u een autorisatie code nodig. Hieronder ziet u een voor beeld van een aanvraag `/authorize` voor een autorisatie code voor het eind punt. Aangepaste domeinen worden niet ondersteund voor gebruik met toegangs tokens. Gebruik uw tenant-name.onmicrosoft.com-domein in de aanvraag-URL.
+Als u een toegangs token wilt aanvragen, hebt u een autorisatie code nodig. Hieronder ziet u een voor beeld van een aanvraag voor `/authorize` een autorisatie code voor het eind punt. Aangepaste domeinen worden niet ondersteund voor gebruik met toegangs tokens. Gebruik uw tenant-name.onmicrosoft.com-domein in de aanvraag-URL.
 
 In het volgende voor beeld vervangt u deze waarden:
 
@@ -85,7 +85,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Nadat u de autorisatie code hebt ontvangen, kunt u deze gebruiken om een toegangs token aan te vragen:
 
 ```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -111,7 +111,7 @@ Er wordt een bericht weer gegeven dat vergelijkbaar is met het volgende antwoord
 }
 ```
 
-Wanneer u https://jwt.ms gebruikt om het toegangs token te onderzoeken dat is geretourneerd, ziet u iets dat lijkt op het volgende voor beeld:
+Wanneer https://jwt.ms u gebruikt om het toegangs token te onderzoeken dat is geretourneerd, ziet u iets dat lijkt op het volgende voor beeld:
 
 ```JSON
 {

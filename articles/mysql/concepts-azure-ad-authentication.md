@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299019"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635292"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
 Microsoft Azure Active Directory-verificatie (Azure AD) is een mechanisme om verbinding te maken met Azure Database for MySQL met behulp van identiteiten gedefinieerd in azure AD.
 Met Azure AD-verificatie kunt u gebruikers identiteiten van data bases en andere micro soft-Services beheren op een centrale locatie, waardoor het beheer van machtigingen wordt vereenvoudigd.
-
-> [!IMPORTANT]
-> Azure AD-verificatie voor Azure Database for MySQL is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Voor delen van het gebruik van Azure AD zijn:
 

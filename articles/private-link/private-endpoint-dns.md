@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 7db02546b562f1b542080efdbda8968940655e95
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121276"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643613"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -105,21 +105,21 @@ In het volgende diagram ziet u de DNS-omzettings volgorde van virtuele netwerk w
 Dit model kan worden uitgebreid naar meerdere peered virtuele netwerken die zijn gekoppeld aan hetzelfde persoonlijke eind punt. U kunt dit doen door [nieuwe virtuele netwerk koppelingen toe te voegen](../dns/private-dns-virtual-network-links.md) aan de privé-DNS-zone voor alle gekoppelde virtuele netwerken.
 
 > [!IMPORTANT]
->  Er is één privé-DNS-zone vereist voor deze configuratie; het maken van meerdere zones met dezelfde naam voor verschillende virtuele netwerken zou hand matige bewerkingen nodig hebben om de DNS-records samen te voegen
+> Er is één privé-DNS-zone vereist voor deze configuratie; het maken van meerdere zones met dezelfde naam voor verschillende virtuele netwerken zou hand matige bewerkingen nodig hebben om de DNS-records samen te voegen
 
 In dit scenario is er sprake van een [hub & spoke](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) -netwerk topologie met de spoke-netwerken die een gemeen schappelijk persoonlijk eind punt delen en alle spoke-virtuele netwerken zijn gekoppeld aan dezelfde privé-DNS-zone. 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub en spoke met door Azure verschafte DNS":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>On-premises workloads met behulp van een DNS-doorstuur server
- 
+
 Voor on-premises workloads om een FQDN-naam van een persoonlijk eind punt in het privé-IP-adres op te lossen, moet u een DNS-doorstuur server gebruiken om de oplossing te maken van de [open bare DNS-zone](#azure-services-dns-zone-configuration) van de Azure-service die in Azure is geïmplementeerd.
 
 
 Het volgende scenario is geschikt voor een on-premises netwerk dat een DNS-doorstuur server heeft in azure, dat op zijn beurt verantwoordelijk is voor het omzetten van alle DNS-query's via een doorstuur server van het niveau van de [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) naar de door Azure verschafte DNS-service 
 
 > [!NOTE]
-> In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
+> In dit scenario wordt gebruikgemaakt van Azure SQL database aanbevolen Privé-DNS zone.Voor andere services kunt u het model aanpassen met behulp van de volgende Naslag informatie over de configuratie van de [DNS-zone van Azure Services](#azure-services-dns-zone-configuration).
 
 U hebt de volgende resources nodig om correct te configureren:
 
@@ -129,7 +129,7 @@ U hebt de volgende resources nodig om correct te configureren:
 - Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)   met [een record typen](../dns/dns-zones-records.md#record-types)
 - Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
 
-In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat gebruikmaakt van een DNS-doorstuur server die is geïmplementeerd in azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk.
+In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat gebruikmaakt van een DNS-doorstuur server die is geïmplementeerd in azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is [gekoppeld aan een virtueel netwerk.](../dns/private-dns-virtual-network-links.md)
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="On-premises met Azure DNS":::
 
@@ -141,14 +141,13 @@ De on-premises DNS-oplossing moet worden geconfigureerd om DNS-verkeer door te s
 
 U hebt de volgende resources nodig om correct te configureren:
 
-
 - On-premises netwerk met een aangepaste DNS-oplossing 
 - Virtueel netwerk [verbonden met on-premises](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
 - DNS-doorstuur server geïmplementeerd in azure
 - Privé-DNS zones [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)    met [een record typen](../dns/dns-zones-records.md#record-types)
 - Informatie over privé-eind punt (FQDN-record naam en privé-IP-adres)
 
-In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat DNS-verkeer voorwaardelijk doorstuurt naar Azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is gekoppeld aan een virtueel netwerk
+In het volgende diagram ziet u de DNS-omzettings volgorde van een on-premises netwerk dat DNS-verkeer voorwaardelijk doorstuurt naar Azure, waarbij de oplossing wordt gemaakt door een privé-DNS-zone die is [gekoppeld aan een virtueel netwerk.](../dns/private-dns-virtual-network-links.md)
 
 > [!IMPORTANT]
 > De voorwaardelijke door sturing moet worden uitgevoerd naar de [open bare DNS-zone](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   in plaats van **privatelink**. database.Windows.net

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: dd5ca3c52364813a9aabe3db821c4f7e094fa637
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198559"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634137"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -91,7 +91,7 @@ Back-ups die plaatsvinden vóór de Bewaar periode, worden automatisch opgeschoo
 Azure SQL Database berekent uw totale in-retentie back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de data base is verwijderd, neemt het verbruik af als ouderdom van back-ups. Nadat back-ups ouder zijn geworden dan de retentie periode, wordt de facturering stopgezet.
 
    > [!IMPORTANT]
-   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen regel matig opslag en reken kosten worden bespaard, waardoor de opslag kosten voor back-ups toenemen, omdat micro soft voor elke verwijderde data base een back-up van de opgegeven Bewaar periode (mini maal 7 dagen per seconde) voor elke gedropte database behoudt.
+   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen veelvuldig opslag-en reken kosten worden bespaard, waardoor de opslag kosten voor back-ups toenemen, omdat micro soft een back-up van de opgegeven Bewaar periode voor elke verwijderde data base vasthoudt, elke keer dat deze wordt verwijderd.
 
 ### <a name="monitor-consumption"></a>Verbruik bewaken
 
@@ -149,6 +149,9 @@ Als u de back-ups langer wilt bewaren dan de maximale Bewaar periode, kunt u de 
 
 > [!IMPORTANT]
 > Als u de Azure SQL-Server verwijdert die als host fungeert voor SQL-data bases, worden alle Pools voor elastische data bases en data bases die deel uitmaken van de server ook verwijderd. Ze kunnen niet worden hersteld. U kunt een verwijderde server niet herstellen. Maar als u lange termijn retentie hebt geconfigureerd, worden de back-ups voor de data bases met LTR niet verwijderd en kunnen deze data bases worden hersteld.
+
+> [!NOTE]
+> Minimale PITR voor het bewaren van back-ups die kunnen worden geconfigureerd voor afzonderlijke, gegroepeerde Data bases en beheerde isntances via Azure Portal is 7 dagen. De minimale PITR-back-up van 1 dag kan alleen worden geconfigureerd voor een beheerd exemplaar met behulp van Power shell met als. SQL-module v 2.6.0 of hoger.
 
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 

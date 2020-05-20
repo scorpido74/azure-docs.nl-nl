@@ -8,12 +8,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6a627dfed3886a99a458a67d793c3ebbbdd0fb19
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591961"
+ms.locfileid: "83644877"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisch schalen van Azure Synapse Analytics Apache Spark Pools
 
@@ -58,7 +58,7 @@ Als u de functie voor automatisch schalen wilt inschakelen, voert u de volgende 
     * **Min** . aantal knoop punten.
     * Het **maximum** aantal knoop punten.
 
-Het eerste aantal knoop punten is het minimum. Met deze waarde wordt de oorspronkelijke grootte van het exemplaar gedefinieerd wanneer het wordt gemaakt. Het minimum aantal knoop punten mag niet kleiner dan drie zijn.
+Het eerste aantal knoop punten is het minimum. Met deze waarde wordt de oorspronkelijke grootte van het exemplaar gedefinieerd wanneer het wordt gemaakt. Het minimum aantal knoop punten kan niet minder dan drie zijn.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -74,4 +74,4 @@ De actieve taken blijven worden uitgevoerd en voltooid. De taken die in behandel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Snelstartgids voor het instellen van een nieuwe Spark-groep [een Spark-groep maken](..\quickstart-create-apache-spark-pool.md)
+Snelstartgids voor het instellen van een nieuwe Spark-groep [een Spark-groep maken](../quickstart-create-apache-spark-pool-portal.md)

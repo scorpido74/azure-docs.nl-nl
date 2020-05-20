@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 05/14/2020
+ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484783"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646616"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Wat zijn de standaard en aanbevolen knooppunt configuraties voor Azure HDInsight?
 
@@ -24,9 +24,9 @@ In dit artikel worden de standaard-en aanbevolen knooppunt configuraties voor Az
 
 In de volgende tabellen worden de standaard en aanbevolen VM-grootten (Virtual Machine) weer geven voor HDInsight-clusters.  Deze informatie is nodig om inzicht te krijgen in de VM-grootten die moeten worden gebruikt bij het maken van Power shell-of Azure CLI-scripts voor het implementeren van HDInsight-clusters.
 
-Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, selecteert u een hoofd knooppunt grootte met ten minste 8 kernen en 14 GB aan RAM-geheugen. 
+Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, selecteert u een hoofd knooppunt grootte met ten minste 8 kernen en 14 GB aan RAM-geheugen.
 
-De enige cluster typen met gegevens schijven zijn Kafka-en HBase-clusters waarvoor de functie voor versneld schrijven is ingeschakeld. HDInsight ondersteunt de P30-en S30-schijf grootten in deze scenario's.
+De enige cluster typen met gegevens schijven zijn Kafka-en HBase-clusters waarvoor de functie voor versneld schrijven is ingeschakeld. HDInsight ondersteunt de P30-en S30-schijf grootten in deze scenario's. Voor alle andere cluster typen biedt HDInsight beheerde schijf ruimte met het cluster. Vanaf 11/07/2019 is de beheerde schijf grootte van elk knoop punt in het zojuist gemaakte cluster 128 GB. Dit kan niet worden gewijzigd.
 
 De specificaties van alle mini maal aanbevolen VM-typen die in dit document worden gebruikt, worden in de volgende tabel samenvatten.
 
@@ -42,7 +42,7 @@ De specificaties van alle mini maal aanbevolen VM-typen die in dit document word
 | Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8 x 500               | 4 / 1000                     |
 
-Raadpleeg de volgende documenten voor meer informatie over de specificaties van elk VM-type:
+Zie de volgende documenten voor meer informatie over de specificaties van elk VM-type:
 
 * [Grootte van virtuele machines voor algemene doel einden: dv2 Series 1-5](../virtual-machines/dv2-dsv2-series.md)
 * [Grootte van virtuele machines geoptimaliseerd voor geheugen: dv2 Series 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
@@ -51,7 +51,7 @@ Raadpleeg de volgende documenten voor meer informatie over de specificaties van 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Alle ondersteunde regio's met uitzonde ring van Brazilië-Zuid en Japan-West
 
 > [!Note]
-> Als u de SKU-id wilt ophalen voor gebruik in Power shell en `Standard_` andere scripts, voegt u aan het begin van alle VM-sku's in de onderstaande tabellen toe. Dit wordt bijvoorbeeld `D12_v2` `Standard_D12_v2`.
+> Als u de SKU-id wilt ophalen voor gebruik in Power shell en andere scripts, voegt `Standard_` u aan het begin van alle VM-sku's in de onderstaande tabellen toe. Dit wordt bijvoorbeeld `D12_v2` `Standard_D12_v2` .
 
 | Cluster type | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|

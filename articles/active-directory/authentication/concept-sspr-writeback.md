@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127834"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639802"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hoe werkt de write-back van self-service voor wacht woord opnieuw instellen in Azure Active Directory?
 
@@ -56,7 +56,7 @@ Wanneer een federatieve of wacht woord-hash gesynchroniseerde gebruiker probeert
    * Het gebruikers object moet bestaan in de ruimte van de Active Directory-connector.
    * Het gebruikers object moet worden gekoppeld aan het bijbehorende omgekeerde-object (MV).
    * Het gebruikers object moet worden gekoppeld aan het bijbehorende Azure Active Directory Connector-object.
-   * De koppeling van het Active Directory Connector-object naar de MV moet de synchronisatie regel `Microsoft.InfromADUserAccountEnabled.xxx` hebben op de koppeling.
+   * De koppeling van het Active Directory Connector-object naar de MV moet de synchronisatie regel hebben `Microsoft.InfromADUserAccountEnabled.xxx` op de koppeling.
 
    Wanneer de oproep afkomstig is uit de Cloud, gebruikt de synchronisatie-engine het kenmerk **cloudAnchor** om het Azure Active Directory Connector Space-object op te zoeken. Vervolgens volgt u de koppeling terug naar het MV-object en volgt u de koppeling terug naar het Active Directory-object. Omdat er meerdere Active Directory objecten (meerdere forests) voor dezelfde gebruiker kunnen zijn, is de synchronisatie-engine afhankelijk van de `Microsoft.InfromADUserAccountEnabled.xxx` koppeling om de juiste te kiezen.
 
@@ -141,6 +141,7 @@ Wacht woorden worden niet weer gegeven in een van de volgende situaties:
 * **Niet-ondersteunde beheerders bewerkingen**
    * Een door de beheerder geïnitieerde wachtwoord herstel van de gebruiker wordt opnieuw ingesteld op basis van Power shell-versie 1, versie 2 of de Microsoft Graph-API (de [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) wordt ondersteund).
    * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers vanuit het [Microsoft 365-beheer centrum](https://admin.microsoft.com).
+   * Een beheerder kan het hulp programma voor wachtwoord herstel niet gebruiken om hun eigen wacht woord opnieuw in te stellen voor wacht woord terugschrijven.
 
 > [!WARNING]
 > Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises AD DS beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie [wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie.

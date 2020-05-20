@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7725a9ddd1d9559166360b27bd8a5371d8c0557e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186485"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638253"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -37,10 +37,10 @@ De volgende tokens worden gebruikt in communicatie met Azure AD B2C:
 
 Een [geregistreerde toepassing](tutorial-register-applications.md) ontvangt tokens en communiceert met Azure AD B2C door aanvragen naar deze eind punten te verzenden:
 
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/token`
 
-Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig zijn van `/authorize` de `/token` -of-eind punten. Wanneer ID-tokens worden verkregen van `/authorize` het eind punt, wordt dit gedaan met behulp van de [impliciete stroom](implicit-flow-single-page-application.md). dit wordt vaak gebruikt voor gebruikers die zich aanmelden bij webtoepassingen op basis van Java script. Wanneer ID-tokens worden verkregen van `/token` het eind punt, wordt het uitgevoerd met de [autorisatie code stroom](openid-connect.md#get-a-token), waardoor het token in de browser verborgen blijft.
+Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig zijn van de- `/authorize` of- `/token` eind punten. Wanneer ID-tokens worden verkregen van het `/authorize` eind punt, wordt dit gedaan met behulp van de [impliciete stroom](implicit-flow-single-page-application.md). dit wordt vaak gebruikt voor gebruikers die zich aanmelden bij webtoepassingen op basis van Java script. Wanneer ID-tokens worden verkregen van het `/token` eind punt, wordt het uitgevoerd met de [autorisatie code stroom](openid-connect.md#get-a-token), waardoor het token in de browser verborgen blijft.
 
 ## <a name="claims"></a>Claims
 
@@ -50,17 +50,17 @@ De claims in ID-tokens worden niet in een bepaalde volg orde geretourneerd. Nieu
 
 De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-tokens en toegangs tokens die zijn uitgegeven door Azure AD B2C.
 
-| Naam | Claim | Voorbeeldwaarde | Beschrijving |
+| Name | Claim | Voorbeeldwaarde | Beschrijving |
 | ---- | ----- | ------------- | ----------- |
 | Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identificeert de beoogde ontvanger van het token. Voor Azure AD B2C is de doel groep de toepassings-ID. Uw toepassing moet deze waarde valideren en het token afwijzen als het niet overeenkomt. De doel groep is synoniemen met resources. |
-| Verlener | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
+| Verlener | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
 | Verleend op | `iat` | `1438535543` | Het tijdstip waarop het token is uitgegeven, uitgedrukt in de epoche-tijd. |
 | Verloop tijd | `exp` | `1438539443` | Het tijdstip waarop het token ongeldig wordt, uitgedrukt in de epoche-tijd. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
 | Niet voor | `nbf` | `1438535543` | Het tijdstip waarop het token geldig wordt, uitgedrukt in de epoche-tijd. Deze tijd is doorgaans hetzelfde als het tijdstip waarop het token is uitgegeven. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
 | Versie | `ver` | `1.0` | De versie van het ID-token, zoals gedefinieerd door Azure AD B2C. |
 | Code-hash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een code-hash die is opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-autorisatie code. Een code-hash kan worden gebruikt om de authenticiteit van een autorisatie code te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html)voor meer informatie over het uitvoeren van deze validatie.  |
 | Toegangs token-hash | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een toegangs token-hash opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-toegangs token. Een toegangs token-hash kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html) voor meer informatie over het uitvoeren van deze validatie.  |
-| Nonce | `nonce` | `12345` | Een nonce is een strategie die wordt gebruikt om token replay-aanvallen te verhelpen. Uw toepassing kan een nonce in een autorisatie aanvraag opgeven met behulp `nonce` van de query parameter. De waarde die u in de aanvraag opgeeft, wordt niet gewijzigd in de `nonce` claim van een id-token. Met deze claim kan uw toepassing de waarde verifiëren op basis van de waarde die is opgegeven voor de aanvraag. Uw toepassing moet deze validatie uitvoeren tijdens het validatie proces van het ID-token. |
+| Nonce | `nonce` | `12345` | Een nonce is een strategie die wordt gebruikt om token replay-aanvallen te verhelpen. Uw toepassing kan een nonce in een autorisatie aanvraag opgeven met behulp van de `nonce` query parameter. De waarde die u in de aanvraag opgeeft, wordt niet gewijzigd in de `nonce` claim van een ID-token. Met deze claim kan uw toepassing de waarde verifiëren op basis van de waarde die is opgegeven voor de aanvraag. Uw toepassing moet deze validatie uitvoeren tijdens het validatie proces van het ID-token. |
 | Onderwerp | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | De principal over welke het token informatie bedient, zoals de gebruiker van een toepassing. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt voor toegang tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory. |
 | Naslag informatie over verificatie context klassen | `acr` | Niet van toepassing | Wordt alleen gebruikt met oudere beleids regels. |
 | Vertrouwens raamwerk beleid | `tfp` | `b2c_1_signupsignin1` | De naam van het beleid dat is gebruikt om het ID-token op te halen. |
@@ -74,7 +74,7 @@ De volgende eigenschappen worden gebruikt voor het [beheren van de levens duur v
 
 - **Toegangs & ID-token levensduur (minuten)** : de levens duur van het OAuth 2,0 Bearer-token dat wordt gebruikt om toegang te krijgen tot een beveiligde bron. De standaard waarde is 60 minuten. Het minimale (inclusief) is 5 minuten. Het maximum (inclusief) is 1440 minuten.
 
-- **Levens duur van het vernieuwings token (dagen)** : de maximale tijds duur waarna een vernieuwings token kan worden gebruikt om een nieuw toegangs-of id-token te verkrijgen. De tijds periode heeft ook betrekking op het ophalen van een nieuw vernieuwings token als uw `offline_access` toepassing het bereik heeft gekregen. De standaard waarde is 14 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 90 dagen.
+- **Levens duur van het vernieuwings token (dagen)** : de maximale tijds duur waarna een vernieuwings token kan worden gebruikt om een nieuw toegangs-of id-token te verkrijgen. De tijds periode heeft ook betrekking op het ophalen van een nieuw vernieuwings token als uw toepassing het bereik heeft gekregen `offline_access` . De standaard waarde is 14 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 90 dagen.
 
 - **Vernieuwings token sliding window levens duur (dagen)** : na deze periode is verstreken dat de gebruiker opnieuw moet worden geverifieerd, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Deze kan alleen worden opgegeven als de schakel optie is ingesteld op **beperkt**. Deze moet groter dan of gelijk zijn aan de waarde voor de **levens duur van het vernieuwings token (dagen)** . Als de schakel optie is ingesteld op niet- **gebonden**, kunt u geen specifieke waarde opgeven. De standaard waarde is 90 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 365 dagen.
 
@@ -124,17 +124,17 @@ De waarde van de claim **alg** is het algoritme dat is gebruikt voor het onderte
 Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens. Met dit eind punt kunnen toepassingen informatie opvragen over Azure AD B2C tijdens runtime. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Uw Azure AD B2C-Tenant bevat een JSON-meta gegevens document voor elk beleid. Het meta gegevens document is een JSON-object dat verschillende nuttige informatie bevat. De meta gegevens bevatten **jwks_uri**, die de locatie van de set open bare sleutels die worden gebruikt voor het ondertekenen van tokens. Deze locatie wordt hier weer gegeven, maar het is raadzaam om de locatie dynamisch op te halen met behulp van het meta gegevens document en **jwks_uri**te parseren:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
 ```
 Het JSON-document op deze URL bevat alle informatie over de open bare sleutel die op een bepaald moment in gebruik is. Uw app kan de `kid` claim in de JWT-header gebruiken om de open bare sleutel in het JSON-document te selecteren die wordt gebruikt om een bepaald token te ondertekenen. Vervolgens kan de hand tekening worden gevalideerd door gebruik te maken van de juiste open bare sleutel en het aangegeven algoritme.
 
-Het meta gegevens document voor `B2C_1_signupsignin1` het beleid in `contoso.onmicrosoft.com` de Tenant bevindt zich in:
+Het meta gegevens document voor het `B2C_1_signupsignin1` beleid in de `contoso.onmicrosoft.com` Tenant bevindt zich in:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-U hebt twee opties om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u de meta gegevens kunt aanvragen). Eerst wordt de naam van het beleid opgenomen in `acr` de claim in het token. U kunt claims uit de hoofd tekst van de JWT parseren door base-64 het decoderen van de hoofd tekst en het deserialiseren van de JSON-teken reeks die de resultaten oplevert. De `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere optie is om het beleid te coderen in de waarde van `state` de para meter wanneer u de aanvraag verzendt en vervolgens te decoderen om te bepalen welk beleid is gebruikt. Beide methoden zijn geldig.
+U hebt twee opties om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u de meta gegevens kunt aanvragen). Eerst wordt de naam van het beleid opgenomen in de `acr` claim in het token. U kunt claims uit de hoofd tekst van de JWT parseren door base-64 het decoderen van de hoofd tekst en het deserialiseren van de JSON-teken reeks die de resultaten oplevert. De `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere optie is om het beleid te coderen in de waarde van de `state` para meter wanneer u de aanvraag verzendt en vervolgens te decoderen om te bepalen welk beleid is gebruikt. Beide methoden zijn geldig.
 
 Een beschrijving van het uitvoeren van handtekening validatie valt buiten het bereik van dit document. Er zijn veel open-source bibliotheken beschikbaar om u te helpen bij het valideren van een token.
 

@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672375"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635952"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics extensie
 Azure Diagnostics extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, inclusief virtuele machines. Dit artikel bevat een overzicht van Azure Diagnostics extensie, inclusief specifieke functionaliteit die wordt ondersteund en opties voor installatie en configuratie. 
 
 > [!NOTE]
 > Azure Diagnostics-extensie is een van de agents die beschikbaar zijn voor het verzamelen van bewakings gegevens uit het gast besturingssysteem van reken resources. Zie [overzicht van de Azure monitor-agents](agents-overview.md) voor een beschrijving van de verschillende agents en richt lijnen voor het selecteren van de juiste agents voor uw vereisten.
+
+## <a name="primary-scenarios"></a>Primaire scenario's
+De belangrijkste scenario's die worden behandeld door de uitbrei ding van diagnostische gegevens zijn:
+
+- Verzamelen van metrische gegevens over de gast in Azure Monitor metrische gegevens.
+- Gasten logboeken en metrische gegevens naar Azure Storage verzenden voor archivering.
+- U kunt gast logboeken en-metrische gegevens verzenden naar Azure Event hubs om buiten Azure te verzenden.
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Vergelijking met Log Analytics agent
 De Log Analytics-agent in Azure Monitor kan ook worden gebruikt voor het verzamelen van bewakings gegevens van het gast besturingssysteem van virtuele machines. U kunt ervoor kiezen om ofwel of beide afhankelijk van uw vereisten te gebruiken. Zie [overzicht van de Azure monitor agents](agents-overview.md) voor een gedetailleerde vergelijking van de Azure monitor agents. 

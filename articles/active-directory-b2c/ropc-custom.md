@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529170"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638567"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -227,7 +227,7 @@ Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers 
 
 1. Maak een kopie van het bestand *SignUpOrSignin. XML* in de werkmap en wijzig de naam in *ROPC_Auth. XML*.
 2. Open het nieuwe bestand en wijzig de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** in een unieke waarde. De beleids-ID is de naam van uw beleid. Bijvoorbeeld **B2C_1A_ROPC_Auth**.
-3. Wijzig de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** in `ResourceOwnerPasswordCredentials`.
+3. Wijzig de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** in `ResourceOwnerPasswordCredentials` .
 4. Wijzig het element **OutputClaims** zodat het de volgende claims bevat:
 
     ```XML
@@ -246,10 +246,10 @@ Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers 
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw beleid. Maak een aanroep zoals dit voor beeld met de volgende informatie als hoofd tekst van de POST-aanvraag:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant.
-- Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
+- Vervang door `<tenant-name>` de naam van uw Azure AD B2C-Tenant.
+- Vervang door `B2C_1A_ROPC_Auth` de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |
 | --- | ----- |
@@ -260,16 +260,16 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 | client_id | `application-id` |
 | response_type | token id_token |
 
-- Vervang `user-account` door de naam van een gebruikers account in uw Tenant.
-- Vervang `password1` door het wacht woord van het gebruikers account.
-- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* registratie.
+- Vervang door `user-account` de naam van een gebruikers account in uw Tenant.
+- Vervang door `password1` het wacht woord van het gebruikers account.
+- Vervang door `application-id` de toepassings-id uit de *ROPC_Auth_app* registratie.
 - *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen.
 
 De werkelijke POST-aanvraag ziet er ongeveer uit als in het volgende voor beeld:
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,10 +291,10 @@ Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
 
 Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in de volgende tabel als hoofd tekst van de aanvraag:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant.
-- Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
+- Vervang door `<tenant-name>` de naam van uw Azure AD B2C-Tenant.
+- Vervang door `B2C_1A_ROPC_Auth` de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |
 | --- | ----- |
@@ -304,8 +304,8 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Vervang `application-id` door de toepassings-id uit de *ROPC_Auth_app* registratie.
-- Vervang `refresh-token` door de **refresh_token** die in het vorige antwoord is teruggestuurd.
+- Vervang door `application-id` de toepassings-id uit de *ROPC_Auth_app* registratie.
+- Vervang door `refresh-token` de **refresh_token** die in het vorige antwoord is teruggestuurd.
 
 Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 

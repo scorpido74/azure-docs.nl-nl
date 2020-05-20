@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545872"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636265"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalisatie van de gebruikers interface van uw toepassing met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -27,10 +27,10 @@ In dit artikel wordt beschreven hoe u meerdere land instellingen of talen in het
 
 ## <a name="set-up-the-list-of-supported-languages"></a>De lijst met ondersteunde talen instellen
 
-Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
-1. Voeg het `Localization` -element toe met de ondersteunde talen: Engels (standaard) en Spaans.  
+1. Voeg het- `Localization` element toe met de ondersteunde talen: Engels (standaard) en Spaans.  
 
 
 ```XML
@@ -46,7 +46,7 @@ Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccou
 
 De [LocalizedResources](localization.md#localizedresources) van het `Localization` element bevat de lijst met gelokaliseerde teken reeksen. Het gelokaliseerde resources-element heeft een id die wordt gebruikt om gelokaliseerde bronnen uniek te identificeren. Deze id wordt later in het [inhouds definitie](contentdefinitions.md) -element gebruikt.
 
-U configureert gelokaliseerde bronnen elementen voor de inhouds definitie en alle talen die u wilt ondersteunen. Als u de Unified Sign-up-en aanmeldings pagina's voor Engels en Spaans wilt aanpassen, voegt u de `LocalizedResources` volgende elementen toe na het sluiten `</SupportedLanguages>` van het element.
+U configureert gelokaliseerde bronnen elementen voor de inhouds definitie en alle talen die u wilt ondersteunen. Als u de Unified Sign-up-en aanmeldings pagina's voor Engels en Spaans wilt aanpassen, voegt u de volgende `LocalizedResources` elementen toe na het sluiten van het `</SupportedLanguages>` element.
 
 > [!NOTE]
 > In het volgende voor beeld is het hekje `#` -symbool toegevoegd aan het Begging van elke regel, zodat u de gelokaliseerde labels op het scherm kunt easly vinden.
@@ -255,7 +255,7 @@ In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spa
 1. Schakel de standaard taal van uw browser in op Spaans. U kunt ook de query teken reeks parameter toevoegen `ui_locales` aan de autorisatie aanvraag. Bijvoorbeeld: 
 
 ```http
-https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

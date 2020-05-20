@@ -9,12 +9,13 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77366193"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646303"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer (preview) te gebruiken
 
@@ -62,11 +63,11 @@ De eigenschappen van een module aanpassen:
 
 ## <a name="action-shortcuts"></a>Actie snelkoppelingen
 
-Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie https://en.wikipedia.org/wiki/Access_keyvoor meer informatie over toegangs sleutels.
+Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie voor meer informatie over toegangs sleutels https://en.wikipedia.org/wiki/Access_key .
 
-| Toetsaanslag | Bewerking |
+| Toetsaanslag | Actie |
 |-|-|
-| Toegangs toets + R | Voer |
+| Toegangs toets + R | Uitvoeren |
 | Toegangs toets + P | Publiceren |
 | Toegangs toets + C | Klonen |
 | Toegangs toets + D | Implementeren |

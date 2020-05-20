@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 56bf1898eb00d74fe92934ca8cd7d9d2848c2f1f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646006"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -32,7 +32,7 @@ Als u functies wilt vinden [op basis van hun algemene doel](#ordered-by-purpose)
 
 ## <a name="functions-in-expressions"></a>Functies in expressies
 
-Dit voor beeld laat zien hoe u de waarde van de `customerName` para meter kunt ophalen en deze waarde aan de `accountName` eigenschap moet toewijzen met behulp van de functie [para meters ()](#parameters) in een expressie om te laten zien hoe u een functie in een expressie gebruikt:
+Dit voor beeld laat zien hoe u de waarde van de `customerName` para meter kunt ophalen en deze waarde aan de eigenschap moet toewijzen met `accountName` behulp van de functie [para meters ()](#parameters) in een expressie om te laten zien hoe u een functie in een expressie gebruikt:
 
 ```json
 "accountName": "@parameters('customerName')"
@@ -42,10 +42,10 @@ Hier volgen enkele andere algemene manieren waarop u functies in expressies kunt
 
 | Taak | Syntaxis van de functie in een expressie |
 | ---- | -------------------------------- |
-| Werk met een item uitvoeren door dit item door te geven aan een functie. | "\@<*functie naam*> (<*item*>)" |
-| 1. Haal de waarde van de *para meter*op met behulp van de geneste `parameters()` functie. </br>2. Voer het werk uit met het resultaat door deze waarde door te geven aan *functie naam*. | "\@<*functie naam*> (para meters (' <*parameter* naam> '))" |
-| 1. Haal het resultaat op uit de geneste Inner Function- *functie naam*. </br>2. het resultaat wordt door gegeven aan de buitenste functie *functionName2*. | "\@<*functionName2*> (<*functie naam*> (<*item*>))" |
-| 1. Haal het resultaat op uit de *functie naam*. </br>2. als het resultaat een object is met eigenschaps *eigenschapnaam*, haalt u de waarde van die eigenschap op. | "\@<*functie naam*> (<*item*>). <*PropertyName*>" |
+| Werk met een item uitvoeren door dit item door te geven aan een functie. | " \@ < *functie naam*> (<*item*>)" |
+| 1. Haal de waarde van de *para meter*op met behulp van de geneste `parameters()` functie. </br>2. Voer het werk uit met het resultaat door deze waarde door te geven aan *functie naam*. | " \@ < *functie naam*> (para meters (' <*parameter* naam> '))" |
+| 1. Haal het resultaat op uit de geneste Inner Function- *functie naam*. </br>2. het resultaat wordt door gegeven aan de buitenste functie *functionName2*. | " \@ < *functionName2*> (<*functie naam*> (<*item*>))" |
+| 1. Haal het resultaat op uit de *functie naam*. </br>2. als het resultaat een object is met eigenschaps *eigenschapnaam*, haalt u de waarde van die eigenschap op. | " \@ < *functie naam*> (<*item*>). <*PropertyName*>" |
 |||
 
 De `concat()` functie kan bijvoorbeeld twee of meer teken reeks waarden als para meters hebben. Deze functie combineert deze teken reeksen in één teken reeks. U kunt letterlijke teken reeksen door geven, bijvoorbeeld ' Sophia ' en ' Owen ', zodat u een gecombineerde teken reeks, ' SophiaOwen ' krijgt:
@@ -54,13 +54,13 @@ De `concat()` functie kan bijvoorbeeld twee of meer teken reeks waarden als para
 "customerName": "@concat('Sophia', 'Owen')"
 ```
 
-U kunt ook teken reeks waarden van para meters ophalen. In dit voor beeld `parameters()` wordt de functie `concat()` gebruikt in elke `firstName` para `lastName` meter en de para meters en. U geeft de resulterende teken reeksen vervolgens door `concat()` aan de functie zodat u een gecombineerde teken reeks krijgt, bijvoorbeeld ' SophiaOwen ':
+U kunt ook teken reeks waarden van para meters ophalen. In dit voor beeld wordt de `parameters()` functie gebruikt in elke `concat()` para meter en de `firstName` `lastName` para meters en. U geeft de resulterende teken reeksen vervolgens door aan de `concat()` functie zodat u een gecombineerde teken reeks krijgt, bijvoorbeeld ' SophiaOwen ':
 
 ```json
 "customerName": "@concat(parameters('firstName'), parameters('lastName'))"
 ```
 
-In beide gevallen wordt het resultaat door beide voor beelden `customerName` aan de eigenschap toegewezen.
+In beide gevallen wordt het resultaat door beide voor beelden aan de `customerName` eigenschap toegewezen.
 
 Hier volgen enkele andere opmerkingen over functies in expressies:
 
@@ -123,7 +123,7 @@ Als u met voor waarden wilt werken, vergelijkt u waarden en expressie resultaten
 
 | Logische vergelijkings functie | Taak |
 | --------------------------- | ---- |
-| [maar](../logic-apps/workflow-definition-language-functions-reference.md#and) | Controleer of alle expressies waar zijn. |
+| [en](../logic-apps/workflow-definition-language-functions-reference.md#and) | Controleer of alle expressies waar zijn. |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Controleer of beide waarden gelijk zijn. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Controleer of de eerste waarde groter is dan de tweede waarde. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Controleer of de eerste waarde groter is dan of gelijk is aan de tweede waarde. |
@@ -166,7 +166,7 @@ Als u het type of de indeling van een waarde wilt wijzigen, kunt u deze conversi
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | De versie van de URI-code ring retour neren voor een invoer waarde door onveilige URL-tekens te vervangen door Escape tekens. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Retourneert de binaire versie voor een teken reeks met URI-code ring. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Retourneert de versie van de teken reeks voor een teken reeks met URI-code ring. |
-| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | De XML-versie voor een teken reeks retour neren. |
+| [indeling](../logic-apps/workflow-definition-language-functions-reference.md#xml) | De XML-versie voor een teken reeks retour neren. |
 |||
 
 <a name="implicit-data-conversions"></a>
@@ -179,7 +179,7 @@ Stel bijvoorbeeld dat een trigger een numerieke waarde retourneert als uitvoer:
 
 `triggerBody()?['123']`
 
-Als u deze numerieke uitvoer gebruikt en er wordt een teken reeks invoer verwacht, zoals een URL, Logic Apps zet de waarde automatisch om in een teken reeks met behulp`{}`van de notatie accolades ():
+Als u deze numerieke uitvoer gebruikt en er wordt een teken reeks invoer verwacht, zoals een URL, Logic Apps zet de waarde automatisch om in een teken reeks met behulp van de notatie accolades ( `{}` ):
 
 `@{triggerBody()?['123']}`
 
@@ -265,10 +265,10 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | Werkstroomfunctie | Taak |
 | ----------------- | ---- |
 | [optreden](../logic-apps/workflow-definition-language-functions-reference.md#action) | De uitvoer van de huidige actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
-| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | De uitvoer van `body` een actie tijdens runtime retour neren. Zie ook [hoofd tekst](../logic-apps/workflow-definition-language-functions-reference.md#body). |
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | De uitvoer van een actie `body` tijdens runtime retour neren. Zie ook [hoofd tekst](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | De uitvoer van een actie tijdens runtime retour neren. Zie [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) en [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [regelen](../logic-apps/workflow-definition-language-functions-reference.md#actions) | De uitvoer van een actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [actie](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
-| [organen](#body) | De uitvoer van `body` een actie tijdens runtime retour neren. Zie ook [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
+| [organen](#body) | De uitvoer van een actie `body` tijdens runtime retour neren. Zie ook [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Maak een matrix met de waarden die overeenkomen met een sleutel naam in uitvoer van *formulier gegevens* of *formulier-gecodeerde* acties. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Eén waarde Retour neren die overeenkomt met een sleutel naam in een actie *formulier gegevens* of *formulier-gecodeerde uitvoer*. |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Wanneer een herhalende actie een matrix heeft, wordt het huidige item in de matrix geretourneerd tijdens de huidige iteratie van de actie. |
@@ -278,9 +278,9 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | De hoofd tekst van een specifiek deel in de uitvoer van een actie met meerdere delen retour neren. |
 | [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | De uitvoer van een actie tijdens runtime retour neren. |
 | [instellen](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneert de waarde voor een para meter die wordt beschreven in uw werk stroom definitie. |
-| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie in het bereik, zoals `For_each`, `Until`en. `Scope` |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie in het bereik, zoals `For_each` , `Until` en `Scope` . |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | De uitvoer van een trigger retour neren tijdens runtime of vanuit andere JSON-naam-en-waardeparen. Zie ook [triggerOutputs](#triggerOutputs) en [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retour neer de uitvoer `body` van een trigger tijdens runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retour neer de uitvoer van een trigger `body` tijdens runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Een enkele waarde Retour neren die overeenkomt met een sleutel naam in trigger uitvoer van *formulier gegevens* of *formulier codering* . |
 | [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | De hoofd tekst voor een specifiek deel in de meerdelige uitvoer van een trigger retour neren. |
 | [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Maak een matrix waarvan de waarden overeenkomen met de naam van een sleutel in de trigger uitvoer van *formulier gegevens* of *formulier-gecodeerd* . |
@@ -336,7 +336,7 @@ De uitvoer van de *huidige* actie tijdens runtime retour neren of waarden van an
 Deze functie verwijst standaard naar het hele actie object, maar u kunt desgewenst een eigenschap opgeven waarvan u de waarde wilt bepalen.
 Zie ook [acties ()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
-U kunt de functie `action()` alleen op de volgende locaties gebruiken:
+U kunt de `action()` functie alleen op de volgende locaties gebruiken:
 
 * De `unsubscribe` eigenschap voor een webhook-actie, zodat u het resultaat van de oorspronkelijke `subscribe` aanvraag kunt openen
 * De `trackedProperties` eigenschap voor een actie
@@ -361,8 +361,8 @@ action().outputs.body.<property>
 
 ### <a name="actionbody"></a>actionBody
 
-De uitvoer van `body` een actie tijdens runtime retour neren.
-Steno voor `actions('<actionName>').outputs.body`.
+De uitvoer van een actie `body` tijdens runtime retour neren.
+Steno voor `actions('<actionName>').outputs.body` .
 Zie [hoofd tekst ()](#body) en [acties ()](#actions).
 
 ```
@@ -371,7 +371,7 @@ actionBody('<actionName>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Tekenreeks | De naam voor de uitvoer van `body` de actie die u wilt |
+| <*actionName*> | Ja | Tekenreeks | De naam voor de uitvoer van de actie `body` die u wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -379,9 +379,9 @@ actionBody('<actionName>')
 | <*actie-hoofd tekst-uitvoer*> | Tekenreeks | De `body` uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `body` wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
+In dit voor beeld wordt de `body` uitvoer van de Twitter-actie opgehaald `Get user` :
 
 ```
 actionBody('Get_user')
@@ -408,7 +408,7 @@ En retourneert dit resultaat:
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-De uitvoer van een actie tijdens runtime retour neren.  en is steno voor `actions('<actionName>').outputs`. Zie [acties ()](#actions). De `actionOutputs()` functie wordt omgezet `outputs()` in in de Logic app Designer `actionOutputs()`. Overweeg daarom het gebruik van [uitvoer ()](#outputs)in plaats van. Hoewel beide functies op dezelfde manier werken, `outputs()` verdient de voor keur.
+De uitvoer van een actie tijdens runtime retour neren.  en is steno voor `actions('<actionName>').outputs` . Zie [acties ()](#actions). De `actionOutputs()` functie `outputs()` wordt omgezet in in de Logic app Designer. Overweeg daarom het gebruik van [uitvoer ()](#outputs)in plaats van `actionOutputs()` . Hoewel beide functies op dezelfde manier werken, verdient de `outputs()` voor keur.
 
 ```
 actionOutputs('<actionName>')
@@ -424,9 +424,9 @@ actionOutputs('<actionName>')
 | <*uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
+In dit voor beeld wordt de uitvoer van de Twitter-actie opgehaald `Get user` :
 
 ```
 actionOutputs('Get_user')
@@ -476,8 +476,8 @@ Zie [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)en [Body ()]
 Zie [actie ()](#action)voor de huidige actie.
 
 > [!NOTE]
-> U kunt voorheen de `actions()` functie of het `conditions` element gebruiken wanneer u opgeeft dat een actie is uitgevoerd op basis van de uitvoer van een andere actie. Als u echter expliciete afhankelijkheden wilt declareren tussen acties, moet u nu de `runAfter` eigenschap van de afhankelijke actie gebruiken.
-> Zie voor meer informatie over `runAfter` de eigenschap [fouten met betrekking tot Catch en handle met de eigenschap runAfter](../logic-apps/logic-apps-workflow-definition-language.md).
+> U kunt voorheen de `actions()` functie of het element gebruiken `conditions` Wanneer u opgeeft dat een actie is uitgevoerd op basis van de uitvoer van een andere actie. Als u echter expliciete afhankelijkheden wilt declareren tussen acties, moet u nu de eigenschap van de afhankelijke actie gebruiken `runAfter` .
+> Zie voor meer informatie over de `runAfter` eigenschap [fouten met betrekking tot Catch en handle met de eigenschap runAfter](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ```
 actions('<actionName>')
@@ -495,9 +495,9 @@ actions('<actionName>').outputs.body.<property>
 | <*actie-uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie of eigenschap |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `status` wordt de eigenschaps waarde van `Get user` de actie Twitter tijdens runtime opgehaald:
+In dit voor beeld wordt de `status` eigenschaps waarde van de actie Twitter `Get user` tijdens runtime opgehaald:
 
 ```
 actions('Get_user').outputs.body.status
@@ -525,7 +525,7 @@ add(<summand_1>, <summand_2>)
 | <*resultaat-Sum*> | Geheel getal of zwevend | Het resultaat van het toevoegen van de opgegeven getallen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de opgegeven getallen toegevoegd:
 
@@ -704,7 +704,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 *Voorbeeld 1*
 
-In dit voor beeld `middleName` wordt de eigenschap toegevoegd aan een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. Het object bevat al de `firstName` eigenschappen `surName` en en. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
+In dit voor beeld wordt de `middleName` eigenschap toegevoegd aan een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. Het object bevat al de `firstName` Eigenschappen en en `surName` . De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
 
 ```
 addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
@@ -731,7 +731,7 @@ Hier is het bijgewerkte JSON-object:
 
 *Voorbeeld 2*
 
-In dit voor beeld `middleName` wordt de eigenschap Child toegevoegd `customerName` aan de bestaande eigenschap in een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
+In dit voor beeld wordt de `middleName` eigenschap Child toegevoegd aan de bestaande `customerName` eigenschap in een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
 
 ```
 addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
@@ -879,9 +879,9 @@ and(false, false)
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld: beide expressies zijn waar, dus `true`retourneert.
-* Tweede voor beeld: een expressie is onwaar, `false`dus retourneert.
-* Derde voor beeld: beide expressies zijn onwaar, `false`dus retourneert.
+* Eerste voor beeld: beide expressies zijn waar, dus retourneert `true` .
+* Tweede voor beeld: een expressie is onwaar, dus retourneert `false` .
+* Derde voor beeld: beide expressies zijn onwaar, dus retourneert `false` .
 
 *Voorbeeld 2*
 
@@ -895,9 +895,9 @@ and(equals(1, 2), equals(1, 3))
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld: beide expressies zijn waar, dus `true`retourneert.
-* Tweede voor beeld: een expressie is onwaar, `false`dus retourneert.
-* Derde voor beeld: beide expressies zijn onwaar, `false`dus retourneert.
+* Eerste voor beeld: beide expressies zijn waar, dus retourneert `true` .
+* Tweede voor beeld: een expressie is onwaar, dus retourneert `false` .
+* Derde voor beeld: beide expressies zijn onwaar, dus retourneert `false` .
 
 <a name="array"></a>
 
@@ -920,7 +920,7 @@ array('<value>')
 | [<*waarde*>] | Matrix | Een matrix die de enkele opgegeven invoer bevat |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de teken reeks ' Hallo ':
 
@@ -953,7 +953,7 @@ base64('<value>')
 | <*Base64-teken reeks*> | Tekenreeks | De met base64 gecodeerde versie voor de invoer teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de teken reeks "Hallo" geconverteerd naar een base64-gecodeerde teken reeks:
 
@@ -986,7 +986,7 @@ base64ToBinary('<value>')
 | <*binary-for-base64-String*> | Tekenreeks | De binaire versie voor de met base64 gecodeerde teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de met base64 gecodeerde teken reeks "aGVsbG8 =" geconverteerd naar een binaire teken reeks:
 
@@ -1021,7 +1021,7 @@ base64ToString('<value>')
 | <*gedecodeerd-base64-teken reeks*> | Tekenreeks | De teken reeks versie voor een base64-gecodeerde teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de met base64 gecodeerde teken reeks "aGVsbG8 =" geconverteerd naar alleen een teken reeks:
 
@@ -1051,7 +1051,7 @@ binary('<value>')
 | <*binary-for-input-waarde*> | Tekenreeks | De binaire versie voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de teken reeks "Hallo" geconverteerd naar een binaire teken reeks:
 
@@ -1067,8 +1067,8 @@ En retourneert dit resultaat:
 
 ### <a name="body"></a>body
 
-De uitvoer van `body` een actie tijdens runtime retour neren.
-Steno voor `actions('<actionName>').outputs.body`.
+De uitvoer van een actie `body` tijdens runtime retour neren.
+Steno voor `actions('<actionName>').outputs.body` .
 Zie [actionBody ()](#actionBody) en [Actions ()](#actions).
 
 ```
@@ -1077,7 +1077,7 @@ body('<actionName>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ja | Tekenreeks | De naam voor de uitvoer van `body` de actie die u wilt |
+| <*actionName*> | Ja | Tekenreeks | De naam voor de uitvoer van de actie `body` die u wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1085,9 +1085,9 @@ body('<actionName>')
 | <*actie-hoofd tekst-uitvoer*> | Tekenreeks | De `body` uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `body` wordt de uitvoer `Get user` van de Twitter-actie opgehaald:
+In dit voor beeld wordt de `body` uitvoer van de `Get user` Twitter-actie opgehaald:
 
 ```
 body('Get_user')
@@ -1130,7 +1130,7 @@ bool(<value>)
 | waar of onwaar | Booleaans | De Booleaanse versie voor de opgegeven waarde |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden worden de opgegeven waarden geconverteerd naar Boole-waarden:
 
@@ -1165,7 +1165,7 @@ coalesce(<object_1>, <object_2>, ...)
 | <*eerste niet-null-item*> | Alle | Het eerste item of de waarde die niet null is. Als alle para meters null zijn, retourneert deze functie null. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de eerste niet-null-waarde uit de opgegeven waarden geretourneerd, of NULL wanneer alle waarden null zijn:
 
@@ -1201,7 +1201,7 @@ concat('<text1>', '<text2>', ...)
 | <*text1text2...*> | Tekenreeks | De teken reeks die is gemaakt op basis van de gecombineerde invoer teken reeksen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de teken reeksen "Hallo" en "wereld" gecombineerd:
 
@@ -1405,7 +1405,7 @@ createArray('<object1>', '<object2>', ...)
 | [<*object1*>, <*object2*>,...] | Matrix | De matrix die is gemaakt op basis van alle invoer items |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van deze invoer:
 
@@ -1435,7 +1435,7 @@ dataUri('<value>')
 | <*gegevens-URI*> | Tekenreeks | De gegevens-URI voor de invoer teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een gegevens-URI gemaakt voor de teken reeks "Hallo":
 
@@ -1451,7 +1451,7 @@ En retourneert dit resultaat:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 Retourneert de binaire versie voor een gegevens-URI (Uniform Resource Identifier).
 Gebruik deze functie in plaats van [decodeDataUri ()](#decodeDataUri).
-Hoewel beide functies op dezelfde manier werken, `dataUriBinary()` verdient de voor keur.
+Hoewel beide functies op dezelfde manier werken, verdient de `dataUriBinary()` voor keur.
 
 ```
 dataUriToBinary('<value>')
@@ -1467,7 +1467,7 @@ dataUriToBinary('<value>')
 | <*binary-for-data-URI*> | Tekenreeks | De binaire versie voor de gegevens-URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een binaire versie gemaakt voor deze gegevens-URI:
 
@@ -1502,7 +1502,7 @@ dataUriToString('<value>')
 | <*string-for-data-URI*> | Tekenreeks | De teken reeks versie voor de gegevens-URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt voor deze gegevens-URI:
 
@@ -1532,7 +1532,7 @@ dayOfMonth('<timestamp>')
 | <*dag van de maand*> | Geheel getal | De dag van de maand van de opgegeven tijds tempel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het getal voor de dag van de maand uit deze tijds tempel geretourneerd:
 
@@ -1562,7 +1562,7 @@ dayOfWeek('<timestamp>')
 | <*dag van de week*> | Geheel getal | De dag van de week vanaf de opgegeven tijds tempel waarbij zondag 0 is, maandag 1, enzovoort |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het getal voor de dag van de week uit deze tijds tempel geretourneerd:
 
@@ -1592,7 +1592,7 @@ dayOfYear('<timestamp>')
 | <*dag van jaar*> | Geheel getal | De dag van het jaar van de opgegeven tijds tempel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het nummer van de dag van het jaar uit deze tijds tempel geretourneerd:
 
@@ -1612,7 +1612,7 @@ Deze functie is afgeschaft. gebruik in plaats daarvan [base64ToString ()](#base6
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-Retourneert de binaire versie voor een gegevens-URI (Uniform Resource Identifier). Overweeg het gebruik van [dataUriToBinary ()](#dataUriToBinary)in `decodeDataUri()`plaats van. Hoewel beide functies op dezelfde manier werken, `dataUriToBinary()` verdient de voor keur.
+Retourneert de binaire versie voor een gegevens-URI (Uniform Resource Identifier). Overweeg het gebruik van [dataUriToBinary ()](#dataUriToBinary)in plaats van `decodeDataUri()` . Hoewel beide functies op dezelfde manier werken, verdient de `dataUriToBinary()` voor keur.
 
 > [!NOTE]
 > Azure Logic Apps voert automatisch base64-code ring en-decodering uit, wat betekent dat u deze conversies niet hand matig hoeft uit te voeren. Als u dit wel doet, kunt u echter onverwachte weergave gedrag ondervinden die niet van invloed is op de daad werkelijke conversies, maar alleen op de manier waarop deze worden weer gegeven. Zie [impliciete gegevens type conversies](#implicit-data-conversions)voor meer informatie.
@@ -1631,7 +1631,7 @@ decodeDataUri('<value>')
 | <*binary-for-data-URI*> | Tekenreeks | De binaire versie voor een gegevens-URI-teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de binaire versie van deze gegevens-URI geretourneerd:
 
@@ -1666,7 +1666,7 @@ decodeUriComponent('<value>')
 | <*gedecodeerde URI*> | Tekenreeks | De bijgewerkte teken reeks met de gecodeerde escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de escape-tekens in deze teken reeks vervangen door gedecodeerde versies:
 
@@ -1698,7 +1698,7 @@ div(<dividend>, <divisor>)
 | <*quotiënt-resultaat*> | Geheel getal | Het gehele getal als resultaat van het delen van het eerste getal met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Beide voor beelden delen het eerste getal door het tweede getal:
 
@@ -1713,7 +1713,7 @@ En retour neren dit resultaat:`2`
 
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 
-Een gecodeerde URI-versie (Uniform Resource Identifier) retour neren voor een teken reeks door onveilige URL-tekens te vervangen door Escape tekens. Overweeg het gebruik van [uriComponent ()](#uriComponent)in `encodeUriComponent()`plaats van. Hoewel beide functies op dezelfde manier werken, `uriComponent()` verdient de voor keur.
+Een gecodeerde URI-versie (Uniform Resource Identifier) retour neren voor een teken reeks door onveilige URL-tekens te vervangen door Escape tekens. Overweeg het gebruik van [uriComponent ()](#uriComponent)in plaats van `encodeUriComponent()` . Hoewel beide functies op dezelfde manier werken, verdient de `uriComponent()` voor keur.
 
 > [!NOTE]
 > Azure Logic Apps voert automatisch base64-code ring en-decodering uit, wat betekent dat u deze conversies niet hand matig hoeft uit te voeren. Als u dit wel doet, kunt u echter onverwachte weergave gedrag ondervinden die niet van invloed is op de daad werkelijke conversies, maar alleen op de manier waarop deze worden weer gegeven. Zie [impliciete gegevens type conversies](#implicit-data-conversions)voor meer informatie.
@@ -1732,7 +1732,7 @@ encodeUriComponent('<value>')
 | <*gecodeerde URI*> | Tekenreeks | De teken reeks met URI-code ring met escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken reeks:
 
@@ -1764,7 +1764,7 @@ empty([<collection>])
 | waar of onwaar | Booleaans | Retourneert waar als de verzameling leeg is. Retourneert onwaar wanneer niet leeg is. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven verzamelingen leeg zijn:
 
@@ -1775,8 +1775,8 @@ empty('abc')
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld: Hiermee wordt een lege teken reeks door gegeven `true`, waardoor de functie wordt geretourneerd.
-* Tweede voor beeld: de teken reeks "ABC" wordt door gegeven, `false`dus de functie retourneert.
+* Eerste voor beeld: Hiermee wordt een lege teken reeks door gegeven, waardoor de functie wordt geretourneerd `true` .
+* Tweede voor beeld: de teken reeks "ABC" wordt door gegeven, dus de functie retourneert `false` .
 
 <a name="endswith"></a>
 
@@ -1842,7 +1842,7 @@ equals('<object1>', '<object2>')
 | waar of onwaar | Booleaans | Retourneert waar als beide gelijkwaardig zijn. Retourneert onwaar als dat niet het equivalent is. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven invoer gelijkwaardig zijn.
 
@@ -1853,8 +1853,8 @@ equals('abc', 'abcd')
 
 En retourneert deze resultaten:
 
-* Eerste voor beeld: beide waarden zijn gelijkwaardig, waardoor de functie `true`wordt geretourneerd.
-* Tweede voor beeld: beide waarden zijn niet gelijk aan, dus `false`retourneert de functie.
+* Eerste voor beeld: beide waarden zijn gelijkwaardig, waardoor de functie wordt geretourneerd `true` .
+* Tweede voor beeld: beide waarden zijn niet gelijk aan, dus retourneert de functie `false` .
 
 <a name="first"></a>
 
@@ -1877,7 +1877,7 @@ first([<collection>])
 | <*eerste verzameling-item*> | Alle | Het eerste item in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden vindt u het eerste item in deze verzamelingen:
 
@@ -1912,7 +1912,7 @@ float('<value>')
 | <*float-waarde*> | Float | Het drijvende-komma getal voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks versie gemaakt voor dit getal met drijvende komma:
 
@@ -1943,7 +1943,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | <*opnieuw geformatteerd-tijds tempel*> | Tekenreeks | De bijgewerkte tijds tempel in de opgegeven indeling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven notatie:
 
@@ -1974,7 +1974,7 @@ formDataMultiValues('<actionName>', '<key>')
 | [<*matrix-met-sleutel waarden*>] | Matrix | Een matrix met alle waarden die overeenkomen met de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de waarde van de sleutel subject in de opgegeven actie formulier gegevens of door formulieren gecodeerde uitvoer:
 
@@ -2006,7 +2006,7 @@ formDataValue('<actionName>', '<key>')
 | <*sleutel waarde*> | Tekenreeks | De waarde in de opgegeven sleutel  |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt op basis van de waarde van de sleutel subject in de opgegeven actie formulier gegevens of door formulieren gecodeerde uitvoer:
 
@@ -2029,18 +2029,18 @@ formatNumber(<number>, <format>, <locale>?)
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
 | <*Telwoord*> | Ja | Geheel getal of dubbele waarde | De waarde die u wilt opmaken. |
-| <*Formatteer*> | Ja | Tekenreeks | Een samengestelde indelings teken reeks waarmee de indeling wordt opgegeven die u wilt gebruiken. Zie voor de ondersteunde teken reeksen voor numerieke notatie [standaard numerieke teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), die worden ondersteund `number.ToString(<format>, <locale>)`door. |
-| <*instelling*> | Nee | Tekenreeks | De land instelling die moet worden gebruikt `number.ToString(<format>, <locale>)`als ondersteund door. Als dat niet is opgegeven, is `en-us`de standaard waarde. |
+| <*Formatteer*> | Ja | Tekenreeks | Een samengestelde indelings teken reeks waarmee de indeling wordt opgegeven die u wilt gebruiken. Zie voor de ondersteunde teken reeksen voor numerieke notatie [standaard numerieke teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), die worden ondersteund door `number.ToString(<format>, <locale>)` . |
+| <*instelling*> | Nee | Tekenreeks | De land instelling die moet worden gebruikt als ondersteund door `number.ToString(<format>, <locale>)` . Als dat niet is opgegeven, is de standaard waarde `en-us` . |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*opgemaakt-nummer*> | Tekenreeks | Het opgegeven getal als een teken reeks in de indeling die u hebt opgegeven. U kunt deze retour waarde casten naar `int` een `float`of. |
+| <*opgemaakt-nummer*> | Tekenreeks | Het opgegeven getal als een teken reeks in de indeling die u hebt opgegeven. U kunt deze retour waarde casten naar een `int` of `float` . |
 ||||
 
 *Voorbeeld 1*
 
-Stel dat u het nummer `1234567890`wilt opmaken. In dit voor beeld wordt dat getal opgemaakt als de teken reeks "1.234.567.890,00".
+Stel dat u het nummer wilt opmaken `1234567890` . In dit voor beeld wordt dat getal opgemaakt als de teken reeks "1.234.567.890,00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'en-us')
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 
 * Voor beeld 2 "
 
-Stel dat u het nummer `1234567890`wilt opmaken. In dit voor beeld wordt het getal opgemaakt als de teken reeks "1.234.567.890, 00".
+Stel dat u het nummer wilt opmaken `1234567890` . In dit voor beeld wordt het getal opgemaakt als de teken reeks "1.234.567.890, 00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'is-is')
@@ -2056,7 +2056,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 
 *Voor beeld 3*
 
-Stel dat u het nummer `17.35`wilt opmaken. In dit voor beeld wordt het getal opgemaakt op de teken reeks "$17,35".
+Stel dat u het nummer wilt opmaken `17.35` . In dit voor beeld wordt het getal opgemaakt op de teken reeks "$17,35".
 
 ```
 formatNumber(17.36, 'C2')
@@ -2064,7 +2064,7 @@ formatNumber(17.36, 'C2')
 
 *Voor beeld 4*
 
-Stel dat u het nummer `17.35`wilt opmaken. In dit voor beeld wordt het getal op de teken reeks "17, 35 KR" opgemaakt.
+Stel dat u het nummer wilt opmaken `17.35` . In dit voor beeld wordt het getal op de teken reeks "17, 35 KR" opgemaakt.
 
 ```
 formatNumber(17.36, 'C2', 'is-is')
@@ -2181,7 +2181,7 @@ greater('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of kleiner is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Deze voor beelden controleren of de eerste waarde groter is dan de tweede waarde:
 
@@ -2218,7 +2218,7 @@ greaterOrEquals('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde lager is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde groter is dan of gelijk is aan de tweede waarde:
 
@@ -2258,7 +2258,7 @@ guid('<format>')
 | <*GUID-waarde*> | Tekenreeks | Een wille keurig gegenereerde GUID |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt dezelfde GUID gegenereerd, maar als 32 cijfers, gescheiden door afbreek streepjes en tussen haakjes:
 
@@ -2290,10 +2290,10 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | <*opgegeven-retourneert-waarde*> | Alle | De opgegeven waarde die wordt geretourneerd op basis van het feit of de expressie waar of onwaar is |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor `"yes"` beeld wordt geretourneerd omdat de opgegeven expressie True retourneert.
-Anders wordt het volgende geretourneerd `"no"`:
+In dit voor beeld wordt geretourneerd `"yes"` omdat de opgegeven expressie True retourneert.
+Anders wordt het volgende geretourneerd `"no"` :
 
 ```
 if(equals(1, 1), 'yes', 'no')
@@ -2321,7 +2321,7 @@ indexOf('<text>', '<searchText>')
 | <*index-waarde*>| Geheel getal | De start positie of index waarde voor de opgegeven subtekenreeks. <p>Als de teken reeks niet wordt gevonden, retourneert u het getal-1. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar de start index-waarde voor de subtekenreeks ' World ' in de teken reeks ' Hallo wereld ':
 
@@ -2351,7 +2351,7 @@ int('<value>')
 | <*geheel getal-resultaat*> | Geheel getal | De versie van het gehele getal voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een versie met gehele getallen gemaakt voor de teken reeks "10":
 
@@ -2377,9 +2377,9 @@ item()
 | <*huidig-matrix-item*> | Alle | Het huidige item in de matrix voor de huidige herhaling van de actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `body` wordt het element van het huidige bericht opgehaald voor de actie ' Send_an_email ' binnen de huidige herhaling van elke lus:
+In dit voor beeld wordt het `body` element van het huidige bericht opgehaald voor de actie ' Send_an_email ' binnen de huidige herhaling van elke lus:
 
 ```
 item().body
@@ -2406,7 +2406,7 @@ items('<loopName>')
 | <*item*> | Alle | Het item uit de huidige cyclus in de opgegeven for-each-lus |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het huidige item opgehaald van de opgegeven for-each-lus:
 
@@ -2434,7 +2434,7 @@ iterationIndexes('<loopName>')
 | <*TabIndex*> | Geheel getal | De index waarde voor de huidige iteratie binnen de opgegeven lus until | 
 |||| 
 
-*Hierbij* 
+*Voorbeeld* 
 
 In dit voor beeld wordt een item variabele gemaakt en deze variabele wordt tijdens elke iteratie in een lus until verhoogd tot de waarde van de teller vijf heeft bereikt. In het voor beeld wordt ook een variabele gemaakt die de huidige index voor elke herhaling bijhoudt. In de lus until, tijdens elke iteratie, wordt het prestatie meter item verhoogd en wordt vervolgens de item waarde toegewezen aan de huidige index waarde en wordt de teller vervolgens verhoogd. In dit voor beeld verwijst in de lus naar de huidige iteratie index met behulp van de `iterationIndexes` functie:
 
@@ -2607,7 +2607,7 @@ intersection('<collection1>', '<collection2>', ...)
 | <*algemeen: items*> | Respectievelijk matrix of object | Een verzameling met alleen de gemeen schappelijke items in de opgegeven verzamelingen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld vindt u de algemene items voor deze matrices:
 
@@ -2635,10 +2635,10 @@ join([<collection>], '<delimiter>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*char1*><*scheidings*><teken*char2*><*scheidings teken*>... | Tekenreeks | De resulterende teken reeks die is gemaakt op basis van alle items in de opgegeven matrix |
+| <*char1* >< *scheidings teken* >< *char2* >< *scheidings*>... | Tekenreeks | De resulterende teken reeks die is gemaakt op basis van alle items in de opgegeven matrix |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt van alle items in deze matrix met het opgegeven teken als scheidings teken:
 
@@ -2669,7 +2669,7 @@ last([<collection>])
 | <*laatste verzameling-item*> | Respectievelijk een teken reeks of matrix | Het laatste item in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden vindt u het laatste item in deze verzamelingen:
 
@@ -2705,7 +2705,7 @@ lastIndexOf('<text>', '<searchText>')
 | <*eind index-waarde*> | Geheel getal | De start positie of index waarde voor het laatste exemplaar van de opgegeven subtekenreeks. <p>Als de teken reeks niet wordt gevonden, retourneert u het getal-1. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar de begin index waarde voor het laatste exemplaar van de subtekenreeks ' World ' in de teken reeks ' Hallo wereld ':
 
@@ -2736,7 +2736,7 @@ length([<collection>])
 | <*lengte-of-aantal*> | Geheel getal | Het aantal items in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het aantal items in deze verzamelingen geteld:
 
@@ -2770,7 +2770,7 @@ less('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde lager is dan de tweede waarde.
 
@@ -2807,7 +2807,7 @@ lessOrEquals('<value>', '<compareTo>')
 | waar of onwaar  | Booleaans | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde kleiner of gelijk is aan de tweede waarde.
 
@@ -2837,7 +2837,7 @@ listCallbackUrl()
 | <*call back-URL*> | Tekenreeks | De call back-URL voor een trigger of actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld ziet u een voor beeld van een call back-URL die door deze functie kan worden geretourneerd:
 
@@ -2865,7 +2865,7 @@ max([<number1>, <number2>, ...])
 | <*Max-waarde*> | Geheel getal of zwevend | De hoogste waarde in de opgegeven matrix of set getallen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de hoogste waarde uit de set getallen en de matrix opgehaald:
 
@@ -2898,7 +2898,7 @@ min([<number1>, <number2>, ...])
 | <*min-waarde*> | Geheel getal of zwevend | De laagste waarde in de opgegeven reeks getallen of de opgegeven matrix |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de laagste waarde in de set met getallen en de matrix opgehaald:
 
@@ -2931,7 +2931,7 @@ mod(<dividend>, <divisor>)
 | <*modulo-resultaat*> | Geheel getal of zwevend | De rest van het delen van het eerste getal met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In het volgende voor beeld wordt het eerste getal in het tweede getal gedeeld:
 
@@ -2962,7 +2962,7 @@ mul(<multiplicand1>, <multiplicand2>)
 | <*product-resultaat*> | Geheel getal of zwevend | Het product van het eerste getal vermenigvuldigen met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het eerste getal vermenigvuldigd met het tweede getal:
 
@@ -3029,8 +3029,8 @@ not(true)
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld: de expressie is onwaar, waardoor de `true`functie wordt geretourneerd.
-* Tweede voor beeld: de expressie is waar, dus retourneert `false`de functie.
+* Eerste voor beeld: de expressie is onwaar, waardoor de functie wordt geretourneerd `true` .
+* Tweede voor beeld: de expressie is waar, dus retourneert de functie `false` .
 
 *Voorbeeld 2*
 
@@ -3043,8 +3043,8 @@ not(equals(1, 1))
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld: de expressie is onwaar, waardoor de `true`functie wordt geretourneerd.
-* Tweede voor beeld: de expressie is waar, dus retourneert `false`de functie.
+* Eerste voor beeld: de expressie is onwaar, waardoor de functie wordt geretourneerd `true` .
+* Tweede voor beeld: de expressie is waar, dus retourneert de functie `false` .
 
 <a name="or"></a>
 
@@ -3078,8 +3078,8 @@ or(false, false)
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld: ten minste één expressie is waar, dus retourneert `true`de functie.
-* Tweede voor beeld: beide expressies zijn onwaar, waardoor de `false`functie wordt geretourneerd.
+* Eerste voor beeld: ten minste één expressie is waar, dus retourneert de functie `true` .
+* Tweede voor beeld: beide expressies zijn onwaar, waardoor de functie wordt geretourneerd `false` .
 
 *Voorbeeld 2*
 
@@ -3092,14 +3092,14 @@ or(equals(1, 2), equals(1, 3))
 
 En retour neren deze resultaten:
 
-* Eerste voor beeld: ten minste één expressie is waar, dus retourneert `true`de functie.
-* Tweede voor beeld: beide expressies zijn onwaar, waardoor de `false`functie wordt geretourneerd.
+* Eerste voor beeld: ten minste één expressie is waar, dus retourneert de functie `true` .
+* Tweede voor beeld: beide expressies zijn onwaar, waardoor de functie wordt geretourneerd `false` .
 
 <a name="outputs"></a>
 
 ### <a name="outputs"></a>uitvoer
 
-Retour neren van de uitvoer van een actie tijdens runtime. Gebruik deze functie `outputs()` in plaats van `actionOutputs()`, die wordt omgezet in in de Logic app Designer. Hoewel beide functies op dezelfde manier werken, `outputs()` verdient de voor keur.
+Retour neren van de uitvoer van een actie tijdens runtime. Gebruik deze functie in plaats van `actionOutputs()` , die wordt omgezet `outputs()` in in de Logic app Designer. Hoewel beide functies op dezelfde manier werken, verdient de `outputs()` voor keur.
 
 ```
 outputs('<actionName>')
@@ -3115,9 +3115,9 @@ outputs('<actionName>')
 | <*uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
+In dit voor beeld wordt de uitvoer van de Twitter-actie opgehaald `Get user` :
 
 ```
 outputs('Get_user')
@@ -3178,7 +3178,7 @@ parameters('<parameterName>')
 | <*para meter-waarde*> | Alle | De waarde voor de opgegeven para meter |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Stel dat u deze JSON-waarde hebt:
 
@@ -3217,7 +3217,7 @@ rand(<minValue>, <maxValue>)
 | <*wille keurig resultaat*> | Geheel getal | Het wille keurig geheel getal dat is geretourneerd uit het opgegeven bereik |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een wille keurig geheel getal opgehaald uit het opgegeven bereik, met uitzonde ring van de maximum waarde:
 
@@ -3225,7 +3225,7 @@ In dit voor beeld wordt een wille keurig geheel getal opgehaald uit het opgegeve
 rand(1, 5)
 ```
 
-En retourneert een van deze getallen als resultaat: `1`, `2`, `3`, of`4`
+En retourneert een van deze getallen als resultaat: `1` , `2` , `3` , of`4`
 
 <a name="range"></a>
 
@@ -3248,7 +3248,7 @@ range(<startIndex>, <count>)
 | [<*bereik-resultaat*>] | Matrix | De matrix met gehele getallen vanaf de opgegeven index |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix met gehele getallen gemaakt die begint met de opgegeven index en het opgegeven aantal gehele getallen bevat:
 
@@ -3280,7 +3280,7 @@ replace('<text>', '<oldText>', '<newText>')
 | <*bijgewerkt-tekst*> | Tekenreeks | De bijgewerkte teken reeks na het vervangen van de subtekenreeks <p>Als de subtekenreeks niet wordt gevonden, retourneert u de oorspronkelijke teken reeks. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de subtekenreeks ' old ' in ' Old string ' gezocht en vervangen door ' nieuw ':
 
@@ -3331,7 +3331,7 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 *Voorbeeld 1*
 
-In dit voor beeld `middleName` wordt de eigenschap van een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON, verwijderd met behulp van de functie [JSON ()](#json) en wordt het bijgewerkte object geretourneerd:
+In dit voor beeld wordt de `middleName` eigenschap van een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON, verwijderd met behulp van de functie [JSON ()](#json) en wordt het bijgewerkte object geretourneerd:
 
 ```
 removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
@@ -3358,7 +3358,7 @@ Hier is het bijgewerkte JSON-object:
 
 *Voorbeeld 2*
 
-In dit voor beeld `middleName` wordt de onderliggende eigenschap `customerName` van een BOVENLIGGENDE eigenschap in een JSON-object verwijderd, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie, en het bijgewerkte object wordt geretourneerd:
+In dit voor beeld wordt de `middleName` onderliggende eigenschap van een `customerName` bovenliggende eigenschap in een JSON-object verwijderd, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie, en het bijgewerkte object wordt geretourneerd:
 
 ```
 removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
@@ -3391,7 +3391,7 @@ Hier is het bijgewerkte JSON-object:
 
 ### <a name="result"></a>result
 
-De invoer en uitvoer retour neren van alle acties die binnen de opgegeven actie met een bereik vallen, zoals een `For_each`, `Until`of `Scope` actie. Deze functie is handig om de resultaten van een mislukte actie te retour neren, zodat u uitzonde ringen kunt vaststellen en verwerken. Zie [context en resultaten ophalen voor fouten](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)voor meer informatie.
+De invoer en uitvoer retour neren van alle acties die binnen de opgegeven actie met een bereik vallen, zoals een `For_each` , `Until` of `Scope` actie. Deze functie is handig om de resultaten van een mislukte actie te retour neren, zodat u uitzonde ringen kunt vaststellen en verwerken. Zie [context en resultaten ophalen voor fouten](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)voor meer informatie.
 
 ```
 result('<scopedActionName>')
@@ -3407,9 +3407,9 @@ result('<scopedActionName>')
 | <*Matrix-object*> | Matrix object | Een matrix die matrices van invoer en uitvoer bevat van elke actie die in de opgegeven actie met een bereik wordt weer gegeven |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld worden de invoer en uitvoer van elke herhaling van een HTTP-actie binnen een `For_each` lus geretourneerd met behulp `result()` van de functie `Compose` in de actie:
+In dit voor beeld worden de invoer en uitvoer van elke herhaling van een HTTP-actie binnen een lus geretourneerd met `For_each` behulp van de `result()` functie in de `Compose` actie:
 
 ```json
 {
@@ -3442,7 +3442,7 @@ In dit voor beeld worden de invoer en uitvoer van elke herhaling van een HTTP-ac
 }
 ```
 
-Hier ziet u hoe de geretourneerde matrix eruit kan zien waar `outputs` het buitenste object de invoer en uitvoer bevat van elke herhaling van de acties `For_each` binnen de actie.
+Hier ziet u hoe de geretourneerde matrix eruit kan zien waar het buitenste `outputs` object de invoer en uitvoer bevat van elke herhaling van de acties binnen de `For_each` actie.
 
 ```json
 [
@@ -3525,7 +3525,7 @@ setProperty(<object>, '<property>', <value>)
 | <*Value*> | Ja | Alle | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
 |||||
 
-Als u de onderliggende eigenschap in een onderliggend object wilt instellen `setProperty()` , gebruikt u in plaats daarvan een genest aanroep. Anders retourneert de functie alleen het onderliggende object als uitvoer.
+Als u de onderliggende eigenschap in een onderliggend object wilt instellen, gebruikt u `setProperty()` in plaats daarvan een genest aanroep. Anders retourneert de functie alleen het onderliggende object als uitvoer.
 
 ```
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
@@ -3546,7 +3546,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 *Voorbeeld 1*
 
-In dit voor beeld `surName` wordt de eigenschap in een JSON-object ingesteld, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
+In dit voor beeld wordt de `surName` eigenschap in een JSON-object ingesteld, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
 
 ```
 setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
@@ -3572,7 +3572,7 @@ Hier is het bijgewerkte JSON-object:
 
 *Voorbeeld 2*
 
-In dit voor beeld `surName` wordt de onderliggende eigenschap `customerName` voor de BOVENLIGGENDE eigenschap in een JSON-object ingesteld, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()-](#json) functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
+In dit voor beeld wordt de `surName` onderliggende eigenschap voor de `customerName` bovenliggende eigenschap in een JSON-object ingesteld, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()-](#json) functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
 
 ```
 setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
@@ -3621,7 +3621,7 @@ skip([<collection>], <count>)
 | [<*bijgewerkt-verzameling*>] | Matrix | De bijgewerkte verzameling na het verwijderen van de opgegeven items |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt één item, het cijfer 0, van de voor kant van de opgegeven matrix verwijderd:
 
@@ -3652,7 +3652,7 @@ split('<text>', '<delimiter>')
 | [<*subtekenreeks1*>, <*substring2*>,...] | Matrix | Een matrix die subtekenreeksen uit de oorspronkelijke teken reeks bevat, gescheiden door komma's |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt met subtekenreeksen uit de opgegeven teken reeks op basis van het opgegeven teken als scheidings tekens:
 
@@ -3683,7 +3683,7 @@ startOfDay('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel, maar beginnend bij het lege uur voor de dag |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar het begin van de dag voor deze tijds tempel:
 
@@ -3714,7 +3714,7 @@ startOfHour('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel, maar beginnend bij het nul-minuten teken voor het uur |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld vindt u het begin van het uur voor deze tijds tempel:
 
@@ -3745,7 +3745,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel dat begint op de eerste dag van de maand met het nul-uur |
 ||||
 
-*Hierbij*
+*Voorbeeld 1*
 
 In dit voor beeld wordt het begin van de maand voor deze tijds tempel geretourneerd:
 
@@ -3754,6 +3754,16 @@ startOfMonth('2018-03-15T13:30:30Z')
 ```
 
 En retourneert dit resultaat:`"2018-03-01T00:00:00.0000000Z"`
+
+*Voorbeeld 2*
+
+In dit voor beeld wordt het begin van de maand in de opgegeven notatie voor deze tijds tempel geretourneerd:
+
+```
+startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
+```
+
+En retourneert dit resultaat:`"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3830,7 +3840,7 @@ En retourneert dit resultaat:`"10"`
 
 *Voorbeeld 2*
 
-In dit voor beeld wordt een teken reeks gemaakt voor het opgegeven JSON-object en\\wordt de back slash () gebruikt als escape teken voor het dubbele aanhalings tekens (").
+In dit voor beeld wordt een teken reeks gemaakt voor het opgegeven JSON-object en wordt de back slash ( \\ ) gebruikt als escape teken voor het dubbele aanhalings tekens (").
 
 ```
 string( { "name": "Sophie Owen" } )
@@ -3859,7 +3869,7 @@ sub(<minuend>, <subtrahend>)
 | <*Daardoor*> | Geheel getal of zwevend | Het resultaat van het aftrekken van het tweede getal uit het eerste getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het tweede getal afgetrokken van het eerste getal:
 
@@ -3892,7 +3902,7 @@ substring('<text>', <startIndex>, <length>)
 | <*subtekenreeks-resultaat*> | Tekenreeks | Een subtekenreeks met het opgegeven aantal tekens, beginnend bij de opgegeven index positie in de bron teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een subtekenreeks van vijf tekens gemaakt op basis van de opgegeven teken reeks, beginnend bij de index waarde 6:
 
@@ -3968,7 +3978,7 @@ take([<collection>], <count>)
 | <*subset*> of [<*subset*>] | Respectievelijk een teken reeks of matrix | Een teken reeks of matrix met het opgegeven aantal items van de voor grond van de oorspronkelijke verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het opgegeven aantal items van de voor grond van deze verzamelingen opgehaald:
 
@@ -3986,8 +3996,7 @@ En retour neren deze resultaten:
 
 ### <a name="ticks"></a>Ticks
 
-De `ticks` eigenschaps waarde voor een opgegeven tijds tempel retour neren.
-Een *Tick* is een nano seconden-interval van 100.
+Retourneert het aantal maten, 100-nano seconden intervallen, sinds 1 januari 0001 12:00:00 middernacht (of DateTime. Ticks in C#) tot de opgegeven tijds tempel. Zie dit onderwerp: [DateTime. Ticks (systeem)](https://docs.microsoft.com/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks)voor meer informatie.
 
 ```
 ticks('<timestamp>')
@@ -4023,7 +4032,7 @@ toLower('<text>')
 | <*kleine letters*> | Tekenreeks | De oorspronkelijke teken reeks in kleine letters |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar kleine letters:
 
@@ -4053,7 +4062,7 @@ toUpper('<text>')
 | <*hoofd letters: tekst*> | Tekenreeks | De oorspronkelijke teken reeks in hoofd letters |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar hoofd letters:
 
@@ -4089,8 +4098,8 @@ trigger()
 
 ### <a name="triggerbody"></a>triggerBody
 
-Retour neer de uitvoer `body` van een trigger tijdens runtime.
-Steno voor `trigger().outputs.body`.
+Retour neer de uitvoer van een trigger `body` tijdens runtime.
+Steno voor `trigger().outputs.body` .
 Zie [trigger ()](#trigger).
 
 ```
@@ -4122,7 +4131,7 @@ triggerFormDataMultiValues('<key>')
 | [<*matrix-met-sleutel waarden*>] | Matrix | Een matrix met alle waarden die overeenkomen met de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de sleutel waarde ' feedUrl ' in een RSS-trigger de formulier gegevens of de formulier-gecodeerde uitvoer:
 
@@ -4153,7 +4162,7 @@ triggerFormDataValue('<key>')
 | <*sleutel waarde*> | Tekenreeks | De waarde in de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt op basis van de sleutel waarde ' feedUrl ' in een RSS-trigger de formulier gegevens of de formulier-gecodeerde uitvoer:
 
@@ -4188,7 +4197,7 @@ triggerMultipartBody(<index>)
 ### <a name="triggeroutputs"></a>triggerOutputs
 
 Retourneert de uitvoer van een trigger tijdens runtime of waarden van andere JSON-naam-en-waardeparen.
-Steno voor `trigger().outputs`.
+Steno voor `trigger().outputs` .
 Zie [trigger ()](#trigger).
 
 ```
@@ -4220,7 +4229,7 @@ trim('<text>')
 | <*updatedText*> | Tekenreeks | Een bijgewerkte versie van de oorspronkelijke teken reeks zonder voor loop-of volg spaties |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de voor loop-en volg spaties uit de teken reeks "Hallo wereld" verwijderd:
 
@@ -4252,7 +4261,7 @@ union([<collection1>], [<collection2>], ...)
 | <*updatedCollection*> | Respectievelijk matrix of object | Een verzameling met alle items uit de opgegeven verzamelingen-geen duplicaten |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden *alle* items van deze verzamelingen opgehaald:
 
@@ -4268,7 +4277,7 @@ En retourneert dit resultaat:`[1, 2, 3, 10, 101]`
 
 Een gecodeerde URI-versie (Uniform Resource Identifier) retour neren voor een teken reeks door onveilige URL-tekens te vervangen door Escape tekens.
 Gebruik deze functie in plaats van [encodeUriComponent ()](#encodeUriComponent).
-Hoewel beide functies op dezelfde manier werken, `uriComponent()` verdient de voor keur.
+Hoewel beide functies op dezelfde manier werken, verdient de `uriComponent()` voor keur.
 
 ```
 uriComponent('<value>')
@@ -4284,7 +4293,7 @@ uriComponent('<value>')
 | <*gecodeerde URI*> | Tekenreeks | De teken reeks met URI-code ring met escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken reeks:
 
@@ -4311,10 +4320,10 @@ uriComponentToBinary('<value>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*binair-voor-gecodeerde-URI*> | Tekenreeks | De binaire versie voor de teken reeks met URI-code ring. De binaire inhoud is base64-gecodeerd en vertegenwoordigd door `$content`. |
+| <*binair-voor-gecodeerde-URI*> | Tekenreeks | De binaire versie voor de teken reeks met URI-code ring. De binaire inhoud is base64-gecodeerd en vertegenwoordigd door `$content` . |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de binaire versie gemaakt voor deze teken reeks met URI-code ring:
 
@@ -4349,7 +4358,7 @@ uriComponentToString('<value>')
 | <*gedecodeerde URI*> | Tekenreeks | De gedecodeerde versie voor de teken reeks met URI-code ring |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de gedecodeerde teken reeks versie gemaakt voor deze teken reeks met URI-code ring:
 
@@ -4379,9 +4388,9 @@ uriHost('<uri>')
 | <*Host-waarde*> | Tekenreeks | De `host` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `host` wordt de waarde voor deze URI gezocht:
+In dit voor beeld wordt de `host` waarde voor deze URI gezocht:
 
 ```
 uriHost('https://www.localhost.com:8080')
@@ -4409,9 +4418,9 @@ uriPath('<uri>')
 | <*pad-waarde*> | Tekenreeks | De `path` waarde voor de opgegeven URI. Als `path` er geen waarde is, retourneert het teken '/'. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `path` wordt de waarde voor deze URI gezocht:
+In dit voor beeld wordt de `path` waarde voor deze URI gezocht:
 
 ```
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
@@ -4431,17 +4440,17 @@ uriPathAndQuery('<uri>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*URI*> | Ja | Tekenreeks | De URI waarvan `path` u `query` de waarden wilt |
+| <*URI*> | Ja | Tekenreeks | De URI waarvan `path` `query` u de waarden wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*pad-query-waarde*> | Tekenreeks | De `path` waarden `query` en voor de opgegeven URI. Als `path` er geen waarde wordt opgegeven, retourneert het teken/. |
+| <*pad-query-waarde*> | Tekenreeks | De `path` `query` waarden en voor de opgegeven URI. Als `path` er geen waarde wordt opgegeven, retourneert het teken/. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `path` worden `query` de en-waarden voor deze URI gezocht:
+In dit voor beeld worden de `path` en- `query` waarden voor deze URI gezocht:
 
 ```
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
@@ -4469,9 +4478,9 @@ uriPort('<uri>')
 | <*poort-waarde*> | Geheel getal | De `port` waarde voor de opgegeven URI. Als `port` er geen waarde wordt opgegeven, retourneert u de standaard poort voor het protocol. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `port` wordt de waarde voor deze URI geretourneerd:
+In dit voor beeld wordt de `port` waarde voor deze URI geretourneerd:
 
 ```
 uriPort('http://www.localhost:8080')
@@ -4499,9 +4508,9 @@ uriQuery('<uri>')
 | <*query-waarde*> | Tekenreeks | De `query` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `query` wordt de waarde voor deze URI geretourneerd:
+In dit voor beeld wordt de `query` waarde voor deze URI geretourneerd:
 
 ```
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
@@ -4529,9 +4538,9 @@ uriScheme('<uri>')
 | <*schema-waarde*> | Tekenreeks | De `scheme` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
-In dit voor beeld `scheme` wordt de waarde voor deze URI geretourneerd:
+In dit voor beeld wordt de `scheme` waarde voor deze URI geretourneerd:
 
 ```
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
@@ -4604,7 +4613,7 @@ variables('<variableName>')
 | <*variabele-waarde*> | Alle | De waarde voor de opgegeven variabele |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Stel dat de huidige waarde voor een variabele numItems is 20.
 In dit voor beeld wordt de gehele waarde voor deze variabele opgehaald:
@@ -4630,7 +4639,7 @@ workflow().<property>
 | <*eigenschap*> | Nee | Tekenreeks | De naam van de werk stroom eigenschap waarvan u de waarde wilt <p>Een werk stroom object heeft de volgende eigenschappen: **naam**, **type**, **id**, **locatie**en **uitvoeren**. De waarde van de **uitvoerings** eigenschap is ook een object met de volgende eigenschappen: **naam**, **type**en **id**. |
 |||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de naam van de huidige uitvoering van een werk stroom geretourneerd:
 
@@ -4650,7 +4659,7 @@ xml('<value>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Tekenreeks | De teken reeks met het JSON-object dat moet worden geconverteerd <p>Het JSON-object mag slechts één hoofd eigenschap hebben, die geen matrix kan zijn. <br>Gebruik de back slash (\\) als escape-teken voor het dubbele aanhalings teken ("). |
+| <*Value*> | Ja | Tekenreeks | De teken reeks met het JSON-object dat moet worden geconverteerd <p>Het JSON-object mag slechts één hoofd eigenschap hebben, die geen matrix kan zijn. <br>Gebruik de back slash ( \\ ) als escape-teken voor het dubbele aanhalings teken ("). |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -4721,7 +4730,7 @@ xpath('<xml>', '<xpath>')
 
 *Voorbeeld 1*
 
-In dit voor beeld worden knoop punten `<name></name>` gevonden die overeenkomen met het knoop punt in de opgegeven argumenten, en wordt een matrix met die knooppunt waarden geretourneerd:
+In dit voor beeld worden knoop punten gevonden die overeenkomen met het `<name></name>` knoop punt in de opgegeven argumenten, en wordt een matrix met die knooppunt waarden geretourneerd:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
@@ -4737,13 +4746,13 @@ Dit zijn de argumenten:
 
   `"/produce/item/name"`
 
-Hier volgt de resultaat matrix met de knoop punten die `<name></name`overeenkomen:
+Hier volgt de resultaat matrix met de knoop punten die overeenkomen `<name></name` :
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
 *Voorbeeld 2*
 
-In voor beeld 1: in dit voor beeld worden knoop punten `<count></count>` gevonden die overeenkomen met het knoop punt `sum()` en worden deze knooppunt waarden toegevoegd aan de functie.
+In voor beeld 1: in dit voor beeld worden knoop punten gevonden die overeenkomen met het `<count></count>` knoop punt en worden deze knooppunt waarden toegevoegd aan de `sum()` functie.
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
@@ -4755,7 +4764,7 @@ Voor dit voor beeld zoeken beide expressies knoop punten die overeenkomen met he
 
 > [!NOTE]
 >
-> Als u werkt in de code weergave, plaatst u het dubbele aanhalings teken (") door de back slash\\() te gebruiken. 
+> Als u werkt in de code weergave, plaatst u het dubbele aanhalings teken (") door de back slash () te gebruiken \\ . 
 > U moet bijvoorbeeld escape tekens gebruiken wanneer u een expressie serialiseren als een JSON-teken reeks. 
 > Als u echter werkt met de ontwerp functie voor logische apps of de expressie-editor, hoeft u het dubbele aanhalings teken niet te escaperen omdat de back slash automatisch aan de onderliggende definitie wordt toegevoegd, bijvoorbeeld:
 > 
@@ -4775,7 +4784,7 @@ Voor dit voor beeld zoeken beide expressies knoop punten die overeenkomen met he
 
 Dit zijn de argumenten:
 
-* Dit XML-bestand, dat de XML-document `xmlns="http://contoso.com"`naam ruimte bevat,:
+* Dit XML-bestand, dat de XML-document naam ruimte bevat, `xmlns="http://contoso.com"` :
 
   ```xml
   <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
@@ -4795,7 +4804,7 @@ Dit is het knoop punt resultaat dat overeenkomt met het `<location></location>` 
 
 *Voor beeld 4*
 
-In het volgende voor beeld 3 wordt in dit voor beeld de `<location></location>` waarde in het knoop punt gezocht:
+In het volgende voor beeld 3 wordt in dit voor beeld de waarde in het `<location></location>` knoop punt gezocht:
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 

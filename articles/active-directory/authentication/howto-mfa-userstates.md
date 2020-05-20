@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309788"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639628"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Azure-Multi-Factor Authentication per gebruiker inschakelen om aanmeldings gebeurtenissen te beveiligen
 
@@ -54,7 +54,7 @@ Alle gebruikers worden *uitgeschakeld*. Wanneer u gebruikers inschrijft in azure
 Gebruik de volgende stappen om toegang te krijgen tot de Azure Portal pagina waar u de gebruikers status kunt weer geven en beheren:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-1. Zoek en selecteer *Azure Active Directory*en selecteer vervolgens **gebruikers** > **alle gebruikers**.
+1. Zoek en selecteer *Azure Active Directory*en selecteer vervolgens **gebruikers**  >  **alle gebruikers**.
 1. Selecteer **multi-factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie weer te geven:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication selecteren in het venster gebruikers in azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Er wordt een nieuwe pagina geopend waarin de gebruikers status wordt weer gegeven, zoals in het volgende voor beeld wordt weer gegeven.
    ![Scherm afbeelding met voor beeld van informatie over de gebruikers status voor Azure Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
@@ -67,7 +67,7 @@ Als u de status van Azure Multi-Factor Authentication voor een gebruiker wilt wi
 1. Zoek de gebruiker die u wilt inschakelen voor Azure Multi-Factor Authentication. Mogelijk moet u de weer gave boven aan **gebruikers**wijzigen.
    ![Selecteer de gebruiker waarvan u de status wilt wijzigen van het tabblad gebruikers](./media/howto-mfa-userstates/enable1.png)
 1. Schakel het selectie vakje in naast de naam (en) van de gebruiker (s) waarvan u de status wilt wijzigen.
-1. Klik aan de rechter kant onder **snelle stappen**op **inschakelen** of **uitschakelen**. In het volgende voor beeld heeft de gebruiker *John Smith* een vinkje naast hun naam en wordt ingeschakeld voor gebruik: ![Schakel geselecteerde gebruiker inschakelen door op inschakelen te klikken in het menu snelle stappen](./media/howto-mfa-userstates/user1.png)
+1. Klik aan de rechter kant onder **snelle stappen**op **inschakelen** of **uitschakelen**. In het volgende voor beeld heeft de gebruiker *John Smith* een vinkje naast hun naam en wordt ingeschakeld voor gebruik: ![ Schakel geselecteerde gebruiker inschakelen door op inschakelen te klikken in het menu snelle stappen](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Ingeschakelde* gebruikers worden automatisch overgeschakeld naar *afgedwongen* wanneer ze zich registreren voor Azure multi-factor Authentication. Wijzig de gebruikers status niet hand matig in *afdwinging*.
@@ -82,7 +82,7 @@ Als u de gebruikers status wilt wijzigen met behulp van [Azure AD Power shell](/
 
 * *Ingeschakeld*
 * *Afgedwongen*
-* *Geblokkeerd*  
+* *Uitgeschakeld*  
 
 Verplaats gebruikers niet rechtstreeks naar de status *afgedwongen* . Als u dit doet, werken niet-browser-apps niet meer omdat de gebruiker geen Azure-Multi-Factor Authentication registratie heeft door lopen en een [app-wacht woord](howto-mfa-mfasettings.md#app-passwords)heeft verkregen.
 
@@ -98,7 +98,7 @@ Maak vervolgens verbinding via [Connect-MsolService](/powershell/module/msonline
 Connect-MsolService
 ```
 
-In het volgende voor beeld Power shell-script wordt MFA ingeschakeld *bsimon@contoso.com*voor een individuele gebruiker met de naam:
+In het volgende voor beeld Power shell-script wordt MFA ingeschakeld voor een individuele gebruiker met de naam *bsimon@contoso.com* :
 
 ```PowerShell
 $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -185,4 +185,4 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Zie [azure multi-factor Authentication-instellingen configureren](howto-mfa-mfasettings.md)als u Azure multi-factor Authentication-instellingen wilt configureren, zoals vertrouwde IP-adressen, aangepaste spraak berichten en fraude waarschuwingen. Zie [Manage User Settings with azure multi-factor Authentication](howto-mfa-userdevicesettings.md)om gebruikers instellingen voor Azure multi-factor Authentication te beheren.
 
-Zie [Azure multi-factor Authentication-rapporten](howto-mfa-reporting.md#azure-ad-sign-ins-report)als u wilt weten waarom een gebruiker is gevraagd of niet wordt gevraagd MFA uit te voeren.
+Zie [Azure multi-factor Authentication-rapporten](howto-mfa-reporting.md)als u wilt weten waarom een gebruiker is gevraagd of niet wordt gevraagd MFA uit te voeren.

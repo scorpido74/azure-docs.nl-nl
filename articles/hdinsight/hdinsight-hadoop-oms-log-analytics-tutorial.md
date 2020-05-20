@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/24/2020
-ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/13/2020
+ms.openlocfilehash: 0d462c76454825c3fcbe0f09f4df13c12de3d7c7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192039"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634527"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-logboeken gebruiken om HDInsight-clusters te bewaken
 
@@ -40,12 +40,14 @@ Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://a
 
   Zie [aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor instructies over het maken van een HDInsight-cluster.  
 
-* Azure PowerShell AZ-module.  Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Zorg ervoor dat u de meest recente versie hebt. Voer indien nodig uit `Update-Module -Name Az`.
+* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig. Zorg ervoor dat u de meest recente versie hebt. Voer indien nodig uit `Update-Module -Name Az` .
+
+* Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 > [!NOTE]  
 > Het is raadzaam om zowel het HDInsight-cluster als de Log Analytics-werk ruimte in dezelfde regio te plaatsen voor betere prestaties. Azure Monitor-logboeken zijn niet beschikbaar in alle Azure-regio's.
 
-## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Azure Monitor logboeken inschakelen met behulp van de portal
+## <a name="enable-azure-monitor-using-the-portal"></a>Azure Monitor inschakelen met behulp van de portal
 
 In deze sectie configureert u een bestaand HDInsight Hadoop-cluster voor het bewaken van taken, logboeken voor fout opsporing enzovoort, het gebruik van een Azure Log Analytics-werk ruimte.
 
@@ -61,7 +63,7 @@ In deze sectie configureert u een bestaand HDInsight Hadoop-cluster voor het bew
 
     ![Bewaking voor HDInsight-clusters inschakelen](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Bewaking voor HDInsight-clusters inschakelen")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure Monitor logboeken inschakelen met behulp van Azure PowerShell
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure Monitor met behulp van Azure PowerShell inschakelen
 
 U kunt Azure Monitor logboeken inschakelen met behulp van de Azure PowerShell AZ module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet.
 
@@ -99,6 +101,29 @@ Als u wilt uitschakelen, gebruikt u de cmdlet [Disable-AzHDInsightMonitoring](ht
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
+```
+
+## <a name="enable-azure-monitor-using-azure-cli"></a>Azure Monitor inschakelen met behulp van Azure CLI
+
+U kunt Azure Monitor logboeken inschakelen met behulp van de Azure CLI `[az hdinsight monitor enable` ] ( https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) opdracht.
+
+```azurecli
+# set variables
+export resourceGroup=RESOURCEGROUPNAME
+export cluster=CLUSTERNAME
+export LAW=LOGANALYTICSWORKSPACENAME
+
+# Enable the Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --workspace $LAW
+
+# Get the status of Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor show --name $cluster --resource-group $resourceGroup
+```
+
+Als u wilt uitschakelen, gebruikt u de [`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) opdracht.
+
+```azurecli
+az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Beheer oplossingen voor HDInsight-clusters installeren

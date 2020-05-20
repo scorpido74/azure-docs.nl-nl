@@ -1,48 +1,32 @@
 ---
-title: Toegang en gebruiks rapporten voor Azure MFA-Azure Active Directory
-description: Hierin wordt beschreven hoe u de functie Azure Multi-Factor Authentication-rapporten gebruikt.
+title: Details van de aanmeldings gebeurtenis voor Azure Multi-Factor Authentication-Azure Active Directory
+description: Meer informatie over het weer geven van aanmeldings activiteiten voor Azure Multi-Factor Authentication gebeurtenissen en status berichten.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/30/2018
+ms.date: 05/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112759"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639841"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Rapporten in azure Multi-Factor Authentication
+# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Het rapport aanmeldingen gebruiken om Azure Multi-Factor Authentication-gebeurtenissen te controleren
 
-Azure Multi-Factor Authentication biedt verschillende rapporten die kunnen worden gebruikt door u en uw organisatie toegankelijk via de Azure Portal. De volgende tabel bevat de beschik bare rapporten:
+Als u Azure Multi-Factor Authentication-gebeurtenissen wilt controleren en begrijpen, kunt u het rapport met aanmeldingen voor Azure Active Directory (Azure AD) gebruiken. In dit rapport worden verificatie gegevens weer gegeven voor gebeurtenissen wanneer een gebruiker wordt gevraagd om multi-factor Authentication, en als er beleid voor voorwaardelijke toegang in gebruik is. Zie [overzicht van rapporten voor aanmeldings activiteiten in azure AD](../reports-monitoring/concept-sign-ins.md)voor meer informatie over het aanmeldingen-rapport.
 
-| Rapport | Locatie | Beschrijving |
-|:--- |:--- |:--- |
-| Geschiedenis van geblokkeerde gebruikers | Azure AD > Security > MFA > blok keren/deblokkeren van gebruikers | Toont de geschiedenis van aanvragen om gebruikers te blok keren of deblokkeren. |
-| Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
-| Gebruik voor on-premises onderdelen | Activiteiten rapport van Azure AD > Security > MFA > | Bevat informatie over het algehele gebruik voor MFA via de NPS-extensie, ADFS en MFA-server. |
-| Geschiedenis van overgeslagen gebruikers | Azure AD > Security > MFA > eenmalige bypass | Biedt een geschiedenis van aanvragen om Multi-Factor Authentication voor een gebruiker over te slaan. |
-| Server status | Azure AD > Security > MFA > server-status | Hier wordt de status weer gegeven van Multi-Factor Authentication-servers die aan uw account zijn gekoppeld. |
+In dit artikel wordt beschreven hoe u het rapport Azure AD-aanmeldingen weergeeft in de Azure Portal en vervolgens de MSOnline v1 Power shell-module.
 
-## <a name="view-mfa-reports"></a>MFA-rapporten weer geven
+## <a name="view-the-azure-ad-sign-ins-report"></a>Het Azure AD-aanmeld rapport weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **beveiliging** > **MFA**.
-3. Selecteer het rapport dat u wilt weer geven.
-
-   ![Status rapport van MFA-server server in de Azure Portal](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Rapport over Azure AD-aanmeldingen
-
-Met het **activiteiten rapport voor aanmeldingen** in de [Azure Portal](https://portal.azure.com), kunt u de informatie ophalen die u nodig hebt om te bepalen hoe uw omgeving bezig is.
-
-Het rapport met aanmeldingen kan u informatie geven over het gebruik van beheerde toepassingen en aanmeldings activiteiten van gebruikers, waaronder informatie over het gebruik van multi-factor Authentication (MFA). De MFA-gegevens geven u inzicht in hoe MFA werkt in uw organisatie. Hiermee kunt u vragen beantwoorden zoals:
+Het rapport aanmeldingen bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten van gebruikers, waaronder informatie over het gebruik van multi-factor Authentication (MFA). De MFA-gegevens geven u inzicht in hoe MFA werkt in uw organisatie. Hiermee kunt u vragen beantwoorden zoals in het volgende:
 
 - Is de aanmelding gelukt met MFA?
 - Hoe heeft de gebruiker MFA voltooid?
@@ -51,94 +35,76 @@ Het rapport met aanmeldingen kan u informatie geven over het gebruik van beheerd
 - Hoeveel gebruikers kunnen MFA niet voltooien?
 - Wat zijn de meest voorkomende MFA-problemen waarmee eindgebruikers te maken hebben?
 
-Deze gegevens zijn beschikbaar via de [Azure Portal](https://portal.azure.com) en de [rapportage-API](../reports-monitoring/concept-reporting-api.md).
+Voer de volgende stappen uit om het rapport registratie-activiteiten in de [Azure Portal](https://portal.azure.com)weer te geven. U kunt ook query's uitvoeren op gegevens met behulp van de [rapportage-API](../reports-monitoring/concept-reporting-api.md).
 
-![Azure AD-aanmeld rapport in de Azure Portal](./media/howto-mfa-reporting/sign-in-report.png)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account met *globale beheerders* machtigingen.
+1. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers** in het menu aan de linkerkant.
+1. Onder *activiteit* in het menu aan de linkerkant selecteert u **aanmeldingen**.
+1. Er wordt een lijst met aanmeldings gebeurtenissen weer gegeven, met inbegrip van de status. U kunt een gebeurtenis selecteren om meer details weer te geven.
 
-### <a name="sign-ins-report-structure"></a>Structuur van het registratie rapport
+    Op het tabblad *verificatie gegevens* of *voorwaardelijke toegang* van de gebeurtenis details ziet u de status code of het beleid dat de MFA-prompt heeft geactiveerd.
 
-De rapporten voor aanmeldingsactiviteiten voor MFA bieden u toegang tot de volgende informatie:
+    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**MFA is vereist:** of MFA is vereist voor aanmelding of niet. MFA kan worden vereist wegens MFA per gebruiker, voorwaardelijke toegang of andere redenen. Mogelijke waarden zijn **Ja** of **Nee**.
+Als deze beschikbaar is, wordt de verificatie weer gegeven, zoals een tekst bericht, Microsoft Authenticator app-melding of telefoon gesprek.
 
-**MFA-resultaat:** meer informatie over of MFA is voldaan of geweigerd:
+De volgende details worden weer gegeven in het venster *verificatie Details* voor een aanmeldings gebeurtenis die laat zien of de MFA-aanvraag is nagekomen of geweigerd:
 
-- Als MFA is voldaan, bevat deze kolom meer informatie over hoe dit is gebeurd.
-   - Azure Multi-Factor Authentication
-      - voltooid in de cloud
-      - verlopen als gevolg van beleid dat is geconfigureerd in de tenant
-      - registratie gevraagd
-      - voldaan door de claim in het token
-      - voldaan door de claim geleverd door de externe provider
-      - voldaan door geavanceerde verificatie
-      - overgeslagen omdat de uitgevoerde stroom een Windows broker-aanmeldingsstroom is
-      - overgeslagen vanwege een app-wachtwoord
-      - overgeslagen vanwege de locatie
-      - overgeslagen vanwege een geregistreerd apparaat
-      - overgeslagen vanwege een geregistreerd apparaat
-      - voltooid
-   - Omgeleid naar externe provider voor Multi-Factor Authentication
+* Als MFA is voldaan, bevat deze kolom meer informatie over hoe dit is gebeurd.
+   * voltooid in de cloud
+   * verlopen als gevolg van beleid dat is geconfigureerd in de tenant
+   * registratie gevraagd
+   * voldaan door de claim in het token
+   * voldaan door de claim geleverd door de externe provider
+   * voldaan door geavanceerde verificatie
+   * overgeslagen omdat de uitgevoerde stroom een Windows broker-aanmeldingsstroom is
+   * overgeslagen vanwege een app-wachtwoord
+   * overgeslagen vanwege de locatie
+   * overgeslagen vanwege een geregistreerd apparaat
+   * overgeslagen vanwege een geregistreerd apparaat
+   * voltooid
 
-- Als MFA is geweigerd, bevat deze kolom de reden van weigering.
-   - Azure Multi-Factor Authentication is geweigerd
-      - verificatie wordt uitgevoerd
-      - dubbele verificatiepoging
-      - onjuiste code te vaak ingevoerd
-      - ongeldige verificatie
-      - ongeldig verificatiecode via mobiele app
-      - onjuiste configuratie
-      - telefonische oproep verzonden naar voicemail
-      - telefoonnummer heeft een ongeldige indeling
-      - servicefout
-      - kan de telefoon van de gebruiker niet bereiken
-      - kan de mobiele-app-melding niet verzenden naar het apparaat
-      - kan de mobiele-app-melding niet verzenden
-      - gebruiker heeft verificatie geweigerd
-      - gebruiker heeft niet gereageerd op mobiele-app-melding
-      - gebruiker heeft geen verificatiemethoden geregistreerd
-      - gebruiker heeft onjuiste code ingevoerd
-      - gebruiker heeft onjuiste pincode ingevoerd
-      - gebruiker heeft opgehangen zonder te verifiëren
-      - gebruiker is geblokkeerd
-      - gebruiker heeft de verificatiecode niet ingevoerd
-      - gebruiker is niet gevonden
-      - verificatiecode is al gebruikt
-
-**MFA-verificatiemethode:** de verificatiemethode die de gebruiker heeft gebruikt om MFA te voltooien. Mogelijke waarden zijn:
-
-- Sms-bericht
-- Meldingen via mobiele app
-- Telefonische oproep (verificatie via telefoonnummer)
-- Verificatiecode via mobiele app
-- Telefonische oproep (telefoon op het werk)
-- Telefonische oproep (verificatie via telefoonnummer)
-
-**Detail van MFA-verificatie:** verwijderde versie van het telefoonnummer, bijvoorbeeld: + X XXXXXXXX64.
-
-**Voorwaardelijke toegang** Informatie over beleid voor voorwaardelijke toegang dat is betrokken bij de aanmeldings poging, waaronder:
-
-- Beleidsnaam
-- Besturings elementen toewijzen
-- Sessie besturings elementen
-- Resultaat
+* Als MFA is geweigerd, bevat deze kolom de reden van weigering.
+   * verificatie wordt uitgevoerd
+   * dubbele verificatiepoging
+   * onjuiste code te vaak ingevoerd
+   * ongeldige verificatie
+   * ongeldig verificatiecode via mobiele app
+   * onjuiste configuratie
+   * telefonische oproep verzonden naar voicemail
+   * telefoonnummer heeft een ongeldige indeling
+   * servicefout
+   * kan de telefoon van de gebruiker niet bereiken
+   * kan de mobiele-app-melding niet verzenden naar het apparaat
+   * kan de mobiele-app-melding niet verzenden
+   * gebruiker heeft verificatie geweigerd
+   * gebruiker heeft niet gereageerd op mobiele-app-melding
+   * gebruiker heeft geen verificatiemethoden geregistreerd
+   * gebruiker heeft onjuiste code ingevoerd
+   * gebruiker heeft onjuiste pincode ingevoerd
+   * gebruiker heeft opgehangen zonder te verifiëren
+   * gebruiker is geblokkeerd
+   * gebruiker heeft de verificatiecode niet ingevoerd
+   * gebruiker is niet gevonden
+   * verificatiecode is al gebruikt
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>Power shell-rapportage voor gebruikers die zijn geregistreerd voor MFA
 
 Controleer eerst of de [MSOnline v1 Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) is geïnstalleerd.
 
-Identificeer gebruikers die zijn geregistreerd voor MFA met behulp van de volgende Power shell. Met deze reeks opdrachten worden uitgeschakelde gebruikers uitgesloten, omdat deze accounts niet kunnen worden geverifieerd bij Azure AD.
+Identificeer gebruikers die zijn geregistreerd voor MFA met behulp van de volgende Power shell. Met deze reeks opdrachten worden uitgeschakelde gebruikers uitgesloten, omdat deze accounts niet kunnen worden geverifieerd bij Azure AD:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Identificeer gebruikers die zich niet hebben geregistreerd voor MFA met behulp van de Power shell die volgt. Met deze reeks opdrachten worden uitgeschakelde gebruikers uitgesloten, omdat deze accounts niet kunnen worden geverifieerd bij Azure AD.
+Identificeer gebruikers die zich niet hebben geregistreerd voor MFA met behulp van de Power shell die volgt. Met deze reeks opdrachten worden uitgeschakelde gebruikers uitgesloten, omdat deze accounts niet kunnen worden geverifieerd bij Azure AD:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Gebruikers en uitvoer methoden identificeren die zijn geregistreerd. 
+Gebruikers en uitvoer methoden identificeren die zijn geregistreerd:
 
 ```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
@@ -148,9 +114,9 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 @{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
-## <a name="possible-results-in-activity-reports"></a>Mogelijke resultaten in activiteiten rapporten
+## <a name="downloaded-activity-reports-result-codes"></a>Resultaten codes voor gedownloade activiteiten rapporten
 
-De volgende tabel kan worden gebruikt om problemen met multi-factor Authentication op te lossen met behulp van de gedownloade versie van het multi-factor Authentication-activiteiten rapport. Ze worden niet direct weer gegeven in de Azure Portal.
+De volgende tabel kan helpen bij het oplossen van gebeurtenissen die gebruikmaken van de gedownloade versie van het activiteiten rapport uit de vorige Portal-stappen of Power shell-opdrachten. Deze resultaat codes worden niet direct weer gegeven in de Azure Portal.
 
 | Aanroep resultaat | Beschrijving | Uitgebreide beschrijving |
 | --- | --- | --- |
@@ -200,8 +166,17 @@ De volgende tabel kan worden gebruikt om problemen met multi-factor Authenticati
 | FAILED_AUTH_RESULT_TIMEOUT | Time-out van auth-resultaat | De gebruiker heeft te lang geduurd om de Multi-Factor Authentication poging te volt ooien. |
 | FAILED_AUTHENTICATION_THROTTLED | Verificatie beperkt | De poging van de Multi-Factor Authentication is beperkt door de service. |
 
+## <a name="additional-mfa-reports"></a>Aanvullende MFA-rapporten
+
+De volgende aanvullende informatie en rapporten zijn beschikbaar voor MFA-gebeurtenissen, waaronder die voor MFA server:
+
+| Rapport | Locatie | Beschrijving |
+|:--- |:--- |:--- |
+| Geschiedenis van geblokkeerde gebruikers | Azure AD > Security > MFA > blok keren/deblokkeren van gebruikers | Toont de geschiedenis van aanvragen om gebruikers te blok keren of deblokkeren. |
+| Gebruik voor on-premises onderdelen | Activiteiten rapport van Azure AD > Security > MFA > | Bevat informatie over algemeen gebruik voor MFA-server via de NPS-extensie, ADFS en MFA-server. |
+| Geschiedenis van overgeslagen gebruikers | Azure AD > Security > MFA > eenmalige bypass | Biedt een geschiedenis van MFA-server aanvragen om MFA over te slaan voor een gebruiker. |
+| Server status | Azure AD > Security > MFA > server-status | Hier wordt de status weer gegeven van MFA-servers die zijn gekoppeld aan uw account. |
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* [SSPR-en MFA-gebruik en inzichten rapportage](howto-authentication-methods-usage-insights.md)
-* [Voor gebruikers](../user-help/multi-factor-authentication-end-user.md)
-* [Implementatie van](concept-mfa-whichversion.md)
+In dit artikel wordt een overzicht gegeven van het activiteiten rapport voor aanmeldingen. Zie [activiteiten rapporten aanmelden in azure AD](../reports-monitoring/concept-sign-ins.md)voor meer informatie over hoe dit rapport de gegevens bevat en begrijpt.

@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: a301029f30a77f4e62ad3529aac488a81c12566e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154522"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642077"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service-naar-service-aanroepen die een overgedragen gebruikers-id gebruiken in namens-of-flow
 
@@ -28,13 +28,13 @@ ms.locfileid: "80154522"
 De OAuth 2,0-stroom (OBO) maakt een toepassing mogelijk die een service of Web-API aanroept om gebruikers verificatie door te geven aan een andere service of Web-API. De OBO-stroom geeft de gedelegeerde gebruikers identiteit en-machtigingen door via de aanvraag keten. Voor de middelste service voor het maken van geverifieerde aanvragen voor de downstream-service moet het een toegangs token van Azure Active Directory (Azure AD) beveiligen namens de gebruiker.
 
 > [!IMPORTANT]
-> Vanaf mei 2018 kan er `id_token` geen gebruik worden gemaakt van de namens-stroom.  Apps met één pagina (SPAs) moeten een toegangs token door geven aan een vertrouwelijke client voor de middelste laag om OBO-stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer details over de clients die namens-aanroepen kunnen uitvoeren.
+> Vanaf mei 2018 `id_token` kan er geen gebruik worden gemaakt van de namens-stroom.  Apps met één pagina (SPAs) moeten een toegangs token door geven aan een vertrouwelijke client voor de middelste laag om OBO-stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer details over de clients die namens-aanroepen kunnen uitvoeren.
 
 ## <a name="on-behalf-of-flow-diagram"></a>Diagram van namens-van stroom
 
 De OBO-stroom wordt gestart nadat de gebruiker is geverifieerd op een toepassing die gebruikmaakt van de [OAuth 2,0-autorisatie code toekenning stroom](v1-protocols-oauth-code.md). Op dat moment verzendt de toepassing een toegangs token (token A) naar de Web-API (API A) op de middelste laag met de claims van de gebruiker en toestemming voor toegang tot API A. Vervolgens maakt API A een geverifieerde aanvraag voor de downstream Web API (API B).
 
-Deze stappen vormen de namen van de stroom: ![de stappen in de OAuth 2.0-stroom voor het uitvoeren van de opdracht](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Deze stappen vormen de namen van de stroom: de ![ stappen in de OAuth 2.0-stroom voor het uitvoeren van de opdracht](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. De client toepassing maakt een aanvraag naar API A met het token A.
 1. API A verifieert het Azure AD token uitgifte-eind punt en vraagt een token aan voor toegang tot API B.
@@ -51,7 +51,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 
 ### <a name="register-the-middle-tier-service"></a>De service voor de middelste laag registreren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en zoek in de lijst met **mappen** een Active Directory-Tenant voor uw toepassing.
 1. Selecteer **meer services** in het linkerdeel venster en kies **Azure Active Directory**.
 1. Selecteer **app-registraties** en vervolgens **nieuwe registratie**.
@@ -69,7 +69,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 
 ### <a name="register-the-client-application"></a>De client toepassing registreren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en zoek in de lijst met **mappen** een Active Directory-Tenant voor uw toepassing.
 1. Selecteer **meer services** in het linkerdeel venster en kies **Azure Active Directory**.
 1. Selecteer **app-registraties** en vervolgens **nieuwe registratie**.
@@ -79,7 +79,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 1. Selecteer **Registreren** om de toepassing te maken.
 1. Configureer machtigingen voor uw toepassing. Selecteer in **API**-machtigingen **de optie een machtiging toevoegen** en vervolgens **mijn api's**.
 1. Typ de naam van de middelste laag service in het tekst veld.
-1. Kies **machtigingen selecteren** en selecteer vervolgens **Access \<-service naam>**.
+1. Kies **machtigingen selecteren** en selecteer vervolgens **Access- \< service naam>**.
 
 ### <a name="configure-known-client-applications"></a>Bekende client toepassingen configureren
 
@@ -117,7 +117,7 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 
 #### <a name="example"></a>Voorbeeld
 
-De volgende HTTP POST vraagt een toegangs token voor de https://graph.microsoft.com Web-API. `client_id` Hiermee wordt de service geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt een toegangs token voor de https://graph.microsoft.com Web-API. `client_id`Hiermee wordt de service geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 // line breaks for legibility only
@@ -150,11 +150,11 @@ Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat 
 | requested_token_use |vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In namens-of uitstroom moet de waarde **on_behalf_of**zijn. |
 | scope |vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Voor OpenID Connect Connect moet de scope **OpenID Connect** worden opgegeven.|
 
-Deze para meters zijn bijna hetzelfde als met de aanvraag van het gedeelde geheim, `client_secret parameter` behalve dat de is vervangen door `client_assertion_type` twee `client_assertion`para meters: en.
+Deze para meters zijn bijna hetzelfde als met de aanvraag van het gedeelde geheim, behalve dat de `client_secret parameter` is vervangen door twee para meters: `client_assertion_type` en `client_assertion` .
 
 #### <a name="example"></a>Voorbeeld
 
-De volgende HTTP POST vraagt een toegangs token voor de https://graph.microsoft.com Web-API met een certificaat. `client_id` Hiermee wordt de service geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt een toegangs token voor de https://graph.microsoft.com Web-API met een certificaat. `client_id`Hiermee wordt de service geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 // line breaks for legibility only
@@ -190,7 +190,7 @@ Een reactie op geslaagde pogingen is een JSON OAuth 2,0-antwoord met de volgende
 
 ### <a name="success-response-example"></a>Voor beeld van een geslaagd antwoord
 
-Het volgende voor beeld toont een geslaagde reactie op een aanvraag voor een toegangs token https://graph.microsoft.com voor de Web-API.
+Het volgende voor beeld toont een geslaagde reactie op een aanvraag voor een toegangs token voor de https://graph.microsoft.com Web-API.
 
 ```json
 {
@@ -225,14 +225,14 @@ Het Azure AD-token eindpunt retourneert een fout bericht wanneer er wordt geprob
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>Het toegangs token gebruiken om toegang te krijgen tot de beveiligde resource
 
-De middelste laag service kan het verkregen toegangs token gebruiken om geverifieerde aanvragen voor de downstream Web-API te maken door het token in `Authorization` de header in te stellen.
+De middelste laag service kan het verkregen toegangs token gebruiken om geverifieerde aanvragen voor de downstream Web-API te maken door het token in de header in te stellen `Authorization` .
 
 ### <a name="example"></a>Voorbeeld
 
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.microsoft.com
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="saml-assertions-obtained-with-an-oauth20-obo-flow"></a>SAML-bevestigingen verkregen met een OAuth 2.0 OBO-stroom
@@ -283,13 +283,13 @@ Het antwoord bevat een SAML-token dat is gecodeerd in UTF8 en Base64url.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - resource`https://api.contoso.com`
-- access_token: \<SAML-bevestiging\>
+- access_token: \< SAML-bevestiging\>
 - issued_token_type: urn: IETF: params: OAuth: token-type: saml2
-- refresh_token: \<vernieuwings token\>
+- refresh_token: \< vernieuwings token\>
 
 ## <a name="client-limitations"></a>Client beperkingen
 
-Open bare clients met antwoord-Url's `id_token` voor joker tekens kunnen geen voor OBO-stromen gebruiken. Een vertrouwelijke client kan echter nog steeds **toegangs** tokens inwisselen die zijn verkregen via de impliciete toekennings stroom, zelfs als voor de open bare client een omleidings-URI voor joker tekens is geregistreerd.
+Open bare clients met antwoord-Url's voor joker tekens kunnen geen `id_token` voor OBO-stromen gebruiken. Een vertrouwelijke client kan echter nog steeds **toegangs** tokens inwisselen die zijn verkregen via de impliciete toekennings stroom, zelfs als voor de open bare client een omleidings-URI voor joker tekens is geregistreerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

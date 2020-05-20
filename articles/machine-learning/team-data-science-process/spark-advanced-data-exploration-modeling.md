@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718647"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634518"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Met Spark verkennen en modelleren van geavanceerde gegevens
 
@@ -54,11 +54,11 @@ Setup-stappen en-code zijn opgenomen in dit overzicht voor het gebruik van een H
 
 ### <a name="spark-16-notebooks"></a>Spark 1,6-notebooks
 
-[pySpark-machine learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): bevat onderwerpen in notebook #1 en model ontwikkeling met afstemming tuning en kruislings validatie.
+[pySpark-machine learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): bevat onderwerpen in notebook #1 en model ontwikkeling met afstemming tuning en kruislings validatie.
 
 ### <a name="spark-20-notebooks"></a>Spark 2,0-notebooks
 
-[Spark 2.0-pySpark3-machine-learning-data-wetenschappen-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en scoren van gegevens in Spark 2,0-clusters.
+[Spark 2.0-pySpark3-machine-learning-data-wetenschappen-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en scoren van gegevens in Spark 2,0-clusters.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -116,7 +116,7 @@ De PySpark-kernels die worden meegeleverd met Jupyter-notebooks hebben een voora
 De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten die u kunt aanroepen met%%. Er zijn twee opdrachten die worden gebruikt in deze code voorbeelden.
 
 * **%% Local** Geeft aan dat de code in volgende regels lokaal moet worden uitgevoerd. Code moet geldige python-code zijn.
-* **%% SQL-o \<variable name>** Voert een Hive-query uit op basis van de sqlContext. Als de-o-para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een Panda data frame.
+* **%% SQL-o \< variable name>** voert een Hive-query uit op basis van de sqlContext. Als de-o-para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een Panda data frame.
 
 Zie [kernels die beschikbaar zijn voor Jupyter-notebooks met Hdinsight Spark Linux-clusters in hdinsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)voor meer informatie over de kernels voor Jupyter-notebooks en de vooraf gedefinieerde ' magics ' die ze bieden.
 
@@ -197,8 +197,8 @@ Zodra de gegevens in Spark zijn gebracht, is de volgende stap in het data Scienc
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Een histogram met aantal reizigers-frequenties uitzetten in het voor beeld van taxi reizen
 Deze code en volgende fragmenten gebruiken SQL Magic om het voor beeld te doorzoeken en om de gegevens te tekenen.
 
-* **SQL Magic (`%%sql`)** De HDInsight PySpark-kernel ondersteunt eenvoudige inline HiveQL-query's op de sqlContext. Het argument (-o VARIABLE_NAME) persistent de uitvoer van de SQL-query als een Panda data frame op de Jupyter-server. Dit betekent dat het beschikbaar is in de lokale modus.
-* Het ** `%%local` Magic** wordt gebruikt om code lokaal uit te voeren op de Jupyter-server. Dit is de hoofd knooppunt van het HDInsight-cluster. Normaal gesp roken gebruikt `%%local` u Magic nadat `%%sql -o` het Magic wordt gebruikt om een query uit te voeren. Met de para meter-o wordt de uitvoer van de SQL-query lokaal opgeslagen. `%%local` Vervolgens wordt de volgende set code fragmenten geactiveerd om lokaal te worden uitgevoerd op basis van de uitvoer van de SQL-query's die lokaal zijn opgeslagen. De uitvoer wordt automatisch gevisualiseerd nadat u de code hebt uitgevoerd.
+* **SQL Magic ( `%%sql` )** de HDInsight PySpark-kernel ondersteunt eenvoudige inline HiveQL-Query's op de sqlContext. Het argument (-o VARIABLE_NAME) persistent de uitvoer van de SQL-query als een Panda data frame op de Jupyter-server. Dit betekent dat het beschikbaar is in de lokale modus.
+* Het ** `%%local` Magic** wordt gebruikt om code lokaal uit te voeren op de Jupyter-server. Dit is de hoofd knooppunt van het HDInsight-cluster. Normaal gesp roken gebruikt u `%%local` Magic nadat het `%%sql -o` Magic wordt gebruikt om een query uit te voeren. Met de para meter-o wordt de uitvoer van de SQL-query lokaal opgeslagen. Vervolgens wordt `%%local` de volgende set code fragmenten geactiveerd om lokaal te worden uitgevoerd op basis van de uitvoer van de SQL-query's die lokaal zijn opgeslagen. De uitvoer wordt automatisch gevisualiseerd nadat u de code hebt uitgevoerd.
 
 Met deze query worden de TRIPS opgehaald op basis van het aantal reizigers. 
 
@@ -209,7 +209,7 @@ Met deze query worden de TRIPS opgehaald op basis van het aantal reizigers.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Met deze code wordt een lokaal gegevens frame gemaakt op basis van de uitvoer van de query en worden de gegevens getekend. Met `%%local` Magic maakt u een lokaal gegevens frame, `sqlResults`dat kan worden gebruikt voor het uitzetten met matplotlib. 
+Met deze code wordt een lokaal gegevens frame gemaakt op basis van de uitvoer van de query en worden de gegevens getekend. `%%local`Met Magic maakt u een lokaal gegevens frame, `sqlResults` dat kan worden gebruikt voor het uitzetten met matplotlib. 
 
 <!-- -->
 

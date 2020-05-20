@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119889"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642194"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -107,7 +107,7 @@ Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven wer
 
 Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
 
-## <a name="premium-performance-block-blob-storage-accounts"></a>Premium-prestaties blok-Blob Storage-accounts
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium-performance BlockBlobStorage-opslag accounts
 
 ### <a name="diagnostic-logs"></a>Diagnostische logboeken
 
@@ -126,7 +126,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 
-- Levenscyclus beheer beleid wordt nog niet ondersteund in Premium-opslag accounts voor blok-blobs. 
+- Levenscyclus beheer beleid wordt nog niet ondersteund in Premium BlockBlobStorage-opslag accounts. 
 
 - Gegevens kunnen niet worden verplaatst van de Premium-laag naar lagere lagen. 
 
@@ -134,11 +134,11 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="hdinsight-support"></a>HDInsight-ondersteuning
 
-Wanneer u een n HDInsight-cluster maakt, kunt u nog geen blok-Blob-opslag account selecteren waarop de functie voor hiërarchische naam ruimte is ingeschakeld. U kunt het account echter koppelen aan het cluster nadat u het hebt gemaakt.
+Wanneer u een n HDInsight-cluster maakt, kunt u nog geen BlockBlobStorage-account selecteren waarop de functie voor hiërarchische naam ruimte is ingeschakeld. U kunt het account echter koppelen aan het cluster nadat u het hebt gemaakt.
 
 ### <a name="dremio-support"></a>Dremio-ondersteuning
 
-Dremio maakt nog geen verbinding met een blok-Blob Storage-account waarvoor de functie voor hiërarchische naam ruimte is ingeschakeld. 
+Dremio maakt nog geen verbinding met een BlockBlobStorage-account waarop de functie voor hiërarchische naam ruimte is ingeschakeld. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Stuur programma voor Windows Azure Storage Blob (WASB) (niet ondersteund met Data Lake Storage Gen2)
 

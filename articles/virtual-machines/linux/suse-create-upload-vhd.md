@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857315"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643435"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Een op SLES of openSUSE gebaseerde virtuele machine voor Azure voorbereiden
 
@@ -28,7 +28,7 @@ In dit artikel wordt ervan uitgegaan dat u al een SUSE-of openSUSE Linux-besturi
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
 
 ## <a name="use-suse-studio"></a>SUSE Studio gebruiken
-[SuSE Studio](http://www.susestudio.com) kan eenvoudig uw SLES-en openSUSE-installatie kopieën maken en beheren voor Azure en Hyper-V. Dit is de aanbevolen aanpak voor het aanpassen van uw eigen SLES-en openSUSE-installatie kopieën.
+[SuSE Studio](https://studioexpress.opensuse.org/) kan eenvoudig uw SLES-en openSUSE-installatie kopieën maken en beheren voor Azure en Hyper-V. Dit is de aanbevolen aanpak voor het aanpassen van uw eigen SLES-en openSUSE-installatie kopieën.
 
 Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eigen abonnementen meenemen) voor SLES op [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
@@ -98,7 +98,7 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
 ## <a name="prepare-opensuse-131"></a>OpenSUSE 13.1 + voorbereiden
 1. Selecteer de virtuele machine in het middelste deel venster van Hyper-V-beheer.
 2. Klik op **verbinding maken** om het venster voor de virtuele machine te openen.
-3. Voer op de shell de opdracht`zypper lr`uit. Als met deze opdracht uitvoer wordt geretourneerd die vergelijkbaar is met de volgende, worden de opslag plaatsen op de verwachte manier geconfigureerd--er zijn geen aanpassingen nodig (Houd er rekening mee dat versie nummers kunnen variëren):
+3. Voer op de shell de opdracht uit `zypper lr` . Als met deze opdracht uitvoer wordt geretourneerd die vergelijkbaar is met de volgende, worden de opslag plaatsen op de verwachte manier geconfigureerd--er zijn geen aanpassingen nodig (Houd er rekening mee dat versie nummers kunnen variëren):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -112,7 +112,7 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    U kunt vervolgens controleren of de opslag plaatsen zijn toegevoegd door de opdracht`zypper lr`opnieuw uit te voeren. Als een van de relevante update opslagplaatsen niet is ingeschakeld, schakelt u deze in met de volgende opdracht:
+    U kunt vervolgens controleren of de opslag plaatsen zijn toegevoegd door de opdracht `zypper lr` opnieuw uit te voeren. Als een van de relevante update opslagplaatsen niet is ingeschakeld, schakelt u deze in met de volgende opdracht:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. Werk de kernel bij naar de meest recente beschik bare versie:

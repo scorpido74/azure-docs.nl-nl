@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 68f6f8ec67aca44c89b338287bdd37b6066992e0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f20636bfaf8b1b1f7714a9cede63886deaf53e36
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207017"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641183"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
 
@@ -41,7 +41,7 @@ Selecteer het tabblad voor het platform waarin u bent geïnteresseerd:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Als u wilt dat uw web-app beveiligde Api's aanroept wanneer u micro soft. Identity. web gebruikt, `AddWebAppCallsProtectedWebApi` hoeft u alleen een indeling voor de serialisatie van de token cache aan te roepen en op te geven (bijvoorbeeld in-Memory token cache):
+Als u wilt dat uw web-app beveiligde Api's aanroept wanneer u micro soft. Identity. web gebruikt, hoeft u alleen `AddWebAppCallsProtectedWebApi` een indeling voor de serialisatie van de token cache aan te roepen en op te geven (bijvoorbeeld in-Memory token cache):
 
 ```C#
 // This method gets called by the runtime. Use this method to add services to the container.
@@ -95,7 +95,7 @@ Micro soft. Identity. Web vereenvoudigt uw code door de juiste OpenID Connect Co
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET verwerkt dingen op soort gelijke wijze als ASP.NET Core, behalve dat de configuratie van OpenID Connect Connect en het `OnAuthorizationCodeReceived` abonnement op de gebeurtenis plaatsvindt in het bestand [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . De concepten zijn ook vergelijkbaar met die in ASP.NET Core, behalve dat u in ASP.NET de `RedirectUri` in [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)moet opgeven. Deze configuratie is iets minder krachtig dan het in ASP.NET Core, omdat u het moet wijzigen wanneer u de toepassing implementeert.
+ASP.NET verwerkt dingen op soort gelijke wijze als ASP.NET Core, behalve dat de configuratie van OpenID Connect Connect en het abonnement op de `OnAuthorizationCodeReceived` gebeurtenis plaatsvindt in het bestand [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . De concepten zijn ook vergelijkbaar met die in ASP.NET Core, behalve dat u in ASP.NET de `RedirectUri` in [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)moet opgeven. Deze configuratie is iets minder krachtig dan het in ASP.NET Core, omdat u het moet wijzigen wanneer u de toepassing implementeert.
 
 Hier volgt de code voor Startup.Auth.cs:
 
@@ -168,8 +168,8 @@ public partial class Startup
 
 Bekijk de [Web-app die zich in gebruikers aanmeldt: code configuratie](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) om te begrijpen hoe het Java-voor beeld de autorisatie code ontvangt. Nadat de app de code heeft ontvangen, wordt de [AuthFilter. java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56):
 
-1. Delegeren aan `AuthHelper.processAuthenticationCodeRedirect` de-methode in [AuthHelper. java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97).
-1. Aanroepen `getAuthResultByAuthCode`.
+1. Delegeren aan de- `AuthHelper.processAuthenticationCodeRedirect` methode in [AuthHelper. java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97).
+1. Aanroepen `getAuthResultByAuthCode` .
 
 ```Java
 class AuthHelper {
@@ -191,7 +191,7 @@ class AuthHelper {
 }
 ```
 
-De `getAuthResultByAuthCode` methode is gedefinieerd in [AuthHelper. java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Er wordt een MSAL `ConfidentialClientApplication`gemaakt en vervolgens aangeroepen `acquireToken()` `AuthorizationCodeParameters` vanuit de autorisatie code.
+De `getAuthResultByAuthCode` methode is gedefinieerd in [AuthHelper. java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Er wordt een MSAL gemaakt `ConfidentialClientApplication` en vervolgens aangeroepen `acquireToken()` `AuthorizationCodeParameters` vanuit de autorisatie code.
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -235,7 +235,7 @@ De `getAuthResultByAuthCode` methode is gedefinieerd in [AuthHelper. java # L176
 
 # <a name="python"></a>[Python](#tab/python)
 
-De autorisatie code stroom is aangevraagd zoals weer gegeven in [de web-app die zich aanmeldt bij gebruikers: code configuratie](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code). De code wordt vervolgens ontvangen op de `authorized` functie, die door de route wordt `/getAToken` verzonden vanuit de URL. Zie [app. py # l30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44) voor de volledige context van deze code:
+De autorisatie code stroom is aangevraagd zoals weer gegeven in [de web-app die zich aanmeldt bij gebruikers: code configuratie](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code). De code wordt vervolgens ontvangen op de `authorized` functie, die door de route wordt verzonden vanuit de `/getAToken` URL. Zie [app. py # l30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44) voor de volledige context van deze code:
 
 ```python
  @app.route("/getAToken")  # Its absolute URL must match your app's redirect_uri set in AAD.
@@ -268,7 +268,7 @@ Het gebruik van client verklaringen is een geavanceerd scenario dat wordt beschr
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-De zelf studie voor ASP.NET core maakt gebruik van afhankelijkheids injectie om u te laten bepalen welke implementatie van de token cache in het Startup.cs-bestand voor uw toepassing. Micro soft. Identity. web wordt geleverd met vooraf ontwikkelde token-cache-serialisatiefunctie beschreven in de [serialisatie van de token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/README.md#token-cache-serialization). Een interessante mogelijkheid is om ASP.NET Core [gedistribueerde geheugen caches](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)te kiezen:
+De zelf studie voor ASP.NET core maakt gebruik van afhankelijkheids injectie om u te laten bepalen welke implementatie van de token cache in het Startup.cs-bestand voor uw toepassing. Micro soft. Identity. web wordt geleverd met vooraf ontwikkelde token-cache-serialisatiefunctie beschreven in de [serialisatie van de token cache](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Een interessante mogelijkheid is om ASP.NET Core [gedistribueerde geheugen caches](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)te kiezen:
 
 ```csharp
 // Use a distributed token cache by adding:
@@ -326,7 +326,7 @@ public static class MsalAppBuilder
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java biedt methoden voor het serialiseren en deserialiseren van de token cache. In het Java-voor beeld wordt de serialisatie vanuit de sessie verwerkt, `getAuthResultBySilentFlow` zoals wordt weer gegeven in de methode in [AuthHelper. java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122):
+MSAL Java biedt methoden voor het serialiseren en deserialiseren van de token cache. In het Java-voor beeld wordt de serialisatie vanuit de sessie verwerkt, zoals wordt weer gegeven in de `getAuthResultBySilentFlow` methode in [AuthHelper. java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122):
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -355,7 +355,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-De details van de `SessionManagementHelper` -klasse zijn opgenomen in het [MSAL-voor beeld voor Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java).
+De details van de- `SessionManagementHelper` klasse zijn opgenomen in het [MSAL-voor beeld voor Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java).
 
 # <a name="python"></a>[Python](#tab/python)
 

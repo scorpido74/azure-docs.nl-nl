@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632668"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636397"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen-en gelijktijdigheids limieten voor Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ Met de introductie van [werkbelasting groepen](sql-data-warehouse-workload-isola
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Gelijktijdige maximum waarden voor resource klassen
 
-Om ervoor te zorgen dat elke query voldoende bronnen heeft om efficiënt uit te voeren, traceert SQL Analytics in azure Synapse het resource gebruik door gelijktijdigheids sleuven aan elke query toe te wijzen. Het systeem plaatst query's in een wachtrij op basis van urgentie en gelijktijdigheids sleuven. Query's wachten in de wachtrij totdat er voldoende gelijktijdigheids sleuven beschikbaar zijn. [Urgentie](sql-data-warehouse-workload-importance.md) en gelijktijdigheids sleuven bepalen de prioriteit van de CPU. Zie [uw workload analyseren](analyze-your-workload.md) voor meer informatie
+Om ervoor te zorgen dat elke query voldoende bronnen heeft om efficiënt uit te voeren, Synapse SQL traceert resource gebruik door gelijktijdigheids sleuven aan elke query toe te wijzen. Het systeem plaatst query's in een wachtrij op basis van urgentie en gelijktijdigheids sleuven. Query's wachten in de wachtrij totdat er voldoende gelijktijdigheids sleuven beschikbaar zijn. [Urgentie](sql-data-warehouse-workload-importance.md) en gelijktijdigheids sleuven bepalen de prioriteit van de CPU. Zie [uw workload analyseren](analyze-your-workload.md) voor meer informatie
 
 **Statische resource klassen**
 

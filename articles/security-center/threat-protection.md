@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606888"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636675"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -29,7 +29,10 @@ De bedreigings beveiliging van Azure Security Center biedt uitgebreide beveiligi
 
 * **Bedreigings beveiliging voor Azure-service lagen**: Azure-netwerklaag, Azure Management layer (Azure Resource Manager) (preview) en Azure Key Vault (preview-versie)
 
-Of een waarschuwing wordt gegenereerd door Security Center, of door Security Center van een ander beveiligings product is ontvangen, kunt u het exporteren. Als u uw waarschuwingen wilt exporteren naar een Azure Sentinel (of een SIEM van derden) of een ander extern hulp programma, volgt u de instructies in [waarschuwingen exporteren naar een Siem](continuous-export.md). 
+Of een waarschuwing wordt gegenereerd door Security Center, of door Security Center van een ander beveiligings product is ontvangen, kunt u het exporteren. Als u uw waarschuwingen wilt exporteren naar Azure Sentinel, eventuele SIEM van derden of een ander extern hulp programma, volgt u de instructies in [waarschuwingen exporteren naar een Siem](continuous-export.md). 
+
+> [!NOTE]
+> Het kan even duren voordat waarschuwingen van verschillende bronnen worden weer gegeven. Waarschuwingen waarvoor analyse van netwerk verkeer nodig is, kunnen bijvoorbeeld langer duren dan waarschuwingen die betrekking hebben op de verdachte processen die op virtuele machines worden uitgevoerd.
 
 > [!TIP]
 > Als u de mogelijkheden voor bedreigings beveiliging van Security Center wilt inschakelen, moet u de prijs categorie Standard Toep assen op het abonnement dat de toepasselijke werk belastingen bevat.
@@ -44,14 +47,14 @@ Of een waarschuwing wordt gegenereerd door Security Center, of door Security Cen
 
 Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde computers te controleren en te beveiligen. Security Center toont de waarschuwingen en suggesties voor herstel van al deze services in een gemakkelijk te gebruiken indeling.
 
-* **Micro soft Defender ATP** <a name="windows-atp"></a> -Security Center breidt de beveiligings platformen voor Cloud werkbelasting uit door te integreren met micro soft Defender Advanced Threat Protection (ATP). Samen bieden ze uitgebreide functionaliteit voor eindpunt detectie en-antwoorden (EDR).
+* **Micro soft Defender Advanced Threat Protection (ATP)** <a name="windows-atp"></a> -Security Center breidt de beveiligings platforms voor Cloud werkbelasting uit door te integreren met micro soft Defender Advanced Threat Protection (ATP). Samen bieden ze uitgebreide functionaliteit voor eindpunt detectie en-antwoorden (EDR).
 
     > [!IMPORTANT]
     > De micro soft Defender ATP-sensor wordt automatisch ingeschakeld op Windows-servers die gebruikmaken van Security Center.
 
     Wanneer micro soft Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven op het Security Center dash board. Vanuit het dash board kunt u naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Zie voor meer informatie over micro soft Defender ATP [servers onboarding voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* **Crash dump analyse** <a name="windows-dump"></a> : wanneer software vastloopt, legt een crash dump een deel van het geheugen vast op het moment dat het vastloopt.
+* **Crash dump analyse** <a name="windows-dump"></a> -Wanneer software vastloopt, legt een crash dump een deel van het geheugen vast op het moment dat het vastloopt.
 
     Een crash kan zijn veroorzaakt door malware of schadelijke software bevatten. Om te voor komen dat wordt gedetecteerd door beveiligings producten, gebruiken verschillende vormen van malware een aanval zonder bestanden, waarmee het schrijven naar schijf of het versleutelen van software onderdelen die naar de schijf worden geschreven, wordt voor komen. Dit type aanval is moeilijk te detecteren met traditionele benaderingen op basis van schijven.
 
@@ -59,7 +62,7 @@ Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde 
 
     Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-windows)voor meer informatie over de waarschuwingen voor de crash dump analyse.
 
-* **Detectie** <a name="windows-fileless"></a> van aanval via een bestand: aanvallen waarbij de eind punten zijn gericht op de bedoelingen, zijn gebruikelijk. Om detectie te voor komen, worden met aanvallen zonder bestanden schadelijke nettoladingen in het geheugen geïnjecteerd. Nettoladingen van aanvallers blijven aanwezig in het geheugen van verdachte processen en kunnen een breed scala aan schadelijke activiteiten uitvoeren.
+* Detectie van bestanden met een **aanval** <a name="windows-fileless"></a> -Aanvallen die gericht zijn op uw eind punten, zijn gebruikelijk. Om detectie te voor komen, worden met aanvallen zonder bestanden schadelijke nettoladingen in het geheugen geïnjecteerd. Nettoladingen van aanvallers blijven aanwezig in het geheugen van verdachte processen en kunnen een breed scala aan schadelijke activiteiten uitvoeren.
 
     Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van essentiële beveiligings processen.
 
@@ -79,7 +82,7 @@ Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde 
 
 Security Center controleert controle records van Linux-machines met behulp van **controle**, een van de meest voorkomende Linux-controle raamwerken. de levens duur van de mainline-kernel wordt gecontroleerd. 
 
-* Door **Linux gecontroleerde waarschuwingen en integratie** <a name="linux-auditd"></a> van log Analytics-agent: het gecontroleerde systeem bestaat uit een subsysteem op kernelniveau, dat verantwoordelijk is voor het bewaken van systeem aanroepen. Ze worden gefilterd op basis van een opgegeven regelset en er worden berichten naar een socket geschreven. Security Center integreert de functionaliteit van het gecontroleerde pakket binnen de Log Analytics-agent. Met deze integratie kunnen gecontroleerde gebeurtenissen in alle ondersteunde Linux-distributies worden verzameld, zonder dat hiervoor vereisten gelden.
+* Door **Linux gecontroleerde waarschuwingen en integratie** <a name="linux-auditd"></a> van log Analytics-agent -Het gecontroleerde systeem bestaat uit een subsysteem op kernelniveau dat verantwoordelijk is voor het bewaken van systeem aanroepen. Ze worden gefilterd op basis van een opgegeven regelset en er worden berichten naar een socket geschreven. Security Center integreert de functionaliteit van het gecontroleerde pakket binnen de Log Analytics-agent. Met deze integratie kunnen gecontroleerde gebeurtenissen in alle ondersteunde Linux-distributies worden verzameld, zonder dat hiervoor vereisten gelden.
 
     gecontroleerde records worden verzameld, verrijkt en geaggregeerd in gebeurtenissen met behulp van de Log Analytics agent voor Linux agent. Security Center doorlopend nieuwe analyses toevoegen die gebruikmaken van Linux-signalen om schadelijk gedrag op Cloud-en on-premises Linux-machines te detecteren. Net als bij Windows-mogelijkheden, deze analyse bevinden zich in verdachte processen, dubious-aanmeldings pogingen, laden van de kernel-module en andere activiteiten. Deze activiteiten kunnen erop wijzen dat een machine een aanval ondervindt of is geschonden.  
 
@@ -171,7 +174,7 @@ Geavanceerde bedreigings beveiliging voor opslag detecteert ongebruikelijke en m
 
 Advanced Threat Protection voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage](https://azure.microsoft.com/services/storage/blobs/). 
 
-Deze service is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar geen andere soevereine of Azure Government-Cloud regio's.
+Deze service is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar geen andere soevereine of Azure Government Cloud regio's.
 
 Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 
