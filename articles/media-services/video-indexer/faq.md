@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767210"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652181"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Veelgestelde vragen over Video Indexer
 
@@ -99,6 +99,10 @@ Zie artikelen over het aanpassen van [person](customize-person-model-overview.md
 Ja. Druk op de knop **video bewerken** in de weer gave van de bibliotheek of de knop **openen in editor** van de weer gave van Media Player om naar het tabblad **projecten** te gaan. U kunt een nieuw project maken en meer Video's uit uw bibliotheek toevoegen om ze samen te bewerken. Als u klaar bent, kunt u uw video weer geven en downloaden. 
 
 Als u inzicht wilt krijgen in uw nieuwe video, indexeert u deze met Video Indexer en wordt het weer gegeven in uw bibliotheek met de inzichten.
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>Kan ik meerdere audiostreams of kanalen indexeren?
+
+Als er meerdere audiostreams zijn, neemt Video Indexer de eerste problemen op en zal deze stroom alleen verwerken. In een audio stroom Video Indexer processen worden de verschillende kanalen gebruikt (indien aanwezig) en verwerkt deze samen als mono. Voor het bewerken van streams/kanalen kunt u ffmpeg-opdrachten gebruiken voor het bestand voordat u het indexeert.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Wat is de SLA voor Video Indexer?
 

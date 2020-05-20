@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190415"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654787"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-beveiligings basislijn voor Azure Database for MySQL
 
@@ -474,7 +474,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: n.v.t.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -573,7 +573,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 **Hulp**: de Azure database for MySQL-service gebruikt de door FIPS 140-2 gevalideerde cryptografische module voor opslag versleuteling van gegevens op rest. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf, met uitzonde ring van tijdelijke bestanden die worden gemaakt tijdens het uitvoeren van query's. De service maakt gebruik van de AES 256-bits code ring opgenomen in azure Storage-versleuteling en de sleutels worden beheerd door het systeem. Opslagversleuteling is altijd actief en kan niet worden uitgeschakeld.
 
-Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL stelt u in staat om uw eigen sleutel (BYOK) voor gegevens bescherming te zetten. Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met:
+Gegevensversleuteling met door de klant beheerde sleutels voor Azure Database for MySQL stelt u in staat om inactieve gegevens te beveiligen met BYOK (Bring Your Own Key). Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met:
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -902,7 +902,7 @@ Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
-**Hulp**: Azure database for MySQL-exemplaar ondersteunt Azure Active Directory-verificatie (in Preview) voor toegang tot data bases.  Tijdens het maken van het Azure Database for MySQL-exemplaar geeft u referenties op voor een beheerders gebruiker. Deze beheerder kan worden gebruikt om extra database gebruikers te maken.  
+**Hulp**: Azure database for MySQL exemplaar ondersteunt Azure Active Directory-verificatie voor toegang tot data bases.  Tijdens het maken van het Azure Database for MySQL-exemplaar geeft u referenties op voor een beheerders gebruiker. Deze beheerder kan worden gebruikt om extra database gebruikers te maken.  
 
 Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service wordt gebruikt om toegang te krijgen tot uw Azure Database for MySQL-instanties, gebruikt u Managed Service Identity in combi natie met Azure Key Vault om referenties op te slaan en op te halen voor Azure Database for MySQL exemplaar. Zorg ervoor Key Vault zacht verwijderen is ingeschakeld.
 

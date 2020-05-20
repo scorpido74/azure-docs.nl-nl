@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/28/2020
 ms.author: juliako
-ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647633"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` en te plakken: in uw RSS-feed-lezer.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` in uw RSS-feed-lezer.
 
 Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
 
@@ -35,6 +35,10 @@ Dit artikel bevat informatie over het volgende om up-to-date te blijven met de m
 > U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="may-2020"></a>Mei 2020
+
+Azure Media Services is nu algemeen beschikbaar in de volgende regio's: "Duitsland-noord", "Duitsland-west-centraal", "Zwitserland-noord" en "Zwitserland-west". Klanten kunnen Media Services naar deze regio's implementeren met behulp van de Azure Portal.
 
 ## <a name="april-2020"></a>April 2020
 
@@ -119,7 +123,7 @@ Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Pre
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
@@ -245,30 +249,30 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://do
 #### <a name="asset-commands"></a>Asset-opdrachten
 
 - ```--storage-account```en ```--container``` argumenten zijn toegevoegd.
-- Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in ```az ams asset get-sas-url``` de opdracht toegevoegd.
+- Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in de ```az ams asset get-sas-url``` opdracht toegevoegd.
 
 #### <a name="job-commands"></a>Opdracht opdrachten
 
 - ```--correlation-data```en ```--label``` argumenten toegevoegd
-- ```--output-asset-names```de naam is gewijzigd ```--output-assets```in. Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
+- ```--output-asset-names```de naam is gewijzigd in ```--output-assets``` . Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
 
 #### <a name="streaming-locator-commands"></a>Opdrachten voor streaming-Locator
 
-- ```az ams streaming locator```de basis opdracht is ```az ams streaming-locator```vervangen door.
+- ```az ams streaming locator```de basis opdracht is vervangen door ```az ams streaming-locator``` .
 - ```--streaming-locator-id```en ```--alternative-media-id support``` argumenten zijn toegevoegd.
 - ```--content-keys argument```het argument is bijgewerkt.
-- ```--content-policy-name```de naam is gewijzigd ```--content-key-policy-name```in.
+- ```--content-policy-name```de naam is gewijzigd in ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Streaming-beleids opdrachten
 
-- ```az ams streaming policy```de basis opdracht is ```az ams streaming-policy```vervangen door.
-- De ondersteuning voor ```az ams streaming-policy create``` versleutelings parameters is toegevoegd.
+- ```az ams streaming policy```de basis opdracht is vervangen door ```az ams streaming-policy``` .
+- De ondersteuning voor versleutelings parameters is ```az ams streaming-policy create``` toegevoegd.
 
 #### <a name="transform-commands"></a>Opdrachten transformeren
 
-- ```--preset-names```het argument is ```--preset```vervangen door. Nu kunt u slechts één uitvoer/voor instelling per keer instellen (om meer informatie toe te voegen ```az ams transform output add```om uit te voeren). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
+- ```--preset-names```het argument is vervangen door ```--preset``` . Nu kunt u slechts één uitvoer/voor instelling per keer instellen (om meer informatie toe te voegen om uit te voeren ```az ams transform output add``` ). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
 - ```az ams transform output remove```kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenten die zijn ```az ams transform create``` toegevoegd ```az ams transform output add``` in en opdrachten.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenten die zijn toegevoegd in ```az ams transform create``` en ```az ams transform output add``` opdrachten.
 
 ## <a name="october-2018---ga"></a>Oktober 2018-GA
 

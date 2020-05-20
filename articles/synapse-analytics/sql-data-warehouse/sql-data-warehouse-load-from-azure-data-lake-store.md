@@ -11,19 +11,19 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626714"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654507"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden uit Azure Data Lake Storage voor SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Gegevens laden uit Azure Data Lake Storage voor Synapse SQL
 
 In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan om de gegevens te importeren voor de beste prestaties.
 
 > [!NOTE]  
-> Een alternatief voor het laden is de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview.  De instructie COPY biedt de meeste flexibiliteit. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende sqldwcopypreview@service.microsoft.comdistributie lijst:.
+> Een alternatief voor het laden is de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview.  De instructie COPY biedt de meeste flexibiliteit. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende distributie lijst: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
@@ -218,7 +218,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 Het is aan te raden om statistieken voor één kolom direct na een belasting te maken. Er zijn enkele keuzes voor statistieken. Als u bijvoorbeeld statistieken voor één kolom maakt voor elke kolom, kan het lang duren om alle statistieken opnieuw samen te stellen. Als u weet dat bepaalde kolommen zich niet in query predikaten bevinden, kunt u het maken van statistieken voor die kolommen overs Laan.
 
-Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u het voor beeld `prc_sqldw_create_stats` van de opgeslagen procedure code in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
+Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u het voor beeld van de opgeslagen procedure code `prc_sqldw_create_stats` in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
 
 Het volgende voor beeld is een goed uitgangs punt voor het maken van statistieken. Er worden statistieken voor één kolom gemaakt voor elke kolom in de dimensie tabel en voor elke join-kolom in de feiten tabellen. U kunt later altijd statistieken met één of meerdere kolommen toevoegen aan andere feiten tabel kolommen.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838855"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655847"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -56,7 +56,7 @@ Azure Disk Encryption wordt ondersteund op een subset van de door [Azure goedgek
 
 Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen ondersteuning voor Azure Disk Encryption; van degenen die zijn goedgekeurd, worden alleen de volgende distributies en versies ondersteund Azure Disk Encryption:
 
-| Uitgever | Aanbieding | SKU | URN | Ondersteund volume type voor versleuteling |
+| Publisher | Aanbieding | SKU | URN | Ondersteund volume type voor versleuteling |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04-LTS | Canoniek: UbuntuServer: 18.04-LTS: nieuwste | Besturings systeem en gegevens schijf |
 | Canonical | Ubuntu 18.04 | 18,04-DAGELIJKS-LTS | Canoniek: UbuntuServer: 18.04-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
@@ -96,20 +96,30 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 
 Azure Disk Encryption vereist dat de DM-cryptografie-en vfat-modules aanwezig zijn op het systeem. Als u vfat uit de standaard installatie kopie verwijdert of uitschakelt, wordt het sleutel volume niet door het systeem gelezen en wordt de benodigde sleutel voor het ontgrendelen van de schijven bij de volgende keer opnieuw opstarten voor komen. De stappen voor het beveiligen van het systeem die de vfat-module van het systeem verwijderen, zijn niet compatibel met Azure Disk Encryption. 
 
-Voordat u versleuteling inschakelt, moeten de gegevens schijven die moeten worden versleuteld, op de juiste manier worden weer gegeven in/etc/fstab. Gebruik een permanente blok apparaatnaam voor dit item, aangezien apparaatnamen in de indeling '/dev/sdX ' niet kunnen worden gebruikt om te worden gekoppeld aan dezelfde schijf tijdens het opnieuw opstarten, met name nadat de versleuteling is toegepast. Zie voor meer informatie over dit gedrag: [problemen met Linux VM-apparaatnaam wijzigen](troubleshoot-device-names-problems.md)
+Voordat u versleuteling inschakelt, moeten de gegevens schijven die moeten worden versleuteld, op de juiste manier worden weer gegeven in/etc/fstab. Gebruik de optie ' geen fout ' bij het maken van vermeldingen en kies een permanente blok apparaatnaam (als apparaatnamen in de indeling '/dev/sdX ' mag niet worden gekoppeld aan dezelfde schijf tijdens het opnieuw opstarten, met name na de versleuteling). Zie [problemen met de naam wijzigingen van Linux VM-apparaten oplossen](troubleshoot-device-names-problems.md)voor meer informatie over dit gedrag.
 
 Controleer of de bestand/etc/fstab-instellingen correct zijn geconfigureerd voor koppelen. Als u deze instellingen wilt configureren, voert u de koppeling-a-opdracht uit of start u de VM opnieuw op. vervolgens wordt de koppeling op die manier geactiveerd. Als dat is voltooid, controleert u de uitvoer van de lsblk-opdracht om te controleren of het station nog steeds is gekoppeld. 
+
 - Als het bestand/etc/fstab-bestand het station niet correct koppelt voordat u versleuteling inschakelt, kan Azure Disk Encryption het niet goed koppelen.
 - Het Azure Disk Encryption proces verplaatst de koppelings gegevens uit bestand/etc/fstab en in een eigen configuratie bestand als onderdeel van het versleutelings proces. Geen waarschuwing weer gegeven om te zien welke vermelding ontbreekt in bestand/etc/fstab nadat de versleuteling van de gegevens schijf is voltooid.
 - Voordat u begint met het versleutelen, moet u alle services en processen die kunnen schrijven naar gekoppelde gegevens schijven stoppen en uitschakelen, zodat ze niet automatisch opnieuw worden opgestart na het opnieuw opstarten. Hierdoor blijven bestanden geopend op deze partities, waardoor de versleutelings procedure niet opnieuw kan worden gekoppeld, waardoor de versleuteling mislukt. 
 - Nadat het systeem opnieuw is opgestart, zal het Azure Disk Encryption proces de zojuist versleutelde schijven te koppelen. Ze zijn niet onmiddellijk beschikbaar na het opnieuw opstarten. Het proces heeft tijd nodig om de versleutelde stations te starten, te ontgrendelen en vervolgens te koppelen voordat andere processen kunnen worden geopend. Dit proces kan meer dan een minuut duren na het opnieuw opstarten, afhankelijk van de systeem kenmerken.
 
-Een voor beeld van opdrachten die kunnen worden gebruikt om de gegevens schijven te koppelen en de benodigde bestand/etc/fstab-vermeldingen te maken, vindt u in het [Azure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started) (regels 244-248) en het [Power shell-script voor de Azure Disk Encryption vereisten](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts). 
+Hier volgt een voor beeld van de opdrachten die worden gebruikt voor het koppelen van de gegevens schijven en het maken van de benodigde bestand/etc/fstab-vermeldingen:
 
+```bash
+UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
+UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+mkdir /data0
+mkdir /data1
+echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
+echo "UUID=$UUID1 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
+mount -a
+```
 ## <a name="networking-requirements"></a>Netwerk vereisten
 
 Als u de functie Azure Disk Encryption wilt inschakelen, moeten de virtuele Linux-machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
-  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de virtuele Linux-machine verbinding kunnen maken met \[een\]Azure Active Directory-eind punt, login.microsoftonline.com.
+  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de virtuele Linux-machine verbinding kunnen maken met een Azure Active Directory-eind punt, \[ login.microsoftonline.com \] .
   - Als u de versleutelings sleutels naar uw sleutel kluis wilt schrijven, moet de virtuele Linux-machine verbinding kunnen maken met het eind punt van de sleutel kluis.
   - De virtuele Linux-machine moet verbinding kunnen maken met een Azure Storage-eind punt dat als host fungeert voor de Azure extension-opslag plaats en een Azure Storage-account dat de VHD-bestanden host.
   -  Als uw beveiligings beleid de toegang tot het Internet beperkt met Azure-Vm's, kunt u de voor gaande URI omzetten en een specifieke regel configureren om uitgaande connectiviteit met de IP-adressen toe te staan. Zie [Azure Key Vault achter een firewall](../../key-vault/general/access-behind-firewall.md)voor meer informatie.  

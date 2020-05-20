@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL python API, SDK & resources'
 description: Meer informatie over de SQL python-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB python SDK.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/29/2018
-ms.author: sngun
-ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ce74a7b02b9c450e07402d96a1aaba2a4b704788
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982902"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650712"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982902"
 > * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java-SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -64,7 +65,7 @@ ms.locfileid: "80982902"
 * Bugfix voor ReadMedia-API
 * Bugfix in cache voor partitie sleutel bereik
 
-### <a name="232"></a><a name="2.3.2"/>verschijnsel
+### <a name="232"></a><a name="2.3.2"/>2.3.2
 * Er is ondersteuning toegevoegd voor standaard nieuwe pogingen bij verbindings problemen.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
@@ -90,7 +91,7 @@ ms.locfileid: "80982902"
 * Er is ondersteuning toegevoegd voor het inschakelen van script logboek registratie tijdens de uitvoering van de opgeslagen procedure.
 * REST API versie die is gebump naar ' 2017-01-19 ' met deze release.
 
-### <a name="201"></a><a name="2.0.1"/>wel
+### <a name="201"></a><a name="2.0.1"/>2.0.1
 * Wijzigingen in documentatie zijn aangebracht.
 
 ### <a name="200"></a><a name="2.0.0"/>2.0.0
@@ -125,7 +126,7 @@ ms.locfileid: "80982902"
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Ondersteunt georuimtelijke index.
-* Valideert de eigenschap ID voor alle resources. Id's voor resources mogen niet de tekens?,/, \, #, bevatten of eindigen met een spatie.
+* Valideert de eigenschap ID voor alle resources. Id's voor resources mogen niet de tekens?,/, #, bevatten \, of eindigen met een spatie.
 * Hiermee wordt de voortgang van de index transformatie van de nieuwe header toegevoegd aan ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
@@ -161,13 +162,13 @@ Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK
 | [3.0.2](#3.0.2) |15 november 2018 |--- |
 | [3.0.1](#3.0.1) |Okt 04, 2018 |--- |
 | [2.3.3](#2.3.3) |Sept 08, 2018 |30 augustus 2020 |
-| [verschijnsel](#2.3.2) |08 mei 2018 |30 augustus 2020 |
+| [2.3.2](#2.3.2) |08 mei 2018 |30 augustus 2020 |
 | [2.3.1](#2.3.1) |21 december 2017 |30 augustus 2020 |
 | [2.3.0](#2.3.0) |10 november 2017 |30 augustus 2020 |
 | [2.2.1](#2.2.1) |29 sep, 2017 |30 augustus 2020 |
 | [2.2.0](#2.2.0) |10 mei 2017 |30 augustus 2020 |
 | [2.1.0](#2.1.0) |01 mei 2017 |30 augustus 2020 |
-| [wel](#2.0.1) |30 oktober 2016 |30 augustus 2020 |
+| [2.0.1](#2.0.1) |30 oktober 2016 |30 augustus 2020 |
 | [2.0.0](#2.0.0) |29 september 2016 |30 augustus 2020 |
 | [1.9.0](#1.9.0) |Juli 07, 2016 |30 augustus 2020 |
 | [1.8.0](#1.8.0) |14 juni 2016 |30 augustus 2020 |

@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584963"
+ms.locfileid: "83654054"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Intenties toevoegen om te bepalen wat de gebruikers intentie van uitingen zijn
 
 Voeg [intenties](luis-concept-intent.md) toe aan uw Luis-app om groepen vragen of opdrachten te identificeren die hetzelfde doel hebben.
 
-Intenties worden beheerd vanuit de **opbouw** sectie van de bovenste navigatie balk en vervolgens vanuit de **intenties**van het linkerdeel venster.
+In de LUIS-Portal worden de intenties beheerd vanuit de **eerste sectie van de navigatie** balk en vervolgens vanuit de **intenties**van het linkerdeel venster.
 
-## <a name="add-intent"></a>Intentie toevoegen
+## <a name="add-an-intent-to-your-app"></a>Een intentie toevoegen aan uw app
 
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
@@ -34,7 +34,7 @@ Intenties worden beheerd vanuit de **opbouw** sectie van de bovenste navigatie b
     > [!div class="mx-imgBorder"]
     > ![Intentie toevoegen](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    De bedoeling is bijvoorbeeld uitingen.
+    Het doel van de opzet heeft [voor beeld uitingen](luis-concept-utterance.md) nodig om uitingen te voors pellen bij het gepubliceerde prediction-eind punt.
 
 ## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
 
@@ -51,16 +51,16 @@ Voor beelden van uitingen zijn tekst voorbeelden van gebruikers vragen of-opdrac
 
 ## <a name="intent-prediction-errors"></a>Voorspellings fouten in intentie
 
-Een voor beeld van een utterance in een intentie heeft mogelijk een intentie Voorspellings fout tussen de bedoeling van het voor beeld utterance is op dit moment en de intentie die tijdens de training is bepaald.
+Een intentie Voorspellings fout wordt bepaald wanneer de utterance niet wordt voor speld met de getrainde app voor het doel.
 
-Als u utterance-Voorspellings fouten wilt vinden en deze wilt corrigeren, gebruikt u de **filter** opties onjuist en onduidelijk gecombineerd met de optie **weer** geven van **gedetailleerde weer gave**.
+1. Als u utterance-Voorspellings fouten wilt vinden en deze wilt herstellen, gebruikt u de **filter** opties onjuist en onduidelijk.
 
-![Gebruik de filter optie om utterance Voorspellings fouten te vinden en deze op te lossen.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![Gebruik de filter optie om utterance Voorspellings fouten te vinden en deze op te lossen.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Wanneer de filters en weer gave worden toegepast en er voorbeeld uitingen zijn met fouten, worden de uitingen en de problemen weer gegeven in de lijst voor beeld utterance.
+1. Als u de waarde van de score wilt weer geven op de detail pagina Details, selecteert u details van de **intentie weer geven** in het menu **weergave** opties.
 
-> [!div class="mx-imgBorder"]
-> ![! [Wanneer de filters en weer gave worden toegepast en er voorbeeld uitingen zijn met fouten, worden de uitingen en de problemen weer gegeven in de lijst voor beeld utterance.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    Wanneer de filters en weer gave worden toegepast en er voorbeeld uitingen zijn met fouten, worden de uitingen en de problemen weer gegeven in de lijst voor beeld utterance.
 
 Elke rij toont de huidige Voorspellings Score van de training voor het voor beeld utterance, het dichtstbijzijnde aantal punten, het verschil in deze twee scores.
 

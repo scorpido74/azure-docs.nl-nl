@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9becb574594672c1cf91e610b4c13f91c91aa14f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685716"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659522"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -50,6 +50,16 @@ Verbinding maken met behulp van een van de volgende opties:
 #### <a name="allow-the-azure-datacenter-ip-ranges"></a>De IP-bereiken van Azure Data Center toestaan
 
 Met deze optie worden de [IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653) in het gedownloade bestand toegestaan. Gebruik de cmdlet Set-AzureNetworkSecurityRule om toegang te krijgen tot een netwerk beveiligings groep (NSG). Als uw lijst met veilige geadresseerden alleen landspecifieke Ip's bevat, moet u ook de lijst met veilige geadresseerden de service label van de Azure Active Directory (Azure AD) bijwerken om verificatie in te scha kelen.
+
+U kunt ook toegang tot de volgende FQDN-locaties toestaan voor het instellen van de vereiste connectiviteit:
+
+* `*.<datacentercode>.backup.windowsazure.com`<br>
+(Zie [hier](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)de Data Center-codes)
+
+* `login.windows.net`
+* `*.blob.core.windows.net`
+* `*.queue.core.windows.net`
+
 
 #### <a name="allow-access-using-nsg-tags"></a>Toegang toestaan met behulp van NSG-Tags
 
@@ -98,7 +108,7 @@ NSG-service tags gebruiken | Eenvoudiger te beheren als bereik wijzigingen worde
 Azure Firewall FQDN-Tags gebruiken | Eenvoudiger te beheren omdat de vereiste FQDN-s automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall
 Een HTTP-proxy gebruiken | Eén toegangs punt voor Internet toegang tot Vm's <br/> | Aanvullende kosten voor het uitvoeren van een virtuele machine met de proxy software <br/> Geen gepubliceerde FQDN-adressen, toestaan dat regels worden onderhevig aan wijzigingen in het Azure IP-adres
 
-#### <a name="private-endpoints"></a>Privé-eind punten
+#### <a name="private-endpoints"></a>Privé-eindpunten
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -135,7 +145,7 @@ Data bases detecteren die worden uitgevoerd op een virtuele machine:
 
     ![SQL Server in Azure VM voor de back-up selecteren](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. In **back-updoel** > **detecteren db's in vm's**, selecteert u **detectie starten** om niet-beveiligde vm's in het abonnement te zoeken. Deze zoek opdracht kan enige tijd duren, afhankelijk van het aantal niet-beveiligde virtuele machines in het abonnement.
+5. In **back-updoel**  >  **detecteren db's in vm's**, selecteert u **detectie starten** om niet-beveiligde vm's in het abonnement te zoeken. Deze zoek opdracht kan enige tijd duren, afhankelijk van het aantal niet-beveiligde virtuele machines in het abonnement.
 
    * Niet-beveiligde virtuele machines zouden na detectie in de lijst moeten verschijnen, gesorteerd op naam en resourcegroep.
    * Als een virtuele machine niet wordt vermeld zoals u verwacht, kunt u zien of er al een back-up is gemaakt in een kluis.
@@ -162,7 +172,7 @@ Data bases detecteren die worden uitgevoerd op een virtuele machine:
 
 ## <a name="configure-backup"></a>Back-up configureren  
 
-1. Selecteer in **back-updoel** > **stap 2: back**-up configureren de optie **back-up configureren**.
+1. Selecteer in **back-updoel**  >  **stap 2: back**-up configureren de optie **back-up configureren**.
 
    ![Back-up configureren selecteren](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -214,7 +224,7 @@ Een back-upbeleid bepaalt wanneer back-ups worden gemaakt en hoe lang ze worden 
 
 Ga als volgt te werk om een back-upbeleid te maken:
 
-1. Selecteer in de kluis de optie **back-upbeleid** > **toevoegen**.
+1. Selecteer in de kluis de optie **back-upbeleid**  >  **toevoegen**.
 2. In **toevoegen**selecteert u **SQL Server in azure VM** om het beleids type te definiëren.
 
    ![Een beleidstype voor het nieuwe back-upbeleid kiezen](./media/backup-azure-sql-database/policy-type-details.png)

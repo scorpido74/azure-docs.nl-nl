@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
-ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387764"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654626"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Aan de slag met controleren van beheerd exemplaar voor Azure SQL Database
 
@@ -37,7 +37,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
    1. Ga naar het Azure Storage waar u de audit logboeken wilt opslaan.
 
       > [!IMPORTANT]
-      > Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen.
+      > Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen. Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
 
    1. Ga in het opslag account naar **overzicht** en klik op **blobs**.
 
@@ -106,7 +106,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
         GO
         ```
 
-     1. Voer de volgende T-SQL-instructie uit om een nieuwe server controle te maken (Kies uw eigen audit naam, gebruik de container-URL die u in de vorige stappen hebt gemaakt). Als niet wordt opgegeven `RETENTION_DAYS` , is de standaard waarde 0 (onbeperkte retentie):
+     1. Voer de volgende T-SQL-instructie uit om een nieuwe server controle te maken (Kies uw eigen audit naam, gebruik de container-URL die u in de vorige stappen hebt gemaakt). Als niet wordt opgegeven, `RETENTION_DAYS` is de standaard waarde 0 (onbeperkte retentie):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -217,7 +217,7 @@ Als u gegevens van de audit logboeken van Event hub wilt gebruiken, moet u een s
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Logboeken die zijn opgeslagen in Azure Monitor Logboeken gebruiken en analyseren
 
-Als audit logboeken naar Azure Monitor logboeken worden geschreven, zijn ze beschikbaar in de Log Analytics-werk ruimte, waar u geavanceerde zoek opdrachten kunt uitvoeren op de controle gegevens. Ga als uitgangs punt naar de Log Analytics-werk ruimte en klik in de sectie *Algemeen* op *Logboeken* en voer een eenvoudige query `search "SQLSecurityAuditEvents"` in, zoals: om de audit logboeken weer te geven.  
+Als audit logboeken naar Azure Monitor logboeken worden geschreven, zijn ze beschikbaar in de Log Analytics-werk ruimte, waar u geavanceerde zoek opdrachten kunt uitvoeren op de controle gegevens. Ga als uitgangs punt naar de Log Analytics-werk ruimte en klik in de sectie *Algemeen* op *Logboeken* en voer een eenvoudige query in, zoals: `search "SQLSecurityAuditEvents"` om de audit logboeken weer te geven.  
 
 Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -227,15 +227,15 @@ Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met 
 
 De belangrijkste verschillen tussen controles in data bases in Azure SQL Database en data bases in SQL Server zijn:
 
-- Met de implementatie optie Managed instance in Azure SQL Database, werkt auditing op server niveau en `.xel` worden logboek bestanden opgeslagen in Azure Blob-opslag.
+- Met de implementatie optie Managed instance in Azure SQL Database, werkt auditing op server niveau en worden `.xel` logboek bestanden opgeslagen in Azure Blob-opslag.
 - Bij SQL Server on-premises/virtuele machines werkt audit op het niveau van de server, maar worden gebeurtenissen opgeslagen in gebeurtenis logboeken van het bestand systeem/Windows.
 
 XEvent-controle in een beheerd exemplaar ondersteunt Azure Blob-opslag doelen. Bestands-en Windows-logboeken worden **niet ondersteund**.
 
 De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van Azure Blob-opslag zijn:
 
-- Er wordt een `TO URL` nieuwe syntaxis opgegeven, waarmee u de URL kunt opgeven van de Azure Blob Storage- `.xel` container waar de bestanden worden geplaatst.
-- Er wordt een `TO EXTERNAL MONITOR` nieuwe syntaxis gegeven om zelfs hub-en Azure monitor-Logboeken in te scha kelen.
+- Er wordt een nieuwe syntaxis `TO URL` opgegeven, waarmee u de URL kunt opgeven van de Azure Blob Storage-container waar de `.xel` bestanden worden geplaatst.
+- Er wordt een nieuwe syntaxis `TO EXTERNAL MONITOR` gegeven om zelfs hub-en Azure monitor-Logboeken in te scha kelen.
 - De syntaxis `TO FILE` wordt **niet ondersteund** omdat SQL database geen toegang hebt tot Windows-bestands shares.
 - De optie shutdown wordt **niet ondersteund**.
 - `queue_delay`van 0 wordt **niet ondersteund**.

@@ -1,35 +1,35 @@
 ---
-title: Web-Api's implementeren en aanroepen & REST Api's vanuit Azure Logic Apps
-description: Web-Api's implementeren en aanroepen & REST-Api's voor systeem integratie werk stromen in Azure Logic Apps
+title: Aangepaste web-Api's aanroepen & REST-Api's
+description: Uw eigen web-Api's aanroepen & REST Api's vanuit Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/26/2017
-ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/13/2020
+ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790749"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659783"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Aangepaste Api's implementeren en aanroepen vanuit werk stromen in Azure Logic Apps
 
-Nadat u [aangepaste api's hebt gemaakt](./logic-apps-create-api-app.md) voor gebruik in werk stromen voor logische apps, moet u uw api's implementeren voordat u ze kunt aanroepen. U kunt uw Api's als [Web-apps](../app-service/overview.md)implementeren, maar u kunt ook uw Api's als [API-apps](../app-service/app-service-web-tutorial-rest-api.md)implementeren, waardoor uw taak eenvoudiger wordt wanneer u api's in de Cloud en on-premises bouwt, host en verbruikt. U hoeft geen code in uw Api's te wijzigen: implementeer gewoon uw code naar een API-app. U kunt uw Api's hosten op [Azure app service](../app-service/overview.md), een Paas-Aanbieding (platform-as-a-Service) die een uiterst schaal bare en eenvoudige API-hosting biedt.
+Nadat u [uw eigen api's hebt gemaakt](./logic-apps-create-api-app.md) voor gebruik in uw logische app-werk stromen, moet u die api's implementeren voordat u ze kunt aanroepen. U kunt uw Api's als [Web-apps](../app-service/overview.md)implementeren, maar u kunt ook uw Api's als [API-apps](../app-service/app-service-web-tutorial-rest-api.md)implementeren, waardoor uw taak eenvoudiger wordt wanneer u api's in de Cloud en on-premises bouwt, host en verbruikt. U hoeft geen code in uw Api's te wijzigen: implementeer gewoon uw code naar een API-app. U kunt uw Api's hosten op [Azure app service](../app-service/overview.md), een Paas-Aanbieding (platform-as-a-Service) die een uiterst schaal bare en eenvoudige API-hosting biedt.
 
-Hoewel u een API kunt aanroepen vanuit een logische app, moet u voor de beste ervaring [OpenAPI-meta gegevens (voorheen Swagger)](https://swagger.io/specification/) toevoegen die de bewerkingen en para meters van uw API beschrijven. Met dit OpenAPI-bestand kan uw API eenvoudiger worden geïntegreerd en beter werken met Logic apps.
+Hoewel u een API kunt aanroepen vanuit een logische app, moet u voor de beste ervaring [Swagger-meta gegevens](https://swagger.io/specification/) toevoegen met een beschrijving van de bewerkingen en para meters van uw API. Dit Swagger-document helpt uw API gemakkelijker te integreren en beter te werken met Logic apps.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Uw API als een web-app of API-app implementeren
 
-Voordat u uw aangepaste API kunt aanroepen vanuit een logische app, implementeert u uw API als een web-app of API-app voor Azure App Service. Als u uw OpenAPI-bestand leesbaar wilt maken door de Logic Apps Designer, stelt u de API-definitie-eigenschappen in en schakelt u de functie [Cross-Origin Resource Sharing (CORS)](../app-service/overview.md) in voor uw web-app of API-app.
+Voordat u uw aangepaste API kunt aanroepen vanuit een logische app, implementeert u uw API als een web-app of API-app voor Azure App Service. Als u wilt dat uw Swagger-document kan worden gelezen door de Logic Apps Designer, stelt u de API-definitie-eigenschappen in en schakelt u de functie [Cross-Origin Resource Sharing (CORS)](../app-service/overview.md) in voor uw web-app of API-app.
 
 1. Selecteer uw web-app of API-app in het [Azure Portal](https://portal.azure.com).
 
-2. Kies in het menu app dat wordt geopend, onder **API**de **API-definitie**. Stel de **locatie** van de API-definitie in op de URL voor uw OpenAPI Swagger. JSON-bestand.
+2. Kies in het menu app dat wordt geopend, onder **API**de **API-definitie**. Stel de **locatie** van de API-definitie in op de URL voor uw Swagger. JSON-bestand.
 
    Normaal gesp roken wordt de URL in de volgende indeling weer gegeven:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
-   ![Koppeling naar het OpenAPI-bestand voor uw aangepaste API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
+   ![Koppeling naar Swagger-document voor uw aangepaste API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
 3. Onder **API**kiest u **CORS**. Stel het CORS-beleid voor **toegestane oorsprongen** in op **' * '** (alles toestaan).
 
@@ -45,9 +45,9 @@ Nadat u de API-definitie-eigenschappen en CORS hebt ingesteld, moeten de trigger
 
 *  Als u websites met OpenAPI-Url's wilt weer geven, kunt u door de websites van uw abonnement bladeren in de Logic Apps Designer.
 
-*  Als u beschik bare acties en invoer wilt weer geven door te klikken op een OpenAPI-document, gebruikt u de [actie http + Swagger](../connectors/connectors-native-http-swagger.md).
+*  Als u beschik bare acties en invoer wilt weer geven door op een Swagger-document te wijzen, gebruikt u de [actie http + Swagger](../connectors/connectors-native-http-swagger.md).
 
-*  Als u een API wilt aanroepen, met inbegrip van Api's die geen OpenAPI-document hebben of weer geven, kunt u altijd een aanvraag met de [http-actie](../connectors/connectors-native-http.md)maken.
+*  Als u een API wilt aanroepen, met inbegrip van Api's die geen Swagger-document hebben of weer geven, kunt u altijd een aanvraag met de [http-actie](../connectors/connectors-native-http.md)maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

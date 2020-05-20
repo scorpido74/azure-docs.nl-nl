@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: designer
+ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872620"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654937"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,8 +26,8 @@ Met Azure Machine Learning Designer kunt u [gegevens sets](#datasets) en [module
 
 De ontwerp functie maakt gebruik van uw Azure Machine Learning- [werk ruimte](concept-workspace.md) voor het organiseren van gedeelde resources zoals:
 
-+ [Pijplijnen](#pipeline)
-+ [Gegevenssets](#datasets)
++ [Pipelines](#pipeline)
++ [Sets](#datasets)
 + [Reken resources](#compute)
 + [Geregistreerde modellen](concept-azure-machine-learning-architecture.md#models)
 + [Gepubliceerde pijp lijnen](#publish)

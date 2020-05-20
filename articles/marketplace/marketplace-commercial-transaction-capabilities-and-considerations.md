@@ -1,5 +1,5 @@
 ---
-title: De Transact-mogelijkheden voor commerciële Marketplace
+title: Micro soft Commercial Marketplace Transact-mogelijkheden
 description: In dit artikel worden de prijs-, facturerings-, facturerings-en uitbetalings overwegingen voor de optie commerciële Marketplace Transact beschreven.
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4aeae69dd50e8c233a1903f6f2c7bd7795b8d7b9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857211"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657904"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -78,7 +78,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Betalen per gebruik** 
+**Pay-As-You-Go** 
 
 Betalen per gebruik heeft de volgende kosten structuur:
 

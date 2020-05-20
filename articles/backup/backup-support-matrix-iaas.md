@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8ac2896b0b3b8c87ff993eddcebb063a66add1fa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199866"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659398"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -112,7 +112,7 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestands servers en 448 voor app-ser
 
 ## <a name="support-for-file-level-restore"></a>Ondersteuning voor herstel op bestands niveau
 
-**Herstellen** | **Ondersteund**
+**Herstellen** | **Geboden**
 --- | ---
 Bestanden herstellen over besturings systemen | U kunt bestanden herstellen op elke computer die hetzelfde (of compatibel) besturings systeem heeft als de back-up van de virtuele machine. Zie de [tabel met compatibele besturings systemen](backup-azure-restore-files-from-vm.md#system-requirements).
 Bestanden herstellen van versleutelde Vm's | Niet ondersteund.
@@ -125,7 +125,7 @@ Bestanden herstellen met speciale netwerk instellingen | Terugzetten wordt niet 
 
 De volgende tabel bevat een overzicht van de ondersteuning voor back-ups tijdens taken voor VM-beheer, zoals het toevoegen of vervangen van VM-schijven.
 
-**Herstellen** | **Ondersteund**
+**Herstellen** | **Geboden**
 --- | ---
 Herstellen in het abonnement/de regio/zone. | Niet ondersteund.
 Herstellen naar een bestaande virtuele machine | Gebruik de optie schijf vervangen.
@@ -163,7 +163,7 @@ Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 3
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
 Versleutelde schijven | Ondersteund.<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
-Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> Azure backup sluit automatisch de schijven uit met Write Accelerator ingeschakeld tijdens het maken van een back-up. Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine.
+Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> De schijven met Write Accelerator (WA) die tijdens het maken van de back-up zijn ingeschakeld, worden door Azure backup automatisch uitgesloten. Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
 Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen ondersteuning voor ontdubbeling. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) voor meer informatie <br/> <br/>  -Azure Backup wordt niet gedupliceerd over Vm's in de Recovery Services kluis <br/> <br/>  -Als er Vm's in de ontdubbelings status zijn tijdens het herstellen, kunnen de bestanden niet worden hersteld omdat de kluis de indeling niet begrijpt. U kunt echter de volledige VM-herstel bewerking uitvoeren.
 Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.

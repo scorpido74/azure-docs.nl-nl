@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen
-description: Problemen met Azure Synapse Analytics oplossen.
+title: Problemen met Synapse SQL oplossen
+description: Problemen met Synapse SQL in azure Synapse Analytics oplossen.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743664"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650458"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Problemen met SQL Analytics in azure Synapse oplossen
+# <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
-Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oplossing.
+In dit artikel worden veelvoorkomende problemen met het oplossen van problemen in Synapse SQL beschreven.
 
 ## <a name="connecting"></a>Verbinding maken
 
@@ -81,5 +81,5 @@ Als u meer informatie wilt over het vinden van oplossingen voor uw probleem, kun
 * [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
 * [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
-* [Stack Overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

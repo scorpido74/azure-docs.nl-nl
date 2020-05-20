@@ -1,5 +1,5 @@
 ---
-title: Releaseopmerkingen
+title: Opmerkingen bij de release
 description: Meer informatie over de nieuwe functies en verbeteringen in de Azure SQL Database-Service en in de Azure SQL Database documentatie
 services: sql-database
 author: stevestein
@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3e5069c779cee0700bff6b2236f3cd36547fd623
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838481"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659615"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -24,7 +24,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ### <a name="single-database"></a>[Eén data base](#tab/single-database)
 
-| Onderdeel | Details |
+| Functie | Details |
 | ---| --- |
 | Nieuwe hardware gegenereerd met de Fsv2-serie en M-serie| Zie [Hardware-generaties](sql-database-service-tiers-vcore.md#hardware-generations)voor meer informatie.|
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
@@ -43,7 +43,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ### <a name="managed-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
-| Onderdeel | Details |
+| Functie | Details |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Exemplaargroepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
@@ -78,6 +78,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
+|[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Heeft tijdelijke oplossing| |
 |[De agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Automatisch beperkt| |
 |[Machtigingen voor de resource groep zijn niet toegepast op een beheerd exemplaar](#permissions-on-resource-group-not-applied-to-managed-instance)|Feb 2020|Heeft tijdelijke oplossing| |
 |[Beperking van hand matige failover via de portal voor failover-groepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing| |
@@ -103,6 +104,12 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 |Het terugzetten van een tijdgebonden data base van Bedrijfskritiek laag naar Algemeen laag mislukt als de bron database in-memory OLTP-objecten bevat.| |Opgelost|Okt 2019|
 |Database Mail functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding| |Opgelost|Okt 2019|
 |Inge sloten data bases worden niet ondersteund in een beheerd exemplaar| |Opgelost|Aug 2019|
+
+### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Hand matige back-up herstellen zonder CONTROLESOM kan mislukken
+
+In bepaalde omstandigheden kan hand matige back-up van data bases die zijn gemaakt op het beheerde exemplaar zonder CONTROLESOM, mogelijk niet worden hersteld. In dat geval moet u de back-up opnieuw herstellen totdat deze is voltooid.
+
+**Tijdelijke oplossing**: Maak hand matige back-ups van data bases op een beheerd exemplaar met controlesom ingeschakeld.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>De agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt
 
@@ -148,13 +155,13 @@ Bedrijfskritiek service-laag past in sommige gevallen [Maxi maal geheugen limiet
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is
 
-[De gebruiker mag een bestand dat niet leeg is, niet verwijderen](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)SQL Server/beheerd exemplaar. Als u probeert een niet-leeg gegevens bestand met behulp `ALTER DATABASE REMOVE FILE` van een instructie te `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` verwijderen, wordt de fout niet onmiddellijk geretourneerd. Het beheerde exemplaar zal blijven proberen het bestand te verwijderen en de bewerking kan niet worden uitgevoerd `Internal server error`na 30 min.
+[De gebruiker mag een bestand dat niet leeg is, niet verwijderen](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)SQL Server/beheerd exemplaar. Als u probeert een niet-leeg gegevens bestand met behulp van een instructie te verwijderen `ALTER DATABASE REMOVE FILE` , wordt de fout `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` niet onmiddellijk geretourneerd. Het beheerde exemplaar zal blijven proberen het bestand te verwijderen en de bewerking kan niet worden uitgevoerd na 30 min `Internal server error` .
 
-**Tijdelijke oplossing**: Verwijder de inhoud van het bestand `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` met behulp van de opdracht. Als dit het enige bestand in de bestands groep is, moet u gegevens verwijderen uit de tabel of partitie die aan deze bestands groep is gekoppeld voordat u het bestand verkleint en deze gegevens optioneel laadt in een andere tabel/partitie.
+**Tijdelijke oplossing**: Verwijder de inhoud van het bestand met behulp van de `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` opdracht. Als dit het enige bestand in de bestands groep is, moet u gegevens verwijderen uit de tabel of partitie die aan deze bestands groep is gekoppeld voordat u het bestand verkleint en deze gegevens optioneel laadt in een andere tabel/partitie.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door de huidige Data Base te herstellen
 
-Door `RESTORE` de doorlopende instructie, het migratie proces van de gegevens migratie service en de ingebouwde tijd bij het herstellen wordt de service tier of de grootte van het bestaande exemplaar bijgewerkt en er worden nieuwe instanties gemaakt totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
+Door de doorlopende `RESTORE` instructie, het migratie proces van de gegevens migratie service en de ingebouwde tijd bij het herstellen wordt de service tier of de grootte van het bestaande exemplaar bijgewerkt en er worden nieuwe instanties gemaakt totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
 
 **Tijdelijke oplossing**: wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
 
@@ -162,19 +169,19 @@ Door `RESTORE` de doorlopende instructie, het migratie proces van de gegevens mi
 
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) functie waarmee u kunt beperken dat de resources die aan de werk belasting van de gebruiker zijn toegewezen, een bepaalde werk belasting onjuist classificeert na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of de maximale opslag grootte voor instanties).
 
-**Tijdelijke oplossing**: `ALTER RESOURCE GOVERNOR RECONFIGURE` Voer regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
+**Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag
 
-Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het `service_broke_guid` beheerde exemplaar leidt ertoe dat de waarde van de weer gave [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
+Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het beheerde exemplaar leidt ertoe dat de `service_broke_guid` waarde van de weer gave [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
 
 **Tijdelijke oplossing:** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonification van Azure AD-aanmeldings typen wordt niet ondersteund
 
 Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van volgende Aad-principals wordt niet ondersteund:
--    Aliased AAD-gebruikers. In dit geval `15517`wordt de volgende fout geretourneerd.
-- AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval `15517` en `15406`worden geretourneerd.
+-    Aliased AAD-gebruikers. In dit geval wordt de volgende fout geretourneerd `15517` .
+- AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval en worden geretourneerd `15517` `15406` .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryde para meter wordt niet ondersteund in sp_send_db_mail
 
@@ -196,11 +203,11 @@ Wanneer een Data Base wordt hersteld op een beheerd exemplaar, wordt door de Res
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 
-De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan `tempdb`worden toegevoegd. `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd `tempdb` , en eventuele wijzigingen worden niet bewaard.
+De `tempdb` Data Base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan worden toegevoegd `tempdb` . `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd, en eventuele wijzigingen `tempdb` worden niet bewaard.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Opslag ruimte overschrijden met kleine database bestanden
 
-`CREATE DATABASE`, `ALTER DATABASE ADD FILE`en `RESTORE DATABASE` -instructies kunnen mislukken omdat het exemplaar de Azure Storage limiet kan bereiken.
+`CREATE DATABASE`, `ALTER DATABASE ADD FILE` en- `RESTORE DATABASE` instructies kunnen mislukken omdat het exemplaar de Azure Storage limiet kan bereiken.
 
 Elk Algemeen Managed instance heeft tot 35 TB aan opslag ruimte gereserveerd voor Azure Premium. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585483"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648109"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Uw GitHub-opslag plaats synchroniseren met de app-configuratie
 
@@ -20,7 +20,7 @@ Teams die hun bestaande broncode beheer procedures willen blijven gebruiken, kun
 &nbsp;&nbsp;&nbsp;&nbsp;• Het bijwerken van de configuratie zonder uw volledige app opnieuw te implementeren <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integratie met Services als Azure App Service en functions. 
 
-Een GitHub actions- [werk stroom](https://help.github.com/articles/about-github-actions#workflow) definieert een geautomatiseerd proces in een github-opslag plaats. Met de actie voor het *synchroniseren van Azure-app-configuratie* worden updates voor een app-configuratie-exemplaar geactiveerd wanneer er wijzigingen in de bron opslagplaats worden aangebracht. Er wordt een YAML-bestand (. yml) gebruikt dat `/.github/workflows/` is gevonden in het pad van uw opslag plaats om de stappen en para meters te definiëren. U kunt configuratie-updates activeren tijdens het pushen, reviseren of vertakking van app-configuratie bestanden, net als bij app-code.
+Een GitHub actions- [werk stroom](https://help.github.com/articles/about-github-actions#workflow) definieert een geautomatiseerd proces in een github-opslag plaats. Met de actie voor het *synchroniseren van Azure-app-configuratie* worden updates voor een app-configuratie-exemplaar geactiveerd wanneer er wijzigingen in de bron opslagplaats worden aangebracht. Er wordt een YAML-bestand (. yml) gebruikt dat is gevonden in het `/.github/workflows/` pad van uw opslag plaats om de stappen en para meters te definiëren. U kunt configuratie-updates activeren tijdens het pushen, reviseren of vertakking van app-configuratie bestanden, net als bij app-code.
 
 De GitHub- [documentatie](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) biedt uitgebreide weer gave van github-werk stromen en-acties. 
 
@@ -33,9 +33,9 @@ Als u deze GitHub actie wilt gaan gebruiken, gaat u naar uw opslag plaats en sel
 > ![Selecteer de synchronisatie actie voor de configuratie van de app](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>Configuratie bestanden na een push synchroniseren
-Met deze actie worden Azure-app configuratie bestanden gesynchroniseerd wanneer een wijziging naar `appsettings.json`wordt gepusht. Wanneer een ontwikkelaar een wijziging doorstuurt `appsettings.json`, wordt het app-configuratie-exemplaar met de nieuwe waarden bijgewerkt met de synchronisatie actie van de app-configuratie.
+Met deze actie worden Azure-app configuratie bestanden gesynchroniseerd wanneer een wijziging naar wordt gepusht `appsettings.json` . Wanneer een ontwikkelaar een wijziging doorstuurt `appsettings.json` , wordt het app-configuratie-exemplaar met de nieuwe waarden bijgewerkt met de synchronisatie actie van de app-configuratie.
 
-In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd `appsettings.json` *op* een *Push* die naar de *hoofd* vertakking bevat. De tweede sectie bevat een lijst met de taken die worden uitgevoerd zodra de actie wordt geactiveerd. Met deze actie worden de relevante bestanden gecontroleerd en wordt het app-configuratie-exemplaar bijgewerkt met behulp van de connection string opgeslagen als een geheim in de opslag plaats.  Zie [het artikel van github](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) over het maken en gebruiken van versleutelde geheimen voor meer informatie over het gebruik van geheimen in github.
+In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd *op* een *Push* die `appsettings.json` naar de *hoofd* vertakking bevat. De tweede sectie bevat een lijst met de taken die worden uitgevoerd zodra de actie wordt geactiveerd. Met deze actie worden de relevante bestanden gecontroleerd en wordt het app-configuratie-exemplaar bijgewerkt met behulp van de connection string opgeslagen als een geheim in de opslag plaats.  Zie [het artikel van github](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) over het maken en gebruiken van versleutelde geheimen voor meer informatie over het gebruik van geheimen in github.
 
 ```json
 on: 
@@ -61,10 +61,123 @@ jobs:
           separator: ':' 
 ```
 
-## <a name="use-a-dynamic-label-on-sync"></a>Een dynamisch label gebruiken bij synchronisatie
-Met de vorige actie wordt het app-configuratie `appsettings.json` -exemplaar bijgewerkt wanneer het wordt bijgewerkt. Met deze actie wordt een dynamisch label ingevoegd bij elke synchronisatie, zodat elke synchronisatie uniek kan worden geïdentificeerd en het toestaan van code wijzigingen aan configuratie wijzigingen wordt toegewezen.
+## <a name="use-strict-sync"></a>Strikte synchronisatie gebruiken
+Standaard wordt met de actie GitHub niet de strikte modus ingeschakeld, wat betekent dat de synchronisatie alleen sleutel waarden van het configuratie bestand toevoegt aan het app-configuratie-exemplaar (er worden geen sleutel-waardeparen verwijderd). Als u strikte modus inschakelt, worden sleutel-waardeparen die zich niet in het configuratie bestand bevinden, verwijderd uit het app-configuratie-exemplaar, zodat het overeenkomt met het configuratie bestand. Als u synchroniseert vanuit meerdere bronnen of Azure Key Vault met app-configuratie, wilt u verschillende voor voegsels of labels gebruiken met strikte synchronisatie om te voor komen dat configuratie-instellingen van andere bestanden worden gewist (Zie voor beelden hieronder). 
 
-In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd `appsettings.json` *op* een *Push* die naar de *hoofd* vertakking bevat. In het tweede gedeelte wordt een taak uitgevoerd waarmee een uniek label voor de configuratie-update wordt gemaakt op basis van de commit-hash. De taak werkt vervolgens het app-configuratie-exemplaar bij met de nieuwe waarden en het unieke label voor deze update.
+```json
+on: 
+  push: 
+    branches: 
+      - 'master' 
+    paths: 
+      - 'appsettings.json' 
+ 
+jobs: 
+  syncconfig: 
+    runs-on: ubuntu-latest 
+    steps: 
+      # checkout done so that files in the repo can be read by the sync 
+      - uses: actions/checkout@v1 
+      - uses: azure/appconfiguration-sync@v1 
+        with: 
+          configurationFile: 'appsettings.json' 
+          format: 'json' 
+          # Replace <ConnectionString> with the name of the secret in your 
+          # repository 
+          connectionString: ${{ secrets.<ConnectionString> }}  
+          separator: ':' 
+          label: 'Label' 
+          prefix: 'Prefix:' 
+          strict: true 
+```
+## <a name="sync-multiple-files-in-one-action"></a>Meerdere bestanden in één actie synchroniseren 
+
+Als uw configuratie zich in meerdere bestanden bevindt, kunt u het onderstaande patroon gebruiken om een synchronisatie te activeren wanneer een bestand wordt gewijzigd. Dit patroon maakt gebruik van de Globs-bibliotheekhttps://www.npmjs.com/package/glob 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'appsettings2.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: '{appsettings.json,appsettings2.json}'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+```
+
+## <a name="sync-by-prefix-or-label"></a>Synchroniseren op voor voegsel of label
+Als u voor voegsels of labels opgeeft in uw synchronisatie actie, wordt alleen die specifieke set gesynchroniseerd. Dit is belang rijk voor het gebruik van strikte synchronisatie met meerdere bestanden. Afhankelijk van hoe de configuratie is ingesteld, kan een voor voegsel of een label aan elk bestand worden gekoppeld, waarna elk voor voegsel of label afzonderlijk kan worden gesynchroniseerd, zodat er niets wordt overschreven. Doorgaans worden voor voegsels gebruikt voor verschillende toepassingen of services en labels worden gebruikt voor verschillende omgevingen. 
+
+Synchroniseren op voor voegsel: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          prefix: 'Prefix::'
+```
+
+Synchroniseren op label: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          label: 'Label'
+
+```
+
+## <a name="use-a-dynamic-label-on-sync"></a>Een dynamisch label gebruiken bij synchronisatie
+Met de volgende actie wordt een dynamisch label voor elke synchronisatie ingevoegd, zodat elke synchronisatie uniek kan worden geïdentificeerd en het mogelijk is dat code wijzigingen worden toegewezen aan configuratie wijzigingen.
+
+In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd *op* een *Push* die `appsettings.json` naar de *hoofd* vertakking bevat. In het tweede gedeelte wordt een taak uitgevoerd waarmee een uniek label voor de configuratie-update wordt gemaakt op basis van de commit-hash. De taak werkt vervolgens het app-configuratie-exemplaar bij met de nieuwe waarden en het unieke label voor deze update.
 
 ```json
 on: 
@@ -95,36 +208,45 @@ jobs:
           label: ${{ steps.determine_label.outputs.LABEL }} 
 ```
 
-## <a name="use-strict-sync"></a>Strikte synchronisatie gebruiken
-Als strikte modus is ingeschakeld, zorgt de synchronisatie ervoor dat het app-configuratie-exemplaar overeenkomt met het configuratie bestand voor het opgegeven voor voegsel en label. Sleutel-waardeparen met hetzelfde voor voegsel en label die zich niet in het configuratie bestand bevinden, worden verwijderd. 
- 
-Als de strikte modus niet is ingeschakeld, worden door de synchronisatie alleen de sleutel waarden van het configuratie bestand ingesteld. Er worden geen sleutel-waardeparen verwijderd. 
+## <a name="use-azure-key-vault-with-github-action"></a>Azure Key Vault gebruiken met actie GitHub
+Ontwikkel aars die gebruikmaken van Azure Key Vault met AppConfiguration, moeten twee afzonderlijke bestanden gebruiken, meestal een ' appSettings. json ' en een secretreferences. json. De secretreferences. json bevat de URL naar het sleutel kluis geheim.
+
+{"mySecret": "{ \" URI \" : \" https://myKeyVault.vault.azure.net/secrets/mySecret "} "}
+
+De actie GitHub kan vervolgens worden geconfigureerd om een strikte synchronisatie uit te voeren op het bestand appSettings. json, gevolgd door een niet-strikte synchronisatie op secretreferences. json. In het volgende voor beeld wordt een synchronisatie geactiveerd wanneer een van de bestanden wordt bijgewerkt:
 
 ```json
-on: 
-  push: 
-    branches: 
-      - 'master' 
-    paths: 
-      - 'appsettings.json' 
- 
-jobs: 
-  syncconfig: 
-    runs-on: ubuntu-latest 
-    steps: 
-      # checkout done so that files in the repo can be read by the sync 
-      - uses: actions/checkout@v1 
-      - uses: azure/appconfiguration-sync@v1 
-        with: 
-          configurationFile: 'appsettings.json' 
-          format: 'json' 
-          # Replace <ConnectionString> with the name of the secret in your 
-          # repository 
-          connectionString: ${{ secrets.<ConnectionString> }}  
-          separator: ':' 
-          label: 'Label' 
-          prefix: 'Prefix:' 
-          strict: true 
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'secretreferences.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          strict: true
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'secretreferences.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          contentType: 'application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8'
+
 ```
 
 ## <a name="use-max-depth-to-limit-github-action"></a>Maximale diepte gebruiken om de GitHub-actie te beperken

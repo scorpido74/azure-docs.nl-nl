@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870594"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655917"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT Service Management-connector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](../../azure-monitor/platform/itsmc-overview.md)voor meer informatie over ITSMC.
@@ -88,7 +88,7 @@ Als u de on-premises Service Manager wilt verbinden met ITSMC in azure, heeft mi
 Ga als volgt te werk om de ITSM-web-app in te stellen voor uw Service Manager:
 
 - **De web-app implementeren** : implementeer de web-app, stel de eigenschappen in en verificatie met Azure AD. U kunt de web-app implementeren met behulp van het [geautomatiseerde script](../../azure-monitor/platform/itsmc-service-manager-script.md) dat micro soft u heeft verschaft.
-- **Configureer de hybride verbinding** - [deze verbinding](#configure-the-hybrid-connection)hand matig configureren.
+- **De hybride verbinding configureren**  -  [Deze verbinding](#configure-the-hybrid-connection)hand matig configureren.
 
 #### <a name="deploy-the-web-app"></a>De web-app implementeren
 Gebruik het geautomatiseerde [script](../../azure-monitor/platform/itsmc-service-manager-script.md) om de web-app te implementeren, de eigenschappen in te stellen en te verifiëren met Azure AD.
@@ -108,8 +108,8 @@ Sla de waarden op. u gebruikt deze wanneer u een verbinding maakt met ITSMC.
 
 **De installatie van de web-app controleren**
 
-1. Ga naar **Azure Portal** > -**resources**.
-2. Selecteer de web-app en klik op **instellingen** > **Toepassings instellingen**.
+1. Ga naar **Azure Portal**-  >  **resources**.
+2. Selecteer de web-app en klik op **instellingen**  >  **Toepassings instellingen**.
 3. Controleer de informatie over het Service Manager exemplaar dat u hebt gegeven op het moment van de implementatie van de app via het script.
 
 ### <a name="configure-the-hybrid-connection"></a>De hybride verbinding configureren
@@ -117,7 +117,7 @@ Sla de waarden op. u gebruikt deze wanneer u een verbinding maakt met ITSMC.
 Gebruik de volgende procedure om de hybride verbinding te configureren die het Service Manager-exemplaar met ITSMC in azure verbindt.
 
 1. Zoek de Service Manager web-app onder **Azure-resources**.
-2. Klik op **instellingen** > **netwerken**.
+2. Klik op **instellingen**  >  **netwerken**.
 3. Klik onder **hybride verbindingen**op **uw hybride verbindings eindpunten configureren**.
 
     ![Netwerk voor hybride verbindingen](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
@@ -201,8 +201,10 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 > Klik aan het einde op bijwerken.
 > 2) **We raden u aan een interne procedure in te stellen om ervoor te zorgen dat de verbinding actief blijft:** Volgens de levens duur van het vernieuwings token voor het vernieuwen van het token. Zorg ervoor dat de volgende bewerkingen voorafgaand aan het vernieuwings token een verwachte verloop tijd (paar dagen voordat de levens duur van het vernieuwings token verloopt, wordt aangeraden):
 >
->>  1) [Een hand matig synchronisatie proces voor de configuratie van de ITSM-connector volt ooien](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) Intrekken naar het oude vernieuwings token, omdat dit niet wordt aangeraden om oude sleutels uit veiligheids overwegingen te hand haven. Zoek in de Blade ServiceNow naar systeem-OAuth dan Selecteer tokens beheren. Kies het oude token in de lijst op basis van de OAuth-naam en de verval datum. Klik op toegang intrekken en vervolgens op intrekken.
+> 1. [Een hand matig synchronisatie proces voor de configuratie van de ITSM-connector volt ooien](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. Intrekken naar het oude vernieuwings token, omdat dit niet wordt aangeraden om oude sleutels uit veiligheids overwegingen te hand haven. Zoek in de Blade ServiceNow naar systeem-OAuth dan Selecteer tokens beheren. Kies het oude token in de lijst op basis van de OAuth-naam en de verval datum.
+> ![Definitie van het winter-systeem](media/itsmc-connections/snow-system-oauth.png)
+> 3. Klik op toegang intrekken en vervolgens op intrekken.
 
 - Installeer de gebruikers-app voor micro soft Log Analytics Integration (ServiceNow-app). [Meer informatie](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Maak een gebruikersrol voor integratie voor de app van de gebruiker geïnstalleerd. [Hier](#create-integration-user-role-in-servicenow-app)vindt u informatie over het maken van de gebruikersrol integratie.
@@ -398,8 +400,8 @@ Meer informatie: [ITSM-werk items maken op basis van Azure-waarschuwingen](../..
 Als u de client-ID/sleutel voor Cher well wilt genereren, gebruikt u de volgende procedure:
 
 1. Meld u als beheerder aan bij uw Cher well-exemplaar.
-2. Klik op **beveiligings** > **bewerking rest API client instellingen**.
-3. Selecteer **Nieuw client** > **geheim**maken.
+2. Klik op **beveiligings**  >  **bewerking rest API client instellingen**.
+3. Selecteer **Nieuw client**  >  **geheim**maken.
 
     ![Cher well-gebruikers-id](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

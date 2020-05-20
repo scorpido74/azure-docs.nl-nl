@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647719"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB-factuur
 
@@ -181,7 +181,7 @@ In de onderstaande afbeelding ziet u de wijzigingen in de totale ingerichte door
 
 De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) wordt als volgt berekend:
 
-|**Uren**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
+|**Tijden**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20.000 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Doorvoer factuur voor twee extra regio's: VS-Oost, Europa-noord (alle regio's zijn schrijfbaar)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
@@ -208,8 +208,8 @@ Met Azure Cosmos DB gratis laag krijgt u de eerste 400 RU/s en 5 GB aan opslag r
 - Nu gaan we in hetzelfde account een andere data base of container toevoegen met 1000 RU/s en 10 GB aan opslag ruimte.
 - Uw factuur toont nu kosten voor de 1000 RU/s en 10 GB aan opslag ruimte. 
 
-### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Voor beeld van facturering: container of Data Base met automatisch schalen door Voer
-- Stel dat u in een gratis laag account een Data Base of container maakt waarvoor automatisch schalen is ingeschakeld, met een maximum van RU/s van 4000 RU/s. Deze resource wordt automatisch geschaald tussen 400 RU/s-4000 RU/s. 
+### <a name="billing-example---container-with-autoscale-throughput"></a>Voor beeld van facturering-container met automatisch schalen door Voer
+- Stel dat u een gratis laag account hebt en dat er een container wordt gemaakt waarvoor automatisch schalen is ingeschakeld, met een maximum van RU/s 4000 RU/s. Deze resource wordt automatisch geschaald tussen 400 RU/s-4000 RU/s. 
 - Stel dat in uur 1 tot en met uur 10 de resource ten minste 400 RU/s is. Tijdens het uur 11 wordt de resource geschaald tot 1000 RU/s en wordt deze in het hele uur opnieuw ingesteld op 400 RU/s.
 - In uur 1 tot en met 10 wordt u gefactureerd $0 voor door Voer, omdat de 400 RU/s onder de gratis laag vallen. 
 - In uur 11 wordt u gefactureerd voor een effectief 1000 RU/s-400 RU/s = 600 RU/s, omdat dit de hoogste RU/s in het uur is. Dit zijn zes eenheden van 100 RU/s voor het uur, waardoor de totale doorvoer kosten voor het uur 6 eenheden * $0,012 = $0,072 zijn. 
@@ -246,7 +246,7 @@ Laten we eens kijken naar een ander voor beeld, waar u proactief uw factuur kunt
 
 |**Doorvoer kosten** | | | |
 |----|----|----|----|
-|Type bewerking| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
+|Bewerkings type| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
 |Schrijven| 100 | 5 | 500|
 |Lezen| 400| 1| 400|
 

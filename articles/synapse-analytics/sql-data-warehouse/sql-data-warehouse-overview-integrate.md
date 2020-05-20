@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633130"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653723"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Andere services integreren met een SQL Analytics-Data Warehouse
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>Andere services integreren met een Synapse SQL-pool (Data Warehouse)
 
-Met de functie voor SQL Analytics in azure Synapse Analytics kunnen gebruikers integreren met veel van de andere services in Azure. Met behulp van SQL Analytics kunt u een Data Warehouse maken via de resource van de SQL-groep. Dit kan vervolgens gebruikmaken van verschillende extra services, waaronder:
+De functionaliteit van de SQL-groep in azure Synapse Analytics stelt gebruikers in staat te integreren met veel van de andere services in Azure. Met Synapse SQL kunt u een Data Warehouse maken met behulp van de resource van de SQL-groep, waarmee vervolgens verschillende extra services kunnen worden gebruikt, waarvan sommige de volgende zijn:
 
 * Power BI
 * Azure Data Factory
@@ -31,7 +31,7 @@ Raadpleeg het artikel [Integration partners](sql-data-warehouse-partner-data-int
 
 ## <a name="power-bi"></a>Power BI
 
-Met Power BI-integratie kunt u de reken kracht van een Data Warehouse combi neren met de dynamische rapportage en visualisatie van Power BI. Power BI-integratie bevat momenteel:
+Met Power BI-integratie kunt u de reken kracht van een Data Warehouse combi neren met de dynamische rapportage en visualisatie van Power BI. De Power BI-integratie bevat momenteel:
 
 * **Direct Connect**: een geavanceerdere verbinding met logische pushdown voor een Data Warehouse dat is ingericht met een SQL-pool. Pushdown biedt snellere analyse op grotere schaal.
 * **Open in Power bi**: met de knop openen in Power bi worden instantie gegevens door gegeven aan Power BI voor een vereenvoudigde manier om verbinding te maken.

@@ -8,13 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: has-adal-ref
-ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653369"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -46,7 +45,7 @@ Er worden twee sleutels beschikbaar gemaakt, die beide gelijktijdig geldig zijn 
 
 De SDK heeft ingebouwde ondersteuning voor verificatie met account sleutels; u hoeft alleen de eigenschap AccountKey in te stellen voor uw cloudSession-object.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -99,7 +98,7 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
     1.  Registreer uw toepassing in azure AD als **systeem eigen toepassing**. Als onderdeel van de registratie moet u bepalen of uw toepassing multi tenant moet zijn of niet, en de omleidings-Url's opgeven die voor uw toepassing zijn toegestaan.
         1.  Overschakelen naar het tabblad **API-machtigingen**
         2.  Selecteer **een machtiging toevoegen**
-            1.  **Resource provider voor gemengde realiteit** selecteren onder **api's mijn organisatie gebruikt** tabblad
+            1.  Selecteer **micro soft Mixed Reality** onder **api's mijn organisatie gebruikt** tabblad
             2.  **Gedelegeerde machtigingen** selecteren
             3.  Schakel het selectie vakje in voor **mixedreality. signin** onder **mixedreality**
             4.  **Machtigingen toevoegen** selecteren
@@ -112,16 +111,16 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
             2.  Voer in het veld **selecteren** de naam in van de gebruiker (s), groep (en) en/of toepassing (en) waaraan u toegang wilt toewijzen.
             3.  Druk op **Opslaan**.
 2. In uw code:
-    1.  Zorg ervoor dat u de **toepassings-id** en **omleidings-URI** van uw eigen Azure AD-toepassing gebruikt als de **client-id** en **RedirectUri** para meters in ADAL
+    1.  Zorg ervoor dat u de **toepassings-id** en **omleidings-URI** van uw eigen Azure AD-toepassing gebruikt als de **client-id** en **RedirectUri** para meters in MSAL
     2.  Stel de Tenant gegevens in:
         1.  Als uw toepassing **alleen mijn organisatie**ondersteunt, vervangt u deze waarde door uw **Tenant-id** of **Tenant naam** (bijvoorbeeld contoso.Microsoft.com)
         2.  Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door **organisaties**
         3.  Als uw toepassing **alle Microsoft-account gebruikers**ondersteunt, vervangt u deze waarde door **common**
-    3.  Stel op uw token aanvraag de **resource** in op 'https://sts.mixedreality.azure.com'. Deze ' resource ' geeft aan Azure AD door dat uw toepassing een token aanvraagt voor de Azure spatiale ankers-service.
+    3.  Stel op uw token aanvraag het **bereik** in op ' https://sts.mixedreality.azure.com//.default '. Met dit bereik wordt aan Azure AD aangegeven dat uw toepassing een token aanvraagt voor de STS (Mixed Reality Security Token Service).
 
 Met dat moet uw toepassing MSAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
@@ -185,16 +184,16 @@ Het Azure AD-toegangs token wordt opgehaald met behulp van de [MSAL-bibliotheek]
         2.  Voer in het veld **selecteren** de naam in van de toepassing (en) die u hebt gemaakt en waaraan u toegang wilt toewijzen. Als u wilt dat de gebruikers van uw app verschillende rollen hebben voor het ruimtelijke-ankers account, moet u meerdere toepassingen in azure AD registreren en aan elke afzonderlijke rol toewijzen. Implementeer vervolgens uw autorisatie logica om de juiste rol voor uw gebruikers te gebruiken.
     3.  Druk op **Opslaan**.
 2.  In uw code (Opmerking: u kunt het service voorbeeld gebruiken dat is opgenomen in GitHub):
-    1.  Zorg ervoor dat u de toepassings-ID, het toepassings geheim en de omleidings-URI van uw eigen Azure AD-toepassing gebruikt als de client-ID, het geheim en de RedirectUri-para meters in ADAL
-    2.  Stel de Tenant-ID in op uw eigen AAAzure Tenant-ID toevoegen in de para meter Authority in ADAL
-    3.  Stel op uw token aanvraag de **resource** in ophttps://sts.mixedreality.azure.com
+    1.  Zorg ervoor dat u de toepassings-ID, het toepassings geheim en de omleidings-URI van uw eigen Azure AD-toepassing gebruikt als de client-ID, het geheim en de RedirectUri-para meters in MSAL
+    2.  Stel de Tenant-ID in op uw eigen Azure ADD Tenant-ID in de para meter Authority in MSAL.
+    3.  Stel op uw token aanvraag het **bereik** in op https://sts.mixedreality.azure.com//.default
 
 Met dat kan uw back-end-service een Azure AD-Token ophalen. Vervolgens kan het worden uitgewisseld voor een MR-token dat wordt teruggestuurd naar de client. Het gebruik van een Azure AD-token om een MR-token op te halen, wordt uitgevoerd via een REST-aanroep. Hier volgt een voor beeld van een oproep:
 
 ```
-GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-Host: mrc-auth-prod.trafficmanager.net
+Host: sts.mixedreality.azure.com
 Connection: Keep-Alive
 
 HTTP/1.1 200 OK
@@ -206,13 +205,13 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Als de autorisatie-header er als volgt uitziet:`Bearer <accoundId>:<accountKey>`
+Als de autorisatie-header er als volgt uitziet:`Bearer <Azure_AD_token>`
 
 En het antwoord bevat het MR-token in tekst zonder opmaak.
 
 Dat MR-token vervolgens wordt geretourneerd naar de client. Uw client-app kan deze vervolgens instellen als toegangs token in de Cloud sessie configuratie.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";

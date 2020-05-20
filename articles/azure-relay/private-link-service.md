@@ -4,15 +4,15 @@ description: Meer informatie over het integreren van Azure Relay met Azure Priva
 services: service-bus-relay
 author: spelluru
 ms.author: spelluru
-ms.date: 05/07/2020
+ms.date: 05/13/2020
 ms.service: service-bus-relay
 ms.topic: article
-ms.openlocfilehash: ad57ea4ddeab2fb2af0da68d199445d9737a67cd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210618"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657551"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
 Met Azure **Private Link service** kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Relay, Azure service bus, Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Zie [Wat is Azure private link (preview)?](../private-link/private-link-overview.md) voor meer informatie.
@@ -43,7 +43,7 @@ Uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele n
 ### <a name="steps"></a>Stappen
 Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-create-namespace-portal.md)voor stapsgewijze instructies voor het maken van een nieuwe Azure relay naam ruimte en entiteiten hierin.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **relays**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.

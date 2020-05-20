@@ -2,13 +2,13 @@
 title: Uw app plannen-LUIS
 description: Betrek relevante app-intenties en entiteiten en maak vervolgens uw toepassings abonnementen in Language Understanding intelligent Services (LUIS).
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/14/2020
+ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382310"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654123"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Uw LUIS-app-schema plannen met onderwerp domein en gegevens extractie
 
@@ -25,14 +25,14 @@ Een LUIS-app wordt gecentreerd rond een onderwerps domein. U kunt bijvoorbeeld e
 
 Denk na over de [intenties](luis-concept-intent.md) die belang rijk zijn voor de taak van uw toepassing.
 
-Laten we het voor beeld van een reis-app bekijken, met functies voor het boeken van een vlucht en het weer geven van de gebruikers bestemming. U kunt de `BookFlight` en `GetWeather` -intentie definiëren voor deze acties.
+Laten we het voor beeld van een reis-app bekijken, met functies voor het boeken van een vlucht en het weer geven van de gebruikers bestemming. U kunt de `BookFlight` en- `GetWeather` intentie definiëren voor deze acties.
 
-In een complexere app met meer functies hebt u meer intenties en moet u ze zorgvuldig definiëren, zodat de intenties niet te specifiek zijn. Het `BookFlight` `BookHotel` kan bijvoorbeeld nodig zijn om afzonderlijke intenties te maken, maar `BookInternationalFlight` dit `BookDomesticFlight` kan te vergelijkbaar zijn.
+In een complexere app met meer functies hebt u meer intenties en moet u ze zorgvuldig definiëren, zodat de intenties niet te specifiek zijn. Het kan bijvoorbeeld `BookFlight` `BookHotel` nodig zijn om afzonderlijke intenties te maken, maar `BookInternationalFlight` dit `BookDomesticFlight` kan te vergelijkbaar zijn.
 
 > [!NOTE]
 > Het is een best practice voor het gebruik van slechts zoveel intenties als u nodig hebt om de functies van uw app uit te voeren. Als u te veel intenties definieert, wordt het moeilijker voor LUIS om uitingen correct te classificeren. Als u te weinig definieert, zijn ze mogelijk zo algemeen dat ze elkaar overlappen.
 
-Als u geen algemene gebruikers intentie wilt identificeren, voegt u alle voor beeld-gebruikers uitingen toe `None` aan de bedoeling. Als uw app groeit tot meer intenties, kunt u deze later maken.
+Als u geen algemene gebruikers intentie wilt identificeren, voegt u alle voor beeld-gebruikers uitingen toe aan de `None` bedoeling. Als uw app groeit tot meer intenties, kunt u deze later maken.
 
 ## <a name="create-example-utterances-for-each-intent"></a>Voor beeld uitingen maken voor elke intentie
 
@@ -48,6 +48,30 @@ Wanneer u bepaalt welke entiteiten in uw app moeten worden gebruikt, moet u er o
 
 > [!TIP]
 > LUIS biedt [vooraf gemaakte entiteiten](luis-prebuilt-entities.md) voor veelvoorkomende, gespreks gebruikers scenario's. Overweeg het gebruik van vooraf gemaakte entiteiten als uitgangs punt voor de ontwikkeling van uw toepassing.
+
+## <a name="resolution-with-intent-or-entity"></a>Oplossing met intentie of entiteit?
+
+In veel gevallen, met name bij het werken met natuurlijk gesprek, bieden gebruikers een utterance die meer dan een functie of intentie kan bevatten. Om dit op te lossen, moet u weten dat de weer gave van de uitvoer kan worden uitgevoerd in zowel de intenties als de entiteiten. Deze representatie moet worden toewijst aan de acties van uw client toepassing en hoeft niet te worden beperkt tot de intenties.
+
+**Int-vorderingen-ties** is het concept dat acties (meestal begrepen als intenties) ook als entiteiten kunnen worden vastgelegd en in dit formulier in de uitvoer-JSON kunnen worden opgenomen, waar u het kunt toewijzen aan een specifieke actie. _Negatie_ is een gemeen schappelijk gebruik om deze afhankelijkheid te benutten voor zowel de intentie als de entiteit voor volledige extractie.
+
+Houd rekening met de volgende twee uitingen die de keuze van woorden zeer dicht in overweging nemen, maar die verschillende resultaten hebben:
+
+|Utterance|
+|--|
+|`Please schedule my flight from Cairo to Seattle`|
+|`Cancel my flight from Cairo to Seattle`|
+
+In plaats van twee afzonderlijke intenties te maken, maakt u één intentie met een `FlightAction` machine learning-entiteit. De machine learning entiteit moet de details van de actie extra heren voor zowel een planning als een annulerings aanvraag, evenals een oorsprong of bestemmings locatie.
+
+De `FlightAction` entiteit zou worden gestructureerd in het volgende suedo-schema van machine learning entiteit en subentiteiten:
+
+* FlightAction
+    * Actie
+    * Oorsprong
+    * Doel
+
+Om het uitpakken van functies toe te voegen aan de subentiteiten. U kiest uw functies op basis van de woorden lijst die u verwacht te zien in de uitingen van de gebruiker en de waarden die u in het Voorspellings antwoord wilt ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

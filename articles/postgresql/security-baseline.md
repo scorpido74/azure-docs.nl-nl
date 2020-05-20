@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183157"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655750"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL één server
 
@@ -477,7 +477,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -906,7 +906,7 @@ Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
-**Hulp**: Azure database for postgresql server ondersteunt Azure Active Directory-verificatie (in Preview) voor toegang tot data bases.  Tijdens het maken van de Azure Database for PostgreSQL-server geeft u referenties op voor een beheerder. Deze beheerder kan worden gebruikt om extra database gebruikers te maken.  
+**Hulp**: Azure database for postgresql server ondersteunt Azure Active Directory-verificatie voor toegang tot data bases.  Tijdens het maken van de Azure Database for PostgreSQL-server geeft u referenties op voor een beheerder. Deze beheerder kan worden gebruikt om extra database gebruikers te maken.  
 
 Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service wordt gebruikt om toegang te krijgen tot uw Azure Database for PostgreSQL server, gebruikt u Managed Service Identity in combi natie met Azure Key Vault om referenties op te slaan en op te halen voor Azure Database for PostgreSQL-server. Zorg ervoor Key Vault zacht verwijderen is ingeschakeld.
 

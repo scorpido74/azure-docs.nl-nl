@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77581834"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652026"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-notebooks gebruiken om te zoeken naar beveiligings Risico's
 
@@ -60,7 +60,7 @@ U kunt een notitie blok direct vanuit Azure Sentinel uitvoeren of alle Azure Sen
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Een notitie blok uitvoeren vanuit Azure Sentinel
  
-1. Ga vanuit het Azure Portal naar **Azure Sentinel** > **Threat Management** > -**notebooks**, waar u notitie blokken kunt zien die Azure Sentinel biedt. 
+1. Ga vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**  >  -**notebooks**, waar u notitie blokken kunt zien die Azure Sentinel biedt. 
 
 2. Selecteer afzonderlijke notitie blokken om de bijbehorende beschrijvingen, vereiste gegevens typen en gegevens bronnen te lezen. Bijvoorbeeld:
     
@@ -73,7 +73,7 @@ U kunt een notitie blok direct vanuit Azure Sentinel uitvoeren of alle Azure Sen
 
 Met deze procedure maakt u een Azure Notebooks project voor u, dat de Azure Sentinel-notebooks bevat. U kunt de notitie blokken vervolgens uitvoeren als-is of wijzigingen aanbrengen en vervolgens uitvoeren.
 
-1. Navigeer vanuit het Azure Portal naar **Azure Sentinel** > **Threat Management** > -**notebooks** en selecteer **notebooks klonen** in de opdracht balk:
+1. Navigeer vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**-  >  **notebooks** en selecteer **notebooks klonen** in de opdracht balk:
   
     > [!div class="mx-imgBorder"]
     >![Optie notebooks klonen](./media/notebooks/sentinel-azure-clone-notebooks.png)
@@ -115,17 +115,17 @@ Elk notebook begeleidt u stapsgewijs door de stappen voor het uitvoeren van een 
 
 3. Selecteer een notitie blok om het te openen.
     
-    De eerste keer dat u een notitie blok opent, wordt u mogelijk gevraagd om een versie van de kernel te selecteren. Als u niet wordt gevraagd, selecteert u **de kernel-versie van** >  kernel**Change kernel**en selecteert u vervolgens een versie die ten minste 3,6 is. De geselecteerde versie van de kernel wordt weer gegeven in de rechter bovenhoek van het notitieblok venster:
+    De eerste keer dat u een notitie blok opent, wordt u mogelijk gevraagd om een versie van de kernel te selecteren. Als u niet wordt gevraagd, selecteert u **de kernel-versie van kernel**  >   **Change kernel**en selecteert u vervolgens een versie die ten minste 3,6 is. De geselecteerde versie van de kernel wordt weer gegeven in de rechter bovenhoek van het notitieblok venster:
     
    ![notitie Blok selecteren](./media/notebooks/sentinel-select-kernel.png)
 
-4. Voordat u wijzigingen aanbrengt in een notitie blok dat u hebt gedownload, is het een goed idee om een kopie van het oorspronkelijke notitie blok te maken en te werken aan de kopie. Hiertoe selecteert u **bestand** > **een kopie maken**. Door aan de slag te gaan, kunt u in toekomstige versies van notitie blokken veilig bijwerken zonder uw gegevens te overschrijven.
+4. Voordat u wijzigingen aanbrengt in een notitie blok dat u hebt gedownload, is het een goed idee om een kopie van het oorspronkelijke notitie blok te maken en te werken aan de kopie. Hiertoe selecteert u **bestand**  >  **een kopie maken**. Door aan de slag te gaan, kunt u in toekomstige versies van notitie blokken veilig bijwerken zonder uw gegevens te overschrijven.
     
     U bent nu klaar om het geselecteerde notitie blok uit te voeren of te bewerken.
 
 Vereisten
 
-- Voor een snelle inleiding op het uitvoeren van query's in azure Sentinel, kijkt u naar de [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) -notebook in de hoofdmap van de map met **notitie blokken** . 
+- Voor een snelle inleiding op het uitvoeren van query's in azure Sentinel, kijkt u naar de [GetStarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) -notebook in de hoofdmap van de map met **notitie blokken** . 
 
 - U vindt aanvullende voor beelden van notitie blokken in de submap voor **beeld-notebooks** . Deze voorbeeld notitieblokken zijn met gegevens opgeslagen, zodat de beoogde uitvoer gemakkelijker te zien is. U wordt aangeraden deze notitie blokken weer te geven in [nbviewer](https://nbviewer.jupyter.org/). 
 

@@ -1,29 +1,28 @@
 ---
-title: Advies Services voor Microsoft AppSource en Azure Marketplace
-description: In dit artikel worden de geschiktheids criteria en de publicatie vereisten voor nieuwe consulting-service aanbiedingen in Microsoft AppSource en Azure Marketplace beschreven.
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Consulting Services in micro soft Commercial Marketplace
+description: In dit artikel worden de geschiktheids criteria en de publicatie vereisten beschreven voor nieuwe aanbiedingen voor advies Services in Microsoft AppSource en Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: e5f22a681a9a5cbed4eceea2f70faa1cb21c07bc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994846"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658085"
 ---
-# <a name="consulting-services-for-microsoft-appsource-and-azure-marketplace"></a>Advies Services voor Microsoft AppSource en Azure Marketplace
+# <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
-Microsoft AppSource en Azure Marketplace Consulting Services bieden micro soft System-Integrator-partners het voor deel van hun klanten te koppelen aan services die hun gebruik van Azure ondersteunen en uitbreiden. Deze Consulting Services helpen klanten bij het beoordelen, evalueren en implementeren van de bedrijfs oplossingen die de doel stellingen en doel stellingen van uw bedrijf verder verbeteren.  
+In dit artikel worden de criteria en vereisten beschreven voor het publiceren van nieuwe aanbiedingen voor advies Services naar de commerciële Marketplace. Met de aanbiedingen voor advies Services kunnen micro soft System-Integrator-partners het voor deel van hun klanten verbinden met services die hun gebruik van Azure ondersteunen en uitbreiden. Deze Consulting Services helpen klanten bij het beoordelen, evalueren en implementeren van de bedrijfs oplossingen die de doel stellingen en doel stellingen van uw bedrijf verder verbeteren.  
 
 Aanbiedingen voor Consulting-Services zijn klant gerichte afspraken. Uitgevers hebben de mogelijkheid om het type vermelding, de scope, de duur en de prijs structuur te bepalen (vaste prijs of gratis). Aanbiedingen hebben een gedefinieerde agenda voor producten aan de klant. Leads worden ontvangen via een melding in de CRM-systemen van partners, en partners hebben tot 48 uur gereageerd op klanten.
 
 ## <a name="compare-consulting-services"></a>Consulting Services vergelijken
 
-De Marketplace-winkel is afgestemd op doel groepen en Cloud producten om klanten te helpen vinden wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. De volgende tabel bevat een overzicht van de volgende opties:
+De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. De volgende tabel bevat een overzicht van de volgende opties:
 
 |         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
@@ -96,14 +95,6 @@ Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 
 
 Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](https://docs.microsoft.com/azure/marketplace/become-publisher)voor een volledige controle lijst met registratie vereisten. 
 
-<!---
-**What to expect after registration**
-The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions.
-
->[!Note]
->Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types.
---->
-
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatie artefacten voorbereiden
 Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden. 
 
@@ -171,7 +162,7 @@ Nadat het team voor inhouds beoordeling uw aanbiedings beschrijvingen heeft geco
 
 |Type aanbieding  |Vereist |Aanbevolen  |
 |---------|---------|---------|
-|**Beoordeling**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en voeg het product uit dat door de klant kan worden verwacht.      |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
+|**Onderzoek**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en voeg het product uit dat door de klant kan worden verwacht.      |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Houd er rekening mee dat er persoonlijke *informatie* moet worden geleverd. Als u een virtuele service levert, kiest u een ander type aanbieding.    |  Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.       |
 |**Implementatie**    |  Neem een gedetailleerde agenda op voor implementaties met meerdere dagen of meerdere weken en verdeel de technische wijzigingen, technische artefacten of andere artefacten die een klant kan verwachten als resultaat van de betrokkenheid.       |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
 |**Testen van het concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid.     | Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.        |
@@ -181,12 +172,12 @@ Nadat het team voor inhouds beoordeling uw aanbiedings beschrijvingen heeft geco
 Binnen het partner centrum kunt u opmaak toevoegen aan uw vermelding met behulp van de [prijs verlaging](/contribute/markdown-reference), een licht gewicht ontwerp taal waarmee u uw vermelding kunt toevoegen.
 
 Hier volgen enkele kortings tips:
-* Voor *cursieve* opmaak voegt u een asterisk (\*), zonder spatie, toe aan het begin en het einde van een woord of reeks woorden (Typ \*bijvoorbeeld content * om een woord als *inhoud*op te maken). Maak de *samen vatting* van uw aanbieding cursief.
+* Voor *cursieve* opmaak voegt u een asterisk ( \* ), zonder spatie, toe aan het begin en het einde van een woord of reeks woorden (Typ bijvoorbeeld \* content * om een woord als *inhoud*op te maken). Maak de *samen vatting* van uw aanbieding cursief.
 * Een regel afbreeking invoegen na een dubbele punt (:) om een lijst met opsommings tekens of genummerde lijsten weer te geven.
-* Als u een lijst met opsommings tekens wilt maken,\*typt u een asterisk (), gevolgd door een spatie, voor elk item met \*opsommings tekens (bijvoorbeeld [spatie] eerste woord van inhoud).
-* Als u koppen wilt maken, typt u een of meer\#hekjes (), gevolgd door een spatie (bijvoorbeeld # # # [ruimte] agenda/producten).
+* Als u een lijst met opsommings tekens wilt maken, typt u een asterisk ( \* ), gevolgd door een spatie, voor elk item met opsommings tekens (bijvoorbeeld \* [spatie] eerste woord van inhoud).
+* Als u koppen wilt maken, typt u een of meer hekjes ( \# ), gevolgd door een spatie (bijvoorbeeld # # # [ruimte] agenda/producten).
 * Voeg een regel afbreeking toe na elke kop.
-* Voor **vette** opmaak kunt u een dubbele asterisk (\*\*), zonder spatie, aan het begin en einde van een woord of reeks woorden toevoegen (Typ \* \*bijvoorbeeld inhoud\* \* om een woord op te maken als **inhoud**).
+* Voor **vette** opmaak kunt u een dubbele asterisk ( \* \* ), zonder spatie, aan het begin en einde van een woord of reeks woorden toevoegen (Typ bijvoorbeeld \* \* inhoud \* \* om een woord op te maken als **inhoud**).
 
 ## <a name="next-steps"></a>Volgende stappen
 

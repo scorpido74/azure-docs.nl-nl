@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086382"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653716"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -81,9 +81,9 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
 > | vergren delingen | toewijzings bereik | 1-90 | Alfanumerieken, punten, onderstrepings tekens, afbreek streepjes en haakjes.<br><br>Kan niet eindigen met een periode. |
-> | policyassignments | toewijzings bereik | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag `%` niet bevatten en mag niet eindigen met een punt of spatie. |
-> | policydefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag `%` niet bevatten en mag niet eindigen met een punt of spatie. |
-> | policySetDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag `%` niet bevatten en mag niet eindigen met een punt of spatie.  |
+> | policyassignments | toewijzings bereik | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
+> | policydefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
+> | policySetDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie.  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -169,7 +169,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | galerieën/toepassingen | galerie | 1-80 | Alfanumerieke tekens, afbreek streepjes en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
 > | galerieën/toepassingen/versies | toepassing | 32-bits geheel getal | Cijfers en peri Oden. |
 > | galerieën/afbeeldingen | galerie | 1-80 | Alfanumerieke tekens, afbreek streepjes en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | galerieën/afbeeldingen/versies | installatiekopie | 32-bits geheel getal | Cijfers en peri Oden. |
+> | galerieën/afbeeldingen/versies | image | 32-bits geheel getal | Cijfers en peri Oden. |
 > | images | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
 > | momentopnamen | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
 > | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
@@ -346,7 +346,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | databaseAccounts | internationaal | 3-31 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. |
+> | databaseAccounts | internationaal | 3-44 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. |
 
 ## <a name="microsofteventgrid"></a>Micro soft. EventGrid
 
@@ -630,7 +630,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | --- | --- | --- | --- |
 > | managedInstances | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
 > | Server | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/beheerders | server |  | Moet zijn `ActiveDirectory`. |
+> | servers/beheerders | server |  | Moet zijn `ActiveDirectory` . |
 > | servers/data bases | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
 > | servers/data bases/syncGroups | database | 1-150 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
 > | servers/elasticPools | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
@@ -643,11 +643,11 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
 > | Storage accounts | internationaal | 3-24 | Kleine letters en cijfers. |
-> | Storage accounts/blobServices | opslagaccount |  | Moet zijn `default`. |
+> | Storage accounts/blobServices | opslagaccount |  | Moet zijn `default` . |
 > | Storage accounts/blobServices/containers | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | Storage accounts/fileServices | opslagaccount |  | Moet zijn `default`. |
+> | Storage accounts/fileServices | opslagaccount |  | Moet zijn `default` . |
 > | Storage accounts/fileServices/shares | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | Storage accounts/managementPolicies | opslagaccount |  | Moet zijn `default`. |
+> | Storage accounts/managementPolicies | opslagaccount |  | Moet zijn `default` . |
 > | blob | container | 1-1024 | Wille keurige URL-tekens, hoofdletter gevoelig |
 > | wachtrij | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Kan geen opeenvolgende afbreek streepjes gebruiken. |
 > | tabel | opslagaccount | 3-63 | Alfanumerieke tekens.<br><br>Begin met letter. |

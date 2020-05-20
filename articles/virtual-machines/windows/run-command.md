@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143784"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653614"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Power shell-scripts uitvoeren in uw Windows-VM met behulp van de opdracht uitvoeren
 
 De functie voor het uitvoeren van opdrachten maakt gebruik van de virtuele machine (VM)-agent voor het uitvoeren van Power shell-scripts in een Azure Windows-VM. U kunt deze scripts gebruiken voor algemeen machine-of toepassings beheer. Ze kunnen u helpen bij het snel diagnosticeren en oplossen van problemen met de toegang tot het netwerk en het herstellen van de VM naar een goede status.
 
- 
+
 
 ## <a name="benefits"></a>Voordelen
 
@@ -41,11 +41,11 @@ De volgende beperkingen zijn van toepassing wanneer u de opdracht uitvoeren gebr
 * Uitgaande verbinding van de virtuele machine is vereist om de resultaten van het script te retour neren.
 
 > [!NOTE]
-> Voor een juiste werking moet de opdracht Run (poort 443) zijn vereist voor open bare IP-adressen van Azure. Als de extensie geen toegang tot deze eind punten heeft, kunnen de scripts worden uitgevoerd, maar niet de resultaten retour neren. Als u verkeer op de virtuele machine blokkeert, kunt u [service Tags](../../virtual-network/security-overview.md#service-tags) gebruiken om verkeer naar open bare IP-adressen van Azure toe te `AzureCloud` staan met behulp van de-tag.
+> Voor een juiste werking moet de opdracht Run (poort 443) zijn vereist voor open bare IP-adressen van Azure. Als de extensie geen toegang tot deze eind punten heeft, kunnen de scripts worden uitgevoerd, maar niet de resultaten retour neren. Als u verkeer op de virtuele machine blokkeert, kunt u [service Tags](../../virtual-network/security-overview.md#service-tags) gebruiken om verkeer naar open bare IP-adressen van Azure toe te staan met behulp van de- `AzureCloud` tag.
 
 ## <a name="available-commands"></a>Beschik bare opdrachten
 
-In deze tabel ziet u de lijst met opdrachten die beschikbaar zijn voor virtuele Windows-machines. U kunt de opdracht **RunPowerShellScript** gebruiken om elk gewenst aangepast script uit te voeren. Wanneer u de Azure CLI of Power shell gebruikt om een opdracht uit te voeren, moet de waarde die u `--command-id` opgeeft `-CommandId` voor de para meter of een van de volgende vermelde waarden zijn. Wanneer u een waarde opgeeft die geen beschik bare opdracht is, wordt deze fout weer gegeven:
+In deze tabel ziet u de lijst met opdrachten die beschikbaar zijn voor virtuele Windows-machines. U kunt de opdracht **RunPowerShellScript** gebruiken om elk gewenst aangepast script uit te voeren. Wanneer u de Azure CLI of Power shell gebruikt om een opdracht uit te voeren, moet de waarde die u opgeeft voor de `--command-id` `-CommandId` para meter of een van de volgende vermelde waarden zijn. Wanneer u een waarde opgeeft die geen beschik bare opdracht is, wordt deze fout weer gegeven:
 
 ```error
 The entity was not found in this Azure location
@@ -94,7 +94,7 @@ Nadat u de opdracht hebt gekozen, selecteert u **uitvoeren** om het script uit t
 
 ## <a name="powershell"></a>PowerShell
 
-In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen `-ScriptPath` in de para meter, lokaal is waar de cmdlet wordt uitgevoerd.
+In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Toegang beperken tot de opdracht uitvoeren
 
-Voor het weer geven van de uitvoerings opdrachten of het weer geven van `Microsoft.Compute/locations/runCommands/read` de details van een opdracht is de machtiging op abonnements niveau vereist. De ingebouwde rol [lezer](../../role-based-access-control/built-in-roles.md#reader) en hogere niveaus hebben deze machtiging.
+Voor het weer geven van de uitvoerings opdrachten of het weer geven van de details van een opdracht is de `Microsoft.Compute/locations/runCommands/read` machtiging vereist. De ingebouwde rol [lezer](../../role-based-access-control/built-in-roles.md#reader) en hogere niveaus hebben deze machtiging.
 
-Voor het uitvoeren van een `Microsoft.Compute/virtualMachines/runCommand/action` opdracht is de machtiging vereist op het abonnements niveau. De rol [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en hogere niveaus hebben deze machtiging.
+Voor het uitvoeren van een opdracht is de `Microsoft.Compute/virtualMachines/runCommand/action` machtiging vereist. De rol [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en hogere niveaus hebben deze machtiging.
 
 U kunt een van de [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) gebruiken of een [aangepaste rol](../../role-based-access-control/custom-roles.md) maken voor het gebruik van de opdracht uitvoeren.
 

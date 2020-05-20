@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408032"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650476"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Tijdelijke tabellen in Synapse SQL-pool
 Dit artikel bevat essentiële richt lijnen voor het gebruik van tijdelijke tabellen en markeert de principes van tijdelijke tabellen op sessie niveau. 
@@ -29,7 +29,7 @@ Tijdelijke tabellen zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt 
 
 Tijdelijke tabellen bieden een prestatie voordelen omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
 
-Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met SQL Analytics bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Tijdelijke tabellen in SQL-groep
 
@@ -37,7 +37,7 @@ In de resource van de SQL-groep bieden tijdelijke tabellen een voor deel van pre
 
 ### <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
 
-Tijdelijke tabellen worden gemaakt door het voor voegsel van de tabel naam `#`te maken met een.  Bijvoorbeeld:
+Tijdelijke tabellen worden gemaakt door het voor voegsel van de tabel naam te maken met een `#` .  Bijvoorbeeld:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -105,7 +105,7 @@ GROUP BY
 ## <a name="dropping-temporary-tables"></a>Tijdelijke tabellen verwijderen
 Wanneer er een nieuwe sessie wordt gemaakt, moeten er geen tijdelijke tabellen aanwezig zijn.  
 
-Als u dezelfde opgeslagen procedure aanroept, waardoor er een tijdelijke met dezelfde naam ontstaat, om ervoor te zorgen `CREATE TABLE` dat uw instructies slagen, kan een eenvoudige controle van het vooraf `DROP` bestaan met een worden gebruikt, zoals in het volgende voor beeld:
+Als u dezelfde opgeslagen procedure aanroept, waardoor er een tijdelijke met dezelfde naam ontstaat, om ervoor te zorgen dat uw `CREATE TABLE` instructies slagen, kan een eenvoudige controle van het vooraf bestaan met een `DROP` worden gebruikt, zoals in het volgende voor beeld:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,7 +114,7 @@ BEGIN
 END
 ```
 
-Voor het coderen van consistentie is het een goed idee om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed idee om tijdelijke `DROP TABLE` tabellen te verwijderen wanneer u ze in uw code hebt voltooid.  
+Voor het coderen van consistentie is het een goed idee om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed idee om `DROP TABLE` tijdelijke tabellen te verwijderen wanneer u ze in uw code hebt voltooid.  
 
 Bij het ontwikkelen van opgeslagen procedures is het gebruikelijk om de door u gebundelde opdrachten aan het einde van een procedure te bekijken om ervoor te zorgen dat deze objecten worden opgeruimd.
 
@@ -233,5 +233,5 @@ Ook kunnen geen weer gaven worden gemaakt voor tijdelijke tabellen.  Tijdelijke 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [tabellen ontwerpen met behulp van het artikel SQL Analytics-resources](sql-data-warehouse-tables-overview.md) voor meer informatie over het ontwikkelen van tabellen.
+Zie voor meer informatie over het ontwikkelen van tabellen de [tabellen ontwerpen met behulp van het artikel Synapse SQL-resources](sql-data-warehouse-tables-overview.md) .
 

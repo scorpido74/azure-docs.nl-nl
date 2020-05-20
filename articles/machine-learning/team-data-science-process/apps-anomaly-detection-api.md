@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721877"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656540"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomalie detectie-API
 
@@ -24,7 +24,7 @@ ms.locfileid: "76721877"
 > Dit item is onderhouds werkzaamheden. We raden u aan de [afwijkende API-service](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) te gebruiken die wordt ondersteund door een galerie met machine learning-algoritmen onder Azure Cognitive Services om afwijkingen van bedrijfs-, operationele en IOT-gegevens te detecteren.
 
 ## <a name="overview"></a>Overzicht
-De [anomalie detectie-API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) is een voor beeld dat is gebouwd met Azure machine learning die afwijkingen in de tijdreeks gegevens detecteert met numerieke waarden die in de loop van de tijd gelijkmatig zijn verdeeld.
+De [anomalie detectie-API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) is een voor beeld dat is gebouwd met Azure machine learning die afwijkingen in de tijdreeks gegevens detecteert met numerieke waarden die in de loop van de tijd gelijkmatig zijn verdeeld.
 
 Met deze API kunnen de volgende typen afwijkende patronen worden gedetecteerd in time series-gegevens:
 
@@ -39,29 +39,29 @@ De afwijkings detectie aanbieding wordt geleverd met handige hulp middelen om aa
 * De [Webtoepassing](https://anomalydetection-aml.azurewebsites.net/) helpt u bij het evalueren en visualiseren van de resultaten van anomalie detectie-api's voor uw gegevens.
 
 > [!NOTE]
-> Probeer het met [deze API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) **afwijkende Insights-oplossing**
+> Probeer het met [deze API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) **afwijkende Insights-oplossing**
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API-implementatie
-Als u de API wilt gebruiken, moet u deze implementeren in uw Azure-abonnement waar deze wordt gehost als een Azure Machine Learning-webservice.  U kunt dit doen vanuit de [Azure AI Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Hiermee worden twee Azure Machine Learning Studio (Classic) webservices (en hun gerelateerde resources) geïmplementeerd voor uw Azure-abonnement, een voor detectie van anomalieën met seizoensgebonden detectie en één zonder detectie van de seizoensgebondenheid.  Zodra de implementatie is voltooid, kunt u uw Api's beheren via de pagina met [webservices van Azure machine learning Studio (klassiek)](https://services.azureml.net/webservices/) .  Op deze pagina kunt u de eindpunt locaties en API-sleutels vinden, evenals voorbeeld code voor het aanroepen van de API.  Meer gedetailleerde instructies zijn [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)beschikbaar.
+Als u de API wilt gebruiken, moet u deze implementeren in uw Azure-abonnement waar deze wordt gehost als een Azure Machine Learning-webservice.  U kunt dit doen vanuit de [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Hiermee worden twee Azure Machine Learning Studio (Classic) webservices (en hun gerelateerde resources) geïmplementeerd voor uw Azure-abonnement, een voor detectie van anomalieën met seizoensgebonden detectie en één zonder detectie van de seizoensgebondenheid.  Zodra de implementatie is voltooid, kunt u uw Api's beheren via de pagina met [webservices van Azure machine learning Studio (klassiek)](https://services.azureml.net/webservices/) .  Op deze pagina kunt u de eindpunt locaties en API-sleutels vinden, evenals voorbeeld code voor het aanroepen van de API.  Meer gedetailleerde instructies zijn [hier](/azure/machine-learning/studio/manage-new-webservice)beschikbaar.
 
 ## <a name="scaling-the-api"></a>De API schalen
 Standaard heeft uw implementatie een gratis facturerings plan voor ontwikkelen en testen met 1.000 trans acties/maand en 2 reken uren/maand.  U kunt een upgrade uitvoeren naar een ander abonnement volgens uw behoeften.  Meer informatie over de prijzen van verschillende abonnementen vindt u [hier](https://azure.microsoft.com/pricing/details/machine-learning/) onder ' productie Web API-prijzen '.
 
 ## <a name="managing-aml-plans"></a>AML-abonnementen beheren
-U kunt uw facturerings plan [hier](https://services.azureml.net/plans/)beheren.  De naam van het abonnement is gebaseerd op de naam van de resource groep die u hebt gekozen bij het implementeren van de API, plus een teken reeks die uniek is voor uw abonnement.  Instructies voor het uitvoeren van een upgrade van uw [abonnement zijn te vinden in de](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) sectie ' Betaal plannen beheren '.
+U kunt uw facturerings plan [hier](https://services.azureml.net/plans/)beheren.  De naam van het abonnement is gebaseerd op de naam van de resource groep die u hebt gekozen bij het implementeren van de API, plus een teken reeks die uniek is voor uw abonnement.  Instructies voor het uitvoeren van een upgrade van uw [abonnement zijn te vinden in de](/azure/machine-learning/studio/manage-new-webservice) sectie ' Betaal plannen beheren '.
 
 ## <a name="api-definition"></a>API-definitie
 De webservice biedt een op REST gebaseerde API via HTTPS die op verschillende manieren kan worden gebruikt, zoals een web-of mobiele toepassing, R, Python, Excel, enzovoort.  U verzendt uw time series-gegevens naar deze service via een REST API-aanroep en voert een combi natie van de drie typen afwijkingen uit die hieronder worden beschreven.
 
 ## <a name="calling-the-api"></a>De API aanroepen
-Als u de API wilt aanroepen, moet u weten wat de locatie van het eind punt en de API-sleutel zijn.  Deze twee vereisten, samen met voorbeeld code voor het aanroepen van de API, zijn beschikbaar op de pagina [Azure machine learning Studio (Classic) Web Services](https://services.azureml.net/webservices/) .  Ga naar de gewenste API en klik vervolgens op het tabblad verbruik om ze te zoeken.  U kunt de API aanroepen als een Swagger API (dat wil zeggen, met de `format=swagger`URL-para meter) of als een niet-SWAGGER-API ( `format` dat wil zeggen, zonder de URL-para meter).  De voorbeeld code maakt gebruik van de Swagger-indeling.  Hieronder vindt u een voorbeeld aanvraag en-antwoord in de niet-Swagger-indeling.  Deze voor beelden zijn het eind punt van de seizoensgebondenheid.  Het eind punt van de niet-seizoensgebondenheid is vergelijkbaar.
+Als u de API wilt aanroepen, moet u weten wat de locatie van het eind punt en de API-sleutel zijn.  Deze twee vereisten, samen met voorbeeld code voor het aanroepen van de API, zijn beschikbaar op de pagina [Azure machine learning Studio (Classic) Web Services](https://services.azureml.net/webservices/) .  Ga naar de gewenste API en klik vervolgens op het tabblad verbruik om ze te zoeken.  U kunt de API aanroepen als een Swagger API (dat wil zeggen, met de URL-para meter `format=swagger` ) of als een niet-Swagger-API (dat wil zeggen, zonder de `format` URL-para meter).  De voorbeeld code maakt gebruik van de Swagger-indeling.  Hieronder vindt u een voorbeeld aanvraag en-antwoord in de niet-Swagger-indeling.  Deze voor beelden zijn het eind punt van de seizoensgebondenheid.  Het eind punt van de niet-seizoensgebondenheid is vergelijkbaar.
 
 ### <a name="sample-request-body"></a>Voorbeeld aanvraag tekst
-De aanvraag bevat twee objecten: `Inputs` en `GlobalParameters`.  In het onderstaande voor beeld wordt een aantal para meters expliciet verzonden en andere niet (Schuif omlaag voor een volledige lijst met para meters voor elk eind punt).  In para meters die niet expliciet in de aanvraag worden verzonden, worden de volgende standaard waarden gebruikt.
+De aanvraag bevat twee objecten: `Inputs` en `GlobalParameters` .  In het onderstaande voor beeld wordt een aantal para meters expliciet verzonden en andere niet (Schuif omlaag voor een volledige lijst met para meters voor elk eind punt).  In para meters die niet expliciet in de aanvraag worden verzonden, worden de volgende standaard waarden gebruikt.
 
     {
                 "Inputs": {
@@ -83,7 +83,7 @@ De aanvraag bevat twee objecten: `Inputs` en `GlobalParameters`.  In het onderst
     }
 
 ### <a name="sample-response"></a>Voorbeeldreactie
-Als u het `ColumnNames` veld wilt zien, moet u als `details=true` een URL-para meter in uw aanvraag toevoegen.  Zie de onderstaande tabellen voor de betekenis achter elk van deze velden.
+Als u het veld wilt zien `ColumnNames` , moet u `details=true` als een URL-para meter in uw aanvraag toevoegen.  Zie de onderstaande tabellen voor de betekenis achter elk van deze velden.
 
     {
         "Results": {

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200475"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655103"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall toepassings regels met SQL-FQDN configureren
 
@@ -26,8 +26,6 @@ Met SQL-FQDN-naam kunt u verkeer filteren:
 
 SQL FQDN-filtering wordt alleen ondersteund in de [proxy modus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (poort 1433). Als u SQL in de standaard omleidings modus gebruikt, kunt u de toegang filteren met behulp van de SQL-service-tag als onderdeel van de [netwerk regels](overview.md#network-traffic-filtering-rules).
 Als u niet-standaard poorten gebruikt voor SQL IaaS-verkeer, kunt u die poorten configureren in de toepassings regels van de firewall.
-
-Toepassings regels met SQL FQDN-waarden zijn momenteel in alle regio's beschikbaar via de Azure Portal, Azure CLI, REST en sjablonen.
 
 ## <a name="configure-using-azure-cli"></a>Configureren met behulp van Azure CLI
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259099"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649182"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
 
@@ -48,7 +48,7 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
 
 1. Ontvang een aanvraag in de volgende vorm:
    
-   > *http:\//www.yourwebsite.com/apimdelegation?Operation=SignIn&returnUrl = {URL van de bron pagina} &Salt = {string} &sig = {String}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {URL van de bron pagina} &Salt = {string} &sig = {String}*
    > 
    > 
    
@@ -74,7 +74,7 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
    * [een SSO-token (single sign-on) aanvragen] via de API Management rest API
    * Voeg een returnUrl-query parameter toe aan de SSO-URL die u hebt ontvangen van de bovenstaande API-aanroep:
      
-     > bijvoorbeeld:https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > bijvoorbeeld:`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * de gebruiker omleiden naar de bovenstaande geproduceerde URL
@@ -105,7 +105,7 @@ Zorg er vervolgens voor dat het eind punt voor delegering de volgende acties uit
 
 1. Ontvang een aanvraag in de volgende vorm:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? Operation = {operation} &ProductID = {product to Subscriber to} &userId = {Request aanvraag} &Salt = {string} &sig = {String}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation? Operation = {Operation} &ProductID = {product to Subscriber to} &userId = {Request aanvraag} &Salt = {string} &sig = {String}*
    >
    
     Query parameters voor het case-product abonnement:

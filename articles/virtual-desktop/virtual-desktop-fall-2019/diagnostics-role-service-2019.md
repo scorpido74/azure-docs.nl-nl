@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615147"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657242"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problemen identificeren en diagnosticeren
 
@@ -36,7 +36,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>Problemen vaststellen met Power shell
 
-De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haken, zoals `<tenantName>`, moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
+De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haken, zoals `<tenantName>` , moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
 
 >[!IMPORTANT]
 >De functie diagnostische gegevens is voor het oplossen van problemen met één gebruiker. Alle query's die gebruikmaken van Power shell moeten de para meters *-username* of *-ActivityID* bevatten. Gebruik Log Analytics voor bewakings mogelijkheden. Zie [log Analytics voor de diagnostische functie gebruiken](diagnostics-log-analytics-2019.md) voor meer informatie over het verzenden van diagnostische gegevens naar uw werk ruimte. 
@@ -139,6 +139,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 
 |Numerieke code|Foutcode|Voorgestelde oplossing|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|De gebruiker is geen lid van Azure Active Directory. Volg de instructies in [Active Directory-beheercentrum](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) om ze toe te voegen.|
 |3|UnauthorizedAccess|De gebruiker die de Power shell-cmdlet voor beheer heeft geprobeerd uit te voeren, heeft geen machtigingen om dit te doen of heeft een niet-getypte gebruikers naam.|
 |1000|TenantNotFound|De naam van de Tenant die u hebt ingevoerd, komt niet overeen met bestaande tenants. Controleer de naam van de Tenant voor type fouten en probeer het opnieuw.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|U kunt een Tenant niet verwijderen zolang deze objecten bevat. Verwijder eerst de Session Host-Pools en probeer het opnieuw.|
@@ -160,6 +161,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 
 |Numerieke code|Foutcode|Voorgestelde oplossing|
 |---|---|---|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|De gebruiker is geen lid van Azure Active Directory. Volg de instructies in [Active Directory-beheercentrum](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) om ze toe te voegen.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|De sessiehost is niet juist gekoppeld aan de Active Directory.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|De verbindingen zijn mislukt omdat de sessiehost niet beschikbaar is. Controleer de status van de sessie-host.|
 |-2146233088|ConnectionFailedClientDisconnect|Als deze fout regel matig wordt weer geven, controleert u of de computer van de gebruiker is verbonden met het netwerk.|

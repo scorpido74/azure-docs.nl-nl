@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312502"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648418"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>End-to-end TLS configureren met behulp van Application Gateway met Power shell
 
@@ -167,7 +167,9 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    > [!NOTE]
    > De standaard test haalt de open bare sleutel op uit de *standaard* TLS-binding op het IP-adres van de back-end en vergelijkt de waarde van de open bare sleutel die wordt ontvangen voor de open bare-sleutel waarde die u hier opgeeft. 
    > 
-   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat https://127.0.0.1/ u naar de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* -TLS-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag https://127.0.0.1/ ontvangt op de back-endservers, moet u een standaard TLS-binding instellen. Als u dit niet doet, mislukt de test dan en de back-end niet white list.
+   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat u naar https://127.0.0.1/ de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* -TLS-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag ontvangt op https://127.0.0.1/ de back-endservers, moet u een standaard TLS-binding instellen. Als u dit niet doet, mislukt de test dan en de back-end niet white list.
+   
+   Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md)voor meer informatie over SNI in Application Gateway.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +202,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **\_standaard klein**, **standaard\_medium**en **standaard\_groot**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
+10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **standaard \_ klein**, **standaard \_ medium**en **standaard \_ groot**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +219,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
     - **TLSV1_1**
     - **TLSV1_2**
     
-    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **\_tls\_ECDHE\_\_ECDSA\_\_met\_AES 128 GCM sha256**, **\_TLS\_ECDHE\_\_ECDSA\_\_met\_AES 256 GCM SHA384**en **\_TLS\_RSA\_\_met\_AES\_128 GCM sha256** .
+    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384**en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_ sha256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +312,7 @@ In de voor gaande stappen hebt u geleid tot het maken van een toepassing met end
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definieer een TLS-beleid. In het volgende voor beeld **zijn tlsv 1.0** en **tlsv 1.1** uitgeschakeld en de coderings suites **\_TLS\_ECDHE\_\_ECDSA\_met\_AES\_128 GCM sha256**, **\_TLS\_ECDHE\_\_ECDSA\_met\_AES\_256 GCM SHA384**en **\_TLS\_RSA\_met\_AES\_128\_GCM** sha256 zijn de enige toegestaan.
+2. Definieer een TLS-beleid. In het volgende voor beeld zijn **tlsv 1.0** en **tlsv 1.1** uitgeschakeld en de coderings suites **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384**en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_ ** sha256 zijn de enige toegestaan.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

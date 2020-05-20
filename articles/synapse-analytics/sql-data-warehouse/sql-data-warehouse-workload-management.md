@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23ede806b627ad0f77e325ab391d37347f4bb29f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744234"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650446"
 ---
 # <a name="what-is-workload-management"></a>Wat is werkbelasting beheer?
 
-Het uitvoeren van gemengde werk belastingen kan problemen met bronnen op drukke systemen opleveren.  Oplossingen voor de oplossing van de klassieke gegevensopslag activiteiten (zoals het laden, transformeren en doorzoeken van gegevens) kunnen worden gebruikt om ervoor te zorgen dat er voldoende resources zijn om te voldoen aan de Sla's.  
+Het uitvoeren van gemengde werk belastingen kan problemen met bronnen op drukke systemen opleveren.  Oplossingen voor de oplossing van de klassieke gegevensopslag activiteiten (zoals het laden, transformeren en opvragen van gegevens) kunnen worden gebruikt om ervoor te zorgen dat er voldoende resources zijn om te voldoen aan de Sla's.  
 
 Het isoleren van fysieke servers kan leiden tot een plek in de vorm van een infra structuur die te weinig wordt gebruikt, wordt overboekt of een status waarin caches worden uitgevoerd met hardware die wordt gestart en gestopt.  Een succesvol Management schema voor werk belasting beheert resources effectief, zorgt voor zeer efficiënt resource gebruik en maximaliseert het rendement op investeringen (ROI).
 
@@ -38,13 +38,13 @@ De capaciteit van de prestaties van een Data Warehouse wordt bepaald door de [Da
 
 ## <a name="workload-management-concepts"></a>Concepten van workload Management
 
-In het verleden heeft u voor SQL Analytics in azure Synapse de query prestaties beheerd via [resource klassen](resource-classes-for-workload-management.md).  Resource klassen die zijn toegestaan om geheugen toe te wijzen aan een query op basis van het lidmaatschap van de rol.  De primaire uitdaging met resource klassen is dat na de configuratie geen governance of de mogelijkheid is om de werk belasting te beheren.  
+In het verleden heeft Synapse SQL in azure Synapse de query prestaties beheerd via [resource klassen](resource-classes-for-workload-management.md).  Resource klassen die zijn toegestaan om geheugen toe te wijzen aan een query op basis van het lidmaatschap van de rol.  De primaire uitdaging met resource klassen is dat na de configuratie geen governance of de mogelijkheid is om de werk belasting te beheren.  
 
 Als u bijvoorbeeld het lidmaatschap van een ad-hoc gebruikersrol wilt verlenen aan smallrc, mag die gebruiker 100% van het geheugen op het systeem gebruiken.  Met resource klassen is er geen manier om te reserveren en om ervoor te zorgen dat resources beschikbaar zijn voor kritieke werk belastingen.
 
-Synapse van het werk belasting van de SQL-pool in azure Synapse bestaat uit drie concepten op hoog niveau: [werk belasting classificatie](sql-data-warehouse-workload-classification.md), [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en [isolatie van werk belastingen](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden bieden u meer controle over de manier waarop uw werk belasting gebruikmaakt van systeem bronnen.
+Synapse van het werk belasting van de SQL-pool in azure Synapse bestaat uit drie concepten op hoog niveau: [werk belasting classificatie](sql-data-warehouse-workload-classification.md), [urgentie van werk](sql-data-warehouse-workload-importance.md)belasting en [isolatie van werk belastingen](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden bieden u meer controle over de manier waarop uw werk belasting gebruikmaakt van systeem bronnen.
 
-Classificatie van werk belasting is het concept van het toewijzen van een aanvraag aan een werkbelasting groep en het instellen van urgentie niveaus.  Deze toewijzing is historisch uitgevoerd via het lidmaatschap van de rol met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dit kan nu worden gedaan via de [werk belasting CLASSIFER maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De classificatie mogelijkheid biedt een uitgebreidere set opties zoals label, sessie en tijd voor het classificeren van aanvragen.
+Classificatie van werk belasting is het concept van het toewijzen van een aanvraag aan een werkbelasting groep en het instellen van urgentie niveaus.  Deze toewijzing is historisch uitgevoerd via het lidmaatschap van de rol met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Deze actie kan nu worden uitgevoerd via de [werk belasting CLASSIFER maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De classificatie mogelijkheid biedt een uitgebreidere set opties zoals label, sessie en tijd voor het classificeren van aanvragen.
 
 De werkbelasting urgentie is van invloed op de volg orde waarin een aanvraag toegang krijgt tot resources.  Een aanvraag met een hogere prioriteit heeft in een systeem voor het eerst toegang tot resources.  De urgentie kan ook de bestelde toegang tot vergren delingen garanderen.
 

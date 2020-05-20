@@ -5,19 +5,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266076"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649111"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
 
-* **Referenties op gebruikers niveau**: één set referenties voor het hele Azure-account. Het kan worden gebruikt om te implementeren in App Service voor elke app, in elk abonnement, dat het Azure-account toegangs rechten heeft. Dit is de standaard instelling die wordt weer gegeven in de gebruikers interface van de portal (zoals het **overzicht** en de **Eigenschappen** van de [resource pagina](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)van de app). Wanneer een gebruiker toegang tot de app heeft verleend via op rollen gebaseerde Access Control (RBAC) of coadmin-machtigingen, kan die gebruiker hun eigen referenties op gebruikers niveau gebruiken tot de toegang is ingetrokken. Deel deze referenties niet met andere Azure-gebruikers.
-
-* **Referenties op app-niveau**: één set referenties voor elke app. Het kan alleen worden gebruikt voor de implementatie van deze app. De referenties voor elke app worden automatisch gegenereerd bij het maken van een app. Ze kunnen niet hand matig worden geconfigureerd, maar kan altijd opnieuw worden ingesteld. Als u wilt dat een gebruiker toegang krijgt tot referenties op app-niveau via (RBAC), moet die gebruiker Inzender of hoger zijn op de app (inclusief de ingebouwde rol van de website bijdrager). Lezers mogen niet publiceren en hebben geen toegang tot deze referenties.
+[!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 ## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Referenties op gebruikers niveau configureren
 
@@ -25,7 +23,7 @@ U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](
 
 ### <a name="in-the-cloud-shell"></a>In de Cloud Shell
 
-Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \<gebruikers> naam \<en wacht woord> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
+Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang gebruikers \<> naam en \< wacht woord> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
 
 - De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het symbool ' @ ' niet bevatten. 
 - Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
@@ -34,17 +32,17 @@ Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://s
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-De JSON-uitvoer toont het wacht `null`woord als. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
+De JSON-uitvoer toont het wacht woord als `null` . Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
 
 ### <a name="in-the-portal"></a>In de portal
 
 In de Azure Portal moet u ten minste één app hebben voordat u toegang kunt krijgen tot de pagina implementatie referenties. Uw referenties op gebruikers niveau configureren:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services** > **\<any_app>**  >  **Deployment Center** > **-FTP-** > **dash board**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services**  >  ** \< any_app>**  >  **Deployment Center**  >  **-FTP-**  >  **dash board**.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Als u de Git-implementatie al hebt geconfigureerd, selecteert **u app Services** > **&lt;any_app>**  >  **Deployment Center** > **FTP/credentials**.
+    Als u de Git-implementatie al hebt geconfigureerd, selecteert u **app Services**  >  ** &lt; any_app>**  >  **Deployment Center**  >  **FTP/credentials**.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -70,7 +68,7 @@ Omdat referenties op gebruikers niveau zijn gekoppeld aan de gebruiker en niet a
 ## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Referenties op app-niveau ophalen en opnieuw instellen
 De referenties op app-niveau ophalen:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services** > **&lt;any_app>**  >  **Deployment Center** > **FTP/credentials**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services**  >  ** &lt; any_app>**  >  **Deployment Center**  >  **FTP/credentials**.
 
 2. Selecteer **app-referenties**en selecteer de koppeling **kopiëren** om de gebruikers naam of het wacht woord te kopiëren.
 

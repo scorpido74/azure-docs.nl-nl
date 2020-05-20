@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548542"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648218"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -38,8 +38,8 @@ Maak eerst een nieuw project met een lege activiteit. Voer de volgende stappen u
 
 1. Onder **Kies uw project**selecteert u **telefoon en Tablet**. Uw toepassing wordt uitgevoerd op deze vorm factor.
 2. Op het tabblad **telefoon en Tablet** selecteert u **lege activiteit**en selecteert u **volgende**.
-3. Onder **uw project configureren**selecteert `API 21: Android 5.0.0 (Lollipop)` u als minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
-4. Accepteer de standaard `Activity Name` instelling `Layout Name` en selecteer **volt ooien**.
+3. Onder **uw project configureren**selecteert u `API 21: Android 5.0.0 (Lollipop)` als minimale SDK. Dit is de oudste versie die wordt ondersteund door de Azure Maps Android SDK.
+4. Accepteer de standaard instelling `Activity Name` en `Layout Name` Selecteer **volt ooien**.
 
 Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/intro/) voor meer informatie over het installeren van Android Studio en het maken van een nieuw project.
 
@@ -47,7 +47,7 @@ Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/
 
 ## <a name="set-up-a-virtual-device"></a>Een virtueel apparaat instellen
 
-Met Android Studio kunt u een virtueel Android-apparaat op uw computer instellen. Dit kan u helpen bij het testen van uw toepassing tijdens de ontwikkeling. Als u een virtueel apparaat wilt instellen, selecteert u het pictogram Android Virtual Device (AVD) Manager in de rechter bovenhoek van het venster van het project en selecteert u **virtueel apparaat maken**. U kunt ook naar de AVD Manager gaan door **extra** > **Android** > **AVD Manager** te selecteren op de werk balk. In de categorie **telefoons** selecteert u **Nexus 5x**en selecteert u vervolgens **volgende**.
+Met Android Studio kunt u een virtueel Android-apparaat op uw computer instellen. Dit kan u helpen bij het testen van uw toepassing tijdens de ontwikkeling. Als u een virtueel apparaat wilt instellen, selecteert u het pictogram Android Virtual Device (AVD) Manager in de rechter bovenhoek van het venster van het project en selecteert u **virtueel apparaat maken**. U kunt ook naar de AVD Manager gaan door **extra**  >  **Android**  >  **AVD Manager** te selecteren op de werk balk. In de categorie **telefoons** selecteert u **Nexus 5x**en selecteert u vervolgens **volgende**.
 
 Meer informatie over het instellen van een AVD vindt u in de [documentatie van Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -80,11 +80,11 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     3. Werk het blok met afhankelijkheden bij en voeg een nieuwe implementatie afhankelijkheids regel toe voor de nieuwste Azure Maps Android SDK:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
     4. Ga naar het **bestand** in de werk balk en klik vervolgens op **project synchroniseren met Gradle-bestanden**.
-3. Voeg een kaart fragment toe aan de hoofd activiteit ( \> res \> layout\_-activiteit Main. XML):
+3. Voeg een kaart fragment toe aan de hoofd activiteit ( \> Res \> Layout \_ -activiteit Main. XML):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     * uw Azure Maps-verificatie-informatie instellen
     * het kaart besturings exemplaar ophalen in de methode **onCreate**
 
-    Als u de verificatie gegevens voor `AzureMaps` de klasse globaal instelt `setSubscriptionKey` met `setAadProperties` behulp van de-of-methoden, hoeft u uw verificatie gegevens niet op elke weer gave toe te voegen. 
+    Als u de verificatie gegevens voor de `AzureMaps` klasse globaal instelt met behulp van de- `setSubscriptionKey` of- `setAadProperties` methoden, hoeft u uw verificatie gegevens niet op elke weer gave toe te voegen. 
 
     Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android. Deze levenscyclus methoden moeten rechtstreeks vanuit de insluitende activiteit worden aangeroepen. Als u wilt dat uw app de levenscyclus methoden van het kaart besturings element correct aanroept, moet u de volgende levenscyclus methoden overschrijven in de activiteit die het kaart besturings element bevat. En u moet de bijbehorende kaart beheer methode aanroepen. 
 
@@ -205,7 +205,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
 
 ## <a name="import-classes"></a>Klassen importeren
 
-Nadat u de voor gaande stappen hebt voltooid, krijgt u waarschijnlijk waarschuwingen van Android Studio over een deel van de code. Als u deze waarschuwingen wilt oplossen, importeert u de klassen `MainActivity.java`waarnaar wordt verwezen in.
+Nadat u de voor gaande stappen hebt voltooid, krijgt u waarschijnlijk waarschuwingen van Android Studio over een deel van de code. Als u deze waarschuwingen wilt oplossen, importeert u de klassen waarnaar wordt verwezen in `MainActivity.java` .
 
 U kunt deze klassen automatisch importeren door op ALT + ENTER te drukken (optie + retour neren op een Mac).
 
@@ -223,7 +223,7 @@ Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de 
 
 De Azure Maps Android SDK biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De volgende code laat zien hoe u de taal instelt op Frans (fr-FR) en de regionale weer gave op ' auto '. 
 
-De eerste optie is de taal door geven en regionale informatie weer geven in `AzureMaps` de klasse met behulp van de statische `setLanguage` methode en `setView` de methoden wereld wijd. Hiermee stelt u de standaard taal en de regionale weer gave in voor alle Azure Maps besturings elementen die in uw app worden geladen.
+De eerste optie is de taal door geven en regionale informatie weer geven in de `AzureMaps` klasse met behulp van de statische `setLanguage` methode en de `setView` methoden wereld wijd. Hiermee stelt u de standaard taal en de regionale weer gave in voor alle Azure Maps besturings elementen die in uw app worden geladen.
 
 ```Java
 static {
@@ -250,7 +250,7 @@ De tweede optie is de taal door geven en informatie weer geven in de XML van het
     />
 ```
 
-De derde optie is het programmatisch instellen van de taal en de regionale weer gave van de kaart met `setStyle` behulp van de Maps-methode. Dit kan op elk gewenst moment worden gedaan om de taal en de regionale weer gave van de kaart te wijzigen.
+De derde optie is het programmatisch instellen van de taal en de regionale weer gave van de kaart met behulp van de Maps- `setStyle` methode. Dit kan op elk gewenst moment worden gedaan om de taal en de regionale weer gave van de kaart te wijzigen.
 
 ```Java
 mapControl.onReady(map -> {

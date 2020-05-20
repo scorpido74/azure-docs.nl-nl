@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838821"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659878"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -78,9 +78,9 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 ### <a name="generation-1-vs-generation-2-features"></a>Generatie 1 vs. generatie 2-functies
 
-| Onderdeel | Eerste generatie | Tweede generatie |
+| Functie | Eerste generatie | Tweede generatie |
 |---------|--------------|--------------|
-| Modus             | PCAT                      | UEFI                               |
+| Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
 | Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
@@ -122,16 +122,10 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 
 U kunt ook Power shell gebruiken om een virtuele machine te maken door rechtstreeks te verwijzen naar de SKU van de eerste en 2e generatie.
 
-Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's `WindowsServer` in de aanbieding.
+Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's in de `WindowsServer` aanbieding.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-U kunt ook de Azure CLI gebruiken voor een overzicht van alle beschik bare installatie kopieën van de tweede generatie, vermeld door **Publisher**.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt, selecteert u de VM-SKU van generatie 1 (BIOS) of generatie 2 (UEFI), die er als volgt uitziet:
@@ -142,6 +136,14 @@ Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt,
 ```
 
 Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor een huidige lijst met ondersteunde Marketplace-installatie kopieën.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+U kunt ook de Azure CLI gebruiken voor een overzicht van alle beschik bare installatie kopieën van de tweede generatie, vermeld door **Publisher**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Beheerde installatie kopie of beheerde schijf
 

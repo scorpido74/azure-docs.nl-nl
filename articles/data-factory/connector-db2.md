@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: jingwang
-ms.openlocfilehash: 9f705a0a56975860cf07d8a9b09de9999a923501
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: b33f9a11cee08ea8c4accb683d70960d7f98e776
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891438"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659570"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Gegevens van DB2 kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -77,7 +77,7 @@ Typische eigenschappen in de connection string:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door een dubbele punt, `server:port`bijvoorbeeld. |Ja |
+| server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door een dubbele punt, `server:port` bijvoorbeeld. |Ja |
 | database |Naam van de DB2-Data Base. |Ja |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op om verbinding te maken met de DB2-Data Base. |Ja |
@@ -86,7 +86,7 @@ Typische eigenschappen in de connection string:
 | certificateCommonName | Wanneer u Secure Sockets Layer (SSL) of Transport Layer Security (TLS)-code ring gebruikt, moet u een waarde opgeven voor de algemene naam van het certificaat. | Nee |
 
 > [!TIP]
-> Als er een fout bericht wordt weer gegeven `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`met de melding dat de reden is dat er geen pakket is gemaakt voor de gebruiker. Standaard probeert ADF een pakket te maken onder de verzameling met de naam van de gebruiker die u hebt gebruikt voor verbinding met de DB2. Geef de verzamelings eigenschap van het pakket op om aan te geven onder waar u de benodigde pakketten wilt maken bij het uitvoeren van een query op de data base.
+> Als er een fout bericht wordt weer gegeven met de melding dat `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` de reden is dat er geen pakket is gemaakt voor de gebruiker. Standaard probeert ADF een pakket te maken onder de verzameling met de naam van de gebruiker die u hebt gebruikt voor verbinding met de DB2. Geef de verzamelings eigenschap van het pakket op om aan te geven onder waar u de benodigde pakketten wilt maken bij het uitvoeren van een query op de data base.
 
 **Voorbeeld:**
 
@@ -96,7 +96,7 @@ Typische eigenschappen in de connection string:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; password=<password>; packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;password=<password>;packageCollection=<packagecollection>;certificateCommonName=<certname>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -113,7 +113,7 @@ Typische eigenschappen in de connection string:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -171,7 +171,7 @@ Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen onderste
 | tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {
@@ -189,7 +189,7 @@ Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen onderste
 }
 ```
 
-Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
@@ -236,7 +236,7 @@ Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen onderste
 ]
 ```
 
-Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalSource` getypte bron gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="data-type-mapping-for-db2"></a>Toewijzing van gegevens type voor DB2
 
@@ -249,7 +249,7 @@ Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebrui
 | Blob |Byte [] |
 | Char |Tekenreeks |
 | CLOB |Tekenreeks |
-| Date |Datum/tijd |
+| Datum |Datum/tijd |
 | DB2DynArray |Tekenreeks |
 | DbClob |Tekenreeks |
 | Decimal |Decimal |

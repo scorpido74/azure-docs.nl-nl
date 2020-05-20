@@ -3,17 +3,17 @@ title: Problemen vaststellen en oplossen Azure Cosmos DB Java SDK v4
 description: Gebruik functies als logboek registratie aan client zijde en andere hulpprogram ma's van derden voor het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB in Java SDK v4.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: bdec785ccec2c388eb737da3ec494b525941e2a6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982595"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651865"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Problemen oplossen met Azure Cosmos DB Java SDK v4 met SQL API-accounts
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982595"
 > 
 
 > [!IMPORTANT]
-> In dit artikel wordt alleen beschreven hoe u problemen oplost voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4-opmerkingen, [maven opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en [Tips voor betere prestaties](performance-tips-java-sdk-v4-sql.md) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
+> In dit artikel wordt alleen beschreven hoe u problemen oplost voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [opmerkingen](sql-api-sdk-java-v4.md), [maven opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en [Tips voor betere prestaties](performance-tips-java-sdk-v4-sql.md) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
 >
 
 Dit artikel heeft betrekking op veelvoorkomende problemen, tijdelijke oplossingen, diagnostische stappen en hulpprogram ma's voor het gebruik van Azure Cosmos DB Java SDK v4 met Azure Cosmos DB SQL API-accounts.
@@ -82,14 +82,14 @@ Volg ook de [verbindings limiet op een hostmachine](#connection-limit-on-host).
 
 #### <a name="http-proxy"></a>HTTP-proxy
 
-Als u een HTTP-proxy gebruikt, moet u ervoor zorgen dat het het aantal verbindingen dat in de `ConnectionPolicy`SDK is geconfigureerd kan ondersteunen.
+Als u een HTTP-proxy gebruikt, moet u ervoor zorgen dat het het aantal verbindingen dat in de SDK is geconfigureerd kan ondersteunen `ConnectionPolicy` .
 Anders worden er verbindings problemen beschreven.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ongeldig coderings patroon: Netty IO-thread blok keren
 
 De SDK gebruikt de [Netty](https://netty.io/) io-bibliotheek om te communiceren met Azure Cosmos db. De SDK heeft een async API en maakt gebruik van niet-blokkerende IO-Api's van Netty. Het IO-werk van de SDK wordt uitgevoerd op IO Netty-threads. Het aantal i/o-Netty-threads is geconfigureerd om hetzelfde te zijn als het aantal CPU-kernen van de app-computer. 
 
-De Netty-IO-threads zijn alleen bedoeld voor gebruik voor niet-blokkerende Netty IO-werk. De SDK retourneert het aanroep resultaat van de API op een van de Netty IO-threads naar de code van de app. Als de app een langdurige bewerking uitvoert nadat deze resultaten heeft ontvangen op de Netty-thread, heeft de SDK mogelijk onvoldoende IO-threads om het interne IO-werk te kunnen uitvoeren. Deze app-code ring kan leiden tot een lage door Voer, `io.netty.handler.timeout.ReadTimeoutException` hoge latentie en fouten. De tijdelijke oplossing is om de thread over te scha kelen wanneer u weet dat de bewerking tijd kost.
+De Netty-IO-threads zijn alleen bedoeld voor gebruik voor niet-blokkerende Netty IO-werk. De SDK retourneert het aanroep resultaat van de API op een van de Netty IO-threads naar de code van de app. Als de app een langdurige bewerking uitvoert nadat deze resultaten heeft ontvangen op de Netty-thread, heeft de SDK mogelijk onvoldoende IO-threads om het interne IO-werk te kunnen uitvoeren. Deze app-code ring kan leiden tot een lage door Voer, hoge latentie en `io.netty.handler.timeout.ReadTimeoutException` fouten. De tijdelijke oplossing is om de thread over te scha kelen wanneer u weet dat de bewerking tijd kost.
 
 Bekijk bijvoorbeeld het volgende code fragment waarmee items worden toegevoegd aan een container ( [hier](create-sql-api-java.md) vindt u informatie over het instellen van de data base en de container.) U kunt langdurige werkzaamheden uitvoeren die meer dan een paar milliseconden in de Netty-thread duren. Als dat het geval is, kunt u uiteindelijk een status krijgen waarin geen Netty IO-thread aanwezig is om IO-werk te verwerken. Als gevolg hiervan krijgt u een ReadTimeoutException-fout.
 
@@ -135,7 +135,7 @@ De tijdelijke oplossing is om de thread te wijzigen waarop u werk uitvoert die t
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = Schedulers.fromExecutor(ex);
 ```
-Mogelijk moet u werk doen die tijd kost, bijvoorbeeld reken kundige, zware werk of het blok keren van IO. In dit geval kunt u de thread overschakelen naar een werk nemer die `customScheduler` is voorzien van `.publishOn(customScheduler)` de API.
+Mogelijk moet u werk doen die tijd kost, bijvoorbeeld reken kundige, zware werk of het blok keren van IO. In dit geval kunt u de thread overschakelen naar een werk nemer die is voorzien van `customScheduler` de `.publishOn(customScheduler)` API.
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
 
@@ -146,7 +146,7 @@ container.createItem(family)
         // ...
     );
 ```
-Met `publishOn(customScheduler)`kunt u de Netty io-thread vrijgeven en overschakelen naar uw eigen aangepaste thread van de aangepaste planner. Met deze wijziging wordt het probleem opgelost. Er wordt geen `io.netty.handler.timeout.ReadTimeoutException` fout meer weer geven.
+Met `publishOn(customScheduler)` kunt u de NETTY io-thread vrijgeven en overschakelen naar uw eigen aangepaste thread van de aangepaste planner. Met deze wijziging wordt het probleem opgelost. Er wordt geen `io.netty.handler.timeout.ReadTimeoutException` fout meer weer geven.
 
 ### <a name="request-rate-too-large"></a>Aanvraag frequentie te groot
 Deze fout wordt veroorzaakt door storingen aan de server zijde. Dit geeft aan dat u uw ingerichte door Voer hebt verbruikt. Probeer het later opnieuw. Als deze fout vaak optreedt, kunt u een toename van de door Voer van de verzameling overwegen.
@@ -230,7 +230,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 Zie de [hand leiding voor sfl4j-logboek registratie](https://www.slf4j.org/manual.html)voor meer informatie.
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>OS-netwerk statistieken
-Voer de opdracht netstat uit om een beeld te krijgen van het aantal verbindingen in Staten, `ESTABLISHED` zoals `CLOSE_WAIT`en.
+Voer de opdracht netstat uit om een beeld te krijgen van het aantal verbindingen in Staten, zoals `ESTABLISHED` en `CLOSE_WAIT` .
 
 Op Linux kunt u de volgende opdracht uitvoeren.
 ```bash
@@ -244,9 +244,9 @@ netstat -abn
 
 Filter het resultaat tot alleen verbindingen met het Azure Cosmos DB-eind punt.
 
-Het aantal verbindingen met het Azure Cosmos DB-eind punt in `ESTABLISHED` de status kan niet groter zijn dan de geconfigureerde grootte van de verbindings groep.
+Het aantal verbindingen met het Azure Cosmos DB-eind punt in de `ESTABLISHED` status kan niet groter zijn dan de geconfigureerde grootte van de verbindings groep.
 
-Veel verbindingen met het Azure Cosmos DB-eind punt hebben mogelijk `CLOSE_WAIT` de status. Er kan meer dan 1.000 zijn. Een getal dat hoog betekent dat de verbindingen tot stand zijn gebracht en snel worden afgebroken. Dit kan problemen veroorzaken. Zie de sectie [veelvoorkomende problemen en tijdelijke oplossingen] voor meer informatie.
+Veel verbindingen met het Azure Cosmos DB-eind punt hebben mogelijk de `CLOSE_WAIT` status. Er kan meer dan 1.000 zijn. Een getal dat hoog betekent dat de verbindingen tot stand zijn gebracht en snel worden afgebroken. Dit kan problemen veroorzaken. Zie de sectie [veelvoorkomende problemen en tijdelijke oplossingen] voor meer informatie.
 
  <!--Anchors-->
 [Veelvoorkomende problemen en tijdelijke oplossingen]: #common-issues-workarounds

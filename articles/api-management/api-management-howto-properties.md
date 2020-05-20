@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260918"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649211"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
 
@@ -25,7 +25,7 @@ API Management-beleid is een krachtige mogelijkheid van het systeem waarmee de A
 
 Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, die een benoemde waarde wordt genoemd en die globaal zijn voor het service-exemplaar. Er is geen limiet ingesteld voor het aantal items in de verzameling. Benoemde waarden kunnen worden gebruikt voor het beheren van constante teken reeks waarden voor alle API-configuraties en-beleid. Elke benoemde waarde kan de volgende kenmerken hebben:
 
-| Kenmerk      | Type            | Beschrijving                                                                                                                            |
+| Kenmerk      | Type            | Description                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | tekenreeks          | Gebruikt voor het verwijzen naar de benoemde waarde in beleids regels. Een teken reeks van 1 tot 256 tekens. Alleen letters, cijfers, punten en streepjes zijn toegestaan. |
 | `Value`        | tekenreeks          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
@@ -36,7 +36,7 @@ Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, 
 
 Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure/api-management/api-management-policy-expressions)bevatten. De waarde van `Expression` is bijvoorbeeld een beleids expressie die een teken reeks retourneert met de huidige datum en tijd. De benoemde waarde `Credential` is gemarkeerd als geheim, waardoor de waarde ervan niet standaard wordt weer gegeven.
 
-| Naam       | Waarde                      | Geheim | Tags          |
+| Name       | Waarde                      | Geheim | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Waarde      | 42                         | False  | cruciale cijfers |
 | Referentie | ••••••••••••••••••••••     | True   | security      |
@@ -55,11 +55,9 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure
 
     Naam en waarde zijn vereiste waarden. Als de waarde een geheim is, schakelt u het selectie vakje _Dit is een geheim_ in. Voer een of meer optionele Tags in om u te helpen bij het ordenen van uw benoemde waarden en klik op opslaan.
 
-4. Klik op **maken**.
+4. Klik op **Maken**.
 
 Zodra de benoemde waarde is gemaakt, kunt u deze bewerken door erop te klikken. Als u de naam van de benoemde waarde wijzigt, worden alle beleids regels die verwijzen naar deze benoemde waarde, automatisch bijgewerkt voor gebruik van de nieuwe naam.
-
-Zie [een benoemde waarde bewerken met behulp van de rest API](/rest/api/apimanagement/2019-12-01/property?patch)voor meer informatie over het bewerken van een benoemde waarde met behulp van de rest API.
 
 ## <a name="to-delete-a-named-value"></a>Een benoemde waarde verwijderen
 
@@ -67,8 +65,6 @@ Als u een benoemde waarde wilt verwijderen, klikt u op **verwijderen** naast de 
 
 > [!IMPORTANT]
 > Als er wordt verwezen naar de genoemde waarde, kunt u deze pas verwijderen als u de genoemde waarde verwijdert uit alle beleids regels die deze gebruiken.
-
-Zie [een benoemde waarde verwijderen met behulp van de rest API](/rest/api/apimanagement/2019-12-01/property/delete)voor meer informatie over het verwijderen van een benoemde waarde met behulp van de rest API.
 
 ## <a name="to-search-and-filter-named-values"></a>Benoemde waarden zoeken en filteren
 
@@ -78,7 +74,7 @@ Als u de lijst op label wilt filteren, voert u een of meer tags in het tekstvak 
 
 ## <a name="to-use-a-named-value"></a>Een benoemde waarde gebruiken
 
-Als u een benoemde waarde in een beleid wilt gebruiken, plaatst u de naam ervan in een dubbel paar `{{ContosoHeader}}`accolades, zoals in het volgende voor beeld wordt weer gegeven:
+Als u een benoemde waarde in een beleid wilt gebruiken, plaatst u de naam ervan in een dubbel paar accolades `{{ContosoHeader}}` , zoals in het volgende voor beeld wordt weer gegeven:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -90,7 +86,7 @@ In dit voor beeld `ContosoHeader` wordt gebruikt als de naam van een koptekst in
 
 Benoemde waarden kunnen worden gebruikt als volledige kenmerk-of element waarden, zoals wordt weer gegeven in het vorige voor beeld, maar ze kunnen ook worden ingevoegd in of gecombineerd met een letterlijke tekst expressie, zoals wordt weer gegeven in het volgende voor beeld:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Benoemde waarden kunnen ook beleids expressies bevatten. In het volgende voor beeld wordt `ExpressionProperty` de gebruikt.
+Benoemde waarden kunnen ook beleids expressies bevatten. In het volgende voor beeld `ExpressionProperty` wordt de gebruikt.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -98,17 +94,17 @@ Benoemde waarden kunnen ook beleids expressies bevatten. In het volgende voor be
 </set-header>
 ```
 
-Wanneer dit beleid wordt geëvalueerd, `{{ExpressionProperty}}` wordt vervangen door de waarde: `@(DateTime.Now.ToString())`. Omdat de waarde een beleids expressie is, wordt de expressie geëvalueerd en wordt het beleid voortgezet met de uitvoering ervan.
+Wanneer dit beleid wordt geëvalueerd, `{{ExpressionProperty}}` wordt vervangen door de waarde: `@(DateTime.Now.ToString())` . Omdat de waarde een beleids expressie is, wordt de expressie geëvalueerd en wordt het beleid voortgezet met de uitvoering ervan.
 
-U kunt dit testen in de ontwikkelaars portal door een bewerking aan te roepen die een beleid bevat met benoemde waarden binnen het bereik. In het volgende voor beeld wordt een bewerking aangeroepen met de twee voor gaande `set-header` voorbeeld beleidsregels met benoemde waarden. Houd er rekening mee dat het antwoord twee aangepaste kopteksten bevat die zijn geconfigureerd met behulp van beleids regels met benoemde waarden.
+U kunt dit testen in de ontwikkelaars portal door een bewerking aan te roepen die een beleid bevat met benoemde waarden binnen het bereik. In het volgende voor beeld wordt een bewerking aangeroepen met de twee voor gaande voorbeeld `set-header` beleidsregels met benoemde waarden. Houd er rekening mee dat het antwoord twee aangepaste kopteksten bevat die zijn geconfigureerd met behulp van beleids regels met benoemde waarden.
 
 ![ontwikkelaarsportal][api-management-send-results]
 
-Als u de [API Inspector-tracering](api-management-howto-api-inspector.md) voor een aanroep met de twee voor gaande voorbeeld beleidsregels met benoemde waarden bekijkt, ziet u de `set-header` twee beleids regels met de naam waarden ingevoegd en de evaluatie van de beleids expressie voor de naam waarde die de beleids expressie bevat.
+Als u de [API Inspector-tracering](api-management-howto-api-inspector.md) voor een aanroep met de twee voor gaande voorbeeld beleidsregels met benoemde waarden bekijkt, ziet u de twee `set-header` beleids regels met de naam waarden ingevoegd en de evaluatie van de beleids expressie voor de naam waarde die de beleids expressie bevat.
 
 ![API Inspector-tracering][api-management-api-inspector-trace]
 
-Hoewel benoemde waarden beleids expressies kunnen bevatten, kunnen ze geen andere benoemde waarden bevatten. Als tekst met een verwijzing naar een benoemde waarde wordt gebruikt voor een waarde, `Text: {{MyProperty}}`zoals, wordt die verwijzing niet opgelost en vervangen.
+Hoewel benoemde waarden beleids expressies kunnen bevatten, kunnen ze geen andere benoemde waarden bevatten. Als tekst met een verwijzing naar een benoemde waarde wordt gebruikt voor een waarde, zoals `Text: {{MyProperty}}` , wordt die verwijzing niet opgelost en vervangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

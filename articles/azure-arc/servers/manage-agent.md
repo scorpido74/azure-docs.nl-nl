@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/29/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581710"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648103"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
@@ -28,11 +28,19 @@ De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bij
 | Windows | Handmatig<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [Zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| Red Hat Enter prise, Amazon, CentOS linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| Red Hat Enter prise, Amazon, CentOS linux | [yum](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Windows-agent
 
-Als u de agent op een Windows-computer wilt bijwerken naar de nieuwste versie, is de agent beschikbaar vanaf Microsoft Update en kan deze worden geïmplementeerd met uw bestaande software-update beheer proces. Het kan ook hand matig worden uitgevoerd vanaf de opdracht prompt, vanuit een script of andere Automation-oplossing, of vanuit de wizard gebruikers `AzureConnectedMachine.msi`interface door uit te voeren. 
+Update pakket voor de verbonden machine agent voor Windows is beschikbaar vanaf:
+
+* Microsoft Update
+
+* [Microsoft Update catalogus](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* [Windows agent Windows Installer-pakket](https://aka.ms/AzureConnectedMachineAgent) van het micro soft Download centrum.
+
+De agent kan worden geüpgraded na diverse methoden om uw proces voor het beheren van software-updates te ondersteunen. U kunt zich buiten Microsoft Update downloaden en uitvoeren vanaf de opdracht prompt, vanuit een script of andere oplossing voor automatisering of vanuit de wizard gebruikers interface door uit te voeren `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Als u de agent wilt bijwerken, moet u over *beheerders* machtigingen beschikken.
@@ -52,7 +60,7 @@ De wizard Setup detecteert of een vorige versie bestaat en voert vervolgens auto
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer de volgende opdracht uit om de agent op de achtergrond bij te werken `C:\Support\Logs` en een installatie logboek bestand te maken in de map.
+2. Voer de volgende opdracht uit om de agent op de achtergrond bij te werken en een installatie logboek bestand te maken in de `C:\Support\Logs` map.
 
     ```dos
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentupgradesetup.log"
@@ -60,7 +68,9 @@ De wizard Setup detecteert of een vorige versie bestaat en voert vervolgens auto
 
 ### <a name="linux-agent"></a>Linux-agent
 
-Als u de agent op een Linux-computer wilt bijwerken naar de nieuwste versie, zijn er twee opdrachten nodig. Eén opdracht voor het bijwerken van de lokale pakket index met de lijst met meest recente beschik bare pakketten van de opslag plaatsen en één opdracht om het lokale pakket bij te werken. 
+Als u de agent op een Linux-computer wilt bijwerken naar de nieuwste versie, zijn er twee opdrachten nodig. Eén opdracht voor het bijwerken van de lokale pakket index met de lijst met meest recente beschik bare pakketten van de opslag plaatsen en één opdracht om het lokale pakket bij te werken.
+
+U kunt het meest recente agent pakket downloaden van de [pakket opslagplaats](https://packages.microsoft.com/)van micro soft.
 
 > [!NOTE]
 > Als u de agent wilt bijwerken, moet u toegangs machtigingen voor het *hoofd* hebben of met een account met verhoogde rechten met behulp van sudo.
@@ -79,7 +89,7 @@ Als u de agent op een Linux-computer wilt bijwerken naar de nieuwste versie, zij
     apt upgrade
     ```
 
-Acties van de [apt](https://help.ubuntu.com/lts/serverguide/apt.html) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/dpkg.log` het logboek bestand.
+Acties van de [apt](https://help.ubuntu.com/lts/serverguide/apt.html) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in het `/var/log/dpkg.log` logboek bestand.
 
 #### <a name="upgrade-red-hatcentosamazon-linux"></a>Upgrade Red Hat/CentOS/Amazon Linux
 
@@ -95,7 +105,7 @@ Acties van de [apt](https://help.ubuntu.com/lts/serverguide/apt.html) -opdracht,
     yum update
     ```
 
-Acties van de [yum](https://access.redhat.com/articles/yum-cheat-sheet) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/yum.log` het logboek bestand. 
+Acties van de [yum](https://access.redhat.com/articles/yum-cheat-sheet) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in het `/var/log/yum.log` logboek bestand. 
 
 #### <a name="upgrade-suse-linux-enterprise"></a>Upgrade van SUSE Linux Enter prise
 
@@ -111,7 +121,7 @@ Acties van de [yum](https://access.redhat.com/articles/yum-cheat-sheet) -opdrach
     zypper update
     ```
 
-Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/zypper.log` het logboek bestand. 
+Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in het `/var/log/zypper.log` logboek bestand. 
 
 ## <a name="about-the-azcmagent-tool"></a>Over het hulp programma Azcmagent
 
@@ -127,7 +137,7 @@ Het hulp programma Azcmagent (Azcmagent. exe) wordt gebruikt voor het configurer
 
 * **-h of--Help** : toont beschik bare opdracht regel parameters
 
-    Als u bijvoorbeeld gedetailleerde Help voor de para meter **reconnect** wilt weer geven `azcmagent reconnect -h`, typt u. 
+    Als u bijvoorbeeld gedetailleerde Help voor de para meter **reconnect** wilt weer geven, typt u `azcmagent reconnect -h` . 
 
 * **-v of-uitgebreid** -uitgebreide logboek registratie inschakelen
 
@@ -135,7 +145,7 @@ U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opni
 
 ### <a name="connect"></a>Verbinding maken
 
-Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure `--location` -regio die is opgegeven door de instelling. De standaard resource naam is de hostnaam van deze computer als deze niet is opgegeven.
+Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure-regio die is opgegeven door de `--location` instelling. De standaard resource naam is de hostnaam van deze computer als deze niet is opgegeven.
 
 Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de computer, wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected machine-Metadata Service en de gast configuratie agent te synchroniseren met Azure Arc voor servers (preview).
 
@@ -153,7 +163,7 @@ Voer de volgende opdracht uit om verbinding te maken met uw referenties met verh
 
 ### <a name="disconnect"></a>Verbinding verbreken
 
-Met deze para meter wordt een resource opgegeven in Azure Resource Manager die de machine vertegenwoordigt die wordt verwijderd in Azure. De agent wordt niet van de computer verwijderd. dit moet als een afzonderlijke stap worden uitgevoerd. Als u de computer opnieuw wilt registreren met Azure-Arc voor servers (preview), gebruikt `azcmagent connect` u dit zodat er een nieuwe resource wordt gemaakt in Azure.
+Met deze para meter wordt een resource opgegeven in Azure Resource Manager die de machine vertegenwoordigt die wordt verwijderd in Azure. De agent wordt niet van de computer verwijderd. dit moet als een afzonderlijke stap worden uitgevoerd. Als u de computer opnieuw wilt registreren met Azure-Arc voor servers (preview), gebruikt u dit `azcmagent connect` zodat er een nieuwe resource wordt gemaakt in Azure.
 
 Voer de volgende opdracht uit om de verbinding met een service-principal te verbreken:
 
@@ -171,7 +181,7 @@ Voer de volgende opdracht uit als u de verbinding wilt verbreken met de referent
 
 Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met Azure Arc voor servers (preview-versie). Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
 
-Voor deze opdracht zijn hogere bevoegdheden vereist dan de [met Azure verbonden computer](overview.md#required-permissions) voorbereidings functie.
+Voor deze opdracht zijn hogere bevoegdheden vereist dan de [met Azure verbonden computer](agent-overview.md#required-permissions) voorbereidings functie.
 
 Als u opnieuw verbinding wilt maken met behulp van een Service-Principal, voert u de volgende opdracht uit:
 
@@ -206,11 +216,11 @@ Met beide van de volgende methoden wordt de agent verwijderd, maar wordt de map 
 
 #### <a name="uninstall-from-the-command-line"></a>Verwijderen vanaf de opdracht regel
 
-Als u de agent hand matig wilt verwijderen via de opdracht prompt of als u een automatische methode wilt gebruiken, zoals een script, kunt u het volgende voor beeld gebruiken. Eerst moet u de product code ophalen. Dit is een GUID die de principal-id van het toepassings pakket is van het besturings systeem. Het verwijderen wordt uitgevoerd met behulp van de opdracht regel Msiexec. `msiexec /x {Product Code}`exe.
-    
+Als u de agent hand matig wilt verwijderen via de opdracht prompt of als u een automatische methode wilt gebruiken, zoals een script, kunt u het volgende voor beeld gebruiken. Eerst moet u de product code ophalen. Dit is een GUID die de principal-id van het toepassings pakket is van het besturings systeem. Het verwijderen wordt uitgevoerd met behulp van de opdracht regel Msiexec. exe `msiexec /x {Product Code}` .
+
 1. Open de REGI ster-editor.
 
-2. Zoek onder register `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`sleutel naar de GUID van de product code en kopieer deze.
+2. Zoek onder register sleutel naar `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` de GUID van de product code en kopieer deze.
 
 3. U kunt de agent vervolgens verwijderen via Msiexec met behulp van de volgende voor beelden:
 

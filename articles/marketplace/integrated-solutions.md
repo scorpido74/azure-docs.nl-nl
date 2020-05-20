@@ -1,24 +1,23 @@
 ---
-title: Geïntegreerde oplossingen-Azure Marketplace
-description: Geïntegreerde oplossingen in azure Marketplace en AppSource
+title: Geïntegreerde oplossingen-micro soft Commercial Marketplace
+description: Meer informatie over de voor delen, bronnen en volgende stappen voor het aanbieden van geïntegreerde oplossingen in de commerciële Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c32fe80b681e6d82d40b0f5c94d5e9288f72cd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684407"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657988"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Geïntegreerde oplossingen in Microsoft AppSource en Azure Marketplace
-
+# <a name="integrated-solutions-in-the-commercial-marketplace"></a>Geïntegreerde oplossingen in de commerciële Marketplace
 Met een geïntegreerde oplossing worden de beste technologieën van micro soft-partners gecombineerd, samen met raadpleging, implementatie en ondersteuning die wordt geboden door partners van de deskundige Services.
 
-Twee of meer micro soft-partners integreren hun technologie en services voor het maken van een uniforme, naadloze en herhaal bare implementatie-ervaring, zodat klanten snel aan de slag kunnen.  De lead partner in de oplossing (doorgaans de services-partner) voorziet in één contact punt voor de klant, met relevante aanpassing, consulting en ondersteuning rond de oplossing.
+Twee of meer micro soft-partners integreren hun technologie en services om een uniforme, naadloze en herhaal bare implementatie ervaring te maken, en dit helpt klanten snel aan de slag te gaan.  De lead partner in de oplossing (doorgaans de services-partner) voorziet in één contact punt voor de klant, met relevante aanpassing, consulting en ondersteuning rond de oplossing.
 
 In andere scenario's kunnen partners hun oplossing gezamenlijk verkopen of co-Market, terwijl een geïntegreerde oplossing een gezamenlijk gebouwde oplossing is die de technologie en services in partners integreert.
 
@@ -30,7 +29,7 @@ Voor delen van een geïntegreerde aanpak zijn:
 * *Time-to-waarde*: geïntegreerde implementatie methode om u te helpen onmiddellijke voor delen te realiseren
 * *Beste oplossingen*: Ontdek het gemak van een geïntegreerde aankoop-en implementatie-ervaring
 
-Zie [een geïntegreerde oplossing publiceren](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers)voor meer informatie.
+Zie [een geïntegreerde oplossing publiceren](./integrated-solutions-for-publishers.md)voor meer informatie.
 
 ## <a name="submit-a-nomination"></a>Een nominatie indienen
 

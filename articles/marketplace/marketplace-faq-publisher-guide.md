@@ -1,22 +1,22 @@
 ---
 title: Veelgestelde vragen over micro soft Commercial Marketplace-Uitgever
-description: Vind antwoorden op veelgestelde vragen over Azure Marketplace en Microsoft AppSource.
+description: Krijg antwoorden op veelgestelde vragen over Azure Marketplace en Microsoft AppSource.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657885"
 ---
-# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
+# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over de micro soft Commercial Marketplace.
+In dit artikel vindt u antwoorden op veelgestelde vragen over de commerciële Marketplace.
 
 ## <a name="general"></a>Algemeen
 
@@ -308,7 +308,7 @@ Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven perio
 
 Hier volgen enkele bronnen om aan de slag te gaan:
 
-- [Inleiding tot de micro soft Commercial Marketplace](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [Inleiding tot de micro soft Commercial Marketplace](/azure/marketplace/marketplace-publishers-guide)
 - [Micro soft Commercial Marketplace-partner-hub](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Welkom bij de commerciële marketplace](https://docs.microsoft.com/azure/marketplace/)
 

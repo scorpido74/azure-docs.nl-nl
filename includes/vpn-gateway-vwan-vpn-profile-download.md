@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c61378510fbfc8bdc13f35ba1063a0d9316d88e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066222"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650648"
 ---
 ## <a name="1-download-the-file"></a>1. down load het bestand
 
@@ -31,7 +31,7 @@ Pak het gecomprimeerde bestand uit. Het bestand bevat de volgende mappen:
 
 * AzureVPN
 * Algemeen
-* OpenVPN (als u de OpenVPN-en Azure AD-verificatie-instellingen hebt ingeschakeld op de gateway. Zie [een Tenant maken](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)voor VPN gateway. Zie voor virtuele WAN [-VWAN een Tenant maken](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
+* OpenVPN (als u de instellingen voor OpenVPN en Azure AD-verificatie hebt ingeschakeld op de gateway). Zie [een Tenant maken](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)voor VPN gateway. Zie voor virtuele WAN [-VWAN een Tenant maken](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
 
 ## <a name="3-retrieve-information"></a>3. informatie ophalen
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335847"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648405"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
@@ -47,7 +47,7 @@ Hier volgen de overeenkomende criteria:
 - **Status code overeenkomst van http-antwoord** : test matching criterium voor het accepteren van door de gebruiker opgegeven HTTP-antwoord code of het bereik van antwoord codes. Afzonderlijke door komma's gescheiden antwoord status codes of een bereik met status code wordt ondersteund.
 - **Overeenkomst voor de hoofd tekst van het HTTP-antwoord die overeenkomt** met het criterium van de HTTP-reactie en overeenkomt met een door de gebruiker opgegeven teken reeks. De overeenkomst zoekt alleen naar de aanwezigheid van de door de gebruiker opgegeven teken reeks in de tekst van het antwoord en is geen volledige reguliere expressie.
 
-Er kunnen match criteria worden opgegeven met `New-AzApplicationGatewayProbeHealthResponseMatch` behulp van de cmdlet.
+Er kunnen match criteria worden opgegeven met behulp van de `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet.
 
 Bijvoorbeeld:
 
@@ -55,7 +55,7 @@ Bijvoorbeeld:
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test configuratie met `-Match` behulp van een para meter in Power shell.
+Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test configuratie met behulp `-Match` van een para meter in Power shell.
 
 ### <a name="default-health-probe-settings"></a>Standaard instellingen voor status controle
 
@@ -64,12 +64,12 @@ Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test co
 | Test-URL |http://127.0.0.1:\<port\>/ |URL-pad |
 | Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
 | Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
-| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Deze behaivor is alleen v1-SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Dit gedrag is alleen v1 SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!NOTE]
 > De poort is dezelfde poort als de back-end-HTTP-instellingen.
 
-De standaard test zoekt alleen op http:\//127.0.0.1:\<poort\> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken.
+De standaard test zoekt alleen op http: \/ /127.0.0.1: \< poort \> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md#for-probe-traffic)voor meer informatie over http-tests.
 
 ### <a name="probe-intervals"></a>Sonde-intervallen
 
@@ -87,7 +87,7 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 | Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |
@@ -97,7 +97,7 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 > [!IMPORTANT]
 > Als Application Gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als 127.0.0.1, tenzij anders geconfigureerd in de aangepaste test.
-> Voor een verwijzing naar een aangepaste test wordt \<verzonden\>naar protocol\<:/\>/\<host\>\<:\>poort pad. De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
+> Voor een verwijzing naar een aangepaste test wordt verzonden naar \< protocol \> :// \< host \> : \< poort \> \< pad \> . De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
 
 ## <a name="nsg-considerations"></a>NSG overwegingen
 

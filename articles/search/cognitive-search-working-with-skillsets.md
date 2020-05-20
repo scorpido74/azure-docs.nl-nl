@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191030"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652744"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
@@ -32,7 +32,7 @@ Een vaardighedenset heeft drie eigenschappen:
 
 
 
-Vaardig heden zijn geschreven in JSON. U kunt complexe vaardig heden maken met lussen en [vertakkingen](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) met behulp van de [expressie taal](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). De expressie taal maakt gebruik van de notatie van het [JSON-wijzer](https://tools.ietf.org/html/rfc6901) pad met enkele wijzigingen om knoop punten in de verrijkings structuur te identificeren. Er ```"/"``` wordt een niveau lager in de structuur door lopen ```"*"``` en fungeert als een for-each-operator in de context. Deze concepten worden het beste beschreven met een voor beeld. Ter illustratie van een aantal concepten en mogelijkheden worden de voor beelden van de voor keuren voor de [Hotel beoordelingen](knowledge-store-connect-powerbi.md) door lopen. Als u de vaardig heden wilt bekijken nadat u de werk stroom gegevens importeren hebt gevolgd, moet u een REST API-client gebruiken om [de vaardig heden](https://docs.microsoft.com/rest/api/searchservice/get-skillset)op te halen.
+Vaardig heden zijn geschreven in JSON. U kunt complexe vaardig heden maken met lussen en [vertakkingen](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) met behulp van de [expressie taal](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional). De expressie taal maakt gebruik van de notatie van het [JSON-wijzer](https://tools.ietf.org/html/rfc6901) pad met enkele wijzigingen om knoop punten in de verrijkings structuur te identificeren. Er wordt ```"/"``` een niveau lager in de structuur door lopen en ```"*"``` fungeert als een for-each-operator in de context. Deze concepten worden het beste beschreven met een voor beeld. Ter illustratie van een aantal concepten en mogelijkheden worden de voor beelden van de voor keuren voor de [Hotel beoordelingen](knowledge-store-connect-powerbi.md) door lopen. Als u de vaardig heden wilt bekijken nadat u de werk stroom gegevens importeren hebt gevolgd, moet u een REST API-client gebruiken om [de vaardig heden](https://docs.microsoft.com/rest/api/searchservice/get-skillset)op te halen.
 
 ### <a name="enrichment-tree"></a>Verrijkings structuur
 
@@ -65,7 +65,7 @@ Elke vaardigheid vereist een context. Een context bepaalt het volgende:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-De `sourceContext` wordt alleen gebruikt voor invoer van vaardig heden en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Mogelijk moet u een nieuw object maken om het door te geven als invoer voor een vaardigheid of project in het kennis archief. Omdat verrijkings knooppunten mogelijk geen geldig JSON-object in de verrijkings structuur zijn en verwijzen naar een knoop punt in de structuur, wordt alleen die status van het knoop punt geretourneerd toen het werd gemaakt, met behulp van de verrijkingen als vaardig heden of projecties moet u een goed gevormd JSON-object maken. Met `sourceContext` de kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Gebruiken `sourceContext` wordt weer gegeven in de volgende sectie. Bekijk de vaardigheids uitvoer die een verrijking heeft gegenereerd om te bepalen of het een geldig JSON-object is en niet een primitief type.
+De `sourceContext` wordt alleen gebruikt voor invoer van vaardig heden en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Mogelijk moet u een nieuw object maken om het door te geven als invoer voor een vaardigheid of project in het kennis archief. Omdat verrijkings knooppunten mogelijk geen geldig JSON-object in de verrijkings structuur zijn en verwijzen naar een knoop punt in de structuur, wordt alleen die status van het knoop punt geretourneerd toen het werd gemaakt, met behulp van de verrijkingen als vaardig heden of projecties moet u een goed gevormd JSON-object maken. `sourceContext`Met de kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Gebruiken `sourceContext` wordt weer gegeven in de volgende sectie. Bekijk de vaardigheids uitvoer die een verrijking heeft gegenereerd om te bepalen of het een geldig JSON-object is en niet een primitief type.
 
 ### <a name="projections"></a>Projecties
 
@@ -77,7 +77,7 @@ In het bovenstaande diagram wordt de selector beschreven waarmee u werkt, op bas
 
 ## <a name="generate-enriched-data"></a>Verrijkte gegevens genereren 
 
-Nu gaan we de vaardig heden van de Hotel beoordelingen door lopen, kunt u de [zelf studie](knowledge-store-connect-powerbi.md) volgen om de vaardig heden te maken of de vaardig heden [weer te geven](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) . We kijken naar:
+Nu gaan we de vaardig heden van de Hotel beoordelingen door lopen, kunt u de [zelf studie](knowledge-store-connect-powerbi.md) volgen om de vaardig heden te maken of de vaardig heden [weer te geven](https://github.com/Azure-Samples/azure-search-postman-samples/) . We kijken naar:
 
 * hoe de verrijkings structuur zich ontwikkelt met de uitvoering van elke vaardigheid 
 * de manier waarop de context en invoer bepalen hoe vaak een vaardigheid wordt uitgevoerd 
@@ -89,12 +89,12 @@ Omdat we de modus voor het parseren van tekst met scheidings tekens voor de Inde
 
 ![verrijkings structuur na het kraken van documenten](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Verrijkings structuur na het kraken van documenten en voordat de kwalificatie wordt uitgevoerd")
 
-Met de kwalificatie context van ```"/document/reviews_text"```wordt deze vaardigheid één keer uitgevoerd voor de `reviews_text`. De vaardigheids uitvoer is een lijst waarvan `reviews_text` de is gesegmenteerd in 5000 teken segmenten. De uitvoer van de gesplitste vaardigheid `pages` krijgt de naam en wordt toegevoegd aan de verrijkings structuur. Met `targetName` deze functie kunt u de naam van een vaardigheids uitvoer wijzigen voordat u deze aan de verrijkings structuur toevoegt.
+Met de kwalificatie context van ```"/document/reviews_text"``` wordt deze vaardigheid één keer uitgevoerd voor de `reviews_text` . De vaardigheids uitvoer is een lijst waarvan de `reviews_text` is gesegmenteerd in 5000 teken segmenten. De uitvoer van de gesplitste vaardigheid krijgt de naam `pages` en wordt toegevoegd aan de verrijkings structuur. Met deze `targetName` functie kunt u de naam van een vaardigheids uitvoer wijzigen voordat u deze aan de verrijkings structuur toevoegt.
 
 De verrijkings structuur heeft nu een nieuw knoop punt dat is geplaatst in de context van de vaardigheid. Dit knoop punt is beschikbaar voor elke vaardigheid, projectie of uitvoer veld toewijzing.
 
 
-Het hoofd knooppunt voor alle verrijkingen `"/document"`is. Bij het werken met Blob-Indexeer functies `"/document"` heeft het knoop punt onderliggende knoop `"/document/content"` punten `"/document/normalized_images"`van en. Als we in dit voor beeld werken met CSV-gegevens, worden de kolom namen toegewezen aan de onderliggende `"/document"`knoop punten. Voor toegang tot een van de verrijkingen die aan een knoop punt worden toegevoegd door een vaardigheid, is het volledige pad voor de verrijking nodig. Als u de tekst van het ```pages``` knoop punt bijvoorbeeld wilt gebruiken als invoer voor een andere vaardigheid, moet u deze opgeven als. ```"/document/reviews_text/pages/*"```
+Het hoofd knooppunt voor alle verrijkingen is `"/document"` . Bij het werken met Blob-Indexeer functies `"/document"` heeft het knoop punt onderliggende knoop punten van `"/document/content"` en `"/document/normalized_images"` . Als we in dit voor beeld werken met CSV-gegevens, worden de kolom namen toegewezen aan de onderliggende knoop punten `"/document"` . Voor toegang tot een van de verrijkingen die aan een knoop punt worden toegevoegd door een vaardigheid, is het volledige pad voor de verrijking nodig. Als u de tekst van het knoop punt bijvoorbeeld wilt gebruiken ```pages``` als invoer voor een andere vaardigheid, moet u deze opgeven als ```"/document/reviews_text/pages/*"``` .
  
  ![verrijkings structuur na vaardigheid #1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Verrijkings structuur nadat Kwalificatie #1 uitgevoerd")
 
@@ -104,7 +104,7 @@ Het hoofd knooppunt voor alle verrijkingen `"/document"`is. Bij het werken met B
  
  ### <a name="skill-3-key-phrases-skill"></a>Vaardig heden #3: vaardigheid van sleutel zinnen 
 
-Gezien de context van ```/document/reviews_text/pages/*``` de vaardig heden van de sleutel zinnen wordt één keer aangeroepen voor elk van de items `pages` in de verzameling. De uitvoer van de vaardigheid is een knoop punt onder het bijbehorende pagina-element. 
+Gezien de context van ```/document/reviews_text/pages/*``` de vaardig heden van de sleutel zinnen wordt één keer aangeroepen voor elk van de items in de `pages` verzameling. De uitvoer van de vaardigheid is een knoop punt onder het bijbehorende pagina-element. 
 
  Nu kunt u de rest van de vaardig heden in de vakkennisset bekijken en visualiseren hoe de structuur van verrijkingen blijft groeien met de uitvoering van elke vaardigheid. Sommige vaardig heden, zoals het samen voegen van vaardig heden en de shaper-vaardigheid, maken ook nieuwe knoop punten, maar gebruiken alleen gegevens van bestaande knoop punten en maken geen nieuwe verrijkingen.
 
@@ -126,7 +126,7 @@ Er zijn twee manieren om een projectie te definiëren. U kunt een shaper-vaardig
 
 De shaper-benadering is uitgebreider dan in line vorm, maar zorgt ervoor dat alle mutaties van de verrijkings structuur in de vaardig heden zijn opgenomen en dat de uitvoer een object is dat opnieuw kan worden gebruikt. Met inline-vormgeving kunt u de vorm maken die u nodig hebt, maar dit is een anoniem object dat alleen beschikbaar is voor de projectie waarvoor het is gedefinieerd. De benaderingen kunnen samen of afzonderlijk worden gebruikt. De vaardig heden die u voor u hebt gemaakt in de werk stroom van de portal bevat beide. Er wordt gebruikgemaakt van een shaper-vaardigheid voor de tabel projecties, maar maakt ook gebruik van inline-vorm om de tabel met sleutel zinnen te projecteren.
 
-Om het voor beeld uit te breiden, kunt u ervoor kiezen om de inline-vorm te verwijderen en een shaper-vaardigheid te gebruiken om een nieuw knoop punt voor de sleutel zinnen te maken. Als u een vorm wilt maken die in drie tabellen is geprojecteerd, namelijk `hotelReviewsDocument` `hotelReviewsPages`,, en `hotelReviewsKeyPhrases`, worden de twee opties beschreven in de volgende secties.
+Om het voor beeld uit te breiden, kunt u ervoor kiezen om de inline-vorm te verwijderen en een shaper-vaardigheid te gebruiken om een nieuw knoop punt voor de sleutel zinnen te maken. Als u een vorm wilt maken die in drie tabellen is geprojecteerd, namelijk,, `hotelReviewsDocument` `hotelReviewsPages` en `hotelReviewsKeyPhrases` , worden de twee opties beschreven in de volgende secties.
 
 
 #### <a name="shaper-skill-and-projection"></a>Shaper vaardig heden en projectie 
@@ -204,7 +204,7 @@ Om het voor beeld uit te breiden, kunt u ervoor kiezen om de inline-vorm te verw
 }
 ```
 
-Met het `tableprojection` knoop punt dat in `outputs` de bovenstaande sectie is gedefinieerd, kunnen we nu de segmenting-functie gebruiken om `tableprojection` delen van het knoop punt in verschillende tabellen te projecteren:
+Met het `tableprojection` knoop punt dat in de `outputs` bovenstaande sectie is gedefinieerd, kunnen we nu de segmenting-functie gebruiken om delen van het `tableprojection` knoop punt in verschillende tabellen te projecteren:
 
 > [!Note]
 > Dit is slechts een fragment van de projectie binnen de configuratie van het kennis archief.
@@ -295,7 +295,7 @@ Voor de inline-vorm benadering is geen shaper-vaardigheid vereist, omdat alle sh
 ]
 ```
   
-Een waarneming van beide benaderingen is hoe waarden van worden `"Keyphrases"` geprojecteerd met behulp van de `"sourceContext"`. Het `"Keyphrases"` knoop punt, dat een verzameling teken reeksen bevat, is zelf een onderliggend element van de pagina tekst. Omdat projecties echter een JSON-object vereisen en de pagina een primitieve (teken reeks) is, wordt `"sourceContext"` het gebruikt om de sleutel woorden in een object met een benoemde eigenschap op te slaan. Met deze techniek kunnen zelfs primitieven worden geprojecteerd.
+Een waarneming van beide benaderingen is hoe waarden van `"Keyphrases"` worden geprojecteerd met behulp van de `"sourceContext"` . Het `"Keyphrases"` knoop punt, dat een verzameling teken reeksen bevat, is zelf een onderliggend element van de pagina tekst. Omdat projecties echter een JSON-object vereisen en de pagina een primitieve (teken reeks) is, `"sourceContext"` wordt het gebruikt om de sleutel woorden in een object met een benoemde eigenschap op te slaan. Met deze techniek kunnen zelfs primitieven worden geprojecteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

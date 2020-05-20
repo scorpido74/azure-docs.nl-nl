@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217920"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659920"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hoe een model van Machine Learning Studio (klassiek) van een experiment naar een webservice wordt uitgevoerd
 
@@ -34,7 +34,7 @@ Zodra u tevreden bent met uw experiment, kunt u dit implementeren als een ***kla
 In dit artikel geven we een overzicht van de mechanismen van hoe uw Machine Learning model van een ontwikkelings experiment naar een operationele webservice verloopt.
 
 > [!NOTE]
-> Er zijn andere manieren om machine learning modellen te ontwikkelen en te implementeren, maar dit artikel is gericht op de manier waarop u Machine Learning Studio (klassiek) gebruikt. Als u bijvoorbeeld een beschrijving wilt lezen van het maken van een klassieke voorspellende webservice met R, raadpleegt u het blog bericht [Build & het implementeren van voorspellende web apps met behulp van RStudio en Azure machine learning Studio](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Er zijn andere manieren om machine learning modellen te ontwikkelen en te implementeren, maar dit artikel is gericht op de manier waarop u Machine Learning Studio (klassiek) gebruikt. Als u bijvoorbeeld een beschrijving wilt lezen van het maken van een klassieke voorspellende webservice met R, raadpleegt u het blog bericht [Build & het implementeren van voorspellende web apps met behulp van RStudio en Azure machine learning Studio](https://docs.microsoft.com/archive/blogs/machinelearning/build-deploy-predictive-web-apps-using-rstudio-and-azure-ml).
 >
 >
 

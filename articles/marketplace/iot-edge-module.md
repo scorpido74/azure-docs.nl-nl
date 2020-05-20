@@ -1,26 +1,26 @@
 ---
-title: IoT Edge modules voor Azure Marketplace
-description: De IoT Edge-module bieden in de Azure Marketplace voor app-en service-Publishers.
+title: Azure Marketplace IoT Edge-module aanbiedingen
+description: Meer informatie over het publiceren van IoT Edge module-aanbiedingen in azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684343"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657952"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
-Het [Azure IOT Edge](https://azure.microsoft.com/services/iot-edge/) -platform wordt ondersteund door de Azure-Cloud.  Met dit platform kunnen gebruikers Cloud werkbelastingen implementeren die rechtstreeks op IoT-apparaten worden uitgevoerd.  Een IoT Edge module kan offline workloads uitvoeren en gegevens analyse lokaal doen. Met dit type aanbieding kunt u band breedte besparen, lokale en gevoelige gegevens beveiligen en een reactie tijd van lage latentie bieden.  U hebt nu de mogelijkheid om te profiteren van deze vooraf ontwikkelde werk belastingen. Tot nu toe zijn er slechts enkele oplossingen van de eerste partij beschikbaar.  U moest de tijd en resources investeren in het bouwen van uw eigen aangepaste IoT-oplossingen.
+Het [Azure IOT Edge](https://azure.microsoft.com/services/iot-edge/) -platform wordt ondersteund door Microsoft Azure.  Met dit platform kunnen gebruikers Cloud werkbelastingen implementeren die rechtstreeks op IoT-apparaten worden uitgevoerd.  Een IoT Edge module kan offline workloads uitvoeren en gegevens analyse lokaal doen. Met dit type aanbieding kunt u band breedte besparen, lokale en gevoelige gegevens beveiligen en een reactie tijd van lage latentie bieden.  U hebt nu de mogelijkheid om te profiteren van deze vooraf ontwikkelde werk belastingen. Tot nu toe zijn er slechts enkele oplossingen van de eerste partij beschikbaar.  U moest de tijd en resources investeren in het bouwen van uw eigen aangepaste IoT-oplossingen.
 
-Door de [IOT Edge-modules in de Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)te introduceren, hebben we nu één doel voor uitgevers om hun oplossingen beschikbaar te maken en te verkopen aan de IOT-doel groep. IoT-ontwikkel aars kunnen uiteindelijk mogelijkheden vinden en kopen om de ontwikkeling van oplossingen te versnellen.  
+Met [IOT Edge modules in de Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)hebben we nu één doel voor uitgevers om hun oplossingen beschikbaar te maken en te verkopen aan de IOT-doel groep. IoT-ontwikkel aars kunnen uiteindelijk mogelijkheden vinden en kopen om de ontwikkeling van oplossingen te versnellen.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Belangrijkste voor delen van IoT Edge-modules in azure Marketplace:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Belangrijkste voor delen van IoT Edge modules in azure Marketplace
 
 | **Voor uitgevers**    | **Voor klanten (IoT-ontwikkel aars)**  |
 | :------------------- | :-------------------|

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884829"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658482"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW)
 
@@ -23,7 +23,7 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 
  Azure Synapse heeft vier onderdelen:
 
-- SQL Analytics: op T-SQL gebaseerde analyses volt ooien
+- Synapse SQL: op T-SQL gebaseerde analyses volt ooien
 
   - SQL-groep (betalen per DWU ingericht): algemeen beschikbaar
   - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
@@ -39,7 +39,7 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 
 ![Synapse SQL-architectuur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Analytics maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor SQL Analytics. Het controle knooppunt voert de MPP-engine uit, waarmee query's voor parallelle verwerking worden geoptimaliseerd. vervolgens worden bewerkingen aan reken knooppunten door gegeven om hun werk parallel uit te voeren.
+Synapse SQL maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor Synapse SQL. Het controle knooppunt voert de MPP-engine uit, waarmee query's voor parallelle verwerking worden geoptimaliseerd. vervolgens worden bewerkingen aan reken knooppunten door gegeven om hun werk parallel uit te voeren.
 
 De rekenknooppunten slaan alle gebruikersgegevens op in Azure Storage en voeren de parallelle query's uit. De DMS (Data Movement Service) is een interne service op systeemniveau die de gegevens naar de knooppunten verplaatst om tegelijkertijd query's te kunnen uitvoeren en nauwkeurige resultaten te retourneren.
 
@@ -74,7 +74,7 @@ Gegevens verplaatsings service (DMS) is de gegevens transport technologie die de
 
 ## <a name="distributions"></a>Distributies
 
-Een distributie is de basiseenheid voor opslag en verwerking van parallelle query's die op gedistribueerde gegevens worden uitgevoerd. Wanneer met SQL Analytics een query wordt uitgevoerd, wordt het werk onderverdeeld in 60 kleinere query's die parallel worden uitgevoerd.
+Een distributie is de basiseenheid voor opslag en verwerking van parallelle query's die op gedistribueerde gegevens worden uitgevoerd. Wanneer Synapse SQL een query uitvoert, wordt het werk onderverdeeld in 60 kleinere query's die parallel worden uitgevoerd.
 
 Elk van de 60 kleinere query's worden uitgevoerd op een van de gegevens distributies. Elk Compute-knoop punt beheert een of meer van de 60-distributies. Een SQL-groep met maximale Compute-resources heeft één distributie per reken knooppunt. Een SQL-groep met minimale Compute-resources heeft alle distributies op één reken knooppunt.  
 
@@ -120,5 +120,5 @@ Nu u een beetje weet over Azure Synapse, leert u hoe u snel [een SQL-groep maakt
 - [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
 - [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
-- [Stack Overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

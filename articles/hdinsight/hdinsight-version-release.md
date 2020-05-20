@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/14/2020
+ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929295"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652382"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Overzicht van Azure HDInsight 4,0
 
@@ -94,11 +94,10 @@ Er wordt geen ondersteund upgradepad van eerdere versies van HDInsight naar HDIn
 * De Hive-weer gave is niet meer beschikbaar in HDInsight 4,0.
 * Shell-interpreter in Apache Zeppelin wordt niet ondersteund in Spark-en interactieve query clusters.
 * U kunt LLAP in een Apache Spark-LLAP-cluster niet *uitschakelen*. U kunt alleen LLAP uitschakelen.
-* Azure Data Lake Storage Gen2 kan Juypter-notitieblokken niet opslaan in een Apache Spark-cluster.
+* Azure Data Lake Storage Gen2 kunt geen Jupyter-notebooks opslaan in een Spark-cluster.
 * Apache-Pig wordt standaard uitgevoerd op TEZ, maar u kunt dit echter wijzigen in MapReduce
 * De integratie van Spark SQL zwerver voor rij-en kolom beveiliging is afgeschaft
-* Spark 2,4 en Kafka 2,1 zijn beschikbaar in HDInsight 4,0, dus Spark 2,3 en Kafka 1,1 worden niet meer ondersteund. U kunt het beste Spark 2,4 & Kafka 2,3 en hoger in HDInsight 4,0 gebruiken.
-
+* Spark 2,4 en Kafka 2,1 zijn beschikbaar in HDInsight 4,0, dus Spark 2,3 en Kafka 1,1 worden niet meer ondersteund. U kunt het beste Spark 2,4 & Kafka 2,1 en hoger in HDInsight 4,0 gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

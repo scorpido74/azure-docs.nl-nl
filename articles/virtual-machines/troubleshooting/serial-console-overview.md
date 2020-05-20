@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267012"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656480"
 ---
 # <a name="azure-serial-console"></a>Azure-seriële console
 
@@ -45,7 +45,7 @@ De seriële console voor Vm's en schaal sets voor virtuele machines is alleen to
 
 ### <a name="serial-console-for-virtual-machines"></a>Seriële console voor Virtual Machines
 Seriële console voor Vm's is net zo eenvoudig als klikken op **seriële console** in de sectie **ondersteuning en probleem oplossing** in de Azure Portal.
-  1. Open de [Azure Portal](https://portal.azure.com).
+  1. Open [Azure Portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een virtuele machine. De overzichts pagina voor de VM wordt geopend.
 
@@ -55,7 +55,7 @@ Seriële console voor Vm's is net zo eenvoudig als klikken op **seriële console
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Seriële console voor Virtual Machine Scale Sets
 Seriële console is beschikbaar voor schaal sets voor virtuele machines, die toegankelijk zijn voor elk exemplaar in de schaalset. U moet naar de afzonderlijke instantie van een schaalset voor virtuele machines gaan voordat u de knop **seriële console** ziet. Als voor de virtuele-machine schaal sets geen diagnostische gegevens over opstarten zijn ingeschakeld, moet u het model voor de schaalset van de virtuele machine bijwerken om diagnostische gegevens over opstarten in te scha kelen en vervolgens alle exemplaren naar het nieuwe model bijwerken om toegang te krijgen tot de seriële console.
-  1. Open de [Azure Portal](https://portal.azure.com).
+  1. Open [Azure Portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een schaalset voor virtuele machines. De overzichts pagina voor de schaalset voor virtuele machines wordt geopend.
 
@@ -66,6 +66,10 @@ Seriële console is beschikbaar voor schaal sets voor virtuele machines, die toe
   1. Selecteer **seriële console**in het gedeelte **ondersteuning en probleem oplossing** . Er wordt een nieuw deel venster met de seriële console geopend en de verbinding wordt gestart.
 
      ![Seriële console voor virtuele Linux-machine schaal sets](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>TLS 1,2 in seriële console
+Seriële console maakt gebruik van TLS 1,2 end-to-end om alle communicatie binnen de service te beveiligen. Seriële console heeft een afhankelijkheid van een door de gebruiker beheerde diagnose voor diagnostische gegevens over opstarten en TLS 1,2 moet afzonderlijk worden geconfigureerd voor het opslag account. Instructies hiervoor vindt u [hier](https://docs.microsoft.com/azure/storage/common/storage-security-tls).
 
 ## <a name="advanced-uses-for-serial-console"></a>Geavanceerd gebruik van seriële console
 Afgezien van de toegang tot de console tot uw virtuele machine, kunt u ook de Azure Serial console gebruiken voor het volgende:

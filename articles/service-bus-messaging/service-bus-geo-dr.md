@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/29/2020
 ms.author: aschhab
-ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5a1e7a7ef73825b4b13d2f36c1c8554fdc2a9b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209397"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647843"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-nood herstel
 
@@ -145,6 +145,43 @@ De Service Bus Premium SKU biedt ook ondersteuning voor [Beschikbaarheidszones](
 U kunt Beschikbaarheidszones alleen inschakelen voor nieuwe naam ruimten, met behulp van de Azure Portal. Service Bus biedt geen ondersteuning voor de migratie van bestaande naam ruimten. U kunt zone redundantie niet uitschakelen nadat u deze in uw naam ruimte hebt ingeschakeld.
 
 ![3][]
+
+## <a name="private-endpoints"></a>Privé-eind punten
+Deze sectie bevat aanvullende overwegingen bij het gebruik van geo-nood herstel met naam ruimten die persoonlijke eind punten gebruiken. Zie [Azure service bus met persoonlijke Azure-koppeling integreren](private-link-service.md)voor meer informatie over het gebruik van privé-eind punten met Service Bus in het algemeen.
+
+### <a name="new-pairings"></a>Nieuwe paren
+Als u probeert een koppeling te maken tussen een primaire naam ruimte met een persoonlijk eind punt en een secundaire naam ruimte zonder persoonlijk eind punt, mislukt de koppeling. De koppeling kan alleen worden uitgevoerd als zowel de primaire als de secundaire naam ruimte persoonlijke eind punten hebben. U wordt aangeraden dezelfde configuraties te gebruiken voor de primaire en secundaire naam ruimten en op virtuele netwerken waarin privé-eind punten worden gemaakt. 
+
+> [!NOTE]
+> Wanneer u probeert de primaire naam ruimte te koppelen aan een persoonlijk eind punt en de secundaire naam ruimte, controleert het validatie proces alleen of er een persoonlijk eind punt bestaat op de secundaire naam ruimte. Er wordt niet gecontroleerd of het eind punt werkt of werkt na een failover. Het is uw verantwoordelijkheid om ervoor te zorgen dat de secundaire naam ruimte met het persoonlijke eind punt op de verwachte manier werkt na een failover.
+>
+> Als u wilt testen of de configuraties van het particuliere eind punt hetzelfde zijn, verzendt u een aanvraag voor het [ophalen van wacht rijen](/rest/api/servicebus/queues/get) naar de secundaire naam ruimte van buiten het virtuele netwerk en controleert u of u een fout bericht van de service ontvangt.
+
+### <a name="existing-pairings"></a>Bestaande paren
+Als er al een koppeling tussen de primaire en secundaire naam ruimte bestaat, mislukt het maken van een persoonlijk eind punt in de primaire naam ruimte. Als u wilt oplossen, maakt u eerst een persoonlijk eind punt in de secundaire naam ruimte en maakt u er er een voor de primaire naam ruimte.
+
+> [!NOTE]
+> Hoewel we alleen-lezen toegang tot de secundaire naam ruimte toestaan, worden updates voor de configuraties van particuliere endpoints toegestaan. 
+
+### <a name="recommended-configuration"></a>Aanbevolen configuratie
+Bij het maken van een configuratie voor herstel na nood gevallen voor uw toepassing en Service Bus, moet u persoonlijke eind punten maken voor zowel de primaire als de secundaire Service Bus naam ruimten voor virtuele netwerken die zowel de primaire als de secundaire exemplaren van uw toepassing hosten.
+
+Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en tweede naam ruimten: ServiceBus-Namespace1-Primary, ServiceBus-Namespace2-secundair. U moet de volgende stappen uitvoeren: 
+
+- Maak op ServiceBus-Namespace1-Primary twee persoonlijke eind punten die gebruikmaken van subnetten van VNET-1 en VNET-2
+- Maak op ServiceBus-Namespace2-secundair twee persoonlijke eind punten die gebruikmaken van dezelfde subnetten van VNET-1 en VNET-2 
+
+![Persoonlijke eind punten en virtuele netwerken](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Service Bus naam ruimte. Neem de volgende scenario's: 
+
+**Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
+
+**Service Bus failover van de naam ruimte**: hier wordt de toepassing opnieuw uitgevoerd, omdat beide particuliere eind punten zijn geconfigureerd voor virtuele netwerken voor zowel de primaire als de secundaire naam ruimte. 
+
+> [!NOTE]
+> Zie [Virtual Network-Business continuïteit](../virtual-network/virtual-network-disaster-recovery-guidance.md)(Engelstalig) voor meer informatie over het herstel van geo-nood gevallen van een virtueel netwerk.
 
 ## <a name="next-steps"></a>Volgende stappen
 

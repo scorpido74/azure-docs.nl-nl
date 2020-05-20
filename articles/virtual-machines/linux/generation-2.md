@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084274"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652526"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -35,13 +35,13 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [HB-serie](../hb-series.md)
 * [HC-serie](../hc-series.md)
 * [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) en [Lsv2-serie](../lsv2-series.md)
-* [Mv2-serie](../mv2-series.md)
+* [M-serie](../m-series.md)
+* [Mv2-serie](../mv2-series.md)<sup>1</sup>
 * [NCv2-serie](../ncv2-series.md) en [NCv3-serie](../ncv3-series.md)
 * [ND-serie](../nd-series.md)
 * [NVv3-serie](../nvv3-series.md)
 
-> [!NOTE]
-> Het gebruik van VM-installatie kopieën van de tweede generatie voor virtuele machines uit de Mv2-serie is algemeen beschikbaar omdat de Mv2-serie alleen werkt met installatie kopieën van de 2e generatie. VM-installatie kopieën van de eerste generatie worden niet ondersteund op Vm's uit de Mv2-serie. 
+<sup>1</sup> Mv2-serie biedt geen ondersteuning voor generatie 1 VM-installatie kopieën en biedt alleen ondersteuning voor een subset van installatie kopieën van de 2e generatie. Raadpleeg de [documentatie van de Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/mv2-series) voor meer informatie.
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-installatie kopieën van generatie 2 in azure Marketplace
 
@@ -74,7 +74,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 | Functie | Eerste generatie | Tweede generatie |
 |---------|--------------|--------------|
-| Modus             | PCAT         | UEFI |
+| Opstarten             | PCAT         | UEFI |
 | Schijf controllers | IDE          | SCSI |
 | Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
@@ -104,7 +104,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **maken**.
+1. Klik op **Maken**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
@@ -116,16 +116,10 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 
 U kunt ook Power shell gebruiken om een virtuele machine te maken door rechtstreeks te verwijzen naar de SKU van de eerste en 2e generatie.
 
-Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's `WindowsServer` in de aanbieding.
+Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's in de `WindowsServer` aanbieding.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-U kunt ook de Azure CLI gebruiken voor een overzicht van alle beschik bare installatie kopieën van de tweede generatie, vermeld door **Publisher**.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt, selecteert u de VM-SKU van generatie 1 (BIOS) of generatie 2 (UEFI), die er als volgt uitziet:
@@ -136,6 +130,14 @@ Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt,
 ```
 
 Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor een huidige lijst met ondersteunde Marketplace-installatie kopieën.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+U kunt ook de Azure CLI gebruiken voor een overzicht van alle beschik bare installatie kopieën van de tweede generatie, vermeld door **Publisher**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Beheerde installatie kopie of beheerde schijf
 

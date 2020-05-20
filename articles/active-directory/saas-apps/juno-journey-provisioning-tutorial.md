@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641847"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647737"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Zelf studie: Juno traject configureren voor automatische gebruikers inrichting
 
@@ -40,17 +40,17 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 * [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
-*  Een [Juno-reis-Tenant](https://www.junojourney.com/getstartedwithjuno).
+*  Een [Juno-reis-Tenant](https://www.junojourney.com/blank).
 *  Een gebruikers account in Juno traject met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Juno traject](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Stap 2. Juno traject configureren ter ondersteuning van inrichting met Azure AD
 
-1. Voor een **geheim token** en **Tenant-URL** neemt u contact op support@the-juno.commet Juno traject-ondersteunings team op. Deze waarde wordt respectievelijk ingevoerd in de velden **geheim** en **Tenant-URL** op het tabblad inrichten van uw Juno-reis toepassing in de Azure Portal. 
+1. Voor een **geheim token** en **Tenant-URL** neemt u contact op met Juno traject-ondersteunings team op support@the-juno.com . Deze waarde wordt respectievelijk ingevoerd in de velden **geheim** en **Tenant-URL** op het tabblad inrichten van uw Juno-reis toepassing in de Azure Portal. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>Stap 3. Juno traject toevoegen vanuit de Azure AD-toepassings galerie
 
@@ -71,7 +71,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Juno traject in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

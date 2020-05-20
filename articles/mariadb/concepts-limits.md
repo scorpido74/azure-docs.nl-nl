@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/1/2020
-ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632330"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653136"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure Database for MariaDB
 In de volgende secties worden capaciteit, ondersteuning voor opslag-engine, ondersteuning van bevoegdheden, ondersteuning voor gegevens manipulatie en functionele limieten in de database service beschreven.
@@ -22,7 +22,7 @@ De minimum-en maximum waarden van verschillende populaire server parameters word
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
@@ -48,11 +48,11 @@ Het maken van nieuwe client verbindingen met MariaDB kost tijd en wanneer de ver
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-De query cache is standaard uitgeschakeld. Configureer de `query_cache_type` para meter om de query-cache in te scha kelen. 
+De query cache is standaard uitgeschakeld. Configureer de para meter om de query-cache in te scha kelen `query_cache_type` . 
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -72,7 +72,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -92,7 +92,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -112,7 +112,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -132,7 +132,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -152,6 +152,12 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 De tijdzone tabellen kunnen worden gevuld door de `mysql.az_load_timezone` opgeslagen procedure aan te roepen vanuit een hulp programma zoals de MySQL-opdracht regel of MySQL Workbench. Raadpleeg de [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) -of [Azure cli](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) -artikelen voor informatie over het aanroepen van de opgeslagen procedure en het instellen van de tijd zones globaal of sessie niveau.
 
+### <a name="innodb_file_per_table"></a>innodb_file_per_table
+
+MariaDB slaat de InnoDB-tabel op in verschillende tablespaces op basis van de configuratie die u hebt gemaakt tijdens het maken van de tabel. De [systeem-tabel ruimte](https://mariadb.com/kb/en/innodb-system-tablespaces/) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
+
+Azure Database for MariaDB ondersteunt Maxi maal **1 TB**in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
+
 ## <a name="storage-engine-support"></a>Ondersteuning voor opslag engine
 
 ### <a name="supported"></a>Ondersteund
@@ -168,7 +174,7 @@ De tijdzone tabellen kunnen worden gevuld door de `mysql.az_load_timezone` opges
 ### <a name="unsupported"></a>Niet ondersteund
 - DBA-rol: veel server parameters en instellingen kunnen per ongeluk de prestaties van de server afnemen of ACID-eigenschappen van het DBMS ontzeggen. Als zodanig, voor het onderhouden van de service-integriteit en SLA op een product niveau, geeft deze service de rol van DBA niet weer. Het standaard gebruikers account, dat wordt gebouwd wanneer een nieuwe data base-instantie wordt gemaakt, stelt die gebruiker in staat om het meren deel van de DDL-en DML-instructies in het beheerde data base-exemplaar uit te voeren.
 - SUPER bevoegdheid: een soort gelijke [Super bevoegdheid](https://mariadb.com/kb/en/library/grant/#global-privileges) is ook beperkt.
-- DEFINE: vereist Super privileges om te maken en beperkt. Als u gegevens importeert met behulp van een `CREATE DEFINER` back-up, verwijdert u `--skip-definer` de opdrachten hand matig of gebruikt u de opdracht bij het uitvoeren van een mysqldump.
+- DEFINE: vereist Super privileges om te maken en beperkt. Als u gegevens importeert met behulp van een back-up, verwijdert u de `CREATE DEFINER` opdrachten hand matig of gebruikt u de `--skip-definer` opdracht bij het uitvoeren van een mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Ondersteuning voor gegevens manipulatie-instructies
 
@@ -201,7 +207,7 @@ De tijdzone tabellen kunnen worden gevuld door de `mysql.az_load_timezone` opges
 - Raadpleeg de [prijs categorie](concepts-pricing-tiers.md) voor de limieten voor opslag grootte per prijs categorie.
 
 ## <a name="current-known-issues"></a>Huidige bekende problemen
-- MariaDB-Server exemplaar geeft de onjuiste server versie weer nadat de verbinding tot stand is gebracht. Gebruik de `select version();` opdracht om de juiste engine versie van Server exemplaar op te halen.
+- MariaDB-Server exemplaar geeft de onjuiste server versie weer nadat de verbinding tot stand is gebracht. Gebruik de opdracht om de juiste engine versie van Server exemplaar op te halen `select version();` .
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Wat is er beschikbaar in elke servicelaag](concepts-pricing-tiers.md)

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/15/2018
-ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2018
+ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670216"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649397"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Functies in Azure Monitor-logboek query's gebruiken
 
@@ -23,13 +23,10 @@ Maak een functie met Log Analytics in het Azure Portal door op **Opslaan** te kl
 
 | Instelling | Beschrijving |
 |:---|:---|
-| Naam           | Weergave naam voor de query in **query Explorer**. |
+| Name           | Weergave naam voor de query in **query Explorer**. |
 | Opslaan als        | Functie |
 | Functie alias | Korte naam voor het gebruik van de functie in andere query's. Mag geen spaties bevatten en moet uniek zijn. |
 | Categorie       | Een categorie voor het ordenen van opgeslagen query's en functies in **query Explorer**. |
-
-> [!NOTE]
-> Een functie in Azure Monitor kan geen andere functie bevatten.
 
 
 

@@ -1,14 +1,14 @@
 ---
 title: Uw Azure-resources verkennen
 description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76156978"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654498"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
@@ -37,7 +37,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> De cmdlet `Search-AzGraph` Azure PowerShell retourneert standaard een **PSCustomObject** . Om ervoor te hebben dat de uitvoer er hetzelfde uitziet als wat wordt geretourneerd door `ConvertTo-Json` Azure CLI, wordt de cmdlet gebruikt. De standaard waarde voor **diepte** is _2_. Als u deze instelt op _100_ , worden alle geretourneerde niveaus geconverteerd.
+> De `Search-AzGraph` cmdlet Azure PowerShell retourneert standaard een **PSCustomObject** . Om ervoor te hebben dat de uitvoer er hetzelfde uitziet als wat wordt geretourneerd door Azure CLI, `ConvertTo-Json` wordt de cmdlet gebruikt. De standaard waarde voor **diepte** is _2_. Als u deze instelt op _100_ , worden alle geretourneerde niveaus geconverteerd.
 
 De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 
@@ -305,7 +305,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Zie de `join` [lijst virtuele machines met hun netwerk interface en openbaar IP-](../samples/advanced.md#join-vmpip) voor beeld voor meer informatie over het uitvoeren van deze stappen in één query met de operator.
+`join`Zie de [lijst virtuele machines met hun netwerk interface en openbaar IP-](../samples/advanced.md#join-vmpip) voor beeld voor meer informatie over het uitvoeren van deze stappen in één query met de operator.
 
 ## <a name="next-steps"></a>Volgende stappen
 

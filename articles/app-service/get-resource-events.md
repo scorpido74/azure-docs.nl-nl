@@ -4,12 +4,12 @@ description: Meer informatie over het ophalen van bron gebeurtenissen via activi
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 1fd283f95823a67319dc467a3a1d6251193182da
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124734"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649066"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Resource gebeurtenissen in Azure App Service ophalen
 
@@ -41,29 +41,7 @@ Hoewel activiteiten logboeken op basis van een gebruiker zijn gebaseerd, is er e
 
 U kunt Event Grid ook gebruiken met Logic Apps om op elke locatie gegevens te verwerken, zonder dat u hiervoor code hoeft te schrijven. Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid bijvoorbeeld om direct een serverloze functie te triggeren voor het uitvoeren van beeldanalyse zodra er een nieuwe foto wordt toegevoegd aan de container voor blob-opslag.
 
-### <a name="supported-event-types"></a>Ondersteunde gebeurtenis typen
-| Gebeurtenistype |Beschrijving|
-| -----------| ------------- |
-| Micro soft. web/sites | Ding |
-| BackupOperationCompleted |De back-up van de webapp is voltooid|
-| BackupOperationFailed | Kan geen back-up maken van de webapp|
-| RestoreOperationStarted |Het terugzetten vanuit de back-up is gestart|
-| RestoreOperationCompleted |Het terugzetten van de back-up is voltooid|
-| RestoreOperationFailed |Herstellen vanaf back-up is mislukt|
-| SlotSwapStarted |Wisseling van sleuven is gestart|
-| SlotSwapCompleted |Het wisselen van de sleuf is voltooid|
-| SlotSwapFailed |Wisseling van sleuf is mislukt|
-| SlotSwapWithPreviewStarted |Sleuf wisseling met preview is gestart|
-| SlotSwapWithPreviewCancelled |Wisseling van sleuven met preview is mislukt|
-| AppUpdated | |
-| Gestart | De webapp is opnieuw gestart |
-| Gestopt | De webapp is gestopt |
-| ChangedAppSettings | App-instellingen op de webapp zijn gewijzigd |
-| - | - |
-| Micro soft. web/server farms | (App Service plan) |
-| AspUpdated | Het app service-plan is bijgewerkt. Het gebeurtenis object bevat details over de eigenschappen die zijn gewijzigd. |
-| Omhoog/omlaag schalen | Het app service-plan is omhoog of omlaag geschaald. Het gebeurtenis object bevat het aantal instanties.|
-
+[De eigenschappen en het schema voor Azure App Service gebeurtenissen weer geven.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Volgende stappen
 * [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

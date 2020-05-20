@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871937"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659350"
 ---
 # <a name="configure-rules"></a>Regels configureren
 
@@ -31,7 +31,7 @@ Gebruik de sectie doel apparaten om te selecteren op welk soort apparaten deze r
 
 Voor waarden worden de regels geactiveerd. Wanneer u op dit moment meerdere voor waarden aan een regel toevoegt, zijn ze logisch en samen. Met andere woorden: aan alle voor waarden moet worden voldaan voordat de regel als waar kan worden geëvalueerd.  
 
-In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter&deg; is dan 70 F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
+In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter is dan 70 &deg; F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
 
 ![Voorwaarden](media/howto-configure-rules/conditions.png)
 
@@ -53,7 +53,4 @@ Een beperking geldt voor regels die worden toegepast op IoT Edge modules. Regels
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een regel in uw Azure IoT Central-toepassing configureert, kunt u het volgende doen:
-
-> [!div class="nextstepaction"]
-> [Uw gegevens onderweg analyseren](howto-create-analytics.md)
+Nu u hebt geleerd hoe u een regel in uw Azure IoT Central-toepassing configureert, kunt u meer informatie over het [configureren van geavanceerde regels](howto-configure-rules-advanced.md) met behulp van automatische energie of Azure Logic apps.

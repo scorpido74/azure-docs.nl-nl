@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 04/29/2020
+ms.date: 05/16/2020
 ms.topic: reference
-ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594250"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655863"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -23,6 +23,10 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - micro soft. alertsmanagement/Alerts
+
+## <a name="healthresources"></a>healthresources
+
+- micro soft. resourcehealth/Events
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -67,6 +71,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Automation/automationaccounts/-configuraties
 - micro soft. Automation/automationaccounts/runbooks
 - micro soft. autonomoussystems/werk ruimten
+- micro soft. AVS/privateclouds
 - micro soft. azconfig/configurationstores
 - micro soft. azureactivedirectory/b2cdirectories
 - micro soft. azureworden/datacontrollers
@@ -74,6 +79,8 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. azureworden/postgresinstances
 - micro soft. azureworden/sqlbigdataclusters
 - micro soft. azureworden/sqlinstances
+- micro soft. azureworden/sqlmanagedinstances
+- micro soft. azureworden/sqlserverinstances
 - micro soft. azureworden/sqlserverregistrations
 - micro soft. azurestack/registraties
 - micro soft. azurestackhci/clusters
@@ -92,6 +99,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Block Chain/volgers
 - micro soft. botservice/botservices
 - micro soft. cache/redis
+- micro soft. cache/redisenterprise
 - micro soft. CDN/cdnwebapplicationfirewallpolicies
 - micro soft. CDN/profielen
 - micro soft. CDN/profielen/eind punten
@@ -126,8 +134,10 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Compute/sharedvmimages/versies
 - micro soft. Compute/moment opnamen
 - micro soft. Compute/sshpublickeys
+- micro soft. Compute/swiftlets
 - micro soft. Compute/informatie
 - micro soft. Compute/informatie/Extensions
+- micro soft. Compute/informatie/RunCommand
 - micro soft. Compute/virtualmachinescalesets
 - micro soft. containerinstance/containergroups
 - micro soft. containerregistry/registers
@@ -213,6 +223,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Hydra/-onderdelen
 - micro soft. Hydra/networkscopes
 - micro soft. importexport/Jobs
+- micro soft. industrydatalifecycle/derivedmodels
 - micro soft. Insights/actiongroups
 - micro soft. Insights/activitylogalerts
 - micro soft. Insights/alertrules
@@ -362,6 +373,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. resourcegraph/query's
 - micro soft. resources/deploymentscripts
 - micro soft. resources/templatespecs
+- micro soft. resources/templatespecs/versies
 - micro soft. SaaS/toepassingen
 - micro soft. scheduler/jobcollections
 - micro soft. Search/searchservices
@@ -377,6 +389,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. servicefabricmesh/Networks
 - micro soft. servicefabricmesh/geheimen
 - micro soft. servicefabricmesh/volumes
+- micro soft. serviceshub/connectors
 - micro soft. signalrservice/Signa lering
 - micro soft. Solutions/appliancedefinitions
 - micro soft. Solutions/toestellen

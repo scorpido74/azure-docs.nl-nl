@@ -3,12 +3,12 @@ title: Knowledge Base-QnA Maker verbeteren
 description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756742"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650771"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Voorgestelde vragen over actieve trainingen in de Knowledge Base accepteren
 
@@ -31,7 +31,7 @@ Als u voorgestelde vragen wilt weer geven, moet u [actief leren inschakelen](use
 
     [![Gebruik de wissel knop filteren op suggesties om alleen de voorgestelde suggesties van het actieve leer proces weer te geven.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Elk QnA paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔` om de vraag of een `x` te accepteren om de suggesties te weigeren. Schakel het selectie vakje in om de vraag toe te voegen.
+1. Elk QnA paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔` om de vraag of een te accepteren `x` om de suggesties te weigeren. Schakel het selectie vakje in om de vraag toe te voegen.
 
     [![Selecteer de suggesties voor de voorgestelde vraag van het actieve leer proces of wijs deze af door het groene vinkje of rode markering voor verwijderen te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -50,7 +50,7 @@ Als u voorgestelde vragen wilt weer geven, moet u [actief leren inschakelen](use
 
 Een bot of andere client toepassing moet de volgende architectuur stroom gebruiken om actief leren te gebruiken:
 
-* Bot [haalt het antwoord op uit de Knowledge Base](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) met de GENERATEANSWER-API met `top` behulp van de eigenschap om een aantal antwoorden op te halen.
+* Bot [haalt het antwoord op uit de Knowledge Base](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) met de GENERATEANSWER-API met behulp van de `top` eigenschap om een aantal antwoorden op te halen.
 * Bot bepaalt expliciete feedback:
     * Met uw eigen [aangepaste bedrijfs logica](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)filtert u de lage scores.
     * In de bot of client-toepassing geeft u een lijst met mogelijke antwoorden op de gebruiker weer en het geselecteerde antwoord van de gebruiker ophalen.
@@ -59,7 +59,7 @@ Een bot of andere client toepassing moet de volgende architectuur stroom gebruik
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Gebruik de eigenschap Top in de GenerateAnswer-aanvraag om verschillende overeenkomende antwoorden te verkrijgen
 
-Bij het indienen van een vraag om QnA Maker voor een antwoord `top` , stelt de eigenschap van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd.
+Bij het indienen van een vraag om QnA Maker voor een antwoord, `top` stelt de eigenschap van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd.
 
 ```json
 {
@@ -127,12 +127,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Eigenschap HTTP-aanvraag|Naam|Type|Doel|
+|Eigenschap HTTP-aanvraag|Name|Type|Doel|
 |--|--|--|--|
 |URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
-|Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Deze wordt weer gegeven als `host`de.|
-|Header|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
-|Header|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Deze wordt weer gegeven als de `host` .|
+|Koptekst|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
+|Koptekst|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 
 De JSON-hoofd tekst heeft verschillende instellingen:
@@ -162,7 +162,7 @@ Een geslaagde reactie retourneert de status 204 en geen JSON-antwoord tekst.
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch-veel feedback records in één aanroep
 
-In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records verzenden in één JSON-hoofd tekst in `feedbackRecords` de matrix.
+In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records verzenden in één JSON-hoofd tekst in de `feedbackRecords` matrix.
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -311,7 +311,7 @@ async callTrain(stepContext){
 
 Wanneer de app actief leren is ingeschakeld en u de app exporteert, behoudt de `SuggestedQuestions` kolom in het TSV-bestand de actieve leer gegevens.
 
-De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete, `autosuggested`en expliciete `usersuggested` feedback. Een voor beeld van dit JSON-object voor één door de gebruiker ingediende vraag `help` is:
+De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete, `autosuggested` en expliciete `usersuggested` feedback. Een voor beeld van dit JSON-object voor één door de gebruiker ingediende vraag `help` is:
 
 ```JSON
 [
@@ -329,11 +329,6 @@ De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete,
     }
 ]
 ```
-
-U kunt ook de API voor het downloaden van wijzigingen gebruiken om deze aanpassingen te controleren met behulp van REST of een van de op taal gebaseerde Sdk's:
-* [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met het verzamelen van informatie en worden suggesties voor uw Knowledge Base aanbevolen.
 

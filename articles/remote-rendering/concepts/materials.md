@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a45dc39f5a0795684aba278391e04f6af3f7b55
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681842"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659682"
 ---
 # <a name="materials"></a>Materialen
 
@@ -35,9 +35,13 @@ De externe rendering van Azure heeft twee verschillende materiaal typen:
 
 Wanneer u een materiaal rechtstreeks op de netresource wijzigt, geldt deze wijziging voor alle exemplaren van dat net. Het wijzigen van de waarde op de MeshComponent heeft echter alleen invloed op die ene mesh-instantie. Welke methode het meest geschikt is, is afhankelijk van het gewenste gedrag, maar het wijzigen van een MeshComponent is de meest voorkomende benadering.
 
+## <a name="material-de-duplication"></a>Materiaal van de duplicatie
+
+Tijdens de conversie worden meerdere materialen met dezelfde eigenschappen en bitmappatronen automatisch gedupliceerd in één enkel materiaal. U kunt deze functie uitschakelen in de [conversie-instellingen](../how-tos/conversion/configure-model-conversion.md), maar we raden u aan deze in te scha kelen voor de beste prestaties.
+
 ## <a name="material-classes"></a>Materiaal klassen
 
-Alle materialen die door de API worden verschaft, zijn afgeleid van `Material`de basis klasse. Hun type kan worden opgevraagd `Material.MaterialSubType` of door ze rechtstreeks te converteren:
+Alle materialen die door de API worden verschaft, zijn afgeleid van de basis klasse `Material` . Hun type kan worden opgevraagd `Material.MaterialSubType` of door ze rechtstreeks te converteren:
 
 ``` cs
 void SetMaterialColorToGreen(Material material)

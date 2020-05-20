@@ -9,51 +9,47 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2de39a2822056a4539c2dca915a483ab5bbc4965
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220895"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653977"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Versies gebruiken om te bewerken en te testen zonder dat dit van invloed is op staging-of productie-apps
 
-Met versies kunt u verschillende modellen bouwen en publiceren. Het is een goed idee om het huidige actieve model te klonen naar een andere [versie](luis-concept-version.md) van de app voordat u wijzigingen aanbrengt in het model. 
+Met versies kunt u verschillende modellen bouwen en publiceren. Het is een goed idee om het huidige actieve model te klonen naar een andere [versie](luis-concept-version.md) van de app voordat u wijzigingen aanbrengt in het model.
 
-Als u met versies wilt werken, opent u uw app door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **beheren** te selecteren in de bovenste balk en vervolgens **versies** in de linkernavigatiebalk te selecteren. 
+De actieve versie is de versie die u bewerkt in de LUIS-portal voor het **maken** van intenties, entiteiten, functies en patronen. Wanneer u de ontwerp-Api's gebruikt, hoeft u de actieve versie niet in te stellen, omdat de versie-specifieke REST API-aanroepen de versie in de route bevatten.
 
-In de lijst met versies ziet u welke versies worden gepubliceerd, waar ze worden gepubliceerd en welke versie momenteel actief is. 
+Als u met versies wilt werken, opent u uw app door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **beheren** te selecteren in de bovenste balk en vervolgens **versies** in de linkernavigatiebalk te selecteren.
 
-> [!div class="mx-imgBorder"]
-> [![Sectie beheren, pagina versies](./media/luis-how-to-manage-versions/versions-import.png "Sectie beheren, pagina versies")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+In de lijst met versies ziet u welke versies worden gepubliceerd, waar ze worden gepubliceerd en welke versie momenteel actief is.
 
 ## <a name="clone-a-version"></a>Een versie klonen
 
-1. Selecteer de versie die u wilt klonen en selecteer vervolgens **klonen** in de werk balk. 
+1. Selecteer de versie die u wilt klonen en selecteer vervolgens **klonen** in de werk balk.
 
 2. Typ in het dialoog venster **versie klonen** een naam voor de nieuwe versie, bijvoorbeeld ' 0,2 '.
 
    ![Het dialoog venster versie klonen](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
- 
+
      > [!NOTE]
      > De versie-ID mag alleen uit tekens, cijfers of '. ' bestaan en mag niet langer zijn dan 10 tekens.
- 
+
    Er wordt een nieuwe versie met de opgegeven naam gemaakt en deze wordt ingesteld als de actieve versie.
 
 ## <a name="set-active-version"></a>Actieve versie instellen
 
-Selecteer een versie in de lijst en selecteer vervolgens **activeren** in de werk balk. 
-
-> [!div class="mx-imgBorder"]
-> [![Sectie beheren, pagina versies, een versie actie maken](./media/luis-how-to-manage-versions/versions-other.png "Sectie beheren, pagina versies, een versie actie maken")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+Selecteer een versie in de lijst en selecteer vervolgens **activeren** in de werk balk.
 
 ## <a name="import-version"></a>Versie importeren
 
 U kunt een `.json` of een `.lu` versie van uw toepassing importeren.
 
-1. Selecteer **importeren** in de werk balk en selecteer vervolgens de indeling. 
+1. Selecteer **importeren** in de werk balk en selecteer vervolgens de indeling.
 
 2. Voer in het pop-upvenster **nieuwe versie importeren** de nieuwe versie naam van tien tekens in. U hoeft alleen een versie-ID in te stellen als de versie in het bestand al aanwezig is in de app.
 
@@ -69,7 +65,7 @@ U kunt een `.json` of een `.lu` versie van uw toepassing importeren.
 
 ## <a name="other-actions"></a>Overige acties
 
-* Als u een versie wilt **verwijderen** , selecteert u een versie in de lijst en selecteert u vervolgens **verwijderen** op de werk balk. Selecteer **OK**. 
-* Als u de naam van een versie wilt **wijzigen** , selecteert u een versie in de lijst en selecteert u vervolgens **naam wijzigen** in de werk balk. Voer een nieuwe naam in en selecteer **gereed**. 
-* Als u een versie wilt **exporteren** , selecteert u een versie in de lijst en selecteert u vervolgens **app exporteren** in de werk balk. Kies JSON om te exporteren voor back-up. Kies **exporteren voor container** om [deze app te gebruiken in een Luis-container](luis-container-howto.md).  
+* Als u een versie wilt **verwijderen** , selecteert u een versie in de lijst en selecteert u vervolgens **verwijderen** op de werk balk. Selecteer **OK**.
+* Als u de naam van een versie wilt **wijzigen** , selecteert u een versie in de lijst en selecteert u vervolgens **naam wijzigen** in de werk balk. Voer een nieuwe naam in en selecteer **gereed**.
+* Als u een versie wilt **exporteren** , selecteert u een versie in de lijst en selecteert u vervolgens **app exporteren** in de werk balk. Kies JSON om te exporteren voor back-up. Kies **exporteren voor container** om [deze app te gebruiken in een Luis-container](luis-container-howto.md).
 

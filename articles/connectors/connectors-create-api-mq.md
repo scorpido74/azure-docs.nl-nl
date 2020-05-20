@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410271"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652461"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
 
@@ -33,6 +33,7 @@ Dit zijn de officieel ondersteunde IBM WebSphere MQ-versies:
   * MQ 7,5
   * MQ 8,0
   * MQ 9,0
+  * MQ 9,1
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -88,10 +89,10 @@ Wanneer uw logische app verbinding probeert te maken met uw on-premises MQ-serve
 
   1. Op de computer waarop de on-premises gegevens Gateway-Service wordt uitgevoerd, opent u het menu Start, zoekt en selecteert u **gebruikers certificaten beheren**.
 
-  1. Wanneer het hulp programma Windows-certificerings beheer wordt geopend, gaat u naar de map **certificaten-lokale computer** >  met**vertrouwde basis certificerings instanties** en installeert u het certificaat.
+  1. Wanneer het hulp programma Windows-certificerings beheer wordt geopend, gaat u naar de map **certificaten-lokale computer met**  >   **vertrouwde basis certificerings instanties** en installeert u het certificaat.
 
      > [!IMPORTANT]
-     > Zorg ervoor dat u het certificaat installeert in het archief **certificaten-lokale computer** > **vertrouwde basis certificerings instanties** .
+     > Zorg ervoor dat u het certificaat installeert in het archief **certificaten-lokale computer**  >  **vertrouwde basis certificerings instanties** .
 
 * De MQ-server vereist dat u de coderings specificatie definieert die u wilt gebruiken voor SSL-verbindingen. SsLStream in .NET biedt echter geen toestemming om de volg orde voor coderings specificaties op te geven. Als u deze beperking wilt omzeilen, kunt u uw MQ-server configuratie wijzigen zodat deze overeenkomt met de eerste coderings specificatie in de suite die de connector in de SSL-onderhandeling verzendt.
 
@@ -101,7 +102,7 @@ Wanneer uw logische app verbinding probeert te maken met uw on-premises MQ-serve
 
 1. Selecteer **nieuwe stap**onder de trigger of een andere actie in uw logische app.
 
-1. Typ `mq`in het zoekvak en selecteer de actie **bericht zoeken** .
+1. Typ in het zoekvak `mq` en selecteer de actie **bericht zoeken** .
 
    ![Selecteer de actie bericht zoeken](media/connectors-create-api-mq/browse-message.png)
 

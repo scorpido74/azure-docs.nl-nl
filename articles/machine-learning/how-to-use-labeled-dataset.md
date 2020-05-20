@@ -5,14 +5,14 @@ description: Meer informatie over het exporteren van gegevenslabels uit uw Azure
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: how-to
-ms.date: 01/21/2020
-ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.date: 05/14/2020
+ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549487"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655760"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning gegevensset maken en verkennen met labels
 
@@ -50,7 +50,7 @@ Laad uw gelabelde gegevens sets in een Panda data frame-of Torchvision-gegevenss
 
 ### <a name="pandas-dataframe"></a>Panda data frame
 
-U kunt gegevens sets met de [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) methode vanuit de `azureml-contrib-dataset` klasse laden in een Panda data frame. Installeer de klasse met de volgende shell-opdracht: 
+U kunt gegevens sets met de [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) methode vanuit de klasse laden in een Panda data frame `azureml-contrib-dataset` . Installeer de klasse met de volgende shell-opdracht: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -78,7 +78,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision gegevens sets
 
-U kunt gegevens sets in Torchvision-gegevensset laden met de methode [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) , ook uit `azureml-contrib-dataset` de klasse. Als u deze methode wilt gebruiken, moet [PyTorch](https://pytorch.org/) zijn geïnstalleerd. 
+U kunt gegevens sets in Torchvision-gegevensset laden met de methode [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) , ook uit de `azureml-contrib-dataset` klasse. Als u deze methode wilt gebruiken, moet [PyTorch](https://pytorch.org/) zijn geïnstalleerd. 
 
 ```python
 from torchvision.transforms import functional as F

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Documentatie over spraak naar tekst
-summary: Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime-en batch transcriptie van audio-streams in tekst.
+summary: Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime-en batch transcriptie van audio-streams in tekst. Met aanvullende informatie over de invoer van tekst kunt u ook real-time beoordeling van de uitspraak en feedback geven over de nauw keurigheid en fluency van gesp roken audio.
 metadata:
   title: Documentatie voor spraak naar tekst-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: f496ba72f4f649a3ed5146f0b74caf3d8110adf9
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201930"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83653471"
 landingContent:
 - title: Over spraak naar tekst
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Spraak herkennen die is opgeslagen in blobopslag
       url: quickstarts/from-blob.md
+    - text: Beoordeling van de uitspraak met referentie-invoer
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: Ontwikkelen met spraak naar tekst
   linkLists:
   - linkListType: how-to-guide
@@ -62,7 +64,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: door mensen gelabelde transcripties maken
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: Verwijzingen
+- title: Referenties
   linkLists:
   - linkListType: reference
     links:

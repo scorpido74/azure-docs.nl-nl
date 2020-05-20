@@ -7,12 +7,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: baabad550f5e6b0ae39936fc182e6d9789d189d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594743"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650938"
 ---
 # <a name="disk-bursting"></a>Disk Bursting
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -24,7 +24,7 @@ Ondersteuning voor burstisatie op VM-niveau is ingeschakeld in alle regio's in d
 Bursting is standaard ingeschakeld voor virtuele machines die dit ondersteunen.
 
 ## <a name="disk-level-bursting"></a>Burstisatie op schijf niveau
-Bursting is ook beschikbaar op onze [Premium-ssd's](disks-types.md#premium-ssd) voor schijf grootten P20 en kleiner in alle regio's. Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen: 
+Bursting is ook beschikbaar op onze [Premium-ssd's](disks-types.md#premium-ssd) voor de schijf grootten P20 en kleiner in alle regio's in azure Public-, Government-en China-Clouds. Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen: 
 - **De virtuele machine opnieuw opstarten** 
 - **De schijf loskoppelen en opnieuw koppelen**
 

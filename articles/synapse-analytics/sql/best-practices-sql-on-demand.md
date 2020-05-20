@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592930"
+ms.locfileid: "83650387"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -56,7 +56,7 @@ U kunt joker tekens in het pad gebruiken om [meerdere bestanden en mappen](devel
 
 ## <a name="use-appropriate-data-types"></a>De juiste gegevens typen gebruiken
 
-De gegevens typen die in uw query worden gebruikt, zijn van invloed op de prestaties. U kunt betere prestaties krijgen als u: 
+De gegevens typen die u in de query gebruikt, zijn van invloed op de prestaties. U kunt betere prestaties krijgen als u: 
 
 - Gebruik de kleinste gegevens grootte die geschikt is voor de grootste mogelijke waarde.
   - Gebruik het gegevens type Character van lengte 30 als de waarde voor de maximum lengte van tekens 30 tekens is.
@@ -68,7 +68,7 @@ De gegevens typen die in uw query worden gebruikt, zijn van invloed op de presta
 
 ## <a name="check-inferred-data-types"></a>Instelde gegevens typen controleren
 
-Met [schema-deinterferentie](query-parquet-files.md#automatic-schema-inference) kunt u snel query's schrijven en gegevens verkennen zonder dat u het bestands schema kent. Dit comfort is ten koste van niet-verstelde gegevens typen die groter zijn dan werkelijk. Dit gebeurt wanneer er onvoldoende gegevens aanwezig zijn in de bron bestanden om ervoor te zorgen dat het juiste gegevens type wordt gebruikt. Parquet-bestanden bevatten bijvoorbeeld geen meta gegevens over de maximale teken kolom lengte en SQL op aanvraag wordt als varchar (8000) toegewezen. 
+Met [schema-deinterferentie](query-parquet-files.md#automatic-schema-inference) kunt u snel query's schrijven en gegevens verkennen zonder dat u het bestands schema kent. Dit comfort is ten koste van de kosten van niet-uitgestelde gegevens typen die groter zijn dan werkelijk. Dit gebeurt wanneer er onvoldoende gegevens aanwezig zijn in de bron bestanden om ervoor te zorgen dat het juiste gegevens type wordt gebruikt. Parquet-bestanden bevatten bijvoorbeeld geen meta gegevens over de maximale teken kolom lengte en SQL op aanvraag wordt als varchar (8000) toegewezen. 
 
 U kunt de resulterende gegevens typen van de query controleren met behulp van [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15).
 

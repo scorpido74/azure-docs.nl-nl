@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f54c296575b256339f4c22708c06e3579720e00
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121062"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647800"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -460,4 +460,4 @@ catch [Exception]
 
 Deze functie wordt momenteel niet ondersteund, maar u kunt vragen stellen aan de community op het [virtuele bureau blad van Windows TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-U kunt ook feedback geven voor het virtuele bureau blad van Windows op de [Windows Virtual Desktop-feedback-hub](https://aka.ms/MRSFeedbackHub), of feedback geven voor de MSIX-app en het hulp programma voor het inpakken van de [MSIX-app](https://aka.ms/msixappattachfeedback) en de [MSIX](https://aka.ms/msixtoolfeedback).
+U kunt ook feedback geven voor Windows virtueel bureau blad op de [Windows Virtual Desktop feedback hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).

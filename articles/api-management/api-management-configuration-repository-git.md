@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259167"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649214"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -31,7 +31,7 @@ In het volgende diagram ziet u een overzicht van de verschillende manieren om uw
 
 ![Git configureren][api-management-git-configure]
 
-Wanneer u wijzigingen aanbrengt aan uw service met behulp van de Azure Portal, Power shell-cmdlets of de REST API, beheert u de data `https://{name}.management.azure-api.net` base van de service configuratie met behulp van het eind punt, zoals wordt weer gegeven aan de rechter kant van het diagram. Aan de linkerkant van het diagram ziet u hoe u uw service configuratie kunt beheren met Git en git-opslag plaats voor uw service `https://{name}.scm.azure-api.net`op.
+Wanneer u wijzigingen aanbrengt aan uw service met behulp van de Azure Portal, Power shell-cmdlets of de REST API, beheert u de data base van de service configuratie met behulp `https://{name}.management.azure-api.net` van het eind punt, zoals wordt weer gegeven aan de rechter kant van het diagram. Aan de linkerkant van het diagram ziet u hoe u uw service configuratie kunt beheren met Git en git-opslag plaats voor uw service op `https://{name}.scm.azure-api.net` .
 
 De volgende stappen bieden een overzicht van het beheren van uw API Management service-exemplaar met behulp van Git.
 
@@ -118,7 +118,7 @@ Als u wijzigingen aanbrengt in uw API Management service-exemplaar in de Azure P
 git pull
 ```
 
-Zorg ervoor `git pull` dat u zich in de map voor uw lokale opslag plaats bevindt voordat u deze uitvoert. Als u de `git clone` opdracht zojuist hebt voltooid, moet u de map in uw opslag plaats wijzigen door een opdracht als volgt uit te voeren.
+`git pull`Zorg ervoor dat u zich in de map voor uw lokale opslag plaats bevindt voordat u deze uitvoert. Als u de opdracht zojuist hebt voltooid `git clone` , moet u de map in uw opslag plaats wijzigen door een opdracht als volgt uit te voeren.
 
 ```
 cd {name}.scm.azure-api.net/
@@ -174,7 +174,7 @@ U kunt deze bestanden maken, verwijderen, bewerken en beheren op uw lokale besta
 >
 > * [Gebruikers](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
 > * [Abonnementen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
-> * [Benoemde waarden](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
+> * Naamwaarden
 > * Portal-entiteiten voor ontwikkel aars behalve stijlen
 >
 
@@ -198,7 +198,7 @@ De hoofdmap `api-management` bevat een `configuration.json` bestand dat informat
 }
 ```
 
-De eerste vier instellingen (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`en `UserRegistrationTermsConsentRequired`) worden toegewezen aan de volgende instellingen op het tabblad **identiteiten** in het gedeelte **beveiliging** .
+De eerste vier instellingen ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` en `UserRegistrationTermsConsentRequired` ) worden toegewezen aan de volgende instellingen op het tabblad **identiteiten** in het gedeelte **beveiliging** .
 
 | Identiteits instelling | Wordt toegewezen aan |
 | --- | --- |
@@ -208,7 +208,7 @@ De eerste vier instellingen (`RegistrationEnabled`, `UserRegistrationTerms`, `Us
 | UserRegistrationTermsConsentRequired |Selectie vakje **toestemming vereisen** |
 | RequireUserSigninEnabled |Selectie vakje **anonieme gebruikers omleiden naar aanmeldings pagina** |
 
-De volgende vier instellingen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`en `DelegationValidationKey`) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **beveiliging** .
+De volgende vier instellingen ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` en `DelegationValidationKey` ) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **beveiliging** .
 
 | Overdrachts instelling | Wordt toegewezen aan |
 | --- | --- |
@@ -217,40 +217,40 @@ De volgende vier instellingen (`DelegationEnabled`, `DelegationUrl`, `DelegatedS
 | DelegatedSubscriptionEnabled |Selectie vakje voor **delegeren van product abonnement** |
 | DelegationValidationKey |Tekstvak voor **validatie sleutel voor gemachtigde** |
 
-De laatste instelling, `$ref-policy`, verwijst naar het bestand met globale beleids overzichten voor het service-exemplaar.
+De laatste instelling, `$ref-policy` , verwijst naar het bestand met globale beleids overzichten voor het service-exemplaar.
 
 ### <a name="apis-folder"></a>de map api's
 De `apis` map bevat een map voor elke API in het service-exemplaar, die de volgende items bevat.
 
-* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) met `export=true` in `application/json` -indeling moet aanroepen.
-* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met `description` de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) met in-indeling moet aanroepen `export=true` `application/json` .
+* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met de `description` eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`-deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
 
 ### <a name="groups-folder"></a>map groepen
 De `groups` map bevat een map voor elke groep die is gedefinieerd in het service-exemplaar.
 
 * `groups\<group name>\configuration.json`: dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) aanroept.
-* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met `description` de eigenschap van de [entiteit groep](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met de `description` eigenschap van de [entiteit groep](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>map beleid
 De `policies` map bevat de beleids instructies voor uw service-exemplaar.
 
 * `policies\global.xml`-bevat beleids regels die zijn gedefinieerd in het globale bereik voor uw service-exemplaar.
 * `policies\apis\<api name>\`-Als u beleids regels hebt gedefinieerd in het API-bereik, zijn deze opgenomen in deze map.
-* `policies\apis\<api name>\<operation name>\`map: als er beleids regels zijn gedefinieerd in het bewerkings bereik, worden deze opgenomen in `<operation name>.xml` deze map in bestanden die worden toegewezen aan de beleids instructies voor elke bewerking.
-* `policies\products\`-Als u beleids regels hebt gedefinieerd op product bereik, zijn deze opgenomen in deze map, die bestanden `<product name>.xml` bevat die zijn gekoppeld aan de beleids instructies voor elk product.
+* `policies\apis\<api name>\<operation name>\`map: als er beleids regels zijn gedefinieerd in het bewerkings bereik, worden deze opgenomen in deze map in `<operation name>.xml` bestanden die worden toegewezen aan de beleids instructies voor elke bewerking.
+* `policies\products\`-Als u beleids regels hebt gedefinieerd op product bereik, zijn deze opgenomen in deze map, die `<product name>.xml` bestanden bevat die zijn gekoppeld aan de beleids instructies voor elk product.
 
 ### <a name="portalstyles-folder"></a>map portalStyles
 De `portalStyles` map bevat configuratie-en stijl bladen voor aanpassingen van de ontwikkelaars portal voor het service-exemplaar.
 
 * `portalStyles\configuration.json`-bevat de namen van de opmaak modellen die worden gebruikt door de ontwikkelaars Portal
-* `portalStyles\<style name>.css`-elk `<style name>.css` bestand bevat stijlen voor de ontwikkelaars Portal (`Preview.css` en `Production.css` is standaard).
+* `portalStyles\<style name>.css`-elk `<style name>.css` bestand bevat stijlen voor de ontwikkelaars Portal ( `Preview.css` en is `Production.css` standaard).
 
 ### <a name="products-folder"></a>de map Products
 De `products` map bevat een map voor elk product dat is gedefinieerd in het service-exemplaar.
 
 * `products\<product name>\configuration.json`: dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) aanroept.
-* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met `description` de eigenschap van de [product entiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
+* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met de `description` eigenschap van de [product entiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
 
 ### <a name="templates"></a>sjablonen
 De `templates` map bevat configuratie voor de [e-mail sjablonen](api-management-howto-configure-notifications.md) van het service-exemplaar.

@@ -1,26 +1,26 @@
 ---
-title: Een Microsoft AppSource en een Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory | Azure
-description: Een vermeldings type in te scha kelen met behulp van Azure Active Directory in azure Marketplace en AppSource voor app-en service-Publishers.
+title: Integreer uw aanbieding voor micro soft Commercial Marketplace met Azure Active Directory
+description: Gebruik Azure Active Directory om uw Microsoft AppSource en Azure Marketplace-aanbiedingen te verifiëren.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160610"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658038"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Een AppSource- en Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integreer uw commerciële Marketplace-vermelding met Azure Active Directory
 
- Azure Active Directory (Azure AD) is een Cloud-identiteits service die verificatie met een Microsoft-account mogelijk maakt. Azure AD maakt gebruik van gestandaardiseerde frameworks. Meer [informatie over Azure Active Directory](https://azure.microsoft.com/services/active-directory).
+ In dit artikel worden de vereisten beschreven voor het integreren van een commerciële Marketplace-vermelding of aanbieding met Azure Active Directory (Azure AD). Azure AD is een Cloud-identiteits service die gebruikmaakt van de industrie standaard frameworks om verificatie met een Microsoft-account in te scha kelen. Meer [informatie over Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Voor delen van Azure AD
 
-Microsoft AppSource-en Azure Marketplace-klanten gebruiken in-product ervaringen om de lijst catalogi te doorzoeken. Voor deze acties moeten klanten zich aanmelden bij het product. Azure AD-integratie biedt de volgende voor delen:
+Microsoft AppSource-en Azure Marketplace-klanten gebruiken in-product ervaringen om te zoeken in de catalogus met winkel aanbiedingen. Voor deze acties moeten klanten zich aanmelden bij het product. Azure AD-integratie biedt de volgende voor delen:
 
 - Snellere betrokkenheid en een geoptimaliseerde klant ervaring
 - Eenmalige aanmelding (SSO) voor miljoenen zakelijke gebruikers
@@ -29,7 +29,7 @@ Microsoft AppSource-en Azure Marketplace-klanten gebruiken in-product ervaringen
 
 ## <a name="offers-that-require-azure-ad"></a>Aanbiedingen waarvoor Azure AD is vereist
 
-De verschillende [aanbiedings opties en aanbiedings typen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) voor AppSource en Azure Marketplace hebben verschillende vereisten voor de implementatie van Azure AD. Raadpleeg de volgende tabel voor meer informatie:
+De verschillende [aanbiedings opties en aanbiedings typen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) voor commerciële Marketplace hebben verschillende vereisten voor de implementatie van Azure AD. Raadpleeg de volgende tabel voor meer informatie.
 
 | **Aanbiedings type**    | **Is Azure AD SSO vereist?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|

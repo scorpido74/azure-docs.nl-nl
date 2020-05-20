@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597609"
+ms.locfileid: "83655234"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van statische Web Apps van Azure
 
@@ -80,7 +80,7 @@ Een CNAME-record wijst één domein aan een andere toe. U kunt een CNAME-record 
 
 1. Klik op de knop **valideren** .
 
-Nu het aangepaste domein is geconfigureerd, kan het enkele uren duren voordat de DNS-provider de wijzigingen wereld wijd heeft door gegeven. U kunt de status van de doorgifte controleren door naar [dnspropagation.net](https://dnspropagation.net)te gaan. Voer het aangepaste domein domein `www` in, inclusief de, Selecteer CNAME in de vervolg keuzelijst en selecteer **starten**.
+Nu het aangepaste domein is geconfigureerd, kan het enkele uren duren voordat de DNS-provider de wijzigingen wereld wijd heeft door gegeven. U kunt de status van de doorgifte controleren door naar [dnspropagation.net](https://dnspropagation.net)te gaan. Voer uw aangepaste domein `www` in, inclusief de, Selecteer CNAME in de vervolg keuzelijst en selecteer **starten**.
 
 Als uw DNS-wijzigingen zijn ingevuld, retourneert de website de automatisch gegenereerde URL van uw statische web-app (bijvoorbeeld _Random-name-123456789c.azurestaticapps.net_).
 
@@ -92,7 +92,7 @@ Hoewel ondersteuning voor het hoofd domein niet beschikbaar is tijdens de previe
 
 ## <a name="map-a-wildcard-domain"></a>Een wildcard-domein toewijzen
 
-Soms wilt u al het verkeer dat naar een subdomein wordt verzonden, naar een ander domein sturen. Een veelvoorkomend voor beeld is het toewijzen van elk subdomein-verkeer aan `www.example.com` . Op deze manier, zelfs als iemand typen `ww.example.com` in plaats van `www.example.com` , wordt de aanvraag verzonden naar `www.example.com` .
+Soms wilt u al het verkeer dat naar een subdomein wordt verzonden, naar een ander domein sturen. Een veelvoorkomend voor beeld is het toewijzen van elk subdomein-verkeer aan `www.example.com` . Op deze manier, zelfs als iemand typen `w.example.com` in plaats van `www.example.com` , wordt de aanvraag verzonden naar `www.example.com` .
 
 ### <a name="configure-dns-provider"></a>DNS-provider configureren
 

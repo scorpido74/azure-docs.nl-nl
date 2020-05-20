@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299002"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652246"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het configureren van Azure Active Directory toegang met Azure Database for MySQL en hoe u verbinding maakt met behulp van een Azure AD-token.
-
-> [!IMPORTANT]
-> Azure AD-verificatie voor Azure Database for MySQL is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>De gebruiker van de Azure AD-beheerder instellen
 
@@ -73,7 +68,7 @@ Met deze opdracht wordt een browser venster geopend op de Azure AD-verificatie p
 
 > [!NOTE]
 > U kunt Azure Cloud Shell ook gebruiken om deze stappen uit te voeren.
-> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het `az login` expliciet aanroept en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
+> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het expliciet aanroept `az login` en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Stap 2: het Azure AD-toegangs Token ophalen
 
@@ -136,11 +131,11 @@ U bent nu geverifieerd voor uw MySQL-server met behulp van Azure AD-verificatie.
 
 Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for MySQL-data base, voert u de volgende stappen uit nadat u verbinding hebt gemaakt (zie verderop in dit onderwerp voor verbinding maken):
 
-1. Zorg er eerst voor dat de Azure `<user>@yourtenant.onmicrosoft.com` AD-gebruiker een geldige gebruiker is in azure AD-Tenant.
+1. Zorg er eerst voor dat de Azure AD-gebruiker `<user>@yourtenant.onmicrosoft.com` een geldige gebruiker is in azure AD-Tenant.
 2. Meld u aan bij uw Azure Database for MySQL-exemplaar als de gebruiker van de Azure AD-beheerder.
-3. Maak een `<user>@yourtenant.onmicrosoft.com` gebruiker in azure database for MySQL.
+3. Maak een gebruiker `<user>@yourtenant.onmicrosoft.com` in azure database for MySQL.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -161,7 +156,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Als u een Azure AD-groep wilt inschakelen voor toegang tot uw data base, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groeps naam op:
 
-**Hierbij**
+**Voorbeeld:**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';
@@ -201,7 +196,7 @@ De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor
   * DBD:: mysql: ondersteund
   * Net:: MySQL: niet ondersteund
 * Aan de slag
-  * Go-SQL-stuur programma: ondersteund, `?tls=true&allowCleartextPasswords=true` toevoegen aan Connection String
+  * Go-SQL-stuur programma: ondersteund, toevoegen `?tls=true&allowCleartextPasswords=true` aan Connection String
 
 ## <a name="next-steps"></a>Volgende stappen
 

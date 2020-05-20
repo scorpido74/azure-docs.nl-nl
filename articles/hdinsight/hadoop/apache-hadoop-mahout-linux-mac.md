@@ -1,39 +1,35 @@
 ---
 title: Aanbevelingen genereren met Apache mahout in azure HDInsight
-description: Meer informatie over het gebruik van de Apache mahout machine learning-bibliotheek om film aanbevelingen te genereren met HDInsight (Hadoop).
+description: Meer informatie over het gebruik van de Apache mahout machine learning-bibliotheek om film aanbevelingen te genereren met HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767633"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656326"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Tips voor het genereren van films met Apache mahout met Apache Hadoop in HDInsight (SSH)
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Aanbevelingen genereren met Apache mahout in azure HDInsight
 
 Meer informatie over het gebruik van de [Apache Mahout](https://mahout.apache.org) machine learning-bibliotheek met Azure HDInsight om film aanbevelingen te genereren.
 
 Mahout is een [machine learning](https://en.wikipedia.org/wiki/Machine_learning) -bibliotheek voor Apache Hadoop. Mahout bevat algoritmen voor het verwerken van gegevens, zoals filteren, classificatie en clustering. In dit artikel gebruikt u een aanbevelings Engine om film aanbevelingen te genereren die zijn gebaseerd op films die uw vrienden hebben gezien.
 
+Zie [hdinsight-versies en Apache Hadoop onderdelen](../hdinsight-component-versioning.md)voor meer informatie over de versie van mahout in hdinsight.
+
 ## <a name="prerequisites"></a>Vereisten
 
 Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="apache-mahout-versioning"></a>Versie beheer van Apache mahout
-
-Zie [hdinsight-versies en Apache Hadoop onderdelen](../hdinsight-component-versioning.md)voor meer informatie over de versie van mahout in hdinsight.
-
 ## <a name="understanding-recommendations"></a>Uitleg over aanbevelingen
 
-Een van de functies die door mahout wordt gegeven, is een aanbevelings engine. Deze engine accepteert gegevens in de indeling van `userID`, `itemId`en `prefValue` (de voor keur voor het item). Mahout kan vervolgens analyse van co-exemplaren uitvoeren om te bepalen: *gebruikers die een voor keur voor een item hebben, hebben ook een voor keur voor deze andere items*. Mahout bepaalt vervolgens gebruikers met voor keuren zoals-item, die kunnen worden gebruikt om aanbevelingen te doen.
+Een van de functies die door mahout wordt gegeven, is een aanbevelings engine. Deze engine accepteert gegevens in de indeling van `userID` , `itemId` en `prefValue` (de voor keur voor het item). Mahout kan vervolgens analyse van co-exemplaren uitvoeren om te bepalen: *gebruikers die een voor keur voor een item hebben, hebben ook een voor keur voor deze andere items*. Mahout bepaalt vervolgens gebruikers met voor keuren zoals-item, die kunnen worden gebruikt om aanbevelingen te doen.
 
 De volgende werk stroom is een vereenvoudigd voor beeld waarin film gegevens worden gebruikt:
 
@@ -45,11 +41,11 @@ De volgende werk stroom is een vereenvoudigd voor beeld waarin film gegevens wor
 
 ### <a name="understanding-the-data"></a>Informatie over de gegevens
 
-[GroupLens Research](https://grouplens.org/datasets/movielens/) biedt classificatie gegevens voor films in een indeling die compatibel is met mahout. Deze gegevens zijn beschikbaar op de standaard opslag van uw cluster `/HdiSamples/HdiSamples/MahoutMovieData`op.
+[GroupLens Research](https://grouplens.org/datasets/movielens/) biedt classificatie gegevens voor films in een indeling die compatibel is met mahout. Deze gegevens zijn beschikbaar op de standaard opslag van uw cluster op `/HdiSamples/HdiSamples/MahoutMovieData` .
 
-Er zijn twee bestanden `moviedb.txt` en. `user-ratings.txt` Het `user-ratings.txt` bestand wordt gebruikt tijdens de analyse. De `moviedb.txt` wordt gebruikt om gebruikers vriendelijke tekst informatie te bieden bij het weer geven van de resultaten.
+Er zijn twee bestanden `moviedb.txt` en `user-ratings.txt` . Het `user-ratings.txt` bestand wordt gebruikt tijdens de analyse. De `moviedb.txt` wordt gebruikt om gebruikers vriendelijke tekst informatie te bieden bij het weer geven van de resultaten.
 
-De gegevens in `user-ratings.txt` hebben de structuur `userID`, `movieID`, `userRating`en `timestamp`, waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
+De gegevens in `user-ratings.txt` hebben de structuur `userID` , `movieID` , `userRating` en `timestamp` , waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -91,7 +87,7 @@ De gegevens in `user-ratings.txt` hebben de structuur `userID`, `movieID`, `user
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
     ```
 
-    De eerste kolom is de `userID`. De waarden die zijn opgenomen in ' [' en '] `movieId`'`recommendationScore`zijn:.
+    De eerste kolom is de `userID` . De waarden die zijn opgenomen in ' [' en '] ' zijn `movieId` : `recommendationScore` .
 
 2. U kunt de uitvoer, samen met de moviedb. txt, gebruiken om meer informatie te geven over de aanbevelingen. Kopieer eerst de bestanden lokaal met behulp van de volgende opdrachten:
 

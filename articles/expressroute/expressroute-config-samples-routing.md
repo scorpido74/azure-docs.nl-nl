@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024809"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651984"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Voor beelden van router configuraties voor het instellen en beheren van route ring
 Op deze pagina vindt u voor beelden van interface-en routerings configuratie voor Cisco IOS-XE-en Juniper MX-serie routers wanneer u met Azure ExpressRoute werkt.
@@ -175,8 +175,8 @@ Configureer uw router om te adverteren Selecteer voor voegsels naar micro soft m
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter 
-    <Prefix_to_be_advertised/Subnet_Mask> exact;
+                route-filter; 
+                <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -186,7 +186,7 @@ Configureer uw router om te adverteren Selecteer voor voegsels naar micro soft m
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
+                export <Policy_Name>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -205,7 +205,7 @@ U kunt route toewijzingen en voorvoegsel lijsten gebruiken om voor voegsels te f
         policy-statement <MS_Prefixes_Inbound> {
             term 1 {
                 from {
-                prefix-list MS_Prefixes;
+                    prefix-list MS_Prefixes;
                 }
                 then {
                     accept;
@@ -216,8 +216,8 @@ U kunt route toewijzingen en voorvoegsel lijsten gebruiken om voor voegsels te f
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
-                import <MS_Prefixes_Inbound>
+                export <Policy_Name>;
+                import <MS_Prefixes_Inbound>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -240,6 +240,26 @@ Configureer BFD alleen onder de sectie Protocol BGP.
         }                                   
     }
 
+### <a name="configure-macsec"></a>MACSec configureren
+Voor de configuratie van MACSec moet de verbindings koppelings sleutel (CAK) en de connectiviteits sleutel naam (CKN) worden vergeleken met de geconfigureerde waarden via Power shell-opdrachten.
+
+    security {
+        macsec {
+            connectivity-association <Connectivity_Association_Name> {
+                cipher-suite gcm-aes-xpn-128;
+                security-mode static-cak;
+                pre-shared-key {
+                    ckn <Connectivity_Association_Key_Name>;
+                    cak <Connectivity_Association_Key>; ## SECRET-DATA
+                }
+            }
+            interfaces {
+                <Interface_Number> {
+                    connectivity-association <Connectivity_Association_Name>;
+                }
+            }
+        }
+    }
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie.

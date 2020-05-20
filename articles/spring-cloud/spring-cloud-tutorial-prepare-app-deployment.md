@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731183"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657137"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
@@ -129,11 +129,24 @@ Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>Andere vereiste afhankelijkheden
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Andere aanbevolen afhankelijkheden voor het inschakelen van Azure lente-Cloud functies
 
-Uw toepassing moet de volgende afhankelijkheden bevatten om de ingebouwde functies van Azure lente Cloud in te scha kelen. Deze insluiting zorgt ervoor dat uw toepassing zichzelf correct configureert voor elk onderdeel.
+Als u de ingebouwde functies van Azure veer cloud van service register wilt inschakelen voor gedistribueerde tracering, moet u ook de volgende afhankelijkheden in uw toepassing toevoegen. U kunt sommige van deze afhankelijkheden verwijderen als u geen bijbehorende functies voor de specifieke apps nodig hebt.
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
+### <a name="service-registry"></a>Service register
+
+Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u de `spring-cloud-starter-netflix-eureka-client` afhankelijkheid op in het bestand pom. XML, zoals hier wordt weer gegeven:
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zich bij de service register server registreren en andere afhankelijke micro services ontdekken.
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
 
 Voeg de volgende aantekening toe aan de bron code van de toepassing.
 ```java
@@ -159,22 +172,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Afhankelijkheid van service register
+### <a name="distributed-configuration"></a>Gedistribueerde configuratie
 
-Als u de beheerde Azure Service Registry-service wilt gebruiken `spring-cloud-starter-netflix-eureka-client` , neemt u de afhankelijkheid op in het bestand pom. XML, zoals hier wordt weer gegeven:
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zich bij de service register server registreren en andere afhankelijke micro services ontdekken.
-
-### <a name="distributed-configuration-dependency"></a>Afhankelijkheid van gedistribueerde configuratie
-
-Als u gedistribueerde configuratie wilt inschakelen `spring-cloud-config-client` , neemt u de volgende afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
+Als u gedistribueerde configuratie wilt inschakelen, neemt u de volgende `spring-cloud-config-client` afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
 
 ```xml
 <dependency>
@@ -184,9 +184,9 @@ Als u gedistribueerde configuratie wilt inschakelen `spring-cloud-config-client`
 ```
 
 > [!WARNING]
-> Geef `spring.cloud.config.enabled=false` niets op in de configuratie van uw Boots trap. Anders werkt de toepassing niet meer met de configuratie server.
+> Geef niets `spring.cloud.config.enabled=false` op in de configuratie van uw Boots trap. Anders werkt de toepassing niet meer met de configuratie server.
 
-### <a name="metrics-dependency"></a>Afhankelijkheid van metrische gegevens
+### <a name="metrics"></a>Metrische gegevens
 
 Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankelijkheden van het bestand pom. XML, zoals hier wordt weer gegeven:
 
@@ -199,7 +199,7 @@ Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankeli
 
  Metrische gegevens worden periodiek opgehaald uit de JMX-eind punten. U kunt de metrische gegevens visualiseren met behulp van de Azure Portal.
 
-### <a name="distributed-tracing-dependency"></a>Afhankelijkheid van gedistribueerde tracering
+### <a name="distributed-tracing"></a>Gedistribueerde tracering
 
 Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
 

@@ -5,33 +5,24 @@ keywords: Azure app service, Web-app, mobiele app, API-app, functie-app, beveili
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535652"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649054"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App Service
 
 Dit artikel laat u zien hoe [Azure app service](overview.md) uw web-app, back-end voor mobiele apps, API-app en [functie-app](/azure/azure-functions/)kunt beveiligen. Ook wordt uitgelegd hoe u uw app verder kunt beveiligen met de ingebouwde functies van App Service.
 
-De platform onderdelen van App Service, waaronder Azure Vm's, opslag, netwerk verbindingen, Web frameworks, beheer-en integratie functies, zijn actief beveiligd en gehard. App Service doorlopende controle van de naleving door de krachtige controles om ervoor te zorgen dat:
-
-- Uw app-resources worden [beveiligd](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) vanuit de Azure-resources van de andere klanten.
-- [VM-exemplaren en runtime-software worden regel matig bijgewerkt](overview-patch-os-runtime.md) om onlangs ontdekte beveiligings problemen op te lossen. 
-- Communicatie van geheimen (zoals verbindings reeksen) tussen uw app en andere Azure-resources (zoals [SQL database](https://azure.microsoft.com/services/sql-database/)) blijft binnen Azure en heeft geen netwerk grenzen. Geheimen worden altijd versleuteld wanneer ze worden opgeslagen.
-- Alle communicatie via de App Service connectiviteits functies, zoals [hybride verbinding](app-service-hybrid-connections.md), wordt versleuteld. 
-- Verbindingen met hulpprogram ma's voor extern beheer zoals Azure PowerShell, Azure CLI, Azure Sdk's, REST Api's, worden allemaal versleuteld.
-- 24-uurs Threat Management beschermt de infra structuur en het platform tegen malware, gedistribueerde Denial-of-service (DDoS), man-in-the-Middle (MITM) en andere bedreigingen.
-
-Zie [Vertrouwenscentrum van Azure](https://azure.microsoft.com/overview/trusted-cloud/)voor meer informatie over de infra structuur en platform beveiliging in Azure.
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 In de volgende secties ziet u hoe u uw App Service-app verder kunt beveiligen tegen bedreigingen.
 
 ## <a name="https-and-certificates"></a>HTTPS en certificaten
 
-Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam\<(app_name>. azurewebsites.net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een TLS/SSL-certificaat](configure-ssl-bindings.md) , zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er worden verschillende soorten certificaten ondersteund door App Service:
+Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam ( \< app_name>. azurewebsites.net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een TLS/SSL-certificaat](configure-ssl-bindings.md) , zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er worden verschillende soorten certificaten ondersteund door App Service:
 
 - Beheerd certificaat Free App Service
 - App Service certificaat
@@ -52,7 +43,7 @@ App Service ondersteunt zowel FTP-als FTPS voor het implementeren van uw bestand
 
 Standaard accepteert uw App Service-app aanvragen van alle IP-adressen van het Internet, maar u kunt de toegang tot een kleine subset van IP-adressen beperken. Met App Service in Windows kunt u een lijst met IP-adressen definiëren die toegang hebben tot uw app. De lijst met toegestane namen kan afzonderlijke IP-adressen bevatten of een bereik van IP-adressen die zijn gedefinieerd door een subnetmasker. Zie [Azure app service static IP-beperkingen](app-service-ip-restrictions.md)voor meer informatie.
 
-Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het _Web. config_te configureren. Zie [dynamicIpSecurity>voor dynamische IP-beveiliging \< ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
+Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het _Web. config_te configureren. Zie [ \< dynamicIpSecurity>voor dynamische IP-beveiliging ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
 
 ## <a name="client-authentication-and-authorization"></a>Client verificatie en-autorisatie
 

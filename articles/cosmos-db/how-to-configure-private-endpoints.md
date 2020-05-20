@@ -4,14 +4,14 @@ description: Meer informatie over het instellen van een persoonlijke Azure-koppe
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270686"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652568"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -21,10 +21,7 @@ Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Cosmo
 
 U kunt verbinding maken met een Azure Cosmos-account dat is geconfigureerd met een persoonlijke koppeling met behulp van de automatische of hand matige goedkeurings methode. Zie de sectie [goedkeurings werk stroom](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) van de documentatie van de persoonlijke koppeling voor meer informatie. 
 
-In dit artikel worden de stappen beschreven voor het maken van een persoonlijk eind punt. Hierbij wordt ervan uitgegaan dat u de automatische goedkeurings methode gebruikt.
-
-> [!NOTE]
-> Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
+In dit artikel worden de stappen beschreven voor het maken van een privé-eindpunt. Hierbij wordt ervan uitgegaan dat u de automatische goedkeurings methode gebruikt.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Een persoonlijk eind punt maken met behulp van de Azure Portal
 
@@ -44,7 +41,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
     | **Exemplaar Details** |  |
-    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
+    | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||
 1. Selecteer **volgende: resource**.
@@ -401,12 +398,12 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-In het Power shell-script `GroupId` mag de variabele slechts één waarde bevatten. Deze waarde is het API-type van het account. Toegestane waarden zijn: `Sql`, `MongoDB`, `Cassandra`, `Gremlin`en `Table`. Sommige Azure Cosmos-account typen zijn toegankelijk via meerdere Api's. Bijvoorbeeld:
+In het Power shell-script `GroupId` mag de variabele slechts één waarde bevatten. Deze waarde is het API-type van het account. Toegestane waarden zijn: `Sql` , `MongoDB` , `Cassandra` , en `Gremlin` `Table` . Sommige Azure Cosmos-account typen zijn toegankelijk via meerdere Api's. Bijvoorbeeld:
 
 * U kunt toegang krijgen tot een Gremlin-API-account vanuit zowel de Gremlin-als SQL-API-accounts.
 * Een Table-API account kan worden geopend vanuit zowel de tabel-als de SQL-API-accounts.
 
-Voor deze accounts moet u één persoonlijk eind punt maken voor elk API-type. Het bijbehorende API-type is opgegeven in `GroupId` de matrix.
+Voor deze accounts moet u één persoonlijk eind punt maken voor elk API-type. Het bijbehorende API-type is opgegeven in de `GroupId` matrix.
 
 Nadat de sjabloon is geïmplementeerd, kunt u een uitvoer zien die vergelijkbaar is met wat er in de volgende afbeelding wordt weer gegeven. De `provisioningState` waarde is `Succeeded` als de persoonlijke eind punten correct zijn ingesteld.
 
@@ -627,7 +624,7 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Toegang tot open bare netwerken blok keren tijdens het maken van het account
 
-Zoals beschreven in de vorige sectie, en tenzij er specifieke firewall regels zijn ingesteld, is het toevoegen van een persoonlijk eind punt dat uw Azure Cosmos-account alleen toegankelijk is via privé-eind punten. Dit betekent dat het Azure Cosmos-account kan worden bereikt vanuit het open bare verkeer nadat het is gemaakt en voordat een persoonlijk eind punt wordt toegevoegd. Als u er zeker van wilt zijn dat open bare netwerk toegang is uitgeschakeld, zelfs vóór het maken van privé- `publicNetworkAccess` eind punten `Disabled` , kunt u de markering instellen op tijdens het maken van het account. Zie [deze Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) voor een voor beeld waarin wordt getoond hoe u deze vlag gebruikt.
+Zoals beschreven in de vorige sectie, en tenzij er specifieke firewall regels zijn ingesteld, is het toevoegen van een persoonlijk eind punt dat uw Azure Cosmos-account alleen toegankelijk is via privé-eind punten. Dit betekent dat het Azure Cosmos-account kan worden bereikt vanuit het open bare verkeer nadat het is gemaakt en voordat een persoonlijk eind punt wordt toegevoegd. Als u er zeker van wilt zijn dat open bare netwerk toegang is uitgeschakeld, zelfs vóór het maken van privé-eind punten, kunt u de `publicNetworkAccess` markering instellen op tijdens het maken van het `Disabled` account. Zie [deze Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) voor een voor beeld waarin wordt getoond hoe u deze vlag gebruikt.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Een persoonlijk eind punt bijwerken wanneer u een regio toevoegt of verwijdert
 
@@ -643,21 +640,17 @@ U kunt dezelfde stappen gebruiken wanneer u een regio verwijdert. Nadat u de reg
 
 De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met een Azure Cosmos-account gebruikt:
 
-* Wanneer u een persoonlijke koppeling met een Azure Cosmos-account gebruikt via een directe modus verbinding, kunt u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt nog niet ondersteund.
+* Wanneer u een persoonlijke koppeling met een Azure Cosmos-account gebruikt via een directe modus verbinding, kunt u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt momenteel niet ondersteund.
 
-* Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
+* Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, wordt een persoonlijk eind punt alleen ondersteund voor accounts op Server versie 3,6 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.mongo.cosmos.azure.com` ). Privé koppeling wordt niet ondersteund voor accounts op Server versie 3,2 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com` ). Als u een persoonlijke koppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
 
-* Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, wordt een persoonlijk eind punt alleen ondersteund voor accounts op Server versie 3,6 (dat wil zeggen, accounts die gebruikmaken van `*.mongo.cosmos.azure.com`het eind punt in de indeling). Privé koppeling wordt niet ondersteund voor accounts op Server versie 3,2 (dat wil zeggen, accounts die gebruikmaken van het eind `*.documents.azure.com`punt in de indeling). Als u een persoonlijke koppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
-
-* Wanneer u de API van het Azure Cosmos DB gebruikt voor MongoDB-accounts die een persoonlijke koppeling hebben, kunt u geen gebruik maken van hulpprogram ma's zoals Robo 3T gebruiken, Studio 3T gebruiken en Mongoose. Het eind punt kan alleen een persoonlijke koppeling ondersteunen als `appName=<account name>` de para meter is opgegeven. Een voorbeeld is `replicaSet=globaldb&appName=mydbaccountname`. Omdat deze hulpprogram ma's de naam van de app niet door geven in de connection string aan de service, kunt u geen persoonlijke koppeling gebruiken. Maar u hebt nog steeds toegang tot deze accounts met behulp van SDK-Stuur Programma's met de versie 3,6.
+* Wanneer u de API van een Azure Cosmos DB gebruikt voor een MongoDB-account met een persoonlijke koppeling, werken sommige hulpprogram ma's of bibliotheken mogelijk niet wanneer ze de `appName` para meter automatisch uit de Connection String verwijderen. Deze para meter is vereist om verbinding te maken met het account via een persoonlijk eind punt. Sommige hulpprogram ma's, zoals Visual Studio code, verwijderen deze para meter niet uit de connection string en zijn daarom compatibel.
 
 * U kunt een virtueel netwerk niet verplaatsen of verwijderen als het een persoonlijke koppeling bevat.
 
-* U kunt een Azure Cosmos-account niet verwijderen als het is gekoppeld aan een persoonlijk eind punt.
-
 * U kunt geen failover uitvoeren voor een Azure Cosmos-account naar een regio die niet is toegewezen aan alle persoonlijke eind punten die aan het account zijn gekoppeld.
 
-* Aan een netwerk beheerder moet ten minste de machtiging ' */PrivateEndpointConnectionsApproval ' zijn toegewezen in het bereik van de Azure Cosmos-account om automatisch goedgekeurde persoonlijke eind punten te maken.
+* Aan een netwerk beheerder moet ten minste de `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` machtiging voor het bereik van het Azure Cosmos-account worden verleend om automatisch goedgekeurde privé-eind punten te maken.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Beperkingen voor de integratie van particuliere DNS-zones
 

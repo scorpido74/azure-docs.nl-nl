@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597623"
+ms.locfileid: "83655262"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Verificatie en autorisatie voor de preview-versie van Azure static Web Apps
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 Als u wilt voor komen dat het platform deze informatie verstrekt over toekomstige aanvragen voor afzonderlijke apps, dient u een aanvraag in bij de volgende URL:
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>Systeemmap
@@ -154,6 +154,11 @@ U kunt een [route regel](routes.md) gebruiken om een standaard provider toe te w
 }
 ```
 
+### <a name="post-login-redirect"></a>Omleiding van post-aanmelding
+
+Als u een gebruiker wilt terugkeren naar een specifieke pagina na de aanmelding, geeft u een URL op in de `post_login_redirect_uri` query teken reeks parameter.
+
+
 ## <a name="logout"></a>Afmelden
 
 De `/.auth/logout` route meldt gebruikers van de website. U kunt een koppeling toevoegen aan uw site navigatie zodat de gebruiker zich afmeldt, zoals wordt weer gegeven in het volgende voor beeld.
@@ -170,6 +175,10 @@ U kunt een [route regel](routes.md) gebruiken om een beschrijvende route te kopp
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>Omleiding na afmelding
+
+Als u wilt dat een gebruiker na de afmelding naar een specifieke pagina terugkeert, geeft u een URL op in de `post_logout_redirect_uri` query teken reeks parameter.
 
 ## <a name="block-an-authorization-provider"></a>Een autorisatie provider blok keren
 

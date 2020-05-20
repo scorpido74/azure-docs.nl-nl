@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac0a795c98673eba30531f586ff634c62673cdd6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 52c53cc10fe6517be6083a14c98daa9e6ff3b56f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980946"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648081"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -21,7 +21,7 @@ U kunt Azure Arc voor servers (preview) inschakelen voor een of meer Windows-of 
 
 Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators.
 
-Voordat u aan de slag gaat, moet u de [vereisten](overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
+Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
 Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
@@ -57,7 +57,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 
 ### <a name="install-manually"></a>De installatie handmatig uitvoeren
 
-U kunt de aangesloten machine agent hand matig installeren door het Windows Installer-pakket *AzureConnectedMachineAgent. msi*uit te voeren. 
+U kunt de aangesloten machine agent hand matig installeren door het Windows Installer-pakket *AzureConnectedMachineAgent. msi*uit te voeren. U kunt de nieuwste versie van het [Windows agent-Windows Installer pakket](https://aka.ms/AzureConnectedMachineAgent) downloaden van het micro soft Download centrum. 
 
 > [!NOTE]
 > * Als u de agent wilt installeren of verwijderen, moet u over *beheerders* machtigingen beschikken.
@@ -79,7 +79,7 @@ Voer de volgende opdracht uit om de agent op de achtergrond te installeren en ee
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-Bestanden voor de verbonden machine agent worden standaard in *C:\Program Files\AzureConnectedMachineAgent*geïnstalleerd. Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="install-with-the-scripted-method"></a>Installeren met de script methode
 
@@ -88,6 +88,8 @@ Bestanden voor de verbonden machine agent worden standaard in *C:\Program Files\
 1. Open een PowerShell-opdrachtprompt met verhoogde bevoegdheid.
 
 1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer deze uit op de server door het script uit te voeren `./OnboardingScript.ps1` .
+
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="configure-the-agent-proxy-setting"></a>De proxy-instelling voor de agent configureren
 

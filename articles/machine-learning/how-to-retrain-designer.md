@@ -5,16 +5,17 @@ description: Meer informatie over het opnieuw trainen van modellen met gepublice
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653687"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -92,7 +93,7 @@ Publiceer een pijp lijn naar een pijp lijn-eind punt om uw pijp lijnen in de toe
    > [!NOTE]
    > U kunt meerdere pijp lijnen publiceren naar een enkel eind punt. Elke pijp lijn in een bepaald eind punt krijgt een versie nummer, dat u kunt opgeven wanneer u het eind punt van de pijp lijn aanroept.
 
-1. Selecteer **publiceren**.
+1. Selecteer **Publiceren**.
 
 ## <a name="retrain-your-model"></a>Uw model opnieuw trainen
 

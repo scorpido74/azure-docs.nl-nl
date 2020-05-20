@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 570e84b3a545736aad6983c7f0d8c0f0296ca589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431811"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658911"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-architectuur 
 
@@ -117,4 +117,4 @@ In het onderstaande diagram ziet u een gerepliceerde tabel die in de cache wordt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een beetje weet over Synapse SQL, leert u hoe u snel [een SQL-groep kunt maken](../quickstart-create-sql-pool.md) en [voorbeeld gegevens](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-load-sample-databases.MD) kunt laden. Of u begint [met het gebruik van SQL op aanvraag](../quickstart-sql-on-demand.md). Als u niet bekend bent met Azure, kan de [Azure-woordenlijst](../../azure-glossary-cloud-terminology.md) handig zijn bij het opzoeken van nieuwe terminologie. 
+Nu u een beetje weet over Synapse SQL, leert u hoe u snel [een SQL-groep kunt maken](../quickstart-create-sql-pool-portal.md) en [voorbeeld gegevens](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-load-sample-databases.MD) kunt laden. Of u begint [met het gebruik van SQL op aanvraag](../quickstart-sql-on-demand.md). Als u niet bekend bent met Azure, kan de [Azure-woordenlijst](../../azure-glossary-cloud-terminology.md) handig zijn bij het opzoeken van nieuwe terminologie. 

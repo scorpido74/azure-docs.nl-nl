@@ -1,7 +1,6 @@
 ---
-title: CLI-extensie
-titleSuffix: Azure Machine Learning
-description: Meer informatie over de Azure Machine Learning CLI-extensie voor de Azure CLI. De Azure CLI is een platformoverschrijdende opdracht regel programma waarmee u kunt werken met resources in de Azure-Cloud. Met de Machine Learning extensie kunt u werken met Azure Machine Learning. Met de MILLILITER CLI worden resources zoals uw werk ruimte, gegevens opslag, gegevens sets, pijp lijnen, modellen en implementaties gemaakt en beheerd.
+title: Azure Machine Learning CLI installeren & gebruiken
+description: Meer informatie over het installeren en gebruiken van de Azure Machine Learning CLI-extensie voor het maken en beheren van resources zoals uw werk ruimte, gegevens opslag, gegevens sets, pijp lijnen, modellen en implementaties.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618066"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659788"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>De CLI-uitbrei ding voor Azure Machine Learning gebruiken
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installeer & gebruik de CLI-extensie voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 De Azure Machine Learning CLI is een uitbrei ding van [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdracht regel interface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met Azure Machine Learning. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
@@ -33,7 +32,7 @@ De CLI is geen vervanging voor de Azure Machine Learning SDK. Het is een aanvull
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
 
@@ -71,7 +70,7 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Voorbeeld bestanden die u kunt gebruiken met de onderstaande opdrachten, vindt u [hier](https://aka.ms/azml-deploy-cloud).
 
-Wanneer u hierom wordt `y` gevraagd, selecteert u om de uitbrei ding te installeren.
+Wanneer u hierom wordt gevraagd, selecteert `y` u om de uitbrei ding te installeren.
 
 Als u wilt controleren of de extensie is geïnstalleerd, gebruikt u de volgende opdracht om een lijst met ML-specifieke subopdrachten weer te geven:
 
@@ -113,7 +112,7 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
     ```
 
     > [!TIP]
-    > Met deze opdracht maakt u een werk ruimte Basic Edition. Als u een Enter prise-werk ruimte `--sku enterprise` wilt maken, `az ml workspace create` gebruikt u de schakel optie met de opdracht. Zie [Wat is Azure machine learning](overview-what-is-azure-ml.md#sku)voor meer informatie over Azure machine learning-edities.
+    > Met deze opdracht maakt u een werk ruimte Basic Edition. Als u een Enter prise-werk ruimte wilt maken, gebruikt u de `--sku enterprise` Schakel optie met de `az ml workspace create` opdracht. Zie [Wat is Azure machine learning](overview-what-is-azure-ml.md#sku)voor meer informatie over Azure machine learning-edities.
 
     Zie [AZ ml Workspace Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)(Engelstalig) voor meer informatie.
 
@@ -123,7 +122,7 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Met deze opdracht maakt `.azureml` u een submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json` bestand dat wordt gebruikt om te communiceren met uw Azure machine learning-werk ruimte.
+    Met deze opdracht maakt u een `.azureml` submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json` bestand dat wordt gebruikt om te communiceren met uw Azure machine learning-werk ruimte.
 
     Zie voor meer informatie [AZ ml map attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -161,14 +160,14 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>Experimenten uitvoeren
 
-* Start een uitvoering van uw experiment. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand \*(de tekst voor. runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
+* Start een uitvoering van uw experiment. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand (de tekst voor \* . runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > Met `az ml folder attach` de opdracht wordt `.azureml` een submap gemaakt die twee voor beelden van runconfig-bestanden bevat. 
+    > `az ml folder attach`Met de opdracht wordt een `.azureml` submap gemaakt die twee voor beelden van runconfig-bestanden bevat. 
     >
     > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
     >
@@ -194,7 +193,7 @@ De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learn
     az ml dataset register -f mydataset.json
     ```
 
-    Voor informatie over de indeling van het JSON-bestand dat wordt gebruikt voor het definiëren `az ml dataset register --show-template`van de gegevensset, gebruikt u.
+    Voor informatie over de indeling van het JSON-bestand dat wordt gebruikt voor het definiëren van de gegevensset, gebruikt u `az ml dataset register --show-template` .
 
     Zie voor meer informatie [AZ ml dataset REGI ster](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
 
@@ -284,7 +283,7 @@ De volgende opdrachten laten zien hoe u Azure Machine Learning [omgevingen](how-
 
 ### <a name="environment-configuration-schema"></a>Configuratie schema omgeving
 
-Als u de `az ml environment scaffold` opdracht hebt gebruikt, wordt er een `azureml_environment.json` sjabloon bestand gegenereerd dat kan worden gewijzigd en gebruikt om aangepaste omgevings configuraties te maken met de cli. Het object op het hoogste niveau is in de [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) PYTHON-SDK los toegewezen aan de klasse. 
+Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabloon `azureml_environment.json` bestand gegenereerd dat kan worden gewijzigd en gebruikt om aangepaste omgevings configuraties te maken met de cli. Het object op het hoogste niveau is in de python-SDK los toegewezen aan de [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) klasse. 
 
 ```json
 {
@@ -328,7 +327,7 @@ Als u de `az ml environment scaffold` opdracht hebt gebruikt, wordt er een `azur
 }
 ```
 
-De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het `environmentVariables` veld wordt bijvoorbeeld toegewezen aan de `environment_variables` variabele in de [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) -klasse.
+De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het veld wordt bijvoorbeeld `environmentVariables` toegewezen aan de `environment_variables` variabele in de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) klasse.
 
 | JSON-veld | Type | Beschrijving |
 |---|---|---|
@@ -339,7 +338,7 @@ De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JS
 | `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Definieert instellingen voor het aanpassen van de docker-installatie kopie die is gebaseerd op de specificaties van de omgeving. |
 | `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | In het gedeelte worden Spark-instellingen geconfigureerd. Het wordt alleen gebruikt wanneer Framework is ingesteld op PySpark. |
 | `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Hiermee configureert u Databricks-bibliotheek afhankelijkheden. |
-| `inferencingStackVersion` | `string` | Hiermee geeft u de versie van de stack voor het in de wachtrij plaatsen toevoegen aan de installatie kopie. Als u wilt voor komen dat een inleidende stack wordt `null`toegevoegd, verlaat u dit veld. Geldige waarde: ' meest recent '. |
+| `inferencingStackVersion` | `string` | Hiermee geeft u de versie van de stack voor het in de wachtrij plaatsen toevoegen aan de installatie kopie. Als u wilt voor komen dat een inleidende stack wordt toegevoegd, verlaat u dit veld `null` . Geldige waarde: ' meest recent '. |
 
 ## <a name="ml-pipeline-management"></a>ML pijplijn beheer
 

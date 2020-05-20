@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-set-nineteen
+ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402202"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658446"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taal detectie voor spraak naar tekst
 
 Automatische taal detectie wordt gebruikt om de meest waarschijnlijke overeenkomst te bepalen voor audio die wordt door gegeven aan de Speech SDK in vergelijking met een lijst met de opgegeven talen. De waarde die wordt geretourneerd door automatische taal detectie wordt vervolgens gebruikt voor het selecteren van het taal model voor spraak naar tekst, zodat u een nauw keurigere transcriptie krijgt. Zie [taal ondersteuning](language-support.md)voor meer informatie over de talen die beschikbaar zijn.
 
-In dit artikel leert u hoe u kunt gebruiken `AutoDetectSourceLanguageConfig` om een `SpeechRecognizer` object te maken en de gedetecteerde taal op te halen.
+In dit artikel leert u hoe u kunt gebruiken `AutoDetectSourceLanguageConfig` om een object te maken `SpeechRecognizer` en de gedetecteerde taal op te halen.
 
 > [!IMPORTANT]
-> Deze functie is alleen beschikbaar voor de Speech SDK voor C#, C++, Java en python.
+> Deze functie is alleen beschikbaar voor de Speech SDK met C#, C++, Java, python en doel-C.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische taal detectie met de Speech SDK
 
-Automatische taal detectie heeft momenteel een limiet aan services zijde van twee talen per detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig` object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig`en gebruikt u deze om een `SpeechRecognizer`te maken.
+Automatische taal detectie heeft momenteel een limiet aan services zijde van twee talen per detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig` object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig` en gebruikt u deze om een te maken `SpeechRecognizer` .
 
 > [!TIP]
 > U kunt ook een aangepast model opgeven dat moet worden gebruikt voor het uitvoeren van spraak op tekst. Zie voor meer informatie [een aangepast model gebruiken voor automatische taal detectie](#use-a-custom-model-for-automatic-language-detection).
@@ -118,11 +118,28 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+NSArray *languages = @[@"zh-CN", @"de-DE"];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]init:languages];
+SPXSpeechRecognizer* speechRecognizer = \
+        [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                           autoDetectSourceLanguageConfiguration:autoDetectSourceLanguageConfig
+                                              audioConfiguration:audioConfig];
+SPXSpeechRecognitionResult *result = [speechRecognizer recognizeOnce];
+SPXAutoDetectSourceLanguageResult *languageDetectionResult = [[SPXAutoDetectSourceLanguageResult alloc] init:result];
+NSString *detectedLanguage = [languageDetectionResult language];
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>Een aangepast model gebruiken voor automatische taal detectie
 
 Naast taal detectie met behulp van Speech-Service modellen, kunt u een aangepast model voor verbeterde herkenning opgeven. Als er geen aangepast model wordt gegeven, gebruikt de service het standaard taal model.
 
-In de onderstaande fragmenten ziet u hoe u een aangepast model kunt opgeven in de aanroep van de spraak service. Als de gedetecteerde taal `en-US`is, wordt het standaard model gebruikt. Als de gedetecteerde taal `fr-FR`is, wordt het eind punt voor het aangepaste model gebruikt:
+In de onderstaande fragmenten ziet u hoe u een aangepast model kunt opgeven in de aanroep van de spraak service. Als de gedetecteerde taal is `en-US` , wordt het standaard model gebruikt. Als de gedetecteerde taal is `fr-FR` , wordt het eind punt voor het aangepaste model gebruikt:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -178,6 +195,20 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
  fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
  auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
         sourceLanguageConfigs=[en_language_config, fr_language_config])
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+SPXSourceLanguageConfiguration* enLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"en-US"];
+SPXSourceLanguageConfiguration* frLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"fr-FR"
+                                                     endpointId:@"The Endpoint Id for custom model of fr-FR"];
+NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
 ```
 
 ::: zone-end

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aa59a37f3a4413c92a483746ed4a08c363ab8457
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796523"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649165"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
 
@@ -526,7 +526,7 @@ Configureer het JWT-validatie beleid voor inkomende API-aanvragen om het bestaan
 
 Diagnostische instellingen voor Azure AD-gebruikers accounts maken en de audit logboeken en aanmeldings logboeken verzenden naar een Log Analytics-werk ruimte. Gewenste waarschuwingen configureren in Log Analytics. Daarnaast kunt u de Log Analytics-werk ruimte onboarden naar Azure Sentinel of een SIEM van derden.
 
-Configureer geavanceerde bewaking met API Management met behulp `log-to-eventhub` van het beleid, leg eventuele aanvullende context informatie vast die vereist is voor de analyse van de beveiliging en verzend een bericht naar een Siem van Azure Sentinel of van derden.
+Configureer geavanceerde bewaking met API Management met behulp van het `log-to-eventhub` beleid, leg eventuele aanvullende context informatie vast die vereist is voor de analyse van de beveiliging en verzend een bericht naar een Siem van Azure Sentinel of van derden.
 
 * [Ontwikkelaars accounts autoriseren met behulp van Azure Active Directory in azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
 
@@ -568,7 +568,7 @@ Configureer geavanceerde bewaking met API Management met behulp `log-to-eventhub
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -734,7 +734,7 @@ Onderliggend platform gescand en bijgewerkt door micro soft. Klant voor het beoo
 
 **Verantwoordelijkheid**: klant
 
-## <a name="inventory-and-asset-management"></a>Inventarisatie en het beheer van middelen
+## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
 *Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
@@ -1022,7 +1022,7 @@ Daarnaast definieert en implementeert u standaard beveiligings configuraties voo
 
 **Verantwoordelijkheid**: klant
 
-## <a name="malware-defense"></a>Bescherming tegen malware
+## <a name="malware-defense"></a>Beveiliging tegen malware
 
 *Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
@@ -1056,7 +1056,7 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-recovery"></a>Gegevens herstellen
+## <a name="data-recovery"></a>Gegevensherstel
 
 *Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
@@ -1070,9 +1070,9 @@ De functies voor het maken en herstellen van back-ups van API Management bieden 
 
 * [Noodherstel implementeren met back-up en herstellen van services in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
 
-* [De back-upbewerking van API Management aanroepen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+* [De back-upbewerking van API Management aanroepen](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-* [De herstel bewerking van API Management aanroepen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [De herstel bewerking van API Management aanroepen](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1194,7 +1194,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Verantwoordelijkheid**: klant
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Indringings tests en rode team oefeningen
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
 *Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 

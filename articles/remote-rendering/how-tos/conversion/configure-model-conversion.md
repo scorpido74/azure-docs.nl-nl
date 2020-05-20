@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681569"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652233"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -18,7 +18,7 @@ In dit hoofd stuk worden de opties voor de model conversie gedocumenteerd.
 
 ## <a name="settings-file"></a>Instellingen bestand
 
-Als een bestand met `ConversionSettings.json` de naam wordt gevonden in de invoer container naast het invoer model, wordt dit gebruikt om aanvullende configuratie voor het model conversie proces te bieden.
+Als een bestand met de naam `ConversionSettings.json` wordt gevonden in de invoer container naast het invoer model, wordt dit gebruikt om aanvullende configuratie voor het model conversie proces te bieden.
 
 De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
 
@@ -39,6 +39,7 @@ De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
         "generateCollisionMesh" : { "type" : "boolean", "default" : true },
         "unlitMaterials" : { "type" : "boolean", "default" : false },
         "fbxAssumeMetallic" : { "type" : "boolean", "default" : true },
+        "deduplicateMaterials" : { "type" : "boolean", "default" : true },
         "axis" : {
             "type" : "array",
             "items" : {
@@ -79,6 +80,10 @@ Als dat niet het beoogde gedrag is, moet deze para meter worden ingesteld op ' S
 
 * `material-override`-Met deze para meter kan de verwerking van materialen [tijdens de conversie worden aangepast](override-materials.md).
 
+### <a name="material-de-duplication"></a>Materiaal van de duplicatie
+
+* `deduplicateMaterials`-Met deze para meter wordt de automatische verdubbeling van materialen die dezelfde eigenschappen en bitmappatronen delen, in-of uitgeschakeld. De-duplicatie vindt plaats nadat de overschrijvingen van het materiaal zijn verwerkt. Het is standaard ingeschakeld.
+
 ### <a name="color-space-parameters"></a>Kleur ruimte parameters
 
 De rendering-engine verwacht dat kleur waarden in lineaire ruimte worden weer gegeven.
@@ -88,7 +93,7 @@ Als een model is gedefinieerd met behulp van gamma ruimte, moeten deze opties wo
 * `gammaToLinearVertex`-Vertex kleuren van gamma-ruimte naar lineaire ruimte converteren
 
 > [!NOTE]
-> Voor FBX-bestanden worden deze instellingen standaard `true` ingesteld op. Voor alle andere bestands typen is `false`de standaard waarde.
+> Voor FBX-bestanden worden deze instellingen standaard ingesteld op `true` . Voor alle andere bestands typen is de standaard waarde `false` .
 
 ### <a name="scene-parameters"></a>Scène parameters
 
@@ -99,12 +104,12 @@ Als een model is gedefinieerd met behulp van gamma ruimte, moeten deze opties wo
 
 Elke modus heeft verschillende runtime-prestaties. In `dynamic` de modus worden de prestatie kosten lineair geschaald met het aantal [entiteiten](../../concepts/entities.md) in de grafiek, zelfs als er geen deel wordt verplaatst. Het mag alleen worden gebruikt wanneer het verplaatsen van onderdelen nodig is voor de toepassing, bijvoorbeeld voor een animatie weergave.
 
-In `static` de modus wordt de volledige scène grafiek geëxporteerd, maar onderdelen in deze grafiek hebben een constante trans formatie ten opzichte van het hoofd gedeelte. Het hoofd knooppunt van het object kan echter nog steeds worden verplaatst, gedraaid of geschaald zonder aanzienlijke prestatie kosten. Daarnaast retour neren [ruimtelijke query's](../../overview/features/spatial-queries.md) afzonderlijke onderdelen en kan elk deel worden gewijzigd via [status onderdrukkingen](../../overview/features/override-hierarchical-state.md). In deze modus is de runtime overhead per object verwaarloosbaar. Het is ideaal voor grote scènes waarbij u nog steeds een controle per object nodig hebt, maar geen trans formatie per object wijzigt.
+In de `static` modus wordt de volledige scène grafiek geëxporteerd, maar onderdelen in deze grafiek hebben een constante trans formatie ten opzichte van het hoofd gedeelte. Het hoofd knooppunt van het object kan echter nog steeds worden verplaatst, gedraaid of geschaald zonder aanzienlijke prestatie kosten. Daarnaast retour neren [ruimtelijke query's](../../overview/features/spatial-queries.md) afzonderlijke onderdelen en kan elk deel worden gewijzigd via [status onderdrukkingen](../../overview/features/override-hierarchical-state.md). In deze modus is de runtime overhead per object verwaarloosbaar. Het is ideaal voor grote scènes waarbij u nog steeds een controle per object nodig hebt, maar geen trans formatie per object wijzigt.
 
 De `none` modus heeft de minste runtime overhead en ook iets betere laad tijden. De inspectie of trans formatie van afzonderlijke objecten is niet mogelijk in deze modus. Use cases zijn bijvoorbeeld Photogrammetry modellen die in de eerste plaats geen zinvolle scène grafiek hebben.
 
 > [!TIP]
-> Veel toepassingen laden meerdere modellen. U moet de conversie parameters voor elk model optimaliseren, afhankelijk van hoe het wordt gebruikt. Als u bijvoorbeeld het model van een auto wilt weer geven om de gebruiker uit te voeren en in detail te controleren, moet u deze converteren naar de `dynamic` modus. Als u de auto echter ook in een omgeving voor weer geven wilt plaatsen, kan dat model worden geconverteerd met `sceneGraphMode` ingesteld op `static` of zelfs. `none`
+> Veel toepassingen laden meerdere modellen. U moet de conversie parameters voor elk model optimaliseren, afhankelijk van hoe het wordt gebruikt. Als u bijvoorbeeld het model van een auto wilt weer geven om de gebruiker uit te voeren en in detail te controleren, moet u deze converteren naar de `dynamic` modus. Als u de auto echter ook in een omgeving voor weer geven wilt plaatsen, kan dat model worden geconverteerd met `sceneGraphMode` ingesteld op `static` of zelfs `none` .
 
 ### <a name="physics-parameters"></a>Fysische para meters
 
@@ -116,11 +121,11 @@ De `none` modus heeft de minste runtime overhead en ook iets betere laad tijden.
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Conversie van oudere FBX-indelingen, met een Phong-materiaal model
 
-* `fbxAssumeMetallic`-Oudere versies van de FBX-indeling definiëren hun materialen met behulp van een Phong-materiaal model. Het conversie proces moet afleiden hoe deze materialen worden toegewezen aan het pbr- [model](../../overview/features/pbr-materials.md)van de renderer. Dit werkt normaal gesp roken goed, maar een dubbel zinnigheid kan zich voordoen wanneer een materiaal geen bitmappatronen, hoge indirecte waarden en een niet-grijze albedo kleur heeft. In dit geval moet de conversie worden gekozen om te kiezen uit de prioriteit van de hoge, ondoorzichtige waarden, waarbij u een zeer reflecterende, metallische stof definieert waarbij de kleur van de albedo wordt opgelost, of de prioriteit van de albedo kleur kan worden bepaald, zoals een glanzend kleurige plastic. Het conversie proces veronderstelt standaard dat zeer onduidelijke waarden een metaal materiaal impliceren in gevallen waarin ambiguïteit van toepassing is. Deze para meter kan worden ingesteld `false` op om naar het tegenovergestelde te scha kelen.
+* `fbxAssumeMetallic`-Oudere versies van de FBX-indeling definiëren hun materialen met behulp van een Phong-materiaal model. Het conversie proces moet afleiden hoe deze materialen worden toegewezen aan het pbr- [model](../../overview/features/pbr-materials.md)van de renderer. Dit werkt normaal gesp roken goed, maar een dubbel zinnigheid kan zich voordoen wanneer een materiaal geen bitmappatronen, hoge indirecte waarden en een niet-grijze albedo kleur heeft. In dit geval moet de conversie worden gekozen om te kiezen uit de prioriteit van de hoge, ondoorzichtige waarden, waarbij u een zeer reflecterende, metallische stof definieert waarbij de kleur van de albedo wordt opgelost, of de prioriteit van de albedo kleur kan worden bepaald, zoals een glanzend kleurige plastic. Het conversie proces veronderstelt standaard dat zeer onduidelijke waarden een metaal materiaal impliceren in gevallen waarin ambiguïteit van toepassing is. Deze para meter kan worden ingesteld op `false` om naar het tegenovergestelde te scha kelen.
 
 ### <a name="coordinate-system-overriding"></a>Het coördinaten systeem overschrijven
 
-* `axis`-Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]`. In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
+* `axis`-Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]` . In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
 
 ### <a name="vertex-format"></a>Hoek punt notatie
 
@@ -152,7 +157,7 @@ De volgende `vertex` sectie in het `.json` bestand is optioneel. Voor elk gedeel
     ...
 ```
 
-Door een onderdeel af te dwingen `NONE`naar wordt gegarandeerd dat het uitvoer gaas niet de respectieve stroom heeft.
+Door een onderdeel af te dwingen naar `NONE` wordt gegarandeerd dat het uitvoer gaas niet de respectieve stroom heeft.
 
 #### <a name="component-formats-per-vertex-stream"></a>Onderdeel indelingen per vertex stroom
 
@@ -185,18 +190,18 @@ De geheugen footprint van de indelingen zijn als volgt:
 #### <a name="best-practices-for-component-format-changes"></a>Aanbevolen procedures voor het wijzigen van de indeling van onderdelen
 
 * `position`: Het is niet vaak voldoende nauw keurigheid te verminderen. **16_16_16_16_FLOAT** introduceert duidelijk kwantisatiefouten artefacten, zelfs voor kleine modellen.
-* `normal`, `tangent`, `binormal`: Doorgaans worden deze waarden samen gewijzigd. Tenzij er merk bare belichtings artefacten zijn die het resultaat zijn van normale kwantisatiefouten, is er geen reden om de nauw keurigheid te verg Roten. In sommige gevallen kunnen deze onderdelen echter worden ingesteld op **geen**:
-  * `normal`, `tangent`en `binormal` zijn alleen nodig wanneer ten minste één materiaal in het model moet worden gebrand. In ARR is dit het geval wanneer een [PBR-materiaal](../../overview/features/pbr-materials.md) op elk gewenst moment op het model wordt gebruikt.
+* `normal`, `tangent` , `binormal` : Doorgaans worden deze waarden samen gewijzigd. Tenzij er merk bare belichtings artefacten zijn die het resultaat zijn van normale kwantisatiefouten, is er geen reden om de nauw keurigheid te verg Roten. In sommige gevallen kunnen deze onderdelen echter worden ingesteld op **geen**:
+  * `normal`, `tangent` en `binormal` zijn alleen nodig wanneer ten minste één materiaal in het model moet worden gebrand. In ARR is dit het geval wanneer een [PBR-materiaal](../../overview/features/pbr-materials.md) op elk gewenst moment op het model wordt gebruikt.
   * `tangent`en `binormal` zijn alleen nodig als een van de Lit-materialen gebruikmaakt van een normaal kaart patroon.
-* `texcoord0`, `texcoord1` : Texture-coördinaten kunnen een gereduceerde nauw keurigheid (**16_16_FLOAT**) `[0; 1]` gebruiken wanneer hun waarden binnen het bereik blijven en wanneer de geadresseerde bitmappatronen een maximum grootte hebben van 2048 x 2048 pixels. Als deze limieten worden overschreden, zal de kwaliteit van de toewijzing van het patroon afnemen.
+* `texcoord0`, `texcoord1` : Texture-coördinaten kunnen een gereduceerde nauw keurigheid (**16_16_FLOAT**) gebruiken wanneer hun waarden binnen het `[0; 1]` bereik blijven en wanneer de geadresseerde bitmappatronen een maximum grootte hebben van 2048 x 2048 pixels. Als deze limieten worden overschreden, zal de kwaliteit van de toewijzing van het patroon afnemen.
 
 #### <a name="example"></a>Voorbeeld
 
 Stel dat u een Photogrammetry-model hebt, wat de belichtings geïntegreerde in de bitmappatronen heeft. Alles wat nodig is om het model weer te geven, zijn hoekpunt posities en textuur coördinaten.
 
-Het conversie programma moet er standaard van uitgaan dat u op een bepaald moment PBR-materialen wilt gebruiken op een model, zodat er `normal` `tangent` `binormal` gegevens voor u worden gegenereerd. Daarom `position` is het geheugen gebruik per vertex (12 bytes) `texcoord0` + (8 bytes) + `normal` (4 bytes) + `tangent` (4 bytes) + `binormal` (4 bytes) = 32 bytes. Grotere modellen van dit type kunnen eenvoudig tal van hoek punten hebben, wat resulteert in modellen die meerdere gigabytes aan geheugen kunnen innemen. Dergelijke grote hoeveel heden gegevens zijn van invloed op de prestaties. het kan zelfs voor komen dat er onvoldoende geheugen beschikbaar is.
+Het conversie programma moet er standaard van uitgaan dat u op een bepaald moment PBR-materialen wilt gebruiken op een model, zodat er `normal` `tangent` `binormal` gegevens voor u worden gegenereerd. Daarom is het geheugen gebruik per vertex `position` (12 bytes) + `texcoord0` (8 bytes) + `normal` (4 bytes) + `tangent` (4 bytes) + `binormal` (4 bytes) = 32 bytes. Grotere modellen van dit type kunnen eenvoudig tal van hoek punten hebben, wat resulteert in modellen die meerdere gigabytes aan geheugen kunnen innemen. Dergelijke grote hoeveel heden gegevens zijn van invloed op de prestaties. het kan zelfs voor komen dat er onvoldoende geheugen beschikbaar is.
 
-Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en u zeker weet dat `[0; 1]` alle textuur coördinaten binnen het `normal`bereik `tangent`vallen, `binormal` kunt `NONE` u `texcoord0` ,, en tot`16_16_FLOAT`en met de halve precisie () instellen, wat resulteert in slechts 16 bytes per hoek punt. Als u de netgegevens in tweeën knipt, kunt u grotere modellen laden en mogelijk de prestaties verbeteren.
+Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en u zeker weet dat alle textuur coördinaten binnen het `[0; 1]` bereik vallen, kunt u, `normal` `tangent` , en `binormal` tot en met de `NONE` `texcoord0` halve precisie () instellen, `16_16_FLOAT` wat resulteert in slechts 16 bytes per hoek punt. Als u de netgegevens in tweeën knipt, kunt u grotere modellen laden en mogelijk de prestaties verbeteren.
 
 ## <a name="typical-use-cases"></a>Typische gebruiks voorbeelden
 
@@ -206,28 +211,28 @@ Er zijn bepaalde klassen van use cases die in aanmerking komen voor specifieke o
 
 ### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Use-case: architecturale visualisatie/grote overzichten van buiten
 
-* Deze soorten scènes zijn meestal statisch, wat betekent dat ze geen verplaatste onderdelen nodig hebben. De kan daarom `sceneGraphMode` worden ingesteld op `static` of zelfs `none`, waardoor de prestaties van de uitvoering verbeteren. Met `static` modus kan het hoofd knooppunt van de scène nog steeds worden verplaatst, gedraaid en geschaald, bijvoorbeeld om dynamisch te scha kelen tussen 1:1 schaal (voor de eerste persoons weergave) en een tabel weergave.
+* Deze soorten scènes zijn meestal statisch, wat betekent dat ze geen verplaatste onderdelen nodig hebben. De kan daarom `sceneGraphMode` worden ingesteld op `static` of zelfs `none` , waardoor de prestaties van de uitvoering verbeteren. Met `static` modus kan het hoofd knooppunt van de scène nog steeds worden verplaatst, gedraaid en geschaald, bijvoorbeeld om dynamisch te scha kelen tussen 1:1 schaal (voor de eerste persoons weergave) en een tabel weergave.
 
-* Wanneer u onderdelen wilt verplaatsen, betekent dat doorgaans ook dat u ondersteuning nodig hebt voor raycasts of andere [ruimtelijke query's](../../overview/features/spatial-queries.md), zodat u deze onderdelen in de eerste plaats kunt kiezen. Daarentegen, als u niet van plan bent om iets rond te verplaatsen, is de kans groot dat u deze ook niet nodig hebt om deel te nemen aan ruimtelijke query's en `generateCollisionMesh` daarom de vlag uit te scha kelen. Deze switch heeft aanzienlijke invloed op de conversie tijden, laad tijden en runtime per kader update kosten.
+* Wanneer u onderdelen wilt verplaatsen, betekent dat doorgaans ook dat u ondersteuning nodig hebt voor raycasts of andere [ruimtelijke query's](../../overview/features/spatial-queries.md), zodat u deze onderdelen in de eerste plaats kunt kiezen. Daarentegen, als u niet van plan bent om iets rond te verplaatsen, is de kans groot dat u deze ook niet nodig hebt om deel te nemen aan ruimtelijke query's en daarom de vlag uit te scha kelen `generateCollisionMesh` . Deze switch heeft aanzienlijke invloed op de conversie tijden, laad tijden en runtime per kader update kosten.
 
-* Als de toepassing geen [geknipte abonnementen](../../overview/features/cut-planes.md)gebruikt, moet `opaqueMaterialDefaultSidedness` de vlag worden uitgeschakeld. De prestatie verbetering is doorgaans 20%-30%. Knip abonnementen kunnen nog steeds worden gebruikt, maar er zijn geen back-upobjecten bij het zoeken naar de binnenste delen van objecten, waardoor teller-intuïtief wordt weer gegeven. Zie [Single-Side rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
+* Als de toepassing geen [geknipte abonnementen](../../overview/features/cut-planes.md)gebruikt, `opaqueMaterialDefaultSidedness` moet de vlag worden uitgeschakeld. De prestatie verbetering is doorgaans 20%-30%. Knip abonnementen kunnen nog steeds worden gebruikt, maar er zijn geen back-upobjecten bij het zoeken naar de binnenste delen van objecten, waardoor teller-intuïtief wordt weer gegeven. Zie [Single-Side rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
 
 ### <a name="use-case-photogrammetry-models"></a>Use-case: Photogrammetry-modellen
 
-Bij het renderen van Photogrammetry-modellen is er doorgaans geen scène grafiek nodig, zodat u de `sceneGraphMode` kunt `none`instellen op. Omdat deze modellen zelden een complexe scène grafiek bevatten om te beginnen met, zou de impact van deze optie echter onbeduidend moeten zijn.
+Bij het renderen van Photogrammetry-modellen is er doorgaans geen scène grafiek nodig, zodat u de `sceneGraphMode` kunt instellen op `none` . Omdat deze modellen zelden een complexe scène grafiek bevatten om te beginnen met, zou de impact van deze optie echter onbeduidend moeten zijn.
 
 Omdat er al een belichting is geïntegreerde in de bitmappatronen, is er geen dynamische belichting nodig. Daarom:
 
-* Stel de `unlitMaterials` vlag in `true` op om alle materialen om te zetten in Unlit- [kleuren materialen](../../overview/features/color-materials.md).
+* Stel de `unlitMaterials` vlag in op `true` om alle materialen om te zetten in Unlit- [kleuren materialen](../../overview/features/color-materials.md).
 * Verwijder overbodige gegevens uit de vertex notatie. Zie het bovenstaande [voor beeld](#example) .
 
 ### <a name="use-case-visualization-of-compact-machines-etc"></a>Use-case: visualisatie van compacte machines, enzovoort.
 
 In deze gebruiks gevallen hebben de modellen vaak zeer veel details binnen een klein volume. De renderer is sterk geoptimaliseerd om dergelijke gevallen goed te verwerken. De meeste optimalisaties die in de vorige use-case worden genoemd, zijn echter niet van toepassing:
 
-* Afzonderlijke onderdelen moeten selecteerbaar en verplaatsbaar zijn, `sceneGraphMode` dus de moet resteren `dynamic`.
+* Afzonderlijke onderdelen moeten selecteerbaar en verplaatsbaar zijn, dus de `sceneGraphMode` moet resteren `dynamic` .
 * Ray-casts zijn doorgaans een integraal onderdeel van de toepassing. er moeten dus botsingen worden gegenereerd.
-* Knip abonnementen zien er beter uit terwijl `opaqueMaterialDefaultSidedness` de markering is ingeschakeld.
+* Knip abonnementen zien er beter uit terwijl de `opaqueMaterialDefaultSidedness` markering is ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60640375"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650321"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dynamische DNS gebruiken om hostnamen te registreren op uw eigen DNS-server
 
@@ -33,9 +33,9 @@ Windows-clients die niet lid zijn van een domein, proberen onbeveiligde DDNS-upd
 Windows-clients die lid zijn van een domein registreren hun IP-adressen bij de domein controller met behulp van beveiligde DDNS. Het proces voor het samen voegen van een domein stelt het achtervoegsel van de primaire DNS-server in op de client en maakt en onderhoudt de vertrouwens relatie.
 
 ## <a name="linux-clients"></a>Linux-clients
-Linux-clients registreren zich over het algemeen niet bij de DNS-server bij het opstarten, maar ze nemen de DHCP-server op. De DHCP-servers van Azure beschikken niet over de referenties voor het registreren van records in uw DNS-server. U kunt een hulp programma met `nsupdate`de naam, dat is opgenomen in het BIND pakket, gebruiken om DDNS-updates te verzenden. Omdat het DDNS-protocol is gestandaardiseerd, kunt u ook `nsupdate` gebruiken als u geen binding op de DNS-server gebruikt.
+Linux-clients registreren zich over het algemeen niet bij de DNS-server bij het opstarten, maar ze nemen de DHCP-server op. De DHCP-servers van Azure beschikken niet over de referenties voor het registreren van records in uw DNS-server. U kunt een hulp programma met `nsupdate` de naam, dat is opgenomen in het BIND pakket, gebruiken om DDNS-updates te verzenden. Omdat het DDNS-protocol is gestandaardiseerd, kunt u `nsupdate` ook gebruiken als u geen binding op de DNS-server gebruikt.
 
-U kunt de door de DHCP-client opgegeven hooks gebruiken om de hostnaam in de DNS-server te maken en te onderhouden. Tijdens de DHCP-cyclus voert de client de scripts in */etc/DHCP/dhclient-exit-hooks.d/* uit. U kunt de hooks gebruiken om het nieuwe IP-adres te `nsupdate`registreren met. Bijvoorbeeld:
+U kunt de door de DHCP-client opgegeven hooks gebruiken om de hostnaam in de DNS-server te maken en te onderhouden. Tijdens de DHCP-cyclus voert de client de scripts in */etc/DHCP/dhclient-exit-hooks.d/* uit. U kunt de hooks gebruiken om het nieuwe IP-adres te registreren met `nsupdate` . Bijvoorbeeld:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-U kunt ook de `nsupdate` opdracht gebruiken om beveiligde DDNS-updates uit te voeren. Wanneer u bijvoorbeeld een BIND-DNS-server gebruikt, wordt er een combi natie van open bare persoonlijke sleutel [gegenereerd](http://linux.yyz.us/nsupdate/). De DNS-server is [geconfigureerd](http://linux.yyz.us/dns/ddns-server.html) met het open bare deel van de sleutel, zodat de hand tekening op de aanvraag kan worden geverifieerd. Als u het sleutel paar wilt `nsupdate`opgeven, gebruikt u `-k` de optie om de DDNS-update aanvraag te ondertekenen.
+U kunt ook de `nsupdate` opdracht gebruiken om beveiligde DDNS-updates uit te voeren. Wanneer u bijvoorbeeld een BIND-DNS-server gebruikt, wordt er een openbaar-persoonlijk sleutel paar gegenereerd ( `http://linux.yyz.us/nsupdate/` ). De DNS-server is geconfigureerd ( `http://linux.yyz.us/dns/ddns-server.html` ) met het open bare deel van de sleutel, zodat de hand tekening op de aanvraag kan worden geverifieerd. Als u het sleutel paar wilt opgeven `nsupdate` , gebruikt u de `-k` optie om de DDNS-update aanvraag te ondertekenen.
 
-Wanneer u een Windows DNS-server gebruikt, kunt u Kerberos-verificatie gebruiken met `-g` de para `nsupdate`meter in, maar deze is niet beschikbaar in de Windows `nsupdate`-versie van. Als u Kerberos wilt gebruiken `kinit` , gebruikt u om de referenties te laden. U kunt bijvoorbeeld referenties laden vanuit een keytab- [bestand](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)) en vervolgens `nsupdate -g` de referenties ophalen uit de cache.
+Wanneer u een Windows DNS-server gebruikt, kunt u Kerberos-verificatie gebruiken met de `-g` para meter in `nsupdate` , maar deze is niet beschikbaar in de Windows-versie van `nsupdate` . Als u Kerberos wilt gebruiken, gebruikt `kinit` u om de referenties te laden. U kunt bijvoorbeeld referenties laden vanuit een keytab- [bestand](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)) en vervolgens `nsupdate -g` de referenties ophalen uit de cache.
 
-Indien nodig kunt u een achtervoegsel voor DNS-Zoek opdrachten toevoegen aan uw Vm's. Het DNS-achtervoegsel is opgegeven in het */etc/resolv.conf* -bestand. De meeste Linux-distributies beheren automatisch de inhoud van dit bestand, zodat u deze meestal niet kunt bewerken. U kunt het achtervoegsel echter vervangen door de opdracht van `supersede` de DHCP-client te gebruiken. Als u het achtervoegsel wilt overschrijven, voegt u de volgende regel toe aan het */etc/DHCP/dhclient.conf* -bestand:
+Indien nodig kunt u een achtervoegsel voor DNS-Zoek opdrachten toevoegen aan uw Vm's. Het DNS-achtervoegsel is opgegeven in het */etc/resolv.conf* -bestand. De meeste Linux-distributies beheren automatisch de inhoud van dit bestand, zodat u deze meestal niet kunt bewerken. U kunt het achtervoegsel echter vervangen door de opdracht van de DHCP-client te gebruiken `supersede` . Als u het achtervoegsel wilt overschrijven, voegt u de volgende regel toe aan het */etc/DHCP/dhclient.conf* -bestand:
 
 ```
 supersede domain-name <required-dns-suffix>;

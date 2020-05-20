@@ -2,20 +2,20 @@
 title: Kubernetes-cluster status controleren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de status van uw AKS-en niet-AKS-clusters kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
-ms.date: 12/01/2019
-ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843987"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649575"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Inzicht in de Kubernetes-cluster status met Azure Monitor voor containers
 
 Met Azure Monitor voor containers wordt de status van de beheerde infrastructuur onderdelen gecontroleerd en gerapporteerd en worden alle knoop punten die worden uitgevoerd op een Kubernetes-cluster ondersteund door Azure Monitor voor containers. Deze ervaring overschrijdt de status van de cluster status die wordt berekend en gerapporteerd in de [weer gave met meerdere clusters](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), waar u nu kunt begrijpen of een of meer knoop punten in het cluster resource beperking zijn, of dat een knoop punt of pod niet beschikbaar is die van invloed kan zijn op een actieve toepassing in het cluster op basis van metrische gegevens.
 
 >[!NOTE]
->De status functie is momenteel beschikbaar als open bare preview.
+>Aan het eind van juni 2020 gaat de status functie over naar een persoonlijke preview. Raadpleeg de volgende aankondiging van Azure- [updates](https://azure.microsoft.com/updates/ci-health-limited-preview/)voor meer informatie.
 >
 
 Voor informatie over het inschakelen van Azure Monitor voor containers raadpleegt u [Onboarding Azure monitor voor containers](container-insights-onboard.md).
@@ -23,7 +23,7 @@ Voor informatie over het inschakelen van Azure Monitor voor containers raadpleeg
 >[!NOTE]
 >Als u AKS-engine clusters wilt ondersteunen, controleert u of deze voldoet aan het volgende:
 >- De meest recente versie van de helm- [client](https://helm.sh/docs/using_helm/)wordt gebruikt.
->- De versie van de container agent is *micro soft/OMS: ciprod11012019*. Zie de [agent bijwerken in Kubernetes-cluster](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)om de agent bij te werken.
+>- De versie van de container agent is *micro soft/OMS: ciprod11012019*. Zie de [agent bijwerken in Kubernetes-cluster](container-insights-manage-agent.md#how-to-upgrade-the-azure-monitor-for-containers-agent)om de agent bij te werken.
 >
 
 ## <a name="overview"></a>Overzicht
@@ -63,7 +63,7 @@ Zie [configuratie handleiding Health Monitor](container-insights-health-monitors
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Status van een AKS-of niet-AKS-cluster weer geven
 

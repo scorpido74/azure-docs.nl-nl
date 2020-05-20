@@ -1,6 +1,6 @@
 ---
-title: Publicatie handleiding voor Azure Marketplace SaaS-toepassingen
-description: Stapsgewijze hand leiding en publicatie van controle lijsten voor het publiceren van SaaS-toepassingen naar Azure Marketplace
+title: Publicatie handleiding voor SaaS-toepassingen-micro soft Commercial Marketplace
+description: Vereisten en bronnen voor het publiceren van SaaS-toepassingen die worden aangeboden aan Microsoft AppSource en Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117230"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657822"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS-toepassingen bieden een publicatie gids
+# <a name="saas-applications-offer-publishing-guide"></a>Publicatiehandleiding voor SaaS-toepassingen
 
-SaaS-toepassingen kunnen op Marketplace worden gepubliceerd met drie verschillende aanroepen naar actie: ' contact opnemen ', ' nu proberen ' en ' nu downloaden '. In deze hand leiding worden deze drie opties beschreven, met inbegrip van de vereisten voor elk. 
+U kunt SaaS-toepassingen in de commerciële Marketplace publiceren met drie verschillende aanroepen naar actie: ' contact opnemen ', ' nu proberen ' en ' nu downloaden '. In dit artikel worden deze drie opties beschreven, met inbegrip van de vereisten voor elk. 
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding  
 
@@ -29,7 +29,7 @@ SaaS-toepassingen zijn beschikbaar in Microsoft AppSource en Azure Marketplace. 
 | SaaS-apps bieden | Zakelijke vereisten | Technische vereisten |  
 | --- | --- | --- |  
 | **Contact opnemen** | Ja | Nee |  
-| **PowerBI/Dynamics** | Ja | Ja (Azure AD-integratie) |  
+| **Power BI/Dynamics** | Ja | Ja (Azure AD-integratie) |  
 | **SaaS-apps**| Ja | Ja (Azure AD-integratie) |     
 
 ## <a name="saas-list"></a>SaaS-lijst

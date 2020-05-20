@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399326"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647409"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de API voor Azure Active Directory rapportage
 
@@ -47,7 +47,7 @@ Zie voor gedetailleerde instructies de [vereisten voor toegang tot de Azure Acti
 
 ## <a name="api-endpoints"></a>API-eind punten 
 
-Het Microsoft Graph API-eind punt voor audit `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Logboeken is en het Microsoft Graph API-eind punt `https://graph.microsoft.com/beta/auditLogs/signIns`voor aanmeldingen is. Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)voor meer gegevens.
+Het Microsoft Graph API-eind punt voor audit Logboeken is `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` en het Microsoft Graph API-eind punt voor aanmeldingen is `https://graph.microsoft.com/v1.0/auditLogs/signIns` . Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn)voor meer gegevens.
 
 Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
   
@@ -55,7 +55,7 @@ Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https
 
 U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeld-en controle-API-gegevens te verifiëren. Meld u aan bij uw account met behulp van beide aanmeld knoppen in de gebruikers interface van Graph Explorer en stel **AuditLog. Read. all** en **Directory. Read. all** in voor uw Tenant, zoals wordt weer gegeven.   
 
-![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
+![Grafiekverkenner](./media/concept-reporting-api/graph-explorer.png)
 
 ![Machtigingen voor gebruikers interface wijzigen](./media/concept-reporting-api/modify-permissions.png)
 

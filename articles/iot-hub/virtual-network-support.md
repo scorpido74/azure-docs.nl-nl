@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/12/2020
 ms.author: jlian
-ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231438"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652358"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>Ondersteuning voor virtuele netwerken IoT Hub
 
@@ -46,10 +46,7 @@ In dit artikel wordt beschreven hoe u deze doelen kunt bereiken met behulp van [
 
 ## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Ingangs connectiviteit met IoT Hub persoonlijke eind punten
 
-Een persoonlijk eind punt is een privé-IP-adres dat is toegewezen in een VNET van de klant via welke een Azure-resource bereikbaar is. Door een persoonlijk eind punt voor uw IoT-hub te hebben, kunt u ervoor zorgen dat services in uw VNET IoT Hub bereiken zonder dat er verkeer naar het open bare eind punt van IoT Hub hoeft te worden verzonden. Op dezelfde manier kunnen apparaten die in uw on-premises werken, gebruikmaken van [VPN (virtueel particulier netwerk)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering om verbinding te krijgen met uw VNET in Azure en vervolgens naar uw IOT hub (via het persoonlijke eind punt). Als gevolg hiervan kunnen klanten die de connectiviteit met hun open bare eind punten van de IoT-hub willen beperken (of deze mogelijk volledig blok keren) dit doel halen met behulp van [IOT hub firewall regels](./iot-hub-ip-filtering.md) , terwijl de verbinding met hun hub met behulp van het privé-eind punt wordt behouden.
-
-> [!NOTE]
-> De hoofd focus van deze installatie is voor apparaten in een on-premises netwerk. Deze installatie wordt niet aanbevolen voor apparaten die zijn geïmplementeerd in een Wide Area-netwerk.
+Een persoonlijk eind punt is een privé-IP-adres dat is toegewezen in een VNET van de klant via welke een Azure-resource bereikbaar is. Door een persoonlijk eind punt voor uw IoT-hub te hebben, kunt u ervoor zorgen dat services in uw VNET IoT Hub bereiken zonder dat er verkeer naar het open bare eind punt van IoT Hub hoeft te worden verzonden. Op dezelfde manier kunnen apparaten die in uw on-premises werken, gebruikmaken van [VPN (virtueel particulier netwerk)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering om verbinding te krijgen met uw VNET in Azure en vervolgens naar uw IOT hub (via het persoonlijke eind punt). Als gevolg hiervan kunnen klanten die de connectiviteit met de open bare eind punten van de IoT-hub willen beperken (of deze mogelijk volledig blok keren) dit doel halen met behulp van [IOT hub IP-filter](./iot-hub-ip-filtering.md) en [route ring configureren om geen gegevens naar het ingebouwde eind punt te verzenden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Deze benadering houdt connectiviteit met hun hub met behulp van het privé-eind punt voor apparaten. De hoofd focus van deze installatie is voor apparaten in een on-premises netwerk. Deze installatie wordt niet aanbevolen voor apparaten die zijn geïmplementeerd in een Wide Area-netwerk.
 
 ![IoT Hub openbaar eind punt](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -85,7 +82,7 @@ Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
     az provider register --namespace Microsoft.Devices --wait --subscription  <subscription-name>
     ```
 
-2. Ga naar het tabblad verbindingen met het **persoonlijke eind punt** in uw IOT hub Portal (dit tabblad is alleen beschikbaar voor IOT-hubs in de [ondersteunde regio's](#regional-availability-private-endpoints)) en **+** Klik op het teken om een nieuw persoonlijk eind punt toe te voegen.
+2. Ga naar het tabblad verbindingen met het **persoonlijke eind punt** in uw IOT hub Portal (dit tabblad is alleen beschikbaar voor IOT-hubs in de [ondersteunde regio's](#regional-availability-private-endpoints)) en klik op het **+** teken om een nieuw persoonlijk eind punt toe te voegen.
 
 3. Geef het abonnement, de resource groep, de naam en de regio voor het maken van het nieuwe persoonlijke eind punt op (in het ideale geval moet het persoonlijke eind punt worden gemaakt in dezelfde regio als uw hub; Zie de [sectie regionale Beschik baarheid](#regional-availability-private-endpoints) voor meer informatie).
 
@@ -95,8 +92,19 @@ Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
 
 6. Klik op **volgende: Tags**en geef eventueel labels voor uw resource op.
 
-7. Klik op **beoordeling + maken** om uw persoonlijke eindpunt resource te maken.
+7. Klik op **beoordeling + maken** om uw persoonlijke koppelings bron te maken.
 
+### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Het ingebouwde Event hub-compatibele eind punt biedt geen ondersteuning voor toegang via een persoonlijk eind punt
+
+Het [ingebouwde Event hub-compatibele eind punt](iot-hub-devguide-messages-read-builtin.md) biedt geen ondersteuning voor toegang via een persoonlijk eind punt. Indien geconfigureerd, is het privé-eind punt van een IoT-hub alleen voor ingangs connectiviteit. Het gebruiken van gegevens van een ingebouwd Event hub-compatibel eind punt kan alleen worden uitgevoerd via het open bare Internet. 
+
+Het [IP-filter](iot-hub-ip-filtering.md) van IOT hub beheert ook niet de open bare toegang tot het ingebouwde eind punt. Als u open bare netwerk toegang tot uw IoT-hub volledig wilt blok keren, moet u het volgende doen: 
+
+1. Toegang tot privé-eind punten configureren voor IoT Hub
+1. Open bare netwerk toegang uitschakelen door IP-filter te gebruiken om alle IP-adressen te blok keren
+1. Het ingebouwde Event hub-eind punt uitschakelen door [route ring in te stellen zodat er geen gegevens naar worden verzonden](iot-hub-devguide-messages-d2c.md)
+1. De [terugval route](iot-hub-devguide-messages-d2c.md#fallback-route) uitschakelen
+1. Uitgaand verkeer naar andere Azure-resources configureren met behulp van [vertrouwde services van Azure](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
 ### <a name="pricing-private-endpoints"></a>Prijzen (privé-eind punten)
 
@@ -196,7 +204,7 @@ Een beheerde service-identiteit kan worden toegewezen aan uw hub op het tijdstip
 }
 ```
 
-Nadat u de waarden voor uw `name`resource hebt vervangen `location`, `SKU.name` en `SKU.tier`, kunt u Azure CLI gebruiken om de resource in een bestaande resource groep te implementeren met behulp van:
+Nadat u de waarden voor uw resource hebt vervangen `name` , `location` en, `SKU.name` `SKU.tier` kunt u Azure CLI gebruiken om de resource in een bestaande resource groep te implementeren met behulp van:
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
@@ -297,7 +305,7 @@ Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
-U kunt nu de Azure IoT-REST API gebruiken voor het [maken van import export-taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. Houd er rekening mee dat u de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag `inputBlobContainerUri="https://..."` moet `outputBlobContainerUri="https://..."` opgeven en dat u als de invoer-en uitvoer-URL van uw opslag account.
+U kunt nu de Azure IoT-REST API gebruiken voor het [maken van import export-taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. Houd er rekening mee dat u de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag moet opgeven en `inputBlobContainerUri="https://..."` dat u `outputBlobContainerUri="https://..."` als de invoer-en uitvoer-URL van uw opslag account.
 
 
 Azure IoT Hub SDK biedt ook ondersteuning voor deze functionaliteit in het register beheer van de service-client. Het volgende code fragment laat zien hoe u een import-of export taak initieert in met behulp van de C#-SDK.
@@ -319,9 +327,9 @@ await registryManager.ExportDevicesAsync(
 
 Voor het gebruik van deze regio-beperkte versie van de Azure IoT Sdk's met ondersteuning voor virtuele netwerken voor C#, Java en node. js:
 
-1. Maak een omgevings variabele `EnableStorageIdentity` met de naam en stel `1`de waarde in op.
+1. Maak een omgevings variabele `EnableStorageIdentity` met de naam en stel de waarde in op `1` .
 
-2. De SDK downloaden: [Java](https://aka.ms/vnetjavasdk) | [C#](https://aka.ms/vnetcsharpsdk) | [node. js](https://aka.ms/vnetnodesdk)
+2. De SDK downloaden: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [node. js](https://aka.ms/vnetnodesdk)
  
 Voor python downloadt u onze beperkte versie van GitHub.
 

@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779974"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648508"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -50,24 +50,24 @@ U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de con
 
 ## <a name="viewing-content"></a>Inhoud weer geven
 
-Gebruikers kunnen site-inhoud vanuit een browser weer geven met behulp van de open bare URL van de website. U kunt de URL vinden met behulp van de Azure Portal, Azure CLI of Power shell. Gebruik deze tabel als richt lijn.
-
-|Hulpprogramma| Richtlijnen |
-|----|----|
-|**Azure Portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure-CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell-module** | [De URL van de website zoeken met behulp van Power shell](storage-blob-static-website-how-to.md#powershell-find-url) |
-
-De URL van uw site bevat een regionale code. De URL `https://contosoblobaccount.z22.web.core.windows.net/` bevat bijvoorbeeld regionale code `z22`.
-
-Hoewel die code in de URL moet blijven, is deze alleen voor intern gebruik en hoeft u deze code niet op een andere manier te gebruiken.
-
-Het index document dat u opgeeft wanneer u de functie voor het hosten van statische websites inschakelt, wordt weer gegeven wanneer gebruikers de site openen `https://contosoblobaccount.z22.web.core.windows.net`en geen specifiek bestand opgeven (bijvoorbeeld:).  
+Gebruikers kunnen site-inhoud vanuit een browser weer geven met behulp van de open bare URL van de website. U kunt de URL vinden met behulp van de Azure Portal, Azure CLI of Power shell. Zie [de URL van de website zoeken](storage-blob-static-website-how-to.md#portal-find-url).
 
 Als de server een 404-fout retourneert en u geen fout document hebt opgegeven toen u de website inschakelde, wordt een standaard-404-pagina naar de gebruiker geretourneerd.
 
 > [!NOTE]
 > [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wordt niet ondersteund met een statische website.
+
+### <a name="regional-codes"></a>Regionale codes
+
+De URL van uw site bevat een regionale code. De URL bevat bijvoorbeeld `https://contosoblobaccount.z22.web.core.windows.net/` regionale code `z22` .
+
+Hoewel die code in de URL moet blijven, is deze alleen voor intern gebruik en hoeft u deze code niet op een andere manier te gebruiken.
+
+Het index document dat u opgeeft wanneer u de functie voor het hosten van statische websites inschakelt, wordt weer gegeven wanneer gebruikers de site openen en geen specifiek bestand opgeven (bijvoorbeeld: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+
+### <a name="secondary-endpoints"></a>Secundaire eind punten
+
+Als u [redundantie in een secundaire regio](../common/storage-redundancy.md#redundancy-in-a-secondary-region)instelt, hebt u ook toegang tot website-inhoud door gebruik te maken van een secundair eind punt. Omdat gegevens asynchroon naar secundaire regio's worden gerepliceerd, zijn de bestanden die beschikbaar zijn op het secundaire eind punt niet altijd gesynchroniseerd met de bestanden die beschikbaar zijn op het primaire eind punt. 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Gevolgen van het instellen van het open bare toegangs niveau van de webcontainer
 
@@ -79,9 +79,9 @@ De volgende scherm afbeelding toont de instelling voor het niveau van open bare 
 
 Terwijl het eind punt van de primaire statische website niet wordt beïnvloed, heeft een wijziging van het open bare toegangs niveau invloed op het eind punt van de primaire BLOB-service.
 
-Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang voor blobs)**, wordt het niveau van de open bare toegang tot het eind punt `https://contosoblobaccount.z22.web.core.windows.net/index.html` van de primaire statische website niet gewijzigd.
+Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang voor blobs)**, wordt het niveau van de open bare toegang tot het eind punt van de primaire statische website `https://contosoblobaccount.z22.web.core.windows.net/index.html` niet gewijzigd.
 
-De open bare toegang tot het eind punt `https://contosoblobaccount.blob.core.windows.net/$web/index.html` van de primaire BLOB-service wordt echter gewijzigd van persoonlijk in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
+De open bare toegang tot het eind punt van de primaire BLOB-service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` wordt echter gewijzigd van persoonlijk in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Een aangepast domein toewijzen aan een statische website-URL
 

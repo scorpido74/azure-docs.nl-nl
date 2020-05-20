@@ -6,16 +6,16 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194900"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647569"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie in HDInsight Hadoop-clusters uitvoeren met Enterprise Security Package
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Apache Oozie uitvoeren in azure HDInsight-clusters met Enterprise Security Package
 
 Apache Oozie is een werk stroom-en coördinatie systeem waarmee Apache Hadoop taken worden beheerd. Oozie is geïntegreerd met de Hadoop-stack en biedt ondersteuning voor de volgende taken:
 
@@ -43,7 +43,7 @@ Zie [verbinding maken met HDInsight (Hadoop) via SSH](../hdinsight-hadoop-linux-
     ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     ```
 
-1. Gebruik de opdracht om de `klist` geslaagde Kerberos-verificatie te controleren. Als dat niet het `kinit` geval is, gebruikt u om Kerberos-verificatie te starten.
+1. Gebruik de opdracht om de geslaagde Kerberos-verificatie te controleren `klist` . Als dat niet het geval is, gebruikt `kinit` u om Kerberos-verificatie te starten.
 
 1. Meld u aan bij de HDInsight-gateway om het OAuth-token te registreren dat vereist is voor toegang tot Azure Data Lake Storage:
 
@@ -67,9 +67,9 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
    hdfs dfs -put examples /user/<DomainUser>/
    ```
 
-   Vervang `DomainUser` door de gebruikers naam van het domein.
-   Vervang `DomainUserPath` door het pad naar de basismap voor de domein gebruiker.
-   Vervang `ClusterVersion` door de versie van het cluster data platform.
+   Vervang door `DomainUser` de gebruikers naam van het domein.
+   Vervang door `DomainUserPath` het pad naar de basismap voor de domein gebruiker.
+   Vervang door `ClusterVersion` de versie van het cluster data platform.
 
 2. Gebruik de volgende instructie voor het maken en bewerken van een nieuw bestand:
 
@@ -176,7 +176,7 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
     </workflow-app>
     ```
 
-4. Vervang `clustername` door de naam van het cluster.
+4. Vervang door `clustername` de naam van het cluster.
 
 5. Selecteer **CTRL + X**om het bestand op te slaan. Voer **Y**in. Selecteer vervolgens **Enter**.
 
@@ -194,15 +194,15 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
 
      - Met de acties Hive Server 2 en Hive server 1 wordt een query uitgevoerd op een voor beeld van een Hive-tabel die wordt meegeleverd met HDInsight.
 
-     De Hive-acties maken gebruik van de referenties die zijn gedefinieerd in de sectie referenties voor `cred` verificatie met behulp van het sleutel woord in het actie-element.
+     De Hive-acties maken gebruik van de referenties die zijn gedefinieerd in de sectie referenties voor verificatie met behulp van het sleutel woord `cred` in het actie-element.
 
-6. Gebruik de volgende opdracht om het `workflow.xml` bestand te kopiëren `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`naar:
+6. Gebruik de volgende opdracht om het `workflow.xml` bestand te kopiëren naar `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` :
 
     ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
     ```
 
-7. Vervang `domainuser` door de gebruikers naam voor het domein.
+7. Vervang door de `domainuser` gebruikers naam voor het domein.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Definieer het eigenschappen bestand voor de Oozie-taak
 
@@ -230,11 +230,11 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - Gebruik de `adl://home` URI voor de `nameNode` eigenschap als u Azure data Lake Storage gen1 hebt als uw primaire cluster opslag. Als u Azure Blob Storage gebruikt, wijzigt u dit in `wasb://home`. Als u Azure Data Lake Storage Gen2 gebruikt, wijzigt u dit in `abfs://home`.
-   - Vervang `domainuser` door de gebruikers naam voor het domein.  
-   - Vervang `ClusterShortName` door de korte naam voor het cluster. Als de cluster naam bijvoorbeeld https:// *[voor beeld koppeling]* sechadoopcontoso.azurehdisnight.net is, zijn de `clustershortname` eerste zes tekens van het cluster: **sechad**.  
-   - Vervang `jdbcurlvalue` door de JDBC-URL uit de Hive-configuratie. Een voor beeld is JDBC: hive2://headnodehost: 10001/; transportMode = http.
-   - Als u het bestand wilt opslaan, selecteert u CTRL + `Y`X, voert u in en selecteert u vervolgens **Enter**.
+   - Gebruik de `adl://home` URI voor de `nameNode` eigenschap als u Azure data Lake Storage gen1 hebt als uw primaire cluster opslag. Als u Azure Blob Storage gebruikt, wijzigt u in `wasb://home` . Als u Azure Data Lake Storage Gen2 gebruikt, wijzigt u in `abfs://home` .
+   - Vervang door de `domainuser` gebruikers naam voor het domein.  
+   - Vervang door `ClusterShortName` de korte naam voor het cluster. Als de cluster naam bijvoorbeeld https:// *[voor beeld koppeling]* sechadoopcontoso.azurehdisnight.net is, zijn de `clustershortname` eerste zes tekens van het cluster: **sechad**.  
+   - Vervang door `jdbcurlvalue` de JDBC-URL uit de Hive-configuratie. Een voor beeld is JDBC: hive2://headnodehost: 10001/; transportMode = http.
+   - Als u het bestand wilt opslaan, selecteert u CTRL + X, voert u in `Y` en selecteert u vervolgens **Enter**.
 
    Dit eigenschappen bestand moet lokaal aanwezig zijn bij het uitvoeren van Oozie-taken.
 
@@ -331,7 +331,7 @@ In de controle logboeken van zwerver voor Hive Server 2 acties wordt weer gegeve
 
 ## <a name="configure-user-authorization-in-oozie"></a>Gebruikers autorisatie in Oozie configureren
 
-Oozie heeft zelf een configuratie voor gebruikers autorisatie waarmee gebruikers de taken van andere gebruikers kunnen stoppen of verwijderen. Als u deze configuratie wilt inschakelen, `oozie.service.AuthorizationService.security.enabled` stelt `true`u de in op. 
+Oozie heeft zelf een configuratie voor gebruikers autorisatie waarmee gebruikers de taken van andere gebruikers kunnen stoppen of verwijderen. Als u deze configuratie wilt inschakelen, stelt `oozie.service.AuthorizationService.security.enabled` u de in op `true` . 
 
 Zie voor meer informatie [Apache Oozie-installatie en-configuratie](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

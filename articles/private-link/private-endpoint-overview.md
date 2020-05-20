@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744392"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659687"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -24,7 +24,7 @@ Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig 
 
 |Eigenschap  |Beschrijving |
 |---------|---------|
-|Naam    |    Een unieke naam binnen de resource groep.      |
+|Name    |    Een unieke naam binnen de resource groep.      |
 |Subnet    |  Het subnet voor het implementeren en toewijzen van privé-IP-adressen van een virtueel netwerk. Zie de sectie beperkingen in dit artikel voor meer informatie over het subnet.         |
 |Persoonlijke koppelings bron    |   De bron van de persoonlijke koppeling om verbinding te maken met behulp van de resource-ID of alias, uit de lijst met beschik bare typen. Er wordt een unieke netwerk-id gegenereerd voor al het verkeer dat wordt verzonden naar deze bron.       |
 |Doel-subresource   |      De subresource waarmee verbinding moet worden gemaakt. Elk resource type voor een persoonlijke koppeling heeft verschillende opties om te selecteren op basis van voor keur.    |
@@ -35,7 +35,9 @@ Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig 
 Hier volgen enkele belang rijke informatie over persoonlijke eind punten: 
 - Met een privé-eind punt is connectiviteit tussen de gebruikers van hetzelfde VNet, regionale, VNets, wereld wijd verbonden VNets en on-premises mogelijk via [VPN-](https://azure.microsoft.com/services/vpn-gateway/) of [Express route](https://azure.microsoft.com/services/expressroute/) en services die worden aangedreven door privé-verbinding.
  
-- Bij het maken van een persoonlijk eind punt wordt ook een alleen-lezen netwerk interface gemaakt voor de levens cyclus van de resource. Aan de interface wordt een privé-IP-adres toegewezen uit het subnet dat is gekoppeld aan de bron van de persoonlijke koppeling.
+- Netwerk verbindingen kunnen alleen worden geïnitieerd door clients die verbinding maken met het persoonlijke eind punt. service providers hebben geen routerings configuratie voor het initiëren van verbindingen met Service-consumenten. Verbindingen kunnen slechts in één richting tot stand worden gebracht.
+
+- Bij het maken van een persoonlijk eind punt wordt ook een alleen-lezen netwerk interface gemaakt voor de levens cyclus van de resource. Aan de interface worden dynamisch privé-IP-adressen toegewezen van het subnet dat is toegewezen aan de bron van de persoonlijke koppeling. de waarde van het privé-IP-adres blijft ongewijzigd voor de gehele levens cyclus van het persoonlijke eind punt.
  
 - Het persoonlijke eind punt moet worden geïmplementeerd in dezelfde regio als het virtuele netwerk. 
  
@@ -83,7 +85,7 @@ U kunt uw workloads volledig vergren delen voor het openen van open bare eind pu
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Toegang tot een persoonlijke koppelings bron via een goedkeurings werk stroom 
 U kunt verbinding maken met een persoonlijke koppelings bron met behulp van de volgende verbindings goedkeurings methoden:
-- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: micro soft. \<>/<van Provider resource_type>/privateendpointconnectionapproval/Action
+- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: micro soft. \<>/<van provider resource_type>/privateEndpointConnectionApproval/action
 - **Hand matige** aanvraag wanneer u niet over de vereiste machtigingen beschikt en u toegang wilt aanvragen. Er wordt een goedkeurings werk stroom gestart. Het privé-eindpunt en de erop volgende verbinding met het privé-eindpunt worden in de status In behandeling gemaakt. De eigenaar van de Private Link-resource moet de verbinding goedkeuren. Nadat het is goedgekeurd, is het persoonlijke eind punt ingeschakeld voor het normaal verzenden van verkeer, zoals wordt weer gegeven in het volgende goedkeurings werk stroom diagram.  
 
 ![workflowgoedkeuring](media/private-endpoint-overview/private-link-paas-workflow.png)

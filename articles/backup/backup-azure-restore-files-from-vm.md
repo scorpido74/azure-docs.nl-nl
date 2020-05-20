@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273304"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652106"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -53,11 +53,11 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
     ![Gegenereerd wacht woord](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Klik vanaf de download locatie (meestal de map down Loads) met de rechter muisknop op het uitvoer bare bestand of script en voer dit uit met beheerders referenties. Wanneer u hierom wordt gevraagd, typt u het wacht woord of plakt u het wacht woord uit het geheugen en drukt u op **Enter**. Zodra het geldige wacht woord is ingevoerd, maakt het script verbinding met het herstel punt.
+7. Zorg ervoor dat [u de juiste computer hebt](#selecting-the-right-machine-to-run-the-script) om het script uit te voeren. Als de juiste computer dezelfde computer is waarop u het script hebt gedownload, kunt u door gaan naar de download sectie. Klik vanaf de download locatie (meestal de map *down loads* ) met de rechter muisknop op het uitvoer bare bestand of script en voer dit uit met beheerders referenties. Wanneer u hierom wordt gevraagd, typt u het wacht woord of plakt u het wacht woord uit het geheugen en drukt u op **Enter**. Zodra het geldige wacht woord is ingevoerd, maakt het script verbinding met het herstel punt.
 
     ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-8. Voor Linux-machines wordt een python-script gegenereerd. Eén moet het script downloaden en kopiëren naar de relevante/compatibele Linux-server. Mogelijk moet u de machtigingen wijzigen om deze uit te voeren ```chmod +x <python file name>```met. Voer vervolgens het python-bestand ```./<python file name>```uit met.
+8. Voor Linux-machines wordt een python-script gegenereerd. Eén moet het script downloaden en kopiëren naar de relevante/compatibele Linux-server. Mogelijk moet u de machtigingen wijzigen om deze uit te voeren met ```chmod +x <python file name>``` . Voer vervolgens het python-bestand uit met ```./<python file name>``` .
 
 Raadpleeg de sectie [toegangs vereisten](#access-requirements) om te controleren of het script is uitgevoerd.
 
@@ -65,7 +65,7 @@ Raadpleeg de sectie [toegangs vereisten](#access-requirements) om te controleren
 
 #### <a name="for-windows"></a>Voor Windows
 
-Wanneer u het uitvoer bare bestand uitvoert, koppelt het besturings systeem de nieuwe volumes en worden er stationsletters toegewezen. U kunt Windows Verkenner of bestanden Verkenner gebruiken om deze stations te doorzoeken. De stationsletters die aan de volumes zijn toegewezen, mogen niet dezelfde letters als de oorspronkelijke virtuele machine zijn. De naam van het volume blijft echter behouden. Als het volume op de oorspronkelijke virtuele machine bijvoorbeeld ' gegevens schijf (E:`\`) ' is, kan dat volume als "gegevens schijf (" wille keurige letter ":`\`) op de lokale computer worden aangesloten. Blader door alle volumes die worden vermeld in de uitvoer van het script totdat u uw bestanden of map vindt.  
+Wanneer u het uitvoer bare bestand uitvoert, koppelt het besturings systeem de nieuwe volumes en worden er stationsletters toegewezen. U kunt Windows Verkenner of bestanden Verkenner gebruiken om deze stations te doorzoeken. De stationsletters die aan de volumes zijn toegewezen, mogen niet dezelfde letters als de oorspronkelijke virtuele machine zijn. De naam van het volume blijft echter behouden. Als het volume op de oorspronkelijke virtuele machine bijvoorbeeld ' gegevens schijf (E: `\` ) ' is, kan dat volume als "gegevens schijf (" wille keurige letter ":) op de lokale computer worden aangesloten `\` . Blader door alle volumes die worden vermeld in de uitvoer van het script totdat u uw bestanden of map vindt.  
 
    ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -84,6 +84,23 @@ Nadat u de bestanden hebt geïdentificeerd en deze naar een lokale opslag locati
 Zodra de schijven zijn ontkoppeld, ontvangt u een bericht. Het kan enkele minuten duren voordat de verbinding is vernieuwd, zodat u de schijven kunt verwijderen.
 
 Nadat de verbinding met het herstel punt in Linux is verbroken, worden de bijbehorende koppel paden niet automatisch door het besturings systeem verwijderd. De koppel paden bestaan als ' zwevende ' volumes en zijn zichtbaar, maar er treedt een fout op wanneer u de bestanden opent/schrijft. Ze kunnen hand matig worden verwijderd. Het script, wanneer dit wordt uitgevoerd, identificeert alle volumes die bestaan uit eerdere herstel punten en ruimt deze op bij toestemming.
+
+## <a name="selecting-the-right-machine-to-run-the-script"></a>De juiste computer selecteren om het script uit te voeren
+
+Als het script is gedownload, is de volgende stap het controleren of de computer waarop u het script wilt uitvoeren, de juiste machine is. Hieronder vindt u de vereisten waaraan moet worden voldaan op de computer.
+
+### <a name="original-backed-up-machine-versus-another-machine"></a>Oorspronkelijke back-up van de computer versus een andere machine
+
+1. Als de back-upcomputer een grote schijf-VM is, dat wil zeggen het aantal schijven is groter dan 16 schijven of elke schijf groter is dan 4 TB, moet het script **worden uitgevoerd op een andere computer** en moeten aan [deze vereisten](#file-recovery-from-virtual-machine-backups-having-large-disks) worden voldaan.
+1. Zelfs als de back-upcomputer geen grote schijf-VM is, kan het script in [deze scenario's](#special-configurations) niet worden uitgevoerd op dezelfde back-upvm.
+
+### <a name="os-requirements-on-the-machine"></a>Vereisten voor het besturings systeem op de computer
+
+De computer waarop het script moet worden uitgevoerd, moet voldoen aan [deze vereisten van het besturings systeem](#system-requirements).
+
+### <a name="access-requirements-for-the-machine"></a>Toegangs vereisten voor de computer
+
+De computer waarop het script moet worden uitgevoerd, moet voldoen aan [deze toegangs vereisten](#access-requirements).
 
 ## <a name="special-configurations"></a>Speciale configuraties
 
@@ -210,15 +227,13 @@ Als u het script uitvoert op een computer met beperkte toegang, controleert u of
 
 > [!NOTE]
 >
-> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor exampple: de gedownloade script naam \'begint\'\_\'met VMname\'\'Geoname\'_ GUID, zoals *ContosoVM_wcus_12345678*
-> - De URL zou <https://pod01-rec2.wcus.backup.windowsazure.com>"
+> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor exampple: de gedownloade script naam begint met \' VMname \' \_ \' Geoname \' _ \' GUID \' , zoals *ContosoVM_wcus_12345678*
+> - De URL zou <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
 Voor Linux is voor het script de onderdelen open-iscsi en lshw vereist om verbinding te maken met het herstel punt. Als de onderdelen niet bestaan op de computer waarop het script wordt uitgevoerd, vraagt het script om toestemming om de onderdelen te installeren. Geef toestemming om de benodigde onderdelen te installeren.
 
 De toegang tot `download.microsoft.com` is vereist voor het downloaden van onderdelen die worden gebruikt voor het bouwen van een beveiligd kanaal tussen de computer waarop het script wordt uitgevoerd en de gegevens in het herstel punt.
-
-U kunt het script uitvoeren op elke computer met hetzelfde (of compatibel) besturings systeem als de back-up van de virtuele machine. Zie de [compatibele besturingssysteem tabel](backup-azure-restore-files-from-vm.md#system-requirements) voor compatibele besturings systemen. Als de beveiligde virtuele machine van Azure gebruikmaakt van Windows-opslag ruimten (voor Windows Azure Vm's) of LVM/RAID-matrices (voor Linux-Vm's), kunt u het uitvoer bare bestand of script niet uitvoeren op dezelfde virtuele machine. Voer in plaats daarvan het uitvoer bare bestand of script uit op een andere computer met een compatibel besturings systeem.
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Bestands herstel van back-ups van virtuele machines met grote schijven
 

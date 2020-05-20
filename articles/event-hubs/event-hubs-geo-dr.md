@@ -11,26 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858283"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659712"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure-Event Hubs-geo-nood herstel 
-
-Als er voor de hele Azure-regio's of-Data Centers (als er geen [beschikbaarheids zones](../availability-zones/az-overview.md) worden gebruikt) downtime actief is, is het van essentieel belang dat de gegevens worden verwerkt in een andere regio of Data Center. Daarom zijn *geo-nood herstel* en *geo-replicatie* belang rijke functies voor elke onderneming. Azure Event Hubs ondersteunt zowel geo-nood herstel als geo-replicatie op het niveau van de naam ruimte. 
+Als er voor de hele Azure-regio's of-Data Centers (als er geen [beschikbaarheids zones](../availability-zones/az-overview.md) worden gebruikt) downtime actief is, is het essentieel dat de gegevens worden verwerkt in een andere regio of Data Center. Daarom zijn *geo-nood herstel* en *geo-replicatie* belang rijke functies voor elke onderneming. Azure Event Hubs ondersteunt zowel geo-nood herstel als geo-replicatie op het niveau van de naam ruimte. 
 
 > [!NOTE]
 > De functie voor geo-nood herstel is alleen beschikbaar voor de [Standard-en speciale sku's](https://azure.microsoft.com/pricing/details/event-hubs/).  
 
 ## <a name="outages-and-disasters"></a>Storingen en rampen
 
-Het is belang rijk om het onderscheid tussen ' storingen ' en ' rampen ' te noteren. Een *storing* is de tijdelijke niet-beschik baarheid van Azure Event hubs en kan van invloed zijn op sommige onderdelen van de service, zoals een berichten archief of zelfs het hele Data Center. Nadat het probleem is opgelost, wordt Event Hubs echter weer beschikbaar. Normaal gesp roken veroorzaakt een storing geen verlies van berichten of andere gegevens. Een voor beeld van een dergelijke storing kan een stroom storing in het Data Center zijn. Sommige storingen zijn alleen korte verbindings verliezen als gevolg van tijdelijke of netwerk problemen. 
+Het is belang rijk om het onderscheid tussen ' storingen ' en ' rampen ' te noteren. Een **storing** is de tijdelijke niet-beschik baarheid van Azure Event hubs en kan van invloed zijn op sommige onderdelen van de service, zoals een berichten archief of zelfs het hele Data Center. Nadat het probleem is opgelost, wordt Event Hubs echter weer beschikbaar. Normaal gesp roken veroorzaakt een storing geen verlies van berichten of andere gegevens. Een voor beeld van een dergelijke storing kan een stroom storing in het Data Center zijn. Sommige storingen zijn alleen korte verbindings verliezen vanwege tijdelijke of netwerk problemen. 
 
 Een *nood* geval wordt gedefinieerd als het permanente verlies of een langere periode van een event hubs cluster, Azure-regio of Data Center. De regio of het Data Center kan al dan niet meer beschikbaar zijn, of is mogelijk niet actief voor uren of dagen. Voor beelden van dergelijke nood gevallen zijn brand, overstroming of aard beving. Een nood herstel bewerking die permanent wordt, kan leiden tot verlies van sommige berichten, gebeurtenissen of andere gegevens. In de meeste gevallen moeten er echter geen gegevens verloren gaan en kunnen berichten worden hersteld wanneer er een back-up van het Data Center wordt gemaakt.
 
@@ -48,7 +46,7 @@ In dit artikel worden de volgende termen gebruikt:
 
 -  *Primaire/secundaire naam ruimte*: de naam ruimten die overeenkomen met de alias. De primaire naam ruimte is actief en ontvangt berichten (dit kan een bestaande of nieuwe naam ruimte zijn). De secundaire naam ruimte is ' passief ' en ontvangt geen berichten. De meta gegevens tussen beide zijn synchroon, zodat beide berichten zonder toepassings code of connection string wijzigingen naadloos kunnen accepteren. Om ervoor te zorgen dat alleen de actieve naam ruimte berichten ontvangt, moet u de alias gebruiken. 
 
--  *Meta gegevens*: entiteiten zoals Event hubs en consumenten groepen; en hun eigenschappen van de service die aan de naam ruimte zijn gekoppeld. Houd er rekening mee dat alleen entiteiten en hun instellingen automatisch worden gerepliceerd. Berichten en gebeurtenissen worden niet gerepliceerd. 
+-  *Meta gegevens*: entiteiten zoals Event hubs en consumenten groepen; en hun eigenschappen van de service die aan de naam ruimte zijn gekoppeld. Alleen entiteiten en hun instellingen worden automatisch gerepliceerd. Berichten en gebeurtenissen worden niet gerepliceerd. 
 
 -  *Failover*: het proces van het activeren van de secundaire naam ruimte.
 
@@ -73,7 +71,7 @@ De volgende sectie bevat een overzicht van het failoverproces en legt uit hoe de
 
 ### <a name="setup"></a>Instellen
 
-U maakt of gebruikt eerst een bestaande primaire naam ruimte en een nieuwe secundaire naam ruimte en koppelt deze twee. Met deze koppeling krijgt u een alias die u kunt gebruiken om verbinding te maken. Omdat u een alias gebruikt, hoeft u geen verbindings reeksen te wijzigen. U kunt alleen nieuwe naam ruimten toevoegen aan uw failover-koppeling. Ten slotte moet u bewaking toevoegen om te detecteren of een failover nood zakelijk is. In de meeste gevallen is de service een deel van een groot ecosysteem, waardoor automatische failovers zelden mogelijk zijn, omdat er vaak failovers moeten worden uitgevoerd in synchronisatie met het resterende subsysteem of infra structuur.
+U maakt of gebruikt eerst een bestaande primaire naam ruimte en een nieuwe secundaire naam ruimte en koppelt deze twee. Met deze koppeling krijgt u een alias die u kunt gebruiken om verbinding te maken. Omdat u een alias gebruikt, hoeft u geen verbindings reeksen te wijzigen. U kunt alleen nieuwe naam ruimten toevoegen aan uw failover-koppeling. Ten slotte moet u bewaking toevoegen om te detecteren of een failover nood zakelijk is. In de meeste gevallen is de service een deel van een groot ecosysteem, waardoor automatische failovers zelden mogelijk zijn, omdat vaak failovers moeten worden uitgevoerd in synchronisatie met het resterende subsysteem of infra structuur.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -85,9 +83,9 @@ U kunt de failover automatiseren met bewakings systemen of met aangepaste bewaki
 
 Als u de failover initieert, zijn twee stappen vereist:
 
-1. Als er een andere storing optreedt, kunt u de failover opnieuw uitvoeren. Stel daarom een andere passieve naam ruimte in en werk de koppeling bij. 
+1. Als er zich een andere storing voordoet, wilt u opnieuw een failover kunnen uitvoeren. Stel daarom een andere passieve naam ruimte in en werk de koppeling bij. 
 
-2. Berichten ophalen uit de voormalige primaire naam ruimte zodra deze weer beschikbaar is. Daarna gebruikt u die naam ruimte voor normale berichten buiten uw Geo-herstel configuratie of verwijdert u de oude primaire naam ruimte.
+2. Pull-berichten van de voormalige primaire naam ruimte zodra deze weer beschikbaar is. Daarna gebruikt u die naam ruimte voor normale berichten buiten uw Geo-herstel configuratie of verwijdert u de oude primaire naam ruimte.
 
 > [!NOTE]
 > Alleen mislukte doorstuur semantiek worden ondersteund. In dit scenario kunt u een failover uitvoeren en vervolgens opnieuw koppelen met een nieuwe naam ruimte. Failback wordt niet ondersteund; bijvoorbeeld in een SQL-cluster. 
@@ -110,7 +108,7 @@ Het [voor beeld op github](https://github.com/Azure/azure-event-hubs/tree/master
 
 Let op de volgende punten als u rekening moet houden met deze release:
 
-1. Event Hubs met geo-nood herstel worden geen gegevens gerepliceerd, waardoor u de oude offset waarde van uw primaire Event Hub niet opnieuw kunt gebruiken op uw secundaire Event Hub. U wordt aangeraden om de ontvanger van uw gebeurtenis opnieuw te starten met een van de volgende:
+1. Event Hubs met geo-nood herstel worden geen gegevens gerepliceerd, waardoor u de oude offset waarde van uw primaire Event Hub niet opnieuw kunt gebruiken op uw secundaire Event Hub. Het wordt aangeraden om de ontvanger van uw gebeurtenis opnieuw te starten met een van de volgende methoden:
 
 - *EventPosition. FromStart ()* : als u alle gegevens op de secundaire Event hub wilt lezen.
 - *EventPosition. FromEnd ()* : als u alle nieuwe gegevens wilt lezen vanaf het moment van verbinding met uw secundaire Event hub.
@@ -135,6 +133,42 @@ U kunt Beschikbaarheidszones alleen inschakelen voor nieuwe naam ruimten, met be
 
 ![3][]
 
+## <a name="private-endpoints"></a>Privé-eind punten
+Deze sectie bevat aanvullende overwegingen bij het gebruik van geo-nood herstel met naam ruimten die persoonlijke eind punten gebruiken. Zie [persoonlijke eind punten configureren](private-link-service.md)voor meer informatie over het gebruik van privé-eind punten met Event hubs in het algemeen.
+
+### <a name="new-pairings"></a>Nieuwe paren
+Als u probeert een koppeling te maken tussen een primaire naam ruimte met een persoonlijk eind punt en een secundaire naam ruimte zonder persoonlijk eind punt, mislukt de koppeling. De koppeling kan alleen worden uitgevoerd als zowel de primaire als de secundaire naam ruimte persoonlijke eind punten hebben. U wordt aangeraden dezelfde configuraties te gebruiken voor de primaire en secundaire naam ruimten en op virtuele netwerken waarin privé-eind punten worden gemaakt.  
+
+> [!NOTE]
+> Wanneer u probeert de primaire naam ruimte te koppelen aan een persoonlijk eind punt en een secundaire naam ruimte, controleert het validatie proces alleen of er een persoonlijk eind punt bestaat op de secundaire naam ruimte. Er wordt niet gecontroleerd of het eind punt werkt of werkt na een failover. Het is uw verantwoordelijkheid om ervoor te zorgen dat de secundaire naam ruimte met het persoonlijke eind punt op de verwachte manier werkt na een failover.
+>
+> Als u wilt testen of de configuraties van het particuliere eind punt hetzelfde zijn op de primaire en secundaire naam ruimten, verzendt u een lees aanvraag (bijvoorbeeld: [Get Event hub](/rest/api/eventhub/get-event-hub)) naar de secundaire naam ruimte van buiten het virtuele netwerk en controleert u of u een fout bericht ontvangt van de service.
+
+### <a name="existing-pairings"></a>Bestaande paren
+Als er al een koppeling tussen de primaire en secundaire naam ruimte bestaat, mislukt het maken van een persoonlijk eind punt in de primaire naam ruimte. Als u wilt oplossen, maakt u eerst een persoonlijk eind punt in de secundaire naam ruimte en maakt u er er een voor de primaire naam ruimte.
+
+> [!NOTE]
+> Hoewel we alleen-lezen toegang tot de secundaire naam ruimte toestaan, worden updates voor de configuraties van particuliere endpoints toegestaan. 
+
+### <a name="recommended-configuration"></a>Aanbevolen configuratie
+Bij het maken van een configuratie voor herstel na nood gevallen voor uw toepassing en Event Hubs naam ruimten, moet u persoonlijke eind punten maken voor zowel de primaire als de secundaire Event Hubs naam ruimten voor virtuele netwerken die zowel de primaire als de secundaire exemplaren van uw toepassing hosten. 
+
+Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en secundaire naam ruimten: Event hubs-Namespace1-Primary, Event hubs-Namespace2-secundair. U moet de volgende stappen uitvoeren: 
+
+- Maak op Event hubs-Namespace1-Primary twee persoonlijke eind punten die gebruikmaken van subnetten van VNET-1 en VNET-2
+- Maak op Event hubs-Namespace2-secundair twee persoonlijke eind punten die gebruikmaken van dezelfde subnetten van VNET-1 en VNET-2 
+
+![Persoonlijke eind punten en virtuele netwerken](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
+
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Event Hubs naam ruimte. Neem de volgende scenario's: 
+
+**Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
+
+**Event hubs failover van de naam ruimte**: hier wordt de toepassing opnieuw uitgevoerd, omdat beide particuliere eind punten zijn geconfigureerd voor virtuele netwerken voor zowel de primaire als de secundaire naam ruimte. 
+
+> [!NOTE]
+> Zie [Virtual Network-Business continuïteit](../virtual-network/virtual-network-disaster-recovery-guidance.md)(Engelstalig) voor meer informatie over het herstel van geo-nood gevallen van een virtueel netwerk.
+ 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Het [voor beeld op github gaat over](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) een eenvoudige werk stroom die een geo-koppeling maakt en initieert een failover voor een nood herstel scenario.

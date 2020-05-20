@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780331"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656424"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -47,7 +47,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Implementeren als VMware-VM met behulp van de eicellen-sjabloon.<br/><br/> Implementeren als een VMware-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
-**EICELLEN-sjabloon** | Downloaden van portal of van https://aka.ms/migrate/appliance/vmware.<br/><br/> De download grootte is 11,2 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**EICELLEN-sjabloon** | Downloaden van portal of van https://aka.ms/migrate/appliance/vmware .<br/><br/> De download grootte is 11,2 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **PowerShell-script** | [Downloaden](https://go.microsoft.com/fwlink/?linkid=2105112)van script.<br/><br/> 
 **Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een virtuele VMware-machine uitvoert, hebt u voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen die aan de vereisten voldoet.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
 **VMware-vereisten** | Als u het apparaat als een virtuele VMware-machine implementeert, moet dit worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
@@ -67,7 +67,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Als Hyper-V-VM implementeren met behulp van een VHD-sjabloon.<br/><br/> Implementeer als een Hyper-V-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 5000 Hyper-V-Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
-**VHD-sjabloon** | Gezipte map inclusief VHD. Downloaden van portal of van https://aka.ms/migrate/appliance/hyperv.<br/><br/> Download grootte is 10 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**VHD-sjabloon** | Gezipte map inclusief VHD. Downloaden van portal of van https://aka.ms/migrate/appliance/hyperv .<br/><br/> Download grootte is 10 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **PowerShell-script** | [Downloaden](https://go.microsoft.com/fwlink/?linkid=2105112)van script.<br/><br/> 
 **Software/hardware***   |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat uitvoert als een Hyper-V-VM, hebt u voldoende resources op de Hyper-V-host nodig om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de toestel-VM.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
 **Vereisten voor Hyper-V** | Als u het apparaat met de VHD-sjabloon implementeert, is de virtuele machine van het apparaat van Azure Migrate Hyper-V VM versie 5,0.<br/><br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd. 
@@ -180,7 +180,7 @@ IPv6-adressen | VM. Guest.Net
 Lees doorvoer (MB per seconde) | net. received. Average
 Schrijf doorvoer (MB per seconde) | net. verzonden. gemiddeld
 **Details van configuratiepad** | 
-Naam | verpakking. GetType (). Naam
+Name | verpakking. GetType (). Naam
 Type onderliggend object | verpakking. ChildType
 Referentie Details | verpakking. MoRef
 Details van bovenliggend item | Container. Parent
@@ -222,7 +222,7 @@ Externe poort | netstat
 Extern IP-adres | netstat
 TCP-verbindings status | netstat
 Proces-id | netstat
-Nee. van actieve verbindingen | netstat
+Aantal actieve verbindingen | netstat
 
 #### <a name="process-data"></a>Gegevens verwerken
 Dit zijn de proces gegevens die het apparaat verzamelt van elke virtuele machine die is ingeschakeld voor een afhankelijkheids analyse zonder agent. Deze gegevens worden naar Azure verzonden.
@@ -244,7 +244,7 @@ Lokaal IP-adres | netstat
 Externe poort | netstat 
 Extern IP-adres | netstat 
 TCP-verbindings status | netstat 
-Nee. van actieve verbindingen | netstat
+Aantal actieve verbindingen | netstat
 Proces-id  | netstat 
 Procesnaam | PCL
 Proces argumenten | PCL
@@ -340,17 +340,17 @@ Hier volgt de volledige lijst met meta gegevens van de Linux-server die het appa
 FQDN | kat/proc/sys/kernel/hostname, hostnaam-f
 Aantal processor kernen |  /proc/cpuinfo \| awk '/^ processor/{print $3} ' \| wc-l
 Toegewezen geheugen | kat/proc/meminfo \| grep MemTotal \| awk {printf "%. 0f", $2/1024}
-BIOS-serie nummer | lshw \| grep "serieel: \| " Head- \| N1 awk {print $2} " <br/> /usr/sbin/dmidecode-t 1 \| grep ' serie ' \| awk ' {$1 = ""; $2 = ""; afdrukken} '
+BIOS-serie nummer | lshw \| grep "serieel:" \| Head-N1 \| awk {print $2} " <br/> /usr/sbin/dmidecode-t 1 \| grep ' serie ' \| awk ' {$1 = ""; $2 = ""; afdrukken} '
 BIOS-GUID | kat/sys/class/DMI/id/product_uuid
-Opstart type | [-d/sys/firmware/EFI]  && ECHO EFI \| \| -ECHO BIOS
+Opstart type | [-d/sys/firmware/EFI]  && ECHO EFI- \| \| echo BIOS
 Naam/versie van besturings systeem | We hebben toegang tot deze bestanden voor de versie van het besturings systeem en de naam:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
 Architectuur van besturings systeem | Uname-m
 Aantal schijven | fdisk-l \| egrep ' Disk. * bytes ' \| awk ' {Print $2} ' \| knippen-F1-d ': '
 Opstart schijf | DF/boot \| sed-n 2p \| awk {print $1}
 Schijfgrootte | fdisk-l \| egrep ' Disk. * bytes ' \| egrep $disk: \| awk ' {Print $5} '
 NIC-lijst | IP-o-4 adres show \| awk {print $2}
-IP-adres van NIC | IP-adres geven \| $NIC grep \| inet awk ' {Print $2} \| ' knippen-F1-d '/' 
-MAC-adres van NIC | IP-adres geeft \| $NIC grep \| -awk ' {Print $2} ' weer
+IP-adres van NIC | IP-adres geven $nic \| grep inet \| awk ' {Print $2} ' \| knippen-F1-d '/' 
+MAC-adres van NIC | IP-adres geeft $nic \| grep- \| awk ' {Print $2} ' weer
 
 ### <a name="windows-performance-data"></a>Prestatie gegevens van Windows
 
@@ -373,7 +373,7 @@ Dit zijn de prestatie gegevens van de Linux-server die het apparaat verzamelt en
 **Gegevens** | **Linux** 
 --- | --- 
 CPU-gebruik | kat/proc/stat/| grep ' CPU '/proc/stat
-Geheugengebruik | gratis \| grep- \| mem awk ' {Print $3/$ 2 * 100,0} '
+Geheugengebruik | gratis \| grep \| -mem awk ' {Print $3/$ 2 * 100,0} '
 Aantal NIC'S | lshw-class Network \| grep ETH [0-60] \| wc-l
 Ontvangen gegevens per NIC | kat/sys/class/net/ETH $ NIC/statistieken/rx_bytes
 Gegevens die per NIC worden verzonden | kat/sys/class/net/ETH $ NIC/statistieken/tx_bytes
@@ -410,7 +410,7 @@ De register sleutel verwijderen:
 Als u van apparaat Configuration Manager wilt inschakelen, nadat de detectie is voltooid:
 
 1. Open de Configuration Manager van het apparaat op de apparaats machine.
-2. Klik in **toestel Services** > **Automatic Update van Azure migrate-onderdelen is uitgeschakeld**op automatische updates inschakelen.
+2. Klik in **toestel Services**  >  **Automatic Update van Azure migrate-onderdelen is uitgeschakeld**op automatische updates inschakelen.
 
     ![Automatische updates inschakelen](./media/migrate-appliance/turn-on.png)
 
@@ -419,7 +419,7 @@ Als u van apparaat Configuration Manager wilt inschakelen, nadat de detectie is 
 U kunt de versie van het toestel nummer controleren aan de hand van een van de volgende methoden:
 
 - Als de detectie is voltooid, is het apparaat Configuration Manager.
-- Op de apparaatapparaat, in**Program ma's en onderdelen**van het **configuratie scherm** > .
+- Op de apparaatapparaat, in **Control Panel**  >  **Program ma's en onderdelen**van het configuratie scherm.
 
 De Configuration Manager van het apparaat inchecken:
 
@@ -430,7 +430,7 @@ De Configuration Manager van het apparaat inchecken:
 
 Controleren in het configuratie scherm:
 
-1. Klik op het apparaat op **Start** > **configuratie scherm** > **Program ma's en onderdelen** starten.
+1. Klik op het apparaat op **Start**  >  **configuratie scherm**  >  **Program ma's en onderdelen** starten.
 2. Controleer de versies van de toestel Services in de lijst.
 
     ![Controleer de versie in het configuratie scherm](./media/migrate-appliance/programs-features.png)
@@ -443,16 +443,16 @@ Als u een oudere versie voor een van de onderdelen uitvoert, moet u de service v
 2.  Na het downloaden opent u het bestand LatestComponents. json in Klad blok.
 3. Zoek de nieuwste service versie in het bestand en de download koppeling hiervoor. Bijvoorbeeld:
 
-    "Naam": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "versie": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+    "Naam": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "versie": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
 4.  Down load de nieuwste versie van een verouderde service met behulp van de download koppeling in het bestand.
 5. Nadat u hebt gedownload, voert u de volgende opdracht uit in een Administrator-opdracht venster om de integriteit van de gedownloade MSI te controleren.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Bijvoorbeeld: C:\>certutil-HASHFILE C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.msi MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Bijvoorbeeld: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5
 
 5. Controleer of de uitvoer van de opdracht overeenkomt met de invoer van de hashwaarde voor de service in het bestand (bijvoorbeeld de bovenstaande MD5-hash-waarde).
 6. Voer nu het MSI-bestand uit om de service te installeren. Het is een stille installatie en het installatie venster wordt gesloten nadat het is uitgevoerd.
-7. Nadat de installatie is voltooid, controleert u de versie van de service in de**Program ma's en onderdelen**van het **configuratie scherm** > . De service versie moet nu worden bijgewerkt naar de meest recente weer gave in het JSON-bestand.
+7. Nadat de installatie is voltooid, controleert u de versie van de **Control panel**service in de  >  **Program ma's en onderdelen**van het configuratie scherm. De service versie moet nu worden bijgewerkt naar de meest recente weer gave in het JSON-bestand.
 
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191937"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655182"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
@@ -104,7 +104,7 @@ Voor beelden zijn gebaseerd op een [SSH-verbinding](./hdinsight-hadoop-linux-use
 
 #### <a name="creating-a-hive-table"></a>Een Hive-tabel maken
 
-Er worden drie bestands locaties weer gegeven voor illustratie doeleinden. Gebruik slechts één van de `LOCATION` vermeldingen voor daad werkelijke uitvoering.
+Er worden drie bestands locaties weer gegeven voor illustratie doeleinden. Gebruik slechts één van de vermeldingen voor daad werkelijke uitvoering `LOCATION` .
 
 ```hql
 DROP TABLE myTable;
@@ -138,11 +138,11 @@ Micro soft biedt de volgende hulpprogram ma's voor het werken met Azure Storage:
 
 * Als u het volledige pad naar het geconfigureerde standaard archief wilt identificeren, gaat u naar:
 
-    **HDFS** > -**configuraties** en voer `fs.defaultFS` in het vak Filter invoer.
+    **HDFS**  >  **Configuratie** en voer `fs.defaultFS` in het vak Filter invoer.
 
 * Als u wilt controleren of de wasb-opslag is geconfigureerd als secundaire opslag, gaat u naar:
 
-    **HDFS** > -**configuraties** en voer `blob.core.windows.net` in het vak Filter invoer.
+    **HDFS**  >  **Configuratie** en voer `blob.core.windows.net` in het vak Filter invoer.
 
 Zie [de standaard opslag ophalen](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)om het pad op te halen met behulp van Ambari rest API.
 
@@ -158,7 +158,7 @@ In de standaard blobcontainer worden clusterspecifieke gegevens opgeslagen, zoal
 
 ## <a name="use-additional-storage-accounts"></a>Extra opslagaccounts gebruiken
 
-Tijdens het maken van een HDInsight-cluster geeft u het Azure Storage-account op dat u ermee wilt koppelen. U kunt ook extra opslag accounts toevoegen uit hetzelfde Azure-abonnement of andere Azure-abonnementen tijdens het maken. Of nadat een cluster is gemaakt. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor instructies over het toevoegen van extra opslagaccounts.
+Tijdens het maken van een HDInsight-cluster geeft u het Azure Storage-account op dat u ermee wilt koppelen. U kunt ook extra opslag accounts van hetzelfde Azure-abonnement of andere Azure-abonnementen toevoegen tijdens het maken of nadat een cluster is gemaakt. Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor instructies over het toevoegen van extra opslagaccounts.
 
 > [!WARNING]  
 > Het gebruik van een extra opslagaccount op een andere locatie dan het HDInsight-cluster wordt niet ondersteund.

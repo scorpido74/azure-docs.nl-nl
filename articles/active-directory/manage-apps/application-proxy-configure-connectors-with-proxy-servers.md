@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877385"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647246"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -115,9 +115,9 @@ Sta toegang tot de volgende URL's toe:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze Url's om certificaten te verifiëren |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.net<br>*. msauthimages.net<br>*. msecnd.net<br>*. msftauth.net<br>*. msftauthimages.net<br>*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
 
-Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen \*met. msappproxy.net \*en. servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang toestaan tot de [IP-bereiken van Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653), die overigens elke week worden bijgewerkt.
+Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen met \* . msappproxy.net en \* . servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang toestaan tot de [IP-bereiken van Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653), die overigens elke week worden bijgewerkt.
 
 Als u geen verbinding kunt maken met FQDN en u in plaats daarvan IP-bereiken moet opgeven, gebruikt u de volgende opties:
 
@@ -144,12 +144,12 @@ Het gebruik van een doorstuur proxy voor de communicatie naar de back-end-toepas
 Voer de volgende stappen uit om dit in te scha kelen:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Stap 1: de vereiste register waarde toevoegen aan de server
-1. Als u het gebruik van de standaard proxy wilt inschakelen, voegt u de `UseDefaultProxyForBackendRequests = 1` volgende register waarde (DWORD) toe aan de register sleutel connector configuratie in ' HKEY_LOCAL_MACHINE \software\microsoft\microsoft Aad-app-connector.
+1. Als u het gebruik van de standaard proxy wilt inschakelen, voegt u de volgende register waarde (DWORD) toe `UseDefaultProxyForBackendRequests = 1` aan de register sleutel connector configuratie in ' HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT Aad-app-connector.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Stap 2: Configureer de proxy server hand matig met de opdracht netsh
 1.  Schakel het groeps beleid proxy-instellingen per computer in. Dit vindt u in: Computerconfiguratie\beleid\beheersjablonen\windows-onderdelen\Extern Explorer. Deze moet worden ingesteld in plaats van dat dit beleid moet worden ingesteld op per gebruiker.
-2.  Voer `gpupdate /force` uit op de-server of start de server opnieuw op om ervoor te zorgen dat de bijgewerkte groeps beleids instellingen worden gebruikt.
-3.  Start een opdracht prompt met verhoogde bevoegdheid met beheerders rechten en `control inetcpl.cpl`Voer in.
+2.  Voer uit `gpupdate /force` op de-server of start de server opnieuw op om ervoor te zorgen dat de bijgewerkte groeps beleids instellingen worden gebruikt.
+3.  Start een opdracht prompt met verhoogde bevoegdheid met beheerders rechten en voer in `control inetcpl.cpl` .
 4.  Configureer de vereiste proxy instellingen. 
 
 Deze instellingen zorgen ervoor dat de connector dezelfde doorstuur proxy gebruikt voor de communicatie met Azure en de back-end-toepassing. Als voor de communicatie tussen de connector en Azure geen doorstuur proxy of een andere doorstuur proxy nodig is, kunt u dit instellen met het wijzigen van het bestand ApplicationProxyConnectorService. exe. config zoals beschreven in de secties uitgaande proxy's overs Laan of de uitgaande proxy server gebruiken.
@@ -162,7 +162,7 @@ Nu ziet u al het verkeer dat via de proxy stroom loopt. Als u problemen ondervin
 
 De beste manier om verbindings problemen met connectors op te sporen en op te lossen is het maken van een netwerk vastleggen tijdens het starten van de connector service. Hier volgen enkele tips voor het vastleggen en filteren van netwerk traceringen.
 
-U kunt het controle programma van uw keuze gebruiken. Voor de doel einden van dit artikel hebben we micro soft Message Analyzer gebruikt. U kunt [het downloaden van micro soft](https://www.microsoft.com/download/details.aspx?id=44226).
+U kunt het controle programma van uw keuze gebruiken. Voor de doel einden van dit artikel hebben we micro soft Message Analyzer gebruikt.
 
 De volgende voor beelden zijn specifiek voor Message Analyzer, maar de principes kunnen worden toegepast op elk analyse programma.
 
@@ -195,7 +195,7 @@ Als u verwacht dat de connector directe verbindingen met de Azure-Services maakt
 
 Als u het verkeer van de toepassings proxy connector hebt geconfigureerd om de proxy servers te passeren, wilt u controleren of er mislukte HTTPS-verbindingen met uw proxy zijn.
 
-Als u de netwerk opname voor deze verbindings pogingen wilt filteren `(https.Request or https.Response) and tcp.port==8080` , typt u in het filter Message Analyzer, waarbij u 8080 vervangt door uw proxy service-poort. Selecteer **Toep assen** om de filter resultaten weer te geven.
+Als u de netwerk opname voor deze verbindings pogingen wilt filteren, typt u `(https.Request or https.Response) and tcp.port==8080` in het filter Message Analyzer, waarbij u 8080 vervangt door uw proxy service-poort. Selecteer **Toep assen** om de filter resultaten weer te geven.
 
 In het voor gaande filter worden alleen de HTTPs-aanvragen en reacties van/naar de Proxy poort weer gegeven. U zoekt naar de VERBINDINGS aanvragen die communicatie met de proxy server weer geven. Wanneer dit is gelukt, krijgt u een HTTP OK (200)-antwoord.
 

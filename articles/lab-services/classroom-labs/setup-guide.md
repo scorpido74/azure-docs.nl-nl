@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878099"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650530"
 ---
 # <a name="classroom-lab-setup-guide"></a>Setup-hand leiding voor klas Lab
 
@@ -127,7 +127,12 @@ Nadat u de vereisten voor het lab van uw klasse hebt begrepen, bent u klaar om d
    - [De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Schema's, quota's en automatisch afsluiten zijn niet van toepassing op de sjabloon-VM. Als gevolg hiervan moet u ervoor zorgen dat u de sjabloon-VM afsluit wanneer deze niet wordt gebruikt. Anders blijven de kosten in rekening worden gebracht. Wanneer u bijvoorbeeld een Lab maakt, wordt de VM van de sjabloon automatisch gestart. Zorg ervoor dat u onmiddellijk klaar bent met het instellen van het lab en sluit de sjabloon-VM af.
+        > Schema's en quota zijn niet van toepassing op de sjabloon-VM, maar de instellingen voor automatisch afsluiten zijn van toepassing. 
+        > 
+        > Wanneer u een Lab maakt, wordt de VM van de sjabloon gemaakt, maar niet gestart. U kunt het starten, er verbinding mee maken en eventuele vereiste software voor het lab installeren en vervolgens publiceren. Wanneer u de sjabloon-VM publiceert, wordt deze automatisch afgesloten als u dat nog niet hebt gedaan. 
+        > 
+        > Bij het uitvoeren van sjabloon-Vm's worden **kosten** in rekening gebracht. Zorg er dus voor dat de sjabloon-VM wordt afgesloten wanneer u deze niet hoeft uit te voeren. 
+
 
 1. **Gebruik het dash board.** Zie [het dash board van het lab gebruiken](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)voor instructies.
 

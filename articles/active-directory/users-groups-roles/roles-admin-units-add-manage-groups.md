@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2547a0fdbfbcc143ff822de333b41198f469375c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683261"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649316"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Groepen toevoegen en beheren in beheer eenheden in Azure Active Directory
 
@@ -75,7 +75,7 @@ Voorbeeld:
 
 Ga naar **Azure AD >-beheer eenheden** in de portal. Selecteer de administratieve eenheid waarvoor u de gebruikers wilt weer geven. Standaard wordt **alle gebruikers** al geselecteerd in het linkerdeel venster. Selecteer **alle groepen** en aan de rechter kant ziet u de lijst met groepen die lid zijn van de geselecteerde beheer eenheid.
 
-![Selecteer een beheer eenheid die u wilt verwijderen](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Lijst groepen in een beheer eenheid](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -121,11 +121,11 @@ In de Azure AD-Portal kunt u de details van een groep openen door **groepen**te 
 
 Er zijn twee manieren waarop u een groep kunt verwijderen uit een administratieve eenheid in de Azure Portal.
 
-Open **Azure AD** > -**groepen** en open het profiel voor de groep die u wilt verwijderen uit de beheer eenheid. Selecteer **beheer eenheden** in het linkerdeel venster om een lijst weer te geven met alle administratieve eenheden waarvan de groep lid is. Selecteer de beheer eenheid waarvan u de groep wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid**.
+Open **Azure AD**-  >  **groepen** en open het profiel voor de groep die u wilt verwijderen uit de beheer eenheid. Selecteer **beheer eenheden** in het linkerdeel venster om een lijst weer te geven met alle administratieve eenheden waarvan de groep lid is. Selecteer de beheer eenheid waarvan u de groep wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid**.
 
 ![Een groep verwijderen uit een beheer eenheid](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-U kunt ook naar **Azure AD** > -**beheer eenheden** gaan en de administratieve eenheid selecteren waarvan de groep lid is. Selecteer **groepen** in het linkerdeel venster om de leden groepen weer te geven. Selecteer de groep die u wilt verwijderen uit de beheer eenheid en selecteer vervolgens **groepen verwijderen**.
+U kunt ook naar **Azure AD**-  >  **beheer eenheden** gaan en de administratieve eenheid selecteren waarvan de groep lid is. Selecteer **groepen** in het linkerdeel venster om de leden groepen weer te geven. Selecteer de groep die u wilt verwijderen uit de beheer eenheid en selecteer vervolgens **groepen verwijderen**.
 
 ![Lijst groepen in een beheer eenheid](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 

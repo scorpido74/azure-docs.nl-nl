@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197603"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659231"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
@@ -34,7 +34,9 @@ Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query w
 
 ### <a name="automatic-creation-of-statistics"></a>Automatisch statistieken maken
 
-De SQL-groep analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS optie is ingesteld op `ON` .  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. Deze functie wordt gebruikt om de schattingen voor de kardinaliteit van het query plan te verbeteren.
+De SQL-groep analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS optie is ingesteld op `ON` .  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. 
+
+Deze functie wordt gebruikt om de schattingen voor de kardinaliteit van het query plan te verbeteren.
 
 > [!IMPORTANT]
 > Automatisch maken van statistieken is momenteel standaard ingeschakeld.
@@ -101,7 +103,9 @@ Een van de eerste vragen die u kunt stellen wanneer u problemen met een query wi
 
 Deze vraag is niet een die kan worden beantwoord door de leeftijd van de gegevens. Een up-to-date statistieken object kan oud zijn als er geen wezenlijke wijzigingen zijn aangebracht in de onderliggende gegevens. Wanneer het aantal rijen ingrijpend is gewijzigd of als er een wijziging in de verdeling van waarden voor een kolom *optreedt, is* het tijd om de statistieken bij te werken.
 
-Er is geen dynamische beheer weergave beschikbaar om te bepalen of gegevens in de tabel zijn gewijzigd sinds de laatste keer dat de statistieken zijn bijgewerkt. Als u de leeftijd van uw statistieken kent, kunt u deel uitmaken van de afbeelding. U kunt de volgende query gebruiken om de laatste keer te bepalen dat uw statistieken op elke tabel zijn bijgewerkt.
+Er is geen dynamische beheer weergave beschikbaar om te bepalen of gegevens in de tabel zijn gewijzigd sinds de laatste keer dat de statistieken zijn bijgewerkt. Als u de leeftijd van uw statistieken kent, kunt u deel uitmaken van de afbeelding. 
+
+U kunt de volgende query gebruiken om de laatste keer te bepalen dat uw statistieken op elke tabel zijn bijgewerkt.
 
 > [!NOTE]
 > Als er sprake is van een aanmerkelijke wijziging in de verdeling van waarden voor een kolom, moet u de statistieken bijwerken, onafhankelijk van de laatste keer dat ze zijn bijgewerkt.
@@ -137,9 +141,11 @@ Voor **datum kolommen** in een Data Warehouse, bijvoorbeeld, moeten updates voor
 
 Statistieken voor een gender kolom in een tabel van klanten hoeven nooit te worden bijgewerkt. Ervan uitgaande dat de distributie een constante is tussen klanten, het toevoegen van nieuwe rijen aan de tabel variatie is geen wijziging van de gegevens distributie.
 
-Maar als uw data warehouse slechts één gender bevat en een nieuwe vereiste resulteert in meerdere geslachten, moet u de statistieken bijwerken in de kolom gender. Raadpleeg het artikel [over statistieken](/sql/relational-databases/statistics/statistics) voor meer informatie.
+Maar als uw data warehouse slechts één gender bevat en een nieuwe vereiste resulteert in meerdere geslachten, moet u de statistieken bijwerken in de kolom gender. 
 
-### <a name="implementing-statistics-management"></a>Statistieken beheer implementeren
+Raadpleeg het artikel [over statistieken](/sql/relational-databases/statistics/statistics) voor meer informatie.
+
+### <a name="implement-statistics-management"></a>Statistieken beheer implementeren
 
 Het is vaak een goed idee om uw proces voor het laden van gegevens uit te breiden om ervoor te zorgen dat de statistieken aan het einde van de belasting worden bijgewerkt. Het laden van gegevens is het vaak wijzigen van de grootte van de tabellen, het distribueren van waarden of beide. Als zodanig is het laad proces een logische plaats voor het implementeren van een aantal beheer processen.
 
@@ -275,6 +281,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Een opgeslagen procedure gebruiken om statistieken te maken voor alle kolommen in een Data Base
 
 De SQL-pool heeft geen opgeslagen systeem procedure die gelijk is aan sp_create_stats in SQL Server. Met deze opgeslagen procedure maakt u één kolom statistieken-object op elke kolom van de data base waarvoor nog geen statistieken zijn.
+
 Het volgende voor beeld helpt u aan de slag te gaan met uw database ontwerp. U kunt deze aanpassen aan uw behoeften:
 
 ```sql
@@ -418,7 +425,9 @@ Bijvoorbeeld:
 UPDATE STATISTICS dbo.table1;
 ```
 
-De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee dat *alle* statistieken in de tabel worden bijgewerkt en dat er meer werk wordt gevraagd dan u nodig hebt. Als de prestaties niet van belang zijn, is deze methode de eenvoudigste en meest volledige manier om te garanderen dat statistieken up-to-date zijn.
+De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee dat *alle* statistieken in de tabel worden bijgewerkt en dat er meer werk wordt gevraagd dan u nodig hebt. 
+
+Als de prestaties niet van belang zijn, is deze methode de eenvoudigste en meest volledige manier om te garanderen dat statistieken up-to-date zijn.
 
 > [!NOTE]
 > Wanneer alle statistieken voor een tabel worden bijgewerkt, voert SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
@@ -497,11 +506,13 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze gegevens zijn afkomstig uit drie delen:
 
-- Header
+- Koptekst
 - Dichtheids vector
 - Histogram
 
-De kop bevat de meta gegevens over de statistieken. In het histogram wordt de verdeling weer gegeven van de waarden in de eerste sleutel kolom van het statistiek object. De dichtheids vector meet de correlatie tussen kolommen. De SQL-pool berekent kardinaliteit met een van de gegevens in het statistiek object.
+De kop bevat de meta gegevens over de statistieken. In het histogram wordt de verdeling weer gegeven van de waarden in de eerste sleutel kolom van het statistiek object. 
+
+De dichtheids vector meet de correlatie tussen kolommen. De SQL-pool berekent kardinaliteit met een van de gegevens in het statistiek object.
 
 #### <a name="show-header-density-and-histogram"></a>Koptekst, densiteit en histogram weer geven
 
@@ -555,7 +566,11 @@ Er worden statistieken gemaakt per bepaalde kolom voor een bepaalde gegevensset 
 
 ### <a name="why-use-statistics"></a>Waarom statistieken gebruiken?
 
-Hoe meer SQL on-demand (preview) weet over uw gegevens, des te sneller query's kunnen worden uitgevoerd. Het verzamelen van statistieken voor uw gegevens is een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren. De SQL on demand-query Optimizer is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd. Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query wordt gefilterd, wordt er één regel geretourneerd. Als er wordt geschat dat de geselecteerde datum 1.000.000 rijen retourneert, wordt een ander plan geretourneerd.
+Hoe meer SQL on-demand (preview) weet over uw gegevens, des te sneller query's kunnen worden uitgevoerd. Het verzamelen van statistieken voor uw gegevens is een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren. 
+
+De SQL on demand-query Optimizer is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd. 
+
+Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query wordt gefilterd, wordt er één regel geretourneerd. Als er wordt geschat dat de geselecteerde datum 1.000.000 rijen retourneert, wordt een ander plan geretourneerd.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatisch statistieken maken
 
@@ -570,9 +585,11 @@ Het automatisch maken van statistieken wordt synchroon uitgevoerd, zodat u een s
 
 ### <a name="manual-creation-of-statistics"></a>Hand matig statistieken maken
 
-Met SQL on-Demand kunt u statistieken hand matig maken. Voor CSV-bestanden moet u hand matig statistieken maken omdat het automatisch maken van statistieken niet is ingeschakeld voor CSV-bestanden. Zie de voor beelden hieronder voor instructies over het hand matig maken van statistieken.
+Met SQL on-Demand kunt u statistieken hand matig maken. Voor CSV-bestanden moet u hand matig statistieken maken omdat het automatisch maken van statistieken niet is ingeschakeld voor CSV-bestanden. 
 
-### <a name="updating-statistics"></a>Statistieken bijwerken
+Raadpleeg de volgende voor beelden voor instructies over het hand matig maken van statistieken.
+
+### <a name="update-statistics"></a>Statistieken bijwerken
 
 Wijzigingen in gegevens in bestanden, verwijderen en toevoegen van bestanden resulteren in wijzigingen in de gegevens distributie en maakt statistieken verouderd. In dat geval moeten statistieken worden bijgewerkt.
 
@@ -592,9 +609,9 @@ Wanneer het aantal rijen ingrijpend is gewijzigd of als er sprake is van een aan
 > [!NOTE]
 > Als er sprake is van een aanmerkelijke wijziging in de verdeling van waarden voor een kolom, moet u de statistieken bijwerken, onafhankelijk van de laatste keer dat ze zijn bijgewerkt.
 
-### <a name="implementing-statistics-management"></a>Statistieken beheer implementeren
+### <a name="implement-statistics-management"></a>Statistieken beheer implementeren
 
-Misschien wilt u uw gegevens pijplijn uitbreiden om ervoor te zorgen dat de statistieken worden bijgewerkt wanneer de gegevens ingrijpend worden gewijzigd door het toevoegen, verwijderen of wijzigen van bestanden.
+U kunt uw gegevens pijplijn uitbreiden om ervoor te zorgen dat de statistieken worden bijgewerkt wanneer de gegevens ingrijpend worden gewijzigd door het toevoegen, verwijderen of wijzigen van bestanden.
 
 De volgende richt lijnen zijn voor het bijwerken van uw statistieken:
 

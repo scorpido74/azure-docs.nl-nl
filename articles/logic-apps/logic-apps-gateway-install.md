@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 12/05/2019
-ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80673819"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659266"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -37,10 +37,10 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
     > [!NOTE]
     > U kunt slechts één gateway-installatie en één Azure gateway-resource aan elkaar koppelen. U kunt dezelfde Gateway-installatie niet koppelen aan meerdere Azure-accounts of Azure gateway-resources. Een Azure-account kan echter worden gekoppeld aan meerdere gateway-installaties en Azure gateway-resources. In een on-premises trigger of actie kunt u kiezen uit uw verschillende Azure-abonnementen en vervolgens een gekoppelde gateway resource selecteren.
 
-  * U moet zich aanmelden met een werk account of school account, ook wel bekend als een *organisatie* account, die er als volgt `username@contoso.com`uitziet. U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com.
+  * U moet zich aanmelden met een werk account of school account, ook wel bekend als een *organisatie* account, die er als volgt uitziet `username@contoso.com` . U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com .
 
     > [!TIP]
-    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, `username@domain.onmicrosoft.com`kan uw adres er als volgt uitzien. Uw account wordt opgeslagen in een Tenant in een Azure Active Directory (Azure AD). In de meeste gevallen is de UPN (User Principal Name) voor uw Azure AD-account hetzelfde als uw e-mail adres.
+    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, kan uw adres er als volgt uitzien `username@domain.onmicrosoft.com` . Uw account wordt opgeslagen in een Tenant in een Azure Active Directory (Azure AD). In de meeste gevallen is de UPN (User Principal Name) voor uw Azure AD-account hetzelfde als uw e-mail adres.
     >
     > Als u een [Visual Studio Standard-abonnement](https://visualstudio.microsoft.com/vs/pricing/) wilt gebruiken dat is gekoppeld aan een Microsoft-account, maakt u eerst [een TENANT in azure AD](../active-directory/develop/quickstart-create-new-tenant.md) of gebruikt u de standaard directory. Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw Azure-abonnement. U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
 
@@ -68,13 +68,15 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
     > [!TIP]
     > Als u de latentie wilt minimaliseren, kunt u de gateway zo dicht mogelijk bij de gegevens bron of op dezelfde computer installeren, ervan uitgaande dat u over de juiste machtigingen beschikt.
 
-  * Installeer de gateway op een computer die zich op een bekabeld netwerk bevindt, verbonden met internet, altijd ingeschakeld en niet naar de slaap stand. Anders kan de gateway niet worden uitgevoerd en is het mogelijk dat de prestaties van een draadloos netwerk afnemen.
+  * Installeer de gateway op een lokale computer in een bekabeld netwerk, verbonden met internet, altijd ingeschakeld en gaat niet verder met de slaap stand. Anders kan de gateway niet worden uitgevoerd en is het mogelijk dat de prestaties van een draadloos netwerk afnemen.
 
   * Als u van plan bent om Windows-verificatie te gebruiken, moet u ervoor zorgen dat u de gateway installeert op een computer die lid is van dezelfde Active Directory omgeving als uw gegevens bronnen.
 
   * De regio die u voor de gateway-installatie selecteert, is dezelfde locatie die u moet selecteren wanneer u later de Azure-gateway resource voor uw logische app maakt. Deze regio is standaard dezelfde locatie als uw Azure AD-Tenant voor het beheren van uw Azure-account. U kunt de locatie echter wijzigen tijdens de installatie van de gateway.
 
-  * Als u de installatie van de gateway naar de nieuwste versie bijwerkt, moet u eerst uw huidige gateway verwijderen voor een overzichtelijke ervaring.
+  * Als u de installatie van de gateway bijwerkt, moet u eerst uw huidige gateway verwijderen voor een overzichtelijke ervaring.
+
+    Zorg er als best practice voor dat u een ondersteunde versie gebruikt. Micro soft brengt elke maand een nieuwe update naar de on-premises gegevens gateway uit en biedt momenteel alleen ondersteuning voor de laatste zes releases van de on-premises gegevens gateway. Als u problemen ondervindt met de versie die u gebruikt, voert u [een upgrade uit naar de nieuwste versie](https://aka.ms/on-premises-data-gateway-installer) , omdat uw probleem mogelijk wordt opgelost in de meest recente versie.
 
   * De gateway heeft twee modi: standaard modus en persoonlijke modus, die alleen van toepassing is op Power BI. U kunt niet meer dan één gateway in dezelfde modus op dezelfde computer uitvoeren.
 
@@ -96,7 +98,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
    De gateway-installatie kan slechts aan één Azure-account worden gekoppeld.
 
-1. Selecteer **een nieuwe gateway registreren op deze computer** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
+1. Selecteer **een nieuwe gateway registreren op deze computer**  >  **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
 
    ![Gateway op lokale computer registreren](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -162,15 +164,15 @@ Wanneer u na het instellen van de primaire gateway een andere gateway installeer
 
 Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naar een nieuwe computer verplaatst, een beschadigde gateway herstelt of eigenaar van een bestaande gateway bent, hebt u de herstel sleutel nodig die tijdens de installatie van de gateway werd verschaft.
 
-1. Voer het installatie programma van de gateway uit op de computer met de bestaande gateway. Als u niet beschikt over het nieuwste Gateway-installatie programma, [downloadt u de nieuwste gateway versie](https://aka.ms/on-premises-data-gateway-installer).
+> [!NOTE]
+> Voordat u de gateway op de computer met de oorspronkelijke gateway installatie herstelt, moet u eerst de gateway op die computer verwijderen. Met deze actie wordt de verbinding van de oorspronkelijke gateway verbroken.
+> Als u een gateway cluster verwijdert of verwijdert voor een Cloud service, kunt u dat cluster niet herstellen.
 
-   > [!NOTE]
-   > Voordat u de gateway op de computer met de oorspronkelijke gateway installatie herstelt, moet u eerst de gateway op die computer verwijderen. Met deze actie wordt de verbinding van de oorspronkelijke gateway verbroken.
-   > Als u een gateway cluster verwijdert of verwijdert voor een Cloud service, kunt u dat cluster niet herstellen.
+1. Voer het installatie programma van de gateway uit op de computer met de bestaande gateway.
 
 1. Nadat het installatie programma is geopend, meldt u zich aan met hetzelfde Azure-account dat is gebruikt om de gateway te installeren.
 
-1.  > Selecteer **een bestaande gateway migreren, herstellen of overnemen****, bijvoorbeeld**:
+1. Selecteer **een bestaande gateway migreren, herstellen of overnemen**  >  **Next**, bijvoorbeeld:
 
    ![Selecteer een bestaande gateway migreren, herstellen of overnemen](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -236,7 +238,7 @@ Micro soft Cloud Services gebruiken [Azure AD](../active-directory/fundamentals/
 
 ### <a name="what-is-my-upn"></a>Wat is mijn UPN?
 
-Als u geen domein beheerder bent, bent u mogelijk niet op de hoogte van uw UPN. Als u de UPN voor uw account wilt zoeken, `whoami /upn` voert u de opdracht uit vanaf uw werk station. Hoewel het resultaat eruitziet als een e-mail adres, is het resultaat de UPN voor uw lokale domein account.
+Als u geen domein beheerder bent, bent u mogelijk niet op de hoogte van uw UPN. Als u de UPN voor uw account wilt zoeken, voert u de `whoami /upn` opdracht uit vanaf uw werk station. Hoewel het resultaat eruitziet als een e-mail adres, is het resultaat de UPN voor uw lokale domein account.
 
 ### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Een on-premises Active Directory Domain Services synchroniseren met Azure AD
 
@@ -259,9 +261,7 @@ Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accoun
 
 ## <a name="faq-and-troubleshooting"></a>Veelgestelde vragen en probleemoplossing
 
-Zie deze onderwerpen voor meer informatie:
-
-* [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Veelgestelde vragen over on-premises gegevensgateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
 * [Problemen met de on-premises gegevensgateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Gatewayprestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 

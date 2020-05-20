@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL node. js-API, SDK & resources'
 description: Meer informatie over de SQL node. js-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB node. js-SDK.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 09/24/2018
-ms.author: dech
-ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982885"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650734"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB node. js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982885"
 > * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java-SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -164,7 +165,7 @@ database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-Het genereren van het header token is opgesplitst in @azure/cosmos-signeen nieuwe bibliotheek. Iedereen die de REST API Cosmos aanroept, kan deze direct gebruiken om headers te ondertekenen met dezelfde code @azure/cosmosdie we aanroepen.
+Het genereren van het header token is opgesplitst in een nieuwe bibliotheek @azure/cosmos-sign . Iedereen die de REST API Cosmos aanroept, kan deze direct gebruiken om headers te ondertekenen met dezelfde code die we aanroepen @azure/cosmos .
 
 ##### <a name="uuid-for-generated-ids"></a>UUID voor gegenereerde Id's
 v2 bevat aangepaste code voor het genereren van item-Id's. We zijn overgeschakeld naar de bekende en beheerde uuid van de Community-bibliotheek.
@@ -247,7 +248,7 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * Installeren rechtstreeks vanuit GitHub inschakelen (#194)
 
 ### <a name=""></a><a name="2.0.5"/>2.0.5</a>
-* Voegt interface toe voor het type knooppunt agent. Type script-gebruikers hoeven niet meer te @types/node installeren als afhankelijkheid
+* Voegt interface toe voor het type knooppunt agent. Type script-gebruikers hoeven niet meer te installeren @types/node als afhankelijkheid
 * Voorkeurs locaties worden nu op de juiste wijze nageleefd
 * Verbeteringen in de documentatie van bijdragende ontwikkel aars
 * Verschillende type fouten opgelost
@@ -256,14 +257,14 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * Hiermee wordt een probleem met het type definitie opgelost dat is geïntroduceerd in 2.0.3
 
 ### <a name=""></a><a name="2.0.3"/>2.0.3</a>
-* Afhankelijkheid verwijderen `big-integer`
+* `big-integer`Afhankelijkheid verwijderen
 * Overschakelen naar referentie richtlijnen voor het type AsyncIterable. Type script-gebruikers hoeven hun "lib"-instelling niet meer aan te passen.
 * Type correcties
 
 ### <a name=""></a><a name="2.0.2"/>2.0.2</a>
 * Leesmij-koppelingen oplossen
 
-### <a name=""></a><a name="2.0.1"/>wel</a>
+### <a name=""></a><a name="2.0.1"/>2.0.1</a>
 * Implementatie van interface opnieuw proberen herstellen
 
 ### <a name=""></a><a name="2.0.0"/>2.0.0</a>
@@ -436,7 +437,7 @@ Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK
 | [2.0.4](#2.0.4) |30 oktober 2018 |--- |
 | [2.0.3](#2.0.3) |30 oktober 2018 |--- |
 | [2.0.2](#2.0.2) |10 oktober 2018 |--- |
-| [wel](#2.0.1) |25 september 2018 |--- |
+| [2.0.1](#2.0.1) |25 september 2018 |--- |
 | [2.0.0](#2.0.0) |September 24, 2018 |--- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2 augustus 2018 |--- |
 | [1.14.4](#1.14.4) |03 mei 2018 |30 augustus 2020 |

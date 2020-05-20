@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 05/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 082689dba5fdfa8505f2293223e76f2164b0df14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116710"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655289"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pull-model voor feed wijzigen in Azure Cosmos DB
 
@@ -43,7 +43,7 @@ FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 Met behulp `FeedIterator` van een kunt u eenvoudig de wijzigings feed van een hele container in uw eigen tempo verwerken. Hier volgt een voorbeeld:
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -61,7 +61,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 In sommige gevallen wilt u mogelijk alleen de wijzigingen van een specifieke partitie sleutel verwerken. U kunt een `FeedIterator` voor een specifieke partitie sleutel verkrijgen en de wijzigingen op dezelfde manier verwerken als voor een hele container:
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -98,7 +98,7 @@ Hier volgt een voor beeld waarin wordt uitgelegd hoe u vanaf het begin van de wi
 Machine 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<Person>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -149,6 +149,8 @@ while (iterator.HasMoreResults)
 FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
 ```
 
+Zolang de Cosmos-container nog bestaat, verloopt de vervolg token van FeedIterator nooit.
+
 ## <a name="comparing-with-change-feed-processor"></a>Vergelijken met de processor voor wijzigings invoer
 
 In veel scenario's kan de wijzigings feed worden verwerkt met behulp van de [Change feed-processor](change-feed-processor.md) of het pull-model. De vervolg tokens van het pull-model en de lease-container van de wijzigings feed zijn beide ' blad wijzers ' voor het laatst verwerkte item (of een batch met items) in de wijzigings feed.
@@ -156,9 +158,9 @@ U kunt vervolg tokens echter niet converteren naar een lease container (of ander
 
 Overweeg het gebruik van het pull-model in de volgende scenario's:
 
-- U wilt een eenmalige Lees bewerking uitvoeren van de bestaande gegevens in de wijzigings feed
-- U wilt alleen wijzigingen van een bepaalde partitie sleutel lezen
-- U wilt geen push model en wilt u de wijzigings feed in uw eigen tempo gebruiken
+- Wijzigingen van een bepaalde partitie sleutel lezen
+- Het tempo bepalen waarmee uw client wijzigingen voor verwerking ontvangt
+- Een eenmalige het lezen van de bestaande gegevens in de feed (bijvoorbeeld om een gegevens migratie uit te voeren)
 
 Hier volgen enkele belang rijke verschillen tussen de Change feed-processor en het pull-model:
 

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/09/2020
+ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310693"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649476"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Een browsertracering vastleggen om problemen op te lossen
 
@@ -24,13 +24,13 @@ Als u een probleem met de Azure Portal oplost en u contact moet opnemen met micr
 
 Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-source-project](https://www.chromium.org/Home)van Chrome. De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars gebruikt, die vergelijkbaar zijn in de twee browsers. Zie [Chrome devtools](https://developers.google.com/web/tools/chrome-devtools) en [micro soft Edge (chroom) Ontwikkelhulpprogramma's](/microsoft-edge/devtools-guide-chromium)voor meer informatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
 
 1. Begin met het vastleggen van de stappen die u in de portal uitvoert, met behulp van de [stappen beschrijving](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of ![Selecteer scherm opname van browser](media/capture-browser-trace/chromium-icon-settings.png) > instellingen pictogram**meer hulpprogram ma's** > voor**ontwikkel aars**.
+1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/chromium-icon-settings.png)  >  **meer hulpprogram ma's**voor  >  **ontwikkel aars**.
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
@@ -58,9 +58,9 @@ Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-sour
 
     ![Scherm afbeelding van "uitvoer HAR"](media/capture-browser-trace/chromium-network-export-har.png)
 
-1. Stop de stappen opnemen en sla het bestand op.
+1. Stop stappen opnemen en sla de opname op.
 
-1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop, selecteer vervolgens **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
+1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten en selecteer vervolgens **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
 
     ![Scherm opname van console-uitvoer](media/capture-browser-trace/chromium-console-select.png)
 
@@ -70,13 +70,13 @@ Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-sour
 
 De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in micro soft Edge (EdgeHTML) gebruikt. Zie [micro soft Edge (EdgeHTML) Ontwikkelhulpprogramma's](/microsoft-edge/devtools-guide)voor meer informatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
 
 1. Begin met het vastleggen van de stappen die u in de portal uitvoert, met behulp van de [stappen beschrijving](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of ![Selecteer scherm opname van browser](media/capture-browser-trace/edge-icon-settings.png) > instellingen pictogram**meer hulpprogram ma's** > voor**ontwikkel aars**.
+1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/edge-icon-settings.png)  >  **meer hulpprogram ma's**voor  >  **ontwikkel aars**.
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
@@ -104,7 +104,7 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
     ![Scherm afbeelding van "exporteren als HAR"](media/capture-browser-trace/edge-network-export-har.png)
 
-1. Stop de stappen opnemen en sla het bestand op.
+1. Stop stappen opnemen en sla de opname op.
 
 1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Klik met de rechter muisknop, selecteer **kopiëren**en sla de console-uitvoer op in een tekst bestand.
 
@@ -126,7 +126,7 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
         ![Scherm opname van geavanceerde voor keuren voor Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
 
 1. Begin met het vastleggen van de stappen die u in de portal uitvoert. Zie [het scherm op uw Mac vastleggen](https://support.apple.com/HT208721)voor meer informatie.
 
@@ -158,11 +158,53 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
     ![Scherm opname van "exporteren"](media/capture-browser-trace/safari-network-export-har.png)
 
-1. Stop de scherm opname en sla het bestand op.
+1. Stop de scherm opname en sla de opname op.
 
 1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Gebruik opdracht-C om de uitvoer te kopiëren en op te slaan in een tekst bestand.
 
     ![Scherm opname van console-uitvoer](media/capture-browser-trace/safari-console-select.png)
+
+1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
+
+## <a name="firefox"></a>Firefox
+
+De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in Firefox kunt gebruiken. Zie [Firefox Ontwikkelhulpprogramma's](https://developer.mozilla.org/docs/Tools)voor meer informatie.
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+
+1. Begin met het vastleggen van de stappen die u in de portal uitvoert. Gebruik [stappen](https://support.microsoft.com/help/22878/windows-10-record-steps) opnemen in Windows of Zie [hoe u het scherm op uw Mac vastlegt](https://support.apple.com/HT208721).
+
+1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
+
+1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webontwikkelaar**  >  **Toggle hulp middelen**.
+
+1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
+
+    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **Logboeken persistent**maken.
+
+          ![Scherm opname van Logboeken voor persistentie](media/capture-browser-trace/firefox-network-persist-logs.png)
+
+    1. Selecteer het tabblad **console** , selecteer **console-instellingen**en selecteer **persistente logboeken**.
+
+          ![Scherm opname van Logboeken voor persistentie](media/capture-browser-trace/firefox-console-persist-logs.png)
+
+1. Selecteer het tabblad **netwerk** en selecteer vervolgens **wissen**.
+
+    ![Scherm opname van ' wissen '](media/capture-browser-trace/firefox-clear-session.png)
+
+1. Reproduceer het probleem in de portal. U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
+
+    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/firefox-browser-trace-results.png)
+
+1. Nadat u het onverwachte gedrag van de portal hebt gemaakt, selecteert u **har exporteren/importeren** en slaat u vervolgens **alles op als har**.
+
+    ![Scherm afbeelding van "uitvoer HAR"](media/capture-browser-trace/firefox-network-export-har.png)
+
+1. Stop stappen voor het opnemen van de opname in Windows of het scherm op Mac en sla de opname op.
+
+1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **zichtbaar bericht exporteren naar**en sla de console-uitvoer op in een tekst bestand.
+
+    ![Scherm opname van console-uitvoer](media/capture-browser-trace/firefox-console-select.png)
 
 1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
 

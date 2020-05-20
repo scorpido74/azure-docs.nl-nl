@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: memildin
-ms.openlocfilehash: bfe1e5d6a0c4171a262b36387f02be356fb1d72d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210894"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654666"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -31,6 +31,36 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 
 
 ## <a name="may-2020"></a>Mei 2020
+
+
+### <a name="alert-suppression-rules-preview"></a>Regels voor waarschuwings onderdrukking (preview-versie)
+
+Met deze nieuwe functie (momenteel in Preview) kunt u de duurzaamheid van waarschuwingen verlagen. Gebruik regels om waarschuwingen automatisch te verbergen waarvan bekend is dat ze worden Innocuous of gerelateerd aan normale activiteiten in uw organisatie. Zo kunt u zich richten op de meest relevante bedreigingen. 
+
+Waarschuwingen die overeenkomen met uw ingeschakelde onderdrukkings regels worden nog steeds gegenereerd, maar de status wordt ingesteld op genegeerd. U kunt de status bekijken in de Azure Portal of u hebt echter toegang tot uw Security Center beveiligings waarschuwingen.
+
+Met onderdrukkings regels worden de criteria gedefinieerd waarvoor waarschuwingen automatisch moeten worden genegeerd. Normaal gesp roken gebruikt u een onderdrukkings regel voor het volgende:
+
+- waarschuwingen onderdrukken die u als foutieve positieven hebt geïdentificeerd
+
+- waarschuwingen onderdrukken die te vaak worden geactiveerd om nuttig te zijn
+
+Meer [informatie over het onderdrukken van waarschuwingen van de bedreigings beveiliging van Azure Security Center](alerts-suppression-rules.md).
+
+
+### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>De evaluatie van de beveiligings problemen van de virtuele machine is nu algemeen beschikbaar
+
+De Standard-laag van Security Center bevat nu een geïntegreerde evaluatie van beveiligings problemen voor virtuele machines zonder extra kosten. Deze uitbrei ding wordt mogelijk gemaakt door Qualys, maar rapporteert de resultaten direct terug naar Security Center. U hebt geen Qualys-licentie nodig of zelfs een Qualys-account: alles wordt naadloos verwerkt binnen Security Center.
+
+De nieuwe oplossing kan voortdurend uw virtuele machines scannen om beveiligings problemen op te sporen en de bevindingen in Security Center presen teren. 
+
+Als u de oplossing wilt implementeren, gebruikt u de nieuwe beveiligings aanbeveling:
+
+"De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (aangedreven door Qualys)"
+
+[Meer informatie](built-in-vulnerability-assessment.md).
+
+
 
 ### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Wijzigingen in de just-in-time-toegang van virtuele machines (VM)
 
@@ -67,22 +97,40 @@ De beveiligings besturings elementen-en deze wissel knop maken deel uit van de n
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
 
-### <a name="account-security-recommendations-moved-to-security-best-practices-security-control"></a>Aanbevelingen voor account beveiliging worden verplaatst naar beveiligings beheer voor aanbevolen beveiligings procedures
+### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 
-Een van de beveiligings besturings elementen die zijn geïntroduceerd in de verbeterde beveiligde Score is ' best practices voor beveiliging '. Wanneer een aanbeveling zich in dit besturings element bevindt, heeft dit geen invloed op de beveiligde Score. 
+Een van de beveiligings mechanismen die zijn geïntroduceerd met de verbeterde beveiligde Score is ' Implementeer beveiligings best practices '. Wanneer een aanbeveling zich in dit besturings element bevindt, heeft dit geen invloed op de beveiligde Score. 
 
 Met deze update zijn drie aanbevelingen verplaatst van de besturings elementen waarin deze oorspronkelijk zijn geplaatst, en in dit best practices-besturings element. We hebben deze stap doorgevoerd omdat er is vastgesteld dat het risico van deze drie aanbevelingen lager is dan oorspronkelijk werd aangenomen.
 
-De aanbevelingen zijn:
+Daarnaast zijn er twee nieuwe aanbevelingen geïntroduceerd en toegevoegd aan dit besturings element.
 
-- MFA moet zijn ingeschakeld voor accounts met lees machtigingen voor uw abonnement (oorspronkelijk in het besturings element MFA inschakelen)
-- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement (oorspronkelijk in het besturings element toegang en machtigingen beheren)
-- Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement (oorspronkelijk in het besturings element toegang en machtigingen beheren)
+De drie aanbevelingen die worden verplaatst zijn:
+
+- **MFA moet zijn ingeschakeld voor accounts met lees machtigingen voor uw abonnement** (oorspronkelijk in het besturings element MFA inschakelen)
+- **Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement** (oorspronkelijk in het besturings element toegang en machtigingen beheren)
+- **Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement** (oorspronkelijk in het besturings element toegang en machtigingen beheren)
+
+De twee nieuwe aanbevelingen die aan het besturings element worden toegevoegd, zijn:
+
+- **[Preview] gast configuratie agent moet zijn geïnstalleerd** -met behulp van [Azure Policy-gast configuratie](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) kunt u binnen virtuele machines inzicht krijgen in de instellingen van de server en de toepassing (alleen Windows).
+
+- **[Preview] Windows exploit Guard moet zijn ingeschakeld** : Windows Defender exploit Guard maakt gebruik van de Azure Policy-gast configuratie agent. Exploit Guard heeft vier onderdelen die zijn ontworpen voor het vergren delen van apparaten tegen een groot aantal aanvals vectoren en voor het blok keren van gedrag dat vaak wordt gebruikt voor aanvallen op schadelijke software, terwijl ondernemingen hun beveiligings Risico's en productiviteits vereisten kunnen afstemmen (alleen Windows).
+
+Meer informatie over Windows Defender exploit Guard in [een exploit Guard-beleid maken en implementeren](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
 
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
 
-### <a name="custom-policies-with-custom-metadata-generally-available"></a>Aangepaste beleids regels met aangepaste meta gegevens algemeen beschikbaar
+
+
+
+
+
+
+
+
+### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Aangepaste beleids regels met aangepaste meta gegevens zijn nu algemeen beschikbaar
 
 Aangepaste beleids regels maken nu deel uit van de Security Center aanbevelingen, beveiligde scores en het dash board nalevings normen voor regelgeving. Deze functie is nu algemeen beschikbaar en biedt u de mogelijkheid om de beveiligings beoordelings dekking van uw organisatie in Security Center uit te breiden. 
 
@@ -95,7 +143,7 @@ Meer informatie [over het verbeteren van uw aangepaste aanbevelingen met gedetai
 
 ## <a name="april-2020"></a>April 2020
 
-### <a name="dynamic-compliance-packages-now-generally-available"></a>Dynamische nalevings pakketten zijn nu algemeen beschikbaar
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamische nalevings pakketten zijn nu algemeen beschikbaar
 
 Het dash board voor nalevings vereisten van Azure Security Center bevat nu **dynamische nalevings pakketten** (nu algemeen beschikbaar) voor het bijhouden van aanvullende industrie-en regelgevings normen.
 
@@ -197,7 +245,7 @@ Meer [informatie over beveiligings aanbevelingen](recommendations-reference.md).
 
 ## <a name="february-2020"></a>Februari 2020
 
-### <a name="fileless-attack-detection-for-linux-is-now-in-preview"></a>Aanvals detectie met een bestand voor Linux is nu beschikbaar als preview-versie
+### <a name="fileless-attack-detection-for-linux-preview"></a>Aanvals detectie met een bestand voor Linux (preview-versie)
 
 Als aanvallers stealthier Azure Security Center-methoden gebruiken om detectie te voor komen, wordt in aanvulling op Windows de detectie van de aanval van bestanden voor Linux uitgebreid. Aanvallen waarbij misbruik wordt gemaakt van software, schadelijke nettoladingen in goed aardige systeem processen injecteren en in het geheugen verbergen. Deze technieken:
 
@@ -209,7 +257,7 @@ Als u deze bedreiging wilt bemeteren, Azure Security Center u de aanvals detecti
 
 ## <a name="january-2020"></a>Januari 2020
 
-### <a name="enhanced-secure-score"></a>Verbeterde beveiligde Score
+### <a name="enhanced-secure-score-preview"></a>Verbeterde beveiligde Score (preview-versie)
 
 Een verbeterde versie van de functie beveiligde Score van Azure Security Center is nu beschikbaar als preview. In deze versie zijn meerdere aanbevelingen onderverdeeld in beveiligings controles die beter aansluiten op uw kwets bare aanvallen (bijvoorbeeld de toegang tot beheer poorten beperken).
 

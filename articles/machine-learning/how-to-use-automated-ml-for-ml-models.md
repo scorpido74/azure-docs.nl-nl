@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257229"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653846"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,13 +29,13 @@ Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Een Azure Machine Learning-werk ruimte met een type **Enter prise-editie**. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  Als u een bestaande werk ruimte wilt bijwerken naar Enter prise Edition, raadpleegt [u upgrade to Enter prise Edition](how-to-manage-workspace.md#upgrade)(Engelstalig).
 
 ## <a name="get-started"></a>Aan de slag
 
-1. Meld u aan bij Azure Machine Learning https://ml.azure.comop. 
+1. Meld u aan bij Azure Machine Learning op https://ml.azure.com . 
 
 1. Selecteer uw abonnement en werk ruimte. 
 
@@ -74,7 +74,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
         Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.
     
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 
     1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
@@ -82,7 +82,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevens profilering](#profile).
 
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
 1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
@@ -104,7 +104,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     >[!NOTE]
     > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-    Selecteer **Next**.
+    Selecteer **Volgende**.
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [taak typen definiëren](how-to-define-task-type.md) voor meer informatie.
 
@@ -159,14 +159,14 @@ Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met 
 
 ## <a name="advanced-featurization-options"></a>Geavanceerde opties voor parametrisatie
 
-Automatische machine learning biedt automatisch voor verwerkings-en gegevens Guardrails, om u te helpen bij het identificeren en beheren van potentiële problemen met uw gegevens. 
+Automatische machine learning biedt automatisch voor verwerkings-en gegevens Guardrails, om u te helpen potentiële problemen met uw gegevens te identificeren en te beheren, zoals [over-en onevenwichtige gegevens](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
 
 ### <a name="preprocessing"></a>Verwerking
 
 > [!NOTE]
 > Als u van plan bent om uw automatisch gegenereerde modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangeduid met een * ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). 
 
-|&nbsp;Stappen voor voor verwerking| Beschrijving |
+|Stappen voor voor verwerking &nbsp;| Beschrijving |
 | ------------- | ------------- |
 |Hoge kardinaliteit of geen variantie-functies verwijderen * |Verwijder deze uit de trainings-en validatie sets, inclusief functies waarbij alle waarden ontbreken, dezelfde waarde over alle rijen of met extreem hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |Ontbrekende waarden toegerekend * |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
@@ -182,13 +182,13 @@ Automatische machine learning biedt automatisch voor verwerkings-en gegevens Gua
 
 Data Guardrails worden toegepast wanneer automatische parametrisatie is ingeschakeld of validatie is ingesteld op auto. Data Guardrails helpt u bij het identificeren van mogelijke problemen met uw gegevens (bijvoorbeeld ontbrekende waarden, klasse onevenwicht) en het nemen van corrigerende maat regelen voor betere resultaten. 
 
-Gebruikers kunnen gegevens Guardrails bekijken in de studio op het tabblad **gegevens Guardrails** van een automatische ml-uitvoering of door ```show_output=True``` in te stellen bij het verzenden van een experiment met behulp van de python-SDK. 
+Gebruikers kunnen gegevens Guardrails bekijken in de studio op het tabblad **gegevens Guardrails** van een automatische ml-uitvoering of door in te stellen ```show_output=True``` bij het verzenden van een experiment met behulp van de python-SDK. 
 
 #### <a name="data-guardrail-states"></a>Status gegevens Guardrail
 
 In data Guardrails worden een van de volgende drie statussen weer gegeven: **door gegeven**, **voltooid**of **gewaarschuwd**.
 
-Status| Beschrijving
+Staat| Beschrijving
 ----|----
 Buffer| Er zijn geen gegevens problemen gedetecteerd en er is geen gebruikers actie vereist. 
 Gereed| Er zijn wijzigingen toegepast op uw gegevens. We moedigen gebruikers aan om de corrigerende maat regelen te controleren om ervoor te zorgen dat de wijzigingen worden uitgelijnd met de verwachte resultaten. 
@@ -199,7 +199,7 @@ Gewaarschuwd| Er is een gegevens probleem gedetecteerd dat niet kan worden opgel
 
 In de volgende tabel worden de gegevens Guardrails beschreven die momenteel worden ondersteund, en de bijbehorende statussen die gebruikers kunnen krijgen bij het verzenden van hun experiment.
 
-Guardrail|Status|Voor&nbsp;waarde&nbsp;voor trigger
+Guardrail|Status|Voor waarde &nbsp; voor &nbsp; trigger
 ---|---|---
 Ontbrekende functie waarden toerekening |**Buffer** <br><br><br> **Gereed**| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over [ontbrekende waarden toegerekend.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens en toegerekend.
 Functie verwerking met hoge kardinaliteit |**Buffer** <br><br><br> **Gereed**| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over de [detectie van hoge functies voor kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.

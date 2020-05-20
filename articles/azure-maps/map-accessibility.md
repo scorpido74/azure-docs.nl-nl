@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473316"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648569"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
@@ -28,6 +28,7 @@ De Azure Maps Web-SDK is gebaseerd op een groot aantal toegankelijkheids functie
 - Beschrijvingen van scherm lezers wanneer de kaart wordt verplaatst en wanneer de gebruiker zich richt op een besturings element of pop-up.
 - Ondersteuning voor muis, aanraking en toetsen bord.
 - Ondersteuning voor toegankelijk kleur contrast in de kaart stijl weg.
+- Ondersteuning voor hoog contrast.
 
 Meer informatie over de conformiteit van de volledige toegankelijkheid van alle micro soft-producten vindt u [hier](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Zoek naar ' Azure Maps Web ' om het document speciaal te vinden voor de Azure Maps Web-SDK. 
 
@@ -41,10 +42,10 @@ Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, ged
 - Schuif met behulp van een muis op het wieltje om in te zoomen op de kaart.
 - Met behulp van een touchscreen kunt u de kaart met twee vingers aanraken om uit te zoomen of de vingers van elkaar splitsen om in te zoomen.
 - Dubbeltik op de kaart om op één niveau te zoomen met behulp van een aanraak scherm.
-- Gebruik het plus teken (`+`) of het gelijkteken (`=`) om op één niveau in te zoomen met behulp van de kaart gericht.
-- Als de kaart is gericht, gebruikt u het minteken, afbreek streepje (`-`) of`_`onderstrepings teken () om één niveau uit te zoomen.
+- Gebruik het plus teken ( `+` ) of het gelijkteken ( `=` ) om op één niveau in te zoomen met behulp van de kaart gericht.
+- Als de kaart is gericht, gebruikt u het minteken, afbreek streepje ( `-` ) of onderstrepings teken ( `_` ) om één niveau uit te zoomen.
 - Het besturings element zoomen met behulp van een muis, Touch-of toetsenbord tabblad/Enter-toets.
-- Houd de `Shift` knop ingedrukt en druk op de knop met de rechter muisknop op de kaart en sleep om een gebied te tekenen om in te zoomen op de kaart in.
+- Houd de knop ingedrukt `Shift` en druk op de knop met de rechter muisknop op de kaart en sleep om een gebied te tekenen om in te zoomen op de kaart in.
 
 **Kaart pannen**
 
@@ -76,7 +77,7 @@ Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zij
 - Het kaart besturings element bewaakt de modus Hoog contrast van het apparaat niet. Als de modus apparaat wordt gewijzigd, wordt de kaart niet. Daarom moet de gebruiker de kaart opnieuw laden door de pagina te vernieuwen.
 - Wanneer een hoog contrast wordt gedetecteerd, wordt automatisch overgeschakeld naar een hoog contrast en worden alle ingebouwde besturings elementen gebruikt als stijl met een hoog contrast. Voor beeld: ZoomControl, PitchControl, CompassControl, StyleControl en andere ingebouwde besturings elementen, wordt een stijl met een hoog contrast gebruikt.
 - Er zijn twee typen hoog contrast, licht en donker. Als het type van het hoge contrast kan worden gedetecteerd door de besturings elementen van de kaart, wordt het gedrag van de kaart dienovereenkomstig aangepast. Als Light, wordt de stijl van de grayscale_light kaart geladen. Als het type niet kan worden gedetecteerd of donker is, wordt de high_contrast_dark stijl geladen.
-- Als u aangepaste besturings elementen maakt, is het handig om te weten of de ingebouwde besturings elementen een stijl met een hoog contrast gebruiken. Ontwikkel aars kunnen een CSS-klasse toevoegen op de kaart container div om te controleren. De CSS-klassen die worden toegevoegd, `high-contrast-dark` zijn `high-contrast-light`en. Als u wilt controleren met behulp van Java script, gebruikt u:
+- Als u aangepaste besturings elementen maakt, is het handig om te weten of de ingebouwde besturings elementen een stijl met een hoog contrast gebruiken. Ontwikkel aars kunnen een CSS-klasse toevoegen op de kaart container div om te controleren. De CSS-klassen die worden toegevoegd, zijn `high-contrast-dark` en `high-contrast-light` . Als u wilt controleren met behulp van Java script, gebruikt u:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
@@ -105,15 +106,15 @@ De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijke
 | `Shift`+ pijl-omlaag | De kaart hoogte met 10 graden verlagen |
 | `Shift`+ pijl-rechts | De kaart 15 graden rechtsom draaien |
 | `Shift`+ pijl-links | De kaart 15 graden linksom draaien |
-| Plus teken (`+`) of <sup>*</sup>gelijkteken (`=`) | Inzoomen |
-| Minteken, afbreek streepje`-`() of <sup>*</sup>onderstrepings`_`teken () | Uitzoomen | 
+| Plus teken ( `+` ) of <sup>*</sup> gelijkteken ( `=` ) | Inzoomen |
+| Minteken, afbreek streepje ( `-` ) of <sup>*</sup> onderstrepings teken ( `_` ) | Uitzoomen | 
 | `Shift`+ muis slepen op kaart naar teken gebied | Inzoomen op gebied |
 
 <sup>*</sup>Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze snelkoppelingen zijn toegevoegd om de gebruikers ervaring te verbeteren. Het maakt ook niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
 
 ## <a name="screen-reader-support"></a>Ondersteuning voor scherm lezers
 
-Gebruikers kunnen met behulp van het toetsen bord door de kaart navigeren. Als er een scherm lezer wordt uitgevoerd, wordt de gebruiker op de hoogte gebracht van wijzigingen in de status van de kaart. Gebruikers worden bijvoorbeeld op de hoogte gebracht van de toewijzings wijzigingen wanneer de kaart wordt panned of ingezoomd. De kaart biedt standaard vereenvoudigde beschrijvingen waarmee het zoom niveau en de coördinaten van het midden van de kaart worden uitgesloten. De gebruiker kan het detail niveau van deze beschrijvingen in-of uitschakelen met behulp `Ctrl`  +  `Shift`  +  `D`van de kort snede voor het toetsen bord.
+Gebruikers kunnen met behulp van het toetsen bord door de kaart navigeren. Als er een scherm lezer wordt uitgevoerd, wordt de gebruiker op de hoogte gebracht van wijzigingen in de status van de kaart. Gebruikers worden bijvoorbeeld op de hoogte gebracht van de toewijzings wijzigingen wanneer de kaart wordt panned of ingezoomd. De kaart biedt standaard vereenvoudigde beschrijvingen waarmee het zoom niveau en de coördinaten van het midden van de kaart worden uitgesloten. De gebruiker kan het detail niveau van deze beschrijvingen in-of uitschakelen met behulp van de kort snede voor het toetsen bord `Ctrl`  +  `Shift`  +  `D` .
 
 Aanvullende informatie die op de basis kaart wordt geplaatst, moet bijbehorende tekstuele informatie bevatten voor gebruikers van scherm lezers. Zorg ervoor dat u waar nodig toegang hebt tot [Aria (Rich Internet Applications)](https://www.w3.org/WAI/standards-guidelines/aria/), de ALT-en title-kenmerken. 
 
@@ -125,7 +126,7 @@ In het volgende voor beeld worden punten van belangen op de kaart geladen met be
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een toegankelijke toepassing maken' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>een toegankelijke toepassing maken</a> met behulp<a href='https://codepen.io/azuremaps'>@azuremaps</a>van Azure Maps () op <a href='https://codepen.io'>CodePen</a>. </iframe>
+<iframe height='500' scrolling='no' title='Een toegankelijke toepassing maken' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>een toegankelijke toepassing maken</a> met behulp van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>. </iframe>
 
 <br/>
 

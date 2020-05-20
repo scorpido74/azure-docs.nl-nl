@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a14fafde8ecea0370c74cdbfd39a85d8dfb15612
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758601"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651079"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Shell scripts uitvoeren in uw virtuele Linux-machine met behulp van de opdracht uitvoeren
 
@@ -39,11 +39,11 @@ De volgende beperkingen zijn van toepassing wanneer u de opdracht uitvoeren gebr
 * Uitgaande verbinding van de virtuele machine is vereist om de resultaten van het script te retour neren.
 
 > [!NOTE]
-> Voor een juiste werking moet de opdracht Run (poort 443) zijn vereist voor open bare IP-adressen van Azure. Als de extensie geen toegang tot deze eind punten heeft, kunnen de scripts worden uitgevoerd, maar niet de resultaten retour neren. Als u verkeer op de virtuele machine blokkeert, kunt u [service Tags](../../virtual-network/security-overview.md#service-tags) gebruiken om verkeer naar open bare IP-adressen van Azure toe te `AzureCloud` staan met behulp van de-tag.
+> Voor een juiste werking moet de opdracht Run (poort 443) zijn vereist voor open bare IP-adressen van Azure. Als de extensie geen toegang tot deze eind punten heeft, kunnen de scripts worden uitgevoerd, maar niet de resultaten retour neren. Als u verkeer op de virtuele machine blokkeert, kunt u [service Tags](../../virtual-network/security-overview.md#service-tags) gebruiken om verkeer naar open bare IP-adressen van Azure toe te staan met behulp van de- `AzureCloud` tag.
 
 ## <a name="available-commands"></a>Beschik bare opdrachten
 
-In deze tabel ziet u de lijst met opdrachten die beschikbaar zijn voor Linux-Vm's. U kunt de opdracht **RunShellScript** gebruiken om elk gewenst aangepast script uit te voeren. Wanneer u de Azure CLI of Power shell gebruikt om een opdracht uit te voeren, moet de waarde die u `--command-id` opgeeft `-CommandId` voor de para meter of een van de volgende vermelde waarden zijn. Wanneer u een waarde opgeeft die geen beschik bare opdracht is, wordt deze fout weer gegeven:
+In deze tabel ziet u de lijst met opdrachten die beschikbaar zijn voor Linux-Vm's. U kunt de opdracht **RunShellScript** gebruiken om elk gewenst aangepast script uit te voeren. Wanneer u de Azure CLI of Power shell gebruikt om een opdracht uit te voeren, moet de waarde die u opgeeft voor de `--command-id` `-CommandId` para meter of een van de volgende vermelde waarden zijn. Wanneer u een waarde opgeeft die geen beschik bare opdracht is, wordt deze fout weer gegeven:
 
 ```error
 The entity was not found in this Azure location
@@ -63,7 +63,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 ```
 
 > [!NOTE]
-> Om opdrachten uit te voeren als een andere gebruiker `sudo -u` , voert u in om een gebruikers account op te geven.
+> Om opdrachten uit te voeren als een andere gebruiker, voert `sudo -u` u in om een gebruikers account op te geven.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -82,7 +82,7 @@ Nadat u de opdracht hebt gekozen, selecteert u **uitvoeren** om het script uit t
 
 ### <a name="powershell"></a>PowerShell
 
-In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen `-ScriptPath` in de para meter, lokaal is waar de cmdlet wordt uitgevoerd.
+In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
 
 ```powershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -90,9 +90,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Toegang beperken tot de opdracht uitvoeren
 
-Voor het weer geven van de uitvoerings opdrachten of het weer geven van `Microsoft.Compute/locations/runCommands/read` de details van een opdracht is de machtiging op abonnements niveau vereist. De ingebouwde rol [lezer](../../role-based-access-control/built-in-roles.md#reader) en hogere niveaus hebben deze machtiging.
+Voor het weer geven van de uitvoerings opdrachten of het weer geven van de details van een opdracht is de `Microsoft.Compute/locations/runCommands/read` machtiging vereist. De ingebouwde rol [lezer](../../role-based-access-control/built-in-roles.md#reader) en hogere niveaus hebben deze machtiging.
 
-Voor het uitvoeren van een `Microsoft.Compute/virtualMachines/runCommand/action` opdracht is de machtiging vereist op het abonnements niveau. De rol [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en hogere niveaus hebben deze machtiging.
+Voor het uitvoeren van een opdracht is de `Microsoft.Compute/virtualMachines/runCommand/action` machtiging vereist. De rol [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) en hogere niveaus hebben deze machtiging.
 
 U kunt een van de [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) gebruiken of een [aangepaste rol](../../role-based-access-control/custom-roles.md) maken voor het gebruik van de opdracht uitvoeren.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201677"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658159"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Verbinding maken met Synapse SQL met Visual Studio en SSDT
 > [!div class="op_single_selector"]
@@ -36,11 +36,11 @@ Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderd
 
 * Een bestaande SQL-groep. Als u er nog geen hebt, raadpleegt u [een SQL-groep maken](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om dit vereiste te volt ooien.
 * SSDT voor Visual Studio. Als u Visual Studio hebt, beschikt u waarschijnlijk al over dit onderdeel. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](connect-overview.md)om dit te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](connect-overview.md)om deze server naam te vinden.
 
 ## <a name="1-connect-to-sql-pool"></a>1. Maak verbinding met de SQL-groep
 1. Open Visual Studio 2019.
-2. Open de SQL Server-objectverkenner. Als u dit wilt doen, selecteert u SQL Server-objectverkenner **weer geven**  >  **SQL Server Object Explorer**.
+2. Open de SQL Server-objectverkenner door **weer gave**  >  **SQL Server-objectverkenner**te selecteren.
    
     ![SQL Server-objectverkenner](./media/get-started-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -70,7 +70,7 @@ Nu er een verbinding tot stand is gebracht met uw data base, schrijft u een quer
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit. Daartoe klikt u op de groene pijl of gebruikt u de volgende snelkoppeling: `CTRL`+`SHIFT`+`E`.
+4. Voer de query uit door op de groene pijl te klikken of de volgende snelkoppeling te gebruiken: `CTRL` + `SHIFT` + `E` .
    
     ![Query uitvoeren](./media/get-started-visual-studio/run-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.

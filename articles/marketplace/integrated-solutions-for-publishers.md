@@ -1,22 +1,22 @@
 ---
-title: Geïntegreerde oplossingen-Azure Marketplace
-description: Geïntegreerde oplossingen in azure Marketplace en Microsoft AppSource
+title: Een geïntegreerde oplossing publiceren-micro soft Commercial Marketplace
+description: Meer informatie over de vereisten en stappen voor het publiceren van geïntegreerde oplossingen naar Microsoft AppSource en Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 835aa0192dc37032a76bf3863dc1a4ac0109bb22
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160559"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657980"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
-In één gebundelde aanbieding combineert een geïntegreerde oplossing Point-Solution technologieën van software leveranciers met de implementatie en ondersteuning van een service partner. De services partner vermeldt de aanbieding in Microsoft AppSource of Azure Marketplace als [advies service](./consulting-services.md).
+In dit artikel worden het algehele proces en de vereisten voor het publiceren van een geïntegreerde oplossing voor de commerciële Marketplace uitgelegd. In één gebundelde aanbieding combineert een geïntegreerde oplossing Point-Solution technologieën van software leveranciers met de implementatie en ondersteuning van een service partner. De services partner vermeldt de aanbieding in Microsoft AppSource of Azure Marketplace als [advies service](./consulting-services.md).
 
 Geïntegreerde oplossingen richten zich op een specifieke klant behoefte of-scenario. Providers beginnen met de uitdaging of knel punten van de branche. Ze integreren twee of meer eersteklas technologieën voor het maken van een uniforme en herhaal bare implementatie-ervaring voor klanten. Met providers kunnen klanten snel aan de slag. Ze bieden een enkel contact punt aan de klant en bieden relevante aanpassings-, advies-en oplossings ondersteuning. Het resultaat is een geïntegreerde oplossing, inclusief technologie en services.
 

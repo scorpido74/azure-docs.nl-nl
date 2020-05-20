@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6630d96c90a221a6b0374f2e4758748a77ad0610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158895"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647822"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Overzicht van Service Bus wacht rijen voor onbestelbare berichten
 
@@ -40,28 +40,27 @@ Het is niet mogelijk om het aantal berichten in de wachtrij voor onbestelbare me
 
 ![Aantal DLQ-berichten](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-U kunt ook het aantal DLQ-berichten ophalen met behulp van de Azure [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show)cli-opdracht:. 
+U kunt ook het aantal DLQ-berichten ophalen met behulp van de Azure CLI-opdracht: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>Berichten verplaatsen naar de DLQ
 
 Er zijn verschillende activiteiten in Service Bus die ertoe leiden dat berichten worden gepusht naar de DLQ vanuit de berichten engine zelf. Een toepassing kan ook expliciet berichten verplaatsen naar de DLQ. 
 
-Wanneer het bericht door de Broker wordt verplaatst, worden er twee eigenschappen aan het bericht toegevoegd, omdat de Broker de interne versie van de [DeadLetter](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) -methode aanroept `DeadLetterReason` in `DeadLetterErrorDescription`het bericht: en.
+Wanneer het bericht door de Broker wordt verplaatst, worden er twee eigenschappen aan het bericht toegevoegd, omdat de Broker de interne versie van de [DeadLetter](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) -methode aanroept in het bericht: `DeadLetterReason` en `DeadLetterErrorDescription` .
 
 Toepassingen kunnen hun eigen codes definiëren voor de `DeadLetterReason` eigenschap, maar het systeem stelt de volgende waarden in.
 
-| Voorwaarde | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Altijd |HeaderSizeExceeded |Het quotum voor de grootte voor deze stream is overschreden. |
-| ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing en SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |fout. GetType (). Naam |fout. Bericht |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Het bericht is verlopen en naar de wachtrij voor onbestelbare berichten verplaatst. |
-| SubscriptionDescription.RequiresSession |Sessie-ID is null. |Door sessie ingeschakelde entiteit staat geen berichten toe waarvan de sessie-id null is. |
-| ! wachtrij voor onbestelbare berichten | MaxTransferHopCountExceeded | Het maximum aantal toegestane hops tijdens het door sturen tussen wacht rijen. De waarde is ingesteld op 4. |
-| Toepassing expliciete onbestelbare berichten |Opgegeven door de toepassing |Opgegeven door de toepassing |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|HeaderSizeExceeded |Het quotum voor de grootte voor deze stream is overschreden. |
+|TTLExpiredException |Het bericht is verlopen en naar de wachtrij voor onbestelbare berichten verplaatst. Zie de sectie [overschrijden over TimeToLive](#exceeding-timetolive) voor meer informatie. |
+|Sessie-ID is null. |Door sessie ingeschakelde entiteit staat geen berichten toe waarvan de sessie-id null is. |
+|MaxTransferHopCountExceeded | Het maximum aantal toegestane hops tijdens het door sturen tussen wacht rijen. De waarde is ingesteld op 4. |
+| MaxDeliveryCountExceededExceptionMessage | Het bericht kan niet worden gebruikt na maximum aantal bezorgings pogingen. Zie de sectie [overschrijden over MaxDeliveryCount](#exceeding-maxdeliverycount) voor meer informatie. |
 
 ## <a name="exceeding-maxdeliverycount"></a>Meer dan MaxDeliveryCount
 
-Wacht rijen en abonnementen hebben respectievelijk een eigenschap [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) en [SubscriptionDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) . de standaard waarde is 10. Wanneer een bericht is bezorgd onder een vergren deling ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), maar is wel expliciet is afgebroken of de vergren deling is verlopen, wordt het bericht [BrokeredMessage. DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) verhoogd. Wanneer [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) groter is dan [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), wordt het bericht verplaatst naar de DLQ, waarbij `MaxDeliveryCountExceeded` de reden code wordt opgegeven.
+Wacht rijen en abonnementen hebben respectievelijk een eigenschap [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) en [SubscriptionDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) . de standaard waarde is 10. Wanneer een bericht is bezorgd onder een vergren deling ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), maar is wel expliciet is afgebroken of de vergren deling is verlopen, wordt het bericht [BrokeredMessage. DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) verhoogd. Wanneer [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) groter is dan [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), wordt het bericht verplaatst naar de DLQ, waarbij de `MaxDeliveryCountExceeded` reden code wordt opgegeven.
 
 Dit gedrag kan niet worden uitgeschakeld, maar u kunt [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) instellen op een groot aantal.
 
@@ -91,7 +90,7 @@ Als u deze berichten met een onbestelbare bericht wilt ophalen, kunt u een ontva
 
 ## <a name="example"></a>Voorbeeld
 
-Met het volgende code fragment wordt een ontvanger van een bericht gemaakt. In de receive-lus voor de hoofd wachtrij wordt met de code het bericht met de status [Receive (time span. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)opgehaald, waarmee de Broker wordt gevraagd om onmiddellijk een bericht te retour neren dat direct beschikbaar is, of om te retour neren zonder resultaat. Als de code een bericht ontvangt, wordt deze onmiddellijk afgebroken, waardoor de `DeliveryCount`wordt verhoogd. Zodra het systeem het bericht naar de DLQ verplaatst, is de hoofd wachtrij leeg en wordt de lus afgesloten, omdat [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **Null**retourneert.
+Met het volgende code fragment wordt een ontvanger van een bericht gemaakt. In de receive-lus voor de hoofd wachtrij wordt met de code het bericht met de status [Receive (time span. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)opgehaald, waarmee de Broker wordt gevraagd om onmiddellijk een bericht te retour neren dat direct beschikbaar is, of om te retour neren zonder resultaat. Als de code een bericht ontvangt, wordt deze onmiddellijk afgebroken, waardoor de wordt verhoogd `DeliveryCount` . Zodra het systeem het bericht naar de DLQ verplaatst, is de hoofd wachtrij leeg en wordt de lus afgesloten, omdat [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **Null**retourneert.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
