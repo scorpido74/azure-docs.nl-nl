@@ -3,17 +3,17 @@ title: Certificaten in een Azure Service Fabric-cluster beheren
 description: Hierin wordt beschreven hoe u nieuwe certificaten, rollover certificaat en certificaat kunt toevoegen aan of verwijderen uit een Service Fabric-cluster.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458351"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658385"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric-cluster in Azure toevoegen of verwijderen
 Het is raadzaam om vertrouwd te raken met de manier waarop Service Fabric X. 509-certificaten gebruikt en dat u vertrouwd bent met de [beveiligings scenario's](service-fabric-cluster-security.md)voor het cluster. Voordat u verder gaat, moet u weten wat een cluster certificaat is en wat wordt gebruikt voor.
 
-De standaard methode voor het laden van het certificaat van de SDK van Azure service fabrics is het implementeren en gebruiken van het gedefinieerde certificaat met de verloop datum die het verst in de toekomst ligt. ongeacht de definitie van de primaire of secundaire configuratie. Terugvallen op het klassieke gedrag is een niet-aanbevolen geavanceerde actie. hiervoor moet de waarde van de para meter "UseSecondaryIfNewer" worden ingesteld `Fabric.Code` op False binnen uw configuratie.
+De standaard methode voor het laden van het certificaat van de SDK van Azure service fabrics is het implementeren en gebruiken van het gedefinieerde certificaat met de verloop datum die het verst in de toekomst ligt. ongeacht de definitie van de primaire of secundaire configuratie. Terugvallen op het klassieke gedrag is een niet-aanbevolen geavanceerde actie. hiervoor moet de waarde van de para meter "UseSecondaryIfNewer" worden ingesteld op False binnen uw `Fabric.Code` configuratie.
 
 Met Service Fabric kunt u twee cluster certificaten, een primaire en een secundaire, opgeven wanneer u certificaat beveiliging configureert tijdens het maken van het cluster, naast client certificaten. Raadpleeg het [maken van een Azure-cluster via de portal](service-fabric-cluster-creation-via-portal.md) of [het maken van een Azure-cluster via Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) voor meer informatie over het instellen van de clusters tijdens het maken van een tijd. Als u per keer een cluster certificaat opgeeft, wordt dit gebruikt als het primaire certificaat. Nadat het cluster is gemaakt, kunt u een nieuw certificaat toevoegen als secundair.
 
@@ -35,9 +35,7 @@ Als u een niet-gebruikt cluster beveiligings certificaat wilt verwijderen, gaat 
 
 Als u het certificaat dat is gemarkeerd als primair wilt verwijderen, moet u een secundair certificaat met een verlopende datum verder in de toekomst implementeren dan het primaire certificaat, waardoor het gedrag voor automatisch rollover wordt ingeschakeld. Verwijder het primaire certificaat nadat de automatische rollover is voltooid.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Een secundair certificaat toevoegen met behulp van Resource Manager Power shell
-> [!TIP]
-> Er is nu een betere en eenvoudiger manier om een secundair certificaat toe te voegen met behulp van de cmdlet [add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) . U hoeft de overige stappen in deze sectie niet uit te voeren.  U hebt de sjabloon die oorspronkelijk is gebruikt voor het maken en implementeren van het cluster ook niet nodig bij gebruik van de cmdlet [add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) .
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Een secundair certificaat toevoegen met Azure Resource Manager
 
 Bij deze stappen wordt ervan uitgegaan dat u bekend bent met het gebruik van Resource Manager en ten minste één Service Fabric cluster met een resource manager-sjabloon hebt geïmplementeerd. u hebt de sjabloon die u hebt gebruikt voor het instellen van het cluster. Ook wordt ervan uitgegaan dat u bent vertrouwd met JSON.
 

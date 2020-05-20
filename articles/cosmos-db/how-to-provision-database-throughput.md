@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0ba86d6955805fc97743a1a51aa586b179d82235
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869864"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655318"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Standaard doorvoer (hand matig) door Voer voor een data base in Azure Cosmos DB
 
-In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie het artikel [aanvragen voor het inrichten van de doorvoer snelheid voor containers en data bases](set-throughput.md) voor meer informatie over het gebruik van container niveau en door Voer op database niveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
+In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) inricht voor een data base in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie het artikel [aanvragen voor het inrichten van de doorvoer snelheid voor containers en data bases](set-throughput.md) voor meer informatie over het gebruik van container niveau en door Voer op database niveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Doorvoer inrichten met behulp van de Azure-portal
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -46,7 +46,7 @@ Als u een Data Base met gedeelde door voer wilt maken, raadpleegt u
 > [!Note]
 > U kunt Cosmos Sdk's voor SQL API gebruiken om de door Voer voor alle Api's in te richten. U kunt ook het volgende voorbeeld voor Cassandra-API gebruiken.
 
-### <a name="all-apis"></a><a id="dotnet-all"></a>Alle API's
+### <a name="all-apis"></a><a id="dotnet-all"></a>Alle API’s
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -84,5 +84,6 @@ Raadpleeg de volgende artikelen voor meer informatie over ingerichte door Voer i
 
 * [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
 * [Doorvoer voor containers en databases inrichten](set-throughput.md)
-* [Doorvoer inrichten voor een container](how-to-provision-container-throughput.md)
+* [Standaard doorvoer (hand matig) voor een container inrichten](how-to-provision-container-throughput.md)
+* [De door Voer van automatisch schalen inrichten voor een container](how-to-provision-autoscale-throughput.md)
 * [Aanvraageenheden en doorvoer in Azure Cosmos DB](request-units.md)

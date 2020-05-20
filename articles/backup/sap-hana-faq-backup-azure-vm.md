@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155389"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660112"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -60,6 +60,18 @@ Op dit moment kunnen we de oplossing niet alleen instellen voor een virtueel IP-
 ### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Ik heb een SAP HANA systeem replicatie (HSR). Hoe moet ik een back-up voor deze installatie configureren?
 
 De primaire en secundaire knoop punten van de HSR worden behandeld als twee afzonderlijke, niet-gerelateerde Vm's. U moet een back-up op het primaire knoop punt configureren en wanneer het failover-proces plaatsvindt, moet u een back-up configureren op het secundaire knoop punt (dit wordt nu het primaire knoop punt). Er is geen automatische failover van een back-up naar het andere knoop punt.
+
+### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hoe kan ik een back-up op aanvraag verplaatsen naar het lokale bestands systeem in plaats van naar de Azure-kluis?
+
+1. Wacht totdat de back-up op dat moment wordt uitgevoerd op de gewenste data base (Controleer vanaf Studio voor voltooiing)
+1. Schakel logboek back-ups uit en stel de catalogus back-up in op het **Bestands systeem** voor de gewenste data base met behulp van de volgende stappen:
+1. Dubbel klik op **SYSTEMDB**  ->  -**configuratie**  ->  **database**  ->  **filter selecteren (logboek)**
+    1. Enable_auto_log_backup instellen op **Nee**
+    1. Log_backup_using_backint instellen op **Onwaar**
+1. Maak een back-up op aanvraag in de gewenste data base en wacht totdat de back-up en catalogus back-up zijn voltooid.
+1. Terugkeren naar de vorige instellingen zodat back-ups naar de Azure-kluis kunnen stromen:
+    1. Enable_auto_log_backup instellen op **Ja**
+    1. Log_backup_using_backint instellen op **waar**
 
 ## <a name="restore"></a>Herstellen
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB .NET Change feed processor API, opmerkingen bij de SDK-release
 description: Meer informatie over de Change feed processor API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de .NET Change feed processor SDK.
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619446"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660422"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: down load en release-opmerkingen
 
@@ -23,8 +23,9 @@ ms.locfileid: "80619446"
 > * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java-SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -47,22 +48,22 @@ ms.locfileid: "80619446"
 ### <a name="v2-builds"></a>v2-builds
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Er is een nieuwe `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` methode en bijbehorende Open `ICheckpointPartitionProcessorFactory`bare interface toegevoegd. Hierdoor kan een implementatie van de `IPartitionProcessor` interface het ingebouwde mechanisme voor controle punten gebruiken. De nieuwe fabriek is vergelijkbaar met de bestaande `IPartitionProcessorFactory`, behalve dat de `Create` methode ook de `ILeaseCheckpointer` para meter gebruikt.
-* Slechts een van de twee methoden, ofwel `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` of `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`, kan worden gebruikt voor hetzelfde `ChangeFeedProcessorBuilder` exemplaar.
+* Er is een nieuwe methode `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` en bijbehorende open bare interface toegevoegd `ICheckpointPartitionProcessorFactory` . Hierdoor kan een implementatie van de `IPartitionProcessor` interface het ingebouwde mechanisme voor controle punten gebruiken. De nieuwe fabriek is vergelijkbaar met de bestaande `IPartitionProcessorFactory` , behalve dat de `Create` methode ook de `ILeaseCheckpointer` para meter gebruikt.
+* Slechts een van de twee methoden, ofwel `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` of `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` , kan worden gebruikt voor hetzelfde `ChangeFeedProcessorBuilder` exemplaar.
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Verbeteringen in stabiliteit en diagnose:
-  * Er is ondersteuning toegevoegd om het lezen van de Lees wijziging te detecteren lange tijd. Wanneer het langer duurt dan de waarde die is opgegeven `ChangeFeedProcessorOptions.ChangeFeedTimeout` door de eigenschap, worden de volgende stappen uitgevoerd:
+  * Er is ondersteuning toegevoegd om het lezen van de Lees wijziging te detecteren lange tijd. Wanneer het langer duurt dan de waarde die is opgegeven door de `ChangeFeedProcessorOptions.ChangeFeedTimeout` eigenschap, worden de volgende stappen uitgevoerd:
     * De bewerking voor het lezen van de wijzigings feed op de problematische partitie is afgebroken.
     * Het wijzigings proces van de feed-processor valt buiten het eigendom van de problematische lease. De verwijderde lease wordt opgehaald tijdens de volgende stap voor het verkrijgen van de lease, die wordt uitgevoerd door dezelfde of een ander exemplaar van de feed voor wijzigings instanties. Op deze manier wordt de Lees wijzigings feed opnieuw gestart.
     * Er wordt een probleem gerapporteerd aan de health monitor. Met de standaard health monitor worden alle gerapporteerde problemen naar het tracerings logboek verzonden.
-  * Een nieuwe open bare eigenschap toegevoegd `ChangeFeedProcessorOptions.ChangeFeedTimeout`:. De standaard waarde van deze eigenschap is 10 minuten.
-  * Er is een nieuwe open bare Enum `Monitoring.MonitoredOperation.ReadChangeFeed`-waarde toegevoegd:. Als de waarde van `HealthMonitoringRecord.Operation` is ingesteld op `Monitoring.MonitoredOperation.ReadChangeFeed`, wordt hiermee aangegeven dat het status probleem betrekking heeft op het lezen van wijzigings invoer.
+  * Een nieuwe open bare eigenschap toegevoegd: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . De standaard waarde van deze eigenschap is 10 minuten.
+  * Er is een nieuwe open bare Enum-waarde toegevoegd: `Monitoring.MonitoredOperation.ReadChangeFeed` . Als de waarde van `HealthMonitoringRecord.Operation` is ingesteld op `Monitoring.MonitoredOperation.ReadChangeFeed` , wordt hiermee aangegeven dat het status probleem betrekking heeft op het lezen van wijzigings invoer.
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
 * De strategie voor taak verdeling is verbeterd wanneer het ophalen van alle leases langer duurt dan het verloop interval van de lease, bijvoorbeeld door netwerk problemen:
   * In dit scenario wordt het taakverdelings algoritme gebruikt voor het onterecht beschouwen van leases als verlopen, waardoor leases van actieve eigen aars worden gestolen. Dit kan onnodig nieuwe onderverdeling van een groot aantal leases tot gevolg hebben.
-  * Dit probleem wordt opgelost in deze release door te voor komen dat er een conflict optreedt tijdens het ophalen van een verlopen lease die de eigenaar niet heeft gewijzigd en posponing de verouderde lease aan de volgende taak verdelings iteratie te verkrijgen.
+  * Dit probleem wordt opgelost in deze release door te voor komen dat er een conflict optreedt tijdens het ophalen van de verlopen lease die de eigenaar heeft gewijzigd en het ophalen van de verlopen lease voor de volgende taak verdelings iteratie.
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * Verbeterde verwerking van uitzonde ringen voor waarnemers.
@@ -96,7 +97,7 @@ ms.locfileid: "80619446"
 * Lagere verbeteringen voor diagnostische gegevens.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Er is een nieuwe API&lt;(&lt;taak&gt; &gt; IReadOnlyList RemainingPartitionWork IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync) toegevoegd. Dit kan worden gebruikt om de geschatte hoeveelheid werk voor elke partitie te verkrijgen.
+* Er is een nieuwe API &lt; (taak IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync) toegevoegd. Dit kan worden gebruikt om de geschatte hoeveelheid werk voor elke partitie te verkrijgen.
 * Biedt ondersteuning voor micro soft. Azure. DocumentDB SDK 2,0. Vereist micro soft. Azure. DocumentDB 2,0 of hoger.
 
 ### <a name="206"></a><a name="2.0.6"/>2.0.6
@@ -158,7 +159,7 @@ ms.locfileid: "80619446"
 * Compatibel met [SQL .NET SDK](sql-api-sdk-dotnet.md) versie 1,21 en hoger.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
-* Voegt ondersteuning toe voor .NET Standard 2,0. Het pakket ondersteunt `netstandard2.0` nu en `net451` Framework-monikers.
+* Voegt ondersteuning toe voor .NET Standard 2,0. Het pakket ondersteunt nu `netstandard2.0` en `net451` Framework-monikers.
 * Compatibel met de 1.17.0 en de bovenstaande versie van [SQL .NET SDK](sql-api-sdk-dotnet.md) .
 * Compatibel met [SQL .net core SDK](sql-api-sdk-dotnet-core.md) versies 1.5.1 en hoger.
 

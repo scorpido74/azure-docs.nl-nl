@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
-description: In dit artikel vindt u informatie over het oplossen van problemen met het starten/stoppen van de virtuele machine tijdens een daluren oplossing.
+title: Problemen met de implementatie van Azure Automation VM's buiten bedrijfsuren starten/stoppen oplossen
+description: In dit artikel leest u hoe u problemen oplost en oplost die ontstaan tijdens de implementatie van de functie VM's buiten bedrijfsuren starten/stoppen.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,25 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 611e8441fab56114ca010d0b555c9ed156ae9d40
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd537fd943e9a13a59c2fa630235130ce9ccfe2d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855057"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680843"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
+# <a name="troubleshoot-startstop-vms-during-off-hours-deployment-issues"></a>Problemen met VM's buiten bedrijfsuren starten/stoppen-implementatie oplossen
 
-In dit artikel vindt u informatie over het oplossen van problemen die zich voordoen wanneer u werkt met de Azure Automation Vm's starten/stoppen buiten kantoor uren.
+In dit artikel vindt u informatie over het oplossen van problemen die zich voordoen wanneer u de Azure Automation VM's buiten bedrijfsuren starten/stoppen functie op uw Vm's implementeert. 
 
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Azure Automation-account kunt u uw modules bijwerken naar de nieuwste versie door gebruik te maken van de [Azure PowerShell-modules in azure Automation bij te werken](../automation-update-azure-modules.md).
-
-## <a name="scenario-the-startstop-vms-during-off-hours-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scenario: de implementatie van Vm's voor het starten/stoppen van de oplossing is mislukt
+## <a name="scenario-startstop-vms-during-off-hours-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scenario: VM's buiten bedrijfsuren starten/stoppen niet goed worden geïmplementeerd
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u de oplossing voor het [starten/stoppen van vm's tijdens een buiten](../automation-solution-vm-management.md)-en-uur implementeert, wordt een van de volgende fouten weer gegeven:
+Wanneer u [VM's buiten bedrijfsuren starten/stoppen](../automation-solution-vm-management.md)implementeert, wordt een van de volgende fouten weer gegeven:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -62,18 +59,18 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 Implementaties kunnen om een van de volgende redenen mislukken:
 
 - Er is al een Automation-account met dezelfde naam in de geselecteerde regio.
-- Met een beleid is de implementatie van de Vm's starten/stoppen buiten kantoor uren niet toegestaan.
-- Het `Microsoft.OperationsManagement`resource `Microsoft.Insights`type, `Microsoft.Automation` of is niet geregistreerd.
+- Een beleid staat de implementatie van VM's buiten bedrijfsuren starten/stoppen niet toe.
+- Het `Microsoft.OperationsManagement` `Microsoft.Insights` `Microsoft.Automation` resource type, of is niet geregistreerd.
 - Uw Log Analytics-werk ruimte is vergrendeld.
-- Er is een verouderde versie van de AzureRM-modules of de oplossing voor het starten/stoppen van Vm's buiten kantoor uren.
+- U hebt een verouderde versie van de AzureRM-modules of de functie VM's buiten bedrijfsuren starten/stoppen.
 
 ### <a name="resolution"></a>Oplossing
 
-Bekijk de volgende oplossingen voor mogelijke oplossingen voor het probleem:
+Bekijk de volgende oplossingen voor mogelijke oplossingen:
 
 * Automation-accounts moeten uniek zijn binnen een Azure-regio, zelfs als ze zich in verschillende resource groepen bevinden. Controleer uw bestaande Automation-accounts in de doel regio.
-* Een bestaand beleid voor komt dat een resource die is vereist voor de oplossing voor het starten/stoppen van Vm's tijdens een buiten-tijd implementatie, kan worden geïmplementeerd. Ga naar de beleids toewijzingen in de Azure Portal en controleer of u een beleids toewijzing hebt die de implementatie van deze resource niet toestaat. Zie [RequestDisallowedByPolicy-fout](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)voor meer informatie.
-* Als u de oplossing voor het starten/stoppen van Vm's wilt implementeren, moet uw abonnement worden geregistreerd bij de volgende Azure-resource-naam ruimten:
+* Een bestaand beleid voor komt dat een resource die vereist is voor VM's buiten bedrijfsuren starten/stoppen, wordt geïmplementeerd. Ga naar de beleids toewijzingen in de Azure Portal en controleer of u een beleids toewijzing hebt die de implementatie van deze resource niet toestaat. Zie [RequestDisallowedByPolicy-fout](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)voor meer informatie.
+* Als u VM's buiten bedrijfsuren starten/stoppen wilt implementeren, moet uw abonnement worden geregistreerd bij de volgende Azure-resource-naam ruimten:
 
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
@@ -81,13 +78,13 @@ Bekijk de volgende oplossingen voor mogelijke oplossingen voor het probleem:
 
    Zie [fouten voor de registratie van de resource provider oplossen](../../azure-resource-manager/templates/error-register-resource-provider.md)voor meer informatie over fouten bij het registreren van providers.
 * Als u een vergren deling op uw Log Analytics-werk ruimte hebt, gaat u naar uw werk ruimte in de Azure Portal en verwijdert u de vergren delingen van de resource.
-* Als u met deze oplossingen het probleem niet kunt oplossen, volgt u de instructies onder [Update de oplossing](../automation-solution-vm-management.md#update-the-solution) om de vm's voor het starten en stoppen van de virtuele machines te implementeren tijdens de oplossing buiten kantoor uren.
+* Als u met deze oplossingen het probleem niet kunt oplossen, volgt u de instructies onder [Update de functie](../automation-solution-vm-management.md#update-the-feature) om VM's buiten bedrijfsuren starten/stoppen opnieuw te implementeren.
 
 ## <a name="scenario-all-vms-fail-to-start-or-stop"></a><a name="all-vms-fail-to-startstop"></a>Scenario: alle Vm's kunnen niet worden gestart of gestopt
 
 ### <a name="issue"></a>Probleem
 
-U hebt de oplossing voor het starten/stoppen van Vm's geconfigureerd tijdens een offline-tijd, maar de virtuele machines worden niet gestart of gestopt.
+U hebt VM's buiten bedrijfsuren starten/stoppen geconfigureerd, maar de virtuele machines worden niet gestart of gestopt.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -100,9 +97,9 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 ### <a name="resolution"></a>Oplossing
 
-Bekijk de volgende lijst voor mogelijke oplossingen voor het probleem:
+Bekijk de volgende lijst voor mogelijke oplossingen:
 
-* Controleer of u een planning voor de oplossing voor het starten/stoppen van Vm's hebt geconfigureerd tijdens de offline-tijd. Zie [schema's](../automation-schedules.md)voor meer informatie over het configureren van een schema.
+* Controleer of u een planning voor VM's buiten bedrijfsuren starten/stoppen hebt geconfigureerd. Zie [schema's](../automation-schedules.md)voor meer informatie over het configureren van een schema.
 
 * Controleer de [taak stromen](../automation-runbook-execution.md#job-statuses) om te controleren of er fouten zijn opgetreden. Zoek naar taken uit een van de volgende runbooks:
 
@@ -118,7 +115,7 @@ Bekijk de volgende lijst voor mogelijke oplossingen voor het probleem:
 
 * Controleer of het [uitvoeren als-account](../manage-runas-account.md) de juiste machtigingen heeft voor de vm's die u probeert te starten of te stoppen. Zie voor meer informatie over het controleren van de machtigingen voor een resource [Quick Start: rollen weer geven die zijn toegewezen aan een gebruiker met behulp van de Azure Portal](../../role-based-access-control/check-access.md). U moet de toepassings-ID opgeven voor de service-principal die wordt gebruikt door het run as-account. U kunt deze waarde ophalen door naar uw Automation-account te gaan in de Azure Portal. Selecteer **uitvoeren als-accounts** onder **account instellingen**en selecteer het juiste uitvoeren als-account.
 
-* Vm's kunnen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's worden ingesteld in de `External_ExcludeVMNames` variabele in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* Vm's kunnen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's worden ingesteld in de `External_ExcludeVMNames` variabele in het Automation-account waarop de functie wordt geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
 
   ```powershell-interactive
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -128,7 +125,7 @@ Bekijk de volgende lijst voor mogelijke oplossingen voor het probleem:
 
 ### <a name="issue"></a>Probleem
 
-U hebt de oplossing voor het starten/stoppen van Vm's geconfigureerd tijdens een offline-tijd, maar er worden geen enkele geconfigureerde Vm's gestart of gestopt.
+U hebt VM's buiten bedrijfsuren starten/stoppen geconfigureerd, maar er worden geen enkele geconfigureerde Vm's gestart of gestopt.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -141,15 +138,15 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 ### <a name="resolution"></a>Oplossing
 
-Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor het zoeken naar:
+Bekijk de volgende lijst voor mogelijke oplossingen:
 
-* Wanneer u het [volgorde scenario](../automation-solution-vm-management.md) van de oplossing vm's starten/stoppen gebruikt, moet u ervoor zorgen dat elke VM die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de virtuele machines die u wilt starten, `sequencestart` de tag hebben en de vm's die u wilt stoppen `sequencestop` , de tag hebben. Voor beide tags is een positief geheel getal vereist. U kunt een query gebruiken die vergelijkbaar is met het volgende voor beeld om te zoeken naar alle virtuele machines met de labels en hun waarden.
+* Wanneer u het [volgorde scenario](../automation-solution-vm-management.md) van VM's buiten bedrijfsuren starten/stoppen gebruikt, moet u ervoor zorgen dat elke VM die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de virtuele machines die u wilt starten `sequencestart` , de tag hebben en de vm's die u wilt stoppen, de `sequencestop` tag hebben. Voor beide tags is een positief geheel getal vereist. U kunt een query gebruiken die vergelijkbaar is met het volgende voor beeld om te zoeken naar alle virtuele machines met de labels en hun waarden.
 
   ```powershell-interactive
   Get-AzResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Vm's kunnen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's worden ingesteld in de `External_ExcludeVMNames` variabele in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* Vm's kunnen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's worden ingesteld in de `External_ExcludeVMNames` variabele in het Automation-account waarop de functie wordt geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
 
   ```powershell-interactive
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -173,14 +170,14 @@ Er kunnen veel oorzaken zijn voor de fout. Ga naar uw Automation-account in het 
 
 U wordt aangeraden dat u:
 
-* Gebruik de [oplossing Vm's starten/stoppen](../automation-solution-vm-management.md) voor het starten en stoppen van vm's in azure Automation. Deze oplossing is gemaakt door micro soft. 
-* Houd er rekening mee dat micro soft geen ondersteuning biedt voor aangepaste runbooks. Mogelijk vindt u een oplossing voor uw aangepaste runbook in het [oplossen van problemen met runbook](runbooks.md). Controleer de [taak stromen](../automation-runbook-execution.md#job-statuses) om te controleren of er fouten zijn opgetreden. 
+* Gebruik [VM's buiten bedrijfsuren starten/stoppen](../automation-solution-vm-management.md) om vm's in azure Automation te starten en te stoppen. 
+* Houd er rekening mee dat micro soft geen ondersteuning biedt voor aangepaste runbooks. Mogelijk vindt u een oplossing voor uw aangepaste runbook bij het oplossen van problemen [met het runbook](runbooks.md). Controleer de [taak stromen](../automation-runbook-execution.md#job-statuses) om te controleren of er fouten zijn opgetreden. 
 
 ## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Scenario: Vm's worden niet in de juiste volg orde gestart of gestopt
 
 ### <a name="issue"></a>Probleem
 
-De Vm's die u in de oplossing hebt geconfigureerd, worden niet in de juiste volg orde gestart of gestopt.
+De Vm's die u hebt ingeschakeld voor de functie, worden niet in de juiste volg orde gestart of gestopt.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -188,19 +185,17 @@ Dit probleem wordt veroorzaakt door onjuiste tagging op de Vm's.
 
 ### <a name="resolution"></a>Oplossing
 
-Volg deze stappen om ervoor te zorgen dat de oplossing correct is geconfigureerd.
+Volg deze stappen om ervoor te zorgen dat de functie correct is ingeschakeld:
 
-1. Zorg ervoor dat alle Vm's die moeten worden gestart of `sequencestart` gestopt `sequencestop` , een or-tag hebben, afhankelijk van uw situatie. Voor deze tags is een positief geheel getal vereist als waarde. Vm's worden in oplopende volg orde verwerkt op basis van deze waarde.
-1. Zorg ervoor dat de resource groepen voor de Vm's die moeten worden gestart of gestopt, `External_Start_ResourceGroupNames` zich `External_Stop_ResourceGroupNames` in de or-variabelen bevinden, afhankelijk van uw situatie.
-1. Test uw wijzigingen door het `SequencedStartStop_Parent` runbook uit te voeren met `WHATIF` de para meter ingesteld op True om een voor beeld van de wijzigingen weer te geven.
+1. Zorg ervoor dat alle Vm's die moeten worden gestart of gestopt `sequencestart` , een or `sequencestop` -tag hebben, afhankelijk van uw situatie. Voor deze tags is een positief geheel getal vereist als waarde. Vm's worden in oplopende volg orde verwerkt op basis van deze waarde.
+1. Zorg ervoor dat de resource groepen voor de virtuele machines die moeten worden gestart of gestopt, zich in de `External_Start_ResourceGroupNames` or `External_Stop_ResourceGroupNames` -variabelen bevinden, afhankelijk van uw situatie.
+1. Test uw wijzigingen door het **SequencedStartStop_Parent** runbook uit te voeren, waarbij de `WHATIF` para meter is ingesteld op True om een voor beeld van uw wijzigingen te bekijken.
 
-Voor meer informatie over het gebruik van de oplossing voor het starten en stoppen van Vm's op volg orde raadpleegt u [Vm's starten/stoppen in volg orde](../automation-solution-vm-management.md).
-
-## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Scenario: het starten/stoppen van Vm's buiten kantoor uren mislukt met 403 verboden fout
+## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Scenario: de VM's buiten bedrijfsuren starten/stoppen-taak is mislukt met een niet-toegestane fout van 403
 
 ### <a name="issue"></a>Probleem
 
-U vindt taken die zijn mislukt met `403 forbidden` een fout voor het starten/stoppen van vm's tijdens daluren van de oplossing.
+U vindt taken die zijn mislukt met een `403 forbidden` fout voor VM's buiten bedrijfsuren starten/stoppen runbooks.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -220,23 +215,23 @@ Als er ontbrekende machtigingen zijn, raadpleegt u [Quick Start: rollen weer gev
 
 ### <a name="issue"></a>Probleem
 
-U ondervindt een probleem of onverwacht resultaat wanneer u de oplossing Vm's starten/stoppen buiten kantoor uren gebruikt die niet op deze pagina worden weer gegeven.
+U ondervindt een probleem of onverwacht resultaat wanneer u VM's buiten bedrijfsuren starten/stoppen gebruikt dat niet op deze pagina wordt weer gegeven.
 
 ### <a name="cause"></a>Oorzaak
 
-Vaak kunnen fouten worden veroorzaakt door gebruik te maken van een oude en verouderde versie van de oplossing.
+Vaak kunnen fouten worden veroorzaakt door gebruik te maken van een oude en verouderde versie van de functie.
 
 > [!NOTE]
-> De oplossing voor het starten/stoppen van Vm's buiten kantoor uren is getest met de Azure-modules die worden geïmporteerd in uw Automation-account wanneer u de oplossing implementeert. De oplossing werkt momenteel niet met nieuwere versies van de Azure-module. Deze beperking is alleen van invloed op het Automation-account dat u gebruikt voor het uitvoeren van de oplossing voor het starten/stoppen van Vm's tijdens een buiten kantoor uren. U kunt nog steeds nieuwere versies van de Azure-module gebruiken in uw andere Automation-accounts, zoals beschreven in [Azure PowerShell-modules bijwerken in azure Automation](../automation-update-azure-modules.md).
+> De functie VM's buiten bedrijfsuren starten/stoppen is getest met de Azure-modules die worden geïmporteerd in uw Automation-account wanneer u de functie op Vm's implementeert. De functie werkt momenteel niet met nieuwere versies van de Azure-module. Deze beperking is alleen van invloed op het Automation-account dat u gebruikt om VM's buiten bedrijfsuren starten/stoppen uit te voeren. U kunt nog steeds nieuwere versies van de Azure-module gebruiken in uw andere Automation-accounts, zoals beschreven in [Update Azure PowerShell-modules](../automation-update-azure-modules.md).
 
 ### <a name="resolution"></a>Oplossing
 
-Als u veel fouten wilt oplossen, verwijdert u [de virtuele machines starten en stoppen tijdens de oplossing buiten kantoor uren](../automation-solution-vm-management.md#update-the-solution). U kunt ook de [taak stromen](../automation-runbook-execution.md#job-statuses) controleren om fouten op te sporen. 
+Als u veel fouten wilt oplossen, moet u VM's buiten bedrijfsuren starten/stoppen verwijderen en [bijwerken](../automation-solution-vm-management.md#update-the-feature). U kunt ook de [taak stromen](../automation-runbook-execution.md#job-statuses) controleren om fouten op te sporen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929006"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652051"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Technische specificaties van Azure Stack rand
 
-De hardwareonderdelen van uw Microsoft Azure Stack edge-apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden. 
+De hardwareonderdelen van uw Microsoft Azure Stack edge-apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
 
 ## <a name="compute-memory-specifications"></a>Compute, geheugen specificaties
 
@@ -28,15 +28,13 @@ Het Azure Stack edge-apparaat heeft de volgende specificaties voor Compute en ge
 | CPU    | 2 X 10 core CPU                     |
 | Geheugen              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>FPGA-specificaties
 
-Een veld Programmeer bare gate array (FPGA) is opgenomen op elk Azure Stack edge-apparaat dat Machine Learning (ML) scenario's mogelijk maakt. 
+Een veld Programmeer bare gate array (FPGA) is opgenomen op elk Azure Stack edge-apparaat dat Machine Learning (ML) scenario's mogelijk maakt.
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Beschik bare DNN-modellen (diepe Neural Network) zijn hetzelfde als die [van Cloud FPGA-exemplaren](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
-
+| FPGA   | Intel Arria 10 <br> Beschik bare DNN-modellen (diepe Neural Network) zijn hetzelfde als die [van Cloud FPGA-exemplaren](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
 
@@ -48,6 +46,11 @@ Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met 
 | Frequentie               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
 | Hot pluggable           | Ja                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Specificaties van Azure Stack Edge-stroom kabel per regio
+
+Uw Azure Stack edge-apparaat moet een stroom kabel hebben dat afhankelijk is van uw Azure-regio.
+Zie [Azure stack Edge-stroom kabel specificaties per regio](azure-stack-edge-technical-specifications-power-cords-regional.md)voor technische specificaties van alle ondersteunde stroom kabels.
 
 <!--## Power consumption statistics
 
@@ -133,7 +136,6 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 |    Energie             |    Verordening (EU) van de Commissie. 617/2013                                                                                                                                                                                        |
 |    BvGS           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>Specificaties voor de gebruiks temperatuur van de beoordeling
 
 |     De beoordeling van de gebruiks temperatuur     |     Omgevings temperatuur bereik                                                         |
@@ -141,7 +143,6 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 |    Maxi maal 35 °C (95 °F)                       |    De maximale Tempe ratuur wordt verlaagd met 1 °C/300 m (1 °F/547 ft) boven 950 m (3.117 ft).    |
 |    35 °C tot 40 °C (95 °F tot 104 °F)            |    De maximale Tempe ratuur wordt verlaagd met 1 °C/175 m (1 °F/319 ft) van meer dan 950 m (3.117 ft).    |
 |    40 °C tot 45 °C (104 °F tot 113 °F)           |    De maximale Tempe ratuur wordt verlaagd met 1 °C/125 m (1 °F/228 ft) van meer dan 950 m (3.117 ft).    |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c03a7b89fee188d8a22cfb8ddcd73920ce43f43a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649147"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Azure AD-aanmelding
 
@@ -125,9 +125,34 @@ U kunt systeem eigen clients registreren om verificatie toe te staan voor de hos
 1. Nadat de app-registratie is gemaakt, kopieert u de waarde van de **toepassings-id (client)**.
 1. Selecteer **API-machtigingen**  >  **een machtiging**  >  **mijn api's**toevoegen.
 1. Selecteer de app-registratie die u eerder hebt gemaakt voor uw App Service-app. Als u de app-registratie niet ziet, zorg er dan voor dat u het **user_impersonation** bereik hebt toegevoegd in [een app-registratie in azure AD maken voor uw app service-app](#register).
-1. Selecteer **user_impersonation**en selecteer vervolgens **machtigingen toevoegen**.
+1. Selecteer onder **gedelegeerde machtigingen**de optie **user_impersonation**en selecteer vervolgens **machtigingen toevoegen**.
 
 U hebt nu een systeem eigen client toepassing geconfigureerd die toegang heeft tot uw App Service-app namens een gebruiker.
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Een daemon-client toepassing configureren voor service-naar-service-aanroepen
+
+Uw toepassing kan een token verkrijgen voor het aanroepen van een web-API die wordt gehost in uw App Service of functie-app namens zichzelf (niet namens een gebruiker). Dit scenario is nuttig voor niet-interactieve daemon-toepassingen die taken uitvoeren zonder een aangemelde gebruiker. De standaard OAuth 2,0- [client referenties](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) worden verleend.
+
+1. Selecteer in de [Azure Portal] **Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.
+1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw daemon-app.
+1. Voor een daemon-toepassing hebt u geen omleidings-URI nodig, zodat u die leeg kunt laten.
+1. Selecteer **Maken**.
+1. Nadat de app-registratie is gemaakt, kopieert u de waarde van de **toepassings-id (client)**.
+1. Selecteer **certificaten & geheimen**  >  **Nieuw client geheim**  >  **toevoegen**. Kopieer de waarde van het client geheim dat op de pagina wordt weer gegeven. Het wordt niet meer weer gegeven.
+
+U kunt nu [een toegangs token aanvragen met behulp van de client-id en het client geheim](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) door de `resource` para meter in te stellen op de URI van de **toepassings-id** van de doel-app. Het resulterende toegangs token kan vervolgens worden weer gegeven aan de doel-app met behulp van de standaard [OAuth 2,0-autorisatie-header](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource), en app service verificatie/autorisatie het token te valideren en gebruiken, zoals gebruikelijk, wordt aangegeven dat de aanroeper (een toepassing in dit geval, niet een gebruiker) wordt geverifieerd.
+
+Op dit moment kan _elke_ client toepassing in uw Azure AD-Tenant een toegangs token aanvragen en zich verifiëren bij de doel-app. Als u ook _autorisatie_ wilt afdwingen om alleen bepaalde client toepassingen toe te staan, moet u een extra configuratie uitvoeren.
+
+1. [Definieer een app-rol](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) in het manifest van de app-registratie die de app service of functie-app vertegenwoordigt die u wilt beveiligen.
+1. Selecteer **API-machtigingen**voor het  >  **toevoegen van een machtiging**voor  >  **mijn api's**in de app-registratie die de client vertegenwoordigt die moet worden geautoriseerd.
+1. Selecteer de app-registratie die u eerder hebt gemaakt. Als u de app-registratie niet ziet, zorg er dan voor dat u [een app-functie hebt toegevoegd](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md).
+1. Selecteer onder **toepassings machtigingen**de app-functie die u eerder hebt gemaakt en selecteer vervolgens **machtigingen toevoegen**.
+1. Zorg ervoor dat u op toestemming van de **beheerder geven** klikt om de client toepassing te machtigen om de machtiging aan te vragen.
+1. Net als bij het vorige scenario (voordat de functies zijn toegevoegd), kunt u nu [een toegangs token aanvragen](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) voor hetzelfde doel `resource` . het toegangs token bevat een `roles` claim met de app-rollen die voor de client toepassing zijn geautoriseerd.
+1. In de doel-App Service of functie-app code kunt u nu valideren of de verwachte rollen aanwezig zijn in het token (dit wordt niet uitgevoerd door App Service verificatie/autorisatie). Zie voor meer informatie [gebruikers claims voor toegang](app-service-authentication-how-to.md#access-user-claims).
+
+U hebt nu een daemon-client toepassing geconfigureerd die toegang heeft tot uw App Service-app met behulp van een eigen identiteit.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Volgende stappen
 

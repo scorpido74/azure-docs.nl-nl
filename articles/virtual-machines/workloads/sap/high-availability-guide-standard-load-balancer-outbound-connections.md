@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/07/2020
+ms.date: 05/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293918"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660170"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -154,7 +154,7 @@ De architectuur ziet er als volgt uit:
 4. Maak Azure Firewall regel om uitgaande connectiviteit met opgegeven open bare eind punten toe te staan. Het voor beeld laat zien hoe u toegang tot het open bare eind punt van de Azure Management API kunt toestaan.  
    1. Selecteer regels, verzameling van netwerk regels en klik vervolgens op verzameling netwerk regels toevoegen.  
    1. Naam: **MyOutboundRule**, voer prioriteit in, Selecteer actie **toestaan**.  
-   1. Service: naam **ToAzureAPI**.  Protocol: Selecteer **een**. Bron adres: Voer het bereik in voor uw subnet, waarbij de Vm's en Standard Load Balancer worden geïmplementeerd voor instance: **11.97.0.0/24**. Doel poorten: Voer <b>*</b>in.  
+   1. Service: naam **ToAzureAPI**.  Protocol: Selecteer **een**. Bron adres: Voer het bereik in voor uw subnet, waarbij de Vm's en Standard Load Balancer worden geïmplementeerd voor instance: **11.97.0.0/24**. Doel poorten: Voer in <b>*</b> .  
    1. Opslaan
    1. Selecteer overzicht als u nog steeds op de Azure Firewall hebt gepositioneerd. Noteer het privé-IP-adres van de Azure Firewall.  
 5. Route naar Azure Firewall maken  
@@ -162,7 +162,7 @@ De architectuur ziet er als volgt uit:
    1. Voer de naam MyRouteTable in, selecteer abonnement, resource groep en locatie (die overeenkomt met de locatie van uw virtuele netwerk en firewall).  
    1. Opslaan  
 
-   De firewall regel ziet er als volgt ![uit: uitgaande verbinding met Azure firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   De firewall regel ziet er als volgt ![ uit: uitgaande verbinding met Azure firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Een door de gebruiker gedefinieerde route maken op basis van het subnet van uw Vm's naar het privé-IP-adres van **MyAzureFirewall**.
    1. Wanneer u op de route tabel hebt gepositioneerd, klikt u op routes. Selecteer Toevoegen. 
@@ -176,7 +176,7 @@ U kunt proxy gebruiken om pacemaker-aanroepen naar de open bare Azure Management
 ### <a name="important-considerations"></a>Belangrijke overwegingen
 
   - Als er al een bedrijfs proxy aanwezig is, kunt u uitgaande oproepen naar open bare eind punten routeren. Uitgaande aanroepen naar open bare eind punten gaan door naar het bedrijfs controlepunt.  
-  - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat:`https://management.azure.com`  
+  - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat: `https://management.azure.com` en`https://login.microsoftonline.com`  
   - Zorg ervoor dat er een route van de virtuele machines naar de proxy is  
   - De proxy verwerkt alleen HTTP/HTTPS-aanroepen. Als er extra behoefte is aan het maken van uitgaande oproepen naar het open bare eind punt via verschillende protocollen (zoals RFC), is alternatieve oplossing vereist  
   - De proxy oplossing moet Maxi maal beschikbaar zijn om instabiliteit in het pacemaker-cluster te voor komen  
@@ -219,6 +219,10 @@ Voer de volgende stappen uit op alle cluster knooppunten om pacemaker toe te sta
      # Take the cluster out of maintenance mode
      sudo pcs property set maintenance-mode=false
      ```
+
+## <a name="other-solutions"></a>Andere oplossingen
+
+Als uitgaand verkeer wordt gerouteerd via firewall van derden, moet u ervoor zorgen dat de firewall configuratie uitgaande verbindingen met de Azure Management API toestaat: `https://management.azure.com` en `https://login.microsoftonline.com` .  
 
 ## <a name="next-steps"></a>Volgende stappen
 

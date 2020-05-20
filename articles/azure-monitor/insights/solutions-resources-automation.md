@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663059"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682866"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-resources toevoegen aan een beheer oplossing (preview)
 > [!NOTE]
@@ -33,7 +33,7 @@ In dit artikel wordt ervan uitgegaan dat u al bekend bent met de volgende inform
 - [Resource Manager-sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Automation-account
-Alle resources in Azure Automation zijn opgenomen in een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview).  Zoals beschreven in [log Analytics werk ruimte en het Automation-account]( solutions.md#log-analytics-workspace-and-automation-account) is het Automation-account niet opgenomen in de beheer oplossing, maar moet het bestaan voordat de oplossing wordt geïnstalleerd.  Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
+Alle resources in Azure Automation zijn opgenomen in een [Automation-account](../../automation/automation-security-overview.md).  Zoals beschreven in [log Analytics werk ruimte en het Automation-account]( solutions.md#log-analytics-workspace-and-automation-account) is het Automation-account niet opgenomen in de beheer oplossing, maar moet het bestaan voordat de oplossing wordt geïnstalleerd.  Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
 
 De naam van elke Automation-bron bevat de naam van het Automation-account.  Dit gebeurt in de oplossing met de para meter **AccountName** , zoals in het volgende voor beeld van een runbook-resource.
 
@@ -73,7 +73,7 @@ De eigenschappen voor runbooks worden beschreven in de volgende tabel.
 | runbookType |Hiermee geeft u de typen van het runbook op. <br><br> Script-Power shell-script <br>Power shell-Power shell-werk stroom <br> GraphPowerShell-grafisch Power shell-script runbook <br> GraphPowerShellWorkflow-grafisch Power shell-werk stroom-runbook |
 | logProgress |Hiermee geeft u op of [voortgangs records](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
 | logVerbose |Hiermee wordt aangegeven of [uitgebreide records](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
-| description |Optionele beschrijving voor het runbook. |
+| beschrijving |Optionele beschrijving voor het runbook. |
 | publishContentLink |Hiermee geeft u de inhoud van het runbook op. <br><br>URI-URI naar de inhoud van het runbook.  Dit is een. ps1-bestand voor Power shell-en script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiek runbook.  <br> versie-versie van het runbook voor uw eigen tracking. |
 
 
@@ -192,7 +192,7 @@ De eigenschappen voor plannings resources worden beschreven in de volgende tabel
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| description |Optionele beschrijving voor het schema. |
+| beschrijving |Optionele beschrijving voor het schema. |
 | startTime |Hiermee geeft u de begin tijd van een schema op als een DateTime-object. Er kan een teken reeks worden gegeven als deze kan worden geconverteerd naar een geldige datum/tijd. |
 | isEnabled |Hiermee geeft u op of de planning is ingeschakeld. |
 | interval |Het type interval voor het schema.<br><br>day<br>uur |
@@ -262,7 +262,7 @@ De eigenschappen voor variabelen bronnen worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| description | Optionele beschrijving voor de variabele. |
+| beschrijving | Optionele beschrijving voor de variabele. |
 | isEncrypted | Hiermee geeft u op of de variabele moet worden versleuteld. |
 | type | Deze eigenschap heeft momenteel geen effect.  Het gegevens type van de variabele wordt bepaald door de oorspronkelijke waarde. |
 | waarde | Waarde voor de variabele. |
@@ -270,14 +270,14 @@ De eigenschappen voor variabelen bronnen worden in de volgende tabel beschreven.
 > [!NOTE]
 > De eigenschap **type** heeft momenteel geen effect op de variabele die wordt gemaakt.  Het gegevens type voor de variabele wordt bepaald door de waarde.  
 
-Als u de aanvankelijke waarde voor de variabele instelt, moet deze worden geconfigureerd als het juiste gegevens type.  De volgende tabel bevat de verschillende typen gegevens die kunnen worden en de syntaxis ervan.  Houd er rekening mee dat waarden die in JSON worden verwacht, altijd tussen aanhalings tekens worden geplaatst.  Zo zou een teken reeks waarde worden opgegeven door aanhalings tekens rond de teken reeks (met het escape\\-teken ()) terwijl een numerieke waarde wordt opgegeven met één set aanhalings tekens.
+Als u de aanvankelijke waarde voor de variabele instelt, moet deze worden geconfigureerd als het juiste gegevens type.  De volgende tabel bevat de verschillende typen gegevens die kunnen worden en de syntaxis ervan.  Houd er rekening mee dat waarden die in JSON worden verwacht, altijd tussen aanhalings tekens worden geplaatst.  Zo zou een teken reeks waarde worden opgegeven door aanhalings tekens rond de teken reeks (met het escape-teken ( \\ )) terwijl een numerieke waarde wordt opgegeven met één set aanhalings tekens.
 
 | Gegevenstype | Beschrijving | Voorbeeld | Wordt omgezet in |
 |:--|:--|:--|:--|
-| tekenreeks   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hallo wereld\"" | "Hallo wereld" |
+| tekenreeks   | Plaats de waarde tussen dubbele aanhalings tekens.  | " \" Hallo wereld \" " | "Hallo wereld" |
 | numeriek  | Numerieke waarde met enkele aanhalings tekens.| "64" | 64 |
 | booleaans  | **waar** of **Onwaar** in aanhalings tekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | echte | waar |
-| datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57 \| " ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | " \\ /Date (1495656897378) \\ /" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modules
 Uw beheer oplossing hoeft geen [algemene modules](../../automation/automation-integration-modules.md) te definiëren die worden gebruikt door uw runbooks, omdat deze altijd beschikbaar zijn in uw Automation-account.  U moet een resource toevoegen voor een andere module die wordt gebruikt door uw runbooks.

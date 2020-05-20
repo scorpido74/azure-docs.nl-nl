@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79459307"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652075"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -22,7 +22,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Fout bericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
+| **Foutbericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Mogelijke oorzaken**    | De rol is mogelijk overschreven.                          |
 | **Aanbevolen actie** | U kunt het probleem oplossen door het script uit te voeren in het deel venster **Discover DB** of [hier](https://aka.ms/scriptforpermsonhana)te downloaden. U kunt ook de rol ' SAP_INTERNAL_HANA_SUPPORT ' toevoegen aan de back-upgebruiker van de werk belasting (AZUREWLBACKUPHANAUSER). |
@@ -82,6 +82,13 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 | ------------------ | ------------------------------------------------------------ |
 | **Mogelijke oorzaken**    | De para meters voor back-ups zijn onjuist opgegeven voor Azure backup |
 | **Aanbevolen actie** | Controleer of de volgende (backint)-para meters zijn ingesteld:<br/>\*[catalog_backup_using_backint: True]<br/>\*[enable_accumulated_catalog_backup: False]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Als de backint-para meters aanwezig zijn op de HOST, verwijdert u deze. Als de para meters niet aanwezig zijn op het niveau van de HOST, maar die hand matig zijn gewijzigd op database niveau, moet u deze herstellen naar de juiste waarden zoals eerder beschreven. Of voer de [beveiliging stoppen uit en behoud back-upgegevens](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) van de Azure Portal en selecteer vervolgens **back-up hervatten**. |
+
+### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
+
+|Foutbericht  |De bron-en doel systemen voor herstel zijn niet compatibel  |
+|---------|---------|
+|Mogelijke oorzaken   | De bron-en doel systemen die zijn geselecteerd voor herstel zijn niet compatibel        |
+|Aanbevolen actie   |   Zorg ervoor dat uw herstel scenario zich niet in de volgende lijst met mogelijk incompatibele herstelingen bevindt: <br><br>   Voor **Beeld 1:** De naam van de SYSTEMDB kan niet worden gewijzigd tijdens het herstellen.  <br><br> Voor **Beeld 2:** Bron-dit SDC en doel-MDC: de bron database kan niet worden teruggezet als SYSTEMDB of als Tenant database op het doel. <br><br> Voor **Beeld 3:** Bron-MDC en doel-dit SDC: de bron database (SYSTEMDB of Tenant-data base) kan niet worden hersteld naar het doel. <br><br>  Raadpleeg voor meer informatie de opmerking 1642148 in de [SAP support launchpad](https://launchpad.support.sap.com). |
 
 ## <a name="restore-checks"></a>Controles herstellen
 

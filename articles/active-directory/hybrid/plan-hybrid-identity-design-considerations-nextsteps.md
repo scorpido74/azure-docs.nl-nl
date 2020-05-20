@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512960"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647266"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Overwegingen bij het ontwerpen van Azure Active Directory hybride identiteit-volgende stappen
 Nu u uw vereisten hebt bepaald en alle opties voor uw oplossing voor het beheer van mobiele apparaten hebt bekeken, kunt u de volgende stappen uitvoeren om de juiste ondersteunende infrastructuur voor u en uw organisatie te implementeren.
@@ -37,8 +37,8 @@ Informatie over conceptuele en procedurele planning, implementatie en beheer kom
 Het bewaken van de volgende resources biedt vaak het laatste nieuws en updates op Mobile Device Management oplossingen:
 
 * [Micro soft Enter prise Mobility-blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Micro soft in het Cloud blog](https://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune blog](https://blogs.technet.com/b/microsoftintune/)
+* [Micro soft in het Cloud blog](https://cloudblogs.microsoft.com/)
+* [Microsoft Intune blog](https://techcommunity.microsoft.com/t5/intune-customer-success/welcome-to-the-new-intune-customer-success-blog/ba-p/281367)
 * [Micro soft endpoint Configuration Manager-blog](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>Zie ook

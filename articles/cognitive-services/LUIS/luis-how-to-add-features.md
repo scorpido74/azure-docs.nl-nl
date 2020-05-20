@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592301"
+ms.locfileid: "83654096"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Functies gebruiken om het signaal van een woorden lijst te verhogen
 
@@ -49,8 +49,23 @@ Bekijk de [concepten](luis-concept-feature.md) om te begrijpen wanneer en waarom
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > U kunt een woordgroepen lijst verwijderen of deactiveren op de contextuele werk balk op de pagina **ml-functies** .
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>Algemene woordgroepen lijst is van toepassing op volledige app
+
+Een woordgroepen lijst moet worden toegepast op de intentie of entiteit waarvoor het is bedoeld om u te helpen, maar het kan voor komen dat een woordgroepen lijst moet worden toegepast op de hele app als een **globale** functie.
+
+Selecteer op de pagina ML-onderdelen de lijst woordgroepen en selecteer vervolgens **globaal maken** in de bovenste contextuele werk balk.
+
+## <a name="model-as-a-feature"></a>Model als onderdeel
+
+Een entiteit kan een [functie zijn voor een intentie of entiteit](luis-concept-feature.md).
+
+Als u een entiteit wilt toevoegen als een functie voor een opzet, selecteert u de intentie op de pagina intenties en selecteert u **+ functie toevoegen** boven de contextuele werk balk. De lijst bevat alle woordgroepen lijsten en entiteiten die als functies kunnen worden toegepast.
+
+Als u een entiteit wilt toevoegen als een functie aan een andere entiteit, kunt u de functie toevoegen op de detail pagina Details met behulp van het [entiteits palet](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) of u kunt [de functie toevoegen](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) op de pagina Details van entiteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

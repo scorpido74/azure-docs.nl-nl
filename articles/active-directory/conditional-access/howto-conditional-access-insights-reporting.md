@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4113328a5de02c36b7285c837bd5314d11e526b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690406"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641593"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Inzichten en rapportage voor voorwaardelijke toegang
 
@@ -36,9 +36,6 @@ De volgende rollen hebben toegang tot inzichten en rapportage:
 
 Gebruikers hebben ook een van de volgende Log Analytics werkruimte rollen nodig:  
 
-- Lezer 
-- Bewakings lezer 
-- Log Analytics lezer 
 - Inzender  
 - Eigenaar 
 
@@ -53,8 +50,8 @@ Als u geen Azure AD-Logboeken hebt geïntegreerd met Azure Monitor-logboeken, mo
 
 Voor toegang tot de werkmap inzichten en rapportage:  
 
-1. Meld u aan bij de **Azure-portal**.
-1. Blader naar **Azure Active Directory** > **inzichten en rapportage**voor**voorwaardelijke toegang** > van de**beveiliging** > .
+1. Meld u aan bij **Azure Portal**.
+1. Blader naar **Azure Active Directory**  >  **Security**  >  **Conditional Access**  >  **inzichten en rapportage**voor voorwaardelijke toegang van de beveiliging.
 
 ### <a name="get-started-select-parameters"></a>Aan de slag: para meters selecteren 
 
@@ -112,11 +109,11 @@ Wanneer het volume van de aanmeldingen de query capaciteit van Log Analytics ove
 
 ### <a name="can-i-save-my-parameter-selections"></a>Kan ik mijn parameter selecties opslaan?  
 
-U kunt de opties voor de para meters boven aan de werkmap opslaan door naar **Azure Active Directory** > -**werkmappen** > **voorwaardelijke toegang inzicht en rapportage**te gaan. Hier vindt u de werkmap sjabloon, waar u de werkmap kunt bewerken en een kopie opslaat in uw werk ruimte, met inbegrip van de parameter selecties, in **mijn rapporten** of **gedeelde rapporten**. 
+U kunt de opties voor de para meters boven aan de werkmap opslaan door naar **Azure Active Directory**-  >  **werkmappen**  >  **voorwaardelijke toegang inzicht en rapportage**te gaan. Hier vindt u de werkmap sjabloon, waar u de werkmap kunt bewerken en een kopie opslaat in uw werk ruimte, met inbegrip van de parameter selecties, in **mijn rapporten** of **gedeelde rapporten**. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Kan ik de werkmap bewerken en aanpassen met aanvullende query's? 
 
-U kunt de werkmap bewerken en aanpassen door naar **Azure Active Directory** > -**werkmappen** > **voorwaardelijke toegang inzicht en rapportage**te gaan. Hier vindt u de werkmap sjabloon, waar u de werkmap kunt bewerken en een kopie opslaat in uw werk ruimte, met inbegrip van de parameter selecties, in **mijn rapporten** of **gedeelde rapporten**. Klik op **bewerken** boven aan de werkmap om te beginnen met het bewerken van de query's.  
+U kunt de werkmap bewerken en aanpassen door naar **Azure Active Directory**-  >  **werkmappen**  >  **voorwaardelijke toegang inzicht en rapportage**te gaan. Hier vindt u de werkmap sjabloon, waar u de werkmap kunt bewerken en een kopie opslaat in uw werk ruimte, met inbegrip van de parameter selecties, in **mijn rapporten** of **gedeelde rapporten**. Klik op **bewerken** boven aan de werkmap om te beginnen met het bewerken van de query's.  
  
 ## <a name="next-steps"></a>Volgende stappen
 

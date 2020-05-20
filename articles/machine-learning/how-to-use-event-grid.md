@@ -1,7 +1,7 @@
 ---
 title: Gebeurtenissen in ML-werk stromen activeren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het activeren van op gebeurtenissen gebaseerde toepassingen, processen of CI/CD-werk stromen op basis van Azure Machine Learning gebeurtenissen om de levens cyclus van uw ML te vereenvoudigen.
+description: Met gebeurtenis gerichte toepassingen, processen of CI/CD-machine learning werk stromen instellen in Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: 236cc46bb6f9e5ed95e4a49068ac41ae77a736f5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 79bea443ea576ba0c17c1a8150c305d7cd2320ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982867"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655792"
 ---
-# <a name="trigger-event-driven-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Gebeurtenis gerichte toepassingen, processen of CI/CD-werk stromen activeren op basis van Azure Machine Learning gebeurtenissen (preview)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Toepassingen, processen of CI/CD-werk stromen activeren op basis van Azure Machine Learning gebeurtenissen (preview)
 
 In dit artikel leert u hoe u op gebeurtenissen gebaseerde toepassingen, processen of CI/CD-werk stromen kunt instellen op basis van Azure Machine Learning gebeurtenissen, zoals e-mail berichten over mislukte meldingen of MILLILITERs pijplijnen, wanneer bepaalde voor waarden worden gedetecteerd door [Azure Event grid](https://docs.microsoft.com/azure/event-grid/). 
 
@@ -241,7 +241,7 @@ Nu wordt de data factory-pijp lijn geactiveerd wanneer drift optreedt. Bekijk de
 
 Een Azure Machine Learning model object bevat para meters waarmee u implementaties kunt draaien, zoals model naam, versie, tag en eigenschap. De registratie gebeurtenis voor het model kan een eind punt activeren en u kunt een Azure-functie gebruiken om een model te implementeren op basis van de waarde van die para meters.
 
-Voor een voor beeld raadpleegt [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) u de opslag plaats en volgt u de stappen in het **Leesmij** -bestand.
+Voor een voor beeld raadpleegt u de [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) opslag plaats en volgt u de stappen in het **Leesmij** -bestand.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585654"
+ms.locfileid: "83653955"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Uw actieve, getrainde app publiceren naar een staging-of productie-eind punt
 
@@ -57,7 +57,7 @@ Als u bijvoorbeeld een app die is gemaakt op [www.Luis.ai](https://www.luis.ai),
 Nadat u de sleuf hebt geselecteerd, configureert u de publicatie-instellingen voor:
 
 * Sentimentanalyse
-* Spelling correctie-v2 alleen Voorspellings eindpunt
+* [Spelling correctie](luis-tutorial-bing-spellcheck.md) -v2 alleen Voorspellings eindpunt
 * Spraak gebeuren
 
 Nadat u hebt gepubliceerd, zijn deze instellingen beschikbaar voor controle op de pagina **publicatie-instellingen** van de sectie **beheren** . U kunt de instellingen wijzigen bij elke publicatie. Als u een publicatie annuleert, worden alle wijzigingen die u tijdens het publiceren hebt aangebracht, ook geannuleerd.
@@ -78,7 +78,7 @@ U hoeft geen Text Analytics sleutel op te geven en er worden geen kosten in reke
 
 Sentiment-gegevens is een score tussen 1 en 0 die de positieve waarde (dichter bij 1) of negatief (dichter bij 0) sentiment van de gegevens aangeeft. Het sentiment-label van `positive` , `neutral` en `negative` is per ondersteunde cultuur. Op dit moment worden alleen sentiment-labels in het Engels ondersteund.
 
-Zie [sentiment Analysis](luis-concept-data-extraction.md#sentiment-analysis) (Engelstalig) voor meer informatie over het JSON-eindpunt antwoord met sentiment analyse.
+Zie [sentiment Analysis](luis-reference-prebuilt-sentiment.md) (Engelstalig) voor meer informatie over het JSON-eindpunt antwoord met sentiment analyse.
 
 ## <a name="spelling-correction"></a>Spelling correctie
 

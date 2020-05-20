@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6218e5163212540f2132020dffea520d34b77cc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121528"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648858"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -21,7 +21,10 @@ Omdat de vereiste Application Insights instrumentatie is ingebouwd in Azure Func
 
 ## <a name="application-insights-pricing-and-limits"></a>Prijzen en limieten voor Application Insights
 
-U kunt Application Insights integratie gratis uitproberen met functie-apps. Er is een dagelijkse limiet voor de hoeveelheid gegevens die gratis kan worden verwerkt. U kunt deze limiet tijdens het testen aanraken. Azure biedt Portal-en e-mail meldingen wanneer u uw dagelijkse limiet nadert. Als u deze waarschuwingen mist en de limiet bereikt, worden nieuwe logboeken niet weer gegeven in Application Insights query's. Houd rekening met de limiet om onnodige probleemoplossings tijd te voor komen. Zie [prijzen en gegevens volume beheren in Application Insights](../azure-monitor/app/pricing.md)voor meer informatie.
+U kunt Application Insights-integratie met Azure Functions gratis uitproberen. Er is een dagelijkse limiet voor de hoeveelheid gegevens die gratis kan worden verwerkt. U kunt deze limiet tijdens het testen aanraken. Azure biedt Portal-en e-mail meldingen wanneer u uw dagelijkse limiet nadert. Als u deze waarschuwingen mist en de limiet bereikt, worden nieuwe logboeken niet weer gegeven in Application Insights query's. Houd rekening met de limiet om onnodige probleemoplossings tijd te voor komen. Zie [prijzen en gegevens volume beheren in Application Insights](../azure-monitor/app/pricing.md)voor meer informatie.
+
+> [!IMPORTANT]
+> Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md) functie waarmee u kunt voor komen dat er te veel telemetriegegevens worden geproduceerd tijdens voltooide uitvoeringen op momenten van piek belasting. Steek proeven zijn standaard ingeschakeld. Als er gegevens ontbreken, moet u mogelijk de sampling-instellingen aanpassen aan uw specifieke bewakings scenario. Zie [sampling configureren](#configure-sampling)voor meer informatie.
 
 De volledige lijst met Application Insights functies die beschikbaar zijn voor uw functie-app, wordt beschreven in [Application Insights voor Azure functions ondersteunde functies](../azure-monitor/app/azure-functions-supported-features.md).
 
@@ -63,7 +66,7 @@ De volgende gebieden van Application Insights kunnen nuttig zijn bij het evaluer
 | Onderzoeken | Beschrijving |
 | ---- | ----------- |
 | **[Fouten](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
-| **[Nemen](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
+| **[Prestaties](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
 | **[Metrische gegevens](../azure-monitor/app/metrics-explorer.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
 | **[Live Metrics](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
 
@@ -271,9 +274,6 @@ Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md)
   }
 }
 ```
-
-> [!NOTE]
-> [Steek proeven](../azure-monitor/app/sampling.md) zijn standaard ingeschakeld. Als er gegevens ontbreken, moet u mogelijk de sampling-instellingen aanpassen aan uw specifieke bewakings scenario.
 
 ## <a name="write-logs-in-c-functions"></a>Logboeken schrijven in C#-functies
 

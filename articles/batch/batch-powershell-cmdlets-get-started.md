@@ -4,12 +4,12 @@ description: Een korte inleiding in de Azure PowerShell-cmdlets die u kunt gebru
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995317"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657315"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-resources beheren met PowerShell-cmdlets
 
@@ -247,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Nu maakt u de adresgroep en geeft u het pakketverwijzingsobject op als het argument voor de optie `ApplicationPackageReferences`:
+Maak nu de configuratie en de groep. In dit voor beeld wordt de para meter **CloudServiceConfiguration** gebruikt voor een `PSCloudServiceConfiguration` type-object dat is geïnitialiseerd in `$configuration` , waarbij het **OSFamily** wordt ingesteld op `6` ' Windows Server 2019 ' en de initialisatie naar **OSVersion** `*` . Geef het pakket referentie object op als argument voor de `ApplicationPackageReferences` optie:
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 

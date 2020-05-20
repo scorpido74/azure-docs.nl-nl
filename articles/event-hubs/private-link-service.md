@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649894"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Event Hubs integreren met een persoonlijke Azure-koppeling (preview)
+# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
 Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
@@ -23,8 +23,6 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 
 > [!IMPORTANT]
 > Deze functie wordt alleen ondersteund met de **toegewezen** laag. Zie [overzicht van Event hubs dedicated](event-hubs-dedicated-overview.md)voor meer informatie over de toegewezen laag. 
->
-> Deze functie is momenteel beschikbaar als **Preview-versie**. 
 
 >[!WARNING]
 > Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
@@ -60,11 +58,11 @@ Uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele n
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
-5. Selecteer het tabblad **Private endpoint Connections (preview)** boven aan de pagina. Als u geen toegewezen laag van Event Hubs gebruikt, wordt er een bericht weer gegeven: **privé-eindpunt verbindingen op Event hubs worden alleen ondersteund door naam ruimten die zijn gemaakt onder een toegewezen cluster**.
+5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. Als u geen toegewezen laag van Event Hubs gebruikt, wordt er een bericht weer gegeven: **privé-eindpunt verbindingen op Event hubs worden alleen ondersteund door naam ruimten die zijn gemaakt onder een toegewezen cluster**.
 6. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
     ![Installatiekopie](./media/private-link-service/private-link-service-3.png)
@@ -86,7 +84,7 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias**, voert u de volgende stappen uit:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Event Hubs naam ruimte in de Azure Portal en het `/subscriptions/`gedeelte van de URI te kopiëren vanaf. Zie de volgende afbeelding voor een voor beeld. 
+        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Event Hubs naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Zie de volgende afbeelding voor een voor beeld. 
         2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft.
         3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt.
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina.
@@ -244,46 +242,33 @@ U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke e
 
 Maak eerst een virtuele machine aan de hand van de stappen in [een virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
-Op het tabblad **netwerk** :
+Op het tabblad **netwerk** : 
 
-1. Geef het **virtuele netwerk** en het **subnet**op. U kunt een nieuw virtueel netwerk maken of een bestaande selecteren. Als u een bestaand item selecteert, moet u ervoor zorgen dat de regio overeenkomt.
-1. Geef een **open bare IP-** resource op.
-1. Selecteer in de **beveiligings groep NIC-netwerk**de optie **geen**.
-1. Selecteer **Nee**in de **taak verdeling**.
+1. Geef het **virtuele netwerk** en het **subnet**op. U moet het Virtual Network selecteren waarop u het persoonlijke eind punt hebt geïmplementeerd.
+2. Geef een **open bare IP-** resource op.
+3. Selecteer voor **NIC-netwerk beveiligings groep**de optie **geen**.
+4. Selecteer **Nee**voor **taak verdeling**.
 
-Open de opdracht regel en voer de volgende opdracht uit:
+Maak verbinding met de virtuele machine, open de opdracht regel en voer de volgende opdracht uit:
 
 ```console
-nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
+nslookup <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Als u de opdracht NS lookup uitvoert om het IP-adres van een Event Hubs naam ruimte via een openbaar eind punt op te lossen, ziet u een resultaat dat er als volgt uitziet:
+U ziet een resultaat dat er als volgt uitziet. 
 
 ```console
-c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
-```
-
-Als u de opdracht NS lookup uitvoert om het IP-adres van een Event Hubs naam ruimte op te lossen via een persoonlijk eind punt, ziet u een resultaat dat er als volgt uitziet:
-
-```console
-c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-event-hub-name>.servicebus.windows.net
+Name:    <event-hubs-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
 
 **Prijzen**: Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
 
-**Beperkingen**: privé-eind punt voor Azure Event hubs is in open bare preview. Deze functie is beschikbaar in alle open bare Azure-regio's.
+**Beperkingen**: deze functie is beschikbaar in alle open bare Azure-regio's.
 
 **Maximum aantal privé-eind punten per Event hubs naam ruimte**: 120.
 

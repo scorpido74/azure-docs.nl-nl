@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791745"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647290"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Stappen voorafgaand aan de migratie voor gegevens migraties van MongoDB naar de API van Azure Cosmos DB voor MongoDB
 
@@ -79,7 +79,7 @@ Partitioneren, ook wel bekend als sharding, is een belang rijk aandachtspunt voo
 Op dezelfde manier wordt met de partitionering automatisch capaciteit toegevoegd en worden de gegevens dienovereenkomstig opnieuw gebalanceerd. Zie het [artikel een partitie sleutel kiezen](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)voor meer informatie en aanbevelingen over het kiezen van de juiste partitie sleutel voor uw gegevens. 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Uw gegevens indexeren
-Azure Cosmos DB biedt standaard automatische indexering voor alle ingevoegde gegevens. De indexerings mogelijkheden van Azure Cosmos DB bestaan uit het toevoegen van samengestelde indexen, unieke indexen en time-to-Live (TTL)-indexen. De index beheer-interface wordt toegewezen aan `createIndex()` de opdracht. Meer informatie vindt u [in indexering in de API van Azure Cosmos DB voor MongoDb](mongodb-indexing.md).
+Azure Cosmos DB biedt standaard automatische indexering voor alle ingevoegde gegevens. De indexerings mogelijkheden van Azure Cosmos DB bestaan uit het toevoegen van samengestelde indexen, unieke indexen en time-to-Live (TTL)-indexen. De index beheer-interface wordt toegewezen aan de `createIndex()` opdracht. Meer informatie vindt u [in indexering in de API van Azure Cosmos DB voor MongoDb](mongodb-indexing.md).
 
 [Azure database Migration service](../dms/tutorial-mongodb-cosmos-db.md) wordt automatisch MongoDb-verzamelingen met unieke indexen gemigreerd. De unieke indexen moeten echter worden gemaakt vóór de migratie. Azure Cosmos DB biedt geen ondersteuning voor het maken van unieke indexen wanneer er al gegevens in uw verzamelingen aanwezig zijn. Zie [unieke sleutels in azure Cosmos DB](unique-keys.md)voor meer informatie.
 

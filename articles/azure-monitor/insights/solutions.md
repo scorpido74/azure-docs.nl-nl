@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/23/2020
-ms.openlocfilehash: 58dbb52cd906d91daec7e4b16625bc264135e90c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44094497c98c306b0995f3a74da68809ef66a0ac
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114850"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682838"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -80,7 +80,7 @@ Leden van de community kunnen beheer oplossingen verzenden naar Azure Quick Star
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-werk ruimte en Automation-account
 
-Voor alle bewakings oplossingen is een [log Analytics-werk ruimte](../platform/manage-access.md) vereist voor het opslaan van gegevens die zijn verzameld door de oplossing en het vinden van zoek opdrachten in Logboeken en weer gaven. Sommige oplossingen hebben ook een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview) nodig om runbooks en gerelateerde resources te bevatten. De werk ruimte en het account moeten voldoen aan de volgende vereisten.
+Voor alle bewakings oplossingen is een [log Analytics-werk ruimte](../platform/manage-access.md) vereist voor het opslaan van gegevens die zijn verzameld door de oplossing en het vinden van zoek opdrachten in Logboeken en weer gaven. Sommige oplossingen hebben ook een [Automation-account](../../automation/automation-security-overview.md) nodig om runbooks en gerelateerde resources te bevatten. De werk ruimte en het account moeten voldoen aan de volgende vereisten.
 
 * Bij elke installatie van een oplossing kan slechts één Log Analytics-werk ruimte en één Automation-account worden gebruikt. U kunt de oplossing afzonderlijk in meerdere werk ruimten installeren.
 * Als voor een oplossing een Automation-account is vereist, moet de Log Analytics-werk ruimte en het Automation-account aan elkaar zijn gekoppeld. Een Log Analytics-werk ruimte kan alleen worden gekoppeld aan een Automation-account en een Automation-account kan alleen worden gekoppeld aan een Log Analytics-werk ruimte.

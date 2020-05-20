@@ -1,18 +1,18 @@
 ---
-title: Geografische Beschik baarheid en valuta ondersteuning voor de commerciële Marketplace | Azure Marketplace
-description: Geografische Beschik baarheid in de commerciële Marketplace
+title: Geografische Beschik baarheid en valuta ondersteuning voor micro soft Commercial Marketplace
+description: De geografische Beschik baarheid en valuta ondersteuning voor trans acties in de commerciële Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687589"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657869"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -55,7 +55,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Kroatië                             | HR        | EUR          |
 | Curaçao                             | WAARNAAR        | USD          |
 | Cyprus                              | CY        | EUR          |
-| Tsjechië                      | CZ        | EUR          |
+| Tsjechische Republiek                      | CZ        | EUR          |
 | Denemarken                             | DK        | DKK          |
 | Dominicaanse Republiek                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -63,7 +63,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | El Salvador                         | SV        | USD          |
 | Estland                             | EE        | EUR          |
 | Ethiopië                            | ET        | USD          |
-| Faeröer                       | FO        | DKK          |
+| Faröer                       | FO        | DKK          |
 | Fiji                                | FJ        | AUD          |
 | Finland                             | FI        | EUR          |
 | Frankrijk                              | FR        | EUR          |
@@ -89,7 +89,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Kenia                               | KE        | USD          |
 | Korea (Zuid)                       | KR        | KRW          |
 | Koeweit                              | KW        | USD          |
-| Kirgizië                          | KG        | USD          |
+| Kirgistan                          | KG        | USD          |
 | Letland                              | LV        | EUR          |
 | Libanon                             | LB        | USD          |
 | Libië                               | LY        | USD          |
@@ -107,7 +107,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Mongolië                            | MN        | USD          |
 | Montenegro                          | ME        | USD          |
 | Marokko                             | MA        | USD          |
-| Namibië                             | N.v.t.        | USD          |
+| Namibië                             | NA        | USD          |
 | Nepal                               | NP        | USD          |
 | Nederland                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |

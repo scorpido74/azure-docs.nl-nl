@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472081"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648533"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -54,7 +54,7 @@ In de volgende afbeelding vertegenwoordigen de cijfers de stroom van de aanvrage
    * Resource-URI voor REST-Media Services.
    * Azure AD-App-waarden: de client-ID en het client geheim.
 
-   Als u alle benodigde waarden wilt ophalen, raadpleegt u [de Access Azure Media Services-API met de Azure cli](access-api-cli-how-to.md).
+   Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](access-api-cli-how-to.md).
 
 2. Het Azure AD-toegangs token wordt verzonden naar de middelste laag.
 4. De middelste laag verzendt een aanvraag naar de Azure media-REST API met het Azure AD-token.
@@ -84,7 +84,7 @@ De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam
 
 ## <a name="long-running-operations"></a>Langlopende bewerkingen
 
-De bewerkingen die zijn `x-ms-long-running-operation` gemarkeerd met in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
+De bewerkingen die zijn gemarkeerd met `x-ms-long-running-operation` in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
 
 Zie [asynchrone bewerkingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
 
@@ -118,7 +118,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Naslaginformatie|
+|SDK|Verwijzing|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java-SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
@@ -136,7 +136,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) is een hulpprogramma beschikbaar voor Windows-klanten die kennis willen maken met Media Services. AMSE is een Winforms/C#-toepassing voor het uploaden, downloaden, coderen en streamen van VOD en live-inhoud met Media Services. Het AMSE-hulpprogramma is voor clients die Media Services willen testen zonder code te schrijven. De AMSE-code wordt geleverd als een bron voor klanten die willen ontwikkelen met Media Services.
 
-AMSE is een Open-Source-project, en dus wordt er ondersteuning geboden door de community (problemen kunnen worden gemeld aan https://github.com/Azure/Azure-Media-Services-Explorer/issues). Op dit project is de [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Open Source-gedragscode) van toepassing. Zie de [Veelgestelde vragen over de gedrags code](https://opensource.microsoft.com/codeofconduct/faq/) voor meer informatie of opencode@microsoft.com Neem contact op met andere vragen of opmerkingen.
+AMSE is een Open-Source-project, en dus wordt er ondersteuning geboden door de community (problemen kunnen worden gemeld aan https://github.com/Azure/Azure-Media-Services-Explorer/issues). Op dit project is de [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Open Source-gedragscode) van toepassing. Zie de [Veelgestelde vragen over de gedrags code](https://opensource.microsoft.com/codeofconduct/faq/) voor meer informatie of neem contact op opencode@microsoft.com met andere vragen of opmerkingen.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filteren, ordenen, paginering van Media Services entiteiten
 
@@ -148,7 +148,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="see-also"></a>Zie ook
 
-[Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](access-api-cli-how-to.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

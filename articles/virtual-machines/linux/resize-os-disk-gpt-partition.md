@@ -1,6 +1,6 @@
 ---
-title: Het formaat van een besturingssysteem schijf wijzigen met een GPT-partitie | Microsoft Docs
-description: Dit artikel bevat instructies voor het wijzigen van het formaat van een besturingssysteem schijf met GPT-partitie.
+title: Het formaat wijzigen van een besturingssysteem schijf met een GPT-partitie | Microsoft Docs
+description: Dit artikel bevat instructies voor het wijzigen van de grootte van een besturingssysteem schijf met een GPT-partitie.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858988"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651090"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>Het formaat van een besturingssysteem schijf met een GPT-partitie wijzigen
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Het formaat van een besturingssysteem schijf met een GPT-partitie wijzigen
 
 > [!NOTE]
-> Dit scenario is alleen van toepassing op de besturingssysteem schijf met een GPT-partitie.
+> Dit scenario geldt alleen voor besturingssysteem schijven met een GPT-partitie (GUID-partitie tabel).
 
-In dit artikel wordt beschreven hoe u de grootte van de besturingssysteem schijf kunt verg Roten met een GPT-partitie in Linux.
+In dit artikel wordt beschreven hoe u de grootte van een besturingssysteem schijf met een GPT-partitie in Linux kunt verg Roten. 
 
 ## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>Vaststellen of de besturingssysteem schijf een MBR-of GPT-partitie heeft
 
-Gebruik de **geparteerde** opdracht om te bepalen of de schijf partitie is gemaakt met een master boot record partitie (MBR) of een GUID-partitie tabel (GPT).
+Gebruik de **geparteerde** opdracht om te bepalen of de schijf partitie is gemaakt met een master boot record partitie (MBR) of een GPT-partitie.
 
 ### <a name="mbr-partition"></a>MBR-partitie
 
-In de volgende uitvoer toont de **partitie tabel** de waarde van **MSDOS**, waarmee een **MBR** -partitie wordt aangeduid.
+In de volgende uitvoer toont de **partitie tabel** de waarde van **MSDOS**. Met deze waarde wordt een MBR-partitie aangeduid.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT-partitie
 
-In de volgende uitvoer toont de **partitie tabel** de waarde **GPT**, waarbij een GPT-partitie wordt geïdentificeerd.
+In de volgende uitvoer toont de **partitie tabel** de waarde **GPT**. Met deze waarde wordt een GPT-partitie aangeduid.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -74,18 +74,18 @@ Als uw virtuele machine (VM) een GPT-partitie op de besturingssysteem schijf hee
 De volgende instructies zijn van toepassing op door Linux goedgekeurde distributies.
 
 > [!NOTE]
-> Voordat u doorgaat, maakt u een back-up van uw virtuele machine of zet u een moment opname van de besturingssysteem schijf.
+> Voordat u doorgaat, maakt u een back-up van uw VM of neemt u een moment opname van de besturingssysteem schijf op.
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x en 18. x
+### <a name="ubuntu"></a>Ubuntu
 
 Verhoog de grootte van de besturingssysteem schijf in Ubuntu 16. x en 18. x:
 
 1. Stop de virtuele machine.
-1. Verg root de grootte van de OSDisk van de portal.
-1. Start de VM opnieuw op en meld u aan bij de VM als een **hoofd** gebruiker.
-1. De OSDisk krijgt nu een verhoogde grootte voor het bestands systeem.
+1. Verhoog de grootte van de besturingssysteem schijf van de portal.
+1. Start de virtuele machine opnieuw op en meld u aan bij de VM als een **hoofd** gebruiker.
+1. Controleer of op de besturingssysteem schijf nu een groter formaat van het bestands systeem wordt weer gegeven.
 
-Zoals wordt weer gegeven in het volgende voor beeld, wordt de grootte van de besturingssysteem schijf gewijzigd van de portal naar 100 GB, omdat het **/dev/sda1** - **/** bestands systeem dat is gekoppeld aan nu 97 GB wordt weer gegeven.
+Zoals in het volgende voor beeld wordt weer gegeven, is het formaat van de besturingssysteem schijf gewijzigd van de portal naar 100 GB. Op het **/dev/sda1** -bestands systeem dat is gekoppeld, **/** wordt 97 GB weer gegeven.
 
 ```
 user@myvm:~# df -Th
@@ -102,17 +102,17 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4, SUSE SLES 12 voor SAP, SUSE SLES 15, en SUSE SLES 15 voor SAP
+### <a name="suse"></a>SUSE
 
-Verhoog de grootte van de besturingssysteem schijf in SUSE 12 SP4, SUSE SLES 15 en SUSE SLES 15 voor SAP:
+De grootte van de besturingssysteem schijf in SUSE 12 SP4, SUSE SLES 12 voor SAP, SUSE SLES 15 en SUSE SLES 15 voor SAP verg Roten:
 
 1. Stop de virtuele machine.
-1. Verg root de grootte van de OSDisk van de portal.
+1. Verhoog de grootte van de besturingssysteem schijf van de portal.
 1. Start de VM opnieuw.
 
 Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
-   1. Open uw VM als een **hoofd gebruiker** met behulp van de volgende opdracht:
+   1. Gebruik de volgende opdracht om toegang te krijgen tot uw VM als een **hoofd** gebruiker:
    
       `#sudo su`
 
@@ -124,11 +124,11 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
       `#sgdisk -e /dev/sda`
 
-   1. Wijzig de grootte van de partitie zonder deze te verwijderen met de volgende opdracht. De gegroepeerde opdracht heeft een optie **met de naam** **resizepart** om de partitie te verg Roten of verkleinen zonder deze te verwijderen. Het getal 4 na resizepart geeft aan dat het formaat van de vierde (vierde) partitie wordt gewijzigd.
+   1. Wijzig de grootte van de partitie zonder deze te verwijderen met de volgende opdracht. De gegroepeerde opdracht heeft een optie **met de naam** **resizepart** om de partitie te verg Roten of verkleinen zonder deze te verwijderen. Het getal 4 na **resizepart** geeft aan dat het formaat van de vierde partitie wordt gewijzigd.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. Voer de `#lsblk` opdracht uit om te controleren of de partitie is verhoogd.
+   1. Voer de **#lsblk** opdracht uit om te controleren of de partitie is verhoogd.
 
       In de volgende uitvoer ziet u dat de grootte van de **/dev/sda4** -partitie is gewijzigd in 98,5 GB.
 
@@ -143,7 +143,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. Bepaal het type bestands systeem op de OSDisk met behulp van de volgende opdracht:
+   1. Bepaal het type bestands systeem op de besturingssysteem schijf met behulp van de volgende opdracht:
 
       `blkid`
 
@@ -208,17 +208,19 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       user@myvm:~ #
       ```
 
-Zoals in het voor gaande voor beeld wordt weer gegeven, kunnen we zien dat de bestandssysteem grootte voor de OSDisk is verhoogd.
+In het vorige voor beeld ziet u dat de bestandssysteem grootte van de besturingssysteem schijf is verhoogd.
 
-### <a name="rhel-7x-with-lvm"></a>RHEL 7. x met LVM
+### <a name="rhel"></a>RHEL
+
+Verhoog de grootte van de besturingssysteem schijf in RHEL 7. x met LVM:
 
 1. Stop de virtuele machine.
-1. Verg root de grootte van de OSDisk van de portal.
+1. Verhoog de grootte van de besturingssysteem schijf van de portal.
 1. Start de virtuele machine.
 
 Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
-   1. Open uw VM als een **hoofd gebruiker** met behulp van de volgende opdracht:
+   1. Gebruik de volgende opdracht om toegang te krijgen tot uw VM als een **hoofd** gebruiker:
    
       `#sudo su`
 
@@ -230,7 +232,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
       `#sgdisk -e /dev/sda`
 
-   1. Wijzig de grootte van de partitie zonder deze te verwijderen met de volgende opdracht. De gegroepeerde opdracht heeft een optie **met de naam** **resizepart** om de partitie te verg Roten of verkleinen zonder deze te verwijderen. Het getal 4 na resizepart geeft aan dat het formaat van de vierde (vierde) partitie wordt gewijzigd.
+   1. Wijzig de grootte van de partitie zonder deze te verwijderen met de volgende opdracht. De gegroepeerde opdracht heeft een optie **met de naam** **resizepart** om de partitie te verg Roten of verkleinen zonder deze te verwijderen. Het getal 4 na **resizepart** geeft aan dat het formaat van de vierde partitie wordt gewijzigd.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
@@ -259,7 +261,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. Gebruik de volgende opdracht om het formaat van het **fysieke volume (HW)** te wijzigen:
+   1. Gebruik de volgende opdracht om het formaat van het fysieke volume (HW) te wijzigen:
 
       `#pvresize /dev/sda4`
 
@@ -275,7 +277,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. In het volgende voor beeld `/dev/mapper/rootvg-rootlv` wordt het formaat gewijzigd van 2 tot 12% (een toename van 10 GB) met behulp van de volgende opdracht, waardoor het formaat van het bestands systeem wordt gewijzigd:
+   1. In het volgende voor beeld wordt **/dev/mapper/rootvg-rootlv** gewijzigd van 2 GB in 12 GB (een toename van 10 GB) met de volgende opdracht. Met deze opdracht wordt ook de grootte van het bestands systeem gewijzigd.
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       data blocks changed from 524288 to 3145728
       ```
          
-   1. Controleer of `/dev/mapper/rootvg-rootlv` de grootte van het bestands systeem is verhoogd of gebruik niet de volgende opdracht:
+   1. Controleer of **/dev/mapper/rootvg-rootlv** een verhoogde bestandssysteem grootte heeft met behulp van de volgende opdracht:
 
       `#df -Th /`
 
@@ -310,8 +312,8 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > Als u dezelfde procedure wilt gebruiken om de grootte van een ander logisch volume te wijzigen, wijzigt u de naam van de **LV** in stap 7
+   > [!NOTE]
+   > Als u dezelfde procedure wilt gebruiken om de grootte van een ander logisch volume te wijzigen, wijzigt u de **LV** -naam in stap 7.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791762"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657384"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -37,10 +37,11 @@ Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens 
 > Zie [een synthetische partitie sleutel maken](synthetic-partition-keys.md)voor meer informatie over aanbevolen procedures voor het beheren van werk belastingen met partitie sleutels waarvoor hogere limieten vereist zijn voor opslag of door voer.
 >
 
-Een Cosmos-container (of een gedeelde doorvoer database) moet een minimum doorvoer van 400 RUs hebben. Naarmate de container groeit, is de mini maal ondersteunde door Voer ook afhankelijk van de volgende factoren:
+Een Cosmos-container (of een gedeelde doorvoer database) moet een minimale door Voer van 400 RU/s hebben. Naarmate de container groeit, is de mini maal ondersteunde door Voer ook afhankelijk van de volgende factoren:
 
-* De minimale door Voer die u op een container kunt instellen, is afhankelijk van de maximale door Voer die ooit is ingericht op de container. Als uw door Voer bijvoorbeeld is verhoogd naar 10000 RUs, zou de laagst mogelijke ingerichte door Voer 1000 zijn.
-* De minimale door Voer voor een Data Base met gedeelde door Voer is ook afhankelijk van het totale aantal containers dat u ooit hebt gemaakt in een gedeelde doorvoer database, gemeten op basis van 100 RUs per container. Als u bijvoorbeeld vijf containers hebt gemaakt in een gedeelde doorvoer database, moet de door Voer ten minste 500 RUs zijn
+* De maximale door Voer is ooit ingericht op de container. Als uw door Voer bijvoorbeeld is verhoogd naar 50.000 RU/s, zou de laagst mogelijke ingerichte door Voer 500 RU/s zijn.
+* De huidige opslag in GB in de container. Als uw container bijvoorbeeld 100 GB opslag ruimte heeft, zou de laagst mogelijke ingerichte door Voer 1000 RU/s zijn.
+* De minimale door Voer voor een Data Base met gedeelde door Voer is ook afhankelijk van het totale aantal containers dat u ooit hebt gemaakt in een gedeelde doorvoer database, gemeten op basis van 100 RU/s per container. Als u bijvoorbeeld vijf containers hebt gemaakt in een gedeelde doorvoer database, moet de door Voer ten minste 500 RU/s zijn
 
 De huidige en minimale door Voer van een container of een Data Base kunnen worden opgehaald uit de Azure Portal of de Sdk's. Zie [door Voer inrichten voor containers en data bases](set-throughput.md)voor meer informatie. 
 
@@ -104,7 +105,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | --- | --- |
 | Maximale grootte van een item | 2 MB (UTF-8-lengte van JSON-weer gave) |
 | Maximale lengte van partitie sleutel waarde | 2048 bytes |
-| Maximale lengte van id-waarde | 1023 bytes |
+| Maximale lengte van ID-waarde | 1023 bytes |
 | Maximum aantal eigenschappen per item | Geen praktische limiet |
 | Maximale nest diepte | Geen praktische limiet |
 | Maximale lengte van eigenschaps naam | Geen praktische limiet |
@@ -112,7 +113,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | Maximale lengte van de waarde van de teken reeks eigenschap | Geen praktische limiet |
 | Maximale lengte van de waarde van de numerieke eigenschap | IEEE754 met dubbele precisie van 64 bits |
 
-Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal eigenschappen en de diepte van het nesten, met uitzonde ring van de lengte beperkingen voor de waarden van de partitie sleutel en-id en de totale grootte beperking van 2 MB. Mogelijk moet u het indexerings beleid voor containers met grote of complexe item structuren configureren om het gebruik van RU te verminderen. Zie [modellerings items in Cosmos DB](how-to-model-partition-example.md) voor een echt voor beeld en patronen voor het beheren van grote items.
+Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal eigenschappen en de diepte van het nesten, met uitzonde ring van de lengte beperkingen voor de waarden van de partitie sleutel en-ID en de totale grootte beperking van 2 MB. Mogelijk moet u het indexerings beleid voor containers met grote of complexe item structuren configureren om het gebruik van RU te verminderen. Zie [modellerings items in Cosmos DB](how-to-model-partition-example.md) voor een echt voor beeld en patronen voor het beheren van grote items.
 
 ## <a name="per-request-limits"></a>Limieten per aanvraag
 
@@ -140,7 +141,16 @@ Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De servi
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Limieten voor automatisch schalen ingericht door Voer
 
-Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscale-limits) voor de door Voer en opslag limieten met automatisch schalen.
+Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscale-limits) en [Veelgestelde vragen](autoscale-faq.md#lowering-the-max-rus) voor meer gedetailleerde informatie over de door Voer en opslag limieten met automatisch schalen.
+
+| Resource | Standaardlimiet |
+| --- | --- |
+| Maximum aantal RU/s waarmee het systeem kan worden geschaald |  `Tmax`is het maximum aantal RU/s dat is ingesteld door de gebruiker automatisch schalen|
+| Minimale RU/s waarop het systeem kan worden geschaald | `0.1 * Tmax`|
+| Huidige RU/s waarop het systeem is geschaald  |  `0.1*Tmax <= T <= Tmax`, op basis van gebruik|
+| Mini maal aantal factureer bare RU/s per uur| `0.1 * Tmax` <br></br>Facturering geschiedt per uur, waarbij u wordt gefactureerd voor de hoogste RU/s waarop het systeem is geschaald naar in het uur of, afhankelijk van wat er `0.1*Tmax` hoger is. |
+| Mini maal automatisch schalen Max RU/s voor een container  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`afgerond op de dichtstbijzijnde 1000 RU/s |
+| Mini maal automatisch schalen Max RU/s voor een Data Base  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, afgerond op de dichtstbijzijnde 1000 RU/s. <br></br>Opmerking Als uw data base meer dan 25 containers heeft, verhoogt het systeem het minimale automatisch schalen van Maxi maal RU/s met 1000 RU/s per extra container. Als u bijvoorbeeld 30 containers hebt, is de laagste automatisch schaal bare grootte van RU/s die u kunt instellen 9000 RU/s (schalen tussen 900-9000 RU/s).
 
 ## <a name="sql-query-limits"></a>SQL-query limieten
 
@@ -187,7 +197,7 @@ De volgende tabel bevat de limieten voor de gratis proef versie [Azure Cosmos DB
 
 Probeer Cosmos DB wereld wijde distributie alleen te ondersteunen in de regio's VS-centraal, Europa-noord en Zuidoost-Azië. Er kunnen geen ondersteunings tickets voor Azure worden gemaakt voor het proberen van Azure Cosmos DB accounts. Er wordt echter ondersteuning geboden voor abonnees met bestaande ondersteunings abonnementen.
 
-## <a name="free-tier-account-limits"></a>Limieten voor gratis laag accounts
+## <a name="free-tier-account-limits"></a>Limieten voor Gratis laag-accounts
 De volgende tabel bevat de limieten voor [Azure Cosmos DB gratis laag accounts.](optimize-dev-test.md#azure-cosmos-db-free-tier)
 
 | Resource | Standaardlimiet |

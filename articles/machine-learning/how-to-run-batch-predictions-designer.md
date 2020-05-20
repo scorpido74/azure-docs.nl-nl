@@ -5,17 +5,17 @@ description: Meer informatie over het trainen van een model en het instellen van
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019
-ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: Ignite2019, designer
+ms.openlocfilehash: 5079953994b74378a54a316c288c77d13c3af782
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477218"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653676"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batchvoorspellingen uitvoeren met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -81,7 +81,7 @@ U bent nu klaar om de pijp lijn voor het afnemen van de interferentie te impleme
 
     Aan de onderkant van het dialoog venster ziet u de para meter die u hebt geconfigureerd met een standaard waarde van de gegevensset-ID die tijdens de training wordt gebruikt.
 
-1. Selecteer **publiceren**.
+1. Selecteer **Publiceren**.
 
 ![Een pijp lijn publiceren](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 

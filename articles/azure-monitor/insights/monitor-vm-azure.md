@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: 2cb53d0c88d8c29da2bd8bf52d6536555d56c76e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654365"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings 
 ## <a name="differences-from-other-azure-resources"></a>Verschillen van andere Azure-resources
 Het [bewaken van Azure-resources met Azure monitor](monitor-azure-resource.md) beschrijft de bewakings gegevens die zijn gegenereerd door Azure-resources en hoe u de functies van Azure monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen. U kunt dezelfde bewakings gegevens van virtuele Azure-machines verzamelen en gebruiken met de volgende verschillen:
 
-- [Platform metrieken](../platform/data-platform-metrics.md) worden automatisch verzameld voor virtuele machines, maar alleen voor de host van de [virtuele machine](#monitoring-data). U hebt een agent nodig voor het verzamelen van prestatie gegevens van het gast besturingssysteem. 
+-  [Platform metrieken](../platform/data-platform-metrics.md) worden automatisch verzameld voor virtuele machines, maar alleen voor de host van de [virtuele machine](#monitoring-data). U hebt een agent nodig voor het verzamelen van prestatie gegevens van het gast besturingssysteem. 
 - Virtuele machines genereren geen [resource logboeken](../platform/platform-logs-overview.md) die inzicht bieden in bewerkingen die zijn uitgevoerd in een Azure-resource. U gebruikt een agent voor het verzamelen van logboek gegevens van het gast besturingssysteem.
 - U kunt [Diagnostische instellingen](../platform/diagnostic-settings.md) voor een virtuele machine maken om platform metrieken te verzenden naar andere bestemmingen, zoals opslag en Event hubs, maar u kunt deze diagnostische instellingen niet configureren in de Azure Portal. 
 
@@ -121,7 +121,6 @@ az monitor diagnostic-settings create \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace
-
 ```
 
 ## <a name="monitoring-in-the-azure-portal"></a>Bewaking in de Azure Portal 
@@ -137,7 +136,7 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 |:---|:---|
 | Overzicht | Geeft de [platform metrische gegevens](../platform/data-platform-metrics.md) weer voor de host van de virtuele machine. Klik op een grafiek om met deze gegevens in [Metrics Explorer](../platform/metrics-getting-started.md)te werken. |
 | Activiteitenlogboek | Vermeldingen in het [activiteiten logboek](../platform/activity-log-view.md) gefilterd op de huidige virtuele machine. |
-| Insights | Hiermee opent u [Azure monitor voor VM's](../insights/vminsights-overview.md) met de kaart voor de geselecteerde virtuele machine. |
+| Inzichten | Hiermee opent u [Azure monitor voor VM's](../insights/vminsights-overview.md) met de kaart voor de geselecteerde virtuele machine. |
 | Waarschuwingen | [Waarschuwingen](../platform/alerts-overview.md) weer geven voor de huidige virtuele machine.  |
 | Metrische gegevens | Open [Metrics Explorer](../platform/metrics-getting-started.md) met de scope die is ingesteld op de huidige virtuele machine. |
 | Diagnostische instellingen | De [uitbrei ding voor diagnostische gegevens](../platform/diagnostics-extension-overview.md) voor de huidige virtuele machine inschakelen en configureren. |
@@ -149,12 +148,13 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 ## <a name="analyzing-metric-data"></a>Metrische gegevens analyseren
 U kunt metrische gegevens voor virtuele machines analyseren met metrische gegevens Verkenner door **metrische gegevens** te openen in het menu van de virtuele machine. Zie [aan de slag met Azure Metrics Explorer](../platform/metrics-getting-started.md) voor meer informatie over het gebruik van dit hulp programma. 
 
-Er zijn twee naam ruimten die door virtuele machines worden gebruikt voor metrische gegevens:
+Er zijn drie naam ruimten die door virtuele machines worden gebruikt voor metrische gegevens:
 
-| Naamruimte | Beschrijving |
-|:---|:---|
-| Host van virtuele machine | Metrische gegevens van de host worden automatisch verzameld voor alle virtuele machines van Azure. Gedetailleerde lijst met metrische gegevens bij [micro soft. Compute/informatie](../platform/metrics-supported.md#microsoftcomputevirtualmachines). |
-| Gast voor virtuele machine | De metrische gegevens van het gast besturingssysteem die zijn verzameld van virtuele machines met de extensie voor diagnostische gegevens, zijn geïnstalleerd en geconfigureerd om te worden verzonden naar Azure Monitor sink. |
+| Naamruimte | Beschrijving | Vereiste |
+|:---|:---|:---|
+| Host van virtuele machine | Metrische gegevens van de host worden automatisch verzameld voor alle virtuele machines van Azure. Gedetailleerde lijst met metrische gegevens bij [micro soft. Compute/informatie](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatisch verzameld zonder configuratie vereist. |
+| Gast (klassiek) | Beperkte set gast besturingssysteem en prestatie gegevens van toepassingen. Beschikbaar in Metrics Explorer, maar niet op andere Azure Monitor functies, zoals metrische waarschuwingen.  | [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd. Gegevens worden uit Azure Storage gelezen.  |
+| Gast voor virtuele machine | Prestatie gegevens van gast besturingssystemen en-toepassingen die beschikbaar zijn voor alle Azure Monitor-functies met behulp van gegevens. | Voor Windows is de [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd met Azure monitor Sink ingeschakeld. Voor Linux is de [telegrafa-agent geïnstalleerd](../platform/collect-custom-metrics-linux-telegraf.md). |
 
 ![Metrische gegevens](media/monitor-vm-azure/metrics.png)
 

@@ -1,44 +1,44 @@
 ---
 title: Upgrade samengestelde entiteit-LUIS
-description: Upgrade samengestelde entiteit naar door de computer geleerde entiteit met het upgrade proces in de LUIS-Portal.
+description: Upgrade samengestelde entiteit naar machine learning-entiteit met een upgrade proces in de LUIS-Portal.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 9bbb03a2009bdcb6e2fa5d20aefadd4c7c99f025
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 58b546a27c1ff1e90e1b70026f430063a47a09e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599423"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684080"
 ---
-# <a name="upgrade-composite-entity-to-machine-learned-entity"></a>Een samengestelde entiteit upgraden naar een door de computer geleerde entiteit
+# <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Upgrade van samengestelde entiteit naar machine-learning-entiteit
 
-Voer een upgrade uit voor de samengestelde entiteit naar door de computer geleerde entiteit om een entiteit te bouwen die meer complete voor spellingen ontvangt met een betere ontbouw baarheid voor het opsporen van fouten in de entiteit.
+Voer een upgrade uit voor de samengestelde entiteit naar de machine learning-entiteit om een entiteit te bouwen die meer complete voor spellingen ontvangt met een betere opbouw baarheid voor het opsporen van fouten in de entiteit.
 
 ## <a name="current-version-model-restrictions"></a>Huidige versie model beperkingen
 
-Het upgrade proces maakt door machines geleerde entiteiten, op basis van de bestaande samengestelde entiteiten die in uw app zijn gevonden, naar een nieuwe versie van uw app. Dit omvat de onderliggende entiteiten en rollen van de samengestelde entiteit. Het proces verandert ook de labels in voor beeld uitingen om de nieuwe entiteit te gebruiken.
+Het upgrade proces maakt machine learning-entiteiten, op basis van de bestaande samengestelde entiteiten die in uw app zijn gevonden, naar een nieuwe versie van uw app. Dit omvat de onderliggende entiteiten en rollen van de samengestelde entiteit. Het proces verandert ook de labels in voor beeld uitingen om de nieuwe entiteit te gebruiken.
 
 ## <a name="upgrade-process"></a>Upgrade proces
 
 Het upgrade proces:
-* Hiermee maakt u een nieuwe door de machine geleerde entiteit voor elke samengestelde entiteit.
+* Hiermee maakt u een nieuwe machine learning-entiteit voor elke samengestelde entiteit.
 * Onderliggende entiteiten:
-    * Als onderliggende entiteit alleen wordt gebruikt in samengestelde entiteit, wordt deze alleen toegevoegd aan de door de computer geleerde entiteit.
-    * Als onderliggende entiteit wordt gebruikt in samengestelde _en_ als een afzonderlijke entiteit (gelabeld in voor beeld uitingen), wordt deze toegevoegd aan de versie als een entiteit en als subentiteit aan de nieuwe door de machine geleerde entiteit.
+    * Als onderliggende entiteit alleen wordt gebruikt in samengestelde entiteit, wordt deze alleen toegevoegd aan de machine learning-entiteit.
+    * Als onderliggende entiteit wordt gebruikt in Composite _en_ als een afzonderlijke entiteit (gelabeld in voor beeld uitingen), wordt deze toegevoegd aan de versie als een entiteit en als subentiteit aan de nieuwe machine learning-entiteit.
     * Als de onderliggende entiteit een rol gebruikt, wordt elke rol geconverteerd naar een subentiteit met dezelfde naam.
-    * Als de onderliggende entiteit een niet door de machine geleerde entiteit (reguliere expressie, lijst entiteit of vooraf gebouwde entiteit) is, wordt een nieuwe subentiteit gemaakt met dezelfde naam, en de nieuwe subentiteit heeft een functie die gebruikmaakt van de niet door de machine geleerde entiteit waarvoor de vereiste functie is toegevoegd.
+    * Als de onderliggende entiteit een niet-machine learning-entiteit is (reguliere expressie, lijst entiteit of vooraf samengestelde entiteit), wordt een nieuwe subentiteit gemaakt met dezelfde naam en de nieuwe subentiteit heeft een functie met de niet-machine learning-entiteit waarvoor de vereiste functie is toegevoegd.
 * Namen worden bewaard, maar moeten uniek zijn op hetzelfde niveau van subentiteiten/dochter items. Raadpleeg de [unieke naamgevings limieten](luis-boundaries.md#name-uniqueness).
-* Labels in voor beelden uitingen worden overgeschakeld naar een nieuwe door de machine geleerde entiteit met subentiteiten.
+* Labels in voor beelden uitingen worden overgeschakeld naar een nieuwe machine learning-entiteit met subentiteiten.
 
 Gebruik de volgende tabel om te begrijpen hoe uw model wordt gewijzigd:
 
 |Oud object|Nieuw object|Opmerkingen|
 |--|--|--|
-|Samengestelde entiteit|Door de machine geleerde entiteit met structuur|Beide objecten zijn bovenliggende objecten.|
+|Samengestelde entiteit|machine learning-entiteit met structuur|Beide objecten zijn bovenliggende objecten.|
 |De onderliggende entiteit van de samengestelde eenheid is een **eenvoudige entiteit**|subentiteit|Beide objecten zijn onderliggende objecten.|
 |De onderliggende entiteit van de samengestelde eenheid is een **vooraf gebouwde entiteit** zoals een getal|subentiteit met de naam van de vooraf gedefinieerde entiteit, zoals nummer, en subentiteit bevat een _functie_ van een vooraf gebouwde nummer entiteit waarvoor de optie voor de beperking is ingesteld op _waar_.|subentiteit bevat een functie met een beperking op het niveau van de subentiteit.|
 |De onderliggende entiteit van de samengestelde eenheid is een **vooraf samengestelde entiteit** , zoals een nummer, en de vooraf samengestelde entiteit heeft een **rol**|subentiteit met de naam Role en subentiteit bevat een functie van een vooraf opgebouwde nummer entiteit waarvoor de optie voor de beperking is ingesteld op waar.|subentiteit bevat een functie met een beperking op het niveau van de subentiteit.|
-|Rol|subentiteit|De rolnaam wordt de naam van de subentiteit. De subentiteit is een rechtstreekse afstammeling van de entiteit die door de machine is geleerd.|
+|Rol|subentiteit|De rolnaam wordt de naam van de subentiteit. De subentiteit is een direct Descendant van de machine learning-entiteit.|
 
 ## <a name="begin-upgrade-process"></a>Upgrade proces starten
 
@@ -64,7 +64,7 @@ Voordat u een update uitvoert, moet u het volgende doen:
 
 1. De voortgangs balk geeft de status van het upgrade proces aan.
 
-1. Wanneer het proces is voltooid, bevindt u zich in een nieuwe getrainde versie met de nieuwe door machines geleerde entiteiten. Selecteer **uw nieuwe entiteiten proberen** om de nieuwe entiteit te zien.
+1. Wanneer het proces is voltooid, bevindt u zich in een nieuwe getrainde versie met de nieuwe machine learning-entiteiten. Selecteer **uw nieuwe entiteiten proberen** om de nieuwe entiteit te zien.
 
     Als de upgrade of training is mislukt voor de nieuwe entiteit, bevat een melding meer informatie.
 

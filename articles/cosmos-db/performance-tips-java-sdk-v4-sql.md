@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: ce4e4d11ead41ee8cc4a4bd1d85f1fbad2af4b07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982527"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677696"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties voor Azure Cosmos DB Java SDK v4
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982527"
 > 
 
 > [!IMPORTANT]  
-> De tips voor prestaties in dit artikel zijn alleen voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4-release opmerkingen, de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md) ) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
+> De tips voor prestaties in dit artikel zijn alleen voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [release opmerkingen](sql-api-sdk-java-v4.md), de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md) ) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
 >
 
 Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloos kan worden geschaald met gegarandeerde latentie en door voer. U hoeft geen grote architectuur wijzigingen aan te brengen of complexe code te schrijven om uw data base te schalen met Azure Cosmos DB. Omhoog en omlaag schalen is net zo eenvoudig als het maken van één API-aanroep of SDK-methode aanroep. Omdat Azure Cosmos DB echter via netwerk aanroepen wordt geopend, zijn er optimalisaties aan de client zijde die u kunt uitvoeren om de prestaties van de piek te bereiken wanneer u Azure Cosmos DB Java SDK v4 gebruikt.
@@ -92,7 +92,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     ![Afbeelding van het verbindings beleid voor Azure Cosmos DB](./media/performance-tips/same-region.png)
 
-    Een app die samenwerkt met een multi-regio Azure Cosmos DB-account moet [Voorkeurs locaties]() configureren om ervoor te zorgen dat aanvragen naar een co-regio gaan.
+    Een app die samenwerkt met een multi-regio Azure Cosmos DB-account moet [Voorkeurs locaties](tutorial-global-distribution-sql-api.md#preferred-locations) configureren om ervoor te zorgen dat aanvragen naar een co-regio gaan.
 
 * **Versneld netwerken op uw virtuele Azure-machine inschakelen voor een lagere latentie.**
 
@@ -133,7 +133,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
     
     Geografisch plaatsing kan u een grotere en consistente door Voer bieden bij het gebruik van de synchronisatie-API (Zie [termijnen-clients in dezelfde Azure-regio voor prestaties](#collocate-clients)), maar er wordt nog wel verwacht dat de door Voer van de asynchrone API wordt overschreden.
 
-    Sommige gebruikers zijn mogelijk ook niet bekend met [project reactor](https://projectreactor.io/), het reactieve streams-Framework dat wordt gebruikt voor het implementeren van Azure Cosmos DB Java SDK v4 async API. Als dit een probleem is, raden we u aan onze [hand leiding](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) voor het inleidende reactor patroon te lezen en vervolgens deze [Inleiding te bekijken om de programmering opnieuw actief](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) te maken. Als u Azure Cosmos DB al hebt gebruikt met een async-interface en de SDK die u hebt gebruikt, is Azure Cosmos DB async Java SDK v2, is het mogelijk dat u bekend bent met [reactivex](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) , maar niet zeker weet wat er in Project reactor is gewijzigd. Bekijk in dat geval onze reactor-en RxJava- [gids](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) om bekendheid te krijgen.
+    Sommige gebruikers zijn mogelijk ook niet bekend met [project reactor](https://projectreactor.io/), het reactieve streams-Framework dat wordt gebruikt voor het implementeren van Azure Cosmos DB Java SDK v4 async API. Als dit een probleem is, raden we u aan onze [hand leiding](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) voor het inleidende reactor patroon te lezen en vervolgens deze [Inleiding te bekijken om de programmering opnieuw actief](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) te maken. Als u Azure Cosmos DB al hebt gebruikt met een async-interface en de SDK die u hebt gebruikt, is Azure Cosmos DB async Java SDK v2, is het mogelijk dat u bekend bent met [reactivex](http://reactivex.io/) / [RxJava](https://github.com/ReactiveX/RxJava) , maar niet zeker weet wat er in Project reactor is gewijzigd. Bekijk in dat geval onze reactor-en RxJava- [gids](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) om bekendheid te krijgen.
 
     De volgende code fragmenten laten zien hoe u uw Azure Cosmos DB-client voor respectievelijk de asynchrone API-of API-bewerking voor de synchronisatie kunt initialiseren:
 
@@ -278,7 +278,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
         });
     ```
 
-    Op basis van het type van uw werk moet u de juiste bestaande reactor planner gebruiken voor uw werk. Lees hier [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html).
+    Op basis van het type van uw werk moet u de juiste bestaande reactor planner gebruiken voor uw werk. Lees hier [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html) .
 
     Raadpleeg de [Cosmos DB Directory van de Azure SDK voor Java monorepo op github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)voor meer informatie over Azure Cosmos DB Java SDK v4.
 
@@ -292,7 +292,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     * ***Logboek registratie van Netty uitschakelen***
 
-        Logboek registratie van de Netty-bibliotheek is intensieve en moet worden uitgeschakeld (de configuratie kan niet worden onderdrukt) om extra CPU-kosten te voor komen. Als u zich niet in de foutopsporingsmodus bevindt, schakelt u de logboek registratie van Netty uit. Als u dus log4j gebruikt om de extra CPU-kosten te verwijderen die zijn gemaakt ``org.apache.log4j.Category.callAppenders()`` door van Netty, voegt u de volgende regel toe aan de code basis:
+        Logboek registratie van de Netty-bibliotheek is intensieve en moet worden uitgeschakeld (de configuratie kan niet worden onderdrukt) om extra CPU-kosten te voor komen. Als u zich niet in de foutopsporingsmodus bevindt, schakelt u de logboek registratie van Netty uit. Als u dus log4j gebruikt om de extra CPU-kosten te verwijderen die zijn gemaakt door ``org.apache.log4j.Category.callAppenders()`` van Netty, voegt u de volgende regel toe aan de code basis:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -393,7 +393,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse\<t> of FeedResponse\<t>.
+    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse \< t> of FeedResponse \< t>.
 
     #### <a name="async"></a>[Asynchroon](#tab/api-async)
 

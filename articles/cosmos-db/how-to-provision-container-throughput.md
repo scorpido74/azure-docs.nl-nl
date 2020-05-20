@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4249f1e9f2bf9fcb235644bb211065db460c936e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869910"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655348"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-container"></a>Doorvoer inrichten voor een Azure Cosmos-container
+# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standaard doorvoer (hand matig) door Voer voor een Azure Cosmos-container
 
-In dit artikel wordt uitgelegd hoe u de door Voer kunt inrichten voor een container (verzameling, grafiek of tabel) in Azure Cosmos DB. U kunt de door Voer voor één container inrichten of [door Voer in te richten op een Data Base](how-to-provision-database-throughput.md) en deze te delen tussen de containers in de data base. U kunt de door Voer voor een container inrichten met behulp van Azure Portal, Azure CLI of Azure Cosmos DB Sdk's.
+In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) kunt inrichten voor een container (verzameling, grafiek of tabel) in Azure Cosmos DB. U kunt de door Voer voor één container inrichten of [door Voer in te richten op een Data Base](how-to-provision-database-throughput.md) en deze te delen tussen de containers in de data base. U kunt de door Voer voor een container inrichten met behulp van Azure Portal, Azure CLI of Azure Cosmos DB Sdk's.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -41,7 +41,7 @@ Als u een container met specifieke door voer wilt maken, raadpleegt u
 * [Een container maken met behulp van Power shell](manage-with-powershell.md#create-container)
 
 > [!Note]
-> Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met de Azure Cosmos DB `/myShardKey` -API voor MongoDb, gebruikt u voor het pad van de partitie sleutel. Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is `/myPrimaryKey` geconfigureerd met Cassandra-API, gebruikt u voor het pad van de partitie sleutel.
+> Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met de Azure Cosmos DB-API voor MongoDB, gebruikt u `/myShardKey` voor het pad van de partitie sleutel. Als u de door Voer inricht voor een container in een Azure Cosmos-account dat is geconfigureerd met Cassandra-API, gebruikt u `/myPrimaryKey` voor het pad van de partitie sleutel.
 
 ## <a name="net-sdk"></a>.NET SDK
 
@@ -123,5 +123,6 @@ session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throug
 
 Zie de volgende artikelen voor meer informatie over het inrichten van doorvoer in Azure Cosmos DB:
 
-* [De door Voer voor een Data Base inrichten](how-to-provision-database-throughput.md)
+* [Standaard doorvoer (hand matig) inrichten voor een Data Base](how-to-provision-database-throughput.md)
+* [De door Voer van automatisch schalen inrichten voor een Data Base](how-to-provision-autoscale-throughput.md)
 * [Aanvraageenheden en doorvoer in Azure Cosmos DB](request-units.md)

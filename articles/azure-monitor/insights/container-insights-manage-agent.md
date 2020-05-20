@@ -2,13 +2,13 @@
 title: De Azure Monitor voor de agent voor containers beheren | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de meest voorkomende onderhouds taken beheert met de Log Analytics agent die wordt gebruikt door Azure Monitor voor containers.
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652193"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>De Azure Monitor voor de agent voor containers beheren
 
@@ -16,13 +16,13 @@ Azure Monitor voor containers maakt gebruik van een container versie van de Log 
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>De Azure Monitor voor de agent voor containers bijwerken
 
-Azure Monitor voor containers maakt gebruik van een container versie van de Log Analytics-agent voor Linux. Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt de agent automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS) en Azure Red Hat open SHIFT. De agent wordt niet beheerd voor een [hybride Kubernetes-cluster](container-insights-hybrid-setup.md) en u moet de agent hand matig bijwerken.
+Azure Monitor voor containers maakt gebruik van een container versie van de Log Analytics-agent voor Linux. Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt de agent automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS) en Azure Red Hat open Shift versie 3. x. Voor een [hybride Kubernetes-cluster](container-insights-hybrid-setup.md) en Azure Red Hat open Shift versie 4. x wordt de agent niet beheerd en moet u de agent hand matig bijwerken.
 
-Als de upgrade van de agent mislukt voor een cluster dat wordt gehost op AKS, wordt in dit artikel ook het proces voor het hand matig bijwerken van de agent beschreven. Zie [Release aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent als u de gepubliceerde versies wilt volgen.
+Als de upgrade van de agent mislukt voor een cluster dat wordt gehost op AKS of Azure Red Hat open Shift versie 3. x, wordt in dit artikel ook het proces beschreven voor het hand matig bijwerken van de agent. Zie [Release aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent als u de gepubliceerde versies wilt volgen.
 
-### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agent op het bewaakte Kubernetes-cluster
+### <a name="upgrade-agent-on-aks-cluster"></a>Agent bijwerken op AKS-cluster
 
-Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azure Red Hat open Shift, bestaat uit twee rechte stappen voor door sturen. De eerste stap is het uitschakelen van de bewaking met Azure Monitor voor containers die gebruikmaken van Azure CLI. Volg de stappen die worden beschreven in het artikel [controle uitschakelen](container-insights-optout.md?#azure-cli) . Met behulp van Azure CLI kunnen we de agent van de knoop punten in het cluster verwijderen zonder dat dit van invloed is op de oplossing en de bijbehorende gegevens die in de werk ruimte zijn opgeslagen. 
+Het proces voor het upgraden van de agent op AKS-clusters bestaat uit twee rechte stappen voor door sturen. De eerste stap is het uitschakelen van de bewaking met Azure Monitor voor containers die gebruikmaken van Azure CLI. Volg de stappen die worden beschreven in het artikel [controle uitschakelen](container-insights-optout.md?#azure-cli) . Met behulp van Azure CLI kunnen we de agent van de knoop punten in het cluster verwijderen zonder dat dit van invloed is op de oplossing en de bijbehorende gegevens die in de werk ruimte zijn opgeslagen. 
 
 >[!NOTE]
 >Terwijl u deze onderhouds activiteit uitvoert, worden de verzamelde gegevens niet door de knoop punten in het cluster doorgestuurd en worden er geen gegevens weer gegeven tussen de tijd die u de agent verwijdert en de nieuwe versie installeert. 
@@ -53,9 +53,15 @@ De status moet lijken op het volgende voor beeld, waarbij de waarde voor *Omi* e
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
 
-## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agent op hybride Kubernetes-cluster
+### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agent op hybride Kubernetes-cluster
 
-Het proces voor het bijwerken van de agent op een Kubernetes-cluster dat on-premises wordt gehost, AKS-engine op Azure en Azure Stack kan worden voltooid door de volgende opdracht uit te voeren:
+Voer de volgende stappen uit om de agent bij te werken op een Kubernetes-cluster dat wordt uitgevoerd op:
+
+* Zelf beheerde Kubernetes-clusters die worden gehost op Azure met behulp van de AKS-engine.
+* Zelf beheerde Kubernetes-clusters die worden gehost op Azure Stack of on-premises met behulp van AKS-engine.
+* Red Hat open Shift versie 4. x.
+
+Als de Log Analytics werk ruimte zich in commerciële Azure bevindt, voert u de volgende opdracht uit:
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -76,6 +82,19 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
 ```
 
+### <a name="upgrade-agent-on-azure-red-hat-openshift-v4"></a>Agent bijwerken op Azure Red Hat open Shift v4
+
+Voer de volgende stappen uit om de agent bij te werken op een Kubernetes-cluster dat wordt uitgevoerd op Azure Red Hat open Shift versie 4. x. 
+
+>[!NOTE]
+>Azure Red Hat open Shift versie 4. x ondersteunt alleen uitvoering in de Azure commerciële Cloud.
+>
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+```
+
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>De verzameling van omgevings variabelen op een container uitschakelen
 
 Azure Monitor voor containers worden omgevings variabelen verzameld uit de containers die worden uitgevoerd in een pod en worden ze weer gegeven in het eigenschappen venster van de geselecteerde container in de weer gave **containers** . U kunt dit gedrag beheren door het verzamelen van een specifieke container tijdens de implementatie van het Kubernetes-cluster uit te scha kelen of door de omgevings variabele *AZMON_COLLECT_ENV*in te stellen. Deze functie is beschikbaar via de agent versie – ciprod11292018 en hoger.  
@@ -87,7 +106,7 @@ Als u het verzamelen van omgevings variabelen voor een nieuwe of bestaande conta
   value: "False"  
 ```  
 
-Voer de volgende opdracht uit om de wijziging toe te passen op andere Kubernetes-clusters dan Azure Red Hat `kubectl apply -f  <path to yaml file>`open Shift):. Voer de volgende opdracht uit om ConfigMap te bewerken en deze wijziging toe te passen voor Azure Red Hat open Shift-clusters:
+Voer de volgende opdracht uit om de wijziging toe te passen op andere Kubernetes-clusters dan Azure Red Hat open Shift): `kubectl apply -f  <path to yaml file>` . Voer de volgende opdracht uit om ConfigMap te bewerken en deze wijziging toe te passen voor Azure Red Hat open Shift-clusters:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -97,7 +116,7 @@ Hiermee opent u de standaard tekst editor. Sla het bestand op in de editor nadat
 
 Als u wilt controleren of de configuratie wijziging is doorgevoerd, selecteert u een container in de weer gave **containers** in azure monitor voor containers en vouwt u **omgevings variabelen**uit in het deel venster Eigenschappen.  In de sectie wordt alleen de variabele weer gegeven die eerder is gemaakt- **AZMON_COLLECT_ENV = False**. Voor alle andere containers moet u in de sectie omgevings variabelen alle gedetecteerde omgevings variabelen weer geven.
 
-Als u de detectie van de omgevings variabelen opnieuw wilt inschakelen, past u hetzelfde proces eerder toe en wijzigt u de waarde van **False** in **True**en voert u de `kubectl` opdracht opnieuw uit om de container bij te werken.  
+Als u de detectie van de omgevings variabelen opnieuw wilt inschakelen, past u hetzelfde proces eerder toe en wijzigt u de waarde van **False** in **True**en voert u de opdracht opnieuw uit `kubectl` om de container bij te werken.  
 
 ```  
 - name: AZMON_COLLECT_ENV  

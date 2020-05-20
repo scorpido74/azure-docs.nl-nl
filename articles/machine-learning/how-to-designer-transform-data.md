@@ -5,16 +5,17 @@ description: Meer informatie over het transformeren van gegevens in Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 05/04/2020
-ms.openlocfilehash: 5296ac54cab403ef78b3e8bd32fe5ebe6ea43119
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: designer
+ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842875"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644289"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +72,7 @@ In deze sectie gebruikt u de [gesplitste gegevens module](algorithm-module-refer
 
 1. Stel in het deel venster module details rechts van het canvas de **Splits modus** in op **reguliere expressie**.
 
-1. Voer de **reguliere expressie**in `\"native-country" United-States`:.
+1. Voer de **reguliere expressie**in: `\"native-country" United-States` .
 
     In de **reguliere expressie** modus wordt één kolom voor een waarde getest. Meer informatie over de module Split data kunt u vinden op de [pagina verwante algoritme module Reference](algorithm-module-reference/split-data.md).
 
@@ -111,7 +112,7 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
     > [!NOTE]
     > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-access-data.md#azure-machine-learning-studio)voor instructies over het instellen van een gegevens opslag.
 
-    Als u geen gegevens opslag hebt, kunt u er nu een maken. Voor beeld: in dit artikel worden de gegevens sets opgeslagen in het standaard-Blob Storage-account dat is gekoppeld aan de werk ruimte. De gegevens sets worden opgeslagen in de `azureml` container in een nieuwe map met `data`de naam.
+    Als u geen gegevens opslag hebt, kunt u er nu een maken. Voor beeld: in dit artikel worden de gegevens sets opgeslagen in het standaard-Blob Storage-account dat is gekoppeld aan de werk ruimte. De gegevens sets worden opgeslagen in de `azureml` container in een nieuwe map met de naam `data` .
 
 1.  Selecteer de module **gegevens exporteren** die zijn verbonden met de meest *rechtse*poort van de module **Split data** .
 
@@ -125,9 +126,9 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
 
     **Bestands indeling**: CSV
 
-1. Controleer of de module voor het **exporteren van gegevens** die is verbonden met de linker poort van de **gesplitste gegevens** , het **pad** `/data/us-income`heeft.
+1. Controleer of de module voor het **exporteren van gegevens** die is verbonden met de linker poort van de **gesplitste gegevens** , het **pad** heeft `/data/us-income` .
 
-1. Controleer of de **export gegevens** module die is verbonden met de juiste poort het **pad** `/data/non-us-income`heeft.
+1. Controleer of de **export gegevens** module die is verbonden met de juiste poort het **pad** heeft `/data/non-us-income` .
 
     De pijp lijn en instellingen moeten er als volgt uitzien:
     
@@ -145,7 +146,7 @@ Nu de pijp lijn is ingesteld voor het splitsen en exporteren van de gegevens, ve
 
 1. Geef een beschrijvende naam op voor het experiment, zoals ' Split-tellingen-gegevens '.
 
-1. Selecteer **Indienen**.
+1. Selecteer **Verzenden**.
 
 ## <a name="view-results"></a>Resultaten weergeven
 
@@ -155,11 +156,11 @@ Nadat de pijp lijn is voltooid, kunt u uw resultaten weer geven door te navigere
 
 1. Selecteer **uitvoer en logboeken**in het detail venster van de module rechts van het canvas. 
 
-1. Selecteer het pictogram](media/how-to-designer-transform-data/visualize-icon.png) visualiseren ![pictogram visualiseren naast **resultaten dataset1**. 
+1. Selecteer het pictogram visualiseren pictogram visualiseren ![ ](media/how-to-designer-transform-data/visualize-icon.png) naast **resultaten dataset1**. 
 
 1. Controleer of de kolom ' systeem eigen land ' alleen de waarde ' Verenigde Staten ' bevat.
 
-1. Selecteer het pictogram](media/how-to-designer-transform-data/visualize-icon.png) visualiseren ![pictogram visualiseren naast **resultaten dataset2**. 
+1. Selecteer het pictogram visualiseren pictogram visualiseren ![ ](media/how-to-designer-transform-data/visualize-icon.png) naast **resultaten dataset2**. 
 
 1. Controleer of de kolom ' systeem eigen land ' niet de waarde ' Verenigde Staten ' bevat.
 

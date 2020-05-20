@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 4b693ef1eaf7c8dd1f2fd95116c24392ee9a9454
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 164ce87df77d81a7d36d4448f5d8da8287ed0a01
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402575"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656714"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan de server zijde van Azure Managed disks
 
@@ -93,9 +93,6 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 1. Maak een instantie van Azure Key Vault en versleutelings sleutel.
 
     Wanneer u het Key Vault-exemplaar maakt, moet u de beveiliging voor voorlopig verwijderen en leegmaken inschakelen. Met zacht verwijderen zorgt u ervoor dat de Key Vault een verwijderde sleutel bevat voor een bepaalde Bewaar periode (standaard 90 dagen). Bij het opschonen van de beveiliging wordt ervoor gezorgd dat een verwijderde sleutel pas definitief kan worden verwijderd als de retentie periode is verstreken. Met deze instellingen wordt voor komen dat gegevens verloren gaan als gevolg van onbedoeld verwijderen. Deze instellingen zijn verplicht wanneer u een Key Vault gebruikt voor het versleutelen van Managed disks.
-
-    > [!IMPORTANT]
-    > Zorg dat u niet Camel de regio, als u dit doet, er problemen kunnen optreden bij het toewijzen van extra schijven aan de resource in de Azure Portal.
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -123,12 +120,8 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
         > [!NOTE]
         > Het kan enkele minuten duren voordat Azure de identiteit van uw DiskEncryptionSet in uw Azure Active Directory heeft gemaakt. Als er een fout optreedt, zoals ' kan het Active Directory-object niet vinden ' tijdens het uitvoeren van de volgende opdracht, wacht u enkele minuten en probeert u het opnieuw.
         
-        ```powershell
-        $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
-         
+        ```powershell  
         Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-         
-        New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
         ```
 
 #### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een virtuele machine maken met behulp van een Marketplace-installatie kopie, het besturings systeem en de gegevens schijven versleutelen met door de klant beheerde sleutels

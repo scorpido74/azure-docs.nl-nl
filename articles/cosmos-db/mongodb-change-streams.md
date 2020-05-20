@@ -1,32 +1,32 @@
 ---
 title: Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
-description: Meer informatie over het gebruik van wijzigings stromen in de API van Azure Cosmos DB voor MongoDB om de wijzigingen op te halen die u hebt aangebracht in uw gegevens.
-author: timsander1
+description: Meer informatie over het gebruik van Change streams n Azure Cosmos DB API voor MongoDB om de wijzigingen aan te brengen in uw gegevens.
+author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.author: tisande
-ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 11/16/2019
+ms.author: srchi
+ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872153"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647307"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
 
 [Change feed](change-feed.md) -ondersteuning in de Azure Cosmos DB-API voor MongoDb is beschikbaar via de Change streams-API. Door gebruik te maken van de Change streams-API, kunnen uw toepassingen de wijzigingen die zijn aangebracht aan de verzameling of aan de items in één Shard ophalen. Later kunt u verdere acties uitvoeren op basis van de resultaten. Wijzigingen in de items in de verzameling worden vastgelegd in de volg orde van hun wijzigings tijd en de sorteer volgorde wordt gegarandeerd per Shard-sleutel.
 
-> [!NOTE]
-> Als u een wijzigings stroom wilt gebruiken, maakt u het account met versie 3,6 van de API van Azure Cosmos DB voor MongoDB of een latere versie. Als u de voor beelden van de wijzigings stroom uitvoert voor een eerdere versie, `Unrecognized pipeline stage name: $changeStream` ziet u mogelijk de fout.
+[!NOTE]
+Als u een wijzigings stroom wilt gebruiken, maakt u het account met versie 3,6 van de API van Azure Cosmos DB voor MongoDB of een latere versie. Als u de voor beelden van de wijzigings stroom uitvoert voor een eerdere versie, ziet u mogelijk de `Unrecognized pipeline stage name: $changeStream` fout.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
 De volgende beperkingen zijn van toepassing wanneer u een wijzigings stroom gebruikt:
 
-* De `operationType` eigenschappen `updateDescription` en worden nog niet ondersteund in het uitvoer document.
-* De `insert`typen `update`, en `replace` bewerkingen worden momenteel ondersteund. 
+* De `operationType` `updateDescription` Eigenschappen en worden nog niet ondersteund in het uitvoer document.
+* De `insert` `update` typen, en `replace` bewerkingen worden momenteel ondersteund. 
 * De Verwijder bewerking of andere gebeurtenissen worden nog niet ondersteund.
 
 Als gevolg van deze beperkingen zijn de opties $match fase, $project fase en fullDocument vereist, zoals in de vorige voor beelden wordt weer gegeven.
@@ -39,11 +39,11 @@ De volgende fout codes en-berichten worden ondersteund bij het gebruik van wijzi
 
 * **HTTP-fout code 16500** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
 
-* **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de `operationType` eigenschap niet kan worden geretourneerd in het uitvoer document, in plaats `operationType Invalidate` van de fout `NamespaceNotFound` , wordt de fout geretourneerd.
+* **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de `operationType` eigenschap niet kan worden geretourneerd in het uitvoer document, in plaats van de `operationType Invalidate` fout, `NamespaceNotFound` wordt de fout geretourneerd.
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld ziet u hoe u een wijzigings stroom kunt ophalen voor alle items in de verzameling. In dit voor beeld wordt een cursor gemaakt om items te bekijken wanneer ze worden ingevoegd, bijgewerkt of vervangen. Het `$match` stadium, `$project` de fase en `fullDocument` de optie zijn vereist voor het ophalen van de wijzigings stromen. Het is niet mogelijk om delete-bewerkingen te volgen met behulp van wijzigings stromen. Als tijdelijke oplossing kunt u een zachte markering toevoegen voor de items die worden verwijderd. U kunt bijvoorbeeld een kenmerk toevoegen aan het item met de naam ' verwijderd '. Wanneer u het item wilt verwijderen, kunt u ' verwijderd ' instellen `true` en een TTL instellen voor het item. Sinds het bijwerken van ' verwijderd `true` ' naar is een update, is deze wijziging zichtbaar in de wijzigings stroom.
+In het volgende voor beeld ziet u hoe u een wijzigings stroom kunt ophalen voor alle items in de verzameling. In dit voor beeld wordt een cursor gemaakt om items te bekijken wanneer ze worden ingevoegd, bijgewerkt of vervangen. Het `$match` stadium, de `$project` fase en de `fullDocument` optie zijn vereist voor het ophalen van de wijzigings stromen. Het is niet mogelijk om delete-bewerkingen te volgen met behulp van wijzigings stromen. Als tijdelijke oplossing kunt u een zachte markering toevoegen voor de items die worden verwijderd. U kunt bijvoorbeeld een kenmerk toevoegen aan het item met de naam ' verwijderd '. Wanneer u het item wilt verwijderen, kunt u ' verwijderd ' instellen `true` en een TTL instellen voor het item. Sinds het bijwerken van ' verwijderd ' naar `true` is een update, is deze wijziging zichtbaar in de wijzigings stroom.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -61,7 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()
@@ -89,8 +89,8 @@ In het volgende voor beeld ziet u hoe u wijzigingen kunt aanbrengen in de items 
 ```javascript
 var cursor = db.coll.watch(
     [
-        {
-            $match: {
+        { 
+            $match: { 
                 $and: [
                     { "fullDocument.a": 1 }, 
                     { "operationType": { $in: ["insert", "update", "replace"] } }
@@ -102,6 +102,23 @@ var cursor = db.coll.watch(
     { fullDocument: "updateLookup" });
 
 ```
+
+## <a name="current-limitations"></a>Huidige beperkingen
+
+De volgende beperkingen zijn van toepassing wanneer u een wijzigings stroom gebruikt:
+
+* De `operationType` `updateDescription` Eigenschappen en worden nog niet ondersteund in het uitvoer document.
+* De `insert` `update` typen, en `replace` bewerkingen worden momenteel ondersteund. De Verwijder bewerking of andere gebeurtenissen worden nog niet ondersteund.
+
+Als gevolg van deze beperkingen zijn de opties $match fase, $project fase en fullDocument vereist, zoals in de vorige voor beelden wordt weer gegeven.
+
+## <a name="error-handling"></a>Foutafhandeling
+
+De volgende fout codes en-berichten worden ondersteund bij het gebruik van wijzigings stromen:
+
+* **HTTP-fout code 429** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
+
+* **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de `operationType` eigenschap niet kan worden geretourneerd in het uitvoer document, in plaats van de `operationType Invalidate` fout, `NamespaceNotFound` wordt de fout geretourneerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

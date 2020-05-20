@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.date: 01/01/2020
-ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/14/2020
+ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638847"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651106"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Fouten die vanuit WebHCat zijn ontvangen, begrijpen en oplossen op HDInsight
 
@@ -43,7 +43,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 | Oorzaak | Oplossing |
 | --- | --- |
-| U hebt het maximum aantal gelijktijdige aanvragen dat wordt aangeboden door WebHCat per minuut overschreden (standaard 20) |Verminder uw werk belasting om ervoor te zorgen dat u niet meer dan het maximum aantal gelijktijdige aanvragen indient of de limiet voor gelijktijdige `templeton.exec.max-procs`aanvragen wilt verhogen door deze te wijzigen. Zie Modify [Configuration (configuratie wijzigen](#modifying-configuration) ) voor meer informatie. |
+| U hebt het maximum aantal gelijktijdige aanvragen dat wordt aangeboden door WebHCat per minuut overschreden (standaard 20) |Verminder uw werk belasting om ervoor te zorgen dat u niet meer dan het maximum aantal gelijktijdige aanvragen indient of de limiet voor gelijktijdige aanvragen wilt verhogen door deze te wijzigen `templeton.exec.max-procs` . Zie Modify [Configuration (configuratie wijzigen](#modifying-configuration) ) voor meer informatie. |
 
 ## <a name="server-unavailable"></a>De server is niet beschikbaar
 
@@ -59,7 +59,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 
 | Oorzaak | Oplossing |
 | --- | --- |
-| De taak Details zijn opgeschoond door de taak geschiedenis opschoning |De standaard Bewaar periode voor de taak geschiedenis is 7 dagen. De standaard Bewaar periode kan worden gewijzigd door te wijzigen `mapreduce.jobhistory.max-age-ms`. Zie Modify [Configuration (configuratie wijzigen](#modifying-configuration) ) voor meer informatie. |
+| De taak Details zijn opgeschoond door de taak geschiedenis opschoning |De standaard Bewaar periode voor de taak geschiedenis is 7 dagen. De standaard Bewaar periode kan worden gewijzigd door te wijzigen `mapreduce.jobhistory.max-age-ms` . Zie Modify [Configuration (configuratie wijzigen](#modifying-configuration) ) voor meer informatie. |
 | De taak is beëindigd vanwege een failover |Taak opnieuw verzenden gedurende Maxi maal twee minuten |
 | Er is een ongeldige taak-ID gebruikt |Controleren of de taak-ID juist is |
 
@@ -70,10 +70,20 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 | Oorzaak | Oplossing |
 | --- | --- |
 | Interne garbagecollection wordt uitgevoerd in het WebHCat-proces |Wacht tot de garbagecollection is voltooid of start de WebHCat-service opnieuw |
-| Time-out tijdens het wachten op een reactie van de Resource Manager-service. Deze fout kan optreden wanneer het aantal actieve toepassingen het geconfigureerde maximum overschrijdt (standaard 10.000) |Wacht totdat de taken die momenteel worden uitgevoerd, zijn voltooid of verg root de `yarn.scheduler.capacity.maximum-applications`gelijktijdige taak limiet door te wijzigen. Zie de sectie [configuratie wijzigen](#modifying-configuration) voor meer informatie. |
-| Er wordt geprobeerd om alle taken op te halen via de `Fields` aanroep [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) terwijl is ingesteld op`*` |Niet *alle* taak Details ophalen. Gebruik `jobid` in plaats daarvan om details op te halen voor taken die groter zijn dan een bepaalde taak-id. Of gebruik niet`Fields` |
+| Time-out tijdens het wachten op een reactie van de Resource Manager-service. Deze fout kan optreden wanneer het aantal actieve toepassingen het geconfigureerde maximum overschrijdt (standaard 10.000) |Wacht totdat de taken die momenteel worden uitgevoerd, zijn voltooid of verg root de gelijktijdige taak limiet door te wijzigen `yarn.scheduler.capacity.maximum-applications` . Zie de sectie [configuratie wijzigen](#modifying-configuration) voor meer informatie. |
+| Er wordt geprobeerd om alle taken op te halen via de aanroep [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) terwijl `Fields` is ingesteld op`*` |Niet *alle* taak Details ophalen. Gebruik in plaats daarvan `jobid` om details op te halen voor taken die groter zijn dan een bepaalde taak-id. Of gebruik niet`Fields` |
 | De WebHCat-service is niet beschikbaar tijdens de hoofd knooppunt-failover |Wacht twee minuten en voer de bewerking opnieuw uit |
 | Er zijn meer dan 500 taken die moeten worden verzonden via WebHCat |Wachten tot de momenteel wachtende taken zijn voltooid voordat u meer taken hebt verzonden |
+
+## <a name="next-steps"></a>Volgende stappen
+
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591830"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683919"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Nauw keurigheid van de voor spelling verbeteren
 Patronen zijn ontworpen om de nauw keurigheid te verbeteren wanneer verschillende uitingen zeer vergelijkbaar zijn.  Een patroon biedt u de mogelijkheid om nauw keuriger te zijn voor een intentie zonder veel meer uitingen te bieden.
@@ -36,16 +36,16 @@ Als een app tussen 10 en 20 uitingen met verschillende lengten van zinnen, een a
 Met patronen worden de volgende situaties opgelost:
 
 * De intentie Score is laag
-* De juiste intentie is niet de hoogste score, maar te dicht bij de bovenste Score. 
+* De juiste intentie is niet de hoogste score, maar te dicht bij de bovenste Score.
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Patronen zijn geen garantie van intentie
 Patronen gebruiken een combi natie van voorspellings technologieën. Het instellen van een intentie voor een sjabloon utterance in een patroon is geen garantie voor de intentie voorspelling, maar is een sterk signaal.
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>De door de machine gedetecteerde entiteits detectie worden niet door patronen verbeterd
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>De entiteits detectie van de machine learning wordt niet verbeterd door patronen
 
-Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rollen te helpen. Het _patroon. elke_ entiteit wordt gebruikt om vrije-vorm entiteiten te extra heren. Hoewel patronen gebruikmaken van entiteiten, kan een patroon niet helpen bij het detecteren van een door de machine geleerde entiteit.
+Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rollen te helpen. Het _patroon. elke_ entiteit wordt gebruikt om vrije-vorm entiteiten te extra heren. Hoewel patronen gebruikmaken van entiteiten, kan een patroon niet helpen bij het detecteren van een machine learning-entiteit.
 
 Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
@@ -59,7 +59,7 @@ Gezien voldoende voor beeld uitingen, kan LUIS de Voorspellings betrouwbaarheid 
 Er wordt een patroon vergeleken op basis van het detecteren van de entiteiten in het patroon, waarna de rest van de woorden en de woord volgorde van het patroon worden gevalideerd. Entiteiten zijn vereist in het patroon voor een patroon dat overeenkomt met. Het patroon wordt toegepast op token niveau, niet op het teken niveau.
 
 ## <a name="pattern-only-apps"></a>Alleen patroon-apps
-U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen door machines geleerde entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn.
+U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen machine learning-entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn.
 
 ## <a name="patternany-entity"></a>Pattern.any-entiteit
 

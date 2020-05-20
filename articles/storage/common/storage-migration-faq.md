@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858776"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651132"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over de Azure Storage-migratie
 
@@ -263,11 +263,11 @@ Andere personen toegang geven tot de opslag resources:
 
 -   Als u toegang hebt tot AzCopy vanaf de opdracht regel van Microsoft Azure Storage, typt u **AzCopy**. De opdracht regel wordt naast AzCopy geïnstalleerd.
 
--   Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files\\(x86\\)\\% micro soft sdk's Azure AzCopy**.
+-   Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files (x86)% \\ micro soft sdk's \\ Azure \\ AzCopy**.
 
--   Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program\\files\\%\\micro soft sdk's Azure AzCopy**.
+-   Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files% \\ micro soft sdk's \\ Azure \\ AzCopy**.
 
-**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https:\//mystorageaccountname.blob.core.Windows.net/Images/image.gif ' weer geven als ' https:\//www.contoso.com/images/image.gif '?**
+**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https: \/ /mystorageaccountname.blob.core.Windows.net/Images/image.gif ' weer geven als ' https: \/ /www.contoso.com/images/image.gif '?**
 
 TLS/SSL wordt momenteel niet ondersteund voor opslag accounts met aangepaste domeinen.
 U kunt echter geen aangepaste niet-HTTPS-domeinen gebruiken. Zie [een aangepaste domein naam configureren voor het eind punt van de Blob-opslag](../blobs/storage-custom-domain-name.md)voor meer informatie.
@@ -290,7 +290,7 @@ Geografisch redundante opslag met lees toegang is vereist voor toegang tot redun
 
     - **AzCopy**: toevoeg **-secundair** aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
     - **SAS-token**: gebruik een SAS-token om toegang te krijgen tot gegevens van het eind punt. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
 

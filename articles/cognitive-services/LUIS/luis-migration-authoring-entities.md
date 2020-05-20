@@ -1,24 +1,24 @@
 ---
-title: Migreren naar op v3 machine geleerde entiteit
-description: De V3-ontwerp functie biedt een nieuw entiteits type, de door de machine geleerde entiteit, en de mogelijkheid om relaties toe te voegen aan de door de machine geleerde entiteit en andere entiteiten of functies van de toepassing.
+title: Migreren naar v3 machine-learning-entiteit
+description: De V3-ontwerp functie biedt een nieuw entiteits type, de machine learning-entiteit, en de mogelijkheid om relaties toe te voegen aan de entiteit machine learning en andere entiteiten of functies van de toepassing.
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593219"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684586"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migreren naar v3-ontwerp entiteit
 
-De V3-ontwerp functie biedt een nieuw entiteits type, de door de machine geleerde entiteit, en de mogelijkheid om relaties toe te voegen aan de door de machine geleerde entiteit en andere entiteiten of functies van de toepassing.
+De V3-ontwerp functie biedt een nieuw entiteits type, de machine learning-entiteit, en de mogelijkheid om relaties toe te voegen aan de entiteit machine learning en andere entiteiten of functies van de toepassing.
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entiteiten kunnen worden ontstelbaar in v3
 
-Entiteiten die zijn gemaakt met de V3-ontwerp-Api's, hetzij met behulp van de [api's](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) of met de portal, bieden u de mogelijkheid om een gelaagd entiteits model te bouwen met een bovenliggend item en onderliggende items. Het bovenliggende item is bekend als de door de **machine geleerde entiteit** en de onderliggende items worden aangeduid als **subentiteiten** van de door de machine geleerde entiteit.
+Entiteiten die zijn gemaakt met de V3-ontwerp-Api's, hetzij met behulp van de [api's](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) of met de portal, bieden u de mogelijkheid om een gelaagd entiteits model te bouwen met een bovenliggend item en onderliggende items. Het bovenliggende item is bekend als de **machine learning-entiteit** en de onderliggende entiteiten worden aangeduid als **subentiteiten** van de door de machine geleerde entiteit.
 
-Elke subentiteit is ook een door een machine geleerde entiteit, maar met de toegevoegde configuratie opties van functies.
+Elke subentiteit is ook een machine learning-entiteit, maar met de toegevoegde configuratie opties van functies.
 
 * De **vereiste onderdelen** zijn regels die garanderen dat een entiteit wordt geëxtraheerd wanneer deze overeenkomt met een functie. De regel wordt gedefinieerd door de vereiste functie voor het model:
     * [Vooraf gebouwde entiteit](luis-reference-prebuilt-entities.md)
@@ -54,36 +54,36 @@ Wanneer u migreert, moet u rekening houden met het volgende in uw migratie plan:
     * Entiteiten
         * Hiërarchische entiteit
         * Samengestelde entiteit
-    * Rollen: rollen kunnen alleen worden toegepast op een door een machine geleerde (bovenliggende) entiteit. Rollen kunnen niet worden toegepast op subentiteiten
+    * Rollen: rollen kunnen alleen worden toegepast op een bovenliggende entiteit (machine learning). Rollen kunnen niet worden toegepast op subentiteiten
     * Batch tests en patronen die gebruikmaken van de hiërarchische en samengestelde entiteiten
 
-Wanneer u uw migratie plan ontwerpt, laat u de laatste door de machine geleerde entiteiten na dat alle hiërarchische en samengestelde entiteiten zijn gemigreerd. Terwijl u een rechte migratie kunt uitvoeren, kunt u, nadat u de wijziging hebt aangebracht en de resultaten van de batch test en voor spellingen hebt gecontroleerd, de meer Unified JSON ertoe leiden dat u wijzigingen aanbrengt zodat de laatste gegevens die aan de client zijde worden geleverd, anders zijn ingedeeld. Dit is vergelijkbaar met het herstructureren van code en moet worden behandeld met hetzelfde controle proces als uw organisatie.
+Wanneer u uw migratie plan ontwerpt, laat u de laatste instanties van de machine learning controleren, nadat alle hiërarchische en samengestelde entiteiten zijn gemigreerd. Terwijl u een rechte migratie kunt uitvoeren, kunt u, nadat u de wijziging hebt aangebracht en de resultaten van de batch test en voor spellingen hebt gecontroleerd, de meer Unified JSON ertoe leiden dat u wijzigingen aanbrengt zodat de laatste gegevens die aan de client zijde worden geleverd, anders zijn ingedeeld. Dit is vergelijkbaar met het herstructureren van code en moet worden behandeld met hetzelfde controle proces als uw organisatie.
 
 Als u geen batch tests hebt voor uw v2-model en u de batch tests naar het v3-model wilt migreren als onderdeel van de migratie, kunt u niet valideren hoe de migratie van invloed is op de Voorspellings resultaten van het eind punt.
 
 ## <a name="migrating-from-v2-entities"></a>Migreren van v2-entiteiten
 
-Wanneer u begint met het maken van een v3-ontwerp model, moet u overwegen hoe u kunt overstappen op de door de machine geleerde entiteit en de bijbehorende subentiteiten en functies.
+Wanneer u begint met het maken van een v3-ontwerp model, moet u rekening houden met het verplaatsen van de machine learning-entiteit en de bijbehorende subentiteiten en onderdelen.
 
 In de volgende tabel ziet u welke entiteiten moeten worden gemigreerd van een v2 naar een v3-entiteits ontwerp.
 
 |V2-entiteits type voor ontwerpen|Type v3-ontwerp entiteit|Voorbeeld|
 |--|--|--|
 |Samengestelde entiteit|Door machine geleerde entiteit|[Meer informatie](#migrate-v2-composite-entity)|
-|Hiërarchische entiteit|Rol van door de computer geleerde entiteit|[Meer informatie](#migrate-v2-hierarchical-entity)|
+|Hiërarchische entiteit|rol van machine leer entiteit|[Meer informatie](#migrate-v2-hierarchical-entity)|
 
 ## <a name="migrate-v2-composite-entity"></a>V2 samengestelde entiteit migreren
 
-Elk onderliggend element van de v2-samengestelde waarde moet worden weer gegeven met een subentiteit van de op v3 machine geleerde entiteit. Als het samengestelde onderliggende element een vooraf samengestelde, reguliere expressie of een lijst entiteit is, moet dit worden toegepast als een vereiste functie voor de subentiteit.
+Elk onderliggend element van de v2-samengestelde waarde moet worden weer gegeven met een subentiteit van de V3 machine-learning-entiteit. Als het samengestelde onderliggende element een vooraf samengestelde, reguliere expressie of een lijst entiteit is, moet dit worden toegepast als een vereiste functie voor de subentiteit.
 
-Overwegingen bij het plannen van het migreren van een samengestelde entiteit naar een door de machine geleerde entiteit:
+Overwegingen bij het plannen van het migreren van een samengestelde entiteit naar een machine learning-entiteit:
 * Onderliggende entiteiten kunnen niet worden gebruikt in patronen
 * Onderliggende entiteiten worden niet langer gedeeld
 * Onderliggende entiteiten moeten worden gelabeld als ze worden gebruikt als niet-machine-geleerd
 
 ### <a name="existing-features"></a>Bestaande functies
 
-Een woordgroepen lijst voor het boosten van woorden in de samengestelde entiteit moet worden toegepast als een functie voor de door de machine geleerde (bovenliggende) entiteit, de entiteit van de subentiteit (kind) of het doel (als de lijst met zinsdelen alleen van toepassing is op één intentie). Plan om de functie toe te voegen aan de entiteit, waar deze het meest ingrijpend moet worden verhoogd. Voeg de functie niet algemeen toe aan de entiteit die is geleerd van de computer (bovenliggend) als de voor spelling van een subentiteit (onderliggend item) het belangrijkst wordt verhoogd.
+Een woordgroepen lijst die wordt gebruikt voor het boosten van woorden in de samengestelde entiteit moet worden toegepast als een functie voor de machine learning (bovenliggende entiteit), de entiteit van de subentiteit (kind) of het doel (als de lijst met zinsdelen alleen van toepassing is op één intentie). Plan om de functie toe te voegen aan de entiteit, waar deze het meest ingrijpend moet worden verhoogd. Voeg de functie niet algemeen toe aan de entiteit machine learning (bovenliggend object) als de voor spelling van een subentiteit (onderliggend item) het belangrijkst wordt verhoogd.
 
 ### <a name="new-features"></a>Nieuwe functies
 
@@ -106,7 +106,7 @@ In de volgende tabel ziet u de migratie:
 
 |V2-modellen|V3-modellen|
 |--|--|
-|Entiteit van bovenliggend onderdeel met de naam`Order`|De entiteit met de naam die door de bovenliggende machine is geleerd`Order`|
+|Entiteit van bovenliggend onderdeel met de naam`Order`|Bovenliggende-machine-learning entiteit met de naam`Order`|
 |Kinder datetimeV2|* Vooraf gebouwde entiteit migreren naar een nieuwe app.<br>* Voeg de vereiste functie op Parent toe voor vooraf gebouwde datetimeV2.|
 |Onderliggende lijst entiteit voor toppings|* Migreer de lijst entiteit naar een nieuwe app.<br>* Voeg vervolgens een vereiste functie toe aan het bovenliggende item voor de lijst entiteit.|
 
@@ -116,7 +116,7 @@ In de volgende tabel ziet u de migratie:
 Bij het ontwerpen van v2 werd een hiërarchische entiteit gemaakt vóór de functies bestaande in LUIS. Beide hebben hetzelfde doel om entiteiten te extra heren op basis van context gebruik. Als u hiërarchische entiteiten hebt, kunt u deze als eenvoudige entiteiten met rollen beschouwen.
 
 In v3 ontwerpen:
-* Een rol kan worden toegepast op de entiteit die is geleerd van de machine.
+* Een rol kan worden toegepast op de entiteit machine learning (bovenliggend object).
 * Een rol kan niet worden toegepast op een of meer subentiteiten.
 
 Deze entiteit is alleen een voor beeld. De migratie van uw eigen entiteit vereist mogelijk andere overwegingen.
@@ -132,7 +132,7 @@ In de volgende tabel ziet u de migratie:
 
 |V2-modellen|V3-modellen|
 |--|--|
-|Entiteit van bovenliggend onderdeel met de naam`Order`|De entiteit met de naam die door de bovenliggende machine is geleerd`Order`|
+|Entiteit van bovenliggend onderdeel met de naam`Order`|Bovenliggende-machine-learning entiteit met de naam`Order`|
 |Onderliggende hiërarchische entiteit met oorspronkelijke en laatste Pizza-Topping|* Voeg een rol toe aan `Order` voor elke topping.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>De API-wijzigings beperking is vervangen door de vereiste functie

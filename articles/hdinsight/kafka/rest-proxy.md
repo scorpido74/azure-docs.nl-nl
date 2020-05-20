@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 04/03/2020
+ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611003"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647751"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
@@ -56,6 +56,8 @@ Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token opha
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Een Kafka-cluster maken waarop REST-proxy is ingeschakeld
 
+In de onderstaande stappen wordt gebruikgemaakt van de Azure Portal. Zie voor een voor beeld met behulp van Azure CLI [Apache Kafka rest-proxy cluster maken met behulp van Azure cli](tutorial-cli-rest-proxy.md).
+
 1. Schakel tijdens de werk stroom voor het maken van het Kafka-cluster op het tabblad **beveiliging en netwerk** de optie **Kafka rest proxy inschakelen** in.
 
      ![Kafka REST proxy inschakelen en beveiligings groep selecteren](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
@@ -75,7 +77,7 @@ Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token opha
 U kunt de python-code hieronder gebruiken om te communiceren met de REST-proxy op uw Kafka-cluster. Als u het code voorbeeld wilt gebruiken, volgt u deze stappen:
 
 1. Sla de voorbeeld code op een computer waarop python is geïnstalleerd.
-1. Installeer de vereiste python-afhankelijkheden `pip3 install msal`door uit te voeren.
+1. Installeer de vereiste python-afhankelijkheden door uit te voeren `pip3 install msal` .
 1. Wijzig het gedeelte code om **deze eigenschappen te configureren** en de volgende eigenschappen voor uw omgeving bij te werken:
 
     |Eigenschap |Beschrijving |
@@ -139,7 +141,7 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-Hieronder vindt u een voor beeld van het ophalen van een token van Azure voor REST-proxy met behulp van een krul opdracht. **U hebt de opgegeven tijdens `scope=https://hib.azurehdinsight.net/.default` het ophalen van een token nodig.**
+Hieronder vindt u een voor beeld van het ophalen van een token van Azure voor REST-proxy met behulp van een krul opdracht. **U hebt de `scope=https://hib.azurehdinsight.net/.default` opgegeven tijdens het ophalen van een token nodig.**
 
 ```cmd
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'

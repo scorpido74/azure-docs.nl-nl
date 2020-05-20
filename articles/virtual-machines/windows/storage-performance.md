@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100546"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652610"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
 
@@ -21,7 +21,7 @@ Virtuele machines uit de Lsv2-serie ondersteunen diverse werk belastingen die ho
 
 Het ontwerp van de Lsv2-serie Virtual Machines (Vm's) maximaliseert de AMD EPYC™ 7551-processor om de beste prestaties te bieden tussen de processor, het geheugen, de NVMe-apparaten en de Vm's. Naast het maximaliseren van de prestaties van de hardware, zijn virtuele machines uit de Lsv2-serie ontworpen om te werken met de behoeften van Windows-en Linux-besturings systemen voor betere prestaties met de hardware en de software.
 
-Het afstemmen van de software en hardware heeft geresulteerd in de geoptimaliseerde versie van [Windows Server 2019 Data Center](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), uitgebracht op begin december 2018 tot Azure Marketplace, die maximale prestaties ondersteunt op de NVMe-apparaten in virtuele machines uit de Lsv2-serie.
+Het afstemmen van de software en hardware heeft geresulteerd in de geoptimaliseerde versie van [Windows Server 2019 Data Center](https://www.microsoft.com/cloud-platform/windows-server-pricing), uitgebracht op begin december 2018 tot Azure Marketplace, die maximale prestaties ondersteunt op de NVMe-apparaten in virtuele machines uit de Lsv2-serie.
 
 In dit artikel vindt u tips en suggesties om ervoor te zorgen dat uw werk belastingen en toepassingen de maximale prestaties voor de virtuele machines kunnen bewerkstelligen. De informatie op deze pagina wordt voortdurend bijgewerkt naarmate er meer Lsv2 geoptimaliseerde installatie kopieën worden toegevoegd aan de Azure Marketplace.
 

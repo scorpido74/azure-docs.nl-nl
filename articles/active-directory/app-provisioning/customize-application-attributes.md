@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9697bc2abd147a501466ba134f96512fe15173c0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593859"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639054"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -105,10 +105,10 @@ Sommige toepassingen ondersteunen echter aangepaste kenmerken en de Azure AD-inr
 
 Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst met kenmerken zijn onder andere:
 
-- SalesForce
+- Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory ([Microsoft Graph rest API v 1.0-referentie](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) en aangepaste Directory-extensies worden ondersteund.)
+- Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
 - Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
 
 > [!NOTE]

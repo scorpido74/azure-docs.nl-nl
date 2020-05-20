@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: c78a7d26100d3c3454cd96e2ac79e1767e5efcdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597217"
+ms.locfileid: "83656652"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -48,7 +48,7 @@ Als uw operationele tabellen bijvoorbeeld de volgende indeling hebben:
 
 In het rij-archief worden de bovenstaande gegevens opgeslagen in een geserialiseerde indeling, per rij, op de schijf. Met deze indeling kunnen transactionele Lees bewerkingen, schrijf bewerkingen en operationele query's sneller worden uitgevoerd, zoals ' retour informatie over Product1 '. Omdat de gegevensset echter groot groeit en als u complexe analytische query's wilt uitvoeren op de gegevens, kan het kostbaar zijn. Als u bijvoorbeeld ' de verkoop trends voor een product onder de categorie ' apparatuur ' over verschillende bedrijfs eenheden en maanden wilt krijgen, moet u een complexe query uitvoeren. Grote scans op deze gegevensset kunnen duur verkrijgen in termen van ingerichte door Voer en kunnen ook van invloed zijn op de prestaties van de transactionele workloads die uw realtime-toepassingen en-services inschakelen.
 
-Analytische opslag, een column Store, is beter geschikt voor dergelijke query's omdat deze soort gelijke velden van gegevens samenbrengt en de schijf-IOPS verlaagde.
+Analytische opslag, een column Store, is beter geschikt voor dergelijke query's, omdat deze soort gelijke velden met gegevens aan elkaar heeft geserial en de schijf-IOPS vermindert.
 
 De volgende afbeelding toont transactionele rijen Store versus analytisch kolom archief in Azure Cosmos DB:
 

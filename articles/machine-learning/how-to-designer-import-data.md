@@ -5,16 +5,17 @@ description: Meer informatie over het importeren van gegevens in Azure Machine L
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546759"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644573"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning Designer (preview)
 
@@ -35,13 +36,13 @@ U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
 
 1. Selecteer de module die de gegevens levert die u wilt registreren.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > **van gegevensset registreren**.
+1. Selecteer in het deel venster Eigenschappen de optie **uitvoer**  >  **van gegevensset registreren**.
 
     ![Scherm afbeelding die laat zien hoe u kunt navigeren naar de optie gegevensset registreren](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken
 
-U kunt de geregistreerde gegevens sets vinden in het palet module, onder **gegevens sets** > van**mijn gegevens**sets. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules in het palet.
+U kunt de geregistreerde gegevens sets vinden in het palet module, onder **gegevens sets**van  >  **mijn gegevens**sets. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules in het palet.
 
 ![Scherm opname van de locatie van opgeslagen gegevens sets in het palet voor ontwerpen](media/how-to-designer-import-data/use-datasets-designer.png)
 

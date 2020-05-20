@@ -2,13 +2,13 @@
 title: Entiteits typen-LUIS
 description: Een entiteit extraheert gegevens uit een utterance tijdens de Voorspellings runtime. Een _optioneel_, secundair doel is het verhogen van de voor spelling van de intentie of andere entiteiten door gebruik te maken van de entiteit als een functie.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 9d8afd5a660b3af5556256835486e984d7d657bc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585637"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682171"
 ---
 # <a name="extract-data-with-entities"></a>Gegevens ophalen met entiteiten
 
@@ -16,11 +16,11 @@ Een entiteit extraheert gegevens uit een utterance tijdens de Voorspellings runt
 
 Er zijn verschillende typen entiteiten:
 
-* [Entiteit op basis van machine learning](reference-entity-machine-learned-entity.md)
-* Niet-computer-geleerd gebruikt als vereiste [functie](luis-concept-feature.md) : voor exacte tekst overeenkomsten, patroon overeenkomsten of detectie door vooraf gemaakte entiteiten
+* [machine learning-entiteit](reference-entity-machine-learned-entity.md) : dit is de primaire entiteit. U moet uw schema ontwerpen met dit entiteits type voordat u andere entiteiten gebruikt.
+* Niet machine learning gebruikt als een vereiste [functie](luis-concept-feature.md) : voor exacte tekst overeenkomsten, patroon overeenkomsten of detectie door vooraf gemaakte entiteiten
 * [Patroon. any](#patternany-entity) : om vrije-vorm tekst uit een [patroon](reference-entity-pattern-any.md) te halen, zoals Boek titels
 
-Door machines geleerde entiteiten bieden een breed scala aan opties voor gegevens extractie. Niet door machines geleerde entiteiten werken met tekst overeenkomst en worden gebruikt als een [vereiste functie](#design-entities-for-decomposition) voor een door een machine geleerde entiteit of intentie.
+machine learning-entiteiten bieden een breed scala aan opties voor gegevens extractie. Niet-machine learning-entiteiten werken met tekst overeenkomst en worden gebruikt als een [vereiste functie](#design-entities-for-decomposition) voor een machine learning-entiteit of intentie.
 
 ## <a name="entities-represent-data"></a>Entiteiten vertegenwoordigen gegevens
 
@@ -51,18 +51,26 @@ Houd rekening met de volgende vier uitingen:
 |--|--|--|--|
 |Help|Help|-|Niets te extra heren.|
 |Iets verzenden|sendSomething|-|Niets te extra heren. Het model bevat geen vereiste functie om `something` in deze context op te halen en er is geen ontvanger opgegeven.|
-|Bob een huidige verzenden|sendSomething|`Bob`, `present`|Het model wordt uitgepakt `Bob` door een vereiste functie van vooraf gedefinieerde entiteit toe te voegen `personName` . Er is een door de machine geleerde entiteit gebruikt om uit te pakken `present` .|
-|Een doos van Choco lade verzenden|sendSomething|`Bob`, `box of chocolates`|De twee belang rijke gegevens, `Bob` en de `box of chocolates` , zijn geëxtraheerd door door machines geleerde entiteiten.|
+|Bob een huidige verzenden|sendSomething|`Bob`, `present`|Het model wordt uitgepakt `Bob` door een vereiste functie van vooraf gedefinieerde entiteit toe te voegen `personName` . Er is een machine learning-entiteit gebruikt om uit te pakken `present` .|
+|Een doos van Choco lade verzenden|sendSomething|`Bob`, `box of chocolates`|De twee belang rijke gegevens, `Bob` en de `box of chocolates` , zijn geëxtraheerd door de machine learning-entiteiten.|
 
 ## <a name="design-entities-for-decomposition"></a>Entiteiten voor ontleding ontwerpen
 
-Door machines geleerde entiteiten bieden u de mogelijkheid om uw app-schema te ontwerpen voor ontleding en een groot concept te verbreken in subentiteiten.
+met machine learning-entiteiten kunt u uw app-schema ontwerpen voor ontdubbeling en een groot concept in subentiteiten opsplitsen.
 
 Als u ontwerpt voor ontleding, kan LUIS de nauw keurigheid van entiteits omzetting naar uw client toepassing retour neren. Op deze manier kan uw client toepassing zich richten op bedrijfs regels en de gegevens omzetting voor LUIS behouden.
 
-Een door de machine geleerde entiteit triggers op basis van de context die is geleerd via voor beeld uitingen.
+Een machine learning-entiteit activeert op basis van de context die is geleerd via voor beeld uitingen.
 
-Door [**machines geleerde entiteiten**](tutorial-machine-learned-entity.md) zijn de extracten op het hoogste niveau. Subentiteiten zijn onderliggende entiteiten van door machines geleerde entiteiten.
+[**machine learning-entiteiten**](tutorial-machine-learned-entity.md) zijn de extracten op het hoogste niveau. Subentiteiten zijn onderliggende entiteiten van machine learning-entiteiten.
+
+## <a name="effective-machine-learned-entities"></a>Effectief door de machine geleerde entiteiten
+
+Voor het effectief bouwen van de door de machine geleerde entiteiten:
+
+* Het labelen moet consistent zijn voor de doel stellingen. Dit omvat zelfs uitingen die u opgeeft in de **geen** intentie die deze entiteit bevat. Anders kan het model de volg orde niet effectief bepalen.
+* Als u een door een machine geleerde entiteit met subentiteiten hebt, moet u ervoor zorgen dat de verschillende orders en varianten van de entiteit en subentiteiten worden weer gegeven in de gelabelde uitingen. Het label voorbeeld uitingen moet alle geldige formulieren bevatten en entiteiten bevatten die worden weer gegeven en die zich niet in de utterance bevinden.
+* Vermijd het aanpassen van de entiteiten tot een zeer vaste set. De **overmontage** vindt plaats wanneer het model niet goed kan worden gegeneraliseerd en een veelvoorkomend probleem is in machine learning modellen. Dit betekent dat de app niet voldoende goed werkt voor nieuwe gegevens. U moet op zijn beurt het gelabelde voor beeld uitingen, zodat de app kan generaliseren buiten de beperkte voor beelden die u opgeeft. U moet de verschillende subentiteiten met voldoende wijziging voor het model variëren om meer van het concept te zien in plaats van alleen de voor beelden die worden weer gegeven.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -73,7 +81,7 @@ Door [**machines geleerde entiteiten**](tutorial-machine-learned-entity.md) zijn
 
 ## <a name="types-of-entities"></a>Typen entiteiten
 
-Een subentiteit naar een bovenliggend item moet een door de machine geleerde entiteit zijn. De subentiteit kan gebruikmaken van een niet door machines geleerde entiteit als een [functie](luis-concept-feature.md).
+Een subentiteit naar een bovenliggend item moet een machine learning-entiteit zijn. De subentiteit kan gebruikmaken van een niet-machine learning-entiteit als een [functie](luis-concept-feature.md).
 
 Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtraheerd en hoe deze moeten worden weer gegeven nadat deze is geëxtraheerd.
 
@@ -85,6 +93,15 @@ Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtr
 |[**Vooraf gedefinieerde**](luis-reference-prebuilt-entities.md)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of entiteit momenteel niet wordt ondersteund, draagt u bij aan het project.|
 |[**Reguliere expressie**](reference-entity-regular-expression.md)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|
 
+
+## <a name="extraction-versus-resolution"></a>Extractie versus oplossing
+
+Entiteiten nemen gegevens op als de gegevens worden weer gegeven in de utterance. De gegevens worden niet door entiteiten gewijzigd of omgezet. De entiteit biedt geen oplossing als de tekst een geldige waarde voor de entiteit is of niet.
+
+Er zijn manieren om oplossing in te stellen voor de extractie, maar u moet er rekening mee houden dat de mogelijkheid van de app ongevoelig is voor variaties en fouten.
+
+Entiteiten voor lijsten en reguliere expressies (tekst-matching) kunnen worden gebruikt als [vereiste functies](luis-concept-feature.md#required-features) voor een subentiteit en die fungeert als een filter voor de extractie. U moet dit zorgvuldig gebruiken om de mogelijkheid van de app om te voors pellen.
+
 ## <a name="extracting-contextually-related-data"></a>Contextuele gerelateerde gegevens extra heren
 
 Een utterance kan twee of meer exemplaren van een entiteit bevatten waarbij de betekenis van de gegevens is gebaseerd op de context binnen de utterance. Een voor beeld is een utterance voor het reserveren van een vlucht met twee geografische locaties, oorsprong en bestemming.
@@ -93,7 +110,7 @@ Een utterance kan twee of meer exemplaren van een entiteit bevatten waarbij de b
 
 De twee locaties moeten worden geëxtraheerd op een manier die de client toepassing het type van elke locatie kent om de aankoop van het ticket te volt ooien.
 
-Als u de oorsprong en bestemming wilt extra heren, maakt u twee subentiteiten als onderdeel van de door de computer geleerde entiteit van de ticket order. Maak voor elk van de subentiteiten een vereiste functie die gebruikmaakt van geographyV2.
+Als u de oorsprong en bestemming wilt extra heren, maakt u twee subentiteiten als onderdeel van de entiteit voor de ticket order-learning. Maak voor elk van de subentiteiten een vereiste functie die gebruikmaakt van geographyV2.
 
 <a name="using-component-constraints-to-help-define-entity"></a>
 <a name="using-subentity-constraints-to-help-define-entity"></a>
@@ -124,5 +141,5 @@ Leer concepten over goede [uitingen](luis-concept-utterance.md).
 
 Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw Luis-app.
 
-Zie [zelf studie: gestructureerde gegevens ophalen van gebruikers utterance met door machines geleerde entiteiten in language Understanding (Luis)](tutorial-machine-learned-entity.md) voor meer informatie over het extra heren van gestructureerde gegevens uit een utterance met behulp van de door de machine geleerde entiteit.
+Zie [zelf studie: gestructureerde gegevens uit de gebruiker Utterance ophalen met machine learning-entiteiten in language Understanding (Luis)](tutorial-machine-learned-entity.md) voor meer informatie over het extra heren van gestructureerde gegevens uit een utterance met behulp van de machine learning-entiteit.
 

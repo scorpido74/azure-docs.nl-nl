@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e8dbe2021c5700fe0223ff7ce246ac54f2abbd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726409"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650296"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Blob Storage gebruiken vanuit iOS
 
@@ -62,14 +62,14 @@ Als u deze bibliotheek wilt gebruiken, hebt u het volgende nodig:
 De andere manier om de bibliotheek te gebruiken is het maken van het Framework hand matig:
 
 1. Down load of kloon eerst de [Azure-opslag-IOS-opslag plaats](https://github.com/azure/azure-storage-ios).
-2. Ga naar *Azure-Storage-IOS* -> *lib* -> *Azure Storage-client bibliotheek*en open `AZSClient.xcodeproj` in Xcode.
+2. Ga naar *Azure-Storage-IOS*  ->  *lib*  ->  *Azure Storage-client bibliotheek*en open `AZSClient.xcodeproj` in Xcode.
 3. Wijzig in de linkerbovenhoek van Xcode het actieve schema van "Azure Storage-client bibliotheek" in "Framework".
 4. Bouw het project (⌘ + B). Hiermee maakt u een `AZSClient.framework` bestand op uw bureau blad.
 
 U kunt het Framework-bestand vervolgens importeren in uw toepassing door het volgende te doen:
 
 1. Maak een nieuw project of open uw bestaande project in Xcode.
-2. Sleep en zet het `AZSClient.framework` neer in uw Xcode-project Navigator.
+2. Sleep en zet het neer `AZSClient.framework` in uw Xcode-project Navigator.
 3. Selecteer *items kopiëren indien nodig*en klik op *volt ooien*.
 4. Klik in het navigatie venster aan de linkerkant op het project en klik op het tabblad *Algemeen* boven aan de project-editor.
 5. Klik in de sectie *gekoppelde frameworks en bibliotheken* op de knop toevoegen (+).
@@ -82,9 +82,9 @@ U kunt het Framework-bestand vervolgens importeren in uw toepassing door het vol
 #import <AZSClient/AZSClient.h>
 ```
 
-Als u Swift gebruikt, moet u een bridging-header maken en \<AZSClient/AZSClient. h>:
+Als u Swift gebruikt, moet u een bridging-header maken en \< AZSClient/AZSClient. h>:
 
-1. Maak een header- `Bridging-Header.h`bestand en voeg de bovenstaande instructie import toe.
+1. Maak een header `Bridging-Header.h` -bestand en voeg de bovenstaande instructie import toe.
 2. Ga naar het tabblad *Build Settings* en zoek naar *doel-C bridging-header*.
 3. Dubbel klik op het veld van de *overbruggings header van de objectief-C* en voeg het pad toe aan het header-bestand:`ProjectName/Bridging-Header.h`
 4. Bouw het project (⌘ + B) om te controleren of de bridging-header is opgehaald door Xcode.
@@ -392,7 +392,7 @@ Nu u hebt geleerd hoe u Blob Storage van iOS kunt gebruiken, volgt u deze koppel
 - [Azure Storage-client bibliotheek voor iOS](https://github.com/azure/azure-storage-ios)
 - [Azure Storage iOS-referentie documentatie](https://azure.github.io/azure-storage-ios/)
 - [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Blog van Azure Storage team](https://blogs.msdn.com/b/windowsazurestorage)
+- [Blog van Azure Storage team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
 Als u vragen hebt over deze bibliotheek, kunt u een bericht sturen naar ons [MSDN Azure-forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) of [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Als u functie suggesties hebt voor Azure Storage, kunt u een bericht plaatsen op [Azure Storage feedback](https://feedback.azure.com/forums/217298-storage/).

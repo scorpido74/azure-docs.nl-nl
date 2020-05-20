@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113491"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656814"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
-Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats. Neem contact op met ons [ondersteunings forum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of e- farmbeatssupport@microsoft.commail ons op voor meer hulp.
+Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats. Neem contact op met ons [ondersteunings forum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of e-mail ons op voor meer hulp farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Als u FarmBeats hebt geïnstalleerd tijdens april en uw taken mislukken met een leeg fout bericht, heeft uw installatie mogelijk geen batch quotum toegewezen om de prioriteit van de ondersteuning voor kritieke en veiligheids organisaties te bepalen. Zie [hier](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) voor meer informatie. U moet Vm's aanvragen om te worden toegewezen aan het batch-account om taken te kunnen uitvoeren.
@@ -60,7 +60,7 @@ Neem contact met ons op met de volgende details:
 
 1. Ga naar de resource groep FarmBeats Datahub.
 2. Selecteer de **Event hub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal inkomende berichten.
-3. Voer een van de volgende bewerkingen uit:
+3. Gebruik een van de volgende methoden:
 
    - Als er *geen inkomende berichten*zijn, neemt u contact op met de partner van uw apparaat.  
    - Als er *inkomende berichten*zijn, kunt u contact met ons opnemen met uw Datahub-en Accelerator logboeken en vastgelegde telemetrie.
@@ -88,11 +88,11 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":<value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -105,12 +105,12 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
 **Corrigerende actie**
 
 1. Ga in Datahub Swagger naar de partner-API.
-2.  > Selecteer **Get****uitvoeren****uitproberen** > .
+2. Selecteer **Get**  >  **Try it out**  >  **uitvoeren**uitproberen.
 
 > [!NOTE]
 > De partner-ID van de sensor partner die u wilt.
 
-3. Ga terug naar de partner-API en selecteer **Get/\<id>**.
+3. Ga terug naar de partner-API en selecteer **Get/ \< id>**.
 4. Geef de partner-ID op uit stap 3 en selecteer vervolgens **uitvoeren**.
 
    De API-reactie moet de Event Hubs connection string hebben.
@@ -133,7 +133,7 @@ Dat **wil zeggen**: het apparaat is gekoppeld aan meerdere Sens oren die in de f
 
 1. Verwijder de Sens oren die zijn gekoppeld aan het apparaat via Accelerator.  
 2. Als u de Sens oren wilt koppelen aan een ander apparaat, vraagt u de partner van het apparaat hetzelfde te doen.  
-3. Verwijder het apparaat met behulp `DELETE API` van een aanroep en stel de Force-para meter in op *True*.  
+3. Verwijder het apparaat met behulp van een `DELETE API` aanroep en stel de Force-para meter in op *True*.  
 
 **Bericht**: in apparaten wordt naar het apparaat verwezen als ParentDeviceId: er zijn een of meer apparaten die zijn gekoppeld aan dit apparaat als onderliggende apparaten. Verwijder ze en verwijder dit apparaat. "  
 
@@ -205,7 +205,7 @@ Als u al toegang hebt gekregen en deze fout hebt geconstateerd, probeert u het o
 
     1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
-    3. Opslag account opslag selecteren * * * * * > **containers** > **batch-prep-bestanden** > **to_vm** > **config. ini**
+    3. Opslag account opslag selecteren * * * * * > **containers**  >  **batch-prep-bestanden**  >  **to_vm**  >  **config. ini**
     4. Selecteer **bewerken**
     5. De gebruikers naam in de sectie sentinel_account bijwerken
 
@@ -250,7 +250,7 @@ Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-ser
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: maximum aantal verbindingen bereikt
 
-**Taak fout bericht**: het maximum aantal gelijktijdige stromen dat door de gebruiker\<username> is bereikt.
+**Taak fout bericht**: het maximum aantal gelijktijdige stromen dat door de gebruiker \< username> is bereikt.
 
 Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde verklikker account in meerdere taken gebruikt.
 
@@ -261,7 +261,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="sentinel-server-refused-connection"></a>Verklikker server: verbinding geweigerd
 
-**Taak fout bericht**: de server heeft de verbinding geweigerd http://172.30.175.69:8983/solr/dhusbij:.
+**Taak fout bericht**: de server heeft de verbinding geweigerd bij: http://172.30.175.69:8983/solr/dhus .
 
 **Corrigerende actie**: dit probleem kan zich voordoen als er onderhouds activiteiten worden uitgevoerd op de Sentinel-server.
 
@@ -285,11 +285,11 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-taak Logboeken of App Service-logboeken verzamelen in Datahub
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
-3. Zoek in het dash board van de **resource groep** naar het *datahublogs\* * -opslag account. Bijvoorbeeld *datahublogsmvxmq*.  
+3. Zoek in het dash board van de **resource groep** naar het *datahublogs \* * -opslag account. Bijvoorbeeld *datahublogsmvxmq*.  
 4. Selecteer in de kolom **naam** het opslag account om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **\* datahubblogs** de optie **openen in Verkenner** om de **geopende Azure Storage Explorer** -toepassing weer te geven.
+5. Selecteer in het deel venster ** \* datahubblogs** de optie **openen in verkenner** om de **geopende Azure Storage Explorer** -toepassing weer te geven.
 6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **taak-logboeken** voor Azure Data Factory Logboeken of **appinsights-logboeken** voor app service-Logboeken.
 7. Selecteer **downloaden** en down load de logboeken naar een lokale map op uw computer.
 
@@ -297,11 +297,11 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory-taak Logboeken of App Service logboeken voor de Accelerator verzamelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
-3. Zoek het *\* opslag* account op in het dash board van de **resource groep** . Bijvoorbeeld *storagedop4k\**.
+3. Zoek het * \* opslag* account op in het dash board van de **resource groep** . Bijvoorbeeld *storagedop4k \* *.
 4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **opslag\* ** de optie **openen in Verkenner** om de Azure Storage Explorer-toepassing te openen.
+5. Selecteer in het deel venster **opslag \* ** de optie **openen in Verkenner** om de Azure Storage Explorer-toepassing te openen.
 6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **taak-logboeken** voor Azure Data Factory Logboeken of **appinsights-logboeken** voor app service-Logboeken.
 7. Selecteer **downloaden** en down load de logboeken naar een lokale map op uw computer.
 

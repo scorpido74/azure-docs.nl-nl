@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1317989434cca9375c612c8af0525323c6dda3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081656"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656700"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
@@ -31,7 +31,7 @@ Een sleutel kluis maken en configureren voor gebruik met Azure Disk Encryption b
 Deze stappen worden geïllustreerd in de volgende Quick starts:
 
 - [Een virtuele Windows-machine maken en versleutelen met behulp van Azure CLI](disk-encryption-cli-quickstart.md)
-- [Een virtuele Windows-machine maken en versleutelen met behulp van Azure PowerShell](disk-encryption-cli-quickstart.md)
+- [Een virtuele Windows-machine maken en versleutelen met behulp van Azure PowerShell](disk-encryption-powershell-quickstart.md)
 
 U kunt eventueel ook een sleutel versleutelings sleutel genereren of importeren (KEK).
 

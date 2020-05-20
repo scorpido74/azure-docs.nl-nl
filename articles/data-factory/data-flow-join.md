@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233415"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683361"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -48,9 +48,9 @@ Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden vo
 
 Met cross-koppeling wordt het cross-product van de twee stromen op basis van een voor waarde uitgevoerd. Als u een voor waarde gebruikt die niet gelijk is aan elkaar, geeft u een aangepaste expressie op als cross-samenvoegings voorwaarde. De uitvoer stroom is alle rijen die voldoen aan de voor waarde voor samen voegen.
 
-U kunt dit jointype gebruiken voor niet-equi-samen voegingen ```OR``` en voor waarden.
+U kunt dit jointype gebruiken voor niet-equi-samen voegingen en ```OR``` voor waarden.
 
-Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom ```SyntheticKey``` met de naam en stel ```1```deze in op gelijk aan. Gebruik ```a.SyntheticKey == b.SyntheticKey``` vervolgens als uw aangepaste joinexpressie voor samen voegen.
+Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom met de naam ```SyntheticKey``` en stel deze in op gelijk aan ```1``` . Gebruik vervolgens ```a.SyntheticKey == b.SyntheticKey``` als uw aangepaste joinexpressie voor samen voegen.
 
 > [!NOTE]
 > Zorg ervoor dat u ten minste één kolom toevoegt aan elke zijde van uw linker-en rechter relatie in een aangepaste cross-koppeling. Het uitvoeren van cross-samen voegingen met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de hele gegevensset, waardoor uw gegevens stroom slecht kan worden uitgevoerd.
@@ -61,7 +61,13 @@ Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgele
 1. Het **jointype** selecteren
 1. Kies welke sleutel kolommen u wilt vergelijken voor de voor waarde voor samen voegen. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom**.
 
-![Trans formatie koppelen](media/data-flow/join.png "Koppelen")
+![Trans formatie koppelen](media/data-flow/join.png "Deelnemen")
+
+### <a name="non-equi-joins"></a>Niet-equi-samen voegingen
+
+Als u een voorwaardelijke operator zoals niet gelijk is aan (! =) of groter dan (>) wilt gebruiken in uw samenvoegings voorwaarden, wijzigt u de vervolg keuzelijst van de operator tussen de twee kolommen. Voor niet-equi-join's moeten ten minste één van de twee stromen worden uitgezonden met behulp van **vaste** broadcast op het tabblad **Optimize** .
+
+![Niet-equi-koppeling](media/data-flow/non-equi-join.png "Niet-equi-koppeling")
 
 ## <a name="optimizing-join-performance"></a>Prestaties van deelname optimaliseren
 
@@ -98,7 +104,7 @@ Wanneer u de trans formaties van de koppeling met de preview-versie van gegevens
 
 ### <a name="inner-join-example"></a>Voor beeld van inner join
 
-Het onderstaande voor beeld is een koppelings `JoinMatchedData` transformatie met de naam `TripData` die de stream `TripFare`en de juiste stroom gebruikt.  De voor waarde voor samen voegen is de expressie `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` die `hack_license`waar `medallion`retourneert `vendor_id`als de `pickup_datetime` kolommen,, en in elke stroom overeenkomen. De `joinType` is `'inner'`. Het inschakelen van de uitzending in alleen de linker stroom `broadcast` heeft een `'left'`waarde.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `JoinMatchedData` die de stream `TripData` en de juiste stroom gebruikt `TripFare` .  De voor waarde voor samen voegen is de expressie `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` die waar retourneert als de `hack_license` `medallion` kolommen,, `vendor_id` en `pickup_datetime` in elke stroom overeenkomen. De `joinType` is `'inner'` . Het inschakelen van de uitzending in alleen de linker stroom `broadcast` heeft een waarde `'left'` .
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
@@ -120,7 +126,7 @@ TripData, TripFare
 
 ### <a name="custom-cross-join-example"></a>Voor beeld van aangepaste cross-koppeling
 
-Het onderstaande voor beeld is een koppelings `JoiningColumns` transformatie met de naam `LeftStream` die de stream `RightStream`en de juiste stroom gebruikt. Deze trans formatie heeft twee stromen en voegt samen met alle rijen waarin de `leftstreamcolumn` kolom groter is dan `rightstreamcolumn`de kolom. De `joinType` is `cross`. Broadcasting is niet ingeschakeld `broadcast` heeft waarde `'none'`.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `JoiningColumns` die de stream `LeftStream` en de juiste stroom gebruikt `RightStream` . Deze trans formatie heeft twee stromen en voegt samen met alle rijen waarin de kolom `leftstreamcolumn` groter is dan de kolom `rightstreamcolumn` . De `joinType` is `cross` . Broadcasting is niet ingeschakeld `broadcast` heeft waarde `'none'` .
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189698"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636415"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -40,7 +40,7 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
    Vervolgens ziet u een eind punt zoals dit voor beeld:
 
-   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
+   `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
 ## <a name="register-an-application"></a>Een toepassing registreren
@@ -50,18 +50,18 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
-- Vervang * \<yourtenant.onmicrosoft.com>* door de naam van uw B2C-Tenant.
-- Vervang * \<B2C_1A_ROPC_Auth>* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
-- Vervang * \<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* door de toepassings-id van uw registratie.
+- Vervang * \< tenant naam>. onmicrosoft.com* door de naam van uw B2C-Tenant.
+- Vervang * \< B2C_1A_ROPC_Auth>* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
+- Vervang * \< bef2222d56-552f-4a5b-b90a-1988a7d634c3>* door de toepassings-id van uw registratie.
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
 | Sleutel | Waarde |
 | --- | ----- |
 | gebruikersnaam | leadiocl@outlook.com |
 | wachtwoord | Passxword1 |
 | grant_type | wachtwoord |
-| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID Connect \< bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
@@ -70,8 +70,8 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 De werkelijke POST-aanvraag ziet er als volgt uit:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -94,7 +94,7 @@ Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
 
 Een POST-aanroep maken zoals deze wordt weer gegeven met de informatie in de volgende tabel als hoofd tekst van de aanvraag:
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
 | Sleutel | Waarde |
 | --- | ----- |

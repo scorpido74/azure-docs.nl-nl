@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984007"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653298"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Wat is IPv6 voor Azure Virtual Network?
 
@@ -40,7 +40,7 @@ Voor delen van IPv6 voor Azure VNET:
 - Bouwt voort op lange, stabiele Azure VM-to-Internet IPv6-connectiviteit.
 - Standaard beveiligd omdat de IPv6-verbinding met het internet alleen wordt ingesteld wanneer u deze expliciet aanvraagt in uw implementatie.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 IPv6 voor Azure VNet bevat de volgende mogelijkheden:
 
@@ -58,6 +58,7 @@ IPv6 voor Azure VNet bevat de volgende mogelijkheden:
     - Optionele meerdere front-end configuraties waarmee één load balancer meerdere open bare IPv6-IP-adressen kan gebruiken. hetzelfde frontend-protocol en dezelfde poort kunnen worden gebruikt voor alle frontend-adressen.
     - Optionele IPv6-poorten kunnen opnieuw worden gebruikt voor back-end-instanties met behulp van de *zwevende IP* -functie van regels voor taak verdeling 
     - Opmerking: taak verdeling voert geen protocol omzetting uit (geen NAT64). 
+    - Opmerking: IPv6 kan alleen worden verdeeld over de primaire netwerk interface (NIC) op Azure-Vm's. 
 - [Standaard-IPv6-ondersteuning voor interne Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) voor het maken van robuuste toepassingen met meerdere lagen in azure VNETs.   
 - Standaard IPv6-ondersteuning voor open bare Load Balancer voor compatibiliteit met oudere implementaties
 - [Gereserveerde IPv6-adressen en](ipv6-public-ip-address-prefix.md) adresbereiken bieden stabiele, voorspel bare IPv6-adressen waarmee u uw door Azure gehoste toepassingen voor uw bedrijf en uw klanten eenvoudig kunt white list.
@@ -73,10 +74,14 @@ IPv6 voor Azure VNET is een basis functieset waarmee klanten dual stack-toepassi
 
 ## <a name="limitations"></a>Beperkingen
 De huidige virtuele netwerk versie van IPv6 voor Azure heeft de volgende beperkingen:
-- IPv6 voor Azure Virtual Network is beschikbaar in alle wereld wijde handels regio's van Azure met behulp van alle implementatie methoden.  Implementatie in de cloud van de Amerikaanse overheid is tijdelijk beperkt tot ARM (JSON)-sjabloon, opdracht regel interface (CLI) en Power shell.  IPv6-ondersteuning in de Cloud portal van de Amerikaanse overheid is binnenkort beschikbaar.  
+- IPv6 voor Azure Virtual Network is beschikbaar in alle wereld wijde regio's van de Verenigde Staten van Azure en met behulp van alle implementatie methoden.  
 - ExpressRoute-gateways kunnen worden gebruikt voor IPv4-verkeer in een VNET waarvoor IPv6 is ingeschakeld.  Ondersteuning voor IPv6-verkeer vindt u op ons schema.   
 - VPN-gateways kunnen niet worden gebruikt in een VNET waarbij IPv6 is ingeschakeld, hetzij rechtstreeks of gelijkwaardig met ' UseRemoteGateway '.
 - Het Azure-platform (AKS, enzovoort) biedt geen ondersteuning voor IPv6-communicatie voor containers.  
+- IPv6 kan alleen worden verdeeld over de primaire netwerk interface (NIC) op Azure-Vm's. Taak verdeling van IPv6-verkeer naar secundaire Nic's wordt niet ondersteund.    
+- Alleen IPv6-Virtual Machines of Virtual Machines schaal sets worden niet ondersteund. elke NIC moet ten minste één IPv4 IP-configuratie bevatten. 
+- Bij het toevoegen van IPv6 aan bestaande IPv4-implementaties kunnen IPv6-bereiken niet worden toegevoegd aan een VNET met bestaande bronnen navigatie koppelingen.  
+- Forward DNS voor IPv6 wordt vandaag ondersteund voor de open bare Azure-DNS, maar omgekeerde DNS wordt nog niet ondersteund.   
 
 ## <a name="pricing"></a>Prijzen
 

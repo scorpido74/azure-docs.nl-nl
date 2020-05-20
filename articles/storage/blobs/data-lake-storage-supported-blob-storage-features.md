@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ab704f53e608e7021f53a5d4b0a3e06c2ab807a1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 5be7c9800076cfaf361a3e752162e14d10f22655
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007454"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650757"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -26,9 +26,9 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 > [!NOTE]
 > Ondersteunings niveau verwijst alleen naar de manier waarop de functie wordt ondersteund met Data Lake Storage Gen2. 
 >
-> [Premium-prestaties blok-blobopslag](storage-blob-create-account-block-blob.md) voor de data Lake Storage Gen2 zijn momenteel beschikbaar als open bare preview. Ondersteuning: niveaus voor deze typen accounts worden weer gegeven in de kolom **Premium Block Blob Storage accounts** .
+> [Premium-performance BlockBlobStorage-accounts](storage-blob-create-account-block-blob.md) voor data Lake Storage Gen2 zijn momenteel beschikbaar als open bare preview. Ondersteunings niveaus voor deze typen accounts worden weer gegeven in de kolom **BlockBlobStorage (Premium)** .
 
-|Blob Storage functie |V2-opslag accounts voor algemeen gebruik|Premium blok-blob-opslagaccounts |Verwante artikelen: |
+|Blob Storage functie |Voor algemeen gebruik v2 |BlockBlobStorage (Premium) |Verwante artikelen: |
 |---------------|-------------------|---|
 |Hot Storage-toegangslaag|Algemeen verkrijgbaar|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
 |Cool Storage-toegangslaag|Algemeen verkrijgbaar|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
@@ -39,6 +39,7 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Azure CLI-opdrachten voor Blob Storage|Algemeen verkrijgbaar|Preview|[Quick Start: blobs maken, downloaden en vermelden met Azure CLI](storage-quickstart-blobs-cli.md)|
 |Api's voor Blob-opslag|Algemeen verkrijgbaar|Preview|[Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor .NET](storage-quickstart-blobs-dotnet.md)<br>[Quick Start: blobs beheren met Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Quick Start: blobs beheren met python V12 SDK](storage-quickstart-blobs-python.md)<br>[Quick Start: blobs beheren met Java script V12 SDK in node. js](storage-quickstart-blobs-nodejs.md)|
 |Diagnostische logboeken|Algemeen verkrijgbaar|Preview <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure Storage-analyselogboeken](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Aanmelden Azure Monitor|Preview |Nog niet ondersteund|[Bewakings Azure Storage](../common/monitor-storage.md)|
 |Access-laag archiveren|Preview|Niet ondersteund|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
 |Levenscyclus beheer beleid|Preview|Nog niet ondersteund|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
 |Feed wijzigen|Nog niet ondersteund|Nog niet ondersteund|[Ondersteuning voor feed wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
@@ -49,7 +50,6 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Momentopnamen|Nog niet ondersteund|Nog niet ondersteund|[Een BLOB-moment opname maken en beheren in .NET](storage-blob-snapshots.md)|
 |Voorlopig verwijderen|Nog niet ondersteund|Nog niet ondersteund|[Voorlopig verwijderen voor Azure Storage-blobs](storage-blob-soft-delete.md)|
 |Statische websites|Nog niet ondersteund|Nog niet ondersteund|[Een statische website hosten in Azure Storage](storage-blob-static-website.md)|
-|Aanmelden Azure Monitor|Nog niet ondersteund|Nog niet ondersteund|Nog niet beschikbaar|
 
 <div id="diagnostic-logging"><sup>1</sup> Voor Premium Block Blob Storage-accounts kunnen Diagnostische logboeken (klassiek) niet worden ingeschakeld met behulp van de Azure Portal. Schakel deze in met behulp van Power shell.</div>
 

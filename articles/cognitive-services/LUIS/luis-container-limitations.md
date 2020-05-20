@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592896"
+ms.locfileid: "83659282"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Beperkingen van de container Language Understanding (LUIS)
 
@@ -35,7 +35,7 @@ U kunt een LUIS-toepassing gebruiken als deze geen van de volgende afhankelijkhe
 
 Niet-ondersteunde app-configuraties|Details|
 |--|--|
-|Niet-ondersteunde container culturen| Nederlands ( `nl-NL` )<br>Japans ( `ja-JP` )<br>Duits wordt alleen ondersteund met de [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions).|
+|Niet-ondersteunde container culturen| De talen Nederlands ( `nl-NL` ), Japans ( `ja-JP` ) en Duits ( `de-DE` ) worden alleen ondersteund in de [1.0.2-tokenizer](luis-language-support.md#custom-tokenizer-versions).|
 |Niet-ondersteunde entiteiten voor alle cult uren|Vooraf samengestelde [woordgroepen](luis-reference-prebuilt-keyphrase.md) instantie voor alle cult uren|
 |Niet-ondersteunde entiteiten voor Engels ( `en-US` )-cultuur|[GeographyV2](luis-reference-prebuilt-geographyV2.md) vooraf gemaakte entiteiten|
 |Spraak gebeuren|Externe afhankelijkheden worden niet ondersteund in de container.|

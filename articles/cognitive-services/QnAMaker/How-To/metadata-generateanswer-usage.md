@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474847"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659557"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -64,7 +64,7 @@ U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../q
 De POST-aanvraag gebruikt:
 
 * Vereiste [URI-para meters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Vereiste header-eigenschap `Authorization`,,,, voor beveiliging
+* Vereiste header-eigenschap, `Authorization` ,,, voor beveiliging
 * Vereiste [Eigenschappen van de hoofd tekst](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 De GenerateAnswer-URL heeft de volgende indeling:
@@ -73,7 +73,7 @@ De GenerateAnswer-URL heeft de volgende indeling:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Vergeet niet om de eigenschap HTTP-header `Authorization` van met een waarde van de `EndpointKey` teken reeks in te stellen met een spatie en vervolgens de eindpunt sleutel op de pagina **instellingen** .
+Vergeet niet om de eigenschap HTTP-header van `Authorization` met een waarde van de teken reeks in te stellen `EndpointKey` met een spatie en vervolgens de eindpunt sleutel op de pagina **instellingen** .
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -228,7 +228,7 @@ De reactie op de GenerateAnswer bevat de bijbehorende meta gegevens van de overe
 
 QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt doorzoeken, gebruikt u de `RankerType=QuestionOnly` in de hoofd tekst van de GenerateAnswer-aanvraag om een antwoord te genereren.
 
-U kunt zoeken in de gepubliceerde KB met `isTest=false`of in de test KB met. `isTest=true`
+U kunt zoeken in de gepubliceerde KB met `isTest=false` of in de test KB met `isTest=true` .
 
 ```json
 {
@@ -256,4 +256,4 @@ U kunt zoeken in de gepubliceerde KB met `isTest=false`of in de test KB met. `is
 De pagina **publiceren** bevat ook informatie over het [genereren van een antwoord](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) met postman of krul.
 
 > [!div class="nextstepaction"]
-> [Een Knowledge Base-bot maken](../tutorials/integrate-qnamaker-luis.md)
+> [Analytische gegevens verkrijgen voor uw knowledge base](../how-to/get-analytics-knowledge-base.md)

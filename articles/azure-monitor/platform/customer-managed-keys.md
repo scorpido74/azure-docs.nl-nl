@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/13/2020
-ms.openlocfilehash: 71a28d4a0b69b117039f998891e082740e4269a2
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: aec093d829964c770f59ec7bd328fabdd56e6e86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402562"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654847"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -21,7 +21,7 @@ U wordt aangeraden [beperkingen en beperkingen](#limitations-and-constraints) hi
 
 ## <a name="disclaimers"></a>Disclaimers
 
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw abonnements white list te ontvangen.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Overzicht van door de klant beheerde sleutel (CMK)
 
@@ -30,6 +30,8 @@ Versleuteling bij rest ( https://docs.microsoft.com/azure/security/fundamentals/
 Azure Monitor zorgt ervoor dat alle gegevens in rust worden versleuteld met door Azure beheerde sleutels. Azure Monitor biedt ook een optie voor gegevens versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) en toegankelijk is via opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)   verificatie. Deze sleutel kan [software of hardware-HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview)zijn die is beveiligd. 
 
 Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   werkt.
+
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
 
 De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
@@ -67,7 +69,7 @@ De volgende regels zijn van toepassing:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-inrichtings procedure
 
-1. Abonnements white list: om ervoor te zorgen dat we de vereiste capaciteit in uw regio hebben om een Log Analytics cluster in te richten, moeten we uw abonnement vooraf verifiëren en white list
+1. Abonnements white list: de CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw abonnements white list te ontvangen
 2. Azure Key Vault maken en de sleutel opslaan
 3. Een *cluster* bron maken
 5. Machtigingen verlenen aan uw Key Vault
@@ -270,7 +272,7 @@ Als u de *cluster* bron met de details van de Key Vault *sleutel-id* wilt bijwer
 
 Werk de *cluster* bron-KeyVaultProperties bij met sleutel-id-Details.
 
-**Bijwerken**
+**Bijwerk**
 
 Deze aanvraag van een resource manager is een asynchrone bewerking bij het bijwerken van sleutel-id-Details, terwijl deze synchroon is tijdens het bijwerken van de capaciteits waarde.
 
@@ -595,5 +597,5 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
 - Als u de sleutel versie bijwerkt in Key Vault en de nieuwe sleutel-id-details niet bijwerkt in de *cluster* bron, blijft de log Analytics cluster uw vorige sleutel gebruiken en worden uw gegevens niet meer toegankelijk. De nieuwe sleutel-id-gegevens in de *cluster* bron bijwerken om gegevens opname en de mogelijkheid om gegevens op te vragen, te hervatten.
 
-- Gebruik uw contact personen in micro soft voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.
+- Gebruik uw micro soft-contact persoon om contact met ons op te nemen voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.
 

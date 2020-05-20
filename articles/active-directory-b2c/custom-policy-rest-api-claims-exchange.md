@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330723"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636096"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Walkthrough: REST API claims-uitwisselingen toevoegen aan aangepaste beleids regels in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ U kunt ook de interactie als een technische profiel voor validatie ontwerpen. Di
 
 ## <a name="prepare-a-rest-api-endpoint"></a>Een REST API-eind punt voorbereiden
 
-Voor dit scenario moet u een REST API hebben dat valideert of de Azure AD B2C objectId van een gebruiker is geregistreerd in uw back-end-systeem. Als de REST API is geregistreerd, wordt het gebruikers account saldo geretourneerd. Als dat niet het geval is, registreert de REST API het nieuwe account in de `50.00`Directory en wordt het begin saldo geretourneerd.
+Voor dit scenario moet u een REST API hebben dat valideert of de Azure AD B2C objectId van een gebruiker is geregistreerd in uw back-end-systeem. Als de REST API is geregistreerd, wordt het gebruikers account saldo geretourneerd. Als dat niet het geval is, registreert de REST API het nieuwe account in de Directory en wordt het begin saldo geretourneerd `50.00` .
 
 De volgende JSON-code illustreert de gegevens Azure AD B2C naar uw REST API-eind punt worden verzonden. 
 
@@ -59,7 +59,7 @@ De installatie van het REST API-eind punt valt buiten het bereik van dit artikel
 
 Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. U kunt claims declareren binnen de sectie [claim schema](claimsschema.md) . 
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
 1. Voeg de volgende claims toe aan het **ClaimsSchema** -element.  
@@ -109,7 +109,7 @@ Een onderliggend [technisch profiel](restful-technical-profile.md) biedt onderst
 </ClaimsProvider>
 ```
 
-In dit voor beeld wordt `userLanguage` de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
+In dit voor beeld `userLanguage` wordt de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
 
 De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Zie [Secure rest API](secure-rest-api.md)(Engelstalig) voor meer informatie over het beveiligen van uw rest-api's voor productie.
 
@@ -117,11 +117,11 @@ De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction`
 
 [Gebruikers ritten](userjourneys.md) geven expliciete paden op waarmee een relying party toepassing de gewenste claims voor een gebruiker kan verkrijgen. Een gebruikers traject wordt weer gegeven als een indelings reeks die moet worden gevolgd door een geslaagde trans actie. U kunt Orchestration-stappen toevoegen of aftrekken. In dit geval voegt u een nieuwe Orchestration-stap toe die wordt gebruikt om de gegevens die aan de toepassing worden verstrekt, te verbeteren nadat de gebruiker zich heeft aangemeld of zich aanmeldt via de REST API aanroep.
 
-1. Open het basis bestand van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
-1. Zoek het `<UserJourneys>` -element. Kopieer het hele element en verwijder het vervolgens.
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
+1. Zoek het- `<UserJourneys>` element. Kopieer het hele element en verwijder het vervolgens.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Plak het `<UserJourneys>` in het extensie bestand na het sluiten van het `<ClaimsProviders>` element.
-1. Zoek de `<UserJourney Id="SignUpOrSignIn">`en voeg de volgende Orchestration-stap toe vóór de laatste.
+1. Zoek de `<UserJourney Id="SignUpOrSignIn">` en voeg de volgende Orchestration-stap toe vóór de laatste.
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -131,7 +131,7 @@ De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction`
     </OrchestrationStep>
     ```
 
-1. Refactoreer de laatste Orchestration-stap door de `Order` to te `8`wijzigen in. De laatste twee indelings stappen moeten er als volgt uitzien:
+1. Refactoreer de laatste Orchestration-stap door de `Order` to te wijzigen in `8` . De laatste twee indelings stappen moeten er als volgt uitzien:
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -148,7 +148,7 @@ De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction`
 
 ## <a name="include-a-claim-in-the-token"></a>Een claim in het token toevoegen 
 
-Voeg een uitvoer `balance` claim toe aan het <em> `SocialAndLocalAccounts/` </em> bestand om de claim terug te sturen naar de Relying Party-toepassing. Als u een uitvoer claim toevoegt, wordt de claim verzonden naar het token na een succes volle gebruikers reis. Wijzig het technische profiel element in de sectie Relying Party om toe `balance` te voegen als een uitvoer claim.
+`balance`Voeg een uitvoer claim toe aan het bestand om de claim terug te sturen naar de Relying Party-toepassing <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Als u een uitvoer claim toevoegt, wordt de claim verzonden naar het token na een succes volle gebruikers reis. Wijzig het technische profiel element in de sectie Relying Party om toe te voegen `balance` als een uitvoer claim.
  
 ```xml
 <RelyingParty>
@@ -177,14 +177,14 @@ Sla de bestanden op die u hebt gewijzigd: *TrustFrameworkBase. XML*en *TrustFram
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer een **Framework voor identiteits ervaring**.
 1. Selecteer **aangepast beleid uploaden**en upload vervolgens de beleids bestanden die u hebt gewijzigd: *TrustFrameworkBase. XML*en *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*en *PasswordReset. XML*. 
 1. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
 1. U moet zich kunnen aanmelden met een e-mail adres of een Facebook-account.
-1. Het token dat teruggestuurd naar uw toepassing bevat `balance` de claim.
+1. Het token dat teruggestuurd naar uw toepassing bevat de `balance` claim.
 
 ```json
 {
@@ -209,9 +209,6 @@ Sla de bestanden op die u hebt gewijzigd: *TrustFrameworkBase. XML*en *TrustFram
   ...
 }
 ```
-
-## <a name="next-steps"></a>Volgende stappen
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

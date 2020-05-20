@@ -10,18 +10,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
-ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870505"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660541"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
-Dit artikel bevat een inleiding tot het uitvoeren van Oracle-oplossingen met behulp van Azure-infra structuur. Zie ook gedetailleerde inleiding tot beschik bare [Oracle VM-installatie kopieën](oracle-vm-solutions.md) in azure Marketplace en de mogelijkheid om [Azure te verbinden met Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md).
+Dit artikel bevat een inleiding tot het uitvoeren van Oracle-oplossingen met behulp van Azure-infra structuur. Zie ook gedetailleerde inleiding tot beschik bare [WebLogic Server Azure-toepassingen](oracle-weblogic.md), [Oracle-VM-installatie kopieën](oracle-vm-solutions.md) in azure Marketplace en de mogelijkheid om [Azure te verbinden met Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md).
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Oracle-data bases in azure-infra structuur
 
@@ -35,9 +35,13 @@ U kunt er ook voor kiezen om Oracle Database in te stellen op een niet-Oracle Li
 
 Optioneel configureren met meerdere gekoppelde schijven en de database prestaties verbeteren door het installeren van Oracle Automated Storage Management (ASM).
 
+## <a name="weblogic-server-with-azure-service-integrations"></a>WebLogic-Server met Azure-service-integraties
+
+Kies uit een verscheidenheid aan WebLogic Server Azure-toepassingen om uw Cloud traject te versnellen.  Er zijn verschillende vooraf geconfigureerde Azure-service-integraties beschikbaar, waaronder data base, Azure-app gateway en Azure Active Directory.
+
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Toepassingen op Oracle Linux en WebLogic-Server
 
-Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings systemen. De volgende installatie kopieën zijn beschikbaar in azure Marketplace:
+Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings systemen. De volgende installatie kopieën voor virtuele machines zijn beschikbaar in azure Marketplace:
 
 * Oracle WebLogic Server 12.1.2
 
@@ -55,7 +59,7 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 * Maak een back-up van uw Oracle-Vm's met [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Maak een back-up van uw Oracle Database met behulp van Oracle RMAN en gebruik eventueel [Azure Blob-zekering](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) om een [zeer redudant Azure Blob Storage-account](https://docs.microsoft.com/azure/storage/common/storage-redundancy) te koppelen en uw rman-back-ups ernaar te schrijven voor extra tolerantie.
+* Maak een back-up van uw Oracle Database met behulp van Oracle RMAN en gebruik eventueel [Azure Blob-zekering](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) om een [uiterst redundant Azure Blob Storage-account](https://docs.microsoft.com/azure/storage/common/storage-redundancy) te koppelen en uw rman-back-ups naar het te schrijven voor toegevoegde tolerantie.
 
 ## <a name="integration-of-azure-with-oci"></a>Integratie van Azure met OCI
 
@@ -89,6 +93,8 @@ Gebruik Oracle Database Cloud Services (autonome data base, RAC, Exadata, DBaaS,
 De implementatie van Oracle-toepassingen in Azure is gebaseerd op een model voor het maken van een eigen licentie. Er wordt ervan uitgegaan dat u beschikt over een juiste licentie voor het gebruik van Oracle-software en dat er een actuele ondersteunings overeenkomst is met Oracle. Oracle heeft de mobiliteit van licenties van on-premises naar Azure gegarandeerd. Raadpleeg de [Veelgestelde vragen over](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)Oracle-Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over [WebLogic Server Azure-toepassingen](oracle-weblogic.md) en de Azure service-integraties die worden ondersteund.
 
 * Meer informatie over het implementeren van [Oracle-VM-installatie kopieën](oracle-vm-solutions.md) in de Azure-infra structuur.
 

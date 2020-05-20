@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141951"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650963"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling (preview-versie)
+# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling
 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Service Bus, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
@@ -38,8 +38,6 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 
 > [!IMPORTANT]
 > Deze functie wordt ondersteund met de **Premium** -laag van Azure service bus. Zie het artikel [service Buss voor Premium en Standard Messa ging](service-bus-premium-messaging.md) voor meer informatie over de Premium-laag.
->
-> Deze functie is momenteel beschikbaar als **Preview-versie**. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt toevoegen met Azure Portal
@@ -59,11 +57,11 @@ Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio 
 
 Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ **Service Bus**in de zoek balk.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
-5. Klik boven aan de pagina op het tabblad **Private endpoint Connections (preview)**
+5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina
 6. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
     ![Knop persoonlijk eind punt toevoegen](./media/private-link-service/private-link-service-3.png)
@@ -85,7 +83,7 @@ Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken 
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias**, voert u de volgende stappen uit:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Service Bus naam ruimte in de Azure Portal en het `/subscriptions/`gedeelte van de URI te kopiëren vanaf. Zie de volgende afbeelding voor een voor beeld. 
+        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Service Bus naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Zie de volgende afbeelding voor een voor beeld. 
         2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft. 
         3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt. 
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina. 
@@ -231,46 +229,33 @@ U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke e
 
 Maak eerst een virtuele machine aan de hand van de stappen in [een virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
-Op het tabblad **netwerk** :
+Op het tabblad **netwerk** : 
 
-1. Geef het **virtuele netwerk** en het **subnet**op. U kunt een nieuw virtueel netwerk maken of een bestaande selecteren. Als u een bestaand item selecteert, moet u ervoor zorgen dat de regio overeenkomt.
-1. Geef een **open bare IP-** resource op.
-1. Selecteer voor **NIC-netwerk beveiligings groep**de optie **geen**.
-1. Selecteer **Nee**voor **taak verdeling**.
+1. Geef het **virtuele netwerk** en het **subnet**op. U moet het Virtual Network selecteren waarop u het persoonlijke eind punt hebt geïmplementeerd.
+2. Geef een **open bare IP-** resource op.
+3. Selecteer voor **NIC-netwerk beveiligings groep**de optie **geen**.
+4. Selecteer **Nee**voor **taak verdeling**.
 
-Open de opdracht regel en voer de volgende opdracht uit:
+Maak verbinding met de virtuele machine, open de opdracht regel en voer de volgende opdracht uit:
 
 ```console
-nslookup <your-service-bus-namespace-name>.servicebus.windows.net
+nslookup <service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Als u de opdracht NS lookup uitvoert om het IP-adres van een Service Bus naam ruimte via een openbaar eind punt op te lossen, ziet u een resultaat dat er als volgt uitziet:
+U ziet een resultaat dat er als volgt uitziet. 
 
 ```console
-c:\ >nslookup <your-service-bus-namespace-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
-```
-
-Als u de opdracht NS lookup uitvoert om het IP-adres van een Service Bus naam ruimte op te lossen via een persoonlijk eind punt, ziet u een resultaat dat er als volgt uitziet:
-
-```console
-c:\ >nslookup your_service-bus-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
+Name:    <service-bus-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
 
 **Prijzen**: Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
 
-**Beperkingen**: privé-eind punt voor Azure service bus bevindt zich in de open bare preview. Deze functie is beschikbaar in alle open bare Azure-regio's.
+**Beperkingen**: deze functie is beschikbaar in alle open bare Azure-regio's.
 
 **Maximum aantal privé-eind punten per service bus naam ruimte**: 120.
 

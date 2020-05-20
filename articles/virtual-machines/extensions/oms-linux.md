@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34dbde25106dbb82fb9548ad53f368230f2c728c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250554"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654409"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>De virtuele-machine-extensie Log Analytics voor Linux
 
@@ -43,6 +43,7 @@ De volgende tabel bevat een overzicht van de versie van de Log Analytics VM-exte
 
 | Versie van de Linux VM-extensie Log Analytics | Versie van Log Analytics agent bundel | 
 |--------------------------------|--------------------------|
+| 1.13.9 | 1.13.3-3 |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -86,7 +87,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -99,14 +100,14 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 ```
 
 >[!NOTE]
->In het bovenstaande schema wordt ervan uitgegaan dat deze wordt geplaatst op het hoofd niveau van de sjabloon. Als u de virtuele machine in de sjabloon plaatst, moeten de `type` eigenschappen en `name` worden gewijzigd, zoals hieronder beschreven. [further down](#template-deployment)
+>In het bovenstaande schema wordt ervan uitgegaan dat deze wordt geplaatst op het hoofd niveau van de sjabloon. Als u de virtuele machine in de sjabloon plaatst, `type` `name` moeten de eigenschappen en worden gewijzigd, zoals hieronder beschreven. [further down](#template-deployment)
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld |
+| Name | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| uitgever | Micro soft. EnterpriseCloud. monitoring |
+| publisher | Micro soft. EnterpriseCloud. monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
 | workspaceId (bijvoorbeeld) | 6f680a37-00c6-41c7-a93f-1437e3462574 |

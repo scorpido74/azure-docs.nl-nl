@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure Automation runbook oplossen
-description: Meer informatie over het oplossen van problemen die kunnen optreden met Azure Automation runbooks.
+description: In dit artikel leest u hoe u problemen met Azure Automation runbooks oplost en oplost.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855090"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680903"
 ---
-# <a name="troubleshoot-runbook-errors"></a>Problemen met runbook oplossen
+# <a name="troubleshoot-runbook-issues"></a>Problemen met runbook oplossen
 
- In dit artikel worden verschillende runbook-fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Azure Automation-account kunt u uw modules bijwerken naar de nieuwste versie door gebruik te maken van de [Azure PowerShell-modules in azure Automation bij te werken](../automation-update-azure-modules.md).
+ In dit artikel worden runbook-problemen beschreven die zich kunnen voordoen en hoe u deze kunt oplossen. Zie [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md)voor algemene informatie.
 
 ## <a name="diagnose-runbook-issues"></a>Problemen met runbook vaststellen
 
@@ -73,7 +70,7 @@ Zorg ervoor dat uw uitvoeren als-account [machtigingen heeft voor toegang tot al
 
 ### <a name="issue"></a>Probleem
 
-Er wordt een van de volgende fouten weer gegeven wanneer u met `Connect-AzAccount` de cmdlet werkt:
+Er wordt een van de volgende fouten weer gegeven wanneer u met de `Connect-AzAccount` cmdlet werkt:
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -167,7 +164,7 @@ Als u probeert toegang te krijgen tot resources in een ander abonnement, voert u
 
 1. Kopieer de naam van het abonnement.
 
-1. U kunt nu de volgende runbook-code gebruiken om de machtigingen van uw Automation-account te testen voor het andere abonnement. Vervang `"\<CertificateThumbprint\>"` door de waarde die u in stap 1 hebt gekopieerd. Vervang `"\<SubscriptionName\>"` door de waarde die u in stap 4 hebt gekopieerd.
+1. U kunt nu de volgende runbook-code gebruiken om de machtigingen van uw Automation-account te testen voor het andere abonnement. Vervang door `"\<CertificateThumbprint\>"` de waarde die u in stap 1 hebt gekopieerd. Vervang door `"\<SubscriptionName\>"` de waarde die u in stap 4 hebt gekopieerd.
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -188,7 +185,7 @@ Als u probeert toegang te krijgen tot resources in een ander abonnement, voert u
 
 ### <a name="issue"></a>Probleem
 
-U ontvangt de volgende fout melding wanneer u werkt met `Select-AzureSubscription`de `Select-AzureRMSubscription`cmdlet, `Select-AzSubscription` , of:
+U ontvangt de volgende fout melding wanneer u werkt met `Select-AzureSubscription` de `Select-AzureRMSubscription` cmdlet,, of `Select-AzSubscription` :
 
 ```error
 The subscription named <subscription name> cannot be found.
@@ -209,7 +206,7 @@ Volg deze stappen om te bepalen of u hebt geverifieerd voor Azure en toegang heb
 1. Om ervoor te zorgen dat uw script zelfstandig werkt, test u het buiten Azure Automation.
 1. Zorg ervoor dat uw script de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) uitvoert voordat u de `Select-*` cmdlet uitvoert.
 1. Voeg `Disable-AzContextAutosave –Scope Process` aan het begin van uw runbook toe. Deze cmdlet zorgt ervoor dat alle referenties alleen van toepassing zijn op de uitvoering van het huidige runbook.
-1. Als het fout bericht nog steeds wordt weer gegeven, wijzigt u de code `AzContext` door de `Connect-AzAccount`para meter toe te voegen voor en voert u de code uit.
+1. Als het fout bericht nog steeds wordt weer gegeven, wijzigt u de code door de para meter toe te voegen `AzContext` voor `Connect-AzAccount` en voert u de code uit.
 
    ```powershell
    Disable-AzContextAutosave –Scope Process
@@ -234,7 +231,7 @@ Het runbook gebruikt niet de juiste context wanneer het wordt uitgevoerd.
 
 ### <a name="resolution"></a>Oplossing
 
-De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat `Start-AzureRmAutomationRunbook` u het runbook `AzureRmContext` van de client de context door geven aan de cmdlet in de para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld `Process` op om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [abonnementen](../automation-runbook-execution.md#subscriptions)voor meer informatie.
+De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat u het runbook van de client de context door geven aan de `Start-AzureRmAutomationRunbook` cmdlet in de `AzureRmContext` para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld op `Process` om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [abonnementen](../automation-runbook-execution.md#subscriptions)voor meer informatie.
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -334,7 +331,7 @@ Wanneer een runbook een door een PnP-Power shell gegenereerd object naar de Azur
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem treedt meestal op wanneer Azure Automation runbooks verwerkt die PnP-Power shell-cmdlets aanroepen `add-pnplistitem`, bijvoorbeeld, zonder dat de retour objecten worden onderschept.
+Dit probleem treedt meestal op wanneer Azure Automation runbooks verwerkt die PnP-Power shell-cmdlets aanroepen, bijvoorbeeld, `add-pnplistitem` zonder dat de retour objecten worden onderschept.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -370,7 +367,7 @@ Deze fout wordt veroorzaakt wanneer de Power shell-engine de cmdlet die u in uw 
 Gebruik een van de volgende oplossingen om het probleem op te lossen:
 
 * Zorg ervoor dat u de naam van de cmdlet correct hebt ingevoerd.
-* Zorg ervoor dat de cmdlet bestaat in uw Automation-account en dat er geen conflicten zijn. Als u wilt controleren of de cmdlet aanwezig is, opent u een runbook in de bewerkings modus en zoekt u naar de cmdlet die u wilt `Get-Command <CommandName>`zoeken in de bibliotheek of voert u uit. Nadat u hebt gecontroleerd of de cmdlet beschikbaar is voor het account en dat er geen naam conflicten met andere cmdlets of runbooks zijn, voegt u de cmdlet toe aan het canvas. Zorg ervoor dat u een geldige para meter in uw runbook gebruikt.
+* Zorg ervoor dat de cmdlet bestaat in uw Automation-account en dat er geen conflicten zijn. Als u wilt controleren of de cmdlet aanwezig is, opent u een runbook in de bewerkings modus en zoekt u naar de cmdlet die u wilt zoeken in de bibliotheek of voert u uit `Get-Command <CommandName>` . Nadat u hebt gecontroleerd of de cmdlet beschikbaar is voor het account en dat er geen naam conflicten met andere cmdlets of runbooks zijn, voegt u de cmdlet toe aan het canvas. Zorg ervoor dat u een geldige para meter in uw runbook gebruikt.
 * Als er sprake is van een naam conflict en de cmdlet is beschikbaar in twee verschillende modules, lost u het probleem op door de volledig gekwalificeerde naam voor de cmdlet te gebruiken. U kunt bijvoorbeeld `ModuleName\CmdletName` gebruiken.
 * Als u het runbook on-premises uitvoert in een Hybrid worker-groep, moet u ervoor zorgen dat de module en de cmdlet zijn geïnstalleerd op de computer die als host fungeert voor de Hybrid Worker.
 
@@ -378,7 +375,7 @@ Gebruik een van de volgende oplossingen om het probleem op te lossen:
 
 ### <a name="issue"></a>Probleem
 
-U ontvangt deze fout melding wanneer u werkt `Add-AzAccount`met, een alias voor de `Connect-AzAccount` cmdlet:
+U ontvangt deze fout melding wanneer u werkt met `Add-AzAccount` , een alias voor de `Connect-AzAccount` cmdlet:
 
 ```error
 Add-AzAccount : Object reference not set to an instance of an object
@@ -386,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden als het runbook de juiste stappen niet uitvoert voordat wordt `Add-AzAccount` aangeroepen om het Automation-account toe te voegen. Een voor beeld van een van de benodigde stappen is aanmelden met een uitvoeren als-account. Zie [runbook-uitvoering in azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)voor de juiste bewerkingen voor het gebruik van uw runbook.
+Deze fout kan optreden als het runbook de juiste stappen niet uitvoert voordat wordt aangeroepen `Add-AzAccount` om het Automation-account toe te voegen. Een voor beeld van een van de benodigde stappen is aanmelden met een uitvoeren als-account. Zie [runbook-uitvoering in azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)voor de juiste bewerkingen voor het gebruik van uw runbook.
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Scenario: de object verwijzing is niet ingesteld op een exemplaar van een object
 
@@ -448,11 +445,9 @@ Als uw runbook een Power shell-werk stroom is, worden complexe objecten in een g
 
 Gebruik een van de volgende oplossingen om dit probleem op te lossen:
 
-* Als u complexe objecten van de ene cmdlet naar de andere wilt verpakken, plaatst u deze `InlineScript` cmdlets in een activiteit.
+* Als u complexe objecten van de ene cmdlet naar de andere wilt verpakken, plaatst u deze cmdlets in een `InlineScript` activiteit.
 * Geef de naam of waarde die u nodig hebt uit het complexe object in plaats van het volledige object door te geven.
 * Gebruik een Power shell-runbook in plaats van een Power shell workflow-runbook.
-
-
 
 ## <a name="scenario-400-bad-request-status-when-calling-a-webhook"></a><a name="expired webhook"></a>Scenario: 400 ongeldige aanvraag status bij het aanroepen van een webhook
 
@@ -476,7 +471,7 @@ Als de webhook is uitgeschakeld, kunt u deze opnieuw inschakelen via de Azure Po
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u de `Get-AzAutomationJobOutput` cmdlet uitvoert, wordt het volgende fout bericht weer gegeven:
+Wanneer u de cmdlet uitvoert, wordt het volgende fout bericht weer gegeven `Get-AzAutomationJobOutput` :
 
 ```error
 429: The request rate is currently too large. Please try again
@@ -532,19 +527,19 @@ Deze fout treedt op als gevolg van een van de volgende problemen:
 
 * **Geheugen limiet.** Een taak kan mislukken als er meer dan 400 MB aan geheugen wordt gebruikt. De gedocumenteerde limieten voor geheugen die aan een sandbox zijn toegewezen, worden gevonden bij [limieten voor Automation-Service](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). 
 * **Netwerk sockets.** Azure-sandboxes zijn beperkt tot 1.000 gelijktijdige netwerk sockets. Zie voor meer informatie [Automation-Service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
-* **Module is niet compatibel.** Module-afhankelijkheden zijn mogelijk niet juist. In dit geval retourneert uw runbook meestal een `Command not found` of `Cannot bind parameter` -bericht.
+* **Module is niet compatibel.** Module-afhankelijkheden zijn mogelijk niet juist. In dit geval retourneert uw runbook meestal een `Command not found` of- `Cannot bind parameter` bericht.
 * **Geen verificatie met Active Directory voor sandbox.** Uw runbook heeft geprobeerd een uitvoerbaar of subproces dat wordt uitgevoerd in een Azure sandbox aan te roepen. Het configureren van runbooks om te verifiëren met Azure AD met behulp van de Azure Active Directory Authentication Library (ADAL) wordt niet ondersteund.
 * **Te veel uitzonderings gegevens.** Uw runbook heeft geprobeerd te veel uitzonderings gegevens te schrijven naar de uitvoer stroom.
 
 ### <a name="resolution"></a>Oplossing
 
-* **Geheugen limiet, netwerk sockets.** Voorgestelde manieren om binnen de geheugen limieten te werken, zijn om de werk belasting over meerdere runbooks te verdelen, minder gegevens in het geheugen te verwerken, overbodige uitvoer van runbooks te vermijden en te bepalen hoeveel controle punten worden geschreven naar uw runbooks in Power shell workflow. Gebruik de methode Clear, zoals `$myVar.clear`, om variabelen te wissen en direct te `[GC]::Collect` gebruiken om garbagecollection onmiddellijk uit te voeren. Deze acties verminderen het geheugen gebruik van uw runbook tijdens runtime.
+* **Geheugen limiet, netwerk sockets.** Voorgestelde manieren om binnen de geheugen limieten te werken, zijn om de werk belasting over meerdere runbooks te verdelen, minder gegevens in het geheugen te verwerken, overbodige uitvoer van runbooks te vermijden en te bepalen hoeveel controle punten worden geschreven naar uw runbooks in Power shell workflow. Gebruik de methode Clear, zoals `$myVar.clear` , om variabelen te wissen en `[GC]::Collect` direct te gebruiken om garbagecollection onmiddellijk uit te voeren. Deze acties verminderen het geheugen gebruik van uw runbook tijdens runtime.
 * **Module is niet compatibel.** Werk uw Azure-modules bij door de stappen te volgen in de [Azure Automation Azure PowerShell-modules bij te werken](../automation-update-azure-modules.md).
 * **Geen verificatie met Active Directory voor sandbox.** Wanneer u zich met een runbook verifieert bij Azure AD, moet u ervoor zorgen dat de Azure AD-module beschikbaar is in uw Automation-account. Zorg ervoor dat u het uitvoeren als-account de benodigde machtigingen verleent om de taken uit te voeren die door het runbook worden geautomatiseerd.
 
   Als uw runbook geen uitvoerbaar of subproces kan aanroepen dat wordt uitgevoerd in een Azure-sandbox, gebruikt u het runbook op een [Hybrid Runbook worker](../automation-hrw-run-runbooks.md). Hybrid Workers worden niet beperkt door de geheugen-en netwerk limieten die Azure-sandboxes hebben.
 
-* **Te veel uitzonderings gegevens.** Er is een limiet van 1 MB voor de uitvoer stroom van de taak. Zorg ervoor dat uw runbook aanroepen naar een uitvoerbaar bestand of subproces samensluit met behulp `try` van en `catch` blokken. Als de bewerkingen een uitzonde ring veroorzaken, laat u de code het bericht van de uitzonde ring in een Automation-variabele schrijven. Met deze techniek wordt voor komen dat het bericht naar de uitvoer stroom van de taak wordt geschreven.
+* **Te veel uitzonderings gegevens.** Er is een limiet van 1 MB voor de uitvoer stroom van de taak. Zorg ervoor dat uw runbook aanroepen naar een uitvoerbaar bestand of subproces samensluit met behulp van `try` en `catch` blokken. Als de bewerkingen een uitzonde ring veroorzaken, laat u de code het bericht van de uitzonde ring in een Automation-variabele schrijven. Met deze techniek wordt voor komen dat het bericht naar de uitvoer stroom van de taak wordt geschreven.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Scenario: Power shell-taak mislukt met fout bericht ' kan methode niet aanroepen '
 
@@ -620,7 +615,7 @@ Deze fout wordt waarschijnlijk veroorzaakt door het gebruik van een onvolledige 
 
 ### <a name="resolution"></a>Oplossing
 
-Het gebruik van AZ en AzureRM-cmdlets in hetzelfde runbook wordt niet aanbevolen. Zie [Migrating to AZ modules](../shared-resources/modules.md#migrating-to-az-modules)(Engelstalig) voor meer informatie over het juiste gebruik van deze modules.
+Het gebruik van AZ en AzureRM-cmdlets in hetzelfde runbook wordt niet aanbevolen. Zie [migreren naar AZ-modules](../shared-resources/modules.md#migrate-to-az-modules)voor meer informatie over het juiste gebruik van de modules.
 
 ## <a name="scenario-access-denied-when-using-azure-sandbox-for-runbook-or-application"></a><a name="access-denied-azure-sandbox"></a>Scenario: toegang geweigerd bij gebruik van Azure sandbox voor runbook of toepassing
 
@@ -670,8 +665,8 @@ Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](https://docs.m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw probleem hier niet wordt weer gegeven of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor meer ondersteuning:
+Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor meer ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Met Azure-ondersteuning kunt u verbinding maken met de Azure-Community voor antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Met Azure-ondersteuning kunt u verbinding maken met de Azure-Community voor antwoorden, ondersteuning en experts.
 * Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

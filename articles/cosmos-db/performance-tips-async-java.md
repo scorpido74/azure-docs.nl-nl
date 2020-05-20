@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 461602aee6d88f8d8f829fcf89e3433a8185e34d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982544"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658939"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB async Java SDK v2
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982544"
 > 
 
 > [!IMPORTANT]  
-> Dit is *niet* de meest recente Java-SDK voor Azure Cosmos db. Overweeg Azure Cosmos DB Java SDK v4 te gebruiken voor uw project. Als u een upgrade wilt uitvoeren, volgt u de instructies in de hand leiding [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) and the [reactor VS RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+> Dit is *niet* de meest recente Java-SDK voor Azure Cosmos db. U moet uw project upgraden naar [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) en vervolgens de Azure Cosmos DB Java SDK v4- [prestatie tips](performance-tips-java-sdk-v4-sql.md)lezen. Volg de instructies in de hand leiding [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) en [reactor versus RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) om een upgrade uit te voeren. 
 > 
 > De tips voor betere prestaties in dit artikel zijn alleen voor de Azure Cosmos DB asynchrone Java SDK v2. Zie de Azure Cosmos DB async Java SDK v2 [release opmerkingen](sql-api-sdk-async-java.md), de [maven-opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)en Azure Cosmos DB async Java SDK v2 [Troubleshooting Guide (Engelstalig](troubleshoot-java-async-sdk.md) ) voor meer informatie.
 >
@@ -154,7 +154,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
 * **Adres Sering op basis van namen gebruiken**
 
-    Gebruik op naam gebaseerde adres Sering, waarbij koppelingen de indeling `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`hebben, in plaats van\_SelfLinks (Self), die de `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` indeling hebben om te voor komen dat ResourceIds worden opgehaald van alle resources die worden gebruikt om de koppeling te maken. Als deze resources opnieuw worden gemaakt (mogelijk met dezelfde naam), is het mogelijk dat deze niet meer in de cache worden opgeslagen.
+    Gebruik op naam gebaseerde adres Sering, waarbij koppelingen de indeling hebben `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` , in plaats van SelfLinks ( \_ Self), die de indeling hebben `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` om te voor komen dat ResourceIds worden opgehaald van alle resources die worden gebruikt om de koppeling te maken. Als deze resources opnieuw worden gemaakt (mogelijk met dezelfde naam), is het mogelijk dat deze niet meer in de cache worden opgeslagen.
 
    <a id="tune-page-size"></a>
 
@@ -209,13 +209,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
       });
     ```
 
-    Op basis van het type van uw werk moet u de juiste bestaande RxJava-planner gebruiken voor uw werk. Lees hier [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html).
+    Op basis van het type van uw werk moet u de juiste bestaande RxJava-planner gebruiken voor uw werk. Lees hier [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html) .
 
     Raadpleeg de [github-pagina](https://github.com/Azure/azure-cosmosdb-java) voor Azure Cosmos DB ASYNC Java SDK v2 voor meer informatie.
 
 * **Logboek registratie van Netty uitschakelen**
 
-    Logboek registratie van de Netty-bibliotheek is intensieve en moet worden uitgeschakeld (de configuratie kan niet worden onderdrukt) om extra CPU-kosten te voor komen. Als u zich niet in de foutopsporingsmodus bevindt, schakelt u de logboek registratie van Netty uit. Als u dus log4j gebruikt om de extra CPU-kosten te verwijderen die zijn gemaakt ``org.apache.log4j.Category.callAppenders()`` door van Netty, voegt u de volgende regel toe aan de code basis:
+    Logboek registratie van de Netty-bibliotheek is intensieve en moet worden uitgeschakeld (de configuratie kan niet worden onderdrukt) om extra CPU-kosten te voor komen. Als u zich niet in de foutopsporingsmodus bevindt, schakelt u de logboek registratie van Netty uit. Als u dus log4j gebruikt om de extra CPU-kosten te verwijderen die zijn gemaakt door ``org.apache.log4j.Category.callAppenders()`` van Netty, voegt u de volgende regel toe aan de code basis:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -296,7 +296,7 @@ Raadpleeg deze instructies voor andere platforms (Red Hat, Windows, Mac, enzovoo
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse\<t> of FeedResponse\<t>.
+    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse \< t> of FeedResponse \< t>.
 
     ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Asynchrone Java SDK v2 (maven com. micro soft. Azure:: Azure-cosmosdb)
 

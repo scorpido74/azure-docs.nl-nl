@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 092b548e73330fe80ef10b2e25d9ab7883b256ac
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ce867d60c53b9befe5b4480693b54d2c9eba018
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597791"
+ms.locfileid: "83650046"
 ---
 # <a name="azure-stream-analytics-external-availability-error-codes"></a>Fout codes voor externe Beschik baarheid Azure Stream Analytics
 
@@ -20,11 +20,7 @@ U kunt activiteiten logboeken en resource Logboeken gebruiken om fouten in het o
 ## <a name="externalserviceunavailable"></a>ExternalServiceUnavailable
 
 * **Oorzaak**: een service is tijdelijk niet beschikbaar.
-* **Aanbeveling**: de stream Analytics blijft proberen om de service te bereiken. 
-
-## <a name="kafkaservernotavailable"></a>KafkaServerNotAvailable
-
-* **Oorzaak**: de Kafka-server is niet beschikbaar.
+* **Aanbeveling**: de stream Analytics blijft proberen om de service te bereiken.
 
 ## <a name="eventhubmessagingerror"></a>EventHubMessagingError
 

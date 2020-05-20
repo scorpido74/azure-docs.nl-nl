@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418487"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674566"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visueel ontwerpen in Azure Data Factory
 
@@ -34,6 +34,14 @@ Klik op het potlood pictogram om het **ontwerp canvas**te openen.
 Hier maakt u een ontwerp van de pijp lijnen, activiteiten, gegevens sets, gekoppelde services, gegevens stromen, triggers en Integration Runtimes waaruit uw fabriek bestaat. Zie [gegevens kopiëren met behulp van de Kopieer activiteit](tutorial-copy-data-portal.md)om aan de slag te gaan met het maken van een pijp lijn met behulp van het ontwerp doek. 
 
 De standaard ervaring voor het ontwerpen van visuele elementen werkt rechtstreeks met de Data Factory-service. De integratie van Azure opslag plaatsen git of GitHub wordt ook ondersteund om broncode beheer en samen werking mogelijk te maken voor werk op uw data factory-pijp lijnen. Zie [broncode beheer in azure Data Factory](source-control.md)voor meer informatie over de verschillen tussen deze ontwerp ervaring.
+
+### <a name="properties-pane"></a>Deelvenster Eigenschappen
+
+Voor resources op het hoogste niveau, zoals pijp lijnen, gegevens sets en data stromen, kunnen eigenschappen op hoog niveau worden bewerkt in het deel venster Eigenschappen aan de rechter kant van het canvas. Het deel venster Eigenschappen bevat eigenschappen zoals naam, beschrijving, aantekeningen en andere eigenschappen op hoog niveau. Subbronnen, zoals pijplijn activiteiten en gegevens stroom transformaties, worden bewerkt met behulp van het deel venster aan de onderkant van het canvas. 
+
+![Canvas ontwerpen](media/author-visually/properties-pane.png)
+
+Het deel venster Eigenschappen is standaard alleen open bij het maken van resources. Als u deze wilt bewerken, klikt u op het deel venster Eigenschappen in de rechter bovenhoek van het canvas.
 
 ## <a name="expressions-and-functions"></a>Expressies en functies
 

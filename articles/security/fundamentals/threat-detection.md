@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981470"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653616"
 ---
 # <a name="azure-advanced-threat-detection"></a>Geavanceerde bedreigingsdetectie van Azure
 
@@ -268,7 +268,7 @@ SQL Database bedreigings detecties gebruiken een van de volgende detectie method
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway Web Application firewall
 
-[Web Application firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) is een functie van [Azure-toepassing gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) die beveiliging biedt voor webtoepassingen die gebruikmaken van een toepassings gateway voor standaard functies voor [het bezorgen](https://kemptechnologies.com/in/application-delivery-controllers) van de levering van toepassingen. Firewall voor webtoepassingen doet dit door ze te beschermen tegen de meeste van de [OWASP (open Web Application Security project) van de Top 10 van veelvoorkomende webproblemen](https://www.owasp.org/index.php/Top_10_2010-Main).
+[Web Application firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) is een functie van [Azure-toepassing gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) die beveiliging biedt voor webtoepassingen die gebruikmaken van een toepassings gateway voor standaard functies voor [het bezorgen](https://kemptechnologies.com/in/application-delivery-controllers) van de levering van toepassingen. Firewall voor webtoepassingen doet dit door ze te beschermen tegen de meeste van de [OWASP (open Web Application Security project) van de Top 10 van veelvoorkomende webproblemen](https://owasp.org/www-project-top-ten/).
 
 ![Firewall diagram van webtoepassing Application Gateway](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -344,9 +344,9 @@ Met hulpprogramma's om schaduw-IT te onthullen, risico's te beoordelen, beleid a
 |---|---|
 | Ontdekken | Onthul Shadow IT met Cloud App Security. Krijg meer inzicht door apps, activiteiten, gebruikers, gegevens en bestanden in uw cloudomgeving te detecteren. Detecteer apps van derden die zijn verbonden met uw cloud.|
 |Onderzoeken | Onderzoek uw cloud-apps met forensische hulpprogramma's voor de cloud om riskante apps, specifieke gebruikers en bestanden in uw netwerk diepgaand te onderzoeken. Vind patronen in de gegevens die vanuit de cloud worden verzameld. U kunt rapporten genereren om uw cloud te bewaken. |
-| Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
+| Controle | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
 | Beveiligen | Gebruik Cloud App Security om toepassingen goed te keuren of te verbieden, preventie van gegevens verlies af te dwingen, machtigingen te beheren en te delen en aangepaste rapporten en waarschuwingen te genereren. |
-| Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
+| Controle | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
 | | |
 
 

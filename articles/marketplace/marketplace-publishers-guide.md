@@ -1,22 +1,22 @@
 ---
-title: Publicatie handleiding voor commerciële Marketplace
-description: Een overzicht van de commerciële Marketplace voor app-en service-uitgevers.
+title: Micro soft Commercial Marketplace-publicatie handleiding
+description: Een overzicht van de commerciële Marketplace voor micro soft-partners die aanbiedingen willen publiceren naar Microsoft AppSource en Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261989"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657855"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Publicatie handleiding voor commerciële Marketplace
 
-De Marketplace-publicatie handleiding is ontworpen om nieuwe en bestaande uitgevers te helpen meer te weten komen over het gebruik van de winkel op de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) om hun bedrijf in samen werking met micro soft te laten groeien door toepassingen en services weer te geven.
+Deze publicatie handleiding is ontworpen om nieuwe en bestaande uitgevers te helpen bij het weer geven van toepassingen en services in de commerciële Marketplace-winkel, [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com), om hun bedrijf in samen werking met micro soft te laten groeien.
 
 >[!Note]
 >De Marketplace verwijst naar Azure Marketplace en AppSource.  Bekijk [één Marketplace, twee winkelen](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) voor meer informatie.
@@ -30,7 +30,7 @@ Deze hand leiding bevat de volgende onderwerpen:
 
 Deze hand leiding bevat technische en zakelijke informatie over de stappen die u moet nemen voordat u uw toepassingen en services vermeldt. Gebruik de inhouds opgave om naar verschillende secties van de hand leiding te gaan en rechtstreeks naar de belangrijkste onderwerpen te gaan.
 
-Als u vragen hebt over Azure Marketplace en AppSource, kunt u ons een bericht sturen onder **probleem type** > **Marketplace voor onboarding**. Het team voor de voor bereiding van Marketplace-uitgevers is blij om te helpen! 
+Als u vragen hebt over Azure Marketplace en AppSource, kunt u ons een bericht sturen onder **probleem type**  >  **Marketplace voor onboarding**. Het team voor de voor bereiding van Marketplace-uitgevers is blij om te helpen! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Voor delen van deelname aan Marketplace 
 

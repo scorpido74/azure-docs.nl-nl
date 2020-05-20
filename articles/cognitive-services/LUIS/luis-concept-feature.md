@@ -2,13 +2,13 @@
 title: Functies-LUIS
 description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591893"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682158"
 ---
 # <a name="machine-learning-ml-features"></a>Functies voor machine learning (ML)
 
@@ -38,9 +38,9 @@ Wanneer u uw LUIS-app nodig hebt om nieuwe items voor het concept te generaliser
 Met een woordgroepen lijst, beschouwt LUIS context en generaliseert om items te identificeren die vergelijkbaar zijn met, maar niet exact overeenkomen met de tekst.
 
 Stappen voor het gebruik van een woordgroepen lijst:
-* Beginnen met een door de machine geleerde entiteit
+* Beginnen met een machine learning-entiteit
     * Voorbeelden van utterances toevoegen
-    * Label met een door de machine geleerde entiteit
+    * Label met een machine learning-entiteit
 * Een woordgroepen lijst toevoegen
     * Woorden met een vergelijk bare betekenis toevoegen: Voeg **niet** alle mogelijke woorden of woord groepen toe. Voeg in plaats daarvan enkele woorden of woord groepen tegelijk toe, vervolgens opnieuw te trainen en te publiceren.
     * Voorgestelde woorden controleren en toevoegen
@@ -54,7 +54,7 @@ Een voor beeld van woorden waarvoor een woordgroepen lijst nodig is om hun signi
 Als u de medische voor waarden wilt extra heren:
 * Maak eerst een voor beeld van uitingen en label medische voor waarden binnen deze uitingen.
 * Maak vervolgens een woordgroepen lijst met voor beelden van de voor waarden binnen het onderwerps domein. Deze woordgroepen lijst moet de werkelijke term bevatten die u hebt gelabeld en andere termen die hetzelfde concept beschrijven.
-* Voeg de woordgroepen lijst toe aan de entiteit of subentiteit die het concept extraheert dat in de woordgroepen lijst wordt gebruikt. Het meest voorkomende scenario is een onderdeel (onderliggend) van een door de machine geleerde entiteit. Als de lijst met zinsdelen moet worden toegepast op alle intenties of entiteiten, markeert u de woordgroepen lijst als een globale woordgroepen lijst. De `enabledForAllModels` vlag bepaalt dit model bereik in de API.
+* Voeg de woordgroepen lijst toe aan de entiteit of subentiteit die het concept extraheert dat in de woordgroepen lijst wordt gebruikt. Het meest voorkomende scenario is een onderdeel (onderliggend) van een machine learning-entiteit. Als de lijst met zinsdelen moet worden toegepast op alle intenties of entiteiten, markeert u de woordgroepen lijst als een globale woordgroepen lijst. De `enabledForAllModels` vlag bepaalt dit model bereik in de API.
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>
@@ -88,9 +88,21 @@ Als bijvoorbeeld de entiteit n Shipping Address een straat subentiteit bevat, wo
     * Land (subentiteit)
     * Post code (subentiteit)
 
+## <a name="nested-subentities-with-features"></a>Geneste subentiteiten met functies
+
+Een door een machine geleerde subentiteit geeft aan dat er een concept voor de bovenliggende entiteit aanwezig is, of dat bovenliggende item een andere subentiteit of de bovenste entiteit is. De waarde van de subentiteit fungeert als een functie voor het bovenliggende item.
+
+Een subentiteit kan zowel een woordgroepen lijst als een functie als een model (andere entiteit) als een functie hebben.
+
+Als de subentiteit een woordgroepen lijst heeft, wordt hiermee de vocabulaire van het concept verhoogd, maar wordt geen informatie toegevoegd aan het JSON-antwoord van de voor spelling.
+
+Wanneer de subentiteit een functie van een andere entiteit heeft, bevat het JSON-antwoord de geëxtraheerde gegevens van die andere entiteit.
+
 ## <a name="required-features"></a>Vereiste onderdelen
 
 Er moet een vereiste functie worden gevonden om het model te retour neren van het Voorspellings eindpunt. Gebruik een vereiste functie wanneer u weet dat uw inkomende gegevens moeten overeenkomen met de functie.
+
+Als de tekst van de utterance niet overeenkomt met de vereiste functie, wordt deze niet geëxtraheerd.
 
 **Een vereiste functie maakt gebruik van een niet-computer geleerde entiteit**:
 * Een entiteit in de vorm van een reguliere expressie

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210942"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657342"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
 
@@ -186,7 +186,7 @@ N1QL query's zijn de manier om query's te definiëren in de Couch base.
 
 |N1QL-query | Azure CosmosDB-query|
 |-------------------|-------------------|
-|Selecteer META (`TravelDocument`). id als id, `TravelDocument`. * from `TravelDocument` WHERE `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" en Country = "India" en alle m in visa voldoen aan m. type = = ' multi-entry ' en m. land in [' India ', BHUTAN '] sorteren op ` Validity` desc limiet 25 offset 0   | Selecteer c. id, c van c koppelen m in c. Country = ' India ' WHERE c. _type = ' com. xx. xx. xx. xxx. xxx. xxxx ' en c. Country = ' India ' en m. type = ' multi-entry ' en m. country IN (' India ', ' Bhutan ') ORDER BY c. geldigheid DESC OFFSET 0 LIMIT 25 |
+|Selecteer META ( `TravelDocument` ). id als id, `TravelDocument` . * from `TravelDocument` WHERE `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" en Country = "India" en alle m in visa voldoen aan m. type = = ' multi-entry ' en m. land in [' India ', Bhutan '] sorteren op ` Validity` DESC limiet 25 offset 0   | Selecteer c. id, c van c koppelen m in c. Country = ' India ' WHERE c. _type = ' com. xx. xx. xx. xxx. xxx. xxxx ' en c. Country = ' India ' en m. type = ' multi-entry ' en m. country IN (' India ', ' Bhutan ') ORDER BY c. geldigheid DESC OFFSET 0 LIMIT 25 |
 
 U kunt de volgende wijzigingen in uw N1QL-query's waarnemen:
 
@@ -211,7 +211,7 @@ Gebruik de asynchrone Java-SDK met de volgende stappen:
    </dependency>
    ```
 
-1. Maak een verbindings object voor Azure Cosmos DB met behulp `ConnectionBuilder` van de-methode, zoals wordt weer gegeven in het volgende voor beeld. Zorg ervoor dat u deze declaratie in de bonen plaatst, zodat de volgende code slechts één keer wordt uitgevoerd:
+1. Maak een verbindings object voor Azure Cosmos DB met behulp van de- `ConnectionBuilder` methode, zoals wordt weer gegeven in het volgende voor beeld. Zorg ervoor dat u deze declaratie in de bonen plaatst, zodat de volgende code slechts één keer wordt uitgevoerd:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -314,49 +314,33 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
     
    ```json
    {
-       "indexingMode": "consistent",
-       "includedPaths": 
-       [
-           {
-            "path": "/*",
-            "indexes": 
-             [
-                {
-                  "kind": "Range",
-                  "dataType": "Number"
-                },
-                {
-                  "kind": "Range",
-                  "dataType": "String"
-                },
-                {
-                   "kind": "Spatial",
-                   "dataType": "Point"
-                }
-             ]
-          }
-       ],
-       "excludedPaths": 
-       [
-         {
-             "path": "/path/to/single/excluded/property/?"
-         },
-         {
-             "path": "/path/to/root/of/multiple/excluded/properties/*"
-         }
-      ]
-   }
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+    }
    ````
 
    Vervang het bovenstaande indexerings beleid door het volgende beleid:
 
    ```json
    {
-       "indexingMode": "none"
-   }
+    "indexingMode": "none",
+    "automatic": false,
+    "includedPaths": [],
+    "excludedPaths": []
+    }
    ```
 
-1. Gebruik het volgende code fragment om het verbindings object te maken. Verbindings object (om in @Bean te plaatsen of het statisch te maken):
+1. Gebruik het volgende code fragment om het verbindings object te maken. Verbindings object (om in te plaatsen @Bean of het statisch te maken):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();

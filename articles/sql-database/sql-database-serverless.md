@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 4/3/2020
-ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/13/2020
+ms.openlocfilehash: 7c74829955085b3aa25043b25101fdaab10d7e6d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310128"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659594"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 
@@ -45,7 +45,7 @@ Zie [facturering](sql-database-serverless.md#billing)voor meer informatie over d
 
 ## <a name="scenarios"></a>Scenario's
 
-Serverloze is prijs-prestatie geoptimaliseerd voor afzonderlijke data bases met periodieke, onvoorspelbare gebruiks patronen die enige vertraging kunnen ondervinden bij het opwarmen van het aantal keer dat ze niet actief zijn. De ingerichte Compute-laag daarentegen heeft de prijs prestaties geoptimaliseerd voor afzonderlijke data bases of meerdere data bases in elastische Pools met een hoger gemiddeld gebruik dat geen vertraging kan ondervinden bij het opwarmen van berekeningen.
+Serverloos is geoptimaliseerd in prijs-prestatieverhouding voor individuele databases met periodieke, onvoorspelbare gebruikspatronen waarbij lichte vertraging bij het maken van berekeningen na een periode van weinig gebruik geen probleem is. De ingerichte rekenlaag is daarentegen geoptimaliseerd in prijs-prestatieverhouding voor individuele databases of meerdere databases in elastische pools met een hoger gemiddeld gebruik dat geen vertraging kan ondervinden bij het maken van berekeningen.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Scenario's goed geschikt voor serverloze compute
 
@@ -132,6 +132,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
+|Evaluatie van beveiligingsproblemen|Ad hoc-scans en periodieke scans als deze functie is ingeschakeld|
 |Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
@@ -256,11 +257,11 @@ Een serverloze data base kan op dezelfde manier worden verplaatst naar een inger
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
 
-Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) opdracht `MinVcore`in Power `AutoPauseDelayInMinutes` shell met behulp van de `MaxVcore`argumenten, en.
+Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van de `MaxVcore` `MinVcore` argumenten, en `AutoPauseDelayInMinutes` .
 
 ### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in `min-capacity`Azure cli `auto-pause-delay` met behulp van de `capacity`argumenten, en.
+Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de `capacity` `min-capacity` argumenten, en `auto-pause-delay` .
 
 
 ## <a name="monitoring"></a>Bewaking
@@ -281,7 +282,7 @@ De resource groep van de gebruiker is de binnenste grenzen voor bron beheer voor
 
 De metrische gegevens voor het bewaken van het resource gebruik van het app-pakket en de gebruikers groep van een serverloze Data Base worden weer gegeven in de volgende tabel:
 
-|Entiteit|Gegevens|Beschrijving|Eenheden|
+|Entiteit|Metrisch|Beschrijving|Eenheden|
 |---|---|---|---|
 |App-pakket|app_cpu_percent|Het percentage vCores dat door de app wordt gebruikt ten opzichte van het maximale aantal vCores dat voor de app is toegestaan.|Percentage|
 |App-pakket|app_cpu_billed|De hoeveelheid reken kracht die tijdens de rapportage periode in rekening wordt gebracht voor de app. Het betaalde bedrag tijdens deze periode is het product van deze metrische waarde en de vCore eenheids prijs. <br><br>Waarden van deze metrische gegevens worden bepaald door het samen voegen van het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid kleiner is dan de minimum hoeveelheid die is ingericht zoals ingesteld door de min-vCores en het minimale geheugen, wordt de ingerichte minimum hoeveelheid gefactureerd.Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.|vCore seconden|

@@ -2,155 +2,139 @@
 title: Een back-up maken van een share point-Farm naar Azure met MABS
 description: Gebruik Azure Backup Server om back-ups te maken van uw share point-gegevens en deze te herstellen. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
-ms.date: 06/08/2018
-ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673128"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657282"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
 
-U maakt een back-up van een share point-Farm naar Microsoft Azure met behulp van Microsoft Azure Backup-Server (MABS) op ongeveer dezelfde manier als u een back-up maakt van andere gegevens bronnen. Azure Backup biedt flexibiliteit in het back-upschema om dagelijkse, wekelijkse, maandelijkse of jaarlijkse back-uppunten te maken en biedt u Bewaar beleidsopties voor verschillende back-uppunten. Het biedt ook de mogelijkheid om lokale schijf kopieën op te slaan voor snelle herstel tijd (RTO) en om kopieën op te slaan in azure voor een voordelige, lange termijn retentie.
+U maakt een back-up van een share point-Farm naar Microsoft Azure met behulp van Microsoft Azure Backup-Server (MABS) op ongeveer dezelfde manier als u een back-up maakt van andere gegevens bronnen. Azure Backup biedt flexibiliteit in het back-upschema om dagelijkse, wekelijkse, maandelijkse of jaarlijkse back-uppunten te maken en biedt u Bewaar beleidsopties voor verschillende back-uppunten. MABS biedt de mogelijkheid om lokale schijf kopieën op te slaan voor snelle herstel tijd (RTO) en om kopieën op te slaan in azure voor een voordelige, lange termijn retentie.
+
+Het maken van een back-up van share Point naar Azure met MABS is een vergelijkbaar proces om lokaal een back-up te maken van share Point naar DPM (Data Protection Manager). In dit artikel vindt u specifieke aandachtspunten voor Azure.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Ondersteunde versies van share point en gerelateerde beveiligings scenario's
 
-Azure Backup voor DPM ondersteunt de volgende scenario's:
-
-| Workload | Versie | Share point-implementatie | Beveiliging en herstel |
-| --- | --- | --- | --- |
-| SharePoint |Share point 2016, share point 2013, share point 2010, share Point 2007, share Point 3,0 |Share point is geïmplementeerd als een fysieke server of Hyper-V/VMware-virtuele machine <br> -------------- <br> SQL AlwaysOn | Opties voor herstel van share point-Farm beveiligen: herstel Farm, Data Base, en bestand of lijst item van schijf herstel punten.  Farm-en database herstel van Azure-herstel punten. |
+Zie [de MABS Protection-matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) voor een lijst met ondersteunde share point-versies en de MABS-versies waarvoor een back-up moet worden gemaakt.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
 Er zijn enkele dingen die u moet bevestigen voordat u een back-up van een share point-farm maakt in Azure.
 
-### <a name="prerequisites"></a>Vereisten
-
-Voordat u doorgaat, moet u ervoor zorgen dat u de Azure Backup Server voor het beveiligen van workloads hebt [geïnstalleerd en voor bereid](backup-azure-microsoft-azure-backup.md) .
-
-### <a name="protection-agent"></a>Beveiligings agent
-
-De Azure Backup-agent moet zijn geïnstalleerd op de server waarop share point wordt uitgevoerd, op de servers met SQL Server en alle andere servers die deel uitmaken van de share point-farm. Zie [beveiligings agent](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)instellen voor meer informatie over het instellen van de beveiligings agent.  De enige uitzonde ring hierop is dat u de agent alleen op één Webfront-end (WFE)-Server installeert. Azure Backup Server moet de agent op één WFE-server alleen gebruiken als het toegangs punt voor de beveiliging.
-
-### <a name="sharepoint-farm"></a>SharePoint-farm
-
-Voor elke 10.000.000-items in de farm moet er ten minste 2 GB aan ruimte zijn op het volume waar de MABS-map zich bevindt. Deze ruimte is vereist voor het genereren van de catalogus. Voor MABS om specifieke items te herstellen (site verzamelingen, sites, lijsten, document bibliotheken, mappen, afzonderlijke documenten en lijst items), maakt catalogus genereren een lijst van de Url's die zijn opgenomen in elke inhouds database. U kunt de lijst met Url's bekijken in het deel venster herstelbaar item in het taak gebied **herstel** van de MABS Administrator-console.
-
-### <a name="sql-server"></a>SQL Server
-
-Azure Backup Server wordt uitgevoerd als een LocalSystem-account. Voor het maken van back-ups van SQL Server-data bases heeft MABS sysadmin-bevoegdheden voor dat account nodig voor de server waarop SQL Server wordt uitgevoerd. Stel NT AUTHORITY\SYSTEM in op *sysadmin* op de server waarop SQL Server wordt uitgevoerd voordat u een back-up maakt.
-
-Als de share point-Farm SQL Server-data bases heeft die zijn geconfigureerd met SQL Server aliassen, installeert u de SQL Server-client onderdelen op de front-endwebserver die MABS zal beveiligen.
-
-### <a name="sharepoint-server"></a>SharePoint Server
-
-Hoewel de prestaties afhankelijk zijn van veel factoren, zoals de grootte van de share point-Farm, is het mogelijk dat een MABS een share point-Farm van 25 TB kan beveiligen.
-
 ### <a name="whats-not-supported"></a>Wat wordt er niet ondersteund
 
-* MABS die een share point-Farm beveiligt, beveiligt geen zoek indexen of Application Service-data bases. U moet de beveiliging van deze data bases afzonderlijk configureren.
+* MABS die een share point-Farm beveiligt, beveiligen geen zoek indexen of Application Service-data bases. U moet de beveiliging van deze data bases afzonderlijk configureren.
+
 * MABS biedt geen back-up van share point-SQL Server data bases die worden gehost op scale-out Bestands server (SOFS)-shares.
 
-## <a name="configure-sharepoint-protection"></a>Share point-beveiliging configureren
+### <a name="prerequisites"></a>Vereisten
 
-Voordat u MABS kunt gebruiken om share point te beveiligen, moet u de share point VSS Writer-Service (WSS Writer-Service) configureren met behulp van **ConfigureSharePoint. exe**.
+Voordat u doorgaat, moet u ervoor zorgen dat u voldoet aan alle [vereisten voor het gebruik van Microsoft Azure backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) voor het beveiligen van werk belastingen. Enkele taken voor vereisten zijn: Maak een back-upkluis, down load kluis referenties, installeer Azure Backup Agent en registreer de Azure Backup Server bij de kluis.
 
-U vindt **ConfigureSharePoint. exe** in de map [MABS installatiepad] \Bin op de front-endwebserver. Dit hulp programma biedt de beveiligings agent de referenties voor de share point-farm. U voert dit op één WFE-server uit. Als u meerdere WFE-servers hebt, selecteert u slechts één wanneer u een beveiligings groep configureert.
+Aanvullende vereisten en beperkingen:
 
-### <a name="to-configure-the-sharepoint-vss-writer-service"></a>De share point VSS Writer-service configureren
+* Wanneer u share point beveiligt, worden alle inhouds databases (en de SharePoint_Config en SharePoint_AdminContent * data bases) standaard beveiligd. Als u aanpassingen wilt toevoegen, zoals zoekindexen, sjablonen, toepassingsservicedatabases of de gebruikersprofielservice, moet u deze afzonderlijk configureren voor de beveiliging. Zorg ervoor dat u de beveiliging voor alle mappen met deze typen functies of aanpassingsbestanden inschakelt.
 
-1. Ga op de WFE-server bij een opdracht prompt naar [MABS installatie locatie] \bin\
-2. Voer ConfigureSharePoint-EnableSharePointProtection in.
-3. Geef de referenties van de farmbeheerder op. Deze account moet een lid zijn van een lokale beheerdersgroep op de WFE-server. Als de farmbeheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
-   * Ken de WSS_Admin_WPG groep volledig beheer toe aan de DPM-map (% Program Files%\Microsoft Azure Backup\DPM).
-   * Verleen de WSS_Admin_WPG groep lees toegang tot de DPM-register sleutel (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+* U kunt SharePoint-databases niet beveiligen als een SQL Server-gegevensbron. U kunt afzonderlijke databases herstellen van een back-up van de farm.
 
-> [!NOTE]
-> U moet ConfigureSharePoint. exe opnieuw uitvoeren wanneer er een wijziging is in de beheerders referenties van de share point-farm.
->
->
+* Houd er rekening mee dat MABS wordt uitgevoerd als **lokaal systeem**en om back-ups te maken van SQL server-data bases die sysadmin-bevoegdheden nodig hebben voor dat account voor de SQL Server. Stel op de SQL Server waarvan u een back-up wilt maken, NT AUTHORITY\SYSTEM in op **sysadmin**.
 
-## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Een back-up maken van een share point-farm met behulp van MABS
+* Voor elke 10.000.000-items in de farm moet er ten minste 2 GB aan ruimte zijn op het volume waar de MABS-map zich bevindt. Deze ruimte is vereist voor het genereren van de catalogus. Om u in staat te stellen MABS te gebruiken voor het uitvoeren van een specifiek herstel van items (site verzamelingen, sites, lijsten, document bibliotheken, mappen, afzonderlijke documenten en lijst items), maakt catalogus genereren een lijst van de Url's die zijn opgenomen in elke inhouds database. U kunt de lijst met Url's bekijken in het deel venster herstelbaar item in het taak gebied herstel van de MABS Administrator-console.
 
-Nadat u MABS en de share point-farm hebt geconfigureerd zoals eerder is uitgelegd, kan share point worden beveiligd door MABS.
+* Als u in de share point-Farm SQL Server data bases hebt die zijn geconfigureerd met SQL Server aliassen, installeert u de SQL Server-client onderdelen op de front-endwebserver die MABS zal beveiligen.
 
-### <a name="to-protect-a-sharepoint-farm"></a>Een share point-Farm beveiligen
+* De beveiliging van toepassingsarchiefitems wordt niet ondersteund door SharePoint 2013.
 
-1. Klik op het tabblad **beveiliging** van de MABS Administrator-console op **Nieuw**.
-    ![Tabblad nieuwe beveiliging](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. Selecteer op de pagina **type beveiligings groep selecteren** van de wizard **nieuwe beveiligings groep maken** de optie **servers**en klik vervolgens op **volgende**.
+* MABS biedt geen ondersteuning voor de beveiliging van externe FILESTREAM. De FILESTREAM moet deel uitmaken van de database.
 
-    ![Type beveiligings groep selecteren](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. Schakel op het scherm **groeps leden selecteren** het selectie vakje in voor de share Point-server die u wilt beveiligen en klik op **volgende**.
+## <a name="configure-backup"></a>Back-up configureren
 
-    ![Groeps leden selecteren](./media/backup-azure-backup-sharepoint/select-group-members2.png)
+Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging voor share point met behulp van ConfigureSharePoint. exe en maakt u vervolgens een beveiligings groep in MABS.
 
-   > [!NOTE]
-   > Als de beveiligings agent is geïnstalleerd, ziet u de server in de wizard. De structuur van MABS wordt ook weer gegeven. Omdat u ConfigureSharePoint. exe hebt uitgevoerd, communiceert MABS met de share point VSS Writer-service en de bijbehorende SQL Server data bases en herkent de share point-Farm structuur, de gekoppelde inhouds databases en eventuele bijbehorende items.
-   >
-   >
-4. Voer op de pagina **methode voor gegevens beveiliging selecteren** de naam van de **beveiligings groep**in en selecteer de gewenste *beveiligings methoden*. Klik op **Volgende**.
+1. **ConfigureSharePoint.exe uitvoeren**: met dit hulpprogramma configureert u de SharePoint VSS Writer-service \(WSS\) en voorziet u de beveiligingsagent van referenties voor de SharePoint-farm. Nadat u de beveiligings agent hebt geïmplementeerd, kunt u het bestand ConfigureSharePoint. exe vinden in de `<MABS Installation Path\>\bin` map op de front- \- endwebserver.  Als u meerdere WFE-servers hebt, hoeft u deze alleen maar op een van beide te installeren. Voer het bestand als volgt uit:
 
-    ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
+    * Ga op de WFE-server naar de opdracht prompt `\<MABS installation location\>\\bin\\` en voer deze uit `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` , waarbij:
 
-   > [!NOTE]
-   > Met de methode voor schijf beveiliging kunt u aan korte herstel tijd doelen voldoen.
-   >
-   >
-5. Selecteer op de pagina doelen voor de **korte termijn opgeven** de gewenste **Bewaar termijn** en bepaal wanneer u back-ups wilt maken.
+        * **EnableSharePointProtection** maakt beveiliging mogelijk van de share point-Farm, schakelt de VSS Writer in en registreert de identiteit van de DCOM-toepassing wsscmdletswrapper om om uit te voeren als gebruiker van wie de referenties met deze optie worden ingevoerd. Dit account moet een farmbeheerder en ook een lokale beheerder op de front\-endwebserver zijn.
 
-    ![Doelen voor de korte termijn opgeven](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+        * Met **EnableSPSearchProtection** wordt de beveiliging van WSS 3.0 SP Search ingeschakeld met de registersleutel SharePointSearchEnumerationEnabled onder HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ on the front\-endwebserver en wordt de identiteit van de DCOM-toepassing WssCmdletsWrapper geregistreerd om te worden uitgevoerd als een gebruiker van wie de referenties met deze optie zijn ingevoerd. Dit account moet een farmbeheerder en ook een lokale beheerder op de front\-endwebserver zijn.
 
-   > [!NOTE]
-   > Omdat herstel het vaakst vereist is voor gegevens die minder dan vijf dagen oud zijn, hebben we een Bewaar termijn van vijf dagen op de schijf geselecteerd en wordt ervoor gezorgd dat de back-up plaatsvindt tijdens niet-productie-uren, voor dit voor beeld.
-   >
-   >
-6. Controleer de schijf ruimte die is toegewezen aan de opslag groep voor de beveiligings groep en klik vervolgens op **volgende**.
-7. Voor elke beveiligings groep wijst MABS schijf ruimte toe voor het opslaan en beheren van replica's. Op dit moment moet MABS een kopie maken van de geselecteerde gegevens. Selecteer hoe en wanneer u de replica wilt maken en klik vervolgens op **volgende**.
+        * **ResolveAllSQLAliases**: hiermee worden alle aliassen weergegeven die zijn gerapporteerd door de SharePoint VSS Writer en worden deze omgezet naar de overeenkomstige SQL-server. De omgezette exemplaarnamen worden ook weergegeven. Als de servers zijn gespiegeld, worden de gespiegelde servers ook weergegeven. Alle aliassen die niet worden omgezet in een SQL Server, worden gerapporteerd.
 
-    ![Methode voor maken van replica selecteren](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
+        * Met **SetTempPath** stelt u de omgevingsvariabelen TEMP en TMP in voor het opgegeven pad. Herstel op item niveau mislukt als er een grote site verzameling, site, lijst of item wordt hersteld en er onvoldoende ruimte is in de tijdelijke map van de farm beheerder. Met deze optie kunt u het mappad wijzigen van de tijdelijke bestanden naar een volume met voldoende ruimte om de siteverzameling of de site die wordt hersteld, op te slaan.
 
-   > [!NOTE]
-   > Om ervoor te zorgen dat het netwerk verkeer niet wordt verzorgd, selecteert u een tijd buiten productie uren.
-   >
-   >
-8. MABS zorgt voor gegevens integriteit door consistentie controles uit te voeren op de replica. Er zijn twee opties beschikbaar. U kunt een schema definiëren om consistentie controles uit te voeren, of DPM kan consistentie controles automatisch uitvoeren op de replica wanneer deze inconsistent wordt. Selecteer de gewenste optie en klik vervolgens op **volgende**.
+    * Geef de referenties van de farmbeheerder op. Deze account moet een lid zijn van een lokale beheerdersgroep op de WFE-server. Als de farm beheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
 
-    ![Consistentie controle](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. Selecteer op de pagina **online beveiligings gegevens opgeven** de share point-farm die u wilt beveiligen en klik vervolgens op **volgende**.
+        * Verleen de WSS \_ admin \_ WPG-groep volledig beheer voor de map MABS \( % Program Files% \\ Data Protection Manager \\ DPM \) .
+            -A
 
-    ![DPM share point-Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. Selecteer uw voorkeurs schema op de pagina **online back-upschema opgeven** en klik vervolgens op **volgende**.
+        * Verleen de WSS \_ admin \_ WPG-groep lees toegang tot de MABS-register sleutel \( HKEY \_ lokale \_ machine \\ Software micro soft \\ \\ Data Protection Manager \) .
 
-    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+        Na het uitvoeren van ConfigureSharePoint. exe moet u deze opnieuw uitvoeren als er een wijziging is in de referenties van de share point-farm beheerder.
 
-    > [!NOTE]
-    > MABS biedt een maximum van twee dagelijkse back-ups naar Azure vanaf het meest beschik bare meest recente back-uppunt van de schijf. Azure Backup kunt ook de hoeveelheid WAN-band breedte bepalen die kan worden gebruikt voor back-ups in piek-en piek uren met behulp van [Azure backup netwerk beperking](backup-windows-with-mars-agent.md#enable-network-throttling).
-    >
-    >
-11. Afhankelijk van het back-upschema dat u hebt geselecteerd, selecteert u op de pagina **online retentie beleid opgeven** het Bewaar beleid voor dagelijkse, wekelijkse, maandelijkse en jaarlijkse back-uppunten.
+1. Als u een beveiligings groep wilt maken, klikt u op **beveiligings**  >  **acties**  >  **beveiligings groep maken** om de wizard **nieuwe beveiligings groep maken** in de MABS-console te openen.
 
-    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+1. In **type beveiligings groep**selecteren selecteert u **servers**.
 
-    > [!NOTE]
-    > MABS maakt gebruik van een Bewaar schema van groot vader vader-zoon waarin een ander Bewaar beleid kan worden gekozen voor verschillende back-uppunten.
-    >
-    >
-12. Net als bij schijf moet een eerste referentie punt replica worden gemaakt in Azure. Selecteer de gewenste optie voor het maken van een eerste back-upkopie naar Azure en klik op **volgende**.
+1. Vouw in **groeps leden selecteren**de server uit die de functie WFE bevat. Als er meer dan één WFE-server is, selecteert u de versie waarop u ConfigureSharePoint. exe hebt geïnstalleerd.
 
-    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. Controleer de geselecteerde instellingen op de pagina **samen vatting** en klik vervolgens op **groep maken**. Er wordt een bericht weer gegeven nadat de beveiligings groep is gemaakt.
+    Wanneer u de MABS query's van share Point server uitvouwt, kunt u zien welke gegevens MABS kunnen beveiligen.  Als de share point-data base extern is, wordt er met MABS verbinding gemaakt. Als share point-gegevens bronnen niet worden weer gegeven, controleert u of de VSS Writer wordt uitgevoerd op de share Point-server en eventuele externe SQL Server en of de MABS-agent is geïnstalleerd op zowel de share Point-server als de externe SQL Server. Zorg er ook voor dat share point-data bases niet elders worden beveiligd als SQL Server data bases.
 
-    ![Samenvatting](./media/backup-azure-backup-sharepoint/summary.png)
+1. Geef in **methode voor gegevens beveiliging selecteren**op hoe u \- back-ups voor de korte en de lange termijn wilt verwerken. Back\-ups voor de korte termijn worden altijd eerst op schijf gemaakt, met de optie om vanaf de schijf een back-up te maken naar de Azure\-cloud met Azure Backup \(voor de korte of lange termijn\).
+
+1. Geef in ** \- doel stelling van de korte term**op hoe u back-ups wilt maken naar de \- opslag op korte termijn op schijf.   Geef in **Bewaar termijn** op hoe lang u de gegevens op de schijf wilt bewaren. In **synchronisatie frequentie**geeft u op hoe vaak u een incrementele back-up naar schijf wilt uitvoeren. Als u geen back-upinterval wilt instellen, kunt u net voor een herstel punt controleren, zodat MABS een snelle volledige back-up uitvoert, net voordat elk herstel punt wordt gepland.
+
+1. Controleer op de pagina schijf toewijzing controleren de schijf ruimte van de opslag groep die is toegewezen aan de beveiligings groep.
+
+    **Totale gegevens grootte** is de grootte van de gegevens waarvan u een back-up wilt maken en **schijf ruimte die moet worden ingericht op MABS** is de ruimte die MABS raadt aan de beveiligings groep. MABS kiest het ideale back-upvolume, op basis van de instellingen. U kunt echter de keuzes voor het back-upvolume bewerken in **Schijftoewijzingsdetails**. Selecteer voor de werkbelastingen de gewenste opslag in het vervolgkeuzemenu. Met uw bewerkingen worden de waarden voor **Totale opslag** en **Vrije opslagruimte** in het deelvenster **Beschikbare schijfopslag** gewijzigd. Onderingerichte ruimte is de hoeveelheid opslag MABS die u toevoegt aan het volume, zodat u in de toekomst probleemloos kunt door gaan met het maken van back-ups.
+
+1. In **methode voor maken van replica**selecteren selecteert u hoe u de eerste volledige gegevens replicatie wilt verwerken.  Als u ervoor kiest om via het netwerk te repliceren, raden we u aan een rustige tijd te kiezen. Bij grote hoeveelheden gegevens of minder dan optimale netwerkomstandigheden, kunt u de gegevens offline repliceren met verwijderbare media.
+
+1. Selecteer in **Opties voor consistentiecontrole selecteren** hoe u consistentiecontroles wilt automatiseren. U kunt instellen dat er alleen een controle wordt uitgevoerd als de gerepliceerde gegevens inconsistent worden, of volgens een planning. Als u geen automatische consistentie controle wilt configureren, kunt u op elk gewenst moment een hand matige controle uitvoeren door met de rechter muisknop op de beveiligings groep in het gebied **beveiliging** van de MABS-console te klikken en **consistentie controle uitvoeren**te selecteren.
+
+1. Als u hebt gekozen voor het maken van een back-up naar de cloud met Azure Backup, moet u ervoor zorgen dat u op de pagina **Gegevens voor onlinebeveiliging opgeven** de werkbelastingen selecteert waarvan u een back-up wilt maken naar Azure.
+
+1. Geef in **schema voor online back-ups opgeven**op hoe vaak incrementele back-ups naar Azure moeten worden uitgevoerd. U kunt back-ups dagelijks/wekelijks/maandelijks/jaarlijks uitvoeren en de tijd en datum opgeven waarop u deze wilt uitvoeren. U kunt maximaal twee keer per dag back-ups uitvoeren. Telkens wanneer een back-up wordt uitgevoerd, wordt er een gegevens herstel punt gemaakt in azure van de kopie van de back-upgegevens die zijn opgeslagen op de MABS-schijf.
+
+1. In **online Bewaar beleid opgeven**kunt u opgeven hoe de herstel punten die zijn gemaakt op basis van de dagelijkse/wekelijkse/maandelijkse/jaarlijkse back-ups, worden bewaard in Azure.
+
+1. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offlineback-up uitvoeren (offline-seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. [Meer informatie](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+
+1. Controleer uw instellingen op de pagina **samen vatting** . Nadat u op **groep maken**hebt geklikt, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
+
+## <a name="monitoring"></a>Bewaking
+
+Nadat de beveiligings groep is gemaakt, vindt de eerste replicatie plaats en MABS wordt een back-up gemaakt en worden de share point-gegevens gesynchroniseerd. MABS controleert de initiële synchronisatie en de volgende back-ups.  U kunt de SharePoint-gegevens op verschillende manieren controleren:
+
+* Met de standaard MABS-controle kunt u meldingen instellen voor proactieve controle door waarschuwingen te publiceren en meldingen te configureren. U kunt meldingen verzenden via e-mail voor kritieke of informerende meldingen of waarschuwingen en voor de status van geïnstantieerde herstelbewerkingen.
+
+* Als u Operations Manager gebruikt, kunt u waarschuwingen centraal publiceren.
+
+### <a name="set-up-monitoring-notifications"></a>Controlemeldingen instellen
+
+1. Klik in de MABS Administrator-console op **bewakings**  >  **actie**  >  **Opties**.
+
+2. Klik op **SMTP-server** en typ de servernaam, de poort en het e-mailadres waarvan de meldingen worden verzonden. Het adres moet geldig zijn.
+
+3. In **geverifieerde SMTP-server**typt u een gebruikers naam en wacht woord. De gebruikers naam en het wacht woord moeten de domein accountnaam zijn van de persoon waarvan het ' van '-adres wordt beschreven in de vorige stap. Anders mislukt de levering van de melding.
+
+4. Als u de SMTP-server instellingen wilt testen, klikt u op **test bericht verzenden**, typt u het e-mail adres waarnaar u het test bericht wilt verzenden en klikt u vervolgens op **OK**. Klik op **Opties**  >  **meldingen** en selecteer het type waarschuwingen waarover ontvangers meldingen willen ontvangen. In **ontvangers** typt u het e-mail adres van elke geadresseerde aan wie u wilt dat MABS kopieën van de meldingen verzendt.
+
+### <a name="publish-operations-manager-alerts"></a>Waarschuwingen voor Operations Manager publiceren
+
+1. Klik in de MABS Administrator-console op **bewakings**  >  **actie**  >  **Opties**  >  **waarschuwing**publiceren  >  **actieve waarschuwingen publiceren**
+
+2. Nadat u **waarschuwingen publiceren**hebt ingeschakeld, worden alle bestaande MABS-waarschuwingen waarvoor een gebruikers actie is vereist, gepubliceerd naar het gebeurtenis logboek van de **MABS-waarschuwingen** . De Operations Manager-agent die op de MABS-server is geïnstalleerd, publiceert deze waarschuwingen vervolgens naar de Operations Manager en blijft de console bijwerken wanneer er nieuwe waarschuwingen worden gegenereerd.
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Een share point-item herstellen vanaf schijf met behulp van MABS
 
 In het volgende voor beeld is het herstel van het *share point-item* per ongeluk verwijderd en moet het worden hersteld.
 ![MABS share point Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. Open de **DPM Administrator-console**. Alle share point-Farms die door DPM worden beveiligd, worden weer gegeven op het tabblad **beveiliging** .
+1. Open de **MABS-beheer console**. Alle share point-Farms die worden beveiligd door MABS, worden weer gegeven op het tabblad **beveiliging** .
 
     ![MABS share point Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. Selecteer het tabblad **herstel** om te beginnen met het herstellen van het item.
@@ -207,7 +191,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
     >
     >
 
-## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Een share point-data base terugzetten vanuit Azure met behulp van DPM
+## <a name="restore-a-sharepoint-database-from-azure-by-using-mabs"></a>Een share point-data base terugzetten vanuit Azure met behulp van MABS
 
 1. Als u een share point-inhouds database wilt herstellen, bladert u door verschillende herstel punten (zoals eerder weer gegeven) en selecteert u het herstel punt dat u wilt herstellen.
 
@@ -215,7 +199,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 2. Dubbel klik op het share point-herstel punt om de beschik bare share point-catalogus gegevens weer te geven.
 
    > [!NOTE]
-   > Omdat de share point-Farm is beveiligd voor lange termijn retentie in azure, is er geen catalogus informatie (meta gegevens) beschikbaar op MABS. Wanneer een tijdgebonden share point-inhouds database moet worden hersteld, moet u de share point-Farm opnieuw catalogiseren.
+   > Omdat de share point-Farm is beveiligd voor lange termijn retentie in azure, is er geen catalogus informatie (meta gegevens) beschikbaar op de MABS-server. Wanneer een tijdgebonden share point-inhouds database moet worden hersteld, moet u de share point-Farm opnieuw catalogiseren.
    >
    >
 3. Klik op **opnieuw catalogiseren**.
@@ -233,6 +217,44 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 
     ![MABS share point Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Volg op dit punt de herstel stappen eerder in dit artikel om een share point-inhouds database van schijf te herstellen.
+
+## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de front-end-webserver
+
+Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die MABS gebruikt om de farm te beveiligen, volgt u de instructies:
+
+De volgende procedure maakt gebruik van het voor beeld van een server farm met twee front-end-webservers, *Server1* en *server2*. MABS maakt gebruik van *Server1* om de farm te beveiligen. Wijzig de front-end-webserver die MABS gebruikt voor *server2* zodat u *Server1* uit de farm kunt verwijderen.
+
+> [!NOTE]
+> Als de front-endwebserver die MABS gebruikt om de farm te beveiligen, niet beschikbaar is, gebruikt u de volgende procedure om de front-end-webserver te wijzigen door te beginnen bij stap 4.
+
+### <a name="to-change-the-front-end-web-server-that-mabs-uses-to-protect-the-farm"></a>De front-end-webserver die MABS gebruikt om de farm te beveiligen, wijzigen
+
+1. Stop de share point VSS Writer-service op *Server1* door de volgende opdracht uit te voeren vanaf een opdracht prompt:
+
+    ```CMD
+    stsadm -o unregisterwsswriter
+    ```
+
+1. Open de REGI ster-editor op *Server1*en ga naar de volgende sleutel:
+
+   **HKLM\System\CCS\Services\VSS\VssAccessControl**
+
+1. Controleer alle waarden die worden weer gegeven in de subsleutel VssAccessControl. Als een vermelding een waarde heeft van 0 en een andere VSS Writer wordt uitgevoerd onder de referenties van het gekoppelde account, wijzigt u de waarde in 1.
+
+1. Installeer een beveiligings agent op *server2*.
+
+   > [!WARNING]
+   > U kunt alleen web-front-endservers overschakelen als beide servers zich in hetzelfde domein bevinden.
+
+1. Wijzig op *server2*bij een opdracht prompt de Directory in `_MABS installation location_\bin\` en voer **ConfigureSharepoint**uit. Zie [Configure Backup](#configure-backup)(Engelstalig) voor meer informatie over ConfigureSharePoint.
+
+1. Selecteer de beveiligings groep waartoe de server farm behoort en klik vervolgens op **beveiligings groep wijzigen**.
+
+1. Vouw in de wizard groep wijzigen op de pagina **groeps leden selecteren** *server2* uit en selecteer de server farm en voltooi vervolgens de wizard.
+
+   Er wordt een consistentie controle gestart.
+
+1. Als u stap 6 hebt uitgevoerd, kunt u nu het volume uit de beveiligings groep verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

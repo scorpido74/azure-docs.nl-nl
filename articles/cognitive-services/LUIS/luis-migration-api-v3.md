@@ -2,14 +2,14 @@
 title: Wijzigingen in het Voorspellings eindpunt in de V3 API
 description: De V3 Api's voor de query Voorspellings-endpoint zijn gewijzigd. Gebruik deze hand leiding voor informatie over het migreren naar versie 3-eindpunt-Api's.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530382"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653864"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
 
@@ -39,7 +39,7 @@ V3 heeft de volgende wijzigingen aangebracht als onderdeel van de move to GA:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * De naam van de meet bare `units` eenheids sleutel van naar`unit`
+    * De naam van de meet bare eenheids sleutel van `units` naar`unit`
 
 * Wijziging van JSON van aanvraag tekst:
     * van `preferExternalEntities` tot`preferExternalEntities`
@@ -73,16 +73,9 @@ De v2-Voorspellings-API wordt niet afgeschaft gedurende ten minste negen maanden
 
 ### <a name="changes-by-slot-name-and-version-name"></a>Wijzigingen per sleuf naam en versie naam
 
-De indeling van de HTTP-aanroep van het v3-eind punt is gewijzigd.
+De [indeling van de HTTP-aanroep van het v3-eind punt](developer-reference-resource.md#rest-endpoints) is gewijzigd.
 
-Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) met `"directVersionPublish":true`. Zoek het eind punt naar de versie-ID in plaats van de naam van de sleuf.
-
-|API-VERSIE VOOR VOOR SPELLING|METHODE|URL|
-|--|--|--|
-|V3|GET|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/<b>-Voorspellings</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/slots/<b>{naam sleuf}</b>/predict? query =<b>{query}</b>|
-|V3|POST|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-<b>Voorspellings</b>/-<b>v 3.0</b>/apps/<b>{App-ID}</b>/slots/<b>{naam sleuf}</b>/predict|
-|V2|GET|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-voor<b>Spelling</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/versions/<b>{Version-id}</b>/predict? query =<b>{query}</b>|
-|V2|POST|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-<b>Voorspellings</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/versions/<b>{Version-id}</b>/predict|
+Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) met `"directVersionPublish":true` . Zoek het eind punt naar de versie-ID in plaats van de naam van de sleuf.
 
 |Geldige waarden voor`SLOT-NAME`|
 |--|
@@ -97,12 +90,12 @@ De V3 API heeft verschillende query reeks parameters.
 
 |Parameter naam|Type|Versie|Standaard|Doel|
 |--|--|--|--|--|
-|`log`|booleaans|V2 & V3|false|Sla de query op in het logboek bestand. De standaard waarde is False.|
-|`query`|tekenreeks|Alleen v3|Geen standaard-dit is vereist in de GET-aanvraag|**In v2**bevindt de utterance die moet worden voor speld `q` in de para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
-|`show-all-intents`|booleaans|Alleen v3|false|Alle intenties retour neren met de bijbehorende Score in het object voor **spellingen** . Intenties worden geretourneerd als objecten in een bovenliggend `intents` object. Zo kunt u programmatisch toegang krijgen zonder dat u de bedoeling in een matrix hoeft te `prediction.intents.give`vinden:. In v2 zijn deze geretourneerd in een matrix. |
-|`verbose`|booleaans|V2 & V3|false|**In v2**zijn alle voorspelde intenten geretourneerd als deze zijn ingesteld op True. Als u alle voorspelde intenties nodig hebt, gebruikt u de V3 `show-all-intents`-para meter van.<br><br>**In v3**biedt deze para meter alleen details van entiteits-meta gegevens van de voor spelling van de entiteit.  |
+|`log`|booleaans|V2 & V3|onjuist|Sla de query op in het logboek bestand. De standaard waarde is False.|
+|`query`|tekenreeks|Alleen v3|Geen standaard-dit is vereist in de GET-aanvraag|**In v2**bevindt de utterance die moet worden voor speld in de `q` para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
+|`show-all-intents`|booleaans|Alleen v3|onjuist|Alle intenties retour neren met de bijbehorende Score in het object voor **spellingen** . Intenties worden geretourneerd als objecten in een bovenliggend `intents` object. Zo kunt u programmatisch toegang krijgen zonder dat u de bedoeling in een matrix hoeft te vinden: `prediction.intents.give` . In v2 zijn deze geretourneerd in een matrix. |
+|`verbose`|booleaans|V2 & V3|onjuist|**In v2**zijn alle voorspelde intenten geretourneerd als deze zijn ingesteld op True. Als u alle voorspelde intenties nodig hebt, gebruikt u de V3-para meter van `show-all-intents` .<br><br>**In v3**biedt deze para meter alleen details van entiteits-meta gegevens van de voor spelling van de entiteit.  |
 |`timezoneOffset`|tekenreeks|V2|-|De tijd zone die wordt toegepast op datetimeV2-entiteiten.|
-|`datetimeReference`|tekenreeks|V3|-|De [tijd zone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt toegepast op datetimeV2-entiteiten. Vervangt `timezoneOffset` door v2.|
+|`datetimeReference`|tekenreeks|V3|-|De [tijd zone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt toegepast op datetimeV2-entiteiten. Vervangt door `timezoneOffset` v2.|
 
 
 ### <a name="v3-post-body"></a>V3 POST-hoofd tekst
@@ -124,8 +117,8 @@ De V3 API heeft verschillende query reeks parameters.
 |`dynamicLists`|matrix|Alleen v3|Niet vereist.|Met [dynamische lijsten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de Luis-app.|
 |`externalEntities`|matrix|Alleen v3|Niet vereist.|[Externe entiteiten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) bieden uw Luis-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. |
 |`options.datetimeReference`|tekenreeks|Alleen v3|Geen standaard waarde|Wordt gebruikt om de [datetimeV2-offset](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)te bepalen. De indeling voor de datetimeReference is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|booleaans|Alleen v3|false|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
-|`query`|tekenreeks|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld `q` in de para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
+|`options.preferExternalEntities`|booleaans|Alleen v3|onjuist|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
+|`query`|tekenreeks|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld in de `q` para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
 
 ## <a name="response-changes"></a>Reactie wijzigingen
 
@@ -135,7 +128,7 @@ De JSON van het query-antwoord is gewijzigd zodat meer programmatische toegang m
 
 
 
-De bovenste JSON-eigenschappen voor v2 zijn, `verbose` wanneer is ingesteld op True, waarmee alle intents en hun scores in `intents` de eigenschap worden geretourneerd:
+De bovenste JSON-eigenschappen voor v2 zijn, wanneer `verbose` is ingesteld op True, waarmee alle intents en hun scores in de eigenschap worden geretourneerd `intents` :
 
 ```JSON
 {
@@ -160,7 +153,7 @@ De bovenste JSON-eigenschappen voor v3 zijn:
 }
 ```
 
-Het `intents` object is een niet-geordende lijst. Ga er niet van uit dat het eerste `intents` onderliggende item in `topIntent`de overeenkomt met de. Gebruik in plaats daarvan `topIntent` de waarde om de score te vinden:
+Het `intents` object is een niet-geordende lijst. Ga er niet van uit dat het eerste onderliggende item in de `intents` overeenkomt met de `topIntent` . Gebruik in plaats daarvan de `topIntent` waarde om de score te vinden:
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
@@ -169,22 +162,22 @@ const score = intents[topIntentName];
 
 De wijzigingen in het JSON-schema van het antwoord zijn toegestaan voor:
 
-* Maak onderscheid tussen de oorspronkelijke utterance `query`,, en het resultaat van de `prediction`voor spelling, niet.
+* Maak onderscheid tussen de oorspronkelijke utterance,, en het resultaat van de voor `query` Spelling, niet `prediction` .
 * Eenvoudiger programmatische toegang tot voorspelde gegevens. In plaats van te inventariseren via een matrix in v2, hebt u toegang tot waarden op **naam** voor zowel de intenties als de entiteiten. Voor voorspelde entiteits rollen wordt de rolnaam geretourneerd, omdat deze uniek is voor de hele app.
 * Gegevens typen, indien bepaald, worden in acht genomen. Numerieke tekens worden niet langer geretourneerd als teken reeksen.
-* Onderscheid tussen informatie over de voor spellingen van de eerste prioriteit en aanvullende meta `$instance` gegevens, geretourneerd in het object.
+* Onderscheid tussen informatie over de voor spellingen van de eerste prioriteit en aanvullende meta gegevens, geretourneerd in het `$instance` object.
 
 ### <a name="entity-response-changes"></a>Reactie wijzigingen entiteit
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Plaatsing van entiteiten in uitingen markeren
 
-**In v2**werd een entiteit in een utterance gemarkeerd met de `startIndex` and. `endIndex`
+**In v2**werd een entiteit in een utterance gemarkeerd met de `startIndex` and `endIndex` .
 
-**In v3**wordt de entiteit gemarkeerd met `startIndex` en. `entityLength`
+**In v3**wordt de entiteit gemarkeerd met `startIndex` en `entityLength` .
 
 #### <a name="access-instance-for-entity-metadata"></a>Toegang `$instance` voor entiteits-meta gegevens
 
-Als u meta gegevens van de entiteit nodig hebt, moet de query `verbose=true` reeks de vlag gebruiken en het antwoord bevat de `$instance` meta gegevens in het object. Voor beelden worden weer gegeven in de JSON-antwoorden in de volgende secties.
+Als u meta gegevens van de entiteit nodig hebt, moet de query reeks de `verbose=true` vlag gebruiken en het antwoord bevat de meta gegevens in het `$instance` object. Voor beelden worden weer gegeven in de JSON-antwoorden in de volgende secties.
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>Elke voorspelde entiteit wordt weer gegeven als een matrix
 
@@ -210,7 +203,7 @@ De JSON voor de voor spelling van een lijst entiteit is gewijzigd in een matrix 
 ```
 Elke Interior-matrix correspondeert met tekst in de utterance. Het object Interior is een matrix omdat dezelfde tekst in meer dan één sublijst van een lijst entiteit kan worden weer gegeven.
 
-Bij het toewijzen van `entities` een object aan `$instance` het object, wordt de volg orde van de objecten behouden voor de voor spellingen van de lijst entiteit.
+Bij het toewijzen `entities` van een object aan het `$instance` object, wordt de volg orde van de objecten behouden voor de voor spellingen van de lijst entiteit.
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -222,7 +215,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 In v2 heeft de `entities` matrix alle voorspelde entiteiten geretourneerd met de naam van de entiteit als de unieke id. In v3 geldt dat als de entiteit rollen gebruikt en de voor spelling voor een entiteits functie is, de primaire id de rolnaam is. Dit is mogelijk omdat de namen van entiteits rollen uniek moeten zijn voor de hele app, met inbegrip van andere model namen (intentie, entiteit).
 
-In het volgende voor beeld: overweeg een utterance die de tekst bevat `Yellow Bird Lane`,. Deze tekst wordt voor speld als aangepaste `Location` entiteits rollen van. `Destination`
+In het volgende voor beeld: overweeg een utterance die de tekst bevat, `Yellow Bird Lane` . Deze tekst wordt voor speld als aangepaste `Location` entiteits rollen van `Destination` .
 
 |Utterance tekst|Entiteitsnaam|Rolnaam|
 |--|--|--|
@@ -253,7 +246,7 @@ In v3 wordt naar de entiteit verwezen door de rol van de _entiteit_, als de voor
 }
 ```
 
-In v3 heeft hetzelfde resultaat als de `verbose` markering voor het retour neren van meta gegevens van entiteit:
+In v3 heeft hetzelfde resultaat `verbose` als de markering voor het retour neren van meta gegevens van entiteit:
 
 ```JSON
 "entities":{

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117204"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660575"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedure bij failover van het noodherstel
 
@@ -39,7 +39,7 @@ Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen 
 Als u meerdere exemplaren van SAP HANA failover wilt uitvoeren, voert u de azure_hana_dr_failover opdracht verschillende keren uit. Geef desgevraagd de SAP HANA SID op waarvoor u een failover wilt uitvoeren en die u wilt herstellen. 
 
 
-U kunt de DR failover ook testen zonder dat dit van invloed is op de daad werkelijke replicatie relatie. Als u een testfailover wilt uitvoeren, volgt u de stappen in ' test DR failover-azure_hana_test_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
+U kunt de DR failover ook testen zonder dat dit van invloed is op de daad werkelijke replicatie relatie. Als u een testfailover wilt uitvoeren, volgt u de stappen in ' test DR failover-azure_hana_test_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf). 
 
 >[!IMPORTANT]
 >Voer *geen* productie transacties uit op het exemplaar dat u hebt gemaakt in de Dr-site via het proces van het **testen van een failover**. De opdracht azure_hana_test_dr_failover een set volumes maakt die geen relatie hebben met de primaire site. Als gevolg hiervan is de synchronisatie van de primaire site *niet* mogelijk. 
@@ -117,7 +117,7 @@ Volg deze stappen:
 
 Voer het script uit om de status van de voortgang van de opslag replicatie te controleren `azure_hana_replication_status` . Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
 
-Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)voor meer informatie over de opdracht en de uitvoer.
+Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)voor meer informatie over de opdracht en de uitvoer.
 
 
 ## <a name="next-steps"></a>Volgende stappen

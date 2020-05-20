@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 020c25dfb17f733359e596100cfd24cfa3f68036
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839161"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648557"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -142,19 +142,19 @@ In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van
 
    ![Bestanden uploaden](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-4. Als u van plan bent om de inhoud van het bestand weer te geven in de browser, moet u ervoor zorgen dat het inhouds `text/html`type van dat bestand is ingesteld op. 
+4. Als u van plan bent om de inhoud van het bestand weer te geven in de browser, moet u ervoor zorgen dat het inhouds type van dat bestand is ingesteld op `text/html` . 
 
    ![Inhouds typen controleren](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Storage Explorer wordt deze eigenschap automatisch ingesteld `text/html` op voor gebruikelijke, herkende `.html`extensies zoals. In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html`, wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
+   > Storage Explorer wordt deze eigenschap automatisch ingesteld op `text/html` voor gebruikelijke, herkende extensies zoals `.html` . In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html` , wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
 > [!NOTE]
-> Als u Azure Cloud Shell gebruikt, zorg er dan voor dat u `\` een escape-teken toevoegt bij `$web` het verwijzen naar de container `\$web`(bijvoorbeeld:). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
+> Als u Azure Cloud Shell gebruikt, zorg er dan voor dat u een `\` escape-teken toevoegt bij het verwijzen naar de `$web` container (bijvoorbeeld: `\$web` ). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
 
 In dit voor beeld wordt ervan uitgegaan dat u opdrachten uit Azure Cloud Shell sessie uitvoert.
 
@@ -163,14 +163,14 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 ```
 
 > [!NOTE] 
-> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te `--content-type 'text/html; charset=utf-8'` geven, kunt u toevoegen aan de opdracht. 
+> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te geven, kunt u toevoegen `--content-type 'text/html; charset=utf-8'` aan de opdracht. 
 
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
 * Vervang de `<source-path>` tijdelijke aanduiding door een pad naar de locatie van de bestanden die u wilt uploaden.
 
 > [!NOTE]
-> Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken ( `C:\myFolder`bijvoorbeeld:.
+> Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken (bijvoorbeeld: `C:\myFolder` .
 >
 > Als u Azure Cloud Shell gebruikt, moet u verwijzen naar een bestands share die zichtbaar is voor de Cloud Shell. Deze locatie kan de bestands share zijn van de Cloud share zelf of een bestaande bestands share die u koppelt van de Cloud Shell. Zie [bestanden in azure Cloud shell persistent](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)maken voor meer informatie over hoe u dit doet.
 
@@ -187,29 +187,27 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 ```
 
 > [!NOTE] 
-> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te `-Properties @{ ContentType = "text/html; charset=utf-8";}` geven, kunt u toevoegen aan de opdracht.
+> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te geven, kunt u toevoegen `-Properties @{ ContentType = "text/html; charset=utf-8";}` aan de opdracht.
 
-* Vervang de `<path-to-file>` waarde van de tijdelijke aanduiding door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld `C:\temp\index.html`:).
+* Vervang de `<path-to-file>` waarde van de tijdelijke aanduiding door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld: `C:\temp\index.html` ).
 
-* Vervang de `<blob-name>` waarde van de tijdelijke aanduiding door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld `index.html`:).
+* Vervang de `<blob-name>` waarde van de tijdelijke aanduiding door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld: `index.html` ).
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>De URL van de website zoeken met behulp van de Azure Portal
+<a id="portal-find-url" />
+
+## <a name="find-the-website-url"></a>De URL van de website zoeken
 
 U kunt de pagina's van uw site vanuit een browser weer geven met behulp van de open bare URL van de website.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 In het deel venster dat wordt weer gegeven naast de pagina account overzicht van uw opslag account, selecteert u **statische website**. De URL van uw site wordt weer gegeven in het veld voor het **primaire eind punt** .
 
 ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
-
-<a id="cli-find-url" />
 
 Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 
@@ -222,8 +220,6 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 * Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 

@@ -8,18 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 258bddec85e4ab182ff0b07c49cdc93f92264f95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 1b72be91ee11ef7003e225fe830a59ea42310ac6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084461"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656681"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatiekopie van een gegeneraliseerde VM maken in Azure
 
 Een beheerde installatiekopie kan worden gemaakt op basis van een gegeneraliseerde virtuele machine (VM) die als een beheerde schijf of een onbeheerde schijf is opgeslagen in een opslagaccount. De installatiekopie kan vervolgens worden gebruikt om meerdere VM's te maken. Zie [Managed disks-prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over hoe beheerde installatie kopieën worden gefactureerd. 
 
- 
+Eén beheerde installatie kopie ondersteunt Maxi maal 20 gelijktijdige implementaties. Als u probeert om meer dan 20 Vm's gelijktijdig te maken, vanuit dezelfde beheerde installatie kopie, kan dit leiden tot het inrichten van time-outs als gevolg van de opslag prestatie beperkingen van één VHD. Als u meer dan 20 Vm's gelijktijdig wilt maken, gebruikt u een afbeelding voor [gedeelde afbeeldings galerieën](shared-image-galleries.md) die is geconfigureerd met 1 replica voor elke 20 gelijktijdige VM-implementaties.
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>De Windows VM generaliseren met behulp van Sysprep
 
@@ -38,7 +39,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 1. Meld u aan bij uw Windows-VM.
    
-2. Open een opdracht prompt venster als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe`.
+2. Open een opdracht prompt venster als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe` .
    
 3. In het dialoog venster **hulp programma voor systeem voorbereiding** selecteert u **systeem out-of-Box Experience (OOBE) opgeven** en schakelt u het selectie vakje **generalize** in.
    
@@ -53,7 +54,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 > [!TIP]
 > **Optioneel** Gebruik [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) om uw installatie kopie te optimaliseren en de eerste opstart tijd van uw VM te verlagen.
 >
-> Als u uw installatie kopie wilt optimaliseren, koppelt u uw VHD door erop te dubbel klikken in Windows Verkenner en voert u `/optimize-image` vervolgens DISM uit met de para meter.
+> Als u uw installatie kopie wilt optimaliseren, koppelt u uw VHD door erop te dubbel klikken in Windows Verkenner en voert u vervolgens DISM uit met de `/optimize-image` para meter.
 >
 > ```cmd
 > DISM /image:D:\ /optimize-image /boot
@@ -92,11 +93,11 @@ Nadat de installatie kopie is gemaakt, kunt u deze als een **afbeeldings** resou
 
 Als u een installatie kopie rechtstreeks vanuit de VM maakt, zorgt u ervoor dat de installatie kopie alle schijven bevat die zijn gekoppeld aan de virtuele machine, inclusief de besturingssysteem schijf en alle gegevens schijven. In dit voor beeld ziet u hoe u een beheerde installatie kopie maakt op basis van een virtuele machine die gebruikmaakt van beheerde schijven.
 
-Voordat u begint, moet u ervoor zorgen dat u de nieuwste versie van de module Azure PowerShell hebt. Voer `Get-Module -ListAvailable Az` in Power shell uit om de versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell op Windows installeren met PowerShellGet](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, voert `Connect-AzAccount` u uit om een verbinding te maken met Azure.
+Voordat u begint, moet u ervoor zorgen dat u de nieuwste versie van de module Azure PowerShell hebt. Voer in Power shell uit om de versie te vinden `Get-Module -ListAvailable Az` . Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell op Windows installeren met PowerShellGet](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, voert u uit `Connect-AzAccount` om een verbinding te maken met Azure.
 
 
 > [!NOTE]
-> Als u uw installatie kopie wilt opslaan in zone-redundante opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de `-ZoneResilient` para meter in de installatie kopie configuratie (`New-AzImageConfig` opdracht) bevatten.
+> Als u uw installatie kopie wilt opslaan in zone-redundante opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de `-ZoneResilient` para meter in de installatie kopie configuratie ( `New-AzImageConfig` opdracht) bevatten.
 
 Voer de volgende stappen uit om een VM-installatie kopie te maken:
 
@@ -212,7 +213,7 @@ U kunt een beheerde installatie kopie maken op basis van een moment opname van e
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Een installatie kopie maken van een virtuele machine die gebruikmaakt van een opslag account
 
-Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.Windows.net/*vhdcontainer*/*vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
+Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.Windows.net/*vhdcontainer* / *vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
 
 
 1.  Maak enkele variabelen.

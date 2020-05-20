@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/11/2020
-ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/15/2020
+ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117781"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651839"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -96,6 +96,11 @@ Veel resource providers worden automatisch geregistreerd, maar u moet mogelijk b
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen toegangs fout bericht bij het openen van Log Analytics vanaf een virtuele machine? 
 Als u VM-logboeken wilt weer geven, moet u beschikken over de machtiging lezen voor de werk ruimten waarin de VM-logboeken worden opgeslagen. In deze gevallen moet uw beheerder u de machtigingen verlenen in Azure.
+
+## <a name="metrics"></a>Metrische gegevens
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Waarom worden metrische gegevens van het gast besturingssysteem van mijn virtuele machine van Azure niet weer gegeven in Metrics Explorer?
+[Metrische platform gegevens](insights/monitor-azure-resource.md#monitoring-data) worden automatisch verzameld voor Azure-resources. U moet enige configuratie uitvoeren voor het verzamelen van metrische gegevens uit het gast besturingssysteem van een virtuele machine. Voor een Windows-VM installeert u de diagnostische uitbrei ding en configureert u de Azure Monitor sink, zoals beschreven in [Windows Azure Diagnostics extension (WAD) installeren en configureren](platform/diagnostics-extension-windows-install.md). Voor Linux installeert u de telegrafa-agent zoals beschreven in [aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-telegrafa-agent](platform/collect-custom-metrics-linux-telegraf.md).
 
 ## <a name="alerts"></a>Waarschuwingen
 
@@ -508,6 +513,10 @@ De meeste Application Insights gegevens hebben een latentie van minder dan vijf 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
 Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen over Azure Monitor voor containers. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+
+### <a name="health-feature-is-in-private-preview"></a>De status functie is in een persoonlijke preview
+
+We zijn van plan een reeks wijzigingen aan te brengen om functionaliteit toe te voegen en uw feedback te verhelpen. Het status onderdeel gaat aan het eind van juni 2020 over naar een persoonlijke preview en Raadpleeg de volgende [aankondiging van Azure updates](https://azure.microsoft.com/updates/ci-health-limited-preview/)voor meer informatie.
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Wat staan *andere processen* onder de knooppunt weergave?
 

@@ -2,13 +2,13 @@
 title: App testen in de LUIS-Portal
 description: Gebruik Language Understanding (LUIS) om voortdurend aan uw toepassing te werken om deze te verfijnen en de taal inzichten te verbeteren.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591859"
+ms.locfileid: "83653886"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Uw LUIS-app testen in de LUIS-Portal
 
@@ -44,7 +44,7 @@ De test utterance mag niet exact hetzelfde zijn als een voor beeld van een uitin
 
     ![Interactieve tests duiden het verkeerde doel aan](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Score controleren
+## <a name="inspect-the-prediction"></a>De voor spelling controleren
 
 U kunt de details van het test resultaat bekijken in het deel venster **inspecteren** .
 
@@ -52,23 +52,21 @@ U kunt de details van het test resultaat bekijken in het deel venster **inspecte
 
     ![Selecteer de knop controleren om meer informatie over de test resultaten weer te geven](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Het deel venster **inspectie** wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt het resultaat van de geselecteerde utterance weer gegeven.
+1. Het deel venster **inspectie** wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt de voor spelling van de geselecteerde utterance weer gegeven.
 
-    ![Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt het resultaat van de geselecteerde utterance weer gegeven.](./media/luis-how-to-interactive-test/inspect-panel.png)
+## <a name="add-to-example-utterances"></a>Toevoegen aan voor beeld uitingen
 
-## <a name="correct-top-scoring-intent"></a>Juiste score opzet corrigeren
+In het deel venster inspectie kunt u de test utterance toevoegen aan een intentie door **toevoegen aan voor beeld uitingen**te selecteren.
 
-1. Als het beste score doel onjuist is, selecteert u de knop **bewerken** .
+## <a name="disable-required-features"></a>Vereiste onderdelen uitschakelen
 
-1.  Selecteer in de vervolg keuzelijst de juiste intentie voor de utterance.
+Selecteer deze wissel knop om te zien wat de voor spelling zou zijn als de functie van de entiteit niet is vereist.
 
-    ![Selecteer juiste intentie](./media/luis-how-to-interactive-test/intent-select.png)
+Met deze wissel knop kunt u bepalen of de getrainde app op de juiste wijze uw entiteiten kan voors pellen op basis van de vereiste onderdelen. De getrainde app kan een door een machine geleerde entiteit mogelijk verkeerd voors pellen op basis van het onjuiste labelen van bijvoorbeeld uitingen of de vereiste functie komt niet overeen met de tekst.
 
 ## <a name="view-sentiment-results"></a>Sentiment-resultaten weer geven
 
 Als **sentiment analyse** is geconfigureerd op de pagina **[publiceren](luis-how-to-publish-app.md#enable-sentiment-analysis)** , bevatten de test resultaten de sentiment die zijn gevonden in de utterance.
-
-![Afbeelding van test venster met analyse van sentiment](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Juist overeenkomend patroon intentie
 

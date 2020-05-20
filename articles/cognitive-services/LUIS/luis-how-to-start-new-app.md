@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585620"
+ms.locfileid: "83653897"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Een nieuwe LUIS-app maken in de LUIS-Portal
 Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de LUIS-portal of via de LUIS-ontwerp- [api's](developer-reference-resource.md).
@@ -45,10 +45,10 @@ U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api
 
 ## <a name="create-new-app-in-luis"></a>Nieuwe app maken in LUIS
 
-1. Selecteer uw abonnement op **mijn apps** pagina en ontwerp de resource en vervolgens **+ maken**. Als u een gratis proef versie gebruikt, leert u hoe u [een ontwerp bron maakt](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. Selecteer uw **abonnement**op **mijn apps** pagina en ontwerp de **resource** en vervolgens **+ maken**. Als u een gratis proef versie gebruikt, leert u hoe u [een ontwerp bron maakt](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Lijst met apps van LUIS](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![Lijst met apps van LUIS](./media/create-app-in-portal.png)
 
 1. Voer in het dialoog venster de naam van uw toepassing in, bijvoorbeeld `Pizza Tutorial` .
 
@@ -64,7 +64,7 @@ U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api
     > [!div class="mx-imgBorder"]
     > ![Lijst met intenties waarvoor geen intentie is gemaakt zonder voor beeld uitingen.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>Andere acties beschikbaar
+## <a name="other-actions-available-on-my-apps-page"></a>Andere acties die beschikbaar zijn op de pagina mijn apps
 
 De context werkbalk bevat andere acties:
 

@@ -3,12 +3,12 @@ title: Back-ups van SAP HANA data bases op virtuele machines van Azure beheren
 description: In dit artikel leert u algemene taken voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480059"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660145"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Back-ups van SAP HANA-databases beheren en bewaken
 
@@ -32,7 +32,7 @@ Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](https:
 
 Waarschuwingen zijn een eenvoudige manier om back-ups van SAP HANA-data bases te bewaken. Waarschuwingen zorgen ervoor dat u zich kunt concentreren op de gebeurtenissen die u het meest vindt, zonder dat u in het grootst aan gebeurtenissen gaat die door een back-up worden gegenereerd. Met Azure Backup kunt u waarschuwingen instellen en ze kunnen als volgt worden bewaakt:
 
-* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+* Meld u aan bij [Azure Portal](https://portal.azure.com/).
 * Selecteer **back-upwaarschuwingen**op het kluis dashboard.
 
   ![Back-upwaarschuwingen op het kluis dashboard](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -64,17 +64,25 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 1. Klik in het menu kluis op **Back-upitems**.
 2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
 3. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
-4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** > worden**uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
+4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
 
 ### <a name="hana-native-client-integration"></a>HANA native client-integratie
 
-Nu worden op aanvraag volledige back-ups die zijn geactiveerd vanuit een van de HANA-systeem eigen clients, weer gegeven als een volledige back-up op de pagina **Back-upitems** .
+#### <a name="backup"></a>Backup
+
+Back-ups op aanvraag die vanuit een van de HANA-systeem eigen clients (naar **Backint**) worden geactiveerd, worden weer gegeven in de lijst back-up op de pagina **Back-upitems** .
 
 ![Laatste back-ups worden uitgevoerd](./media/sap-hana-db-manage/last-backups.png)
 
-Deze ad-hoc volledige back-ups worden ook weer gegeven in de lijst met herstel punten voor herstel.
+U kunt [deze back-ups ook bewaken](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) op de pagina **back-uptaken** .
+
+Deze back-ups op aanvraag worden ook weer gegeven in de lijst met herstel punten voor herstel.
 
 ![Lijst met herstel punten](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>Herstellen
+
+Herstel bewerkingen die zijn geactiveerd vanuit HANA native clients (met behulp van **Backint**) om op dezelfde computer te herstellen, kunnen worden [gecontroleerd](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) vanaf de pagina **back-uptaken** .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA systeem eigen client back-up uitvoeren op een Data Base waarvoor Azure Backup is ingeschakeld
 
@@ -82,7 +90,7 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
 
 1. Wacht totdat alle volledige of logboek back-ups voor de Data Base zijn voltooid. Controleer de status in SAP HANA Studio/cockpit.
 2. Schakel logboek back-ups uit en stel de back-catalogus in op het bestands systeem voor de relevante data base.
-3. U doet dit door te dubbel klikken op **SystemDB** > **configuratie** > **database** > **filter (logboek)**.
+3. U doet dit door te dubbel klikken op **SystemDB**-  >  **configuratie**  >  **database**  >  **filter (logboek)**.
 4. Stel **enable_auto_log_backup** in op **Nee**.
 5. Stel **log_backup_using_backint** in op **False**.
 6. Maak een volledige back-up op aanvraag van de data base.

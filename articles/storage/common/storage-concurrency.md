@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45eb227d5e2608f4fbe6a75f3d95e46dbc3bdee4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255299"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655943"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -292,5 +292,5 @@ Voor meer informatie over Azure Storage raadpleegt u:
 * [Start pagina van Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Kennismaking met Azure Storage](storage-introduction.md)
 * Opslag aan de slag voor [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md)en [files](../storage-dotnet-how-to-use-files.md)
-* Opslag architectuur – [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Opslag architectuur – [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)
 

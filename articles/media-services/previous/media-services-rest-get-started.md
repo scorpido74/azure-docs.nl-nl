@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773686"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654522"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Aan de slag met het leveren van inhoud op aanvraag met behulp van REST  
 
@@ -89,11 +89,11 @@ In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) e
 
 Een van de waarden die u moet opgeven bij het maken van een Asset, is opties voor het maken van activa. De eigenschap **Options** is een opsommings waarde die de versleutelings opties beschrijft waarmee een activum kan worden gemaakt. Een geldige waarde is een van de waarden uit de onderstaande lijst, niet een combi natie van waarden uit deze lijst:
 
-* **Geen** = **0** : er wordt geen versleuteling gebruikt. Wanneer u deze optie gebruikt, wordt uw inhoud niet door Voer of op rest in de opslag beveiligd.
+* **Geen**  =  **0** : er wordt geen versleuteling gebruikt. Wanneer u deze optie gebruikt, wordt uw inhoud niet door Voer of op rest in de opslag beveiligd.
     Als u een MP4-bestand wilt leveren via progressief downloaden, gebruikt u deze optie.
-* **StorageEncrypted** = **1** : Hiermee versleutelt u uw ongecodeerde inhoud lokaal met AES-256-bits versleuteling en uploadt u deze naar Azure Storage waar deze wordt opgeslagen op rest. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
-* **CommonEncryptionProtected** = **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of playready DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** : gebruik deze optie als u HLS versleuteld uploadt met AES. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
+* **StorageEncrypted**  =  **1** -Hiermee versleutelt u uw ongecodeerde inhoud lokaal met AES-256-bits versleuteling en uploadt u deze naar Azure Storage waar deze wordt opgeslagen op rest. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
+* **CommonEncryptionProtected**  =  **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of playready DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
+* **EnvelopeEncryptionProtected**  =  **4** : gebruik deze optie als u HLS versleuteld met AES uploadt. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
 
 ### <a name="create-an-asset"></a>Een Asset maken
 Een Asset is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
@@ -561,7 +561,7 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 Er zijn enkele belang rijke dingen die u moet weten in elke taak aanvraag:
 
 * TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
-* In de TaskBody-definitie moet elke interne waarde `<inputAsset>` voor `<outputAsset>` en worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
+* In de TaskBody-definitie moet elke interne waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
 * Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
 * U kunt JobInputAsset of JobOutputAsset als invoer element van een taak opgeven.
 * Taken mogen geen cyclus vormen.
@@ -817,7 +817,7 @@ De eigenschap van het geretourneerde **pad** bevat de SAS-URL.
 Zodra u de AccessPolicy en de Locator hebt ingesteld, kunt u bestanden downloaden met behulp van de Azure Storage REST-Api's.  
 
 > [!NOTE]
-> U moet de bestands naam van het bestand dat u wilt downloaden, toevoegen aan de waarde van het **pad** naar de locatie die in de vorige sectie is ontvangen. Bijvoorbeeld: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> U moet de bestands naam van het bestand dat u wilt downloaden, toevoegen aan de waarde van het **pad** naar de locatie die in de vorige sectie is ontvangen. Bijvoorbeeld `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` ? . . .
 
 Zie [BLOB Service rest API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)voor meer informatie over het werken met Azure Storage-blobs.
 

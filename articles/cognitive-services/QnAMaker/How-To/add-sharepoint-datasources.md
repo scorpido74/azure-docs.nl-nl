@@ -3,12 +3,12 @@ title: Share Point-bestanden-QnA Maker
 description: Voeg beveiligde share point-gegevens bronnen aan uw Knowledge Base toe om de Knowledge Base te verrijken met vragen en antwoorden die kunnen worden beveiligd met Active Directory.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660304"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Een beveiligde share point-gegevens bron toevoegen aan uw Knowledge Base
 
@@ -27,12 +27,12 @@ Als de QnA Maker Knowledge Base manager niet de Active Directory Manager is, moe
 
 U kunt alle door QnA Maker ondersteunde [Bestands typen](../Concepts/content-types.md) van een share point-site toevoegen aan uw Knowledge Base. Mogelijk moet u [machtigingen](#permissions) verlenen als de bron van het bestand is beveiligd.
 
-1. Selecteer in de bibliotheek met de share point-site het weglatings menu van `...`het bestand.
+1. Selecteer in de bibliotheek met de share point-site het weglatings menu van het bestand `...` .
 1. Kopieer de URL van het bestand.
 
    ![Haal de URL van het share point-bestand op door het menu met het beletsel teken van het bestand te selecteren en de URL te kopiëren.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. In de QnA Maker Portal, op de pagina **instellingen** , [voegt u de URL](manage-knowledge-bases.md#edit-knowledge-base) toe aan de Knowledge Base.
+1. In de QnA Maker Portal, op de pagina **instellingen** , voegt u de URL toe aan de Knowledge Base.
 
 ### <a name="images-with-sharepoint-files"></a>Installatie kopieën met share Point-bestanden
 
@@ -44,7 +44,7 @@ Voeg de installatie kopie met de volgende afkortings syntaxis toe:
 ![Explanation or description of image](URL of public image)
 ```
 
-De tekst in de vier Kante haken `[]`, met uitleg over de afbeelding. De URL tussen haakjes, `()`, is de directe koppeling naar de afbeelding.
+De tekst in de vier Kante haken, met `[]` uitleg over de afbeelding. De URL tussen haakjes, `()` , is de directe koppeling naar de afbeelding.
 
 Wanneer u het QnA-paar in het interactieve test paneel test, wordt de afbeelding in het QnA Maker portal weer gegeven in plaats van de tekst voor de prijs verlaging. Hiermee wordt gecontroleerd of de installatie kopie openbaar kan worden opgehaald uit uw client toepassing.
 

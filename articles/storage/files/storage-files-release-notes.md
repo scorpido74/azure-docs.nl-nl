@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/16/2020
+ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 97599d8113d20511882ec38928b221706e7f37b9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800971"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682416"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -25,17 +25,15 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
 | Mijlpalen | Versienummer agent | Releasedatum | Status |
 |----|----------------------|--------------|------------------|
-| V10 toevoegen release- [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 april 2020 | In vlucht |
+| Update pakket van mei 2020- [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19 mei 2020 | Ondersteund |
+| V10 toevoegen release- [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 april 2020 | Ondersteund |
 | Update pakket van december 2019- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 december 2019 | Ondersteund |
 | V9 release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 december 2019 | Ondersteund |
 | V8 release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 oktober 2019 | Ondersteund |
 | Update pakket van juli 2019- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 juli 2019 | Ondersteund |
 | Update pakket van juli 2019- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 juli 2019 | Ondersteund |
 | V7-release- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 juni 2019 | Ondersteund |
-| Update pakket van juni 2019- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 juni 2019 | Ondersteund: de agent versie verloopt op 21 april 2020 |
-| Update pakket van juni 2019- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 juni 2019 | Ondersteund: de agent versie verloopt op 21 april 2020 |
-| Update pakket van mei 2019- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 mei 2019 | Ondersteund: de agent versie verloopt op 21 april 2020 |
-| V6-release- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 april 2019 | Ondersteund: de agent versie verloopt op 21 april 2020 |
+| Release van v6 | 6.0.0.0 - 6.3.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 21 april 2020 |
 | Versie V5 | 5.0.2.0 - 5.2.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 18 maart 2020 |
 | V4-release | 4.0.1.0 - 4.3.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 6 november 2019 |
 | V3-release | 3.1.0.0 - 3.4.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 19 augustus 2019 |
@@ -43,6 +41,12 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10020"></a>10.0.2.0 van agent versie
+De volgende release opmerkingen zijn voor versie 10.0.2.0 van de Azure File Sync agent die is uitgebracht op 19 mei 2020. Deze opmerkingen zijn opgenomen in aanvulling op de release opmerkingen van versie 10.0.0.0.
+
+Probleem opgelost in deze release:  
+- Storage Sync agent (FileSyncSvc) wordt regel matig vastlopen nadat de Azure File Sync V10 toevoegen-agent is geïnstalleerd.
 
 ## <a name="agent-version-10000"></a>Agent versie 10.0.0.0
 De volgende release opmerkingen zijn voor versie 10.0.0.0 van de Azure File Sync-agent (uitgebracht op 9 april 2020).
@@ -310,7 +314,7 @@ De volgende release opmerkingen zijn voor versie 7.0.0.0 van de Azure File Sync-
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbeteringen en problemen die zijn opgelost
 
 - Ondersteuning voor grotere grootte van bestands shares
-    - Met de preview-versie van grotere Azure-bestands shares verhogen we ook onze ondersteunings limieten voor bestands synchronisatie. In deze eerste stap ondersteunt Azure File Sync nu Maxi maal 25 TB en 50.000.000 bestanden in één synchronisatie naam ruimte. Vul dit formulier https://aka.ms/azurefilesatscalesurveyin om het voor beeld van een grote bestands share te gebruiken. 
+    - Met de preview-versie van grotere Azure-bestands shares verhogen we ook onze ondersteunings limieten voor bestands synchronisatie. In deze eerste stap ondersteunt Azure File Sync nu Maxi maal 25 TB en 50.000.000 bestanden in één synchronisatie naam ruimte. Vul dit formulier in om het voor beeld van een grote bestands share te gebruiken https://aka.ms/azurefilesatscalesurvey . 
 - Ondersteuning voor Firewall en virtuele netwerk instelling voor opslag accounts
     - Azure File Sync ondersteunt nu de instelling Firewall en virtueel netwerk voor opslag accounts. Zie [instellingen voor Firewall en virtueel netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)om uw implementatie te configureren voor gebruik met de instelling Firewall en virtueel netwerk.
 - Power shell-cmdlet voor het direct synchroniseren van bestanden die zijn gewijzigd in de Azure-bestands share
@@ -501,7 +505,7 @@ De volgende release opmerkingen zijn voor versie 5.0.2.0 van de Azure File Sync-
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbeteringen en problemen die zijn opgelost
 
 - Ondersteuning voor Azure Government Cloud
-  - Er is preview-ondersteuning toegevoegd voor de Azure Government Cloud. Hiervoor is een wit abonnement en een speciale down load van de agent van micro soft vereist. Als u toegang wilt krijgen tot de preview, kunt u ons [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)rechtstreeks een e-mail sturen naar.
+  - Er is preview-ondersteuning toegevoegd voor de Azure Government Cloud. Hiervoor is een wit abonnement en een speciale down load van de agent van micro soft vereist. Als u toegang wilt krijgen tot de preview, kunt u ons rechtstreeks een e-mail sturen naar [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) .
 - Ondersteuning voor Gegevensontdubbeling
     - Gegevensontdubbeling wordt nu volledig ondersteund met Cloud lagen die zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Als u ontdubbeling inschakelt op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten.
 - Ondersteuning voor offline gegevens overdracht (bijvoorbeeld via Data Box)

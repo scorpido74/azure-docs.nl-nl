@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871614"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648168"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -48,17 +48,21 @@ U kunt ook een ISE maken met behulp van de voor [beeld-Azure Resource Manager Qu
 
   * Het virtuele netwerk moet vier *lege* subnetten hebben voor het maken en implementeren van resources in uw ISE. Elk subnet ondersteunt een ander Logic Apps onderdeel dat wordt gebruikt in uw ISE. U kunt deze subnetten vooraf maken, maar u kunt wachten totdat u de ISE maakt waar u subnetten tegelijk kunt maken. Meer informatie over de vereisten voor het [subnet](#create-subnet).
 
-  * De namen van subnetten moeten beginnen met een alfabetisch teken of een liggend streepje en mogen niet `<`de `>`volgende `%`tekens `&`gebruiken `\\`: `?`, `/`,,,,,. 
+  * De namen van subnetten moeten beginnen met een alfabetisch teken of een liggend streepje en mogen niet de volgende tekens gebruiken: `<` , `>` , `%` , `&` , `\\` , `?` , `/` . 
   
   * Als u de ISE via een Azure Resource Manager sjabloon wilt implementeren, moet u eerst een leeg subnet delegeren naar micro soft. Logic/integrationServiceEnvironment. U hoeft deze delegatie niet uit te voeren wanneer u via de Azure Portal implementeert.
 
   * Zorg ervoor dat het virtuele netwerk [toegang biedt tot uw ISE](#enable-access) zodat uw ISE goed kan werken en toegankelijk moet blijven.
 
-  * Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, een persoonlijke verbinding met micro soft-Cloud Services die wordt vereenvoudigd door de connectiviteits provider, moet u [een route tabel](../virtual-network/manage-route-table.md) met de volgende route maken en die tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
+  * Met [ExpressRoute](../expressroute/expressroute-introduction.md) kunt u uw on-premises netwerken uitbreiden naar micro soft Cloud en verbinding maken met micro soft-Cloud Services via een persoonlijke verbinding die wordt vereenvoudigd door de connectiviteits provider. ExpressRoute is met name een virtueel particulier netwerk dat verkeer via een particulier netwerk routeert in plaats van het open bare Internet. Logic apps kunnen verbinding maken met on-premises bronnen die zich in hetzelfde virtuele netwerk bevinden wanneer u verbinding maakt via ExpressRoute of een virtueel particulier netwerk. 
+  
+    Als u ExpressRoute gebruikt, moet u [een route tabel](../virtual-network/manage-route-table.md) met de volgende route maken en die tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
 
     **Naam**: <*route naam*><br>
     **Adres voorvoegsel**: 0.0.0.0/0<br>
     **Volgende hop**: Internet
+
+    Deze route tabel is vereist voor Logic Apps onderdelen om te communiceren met andere afhankelijke Azure-Services, zoals Azure Storage en Azure SQL DB.
 
 * Als u aangepaste DNS-servers wilt gebruiken voor uw virtuele Azure-netwerk, [stelt u die servers in door de volgende stappen uit te voeren](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voordat u uw ISE implementeert in uw virtuele netwerk. Zie [een virtueel netwerk maken, wijzigen of verwijderen](../virtual-network/manage-virtual-network.md#change-dns-servers)voor meer informatie over het beheren van DNS-server instellingen.
 
@@ -128,7 +132,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 ## <a name="create-your-ise"></a>Een ISE maken
 
-1. Voer `integration service environments` in het [Azure Portal](https://portal.azure.com)in het hoofd venster van Azure Search in als uw filter en selecteer **integratie service omgevingen**.
+1. Voer in het [Azure Portal](https://portal.azure.com)in het hoofd venster van Azure Search in `integration service environments` als uw filter en selecteer **integratie service omgevingen**.
 
    ![Zoek en selecteer integratie service omgevingen](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
@@ -144,7 +148,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Azure-abonnement-naam*> | Het Azure-abonnement dat u wilt gebruiken voor uw omgeving |
    | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | Een nieuwe of bestaande Azure-resource groep waar u uw omgeving wilt maken |
-   | **Naam van de integratie service omgeving** | Ja | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes`-`(), onderstrepings tekens`_`() en punten (`.`) kan bevatten. |
+   | **Naam van de integratie service omgeving** | Ja | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ) en punten () kan bevatten `.` . |
    | **Locatie** | Ja | <*Azure-Data Center-regio*> | De Azure Data Center-regio waar u uw omgeving kunt implementeren |
    | **SKU** | Ja | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk**: deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
    | **Extra capaciteit** | Premium: <br>Ja <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
@@ -159,11 +163,11 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
    Voor het maken en implementeren van resources in uw omgeving, heeft uw ISE vier *lege* subnetten nodig die niet worden overgedragen aan een service. Elk subnet ondersteunt een ander Logic Apps onderdeel dat wordt gebruikt in uw ISE. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt. Elk subnet moet aan de volgende vereisten voldoen:
 
-   * Heeft een naam die begint met een letter of een onderstrepings teken (geen getallen). deze tekens worden niet gebruikt `<`: `>`, `%`, `&`, `\\`, `?`, `/`,.
+   * Heeft een naam die begint met een letter of een onderstrepings teken (geen getallen). deze tekens worden niet gebruikt: `<` ,, `>` `%` , `&` , `\\` , `?` , `/` .
 
    * Maakt gebruik van de [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) en een klasse B-adres ruimte.
 
-   * Maakt gebruik `/27` van een in de adres ruimte, omdat voor elk subnet 32-adressen zijn vereist. Heeft bijvoorbeeld 32 adressen omdat 2<sup>(32-27)</sup> 2 5 of 32 is.<sup>5</sup> `10.0.0.0/27` Meer adressen bieden geen extra voor delen.  Zie voor meer informatie over het berekenen van adressen [IPv4 CIDR-blokken](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * Maakt gebruik `/27` van een in de adres ruimte, omdat voor elk subnet 32-adressen zijn vereist. `10.0.0.0/27`Heeft bijvoorbeeld 32 adressen omdat 2<sup>(32-27)</sup> 2<sup>5</sup> of 32 is. Meer adressen bieden geen extra voor delen.  Zie voor meer informatie over het berekenen van adressen [IPv4 CIDR-blokken](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * Als u [ExpressRoute](../expressroute/expressroute-introduction.md)gebruikt, moet u [een route tabel](../virtual-network/manage-route-table.md) met de volgende route maken en deze tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
 

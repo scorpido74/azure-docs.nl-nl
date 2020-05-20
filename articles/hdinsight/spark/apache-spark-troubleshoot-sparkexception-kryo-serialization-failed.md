@@ -1,18 +1,18 @@
 ---
 title: Problemen met JDBC/ODBC & Apache Thrift Framework-Azure HDInsight
 description: Kan geen grote gegevens sets downloaden met behulp van JDBC/ODBC en Apache Thrift software framework in azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 07/29/2019
-ms.openlocfilehash: 23693dcae2f361b88440ec88ca39fd8ed229d85a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 05/14/2020
+ms.openlocfilehash: a8dcd6ae844810213ed6706002cdb9a31de94f60
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894260"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653595"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>Kan geen grote gegevens sets downloaden met behulp van JDBC/ODBC en Apache Thrift software framework in HDInsight
 
@@ -33,7 +33,10 @@ Deze uitzonde ring wordt veroorzaakt door het serialisatie proces en probeert me
 
 ## <a name="resolution"></a>Oplossing
 
-Verhoog de `Kryoserializer` buffer waarde. Voeg een sleutel toe `spark.kryoserializer.buffer.max` met de naam en `2048` stel deze in op `Custom spark2-thrift-sparkconf`spark2 config onder.
+Verhoog de `Kryoserializer` buffer waarde. Voeg een sleutel toe `spark.kryoserializer.buffer.max` met de naam en stel deze `2047` in op spark2 config onder `Custom spark2-thrift-sparkconf` . Start alle betrokken onderdelen opnieuw op.
+
+> [!IMPORTANT]
+> De waarde voor `spark.kryoserializer.buffer.max` moet kleiner zijn dan 2048. Fractionele waarden worden niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -41,6 +44,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

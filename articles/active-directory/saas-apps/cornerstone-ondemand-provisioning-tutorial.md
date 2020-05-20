@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058420"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647433"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Zelf studie: hoek steen configureren voor automatische gebruikers inrichting
 
@@ -39,7 +39,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een gebruikers account in hoek steen en de OnDemand met beheerders machtigingen.
 
 > [!NOTE]
-> De integratie van Azure AD-inrichting is afhankelijk van de [OnDemand-webservice](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)van de hoek. Deze service is beschikbaar voor de OnDemand-teams van de hoek.
+> De integratie van Azure AD-inrichting is afhankelijk van de [OnDemand-webservice](https://www.cornerstoneondemand.com/)van de hoek. Deze service is beschikbaar voor de OnDemand-teams van de hoek.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Hoek steen toevoegen op de Azure Marketplace
 
@@ -81,7 +81,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Ga als volgt te werk om het automatisch inrichten van gebruikers te configureren voor de OnDemand van een hoek steen in azure AD.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). **Bedrijfs toepassingen** > selecteren**alle toepassingen** > op de**OnDemand**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). **Bedrijfs toepassingen**selecteren  >  **alle toepassingen op de**  >  **OnDemand**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -103,7 +103,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers te configureren
 
     * In het vak **beheerders wachtwoord** vult u het wacht woord in dat overeenkomt met de gebruikers naam van de beheerder.
 
-    * Vul in het vak **domein** de WEBSERVICE-URL in van de hoek van het bewaarde Tenant. De service bevindt zich bijvoorbeeld op `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`en voor contoso is `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`het domein. Zie voor meer informatie over het ophalen van de webservice [-URL deze PDF](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    * Vul in het vak **domein** de WEBSERVICE-URL in van de hoek van het bewaarde Tenant. De service bevindt zich bijvoorbeeld op `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` en voor contoso is het domein `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` . Zie voor meer informatie over het ophalen van de webservice [-URL deze PDF](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
 6. Nadat u de vakken in stap 5 hebt ingevuld, selecteert u **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met de hoek steen van de OnDemand. Als de verbinding mislukt, moet u ervoor zorgen dat uw OnDemand-account over beheerders rechten beschikt en het opnieuw proberen.
 

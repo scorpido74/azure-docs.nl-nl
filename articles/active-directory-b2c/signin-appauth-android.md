@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183773"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638378"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Meld u aan met een Android-toepassing in Azure Active Directory B2C
 
@@ -70,12 +70,12 @@ Het voor beeld is een wijziging van het voor beeld dat wordt verschaft door [App
 U kunt communicatie met Azure AD B2C configureren door ofwel de detectie-URI op te geven of door zowel het autorisatie-eind punt als het token-eind punt-Uri's op te geven. In beide gevallen hebt u de volgende informatie nodig:
 
 * Tenant-ID (bijvoorbeeld contoso.onmicrosoft.com)
-* Gebruikers stroom naam (bijvoorbeeld B2C\_1\_SignUpIn)
+* Gebruikers stroom naam (bijvoorbeeld B2C \_ 1 \_ SignUpIn)
 
-Als u ervoor kiest om automatisch de autorisatie en Token-eind punt-Uri's te detecteren, moet u de gegevens van de detectie-URI ophalen. De detectie-URI kan worden gegenereerd door de Tenant\_-id en de\_naam van het beleid in de volgende URL te vervangen:
+Als u ervoor kiest om automatisch de autorisatie en Token-eind punt-Uri's te detecteren, moet u de gegevens van de detectie-URI ophalen. De detectie-URI kan worden gegenereerd door de `<tenant-id>` en `<policy-name>` in de volgende URL te vervangen:
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 U kunt vervolgens de autorisatie-en Token-eind punt-Uri's ophalen en een AuthorizationServiceConfiguration-object maken door het volgende uit te voeren:
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-In plaats van de detectie te gebruiken om de autorisatie-en Token-eind punt-Uri's te verkrijgen, kunt u\_ze ook expliciet opgeven\_door de Tenant-id en de naam van het beleid in de onderstaande URL te vervangen:
+In plaats van de detectie te gebruiken om de autorisatie en Token-eind punt-Uri's te verkrijgen, kunt u ze ook expliciet opgeven door de `<tenant-id>` en `<policy-name>` in de onderstaande url's te vervangen:
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 Voer de volgende code uit om uw AuthorizationServiceConfiguration-object te maken:

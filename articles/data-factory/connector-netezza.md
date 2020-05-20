@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 05/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 89efa8dc9989f693964415741299042c63f93780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69eef6d8457b183f61bae98c0bc80feb0ff2e263
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418113"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635463"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,11 +60,11 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Netezza-service:
 | Verbindings | Een ODBC-connection string om verbinding te maken met Netezza. <br/>U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-Een typische connection string is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. In de volgende tabel worden meer eigenschappen beschreven die u kunt instellen:
+Een typische connection string is `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` . In de volgende tabel worden meer eigenschappen beschreven die u kunt instellen:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| SecurityLevel | Het beveiligings niveau (SSL/TLS) dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen** niet-beveiligd (**OnlyUnSecured**): het stuur programma gebruikt geen TLS.<br/>- **Voor keur niet-beveiligd (preferredUnSecured) (standaard)**: als de server een keuze biedt, gebruikt het stuur programma geen TLS. <br/>- **Voorkeurs beveiliging (preferredSecured)**: als de server een keuze biedt, gebruikt het stuur programma TLS. <br/>- **Alleen beveiligd (onlySecured)**: het stuur programma kan geen verbinding maken tenzij er een TLS-verbinding beschikbaar is. | Nee |
+| SecurityLevel | Het beveiligings niveau (SSL/TLS) dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Het stuur programma ondersteunt SSL-verbindingen met eenrichtings verificatie met behulp van SSL-versie 3. <br>Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen** niet-beveiligd (**OnlyUnSecured**): het stuur programma gebruikt geen TLS.<br/>- **Voor keur niet-beveiligd (preferredUnSecured) (standaard)**: als de server een keuze biedt, gebruikt het stuur programma geen TLS. <br/>- **Voorkeurs beveiliging (preferredSecured)**: als de server een keuze biedt, gebruikt het stuur programma TLS. <br/>- **Alleen beveiligd (onlySecured)**: het stuur programma kan geen verbinding maken tenzij er een TLS-verbinding beschikbaar is. | Nee |
 | CaCertFile | Het volledige pad naar het TLS/SSL-certificaat dat wordt gebruikt door de-server. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als TLS is ingeschakeld |
 
 **Voorbeeld**
@@ -159,13 +159,13 @@ Als u gegevens van Netezza wilt kopiëren, stelt u het **bron** type in de Kopie
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **NetezzaSource**. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `"SELECT * FROM MyTable"` | Nee (als ' Tablename ' in gegevensset is opgegeven) |
-| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Netezza. <br>Toegestane waarden zijn: **geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, `None`niet), is de mate van parallelle uitvoering om gegevens uit een Netezza-data base gelijktijdig te laden [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) , beheerd door de instelling van de Kopieer activiteit. | Nee |
-| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie `None`optie niet is. | Nee |
-| partitionColumnName | Geef de naam op van de bron kolom **in een geheel getal** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie `DynamicRange`is. Als u een query gebruikt om de bron gegevens op te halen `?AdfRangePartitionColumnName` , koppelt u de component WHERE. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-netezza) de sectie Netezza. | Nee |
-| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie `DynamicRange`is. Als u query gebruikt om bron gegevens op te halen `?AdfRangePartitionUpbound` , Hook in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
-| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie `DynamicRange`is. Als u een query gebruikt om de bron gegevens op te halen `?AdfRangePartitionLowbound` , Hook in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
+| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Netezza. <br>Toegestane waarden zijn: **geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens uit een Netezza-data base gelijktijdig te laden, beheerd door [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) de instelling van de Kopieer activiteit. | Nee |
+| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet is `None` . | Nee |
+| partitionColumnName | Geef de naam op van de bron kolom **in een geheel getal** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de kolom partitie. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, koppelt u de `?AdfRangePartitionColumnName` component WHERE. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-netezza) de sectie Netezza. | Nee |
+| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie is `DynamicRange` . Als u query gebruikt om bron gegevens op te halen, Hook `?AdfRangePartitionUpbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
+| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionLowbound` in de component WHERE. Zie de sectie [parallelle kopie van Netezza](#parallel-copy-from-netezza) voor een voor beeld. | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -210,8 +210,8 @@ U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partitie
 | Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel.                                   | **Partitie optie**: gegevens segment. <br><br/>Tijdens de uitvoering van Data Factory worden de gegevens automatisch gepartitioneerd op basis van [de ingebouwde gegevens segmenten van Netezza](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)en worden gegevens gekopieerd op partities. |
-| Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: gegevens segment.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`.<br>Tijdens de uitvoering worden Data Factory `?AdfPartitionCount` vervangen (waarbij het parallelle Kopieer nummer is ingesteld op de `?AdfDataSliceCondition` Kopieer activiteit) en met de logica van de gegevens segment partitie en verzonden naar Netezza. |
-| Laad een grote hoeveelheid gegevens met behulp van een aangepaste query, met een kolom met gehele getallen met een gelijkmatig gedistribueerde waarde voor bereik partitionering. | **Partitie opties**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. U kunt de kolom met het gegevens type geheel getal partitioneren.<br>**Bovengrens van partities** en partities met een **ondergrens**: Geef op of u wilt filteren op de partitie kolom om alleen gegevens tussen het onderste en het bovenste bereik op te halen.<br><br>Tijdens de uitvoering Data Factory vervangt `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, en `?AdfRangePartitionLowbound` met de werkelijke kolom naam en waardeparen voor elke partitie, en verzonden naar Netezza. <br>Als uw partitie kolom "ID" bijvoorbeeld is ingesteld met de ondergrens als 1 en de bovengrens als 80, met een parallelle kopie ingesteld als 4, Data Factory worden gegevens opgehaald met vier partities. Hun Id's liggen respectievelijk tussen [1, 20], [21, 40], [41, 60] en [61, 80]. |
+| Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: gegevens segment.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>` .<br>Tijdens de uitvoering worden Data Factory vervangen `?AdfPartitionCount` (waarbij het parallelle Kopieer nummer is ingesteld op de Kopieer activiteit) en `?AdfDataSliceCondition` met de logica van de gegevens segment partitie en verzonden naar Netezza. |
+| Laad een grote hoeveelheid gegevens met behulp van een aangepaste query, met een kolom met gehele getallen met een gelijkmatig gedistribueerde waarde voor bereik partitionering. | **Partitie opties**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>` .<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. U kunt de kolom met het gegevens type geheel getal partitioneren.<br>**Bovengrens van partities** en partities met een **ondergrens**: Geef op of u wilt filteren op de partitie kolom om alleen gegevens tussen het onderste en het bovenste bereik op te halen.<br><br>Tijdens de uitvoering Data Factory vervangt `?AdfRangePartitionColumnName` , `?AdfRangePartitionUpbound` , en `?AdfRangePartitionLowbound` met de werkelijke kolom naam en waardeparen voor elke partitie, en verzonden naar Netezza. <br>Als uw partitie kolom "ID" bijvoorbeeld is ingesteld met de ondergrens als 1 en de bovengrens als 80, met een parallelle kopie ingesteld als 4, Data Factory worden gegevens opgehaald met vier partities. Hun Id's liggen respectievelijk tussen [1, 20], [21, 40], [41, 60] en [61, 80]. |
 
 **Voor beeld: query met gegevens segment partitie**
 

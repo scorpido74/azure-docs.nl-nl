@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: f2d1eaec80c8925eb7b38af848e29e944f1ebf69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c698b9381755f81303dc3adfa9422b82500bb208
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154539"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642212"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Service-to-service aanroepen met behulp van client referenties (gedeeld geheim of certificaat)
 
@@ -60,7 +60,7 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 | resource |vereist |Voer de App-ID-URI in van de ontvangende webservice. Als u de URI van de App-ID wilt zoeken, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de service toepassing en klikt u vervolgens op **instellingen** en **Eigenschappen**. |
 
 #### <a name="example"></a>Voorbeeld
-Met de volgende HTTP POST [wordt een toegangs token](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor `https://service.contoso.com/` de webservice aangevraagd. `client_id` Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+Met de volgende HTTP POST [wordt een toegangs token](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor de `https://service.contoso.com/` webservice aangevraagd. `client_id`Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -84,7 +84,7 @@ Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 
 #### <a name="example"></a>Voorbeeld
-Met de volgende HTTP POST wordt een toegangs token voor `https://service.contoso.com/` de webservice aangevraagd met een certificaat. `client_id` Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+Met de volgende HTTP POST wordt een toegangs token voor de `https://service.contoso.com/` webservice aangevraagd met een certificaat. `client_id`Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -112,12 +112,23 @@ In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs 
 
 ```
 {
-"access_token":"eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0ODI2NywibmJmIjoxMzg4NDQ4MjY3LCJleHAiOjEzODg0NTIxNjcsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6ImE5OTE5MTYyLTkyMTctNDlkYS1hZTIyLWYxMTM3YzI1Y2RlYSIsInN1YiI6ImE5OTE5MTYyLTkyMTctNDlkYS1hZTIyLWYxMTM3YzI1Y2RlYSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZS8iLCJhcHBpZCI6ImQxN2QxNWJjLWM1NzYtNDFlNS05MjdmLWRiNWYzMGRkNThmMSIsImFwcGlkYWNyIjoiMSJ9.aqtfJ7G37CpKV901Vm9sGiQhde0WMg6luYJR4wuNR2ffaQsVPPpKirM5rbc6o5CmW1OtmaAIdwDcL6i9ZT9ooIIicSRrjCYMYWHX08ip-tj-uWUihGztI02xKdWiycItpWiHxapQm0a8Ti1CWRjJghORC1B1-fah_yWx6Cjuf4QE8xJcu-ZHX0pVZNPX22PHYV5Km-vPTq2HtIqdboKyZy3Y4y3geOrRIFElZYoqjqSv5q9Jgtj5ERsNQIjefpyxW3EwPtFqMcDm4ebiAEpoEWRN4QYOMxnC9OUBeG9oLA0lTfmhgHLAtvJogJcYFzwngTsVo6HznsvPWy7UP3MINA",
+"access_token":"eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw",
 "token_type":"Bearer",
 "expires_in":"3599",
 "expires_on":"1388452167",
 "resource":"https://service.contoso.com/"
 }
+```
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Het toegangs token gebruiken om toegang te krijgen tot de beveiligde resource
+
+De service kan het verkregen toegangs token gebruiken om geverifieerde aanvragen naar de downstream Web-API te maken door het token in de header in te stellen `Authorization` .
+
+### <a name="example"></a>Voorbeeld
+
+```
+GET /me?api-version=2013-11-08 HTTP/1.1
+Host: graph.microsoft.com
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="see-also"></a>Zie ook

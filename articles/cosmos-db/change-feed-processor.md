@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982374"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655301"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -39,7 +39,7 @@ We kijken naar een voor beeld in het volgende diagram om meer inzicht te krijgen
 
 ## <a name="implementing-the-change-feed-processor"></a>De processor voor de wijzigings feed implementeren
 
-Het gegeven punt is altijd de bewaakte container, van een `Container` instantie die u `GetChangeFeedProcessorBuilder`aanroept:
+Het gegeven punt is altijd de bewaakte container, van een `Container` instantie die u aanroept `GetChangeFeedProcessorBuilder` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -50,16 +50,16 @@ Een voor beeld van een gemachtigde is:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Ten slotte definieert u een naam voor dit processor exemplaar `WithInstanceName` met en dit is de container waarin de lease status moet `WithLeaseContainer`worden onderhouden.
+Ten slotte definieert u een naam voor dit processor exemplaar met `WithInstanceName` en dit is de container waarin de lease status moet worden onderhouden `WithLeaseContainer` .
 
-Met `Build` aanroepen krijgt u het processor exemplaar dat u kunt starten door `StartAsync`aan te roepen.
+Met aanroepen krijgt `Build` u het processor exemplaar dat u kunt starten door aan te roepen `StartAsync` .
 
 ## <a name="processing-life-cycle"></a>Levens cyclus verwerken
 
 De normale levens cyclus van een exemplaar van een host is:
 
 1. Lees de wijzigings feed.
-1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde `WithPollInterval` hoeveelheid tijd (aanpasbaar met in de opbouw functie) en gaat u naar #1.
+1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde hoeveelheid tijd (aanpasbaar met `WithPollInterval` in de opbouw functie) en gaat u naar #1.
 1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde**.
 1. Wanneer de gemachtigde de verwerking van de wijzigingen **heeft**voltooid, werkt u de lease Store bij met het meest recente verwerkte punt in de tijd en gaat u naar #1.
 
@@ -71,15 +71,21 @@ Als u wilt voor komen dat de processor voor wijzigings invoer voortdurend opnieu
 
 Daarnaast kunt u de [wijzigings feed-Estimator](how-to-use-change-feed-estimator.md) gebruiken om de voortgang van de wijzigingen in de feeder-processor te controleren wanneer ze de wijzigings feed lezen. Naast het volgen van de controle als de wijzigings processor ' vastgelopen ' voortdurend opnieuw wordt uitgevoerd, kunt u ook zien of de verwerkings processor van de wijziging zich voordoet als gevolg van de beschik bare bronnen zoals CPU, geheugen en netwerk bandbreedte.
 
+## <a name="deployment-unit"></a>Implementatie-eenheid
+
+Een enkele wijzigings eenheid voor het wijzigen van een feed bestaat uit een of meer exemplaren met dezelfde `processorName` en een lease-container configuratie. U kunt veel implementatie-eenheden hebben waarbij elk een andere bedrijfs stroom heeft voor de wijzigingen en elke implementatie-eenheid die bestaat uit een of meer instanties. 
+
+U kunt bijvoorbeeld één implementatie-eenheid hebben die een externe API activeert, op het moment dat er een wijziging in uw container optreedt. Een andere implementatie-eenheid kan gegevens in realtime verplaatsen, telkens wanneer er een wijziging is. Wanneer er een wijziging in de bewaakte container optreedt, krijgen alle implementatie-eenheden een melding.
+
 ## <a name="dynamic-scaling"></a>Dynamische schaalbaarheid
 
-Zoals vermeld tijdens de introductie, kan de wijzigings verwerkings processor de berekening automatisch verdelen over meerdere exemplaren. U kunt meerdere exemplaren van uw toepassing implementeren met behulp van de processor voor wijzigings invoer en hiervan profiteren, de enige vereisten voor de sleutel zijn:
+Zoals eerder vermeld, binnen een implementatie-eenheid, kunt u een of meer exemplaren hebben. Om te profiteren van de reken distributie binnen de implementatie-eenheid, zijn de enige vereisten voor de sleutel:
 
 1. Alle exemplaren moeten dezelfde configuratie voor de lease container hebben.
-1. Alle exemplaren moeten dezelfde werk stroom naam hebben.
-1. Elk exemplaar moet een andere exemplaar naam (`WithInstanceName`) hebben.
+1. Alle exemplaren moeten hetzelfde hebben `processorName` .
+1. Elk exemplaar moet een andere exemplaar naam () hebben `WithInstanceName` .
 
-Als deze drie voor waarden van toepassing zijn, wordt met behulp van een even distributie algoritme alle leases in de lease-container gedistribueerd op alle actieve instanties en parallelliseren compute. Een lease kan alleen eigendom zijn van één exemplaar op een bepaald moment, waardoor het maximum aantal exemplaren gelijk is aan het aantal leases.
+Als deze drie voor waarden van toepassing zijn, wordt met behulp van een even distributie algoritme alle leases in de lease container gedistribueerd op alle actieve instanties van die implementatie-eenheid en parallelliseren compute. Een lease kan alleen eigendom zijn van één exemplaar op een bepaald moment, waardoor het maximum aantal exemplaren gelijk is aan het aantal leases.
 
 Het aantal exemplaren kan worden verg root of verkleind, en de wijzigings processor past de belasting dynamisch aan door dienovereenkomstig te distribueren.
 
@@ -89,7 +95,7 @@ Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan
 
 Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens verplaatsing in en buiten Cosmos containers altijd RUs gebruikt. Er worden kosten in rekening gebracht voor RUs dat wordt gebruikt door de lease-container.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

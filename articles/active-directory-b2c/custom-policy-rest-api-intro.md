@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337413"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636984"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API claim uitwisselingen integreren in uw aangepaste beleid voor Azure AD B2C
 
@@ -61,7 +61,7 @@ U kunt een REST API-aanroep toevoegen aan elke stap in de gebruikers reis die is
 
 ## <a name="sending-data"></a>Gegevens verzenden
 
-In het [vervolg technische profiel](restful-technical-profile.md)bevat het `InputClaims` element een lijst met claims die naar uw rest-service moeten worden verzonden. U kunt de naam van uw claim toewijzen aan de naam die is gedefinieerd in de REST-service, een standaard waarde instellen en [claim resolvers](claim-resolver-overview.md)gebruiken.
+In het [vervolg technische profiel](restful-technical-profile.md) `InputClaims` bevat het element een lijst met claims die naar uw rest-service moeten worden verzonden. U kunt de naam van uw claim toewijzen aan de naam die is gedefinieerd in de REST-service, een standaard waarde instellen en [claim resolvers](claim-resolver-overview.md)gebruiken.
 
 U kunt configureren hoe de invoer claims worden verzonden naar de claim provider voor de REST met behulp van het kenmerk SendClaimsIn. De mogelijke waarden zijn:
 
@@ -162,7 +162,7 @@ In een onderliggend technisch profiel wilt u mogelijk de taal/land instelling va
 
 ## <a name="handling-error-messages"></a>Fout berichten verwerken
 
-Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie). Zie het [rest technische profiel](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message)voor meer informatie.
+Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie). Zie het [rest technische profiel](restful-technical-profile.md#returning-error-message)voor meer informatie.
 
 Dit kan alleen worden bereikt door een REST API technisch profiel aan te roepen vanuit een validatie technische profiel. Hiermee kan de gebruiker de gegevens op de pagina corrigeren en de validatie opnieuw uitvoeren bij het verzenden van de pagina.
 

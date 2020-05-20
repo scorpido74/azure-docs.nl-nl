@@ -3,12 +3,12 @@ title: .NET-traceer Logboeken in Application Insights verkennen
 description: Zoek logboeken die zijn gegenereerd door Trace, NLog of Log4Net.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bcd21286a547e0b0a6b5b93e8b05921e8e8cc1e2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276268"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647918"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET core-en python-traceer Logboeken in Application Insights verkennen
 
@@ -49,20 +49,20 @@ Gebruik deze methode als uw project type niet wordt ondersteund door het Applica
 3. Zoek naar ' Application Insights '.
 4. Selecteer een van de volgende pakketten:
 
-   - Voor ILogger: [micro soft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - Voor NLog: [micro soft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Voor log4net: [micro soft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - Voor System. Diagnostics: [micro soft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Micro soft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
-[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - Voor ILogger: [micro soft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - Voor NLog: [micro soft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Voor log4net: [micro soft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Voor System. Diagnostics: [micro soft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Micro soft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) 
+ [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
+ [ ![ Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 Het NuGet-pakket installeert de benodigde assembly's en wijzigt web. config of app. config als dat van toepassing is.
 
@@ -124,7 +124,7 @@ U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Appl
 
 Voor elke bron kunt u de volgende para meters instellen:
  * **ProviderName** is de naam van de etw-provider die moet worden verzameld.
- * **ProviderGuid** Hiermee geeft u de GUID op van de etw-provider die u wilt verzamelen. Het kan worden gebruikt in plaats `ProviderName`van.
+ * **ProviderGuid** Hiermee geeft u de GUID op van de etw-provider die u wilt verzamelen. Het kan worden gebruikt in plaats van `ProviderName` .
  * **Niveau** stelt het logboek registratie niveau in dat moet worden verzameld. Dit kan *kritiek*, *fout*, *informatief*, *LogAlways*, *uitgebreid*of *waarschuwing*zijn.
  * **Tref woorden** (optioneel) Stel de gehele waarde van trefwoord combinaties in op gebruik.
 
@@ -182,16 +182,18 @@ U kunt bijvoorbeeld het volgende doen:
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 ### <a name="how-do-i-do-this-for-java"></a>Hoe kan ik doe dit voor Java?
-Gebruik de [Java-logboek adapters](../../azure-monitor/app/java-trace-logs.md).
+In Java-instrumentatie zonder code (aanbevolen) de logboeken worden verzameld uit het vak. Gebruik de [java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+
+Als u de Java-SDK gebruikt, gebruikt u de [Java-logboek adapters](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Er is geen optie Application Insights in het context menu van het project
-* Zorg ervoor dat Developer Analytics-Hulpprogram Ma's op de ontwikkel computer zijn geïnstalleerd. Zoek in de**extensies en updates**van Visual Studio- **hulpprogram ma's** > naar **Developer Analytics-hulpprogram ma's**. Als dit **niet het geval** is, opent u het tabblad **online** en installeert u het.
-* Dit kan een project type zijn dat devloper Analytics-Hulpprogram Ma's niet ondersteunt. [Hand matige installatie](#manual-installation)gebruiken.
+* Zorg ervoor dat Developer Analytics-Hulpprogram Ma's op de ontwikkel computer zijn geïnstalleerd. Zoek in de **Tools**  >  **extensies en updates**van Visual Studio-hulpprogram ma's naar **Developer Analytics-hulpprogram ma's**. Als dit **niet het geval** is, opent u het tabblad **online** en installeert u het.
+* Dit kan een project type zijn dat niet wordt ondersteund door Developer Analytics tools. [Hand matige installatie](#manual-installation)gebruiken.
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Er is geen optie voor de logboek adapter in het configuratie hulpprogramma
 * Installeer eerst het Framework voor logboek registratie.
 * Als u System. Diagnostics. trace gebruikt, zorg er dan voor dat u deze hebt [geconfigureerd in *Web. config*](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
-* Zorg ervoor dat u beschikt over de nieuwste versie van Application Insights. Ga in Visual Studio naar **hulpprogram ma's** > voor**uitbrei dingen en updates**en open het tabblad **updates** . Als **Developer Analytics-Hulpprogram ma's** er is, selecteert u deze om het bij te werken.
+* Zorg ervoor dat u beschikt over de nieuwste versie van Application Insights. Ga in Visual Studio naar **hulpprogram ma's**voor  >  **uitbrei dingen en updates**en open het tabblad **updates** . Als **Developer Analytics-Hulpprogram ma's** er is, selecteert u deze om het bij te werken.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Fout bericht ' de instrumentatie sleutel mag niet leeg zijn '
 Waarschijnlijk hebt u het Nuget-pakket voor de logboek registratie adapter geïnstalleerd zonder Application Insights te installeren. Klik in Solution Explorer met de rechter muisknop op *ApplicationInsights. config*en selecteer **Update Application Insights**. U wordt gevraagd om u aan te melden bij Azure en een Application Insights resource te maken of een bestaande te hergebruiken. Dat het probleem moet oplossen.

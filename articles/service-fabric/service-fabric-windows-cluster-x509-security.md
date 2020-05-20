@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561995"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653636"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten
 In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende knoop punten van uw zelfstandige Windows-cluster kunt beveiligen. Ook wordt beschreven hoe u clients verifieert die verbinding maken met dit cluster met behulp van X. 509-certificaten. Verificatie zorgt ervoor dat alleen gemachtigde gebruikers toegang hebben tot het cluster en de geïmplementeerde toepassingen en beheer taken uitvoeren. Certificaat beveiliging moet worden ingeschakeld op het cluster als het cluster wordt gemaakt.  
@@ -248,12 +248,24 @@ Als u de archiefen van de uitgever gebruikt, moet er geen configuratie-upgrade w
 ## <a name="acquire-the-x509-certificates"></a>De X. 509-certificaten ophalen
 Als u de communicatie binnen het cluster wilt beveiligen, moet u eerst X. 509-certificaten voor uw cluster knooppunten verkrijgen. Als u de verbinding met dit cluster met geautoriseerde computers/gebruikers wilt beperken, moet u bovendien certificaten voor de client computers verkrijgen en installeren.
 
-Voor clusters met productie-workloads gebruikt u een door de [certificerings instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)ondertekend X. 509-certificaat om het cluster te beveiligen. Zie [How to Schaf a Certificate (een certificaat verkrijgen](https://msdn.microsoft.com/library/aa702761.aspx)) voor meer informatie over het verkrijgen van deze certificaten.
+Voor clusters met productie-workloads gebruikt u een door de [certificerings instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)ondertekend X. 509-certificaat om het cluster te beveiligen. Zie [How to Schaf a Certificate (een certificaat verkrijgen](https://msdn.microsoft.com/library/aa702761.aspx)) voor meer informatie over het verkrijgen van deze certificaten. 
+
+Er zijn een aantal eigenschappen die het certificaat moet hebben om goed te kunnen functioneren:
+
+* De provider van het certificaat moet **micro soft Enhanced RSA en AES Cryptographic Provider** zijn
+
+* Wanneer u een RSA-sleutel maakt, moet u ervoor zorgen dat de sleutel **2048 bits**is.
+
+* De uitbrei ding voor sleutel gebruik heeft de waarde **digitale hand tekening, sleutel codering (a0)**
+
+* De uitbrei ding voor uitgebreid sleutel gebruik heeft waarden voor **Server verificatie** (OID: 1.3.6.1.5.5.7.3.1) en **client verificatie** (OID: 1.3.6.1.5.5.7.3.2)
 
 Voor clusters die u voor test doeleinden gebruikt, kunt u ervoor kiezen om een zelfondertekend certificaat te gebruiken.
 
+Raadpleeg [Veelgestelde vragen over certificaten](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)voor aanvullende vragen.
+
 ## <a name="optional-create-a-self-signed-certificate"></a>Optioneel: een zelfondertekend certificaat maken
-Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het script CertSetup. ps1 in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. te gebruiken. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit `.\CertSetup.ps1 -Install`als.
+Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het script CertSetup. ps1 in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. te gebruiken. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit als `.\CertSetup.ps1 -Install` .
 
 Exporteer het certificaat nu naar een. pfx-bestand met een beveiligd wacht woord. Haal eerst de vinger afdruk van het certificaat op. 
 1. Voer in het menu **Start** de optie **computer certificaten beheren**uit. 
@@ -292,7 +304,7 @@ Nadat u certificaten hebt, kunt u deze installeren op de cluster knooppunten. Op
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Stel nu het toegangs beheer in voor dit certificaat zodat het Service Fabric proces, dat wordt uitgevoerd onder het netwerk service account, het kan gebruiken door het volgende script uit te voeren. Geef de vinger afdruk van het certificaat en de **netwerk service** voor het service account op. U kunt controleren of de acl's op het certificaat juist zijn door het certificaat te openen in **Start** > **computer certificaten beheren** en te kijken naar **alle taken** > **persoonlijke sleutels beheren**.
+3. Stel nu het toegangs beheer in voor dit certificaat zodat het Service Fabric proces, dat wordt uitgevoerd onder het netwerk service account, het kan gebruiken door het volgende script uit te voeren. Geef de vinger afdruk van het certificaat en de **netwerk service** voor het service account op. U kunt controleren of de acl's op het certificaat juist zijn door het certificaat te openen in **Start**  >  **computer certificaten beheren** en te kijken naar **alle taken**  >  **persoonlijke sleutels beheren**.
    
     ```powershell
     param
@@ -355,7 +367,7 @@ Als u het cluster wilt verwijderen, maakt u verbinding met het knoop punt op het
 ```
 
 > [!NOTE]
-> Onjuiste certificaat configuratie kan verhinderen dat het cluster tijdens de implementatie komt. Als u beveiligings problemen zelf wilt vaststellen, kijkt u in de logboeken groep **toepassingen en-services** > **micro soft-service Fabric**.
+> Onjuiste certificaat configuratie kan verhinderen dat het cluster tijdens de implementatie komt. Als u beveiligings problemen zelf wilt vaststellen, kijkt u in de logboeken groep **toepassingen en-services**  >  **micro soft-service Fabric**.
 > 
 > 
 

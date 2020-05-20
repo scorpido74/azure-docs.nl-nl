@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a442cb094f87852c9d4f781d378f5886f3a4a42
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273408"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652129"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -40,6 +40,9 @@ Azure Backup Server neemt een groot deel van de back-up van de werk belasting ov
 ## <a name="choose-an-installation-platform"></a>Een installatie platform kiezen
 
 De eerste stap voor het voorbereiden van de Azure Backup Server is het instellen van een Windows-Server. Uw server kan zich in azure of on-premises bevindt.
+
+* Als u on-premises workloads wilt beveiligen, moet de MABS-server zich op locatie bevinden.
+* Voor het beveiligen van werk belastingen die worden uitgevoerd op virtuele Azure-machines, moet de MABS-server zich in azure bevinden, die wordt uitgevoerd als een virtuele machine van Azure.
 
 ### <a name="using-a-server-in-azure"></a>Een server gebruiken in azure
 
@@ -92,7 +95,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als er geen Recovery Services kluis is geopend, maar wel in de Azure Portal, klikt u in het hoofd menu op **Bladeren**.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -183,9 +186,9 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge√
 
     Gebruik de volgende waarden voor de SSRS-configuratie:
     * Service account: ' ingebouwd account gebruiken ' moet netwerk service zijn
-    * URL van webservice: ' virtuele map ' moet worden ReportServer_\<SQL-instructie>
-    * Data Base: DATABASENAME moet Report Server $\<SQL-database>
-    * URL van webportal: ' virtuele map ' moet\<Reports_ SQL-Server-instructie>
+    * URL van webservice: ' virtuele map ' moet worden ReportServer_ \< SQL-instructie>
+    * Data Base: DATABASENAME moet Report Server $ SQL-database \<>
+    * URL van webportal: ' virtuele map ' moet Reports_ SQL-Server-instructie \<>
 
     Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
 
@@ -237,7 +240,7 @@ MABS maakt gebruik van de System Center Data Protection Manager-beveiligings age
 
 In de volgende secties wordt beschreven hoe u beveiligingsagents voor client computers bijwerkt.
 
-1. Selecteer **beheer** > **agenten**in de Administrator-console van de back-upserver.
+1. Selecteer **beheer**agenten in de Administrator-console van de back-upserver  >  **Agents**.
 
 2. Selecteer in het weergave paneel de client computers waarvoor u de beveiligings agent wilt bijwerken.
 
@@ -280,7 +283,7 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 
 ## <a name="network-connectivity"></a>Netwerkconnectiviteit
 
-Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, ```Get-DPMCloudConnection``` gebruikt u de cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
+Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de ```Get-DPMCloudConnection``` cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://account.windowsazure.com/Subscriptions).
 

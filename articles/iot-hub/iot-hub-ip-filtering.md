@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2017
+ms.date: 05/12/2020
 ms.author: robinsh
-ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649371"
 ---
 # <a name="use-ip-filters"></a>IP-filters gebruiken
 
@@ -28,9 +28,12 @@ Er zijn twee specifieke use-cases wanneer het handig is om de IoT Hub-eind punte
 
 ## <a name="how-filter-rules-are-applied"></a>Hoe filter regels worden toegepast
 
-De IP-filter regels worden toegepast op het IoT Hub service niveau. De IP-filter regels gelden daarom voor alle verbindingen van apparaten en back-end-apps met behulp van elk ondersteund protocol.
+De IP-filter regels worden toegepast op het IoT Hub service niveau. Daarom zijn de IP-filter regels van toepassing op alle verbindingen van apparaten en back-end-apps met behulp van elk ondersteund protocol. Clients die rechtstreeks vanuit het [ingebouwde Event hub-compatibele eind punt](iot-hub-devguide-messages-read-builtin.md) lezen (niet via de IOT hub Connection String), zijn echter niet gebonden aan de IP-filter regels. 
 
-Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-regel in uw IoT-hub ontvangt een niet-geautoriseerde 401-status code en een beschrijving. De IP-regel wordt niet vermeld in het antwoord bericht.
+Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-regel in uw IoT-hub ontvangt een niet-geautoriseerde 401-status code en een beschrijving. De IP-regel wordt niet vermeld in het antwoord bericht. Het afwijzen van IP-adressen kan ertoe leiden dat andere Azure-Services, zoals Azure Stream Analytics, Azure Virtual Machines of het Device Explorer in Azure Portal, niet werken met de IoT-hub.
+
+> [!NOTE]
+> Als u Azure Stream Analytics (ASA) moet gebruiken om berichten te lezen van een IoT hub waarvoor IP-filter is ingeschakeld, gebruikt u de Event Hub compatibele naam en het eind punt van uw IoT-hub om hand matig een [Event hubs stream-invoer](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) toe te voegen aan de ASA.
 
 ## <a name="default-setting"></a>Standaardinstelling
 
@@ -48,7 +51,7 @@ Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
 
 ![Nadat u een IP-filter regel toevoegen hebt geselecteerd](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` plus worden geaccepteerd.
+* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` worden geaccepteerd.
 
 * Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255.
 
@@ -61,12 +64,6 @@ Nadat u de velden hebt ingevuld, selecteert u **Opslaan** om de regel op te slaa
 De optie **toevoegen** is uitgeschakeld wanneer u het maximum van 10 IP-filter regels bereikt.
 
 Als u een bestaande regel wilt bewerken, selecteert u de gegevens die u wilt wijzigen, brengt u de wijziging aan en selecteert u **Opslaan** om uw bewerking op te slaan.
-
-> [!NOTE]
-> Het afwijzen van IP-adressen kan verhinderen dat andere Azure-Services (zoals Azure Stream Analytics, Azure Virtual Machines of de Device Explorer in de portal) communiceren met de IoT-hub.
-
-> [!WARNING]
-> Als u Azure Stream Analytics (ASA) gebruikt voor het lezen van berichten van een IoT-hub waarvoor IP-filtering is ingeschakeld, gebruikt u de Event Hub compatibele naam en het eind punt van uw IoT-hub om hand matig een [Event hubs stream-invoer](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs) toe te voegen aan de ASA.
 
 ## <a name="delete-an-ip-filter-rule"></a>Een IP-filter regel verwijderen
 
@@ -84,7 +81,7 @@ Als u de huidige IP-filters van uw IoT Hub wilt ophalen, voert u de volgende han
 az resource show -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs
 ```
 
-Hiermee wordt een JSON-object geretourneerd waarin uw bestaande IP-filters worden weer `properties.ipFilterRules` gegeven onder de sleutel:
+Hiermee wordt een JSON-object geretourneerd waarin uw bestaande IP-filters worden weer gegeven onder de `properties.ipFilterRules` sleutel:
 
 ```json
 {
@@ -120,7 +117,7 @@ Als u een bestaand IP-filter in uw IoT Hub wilt verwijderen, voert u de volgende
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
 ```
 
-Houd er `<ipFilterIndexToRemove>` rekening mee dat moet overeenkomen met de volg orde van IP `properties.ipFilterRules`-filters in de IOT hub.
+Houd er rekening mee dat `<ipFilterIndexToRemove>` moet overeenkomen met de volg orde van IP-filters in de IOT hub `properties.ipFilterRules` .
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>IP-filters ophalen en bijwerken met behulp van Azure PowerShell
 

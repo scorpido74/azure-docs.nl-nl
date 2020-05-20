@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372093"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653657"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker versleuteling van gegevens in rust
 
@@ -52,6 +52,11 @@ De QnA Maker-service gebruikt CMK uit de Azure Search-service. Volg deze stappen
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
 Door de klant beheerde sleutels zijn beschikbaar in alle Azure Search regio's.
+
+## <a name="encryption-of-data-in-transit"></a>Versleuteling van gegevens die onderweg zijn
+
+QnA Maker portal wordt uitgevoerd in de browser van de gebruiker. Elke actie triggert een directe aanroep naar de respectieve cognitieve Service-API. QnA Maker is daarom compatibel met gegevens die onderweg zijn.
+Omdat de QnA Maker Portal service echter wordt gehost in West-US, is het nog steeds niet ideaal voor klanten die geen gebruik maken van de VS. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

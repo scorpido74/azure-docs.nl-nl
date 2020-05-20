@@ -1,17 +1,17 @@
 ---
-title: Gegevens herstellen in azure naar een Windows-Server
+title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0494ce8016ff8b09265dd7ced8dc0926fd0c1a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186801"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652087"
 ---
-# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Bestanden herstellen naar Windows met behulp van het Azure Resource Manager-implementatie model
+# <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
 In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt het volgende doen:
 
@@ -40,7 +40,7 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
 
     ![Scherm opname van Azure Backup, waarbij gegevens herstellen is gemarkeerd](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Selecteer op de pagina **aan** de slag de optie **deze server`<server name>`()** > om de gegevens op dezelfde server of computer te herstellen.**Next**
+3. Selecteer op de pagina **aan** de slag de optie **deze server ( `<server name>` )** om de gegevens op dezelfde server of computer te herstellen  >  **Next**.
 
     ![Scherm afbeelding van de pagina aan de slag met de wizard gegevens herstellen](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -110,11 +110,11 @@ Deze stappen omvatten de volgende terminologie:
 
     Als het kluis referentie bestand ongeldig is (of is verlopen), downloadt u een nieuw kluis referentie bestand van de voor beeld-kluis in de Azure Portal. Nadat u een geldige kluis referentie hebt verstrekt, wordt de naam van de bijbehorende back-upkluis weer gegeven.
 
-6. Selecteer op de pagina **back-upserver selecteren** de bron machine uit de lijst met weer gegeven computers en geef de wachtwoordzin op. Selecteer **volgende**.
+6. Selecteer op de pagina **back-upserver selecteren** de bron machine uit de lijst met weer gegeven computers en geef de wachtwoordzin op. Selecteer vervolgens **Volgende**.
 
     ![Scherm afbeelding van de wizard gegevens herstellen pagina back-upserver selecteren](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. Selecteer op de pagina **herstel modus selecteren** de optie **afzonderlijke bestanden en mappen** > **volgende**.
+7. Selecteer op de pagina **herstel modus selecteren** de optie **afzonderlijke bestanden en mappen**  >  **volgende**.
 
     ![Scherm afbeelding van de wizard gegevens herstellen Selecteer de pagina herstel modus](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

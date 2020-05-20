@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 31b9d4d57e38adcd079082a4f32770c4cbc8fbb3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/13/2020
+ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736199"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642316"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Verificatie strategieën voor Marketplace-meet service
 
@@ -44,7 +44,7 @@ Zie [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/ac
 
 #### <a name="http-method"></a>HTTP-methode
 
-**POST**
+**Verzenden**
 
 #### <a name="request-url"></a>*Aanvraag-URL*
 
@@ -57,7 +57,7 @@ Zie [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/ac
 |  `tenantId`         |   True         | De Tenant-ID van de geregistreerde Azure AD-toepassing.   |
 | | | |
 
-#### <a name="request-header"></a>*Aanvraagheader*
+#### <a name="request-header"></a>*Aanvraag header*
 
 |  **Headernaam**    |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
@@ -114,11 +114,11 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
     * [Azure Portal gebruikers interface](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
     * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
     * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+    * [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
     * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
     * [Azure-SDK's](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
-1. Een toegangs token voor de service toepassings-ID (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`) voor Marketplace-licentie controle gebruiken met behulp van de systeem identiteit RDP van de VM, open de Power shell-console en voer de onderstaande opdracht uit
+1. Een toegangs token voor de service toepassings-ID () voor Marketplace-licentie controle `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` gebruiken met behulp van de systeem identiteit RDP van de VM, open de Power shell-console en voer de onderstaande opdracht uit
 
     ```powershell
     # curl is an alias to Web-Invoke PowerShell command
@@ -141,7 +141,7 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
     $managedappId = $resourceGroupInfo.managedBy 
     ```
 
-1. Marketplace-meet service vereist het gebruik van het rapport `resourceID`op een `resourceUsageId` en als een beheerde toepassing.
+1. Marketplace-meet service vereist het gebruik van het rapport op een `resourceID` en `resourceUsageId` als een beheerde toepassing.
 
     ```powershell
     # Get resourceUsageId from the managed app
@@ -151,7 +151,7 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
     ```
 
-1. Gebruik de [Marketplace meter Service-API](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis?branch=pr-en-us-101847) om het gebruik te verzenden.
+1. Gebruik de [Marketplace meter Service-API](./marketplace-metering-service-apis.md) om het gebruik te verzenden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

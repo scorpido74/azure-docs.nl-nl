@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: 23823e3952adcad6c7047636a24596e930927f6f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 86ff08ed01ea09497c14e91b4c891988569e2df1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857360"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657935"
 ---
 # <a name="co-sell-partner-engagement"></a>Betrokkenheid van partner bij collectieve verkoop
 
@@ -22,9 +22,9 @@ Als u een partner bent, kunt u het micro soft-programma voor co-verkoop gebruike
 
 Micro soft biedt drie partners voor verkoop bewegingen:
 
-* *Verkopen via partner*: u kunt micro soft-technologie verkopen via uw eigen verkopers.
-* *Services voor co-sell*: verkopers en partners kunnen samen werken met het verkopen van uw project of beheerde services met micro soft-technologie Embedded.
-* *IP-co-sell*: verkopers en partners kunnen samen werken met uw Herhaal bare, verpakte IP-oplossing. *
+* *Verkopen via partner* : u kunt micro soft-technologie verkopen via uw eigen verkopers.
+* *Services voor gezamenlijk verkoop* : verkopers en partners kunnen samen werken met het verkopen van uw project of beheerde services met micro soft-technologie Embedded.
+* *IP-co-sell* : verkopers en partners kunnen samen werken met uw Herhaal bare, verpakte IP-oplossing. *
 
 \*Sommige van deze oplossingen voor het verkopen van IP-adressen kunnen extra prikkels ontvangen wanneer ze met succes worden verkocht en geïmplementeerd met micro soft Field Sales teams.
 
@@ -32,5 +32,6 @@ Micro soft biedt drie partners voor verkoop bewegingen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [verkopen met micro soft](https://partner.microsoft.com/membership/sell-with-microsoft).
-- Meer informatie over de [optie voor gezamenlijk verkopen in Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
+* Meer informatie over [verkopen met micro soft](https://partner.microsoft.com/membership/sell-with-microsoft).
+* Meer informatie over de [optie voor gezamenlijk verkopen in Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
+* Lees de [samen verkoop partner engagement Guide](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) (PDF).

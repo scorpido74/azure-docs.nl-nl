@@ -1,24 +1,24 @@
 ---
-title: Cloud solution providers | Azure Marketplace
-description: Uitgevers kunnen nu hun aanbiedingen verkopen via het partner kanaal van de Microsoft Cloud Solution Provider (CSP).
+title: Cloud Solution Provider-micro soft Commercial Marketplace
+description: Meer informatie over het verkopen van uw aanbiedingen via het programma partner Channel van de Microsoft Cloud Solution Provider (CSP) in de commerciële Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d7f14728f5acbcb76d3109d76b6de3c691e35543
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160644"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658091"
 ---
-# <a name="cloud-solution-providers"></a>Providers van cloudoplossingen
+# <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
-Software aanbiedingen kunnen miljoenen gekwalificeerde micro soft-klanten bereiken die worden geleverd door partners in het CSP-programma (Cloud Solution Provider), naast de open bare Beschik baarheid van aanbiedingen via [webwinkels van micro soft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via de [webwinkels voor commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace), kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
 
-Uitgevers configureren aanbiedingen voor Beschik baarheid in het CSP-programma, op basis van een opt-in, voor een nieuwe aanbieding of voor een bestaande, waardoor partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kan maken.
+U kunt nieuwe of bestaande aanbiedingen voor Beschik baarheid configureren in het CSP-programma, zodat CSP-partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kunnen maken.
 
 Uitgevers zijn verantwoordelijk voor het verstrekken van ondersteuning voor eind gebruikers en voor het bieden van een mechanisme voor partners in het CSP-programma en/of klanten om contact met u op te nemen voor ondersteuning. Het is een best practice om partners in het CSP-programma te voorzien van de gebruikers documentatie, training en service status/uitval meldingen (indien van toepassing), zodat partners in het CSP-programma de ondersteunings aanvragen voor Tier 1 van klanten kunnen afhandelen.  
 

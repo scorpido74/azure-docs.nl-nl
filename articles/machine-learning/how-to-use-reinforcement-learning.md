@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598589"
+ms.locfileid: "83654417"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
 
@@ -49,7 +49,7 @@ Voer deze code uit in een van de volgende omgevingen. U wordt aangeraden om Azur
  - Uw eigen Jupyter Notebook-server
 
     - Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Installeer de [Azure machine learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug):`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Installeer de [Azure machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py):`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Maak een [configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
     - Voer de [installatie notitieblok](https://aka.ms/azure-rl-env-setup) van het virtuele netwerk uit om de netwerk poorten te openen die worden gebruikt voor Distributed versterking learning.
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Een Estimator voor versterking leren maken
 
-In deze sectie leert u hoe u [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) kunt gebruiken om een trainings taak naar Azure machine learning te verzenden.
+In deze sectie leert u hoe u [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) kunt gebruiken om een trainings taak naar Azure machine learning te verzenden.
 
 Azure Machine Learning maakt gebruik van Estimator-klassen voor het inkapselen van configuratie-informatie over de uitvoering. Zo kunt u eenvoudig opgeven hoe u een script uitvoering wilt configureren. Zie [modellen trainen met schattingen](how-to-train-ml-models.md)voor meer informatie over het Estimator-patroon van Azure machine learning.
 

@@ -4,13 +4,13 @@ description: Meer informatie over de stappen die nodig zijn om de nieuwe Azure M
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/18/2020
+ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211406"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647890"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
 
@@ -40,9 +40,7 @@ Als u op de tekst van de blauwe koppeling klikt, gaat u naar de gekoppelde Log A
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 
-De [Connection String]() identificeert de resource waaraan u de telemetriegegevens wilt koppelen. U kunt ook de eind punten wijzigen die door de resource worden gebruikt als een bestemming voor uw telemetrie. U moet de connection string kopiëren en toevoegen aan de code van uw toepassing of aan een omgevings variabele.
-
-![Klik en kopieer de instrumentatie sleutel](./media/create-new-resource/instrumentation-key.png)
+De [Connection String](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) identificeert de resource waaraan u de telemetriegegevens wilt koppelen. U kunt ook de eind punten wijzigen die door de resource worden gebruikt als een bestemming voor uw telemetrie. U moet de connection string kopiëren en toevoegen aan de code van uw toepassing of aan een omgevings variabele.
 
 ## <a name="monitoring-configuration"></a>Bewakings configuratie
 
@@ -192,6 +190,10 @@ De `New-AzApplicationInsights` Power shell-opdracht biedt momenteel geen onderst
 Zodra een Application Insights resource op basis van een werk ruimte is gemaakt, kunt u de gekoppelde Log Analytics werk ruimte wijzigen.
 
 Selecteer in het deel venster Resource Application Insights **Eigenschappen**  >  **werk ruimte wijzigen**  >  **log Analytics werk ruimten**
+
+## <a name="export-telemetry"></a>Telemetrie exporteren
+
+De verouderde functionaliteit voor continue export wordt niet ondersteund voor op werk ruimte gebaseerde resources. Selecteer in plaats daarvan diagnostische **instellingen**  >  **Diagnostische instelling toevoegen** vanuit uw Application Insights-resource. U kunt alle tabellen selecteren of een subset van tabellen die u wilt archiveren naar een opslag account of naar een Azure Event hub streamen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

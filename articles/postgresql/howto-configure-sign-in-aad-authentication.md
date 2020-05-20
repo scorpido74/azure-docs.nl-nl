@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804704"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652548"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het configureren van Azure Active Directory toegang met Azure Database for PostgreSQL en hoe u verbinding maakt met behulp van een Azure AD-token.
-
-> [!IMPORTANT]
-> Azure AD-verificatie voor Azure Database for PostgreSQL is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>De gebruiker van de Azure AD-beheerder instellen
 
@@ -36,7 +31,7 @@ Voer de volgende stappen uit om de Azure AD-beheerder in te stellen (u kunt een 
 3. Selecteer een geldige Azure AD-gebruiker in de Tenant van de klant als Azure AD-beheerder.
 
 > [!IMPORTANT]
-> Bij het instellen van de beheerder wordt een nieuwe gebruiker toegevoegd aan de Azure Database for PostgreSQL-server met volledige beheerders machtigingen. De gebruiker van de Azure AD-beheerder in Azure Database for PostgreSQL heeft `azure_ad_admin`de rol.
+> Bij het instellen van de beheerder wordt een nieuwe gebruiker toegevoegd aan de Azure Database for PostgreSQL-server met volledige beheerders machtigingen. De gebruiker van de Azure AD-beheerder in Azure Database for PostgreSQL heeft de rol `azure_ad_admin` .
 
 Er kan slechts één Azure AD-beheerder per PostgreSQL-server worden gemaakt. de bestaande Azure AD-beheerder die voor de server is geconfigureerd, wordt overschreven door de selectie van een andere. U kunt een Azure AD-groep opgeven in plaats van een afzonderlijke gebruiker om meerdere beheerders te hebben. Houd er rekening mee dat u zich aanmeldt met de groeps naam voor beheer doeleinden.
 
@@ -73,7 +68,7 @@ Met deze opdracht wordt een browser venster geopend op de Azure AD-verificatie p
 
 > [!NOTE]
 > U kunt Azure Cloud Shell ook gebruiken om deze stappen uit te voeren.
-> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het `az login` expliciet aanroept en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
+> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het expliciet aanroept `az login` en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Stap 2: het Azure AD-toegangs Token ophalen
 
@@ -118,7 +113,7 @@ Het token is een basis teken reeks van 64 waarmee alle informatie over de geveri
 
 Wanneer u verbinding maakt, moet u het toegangs token gebruiken als het PostgreSQL-gebruikers wachtwoord.
 
-Bij gebruik van `psql` de opdracht regel-client moet het toegangs token worden door gegeven via `PGPASSWORD` de omgevings variabele, omdat het toegangs token de wachtwoord lengte overschrijdt die `psql` rechtstreeks kan worden geaccepteerd:
+Bij gebruik van de `psql` opdracht regel-client moet het toegangs token worden door gegeven via de `PGPASSWORD` omgevings variabele, omdat het toegangs token de wachtwoord lengte overschrijdt die `psql` rechtstreeks kan worden geaccepteerd:
 
 Windows-voor beeld:
 
@@ -144,12 +139,12 @@ U bent nu geverifieerd voor uw PostgreSQL-server met behulp van Azure AD-verific
 
 Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for PostgreSQL-data base, voert u de volgende stappen uit nadat u verbinding hebt gemaakt (zie verderop in dit onderwerp voor verbinding maken):
 
-1. Zorg er eerst voor dat de Azure `<user>@yourtenant.onmicrosoft.com` AD-gebruiker een geldige gebruiker is in azure AD-Tenant.
+1. Zorg er eerst voor dat de Azure AD-gebruiker `<user>@yourtenant.onmicrosoft.com` een geldige gebruiker is in azure AD-Tenant.
 2. Meld u aan bij uw Azure Database for PostgreSQL-exemplaar als de gebruiker van de Azure AD-beheerder.
-3. Maak een `<user>@yourtenant.onmicrosoft.com` rol in azure database for PostgreSQL.
+3. Maak een rol `<user>@yourtenant.onmicrosoft.com` in azure database for PostgreSQL.
 4. Maak `<user>@yourtenant.onmicrosoft.com` een lid van de rol azure_ad_user. Dit moet alleen worden verleend aan Azure AD-gebruikers.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -162,7 +157,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Als u een Azure AD-groep wilt inschakelen voor toegang tot uw data base, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groeps naam op:
 
-**Hierbij**
+**Voorbeeld:**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
@@ -185,7 +180,7 @@ U kunt Azure AD-verificatie inschakelen voor bestaande gebruikers. Er zijn twee 
 
 ### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Voor beeld 1: PostgreSQL gebruikers naam komt overeen met de Azure AD User Principal name
 
-In het onwaarschijnlijke geval dat uw bestaande gebruikers al overeenkomen met de gebruikers namen van Azure AD `azure_ad_user` , kunt u de rol hieraan toekennen om ze in te scha kelen voor Azure AD-verificatie:
+In het onwaarschijnlijke geval dat uw bestaande gebruikers al overeenkomen met de gebruikers namen van Azure AD, kunt u de `azure_ad_user` rol hieraan toekennen om ze in te scha kelen voor Azure AD-verificatie:
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";

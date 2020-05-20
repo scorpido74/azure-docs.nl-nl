@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801260"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659383"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -28,7 +28,7 @@ Azure Backup gebruikt Recovery Services kluizen om back-ups te organiseren en te
 
 In de volgende tabel worden de functies van Recovery Services kluizen beschreven:
 
-**Onderdeel** | **Details**
+**Functie** | **Details**
 --- | ---
 **Kluizen in het abonnement** | Maximaal 500 Recovery Services-kluizen in één abonnement.
 **Machines in een kluis** | Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
@@ -56,7 +56,7 @@ Dit wordt what's ondersteund als u een back-up wilt maken van on-premises machin
 
 **Limiet** | **Details**
 --- | ---
-**Azure VM-gegevensschijven** | Limiet van 16 <br> Als u zich wilt aanmelden voor een beperkte preview van Vm's met 16 + schijven (Maxi maal 32 schijven), schrijft u naar ons opAskAzureBackupTeam@microsoft.com
+**Azure VM-gegevensschijven** | Zie de [ondersteunings matrix voor Azure VM-back-up](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Grootte Azure VM-gegevensschijven** | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM-back-upopties
@@ -107,7 +107,7 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
     > [!WARNING]
     > Nadat u de kluis hebt ingesteld, hebt alleen u toegang tot de versleutelingssleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-### <a name="data-security"></a>Gegevens beveiligen
+### <a name="data-security"></a>Gegevensbeveiliging
 
 - Wanneer u een back-up maakt van virtuele Azure-machines, moet u de versleuteling instellen *in* de Virtual Machine.
 - Azure Backup biedt ondersteuning voor Azure Disk Encryption, dat gebruikmaakt van BitLocker op virtuele Windows-machines en **dm-crypt** op virtuele Linux-machines.

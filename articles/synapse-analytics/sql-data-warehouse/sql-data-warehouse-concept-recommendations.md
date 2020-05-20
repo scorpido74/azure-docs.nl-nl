@@ -11,18 +11,18 @@ ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607743"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653024"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-aanbevelingen
 
 In dit artikel worden de Synapse SQL-aanbevelingen beschreven die worden aangeboden via Azure Advisor.  
 
-SQL Analytics biedt aanbevelingen om ervoor te zorgen dat de werk belasting van uw data warehouse consistent is geoptimaliseerd voor prestaties. Aanbevelingen worden nauw geïntegreerd met [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om u te voorzien van best practices direct binnen de [Azure Portal](https://aka.ms/Azureadvisor). Met SQL Analytics worden de aanbevelingen van telemetrie en Opper vlakken voor uw actieve workload op een dagelijks uitgebracht verzameld. De ondersteunde aanbevelings scenario's worden hieronder beschreven, samen met het Toep assen van aanbevolen acties.
+Synapse SQL biedt aanbevelingen om ervoor te zorgen dat de werk belasting van uw data warehouse consistent is geoptimaliseerd voor prestaties. Aanbevelingen worden nauw geïntegreerd met [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om u te voorzien van best practices direct binnen de [Azure Portal](https://aka.ms/Azureadvisor). Synapse SQL verzamelt telemetrie-en oppervlak aanbevelingen voor uw actieve workload op een dagelijks uitgebracht. De ondersteunde aanbevelings scenario's worden hieronder beschreven, samen met het Toep assen van aanbevolen acties.
 
 U kunt [uw aanbevelingen](https://aka.ms/Azureadvisor) vandaag nog controleren. 
 

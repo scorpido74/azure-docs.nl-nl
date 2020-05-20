@@ -2,19 +2,25 @@
 title: Indeling voor prijs verlaging-QnA Maker
 description: Hieronder ziet u de lijst met indelingen voor prijs opgaven die u kunt gebruiken in de antwoord tekst van QnA Maker.
 ms.topic: reference
-ms.date: 01/09/2020
-ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/19/2020
+ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77045397"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652754"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>De indeling voor prijs verlaging wordt ondersteund in QnA Maker antwoord tekst
 
 QnA Maker worden antwoord tekst opgeslagen als prijs opgeven. Er zijn veel soorten prijs verlaging. Gebruik deze verwijzing om ervoor te zorgen dat de antwoord tekst wordt geretourneerd en correct wordt weer gegeven.
 
 Gebruik de **[CommonMark](https://commonmark.org/help/tutorial/index.html)** -zelf studie om uw prijs verlaging te valideren. De zelf studie heeft een **try it** -functie voor het snel kopiëren/plakken van validatie.
+
+## <a name="when-to-use-rich-text-editing-versus-markdown"></a>Wanneer gebruik ik RTF-bewerking versus korting
+
+Met [RTF-bewerking](How-To/edit-knowledge-base.md#add-an-editorial-qna-set) van antwoorden kunt u, als auteur, een opmaak werkbalk gebruiken om snel tekst te selecteren en op te maken.
+
+De prijs verlaging is een beter hulp middel wanneer u inhoud automatisch moet genereren om kennis te maken van de Knowledge bases die als onderdeel van een CI/CD-pijp lijn of voor [batch tests](Quickstarts/batch-testing.md)moeten worden geïmporteerd.
 
 ## <a name="supported-markdown-format"></a>Ondersteunde indeling voor prijs verlaging
 
@@ -35,7 +41,7 @@ Een nieuwe regel tussen twee zinnen.|`\n\n`|`How can I create a bot with \n\n Qn
 |Symbolen voor kortings symbool voor Escape|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![notatie voor cursieve URL](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Geordende lijst|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>In het voor gaande voor beeld wordt gebruikgemaakt van automatische nummering in korting.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>In het vorige voor beeld wordt gebruikgemaakt van expliciete nummering.|![indeling voor geordende lijst](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Ongeordende lijst|`\n * item1 \n * item2`<br>of<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![indeling voor niet-geordende lijst](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
-|Geneste lijsten|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>U kunt bestelde en niet-geordende lijsten samen nesten. Het tabblad, `\t`, geeft het inspring niveau van het onderliggende element aan.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![indeling voor geneste niet-geordende lijst](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![indeling voor geneste geordende lijst](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
+|Geneste lijsten|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>U kunt bestelde en niet-geordende lijsten samen nesten. Het tabblad, `\t` , geeft het inspring niveau van het onderliggende element aan.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![indeling voor geneste niet-geordende lijst](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![indeling voor geneste geordende lijst](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 * QnA Maker de afbeelding niet op enigerlei manier verwerken. Het is de rol van de client toepassing om de installatie kopie weer te geven.
 
@@ -43,10 +49,10 @@ Als u inhoud wilt toevoegen met behulp van de Knowledge Base-Api's update/replac
 
 | HTML behouden  | Vertegenwoordiging in de API-aanvraag  | Representatie in KB |
 |-----------|---------|-------------------------|
-| Ja | \&lt; br\&gt; | &lt;uitproberen&gt; |
-| Ja | \&lt; h3\&gt; koptekst\&lt;/h3\&gt; | &lt;H3&gt;header&lt;/H3&gt; |
+| Ja | \&lt; br \& gt; | &lt;uitproberen&gt; |
+| Ja | \&lt; h3 \& gt; koptekst \& lt;/h3 \& gt; | &lt;H3 &gt; header &lt; /H3&gt; |
 
-CR LF (\r\n) wordt ook geconverteerd naar \n in de KB. LF (\n) wordt bewaard. Als u een escape reeks als een \t of \n wilt escapepen, kunt u back slash gebruiken, bijvoorbeeld:\\\\'\\\\r n ' en\\\\' t '
+CR LF (\r\n) wordt ook geconverteerd naar \n in de KB. LF (\n) wordt bewaard. Als u een escape reeks als een \t of \n wilt escapepen, kunt u back slash gebruiken, bijvoorbeeld: ' \\ \\ r \\ \\ n ' en ' \\ \\ t '
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864442"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659500"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -35,7 +35,7 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
     ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 
-## <a name="common-issues"></a>Veelvoorkomende problemen
+## <a name="common-issues"></a>Algemene problemen
 
 Hier volgen enkele veelvoorkomende problemen met back-upfouten op virtuele machines van Azure.
 
@@ -93,7 +93,7 @@ De back-upbewerking is mislukt vanwege een probleem met de Windows service **com
 Fout code: ExtensionFailedVssWriterInBadState <br/>
 Fout bericht: de momentopname bewerking is mislukt, omdat de status van de VSS-schrijvers ongeldig is.
 
-Herstart de VSS-schrijvers die een slechte status hebben. Voer ```vssadmin list writers```uit vanaf een opdracht prompt met verhoogde bevoegdheid. De uitvoer bevat alle VSS-schrijvers en hun status. Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid voor elke VSS Writer met een status die niet **[1] stabiel**is, om VSS Writer opnieuw op te starten:
+Herstart de VSS-schrijvers die een slechte status hebben. Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` . De uitvoer bevat alle VSS-schrijvers en hun status. Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid voor elke VSS Writer met een status die niet **[1] stabiel**is, om VSS Writer opnieuw op te starten:
 
 * ```net stop serviceName```
 * ```net start serviceName```
@@ -134,7 +134,7 @@ Als u de machtigingen in de map **MachineKeys** ziet die afwijkt van de standaar
 2. Alle certificaten verwijderen waarnaar wordt **uitgegeven in** is het klassieke implementatie model of de **Windows Azure CRP-certificaat Generator**:
 
    * [Certificaten op een lokale computer console openen](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
-   * Onder **persoonlijke** > **certificaten**verwijdert u alle certificaten waarbij **uitgegeven aan** is het klassieke implementatie model of de **Windows Azure CRP-certificaat Generator**.
+   * Onder **persoonlijke**  >  **certificaten**verwijdert u alle certificaten waarbij **uitgegeven aan** is het klassieke implementatie model of de **Windows Azure CRP-certificaat Generator**.
 3. Activeer een VM-back-uptaak.
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>De ExtensionStuckInDeletionState-extensie status is geen ondersteuning voor de back-upbewerking
@@ -145,7 +145,7 @@ Fout bericht: de extensie status is geen ondersteuning voor de back-upbewerking
 De back-upbewerking is mislukt vanwege een inconsistente status van de back-upextensie. Volg deze stappen om dit probleem op te lossen:
 
 * Zorg ervoor dat de gastagent geïnstalleerd en responsief is
-* Ga vanuit het Azure Portal naar de**extensies** van**alle instellingen** > van de **virtuele machine** > 
+* Ga vanuit het Azure Portal naar de **Virtual Machine**  >  extensies van**alle instellingen**  >  **Extensions** van de virtuele machine
 * Selecteer de backup-extensie VmSnapshot of VmSnapshotLinux en klik op **Verwijderen**
 * Voer de back-upbewerking opnieuw uit nadat u de back-upextensie hebt verwijderd
 * De volgende back-upbewerking installeert de nieuwe extensie in de gewenste status
@@ -197,7 +197,7 @@ Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaat
 | **Fout code**: VmNotInDesirableState <br/> **Fout bericht**: de VM bevindt zich niet in een status waarin back-ups zijn toegestaan. |<ul><li>Als de virtuele machine zich in een tijdelijke status bevindt tussen het **uitvoeren** en **Afsluiten**, wacht u totdat de status is gewijzigd. Activeer vervolgens de back-uptaak. <li> Als de virtuele machine een virtuele Linux-machine is en **gebruikmaakt van de** Security Enhanced Linux kernel-module, sluit u het pad van de Azure Linux-agent uit het beveiligings beleid uit en zorgt u ervoor dat de back-upextensie is geïnstalleerd.  |
 | De VM-agent is niet aanwezig op de virtuele machine: <br>Installeer de vereiste onderdelen en de VM-agent. Start vervolgens de bewerking opnieuw. |Meer informatie over de installatie van de [VM-agent en het valideren](#vm-agent)van de installatie van de VM-agent. |
 | **Fout code**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie. | <ol><li> Open de REGI ster-editor door **regedit. exe** uit te voeren in een modus met verhoogde bevoegdheden. <li> Alle versies van de .NET Framework in uw systeem identificeren. Ze bevinden zich in de hiërarchie van register sleutel **HKEY_LOCAL_MACHINE \Software\Microsoft**. <li> Voor elke .NET Framework die in de register sleutel aanwezig is, voegt u de volgende sleutel toe: <br> **Schusestrongcrypto toe "= dword: 00000001**. </ol>|
-| **Fout code**: ExtensionVCRedistInstallationFailure <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het installeren van Visual C++ Redistributable voor visual studio 2012. | Navigeer naar C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren.  |
+| **Fout code**: ExtensionVCRedistInstallationFailure <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het installeren van Visual C++ Redistributable voor visual studio 2012. | <li> Ga naar `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren. <br><br><li> Controleer het gebeurtenis logboek om te controleren of u merkt problemen hebt. Bijvoorbeeld: *product: micro soft Visual C++ 2013 x64 mini maal runtime-12.0.21005--error 1401. de sleutel kan niet worden gemaakt: Software\Classes.  Systeem fout 5.  Controleer of u voldoende toegangs rechten voor deze sleutel hebt of neem contact op met het ondersteunings personeel.* <br><br> Zorg ervoor dat de beheerder of het gebruikers account voldoende machtigingen heeft om de register sleutel **HKEY_LOCAL_MACHINE \Software\Classes**bij te werken. Geef voldoende machtigingen op en start de Windows Azure-gast agent opnieuw.<br><br> <li> Als er antivirus producten aanwezig zijn, moet u ervoor zorgen dat ze beschikken over de juiste uitsluitings regels voor het toestaan van de installatie.    |
 | **Fout code**: UserErrorRequestDisallowedByPolicy <BR> **Fout bericht**: er is een ongeldig beleid geconfigureerd op de VM, waardoor er geen momentopname bewerking kan worden uitgevoerd. | Als u een Azure Policy hebt dat de [Tags in uw omgeving bepaalt](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), kunt u overwegen om het beleid te wijzigen van een [geweigerd effect](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) op een [wijzigings effect](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)of door de resource groep hand matig te maken volgens het [naamgevings schema dat door Azure Backup wordt vereist](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
 
 ## <a name="jobs"></a>Taken

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667224"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651855"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>De Active Directory-omgeving optimaliseren met behulp van Active Directory-statuscontrole in Azure Monitor
 
@@ -36,7 +36,7 @@ Nadat u de oplossing hebt toegevoegd en een controle is voltooid, wordt de samen
 ## <a name="prerequisites"></a>Vereisten
 
 * De Active Directory Health Check-oplossing vereist een ondersteunde versie van .NET Framework 4.6.2 of hoger die is geïnstalleerd op elke computer met de Log Analytics-agent voor Windows (ook wel micro soft Monitoring Agent (MMA) genoemd).  De agent wordt gebruikt door System Center 2016-Operations Manager, Operations Manager 2012 R2 en Azure Monitor.
-* De oplossing biedt ondersteuning voor domein controllers met Windows Server 2008 en 2008 R2, Windows Server 2012 en 2012 R2 en Windows Server 2016.
+* De oplossing biedt ondersteuning voor domein controllers met Windows Server 2008 en 2008 R2, Windows Server 2012 en 2012 R2, Windows Server 2016 en Windows Server 2019.
 * Een Log Analytics-werk ruimte om de Active Directory Health Check-oplossing toe te voegen vanuit de Azure Marketplace in de Azure Portal. Er is geen aanvullende configuratie vereist.
 
   > [!NOTE]

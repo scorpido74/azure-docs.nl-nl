@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a09781efd58c29acbd8ca445b58b89c04daa94f8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610935"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674370"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
@@ -76,7 +76,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 3. Selecteer de koppeling **virtueel netwerk** in het linkerdeel venster.  
 4. Maak een nieuwe koppeling om het virtuele netwerk van de VM toe te voegen aan de privé-DNS-zone. Het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar wordt.  
 5. Ga terug naar de resource groep MC_ * in de Azure Portal.  
-6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet-\**.  
+6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet- \* *.  
 7. Selecteer **peerings**in het linkerdeel venster.  
 8. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
 9. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
@@ -102,13 +102,13 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 * Toegestane IP-bereiken kunnen niet worden toegepast op het eind punt van de persoonlijke API-server, maar zijn alleen van toepassing op de open bare API-server
 * Beschikbaarheidszones momenteel worden ondersteund voor bepaalde regio's, zie het begin van dit document 
 * De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters.
-* Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network
 * Geen ondersteuning voor Azure DevOps-integratie uit het vak met privé clusters
 * Voor klanten die Azure Container Registry kunnen gebruiken met persoonlijke AKS, moet het virtuele netwerk Container Registry worden gekoppeld aan het virtuele netwerk van het agent cluster.
 * Geen huidige ondersteuning voor Azure dev Spaces
 * Geen ondersteuning voor het converteren van bestaande AKS-clusters naar particuliere clusters
 * Als u het persoonlijke eind punt in het subnet van de klant verwijdert of wijzigt, werkt het cluster niet meer. 
 * Azure Monitor voor containers Live-gegevens wordt momenteel niet ondersteund.
+* SLA voor uptime wordt momenteel niet ondersteund.
 
 
 <!-- LINKS - internal -->
