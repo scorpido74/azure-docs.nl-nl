@@ -1,7 +1,7 @@
 ---
 title: Type eenvoudige entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Een eenvoudige entiteit beschrijft één concept van de door de computer geleerde context. Voeg een woordgroepen lijst toe wanneer u een eenvoudige entiteit gebruikt om de resultaten te verbeteren.
+description: Een eenvoudige entiteit beschrijft één concept van de machine learning-context. Voeg een woordgroepen lijst toe wanneer u een eenvoudige entiteit gebruikt om de resultaten te verbeteren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74894765"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684552"
 ---
 # <a name="simple-entity"></a>Eenvoudige entiteit
 
-Een eenvoudige entiteit is een generieke entiteit die één concept beschrijft en die wordt geleerd van de door de computer geleerde context. Omdat eenvoudige entiteiten doorgaans namen zijn zoals bedrijfs namen, product namen of andere categorieën namen, voegt u een [woordgroepen lijst](luis-concept-feature.md) toe wanneer u een eenvoudige entiteit gebruikt om het signaal van de gebruikte namen te verhogen.
+Een eenvoudige entiteit is een generieke entiteit die één concept beschrijft en wordt geleerd van de computer Learning-context. Omdat eenvoudige entiteiten doorgaans namen zijn zoals bedrijfs namen, product namen of andere categorieën namen, voegt u een [woordgroepen lijst](luis-concept-feature.md) toe wanneer u een eenvoudige entiteit gebruikt om het signaal van de gebruikte namen te verhogen.
 
 **De entiteit is goed geschikt wanneer:**
 
@@ -51,7 +51,7 @@ De gegevens die door het eind punt worden geretourneerd, bevatten de naam van de
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=false` is ingesteld in de query reeks:
 
 ```json
 "entities": {

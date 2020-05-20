@@ -1,6 +1,6 @@
 ---
 title: Schema's in Azure Automation beheren
-description: Meer informatie over het maken en beheren van een planning in Azure Automation, zodat u automatisch een runbook op een bepaald tijdstip of in een terugkerend schema kunt starten.
+description: In dit artikel leest u hoe u een planning maakt en gebruikt in Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,22 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652111"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685332"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Schema's in Azure Automation beheren
 
 Als u een runbook in Azure Automation wilt plannen om op een opgegeven tijdstip te starten, koppelt u dit aan een of meer planningen. Een planning kan worden geconfigureerd om één keer te worden uitgevoerd of op een terugkerende planning voor runbooks in de Azure Portal. U kunt ze ook plannen voor wekelijkse, maandelijkse, specifieke dagen van de week of dagen van de maand of een bepaalde dag van de maand. Een runbook kan worden gekoppeld aan meerdere planningen en er kunnen meerdere runbooks aan een planning worden gekoppeld.
 
 > [!NOTE]
-> Schema's ondersteunen momenteel geen Azure Automation DSC-configuraties.
+> Azure Automation ondersteunt zomer tijd en plant het op de juiste wijze voor automatiserings bewerkingen.
 
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
+> [!NOTE]
+> Schema's die momenteel niet zijn ingeschakeld voor Azure Automation DSC-configuraties.
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Power shell-cmdlets die worden gebruikt voor toegang tot schema's
 
@@ -164,7 +164,7 @@ Wanneer u een planning uitschakelt, wordt elk runbook dat is gekoppeld aan het s
 
 ### <a name="disable-a-schedule-with-powershell"></a>Een planning uitschakelen met Power shell
 
-Gebruik de cmdlet [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u `IsEnabled` False op voor de para meter.
+Gebruik de cmdlet [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u False op voor de `IsEnabled` para meter.
 
 In het volgende voor beeld ziet u hoe u een planning voor een runbook kunt uitschakelen met behulp van een Azure Resource Manager-cmdlet.
 

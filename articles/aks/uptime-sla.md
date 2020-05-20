@@ -1,30 +1,30 @@
 ---
-title: Azure Kubernetes service (AKS) hoge Beschik baarheid met SLA voor uptime
-description: Meer informatie over de optionele SLA-aanbieding voor hoge Beschik baarheid voor de Azure Kubernetes service (AKS)-API-server.
+title: Azure Kubernetes service (AKS) met SLA voor uptime
+description: Meer informatie over de optionele SLA-aanbieding voor uptime voor de API-server van Azure Kubernetes service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 1c340f85a107cac437e1241025d8c9bc6991b965
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/19/2020
+ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125720"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683221"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
-SLA voor uptime is een optionele functie voor het inschakelen van een financieel back-up met een hogere SLA voor een cluster. SLA voor uptime garandeert 99,95% Beschik baarheid van het Kubernetes API-server eindpunt voor clusters die gebruikmaken van de [beschikbaarheids zone][availability-zones] en 99,9% van de beschik baarheid voor clusters die geen beschikbaarheids zones gebruiken. AKS maakt gebruik van hoofd knooppunt replica's in update-en fout domeinen om te controleren of aan de SLA-vereisten wordt voldaan.
+SLA voor uptime is een optionele functie voor het inschakelen van een financieel ondersteunde, hogere SLA voor een cluster. SLA voor uptime garandeert 99,95% Beschik baarheid van het Kubernetes API-server eindpunt voor clusters die gebruikmaken van [Beschikbaarheidszones][availability-zones] en 99,9% Beschik baarheid voor clusters die geen Beschikbaarheidszones gebruiken. AKS maakt gebruik van hoofd knooppunt replica's in update-en fout domeinen om te controleren of aan de SLA-vereisten wordt voldaan.
 
-Klanten die een SLA moeten gebruiken om nalevings redenen of het uitbreiden van SLA naar hun klanten, moeten deze functie inschakelen. Klanten met kritieke werk belastingen die hogere Beschik baarheid nodig hebben met een optie voor het voor deel van SLA, kunnen deze functie niet inschakelen. Schakel de functie in met Beschikbaarheidszones om een hogere Beschik baarheid van de Kubernetes API-server te verkrijgen.  
+Klanten die een SLA nodig hebben om te voldoen aan de nalevings vereisten of een SLA naar hun eind gebruikers moeten uitbreiden, moeten deze functie inschakelen. Klanten met kritieke werk belastingen die profiteren van een hogere SLA, kunnen ook profiteren van de voor delen. Het gebruik van de SLA-functie voor uptime met Beschikbaarheidszones maakt een hogere Beschik baarheid mogelijk voor de uptime van de Kubernetes-API-server.  
 
-Klanten kunnen onbeperkt gratis clusters maken met een serviceniveau doelstelling (SLO) van 99,5%.
+Klanten kunnen nog steeds onbeperkte gratis clusters met een serviceniveau doelstelling (SLO) van 99,5% maken en ervoor kiezen de voorkeurs duur van SLO of SLA als nodig te hebben.
 
 > [!Important]
-> Zie voor clusters met uitgaand vergren delen [beperken](limit-egress-traffic.md) dat de juiste poorten voor de sla voor uptime worden geopend.
+> Zie limiet voor uitgaand [verkeer](limit-egress-traffic.md) voor het openen van de juiste poorten voor clusters met uitgaand vergren delen.
 
 ## <a name="sla-terms-and-conditions"></a>SLA-voor waarden
 
-SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen voor de SLA voor uptime worden bepaald door het aantal clusters en niet door de grootte van de clusters. U kunt de [prijs informatie](https://azure.microsoft.com/pricing/details/kubernetes-service/) voor de sla voor uptime bekijken voor meer informatie.
+SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen voor de SLA voor uptime worden bepaald door het aantal afzonderlijke clusters en niet op basis van de grootte van de afzonderlijke clusters. U kunt de [prijs informatie](https://azure.microsoft.com/pricing/details/kubernetes-service/) voor de sla voor uptime bekijken voor meer informatie.
 
 ## <a name="region-availability"></a>Beschik baarheid van regio
 
@@ -64,19 +64,18 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over he
     "name": "Basic",
     "tier": "Paid"
   },
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters",
-  "windowsProfile": null
 ```
 
 ## <a name="limitations"></a>Beperkingen
 
-* U kunt momenteel geen SLA voor uptime aan bestaande clusters toevoegen.
-* Er is momenteel geen manier om de SLA voor uptime uit een AKS-cluster te verwijderen.  
+* Kan momenteel niet converteren als bestaand cluster om de SLA voor uptime in te scha kelen.
+* Op dit moment is er geen manier om de SLA voor de uptime te verwijderen uit een AKS-cluster nadat het is gemaakt.  
+* Persoonlijke clusters worden momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Gebruik [Beschikbaarheidszones][availability-zones] om maximale Beschik baarheid te verg Roten met uw AKS-cluster werkbelastingen.
+Configureer uw cluster om uitgaand [verkeer te beperken](limit-egress-traffic.md).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

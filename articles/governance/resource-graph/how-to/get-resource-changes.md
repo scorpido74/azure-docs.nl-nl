@@ -1,14 +1,14 @@
 ---
 title: Resourcewijzigingen ophalen
 description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd, een lijst met de gewijzigde eigenschappen ophalen en de verschillen evalueren.
-ms.date: 10/09/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873026"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681047"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
@@ -40,8 +40,8 @@ De eerste stap in het weer geven van wat er is gewijzigd in een resource is het 
 
 Het **resourceChanges** -eind punt accepteert de volgende para meters in de hoofd tekst van de aanvraag:
 
-- **resourceId** \[vereist\]: de Azure-resource waarop u wilt zoeken naar wijzigingen.
-- **interval** \[vereist\]interval: een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)**.
+- **resourceId** \[ vereist \] : de Azure-resource voor het zoeken naar wijzigingen.
+- **interval** \[ vereist \] : een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)**.
 - **fetchPropertyChanges** (optioneel): een Booleaanse eigenschap die instelt of het antwoord object eigenschaps wijzigingen bevat.
 
 Voor beeld van aanvraag tekst:
@@ -289,3 +289,4 @@ Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **
 - Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
 - Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
 - Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
+- Zie [richt lijnen voor beperkte aanvragen](../concepts/guidance-for-throttled-requests.md)voor meer informatie over het werken met query's met een hoge frequentie.

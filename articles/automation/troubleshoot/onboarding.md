@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met de onboarding van Azure Automation-beheer oplossingen
-description: Meer informatie over het oplossen van problemen met Azure Automation oplossingen voor onboarding.
+title: Problemen met de implementatie van Azure Automation-onderdelen oplossen
+description: In dit artikel leest u hoe u problemen kunt oplossen en oplossen die zich voordoen bij het implementeren van Azure Automation-functies.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681281"
 ---
-# <a name="troubleshoot-solution-onboarding"></a>Problemen oplossen met oplossing voor onboarding
+# <a name="troubleshoot-feature-deployment-issues"></a>Problemen met de implementatie van functies oplossen
 
-Er kunnen fout berichten worden weer gegeven wanneer u de Azure Automation Updatebeheer oplossing of de oplossing Wijzigingen bijhouden en inventarisatie. In dit artikel worden de verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
+Er kunnen fout berichten worden weer gegeven wanneer u de functie Azure Automation Updatebeheer of de functie Wijzigingen bijhouden en inventarisatie op uw Vm's implementeert. In dit artikel worden de fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -39,7 +39,7 @@ Hef de registratie van het knoop punt uit de configuratie van Azure Automation s
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u verbinding maakt via een proxy-oplossing die HTTPS-verkeer beëindigt en vervolgens het verkeer opnieuw versleutelt met een nieuw certificaat, wordt de verbinding niet toegestaan door de service.
+Wanneer u verbinding maakt via een proxy die HTTPS-verkeer beëindigt en vervolgens het verkeer opnieuw versleutelt met een nieuw certificaat, wordt de verbinding niet toegestaan door de service.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -51,11 +51,11 @@ Er is momenteel geen oplossing voor dit probleem.
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scenario: onboarding mislukt met het bericht ' de oplossing kan niet worden ingeschakeld '
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scenario: de implementatie van de functie mislukt met het bericht ' de oplossing kan niet worden ingeschakeld '
 
 #### <a name="issue"></a>Probleem
 
-U ontvangt een van de volgende berichten wanneer u een virtuele machine wilt opheffen voor een oplossing:
+U ontvangt een van de volgende berichten wanneer u een functie op een virtuele machine probeert in te scha kelen:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -71,13 +71,13 @@ Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen voor de vi
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat u de juiste [machtigingen hebt voor het onboarden van machines](../automation-role-based-access-control.md#onboarding-permissions)en probeer het opnieuw. Als u het fout bericht `The solution cannot be enabled on this VM because the permission to read the workspace is missing`ontvangt, moet u ervoor zorgen dat `Microsoft.OperationalInsights/workspaces/read` u gemachtigd bent om te kunnen vinden of de virtuele machine onboarded is voor een werk ruimte.
+Zorg ervoor dat u de juiste machtigingen hebt voor de [implementatie van functies](../automation-role-based-access-control.md#onboarding-permissions)en probeer het onderdeel opnieuw te implementeren. Als u het fout bericht ontvangt `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , moet u ervoor zorgen dat u `Microsoft.OperationalInsights/workspaces/read` gemachtigd bent om te kunnen vinden of de virtuele machine is ingeschakeld voor een werk ruimte.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: onboarding mislukt met het bericht ' kan Automation-account niet configureren voor diagnostische logboek registratie '
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: de implementatie van de functie mislukt met het bericht ' kan Automation-account niet configureren voor diagnostische logboek registratie '
 
 #### <a name="issue"></a>Probleem
 
-Het volgende bericht wordt weer gegeven wanneer u probeert een virtuele machine op een oplossing uit te proberen:
+Het volgende bericht wordt weer gegeven wanneer u probeert een functie in te scha kelen op een virtuele machine:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -89,13 +89,13 @@ Deze fout kan optreden als de prijs categorie niet overeenkomt met het factureri
 
 #### <a name="resolution"></a>Oplossing
 
-Maak uw Log Analytics-werk ruimte hand matig en herhaal het voorbereidings proces om de werk ruimte te selecteren die u hebt gemaakt.
+Maak uw Log Analytics-werk ruimte hand matig en herhaal het implementatie proces van de functie om de werk ruimte te selecteren die u hebt gemaakt.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Scenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Probleem
 
-Deze fout code geeft aan dat de query voor de opgeslagen Zoek computer groep die wordt gebruikt om de oplossing te richten, niet correct is ingedeeld. 
+Deze fout code geeft aan dat de query opgeslagen Zoek computer groep die wordt gebruikt om de functie te richten, niet correct is ingedeeld. 
 
 #### <a name="cause"></a>Oorzaak
 
@@ -103,7 +103,7 @@ Mogelijk hebt u de query gewijzigd, of is het systeem mogelijk gewijzigd.
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt de query voor de oplossing verwijderen en vervolgens de oplossing opnieuw uitvoeren, waardoor de query opnieuw wordt gemaakt. U vindt de query in uw werk ruimte onder **opgeslagen Zoek opdrachten**. De naam van de query is **MicrosoftDefaultComputerGroup**en de categorie van de query is de naam van de bijbehorende oplossing. Als er meerdere oplossingen zijn ingeschakeld, wordt in de **MicrosoftDefaultComputerGroup** -query meerdere keren weer gegeven onder **opgeslagen Zoek opdrachten**.
+U kunt de query voor de functie verwijderen en vervolgens de functie opnieuw inschakelen, waardoor de query opnieuw wordt gemaakt. U vindt de query in uw werk ruimte onder **opgeslagen Zoek opdrachten**. De naam van de query is **MicrosoftDefaultComputerGroup**en de categorie van de query is de naam van de bijbehorende functie. Als er meerdere functies zijn ingeschakeld, wordt in de **MicrosoftDefaultComputerGroup** -query meerdere keren weer gegeven onder **opgeslagen Zoek opdrachten**.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Scenario: PolicyViolation
 
@@ -117,10 +117,10 @@ Een beleid blokkeert de bewerking niet volt ooien.
 
 #### <a name="resolution"></a>Oplossing
 
-Als u de oplossing wilt implementeren, moet u overwegen om het aangegeven beleid te wijzigen. Omdat er veel verschillende soorten beleids regels kunnen worden gedefinieerd, zijn de vereiste wijzigingen afhankelijk van het beleid dat wordt geschonden. Als er bijvoorbeeld een beleid is gedefinieerd voor een resource groep die toestemming weigert om de inhoud van een aantal resources te wijzigen, kunt u een van de volgende oplossingen kiezen:
+Als u de functie wilt implementeren, moet u overwegen om het aangegeven beleid te wijzigen. Omdat er veel verschillende soorten beleids regels kunnen worden gedefinieerd, zijn de vereiste wijzigingen afhankelijk van het beleid dat wordt geschonden. Als er bijvoorbeeld een beleid is gedefinieerd voor een resource groep die toestemming weigert om de inhoud van een aantal resources te wijzigen, kunt u een van de volgende oplossingen kiezen:
 
 * Verwijder het beleid samen.
-* Voer de oplossing uit voor een andere resource groep.
+* Probeer de functie in te scha kelen voor een andere resource groep.
 * Het beleid opnieuw instellen voor een specifieke resource, bijvoorbeeld een Automation-account.
 * Wijzig de set resources die het beleid heeft geconfigureerd om te weigeren.
 
@@ -138,26 +138,26 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout treedt op wanneer er nog steeds oplossingen actief zijn in uw Log Analytics-werk ruimte, afhankelijk van uw Automation-account en Log Analytics werk ruimte die wordt gekoppeld.
+Deze fout treedt op wanneer er nog functies actief zijn in uw Log Analytics-werk ruimte, afhankelijk van uw Automation-account en Log Analytics werk ruimte die wordt gekoppeld.
 
 ### <a name="resolution"></a>Oplossing
 
-Verwijder de volgende oplossingen uit uw werk ruimte als u ze gebruikt:
+Verwijder de resources voor de volgende functies uit uw werk ruimte als u ze gebruikt:
 
 * Updatebeheer
 * Wijzigingen bijhouden en Inventaris
 * VM's starten/stoppen buiten kantooruren
 
-Nadat u de oplossingen hebt verwijderd, kunt u uw werk ruimte ontkoppelen. Het is belang rijk om bestaande artefacten uit deze oplossingen op te schonen vanuit uw werk ruimte en uw Automation-account:
+Nadat u de functie resources hebt verwijderd, kunt u uw werk ruimte ontkoppelen. Het is belang rijk om bestaande artefacten uit deze functies op te schonen vanuit uw werk ruimte en uw Automation-account:
 
 * Verwijder voor Updatebeheer **Update-implementaties (schema's)** uit uw Automation-account.
-* Verwijder voor VM's buiten bedrijfsuren starten/stoppen alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **vergrendelingen**. Zie [de VM's buiten bedrijfsuren starten/stoppen-oplossing verwijderen](../automation-solution-vm-management.md#remove-the-solution)voor meer informatie.
+* Verwijder voor VM's buiten bedrijfsuren starten/stoppen alle vergren delingen voor onderdeel onderdelen in uw Automation-account onder **instellingen**  >  **vergrendelingen**. Zie [de functie verwijderen](../automation-solution-vm-management.md#remove-the-feature)voor meer informatie.
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics voor Windows-extensie fouten
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Een installatie van de Log Analytics-agent voor Windows-extensies kan om verschillende redenen mislukken. In de volgende sectie worden onboarding-problemen beschreven die kunnen leiden tot fouten tijdens de implementatie van de uitbrei ding van de Log Analytics-agent voor Windows.
+Een installatie van de Log Analytics-agent voor Windows-extensies kan om verschillende redenen mislukken. In de volgende sectie worden problemen met de implementatie van functies beschreven die kunnen leiden tot fouten tijdens de implementatie van de uitbrei ding van de Log Analytics-agent voor Windows.
 
 >[!NOTE]
 >Log Analytics-agent voor Windows is de naam die momenteel wordt gebruikt in Azure Automation voor micro soft Monitoring Agent (MMA).
@@ -245,5 +245,5 @@ Installeer de Log Analytics agent voor Windows-extensie wanneer de virtuele mach
 Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

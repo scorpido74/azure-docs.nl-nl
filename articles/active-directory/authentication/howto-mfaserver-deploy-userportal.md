@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653213"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680914"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Gebruikersportal voor de Azure Multi-Factor Authentication-server
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om de gebruikersportal te implementeren:
    > [!NOTE]
    > Dit TLS/SSL-certificaat is doorgaans een openbaar ondertekend TLS/SSL-certificaat.
 
-4. Open een webbrowser op een wille keurige computer en navigeer naar de URL waar de gebruikers Portal is geïnstalleerd `https://mfa.contoso.com/MultiFactorAuth`(bijvoorbeeld:). Controleer of er geen certificaatwaarschuwingen of -fouten worden weergegeven.
+4. Open een webbrowser op een wille keurige computer en navigeer naar de URL waar de gebruikers Portal is geïnstalleerd (bijvoorbeeld: `https://mfa.contoso.com/MultiFactorAuth` ). Controleer of er geen certificaatwaarschuwingen of -fouten worden weergegeven.
 
 ![Installatie van gebruikersportal van MFA-server](./media/howto-mfaserver-deploy-userportal/install.png)
 
@@ -105,10 +105,10 @@ Voor de installatie van de gebruikersportal op een andere server dan de Azure Mu
     * Zoek de sleutel **'USE_WEB_SERVICE_SDK'** en wijzig de waarde **value='false'** in **value='true'**
     * Zoek de sleutel **'WEB_SERVICE_SDK_AUTHENTICATION_USERNAME'** en wijzig **value=''** in **value='DOMAIN\User'** waarbij DOMAIN\User een serviceaccount is dat deel uitmaakt van de groep 'PhoneFactor Admins'.
     * Zoek de sleutel **'WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD'** en wijzig **value=''** in **value='Password"** waarbij Password het wachtwoord is voor het serviceaccount dat is ingevoerd op de vorige regel.
-    * Zoek de waarde **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** en wijzig deze URL van de tijdelijke aanduiding in de URL van de WEBSERVICE-SDK die we in stap 2 hebben geïnstalleerd.
+    * Zoek de waarde `https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx` en wijzig deze tijdelijke aanduiding voor de URL in de URL van de webservice-SDK die in stap 2 is geïnstalleerd.
     * Sla het bestand Web.Config op en sluit Kladblok.
 
-6. Open een webbrowser op een wille keurige computer en navigeer naar de URL waar de gebruikers Portal is geïnstalleerd `https://mfa.contoso.com/MultiFactorAuth`(bijvoorbeeld:). Controleer of er geen certificaatwaarschuwingen of -fouten worden weergegeven.
+6. Open een webbrowser op een wille keurige computer en navigeer naar de URL waar de gebruikers Portal is geïnstalleerd (bijvoorbeeld: `https://mfa.contoso.com/MultiFactorAuth` ). Controleer of er geen certificaatwaarschuwingen of -fouten worden weergegeven.
 
 Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 

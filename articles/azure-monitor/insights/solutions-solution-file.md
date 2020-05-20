@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 018fb457840e9ffe382ec1ed54df582ecfec8e49
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275176"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682857"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Een bestand met een beheer oplossing maken in azure (preview)
 > [!NOTE]
@@ -66,7 +66,7 @@ In de volgende tabel worden de kenmerken van een para meter beschreven.
 | type |Gegevens type voor de para meter. Het invoer besturings element dat voor de gebruiker wordt weer gegeven, is afhankelijk van het gegevens type.<br><br>BOOL-vervolg keuzelijst<br>teken reeks-tekstvak<br>int-tekstvak<br>securestring-wachtwoord veld<br> |
 | category |Optionele categorie voor de para meter.  De para meters in dezelfde categorie worden samen gegroepeerd. |
 | control |Aanvullende functionaliteit voor teken reeks parameters.<br><br>besturings element DateTime-DateTime wordt weer gegeven.<br>GUID-GUID-waarde wordt automatisch gegenereerd en de para meter wordt niet weer gegeven. |
-| description |Optionele beschrijving voor de para meter.  Wordt weer gegeven in een informatie ballon naast de para meter. |
+| beschrijving |Optionele beschrijving voor de para meter.  Wordt weer gegeven in een informatie ballon naast de para meter. |
 
 ### <a name="standard-parameters"></a>Standaard parameters
 De volgende tabel bevat de standaard parameters voor alle beheer oplossingen.  Deze waarden worden gevuld voor de gebruiker in plaats van om ze te vragen wanneer uw oplossing wordt geïnstalleerd vanuit de sjablonen voor Azure Marketplace of Quick Start.  De gebruiker moet waarden opgeven voor deze als de oplossing wordt geïnstalleerd met een andere methode.
@@ -161,7 +161,7 @@ In dit geval verwijst u naar variabele waarden via de oplossing met de syntaxis 
 Het **dependsOn** -element bevat een [afhankelijkheid](../../azure-resource-manager/templates/define-resource-dependency.md) van een andere resource.  Wanneer de oplossing is geïnstalleerd, wordt een resource pas gemaakt nadat alle afhankelijkheden ervan zijn gemaakt.  Uw oplossing kan bijvoorbeeld [een runbook starten](solutions-resources-automation.md#runbooks) wanneer het wordt geïnstalleerd met behulp van een [taak resource](solutions-resources-automation.md#automation-jobs).  De taak resource is afhankelijk van de runbook-resource om er zeker van te zijn dat het runbook wordt gemaakt voordat de taak wordt gemaakt.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-werk ruimte en Automation-account
-Voor beheer oplossingen is een [log Analytics-werk ruimte](../../azure-monitor/platform/manage-access.md) vereist voor weer gaven en een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview) dat runbooks en gerelateerde resources bevat.  Deze moeten beschikbaar zijn voordat de resources in de oplossing worden gemaakt en niet in de oplossing zelf moeten worden gedefinieerd.  De gebruiker [geeft een werk ruimte en account](solutions.md#log-analytics-workspace-and-automation-account) op wanneer de oplossing wordt geïmplementeerd, maar als de auteur moet u rekening houden met de volgende punten.
+Voor beheer oplossingen is een [log Analytics-werk ruimte](../../azure-monitor/platform/manage-access.md) vereist voor weer gaven en een [Automation-account](../../automation/automation-security-overview.md) dat runbooks en gerelateerde resources bevat.  Deze moeten beschikbaar zijn voordat de resources in de oplossing worden gemaakt en niet in de oplossing zelf moeten worden gedefinieerd.  De gebruiker [geeft een werk ruimte en account](solutions.md#log-analytics-workspace-and-automation-account) op wanneer de oplossing wordt geïmplementeerd, maar als de auteur moet u rekening houden met de volgende punten.
 
 
 ## <a name="solution-resource"></a>Resource oplossing
@@ -206,7 +206,7 @@ De oplossings resource heeft de eigenschappen in de volgende tabel.  Dit omvat d
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| workspaceResourceId |Id van de log Analytics werk ruimte in de formulier * \<resource groep-ID\<> naam\>van de/providers/Microsoft.operationalinsights/Workspaces/-werk ruimte*. |
+| workspaceResourceId |ID van de Log Analytics werk ruimte in de formulier * \< resource groep-ID> \< naam \> van de/providers/Microsoft.operationalinsights/Workspaces/-werk ruimte*. |
 | referencedResources |Lijst met resources in de oplossing die niet moeten worden verwijderd wanneer de oplossing wordt verwijderd. |
 | containedResources |Lijst met resources in de oplossing die moeten worden verwijderd wanneer de oplossing wordt verwijderd. |
 
@@ -220,7 +220,7 @@ De **plan** entiteit van de oplossings resource heeft de eigenschappen in de vol
 | name |De naam van de oplossing. |
 | versie |De versie van de oplossing, zoals bepaald door de auteur. |
 | product |Unieke teken reeks voor het identificeren van de oplossing. |
-| uitgever |Uitgever van de oplossing. |
+| publisher |Uitgever van de oplossing. |
 
 
 

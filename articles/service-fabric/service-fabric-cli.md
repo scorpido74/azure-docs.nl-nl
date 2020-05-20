@@ -3,14 +3,14 @@ title: Aan de slag met Azure Service Fabric-CLI
 description: Lees hier alles over het gebruik van de CLI van Azure Service Fabric. Informatie over verbinding maken met een cluster en het beheren van toepassingen.
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258939"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681795"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric-CLI
 
@@ -30,7 +30,8 @@ De Service Fabric-CLI is bedoeld ter ondersteuning van de nieuwste runtimeversie
 
 | CLI-versie   | ondersteunde runtimeversie |
 |---------------|---------------------------|
-| Nieuwste (~ = 9)  | Nieuwste (~ = 7)              |
+| Nieuwste (~ = 10) | Nieuwste (~ = 7,1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -210,7 +211,7 @@ De opdracht resulteert in de volgende uitvoer:
 }
 ```
 
-## <a name="tips-and-troubleshooting"></a>Tips en probleemoplossing
+## <a name="tips-and-troubleshooting"></a>Tips en problemen oplossen
 
 Hier volgen enkele suggesties en tips voor het oplossen van veelvoorkomende problemen.
 
@@ -240,7 +241,7 @@ Controleer of het opgegeven clustereindpunt beschikbaar is en luistert. Controle
 
 ### <a name="detailed-logs"></a>Gedetailleerde logboeken
 
-Gedetailleerde logboeken zijn vaak nuttig zijn wanneer u fouten opspoort of een probleem meldt. Met `--debug` de vlag neemt de uitgebreidheid van de uitvoer toe.
+Gedetailleerde logboeken zijn vaak nuttig zijn wanneer u fouten opspoort of een probleem meldt. `--debug`Met de vlag neemt de uitgebreidheid van de uitvoer toe.
 
 ### <a name="command-help-and-syntax"></a>Syntaxis van Help-opdracht
 

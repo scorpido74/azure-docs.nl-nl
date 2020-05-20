@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587371"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682134"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -24,7 +24,7 @@ Taal ondersteuning is afhankelijk van de functionaliteit van de spraak service. 
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen. Het aanpassen van de uitspraak is momenteel alleen beschikbaar voor `en-US` en `de-DE` . Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
+Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen. Aanpassing van de uitspraak wordt aangeboden via upload gerelateerde tekst: uitspraak. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
 
 <!--
 To get the AM and ML bits:
@@ -39,7 +39,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arabisch (VAE)                      | Ja       | Nee                                                |
 | `ar-BH` | Arabisch (Bahrein), modern, standaard | Ja       | Taalmodel                                    |
 | `ar-EG` | Arabisch (Egypte)                    | Ja       | Taalmodel                                    |
+| `ar-IL` | Arabisch (Israël)                   | Ja       | Nee                                                |
 | `ar-KW` | Arabisch (Koeweit)                   | Ja       | Nee                                                |
+| `ar-PS` | Arabisch (Palestijnse)                | Ja       | Nee                                                |
 | `ar-QA` | Arabisch (Qatar)                    | Ja       | Nee                                                |
 | `ar-SA` | Arabisch (Saoedi-Arabië)             | Ja       | Nee                                                |
 | `ar-SY` | Arabisch (Syrië)                    | Ja       | Taalmodel                                    |

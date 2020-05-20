@@ -3,16 +3,16 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aaa0d47b540a1c3eacd9efebda84f22b83529a28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105638"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680992"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) ook vragen over de Azure Backup-service plaatsen.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook vragen over de Azure Backup-Service plaatsen in [micro soft Q&A voor Azure backup](https://docs.microsoft.com/answers/topics/azure-backup.html).
 
 Als u kort de secties in dit artikel wilt bekijken, gebruikt u de koppelingen aan de rechterkant, onder **In dit artikel**.
 
@@ -80,9 +80,80 @@ Alle moment opnamen die door Azure Backup worden gemaakt, zijn toegankelijk via 
 
 Raadpleeg de [ondersteunings matrix](azure-file-share-support-matrix.md) voor meer informatie over de maximale Bewaar periode. Azure Backup voert een realtime berekening uit van het aantal moment opnamen wanneer u de retentie waarden invoert tijdens het configureren van het back-upbeleid. Zodra het aantal moment opnamen dat overeenkomt met uw gedefinieerde Bewaar waarden 200 overschrijdt, wordt in de portal een waarschuwing weer gegeven waarin u wordt gevraagd uw Bewaar waarden aan te passen. Dat betekent dat u de limiet van het maximum aantal moment opnamen dat door Azure Files voor een bestands share op een wille keurig moment wordt ondersteund, niet overschrijdt.
 
-### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Wat gebeurt er wanneer ik het back-upbeleid voor een Azure-bestandsshare wijzig?
+### <a name="what-is-the-impact-on-existing-recovery-points-and-snapshots-when-i-modify-the-backup-policy-for-an-azure-file-share-to-switch-from-daily-policy-to-gfs-policy"></a>Wat is de impact van bestaande herstel punten en moment opnamen wanneer ik het back-upbeleid voor een Azure-bestands share Wijzig om over te scha kelen van ' dagelijks beleid ' naar ' GFS-beleid '?
 
-Wanneer er op een of meer bestandsshares een nieuw beleid wordt toegepast, worden het schema en de retentie van het nieuwe beleid gevolgd. Als de retentie is uitgebreid, worden de bestaande herstelpunten gemarkeerd voor bewaring conform het nieuwe beleid. Als de retentie wordt beperkt, worden de bestaande herstelpunten gemarkeerd voor verwijdering in de eerstvolgende opschoontaak, waarna ze worden verwijderd.
+Wanneer u een dagelijks back-upbeleid wijzigt in GFS-beleid (wekelijks/maandelijks/jaarlijks retentie toevoegen), is het gedrag als volgt:
+
+- **Bewaren**: als u wekelijks/maandelijks/jaarlijks retentie toevoegt als onderdeel van het wijzigen van het beleid, worden alle toekomstige herstel punten die zijn gemaakt als onderdeel van de geplande back-up, gelabeld volgens het nieuwe beleid. Alle bestaande herstel punten worden nog steeds beschouwd als dagelijkse herstel punten en worden dus niet als wekelijks/maandelijks/jaarlijks gemarkeerd.
+
+- **Opschoning van moment opnamen en herstel punten**:
+
+  - Als dagelijks bewaren is verlengd, wordt de verval datum van de bestaande herstel punten bijgewerkt volgens de dagelijkse Bewaar waarde die is geconfigureerd in het nieuwe beleid.
+  - Als dagelijks bewaren is beperkt, worden de bestaande herstel punten en moment opnamen in de volgende opschoon taak gemarkeerd voor verwijdering volgens de dagelijkse Bewaar waarde die is geconfigureerd in het nieuwe beleid en vervolgens verwijderd.
+
+Hier volgt een voor beeld van hoe dit werkt:
+
+#### <a name="existing-policy-p1"></a>Bestaand beleid [P1]
+
+|Type Bewaar periode |Planning |Bewaartermijn  |
+|---------|---------|---------|
+|Dagelijks    |    Elke dag om 8 uur    |  100 dagen       |
+
+#### <a name="new-policy-modified-p1"></a>Nieuw beleid [gewijzigde P1]
+
+| Type Bewaar periode | Planning                       | Bewaartermijn |
+| -------------- | ------------------------------ | --------- |
+| Dagelijks          | Elke dag om 9 uur              | 50 dagen   |
+| Wekelijks         | Op zondag om 9 uur              | 3 weken   |
+| Maandelijks        | Op de afgelopen maandag om 9 uur         | 1 maand   |
+| Jaar         | In Jan op de derde zondag om 9 uur | 4 jaar   |
+
+#### <a name="impact"></a>Impact
+
+1. De verval datum van bestaande herstel punten wordt aangepast op basis van de dagelijkse Bewaar waarde van het nieuwe beleid: dat wil zeggen 50 dagen. Een herstel punt dat ouder is dan 50 dagen, wordt dus gemarkeerd voor verwijdering.
+
+2. De bestaande herstel punten worden niet als wekelijks/maandelijks/jaarlijks gelabeld op basis van het nieuwe beleid.
+
+3. Alle toekomstige back-ups worden geactiveerd volgens het nieuwe schema: dat wil zeggen, op 9 PM.
+
+4. De verval datum van alle toekomstige herstel punten wordt afgestemd op het nieuwe beleid.
+
+>[!NOTE]
+>De beleids wijzigingen zijn alleen van invloed op de herstel punten die zijn gemaakt als onderdeel van de geplande back-uptaak. Voor back-ups op aanvraag wordt de Bewaar periode bepaald door de waarde voor **behouden kassa** die is opgegeven op het moment dat de back-up wordt gemaakt.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-when-i-modify-an-existing-gfs-policy"></a>Wat is de invloed op bestaande herstel punten wanneer ik een bestaand GFS-beleid Wijzig?
+
+Wanneer een nieuw beleid wordt toegepast op bestands shares, worden alle toekomstige geplande back-ups uitgevoerd volgens de planning die in het gewijzigde beleid is geconfigureerd.  De Bewaar periode van alle bestaande herstel punten wordt uitgelijnd op basis van de nieuwe Bewaar waarden die zijn geconfigureerd. Als de retentie is uitgebreid, worden de bestaande herstel punten gemarkeerd om te worden bewaard volgens het nieuwe beleid. Als de retentie wordt verminderd, worden deze gemarkeerd voor opschonen in de volgende opschoon taak en vervolgens verwijderd.
+
+Hier volgt een voor beeld van hoe dit werkt:
+
+#### <a name="existing-policy-p2"></a>Bestaand beleid [P2]
+
+| Type Bewaar periode | Planning           | Bewaartermijn |
+| -------------- | ------------------ | --------- |
+| Dagelijks          | Elke dag om 8 uur | 50 dagen   |
+| Wekelijks         | Op maandag om 8 uur  | 3 weken   |
+
+#### <a name="new-policy-modified-p2"></a>Nieuw beleid [aangepaste P2]
+
+| Type Bewaar periode | Planning               | Bewaartermijn |
+| -------------- | ---------------------- | --------- |
+| Dagelijks          | Elke dag om 9 uur     | 10 dagen   |
+| Wekelijks         | Op maandag om 9 uur      | 2 weken   |
+| Maandelijks        | Op de afgelopen maandag om 9 uur | 2 maanden  |
+
+#### <a name="impact-of-change"></a>Gevolgen van wijziging
+
+1. De verval datum van bestaande dagelijkse herstel punten wordt afgestemd op basis van de nieuwe dagelijkse Bewaar waarde, die 10 dagen is. Elk dagelijks herstel punt dat ouder is dan 10 dagen wordt verwijderd.
+
+2. De verval datum van bestaande wekelijkse herstel punten wordt afgestemd op basis van de nieuwe wekelijkse Bewaar waarde, die twee weken is. Elk wekelijks herstel punt dat ouder is dan twee weken, wordt verwijderd.
+
+3. De maandelijkse herstel punten worden alleen gemaakt als onderdeel van toekomstige back-ups op basis van de nieuwe beleids configuratie.
+
+4. De verval datum van alle toekomstige herstel punten wordt afgestemd op het nieuwe beleid.
+
+>[!NOTE]
+>De beleids wijzigingen zijn alleen van invloed op de herstel punten die zijn gemaakt als onderdeel van de geplande back-up. Voor back-ups op aanvraag wordt de Bewaar periode bepaald **op het moment** dat de back-up wordt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

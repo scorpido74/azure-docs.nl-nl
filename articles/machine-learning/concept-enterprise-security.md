@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/19/2020
+ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891322"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683070"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -99,7 +99,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 
 Het is niet raadzaam om beheerders de toegang tot de beheerde identiteit in te trekken voor de resources die in de voor gaande tabel worden vermeld. U kunt de toegang herstellen met behulp van de bewerking voor het opnieuw synchroniseren van sleutels.
 
-Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of `Microsoft-AzureML-Support-App-`) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en één in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Met deze toepassingen kunt u Azure Machine Learning helpen bij het beheren van reken resources.
+Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of `Microsoft-AzureML-Support-App-` ) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en één in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Met deze toepassingen kunt u Azure Machine Learning helpen bij het beheren van reken resources.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
@@ -116,7 +116,7 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 > [!IMPORTANT]
 > Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. 
 
-Met `hbi_workspace` de markering bepaalt u de hoeveelheid gegevens die micro soft verzamelt voor diagnostische doel einden, en wordt extra versleuteling mogelijk in door micro soft beheerde omgevingen. Daarnaast kunt u hiermee het volgende doen:
+Met de `hbi_workspace` markering bepaalt u de hoeveelheid gegevens die micro soft verzamelt voor diagnostische doel einden, en wordt extra versleuteling mogelijk in door micro soft beheerde omgevingen. Daarnaast kunt u hiermee het volgende doen:
 
 * Begint met het versleutelen van de lokale Scratch schijf in uw Amlcompute-cluster. u hebt geen eerdere clusters in dat abonnement gemaakt. Anders moet u een ondersteunings ticket genereren om versleuteling van de Scratch schijf van uw reken clusters mogelijk te maken 
 * Ruim uw lokale werk schijf op tussen uitvoeringen
@@ -146,8 +146,6 @@ Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om de Azure Cosm
 
 Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw abonnement met door de klant beheerde sleutels in te scha kelen:
 
-* Schakel door de klant beheerde sleutel mogelijkheden in voor Cosmos DB. Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com)neemt u contact op met.
-
 * Registreer de Azure Machine Learning-en Azure Cosmos DB resource providers in uw abonnement, als u dit nog niet hebt gedaan.
 
 * Machtig de Machine Learning-app (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
@@ -163,7 +161,7 @@ Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw a
         > [!NOTE]
         > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement. De beheerde resource groep krijgt de naam in de `<AML Workspace Resource Group Name><GUID>`indeling.
+Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement. De beheerde resource groep krijgt de naam in de indeling `<AML Workspace Resource Group Name><GUID>` .
 
 > [!IMPORTANT]
 > * Als u dit exemplaar van Cosmos DB wilt verwijderen, moet u de Azure Machine Learning-werk ruimte verwijderen waarin deze wordt gebruikt. 
@@ -188,7 +186,7 @@ Raadpleeg de volgende artikelen voor een voor beeld van het maken van een werk r
 
 U kunt een geïmplementeerde Azure container instance-resource (ACI) versleutelen met door de klant beheerde sleutels. De door de klant beheerde sleutel die wordt gebruikt voor ACI kan worden opgeslagen in de Azure Key Vault voor uw werk ruimte. Zie [gegevens versleutelen met een door de klant beheerde sleutel](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)voor meer informatie over het genereren van een sleutel.
 
-Als u de sleutel wilt gebruiken bij het implementeren van een model naar Azure container instance, maakt u `AciWebservice.deploy_configuration()`een nieuwe implementatie configuratie met. Geef de belangrijkste informatie op met behulp van de volgende para meters:
+Als u de sleutel wilt gebruiken bij het implementeren van een model naar Azure container instance, maakt u een nieuwe implementatie configuratie met `AciWebservice.deploy_configuration()` . Geef de belangrijkste informatie op met behulp van de volgende para meters:
 
 * `cmk_vault_base_url`: De URL van de sleutel kluis die de sleutel bevat.
 * `cmk_key_name`: De naam van de sleutel.
@@ -215,7 +213,7 @@ Met dit proces kunt u zowel de gegevens als de besturingssysteem schijf van de g
 
 De besturingssysteem schijf voor elk reken knooppunt dat in Azure Storage is opgeslagen, is versleuteld met door micro soft beheerde sleutels in Azure Machine Learning-opslag accounts. Dit Compute-doel is kortstondig en clusters worden meestal omlaag geschaald wanneer er geen uitvoeringen in de wachtrij worden geplaatst. De inrichting van de onderliggende virtuele machine is ongedaan gemaakt en de besturingssysteem schijf wordt verwijderd. Azure Disk Encryption wordt niet ondersteund voor de besturingssysteem schijf.
 
-Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssysteem bewerkingen. Als u wilt, kunt u de trainings gegevens voor de schijf gebruiken. De schijf is standaard versleuteld voor werk ruimten waarvoor `hbi_workspace` de para meter `TRUE`is ingesteld op. Deze omgeving is slechts korte tijd voor de duur van de uitvoering en de ondersteuning voor versleuteling is beperkt tot alleen door het systeem beheerde sleutels.
+Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssysteem bewerkingen. Als u wilt, kunt u de trainings gegevens voor de schijf gebruiken. De schijf is standaard versleuteld voor werk ruimten waarvoor de `hbi_workspace` para meter is ingesteld op `TRUE` . Deze omgeving is slechts korte tijd voor de duur van de uitvoering en de ondersteuning voor versleuteling is beperkt tot alleen door het systeem beheerde sleutels.
 
 #### <a name="azure-databricks"></a>Azure Databricks
 
@@ -247,7 +245,7 @@ Micro soft kan gegevens over niet-gebruikers identificeren, zoals resource namen
 
 Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. Zorg er ook voor dat u een naam [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)geeft, Vermijd het gebruik van gevoelige gegevens zoals gebruikers namen of geheime project namen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
 
-U kunt zich afmelden van diagnostische gegevens die worden verzameld `hbi_workspace` door de `TRUE` para meter in te stellen op tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
+U kunt zich afmelden van diagnostische gegevens die worden verzameld door de `hbi_workspace` para meter in te stellen op `TRUE` tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
 
 ### <a name="microsoft-generated-data"></a>Door micro soft gegenereerde gegevens
 

@@ -8,17 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200975"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681714"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -31,7 +30,7 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt op basis van de meest recente status.
@@ -55,10 +54,12 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 05/07/2020: uitgebracht voor downloaden
 
 ### <a name="fixed-issues"></a>Problemen opgelost
-- Er is een probleem opgelost waarbij niet-geselecteerde domeinen onjuist zijn geselecteerd in de gebruikers interface van de wizard.
-- Er is een probleem opgelost in de Power shell-module ADSyncConfig, waarbij het aanroepen van de opdracht DSACLS die wordt gebruikt in alle cmdlets voor de set-ADSync *-machtigingen een van de volgende fouten veroorzaken:
-     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
-     - `GrantAcls : No GUID Found for computer …`
+Met deze hotfix-build wordt een probleem opgelost waarbij niet-geselecteerde domeinen onjuist zijn geselecteerd in de gebruikers interface van de wizard als er alleen grandchild-containers zijn geselecteerd.
+
+
+>[!NOTE]
+>Deze versie is vereist voor het gebruik van de nieuwe Azure AD Connect Sync v2-eind punt-API.  Zie [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md)voor meer informatie.
+
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -82,7 +83,10 @@ Met deze hotfix-build wordt een probleem in Build 1.5.20.0 opgelost als u de in 
 04/09/2020: uitgebracht voor downloaden
 
 ### <a name="fixed-issues"></a>Problemen opgelost
-Met deze hotfix-build wordt een probleem met build 1.5.18.0 opgelost als u de functie voor groeps filtering hebt ingeschakeld en mS-DS-ConsistencyGuid als bron anker gebruikt.
+- Met deze hotfix-build wordt een probleem met build 1.5.18.0 opgelost als u de functie voor groeps filtering hebt ingeschakeld en mS-DS-ConsistencyGuid als bron anker gebruikt.
+- Er is een probleem opgelost in de Power shell-module ADSyncConfig, waarbij het aanroepen van de opdracht DSACLS die wordt gebruikt in alle cmdlets voor de set-ADSync *-machtigingen een van de volgende fouten veroorzaken:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > Voer de volgende stappen uit als onderdeel van de upgrade als u de regel **in vanuit de groep voor het samen voegen van AD-groepslid** maatschap hebt gekloond en de upgrade niet hebt gekloond van de regel voor **algemene synchronisatie van AD-groep** en wilt upgraden.
@@ -117,7 +121,6 @@ Met deze hotfix-build wordt een probleem met build 1.5.18.0 opgelost als u de fu
 - Er is een probleem opgelost met het maken van het Azure Active Directory synchronisatie account waar Directory-extensies of PHS kunnen mislukken omdat het account niet is door gegeven aan alle service replica's voordat een poging wordt gedaan om te gebruiken. 
 - Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten dat geen surrogaat tekens goed afhandelen. 
 - Er is een fout opgelost in de automatische upgrade die de server heeft verlaten in de onderbroken status van scheduler. 
-- Er is een fout opgelost in de pagina domein/organisatie-eenheid filteren waarmee de profielen voor het uitvoeren van een domein worden verwijderd door de domein structuur alleen gedeeltelijk uit te breiden zonder wijzigingen aan te brengen.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Status van de release
@@ -567,7 +570,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Naam                          | Toegang               | Van toepassing op
+Type     | Name                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
@@ -910,7 +913,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Selecteer|
+    |CertVersion|CertSignatureAlgorithmOid|Selecteren|
     |CertKeyAlgorithmParams|CertHashString|Waar|
     |||With|
 
@@ -1337,7 +1340,6 @@ De naam is gewijzigd van Azure AD Sync naar Azure AD Connect.
 **Nieuwe preview-functies:**
 
 * [Gebruikers terugschrijven](how-to-connect-preview.md#user-writeback)
-* [Groep terugschrijven](how-to-connect-preview.md#group-writeback)
 * [Apparaat terugschrijven](how-to-connect-device-writeback.md)
 * [Uitbreidingen van de directory](how-to-connect-preview.md)
 

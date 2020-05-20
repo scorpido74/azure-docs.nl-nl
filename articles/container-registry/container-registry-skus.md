@@ -1,40 +1,40 @@
 ---
-title: Service lagen en Sku's
+title: Service lagen en-functies van Regi ster
 description: Meer informatie over de functies en limieten in de Basic-, Standard-en Premium-Service lagen (Sku's) van Azure Container Registry.
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456271"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683426"
 ---
-# <a name="azure-container-registry-skus"></a>Azure Container Registry Sku's
+# <a name="azure-container-registry-service-tiers"></a>Service lagen Azure Container Registry
 
-Azure Container Registry (ACR) is beschikbaar in meerdere service lagen, ook wel Sku's genoemd. Deze Sku's bieden voorspel bare prijzen en verschillende opties om af te stemmen op de capaciteits-en gebruiks patronen van uw privé-docker-REGI ster in Azure.
+Azure Container Registry is beschikbaar in meerdere service lagen (ook wel Sku's genoemd). Deze lagen bieden voorspel bare prijzen en verschillende opties om af te stemmen op de capaciteits-en gebruiks patronen van uw privé-docker-REGI ster in Azure.
 
-| SKU | Beschrijving |
+| Laag | Beschrijving |
 | --- | ----------- |
-| **Hoofd** | Een rendabel toegangspunt voor ontwikkelaars die meer willen leren over Azure Container Registry. Basis registers hebben dezelfde programmatische mogelijkheden als standaard en Premium (zoals integratie van Azure Active Directory [verificatie](container-registry-authentication.md#individual-login-with-azure-ad), het [verwijderen van afbeeldingen][container-registry-delete]en [webhooks][container-registry-webhook]). De inbegrepen opslag-en afbeeldings doorvoer zijn echter het meest geschikt voor lagere gebruiks scenario's. |
+| **Standaard** | Een rendabel toegangspunt voor ontwikkelaars die meer willen leren over Azure Container Registry. Basis registers hebben dezelfde programmatische mogelijkheden als standaard en Premium (zoals integratie van Azure Active Directory [verificatie](container-registry-authentication.md#individual-login-with-azure-ad), het [verwijderen van afbeeldingen][container-registry-delete]en [webhooks][container-registry-webhook]). De inbegrepen opslag-en afbeeldings doorvoer zijn echter het meest geschikt voor lagere gebruiks scenario's. |
 | **Standaard** | Standaard-registers bieden dezelfde mogelijkheden als basis, met meer inbegrepen opslag en de door Voer van de installatie kopie. Standard-registers moeten voldoen aan de behoeften van de meeste productiescenario's. |
-| **Premium** | Premium-registers bieden de hoogste hoeveelheid inbegrepen opslag en gelijktijdige bewerkingen, waardoor scenario's met hoge volumes mogelijk zijn. Naast een hogere afbeeldings doorvoer voegt Premium functies toe, zoals [geo-replicatie][container-registry-geo-replication] voor het beheren van één REGI ster in meerdere regio's, [inhouds vertrouwen](container-registry-content-trust.md) voor het ondertekenen van installatie kopieën, [firewalls en virtuele netwerken (preview)](container-registry-vnet.md) om de toegang tot het REGI ster te beperken. |
+| **Premium** | Premium-registers bieden de hoogste hoeveelheid inbegrepen opslag en gelijktijdige bewerkingen, waardoor scenario's met hoge volumes mogelijk zijn. Naast de hogere door Voer van een afbeelding voegt Premium functies toe, zoals [geo-replicatie][container-registry-geo-replication] voor het beheren van één REGI ster in meerdere regio's, [inhouds vertrouwen](container-registry-content-trust.md) voor het ondertekenen van installatie kopieën, [persoonlijke koppelingen met persoonlijke eind punten](container-registry-private-link.md) om de toegang tot het REGI ster te beperken. |
 
-De Basic-, Standard-en Premium-Sku's bieden allemaal dezelfde programmatische mogelijkheden. Ze profiteren ook van [installatie kopie opslag][container-registry-storage] die volledig wordt beheerd door Azure. Het kiezen van een SKU op een hoger niveau biedt meer prestaties en schaal baarheid. Met meerdere service lagen kunt u aan de slag met Basic en vervolgens converteren naar Standard en Premium als uw register gebruik toeneemt.
+De lagen Basic, Standard en Premium bieden allemaal dezelfde programmatische mogelijkheden. Ze profiteren ook van [installatie kopie opslag][container-registry-storage] die volledig wordt beheerd door Azure. Het kiezen van een laag op een hoger niveau biedt meer prestaties en schaal baarheid. Met meerdere service lagen kunt u aan de slag met Basic en vervolgens converteren naar Standard en Premium als uw register gebruik toeneemt.
 
-## <a name="sku-features-and-limits"></a>SKU-functies en-limieten
+## <a name="service-tier-features-and-limits"></a>Functies en limieten voor de service tier
 
 De volgende tabel bevat een overzicht van de functies en limieten van de service lagen Basic, Standard en Premium.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>Sku's wijzigen
+## <a name="changing-tiers"></a>Lagen wijzigen
 
-U kunt de SKU van een REGI ster wijzigen met de Azure CLI of in de Azure Portal. U kunt vrij verplaatsen tussen Sku's als de SKU waarnaar u overschakelt, de vereiste maximale opslag capaciteit heeft. 
+U kunt de servicelaag van een REGI ster wijzigen met de Azure CLI of in de Azure Portal. U kunt de laag vrij verplaatsen, zolang de laag die u wilt overschakelen, de vereiste maximale opslag capaciteit heeft. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u wilt scha kelen tussen Sku's in de Azure CLI, gebruikt u de opdracht [AZ ACR update][az-acr-update] . Als u bijvoorbeeld wilt overschakelen op Premium:
+Als u wilt scha kelen tussen service lagen in de Azure CLI, gebruikt u de opdracht [AZ ACR update][az-acr-update] . Als u bijvoorbeeld wilt overschakelen op Premium:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
@@ -48,7 +48,7 @@ Selecteer in het **overzicht** van het container register in de Azure Portal **U
 
 ## <a name="pricing"></a>Prijzen
 
-Zie [container Registry prijzen][container-registry-pricing]voor prijs informatie over elk van de Azure container Registry sku's.
+Zie [container Registry prijzen][container-registry-pricing]voor de prijs informatie over elk van de Azure container Registry-service lagen.
 
 Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie over de prijzen voor gegevens overdracht. 
 

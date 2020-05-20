@@ -9,12 +9,13 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: monitoring
+ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610969"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680369"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-end-probleemoplossing op basis van metrische gegevens en logboekregistratie van Azure Storage, AzCopy en Message Analyzer
 
@@ -85,7 +86,7 @@ In deze zelf studie gebruiken we Message Analyzer voor het werken met drie versc
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Logboek registratie en metrische gegevens aan server zijde configureren
 
-Eerst moet u de logboeken en metrische gegevens van Azure Storage configureren, zodat de service aan de kant van het analyseren van informatie wordt uitgevoerd. U kunt logboek registratie en metrische gegevens op verschillende manieren configureren: via de [Azure Portal](https://portal.azure.com), met behulp van Power shell of via een programma. Zie [metrische gegevens inschakelen](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) en [logboek registratie inschakelen](storage-analytics-logging.md#enable-storage-logging) voor meer informatie over het configureren van logboek registratie en metrische gegevens.
+Eerst moet u de logboeken en metrische gegevens van Azure Storage configureren, zodat de service aan de kant van het analyseren van informatie wordt uitgevoerd. U kunt logboek registratie en metrische gegevens op verschillende manieren configureren: via de [Azure Portal](https://portal.azure.com), met behulp van Power shell of via een programma. Zie [metrische gegevens inschakelen](storage-analytics-metrics.md#enable-metrics-by-using-the-azure-portal) en [logboek registratie inschakelen](storage-analytics-logging.md#enable-storage-logging) voor meer informatie over het configureren van logboek registratie en metrische gegevens.
 
 ### <a name="configure-net-client-side-logging"></a>Logboek registratie voor .NET-client zijde configureren
 
@@ -141,9 +142,9 @@ Zie [metrische grafieken aanpassen](storage-monitor-storage-account.md#customize
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>AzCopy gebruiken om server logboeken te kopiëren naar een lokale map
 
-Azure Storage schrijft server logboek gegevens naar blobs, terwijl metrische waarden naar tabellen worden geschreven. Logboek-blobs zijn beschikbaar in de bekende `$logs` container voor uw opslag account. Logboek-blobs hebben een hiërarchische naam van jaar, maand, dag en uur, zodat u eenvoudig het tijds bereik kunt vinden dat u wilt onderzoeken. Zo is `storagesample` `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`in het account de container voor de logboek-blobs voor 01/02/2015, van 8-9 uur. De afzonderlijke blobs in deze container worden opeenvolgend benoemd, te beginnen met `000000.log`.
+Azure Storage schrijft server logboek gegevens naar blobs, terwijl metrische waarden naar tabellen worden geschreven. Logboek-blobs zijn beschikbaar in de bekende `$logs` container voor uw opslag account. Logboek-blobs hebben een hiërarchische naam van jaar, maand, dag en uur, zodat u eenvoudig het tijds bereik kunt vinden dat u wilt onderzoeken. Zo is in het `storagesample` account de container voor de logboek-blobs voor 01/02/2015, van 8-9 uur `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` . De afzonderlijke blobs in deze container worden opeenvolgend benoemd, te beginnen met `000000.log` .
 
-U kunt het opdracht regel programma AzCopy gebruiken om deze logboek bestanden aan de server zijde te downloaden naar een locatie van uw keuze op uw lokale computer. U kunt bijvoorbeeld de volgende opdracht gebruiken om de logboek bestanden te downloaden voor BLOB-bewerkingen die plaatsvonden op 2 januari 2015 naar de map `C:\Temp\Logs\Server`. Vervang `<storageaccountname>` door de naam van uw opslag account:
+U kunt het opdracht regel programma AzCopy gebruiken om deze logboek bestanden aan de server zijde te downloaden naar een locatie van uw keuze op uw lokale computer. U kunt bijvoorbeeld de volgende opdracht gebruiken om de logboek bestanden te downloaden voor BLOB-bewerkingen die plaatsvonden op 2 januari 2015 naar de map `C:\Temp\Logs\Server` ; vervangen `<storageaccountname>` door de naam van uw opslag account:
 
 ```azcopy
 azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
@@ -267,7 +268,7 @@ Nadat u dit filter hebt toegepast, ziet u dat rijen uit het client logboek worde
 De opslag assets bevatten vooraf gedefinieerde filters die u kunt gebruiken om logboek gegevens te beperken om de fouten of trends te vinden die u zoekt. Daarna worden twee vooraf gedefinieerde filters toegepast: één waarmee de server-en netwerk traceer logboeken voor 404-fouten worden gefilterd en één waarmee de gegevens worden gefilterd op een opgegeven tijds bereik.
 
 1. Geef het venster filter programma weer als dit nog niet wordt weer gegeven. Selecteer op het lint op de werk balk de optie **Windows**en vervolgens **weergave filter**.
-2. In het venster weergave filter selecteert `Azure Storage` u **bibliotheek**en zoekt u naar de Azure Storage filters zoeken. Selecteer het filter voor **404 (niet gevonden) berichten in alle logboeken**.
+2. In het venster weergave filter selecteert u **bibliotheek**en zoekt `Azure Storage` u naar de Azure Storage filters zoeken. Selecteer het filter voor **404 (niet gevonden) berichten in alle logboeken**.
 3. Open het menu **bibliotheek** opnieuw en selecteer het **globale tijd filter**.
 4. Bewerk de tijds tempels die in het filter worden weer gegeven, op het bereik dat u wilt weer geven. Zo kunt u het aantal gegevens dat moet worden geanalyseerd, beperken.
 5. Het filter moet er ongeveer uitzien als in het onderstaande voor beeld. Klik op **Toep assen** om het filter toe te passen op het analyse raster.
@@ -311,14 +312,14 @@ Nu u bekend bent met het gebruik van Message Analyzer om uw logboek gegevens te 
 | Onverwachte vertragingen bij de levering van berichten in een wachtrij |AzureStorageClientDotNetV4. Description bevat de bewerking een nieuwe poging is mislukt. |Client |
 | HTTP-toename in Percentthrottlingerror aan |HTTP. Response. status code = = 500 &#124;&#124; HTTP. Response. status code = = 503 |Netwerk |
 | Toename in Percenttimeouterror aan |HTTP. Response. status code = = 500 |Netwerk |
-| Toename in Percenttimeouterror aan (alle) |* Status code = = 500 |Alle |
+| Toename in Percenttimeouterror aan (alle) |* Status code = = 500 |Alles |
 | Toename in PercentNetworkError |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Client |
 | HTTP 403-berichten (verboden) |HTTP. Response. status code = = 403 |Netwerk |
 | HTTP 404-berichten (niet gevonden) |HTTP. Response. status code = = 404 |Netwerk |
-| 404 (alle) |* Status code = = 404 |Alle |
+| 404 (alle) |* Status code = = 404 |Alles |
 | Een probleem met de verificatie van een SAS (Shared Access Signature) |AzureStorageLog. RequestStatus = = "SASAuthorizationError" |Netwerk |
 | HTTP 409-berichten (conflict) |HTTP. Response. status code = = 409 |Netwerk |
-| 409 (alle) |* Status code = = 409 |Alle |
+| 409 (alle) |* Status code = = 409 |Alles |
 | Lage PercentSuccess of logboek vermeldingen van de analyse hebben bewerkingen met de transactie status ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |Server |
 | Nagle-waarschuwing |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) en (AzureStorageLog. RequestPacketSize <1460) en (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |Server |
 | Tijds bereik in server-en netwerk logboeken |#Timestamp >= 2014-10-20T16:36:38 en #Timestamp <= 2014-10-20T16:36:39 |Server, netwerk |
@@ -329,7 +330,7 @@ Nu u bekend bent met het gebruik van Message Analyzer om uw logboek gegevens te 
 Raadpleeg de volgende bronnen voor meer informatie over het oplossen van problemen met end-to-end scenario's in Azure Storage:
 
 * [Microsoft Azure Storage bewaken, problemen opsporen en oplossen](storage-monitoring-diagnosing-troubleshooting.md)
-* [Opslaganalyse](https://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Storage Analytics](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Een Storage-account bewaken in de Azure-portal](storage-monitor-storage-account.md)
 * [Gegevens overdragen met het AzCopy-opdracht regel programma](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx) (Operationele handleiding voor Microsoft Message Analyzer)

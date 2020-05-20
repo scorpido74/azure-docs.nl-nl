@@ -5,28 +5,26 @@ services: search
 author: HeidiSteen
 ms.service: cognitive-search
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 179f525b7b6a7e51889b14b66df6c537ca56bd75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80272760"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682641"
 ---
-Opslag wordt beperkt door schijf ruimte of met een vaste limiet voor het *maximum aantal* indexen, documenten of andere resources op hoog niveau, afhankelijk van wat het eerste komt. In de volgende tabel worden opslag limieten gedocumenteerd. Zie [limieten per resource](../articles/search/search-limits-quotas-capacity.md#index-limits)voor maximale limieten voor indexen, documenten en andere objecten.
+Een zoek service wordt beperkt door schijf ruimte of met een vaste limiet voor het maximum aantal indexen of Indexeer functies, afhankelijk van wat het eerste komt. In de volgende tabel worden opslag limieten gedocumenteerd. Zie [limieten per resource](../articles/search/search-limits-quotas-capacity.md#index-limits)voor maximale object limieten.
 
-| Resource | Gratis | Basis<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
+| Resource | Gratis | Basis<sup>1</sup> | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Service Level Agreement (SLA)<sup>3</sup>  |Nee |Ja |Ja |Ja |Ja |Ja |Ja |Ja |
+| Service Level Agreement (SLA)<sup>2</sup>  |Nee |Ja |Ja |Ja |Ja |Ja |Ja |Ja |
 | Opslag per partitie |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Partities per service |N.v.t. |1 |12 |12 |12 |3 |12 |12 |
 | Partitiegrootte |N.v.t. |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Replica's |N.v.t. |3 |12 |12 |12 |12 |12 |12 |
 
-<sup>1</sup> Basic heeft één vaste partitie. Op deze laag worden er extra Zoek eenheden gebruikt voor het toewijzen van meer replica's voor meer query-workloads.
+<sup>1</sup> Basic heeft één vaste partitie. Extra Zoek eenheden kunnen worden gebruikt om replica's voor grotere query volumes toe te voegen.
 
-<sup>2</sup> S3 HD heeft een vaste limiet van drie partities, wat lager is dan de partitie limiet voor S3. De partitielimiet is lager doordat S3 HD aanzienlijk meer indexen heeft. Omdat er servicelimieten bestaan voor zowel rekenresources (opslag en verwerking) als inhoud (indexen en documenten), wordt de limiet voor de inhoud het eerst bereikt.
-
-<sup>3</sup> service overeenkomsten worden aangeboden voor factureer bare Services op toegewezen resources. Gratis services en preview-functies hebben geen SLA. Voor factureer bare Services gelden de Sla's wanneer u voldoende redundantie voor uw service inricht. Er zijn twee of meer replica's vereist voor query-Sla's (lezen). Er zijn drie of meer replica's vereist voor het uitvoeren van query's en indexen (lezen/schrijven). Het aantal partities is geen SLA-overweging. 
+<sup>2</sup> service overeenkomsten zijn van kracht voor factureer bare Services op toegewezen resources. Gratis services en preview-functies hebben geen SLA. Voor factureer bare Services gelden de Sla's wanneer u voldoende redundantie voor uw service inricht. Er zijn twee of meer replica's vereist voor query-Sla's (lezen). Er zijn drie of meer replica's vereist voor het uitvoeren van query's en indexen (lezen/schrijven). Het aantal partities is geen SLA-overweging. 

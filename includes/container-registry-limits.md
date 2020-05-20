@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117135"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683442"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,10 +26,10 @@ ms.locfileid: "79117135"
 | Webhooks | 2 | 10 | 500 |
 | Geo-replicatie | N.v.t. | N.v.t. | [Geboden][geo-replication] |
 | Inhoud vertrouwen | N.v.t. | N.v.t. | [Geboden][content-trust] |
-| Toegang tot virtueel netwerk | N.v.t. | N.v.t. | [Preview][vnet] |
-| Integratie van persoonlijke koppelingen | N.v.t. | N.v.t. | [Preview][plink] |
-| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Preview][cmk] |
-| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|
+| Persoonlijke koppeling met persoonlijke eind punten | N.v.t. | N.v.t. | [Geboden][plink] |
+| Toegang tot de service Endpoint VNet | N.v.t. | N.v.t. | [Voorbeeld][vnet] |
+| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Geboden][cmk] |
+| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Voorbeeld][token]|
 | &bull;Tokens | N.v.t. | N.v.t. | 20.000 |
 | &bull;Scope toewijzingen | N.v.t. | N.v.t. | 20.000 |
 | &bull;Opslag plaatsen per scope toewijzing | N.v.t. | N.v.t. | 500 |

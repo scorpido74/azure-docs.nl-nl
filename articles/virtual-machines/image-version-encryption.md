@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: aeacfdc07e5349dfce45b209da1d78bddf870f33
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83269577"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683951"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
-Galerie-installatie kopieën worden opgeslagen als managed disks, zodat ze automatisch worden versleuteld met versleuteling aan de server zijde. Versleuteling aan de server zijde maakt gebruik van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
+Galerie-installatie kopieën worden opgeslagen als managed disks, zodat ze automatisch worden versleuteld met versleuteling aan de server zijde. Versleuteling aan de server zijde maakt gebruik van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Zie [crypto GRAFIE API: Next Generation](/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
 
 U kunt vertrouwen op door het platform beheerde sleutels voor de versleuteling van uw installatie kopieën of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de *klant beheerde sleutel* opgeven die moet worden gebruikt voor het versleutelen en ontsleutelen van alle schijven in uw installatie kopieën. 
 
@@ -24,7 +24,7 @@ Versleuteling aan de server zijde met door de klant beheerde sleutels maakt gebr
 
 Als u door de klant beheerde sleutels voor installatie kopieën wilt gebruiken, hebt u eerst een Azure Key Vault nodig. Vervolgens maakt u een set schijf versleuteling. De schijf versleutelings wordt vervolgens gebruikt bij het maken van installatie kopieën.
 
-Zie door de [klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)voor meer informatie over het maken en gebruiken van schijf versleutelings sets.
+Zie door de [klant beheerde sleutels](./windows/disk-encryption.md#customer-managed-keys)voor meer informatie over het maken en gebruiken van schijf versleutelings sets.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -72,7 +72,7 @@ Als dat niet het geval `Registered` is, gebruikt u het volgende om de providers 
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Als u een schijf versleuteling wilt opgeven voor een installatie kopie versie, gebruikt u [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) met de `-TargetRegion` para meter. 
+Als u een schijf versleuteling wilt opgeven voor een installatie kopie versie, gebruikt u [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) met de `-TargetRegion` para meter. 
 
 ```azurepowershell-interactive
 
@@ -194,4 +194,4 @@ U kunt een virtuele machine maken op basis van een galerie met gedeelde afbeeldi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [schijf versleuteling aan server zijde](/windows/disk-encryption.md)).
+Meer informatie over [schijf versleuteling aan de server zijde](./windows/disk-encryption.md).

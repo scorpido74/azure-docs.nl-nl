@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509241"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683555"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Schaal een cluster automatisch om te voldoen aan de vereisten van de toepassing op de Azure Kubernetes-service (AKS)
 
@@ -81,7 +81,7 @@ Het duurt enkele minuten om het cluster te maken en de instellingen voor het aut
 ## <a name="change-the-cluster-autoscaler-settings"></a>De instellingen voor het automatisch schalen van clusters wijzigen
 
 > [!IMPORTANT]
-> Als u meerdere knooppunt groepen in uw AKS-cluster hebt, gaat u naar de [sectie automatisch schalen met meerdere agent groepen](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters met meerdere agent Pools moet de opdracht set `az aks nodepool` worden gebruikt om specifieke eigenschappen van de knooppunten groep te `az aks`wijzigen in plaats van.
+> Als u meerdere knooppunt groepen in uw AKS-cluster hebt, gaat u naar de [sectie automatisch schalen met meerdere agent groepen](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters met meerdere agent Pools moet de `az aks nodepool` opdracht set worden gebruikt om specifieke eigenschappen van de knooppunten groep te wijzigen in plaats van `az aks` .
 
 In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1*en is het maximum aantal knoop punten ingesteld op *3*. Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
 
@@ -99,7 +99,7 @@ az aks update \
 In het bovenstaande voor beeld wordt de cluster-automatische schaal functie van de groep met één knoop punt in *myAKSCluster* ingesteld op mini maal *1* en Maxi maal *5* knoop punten.
 
 > [!NOTE]
-> U kunt geen hoger minimum aantal knoop punten instellen dan momenteel is ingesteld voor de knooppunt groep. Als u op dit moment bijvoorbeeld het aantal minuten hebt ingesteld op *1*, kunt u het aantal minuten niet bijwerken naar *3*.
+De automatische schaal aanpassing van het cluster maakt op basis van het minimum-en maximum aantal ingesteld op elke knooppunt groep, maar dwingt deze niet af. Als u bijvoorbeeld een minimum aantal van 5 instelt wanneer het huidige aantal knoop punten 3 is, wordt de pool niet onmiddellijk geschaald naar 5. Als u het minimum aantal voor de knooppunt groep wijzigt naar een waarde die hoger is dan het huidige aantal knoop punten, wordt deze nieuwe limiet in acht genomen wanneer voldoende unschedulablee peulen aanwezig zijn die twee nieuwe extra knoop punten vereisen en een gebeurtenis van de automatische schaalr activeren. Als dit gebeurt, wordt de limiet voor het nieuwe minimum aantal overschreden voor de cluster-automatische schaal functie.
 
 Bewaak de prestaties van uw toepassingen en services en pas het aantal knoop punten van de cluster automatisch aan, zodat dit overeenkomt met de vereiste prestaties.
 
@@ -115,9 +115,9 @@ U kunt ook gedetailleerdere Details van de cluster automatisch schalen configure
 | omlaag schalen-omlaag-na-mislukt   | Hoe lang na uitval van de omlaag geschaalde fout dat het omlaag schalen van evaluatie versies wordt hervat                     | 3 minuten     |
 | omlaag schalen-overbodige tijdstippen         | Hoe lang een knoop punt niet nodig moet zijn voordat deze in aanmerking komt voor omlaag omlaag schalen                  | 10 minuten    |
 | omlaag schalen-niet-lees bare tijd          | Hoe lang een ongelezeny-knoop punt niet nodig moet zijn voordat het in aanmerking komt voor omlaag schalen         | 20 minuten    |
-| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0.5 |
+| schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0,5 |
 | Max-correct beëindigen-SEC     | Het maximum aantal seconden dat de automatische schaal functie van het cluster wacht op beëindiging van pod wanneer u een knoop punt omlaag wilt schalen. | 600 seconden   |
-| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | false |
+| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | onjuist |
 
 > [!IMPORTANT]
 > Het profiel van de cluster automatisch schalen is van invloed op alle knooppunt groepen die gebruikmaken van de automatische cluster schaal. U kunt geen profiel voor automatische schaal aanpassing instellen per knooppunt groep.
@@ -226,7 +226,7 @@ Er worden logboeken weer gegeven die vergelijkbaar zijn met het volgende voor be
 
 ![Log Analytics logboeken](media/autoscaler/autoscaler-logs.png)
 
-De automatische schaal functie van het cluster schrijft ook de integriteits status naar een `cluster-autoscaler-status`configmap met de naam. Als u deze logboeken wilt ophalen, `kubectl` voert u de volgende opdracht uit. Er wordt een integriteits status gerapporteerd voor elke knooppunt groep die is geconfigureerd met de cluster-automatische schaal functie.
+De automatische schaal functie van het cluster schrijft ook de integriteits status naar een configmap met de naam `cluster-autoscaler-status` . Als u deze logboeken wilt ophalen, voert u de volgende `kubectl` opdracht uit. Er wordt een integriteits status gerapporteerd voor elke knooppunt groep die is geconfigureerd met de cluster-automatische schaal functie.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml

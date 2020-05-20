@@ -8,24 +8,72 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2020
+ms.date: 05/19/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 346d5560d8388c8958e94efd4e149f54eb0235b7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991293"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681787"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft Identity Platform-video's
 
 Leer de basis beginselen van moderne verificatie, het micro soft-identiteits platform en de micro soft-verificatie bibliotheken (MSAL).
 
+## <a name="microsoft-identity-platform-for-developers"></a>Micro soft-identiteits platform voor ontwikkel aars
+
+De *identiteit van ontwikkel aars* Video Series is gericht op precies wat u moet weten om aan de slag te gaan met het toevoegen van identiteits ondersteuning aan uw toepassing. Dit is afgestemd op snelle levering van de fundamentele aspecten van het platform en het gebruik van de bijbehorende verificatie bibliotheken. Dit is een goede plaats om te beginnen voor ontwikkel aars.
+___
+
+:::row:::
+    :::column:::
+        1-overzicht van het micro soft-identiteits platform voor ontwikkel aars (33:55)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+    :::column-end:::
+     :::column:::
+        2-gebruikers van uw apps verifiëren met het micro soft Identity platform (29:09)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3-micro soft-identiteits platform machtigingen en toestemmings raamwerk (45:08)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
+    :::column-end:::
+    :::column:::
+        4-Api's beveiligen met het micro soft-identiteits platform (33:17)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5-toepassings rollen en beveiligings groepen op het micro soft Identity platform (15:52)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+    :::column-end:::
+    :::column:::
+        <!-- BLANK TITLE CELL -->
+    :::column-end:::
+    :::column:::
+        <!-- BLANK VIDEO CELL -->
+    :::column-end:::
+:::row-end:::
+
 ## <a name="authentication-fundamentals"></a>Basis principes van verificatie
 
-Als u geen ervaring hebt met concepten als id-providers, beveiligings tokens, claims en doel groep, is deze video serie een goede plaats om te starten.
+Als u geen ervaring hebt met concepten als id-providers, beveiligings tokens, claims en doel groep, kunt u met deze video serie de concepten en onderdelen in moderne verificatie opschonen.
 ___
 
 :::row:::

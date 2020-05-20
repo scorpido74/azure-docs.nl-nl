@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679652"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Gelijkenis en score in azure Cognitive Search
 
@@ -25,7 +25,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
 Zoek Score waarden kunnen worden herhaald in een resultatenset. Wanneer meerdere treffers dezelfde Zoek score hebben, wordt de volg orde van dezelfde gescoorde items niet gedefinieerd en is deze niet stabiel. Voer de query opnieuw uit en u kunt de positie van items verschuiving zien, met name als u de gratis service of een factureer bare service met meerdere replica's gebruikt. Als er twee items met een identieke Score worden opgegeven, is er geen garantie dat er eerst een wordt weer gegeven.
 
-Als u het koppelen tussen herhaalde scores wilt verstoren, kunt u een **$OrderBy** -component toevoegen aan de eerste order by-Score en vervolgens sorteren op een `$orderby=search.score() desc,Rating desc`ander sorteerbaar veld (bijvoorbeeld). Zie [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby)voor meer informatie.
+Als u het koppelen tussen herhaalde scores wilt verstoren, kunt u een **$OrderBy** -component toevoegen aan de eerste order by-Score en vervolgens sorteren op een ander sorteerbaar veld (bijvoorbeeld `$orderby=search.score() desc,Rating desc` ). Zie [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby)voor meer informatie.
 
 > [!NOTE]
 > Een `@search.score = 1.00` geeft een niet-gescoorde of niet-geclassificeerde resultatenset aan. De score is gelijkmatig verdeeld over alle resultaten. Niet-gescoorde resultaten treden op wanneer het query formulier fuzzy zoeken, joker tekens of regex-query's of een **$filter** expressie is. 
@@ -36,7 +36,9 @@ U kunt de manier aanpassen waarop verschillende velden worden gerangschikt door 
 
 Een score profiel maakt deel uit van de definitie van de index, die bestaat uit gewogen velden, functies en para meters. Zie [Score profielen](index-add-scoring-profiles.md)voor meer informatie over het definiëren van een.
 
-## <a name="scoring-statistics"></a>Score statistieken
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Score statistieken en plak sessies (preview-versie)
 
 Voor schaal baarheid distribueert Azure Cognitive Search elke index horizon taal via een sharding-proces, wat betekent dat delen van een index fysiek gescheiden zijn.
 
@@ -45,13 +47,21 @@ De Score van een document wordt standaard berekend op basis van de statistische 
 Als u de score wilt berekenen op basis van de statistische eigenschappen van alle Shards, kunt u dit doen door *scoringStatistics = Global* toe te voegen als een [query parameter](https://docs.microsoft.com/rest/api/searchservice/search-documents) (of door *' scoringStatistics ': ' Global '* toe te voegen als een hoofd parameter van de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+Als u scoringStatistics gebruikt, zorgt u ervoor dat alle Shards in dezelfde replica dezelfde resultaten hebben. Dat wil zeggen dat verschillende replica's enigszins verschillen van elkaar, aangezien ze altijd worden bijgewerkt met de laatste wijzigingen in uw index. In sommige scenario's wilt u mogelijk dat uw gebruikers tijdens een query sessie meer consistente resultaten krijgen. In dergelijke scenario's kunt u een `sessionId` als onderdeel van uw query's opgeven. De `sessionId` is een unieke teken reeks die u maakt om te verwijzen naar een unieke gebruikers sessie.
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+Zolang hetzelfde `sessionId` wordt gebruikt, wordt er een poging gedaan om op dezelfde replica te richten, waardoor de consistentie van de resultaten die uw gebruikers worden weer gegeven, wordt verhoogd. 
 
 > [!NOTE]
-> Een beheer-API-sleutel is vereist voor `scoringStatistics` de para meter.
+> Als u dezelfde `sessionId` waarden herhaaldelijk opnieuw gebruikt, kan dit de taak verdeling van de aanvragen tussen replica's beïnvloeden en de prestaties van de zoek service nadelig beïnvloeden. De waarde die wordt gebruikt als sessionId mag niet beginnen met een ' _ '-teken.
 
 ## <a name="similarity-ranking-algorithms"></a>Classificatie algoritmen voor gelijkenis
 

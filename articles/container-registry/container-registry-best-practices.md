@@ -3,12 +3,12 @@ title: Best practices voor het register
 description: Leer hoe u Azure Container Registry effectief gebruikt door deze aanbevolen procedures te volgen.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247070"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682681"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Aanbevolen procedures voor Azure Container Registry
 
@@ -33,7 +33,7 @@ Zie de driedelige zelfstudie [Geo-replicatie in Azure Container Registry](contai
 
 Dankzij het gebruik van opslagplaatsnaamruimten kunt u toestaan dat een enkel register tussen meerdere groepen binnen uw organisatie kan worden gedeeld. Registers kunnen worden gedeeld tussen implementaties en teams. Azure Container Registry biedt ondersteuning voor geneste naamruimten, waardoor met geïsoleerde groepen kan worden gewerkt.
 
-Neem bijvoorbeeld de volgende container installatiekopielabels in overweging. Installatie kopieën die voor het hele bedrijf worden gebruikt `aspnetcore`, worden in de hoofd naam ruimte geplaatst, terwijl container installatie kopieën die eigendom zijn van de producten en marketing groepen elk hun eigen naam ruimten gebruiken.
+Neem bijvoorbeeld de volgende container installatiekopielabels in overweging. Installatie kopieën die voor het hele bedrijf worden gebruikt, `aspnetcore` worden in de hoofd naam ruimte geplaatst, terwijl container installatie kopieën die eigendom zijn van de producten en marketing groepen elk hun eigen naam ruimten gebruiken.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -53,13 +53,13 @@ Voor de verificatie van een Azure-containerregister bestaan er twee primaire sce
 | Type | Voorbeeldscenario | Aanbevolen methode |
 |---|---|---|
 | Afzonderlijke identiteit | Een ontwikkelaar die installatiekopieën binnenhaalt op of pusht vanaf zijn ontwikkelcomputer. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
-| Headless/service-identiteit | Bouw en implementeer pijplijnen waarbij de gebruiker niet direct is betrokken. | [Service-Principal](container-registry-authentication.md#service-principal) |
+| Headless/service-identiteit | Bouw en implementeer pijplijnen waarbij de gebruiker niet direct is betrokken. | [Service-principal](container-registry-authentication.md#service-principal) |
 
 Zie [Verifiëren met een Azure containerregister](container-registry-authentication.md) voor gedetailleerde informatie over verificatie met Azure Container Registry.
 
 ## <a name="manage-registry-size"></a>Registergrootte beheren
 
-De opslagbeperkingen van elke [containerregister-SKU][container-registry-skus] zijn bedoeld om te worden uitgelijnd met een typisch scenario: **Basic** om te beginnen, **Standard ** voor het merendeel van de productietoepassingen en **Premium** voor hyperschaalprestaties en [geo-replicatie][container-registry-geo-replication]. Tijdens de levensduur van het register moet u de grootte ervan beheren door regelmatig ongebruikte inhoud te verwijderen.
+De opslag beperkingen van elke [container Registry-servicelaag][container-registry-skus] zijn bedoeld om te worden uitgelijnd met een typisch scenario: **Basic** om aan de slag te gaan, **standaard** voor het meren deel van de productie toepassingen en **Premium** voor de prestaties van de Hyper-Scale [-en geo-replicatie][container-registry-geo-replication]. Tijdens de levensduur van het register moet u de grootte ervan beheren door regelmatig ongebruikte inhoud te verwijderen.
 
 Gebruik de Azure CLI [-opdracht AZ ACR show-Usage][az-acr-show-usage] om de huidige grootte van het REGI ster weer te geven:
 
@@ -86,7 +86,7 @@ Zie [container installatie kopieën in azure container Registry verwijderen](con
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Azure Container Registry is beschikbaar in verschillende categorieën, ook wel SKU's genoemd, die elk verschillende mogelijkheden bieden. Zie [Azure Container Registry-SKU's](container-registry-skus.md) voor meer informatie over de beschikbare SKU's.
+Azure Container Registry is beschikbaar in verschillende lagen (ook wel Sku's genoemd) die elk verschillende mogelijkheden bieden. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de beschik bare service lagen.
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

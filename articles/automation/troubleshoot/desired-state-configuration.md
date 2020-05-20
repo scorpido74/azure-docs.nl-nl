@@ -1,6 +1,6 @@
 ---
-title: Problemen met de configuratie van Azure Automation status oplossen
-description: Dit artikel bevat informatie over het oplossen van problemen met de configuratie van Azure Automation status.
+title: Configuratie problemen met Azure Automation status oplossen
+description: In dit artikel leest u hoe u problemen met de configuratie van Azure Automationes oplost en oplost.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995310"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681374"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Configuratie problemen met Azure Automation status oplossen
 
-Dit artikel bevat informatie over het oplossen van problemen die zich voordoen tijdens het compileren of implementeren van configuraties in Azure Automation status configuratie.
+Dit artikel bevat informatie over het oplossen van problemen die zich voordoen tijdens het compileren of implementeren van configuraties in Azure Automation status configuratie. Zie [Azure Automation status configuratie Overview](../automation-dsc-overview.md)(Engelstalig) voor algemene informatie over de status configuratie functie.
 
 ## <a name="diagnose-an-issue"></a>Een probleem vaststellen
 
@@ -66,7 +66,7 @@ Deze fout is een tijdelijk probleem dat is gepland om te worden opgelost.
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik de [Remove-AzAutomationDscConfiguration] (https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 cmdlet om de configuratie te verwijderen.
+Gebruik de [Remove-AzAutomationDscConfiguration] ( https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 cmdlet om de configuratie te verwijderen.
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Scenario: de DSC-agent kan niet worden geregistreerd
 
@@ -119,13 +119,13 @@ Voer de volgende stappen uit om het mislukte DSC-knoop punt opnieuw te registrer
 
 #### <a name="step-1-unregister-the-node"></a>Stap 1: de registratie van het knoop punt ongedaan maken
 
-1. Ga in het Azure Portal naar de **Start** > **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**.
+1. Ga in het Azure Portal naar de **Start**  >  **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**.
 1. Selecteer **knoop punten**en selecteer het knoop punt dat problemen ondervindt.
 1. Selecteer **registratie ongedaan** maken om de registratie van het knoop punt ongedaan te maken.
 
 #### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>Stap 2: de DSC-uitbrei ding verwijderen uit het knoop punt
 
-1. Ga in het Azure Portal naar de **Home** > **virtuele machine** van de thuis computer > (knoop punt mislukt) >- **extensies**.
+1. Ga in het Azure Portal naar de **Home**  >  **virtuele machine** van de thuis computer > (knoop punt mislukt) >- **extensies**.
 1. Selecteer **micro soft. Power shell. DSC**, de Power shell DSC-uitbrei ding.
 1. Selecteer **verwijderen** om de extensie te verwijderen.
 
@@ -151,7 +151,7 @@ If (($certs.Count) -gt 0)
 
 #### <a name="step-4-reregister-the-failing-node"></a>Stap 4: de registratie van het knoop punt mislukt
 
-1. Ga in het Azure Portal naar de **Start** > **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**.
+1. Ga in het Azure Portal naar de **Start**  >  **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**.
 1. **Knoop punten**selecteren.
 1. Selecteer **Toevoegen**.
 1. Selecteer het knoop punt dat niet werkt.
@@ -176,7 +176,7 @@ Deze fout treedt doorgaans op wanneer het knoop punt is toegewezen aan een confi
 * Zorg ervoor dat u het knoop punt toewijst met de naam van de knooppunt configuratie en niet de configuratie naam.
 * U kunt een knooppunt configuratie toewijzen aan een knoop punt met behulp van de Azure Portal of met een Power shell-cmdlet.
 
-  * Ga in het Azure Portal naar de **Start** > **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**. Selecteer vervolgens een knoop punt en selecteer **knooppunt configuratie toewijzen**.
+  * Ga in het Azure Portal naar de **Start**  >  **Automation-accounts** > (uw Automation-account) > **State Configuration (DSC)**. Selecteer vervolgens een knoop punt en selecteer **knooppunt configuratie toewijzen**.
   * Gebruik de cmdlet [set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) .
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Scenario: er zijn geen knooppunt configuraties (MOF-bestanden) geproduceerd tijdens het compileren van een configuratie
@@ -191,7 +191,7 @@ Compilation completed successfully, but no node configuration **.mof** files wer
 
 ### <a name="cause"></a>Oorzaak
 
-Wanneer de expressie die volgt `Node` op het sleutel woord in de DSC- `$null`configuratie, wordt geëvalueerd naar, worden er geen knooppunt configuraties geproduceerd.
+Wanneer de expressie die volgt op het `Node` sleutel woord in de DSC `$null` -Configuratie, wordt geëvalueerd naar, worden er geen knooppunt configuraties geproduceerd.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -230,11 +230,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 ### <a name="cause"></a>Oorzaak
 
-U hebt een referentie in een configuratie gebruikt, maar u beschikt `ConfigurationData` niet over `PSDscAllowPlainTextPassword` de juiste waarde voor elke knooppunt configuratie.
+U hebt een referentie in een configuratie gebruikt, maar u beschikt niet over de juiste `ConfigurationData` `PSDscAllowPlainTextPassword` waarde voor elke knooppunt configuratie.
 
 ### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat de juiste `ConfigurationData` waarde wordt ingesteld `PSDscAllowPlainTextPassword` op True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [DSC-configuraties compileren in de configuratie van de Azure Automation-status](../automation-dsc-compile.md).
+Zorg ervoor dat de juiste waarde wordt `ConfigurationData` ingesteld op `PSDscAllowPlainTextPassword` True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [DSC-configuraties compileren in de configuratie van de Azure Automation-status](../automation-dsc-compile.md).
 
 ## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scenario: ' fout bij het verwerken van de uitbrei ding ' bij het inschakelen van een machine vanuit een DSC-uitbrei ding
 
@@ -292,7 +292,7 @@ Dit bericht wordt weer gegeven wanneer er een probleem is met de verbinding tuss
 
 ### <a name="resolution"></a>Oplossing
 
-Bepaal of het knoop punt zich in een virtueel particulier netwerk (VPN) bevindt of dat er andere problemen zijn die verbinding maken met Azure. Raadpleeg [problemen oplossen bij het onboarden van oplossingen](onboarding.md).
+Bepaal of het knoop punt zich in een virtueel particulier netwerk (VPN) bevindt of dat er andere problemen zijn die verbinding maken met Azure. Zie problemen [met de implementatie van onderdelen oplossen](onboarding.md).
 
 ## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>Scenario: fout met een algemene fout bij het Toep assen van een configuratie in Linux
 
@@ -306,7 +306,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="cause"></a>Oorzaak
 
-Als de locatie van de **map/tmp** is `noexec`ingesteld op, kan de huidige versie van DSC geen configuraties Toep assen.
+Als de locatie van de **map/tmp** is ingesteld op `noexec` , kan de huidige versie van DSC geen configuraties Toep assen.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -330,7 +330,7 @@ De beste oplossing is lokaal of in een CI/CD-pijp lijn te compileren en de knoop
 
 #### <a name="issue"></a>Probleem
 
-Er wordt een `GatewayTimeout` fout bericht weer gegeven wanneer u een DSC-configuratie uploadt. 
+Er wordt een fout bericht weer gegeven `GatewayTimeout` Wanneer u een DSC-configuratie uploadt. 
 
 ### <a name="cause"></a>Oorzaak
 
@@ -338,12 +338,12 @@ DSC-configuraties die lange tijd duren om te compileren, kunnen deze fout veroor
 
 ### <a name="resolution"></a>Oplossing
 
-U kunt ervoor zorgen dat uw DSC-configuraties sneller worden geparseerd door expliciet de para meter op te nemen voor de aanroepen van de `ModuleName` [import-dscresource bieden](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) .
+U kunt ervoor zorgen dat uw DSC-configuraties sneller worden geparseerd door expliciet de `ModuleName` para meter op te nemen voor de aanroepen van de [import-dscresource bieden](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121317"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681540"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -91,7 +91,6 @@ Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)v
 > * U moet een bestaande Azure Key Vault hebben die een versleutelings sleutel bevat.
 > * U moet een toegangs beleid hebben in de Azure Key Vault waarmee u de toegang tot de __Azure Cosmos DB__ toepassing __krijgt__, __verpakt__en __terugloopt__ .
 > * De Azure Key Vault moet zich in dezelfde regio bevinden waar u van plan bent de Azure Machine Learning-werk ruimte te maken.
-> * Uw abonnement moet door de __klant beheerde sleutels__ ondersteunen voor Azure Cosmos db.
 
 Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender toe te voegen__:
 
@@ -134,8 +133,6 @@ __Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sle
     ```azurecli-interactive
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
-
-__Als u door de klant beheerde sleutels wilt inschakelen voor Azure Cosmos DB__, stuurt u een e-mail naar azurecosmosdbcmk@service.microsoft.com met de id van uw Azure-abonnement. Zie door [de klant beheerde sleutels voor uw Azure Cosmos-account configureren](..//cosmos-db/how-to-setup-cmk.md)voor meer informatie.
 
 __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resource_cmk_uri` para meters (Key URI) wilt ophalen die nodig zijn voor deze sjabloon, gebruikt u de volgende stappen:
 

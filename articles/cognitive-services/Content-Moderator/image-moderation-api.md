@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404267"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684061"
 ---
 # <a name="learn-image-moderation-concepts"></a>Concepten van afbeeldings toezicht leren
 
-Gebruik Content Moderator de door de machine gesteunde afbeeldings [controle en het hulp programma voor het](Review-Tool-User-Guide/human-in-the-loop.md) inchecken van de werk nemer naar gematige installatie kopieën voor inhoud voor volwassenen en ongepaste. Afbeeldingen scannen voor tekst inhoud en deze tekst uitpakken en gezichten detecteren. U kunt afbeeldingen afstemmen op aangepaste lijsten en verdere actie ondernemen.
+Gebruik Content Moderator door de machine gestuurde afbeeldings toezicht en het [controle programma](Review-Tool-User-Guide/human-in-the-loop.md) voor gematige installatie kopieën voor inhoud voor volwassenen en ongepaste. Afbeeldingen scannen voor tekst inhoud en deze tekst uitpakken en gezichten detecteren. U kunt afbeeldingen afstemmen op aangepaste lijsten en verdere actie ondernemen.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Beoordeling voor inhoud voor volwassenen en ongepaste
 
@@ -147,4 +147,4 @@ Gebruik het [hulp programma content moderator beoordeling](Review-Tool-User-Guid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de [API-console voor Image toezicht](try-image-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de sectie afbeeldings toezicht van de Snelstartgids voor de [.NET SDK](dotnet-sdk-quickstart.md) als u bekend bent met Visual Studio en C#.
+Test de [API-console voor Image toezicht](try-image-api.md) en gebruik de rest API code voorbeelden. Zie ook [Recensies, werk stromen en taken](./review-api.md) voor meer informatie over het instellen van Human Beoordelingen.

@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419439"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680603"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory visueel bewaken
 
@@ -132,6 +132,21 @@ U kunt ook de uitvoerings geschiedenis weer geven voor een bepaalde pijplijn uit
 
 ![Geschiedenis voor een pijplijn uitvoering weer geven](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>Verbruik bewaken
+
+U kunt de resources die worden gebruikt door een pijplijn uitvoering bekijken door te klikken op het verbruiks pictogram naast de uitvoering. 
+
+![Verbruik bewaken](media/monitor-visually/monitor-consumption-1.png)
+
+Als u op het pictogram klikt, wordt een verbruiks rapport geopend met de resources die worden gebruikt door die pijplijn uitvoering. 
+
+![Verbruik bewaken](media/monitor-visually/monitor-consumption-2.png)
+
+U kunt deze waarden koppelen aan de pipeline-uitvoering van [Azure prijzen calcula. Hat. Zie [prijs](pricing-concepts.md)informatie voor meer informatie over Azure Data Factory prijzen.
+
+> [!NOTE]
+> Deze waarden die worden geretourneerd door de prijs calculator is een schatting. Dit geeft niet het exacte bedrag weer dat wordt gefactureerd door Azure Data Factory 
+
 ## <a name="gantt-views"></a>Gantt-weer gaven
 
 Gebruik Gantt-weer gaven om uw pijp lijnen en activiteiten uitvoeringen snel te visualiseren.
@@ -153,7 +168,7 @@ Selecteer het **informatie** pictogram linksonder. Selecteer vervolgens rond **l
 
 ## <a name="alerts"></a>Waarschuwingen
 
-U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer bewakings**waarschuwingen & metrische gegevens** op de pagina Data Factory controle om aan de slag te gaan. **Monitor** > 
+U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer **bewakings**  >  **waarschuwingen & metrische gegevens** op de pagina Data Factory controle om aan de slag te gaan.
 
 ![Pagina Data Factory-monitor](media/monitor-visually/alerts01.png)
 

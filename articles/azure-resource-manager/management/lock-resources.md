@@ -2,13 +2,13 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274006"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683748"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -25,17 +25,23 @@ In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrend
 
 Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar `https://management.azure.com`. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een SQL Database voor komt dat u de Data Base kunt verwijderen of wijzigen. U kunt echter wel gegevens in de database maken, bijwerken of verwijderen. Gegevenstransacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com` worden verzonden.
 
-Toep assen van **alleen-lezen** kan leiden tot onverwachte resultaten omdat sommige bewerkingen die de resource niet hoeven te wijzigen, acties vereisen die door de vergren deling worden geblokkeerd. De **alleen-lezen** vergrendeling kan worden toegepast op de resource of aan de resource groep met de resource. Enkele algemene voor beelden van bewerkingen die worden geblokkeerd door een **alleen-lezen** vergrendeling zijn:
+## <a name="considerations-before-applying-locks"></a>Overwegingen voor het Toep assen van vergren delingen
 
-* Als u een **alleen-lezen** vergrendeling op een opslag account instelt, kunnen alle gebruikers de sleutels niet weer geven. De bewerking voor het weergeven van de lijst met sleutels wordt verwerkt via een POST-aanvraag, omdat de geretourneerde sleutels beschikbaar zijn voor schrijfbewerkingen.
+Het Toep assen van vergren delingen kan leiden tot onverwachte resultaten omdat sommige bewerkingen die niet van invloed zijn op het wijzigen van de resource, acties nodig hebben die door de vergren deling worden geblokkeerd. Enkele algemene voor beelden van de bewerkingen die worden geblokkeerd door de vergren delingen zijn:
 
-* Met een **alleen-lezen** vergrendeling voor een app service resource kan Visual Studio Server Explorer bestanden voor de resource niet weer geven omdat die interactie schrijf toegang vereist.
+* Met een alleen-lezen vergrendeling op een **opslag account** kunnen alle gebruikers de sleutels niet weer geven. De bewerking voor het weergeven van de lijst met sleutels wordt verwerkt via een POST-aanvraag, omdat de geretourneerde sleutels beschikbaar zijn voor schrijfbewerkingen.
 
-* Een **alleen-lezen** vergrendeling voor een resource groep die een virtuele machine bevat, voor komt dat alle gebruikers de virtuele machine starten of opnieuw starten. Deze bewerkingen vereisen een POST-aanvraag.
+* Met een alleen-lezen vergrendeling voor een **app service** resource kan Visual Studio Server Explorer bestanden voor de resource niet weer geven omdat die interactie schrijf toegang vereist.
+
+* Een alleen-lezen vergrendeling voor een **resource groep** die een **virtuele machine** bevat, voor komt dat alle gebruikers de virtuele machine starten of opnieuw starten. Deze bewerkingen vereisen een POST-aanvraag.
+
+* Een alleen-lezen vergrendeling voor een **abonnement** voor komt dat **Azure Advisor** goed werkt. Advisor kan de resultaten van de query's niet opslaan.
+
+* Het is niet mogelijk om de vergren deling van de **resource groep** die is gemaakt door de **Azure backup-service** te verwijderen, waardoor back-ups mislukken. De service ondersteunt Maxi maal 18 herstel punten. Wanneer deze is vergrendeld, kan de back-upservice geen herstel punten opschonen. Zie [Veelgestelde vragen-back-ups maken van Azure vm's](../../backup/backup-azure-vm-backup-faq.md)voor meer informatie.
 
 ## <a name="who-can-create-or-delete-locks"></a>Wie kan vergren delingen maken of verwijderen?
 
-Als u beheer vergrendelingen wilt maken of verwijderen, moet u `Microsoft.Authorization/*` toegang `Microsoft.Authorization/locks/*` tot of acties hebben. Van de ingebouwde rollen worden deze acties alleen toegekend aan **Eigenaar** en **Administrator voor gebruikerstoegang**.
+Als u beheer vergrendelingen wilt maken of verwijderen, moet u toegang tot `Microsoft.Authorization/*` of `Microsoft.Authorization/locks/*` acties hebben. Van de ingebouwde rollen worden deze acties alleen toegekend aan **Eigenaar** en **Administrator voor gebruikerstoegang**.
 
 ## <a name="managed-applications-and-locks"></a>Beheerde toepassingen en vergren delingen
 
@@ -56,10 +62,6 @@ U ziet dat de service een koppeling voor een **beheerde resource groep**bevat. D
 Als u alles wilt verwijderen voor de service, inclusief de resource groep vergrendelde infra structuur, selecteert u **verwijderen** voor de service.
 
 ![Service verwijderen](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Back-ups en vergren delingen van Azure
-
-Als u de resource groep die is gemaakt met Azure Backup-Service vergrendelt, mislukken de back-ups. De service ondersteunt Maxi maal 18 herstel punten. Met een **CanNotDelete** -vergren deling kan de back-upservice geen herstel punten opschonen. Zie [Veelgestelde vragen-back-ups maken van Azure vm's](../../backup/backup-azure-vm-backup-faq.md)voor meer informatie.
 
 ## <a name="portal"></a>Portal
 

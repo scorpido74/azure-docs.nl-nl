@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253765"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681745"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -149,9 +149,9 @@ Welke machtigingen u nodig hebt, is afhankelijk van de optionele functies die u 
 | Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
 | Wachtwoord terugschrijven |Schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
 | Apparaat terugschrijven |Machtigingen die worden verleend met een Power shell-script, zoals beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
-| Groep terugschrijven |Hiermee kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.  Zie voor meer informatie [groep terugschrijven](how-to-connect-preview.md#group-writeback).|
+| Groep terugschrijven |Hiermee kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.|
 
-## <a name="upgrade"></a>Upgraden
+## <a name="upgrade"></a>Upgrade
 Wanneer u een upgrade uitvoert van de ene versie van Azure AD Connect naar een nieuwe versie, hebt u de volgende machtigingen nodig:
 
 >[!IMPORTANT]
@@ -266,7 +266,7 @@ Als u de documentatie over het integreren van [uw on-premises identiteiten met A
 |Installeren met de snelle instellingen | [Snelle installatie van Azure AD Connect](how-to-connect-install-express.md)|
 |Installeren met behulp van aangepaste instellingen | [Aangepaste installatie van Azure AD Connect](./how-to-connect-install-custom.md)|
 |Upgrade van DirSync | [Upgrade van Azure AD-synchronisatiehulpprogramma (DirSync) (Engelstalig artikel)](how-to-dirsync-upgrade-get-started.md)|
-|Na installatie | [Controleer de installatie en wijs licenties toe](how-to-connect-post-installation.md)|
+|Na de installatie | [Controleer de installatie en wijs licenties toe](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

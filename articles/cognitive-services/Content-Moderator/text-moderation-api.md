@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274007"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685064"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
-Content Moderator gebruik de door de machine gesteunde tekst toezicht en de functies voor [menselijke beoordeling](Review-Tool-User-Guide/human-in-the-loop.md) voor gematigde tekst inhoud.
+Gebruik de tekst toezicht modellen van Content Moderator om tekst inhoud te analyseren.
 
-U kunt de inhoud blokkeren, goedkeuren of controleren op basis van uw beleid en drempelwaarden. Gebruik it om de menselijke toezicht te verbeteren van omgevingen waar partners, werk nemers en consumenten tekst inhoud genereren. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten. 
+U kunt de inhoud blok keren, goed keuren of controleren op basis van uw beleid en drempel waarden (Zie [Recensies, werk stromen en taken](./review-api.md) voor meer informatie over het instellen van Human beoordelingen). Gebruik de tekst toezicht modellen voor het uitbreiden van de menselijke toezicht op omgevingen waar partners, werk nemers en consumenten tekst inhoud genereren. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten. 
 
 Het antwoord van de service bevat de volgende informatie:
 
@@ -34,7 +34,7 @@ Het antwoord van de service bevat de volgende informatie:
 
 ## <a name="profanity"></a>Grof taalgebruik
 
-Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie (`Index`) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
+Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie ( `Index` ) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
     "Terms": [
     {
@@ -155,4 +155,4 @@ De Content Moderator biedt een [term List-API](https://westus.dev.cognitive.micr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de [API-console tekst toezicht](try-text-api.md) en gebruik de rest API code voorbeelden. Kijk ook naar het gedeelte tekst toezicht van de [.NET SDK Quick](dotnet-sdk-quickstart.md) start als u bekend bent met Visual Studio en C#.
+Test de Api's met de [tekst toezicht API-console](try-text-api.md). Zie ook [Recensies, werk stromen en taken](./review-api.md) voor meer informatie over het instellen van Human Beoordelingen.

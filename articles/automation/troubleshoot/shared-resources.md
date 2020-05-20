@@ -1,6 +1,6 @@
 ---
-title: Problemen met gedeelde resources in Azure Automation oplossen
-description: Meer informatie over het oplossen van problemen met Azure Automation gedeelde bronnen.
+title: Problemen met Azure Automation gedeelde bronnen oplossen
+description: In dit artikel leest u hoe u problemen met Azure Automation gedeelde bronnen kunt oplossen en oplossen.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864195"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680884"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Problemen met gedeelde resources in Azure Automation oplossen
+# <a name="troubleshoot-shared-resource-issues"></a>Problemen met gedeelde bronnen oplossen
 
-In dit artikel worden oplossingen beschreven voor problemen die u mogelijk hebt wanneer u [gedeelde bronnen](../automation-intro.md#shared-resources) gebruikt in azure Automation.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. U kunt de AzureRM-module op dit moment nog steeds gebruiken. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
+In dit artikel worden problemen beschreven die zich kunnen voordoen wanneer u [gedeelde bronnen](../automation-intro.md#shared-resources) gebruikt in azure Automation.
 
 ## <a name="modules"></a>Modules
 
@@ -98,9 +95,9 @@ Voor dit runbook is de standaard instelling om te bepalen hoeveel modules tegeli
 Het is niet gebruikelijk dat alle AzureRM-of AZ-modules zijn vereist in hetzelfde Automation-account. Importeer alleen de specifieke modules die u nodig hebt.
 
 > [!NOTE]
-> Vermijd het importeren van `Az.Automation` het `AzureRM.Automation` hele of-module, waardoor alle opgenomen modules worden geïmporteerd.
+> Vermijd het importeren van het hele `Az.Automation` of `AzureRM.Automation` -module, waardoor alle opgenomen modules worden geïmporteerd.
 
-Als het update proces wordt onderbroken, voegt u `SimultaneousModuleImportJobCount` de para meter toe aan het script **Update-AzureModules. ps1** en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
+Als het update proces wordt onderbroken, voegt `SimultaneousModuleImportJobCount` u de para meter toe aan het script **Update-AzureModules. ps1** en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
 
  ```powershell
          $Body = @"
@@ -170,6 +167,6 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 Als u het probleem niet kunt oplossen met dit artikel, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Verbinding maken [@AzureSupport](https://twitter.com/azuresupport)met. Dit is het officiële Microsoft Azure account voor het verbinden van de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Verbinding maken met [@AzureSupport](https://twitter.com/azuresupport) . Dit is het officiële Microsoft Azure account voor het verbinden van de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.
 

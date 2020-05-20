@@ -8,14 +8,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 8be5dac2d1d5e8a5a3ceafff6b51b2d89e03993f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593275"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685295"
 ---
 # <a name="add-entities-to-extract-data"></a>Entiteiten toevoegen om gegevens op te halen
 
@@ -25,24 +25,28 @@ De entiteit vertegenwoordigt een woord of woord groep in de utterance die u wilt
 
 ## <a name="plan-entities-then-create-and-label"></a>Entiteiten plannen, vervolgens maken en labelen
 
-Door machines geleerde entiteiten kunnen worden gemaakt op basis van het voor beeld uitingen of gemaakt op basis van de pagina **entiteiten** .
+machine learning-entiteiten kunnen worden gemaakt op basis van de voorbeeld uitingen of worden gemaakt op basis van de pagina **entiteiten** .
 
-Over het algemeen is een best practice tijd om de entiteiten te plannen voordat een door de machine geleerde entiteit in de portal wordt gemaakt. Maak vervolgens de door de machine geleerde entiteit uit het voor beeld utterance met zoveel details in de subentiteiten en functies die u op dat moment kent. Met de [zelf studie voor het samen stellen](tutorial-machine-learned-entity.md) van de entiteit wordt gedemonstreerd hoe u deze methode gebruikt.
+Over het algemeen is een best practice tijd om de entiteiten te plannen voordat een machine learning-entiteit wordt gemaakt in de portal. Maak vervolgens de machine learning-entiteit uit het voor beeld utterance met zoveel details in de subentiteiten en functies die u op dat moment kent. Met de [zelf studie voor het samen stellen](tutorial-machine-learned-entity.md) van de entiteit wordt gedemonstreerd hoe u deze methode gebruikt.
 
 Als onderdeel van het plannen van de entiteiten weet u misschien dat u tekst-overeenkomende entiteiten (zoals vooraf gemaakte entiteiten, reguliere expressie-entiteiten of lijst entiteiten) nodig hebt. U kunt deze maken op de pagina **entiteiten** voordat ze worden gelabeld in voor beeld uitingen.
 
-Wanneer u labels aanmaakt, kunt u afzonderlijke entiteiten labelen en vervolgens een entiteit maken die door een bovenliggende machine is geleerd. U kunt ook beginnen met een entiteit die door een bovenliggende machine is geleerd en de onderliggende entiteiten afbreken.
+Wanneer u labels aanmaakt, kunt u afzonderlijke entiteiten labelen en vervolgens een bovenliggende entiteit voor machine learning bouwen. U kunt ook beginnen met een bovenliggende machine learning-entiteit en de onderliggende entiteiten afbreken.
 
 > [!TIP]
 >Voorzie alle woorden die een entiteit kunnen aanduiden, zelfs als de woorden niet worden gebruikt als ze worden geëxtraheerd in de client toepassing.
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Een entiteit maken voor of met een label
+## <a name="when-to-create-an-entity"></a>Wanneer u een entiteit maakt
 
-Gebruik de volgende tabel om te begrijpen welke entiteiten voor het maken of toevoegen van elke entiteit aan de app.
+Nadat u uw entiteiten hebt gepland, moet u uw machine learning-entiteiten en-subentiteiten maken. Hiervoor moet u mogelijk vooraf gemaakte entiteiten of tekst vergelijkings entiteiten toevoegen om functies te bieden voor uw machine learning-entiteiten. Deze moeten allemaal worden uitgevoerd voordat labels kunnen worden gelabeld.
+
+Zodra u begint met het labelen van voor beeld uitingen, kunt u door de machine geleerde entiteiten maken of lijst entiteiten uitbreiden.
+
+Gebruik de volgende tabel om te begrijpen waar u elk type entiteit kunt maken of toevoegen aan de app.
 
 |Entiteitstype|Locatie voor het maken van een entiteit in de LUIS-Portal|
 |--|--|
-|Entiteit op basis van machine learning|Details van entiteiten of intentie|
+|machine learning-entiteit|Details van entiteiten of intentie|
 |Lijstentiteit|Details van entiteiten of intentie|
 |Een entiteit in de vorm van een reguliere expressie|Entiteiten|
 |Pattern.any-entiteit|Entiteiten|
@@ -51,27 +55,11 @@ Gebruik de volgende tabel om te begrijpen welke entiteiten voor het maken of toe
 
 U kunt alle entiteiten maken op de pagina **entiteiten** , maar u kunt ook een aantal entiteiten maken als onderdeel van het labelen van de entiteit in het voor beeld utterance op de detail pagina van het **doel** . U kunt een entiteit alleen _labelen_ in een voor beeld-utterance van de detail pagina van het **doel** .
 
-## <a name="create-a-machine-learned-entity"></a>Een door een machine geleerde entiteit maken
 
-[!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Een tekst-overeenkomende entiteit maken
+## <a name="how-to-create-a-new-custom-entity"></a>Een nieuwe aangepaste entiteit maken
 
-Het gebruik van tekst-overeenkomende entiteiten biedt verschillende manieren om gegevens te extra heren:
-
-|Tekst-overeenkomende entiteiten|Doel|
-|--|--|
-|[Lijstentiteit](reference-entity-list.md)|lijst met canonieke namen en synoniemen als alternatieve formulieren|
-|Een entiteit in de vorm van een reguliere expressie|tekst overeenkomen met een reguliere expressie-entiteit|
-|[Vooraf gebouwde entiteit](luis-reference-prebuilt-entities.md)|overeenkomende gegevens typen zoals nummer, e-mail adres, datum|
-|Vooraf ontwikkelde domein entiteit|overeenkomst met geselecteerde onderwerps domeinen|
-|[Patroon. alle](reference-entity-pattern-any.md)| entiteiten afstemmen die gemakkelijk kunnen worden verward met de omringende tekst|
-
-Preconstrueerde entiteiten werken zonder aangepaste trainings gegevens. De andere entiteiten moeten gegevens over de training van de klant (zoals items van de lijst entiteit) of een expressie (zoals een reguliere expressie of patroon) opgeven.
-
-<a name="add-list-entities"></a>
-
-### <a name="how-to-create-a-new-custom-entity"></a>Een nieuwe aangepaste entiteit maken
+Dit proces werkt voor door machines gewerkte entiteiten, lijst entiteiten en reguliere expressie-entiteiten.
 
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
@@ -79,7 +67,50 @@ Preconstrueerde entiteiten werken zonder aangepaste trainings gegevens. De ander
 1. Selecteer **+ maken**en selecteer vervolgens het entiteits type.
 1. Ga verder met het configureren van de entiteit en selecteer **maken** wanneer u klaar bent.
 
-### <a name="add-list-entities-for-exact-matches"></a>Lijst entiteiten toevoegen voor exacte overeenkomsten
+## <a name="create-a-machine-learned-entity"></a>Een door een machine geleerde entiteit maken
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
+1. Voer in het dialoog venster **een entiteits type maken** de naam van de entiteit in en selecteer door de **machine geleerd**. Als u subentiteiten wilt toevoegen, selecteert u **structuur toevoegen**. Selecteer **Maken**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm afbeelding van het maken van een door de machine geleerde entiteit.](media/add-entities/machine-learned-entity-with-structure.png)
+
+1. Voeg een subentiteit toe door in **subentiteiten toevoegen**de **+** rij bovenliggende entiteit te selecteren.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het toevoegen van subentiteiten.](media/add-entities/machine-learned-entity-with-subentities.png)
+
+1. Selecteer **maken** om het aanmaak proces te volt ooien.
+
+## <a name="add-a-feature-to-a-machine-learned-entity"></a>Een functie toevoegen aan een door een machine geleerde entiteit
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer vervolgens de door de machine geleerde entiteit.
+1. Voeg een functie toe door de **functie + toevoegen** te selecteren in de rij entiteit of subentiteit.
+1. Selecteer in de lijsten bestaande entiteiten en zinsdelen.
+1. Als de entiteit alleen moet worden geëxtraheerd als de functie is gevonden, selecteert u het sterretje `*` voor die functie.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het toevoegen van een functie aan entiteit.](media/add-entities/machine-learned-entity-schema-with-features.png)
+
+## <a name="create-a-regular-expression-entity"></a>Een reguliere expressie-entiteit maken
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
+
+1. In het dialoog venster **een entiteits type maken** voert u de naam van de entiteit in en selecteert u **regex**, voert u de reguliere expressie in het veld **regex** in en selecteert u **maken**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm afbeelding van het maken van een reguliere expressie-entiteit.](media/add-entities/add-regular-expression-entity.png)
+
+
+<a name="add-list-entities"></a>
+
+## <a name="create-a-list-entity"></a>Een lijst entiteit maken
 
 Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden. Als de auteur de lijst kan wijzigen, kan LUIS de lijst niet verg Roten of verkleinen. U kunt ook importeren naar een bestaande lijst entiteit met behulp van een [lijst entiteit. json-indeling](reference-entity-list.md#example-json-to-import-into-list-entity).
 
@@ -88,7 +119,7 @@ In de volgende lijst ziet u de canonieke naam en de synoniemen.
 |Kleur-lijst item naam|Kleur-synoniemen|
 |--|--|
 |Rood|Crimson, bloed, Apple, brand engine|
-|Blauw|lucht, azure, kobalt|
+|Blauw|lucht, kobalt|
 |Groen|Kelly, licht groen|
 
 Gebruik de procedure om een lijst entiteit te maken. Zodra de lijst entiteit is gemaakt, hoeft u geen label voor beeld-uitingen in te richten. Lijst items en synoniemen worden vergeleken met de exacte tekst.
@@ -138,47 +169,38 @@ In deze procedure voegt `origin` `destination` u rollen toe aan een vooraf samen
     De rol wordt toegevoegd aan de vooraf samengestelde entiteit, maar wordt niet aan uitingen toegevoegd met behulp van die entiteit.
 
 ### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label tekst met een rol in een voor beeld van een utterance
+
+> [!TIP]
+> Rollen kunnen worden vervangen door het labelen met subentiteiten van een machine learning-entiteit.
+
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Ga naar de pagina Details van intentie, met bijvoorbeeld uitingen die gebruikmaken van de rol.
-1. Als u wilt labelen met de rol, selecteert u het label entiteit (effen lijn onder tekst) in het voor beeld utterance en selecteert u vervolgens **weer gave in entiteits palet** in de vervolg keuzelijst.
+1. Als u een label met de rol wilt hebben, selecteert u het label van de entiteit (effen lijn onder tekst) in het voor beeld utterance en selecteert u vervolgens **weer geven in entiteit deel venster** in de vervolg keuzelijst.
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)
+    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/add-entities/view-in-entity-pane.png)
 
     Het palet entiteit wordt geopend aan de rechter kant.
 
 1. Selecteer de entiteit, ga naar de onderkant van het palet en selecteer de rol.
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
+<a name="add-a-patternany-entity"></a>
+<a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="add-a-patternany-entity"></a>Een patroon toevoegen. elke entiteit
+## <a name="create-a-patternany-entity"></a>Een patroon maken. elke entiteit
 
-[Patroon. alle](luis-concept-entity-types.md) entiteiten zijn alleen geldig in [patronen](luis-how-to-model-intent-pattern.md), niet in de uitingen van voor beelden. Dit type entiteit helpt LUIS het einde van entiteiten met een verschillende lengte en woord keuze te vinden. Omdat deze entiteit in een patroon wordt gebruikt, weet LUIS waar het einde van de entiteit zich in de utterance-sjabloon bevindt.
+Het **patroon. elke** entiteit is alleen beschikbaar met [patronen](luis-how-to-model-intent-pattern.md).
 
-### <a name="steps-to-create-a-patternany-entity"></a>Stappen voor het maken van een patroon. elke entiteit
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
-1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
-1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
-
-1. Voer in het dialoog venster **een entiteits type kiezen** de naam van de entiteit in het vak **naam** in en selecteer vervolgens **patroon. elk** **type** en selecteer vervolgens **maken**.
-
-    Wanneer u [een patroon utterance maakt](luis-how-to-model-intent-pattern.md) met behulp van deze entiteit, wordt de entiteit geëxtraheerd met een gecombineerd door de machine geleerd en tekst-overeenkomend algoritme.
-
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Maak een patroon sjabloon utterance om gebruik te maken van een patroon. elke entiteit
-
-Als u het patroon wilt gebruiken. een wille keurige entiteit, een patroon toevoegen op de pagina **patronen** , in de sectie de prestaties van de **app verbeteren** , met de juiste accolade syntaxis, zoals `Where is **{HumanResourcesFormTitle}** on the server?` .
-
-Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](reference-pattern-syntax.md#explicit-lists) om dit probleem te verhelpen.
 
 ## <a name="do-not-change-entity-type"></a>Entiteits type niet wijzigen
 
 LUIS staat niet toe dat u het type van de entiteit wijzigt omdat deze niet weet wat moet worden toegevoegd of verwijderd om die entiteit te bouwen. Als u het type wilt wijzigen, is het beter om een nieuwe entiteit van het juiste type te maken met een iets andere naam. Nadat de entiteit is gemaakt, verwijdert u in elke utterance de oude naam van de entiteit met het label en voegt u de nieuwe entiteits naam toe. Als alle uitingen opnieuw zijn gelabeld, verwijdert u de oude entiteit.
 
-<a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
 

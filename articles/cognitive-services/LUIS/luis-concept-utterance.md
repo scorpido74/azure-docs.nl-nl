@@ -2,17 +2,17 @@
 title: Goed voor beeld van uitingen-LUIS
 description: Uitingen zijn invoer van de gebruiker die uw app nodig heeft voor de interpretatie. Verzamel zinsdelen die u denkt dat gebruikers worden ingevoerd. Uitingen bevatten die hetzelfde zijn, maar die anders zijn gemaakt in woord lengte en woord plaatsing.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592862"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685268"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Begrijpen wat goede uitingen zijn voor uw LUIS-app
 
-**Uitingen** zijn invoer van de gebruiker die uw app moet interpreteren. Om LUIS te trainen om de intenties en entiteiten van hen te extra heren, is het belang rijk dat u voor elke intentie een groot aantal verschillende voor beeld-uitingen vastlegt. Actief leren of het proces van het voortzetten van de nieuwe uitingen is essentieel voor door de machine geleerd intelligentie die LUIS biedt.
+**Uitingen** zijn invoer van de gebruiker die uw app moet interpreteren. Om LUIS te trainen om de intenties en entiteiten van hen te extra heren, is het belang rijk dat u voor elke intentie een groot aantal verschillende voor beeld-uitingen vastlegt. Actief leren of het proces van het voortzetten van de nieuwe uitingen is essentieel voor machine learning-informatie die LUIS biedt.
 
 Verzamel uitingen die u denkt dat gebruikers worden ingevoerd. Neem uitingen op. Dit betekent hetzelfde als op verschillende manieren:
 
@@ -84,7 +84,7 @@ Stel de versie-instellingen in via de LUIS-Portal, in de sectie **beheren** , op
 
 ### <a name="word-forms"></a>Word-formulieren
 
-Als **woord vormen** worden genormaliseerd, worden de verschillen in woorden die buiten het hoofd gebied uitvouwen, genegeerd. Bijvoorbeeld, de woorden `run` , `running` en `runs` wijzigen op basis van de werkwoordsvormen.
+Als **woord vormen** worden genormaliseerd, worden de verschillen in woorden die buiten het hoofd gebied uitvouwen, genegeerd.
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

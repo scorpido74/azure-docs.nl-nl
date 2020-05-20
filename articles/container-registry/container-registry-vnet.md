@@ -3,12 +3,12 @@ title: Toegang beperken met behulp van een service-eind punt
 description: Toegang tot een Azure container Registry beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: da5ab67d6658d8760565353e2a690c53d862d0ed
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982578"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685052"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Toegang tot een container register beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u een container register service-eind punt (
 > [!IMPORTANT]
 > Azure Container Registry biedt nu ondersteuning voor [persoonlijke Azure-koppelingen](container-registry-private-link.md), waardoor persoonlijke eind punten van een virtueel netwerk in een REGI ster kunnen worden geplaatst. Persoonlijke eind punten zijn toegankelijk vanuit het virtuele netwerk met behulp van privé-IP-adressen. U kunt het beste persoonlijke eind punten gebruiken in plaats van service-eind punten in de meeste netwerk scenario's.
 
-Het configureren van een Registry-service-eind punt is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
+Het configureren van een Registry-service-eind punt is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten van het REGI ster.
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
@@ -32,7 +32,7 @@ Het configureren van een Registry-service-eind punt is beschikbaar in de service
 
 * Als u de stappen van Azure CLI in dit artikel wilt gebruiken, is Azure CLI-versie 2.0.58 of later vereist. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
 
-* Als u nog geen container register hebt, maakt u er een (Premium SKU vereist) en pusht u een voorbeeld `hello-world` installatie kopie, zoals van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
+* Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en pusht u een voor beeld van een installatie kopie, zoals `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
 
 * Als u de toegang tot het REGI ster wilt beperken met behulp van een service-eind punt in een ander Azure-abonnement, registreert u de resource provider voor Azure Container Registry in dat abonnement. Bijvoorbeeld:
 
@@ -132,7 +132,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker haalt de installatie kopie op naar de virtuele machine.
 
-In dit voor beeld wordt gedemonstreerd dat u toegang hebt tot het persoonlijke container register via de netwerk toegangs regel. Het REGI ster kan echter niet worden geopend vanaf een aanmeldings-host waarvoor geen netwerk toegangs regel is geconfigureerd. Als u zich probeert aan te melden bij een andere `az acr login` host met `docker login` behulp van de opdracht of opdracht, is de uitvoer vergelijkbaar met het volgende:
+In dit voor beeld wordt gedemonstreerd dat u toegang hebt tot het persoonlijke container register via de netwerk toegangs regel. Het REGI ster kan echter niet worden geopend vanaf een aanmeldings-host waarvoor geen netwerk toegangs regel is geconfigureerd. Als u zich probeert aan te melden bij een andere host met behulp van de `az acr login` opdracht of `docker login` opdracht, is de uitvoer vergelijkbaar met het volgende:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden

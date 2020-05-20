@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220048"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680420"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch testen met 1000 uitingen in LUIS-Portal
 
@@ -24,7 +24,7 @@ Met batch tests wordt uw actieve getrainde versie gevalideerd om de nauw keurigh
 
 ## <a name="group-data-for-batch-test"></a>Groeps gegevens voor batch test
 
-Het is belang rijk dat uitingen dat wordt gebruikt voor het uitvoeren van batch tests, nieuw zijn in LUIS. Als u een gegevensset van uitingen hebt, moet u de uitingen in drie sets delen: voor beeld-uitingen die zijn toegevoegd aan een intentie, uitingen ontvangen van het gepubliceerde eind punt, en uitingen gebruikt voor batch test-LUIS nadat deze is getraind. 
+Het is belang rijk dat uitingen dat wordt gebruikt voor het uitvoeren van batch tests, nieuw zijn in LUIS. Als u een gegevensset van uitingen hebt, moet u de uitingen in drie sets delen: voor beeld-uitingen die zijn toegevoegd aan een intentie, uitingen ontvangen van het gepubliceerde eind punt, en uitingen gebruikt voor batch test-LUIS nadat deze is getraind.
 
 ## <a name="a-data-set-of-utterances"></a>Een gegevensset van uitingen
 
@@ -35,7 +35,7 @@ Verzend een batch-bestand van uitingen, ook wel een *gegevensset*genoemd, voor b
 |* Geen dubbele uitingen|
 |1000 uitingen of minder|
 
-* Dubbele waarden worden beschouwd als exacte teken reeks overeenkomsten, niet overeenkomt met het eerste token. 
+* Dubbele waarden worden beschouwd als exacte teken reeks overeenkomsten, niet overeenkomt met het eerste token.
 
 ## <a name="entities-allowed-in-batch-tests"></a>Entiteiten die zijn toegestaan in batch tests
 
@@ -46,7 +46,7 @@ Alle aangepaste entiteiten in het model worden weer gegeven in het filter voor b
 
 ## <a name="batch-file-format"></a>Batch-bestands indeling
 
-Het batch bestand bestaat uit uitingen. Elke utterance moet een verwachte intentie voorspelling hebben, samen met alle entiteiten die door [machines zijn geleerd](luis-concept-entity-types.md#types-of-entities) die u verwacht te detecteren. 
+Het batch bestand bestaat uit uitingen. Elke utterance moet een verwachte intentie voorspelling hebben, samen met alle [machine learning-entiteiten](luis-concept-entity-types.md#types-of-entities) die u verwacht te detecteren.
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>Sjabloon voor batch-syntaxis voor intentiesen met entiteiten
 
@@ -57,7 +57,7 @@ Gebruik de volgende sjabloon om uw batch-bestand te starten:
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ Gebruik de volgende sjabloon om uw batch-bestand te starten:
 ]
 ```
 
-Het batch-bestand maakt gebruik van de eigenschappen **startPos** en **endPos** om het begin en het einde van een entiteit te noteren. De waarden zijn op nul gebaseerd en mogen niet beginnen of eindigen op een spatie. Dit wijkt af van de query logboeken die eigenschappen start index en endIndex gebruiken. 
+Het batch-bestand maakt gebruik van de eigenschappen **startPos** en **endPos** om het begin en het einde van een entiteit te noteren. De waarden zijn op nul gebaseerd en mogen niet beginnen of eindigen op een spatie. Dit wijkt af van de query logboeken die eigenschappen start index en endIndex gebruiken.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -92,12 +92,12 @@ Gebruik de volgende sjabloon om uw batch-bestand te starten zonder entiteiten:
 ]
 ```
 
-Als u geen entiteiten wilt testen, neemt u de `entities` eigenschap op en stelt u de waarde in als een lege `[]`matrix.
+Als u geen entiteiten wilt testen, neemt u de `entities` eigenschap op en stelt u de waarde in als een lege matrix `[]` .
 
 
 ## <a name="common-errors-importing-a-batch"></a>Veelvoorkomende fouten bij het importeren van een batch
 
-Veelvoorkomende fouten zijn onder andere: 
+Veelvoorkomende fouten zijn onder andere:
 
 > * Meer dan 1.000 uitingen
 > * Een utterance JSON-object dat geen eigenschap entities heeft. De eigenschap kan een lege matrix zijn.
@@ -112,7 +112,7 @@ LUIS houdt de status van de laatste test van elke gegevensset bij. Dit omvat de 
 
 ## <a name="batch-test-results"></a>Resultaten batch-test
 
-Het resultaat van de batch test is een spreidings grafiek, ook wel een fout matrix genoemd. Deze grafiek is een vier richtings vergelijking van de uitingen in het batch bestand en het voor speld doel van het huidige model en de entiteiten. 
+Het resultaat van de batch test is een spreidings grafiek, ook wel een fout matrix genoemd. Deze grafiek is een vier richtings vergelijking van de uitingen in het batch bestand en het voor speld doel van het huidige model en de entiteiten.
 
 Gegevens punten in de **onjuiste, positieve** en **onjuiste negatieve** secties geven fouten aan, die moeten worden onderzocht. Als alle gegevens punten zich op de **echte positieve** en **echte negatieve** secties bevinden, is de nauw keurigheid van uw app perfect voor deze gegevens verzameling.
 
@@ -124,13 +124,13 @@ Deze grafiek helpt u uitingen te vinden die LUIS op onjuiste wijze voorspeld op 
 
 ## <a name="errors-in-the-results"></a>Fouten in de resultaten
 
-Fouten in de batch-test geven aan dat intenties niet worden voor speld zoals vermeld in het batch-bestand. Fouten worden aangegeven in de twee rode secties van de grafiek. 
+Fouten in de batch-test geven aan dat intenties niet worden voor speld zoals vermeld in het batch-bestand. Fouten worden aangegeven in de twee rode secties van de grafiek.
 
-De sectie ' fout positief ' geeft aan dat een utterance overeenkomt met een intentie of entiteit wanneer deze niet had moeten beschikken. De onjuiste waarde geeft aan dat een utterance niet overeenkomt met een intentie of entiteit wanneer deze zou moeten hebben. 
+De sectie ' fout positief ' geeft aan dat een utterance overeenkomt met een intentie of entiteit wanneer deze niet had moeten beschikken. De onjuiste waarde geeft aan dat een utterance niet overeenkomt met een intentie of entiteit wanneer deze zou moeten hebben.
 
 ## <a name="fixing-batch-errors"></a>Batch fouten corrigeren
 
-Als er fouten zijn opgetreden tijdens het testen van de batch, kunt u meer uitingen toevoegen aan een intentie en/of een label meer uitingen met de entiteit om LUIS de discriminatie tussen de intenties te maken. Als u uitingen hebt toegevoegd en deze een label krijgt en nog steeds Voorspellings fouten in batch tests ontvangt, kunt u een [woordgroepen lijst](luis-concept-feature.md) functie toevoegen met een Documentspecifieke vocabulaire om Luis sneller te leren. 
+Als er fouten zijn opgetreden tijdens het testen van de batch, kunt u meer uitingen toevoegen aan een intentie en/of een label meer uitingen met de entiteit om LUIS de discriminatie tussen de intenties te maken. Als u uitingen hebt toegevoegd en deze een label krijgt en nog steeds Voorspellings fouten in batch tests ontvangt, kunt u een [woordgroepen lijst](luis-concept-feature.md) functie toevoegen met een Documentspecifieke vocabulaire om Luis sneller te leren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

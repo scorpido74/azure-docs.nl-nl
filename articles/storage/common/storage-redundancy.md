@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117713"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681348"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -138,24 +138,42 @@ U kunt een query uitvoeren op de waarde van de eigenschap **laatste synchronisat
 
 ## <a name="summary-of-redundancy-options"></a>Overzicht van redundantie opties
 
-In de volgende tabel ziet u hoe duurzaam en beschikbaar uw gegevens zich in een bepaald scenario bevinden, afhankelijk van welk type redundantie van kracht is voor uw opslag account:
+De tabellen in de volgende secties bevatten een overzicht van de redundantie opties die beschikbaar zijn voor Azure Storage
 
-| Scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+### <a name="durability-and-availability-parameters"></a>Duurzaamheid en beschikbaarheids parameters
+
+In de volgende tabel worden de belangrijkste para meters voor elke redundantie optie beschreven:
+
+| Parameter                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
-| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja                                  | Ja                                  |
-| Er treedt een storing op de hele regio op                                                                                     | Nee                              | Nee                               | Ja                                  | Ja                                  |
-| Lees toegang tot de gegevens in de secundaire regio als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
 | Percentage van de duurzaamheid van objecten in een bepaald jaar<sup>1</sup>                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
-| Ondersteunde typen opslag accounts<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
 | SLA voor Beschik baarheid voor lees aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
 | SLA voor Beschik baarheid voor schrijf aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
 
 <sup>1</sup> zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.
 
-<sup>2</sup> Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over typen opslag accounts.
+### <a name="durability-and-availability-by-outage-scenario"></a>Duurzaamheid en beschik baarheid per uitval scenario
 
-Alle gegevens voor alle typen opslag accounts worden gekopieerd op basis van de redundantie optie voor het opslag account. Objecten inclusief blok-blobs, toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden worden gekopieerd. Gegevens in alle lagen, inclusief de laag Archive, worden gekopieerd. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over blob-lagen.
+In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaar zijn in een bepaald scenario, afhankelijk van welk type redundantie van toepassing is op uw opslag account:
+
+| Storings scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                 |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Ja                                  |
+| Er treedt een storing op de hele regio op in de primaire regio                                                                                     | Nee                              | Nee                               | Ja<sup>1</sup>                                  | Ja<sup>1</sup>                                  |
+| Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
+
+<sup>1</sup> failover van het account is vereist voor het herstellen van schrijf beschikbaarheid als de primaire regio niet beschikbaar is. Zie [nood herstel en failover van het opslag account](storage-disaster-recovery-guidance.md)voor meer informatie.
+
+### <a name="supported-storage-account-types"></a>Ondersteunde typen opslag accounts
+
+In de volgende tabel ziet u welke redundantie opties worden ondersteund door elk type opslag account. Zie [overzicht van opslag accounts](storage-account-overview.md)voor informatie over typen opslag accounts.
+
+| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob-opslag blok keren<br /> Blob Storage<br /> File Storage                | Algemeen gebruik v2<br /> Blob-opslag blok keren<br /> File Storage                             | Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob Storage                     | Algemeen gebruik v2                     |
+
+Alle gegevens voor alle opslag accounts worden gekopieerd op basis van de redundantie optie voor het opslag account. Objecten inclusief blok-blobs, toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden worden gekopieerd. Gegevens in alle lagen, inclusief de laag Archive, worden gekopieerd. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over blob-lagen.
 
 Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijs informatie voor elke optie voor redundantie.
 

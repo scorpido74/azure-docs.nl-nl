@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b2871ec87e4d7f337c26b3ff3de83c1c3c88aea2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49a9355d0e5653ac453493a1808ab95136410d19
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365384"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680471"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -81,6 +81,7 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 | OLTP in het geheugen | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
 | Maximum aantal sessies | 30.000 | 30.000 |
 | [Alleen-lezen replica's](sql-database-read-scale-out.md) | 0 | 1 (inclusief prijs) |
+| Reken isolatie | GEN5<br/>-ondersteund voor 80 vCores<br/>-niet ondersteund voor andere grootten<br/><br/>Gen4 wordt niet ondersteund vanwege afschaffing|GEN5<br/>-ondersteund voor 60, 64, 80 vCores<br/>-niet ondersteund voor andere grootten<br/><br/>Gen4 wordt niet ondersteund vanwege afschaffing|
 
 > [!NOTE]
 > - De **momenteel beschik bare opslag grootte voor instanties** is het verschil tussen de gereserveerde exemplaar grootte en de gebruikte opslag ruimte.

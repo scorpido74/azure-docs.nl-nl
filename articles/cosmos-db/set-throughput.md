@@ -5,15 +5,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 910a0d9b70a63fc93aebd47896db7c3493c846b2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251971"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684029"
 ---
-# <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
+# <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
+
+Met Azure Cosmos DB kunt u een ingerichte door Voer instellen voor uw data bases en containers. Er zijn twee soorten ingerichte door Voer, standaard (hand matig) of automatisch schalen. In deze artikelen vindt u een overzicht van de werking van ingerichte door voer. 
 
 Een Azure Cosmos-data base is een beheer eenheid voor een set containers. Een data base bestaat uit een set schema-neutraal containers. Een Azure Cosmos-container is de eenheid van schaal baarheid voor zowel de door Voer als de opslag. Een container is horizon taal gepartitioneerd over een set machines binnen een Azure-regio en wordt gedistribueerd in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account.
 
@@ -24,7 +26,7 @@ Met Azure Cosmos DB kunt u de door Voer op twee nauw keurigheid inrichten:
 
 ## <a name="set-throughput-on-a-container"></a>Door Voer voor een container instellen  
 
-De door Voer die is ingericht voor een Azure Cosmos-container is exclusief gereserveerd voor die container. De container ontvangt de ingerichte door Voer altijd. De ingerichte door Voer voor een container wordt financieel ondersteund door service overeenkomsten. Zie de [door Voer inrichten op een Azure Cosmos-container](how-to-provision-container-throughput.md)voor meer informatie over het configureren van door Voer voor een container.
+De door Voer die is ingericht voor een Azure Cosmos-container is exclusief gereserveerd voor die container. De container ontvangt de ingerichte door Voer altijd. De ingerichte door Voer voor een container wordt financieel ondersteund door service overeenkomsten. Zie de [door Voer inrichten op een Azure Cosmos-container](how-to-provision-container-throughput.md)voor meer informatie over het configureren van de standaard doorvoer (hand matig) voor een container. Zie automatisch [schalen door Voer inrichten](how-to-provision-autoscale-throughput.md)voor meer informatie over het configureren van de door Voer van automatisch schalen op een container.
 
 Het instellen van een ingerichte door Voer voor een container is de meest gebruikte optie. U kunt de door Voer voor een container elastisch schalen door een wille keurige hoeveelheid door Voer in te stellen met behulp van [aanvraag eenheden (RUs)](request-units.md). 
 
@@ -40,7 +42,7 @@ In de volgende afbeelding ziet u hoe een fysieke partitie als host fungeert voor
 
 ## <a name="set-throughput-on-a-database"></a>Door Voer instellen voor een Data Base
 
-Wanneer u de door Voer inricht in een Azure Cosmos-data base, wordt de door Voer gedeeld via alle containers (shared data base-containers genoemd) in de-data base. Een uitzonde ring hierop is als u een ingerichte door Voer hebt opgegeven voor specifieke containers in de data base. Het delen van de ingerichte door Voer op database niveau tussen de containers is vergelijkbaar met het hosten van een Data Base op een cluster machines. Omdat alle containers in een Data Base de resources delen die beschikbaar zijn op een computer, kunt u natuurlijk geen voorspel bare prestaties op een specifieke container krijgen. Zie [ingerichte door Voer configureren voor een Azure Cosmos-data base](how-to-provision-database-throughput.md)voor meer informatie over het configureren van een ingerichte door Voer voor een Data Base.
+Wanneer u de door Voer inricht in een Azure Cosmos-data base, wordt de door Voer gedeeld via alle containers (shared data base-containers genoemd) in de-data base. Een uitzonde ring hierop is als u een ingerichte door Voer hebt opgegeven voor specifieke containers in de data base. Het delen van de ingerichte door Voer op database niveau tussen de containers is vergelijkbaar met het hosten van een Data Base op een cluster machines. Omdat alle containers in een Data Base de resources delen die beschikbaar zijn op een computer, kunt u natuurlijk geen voorspel bare prestaties op een specifieke container krijgen. Zie [ingerichte door Voer configureren voor een Azure Cosmos-data base](how-to-provision-database-throughput.md)voor meer informatie over het configureren van een ingerichte door Voer voor een Data Base. Zie automatisch [schalen door Voer inrichten](how-to-provision-autoscale-throughput.md)voor meer informatie over het configureren van de door Voer van automatisch schalen op een Data Base.
 
 Door de door Voer voor een Azure Cosmos-data base in te stellen, zorgt u ervoor dat u de ingerichte door Voer voor de Data Base op elk moment ontvangt. Omdat alle containers in de data base de ingerichte door voer hebben gedeeld, biedt Azure Cosmos DB geen voorspel bare doorvoer garanties voor een bepaalde container in die data base. Het gedeelte van de door voer dat een specifieke container kan ontvangen, is afhankelijk van het volgende:
 
@@ -60,7 +62,7 @@ Alle containers die in een Data Base zijn gemaakt met een ingerichte door Voer, 
 
 Als de werk belasting op een logische partitie meer gebruikt dan de door Voer die is toegewezen aan een specifieke logische partitie, zijn uw bewerkingen een beperkt aantal. Wanneer de snelheids beperking optreedt, kunt u de door Voer voor de gehele data base verg Roten of de bewerkingen opnieuw proberen. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
 
-Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Voor elke nieuwe container na de eerste vier is een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s.
+Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Bij standaard (hand matig) ingerichte door Voer is voor elke nieuwe container na de eerste vier een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s. Met de ingerichte door Voer voor automatisch schalen kunt u Maxi maal containers in een Data Base met automatisch schalen Max RU/s 4000 RU/s (schalen tussen 400-4000 RU/s).
 
 > [!NOTE]
 > In februari 2020 hebben we een wijziging geïntroduceerd waarmee u Maxi maal 25 containers in een gedeelde doorvoer database kunt hebben, waardoor het delen van de door Voer via de containers beter wordt. Na de eerste 25 containers kunt u meer containers toevoegen aan de Data Base als ze zijn [ingericht met een specifieke door Voer](#set-throughput-on-a-database-and-a-container), die los is van de gedeelde door Voer van de data base.<br>
@@ -72,9 +74,9 @@ Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een 
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Door Voer instellen voor een Data Base en een container
 
-U kunt de twee modellen combi neren. De door Voer voor de data base en de container inrichten is toegestaan. In het volgende voor beeld ziet u hoe u de door Voer inricht in een Azure Cosmos-data base en een container:
+U kunt de twee modellen combi neren. De door Voer voor de data base en de container inrichten is toegestaan. In het volgende voor beeld ziet u hoe u standaard (hand matige) ingerichte door Voer kunt inrichten voor een Azure Cosmos-data base en een container:
 
-* U kunt een Azure Cosmos-data base met de naam *Z* maken met de ingerichte door Voer van *"K"* RUs. 
+* U kunt een Azure Cosmos-data base met de naam *Z* maken met de standaard (hand matig) ingerichte door Voer van *"K"* RUs. 
 * Maak vervolgens vijf containers met de naam *A*, *B*, *C*, *D*en *E* in de-data base. Zorg ervoor dat u bij het maken van container B een **specifieke door Voer inrichten voor deze container** optie inschakelt en expliciet *' P '* RUs van ingerichte door Voer voor deze container configureert. Houd er rekening mee dat u een gedeelde en toegewezen door Voer alleen kunt configureren bij het maken van de data base en container. 
 
    ![De door Voer op container niveau instellen](./media/set-throughput/coll-level-throughput.png)
@@ -89,31 +91,32 @@ U kunt de twee modellen combi neren. De door Voer voor de data base en de contai
 
 Nadat u een Azure Cosmos-container of een-Data Base hebt gemaakt, kunt u de ingerichte door Voer bijwerken. Er is geen limiet voor de Maxi maal ingerichte door Voer die u kunt configureren voor de data base of de container. De [minimale ingerichte door Voer](concepts-limits.md#storage-and-throughput) is afhankelijk van de volgende factoren: 
 
-* De maximale gegevens grootte die u ooit opslaat in de container
+* De huidige gegevens grootte die u in de container opslaat
 * De maximale door Voer die u ooit op de container hebt ingericht
 * Het huidige aantal Azure Cosmos-containers dat u in een Data Base hebt met een gedeelde door voer. 
 
-U kunt de minimale door Voer van een container of een Data Base via een programma ophalen met behulp van de Sdk's of de waarde in de Azure Portal weer geven. Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) de ingerichte doorvoer waarde schalen. Wanneer u de Java-SDK gebruikt, kunt u met de methode [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) de ingerichte doorvoer waarde schalen. 
+U kunt de minimale door Voer van een container of een Data Base via een programma ophalen met behulp van de Sdk's of de waarde in de Azure Portal weer geven. Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) de ingerichte doorvoer waarde schalen. Wanneer u de Java-SDK gebruikt, kunt u met de methode [RequestOptions. setOfferThroughput](sql-api-java-sdk-samples.md) de ingerichte doorvoer waarde schalen. 
 
 Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) de minimale door Voer van een container of een Data Base ophalen. 
 
-U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de `DocumentClient.ReadOfferAsync` -methode.
+U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de- `DocumentClient.ReadOfferAsync` methode.
 
 ## <a name="comparison-of-models"></a>Vergelijking van modellen
+In deze tabel ziet u een vergelijking tussen het inrichten van de standaard doorvoer (hand matig) voor een Data Base versus een container. 
 
-|**Bepaalde**  |**Door Voer ingericht voor een Data Base**  |**Door Voer ingericht voor een container**|
-|---------|---------|---------|
-|Minimum RUs |400 (na de eerste vier containers is voor elke extra container mini maal 100 RUs per seconde vereist.) |400|
-|Mini maal RUs per container|100|400|
-|Maximum RUs|Onbeperkt, op de data base.|Onbeperkt, op de container.|
-|RUs toegewezen of beschikbaar voor een specifieke container|Geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle RUs-instellingen die in de container zijn geconfigureerd, worden uitsluitend gereserveerd voor de container.|
-|Maximale opslag voor een container|Limited.|Limited.|
-|Maximale door Voer per logische partitie van een container|10K RUs|10K RUs|
-|Maximale opslag (data + index) per logische partitie van een container|20 GB|20 GB|
+|**Parameter**  |**Standaard doorvoer (hand matig) voor een Data Base**  |**Standaard (hand matig) door Voer voor een container**|**Door Voer automatisch schalen voor een Data Base** | **Door Voer automatisch schalen op een container**|
+|---------|---------|---------|---------|---------|
+|Ingangs punt (mini maal RU/s) |400 RU/s. Na de eerste vier containers vereist elke extra container mini maal 100 RU/s</li> |400| Automatisch schalen tussen 400-4000 RU/s. Kan Maxi maal 25 containers bevatten zonder het minimum aantal RU/s per container</li> | Automatisch schalen tussen 400-4000 RU/s.|
+|Mini maal RU/s per container|100|400|--|Automatisch schalen tussen 400-4000 RU/s|
+|Maximum RUs|Onbeperkt, op de data base.|Onbeperkt, op de container.|Onbeperkt, op de data base.|Onbeperkt, op de container.
+|RUs toegewezen of beschikbaar voor een specifieke container|Geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle RUs-instellingen die in de container zijn geconfigureerd, worden uitsluitend gereserveerd voor de container.|Geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle RUs-instellingen die in de container zijn geconfigureerd, worden uitsluitend gereserveerd voor de container.|
+|Maximale opslag voor een container|Limited.|Onbeperkt|Onbeperkt|Onbeperkt|
+|Maximale door Voer per logische partitie van een container|10.000 RU/s|10.000 RU/s|10.000 RU/s|10.000 RU/s|
+|Maximale opslag (data + index) per logische partitie van een container|20 GB|20 GB|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [logische partities](partition-data.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).
-
+* Meer informatie over het [inrichten van Standard (hand matig) in een Azure Cosmos-container](how-to-provision-container-throughput.md).
+* Meer informatie over het [inrichten van een standaard doorvoer (hand matig) in een Azure Cosmos-data base](how-to-provision-database-throughput.md).
+* Meer informatie over het [inrichten van de door Voer voor automatisch schalen in een Azure Cosmos-data base of-container](how-to-provision-autoscale-throughput.md).

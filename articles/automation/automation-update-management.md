@@ -1,18 +1,18 @@
 ---
-title: Updatebeheer in Azure Automation
-description: In dit artikel wordt de functie Updatebeheer beschreven voor het beheren van updates voor uw Windows-en Linux-computers.
+title: Overzicht van Azure Automation Updatebeheer
+description: Overzicht van de functie Updatebeheer voor het beheren van updates voor uw Windows-en Linux-computers
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d3a3a19673ecb6edb82f0512f318298865c8ed24
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872163"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681287"
 ---
-# <a name="update-management-in-azure-automation"></a>Updatebeheer in Azure Automation
+# <a name="update-management-overview"></a>Overzicht van updatebeheer
 
 U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
 
@@ -153,14 +153,14 @@ Als uw Operations Manager-beheer groep is [verbonden met een log Analytics-werk 
 * Implementatie MP bijwerken
 
 > [!NOTE]
-> Als u een Operations Manager 1807-of 2019-beheer groep hebt verbonden met een Log Analytics-werk ruimte met agents die zijn geconfigureerd in de beheer groep om logboek gegevens te `IsAutoRegistrationEnabled` verzamelen, moet u de para meter overschrijven en instellen op waar in de regel **Microsoft. intelligence packs. AzureAutomation. HybridAgent. init** .
+> Als u een Operations Manager 1807-of 2019-beheer groep hebt verbonden met een Log Analytics-werk ruimte met agents die zijn geconfigureerd in de beheer groep om logboek gegevens te verzamelen, moet u de para meter overschrijven `IsAutoRegistrationEnabled` en instellen op waar in de regel **Microsoft. intelligence packs. AzureAutomation. HybridAgent. init** .
 
 Zie [Connect Operations Manager to Azure monitor logs](../azure-monitor/platform/om-agents.md)(Engelstalig) voor meer informatie over updates voor Management Packs.
 
 > [!NOTE]
 > Updatebeheer om computers met de Log Analytics agent volledig te beheren, moet u bijwerken naar de Log Analytics agent voor Windows of de Log Analytics-agent voor Linux. Zie [een Operations Manager-agent bijwerken](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen waarin Operations Manager wordt gebruikt, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 
 ### <a name="supported-sources"></a>Ondersteunde bronnen
 

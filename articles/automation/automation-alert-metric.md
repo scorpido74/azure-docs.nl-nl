@@ -1,17 +1,17 @@
 ---
 title: Azure Automation runbooks met metrische waarschuwingen bewaken
-description: Dit artikel begeleidt u bij het bewaken van Azure Automation runbooks op basis van metrische gegevens
+description: In dit artikel leest u hoe u runbooks bewaakt op basis van metrische gegevens.
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310543"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685411"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Runbooks controleren met metrische waarschuwingen
+# <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
 
 In dit artikel leert u hoe u waarschuwingen kunt maken op basis van de voltooiings status van runbooks.
 
@@ -31,7 +31,7 @@ Navigeer in het Azure Portal naar uw Automation-account. Onder **bewaking**selec
 
 2. Op de pagina **signaal logica configureren** kunt u de logica definiëren waarmee de waarschuwing wordt geactiveerd. Onder de historische grafiek ziet u twee dimensies, de naam en de **status**van het **Runbook** . Dimensies zijn verschillende eigenschappen voor een metriek die kan worden gebruikt voor het filteren van resultaten. Selecteer bij **runbooknaam**het runbook waarvoor u een melding wilt ontvangen of laat het veld leeg om op alle runbooks te waarschuwen. Selecteer voor **status**een status in de vervolg keuzelijst die u wilt controleren. De runbook-naam en status waarden die in de vervolg keuzelijst worden weer gegeven, zijn alleen voor taken die in de afgelopen week zijn uitgevoerd.
 
-   Als u een waarschuwing wilt ontvangen over een status of runbook dat niet wordt weer gegeven in de vervolg **\+** keuzelijst, klikt u op het volgende bij de dimensie. Met deze actie opent u een dialoog venster waarin u een aangepaste waarde kunt invoeren die voor die dimensie onlangs niet is verzonden. Als u een waarde opgeeft die niet bestaat voor een eigenschap, wordt uw waarschuwing niet geactiveerd.
+   Als u een waarschuwing wilt ontvangen over een status of runbook dat niet wordt weer gegeven in de vervolg keuzelijst, klikt u op het **\+** volgende bij de dimensie. Met deze actie opent u een dialoog venster waarin u een aangepaste waarde kunt invoeren die voor die dimensie onlangs niet is verzonden. Als u een waarde opgeeft die niet bestaat voor een eigenschap, wordt uw waarschuwing niet geactiveerd.
 
    > [!NOTE]
    > Als u geen naam voor de dimensie **RunbookName** toepast en er runbooks zijn die voldoen aan de status criteria, waaronder verborgen systeem runbooks, ontvangt u een waarschuwing.
@@ -67,7 +67,7 @@ Navigeer in het Azure Portal naar uw Automation-account. Onder **bewaking**selec
 > [!NOTE]
 > Wanneer u een e-mail adres aan een actie groep toevoegt, wordt een e-mail melding verzonden met de mede deling dat het adres is toegevoegd aan een actie groep.
 
-## <a name="notification"></a>Melding
+## <a name="receive-notification"></a>Melding ontvangen
 
 Wanneer aan de waarschuwings criteria wordt voldaan, voert de actie groep de gedefinieerde actie uit. In het voor beeld van dit artikel wordt een e-mail verzonden. De volgende afbeelding is een voor beeld van een e-mail bericht dat wordt weer gegeven nadat de waarschuwing is geactiveerd:
 

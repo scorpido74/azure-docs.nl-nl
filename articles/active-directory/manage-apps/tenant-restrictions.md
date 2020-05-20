@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481174"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680135"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Tenant beperkingen gebruiken om de toegang tot SaaS-Cloud toepassingen te beheren
 
@@ -30,9 +30,9 @@ De oplossing voor de Azure Active Directory (Azure AD) voor deze uitdaging is ee
 
 Met Tenant beperkingen kunnen organisaties de lijst met tenants opgeven waartoe hun gebruikers toegang mogen hebben. Azure AD verleent vervolgens alleen toegang tot deze toegestane tenants.
 
-Dit artikel richt zich op de beperkingen van de Tenant voor Office 365, maar de functie zou moeten werken met elke SaaS-Cloud-app die moderne verificatie protocollen met Azure AD gebruikt voor eenmalige aanmelding. Als u SaaS-apps gebruikt met een andere Azure AD-Tenant van de Tenant die wordt gebruikt door Office 365, moet u ervoor zorgen dat alle vereiste tenants zijn toegestaan. Zie de [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)voor meer informatie over SaaS-Cloud-apps.
+Dit artikel richt zich op de beperkingen van de Tenant voor Office 365, maar de functie zou moeten werken met elke SaaS-Cloud-app die moderne verificatie protocollen met Azure AD gebruikt voor eenmalige aanmelding. Als u SaaS-apps gebruikt met een andere Azure AD-Tenant van de Tenant die wordt gebruikt door Office 365, moet u ervoor zorgen dat alle vereiste tenants zijn toegestaan. Zie de [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)voor meer informatie over SaaS-Cloud-apps.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 De algemene oplossing bestaat uit de volgende onderdelen:
 
@@ -74,7 +74,7 @@ Plaats voor elke inkomende aanvraag voor login.microsoftonline.com, login.micros
 
 De headers moeten de volgende elementen bevatten:
 
-- Gebruik voor het *beperken van toegang tot tenants*een waarde van \<de lijst\>met toegestane tenants. Dit is een door komma's gescheiden lijst met tenants waartoe u gebruikers toegang wilt geven. Elk domein dat is geregistreerd bij een Tenant kan worden gebruikt om de Tenant in deze lijst te identificeren. Als u bijvoorbeeld toegang wilt verlenen aan de tenants van Contoso en fabrikam, ziet het naam/waarde-paar er als volgt uit: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- Gebruik voor het *beperken van toegang tot tenants*een waarde van de \< lijst met toegestane tenants \> . Dit is een door komma's gescheiden lijst met tenants waartoe u gebruikers toegang wilt geven. Elk domein dat is geregistreerd bij een Tenant kan worden gebruikt om de Tenant in deze lijst te identificeren. Als u bijvoorbeeld toegang wilt verlenen aan de tenants van Contoso en fabrikam, ziet het naam/waarde-paar er als volgt uit: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - Voor *Restrict-Access-context*gebruikt u een waarde van één map-id en declareert u welke Tenant de Tenant beperkingen instellen. Als u bijvoorbeeld Contoso wilt declareren als de Tenant die het beleid voor Tenant beperkingen instelt, ziet het naam/waarde-paar er als volgt uit: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -113,7 +113,7 @@ Net als bij andere rapporten in de Azure Portal, kunt u filters gebruiken om het
 - **Gebruiker**
 - **Toepassing**
 - **Status**
-- **Date**
+- **Vallen**
 - **Datum (UTC)** (waarbij UTC Coordinated Universal Time)
 - **MFA-authenticatie methode** (multi-factor Authentication-methode)
 - **Informatie over MFA-authenticatie** (Details voor multi-factor Authentication)
@@ -155,7 +155,7 @@ Fiddler is een gratis proxy voor webfoutopsporing die kan worden gebruikt om HTT
 
    1. In het hulp programma Fiddler Web debugger selecteert u het menu **regels** en selecteert u **regels aanpassen...** om het CustomRules-bestand te openen.
 
-   2. Voeg de volgende regels toe aan het begin van `OnBeforeRequest` de functie. Vervang \<het Tenant\> domein door een domein dat is `contoso.onmicrosoft.com`geregistreerd bij uw Tenant (bijvoorbeeld). Vervang \<de Directory\> -id door de Azure AD GUID-id van uw Tenant.
+   2. Voeg de volgende regels toe aan het begin van de `OnBeforeRequest` functie. Vervang \< het Tenant domein door \> een domein dat is geregistreerd bij uw Tenant (bijvoorbeeld `contoso.onmicrosoft.com` ). Vervang de \< Directory-id \> door de Azure AD GUID-id van uw Tenant.
 
       ```JScript.NET
       if (

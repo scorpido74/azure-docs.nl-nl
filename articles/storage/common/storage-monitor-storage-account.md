@@ -8,12 +8,13 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268286"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684676"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een Storage-account bewaken in de Azure-portal
 
@@ -111,10 +112,10 @@ U kunt waarschuwingen maken om u te waarschuwen wanneer de drempel waarden voor 
 U kunt Azure Storage metrische grafieken voor uw opslag accounts toevoegen aan uw portal-dash board.
 
 1. Selecteer in het [Azure Portal](https://portal.azure.com)op **dash board bewerken** terwijl u uw dash board weergeeft.
-1. Selecteer in de **Galerie tegels**de optie **tegels zoeken op** > **type**.
-1. Selecteer **Type** > **opslag accounts**opgeven.
+1. Selecteer in de **Galerie tegels**de optie **tegels zoeken op**  >  **type**.
+1. Selecteer **Type**  >  **opslag accounts**opgeven.
 1. Selecteer in **resources**het opslag account waarvan u de metrische gegevens aan het dash board wilt toevoegen.
-1. Selecteer **categorie** > **bewaking**.
+1. Selecteer **categorie**  >  **bewaking**.
 1. Slepen en neerzetten van de grafiek tegel naar het dash board voor de metrische gegevens die u wilt weer geven. Herhaal deze stap voor alle metrische gegevens die u op het dash board wilt weer geven. In de volgende afbeelding is de grafiek ' blobs-totaal aantal aanvragen ' gemarkeerd als voor beeld, maar alle grafieken zijn beschikbaar voor plaatsing op uw dash board.
 
    ![Tegel galerie in Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)

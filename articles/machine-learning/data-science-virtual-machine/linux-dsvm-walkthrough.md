@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257144"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682475"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
 
@@ -29,9 +29,9 @@ In dit overzicht analyseren we de [spambase](https://archive.ics.uci.edu/ml/data
 Voordat u een Linux-DSVM kunt gebruiken, moet u beschikken over de volgende vereisten:
 
 * **Azure-abonnement**. Zie [vandaag nog uw gratis Azure-account maken](https://azure.microsoft.com/free/)om een Azure-abonnement te krijgen.
-* [**Linux-Data Science virtual machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Zie [de Linux-Data Science virtual machine inrichten](linux-dsvm-intro.md)voor meer informatie over het inrichten van de virtuele machine.
+* [**Linux-Data Science virtual machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Zie [de Linux-Data Science virtual machine inrichten](linux-dsvm-intro.md)voor meer informatie over het inrichten van de virtuele machine.
 * [**X2Go**](https://wiki.x2go.org/doku.php) is op uw computer geïnstalleerd met een open xfce-sessie. Zie [de X2Go-client installeren en configureren](linux-dsvm-intro.md#x2go)voor meer informatie.
-* Voor een soepelere schuif ervaring kunt u in de Firefox-webbrowser van DSVM de `gfx.xrender.enabled` vlag in `about:config`-of uitschakelen. [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). U kunt ook `mousewheel.enable_pixel_scrolling` overwegen `False`om in te stellen op. [Meer informatie](https://support.mozilla.org/questions/981140).
+* Voor een soepelere schuif ervaring kunt u in de Firefox-webbrowser van DSVM de vlag in-of uitschakelen `gfx.xrender.enabled` `about:config` . [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). U kunt ook overwegen `mousewheel.enable_pixel_scrolling` om in te stellen op `False` . [Meer informatie](https://support.mozilla.org/questions/981140).
 * **Azure machine learning-account**. Als u er nog geen hebt, kunt u zich registreren voor een nieuw account op de [Start pagina van Azure machine learning](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>De spambase-gegevensset downloaden
@@ -64,11 +64,11 @@ mv headers spambaseHeaders.data
 
 De gegevensset heeft verschillende typen statistieken voor elk e-mail bericht:
 
-* Kolommen zoals **Word\_freq\_** geven het percentage woorden in het e-mail bericht aan dat overeenkomt met *Word*. Als **Word\_\_freq** bijvoorbeeld **1**is, dan is 1% van alle woorden in het e-mail bericht *gemaakt*.
-* Kolommen zoals **char\_freq\_char** geven het percentage van alle tekens in het e-mail bericht dat *char*is.
-* de langste **\_run\_-lengte\_** is de langste lengte van een reeks hoofd letters.
-* **het\_gemiddelde\_van\_de lengte** van een hoofd letter is de gemiddelde lengte van alle reeksen hoofd letters.
-* **totale\_uitvoerings\_lengte\_** van de hoofd letter is de totale lengte van alle reeksen hoofd letters.
+* Kolommen zoals **Word \_ freq \_ _WORD_ ** geven het percentage woorden in het e-mail bericht aan dat overeenkomt met *Word*. Als **Word \_ freq \_ ** bijvoorbeeld **1**is, dan is 1% van alle woorden in het e-mail bericht *gemaakt*.
+* Kolommen zoals **char \_ freq \_ _char_ ** geven het percentage van alle tekens in het e-mail bericht dat *char*is.
+* de langste ** \_ Run- \_ lengte \_ ** is de langste lengte van een reeks hoofd letters.
+* **het \_ \_ \_ gemiddelde** van de lengte van een hoofd letter is de gemiddelde lengte van alle reeksen hoofd letters.
+* ** \_ totale uitvoerings \_ lengte \_ ** van de hoofd letter is de totale lengte van alle reeksen hoofd letters.
 * **spam** geeft aan of het e-mail bericht als spam is beschouwd of niet (1 = spam, 0 = geen spam).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>De gegevensset verkennen met R open
@@ -313,17 +313,17 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-De Anaconda-distributie in het DSVM wordt geleverd met een Jupyter Notebook, een omgeving voor meerdere platforms voor het delen van python-, R-of Julia-code en-analyse. De Jupyter Notebook wordt geopend via JupyterHub. U meldt zich aan met behulp van uw lokale Linux-gebruikers\<naam en-wacht woord op\>https://DSVM DNS-naam of IP-adres: 8000/. Alle configuratie bestanden voor JupyterHub vindt u in/etc/jupyterhub.
+De Anaconda-distributie in het DSVM wordt geleverd met een Jupyter Notebook, een omgeving voor meerdere platforms voor het delen van python-, R-of Julia-code en-analyse. De Jupyter Notebook wordt geopend via JupyterHub. U meldt zich aan met behulp van uw lokale Linux-gebruikers naam en-wacht woord op https:// \< DSVM DNS-naam of IP-adres \> : 8000/. Alle configuratie bestanden voor JupyterHub vindt u in/etc/jupyterhub.
 
 > [!NOTE]
-> Als u het python-pakket beheer (via `pip` de opdracht) van een Jupyter notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in de cel code:
+> Als u het python-pakket beheer (via de `pip` opdracht) van een Jupyter notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in de cel code:
 >
 >   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Als u het installatie programma Conda (via `conda` de opdracht) van een Jupyter notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in een code-cel:
+> Als u het installatie programma Conda (via de `conda` opdracht) van een Jupyter notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in een code-cel:
 >
 >   ```Python
 >    import sys
@@ -368,7 +368,7 @@ Laden en configureren van de gegevensset:
 De gegevens verkennen:
 
 1. Selecteer het tabblad **verkennen** .
-1. Als u informatie wilt weer geven over de variabele typen en enkele samenvattings statistieken, selecteert u **samen vatting** > **uitvoeren**.
+1. Als u informatie wilt weer geven over de variabele typen en enkele samenvattings statistieken, selecteert u **samen vatting**  >  **uitvoeren**.
 1. Als u andere typen statistieken over elke variabele wilt weer geven, selecteert u andere opties, zoals **Beschrijving** of **basis**.
 
 U kunt ook het tabblad **verkennen** gebruiken om inkijkende grafieken te genereren. Een histogram met gegevens uitzetten:
@@ -421,7 +421,7 @@ Een handige functie van Rattle is de mogelijkheid om verschillende machine learn
 Wanneer u klaar bent met het bouwen van modellen, selecteert u het tabblad **logboek** om de R-code weer te geven die tijdens uw sessie werd uitgevoerd door Rattle. U kunt de knop **exporteren** selecteren om deze op te slaan.
 
 > [!NOTE]
-> De huidige release van Rattle bevat een bug. Als u het script wilt wijzigen of als u het wilt gebruiken om de stappen later te herhalen **#** , moet u een teken invoegen vóór het *exporteren van dit logboek...* in de tekst van het logboek.
+> De huidige release van Rattle bevat een bug. Als u het script wilt wijzigen of als u het wilt gebruiken om de stappen later te herhalen, moet u een **#** teken invoegen vóór het *exporteren van dit logboek...* in de tekst van het logboek.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL en SQuirreL SQL
 
@@ -492,16 +492,16 @@ Nu gaan we de gegevens verkennen en enkele query's uitvoeren met behulp van SQui
 
 Om aan de slag te gaan, opent u SQuirreL SQL in het menu **toepassingen** . Het stuur programma instellen:
 
-1. Selecteer **Windows** > **Stuur Programma's voor Windows-weer gave**.
+1. Selecteer **Windows**  >  **Stuur Programma's voor Windows-weer gave**.
 1. Klik met de rechter muisknop op **postgresql** en selecteer **stuur programma wijzigen**.
-1. Selecteer **extra klasse-pad** > **toevoegen**.
+1. Selecteer **extra klasse-pad**  >  **toevoegen**.
 1. Voer voor **Bestands naam** **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**in.
 1. Selecteer **Openen**.
 1. Selecteer **Stuur Programma's weer geven**. Voor **klassenaam**selecteert u **org. postgresql. driver**en selecteert u **OK**.
 
 De verbinding met de lokale server instellen:
 
-1. Selecteer **Windows** > -**weergave aliassen.**
+1. Selecteer **Windows**-  >  **weergave aliassen.**
 1. Selecteer de **+** knop om een nieuwe alias te maken. Voer voor de nieuwe alias naam **spam data base**in. 
 1. Selecteer voor **stuur programma** **postgresql**.
 1. Stel de URL in op **JDBC: postgresql://localhost/spam**.
@@ -513,7 +513,7 @@ De verbinding met de lokale server instellen:
 Enkele query's uitvoeren:
 
 1. Selecteer het tabblad **SQL** .
-1. Voer in het vak query boven aan het tabblad **SQL** een Basic-query in, bijvoorbeeld `SELECT * from data;`.
+1. Voer in het vak query boven aan het tabblad **SQL** een Basic-query in, bijvoorbeeld `SELECT * from data;` .
 1. Druk op CTRL + ENTER om de query uit te voeren. SQuirreL SQL retourneert standaard de eerste 100 rijen van uw query.
 
 Er zijn veel meer query's die u kunt uitvoeren om deze gegevens te verkennen. Hoe kan de frequentie van *het woord bijvoorbeeld* verschillen tussen spam en de hoeveelheid?

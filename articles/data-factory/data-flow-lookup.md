@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/15/2020
+ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594318"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683321"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Trans formatie opzoeken in toewijzings gegevens stroom
 
@@ -41,13 +41,19 @@ De zoek transformatie ondersteunt alleen gelijkheids overeenkomsten. Als u de op
 
 Alle kolommen van beide stromen worden opgenomen in de uitvoer gegevens. Als u dubbele of ongewenste kolommen wilt verwijderen, voegt u een [selectie transformatie](data-flow-select.md) toe na uw lookup-trans formatie. Kolommen kunnen ook worden verwijderd of de naam ervan worden gewijzigd in een Sink-trans formatie.
 
+### <a name="non-equi-joins"></a>Niet-equi-samen voegingen
+
+Als u een voorwaardelijke operator zoals niet gelijk is aan (! =) of groter dan (>) wilt gebruiken in uw zoek voorwaarden, wijzigt u de vervolg keuzelijst van de operator tussen de twee kolommen. Voor niet-equi-join's moeten ten minste één van de twee stromen worden uitgezonden met behulp van **vaste** broadcast op het tabblad **Optimize** .
+
+![Niet-equi lookup](media/data-flow/non-equi-lookup.png "Niet-equi lookup")
+
 ## <a name="analyzing-matched-rows"></a>Overeenkomende rijen analyseren
 
-Na uw lookup-trans formatie kan `isMatch()` de functie worden gebruikt om te zien of de zoek opdracht overeenkomt met afzonderlijke rijen.
+Na uw lookup-trans formatie kan de functie `isMatch()` worden gebruikt om te zien of de zoek opdracht overeenkomt met afzonderlijke rijen.
 
 ![Zoek patroon](media/data-flow/lookup111.png "Zoek patroon")
 
-Een voor beeld van dit patroon is het gebruik van de Conditional Split trans formatie `isMatch()` voor het splitsen van de functie. In het bovenstaande voor beeld passeren overeenkomende rijen de bovenste stroom en niet-overeenkomende rijen stromen via de ```NoMatch``` stroom.
+Een voor beeld van dit patroon is het gebruik van de Conditional Split trans formatie voor het splitsen van de `isMatch()` functie. In het bovenstaande voor beeld passeren overeenkomende rijen de bovenste stroom en niet-overeenkomende rijen stromen via de ```NoMatch``` stroom.
 
 ## <a name="testing-lookup-conditions"></a>Zoek voorwaarden testen
 

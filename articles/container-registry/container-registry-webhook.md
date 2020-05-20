@@ -3,12 +3,12 @@ title: Webhooks om te reageren op register acties
 description: Meer informatie over het gebruik van webhooks om gebeurtenissen te activeren wanneer push-of pull-acties worden uitgevoerd in uw register opslagplaatsen.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454372"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685030"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry-webhooks gebruiken
 
@@ -18,12 +18,12 @@ Zie [Azure container Registry webhook-schema verwijzing](container-registry-webh
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-containerregister: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md). De [Azure container Registry sku's](container-registry-skus.md) hebben verschillende webhooks-quota.
+* Azure-containerregister: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md). De [Azure container Registry-service lagen](container-registry-skus.md) hebben verschillende-quota voor webhooks.
 * Docker-CLI: installeer de [Docker-engine](https://docs.docker.com/engine/installation/) om uw lokale computer als een Docker-host in te stellen en de Docker-CLI-opdrachten te gebruiken.
 
 ## <a name="create-webhook---azure-portal"></a>Webhook-Azure Portal maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Navigeer naar het container register waarin u een webhook wilt maken.
 1. Onder **Services**selecteert u **webhooks**.
 1. Selecteer **toevoegen** op de werk balk van de webhook.

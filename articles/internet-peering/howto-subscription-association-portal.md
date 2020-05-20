@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75912169"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683955"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer-ASN koppelen aan Azure-abonnement met de portal
 
@@ -55,22 +55,8 @@ Registreer u voor de resource provider voor de peering in uw abonnement door de 
     > ![Registratie is voltooid](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn maken
-U kunt een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement. U kunt meerdere Asn's koppelen aan een abonnement door een **PeerAsn** te maken voor elke ASN die u moet koppelen.
+Als Internet provider of provider van Internet Exchange kunt u een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement. U kunt meerdere Asn's koppelen aan een abonnement door te navigeren naar de [pagina een PeerASN koppelen](https://go.microsoft.com/fwlink/?linkid=2129592) voor elke ASN die u wilt koppelen.
 
-1. Klik op **een resource** > maken**Alles bekijken**.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn zoeken](./media/peerasn-seeall.png)
-
-1. Zoek naar *PeerAsn* in het zoekvak en druk op *Enter* op het toetsen bord. Klik in de resultaten op **PeerAsn** resource.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn starten](./media/peerasn-launch.png)
-
-1. Wanneer **PeerAsn** wordt gestart, klikt u op **maken**.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn maken](./media/peerasn-create.png)
 
 1. Vul op de pagina **een peer-ASN koppelen** onder het tabblad **basis beginselen** de velden in zoals hieronder wordt weer gegeven.
 

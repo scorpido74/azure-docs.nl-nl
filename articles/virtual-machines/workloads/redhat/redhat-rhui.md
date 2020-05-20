@@ -11,17 +11,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: aa9fd230f59b5e46576e78beb0436c85449d3c5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256909"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684442"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat update-infra structuur voor Red Hat Enterprise Linux Vm's op aanvraag in azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
 
-Red Hat Enterprise Linux (RHEL) PAYG-installatie kopieën (betalen per gebruik) zijn vooraf geconfigureerd voor toegang tot Azure RHUI. Er is geen aanvullende configuratie nodig. Als u de meest recente updates wilt `sudo yum update` downloaden, voert u uit nadat uw RHEL-exemplaar klaar is. Deze service is opgenomen als onderdeel van de kosten voor de RHEL PAYG-software.
+Red Hat Enterprise Linux (RHEL) PAYG-installatie kopieën (betalen per gebruik) zijn vooraf geconfigureerd voor toegang tot Azure RHUI. Er is geen aanvullende configuratie nodig. Als u de meest recente updates wilt downloaden, voert u uit `sudo yum update` nadat uw RHEL-exemplaar klaar is. Deze service is opgenomen als onderdeel van de kosten voor de RHEL PAYG-software.
 
 Meer informatie over RHEL-installatie kopieën in azure, met inbegrip van publicatie-en bewaar beleid, is [hier](./redhat-images.md)beschikbaar.
 
@@ -45,11 +45,11 @@ Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u
 
 Met ingang van 2019 april biedt Azure RHEL installatie kopieën die zijn verbonden met EUS-opslag plaatsen (Extended update support) standaard en RHEL installatie kopieën die standaard worden aangesloten op de normale (niet-EUS) opslag plaatsen. Meer informatie over RHEL EUS vindt u in de documentatie van de [versie levenscyclus](https://access.redhat.com/support/policy/updates/errata) van Red Hat en de [Eus-documentatie](https://access.redhat.com/articles/rhel-eus). Het standaard gedrag van `sudo yum update` is afhankelijk van de RHEL-installatie kopie die u hebt ingericht, omdat verschillende installatie kopieën zijn verbonden met verschillende opslag plaatsen.
 
-Voor een volledige lijst met installatie kopieën `az vm image list --publisher redhat --all` voert u uit met behulp van de Azure cli.
+Voor een volledige lijst met installatie kopieën voert `az vm image list --publisher redhat --all` u uit met behulp van de Azure cli.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Afbeeldingen die zijn verbonden met niet-EUS-opslag plaatsen
 
-Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente `sudo yum update`RHEL-versie wanneer u uitvoert. Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 PAYG-installatie `sudo yum update`kopie en uitvoert, hebt u een RHEL 7,7 VM (de meest recente secundaire versie in de RHEL7-serie).
+Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente RHEL-versie wanneer u uitvoert `sudo yum update` . Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 PAYG-installatie kopie en uitvoert `sudo yum update` , hebt u een RHEL 7,7 VM (de meest recente secundaire versie in de RHEL7-serie).
 
 Installatie kopieën die zijn verbonden met niet-EUS-opslag plaatsen, bevatten geen secundair versie nummer in de SKU. De SKU is het derde element in de URN (volledige naam van de afbeelding). Zo worden alle volgende installatie kopieën gekoppeld aan niet-EUS-opslag plaatsen:
 
@@ -66,7 +66,7 @@ Houd er rekening mee dat de Sku's 7-LVM of 7-RAW zijn. De secundaire versie word
 
 ### <a name="images-connected-to-eus-repositories"></a>Installatie kopieën die zijn verbonden met EUS-opslag plaatsen
 
-Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met EUS-opslag plaatsen, wordt u niet bijgewerkt naar de meest recente `sudo yum update`secundaire versie van RHEL wanneer u uitvoert. De installatie kopieën die zijn verbonden met EUS-opslag plaatsen, zijn ook versie-vergrendeld op hun specifieke secundaire versie.
+Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met EUS-opslag plaatsen, wordt u niet bijgewerkt naar de meest recente secundaire versie van RHEL wanneer u uitvoert `sudo yum update` . De installatie kopieën die zijn verbonden met EUS-opslag plaatsen, zijn ook versie-vergrendeld op hun specifieke secundaire versie.
 
 Afbeeldingen die zijn verbonden met EUS-opslag plaatsen, bevatten een secundair versie nummer in de SKU. Zo worden alle volgende installatie kopieën gekoppeld aan EUS-opslag plaatsen:
 
@@ -105,13 +105,13 @@ Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaald
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. De `releasever` variabele vergren delen (als basis uitvoeren):
+1. De variabele vergren delen `releasever` (als basis uitvoeren):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
 
     >[!NOTE]
-    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. Uw RHEL- `echo 7.5 > /etc/yum/vars/releasever` versie wordt bijvoorbeeld vergrendeld op RHEL 7,5
+    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. `echo 7.5 > /etc/yum/vars/releasever`Uw RHEL-versie wordt bijvoorbeeld vergrendeld op RHEL 7,5
 
 1. Uw RHEL-VM bijwerken
     ```bash
@@ -144,7 +144,7 @@ Voer het volgende uit als root:
 
 RHUI is beschikbaar in alle regio's waar RHEL on-demand installatie kopieën beschikbaar zijn. Het bevat momenteel alle open bare regio's die worden vermeld op de [Azure-status dashboard](https://azure.microsoft.com/status/) pagina, Azure Amerikaanse overheid en Microsoft Azure Duitsland regio's.
 
-Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder te beperken, moet u ervoor zorgen dat de volgende `yum update` IP-adressen zijn toegestaan, afhankelijk van de omgeving waarin u zich bevindt:
+Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder te beperken, moet u ervoor zorgen dat de volgende IP-adressen zijn toegestaan, `yum update` afhankelijk van de omgeving waarin u zich bevindt:
 
 
 ```
@@ -170,15 +170,15 @@ Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Verlopen RHUI-client certificaat op een VM bijwerken
 
-Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (installatie kopie URN `RedHat:RHEL:7.4:7.4.2018010506`:), treden er connectiviteits problemen op RHUI vanwege een nu verlopen TLS/SSL-client certificaat. De fout die u ziet, kan er als volgt uitzien: _"SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: kan de meta gegevens van de opslag plaats (repomd. XML) niet ophalen voor de opslag plaats... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
+Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (installatie kopie URN: `RedHat:RHEL:7.4:7.4.2018010506` ), treden er connectiviteits problemen op RHUI vanwege een nu verlopen TLS/SSL-client certificaat. De fout die u ziet, kan er als volgt uitzien: _"SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: kan de meta gegevens van de opslag plaats (repomd. XML) niet ophalen voor de opslag plaats... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-U kunt ook het `sudo yum update` client certificaat pakket bijwerken (afhankelijk van uw RHEL-versie), ondanks dat er fouten met het ' verlopen SSL-certificaat ' worden weer geven voor andere opslag plaatsen. Als deze update is geslaagd, moet de normale connectiviteit met andere RHUI-opslag plaatsen worden hersteld, zodat u kunt worden uitgevoerd `sudo yum update` .
+U kunt `sudo yum update` ook het client certificaat pakket bijwerken (afhankelijk van uw RHEL-versie), ondanks dat er fouten met het ' verlopen SSL-certificaat ' worden weer geven voor andere opslag plaatsen. Als deze update is geslaagd, moet de normale connectiviteit met andere RHUI-opslag plaatsen worden hersteld, zodat u kunt worden uitgevoerd `sudo yum update` .
 
-Als er een 404-fout optreedt tijdens het uitvoeren `yum update`van een, voert u de volgende handelingen uit om de yum-cache te vernieuwen:
+Als er een 404-fout optreedt tijdens het uitvoeren van een `yum update` , voert u de volgende handelingen uit om de yum-cache te vernieuwen:
 ```bash
 sudo yum clean all;
 sudo yum makecache
@@ -189,9 +189,9 @@ Als u problemen ondervindt bij het verbinding maken met Azure RHUI via uw Azure 
 
 1. Inspecteer de VM-configuratie voor het Azure RHUI-eind punt:
 
-    1. Controleer of het `/etc/yum.repos.d/rh-cloud.repo` bestand een verwijzing bevat naar `rhui-[1-3].microsoft.com` in `baseurl` de `[rhui-microsoft-azure-rhel*]` sectie van het bestand. Als dit het geval is, gebruikt u de nieuwe Azure-RHUI.
+    1. Controleer of het `/etc/yum.repos.d/rh-cloud.repo` bestand een verwijzing bevat naar `rhui-[1-3].microsoft.com` in de `baseurl` sectie van `[rhui-microsoft-azure-rhel*]` het bestand. Als dit het geval is, gebruikt u de nieuwe Azure-RHUI.
 
-    1. Als deze verwijst naar een locatie met het volgende patroon, `mirrorlist.*cds[1-4].cloudapp.net`is een configuratie-update vereist. U gebruikt de oude moment opname van de virtuele machine en u moet deze bijwerken zodat deze verwijst naar de nieuwe Azure-RHUI.
+    1. Als deze verwijst naar een locatie met het volgende patroon, `mirrorlist.*cds[1-4].cloudapp.net` is een configuratie-update vereist. U gebruikt de oude moment opname van de virtuele machine en u moet deze bijwerken zodat deze verwijst naar de nieuwe Azure-RHUI.
 
 1. Toegang tot door Azure gehoste RHUI is beperkt tot Vm's binnen de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -241,6 +241,6 @@ Deze procedure wordt alleen ter informatie bedoeld. RHEL PAYG-installatie kopie�
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Ga naar de [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)om een Red Hat Enterprise Linux VM te maken op basis van een installatie kopie van Azure Marketplace payg en Azure-gehoste RHUI te gebruiken.
+* Ga naar de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RHEL_6)om een Red Hat Enterprise Linux VM te maken op basis van een installatie kopie van Azure Marketplace payg en Azure-gehoste RHUI te gebruiken.
 * Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over de Red Hat-afbeeldingen in Azure.
 * Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .

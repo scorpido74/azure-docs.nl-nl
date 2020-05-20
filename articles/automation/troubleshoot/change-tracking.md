@@ -1,6 +1,6 @@
 ---
-title: Problemen met Wijzigingen bijhouden en inventarisatie oplossen
-description: Meer informatie over het oplossen van problemen met de Azure Automation Wijzigingen bijhouden en de voorraad oplossing.
+title: Problemen met de Azure Automation-Wijzigingen bijhouden en-inventaris oplossen
+description: In dit artikel leest u hoe u problemen oplost en oplost met de functie voor Wijzigingen bijhouden en inventaris van Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582141"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684863"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen
 
-In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen bijhouden en inventaris kunt oplossen.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
+In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen bijhouden en voorraad problemen oplost en oplost. Zie [overzicht van wijzigingen bijhouden en inventaris](../change-tracking.md)voor algemene informatie over wijzigingen bijhouden en inventarisatie.
 
 ## <a name="windows"></a>Windows
 
@@ -29,7 +26,7 @@ In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen
 
 #### <a name="issue"></a>Probleem
 
-U ziet geen Wijzigingen bijhouden-en inventaris resultaten voor Windows-machines die worden uitgevoerd.
+U ziet geen Wijzigingen bijhouden-en inventaris resultaten voor Windows-machines die zijn ingeschakeld voor de functie.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -38,7 +35,7 @@ Deze fout kan de volgende oorzaken hebben:
 * De Azure Log Analytics-agent voor Windows wordt niet uitgevoerd.
 * De communicatie met het Automation-account wordt geblokkeerd.
 * De Management Packs voor Wijzigingen bijhouden en inventarisatie zijn niet gedownload.
-* De virtuele machine die wordt vrijgegeven, kan afkomstig zijn van een gekloonde computer die niet is Sysprep met de Log Analytics agent voor Windows is geïnstalleerd.
+* De virtuele machine die wordt ingeschakeld, kan afkomstig zijn van een gekloonde computer die niet is voor bereid met het uitvoeren van een systeem voorbereiding (Sysprep) met de Log Analytics-agent voor Windows geïnstalleerd.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -54,7 +51,7 @@ net start healthservice
 Als u nog steeds hulp nodig hebt, kunt u Diagnostische gegevens verzamelen en contact opnemen met ondersteuning.
 
 > [!NOTE]
-> De Log Analytics-agent schakelt standaard fout tracering in. Als u uitgebreide fout berichten wilt inschakelen, zoals in het voor gaande voor `VER` beeld, gebruikt u de para meter. Gebruik `INF` voor informatie traceringen wanneer u aanroept `StartTracing.cmd`.
+> De Log Analytics-agent schakelt standaard fout tracering in. Als u uitgebreide fout berichten wilt inschakelen, zoals in het voor gaande voor beeld, gebruikt u de `VER` para meter. Gebruik voor informatie traceringen `INF` Wanneer u aanroept `StartTracing.cmd` .
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Log Analytics-agent voor Windows niet actief
 
@@ -64,7 +61,7 @@ Controleer of de Log Analytics-agent voor Windows (**HealthService. exe**) wordt
 
 Controleer Logboeken op de computer en zoek naar gebeurtenissen die het woord `changetracking` erin bevatten.
 
-Zie [resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook worker](../automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over adressen en poorten die moeten worden toegestaan voor het werken met wijzigingen bijhouden en de inventaris.
+Zie [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de adressen en poorten die moeten worden toegestaan voor het werken met wijzigingen bijhouden en de inventarisatie.
 
 ##### <a name="management-packs-not-downloaded"></a>Management Packs niet gedownload
 
@@ -84,7 +81,7 @@ Als u een gekloonde installatie kopie gebruikt, Sysprep de installatie kopie eer
 
 #### <a name="issue"></a>Probleem
 
-U ziet geen Wijzigingen bijhouden-en inventaris resultaten voor Linux-machines die worden uitgevoerd voor de oplossing. 
+U ziet geen Wijzigingen bijhouden-en inventaris resultaten voor Linux-machines die zijn ingeschakeld voor de functie. 
 
 #### <a name="cause"></a>Oorzaak
 Hier vindt u mogelijke oorzaken die specifiek zijn voor dit probleem:
@@ -111,16 +108,16 @@ Zie [probleem: u ziet geen Linux-gegevens](https://docs.microsoft.com/azure/azur
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-agent voor Linux is niet juist geconfigureerd
 
-De Log Analytics-agent voor Linux is mogelijk niet juist geconfigureerd voor de logboek-en opdracht regel-uitvoer verzameling met behulp van het hulp programma OMS-logboek verzamelaar. Bekijk [wijzigingen in uw omgeving bijhouden met behulp van de oplossing wijzigingen bijhouden en inventarisatie](../change-tracking.md).
+De Log Analytics-agent voor Linux is mogelijk niet juist geconfigureerd voor de logboek-en opdracht regel-uitvoer verzameling met behulp van het hulp programma OMS-logboek verzamelaar. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking.md).
 
 ##### <a name="fim-conflicts"></a>FIM-conflicten
 
-De FIM-functie van Azure Security Center kan de integriteit van uw Linux-bestanden onjuist valideren. Controleer of FIM operationeel is en correct is geconfigureerd voor Linux-bestands bewaking. Bekijk [wijzigingen in uw omgeving bijhouden met behulp van de oplossing wijzigingen bijhouden en inventarisatie](../change-tracking.md).
+De FIM-functie van Azure Security Center kan de integriteit van uw Linux-bestanden onjuist valideren. Controleer of FIM operationeel is en correct is geconfigureerd voor Linux-bestands bewaking. Zie [overzicht van wijzigingen bijhouden en inventarisatie](../change-tracking.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

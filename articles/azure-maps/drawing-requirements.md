@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: dad9bb40161a2adc8654f50de5c1d876e3344e59
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598799"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681901"
 ---
 # <a name="drawing-package-requirements"></a>Pakket vereisten voor het tekenen
 
-Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. In dit artikel worden de teken pakket vereisten voor de conversie-API beschreven. Als u een voorbeeld pakket wilt weer geven, kunt u het voorbeeld [teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples)downloaden.
+Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. In dit artikel worden de teken pakket vereisten voor de conversie-API beschreven. Als u een voorbeeld pakket wilt weer geven, kunt u het voorbeeld [teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples)downloaden.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ Het teken pakket bevat tekeningen die zijn opgeslagen in de DWG-indeling, de sys
 
 U kunt kiezen voor alle CAD-software om de tekeningen in het teken pakket te maken.  
 
-De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) converteert het tekening pakket naar kaart gegevens.  De conversie service is ontwikkeld en getest met de AutoCAD DWG-bestands indeling. `AC1032`is de interne indelings versie voor de DWG-bestanden. U wordt geadviseerd om `AC1032` de interne versie van de DWG-bestands indeling te selecteren.  
+De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) converteert het tekening pakket naar kaart gegevens.  De conversie service is ontwikkeld en getest met de AutoCAD DWG-bestands indeling. `AC1032`is de interne indelings versie voor de DWG-bestanden. U wordt geadviseerd om `AC1032` de interne versie van de DWG-bestands indeling te selecteren.  
 
 Woorden lijst met termen die in dit document worden gebruikt.
 
@@ -54,7 +54,7 @@ Er is één DWG-bestand vereist voor elk niveau van de faciliteit. De gegevens v
 * Mag geen functies van meerdere niveaus bevatten.
 * Mag geen functies van meerdere faciliteiten bevatten.
 
-De [Azure Maps-conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) kan de volgende functie klassen uit een DWG-bestand extra heren:
+De [Azure Maps-conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kan de volgende functie klassen uit een DWG-bestand extra heren:
 
 * Niveaus
 * Eenheden
@@ -71,11 +71,11 @@ DWG-lagen moeten ook voldoen aan de volgende criteria:
 
 * De oorsprong van tekeningen voor alle DWG-bestanden moeten worden uitgelijnd op dezelfde breedte graad en lengte graad.
 * Elk niveau moet dezelfde richting hebben als de andere niveaus.
-* Niet-overlappende veelhoeken worden automatisch hersteld en er wordt een waarschuwing gegenereerd door de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) . Het is raadzaam om de gerepareerde resultaten hand matig te controleren, omdat deze mogelijk niet overeenkomen met de verwachte resultaten.
+* Niet-overlappende veelhoeken worden automatisch hersteld en er wordt een waarschuwing gegenereerd door de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) . Het is raadzaam om de gerepareerde resultaten hand matig te controleren, omdat deze mogelijk niet overeenkomen met de verwachte resultaten.
 
 Alle laag entiteiten moeten een van de volgende typen zijn: lijn, poly lijn, veelhoek, cirkel vormige boog, cirkel, tekst (enkele regel). Alle andere entiteits typen worden genegeerd.
 
-De onderstaande tabel bevat een overzicht van de ondersteunde entiteits typen en ondersteunde functies voor elke laag. Als een laag entiteits typen bevat die niet worden ondersteund, worden deze entiteiten genegeerd door de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) .  
+De onderstaande tabel bevat een overzicht van de ondersteunde entiteits typen en ondersteunde functies voor elke laag. Als een laag entiteits typen bevat die niet worden ondersteund, worden deze entiteiten genegeerd door de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) .  
 
 | Laag | Entiteitstypen | Functies |
 | :----- | :-------------------| :-------
@@ -167,11 +167,11 @@ Een voor beeld van de laag Zonelabel kan worden gezien als de laag ZONELABELS in
 
 ## <a name="manifest-file-requirements"></a>Vereisten voor manifest bestand
 
-De map zip moet een manifest bestand op het hoofd niveau van de map bevatten en het bestand moet de naam **manifest. json**hebben. Hierin worden de DWG-bestanden beschreven zodat de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) de inhoud kan parseren. Alleen de bestanden die door het manifest worden geïdentificeerd, worden opgenomen in de opname. Bestanden die zich in de map zip bevinden, maar niet op de juiste manier worden vermeld in het manifest, worden genegeerd.
+De map zip moet een manifest bestand op het hoofd niveau van de map bevatten en het bestand moet de naam **manifest. json**hebben. Hierin worden de DWG-bestanden beschreven zodat de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) de inhoud kan parseren. Alleen de bestanden die door het manifest worden geïdentificeerd, worden opgenomen in de opname. Bestanden die zich in de map zip bevinden, maar niet op de juiste manier worden vermeld in het manifest, worden genegeerd.
 
 De bestands paden in het **buildingLevels** -object van het manifest bestand moeten relatief zijn ten opzichte van de hoofdmap van de map zip. De naam van het DWG-bestand moet exact overeenkomen met de naam van het niveau van de faciliteit. Zo zou een DWG-bestand voor het niveau ' Basement ' bijvoorbeeld ' basement. DWG ' zijn. Een DWG-bestand voor niveau 2 krijgt de naam level_2. DWG. Gebruik een onderstrepings teken als de naam van uw niveau een spatie heeft. 
 
-Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet alle objecten vereist. In de volgende tabel ziet u de vereiste en optionele objecten voor versie 1,1 van de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion).
+Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet alle objecten vereist. In de volgende tabel ziet u de vereiste en optionele objecten voor versie 1,1 van de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion).
 
 | Object | Vereist | Beschrijving |
 | :----- | :------- | :------- |
@@ -402,7 +402,7 @@ Hieronder vindt u een voor beeld van een manifest bestand voor het voorbeeld tek
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw teken pakket aan de vereisten voldoet, kunt u de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) gebruiken om het pakket te converteren naar een kaart gegevensset. Vervolgens kunt u de gegevensset gebruiken om een binnenste kaart te genereren met behulp van de module kaarten. Lees de volgende artikelen voor meer informatie over het gebruik van de module over kaarten:
+Als uw teken pakket aan de vereisten voldoet, kunt u de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) gebruiken om het pakket te converteren naar een kaart gegevensset. Vervolgens kunt u de gegevensset gebruiken om een binnenste kaart te genereren met behulp van de module kaarten. Lees de volgende artikelen voor meer informatie over het gebruik van de module over kaarten:
 
 > [!div class="nextstepaction"]
 >[Maker voor kaarten in de binnenste](creator-indoor-maps.md)

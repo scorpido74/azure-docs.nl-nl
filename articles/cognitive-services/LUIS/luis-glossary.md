@@ -3,12 +3,12 @@ title: Woorden lijst-LUIS
 description: In de woorden lijst worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS API-service.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681615"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
 In de woorden lijst Language Understanding (LUIS) worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS-service.
@@ -139,9 +139,9 @@ Het entiteits schema is de structuur die u definieert voor door de machine gelee
 
 ### <a name="entitys-subentity"></a>Subentiteit van de entiteit
 
-Een subentiteit is een onderliggende entiteit van een door de machine geleerde entiteit.
+Een subentiteit is een onderliggende entiteit van een machine learning-entiteit.
 
-### <a name="non-machine-learned-entity"></a>Entiteit waarvan de niet-machine is geleerd
+### <a name="non-machine-learning-entity"></a>Niet-machine learning-entiteit
 
 Een entiteit die gebruikmaakt van tekst matching om gegevens te extra heren:
 * Lijstentiteit
@@ -164,7 +164,7 @@ Bekijk de invoer van het vooraf ontwikkelde model voor de [vooraf samengestelde 
 
 In machine learning is een functie een kenmerk waarmee het model een bepaald concept kan herkennen. Het is een hint die LUIS kan gebruiken, maar geen vaste regel.
 
-Deze term wordt ook wel een door de **[machine geleerde functie](luis-concept-feature.md)** genoemd.
+Deze term wordt ook wel een **[machine learning-functie](luis-concept-feature.md)** genoemd.
 
 Deze hints worden gebruikt in combi natie met de labels voor meer informatie over het voors pellen van nieuwe gegevens. LUIS ondersteunt beide woordgroepen lijsten en het gebruik van andere modellen als onderdelen.
 
@@ -199,6 +199,10 @@ A (machine geleerd) is een functie die een voor spelling van invoer gegevens maa
 ## <a name="normalized-value"></a>Genormaliseerde waarde
 
 U voegt waarden aan uw [lijst](#list-entity) entiteiten toe. Elk van deze waarden kan een lijst met een of meer synoniemen hebben. Alleen de genormaliseerde waarde wordt geretourneerd in het antwoord.
+
+## <a name="overfitting"></a>Overfitting
+
+De overmontage vindt plaats wanneer het model wordt aan de specifieke voor beelden en niet goed kan worden gegeneraliseerd.
 
 ## <a name="owner"></a>Eigenaar
 
@@ -260,7 +264,7 @@ LUIS quota is de beperking van de Azure-abonnementweergave. Het quotum voor de L
 
 ## <a name="schema"></a>Schema
 
-Uw schema bevat uw intentie en entiteiten samen met de subentiteiten. Het schema wordt in eerste instantie gepland voor en vervolgens na verloop van tijd. Het schema bevat geen app-instellingen, functies of voor beeld-uitingen. 
+Uw schema bevat uw intentie en entiteiten samen met de subentiteiten. Het schema wordt in eerste instantie gepland voor en vervolgens na verloop van tijd. Het schema bevat geen app-instellingen, functies of voor beeld-uitingen.
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 Sentiment analyse biedt positieve of negatieve waarden van de uitingen die worden geleverd door [Text Analytics](../text-analytics/overview.md).

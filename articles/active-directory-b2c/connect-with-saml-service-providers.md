@@ -8,22 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 38c98a65ac0b0f95a9a6e111a79b5dede04912c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 543320adb490ff51b0394fb26137ebc977d2c04b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229745"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679565"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
 In dit artikel leert u hoe u Azure Active Directory B2C (Azure AD B2C) kunt configureren om te fungeren als een Security Assertion Markup Language (SAML)-ID-provider (IdP) voor uw toepassingen.
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
@@ -90,9 +88,9 @@ Als u nog geen certificaat hebt, kunt u een zelfondertekend certificaat gebruike
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Open **gebruikers certificaten** > beheren**huidige gebruiker** > **persoonlijke** > **certificaten** > *yourappname.yourtenant.onmicrosoft.com*
-1. Selecteer de **actie** > certificaat >**alle taken** > **exporteren**
-1. Selecteer **Ja** > **volgende** > **Ja, de persoonlijke sleutel** > exporteren**volgende**
+1. Open **gebruikers certificaten beheren**  >  **huidige gebruiker**  >  **persoonlijke**  >  **certificaten**  >  *yourappname.yourtenant.onmicrosoft.com*
+1. Selecteer de **actie**certificaat >  >  **alle taken**  >  **exporteren**
+1. Selecteer **Ja**  >  **volgende**  >  **Ja, de persoonlijke sleutel exporteren**  >  **volgende**
 1. De standaard instellingen voor de **export bestands indeling** accepteren
 1. Geef een wacht woord op voor het certificaat
 
@@ -102,7 +100,7 @@ Upload vervolgens de SAML-verklaring en het handtekening certificaat voor antwoo
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar uw Azure AD B2C-Tenant.
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework** en vervolgens **beleids sleutels**.
-1. Selecteer **toevoegen**en selecteer vervolgens **Opties** > **uploaden**.
+1. Selecteer **toevoegen**en selecteer vervolgens **Opties**  >  **uploaden**.
 1. Voer een **naam**in, bijvoorbeeld *SamlIdpCert*. De prefix *B2C_1A_* wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Upload uw certificaat met het besturings element voor het uploaden van bestanden.
 1. Voer het wacht woord voor het certificaat in.
@@ -178,7 +176,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Voeg het volgende XML-fragment net `<RelyingParty>` vóór het element toe. Met deze XML wordt de indelings stap nummer 7 van de _SignUpOrSignIn_ -gebruikers traject overschreven. Als u bent begonnen vanuit een andere map in het eerste pakket of als u uw gebruikers traject hebt aangepast door het toevoegen of verwijderen van de indelings stappen, moet `order` u ervoor zorgen dat het aantal (in het element) is uitgelijnd met het nummer dat is opgegeven in de gebruikers traject voor de stap van de uitgever van het token (bijvoorbeeld `LocalAccounts`in de andere `SocialAccounts` Starter Pack- `SocialAndLocalAccountsWithMfa`mappen, de stap nummer 4 voor,
+1. Voeg het volgende XML-fragment net vóór het `<RelyingParty>` element toe. Met deze XML wordt de indelings stap nummer 7 van de _SignUpOrSignIn_ -gebruikers traject overschreven. Als u bent begonnen vanuit een andere map in het eerste pakket of als u uw gebruikers traject hebt aangepast door het toevoegen of verwijderen van de indelings stappen, moet u ervoor zorgen dat het aantal (in het `order` element) is uitgelijnd met het nummer dat is opgegeven in de gebruikers traject voor de stap van de uitgever van het token (bijvoorbeeld in de andere Starter Pack-mappen, de stap nummer 4 voor `LocalAccounts` , `SocialAccounts` `SocialAndLocalAccountsWithMfa`
 
     ```XML
     <UserJourneys>
@@ -259,7 +257,7 @@ Het uiteindelijke Relying Party-beleids bestand moet er als volgt uitzien:
 
 Sla de wijzigingen op en upload het nieuwe beleids bestand. Nadat u beide beleids regels (de extensie en de Relying Party bestanden) hebt geüpload, opent u een webbrowser en navigeert u naar de meta gegevens van het beleid.
 
-Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang `tenant-name` door de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid:
+Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang door `tenant-name` de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (id) van het beleid:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -269,13 +267,13 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 uw toepassing registreren in Azure Active Directory
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1*.
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**
-1. Onder **omleidings-URI**selecteert u **Web**en `https://localhost`voert u in. U wijzigt deze waarde later in het manifest van de toepassings registratie.
+1. Onder **omleidings-URI**selecteert u **Web**en voert u in `https://localhost` . U wijzigt deze waarde later in het manifest van de toepassings registratie.
 1. Selecteer **Registreren**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 het app-manifest bijwerken
@@ -287,7 +285,7 @@ Voor SAML-apps zijn er verschillende eigenschappen die u moet configureren in he
 
 #### <a name="identifieruris"></a>identifierUris
 
-De `identifierUris` is een teken reeks verzameling met door de gebruiker gedefinieerde URI (s) die een web-app in een eigen Azure AD B2C Tenant identificeren. Uw service provider moet deze waarde instellen in het `Issuer` -element van een SAML-aanvraag.
+De `identifierUris` is een teken reeks verzameling met door de gebruiker gedefinieerde URI (s) die een web-app in een eigen Azure AD B2C Tenant identificeren. Uw service provider moet deze waarde instellen in het- `Issuer` element van een SAML-aanvraag.
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -297,7 +295,7 @@ De meta gegevens worden in het SAML-protocol gebruikt om de configuratie van een
 
 Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd**. De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
 
-Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u `samlMetadataUrl`de volgende waarde voor:
+Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u de volgende waarde voor `samlMetadataUrl` :
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -305,11 +303,11 @@ Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u 
 
 #### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (optioneel)
 
-Als u geen URI voor meta gegevens opgeeft, kunt u de antwoord-URL expliciet opgeven. Deze optionele eigenschap vertegenwoordigt de `AssertionConsumerServiceUrl` (`SingleSignOnService` URL in de meta gegevens van de service provider `BindingType` ) en wordt ervan `HTTP POST`uitgegaan dat deze is.
+Als u geen URI voor meta gegevens opgeeft, kunt u de antwoord-URL expliciet opgeven. Deze optionele eigenschap vertegenwoordigt de `AssertionConsumerServiceUrl` ( `SingleSignOnService` URL in de meta gegevens van de service provider) en `BindingType` wordt ervan uitgegaan dat deze is `HTTP POST` .
 
 Als u ervoor kiest om de antwoord-URL en afmeldings-URL in het manifest van de toepassing te configureren zonder de meta gegevens van de service provider te gebruiken, wordt de SAML-aanvraag hand tekening niet door Azure AD B2C gevalideerd en versleutelt het SAML-antwoord niet.
 
-Voor deze zelf studie, waarin u de SAML-test toepassing gebruikt, stelt `url` u de `replyUrlsWithType` eigenschap in op de waarde die wordt weer gegeven in het volgende JSON-code fragment.
+Voor deze zelf studie, waarin u de SAML-test toepassing gebruikt, stelt u de `url` eigenschap in `replyUrlsWithType` op de waarde die wordt weer gegeven in het volgende JSON-code fragment.
 
 ```JSON
 "replyUrlsWithType":[
@@ -322,9 +320,9 @@ Voor deze zelf studie, waarin u de SAML-test toepassing gebruikt, stelt `url` u 
 
 #### <a name="logouturl-optional"></a>logoutUrl (optioneel)
 
-Deze optionele eigenschap vertegenwoordigt de `Logout` URL (`SingleLogoutService` URL in de Relying Party meta gegevens) en er `BindingType` wordt van uitgegaan dat deze `Http-Redirect`is.
+Deze optionele eigenschap vertegenwoordigt de `Logout` URL ( `SingleLogoutService` URL in de Relying Party meta gegevens) en `BindingType` Er wordt van uitgegaan dat deze is `Http-Redirect` .
 
-Voor deze zelf studie, waarin de SAML-test toepassing wordt `logoutUrl` gebruikt, `https://samltestapp2.azurewebsites.net/logout`moet u instellen op:
+Voor deze zelf studie, waarin de SAML-test toepassing wordt gebruikt, moet `logoutUrl` u instellen op `https://samltestapp2.azurewebsites.net/logout` :
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

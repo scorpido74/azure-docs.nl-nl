@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681431"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
 
@@ -28,7 +28,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 ### <a name="install-the-az-aro-extension"></a>De ' AZ Aro-extensie installeren
-Met `az aro` de extensie kunt u Azure Red Hat open Shift-clusters rechtstreeks maken, openen en verwijderen vanaf de opdracht regel met behulp van de Azure cli.
+`az aro`Met de extensie kunt u Azure Red Hat open Shift-clusters rechtstreeks maken, openen en verwijderen vanaf de opdracht regel met behulp van de Azure cli.
 
 Voer de volgende opdracht uit om de `az aro` extensie te installeren.
 
@@ -77,7 +77,7 @@ Met een Red Hat pull-geheim kan uw cluster toegang krijgen tot Red Hat-container
 
 Bewaar het opgeslagen `pull-secret.txt` bestand ergens anders. het wordt gebruikt bij het maken van een cluster.
 
-Wanneer u de `az aro create` opdracht uitvoert, kunt u naar uw pull-geheim `--pull-secret @pull-secret.txt` verwijzen met behulp van de para meter. Voer `az aro create` uit in de map waar u het `pull-secret.txt` bestand hebt opgeslagen. Vervang `@pull-secret.txt` anders door `@<path-to-my-pull-secret-file`.
+Wanneer u de `az aro create` opdracht uitvoert, kunt u naar uw pull-geheim verwijzen met behulp van de `--pull-secret @pull-secret.txt` para meter. Voer `az aro create` uit in de map waar u het `pull-secret.txt` bestand hebt opgeslagen. Vervang anders door `@pull-secret.txt` `@<path-to-my-pull-secret-file` .
 
 Als u uw pull-geheim kopieert of naar een ander script verwijst, moet uw pull-geheim worden geformatteerd als een geldige JSON-teken reeks.
 
@@ -194,7 +194,9 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet
+  --worker-subnet worker-subnet \
+  --apiserver-visibility Private \
+  --ingress-visibility Private
   # --domain foo.example.com # [OPTIONAL] custom domain
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
@@ -202,13 +204,13 @@ az aro create \
 Nadat de `az aro create` opdracht is uitgevoerd, duurt het ongeveer 35 minuten om een cluster te maken.
 
 >[!IMPORTANT]
-> Als u ervoor kiest om een aangepast domein op te geven, bijvoorbeeld **foo.example.com**, is de open Shift-console beschikbaar op een URL `https://console-openshift-console.apps.foo.example.com`, zoals in plaats van het ingebouwde domein `https://console-openshift-console.apps.<random>.<location>.aroapp.io`.
+> Als u ervoor kiest om een aangepast domein op te geven, bijvoorbeeld **foo.example.com**, is de open Shift-console beschikbaar op een URL `https://console-openshift-console.apps.foo.example.com` , zoals in plaats van het ingebouwde domein `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Open SHIFT maakt standaard gebruik van zelfondertekende certificaten voor alle routes die zijn gemaakt `*.apps.<random>.<location>.aroapp.io`op.  Als u aangepaste DNS kiest nadat u verbinding hebt gemaakt met het cluster, moet u de open Shift-documentatie volgen om [een aangepaste certificerings instantie voor uw ingangs controller](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) en [aangepaste certificerings instantie voor uw API-server](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)te configureren.
+> Open SHIFT maakt standaard gebruik van zelfondertekende certificaten voor alle routes die zijn gemaakt op `*.apps.<random>.<location>.aroapp.io` .  Als u aangepaste DNS kiest nadat u verbinding hebt gemaakt met het cluster, moet u de open Shift-documentatie volgen om [een aangepaste certificerings instantie voor uw ingangs controller](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) en [aangepaste certificerings instantie voor uw API-server](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)te configureren.
 
 ## <a name="connect-to-the-private-cluster"></a>Verbinding maken met het persoonlijke cluster
 
-U kunt zich aanmelden bij het cluster met `kubeadmin` behulp van de gebruiker.  Voer de volgende opdracht uit om het wacht woord voor `kubeadmin` de gebruiker te zoeken.
+U kunt zich aanmelden bij het cluster met behulp van de `kubeadmin` gebruiker.  Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -216,7 +218,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht `kubeadminPassword`woord in wordt weer gegeven.
+In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
 
 ```json
 {
@@ -237,7 +239,7 @@ U kunt de URL van de cluster console vinden door de volgende opdracht uit te voe
 >[!IMPORTANT]
 > Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Start de console-URL in een browser en meld u `kubeadmin` aan met de referenties.
+Start de console-URL in een browser en meld u aan met de `kubeadmin` referenties.
 
 ![Aanmeldings scherm van Azure Red Hat open Shift](media/aro4-login.png)
 
@@ -247,7 +249,7 @@ Zodra u bent aangemeld bij de open Shift-webconsole, klikt u op de **?** in de r
 
 ![Aanmeldings scherm van Azure Red Hat open Shift](media/aro4-download-cli.png)
 
-U kunt ook de meest recente versie van de CLI die geschikt is voor uw <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>computer, downloaden van.
+U kunt ook de meest recente versie van de CLI die geschikt is voor uw computer, downloaden van <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 
 ## <a name="connect-using-the-openshift-cli"></a>Verbinding maken met behulp van open Shift CLI
 
@@ -260,7 +262,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Meld u aan bij de API-server van het open Shift-cluster met de volgende opdracht. Vervang ** \<kubeadmin Password>** door het wacht woord dat u zojuist hebt opgehaald.
+Meld u aan bij de API-server van het open Shift-cluster met de volgende opdracht. Vervang ** \< kubeadmin Password>** door het wacht woord dat u zojuist hebt opgehaald.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
@@ -273,7 +275,7 @@ In dit artikel is een Azure Red Hat open Shift-cluster met open Shift 4 geïmple
 > [!div class="checklist"]
 > * Stel de vereisten in en maak het vereiste virtuele netwerk en subnetten
 > * Een cluster implementeren
-> * Verbinding maken met het cluster met `kubeadmin` behulp van de gebruiker
+> * Verbinding maken met het cluster met behulp van de `kubeadmin` gebruiker
 
 Ga naar het volgende artikel voor meer informatie over het configureren van het cluster voor verificatie met behulp van Azure Active Directory.
 

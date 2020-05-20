@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891521"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680386"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,15 +114,9 @@ Als u quota's op het niveau van de werk ruimte wilt instellen, gaat u naar een w
 
 ## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota's weer geven
 
-Het weer geven van uw quotum voor verschillende bronnen, zoals Virtual Machines, opslag, netwerk, is eenvoudig via de Azure Portal.
+Azure Machine Learning Compute wordt onafhankelijk van andere Azure-resource quota's in uw abonnement beheerd. Als u dit quotum wilt weer geven, moet u inzoomen op Machine Learning Services.  
 
-1. Selecteer in het linkerdeel venster **alle services** en selecteer vervolgens **abonnementen** onder de categorie Algemeen.
-
-1. Selecteer in de lijst met abonnementen het abonnement waarvoor u het quotum zoekt.
-
-   **Er is een voor behoud**, specifiek voor het weer geven van de Azure machine learning reken quota. Zoals hierboven vermeld, wordt het quotum gescheiden van het reken quotum van uw abonnement.
-
-1. Selecteer **machine learning service** in het linkerdeel venster en selecteer vervolgens een werk ruimte in de lijst die wordt weer gegeven
+1. Selecteer **machine learning service** in het linkerdeel venster en selecteer vervolgens een wille keurige werk ruimte in de lijst die wordt weer gegeven.
 
 1. Selecteer op de volgende Blade onder de **sectie ondersteuning en probleem oplossing** de optie **gebruik en quota's** om uw huidige quotum limieten en het gebruik te bekijken.
 
@@ -132,6 +126,12 @@ Het weer geven van uw quotum voor verschillende bronnen, zoals Virtual Machines,
     + **Abonnementweergave:** Op deze manier kunt u het gebruik van kern quota per VM-serie weer geven, uitbreiden door de werk ruimte en het uitbreiden door de daad werkelijke cluster namen. Deze weer gave is optimaal voor het snel ophalen van de details van het kern gebruik voor een bepaalde VM-familie om het opsplitsen van werk ruimten en de onderliggende clusters voor elk van deze werk ruimten te bekijken. De algemene conventie in deze weer gave is (gebruik/quotum), waarbij het gebruik het huidige aantal geschaalde kernen is en het quotum het logische maximum aantal kernen is waarmee de resource kan worden geschaald. Voor elke **werk ruimte**zou het quotum de quota voor het niveau van de werk ruimte zijn (zoals hierboven beschreven). Hiermee wordt het maximum aantal kernen aangegeven dat kan worden geschaald naar een bepaalde VM-serie. Voor een **cluster** op dezelfde manier is het quotum feitelijk de kernen die overeenkomen met het maximum aantal knoop punten dat door het cluster kan worden geschaald, zoals gedefinieerd door de eigenschap max_nodes.
 
     + **Werkruimte weergave:** Zo kunt u het gebruik van kern quota per werk ruimte weer geven, deze uitbreiden door de VM-serie en het uitbreiden door de daad werkelijke cluster namen. Deze weer gave is optimaal voor het snel ophalen van de details van het kern gebruik voor een bepaalde werk ruimte om de opsplitsing van VM-families en de onderliggende clusters voor elk van deze families te bekijken.
+
+Het weer geven van uw quota voor verschillende andere Azure-resources, zoals Virtual Machines, opslag, netwerk, is eenvoudig via de Azure Portal.
+
+1. Selecteer in het linkerdeel venster **alle services** en selecteer vervolgens **abonnementen** onder de categorie Algemeen.
+
+1. Selecteer in de lijst met abonnementen het abonnement waarvoor u het quotum zoekt.
 
 ## <a name="request-quota-increases"></a>Verhogingen van quotum aanvragen
 

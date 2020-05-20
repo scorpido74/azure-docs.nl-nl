@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231761"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682447"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -80,7 +80,7 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 ## <a name="using-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 Als u een Azure-bestandsshare met Windows wilt gebruiken, moet u deze koppelen, wat betekent dat u er een stationsletter of koppelingspunt aan moet toewijzen. U kunt ook toegang krijgen tot de share via het [UNC-pad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-In tegenstelling tot andere SMB-shares waarmee u mogelijk te maken hebt gehad, zoals die worden gehost op een Windows Server, Linux Samba-server of NAS-apparaat, ondersteunt Azure-bestandsshares momenteel geen Kerberos-verificatie met uw Active Directory- (AD) of Azure Active Directory-identiteit (AAD). Er wordt momenteel aan deze functie [gewerkt](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). In plaats daarvan krijgt u toegang tot uw Azure-bestandsshare met de opslagaccountsleutel van het opslagaccount dat uw Azure-bestandsshare bevat. Een sleutel voor een opslag account is een beheerders sleutel voor een opslag account, met inbegrip van beheerders machtigingen voor alle bestanden en mappen in de bestands share waartoe u toegang hebt, en voor alle bestands shares en andere opslag resources (blobs, wacht rijen, tabellen, enzovoort) die zijn opgenomen in uw opslag account. Als dit niet voldoende is voor uw werkbelasting, is [Azure File Sync](storage-sync-files-planning.md) in de tussentijd mogelijk de oplossing voor het gebrek aan Kerberos-verificatie en ACL-ondersteuning, tot Kerberos-verificatie op basis van AAD- en ACL-ondersteuning openbaar beschikbaar is.
+In dit artikel wordt de sleutel van het opslag account gebruikt om toegang te krijgen tot de bestands share. Een sleutel voor een opslag account is een beheerders sleutel voor een opslag account, met inbegrip van beheerders machtigingen voor alle bestanden en mappen in de bestands share waartoe u toegang hebt, en voor alle bestands shares en andere opslag resources (blobs, wacht rijen, tabellen, enzovoort) die zijn opgenomen in uw opslag account. Als dit niet voldoende is voor uw werk belasting, kan [Azure file sync](storage-sync-files-planning.md) worden gebruikt of kunt u [verificatie op basis van identiteiten via SMB](storage-files-active-directory-overview.md)gebruiken.
 
 Een algemeen patroon om Line-Of-Business-toepassingen die een SMB-bestandsshare van Azure verwachten te verplaatsen, is om een Azure-bestandsshare te gebruiken als alternatief voor het uitvoeren van een toegewezen Windows-bestandsserver in een virtuele Azure-machine. Als u een Line-Of-Business-toepassing succesvol wilt migreren zodat deze een Azure-bestandsshare gebruikt, is een belangrijk aandachtspunt dat veel Line-of-Business-toepassingen worden uitgevoerd in de context van een toegewezen serviceaccount met beperkte systeemmachtigingen, in plaats van het beheerdersaccount van de virtuele machine. U moet er daarom voor zorgen dat u de referenties voor de Azure-bestandsshare koppelt/opslaat in de context van een serviceaccount in plaats van uw beheerdersaccount.
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Een schermafbeelding van de vervolgkeuzelijst 'Netwerkverbinding maken'](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Selecteer de stationsletter en voer het UNC-pad in, de indeling van het `<storageAccountName>.file.core.windows.net/<fileShareName>`UNC-pad. Bijvoorbeeld: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Selecteer de stationsletter en voer het UNC-pad in, de indeling van het UNC-pad `<storageAccountName>.file.core.windows.net/<fileShareName>` . Bijvoorbeeld: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![Een schermafbeelding van het dialoogvenster 'Netwerkverbinding maken'](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

@@ -8,12 +8,13 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: monitoring
+ms.openlocfilehash: e9abb2ded5465d4b245f4c9bcfab921444d41fa2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118155"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684920"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Naslag informatie over Azure Storage bewakings gegevens
 
@@ -31,13 +32,13 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="account-level"></a>Account niveau
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 #### <a name="blob-storage"></a>Blob Storage
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | BlobCapacity | Het totaal van de Blob-opslag die in het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
 | BlobCount    | Het aantal BLOB-objecten dat is opgeslagen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
@@ -46,7 +47,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="table-storage"></a>Table Storage
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | TableCapacity | De hoeveelheid tabel opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | TableCount   | Het aantal tabellen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -54,7 +55,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="queue-storage"></a>Queue Storage
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | QueueCapacity | De hoeveelheid wachtrij opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | QueueCount   | Het aantal wacht rijen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -62,7 +63,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="file-storage"></a>File Storage
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | FileCapacity | De hoeveelheid bestands opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | FileCount   | Het aantal bestanden in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -74,7 +75,7 @@ Metrische gegevens over trans acties worden verzonden voor elke aanvraag naar ee
 
 Azure Storage levert de volgende metrische gegevens over trans acties in Azure Monitor.
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | Transacties | Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Toepasselijke dimensies: ResponseType, geotype, ApiName en Authentication ([definitie](#metrics-dimensions))<br/> Waarde-voor beeld: 1024 |
 | Inkomend verkeer | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |

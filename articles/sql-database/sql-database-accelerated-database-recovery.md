@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-ms.date: 03/24/2020
-ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: f259d423f465d93031c3a72855fd7aac4e320573
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684971"
 ---
 # <a name="accelerated-database-recovery"></a>Versneld database herstel
 
@@ -33,7 +33,7 @@ ms.locfileid: "80238666"
 
   Met ADR wordt het transactie logboek agressief afgekapt, zelfs in de aanwezigheid van actieve langlopende trans acties, waardoor het niet mogelijk is om de controle te vervolledigen.
 
-## <a name="the-current-database-recovery-process"></a>Het huidige herstel proces van de data base
+## <a name="standard-database-recovery-process"></a>Standaard database herstel proces
 
 Het herstel van de data base in SQL Server volgt het [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) -herstel model en bestaat uit drie fasen, die in het volgende diagram worden geïllustreerd en uitvoeriger worden beschreven in het diagram.
 
@@ -95,7 +95,7 @@ De vier belangrijkste onderdelen van ADR zijn:
 
 - **Permanente versie opslag (PVS)**
 
-  De permanente versie opslag is een nieuw SQL database engine mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in `tempdb` plaats van in de traditionele versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
+  De permanente versie opslag is een nieuw SQL database engine mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in plaats van in de traditionele `tempdb` versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
 
 - **Logische terugzet actie**
 

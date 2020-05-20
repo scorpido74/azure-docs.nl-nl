@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477167"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682711"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische hand leiding voor het oplossings sjabloon voor predictief onderhoud in lucht vaart
 
@@ -91,7 +91,7 @@ Voor de oplossings sjabloon voor voor speld onderhoud bestaat de Azure Stream An
 De Azure Stream Analytics query kan worden gevonden door:
 
 * Verbinding maken met de Azure Portal
-* Zoeken naar het Stream Analytics- ![taak stream Analytics](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) pictogram dat is gegenereerd toen de oplossing werd geïmplementeerd (*bijvoorbeeld* **maintenancesa02asapbi** en **maintenancesa02asablob** voor de oplossing voor voor speld onderhoud)
+* Zoeken naar het Stream Analytics- ![ taak stream Analytics pictogram ](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) dat is gegenereerd toen de oplossing werd geïmplementeerd (*bijvoorbeeld* **maintenancesa02asapbi** en **maintenancesa02asablob** voor de oplossing voor voor speld onderhoud)
 * Selecteren
   
   * ***Invoer voor het*** weer geven van de query-invoer
@@ -113,7 +113,7 @@ In deze sectie worden de benodigde [pijp lijnen en activiteiten](../../data-fact
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Twee van de pijp lijnen van deze Factory bevatten [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript\\\\-\\\\script\\ \\ Hive (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
+Twee van de pijp lijnen van deze Factory bevatten [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript \\ \\ \\ \\ -script Hive \\ \\ (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
 
 Net als bij [Azure stream Analytics](#azure-stream-analytics-1) query's hebben de [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -scripts impliciete kennis over de binnenkomende gegevens indeling en moeten ze worden gewijzigd op basis van uw gegevens indeling.
 
@@ -142,7 +142,7 @@ Het [Azure machine learning](https://azure.microsoft.com/services/machine-learni
 Zodra de gegevens Generator is gestart, begint de pijp lijn te gedehydrateerd en de verschillende onderdelen van uw oplossing beginnen met het uitvoeren van de opdrachten die worden verstrekt door de data factory. Er zijn twee manieren om de pijp lijn te bewaken.
 
 * Met een van de Stream Analytics Jobs worden de onbewerkte binnenkomende gegevens naar Blob-opslag geschreven. Als u in het scherm op Blob Storage onderdeel van uw oplossing klikt en vervolgens in het rechterdeel venster op openen klikt, gaat u naar de [Azure Portal](https://portal.azure.com/). Klik daarna op blobs. In het volgende deel venster ziet u een lijst met containers. Klik op **maintenancesadata**. In het volgende deel venster vindt u de map **rawdata** . In de map rawdata zijn mappen met namen zoals Hour = 17 en uur = 18. De aanwezigheid van deze mappen geeft aan dat onbewerkte gegevens op uw computer worden gegenereerd en opgeslagen in Blob Storage. U ziet CSV-bestanden met een eindige grootte in MB in deze mappen.
-* De laatste stap van de pijp lijn is het schrijven van gegevens (bijvoorbeeld voor spelling van machine learning) naar SQL Database. Mogelijk moet u Maxi maal drie uur wachten tot de gegevens worden weer gegeven in SQL Database. Een manier om te controleren hoeveel gegevens er in uw SQL Database beschikbaar zijn, is via de [Azure Portal](https://portal.azure.com/). Zoek in het linkerdeel venster SQL-data ![bases](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) SQL-pictogram en klik erop. Zoek vervolgens de **pmaintenancedb** van de data base en klik erop. Klik op de volgende pagina onderaan op beheren.
+* De laatste stap van de pijp lijn is het schrijven van gegevens (bijvoorbeeld voor spelling van machine learning) naar SQL Database. Mogelijk moet u Maxi maal drie uur wachten tot de gegevens worden weer gegeven in SQL Database. Een manier om te controleren hoeveel gegevens er in uw SQL Database beschikbaar zijn, is via de [Azure Portal](https://portal.azure.com/). Zoek in het linkerdeel venster SQL-data BASEs ![ SQL-pictogram ](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) en klik erop. Zoek vervolgens de **pmaintenancedb** van de data base en klik erop. Klik op de volgende pagina onderaan op beheren.
    
     ![Pictogram beheren](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -159,7 +159,7 @@ Power BI maakt verbinding met een Azure SQL Database als de bijbehorende gegeven
 
 Opmerking: 
 1.    Bij het implementeren van uw oplossing wordt binnen drie uur een voor spelling in de Data Base weer gegeven. Het pbix-bestand dat is meegeleverd met de generator van het pakket bevat enkele seed-gegevens, zodat u het dash board van Power BI direct kunt maken. 
-2.    In deze stap is het vereist dat u de gratis software [Power bi bureau blad](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)downloadt en installeert.
+2.    In deze stap is het vereist dat u de gratis software [Power bi bureau blad](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)downloadt en installeert.
 
 De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQL Database die is opgetreden op het moment van de oplossings implementatie met gegevens (bijvoorbeeld Voorspellings resultaten) voor visualisatie.
 
@@ -169,29 +169,29 @@ De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQ
    
    * Zodra de **Azure SQL database** in het diagram van de oplossings sjabloon groen wordt, klikt u erop en klikt u vervolgens op **openen**.
    * Er wordt een nieuw browser tabblad/-venster weer gegeven met de Azure Portal-pagina. Klik op **resource groepen** in het linkerdeel venster.
-   * Selecteer het abonnement dat u gebruikt voor het implementeren van de oplossing en selecteer vervolgens **'\_YourSolutionName ResourceGroup '**.
-   * Klik in het nieuwe deel venster pop-out ![op het](./media/predictive-maintenance-technical-guide/icon-sql.png) pictogram SQL-pictogrammen om toegang te krijgen tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '**) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net**.
+   * Selecteer het abonnement dat u gebruikt voor het implementeren van de oplossing en selecteer vervolgens **' YourSolutionName \_ ResourceGroup '**.
+   * Klik in het nieuwe deel venster pop-out op het pictogram ![ SQL-pictogrammen ](./media/predictive-maintenance-technical-guide/icon-sql.png) om toegang te krijgen tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '**) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net**.
    * De **gebruikers** naam en het **wacht woord** voor de Data Base zijn hetzelfde als de gebruikers naam en het wacht woord die eerder zijn vastgelegd tijdens de implementatie van de oplossing.
 2. Werk de gegevens bron van het rapport bestand met koude paden bij met Power BI Desktop.
    
-   * Dubbel klik in de map waar u het generator bestand hebt gedownload en uitgepakt op het **bestand\\PowerBI PredictiveMaintenanceAerospace. pbix** . Als er waarschuwings berichten worden weer gegeven wanneer u het bestand opent, negeert u deze. Klik boven aan het bestand op **Query's bewerken**.
+   * Dubbel klik in de map waar u het generator bestand hebt gedownload en uitgepakt op het bestand **PowerBI \\ PredictiveMaintenanceAerospace. pbix** . Als er waarschuwings berichten worden weer gegeven wanneer u het bestand opent, negeert u deze. Klik boven aan het bestand op **Query's bewerken**.
      
      ![Query's bewerken](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * U ziet twee tabellen, **RemainingUsefulLife** en **PMResult**. Selecteer de eerste tabel en klik ![op het pictogram](./media/predictive-maintenance-technical-guide/icon-query-settings.png) query instellingen naast **bron** onder **toegepaste stappen** in het rechterdeel venster **' query instellingen '** . Waarschuwings berichten negeren die worden weer gegeven.
+   * U ziet twee tabellen, **RemainingUsefulLife** en **PMResult**. Selecteer de eerste tabel en klik op ![ het pictogram query instellingen ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) naast **bron** onder **toegepaste stappen** in het rechterdeel venster **' query instellingen '** . Waarschuwings berichten negeren die worden weer gegeven.
    * Vervang in het venster pop-out **' server '** en **' data base '** door uw eigen server-en database namen en klik vervolgens op **OK**. Zorg ervoor dat u voor de server naam de poort 1433 (**YourSolutionName.database.Windows.net, 1433**) opgeeft. Verlaat het veld Data Base als **pmaintenancedb**. De waarschuwings berichten negeren die op het scherm worden weer gegeven.
    * In het volgende pop-out venster ziet u twee opties in het linkerdeel venster (**Windows** en **Data Base**). Klik op **Data Base**, vul uw **gebruikers naam** en **wacht** woord in (de gebruikers naam en het wacht woord die u hebt ingevoerd toen u de oplossing voor het eerst implementeerde en een Azure SQL database hebt gemaakt). Controleer de optie database niveau in ***Selecteer welk niveau u deze instellingen wilt Toep assen op***. Klik vervolgens op **verbinding maken**.
-   * Klik op de tweede tabel **PMResult** en klik ![vervolgens op](./media/predictive-maintenance-technical-guide/icon-navigation.png) navigatie pictogram naast **' Bron '** onder **' toegepaste stappen '** in het rechterdeel venster ' **query instellingen** ' en werk de namen van de server en de data base bij, zoals in de bovenstaande stappen. Klik vervolgens op OK.
+   * Klik op de tweede tabel **PMResult** en klik vervolgens op ![ Navigatie pictogram ](./media/predictive-maintenance-technical-guide/icon-navigation.png) naast **' Bron '** onder **' toegepaste stappen '** in het rechterdeel venster ' **query instellingen** ' en werk de namen van de server en de data base bij, zoals in de bovenstaande stappen. Klik vervolgens op OK.
    * Nadat u de vorige pagina hebt weer gegeven, sluit u het venster. Er wordt een bericht weer gegeven: Klik op **Toep assen**. Klik ten slotte op de knop **Opslaan** om de wijzigingen op te slaan. Uw Power BI-bestand heeft nu verbinding gemaakt met de server. Als uw visualisaties leeg zijn, moet u de selecties op de visualisaties wissen om alle gegevens te visualiseren door te klikken op het pictogram gum in de rechter bovenhoek van de legenda's. Gebruik de knop Vernieuwen om nieuwe gegevens in de visualisaties weer te geven. In eerste instantie worden alleen de seedgegevens in uw visualisaties weer gegeven, omdat de data factory is gepland om elke 3 uur te vernieuwen. Na 3 uur ziet u nieuwe voor spellingen die worden weer gegeven in uw visualisaties Wanneer u de gegevens vernieuwt.
 3. Beschrijving Publiceer het dash board koud pad om [online te Power bi](https://www.powerbi.com/). Voor deze stap hebt u een Power BI account (of een Office 365-account) nodig.
    
    * Klik op **publiceren** en een paar seconden later verschijnt een venster met de weer gave ' publiceren naar Power bi slagen! '. met een groen vinkje. Klik op de koppeling onder "open PredictiveMaintenanceAerospace. pbix in Power BI". Zie [publiceren vanuit Power bi Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)voor gedetailleerde instructies.
-   * Als u een nieuw dash board wilt maken **+** , klikt u op het teken naast het gedeelte **Dash boards** in het linkerdeel venster. Voer de naam ' demo voor voor speld onderhoud ' in voor dit nieuwe dash board.
-   * Zodra u het rapport hebt geopend, ![klikt u](./media/predictive-maintenance-technical-guide/icon-pin.png) op het pictogram vastmaken om alle visualisaties aan uw dash board vast te maken. Zie [een tegel vastmaken aan een Power bi-dash board vanuit een rapport](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)om gedetailleerde instructies te vinden.
+   * Als u een nieuw dash board wilt maken, klikt u op het **+** teken naast het gedeelte **Dash boards** in het linkerdeel venster. Voer de naam ' demo voor voor speld onderhoud ' in voor dit nieuwe dash board.
+   * Zodra u het rapport hebt geopend, klikt u op het ![ pictogram vastmaken ](./media/predictive-maintenance-technical-guide/icon-pin.png) om alle visualisaties aan uw dash board vast te maken. Zie [een tegel vastmaken aan een Power bi-dash board vanuit een rapport](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)om gedetailleerde instructies te vinden.
      Ga naar de dashboard pagina en pas de grootte en locatie van uw visualisaties aan en bewerk de titels. Zie [een tegel bewerken--formaat wijzigen, verplaatsen, naam wijzigen, vastmaken, verwijderen, Hyper Link toevoegen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)voor gedetailleerde instructies voor het bewerken van uw tegels. Hier volgt een voor beeld van een dash board met enkele visualisaties met koude paden die hieraan zijn vastgemaakt.  Afhankelijk van hoe lang u uw gegevens Generator uitvoert, kunnen uw getallen in de visualisaties anders zijn.
      <br/>
      ![Laatste weer gave](./media/predictive-maintenance-technical-guide/final-view.png)
      <br/>
-   * Als u de gegevens wilt vernieuwen, houdt u de muis aanwijzer over de **PredictiveMaintenanceAerospace** - ![gegevensset, klikt](./media/predictive-maintenance-technical-guide/icon-elipsis.png) u op pictogram met het weglatings teken en kiest u vervolgens **vernieuwen plannen**.
+   * Als u de gegevens wilt vernieuwen, houdt u de muis aanwijzer over de **PredictiveMaintenanceAerospace** -gegevensset, klikt u op ![ pictogram met het weglatings teken ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) en kiest u vervolgens **vernieuwen plannen**.
      <br/>
      > [!NOTE]
      > Als er een waarschuwings bericht wordt weer gegeven, klikt u op **referenties bewerken** en controleert u of de database referenties hetzelfde zijn als de gegevens die u in stap 1 hebt beschreven.
@@ -222,7 +222,7 @@ De volgende stappen begeleiden u bij het visualiseren van gegevens uitvoer van S
    * Klik op gegevensset **aircraftmonitor** in het gedeelte gegevens sets van het linkerdeel venster.
    * Klik op het pictogram **lijn diagram** .
    * Klik op **verwerkt** in het deel venster **velden** , zodat deze onder as wordt weer gegeven in het deel venster **Visualisaties** .
-   * Klik op "S11" en "\_S11-waarschuwing" zodat deze beide onder "waarden" worden weer gegeven. Klik op de kleine pijl naast **S11** - **en\_S11-waarschuwing**, Wijzig "Sum" in "Average".
+   * Klik op "S11" en "S11- \_ waarschuwing" zodat deze beide onder "waarden" worden weer gegeven. Klik op de kleine pijl naast **S11** -en **S11- \_ waarschuwing**, Wijzig "Sum" in "Average".
    * Klik bovenaan op **Opslaan** en noem het rapport ' aircraftmonitor '. Het rapport met de naam ' aircraftmonitor ' wordt weer gegeven in de sectie **rapporten** in het **Navigatie** deel venster aan de linkerkant.
    * Klik op het pictogram voor het **visuele element** in de rechter bovenhoek van dit lijn diagram. Het venster ' vastmaken aan dash board ' kan worden weer gegeven om een dash board te kiezen. Selecteer demo voor voor speld onderhoud en klik vervolgens op vastmaken.
    * Houd de muis aanwijzer boven deze tegel op het dash board en klik op het pictogram bewerken in de rechter bovenhoek om de titel te wijzigen in ' vloot weergave van sensor 11 versus drempel waarde 48,26 ' en ondertitel op ' gemiddeld over de hele periode '.

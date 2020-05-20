@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598764"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681660"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -57,7 +57,7 @@ De API voor het uploaden van gegevens is een langlopende trans actie die het hie
 
 4. Geef op het tabblad **headers** een waarde op voor de `Content-Type` sleutel. Het teken pakket is een gezipte map, dus gebruikt u de `application/octet-stream` waarde. Selecteer **binaire bestanden**op het tabblad **hoofd tekst** . Klik op **bestand selecteren** en kies een teken pakket.
 
-     ![gegevens beheer](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![gegevens beheer](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. Klik op de knop voor de blauwe **verzen ding** en wacht totdat de aanvraag is verwerkt. Zodra de aanvraag is voltooid, gaat u naar het tabblad **headers** van het antwoord. Kopieer de waarde van de **locatie** sleutel, die de bevat `status URL` .
 

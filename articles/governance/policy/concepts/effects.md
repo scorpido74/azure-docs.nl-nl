@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 03/23/2020
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80c69ec38a364238eb03e786c23cc927d6181062
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422459"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684318"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -21,7 +21,7 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 - [AuditIfNotExists](#auditifnotexists)
 - [Weigeren](#deny)
 - [DeployIfNotExists](#deployifnotexists)
-- [Geblokkeerd](#disabled)
+- [Uitgeschakeld](#disabled)
 - [EnforceOPAConstraint](#enforceopaconstraint) (preview-versie)
 - [EnforceRegoPolicy](#enforceregopolicy) (preview-versie)
 - [Wijzigen](#modify)
@@ -55,7 +55,7 @@ Append wordt gebruikt om extra velden toe te voegen aan de aangevraagde resource
 
 ### <a name="append-evaluation"></a>Evaluatie toevoegen
 
-Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[\*]** -versie van de alias.
+Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[ \* ]** -versie van de alias.
 
 Wanneer een beleids definitie die gebruikmaakt van het toevoeg effect wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
 
@@ -65,7 +65,7 @@ Een toevoeg effect heeft alleen een **detail** matrix, wat vereist is. Omdat **D
 
 ### <a name="append-examples"></a>Voor beelden toevoegen
 
-Voor beeld 1: een combi natie van één **veld/waarde** met een niet-**\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet-**[\*]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
+Voor beeld 1: een combi natie van één **veld/waarde** met een niet-**[ \* ]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet-**[ \* ]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
 
 ```json
 "then": {
@@ -80,7 +80,7 @@ Voor beeld 1: een combi natie van één **veld/waarde** met een niet-**\*[]** - 
 }
 ```
 
-Voor beeld 2: een combi natie van één **veld/waarde** met een **\*[]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **\*[]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
+Voor beeld 2: een combi natie van één **veld/waarde** met een **[ \* ]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **[ \* ]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
 
 ```json
 "then": {
@@ -97,7 +97,7 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **\*[]** - [alia
 
 ## <a name="modify"></a>Wijzigen
 
-Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Een wijzigings beleid moet altijd `mode` zijn ingesteld op _geïndexeerd_ tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Een wijzigings beleid moet altijd zijn `mode` ingesteld op _geïndexeerd_ tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
 
 > [!IMPORTANT]
 > Modify is momenteel alleen voor gebruik met tags. Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken.
@@ -131,7 +131,7 @@ De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die 
 De eigenschap array **Operations** maakt het mogelijk verschillende labels op verschillende manieren te wijzigen vanuit één beleids definitie. Elke bewerking bestaat uit **bewerking**-, **veld**-en **waarde** -eigenschappen. Bewerking bepaalt wat de herstel taak doet op de tags, het veld bepaalt welke tag wordt gewijzigd en waarde definieert de nieuwe instelling voor die tag. In het onderstaande voor beeld wordt de volgende tag gewijzigd:
 
 - Hiermee stelt `environment` u de tag in op test, zelfs als deze al met een andere waarde bestaat.
-- Hiermee verwijdert u `TempResource`de tag.
+- Hiermee verwijdert u de tag `TempResource` .
 - Hiermee stelt `Dept` u het label in op de beleids parameter voor de beleids toewijzing geconfigureerde _afdeling_ .
 
 ```json
@@ -166,7 +166,7 @@ De eigenschap **Operation** heeft de volgende opties:
 
 ### <a name="modify-examples"></a>Voor beelden wijzigen
 
-Voor beeld 1: Voeg `environment` de tag toe en `environment` Vervang bestaande tags door ' test ':
+Voor beeld 1: Voeg de `environment` tag toe en vervang bestaande `environment` Tags door ' test ':
 
 ```json
 "then": {
@@ -216,7 +216,7 @@ Weigeren wordt gebruikt om te voor komen dat een resource aanvraag die voldoet a
 
 ### <a name="deny-evaluation"></a>Evaluatie weigeren
 
-Wanneer u een overeenkomende resource maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)`. In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen.
+Wanneer u een overeenkomende resource maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)` . In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen.
 
 Tijdens de evaluatie van bestaande resources zijn bronnen die overeenkomen met een beleids definitie voor weigeren als niet-compatibel gemarkeerd.
 
@@ -273,7 +273,7 @@ De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigensc
   - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`dit zijn. In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` . In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
@@ -345,7 +345,7 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`dit zijn.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` .
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
@@ -372,7 +372,7 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
   - De standaard waarde is _ResourceGroup_.
 - **Implementatie** [vereist]
-  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan `Microsoft.Resources/deployments` de put-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
+  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` put-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
 
   > [!NOTE]
   > Alle functies in de **implementatie** -eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet het beleid. De uitzonde ring is de eigenschap **para meters** waarmee waarden van het beleid worden door gegeven aan de sjabloon. De **waarde** in deze sectie onder een sjabloon parameter naam wordt gebruikt om deze waarde door te geven (Zie _FullDbName_ in het DeployIfNotExists-voor beeld).
@@ -432,15 +432,15 @@ Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of t
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Dit effect wordt gebruikt in combi natie met *mode* de beleids `Microsoft.Kubernetes.Data`definitie modus van. Het wordt gebruikt voor het door geven van gate keeper-toegangs beheer regels die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) om de [beleids agent](https://www.openpolicyagent.org/) (opa) te openen voor zelf-beheerde Kubernetes-clusters in Azure.
+Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.Kubernetes.Data` . Het wordt gebruikt voor het door geven van Gate Keeping-regels voor toegangs beheer die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) voor Kubernetes-clusters in Azure.
 
 > [!NOTE]
-> [Azure Policy voor de AKS-engine](aks-engine.md) bevindt zich in de open bare preview en ondersteunt alleen ingebouwde beleids definities.
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities.
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
 
 De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
-Elke 5 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint-eigenschappen
 
@@ -449,13 +449,13 @@ De eigenschap **Details** van het effect EnforceOPAConstraint heeft de subeigens
 - **constraintTemplate** [vereist]
   - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
 - **beperking** [vereist]
-  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para **values** meters `{{ .Values.<valuename> }}`die worden door gegeven via waarden als. In het onderstaande voor beeld zou dit zijn `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}`.
+  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In het onderstaande voor beeld zou dit zijn `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}` .
 - **waarden** [Optioneel]
   - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-voor beeld
 
-Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limieten voor container CPU en geheugen bronnen in de AKS-engine.
+Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limieten voor container-CPU en geheugen bronnen in Kubernetes.
 
 ```json
 "if": {
@@ -488,15 +488,15 @@ Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limiet
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Dit effect wordt gebruikt in combi natie met *mode* de beleids `Microsoft.ContainerService.Data`definitie modus van. Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.ContainerService.Data` . Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Azure Policy voor AKS](rego-for-aks.md) is een beperkte preview-versie en ondersteunt alleen ingebouwde beleids definities
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan het bijgewerkte [EnforceOPAConstraint](#enforceopaconstraint) -effect.
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
 
 De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
-Elke 5 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-eigenschappen
 
@@ -538,7 +538,7 @@ Voor beeld: gate keeper v2 Admission Control regel om alleen de opgegeven contai
 }
 ```
 
-## <a name="layering-policies"></a>Beleid voor lagen
+## <a name="layering-policy-definitions"></a>Beleids definities voor lagen
 
 Een resource kan worden beïnvloed door meerdere toewijzingen. Deze toewijzingen kunnen zich in hetzelfde bereik bevinden of in verschillende bereiken. Voor elk van deze toewijzingen is waarschijnlijk ook een ander effect gedefinieerd. De voor waarde en het effect van elk beleid worden onafhankelijk geëvalueerd. Bijvoorbeeld:
 
@@ -565,7 +565,7 @@ Als zowel beleid 1 als beleid 2 gevolgen heeft voor de weigering, verandert de s
 - Nieuwe resources in abonnement die niet in ' westus ' voor komen, worden geweigerd door beleid 1
 - Nieuwe resources in resource groep B van abonnement A worden geweigerd
 
-Elke toewijzing wordt afzonderlijk geëvalueerd. Daarom is er geen kans dat een resource door een hiaat wordt geslipd van verschillen in het bereik. Het netto resultaat van het lagen beleid of de overlap ping van het beleid wordt als **cumulatief het meest beperkend**beschouwd. Als voor het beleid 1 en 2 bijvoorbeeld een weigering is ingesteld, wordt een bron geblokkeerd door de overlappende en conflicterende beleids regels. Als u de resource nog steeds moet maken in het doel bereik, kunt u de uitsluitingen voor elke toewijzing controleren om te controleren of de juiste beleids regels van invloed zijn op de juiste bereiken.
+Elke toewijzing wordt afzonderlijk geëvalueerd. Daarom is er geen kans dat een resource door een hiaat wordt geslipd van verschillen in het bereik. Het resultaat van het beperken van beleids definities voor lagen wordt als **cumulatief het meest beperkend**beschouwd. Als voor het beleid 1 en 2 bijvoorbeeld een weigering is ingesteld, wordt een bron geblokkeerd door de beleids definities die elkaar overlappen en conflicteren. Als u de resource nog steeds moet maken in het doel bereik, kunt u de uitsluitingen voor elke toewijzing controleren om te controleren of de juiste beleids toewijzingen van invloed zijn op de juiste bereiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

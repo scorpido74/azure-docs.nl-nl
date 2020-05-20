@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263346"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681032"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>De agent voor Azure AD Connect-cloudinrichting installeren
 Dit document helpt u bij het installatie proces voor de Azure Active Directory (Azure AD) Connect inrichtings agent en hoe u deze in eerste instantie kunt configureren in de Azure Portal.
@@ -35,7 +35,7 @@ Voer de volgende stappen uit om de agent te installeren.
 
 1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.
 1. Ga naar Azure Portal. Selecteer aan de linkerkant **Azure Active Directory**.
-1. Selecteer **inrichting beheren (preview)** > **Alle agents controleren**.
+1. Selecteer **inrichting beheren (preview)**  >  **Alle agents controleren**.
 1. Down load de Azure AD Connect-inrichtings agent vanuit de Azure Portal.
 
    ![On-premises agent downloaden](media/how-to-install/install9.png)</br>
@@ -45,7 +45,7 @@ Voer de volgende stappen uit om de agent te installeren.
    ![Microsoft Azure AD scherm voor het inrichtings agent-pakket koppelen](media/how-to-install/install1.png)</br>
 
 1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw Azure AD Global Administrator-account.
-1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Next**.
+1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Volgende**.
 
    ![Active Directory scherm verbinden](media/how-to-install/install3.png)</br>
 
@@ -65,7 +65,7 @@ Verificatie van de agent vindt plaats in de Azure Portal en op de lokale server 
 Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azure.
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer aan de linkerkant **Azure Active Directory** > **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
+1. Selecteer aan de linkerkant **Azure Active Directory**  >  **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
 
    ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -77,20 +77,13 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
    ![Scherm on-premises ingerichte agents](media/how-to-install/verify1.png)</br>
 
-### <a name="verify-the-port"></a>De poort controleren
-Voer de volgende stappen uit om te controleren of Azure luistert op poort 443 en of uw agent ermee kan communiceren.
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
-
-![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Op de lokale server
 Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd.
 
 1.  Meld u met een beheerders account aan bij de server.
-1.  Open **Services** **door te navigeren** > naar de service of door te gaan met het**uitvoeren** > van**Services. msc**.
+1.  Open **Services** door te navigeren naar de service of **door te gaan**met het  >  **uitvoeren**van  >  **Services. msc**.
 1.  Zorg er bij **Services**voor dat **Microsoft Azure AD connect agent updater** en **Microsoft Azure AD Connect inrichtings agent** zijn, en de status wordt *uitgevoerd*.
 
     ![Scherm Services](media/how-to-troubleshoot/troubleshoot1.png)

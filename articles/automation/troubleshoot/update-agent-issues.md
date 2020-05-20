@@ -1,6 +1,6 @@
 ---
-title: Problemen met Windows Update agent oplossen in Azure Automation Updatebeheer
-description: Meer informatie over het oplossen van problemen met de Windows Update-Agent met behulp van de oplossing Updatebeheer.
+title: Problemen met Windows Update agent oplossen in Azure Automation
+description: In dit artikel leest u hoe u problemen met de Windows Update Agent tijdens Updatebeheer oplost en oplost.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996439"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680838"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met Windows Update agent oplossen
 
-Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) in Updatebeheer. U kunt de status van een Windows Hybrid Runbook Worker-agent controleren om het onderliggende probleem te bepalen. Hier volgen de drie gereedheids statussen voor een machine:
+Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) tijdens een Updatebeheer-implementatie. U kunt de status van een Windows Hybrid Runbook Worker-agent controleren om het onderliggende probleem te bepalen. Hier volgen de drie gereedheids statussen voor een machine:
 
 * Gereed: de Hybrid Runbook Worker is gedistribueerd en is minder dan één uur geleden voor het laatst gezien.
 * De verbinding is verbroken: de Hybrid Runbook Worker is geïmplementeerd en de laatste keer één uur geleden voor het laatst weer gegeven.
-* Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
+* Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of de implementatie is niet voltooid.
 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van een machine.
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u de probleem Oplosser uitvoert voor Azure-m
 
 ## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
-Voor Azure-machines kunt u de pagina problemen met Update agent oplossen starten door de koppeling **problemen oplossen** te selecteren in de kolom **Update-gereedheid** in de portal. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
+Voor Azure-machines kunt u de pagina problemen met Update agent oplossen starten door de koppeling **problemen oplossen** te selecteren in de kolom **Update-gereedheid** in de portal. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie [problemen offline oplossen](#troubleshoot-offline) om problemen met een niet-Azure-computer op te lossen.
 
 ![Scherm afbeelding van de Updatebeheer lijst met virtuele machines](../media/update-agent-issues/vm-list.png)
 
@@ -89,7 +89,7 @@ Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan t
 
 ### <a name="monitoring-agent-service-status"></a>Status van Monitoring Agent-service
 
-Met deze controle wordt bepaald of de Log Analytics-agent`healthservice`voor Windows () op de computer wordt uitgevoerd. Voor meer informatie over het oplossen van problemen met de service, Zie [de log Analytics-agent voor Windows wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running).
+Met deze controle wordt bepaald of de Log Analytics-agent voor Windows ( `healthservice` ) op de computer wordt uitgevoerd. Voor meer informatie over het oplossen van problemen met de service, Zie [de log Analytics-agent voor Windows wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running).
 
 Zie [de agent voor Windows installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)als u de log Analytics-agent voor Windows opnieuw wilt installeren.
 
@@ -208,4 +208,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Problemen met Hybrid Runbook Workers oplossen](hybrid-runbook-worker.md)
+[Problemen met Hybrid Runbook worker oplossen](hybrid-runbook-worker.md).

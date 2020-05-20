@@ -1,6 +1,6 @@
 ---
-title: Problemen met de Linux Update agent oplossen in Azure Automation Updatebeheer
-description: Meer informatie over het oplossen van problemen met de Linux Windows Update-Agent met behulp van de Updatebeheer-oplossing.
+title: Problemen met de Linux Update agent oplossen in Azure Automation
+description: In dit artikel leest u hoe u problemen oplost en oplost met de Linux Windows Update agent in Updatebeheer.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997014"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680872"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Problemen met Linux Update agent oplossen
 
@@ -22,7 +22,7 @@ Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven 
 
 * Gereed: de Hybrid Runbook Worker is gedistribueerd en is minder dan één uur geleden voor het laatst gezien.
 * De verbinding is verbroken: de Hybrid Runbook Worker is geïmplementeerd en de laatste keer één uur geleden voor het laatst weer gegeven.
-* Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
+* Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of de implementatie is niet voltooid.
 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van een machine.
@@ -70,7 +70,7 @@ Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux is 
 
 ### <a name="log-analytics-agent-status"></a>Status van Log Analytics agent
 
-Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux wordt uitgevoerd. Als de agent niet wordt uitgevoerd, kunt u de volgende opdracht uitvoeren om het opnieuw te proberen. Zie [Linux Hybrid Runbook worker Troubleshooting](hybrid-runbook-worker.md#linux)(Engelstalig) voor meer informatie over het oplossen van problemen met de agent.
+Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux wordt uitgevoerd. Als de agent niet wordt uitgevoerd, kunt u de volgende opdracht uitvoeren om het opnieuw te proberen. Zie [Linux-troubleshooting Hybrid Runbook worker issues](hybrid-runbook-worker.md#linux)(Engelstalig) voor meer informatie over het oplossen van problemen met de agent.
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -78,13 +78,13 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="multihoming"></a>Multihoming
 
-Met deze controle wordt bepaald of de agent op meerdere werk ruimten rapporteert. Multihoming wordt niet ondersteund door Updatebeheer.
+Met deze controle wordt bepaald of de agent op meerdere werk ruimten rapporteert. Updatebeheer biedt geen ondersteuning voor multihoming.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het Hybrid Runbook Worker-pakket heeft. Dit pakket is vereist om Updatebeheer te kunnen werken. Zie voor meer informatie [de log Analytics-agent voor Linux wordt niet uitgevoerd](hybrid-runbook-worker.md#oms-agent-not-running).
+Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het Hybrid Runbook Worker-pakket heeft. Dit pakket is vereist om Updatebeheer te kunnen werken. Zie [log Analytics-agent voor Linux is niet actief](hybrid-runbook-worker.md#oms-agent-not-running)voor meer informatie.
 
-Updatebeheer downloadt Hybrid Runbook Worker pakketten van het eind punt van de bewerking. Als de Hybrid Runbook Worker niet wordt uitgevoerd en het [eind punt](#operations-endpoint) van de bewerking mislukt, kan de update dus mislukken.
+Updatebeheer downloadt Hybrid Runbook Worker pakketten van het eind punt van de bewerking. Daarom kan de update mislukken als de Hybrid Runbook Worker niet wordt uitgevoerd en de controle van het [eind punt](#operations-endpoint) mislukt.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker status
 
@@ -184,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met Hybrid Runbook Workers oplossen](hybrid-runbook-worker.md)voor meer informatie over het oplossen van extra problemen met uw Hybrid runbook Workers.
+[Problemen met Hybrid Runbook worker oplossen](hybrid-runbook-worker.md).

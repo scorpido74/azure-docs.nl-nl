@@ -3,18 +3,20 @@ title: Beleid voor het bewaren van niet-gecodeerde manifesten
 description: Meer informatie over het inschakelen van een Bewaar beleid in uw Azure container Registry voor het automatisch verwijderen van niet-gecodeerde manifesten na een opgegeven periode.
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454810"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683453"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Een Bewaar beleid voor niet-gecodeerde manifesten instellen
 
-Azure Container Registry biedt u de mogelijkheid om een *Bewaar beleid* in te stellen voor opgeslagen afbeeldings manifesten die geen gekoppelde labels (niet-*gecodeerde manifesten*) hebben. Wanneer een Bewaar beleid is ingeschakeld, worden niet-gecodeerde manifesten in het REGI ster automatisch verwijderd na een aantal dagen dat u instelt. Deze functie voor komt dat het REGI ster wordt gevuld met artefacten die niet nodig zijn en helpt u bij het besparen van opslag kosten. Als het `delete-enabled` kenmerk van een niet-gelabeld manifest is ingesteld `false`op, kan het manifest niet worden verwijderd en is het Bewaar beleid niet van toepassing.
+Azure Container Registry biedt u de mogelijkheid om een *Bewaar beleid* in te stellen voor opgeslagen afbeeldings manifesten die geen gekoppelde labels (niet-*gecodeerde manifesten*) hebben. Wanneer een Bewaar beleid is ingeschakeld, worden niet-gecodeerde manifesten in het REGI ster automatisch verwijderd na een aantal dagen dat u instelt. Deze functie voor komt dat het REGI ster wordt gevuld met artefacten die niet nodig zijn en helpt u bij het besparen van opslag kosten. Als het `delete-enabled` kenmerk van een niet-gelabeld manifest is ingesteld op `false` , kan het manifest niet worden verwijderd en is het Bewaar beleid niet van toepassing.
 
 U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de opdracht voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.74 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+
+Een Bewaar beleid is een functie van **Premium** -container registers. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen van het REGI ster.
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
@@ -24,7 +26,6 @@ U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-* Alleen een **Premium** container Registry kan worden geconfigureerd met een Bewaar beleid. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen van het REGI ster.
 * U kunt alleen een Bewaar beleid voor niet-gecodeerde manifesten instellen.
 * Het Bewaar beleid is momenteel alleen van toepassing op manifesten die niet zijn gelabeld *nadat* het beleid is ingeschakeld. Bestaande niet-gecodeerde manifesten in het REGI ster vallen niet onder het beleid. Als u bestaande niet-gecodeerde manifesten wilt verwijderen, raadpleegt u voor beelden in [container installatie kopieën verwijderen in azure container Registry](container-registry-delete.md).
 
@@ -58,7 +59,7 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 
 Als u het voor gaande beleid inschakelt met een Bewaar periode van 0 dagen, kunt u snel controleren of niet-gecodeerde manifesten worden verwijderd:
 
-1. Push een test installatie `hello-world:latest` kopie naar het REGI ster of vervang een andere test installatie kopie naar keuze.
+1. Push een test installatie kopie `hello-world:latest` naar het REGI ster of vervang een andere test installatie kopie naar keuze.
 1. Tag de `hello-world:latest` installatie kopie, bijvoorbeeld met behulp van de opdracht [AZ ACR repository tag][az-acr-repository-untag] . Het niet-gelabelde manifest blijft in het REGI ster.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
@@ -73,7 +74,7 @@ Als u wilt zien hoe het Bewaar beleid is ingesteld in een REGI ster, voert u de 
 az acr config retention show --registry myregistry
 ```
 
-Als u een Bewaar beleid wilt uitschakelen in een REGI ster, voert u de opdracht [AZ ACR config retention update][az-acr-config-retention-update] uit en stelt `--status disabled`u het volgende in:
+Als u een Bewaar beleid wilt uitschakelen in een REGI ster, voert u de opdracht [AZ ACR config retention update][az-acr-config-retention-update] uit en stelt u het `--status disabled` volgende in:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests

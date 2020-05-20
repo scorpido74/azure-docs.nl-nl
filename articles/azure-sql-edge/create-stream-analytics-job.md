@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597924"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685175"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
@@ -22,6 +22,9 @@ In dit artikel wordt uitgelegd hoe u een T-SQL streaming-taak maakt in Azure SQL
 
 1. De externe stream-invoer-en uitvoer objecten maken
 2. Definieer de streaming-taak query als onderdeel van de streaming-taak maken.
+
+> [!NOTE]
+> Als u de functie voor het streamen van T-SQL in Azure SQL Edge wilt inschakelen, schakelt u TF 11515 in als opstart optie of gebruikt u de [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) -opdracht. Zie [configure using MSSQL. conf file](configure.md#configure-using-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met het bestand MSSQL. conf. Deze vereiste wordt verwijderd in toekomstige updates van Azure SQL Edge (preview).
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Een invoer-en uitvoer object voor externe streams configureren
 

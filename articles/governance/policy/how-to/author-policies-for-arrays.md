@@ -1,14 +1,14 @@
 ---
 title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
-ms.date: 11/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280662"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684254"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -103,8 +103,8 @@ Gebruik de volgende opdrachten om deze teken reeks te gebruiken voor elke SDK:
 
 ### <a name="array-conditions"></a>Matrix voorwaarden
 
-De beleids regel [voorwaarden](../concepts/definition-structure.md#conditions) waarvoor het _matrix_
-**type** van de para meter mag worden gebruikt, zijn `in` beperkt `notIn`tot en. Neem de volgende beleids definitie met voor `equals` waarde als voor beeld:
+De beleids regel [voorwaarden](../concepts/definition-structure.md#conditions) waarvoor het _matrix_ 
+ **type** van de para meter mag worden gebruikt, zijn beperkt tot `in` en `notIn` . Neem de volgende beleids definitie met voor waarde `equals` als voor beeld:
 
 ```json
 {
@@ -136,14 +136,14 @@ Het maken van deze beleids definitie via de Azure Portal leidt tot een fout, zoa
 
 - "Het beleid {GUID} kan niet worden geparametriseerde vanwege validatie fouten. Controleer of de beleids parameters juist zijn gedefinieerd. Het evaluatie resultaat van de interne uitzonde ring van de taal expressie [para meters (' allowedLocations ')] ' is van het type ' matrix ', het verwachte type is ' String '. '
 
-Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLocations** is gedefinieerd als **type** _matrix_, evalueert de beleids engine de expressie van de taal en genereert de fout. Met de `in` `notIn` voor-voor waarde verwacht de beleids engine de **type** _matrix_ in de taal expressie. Als u dit fout bericht wilt oplossen `equals` , wijzigt `in` u `notIn`in of.
+Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLocations** is gedefinieerd als **type** _matrix_, evalueert de beleids engine de expressie van de taal en genereert de fout. Met de `in` `notIn` voor-voor waarde verwacht de beleids engine de **type** _matrix_ in de taal expressie. Als u dit fout bericht wilt oplossen, wijzigt `equals` u in `in` of `notIn` .
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen die aan ** \[ \* ** hun naam zijn gekoppeld, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te ** \[ \* ** evalueren, is het mogelijk om elk element van de matrix afzonderlijk te evalueren, met logische en daartussen. Er zijn drie standaard scenario's waarin de evaluatie per item kan worden gebruikt: _geen_, _any_of _alle_ elementen komen niet overeen. Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
+Aliassen die aan **\[\*\]** hun naam zijn gekoppeld, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, **\[\*\]** is het mogelijk om elk element van de matrix afzonderlijk te evalueren, met logische en daartussen. Er zijn drie standaard scenario's waarin de evaluatie per item kan worden gebruikt: _geen_, _any_of _alle_ elementen komen niet overeen. Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
-Dit feit is belang rijk om inzicht te krijgen in de ** \[ \* ** context van de manier waarop elk afzonderlijk element van de matrix wordt geëvalueerd.
+Dit feit is belang rijk om inzicht te krijgen in de context van de manier waarop **\[\*\]** elk afzonderlijk element van de matrix wordt geëvalueerd.
 
 De voorbeeld beleidsregel voor de scenario tabel hieronder:
 
@@ -179,7 +179,7 @@ De **ipRules** -matrix is als volgt voor de scenario tabel hieronder:
 ]
 ```
 
-Voor elk voor beeld hieronder, vervangt `<field>` u `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`door.
+Voor elk voor beeld hieronder, vervangt u door `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
 
 De volgende resultaten zijn het resultaat van de combi natie van de voor waarde en de beleids regel voor het voor beeld en de matrix van bestaande waarden hierboven:
 
@@ -196,10 +196,10 @@ De volgende resultaten zijn het resultaat van de combi natie van de voor waarde 
 
 ## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
 
-Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld Details** een ** \[ \* ** alias is of niet.
+Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld Details** een **\[\*\]** alias is of niet.
 
-- Als u geen ** \[ \* ** alias opgeeft, wordt de volledige matrix vervangen door de eigenschap **Value**
-- Wanneer een ** \[ \* ** alias wordt toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
+- Als u geen **\[\*\]** alias opgeeft, wordt de volledige matrix vervangen door de eigenschap **Value**
+- Wanneer een **\[\*\]** alias wordt toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
 
 Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-examples).
 

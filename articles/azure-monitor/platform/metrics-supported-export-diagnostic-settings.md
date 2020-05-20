@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422113"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680685"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
 
@@ -24,7 +24,10 @@ Vanwege complexiteit in de Azure Monitor back-end kunnen niet alle metrische geg
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Wijzigen in gedrag voor NULL-waarden en nulwaarden 
  
-Voor de platform metrieken die kunnen worden geëxporteerd via Diagnostische instellingen, zijn er enkele metrische gegevens waarvoor Azure Monitor ' 0s ' als ' Nulls ' interpreteert. Dit heeft een zekere Verwar ring veroorzaakt tussen Real ' 0s ' (verzonden door resource) en ' 0s ' (null-waarden) geïnterpreteerd. Binnenkort wordt een wijziging doorgevoerd en de platform metrieken die worden geëxporteerd via Diagnostische instellingen, zullen niet langer 0s worden geëxporteerd, tenzij ze daad werkelijk door de onderliggende resource zijn verzonden. De wijziging is gepland voor 1 april 2020, maar is vertraagd als gevolg van prioriteits verschuivingen als gevolg van COVID-19. 
+Voor de platform metrieken die kunnen worden geëxporteerd via Diagnostische instellingen, zijn er enkele metrische gegevens waarvoor Azure Monitor ' 0s ' als ' Nulls ' interpreteert. Dit heeft een zekere Verwar ring veroorzaakt tussen Real ' 0s ' (verzonden door resource) en ' 0s ' (null-waarden) geïnterpreteerd. Binnenkort wordt een wijziging doorgevoerd en de platform metrieken die worden geëxporteerd via Diagnostische instellingen, zullen niet langer 0s worden geëxporteerd, tenzij ze daad werkelijk door de onderliggende resource zijn verzonden. 
+
+> [!CAUTION]
+> Het gewijzigde gedrag dat hierboven wordt beschreven, is gepland om te worden uitgevoerd op 1 juni 2020.
 
 Opmerking:
 
@@ -41,7 +44,7 @@ De tabel bevat de volgende kolommen.
 - Exporteerbaar via Diagnostische instellingen? 
 - Doorgevoerd door NULL/0 
 - ResourceType 
-- Gegevens 
+- Metrisch 
 - MetricDisplayName
 - Eenheid 
 - AggregationType
@@ -51,7 +54,7 @@ De tabel bevat de volgende kolommen.
 > De onderstaande tabel bevat mogelijk een horizontale schuif balk aan de onderkant. Als u van mening bent dat u de informatie ontbreekt, controleert u of de schuif balk helemaal naar links wordt weer gegeven.  
 
 
-| Exporteerbaar via Diagnostische instellingen?  | NULL-waarden al verzenden |  ResourceType  |  Gegevens  |  MetricDisplayName  |  Eenheid  |  AggregationType | 
+| Exporteerbaar via Diagnostische instellingen?  | NULL-waarden al verzenden |  ResourceType  |  Metrisch  |  MetricDisplayName  |  Eenheid  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CleanerCurrentPrice  |  Geheugen: huidige prijs opschonen  |  Count  |  Average | 
 | Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  Geheugen: Removal-geheugen kan niet worden verkleind  |  Bytes  |  Average | 
@@ -205,7 +208,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  QueuedTransactions  |  Trans acties in de wachtrij  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  RequestHandled  |  Verwerkte aanvragen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  StorageUsage  |  Opslag gebruik  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits  |  Cache treffers  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits  |  Cachetreffers  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits0  |  Cache treffers (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits1  |  Cache treffers (Shard 1)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits2  |  Cache treffers (Shard 2)  |  Count  |  Totaal | 
@@ -217,7 +220,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits8  |  Cache treffers (Shard 8)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits9  |  Cache treffers (Shard 9)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheLatency  |  Cache latentie micro seconden (preview-versie)  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses  |  Cache missers  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses  |  Cachemissers  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses0  |  Cache missers (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses1  |  Cache missers (Shard 1)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses2  |  Cache missers (Shard 2)  |  Count  |  Totaal | 
@@ -228,7 +231,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses7  |  Cache missers (Shard 7)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses8  |  Cache missers (Shard 8)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachemisses9  |  Cache missers (Shard 9)  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead  |  Lees bewerking in cache  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead  |  Gelezen uit cache  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead0  |  Cache gelezen (Shard 0)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead1  |  Lees bewerking in cache (Shard 1)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead2  |  Lees bewerking in cache (Shard 2)  |  BytesPerSecond  |  Maximum | 
@@ -239,7 +242,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead7  |  Lees bewerking in cache (Shard 7)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead8  |  Lees bewerking in cache (Shard 8)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheRead9  |  Lees bewerking in cache (Shard 9)  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  cacheWrite  |  Cache schrijven  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  cacheWrite  |  Geschreven naar cache  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheWrite0  |  Cache schrijven (Shard 0)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheWrite1  |  Cache schrijven (Shard 1)  |  BytesPerSecond  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cacheWrite2  |  Cache schrijven (Shard 2)  |  BytesPerSecond  |  Maximum | 
@@ -284,7 +287,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  expiredkeys7  |  Verlopen sleutels (Shard 7)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  expiredkeys8  |  Verlopen sleutels (Shard 8)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  expiredkeys9  |  Verlopen sleutels (Shard 9)  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  getcommands  |  Methode  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  getcommands  |  Ophalingen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  getcommands0  |  Hiermee wordt opgehaald (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  getcommands1  |  Hiermee wordt opgehaald (Shard 1)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  getcommands2  |  Hiermee wordt opgehaald (Shard 2)  |  Count  |  Totaal | 
@@ -317,7 +320,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  percentProcessorTime7  |  CPU (Shard 7)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  percentProcessorTime8  |  CPU (Shard 8)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  percentProcessorTime9  |  CPU (Shard 9)  |  Percentage  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad  |  Server belasting  |  Percentage  |  Maximum | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad  |  Serverbelasting  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad0  |  Server belasting (Shard 0)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad1  |  Server belasting (Shard 1)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad2  |  Server belasting (Shard 2)  |  Percentage  |  Maximum | 
@@ -328,7 +331,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad7  |  Server belasting (Shard 7)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad8  |  Server belasting (Shard 8)  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  serverLoad9  |  Server belasting (Shard 9)  |  Percentage  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands  |  Sets  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands  |  Instellingen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands0  |  Sets (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands1  |  Sets (Shard 1)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands2  |  Sets (Shard 2)  |  Count  |  Totaal | 
@@ -339,7 +342,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands7  |  Sets (Shard 7)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands8  |  Sets (Shard 8)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  setcommands9  |  Sets (Shard 9)  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. cache/redis  |  totalcommandsprocessed  |  Totaal aantal bewerkingen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. cache/redis  |  totalcommandsprocessed  |  Totaalaantal bewerkingen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  totalcommandsprocessed0  |  Totaal aantal bewerkingen (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  totalcommandsprocessed1  |  Totaal aantal bewerkingen (Shard 1)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  totalcommandsprocessed2  |  Totaal aantal bewerkingen (Shard 2)  |  Count  |  Totaal | 
@@ -456,7 +459,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  SpeechSessionDuration  |  Spraak sessie duur  |  Seconden  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  SuccessfulCalls  |  Geslaagde aanroepen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalCalls  |  Totaal aantal aanroepen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalErrors  |  Totaal aantal fouten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalErrors  |  Totaalaantal fouten  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalTokenCalls  |  Totaal aantal token aanroepen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalTransactions  |  Totaal aantal trans acties  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Verbruikte CPU-tegoeden  |  Verbruikte CPU-tegoeden  |  Count  |  Average | 
@@ -755,7 +758,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  AttestationAttempts  |  Attestation-pogingen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  DeviceAssignments  |  Apparaten toegewezen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  RegistrationAttempts  |  Registratie pogingen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Beschikbare opslagruimte  |  Bytes  |  Totaal | 
+| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Beschikbare opslag  |  Bytes  |  Totaal | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra-verbinding sluiten  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Kosten voor Cassandra-aanvragen  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra aanvragen  |  Count  |  Count | 
@@ -763,7 +766,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Count  |  Count | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DocumentCount  |  Aantal documenten  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Document quotum  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  IndexUsage  |  Index gebruik  |  Bytes  |  Totaal | 
+| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  IndexUsage  |  Indexgebruik  |  Bytes  |  Totaal | 
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MetadataRequests  |  Meta gegevens aanvragen  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Kosten voor Mongo-aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo aanvragen  |  Count  |  Count | 
@@ -777,8 +780,8 @@ De tabel bevat de volgende kolommen.
 | Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Service beschikbaarheid  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  TotalRequests  |  Totaal aantal aanvragen  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Totaal aantal aanvraag eenheden  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Aantal mislukt  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Aantal geslaagd  |  Count  |  Count | 
+| Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Aantal mislukte pogingen  |  Count  |  Count | 
+| Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Aantal geslaagde pogingen  |  Count  |  Count | 
 | Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  SuccessLatency  |  Geslaagde latentie  |  Milliseconden  |  Average | 
 | Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  TransactionCount  |  Aantal trans acties  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. EventGrid/domeinen  |  DeadLetteredCount  |  Gebeurtenissen met onbestelbare berichten  |  Count  |  Totaal | 

@@ -12,19 +12,19 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 74a6d1aecfc83ea68b9e30453056d231f4bf3e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: daaa5e3a075eee19ab473818ae3bd84d4bd3b32b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416175"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683677"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Gegevens analyseren met Azure Machine Learning
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -132,4 +132,4 @@ U ziet dat er twee of meer kolommen aan de testgegevensset zijn toegevoegd.
 Door de kolom BikeBuyer (werkelijk) te vergelijken met de kolom Scored Labels (voorspelling), ziet u hoe goed het model heeft gepresteerd. Vervolgens kunt u dit model gebruiken om voor spellingen te doen voor nieuwe klanten en dit model als een webservice te publiceren of om resultaten terug te schrijven naar Azure Synapse.
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg [Inleiding tot Machine Learning in Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/) voor meer informatie over het bouwen van voorspellende Machine Learning-modellen.
+Raadpleeg [Inleiding tot Machine Learning in Azure](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) voor meer informatie over het bouwen van voorspellende Machine Learning-modellen.

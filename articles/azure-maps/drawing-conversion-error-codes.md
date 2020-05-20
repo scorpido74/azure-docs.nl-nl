@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598897"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681989"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Conversie fouten en waarschuwingen voor tekenen
 
-Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. Teken pakketten moeten voldoen aan de vereisten voor het [teken pakket](drawing-requirements.md). Als er niet aan een of meer vereisten wordt voldaan, worden er fouten of waarschuwingen door de conversie service geretourneerd. In dit artikel vindt u een overzicht van de conversie fout-en waarschuwings codes, met aanbevelingen voor het oplossen ervan. Het bevat ook enkele voor beelden van tekeningen die ertoe kunnen leiden dat de conversie service deze codes retourneert.
+Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. Teken pakketten moeten voldoen aan de vereisten voor het [teken pakket](drawing-requirements.md). Als er niet aan een of meer vereisten wordt voldaan, worden er fouten of waarschuwingen door de conversie service geretourneerd. In dit artikel vindt u een overzicht van de conversie fout-en waarschuwings codes, met aanbevelingen voor het oplossen ervan. Het bevat ook enkele voor beelden van tekeningen die ertoe kunnen leiden dat de conversie service deze codes retourneert.
 
 De conversie service wordt uitgevoerd als er conversie waarschuwingen zijn. Het is echter raadzaam om alle waarschuwingen te controleren en op te lossen. Er wordt een waarschuwing gegeven dat een deel van de conversie wordt genegeerd of automatisch is opgelost. Als u de waarschuwingen niet oplost, kan dit leiden tot fouten in de laatste processen.
 
@@ -73,7 +73,7 @@ De waarschuwing **unsupportedFeatureRepresentation** treedt op wanneer de tekeni
 
 In de onderstaande afbeelding ziet u een niet-ondersteund entiteits type als een object met meerdere regels tekst op een label laag.
   
-![Voor beeld van een object met meerdere regels tekst in de label laag](./media/drawing-conversion-error-codes/multiline.png)
+![Voor beeld van een object met meerdere regels tekst in de label laag](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*UnsupportedFeatureRepresentation oplossen*
 
@@ -494,7 +494,7 @@ In de onderstaande afbeelding ziet u een verticaal indringings gebied zonder ove
 
 De volgende afbeelding toont een verticaal indringings gebied dat meer dan één verticaal indringings gebied op een aangrenzend niveau overlapt.
 
-![Voor beeld van een verticale indringing 2](./media/drawing-conversion-error-codes/vrt.png)
+![Voor beeld van een verticale indringing 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>VerticalPenetrationError oplossen
 

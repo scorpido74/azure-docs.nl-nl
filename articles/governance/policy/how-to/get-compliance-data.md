@@ -1,14 +1,14 @@
 ---
 title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194003"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684516"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -26,7 +26,7 @@ Voordat u de methoden voor het rapporteren van naleving bekijkt, kijken we naar 
 
 ## <a name="evaluation-triggers"></a>Evaluatie triggers
 
-De resultaten van een voltooide evaluatie cyclus zijn beschikbaar in de `Microsoft.PolicyInsights` resource provider via `PolicyStates` en `PolicyEvents` -bewerkingen. Zie [Azure Policy Insights](/rest/api/policy-insights/)voor meer informatie over de bewerkingen van de Azure Policy Insights-rest API.
+De resultaten van een voltooide evaluatie cyclus zijn beschikbaar in de `Microsoft.PolicyInsights` resource provider via `PolicyStates` en- `PolicyEvents` bewerkingen. Zie [Azure Policy Insights](/rest/api/policy-insights/)voor meer informatie over de bewerkingen van de Azure Policy Insights-rest API.
 
 De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg van verschillende gebeurtenissen:
 
@@ -44,7 +44,41 @@ De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg
 
 ### <a name="on-demand-evaluation-scan"></a>Evaluatiescan op aanvraag
 
-Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met een aanroep naar de REST API. Deze scan is een asynchroon proces. Als zodanig wordt het REST-eind punt voor het starten van de scan niet gewacht totdat de scan is voltooid. In plaats daarvan biedt het een URI om de status van de aangevraagde evaluatie op te vragen.
+Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met Azure PowerShell of een aanroep naar de REST API. Deze scan is een asynchroon proces.
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>Evaluatie scan op aanvraag-Azure PowerShell
+
+De compatibiliteits scan wordt gestart met de cmdlet [Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) .
+
+`Start-AzPolicyComplianceScan`Hiermee wordt standaard een evaluatie gestart voor alle resources in het huidige abonnement. Als u een evaluatie voor een specifieke resource groep wilt starten, gebruikt u de para meter **ResourceGroupName** . In het volgende voor beeld wordt een nalevings scan gestart in het huidige abonnement voor de resource groep _MyRG_ :
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+U kunt ervoor zorgen dat Power shell wacht totdat de asynchrone aanroep is voltooid voordat de resultaten uitvoer wordt opgegeven of dat deze op de achtergrond als een [taak](/powershell/module/microsoft.powershell.core/about/about_jobs)wordt uitgevoerd. Als u een Power shell-taak wilt gebruiken om de compatibiliteits scan op de achtergrond uit te voeren, gebruikt u de para meter **AsJob** en stelt u de waarde in op een object, zoals `$job` in dit voor beeld:
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+U kunt de status van de taak controleren door op het object te controleren `$job` . De taak is van het type `Microsoft.Azure.Commands.Common.AzureLongRunningJob` . Gebruiken `Get-Member` op het `$job` object om beschik bare eigenschappen en methoden weer te geven.
+
+Terwijl de compatibiliteits scan wordt uitgevoerd, controleert het `$job` object resultaten als volgt:
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+Wanneer de compatibiliteits scan is voltooid, verandert de **status** eigenschap in _voltooid_.
+
+#### <a name="on-demand-evaluation-scan---rest"></a>Evaluatie scan op aanvraag-REST
+
+Als asynchroon proces wordt het REST-eind punt voor het starten van de scan niet gewacht totdat de scan is voltooid. In plaats daarvan biedt het een URI om de status van de aangevraagde evaluatie op te vragen.
 
 In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die u moet vervangen door uw eigen waarden:
 
@@ -56,19 +90,19 @@ De scan ondersteunt de evaluatie van resources in een abonnement of in een resou
 - Abonnement
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Resourcegroep
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 De aanroep retourneert een **geaccepteerde** status van 202. Opgenomen in de antwoord header is een **locatie** -eigenschap met de volgende indeling:
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
 `{ResourceContainerGUID}`statisch gegenereerd voor het aangevraagde bereik. Als voor een scope al een scan op aanvraag wordt uitgevoerd, wordt er geen nieuwe scan gestart. In plaats daarvan wordt de nieuwe aanvraag dezelfde `{ResourceContainerGUID}` **locatie** -URI gegeven als status. Een REST API **Get** -opdracht naar de **locatie** -URI retourneert een **202 geaccepteerd** tijdens de evaluatie. Wanneer de evaluatie scan is voltooid, wordt de status **200 OK** geretourneerd. De hoofd tekst van een voltooide scan is een JSON-antwoord met de status:
@@ -87,9 +121,9 @@ In de volgende tabel ziet u hoe verschillende beleids effecten werken met de eva
 | Resource status | Effect | Beleids evaluatie | Nalevings status |
 | --- | --- | --- | --- |
 | Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compliant |
 | Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | False | Compliant |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
@@ -383,7 +417,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-Het veld **PrincipalOid** kan worden gebruikt om een specifieke gebruiker te verkrijgen met de cmdlet `Get-AzADUser`Azure PowerShell. Vervang **{principalOid}** door de reactie die u uit het vorige voor beeld hebt ontvangen.
+Het veld **PrincipalOid** kan worden gebruikt om een specifieke gebruiker te verkrijgen met de cmdlet Azure PowerShell `Get-AzADUser` . Vervang **{principalOid}** door de reactie die u uit het vorige voor beeld hebt ontvangen.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -392,7 +426,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
-Als u een [log Analytics-werk ruimte](../../../log-analytics/log-analytics-overview.md) hebt met `AzureActivity` van de analyse van activiteitenlogboek- [oplossing](../../../azure-monitor/platform/activity-log-collect.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie cyclus `AzureActivity` ook bekijken met behulp van eenvoudige Kusto-query's en de tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
+Als u een [log Analytics-werk ruimte](../../../log-analytics/log-analytics-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek-oplossing](../../../azure-monitor/platform/activity-log-collect.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie cyclus ook bekijken met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Naleving Azure Policy met behulp van Azure Monitor-logboeken" border="false":::
 

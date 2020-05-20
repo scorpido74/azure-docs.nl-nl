@@ -1,14 +1,14 @@
 ---
 title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
-ms.date: 01/31/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264542"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682117"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -72,7 +72,7 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
    Met de opdracht wordt een beleids definitie gemaakt met de naam _audit Storage accounts open open bare netwerken_.
    Zie [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition)voor meer informatie over andere para meters die u kunt gebruiken.
 
-   Als de para meters worden `New-AzPolicyDefinition` aangeroepen zonder locatie, wordt standaard de beleids definitie opgeslagen in het geselecteerde abonnement van de sessie context. Gebruik de volgende para meters om de definitie op een andere locatie op te slaan:
+   Als de para meters worden aangeroepen zonder locatie, wordt `New-AzPolicyDefinition` standaard de beleids definitie opgeslagen in het geselecteerde abonnement van de sessie context. Gebruik de volgende para meters om de definitie op een andere locatie op te slaan:
 
    - **SubscriptionId** : opslaan in een ander abonnement. Vereist een _GUID_ -waarde.
    - **ManagementGroupName** : Sla het bestand op in een beheer groep. Vereist een _teken reeks_ waarde.
@@ -87,7 +87,7 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
 
    Vervang _ContosoRG_ door de naam van de gewenste resource groep.
 
-   De **bereik** parameter voor `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad, die de eigenschap **ResourceID** bij `Get-AzResourceGroup` retourneert. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}`, `{rgName}`, `{subId}`, en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk.
+   De **bereik** parameter voor `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad, die de eigenschap **ResourceID** bij `Get-AzResourceGroup` retourneert. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` , `{rgName}` , `{subId}` , en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk.
    `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
    - Resource`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -133,10 +133,10 @@ Gebruik de volgende procedure om een beleids definitie te maken.
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    Vervang de voor gaande {subscriptionId} met de ID van uw abonnement of {managementGroupId} door de ID van uw [beheer groep](../../management-groups/overview.md).
@@ -162,7 +162,7 @@ Gebruik de volgende procedure om een beleids toewijzing te maken en de beleids d
 1. Maak de toewijzing van het beleid met behulp van de volgende aanroep:
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
    Vervang voorbeeld informatie in &lt; &gt; symbolen met uw eigen waarden.
@@ -205,10 +205,10 @@ Als u een beleids definitie wilt maken, gebruikt u de volgende procedure:
    Met de opdracht wordt een beleids definitie gemaakt met de naam _audit Storage accounts open open bare netwerken_.
    Zie [AZ Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create)(Engelstalig) voor meer informatie over andere para meters die u kunt gebruiken.
 
-   Als de para meters worden `az policy definition creation` aangeroepen zonder locatie, wordt standaard de beleids definitie opgeslagen in het geselecteerde abonnement van de sessie context. Gebruik de volgende para meters om de definitie op een andere locatie op te slaan:
+   Als de para meters worden aangeroepen zonder locatie, wordt `az policy definition creation` standaard de beleids definitie opgeslagen in het geselecteerde abonnement van de sessie context. Gebruik de volgende para meters om de definitie op een andere locatie op te slaan:
 
-   - **--abonnement** : Sla het bestand op in een ander abonnement. Vereist een _GUID_ -waarde voor de abonnements-id of een _teken reeks_ waarde voor de naam van het abonnement.
-   - **--beheer-groep** -opslaan in een beheer groep. Vereist een _teken reeks_ waarde.
+   - **abonnement** : Sla het bestand op in een ander abonnement. Vereist een _GUID_ -waarde voor de abonnements-id of een _teken reeks_ waarde voor de naam van het abonnement.
+   - **beheer-groep** -opslaan in een beheer groep. Vereist een _teken reeks_ waarde.
 
 1. Gebruik de volgende opdracht om een beleids toewijzing te maken. Vervang voorbeeld informatie in &lt; &gt; symbolen met uw eigen waarden.
 
@@ -216,7 +216,7 @@ Als u een beleids definitie wilt maken, gebruikt u de volgende procedure:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   De para meter **--Scope** voor `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}`, `{rgName}`, `{subId}`, en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
+   De **bereik** parameter voor `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` , `{rgName}` , `{subId}` , en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
    - Resource`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Resource groep-`/subscriptions/{subID}/resourceGroups/{rgName}`

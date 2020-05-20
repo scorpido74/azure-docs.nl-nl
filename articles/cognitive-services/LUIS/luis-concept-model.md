@@ -3,12 +3,12 @@ title: Ontwerpen met modellen-LUIS
 description: Language Standing biedt verschillende types modellen. Sommige modellen kunnen op meer dan één manier worden gebruikt.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591876"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683927"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Ontwerpen met intentie-en entiteits modellen
 
@@ -36,9 +36,9 @@ De volgende utterance is een **positief voor beeld** voor de `OrderBook` intenti
 
 ## <a name="entities-extract-data"></a>Gegevens extra heren door entiteiten
 
-Een entiteit vertegenwoordigt een hoeveelheid gegevens die u wilt ophalen uit de utterance. Een door een machine geleerde entiteit is een entiteit op het hoogste niveau met subentiteiten, die ook door machines geleerde entiteiten zijn.
+Een entiteit vertegenwoordigt een hoeveelheid gegevens die u wilt ophalen uit de utterance. Een machine learning-entiteit is een entiteit op het hoogste niveau met subentiteiten, die ook instanties voor machine learning zijn.
 
-Een voor beeld van een door de machine geleerde entiteit is een bestelling voor een vlak ticket. Conceptueel gezien is dit een enkele trans actie met veel kleinere gegevens eenheden, zoals datum, tijd, aantal stoelen, het type Seat, zoals de eerste klasse of de fase, de oorsprongs locatie, de doel locatie en de keuze van de maaltijd.
+Een voor beeld van een machine learning-entiteit is een bestelling voor een vlieg ticket. Conceptueel gezien is dit een enkele trans actie met veel kleinere gegevens eenheden, zoals datum, tijd, aantal stoelen, het type Seat, zoals de eerste klasse of de fase, de oorsprongs locatie, de doel locatie en de keuze van de maaltijd.
 
 ## <a name="intents-versus-entities"></a>Intenties versus entiteiten
 
@@ -65,11 +65,11 @@ Model ontleding heeft de volgende onderdelen:
 
 * [intents](#intents-classify-utterances)
     * [functies](#features)
-* [door machines geleerde entiteiten](reference-entity-machine-learned-entity.md)
-    * subentiteiten (ook door machines geleerde entiteiten)
+* [machine learning-entiteiten](reference-entity-machine-learned-entity.md)
+    * subentiteiten (ook machine learning-entiteiten)
         * [functies](#features)
             * [woordgroepen lijst](luis-concept-feature.md)
-            * [niet door machines geleerde entiteiten](luis-concept-feature.md) zoals [reguliere expressies](reference-entity-regular-expression.md), [lijsten](reference-entity-list.md)en [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md)
+            * [niet-machine learning-entiteiten](luis-concept-feature.md) zoals [reguliere expressies](reference-entity-regular-expression.md), [lijsten](reference-entity-list.md)en [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

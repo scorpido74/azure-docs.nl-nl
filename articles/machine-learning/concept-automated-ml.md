@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983462"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683078"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -46,7 +46,7 @@ Net als bij de classificatie zijn regressie taken ook een veelvoorkomende taak o
 
 Anders dan classificatie waarbij voorspelde uitvoer waarden categorische zijn, hebben regressie modellen voor speld numerieke uitvoer waarden op basis van onafhankelijke voor spellingen. In regressie is het doel om te helpen bij het vaststellen van de relatie tussen deze onafhankelijke Voorspellings variabelen door te schatten hoe de ene variabele invloed heeft op de andere. Bijvoorbeeld prijs voor auto Mobile op basis van functies zoals het beslagen van gas, veiligheids classificatie, enzovoort. Lees meer informatie en Bekijk een voor beeld van [regressie met automatische machine learning](tutorial-auto-train-models.md).
 
-Bekijk voor beelden van regressie en automatische machine learning voor voor spellingen in deze python-notebooks: CPU-prestaties voors [pellen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+Bekijk voor beelden van regressie en automatische machine learning voor voor spellingen in deze python-notebooks: CPU-prestaties voors [pellen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
 
 ### <a name="time-series-forecasting"></a>Prognose van Time-Series
 
@@ -93,7 +93,7 @@ In het volgende diagram ziet u dit proces.
 ![Geautomatiseerde machine learning](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
-U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De trainings uitvoering produceert een met python geserialiseerd object (`.pkl` bestand) dat het model en de voor verwerking van gegevens bevat.
+U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De trainings uitvoering produceert een met python geserialiseerd object ( `.pkl` bestand) dat het model en de voor verwerking van gegevens bevat.
 
 Hoewel het bouwen van modellen geautomatiseerd is, kunt u ook [zien hoe belang rijke of relevante functies](how-to-configure-auto-train.md#explain) voor de gegenereerde modellen zijn.
 
@@ -110,9 +110,9 @@ In elk automatisch machine learning experiment worden uw gegevens voorverwerkt m
 
 ### <a name="automatic-preprocessing-standard"></a>Automatische voor verwerking (standaard)
 
-In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren.  Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model.
+In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren.  Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model. Meer informatie over hoe autoML helpt [om te voor komen dat gegevens in uw modellen worden gespreid en niet in evenwicht worden gegeven](concept-manage-ml-pitfalls.md) .
 
-|&nbsp;&Normalisatie&nbsp;aanpassen| Beschrijving |
+|Normalisatie aanpassen &nbsp; & &nbsp;| Beschrijving |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Functies standaardiseren door het gemiddelde en de schaal aanpassing te verwijderen voor eenheids variantie  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformeert functies door elke functie te schalen op basis van het minimum en maximum van die kolom  |
@@ -128,7 +128,7 @@ Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaa
 
 + Azure Machine Learning studio: **automatische parametrisatie** inschakelen in de sectie **aanvullende configuratie weer geven** [met de volgende stappen](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-+ Python-SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` opgeven voor de [ `AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
++ Python-SDK: opgeven `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` voor de [ `AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 
 
@@ -154,7 +154,7 @@ De webinterface voor automatische ML maakt altijd gebruik van een extern [Comput
 Houd rekening met deze factoren bij het kiezen van het berekenings doel:
 
  * **Kies een lokale Compute**: als uw scenario wordt gebruikt voor initiële onderzoeken of demo's met behulp van kleine gegevens en korte treinen (d.w.z. seconden of een paar minuten per onderliggend item), kan de training op uw lokale computer een betere keuze zijn.  Er is geen instel tijd, de infrastructuur resources (uw PC of virtuele machine) zijn direct beschikbaar.
- * **Kies een Remote ml Compute-Cluster**: als u training hebt met grotere gegevens sets, zoals in productie training, modellen maken die langere treinen nodig hebben, biedt externe Compute veel betere end- `AutoML` to-end tijd prestaties, omdat parallelliseren-treinen worden verdeeld over de knoop punten van het cluster. Op een externe Compute wordt de start tijd voor de interne infra structuur ongeveer 1,5 minuten per onderliggende uitvoering toegevoegd, plus extra minuten voor de cluster infrastructuur als de virtuele machines nog niet actief zijn.
+ * **Kies een Remote ml Compute-Cluster**: als u training hebt met grotere gegevens sets, zoals in productie training, modellen maken die langere treinen nodig hebben, biedt externe Compute veel betere end-to-end tijd prestaties, omdat `AutoML` parallelliseren-treinen worden verdeeld over de knoop punten van het cluster. Op een externe Compute wordt de start tijd voor de interne infra structuur ongeveer 1,5 minuten per onderliggende uitvoering toegevoegd, plus extra minuten voor de cluster infrastructuur als de virtuele machines nog niet actief zijn.
 
 ### <a name="pros-and-cons"></a>Voor-en nadelen
 Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus extern.
@@ -168,7 +168,7 @@ Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus ex
 
  Meer functies zijn beschikbaar wanneer u de externe Compute gebruikt, zoals wordt weer gegeven in de volgende tabel. Sommige van deze functies zijn alleen beschikbaar in een bedrijfs werkruimte.
 
-| Onderdeel                                                    | Externe | Lokaal | Nodig <br>Enter prise-werk ruimte |
+| Functie                                                    | Externe | Lokaal | Nodig <br>Enter prise-werk ruimte |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Gegevens streaming (ondersteuning voor grote gegevens, Maxi maal 100 GB)          | ✓      |       | ✓                             |
 | DNN: op BERT gebaseerde tekst parametrisatie en training             | ✓      |       | ✓                             |
@@ -186,8 +186,19 @@ Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus ex
 | Info en metrische gegevens van experimenten registreren en visualiseren in de gebruikers interface | ✓      | ✓     |                               |
 | Gegevens Guardrails                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>Veel modellen 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Automatische ML in Azure Machine Learning
+De [vele modellen oplossings versneller](https://aka.ms/many-models) (preview) is gebaseerd op Azure machine learning en maakt het u mogelijk om honderden of zelfs duizenden machine learning modellen te trainen, te gebruiken en te beheren.
+
+Het bouwen van een model __voor elk exemplaar of individu__ in de volgende scenario's kan bijvoorbeeld leiden tot betere resultaten:
+
+* De verkoop voor elke afzonderlijke winkel voors pellen
+* Voor speld onderhoud voor honderden olie putjes
+* Het aanpassen van een ervaring voor individuele gebruikers.
+
+Zie de [oplossing voor veel modellen van oplossingen](https://aka.ms/many-models) op github voor meer informatie.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 
 Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
 

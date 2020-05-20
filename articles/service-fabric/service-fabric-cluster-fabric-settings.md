@@ -3,12 +3,12 @@ title: Instellingen van Azure Service Fabric cluster wijzigen
 description: In dit artikel worden de infrastructuur instellingen en het Fabric-upgrade beleid beschreven dat u kunt aanpassen.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416245"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682986"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Instellingen voor Service Fabric-cluster aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -57,7 +57,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|    De PlacementConstraints voor de BackupRestore-service |
 |SecretEncryptionCertThumbprint|teken reeks, standaard instelling is|Dynamisch|Vinger afdruk van het x509-certificaat van de geheime versleuteling |
-|SecretEncryptionCertX509StoreName|teken reeks, standaard is ' My '|    Dynamisch|    Dit geeft het certificaat aan dat moet worden gebruikt voor het versleutelen en ontsleutelen van de cred-naam van het X. 509-certificaat archief dat wordt gebruikt voor het versleutelen van de opslag referenties die worden gebruikt door de back-upherstel service |
+|SecretEncryptionCertX509StoreName|De aanbevolen waarde voor de teken reeks is ' My ' (geen standaard instelling) |    Dynamisch|    Dit geeft het certificaat aan dat moet worden gebruikt voor het versleutelen en ontsleutelen van de cred-naam van het X. 509-certificaat archief dat wordt gebruikt voor het versleutelen van de opslag referenties die worden gebruikt door de back-upherstel service |
 |TargetReplicaSetSize|int, standaard is 0|Statisch| De TargetReplicaSetSize voor BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -77,7 +77,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MaxDataMigrationTimeout |Tijd in seconden, standaard waarde is 600 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out voor herstel bewerkingen voor gegevens migratie nadat een infrastructuur upgrade is uitgevoerd. |
 |MaxOperationRetryDelay |Tijd in seconden, standaard waarde is 5|Dynamisch| Geef een tijds duur in seconden op. De maximale vertraging voor interne nieuwe pogingen wanneer er fouten optreden. |
 |MaxOperationTimeout |Tijd in seconden, de standaard waarde is MaxValue |Dynamisch| Geef een tijds duur in seconden op. De maximale algemene time-out voor intern verwerkings bewerkingen op ClusterManager. |
-|MaxTimeoutRetryBuffer | Tijd in seconden, standaard waarde is 600 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out voor de bewerking bij een intern nieuwe poging `<Original Time out> + <MaxTimeoutRetryBuffer>`vanwege time-outs. Extra time-out wordt toegevoegd in stappen van MinOperationTimeout. |
+|MaxTimeoutRetryBuffer | Tijd in seconden, standaard waarde is 600 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out voor de bewerking bij een intern nieuwe poging vanwege time-outs `<Original Time out> + <MaxTimeoutRetryBuffer>` . Extra time-out wordt toegevoegd in stappen van MinOperationTimeout. |
 |MinOperationTimeout | Tijd in seconden, standaard waarde is 60 |Dynamisch|Geef een tijds duur in seconden op. De minimale algemene time-out voor intern verwerkings bewerkingen op ClusterManager. |
 |MinReplicaSetSize |Int, standaard is 3 |Niet toegestaan|De MinReplicaSetSize voor ClusterManager. |
 |PlacementConstraints | teken reeks, standaard instelling is |Niet toegestaan|De PlacementConstraints voor ClusterManager. |
@@ -214,22 +214,22 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ClusterPauseThreshold|int, standaard waarde is 1|Dynamisch|Als het aantal knoop punten in het systeem onder deze waarde komt, gaat u naar plaatsing; taak verdeling; en de failover is gestopt. |
 |CreateInstanceTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor het maken van een stateless exemplaar; waarna een waarschuwings status rapport wordt gestart |
 |ExpectedClusterSize|int, standaard waarde is 1|Dynamisch|Wanneer het cluster voor het eerst wordt opgestart, de FM wacht totdat dit aantal knoop punten zich bemeldt voordat er andere services worden geplaatst. inclusief de systeem services zoals naamgeving. Als u deze waarde verhoogt, neemt de tijd toe waarop een cluster wordt opgestart. maar voor komt dat de vroege knoop punten overbelast zijn en ook de extra zetten die nodig zijn naarmate er meer knoop punten online zijn. Deze waarde moet in het algemeen worden ingesteld op een kleine fractie van de eerste cluster grootte. |
-|ExpectedNodeDeactivationDuration|Time span, standaard waarde is gebruikelijk:: time span:: \* FromSeconds (60,0 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor een knoop punt om de deactivering in te volt ooien. |
-|ExpectedNodeFabricUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: \* FromSeconds (60,0 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor een upgrade van een knoop punt tijdens Windows Fabric upgrade. |
-|ExpectedReplicaUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: \* FromSeconds (60,0 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor alle replica's die moeten worden bijgewerkt op een knoop punt tijdens de upgrade van de toepassing. |
+|ExpectedNodeDeactivationDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor een knoop punt om de deactivering in te volt ooien. |
+|ExpectedNodeFabricUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor een upgrade van een knoop punt tijdens Windows Fabric upgrade. |
+|ExpectedReplicaUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor alle replica's die moeten worden bijgewerkt op een knoop punt tijdens de upgrade van de toepassing. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|BOOL, default is TRUE|Dynamisch|Indien ingesteld op True; replica's waarvan de grootte van de doel replica is ingesteld op 1, mogen tijdens de upgrade worden verplaatst. |
 |MinReplicaSetSize|int, standaard is 3|Niet toegestaan|Dit is de minimale grootte van de replicaset voor de FM. Als het aantal actieve FM-replica's onder deze waarde daalt; de FM weigert wijzigingen aan het cluster totdat ten minste het minimum aantal replica's wordt hersteld |
 |PlacementConstraints|teken reeks, standaard instelling is|Niet toegestaan|Eventuele plaatsings beperkingen voor de failover Manager-replica's |
 |PlacementTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (600)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor het bereiken van het aantal doel replica's; waarna een waarschuwings status rapport wordt gestart |
 |QuorumLossWaitDuration |Tijd in seconden, de standaard waarde is MaxValue |Dynamisch|Geef een tijds duur in seconden op. Dit is de maximale duur waarvoor een partitie een status van quorum verlies mag hebben. Als de partitie na deze duur nog steeds in het quorum verloren is gegaan, de partitie wordt hersteld van quorum verlies door de replica's als verloren te beschouwen. Houd er rekening mee dat dit kan leiden tot gegevens verlies. |
 |ReconfigurationTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor opnieuw configureren; waarna een waarschuwings status rapport wordt gestart |
-|ReplicaRestartWaitDuration|Time span, standaard waarde is gebruikelijk:: time span:: \* FromSeconds (60,0 30)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de ReplicaRestartWaitDuration voor de FMService |
+|ReplicaRestartWaitDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de ReplicaRestartWaitDuration voor de FMService |
 | SeedNodeQuorumAdditionalBufferNodes | int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
-|StandByReplicaKeepDuration|Time span, standaard is gebruikelijk:: time span:: FromSeconds \* ( \* 3600.0 24 7)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de StandByReplicaKeepDuration voor de FMService |
+|StandByReplicaKeepDuration|Time span, standaard is gebruikelijk:: time span:: FromSeconds (3600.0 \* 24 \* 7)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de StandByReplicaKeepDuration voor de FMService |
 |TargetReplicaSetSize|int, standaard is 7|Niet toegestaan|Dit is het doel aantal FM-replica's dat Windows Fabric blijft behouden. Een hogere waarde resulteert in een grotere betrouw baarheid van de FM-gegevens; met een kleine prestatie verhouding. |
 |UserMaxStandByReplicaCount |Int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
-|UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde \* is 60,0 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
-|UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde \* is \* 3600,0 24 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
+|UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde is 60,0 \* 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
+|UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde is 3600,0 \* 24 \* 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -271,7 +271,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |Time span, standaard waarde is gebruikelijk:: time span:: FromMinutes (5)|Dynamisch|Geef een tijds duur in seconden op. Het tijds interval tussen het controleren van de schijf ruimte voor rapportage van de status wanneer de schijf bijna geen ruimte meer heeft. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |Time span, standaard waarde is gebruikelijk:: time span:: FromMinutes (15)|Dynamisch|Geef een tijds duur in seconden op. Het tijds interval tussen het controleren van de schijf ruimte voor rapportage van status gebeurtenis wanneer er voldoende ruimte is op de schijf. |
 |EnableImageStoreHealthReporting |BOOL, default is TRUE    |Statisch|Config om te bepalen of de status van de bestands archief-service moet worden gerapporteerd. |
-|FreeDiskSpaceNotificationSizeInKB|int64, standaard waarde is\*25 1024 |Dynamisch|De grootte van de beschik bare schijf ruimte met de status waarschuwing kan optreden. De minimale waarde van deze configuratie-en FreeDiskSpaceNotificationThresholdPercentage-configuratie wordt gebruikt om de verzen ding van de status waarschuwing te bepalen. |
+|FreeDiskSpaceNotificationSizeInKB|int64, standaard waarde is 25 \* 1024 |Dynamisch|De grootte van de beschik bare schijf ruimte met de status waarschuwing kan optreden. De minimale waarde van deze configuratie-en FreeDiskSpaceNotificationThresholdPercentage-configuratie wordt gebruikt om de verzen ding van de status waarschuwing te bepalen. |
 |FreeDiskSpaceNotificationThresholdPercentage|Double, standaard waarde is 0,02 |Dynamisch|Het percentage beschik bare schijf ruimte waaronder de status waarschuwing kan optreden. De minimale waarde van deze configuratie-en FreeDiskSpaceNotificationInMB-configuratie wordt gebruikt om de verzen ding van de status waarschuwing te bepalen. |
 |GenerateV1CommonNameAccount| BOOL, default is TRUE|Statisch|Hiermee geeft u op of u een account met een algoritme voor het genereren van gebruikers naam v1 wilt genereren. Vanaf Service Fabric versie 6,1; Er wordt altijd een account met v2-generatie gemaakt. Het v1-account is nood zakelijk voor upgrades van/naar-versies die geen v2-generatie ondersteunen (vóór 6,1).|
 |MaxCopyOperationThreads | Uint, standaard waarde is 0 |Dynamisch| Het maximum aantal parallelle bestanden dat secundair kan kopiëren van de primaire. ' 0 ' = = aantal kernen. |
@@ -393,8 +393,8 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MinReplicaSetSize | Int, standaard is 3 |Statisch|De MinReplicaSetSize voor ImageStoreService. |
 |PlacementConstraints | teken reeks, standaard instelling is |Statisch| De PlacementConstraints voor ImageStoreService. |
 |QuorumLossWaitDuration | Tijd in seconden, de standaard waarde is MaxValue |Statisch| Geef een tijds duur in seconden op. De QuorumLossWaitDuration voor ImageStoreService. |
-|ReplicaRestartWaitDuration | Tijd in seconden, de standaard waarde \* is 60,0 30 |Statisch|Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor ImageStoreService. |
-|StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde \* is 3600,0 2 |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ImageStoreService. |
+|ReplicaRestartWaitDuration | Tijd in seconden, de standaard waarde is 60,0 \* 30 |Statisch|Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor ImageStoreService. |
+|StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde is 3600,0 \* 2 |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ImageStoreService. |
 |TargetReplicaSetSize | Int, standaard is 7 |Statisch|De TargetReplicaSetSize voor ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
@@ -456,7 +456,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MaxClientConnections |Int, standaard waarde is 1000 |Dynamisch|Het Maxi maal toegestane aantal client verbindingen per gateway. |
 |MaxFileOperationTimeout |Tijd in seconden, standaard waarde is 30 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out die is toegestaan voor de File Store-service bewerking. Aanvragen die een grotere time-out opgeven, worden geweigerd. |
 |MaxIndexedEmptyPartitions |Int, standaard waarde is 1000 |Dynamisch|Het maximum aantal lege partities dat in de cache met meldingen moet worden geïndexeerd voor het synchroniseren van de verbinding met clients. Eventuele lege partities boven dit nummer worden verwijderd uit de index in oplopende volg orde van de opzoek versie. Opnieuw verbinding maken met clients kan nog steeds synchroniseren en gemiste lege partitie-updates ontvangen; maar het synchronisatie protocol wordt duurder. |
-|MaxMessageSize |Int, standaard is 4\*1024\*1024 |Statisch|De maximale bericht grootte voor client knooppunt communicatie bij het gebruik van een naam. DOS-aanvals heffing; de standaard waarde is 4 MB. |
+|MaxMessageSize |Int, standaard is 4 \* 1024 \* 1024 |Statisch|De maximale bericht grootte voor client knooppunt communicatie bij het gebruik van een naam. DOS-aanvals heffing; de standaard waarde is 4 MB. |
 |MaxNamingServiceHealthReports | Int, standaard waarde is 10 |Dynamisch|Het maximum aantal trage bewerkingen waarbij de naamgeving van Store-service rapporten niet in orde is. Als 0; alle trage bewerkingen worden verzonden. |
 |MaxOperationTimeout |Tijd in seconden, standaard waarde is 600 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out die is toegestaan voor client bewerkingen. Aanvragen die een grotere time-out opgeven, worden geweigerd. |
 |MaxOutstandingNotificationsPerClient |Int, standaard waarde is 1000 |Dynamisch|Het maximum aantal openstaande meldingen voordat een client registratie geforceerd wordt gesloten door de gateway. |
@@ -616,7 +616,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
+|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of " user@domain ". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor de sectie runas, geldige waarden zijn ' Domain User/Network Service/ManagedServiceAccount/LocalSystem '.|
 |RunAsPassword|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het wacht woord van het runas-account aangegeven. Dit is alleen nodig voor het account type domein gebruiker. |
 
@@ -624,7 +624,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
+|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of " user@domain ". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het wacht woord van het runas-account aangegeven. Dit is alleen nodig voor het account type domein gebruiker. |
 
@@ -632,7 +632,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
+|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of " user@domain ". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het wacht woord van het runas-account aangegeven. Dit is alleen nodig voor het account type domein gebruiker. |
 
@@ -640,21 +640,21 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
+|RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of " user@domain ". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het wacht woord van het runas-account aangegeven. Dit is alleen nodig voor het account type domein gebruiker. |
 
 ## <a name="security"></a>Beveiliging
 | **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-certificaat eindpunt indeling, standaard-Azure-Commercial, opgegeven voor niet-standaard-omgeving, zoals\/Azure Government '{0}https:/Login.microsoftonline.us//federationmetadata/2007-06/federationmetadata.XML ' |
+|AADCertEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-certificaat eindpunt indeling, standaard-Azure-Commercial, opgegeven voor niet-standaard-omgeving, zoals Azure Government ' https: \/ /login.microsoftonline.us/ {0} /federationmetadata/2007-06/federationmetadata.XML ' |
 |AADClientApplication|teken reeks, standaard instelling is|Statisch|Systeem eigen client toepassings naam of ID die infrastructuur clients vertegenwoordigt |
 |AADClusterApplication|teken reeks, standaard instelling is|Statisch|Web-API-toepassings naam of-ID die het cluster vertegenwoordigt |
-|AADLoginEndpoint|teken reeks, standaard instelling is|Statisch|AAD-aanmeldings eindpunt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government\/' https:/Login.microsoftonline.us ' |
+|AADLoginEndpoint|teken reeks, standaard instelling is|Statisch|AAD-aanmeldings eindpunt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government ' https: \/ /login.microsoftonline.us ' |
 |AADTenantId|teken reeks, standaard instelling is|Statisch|Tenant-ID (GUID) |
 |AcceptExpiredPinnedClusterCertificate|BOOL, default is FALSE|Dynamisch|Vlag waarmee wordt aangegeven of verlopen cluster certificaten moeten worden geaccepteerd die zijn gedeclareerd door de vinger afdruk, alleen van toepassing is op cluster certificaten. zodat het cluster actief blijft. |
 |AdminClientCertThumbprints|teken reeks, standaard instelling is|Dynamisch|Vinger afdrukken van certificaten die worden gebruikt door clients in de rol Admin. Dit is een lijst met door komma's gescheiden namen. |
-|AADTokenEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-token-eind punt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen,\/zoals Azure Government{0}' https:/Login.microsoftonline.us/' |
+|AADTokenEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-token-eind punt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government ' https: \/ /login.microsoftonline.us/ {0} ' |
 |AdminClientClaims|teken reeks, standaard instelling is|Dynamisch|Alle mogelijke claims die worden verwacht door beheerclients; dezelfde indeling als ClientClaims; deze lijst wordt intern toegevoegd aan ClientClaims. u hoeft ook niet dezelfde vermeldingen aan ClientClaims toe te voegen. |
 |AdminClientIdentities|teken reeks, standaard instelling is|Dynamisch|Windows-identiteiten van Fabric-clients in beheerdersrol; wordt gebruikt voor het autoriseren van bevoegde infrastructuur bewerkingen. Het is een door komma's gescheiden lijst. elk item is een domein account naam of groeps naam. Voor het gemak; het account waarmee Fabric. exe wordt uitgevoerd, wordt automatisch toegewezen aan de rol Admin. Daarom is groep ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|teken reeks, standaard waarde is/Home/sfuser/sfusercerts |Statisch|Map waar AppRunAsAccountGroup x509-certificaten en persoonlijke sleutels zich bevinden |
@@ -662,7 +662,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |CertificateHealthReportingInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (3600 * 8)|Statisch|Geef een tijds duur in seconden op. Geef het interval voor de certificaat status rapportage op; standaard ingesteld op 8 uur; Als u deze instelling instelt op 0, wordt rapportage van certificaat status uitgeschakeld |
 |ClientCertThumbprints|teken reeks, standaard instelling is|Dynamisch|Vinger afdrukken van certificaten die door clients worden gebruikt om te communiceren met het cluster; cluster maakt gebruik van deze machtiging voor binnenkomende verbindingen. Dit is een lijst met door komma's gescheiden namen. |
 |ClientClaimAuthEnabled|BOOL, default is FALSE|Statisch|Hiermee wordt aangegeven of op claims gebaseerde verificatie is ingeschakeld op clients. Als u deze waarde instelt, wordt ClientRoleEnabled impliciet ingesteld. |
-|ClientClaims|teken reeks, standaard instelling is|Dynamisch|Alle mogelijke claims die worden verwacht van clients om verbinding te maken met de gateway. Dit is \| \| een or-lijst: ClaimsEntry ClaimsEntry \| \| ClaimsEntry... elke ClaimsEntry is een ' AND '-lijst: claim type = ClaimValue && claim type = ClaimValue && claim type = ClaimValue... |
+|ClientClaims|teken reeks, standaard instelling is|Dynamisch|Alle mogelijke claims die worden verwacht van clients om verbinding te maken met de gateway. Dit is een OR-lijst: ClaimsEntry \| \| ClaimsEntry \| \| ClaimsEntry... elke ClaimsEntry is een ' AND '-lijst: claim type = ClaimValue && claim type = ClaimValue && claim type = ClaimValue... |
 |ClientIdentities|teken reeks, standaard instelling is|Dynamisch|Windows-identiteiten van FabricClient; naamgevings gateway gebruikt deze om binnenkomende verbindingen te autoriseren. Het is een door komma's gescheiden lijst. elk item is een domein account naam of groeps naam. Voor het gemak; het account waarmee Fabric. exe wordt uitgevoerd, wordt automatisch toegestaan. Dit zijn dus groeps-ServiceFabricAllowedUsers en ServiceFabricAdministrators. |
 |ClientRoleEnabled|BOOL, default is FALSE|Statisch|Hiermee wordt aangegeven of de client functie is ingeschakeld. Als deze eigenschap is ingesteld op True; aan clients worden rollen toegewezen op basis van hun identiteiten. Voor v2; Als u dit inschakelt, kan de client niet in AdminClientCommonNames/AdminClientIdentities alleen alleen-lezen bewerkingen uitvoeren. |
 |ClusterCertThumbprints|teken reeks, standaard instelling is|Dynamisch|Vinger afdrukken van certificaten die mogen worden toegevoegd aan het cluster; een lijst met door komma's gescheiden namen. |
@@ -718,47 +718,47 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |DeleteNetwork|teken reeks, standaard instelling is "beheerder" |Dynamisch|Hiermee verwijdert u een container netwerk |
 |Delete service |teken reeks, standaard instelling is "beheerder" |Dynamisch|Beveiligings configuratie voor het verwijderen van de service. |
 |DeleteVolume|teken reeks, standaard instelling is "beheerder"|Dynamisch|Hiermee verwijdert u een volume.| 
-|EnumerateProperties |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het inventariseren van naamgevings eigenschappen. |
-|EnumerateSubnames |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het inventariseren van de naam van de URI. |
+|EnumerateProperties |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het inventariseren van naamgevings eigenschappen. |
+|EnumerateSubnames |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het inventariseren van de naam van de URI. |
 |FileContent |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor bestands overdracht van client installatie kopie (extern naar cluster). |
 |FileDownload |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het initiëren van down loads van client bestanden voor installatie kopieën (extern naar cluster). |
 |FinishInfrastructureTask |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het volt ooien van infrastructuur taken. |
-|GetChaosReport | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Haalt de status van chaos binnen een bepaald tijds interval op. |
-|GetClusterConfiguration | teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Induceert GetClusterConfiguration op een partitie. |
-|GetClusterConfigurationUpgradeStatus | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Induceert GetClusterConfigurationUpgradeStatus op een partitie. |
-|GetFabricUpgradeStatus |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het pollen van de upgrade status van het cluster. |
+|GetChaosReport | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Haalt de status van chaos binnen een bepaald tijds interval op. |
+|GetClusterConfiguration | teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Induceert GetClusterConfiguration op een partitie. |
+|GetClusterConfigurationUpgradeStatus | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Induceert GetClusterConfigurationUpgradeStatus op een partitie. |
+|GetFabricUpgradeStatus |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het pollen van de upgrade status van het cluster. |
 |GetFolderSize |teken reeks, standaard instelling is "beheerder" |Dynamisch|Beveiligings configuratie voor het ophalen van de mapgrootte van de File Store service |
 |GetNodeDeactivationStatus |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het controleren van de status van deactiveren. |
-|GetNodeTransitionProgress | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het ophalen van de voortgang van een knooppunt overgangs opdracht. |
-|GetPartitionDataLossProgress | teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Hiermee wordt de voortgang van de API-aanroep invoke data verlies opgehaald. |
-|GetPartitionQuorumLossProgress | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Hiermee wordt de voortgang opgehaald voor een aanroep van de API invoke quorum verlies. |
-|GetPartitionRestartProgress | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| De voortgang van een restart Partition API-aanroep wordt opgehaald. |
+|GetNodeTransitionProgress | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het ophalen van de voortgang van een knooppunt overgangs opdracht. |
+|GetPartitionDataLossProgress | teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Hiermee wordt de voortgang van de API-aanroep invoke data verlies opgehaald. |
+|GetPartitionQuorumLossProgress | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Hiermee wordt de voortgang opgehaald voor een aanroep van de API invoke quorum verlies. |
+|GetPartitionRestartProgress | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| De voortgang van een restart Partition API-aanroep wordt opgehaald. |
 |GetSecrets|teken reeks, standaard instelling is "beheerder"|Dynamisch|Geheime waarden ophalen |
-|GetServiceDescription |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor lange polling van service meldingen en het lezen van Service beschrijvingen. |
+|GetServiceDescription |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor lange polling van service meldingen en het lezen van Service beschrijvingen. |
 |GetStagingLocation |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het ophalen van de faserings locatie voor de installatie kopie van de client. |
 |GetStoreLocation |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het ophalen van de locatie van het client Archief voor installatie kopieën. |
 |GetUpgradeOrchestrationServiceState|teken reeks, standaard instelling is "beheerder"| Dynamisch|Induceert GetUpgradeOrchestrationServiceState op een partitie |
 |GetUpgradesPendingApproval |teken reeks, standaard instelling is "beheerder" |Dynamisch| Induceert GetUpgradesPendingApproval op een partitie. |
-|GetUpgradeStatus |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het navragen van de upgrade status van de toepassing. |
+|GetUpgradeStatus |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het navragen van de upgrade status van de toepassing. |
 |InternalList |teken reeks, standaard instelling is "beheerder" | Dynamisch|Beveiligings configuratie voor de bewerking van de bestands lijst voor de installatie kopie-client (intern). |
 |InvokeContainerApi|teken reeks, standaard instelling is "beheerder"|Dynamisch|Container-API aanroepen |
 |InvokeInfrastructureCommand |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor beheer opdrachten voor taak infrastructuur. |
-|InvokeInfrastructureQuery |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het uitvoeren van query's op infrastructuur taken. |
-|Lijst |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor de bewerking van de bestands lijst voor de installatie kopie van de client. |
+|InvokeInfrastructureQuery |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het uitvoeren van query's op infrastructuur taken. |
+|Lijst |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor de bewerking van de bestands lijst voor de installatie kopie van de client. |
 |MoveNextFabricUpgradeDomain |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het hervatten van cluster upgrades met een expliciet upgrade domein. |
 |MoveNextUpgradeDomain |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het hervatten van toepassings upgrades met een expliciet upgrade domein. |
 |MoveReplicaControl |teken reeks, standaard instelling is "beheerder" | Dynamisch|Verplaats de replica. |
-|NameExists |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het benoemen van bewaarde URI-controles. |
+|NameExists |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het benoemen van bewaarde URI-controles. |
 |NodeControl |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor starten; stoppen en opnieuw starten van knoop punten. |
 |NodeStateRemoved |teken reeks, standaard instelling is "beheerder" |Dynamisch| De beveiligings configuratie voor de status van het rapportage knooppunt is verwijderd. |
-|Ping |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor client pings. |
+|Ping |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor client pings. |
 |PredeployPackageToNode |teken reeks, standaard instelling is "beheerder" |Dynamisch| Predeployment-API. |
-|PrefixResolveService |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor de oplossing van het service voorvoegsel op basis van een klacht. |
-|PropertyReadBatch |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor lees bewerkingen van de naamgevings eigenschap. |
+|PrefixResolveService |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor de oplossing van het service voorvoegsel op basis van een klacht. |
+|PropertyReadBatch |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor lees bewerkingen van de naamgevings eigenschap. |
 |PropertyWriteBatch |teken reeks, standaard instelling is "beheerder" |Dynamisch|Beveiligings configuraties voor het benoemen van schrijf bewerkingen voor eigenschappen. |
 |ProvisionApplicationType |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het inrichten van het toepassings type. |
 |ProvisionFabric |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het inrichten van MSI en/of cluster manifest. |
-|Query’s uitvoeren |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor query's. |
+|Query’s uitvoeren |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor query's. |
 |RecoverPartition |teken reeks, standaard instelling is "beheerder" | Dynamisch|Beveiligings configuratie voor het herstellen van een partitie. |
 |RecoverPartitions |teken reeks, standaard instelling is "beheerder" | Dynamisch|Beveiligings configuratie voor het herstellen van partities. |
 |RecoverServicePartitions |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het herstellen van service partities. |
@@ -768,14 +768,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ReportFault |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor rapportage fout. |
 |ReportHealth |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor rapportage status. |
 |ReportUpgradeHealth |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het hervatten van toepassings upgrades met de huidige voortgang van de upgrade. |
-|ResetPartitionLoad |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het opnieuw instellen van de belasting voor een failoverUnit. |
-|ResolveNameOwner |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het omzetten van de naam van de naamgevings-URI-eigenaar. |
-|ResolvePartition |teken reeks, standaard is '\|\|gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het oplossen van systeem services. |
-|ResolveService |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor service omzetting op basis van een klacht. |
-|ResolveSystemService|teken reeks, standaard is '\|\|gebruiker beheerder '|Dynamisch| Beveiligings configuratie voor het oplossen van systeem services |
+|ResetPartitionLoad |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het opnieuw instellen van de belasting voor een failoverUnit. |
+|ResolveNameOwner |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het omzetten van de naam van de naamgevings-URI-eigenaar. |
+|ResolvePartition |teken reeks, standaard is ' \| \| gebruiker beheerder ' | Dynamisch|Beveiligings configuratie voor het oplossen van systeem services. |
+|ResolveService |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor service omzetting op basis van een klacht. |
+|ResolveSystemService|teken reeks, standaard is ' \| \| gebruiker beheerder '|Dynamisch| Beveiligings configuratie voor het oplossen van systeem services |
 |RollbackApplicationUpgrade |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het terugdraaien van toepassings upgrades. |
 |RollbackFabricUpgrade |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het terugdraaien van cluster upgrades. |
-|ServiceNotifications |teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor service meldingen op basis van gebeurtenissen. |
+|ServiceNotifications |teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor service meldingen op basis van gebeurtenissen. |
 |SetUpgradeOrchestrationServiceState|teken reeks, standaard instelling is "beheerder"| Dynamisch|Induceert SetUpgradeOrchestrationServiceState op een partitie |
 |StartApprovedUpgrades |teken reeks, standaard instelling is "beheerder" |Dynamisch| Induceert StartApprovedUpgrades op een partitie. |
 |StartChaos |teken reeks, standaard instelling is "beheerder" |Dynamisch| Start chaos-als dit nog niet is gebeurd. |
@@ -786,7 +786,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |StartPartitionQuorumLoss |teken reeks, standaard instelling is "beheerder" |Dynamisch| Veroorzaakt quorum verlies op een partitie. |
 |StartPartitionRestart |teken reeks, standaard instelling is "beheerder" |Dynamisch| Hiermee worden enkele of alle replica's van een partitie gelijktijdig opnieuw opgestart. |
 |StopChaos |teken reeks, standaard instelling is "beheerder" |Dynamisch| Stopt chaos-als deze is gestart. |
-|ToggleVerboseServicePlacementHealthReporting | teken reeks, standaard is '\|\|gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het omschakelen van uitgebreide ServicePlacement-HealthReporting. |
+|ToggleVerboseServicePlacementHealthReporting | teken reeks, standaard is ' \| \| gebruiker beheerder ' |Dynamisch| Beveiligings configuratie voor het omschakelen van uitgebreide ServicePlacement-HealthReporting. |
 |UnprovisionApplicationType |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het ongedaan maken van de inrichting van het toepassings type. |
 |UnprovisionFabric |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het ongedaan maken van de inrichting van MSI en/of cluster-manifest. |
 |UnreliableTransportControl |teken reeks, standaard instelling is "beheerder" |Dynamisch| Onbetrouwbaar Trans Port voor het toevoegen en verwijderen van gedrag. |
@@ -877,7 +877,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |FrameHeaderErrorCheckingEnabled|BOOL, default is TRUE|Statisch|Standaard instelling voor fout controle op frame header in niet-beveiligde modus; de instelling van het onderdeel overschrijft dit. |
 |MessageErrorCheckingEnabled|BOOL, default is FALSE|Statisch|Standaard instelling voor fout controle op bericht header en hoofd tekst in niet-beveiligde modus; de instelling van het onderdeel overschrijft dit. |
 |ResolveOption|teken reeks, standaard instelling is "niet opgegeven"|Statisch|Hiermee wordt bepaald hoe FQDN wordt opgelost.  Geldige waarden zijn ' niet opgegeven/IPv4/IPv6 '. |
-|SendTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. Verzend time-out voor het detecteren van een vastgelopen verbinding. TCP-fouten rapporten zijn niet betrouwbaar in sommige omgevingen. Dit moet mogelijk worden aangepast op basis van de beschik bare netwerk bandbreedte en grootte van\*uitgaande\/\*gegevens (MaxMessageSize SendQueueSizeLimit). |
+|SendTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. Verzend time-out voor het detecteren van een vastgelopen verbinding. TCP-fouten rapporten zijn niet betrouwbaar in sommige omgevingen. Dit moet mogelijk worden aangepast op basis van de beschik bare netwerk bandbreedte en grootte van uitgaande gegevens ( \* MaxMessageSize \/ \* SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 

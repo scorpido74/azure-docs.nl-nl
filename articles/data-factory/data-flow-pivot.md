@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686428"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683294"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Draai transformatie in toewijzings gegevens stroom
 
@@ -27,7 +27,7 @@ Voor de draai transformatie zijn drie verschillende invoer waarden vereist: groe
 
 ### <a name="group-by"></a>Groeperen op
 
-![Groeperen op opties](media/data-flow/pivot2.png "[Groeperen op Opties")
+![Groeperen op opties](media/data-flow/pivot2.png "Groeperen op opties")
 
 Selecteer de kolommen waarin de gedraaide kolommen moeten worden geaggregeerd. In de uitvoer gegevens worden alle rijen met dezelfde groep door waarden gegroepeerd in één rij. De aggregatie die in de gedraaide kolom wordt uitgevoerd, vindt plaats boven elke groep.
 
@@ -63,7 +63,7 @@ De onderstaande Help-afbeelding laat zien hoe de verschillende draai grafiek ond
 
 Als er geen waarden zijn opgegeven in de configuratie van de draai sleutel, worden de gedraaide kolommen dynamisch gegenereerd tijdens runtime. Het aantal gedraaide kolommen is gelijk aan het aantal unieke draai sleutel waarden vermenigvuldigd met het aantal draai tabel kolommen. Aangezien dit een wijzigings nummer kan zijn, worden de meta gegevens van de kolom niet weer gegeven in de UX op het tabblad **controleren** en is er geen doorgifte van de kolom. Als u deze kolommen wilt transformeren, gebruikt u de [kolom patroon](concepts-data-flow-column-pattern.md) mogelijkheden van toewijzing van gegevens stroom. 
 
-Als er specifieke waarden voor de draai tabel worden ingesteld, worden de gedraaide kolommen weer gegeven in de meta gegevens. e kolom namen worden voor u beschikbaar gesteld in de inspectie-en Sink-toewijzing.
+Als er specifieke waarden van de draai tabel worden ingesteld, worden de gedraaide kolommen weer gegeven in de meta gegevens. De kolom namen worden voor u beschikbaar gesteld in de toewijzingen controleren en wastafel.
 
 ### <a name="generate-metadata-from-drifted-columns"></a>Meta gegevens genereren op basis van gedrijfte kolommen
 
@@ -73,7 +73,7 @@ Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarde
 
 ### <a name="sinking-pivoted-columns"></a>Zinkt gedraaide kolommen
 
-Hoewel gedraaide kolommen dynamisch zijn, kunnen ze nog steeds worden geschreven in de doel gegevens opslag. Schakel **schema-drift toestaan** in uw Sink-instellingen in. Hiermee kunt u kolommen schrijven die niet zijn opgenomen in de meta gegevens. met de meta gegevens van de kolom, maar met de optie schema-drift kunt u de gegevens in de landset.
+Hoewel gedraaide kolommen dynamisch zijn, kunnen ze nog steeds worden geschreven in de doel gegevens opslag. Schakel **schema-drift toestaan** in uw Sink-instellingen in. Hiermee kunt u kolommen schrijven die niet zijn opgenomen in de meta gegevens. De nieuwe dynamische namen worden niet weer gegeven in de meta gegevens van de kolom, maar met de optie schema-drift kunt u de gegevens in het land brengen.
 
 ### <a name="rejoin-original-fields"></a>Oorspronkelijke velden opnieuw samen voegen
 

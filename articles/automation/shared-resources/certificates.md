@@ -1,6 +1,6 @@
 ---
 title: Certificaten in Azure Automation beheren
-description: Azure Automation certificaten veilig opslaat, zodat runbooks of DSC-configuraties deze kunnen gebruiken voor verificatie bij Azure en bronnen van derden. In dit artikel worden de details van certificaten beschreven en wordt uitgelegd hoe u deze kunt gebruiken in tekstuele en grafische ontwerpen.
+description: In dit artikel leest u hoe u met certificaten werkt voor toegang door runbooks en DSC-configuraties.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2793679fb4588d00ea4e37340b19183398cb9d90
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: bf7e6d0ed8d6e318e6a78d25bcc7764f6302ef22
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864314"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685366"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Certificaten in Azure Automation beheren
 
@@ -23,16 +23,13 @@ Azure Automation certificaten veilig opslaat voor toegang door runbooks en DSC-c
 >[!NOTE]
 >Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Automation slaat de sleutel op in de door het systeem beheerde Key Vault-service. Voordat u een beveiligde Asset opslaat, laadt Automation de sleutel van Key Vault en gebruikt deze om de Asset te versleutelen. 
 
->[!NOTE]
->In dit artikel leest u hoe u de Azure PowerShell AZ-module gebruikt. U kunt nog steeds de AzureRM-module gebruiken. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)voor meer informatie over de compatibiliteit van de module AZ en AzureRM. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
-
 ## <a name="powershell-cmdlets-to-access-certificates"></a>Power shell-cmdlets voor toegang tot certificaten
 
 Met de cmdlets in de volgende tabel worden Automation-certificaten met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
 |Cmdlet |Beschrijving|
 | --- | ---|
-|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Haalt informatie op over een certificaat dat moet worden gebruikt in een runbook of DSC-configuratie. U kunt het certificaat zelf alleen ophalen met behulp van `Get-AutomationCertificate` de interne cmdlet.|
+|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Haalt informatie op over een certificaat dat moet worden gebruikt in een runbook of DSC-configuratie. U kunt het certificaat zelf alleen ophalen met behulp van de interne `Get-AutomationCertificate` cmdlet.|
 |[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Hiermee maakt u een nieuw certificaat in Automation.|
 |[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Hiermee verwijdert u een certificaat uit Automation.|
 |[Set-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Hiermee stelt u de eigenschappen van een bestaand certificaat in, waaronder het uploaden van het certificaat bestand en het instellen van het wacht woord voor een **PFX** -bestand.|
@@ -41,14 +38,14 @@ De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure/add-
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>Interne cmdlets voor toegang tot certificaten
 
-De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot certificaten in uw runbooks. Deze cmdlet wordt geleverd met de globale `Orchestrator.AssetManagement.Cmdlets`module. Zie [interne cmdlets](modules.md#internal-cmdlets)voor meer informatie.
+De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot certificaten in uw runbooks. Deze cmdlet wordt geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](modules.md#internal-cmdlets)voor meer informatie.
 
 | Interne cmdlet | Beschrijving |
 |:---|:---|
 |`Get-AutomationCertificate`|Haalt een certificaat op dat moet worden gebruikt in een runbook-of DSC-configuratie. Retourneert een [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) -object.|
 
 > [!NOTE] 
-> Vermijd het gebruik van variabelen in de `Name` para meter `Get-AutomationCertificate` van in een runbook of DSC-configuratie. Dergelijke variabelen kunnen de detectie van afhankelijkheden tussen runbooks of DSC-configuraties en Automation-variabelen tijdens ontwerp tijd bemoeilijken.
+> Vermijd het gebruik van variabelen in de `Name` para meter van `Get-AutomationCertificate` in een RUNBOOK of DSC-configuratie. Dergelijke variabelen kunnen de detectie van afhankelijkheden tussen runbooks of DSC-configuraties en Automation-variabelen tijdens ontwerp tijd bemoeilijken.
 
 ## <a name="python-2-functions-to-access-certificates"></a>Python 2-functies voor toegang tot certificaten
 
@@ -67,7 +64,7 @@ Wanneer u een nieuw certificaat maakt, uploadt u een CER-of PFX-bestand naar Aut
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Een nieuw certificaat maken met de Azure Portal
 
-1. Selecteer in uw Automation-account **activa** > **certificaten** > **een certificaat toevoegen**.
+1. Selecteer in uw Automation-account **activa**  >  **certificaten**  >  **een certificaat toevoegen**.
 1. Typ in het veld **naam** een naam voor het certificaat.
 1. Als u wilt bladeren naar een **CER** -of **PFX** -bestand, kiest u onder **een certificaat bestand uploaden**de optie **een bestand selecteren**. Als u een **PFX** -bestand selecteert, geeft u een wacht woord op en geeft u aan of het kan worden geëxporteerd.
 1. Selecteer **maken** om het nieuwe certificaat activum op te slaan.
@@ -130,7 +127,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>Een certificaat ophalen
 
-Gebruik de interne `Get-AutomationCertificate` cmdlet om een certificaat op te halen. U kunt de cmdlet [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) niet gebruiken, omdat deze informatie over de certificaat Asset retourneert, maar niet het certificaat zelf.
+Gebruik de interne cmdlet om een certificaat op te halen `Get-AutomationCertificate` . U kunt de cmdlet [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) niet gebruiken, omdat deze informatie over de certificaat Asset retourneert, maar niet het certificaat zelf.
 
 ### <a name="textual-runbook-example"></a>Voor beeld van een tekst-runbook
 

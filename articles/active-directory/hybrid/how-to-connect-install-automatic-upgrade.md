@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926473"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680213"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
 Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md#111050).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md#115610) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
@@ -35,15 +35,15 @@ Automatische upgrade is standaard ingeschakeld voor het volgende:
 * Het AD-account is het standaard MSOL_-account dat is gemaakt door snelle instellingen en DirSync.
 * De tekst bevat minder dan 100.000 objecten.
 
-De huidige status van automatische upgrade kan worden weer gegeven met de Power `Get-ADSyncAutoUpgrade`shell-cmdlet. Het heeft de volgende statussen:
+De huidige status van automatische upgrade kan worden weer gegeven met de Power shell-cmdlet `Get-ADSyncAutoUpgrade` . Het heeft de volgende statussen:
 
-| Status | Opmerking |
+| Staat | Opmerking |
 | --- | --- |
 | Ingeschakeld |Automatische upgrade is ingeschakeld. |
 | Onderbroken |Alleen ingesteld door het systeem. Het systeem komt **momenteel niet** in aanmerking voor automatische upgrades. |
 | Uitgeschakeld |Automatische upgrade is uitgeschakeld. |
 
-U kunt scha kelen tussen **ingeschakeld** en **uitgeschakeld** met `Set-ADSyncAutoUpgrade`. Alleen het systeem moet de status **opgeschort**instellen.  Voordat de cmdlet Set-ADSyncAutoUpgrade voor 1.1.750.0 wordt geblokkeerd, wordt de functie voor automatisch upgraden uitgeschakeld als de status van de automatische upgrade is ingesteld op onderbroken. Deze functionaliteit is nu gewijzigd, zodat de functie voor het bijwerken van de naam niet wordt geblokkeerd.
+U kunt scha kelen tussen **ingeschakeld** en **uitgeschakeld** met `Set-ADSyncAutoUpgrade` . Alleen het systeem moet de status **opgeschort**instellen.  Voordat de cmdlet Set-ADSyncAutoUpgrade voor 1.1.750.0 wordt geblokkeerd, wordt de functie voor automatisch upgraden uitgeschakeld als de status van de automatische upgrade is ingesteld op onderbroken. Deze functionaliteit is nu gewijzigd, zodat de functie voor het bijwerken van de naam niet wordt geblokkeerd.
 
 Automatische upgrade maakt gebruik van Azure AD Connect Health voor de upgrade-infra structuur. Zorg ervoor dat u de Url's in uw proxy server voor **Azure AD Connect Health** hebt geopend, zoals beschreven in [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)adresbereiken voor een automatische upgrade.
 
@@ -55,7 +55,7 @@ Als de installatie van uw verbinding niet werkt zoals verwacht, voert u de volge
 
 Eerst moet u niet verwachten dat er wordt geprobeerd de automatische upgrade uit te voeren op de eerste dag dat een nieuwe versie wordt uitgebracht. Er is opzettelijk een wille keurige aselecte manier voordat een upgrade wordt uitgevoerd en er wordt geen waarschuwing verzonden als uw installatie niet onmiddellijk wordt bijgewerkt.
 
-Als u denkt dat er iets niet klopt, voert u `Get-ADSyncAutoUpgrade` eerst uit om ervoor te zorgen dat automatische upgrade is ingeschakeld.
+Als u denkt dat er iets niet klopt, voert u eerst uit `Get-ADSyncAutoUpgrade` om ervoor te zorgen dat automatische upgrade is ingeschakeld.
 
 Zorg er vervolgens voor dat u de vereiste Url's hebt geopend in uw proxy of firewall. Automatische updates maakt gebruik van Azure AD Connect Health zoals beschreven in het [overzicht](#overview). Als u een proxy gebruikt, zorg er dan voor dat de status is geconfigureerd voor het gebruik van een [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Test ook de [status verbinding](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) met Azure AD.
 
@@ -92,7 +92,7 @@ Hier volgt een lijst met de meest voorkomende berichten die u vindt. Er worden n
 | UpgradeNotSupportedAdfsSignInMethod | U hebt ADFS als de aanmeldings methode geselecteerd. |
 | UpgradeNotSupportedCustomizedSyncRules |U hebt uw eigen aangepaste regels toegevoegd aan de configuratie. |
 | UpgradeNotSupportedDeviceWritebackEnabled |U hebt de functie voor het [terugschrijven van apparaten](how-to-connect-device-writeback.md) ingeschakeld. |
-| UpgradeNotSupportedGroupWritebackEnabled |U hebt de functie voor het [terugschrijven van groepen](how-to-connect-preview.md#group-writeback) ingeschakeld. |
+| UpgradeNotSupportedGroupWritebackEnabled |U hebt de functie voor het terugschrijven van groepen ingeschakeld. |
 | UpgradeNotSupportedInvalidPersistedState |De installatie is geen snelle instellingen of een DirSync-upgrade. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |U hebt meer dan 100.000 objecten in de tekst. |
 | UpgradeNotSupportedMultiForestSetup |U maakt verbinding met meer dan één forest. Snelle installatie maakt alleen verbinding met één forest. |

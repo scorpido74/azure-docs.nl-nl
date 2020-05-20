@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203289"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685239"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Verwijderde gebruikers bulksgewijs herstellen in Azure Active Directory
 
@@ -35,7 +35,7 @@ Down load en vul de CSV-sjabloon in om Azure AD-gebruikers bulksgewijs te herste
 De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
 - **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
-- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `Object ID [objectId] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
+- **Kolom koppen**: de indeling van de kolom koppen is de &lt; *item naam* &gt; [propertyname] &lt; *vereist of leeg* &gt; . Bijvoorbeeld `Object ID [objectId] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
 - **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
 ### <a name="additional-guidance"></a>Aanvullende richtlijnen
@@ -48,14 +48,14 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-bulk-restore-users"></a>Gebruikers bulksgewijs herstellen
 
 1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een account dat een gebruikers beheerder is in de Azure AD-organisatie.
-1. Selecteer in azure AD de optie **gebruikers** > **verwijderd**.
+1. Selecteer in azure AD de optie **gebruikers**  >  **verwijderd**.
 1. Op de pagina **Verwijderde gebruikers** selecteert u **bulk herstel** om een geldig CSV-bestand met eigenschappen te uploaden van de gebruikers die u wilt herstellen.
 
-   ![Selecteer de opdracht bulk herstel op de pagina verwijderde gebruikers](./media/users-bulk-restore/bulk-restore.png)
+    ![Selecteer de opdracht bulk herstel op de pagina verwijderde gebruikers](./media/users-bulk-restore/bulk-restore.png)
 
 1. Open de CSV-sjabloon en voeg een regel toe voor elke gebruiker die u wilt herstellen. De enige vereiste waarde is **ObjectID**. Sla het bestand op.
 
-   ![Selecteer een lokaal CSV-bestand waarin de gebruikers worden vermeld die u wilt toevoegen](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="Selecteer een lokaal CSV-bestand waarin de gebruikers worden vermeld die u wilt toevoegen":::
 
 1. Blader op de pagina **bulk herstel** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert en op **verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
 1. Wanneer de bestands inhoud is gevalideerd, ziet u dat het **bestand is geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.

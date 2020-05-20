@@ -3,12 +3,12 @@ title: Werken met grote gegevenssets
 description: Meer informatie over het ophalen, opmaken, pagina's en overs laan van records in grote gegevens sets tijdens het werken met Azure resource Graph.
 ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064746"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681066"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -21,7 +21,7 @@ Zie [richt lijnen voor beperkte aanvragen](./guidance-for-throttled-requests.md)
 Resource grafiek beperkt standaard elke query om alleen **100** records te retour neren. Met dit besturings element worden de gebruiker en de service beschermd tegen onbedoelde query's die zouden leiden tot grote gegevens sets. Deze gebeurtenis treedt meestal op als een klant experimenteert met query's om resources te zoeken en te filteren op de manier die aan hun specifieke behoeften voldoet. Dit besturings element verschilt van het gebruik van de [Top](/azure/kusto/query/topoperator) of het [beperken](/azure/kusto/query/limitoperator) van Azure Data Explorer taal operators om de resultaten te beperken.
 
 > [!NOTE]
-> Wanneer u de **eerste keer**gebruikt, is het raadzaam om de resultaten te rangschikken op ten `asc` minste `desc`één kolom met of. Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
+> Wanneer u de **eerste keer**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc` . Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
 
 De standaard limiet kan worden overschreven door alle methoden van interactie met de resource grafiek. In de volgende voor beelden ziet u hoe u de maximale grootte van de gegevensset wijzigt in _200_:
 
@@ -37,14 +37,17 @@ In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/
 
 Het besturings element dat het _meest beperkend_ is, wint. Als uw query bijvoorbeeld gebruikmaakt van de Opera tors **Top** of **Limit** en vervolgens meer records zou opleveren dan **eerst**, zijn de geretourneerde maximum records dus gelijk aan het **eerst**. Als **Top** of **Limit** kleiner is dan **eerst**, zou de opgehaalde recordset de kleinere waarde zijn die wordt geconfigureerd met **boven** of **limiet**.
 
-De **eerste** heeft momenteel een Maxi maal toegestane waarde van _5000_.
+De **eerste** heeft momenteel een Maxi maal toegestane waarde van _5000_, die wordt gerealiseerd door [paginerings resultaten](#paging-results) van _1000_ records tegelijk.
+
+> [!IMPORTANT]
+> Wanneer het **eerst** is geconfigureerd om groter dan _1000_ records te zijn, moet de query het veld **id** **projecteren** om de paginering te laten werken. Als deze ontbreekt in de query, wordt het antwoord [niet opgehaald en](#paging-results) worden de resultaten beperkt tot _1000_ records.
 
 ## <a name="skipping-records"></a>Records overs Laan
 
 De volgende optie voor het werken met grote gegevens sets is het besturings element **overs Laan** . Met dit besturings element kan uw query overstappen of het gedefinieerde aantal records overs Laan voordat de resultaten worden geretourneerd. **Overs Laan** is handig voor query's waarbij het sorteren resulteert in een zinvolle manier, waarbij de bedoeling is om records ergens in het midden van de resultatenset op te halen. Als de resultaten aan het einde van de geretourneerde gegevensset worden weer gegeven, is het efficiënter om een andere Sorteer configuratie te gebruiken en de resultaten op te halen uit de bovenkant van de gegevensset in plaats daarvan.
 
 > [!NOTE]
-> Wanneer u **overs Laan**gebruikt, is het raadzaam om de resultaten te rangschikken op ten `asc` minste `desc`één kolom met of. Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
+> Wanneer u **overs Laan**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc` . Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
 
 In de volgende voor beelden ziet u hoe u de eerste _tien_ records kunt overs Laan waarmee een query zou leiden, in plaats daarvan de geretourneerde resultatenset met de elfde record te starten:
 
@@ -63,7 +66,7 @@ In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/
 Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** biedt waarden om aan te geven dat een resultatenset is opgesplitst: **resultTruncated** en **$skipToken**.
 **resultTruncated** is een Booleaanse waarde die de Consumer informeert als er geen aanvullende records worden geretourneerd in het antwoord. Deze voor waarde kan ook worden geïdentificeerd wanneer de eigenschap **Count** kleiner is dan de eigenschap **totalRecords** . **totalRecords** definieert het aantal records dat overeenkomt met de query.
 
- **resultTruncated** is **waar** als een van de pagineringen is uitgeschakeld of niet mogelijk `id` is als gevolg van een kolom of wanneer er minder resources beschikbaar zijn dan een query vraagt. Wanneer **resultTruncated** **True**is, is de eigenschap **$skipToken** niet ingesteld.
+ **resultTruncated** is **waar** als een van de pagineringen is uitgeschakeld of niet mogelijk is als gevolg van `id` een kolom of wanneer er minder resources beschikbaar zijn dan een query vraagt. Wanneer **resultTruncated** **True**is, is de eigenschap **$skipToken** niet ingesteld.
 
 In de volgende voor beelden ziet u hoe u de eerste 3000 records **overs laat** en de **eerste** 1000 records retourneert nadat deze records zijn overgeslagen met Azure CLI en Azure PowerShell:
 
@@ -84,7 +87,7 @@ Zie de [query volgende pagina](/rest/api/azureresourcegraph/resourcegraph(2018-0
 
 De resultaten van een resource grafiek query worden in twee indelingen, _tabel_ en _ObjectArray_gegeven. De indeling wordt geconfigureerd met de para meter **resultFormat** als onderdeel van de aanvraag opties. De _tabel_ indeling is de standaard waarde voor **resultFormat**.
 
-De resultaten van Azure CLI worden standaard in JSON opgenomen. Resultaten in Azure PowerShell zijn standaard een **PSCustomObject** , maar ze kunnen snel worden GECONVERTEERD naar JSON met behulp `ConvertTo-Json` van de cmdlet. Voor andere Sdk's kunnen de query resultaten worden geconfigureerd voor het uitvoeren van de _ObjectArray_ -indeling.
+De resultaten van Azure CLI worden standaard in JSON opgenomen. Resultaten in Azure PowerShell zijn standaard een **PSCustomObject** , maar ze kunnen snel worden GECONVERTEERD naar JSON met behulp van de `ConvertTo-Json` cmdlet. Voor andere Sdk's kunnen de query resultaten worden geconfigureerd voor het uitvoeren van de _ObjectArray_ -indeling.
 
 ### <a name="format---table"></a>Indeling-tabel
 

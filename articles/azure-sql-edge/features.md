@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d33c2bef1cd0f7bfab4ec3c09f16c049881d1cd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597385"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684365"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
 
@@ -34,7 +34,7 @@ Azure SQL Edge is beschikbaar in twee verschillende edities of software plannen.
 
 ## <a name="operating-system"></a>Besturingssysteem
 
-Azure SQL Edge-containers zijn momenteel gebaseerd op Ubuntu (16,04 en 18,04) en worden alleen ondersteund om te worden uitgevoerd op docker-hosts met Ubuntu 16,04 en 18,04. Azure SQL Edge kan ook worden uitgevoerd op andere hosts van het besturings systeem, bijvoorbeeld andere distributies van Linux of op Windows (met behulp van docker CE of docker EE), maar deze configuraties zijn niet uitgebreid getest door micro soft.
+Azure SQL Edge-containers zijn momenteel gebaseerd op Ubuntu 16,04 en worden alleen ondersteund om te worden uitgevoerd op docker-hosts met Ubuntu 16,04 (aanbevolen) of Ubuntu 18,04. Azure SQL Edge kan ook worden uitgevoerd op andere hosts van het besturings systeem, bijvoorbeeld andere distributies van Linux of op Windows (met behulp van docker CE of docker EE), maar deze configuraties zijn niet uitgebreid getest door micro soft.
 
 Azure SQL Edge wordt momenteel alleen ondersteund voor implementatie via Azure IoT Edge. Raadpleeg [Azure IOT Edge ondersteunde systemen](https://docs.microsoft.com/azure/iot-edge/support)voor meer informatie over de ondersteunde systemen voor Azure IOT Edge.
 

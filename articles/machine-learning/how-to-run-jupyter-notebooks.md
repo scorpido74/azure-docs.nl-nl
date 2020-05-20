@@ -1,5 +1,5 @@
 ---
-title: Jupyter-notebooks uitvoeren in uw werk ruimte
+title: Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het uitvoeren van een Jupyter Notebook zonder uw werk ruimte te verlaten in Azure Machine Learning Studio.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783654"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681442"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-notebooks uitvoeren in uw werk ruimte
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het rechtstreeks uitvoeren van uw Jupyter-notebook in uw werk ruimte in Azure Machine Learning Studio. Hoewel u [Jupyter](https://jupyter.org/) of [jjupyterlab](https://jupyterlab.readthedocs.io)kunt starten, kunt u uw notitie blokken ook bewerken en uitvoeren zonder de werk ruimte te verlaten.
@@ -31,7 +31,7 @@ Bekijk hoe u het volgende kunt doen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
 * Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Notitie blokken maken
@@ -62,7 +62,7 @@ Uw werk ruimte bevat een map met voor **beelden** met notebooks die zijn ontworp
 
 Zie [zelf studie: uw eerste ml-experiment maken](tutorial-1st-experiment-sdk-setup.md#azure)voor een voor beeld.
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal">Bestanden van Git en versie van mijn bestanden gebruiken
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Bestanden van Git en versie van mijn bestanden gebruiken
 
 U kunt toegang krijgen tot alle Git-bewerkingen via een Terminal venster. Alle Git-bestanden en-mappen worden opgeslagen in het bestands systeem van de werk ruimte.
 
@@ -161,7 +161,7 @@ Het notitie blok vindt automatisch alle Jupyter-kernels die zijn geïnstalleerd 
 
 1. Selecteer [**Terminal openen**](#terminal) op de werk balk van het notitie blok.
 1. Gebruik het Terminal venster om een nieuwe omgeving te maken.
-1. Activeer de omgeving.  Bijvoorbeeld na het maken `newenv`van:
+1. Activeer de omgeving.  Bijvoorbeeld na het maken van `newenv` :
 
     ```shell
     source activate newenv

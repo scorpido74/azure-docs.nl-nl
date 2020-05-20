@@ -3,12 +3,12 @@ title: Definitie van het app-schema
 description: De LUIS-app wordt weer gegeven in de `.json` of `.lu` en bevat alle intenties, entiteiten, voor beelden van uitingen, functies en instellingen.
 ms.topic: reference
 ms.date: 05/05/2020
-ms.openlocfilehash: 21b58f79ffd2baf553c6f8b07daa84473e620f77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599368"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684359"
 ---
 # <a name="app-schema-definition"></a>Definitie van het app-schema
 
@@ -25,8 +25,8 @@ Wanneer u de app importeert en exporteert, kiest u `.json` of `.lu` .
 
 ## <a name="version-7x"></a>Versie 7. x
 
-* Verplaatsen naar versie 7. x worden de entiteiten weer gegeven als geneste, door machines geleerde entiteiten.
-* Ondersteuning voor het ontwerpen van geneste, door machines geleerde entiteiten met `enableNestedChildren` de eigenschap in de volgende ontwerp-api's:
+* Verplaatsen naar versie 7. x worden de entiteiten weer gegeven als geneste machine learning-entiteiten.
+* Ondersteuning voor het ontwerpen van geneste machine-learning entiteiten met `enableNestedChildren` de eigenschap in de volgende ontwerp-api's:
     * [Label toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
     * [Batch label toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09)
     * [Labels controleren](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c0a)
@@ -64,7 +64,7 @@ Wanneer u de app importeert en exporteert, kiest u `.json` of `.lu` .
 
 ## <a name="version-6x"></a>Versie 6. x
 
-* Als u naar versie 6. x gaat, gebruikt u de nieuwe door de [machine geleerde entiteit](reference-entity-machine-learned-entity.md) om uw entiteiten weer te geven.
+* Als u wilt overstappen op versie 6. x, gebruikt u de nieuwe [machine learning-entiteit](reference-entity-machine-learned-entity.md) om uw entiteiten weer te geven.
 
 ```json
 {

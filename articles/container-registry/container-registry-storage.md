@@ -3,12 +3,12 @@ title: Container installatie kopie opslag
 description: Meer informatie over hoe uw docker-container installatie kopieën worden opgeslagen in Azure Container Registry, met inbegrip van beveiliging, redundantie en capaciteit.
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456203"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683398"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Opslag van container installatie kopieën in Azure Container Registry
 
@@ -46,7 +46,7 @@ Zie [Azure container Registry prijzen][pricing]voor volledige informatie over pr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de verschillende Azure container Registry Sku's (Basic, Standard en Premium).
+Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de basis-, standaard-en Premium-container registers.
 
 <!-- IMAGES -->
 

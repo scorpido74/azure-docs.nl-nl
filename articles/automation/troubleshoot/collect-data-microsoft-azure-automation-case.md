@@ -1,6 +1,6 @@
 ---
-title: Gegevens die moeten worden verzameld wanneer u een case opent voor Microsoft Azure automatisering | Microsoft Docs
-description: In dit artikel wordt een deel van de informatie beschreven die u moet verzamelen voordat u een aanvraag voor Azure Automation opent met Microsoft Azure-ondersteuning.
+title: Gegevens die moeten worden verzameld bij het openen van een case voor Microsoft Azure automatisering | Microsoft Docs
+description: In dit artikel wordt beschreven welke informatie u moet verzamelen voordat u een case opent voor Azure Automation met Microsoft Azure-ondersteuning.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679408"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684841"
 ---
-# <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Te verzamelen gegevens wanneer u een case opent voor Microsoft Azure Automation
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Gegevens die moeten worden verzameld bij het openen van een case voor Microsoft Azure Automation
 
 In dit artikel wordt een deel van de informatie beschreven die u moet verzamelen voordat u een aanvraag voor Azure Automation opent met Microsoft Azure-ondersteuning. Deze informatie is niet vereist om de aanvraag te openen. Het kan micro soft echter helpen om uw probleem sneller op te lossen. Het is ook mogelijk dat u voor deze gegevens wordt gevraagd door de ondersteunings technicus nadat u de aanvraag hebt geopend.
 
@@ -92,5 +92,5 @@ Naast de [basis gegevens items](#basic-data), moet u de volgende informatie verz
 Als u meer hulp nodig hebt:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) , het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 * Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

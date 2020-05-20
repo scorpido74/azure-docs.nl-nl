@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 217cf8822fcd8ef515ac9ce2dacdac3682e5fd12
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115486"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680175"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Overwegingen voor hybride identiteit voor de Azure Government Cloud
 
@@ -41,7 +41,7 @@ Voordat u de Pass-Through-verificatie agent implementeert, controleert u of er e
 |URL |Hoe dat wordt gebruikt|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|De agent gebruikt deze Url's om te communiceren met de Azure AD-Cloud service. |
-|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| De agent gebruikt deze Url's om certificaten te verifiëren.|
+|`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| De agent gebruikt deze Url's om certificaten te verifiëren.|
 |login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| De agent gebruikt deze Url's tijdens het registratie proces.
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>De agent voor de Azure Government Cloud installeren
@@ -76,7 +76,7 @@ Als u Pass-Through-verificatie gebruikt als uw aanmeldings methode, is er geen a
 
 ### <a name="roll-out-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding implementeren
 
-U kunt met behulp van de volgende instructies de naadloze eenmalige aanmelding van Azure AD naar uw gebruikers samen vouwen. U begint door de Azure AD-URL toe te voegen [https://autologon.microsoft.us](https://autologon.microsoft.us) aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van Groepsbeleid in Active Directory.
+U kunt met behulp van de volgende instructies de naadloze eenmalige aanmelding van Azure AD naar uw gebruikers samen vouwen. U begint door de Azure AD-URL toe te voegen `https://autologon.microsoft.us` aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van Groepsbeleid in Active Directory.
 
 U moet ook de beleids instelling intranet zone inschakelen **updates op status balk via script toestaan via Groepsbeleid**.
 
@@ -89,16 +89,16 @@ In Mozilla Firefox wordt niet automatisch Kerberos-verificatie gebruikt. Elke ge
 1. Voer Firefox uit en voer **about: config**   in de adres balk in. Sluit alle meldingen die u mogelijk ziet.
 1. Zoek naar de voor keuren **netwerk. Negotiate-auth. Trusted-uri's**   . Deze voor keur geeft een lijst van de sites die door Firefox worden vertrouwd voor Kerberos-verificatie.
 1. Klik met de rechter muisknop op de naam van de voor keur en selecteer vervolgens **wijzigen**.
-1. Voer  [**https://autologon.microsoft.us**](https://autologon.microsoft.us**)   in het vak in.
+1. Voer `https://autologon.microsoft.us` in het vak in.
 1. Selecteer **OK**   en open vervolgens de browser opnieuw.
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Micro soft Edge op basis van chroom (alle platformen)
 
-Als u de  `AuthNegotiateDelegateAllowlist`   `AuthServerAllowlist`   beleids instellingen in uw omgeving hebt overschreven, moet u ervoor zorgen dat u de Azure AD-URL hieraan toevoegt [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Als u de  `AuthNegotiateDelegateAllowlist`   `AuthServerAllowlist`   beleids instellingen in uw omgeving hebt overschreven, moet u ervoor zorgen dat u de Azure AD-URL hieraan toevoegt `https://autologon.microsoft.us` .
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome (alle platformen)
 
-Als u de  `AuthNegotiateDelegateWhitelist`   `AuthServerWhitelist`   beleids instellingen in uw omgeving hebt overschreven, moet u ervoor zorgen dat u de Azure AD-URL hieraan toevoegt [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Als u de  `AuthNegotiateDelegateWhitelist`   `AuthServerWhitelist`   beleids instellingen in uw omgeving hebt overschreven, moet u ervoor zorgen dat u de Azure AD-URL hieraan toevoegt `https://autologon.microsoft.us` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

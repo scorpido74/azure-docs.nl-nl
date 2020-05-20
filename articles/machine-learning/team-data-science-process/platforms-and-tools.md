@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256515"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682696"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
 
@@ -49,7 +49,7 @@ Het bevat ook **ml-en AI-hulpprogram ma's** zoals xgboost, Mxnet en Vowpal Wabbi
 
 Momenteel is DSVM beschikbaar in **Windows** -en **Linux CentOS** -besturings systemen. Kies de grootte van uw DSVM (aantal CPU-kernen en de hoeveelheid geheugen) op basis van de behoeften van de data Science-projecten die u wilt uitvoeren. 
 
-Zie [micro soft data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) op de Azure Marketplace voor meer informatie over Windows-edities van DSVM. Zie [linux data Science virtual machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)voor de Linux-editie van de DSVM.
+Zie [micro soft data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) op de Azure Marketplace voor meer informatie over Windows-edities van DSVM. Zie [linux data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)voor de Linux-editie van de DSVM.
 
 Zie [tien dingen die u kunt doen op de data Science-virtuele machine](../data-science-virtual-machine/vm-do-ten-things.md) voor meer informatie over het efficiënt uitvoeren van een aantal algemene data Science-taken op de DSVM
 
@@ -136,7 +136,7 @@ Als u Linux-machines (CentOS) gebruikt om de Git-opdrachten uit te voeren, moet 
 
 1. Kopieer de volledige SSH-sleutel *, inclusief ssh-rsa*. 
 1. Meld u aan bij uw Azure DevOps-Services. 
-1. Klik op **<uw\> naam** in de rechter bovenhoek van de pagina en klik op **beveiliging**. 
+1. Klik op **<uw \> naam** in de rechter bovenhoek van de pagina en klik op **beveiliging**. 
     
    ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
 

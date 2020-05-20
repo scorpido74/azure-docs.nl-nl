@@ -7,21 +7,21 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72755241"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685305"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Video-inhoud voor aanstootgevend materiaal in C analyseren #
 
 In dit artikel vindt u informatie en code voorbeelden waarmee u aan de slag kunt met de [Content moderator SDK voor .net](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) voor het scannen van video-inhoud voor inhoud voor volwassenen of ongepaste.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/)
@@ -40,7 +40,7 @@ Ga naar het nieuwe AMS-abonnement in de Azure Portal en selecteer **API-toegang*
 
 Selecteer in het gedeelte **Azure AD-App** de optie **nieuwe maken** en geef uw nieuwe Azure AD-toepassings registratie een naam (bijvoorbeeld ' VideoModADApp '). Klik op **Opslaan** en wacht enkele minuten totdat de toepassing is geconfigureerd. Vervolgens ziet u de nieuwe app-registratie in het gedeelte **Azure AD-App** van de pagina.
 
-Selecteer de registratie van uw app en klik op de knop **toepassing beheren** hieronder. Noteer de waarde in het veld **toepassings-id** . u hebt dit later nodig. Selecteer **instellingen** > **sleutels**en voer een beschrijving in voor een nieuwe sleutel (bijvoorbeeld ' VideoModKey '). Klik op **Opslaan**en noteer de nieuwe sleutel waarde. Kopieer deze teken reeks en sla deze op een veilige plek op.
+Selecteer de registratie van uw app en klik op de knop **toepassing beheren** hieronder. Noteer de waarde in het veld **toepassings-id** . u hebt dit later nodig. Selecteer **instellingen**  >  **sleutels**en voer een beschrijving in voor een nieuwe sleutel (bijvoorbeeld ' VideoModKey '). Klik op **Opslaan**en noteer de nieuwe sleutel waarde. Kopieer deze teken reeks en sla deze op een veilige plek op.
 
 Zie [aan de slag met Azure AD-verificatie](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)voor een gedetailleerder overzicht van het bovenstaande proces.
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Resource verwijzingen instellen
 
-Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden bevatten de gegevens die nodig zijn om verbinding te maken met uw AMS-abonnement. Vul deze in met de waarden die u in de bovenstaande stappen hebt ontvangen. Houd er `CLIENT_ID` rekening mee dat de waarde van de **toepassings-id** van uw `CLIENT_SECRET` Azure AD-app is en de waarde is van de ' VideoModKey ' die u hebt gemaakt voor die app.
+Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden bevatten de gegevens die nodig zijn om verbinding te maken met uw AMS-abonnement. Vul deze in met de waarden die u in de bovenstaande stappen hebt ontvangen. Houd er rekening mee dat `CLIENT_ID` de waarde van de **toepassings-id** van uw Azure AD-app is en de `CLIENT_SECRET` waarde is van de ' VideoModKey ' die u hebt gemaakt voor die app.
 
 ```csharp
 // declare constants and globals
@@ -118,7 +118,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Als u een lokaal video bestand (het eenvoudigste geval) wilt gebruiken, voegt u het toe aan het project en voert u het `INPUT_FILE` pad in als de waarde (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory).
+Als u een lokaal video bestand (het eenvoudigste geval) wilt gebruiken, voegt u het toe aan het project en voert u het pad in als de `INPUT_FILE` waarde (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory).
 
 U moet ook het bestand voor de _vooraf ingestelde. json_ in de huidige map maken en gebruiken om een versie nummer op te geven. Bijvoorbeeld:
 

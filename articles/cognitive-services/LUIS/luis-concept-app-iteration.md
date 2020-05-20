@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: cc994875e39410ecf01417c4d08248d5bc7d034a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589819"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683107"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iteratief app-ontwerp voor LUIS
 
@@ -115,7 +115,7 @@ Een versie kan ook worden geëxporteerd op app-of versie niveau. Het enige versc
 
 Het geëxporteerde bestand bevat **niet** :
 
-* Door de computer geleerde informatie, omdat de app opnieuw wordt getraind nadat deze is geïmporteerd
+* informatie over machine learning, omdat de app opnieuw wordt getraind nadat deze is geïmporteerd
 * Informatie over Inzender
 
 Als u een back-up wilt maken van uw LUIS-app-schema, exporteert u een versie vanuit de [Luis-Portal](https://www.luis.ai/applications).

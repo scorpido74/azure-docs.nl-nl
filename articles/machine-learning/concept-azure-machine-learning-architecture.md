@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871462"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683038"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -34,7 +34,7 @@ De werk stroom voor het machine learning model volgt doorgaans deze reeks:
 
 1. **Pakket** -nadat een bevredigende uitvoering is gevonden, registreert u het persistente model in het **model register**.
 
-1. **Valideer** - **query het experiment** voor vastgelegde metrische gegevens uit de huidige en eerdere uitvoeringen. Als de metrische gegevens niet het gewenste resultaat aangeven, keert u terug naar stap 1 en herhaalt u de scripts.
+1. **Valideren**  -  **Vraag het experiment** uit voor vastgelegde metrische gegevens uit de huidige en eerdere uitvoeringen. Als de metrische gegevens niet het gewenste resultaat aangeven, keert u terug naar stap 1 en herhaalt u de scripts.
 
 1. **Implementeer** een score script dat gebruikmaakt van het model en **Implementeer het model** als een **webservice** in azure, of op een **IOT edge apparaat**.
 
@@ -48,7 +48,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
 + Gebruik [Azure machine learning Designer (preview)](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
-
++ De [vele modellen oplossings versneller](https://aka.ms/many-models) (preview) is gebaseerd op Azure machine learning en stelt u in staat honderden of zelfs duizenden machine learning modellen te trainen, te bedienen en te beheren.
 
 > [!NOTE]
 > Hoewel in dit artikel voor waarden en concepten worden gedefinieerd die worden gebruikt door Azure Machine Learning, worden er geen termen en concepten voor het Azure-platform gedefinieerd. Zie de [Microsoft Azure verklarende woorden lijst](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)voor meer informatie over de terminologie van het Azure-platform.
@@ -58,7 +58,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 * [Activiteit](#activities)
 * [Werkruimte](#workspaces)
     * [Experimenten](#experiments)
-        * [Uitvoeringsrun](#runs) 
+        * [Uitvoeren](#runs) 
             * [Configuratie uitvoeren](#run-configurations)
             * [Snapshot](#snapshots)
             * [Git-tracking](#github-tracking-and-integration)
@@ -83,7 +83,7 @@ Een activiteit vertegenwoordigt een langlopende bewerking. De volgende bewerking
 
 Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgang van deze bewerkingen eenvoudig kunt bewaken.
 
-### <a name="workspaces"></a>Workspaces
+### <a name="workspaces"></a>Werkruimten
 
 [De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
 
@@ -222,7 +222,7 @@ Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
 
 Met **Azure machine learning gegevens sets** (preview) kunt u eenvoudig toegang krijgen tot uw gegevens en deze gebruiken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
 
-Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het `from_delimited_files()` gebruik `to_pandas_dataframe()`van of.
+Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het gebruik van `from_delimited_files()` of `to_pandas_dataframe()` .
 
 Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)voor meer voor beelden met behulp van gegevens sets.
 

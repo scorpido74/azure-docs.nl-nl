@@ -4,17 +4,17 @@ description: Gegevens uit utterance-tekst ophalen met intents en entiteiten. Mee
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589717"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682191"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Gegevens uit utterance-tekst ophalen met intents en entiteiten
 LUIS biedt u de mogelijkheid om gegevens op te halen uit de uitingen van de natuurlijke taal van een gebruiker. De gegevens worden geëxtraheerd op een manier die kan worden gebruikt door een programma, toepassing of chat-bot om actie te ondernemen. In de volgende secties vindt u informatie over de gegevens die worden geretourneerd door intenties en entiteiten met voor beelden van JSON.
 
-De hardste gegevens die u wilt extra heren, zijn de door de machine geleerde gegevens omdat het geen exacte tekst overeenkomst is. Gegevens extractie van de door de machine geleerde [entiteiten](luis-concept-entity-types.md) moet deel uitmaken van de [ontwerp cyclus](luis-concept-app-iteration.md) totdat u zeker weet dat u de verwachte gegevens ontvangt.
+De hardste gegevens die u wilt extra heren, zijn de gegevens van de machine learning, omdat deze niet exact overeenkomen met de tekst. Het ophalen van gegevens van de machine learning- [entiteiten](luis-concept-entity-types.md) moet deel uitmaken van de [ontwerp cyclus](luis-concept-app-iteration.md) totdat u zeker weet dat u de verwachte gegevens ontvangt.
 
 ## <a name="data-location-and-key-usage"></a>Gegevens locatie en sleutel gebruik
 LUIS extraheert gegevens van de utterance van de gebruiker op het gepubliceerde [eind punt](luis-glossary.md#endpoint). De **HTTPS-aanvraag** (post of Get) bevat de utterance en enkele optionele configuraties zoals staging of productie omgevingen.
@@ -245,7 +245,7 @@ Sommige apps moeten nieuwe en opkomende namen kunnen vinden, zoals producten of 
 
 ## <a name="patternany-entity-data"></a>Patroon. alle entiteits gegevens
 
-[Patroon. any](reference-entity-pattern-any.md) is een tijdelijke aanduiding met variabele lengte die alleen wordt gebruikt in de sjabloon van een patroon utterance om te markeren waar de entiteit begint en eindigt. De entiteit die in het patroon wordt gebruikt, moet worden gevonden om het patroon te kunnen Toep assen. 
+[Patroon. any](reference-entity-pattern-any.md) is een tijdelijke aanduiding met variabele lengte die alleen wordt gebruikt in de sjabloon van een patroon utterance om te markeren waar de entiteit begint en eindigt. De entiteit die in het patroon wordt gebruikt, moet worden gevonden om het patroon te kunnen Toep assen.
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 Als sentiment-analyse is geconfigureerd tijdens het [publiceren](luis-how-to-publish-app.md#sentiment-analysis), omvat het JSON-antwoord Luis sentiment analyse. Meer informatie over sentiment analyse vindt u in de [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) -documentatie.

@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592386"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683007"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -111,6 +111,18 @@ Met de ontwerper kunt u modellen trainen met behulp van een slepen-en-neerzetten
 + [Classificatie: verloop, verlangen en omhoog verkopen](how-to-designer-sample-classification-churn.md)
 + [Classificatie met aangepast R-script: vertragingen van de vlucht voors pellen](how-to-designer-sample-classification-flight-delay.md)
 + [Tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>Veel modellen oplossings versneller
+
+De [vele modellen oplossings versneller](https://aka.ms/many-models) (preview) is gebaseerd op Azure machine learning en stelt u in staat honderden of zelfs duizenden machine learning modellen te trainen, te bedienen en te beheren.
+
+Het bouwen van een model __voor elk exemplaar of individu__ in de volgende scenario's kan bijvoorbeeld leiden tot betere resultaten:
+
+* De verkoop voor elke afzonderlijke winkel voors pellen
+* Voor speld onderhoud voor honderden olie putjes
+* Het aanpassen van een ervaring voor individuele gebruikers.
+
+Zie de [oplossing voor veel modellen van oplossingen](https://aka.ms/many-models) op github voor meer informatie.
 
 ## <a name="cli"></a>CLI
 

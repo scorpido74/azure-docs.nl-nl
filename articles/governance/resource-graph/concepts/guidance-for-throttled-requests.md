@@ -1,14 +1,14 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
 description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
-ms.date: 12/02/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259849"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682055"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -30,7 +30,7 @@ In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
 - `x-ms-user-quota-remaining`(int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
 - `x-ms-user-quota-resets-after`(UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
 
-Om te laten zien hoe de headers werken, bekijken we een query-antwoord met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03`.
+Om te laten zien hoe de headers werken, bekijken we een query-antwoord met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03` .
 
 - Binnen de komende 3 seconden kunnen Maxi maal 10 query's worden verzonden zonder te zijn beperkt.
 - In 3 seconden worden de waarden van `x-ms-user-quota-remaining` en `x-ms-user-quota-resets-after` teruggezet naar `15` en `00:00:05` respectievelijk.
@@ -185,7 +185,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Paginering
+## <a name="pagination"></a>Pagin
 
 Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord retourneert, moet u mogelijk uw query's [pagineren](./work-with-data.md#paging-results) om de volledige gegevensset te verkrijgen die u zoekt. Sommige Azure-resource grafiek-clients verwerken de paginering echter anders dan andere.
 
@@ -228,14 +228,14 @@ Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord r
 
 ## <a name="still-get-throttled"></a>Nog steeds beperkt?
 
-Als u na het uitvoeren van [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)de bovenstaande aanbevelingen wilt worden beperkt, neemt u contact op met het team.
+Als u na het uitvoeren van de bovenstaande aanbevelingen wilt worden beperkt, neemt u contact op met het team [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
 Geef de volgende gegevens op:
 
 - Uw specifieke gebruiks voorbeeld-en Business-stuur programma moeten een hogere beperkings limiet hebben.
 - Hoeveel resources hebt u toegang tot? Hoeveel van de retour neren van één query
 - Van welke typen resources bent u geïnteresseerd?
-- Wat is uw query patroon? X query's per Y seconden etc.
+- Wat is uw query patroon? X-query's per Y seconden, enzovoort.
 
 ## <a name="next-steps"></a>Volgende stappen
 

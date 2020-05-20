@@ -2,14 +2,14 @@
 title: Aanbevolen procedures voor het bouwen van uw LUIS-app
 description: Meer informatie over de aanbevolen procedures voor het verkrijgen van de beste resultaten van het model van uw LUIS-app.
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589802"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683756"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Aanbevolen procedures voor het bouwen van een LUIS-app (Language memorandum)
 Gebruik het ontwerp proces voor apps om uw LUIS-app te bouwen:
@@ -31,13 +31,27 @@ De volgende lijst bevat aanbevolen procedures voor LUIS-apps:
 
 |Wel doen|Niet doen|
 |--|--|
-|[Afzonderlijke intenties definiëren](#do-define-distinct-intents)<br>[Functies toevoegen aan intenties](#do-add-features-to-intents) |[Een groot aantal voor beelden uitingen toevoegen aan intenties](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
+|[Uw schema plannen](#do-plan-your-schema)|[Bouwen en publiceren zonder een abonnement](#dont-publish-too-quickly)|
+|[Afzonderlijke intenties definiëren](#do-define-distinct-intents)<br>[Functies toevoegen aan intenties](#do-add-features-to-intents)<br>
+[Door de machine geleerde entiteiten gebruiken](#do-use-machine-learned-entities) |[Een groot aantal voor beelden uitingen toevoegen aan intenties](#dont-add-many-example-utterances-to-intents)<br>[Gebruik enkele of eenvoudige entiteiten](#dont-use-few-or-simple-entities) |
 |[Vind een zoete vlek tussen te algemeen en te specifiek voor elke intentie](#do-find-sweet-spot-for-intents)|[LUIS als trainings platform gebruiken](#dont-use-luis-as-a-training-platform)|
 |[Uw app iteratief bouwen met versies](#do-build-your-app-iteratively-with-versions)<br>[Entiteiten bouwen voor model ontleding](#do-build-for-model-decomposition)|[Een groot aantal voor beeld-uitingen met dezelfde indeling toevoegen en andere indelingen negeren](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Patronen in latere iteraties toevoegen](#do-add-patterns-in-later-iterations)|[De definitie van intenties en entiteiten combi neren](#dont-mix-the-definition-of-intents-and-entities)|
 |[U hoeft uw uitingen te verdelen over alle intenties](#balance-your-utterances-across-all-intents) , met uitzonde ring van de geen intentie.<br>[Voor beeld uitingen toevoegen aan geen intentie](#do-add-example-utterances-to-none-intent)|[Woordgroepen lijsten met alle mogelijke waarden maken](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Gebruik de functie Voorst Ellen voor actief leren](#do-leverage-the-suggest-feature-for-active-learning)|[Te veel patronen toevoegen](#dont-add-many-patterns)|
 |[De prestaties van uw app bewaken met batch tests](#do-monitor-the-performance-of-your-app)|[Train en publiceer met elk enkel voor beeld utterance toegevoegd](#dont-train-and-publish-with-every-single-example-utterance)|
+
+## <a name="do-plan-your-schema"></a>Plan uw schema
+
+Voordat u begint met het bouwen van het schema van de app, moet u bepalen wat en waar u deze app gaat gebruiken. Hoe dieper en specifiek uw planning, hoe beter uw app wordt.
+
+* Gerichte gebruikers onderzoeken
+* End-to-end-personen definiëren voor uw app-Voice, avatar, afhandeling van problemen (proactieve, reactief)
+* Gebruikers interacties (tekst, spraak) identificeren met kanalen, afleveren naar bestaande oplossingen of een nieuwe oplossing maken voor deze app
+* End-to-end gebruikers traject
+    * Wat moet u verwachten dat deze app niet kan worden uitgevoerd? * Wat zijn de prioriteiten van wat het moet doen?
+    * Wat zijn de belangrijkste use cases?
+* Gegevens verzamelen- [meer informatie](data-collection.md) over het verzamelen en voorbereiden van gegevens
 
 ## <a name="do-define-distinct-intents"></a>Afzonderlijke intenties definiëren
 Zorg ervoor dat de woorden lijst voor elke intentie alleen voor dat doel is en niet overlapt met een ander doel. Als u bijvoorbeeld een app wilt hebben die reis regelingen afhandelt, zoals vlieg vluchten en hotels, kunt u ervoor kiezen om deze onderwerpgebieden als afzonderlijke intenties of hetzelfde doel te hebben met entiteiten voor specifieke gegevens binnen de utterance.
@@ -60,6 +74,14 @@ Functies beschrijven concepten voor een intentie. Een functie kan een woordgroep
 ## <a name="do-find-sweet-spot-for-intents"></a>Vind een zoete plaats voor intenties
 Gebruik Voorspellings gegevens uit LUIS om te bepalen of uw intentie elkaar overlappen. Overlappende intentiesen verwarren LUIS. Het resultaat is dat de bovenste Score intentie te dicht bij een andere intentie is. Omdat LUIS niet exact hetzelfde pad door de gegevens voor de training gebruikt, heeft een overlappende intentie een kans op het eerste of tweede in de training. U wilt dat de Score van de utterance voor elke intentie verder uit elkaar komt, zodat deze flip/flop niet plaatsvindt. Een goed onderscheiding voor intenties moet elke keer op de verwachte beste intentie worden uitgevoerd.
 
+## <a name="do-use-machine-learned-entities"></a>Door de machine geleerde entiteiten gebruiken
+
+Door de machine geleerde entiteiten worden aangepast aan uw app en vereisen een label. Als u geen door de machine geleerde entiteiten gebruikt, gebruikt u mogelijk het verkeerde hulp programma.
+
+Door de machine geleerde entiteiten kunnen andere entiteiten als functies gebruiken. Deze andere entiteiten kunnen aangepaste entiteiten zijn, zoals reguliere expressie-entiteiten of lijst entiteiten, of u kunt vooraf gemaakte entiteiten gebruiken als-onderdelen.
+
+Meer informatie over de [daad werkelijke door de machine geleerde entiteiten](luis-concept-entity-types.md#effective-machine-learned-entities).
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Bouw uw app iteratief op met versies
@@ -79,9 +101,9 @@ Model ontleding heeft een typisch proces van:
 
 Wanneer u de intentie hebt gemaakt en voor beeld-uitingen hebt toegevoegd, wordt in het volgende voor beeld de entiteit ontleding beschreven.
 
-Begin met het identificeren van de volledige gegevens concepten die u wilt uitpakken in een utterance. Dit is uw door de computer geleerde entiteit. Splits de woord groep vervolgens in de bijbehorende onderdelen. Dit omvat het identificeren van subentiteiten en onderdelen.
+Begin met het identificeren van de volledige gegevens concepten die u wilt uitpakken in een utterance. Dit is uw machine learning-entiteit. Splits de woord groep vervolgens in de bijbehorende onderdelen. Dit omvat het identificeren van subentiteiten en onderdelen.
 
-Als u bijvoorbeeld een adres wilt extra heren, kan de door de machine geleerde entiteit worden aangeroepen `Address` . Identificeer tijdens het maken van het adres een aantal subentiteiten, zoals het adres, de plaats, de provincie en de post code.
+Als u bijvoorbeeld een adres wilt extra heren, kan de bovenste machine learning-entiteit worden aangeroepen `Address` . Identificeer tijdens het maken van het adres een aantal subentiteiten, zoals het adres, de plaats, de provincie en de post code.
 
 Ga door met het ontsamen stellen van deze elementen door:
 * Het toevoegen van een vereiste functie van de post code als een reguliere expressie-entiteit.
@@ -122,13 +144,21 @@ Bewaak de nauw keurigheid van de voor spelling met behulp van een [batch-testset
 
 Bewaar een afzonderlijke set uitingen die niet worden gebruikt als [voor beeld uitingen](luis-concept-utterance.md) of endpoint uitingen. Blijf de app verbeteren voor uw testset. Pas de testset aan om echte gebruikers uitingen weer te geven. Gebruik deze testset om elke iteratie of versie van de app te evalueren.
 
+## <a name="dont-publish-too-quickly"></a>Niet te snel publiceren
+
+Het publiceren van uw app is te snel, zonder [goed te plannen](#do-plan-your-schema), kan leiden tot diverse problemen, zoals:
+
+* Uw app werkt niet in uw eigen scenario met een acceptabel prestatie niveau.
+* Het schema (intents en entiteiten) zou niet geschikt zijn en als u client-app-logica hebt ontwikkeld volgens het schema, moet u deze mogelijk zelf herschrijven. Dit kan leiden tot onverwachte vertragingen en extra kosten voor het project waaraan u werkt.
+* Uitingen die u aan het model toevoegt, kan leiden tot een afwijking van het voor beeld van utterance dat moeilijk te detecteren en identificeren. Ook wordt het verwijderen van ambiguïteit moeilijk nadat u een bepaald schema hebt doorgevoerd.
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Voeg geen veel voor beeld-uitingen toe aan intents
 
 Nadat de app is gepubliceerd, voegt u alleen uitingen toe van actief leren in het ontwikkelings levenscyclus proces. Als uitingen te vergelijkbaar zijn, voegt u een patroon toe.
 
 ## <a name="dont-use-few-or-simple-entities"></a>Gebruik geen enkele of eenvoudige entiteiten
 
-Entiteiten zijn gebouwd voor het uitpakken en voors pellen van gegevens. Het is belang rijk dat elke intentie door machines geleerde entiteiten heeft die de gegevens in het doel beschrijven. Dit helpt LUIS de intentie te voors pellen, zelfs als uw client toepassing de geëxtraheerde entiteit niet hoeft te gebruiken.
+Entiteiten zijn gebouwd voor het uitpakken en voors pellen van gegevens. Het is belang rijk dat elke intentie machine learning-entiteiten heeft die de gegevens in het doel beschrijven. Dit helpt LUIS de intentie te voors pellen, zelfs als uw client toepassing de geëxtraheerde entiteit niet hoeft te gebruiken.
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Gebruik LUIS niet als trainings platform
 

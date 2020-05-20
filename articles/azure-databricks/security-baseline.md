@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d417f412592d87dec751b9d98a26bf786c719e5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796848"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681695"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure-beveiligings basislijn voor Azure Databricks
 
@@ -146,7 +146,7 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 **Hulp**: Labels gebruiken voor nsg's en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom die zijn gekoppeld aan uw Azure Databricks-exemplaar. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan.
 
-* [Tags maken en gebruiken](httphttps://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -454,7 +454,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid**: momenteel niet beschikbaar
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -622,7 +622,7 @@ Als u een abonnement voor het beheer platform voor beveiligings problemen hebt, 
 
 **Verantwoordelijkheid**: klant
 
-## <a name="inventory-and-asset-management"></a>Inventarisatie en het beheer van middelen
+## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
 *Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
@@ -908,7 +908,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Verantwoordelijkheid**: klant
 
-## <a name="malware-defense"></a>Bescherming tegen malware
+## <a name="malware-defense"></a>Beveiliging tegen malware
 
 *Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
@@ -950,7 +950,7 @@ Scan vooraf bestanden die worden geüpload naar uw Azure Databricks cluster knoo
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-recovery"></a>Gegevens herstellen
+## <a name="data-recovery"></a>Gegevensherstel
 
 *Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
@@ -1068,7 +1068,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Verantwoordelijkheid**: klant
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Indringings tests en rode team oefeningen
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
 *Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 

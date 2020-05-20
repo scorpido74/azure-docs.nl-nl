@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61483431"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684462"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Nalevings aanbod Azure Storage
 
@@ -21,7 +21,7 @@ Om organisaties te helpen te voldoen aan de nationale, regionale en branchespeci
 
 U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor te zorgen dat uw service wordt geregeld in Azure Storage-service. Ze zijn van toepassing op de volgende Azure Storage-aanbiedingen: blobs, bestanden, wacht rijen, tabellen, schijven, koele opslag en Premium Storage.
 
-## <a name="global"></a>Wereldwijd
+## <a name="global"></a>Globaal
 
 * [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
 * [CSA-Star-certificering](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
@@ -37,7 +37,7 @@ U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor 
 ## <a name="us-government"></a>Amerikaanse overheid
 
 * [DoD DISA L2, N4, N5](https://www.microsoft.com/trustcenter/compliance/disa)
-* [Splinter 10 CFR-deel 810](https://aka.ms/AzureCompliance)
+* [DoE 10 CFR Part 810](https://aka.ms/AzureCompliance)
 * [OOR (US Export Administration Regulations)](https://aka.ms/AzureCompliance)
 * [FDA CFR Titel 21 deel 11](https://aka.ms/AzureCompliance)
 * [FedRAMP](https://www.microsoft.com/trustcenter/compliance/fedramp)
@@ -51,8 +51,8 @@ U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor 
 * [23 NYCRR deel 500](https://www.microsoft.com/trustcenter/compliance/NYCRR)
 * [APRA (Australië)](https://aka.ms/AzureCompliance)
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
-* [DPP (UK)](https://aka.ms/AzureCompliance)
-* [FACT (UK)](https://www.microsoft.com/trustcenter/compliance/fact)
+* [DPP (VK)](https://aka.ms/AzureCompliance)
+* [FACT (VK)](https://www.microsoft.com/trustcenter/compliance/fact)
 * [FCA (UK)](https://aka.ms/AzureCompliance)
 * [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
 * [FISC (Japan)](https://www.microsoft.com/trustcenter/compliance/fisc)
@@ -64,7 +64,6 @@ U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor 
 * [MAS + ABS (Singapore)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (Nederland)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG Toolkit (UK)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
 * [Gedeelde evaluaties](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
@@ -74,9 +73,9 @@ U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor 
 * [BIR 2012 (Nederland)](https://www.microsoft.com/TrustCenter/Compliance/bir-2012)
 * [C5 (Duitsland)](https://www.microsoft.com/TrustCenter/Compliance/C5)
 * [CCSL/IRAP (Australië)](https://www.microsoft.com/trustcenter/compliance/ccsl)
-* [CS-goud (Japan)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
+* [CS Gold Mark (Japan)](https://www.microsoft.com/trustcenter/compliance/cloud-security-mark)
 * [DJCP (China)](https://www.trustcenter.cn/compliance/default.html#DJCP)
-* [ALGORITHMS IAF (EU)](https://aka.ms/AzureCompliance)
+* [ENISA IAF (EU)](https://aka.ms/AzureCompliance)
 * [ENS (Spanje)](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [EU-model-clausules](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
 * [Het privacy-schild van EU-U. S.](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
@@ -85,10 +84,10 @@ U kunt de onderstaande nalevings aanbiedingen vinden op Azure Storage om ervoor 
 * [IT Grundschutz-werkmap (Duitsland)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)
 * [LOPD (Spanje)](https://aka.ms/AzureCompliance)
 * [MTCS (Singapore)](https://www.microsoft.com/trustcenter/compliance/mtcs)
-* [Mijn nummer (Japan)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
+* [My Number (Japan)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
 * [NZ-Framework (Nieuw-Zeeland)](https://www.microsoft.com/trustcenter/compliance/nzcc)
-* [PASF (UK)](https://aka.ms/AzureCompliance)
-* [BESCHERMINGSWET (Argentinië)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
+* [PASF (VK)](https://aka.ms/AzureCompliance)
+* [PDPA (Argentinië)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
 * [PIPEDA (Canada)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
 * [TRUCS (China)](https://www.trustcenter.cn/compliance/default.html#TCS)
 * [UK-G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)

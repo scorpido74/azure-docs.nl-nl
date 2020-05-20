@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275566"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684640"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-netwerk bewakings oplossingen in Azure Monitor
 
@@ -150,7 +150,7 @@ De volgende logboeken worden ondersteund voor netwerk beveiligings groepen:
 ### <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Networking Analytics-oplossing:
 
-1. Schakel de oplossing voor de analyse van Azure-netwerk beveiligings groepen in via [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) of gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+1. Schakel de analyse oplossing van de Azure-netwerk beveiligings groep in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
 2. Schakel de diagnostische logboek registratie in voor de resources van de [netwerk beveiligings groep](../../virtual-network/virtual-network-nsg-manage-log.md) die u wilt bewaken.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Diagnostische gegevens van Azure Network-beveiligings groep inschakelen in de portal
@@ -218,8 +218,8 @@ De bijgewerkte oplossingen gebruiken:
      | NetworkApplicationgateways &#124; waarbij Operationname = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124; waarbij resource type = = "APPLICATIONGATEWAYS" en Operationname = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; waarbij resource type = = "NETWORKSECURITYGROUPS" |
 
-   + Voor elk veld met een achtervoegsel van \_s, \_d of \_g in de naam, wijzigt u het eerste teken in kleine letters
-   + Voor een veld met het achtervoegsel \_o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen.
+   + Voor elk veld met een achtervoegsel van \_ s, \_ d of \_ g in de naam, wijzigt u het eerste teken in kleine letters
+   + Voor een veld met het achtervoegsel \_ o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen.
 4. Verwijder de oplossing *Azure Networking Analytics (afgeschaft)* .
    + Als u Power shell gebruikt, gebruikt u`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 

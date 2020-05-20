@@ -4,12 +4,12 @@ description: Meer informatie over het versleutelen van uw Azure container Regist
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: d9cd10401e7f645a8edd269184a56dc27544a8c8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927310"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683482"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>REGI ster versleutelen met een door de klant beheerde sleutel
 
@@ -17,7 +17,7 @@ Wanneer u afbeeldingen en andere artefacten opslaat in een Azure container Regis
 
 Versleuteling aan de server zijde met door de klant beheerde sleutels wordt ondersteund via integratie met [Azure Key Vault](../key-vault/general/overview.md). U kunt uw eigen versleutelings sleutels maken en deze opslaan in een sleutel kluis of de Api's van Azure Key Vault gebruiken om sleutels te genereren. Met Azure Key Vault kunt u ook het sleutel gebruik controleren.
 
-Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
+Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten van het REGI ster.
 
    
 ## <a name="things-to-know"></a>Dingen die u moet weten
@@ -51,7 +51,7 @@ az identity create \
   --name <managed-identity-name> 
 ```
 
-In de uitvoer van de opdracht noteert u de volgende waarden `id` : `principalId`en. U hebt deze waarden in latere stappen nodig om register toegang tot de sleutel kluis te configureren.
+In de uitvoer van de opdracht noteert u de volgende waarden: `id` en `principalId` . U hebt deze waarden in latere stappen nodig om register toegang tot de sleutel kluis te configureren.
 
 ```JSON
 {
@@ -111,7 +111,7 @@ az keyvault key create \
   --vault-name <key-vault-name>
 ```
 
-In de uitvoer van de opdracht noteert u de sleutel-ID `kid`. U gebruikt deze ID in de volgende stap:
+In de uitvoer van de opdracht noteert u de sleutel-ID `kid` . U gebruikt deze ID in de volgende stap:
 
 ```JSON
 [...]
@@ -200,7 +200,7 @@ Wanneer u een sleutel kluis maakt voor een door de klant beheerde sleutel, schak
 Configureer een beleid voor de sleutel kluis zodat de identiteit er toegang toe heeft.
 
 1. Navigeer naar uw sleutel kluis.
-1. Selecteer **instellingen** > **toegangs beleid > + toegangs beleid toe te voegen**.
+1. Selecteer **instellingen**  >  **toegangs beleid > + toegangs beleid toe te voegen**.
 1. Selecteer **belang rijke machtigingen**en selecteer **ophalen**, **uitpakken sleutel**en **Terugloop sleutel**.
 1. Selecteer **Principal selecteren** en selecteer de resource naam van de door de gebruiker toegewezen beheerde identiteit.  
 1. Selecteer **toevoegen**en selecteer vervolgens **Opslaan**.
@@ -210,14 +210,14 @@ Configureer een beleid voor de sleutel kluis zodat de identiteit er toegang toe 
 ### <a name="create-key"></a>Sleutel maken
 
 1. Navigeer naar uw sleutel kluis.
-1. Selecteer **instellingen** > **sleutels**.
+1. Selecteer **instellingen**  >  **sleutels**.
 1. Selecteer **+ genereren/importeren** en voer een unieke naam in voor de sleutel.
 1. Accepteer de resterende standaard waarden en selecteer **maken**.
 1. Nadat u hebt gemaakt, selecteert u de sleutel en noteert u de huidige sleutel versie.
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry maken
 
-1. Selecteer **een resource** > **containers** > maken**container Registry**.
+1. Selecteer **een resource**  >  **containers**maken  >  **container Registry**.
 1. Op het tabblad **basis beginselen** selecteert of maakt u een resource groep en voert u een register naam in. Selecteer **Premium**in **SKU**.
 1. Selecteer op het tabblad **versleuteling** in door de **klant beheerde sleutel** **ingeschakeld**.
 1. Selecteer in **identiteit**de beheerde identiteit die u hebt gemaakt.
@@ -234,7 +234,7 @@ Als u de versleutelings status van het REGI ster in de portal wilt bekijken, gaa
 
 U kunt ook een resource manager-sjabloon gebruiken om een REGI ster te maken en versleuteling in te scha kelen met een door de klant beheerde sleutel. 
 
-Met de volgende sjabloon maakt u een nieuw container register en een door de gebruiker toegewezen beheerde identiteit. Kopieer de volgende inhoud naar een nieuw bestand en sla het op met een bestands naam `CMKtemplate.json`zoals.
+Met de volgende sjabloon maakt u een nieuw container register en een door de gebruiker toegewezen beheerde identiteit. Kopieer de volgende inhoud naar een nieuw bestand en sla het op met een bestands naam zoals `CMKtemplate.json` .
 
 ```JSON
 {
@@ -418,7 +418,7 @@ Gebruik de **versleutelings** instellingen van het REGI ster om de sleutel versi
 Als u bijvoorbeeld een nieuwe sleutel versie wilt genereren en configureren:
 
 1. Navigeer in de portal naar het REGI ster. 
-1. Selecteer onder **instellingen**de optie **versleutelings** > **sleutel wijzigen**.
+1. Selecteer onder **instellingen**de optie **versleutelings**  >  **sleutel wijzigen**.
 1. Selecteer **sleutel selecteren**
     
     ![De sleutel in de Azure Portal draaien](./media/container-registry-customer-managed-keys/rotate-key.png)
@@ -448,14 +448,14 @@ U kunt de door het systeem toegewezen beheerde identiteit van een REGI ster conf
 De door het systeem toegewezen identiteit van het REGI ster inschakelen in de portal:
 
 1. Navigeer in de portal naar het REGI ster. 
-1. Selecteer **instellingen** >  **identiteit**.
+1. Selecteer **instellingen**  >   **identiteit**.
 1. Stel onder **toegewezen systeem** **status** in **op aan**. Selecteer **Opslaan**.
 1. Kopieer de **object-id** van de identiteit.
 
 De identiteit toegang verlenen tot uw sleutel kluis:
 
 1. Navigeer naar uw sleutel kluis.
-1. Selecteer **instellingen** > **toegangs beleid > + toegangs beleid toe te voegen**.
+1. Selecteer **instellingen**  >  **toegangs beleid > + toegangs beleid toe te voegen**.
 1. Selecteer **belang rijke machtigingen**en selecteer **ophalen**, **uitpakken sleutel**en **Terugloop sleutel**.
 1. Selecteer **Principal selecteren** en zoek naar de object-id van de door het systeem toegewezen beheerde identiteit, of de naam van het REGI ster.  
 1. Selecteer **toevoegen**en selecteer vervolgens **Opslaan**.
@@ -463,7 +463,7 @@ De identiteit toegang verlenen tot uw sleutel kluis:
 De versleutelings instellingen van het REGI ster bijwerken voor het gebruik van de identiteit:
 
 1. Navigeer in de portal naar het REGI ster. 
-1. Selecteer onder **instellingen**de optie **versleutelings** > **sleutel wijzigen**.
+1. Selecteer onder **instellingen**de optie **versleutelings**  >  **sleutel wijzigen**.
 1. In **identiteit**selecteert u **systeem toegewezen**en selecteert u **Opslaan**.
 
 ### <a name="key-vault-firewall"></a>Key Vault firewall

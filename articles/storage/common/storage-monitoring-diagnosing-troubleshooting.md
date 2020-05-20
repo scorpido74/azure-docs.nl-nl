@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605072"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684653"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -359,7 +360,7 @@ De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltoo
 #### <a name="investigating-client-performance-issues"></a>Problemen met client prestaties onderzoeken
 Mogelijke oorzaken voor de client lopen langzaam, zoals een beperkt aantal beschik bare verbindingen of threads, of er is onvoldoende bronnen beschikbaar, zoals CPU, geheugen of netwerk bandbreedte. U kunt het probleem mogelijk oplossen door de client code efficiënter te wijzigen (bijvoorbeeld door asynchrone aanroepen naar de opslag service te gebruiken) of door een grotere virtuele machine te gebruiken (met meer kernen en meer geheugen).
 
-Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
+Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -516,24 +517,24 @@ Logboek vermeldingen:
 
 | Aanvraag-id | Tekst van bewerking |
 | --- | --- |
-| 07b26a5d-... |Synchrone aanvraag wordt gestart `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar. |
+| 07b26a5d-... |Synchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-id: 07b26a5d-.... x-MS-date: DIN, 03 jun 2014 10:33:11 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | 07b26a5d-... |Er wordt gewacht op reactie. |
-| 07b26a5d-... |Antwoord ontvangen. Status code = 200, aanvraag-ID = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
+| 07b26a5d-... |Antwoord ontvangen. Status code = 200, aanvraag-ID = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |De antwoord headers zijn verwerkt, waarbij de rest van de bewerking wordt voortgezet. |
 | 07b26a5d-... |De antwoord tekst wordt gedownload. |
 | 07b26a5d-... |De bewerking is voltooid. |
-| 07b26a5d-... |Synchrone aanvraag wordt gestart `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar. |
+| 07b26a5d-... |Synchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = verwijderen........... x-MS-Client-Request-id: 07b26a5d-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | 07b26a5d-... |Er wordt gewacht op reactie. |
 | 07b26a5d-... |Antwoord ontvangen. Status code = 202, aanvraag-ID = 6ab2a4cf-..., content-MD5 =, ETag =. |
 | 07b26a5d-... |De antwoord headers zijn verwerkt, waarbij de rest van de bewerking wordt voortgezet. |
 | 07b26a5d-... |De antwoord tekst wordt gedownload. |
 | 07b26a5d-... |De bewerking is voltooid. |
-| e2d06d78-... |Asynchrone aanvraag wordt gestart `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar.</td> |
+| e2d06d78-... |Asynchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` .</td> |
 | e2d06d78-... |StringToSign = HEAD.............. x-MS-Client-Request-id: e2d06d78-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | e2d06d78-... |Er wordt gewacht op reactie. |
-| de8b1c3c-... |Synchrone aanvraag wordt gestart `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`naar. |
+| de8b1c3c-... |Synchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
 | de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-BLOB-type: BlockBlob. x-MS-Client-Request-id: de8b1c3c-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
 | de8b1c3c-... |Het schrijven van aanvraag gegevens wordt voor bereid. |
 | e2d06d78-... |Er is een uitzonde ring opgetreden tijdens het wachten op een reactie: de externe server heeft een fout geretourneerd: (404) niet gevonden. |
@@ -541,7 +542,7 @@ Logboek vermeldingen:
 | e2d06d78-... |De antwoord headers zijn verwerkt, waarbij de rest van de bewerking wordt voortgezet. |
 | e2d06d78-... |De antwoord tekst wordt gedownload. |
 | e2d06d78-... |De bewerking is voltooid. |
-| e2d06d78-... |Asynchrone aanvraag wordt gestart `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar. |
+| e2d06d78-... |Asynchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | e2d06d78-... |StringToSign = PUT... 0.......: x-MS-Client-Request-id: e2d06d78-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | e2d06d78-... |Er wordt gewacht op reactie. |
 | de8b1c3c-... |Aanvraag gegevens worden geschreven. |
@@ -562,16 +563,16 @@ Als de client toepassing een SAS-sleutel probeert te gebruiken die niet de benod
 
 In de volgende tabel ziet u een voor beeld van een logboek bericht aan de server zijde uit het logboek bestand van de opslag logboek registratie:
 
-| Naam | Waarde |
+| Name | Waarde |
 | --- | --- |
 | Begin tijd van aanvraag | 2014-05-30T06:17:48.4473697 Z |
-| Bewerkings type     | GetBlobProperties            |
+| Het type bewerking     | GetBlobProperties            |
 | Aanvraag status     | SASAuthorizationError        |
 | HTTP-statuscode   | 404                            |
 | Verificatietype| Gebaseerd                          |
 | Servicetype       | Blob                         |
 | Aanvraag-URL         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
-| &nbsp;                 |   ? SV = 2014-02-14&SR = c&si = mypolicy&sig = XXXXX&;API-Version = 2014-02-14 |
+| &nbsp;                 |   ? SV = 2014-02-14&SR = c&si = mypolicy&sig = XXXXX &; API-Version = 2014-02-14 |
 | Header aanvraag-ID  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Clientaanvraag-id  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -814,7 +815,7 @@ U kunt meer informatie vinden op [wat Application Insights is](../../azure-monit
 Raadpleeg de volgende bronnen voor meer informatie over Analytics in Azure Storage:
 
 * [Een Storage-account bewaken in de Azure-portal](storage-monitor-storage-account.md)
-* [Opslaganalyse](storage-analytics.md)
+* [Opslag analyse](storage-analytics.md)
 * [Metrische gegevens van opslag analyse](storage-analytics-metrics.md)
 * [Tabel schema voor metrische gegevens van opslag analyse](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Logboeken voor opslaganalyse](storage-analytics-logging.md)

@@ -9,49 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 077e29856842972fae2c723d4a2c368cbb80df06
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f1bad4a8f178358ba33d1a14815b8630b447615a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593253"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680403"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Patronen toevoegen om de nauw keurigheid van de voor spelling te verbeteren
 Nadat een LUIS-app eind punt uitingen ontvangt, gebruikt u een [patroon](luis-concept-patterns.md) om de nauw keurigheid van de voor spelling te verbeteren voor uitingen die een patroon onthult in de woord volgorde en woord keuze. Patronen gebruiken specifieke [syntaxis](luis-concept-patterns.md#pattern-syntax) om de locatie van: [entiteiten](luis-concept-entity-types.md), entiteits [rollen](luis-concept-roles.md)en optionele tekst aan te geven.
 
 > [!CAUTION]
-> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, niet voor subentiteiten.
-
-## <a name="adding-example-utterances-as-pattern"></a>Voor beeld van uitingen als patroon toevoegen
-
-Als u een patroon wilt toevoegen voor een entiteit, is de _eenvoudigste_ manier om het patroon te maken op de pagina Details van intentie. Dit zorgt ervoor dat uw syntaxis overeenkomt met het voor beeld utterance.
-
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
-1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
-1. Selecteer op de pagina lijst met **doel** stellingen de doel naam van het voor beeld utterance u een sjabloon utterance wilt maken.
-1. Selecteer op de pagina Details van intentie de rij voor het voor beeld-utterance dat u wilt gebruiken als de sjabloon utterance en selecteer **+ toevoegen als patroon** in de context werkbalk.
-
-    > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het selecteren van voor beeld-utterance als sjabloon patroon op de detail pagina Details.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
-
-1. Selecteer in het pop-upvenster **gereed** op de pagina **patronen bevestigen** . U hoeft de subentiteiten of onderdelen van de entiteiten niet te definiëren. U hoeft alleen de door de machine geleerde entiteit weer te geven.
-
-    > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het bevestigende voor beeld-utterance als sjabloon patroon op de detail pagina van het doel.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
-
-1. Als u de sjabloon moet bewerken, zoals het selecteren van tekst als optioneel, met behulp van de vier `[]` Kante haakjes, moet u deze bewerking op de pagina **patronen** maken.
-
-1. Selecteer in de navigatie balk **Train** om de app te trainen met het nieuwe patroon.
+> Patronen zijn alleen van toepassing op machine learning-entiteit, niet voor subentiteiten.
 
 ## <a name="add-template-utterance-using-correct-syntax"></a>Sjabloon utterance toevoegen met de juiste syntaxis
+
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer **patronen** in het linkerpaneel onder Verbeter de **prestaties**van de app.
-
-    > [!div class="mx-imgBorder"]
-    > ![Scherm afbeelding van de lijst patronen](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
 1. Selecteer de juiste intentie voor het patroon.
 
@@ -69,6 +46,41 @@ Als u een patroon wilt toevoegen voor een entiteit, is de _eenvoudigste_ manier 
 
     > [!div class="mx-imgBorder"]
     > ![Scherm opname van het ingevoerde patroon met beide typen entiteiten](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+
+## <a name="create-a-patternany-entity"></a>Een patroon maken. elke entiteit
+
+[Patroon. alle](luis-concept-entity-types.md) entiteiten zijn alleen geldig in [patronen](luis-how-to-model-intent-pattern.md), niet in de uitingen van voor beelden. Dit type entiteit helpt LUIS het einde van entiteiten met een verschillende lengte en woord keuze te vinden. Omdat deze entiteit in een patroon wordt gebruikt, weet LUIS waar het einde van de entiteit zich in de utterance-sjabloon bevindt.
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
+
+1. Voer in het dialoog venster **een entiteits type kiezen** de naam van de entiteit in het vak **naam** in en selecteer vervolgens **patroon. elk** **type** en selecteer vervolgens **maken**.
+
+    Zodra u [een patroon utterance maakt](luis-how-to-model-intent-pattern.md) met behulp van deze entiteit, wordt de entiteit geëxtraheerd met een gecombineerd machine learning-en tekst vergelijkings algoritme.
+
+## <a name="adding-example-utterances-as-pattern"></a>Voor beeld van uitingen als patroon toevoegen
+
+Als u een patroon wilt toevoegen voor een entiteit, is de _eenvoudigste_ manier om het patroon te maken op de pagina Details van intentie. Dit zorgt ervoor dat uw syntaxis overeenkomt met het voor beeld utterance.
+
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
+1. Selecteer op de pagina lijst met **doel** stellingen de doel naam van het voor beeld utterance u een sjabloon utterance wilt maken.
+1. Selecteer op de pagina Details van intentie de rij voor het voor beeld-utterance dat u wilt gebruiken als de sjabloon utterance en selecteer **+ toevoegen als patroon** in de context werkbalk.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het selecteren van voor beeld-utterance als sjabloon patroon op de detail pagina Details.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+    De utterance moet een entiteit bevatten om een patroon te maken op basis van de utterance.
+
+1. Selecteer in het pop-upvenster **gereed** op de pagina **patronen bevestigen** . U hoeft de subentiteiten of onderdelen van de entiteiten niet te definiëren. U hoeft alleen de entiteit machine learning weer te geven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het bevestigende voor beeld-utterance als sjabloon patroon op de detail pagina van het doel.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Als u de sjabloon moet bewerken, zoals het selecteren van tekst als optioneel, met behulp van de vier `[]` Kante haakjes, moet u deze bewerking op de pagina **patronen** maken.
+
+1. Selecteer in de navigatie balk **Train** om de app te trainen met het nieuwe patroon.
 
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>Uw app trainen na het wijzigen van het model met patronen
 Nadat u een patroon hebt toegevoegd, bewerkt, verwijderd of opnieuw toewijst, [traint](luis-how-to-train.md) u uw app en [publiceert](luis-how-to-publish-app.md) u deze voor uw wijzigingen om eindpunt query's te beïnvloeden.

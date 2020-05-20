@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437469"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684014"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
@@ -64,22 +64,27 @@ headers = {"Authorization": "Bearer " + access_token, …} 
 De volgende voor beeld-python-code geeft het toegangs token, dat kan worden gebruikt voor de volgende API-aanroepen van FarmBeats.
 
 ```python
-import azure 
+import requests
+import json
+import msal
 
-from azure.common.credentials import ServicePrincipalCredentials 
-import adal 
-#FarmBeats API Endpoint 
-ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
-CLIENT_ID = "<Your Client ID>"   
-CLIENT_SECRET = "<Your Client Secret>"   
-TENANT_ID = "<Your Tenant ID>" 
-AUTHORITY_HOST = 'https://login.microsoftonline.com' 
-AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
-#Authenticating with the credentials 
-context = adal.AuthenticationContext(AUTHORITY) 
-token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
-#Should get an access token here 
-access_token = token_response.get('accessToken') 
+# Your service principal App ID
+CLIENT_ID = "<CLIENT_ID>"
+# Your service principal password
+CLIENT_SECRET = "<CLIENT_SECRET>"
+# Tenant ID for your Azure subscription
+TENANT_ID = "<TENANT_ID>"
+
+AUTHORITY_HOST = 'https://login.microsoftonline.com'
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID
+
+ENDPOINT = "https://<yourfarmbeatswebsitename-api>.azurewebsites.net"
+SCOPE = ENDPOINT + "/.default"
+
+context = msal.ConfidentialClientApplication(CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET)
+token_response = context.acquire_token_for_client(SCOPE)
+# We should get an access token here
+access_token = token_response.get('access_token')
 ```
 
 
@@ -90,13 +95,13 @@ Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wa
 
 **Journaalkop** | **Beschrijving en voor beeld**
 --- | ---
-Content-Type | De aanvraag indeling (content-type: Application/<format>). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
+Content-Type | De aanvraag indeling (content-type: Application/ <format> ). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
 Accepteren | De antwoord indeling. Voor FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
 **API-aanvragen**
 
-Als u een REST API aanvraag wilt maken, combineert u de HTTP-methode (GET, POST of PUT), de URL naar de API-service, de URI (Uniform Resource Identifier) voor een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en een of meer HTTP-aanvraag headers. De URL naar de API-service is het API-eind punt dat u opgeeft. Hier volgt een voor beeld:\<https://yourdatahub-website-name>. azurewebsites.net
+Als u een REST API aanvraag wilt maken, combineert u de HTTP-methode (GET, POST of PUT), de URL naar de API-service, de URI (Uniform Resource Identifier) voor een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en een of meer HTTP-aanvraag headers. De URL naar de API-service is het API-eind punt dat u opgeeft. Hier volgt een voor beeld: https:// \< yourdatahub-website-name>. azurewebsites.net
 
 U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
 
@@ -132,7 +137,7 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
   Fabrikant  | De naam van de fabrikant |
   Code  | Product code of model naam of-nummer van het apparaat. Bijvoorbeeld EnviroMonitor # 6800. |
   Poorten  | Poort naam en-type, digitaal of analoog.  |
-  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
+  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
   Beschrijving  | Geef een zinvolle beschrijving van het model op. |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant. |
   **Apparaat** |  |
@@ -141,7 +146,7 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
   ReportingInterval |Rapportage-interval in seconden. |
   Locatie    |Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters). |
   ParentDeviceId | De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Als een knoop punt bijvoorbeeld is verbonden met een gateway, heeft het knoop punt parentDeviceID als de gateway. |
-  Naam  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
+  Name  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
   Beschrijving  | Geef een zinvolle beschrijving op.  |
   Eigenschappen  |Aanvullende eigenschappen van de fabrikant.  |
   **SensorModel** |  |
@@ -155,7 +160,7 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
   SensorMeasures > AggregationType  | Geen, gemiddelde, maximum, minimum of StandardDeviation.
   Diepte van SensorMeasures->  | De diepte van de sensor in centimeters. Bijvoorbeeld de meting van het vocht 10 cm onder het wegdek.
   Beschrijving van SensorMeasures->  | Geef een duidelijke beschrijving van de meting op.
-  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
+  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
   Beschrijving  | Geef een zinvolle beschrijving van het model op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
   **Sensoren**  |  |
@@ -164,7 +169,7 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
   Locatie  | Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).
   Naam van poort >  |Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die is gedefinieerd in het model van het apparaat.
   DeviceId  | ID van het apparaat waarmee de sensor is verbonden.
-  Naam  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
+  Name  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
   Beschrijving  | Geef een zinvolle beschrijving op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
 

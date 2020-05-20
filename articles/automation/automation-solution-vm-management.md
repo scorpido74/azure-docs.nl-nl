@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 760c56ad6179a7bf94f19e004e2fbbece3908198
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207595"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683503"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen buiten kantoor uren in Azure Automation
 
@@ -102,7 +102,7 @@ De volgende tabel geeft een lijst van de runbooks die de oplossing implementeert
 > [!IMPORTANT]
 > Voer geen wille keurig runbook direct uit met een **onderliggend element** dat is toegevoegd aan de naam.
 
-Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap is ingesteld op True, wordt de para meter gebruikt om het exacte gedrag te bepalen dat het runbook uitvoert wanneer het wordt uitgevoerd zonder de para meter en wordt gevalideerd of de juiste Vm's zijn gericht. Een runbook voert alleen de gedefinieerde acties uit wanneer `WhatIf` de para meter is ingesteld op ONWAAR.
+Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap is ingesteld op True, wordt de para meter gebruikt om het exacte gedrag te bepalen dat het runbook uitvoert wanneer het wordt uitgevoerd zonder de para meter en wordt gevalideerd of de juiste Vm's zijn gericht. Een runbook voert alleen de gedefinieerde acties uit wanneer de `WhatIf` para meter is ingesteld op ONWAAR.
 
 |Runbook | Parameters | Beschrijving|
 | --- | --- | ---|
@@ -114,25 +114,25 @@ Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Actie: starten of stoppen<br> VMList  | Hiermee wordt de actie voor het starten of stoppen van een klassieke VM-groep door Cloud Services uitgevoerd. |
 |ScheduledStartStop_Child | VMName <br> Actie: starten of stoppen <br> ResourceGroupName | Aangeroepen vanuit het bovenliggende runbook. Hiermee wordt een start-of stop actie uitgevoerd voor de geplande beëindiging.|
 |ScheduledStartStop_Child_Classic | VMName<br> Actie: starten of stoppen<br> ResourceGroupName | Aangeroepen vanuit het bovenliggende runbook. Hiermee wordt een start-of stop actie uitgevoerd voor de geplande stop voor klassieke Vm's. |
-|ScheduledStartStop_Parent | Actie: starten of stoppen <br>VMList <br> WhatIf: True of False | Hiermee worden alle virtuele machines in het abonnement gestart of gestopt. Bewerk de variabelen `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` alleen voor het uitvoeren van deze doel resource groepen. U kunt ook specifieke Vm's uitsluiten door de `External_ExcludeVMNames` variabele bij te werken.|
-|SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een positief geheel getal zijn (1, 2, 3) dat overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien `External_Start_ResourceGroupNames`die `External_Stop_ResourceGroupNames`zijn gedefinieerd `External_ExcludeVMNames` in, en variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
+|ScheduledStartStop_Parent | Actie: starten of stoppen <br>VMList <br> WhatIf: True of False | Hiermee worden alle virtuele machines in het abonnement gestart of gestopt. Bewerk de variabelen `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` alleen voor het uitvoeren van deze doel resource groepen. U kunt ook specifieke Vm's uitsluiten door de variabele bij te werken `External_ExcludeVMNames` .|
+|SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een positief geheel getal zijn (1, 2, 3) dat overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien die zijn gedefinieerd in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
 
 ### <a name="variables"></a>Variabelen
 
-De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account. Wijzig variabelen alleen met de voor `External`voegsels. Het wijzigen van variabelen die `Internal` met een probleem worden opgelost, leidt tot ongewenste effecten.
+De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account. Wijzig variabelen alleen met de voor voegsels `External` . Het wijzigen van variabelen die met een probleem worden opgelost, `Internal` leidt tot ongewenste effecten.
 
 > [!NOTE]
 > De beperkingen voor de VM-naam en resource groep zijn grotendeels het resultaat van de variabele grootte. Zie [variabele assets in azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
 |Variabele | Beschrijving|
 |---------|------------|
-|External_AutoStop_Condition | De voorwaardelijke operator die is vereist voor het configureren van de voor waarde voordat een waarschuwing wordt geactiveerd. Acceptabele waarden `GreaterThan`zijn `GreaterThanOrEqual`, `LessThan`, en `LessThanOrEqual`.|
+|External_AutoStop_Condition | De voorwaardelijke operator die is vereist voor het configureren van de voor waarde voordat een waarschuwing wordt geactiveerd. Acceptabele waarden zijn `GreaterThan` , `GreaterThanOrEqual` , `LessThan` en `LessThanOrEqual` .|
 |External_AutoStop_Description | De waarschuwing voor het stoppen van de virtuele machine als het CPU-percentage de drempel waarde overschrijdt.|
 |External_AutoStop_Frequency | De evaluatie frequentie voor de regel. Deze para meter accepteert invoer in time span-indeling. Mogelijke waarden zijn 5 minuten tot zes uur. |
 |External_AutoStop_MetricName | De naam van de prestatie gegevens waarvoor de Azure-waarschuwings regel moet worden geconfigureerd.|
 |External_AutoStop_Severity | Ernst van de metrische waarschuwing, die tussen 0 en 4 ligt. |
-|External_AutoStop_Threshold | De drempel waarde voor de Azure-waarschuwings regel die is `External_AutoStop_MetricName`opgegeven in de variabele. Percentage waarden variëren van 1 tot en met 100.|
-|External_AutoStop_TimeAggregationOperator | De tijd aggregatie operator die wordt toegepast op de geselecteerde venster grootte om de voor waarde te evalueren. Acceptabele waarden `Average`zijn `Minimum`, `Maximum` `Total`,, en `Last`.|
+|External_AutoStop_Threshold | De drempel waarde voor de Azure-waarschuwings regel die is opgegeven in de variabele `External_AutoStop_MetricName` . Percentage waarden variëren van 1 tot en met 100.|
+|External_AutoStop_TimeAggregationOperator | De tijd aggregatie operator die wordt toegepast op de geselecteerde venster grootte om de voor waarde te evalueren. Acceptabele waarden zijn,,, `Average` `Minimum` `Maximum` `Total` en `Last` .|
 |External_AutoStop_TimeWindow | De grootte van het venster waarin Azure geselecteerde metrische gegevens analyseert voor het activeren van een waarschuwing. Deze para meter accepteert invoer in time span-indeling. Mogelijke waarden zijn 5 minuten tot zes uur.|
 |External_EnableClassicVMs| Waarde die aangeeft of klassieke Vm's zijn gericht op de oplossing. De standaard waarde is True. Stel deze variabele in op False voor Azure Cloud Solution Provider-abonnementen (CSP). Klassieke Vm's vereisen een [klassiek uitvoeren als-account](automation-create-standalone-account.md#create-a-classic-run-as-account).|
 |External_ExcludeVMNames | Een door komma's gescheiden lijst met VM-namen die moeten worden uitgesloten, beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan de lijst toevoegt, kunnen de Vm's die zijn ingesteld om te worden uitgesloten, per ongeluk worden gestart of gestopt.|
@@ -146,9 +146,9 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 |Internal_ResourceGroupName | De naam van de resource groep voor het Automation-account.|
 
 >[!NOTE]
->De standaard waarde `External_WaitTimeForVMRetryInSeconds`voor de variabele is bijgewerkt van 600 naar 2100. 
+>`External_WaitTimeForVMRetryInSeconds`De standaard waarde voor de variabele is bijgewerkt van 600 naar 2100. 
 
-In alle scenario's, de variabelen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`en `External_ExcludeVMNames` zijn nodig voor het richten op vm's, met uitzonde ring van de lijsten met door komma's gescheiden vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw Vm's deel moeten uitmaken van de doel resource groepen voor het starten en stoppen van de acties. De logica werkt op soort gelijke wijze als Azure Policy, in dat u het abonnement of de resource groep kunt bereiken en acties moet hebben overgenomen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
+In alle scenario's, de variabelen `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` zijn nodig voor het richten op vm's, met uitzonde ring van de lijsten met door komma's gescheiden vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw Vm's deel moeten uitmaken van de doel resource groepen voor het starten en stoppen van de acties. De logica werkt op soort gelijke wijze als Azure Policy, in dat u het abonnement of de resource groep kunt bereiken en acties moet hebben overgenomen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
 
 ### <a name="schedules"></a>Planningen
 
@@ -156,13 +156,13 @@ De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt
 
 Schakel niet alle schema's in, omdat dit mogelijk overlappende plannings acties kan maken. U kunt het beste bepalen welke optimalisaties u wilt uitvoeren en ze dienovereenkomstig aanpassen. Zie de voorbeeld scenario's in de sectie Overzicht voor meer informatie.
 
-|Schema naam | Frequency | Beschrijving|
+|Schema naam | Frequentie | Beschrijving|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | Om de 8 uur | Voert het **AutoStop_CreateAlert_Parent** runbook uit om de 8 uur, waardoor de op virtuele machines gebaseerde waarden in `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`en `External_ExcludeVMNames` variabelen op zijn beurt worden gestopt. U kunt ook een door komma's gescheiden lijst met Vm's opgeven met behulp van de `VMList` para meter.|
-|Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een para `Stop` meter van elke dag op de opgegeven tijd.Stopt automatisch alle virtuele machines die voldoen aan de regels die zijn gedefinieerd door variabele assets.Schakel de planning **StartVM**.|
-|Scheduled_StartVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een parameter waarde `Start` van elke dag op de opgegeven tijd. Alle Vm's die voldoen aan de regels die zijn gedefinieerd door variabele assets, worden automatisch gestart.Schakel de planning **StopVM**.|
-|Sequenced-StopVM | 1:00 uur (UTC), elke vrijdag | Voert het **Sequenced_StopStop_Parent** runbook uit met een parameter waarde `Stop` van elke vrijdag op de opgegeven tijd.Opeenvolgend (oplopend) stopt alle virtuele machines met een tag van **SequenceStop** die zijn gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en activa variabelen.Schakel het gerelateerde schema in, **Sequenced-StartVM**.|
-|Sequenced-StartVM | 1:00 uur (UTC), elke maandag | Voert het **SequencedStopStart_Parent** runbook uit met een parameter waarde `Start` van elke maandag op de opgegeven tijd. Na elkaar (aflopend) worden alle virtuele machines gestart met een tag van **SequenceStart** dat is gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en variabele assets. Schakel het gerelateerde schema in, **Sequenced-StopVM**.
+|Schedule_AutoStop_CreateAlert_Parent | Om de 8 uur | Voert het **AutoStop_CreateAlert_Parent** runbook uit om de 8 uur, waardoor de op virtuele machines gebaseerde waarden in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en variabelen op zijn beurt worden gestopt `External_ExcludeVMNames` . U kunt ook een door komma's gescheiden lijst met Vm's opgeven met behulp van de `VMList` para meter.|
+|Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een para meter van `Stop` elke dag op de opgegeven tijd.Stopt automatisch alle virtuele machines die voldoen aan de regels die zijn gedefinieerd door variabele assets.Schakel de planning **StartVM**.|
+|Scheduled_StartVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een parameter waarde van `Start` elke dag op de opgegeven tijd. Alle Vm's die voldoen aan de regels die zijn gedefinieerd door variabele assets, worden automatisch gestart.Schakel de planning **StopVM**.|
+|Sequenced-StopVM | 1:00 uur (UTC), elke vrijdag | Voert het **Sequenced_StopStop_Parent** runbook uit met een parameter waarde van `Stop` elke vrijdag op de opgegeven tijd.Opeenvolgend (oplopend) stopt alle virtuele machines met een tag van **SequenceStop** die zijn gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en activa variabelen.Schakel het gerelateerde schema in, **Sequenced-StartVM**.|
+|Sequenced-StartVM | 1:00 uur (UTC), elke maandag | Voert het **SequencedStopStart_Parent** runbook uit met een parameter waarde van `Start` elke maandag op de opgegeven tijd. Na elkaar (aflopend) worden alle virtuele machines gestart met een tag van **SequenceStart** dat is gedefinieerd door de juiste variabelen. Zie [Runbooks](#runbooks)voor meer informatie over label waarden en variabele assets. Schakel het gerelateerde schema in, **Sequenced-StopVM**.
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>Gebruik van de oplossing met klassieke Vm's
 
@@ -173,7 +173,7 @@ Voor het gebruik van de oplossing met klassieke Vm's hebt u een klassiek uitvoer
 Als u meer dan 20 Vm's per Cloud service hebt, zijn hier enkele aanbevelingen:
 
 * Meerdere planningen maken met het bovenliggende runbook **ScheduledStartStop_Parent** en 20 vm's per schema opgeven. 
-* In de schema-eigenschappen gebruikt u `VMList` de para meter om VM-namen op te geven als een lijst met door komma's gescheiden waarden. 
+* In de schema-eigenschappen gebruikt `VMList` u de para meter om VM-namen op te geven als een lijst met door komma's gescheiden waarden. 
 
 Als de Automation-taak voor deze oplossing meer dan drie uur wordt uitgevoerd, wordt deze tijdelijk uit het geheugen verwijderd of gestopt volgens de limiet voor de [billijke share](automation-runbook-execution.md#fair-share) .
 
@@ -199,11 +199,11 @@ Als u de oplossing selecteert, wordt de oplossings pagina **Start-Stop-VM [werkr
 
 U kunt verdere analyse van de taak records uitvoeren door op de ring-tegel te klikken. Het oplossings Dashboard toont taak geschiedenis en vooraf gedefinieerde zoek opdrachten in het logboek. Ga naar de geavanceerde log Analytics-Portal om te zoeken op basis van uw zoek query's.
 
-## <a name="update-the-solution"></a>De oplossing bijwerken
+## <a name="update-the-feature"></a>De functie bijwerken
 
-Als u een eerdere versie van deze oplossing hebt geïmplementeerd, verwijdert u deze uit uw account voordat u een bijgewerkte versie implementeert. Volg de stappen om [de oplossing te verwijderen](#remove-the-solution) en volg de stappen om [de oplossing te implementeren](automation-solution-vm-management-enable.md).
+Als u een eerdere versie van deze oplossing hebt geïmplementeerd, verwijdert u deze uit uw account voordat u een bijgewerkte versie implementeert. Volg de stappen om [de oplossing te verwijderen](#remove-the-feature) en volg de stappen om [de oplossing te implementeren](automation-solution-vm-management-enable.md).
 
-## <a name="remove-the-solution"></a>De oplossing verwijderen
+## <a name="remove-the-feature"></a>De functie verwijderen
 
 Als u de oplossing niet meer nodig hebt, kunt u deze verwijderen uit het Automation-account. Als u de oplossing verwijdert, worden alleen de runbooks verwijderd. De schema's of variabelen die zijn gemaakt toen de oplossing werd toegevoegd, worden niet verwijderd. Verwijder deze assets hand matig als u deze niet gebruikt met andere runbooks.
 

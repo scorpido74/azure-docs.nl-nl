@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253479"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680156"
 ---
 # <a name="how-to-investigate-risk"></a>Procedure: risico onderzoeken
 
@@ -26,7 +26,7 @@ In alle drie de rapporten kunnen gebeurtenissen in worden gedownload. CSV-indeli
 
 Organisaties kunnen profiteren van de Microsoft Graph API-integraties om gegevens samen te voegen met andere bronnen waartoe ze mogelijk toegang hebben als een organisatie.
 
-De drie rapporten vindt u in de **Azure Portal** > **Azure Active Directory** > **Security**.
+De drie rapporten vindt u in de **Azure Portal**  >  **Azure Active Directory**  >  **Security**.
 
 ## <a name="navigating-the-reports"></a>Navigeren door de rapporten
 
@@ -74,6 +74,9 @@ Beheerders kunnen er vervolgens voor kiezen om actie te ondernemen op deze gebeu
 
 - Inbreuk op aanmelden bevestigen
 - Aanmelden bevestigen veilig
+
+> [!NOTE] 
+> Identiteits beveiliging evalueert Risico's voor alle verificatie stromen, ongeacht of deze interactief of niet-interactief zijn. Het aanmeldings rapport toont echter alleen de interactieve aanmeldingen. Mogelijk zijn er Risk ante aanmeldingen die zijn opgetreden bij niet-interactieve aanmeldingen, maar de aanmelding wordt niet weer gegeven in het rapport Azure AD-aanmeldingen.
 
 ## <a name="risk-detections"></a>Risicodetectie
 

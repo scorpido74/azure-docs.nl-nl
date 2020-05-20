@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261279"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680178"
 ---
 # <a name="more-details-about-features-in-preview"></a>Meer informatie over functies in Preview
 In dit onderwerp wordt beschreven hoe u functies kunt gebruiken die momenteel als preview-versie beschikbaar zijn.
 
-## <a name="group-writeback"></a>Groep terugschrijven
-Met de optie voor het terugschrijven van groepen in optionele functies kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd. Dit is een groep die altijd in de Cloud is gemastereerd. Als u Exchange on-premises hebt, kunt u deze groepen terugschrijven naar on-premises, zodat gebruikers met een on-premises Exchange-postvak e-mails van deze groepen kunnen verzenden en ontvangen.
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 
-Meer informatie over Office 365-groepen en hoe u deze kunt gebruiken, vindt u [hier](https://aka.ms/O365g).
-
-Een Office 365-groep wordt weer gegeven als een distributie groep in on-premises AD DS. Uw on-premises Exchange-server moet op Exchange 2013 cumulatief update 8 (uitgebracht in maart 2015) of Exchange 2016 zijn om dit nieuwe groeps type te herkennen.
-
-**Notities tijdens de preview**
-
-* Het kenmerk adres boek wordt momenteel niet ingevuld in de preview-versie. Zonder dit kenmerk is de groep niet zichtbaar in de GAL. De eenvoudigste manier om dit kenmerk in te vullen is met behulp van `update-recipient`de Exchange Power shell-cmdlet.
-* Alleen forests met het Exchange-schema zijn geldige doelen voor groepen. Als er geen uitwisseling is gedetecteerd, kan groeps terugschrijven niet worden ingeschakeld.
-* Er worden momenteel alleen implementaties van Exchange-organisaties met één forest ondersteund. Als u meer dan één Exchange-organisatie on-premises hebt, hebt u een on-premises GALSync-oplossing nodig voor deze groepen om weer te geven in uw andere forests.
-* De functie voor het terugschrijven van groepen verwerkt geen beveiligings groepen of distributie groepen.
-
-> [!NOTE]
-> Er is een abonnement op Azure AD Premium vereist voor het terugschrijven van de groep.
-> 
->
+We hebben een nieuw eind punt (API) voor Azure AD Connect geïmplementeerd, waarmee de prestaties van de synchronisatie service-bewerkingen voor Azure Active Directory worden verbeterd. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt biedt ook ondersteuning voor het synchroniseren van groepen met Maxi maal 250.000-leden. Met dit eind punt kunt u ook Unified groups van O365, zonder maximale lidmaatschaps limiet, naar uw on-premises Active Directory schrijven wanneer u groeps terugschrijven hebt ingeschakeld.   Zie [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md)voor meer informatie.
 
 ## <a name="user-writeback"></a>Gebruikers terugschrijven
 > [!IMPORTANT]

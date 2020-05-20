@@ -1,14 +1,14 @@
 ---
 title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met de verschillende Sdk's tijdens het uitvoeren van query's op Azure-resources met Azure resource Graph.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303907"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683230"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 
@@ -19,6 +19,25 @@ Er kunnen fouten optreden bij het uitvoeren van query's op Azure-resources met A
 De meeste fouten zijn het resultaat van een probleem bij het uitvoeren van een query met Azure resource Graph. Wanneer een query mislukt, biedt de SDK Details over de mislukte query. Deze informatie geeft het probleem aan zodat het kan worden hersteld en een latere query kan worden uitgevoerd.
 
 ## <a name="general-errors"></a>Algemene fouten
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Scenario: vertraagde aanvragen
+
+#### <a name="issue"></a>Probleem
+
+Klanten die grote of frequente resource query's maken, hebben verzoeken beperkt.
+
+#### <a name="cause"></a>Oorzaak
+
+In azure resource Graph wordt een quotum nummer toegewezen voor elke gebruiker op basis van een tijd venster. Een gebruiker kan bijvoorbeeld Maxi maal 15 query's verzenden binnen elk 5-seconde venster zonder dat dit wordt beperkt. De quotum waarde wordt bepaald door een groot aantal factoren en kan worden gewijzigd. Zie [beperking in azure resource Graph](../overview.md#throttling)voor meer informatie.
+
+#### <a name="resolution"></a>Oplossing
+
+Er zijn verschillende methoden voor het behandelen van vertraagde aanvragen:
+
+- [Query's groeperen](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Query's spreiden](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Parallelle query](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Pagin](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Scenario: te veel abonnementen
 
@@ -65,11 +84,11 @@ Klanten die een query uitvoeren op de Azure-resource grafiek REST API een _500_ 
 
 #### <a name="cause"></a>Oorzaak
 
-De Azure resource Graph-REST API ondersteunt alleen `Content-Type` een van de **toepassingen/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
+De Azure resource Graph-REST API ondersteunt alleen een `Content-Type` van de **toepassingen/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
 
 #### <a name="resolution"></a>Oplossing
 
-Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken op `Content-Type` Azure resource Graph, de rest API-header is geconfigureerd voor **Application/JSON**.
+Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken op Azure resource Graph, de REST API-header is `Content-Type` geconfigureerd voor **Application/JSON**.
 
 ### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Scenario: geen lees machtiging voor alle abonnementen in de lijst
 
@@ -90,5 +109,5 @@ Neem ten minste één abonnement op in de lijst met abonnementen die de klant di
 Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 - Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 - Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

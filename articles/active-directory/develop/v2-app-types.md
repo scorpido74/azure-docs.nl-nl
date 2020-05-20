@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677992"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682268"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -25,7 +25,7 @@ Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor 
 
 ## <a name="the-basics"></a>De basisbeginselen
 
-U moet elke app registreren die gebruikmaakt van het micro soft Identity platform-eind punt in de nieuwe [app-registraties-Portal](https://go.microsoft.com/fwlink/?linkid=2083908). Het registratie proces van de app verzamelt en wijst deze waarden voor uw app toe:
+U moet elke app registreren die gebruikmaakt van het micro soft Identity platform-eind punt in de Azure Portal [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908). Het registratie proces van de app verzamelt en wijst deze waarden voor uw app toe:
 
 * Een **toepassings-id (client)** waarmee uw app op unieke wijze wordt geïdentificeerd
 * Een **omleidings-URI** die u kunt gebruiken om antwoorden terug te sturen naar uw app
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Apps met één pagina (Java script)
 
-Veel moderne apps hebben een front-end van de app met één pagina die voornamelijk is geschreven in Java script. Vaak wordt deze geschreven met behulp van een kader zoals hoek, reageren of Vue. Het micro soft Identity platform-eind punt ondersteunt deze apps met behulp van de [impliciete OAuth 2,0-stroom](v2-oauth2-implicit-grant-flow.md).
+Veel moderne apps hebben een front-end van de app met één pagina, voornamelijk geschreven in Java script, vaak met een kader als een hoek, reageren of Vue. Het micro soft Identity platform-eind punt ondersteunt deze apps met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md).
 
-In deze stroom ontvangt de app tokens rechtstreeks van het micro soft Identity platform Authorization-eind punt, zonder server-naar-server-uitwisselingen. Alle verificatie logica en sessie afhandeling vindt volledig plaats in de Java script-client, zonder extra pagina omleidingen.
+In deze stroom ontvangt de app een code van het micro soft Identity platform `authorize` -eind punt en wordt deze opnieuw gebruikt voor tokens en vernieuwt tokens met behulp van cross-site webaanvragen. Het vernieuwings token verloopt elke 24 uur en de app moet een andere code aanvragen.
 
-![Toont de impliciete verificatie stroom](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Code stroom voor SPA-apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-Als u dit scenario in actie wilt zien, kunt u een van de app-code voorbeelden van één pagina proberen in de sectie [micro soft Identity platform aan de slag](v2-overview.md#getting-started) .
+Als u dit scenario in actie wilt zien, raadpleegt u de [zelf studie: Meld u aan bij gebruikers en roep de Microsoft Graph-API aan vanuit een Java script Spa met behulp van auth code flow](tutorial-v2-javascript-auth-code.md).
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>Autorisatie code stroom versus impliciete stroom
+
+Voor de meeste van de geschiedenis van OAuth 2,0 was de [impliciete stroom](v2-oauth2-implicit-grant-flow.md) de aanbevolen manier om apps met één pagina te bouwen. Als u [cookies](reference-third-party-cookies-spas.md) van derden verwijdert en [meer aandacht](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) besteed aan beveiligings problemen rondom de impliciete stroom, zijn we verplaatst naar de autorisatie code stroom voor apps met één pagina.
+
+Om ervoor te zorgen dat uw app in Safari en andere privacy bewuste browsers wordt ondersteund, wordt het gebruik van de impliciete stroom niet langer aangeraden en wordt de autorisatie code stroom echter wel aanbevolen.
 
 ## <a name="web-apps"></a>Web-apps
 
@@ -77,7 +83,8 @@ U kunt de identiteit van de gebruiker controleren door de ID-token te valideren 
 
 Als u dit scenario in actie wilt zien, kunt u een van de voor beelden van de aanmeldings code voor de web-app in het gedeelte [aan de slag met micro soft Identity platform](v2-overview.md#getting-started) uitproberen.
 
-Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](active-directory-v2-protocols.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+
 
 ## <a name="web-apis"></a>Web-API's
 
@@ -120,3 +127,7 @@ In deze stroom communiceert de app rechtstreeks met het `/token` eind punt om to
 ![Toont de verificatie stroom van de daemon-app](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Als u een daemon-app wilt maken, raadpleegt u de [documentatie van client referenties](v2-oauth2-client-creds-grant-flow.md)of probeert u een [.net-voorbeeld toepassing](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+
+## <a name="next-steps"></a>Volgende stappen
+
+Nu u bekend bent met de typen toepassingen die worden ondersteund door het micro soft Identity platform, leest u meer over [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md) om inzicht te krijgen in de protocol onderdelen die worden gebruikt door de verschillende scenario's.

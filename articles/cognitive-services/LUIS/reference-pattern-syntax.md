@@ -4,19 +4,19 @@ description: Maak entiteiten voor het extra heren van belang rijke gegevens van 
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585569"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684544"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
 De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt laten overeenkomen, evenals woorden en [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die u wilt negeren. Het is **geen** reguliere expressie.
 
 > [!CAUTION]
-> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, niet voor subentiteiten.
+> Patronen zijn alleen van toepassing op machine learning-entiteit, niet voor subentiteiten.
 
 Entiteiten in patronen worden omgeven door accolades, `{}` . Patronen kunnen entiteiten en entiteiten met rollen bevatten. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
 

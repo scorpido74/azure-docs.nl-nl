@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598813"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681948"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Fout visualiseren met behulp van de Azure Maps voor het tekenen van fouten
 
-De tekening fout Visualer is een zelfstandige webtoepassing waarin de waarschuwingen voor het [teken pakket](drawing-conversion-error-codes.md) worden weer gegeven en de fouten die tijdens het conversie proces zijn gedetecteerd. De webtoepassing voor het visualiseren van fouten bestaat uit een statische pagina die u kunt gebruiken zonder verbinding met Internet te maken.  U kunt de fout Visualer gebruiken om fouten en waarschuwingen op te lossen in overeenstemming met de vereisten voor het [teken pakket](drawing-requirements.md). De [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/data/conversion) retourneert alleen een antwoord met een koppeling naar de error visualer alleen wanneer er een fout wordt gedetecteerd.
+De tekening fout Visualer is een zelfstandige webtoepassing waarin de waarschuwingen voor het [teken pakket](drawing-conversion-error-codes.md) worden weer gegeven en de fouten die tijdens het conversie proces zijn gedetecteerd. De webtoepassing voor het visualiseren van fouten bestaat uit een statische pagina die u kunt gebruiken zonder verbinding met Internet te maken.  U kunt de fout Visualer gebruiken om fouten en waarschuwingen op te lossen in overeenstemming met de vereisten voor het [teken pakket](drawing-requirements.md). De [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/conversion) retourneert alleen een antwoord met een koppeling naar de error visualer alleen wanneer er een fout wordt gedetecteerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -90,7 +90,7 @@ Zodra het bestand _ConversionWarningsAndErrors. json_ is geladen, ziet u een lij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra het [teken pakket aan de vereisten voldoet](drawing-requirements.md), kunt u de [Azure Maps dataset-service](https://docs.microsoft.com/rest/api/maps/data/conversion) gebruiken om het teken pakket te converteren naar een gegevensset. Vervolgens kunt u de web module van de binnenste kaarten gebruiken om uw toepassing te ontwikkelen. Lees de volgende artikelen voor meer informatie:
+Zodra het [teken pakket aan de vereisten voldoet](drawing-requirements.md), kunt u de [Azure Maps dataset-service](https://docs.microsoft.com/rest/api/maps/conversion) gebruiken om het teken pakket te converteren naar een gegevensset. Vervolgens kunt u de web module van de binnenste kaarten gebruiken om uw toepassing te ontwikkelen. Lees de volgende artikelen voor meer informatie:
 
 > [!div class="nextstepaction"]
 > [Fout codes voor teken conversie](drawing-conversion-error-codes.md)

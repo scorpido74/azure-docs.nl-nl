@@ -1,14 +1,14 @@
 ---
 title: De impact van een nieuwe Azure Policy definitie evalueren
 description: Inzicht in het proces dat moet worden gevolgd wanneer een nieuwe beleids definitie wordt geïntroduceerd in uw Azure-omgeving.
-ms.date: 09/23/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187746"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684302"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>De impact van een nieuwe Azure Policy definitie evalueren
 
@@ -33,8 +33,7 @@ Daarom moeten uw beleids definities net zo nauw keurig worden gedefinieerd en zi
 
 ## <a name="audit-existing-resources"></a>Bestaande resources controleren
 
-Voordat u nieuwe of bijgewerkte resources met de nieuwe beleids definitie gaat beheren, is het raadzaam om te zien hoe een beperkte subset van bestaande resources, zoals een test resource groep, wordt geëvalueerd. Gebruik de [afdwingings modus](./assignment-structure.md#enforcement-mode)
-_uitgeschakeld_ (DoNotEnforce) op uw beleids toewijzing om te voor komen dat het [effect](./effects.md) van trigger-of activiteiten logboek vermeldingen wordt gemaakt.
+Voordat u nieuwe of bijgewerkte resources met de nieuwe beleids definitie gaat beheren, is het raadzaam om te zien hoe een beperkte subset van bestaande resources, zoals een test resource groep, wordt geëvalueerd. Gebruik de [afdwingings modus](./assignment-structure.md#enforcement-mode) _uitgeschakeld_ (DoNotEnforce) op uw beleids toewijzing om te voor komen dat het [effect](./effects.md) van trigger-of activiteiten logboek vermeldingen wordt gemaakt.
 
 Met deze stap kunt u de nalevings resultaten van het nieuwe beleid evalueren op bestaande resources zonder dat dit van invloed is op de werk stroom. Controleer of er geen compatibele resources zijn gemarkeerd als niet-compatibel (fout_positief_) en dat alle resources die u verwacht niet-compatibel zijn, correct zijn gemarkeerd.
 Nadat de eerste subset van resources op de verwachte manier wordt gevalideerd, wordt de evaluatie van alle bestaande resources langzaam uitgebreid.
