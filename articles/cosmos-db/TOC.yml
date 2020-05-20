@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: Regionale aanwezigheid
           href: regional-presence.md
-        - name: Transactionele en analytische opslag
-          href: globally-distributed-transactional-analytical-storage.md
     - name: Partitionering
       items:
         - name: Overzicht van partitionering
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: Pull-model voor feed wijzigen
           href: change-feed-pull-model.md
-    - name: Wereldwijd gedistribueerde analyses en AI
+    - name: Analyses met Synapse Link
       items:
-        - name: Gebruikscases voor analyses
-          href: analytics-usecases.md
-        - name: Analyse - oplossingsarchitecturen
-          href: analytics-solution-architectures.md
-        - name: Lambda-architectuur
-          href: lambda-architecture.md
+        - name: Synapse Link voor Azure Cosmos DB
+          href: synapse-link.md
+        - name: Analytische opslag - Overzicht
+          href: analytical-store-introduction.md
+        - name: Veelgestelde vragen over Synapse Link
+          href: synapse-link-frequently-asked-questions.md
+        - name: Use cases van Synapse Link
+          href: synapse-link-use-cases.md
     - name: Ingebouwde Jupyter-notebooks
       items:
         - name: Overzicht van Jupyter-notebooks
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Wijzigingenfeed - Asynchroon Java-voorbeeld
           href: create-sql-api-java-changefeed.md
+    - name: Analyses met Synapse Link
+      items:
+        - name: Synapse Link configureren
+          href: configure-synapse-link.md
     - name: Ingebouwde analyse met Apache Spark
       items:
         - name: Spark-connector voor Azure Databricks

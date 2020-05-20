@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c877daf3ffdc1f00e90dafb421a7323e05a019ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118461"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700041"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
 IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.
@@ -178,12 +178,12 @@ Wanneer beheerders of Lab-makers een leslokaal Lab maken, kunnen ze kiezen uit d
 | Grootte | Specificaties | Reeks | Voorgesteld gebruik |
 | ---- | ----- | ------ | ------------- |
 | Klein| <ul><li>2 kernen</li><li>3,5 GB RAM-GEHEUGEN</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
-| Middelgroot | <ul><li>4 kernen</li><li>7 GB RAM-GEHEUGEN</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. |
+| Normaal | <ul><li>4 kernen</li><li>7 GB RAM-GEHEUGEN</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. |
 | Gemiddeld (geneste virtualisatie) | <ul><li>4 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
-| Groot | <ul><li>8 kernen</li><li>32 GB RAM-GEHEUGEN</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
+| Groot | <ul><li>8 kernen</li><li>16 GB RAM-GEHEUGEN</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches.  Deze grootte biedt ook ondersteuning voor geneste virtualisatie. |
 | Kleine GPU (visualisatie) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
 | Kleine GPU (Compute) | <ul><li>6 kernen</li><li>56 GB RAM-GEHEUGEN</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computer-intensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
-| Gemiddelde GPU (visualisatie) | <ul><li>12 kernen</li><li>112 GB RAM-GEHEUGEN</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
+| Gemiddelde GPU (visualisatie) | <ul><li>12 kernen</li><li>112 GB RAM-GEHEUGEN</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. |
 
 ## <a name="manage-identity"></a>Identiteit beheren
 

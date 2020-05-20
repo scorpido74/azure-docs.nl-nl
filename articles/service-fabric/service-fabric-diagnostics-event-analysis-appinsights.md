@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464749"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701894"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Gebeurtenis analyse en visualisatie met Application Insights
 
@@ -42,7 +42,7 @@ Als u meer wilt weten over de mogelijkheden van de Application Insights Portal, 
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Application Insights configureren met Event flow
 
-Als u Event Flow gebruikt om gebeurtenissen te verzamelen, moet u ervoor zorgen dat `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`u het NuGet-pakket importeert. De volgende code is vereist in het gedeelte *outputs* van de *eventFlowConfig. json*:
+Als u Event Flow gebruikt om gebeurtenissen te verzamelen, moet u ervoor zorgen dat u het `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` NuGet-pakket importeert. De volgende code is vereist in het gedeelte *outputs* van de *eventFlowConfig. json*:
 
 ```json
 "outputs": [
@@ -73,5 +73,5 @@ Als u op **Analytics** klikt, gaat u naar de Application Insights Analytics-Port
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stel waarschuwingen in AI in](../azure-monitor/app/alerts.md) om een melding te ontvangen over wijzigingen in prestaties of gebruik
+* [Stel waarschuwingen in AI in](/azure/azure-monitor/platform/alerts-log) om een melding te ontvangen over wijzigingen in prestaties of gebruik
 * [Slimme detectie in Application Insights](../azure-monitor/app/proactive-diagnostics.md) voert een proactieve analyse uit van de telemetrie die wordt verzonden naar Application Insights om u te waarschuwen over mogelijke prestatie problemen

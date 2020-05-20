@@ -4,12 +4,12 @@ description: Application Insights voert een slimme analyse uit van de telemetrie
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697171"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Slimme detectie-prestatie afwijkingen
 
@@ -70,12 +70,12 @@ E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties z
 * *Kan ik mijn eigen anomalie detectie regels maken of bestaande regels aanpassen?*
 
   * Nog niet, maar u kunt het volgende doen:
-    * [Stel waarschuwingen](../../azure-monitor/app/alerts.md) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
+    * [Stel waarschuwingen](/azure/azure-monitor/platform/alerts-log) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
     * [Telemetrie exporteren](../../azure-monitor/app/export-telemetry.md) naar een [Data base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar Power bi](../../azure-monitor/app/export-power-bi.md ), waar u deze zelf kunt analyseren.
 * *Hoe vaak wordt de analyse uitgevoerd?*
 
   * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volle dag in UTC-tijd zone).
-* *Daarom worden [metrische waarschuwingen](../../azure-monitor/app/alerts.md)vervangen?*
+* *Daarom worden [metrische waarschuwingen](/azure/azure-monitor/platform/alerts-log)vervangen?*
   * Nee.  Het detecteren van elk gedrag dat u mogelijk zou kunnen overwegen, wordt niet door ons vastgelegd.
 
 
@@ -180,5 +180,5 @@ Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecte
 
 Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
+* [Hand matig geconfigureerde metrische waarschuwingen](/azure/azure-monitor/platform/alerts-log)
 * [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)

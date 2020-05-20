@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530898"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699235"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problemen met gegevensverlies in Azure Cache voor Redis oplossen
 
@@ -36,9 +36,9 @@ Als u ontdekt dat sleutels zijn verdwenen uit uw cache, controleert u de volgend
 
 ### <a name="key-expiration"></a>Verval datum van de sleutel
 
-Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](https://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de [set](https://redis.io/commands/set)-, [SETEX](https://redis.io/commands/setex)-, [GETSET](https://redis.io/commands/getset)-en andere ** \*Store** -opdrachten.
+Azure cache voor redis verwijdert automatisch een sleutel als aan de sleutel een time-out wordt toegewezen en die periode is verstreken. Zie de documentatie van de [verlopende](https://redis.io/commands/expire) opdracht voor meer informatie over de verval datum van de redis-sleutel. Time-outwaarden kunnen ook worden ingesteld met behulp van de [set](https://redis.io/commands/set)-, [SETEX](https://redis.io/commands/setex)-, [GETSET](https://redis.io/commands/getset)-en andere ** \* Store** -opdrachten.
 
-Gebruik de opdracht [info](https://redis.io/commands/info) om statistieken weer te geven over hoeveel sleutels zijn verlopen. In `Stats` de sectie wordt het totale aantal verlopen sleutels weer gegeven. De `Keyspace` sectie bevat meer informatie over het aantal sleutels met time-outs en de gemiddelde time-outwaarde.
+Gebruik de opdracht [info](https://redis.io/commands/info) om statistieken weer te geven over hoeveel sleutels zijn verlopen. In de `Stats` sectie wordt het totale aantal verlopen sleutels weer gegeven. De `Keyspace` sectie bevat meer informatie over het aantal sleutels met time-outs en de gemiddelde time-outwaarde.
 
 ```
 # Stats
@@ -68,7 +68,7 @@ U kunt ook diagnostische gegevens voor uw cache bekijken om te zien of er een co
 
 ### <a name="key-deletion"></a>Sleutel verwijderen
 
-Redis-clients kunnen de opdracht [del](https://redis.io/commands/del) of [HDEL](https://redis.io/commands/hdel) uitgeven om sleutels expliciet te verwijderen uit Azure cache voor redis. U kunt het aantal verwijderings bewerkingen bijhouden met behulp van de opdracht [info](https://redis.io/commands/info) . Als **del** -of **HDEL** -opdrachten zijn aangeroepen, worden deze weer gegeven in `Commandstats` de sectie.
+Redis-clients kunnen de opdracht [del](https://redis.io/commands/del) of [HDEL](https://redis.io/commands/hdel) uitgeven om sleutels expliciet te verwijderen uit Azure cache voor redis. U kunt het aantal verwijderings bewerkingen bijhouden met behulp van de opdracht [info](https://redis.io/commands/info) . Als **del** -of **HDEL** -opdrachten zijn aangeroepen, worden deze weer gegeven in de `Commandstats` sectie.
 
 ```
 # Commandstats
@@ -80,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone replicatie
 
-Alle Azure-caches voor redis-instanties in de laag Standard of Premium worden geconfigureerd met een hoofd knooppunt en ten minste één replica. Gegevens worden asynchroon van het model naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](https://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarbij clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie gegarandeerd onmiddellijk is. Als de hoofd server bijvoorbeeld wordt uitgeschakeld *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel naar de replica's kan verzenden, gaat de sleutel verloren wanneer de replica de nieuwe hoofd server overneemt.
+Alle Azure-caches voor redis-instanties in de laag Standard of Premium worden geconfigureerd met een hoofd knooppunt en ten minste één replica. Gegevens worden asynchroon van het model naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](https://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarin clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie niet gegarandeerd onmiddellijk is. Als de hoofd server bijvoorbeeld wordt uitgeschakeld *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel naar de replica's kan verzenden, gaat de sleutel verloren wanneer de replica de nieuwe hoofd server overneemt.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Groot of volledig verlies van sleutels
 

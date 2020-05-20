@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbe0a0b7f22df20c8ce3d734738132b5056a36e4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589496"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697090"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
 Dit artikel laat u zien hoe u een lab kunt instellen om shell scripting op Linux te leren. Scripting is een nuttig onderdeel van systeem beheer waarmee beheerders terugkerende taken kunnen voor komen. In dit voorbeeld scenario bestrijkt de klasse traditionele bash-scripts en uitgebreide scripts. Uitgebreide scripts zijn scripts die bash-opdrachten en Ruby combi neren. Met deze benadering kan ruby gegevens rond en bash opdrachten door geven om met de shell te communiceren. 
@@ -39,12 +39,11 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te mak
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
 | Grootte van virtuele machine (VM) | Klein  |
-| VM-installatie kopie | Ubuntu Server 18,04 LTS |
-| Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines met behulp van extern bureau blad (RDP). Zie voor meer informatie [extern bureau blad inschakelen voor virtuele Linux-machines in een lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
+| VM-installatie kopie | Ubuntu Server 18,04 LTS|
+| Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines met behulp van extern bureau blad (RDP). Zie voor meer informatie [extern bureau blad inschakelen voor virtuele Linux-machines in een lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md). </p>|
 
-
-## <a name="install-desktop-and-xrdp"></a>Desktop-en xrdp installeren
-De Ubuntu Server 18,04 LTS-installatie kopie heeft geen extern bureau blad-server standaard geïnstalleerd. Volg de instructies in de [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md) artikel om de pakketten te installeren die nodig zijn op de sjabloon computer om verbinding te maken via het Remote Desktop Protocol.
+## <a name="install-desktop-and-rdp"></a>Desktop en RDP installeren
+Voor de Ubuntu Server 18,04 LTS-installatie kopie is de RDP-extern bureau blad-server niet standaard geïnstalleerd. Volg de instructies in de [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md) om de pakketten te installeren die nodig zijn op de sjabloon computer om verbinding te maken via Remote Desktop Protocol (RDP).
 
 ## <a name="install-ruby"></a>Ruby installeren
 Ruby is een open-source dynamische taal die kan worden gecombineerd met bash-scripts. In deze sectie wordt beschreven hoe u gebruikt `apt-get` om de meest recente versie van [ruby](https://www.ruby-lang.org/)te installeren.

@@ -3,12 +3,12 @@ title: Veelvoorkomende Scenario's voor Azure Service Fabric diagnosticeren
 description: Meer informatie over het oplossen van veelvoorkomende bewakings-en diagnose scenario's in azure Service Fabric-toepassingen.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76906946"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697683"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Veelvoorkomende scenario's met Service Fabric diagnosticeren
 
@@ -45,7 +45,7 @@ De oplossingen in dit artikel gebruiken de volgende hulpprogram ma's. U wordt aa
 1. In dezelfde Application Insights resource kunt u filteren op aanvragen in plaats van uitzonde ringen en alle aanvragen weer geven die zijn gemaakt
 2. Als u de Service Fabric Application Insights SDK gebruikt, ziet u een visuele weer gave van de services die zijn verbonden met elkaar en het aantal geslaagde en mislukte aanvragen. Klik aan de linkerkant op ' toepassings overzicht '
 
-    ![App-toewijzing Blade](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI app-kaart](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![App-toewijzing Blade AI app-kaart ](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Ga voor meer informatie over het toepassings overzicht naar de [documentatie van het toepassings overzicht](../azure-monitor/app/app-map.md)
 
@@ -133,7 +133,7 @@ Controleer deze koppelingen voor de volledige lijst met prestatie meter items op
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Veelvoorkomende fouten bij het activeren van code pakketten opzoeken](./service-fabric-diagnostics-code-package-errors.md)
-* [Stel waarschuwingen in AI in](../azure-monitor/app/alerts.md) om een melding te ontvangen over wijzigingen in prestaties of gebruik
+* [Stel waarschuwingen in AI in](/azure/azure-monitor/platform/alerts-log) om een melding te ontvangen over wijzigingen in prestaties of gebruik
 * [Slimme detectie in Application Insights](../azure-monitor/app/proactive-diagnostics.md) voert een proactieve analyse uit van de telemetrie die naar AI wordt verzonden om u te waarschuwen over mogelijke prestatie problemen
 * Meer informatie over Azure Monitor-logboeken waarin u wordt [gewaarschuwd](../log-analytics/log-analytics-alerts.md) voor hulp bij detectie en diagnose.
 * Voor on-premises clusters biedt Azure Monitor-Logboeken een gateway (HTTP forward proxy) die kan worden gebruikt om gegevens te verzenden naar Azure Monitor-Logboeken. Meer informatie over dat bij [het verbinden van computers zonder Internet toegang tot Azure monitor-logboeken met behulp van de log Analytics gateway](../azure-monitor/platform/gateway.md)

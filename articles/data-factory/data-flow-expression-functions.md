@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 82fbc144b9b2dffdddc09900bf6ed9424b445100
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701455"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen
 
@@ -59,6 +59,13 @@ ___
 Logische AND-operator. Hetzelfde als && * ``and(true, false) -> false``  
 * ``true && false -> false``  
 ___
+### <code>array</code>
+<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
+Hiermee maakt u een matrix met items. Alle items moeten van hetzelfde type zijn. Als er geen items zijn opgegeven, is een lege teken reeks matrix de standaard waarde. Hetzelfde als een []-operator voor maken* ``array('Seattle', 'Washington')``
+* ``['Seattle', 'Washington']``
+* ``['Seattle', 'Washington'][1]``
+* ``'Washington'``
+___
 ### <code>asin</code>
 <code><b>asin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Hiermee wordt een inverse sinus waarde berekend* ``asin(0) -> 0.0``  
@@ -79,6 +86,27 @@ Selecteert een kolom waarde op naam in de stroom. U kunt een optionele naam van 
 * ``toLong(byName($debtCol))``  
 * ``toString(byName('Bogus Column'))``  
 * ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Selecteer een matrix met kolommen op naam in de stroom. U kunt een optionele naam van een stream door geven als het tweede argument. Als er meerdere overeenkomsten zijn, wordt de eerste overeenkomst geretourneerd. Als er geen overeenkomsten zijn voor een kolom, is de gehele uitvoer een NULL-waarde. De geretourneerde waarde vereist een type conversie functies (ToDate, toString,...).  Kolom namen die bekend zijn tijdens de ontwerp fase moeten worden geadresseerd op basis van de naam. Berekende invoer waarden worden niet ondersteund, maar u kunt parameter vervangingen gebruiken.
+* ``toString(byNames(['parent', 'child']))``
+* ````
+* ``byNames(['parent']) ? string``
+* ````
+* ``toLong(byNames(['income']))``
+* ````
+* ``byNames(['income']) ? long``
+* ````
+* ``toBoolean(byNames(['foster']))``
+* ````
+* ``toLong(byNames($debtCols))``
+* ````
+* ``toString(byNames(['a Column']))``
+* ````
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ````
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
@@ -119,6 +147,15 @@ ___
 Hiermee worden alle uitvoer kolommen voor een stroom opgehaald. U kunt een optionele naam van een stream door geven als het tweede argument.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
+
+___
+### <code>columns</code>
+<code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Hiermee worden alle uitvoer kolommen voor een stroom opgehaald. U kunt een optionele naam van een stream door geven als het tweede argument.   
+* ``columns()``
+* ````
+* ``columns('DeriveStream')``
+* ````
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
@@ -402,7 +439,7 @@ Links wordt de teken reeks met de opgegeven opvulling gematteerd tot deze een be
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
 *' ' lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
 ___
-### <code>LTrim</code>
+### <code> LTrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
 Hiermee wordt een teken reeks met voorloop tekens bijgesneden. Als de tweede para meter niet is opgegeven, wordt witruimte verkleind. Anders wordt het teken dat in de tweede para meter is opgegeven, verkleind* ``ltrim('  dumbo  ') -> 'dumbo  '``  
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
@@ -523,17 +560,17 @@ Verzamelt elementen in een matrix. Reductie verwacht een verwijzing naar een acc
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Een overeenkomende subtekenreeks ophalen voor een opgegeven regex-patroon. De laatste para meter identificeert de overeenkomende groep en wordt standaard ingesteld op 1 als dit wordt wegge laten. Gebruik '<regex>' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
+Een overeenkomende subtekenreeks ophalen voor een opgegeven regex-patroon. De laatste para meter identificeert de overeenkomende groep en wordt standaard ingesteld op 1 als dit wordt wegge laten. Gebruik ' <regex> ' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
 * ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon. Gebruik '<regex>' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
+Controleert of de teken reeks overeenkomt met het opgegeven regex-patroon. Gebruik ' <regex> ' (back-quote) om een teken reeks zonder aanhalings tekens te zoeken* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
 * ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Alle exemplaren van een regex-patroon vervangen door een andere subtekenreeks in de opgegeven teken reeks<regex>gebruik ' ' (back quote) om een teken reeks zonder aanhalings tekens te zoeken.* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
+Alle exemplaren van een regex-patroon vervangen door een andere subtekenreeks in de opgegeven teken reeks gebruik ' <regex> ' (back quote) om een teken reeks zonder aanhalings tekens te zoeken.* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
 * ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
 ___
 ### <code>regexSplit</code>
@@ -965,7 +1002,7 @@ Hiermee wordt de waarde opgehaald van de eerste para meter, geëvalueerd n rijen
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-De functie NTile verdeelt de rijen voor elke venster partitie `n` in buckets, variërend van 1 tot de `n`meeste. Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: er wordt één extra rij aan de grootte van een gewone Bucket toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).  
+De functie NTile verdeelt de rijen voor elke venster partitie in `n` buckets, variërend van 1 tot de meeste `n` . Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: er wordt één extra rij aan de grootte van een gewone Bucket toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

@@ -6,15 +6,15 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430225"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702094"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio-notebooks (preview) maken, ontwikkelen en onderhouden
 
@@ -55,12 +55,12 @@ Er zijn meerdere manieren om een nieuwe cel aan uw notitie blok toe te voegen.
 
 ### <a name="set-a-primary-language"></a>Een primaire taal instellen
 
-Azure Synapse Studio-notebooks ondersteunen vier mousserende talen:
+Azure Synapse Studio-notebooks ondersteunen vier Apache Spark talen:
 
-* pyspark (python)
+* pySpark (python)
 * Spark (scala)
-* sparkSQL
-* Spark.NET (C#)
+* SparkSQL
+* .NET voor Apache Spark (C#)
 
 U kunt de primaire taal voor nieuwe toegevoegde cellen instellen in de vervolg keuzelijst in de bovenste opdracht balk.
 
@@ -75,15 +75,15 @@ U kunt meerdere talen gebruiken in één notebook door de juiste Magic-opdracht 
 |%% pyspark| Python | Voer een **python** -query uit op Spark-context.  |
 |% Spark| Scala | Voer een **scala** -query uit op Spark-context.  |  
 |%% SQL| SparkSQL | Voer een **SparkSQL** -query uit op Spark-context.  |
-|%% csharp | Spark.NET C # | Voer een **Spark.net C#** -query uit op Spark-context. |
+|%% csharp | .NET voor Spark C # | Voer een **.net for Spark C#** -query uit op Spark-context. |
 
-De volgende afbeelding is een voor beeld van hoe u een PySpark-query kunt schrijven met behulp van de opdracht **%% PySpark** Magic of een SparkSQL-query met de **%% SQL** Magic-opdracht in een **Spark (scala)-** notebook. U ziet dat de primaire taal voor het notitie blok is ingesteld op scala.
+De volgende afbeelding is een voor beeld van hoe u een PySpark-query kunt schrijven met behulp van de opdracht **%% PySpark** Magic of een SparkSQL-query met de **%% SQL** Magic-opdracht in een **Spark (scala)-** notebook. U ziet dat de primaire taal voor het notitie blok is ingesteld op pySpark.
 
    ![Synapse-Spark-magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Tijdelijke tabellen gebruiken om te verwijzen naar gegevens tussen talen
 
-U kunt niet rechtstreeks verwijzen naar gegevens of variabelen in verschillende talen in een Synapse Studio-notebook. In Spark kan naar een tijdelijke tabel worden verwezen tussen talen. Hier volgt een voor beeld van het lezen van `Scala` een data frame `PySpark` in `SparkSQL` en het gebruik van een Spark-tijdelijke tabel als tijdelijke oplossing.
+U kunt niet rechtstreeks verwijzen naar gegevens of variabelen in verschillende talen in een Synapse Studio-notebook. In Spark kan naar een tijdelijke tabel worden verwezen tussen talen. Hier volgt een voor beeld van het lezen van een `Scala` Data frame in `PySpark` en `SparkSQL` het gebruik van een Spark-tijdelijke tabel als tijdelijke oplossing.
 
 1. In cel 1 leest u een data frame van de SQL-groeps connector met behulp van scala en maakt u een tijdelijke tabel.
 
@@ -118,7 +118,7 @@ De IntelliSense-functies bevinden zich op verschillende niveaus van de verval da
 |PySpark (python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|Spark.NET (C#)|Ja|-|-|-|-|-|-|-|
+|.NET voor Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Tekst cel opmaken met werkbalk knoppen
 
@@ -267,7 +267,7 @@ U kunt rechtstreeks toegang krijgen tot gegevens in het primaire opslag account.
 
 Een weer gave met resultaten in tabel vorm wordt geleverd met de optie voor het maken van een staaf diagram, lijn diagram, cirkel diagram, spreidings diagram en vlak diagram. U kunt uw gegevens visualiseren zonder dat u code hoeft te schrijven. De grafieken kunnen worden aangepast in de **grafiek opties**. 
 
-De uitvoer van **%% SQL** Magic-opdrachten wordt standaard weer gegeven in de gerenderde tabel weergave. U kunt de **weer gave`<DataFrame name>`()** aanroepen op Spark DataFrames of de RDD-functie (robuuste gedistribueerde gegevens sets) om de gerenderde tabel weergave te maken.
+De uitvoer van **%% SQL** Magic-opdrachten wordt standaard weer gegeven in de gerenderde tabel weergave. U kunt de **weer gave ( `<DataFrame name>` )** aanroepen op Spark DATAFRAMES of de RDD-functie (robuuste gedistribueerde gegevens sets) om de gerenderde tabel weergave te maken.
 
    ![Builtin-grafieken](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
@@ -339,11 +339,11 @@ Beschik bare cel magics: [%% time](https://ipython.readthedocs.io/en/stable/inte
 
 Net als Jupyter-notebooks hebben Azure Synapse Studio-notebooks een modale gebruikers interface. Het toetsen bord heeft verschillende dingen, afhankelijk van de modus waarin de notebook-cel zich bevindt. Synapse Studio-notitie blokken ondersteunen de volgende twee modi voor een bepaalde code-cel: opdracht modus en bewerkings modus.
 
-1. Een cel bevindt zich in de opdracht modus als er geen tekst cursor wordt gevraagd om te typen. Wanneer een cel zich in de opdracht modus bevindt, kunt u het notitie blok als geheel bewerken, maar niet typen in afzonderlijke cellen. Voer de opdracht modus in `ESC` door te drukken of door met de muis te klikken buiten het editor gebied van de cel.
+1. Een cel bevindt zich in de opdracht modus als er geen tekst cursor wordt gevraagd om te typen. Wanneer een cel zich in de opdracht modus bevindt, kunt u het notitie blok als geheel bewerken, maar niet typen in afzonderlijke cellen. Voer de opdracht modus in door te drukken `ESC` of door met de muis te klikken buiten het editor gebied van de cel.
 
    ![opdracht modus](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. De bewerkings modus wordt aangegeven door een tekst cursor waarin u wordt gevraagd in het gebied van de editor te typen. Wanneer een cel zich in de bewerkings modus bevindt, kunt u niet typen in de cel. Voer de bewerkings `Enter` modus in door met de muis te klikken op het editor gebied van een cel.
+2. De bewerkings modus wordt aangegeven door een tekst cursor waarin u wordt gevraagd in het gebied van de editor te typen. Wanneer een cel zich in de bewerkings modus bevindt, kunt u niet typen in de cel. Voer de bewerkings modus in door `Enter` met de muis te klikken op het editor gebied van een cel.
    
    ![bewerkingsmodus](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -390,5 +390,8 @@ Met de volgende sneltoetsen kunt u gemakkelijker code in azure Synapse-notebooks
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Snelstartgids: een Apache Spark groep maken (preview) in azure Synapse Analytics met behulp van web-hulpprogram ma's](../quickstart-apache-spark-notebook.md)
+- [Wat is Apache Spark in azure Synapse Analytics](apache-spark-overview.md)
+- [.NET gebruiken voor Apache Spark met Azure Synapse Analytics](spark-dotnet.md)
 - [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

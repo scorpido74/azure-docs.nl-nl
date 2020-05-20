@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 69d4b1d6c67dc63347ec4fb8043427ddf0a42ae1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588119"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702123"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -95,9 +95,11 @@ Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de 
 
 Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
-U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten.
+U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
 
 Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
+
+U kunt ook virtuele machines met lage prioriteit gebruiken om enkele of alle werk belastingen uit te voeren. Deze Vm's hebben geen gegarandeerde Beschik baarheid en kunnen worden afgebroken tijdens het gebruik. Een afgebroken taak wordt opnieuw gestart, niet hervat.  Vm's met lage prioriteit hebben kortings tarieven vergeleken met normale Vm's, Zie [kosten plannen en beheren](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost).
 
 > [!TIP]
 > Clusters kunnen over het algemeen tot 100 knoop punten worden geschaald zolang u voldoende quota hebt voor het vereiste aantal kernen. Standaard worden clusters ingesteld met communicatie tussen knoop punten die is ingeschakeld tussen de cluster knooppunten voor de ondersteuning van MPI-taken. U kunt uw clusters echter naar duizenden knoop punten schalen door simpelweg [een ondersteunings ticket te verhogen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)en u te vragen uw abonnement of werk ruimte te white list of een specifiek cluster voor het uitschakelen van communicatie tussen knoop punten. 

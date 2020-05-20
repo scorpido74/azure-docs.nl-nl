@@ -2,13 +2,13 @@
 title: Toegangs regels voor Firewall
 description: Configureer regels voor toegang tot een Azure container Registry van achter een firewall, door toegang toe te staan (' white list ') REST API en domein namen van gegevens eindpunten of servicespecifieke IP-adresbereiken.
 ms.topic: article
-ms.date: 05/07/2020
-ms.openlocfilehash: b3560fe769a97c8d3a4e5a3580d42d7c0b3a3f08
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/18/2020
+ms.openlocfilehash: 109764a5697920547230530de41a3e5acfe0117d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978345"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701911"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
 
@@ -18,7 +18,7 @@ Zie [Azure private link configureren voor een Azure-container register](containe
 
 ## <a name="about-registry-endpoints"></a>Over register eindpunten
 
-Om installatie kopieën of andere artefacten te halen of pushen naar een Azure container Registry, moet een client, zoals een docker-daemon, communiceren via HTTPS met twee verschillende eind punten. Voor clients die toegang hebben tot een REGI ster van achter een firewall, moet u toegangs regels voor beide eind punten configureren.
+Om installatie kopieën of andere artefacten te halen of pushen naar een Azure container Registry, moet een client, zoals een docker-daemon, communiceren via HTTPS met twee verschillende eind punten. Voor clients die toegang hebben tot een REGI ster van achter een firewall, moet u toegangs regels voor beide eind punten configureren. Beide eind punten worden bereikt via poort 443.
 
 * **Register-rest API** -verificatie-en register beheer bewerkingen worden verwerkt via het open bare rest API eindpunt van het REGI ster. Dit eind punt is de naam van de aanmeldings server van het REGI ster. Voorbeeld: `myregistry.azurecr.io`
 
@@ -28,10 +28,10 @@ Als uw REGI ster [geo-gerepliceerd](container-registry-geo-replication.md)is, mo
 
 ## <a name="allow-access-to-rest-and-data-endpoints"></a>Toegang tot REST-en gegevens eindpunten toestaan
 
-* **Rest-eind punt** : toegang tot de volledige gekwalificeerde naam van het REGI `<registry-name>.azurecr.io`ster-server, of een gekoppeld IP-adres bereik toestaan
-* **Storage-eind punt (Data)** : Hiermee staat u toegang toe tot alle Azure Blob `*.blob.core.windows.net`Storage-accounts met behulp van het Joker teken of een gekoppeld IP-adres bereik.
+* **Rest-eind punt** : toegang tot de volledige gekwalificeerde naam van het REGI ster-server, `<registry-name>.azurecr.io` of een gekoppeld IP-adres bereik toestaan
+* **Storage-eind punt (Data)** : Hiermee staat u toegang toe tot alle Azure Blob Storage-accounts met behulp van het Joker teken `*.blob.core.windows.net` of een gekoppeld IP-adres bereik.
 > [!NOTE]
-> Azure Container Registry introduceert [speciale gegevens eindpunten](#enable-dedicated-data-endpoints-preview) (preview), zodat u de firewall regels van de client voor uw register opslag nauw keurig kunt bepalen. Schakel eventueel gegevens eindpunten in in alle regio's waar het REGI ster zich bevindt of repliceert met behulp van het formulier `<registry-name>.<region>.data.azurecr.io`.
+> Azure Container Registry zijn [speciale gegevens eindpunten](#enable-dedicated-data-endpoints)geïntroduceerd, zodat u de firewall regels voor de client nauw keurig kunt bepalen voor uw register opslag. Schakel eventueel gegevens eindpunten in in alle regio's waar het REGI ster zich bevindt of repliceert met behulp van het formulier `<registry-name>.<region>.data.azurecr.io` .
 
 ## <a name="allow-access-by-ip-address-range"></a>Toegang toestaan op basis van IP-adres bereik
 
@@ -117,26 +117,45 @@ Gebruik in een virtueel Azure-netwerk netwerk beveiligings regels voor het filte
 
 Maak bijvoorbeeld een regel voor een uitgaande netwerk beveiligings groep met het doel **AzureContainerRegistry** om verkeer naar een Azure container Registry toe te staan. Als u alleen toegang tot de servicetag wilt toestaan in een specifieke regio, geeft u de regio op in de volgende indeling: **AzureContainerRegistry**. [*regio naam*].
 
-## <a name="enable-dedicated-data-endpoints-preview"></a>Dedicated data-eind punten inschakelen (preview-versie)
+## <a name="enable-dedicated-data-endpoints"></a>Dedicated data-eind punten inschakelen 
 
 > [!WARNING]
 > Als u eerder client firewall toegang tot de bestaande `*.blob.core.windows.net` eind punten hebt geconfigureerd, is het overschakelen naar toegewezen gegevens eindpunten van invloed op client connectiviteit, waardoor pull-fouten optreden. Om ervoor te zorgen dat clients consistente toegang hebben, voegt u de regels voor het nieuwe gegevens eindpunt toe aan de firewall regels van de client. Wanneer u klaar bent, kunt u speciale gegevens eindpunten voor uw registers inschakelen met behulp van Azure CLI of andere hulpprogram ma's.
 
-Toegewezen gegevens eindpunten is een optionele functie van de service-laag van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster. Gebruik Azure CLI-versie 2.4.0 of hoger om gegevens eindpunten in te scha kelen met behulp van de Azure CLI. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Toegewezen gegevens eindpunten is een optionele functie van de service-laag van het **Premium** -container register. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten van het REGI ster. 
 
-Met de volgende opdracht [AZ ACR update][az-acr-update] kunt u speciale gegevens eindpunten in een REGI ster *myregistry*. Voor demonstratie doeleinden moet u ervan uitgaan dat het REGI ster wordt gerepliceerd in twee regio's:
+U kunt speciale gegevens eindpunten inschakelen met behulp van de Azure Portal of de Azure CLI. De gegevens eindpunten volgen een regionaal patroon, `<registry-name>.<region>.data.azurecr.io` . In een geo-gerepliceerd REGI ster kunnen eind punten in alle replica regio's worden ingeschakeld door gegevens eindpunten in te scha kelen.
+
+### <a name="portal"></a>Portal
+
+Gegevens eindpunten inschakelen met behulp van de portal:
+
+1. Navigeer naar het container register.
+1. Selecteer **Networking**  >  **open bare netwerk toegang**.
+1. Schakel het selectie vakje **toegewezen gegevens eindpunt inschakelen in** .
+1. Selecteer **Opslaan**.
+
+Het gegevens eindpunt of eind punt wordt weer gegeven in de portal.
+
+![Toegewezen data-eind punten in de portal](./media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Gebruik Azure CLI-versie 2.4.0 of hoger om gegevens eindpunten in te scha kelen met behulp van de Azure CLI. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+
+Met de volgende opdracht [AZ ACR update][az-acr-update] kunt u speciale gegevens eindpunten in een REGI ster *myregistry*. 
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled
 ```
 
-De gegevens eindpunten gebruiken een regionaal patroon `<registry-name>.<region>.data.azurecr.io`,. Als u de gegevens eindpunten wilt weer geven, gebruikt u de opdracht [AZ ACR show-endpoints][az-acr-show-endpoints] :
+Als u de gegevens eindpunten wilt weer geven, gebruikt u de opdracht [AZ ACR show-endpoints][az-acr-show-endpoints] :
 
 ```azurecli
 az acr show-endpoints --name myregistry
 ```
 
-Uitvoer:
+Uitvoer voor demonstratie doeleinden bevat twee regionale eind punten
 
 ```
 {
@@ -165,6 +184,8 @@ Zie de richt lijnen voor het configureren van [MCR-firewall regels](https://gith
 * Meer informatie over [Aanbevolen procedures voor Azure voor netwerk beveiliging](../security/fundamentals/network-best-practices.md)
 
 * Meer informatie over [beveiligings groepen](/azure/virtual-network/security-overview) in een virtueel Azure-netwerk
+
+* Meer informatie over het instellen van een [persoonlijke koppeling](container-registry-private-link.md) voor een container register
 
 * Meer informatie over [toegewezen gegevens eindpunten](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/) voor Azure container Registry
 

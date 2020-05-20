@@ -1,5 +1,5 @@
 ---
-title: Beheerde service-identiteit gebruiken voor het door sturen van gebeurtenissen Azure Event Grid abonnementen
+title: Levering van gebeurtenissen met beheerde service-identiteit
 description: In dit artikel wordt beschreven hoe u de beheerde service-identiteit voor een Azure Event grid-onderwerp inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen.
 services: event-grid
 author: spelluru
@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0e1f46c0bd7ce22cae77db1a524336445fd3f795
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d96f28b98cccada2ac5c77589acc6df1430bb02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691024"
+ms.locfileid: "83700652"
 ---
-# <a name="enable-and-use-managed-service-identity-for-an-event-grid-topic-or-domain"></a>De beheerde service-identiteit voor een event grid-onderwerp of-domein inschakelen en gebruiken 
+# <a name="event-delivery-with-managed-identity"></a>Levering van gebeurtenissen met beheerde identiteit
 In dit artikel wordt beschreven hoe u de [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een event grid-onderwerp of-domein inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
 
 Hier volgen de stappen die in dit artikel worden besproken:

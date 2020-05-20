@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 2cf8ff446fe3441fc039ef3c2afef6308224666f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235248"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701215"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van Oracle naar Azure DB voor PostgreSQL-één server
 
@@ -64,7 +64,7 @@ Ook lege BLOB-CLOB-kolommen worden toegewezen aan NULL op het doel.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
-- Klanten moeten SYSDBA gebruiken om verbinding te maken met Oracle.
+- De gebruiker moet een DBA-bevoegdheid hebben op de Oracle-server.
 - Gegevens wijzigingen die voortkomen uit partitie-sub-partitie bewerkingen (toevoegen, NEERZETten, EXCHANGE en TRUNCATe) worden niet gemigreerd en kunnen de volgende fouten veroorzaken:
   - Voor het toevoegen van bewerkingen, kunnen updates en verwijderingen op de toegevoegde gegevens een waarschuwing ' 0 rijen die worden beïnvloed ' retour neren.
   - Voor DROP-en TRUNCATe-bewerkingen kunnen nieuwe toevoegingen leiden tot fouten met ' duplicaten '.

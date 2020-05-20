@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994356"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700949"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -32,8 +32,8 @@ Voor delen van het publiceren naar de commerciële Marketplace:
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **Consulting Service**.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Consulting Service**.
 
     ![Illustreert het navigatie menu.](./media/new-offer-consulting-service.png)
 
@@ -45,7 +45,7 @@ Voor delen van het publiceren naar de commerciële Marketplace:
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -65,7 +65,7 @@ Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, _mo
 
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
@@ -108,9 +108,9 @@ Selecteer **concept opslaan** voordat u doorgaat.
 Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeven. Dit omvat de naam van de aanbieding, beschrijving, installatie kopieën, enzovoort. Zorg ervoor dat u het beleid volgt dat wordt beschreven op de [pagina beleid voor commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) instantie tijdens het configureren van deze aanbieding.
 
 > [!NOTE]
-> De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de &quot;aanbieding met de woord groep begint, is deze toepassing alleen beschikbaar in [niet-Engelse taal]. &quot; Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
+> De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding met de woord groep begint, &quot; is deze toepassing alleen beschikbaar in [niet-Engelse taal]. &quot; Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -126,32 +126,11 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Neem een of meer van de volgende opties op in uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- De waarde en belangrijkste voor delen van uw aanbieding bieden
-- Categorie-of branche koppelingen, of beide
-- Aankoop kansen in de app
-- Vereiste informatie
-
-Hier volgen enkele tips voor het schrijven van uw beschrijving:
-
-- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
-  - De beschrijving van de aanbieding.
-  - Het type gebruiker dat voor deel is van de aanbieding.
-  - De klant heeft of de adressen van de aanbieding.
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
-- Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
-
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
-
-![De RTF-editor gebruiken](./media/rich-text-editor.png)
-
-| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
-| --- | --- | --- |
-| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="keywords"></a>Trefwoorden
 
@@ -174,7 +153,7 @@ Voeg Maxi maal drie (maar ten minste één) PDF-documenten voor uw aanbieding to
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 

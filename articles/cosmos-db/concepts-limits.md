@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657384"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697560"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -188,7 +188,7 @@ De volgende tabel bevat de limieten voor de gratis proef versie [Azure Cosmos DB
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Duur van de proef versie | 30 dagen (kan een wille keurig aantal keer worden vernieuwd) |
+| Duur van de proef versie | 30 dagen (na verloop van tijd kan een nieuwe proef versie worden aangevraagd) <br> Na verloop van tijd wordt de opgeslagen informatie verwijderd. |
 | Maximum aantal containers per abonnement (SQL, Gremlin, Table-API) | 1 |
 | Maximum aantal containers per abonnement (MongoDB-API) | 3 |
 | Maximale door Voer per container | 5000 |

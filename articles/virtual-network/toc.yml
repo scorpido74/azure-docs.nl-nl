@@ -88,6 +88,8 @@
           href: ipv6-overview.md
         - name: Voorvoegsel van openbaar IPv6-adres
           href: ipv6-public-ip-address-prefix.md
+        - name: Routeringsvoorkeur
+          href: routing-preference-overview.md
     - name: Beveiliging
       items:
         - name: Netwerkbeveiligingsgroepen
@@ -222,6 +224,24 @@
               href: manage-public-ip-address-prefix.md
             - name: IP-adres van NIC's toevoegen of verwijderen
               href: virtual-network-network-interface-addresses.md
+            - name: Routeringsvoorkeur
+              items:
+                - name: Openbaar IP-adres maken
+                  items:
+                    - name: Azure Portal
+                      href: routing-preference-portal.md
+                    - name: Azure PowerShell
+                      href: routing-preference-powershell.md
+                    - name: Azure CLI
+                      href: routing-preference-cli.md
+                - name: VM configureren met internetrouteringsvoorkeur
+                  items:
+                    - name: Azure Portal
+                      href: tutorial-routing-preference-virtual-machine-portal.md
+                    - name: Azure PowerShell
+                      href: configure-routing-preference-virtual-machine-powershell.md
+                    - name: Azure CLI
+                      href: configure-routing-preference-virtual-machine-cli.md
     - name: Beveiliging
       items:
         - name: Netwerkverkeer filteren

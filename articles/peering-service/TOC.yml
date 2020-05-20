@@ -4,6 +4,14 @@
   items:
     - name: Info over Peering Service
       href: about.md
+- name: Zelfstudies
+  items:
+    - name: Een Peering Service-verbinding registreren
+      href: azure-portal.md
+    - name: Een Peering Service-verbinding maken
+      href: create-connection.md
+    - name: Peering Service-verbindingstelemetrie meten
+      href: measure-connection-telemetry.md
 - name: Concepten
   items:
     - name: Locaties en partners
@@ -18,21 +26,17 @@
   items:
     - name: Peering Service registreren
       items:
-        - name: Azure-portal
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: Telemetrie van verbinding meten
-      href: measure-connection-telemetry.md
 - name: Verwijzingen
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.peering
     - name: Azure CLI
       href: /cli/azure/ext/peering/peering
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
