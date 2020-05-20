@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7600eae27daf11c4fd02718abc25cef9006179e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683629"
+ms.locfileid: "83698891"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
 
@@ -27,7 +27,7 @@ Als u uw volledige data warehouse-oplossing wilt maken met behulp van de Synapse
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst maakt verbinding met de hele organisatie via een netwerk van ingevoerd gevirtualiseerde BI-instanties op het hoogste niveau van een gedeelde, gemeen schappelijke analytische infra structuur|[Product pagina](https://www.birst.com/)<br> |
 | ![ClearStory-gegevens](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-gegevens (continue bedrijfs inzichten)**<br>ClearStory-gegevens maken snelle cyclus analyse mogelijk voor verschillende gegevens die zijn opgeslagen in Synapse SQL-groep. Het geïntegreerde op Spark gebaseerde platform en de analytische toepassing snelheid gegevens toegang en harmonisatie van verschillende gegevens sets. Ze bieden snelle, samenwerkings exploratie die zakelijke gebruikers ondersteunt om zichzelf te laten vertrouwen in het verkrijgen van snelle inzichten. |[Product pagina](https://www.clearstorydata.com/product/continuous-insights/)<br> |
-| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas gegevens visualisatie is een toonaangevende, wereld wijde provider van Business Intelligence en gegevens visualisatie software.  Dundas-Dash boards,-rapporten en visuele gegevens analyse bieden naadloze integratie in zakelijke toepassingen, waardoor betere beslissingen en snelle inzichten worden geboden.|[Product pagina](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/)<br> |
+| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas gegevens visualisatie is een toonaangevende, wereld wijde provider van Business Intelligence en gegevens visualisatie software.  Dundas-Dash boards,-rapporten en visuele gegevens analyse bieden naadloze integratie in zakelijke toepassingen, waardoor betere beslissingen en snelle inzichten worden geboden.|[Product pagina](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos Analytics**<br>Cognos Analytics bevat slimme self-service mogelijkheden waarmee u eenvoudig, duidelijk en eenvoudig kunt gebruiken, ongeacht of u een ervaren bedrijfs analist bent die de Kinks in een enorme toeleverings keten bekijkt of een marketing bedrijf dat één enkele campagne optimaliseert. Cognos Analytics maakt gebruik van AI en andere intelligente mogelijkheden om het zware werk te doen om gegevens sneller te verkennen en het voor gebruikers gemakkelijker te maken om de antwoorden te krijgen die ze nodig hebben|[Product pagina](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Informatie opbouwers](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Informatie bouwers (webfocus)**<br>Met de webfocus business intelligence kunnen bedrijven gegevens strategischer in en buiten de onderneming gebruiken. Hiermee kunnen gebruikers en beheerders snel Dash boards maken die inhoud uit meerdere gegevens bronnen en-indelingen combi neren. Het biedt ook robuuste beveiliging en uitgebreid beheer, waarmee u eenvoudig en veilig delen van BI-en analyse-inhoud kunt maken|[Product pagina](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
 ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>JReport is een Inge sloten BI-oplossing voor de onderneming. De oplossing biedt een groot aantal mogelijkheden, zoals het maken van rapporten, Dash boards en gegevens analyse op Cloud-, big data-en transactionele gegevens bronnen. Door gegevens te visualiseren, kunt u uw eigen rapportage en gegevens detectie uitvoeren voor flexibele besluit vorming. |[Product pagina](https://www.jinfonet.com/product/jreport-designer)<br> |

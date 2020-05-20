@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839144"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701135"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
 
@@ -23,8 +23,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **Power bi service-app**.
+2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Power bi service-app**.
 
    ![Illustreert het navigatie menu.](./media/new-offer-pbi-app.png)
 
@@ -39,7 +39,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -70,7 +70,7 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
 
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
@@ -109,17 +109,17 @@ Selecteer eventueel Maxi maal twee branches en twee verticalen onder elke branch
 | * Automobiel | * Automobiel |
 | Landbouw | * Overig-niet-gesegmenteerd |
 | Distributie | * Groot handel<br>Pakje en pakket verzending |
-| Education | *Hoger onderwijs<br> * Primair en secundair onderwijs/K-12<br>* Bibliotheken en musea |
-| Financiële dienstverlening | *Bank-en kapitaal<br> markten* Polis |
-| Overheid | *Verdediging en intelligentie (wordt aangeduid met de naam National en open bare<br> veiligheid)* Open bare veiligheid en rechtvaardigheid<br>* Burger overheid |
-| Gezondheids zorg (gebruikt voor de status) | *Status betaler<br> * Health-provider<br>* Farmaceutische producten |
-| Productie en bronnen (gebruikt om productie te worden genoemd) | *Chemische en Agrochemical<br> * Discrete productie<br>* Energie |
-| Handels-en consumenten artikelen (gebruikt voor de verkoop van Retail) | *Consumenten goederen<br> * Handelaren |
-| * Media en communicatie (gebruikt voor het noemen van media en entertainment) | *Media en entertainment<br> * Telecom |
-| Professionele services | *Juridisch<br> * Partner Professional-Services |
+| Onderwijs | *Hoger onderwijs <br> * Primair en secundair onderwijs/K-12<br>* Bibliotheken en musea |
+| Financiële diensten | *Bank-en kapitaal <br> markten* Polis |
+| Overheid | *Verdediging en intelligentie (wordt aangeduid met de naam National en open bare <br> veiligheid)* Open bare veiligheid en rechtvaardigheid<br>* Burger overheid |
+| Gezondheids zorg (gebruikt voor de status) | *Status betaler <br> * Health-provider<br>* Farmaceutische producten |
+| Productie en bronnen (gebruikt om productie te worden genoemd) | *Chemische en Agrochemical <br> * Discrete productie<br>* Energie |
+| Handels-en consumenten artikelen (gebruikt voor de verkoop van Retail) | *Consumenten goederen <br> * Handelaren |
+| * Media en communicatie (gebruikt voor het noemen van media en entertainment) | *Media en entertainment <br> * Telecom |
+| Professionele services | *Juridisch <br> * Partner Professional-Services |
 | * Architectuur en constructie (wordt gebruikt als architectuur techniek) | * Overig-niet-gesegmenteerd |
-| * Horeca en reizen | *Hotels en vrije<br> * tijd Reizen en Trans Port<br>* Restaurants en voedsel Services |
-| * Andere branches uit de open bare sector | *Bosbouw en visserij<br> * Profit organisaties |
+| * Horeca en reizen | *Hotels en vrije <br> * tijd Reizen en Trans Port<br>* Restaurants en voedsel Services |
+| * Andere branches uit de open bare sector | *Bosbouw en visserij <br> * Profit organisaties |
 | * Onroerend goed | * Overig-niet-gesegmenteerd |
 
 ### <a name="legal"></a>Juridisch
@@ -145,7 +145,7 @@ Marketplace-gegevens (zoals aanbiedings naam, beschrijving en installatie kopie�
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -161,32 +161,11 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Neem een of meer van de volgende opties op in uw beschrijving:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- De waarde en belangrijkste voor delen van uw aanbieding bieden.
-- Categorie-of branche koppelingen, of beide.
-- Aankoop kansen in de app.
-- Alle vereiste informatie.
-
-Hier volgen enkele tips voor het schrijven van uw beschrijving:
-
-- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
-  - De beschrijving van de aanbieding.
-  - Het type gebruiker dat voor deel is van de aanbieding.
-  - De klant heeft of de adressen van de aanbieding.
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
-- Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
-
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
-
-![De RTF-editor gebruiken](./media/rich-text-editor.png)
-
-| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
-| --- | --- | --- |
-| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>Tref woorden zoeken
 
@@ -223,7 +202,7 @@ Geef ten minste één en Maxi maal drie gerelateerde marketing documenten op in 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!NOTE]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 

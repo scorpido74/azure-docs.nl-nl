@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3852644e888fd4a7cef1d84cc4008d106a8c7910
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 509d4424e26873d8e8da8fac96eb7e380b0fa262
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684343"
+ms.locfileid: "83700612"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -80,7 +80,7 @@ Resource `Microsoft.Network/routeTables` ondersteunt bijvoorbeeld tags en locati
 
 U wordt aangeraden de **modus** `all` in de meeste gevallen in te stellen. Alle beleids definities die via de portal zijn gemaakt, maken gebruik van de `all` modus. Als u Power shell of Azure CLI gebruikt, kunt u de para meter **mode** hand matig opgeven. Als de beleids definitie geen **modus** waarde bevat, wordt standaard `all` in azure PowerShell en naar `null` in azure cli. Een `null` modus is dezelfde als die gebruikt `indexed` om achterwaartse compatibiliteit te ondersteunen.
 
-`indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Beleids regels die de locatie of tags voor een resource groep of-abonnement afdwingen, moeten de **modus** instellen op `all` en specifiek gericht op het `Microsoft.Resources/subscriptions/resourceGroups` of- `Microsoft.Resources/subscriptions` type. Zie Labels voor een [resource groep afdwingen](../samples/enforce-tag-rg.md)voor een voor beeld. Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
+`indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Met beleids definities die locatie of tags voor een resource groep of-abonnement afdwingen, moet u de **modus** instellen op `all` en het doel `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` opgeven. Zie voor een voor beeld [patroon: Labels-voor beeld #1](../samples/pattern-tags.md). Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Resource provider modi (preview-versie)
 

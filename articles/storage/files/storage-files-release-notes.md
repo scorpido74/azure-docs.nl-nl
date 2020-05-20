@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 97599d8113d20511882ec38928b221706e7f37b9
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0b8110e70ab681c0d9a4ad720f76c3f5a295fff9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682416"
+ms.locfileid: "83701198"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -47,6 +47,9 @@ De volgende release opmerkingen zijn voor versie 10.0.2.0 van de Azure File Sync
 
 Probleem opgelost in deze release:  
 - Storage Sync agent (FileSyncSvc) wordt regel matig vastlopen nadat de Azure File Sync V10 toevoegen-agent is geïnstalleerd.
+
+> [!Note]  
+>Deze release werd niet geflighted naar servers die zijn geconfigureerd om automatisch bij te werken wanneer een nieuwe versie beschikbaar wordt. Als u deze update wilt installeren, gebruikt u Microsoft Update of Microsoft Update catalogus (Zie [KB4522412](https://support.microsoft.com/help/4522412) voor installatie-instructies).
 
 ## <a name="agent-version-10000"></a>Agent versie 10.0.0.0
 De volgende release opmerkingen zijn voor versie 10.0.0.0 van de Azure File Sync-agent (uitgebracht op 9 april 2020).

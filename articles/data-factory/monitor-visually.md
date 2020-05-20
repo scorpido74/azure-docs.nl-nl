@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680603"
+ms.locfileid: "83699600"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory visueel bewaken
 
@@ -142,7 +142,7 @@ Als u op het pictogram klikt, wordt een verbruiks rapport geopend met de resourc
 
 ![Verbruik bewaken](media/monitor-visually/monitor-consumption-2.png)
 
-U kunt deze waarden koppelen aan de pipeline-uitvoering van [Azure prijzen calcula. Hat. Zie [prijs](pricing-concepts.md)informatie voor meer informatie over Azure Data Factory prijzen.
+U kunt deze waarden koppelen aan de [Azure-prijs calculator]. ( https://azure.microsoft.com/pricing/details/data-factory/) voor het schatten van de kosten van de pijplijn uitvoering. Zie [prijs](pricing-concepts.md)informatie voor meer informatie over Azure Data Factory prijzen.
 
 > [!NOTE]
 > Deze waarden die worden geretourneerd door de prijs calculator is een schatting. Dit geeft niet het exacte bedrag weer dat wordt gefactureerd door Azure Data Factory 

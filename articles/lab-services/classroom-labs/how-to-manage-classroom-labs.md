@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c2c02e47059d73e29da705fc9075721e080e636
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588170"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701791"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -29,18 +29,18 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 ## <a name="create-a-classroom-lab"></a>Een leslokaallab maken
 
 1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
-2. Selecteer **Aanmelden** en voer uw referenties in. Selecteer of typ een **gebruikers-id** die lid is van de rol **Lab Creator** in het lab-account en voer het wacht woord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
-3. Selecteer **Nieuw Lab**. 
+1. Selecteer **Aanmelden** en voer uw referenties in. Selecteer of typ een **gebruikers-id** die lid is van de rol **Lab Creator** in het lab-account en voer het wacht woord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
+1. Selecteer **Nieuw Lab**. 
     
     ![Een leslokaallab maken](../media/tutorial-setup-classroom-lab/new-lab-button.png)
-3. Voer in het venster **Nieuw lab** de volgende acties uit: 
+1. Voer in het venster **Nieuw lab** de volgende acties uit: 
     1. Geef een **naam** voor uw lab op. 
-    2. Selecteer de **grootte van de virtuele machines** die u nodig hebt voor de-klasse. Zie de sectie [VM-grootten](#vm-sizes) voor een lijst met beschik bare grootten. 
-    3. Selecteer de **installatie kopie van de virtuele machine** die u wilt gebruiken voor het leslokaal Lab. Als u een Linux-installatie kopie selecteert, ziet u een optie om verbinding met extern bureau blad in te scha kelen. Zie [verbinding met extern bureau blad inschakelen voor Linux](how-to-enable-remote-desktop-linux.md)voor meer informatie.
+    1. Selecteer de **grootte van de virtuele machines** die u nodig hebt voor de-klasse. Zie de sectie [VM-grootten](#vm-sizes) voor een lijst met beschik bare grootten. 
+    1. Selecteer de **installatie kopie van de virtuele machine** die u wilt gebruiken voor het leslokaal Lab. Als u een Linux-installatie kopie selecteert, ziet u een optie om **verbinding met extern bureau blad in te scha kelen**. Zie [verbinding met extern bureau blad inschakelen voor Linux](how-to-enable-remote-desktop-linux.md)voor meer informatie.
 
         Als u zich hebt aangemeld met de referenties van de Lab-account eigenaar, ziet u een optie om meer installatie kopieën voor het lab in te scha kelen. Zie [installatie kopieën inschakelen op het moment dat het lab wordt gemaakt](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)voor meer informatie.
-    4. Bekijk de **totale prijs per uur** die op de pagina wordt weer gegeven. 
-    6. Selecteer **Opslaan**.
+    1. Bekijk de **totale prijs per uur** die op de pagina wordt weer gegeven. 
+    1. Selecteer **Opslaan**.
 
         ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -70,24 +70,24 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     ![Status van het maken van de sjabloon-VM](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. Voer de volgende stappen uit op de pagina **sjabloon** : deze stappen zijn **optioneel** voor de zelf studie.
 
-    2. De sjabloon-VM verbinden door **Verbinding maken** te selecteren. Als het een Linux-sjabloon-VM is, kiest u of u verbinding wilt maken via SSH of RDP (als RDP is ingeschakeld).
+    1. De sjabloon-VM verbinden door **Verbinding maken** te selecteren. Als het een virtuele Linux-sjabloon is, kiest u of u verbinding wilt maken via SSH of een GUI extern bureau blad.  Aanvullende installatie is vereist voor het gebruik van een GUI extern bureau blad. Zie [grafische extern bureau blad inschakelen voor virtuele Linux-machines](how-to-use-remote-desktop-linux-student.md) voor meer informatie.
     1. Selecteer **wacht woord opnieuw instellen** om het wacht woord voor de virtuele machine opnieuw in te stellen. 
     1. Software installeren en configureren op uw sjabloon-VM. 
     1. **Stop** de virtuele machine.  
     1. Een **Beschrijving** voor de sjabloon invoeren
-10. Selecteer op de pagina **sjabloon** de optie **publiceren** op de werk balk. 
+9.  Selecteer op de pagina **sjabloon** de optie **publiceren** op de werk balk. 
 
     ![De knop sjabloon publiceren](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Zodra u de sjabloon hebt gepubliceerd, kan dit niet ongedaan worden gemaakt. 
-8. Op de pagina **publicatie sjabloon** voert u het aantal virtuele machines in dat u wilt maken in het lab en selecteert u vervolgens **publiceren**. 
+10. Op de pagina **publicatie sjabloon** voert u het aantal virtuele machines in dat u wilt maken in het lab en selecteert u vervolgens **publiceren**. 
 
     ![Publicatie sjabloon-aantal Vm's](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. U ziet de **status van het publiceren van** de sjabloon op de pagina. Dit proces duurt maximaal een uur. 
 
     ![Sjabloon publiceren - voortgang](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Ga naar de pagina **pool van virtuele machines** door virtuele machines te selecteren in het linkermenu of door de tegel virtuele machines te selecteren. Controleer of u virtuele machines ziet met de status **Niet-toegewezen**. Deze virtuele machines zijn nog niet toegewezen aan studenten. Deze horen de status **Gestopt** te hebben. Op deze pagina kunt u een student-VM starten, verbinding maken met de virtuele machine, de virtuele machine stoppen en de virtuele machine verwijderen. U kunt de virtuele machines zelf starten vanaf deze pagina of ze laten starten door de studenten. 
+12. Ga naar de pagina **pool van virtuele machines** door virtuele machines te selecteren in het linkermenu of door de tegel virtuele machines te selecteren. Controleer of u virtuele machines ziet met de status **Niet-toegewezen**. Deze virtuele machines zijn nog niet toegewezen aan studenten. Deze horen de status **Gestopt** te hebben. Op deze pagina kunt u een student-VM starten, verbinding maken met de virtuele machine, de virtuele machine stoppen en de virtuele machine verwijderen. U kunt de virtuele machines zelf starten vanaf deze pagina of ze laten starten door de studenten. 
 
     ![Virtuele machines met de status Gestopt](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
