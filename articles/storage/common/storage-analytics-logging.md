@@ -5,17 +5,18 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring
+ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204063"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675917"
 ---
-# <a name="azure-storage-analytics-logging"></a>Logboekregistratie van Azure Opslaganalyse
+# <a name="azure-storage-analytics-logging"></a>Azure Storage-analyselogboeken
 
 Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
@@ -24,7 +25,7 @@ Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte a
  Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het BLOB-eind punt, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op het Blob service.
 
 > [!NOTE]
->  Logboekregistratie voor opslaganalyse is momenteel alleen beschikbaar voor de blob-, wachtrij- en tabelservices. Premium-opslagaccounts worden echter niet ondersteund.
+>  Logboekregistratie voor opslaganalyse is momenteel alleen beschikbaar voor de blob-, wachtrij- en tabelservices. Opslaganalyse-logboek registratie is ook beschikbaar voor Premium-performance [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) -accounts. Het is echter niet beschikbaar voor algemeen gebruik v2-accounts met Premium-prestaties.
 
 ## <a name="requests-logged-in-logging"></a>Aanvragen vastgelegd in logboek registratie
 ### <a name="logging-authenticated-requests"></a>Geverifieerde aanvragen registreren
@@ -51,10 +52,10 @@ Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte a
 
 ## <a name="how-logs-are-stored"></a>Hoe logboeken worden opgeslagen
 
-Alle logboeken worden opgeslagen in blok-blobs in een `$logs`container met de naam, die automatisch wordt gemaakt wanneer Opslaganalyse is ingeschakeld voor een opslag account. De `$logs` container bevindt zich in de BLOB-naam ruimte van het opslag account `http://<accountname>.blob.core.windows.net/$logs`, bijvoorbeeld:. Deze container kan niet worden verwijderd als Opslaganalyse is ingeschakeld, maar de inhoud ervan kan worden verwijderd. Als u het hulp programma voor het bladeren door opslag gebruikt om rechtstreeks naar de container te navigeren, worden alle blobs weer gegeven die uw logboek gegevens bevatten.
+Alle logboeken worden opgeslagen in blok-blobs in een container met de naam `$logs` , die automatisch wordt gemaakt wanneer Opslaganalyse is ingeschakeld voor een opslag account. De `$logs` container bevindt zich in de BLOB-naam ruimte van het opslag account, bijvoorbeeld: `http://<accountname>.blob.core.windows.net/$logs` . Deze container kan niet worden verwijderd als Opslaganalyse is ingeschakeld, maar de inhoud ervan kan worden verwijderd. Als u het hulp programma voor het bladeren door opslag gebruikt om rechtstreeks naar de container te navigeren, worden alle blobs weer gegeven die uw logboek gegevens bevatten.
 
 > [!NOTE]
->  De `$logs` container wordt niet weer gegeven wanneer een container vermelding wordt uitgevoerd, zoals de bewerking lijst containers. Deze moet rechtstreeks worden geopend. U kunt bijvoorbeeld de bewerking lijst-blobs gebruiken om toegang te krijgen tot de blobs `$logs` in de container.
+>  De `$logs` container wordt niet weer gegeven wanneer een container vermelding wordt uitgevoerd, zoals de bewerking lijst containers. Deze moet rechtstreeks worden geopend. U kunt bijvoorbeeld de bewerking lijst-blobs gebruiken om toegang te krijgen tot de blobs in de `$logs` container.
 
 Wanneer aanvragen worden geregistreerd, worden de tussenliggende resultaten door Opslaganalyse geüpload als blokken. Deze blokken worden regel matig door Opslaganalyse doorgevoerd en beschikbaar gemaakt als een blob. Het kan tot een uur duren voordat de logboek gegevens worden weer gegeven in de blobs in de container **$logs** , omdat de frequentie waarmee de logboek schrijvers worden leeg gemaakt door de opslag service. Er kunnen dubbele records bestaan voor logboeken die in hetzelfde uur zijn gemaakt. U kunt bepalen of een record een duplicaat is door de **aanvraag** -en **bewerkings** nummer te controleren.
 
@@ -88,13 +89,13 @@ Zie het [inventariseren van BLOB-resources](https://msdn.microsoft.com/library/a
 
 |Kenmerk|Beschrijving|
 |---------------|-----------------|
-|`<service-name>`|De naam van de opslag service. Bijvoorbeeld: `blob`, `table`, of`queue`|
+|`<service-name>`|De naam van de opslag service. Bijvoorbeeld: `blob` , `table` , of`queue`|
 |`YYYY`|Het jaar van vier cijfers voor het logboek. Bijvoorbeeld: `2011`|
 |`MM`|De maand met twee cijfers voor het logboek. Bijvoorbeeld: `07`|
 |`DD`|De twee cijfer dagen voor het logboek. Bijvoorbeeld: `31`|
 |`hh`|Het twee cijferige uur waarmee het begin uur voor de logboeken wordt aangegeven, in UTC-notatie van 24 uur. Bijvoorbeeld: `18`|
-|`mm`|Het nummer van twee cijfers dat de begin minuut voor de logboeken aangeeft. **Opmerking:**  Deze waarde wordt niet ondersteund in de huidige versie van Opslaganalyse en de waarde ervan is altijd `00`.|
-|`<counter>`|Een teller op basis van nul met zes cijfers waarmee het aantal logboek-blobs wordt aangegeven dat is gegenereerd voor de opslag service in een uur tijds periode. Deze teller begint bij `000000`. Bijvoorbeeld: `000001`|
+|`mm`|Het nummer van twee cijfers dat de begin minuut voor de logboeken aangeeft. **Opmerking:**  Deze waarde wordt niet ondersteund in de huidige versie van Opslaganalyse en de waarde ervan is altijd `00` .|
+|`<counter>`|Een teller op basis van nul met zes cijfers waarmee het aantal logboek-blobs wordt aangegeven dat is gegenereerd voor de opslag service in een uur tijds periode. Deze teller begint bij `000000` . Bijvoorbeeld: `000001`|
 
  Hier volgt een volledige naam voor een voor beeld van een logboek waarin de bovenstaande voor beelden worden gecombineerd:
 
@@ -113,8 +114,8 @@ Zie het [inventariseren van BLOB-resources](https://msdn.microsoft.com/library/a
 |Kenmerk|Beschrijving|
 |---------------|-----------------|
 |`LogType`|Hierin wordt beschreven of het logboek informatie bevat die betrekking heeft op lees-, schrijf-of verwijder bewerkingen. Deze waarde kan één type of een combi natie van alle drie zijn, gescheiden door komma's.<br /><br /> Voor beeld 1:`write`<br /><br /> Voor beeld 2:`read,write`<br /><br /> Voor beeld 3:`read,write,delete`|
-|`StartTime`|De vroegste tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:21:46Z`|
-|`EndTime`|De meest recente tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:22:09Z`|
+|`StartTime`|De vroegste tijd van een vermelding in het logboek, in de vorm van `YYYY-MM-DDThh:mm:ssZ` . Bijvoorbeeld: `2011-07-31T18:21:46Z`|
+|`EndTime`|De meest recente tijd van een vermelding in het logboek, in de vorm van `YYYY-MM-DDThh:mm:ssZ` . Bijvoorbeeld: `2011-07-31T18:22:09Z`|
 |`LogVersion`|De versie van de logboek indeling.|
 
  De volgende lijst geeft een overzicht van de volledige voor beelden van meta gegevens aan de hand

@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cf6c82b330a2672fdde39c3acf156a74cb57e34
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414274"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659977"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Quick Start: Fivetran met Data Warehouse 
 
@@ -82,5 +82,5 @@ Als u vanuit uw Fivetran-account verbinding wilt maken met uw data warehouse, vo
 * Host (uw server naam).
 * Importeer.
 * Enddatabase.
-* Gebruiker (de gebruikers naam moet **\@fivetran server_name** waarbij *server_name* deel uitmaakt van de URI van uw Azure-host: ** _\_server naam_. database.Windows.net**).
+* Gebruiker (de gebruikers naam moet **fivetran \@ _server_name_ ** waarbij *server_name* deel uitmaakt van de URI van uw Azure-host: ** _server \_ naam_. database.Windows.net**).
 * Wacht woord.

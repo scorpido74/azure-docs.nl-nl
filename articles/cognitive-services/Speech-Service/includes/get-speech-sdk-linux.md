@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399992"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673047"
 ---
 :::row:::
     :::column span="3":::
         De Speech SDK ondersteunt alleen **Ubuntu 16.04/18.04**, **Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**en **CentOS 7/8** op de volgende doel architecturen wanneer deze worden gebruikt in combi natie met Linux:
-        - x64
     :::column-end:::
     :::column:::
         <br>
@@ -24,19 +23,21 @@ ms.locfileid: "81399992"
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> Bij het richten op Linux-ARM64 en het gebruik van C#-het .NET Core 3. x (DotNet-SDK-3. x-pakket) is vereist. Als u bent gericht op ARM32 of ARM64, wordt python niet ondersteund.
+- x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) en ARM64 (Debian/Ubuntu) voor C++-ontwikkeling
+- x64, ARM32 (Debian/Ubuntu) en ARM64 (Debian/Ubuntu) voor Java
+- x64, ARM32 (Debian/Ubuntu) en ARM64 (Debian/Ubuntu) voor .NET core
+- x64 voor python
 
-> [!NOTE]
-> De x86-architecturen van Ubuntu 16,04, Ubuntu 18,04 en Debian 9 ondersteunen alleen C++-ontwikkeling met de spraak-SDK.
+> [!IMPORTANT]
+> Voor C# op Linux ARM64 is het .NET Core 3. x (DotNet-SDK-3. x-pakket) vereist.
 
 ### <a name="system-requirements"></a>Systeemvereisten
 
-Voor een systeem eigen toepassing is de spraak-SDK afhankelijk `libMicrosoft.CognitiveServices.Speech.core.so`van. Zorg ervoor dat de doel architectuur (x86, x64) overeenkomt met de toepassing. Afhankelijk van de Linux-versie zijn mogelijk extra afhankelijkheden vereist.
+Voor een systeem eigen toepassing is de spraak-SDK afhankelijk van `libMicrosoft.CognitiveServices.Speech.core.so` . Zorg ervoor dat de doel architectuur (x86, x64) overeenkomt met de toepassing. Afhankelijk van de Linux-versie zijn mogelijk extra afhankelijkheden vereist.
 
-- De gedeelde bibliotheken van de GNU C-bibliotheek (met inbegrip van de programmeer `libpthreads`bibliotheek POSIX-threads)
-- De OpenSSL-bibliotheek`libssl.so.1.0.0` ( `libssl.so.1.0.2`of)
-- De gedeelde bibliotheek voor ALSA-toepassingen`libasound.so.2`()
+- De gedeelde bibliotheken van de GNU C-bibliotheek (met inbegrip van de programmeer bibliotheek POSIX-threads `libpthreads` )
+- De OpenSSL-bibliotheek ( `libssl.so.1.0.0` of `libssl.so.1.0.2` )
+- De gedeelde bibliotheek voor ALSA-toepassingen ( `libasound.so.2` )
 
 # <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
 
@@ -60,10 +61,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> Volg de instructies voor het [configureren van RHEL/CentOS 7 voor Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
-
-> [!TIP]
-> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](../how-to-configure-openssl-linux.md).
+> - Volg op RHEL/CentOS 7 de instructies voor het [configureren van RHEL/CentOS 7 voor Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ---
 

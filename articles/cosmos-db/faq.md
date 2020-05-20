@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608044"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675934"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -70,7 +70,7 @@ U kunt ook de [Azure Cosmos DB-emulator](local-emulator.md) gebruiken om uw toep
 
 Als u een technische vraag wilt stellen, kunt u een bericht plaatsen op een van deze twee vraag-en antwoord forums:
 
-* [MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [MSDN-forum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 Als u nieuwe functies wilt aanvragen, maakt u een nieuwe aanvraag voor [gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -173,7 +173,7 @@ De SQL-query taal die wordt ondersteund door SQL-API-accounts is een uitgebreide
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Ondersteunt de SQL-API SQL-aggregatie functies?
 
-De SQL-API ondersteunt aggregatie met lage latentie op elke schaal via statistische `COUNT`functies `MIN`, `MAX`, `AVG`, en `SUM` via de SQL-grammatica. Zie [statistische functies](sql-query-aggregates.md)voor meer informatie.
+De SQL-API ondersteunt aggregatie met lage latentie op elke schaal via statistische functies `COUNT` , `MIN` ,, `MAX` `AVG` en `SUM` via de SQL-grammatica. Zie [statistische functies](sql-query-aggregates.md)voor meer informatie.
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hoe biedt de SQL-API gelijktijdigheid?
 

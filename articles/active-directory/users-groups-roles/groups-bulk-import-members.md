@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8902c3147bbe142fc58d4e2c3fa83601c8ccbba3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203511"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679340"
 ---
-# <a name="bulk-import-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs importeren in Azure Active Directory
+# <a name="bulk-add-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs toevoegen in Azure Active Directory
 
 Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden toevoegen aan een groep met behulp van een bestand met door komma's gescheiden waarden (CSV) voor het bulk importeren van groeps leden.
 
@@ -35,7 +35,7 @@ Down load en vul de CSV-sjabloon bulksgewijs uploaden in om Azure AD-groeps lede
 De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
 - **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
-- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie. Voor wijzigingen in groepslid maatschappen hebt u de mogelijkheid om te gebruiken id: lid object-ID of user principal name.
+- **Kolom koppen**: de indeling van de kolom koppen is de &lt; *item naam* &gt; [propertyname] &lt; *vereist of leeg* &gt; . Bijvoorbeeld `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie. Voor wijzigingen in groepslid maatschappen hebt u de mogelijkheid om te gebruiken id: lid object-ID of user principal name.
 - **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
 ### <a name="additional-guidance"></a>Aanvullende richtlijnen
@@ -48,7 +48,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-bulk-import-group-members"></a>Groeps leden bulksgewijs importeren
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden van groepen waarvan ze eigenaar zijn, bulksgewijs importeren.
-1. Selecteer **groepen** > **alle groepen**in azure AD.
+1. Selecteer **groepen**  >  **alle groepen**in azure AD.
 1. Open de groep waaraan u leden wilt toevoegen en selecteer vervolgens **leden**.
 1. Selecteer **leden importeren**op de pagina **leden** .
 1. Selecteer op de pagina **groeps leden Bulk Import** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.
@@ -57,7 +57,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
 1. Open het CSV-bestand en voeg een regel toe voor elk groepslid dat u wilt importeren in de groep (de vereiste waarden zijn een **Member object-id** of **User Principal name**). Sla het bestand op.
 
-   ![Het CSV-bestand bevat de namen en Id's van de leden die moeten worden geïmporteerd](./media/groups-bulk-import-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Het CSV-bestand bevat de namen en Id's van de leden die moeten worden geïmporteerd":::
 
 1. Blader op de pagina **groeps leden Bulk Import** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
 1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.

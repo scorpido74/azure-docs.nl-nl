@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/19/2020
+ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744958"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660019"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor de SQL-groep Synapse
 
@@ -29,7 +29,7 @@ Hoewel de SQL-groep veel methoden voor het laden ondersteunt, waaronder populair
 Met poly base en de instructie COPY kunt u toegang krijgen tot externe gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Store via de T-SQL-taal. Voor de meeste flexibiliteit bij het laden wordt u aangeraden de instructie COPY te gebruiken.
 
 > [!NOTE]  
-> De instructie COPY is momenteel beschikbaar als open bare preview. Als u feedback wilt geven, verzendt u een e-mail naar de sqldwcopypreview@service.microsoft.comvolgende distributie lijst:.
+> De instructie COPY is momenteel beschikbaar als open bare preview. Als u feedback wilt geven, verzendt u een e-mail naar de volgende distributie lijst: sqldwcopypreview@service.microsoft.com .
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
@@ -68,7 +68,7 @@ Hulpprogram ma's en services die u kunt gebruiken om gegevens naar Azure Storage
 
 - De [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -service verbetert de netwerk doorvoer, prestaties en voorspel baarheid. ExpressRoute is een service waarmee uw gegevens worden gerouteerd via een speciale particuliere verbinding met Azure. ExpressRoute-verbindingen sturen geen gegevens via het open bare Internet. De verbindingen bieden meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging dan typische verbindingen via het open bare Internet.
 - Met het [hulp programma AZCopy](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kunt u gegevens verplaatsen naar Azure Storage via het open bare Internet. Dit werkt als uw gegevens grootten minder dan 10 TB zijn. Als u de belasting regel matig wilt uitvoeren met AZCopy, test u de netwerk snelheid om te controleren of deze acceptabel is.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden voor SQL Analytics](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)om Data Factory met SQL Analytics te gebruiken.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden voor SQL-groep](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)om Data Factory met SQL-pool te gebruiken.
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. de gegevens voorbereiden voor het laden
 
@@ -88,30 +88,43 @@ Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de t
 
 Bij het laden van Parquet is de toewijzing van het SQL-gegevens type:
 
-| **Parquet-gegevens type** | **SQL-gegevens type** |
-| :-------------------: | :---------------: |
-|        tinyint        |      tinyint      |
-|       smallint        |     smallint      |
-|          int          |        int        |
-|        bigint         |      bigint       |
-|        booleaans        |        bit        |
-|        double         |       float       |
-|         float         |       werkelijk        |
-|        double         |       financieel       |
-|        double         |    smallmoney     |
-|        tekenreeks         |       nchar       |
-|        tekenreeks         |     nvarchar      |
-|        tekenreeks         |       char        |
-|        tekenreeks         |      varchar      |
-|        binair         |      binair       |
-|        binair         |     varbinary     |
-|       tijdstempel       |       date        |
-|       tijdstempel       |   smalldatetime   |
-|       tijdstempel       |     datetime2     |
-|       tijdstempel       |     datum/tijd      |
-|       tijdstempel       |       tijd        |
-|         date          |       date        |
-|        decimal        |      decimal      |
+|                         Type Parquet                         |   Parquet logische type (annotatie)   |  SQL-gegevens type   |
+| :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
+|                           True                            |                                       |       bit        |
+|                     BINARY/BYTE_ARRAY                      |                                       |    varbinary     |
+|                            DUBBELKLIK                            |                                       |      float       |
+|                            FLOAT                             |                                       |       werkelijk       |
+|                            INT32                             |                                       |       int        |
+|                            INT64                             |                                       |      bigint      |
+|                            INT96                             |                                       |    datetime2     |
+|                     FIXED_LEN_BYTE_ARRAY                     |                                       |      binair      |
+|                            WAARDE                            |                 UTF8                  |     nvarchar     |
+|                            WAARDE                            |                TEKENREEKSEXPRESSIE                 |     nvarchar     |
+|                            WAARDE                            |                 VASTE                  |     nvarchar     |
+|                            WAARDE                            |                 MEE                  | uniqueidentifier |
+|                            WAARDE                            |                KOMMA                |     decimal      |
+|                            WAARDE                            |                 JSON                  |  nvarchar(MAX)   |
+|                            WAARDE                            |                 BSON                  |  varbinary (max)  |
+|                     FIXED_LEN_BYTE_ARRAY                     |                KOMMA                |     decimal      |
+|                          BYTE_ARRAY                          |               BEREIK                |  varchar (max),   |
+|                            INT32                             |             INT (8, True)              |     smallint     |
+|                            INT32                             |            INT (16, True)            |     smallint     |
+|                            INT32                             |             INT (32, True)             |       int        |
+|                            INT32                             |            INT (8, false)            |     tinyint      |
+|                            INT32                             |            INT (16, false)             |       int        |
+|                            INT32                             |           INT (32, false)            |      bigint      |
+|                            INT32                             |                 DATE                  |       datum       |
+|                            INT32                             |                KOMMA                |     decimal      |
+|                            INT32                             |            TIJD (MILLIS)             |       tijd       |
+|                            INT64                             |            INT (64, True)            |      bigint      |
+|                            INT64                             |           INT (64, false)            |  decimaal (20, 0)   |
+|                            INT64                             |                KOMMA                |     decimal      |
+|                            INT64                             |         TIJD (MICRON/NANOS)         |       tijd       |
+|                            INT64                             | TIJDS TEMPEL (MILLIS/MICRON/NANOS) |    datetime2     |
+| [Complex type](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 ORDERVERZAMELLIJST                  |   varchar(max)   |
+| [Complex type](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  DIAGRAM                  |   varchar(max)   |
+
+
 
 Voor een voor beeld van het maken van externe objecten raadpleegt u de stap [externe tabellen maken](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) in de zelf studie voor het laden van.
 

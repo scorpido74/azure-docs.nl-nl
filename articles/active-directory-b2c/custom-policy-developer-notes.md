@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229660"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679246"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -69,8 +69,8 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | [OAuth2 impliciete stroom](implicit-flow-single-page-application.md) |  |  | X |  |
 | [Referenties voor wacht woord van OAuth2-resource-eigenaar](ropc-custom.md) |  | X |  |  |
 | [OIDC verbinding maken](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | Bindingen na plaatsen en omleiden. |
-| OAuth1 |  |  |  | Wordt niet ondersteund. |
+| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | Bindingen na plaatsen en omleiden. |
+| OAuth1 |  |  |  | Niet ondersteund. |
 | WSFED | X |  |  |  |
 
 ### <a name="identify-providers-federation"></a>Providers Federatie identificeren 

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343334"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673455"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -86,7 +86,8 @@ Als u de identiteit hebt die u nodig hebt om deze machtigingen te verlenen, kunt
 
 De machtigingen worden [hier](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)uitgebreid beschreven en de voor beelden laten zien hoe dit wordt geïmplementeerd.
 
-> [Opmerking!] Eerder met AIB zou u de SPN van AIB gebruiken en de SPN-machtigingen verlenen aan de installatie kopie resource groepen. We gaan weg van dit model om toekomstige mogelijkheden te bieden. Vanaf 1 juni 2020 worden sjablonen die geen door de gebruiker toegewezen identiteit hebben, niet geaccepteerd. bestaande sjablonen moeten opnieuw worden ingediend bij de service met een [gebruikers identiteit](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). In deze voor beelden ziet u al hoe u een door de gebruiker toegewezen identiteit kunt maken en toevoegen aan een sjabloon.
+> [!Note]
+> Eerder met AIB zou u de SPN van AIB gebruiken en de SPN-machtigingen verlenen aan de installatie kopie resource groepen. We gaan weg van dit model om toekomstige mogelijkheden te bieden. Van 26 mei 2020, de opbouw functie voor installatie kopieën accepteert geen sjablonen die geen door de gebruiker toegewezen identiteit hebben, bestaande sjablonen moeten opnieuw worden ingediend bij de service met een [gebruikers identiteit](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). In deze voor beelden ziet u al hoe u een door de gebruiker toegewezen identiteit kunt maken en toevoegen aan een sjabloon. Raadpleeg deze [documentatie](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) voor meer informatie over deze wijziging en releases van updates.
 
 ## <a name="costs"></a>Kosten
 U maakt een aantal reken-, netwerk-en opslag kosten bij het maken, maken en opslaan van installatie kopieën met Azure Image Builder. Deze kosten zijn vergelijkbaar met de kosten die zijn gemaakt bij het hand matig maken van aangepaste installatie kopieën. Voor de resources worden er kosten in rekening gebracht voor uw Azure-tarieven. 

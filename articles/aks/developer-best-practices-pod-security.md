@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 9fd7d6c6d472400afea05ac0cd87321a46dddb37
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779061"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677921"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
@@ -30,7 +30,7 @@ U kunt ook de aanbevolen procedures voor [cluster beveiliging][best-practices-cl
 
 **Richt lijnen voor best practices** : als u wilt uitvoeren als een andere gebruiker of groep en de toegang tot de onderliggende knooppunt processen en-services wilt beperken, definieert u pod security context Settings. Wijs het minste vereiste aantal bevoegdheden toe.
 
-Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis*. Met `securityContext` de for a Pod of container kunt u instellingen zoals *runAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Wijs alleen de vereiste machtigingen van de gebruiker of groep toe en gebruik de beveiligings context niet als middel om aanvullende machtigingen te nemen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
+Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis*. `securityContext`Met de for a Pod of container kunt u instellingen zoals *RunAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Wijs alleen de vereiste machtigingen van de gebruiker of groep toe en gebruik de beveiligings context niet als middel om aanvullende machtigingen te nemen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
 
 Wanneer u als niet-hoofd gebruiker wordt uitgevoerd, kunnen containers niet worden gebonden aan de geprivilegieerde poorten onder 1024. In dit scenario kan Kubernetes services worden gebruikt om het feit te verhullen dat een app wordt uitgevoerd op een bepaalde poort.
 
@@ -71,14 +71,17 @@ Werk samen met uw cluster operator om te bepalen welke beveiligings context inst
 
 Vermijd het gebruik van vaste of gedeelde referenties om het risico te beperken dat de referenties worden weer gegeven in de toepassings code. Referenties of sleutels mogen niet rechtstreeks in uw code worden opgenomen. Als deze referenties worden weer gegeven, moet de toepassing worden bijgewerkt en opnieuw worden geïmplementeerd. Een betere benadering is het opgeven van een eigen identiteit en manier om zichzelf te verifiëren of automatisch referenties op te halen van een digitale kluis.
 
-Met de volgende [gekoppelde open-source projecten van AKS][aks-associated-projects] kunt u automatisch peul verifiëren of referenties en sleutels van een digitale kluis aanvragen:
+### <a name="use-azure-container-compute-upstream-projects"></a>De upstream-projecten van Azure container Compute gebruiken
 
-* Beheerde identiteiten voor Azure-resources en
-* [Azure Key Vault provider voor geheimen Store CSI-stuur programma](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+> [!IMPORTANT]
+> Gerelateerde AKS open-source projecten worden niet ondersteund door de technische ondersteuning van Azure. Ze worden door gebruikers verschaft om zelf in clusters te worden geïnstalleerd en kunnen feedback van onze community verzamelen.
 
-Gerelateerde AKS open-source projecten worden niet ondersteund door de technische ondersteuning van Azure. Ze zijn bedoeld om feedback en bugs van onze community te verzamelen. Deze projecten worden niet aanbevolen voor productie gebruik.
+Met de volgende [gekoppelde open-source projecten van AKS][aks-associated-projects] kunt u automatisch peul verifiëren of referenties en sleutels van een digitale kluis aanvragen. Deze projecten worden onderhouden door het Azure container Compute upstream-team en maken deel uit van een [breder overzicht van projecten die beschikbaar zijn voor gebruik](https://github.com/Azure/container-compute-upstream/blob/master/README.md#support).
 
-### <a name="use-pod-managed-identities"></a>Door Pod beheerde identiteiten gebruiken
+ * [Pod-identiteit van Azure Active Directory][aad-pod-identity]
+ * [Azure Key Vault provider voor geheimen Store CSI-stuur programma](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+
+#### <a name="use-pod-managed-identities"></a>Door Pod beheerde identiteiten gebruiken
 
 Met een beheerde identiteit voor Azure-resources kan een pod zichzelf verifiëren voor Azure-Services die dit ondersteunen, zoals opslag of SQL. Aan de Pod wordt een Azure-identiteit toegewezen waarmee ze kunnen worden geverifieerd voor Azure Active Directory en een digitaal token kan worden ontvangen. Dit digitale token kan worden gepresenteerd aan andere Azure-Services die controleren of de Pod is gemachtigd om toegang te krijgen tot de service en de vereiste acties uit te voeren. Deze aanpak houdt in dat er geen geheimen vereist zijn voor database verbindings reeksen, bijvoorbeeld. De vereenvoudigde werk stroom voor pod beheerde identiteit wordt weer gegeven in het volgende diagram:
 
@@ -88,7 +91,7 @@ Met een beheerde identiteit hoeft uw toepassings code geen referenties op te gev
 
 Zie [Configure a AKS cluster to use pod Managed Identities and with your Applications][aad-pod-identity] (Engelstalig) voor meer informatie over pod-identiteiten.
 
-### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault gebruiken met geheimen Store CSI-stuur programma
+#### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault gebruiken met geheimen Store CSI-stuur programma
 
 Met behulp van het Pod-identiteits project kan verificatie worden uitgevoerd op ondersteuning van Azure-Services. Voor uw eigen services of toepassingen zonder beheerde identiteiten voor Azure-resources kunt u nog steeds verifiëren met behulp van referenties of sleutels. Een digitale kluis kan worden gebruikt om deze geheime inhoud op te slaan.
 

@@ -4,12 +4,12 @@ description: Meer informatie over het definiëren van een aangepaste uitgangs ro
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733495"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677886"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route (preview-versie)
 
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u de uitgangs route van een cluster kunt aan
 ## <a name="prerequisites"></a>Vereisten
 * Azure CLI-versie 2.0.81 of hoger
 * Azure CLI preview-extensie versie 0.4.28 of hoger
-* API-versie `2020-01-01` van of hoger
+* API-versie van `2020-01-01` of hoger
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
 Als u het uitgaande type van een cluster wilt instellen, hebt u de Azure CLI AKS preview-extensie versie 0.4.18 of hoger nodig. Installeer de Azure CLI AKS preview-extensie met behulp van de opdracht AZ extension add en controleer vervolgens of er beschik bare updates zijn met behulp van de volgende opdracht AZ extension update:
@@ -40,29 +40,29 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>Beperkingen
-* Tijdens de preview `outboundType` -periode kan alleen worden gedefinieerd tijdens het maken van het cluster en kan later niet worden bijgewerkt.
+* Tijdens de preview- `outboundType` periode kan alleen worden gedefinieerd tijdens het maken van het cluster en kan later niet worden bijgewerkt.
 * Tijdens de preview `outboundType` moeten AKS-clusters gebruikmaken van Azure cni. Kubenet kan worden geconfigureerd. voor het gebruik moet hand matig koppelingen van de route tabel worden gemaakt met het AKS-subnet.
-* Voor `outboundType` de instelling zijn AKS- `vm-set-type` clusters `VirtualMachineScaleSets` met `load-balancer-sku` een `Standard`van en van vereist.
-* Voor `outboundType` het instellen van een `UDR` waarde van is een door de gebruiker gedefinieerde route met geldige uitgaande connectiviteit voor het cluster vereist.
-* Als `outboundType` u de waarde instelt `UDR` op ' impliceert het binnenkomende bron-IP-adres dat naar de Load Balancer wordt doorgestuurd, mogelijk niet hetzelfde als het uitgaande **afwijkings** doel van het cluster.
+* Voor `outboundType` de instelling zijn AKS-clusters met een `vm-set-type` van `VirtualMachineScaleSets` en van vereist `load-balancer-sku` `Standard` .
+* Voor `outboundType` het instellen van een waarde van `UDR` is een door de gebruiker gedefinieerde route met geldige uitgaande connectiviteit voor het cluster vereist.
+* `outboundType`Als u de waarde instelt op ' `UDR` impliceert het binnenkomende bron-IP-adres dat naar de Load Balancer wordt doorgestuurd, mogelijk niet hetzelfde als het uitgaande **afwijkings** doel van het cluster.
 
 ## <a name="overview-of-outbound-types-in-aks"></a>Overzicht van uitgaande typen in AKS
 
-Een AKS-cluster kan worden aangepast met een `outboundType` uniek type Load Balancer of door de gebruiker gedefinieerde route ring.
+Een AKS-cluster kan worden aangepast met een uniek `outboundType` type Load Balancer of door de gebruiker gedefinieerde route ring.
 
 > [!IMPORTANT]
 > Uitgaand type is alleen van invloed op het uitgaande verkeer van uw cluster. Zie [ingangs controllers instellen](ingress-basic.md) voor meer informatie.
 
 ### <a name="outbound-type-of-loadbalancer"></a>Uitgaand type loadBalancer
 
-Als `loadBalancer` is ingesteld, aks de volgende installatie automatisch volt ooien. De load balancer wordt gebruikt voor uitgaand verkeer via een AKS toegewezen openbaar IP-adres. Een uitgaand `loadBalancer` type van ondersteunt Kubernetes Services `loadBalancer`van het type, dat wordt verwacht uit het Load Balancer dat is gemaakt door de resource provider AKS.
+Als `loadBalancer` is ingesteld, aks de volgende installatie automatisch volt ooien. De load balancer wordt gebruikt voor uitgaand verkeer via een AKS toegewezen openbaar IP-adres. Een uitgaand type van `loadBalancer` ondersteunt Kubernetes services van `loadBalancer` het type, dat wordt verwacht uit het Load Balancer dat is gemaakt door de resource provider AKS.
 
 De volgende installatie wordt uitgevoerd door AKS.
    * Een openbaar IP-adres is ingericht voor het uituitgangs cluster.
    * Het open bare IP-adres wordt toegewezen aan de load balancer resource.
    * Back-end-Pools voor de load balancer zijn ingesteld voor agent knooppunten in het cluster.
 
-Hieronder vindt u een netwerk topologie die standaard wordt geïmplementeerd in AKS-clusters, `outboundType` waarbij `loadBalancer`een van wordt gebruikt.
+Hieronder vindt u een netwerk topologie die standaard wordt geïmplementeerd in AKS-clusters, waarbij een van wordt gebruikt `outboundType` `loadBalancer` .
 
 ![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
 
@@ -119,9 +119,6 @@ DEVSUBNET_NAME="${PREFIX}dev"
 Stel vervolgens abonnement-Id's in.
 
 ```azure-cli
-# Get ARM Access Token and Subscription ID - This will be used for AuthN later.
-
-ACCESS_TOKEN=$(az account get-access-token -o tsv --query 'accessToken')
 
 # NOTE: Update Subscription Name
 # Set Default Azure Subscription to be Used via Subscription ID
@@ -318,7 +315,7 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>AKS implementeren
 
-Ten slotte kan het AKS-cluster worden geïmplementeerd in het bestaande subnet dat voor het cluster is toegewezen. Het doel-subnet waarnaar moet worden geïmplementeerd, `$SUBNETID`is gedefinieerd met de omgevings variabele. De `$SUBNETID` variabele is niet gedefinieerd in de vorige stappen. Als u de waarde voor de subnet-ID wilt instellen, kunt u de volgende opdracht gebruiken:
+Ten slotte kan het AKS-cluster worden geïmplementeerd in het bestaande subnet dat voor het cluster is toegewezen. Het doel-subnet waarnaar moet worden geïmplementeerd, is gedefinieerd met de omgevings variabele `$SUBNETID` . De variabele is niet gedefinieerd `$SUBNETID` in de vorige stappen. Als u de waarde voor de subnet-ID wilt instellen, kunt u de volgende opdracht gebruiken:
 
 ```azurecli
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
@@ -399,7 +396,7 @@ kubectl apply -f internal-lb.yaml
 
 Omdat het uitgaande cluster type is ingesteld als UDR, koppelt u de agent knooppunten als de back-end-pool voor de load balancer wordt niet automatisch door AKS tijdens het maken van het cluster voltooid. De koppeling van de back-endadresgroep wordt echter afgehandeld door de Azure-Cloud provider Kubernetes wanneer de Kubernetes-service wordt geïmplementeerd.
 
-Implementeer de Azure stem-app-toepassing door de yaml hieronder te kopiëren naar `example.yaml`een bestand met de naam.
+Implementeer de Azure stem-app-toepassing door de yaml hieronder te kopiëren naar een bestand met de naam `example.yaml` .
 
 ```yaml
 apiVersion: apps/v1

@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f025a434c6db134237325a2f949b2a7c772672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886038"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679162"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Procedure: inactieve gebruikers accounts beheren in azure AD
 
@@ -43,7 +43,7 @@ De laatste geslaagde aanmelding biedt mogelijke inzichten in de voortdurende beh
 
 U kunt inactieve accounts detecteren door de eigenschap **lastSignInDateTime** te evalueren die wordt weer gegeven door het resource type **signInActivity** van de API van **Microsoft Graph** . Met deze eigenschap kunt u een oplossing implementeren voor de volgende scenario's:
 
-- **Gebruikers op naam**: in dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de lastSignInDate kunt evalueren:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Gebruikers op naam**: in dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de lastSignInDateTime kunt evalueren:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
 - **Gebruikers op datum**: in dit scenario vraagt u een lijst met gebruikers met een lastSignInDateTime op voor een opgegeven datum:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 

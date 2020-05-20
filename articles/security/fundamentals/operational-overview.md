@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443883"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674243"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -50,7 +50,7 @@ Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste comp
 
 Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-overview#what-can-i-back-up)voor meer informatie.
 
-### <a name="site-recovery"></a>Site Recovery
+### <a name="site-recovery"></a>Siteherstel
 
 [Azure site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) biedt bedrijfs continuïteit door de replicatie van on-premises virtuele en fysieke machines naar Azure of een secundaire site te organiseren. Als uw primaire site niet beschikbaar is, voert u een failover uit naar de secundaire locatie zodat gebruikers kunnen blijven werken. U kunt geen failback uitvoeren wanneer de systemen retour neren naar de werk volgorde. Gebruik Azure Security Center om intelligente en efficiënte detectie van bedreigingen uit te voeren.
 
@@ -60,15 +60,15 @@ Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-overview#what-ca
 
 -   Hiermee schakelt u het gebruik van identiteits-en toegangs beheer (IAM) in als een Cloud service.
 -   Biedt centraal toegangs beheer, eenmalige aanmelding (SSO) en rapportage.
--   Biedt ondersteuning voor geïntegreerd toegangs beheer voor [duizenden toepassingen](https://azure.microsoft.com/marketplace/active-directory/) op de Azure Marketplace, waaronder Sales Force, Google Apps, box en concur.
+-   Biedt ondersteuning voor geïntegreerd toegangs beheer voor [duizenden toepassingen](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) op de Azure Marketplace, waaronder Sales Force, Google Apps, box en concur.
 
 Azure AD omvat ook een volledige reeks [mogelijkheden voor identiteits beheer](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), waaronder:
 
-- [Meervoudige verificatie](/azure/multi-factor-authentication/multi-factor-authentication)
+- [Multi-factor Authentication](/azure/multi-factor-authentication/multi-factor-authentication)
 - [Wachtwoordbeheer via selfservice](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self-service groeps beheer](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Privileged account management](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Toegangs beheer op basis van rollen](/azure/role-based-access-control/overview)
+- [Op rollen gebaseerd toegangsbeheer](/azure/role-based-access-control/overview)
 - [Bewaking van toepassings gebruik](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Uitgebreide controle](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Beveiligings bewaking en waarschuwingen](/azure/operations-management-suite/oms-security-responding-alerts)

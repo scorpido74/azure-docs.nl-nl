@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9440d5a13973a245320bc465e3997e3cdf414b3f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633351"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660323"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Urgentie van werk belasting configureren in azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Als u de urgentie instelt in Synapse SQL voor Azure Synapse, kunt u de planning 
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Een classificatie van een werk belasting met urgentie maken
 
-Vaak bevat een scenario voor een Data Warehouse gebruikers die hun query's nodig hebben om snel uit te voeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. U maakt een classificatie van de werk belasting om belang rijk aan een query toe te wijzen.  De volgende voor beelden gebruiken de nieuwe [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om twee classificaties te maken. `Membername`Dit kan één gebruiker of een groep zijn. Afzonderlijke gebruikers classificaties hebben voor rang op classificaties van rollen. Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
+Vaak bevat een scenario voor een Data Warehouse gebruikers, in een systeem dat bezet is, die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. Als u prioriteit wilt toewijzen, maakt u een classificatie van de werk belasting en krijgt u een prioriteits toewijzing.  In de onderstaande voor beelden wordt de [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om twee classificaties te maken. `Membername`Dit kan één gebruiker of een groep zijn.  Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
 
 ```sql
 Select name from sys.sysusers
@@ -33,20 +33,19 @@ Select name from sys.sysusers
 Voor het maken van een classificatie van een werk belasting voor een gebruiker met een hogere urgentie:
 
 ```sql
-CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  above_normal);  
-
+CREATE WORKLOAD CLASSIFIER ExecReportsClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = above_normal);
 ```
 
 Voor het maken van een classificatie van werk belasting voor een gebruiker die adhoc-query's uitvoert met een lagere urgentie:  
 
 ```sql
-CREATE WORKLOAD CLASSIFIER AdhocClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  below_normal);  
+CREATE WORKLOAD CLASSIFIER AdhocClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = below_normal);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

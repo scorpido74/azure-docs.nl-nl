@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9c6062e7106f764058d6c96c6f730d235b2ef0c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400010"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673030"
 ---
 Bij het ontwikkelen voor macOS zijn er drie spraak-Sdk's beschikbaar.
 
@@ -18,7 +18,7 @@ Bij het ontwikkelen voor macOS zijn er drie spraak-Sdk's beschikbaar.
 - De python Speech SDK is beschikbaar als een PyPI-module
 
 > [!TIP]
-> Zie voor meer informatie met behulp van de hand van de doel-C Speech SDK met SWIFT, <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">objectief-c importeren in SWIFT <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+> Zie voor meer informatie met behulp van de hand van de doel-C Speech SDK met SWIFT, <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">objectief-c importeren in SWIFT <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ### <a name="system-requirements"></a>Systeemvereisten
 
@@ -28,7 +28,7 @@ Bij het ontwikkelen voor macOS zijn er drie spraak-Sdk's beschikbaar.
 
 :::row:::
     :::column span="3":::
-        Het macOS CocoaPod-pakket is beschikbaar voor downloaden en gebruiken met de <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (of hoger <span class="docon docon-navigate-external x-hidden-focus"></span> )</a> Integrated Development Environment (IDE). <a href="https://aka.ms/csspeech/macosbinary" target="_blank">Down load eerst de binaire CocoaPod <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Pak de pod in dezelfde map uit voor het beoogde gebruik, maak een *Podfile* en lijst de `pod` as a `target`.
+        Het macOS CocoaPod-pakket is beschikbaar voor downloaden en gebruiken met de <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (of hoger <span class="docon docon-navigate-external x-hidden-focus"></span> )</a> Integrated Development Environment (IDE). <a href="https://aka.ms/csspeech/macosbinary" target="_blank">Down load eerst de binaire CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Pak de pod in dezelfde map uit voor het beoogde gebruik, maak een *Podfile* en lijst de `pod` as a `target` .
     :::column-end:::
     :::column:::
         <br>
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.11.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.12.0'
 end
 ```
 
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin. Mac biedt de volledige macOS SDK voor .NET-ontwikkel aars om systeem eigen Mac-toepassingen te bouwen met C#. Zie <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
+        Xamarin. Mac biedt de volledige macOS SDK voor .NET-ontwikkel aars om systeem eigen Mac-toepassingen te bouwen met C#. Zie <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
     :::column-end:::
     :::column:::
         <br>

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598624"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674355"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -35,11 +35,11 @@ In vergelijking met de traditionele op ETL gebaseerde oplossingen biedt Azure Sy
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Minder complexiteit zonder ETL-taken om te beheren
 
-Met Azure Synapse link kunt u rechtstreeks toegang krijgen tot Azure Cosmos DB Analytical Store met behulp van Azure Synapse Analytics zonder complexe gegevens verplaatsing. Alle updates die zijn aangebracht in de operationele gegevens, zijn in bijna realtime zichtbaar in het analytische archief zonder ETL of wijzigings invoer. U kunt grootschalige analyses uitvoeren op een analytische opslag, van Synapse Analytics, zonder extra gegevens transformatie.
+Met Azure Synapse link kunt u rechtstreeks toegang krijgen tot Azure Cosmos DB Analytical Store met behulp van Azure Synapse Analytics zonder complexe gegevens verplaatsing. Alle updates die zijn aangebracht in de operationele gegevens, zijn in bijna realtime zichtbaar in het analytische archief zonder ETL of het wijzigen van invoer taken. U kunt grootschalige analyses uitvoeren op een analytische opslag, van Synapse Analytics, zonder extra gegevens transformatie.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Bijna realtime inzichten in uw operationele gegevens
 
-U kunt nu in bijna realtime inzicht krijgen in uw operationele gegevens met behulp van de Azure Synapse-koppeling. ETL-gebaseerde systemen hebben vaak een hogere latentie voor het analyseren van uw operationele gegevens, omdat er veel lagen zijn om de operationele gegevens te extra heren, te transformeren en te laden. Met de systeem eigen integratie van Azure Cosmos DB analytische opslag met Azure Synapse Analytics kunt u operationele gegevens in bijna realtime analyseren door nieuwe bedrijfs scenario's in te scha kelen. 
+U kunt nu in bijna realtime inzicht krijgen in uw operationele gegevens met behulp van de Azure Synapse-koppeling. ETL-gebaseerde systemen hebben vaak een hogere latentie voor het analyseren van uw operationele gegevens, omdat er veel lagen nodig zijn om de operationele gegevens te extra heren, te transformeren en te laden. Met de systeem eigen integratie van Azure Cosmos DB analytische opslag met Azure Synapse Analytics kunt u operationele gegevens in bijna realtime analyseren door nieuwe bedrijfs scenario's in te scha kelen. 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>Geen invloed op operationele werk belastingen
@@ -54,7 +54,7 @@ Azure Cosmos DB-analytische opslag is geoptimaliseerd voor schaal baarheid, elas
 
 Met de koppeling Azure Synapse kunt u een door de kosten geoptimaliseerde, volledig beheerde oplossing voor operationele analyses krijgen. Het elimineert de extra opslag lagen en de reken kracht die vereist is in traditionele ETL-pijp lijnen voor het analyseren van operationele gegevens. 
 
-Azure Cosmos DB Analytical Store volgt een prijs model op basis van verbruik, dat is gebaseerd op gegevens opslag en analytische lees/schrijf-operationsand query's die worden uitgevoerd. U hoeft geen door Voer in te richten, zoals u dat wel doet voor de transactionele werk belastingen. Als u toegang hebt tot uw gegevens met zeer elastische Compute-engines van Azure Synapse Analytics, worden de totale kosten voor het uitvoeren van opslag en de berekening zeer efficiënt berekend.
+Azure Cosmos DB Analytical Store volgt een prijs model op basis van verbruik, dat is gebaseerd op gegevens opslag en analytische Lees-en schrijf bewerkingen en query's die worden uitgevoerd. U hoeft geen door Voer in te richten, zoals u dat wel doet voor de transactionele werk belastingen. Als u toegang hebt tot uw gegevens met zeer elastische Compute-engines van Azure Synapse Analytics, worden de totale kosten voor het uitvoeren van opslag en de berekening zeer efficiënt berekend.
 
 
 ### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Analyse voor lokaal beschik bare, wereld wijd gedistribueerde, multi master-gegevens
@@ -99,7 +99,7 @@ Deze integratie maakt de volgende HTAP-scenario's mogelijk voor verschillende ge
 
 * Een gegevens technicus die gegevens toegankelijk wil maken voor consumenten door SQL-of Spark-tabellen te maken via Azure Cosmos DB containers zonder hand matige ETL-processen.
 
-Zie [Azure Synapse Analytics for Cosmos DB-ondersteuning]()voor meer informatie over Azure Synapse Analytics runtime-ondersteuning voor Azure Cosmos db.
+Zie [Azure Synapse Analytics for Cosmos DB-ondersteuning](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)voor meer informatie over Azure Synapse Analytics runtime-ondersteuning voor Azure Cosmos db.
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Wanneer gebruik ik de Azure Synapse-koppeling voor Azure Cosmos DB?
 
@@ -124,11 +124,11 @@ Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Dat
 
 * Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
 
-* Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned. 
+* Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned.
 
 ## <a name="pricing"></a>Prijzen
 
-Het facturerings model van de koppeling van Azure Synapse wordt omgezet naar de kosten die worden gemaakt met behulp van het Azure Cosmos DB-analytische archief en de Synapse-runtime. Voor meer informatie raadpleegt u de artikelen over prijzen van [Azure Cosmos DB Analytical Store](analytical-store-introduction.md#analytical-store-pricing) en [prijzen voor Azure Synapse Analytics]() .
+Het facturerings model van de koppeling Azure Synapse bevat de kosten die zijn gemaakt met behulp van het Azure Cosmos DB-analytische archief en de Synapse-runtime. Voor meer informatie raadpleegt u de artikelen over prijzen van [Azure Cosmos DB Analytical Store](analytical-store-introduction.md#analytical-store-pricing) en [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -136,9 +136,9 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Overzicht van Azure Cosmos DB Analytical Store](analytical-store-introduction.md)
 
-* [Aan de slag met Azure Synapse-koppeling voor Azure Cosmos DB](configure-synapse-link.md) 
+* [Aan de slag met Azure Synapse-koppeling voor Azure Cosmos DB](configure-synapse-link.md)
  
-* [Wat wordt ondersteund in azure Synapse Analytics uitvoerings tijd]()
+* [Wat wordt ondersteund in azure Synapse Analytics uitvoerings tijd](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [Veelgestelde vragen over de koppeling van Azure Synapse voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 

@@ -2,13 +2,13 @@
 title: Wat is er nieuw-Language Understanding (LUIS)
 description: Dit artikel wordt regel matig bijgewerkt met nieuws over de Azure Cognitive Services Language Understanding-API.
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592794"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675953"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
@@ -21,12 +21,18 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
 * Uitgebracht als **algemeen beschikbaar** (ga):
     * [Language Understanding-container](luis-container-howto.md)
     * Voor beeld van portal gepromoveerd tot [huidige Portal](https://www.luis.ai), [vorige](https://previous.luis.ai) Portal is nog steeds beschikbaar
-    * Nieuwe, op computers gebaseerde ervaring voor het maken en labelen van entiteiten
-    * [Upgrade proces](migrate-from-composite-entity.md) van samengestelde en eenvoudige entiteiten naar door machines geleerde entiteiten
+    * Nieuwe machine learning-entiteit maken en labelen
+    * [Upgrade proces](migrate-from-composite-entity.md) van samengestelde en eenvoudige entiteiten naar machine learning-entiteiten
     * Ondersteuning voor het normaliseren van woord varianten [instellen](how-to-application-settings-portal.md)
 * Voor beeld van ontwerp-API-wijzigingen
-    * App-schema 7. x voor geneste, door machines geleerde entiteiten
+    * App-schema 7. x voor geneste machine learning-entiteiten
     * [Migratie naar vereiste functie](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* Nieuwe bronnen voor ontwikkel aars
+    * [Hulpprogram ma's voor continue integratie](developer-reference-resource.md#continuous-integration-tools)
+    * Workshop: Leer de best practices voor [ _natuurlijke language Understanding_ (NLU) met BEhulp van Luis](developer-reference-resource.md#workshops)
+* Door de [klant beheerde sleutels](luis-encryption-of-data-at-rest.md) : alle gegevens die u in Luis gebruikt, versleutelen met behulp van uw eigen sleutel
+* [AI show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video): Bekijk de nieuwe functies in Luis
+
 
 
 ### <a name="march-2020"></a>Maart 2020
@@ -48,13 +54,13 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
     * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal en percentage resolutie worden gewijzigd van v2.
 * Verbeterde gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) , vernieuwd, waarmee u complexe modellen kunt bouwen en fouten kunt opsporen. Probeer de preview-portal zelf studies:
     * [Alleen intentie](tutorial-intents-only.md)
-    * [Door de computer geleerde entiteit](tutorial-machine-learned-entity.md)
+    * [Ontwaak bare machine-leer entiteit](tutorial-machine-learned-entity.md)
 * Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning.
 * Definieer machine learning functies op model niveau en zorg ervoor dat modellen kunnen worden gebruikt als signalen voor andere modellen, bijvoorbeeld door entiteiten te gebruiken als functies voor intenties en andere entiteiten.
 * Nieuwe, uitgebreide [limieten](luis-limits.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als functie limieten
 * Haal informatie op uit tekst in de indeling van een diepe hiërarchie structuur, zodat conversatie toepassingen krachtiger worden.
 
-    ![door de machine geleerde entiteits afbeelding](./media/whats-new/deep-entity-extraction-example.png)
+    ![afbeelding van de entiteit voor machine learning](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3 september 2019
 

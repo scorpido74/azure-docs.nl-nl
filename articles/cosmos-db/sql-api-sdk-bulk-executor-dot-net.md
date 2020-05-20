@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: bulk-uitvoerder .NET API, SDK & resources'
 description: Meer informatie over de bulk-uitvoerder .NET API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen de verschillende versies van de Azure Cosmos DB bulk-vervoerder .NET SDK.
-author: tknandu
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/16/2020
-ms.author: ramkris
-ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 23ba8b12651c4de05fd8fb0b2721839beb36a7a6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169403"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660450"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
@@ -22,8 +22,9 @@ ms.locfileid: "76169403"
 > * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java-SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -33,7 +34,7 @@ ms.locfileid: "76169403"
 
 | |  |
 |---|---|
-| **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
+| **Beschrijving**| Met de bibliotheek .NET bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
 |**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API-documentatie**|[Naslag documentatie voor .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
@@ -63,7 +64,7 @@ ms.locfileid: "76169403"
 
 ### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
 
-* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-id-Tuples. Deze wijziging is functioneel gelijk aan 1.4.0-release.
+* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-ID-Tuples. Deze wijziging is functioneel gelijk aan 1.4.0-release.
 
 ### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -100,7 +101,7 @@ ms.locfileid: "76169403"
 ### <a name="182"></a><a name="1.8.2"/>1.8.2
 
 * Vast hoog CPU-verbruik voor bepaalde scenario's.
-* Tracering maakt nu gebruik van TraceSource. Gebruikers kunnen listeners voor de `BulkExecutorTrace` bron definiëren.
+* Tracering maakt nu gebruik van TraceSource. Gebruikers kunnen listeners voor de bron definiëren `BulkExecutorTrace` .
 * Er is een zeldzaam scenario opgelost dat kan leiden tot een vergren deling bij het verzenden van documenten bij een grootte van 2 MB.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
@@ -117,7 +118,7 @@ ms.locfileid: "76169403"
 
 ### <a name="140"></a><a name="1.4.0"/>1.4.0
 
-* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-id-Tuples.
+* Toegevoegde BulkDelete-ondersteuning voor SQL-API-accounts voor het accepteren van partitie sleutel, te verwijderen document-ID-Tuples.
 
 ### <a name="130"></a><a name="1.3.0"/>1.3.0
 

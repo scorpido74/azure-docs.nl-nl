@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor SAP HANA Backup
 description: In dit artikel vindt u informatie over de ondersteunde scenario's en beperkingen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases op Azure-Vm's.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20519562151a70c9fd8e8fe5d86ce912e615b460
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252439"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660130"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Ondersteuningsmatrix voor back-up van SAP HANA-databases in virtuele Azure-machines
 
@@ -37,7 +37,7 @@ Azure Backup ondersteunt de back-up van SAP HANA-data bases naar Azure. In dit a
 ------
 
 > [!NOTE]
-> Back-up-en herstel bewerkingen van SAP HANA systeem eigen clients (SAP HANA Studio/cockpit/DBA-cockpit) worden momenteel niet ondersteund.
+> U kunt nu [de back-up-en herstel](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) taken (op dezelfde machine) die zijn geactiveerd vanuit Hana-systeem eigen clients (SAP Hana Studio/cockpit/DBA-cockpit) bewaken in de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

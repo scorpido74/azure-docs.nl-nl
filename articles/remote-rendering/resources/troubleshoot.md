@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792612"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674288"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -106,7 +106,7 @@ Zie specifieke [beperkingen](../reference/limits.md#overall-number-of-polygons)v
 
 In veel gevallen wordt het model correct weer gegeven, maar buiten de camera frustum. Een veelvoorkomende reden is dat het model is geëxporteerd met een uit de weg geplaatste draaiing, zodat het wordt geknipt door het ver knip vlak van de camera. Het helpt het model in het kader van een programma op te vragen en het vak met eenheid als een lijn vak te visualiseren of de waarden in het logboek voor fout opsporing af te drukken.
 
-Bovendien genereert het conversie proces een [JSON-uitvoer bestand](../how-tos/conversion/get-information.md) naast het geconverteerde model. Als u fouten wilt opsporen in model positionering, is het `boundingBox` een goed idee om de vermelding in de [sectie outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section)te bekijken:
+Bovendien genereert het conversie proces een [JSON-uitvoer bestand](../how-tos/conversion/get-information.md) naast het geconverteerde model. Als u fouten wilt opsporen in model positionering, is het een goed idee om de `boundingBox` vermelding in de [sectie outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section)te bekijken:
 
 ```JSON
 {
@@ -132,12 +132,12 @@ Bovendien genereert het conversie proces een [JSON-uitvoer bestand](../how-tos/c
 Het selectie kader wordt beschreven als een `min` en `max` -positie in 3D-ruimte, uitgedrukt in meters. Een coördinaat van 1000,0 betekent dus 1 kilo meter weg van de oorsprong.
 
 Er kunnen twee problemen zijn met dit selectie kader die leiden tot onzichtbare geometrie:
-* **Het vak kan niet uit het midden worden bevinden**, zodat het object volledig is afgekapt vanwege de meeste knip knippen. De `boundingBox` waarden in dit geval zien er als volgt uit `min = [-2000, -5,-5], max = [-1990, 5,5]`:, met behulp van een grote offset op de x-as als hier een voor beeld. Schakel de `recenterToOrigin` optie in de configuratie van de [model conversie](../how-tos/conversion/configure-model-conversion.md)in om dit type probleem op te lossen.
-* **Het vak kan worden gecentreerd, maar de volg orde van de grootte is te groot**. Dit betekent dat hoewel de camera wordt gestart in het midden van het model, de geometrie ervan in alle richtingen is afgekapt. Typische `boundingBox` waarden in dit geval zien er als volgt uit `min = [-1000,-1000,-1000], max = [1000,1000,1000]`:. De reden voor dit type probleem is doorgaans een niet-overeenkomende eenheids schaal. Als u wilt compenseren, geeft u een [schaal waarde op tijdens de conversie](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) of markeert u het bron model met de juiste eenheden. Schalen kan ook worden toegepast op het hoofd knooppunt wanneer het model tijdens runtime wordt geladen.
+* **Het vak kan niet uit het midden worden bevinden**, zodat het object volledig is afgekapt vanwege de meeste knip knippen. De `boundingBox` waarden in dit geval zien er als volgt uit: `min = [-2000, -5,-5], max = [-1990, 5,5]` , met behulp van een grote offset op de x-as als hier een voor beeld. Schakel de `recenterToOrigin` optie in de configuratie van de [model conversie](../how-tos/conversion/configure-model-conversion.md)in om dit type probleem op te lossen.
+* **Het vak kan worden gecentreerd, maar de volg orde van de grootte is te groot**. Dit betekent dat hoewel de camera wordt gestart in het midden van het model, de geometrie ervan in alle richtingen is afgekapt. Typische `boundingBox` waarden in dit geval zien er als volgt uit: `min = [-1000,-1000,-1000], max = [1000,1000,1000]` . De reden voor dit type probleem is doorgaans een niet-overeenkomende eenheids schaal. Als u wilt compenseren, geeft u een [schaal waarde op tijdens de conversie](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) of markeert u het bron model met de juiste eenheden. Schalen kan ook worden toegepast op het hoofd knooppunt wanneer het model tijdens runtime wordt geladen.
 
 **De unit weergave-pijp lijn bevat geen render-hooks:**
 
-Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *venster > analyse > frame debugger*. Schakel dit in en zorg ervoor dat er twee vermeldingen zijn `HolographicRemotingCallbackPass` voor de in de pijp lijn:
+Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *venster > analyse > frame debugger*. Schakel dit in en zorg ervoor dat er twee vermeldingen zijn voor de `HolographicRemotingCallbackPass` in de pijp lijn:
 
 ![Unity frame debugger](./media/troubleshoot-unity-pipeline.png)
 
@@ -145,12 +145,12 @@ Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stelle
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Fout opsporing gebruiken bij het compileren van Unity editor
 
-Schakel het *type Build* van unit Solution in op **debug**. Bij het testen van ARR in de eenheids `UNITY_EDITOR` editor is de definitie alleen beschikbaar in builds voor fout opsporing. Houd er rekening mee dat dit niet gerelateerd is aan het build-type dat wordt gebruikt voor [geïmplementeerde toepassingen](../quickstarts/deploy-to-hololens.md), waarbij u de voor keur geeft aan release-builds.
+Schakel het *type Build* van unit Solution in op **debug**. Bij het testen van ARR in de eenheids editor is de definitie `UNITY_EDITOR` alleen beschikbaar in builds voor fout opsporing. Houd er rekening mee dat dit niet gerelateerd is aan het build-type dat wordt gebruikt voor [geïmplementeerde toepassingen](../quickstarts/deploy-to-hololens.md), waarbij u de voor keur geeft aan release-builds.
 
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Fouten compileren bij het compileren van unit-samples voor HoloLens 2
 
 Er zijn onlogische fouten gedetecteerd bij het compileren van unit-voor beelden (Quick Start, ShowCaseApp,..) voor HoloLens 2. Visual Studio klagen over het al dan niet kunnen kopiëren van bestanden, maar ze zijn er wel. Als u dit probleem ondervindt:
-* Verwijder alle tijdelijke unit-bestanden uit het project en probeer het opnieuw.
+* Verwijder alle tijdelijke unit-bestanden uit het project en probeer het opnieuw. Dat wil zeggen, sluit eenheid, verwijder de tijdelijke *bibliotheek* en *obj* -mappen in de projectmap en laad/bouw het project opnieuw.
 * Zorg ervoor dat de projecten zich in een map op schijf bevinden met redelijk korte pad, omdat de Kopieer stap soms problemen met lange bestands namen ondervindt.
 * Als dat niet helpt, kan het zijn dat MS Sense de Kopieer stap verstoort. Als u een uitzonde ring wilt instellen, voert u deze register opdracht uit vanaf de opdracht regel (hiervoor zijn beheerders rechten vereist):
     ```cmd
@@ -161,9 +161,9 @@ Er zijn onlogische fouten gedetecteerd bij het compileren van unit-voor beelden 
 
 In het geval dat gerenderde objecten samen met de hoofd bewegingen worden verplaatst, kunnen er problemen optreden met de *vertraagde fase* van het project (lsr). Raadpleeg de sectie over [vertraagde fase](../overview/features/late-stage-reprojection.md) ring van het project voor richt lijnen voor het aanpaken van een dergelijke situatie.
 
-Een andere reden voor onstabiele hologrammen (Wobbling, krom trekken, jitteren of springende Holograms) kan een slechte netwerk verbinding zijn, met name onvoldoende netwerk bandbreedte of te hoge latentie. Een goede indicator voor de kwaliteit van uw netwerk verbinding is de waarde `ARRServiceStats.VideoFramesReused`voor [prestatie statistieken](../overview/features/performance-queries.md) . Hergebruikte frames geven situaties aan waarbij een oud video frame moet worden hergebruikt aan de client zijde omdat er geen nieuw video frame beschikbaar was, bijvoorbeeld vanwege pakket verlies of vanwege afwijkingen in de netwerk latentie. Als `ARRServiceStats.VideoFramesReused` het regel matig groter is dan nul, duidt dit op een netwerk probleem.
+Een andere reden voor onstabiele hologrammen (Wobbling, krom trekken, jitteren of springende Holograms) kan een slechte netwerk verbinding zijn, met name onvoldoende netwerk bandbreedte of te hoge latentie. Een goede indicator voor de kwaliteit van uw netwerk verbinding is de waarde voor [prestatie statistieken](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused` . Hergebruikte frames geven situaties aan waarbij een oud video frame moet worden hergebruikt aan de client zijde omdat er geen nieuw video frame beschikbaar was, bijvoorbeeld vanwege pakket verlies of vanwege afwijkingen in de netwerk latentie. Als `ARRServiceStats.VideoFramesReused` het regel matig groter is dan nul, duidt dit op een netwerk probleem.
 
-U kunt ook `ARRServiceStats.LatencyPoseToReceiveAvg`een andere waarde zoeken in. Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, betekent dit dat u verbonden bent met een Data Center dat te ver weg is.
+U kunt ook een andere waarde zoeken in `ARRServiceStats.LatencyPoseToReceiveAvg` . Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, betekent dit dat u verbonden bent met een Data Center dat te ver weg is.
 
 Zie de [richt lijnen voor netwerk connectiviteit](../reference/network-requirements.md#guidelines-for-network-connectivity)voor een lijst met mogelijke oplossingen.
 

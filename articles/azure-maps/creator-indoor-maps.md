@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598393"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677811"
 ---
 # <a name="creator-for-indoor-maps"></a>Maker voor kaarten in de binnenste
 
@@ -35,7 +35,7 @@ Gebruik de [Azure Maps Data upload API](https://docs.microsoft.com/rest/api/maps
 
 ## <a name="convert-a-drawing-package"></a>Een teken pakket converteren
 
-De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/data/conversion) converteert een geüpload tekening pakket naar een binnenste kaart gegevens. De conversie service valideert ook het pakket. Validatie problemen worden onderverdeeld in twee typen: fouten en waarschuwingen. Als er fouten worden gedetecteerd, mislukt het conversie proces. Als waarschuwingen moeten worden gedetecteerd, wordt de conversie voltooid. Het is echter raadzaam om alle waarschuwingen te controleren en op te lossen. Een waarschuwing betekent dat een deel van de conversie is genegeerd of automatisch is opgelost. Als u de waarschuwingen niet oplost, kan dit leiden tot fouten in de laatste processen. Zie [waarschuwingen en fouten in het tekening pakket](drawing-conversion-error-codes.md)voor meer informatie.
+De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) converteert een geüpload tekening pakket naar een binnenste kaart gegevens. De conversie service valideert ook het pakket. Validatie problemen worden onderverdeeld in twee typen: fouten en waarschuwingen. Als er fouten worden gedetecteerd, mislukt het conversie proces. Als waarschuwingen moeten worden gedetecteerd, wordt de conversie voltooid. Het is echter raadzaam om alle waarschuwingen te controleren en op te lossen. Een waarschuwing betekent dat een deel van de conversie is genegeerd of automatisch is opgelost. Als u de waarschuwingen niet oplost, kan dit leiden tot fouten in de laatste processen. Zie [waarschuwingen en fouten in het tekening pakket](drawing-conversion-error-codes.md)voor meer informatie.
 
 Als er een fout optreedt, biedt de conversie service een koppeling naar de [Azure Maps tekening fout visualiseren](drawing-error-visualizer.md) zelfstandige webtoepassing. U kunt de fout Visualer voor het tekenen van tekeningen gebruiken om [waarschuwingen en fouten in het tekening pakket](drawing-conversion-error-codes.md) te controleren die zijn opgetreden tijdens het conversie proces. Zodra u de fouten hebt opgelost, kunt u vervolgens proberen het pakket te uploaden en te converteren.
 

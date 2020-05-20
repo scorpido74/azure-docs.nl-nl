@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74769911"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660181"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
 Microsoft Azure Active Directory-verificatie (Azure AD) is een mechanisme om verbinding te maken met Azure Database for PostgreSQL met behulp van identiteiten gedefinieerd in azure AD.
 Met Azure AD-verificatie kunt u gebruikers identiteiten van data bases en andere micro soft-Services beheren op een centrale locatie, waardoor het beheer van machtigingen wordt vereenvoudigd.
-
-> [!IMPORTANT]
-> Azure AD-verificatie voor Azure Database for PostgreSQL is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Voor delen van het gebruik van Azure AD zijn:
 
@@ -57,7 +52,7 @@ Wanneer u Azure AD-verificatie gebruikt, zijn er twee beheerders accounts voor d
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u nieuwe gebruikers wilt maken die kunnen worden geverifieerd met Azure AD, moet `azure_ad_admin` u de rol hebben in de-data base. Deze rol wordt toegewezen door het Azure AD-beheerders account voor een specifieke Azure Database for PostgreSQL server te configureren.
+Als u nieuwe gebruikers wilt maken die kunnen worden geverifieerd met Azure AD, moet u de `azure_ad_admin` rol hebben in de-data base. Deze rol wordt toegewezen door het Azure AD-beheerders account voor een specifieke Azure Database for PostgreSQL server te configureren.
 
 Als u een nieuwe Azure AD-database gebruiker wilt maken, moet u verbinding maken als de Azure AD-beheerder. Dit wordt uitgelegd in [configureren en aanmelden met Azure AD voor Azure database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 

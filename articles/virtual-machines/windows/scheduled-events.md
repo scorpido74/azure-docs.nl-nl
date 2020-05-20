@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099543"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675875"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
 
@@ -47,21 +47,21 @@ Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 Azure meta data service geeft informatie weer over het uitvoeren van Virtual Machines met behulp van een REST-eind punt dat toegankelijk is vanuit de VM. De informatie is beschikbaar via een niet-routeerbaar IP-adres, zodat het niet buiten de virtuele machine wordt weer gegeven.
 
 ### <a name="endpoint-discovery"></a>Eindpunt detectie
-Voor VNET ingeschakelde Vm's is de meta gegevens service beschikbaar vanuit een statisch niet-routeerbaar IP `169.254.169.254`-adres. Het volledige eind punt voor de meest recente versie van Scheduled Events is: 
+Voor VNET ingeschakelde Vm's is de meta gegevens service beschikbaar vanuit een statisch niet-routeerbaar IP-adres `169.254.169.254` . Het volledige eind punt voor de meest recente versie van Scheduled Events is: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de standaard aanvragen voor Cloud Services en klassieke Vm's vereist om het te gebruiken IP-adres te ontdekken. Raadpleeg dit voor beeld voor meer informatie over [het detecteren van het eind punt van de host](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
-Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2019-01-01`.
+Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2019-01-01` .
 
-| Versie | Release type | Regio's | Releaseopmerkingen | 
+| Versie | Release type | Regio's | Opmerkingen bij de release | 
 | - | - | - | - |
-| 2019-01-01 | Algemene Beschik baarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' Terminate ' voor de virtuele-machine schaal sets |
-| 2017-11-01 | Algemene Beschik baarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
-| 2017-08-01 | Algemene Beschik baarheid | Alle | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
-| 2017-03-01 | Preview | Alle |<li>Eerste release |
+| 2019-01-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' Terminate ' voor de virtuele-machine schaal sets |
+| 2017-11-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
+| 2017-08-01 | Algemene Beschik baarheid | Alles | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
+| 2017-03-01 | Preview | Alles |<li>Eerste release |
 
 > [!NOTE] 
 > Eerdere Preview-versies van geplande gebeurtenissen die {nieuwste} worden ondersteund als de API-versie. Deze indeling wordt niet meer ondersteund en zal in de toekomst worden afgeschaft.
@@ -74,12 +74,12 @@ Scheduled Events is uitgeschakeld voor uw service als deze niet 24 uur een aanvr
 ### <a name="user-initiated-maintenance"></a>Door de gebruiker geïnitieerd onderhoud
 Door de gebruiker geïnitieerd onderhoud van virtuele machines via de Azure Portal, API, CLI of Power shell resulteert in een geplande gebeurtenis. Hierdoor kunt u de logica voor onderhouds voorbereiding in uw toepassing testen en kan uw toepassing voorbereiden op door de gebruiker geïnitieerde onderhouds werkzaamheden.
 
-Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met `Reboot`het type gestart. Als u een virtuele machine opnieuw implementeert, wordt er een `Redeploy`gebeurtenis met het type.
+Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met het type gestart `Reboot` . Als u een virtuele machine opnieuw implementeert, wordt er een gebeurtenis met het type `Redeploy` .
 
 ## <a name="using-the-api"></a>De API gebruiken
 
-### <a name="headers"></a>Headers
-Wanneer u een query uitvoert op de Metadata Service, moet u `Metadata:true` de header opgeven om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Als u de header in de aanvraag niet opneemt, resulteert dit in een antwoord op de Metadata Service.
+### <a name="headers"></a>Kopteksten
+Wanneer u een query uitvoert op de Metadata Service, moet u de header opgeven `Metadata:true` om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Als u de header in de aanvraag niet opneemt, resulteert dit in een antwoord op de Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
 U kunt een query uitvoeren voor Scheduled Events door eenvoudigweg de volgende aanroep te nemen:
@@ -115,11 +115,11 @@ De DocumentIncarnation is een ETag en biedt een eenvoudige manier om te controle
 | Type | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: De virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden. <li>`Reboot`: De virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: De virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: De locatie van de virtuele machine wordt verwijderd (tijdelijke schijven gaan verloren). <li> `Terminate`: De virtuele machine is gepland om te worden verwijderd. |
 | ResourceType | Het type resource dat door deze gebeurtenis wordt beïnvloed. <br><br> Waarden: <ul><li>`VirtualMachine`|
 | Resources| Lijst met resources die van invloed zijn op deze gebeurtenis. Dit is gegarandeerd dat machines van Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar mag niet alle computers in de UD bevatten. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| Gebeurtenis status | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te starten na het tijdstip dat is `NotBefore` opgegeven in de eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` is ooit geen of vergelijk bare status. de gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
+| Gebeurtenis status | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de `NotBefore` eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` wordt nooit een of meer statussen opgegeven; de gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Gebeurtenissen plannen
-Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het gebeurtenis type. Deze tijd wordt weer gegeven in de eigenschap `NotBefore` van een gebeurtenis. 
+Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het gebeurtenis type. Deze tijd wordt weer gegeven in de eigenschap van een gebeurtenis `NotBefore` . 
 
 |Type  | Minimale kennisgeving |
 | - | - |
@@ -137,15 +137,15 @@ Geplande gebeurtenissen worden verzonden naar:
  - Zelfstandige Virtual Machines
  - Alle Virtual Machines in een Cloud service      
  - Alle Virtual Machines in een Beschikbaarheidsset      
- - Alle Virtual Machines in een plaatsings groep met schaal sets.         
+ - Alle Virtual Machines in een plaatsings groep voor schaal sets (inclusief batch)        
 
 Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke vm's worden beïnvloed. 
 
 ### <a name="starting-an-event"></a>Een gebeurtenis starten 
 
-Zodra u een aanstaande gebeurtenis hebt geleerd en de logica hebt voltooid om het probleem op te starten, kunt u de openstaande `POST` gebeurtenis goed keuren door een aanroep `EventId`van de meta gegevens service uit te voeren met de. Dit geeft aan dat Azure de minimale meldings tijd kan verkorten (indien mogelijk). 
+Zodra u een aanstaande gebeurtenis hebt geleerd en de logica hebt voltooid om het probleem op te starten, kunt u de openstaande gebeurtenis goed keuren door een `POST` aanroep van de meta gegevens service uit te voeren met de `EventId` . Dit geeft aan dat Azure de minimale meldings tijd kan verkorten (indien mogelijk). 
 
-Hieronder vindt u de JSON die wordt verwacht `POST` in de aanvraag tekst. De aanvraag moet een lijst met `StartRequests`bevatten. Elk `StartRequest` bevat de `EventId` voor de gebeurtenis die u wilt versnellen:
+Hieronder vindt u de JSON die wordt verwacht in de `POST` aanvraag tekst. De aanvraag moet een lijst met bevatten `StartRequests` . Elk `StartRequest` bevat de `EventId` voor de gebeurtenis die u wilt versnellen:
 ```
 {
     "StartRequests" : [
@@ -162,7 +162,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 ```
 
 > [!NOTE] 
-> Door een gebeurtenis te bevestigen, kan de gebeurtenis `Resources` in de gebeurtenis worden voortgezet, niet alleen de virtuele machine die de gebeurtenis erkent. U kunt er daarom voor kiezen om een leider te selecteren voor het coördineren van de bevestiging. Dit kan zo eenvoudig zijn als `Resources` de eerste computer in het veld.
+> Door een gebeurtenis te bevestigen, kan de gebeurtenis `Resources` in de gebeurtenis worden voortgezet, niet alleen de virtuele machine die de gebeurtenis erkent. U kunt er daarom voor kiezen om een leider te selecteren voor het coördineren van de bevestiging. Dit kan zo eenvoudig zijn als de eerste computer in het `Resources` veld.
 
 
 ## <a name="powershell-sample"></a>Voorbeeld van PowerShell 

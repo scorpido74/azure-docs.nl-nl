@@ -5,12 +5,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207680"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677913"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
 
@@ -33,14 +33,13 @@ Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share word
 * *Standard_ZRS* -standaard zone redundante opslag (ZRS)
 * *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang (RA-GRS)
 * *Premium_LRS* -Premium lokaal redundante opslag (LRS)
-* *Premium_ZRS* -Premium zone-redundante opslag (GRS)
 
 > [!NOTE]
 > Azure Files Premium Storage ondersteunen in AKS-clusters met Kubernetes 1,13 of hoger, is de minimale Premium-bestands share 100 GB
 
 Zie [Kubernetes-opslag klassen][kubernetes-storage-classes]voor meer informatie over Kubernetes-opslag klassen voor Azure files.
 
-Maak een bestand met `azure-file-sc.yaml` de naam en kopieer het in het volgende voor beeld-manifest. Zie de sectie [koppelings opties][mount-options] voor meer informatie over *mountOptions*.
+Maak een bestand `azure-file-sc.yaml` met de naam en kopieer het in het volgende voor beeld-manifest. Zie de sectie [koppelings opties][mount-options] voor meer informatie over *mountOptions*.
 
 ```yaml
 kind: StorageClass
@@ -69,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Een permanente volume claim (PVC) maakt gebruik van het opslag klassen object om een Azure-bestands share dynamisch in te richten. De volgende YAML kunnen worden gebruikt voor het maken van een permanente volume claim *5 GB* in grootte met *ReadWriteMany* -toegang. Zie de documentatie over het [permanente volume van Kubernetes][access-modes] voor meer informatie over de toegangs modi.
 
-Maak nu een bestand met `azure-file-pvc.yaml` de naam en kopieer de volgende YAML. Zorg ervoor dat de *storageClassName* overeenkomt met de opslag klasse die in de laatste stap is gemaakt:
+Maak nu een bestand `azure-file-pvc.yaml` met de naam en kopieer de volgende YAML. Zorg ervoor dat de *storageClassName* overeenkomt met de opslag klasse die in de laatste stap is gemaakt:
 
 ```yaml
 apiVersion: v1
@@ -107,7 +106,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 De volgende YAML maakt een pod die gebruikmaakt van de permanente volume claim *azurefile* om de Azure-bestands share te koppelen aan het */mnt/Azure* -pad. Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
 
-Maak een bestand met `azure-pvc-files.yaml`de naam en kopieer de volgende YAML. Zorg ervoor dat de *claim* naam overeenkomt met het PVC dat in de laatste stap is gemaakt.
+Maak een bestand `azure-pvc-files.yaml` met de naam en kopieer de volgende YAML. Zorg ervoor dat de *claim* naam overeenkomt met het PVC dat in de laatste stap is gemaakt.
 
 ```yaml
 kind: Pod
@@ -140,7 +139,7 @@ Maak de Pod met de opdracht [kubectl apply][kubectl-apply] .
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-U hebt nu een actieve pod met uw Azure Files-share die is gekoppeld in de */mnt/Azure* -map. Deze configuratie kan worden weer gegeven bij het controleren van uw `kubectl describe pod mypod`pod via. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
+U hebt nu een actieve pod met uw Azure Files-share die is gekoppeld in de */mnt/Azure* -map. Deze configuratie kan worden weer gegeven bij het controleren van uw Pod via `kubectl describe pod mypod` . De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
 
 ```
 Containers:
