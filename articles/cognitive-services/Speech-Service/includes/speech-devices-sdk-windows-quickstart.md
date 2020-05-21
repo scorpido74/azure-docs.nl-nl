@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400080"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673115"
 ---
 In deze Quick Start leert u hoe u de speech apparaten SDK voor Windows kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](../conversation-transcription-service.md) -apparaat. Voor conversatie-transcriptie wordt alleen [Azure KINECT DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund. Voor andere spraak gebruiken lineaire Mic-matrices die een geometrie van een microfoon matrix bieden, worden ondersteund.
 
@@ -48,19 +48,19 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het welkomstscherm als dit verschijnt.
 
-1. Maak een nieuw project op de menu balk van de eclips door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
+1. Maak een nieuw project op de menu balk van de eclips door **bestand**  >  **Nieuw**  >  **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
 
 1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Finish**.
 
    ![Schermopname van de wizard Nieuw Java-project](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **Configure** > **Convert to Maven project** in het context menu. Selecteer **Finish**.
+1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **Configure**  >  **Convert to Maven project** in het context menu. Selecteer **Finish**.
 
    ![Schermopname van Package explorer](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
 1. Open het bestand pom.xml en bewerk dit.
 
-    Aan het einde van het bestand, vóór het afsluitende `</project>`label `repositories` , `dependencies` maken en elementen, zoals hier wordt weer gegeven `version` , en zorg ervoor dat het overeenkomt met de huidige versie:
+    Aan het einde van het bestand, vóór het afsluitende label `</project>` , maken `repositories` en `dependencies` elementen, zoals hier wordt weer gegeven, en zorg ervoor dat het `version` overeenkomt met de huidige versie:
     ```xml
     <repositories>
          <repository>
@@ -74,7 +74,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.0</version>
         </dependency>
     </dependencies>
    ```
@@ -87,7 +87,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
 
-   Voor spraak-en LUIS gaat u naar `FunctionsList.java`de volgende informatie:
+   Voor spraak-en LUIS gaat u naar de `FunctionsList.java` volgende informatie:
 
    ```java
     // Subscription
@@ -98,19 +98,19 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en regio gegevens ook nodig in `Cts.java`:
+   Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en regio gegevens ook nodig in `Cts.java` :
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
    ```
 
-1. Het sleutel woord default (sleutel woord) is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. `C:\SDSDK\JRE-Sample-Release\keyword\Computer` Bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
+1. Het sleutel woord default (sleutel woord) is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. `C:\SDSDK\JRE-Sample-Release\keyword\Computer`Bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
 
     > [!TIP]
     > U kunt ook [een aangepast tref woord maken](../speech-devices-sdk-create-kws.md).
 
-    Als u een nieuw tref woord wilt gebruiken, werkt u `FunctionsList.java`de volgende regel in en kopieert u het tref woord naar uw app. Als u bijvoorbeeld het tref woord ' machine ' wilt gebruiken in het trefwoord `machine.zip`pakket:
+    Als u een nieuw tref woord wilt gebruiken, werkt u de volgende regel in `FunctionsList.java` en kopieert u het tref woord naar uw app. Als u bijvoorbeeld het tref woord ' machine ' wilt gebruiken in het trefwoord pakket `machine.zip` :
 
    * Kopieer het `kws.table` bestand van het zip-pakket naar de projectmap **/klassen**van het project.
    * Update `FunctionsList.java` met de naam van het tref woord:
@@ -121,7 +121,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 ## <a name="run-the-sample-application-from-eclipse"></a>De voorbeeld toepassing vanuit een eclips uitvoeren
 
-1. **Voer** > in de menu balk van de eclips**uitvoeren als** > **Java-toepassing**uit. Selecteer vervolgens **FunctionsList** en **OK**.
+1. **Voer**in de menu balk van de eclips  >  **uitvoeren als**  >  **Java-toepassing**uit. Selecteer vervolgens **FunctionsList** en **OK**.
 
    ![Scherm opname van een Java-toepassing selecteren](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
    ![Voor beeld van de SDK-voorbeeld toepassing en-opties voor spraak apparaten](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Probeer de nieuwe **transcriptie** -demo van de conversatie. Begin met transcriberen met**Start**van de **sessie** > . Standaard is iedereen een gast. Als u echter de spraak handtekeningen van een deel nemer hebt, kunnen ze in een `participants.properties` bestand worden geplaatst in het **doel/klassen**van de projectmap. Als u de spraak handtekening wilt genereren, kijkt u naar [Transcribe-gesprekken (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Probeer de nieuwe **transcriptie** -demo van de conversatie. Begin met transcriberen met start van de **sessie**  >  **Start**. Standaard is iedereen een gast. Als u echter de spraak handtekeningen van een deel nemer hebt, kunnen ze in een bestand worden geplaatst `participants.properties` in het **doel/klassen**van de projectmap. Als u de spraak handtekening wilt genereren, kijkt u naar [Transcribe-gesprekken (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Transcriptie-toepassing voor demo gesprekken](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -145,7 +145,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
    ![Scherm opname van uitvoer bare JAR-bestand exporteren](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. Plaats `kws.table`,, `participants.properties` `unimic_runtime.dll` `pma.dll` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
+1. Plaats `kws.table` ,, `participants.properties` `unimic_runtime.dll` `pma.dll` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
 
 1. De zelfstandige toepassing uitvoeren
 

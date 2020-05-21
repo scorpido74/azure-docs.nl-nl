@@ -3,12 +3,12 @@ title: Wat is Language Understanding (LUIS)?
 description: Language Understanding (LUIS) is een API-cloudservice die aangepaste machine-learning-intelligence toepast op tekst in natuurlijke spreektaal van een gebruiker om daar de algemene betekenis en relevante detailinformatie uit te destilleren.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592811"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675991"
 ---
 # <a name="what-is-language-understanding-luis"></a>Wat is Language Understanding (LUIS)?
 
@@ -29,7 +29,7 @@ Als de LUIS-app is gepubliceerd, worden uitingen (tekst) door een clienttoepassi
 
 ![Conceptuele installatie kopie van LUIS met behulp van de chat-bot om gebruikers tekst te voors pellen met natuurlijk language Standing (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele afbeelding van LUIS werken met de chat-bot om gebruikers tekst te voors pellen met natuurlijk taal begrip (NLP")
 
-|Stap|Actie|
+|Stap|Bewerking|
 |:--|:--|
 |1|De clienttoepassing verzendt een _uiting_ van de gebruiker (tekst in eigen woorden), zoals "Ik wil mijn contactpersoon van de afdeling HR bellen", naar het eindpunt van LUIS als een HTTP-aanvraag.|
 |2|Met LUIS kunt u uw aangepaste taal modellen maken om intelligentie toe te voegen aan uw toepassing. Door de computer geleerde taal modellen nemen de niet-gestructureerde invoer tekst van de gebruiker en retourneert een JSON-indelings antwoord met een hoofd intentie `HRContact` . Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de entiteit _type contact_ .|
@@ -46,7 +46,7 @@ Uw LUIS-app bevat een domein-specifiek natuurlijke taal model. U kunt de LUIS-ap
 
 * **Vooraf gedefinieerd model** LUIS bevat veel vooraf gedefinieerde domeinmodellen, inclusief intenties, uitingen en vooraf gedefinieerde entiteiten. U kunt de vooraf gedefinieerde entiteiten ook gebruiken zonder de intenties en uitingen van het vooraf gedefinieerde model. [Vooraf gedefinieerde domeinmodellen](luis-how-to-use-prebuilt-domains.md) bevatten alles wat u nodig hebt om LUIS snel te kunnen gaan gebruiken.
 
-* **Aangepast model** LUIS biedt verschillende manieren om uw eigen aangepaste modellen te identificeren, inclusief intenties en entiteiten. Entiteiten zijn onder andere door machines geleerde entiteiten, specifieke of letterlijke entiteiten en een combi natie van door de machine geleerd en letterlijke waarde.
+* **Aangepast model** LUIS biedt verschillende manieren om uw eigen aangepaste modellen te identificeren, inclusief intenties en entiteiten. Entiteiten zijn machine learning-entiteiten, specifieke of letterlijke entiteiten en een combi natie van machine learning en literal.
 
 ## <a name="build-the-luis-model"></a>Het LUIS-model opbouwen
 Bouw het model met behulp van de [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's of met de [Luis-Portal](https://www.luis.ai).

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e3ee175e521fe37c99fcb3650ce7480f3f503a08
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658652"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673268"
 ---
 Als u een Visual Studio-project voor C++-desktop ontwikkeling wilt maken, moet u Visual Studio-ontwikkel opties instellen, het project maken, de doel architectuur selecteren en de spraak-SDK installeren.
 
@@ -23,7 +23,7 @@ Als u wilt starten, moet u ervoor zorgen dat u goed hebt ingesteld in Visual Stu
 
 1. Selecteer **door gaan zonder code** om naar de Visual Studio IDE te gaan.
 
-1. Selecteer in de menu balk van Visual Studio **hulpprogram** > ma's**en functies ophalen** om Visual Studio Installer te openen en het dialoog venster **wijzigen** te bekijken.
+1. Selecteer in de menu balk van Visual Studio **hulpprogram**ma's  >  **en functies ophalen** om Visual Studio Installer te openen en het dialoog venster **wijzigen** te bekijken.
 
    ![Het tabblad werk belastingen, het dialoog venster wijzigen, Visual Studio Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
@@ -39,7 +39,7 @@ Als u wilt starten, moet u ervoor zorgen dat u goed hebt ingesteld in Visual Stu
 
 Maak vervolgens uw project:
 
-1. Kies in de menu balk van Visual Studio de optie **bestand** > **Nieuw** > **project** om het venster **een nieuw project maken** weer te geven.
+1. Kies in de menu balk van Visual Studio de optie **bestand**  >  **Nieuw**  >  **project** om het venster **een nieuw project maken** weer te geven.
 
    ![Een nieuw project maken, C++-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
@@ -49,11 +49,11 @@ Maak vervolgens uw project:
 
    ![Uw nieuwe project configureren, C++-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
 
-1. Voer `helloworld`in **project naam**in.
+1. Voer in **project naam**in `helloworld` .
 
 1. Navigeer in **locatie**naar en selecteer of maak de map waarin u uw project wilt opslaan.
 
-Selecteer nu de architectuur van het doel platform. Zoek in de werk balk van Visual Studio de vervolg keuzelijst **platformen voor oplossingen** . (Als dit niet wordt weer gegeven, kiest u**werk balken** > **standaard** **weer geven** > om de werk balk met **oplossings platforms**weer te geven.) Als u een 64-bits versie van Windows gebruikt, kiest u **x64** in de vervolg keuzelijst. 64-bits Windows kan ook 32-bits toepassingen uitvoeren, zodat u kunt kiezen voor **x86** als u dat wilt.
+Selecteer nu de architectuur van het doel platform. Zoek in de werk balk van Visual Studio de vervolg keuzelijst **platformen voor oplossingen** . (Als dit niet wordt weer gegeven, kiest u **weer gave**  >  **Werk balken**  >  **Standaard** om de werk balk met **oplossings platforms**weer te geven.) Als u een 64-bits versie van Windows gebruikt, kiest u **x64** in de vervolg keuzelijst. 64-bits Windows kan ook 32-bits toepassingen uitvoeren, zodat u kunt kiezen voor **x86** als u dat wilt.
 
 ### <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
@@ -67,7 +67,7 @@ Installeer tot slot het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget)
 
 1. Kies in **pakket bron**de optie **nuget.org**.
 
-1. Voer `Microsoft.CognitiveServices.Speech`in het **zoekvak** in en kies vervolgens dat pakket nadat het in de zoek resultaten wordt weer gegeven.
+1. Voer in het **zoekvak** in `Microsoft.CognitiveServices.Speech` en kies vervolgens dat pakket nadat het in de zoek resultaten wordt weer gegeven.
 
    ![Micro soft. CognitiveServices. speech C++-pakket installeren-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
@@ -77,4 +77,4 @@ Installeer tot slot het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget)
 
 1. Selecteer **OK**in het dialoog venster **voor beeld van wijzigingen** .
 
-1. Bekijk in het dialoog venster **licentie acceptatie** de licentie en selecteer vervolgens **Ik ga akkoord**. De installatie van het pakket wordt gestart en wanneer de installatie is voltooid, wordt in het deel venster **uitvoer** een bericht weer `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`gegeven dat vergelijkbaar is met de volgende tekst:.
+1. Bekijk in het dialoog venster **licentie acceptatie** de licentie en selecteer vervolgens **Ik ga akkoord**. De installatie van het pakket wordt gestart en wanneer de installatie is voltooid, wordt in het deel venster **uitvoer** een bericht weer gegeven dat vergelijkbaar is met de volgende tekst: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .

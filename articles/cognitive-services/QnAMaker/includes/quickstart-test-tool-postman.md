@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203954"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673472"
 ---
 Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
@@ -37,7 +37,7 @@ Gebruik deze procedure voor het configureren van Postman en lees elke volgende s
 
 1. Selecteer op de pagina **instellingen** van de Knowledge Base het tabblad **postman** voor een overzicht van de configuratie die wordt gebruikt voor het genereren van een antwoord uit de Knowledge Base. Kopieer de volgende informatie om te gebruiken in postman.
 
-    |Naam|Instelling|Doel en waarde|
+    |Name|Instelling|Doel en waarde|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Dit is de HTTP-methode en route voor de URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Dit is de host van de URL. Voeg de host en post-waarden toe om de volledige generateAnswer-URL op te halen.|
@@ -51,7 +51,7 @@ Gebruik deze procedure voor het configureren van Postman en lees elke volgende s
 
 In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om onderscheid te maken tussen twee verschillende vragen. Voeg de meta gegevens toe aan de query om het filter te beperken tot alleen het relevante QnA-paar.
 
-1. Wijzig in postman alleen de query JSON door de `strictFilters` eigenschap met het paar naam/waarde van `service:qna_maker`toe te voegen. De JSON van de hoofd tekst moet:
+1. Wijzig in postman alleen de query JSON door de `strictFilters` eigenschap met het paar naam/waarde van toe te voegen `service:qna_maker` . De JSON van de hoofd tekst moet:
 
     ```json
     {
@@ -64,7 +64,7 @@ In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om 
     }
     ```
 
-    De vraag is slechts één woord, `size`waarmee een van de twee vraag-en-antwoord sets kan worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen `qna_maker` de antwoorden.
+    De vraag is slechts één woord, `size` waarmee een van de twee vraag-en-antwoord sets kan worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen de `qna_maker` antwoorden.
 
 1. Het antwoord bevat alleen het antwoord dat voldoet aan de filter criteria.
 
@@ -103,13 +103,16 @@ In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om 
     }
     ```
 
-    Als er een vraag-en-antwoordset is die niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt de set niet geretourneerd. In plaats daarvan wordt het `No good match found in KB.` algemene antwoord geretourneerd.
+    Als er een vraag-en-antwoordset is die niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt de set niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
 ## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
 
-Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt `debug` u de eigenschap toe:
+> [!NOTE]
+>Het is niet raadzaam om debug poreperty te gebruiken voor een afhankelijkheid. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen. 
 
-1. Wijzig in postman alleen de JSON van de hoofd tekst door `debug` de eigenschap toe te voegen. De JSON moet zijn:
+Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
+
+1. Wijzig in postman alleen de JSON van de hoofd tekst door de eigenschap toe te voegen `debug` . De JSON moet zijn:
 
     ```json
     {
@@ -215,7 +218,7 @@ Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwo
 
 Als u een antwoord wilt ontvangen van de test Knowledge Base, gebruikt u de `isTest` eigenschap Body.
 
-Wijzig in postman alleen de JSON van de hoofd tekst door `isTest` de eigenschap toe te voegen. De JSON moet zijn:
+Wijzig in postman alleen de JSON van de hoofd tekst door de eigenschap toe te voegen `isTest` . De JSON moet zijn:
 
 ```json
 {
@@ -357,7 +360,7 @@ U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt v
     }
     ```
 
-    QnA Maker heeft een score geretourneerd `0`van, wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
+    QnA Maker heeft een score geretourneerd van `0` , wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
 
 1. Wijzig de drempel waarde in 60% en vraag de query opnieuw aan:
 

@@ -1,26 +1,26 @@
 ---
-title: 'Zelf studie: gestructureerde gegevens ophalen met door de machine geleerde entiteit-LUIS'
-description: Gestructureerde gegevens uit een utterance extra heren met behulp van de door de machine geleerde entiteit. Voeg subentiteiten met functies toe om de nauw keurigheid van de extractie te verg Roten.
+title: 'Zelf studie: gestructureerde gegevens met machine learning-entiteit extra heren-LUIS'
+description: Gestructureerde gegevens uit een utterance extra heren met behulp van de machine learning-entiteit. Voeg subentiteiten met functies toe om de nauw keurigheid van de extractie te verg Roten.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: d1bc8fc6aac52e264cb4352ca05f9df45ccfc50e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588867"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676168"
 ---
-# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Zelf studie: gestructureerde gegevens ophalen van gebruikers utterance met entiteiten die door machines zijn geleerd in Language Understanding (LUIS)
+# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Zelf studie: gestructureerde gegevens uit de utterance van de gebruiker met machine learning-entiteiten in Language Understanding extra heren (LUIS)
 
-In deze zelf studie extraheert u gestructureerde gegevens uit een utterance met behulp van de door de machine geleerde entiteit.
+In deze zelf studie haalt u gestructureerde gegevens op uit een utterance met behulp van de machine learning-entiteit.
 
-De door de machine geleerde entiteit ondersteunt het [model ontledings concept](luis-concept-model.md#v3-authoring-model-decomposition) door subentiteits entiteiten met [functies](luis-concept-feature.md)te leveren.
+De machine learning-entiteit ondersteunt het [model ontledings concept](luis-concept-model.md#v3-authoring-model-decomposition) door subentiteits entiteiten met [functies](luis-concept-feature.md)te leveren.
 
 **In deze zelfstudie leert u het volgende:**
 
 > [!div class="checklist"]
 > * Voorbeeld-app importeren
-> * Door machine geleerde entiteit toevoegen
+> * Machine learning-entiteit toevoegen
 > * Subentiteit en functie toevoegen
 > * App trainen, testen en publiceren
 > * De voor spelling van de entiteit van het eind punt ophalen
@@ -28,9 +28,9 @@ De door de machine geleerde entiteit ondersteunt het [model ontledings concept](
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
 
-## <a name="why-use-a-machine-learned-entity"></a>Waarom een door de machine geleerde entiteit gebruiken?
+## <a name="why-use-a-machine-learning-entity"></a>Waarom een machine learning-entiteit gebruiken?
 
-In deze zelf studie wordt een door een machine geleerde entiteit toegevoegd voor het ophalen van gegevens uit de utterance van een gebruiker.
+In deze zelf studie voegt u een machine learning-entiteit toe om gegevens te extra heren uit de utterance van een gebruiker.
 
 De entiteit definieert de gegevens die moeten worden geëxtraheerd uit de utterance. Dit omvat het geven van de gegevens een naam, een type (indien mogelijk), een oplossing van de gegevens als er sprake is van dubbel zinnigheid en de exacte tekst die de gegevens oplevert.
 
@@ -42,11 +42,11 @@ Als u de gegevens wilt definiëren, moet u het volgende doen:
 
 Het afstellen van de entiteit is belang rijk voor zowel de voor spelling als voor gegevens extractie met de entiteit.
 
-Begin met een door de machine geleerde entiteit, die de begin-en de entiteit op het hoogste niveau is voor het uitpakken van gegevens. Splits de entiteit vervolgens in subentiteiten.
+Begin met een machine learning-entiteit, die het begin en de entiteit op het hoogste niveau is voor het extra heren van gegevens. Splits de entiteit vervolgens in subentiteiten.
 
-Hoewel u mogelijk niet weet hoe nauw keurig uw entiteit moet zijn wanneer u uw app start, moet een best practice beginnen met een door de machine geleerde entiteit en vervolgens afbreken met subentiteiten als uw app is gerijpt.
+Hoewel u mogelijk niet weet hoe nauw keurig uw entiteit moet zijn wanneer u uw app start, moet een best practice beginnen met een machine learning-entiteit en vervolgens afbreken met subentiteiten als uw app is gerijpt.
 
-In deze zelf studie maakt u een door de machine geleerde entiteit die een bestelling voor een pizza-app vertegenwoordigt. De entiteit haalt tekst op die betrekking heeft op de order, de uitname van de grootte en de hoeveelheid.
+In deze zelf studie maakt u een machine learning-entiteit die een bestelling voor een pizza-app vertegenwoordigt. De entiteit haalt tekst op die betrekking heeft op de order, de uitname van de grootte en de hoeveelheid.
 
 Een utterance van `Please deliver one large cheese pizza to me` moet `one large cheese pizza` worden geëxtraheerd als de order, en kan ook worden geëxtraheerd `1` voor hoeveelheid en `large` voor grootte.
 
@@ -58,9 +58,9 @@ Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samp
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="label-text-as-entities-in-example-utterances"></a>Tekst labelen als entiteiten in voor beeld uitingen
+## <a name="create-machine-learned-entity"></a>Door machine geleerde entiteit maken
 
-Als u details over een pizza order wilt extra heren, maakt u een op het hoogste niveau, door de machine geleerde `Order` entiteit.
+Als u details over een pizza order wilt extra heren, maakt u een hoofd niveau, een machine learning- `Order` entiteit.
 
 1. Selecteer op de pagina **intenties** de **OrderPizza** intentie.
 
@@ -70,7 +70,7 @@ Als u details over een pizza order wilt extra heren, maakt u een op het hoogste 
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    Begin met het selecteren van net vóór de meest linkse tekst van `pickup` (#1) en ga vervolgens alleen verder dan de juiste tekst, `anchovies` (#2: Hiermee wordt het label proces beëindigd). Er wordt een pop-upmenu weer gegeven. Voer in het pop-upvenster de naam van de entiteit in `Order` (#3). Selecteer vervolgens `Order - Create new entity` in de lijst (#4).
+    Begin met het selecteren van net vóór de meest linkse tekst van `pickup` (#1) en ga vervolgens alleen verder dan de juiste tekst, `anchovies` (#2: Hiermee wordt het label proces beëindigd). Er wordt een pop-upmenu weer gegeven. Voer in het pop-upvenster de naam van de entiteit in `Order` (#3). Selecteer vervolgens `Order Create new entity` in de lijst (#4).
 
     ![Label begint en eindigt op tekst voor volledige volg orde](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -81,139 +81,165 @@ Als u details over een pizza order wilt extra heren, maakt u een op het hoogste 
 
     ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. In het vak **een door een machine geleerde entiteit maken** , in het vak **structuur** , `Size` selecteert u vervolgens ENTER.
-1. Als u een **functie**wilt toevoegen, selecteert u de `+` in het gedeelte **onderdelen** en selecteert u **nieuwe woordgroepen lijst maken**.
+1. Selecteer in het vak **subentiteiten toevoegen (optioneel)** **+** de `Order` rij, vervolgens toevoegen `Size` en `Quantity` als subentiteiten, en selecteer vervolgens **maken**.
 
-1. Voer in het vak **nieuwe woordgroepen lijst maken** de naam in en `SizeFeature` Voer vervolgens waarden in: `small` , `medium` en `large` . Wanneer in het vak **suggesties** wordt ingevuld, selecteert u `extra large` en `xl` . Selecteer **gereed** om de nieuwe woordgroepen lijst te maken.
+    > [!div class="mx-imgBorder"]
+    > ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
-    Met deze woordgroepen lijst functie kan de `Size` subentiteit woorden vinden die gerelateerd zijn aan de grootte door bijvoorbeeld woorden op te geven. In deze lijst hoeft u niet elk woord grootte op te geven, maar moet woorden bevatten die worden verwacht om de grootte aan te duiden.
+## <a name="edit-subentities-to-improve-extraction"></a>Subentiteiten bewerken om de extractie te verbeteren
 
-    ![Een functie maken voor de subentiteit grootte](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
+In de vorige stappen maakt u de entiteit en de subentiteit. Voeg functies toe aan de subentiteiten om de extractie te verbeteren.
 
-1. Selecteer in het venster **een door een machine geleerde entiteit maken** de optie **maken** om het maken van de subentiteit te volt ooien `Size` .
+### <a name="improve-size-extraction-with-phrase-list"></a>Grootte extractie verbeteren met woordgroepen lijst
 
-    De `Order` entiteit met een `Size` entiteit wordt gemaakt, maar alleen de `Order` entiteit is toegepast op de utterance. U moet de `Size` entiteits tekst labelen in het voor beeld utterance.
+1. Selecteer **entiteiten** in het menu links en selecteer vervolgens **order** entiteit.
 
-1. In hetzelfde voor beeld utterance labelt u de subentiteit **grootte** van `large` door het woord te selecteren en vervolgens de entiteit **grootte** te selecteren in de vervolg keuzelijst.
+1. Selecteer op het tabblad **schema en functies** de **grootte** subentiteit en selecteer **+ functie toevoegen**.
 
-    ![Label de entiteit grootte voor tekst in het utterance.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
+1. Selecteer **nieuwe woordgroepen lijst maken** in de vervolg keuzelijst.
 
-    De lijn wordt onder de tekst weer, omdat het labelen en de voor spelling overeenkomen omdat u de tekst _expliciet_ labelt.
+1. Voer in het vak **nieuwe woordgroepen lijst maken** de naam in en `SizePhraselist` Voer vervolgens waarden in: `small` , `medium` en `large` . Wanneer in het vak **suggesties** wordt ingevuld, selecteert u `extra large` en `xl` . Selecteer **Opslaan** om de nieuwe woordgroepen lijst te maken.
 
-1. Label de `Order` entiteit in de resterende uitingen samen met de grootte-entiteit. De vier Kante haken in de tekst geven de gelabelde `Order` entiteit en de `Size` entiteit binnen.
+    Met deze woordgroepen lijst functie kan de `Size` subentiteit woorden vinden die gerelateerd zijn aan de grootte door bijvoorbeeld woorden op te geven. Deze woordgroepen lijst hoeft niet elk woord grootte op te geven, maar moet woorden bevatten die worden verwacht om de grootte aan te duiden.
 
-    |Voor beeld van een bestelling uitingen|
-    |--|
-    |`can i get [a pepperoni pizza and a can of coke] please`|
-    |`can i get [a [small] pizza with onions peppers and olives]`|
-    |`[delivery for a [small] pepperoni pizza]`|
-    |`i need [2 [large] cheese pizzas 6 [large] pepperoni pizzas and 1 [large] supreme pizza]`|
+### <a name="add-sizelist-entity"></a>SizeList-entiteit toevoegen
 
-    ![Maak de entiteiten en subentiteiten in alle resterende voor beeld-uitingen.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
+Bij het toevoegen van een lijst met bekende grootten die door de client toepassing wordt herkend, kunt u ook extra heren.
 
-    > [!CAUTION]
-    > Hoe behandel ik geïmpliceerde gegevens zoals de letter die `a` een enkele pizza impliceert? Of het ontbreken van `pickup` en `delivery` om aan te geven waar de pizza wordt verwacht? Of het ontbreken van een grootte om de standaard grootte van klein of groot te geven? Overweeg impliciete verwerking van gegevens te behandelen als onderdeel van uw bedrijfs regels in de client toepassing in plaats van of naast LUIS.
+1. Selecteer **entiteiten** in het menu links en selecteer **+ maken**.
 
-1. Als u de app wilt trainen, selecteert u **trainen**. Training past de wijzigingen, zoals de nieuwe entiteiten en het gelabelde uitingen, toe op het actieve model.
+1. Stel de naam van de entiteit zo in dat `SizeListentity` deze gemakkelijk te identificeren is in vergelijking met de `SizePhraselist` in de vorige sectie gemaakte.
 
-1. Voeg na de training een nieuw voor beeld-utterance toe aan het doel om te zien hoe goed LUIS de door de machine geleerde entiteit begrijpt.
+1. Voeg de formaten toe die de client toepassing verwacht: `Small` , `Medium` , `Large` , en `XLarge` Voeg synoniemen voor elk toe. De synoniemen moeten de voor waarden zijn die een gebruiker invoert in de chat-bot. De entiteit wordt geëxtraheerd met een lijst entiteit, wanneer deze precies overeenkomt met de genormaliseerde waarde of synoniemen.
 
-    |Voor beeld van een bestelling utterance|
-    |--|
-    |`pickup XL meat lovers pizza`|
+    |Genormaliseerde waarde|Synoniemen|
+    |--|--|
+    |Klein|SM, SML, tiny, kleinste|
+    |Normaal|MD, MDM, normaal, gemiddeld, Midden|
+    |Groot|LG, LRG, Big|
+    |XLarge|XL, grootste, gigantisch|
 
-    De algemene bovenste entiteit, `Order` heeft het label en de `Size` subentiteit wordt ook gelabeld met stippel lijnen.
 
-    ![Nieuw voor beeld utterance voorspeld met entiteit](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
-    De stippel lijn geeft de voor spelling aan.
+### <a name="add-feature-of-sizelist-entity"></a>Functie van SizeList-entiteit toevoegen
 
-1. Als u de voor spelling wilt wijzigen in een entiteit met een label, selecteert u de rij en selecteert u voor **spellingen van entiteit bevestigen**.
+1. Selecteer **entiteiten** in het menu links om terug te keren naar de lijst met entiteiten.
 
-    ![Accepteer de voor spelling door entiteits voorspelling bevestigen te selecteren.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
+1. Selecteer **volg orde** in de lijst met entiteiten.
 
-    Op dit moment werkt de door de machine geleerde entiteit goed, omdat deze de entiteit kan vinden in een nieuw voor beeld utterance. Als u voor beeld uitingen toevoegt en de entiteit niet correct is voor speld, labelt u de entiteit en de subentiteiten. Als de entiteit correct wordt voor speld, moet u de voor spellingen bevestigen.
+1. Selecteer op het tabblad **schema en functies** de entiteit **grootte** en selecteer vervolgens **+ functie toevoegen**.
 
+1. Selecteer **@ SizeList** in de vervolg keuzelijst.
+
+<a name="add-prebuilt-number-entity-to-app"></a>
+
+### <a name="add-prebuilt-number-entity"></a>Vooraf ingebouwde nummer entiteit toevoegen
+
+Het toevoegen van een vooraf gedefinieerde nummer entiteit helpt ook extra heren.
+
+1. Selecteer **entiteiten** in het menu links en selecteer vervolgens **vooraf samengestelde entiteit toevoegen**.
+
+1. Selecteer **getal** in de lijst en selecteer vervolgens **gereed**.
+
+1. Selecteer **entiteiten** in het menu links om terug te keren naar de lijst met entiteiten.
+
+### <a name="add-feature-of-prebuilt-number-entity"></a>Functie van vooraf ingebouwde nummer entiteit toevoegen
+
+1. Selecteer **volg orde** in de lijst met entiteiten.
+
+1. Selecteer op het tabblad **schema en functies** de entiteit **hoeveelheid** en selecteer **+ functie toevoegen**.
+
+1. Selecteer **@ getal** in de vervolg keuzelijst.
 
 <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>
 
-## <a name="add-subentity-with-feature-of-prebuilt-entity"></a>Subentiteit toevoegen met functie van vooraf gebouwde entiteit
+## <a name="configure-required-features"></a>Vereiste onderdelen configureren
 
-De order informatie moet ook het aantal items in de volg orde bevatten, zoals het aantal pizzas. Als u deze gegevens wilt extra heren, moet er een nieuwe door de machine geleerde subentiteit worden toegevoegd aan `Order` en die subentiteit moet een vereiste functie van een vooraf samengesteld nummer hebben. Door gebruik te maken van een functie van een vooraf gedefinieerde entiteit, de entiteit op een vooraf gebouwd nummer, wordt door de entiteit getallen gevonden en opgehaald, ongeacht of de tekst een cijfer, `2` , of tekst is `two` .
+Selecteer op de pagina Details van entiteit voor **order** entiteit het sterretje, `*` voor zowel de functie **@ SizeList** als de functie **@ Number** . Het sterretje wordt weer gegeven in hetzelfde label als de functie naam.
 
-## <a name="add-prebuilt-number-entity-to-app"></a>Vooraf gedefinieerde cijferentiteit aan app toevoegen
-De order gegevens moeten ook het aantal items in de volg orde hebben, zoals het aantal pizzas. Als u deze gegevens wilt extra heren, moet er een nieuw apparaat worden toegevoegd aan `Order` en dat onderdeel een vereiste functie van een vooraf gebouwd nummer nodig heeft. Door de entiteit te beperken tot een vooraf samengesteld nummer, wordt door de entiteit getallen gevonden en opgehaald, ongeacht of de tekst een cijfer, `2` , of tekst is `two` .
+> [!div class="mx-imgBorder"]
+> ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
-Begin door de vooraf samengestelde nummer entiteit toe te voegen aan de app.
+<a name="label-text-as-entities-in-example-utterances"></a>
+<a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
 
-1. Selecteer **entiteiten** in het menu links en selecteer vervolgens een **vooraf samengestelde entiteit toevoegen**.
+## <a name="label-example-utterances"></a>Voor beeld van label uitingen
 
-1. Zoek in het vak **vooraf gemaakte entiteiten toevoegen** naar en selecteer **nummer** en selecteer vervolgens **gereed**.
+De door de machine geleerde entiteit wordt gemaakt en de subentiteiten beschikken over functies. Voor het volt ooien van de extractie verbetering moet het voor beeld uitingen zijn gelabeld met de subentiteiten.
 
-    ![Vooraf samengestelde entiteit toevoegen](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
+1. Selecteer **intenties** in het linkernavigatievenster en selecteer vervolgens de **OrderPizza** intentie.
 
-    De vooraf samengestelde entiteit wordt toegevoegd aan de app, maar is nog geen functie.
+1. Als u het **entiteits palet**wilt openen, selecteert u het **@** symbool in de contextuele werk balk.
 
-## <a name="create-subentity-entity-with-required-feature-to-help-extract-data"></a>Entiteit voor subentiteit maken met vereiste functie om gegevens te extra heren
+1. Selecteer elke entiteit rij in het palet en gebruik vervolgens de palet cursor om de entiteit te selecteren in elk voor beeld utterance. Wanneer u klaar bent, ziet de lijst met entiteiten eruit als in de volgende afbeelding.
 
-De `Order` entiteit moet een `Quantity` subentiteit hebben om te bepalen hoeveel van een item in de volg orde is. De hoeveelheid moet een vereiste functie van een vooraf gebouwd nummer gebruiken, zodat de geëxtraheerde gegevens onmiddellijk beschikbaar zijn voor de client toepassing op naam.
+    > [!div class="mx-imgBorder"]
+    > ![Gedeeltelijke scherm opname van de functie vereist configureren](media/tutorial-machine-learned-entity/labeled-example-utterances-for-machine-learned-entity.png)
 
-Een vereiste functie wordt als tekst overeenkomst toegepast, hetzij met exacte overeenkomst (zoals een lijst entiteit) of via reguliere expressies (zoals een reguliere expressie-entiteit of een vooraf gedefinieerde entiteit).
+## <a name="train-the-app"></a>De app trainen
 
-Door gebruik te maken van een niet door machines geleerde entiteit als functie, wordt alleen tekst die overeenkomt, geëxtraheerd.
+Als u de app wilt trainen, selecteert u **trainen**. Training past de wijzigingen, zoals de nieuwe entiteiten en het gelabelde uitingen, toe op het actieve model.
 
-1. Selecteer **entiteiten** en selecteer vervolgens de `Order` entiteit.
-1. Selecteer **+ entiteit toevoegen** en geef vervolgens de naam `Quantity` op en selecteer vervolgens ENTER om de nieuwe subentiteit toe te voegen aan de `Order` entiteit.
-1. Selecteer in de **Geavanceerde opties**na de melding voor de geslaagde taak de beperkings potlood.
-1. Selecteer in de vervolg keuzelijst het vooraf gemaakte nummer.
+## <a name="add-a-new-example-utterance"></a>Een nieuw voor beeld utterance toevoegen
 
-    ![Hoeveelheids entiteit maken met vooraf gebouwd nummer als beperking.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
+1. Voeg na de training een nieuw voor beeld utterance toe aan de `OrderPizza` bedoeling om te zien hoe goed Luis de machine learning-entiteit begrijpt.
 
-    De `Quantity` entiteit wordt toegepast wanneer tekst overeenkomt met de vooraf samengestelde nummer entiteit.
+    |Voor beeld van een bestelling utterance|
+    |--|
+    |`I need a large pepperoni pizza`|
 
-    De entiteit met de vereiste functie wordt gemaakt, maar is nog niet toegepast op het voor beeld uitingen.
+    De algemene bovenste entiteit, `Order` heeft het label en de `Size` subentiteit wordt ook gelabeld met stippel lijnen.
 
-    > [!NOTE]
-    > Een subentiteit kan worden genest in een subentiteit van Maxi maal vijf niveaus. Hoewel dit niet wordt weer gegeven in dit artikel, is het beschikbaar via de portal en de API.
+    > [!div class="mx-imgBorder"]
+    > ![Gedeeltelijke scherm opname van nieuw voor beeld utterance voorspeld met entiteit](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Label voorbeeld utterance om LUIS over de entiteit te leren
+    De stippel lijn geeft de voor spelling aan op basis van de huidige getrainde app.
 
-1. Selecteer **intenties** in de linkernavigatiebalk en selecteer vervolgens de **OrderPizza** intentie. De drie getallen in de volgende uitingen zijn gelabeld, maar zijn visueel onder de `Order` entiteits regel. Dit lagere niveau betekent dat de entiteiten worden gevonden, maar niet als onderdeel van de `Order` entiteit worden beschouwd.
+1. Als u de voor spelling in een entiteit met een label wilt wijzigen, selecteert u het vinkje op dezelfde rij.
 
-    ![Het vooraf ontwikkelde nummer is gevonden, maar wordt nog niet meegenomen in de order entiteit.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Gedeeltelijke scherm opname van nieuw voor beeld utterance voorspeld met entiteit](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
-1. Voorzie de nummers van de `Quantity` entiteit door `2` in het voor beeld utterance te selecteren in de `Quantity` lijst. Label de `6` en `1` in hetzelfde voor beeld utterance.
+    Op dit moment werkt de machine learning-entiteit samen, omdat deze de entiteit kan vinden in een nieuw voor beeld utterance. Als u voor beeld uitingen toevoegt en de entiteit niet correct is voor speld, labelt u de entiteit en de subentiteiten. Als de entiteit correct wordt voor speld, moet u de voor spellingen bevestigen.
 
-    ![Label tekst met entiteit hoeveelheid.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>De app trainen om de entiteits wijzigingen toe te passen op de app
 
-Selecteer **trainen** om de app te trainen met deze nieuwe uitingen. Na de training `Quantity` is de subentiteit correct voor speld in de `Order` entiteit. Deze juiste voor spelling wordt aangeduid met een ononderbroken lijn.
-
-![Train de app en Bekijk het voor beeld uitingen.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
+Selecteer **trainen** om de app te trainen met deze nieuwe utterance.
 
 Op dit moment bevat de order enkele details die kunnen worden geëxtraheerd (grootte, hoeveelheid en totale order tekst). De entiteit is verder verfijnd `Order` , zoals pizza toppings, type Crust en side orders. Elk van deze moet worden gemaakt als subentiteiten van de `Order` entiteit.
 
 ## <a name="test-the-app-to-validate-the-changes"></a>De app testen om de wijzigingen te valideren
 
-Test de app met behulp van het interactieve **test** paneel. Met dit proces kunt u een nieuwe utterance invoeren en vervolgens de resultaten van de voor spelling weer geven om te zien hoe goed de actieve en getrainde app werkt. De intentie voorspelling moet redelijk zijn verzekerd (meer dan 70%) en de extractie van de entiteit moet ten minste de `Order` entiteit ophalen. De details van de order entiteit ontbreken mogelijk omdat er niet genoeg vijf uitingen zijn om elke case af te handelen.
+Test de app met behulp van het interactieve **test** paneel. Met dit proces kunt u een nieuwe utterance invoeren en vervolgens de resultaten van de voor spelling weer geven om te zien hoe goed de actieve, getrainde app werkt. De intentie voorspelling moet redelijk zijn verzekerd (meer dan 60%) en de extractie van de entiteit moet ten minste de `Order` entiteit ophalen. De details van de order entiteit ontbreken mogelijk omdat deze enkele uitingen niet voldoende zijn om elke case af te handelen.
 
 1. Selecteer **Test** in de bovenste navigatiebalk.
-1. Voer de utterance in `deliver a medium veggie pizza` en selecteer ENTER. Het actieve model heeft de juiste intentie gedicteerd met meer dan 70% betrouw baarheid.
+1. Voer de utterance in `2 small cheese pizzas for pickup` en selecteer ENTER. Het actieve model heeft de juiste intentie gedicteerd met meer dan 60% betrouw baarheid.
 
-    ![Voer een nieuwe utterance in om de intentie te testen.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
 1. Selecteer **controleren** om de voor spellingen van de entiteit weer te geven.
 
-    ![Bekijk de voor spellingen van de entiteit in het interactieve test paneel.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
+    > [!div class="mx-imgBorder"]
+    > ![Gedeeltelijke scherm opname van de voor spellingen van de entiteit in het interactieve test paneel.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
 
-    De grootte is correct geïdentificeerd. Houd er rekening mee dat het voor beeld uitingen in de `OrderPizza` intentie geen voor beeld heeft van een `medium` grootte, maar wel een functie van een `SizeFeature` woordgroepen lijst bevat waarin medium is opgenomen.
-
-    De hoeveelheid is niet juist voor speld. U kunt dit in uw client toepassing oplossen door de grootte standaard te wijzigen in één (1) als er geen grootte wordt geretourneerd in de LUIS-voor spelling.
+<a name="publish-with-sentiment-analysis"></a>
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>De app publiceren voor toegang tot het HTTP-eind punt
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoepassing, moet u de app publiceren naar het eindpunt.
+
+1. Selecteer in de navigatie rechtsboven op **publiceren** .
+
+    ![Scherm opname van de knop LUIS publiceren naar eind punt in het bovenste menu rechts](./media/howto-publish/publish-button.png)
+
+1. Selecteer de **productie** sleuf, selecteer **instellingen wijzigen**, selecteer **sentimentanalyse**en selecteer vervolgens **gereed**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van LUIS publiceren naar eind punt](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
+
+1. Selecteer de koppeling **uw eind punt-Url's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eind punt-Url's worden weer gegeven als de **voorbeeld query**.
 
 ## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>Intentie en entiteits voorspelling van het HTTP-eind punt ophalen
 
@@ -221,13 +247,13 @@ Test de app met behulp van het interactieve **test** paneel. Met dit proces kunt
 
 1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door de query die u hebt ingevoerd in het interactieve test paneel.
 
-    `deliver a medium veggie pizza`
+    `2 small cheese pizzas for pickup`
 
     De laatste query string-para meter is `query` , de utterance **query's**.
 
     ```json
     {
-        "query": "deliver a medium veggie pizza",
+        "query": "2 small cheese pizzas for pickup",
         "prediction": {
             "topIntent": "OrderPizza",
             "intents": {
@@ -248,44 +274,19 @@ Test de app met behulp van het interactieve **test** paneel. Met dit proces kunt
                 "Order": [
                     {
                         "Size": [
-                            "medium"
+                            "small"
                         ],
-                        "$instance": {
-                            "Size": [
-                                {
-                                    "type": "Size",
-                                    "text": "medium",
-                                    "startIndex": 10,
-                                    "length": 6,
-                                    "score": 0.9955588,
-                                    "modelTypeId": 1,
-                                    "modelType": "Entity Extractor",
-                                    "recognitionSources": [
-                                        "model"
-                                    ]
-                                }
-                            ]
-                        }
+                        "Quantity": [
+                            2
+                        ]
                     }
-                ],
-                "$instance": {
-                    "Order": [
-                        {
-                            "type": "Order",
-                            "text": "a medium veggie pizza",
-                            "startIndex": 8,
-                            "length": 21,
-                            "score": 0.7983857,
-                            "modelTypeId": 1,
-                            "modelType": "Entity Extractor",
-                            "recognitionSources": [
-                                "model"
-                            ]
-                        }
-                    ]
-                }
+                ]
             }
-        }
+        },
+        "sentimentAnalysis":{
+            "label":"neutral",
+            "score":0.98
+       }
     }
     ```
 
@@ -303,7 +304,7 @@ Test de app met behulp van het interactieve **test** paneel. Met dit proces kunt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie gebruikt de app een door de machine geleerde entiteit om het doel van de utterance van een gebruiker te vinden en gegevens uit die utterance uit te pakken. Door de door de machine geleerde entiteit te gebruiken, kunt u de details van de entiteit afbreken.
+In deze zelf studie gebruikt de app een machine learning-entiteit om het doel van de utterance van een gebruiker te vinden en gegevens uit die utterance te extra heren. Met de machine learning-entiteit kunt u de details van de entiteit afbreken.
 
 > [!div class="nextstepaction"]
 > [Een vooraf gemaakte entiteit KeyPhrase toevoegen](luis-quickstart-intent-and-key-phrase.md)

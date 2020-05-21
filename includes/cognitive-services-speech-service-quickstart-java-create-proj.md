@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658312"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673183"
 ---
 1. Start Eclipse.
 
@@ -19,7 +19,7 @@ ms.locfileid: "80658312"
 
 1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het **welkomst** scherm als er een aanwezig is.
 
-1. Maak in de menu balk voor eclips een nieuw project door **bestand** > **Nieuw** > **project**te kiezen.
+1. Maak in de menu balk voor eclips een nieuw project door **bestand**  >  **Nieuw**  >  **project**te kiezen.
 
 1. Het dialoogvenster **Nieuw project** wordt weergegeven. Selecteer **Java-project** en vervolgens **Volgende**.
 
@@ -31,11 +31,11 @@ ms.locfileid: "80658312"
 
 1. Als het venster **Gekoppeld perspectief openen?** wordt weergegeven, selecteert u **Perspectief openen**.
 
-1. Klik in de **Package explorer** met de rechtermuisknop op het **quickstart**-project. Kies **Configure** > **Convert to Maven project** in het context menu.
+1. Klik in de **Package explorer** met de rechtermuisknop op het **quickstart**-project. Kies **Configure**  >  **Convert to Maven project** in het context menu.
 
    ![Schermopname van Package explorer](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Het venster **Nieuw POM maken** wordt weergegeven. Voer in het veld **groeps-id** *com. micro soft. cognitiveservices. speech. samples*in en voer in het veld **artefact-id** *Quick*start in. Selecteer vervolgens **Voltooien**.
+1. Het venster **Nieuw POM maken** wordt weergegeven. Voer in het veld **groeps-id** *com. micro soft. cognitiveservices. speech. samples*in en voer in het veld **artefact-id** *Quick*start in. Selecteer vervolgens **volt ooien**.
 
    ![Schermopname van het venster Nieuw POM maken](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "80658312"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Voeg ook een `dependencies` -element toe, met de Speech SDK versie 1.11.0 als afhankelijkheid:
+   * Voeg ook een `dependencies` -element toe, met de Speech SDK versie 1.12.0 als afhankelijkheid:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

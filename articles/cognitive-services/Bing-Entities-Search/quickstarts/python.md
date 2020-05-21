@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448621"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650200"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met behulp van python
 
 Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
 
-Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnementssleutel, eindpunt, markt en zoekquery. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnements sleutel, eind punt, markt en zoek query. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```python
     import http.client, urllib.parse
@@ -44,7 +44,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
     query = 'italian restaurants near me'
     ```
 
-2. Maak een aanvraag-URL door uw marktvariabele toe te voegen aan de parameter `?mkt=`. Voeg URL-codering toe aan uw query en voeg deze toe aan de parameter `&q=`. 
+2. Maak een aanvraag-URL door uw marktvariabele toe te voegen aan de parameter `?mkt=`. URL: Codeer uw query en voeg deze toe aan de `&q=` para meter. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -52,21 +52,24 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
 
 ## <a name="send-a-request-and-get-a-response"></a>Een aanvraag verzenden en een antwoord ontvangen
 
-1. Maak de functie `get_suggestions()`. Voer vervolgens de volgende stappen uit.
-   1. Voeg uw abonnementssleutel toe aan een woordenlijst met `Ocp-Apim-Subscription-Key` als een sleutel.
-   2. Gebruik `http.client.HTTPSConnection()` om een HTTPS-clientobject te maken. Verstuur een `GET`-aanvraag met `request()`, met daarin het pad en de parameters en de headergegevens.
-   3. Sla het antwoord op met `getresponse()` en retourneer `response.read()`.
+1. Maak de functie `get_suggestions()`. 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. In deze functie voegt u uw abonnements sleutel toe aan een woorden lijst met `Ocp-Apim-Subscription-Key` als sleutel.
 
-2. Roep `get_suggestions()` aan en geef het JSON-antwoord weer.
+3. Gebruiken `http.client.HTTPSConnection()` om een HTTPS-client object te maken. Verstuur een `GET`-aanvraag met `request()`, met daarin het pad en de parameters en de headergegevens.
+
+4. Sla het antwoord op met `getresponse()` en retourneer `response.read()`.
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. Roep `get_suggestions()` het JSON-antwoord aan en druk het af.
 
     ```python
     result = get_suggestions ()
@@ -143,5 +146,5 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [!div class="nextstepaction"]
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Wat is het Bing Entiteiten zoeken-API](../search-the-web.md)
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Wat is de Bing Entiteiten zoeken-API?](../search-the-web.md)
+* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 729c489169d242fdaf3872186da1dc2763ae1ea2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bb9c15883dee4142d486ba64d71ddb76d0b970a6
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405008"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681082"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API met Go
 
@@ -25,12 +25,12 @@ ms.locfileid: "81405008"
 
 In deze Quick Start kunt u gedrukte tekst met behulp van de Computer Vision REST API extra heren met optische teken herkenning (OCR) van een afbeelding. Met de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode kunt u gedrukte tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine bruikbare teken stroom.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Go](https://golang.org/dl/) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt teken reeks, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
@@ -51,28 +51,23 @@ import (
     "fmt"
     "io/ioutil"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
     // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
     subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
-    if (subscriptionKey == "") {
-        log.Fatal("\n\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n" +
-            "**Restart your shell or IDE for changes to take effect.**\n")
-
     endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
-    if ("" == endpoint) {
-        log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
-            "**Restart your shell or IDE for changes to take effect.**")
-    }
-    const uriBase = endpoint + "vision/v2.1/ocr"
+
+    uriBase := endpoint + "vision/v3.0/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
         "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
-    const params = "?language=unk&detectOrientation=true"
-    const uri = uriBase + params
+    params := "?language=unk&detectOrientation=true"
+    uri := uriBase + params
     const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
     reader := strings.NewReader(imageUrlEnc)

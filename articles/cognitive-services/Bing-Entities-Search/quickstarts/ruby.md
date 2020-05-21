@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385776"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650191"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Snelstartgids: Bing Entiteiten zoeken-API met Ruby
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Snelstartgids: een zoek opdracht naar de Bing Entity Search REST API met Ruby verzenden
 
 Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Met deze eenvoudige Ruby-toepassing wordt een query naar de API gestuurd om nieuws te zoeken en wordt het antwoord weergegeven. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
-Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice d
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak in uw favoriete IDE of teksteditor een nieuw Ruby-bestand en importeer de volgende pakketten.
+1. Maak in uw favoriete IDE of code-editor een bestand voor nieuws ruby en importeer de volgende pakketten:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice d
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, de Nieuws zoeken-URL, de abonnementssleutel en een zoekquery. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor uw API-eind punt, zoek-URL voor nieuws, uw abonnements sleutel en zoek query. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -65,7 +65,7 @@ Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice d
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. De aanvraag verzenden en het antwoord afdrukken
+3. De aanvraag verzenden en het antwoord afdrukken.
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -145,5 +145,5 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [!div class="nextstepaction"]
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Wat is het Bing Entiteiten zoeken-API](../search-the-web.md)
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Wat is de Bing Entiteiten zoeken-API?](../search-the-web.md)
+* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

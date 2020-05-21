@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a1354bc74d13e02e5e0982a8f5d98b01fab67b4b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fae54baf3b08ae5e0fa0f640d011b58d686e443e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404775"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683146"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en Java
 
 In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op. Deze mag afwijken van de hoogte-breedteverhouding van de ingevoerde afbeelding. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt teken reeks, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -35,56 +35,61 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
 1. Maak een nieuw Java-project in uw favoriete IDE of editor. Als de optie beschikbaar is, maakt u het Java-project vanuit een toepassingssjabloon met opdrachtregel.
 1. Importeer de volgende bibliotheken in uw Java-project. Als u Maven gebruikt, worden de Maven-coördinaten opgegeven voor elke bibliotheek.
-   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
-   - [Apache HTTP-core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpclient maakt: 4.5. X)
+   - [Apache HTTP core](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpcore: 4.4. X)
    - [JSON-bibliotheek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-1. Voeg de volgende `import`-instructies toe aan het bestand met de openbare klasse `Main` voor uw project.  
+1. Voeg de volgende- `import` instructies toe aan uw hoofd klasse: 
 
    ```java
-   import java.awt.*;
-   import javax.swing.*;
-   import java.net.URI;
-   import java.io.InputStream;
-   import javax.imageio.ImageIO;
-   import java.awt.image.BufferedImage;
-   import org.apache.http.HttpEntity;
-   import org.apache.http.HttpResponse;
-   import org.apache.http.client.methods.HttpPost;
-   import org.apache.http.entity.StringEntity;
-   import org.apache.http.client.utils.URIBuilder;
-   import org.apache.http.impl.client.CloseableHttpClient;
-   import org.apache.http.impl.client.HttpClientBuilder;
-   import org.apache.http.util.EntityUtils;
-   import org.json.JSONObject;
+    import java.awt.*;
+    import javax.swing.*;
+    import java.net.URI;
+    import java.io.InputStream;
+    import javax.imageio.ImageIO;
+    import java.awt.image.BufferedImage;
+    import org.apache.http.HttpEntity;
+    import org.apache.http.HttpResponse;
+    import org.apache.http.client.methods.HttpPost;
+    import org.apache.http.entity.StringEntity;
+    import org.apache.http.client.utils.URIBuilder;
+    import org.apache.http.impl.client.CloseableHttpClient;
+    import org.apache.http.impl.client.HttpClientBuilder;
+    import org.apache.http.util.EntityUtils;
+    import org.json.JSONObject;
    ```
 
-1. Vervang de `Main` open bare klasse door de volgende code.
-1. Vervang optioneel de waarde van `imageToAnalyze` door de URL van een andere afbeelding waar u een miniatuur van wilt maken.
+1. Voeg de rest van de voorbeeld code hieronder toe, onder de Imports (Wijzig indien nodig de naam van de klasse).
+1. Voeg uw Computer Vision-abonnements sleutel en-eind punt toe aan de omgevings variabelen.
+1. U kunt de waarde van vervangen door `imageToAnalyze` de URL van uw eigen afbeelding.
 1. Sla vervolgens het Java-project op en bouw het.
-1. Als u een IDE gebruikt, voert u `Main` uit. Open anders een opdrachtpromptvenster en gebruik de opdracht `java` om de compilatieklasse uit te voeren. Bijvoorbeeld `java Main`.
+1. Als u een IDE gebruikt, voert u `GenerateThumbnail` uit. Voer anders uit vanaf de opdracht regel (opdrachten hieronder).
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
+/**
+ * This sample uses the following libraries (create a "lib" folder to place them in): 
+ * Apache HTTP client:
+ * org.apache.httpcomponents:httpclient:4.5.X 
+ * Apache HTTP core:
+ * org.apache.httpcomponents:httpccore:4.4.X 
+ * JSON library:
+ * org.json:json:20180130
+ *
+ * To build/run from the command line: 
+ *     javac GenerateThumbnail.java -cp .;lib\*
+ *     java -cp .;lib\* GenerateThumbnail
+ */
 
+public class GenerateThumbnail {
 
-public class Main {
-    // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
-
-    // Add your Computer Vision subscription key and endpoint to your environment variables.
-    // After setting, close and then re-open your command shell or project for the changes to take effect.
-    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
-    String endpoint = ("COMPUTER_VISION_ENDPOINT");
-
-    private static final String uriBase = endpoint + 
-            "vision/v2.1/generateThumbnail";
-
-    private static final String imageToAnalyze =
-        "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg";
+    // Add your Computer Vision subscription key and endpoint to your environment
+    // variables. Then, close and then re-open your command shell or project for the
+    // changes to take effect.
+    private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
+    // The endpoint path
+    private static final String uriBase = endpoint + "vision/v3.0/generateThumbnail";
+    // It's optional if you'd like to use your own image instead of this one.
+    private static final String imageToAnalyze = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -106,13 +111,14 @@ public class Main {
             request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             // Request body.
-            StringEntity requestEntity =
-                    new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
+            StringEntity requestEntity = new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
             // Call the REST API method and get the response entity.
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
+
+            System.out.println("status" + response.getStatusLine().getStatusCode());
 
             // Check for success.
             if (response.getStatusLine().getStatusCode() == 200) {
@@ -128,11 +134,12 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
     // Displays the given input stream as an image.
-    private static void displayImage(InputStream inputStream) {
+    public static void displayImage(InputStream inputStream) {
         try {
             BufferedImage bufferedImage = ImageIO.read(inputStream);
 

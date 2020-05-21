@@ -8,39 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 194368acd6be65da6a800ad1394ac156a6654b50
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448636"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650235"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Snelstartgids: een zoek opdracht naar het Bing Entity Search REST API verzenden met behulp van node. js
 
 Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
-Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
 
-* De [JavaScript-aanvragenbibliotheek](https://github.com/request/request)
+* De [Java script-aanvraag bibliotheek](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor, en stel de vereisten voor striktheid en https in.
+1. Maak een nieuw Java script-bestand in uw favoriete IDE of editor en stel de beperkende en HTTPS-vereisten in.
 
     ```javaScript
     'use strict';
     let https = require ('https');
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekquery. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekquery. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -58,52 +58,53 @@ Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webser
 
 ## <a name="handle-and-parse-the-response"></a>Het antwoord verwerken en parseren
 
-1. Definieer een functie met de naam `response_handler` en als parameter de HTTP-aanroep `response`. Voer binnen deze functie de volgende stappen uit:
+1. Definieer een functie met de naam `response_handler()` en als parameter de HTTP-aanroep `response`. 
 
-    1. Definieer een variabele voor de hoofdtekst van het JSON-antwoord.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
+2. In deze functie definieert u een variabele die de hoofd tekst van het JSON-antwoord bevat.  
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
+
+3. Sla de hoofd tekst van het antwoord op wanneer de `data` markering wordt aangeroepen.
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. Wanneer een `end` vlag wordt gesignaleerd, parseert u de JSON en drukt u deze af.
+
+    ```javascript
+    response.on ('end', function () {
+    let json = JSON.stringify(JSON.parse(body), null, '  ');
+    console.log (json);
+    });
         ```
 
-    2. De hoofdtekst van het antwoord opslaan wanneer de **gegevens**vlag wordt aangeroepen
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+## Send a request
 
-    3. Wanneer een **End** -vlag is gesignaleerd, parseert u de JSON en drukt u deze af.
+1. Create a function called `Search()` to send a search request. In it, perform the following steps:
 
-        ```javascript
-        response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log (json);
-        });
-        ```
+2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
 
-## <a name="send-a-request"></a>Een aanvraag versturen
-
-1. Maak een functie met de naam `Search` om een zoekaanvraag te verzenden. Voer hierin de volgende stappen uit.
-
-   1. Maak een JSON-object die uw aanvraagparameters bevat: gebruik `Get` voor de methode en voeg de gegevens over uw host en pad in. Voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header. 
-   2. Gebruik `https.request()` om de aanvraag te verzenden met de antwoordhandler die u eerder hebt gemaakt, en met de zoekparameters.
+3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
     
-      ```javascript
-      let Search = function () {
-       let request_params = {
-           method : 'GET',
-           hostname : host,
-           path : path + query,
-           headers : {
-               'Ocp-Apim-Subscription-Key' : subscriptionKey,
-           }
-       };
+   ```javascript
+   let Search = function () {
+    let request_params = {
+        method : 'GET',
+        hostname : host,
+        path : path + query,
+        headers : {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
     
-       let req = https.request (request_params, response_handler);
-       req.end ();
-      }
+    let req = https.request (request_params, response_handler);
+    req.end ();
+   }
       ```
 
 2. Roep de functie `Search()` aan.
@@ -179,4 +180,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Wat is de Bing Entiteiten zoeken-API?](../overview.md )
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

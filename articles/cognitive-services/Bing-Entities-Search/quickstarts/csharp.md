@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c343c160f67eda2dd390ffc39f3b4f1ff49cacb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448673"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650273"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met C #
 
 Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
-Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Hoewel deze toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met de meeste programmeer talen.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -32,7 +32,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
    1. Klik met de rechter muisknop op uw project in **Solution Explorer**.
    2. Selecteer **NuGet-pakketten beheren**.
-   3. Zoek naar *Newton soft. json* en installeer het pakket.
+   3. Zoek en selecteer *Newton soft. json*en installeer vervolgens het pakket.
 
 - Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [mono](https://www.mono-project.com/).
 
@@ -41,7 +41,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe C#-console-oplossing in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
+1. Maak een nieuwe C#-console-oplossing in Visual Studio. Voeg vervolgens de volgende naam ruimten toe aan het bestand met de hoofd code:
     
     ```csharp
     using Newtonsoft.Json;
@@ -50,7 +50,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
     using System.Text;
     ```
 
-2. Maak een nieuwe klasse, en voeg variabelen toe voor het API-eindpunt, uw abonnementssleutel en de zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak een nieuwe klasse en voeg variabelen toe voor het API-eind punt, uw abonnements sleutel en de query die u wilt doorzoeken. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
     namespace EntitySearchSample
@@ -73,11 +73,13 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
 ## <a name="send-a-request-and-get-the-api-response"></a>Een aanvraag verzenden en het API-antwoord ontvangen
 
-1. Maak in de klasse een functie met de naam `Search()`. Maak een nieuw `Ocp-Apim-Subscription-Key`-object, en voeg uw abonnementssleutel toe aan de `HttpClient`-header.
+1. Maak in de klasse een functie met de naam `Search()`. In deze functie maakt u een nieuw `HttpClient` object en voegt u uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
 
-   1. Maak de URI voor uw aanvraag door de host en het pad te combineren. Voeg vervolgens uw markt toe en pas URL-codering toe op uw query.
-   2. Await op `client.GetAsync()` voor een HTTP-antwoord heeft opgehaald en sla vervolgens het json-antwoord op via een await op `ReadAsStringAsync()`.
-   3. De JSON-teken reeks `JsonConvert.DeserializeObject()` Format teren met en afdrukken naar de-console.
+2. Maak de URI voor uw aanvraag door de host en het pad te combineren. Voeg vervolgens uw markt en URL toe om uw query te versleutelen.
+
+3. Wacht `client.GetAsync()` op een HTTP-antwoord en sla het JSON-antwoord op door te wachten `ReadAsStringAsync()` .
+
+4. De JSON-teken reeks Format teren met `JsonConvert.DeserializeObject()` en afdrukken naar de-console.
 
       ```csharp
       async static void Search()
@@ -96,7 +98,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
       }
       ```
 
-2. Roep in de main-methode van uw toepassing de functie `Search()` aan.
+5. `Main()`Roep de functie aan in de-methode van uw toepassing `Search()` .
     
     ```csharp
     static void Main(string[] args)
@@ -178,4 +180,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Wat is de Bing Entiteiten zoeken-API?](../overview.md )
-* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

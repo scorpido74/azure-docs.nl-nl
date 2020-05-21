@@ -3,12 +3,12 @@ title: 'Snelstartgids: een app implementeren met behulp van de LUIS-Portal'
 description: In deze Quick start ziet u hoe u een app implementeert door een Voorspellings eindpunt resource te maken, de resource, training en publicatie van de app toe te wijzen.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585059"
+ms.locfileid: "83653225"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
 
@@ -40,7 +40,8 @@ Telkens wanneer u een nieuwe ontwerp-of query Voorspellings bron voor LUIS maakt
 
 1. Selecteer uw Tenant, abonnement en resource naam. Selecteer **resource toewijzen**.
 
-   ![Een resource toewijzen aan uw app](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een resource toewijzen aan uw app](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Voer dezelfde stappen uit om de ontwerp sleutel toe te voegen aan uw app.
 
@@ -51,11 +52,11 @@ Telkens wanneer u een nieuwe ontwerp-of query Voorspellings bron voor LUIS maakt
 
 ## <a name="train-the-app"></a>De app trainen
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+Als u de app hebt gewijzigd sinds u het laatst hebt getraind, [traint](get-started-portal-build-app.md) u de app.
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>De app publiceren naar het Voorspellings eindpunt
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Voorspellings eindpunt aanvraag
 

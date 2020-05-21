@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 379f74ce673dcae6f300b4eb23d1f2d9b46f2591
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656065"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677674"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en Java script
 
 In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op die van de invoer afbeelding kunnen verschillen. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +56,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
         
-        var uriBase = endpoint + "vision/v2.1/generateThumbnail";
+        var uriBase = endpoint + "vision/v3.0/generateThumbnail";
 
         // Request parameters.
         var params = "?width=100&height=150&smartCropping=true";

@@ -2,18 +2,18 @@
 title: "Quick Start: profiteren van intenties met REST-Api's-LUIS"
 description: Gebruik in deze REST API Snelstartgids een beschik bare open bare LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de conversatie tekst.
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 05/18/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 03f1c1539233872d9b98fab317c9caf997d5df69
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 90d98e56e53e28991fb5aada9eab5a7e9c2e69c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733279"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654341"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Quick Start: profiteren van de bedoeling van REST-Api's
 
-In deze snelstart gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst. Verzend de intentie van de gebruiker als tekst naar het HTTP-voorspellingseindpunt van de openbare app. Bij het eindpunt wordt via LUIS het model van de openbare app toegepast om de betekenis van tekst in natuurlijke taal te analyseren. Hiermee wordt de algehele intentie bepaald en worden gegevens geëxtraheerd die relevant zijn voor het onderwerpdomein van de app.
+In deze Snelstartgids gebruikt u een LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de tekst van de conversatie. Verzend de voor waarde van de gebruiker als tekst naar het HTTP prediction-eind punt van de pizza-app. Op het eind punt past LUIS het model van de pizza-app toe om de tekst in de natuurlijke taal te analyseren, waardoor de algemene intentie kan worden bepaald en gegevens worden geëxtraheerd die relevant zijn voor het onderwerps domein van de app.
 
 Deze snelstart gebruikt het REST-API-eindpunt. Zie voor meer informatie de [documentatie bij de eindpunt-API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
 
@@ -40,4 +40,3 @@ Voor dit artikel hebt u een gratis [LUIS](https://www.luis.ai)-account nodig.
 ::: zone pivot="programming-language-python"
 [!INCLUDE [Get intent with Python and REST](./includes/get-started-get-intent-rest-python.md)]
 ::: zone-end
-

@@ -3,12 +3,12 @@ title: 'Zelf studie: batch testen om problemen op te sporen-LUIS'
 description: In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592590"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681628"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Zelf studie: gegevens sets batch testen
 
@@ -49,13 +49,13 @@ Importeer een app die een pizza-volg orde gebruikt, zoals `1 pepperoni pizza on 
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>Wat moet het batch bestand uitingen bevatten
 
-Het batch-bestand moet uitingen bevatten met entiteiten op het hoogste niveau die door machines zijn geleerd, met inbegrip van de begin-en eind positie. De uitingen mag geen deel uitmaken van de voor beelden die al in de app staan. Ze moeten uitingen zijn om te voors pellen voor intentie en entiteiten.
+Het batch-bestand moet uitingen bevatten met machine learning-entiteiten op het hoogste niveau, met inbegrip van de begin-en eind positie. De uitingen mag geen deel uitmaken van de voor beelden die al in de app staan. Ze moeten uitingen zijn om te voors pellen voor intentie en entiteiten.
 
 U kunt testen met behulp van intentie en/of entiteit scheiden of alle tests (Maxi maal 1000 uitingen) in hetzelfde bestand hebben.
 
 ## <a name="batch-file"></a>Batch bestand
 
-De JSON van het voor beeld bevat een utterance met een gelabelde entiteit die illustreert hoe een test bestand eruitziet. In uw eigen tests moet u veel uitingen hebben met de juiste intentie en door de machine geleerde entiteit label.
+De JSON van het voor beeld bevat een utterance met een gelabelde entiteit die illustreert hoe een test bestand eruitziet. In uw eigen tests moet u veel uitingen hebben met de juiste intentie en de machine learning-entiteit labelen.
 
 1. Maak `pizza-with-machine-learned-entity-test.json` een tekst editor of [down load](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) deze.
 

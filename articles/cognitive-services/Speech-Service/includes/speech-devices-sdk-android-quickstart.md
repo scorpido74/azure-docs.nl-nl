@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 4a2d9f382045db2aeab80d9ecf5a05b031bcbc9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400138"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673132"
 ---
 In deze Quick Start leert u hoe u de speech apparaten SDK voor Android kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](../conversation-transcription-service.md) -apparaat.
 
@@ -47,7 +47,7 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
 
 1. Uw apparaat moet worden vermeld onder **Kies een apparaat**. Selecteer de knop **weer geven** naast het apparaat.
 
-1. Maak verbinding met het draadloze netwerk door het mappictogram te selecteren en vervolgens **instellingen** > **WLAN**te selecteren.
+1. Maak verbinding met het draadloze netwerk door het mappictogram te selecteren en vervolgens **instellingen**  >  **WLAN**te selecteren.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
    >
    > ![Vysor-bestandsmap](../media/speech-devices-sdk/qsg-10.png)
    >
-   > **Instellingen**selecteren. Zoek op Mac-adres en selecteer vervolgens Mac- **adres** > **Advanced WLAN**. Noteer het MAC-adres dat onderaan in het dialoog venster wordt weer gegeven.
+   > Selecteer **Instellingen**. Zoek op Mac-adres en selecteer vervolgens Mac- **adres**  >  **Advanced WLAN**. Noteer het MAC-adres dat onderaan in het dialoog venster wordt weer gegeven.
    >
    > ![Vysor MAC-adres](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
     Werk de **Build. gradle (module: app)** bij door deze regel toe te voegen aan het gedeelte afhankelijkheden. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
     ```
     
 1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
@@ -124,7 +124,7 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
    > [!TIP]
    > U kunt ook [een aangepast tref woord maken](../speech-devices-sdk-create-kws.md).
 
-   Als u een nieuw tref woord wilt gebruiken, werkt u de `MainActivity.java`volgende twee regels in en kopieert u het trefwoord pakket naar uw app. Als u bijvoorbeeld het tref woord ' machine ' uit het trefwoord pakket KWS-machine. zip wilt gebruiken:
+   Als u een nieuw tref woord wilt gebruiken, werkt u de volgende twee regels in `MainActivity.java` en kopieert u het trefwoord pakket naar uw app. Als u bijvoorbeeld het tref woord ' machine ' uit het trefwoord pakket KWS-machine. zip wilt gebruiken:
 
    - Kopieer het trefwoord pakket naar de map "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
    - Werk de `MainActivity.java` met het sleutel woord en de pakket naam bij:
@@ -177,6 +177,6 @@ Als u geen verbinding kunt maken met het spraak apparaat. Typ de volgende opdrac
 ```
 
 > [!NOTE]
-> Deze opdracht maakt gebruik van de Android Debug `adb.exe`Bridge, die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt\[zich in de C:\Users-gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan het pad om het gemakkelijker te kunnen aanroepen `adb`. Anders moet u het volledige pad naar uw installatie van ADB. exe opgeven in elke opdracht die aanroept `adb`.
+> Deze opdracht maakt gebruik van de Android debug Bridge, `adb.exe` die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt zich in de C:\Users- \[ gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan het pad om het gemakkelijker te kunnen aanroepen `adb` . Anders moet u het volledige pad naar uw installatie van ADB. exe opgeven in elke opdracht die aanroept `adb` .
 >
 > Als er een fout optreedt `no devices/emulators found` , controleer dan of de USB-kabel is aangesloten en of er een kabel met een hoge kwaliteit wordt gebruikt.

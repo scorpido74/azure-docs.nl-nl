@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f68c58c16c4efd75941e00b859784f810915b575
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3f5f273537593f5af4f398e55d72cd3f91a0c2cd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404866"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682209"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Snelstartgids: een externe installatie kopie analyseren met behulp van de Computer Vision REST API en Java
 
 In deze Snelstartgids gaat u een op afstand opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van Java en de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele functies extra heren op basis van de inhoud van de installatie kopie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt teken reeks, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -53,25 +53,24 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
    import org.json.JSONObject;
    ```
 
-1. Vervang de `Main` open bare klasse door de volgende code.
+1. Vervang de `AnalyzeImage` open bare klasse door de volgende code.
 1. Vervang eventueel de waarde van `imageToAnalyze` door de URL van een andere afbeelding die u wilt analyseren.
 
 ```java
-public class Main {
+public class AnalyzeImage {
     // **********************************************
     // *** Update or verify the following values. ***
     // **********************************************
 
     // Add your Computer Vision subscription key and endpoint to your environment variables.
     // After setting, close and then re-open your command shell or project for the changes to take effect.
-    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
-    String endpoint = ("COMPUTER_VISION_ENDPOINT");
+    private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    private static final String uriBase = endpoint + 
-            "vision/v2.1/analyze";
+    private static final String uriBase = endpoint + "vision/v3.0/analyze";
     private static final String imageToAnalyze =
             "https://upload.wikimedia.org/wikipedia/commons/" +
-                    "1/12/Broadway_and_Times_Square_by_night.jpg";
+            "1/12/Broadway_and_Times_Square_by_night.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -120,9 +119,9 @@ public class Main {
 1. Sla vervolgens het Java-project op en bouw het.
 1. Als u een IDE gebruikt, voert u `Main` uit.
 
-U kunt ook de volgende opdrachten uitvoeren als u het programma uitvoert vanaf een opdracht regel venster. Deze opdrachten vermoeden dat uw bibliotheken zich in een `libs` map bevinden met de naam die `Main.java`zich in dezelfde map bevindt als; Als dat niet het geval is, moet `libs` u vervangen door het pad naar uw bibliotheken.
+U kunt ook de volgende opdrachten uitvoeren als u het programma uitvoert vanaf een opdracht regel venster. Deze opdrachten vermoeden dat uw bibliotheken zich in een map bevinden `libs` met de naam die zich in dezelfde map bevindt als. als dat niet het geval is `Main.java` , moet u `libs` het pad naar uw bibliotheken vervangen.
 
-1. Compileer het bestand `Main.java`.
+1. Compileer het bestand `Main.java` .
 
     ```bash
     javac -cp ".;libs/*" Main.java
