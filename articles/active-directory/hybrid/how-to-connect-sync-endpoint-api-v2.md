@@ -8,16 +8,16 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce1168f8f95e01b6ac05e673636e02356043cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691073"
+ms.locfileid: "83713808"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connect die de prestaties verbetert van de synchronisatie service-bewerkingen naar Azure Active Directory. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt ondersteunt het volgende:
@@ -31,6 +31,9 @@ Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connec
 
 ## <a name="pre-requisites"></a>Vereisten  
 Als u het nieuwe v2-eind punt wilt gebruiken, moet u [Azure AD Connect versie 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) of hoger gebruiken en de volgende implementatie stappen volgen om het v2-eind punt voor uw Azure AD Connect-server in te scha kelen.   
+
+>[!NOTE]
+>Deze open bare preview is momenteel alleen beschikbaar in de wereld wijde Azure-Cloud en is niet beschikbaar voor [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
 
 ### <a name="public-preview-limitations"></a>Beperkingen voor openbare preview  
 Hoewel deze release uitgebreide tests heeft ondergaan, kan het zijn dat u nog steeds problemen ondervindt. Een van de doel stellingen van deze open bare preview-versie is het zoeken en oplossen van dergelijke problemen.  

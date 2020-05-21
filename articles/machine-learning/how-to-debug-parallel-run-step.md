@@ -10,12 +10,12 @@ ms.reviewer: trbye, jmartens, larryfr, vaidyas
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
-ms.openlocfilehash: b5431ae574f40c29368848808004a53abe43c3a8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4e2777f59bab8d7d874019004bff2e30395ab1d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680967"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723473"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Fout opsporing en problemen oplossen ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Vanwege de gedistribueerde aard van ParallelRunStep-taken zijn er logboeken van 
 
 Logboeken die zijn gegenereerd op basis van een invoer script met behulp van EntryScript-helper-en-afdruk instructies, worden in de volgende bestanden
 
-- `~/logs/user/<node_name>.log.txt`: Dit zijn de logboeken die zijn geschreven van entry_script met behulp van de EntryScript-helper. Bevat ook print-instructie (stdout) van entry_script.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Dit zijn de logboeken die zijn geschreven van entry_script met behulp van de EntryScript-helper. Bevat ook print-instructie (stdout) van entry_script.
 
 Er is sprake van een beknopt overzicht van fouten in uw script:
 

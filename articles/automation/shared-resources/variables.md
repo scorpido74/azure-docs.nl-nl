@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc6cf908c5550f81ca6002de031d8d54dcff1eec
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685315"
+ms.locfileid: "83713298"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Variabelen in Azure Automation beheren
 
@@ -188,12 +188,12 @@ In een grafisch runbook kunt u activiteiten voor de interne cmdlets of toevoegen
 
 ![Variabele toevoegen aan canvas](../media/variables/runbook-variable-add-canvas.png)
 
-De volgende afbeelding toont voorbeeld activiteiten om een variabele met een eenvoudige waarde in een grafisch runbook bij te werken. In dit voor beeld wordt met de activiteit voor het `Get-AzVM` ophalen van één virtuele Azure-machine en de computer naam opgeslagen op een bestaande automatiserings reeks variabele. Het maakt niet uit of de [koppeling een pijp lijn of sequencer is](../automation-graphical-authoring-intro.md#links-and-workflow) , omdat de code slechts één object in de uitvoer verwacht.
+De volgende afbeelding toont voorbeeld activiteiten om een variabele met een eenvoudige waarde in een grafisch runbook bij te werken. In dit voor beeld wordt met de activiteit voor het `Get-AzVM` ophalen van één virtuele Azure-machine en de computer naam opgeslagen op een bestaande automatiserings reeks variabele. Het maakt niet uit of de [koppeling een pijp lijn of sequencer is](../automation-graphical-authoring-intro.md#use-links-for-workflow) , omdat de code slechts één object in de uitvoer verwacht.
 
 ![Eenvoudige variabele instellen](../media/variables/runbook-set-simple-variable.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [modules beheren in azure Automation](modules.md)voor meer informatie over de cmdlets die worden gebruikt voor toegang tot variabelen.
-* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
-* Zie [status configuratie-overzicht](../automation-dsc-overview.md)voor meer informatie over DSC-configuraties.
+* [Modules beheren in Azure Automation](modules.md)
+* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
+* [Overzicht van Azure Automation status configuratie](../automation-dsc-overview.md) 

@@ -1,6 +1,6 @@
 ---
-title: Configuratie op basis van STIG voor gebruik in status configuratie-Azure Automation
-description: Meer informatie over configuraties op basis van STIG voor status configuratie in Azure Automation.
+title: Gegevens configureren op basis van STIG voor de configuratie van de Azure Automation status
+description: In dit artikel leest u hoe u gegevens kunt configureren op basis van STIG voor de configuratie van Azure Automations status.
 keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585533"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711377"
 ---
-# <a name="configuration-based-on-stig"></a>Configuration op basis van STIG
+# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Gegevens configureren op basis van STIG voor de configuratie van de Azure Automation status
 
 > Van toepassing op: Windows Power shell 5,1
 

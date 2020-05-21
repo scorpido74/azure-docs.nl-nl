@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: dsindona
-ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 53a22140fe62ce0db18c1d02d816eb31b12a381b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871435"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714148"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
@@ -36,7 +36,7 @@ Er zijn twee soorten wijzigingen beschikbaar voor uitgevers van commerciële Mar
 >[!Note]
 >Deze twee typen wijzigingen worden boven op elkaar gestapeld. Klanten die zijn gericht op aangepaste wijzigingen, krijgen ook de universele wijziging in het standaard contract tijdens de aankoop.
 
-U kunt gebruikmaken van het Standard-contract voor de micro soft Commercial Marketplace voor de volgende aanbiedings typen: Azure-toepassingen (oplossings sjablonen en beheerde toepassingen), Virtual Machines, containers, container toepassingen, IoT Edge modules en SaaS.
+U kunt gebruikmaken van het Standard-contract voor de micro soft Commercial Marketplace voor de volgende aanbiedings typen: Azure-toepassingen (oplossings sjablonen en beheerde toepassingen), Virtual Machines en SaaS.
 
 ## <a name="customer-experience"></a>Gebruikers ervaring
 

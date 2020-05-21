@@ -4,23 +4,24 @@ description: Meer informatie over hoe de CONTAINs-functie voor SQL-systeem in Az
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0de34e6e0e238887b8f75ae2397e9e650eaac340
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302590"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711700"
 ---
 # <a name="contains-azure-cosmos-db"></a>BEVAT (Azure Cosmos DB)
+
  Retourneert een Booleaanse waarde die aangeeft of de eerste tekenreeksexpressie de tweede bevat.  
   
 ## <a name="syntax"></a>Syntaxis
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>Argumenten
@@ -30,6 +31,8 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 *str_expr2*  
    Is de teken reeks expressie die u wilt zoeken.  
+
+*bool_expr* Optionele waarde voor het negeren van case. Als deze waarde is ingesteld op True, wordt een niet-hoofdletter gevoelige zoek actie uitgevoerd. Indien niet opgegeven, is deze waarde false.
   
 ## <a name="return-types"></a>Retour typen
   
@@ -40,7 +43,7 @@ CONTAINS(<str_expr1>, <str_expr2>)
   In het volgende voor beeld wordt gecontroleerd of "ABC" bevat "AB" en "ABC" bevat "d".  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 ```  
   
  Dit is de resultatenset.  
@@ -51,7 +54,7 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

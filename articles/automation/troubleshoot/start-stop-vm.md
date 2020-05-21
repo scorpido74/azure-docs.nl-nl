@@ -1,6 +1,6 @@
 ---
-title: Problemen met de implementatie van Azure Automation VM's buiten bedrijfsuren starten/stoppen oplossen
-description: In dit artikel leest u hoe u problemen oplost en oplost die ontstaan tijdens de implementatie van de functie VM's buiten bedrijfsuren starten/stoppen.
+title: Problemen met Azure Automation VM's buiten bedrijfsuren starten/stoppen oplossen
+description: In dit artikel leest u hoe u problemen oplost en oplost die ontstaan tijdens het gebruik van de functie VM's buiten bedrijfsuren starten/stoppen.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bd537fd943e9a13a59c2fa630235130ce9ccfe2d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680843"
+ms.locfileid: "83715627"
 ---
-# <a name="troubleshoot-startstop-vms-during-off-hours-deployment-issues"></a>Problemen met VM's buiten bedrijfsuren starten/stoppen-implementatie oplossen
+# <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen
 
 In dit artikel vindt u informatie over het oplossen van problemen die zich voordoen wanneer u de Azure Automation VM's buiten bedrijfsuren starten/stoppen functie op uw Vm's implementeert. 
 

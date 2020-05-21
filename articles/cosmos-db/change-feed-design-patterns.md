@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450348"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715695"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Met de wijzigings feed in Azure Cosmos DB kunt u efficiënte en schaal bare oplo
 
 ## <a name="event-computing-and-notifications"></a>Gebeurtenis computing en meldingen
 
-De Azure Cosmos DB Change feed kan scenario's vereenvoudigen die een melding of een aanroep naar een API moeten activeren op basis van een bepaalde gebeurtenis. U kunt de bibliotheek voor het wijzigen van het [feedproces](change-feed-processor.md) gebruiken om automatisch uw container te controleren op wijzigingen en een externe API aan te roepen wanneer er een schrijf-of update procedure is.
+De Azure Cosmos DB Change feed kan scenario's vereenvoudigen die een melding moeten activeren of een aanroep naar een API moeten verzenden op basis van een bepaalde gebeurtenis. U kunt de bibliotheek voor het wijzigen van het [feedproces](change-feed-processor.md) gebruiken om automatisch uw container te controleren op wijzigingen en een externe API aan te roepen wanneer er een schrijf-of update procedure is.
 
 U kunt ook selectief een melding activeren of een aanroep naar een API verzenden op basis van specifieke criteria. Als u bijvoorbeeld van de wijzigings feed met behulp van [Azure functions](change-feed-functions.md)leest, kunt u logica in de functie plaatsen om alleen een melding te verzenden als aan een bepaald criterium is voldaan. Hoewel de functie code van Azure tijdens elke schrijf bewerking zou worden uitgevoerd, wordt de melding alleen verzonden als aan specifieke criteria is voldaan.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e653adfd7a148cea7bfb1ecfdbbf386eff0c3e86
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410871"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723320"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -65,22 +65,22 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 ```
 
 > [!NOTE]
-> De Url's van uw waargenomen certificaten moeten van het `https://myVaultName.vault.azure.net/secrets/myCertName`formulier zijn.
+> De Url's van uw waargenomen certificaten moeten van het formulier zijn `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
 > Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het `/certificates` pad niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
-| uitgever | Microsoft.Azure.KeyVault | tekenreeks |
+| apiVersion | 2019-07-01 | datum |
+| publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForLinux | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | false | booleaans |
+| linkOnRenewal | onjuist | booleaans |
 | certificateStoreLocation  | LocalMachine | tekenreeks |
 | requiredInitialSync | waar | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
@@ -90,7 +90,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines die na de implementatie van certificaten moeten worden vernieuwd. De uitbrei ding kan worden geïmplementeerd op afzonderlijke Vm's of virtuele-machine schaal sets. Het schema en de configuratie zijn gebruikelijk voor beide sjabloon typen. 
 
-De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest in het resource fragment van de virtuele `"resources": []` machine van de sjabloon, met name object voor de virtuele-machine sjabloon en `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` in het geval van een schaalset voor virtuele machines onder object.
+De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest in het resource fragment van de virtuele machine van de sjabloon, met name `"resources": []` object voor de virtuele-machine sjabloon en in het geval van een schaalset voor virtuele machines onder `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` object.
 
 ```json
     {
@@ -194,7 +194,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
 Houd rekening met de volgende beperkingen/vereisten:
 - Key Vault beperkingen:
   - Deze moet op het moment van de implementatie bestaan 
-  - Key Vault toegangs beleid is ingesteld voor de VM-VMSS-identiteit met behulp van MSI
+  - De Key Vault Access Policy mustbe ingesteld voor de VM-VMSS-identiteit met behulp van een beheerde identiteit. Zie [Key Vault verificatie bieden met een beheerde identiteit](../../key-vault/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
