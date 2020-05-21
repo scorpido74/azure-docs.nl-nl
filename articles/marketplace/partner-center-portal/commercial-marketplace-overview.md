@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270397"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724816"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Overzicht van de portal voor commerciële Marketplace in het partner centrum
 
@@ -26,31 +26,15 @@ Ondernemingen, overheden en organisaties van alle grootten vinden bedrijfs oplos
 
 Partner centrum is de hub van een micro soft-partner ervaring. Voor organisaties die naar de markt gaan met micro soft en profiteren van de commerciële Marketplace, is het partner centrum de portal die uitgevers gebruiken om aanbiedingen te maken en te beheren, test drive demonstraties op te geven en analyses van aanbod prestaties te bekijken.
 
-## <a name="migration-from-cloud-partner-portal"></a>Migratie van Cloud Partner-portal
+## <a name="migration-from-the-cloud-partner-portal"></a>Migratie van de Cloud Partner-portal
 
-Het partner centrum is in ontwikkeling om alle aspecten van onze relatie met software-uitgevers beter te integreren. Als onderdeel van deze evolutie migreert u [Cloud Partner-Portal](https://cloudpartner.azure.com/) naar het partner centrum.
+Het partner centrum is in ontwikkeling om alle aspecten van onze relatie met software-uitgevers beter te integreren. Als onderdeel van deze evolutie hebben we alle commerciële Marketplace-aanbiedingen gemigreerd van de [Cloud Partner-Portal](https://cloudpartner.azure.com/) naar het partner centrum.
 
-Bestaande commerciële Marketplace-uitgevers vinden een vertrouwde, maar verbeterde gebruikers ervaring met een intuïtieve interface. Meldingen in de portal en e-mail meldingen stellen uitgevers van de migratie op de hoogte. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring is niet van invloed op klanten.
-
->[!NOTE]
->Het partner centrum biedt momenteel ondersteuning voor het maken en beheren van een aantal aanbiedings typen zoals vermeld in de volgende tabel. Meer aanbiedings typen worden binnenkort ondersteund, omdat alle aanbiedingen worden gemigreerd naar het partner centrum.
-
-|Aanbiedings type  |Aanbod beheer gemigreerd van Cloud Partner-portal naar partner centrum  |
-|---------|---------|
-|Software as a Service (SaaS)     | Nu verkrijgbaar       |
-|Dynamics 365 voor klant betrokkenheid & PowerApps     | Nu verkrijgbaar         |
-|Dynamics 365 voor bewerkingen     | Nu verkrijgbaar        |
-|Dynamics 365 voor bedrijven centraal     | Nu verkrijgbaar        |
-|Azure Application     | Nu verkrijgbaar        |
-|Virtuele Azure-machine     | Algemene Beschik baarheid april – mei 2020        |
-|Azure-container     | Algemene Beschik baarheid april – mei 2020        |
-|Consulting Service     | Algemene Beschik baarheid april – mei 2020        |
-|Module IoT Edge     | Algemene Beschik baarheid april – mei 2020        |
-|Power BI-app    | Algemene Beschik baarheid april – mei 2020        |
+Bestaande uitgevers die de Cloud Partner-portal eerder hebben gebruikt, vinden een vertrouwde, verbeterde en intuïtieve gebruikers ervaring met partner centrum. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring is niet van invloed op klanten.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbeteringen voor het publiceren en aanbieden van gebruikers ervaring voor beheer
 
-Met de overgang naar partner Center is er naast verbeteringen van de gebruikers ervaring geen nieuwe functionaliteit beschikbaar voor uitgevers.  Zie [Veelgestelde vragen over het migreren van Cloud Partner-Portal naar het partner centrum](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq)voor meer informatie.
+Met de overgang naar partner Center is er naast verbeteringen van de gebruikers ervaring geen nieuwe functionaliteit beschikbaar voor uitgevers.  Zie [Veelgestelde vragen over het migreren van Cloud Partner-Portal naar het partner centrum](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq)voor meer informatie.
 
 ### <a name="account-and-user-management-updates"></a>Updates voor account-en gebruikers beheer
 

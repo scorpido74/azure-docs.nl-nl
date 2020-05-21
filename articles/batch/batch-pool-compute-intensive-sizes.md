@@ -1,15 +1,14 @@
 ---
 title: Reken intensief Azure-Vm's gebruiken met batch
 description: Profiteren van de grootte van HPC en GPU-virtuele machines in Azure Batch groepen. Meer informatie over afhankelijkheden van besturings systemen en een aantal voor beelden van scenario's weer geven.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: labrenne
-ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115955"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724085"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -101,7 +100,7 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moe
 | Instelling | Waarde |
 | ---- | ----- | 
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
-| **Uitgever** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Aanbieding** | WindowsServer |
 | **SKU** | 2016-Data Center |
 | **Knooppunt grootte** | NC6-standaard |
@@ -155,7 +154,7 @@ Maak met behulp van de batch-Api's of de Azure Portal een pool met behulp van de
 | Instelling | Waarde |
 | ---- | ---- |
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
-| **Uitgever** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Aanbieding** | CentOS-HPC |
 | **SKU** | 7.4 |
 | **Knooppunt grootte** | H16r-standaard |

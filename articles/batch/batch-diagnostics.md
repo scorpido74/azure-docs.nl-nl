@@ -1,15 +1,15 @@
 ---
 title: Metrische gegevens, waarschuwingen en Diagnostische logboeken
 description: Registreer en analyseer logboek gebeurtenissen van het diagnostische gegevens voor Azure Batch account resources, zoals Pools en taken.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a33f71cd185a327bfe6852b9acd7d7317b94c2c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117298"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726737"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en bewaking
 
@@ -34,7 +34,7 @@ Metrische gegevens weer geven voor uw batch-account in de Azure Portal. De **ove
 
 Alle metrische gegevens van een batch-account weer geven: 
 
-1. Klik in de portal op **alle services** > **batch-accounts**en klik vervolgens op de naam van uw batch-account.
+1. Klik in de portal op **alle services**  >  **batch-accounts**en klik vervolgens op de naam van uw batch-account.
 2. Klik onder **bewaking**op **metrische gegevens**.
 3. Selecteer een of meer metrische gegevens. Als u wilt, selecteert u extra resource metrieken met behulp van de vervolg keuzelijsten **abonnementen**, **resource groep**, **resource type**en **resource** .
     * Voor metrische gegevens op basis van een teller (zoals ' toegewezen aantal kernen ' of ' aantal knoop punten met lage prioriteit '), gebruikt u de aggregatie ' gemiddeld '. Gebruik de aggregatie ' count ' voor metrische gegevens op basis van gebeurtenissen (zoals ' pool formaat wijzigen voltooid ').
@@ -62,8 +62,8 @@ U kunt bijvoorbeeld een waarschuwing voor metrische gegevens configureren wannee
 
 Een waarschuwing voor metrische gegevens configureren in de portal:
 
-1. Klik op **alle services** > **batch-accounts**en klik vervolgens op de naam van uw batch-account.
-2. Klik onder **bewaking**op **waarschuwings regels** > waarschuwing voor**metrische gegevens toevoegen**.
+1. Klik op **alle services**  >  **batch-accounts**en klik vervolgens op de naam van uw batch-account.
+2. Klik onder **bewaking**op **waarschuwings regels**waarschuwing voor  >  **metrische gegevens toevoegen**.
 3. Selecteer een metriek, een waarschuwings voorwaarde (bijvoorbeeld wanneer een metriek een bepaalde waarde overschrijdt tijdens een periode) en een of meer meldingen.
 
 U kunt ook een nabije realtime-waarschuwing configureren met behulp van de [rest API](https://docs.microsoft.com/rest/api/monitor/). Zie [overzicht van waarschuwingen](../azure-monitor/platform/alerts-overview.md)voor meer informatie. Zie de informatie over zoek query's in [reageren op gebeurtenissen met Azure monitor-waarschuwingen](../azure-monitor/learn/tutorial-response.md) om taak-, taak-of pool-specifieke informatie in uw waarschuwingen op te vragen.
@@ -94,8 +94,8 @@ Andere optionele bestemmingen voor Diagnostische logboeken:
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Verzamelen van batch-diagnose logboeken inschakelen
 
-1. Klik in de portal op **alle services** > **batch-accounts**en klik vervolgens op de naam van uw batch-account.
-2. Klik onder **bewaking**op **Diagnostische logboeken** > **Diagnostische gegevens inschakelen**.
+1. Klik in de portal op **alle services**  >  **batch-accounts**en klik vervolgens op de naam van uw batch-account.
+2. Klik onder **bewaking**op **Diagnostische logboeken**  >  **Diagnostische gegevens inschakelen**.
 3. Voer in **Diagnostische instellingen**een naam in voor de instelling en kies een logboek bestemming (bestaand opslag account, Event Hub of Azure monitor-Logboeken). Selecteer ofwel **ServiceLog** als **AllMetrics**.
 
     Wanneer u een opslag account selecteert, kunt u desgewenst een Bewaar beleid instellen. Als u niet een aantal dagen opgeeft voor retentie, worden gegevens bewaard tijdens de levens duur van het opslag account.
@@ -125,9 +125,9 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Elk `PT1H.json` blob-bestand bevat gebeurtenissen in JSON-indeling die zijn opgetreden binnen het uur dat is opgegeven in de `h=12`BLOB-URL (bijvoorbeeld). Tijdens het huidige uur worden gebeurtenissen aan het `PT1H.json` bestand toegevoegd wanneer deze zich voordoen. De minuut waarde (`m=00`) is altijd `00`, omdat de diagnostische logboek gebeurtenissen per uur worden opgesplitst in afzonderlijke blobs. (Alle tijden zijn in UTC.)
+Elk `PT1H.json` blob-bestand bevat gebeurtenissen in JSON-indeling die zijn opgetreden binnen het uur dat is opgegeven in de BLOB-URL (bijvoorbeeld `h=12` ). Tijdens het huidige uur worden gebeurtenissen aan het `PT1H.json` bestand toegevoegd wanneer deze zich voordoen. De minuut waarde ( `m=00` ) is altijd `00` , omdat de diagnostische logboek gebeurtenissen per uur worden opgesplitst in afzonderlijke blobs. (Alle tijden zijn in UTC.)
 
-Hieronder ziet u een voor beeld `PoolResizeCompleteEvent` van een vermelding `PT1H.json` in een logboek bestand. Het bevat informatie over het huidige en het doel aantal toegewezen knoop punten met een lage prioriteit, evenals de begin-en eind tijd van de bewerking:
+Hieronder ziet u een voor beeld van een `PoolResizeCompleteEvent` vermelding in een `PT1H.json` logboek bestand. Het bevat informatie over het huidige en het doel aantal toegewezen knoop punten met een lage prioriteit, evenals de begin-en eind tijd van de bewerking:
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}

@@ -1,15 +1,15 @@
 ---
-title: Taken uitvoeren onder gebruikers accounts-Azure Batch
+title: Taken uitvoeren onder gebruikers accounts
 description: Het is handig om het gebruikers account te configureren waaronder u wilt dat een taak wordt uitgevoerd. Meer informatie over de typen gebruikers accounts en hoe u deze kunt configureren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980283"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726261"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
 
@@ -81,7 +81,7 @@ U kunt de automatische gebruikers specificatie voor beheerders bevoegdheden conf
 >
 >
 
-De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden is het verhogings `Admin` niveau ingesteld op en `Task`het bereik. Het taak bereik is de standaard instelling, maar is wel opgenomen in het voor beeld.
+De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden is het verhogings niveau ingesteld op `Admin` en het bereik `Task` . Het taak bereik is de standaard instelling, maar is wel opgenomen in het voor beeld.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -146,7 +146,7 @@ Een gebruikers account met een naam is handig als u alle taken in een taak wilt 
 
 U kunt ook een benoemd gebruikers account gebruiken om een taak uit te voeren waarmee machtigingen worden ingesteld voor externe resources, zoals bestands shares. Met een benoemde gebruikers account beheert u de gebruikers identiteit en kunt u deze gebruikers-id gebruiken om machtigingen in te stellen.  
 
-Met benoemde gebruikers accounts schakelt u wacht woord-minder SSH tussen Linux-knoop punten in. U kunt een benoemd gebruikers account gebruiken met Linux-knoop punten die taken met meerdere instanties moeten uitvoeren. Elk knoop punt in de pool kan taken uitvoeren onder een gebruikers account dat is gedefinieerd in de hele groep. Zie voor meer informatie over taken met meerdere instanties [multi\-instance-taken gebruiken voor het uitvoeren van MPI-toepassingen](batch-mpi.md).
+Met benoemde gebruikers accounts schakelt u wacht woord-minder SSH tussen Linux-knoop punten in. U kunt een benoemd gebruikers account gebruiken met Linux-knoop punten die taken met meerdere instanties moeten uitvoeren. Elk knoop punt in de pool kan taken uitvoeren onder een gebruikers account dat is gedefinieerd in de hele groep. Zie voor meer informatie over taken met meerdere instanties [multi instance- \- taken gebruiken voor het uitvoeren van MPI-toepassingen](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Benoemde gebruikers accounts maken
 
@@ -282,7 +282,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Een taak uitvoeren onder een benoemd gebruikers account met verhoogde toegang
 
-Als u een taak wilt uitvoeren als een verhoogde gebruiker, stelt u de eigenschap **UserIdentity** van de taak in op een benoemd gebruikers account dat is gemaakt met de `Admin`eigenschap **ElevationLevel** ingesteld op.
+Als u een taak wilt uitvoeren als een verhoogde gebruiker, stelt u de eigenschap **UserIdentity** van de taak in op een benoemd gebruikers account dat is gemaakt met de eigenschap **ElevationLevel** ingesteld op `Admin` .
 
 Dit code fragment geeft aan dat de taak moet worden uitgevoerd onder een benoemd gebruikers account. Dit benoemde gebruikers account is gedefinieerd in de groep toen de groep werd gemaakt. In dit geval is het benoemde gebruikers account met beheerders machtigingen gemaakt:
 

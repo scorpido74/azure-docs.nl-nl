@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137770"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722623"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
 
@@ -42,7 +42,7 @@ De eerste stap voor het trainen van een model is het uploaden van trainings gege
 2. Navigeer naar **spraak-naar-tekst > Custom Speech > training**.
 3. Klik op **model trainen**.
 4. Geef vervolgens uw training een **naam** en **Beschrijving**.
-5. Selecteer in de vervolg keuzelijst **scenario en basislijn model** het scenario dat het meest geschikt is voor uw domein. Als u niet zeker weet welk scenario u moet kiezen, selecteert u **Algemeen**. Het basis model is het begin punt voor training. Als u geen voor keur hebt, kunt u de nieuwste gebruiken.
+5. Selecteer in de vervolg keuzelijst **scenario en basislijn model** het scenario dat het meest geschikt is voor uw domein. Als u niet zeker weet welk scenario u moet kiezen, selecteert u **Algemeen**. Het basis model is het begin punt voor training. Het meest recente model is doorgaans de beste keuze.
 6. Kies op de pagina **trainings gegevens selecteren** een of meer transcriptie-gegevens sets met audio en menselijke labels die u wilt gebruiken voor de training.
 7. Zodra de training is voltooid, kunt u ervoor kiezen om nauw keuriger tests uit te voeren op het nieuwe getrainde model. Deze stap is optioneel.
 8. Selecteer **maken** om uw aangepaste model te maken.

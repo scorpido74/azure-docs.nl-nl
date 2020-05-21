@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: 9b37ad264dc8a8a6c653c25ddf6ac0fcb4065f9b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680815"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725615"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -169,7 +169,7 @@ AzureArcTest1  eastus      AzureArcTest
 Azure Arc enabled Kubernetes implementeert enkele opera tors in de `azure-arc` naam ruimte. U kunt deze implementaties en peulen hier bekijken:
 
 ```console
-kubectl -n azure-arc get deploy,po
+kubectl -n azure-arc get deployments,pods
 ```
 
 **Uitvoer**
@@ -198,8 +198,13 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 Azure Arc enabled Kubernetes bestaat uit een aantal agents (opera tors) die in uw cluster worden uitgevoerd en die zijn geïmplementeerd in de `azure-arc` naam ruimte.
 
-* `deploy/config-agent`: Hiermee wordt het verbonden cluster gewatcheerd voor configuratie bronnen voor broncode beheer die zijn toegepast op het cluster en de nalevings status van updates
-* `deploy/controller-manager`: is een operator van Opera tors en organiseert de interacties tussen onderdelen van Azure Arc
+* `deployment.apps/config-agent`: Hiermee wordt het verbonden cluster gewatcheerd voor configuratie bronnen voor broncode beheer die zijn toegepast op het cluster en de nalevings status van updates
+* `deployment.apps/controller-manager`: is een operator van Opera tors en organiseert de interacties tussen onderdelen van Azure Arc
+* `deployment.apps/metrics-agent`: verzamelt metrische gegevens van andere Arc-agents om ervoor te zorgen dat deze agents de optimale prestaties vertonen
+* `deployment.apps/cluster-metadata-operator`: Hiermee worden de meta gegevens van het cluster verzameld, de Cluster versie, het aantal knoop punten en de Arc-agent versie
+* `deployment.apps/resource-sync-agent`: synchroniseert de hierboven vermelde meta gegevens van het cluster naar Azure
+* `deployment.apps/clusteridentityoperator`: onderhoudt het MSI-certificaat (Managed Service Identity) dat door andere agents wordt gebruikt voor communicatie met Azure
+* `deployment.apps/flux-logs-agent`: Hiermee worden logboeken van de stroom-Opera tors verzameld die zijn geïmplementeerd als onderdeel van de configuratie van broncode beheer
 
 ## <a name="delete-a-connected-cluster"></a>Een verbonden cluster verwijderen
 

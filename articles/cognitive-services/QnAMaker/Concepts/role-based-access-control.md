@@ -3,12 +3,12 @@ title: Samen werken met anderen-QnA Maker
 description: ''
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ef0823fc60424dc861ab70f4112e4689c1b97fb0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 080e6549579675e27486e6173d5907d92bbaad70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665980"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724918"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Samen werken met andere auteurs en editors
 
@@ -40,7 +40,7 @@ In het volgende diagram ziet u de stroom, van het perspectief van de auteur, voo
 |3|QnA Maker-API valideert het token.|
 |4 |QnA Maker-API-QnAMaker-service wordt aangeroepen.|
 
-Als u van plan bent om de ontwerp-Api's aan te roepen] (.. /How-To/collaborate-knowledge-base.md), meer informatie over het instellen van verificatie.
+Als u van plan bent om de [ontwerp-api's](../How-To/collaborate-knowledge-base.md)aan te roepen, leest u meer over het instellen van de verificatie.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Verifiëren door QnA Maker Portal
 

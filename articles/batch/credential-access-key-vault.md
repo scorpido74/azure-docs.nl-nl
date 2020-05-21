@@ -1,14 +1,14 @@
 ---
 title: Key Vault veilig openen met Batch
 description: Meer informatie over hoe u via een programma toegang hebt tot uw referenties vanuit Key Vault met behulp van Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117451"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725717"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Key Vault veilig openen met Batch
 
@@ -25,19 +25,19 @@ Als u wilt verifiëren bij Azure Key Vault van een batch-knoop punt, hebt u het 
 
 Als u nog geen certificaat hebt, kunt u er het beste een zelfondertekend certificaat genereren met behulp van het `makecert` opdracht regel programma.
 
-U kunt dit pad `makecert` meestal vinden: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Open een opdracht prompt als beheerder en ga naar `makecert` het volgende voor beeld.
+U kunt `makecert` dit pad meestal vinden: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>` . Open een opdracht prompt als beheerder en ga naar `makecert` het volgende voor beeld.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Gebruik vervolgens het hulp `makecert` programma om zelfondertekende certificaat bestanden te maken `batchcertificate.cer` met `batchcertificate.pvk`de naam en. De gebruikte algemene naam (CN) is niet van belang voor deze toepassing, maar het is wel handig om er iets van te maken dat aangeeft waarvoor het certificaat wordt gebruikt.
+Gebruik vervolgens het `makecert` hulp programma om zelfondertekende certificaat bestanden te maken met de naam `batchcertificate.cer` en `batchcertificate.pvk` . De gebruikte algemene naam (CN) is niet van belang voor deze toepassing, maar het is wel handig om er iets van te maken dat aangeeft waarvoor het certificaat wordt gebruikt.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Voor batch is `.pfx` een bestand vereist. Gebruik het hulp programma [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) om de `.cer` en `.pvk` bestanden die zijn `makecert` gemaakt door te `.pfx` converteren naar één bestand.
+Voor batch is een `.pfx` bestand vereist. Gebruik het hulp programma [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) om de `.cer` en `.pvk` bestanden die zijn gemaakt door `makecert` te converteren naar één `.pfx` bestand.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -87,7 +87,7 @@ Wanneer u nu een batch-pool maakt, kunt u naar **certificaten** in de groep navi
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell installeren
 
-Als u van plan bent om toegang te krijgen tot Key Vault met behulp van Power shell-scripts op uw knoop punten, moet de Azure PowerShell-bibliotheek zijn geïnstalleerd. Er zijn enkele manieren om dit te doen als op uw knoop punten Windows Management Framework (WMF) 5 is geïnstalleerd, kunt u de opdracht install-module gebruiken om deze te downloaden. Als u knoop punten gebruikt die geen WMF 5 hebben, kunt u deze eenvoudig installeren door het Azure PowerShell `.msi` -bestand te bundelen met uw batch-bestanden en vervolgens het installatie programma aan te roepen als eerste deel van het batch-opstart script. Zie dit voor beeld voor meer informatie:
+Als u van plan bent om toegang te krijgen tot Key Vault met behulp van Power shell-scripts op uw knoop punten, moet de Azure PowerShell-bibliotheek zijn geïnstalleerd. Er zijn enkele manieren om dit te doen als op uw knoop punten Windows Management Framework (WMF) 5 is geïnstalleerd, kunt u de opdracht install-module gebruiken om deze te downloaden. Als u knoop punten gebruikt die geen WMF 5 hebben, kunt u deze eenvoudig installeren door het Azure PowerShell-bestand te bundelen `.msi` met uw batch-bestanden en vervolgens het installatie programma aan te roepen als eerste deel van het batch-opstart script. Zie dit voor beeld voor meer informatie:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh

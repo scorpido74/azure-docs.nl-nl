@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77145c691f5b2b6364de64e491aac3c84495d464
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69872490"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726125"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
@@ -31,7 +31,7 @@ Een IoT Hub bericht bestaat uit:
 
 * Een ondoorzichtige binaire hoofd tekst.
 
-Eigenschaps namen en-waarden mogen alleen ASCII-alfanumerieke ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` tekens bevatten, plus wanneer u apparaat-naar-Cloud-berichten verzendt met het HTTPS-protocol of Cloud-naar-apparaat-berichten verzendt.
+Eigenschaps namen en-waarden mogen alleen ASCII-alfanumerieke tekens bevatten, plus ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` Wanneer u apparaat-naar-Cloud-berichten verzendt met het HTTPS-protocol of Cloud-naar-apparaat-berichten verzendt.
 
 Het verzenden van apparaat-naar-Cloud-berichten met IoT Hub heeft de volgende kenmerken:
 
@@ -51,9 +51,9 @@ Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informati
 
 | Eigenschap | Beschrijving  |Gebruiker instelbaar?|Tref woord voor </br>routerings query|
 | --- | --- | --- | --- |
-| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`+.  | Ja | messageId |
+| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Ja | messageId |
 | iothub-enqueuedtime |De datum en tijd waarop het [apparaat-naar-Cloud-](iot-hub-devguide-d2c-guidance.md) bericht is ontvangen door IOT hub. | Nee | enqueuedTime |
-| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}`. | Ja | userId |
+| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}` . | Ja | userId |
 | iothub-verbinding-apparaat-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Deze bevat de **deviceId** van het apparaat dat het bericht heeft verzonden. | Nee | connectionDeviceId |
 | iothub-verbinding-module-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Het bevat de **moduleId** van het apparaat dat het bericht heeft verzonden. | Nee | connectionModuleId |
 | iothub-verbinding-generatie-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Het bevat de **connectionDeviceGenerationId** (per [apparaat-id-eigenschappen](iot-hub-devguide-identity-registry.md#device-identity-properties)) van het apparaat dat het bericht heeft verzonden. | Nee |connectionDeviceGenerationId |
@@ -63,13 +63,33 @@ Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informati
 
 | Eigenschap | Beschrijving  |Gebruiker instelbaar?|
 | --- | --- | --- |
-| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`+.  |Ja|
+| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Ja|
 | Volg nummer |Een getal (uniek per apparaat wachtrij) toegewezen door IoT Hub aan elk bericht van de Cloud naar het apparaat. |Nee|
 | tot |Een doel dat is opgegeven in [Cloud-naar-apparaat-](iot-hub-devguide-c2d-guidance.md) berichten. |Nee|
 | absoluut-verloop tijd |De datum en tijd waarop het bericht is verlopen. |Nee|   |
 | correlation-id |Een teken reeks eigenschap in een antwoord bericht dat normaal gesp roken de MessageId van de aanvraag bevat, in antwoord patronen voor aanvragen. |Ja|
-| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}`. |Ja|
+| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}` . |Ja|
 | iothub-ACK |Een feedback bericht generator. Deze eigenschap wordt gebruikt in Cloud-naar-apparaat-berichten om IoT Hub te vragen om feedback berichten te genereren als gevolg van het verbruik van het bericht door het apparaat. Mogelijke waarden: **geen** (standaard): er wordt geen feedback bericht gegenereerd, **positief**: er wordt een feedback bericht ontvangen als het bericht is voltooid, **negatief**: Ontvang een feedback bericht als het bericht is verlopen (of het maximum aantal leveringen is bereikt) zonder dat het apparaat is voltooid, of **volledig**: zowel positief als negatief. |Ja|
+
+### <a name="system-property-names"></a>Namen van systeem eigenschappen
+
+De namen van de systeem eigenschappen variëren op basis van het eind punt waarnaar de berichten worden doorgestuurd. Raadpleeg de onderstaande tabel voor meer informatie over deze namen.
+
+
+|Naam van systeem eigenschap|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|Bericht-ID|bericht-id|messageId|MessageId|bericht-id|
+|Tijd in wachtrij voor IOT hub|iothub-enqueuedtime|enqueuedTime|iothub-enqueuedtime|iothub-enqueuedtime|
+|Gebruikers-id|user-id|userId|UserId|user-id|
+|Verbindings apparaat-id|iothub-verbinding-apparaat-id| connectionDeviceId|iothub-verbinding-apparaat-id|iothub-verbinding-apparaat-id|
+|Id van de verbindings module|iothub-verbinding-module-id|connectionModuleId|iothub-verbinding-module-id|iothub-verbinding-module-id|
+|Generatie-id voor verbindings autorisatie|iothub-verbinding-generatie-id|connectionDeviceGenerationId| iothub-verbinding-generatie-id|iothub-verbinding-generatie-id|
+|Verificatie methode voor de verbinding|iothub-Connection-auth-methode|connectionAuthMethod|iothub-Connection-auth-methode|iothub-Connection-auth-methode|
+|Invoer|inhouds type|Invoer|Invoer|iothub-inhouds type|
+|contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime|     |iothub-enqueuedtime|
+|iothub-interface-naam|iothub-interface-naam|interfaceName|Iothub-interface-naam|iothub-interface-naam|
+|CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 
 ## <a name="message-size"></a>Berichtgrootte
 

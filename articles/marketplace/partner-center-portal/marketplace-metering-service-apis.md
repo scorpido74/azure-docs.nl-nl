@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/18/2020
+ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857868"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725462"
 ---
 # <a name="marketplace-metering-service-apis"></a>Service-API's voor Marketplace-meting
 
@@ -34,7 +34,10 @@ Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifie
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| `authorization`   | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen. |
+| `authorization`   | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP-aanvraag, voor voegsel `Bearer` voor het token dat is verkregen van de koppeling waarnaar wordt verwezen. |
+
+>[!Note]
+>Voor Azure-toepassing Managed apps-plannen `resourceId` is de `resourceUsageId` gevonden onder het `billingDetails` meta gegevens object van de beheerde app.  Een voorbeeld script voor het ophalen hiervan vindt [u in het token Azure Managed Identities gebruiken](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token).  Voor SaaS-aanbiedingen `resourceId` is de SaaS-abonnements-id.  Zie [abonnementen weer](./pc-saas-fulfillment-api-v2.md#list-subscriptions)geven voor meer informatie over SaaS-abonnementen.
 
 *Schot*
 
@@ -134,7 +137,7 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 | ------------------ | ------ |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en gegeven in de antwoord headers. |
-| `authorization`      | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen.  |
+| `authorization`      | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP-aanvraag, voor voegsel `Bearer` voor het token dat is verkregen van de koppeling waarnaar wordt verwezen.  |
 
 *Schot*
 ```json
@@ -192,7 +195,7 @@ OK
 }
 ```
 
-Beschrijving van de status code waarnaar wordt `BatchUsageEvent` verwezen in de API-reactie:
+Beschrijving van de status code waarnaar wordt verwezen in de `BatchUsageEvent` API-reactie:
 
 | Statuscode  | Description |
 | ---------- | -------------------- |

@@ -1,14 +1,14 @@
 ---
 title: Kosten analyse en budget
 description: Meer informatie over het ophalen van een kosten analyse en het instellen van een budget voor de onderliggende reken resources en software licenties die worden gebruikt voor het uitvoeren van uw batch-workloads.
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: c3c3203882d003d7fbb5f9d5092a1c93886f313a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117485"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725768"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kosten analyse en budgetten voor Azure Batch
 
@@ -43,7 +43,7 @@ Via de Azure Portal kunt u budgetten en uitgaven voor uw batch-pool (s) of batch
 1. Selecteer **Cost Management + facturering** in de linkernavigatiebalk in het Azure Portal.
 1. Selecteer uw abonnement in de sectie **Mijn abonnementen**
 1. Ga naar **kosten analyse** in het gedeelte **Cost Management** van de navigatie balk aan de linkerkant. dit ziet er als volgt uit:
-1. Selecteer **filter toevoegen**. Selecteer in de eerste vervolg keuzelijst **resource** ![de resource filter selecteren](./media/batch-budget/resource-filter.png)
+1. Selecteer **filter toevoegen**. Selecteer in de eerste vervolg keuzelijst **resource** ![ de resource filter selecteren](./media/batch-budget/resource-filter.png)
 1. Selecteer in de tweede vervolg keuzelijst de batch-pool. Wanneer de pool is geselecteerd, ziet de kosten analyse er ongeveer uit als de volgende analyse.
     ![Kosten analyse van een pool](./media/batch-budget/pool-cost-analysis.png)
 
@@ -68,7 +68,7 @@ Meer informatie over het instellen van Vm's met lage prioriteit voor uw workload
 
 ### <a name="virtual-machine-os-disk-type"></a>Schijf type van het besturings systeem van de virtuele machine
 
-Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/windows/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor `Standard_D2_v3`.
+Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/windows/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor `Standard_D2_v3` .
 
 Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hogere prestaties en virtuele machines met Premium-schijven kunnen iets sneller beginnen dan Vm's met standaard schijven voor harde schijven. Met batch wordt de besturingssysteem schijf vaak niet gebruikt, omdat de toepassingen en taak bestanden zich op de tijdelijke schijf van de virtuele machine bevinden. In veel gevallen is het niet nodig om de verhoogde kosten te betalen voor de Premium-SSD die is ingericht wanneer de VM-grootte van een is opgegeven.
 

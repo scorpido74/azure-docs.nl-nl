@@ -1,21 +1,21 @@
 ---
-title: Uitvoer gegevens persistent maken voor Azure Storage met .NET file conventies Library-Azure Batch
+title: Uitvoer gegevens persistent maken voor Azure Storage met .NET file conventies Library
 description: Meer informatie over het gebruik van Azure Batch bestands conventies bibliotheek voor .NET om batch taken te behouden & taak uitvoer naar Azure Storage en de uitvoer in de Azure Portal te bekijken.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232697"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726329"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Een manier om taak gegevens te behouden, is de [Azure batch bestands conventies bibliotheek voor .net][nuget_package]te gebruiken. De bestands conventies bibliotheek vereenvoudigt het proces van het opslaan van uitvoer gegevens van taken naar Azure Storage en het ophalen ervan. U kunt de bestands conventies bibliotheek in zowel de taak-als &mdash; de client code in de taak code gebruiken voor het persistent maken van bestanden en in de client code om deze weer te geven en op te halen. De taak code kan ook gebruikmaken van de bibliotheek om de uitvoer van upstream-taken op te halen, zoals in een scenario met [taak afhankelijkheden](batch-task-dependencies.md) .
+Een manier om taak gegevens te behouden, is de [Azure batch bestands conventies bibliotheek voor .net][nuget_package]te gebruiken. De bestands conventies bibliotheek vereenvoudigt het proces van het opslaan van uitvoer gegevens van taken naar Azure Storage en het ophalen ervan. U kunt de bestands conventies bibliotheek in zowel de taak-als de client code &mdash; in de taak code gebruiken voor het persistent maken van bestanden en in de client code om deze weer te geven en op te halen. De taak code kan ook gebruikmaken van de bibliotheek om de uitvoer van upstream-taken op te halen, zoals in een scenario met [taak afhankelijkheden](batch-task-dependencies.md) .
 
 Als u uitvoer bestanden wilt ophalen met behulp van de bestands conventies bibliotheek, kunt u de bestanden voor een bepaalde taak of taak vinden door deze te vermelden op ID en doel. U hoeft de namen of locaties van de bestanden niet te weten. U kunt bijvoorbeeld de bestands conventies bibliotheek gebruiken om alle tussenliggende bestanden voor een bepaalde taak weer te geven of een voorbeeld bestand voor een bepaalde taak te verkrijgen.
 
@@ -64,7 +64,7 @@ Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-dotne
 
 Als u de taak uitvoer naar Azure Storage wilt behouden, moet u eerst een container maken door [eigenschap cloudjob][net_cloudjob]aan te roepen. [PrepareOutputStorageAsync][net_prepareoutputasync]. Deze extensie methode gebruikt een [Cloud Storage account][net_cloudstorageaccount] -object als para meter. Er wordt een container gemaakt met de naam volgens de bestands conventies standaard, zodat de inhoud detecteerbaar is voor de Azure Portal en de methoden voor het ophalen die verderop in het artikel worden beschreven.
 
-Normaal gesp roken plaatst u de code voor het maken van een container &mdash; in uw client toepassing de toepassing die uw Pools, Jobs en taken maakt.
+Normaal gesp roken plaatst u de code voor het maken van een container in uw client toepassing &mdash; de toepassing die uw Pools, Jobs en taken maakt.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -99,7 +99,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-De `kind` para meter van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage). De methode [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen `TaskOutput`: `TaskPreview`, `TaskLog`,, `TaskIntermediate.` en u kunt ook aangepaste uitvoer Categorieën definiëren.
+De `kind` para meter van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[ ](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads)De methode SaveAsync categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen: `TaskOutput` , `TaskPreview` , `TaskLog` , en `TaskIntermediate.` u kunt ook aangepaste uitvoer Categorieën definiëren.
 
 Met deze uitvoer typen kunt u opgeven welk type uitvoer moet worden weer gegeven wanneer u later een query uitvoert op batch voor de persistente uitvoer van een bepaalde taak. Met andere woorden, als u de uitvoer van een taak vermeldt, kunt u de lijst filteren op een van de uitvoer typen. Bijvoorbeeld ' Geef mij de *Preview* -uitvoer voor taak *109*'. Meer informatie over het opnemen en ophalen van uitvoer wordt weer gegeven in de uitvoer ophalen verderop in het artikel.
 
@@ -124,9 +124,9 @@ Net als bij het **TaskOutputKind** -type voor taak uitvoer, gebruikt u het type 
 
 ### <a name="store-task-logs"></a>Taak logboeken opslaan
 
-Naast het persistent maken van een bestand naar een duurzame opslag wanneer een taak of taak is voltooid, moet u mogelijk bestanden behouden die worden bijgewerkt tijdens de uitvoering van een taak &mdash; logboek bestand of `stdout.txt` `stderr.txt`, bijvoorbeeld. Voor dit doel biedt de Azure Batch bestands conventies bibliotheek de [TaskOutputStorage][net_taskoutputstorage]. Methode [SaveTrackedAsync][net_savetrackedasync] . Met [SaveTrackedAsync][net_savetrackedasync]kunt u updates bijhouden voor een bestand op het knoop punt (met een interval dat u opgeeft) en de updates persistent maken voor Azure Storage.
+Naast het persistent maken van een bestand naar een duurzame opslag wanneer een taak of taak is voltooid, moet u mogelijk bestanden behouden die worden bijgewerkt tijdens de uitvoering van een taak &mdash; logboek bestand of `stdout.txt` `stderr.txt` , bijvoorbeeld. Voor dit doel biedt de Azure Batch bestands conventies bibliotheek de [TaskOutputStorage][net_taskoutputstorage]. Methode [SaveTrackedAsync][net_savetrackedasync] . Met [SaveTrackedAsync][net_savetrackedasync]kunt u updates bijhouden voor een bestand op het knoop punt (met een interval dat u opgeeft) en de updates persistent maken voor Azure Storage.
 
-In het volgende code fragment gebruiken we [SaveTrackedAsync][net_savetrackedasync] om de 15 `stdout.txt` seconden een update Azure Storage uit te voeren tijdens de uitvoering van de taak:
+In het volgende code fragment gebruiken we [SaveTrackedAsync][net_savetrackedasync] om `stdout.txt` de 15 seconden een update Azure Storage uit te voeren tijdens de uitvoering van de taak:
 
 ```csharp
 TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
@@ -151,7 +151,7 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-De sectie `Code to process data and produce output file(s)` met opmerkingen is een tijdelijke aanduiding voor de code die door de taak normaal zou worden uitgevoerd. U kunt bijvoorbeeld code hebben waarmee gegevens worden gedownload van Azure Storage en er trans formatie of berekening op wordt uitgevoerd. Het belang rijk onderdeel van dit fragment laat zien hoe u deze code in een `using` blok kunt verpakken om periodiek een bestand bij te werken met [SaveTrackedAsync][net_savetrackedasync].
+De sectie `Code to process data and produce output file(s)` met opmerkingen is een tijdelijke aanduiding voor de code die door de taak normaal zou worden uitgevoerd. U kunt bijvoorbeeld code hebben waarmee gegevens worden gedownload van Azure Storage en er trans formatie of berekening op wordt uitgevoerd. Het belang rijk onderdeel van dit fragment laat zien hoe u deze code in een blok kunt verpakken `using` om periodiek een bestand bij te werken met [SaveTrackedAsync][net_savetrackedasync].
 
 De knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. De `Task.Delay` aanroep is aan het einde van dit `using` blok vereist om ervoor te zorgen dat de knooppunt agent tijd heeft om de inhoud van standaard uit te legen naar het bestand stdout. txt op het knoop punt. Zonder deze vertraging is het mogelijk de laatste paar seconden van uitvoer te missen. Deze vertraging is mogelijk niet vereist voor alle bestanden.
 

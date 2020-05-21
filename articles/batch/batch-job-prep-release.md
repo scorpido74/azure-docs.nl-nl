@@ -1,15 +1,15 @@
 ---
 title: Taken maken om & complete taken op reken knooppunten voor te bereiden
 description: Met voorbereidings taken op taak niveau kunt u de gegevens overdracht naar Azure Batch Compute-knoop punten en release taken voor het opruimen van het knoop punt bij het volt ooien van de taak
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: c9c88994a65d4d2cb8c8373d2bbb4aa2877fe465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a73baa03500dfbcdd7193035bf70b0f3e03be283
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116057"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726669"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Taak voorbereiding en taak release taken uitvoeren op batch Compute-knoop punten
 

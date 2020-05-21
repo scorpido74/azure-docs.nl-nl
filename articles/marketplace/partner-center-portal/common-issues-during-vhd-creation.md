@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: a47bece4df7263dbc29ec19510c3ea422bb3f4cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81266264"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724714"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Veelvoorkomende problemen tijdens het maken van VHD
-
-> [!NOTE]
-> We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [veelvoorkomende problemen tijdens het maken van de VHD (FAQ)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues) in Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
 Deze veelgestelde vragen zijn van belang voor veelvoorkomende problemen die kunnen optreden bij het maken van een virtuele harde schijf (VHD) voor uw virtuele machine-aanbieding van Azure.
 

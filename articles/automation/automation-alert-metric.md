@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u runbooks bewaakt op basis van metrisch
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c5f51ec34ea0b31f4c8fc349246b439425112104
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685411"
+ms.locfileid: "83715848"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
 
@@ -77,7 +77,4 @@ Zodra de metriek niet langer buiten de opgegeven drempel waarde ligt, wordt de w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar het volgende artikel voor meer informatie over andere manieren waarop u waarschuwingen kunt integreren in uw Automation-account.
-
-> [!div class="nextstepaction"]
-> [Een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)
+* [Een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)

@@ -7,15 +7,17 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: f96aa4d75f85aea046981641f84fd2b2c3078bd1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 17416131566edf8710737862f0cbea2e31477960
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691213"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722521"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partner onderwerpen
-![Auth0 logo ](./media/auth0-overview/auth0-logo.png) Auth0, het identiteits platform voor toepassings bouwers, biedt ontwikkel aars en ondernemingen de bouw stenen die ze nodig hebben om hun toepassingen te beveiligen.
+![Auth0-logo](./media/auth0-overview/auth0-logo.png)
+
+Auth0, het identiteits platform voor toepassings bouwers, biedt ontwikkel aars en ondernemingen de bouw stenen die ze nodig hebben om hun toepassingen te beveiligen.
 
 In het onderwerp Auth0-partner kunt u gebeurtenissen gebruiken die worden verzonden door Auth0's-systeem om een aantal taken uit te voeren. Gebruik gebruikers op een zinvolle manier na de verificatie of het automatiseren van beveiligings-en infrastructuur taken.
 

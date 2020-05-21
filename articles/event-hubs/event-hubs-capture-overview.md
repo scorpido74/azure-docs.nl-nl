@@ -13,17 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 05/20/2020
 ms.author: shvija
-ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726091"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage
 Met Azure Event Hubs kunt u automatisch de streaminggegevens vastleggen in Event Hubs in een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze, met extra flexibiliteit voor het opgeven van een tijd-of grootte-interval. Het instellen van vastleggen is snel, er zijn geen administratieve kosten om deze uit te voeren en deze worden automatisch geschaald met Event Hubs [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Event Hubs Capture is de eenvoudigste manier om streaminggegevens te laden in azure, en u kunt zich concentreren op gegevens verwerking in plaats van op het vastleggen van gegevens.
+
+> [!NOTE]
+> Het configureren van Event Hubs Capture voor gebruik van Azure Data Lake Storage **gen 2** is hetzelfde als het configureren van een Azure-Blob Storage. Zie [configure Event hubs Capture](event-hubs-capture-enable-through-portal.md)(Engelstalig) voor meer informatie. 
 
 Met Event Hubs Capture kunt u in realtime en op batch gebaseerde pijp lijnen op dezelfde stroom verwerken. Dit betekent dat u oplossingen kunt bouwen die in de loop van de tijd met uw behoeften groeien. Of u nu batch-gebaseerde systemen bouwt met een ogen blik naar toekomstige realtime verwerking, of als u een efficiënt koud pad wilt toevoegen aan een bestaande realtime-oplossing, kunt u met Event Hubs Capture gemakkelijker werken met streaming-gegevens.
 
@@ -44,7 +47,7 @@ Met Event Hubs Capture kunt u een venster instellen voor het beheren van vastleg
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
 ```
 
-Houd er rekening mee dat de datum waarden worden opgevuld met nullen. een voor beeld van een bestands naam is:
+De datum waarden worden opgevuld met nullen. een voor beeld van een bestands naam is:
 
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
@@ -129,7 +132,7 @@ Met deze opdracht wordt
 
 U kunt ook Avro-Hulpprogram Ma's gebruiken om het bestand te converteren naar de JSON-indeling en andere verwerking uit te voeren.
 
-Als u geavanceerdere verwerking wilt uitvoeren, kunt u Avro downloaden en installeren voor uw keuze van platform. Op het moment van schrijven zijn er implementaties beschikbaar voor C, C++, C\#, Java, NodeJS, perl, PHP, python en Ruby.
+Als u geavanceerdere verwerking wilt uitvoeren, kunt u Avro downloaden en installeren voor uw keuze van platform. Op het moment van schrijven zijn er implementaties beschikbaar voor C, C++, C \# , Java, NodeJS, perl, PHP, python en Ruby.
 
 Apache Avro is volledig aan de slag met hand leidingen voor [Java][Java] en [python][Python]. U kunt ook het artikel [aan de slag met Event hubs vastleggen](event-hubs-capture-python.md) lezen.
 
@@ -137,7 +140,7 @@ Apache Avro is volledig aan de slag met hand leidingen voor [Java][Java] en [pyt
 
 Event Hubs Capture wordt op vergelijk bare wijze gemeten met doorvoer eenheden: per uur. De kosten zijn direct evenredig met het aantal aangeschafte doorvoer eenheden voor de naam ruimte. Naarmate doorvoer eenheden toenemen en dalen, nemen de Event Hubs Capture-meters toe en afnemen om de prestaties te verbeteren. De meters ontstaan beide. Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor prijs informatie. 
 
-Houd er rekening mee dat bij het vastleggen geen quotum voor uitgaand verkeer wordt verbruikt. 
+Bij het vastleggen wordt geen afkomend quotum gebruikt, aangezien dit afzonderlijk wordt gefactureerd. 
 
 ## <a name="integration-with-event-grid"></a>Integratie met Event Grid 
 

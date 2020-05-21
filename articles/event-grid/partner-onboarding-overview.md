@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2c275a5cd5dd7dd9399aa957dd7e68c611fc7c0e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691178"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725922"
 ---
 # <a name="become-and-event-grid-partner"></a>Partner worden en Event Grid
 
@@ -34,10 +34,14 @@ Met partner onderwerpen kunt u gebeurtenissen publiceren naar Azure Event Grid v
 #### <a name="partner-flow"></a>Partner stroom
 
 1. Maak een Azure-Tenant als u er nog geen hebt.
-1. Met CLI een nieuwe Event Grid maken `partnerRegistration` . Deze bron bevat informatie zoals weergave naam, beschrijving, installatie-URI, enzovoort. 
-![Partner onderwerp maken](./media/partner-onboarding-how-to/create-partner-registration.png)
+1. Met CLI een nieuwe Event Grid maken `partnerRegistration` . Deze bron bevat informatie zoals weergave naam, beschrijving, installatie-URI, enzovoort.
+
+    ![Partner onderwerp maken](./media/partner-onboarding-how-to/create-partner-registration.png)
+
 1. Maak een of meer `partnerNamespaces` in elke regio waarvoor u gebeurtenissen wilt publiceren. Als onderdeel hiervan richt Event Grid-Service een publicatie-eind punt in (bijvoorbeeld, https://contoso.westus-1.eventgrid.azure.net/api/events) en toegangs sleutels.
-![Partner naam ruimte maken](./media/partner-onboarding-how-to/create-partner-namespace.png)
+
+    ![Partner naam ruimte maken](./media/partner-onboarding-how-to/create-partner-namespace.png)
+
 1. Bieden klanten een manier om zich te registreren in uw systeem en dat ze graag een partner onderwerp zouden moeten hebben.
 1. Neem contact op met het Event Grid team om ons te laten weten dat het type partner onderwerp openbaar moet worden.
 
@@ -46,9 +50,12 @@ Met partner onderwerpen kunt u gebeurtenissen publiceren naar Azure Event Grid v
 1. Uw klant gaat naar de Azure Portal om te zien wat de Azure-abonnements-ID en de resource groep zijn voor het partner onderwerp dat wordt gemaakt in.
 1. De klant vraagt een partner onderwerp op via uw systeem. Als antwoord maakt u een gebeurtenis tunnel van uw partner naam ruimte.
 1. Event Grid maakt een in **behandeling zijnde** partner onderwerp in het Azure-abonnement en de resource groep van de klant.
-![Gebeurtenis kanaal maken](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+
+    ![Gebeurtenis kanaal maken](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+
 1. De klant activeert het partner onderwerp via de Azure Portal. Gebeurtenissen kunnen nu vanuit uw service worden verwerkt naar het Azure-abonnement van de klant.
-![Partner onderwerp activeren](./media/partner-onboarding-how-to/activate-partner-topic.png)
+
+    ![Partner onderwerp activeren](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
 ## <a name="resource-model"></a>Resource model
 
@@ -64,21 +71,14 @@ Hieronder ziet u het resource model voor onderwerpen over partners.
     Alleen door micro soft goedgekeurde partnerRegistrations kunnen door klanten worden gedetecteerd.
 * Bereik: gemaakt in het Azure-abonnement van de partner. Meta gegevens worden weer gegeven aan klanten wanneer ze openbaar zijn.
 
-### <a name="event-types"></a>Gebeurtenis typen
-* Resource`partnerRegistrations/eventTypes`
-* Gebruikt door: partners
-* Beschrijving: Hiermee worden meta gegevens vastgelegd over gebeurtenis typen die worden ondersteund door een partner registratie.
-* Bereik: kan worden gedetecteerd door klanten zodra het openbaar is gemaakt. Woont in het abonnement van een partner als een onderliggend bron van partner registratie.
-        
-
 ### <a name="partner-namespaces"></a>Partner naam ruimten
 * Resource: partnerNamespaces
 * Gebruikt door: partners
 * Beschrijving: biedt een regionale resource voor het publiceren van klant gebeurtenissen naar. Elke partner naam ruimte heeft een publicatie-eind punt en verificatie sleutels. De naam ruimte is ook de manier waarop de partner een partner onderwerp voor een bepaalde klant aanvraagt en de actieve klanten vermeldt.
 * Bereik: levens duur in het abonnement van de partner.
 
-### <a name="event-tunnels"></a>Gebeurtenis tunnels
-* Resource`partnerNamespaces/eventTunnels`
+### <a name="event-channel"></a>Gebeurtenis kanaal
+* Resource`partnerNamespaces/eventChannels`
 * Gebruikt door: partners
 * Beschrijving: de gebeurtenis tunnels zijn een mirror van het partner onderwerp van de klant. Door een gebeurtenis tunnel te maken en het Azure-abonnement en de resource groep van de klant op te geven in de meta gegevens, geeft u aan Event Grid een partner onderwerp voor de klant te maken. Event Grid wordt een ARM-aanroep voor het maken van een bijbehorende partnerTopic in het abonnement van de klant. Het partner onderwerp wordt gemaakt met de status ' in behandeling '. Er is een 1-1-koppeling tussen elke eventTunnel en een partnerTopic.
 * Bereik: levens duur in het abonnement van de partner.

@@ -1,14 +1,14 @@
 ---
-title: Hoge Beschik baarheid en herstel na nood gevallen-Azure Batch
-description: Meer informatie over het ontwerpen van uw batch-toepassing voor een regionale storing. Werk belastingen moeten een failover uitvoeren naar een andere regio of moeten worden gesplitst tussen twee of meer regio's.
-ms.topic: article
+title: Hoge beschikbaarheid en herstel na noodgevallen
+description: Meer informatie over het ontwerpen van uw batch-toepassing voor een regionale storing.
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: da46753906e27a94e3c76fcaf9c4a26861bba6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117434"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725734"
 ---
 # <a name="design-your-application-for-high-availability"></a>Een toepassing voor hoge beschikbaarheid ontwerpen
 

@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954256"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726193"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindingsgebeurtenissen voor het apparaat aanvragen bij Azure IoT Hub met behulp van Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Het Volg nummer is een teken reeks representatie van een hexadecimaal getal. U k
 
 * Een Active Azure Cosmos DB SQL-API-account. Zie [een database account](../cosmos-db/create-sql-api-java.md#create-a-database-account) voor een overzicht maken als u nog geen hebt gemaakt.
 
-* Een verzameling in uw data base. Zie [een verzameling toevoegen](../cosmos-db/create-sql-api-java.md#add-a-container) voor een overzicht. Wanneer u uw verzameling maakt, gebruikt `/id` u voor de partitie sleutel.
+* Een verzameling in uw data base. Zie [een verzameling toevoegen](../cosmos-db/create-sql-api-java.md#add-a-container) voor een overzicht. Wanneer u uw verzameling maakt, gebruikt u `/id` voor de partitie sleutel.
 
 * Een IoT Hub in Azure. Als u nog geen hub hebt gemaakt, leest u [Get started with IoT Hub](iot-hub-csharp-csharp-getstarted.md) (Aan de slag met IoT Hub) voor stapsgewijze instructies.
 
@@ -34,7 +34,7 @@ Het Volg nummer is een teken reeks representatie van een hexadecimaal getal. U k
 
 Maak eerst een opgeslagen procedure en stel deze in om een logica uit te voeren waarmee de Volg nummers van binnenkomende gebeurtenissen worden vergeleken en de laatste gebeurtenis per apparaat in de data base wordt geregistreerd.
 
-1. Selecteer in uw Cosmos DB SQL-API **Data Explorer** > **items** > **nieuwe opgeslagen procedure**.
+1. Selecteer in uw Cosmos DB SQL-API **Data Explorer**  >  **items**  >  **nieuwe opgeslagen procedure**.
 
    ![Opgeslagen procedure maken](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -334,7 +334,7 @@ U kunt de resultaten van de uitgevoerde opgeslagen procedure bekijken in uw Cosm
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenis abonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IOT-apparaat](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)voor meer informatie.
+In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenis abonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IOT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

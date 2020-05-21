@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402071"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725530"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
@@ -37,9 +37,11 @@ Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka
 
 4. [Nauw keurigheid evalueren](how-to-custom-speech-evaluate-data.md) : Evalueer de nauw keurigheid van het spraak-naar-tekst model. De [Custom speech-Portal](https://speech.microsoft.com/customspeech) biedt een *woord fout*, dat kan worden gebruikt om te bepalen of extra training vereist is. Als u tevreden bent met de nauw keurigheid, kunt u de speech service-Api's rechtstreeks gebruiken. Als u de nauw keurigheid wilt verbeteren met een relatief gemiddelde van 5%-20%, gebruikt u het tabblad **training** in de portal voor het uploaden van aanvullende trainings gegevens, zoals transcripten met menselijke labels en gerelateerde tekst.
 
-5. [Train het model](how-to-custom-speech-train-model.md) : Verbeter de nauw keurigheid van uw spraak-naar-tekst model door geschreven transcripten (10-1000 uur) en gerelateerde tekst (<200 MB) samen met uw audio test gegevens op te geven. Deze gegevens helpen u bij het trainen van het spraak-naar-tekst-model. Wanneer u klaar bent met trainingen, testen en als u tevreden bent met het resultaat, kunt u uw model implementeren.
+5. [Nauw keurigheid verbeteren](how-to-custom-speech-improve-accuracy.md) : Kies extra trainings gegevens strategisch om de kwaliteit van het spraak-naar-tekst model te verbeteren op basis van uw scenario.
 
-6. [Het model implementeren](how-to-custom-speech-deploy-model.md) : Maak een aangepast eind punt voor uw spraak-naar-tekst-model en gebruik het in uw toepassingen, hulpprogram ma's of producten.
+6. [Train het model](how-to-custom-speech-train-model.md) : Verbeter de nauw keurigheid van uw spraak-naar-tekst model door geschreven transcripten (10-1000 uur) en gerelateerde tekst (<200 MB) samen met uw audio test gegevens op te geven. Deze gegevens helpen u bij het trainen van het spraak-naar-tekst-model. Wanneer u klaar bent met trainingen, testen en als u tevreden bent met het resultaat, kunt u uw model implementeren.
+
+7. [Het model implementeren](how-to-custom-speech-deploy-model.md) : Maak een aangepast eind punt voor uw spraak-naar-tekst-model en gebruik het in uw toepassingen, hulpprogram ma's of producten.
 
 ## <a name="set-up-your-azure-account"></a>Uw Azure-account instellen
 

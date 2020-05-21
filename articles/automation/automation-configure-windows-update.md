@@ -1,20 +1,20 @@
 ---
-title: Windows Update instellingen configureren voor gebruik met Azure Updatebeheer
-description: In dit artikel worden de Windows Update-instellingen beschreven die u configureert om te werken met Azure Updatebeheer.
+title: Windows Update instellingen voor Azure Automation configureren Updatebeheer
+description: In dit artikel leest u hoe u Windows Update instellingen configureert om te werken met Azure Automation Updatebeheer.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779447"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715775"
 ---
-# <a name="configure-windows-update-settings-for-update-management"></a>Windows Update instellingen voor Updatebeheer configureren
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Windows Update instellingen voor Azure Automation configureren Updatebeheer
 
-Azure Updatebeheer is afhankelijk van [Windows Update-client](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) om Windows-updates te downloaden en te installeren. Er zijn specifieke instellingen die worden gebruikt door de Windows Update-client wanneer er verbinding wordt gemaakt met Windows Server Update Services (WSUS) of Windows Update. Veel van deze instellingen kunnen worden beheerd met:
+Azure Automation Updatebeheer is afhankelijk van de [Windows Update-client](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) om Windows-updates te downloaden en te installeren. Er zijn specifieke instellingen die worden gebruikt door de Windows Update-client wanneer er verbinding wordt gemaakt met Windows Server Update Services (WSUS) of Windows Update. Veel van deze instellingen kunnen worden beheerd met:
 
 - Editor voor lokaal groepsbeleid
 - Groepsbeleid
@@ -27,9 +27,9 @@ Raadpleeg [uw implementatie plannen voor het bijwerken van virtuele Windows-mach
 
 ## <a name="pre-download-updates"></a>Updates vooraf downloaden
 
-Als u automatisch downloaden van updates wilt configureren, maar deze niet automatisch wilt installeren, kunt u groepsbeleid gebruiken om de [instelling Automatische updates configureren](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) in te stellen op **3**. Met deze instelling kunnen de vereiste updates op de achtergrond worden gedownload en wordt u gewaarschuwd dat de updates gereed zijn om te worden geïnstalleerd. Op deze manier blijft Updatebeheer controle over de planningen, maar kunnen updates buiten het onderhouds venster van Updatebeheer worden gedownload. Dit gedrag voor komt dat het **onderhouds venster** fouten in updatebeheer overschrijdt.
+Als u het automatisch downloaden van updates wilt configureren zonder ze automatisch te installeren, kunt u groepsbeleid gebruiken om [de automatische updates-instelling te configureren](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) op 3. Met deze instelling kunnen de vereiste updates op de achtergrond worden gedownload en wordt u gewaarschuwd dat de updates gereed zijn om te worden geïnstalleerd. Op deze manier blijft Updatebeheer controle over de planning, maar kunt u updates downloaden buiten het onderhouds venster Updatebeheer. Dit gedrag voor komt `Maintenance window exceeded` fouten in updatebeheer.
 
-U kunt deze instelling inschakelen met behulp van Power shell door de volgende opdracht uit te voeren:
+U kunt deze instelling inschakelen in Power shell:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -43,9 +43,9 @@ De register sleutels die worden vermeld in [Automatische updates configureren do
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Updates voor andere micro soft-producten inschakelen
 
-Windows Update-client is standaard geconfigureerd voor het leveren van updates voor Windows. Als u de optie **updates voor andere micro soft-producten opgeven wanneer ik Windows Update** inschakelt, ontvangt u ook updates voor andere producten, waaronder beveiligings patches voor Microsoft SQL Server en andere micro soft-software. Deze optie kan worden geconfigureerd als u de meest recente [beheer sjabloon bestanden](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) hebt gedownload en gekopieerd die beschikbaar zijn voor Windows 2016 en hoger.
+De Windows Update-client is standaard zo geconfigureerd dat alleen updates voor Windows worden geleverd. Als u de optie **updates voor andere micro soft-producten opgeven wanneer ik Windows Update** inschakelt, ontvangt u ook updates voor andere producten, waaronder beveiligings patches voor Microsoft SQL Server en andere micro soft-software. U kunt deze optie configureren als u de meest recente [beheer sjabloon bestanden](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) hebt gedownload en gekopieerd die beschikbaar zijn voor Windows 2016 en hoger.
 
-Als u Windows Server 2012 R2 uitvoert, kan deze instelling niet worden geconfigureerd door groepsbeleid. Voer de volgende Power shell-opdracht uit op deze computers. Updatebeheer voldoet aan deze instelling.
+Als u computers hebt met Windows Server 2012 R2, kunt u deze instelling niet configureren via groepsbeleid. Voer de volgende Power shell-opdracht uit op deze computers:
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -54,16 +54,12 @@ $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
 
-## <a name="wsus-configuration-settings"></a>WSUS-configuratie-instellingen
+## <a name="make-wsus-configuration-settings"></a>WSUS-configuratie-instellingen maken
 
-Updatebeheer ondersteunt WSUS-instellingen. De WSUS-instellingen die u kunt configureren voor het werken met Updatebeheer worden hieronder weer gegeven.
+Updatebeheer ondersteunt WSUS-instellingen. U kunt bronnen opgeven voor het scannen en downloaden van updates met behulp van de instructies in de [locatie van intranet-Microsoft Update service opgeven](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). De Windows Update-client is standaard geconfigureerd om updates te downloaden van Windows Update. Wanneer u een WSUS-server als bron voor uw machines opgeeft en de updates niet zijn goedgekeurd in WSUS, mislukt de update-implementatie. 
 
-### <a name="intranet-microsoft-update-service-location"></a>Locatie van micro soft-Update service in intranet
-
-U kunt bronnen opgeven voor het scannen en downloaden van updates onder [locatie van intranet-Microsoft Update service opgeven](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). Windows Update-client is standaard geconfigureerd voor het downloaden van updates van Windows Update. Wanneer u een WSUS-server als bron voor uw machines opgeeft en de updates niet zijn goedgekeurd in WSUS, mislukt de update-implementatie. 
-
-Configureer [geen verbinding maken met Windows Update Internet locaties](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)om computers te beperken tot alleen die interne Update service. 
+Als u computers wilt beperken tot de interne Update service, stelt u [geen verbinding maken met een Windows Update Internet locaties](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)in. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u Windows Update instellingen hebt geconfigureerd, kunt u een update-implementatie plannen door de instructies in [updates en patches beheren te volgen voor uw Azure-vm's](automation-tutorial-update-management.md).
+[Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)

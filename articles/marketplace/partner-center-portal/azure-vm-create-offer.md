@@ -1,23 +1,20 @@
 ---
 title: Een Azure virtual machine-aanbieding maken in azure Marketplace
-description: Meer informatie over het maken van een virtuele-machine aanbieding op de Azure Marketplace met de vereiste SKU.
+description: Meer informatie over het maken van een aanbieding voor virtuele machines in azure Marketplace met de vereiste SKU.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701074"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726176"
 ---
-# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken in azure Marketplace
-
-> [!IMPORTANT]
-> We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in de [aanbieding voor het maken van virtuele machines](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) in Cloud Partner-Portal om uw aanbiedingen te beheren.
+# <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken in azure Marketplace
 
 In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt en publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het behandelt virtuele Windows-en Linux-machines die een besturings systeem, virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 

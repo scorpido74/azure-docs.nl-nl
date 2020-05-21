@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682134"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726074"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -24,7 +24,11 @@ Taal ondersteuning is afhankelijk van de functionaliteit van de spraak service. 
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen. Aanpassing van de uitspraak wordt aangeboden via upload gerelateerde tekst: uitspraak. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
+Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). 
+
+Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van **Audio en Transcripten met menselijke labels** of **gerelateerde tekst: zinnen**. Zie aan de [slag met Custom speech](how-to-custom-speech.md)voor meer informatie over aanpassingen.
+
+Zie [een model verbeteren voor Custom speech](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)voor meer informatie over hoe u de uitspraak kunt verbeteren.
 
 <!--
 To get the AM and ML bits:
@@ -75,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ta-IN` | Tamil (India)                     | Ja       | Taalmodel                                    |
 | `te-IN` | Telugu (India)                    | Ja       | Nee                                                |
 | `th-TH` | Thai (Thailand)                   | Ja       | Nee                                                |
-| `tr-TR` | Turks (Turkije)                  | Ja       | Nee                                                |
+| `tr-TR` | Turks (Turkije)                  | Ja       | Taalmodel                                    |
 | `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Ja       | Akoestisch model<br>Taalmodel                  |
 | `zh-HK` | Chinees (Kantonees, traditioneel)  | Ja       | Taalmodel                                    |
 | `zh-TW` | Chinees (Taiwan Mandarijn)      | Ja       | Taalmodel                                    |
@@ -95,29 +99,29 @@ Neural stemmen kunnen worden gebruikt om interacties te maken met chat bots uitb
 
 Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over regionale Beschik baarheid.
 
-|Landinstelling  | Taal            | Geslacht | Spraak naam  | Ondersteuning voor bidirectionele talen | Stijl ondersteuning |
-|--|--|--|--|--|--|
-| `de-DE` | Duits (Duitsland)    | Vrouw | "de-DE-KatjaNeural" | Ja. Engels (VS) | Algemeen |
-| `en-AU` | Engels (Australië) | Vrouw |  "en-AU-NatashaNeural" | Nee | Algemeen |
-| `en-CA` | Engels (Canada)    | Vrouw |  "en-CA-ClaraNeural"| Nee | Algemeen |
-| `en-GB` | Engels (UK)        | Vrouw |  "en-GB-LibbyNeural"| Nee | Algemeen |
-|  |      | Vrouw |  "en-GB-MiaNeural" | Nee | Algemeen |
-| `en-US` | Engels (VS)        | Vrouw |  "en-US-AriaNeural"| Nee | Algemeen, meerdere spraak stijlen beschikbaar |
-|  |      | Man   | "en-US-GuyNeural" | Nee | Algemeen |
-| `es-ES` | Spaans (Spanje)     | Vrouw |  "es-ES-ElviraNeural"| Ja. Engels (VS) | Algemeen |
-| `es-MX` | Spaans (Mexico)    | Vrouw |  "es-MX-DaliaNeural" | Ja. Engels (VS) | Algemeen |
-| `fr-CA` | Frans (Canada)     | Vrouw |  "FR-CA-SylvieNeural" | Ja. Engels (VS) | Algemeen |
-| `fr-FR` | Frans (Frankrijk)     | Vrouw | "fr-FR-DeniseNeural"  | Ja. Engels (VS) | Algemeen |
-| `it-IT` | Italiaans (Italië)     | Vrouw |  ' it-IT-ElsaNeural '  | Ja. Engels (VS) | Algemeen |
-| `ja-JP` | Japans            | Vrouw |  "ja-JP-NanamiNeural" | Ja. Engels (VS) | Algemeen |
-| `ko-KR` | Koreaans              | Vrouw |  "ko-KR-SunHiNeural" | Ja. Engels (VS) | Algemeen |
-| `nb-NO` | Noors           | Vrouw | "nb-NO-IselinNeural" | Nee | Algemeen |
-| `pt-BR` | Portugees (Brazilië) | Vrouw |  "pt-BR-FranciscaNeural" | Nee | Algemeen |
-| `tr-TR` | Turks             | Vrouw | "tr-TR-EmelNeural" | Nee | Algemeen |
-| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)  | Vrouw |  "zh-CN-XiaoxiaoNeural"  | Ja. Engels (VS) | Algemeen, meerdere spraak stijlen beschikbaar |
-|  |  | Vrouw |  "zh-CN-XiaoyouNeural"  | Ja. Engels (VS) | Kid Voice, geoptimaliseerd voor het opnemen van tekst in een verhaal |
-|  |  | Man |  "zh-CN-YunyangNeural"  | Ja. Engels (VS) | Geoptimaliseerd voor nieuws lezen, meerdere spraak stijlen beschikbaar |
-|  |  | Man |  "zh-CN-YunyeNeural"  | Nee | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
+|Landinstelling  | Taal            | Geslacht | Spraak naam | Stijl ondersteuning |
+|--|--|--|--|--|
+| `de-DE` | Duits (Duitsland)                | Vrouw | "de-DE-KatjaNeural"      | Algemeen |
+| `en-AU` | Engels (Australië)             | Vrouw | "en-AU-NatashaNeural"    | Algemeen |
+| `en-CA` | Engels (Canada)                | Vrouw | "en-CA-ClaraNeural"      | Algemeen |
+| `en-GB` | Engels (UK)                    | Vrouw | "en-GB-LibbyNeural"      | Algemeen |
+|         |                                 | Vrouw | "en-GB-MiaNeural"        | Algemeen |
+| `en-US` | Engels (VS)                    | Vrouw | "en-US-AriaNeural"       | Algemeen, meerdere spraak stijlen beschikbaar |
+|         |                                 | Man   | "en-US-GuyNeural"        | Algemeen |
+| `es-ES` | Spaans (Spanje)                 | Vrouw | "es-ES-ElviraNeural"     | Algemeen |
+| `es-MX` | Spaans (Mexico)                | Vrouw | "es-MX-DaliaNeural"      | Algemeen |
+| `fr-CA` | Frans (Canada)                 | Vrouw | "FR-CA-SylvieNeural"     | Algemeen |
+| `fr-FR` | Frans (Frankrijk)                 | Vrouw | "fr-FR-DeniseNeural"     | Algemeen |
+| `it-IT` | Italiaans (Italië)                 | Vrouw | ' it-IT-ElsaNeural '       | Algemeen |
+| `ja-JP` | Japans                        | Vrouw | "ja-JP-NanamiNeural"     | Algemeen |
+| `ko-KR` | Koreaans                          | Vrouw | "ko-KR-SunHiNeural"      | Algemeen |
+| `nb-NO` | Noors                       | Vrouw | "nb-NO-IselinNeural"     | Algemeen |
+| `pt-BR` | Portugees (Brazilië)             | Vrouw | "pt-BR-FranciscaNeural"  | Algemeen |
+| `tr-TR` | Turks                         | Vrouw | "tr-TR-EmelNeural"       | Algemeen |
+| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)  | Vrouw | "zh-CN-XiaoxiaoNeural"   | Algemeen, meerdere spraak stijlen beschikbaar |
+|         |                                 | Vrouw | "zh-CN-XiaoyouNeural"    | Kid Voice, geoptimaliseerd voor het opnemen van tekst in een verhaal |
+|         |                                 | Man   | "zh-CN-YunyangNeural"    | Geoptimaliseerd voor nieuws lezen, meerdere spraak stijlen beschikbaar |
+|         |                                 | Man   | "zh-CN-YunyeNeural"      | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
 
 > [!IMPORTANT]
 > De `en-US-JessaNeural` stem is gewijzigd in `en-US-AriaNeural` . Als u ' Jessa ' eerder gebruikt, converteer dan naar ' Aria '.

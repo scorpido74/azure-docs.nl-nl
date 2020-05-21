@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402130"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725547"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -38,7 +38,7 @@ Bestanden moeten worden gegroepeerd op type in een gegevensset en worden geüplo
 
 ## <a name="upload-data"></a>Gegevens uploaden
 
-Als u uw gegevens wilt uploaden, gaat u naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech Portal <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Klik in de portal op **gegevens uploaden** om de wizard te starten en uw eerste gegevensset te maken. U wordt gevraagd een type spraak gegevens voor uw gegevensset te selecteren voordat u uw gegevens kunt uploaden.
+Als u uw gegevens wilt uploaden, gaat u naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Klik in de portal op **gegevens uploaden** om de wizard te starten en uw eerste gegevensset te maken. U wordt gevraagd een type spraak gegevens voor uw gegevensset te selecteren voordat u uw gegevens kunt uploaden.
 
 ![Audio selecteren in de spraak Portal](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -81,6 +81,8 @@ Gebruik <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox 
 
 Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.
 
+Audio bestanden kunnen stilte aan het begin en het einde van de opname hebben. Indien mogelijk moet u ten minste een halve seconde van stilte voor en na de spraak in elk voorbeeld bestand toevoegen. Hoewel audio met een laag opname volume of storende achtergrond ruis niet nuttig is, kan het niet goed zijn om uw aangepaste model te zien. Denk altijd aan het upgraden van uw hardware en signaal verwerkings apparatuur voordat u audio voorbeelden gaat verzamelen.
+
 | Eigenschap                 | Waarde                               |
 |--------------------------|-------------------------------------|
 | Bestands indeling              | RIFF (WAV)                          |
@@ -110,7 +112,7 @@ Voor het oplossen van problemen zoals het verwijderen of vervangen van woorden, 
 
 De tekst van de transcripties wordt genormaliseerd zodat ze door het systeem kunnen worden verwerkt. Er zijn echter enkele belang rijke normalisaties die moeten worden uitgevoerd voordat u de gegevens naar de speech Studio uploadt. Voor de juiste taal die moet worden gebruikt wanneer u uw transcripties voorbereidt, Zie [How to Create a Human-gelabeld transcriptie](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Nadat u uw audio bestanden en bijbehorende transcripties hebt verzameld, pakt u deze als één ZIP-bestand in voordat u het uploadt naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech Portal <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Hieronder ziet u een voor beeld van een gegevensset met drie audio bestanden en een transcriptie-bestand met menselijke Labels:
+Nadat u uw audio bestanden en bijbehorende transcripties hebt verzameld, pakt u deze als één ZIP-bestand in voordat u het uploadt naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Hieronder ziet u een voor beeld van een gegevensset met drie audio bestanden en een transcriptie-bestand met menselijke Labels:
 
 > [!div class="mx-imgBorder"]
 > ![Audio selecteren in de spraak Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -124,7 +126,7 @@ Product namen of-onderdelen die uniek zijn, moeten gerelateerde tekst gegevens b
 | Zinnen (uitingen) | Verbeter de nauw keurigheid bij het herkennen van product namen of branchespecifieke vocabulaire in de context van een zin. |
 | Uitspraak | De uitspraak van ongebruikelijke termen, acroniemen of andere woorden met niet-gedefinieerde uitspraaken verbeteren. |
 
-Zinnen kunnen worden gegeven als één tekst bestand of meerdere tekst bestanden. Gebruik voor het verbeteren van de nauw keurigheid tekst gegevens die zich dichter bij de verwachte gesp roken uitingen bevindt. Uitspraak moet worden gegeven als één tekst bestand. Alles kan worden verpakt als één ZIP-bestand en worden geüpload naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech <span class="docon docon-navigate-external x-hidden-focus"> </span>Portal </a>.
+Zinnen kunnen worden gegeven als één tekst bestand of meerdere tekst bestanden. Gebruik voor het verbeteren van de nauw keurigheid tekst gegevens die zich dichter bij de verwachte gesp roken uitingen bevindt. Uitspraak moet worden gegeven als één tekst bestand. Alles kan worden verpakt als één ZIP-bestand en worden geüpload naar de <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom speech <span class="docon docon-navigate-external x-hidden-focus"></span> Portal </a>.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Richt lijnen voor het maken van een sentence-bestand
 
@@ -143,7 +145,7 @@ Gebruik deze tabel om ervoor te zorgen dat het gerelateerde gegevens bestand voo
 Daarnaast wilt u rekening met de volgende beperkingen:
 
 * Vermijd meer dan vier keer herhaalde tekens. Bijvoorbeeld: ' AAAA ' of ' UUUU '.
-* Gebruik geen speciale tekens of UTF-8-tekens `U+00A1`hierboven.
+* Gebruik geen speciale tekens of UTF-8-tekens hierboven `U+00A1` .
 * Uri's worden geweigerd.
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>Richt lijnen voor het maken van een uitspraak bestand
@@ -163,7 +165,7 @@ Dit omvat voor beelden van een gesp roken utterance en een aangepaste uitspraak 
 
 Het gesp roken formulier is de fonetische volg orde die is gespeld. Het kan bestaan uit letter, woorden, letter grepen of een combi natie van alle drie.
 
-Aangepaste uitspraak is beschikbaar in het Engels (`en-US`) en Duits (`de-DE`). In deze tabel worden de ondersteunde tekens per taal weer gegeven:
+Aangepaste uitspraak is beschikbaar in het Engels ( `en-US` ) en Duits ( `de-DE` ). In deze tabel worden de ondersteunde tekens per taal weer gegeven:
 
 | Taal | Landinstelling | Aantal |
 |----------|--------|------------|

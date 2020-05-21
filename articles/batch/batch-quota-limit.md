@@ -1,15 +1,15 @@
 ---
 title: Servicequota en -limieten
 description: Meer informatie over standaard Azure Batch quota's, limieten en beperkingen, en het aanvragen van quotum verhogingen
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: a901d54ea584ec67bfa679e9cdc716ab27d45eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115819"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726567"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -80,16 +80,16 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 ### <a name="increase-cores-quota-in-batch"></a>Het quotum voor kernen in batch verhogen 
 
 1. Selecteer de tegel **Help + ondersteuning** in het dash board van de portal of het vraag teken (**?**) in de rechter bovenhoek van de portal.
-1. Selecteer**basis principes** **nieuwe ondersteunings aanvraag** > .
+1. Selecteer basis principes **nieuwe ondersteunings aanvraag**  >  **Basics**.
 1. In de **basis beginselen**:
    
-    a. **Issue Type** > **Limieten voor de service en abonnementen** van het probleem type (quota's)
+    a. **Probleem type**  >  **Service-en abonnements limieten (quota's)**
    
     b. Selecteer uw abonnement.
    
-    c. **Quota type** > **Batch** voor quotum type
+    c. **Quotum type**  >  **Batch**
       
-    Selecteer **Next**.
+    Selecteer **Volgende**.
     
 1. In **Details**:
       
@@ -109,7 +109,7 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 
     b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Next**.
+    Selecteer **Volgende**.
 
 1. Bij **contact gegevens**:
    

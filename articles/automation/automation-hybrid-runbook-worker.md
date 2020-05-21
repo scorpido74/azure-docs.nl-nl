@@ -1,16 +1,16 @@
 ---
-title: Overzicht van Hybrid Runbook Worker in Azure Automation
-description: Dit artikel bevat een overzicht van de Hybrid Runbook Worker, een functie van Azure Automation die u kunt gebruiken om runbooks uit te voeren op computers in uw lokale Data Center of Cloud provider.
+title: Overzicht van Azure Automation Hybrid Runbook Worker
+description: Dit artikel bevat een overzicht van de Hybrid Runbook Worker, die u kunt gebruiken om runbooks uit te voeren op computers in uw lokale Data Center of Cloud provider.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994763"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715712"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Overzicht van Hybrid Runbook Worker
 
@@ -53,7 +53,7 @@ De volgende poort en Url's zijn vereist voor de Hybrid Runbook Worker:
 * Poort: alleen TCP 443 vereist voor uitgaande internet toegang
 * Globale URL: *. azure-automation.net
 * Algemene URL van US Gov Virginia - *.azure-automation.us
-* Agent service: https://\<workspaceId\>. agentsvc.Azure-Automation.net
+* Agent service: https:// \< workspaceId \> . agentsvc.Azure-Automation.net
 
 U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het definiëren van [uitzonde ringen](automation-runbook-execution.md#exceptions). Voor IP-adressen kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/en-us/download/details.aspx?id=56519)downloaden. Dit bestand wordt wekelijks bijgewerkt en heeft de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken.
 
@@ -61,7 +61,7 @@ U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het defi
 
 Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio, kunt u Hybrid Runbook Worker communicatie beperken tot dat regionale Data Center. De volgende tabel bevat de DNS-record voor elke regio.
 
-| **Deel** | **DNS-record** |
+| **Regio** | **DNS-record** |
 | --- | --- |
 | Australië - centraal |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Australië - oost |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
@@ -112,9 +112,9 @@ Voor de standaard adressen en poorten die voor de Hybrid Runbook Worker vereist 
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 
-## <a name="state-configuration-dsc-on-hybrid-runbook-worker"></a>Status configuratie (DSC) op Hybrid Runbook Worker
+## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation status configuratie op een Hybrid Runbook Worker
 
-U kunt de functie [State Configuration (DSC)](automation-dsc-overview.md) uitvoeren op een Hybrid Runbook Worker. Als u de configuratie wilt beheren van servers die ondersteuning bieden voor de Hybrid Runbook Worker, moet u de servers als DSC-knoop punten toevoegen. Zie voor meer informatie over het onboarden van onboarding [computers voor beheer op basis van de status configuratie (DSC)](automation-dsc-onboarding.md).
+U kunt [Azure Automation status configuratie](automation-dsc-overview.md) uitvoeren op een Hybrid Runbook Worker. Als u de configuratie wilt beheren van servers die ondersteuning bieden voor de Hybrid Runbook Worker, moet u de servers als DSC-knoop punten toevoegen. Zie [machines inschakelen voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbooks op een Hybrid Runbook Worker
 

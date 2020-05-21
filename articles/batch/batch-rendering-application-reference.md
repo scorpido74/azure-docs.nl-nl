@@ -4,13 +4,13 @@ description: Rendering van toepassingen gebruiken met Azure Batch. In dit artike
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115802"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726499"
 ---
 # <a name="rendering-applications"></a>Rendering van toepassingen
 
@@ -29,7 +29,7 @@ Naast de renderers die zijn ingebouwd in 3ds Max, zijn de volgende renderers bes
 
 ### <a name="task-command-line"></a>Opdracht regel van taak
 
-Roep de `3dsmaxcmdio.exe` toepassing aan om de opdracht regel weergave op een groeps knooppunt uit te voeren.  Deze toepassing bevindt zich op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe` toepassing heeft dezelfde beschik bare para meters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de Help-documentatie van [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Sectie voor het weer geven van de opdracht regel).
+Roep de `3dsmaxcmdio.exe` toepassing aan om de opdracht regel weergave op een groeps knooppunt uit te voeren.  Deze toepassing bevindt zich op het pad wanneer de taak wordt uitgevoerd. De `3dsmaxcmdio.exe` toepassing heeft dezelfde beschik bare para meters als de `3dsmaxcmd.exe` toepassing, die wordt beschreven in de [Help-documentatie van 3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Sectie voor het weer geven van de opdracht regel).
 
 Bijvoorbeeld:
 
@@ -39,8 +39,8 @@ Bijvoorbeeld:
 
 Opmerkingen:
 
-* Zorg ervoor dat u zeker weet dat de Asset-bestanden worden gevonden.  Zorg ervoor dat de paden juist en relatief zijn met behulp van het venster voor `-bitmapPath` het bijhouden van de **activa** , of gebruik de para meter op de opdracht regel.
-* Kijk of er problemen zijn met de weer gave, zoals het onvermogen om assets te vinden, door `stdout.txt` het bestand te controleren dat is geschreven door 3ds Max wanneer de taak wordt uitgevoerd.
+* Zorg ervoor dat u zeker weet dat de Asset-bestanden worden gevonden.  Zorg ervoor dat de paden juist en relatief zijn met behulp van het venster voor het bijhouden van de **activa** , of gebruik de `-bitmapPath` para meter op de opdracht regel.
+* Kijk of er problemen zijn met de weer gave, zoals het onvermogen om assets te vinden, door het bestand te controleren dat `stdout.txt` is geschreven door 3ds Max wanneer de taak wordt uitgevoerd.
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer sjablonen
 

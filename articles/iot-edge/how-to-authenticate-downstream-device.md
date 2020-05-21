@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3edd29703f74c7671537fbcf08159dd830e5453c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411502"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726223"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Een downstream-apparaat verifiëren voor Azure IoT Hub
 
@@ -59,7 +59,7 @@ U kunt de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-e
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten en bovenliggend/onderliggend beheer raadpleegt u de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
+Voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten en bovenliggend/onderliggend beheer raadpleegt u de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
 
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
@@ -109,7 +109,7 @@ U kunt de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-e
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Zie voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten, het genereren van certificaten en het beheer van bovenliggende en onderliggende items de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
+Zie voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten, het genereren van certificaten en het beheer van bovenliggende en onderliggende items de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
 
@@ -123,7 +123,7 @@ Als u geen certificerings instantie hebt om X. 509-certificaten te maken, kunt u
 
 1. Volg de instructies in de sectie [509 van CA-certificaten registreren bij uw IOT-hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) voor het instellen van *X. 509-beveiliging in uw Azure IOT hub*. In deze sectie voert u de volgende stappen uit:
 
-   1. Upload een basis-CA-certificaat. Als u de demo certificaten gebruikt, is ** \<het pad naar**de basis-CA>/certs/Azure-IOT-test-only.root.ca.cert.pem.
+   1. Upload een basis-CA-certificaat. Als u de demo certificaten gebruikt, is het pad naar de basis-CA ** \<>/certs/Azure-IOT-test-only.root.ca.cert.pem**.
 
    2. Controleer of u bent eigenaar van het basis-CA-certificaat.
 
@@ -152,7 +152,7 @@ U kunt de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-e
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Zie de Azure CLI-referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) opdrachten voor meer informatie.
+Zie de Azure CLI-referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten voor meer informatie.
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
 

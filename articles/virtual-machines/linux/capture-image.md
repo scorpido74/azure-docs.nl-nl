@@ -8,16 +8,18 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792680"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723303"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Een beheerde installatie kopie van een virtuele machine of VHD maken
 
 Als u meerdere exemplaren van een virtuele machine (VM) wilt maken voor gebruik in azure voor ontwikkeling en testen, moet u een beheerde installatie kopie van de VM of van de VHD van het besturings systeem vastleggen. Zie voor meer informatie over het maken, opslaan en delen [van installatie kopieën](../shared-images-cli.md)op schaal.
+
+Eén beheerde installatie kopie ondersteunt Maxi maal 20 gelijktijdige implementaties. Als u probeert om meer dan 20 Vm's gelijktijdig te maken, vanuit dezelfde beheerde installatie kopie, kan dit leiden tot het inrichten van time-outs als gevolg van de opslag prestatie beperkingen van één VHD. Als u meer dan 20 Vm's gelijktijdig wilt maken, gebruikt u een afbeelding voor [gedeelde afbeeldings galerieën](shared-image-galleries.md) die is geconfigureerd met 1 replica voor elke 20 gelijktijdige VM-implementaties.
 
 Als u een beheerde installatie kopie wilt maken, moet u persoonlijke account gegevens verwijderen. In de volgende stappen kunt u de inrichting van een bestaande virtuele machine ongedaan maken, de toewijzing ervan opheffen en een installatie kopie maken. U kunt deze installatie kopie gebruiken om Vm's te maken voor elke resource groep in uw abonnement.
 
@@ -46,7 +48,7 @@ Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met `+user` de para meter wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen `-deprovision`als u de referenties van het gebruikers account in de virtuele machine wilt blijven gebruiken.
+   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de `+user` para meter wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen als u de referenties van het gebruikers account in de virtuele machine wilt blijven gebruiken `-deprovision` .
  
 3. Voer **y** in om door te gaan. U kunt de `-force` para meter toevoegen om deze bevestigings stap te voor komen.
 4. Nadat de opdracht is voltooid, voert u **Afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.

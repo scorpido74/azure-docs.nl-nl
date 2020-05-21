@@ -1,15 +1,15 @@
 ---
 title: Integratie met Azure-beleid
 description: Azure Policy is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren waarmee u regels voor uw resources afdwingt.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e576c99e918410cb63743aaca32bdef78ae01d83
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184262"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726652"
 ---
 # <a name="integration-with-azure-policy"></a>Integratie met Azure Policy
 

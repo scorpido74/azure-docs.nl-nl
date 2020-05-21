@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 062fa867115ea90dd129cac9c71ac6d9df6f3de2
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801313"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725853"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -161,7 +161,7 @@ Deze fout treedt op als de limiet voor het aantal servereindpunten per server is
 Deze fout treedt op als er al een ander servereindpunt wordt gesynchroniseerd met het opgegeven pad naar het servereindpunt. Azure File Sync biedt geen ondersteuning voor meerdere servereindpunten die dezelfde map of hetzelfde volume synchroniseren.
 
 <a id="-2160590967"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2160590967 of 0x80c80077)**  
-Deze fout treedt op als het pad naar het server eindpunt zwevende gelaagde bestanden bevat. Als een server-eind punt onlangs is verwijderd, wacht u totdat het opruimen van de zwevende gelaagde bestanden is voltooid. Gebeurtenis-ID 6662 wordt vastgelegd in het telemetrie-gebeurtenis logboek wanneer het opruimen van de zwevende gelaagde bestanden is gestart. Gebeurtenis-ID 6661 wordt vastgelegd zodra het opruimen van de zwevende gelaagde bestanden is voltooid en een server eindpunt opnieuw kan worden gemaakt met behulp van het pad. Als het server-eind punt niet kan worden gemaakt nadat een gebeurtenis-ID 6661 is vastgelegd, verwijdert u de zwevende gelaagde bestanden door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
+Deze fout treedt op als het pad naar het server eindpunt zwevende gelaagde bestanden bevat. Als een server-eind punt onlangs is verwijderd, wacht u totdat het opruimen van de zwevende gelaagde bestanden is voltooid. Gebeurtenis-ID 6662 wordt vastgelegd in het telemetrie-gebeurtenis logboek wanneer het opruimen van de zwevende gelaagde bestanden is gestart. Gebeurtenis-ID 6661 wordt vastgelegd zodra het opruimen van de zwevende gelaagde bestanden is voltooid en een server eindpunt opnieuw kan worden gemaakt met behulp van het pad. Als het server-eind punt niet kan worden gemaakt nadat de opschoning van de gelaagde bestanden is voltooid of als gebeurtenis-ID 6661 niet kan worden gevonden in het telemetrie-gebeurtenis logboek als gevolg van een rollover van het gebeurtenis logboek, verwijdert u de zwevende gelaagde bestanden door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)
 
 <a id="-2134347757"></a>**Het verwijderen van het server eindpunt is mislukt, met de volgende fout: "MgmtServerJobExpired" (fout code:-2134347757 of 0x80c87013)**  
 Deze fout treedt op als de server offline is of geen netwerkverbinding heeft. Als de server niet meer beschikbaar is, moet u de registratie van de server in het portaal opheffen, waardoor de servereindpunten worden verwijderd. Als u de server eindpunten wilt verwijderen, volgt u de stappen die worden beschreven in de [registratie van een server bij Azure file sync ongedaan maken](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
@@ -227,7 +227,7 @@ Binnen elke synchronisatie groep kunt u inzoomen op de afzonderlijke server eind
 ![Een scherm opname van de Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
 # <a name="server"></a>[Server](#tab/server)
-Ga naar de telemetrie-logboeken van de server, die u kunt vinden `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`in de logboeken op. Gebeurtenis 9102 komt overeen met een voltooide synchronisatie sessie. Zoek naar de meest recente gebeurtenis met ID 9102 voor de laatste synchronisatie status. SyncDirection vertelt u of deze sessie een upload-of download bewerking is. Als HResult 0 is, is de synchronisatie sessie geslaagd. Een niet-nul HResult houdt in dat er een fout is opgetreden tijdens de synchronisatie. Hieronder vindt u een lijst met veelvoorkomende fouten. Als de PerItemErrorCount groter is dan 0, betekent dit dat sommige bestanden of mappen niet juist zijn gesynchroniseerd. Het is mogelijk een HResult van 0 te hebben, maar een PerItemErrorCount die groter is dan 0.
+Ga naar de telemetrie-logboeken van de server, die u kunt vinden in de Logboeken op `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` . Gebeurtenis 9102 komt overeen met een voltooide synchronisatie sessie. Zoek naar de meest recente gebeurtenis met ID 9102 voor de laatste synchronisatie status. SyncDirection vertelt u of deze sessie een upload-of download bewerking is. Als HResult 0 is, is de synchronisatie sessie geslaagd. Een niet-nul HResult houdt in dat er een fout is opgetreden tijdens de synchronisatie. Hieronder vindt u een lijst met veelvoorkomende fouten. Als de PerItemErrorCount groter is dan 0, betekent dit dat sommige bestanden of mappen niet juist zijn gesynchroniseerd. Het is mogelijk een HResult van 0 te hebben, maar een PerItemErrorCount die groter is dan 0.
 
 Hieronder ziet u een voor beeld van een geslaagde upload. Voor het omwille van de boogën worden slechts enkele van de waarden in elke 9102-gebeurtenis hieronder weer gegeven. 
 
@@ -284,7 +284,7 @@ Voor elke server in een bepaalde synchronisatie groep moet u het volgende doen:
 - Het veld bestanden niet synchroniseren is 0 voor uploaden en downloaden.
 
 # <a name="server"></a>[Server](#tab/server)
-Bekijk de voltooide synchronisatie sessies, die zijn gemarkeerd door 9102-gebeurtenissen in het logboek voor telemetrie voor elke server (in de Logboeken, gaat `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`u naar). 
+Bekijk de voltooide synchronisatie sessies, die zijn gemarkeerd door 9102-gebeurtenissen in het logboek voor telemetrie voor elke server (in de Logboeken, gaat u naar `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` ). 
 
 1. Op elke wille keurige server moet u ervoor zorgen dat de nieuwste upload-en download sessies zijn voltooid. Om dit te doen, controleert u of HResult en PerItemErrorCount 0 zijn voor uploaden en downloaden (het veld SyncDirection geeft aan of een bepaalde sessie een upload-of download sessie is). Houd er rekening mee dat als u geen recent voltooide synchronisatie sessie ziet, er waarschijnlijk een synchronisatie sessie wordt uitgevoerd. dit wordt verwacht als u een grote hoeveelheid gegevens hebt toegevoegd of gewijzigd.
 2. Wanneer een server volledig up-to-date is met de Cloud en er geen wijzigingen in een van beide richtingen worden gesynchroniseerd, worden er lege synchronisatie sessies weer geven. Deze worden aangegeven door upload-en download gebeurtenissen waarin alle Sync *-velden (SyncFileCount, SyncDirCount, SyncTombstoneCount en SyncSizeBytes) nul zijn, wat betekent dat er niets kan worden gesynchroniseerd. Houd er rekening mee dat deze lege synchronisatie sessies mogelijk niet worden uitgevoerd op servers met een hoge verloop tijd omdat er altijd iets nieuws is om te synchroniseren. Als er geen synchronisatie activiteit is, moeten deze elke 30 minuten worden uitgevoerd. 
@@ -1078,7 +1078,7 @@ Als bestanden niet naar Azure Files kunnen worden gelaagd:
 
    2. Controleer of de server verbinding met internet heeft. 
    3. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-       - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
+       - Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid `fltmc` . Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
 > [!NOTE]
 > Gebeurtenis-ID 9003 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden gelaagd (één gebeurtenis wordt per fout code geregistreerd). Controleer de sectie [fouten in lagen en herstel](#tiering-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
@@ -1118,7 +1118,7 @@ Als bestanden niet kunnen worden ingetrokken:
     2. Controleer of de server verbinding met internet heeft. 
     3. Open de MMC-module Services en controleer of de opslag synchronisatie Agent-service (FileSyncSvc) wordt uitgevoerd.
     4. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-        - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
+        - Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid `fltmc` . Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
 > [!NOTE]
 > Gebeurtenis-ID 9006 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden ingetrokken (één gebeurtenis wordt per fout code geregistreerd). Raadpleeg de sectie [fouten intrekken en herstellen](#recall-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
@@ -1243,7 +1243,7 @@ Als u problemen ondervindt met Azure File Sync op een server, moet u eerst de vo
 2. Controleer of de Azure File Sync-Service wordt uitgevoerd op de server:
     - Open de MMC-module Services en controleer of de opslag synchronisatie Agent-service (FileSyncSvc) wordt uitgevoerd.
 3. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-    - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
+    - Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid `fltmc` . Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
 Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit en verzendt u de zip-bestands uitvoer naar de ondersteunings technicus die aan uw aanvraag is toegewezen voor verdere diagnose.
 
@@ -1280,7 +1280,7 @@ Voor Agent versie V10 toevoegen en eerder:
 5. Reproduceer het probleem. Wanneer u klaar bent, voert u **D**in.
 6. Een zip-bestand dat Logboeken en tracerings bestanden bevat, wordt opgeslagen in de uitvoermap die u hebt opgegeven.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)
 - [Veelgestelde vragen over Azure Files](storage-files-faq.md)
 - [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)

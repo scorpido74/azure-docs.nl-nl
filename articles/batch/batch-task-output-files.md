@@ -1,15 +1,15 @@
 ---
-title: Uitvoer gegevens persistent maken voor Azure Storage met de API voor batch-service-Azure Batch
+title: Uitvoer gegevens persistent maken voor Azure Storage met de API voor batch-service
 description: Meer informatie over het gebruik van de batch-Service-API voor het persistent maken van batch taak-en taak uitvoer gegevens naar Azure Storage.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234278"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726312"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Een Shared Access Signature voor de container ophalen
 
-Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie [Shared Access signatures \(sa's\) gebruiken in azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over SAS.
+Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie [Shared Access signatures \( sa's gebruiken \) in azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over SAS.
 
 Wanneer u een SAS krijgt met behulp van de Azure Storage Api's, retourneert de API een SAS-token teken reeks. Deze token teken reeks bevat alle para meters van de SA'S, met inbegrip van de machtigingen en het interval waarmee de SA'S geldig zijn. Als u de SAS wilt gebruiken om toegang te krijgen tot een container in Azure Storage, moet u de SAS-token teken reeks toevoegen aan de resource-URI. De bron-URI, samen met het toegevoegde SAS-token, biedt geverifieerde toegang tot Azure Storage.
 
@@ -63,7 +63,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Als u uitvoer bestanden voor een taak wilt opgeven, maakt u een verzameling [uitvoer](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) bare objecten en wijst u deze toe aan de eigenschap [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) wanneer u de taak maakt.
 
-In het volgende voor beeld van C#-code wordt een taak gemaakt die wille `output.txt`keurige getallen schrijft naar een bestand met de naam. In het voor beeld wordt een uitvoer `output.txt` bestand gemaakt dat naar de container wordt geschreven. In het voor beeld worden ook uitvoer bestanden gemaakt voor alle logboek bestanden die overeenkomen met het bestands `stdout.txt` patroon `stderr.txt` `std*.txt` (_bijvoorbeeld_, en). De container-URL vereist de SA'S die eerder voor de container zijn gemaakt. De batch-service gebruikt de SAS om toegang tot de container te verifiëren:
+In het volgende voor beeld van C#-code wordt een taak gemaakt die wille keurige getallen schrijft naar een bestand met de naam `output.txt` . In het voor beeld wordt een uitvoer bestand gemaakt `output.txt` dat naar de container wordt geschreven. In het voor beeld worden ook uitvoer bestanden gemaakt voor alle logboek bestanden die overeenkomen met het bestands patroon `std*.txt` (_bijvoorbeeld_, `stdout.txt` en `stderr.txt` ). De container-URL vereist de SA'S die eerder voor de container zijn gemaakt. De batch-service gebruikt de SAS om toegang tot de container te verifiëren:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -93,11 +93,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Wanneer u een uitvoer bestand opgeeft, kunt u de eigenschap [output file. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) gebruiken om een bestands patroon op te geven voor de overeenkomst. Het bestands patroon kan overeenkomen met nul bestanden, één bestand of een set bestanden die door de taak worden gemaakt.
 
-De eigenschap **FilePattern** ondersteunt standaard bestandssysteem joker tekens, `*` zoals (voor niet-recursieve overeenkomsten) en `**` (voor recursieve overeenkomsten). Het bovenstaande code voorbeeld geeft bijvoorbeeld aan dat het bestand patroon niet- `std*.txt` recursief moet overeenkomen:
+De eigenschap **FilePattern** ondersteunt standaard bestandssysteem joker tekens, zoals `*` (voor niet-recursieve overeenkomsten) en `**` (voor recursieve overeenkomsten). Het bovenstaande code voorbeeld geeft bijvoorbeeld aan dat het bestand patroon `std*.txt` niet-recursief moet overeenkomen:
 
 `filePattern: @"..\std*.txt"`
 
-Als u één bestand wilt uploaden, geeft u een bestands patroon zonder joker tekens op. In het bovenstaande code voorbeeld wordt bijvoorbeeld het bestands patroon aangegeven dat moet `output.txt`overeenkomen:
+Als u één bestand wilt uploaden, geeft u een bestands patroon zonder joker tekens op. In het bovenstaande code voorbeeld wordt bijvoorbeeld het bestands patroon aangegeven dat moet overeenkomen `output.txt` :
 
 `filePattern: @"output.txt"`
 
@@ -113,11 +113,11 @@ Zie [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Dubbel zinnigheid-bestanden met dezelfde naam
 
-De taken in een taak kunnen bestanden met dezelfde naam opleveren. `stdout.txt` En `stderr.txt` worden bijvoorbeeld gemaakt voor elke taak die in een taak wordt uitgevoerd. Omdat elke taak in een eigen context wordt uitgevoerd, conflicteren deze bestanden niet met het bestands systeem van het knoop punt. Wanneer u echter bestanden van meerdere taken naar een gedeelde container uploadt, moet u bestanden met dezelfde naam dubbel zinnigheid.
+De taken in een taak kunnen bestanden met dezelfde naam opleveren. `stdout.txt`En `stderr.txt` worden bijvoorbeeld gemaakt voor elke taak die in een taak wordt uitgevoerd. Omdat elke taak in een eigen context wordt uitgevoerd, conflicteren deze bestanden niet met het bestands systeem van het knoop punt. Wanneer u echter bestanden van meerdere taken naar een gedeelde container uploadt, moet u bestanden met dezelfde naam dubbel zinnigheid.
 
 De eigenschap [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) specificeert de doel-BLOB of de virtuele map voor uitvoer bestanden. U kunt de eigenschap **Path** gebruiken om de BLOB of virtuele map zo een naam te bieden dat uitvoer bestanden met dezelfde naam uniek zijn genoemd in azure Storage. Het gebruik van de taak-ID in het pad is een goede manier om unieke namen te garanderen en bestanden eenvoudig te identificeren.
 
-Als de eigenschap **FilePattern** is ingesteld op een Joker teken expressie, worden alle bestanden die overeenkomen met het patroon geüpload naar de virtuele map die is opgegeven door de eigenschap **Path** . Als de container `mycontainer`bijvoorbeeld de taak-id is `mytask`, en het bestands patroon is `..\std*.txt`, zijn de absolute uri's van de uitvoer bestanden in azure Storage vergelijkbaar met:
+Als de eigenschap **FilePattern** is ingesteld op een Joker teken expressie, worden alle bestanden die overeenkomen met het patroon geüpload naar de virtuele map die is opgegeven door de eigenschap **Path** . Als de container bijvoorbeeld de `mycontainer` taak-id is, `mytask` en het bestands patroon is `..\std*.txt` , zijn de absolute uri's van de uitvoer bestanden in azure Storage vergelijkbaar met:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -147,7 +147,7 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Bij elke upload van het bestand schrijft batch twee logboek bestanden naar het reken knooppunt `fileuploadout.txt` en `fileuploaderr.txt`. U kunt deze logboek bestanden controleren om meer te weten te komen over een specifieke fout. In gevallen waarin de upload van het bestand nooit is geslaagd, bijvoorbeeld omdat de taak zelf niet kan worden uitgevoerd, zijn deze logboek bestanden niet aanwezig.
+Bij elke upload van het bestand schrijft batch twee logboek bestanden naar het reken knooppunt `fileuploadout.txt` en `fileuploaderr.txt` . U kunt deze logboek bestanden controleren om meer te weten te komen over een specifieke fout. In gevallen waarin de upload van het bestand nooit is geslaagd, bijvoorbeeld omdat de taak zelf niet kan worden uitgevoerd, zijn deze logboek bestanden niet aanwezig.
 
 ## <a name="diagnose-file-upload-performance"></a>Prestaties van het uploaden van bestanden vaststellen
 

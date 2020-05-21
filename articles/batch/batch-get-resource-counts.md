@@ -2,14 +2,14 @@
 title: Statussen voor taken en knoop punten tellen
 description: Tel de status van Azure Batch taken en reken knooppunten op om batch-oplossingen te beheren en te bewaken.
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116091"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726686"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-oplossingen bewaken door taken en knoop punten te tellen per status
 
@@ -30,10 +30,10 @@ Als u een versie van de service gebruikt die geen ondersteuning biedt voor het a
 De bewerking taak aantal ophalen telt taken met de volgende statussen:
 
 - **Actief** : een taak die in de wachtrij is geplaatst en kan worden uitgevoerd, maar die momenteel niet is toegewezen aan een reken knooppunt. Een taak is ook `active` als deze [afhankelijk is van een bovenliggende taak](batch-task-dependencies.md) die nog niet is voltooid. 
-- **Uitvoeren** : een taak die is toegewezen aan een reken knooppunt, maar nog niet is voltooid. Een taak wordt meegeteld als `running` de status `preparing` of `running`is, zoals wordt aangegeven door de bewerking [informatie over een taak ophalen][rest_get_task] .
+- **Uitvoeren** : een taak die is toegewezen aan een reken knooppunt, maar nog niet is voltooid. Een taak wordt meegeteld als `running` de status `preparing` of is `running` , zoals wordt aangegeven door de bewerking [informatie over een taak ophalen][rest_get_task] .
 - **Voltooid** : een taak die niet langer in aanmerking komt voor uitvoering, omdat deze is voltooid, of als deze is voltooid en de limiet voor nieuwe pogingen is bereikt. 
-- **Geslaagd** : een taak waarvan het resultaat van de uitvoering `success`van de taak is. Batch bepaalt of een taak is geslaagd of mislukt door de `TaskExecutionResult` eigenschap van de eigenschap [executionInfo][rest_get_exec_info] te controleren.
-- **Is mislukt** Een taak waarvan het resultaat van de uitvoering `failure`van de taak is.
+- **Geslaagd** : een taak waarvan het resultaat van de uitvoering van de taak is `success` . Batch bepaalt of een taak is geslaagd of mislukt door de `TaskExecutionResult` eigenschap van de eigenschap [executionInfo][rest_get_exec_info] te controleren.
+- **Is mislukt** Een taak waarvan het resultaat van de uitvoering van de taak is `failure` .
 
 In het volgende voor beeld van de .NET-code ziet u hoe u taak aantallen kunt ophalen per status: 
 
@@ -50,7 +50,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 U kunt een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om taak aantallen voor een taak te ontvangen. 
 
 > [!NOTE]
-> De API-versies van de batch-service vóór 2018 -08 `validationStatus` -01.7.0 retour neren ook een eigenschap in het antwoord taak aantallen ophalen. Deze eigenschap geeft aan of batch de status aantallen heeft gecontroleerd op consistentie met de statussen die zijn gerapporteerd in de API lijst taken. Een waarde van `validated` geeft alleen aan dat de batch ten minste één keer voor de taak is gecontroleerd op consistentie. De waarde van de `validationStatus` eigenschap geeft niet aan of het aantal dat taak tellingen ophalen, op dit moment up-to-date is.
+> De API-versies van de batch-service vóór 2018 -08-01.7.0 retour neren ook een `validationStatus` eigenschap in het antwoord taak aantallen ophalen. Deze eigenschap geeft aan of batch de status aantallen heeft gecontroleerd op consistentie met de statussen die zijn gerapporteerd in de API lijst taken. Een waarde van `validated` geeft alleen aan dat de batch ten minste één keer voor de taak is gecontroleerd op consistentie. De waarde van de `validationStatus` eigenschap geeft niet aan of het aantal dat taak tellingen ophalen, op dit moment up-to-date is.
 >
 
 ## <a name="node-state-counts"></a>Aantal knooppunt statussen
@@ -66,7 +66,7 @@ De bewerking aantal knoop punten van een lijst groep telt het aantal reken knoop
 - **Reimaging** : een knoop punt waarop het besturings systeem opnieuw wordt geïnstalleerd.
 - **Uitvoeren** : een knoop punt waarop een of meer taken worden uitgevoerd (anders dan de begin taak).
 - **Starten** : een knoop punt waarop de batch-service wordt gestart. 
-- **StartTaskFailed** : een knoop punt waarop de [begin taak][rest_start_task] is mislukt en alle pogingen zijn uitgeput en op de begin `waitForSuccess` taak is ingesteld. Het knoop punt is niet bruikbaar voor het uitvoeren van taken.
+- **StartTaskFailed** : een knoop punt waarop de [begin taak][rest_start_task] is mislukt en alle pogingen zijn uitgeput en op `waitForSuccess` de begin taak is ingesteld. Het knoop punt is niet bruikbaar voor het uitvoeren van taken.
 - **Onbekend** : een knoop punt dat contact heeft gemaakt met de batch-service en waarvan de status niet bekend is.
 - **Onbruikbaar** : een knoop punt dat niet kan worden gebruikt voor het uitvoeren van taken vanwege fouten.
 - **WaitingForStartTask** : een knoop punt waarop de begin taak wordt uitgevoerd, maar `waitForSuccess` is ingesteld en de begin taak is niet voltooid.

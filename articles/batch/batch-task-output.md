@@ -1,15 +1,15 @@
 ---
-title: Taak-en taak uitvoer persistent maken naar een gegevens archief-Azure Batch
+title: Taak-en taak uitvoer persistent maken naar een gegevens archief
 description: Meer informatie over de verschillende opties voor het persistent maken van uitvoer gegevens uit batch taken en-taken. U kunt gegevens persistent maken in Azure Storage of op een ander gegevens archief.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0c8f7517e88bf4e5476c7bad98d167ce760a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116414"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726295"
 ---
 # <a name="persist-job-and-task-output"></a>Taken persistent maken
 

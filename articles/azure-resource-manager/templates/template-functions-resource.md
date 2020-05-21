@@ -2,13 +2,13 @@
 title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/20/2020
+ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891010"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715916"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -108,7 +108,7 @@ In het volgende voor beeld wordt de resource-ID voor een resource groeps vergren
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkingen. Elke implementatie retourneert waarden voor het resource type dat een lijst bewerking ondersteunt. De naam van de bewerking moet `list`beginnen met. Enkele veelvoorkomende gebruiks vormen `listKeys` zijn `listSecrets`en.
+De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkingen. Elke implementatie retourneert waarden voor het resource type dat een lijst bewerking ondersteunt. De naam van de bewerking moet beginnen met `list` . Enkele veelvoorkomende gebruiks handelingen zijn `listKeys` , `listKeyValue` en `listSecrets` .
 
 ### <a name="parameters"></a>Parameters
 
@@ -120,7 +120,7 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functies lijst gebruiken `input` voor omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken `count` omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
+De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functies lijst gebruiken voor `input` omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken `count` omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
 
 ### <a name="implementations"></a>Implementaties
 
@@ -129,6 +129,7 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Resourcetype | Functienaam |
 | ------------- | ------------- |
 | Micro soft. AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Micro soft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Micro soft. AppConfiguration/configurationStores | Listkeys ophalen |
 | Micro soft. Automation/automationAccounts | [Listkeys ophalen](/rest/api/automation/keys/listbyautomationaccount) |
 | Micro soft. batch/batchAccounts | [listkeys ophalen](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -437,11 +438,11 @@ Retourneert een-object dat de runtime status van een resource aangeeft.
 |:--- |:--- |:--- |:--- |
 | ResourceName of resourceIdentifier |Ja |tekenreeks |De naam of de unieke id van een resource. Als u naar een resource in de huidige sjabloon verwijst, geeft u alleen de resource naam op als para meter. Als er wordt verwezen naar een eerder geïmplementeerde resource of als de naam van de bron ambigu is, geeft u de resource-ID op. |
 | apiVersion |Nee |tekenreeks |API-versie van de opgegeven resource. **Deze para meter is vereist als de resource niet binnen dezelfde sjabloon is ingericht.** Doorgaans in de notatie **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
-| Waard |Nee |tekenreeks |Waarde die aangeeft of het volledige Resource-object moet worden geretourneerd. Als u niet opgeeft `'Full'`, wordt alleen het eigenschappen object van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-ID en de locatie. |
+| Waard |Nee |tekenreeks |Waarde die aangeeft of het volledige Resource-object moet worden geretourneerd. Als u niet opgeeft `'Full'` , wordt alleen het eigenschappen object van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-ID en de locatie. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Elk resource type retourneert verschillende eigenschappen voor de verwijzings functie. De functie retourneert geen enkele vooraf gedefinieerde notatie. De geretourneerde waarde verschilt ook op basis van de waarde van `'Full'` het argument. Als u de eigenschappen voor een resource type wilt zien, retourneert u het object in de sectie outputs, zoals wordt weer gegeven in het voor beeld.
+Elk resource type retourneert verschillende eigenschappen voor de verwijzings functie. De functie retourneert geen enkele vooraf gedefinieerde notatie. De geretourneerde waarde verschilt ook op basis van de waarde van het `'Full'` argument. Als u de eigenschappen voor een resource type wilt zien, retourneert u het object in de sectie outputs, zoals wordt weer gegeven in het voor beeld.
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -462,7 +463,7 @@ Normaal gesp roken gebruikt u de functie **Reference** om een bepaalde waarde va
 }
 ```
 
-Gebruiken `'Full'` wanneer u resource waarden nodig hebt die geen deel uitmaken van het eigenschappen schema. Als u bijvoorbeeld een sleutel kluis toegangs beleid wilt instellen, haalt u de identiteits eigenschappen voor een virtuele machine op.
+Gebruiken `'Full'` Wanneer u resource waarden nodig hebt die geen deel uitmaken van het eigenschappen schema. Als u bijvoorbeeld een sleutel kluis toegangs beleid wilt instellen, haalt u de identiteits eigenschappen voor een virtuele machine op.
 
 ```json
 {
@@ -488,7 +489,7 @@ Gebruiken `'Full'` wanneer u resource waarden nodig hebt die geen deel uitmaken 
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De functie Reference kan alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functie Reference gebruiken `input` voor omdat de expressie wordt toegewezen aan de resource-eigenschap.
+De functie Reference kan alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functie Reference gebruiken voor `input` omdat de expressie wordt toegewezen aan de resource-eigenschap.
 
 U kunt de functie Reference niet gebruiken om de waarde van de `count` eigenschap in een copy-lus in te stellen. U kunt gebruiken om andere eigenschappen in de lus in te stellen. De verwijzing is geblokkeerd voor de eigenschap Count omdat die eigenschap moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
@@ -508,7 +509,7 @@ Wanneer u verwijst naar een resource die in dezelfde sjabloon is geïmplementeer
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Wanneer u verwijst naar een resource die niet is geïmplementeerd in dezelfde sjabloon, geeft u de resource `apiVersion`-id en op.
+Wanneer u verwijst naar een resource die niet is geïmplementeerd in dezelfde sjabloon, geeft u de resource-ID en op `apiVersion` .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
@@ -528,7 +529,7 @@ Bijvoorbeeld:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`is correct `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` is niet juist
 
-Gebruik de `resourceId()` functies die in dit document worden beschreven in plaats van de `concat()` functie om het maken van een resource-id te vereenvoudigen.
+Gebruik de `resourceId()` functies die in dit document worden beschreven in plaats van de functie om het maken van een resource-id te vereenvoudigen `concat()` .
 
 ### <a name="get-managed-identity"></a>Beheerde identiteit ophalen
 
@@ -886,7 +887,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer van het vorige voor beeld met de standaard waarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
 | sameRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

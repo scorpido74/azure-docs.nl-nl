@@ -2,13 +2,13 @@
 title: Rendering van toepassingen
 description: Het is mogelijk om alle rendering-toepassingen met Azure Batch te gebruiken. Azure Marketplace-VM-installatie kopieën zijn echter beschikbaar met vooraf geïnstalleerde toepassingen.
 ms.date: 09/19/2019
-ms.topic: conceptual
-ms.openlocfilehash: f04fff3df2deb714f0432e5ad77d921a2d7ac205
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115785"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726482"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Vooraf geïnstalleerde toepassingen voor het renderen van VM-installatie kopieën
 
@@ -60,7 +60,7 @@ De volgende lijst is van toepassing op Windows Server 2016, version 1.3.8 render
 * AZ 10
 
 > [!IMPORTANT]
-> Begin `vrayses.exe` met het uitvoeren van een V-Ray met Maya buiten de [Azure batch extensie sjablonen](https://github.com/Azure/batch-extension-templates)voordat u de weer gave uitvoert. U kunt de volgende opdracht `%MAYA_2017%\vray\bin\vrayses.exe"`gebruiken om de vrayses. exe buiten de sjablonen te starten.
+> Begin met het uitvoeren van een V-Ray met Maya buiten de [Azure batch extensie sjablonen](https://github.com/Azure/batch-extension-templates) `vrayses.exe` voordat u de weer gave uitvoert. U kunt de volgende opdracht gebruiken om de vrayses. exe buiten de sjablonen te starten `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Zie de begin taak van de [Maya-en V-Ray-sjabloon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) op github voor een voor beeld.
 

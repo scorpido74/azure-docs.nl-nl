@@ -1,21 +1,20 @@
 ---
 title: Gebeurtenis Azure Batch groep maken
 description: Verwijzing voor de gebeurtenis batch-pool Create die wordt verzonden zodra een pool is gemaakt. De inhoud van het logboek bevat algemene informatie over de groep.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 755fbe548b4be729d20788597db05f4d9678ebea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116550"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724034"
 ---
 # <a name="pool-create-event"></a>Gebeurtenis pool maken
 
  Deze gebeurtenis wordt verzonden zodra een pool is gemaakt. De inhoud van het logboek bevat algemene informatie over de groep. Houd er rekening mee dat als de doel grootte van de groep groter is dan 0 reken knooppunten, de start gebeurtenis voor het wijzigen van de pool direct na deze gebeurtenis wordt gevolgd.
 
- In het volgende voor beeld ziet u de hoofd tekst van een groep Create gebeurtenis voor een `CloudServiceConfiguration` groep die is gemaakt met behulp van de eigenschap.
+ In het volgende voor beeld ziet u de hoofd tekst van een groep Create gebeurtenis voor een groep die is gemaakt met behulp van de `CloudServiceConfiguration` eigenschap.
 
 ```
 {
@@ -54,7 +53,7 @@ ms.locfileid: "82116550"
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de pool.|
 |`displayName`|Tekenreeks|De weergave naam van de pool.|
-|`vmSize`|Tekenreeks|De grootte van de virtuele machines in de groep. Alle virtuele machines in een groep hebben dezelfde grootte. <br/><br/> Zie [grootten voor Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)voor informatie over de beschik bare grootten van virtuele machines voor Cloud Services Pools (Pools die zijn gemaakt met cloudServiceConfiguration). Batch ondersteunt alle Cloud Services VM-grootten behalve `ExtraSmall`.<br/><br/> Zie [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) of [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) voor meer informatie over de beschik bare VM-grootten voor Pools met installatie kopieën van de virtual machines Marketplace (Pools die zijn gemaakt met virtualMachineConfiguration). Batch ondersteunt alle Azure VM-groottes met uitzondering van `STANDARD_A0` en die met Premium Storage (de serie `STANDARD_GS`, `STANDARD_DS` en `STANDARD_DSV2`).|
+|`vmSize`|Tekenreeks|De grootte van de virtuele machines in de groep. Alle virtuele machines in een groep hebben dezelfde grootte. <br/><br/> Zie [grootten voor Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)voor informatie over de beschik bare grootten van virtuele machines voor Cloud Services Pools (Pools die zijn gemaakt met cloudServiceConfiguration). Batch ondersteunt alle Cloud Services VM-grootten behalve `ExtraSmall` .<br/><br/> Zie [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) of [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) voor meer informatie over de beschik bare VM-grootten voor Pools met installatie kopieën van de virtual machines Marketplace (Pools die zijn gemaakt met virtualMachineConfiguration). Batch ondersteunt alle Azure VM-groottes met uitzondering van `STANDARD_A0` en die met Premium Storage (de serie `STANDARD_GS`, `STANDARD_DS` en `STANDARD_DSV2`).|
 |`imageType`|Tekenreeks|De implementatie methode voor de installatie kopie. Ondersteunde waarden zijn `virtualMachineConfiguration` of`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Complex type|De Cloud service configuratie voor de groep.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Complex type|De virtuele-machine configuratie voor de groep.|

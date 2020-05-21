@@ -1,15 +1,15 @@
 ---
-title: Toepassings pakketten installeren op reken knooppunten
+title: Toepassings pakketten implementeren op reken knooppunten
 description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoudig meerdere toepassingen en versies te beheren voor installatie op batch Compute-knoop punten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115615"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726873"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -123,13 +123,13 @@ In de toepassings Details kunt u de volgende instellingen voor uw toepassing con
 ### <a name="add-a-new-application"></a>Een nieuwe toepassing toevoegen
 Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een nieuwe, unieke toepassings-ID op. Het eerste toepassings pakket dat u met de nieuwe toepassings-ID toevoegt, maakt ook de nieuwe toepassing.
 
-Klik op **toepassingen** > **toevoegen**.
+Klik op **toepassingen**  >  **toevoegen**.
 
 ![De Blade nieuwe toepassing in Azure Portal][5]
 
 Het venster **nieuwe toepassing** bevat de volgende velden om de instellingen van uw nieuwe toepassing en toepassings pakket op te geven.
 
-**Toepassings-ID**
+**Toepassings-id**
 
 In dit veld wordt de ID van de nieuwe toepassing opgegeven, die is onderhevig aan de standaard regels voor validatie van de Azure Batch-ID. De regels voor het opgeven van een toepassings-ID zijn als volgt:
 
@@ -159,7 +159,7 @@ Nadat u een bestand hebt geselecteerd, klikt u op **OK** om te beginnen met uplo
 > 
 
 ### <a name="add-a-new-application-package"></a>Een nieuw toepassings pakket toevoegen
-Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten** > **toevoegen**.
+Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten**  >  **toevoegen**.
 
 ![De Blade toepassings pakket toevoegen in Azure Portal][8]
 
@@ -170,7 +170,7 @@ Als u een bestaand toepassings pakket wilt bijwerken of verwijderen, opent u de 
 
 ![Een pakket bijwerken of verwijderen in Azure Portal][7]
 
-**Bijwerken**
+**Bijwerk**
 
 Wanneer u op **bijwerken**klikt, wordt de Windows **Update-pakket** weer gegeven. Dit venster is vergelijkbaar met het venster **Nieuw toepassings pakket** , maar alleen het selectie veld pakket is ingeschakeld, zodat u een nieuw zip-bestand kunt opgeven dat u wilt uploaden.
 

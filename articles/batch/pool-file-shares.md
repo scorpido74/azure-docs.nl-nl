@@ -1,14 +1,14 @@
 ---
 title: Azure-bestands share voor Azure Batch Pools
 description: Een Azure Files-share koppelen vanuit reken knooppunten in een Linux-of Windows-groep in Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115445"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723490"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestands share gebruiken met een batch-pool
 
@@ -39,8 +39,8 @@ In batch moet u de share koppelen telkens wanneer een taak wordt uitgevoerd op e
 
 Neem bijvoorbeeld een `net use` opdracht op voor het koppelen van de bestands share als onderdeel van de opdracht regel van elke taak. De volgende referenties zijn nodig om de bestands share te koppelen:
 
-* **Gebruikers naam**: Azure\\\<storageaccountname\>, bijvoorbeeld Azure\\*mystorageaccountname*
-* **Wacht woord**: \<StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Gebruikers naam**: Azure \\ \< storageaccountname \> , bijvoorbeeld Azure \\ *mystorageaccountname*
+* **Wacht woord**: \< StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *Mystorageaccountname* als station *S* :
 
@@ -59,7 +59,7 @@ Als u de koppelings bewerking wilt vereenvoudigen, kunt u eventueel de referenti
 
    ```
 
-2. Koppel de share op elk knoop punt als onderdeel van elke taak `net use`met behulp van. Met de volgende opdracht regel van de taak wordt bijvoorbeeld de bestands share gekoppeld als het station *S:* . Dit wordt gevolgd door een opdracht of script dat verwijst naar de share. Referenties in de cache worden gebruikt in de aanroep `net use`van. Bij deze stap wordt ervan uitgegaan dat u dezelfde gebruikers-id gebruikt voor de taken die u hebt gebruikt in de begin taak van de pool. Dit is niet geschikt voor alle scenario's.
+2. Koppel de share op elk knoop punt als onderdeel van elke taak met behulp van `net use` . Met de volgende opdracht regel van de taak wordt bijvoorbeeld de bestands share gekoppeld als het station *S:* . Dit wordt gevolgd door een opdracht of script dat verwijst naar de share. Referenties in de cache worden gebruikt in de aanroep van `net use` . Bij deze stap wordt ervan uitgegaan dat u dezelfde gebruikers-id gebruikt voor de taken die u hebt gebruikt in de begin taak van de pool. Dit is niet geschikt voor alle scenario's.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
@@ -90,7 +90,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Na het opslaan van de referenties gebruikt u de opdracht regels van uw taak om de share te koppelen en te verwijzen naar de share in lees-of schrijf bewerkingen. Als basis voor beeld gebruikt de opdracht regel van de taak in het volgende fragment `dir` de opdracht om bestanden in de bestands share weer te geven. Zorg ervoor dat elke taak taak wordt uitgevoerd met dezelfde [gebruikers-id](batch-user-accounts.md) die u hebt gebruikt om de begin taak in de groep uit te voeren. 
+Na het opslaan van de referenties gebruikt u de opdracht regels van uw taak om de share te koppelen en te verwijzen naar de share in lees-of schrijf bewerkingen. Als basis voor beeld gebruikt de opdracht regel van de taak in het volgende fragment de `dir` opdracht om bestanden in de bestands share weer te geven. Zorg ervoor dat elke taak taak wordt uitgevoerd met dezelfde [gebruikers-id](batch-user-accounts.md) die u hebt gebruikt om de begin taak in de groep uit te voeren. 
 
 ```csharp
 ...
@@ -108,7 +108,7 @@ tasks.Add(task);
 
 Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [CIFS-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In het volgende voor beeld ziet u hoe u een bestands share koppelt aan een groep van Ubuntu 16,04 LTS Compute-knoop punten. Als u een andere Linux-distributie gebruikt, zijn de algemene stappen vergelijkbaar, maar u kunt het pakket beheer gebruiken dat geschikt is voor de distributie. Zie [Azure files gebruiken met Linux](../storage/files/storage-how-to-use-files-linux.md)voor meer informatie en voor beelden.
 
-Installeer eerst het pakket onder een gebruikers-id van `cifs-utils` de beheerder en maak het koppel punt (bijvoorbeeld */mnt/MyAzureFileShare*) in het lokale bestands systeem. U kunt een map voor een koppel punt maken op een wille keurige locatie in het bestands systeem, maar dit is de `/mnt` gebruikelijke Conventie voor het maken van deze in de map. Zorg ervoor dat u geen koppel punt rechtstreeks maakt op `/mnt` (op Ubuntu) of `/mnt/resource` (op andere distributies).
+Installeer eerst het pakket onder een gebruikers-id van de beheerder `cifs-utils` en maak het koppel punt (bijvoorbeeld */mnt/MyAzureFileShare*) in het lokale bestands systeem. U kunt een map voor een koppel punt maken op een wille keurige locatie in het bestands systeem, maar dit is de gebruikelijke Conventie voor het maken van deze in de `/mnt` map. Zorg ervoor dat u geen koppel punt rechtstreeks maakt op `/mnt` (op Ubuntu) of `/mnt/resource` (op andere distributies).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
@@ -116,8 +116,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Voer vervolgens de `mount` opdracht uit om de bestands share te koppelen, zodat u deze referenties kunt opgeven:
 
-* **Gebruikers naam**: \<storageaccountname\>, bijvoorbeeld *mystorageaccountname*
-* **Wacht woord**: \<StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Gebruikers naam**: \< storageaccountname \> , bijvoorbeeld *mystorageaccountname*
+* **Wacht woord**: \< StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *mystorageaccountname* op */mnt/MyAzureFileShare*: 
 

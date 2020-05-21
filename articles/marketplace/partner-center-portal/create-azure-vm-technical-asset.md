@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730722"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722708"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische bedrijfs middelen voor virtuele Azure-machines maken
-
-> [!IMPORTANT]
-> We verplaatsen het beheer van uw Azure Virtual Machine-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [technische activa maken voor een aanbieding van een virtuele machine voor Cloud Partner-Portal](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) voor het beheren van uw aanbiedingen.
 
 In dit artikel wordt beschreven hoe u technische assets kunt maken en configureren voor een virtuele machine (VM)-aanbieding voor Azure Marketplace. Een VM bevat twee onderdelen: de virtuele harde schijf (VHD) van het besturings systeem en de optionele Vhd's met gekoppelde gegevens schijven:
 
@@ -270,7 +267,7 @@ Het volgende proces generaliseert een Linux-VM en implementeert deze opnieuw als
 1. **De Azure Linux-agent verwijderen**
 
     1. Maak verbinding met uw virtuele Linux-machine met behulp van een SSH-client.
-    2. Voer in het SSH-venster de volgende opdracht in `sudo waagent -deprovision+user`:.
+    2. Voer in het SSH-venster de volgende opdracht in: `sudo waagent -deprovision+user` .
     3. Typ **j** om door te gaan (u kunt de para meter **-Force** toevoegen aan de vorige opdracht om te voor komen dat de bevestigings stap wordt uitgevoerd).
     d. Nadat de opdracht is voltooid, typt u **Exit** om de SSH-client te sluiten.
 

@@ -1,15 +1,15 @@
 ---
-title: Een pool inrichten in een virtueel netwerk-Azure Batch | Microsoft Docs
+title: Een pool inrichten in een virtueel netwerk
 description: Het maken van een batch-pool in een virtueel Azure-netwerk, zodat reken knooppunten veilig kunnen communiceren met andere virtuele machines in het netwerk, zoals een bestands server.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111892"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726278"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
@@ -51,9 +51,9 @@ Mogelijk hebt u vereisten in uw organisatie om Internet-gebonden verkeer van het
 
 Om ervoor te zorgen dat de reken knooppunten van uw Azure Batch pool werken in een VNet waarvoor geforceerde tunneling is ingeschakeld, moet u de volgende door de [gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md) toevoegen voor dat subnet:
 
-* De batch-service moet communiceren met pool Compute-knoop punten voor het plannen van taken. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de batch-service in de regio waar uw batch-account bestaat. Zie [on-premises service Tags](../virtual-network/service-tags-overview.md)voor meer informatie over het verkrijgen van een lijst met IP-adressen van de batch-service. De IP-adressen van de batch-service worden `BatchNodeManagement` gekoppeld aan de servicetag (of de regionale variant die overeenkomt met de regio van uw batch-account).
+* De batch-service moet communiceren met pool Compute-knoop punten voor het plannen van taken. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de batch-service in de regio waar uw batch-account bestaat. Zie [on-premises service Tags](../virtual-network/service-tags-overview.md)voor meer informatie over het verkrijgen van een lijst met IP-adressen van de batch-service. De IP-adressen van de batch-service worden gekoppeld aan de servicetag `BatchNodeManagement` (of de regionale variant die overeenkomt met de regio van uw batch-account).
 
-* Zorg ervoor dat uitgaand verkeer naar Azure Storage (met name url's `<account>.table.core.windows.net`van `<account>.queue.core.windows.net`het formulier `<account>.blob.core.windows.net`, en) niet wordt geblokkeerd via uw on-premises netwerk apparaat.
+* Zorg ervoor dat uitgaand verkeer naar Azure Storage (met name Url's van het formulier `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` en `<account>.blob.core.windows.net` ) niet wordt geblokkeerd via uw on-premises netwerk apparaat.
 
 Wanneer u een door de gebruiker gedefinieerde route toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het **type volgende hop** in op **Internet**. Zie het volgende voorbeeld:
 

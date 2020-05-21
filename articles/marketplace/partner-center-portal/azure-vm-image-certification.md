@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731128"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726142"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Certificering van installatie kopie van virtuele Azure-machine (VM)
-
-> [!NOTE]
-> We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [certificaten voor Azure Key Vault maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) in Cloud Partner-Portal om uw aanbiedingen te beheren.
 
 In dit artikel wordt beschreven hoe u een installatie kopie van een virtuele machine (VM) in de commerciële Marketplace kunt testen en verzenden om te controleren of deze voldoet aan de meest recente publicatie vereisten voor Azure Marketplace.
 
@@ -45,7 +42,7 @@ U kunt een nieuwe of een bestaande Azure-resource groep gebruiken voor dit werk.
 
 Bewerk en voer het volgende Azure PowerShell script uit om het certificaat bestand (. pfx) in een lokale map te maken. Vervang de waarden voor de para meters die in de volgende tabel worden weer gegeven.
 
-| **Bepaalde** | **Beschrijving** |
+| **Parameter** | **Beschrijving** |
 | --- | --- |
 | $certroopath | Lokale map waarin het. pfx-bestand moet worden opgeslagen. |
 | $location | Een van de standaard geografische locaties van Azure. |
@@ -89,7 +86,7 @@ Bewerk en voer het volgende Azure PowerShell script uit om het certificaat besta
 
 #### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>De Azure-sleutel kluis maken om het certificaat op te slaan
 
-Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale computer. In het onderstaande voorbeeld script is `C:\certLocation\keyvault.json`deze bron.
+Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale computer. In het onderstaande voorbeeld script is deze bron `C:\certLocation\keyvault.json` .
 
 ```json
 {
@@ -186,7 +183,7 @@ Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale com
 
 Bewerk en voer het volgende Azure PowerShell script uit om een Azure Key Vault en de gekoppelde resource groep te maken. Vervang de waarden voor de para meters die in de volgende tabel worden weer gegeven
 
-| **Bepaalde** | **Beschrijving** |
+| **Parameter** | **Beschrijving** |
 | --- | --- |
 | $postfix | Wille keurige numerieke teken reeks gekoppeld aan implementatie-id's. |
 | $rgName | De naam van de Azure-resource groep (RG) die u wilt maken. |
@@ -560,7 +557,7 @@ Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar 
 
 Bewerk dit bestand om waarden op te geven voor deze para meters:
 
-| **Bepaalde** | **Beschrijving** |
+| **Parameter** | **Beschrijving** |
 | --- | --- |
 | ResourceGroupName | De naam van de bestaande Azure-resource groep. Gebruik normaal gesp roken dezelfde RG als uw sleutel kluis. |
 | TemplateFile | Volledig pad naar het bestand VHDtoImage. json. |
@@ -571,7 +568,7 @@ Bewerk dit bestand om waarden op te geven voor deze para meters:
 | vmName | De naam van de virtuele machine. |
 | vaultName | De naam van de sleutel kluis. |
 | vaultResourceGroup | De resource groep van de sleutel kluis. |
-| certificateUrl | Webadres (URL) van het certificaat, inclusief de versie die is opgeslagen in de sleutel kluis, `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`bijvoorbeeld:. |
+| certificateUrl | Webadres (URL) van het certificaat, inclusief de versie die is opgeslagen in de sleutel kluis, bijvoorbeeld: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` . |
 | vhdUrl | Het webadres van de virtuele harde schijf. |
 | vmSize | Grootte van het exemplaar van de virtuele machine. |
 | publicIPAddressName | De naam van het open bare IP-adres. |
@@ -583,7 +580,7 @@ Bewerk dit bestand om waarden op te geven voor deze para meters:
 
 ### <a name="deploy-an-azure-vm"></a>Een Azure-VM implementeren
 
-Kopieer en bewerk het volgende script om waarden voor de `$storageaccount` variabelen en `$vhdUrl` op te geven. Voer deze uit om een Azure VM-resource te maken op basis van uw bestaande gegeneraliseerde VHD.
+Kopieer en bewerk het volgende script om waarden voor de variabelen en op te geven `$storageaccount` `$vhdUrl` . Voer deze uit om een Azure VM-resource te maken op basis van uw bestaande gegeneraliseerde VHD.
 
 ```PowerShell
 

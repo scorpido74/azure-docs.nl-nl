@@ -1,14 +1,14 @@
 ---
 title: Gebeurtenis Azure Batch taak starten
 description: Naslag informatie voor de begin gebeurtenis van de batch-taak. Deze gebeurtenis wordt verzonden zodra een taak is gepland om te starten op een reken knooppunt door de scheduler.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116397"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725785"
 ---
 # <a name="task-start-event"></a>Gebeurtenis taak starten
 

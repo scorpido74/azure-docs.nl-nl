@@ -2,13 +2,13 @@
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 04/03/2020
-ms.topic: article
-ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117502"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725802"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -89,9 +89,9 @@ Taken zijn afzonderlijke werk eenheden waaruit een taak bestaat. Taken worden do
 ### <a name="task-lifetime"></a>Levens duur van taak
 
 - **Taken verwijderen wanneer deze zijn voltooid.**
-    Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -taak in. Als er `retentionTime` een is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak `retentionTime` wordt gebruikt wanneer de verloopt.
+    Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -taak in. Als er een `retentionTime` is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak wordt gebruikt wanneer de `retentionTime` verloopt.
 
-    Als u taken verwijdert, worden twee dingen uitgevoerd. Het zorgt ervoor dat u niet beschikt over een build van taken in de taak, waardoor u de taak die u wilt doorzoeken en die u in een later moment wilt filteren, kunt uitvoeren. Ook worden de bijbehorende taak gegevens op het knoop punt opgeschoond (de `retentionTime` waarde is nog niet al bereikt). Zo zorgt u ervoor dat uw knoop punten niet worden gevuld met taak gegevens en er geen schijf ruimte meer beschikbaar is.
+    Als u taken verwijdert, worden twee dingen uitgevoerd. Het zorgt ervoor dat u niet beschikt over een build van taken in de taak, waardoor u de taak die u wilt doorzoeken en die u in een later moment wilt filteren, kunt uitvoeren. Ook worden de bijbehorende taak gegevens op het knoop punt opgeschoond (de waarde `retentionTime` is nog niet al bereikt). Zo zorgt u ervoor dat uw knoop punten niet worden gevuld met taak gegevens en er geen schijf ruimte meer beschikbaar is.
 
 ### <a name="task-submission"></a>Verzen ding van taken
 
@@ -100,11 +100,11 @@ Taken zijn afzonderlijke werk eenheden waaruit een taak bestaat. Taken worden do
 
 ### <a name="task-execution"></a>Taak uitvoering
 
-- **Het maximum aantal taken per knoop punt kiezen** Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep `maxTasksPerNode = 8`met) verbruikt.
+- **Het maximum aantal taken per knoop punt kiezen** Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep met) verbruikt `maxTasksPerNode = 8` .
 
 ### <a name="designing-for-retries-and-re-execution"></a>Ontwerpen voor nieuwe pogingen en opnieuw uitvoeren
 
-Taken kunnen automatisch opnieuw worden uitgevoerd op batch. Er zijn twee soorten nieuwe pogingen: door de gebruiker beheerd en intern. Door de gebruiker beheerde nieuwe pogingen worden opgegeven door de [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)van de taak. Wanneer een programma dat is opgegeven in de taak wordt afgesloten met een afsluit code die niet gelijk is aan nul, wordt de taak opnieuw uitgevoerd tot `maxTaskRetryCount`de waarde van.
+Taken kunnen automatisch opnieuw worden uitgevoerd op batch. Er zijn twee soorten nieuwe pogingen: door de gebruiker beheerd en intern. Door de gebruiker beheerde nieuwe pogingen worden opgegeven door de [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)van de taak. Wanneer een programma dat is opgegeven in de taak wordt afgesloten met een afsluit code die niet gelijk is aan nul, wordt de taak opnieuw uitgevoerd tot de waarde van `maxTaskRetryCount` .
 
 Hoewel zeldzame gevallen kan een taak intern opnieuw worden geprobeerd vanwege storingen op het reken knooppunt, zoals het niet mogelijk is interne status of een fout op het knoop punt bij te werken terwijl de taak wordt uitgevoerd. De taak wordt indien mogelijk opnieuw geprobeerd op hetzelfde reken knooppunt, tot een interne limiet voordat de taak wordt uitgevoerd en de taak moet worden uitgesteld op basis van een batch, mogelijk op een ander reken knooppunt.
 
@@ -121,7 +121,7 @@ Hoewel zeldzame gevallen kan een taak intern opnieuw worden geprobeerd vanwege s
 - **Start taken moeten worden idempotent** Net als bij andere taken moet de begin taak van het knoop punt idempotent zijn, aangezien deze elke keer dat het knoop punt wordt opgestart opnieuw wordt uitgevoerd. Een idempotent-taak is slechts een, wat een consistent resultaat oplevert wanneer er meerdere keren worden uitgevoerd.
 
 - **Beheer langlopende Services via de service-interface van het besturings systeem.**
-    Soms moet er een andere agent naast de batch-agent in het knoop punt worden uitgevoerd, bijvoorbeeld om gegevens van het knoop punt te verzamelen en te rapporteren. U wordt aangeraden deze agents als OS-Services te implementeren, zoals een Windows-service `systemd` of een Linux-service.
+    Soms moet er een andere agent naast de batch-agent in het knoop punt worden uitgevoerd, bijvoorbeeld om gegevens van het knoop punt te verzamelen en te rapporteren. U wordt aangeraden deze agents als OS-Services te implementeren, zoals een Windows-service of een Linux- `systemd` service.
 
     Bij het uitvoeren van deze services mogen ze geen bestands vergrendeling hebben op bestanden in door batch beheerde directory's op het knoop punt, omdat in andere gevallen deze directory's niet kunnen worden verwijderd vanwege de vergren deling van het bestand. Als u bijvoorbeeld een Windows-service in een begin taak installeert in plaats van de service rechtstreeks vanuit de werkmap voor het starten van de taak te starten, kopieert u de bestanden ergens anders (als de bestanden alleen over de kopie staan). Installeer de service vanaf die locatie. Wanneer uw start taak door batch opnieuw wordt uitgevoerd, wordt de werkmap voor het starten van de taak verwijderd en opnieuw gemaakt. Dit werkt omdat de service Bestands vergrendelingen heeft op de andere map, niet op de werkmap voor het starten van de taak.
 
@@ -149,10 +149,10 @@ Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Star
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Netwerk beveiligings groepen (Nsg's) en door de gebruiker gedefinieerde routes (Udr's)
 
-Bij het inrichten van [batch-Pools in een virtueel netwerk](batch-virtual-network.md), moet u ervoor zorgen dat u voldoet aan de richt lijnen `BatchNodeManagement` met betrekking tot het gebruik van de service tags, poorten, protocollen en richting van de regel.
+Bij het inrichten van [batch-Pools in een virtueel netwerk](batch-virtual-network.md), moet u ervoor zorgen dat u voldoet aan de richt lijnen met betrekking tot het gebruik van de `BatchNodeManagement` service tags, poorten, protocollen en richting van de regel.
 Het gebruik van het servicetag wordt sterk aanbevolen en niet de onderliggende IP-adressen van de batch-service, aangezien deze kunnen veranderen in de loop van de tijd. Het rechtstreeks gebruiken van de IP-adressen van de batch-service kan zich als onstabiel, onderbrekingen of storingen voordoen als de batch-service de IP-adressen die in de loop van de tijd worden gebruikt, worden bijgewerkt. Als u momenteel batch service-IP-adressen in uw NSG-regels gebruikt, is het raadzaam om over te scha kelen naar het gebruik van de servicetag.
 
-Voor door de gebruiker gedefinieerde routes moet u ervoor zorgen dat u over een proces beschikt om de batch service-IP-adressen periodiek bij te werken in uw route tabel als deze wijziging in de loop van de tijd plaatsvindt. Als u wilt weten hoe u de lijst met IP-adressen van batch-service kunt verkrijgen, raadpleegt u [on-premises service Tags](../virtual-network/service-tags-overview.md). De IP-adressen van de batch-service worden `BatchNodeManagement` gekoppeld aan de servicetag (of de regionale variant die overeenkomt met de regio van uw batch-account).
+Voor door de gebruiker gedefinieerde routes moet u ervoor zorgen dat u over een proces beschikt om de batch service-IP-adressen periodiek bij te werken in uw route tabel als deze wijziging in de loop van de tijd plaatsvindt. Als u wilt weten hoe u de lijst met IP-adressen van batch-service kunt verkrijgen, raadpleegt u [on-premises service Tags](../virtual-network/service-tags-overview.md). De IP-adressen van de batch-service worden gekoppeld aan de servicetag `BatchNodeManagement` (of de regionale variant die overeenkomt met de regio van uw batch-account).
 
 ### <a name="honoring-dns"></a>DNS naleven
 

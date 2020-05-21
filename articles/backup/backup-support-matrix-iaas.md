@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ac2896b0b3b8c87ff993eddcebb063a66add1fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659398"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724255"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -48,7 +48,7 @@ Back-ups maken van schijven na migratie naar Managed disks | Ondersteund.<br/><b
 Back-up van beheerde schijven maken na inschakelen van vergren deling van resource groep | Niet ondersteund.<br/><br/> Azure Backup kunt de oudere herstel punten niet verwijderen, waardoor de back-ups mislukken wanneer de maximum limiet van herstel punten is bereikt.
 Back-upbeleid voor een VM wijzigen | Ondersteund.<br/><br/> Er wordt een back-up van de VM gemaakt met behulp van de instellingen voor het plannen en bewaren van het nieuwe beleid. Als de Bewaar instellingen worden uitgebreid, worden de bestaande herstel punten gemarkeerd en bewaard. Als ze worden gereduceerd, worden de bestaande herstel punten verwijderd bij de volgende opschoon taak en uiteindelijk gewist.
 Een back-uptaak annuleren| Ondersteund tijdens het momentopname proces.<br/><br/> Niet ondersteund wanneer de moment opname wordt overgedragen naar de kluis.
-Back-ups maken van de VM naar een andere regio of een ander abonnement |Niet ondersteund.
+Back-ups maken van de VM naar een andere regio of een ander abonnement |Niet ondersteund.<br><br>Om een back-up te kunnen maken, moeten virtuele machines zich in hetzelfde abonnement als de kluis voor back-up bevallen.
 Back-ups per dag (via de Azure VM-extensie) | Eén geplande back-up per dag.<br/><br/>De Azure Backup-service ondersteunt Maxi maal negen back-ups op aanvraag per dag, maar micro soft raadt niet meer dan vier dagelijkse back-ups op aanvraag aan om de beste prestaties te garanderen.
 Back-ups per dag (via de MARS-agent) | Drie geplande back-ups per dag.
 Back-ups per dag (via DPM/MABS) | Twee geplande back-ups per dag.

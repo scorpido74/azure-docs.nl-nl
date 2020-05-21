@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc7c1fd1dff85908c96e2fd7b2276df3d833e37f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134310"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726040"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge-implementaties bewaken
 
@@ -67,7 +67,7 @@ Zie [een implementatie wijzigen](how-to-deploy-at-scale.md#modify-a-deployment)a
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Een implementatie bewaken met Azure CLI
 
-Gebruik de opdracht [az IOT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) om de details van één implementatie weer te geven:
+Gebruik de opdracht [az IOT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) om de details van één implementatie weer te geven:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -85,7 +85,7 @@ Inspecteer de implementatie in het opdracht venster.De eigenschap **Metrics** be
 * **reportedSuccessfulCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in het geslaagde implementatie rapport van de IOT Edge-client runtime.
 * **reportedFailedCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in de implementatie rapportage fout van de IOT Edge-client runtime.
 
-U kunt een lijst met apparaat-Id's of objecten voor elk van de metrische gegevens weer geven met de opdracht [az IOT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) :
+U kunt een lijst met apparaat-Id's of objecten voor elk van de metrische gegevens weer geven met de opdracht [az IOT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) :
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
@@ -94,8 +94,8 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 De opdracht show-meet waarde accepteert de volgende para meters:
 
 * **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
-* **--metric-id** : de naam van de metriek waarvoor u de lijst met apparaat-id's wilt zien `reportedFailedCount`.
-* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de `az account set -s [subscription name]`opdracht.
+* **--metric-id** : de naam van de metriek waarvoor u de lijst met apparaat-id's wilt zien `reportedFailedCount` .
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]` .
 
 Zie [een implementatie wijzigen](how-to-deploy-cli-at-scale.md#modify-a-deployment)als u wijzigingen wilt aanbrengen in uw implementatie.
 

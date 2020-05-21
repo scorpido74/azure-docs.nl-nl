@@ -4,13 +4,13 @@ description: Standaard Azure Batch mogelijkheden worden gebruikt voor het uitvoe
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115751"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726465"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Mogelijkheden voor Azure Batch Rendering
 
@@ -28,7 +28,7 @@ Er is een installatie kopie van Windows 2016 en een CentOS-installatie kopie.  I
 
 Zie de [zelf studie over Azure cli-rendering](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)voor een voor beeld van een pool configuratie.  De Azure Portal en Batch Explorer bieden GUI-hulpprogram ma's voor het selecteren van een VM-installatie kopie die wordt weer gegeven wanneer u een groep maakt.  Als u een batch-API gebruikt, geeft u voor [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) de volgende eigenschaps waarden op bij het maken van een groep:
 
-| Uitgever | Aanbieding | Sku | Versie |
+| Publisher | Aanbieding | Sku | Versie |
 |---------|---------|---------|--------|
 | batch | Rendering-centos73 | aanwijzer | meest recente |
 | batch | Rendering-windows2016 | aanwijzer | meest recente |
@@ -50,11 +50,11 @@ De toepassingen die worden gebruikt en waarvoor licentie kosten gelden, moeten w
 * Wanneer u een of meer toepassingen opgeeft, worden de kosten van deze toepassingen toegevoegd aan de kosten van de Vm's.  Toepassings prijzen worden vermeld op de [pagina met Azure batch prijzen](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Als u in plaats daarvan verbinding maakt met een licentie server voor het gebruik van de rendering- `applicationLicenses` toepassingen, geeft u de eigenschap niet op.
+> Als u in plaats daarvan verbinding maakt met een licentie server voor het gebruik van de rendering-toepassingen, geeft u de eigenschap niet op `applicationLicenses` .
 
 U kunt de Azure Portal of Batch Explorer gebruiken om toepassingen te selecteren en de prijzen van de toepassing weer te geven.
 
-Als er een poging wordt gedaan om een toepassing te gebruiken, maar de toepassing niet is opgegeven `applicationLicenses` in de eigenschap van de groeps configuratie of als er geen licentie server is bereikt, mislukt de uitvoering van de toepassing met een licentie fout en afsluit code die niet gelijk is aan nul.
+Als er een poging wordt gedaan om een toepassing te gebruiken, maar de toepassing niet is opgegeven in de `applicationLicenses` eigenschap van de groeps configuratie of als er geen licentie server is bereikt, mislukt de uitvoering van de toepassing met een licentie fout en afsluit code die niet gelijk is aan nul.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Omgevings variabelen voor vooraf geïnstalleerde toepassingen
 

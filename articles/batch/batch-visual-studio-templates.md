@@ -1,15 +1,15 @@
 ---
-title: Oplossingen ontwikkelen met Visual Studio-sjablonen-Azure Batch | Microsoft Docs
+title: Oplossingen ontwikkelen met Visual Studio-sjablonen
 description: Meer informatie over hoe u met Visual Studio project-sjablonen uw computerintensieve werk belastingen op Azure Batch kunt implementeren en uitvoeren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117519"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725819"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio-project sjablonen gebruiken om batch-oplossingen te starten
 
@@ -57,7 +57,7 @@ Als u de batch-sjablonen wilt gebruiken, hebt u het volgende nodig:
 ## <a name="preparation"></a>Voorbereiding
 We raden u aan om een oplossing te maken die uw taak manager en uw taak processor kan bevatten, omdat dit het gemakkelijker maakt om code te delen tussen uw taak beheer-en taak verwerkings Programma's. Voer de volgende stappen uit om deze oplossing te maken:
 
-1. Open Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
+1. Open Visual Studio en selecteer **bestand**  >  **Nieuw**  >  **project**.
 2. Onder **sjablonen**vouwt u **andere project typen**uit, klikt u op **Visual Studio-oplossingen**en selecteert u **lege oplossing**.
 3. Typ een naam die uw toepassing beschrijft en het doel van deze oplossing (bijvoorbeeld ' LitwareBatchTaskPrograms ').
 4. Klik op **OK**om de nieuwe oplossing te maken.
@@ -77,7 +77,7 @@ De job manager-sjabloon helpt u bij het implementeren van een taak beheer taak d
 Als u een taak beheerder wilt toevoegen aan de oplossing die u eerder hebt gemaakt, voert u de volgende stappen uit:
 
 1. Open uw bestaande oplossing in Visual Studio.
-2. Klik in Solution Explorer met de rechter muisknop op de oplossing en vervolgens op**Nieuw project** **toevoegen** > .
+2. Klik in Solution Explorer met de rechter muisknop op de oplossing **Add**en vervolgens op  >  **Nieuw project**toevoegen.
 3. Klik onder **Visual C#** op **Cloud**en klik vervolgens op **Azure batch job manager met Job splitter**.
 4. Typ een naam die uw toepassing beschrijft en identificeert dit project als taak beheerder (bijvoorbeeld ' LitwareJobManager ').
 5. Klik op **OK**om het project te maken.
@@ -156,19 +156,19 @@ Uw Split-implementatie () heeft toegang tot:
 * Het eigenschap cloudjob-object dat de taak via het `_job` veld vertegenwoordigt.
 * Het CloudTask-object dat de taak beheerder via het `_jobManagerTask` veld vertegenwoordigt.
 
-Uw `Split()` implementatie hoeft geen taken rechtstreeks aan de taak toe te voegen. In plaats daarvan moet uw code een reeks CloudTask-objecten retour neren. deze worden automatisch aan de taak toegevoegd door de Framework klassen die de taak splitter aanroepen. Het is gebruikelijk de functie iterator (`yield return`) van C# te gebruiken om taak splitsingen te implementeren, omdat hierdoor de taken zo snel mogelijk kunnen worden uitgevoerd in plaats van dat er wordt gewacht tot alle taken moeten worden berekend.
+Uw `Split()` implementatie hoeft geen taken rechtstreeks aan de taak toe te voegen. In plaats daarvan moet uw code een reeks CloudTask-objecten retour neren. deze worden automatisch aan de taak toegevoegd door de Framework klassen die de taak splitter aanroepen. Het is gebruikelijk de functie iterator () van C# `yield return` te gebruiken om taak splitsingen te implementeren, omdat hierdoor de taken zo snel mogelijk kunnen worden uitgevoerd in plaats van dat er wordt gewacht tot alle taken moeten worden berekend.
 
 **Taak splitter-fout**
 
 Als uw job splitter een fout tegen komt, moet dit een van de volgende zijn:
 
-* Beëindig de reeks met de C# `yield break` -instructie. in dat geval wordt de taak beheerder als geslaagd behandeld. of
+* Beëindig de reeks met de C# `yield break` -instructie. in dat geval wordt de taak beheerder behandeld als geslaagd; of
 * Hiermee wordt een uitzonde ring gegenereerd. in dat geval wordt de taak beheerder als mislukt beschouwd en wordt er mogelijk een nieuwe poging gedaan, afhankelijk van hoe de client deze heeft geconfigureerd.
 
 In beide gevallen kunnen taken die al zijn geretourneerd door de taak splitter en worden toegevoegd aan de batch-taak, in aanmerking komen voor uitvoering. Als u dit niet wilt doen, kunt u het volgende doen:
 
 * De taak beëindigen voordat deze wordt geretourneerd vanuit de taak splitter
-* De volledige taak verzameling formuleren voordat u deze retourneert (dat wil zeggen, `ICollection<CloudTask>` een `IList<CloudTask>` of in plaats van de taak splitsing te implementeren met behulp van een C#-iterator)
+* De volledige taak verzameling formuleren voordat u deze retourneert (dat wil zeggen, een `ICollection<CloudTask>` of `IList<CloudTask>` in plaats van de taak splitsing te implementeren met behulp van een C#-iterator)
 * Taak afhankelijkheden gebruiken om alle taken te laten afhangen van de voltooide voltooiing van de taak beheerder
 
 **Nieuwe pogingen taak beheer**
@@ -223,7 +223,7 @@ Het is doorgaans veilig voor de client om *runExclusive* in te stellen op **Fals
 
 De client moet de verzameling *Resource files* of *applicationPackageReferences* gebruiken om het uitvoer bare bestand van de job manager (en de vereiste dll's) te laten implementeren naar het reken knooppunt.
 
-De taak beheerder wordt standaard niet opnieuw geprobeerd als deze mislukt. Afhankelijk van de logica van uw taak beheer, is het mogelijk dat de client opnieuw proberen in te scha kelen via *beperkingen*/*maxTaskRetryCount*.
+De taak beheerder wordt standaard niet opnieuw geprobeerd als deze mislukt. Afhankelijk van de logica van uw taak beheer, is het mogelijk dat de client opnieuw proberen in te scha kelen via *beperkingen* / *maxTaskRetryCount*.
 
 **Taakinstellingen**
 
@@ -361,7 +361,7 @@ Een taak processor taak die is geïmplementeerd met de taak processor sjabloon k
 | Code | Beschrijving |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |De taak processor is voltooid. Houd er rekening mee dat dit niet impliceert dat het programma dat u hebt aangeroepen, is geslaagd: alleen dat de taak processor het heeft aangeroepen en zonder uitzonde ringen na de verwerking is uitgevoerd. De betekenis van de afsluit code is afhankelijk van het aangeroepen programma, meestal afsluit code 0 betekent dat het programma is geslaagd en andere afsluit code betekent dat het programma is mislukt. |
-| 1 |De taak processor is mislukt met een uitzonde ring in een ' verwacht ' deel van het programma. De uitzonde ring is vertaald `TaskProcessorException` naar een met diagnostische gegevens en, waar mogelijk, suggesties voor het oplossen van de fout. |
+| 1 |De taak processor is mislukt met een uitzonde ring in een ' verwacht ' deel van het programma. De uitzonde ring is vertaald naar een `TaskProcessorException` met diagnostische gegevens en, waar mogelijk, suggesties voor het oplossen van de fout. |
 | 2 |De taak processor is mislukt met een onverwachte uitzonde ring. De uitzonde ring is vastgelegd in de standaard uitvoer, maar de taak processor kan geen verdere diagnostische of herstel gegevens toevoegen. |
 
 > [!NOTE]
@@ -383,7 +383,7 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-Het opslag account is vervolgens beschikbaar in de TaskProcessor-klasse via `_configuration.StorageAccount` de eigenschap.
+Het opslag account is vervolgens beschikbaar in de TaskProcessor-klasse via de `_configuration.StorageAccount` eigenschap.
 
 Als u liever een container-URL met SAS gebruikt, kunt u dit ook door geven via een gemeen schappelijke omgevings instelling, maar de taak verwerkings sjabloon bevat momenteel geen ingebouwde ondersteuning.
 
@@ -399,15 +399,15 @@ Een client kan gegevens door geven aan de taak van de taak beheerder in de vorm 
 * URL van het batch-account
 * Batch-account sleutel
 
-De batch-service heeft een eenvoudig mechanisme om omgevings instellingen door te geven aan een taak beheer `EnvironmentSettings` taak met behulp van de eigenschap in [micro soft. Azure. batch. JobManagerTask][net_jobmanagertask].
+De batch-service heeft een eenvoudig mechanisme om omgevings instellingen door te geven aan een taak beheer taak met behulp van de `EnvironmentSettings` eigenschap in [micro soft. Azure. batch. JobManagerTask][net_jobmanagertask].
 
 Als u bijvoorbeeld het `BatchClient` exemplaar voor een batch-account wilt ophalen, kunt u door geven als omgevings variabelen van de client code de URL en de referenties van de gedeelde sleutel voor het batch-account. Op dezelfde manier kunt u toegang krijgen tot het opslag account dat is gekoppeld aan het batch-account door de naam van het opslag account en de sleutel van het opslag account als omgevings variabelen door te geven.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Para meters door geven aan de job manager-sjabloon
-In veel gevallen is het handig om per taak para meters door te geven aan de taak beheer taak, hetzij om het proces voor het splitsen van taken te beheren of om de taken voor de taak te configureren. U kunt dit doen door een JSON-bestand met de naam para meters. json te uploaden als een resource bestand voor de taak taak beheer. De para meters kunnen vervolgens beschikbaar worden `JobSplitter._parameters` in het veld in de job manager-sjabloon.
+In veel gevallen is het handig om per taak para meters door te geven aan de taak beheer taak, hetzij om het proces voor het splitsen van taken te beheren of om de taken voor de taak te configureren. U kunt dit doen door een JSON-bestand met de naam para meters. json te uploaden als een resource bestand voor de taak taak beheer. De para meters kunnen vervolgens beschikbaar worden in het `JobSplitter._parameters` veld in de job manager-sjabloon.
 
 > [!NOTE]
-> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak splitsing, of de methode `Configuration.GetJobParameters` van het Framework wijzigen.
+> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak splitsing, of de methode van het Framework wijzigen `Configuration.GetJobParameters` .
 > 
 > 
 
@@ -416,11 +416,11 @@ U kunt ook para meters door geven aan afzonderlijke taken die zijn geïmplemente
 
 para meters. json, en als deze wordt gevonden, wordt deze geladen als de woorden lijst met para meters. Er zijn een aantal opties voor het door geven van para meters aan taak verwerkings taken:
 
-* De JSON van de taak parameters opnieuw gebruiken. Dit werkt goed als de enige para meters voor de hele taak zijn (bijvoorbeeld een weergave hoogte en-breedte). Als u dit wilt doen, voegt u bij het maken van een CloudTask in de taak splitter een verwijzing toe naar het Resource object para meters. json van`JobSplitter._jobManagerTask.ResourceFiles`de Resource files () van de job manager-taak naar de Resource files-verzameling van CloudTask.
+* De JSON van de taak parameters opnieuw gebruiken. Dit werkt goed als de enige para meters voor de hele taak zijn (bijvoorbeeld een weergave hoogte en-breedte). Als u dit wilt doen, voegt u bij het maken van een CloudTask in de taak splitter een verwijzing toe naar het Resource object para meters. json van de Resource files () van de job manager-taak `JobSplitter._jobManagerTask.ResourceFiles` naar de Resource files-verzameling van CloudTask.
 * Genereer en upload een gebruikersspecifieke para meters. JSON-document als onderdeel van de uitvoering van taak splitter en referentie die Blob in de verzameling bron bestanden van de taak. Dit is nodig als verschillende taken verschillende para meters hebben. Een voor beeld hiervan is een 3D-rendering-scenario waarbij de frame-index wordt door gegeven aan de taak als een para meter.
 
 > [!NOTE]
-> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak processor, of de methode `Configuration.GetTaskParameters` van het Framework wijzigen.
+> De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak processor, of de methode van het Framework wijzigen `Configuration.GetTaskParameters` .
 > 
 > 
 

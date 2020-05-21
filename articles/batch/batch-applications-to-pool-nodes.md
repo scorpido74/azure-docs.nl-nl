@@ -1,16 +1,16 @@
 ---
-title: Toepassingen en gegevens kopiëren naar groepsknooppunten
+title: Toepassingen en gegevens kopiëren naar pool knooppunten
 description: Meer informatie over het kopiëren van toepassingen en gegevens naar pool knooppunten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115581"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726822"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Toepassingen en gegevens kopiëren naar groepsknooppunten
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Toepassingen en gegevens kopiëren naar pool knooppunten
 
 Azure Batch ondersteunt verschillende manieren voor het ophalen van gegevens en toepassingen op reken knooppunten, zodat de gegevens en toepassingen beschikbaar zijn voor gebruik door taken. Gegevens en toepassingen zijn mogelijk vereist voor het uitvoeren van de volledige taak en moeten dus op elk knoop punt worden geïnstalleerd. Sommige zijn mogelijk alleen vereist voor een specifieke taak of moeten worden geïnstalleerd voor de taak, maar moeten niet op elk knoop punt aanwezig zijn. Batch bevat hulpprogram ma's voor elk van deze scenario's.
 

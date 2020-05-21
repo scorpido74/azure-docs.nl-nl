@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681714"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725292"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -58,8 +58,7 @@ Met deze hotfix-build wordt een probleem opgelost waarbij niet-geselecteerde dom
 
 
 >[!NOTE]
->Deze versie is vereist voor het gebruik van de nieuwe Azure AD Connect Sync v2-eind punt-API.  Zie [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md)voor meer informatie.
-
+>Deze versie bevat de nieuwe Azure AD Connect Sync v2-eind punt-API.  Dit nieuwe v2-eind punt bevindt zich momenteel in de open bare preview.  Deze versie of hoger is vereist voor het gebruik van de nieuwe v2-eind punt-API.  Alleen als u deze versie installeert, wordt het v2-eind punt niet ingeschakeld. U blijft het v1-eind punt gebruiken tenzij u het v2-eind punt inschakelt.  U moet de stappen onder [Azure AD Connect Sync v2-eind punt-API (open bare preview)](how-to-connect-sync-endpoint-api-v2.md) volgen om deze functie in te scha kelen voor de open bare preview.  
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -913,7 +912,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Selecteren|
+    |CertVersion|CertSignatureAlgorithmOid|Selecteer|
     |CertKeyAlgorithmParams|CertHashString|Waar|
     |||With|
 

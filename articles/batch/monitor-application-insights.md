@@ -1,14 +1,14 @@
 ---
 title: Bewaak batch met Azure-toepassing Insights
 description: Meer informatie over het instrumenteren van een Azure Batch .NET-toepassing met behulp van de Azure-toepassing Insights-bibliotheek.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115462"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723609"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Een Azure Batch .NET-toepassing bewaken en fouten opsporen met Application Insights
 
@@ -280,13 +280,13 @@ In de volgende scherm afbeeldingen ziet u hoe Application Insights logboeken uit
 Aangepaste metrische gegevens zijn ook een waardevol hulp middel in de portal. U kunt bijvoorbeeld de gemiddelde tijd die nodig is voor elk reken knooppunt weer geven om het vereiste tekst bestand dat het verwerkt is te downloaden.
 
 Een voorbeeld grafiek maken:
-1. Klik in de Application Insights resource op **Metrics Explorer** > **grafiek toevoegen**.
+1. Klik in de Application Insights resource op **Metrics Explorer**  >  **grafiek toevoegen**.
 2. Klik op **bewerken** in de grafiek die is toegevoegd.
 2. Werk de grafiek Details als volgt bij:
    * Stel het **grafiek type** in op **raster**.
    * Stel **aggregatie** in op **gemiddelde**.
    * Stel **Group by** in op **NodeId**.
-   * Selecteer in **metrische gegevens**de optie **aangepaste** > **BLOB-down load in seconden**.
+   * Selecteer in **metrische gegevens**de optie **aangepaste**  >  **BLOB-down load in seconden**.
    * Pas de weer gave **kleuren palet** aan uw keuze aan. 
 
 ![Download tijd voor BLOB per knoop punt](./media/monitor-application-insights/blobdownloadtime.png)

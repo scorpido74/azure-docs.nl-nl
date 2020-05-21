@@ -10,40 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 68947895891b4875ef4c57355f1236afdb8c2c7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204819"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715644"
 ---
 # <a name="learn-the-basics-of-spx"></a>Meer informatie over de basis principes van SPX
 
 In dit artikel leert u de basis gebruiks patronen van SPX, een opdracht regel programma voor het gebruik van de spraak service zonder code te schrijven. U kunt snel de belangrijkste functies van de spraak service testen zonder ontwikkel omgevingen te maken of code te schrijven om te controleren of er voldoende problemen zijn met het gebruik van uw gebruiks voorbeelden. Daarnaast is SPX gereed voor productie en kan worden gebruikt voor het automatiseren van eenvoudige werk stromen in de spraak service, met behulp van `.bat` of shell-scripts.
 
-## <a name="prerequisites"></a>Vereisten
-
-De enige vereiste is een Azure speech-abonnement. Raadpleeg de [hand leiding](get-started.md#new-resource) voor het maken van een nieuw abonnement als u er nog geen hebt.
-
-## <a name="download-and-install"></a>Downloaden en installeren
-
-SPX is beschikbaar in Windows en Linux. Begin met het downloaden van het [zip-archief](https://aka.ms/speech/spx-zips.zip)en pak het uit. SPX vereist de .NET core-of .NET Framework runtime en de volgende versies worden ondersteund door het platform:
-
-* Windows: [.NET Framework 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471), [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* Linux: [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-
-Nadat u een runtime hebt geïnstalleerd, gaat u naar de hoofdmap `spx-zips` die u hebt geëxtraheerd uit de down load en extraheert u de submap die u nodig hebt ( `spx-net471` bijvoorbeeld). In een opdracht prompt wijzigt u de map in deze locatie en voert `spx` u uit om de toepassing te starten.
-
-## <a name="create-subscription-config"></a>Abonnements configuratie maken
-
-Als u SPX wilt gebruiken, moet u eerst de sleutel voor het spraak abonnement en de regio gegevens invoeren. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden. Zodra u uw abonnements sleutel en regio-id hebt (bijvoorbeeld `eastus`, `westus` ) voert u de volgende opdrachten uit.
-
-```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
-```
-
-Uw abonnements verificatie wordt nu opgeslagen voor toekomstige SPX-aanvragen. Als u een van deze opgeslagen waarden wilt verwijderen, voert u `spx config @region --clear` of uit `spx config @key --clear` .
+[!INCLUDE [](includes/spx-setup.md)]
 
 ## <a name="basic-usage"></a>Basisgebruik
 

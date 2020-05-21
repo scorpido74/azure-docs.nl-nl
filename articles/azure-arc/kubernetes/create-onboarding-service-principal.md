@@ -8,23 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Een onboarding-service-principal voor Azure-Arc maken '
 keywords: Kubernetes, Arc, azure, containers
-ms.openlocfilehash: f9f750980d8a8b5d8190ba0b399fe068f1dd99c7
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680797"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725598"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Een onboarding-service-principal voor Azure-Arc maken (preview)
 
 ## <a name="overview"></a>Overzicht
 
-Wanneer een cluster wordt onboardd naar Azure, moeten de agents die in uw cluster worden uitgevoerd, worden geverifieerd bij Azure Resource Manager als onderdeel van de registratie. Voor de `connectedk8s` Azure cli-extensie is geautomatiseerde service-principal gemaakt. Er zijn echter enkele scenario's waarin de CLI-automatisering niet werkt:
+Het is mogelijk om service-principals te gebruiken met een roltoewijzing met beperkte bevoegdheden voor onboarding van Kubernetes-clusters naar Azure Arc. Dit is handig voor continue integratie en doorlopende implementatie-pijp lijnen (CI/CD) zoals Azure-pijp lijnen en GitHub acties.
 
-* Uw organisatie beperkt doorgaans het maken van service-principals
-* De gebruiker die het cluster heeft voor bereid, beschikt niet over voldoende machtigingen om service-principals te maken
-
-In plaats daarvan maakt u de Service-Principal buiten band en geeft u de principal door aan de Azure CLI-extensie.
+De volgende stappen bieden een overzicht van het gebruik van service-principals voor onboarding van Kubernetes-clusters naar Azure Arc.
 
 ## <a name="create-a-new-service-principal"></a>Een nieuwe service-principal maken
 
@@ -57,13 +54,13 @@ Machtigingen kunnen verder worden beperkt door het door geven van het desbetreff
 | Resource  | Argument voor `scope`| Effect |
 | ------------- | ------------- | ------------- |
 | Abonnement | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Service-Principal kan elk cluster in een bestaande resource groep in het opgegeven abonnement registreren |
-| Resourcegroep | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Service-Principal kan clusters __alleen__ registreren in de resource groep`myGroup` |
+| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Service-Principal kan clusters __alleen__ registreren in de resource groep`myGroup` |
 
 ```console
 az role assignment create \
     --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 \      # this is the id for the built-in role
     --assignee 22cc2695-54b9-49c1-9a73-2269592103d8 \  # use the appId from the new SP
-    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the apropriate scope
+    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the appropriate scope
 ```
 
 **Uitvoer**

@@ -1,15 +1,15 @@
 ---
 title: End-to-end-taken uitvoeren met behulp van sjablonen
 description: Met alleen CLI-opdrachten kunt u een pool maken, invoer gegevens uploaden, taken en bijbehorende taken maken en de resulterende uitvoer gegevens downloaden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117349"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726771"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
 
@@ -61,7 +61,7 @@ Azure Batch sjablonen zijn vergelijkbaar met Azure Resource Manager sjablonen, i
 
 -   **Parameters**
 
-    -   Toestaan dat eigenschaps waarden worden opgegeven in een hoofd sectie, met alleen parameter waarden die moeten worden opgegeven wanneer de sjabloon wordt gebruikt. De volledige definitie voor een pool kan bijvoorbeeld in de hoofd tekst worden geplaatst en er is slechts één para meter `poolId`gedefinieerd voor; Er moet dus alleen een groeps-ID-reeks worden opgegeven om een groep te maken.
+    -   Toestaan dat eigenschaps waarden worden opgegeven in een hoofd sectie, met alleen parameter waarden die moeten worden opgegeven wanneer de sjabloon wordt gebruikt. De volledige definitie voor een pool kan bijvoorbeeld in de hoofd tekst worden geplaatst en er is slechts één para meter gedefinieerd voor `poolId` . Daarom moet alleen een groeps-ID-reeks worden opgegeven om een groep te maken.
         
     -   De sjabloon hoofdtekst kan worden gemaakt door iemand met kennis van batch en de toepassingen die moeten worden uitgevoerd met batch; alleen waarden voor de door de gebruiker gedefinieerde para meters moeten worden opgegeven wanneer de sjabloon wordt gebruikt. Een gebruiker zonder de diep gaande batch en/of toepassings kennis kan daarom gebruikmaken van de sjablonen.
 
@@ -136,7 +136,7 @@ Als het sjabloon bestand _groep-ffmpeg. json_heet, roept u de sjabloon als volgt
 az batch pool create --template pool-ffmpeg.json
 ```
 
-De CLI vraagt u om waarden op te geven `poolId` voor `nodeCount` de para meters en. U kunt ook de para meters opgeven in een JSON-bestand. Bijvoorbeeld:
+De CLI vraagt u om waarden op te geven voor de `poolId` `nodeCount` para meters en. U kunt ook de para meters opgeven in een JSON-bestand. Bijvoorbeeld:
 
 ```json
 {
@@ -253,7 +253,7 @@ U kunt een batch-CLI-sjabloon uploaden naar de [batch Explorer](https://github.c
 
 Een sjabloon uploaden:
 
-1. Selecteer in batch Explorer **Galerie** > **lokale sjablonen**.
+1. Selecteer in batch Explorer **Galerie**  >  **lokale sjablonen**.
 
 2. Selecteer een lokale groep of een taak sjabloon of sleep en zet deze neer.
 

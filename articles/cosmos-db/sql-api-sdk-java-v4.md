@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: cdbb6d0f26b6a999d289e7e0ddbd8cb45dac8e47
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b222a94ee754b24192261451d8ddc429886e705c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665199"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725649"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -47,10 +47,10 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 | |  |
 |---|---|
 | **SDK downloaden** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-documentatie** |Naslag documentatie voor Java API|
+|**API-documentatie** | [Naslag documentatie voor Java API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1-beta.3/index.html) |
 |**Bijdragen aan SDK** | [Azure SDK voor Java Central opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
 |**Aan de slag** | [Quick Start: een Java-app maken voor het beheren van Azure Cosmos DB SQL-API-gegevens](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Github opslag plaats met Quick](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) Start-code | 
-|**Basic-code voorbeelden** | Azure Cosmos DB: Java-voor beelden voor de SQL-API · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**Basic-code voorbeelden** | [Azure Cosmos DB: Java-voor beelden voor de SQL-API](sql-api-java-sdk-samples.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Console-app met wijzigings feed**| [Wijzigings feed-Java SDK v4-voor beeld](create-sql-api-java-changefeed.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Voor beeld van web-app**| [Een web-app bouwen met Java SDK v4](sql-api-java-application.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **Tips voor prestaties**| [Tips voor betere prestaties voor de Java-SDK v4](performance-tips-java-sdk-v4-sql.md)| 

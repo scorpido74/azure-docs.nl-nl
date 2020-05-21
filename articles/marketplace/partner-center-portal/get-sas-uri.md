@@ -7,17 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857939"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725870"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>URI voor Shared Access-hand tekening ophalen voor uw VM-installatie kopie
-
-> [!IMPORTANT]
-> We verplaatsen het beheer van uw Azure Virtual Machine-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in de URI van de [gedeelde toegangs handtekening ophalen voor uw VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
 In dit artikel wordt beschreven hoe u een SAS-URL (Shared Access Signature) voor elke virtuele harde schijf (VHD) genereert.
 
@@ -62,7 +59,7 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
 9. Plaats de naam van de VHD achter de vhd's-teken reeks in de SAS-URI (neem een slash op). De uiteindelijke SAS-URI moet er als volgt uitzien:
 
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Als de naam van de VDH bijvoorbeeld is, zou `TestRGVM2.vhd`de resulterende SAS-URI er als volgt uitziet:
+    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Als de naam van de VDH bijvoorbeeld is `TestRGVM2.vhd` , zou de resulterende SAS-URI er als volgt uitziet:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -77,7 +74,7 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
     az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
-3. Bewerk het bestand om de volgende parameter waarden te gebruiken. Geef datums op in UTC-datum notatie, `2020-04-01T00:00:00Z`zoals.
+3. Bewerk het bestand om de volgende parameter waarden te gebruiken. Geef datums op in UTC-datum notatie, zoals `2020-04-01T00:00:00Z` .
 
     * `<account-name>`: Uw Azure Storage-account naam
     * `<account-key>`: Uw Azure Storage-account sleutel
@@ -109,7 +106,7 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
     `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`
 
-    Als de naam van de VHD bijvoorbeeld is `TestRGVM2.vhd`, wordt de SAS-URI:
+    Als de naam van de VHD bijvoorbeeld is `TestRGVM2.vhd` , wordt de SAS-URI:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -121,7 +118,7 @@ Controleer elke gegenereerde SAS-URI door de volgende controle lijst te gebruike
 
 * De URI ziet er als volgt uit:`<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 * De URI bevat de bestands naam van de VHD-installatie kopie, inclusief de bestands extensie. VHD.
-* `sp=rl`wordt weer gegeven in de buurt van de URI. Deze teken reeks geeft `Read` aan `List` dat en de toegang is opgegeven.
+* `sp=rl`wordt weer gegeven in de buurt van de URI. Deze teken reeks geeft aan dat `Read` en de `List` toegang is opgegeven.
 * Wanneer `sr=c` wordt weer gegeven, betekent dit dat toegang op container niveau is opgegeven.
 * Kopieer en plak de URI in een browser om de BLOB te testen (u kunt de bewerking annuleren voordat de down load is voltooid).
 

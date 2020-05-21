@@ -1,32 +1,24 @@
 ---
-title: Micro soft Commercial Marketplace-schema
-description: In dit voor schema worden nieuwe en aanstaande functies en andere releases voor de commerciële Marketplace gemarkeerd
+title: Micro soft-release bronnen voor commerciële Marketplace
+description: Meer informatie over nieuwe en aanstaande functies, releases en andere updates voor de commerciële Marketplace
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/02/2019
-ms.openlocfilehash: 847d4f95d7e8bacb721c450f7e831c0c2d98334c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/19/2020
+ms.openlocfilehash: d8f836af35c433bd078b721b6829097e6ee8482b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657834"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725887"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Micro soft Commercial Marketplace-schema
+# <a name="microsoft-commercial-marketplace-resources"></a>Micro soft-resources voor commerciële Marketplace
 
-In dit artikel vindt u een overzicht van de recente releases en wat er nieuw is voor micro soft Commercial Marketplace voor uitgevers, verkopers en klanten. Er worden enkele van de functies vastgelegd en er wordt een ruwe periode voor weer geven wanneer u deze kunt verwachten. Het is geen uitgebreide lijst met alle nieuwe functies, maar is bedoeld om inzicht te krijgen in onze belangrijkste investeringen. Deze functie sets en leverings tijdstippen zijn actueel en zijn onderhevig aan wijzigingen.
+Raadpleeg de volgende bronnen voor informatie over recente releases en andere updates over micro soft Commercial Marketplace.
 
-We stellen uw suggesties voor. Meld u aan bij de [micro soft partner-community](https://www.microsoftpartnercommunity.com/) om de nieuwste updates te verkrijgen over nieuwe mogelijkheden, Program ma's en gebeurtenissen.
-
-## <a name="roadmap"></a>Roadmap
-![Marketplace-route kaart voor november 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
-
-## <a name="recent-releases"></a>Recente releases
-
-Zodra een capaciteit actief is, wordt deze verwijderd uit het schema. De functionaliteit die is toegevoegd aan de Marketplace, vindt u in de volgende documentatie.
-
+* [Microsoft AppSource en Azure Marketplace-forum partner community](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
 * [Update blog voor Marketplace en Cloud Solution Provider (CSP)](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
 * [Aanbiedingen publiceren in CSP-kanaal (ISV)](./cloud-solution-providers.md)
 * [Marketplace-aanbiedingen (CSP) verkopen](https://docs.microsoft.com/partner-center/sell-marketplace-products)
@@ -41,6 +33,4 @@ Zodra een capaciteit actief is, wordt deze verwijderd uit het schema. De functio
 )  /  [Update bestaande aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)-aanbod  /  [analyse](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
 * [Ontvang ondersteuning voor Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>Volgende stappen
-
-Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .
+We stellen uw suggesties voor. Meld u aan bij de [micro soft partner-community](https://www.microsoftpartnercommunity.com/) om de nieuwste updates te verkrijgen over nieuwe mogelijkheden, Program ma's en gebeurtenissen.

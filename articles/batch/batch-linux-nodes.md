@@ -1,15 +1,15 @@
 ---
-title: Linux uitvoeren op reken knooppunten van de virtuele machine-Azure Batch | Microsoft Docs
+title: Linux uitvoeren op reken knooppunten van virtuele machine
 description: Meer informatie over het verwerken van uw parallelle Compute-werk belastingen op Pools met virtuele Linux-machines in Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31e7a9558590ee3c6943e7a50c67c93f713908c7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cd8a39556fb0aec0ddbf6c8e639281d7329228a4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993830"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726601"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -33,9 +33,9 @@ De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtu
 
 Wanneer u een verwijzing naar een installatie kopie van een virtuele machine configureert, geeft u de eigenschappen van de installatie kopie van de virtuele machine op. De volgende eigenschappen zijn vereist wanneer u een verwijzing naar een installatie kopie van een virtuele machine maakt:
 
-| **Eigenschappen van afbeeldings verwijzing** | **Hierbij** |
+| **Eigenschappen van afbeeldings verwijzing** | **Voorbeeld** |
 | --- | --- |
-| Uitgever |Canonical |
+| Publisher |Canonical |
 | Aanbieding |UbuntuServer |
 | SKU |18,04-LTS |
 | Versie |meest recente |

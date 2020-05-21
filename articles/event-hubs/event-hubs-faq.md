@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086365"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726244"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -85,7 +85,7 @@ Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naa
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is `Non-authoritative answer`geretourneerd in. Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
 
 Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
@@ -150,9 +150,11 @@ Mogelijk wilt u beginnen met een lage doorvoer eenheid (TUs), bijvoorbeeld 2 TUs
 Er zijn **geen kosten** verbonden aan deze functie. 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Hoe worden doorvoer limieten afgedwongen?
-Als de totale ingangs doorvoer of het totale aantal ingangs gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden afzenders beperkt en ontvangen ze fouten die aangeven dat het ingangs quotum is overschreden.
+Als de totale **ingangs** doorvoer of het totale aantal ingangs gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden afzenders beperkt en ontvangen ze fouten die aangeven dat het ingangs quotum is overschreden.
 
-Als de totale uitgangs doorvoer of het totale percentage voor het oplopen van gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden ontvangers beperkt en ontvangen fouten die aangeven dat het uitgangs quotum is overschreden. Ingangs-en uitgangs quota worden afzonderlijk afgedwongen, zodat de afzender geen gebeurtenis verbruik kan veroorzaken om te vertragen, en kan een ontvanger voor komen dat gebeurtenissen worden verzonden naar een Event Hub.
+Als de totale **uitgangs** doorvoer of het totale percentage voor het oplopen van gebeurtenissen voor alle Event hubs in een naam ruimte de cumulatieve doorvoer eenheid overschrijdt, worden de ontvangers beperkt, maar worden er geen beperkings fouten gegenereerd. 
+
+Ingangs-en uitgangs quota worden afzonderlijk afgedwongen, zodat de afzender geen gebeurtenis verbruik kan veroorzaken om te vertragen, en kan een ontvanger voor komen dat gebeurtenissen worden verzonden naar een Event Hub.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Is er een limiet voor het aantal doorvoer eenheden (TUs) dat kan worden gereserveerd of geselecteerd?
 Bij een multi tenant-aanbieding kunnen doorvoer eenheden Maxi maal 40 TUs (u kunt Maxi maal 20 TUs selecteren in de portal en een ondersteunings ticket verhogen om dit te doen tot 40 TUs op dezelfde naam ruimte). Meer dan 40 TUs biedt Event Hubs het model op basis van resource/capaciteit dat de **Event hubs dedicated clusters**wordt genoemd. Toegewezen clusters worden verkocht in capaciteits eenheden (CUs).
@@ -236,7 +238,7 @@ Zie [quota's](event-hubs-quotas.md)voor een lijst met alle Event hubs quota's.
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
-Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists`. 
+Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Wat zijn de uitzonde ringen die door Event Hubs worden gegenereerd en de voorgestelde acties?
 

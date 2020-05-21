@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06c28c2e0df7333d0c2d6f735ae0758bcd93191a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 798da0261dbb692d411f1bb568a272a6bb7dbb03
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685387"
+ms.locfileid: "83715661"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Referenties beheren in Azure Automation
 
@@ -138,7 +138,7 @@ U kunt een activiteit voor de interne `Get-AutomationPSCredential` cmdlet toevoe
 
 ![Referentie toevoegen aan canvas](../media/credentials/credential-add-canvas.png)
 
-In de volgende afbeelding ziet u een voor beeld van het gebruik van een referentie in een grafisch runbook. In dit geval biedt de referentie verificatie voor een runbook aan Azure-resources, zoals beschreven in [Azure AD gebruiken in azure Automation om te verifiëren bij Azure](../automation-use-azure-ad.md). Met de eerste activiteit wordt de referentie opgehaald die toegang heeft tot het Azure-abonnement. De activiteit account verbinding gebruikt vervolgens deze referentie om verificatie uit te voeren voor alle activiteiten die zich daarna voordoen. Er wordt hier een [pijplijn koppeling](../automation-graphical-authoring-intro.md#links-and-workflow) gebruikt omdat deze `Get-AutomationPSCredential` een enkel object verwacht.  
+In de volgende afbeelding ziet u een voor beeld van het gebruik van een referentie in een grafisch runbook. In dit geval biedt de referentie verificatie voor een runbook aan Azure-resources, zoals beschreven in [Azure AD gebruiken in azure Automation om te verifiëren bij Azure](../automation-use-azure-ad.md). Met de eerste activiteit wordt de referentie opgehaald die toegang heeft tot het Azure-abonnement. De activiteit account verbinding gebruikt vervolgens deze referentie om verificatie uit te voeren voor alle activiteiten die zich daarna voordoen. Er wordt hier een [pijplijn koppeling](../automation-graphical-authoring-intro.md#use-links-for-workflow) gebruikt omdat deze `Get-AutomationPSCredential` een enkel object verwacht.  
 
 ![Referentie toevoegen aan canvas](../media/credentials/get-credential.png)
 
@@ -163,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [modules beheren in azure Automation](modules.md)voor meer informatie over de cmdlets die worden gebruikt voor toegang tot referenties.
-* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
-* Zie [status configuratie-overzicht](../automation-dsc-overview.md)voor meer informatie over DSC-configuraties.
+* [Modules beheren in Azure Automation](modules.md)
+* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
+* [Overzicht van Azure Automation status configuratie](../automation-dsc-overview.md) 

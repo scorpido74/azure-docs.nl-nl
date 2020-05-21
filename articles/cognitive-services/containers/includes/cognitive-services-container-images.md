@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590657"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721402"
 ---
 ### <a name="container-repositories-and-images"></a>Container opslagplaatsen en installatie kopieën
 
@@ -31,7 +31,7 @@ De micro soft Container Registry (MCR) syndicateert alle algemeen beschik bare c
 
 Zie [Luis-containers uitvoeren en installeren](../../LUIS/luis-container-howto.md) voor meer informatie.
 
-#### <a name="text-analytics"></a>[Text Analytics](#tab/text-analytics)
+#### <a name="text-analytics"></a>[Tekstanalyse](#tab/text-analytics)
 
 | Text Analytics-container | Container Registry/opslagplaats/naam van installatie kopie |
 |--|--|
@@ -56,13 +56,13 @@ De volgende preview-containers zijn openbaar beschikbaar. Micro soft Container R
 
 | Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |--|--|--|
-| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Sleuteltermextractie | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/language` |
+| [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Sleuteltermextractie | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
+| [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Anomalie detectie](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Open bare preview-versie van ' gated ' (container Registry: `containerpreview.azurecr.io` )
 
-De volgende containers voor geteste preview worden gehost in het container voorbeeld register en vereisen een toepassing voor toegang. Zie [Cognitive Services beperking-proces](../../cognitive-services-gating-process.md) voor meer informatie.
+De volgende containers voor geteste preview worden gehost in het container voorbeeld register en vereisen een toepassing voor toegang. Raadpleeg de volgende container artikelen voor meer informatie.
 
 | Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |--|--|--|

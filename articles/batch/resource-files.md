@@ -2,13 +2,13 @@
 title: Bron bestanden maken en gebruiken
 description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
 ms.date: 03/18/2020
-ms.topic: article
-ms.openlocfilehash: c9a2e581d0cada467e89e3da731fac7f78b22992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117179"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723456"
 ---
 # <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
 
@@ -48,9 +48,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl BLOB-toegang u alleen toestemming `Read` nodig heeft.
+> Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl BLOB-toegang u alleen toestemming nodig heeft `Read` .
 
-Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met de opgemaakte SAS-URL voor de opslag container een [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)bron bestand met.
+Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met de opgemaakte SAS-URL voor de opslag container een bron bestand met [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);

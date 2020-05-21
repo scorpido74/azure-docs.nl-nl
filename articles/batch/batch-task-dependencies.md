@@ -1,15 +1,15 @@
 ---
-title: Taak afhankelijkheden maken om taken uit te voeren-Azure Batch
+title: Taak afhankelijkheden maken om taken uit te voeren
 description: Maak taken die afhankelijk zijn van de voltooiing van andere taken voor het verwerken van MapReduce stijl en soort gelijke big data werk belastingen in Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42cf24758c64f107723ae0907db08bd4b757a15a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116482"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726380"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Taak afhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken
 
@@ -30,7 +30,7 @@ U kunt taken maken die afhankelijk zijn van andere taken in een een-op-een-of ee
 In dit artikel wordt beschreven hoe taak afhankelijkheden worden geconfigureerd met behulp van de [batch .net][net_msdn] -bibliotheek. We laten u eerst zien hoe u de [taak afhankelijkheid kunt inschakelen](#enable-task-dependencies) voor uw taken en hoe u [een taak configureert met afhankelijkheden](#create-dependent-tasks). Daarnaast wordt beschreven hoe u een afhankelijkheids actie opgeeft voor het uitvoeren van afhankelijke taken als het bovenliggende item mislukt. Ten slotte bespreken we de [afhankelijkheids scenario's](#dependency-scenarios) die door batch worden ondersteund.
 
 ## <a name="enable-task-dependencies"></a>Taak afhankelijkheden inschakelen
-Als u taak afhankelijkheden in uw batch-toepassing wilt gebruiken, moet u eerst de taak configureren voor het gebruik van taak afhankelijkheden. Schakel in batch .NET het in op uw [eigenschap cloudjob][net_cloudjob] door de eigenschap [UsesTaskDependencies][net_usestaskdependencies] in te `true`stellen op:
+Als u taak afhankelijkheden in uw batch-toepassing wilt gebruiken, moet u eerst de taak configureren voor het gebruik van taak afhankelijkheden. Schakel in batch .NET het in op uw [eigenschap cloudjob][net_cloudjob] door de eigenschap [UsesTaskDependencies][net_usestaskdependencies] in te stellen op `true` :
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -57,7 +57,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Met dit code fragment maakt u een afhankelijke taak met taak-ID "bloemen". De taak "bloemen" is afhankelijk van de taken "regen" en "Sun". Taak "bloemen" wordt alleen gepland om te worden uitgevoerd op een reken knooppunt nadat taken "regen" en "Sun" zijn voltooid.
 
 > [!NOTE]
-> Standaard wordt een taak als voltooid beschouwd als deze de status **voltooid** heeft en de **afsluit code** ervan `0`. In batch .NET betekent dit een [CloudTask][net_cloudtask]. [State][net_taskstate] Waarde van de eigenschap `Completed` State van en de [TaskExecutionInformation][net_taskexecutioninformation]van het CloudTask. [ExitCode][net_exitcode] De waarde van de `0`eigenschap ExitCode is. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie over hoe u dit kunt wijzigen.
+> Standaard wordt een taak als voltooid beschouwd als deze de status **voltooid** heeft en de **afsluit code** ervan `0` . In batch .NET betekent dit een [CloudTask][net_cloudtask]. Waarde van de eigenschap [State][net_taskstate] van `Completed` en de [TaskExecutionInformation][net_taskexecutioninformation]van het CloudTask.[ ][net_exitcode]De waarde van de eigenschap ExitCode is `0` . Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie over hoe u dit kunt wijzigen.
 > 
 > 
 
@@ -110,9 +110,9 @@ In een afhankelijkheid van een reeks bovenliggende taken is een taak afhankelijk
 Als u de afhankelijkheid wilt maken, geeft u de eerste en laatste taak-Id's op in het bereik tot de [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] static-methode wanneer u de eigenschap [DependsOn][net_dependson] van [CloudTask][net_cloudtask]invult.
 
 > [!IMPORTANT]
-> Wanneer u taak-ID-bereiken voor uw afhankelijkheden gebruikt, worden alleen de taken met Id's die gehele waarden vertegenwoordigen, geselecteerd door het bereik. Daarom worden in `1..10` het bereik taken `3` en `7`, maar niet `5flamingoes`geselecteerd. 
+> Wanneer u taak-ID-bereiken voor uw afhankelijkheden gebruikt, worden alleen de taken met Id's die gehele waarden vertegenwoordigen, geselecteerd door het bereik. Daarom worden in het bereik `1..10` taken `3` en `7` , maar niet geselecteerd `5flamingoes` . 
 > 
-> Voorloop nullen zijn niet significant bij het evalueren van de bereik afhankelijkheden, dus taken `4`met `04` teken `004` reeks-id's, en zijn allemaal *binnen* het bereik en ze worden allemaal `4`beschouwd als taak, zodat de eerste die moet worden voltooid, aan de afhankelijkheid wordt voldaan.
+> Voorloop nullen zijn niet significant bij het evalueren van de bereik afhankelijkheden, dus taken met teken reeks `4` -id's, `04` en `004` zijn allemaal *binnen* het bereik en ze worden allemaal beschouwd als taak `4` , zodat de eerste die moet worden voltooid, aan de afhankelijkheid wordt voldaan.
 > 
 > Elke taak in het bereik moet voldoen aan de afhankelijkheid, hetzij door het volt ooien of door het volt ooien van een fout die is toegewezen aan een afhankelijkheids actie ingesteld op **voldaan**. Zie de sectie [afhankelijkheids acties](#dependency-actions) voor meer informatie.
 >
