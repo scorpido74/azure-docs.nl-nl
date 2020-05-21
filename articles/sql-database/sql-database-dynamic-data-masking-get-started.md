@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9ebbd773d56a54114f4bbb9b0db7ffddd2fbf893
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121249"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727026"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische gegevens maskering voor Azure SQL Database en Azure Synapse Analytics
 
@@ -74,7 +74,7 @@ De DDM-engine voor aanbevelingen, markeert bepaalde velden uit uw data base als 
 
 U kunt de REST API gebruiken om beleid en regels voor gegevens maskering programmatisch te beheren. De gepubliceerde REST API ondersteunt de volgende bewerkingen:
 
-### <a name="data-masking-policies"></a>Beleid voor gegevensmaskering
+### <a name="data-masking-policy"></a>Beleid voor gegevens maskering
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): Hiermee wordt het gevoeligheids label van de opgegeven kolom gemaakt of bijgewerkt.
 - [Ophalen](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Hiermee wordt een beleid voor database gegevens maskering opgehaald. 

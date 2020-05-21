@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.author: aschhab
-ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116686"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726992"
 ---
 # <a name="message-sessions"></a>Berichtsessies
-Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende verwerking van niet-gebonden reeksen van gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in de eerste in, first out (FIFO) en aanvraag/antwoord-patronen. In dit artikel wordt beschreven hoe u met behulp van sessies deze patronen kunt implementeren wanneer u Service Bus gebruikt. 
-
-## <a name="first-in-first-out-fifo-pattern"></a>FIFO-patroon (First-in, first out)
-Gebruik sessies om een FIFO-garantie in Service Bus te realiseren. Service Bus is niet een voor Schrift over de aard van de relatie tussen de berichten en definieert ook niet een bepaald model om te bepalen waar een bericht reeks begint of eindigt.
+Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende verwerking van niet-gebonden reeksen van gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in de **eerste in, first out (FIFO)** en **aanvraag/antwoord-** patronen. In dit artikel wordt beschreven hoe u met behulp van sessies deze patronen kunt implementeren wanneer u Service Bus gebruikt. 
 
 > [!NOTE]
 > De laag basis van Service Bus biedt geen ondersteuning voor sessies. De Standard-en Premium-lagen ondersteunen sessies. Zie [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/)voor verschillen tussen deze lagen.
+
+## <a name="first-in-first-out-fifo-pattern"></a>FIFO-patroon (First-in, first out)
+Gebruik sessies om een FIFO-garantie in Service Bus te realiseren. Service Bus is niet een voor Schrift over de aard van de relatie tussen de berichten en definieert ook niet een bepaald model om te bepalen waar een bericht reeks begint of eindigt.
 
 Elke afzender kan een sessie maken bij het indienen van berichten in een onderwerp of wachtrij door de eigenschap [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) in te stellen op een door de toepassing gedefinieerde id die uniek is voor de sessie. Op het AMQP 1,0-protocol niveau wordt deze waarde toegewezen aan de eigenschap *Group-ID* .
 
@@ -95,10 +95,10 @@ De definitie van het aantal leveringen per bericht in de context van sessies ver
 ## <a name="request-response-pattern"></a>Aanvraag-antwoord patroon
 Het [patroon aanvraag/antwoord](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) is een goed opgezet integratie patroon waarmee de toepassing Sender een aanvraag kan verzenden en biedt de ontvanger een manier om een antwoord te verzenden naar de toepassing van de afzender. Voor dit patroon is doorgaans een wachtrij of onderwerp vereist voor het verzenden van antwoorden naar de toepassing. In dit scenario bieden sessies een eenvoudige alternatieve oplossing met vergelijk bare semantiek. 
 
-Meerdere toepassingen kunnen hun aanvragen verzenden naar één aanvraag wachtrij, waarbij een specifieke header parameter is ingesteld op unieke identificatie van de afzender toepassing. De receiver-toepassing kan de aanvragen die afkomstig zijn in de wachtrij verwerken en antwoorden verzenden voor een wachtrij met sessies, waarbij de sessie-ID wordt ingesteld op de unieke id die de afzender heeft verzonden op het aanvraag bericht. De toepassing die de aanvraag heeft verzonden, kan vervolgens berichten ontvangen over een specifieke sessie-ID en de antwoorden op de juiste manier verwerken.
+Meerdere toepassingen kunnen hun aanvragen verzenden naar één aanvraag wachtrij, waarbij een specifieke header parameter is ingesteld op unieke identificatie van de afzender toepassing. De ontvanger van de toepassing kan de aanvragen verwerken die in de wachtrij binnenkomen en reacties verzenden op de wachtrij met ingeschakelde sessies, waarbij de sessie-ID wordt ingesteld op de unieke id die de afzender heeft verzonden op het aanvraag bericht. De toepassing die de aanvraag heeft verzonden, kan vervolgens berichten ontvangen over de specifieke sessie-ID en de antwoorden op de juiste manier verwerken.
 
 > [!NOTE]
-> De toepassing die de eerste aanvragen verzendt, moet weten over de sessie-ID `SessionClient.AcceptMessageSession(SessionID)` en gebruiken om de sessie te vergren delen waarop het antwoord wordt verwacht. Het is een goed idee om een GUID te gebruiken die het exemplaar van de toepassing uniek identificeert als een sessie-id. Er mag geen sessie-handler of `AcceptMessageSession(timeout)` in de wachtrij staan om ervoor te zorgen dat antwoorden beschikbaar zijn om te worden vergrendeld en verwerkt door specifieke ontvangers.
+> De toepassing die de eerste aanvragen verzendt, moet weten over de sessie-ID en gebruiken `SessionClient.AcceptMessageSession(SessionID)` om de sessie te vergren delen waarop het antwoord wordt verwacht. Het is een goed idee om een GUID te gebruiken die het exemplaar van de toepassing uniek identificeert als een sessie-id. Er mag geen sessie-handler of `AcceptMessageSession(timeout)` in de wachtrij staan om ervoor te zorgen dat antwoorden beschikbaar zijn om te worden vergrendeld en verwerkt door specifieke ontvangers.
 
 ## <a name="next-steps"></a>Volgende stappen
 

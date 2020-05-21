@@ -1,20 +1,20 @@
 ---
 title: Voor beeld van proximity placement groups voor schaal sets voor virtuele machines
 description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor schaal sets voor virtuele Windows-machines in Azure.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 07/01/2019
-ms.reviewer: mimckitt
+ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124343"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727094"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Voor beeld: proximity-plaatsings groepen maken en gebruiken met Power shell
 

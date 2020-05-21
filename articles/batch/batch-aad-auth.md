@@ -1,15 +1,15 @@
 ---
 title: Azure Batch Services verifiëren met Azure Active Directory
 description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service. Lees hoe u zich op een van de volgende twee manieren kunt verifiëren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3ed3db184174d0a383c5c1fbd85e69d9fef0da44
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608469"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726907"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -39,7 +39,7 @@ Voor verificatie met Azure AD gebruikt u dit eind punt samen met de Tenant-ID (D
 > [!NOTE]
 > Het Tenant-specifieke eind punt is vereist wanneer u verifieert met behulp van een service-principal.
 >
-> Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het algemene eind punt `https://login.microsoftonline.com/common`is.
+> Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het algemene eind punt is `https://login.microsoftonline.com/common` .
 >
 >
 

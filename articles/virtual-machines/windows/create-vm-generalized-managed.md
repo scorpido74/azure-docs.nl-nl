@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086314"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726958"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Een VM maken op basis van een beheerde installatiekopie
 
@@ -20,6 +20,7 @@ U kunt meerdere virtuele machines (Vm's) maken op basis van een door Azure behee
 
 Voordat u een nieuwe virtuele machine maakt, moet u [een beheerde VM-installatie kopie maken](capture-image-resource.md) om te gebruiken als bron installatie kopie en lees toegang verlenen aan de installatie kopie voor alle gebruikers die toegang tot de installatie kopie moeten hebben. 
 
+Eén beheerde installatie kopie ondersteunt Maxi maal 20 gelijktijdige implementaties. Als u probeert om meer dan 20 Vm's gelijktijdig te maken, vanuit dezelfde beheerde installatie kopie, kan dit leiden tot het inrichten van time-outs als gevolg van de opslag prestatie beperkingen van één VHD. Als u meer dan 20 Vm's gelijktijdig wilt maken, gebruikt u een afbeelding voor [gedeelde afbeeldings galerieën](shared-image-galleries.md) die is geconfigureerd met 1 replica voor elke 20 gelijktijdige VM-implementaties.
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 

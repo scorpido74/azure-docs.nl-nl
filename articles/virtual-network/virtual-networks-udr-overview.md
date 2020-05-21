@@ -4,24 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Lees hier hoe Azure verkeer in virtuele netwerken routeert en hoe u de routering van Azure kunt aanpassen.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 manager: ''
-editor: v-miegge
-tags: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop
-ms.reviewer: kumud
-ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: aldomel
+ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477877"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727114"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routering van verkeer in virtuele netwerken
 
@@ -60,8 +57,8 @@ Azure voegt aanvullende standaardsysteemroutes toe voor verschillende mogelijkhe
 
 |Bron                 |Adresvoorvoegsels                       |Volgend hoptype|Subnet binnen het virtuele netwerk waarnaar een route wordt toegevoegd|
 |-----                  |----                                   |---------                    |--------|
-|Standaard                |Uniek is voor het virtuele netwerk, bijvoorbeeld: 10.1.0.0/16|VNet-peering                 |Alle|
-|Gateway van een virtueel netwerk|Voorvoegsels geadverteerd van on-premises via BGP of geconfigureerd in de lokale netwerkgateway     |Gateway van een virtueel netwerk      |Alle|
+|Standaard                |Uniek is voor het virtuele netwerk, bijvoorbeeld: 10.1.0.0/16|VNet-peering                 |Alles|
+|Gateway van een virtueel netwerk|Voorvoegsels geadverteerd van on-premises via BGP of geconfigureerd in de lokale netwerkgateway     |Gateway van een virtueel netwerk      |Alles|
 |Standaard                |Meerdere                               |VirtualNetworkServiceEndpoint|Alleen het subnet waarvoor een service-eindpunt is ingeschakeld.|
 
 * **VNet-peering**: wanneer u een VNet-peering maakt tussen twee virtuele netwerken, wordt er een route toegevoegd voor elk adresbereik in de adresruimte van elk virtueel netwerk waarvoor een peering wordt gemaakt. Meer informatie over [peering van virtuele netwerken](virtual-network-peering-overview.md).<br>
@@ -170,7 +167,7 @@ Wanneer u het adresvoorvoegsel 0.0.0.0/0 overschrijft, wordt de standaardrouteri
 
 Als uw virtuele netwerk is verbonden met een Azure VPN-gateway, koppelt u geen routetabel aan het [gatewaysubnet](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) met een route die als bestemming heeft: 0.0.0.0/0. Als u dit wel doet, functioneert de gateway mogelijk niet juist. Zie de vraag *Waarom zijn bepaalde poorten geopend op mijn VPN-gateway?* in de [Veelgestelde vragen over VPN Gateways](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports) voor meer informatie.
 
-Zie [DMZ tussen Azure en uw on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) en [DMZ tussen Azure en internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) voor uitgebreide informatie over de implementatie bij gebruik van virtuele netwerkgateways en virtuele apparaten tussen internet en Azure.
+Bekijk [DMZ tussen Azure en uw on-premises Data Center](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) voor implementatie details bij gebruik van virtuele netwerk gateways tussen internet en Azure.
 
 ## <a name="routing-example"></a>Voorbeeld van routering
 
@@ -210,7 +207,7 @@ De pijlen geven de richting van het verkeer aan.
 
 De routetabel voor *Subnet1* in de afbeelding bevat de volgende routes:
 
-|Id  |Bron |Status  |Adresvoorvoegsels    |Volgend hoptype          |IP-adres van volgende hop|Naam van door gebruiker gedefinieerde route| 
+|Id  |Bron |Staat  |Adresvoorvoegsels    |Volgend hoptype          |IP-adres van volgende hop|Naam van door gebruiker gedefinieerde route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standaard|Ongeldig|10.0.0.0/16         |Virtueel netwerk        |                   |              |
 |2   |Gebruiker   |Actief |10.0.0.0/16         |Virtueel apparaat      |10.0.100.4         |Within-VNet1  |
@@ -244,7 +241,7 @@ Hier volgt een uitleg van elke route-id:
 
 De routetabel voor *Subnet2* in de afbeelding bevat de volgende routes:
 
-|Bron  |Status  |Adresvoorvoegsels    |Volgend hoptype             |IP-adres van volgende hop|
+|Bron  |Staat  |Adresvoorvoegsels    |Volgend hoptype             |IP-adres van volgende hop|
 |------- |-------|------              |-------                   |--------           
 |Standaard |Actief |10.0.0.0/16         |Virtueel netwerk           |                   |
 |Standaard |Actief |10.1.0.0/16         |VNet-peering              |                   |
