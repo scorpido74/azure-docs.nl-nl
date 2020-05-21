@@ -2,13 +2,13 @@
 title: 'Snelstartgids: een nieuwe app maken in de LUIS-Portal'
 description: In deze Quick Start maakt u de basis onderdelen van een app, intenties en entiteiten, evenals de test met voorbeeld utterance in de LUIS-Portal.
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585195"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697250"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
 
@@ -137,7 +137,7 @@ De voor beeld-uitingen van **geen** intentie moet zich buiten uw client toepassi
 
 1. Controleer of de entiteit is gevonden in de **FindForm** -intentie door **intenties** te selecteren in het menu links. Selecteer vervolgens **FindForm** intentie.
 
-   De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen. Als u de oorspronkelijke tekst wilt zien in plaats van de naam van de entiteit, schakelt u in de werk balk **weer gave entiteiten** in.
+   De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen.
 
    > [!div class="mx-imgBorder"]
    > [![Scherm afbeelding van alle voor beelden uitingen dat is gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

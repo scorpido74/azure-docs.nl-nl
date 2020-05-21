@@ -1,6 +1,6 @@
 ---
-title: Het bewerken van tekst runbooks in Azure Automation
-description: In dit artikel worden verschillende procedures beschreven voor het werken met Power shell-en Power shell-werk stroom-runbooks in Azure Automation met behulp van de tekst editor.
+title: De tekst runbooks in Azure Automation bewerken
+description: In dit artikel leest u hoe u de Azure Automation tekstuele editor gebruikt om met Power shell-en Power shell-werk stroom runbooks te werken.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2b30b807764159378c594f82ae6cfc55cfa4f7e4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855788"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712907"
 ---
-# <a name="editing-textual-runbooks-in-azure-automation"></a>Het bewerken van tekst runbooks in Azure Automation
+# <a name="edit-textual-runbooks-in-azure-automation"></a>De tekst runbooks in Azure Automation bewerken
 
-De tekst editor in Azure Automation kan worden gebruikt voor het bewerken van [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks) en [Power shell workflow-runbooks](automation-runbook-types.md#powershell-workflow-runbooks). Deze editor bevat de typische functies van andere code-editors, zoals IntelliSense. Het bevat ook kleur codering met extra speciale functies om u te helpen bij het openen van resources die gemeen schappelijk zijn voor runbooks. 
+U kunt de tekst editor in Azure Automation gebruiken om [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks) en [Power shell workflow-runbooks](automation-runbook-types.md#powershell-workflow-runbooks)te bewerken. Deze editor bevat de typische functies van andere code-editors, zoals IntelliSense. Daarnaast wordt kleur codering gebruikt met extra speciale functies om u te helpen bij het openen van resources die gemeen schappelijk zijn voor runbooks. 
 
 De tekst editor bevat een functie voor het invoegen van code voor cmdlets, assets en onderliggende runbooks in een runbook. In plaats van de code zelf zelf te typen, kunt u een keuze uit een lijst met beschik bare resources selecteren. in de editor wordt de juiste code in het runbook ingevoegd.
 
@@ -26,12 +26,7 @@ Elk runbook in Azure Automation heeft twee versies: concept en gepubliceerd. U b
 
 In dit artikel vindt u gedetailleerde stappen voor het uitvoeren van verschillende functies met deze editor. Deze zijn niet van toepassing op [grafische runbooks](automation-runbook-types.md#graphical-runbooks). Als u met deze runbooks wilt werken, raadpleegt u [grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md).
 
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
-
-## <a name="editing-a-runbook-with-the-azure-portal"></a>Een runbook bewerken met de Azure Portal
-
-Gebruik de volgende procedure om een runbook te openen dat u wilt bewerken in de tekst editor.
+## <a name="edit-a-runbook-with-the-azure-portal"></a>Een runbook bewerken met de Azure Portal
 
 1. Selecteer uw Automation-account in het Azure Portal.
 2. Selecteer **runbooks** onder **proces automatisering**om de lijst met Runbooks te openen.
@@ -65,7 +60,7 @@ Gebruik de volgende procedure om een runbook te openen dat u wilt bewerken in de
 4. Klik met de rechter muisknop op de naam van de Asset die u wilt invoegen en selecteer **toevoegen aan canvas**. Voor [variabele assets](automation-variables.md)selecteert u **' variabele ophalen ' toevoegen aan canvas** of **' variabele instellen ' toevoegen aan canvas**, afhankelijk van of u de variabele wilt ophalen of instellen.
 5. Houd er rekening mee dat de code voor de Asset wordt ingevoegd in het runbook.
 
-## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Een Azure Automation runbook bewerken met Windows Power shell
+## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Een Azure Automation runbook bewerken met behulp van Windows Power shell
 
 Als u een runbook wilt bewerken met Windows Power shell, gebruikt u de editor van uw keuze en slaat u het runbook op in een **. ps1** -bestand. U kunt de cmdlet [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) gebruiken om de inhoud van het runbook op te halen. U kunt de cmdlet [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) gebruiken om het bestaande concept runbook te vervangen door de gewijzigde.
 

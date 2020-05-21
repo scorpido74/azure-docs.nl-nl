@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886990"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714743"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteitsplanning voor HDInsight-clusters
 
@@ -84,48 +84,14 @@ Er worden kosten in rekening gebracht voor de levens duur van een cluster. Als e
 
 > [!NOTE]  
 > Wanneer een cluster wordt verwijderd, wordt de standaard Hive-metastore ook verwijderd. Als u de meta Store voor het opnieuw maken van het volgende cluster wilt behouden, gebruikt u een externe metagegevensarchiefmethode, zoals Azure data base of [Apache Oozie](https://oozie.apache.org/).
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Cluster taak fouten isoleren
 
-Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere kaarten en het verminderen van de onderdelen op een cluster met meerdere knoop punten. Probeer gedistribueerde tests om het probleem te isoleren. Voer gelijktijdige meerdere taken uit op een knoop punt cluster met één werk nemer. Vouw vervolgens deze benadering uit om meerdere taken gelijktijdig uit te voeren op clusters met meer dan één knoop punt. Als u een HDInsight-cluster met één knoop punt in azure wilt *`Custom(size, settings, apps)`* maken, gebruikt u de optie en gebruikt u een waarde van 1 voor het *aantal worker-knoop punten* in de sectie **cluster grootte** bij het inrichten van een nieuw cluster in de portal.
+Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere kaarten en het verminderen van de onderdelen op een cluster met meerdere knoop punten. Probeer gedistribueerde tests om het probleem te isoleren. Voer gelijktijdige meerdere taken uit op een knoop punt cluster met één werk nemer. Vouw vervolgens deze benadering uit om meerdere taken gelijktijdig uit te voeren op clusters met meer dan één knoop punt. Als u een HDInsight-cluster met één knoop punt in azure wilt maken, gebruikt u de *`Custom(size, settings, apps)`* optie en gebruikt u een waarde van 1 voor het *aantal worker-knoop punten* in de sectie **cluster grootte** bij het inrichten van een nieuw cluster in de portal.
 
 ## <a name="quotas"></a>Quota
 
-Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, controleert u de huidige limieten voor quotum capaciteit van uw abonnement. Wanneer u een quotum limiet bereikt, kunt u geen nieuwe clusters implementeren. Of uitschalen van bestaande clusters door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Het is bijvoorbeeld mogelijk dat uw abonnement 30 kern limieten heeft in de regio VS-Oost.
-
-Voer de volgende stappen uit om de beschik bare kernen te controleren:
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar de **overzichts** pagina voor het HDInsight-cluster.
-3. Selecteer in het linkermenu **quotum limieten**.
-
-   Op de pagina wordt het aantal kern geheugens weer gegeven dat in gebruik is, het aantal beschik bare kernen en de totale kernen.
-
-Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
-1. Selecteer een **nieuwe ondersteunings aanvraag**.
-1. Selecteer op de pagina **nieuwe ondersteunings aanvraag** , onder tabblad **basis beginselen** , de volgende opties:
-
-   - **Probleem type**: **service-en abonnements limieten (quota's)**
-   - **Abonnement**: het abonnement dat u wilt wijzigen
-   - **Quotum type**: **HDInsight**
-
-     ![Een ondersteunings aanvraag maken om het HDInsight-kern quotum te verhogen](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. Selecteer **volgende: >>oplossingen **.
-1. Voer op de pagina **Details** een beschrijving van het probleem in, selecteer de ernst van het probleem, uw favoriete contact wijze en andere vereiste velden.
-1. Selecteer **volgende: controleren + >>maken **.
-1. Selecteer op het tabblad **controleren en maken** de optie **maken**.
-
-> [!NOTE]  
-> Als u het HDInsight core-quotum moet verhogen in een privé gebied, [dient u een white list-aanvraag](https://aka.ms/canaryintwhitelist)in.
-
-U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
-
-Er zijn enkele vaste quota limieten. Eén Azure-abonnement kan bijvoorbeeld Maxi maal 10.000 kernen hebben. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie over deze limieten.
+Zie [aanvragen van quota verhogen](quota-increase-request.md)voor meer informatie over het beheren van abonnements quota's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

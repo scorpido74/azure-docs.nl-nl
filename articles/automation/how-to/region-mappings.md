@@ -1,6 +1,6 @@
 ---
-title: Ondersteunings regio's voor gekoppelde Log Analytics-werk ruimte
-description: In dit artikel wordt uitgelegd hoe u regio toewijzingen kunt ondersteunen tussen een Automation-account en een Log Analytics-werk ruimte.
+title: Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
+description: In dit artikel worden de ondersteunde regio toewijzingen beschreven tussen een Automation-account en een Log Analytics-werk ruimte.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 229fab5550d7b03fcbba80b5f4d9433d3b31e5b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680437"
+ms.locfileid: "83714505"
 ---
-# <a name="support-regions-for-linked-log-analytics-workspace"></a>Ondersteunings regio's voor gekoppelde Log Analytics-werk ruimte
+# <a name="supported-regions-for-linked-log-analytics-workspace"></a>Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 
 In Azure Automation kunt u de functies Updatebeheer, Wijzigingen bijhouden en inventarisatie en VM's buiten bedrijfsuren starten/stoppen instellen voor uw virtuele machines. Er worden echter alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement. De regio toewijzingen zijn alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De Log Analytics-werk ruimte en het Automation-account moeten zich in hetzelfde abonnement bevinden, maar kunnen zich in verschillende resource groepen bevinden die in dezelfde regio zijn geïmplementeerd. Zie [log Analytics-werk ruimte en het Automation-account](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)voor meer informatie.
 
@@ -49,9 +49,9 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 
 ## <a name="unlink-a-workspace"></a>Een werk ruimte ontkoppelen
 
-Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst Updatebeheer, Wijzigingen bijhouden en inventarisatie [uitschakelen](move-account.md#disable-features) en VM's buiten bedrijfsuren starten/stoppen als u deze gebruikt. Als u de functies niet uitschakelt, kunt u de ontkoppelings bewerking niet volt ooien. 
+Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst Updatebeheer, Wijzigingen bijhouden en inventaris, en VM's buiten bedrijfsuren starten/stoppen [verwijderen](move-account.md#remove-features) als u deze gebruikt. Als u deze niet verwijdert, kunt u de ontkoppelings bewerking niet volt ooien. 
 
-Als de functies zijn uitgeschakeld, kunt u de onderstaande stappen volgen om het Automation-account te ontkoppelen.
+Als de functies zijn verwijderd, kunt u de onderstaande stappen volgen om het Automation-account te ontkoppelen.
 
 > [!NOTE]
 > Sommige functies, waaronder eerdere versies van de Azure SQL-bewakings oplossing, hebben mogelijk Automation-assets gemaakt die moeten worden verwijderd voordat de koppeling van de werk ruimte wordt opgeheven.
@@ -80,6 +80,6 @@ U kunt de werk ruimte ook ontkoppelen van uw Automation-account in de werk ruimt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Updatebeheer in [updatebeheer Overview](../automation-update-management.md).
-* Meer informatie over Wijzigingen bijhouden en inventaris in [Wijzigingen bijhouden en inventaris overzicht](../change-tracking.md).
-* Meer informatie over VM's buiten bedrijfsuren starten/stoppen in [VM's buiten bedrijfsuren starten/stoppen Overview](../automation-solution-vm-management.md).
+* [Overzicht van updatebeheer](../automation-update-management.md)
+* [Overzicht van Wijzigingen bijhouden en inventaris](../change-tracking.md)
+* [Overzicht van VM's buiten bedrijfsuren starten/stoppen](../automation-solution-vm-management.md)

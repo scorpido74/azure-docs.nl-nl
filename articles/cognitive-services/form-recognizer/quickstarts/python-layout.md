@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482273"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714607"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: tekst-en indelings informatie extra heren met behulp van de formulier Recognizer REST API met python
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python om tekst indelings informatie en tabel gegevens op te halen uit formulier documenten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,9 +36,9 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API analyseren op met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
-1. Vervang `<path to your form>` door het pad naar het lokale formulier document.
-1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
+1. Vervang door `<path to your form>` het pad naar het lokale formulier document.
+1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -55,7 +55,7 @@ Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https:
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -77,7 +77,7 @@ Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https:
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-layout.py`.
 
-U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks `operations/` na de bewerkings-id.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks na `operations/` de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -119,7 +119,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Met het script worden antwoorden op de console afgedrukt totdat de **analyse-lay** -outbewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het `"readResults"` knoop punt bevat elke tekst regel met de betreffende plaatsing van de selectie vakjes op de pagina. In `"pageResults"` het veld wordt elk stuk tekst in tabellen weer gegeven, elk met de rij-kolom coördinaat.
+Met het script worden antwoorden op de console afgedrukt totdat de **analyse-lay** -outbewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het `"readResults"` knoop punt bevat elke tekst regel met de betreffende plaatsing van de selectie vakjes op de pagina. `"pageResults"`In het veld wordt elk stuk tekst in tabellen weer gegeven, elk met de rij-kolom coördinaat.
 
 Bekijk de volgende factuur afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is kort voor eenvoud.
 

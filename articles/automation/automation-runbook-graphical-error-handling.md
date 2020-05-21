@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a53d0cf0127ac3b66139d40dda62b64b05155bbd
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714879"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Foutafhandeling in grafische Azure Automation-runbooks
 
@@ -60,12 +60,12 @@ Nadat u de configuratie-instelling hebt ingeschakeld, moet u in uw runbook een a
 
 In het volgende voor beeld wordt met een runbook een variabele opgehaald die de computer naam van een virtuele machine bevat. Vervolgens wordt geprobeerd de virtuele machine te starten met de volgende activiteit.<br><br> ![Voor beeld van fout afhandeling in Automation-runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-De `Get-AutomationVariable` activiteit en de cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) zijn geconfigureerd om uitzonde ringen te converteren naar fouten. Als er problemen zijn bij het ophalen van de variabele of het starten van de virtuele machine, genereert de code fouten.<br><br> ![Instellingen](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)voor het verwerken van fouten in Automation-runbook-activiteit.
+De `Get-AutomationVariable` activiteit en de cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) zijn geconfigureerd om uitzonde ringen te converteren naar fouten. Als er problemen zijn bij het ophalen van de variabele of het starten van de virtuele machine, genereert de code fouten.<br><br> ![Instellingen voor het verwerken van fouten in Automation-runbook-activiteit ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png) .
 
-Fout koppelingen stromen van deze activiteiten naar een enkele `error management` code activiteit. Deze activiteit is geconfigureerd met een eenvoudige Power shell-expressie die `throw` het sleutel woord gebruikt om de verwerking `$Error.Exception.Message` te stoppen, en om het bericht op te halen waarin de huidige uitzonde ring wordt beschreven.<br><br> ![Code voorbeeld voor fout afhandeling voor Automation-runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Fout koppelingen stromen van deze activiteiten naar een enkele `error management` code activiteit. Deze activiteit is geconfigureerd met een eenvoudige Power shell-expressie die het `throw` sleutel woord gebruikt om de verwerking te stoppen, en `$Error.Exception.Message` om het bericht op te halen waarin de huidige uitzonde ring wordt beschreven.<br><br> ![Code voorbeeld voor fout afhandeling voor Automation-runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Grafisch ontwerpen in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow) voor meer informatie over koppelingen en koppelingstypen in grafische runbooks.
+* Zie voor meer informatie over koppelingen en koppelings typen in grafische runbooks [koppelingen gebruiken voor werk stroom](automation-graphical-authoring-intro.md#use-links-for-workflow).
 
 * Zie [runbook-uitvoering in azure Automation](automation-runbook-execution.md)voor meer informatie over het uitvoeren van een runbook, het bewaken van runbook-taken en andere technische details.

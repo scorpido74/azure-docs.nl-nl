@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: ea5e3dffaafb691a667bad3ef0014389e1604e27
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682783"
+ms.locfileid: "83711564"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -95,7 +95,7 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 * Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de regio die het dichtst bij u in de buurt is van de netwerk latentie.
 * Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
 * Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd REGI ster, wordt u aangeraden [webhooks](container-registry-webhook.md) zodanig te configureren dat deze reageert op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
-* Als u blobs wilt leveren die inhouds lagen vertegenwoordigen, gebruikt Azure container data-eind punten. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints-preview) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd.
+* Als u blobs wilt leveren die inhouds lagen vertegenwoordigen, gebruikt Azure container data-eind punten. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd.
 * Als u een [persoonlijke koppeling](container-registry-private-link.md) voor uw REGI ster configureert met behulp van privé-eind punten in een virtueel netwerk, worden toegewezen gegevens eindpunten in elk van de geo-gerepliceerde regio's standaard ingeschakeld. 
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen

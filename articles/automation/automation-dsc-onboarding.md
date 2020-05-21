@@ -1,6 +1,6 @@
 ---
-title: Machines inschakelen voor beheer door Azure Automation status configuratie
-description: Computers instellen voor beheer met Azure Automation status configuratie
+title: Configuratie van Azure Automation status inschakelen
+description: In dit artikel leest u hoe u computers instelt voor beheer met Azure Automation status configuratie.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 52cd72d1144fa2acad993e927d49545d645d596f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993741"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713145"
 ---
-# <a name="enable-machines-for-management-by-azure-automation-state-configuration"></a>Machines inschakelen voor beheer door Azure Automation status configuratie
+# <a name="enable-azure-automation-state-configuration"></a>Configuratie van Azure Automation status inschakelen
 
 In dit onderwerp wordt beschreven hoe u uw machines kunt instellen voor beheer met Azure Automation status configuratie. Zie [Azure Automation status configuratie-overzicht](automation-dsc-overview.md)voor meer informatie over deze service.
 
@@ -25,8 +25,8 @@ In dit onderwerp wordt beschreven hoe u uw machines kunt instellen voor beheer m
 Met de configuratie van Azure Automation status kunt u Azure-Vm's eenvoudig inschakelen voor configuratie beheer, met behulp van de Azure Portal, Azure Resource Manager sjablonen of Power shell. Onder de schermen en zonder een beheerder die een virtuele machine op afstand heeft, registreert de Azure VM desired state Configuration extension de VM met Azure Automation status configuratie. Omdat de Azure-extensie asynchroon wordt uitgevoerd, stappen om de voortgang op te sporen of problemen op te lossen, vindt u in [problemen met de VM-installatie voor status configuratie](#troubleshoot-vm-setup-for-state-configuration).
 
 > [!NOTE]
->Voor het implementeren van DSC voor een Linux-knoop punt wordt de map **map/tmp** gebruikt. Modules die tijdelijk `nxautomation` worden gedownload voor verificatie voordat ze op hun juiste locaties worden geïnstalleerd. Om ervoor te zorgen dat modules correct worden geïnstalleerd, heeft de Log Analytics-agent voor Linux Lees-en schrijf machtigingen nodig voor de map **map/tmp** .<br><br>
->De Log Analytics-agent voor Linux wordt uitgevoerd `omsagent` als de gebruiker. Voer de opdracht `setfacl -m u:omsagent:rwx /tmp`uit om >Schrijf `omsagent` machtiging voor de gebruiker toe te kennen.
+>Voor het implementeren van DSC voor een Linux-knoop punt wordt de map **map/tmp** gebruikt. Modules die `nxautomation` tijdelijk worden gedownload voor verificatie voordat ze op hun juiste locaties worden geïnstalleerd. Om ervoor te zorgen dat modules correct worden geïnstalleerd, heeft de Log Analytics-agent voor Linux Lees-en schrijf machtigingen nodig voor de map **map/tmp** .<br><br>
+>De Log Analytics-agent voor Linux wordt uitgevoerd als de `omsagent` gebruiker. Voer de opdracht uit om >schrijf machtiging voor de gebruiker toe te kennen `omsagent` `setfacl -m u:omsagent:rwx /tmp` .
 
 ### <a name="enable-a-vm-using-azure-portal"></a>Een VM inschakelen met behulp van Azure Portal
 
@@ -83,7 +83,7 @@ U kunt Linux-servers die on-premises of in andere Cloud omgevingen worden uitgev
 1. Zorg ervoor dat de meest recente versie van de [Power shell desired state Configuration voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) is geïnstalleerd op de computers om status configuratie in te scha kelen.
 2. Als de [lokale Power shell DSC-Configuration Manager standaard waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) overeenkomen met uw use-case en u computers wilt inschakelen, zodat deze beide worden opgehaald uit en rapporteren aan de status configuratie:
 
-   - Op elke Linux-machine die u wilt `Register.py` inschakelen, gebruikt u om de computer in te scha kelen met de lokale Configuration Manager standaard instellingen van Power shell.
+   - Op elke Linux-machine die u wilt inschakelen, gebruikt `Register.py` u om de computer in te scha kelen met de lokale Configuration Manager standaard instellingen van Power shell.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -123,7 +123,7 @@ Als u een machine voor status configuratie wilt inschakelen, kunt u een [DSC-con
 > [!NOTE]
 > DSC-mailconfiguraties bevatten de geheimen die nodig zijn om een machine in een Automation-account in te scha kelen voor beheer. Zorg ervoor dat u de DSC-configuratie die u maakt op de juiste wijze beveiligt, of verwijder ze na gebruik.
 
-Proxy-ondersteuning voor de configuratie van-eigen configuraties wordt bepaald door LCM, de Windows Power shell DSC-engine. De LCM wordt uitgevoerd op alle doel knooppunten en is verantwoordelijk voor het aanroepen van de configuratie resources die zijn opgenomen in een DSC-configuratie script. U kunt proxy ondersteuning opnemen in een-configuratie door definities van de proxy-URL en de proxy referentie toe te voegen `ConfigurationRepositoryWeb`aan `ResourceRepositoryWeb`de hand `ReportServerWeb` van de-,-en-blokken. Zie [de lokale Configuration Manager configureren](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+Proxy ondersteuning voor-configuratie wordt beheerd door de [lokale Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7), de Windows Power shell DSC-engine. De LCM wordt uitgevoerd op alle doel knooppunten en is verantwoordelijk voor het aanroepen van de configuratie resources die zijn opgenomen in een DSC-configuratie script. U kunt ondersteuning voor proxy in een-configuratie opnemen door definities van en eigenschappen toe te voegen aan de hand van `ProxyURL` `ProxyCredential` de `ConfigurationRepositoryWeb` `ResourceRepositoryWeb` elementen, en `ReportServerWeb` . Een voor beeld van de URL-instelling is `ProxyURL = "http://172.16.3.6:3128";` . De `ProxyCredential` eigenschap wordt ingesteld op een `PSCredential` object, zoals beschreven in [referenties beheren in azure Automation](shared-resources/credentials.md). 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-mailconfiguraties genereren met behulp van een DSC-configuratie
 
@@ -245,9 +245,9 @@ Proxy-ondersteuning voor de configuratie van-eigen configuraties wordt bepaald d
 
 1. Vul de registratie sleutel en de URL voor uw Automation-account in, evenals de namen van de computers die u wilt inschakelen. Alle andere para meters zijn optioneel. Als u de registratie sleutel en registratie-URL voor uw Automation-account wilt vinden, raadpleegt u [computers veilig inschakelen met registratie](#enable-machines-securely-using-registration).
 
-1. Als u wilt dat de computers DSC-status informatie rapporteren aan Azure Automation status configuratie, maar niet pull-configuratie-of Power shell `ReportOnly` -modules, stelt u de para meter in op True.
+1. Als u wilt dat de computers DSC-status informatie rapporteren aan Azure Automation status configuratie, maar niet pull-configuratie-of Power shell-modules, stelt u de `ReportOnly` para meter in op True.
 
-1. Als `ReportOnly` niet is ingesteld, rapporteert de computers DSC-status informatie aan Azure Automation status configuratie en pull-configuratie of Power shell-modules. Stel para meters in `ConfigurationRepositoryWeb`overeenkomstig `ResourceRepositoryWeb`de elementen `ReportServerWeb` ,, en.
+1. Als `ReportOnly` niet is ingesteld, rapporteert de computers DSC-status informatie aan Azure Automation status configuratie en pull-configuratie of Power shell-modules. Stel para meters in overeenkomstig de `ConfigurationRepositoryWeb` `ResourceRepositoryWeb` elementen,, en `ReportServerWeb` .
 
 1. Voer het script uit. U hebt nu een werkmap met de naam **DscMetaConfigs**, die de Power shell DSC-configuratie bevat voor de computers die u wilt inschakelen (als beheerder).
 
@@ -299,11 +299,11 @@ Voor extra beveiliging kunt u op elk gewenst moment de primaire en secundaire to
 
 Na het registreren van een computer als een DSC-knoop punt in Azure Automation status configuratie, zijn er verschillende redenen waarom u het knoop punt in de toekomst mogelijk opnieuw moet registreren.
 
-- **Certificaat verlenging.** Voor versies van Windows Server vóór Windows Server 2019 onderhandelt elk knoop punt automatisch een uniek certificaat voor verificatie dat verloopt na één jaar. Als een certificaat zonder verlenging is verlopen, kan het knoop punt niet communiceren met Azure Automation en is `Unresponsive`dit gemarkeerd. Op dit moment kan het Power shell DSC-registratie protocol niet automatisch certificaten vernieuwen wanneer deze bijna verlopen. u moet de knoop punten na een jaar opnieuw registreren. Zorg ervoor dat op elk knoop punt WMF 5 RTM wordt uitgevoerd voordat u de registratie opnieuw uitvoert. 
+- **Certificaat verlenging.** Voor versies van Windows Server vóór Windows Server 2019 onderhandelt elk knoop punt automatisch een uniek certificaat voor verificatie dat verloopt na één jaar. Als een certificaat zonder verlenging is verlopen, kan het knoop punt niet communiceren met Azure Automation en is dit gemarkeerd `Unresponsive` . Op dit moment kan het Power shell DSC-registratie protocol niet automatisch certificaten vernieuwen wanneer deze bijna verlopen. u moet de knoop punten na een jaar opnieuw registreren. Zorg ervoor dat op elk knoop punt WMF 5 RTM wordt uitgevoerd voordat u de registratie opnieuw uitvoert. 
 
     Opnieuw registreren is 90 dagen of minder geldig vanaf de verloop tijd van het certificaat, of op elk gewenst moment na de verloop tijd van het certificaat, worden de resultaten van een nieuw certificaat gegenereerd en gebruikt. Een oplossing voor dit probleem is opgenomen in Windows Server 2019 en hoger.
 
-- **Wijzigingen in DSC LCM-waarden.** Mogelijk moet u de [Power shell DSC ICM-waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) wijzigen die zijn ingesteld tijdens de eerste registratie van het `ConfigurationMode`knoop punt, bijvoorbeeld. Op dit moment kunt u deze waarden van de DSC-agent alleen wijzigen door opnieuw te registreren. De enige uitzonde ring is de knooppunt configuratie waarde die aan het knoop punt is toegewezen. U kunt dit rechtstreeks in Azure Automation DSC wijzigen.
+- **Wijzigingen in DSC LCM-waarden.** Mogelijk moet u de [Power shell DSC ICM-waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) wijzigen die zijn ingesteld tijdens de eerste registratie van het knoop punt, bijvoorbeeld `ConfigurationMode` . Op dit moment kunt u deze waarden van de DSC-agent alleen wijzigen door opnieuw te registreren. De enige uitzonde ring is de knooppunt configuratie waarde die aan het knoop punt is toegewezen. U kunt dit rechtstreeks in Azure Automation DSC wijzigen.
 
 U kunt een knoop punt opnieuw registreren, net zoals u het knoop punt in eerste instantie hebt geregistreerd, met behulp van een van de methoden die in dit document worden beschreven. U hoeft de registratie van een knoop punt bij Azure Automation status configuratie niet ongedaan te maken voordat u het opnieuw registreert.
 

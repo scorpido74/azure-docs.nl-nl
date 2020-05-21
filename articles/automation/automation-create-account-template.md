@@ -1,20 +1,20 @@
 ---
-title: Azure Resource Manager sjablonen gebruiken om een Automation-account te maken | Microsoft Docs
-description: U kunt een Azure Resource Manager sjabloon gebruiken om een Azure Automation-account te maken.
+title: Een Automation-account maken met behulp van een Azure Resource Manager-sjabloon | Microsoft Docs
+description: In dit artikel leest u hoe u een Azure Resource Manager sjabloon gebruikt om een Azure Automation-account te maken.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996105"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712669"
 ---
-# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
+# <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
 
 U kunt [Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md) gebruiken om een Azure Automation-account in uw resource groep te maken. Dit artikel bevat een voorbeeld sjabloon die:
 
@@ -310,8 +310,6 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een Automation-account hebt, kunt u runbooks maken en hand matige processen automatiseren.
-
-* Zie [een Power shell-Runbook maken](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met Power shell-runbooks.
-* Zie [een Power shell workflow-Runbook maken](automation-first-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
-* Zie [een python-Runbook maken](automation-first-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.
+* [Een PowerShell-runbook maken](automation-first-runbook-textual-powershell.md)
+* [Een Power shell workflow-runbook maken](automation-first-runbook-textual.md)
+* [Een Python-runbook maken](automation-first-runbook-textual-python2.md)

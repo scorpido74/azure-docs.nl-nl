@@ -1,23 +1,20 @@
 ---
-title: Azure Automation-gegevens beheren
-description: Dit artikel bevat meerdere onderwerpen over het beheren van een Azure Automation omgeving.  Op dit moment neemt het bewaren van gegevens op en maakt het back-ups van Azure Automation herstel na nood gevallen in Azure Automation.
+title: Beheer van Azure Automation-gegevens
+description: Dit artikel bevat concepten van gegevens beheer in Azure Automation, waaronder het bewaren van gegevens en het maken van back-ups.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984654"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715423"
 ---
-# <a name="managing-azure-automation-data"></a>Azure Automation-gegevens beheren
+# <a name="management-of-azure-automation-data"></a>Beheer van Azure Automation-gegevens
 
-Dit artikel bevat meerdere onderwerpen over het beheren van gegevens in een Azure Automation omgeving.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
+Dit artikel bevat verschillende onderwerpen over het beheren van gegevens in een Azure Automation omgeving.
 
 ## <a name="data-retention"></a>Bewaartijd van gegevens
 

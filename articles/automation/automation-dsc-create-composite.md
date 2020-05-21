@@ -1,6 +1,6 @@
 ---
-title: Configuraties converteren naar samengestelde resources voor status configuratie-Azure Automation
-description: Meer informatie over het converteren van configuraties naar samengestelde resources voor status configuratie in Azure Automation.
+title: Configuraties converteren naar samengestelde resources voor Azure Automation status configuratie
+description: In dit artikel wordt beschreven hoe u configuraties converteert naar samengestelde resources voor Azure Automation status configuratie.
 keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fd7b2d0581b3eda97ec6fadeb43b55a3ad2bf0
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585518"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711326"
 ---
-# <a name="convert-configurations-to-composite-resources"></a>Configuraties converteren naar samengestelde resources
+# <a name="convert-configurations-to-composite-resources-for-azure-automation-state-configuration"></a>Configuraties converteren naar samengestelde resources voor Azure Automation status configuratie
 
 > Van toepassing op: Windows Power shell 5,1
 

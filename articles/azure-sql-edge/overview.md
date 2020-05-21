@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685153"
+ms.locfileid: "83712805"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Wat is Azure SQL Edge (preview)?
 
@@ -42,7 +42,7 @@ SQL Edge is beschikbaar in twee verschillende edities of software plannen. Deze 
 
 ## <a name="pricing-and-availability"></a>Prijzen en beschik baarheid
 
-Azure SQL Edge is momenteel beschikbaar als preview-versie. Zie [Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/)(Engelstalig) voor meer informatie over de prijzen en beschik baarheid.
+Azure SQL Edge is momenteel beschikbaar als preview-versie. Zie [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/)(Engelstalig) voor meer informatie over de prijzen en beschik baarheid.
 
 > [!IMPORTANT]
 > Zie [ondersteunde functies van Azure SQL Edge](features.md)voor meer informatie over de functie verschillen tussen Azure SQL edge en SQL Server, evenals de verschillen tussen de verschillende opties van de Azure SQL-rand.

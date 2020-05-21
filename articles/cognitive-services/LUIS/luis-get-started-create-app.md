@@ -3,12 +3,12 @@ title: 'Quick Start: app maken-LUIS'
 description: In deze Quick start ziet u hoe u een LUIS-app maakt die gebruikmaakt van het vooraf ontwikkelde domein `HomeAutomation` om verlichting en apparaten in en uit te scha kelen. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589125"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701266"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
@@ -42,7 +42,8 @@ U kunt uw toepassingen maken en beheren in **Mijn apps**.
 1. Zoek naar **HomeAutomation**.
 1. Selecteer **domein toevoegen** op de HomeAutomation-kaart.
 
-    ![Selecteer vooraf gemaakte domeinen en zoek vervolgens naar ' HomeAutomation '. Selecteer domein toevoegen op de HomeAutomation-kaart.](media/luis-quickstart-new-app/home-automation.png)
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer vooraf gemaakte domeinen en zoek vervolgens naar ' HomeAutomation '. Selecteer domein toevoegen op de HomeAutomation-kaart.](media/luis-quickstart-new-app/home-automation.png)
 
     Wanneer het vooraf gemaakte domein is toegevoegd, wordt in het vak met vooraf gemaakte domeinen de knop **Remove domain** weergegeven.
 
@@ -50,7 +51,8 @@ U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
 1. Selecteer **intenties** om de HomeAutomation-domein intentie te controleren. De vooraf ontwikkelde domein intentie hebben voor beeld-uitingen.
 
-    ![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm opname van de lijst met HomeAutomation intentie")
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm opname van de lijst met HomeAutomation intentie")
 
     > [!NOTE]
     > **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt.
@@ -114,25 +116,25 @@ Nadat u uw app hebt getraind, kunt u deze testen.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.984315455
+                    "score": 0.969448864
                 },
                 "HomeAutomation.QueryState": {
-                    "score": 0.009912962
-                },
-                "HomeAutomation.TurnDown": {
-                    "score": 0.00626645749
+                    "score": 0.0122336326
                 },
                 "HomeAutomation.TurnUp": {
-                    "score": 0.00572059769
+                    "score": 0.006547436
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.0050634006
                 },
                 "HomeAutomation.SetDevice": {
-                    "score": 0.00379381469
+                    "score": 0.004951761
                 },
                 "HomeAutomation.TurnOn": {
-                    "score": 0.00366983772
+                    "score": 0.00312553928
                 },
                 "None": {
-                    "score": 0.000623856
+                    "score": 0.000552945654
                 }
             },
             "entities": {
@@ -156,7 +158,7 @@ Nadat u uw app hebt getraind, kunt u deze testen.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.907323956,
+                            "score": 0.902181149,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

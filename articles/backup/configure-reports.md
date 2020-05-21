@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c1af9a532b390b428e74957c455988dfd4df3967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184942"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713825"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -22,11 +22,12 @@ Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azur
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-- Back-uprapporten worden ondersteund voor virtuele Azure-machines, SQL in azure vm's, SAP HANA-ASE in azure Vm's, Microsoft Azure Recovery Services-agent (MARS), Microsoft Azure Backup Server (MABS) en System Center Data Protection Manager (DPM). De gegevens voor back-up van Azure-bestands shares zijn momenteel niet zichtbaar in back-uprapporten.
+- Back-uprapporten worden ondersteund voor virtuele Azure-machines, SQL in azure Vm's, SAP HANA in azure Vm's, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) en System Center Data Protection Manager (DPM). De gegevens voor back-up van Azure-bestands shares zijn momenteel niet zichtbaar in back-uprapporten.
 - Voor DPM-workloads worden back-uprapporten ondersteund voor de DPM-versie 5.1.363.0 en hoger en de agent versie 2.0.9127.0 en hoger.
 - Voor MABS-werk belastingen worden back-uprapporten ondersteund voor de MABS-versie 13.0.415.0 en hoger en de agent versie 2.0.9170.0 en hoger.
 - Back-uprapporten kunnen worden weer gegeven voor alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een Log Analytics werk ruimte waartoe de gebruiker toegang heeft. Als u rapporten voor een set kluizen wilt weer geven, hoeft u alleen lezers toegang te hebben tot de Log Analytics werk ruimte waarnaar de kluizen hun gegevens verzenden. U hebt geen toegang tot de afzonderlijke kluizen.
 - Als u een [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -gebruiker bent met gedelegeerde toegang tot de abonnementen van uw klanten, kunt u deze rapporten gebruiken met Azure Lighthouse om rapporten weer te geven over al uw tenants.
+- Op dit moment kunnen gegevens worden weer gegeven in back-uprapporten over Maxi maal 100 Log Analytics werk ruimten (tussen tenants).
 - Gegevens voor logboek back-uptaken worden momenteel niet weer gegeven in de rapporten.
 
 ## <a name="get-started"></a>Aan de slag
@@ -81,6 +82,9 @@ Het rapport bevat verschillende tabbladen:
 
    ![Tabblad gebruik](./media/backup-azure-configure-backup-reports/usage.png)
 
+> [!NOTE]
+> Voor DPM-werk belastingen zien gebruikers mogelijk een enigszins verschil (van de volg orde van 20 MB per DPM-server) tussen de gebruiks waarden die worden weer gegeven in de rapporten, vergeleken met de waarde voor aggregatie gebruik zoals weer gegeven op het tabblad Overzicht van Recovery Services-kluis. Dit verschil wordt verwerkt door het feit dat elke DPM-server die voor back-up wordt geregistreerd, een gekoppelde meta gegevens bron heeft die niet wordt opgehaald als een artefact voor rapportage.
+
 - **Taken**: gebruik dit tabblad om langlopende trends voor taken weer te geven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van een mislukte taak. U kunt deze informatie zowel op het niveau van een geaggregeerde als op een back-upitem weer geven. Selecteer een bepaald back-upitem in een raster om gedetailleerde informatie weer te geven over elke taak die is geactiveerd op het back-upitem in het geselecteerde tijds bereik.
 
    ![Tabblad taken](./media/backup-azure-configure-backup-reports/jobs.png)
@@ -127,7 +131,7 @@ De widgets in het back-uprapport worden aangedreven door Kusto-query's, die word
 
 - De eerdere Power BI sjabloon-app voor rapportage, waarvan de bron gegevens afkomstig zijn uit een Azure-opslag account, bevindt zich op een afschaffing-pad. U kunt het beste de diagnostische gegevens van de kluis naar Log Analytics verzenden om rapporten weer te geven.
 
-- * Daarnaast bevindt het [v1-schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) voor het verzenden van diagnostische gegevens naar een opslag account of een La-werk ruimte zich ook op een afschaffing pad. Dit betekent dat als u aangepaste query's of Automatiseringen hebt geschreven op basis van het v1-schema, u wordt geadviseerd om deze query's bij te werken om het momenteel ondersteunde v2-schema te gebruiken.
+- Daarnaast bevindt het [v1-schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) voor het verzenden van diagnostische gegevens naar een opslag account of een La-werk ruimte zich ook op een afschaffing pad. Dit betekent dat als u aangepaste query's of Automatiseringen hebt geschreven op basis van het v1-schema, u wordt geadviseerd om deze query's bij te werken om het momenteel ondersteunde v2-schema te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

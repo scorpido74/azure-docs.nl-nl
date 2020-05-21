@@ -1,6 +1,6 @@
 ---
-title: Configuraties maken op basis van bestaande servers-Azure Automation
-description: Meer informatie over het maken van configuraties van bestaande servers voor Azure Automation.
+title: Configuraties maken op basis van bestaande servers voor Azure Automation status configuratie
+description: In dit artikel leest u hoe u configuraties maakt op basis van bestaande servers voor Azure Automation status configuratie.
 keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d783ce7193faed4110d07988d3f3f05951c80a45
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585554"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711394"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Configuraties maken op basis van bestaande servers
+# <a name="create-configurations-from-existing-servers-for-azure-automation-state-configuration"></a>Configuraties maken op basis van bestaande servers voor Azure Automation status configuratie
 
 > Van toepassing op: Windows Power shell 5,1
 

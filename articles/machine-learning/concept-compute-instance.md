@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f10825d8f22a7ddd9858e86dc2083ae47da9a69
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654911"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712754"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -114,7 +114,7 @@ U kunt de volgende acties uitvoeren:
 
 * Een rekeninstantie maken. Geef de naam, het type van de Azure-VM op, inclusief Gpu's (het VM-type kan niet worden gewijzigd na het maken), schakel SSH-toegang in/uit en configureer de instellingen voor het virtuele netwerk optioneel. U kunt ook rechtstreeks vanuit geïntegreerde notebooks, Azure Portal, Resource Manager-sjabloon of Azure Machine Learning SDK een exemplaar maken. Het quotum toegewezen kernen per regio dat van toepassing is op het maken van een reken instantie is Unified en gedeeld met Azure Machine Learning quotum voor reken clusters.
 * Het tabblad Compute instances vernieuwen
-* Een reken instantie starten, stoppen en opnieuw starten
+* Een reken instantie starten, stoppen en opnieuw starten. Stop de virtuele machine wanneer u deze niet gebruikt om de kosten te verlagen. Start het vervolgens opnieuw wanneer u het nodig hebt.
 * Een reken instantie verwijderen
 
 Voor elk reken exemplaar in uw werk ruimte kunt u het volgende doen:

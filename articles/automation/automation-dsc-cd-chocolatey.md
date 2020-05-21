@@ -1,18 +1,18 @@
 ---
-title: Doorlopende implementatie van configuratie met Azure Automation status met Choco lade
-description: Beschrijft de continue implementatie van DevOps met behulp van de configuratie van Azure Automation State met de chocolade Package Manager. Bevat een voor beeld met een volledige JSON Resource Manager-sjabloon en Power shell-bron.
+title: Azure Automation continue implementatie instellen met chocolade
+description: In dit artikel leest u hoe u doorlopende implementatie kunt instellen met status configuratie en chocolade Package Manager.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996123"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714182"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Een continue implementatie naar virtuele machines bieden met behulp van de configuratie van de automatiserings status en chocolade
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Continue implementatie met chocolade instellen
 
 In een DevOps-wereld zijn er veel hulpprogram ma's om te helpen bij verschillende punten in de pipeline voor continue integratie. Azure Automation [status configuratie](automation-dsc-overview.md) is een nieuwe aanvulling op de opties die DevOps teams kunnen gebruiken. 
 
@@ -69,7 +69,7 @@ De volledige bron voor dit gebruiks voorbeeld bevindt zich in [dit Visual Studio
 
 ## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>Stap 1: de pull-server en het Automation-account instellen
 
-Op een geverifieerde`Connect-AzAccount`() Power shell-opdracht regel: (kan enkele minuten duren terwijl de pull-server is ingesteld)
+Op een geverifieerde ( `Connect-AzAccount` ) Power shell-opdracht regel: (kan enkele minuten duren terwijl de pull-server is ingesteld)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -189,7 +189,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Deze stappen resulteren in een nieuwe knooppunt configuratie met de naam **ISVBoxConfig. isvbox** op de pull-server worden geplaatst. De naam van de knooppunt configuratie is `configurationName.nodeName`gebouwd als.
+Deze stappen resulteren in een nieuwe knooppunt configuratie met de naam **ISVBoxConfig. isvbox** op de pull-server worden geplaatst. De naam van de knooppunt configuratie is gebouwd als `configurationName.nodeName` .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Stap 5: de meta gegevens van het pakket maken en onderhouden
 

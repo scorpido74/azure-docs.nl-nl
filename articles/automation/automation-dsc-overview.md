@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Automation status configuratie
-description: Een overzicht van Azure Automation status configuratie, de voor waarden en bekende problemen
+description: Dit artikel bevat een overzicht van Azure Automation status configuratie.
 keywords: Power shell DSC, desired state Configuration, Power shell DSC Azure
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: be0da641a67d532851b8d295065213016c795f01
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993858"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713179"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
@@ -88,18 +88,18 @@ Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende p
 * Poort: alleen TCP 443 vereist voor uitgaande internet toegang
 * Globale URL: ***. Azure-Automation.net**
 * Globale URL van US Gov-Virginia: ***. Azure-Automation.us**
-* Agent service: **https://\<workspaceId\>. agentsvc.Azure-Automation.net**
+* Agent service: **https:// \< workspaceId \> . agentsvc.Azure-Automation.net**
 
 Als u gebruikmaakt van DSC-resources die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan. Raadpleeg de documentatie voor elke DSC-resource voor meer informatie over deze netwerk vereisten.
 
 #### <a name="proxy-support"></a>Proxy ondersteuning
 
-Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en hoger. Deze optie wordt ingeschakeld door de waarden in te `ProxyURL` stellen `ProxyCredential` voor en in het- [configuratie script](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) dat wordt gebruikt voor het registreren van knoop punten.
+Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en hoger. Deze optie wordt ingeschakeld door de waarden voor `ProxyURL` en `ProxyCredential` Eigenschappen in te stellen in het- [configuratie script](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) dat wordt gebruikt voor het registreren van knoop punten. 
 
 >[!NOTE]
 >Azure Automation status configuratie biedt geen ondersteuning voor DSC-proxy voor eerdere versies van Windows.
 
-Voor Linux-knoop punten ondersteunt de DSC-agent proxy en `http_proxy` maakt gebruik van de variabele om de URL te bepalen.
+Voor Linux-knoop punten ondersteunt de DSC-agent proxy en maakt gebruik van de `http_proxy` variabele om de URL te bepalen. Zie [DSC-mailconfiguraties genereren](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)voor meer informatie over proxy ondersteuning.
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Netwerkbereiken en naam ruimte Azure Automation status configuratie
 
@@ -107,7 +107,7 @@ Het is raadzaam om de hieronder vermelde adressen te gebruiken bij het definiër
 
 Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio, kunt u de communicatie beperken tot dat regionale Data Center. De volgende tabel bevat de DNS-record voor elke regio:
 
-| **Deel** | **DNS-record** |
+| **Regio** | **DNS-record** |
 | --- | --- |
 | VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |

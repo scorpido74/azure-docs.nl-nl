@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/20/2020
 ms.author: jgao
-ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872335"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83708003"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
-Meer informatie over het gebruik van implementatie scripts in azure-resource sjablonen. Met een nieuw resource type `Microsoft.Resources/deploymentScripts`, kunnen gebruikers implementatie scripts uitvoeren in sjabloon implementaties en uitvoerings resultaten controleren. Deze scripts kunnen worden gebruikt voor het uitvoeren van aangepaste stappen zoals:
+Meer informatie over het gebruik van implementatie scripts in azure-resource sjablonen. Met een nieuw resource type `Microsoft.Resources/deploymentScripts` , kunnen gebruikers implementatie scripts uitvoeren in sjabloon implementaties en uitvoerings resultaten controleren. Deze scripts kunnen worden gebruikt voor het uitvoeren van aangepaste stappen zoals:
 
 - gebruikers toevoegen aan een map
 - bewerkingen voor gegevens vlak uitvoeren, bijvoorbeeld blobs of een Seed-data base kopiëren
@@ -140,12 +140,12 @@ Details van eigenschaps waarde:
 - **updatetag**: als u deze waarde wijzigt tussen de implementaties van een sjabloon, wordt het implementatie script opnieuw uitgevoerd. Gebruik de functie newGuid () of utcNow () die moet worden ingesteld als de defaultValue van een para meter. Zie [script meer dan één keer uitvoeren](#run-script-more-than-once)voor meer informatie.
 - **containerSettings**: Geef de instellingen op om Azure container instance aan te passen.  **containerGroupName** is voor het opgeven van de naam van de container groep.  Als u niets opgeeft, wordt de groeps naam automatisch gegenereerd.
 - **storageAccountSettings**: Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-an-existing-storage-account).
-- **azPowerShellVersion**/**azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
+- **azPowerShellVersion** / **azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
 - **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
 - **omgevings variabelen**: Geef de omgevings variabelen op die moeten worden door gegeven aan het script. Zie [implementatie scripts ontwikkelen](#develop-deployment-scripts)voor meer informatie.
-- **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren `primaryScriptUri` , gebruikt u in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
+- **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u `primaryScriptUri` in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
 - **primaryScriptUri**: Geef een openbaar toegankelijke URL op voor het primaire implementatie script met ondersteunde bestands extensies.
-- **supportingScriptUris**: Geef een matrix met openbaar toegankelijke url's op voor de `ScriptContent` ondersteunende bestanden die worden genoemd in `PrimaryScriptUri`of.
+- **supportingScriptUris**: Geef een matrix met openbaar toegankelijke url's op voor de ondersteunende bestanden die worden genoemd in `ScriptContent` of `PrimaryScriptUri` .
 - **time-out**: Geef de maximale toegestane uitvoerings tijd voor het script op dat is opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**.
 - **cleanupPreference**. Geef de voor keur op voor het opschonen van implementatie resources wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. De standaard instelling is **altijd**, wat betekent dat de resources worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
 - **retentionInterval**: Geef het interval op waarvoor de service de implementatie script bronnen behoudt nadat de uitvoering van het implementatie script een Terminal status heeft bereikt. De resources van het implementatie script worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het [ISO 8601-patroon](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**. Dit betekent dat er zeven dagen zijn. Deze eigenschap wordt gebruikt wanneer cleanupPreference is ingesteld op *OnExpiration*. De eigenschap *OnExpiration* is momenteel niet ingeschakeld. Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
@@ -161,7 +161,7 @@ Details van eigenschaps waarde:
 
 ## <a name="use-inline-scripts"></a>Inline-scripts gebruiken
 
-Voor de volgende sjabloon is één resource gedefinieerd met `Microsoft.Resources/deploymentScripts` het type. Het gemarkeerde deel is het inline-script.
+Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Resources/deploymentScripts` type. Het gemarkeerde deel is het inline-script.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
@@ -190,7 +190,7 @@ De uitvoer ziet er als volgt uit:
 
 ## <a name="use-external-scripts"></a>Externe scripts gebruiken
 
-Naast inline-scripts kunt u ook externe script bestanden gebruiken. Alleen primaire Power shell-scripts met de bestands extensie **PS1** worden ondersteund. Voor CLI-scripts kunnen de primaire scripts alle uitbrei dingen (of zonder een uitbrei ding) hebben, zolang de scripts geldige bash-scripts zijn. Als u externe script bestanden wilt gebruiken `scriptContent` , `primaryScriptUri`vervangt u door. Bijvoorbeeld:
+Naast inline-scripts kunt u ook externe script bestanden gebruiken. Alleen primaire Power shell-scripts met de bestands extensie **PS1** worden ondersteund. Voor CLI-scripts kunnen de primaire scripts alle uitbrei dingen (of zonder een uitbrei ding) hebben, zolang de scripts geldige bash-scripts zijn. Als u externe script bestanden wilt gebruiken, vervangt u door `scriptContent` `primaryScriptUri` . Bijvoorbeeld:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -204,7 +204,7 @@ U bent verantwoordelijk voor het garanderen van de integriteit van de scripts wa
 
 ## <a name="use-supporting-scripts"></a>Ondersteunende scripts gebruiken
 
-U kunt complexe logica van elkaar scheiden in een of meer ondersteunende script bestanden. Met `supportingScriptURI` de eigenschap kunt u indien nodig een matrix met uri's naar de ondersteunende script bestanden opgeven:
+U kunt complexe logica van elkaar scheiden in een of meer ondersteunende script bestanden. `supportingScriptURI`Met de eigenschap kunt u indien nodig een matrix met uri's naar de ondersteunende script bestanden opgeven:
 
 ```json
 "scriptContent": "
@@ -254,6 +254,8 @@ U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de
 ### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde teken reeksen door geven aan implementatie script
 
 Als omgevings variabelen (EnvironmentVariable) in uw container instanties worden ingesteld, kunt u een dynamische configuratie opgeven van de toepassing of het script dat door de container wordt uitgevoerd. Met het implementatie script worden niet-beveiligde en beveiligde omgevings variabelen op dezelfde manier verwerkt als Azure container instance. Zie [omgevings variabelen instellen in container instanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
+
+De Maxi maal toegestane grootte voor omgevings variabelen is 64 kB.
 
 ## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
 
@@ -308,7 +310,7 @@ Een opslag account en een container exemplaar zijn nodig voor het uitvoeren van 
 - De firewall regels van het opslag account worden nog niet ondersteund. Raadpleeg [Firewalls en virtuele netwerken voor Azure Storage configureren](../../storage/common/storage-network-security.md) voor meer informatie.
 - De door de gebruiker toegewezen beheerde identiteit van het implementatie script moet machtigingen hebben voor het beheren van het opslag account, waaronder lezen, maken, bestands shares verwijderen.
 
-Als u een bestaand opslag account wilt opgeven, voegt u de volgende JSON toe aan `Microsoft.Resources/deploymentScripts`het eigenschaps element van:
+Als u een bestaand opslag account wilt opgeven, voegt u de volgende JSON toe aan het eigenschaps element van `Microsoft.Resources/deploymentScripts` :
 
 ```json
 "storageAccountSettings": {
@@ -357,7 +359,7 @@ Uitvoering van het implementatie script is een idempotent-bewerking. Als geen va
     > [!NOTE]
     > De functie utcNow kan alleen worden gebruikt in de standaard waarde voor een para meter.
 
-- Geef een andere waarde op in `forceUpdateTag` de sjabloon eigenschap.  Gebruik bijvoorbeeld utcNow als waarde.
+- Geef een andere waarde op in de `forceUpdateTag` sjabloon eigenschap.  Gebruik bijvoorbeeld utcNow als waarde.
 
 > [!NOTE]
 > Schrijf de implementatie scripts die idempotent zijn. Dit zorgt ervoor dat als ze per ongeluk worden uitgevoerd, er geen systeem wijzigingen optreden. Als het implementatie script bijvoorbeeld wordt gebruikt om een Azure-resource te maken, moet u controleren of de resource niet bestaat voordat u deze maakt. het script slaagt dus of u maakt de resource niet opnieuw.
@@ -397,7 +399,7 @@ U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken a
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    Vervang ** &lt;de stationsletter van de host>** en ** &lt;de naam van de host Directory>** door een bestaande map op het gedeelde station.  De map wordt toegewezen aan de map **/Data** in de container. Voor voor beelden, om D:\docker toe te wijzen:
+    Vervang de stationsletter van de ** &lt; host>** en de naam van de ** &lt; Host Directory>** door een bestaande map op het gedeelde station.  De map wordt toegewezen aan de map **/Data** in de container. Voor voor beelden, om D:\docker toe te wijzen:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7

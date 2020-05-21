@@ -4,12 +4,12 @@ description: Bewaak Azure Backup werk belastingen en maak aangepaste waarschuwin
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183650"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714828"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -45,6 +45,9 @@ Het definiëren van het kenmerk van een waarschuwing is de trigger voorwaarde. S
 
 Indien nodig kunt u de Kusto-query bewerken. Kies een drempel waarde, punt en frequentie. De drempel waarde bepaalt wanneer de waarschuwing wordt gegenereerd. De periode is het tijd venster waarin de query wordt uitgevoerd. Als de drempel waarde bijvoorbeeld groter is dan 0, de periode 5 minuten is en de frequentie 5 minuten is, voert de regel de query elke vijf minuten uit, waarna de vorige 5 minuten wordt gecontroleerd. Als het aantal resultaten groter is dan 0, ontvangt u een melding via de geselecteerde actie groep.
 
+> [!NOTE]
+> Als u de waarschuwings regel één keer per dag wilt uitvoeren, wijzigt u in alle gebeurtenissen/logboeken die zijn gemaakt op de opgegeven dag de waarde van zowel ' period ' als ' frequency ' in 1440, d.w.z. 24 uur.
+
 #### <a name="alert-action-groups"></a>Waarschuwings actie groepen
 
 Een actie groep gebruiken om een meldings kanaal op te geven. Voor een overzicht van de beschik bare meldings mechanismen onder **actie groepen**, selecteert u **nieuwe maken**.
@@ -64,6 +67,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -72,6 +76,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -80,6 +85,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -96,6 +102,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -112,6 +119,7 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -161,8 +169,8 @@ De diagnostische gegevens van de kluis worden naar de Log Analytics-werk ruimte 
 U kunt ook activiteiten Logboeken gebruiken om een melding te ontvangen voor gebeurtenissen zoals het maken van een back-up. Voer de volgende stappen uit om te beginnen:
 
 1. Meld u aan bij de Azure-portal.
-1. Open de relevante Recovery Services kluis.
-1. Open in de eigenschappen van de kluis de sectie **activiteiten logboek** .
+2. Open de relevante Recovery Services kluis.
+3. Open in de eigenschappen van de kluis de sectie **activiteiten logboek** .
 
 Het juiste logboek identificeren en een waarschuwing maken:
 
@@ -170,9 +178,9 @@ Het juiste logboek identificeren en een waarschuwing maken:
 
    ![Filteren om activiteiten logboeken te zoeken voor back-ups van Azure-VM'S](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. Selecteer de naam van de bewerking om de relevante gegevens weer te geven.
-1. Selecteer **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
-1. Maak een waarschuwing door de stappen te volgen in [waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
+2. Selecteer de naam van de bewerking om de relevante gegevens weer te geven.
+3. Selecteer **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
+4. Maak een waarschuwing door de stappen te volgen in [waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
    ![Nieuwe waarschuwings regel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 

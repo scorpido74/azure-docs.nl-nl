@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7bdcccee3270f9d2b611682a9a59505158a494d2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205207"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711411"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Ondersteunings beleid voor Azure Red Hat open Shift
 
@@ -22,13 +22,13 @@ Bepaalde configuraties voor Azure Red Hat open Shift 4-clusters kunnen van invlo
 
 ## <a name="cluster-configuration-requirements"></a>Vereisten voor cluster configuratie
 
-* Alle open Shift-cluster operators moeten in een beheerde status blijven. De lijst met cluster operators kan worden geretourneerd door `oc get clusteroperators`uit te voeren.
+* Alle open Shift-cluster operators moeten in een beheerde status blijven. De lijst met cluster operators kan worden geretourneerd door uit te voeren `oc get clusteroperators` .
 * Verwijder of wijzig de cluster Prometheus-en Alertmanager-Services niet.
 * Verwijder geen service Alertmanager-regels.
 * Wijzig de versie van open Shift cluster niet.
 * Verwijder of wijzig de logboek registratie van Azure Red Hat open Shift-service (mdsd peul) niet.
 * Verwijder of wijzig het arosvc.azurecr.io-cluster pull Secret niet.
-* Alle virtuele cluster machines moeten uitgaande internet toegang hebben, ten minste aan de eind punten Azure Resource Manager (ARM) en service logging (Genève).
+* Alle virtuele cluster machines moeten directe uitgaande internet toegang hebben, ten minste aan de eind punten Azure Resource Manager (ARM) en service logging (Genève).  Er wordt geen vorm van HTTPS-proxy ondersteund.
 * De Azure Red Hat open Shift-service opent uw cluster via een privé koppelings service.  Geen toegang tot de service verwijderen of wijzigen.
 * Niet-RHCOS Compute-knoop punten worden niet ondersteund. U kunt bijvoorbeeld geen RHEL Compute-knoop punt gebruiken.
 

@@ -1,27 +1,24 @@
 ---
 title: Azure Automation Veelgestelde vragen | Microsoft Docs
-description: Antwoorden op veelgestelde vragen over Azure Automation.
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Automation.
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46786ff5bd158804ea5d93377fbbcc39a9c8af26
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405965"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712873"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Veelgestelde vragen over Azure Automation
 
 Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Automation. Als u aanvullende vragen over de mogelijkheden hebt, gaat u naar het discussie forum en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
-
-## <a name="update-management-solution"></a>Oplossing voor updatebeheer
+## <a name="update-management"></a>Updatebeheer
 
 ### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Kan ik onverwachte upgrades op besturingssysteem niveau voor komen?
 
@@ -29,7 +26,7 @@ Bij sommige Linux-varianten, zoals Red Hat Enterprise Linux, kunnen upgrades op 
 
 Gebruik de functie **uitsluiting** om te voor komen dat u de versie van het besturings systeem bijwerkt via updatebeheer-implementaties.
 
-In Red Hat Enterprise Linux is `redhat-release-server.x86_64`de naam van het pakket die moet worden uitgesloten.
+In Red Hat Enterprise Linux is de naam van het pakket die moet worden uitgesloten `redhat-release-server.x86_64` .
 
 ### <a name="why-arent-criticalsecurity-updates-applied"></a>Waarom worden essentiële/beveiligings updates niet toegepast?
 
@@ -41,7 +38,7 @@ Het implementeren van updates op update classificatie werkt niet in de RTM-versi
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Kan ik updates implementeren in azure-tenants?
 
-Als u computers hebt die patches in een andere Azure-Tenant rapportage nodig hebben om Updatebeheer, moet u een volgende tijdelijke oplossing gebruiken om ze te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) gebruiken met de `ForUpdateConfiguration` para meter die is opgegeven voor het maken van een schema. U kunt de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) gebruiken en de computers in de andere Tenant door geven aan `NonAzureComputer` de para meter. In het volgende voor beeld ziet u hoe u dit doet.
+Als u computers hebt die patches in een andere Azure-Tenant rapportage nodig hebben om Updatebeheer, moet u een volgende tijdelijke oplossing gebruiken om ze te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) gebruiken met de `ForUpdateConfiguration` para meter die is opgegeven voor het maken van een schema. U kunt de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) gebruiken en de computers in de andere Tenant door geven aan de `NonAzureComputer` para meter. In het volgende voor beeld ziet u hoe u dit doet.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")

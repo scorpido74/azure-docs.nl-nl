@@ -11,30 +11,33 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0325b43b6726f04d5994b60404f218ac58122d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597532"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712193"
 ---
-# <a name="self-service-sign-up-preview"></a>Aanmelden via self-service (preview-versie)
+# <a name="self-service-sign-up-preview"></a>Selfservice registreren (preview)
 |     |
 | --- |
 | Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
 |     |
 
-Wanneer u toepassingen deelt met externe gebruikers, weet u mogelijk niet altijd vooraf wie toegang tot een toepassing nodig heeft. Als alternatief voor het rechtstreeks verzenden van uitnodigingen naar personen, kunt u externe gebruikers toestaan zich aan te melden voor specifieke toepassingen zelf door het aanmelden via een self-service in te scha kelen. U kunt een persoonlijke aanmeldings ervaring maken door de self-service voor het registreren van gebruikers aan te passen. U kunt bijvoorbeeld opties bieden voor Azure AD-of Social id-providers en informatie verzamelen over de gebruiker.
+Wanneer u een toepassing deelt met externe gebruikers, weet u mogelijk niet altijd vooraf wie toegang tot de toepassing nodig heeft. Als alternatief voor het rechtstreeks verzenden van uitnodigingen naar personen, kunt u externe gebruikers toestaan zich aan te melden voor specifieke toepassingen zelf door het aanmelden via een self-service in te scha kelen. U kunt een persoonlijke aanmeldings ervaring maken door de self-service voor het registreren van gebruikers aan te passen. U kunt bijvoorbeeld opties bieden om u aan te melden bij Azure AD of Social id-providers en informatie over de gebruiker te verzamelen tijdens het registratie proces.
+
+> [!NOTE]
+> U kunt gebruikers stromen koppelen aan apps die zijn gebouwd door uw organisatie. Gebruikers stromen kunnen niet worden gebruikt voor micro soft-apps, zoals share point of teams.
 
 ## <a name="user-flow-for-self-service-sign-up"></a>Gebruikers stroom voor Self-service registratie
 
-Met een self-service voor het aanmelden van gebruikers wordt een aanmeldings ervaring gemaakt voor uw externe gebruikers via de toepassing die u wilt delen. De gebruikers stroom kan worden gekoppeld aan een of meer van uw toepassingen. Eerst schakelt u de Self-Service-aanmelding voor uw Tenant in en gaat u met alle id-providers die u wilt toestaan dat externe gebruikers gebruik kunnen maken van de aanmelding. Vervolgens maakt u de gebruikers stroom voor registratie en past u deze aan en wijst u uw toepassingen hieraan toe.
+Met een self-service voor het aanmelden van gebruikers wordt een aanmeldings ervaring gemaakt voor uw externe gebruikers via de toepassing die u wilt delen. De gebruikers stroom kan worden gekoppeld aan een of meer van uw toepassingen. Eerst schakelt u de self-service registratie voor uw Tenant in en gaat u door met de id-providers die u toestaat dat externe gebruikers zich aanmelden voor aanmelding. Vervolgens maakt u de gebruikers stroom voor registratie en past u deze aan en wijst u uw toepassingen hieraan toe.
 U kunt instellingen voor de gebruikers stroom configureren om te bepalen hoe de gebruiker zich aanmeldt voor de toepassing:
 
 - Account typen die worden gebruikt voor aanmelding, zoals sociale accounts zoals Facebook of Azure AD-accounts
 - Kenmerken die moeten worden verzameld van de gebruiker die zich aanmeldt, zoals de voor naam, de post code of het land van locatie
 
-Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een web-, mobiel-, desktop-of single-page-toepassing (SPA), initieert de toepassing een autorisatie aanvraag naar het eind punt van de gebruikers stroom. De gebruikers stroom definieert en beheert de gebruikers ervaring. Wanneer een registratie gebruikers stroom is voltooid, genereert Azure AD een token en leidt de gebruiker vervolgens terug naar uw toepassing. Meerdere toepassingen kunnen dezelfde gebruikers stroom gebruiken.
+Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een web-, mobiel-, desktop-of single-page-toepassing (SPA), initieert de toepassing een autorisatie aanvraag naar het eind punt van de gebruikers stroom. De gebruikers stroom definieert en beheert de gebruikers ervaring. Wanneer de gebruiker de stroom voor het registreren van gebruikers voltooit, genereert Azure AD een token en leidt de gebruiker terug naar uw toepassing. Wanneer de aanmelding is voltooid, wordt een gast account ingericht voor de gebruiker in de Directory. Meerdere toepassingen kunnen dezelfde gebruikers stroom gebruiken.
 
 ## <a name="example-of-self-service-sign-up"></a>Voor beeld van een self-service registratie
 
@@ -47,7 +50,7 @@ Ze gebruiken het e-mail adres van hun keuze om zich aan te melden.
 
 ![Voor beeld van het weer geven van een selectie van Facebook voor aanmelden](media/self-service-sign-up-overview/example-sign-in-with-facebook.png)
 
-Azure AD maakt een relatie met Woodgrove met behulp van het Facebook-account van de partner en maakt een nieuw account.
+Azure AD maakt een relatie met Woodgrove met behulp van het Facebook-account van de partner en maakt een nieuw gast account voor de gebruiker nadat het zich heeft aangemeld.
 
 Woodgrove wil meer weten over de gebruiker, zoals de naam, de bedrijfs naam, de code van de zakelijke registratie, het telefoon nummer.
 

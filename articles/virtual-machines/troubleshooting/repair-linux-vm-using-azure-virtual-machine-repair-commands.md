@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da40deb4df55a63f5fecc380500a507b374ca63d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73796205"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711139"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Linux-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
@@ -48,7 +48,7 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
 
    Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. Het bevat algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
-   Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen in een afzonderlijk browser tabblad door naar te [https://shell.azure.com](https://shell.azure.com)gaan.
+   Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen in een afzonderlijk browser tabblad door naar te gaan [https://shell.azure.com](https://shell.azure.com) .
 
    Selecteer **kopiëren** om de blokken code te kopiëren en plak de code in het Cloud shell en selecteer **Enter** om het programma uit te voeren.
 
@@ -60,13 +60,13 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
    az extension add -n vm-repair
    ```
 
-   Als u de `az vm repair` opdrachten eerder hebt gebruikt, moet u alle updates Toep assen op de extensie voor VM-herstel.
+   Als u de opdrachten eerder hebt gebruikt `az vm repair` , moet u alle updates Toep assen op de extensie voor VM-herstel.
 
    ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
-3. Voer `az vm repair create` uit. Met deze opdracht maakt u een kopie van de besturingssysteem schijf voor de niet-functionele VM, maakt u een herstel-VM en koppelt u de schijf.
+3. Voer `az vm repair create` uit. Met deze opdracht maakt u een kopie van de besturingssysteem schijf voor de niet-functionele VM, maakt u een herstel-VM in een nieuwe resource groep en koppelt u de kopie van de besturingssysteem schijf.  De herstel-VM heeft dezelfde grootte en regio als de niet-functionele VM die is opgegeven.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -82,7 +82,7 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten controleren en inschakelen
 
-``myVMDeployed`` In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele ``myResourceGroup``machine met de naam in de resource groep met de naam:
+In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele machine ``myVMDeployed`` met de naam in de resource groep met de naam ``myResourceGroup`` :
 
 Azure CLI
 

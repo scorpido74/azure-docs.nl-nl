@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592777"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714318"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -109,7 +109,7 @@ Binnen het `speak` -element kunt u meerdere stemmen opgeven voor tekst-naar-spra
 
 Afhankelijk van de taal van de Speech SDK, stelt u de `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` eigenschap in `false` op een exemplaar van het `SpeechConfig` object.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
@@ -145,7 +145,7 @@ speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
@@ -195,10 +195,8 @@ Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behul
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 Wijzigingen worden toegepast op het niveau van de zin en de stijl varieert per stem. Als een stijl niet wordt ondersteund, retourneert de service spraak in de standaard stijl voor neutrale gesp roken tekst.
 
@@ -223,15 +221,11 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 |                         | `style="chat"`            | Een informe en een ongeforceerde Toon                         |
 |                         | `style="cheerful"`        | Een positieve en fijne Toon                         |
 |                         | `style="empathetic"`      | Een idee van caring en inzicht               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | Toon een druk geluid               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Een formele en professionele Toon voor gesp roken nieuws |
 |                         | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
 |                         | `style="assistant"`       | Een warme en beperkte Toon voor digitale assistenten    |
 |                         | `style="lyrical"`         | Drukt op emoties op een melodic-en Sentimental manier         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | Toon een druk geluid               |  
-|                         | `style="sad"`       | Een ongelukkige en upset Toon    |
-|                         | `style="serious"`         | Een ernstige en moeilijke Toon        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  | 
 
 **Voorbeeld**
 

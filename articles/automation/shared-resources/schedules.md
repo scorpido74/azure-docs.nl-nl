@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 848be71764bb503879c34ed6667a43909ef19c13
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685332"
+ms.locfileid: "83713434"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Schema's in Azure Automation beheren
 
@@ -198,5 +198,5 @@ Remove-AzAutomationSchedule -AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [modules beheren in azure Automation](modules.md)voor meer informatie over de cmdlets die worden gebruikt voor het openen van schema's.
-* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
+* [Modules beheren in Azure Automation](modules.md)
+* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)

@@ -6,32 +6,40 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127696"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714845"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
  
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
-Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u bent aangemeld bij een Azure `az login`-account met. 
+Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u bent aangemeld bij een Azure-account met `az login` . 
 
 
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
 - De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
- 
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
 Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak de resource groep met AZ Group Create. In het volgende voor beeld wordt een resource groep met de naam *myDHResourceGroup* gemaakt op de locatie *VS-Oost* .
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
+```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>Beschik bare host-Sku's in een regio weer geven
+Niet alle host-Sku's zijn beschikbaar in alle regio's en beschikbaarheids zones. 
+
+Geef de beschik baarheid van de host en eventuele beperkingen van de aanbieding weer voordat u begint met het inrichten van toegewezen hosts. 
+
+```bash
+az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
 ## <a name="create-a-host-group"></a>Een hostgroep maken 
@@ -229,7 +237,7 @@ U kunt een sjabloon exporteren als u nu een extra ontwikkel omgeving met dezelfd
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te `az group export` voegen aan de opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een JSON-bestand waarin de resource namen worden opgegeven.
+Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een JSON-bestand waarin de resource namen worden opgegeven.
  
 Gebruik [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)om een omgeving te maken op basis van uw sjabloon.
 

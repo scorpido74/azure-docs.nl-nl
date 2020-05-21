@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997489"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714777"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Ontwerp assistent-ervaring voor Windows 10
 
@@ -63,25 +63,22 @@ Assistenten moeten een luister ervaring bouwen om kritieke feedback te geven zod
 - De assistent is bezig met het verwerken en voorbereiden van een reactie
 - De assistent reageert
 
-Zelfs als statussen snel veranderen, is het een goed idee om UX voor staten te bieden, aangezien de duur van het Windows-ecosysteem variabel is. Visuele feedback en korte audio klokken of chirps, ook wel earcons &quot;&quot;genoemd, kunnen deel uitmaken van de oplossing. Op dezelfde manier kunnen visuele kaarten die zijn gekoppeld aan audio beschrijvingen, goed reageren op Opties.
+Zelfs als statussen snel veranderen, is het een goed idee om UX voor staten te bieden, aangezien de duur van het Windows-ecosysteem variabel is. Visuele feedback en korte audio klokken of chirps, ook wel earcons genoemd, &quot; &quot; kunnen deel uitmaken van de oplossing. Op dezelfde manier kunnen visuele kaarten die zijn gekoppeld aan audio beschrijvingen, goed reageren op Opties.
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>Ontwerp richtlijnen voor spraak activering in app
 
 Wanneer de assistent-app de focus heeft, is de klant intentie duidelijk te communiceren met de app, zodat alle spraak activeringen worden afgehandeld door de weer gave van de hoofd toepassing. Het formaat van deze weer gave kan worden gewijzigd door de klant. De rest van dit document maakt gebruik van het concrete voor beeld van een financiële service-assistent met de naam contoso om assistent-shell interacties te verklaren. In deze en volgende diagrammen wordt de klant aangegeven dat deze wordt weer gegeven in de TTS-spraak bellen aan de linkerkant met de assistent-antwoorden in de bolletjes bellen aan de rechter kant.
 
-**Weer gave in de app. Initiële status wanneer de activering van de telefoon begint:**
-![scherm opname van de Voice Assistant op Windows vóór activering](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Weer gave in de app. Initiële status wanneer de activering van de telefoon begint:** 
+ ![ scherm opname van de Voice Assistant op Windows vóór activering](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**Weer gave in de app. Na een geslaagde spraak activering begint de luister ervaring:**![scherm opname van de Voice Assistant in Windows terwijl de Voice Assistant luistert](media/voice-assistants/windows_voice_assistant/listening.png)
+**Weer gave in de app. Na een geslaagde spraak activering begint de luister ervaring:** ![ scherm opname van de Voice Assistant in Windows terwijl de Voice Assistant luistert](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**Weer gave in de app. Alle reacties blijven in de app-ervaring.** ![Scherm opname van de Voice Assistant op Windows als assistent-antwoorden](media/voice-assistants/windows_voice_assistant/response.png)
+**Weer gave in de app. Alle reacties blijven in de app-ervaring.** ![ Scherm opname van de Voice Assistant op Windows als assistent-antwoorden](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>Ontwerp richtlijnen voor spraak activering boven slot
 
 Assistenten die beschikbaar zijn met 19H2 zijn beschikbaar voor een Windows Voice-activerings platform en kunnen hiervoor het antwoord geven dat hierboven wordt vermeld.
-
-> [!NOTE]
-> Als gevolg van een actief probleem moeten assistenten die boven de vergrendelings GEBRUIKERSINTERFACE tekenen, WindowService. CloseWindow () implementeren voor alle afsluitingen. Dit heeft tot gevolg dat de app wordt beëindigd, maar een technisch probleem verhelpt en de assistent schoon wordt bewaard. Voor het behoud van een schone status als een app is ingeschakeld voor de bovenstaande vergrendelings activering, moet deze de status wijzigingen van de vergrendeling en WindowService. CloseWindow () controleren wanneer het apparaat wordt vergrendeld.
 
 ### <a name="customer-opt-in"></a>Opt-in voor klant
 
@@ -108,16 +105,16 @@ De-assistent moet de instructies voor het afwijzen van de app in deze sectie imp
 - **Alle assistentvormen die boven de vergren deling worden weer gegeven, moeten een X** in de rechter bovenhoek van de assistent bevatten.
 - Als u **op een wille keurige toets drukt, moet u ook de app assistent sluiten**. Toetsenbord invoer is een traditioneel signaal voor het vergren delen van apps dat de klant wil aanmelden. Daarom mogen toetsen bord/tekst invoer niet worden omgeleid naar de app. In plaats daarvan moet de app zichzelf sluiten wanneer de toetsenbord invoer wordt gedetecteerd, zodat de klant zich eenvoudig kan aanmelden bij hun apparaat.
 - **Als het scherm wordt uitgeschakeld, moet de app zichzelf negeren.** Dit zorgt ervoor dat de gebruiker de volgende keer dat de klant de PC gebruikt, het aanmeldings scherm wordt weer gegeven en op de computer wacht.
-- Als de app wordt &quot;gebruikt&quot;, kan deze boven de vergren deling worden voortgezet. &quot;in gebruik&quot; is een wille keurige invoer of uitvoer. Bijvoorbeeld: wanneer u muziek of video stroomsgewijst, kan de app de vergren deling boven slot voortzetten. &quot;Volg de&quot; stappen in en andere dialoog vensters voor multidraaien om de app boven slot te houden.
+- Als de app wordt &quot; gebruikt &quot; , kan deze boven de vergren deling worden voortgezet. &quot;in gebruik is &quot; een wille keurige invoer of uitvoer. Bijvoorbeeld: wanneer u muziek of video stroomsgewijst, kan de app de vergren deling boven slot voortzetten. &quot;Volg &quot; de stappen in en andere dialoog vensters voor multidraaien om de app boven slot te houden.
 - **Implementatie Details over het negeren van de toepassing** vindt u [in de bovenstaande implementatie handleiding voor vergren delen](windows-voice-assistants-implementation-guide.md#closing-the-application).
 
 ![Scherm opname van de Voice Assistant in Windows vóór activering](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
 ![Scherm opname van de Voice Assistant in Windows vóór activering](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
-### <a name="privacy-amp-security-considerations-above-lock"></a>Beveiligings &amp; overwegingen voor privacy boven vergren deling
+### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;Beveiligings overwegingen voor privacy boven vergren deling
 
-Veel Pc's zijn draagbaar, maar niet altijd binnen het bereik van de klant. Ze zijn mogelijk kort in Hotel kamers, stoelen van vlieg tuigen of werk ruimten, waarbij anderen fysieke toegang hebben. Als assistenten die boven de vergren deling zijn ingeschakeld, niet zijn voor bereid, kunnen ze worden onderhevig &quot;aan de klasse van zogenaamde [kwaad Maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; -aanvallen.
+Veel Pc's zijn draagbaar, maar niet altijd binnen het bereik van de klant. Ze zijn mogelijk kort in Hotel kamers, stoelen van vlieg tuigen of werk ruimten, waarbij anderen fysieke toegang hebben. Als assistenten die boven de vergren deling zijn ingeschakeld, niet zijn voor bereid, kunnen ze worden onderhevig aan de klasse van zogenaamde &quot; [kwaad Maid](https://en.wikipedia.org/wiki/Evil_maid_attack) - &quot; aanvallen.
 
 Daarom moeten assistenten de richt lijnen in deze sectie volgen om uw ervaring te beveiligen. Interactie boven slot vindt plaats wanneer de Windows-gebruiker niet is geverifieerd. Dit betekent dat in **het algemeen ook invoer naar de assistent moet worden behandeld als niet-geverifieerd**.
 
@@ -127,9 +124,9 @@ Daarom moeten assistenten de richt lijnen in deze sectie volgen om uw ervaring t
 
 | **Actie klasse** | **Beschrijving** | **Voor beelden (geen volledige lijst)** |
 | --- | --- | --- |
-| Veilig zonder verificatie | Algemene informatie over het gebruik of de opdracht en het beheer van de Basic-app | &quot;Hoe laat is het? &quot;, &quot;Het volgende nummer afspelen&quot; |
-| Veilig met luid spreker-ID | Imitatie risico, persoonlijke gegevens onthullen. | &quot;Wat&#39;s mijn volgende afspraak? &quot;, &quot;Mijn boodschappen lijstnummer&quot;bekijken &quot;en de oproep beantwoorden&quot; |
-| Veilig alleen na Windows-authenticatie | Acties met een hoog risico die een aanvaller zou kunnen gebruiken om de klant te beschadigen | &quot;Koop meer boodschappen&quot;, &quot;Verwijder mijn (belang rijk) afspraak&quot;, &quot;verzend een (gemiddelde) SMS-&quot;bericht &quot;, start een webpagina (kwaadwillend)&quot; |
+| Veilig zonder verificatie | Algemene informatie over het gebruik of de opdracht en het beheer van de Basic-app | &quot;Wat is de tijd? &quot; , &quot; het volgende nummer afspelen&quot; |
+| Veilig met luid spreker-ID | Imitatie risico, persoonlijke gegevens onthullen. | &quot;Wat&#39;s mijn volgende afspraak? &quot; , &quot; mijn boodschappen lijstnummer bekijken &quot; en &quot; de oproep beantwoorden&quot; |
+| Veilig alleen na Windows-authenticatie | Acties met een hoog risico die een aanvaller zou kunnen gebruiken om de klant te beschadigen | &quot;Koop meer boodschappen &quot; , &quot; Verwijder mijn (belang rijk) afspraak &quot; , &quot; Verzend een (gemiddelde) SMS &quot; -bericht, &quot; Start een webpagina (kwaadwillend)&quot; |
 
 In het geval van Contoso is algemene informatie over open bare aandelen informatie veilig, zonder verificatie. Klantspecifieke informatie, zoals het eigendoms aantal van shares, is waarschijnlijk veilig met de spreker-ID. Koop-of verkoop voorraden mogen echter nooit worden toegestaan zonder Windows-verificatie.
 

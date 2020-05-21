@@ -12,16 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff291592efc73415cce74ff666117851bb53e8a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681011"
+ms.locfileid: "83712267"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook toevoegen als een id-provider voor externe identiteiten
 
 U kunt Facebook toevoegen aan uw Self-service voor het registreren van gebruikers (preview), zodat gebruikers zich met hun eigen Facebook-accounts kunnen aanmelden bij uw toepassingen. Als u gebruikers wilt toestaan zich aan te melden met Facebook, moet u eerst [selfservice registratie inschakelen](self-service-sign-up-user-flow.md) voor uw Tenant. Nadat u Facebook als een id-provider hebt toegevoegd, stelt u een gebruikers stroom voor de toepassing in en selecteert u Facebook als een van de aanmeldings opties.
+
 > [!NOTE]
 > Gebruikers kunnen hun Facebook-accounts alleen gebruiken om zich aan te melden via apps met behulp van selfservice registratie en gebruikers stromen. Gebruikers kunnen niet worden uitgenodigd en hun uitnodiging inwisselen met een Facebook-account.
 

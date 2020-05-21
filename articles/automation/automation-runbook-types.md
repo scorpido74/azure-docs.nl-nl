@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 390f14e8369f206b2f5ffce74f0775b33e313021
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535516"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714981"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typen runbook
 
@@ -20,7 +20,7 @@ De Azure Automation Process Automation-Service ondersteunt diverse typen runbook
 |:--- |:--- |
 | [Grafisch](#graphical-runbooks)|Grafisch runbook dat is gebaseerd op Windows Power shell en is volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
 | [Grafische power shell-werk stroom](#graphical-runbooks)|Grafisch runbook op basis van een Windows Power shell-werk stroom en is volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
-| [Zo](#powershell-runbooks) |Tekst runbook op basis van Windows Power shell-scripts. |
+| [PowerShell](#powershell-runbooks) |Tekst runbook op basis van Windows Power shell-scripts. |
 | [PowerShell-werkstroom](#powershell-workflow-runbooks)|Tekst runbook op basis van Windows Power shell workflow scripting. |
 | [Python](#python-runbooks) |Tekst runbook op basis van python-scripts. |
 
@@ -69,8 +69,8 @@ Power shell-runbooks zijn gebaseerd op Windows Power shell. U bewerkt de code va
 ### <a name="limitations"></a>Beperkingen
 
 * U moet vertrouwd zijn met het uitvoeren van Power shell-scripts.
-* Runbooks kunnen geen [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) gebruiken om meerdere acties parallel uit te voeren.
-* Runbooks kunnen geen [controle punten](automation-powershell-workflow.md#checkpoints) gebruiken om het runbook te hervatten als er een fout optreedt.
+* Runbooks kunnen geen [parallelle verwerking](automation-powershell-workflow.md#use-parallel-processing) gebruiken om meerdere acties parallel uit te voeren.
+* Runbooks kunnen geen [controle punten](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) gebruiken om het runbook te hervatten als er een fout optreedt.
 * U kunt alleen Power shell workflow-runbooks en grafische runbooks als onderliggende runbooks toevoegen met behulp van de cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) , waarmee een nieuwe taak wordt gemaakt.
 
 ### <a name="known-issues"></a>Bekende problemen
@@ -78,9 +78,9 @@ Power shell-runbooks zijn gebaseerd op Windows Power shell. U bewerkt de code va
 Hieronder vindt u actuele bekende problemen met Power shell-runbooks:
 
 * Power shell-runbooks kunnen een niet-versleutelde [variabele Asset](automation-variables.md) niet ophalen met een null-waarde.
-* Power shell-runbooks kunnen een variabele Asset `*~*` met in de naam niet ophalen.
+* Power shell-runbooks kunnen een variabele Asset met `*~*` in de naam niet ophalen.
 * Een [Get-process-](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) bewerking in een lus in een Power shell-runbook kan vastlopen na ongeveer 80 iteraties.
-* Een Power shell-runbook kan mislukken als wordt geprobeerd een grote hoeveelheid gegevens naar de uitvoer stroom tegelijk te schrijven. Normaal gesp roken kunt u dit probleem omzeilen door het runbook uit te voeren alleen de informatie die nodig is om met grote objecten te werken. In plaats van zonder beperkingen te `Get-Process` gebruiken, kunt u bijvoorbeeld de cmdlet uitvoer alleen de vereiste para meters hebben als `Get-Process | Select ProcessName, CPU`in.
+* Een Power shell-runbook kan mislukken als wordt geprobeerd een grote hoeveelheid gegevens naar de uitvoer stroom tegelijk te schrijven. Normaal gesp roken kunt u dit probleem omzeilen door het runbook uit te voeren alleen de informatie die nodig is om met grote objecten te werken. In plaats van zonder beperkingen te gebruiken `Get-Process` , kunt u bijvoorbeeld de cmdlet uitvoer alleen de vereiste para meters hebben als in `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>Power shell workflow-runbooks
 
@@ -89,16 +89,16 @@ Power shell workflow-runbooks zijn tekst-runbooks op basis van [Windows Power sh
 ### <a name="advantages"></a>Voordelen
 
 * Implementeer alle complexe logica met Power shell-werk stroom code.
-* Gebruik [controle punten](automation-powershell-workflow.md#checkpoints) om de bewerking te hervatten als er een fout optreedt.
-* Gebruik [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) om meerdere acties parallel uit te voeren.
+* Gebruik [controle punten](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) om de bewerking te hervatten als er een fout optreedt.
+* Gebruik [parallelle verwerking](automation-powershell-workflow.md#use-parallel-processing) om meerdere acties parallel uit te voeren.
 * Kan andere grafische runbooks en Power shell-werk stroom runbooks als onderliggende runbooks bevatten om werk stromen op hoog niveau te maken.
 
 ### <a name="limitations"></a>Beperkingen
 
 * U moet bekend zijn met de Power shell-werk stroom.
-* Runbooks moeten de extra complexiteit van Power shell-werk stroom, zoals [gedeserialiseerd objecten](automation-powershell-workflow.md#code-changes), afhandelen.
+* Runbooks moeten de extra complexiteit van Power shell-werk stroom, zoals [gedeserialiseerd objecten](automation-powershell-workflow.md#deserialized-objects), afhandelen.
 * Runbooks nemen meer tijd in beslag dan Power shell-runbooks sinds ze moeten worden gecompileerd voordat ze kunnen worden uitgevoerd.
-* U kunt Power shell-runbooks alleen als onderliggende runbooks toevoegen met `Start-AzAutomationRunbook` behulp van de-cmdlet.
+* U kunt Power shell-runbooks alleen als onderliggende runbooks toevoegen met behulp van de- `Start-AzAutomationRunbook` cmdlet.
 * Runbooks kunnen niet worden uitgevoerd op een Linux-Hybrid Runbook Worker.
 
 ## <a name="python-runbooks"></a>Python-runbooks

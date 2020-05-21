@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 921a11d8846c868436365fe400852eac0f7dcd3e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273236"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712091"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -90,7 +90,7 @@ De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik ind
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (werkt voor `>`, `<`, `>=`, `<=`, `!=`,)
+  (werkt voor `>` , `<` ,,, `>=` `<=` , `!=` )
 
 - Controleren op de aanwezigheid van een eigenschap:
 
@@ -98,7 +98,11 @@ De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik ind
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Komt overeen met het voor voegsel van de teken reeks (bevat de bereik index):
+- Teken reeks systeem functies:
+
+   ```sql
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
@@ -152,7 +156,7 @@ Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geosp
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de `ORDER BY` component.
+- Query's met een filter en `ORDER BY` . Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de `ORDER BY` component.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -175,7 +179,7 @@ Zolang één filter predicaat een van de index typen gebruikt, evalueert de quer
 
 De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de `WHERE` component van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
 
-Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land) overeenkomt met het pad dat in rood is gemarkeerd:
+Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land) overeenkomt met het pad dat in rood is gemarkeerd:
 
 ![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
 

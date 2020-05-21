@@ -1,16 +1,16 @@
 ---
 title: Overzicht van Azure Automation Updatebeheer
-description: Overzicht van de functie Updatebeheer voor het beheren van updates voor uw Windows-en Linux-computers
+description: Overzicht van de functie Updatebeheer voor het beheren van updates voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: d3a3a19673ecb6edb82f0512f318298865c8ed24
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681287"
+ms.locfileid: "83714760"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -74,7 +74,7 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ### <a name="supported-client-types"></a>Ondersteunde client typen
 
-De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
+De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie [Deploying a Windows Hybrid Runbook worker](automation-windows-hrw-install.md) and [deploy a Linux Hybrid Runbook worker](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
 
 > [!NOTE]
 > Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
@@ -98,9 +98,11 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
+|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [Windows Update voor Business](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) for Windows 10 client machine patch management. |
 |Windows Server 2016 Nano Server     | Niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
+
+
 
 ### <a name="client-requirements"></a>Clientvereisten
 

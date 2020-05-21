@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605901"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714573"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions aanroepen vanuit Azure Logic Apps
 
@@ -40,7 +40,7 @@ Als u code fragmenten wilt uitvoeren zonder Azure functions te maken, leert u ho
 
   * De functie maakt gebruik van de **http-trigger** sjabloon.
 
-    De sjabloon voor de HTTP-trigger kan inhoud `application/json` accepteren die van het type is van uw logische app. Wanneer u een Azure-functie aan uw logische app toevoegt, worden in de Logic app Designer aangepaste functies weer gegeven die zijn gemaakt op basis van deze sjabloon binnen uw Azure-abonnement.
+    De sjabloon voor de HTTP-trigger kan inhoud accepteren die `application/json` van het type is van uw logische app. Wanneer u een Azure-functie aan uw logische app toevoegt, worden in de Logic app Designer aangepaste functies weer gegeven die zijn gemaakt op basis van deze sjabloon binnen uw Azure-abonnement.
 
   * De functie gebruikt geen aangepaste routes tenzij u een OpenAPI- [definitie](../azure-functions/functions-openapi-definition.md) (voorheen een [Swagger-bestand](https://swagger.io/)genoemd) hebt gedefinieerd.
 
@@ -60,11 +60,11 @@ Als u code fragmenten wilt uitvoeren zonder Azure functions te maken, leert u ho
 
 1. Stel in de functie-app [Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) in zodat alle oorsprongen zijn toegestaan door de volgende stappen uit te voeren:
 
-   1. Selecteer de functie-app in de lijst **functie-apps** . Selecteer **platform functies** > **CORS**in het rechterdeel venster.
+   1. Selecteer de functie-app in de lijst **functie-apps** . Selecteer **platform functies**CORS in het rechterdeel venster  >  **CORS**.
 
       ![Selecteer de functie-app > platform functies > CORS](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. Voeg onder **CORS**het Joker teken asterisk**`*`**() toe, maar verwijder alle andere oorsprongen uit de lijst en selecteer **Opslaan**.
+   1. Voeg onder **CORS**het **`*`** Joker teken asterisk () toe, maar verwijder alle andere oorsprongen uit de lijst en selecteer **Opslaan**.
 
       ![' CORS * ' instellen op het Joker teken ' * '](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -83,13 +83,13 @@ function convertToDateString(request, response){
 
 Wat gebeurt er in deze functie:
 
-1. De functie maakt een `data` variabele en wijst het `body` object in het `request` object toe aan die variabele. De functie maakt gebruik van de operator punt (.) om `body` naar het object `request` in het object te verwijzen:
+1. De functie maakt een `data` variabele en wijst het `body` object in het `request` object toe aan die variabele. De functie maakt gebruik van de operator punt (.) om naar het `body` object in het object te verwijzen `request` :
 
    ```javascript
    var data = request.body;
    ```
 
-1. De functie heeft nu toegang tot `date` de eigenschap via `data` de variabele en converteert die eigenschaps waarde van datetime-type naar DateString-type `ToDateString()` door de functie aan te roepen. De functie retourneert ook het resultaat via de `body` eigenschap in het antwoord van de functie:
+1. De functie heeft nu toegang tot de `date` eigenschap via de `data` variabele en converteert die eigenschaps waarde van datetime-type naar DateString-type door de functie aan te roepen `ToDateString()` . De functie retourneert ook het resultaat via de `body` eigenschap in het antwoord van de functie:
 
    ```javascript
    body: data.date.ToDateString();
@@ -131,22 +131,22 @@ Voordat u een Azure-functie kunt maken, moet u echter al een Azure function-app 
 
    ![Uw functie definiëren](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   In de code van de sjabloon verwijst het * `context` object* naar het bericht dat door de logische app wordt verzonden via het veld **hoofd tekst** van de aanvraag in een latere stap. Als u toegang `context` wilt krijgen tot de eigenschappen van het object vanuit uw functie, gebruikt u de volgende syntaxis:
+   In de code van de sjabloon verwijst het * `context` object* naar het bericht dat door de logische app wordt verzonden via het veld **hoofd tekst** van de aanvraag in een latere stap. Als u toegang wilt krijgen tot de `context` Eigenschappen van het object vanuit uw functie, gebruikt u de volgende syntaxis:
 
    `context.body.<property-name>`
 
-   Als u bijvoorbeeld naar de `content` eigenschap in het `context` object wilt verwijzen, gebruikt u de volgende syntaxis:
+   Als u bijvoorbeeld naar de `content` eigenschap in het object wilt verwijzen, gebruikt u de volgende `context` syntaxis:
 
    `context.body.content`
 
-   De sjabloon code bevat ook een `input` variabele, die de waarde van de `data` para meter opslaat, zodat uw functie bewerkingen op die waarde kan uitvoeren. In Java script-functies `data` is de variabele ook een snelkoppeling `context.body`voor.
+   De sjabloon code bevat ook een `input` variabele, die de waarde van de `data` para meter opslaat, zodat uw functie bewerkingen op die waarde kan uitvoeren. In Java script-functies `data` is de variabele ook een snelkoppeling voor `context.body` .
 
    > [!NOTE]
-   > De `body` eigenschap is hier van toepassing `context` op het object en is niet hetzelfde als het **hoofdtekst** token van de uitvoer van een actie, wat u mogelijk ook doorgeeft aan uw functie.
+   > De `body` eigenschap is hier van toepassing op het `context` object en is niet hetzelfde als het **hoofdtekst** token van de uitvoer van een actie, wat u mogelijk ook doorgeeft aan uw functie.
 
 1. Geef in het vak **hoofd tekst** van de aanvraag de invoer van uw functie op die moet worden opgemaakt als een JavaScript object NOTATION (JSON)-object.
 
-   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een `content` eigenschap bevat met de naam die de waarde **van het van** -token van de e-mail trigger heeft.
+   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een eigenschap bevat `content` met de naam die de waarde **van het van** -token van de e-mail trigger heeft.
 
    ![Voor beeld van een hoofd tekst van aanvraag-context object Payload](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -180,7 +180,7 @@ Als u bestaande Azure-functies wilt aanroepen vanuit uw Logic apps, kunt u Azure
 
 1. Geef in het vak **hoofd tekst** van de aanvraag de invoer van uw functie op die moet worden opgemaakt als een JavaScript object NOTATION (JSON)-object.
 
-   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een `content` eigenschap bevat met de naam die de waarde **van het van** -token van de e-mail trigger heeft.
+   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een eigenschap bevat `content` met de naam die de waarde **van het van** -token van de e-mail trigger heeft.
 
    ![Voor beeld van een hoofd tekst van aanvraag-context object Payload](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -200,7 +200,7 @@ Wanneer u een logische app vanuit een Azure-functie wilt activeren, moet de logi
 
 ## <a name="enable-authentication-for-azure-functions"></a>Verificatie inschakelen voor Azure functions
 
-Voor het verifiëren van toegang tot resources in andere Azure Active Directory (Azure AD)-tenants zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Voor het eenvoudig verifiëren van toegang tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Als u uw logische app instelt voor het gebruik van de door het systeem toegewezen identiteit of een hand matig gemaakte door de gebruiker toegewezen identiteit, kunnen de Azure functions in uw logische app ook dezelfde identiteit voor verificatie gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatie ondersteuning voor Azure functions in Logic apps.
 
@@ -229,7 +229,7 @@ Als u de beheerde identiteit van uw logische app in uw Azure-functie wilt gebrui
 
    ![Selecteer de optie ' CMD ' in het menu Debug console](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. Nadat de volgende pagina wordt weer gegeven, selecteert u in de lijst met mappen **site** > **wwwroot** > *uw-functie*. Deze stappen gebruiken ' FabrikamAzureFunction ' als voorbeeld functie.
+1. Nadat de volgende pagina wordt weer gegeven, selecteert u in de lijst met mappen **site**  >  **wwwroot**  >  *uw-functie*. Deze stappen gebruiken ' FabrikamAzureFunction ' als voorbeeld functie.
 
    ![Selecteer ' site ' > ' wwwroot ' > uw functie](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
@@ -237,7 +237,7 @@ Als u de beheerde identiteit van uw logische app in uw Azure-functie wilt gebrui
 
    ![Klik op bewerken voor het bestand function. json](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
-1. Controleer in `bindings` het object of de `authLevel` eigenschap bestaat. Als de eigenschap bestaat, stelt u de waarde van `anonymous`de eigenschap in op. Als dat niet het geval is, voegt u die eigenschap toe en stelt u de waarde in.
+1. Controleer in het `bindings` object of de `authLevel` eigenschap bestaat. Als de eigenschap bestaat, stelt u de waarde van de eigenschap in op `anonymous` . Als dat niet het geval is, voegt u die eigenschap toe en stelt u de waarde in.
 
    ![De eigenschap authLevel toevoegen en instellen op anoniem](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
 
@@ -253,11 +253,11 @@ Voordat u met deze taak begint, zoekt en plaatst u deze waarden voor later gebru
 
   * Als u deze object-ID wilt genereren, moet u de door [het systeem toegewezen identiteit van uw logische app inschakelen](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * Als u deze object-ID niet wilt vinden, opent u de logische app in de ontwerp functie voor logische apps. Selecteer onder **instellingen**in het menu van de logische app de optie **identiteits** > **systeem toegewezen**.
+  * Als u deze object-ID niet wilt vinden, opent u de logische app in de ontwerp functie voor logische apps. Selecteer onder **instellingen**in het menu van de logische app de optie **identiteits**  >  **systeem toegewezen**.
 
 * De Directory-ID voor uw Tenant in Azure Active Directory (Azure AD)
 
-  Als u de Directory-ID van uw Tenant wilt ophalen, [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) kunt u de Power shell-opdracht uitvoeren. Of voer de volgende stappen uit in het Azure Portal:
+  Als u de Directory-ID van uw Tenant wilt ophalen, kunt u de [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Power shell-opdracht uitvoeren. Of voer de volgende stappen uit in het Azure Portal:
 
   1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze.
 
@@ -296,7 +296,7 @@ U bent nu klaar om Azure AD-verificatie in te stellen voor uw functie-app.
 
    1. Voer in de eigenschap **client-id** de object-id in voor de door het systeem toegewezen identiteit van uw logische app.
 
-   1. Voer in de **URL** -eigenschap van de uitgever `https://sts.windows.net/` de URL in en voeg de Directory-id van uw Azure AD-Tenant toe.
+   1. Voer in de URL-eigenschap van de **Uitgever** de `https://sts.windows.net/` URL in en voeg de Directory-id van uw Azure AD-Tenant toe.
 
       `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
 

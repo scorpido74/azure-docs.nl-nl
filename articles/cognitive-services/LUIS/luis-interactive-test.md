@@ -2,13 +2,13 @@
 title: App testen in de LUIS-Portal
 description: Gebruik Language Understanding (LUIS) om voortdurend aan uw toepassing te werken om deze te verfijnen en de taal inzichten te verbeteren.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653886"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714389"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Uw LUIS-app testen in de LUIS-Portal
 
@@ -42,7 +42,8 @@ De test utterance mag niet exact hetzelfde zijn als een voor beeld van een uitin
 
 1. De utterance, de belangrijkste intentie en de score worden toegevoegd aan de lijst met uitingen onder het tekstvak.
 
-    ![Interactieve tests duiden het verkeerde doel aan](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Interactieve tests duiden het verkeerde doel aan](./media/luis-how-to-interactive-test/test-weather-1.png)
 
 ## <a name="inspect-the-prediction"></a>De voor spelling controleren
 
@@ -50,9 +51,13 @@ U kunt de details van het test resultaat bekijken in het deel venster **inspecte
 
 1. **Selecteer in** het deel venster voor het **testen** van de schuif regelaar naar een utterance die u wilt vergelijken.
 
-    ![Selecteer de knop controleren om meer informatie over de test resultaten weer te geven](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer de knop controleren om meer informatie over de test resultaten weer te geven](./media/luis-how-to-interactive-test/inspect.png)
 
 1. Het deel venster **inspectie** wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt de voor spelling van de geselecteerde utterance weer gegeven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Gedeeltelijke scherm opname van het controle paneel voor testen](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="add-to-example-utterances"></a>Toevoegen aan voor beeld uitingen
 
@@ -76,12 +81,14 @@ Als u [patronen](luis-concept-patterns.md) gebruikt en de utterance overeenkomt 
 
 U kunt de actieve versie van uw app testen met de gepubliceerde versie van het [eind punt](luis-glossary.md#endpoint) . Selecteer in het deel venster **inspecteren** de optie **compare with published**. Elk testen op basis van het gepubliceerde model wordt in mindering gebracht op het quotum saldo van uw Azure-abonnement.
 
-![Vergelijken met gepubliceerde](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![Vergelijken met gepubliceerde](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>JSON van eind punt weer geven in het test paneel
 U kunt de eindpunt-JSON weer geven die is geretourneerd voor de vergelijking door de **weer gave JSON**weer geven te selecteren.
 
-![Gepubliceerd JSON-antwoord](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![Gepubliceerd JSON-antwoord](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>Aanvullende instellingen in het test paneel
 

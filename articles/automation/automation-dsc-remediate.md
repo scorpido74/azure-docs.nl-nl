@@ -1,6 +1,6 @@
 ---
 title: Niet-compatibele Azure Automation status configuratie servers herstellen
-description: Configuraties op aanvraag opnieuw Toep assen op servers waar de configuratie status is gedrijfd
+description: In dit artikel wordt beschreven hoe u configuraties op aanvraag opnieuw kunt Toep assen op servers waar de configuratie status is gedrijfd.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,23 +9,23 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: f871b406793e455c857ca14c83434c9ed3e004df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 29322ae244491e58b783745b42323455fa2752b2
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993846"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712958"
 ---
-# <a name="remediate-noncompliant-dsc-servers"></a>Niet-compatibele DSC-servers herstellen
+# <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Niet-compatibele Azure Automation status configuratie servers herstellen
 
-Als servers zijn geregistreerd met Azure Automation status configuratie, wordt de configuratie modus ingesteld op `ApplyOnly`, `ApplyandMonitor`of `ApplyAndAutoCorrect`. Als de modus niet is ingesteld `ApplyAndAutoCorrect`op, blijven servers die van een compatibele status zijn, om welke reden dan ook niet-compatibel.
+Als servers zijn geregistreerd met Azure Automation status configuratie, wordt de configuratie modus ingesteld op `ApplyOnly` , `ApplyandMonitor` of `ApplyAndAutoCorrect` . Als de modus niet is ingesteld op `ApplyAndAutoCorrect` , blijven servers die van een compatibele status zijn, om welke reden dan ook niet-compatibel.
 
 Azure Compute biedt een functie met de naam run-opdracht waarmee klanten scripts in virtuele machines kunnen uitvoeren.
 Dit document bevat voorbeeld scripts voor deze functie wanneer de configuratie-drift hand matig wordt gecorrigeerd.
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Juiste drift van virtuele Windows-machines met behulp van Power shell
 
-Zie de documentatie pagina [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](/azure/virtual-machines/windows/run-command)voor stapsgewijze instructies voor het uitvoeren van de opdracht functie op virtuele Windows-machines.
+U kunt het aantal virtuele machines van Windows corrigeren met de `Run` opdracht functie. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](/azure/virtual-machines/windows/run-command).
 
 Gebruik de cmdlet [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) om een configuratie knooppunt van Azure Automation status af te dwingen om de nieuwste configuratie te downloaden en toe te passen.
 
@@ -35,11 +35,11 @@ Update-DscConfiguration -Wait -Verbose
 
 ## <a name="correct-drift-of-linux-virtual-machines"></a>Juiste drift van virtuele Linux-machines
 
-Vergelijk bare functionaliteit is momenteel niet beschikbaar voor Linux-servers.
-De enige optie is om het registratie proces te herhalen.
-Voor Azure-knoop punten kunt u de drift in het Azure Portal corrigeren of met AZ module-cmdlets. Details over dit proces worden beschreven in [onboarding-machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md#enable-a-vm-using-azure-portal).
-Voor hybride knoop punten kunt u de drift corrigeren met behulp van de meegeleverde python-scripts.
-Zie [Power shell DSC voor Linux opslag plaats](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
+Voor virtuele Linux-machines hebt u geen optie om de opdracht te gebruiken `Run` . U kunt de drift voor deze machines alleen corrigeren door het registratie proces te herhalen. 
+
+Voor Azure-knoop punten kunt u de drift in het Azure Portal corrigeren of met AZ module-cmdlets. Informatie over dit proces wordt beschreven in [een VM inschakelen met behulp van Azure Portal](automation-dsc-onboarding.md#enable-a-vm-using-azure-portal).
+
+Voor hybride knoop punten kunt u met behulp van de python-scripts de drift corrigeren. Zie [DSC-bewerkingen uitvoeren vanaf de Linux-computer](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Automation status configuratie rapport gegevens door sturen naar Azure Monitor-logboeken
-description: In dit artikel wordt beschreven hoe u de gewenste status configuratie (DSC)-rapport gegevens van Azure Automation status configuratie naar Azure Monitor Logboeken kunt verzenden om meer inzicht en beheer te bieden.
+title: Integreren met Azure Monitor-logboeken
+description: In dit artikel leest u hoe u de gewenste status configuratie rapport gegevens kunt verzenden van Azure Automation status configuratie naar Azure Monitor-Logboeken.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cc68b53137175042f586ee83bc045f0fbbca38f7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713281"
 ---
-# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Rapportagegegevens van State Configuration doorsturen naar Azure Monitor-logboeken
+# <a name="integrate-with-azure-monitor-logs"></a>Integreren met Azure Monitor-logboeken
 
 Met de configuratie van Azure Automation status worden de knooppunt status gegevens gedurende 30 dagen bewaard. U kunt knooppunt status gegevens verzenden naar uw Log Analytics-werk ruimte als u deze gegevens gedurende een langere periode wilt bewaren. Nalevings status is zichtbaar in de Azure Portal of met Power shell, voor knoop punten en voor afzonderlijke DSC-resources in knooppunt configuraties. 
 
@@ -29,7 +29,6 @@ Azure Monitor-Logboeken biedt meer operationele zicht baarheid van de configurat
 - Gebruik aangepaste weer gaven en zoek query's om uw runbook-resultaten, de status van de runbook-taak en andere gerelateerde sleutel indicatoren of metrische gegevens te visualiseren.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -60,7 +59,7 @@ Voer de volgende stappen uit om te beginnen met het importeren van gegevens van 
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. Voer de volgende Power shell-cmdlet `<AutomationResourceId>` uit `<WorkspaceResourceId>` en vervang `ResourceId` en door de waarden uit elk van de vorige stappen.
+1. Voer de volgende Power shell-cmdlet `<AutomationResourceId>` uit en vervang en `<WorkspaceResourceId>` door de `ResourceId` waarden uit elk van de vorige stappen.
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -78,7 +77,7 @@ Nadat u de integratie met Azure Monitor-Logboeken hebt ingesteld voor de configu
 
 ![Logboeken](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
-Het deel venster zoeken in Logboeken wordt geopend met een query regio binnen het bereik van uw Automation-account bron. U kunt in de logboeken voor de status configuratie zoeken naar DSC-bewerkingen door in Azure Monitor logboeken te zoeken. De records voor DSC-bewerkingen worden opgeslagen in `AzureDiagnostics` de tabel. Als u bijvoorbeeld knoop punten zoekt die niet compatibel zijn, typt u de volgende query.
+Het deel venster zoeken in Logboeken wordt geopend met een query regio binnen het bereik van uw Automation-account bron. U kunt in de logboeken voor de status configuratie zoeken naar DSC-bewerkingen door in Azure Monitor logboeken te zoeken. De records voor DSC-bewerkingen worden opgeslagen in de `AzureDiagnostics` tabel. Als u bijvoorbeeld knoop punten zoekt die niet compatibel zijn, typt u de volgende query.
 
 ```AzureDiagnostics
 | where Category == 'DscNodeStatus' 
@@ -103,7 +102,7 @@ Als u een waarschuwings regel wilt maken, moet u beginnen met het maken van een 
 1. Klik op de pagina overzicht van Log Analytics werk ruimte op **Logboeken**.
 1. Maak een zoek opdracht in het logboek voor uw waarschuwing door de volgende zoek opdracht in het query veld in te voeren:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Als u logboeken van meer dan één Automation-account of abonnement op uw werk ruimte hebt ingesteld, kunt u uw waarschuwingen groeperen op abonnement en Automation-account. De naam van het Automation-account `Resource` afleiden van het veld in `DscNodeStatusData` de zoek actie van de records.
+   Als u logboeken van meer dan één Automation-account of abonnement op uw werk ruimte hebt ingesteld, kunt u uw waarschuwingen groeperen op abonnement en Automation-account. De naam van het Automation-account afleiden van het `Resource` veld in de zoek actie van de `DscNodeStatusData` records.
 1. Als u het scherm **regel maken** wilt openen, klikt u op **nieuwe waarschuwings regel** boven aan de pagina. 
 
 Zie [een waarschuwings regel maken](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)voor meer informatie over de opties voor het configureren van de waarschuwing.
@@ -127,8 +126,8 @@ Met deze query wordt een grafiek van de knooppunt status gedurende een periode w
 
 Met Azure Automation diagnostische gegevens worden twee categorieën records gemaakt in Azure Monitor logboeken:
 
-* Knooppunt status gegevens (`DscNodeStatusData`)
-* Resource status gegevens (`DscResourceStatusData`)
+* Knooppunt status gegevens ( `DscNodeStatusData` )
+* Resource status gegevens ( `DscResourceStatusData` )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -140,7 +139,7 @@ Met Azure Automation diagnostische gegevens worden twee categorieën records gem
 | NodeName_s |De naam van het beheerde knoop punt. |
 | NodeComplianceStatus_s |Status waarde die aangeeft of het knoop punt compatibel is. |
 | DscReportStatus |Status waarde die aangeeft of de nalevings controle is uitgevoerd. |
-| ConfigurationMode | De modus die wordt gebruikt om de configuratie toe te passen op het knoop punt. Mogelijke waarden zijn: <ul><li>`ApplyOnly`: DSC past de configuratie toe en doet niets meer tenzij een nieuwe configuratie wordt gepusht naar het doel knooppunt of wanneer een nieuwe configuratie wordt opgehaald van een server. Na de eerste toepassing van een nieuwe configuratie controleert DSC niet op een eerder geconfigureerde status. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat `ApplyOnly` de waarde van kracht wordt. </li><li>`ApplyAndMonitor`: Dit is de standaard waarde. De LCM past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat `ApplyAndMonitor` de waarde van kracht wordt.</li><li>`ApplyAndAutoCorrect`: DSC past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd en wordt de huidige configuratie opnieuw toegepast.</li></ul> |
+| ConfigurationMode | De modus die wordt gebruikt om de configuratie toe te passen op het knoop punt. Mogelijke waarden zijn: <ul><li>`ApplyOnly`: DSC past de configuratie toe en doet niets meer tenzij een nieuwe configuratie wordt gepusht naar het doel knooppunt of wanneer een nieuwe configuratie wordt opgehaald van een server. Na de eerste toepassing van een nieuwe configuratie controleert DSC niet op een eerder geconfigureerde status. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat de `ApplyOnly` waarde van kracht wordt. </li><li>`ApplyAndMonitor`: Dit is de standaard waarde. De LCM past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat de `ApplyAndMonitor` waarde van kracht wordt.</li><li>`ApplyAndAutoCorrect`: DSC past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd en wordt de huidige configuratie opnieuw toegepast.</li></ul> |
 | HostName_s | De naam van het beheerde knoop punt. |
 | IPAddress | Het IPv4-adres van het beheerde knoop punt. |
 | Categorie | `DscNodeStatus`. |

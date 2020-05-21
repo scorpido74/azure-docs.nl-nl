@@ -1,33 +1,33 @@
 ---
-description: Meer informatie over de versie geschiedenis van de uitbrei ding desired state Configuration (DSC) in Azure.
+title: Versie geschiedenis van de desired state Configuration-extensie voor Azure gebruiken
+description: In dit artikel leest u hoe u kunt werken met de versie geschiedenis van de uitbrei ding desired state Configuration (DSC) in Azure.
 ms.date: 06/21/2018
 keywords: DSC, Power shell, azure, uitbrei ding
-title: Versiegeschiedenis van Azure DSC-extensie
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120702"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713196"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Versie geschiedenis van de desired state Configuration-extensie voor Azure
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Versie geschiedenis van de desired state Configuration-extensie voor Azure gebruiken
 
 De Azure desired state Configuration (DSC) VM-extensie wordt bijgewerkt als nodig ter ondersteuning van verbeteringen en nieuwe mogelijkheden die worden geleverd door Azure, Windows Server en het Windows Management Framework (WMF) dat Windows Power shell bevat.
 
-In dit artikel vindt u informatie over elke versie van de Azure DSC VM-extensie, de omgevingen waarin deze worden ondersteund, en opmerkingen en opmerkingen over nieuwe functies of wijzigingen.
+Dit artikel bevat informatie over elke versie van de Azure DSC VM-extensie, de omgevingen waarin deze worden ondersteund en opmerkingen en opmerkingen over nieuwe functies of wijzigingen.
 
 ## <a name="latest-version"></a>Nieuwste versie
 
 ### <a name="version-276"></a>Versie 2,76
 
 - **Release datum:**
-  - 9 mei 2018 (Azure) | 21 juni 2018 (Azure China, Azure Government)
+  - 9 mei 2018 (Azure) | 21 juni 2018 (Azure China ViaNet 21, Azure Government)
 - **Ondersteuning voor besturings systeem:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -42,7 +42,7 @@ In dit artikel vindt u informatie over elke versie van de Azure DSC VM-extensie,
   - WMF 4.0
 - **Variabelen**
   - Azure
-  - Azure China
+  - Azure China ViaNet 21
   - Azure Government
 - **Opmerkingen:** Deze versie maakt gebruik van DSC zoals opgenomen in Windows Server 2016. voor andere Windows-besturings systemen wordt het [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (voor de installatie van WMF moet opnieuw worden opgestart) geïnstalleerd. Voor nano server is de DSC-rol geïnstalleerd op de virtuele machine.
 - **Nieuwe functies:**
@@ -89,7 +89,7 @@ In dit artikel vindt u informatie over elke versie van de Azure DSC VM-extensie,
     }
     ```
 
-  - In de nieuwe extensie versie wordt TLS 1,2 nu afgedwongen. Bij het implementeren van de uitbrei ding als u al de AutoUpgradeMinorVersion = True had in de Resource Manager-sjabloon, krijgt de uitbrei ding automatisch een upgrade naar 2,75. Geef `TypeHandlerVersion = 2.75` voor hand matige updates in uw Resource Manager-sjabloon op.
+  - In de nieuwe extensie versie wordt TLS 1,2 nu afgedwongen. Bij het implementeren van de uitbrei ding als u al de AutoUpgradeMinorVersion = True had in de Resource Manager-sjabloon, krijgt de uitbrei ding automatisch een upgrade naar 2,75. Geef voor hand matige updates `TypeHandlerVersion = 2.75` in uw Resource Manager-sjabloon op.
 
 ### <a name="version-270---272"></a>Versie 2,70-2,72
 
@@ -181,10 +181,10 @@ In dit artikel vindt u informatie over elke versie van de Azure DSC VM-extensie,
 - **Release datum:** 3 juni 2016
 - **Ondersteuning voor besturings systeem:** Windows Server 2016 Technical Preview, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 - **WMF-ondersteuning:** WMF 5,0 RTM, WMF 4,0 update, WMF 4,0
-- **Omgeving:** Azure, Azure China, Azure Government
+- **Omgeving:** Azure, Azure China ViaNet 21, Azure Government
 - **Opmerkingen:** Deze versie maakt gebruik van DSC zoals opgenomen in Windows Server 2016 Technical Preview; voor andere Windows-besturings systemen installeert het [Windows Management Framework 5,0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) (installatie van WMF moet opnieuw worden opgestart).
 - **Nieuwe functies:**
-  - De DSC-uitbrei ding is nu onboarding naar Azure China. Deze versie bevat voornamelijk oplossingen voor het uitvoeren van de uitbrei ding in azure China.
+  - De DSC-uitbrei ding is nu onboarding naar Azure China ViaNet 21. Deze versie bevat voornamelijk oplossingen voor het uitvoeren van de uitbrei ding op Azure China ViaNet 21.
 
 ### <a name="version-218"></a>Versie 2,18
 
@@ -249,7 +249,7 @@ In dit artikel vindt u informatie over elke versie van de Azure DSC VM-extensie,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor meer informatie over Power shell DSC gaat u naar het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
+- Voor meer informatie over Power shell DSC raadpleegt u het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
 - Bekijk de [Resource Manager-sjabloon voor de DSC-extensie](/azure/virtual-machines/extensions/dsc-template).
 - Voor meer functionaliteit die u kunt beheren met Power shell DSC, en voor meer DSC-resources, gaat u naar de [Power shell Gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Zie voor meer informatie over het door geven van gevoelige para meters in configuraties [veilig beheer referenties met de DSC-extensie-handler](/azure/virtual-machines/extensions/dsc-credentials).

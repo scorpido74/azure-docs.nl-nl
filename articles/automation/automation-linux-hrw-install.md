@@ -1,16 +1,16 @@
 ---
-title: Hybrid Runbook Worker voor Azure Automation in Linux
-description: Dit artikel bevat informatie over het installeren van een Azure Automation Hybrid Runbook Worker, zodat u runbooks kunt uitvoeren op Linux-computers in uw lokale Data Center of in de cloud omgeving.
+title: Een Linux-Hybrid Runbook Worker implementeren in Azure Automation
+description: In dit artikel wordt uitgelegd hoe u een Azure Automation Hybrid Runbook Worker installeert om runbooks uit te voeren op Linux-computers in uw lokale Data Center of in de cloud omgeving.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82f6d9e56e5d5745077ef512cb3392c16b95961f
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872178"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712448"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -70,23 +70,23 @@ De minimale vereisten voor een Linux-Hybrid Runbook Worker zijn:
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker installeren
 
-Als u een Hybrid Runbook Worker op uw Linux-computer wilt installeren en configureren, volgt u een eenvoudig hand matig proces. Hiervoor moet u de Automatisering-Hybrid Worker oplossing inschakelen in uw Azure Log Analytics-werk ruimte en vervolgens een reeks opdrachten uitvoeren om de computer als een werk nemer te registreren en toe te voegen aan een groep.
+Als u een Hybrid Runbook Worker op uw Linux-computer wilt installeren en configureren, volgt u een eenvoudig hand matig proces. Hiervoor moet u de Hybrid Runbook Worker in uw Azure Log Analytics-werk ruimte inschakelen en vervolgens een reeks opdrachten uitvoeren om de computer als een werk nemer te registreren en toe te voegen aan een groep.
 
 Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Automation-account is gekoppeld. Let ook op de primaire sleutel voor uw Automation-account. U kunt beide van de Azure Portal vinden door uw Automation-account te selecteren, **werk ruimte** te selecteren voor de werk ruimte-id en **sleutels** te selecteren voor de primaire sleutel. Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de poorten en adressen die u nodig hebt voor de Hybrid Runbook Worker.
 
 >[!NOTE]
 > Het [nxautomation-account](automation-runbook-execution.md#log-analytics-agent-for-linux) met de bijbehorende sudo-machtigingen moet aanwezig zijn tijdens de installatie van de Linux-Hybrid Worker. Als u de werk nemer probeert te installeren en het account niet aanwezig is of niet de juiste machtigingen heeft, mislukt de installatie.
 
-1. Gebruik een van de volgende methoden om de Automatisering-Hybrid Worker-oplossing in Azure in te scha kelen:
+1. Schakel de Hybrid Runbook Worker in Azure in met een van de volgende methoden:
 
-   * Voeg de Automatisering-Hybrid Worker oplossing toe aan uw abonnement met behulp van de procedure in [Azure monitor logboek oplossingen toevoegen aan uw werk ruimte](../log-analytics/log-analytics-add-solutions.md).
+   * Voeg de Hybrid Runbook Worker toe aan uw abonnement met behulp van de procedure in [Azure monitor-logboeken toevoegen aan uw werk ruimte](../log-analytics/log-analytics-add-solutions.md).
    * Voer de volgende cmdlet uit:
 
         ```azurepowershell-interactive
-         Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
+         Set-AzOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Installeer de Log Analytics-agent voor Linux door de volgende opdracht uit te voeren. Vervang \<WorkspaceID\> en \<WorkspaceKey\> door de juiste waarden uit uw werk ruimte.
+1. Installeer de Log Analytics-agent voor Linux door de volgende opdracht uit te voeren. Vervang \< WorkspaceID \> en \< WorkspaceKey door \> de juiste waarden uit uw werk ruimte.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -103,11 +103,11 @@ Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Autom
 1. Nadat de opdracht is voltooid, worden in de pagina Hybrid Worker groepen in het Azure Portal de nieuwe groep en het aantal leden weer gegeven. Als dit een bestaande groep is, wordt het aantal leden verhoogd. U kunt de groep selecteren in de lijst op de pagina Hybrid Worker groepen en de tegel **Hybrid Workers** selecteren. Op de pagina Hybrid Workers ziet u elk lid van de groep die wordt weer gegeven.
 
 > [!NOTE]
-> Als u de Azure Monitor extensie van de virtuele machine voor Linux gebruikt voor een Azure VM, wordt `autoUpgradeMinorVersion` u aangeraden om in te stellen op False als de versies van automatische upgrades de Hybrid Runbook Worker kunnen veroorzaken. Zie [Azure cli-implementatie](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)voor meer informatie over het hand matig bijwerken van de extensie.
+> Als u de Azure Monitor extensie van de virtuele machine voor Linux gebruikt voor een Azure VM, wordt u aangeraden `autoUpgradeMinorVersion` om in te stellen op False als de versies van automatische upgrades de Hybrid Runbook Worker kunnen veroorzaken. Zie [Azure cli-implementatie](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)voor meer informatie over het hand matig bijwerken van de extensie.
 
 ## <a name="turn-off-signature-validation"></a>Handtekening validatie uitschakelen
 
-Voor Linux Hybrid Runbook Workers is standaard handtekening validatie vereist. Als u een niet-ondertekend runbook uitvoert op een werk nemer, ziet u `Signature validation failed` een fout melding. Voer de volgende opdracht uit om handtekening validatie uit te scha kelen. Vervang de tweede para meter door uw Log Analytics werk ruimte-ID.
+Voor Linux Hybrid Runbook Workers is standaard handtekening validatie vereist. Als u een niet-ondertekend runbook uitvoert op een werk nemer, ziet u een `Signature validation failed` fout melding. Voer de volgende opdracht uit om handtekening validatie uit te scha kelen. Vervang de tweede para meter door uw Log Analytics werk ruimte-ID.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
@@ -131,4 +131,4 @@ Als u een Hybrid Runbook Worker groep van Linux-computers wilt verwijderen, gebr
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md)voor meer informatie over het configureren van uw runbooks om processen te automatiseren in uw on-premises Data Center of andere cloud omgeving.
-* Zie [problemen met Linux Hybrid Runbook Workers oplossen](troubleshoot/hybrid-runbook-worker.md#linux) voor meer informatie over het oplossen van problemen met uw Hybrid runbook Workers
+* Zie [problemen met Linux Hybrid Runbook Workers oplossen](troubleshoot/hybrid-runbook-worker.md#linux)voor meer informatie over het oplossen van problemen met uw Hybrid runbook Workers.

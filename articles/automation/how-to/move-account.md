@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680454"
+ms.locfileid: "83714539"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Uw Azure Automation-account verplaatsen naar een ander abonnement
 
@@ -28,16 +28,16 @@ Het Automation-account is een van de resources die u kunt verplaatsen. In dit ar
 4. Verwijder de run as-accounts en maak deze opnieuw.
 5. Schakel uw functies opnieuw in.
 
-## <a name="disable-features"></a>Functies uitschakelen
+## <a name="remove-features"></a>Onderdelen verwijderen
 
-Als u uw werk ruimte wilt ontkoppelen van uw Automation-account, moet u de functie resources in uw werk ruimte uitschakelen:
+Als u uw werk ruimte wilt ontkoppelen van uw Automation-account, moet u de functie resources in uw werk ruimte verwijderen:
 
 - Wijzigingen bijhouden en Inventaris
 - Updatebeheer
 - VM's starten/stoppen buiten kantooruren
 
 1. Zoek de resourcegroep in de Azure-portal.
-2. Zoek elke functie en selecteer **verwijderen** op de pagina Resources verwijderen.
+2. Zoek elke functie en selecteer **verwijderen** op de pagina **resources verwijderen** .
 
     ![Scherm opname van het verwijderen van functie resources uit het Azure Portal](../media/move-account/delete-solutions.png)
 
@@ -127,7 +127,7 @@ U kunt nu uw Automation-account en de bijbehorende runbooks verplaatsen.
 
 ## <a name="enable-features"></a>Functies inschakelen
 
-Nadat u de run as-accounts opnieuw hebt gemaakt, moet u de functies die u hebt uitgeschakeld vóór de verplaatsing opnieuw inschakelen: 
+Nadat u de run as-accounts opnieuw hebt gemaakt, moet u de functies die u hebt verwijderd vóór de verplaatsing opnieuw inschakelen:
 
 1. Als u Wijzigingen bijhouden en inventaris wilt inschakelen, selecteert u **Wijzigingen bijhouden en inventaris** in uw Automation-account. Kies de Log Analytics-werk ruimte die u hebt verplaatst en selecteer **inschakelen**.
 
@@ -157,4 +157,4 @@ Wanneer de verplaatsing is voltooid, controleert u of de hieronder vermelde moge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [resources verplaatsen in azure](../../azure-resource-manager/management/move-support-resources.md)voor meer informatie over het verplaatsen van resources in Azure.
+[Resources verplaatsen in azure](../../azure-resource-manager/management/move-support-resources.md)

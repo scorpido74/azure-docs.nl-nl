@@ -4,23 +4,24 @@ description: Meer informatie over de SQL-functie STARTSWITH in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e915ea4be058f805e938ec8526ca0ee40d556271
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295705"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715270"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+
  Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie begint met de tweede.  
   
 ## <a name="syntax"></a>Syntaxis
   
 ```sql
-STARTSWITH(<str_expr1>, <str_expr2>)  
+STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>Argumenten
@@ -30,6 +31,8 @@ STARTSWITH(<str_expr1>, <str_expr2>)
   
 *str_expr2*  
    Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1*.
+
+*bool_expr* Optionele waarde voor het negeren van case. Als deze eigenschap is ingesteld op True, wordt in STARTSWITH een hoofdletter gevoelige zoek opdracht uitgevoerd. Indien niet opgegeven, is deze waarde false.
 
 ## <a name="return-types"></a>Retour typen
   

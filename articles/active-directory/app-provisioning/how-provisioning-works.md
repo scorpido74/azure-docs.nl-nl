@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593723"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712227"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -25,14 +25,14 @@ Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rol
 De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met HTTPS TLS 1,2-versleuteling.
 
 
-![Azure AD Provisioning](./media/how-provisioning-works/provisioning0.PNG)
-service-*afbeelding 1: de Azure AD-inrichtings service*
+![Azure AD Provisioning Service- ](./media/how-provisioning-works/provisioning0.PNG)
+ *afbeelding 1: de Azure AD-inrichtings service*
 
-![Werk stroom](./media/how-provisioning-works/provisioning1.PNG)
-afbeelding van uitgaand gebruikers inrichten*2: ' uitgaand ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
+![Werk stroom afbeelding van uitgaand gebruikers inrichten ](./media/how-provisioning-works/provisioning1.PNG)
+ *2: ' uitgaand ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
 
-![Werk stroom](./media/how-provisioning-works/provisioning2.PNG)
-*afbeelding voor inrichting van binnenkomende gebruiker 3: ' Inkomend ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
+![Werk stroom afbeelding voor inrichting van binnenkomende gebruiker ](./media/how-provisioning-works/provisioning2.PNG)
+ *3: ' Inkomend ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Inrichten met behulp van SCIM 2,0
 
@@ -63,7 +63,7 @@ Wanneer u inrichting voor een SaaS-toepassing configureert, is een van de typen 
 
 Voor uitgaande levering vanuit Azure AD naar een SaaS-toepassing is afhankelijkheid van [gebruikers-of groeps toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende manier om te bepalen welke gebruikers binnen het bereik van de inrichting vallen. Omdat gebruikers toewijzingen ook worden gebruikt voor het inschakelen van eenmalige aanmelding, kan dezelfde methode worden gebruikt voor het beheren van toegang en inrichting. Op toewijzing gebaseerde scopes zijn niet van toepassing op binnenkomende inrichtings scenario's zoals workday en Successfactors.
 
-* **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren**, wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "false" voor groepen die zijn toegewezen aan uw toepassing.
+* **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren**, wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "True" voor groepen die zijn toegewezen aan uw toepassing.
 
 * **Dynamische groepen.** De Azure AD User Provisioning-Service kan gebruikers in [dynamische groepen](../users-groups-roles/groups-create-rule.md)lezen en inrichten. Houd deze aanvullende opmerkingen en aanbevelingen in acht:
 
@@ -83,7 +83,7 @@ U kunt bereik filters gebruiken om op kenmerken gebaseerde regels te definiëren
 
 Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../b2b/configure-saas-apps.md).
 
-Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt opgeslagen als ' alias@domain.com# ext # '. Wanneer de userPrincipalName is opgenomen in uw kenmerk toewijzingen als bron kenmerk, wordt het #EXT # verwijderd uit de userPrincipalName. Als u wilt dat de #EXT # aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bron kenmerk. 
+Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt opgeslagen als ' alias # EXT # @domain.com '. Wanneer de userPrincipalName is opgenomen in uw kenmerk toewijzingen als bron kenmerk, wordt het #EXT # verwijderd uit de userPrincipalName. Als u wilt dat de #EXT # aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bron kenmerk. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 

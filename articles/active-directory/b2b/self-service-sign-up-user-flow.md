@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597462"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712346"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Een self-service-aanmeldings stroom voor gebruikers toevoegen aan een app (preview)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83597462"
 | Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
 |     |
 
-Als u uw gebruikers stroom aan een toepassing koppelt, kunt u zich aanmelden op die app inschakelen. U kunt ervoor kiezen om meer dan één toepassing te koppelen aan de gebruikers stroom. Wanneer u de gebruikers stroom aan een of meer toepassingen koppelt, kunnen gebruikers die de app bezoeken, zich registreren met de opties die in de gebruikers stroom zijn geconfigureerd.
+U kunt gebruikers stromen maken voor apps die zijn gebouwd door uw organisatie. Als u uw gebruikers stroom aan een toepassing koppelt, kunt u zich aanmelden op die app inschakelen. U kunt ervoor kiezen om meer dan één toepassing te koppelen aan de gebruikers stroom. Wanneer u de gebruikers stroom aan een of meer toepassingen koppelt, kunnen gebruikers die de app bezoeken zich registreren en een gast account krijgen met de opties die in de gebruikers stroom zijn geconfigureerd.
+
+> [!NOTE]
+> U kunt gebruikers stromen koppelen aan apps die zijn gebouwd door uw organisatie. Gebruikers stromen kunnen niet worden gebruikt voor micro soft-apps, zoals share point of teams.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -33,9 +36,12 @@ Als u uw gebruikers stroom aan een toepassing koppelt, kunt u zich aanmelden op 
 
 Azure AD is de standaard id-provider voor aanmelden via self-service. Dit betekent dat gebruikers standaard kunnen aanmelden met een Azure AD-account. Sociale id-providers kunnen ook worden opgenomen in deze registratie stromen ter ondersteuning van Google-en Facebook-accounts.
 
-- [Google toevoegen aan uw lijst met sociale id-providers](google-federation.md)
 - [Facebook toevoegen aan uw lijst met sociale id-providers](facebook-federation.md)
- 
+- [Google toevoegen aan uw lijst met sociale id-providers](google-federation.md)
+
+> [!NOTE]
+> Als er in de huidige preview een self-service-aanmeldings stroom is gekoppeld aan een app en u een uitnodiging voor een gebruiker naar deze app stuurt, kan de gebruiker geen Gmail-account gebruiken om de uitnodiging te inwisselen. Als tijdelijke oplossing kan de gebruiker het aanmeldings proces voor de self-service door lopen. Of ze kunnen de uitnodiging inwisselen door toegang te krijgen tot een andere app of door gebruik te maken van de portal mijn apps op https://myapps.microsoft.com .
+
 ### <a name="define-custom-attributes-optional"></a>Aangepaste kenmerken definiëren (optioneel)
 
 Gebruikers kenmerken zijn waarden die worden verzameld door de gebruiker tijdens het aanmelden met een self-service. Azure AD wordt geleverd met een ingebouwde set kenmerken, maar u kunt aangepaste kenmerken maken voor gebruik in uw gebruikers stroom. U kunt deze kenmerken ook lezen en schrijven met behulp van de Microsoft Graph-API. Zie [aangepaste kenmerken definiëren voor gebruikers stromen](user-flow-add-custom-attributes.md).

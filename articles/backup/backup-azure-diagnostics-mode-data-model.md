@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183684"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83707986"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -35,9 +35,9 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
 | AlertOccurrenceDateTime_s |Datum/tijd |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
-|AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
+|AlertTimeToResolveInMinutes_s    | Getal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-|CountOfAlertsConsolidated_s     |Aantal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
+|CountOfAlertsConsolidated_s     |Getal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
 |AlertRaisedOn_s     |Tekst         |Het type entiteit waarop de waarschuwing is opgetreden         |
 |AlertCode_s     |Tekst         |Code voor een unieke identificatie van een waarschuwings type         |
 |RecommendedAction_s   |Tekst         |Aanbevolen actie om de waarschuwing op te lossen         |
@@ -155,8 +155,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | JobStartDateTime_s |Datum/tijd |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
-| JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
-| DataTransferredInMB_s | Aantal |Gegevens die worden overgebracht in MB voor deze taak|
+| JobDurationInSecs_s | Getal |Totale taak duur in seconden |
+| DataTransferredInMB_s | Getal |Gegevens die worden overgebracht in MB voor deze taak|
 | JobUniqueId_g |Tekst |Unieke ID voor het identificeren van de taak |
 | RecoveryJobDestination_s |Tekst | Doel van een herstel taak, waarbij de gegevens worden hersteld |
 | RecoveryJobRPDateTime_s |DateTime | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
@@ -297,8 +297,8 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit|
 | VaultUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit|
-| StorageConsumedInMBs_s |Aantal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
-| StorageAllocatedInMBs_s |Aantal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
+| StorageConsumedInMBs_s |Getal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs_s |Getal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
 
 ### <a name="vault"></a>Kluis
 
@@ -463,7 +463,9 @@ Hieronder vindt u enkele voor beelden voor het schrijven van query's op Azure Ba
 ## <a name="v1-schema-vs-v2-schema"></a>V1-schema VS v2-schema
 Eerder werden de diagnostische gegevens voor Azure Backup Agent en Azure VM-back-up verzonden naar Azure Diagnostics tabel in een schema waarnaar wordt verwezen als ***v1-schema***. Daarna werden nieuwe kolommen toegevoegd ter ondersteuning van andere scenario's en werk belastingen, en worden diagnostische gegevens gepusht in een nieuw schema waarnaar wordt verwezen als ***v2-schema***. 
 
-Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's.
+Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's. 
+
+Raadpleeg de derde kolom ' description ' in het hierboven beschreven [gegevens model](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) om te bepalen welke kolommen alleen bij v1-schema horen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
