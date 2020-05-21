@@ -50,6 +50,8 @@
           href: ./samples/pattern-parameters.md
         - name: Details van effect
           href: ./samples/pattern-effect-details.md
+        - name: Tags
+          href: ./samples/pattern-tags.md
         - name: Waarde-operator
           href: ./samples/pattern-value-operator.md
         - name: Tel-operator
@@ -76,13 +78,8 @@
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Azure Policy voor Kubernetes
-      items:
-        - name: Beleid voor AKS
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/rego-for-aks.md
-        - name: Beleid voor AKS-engine
-          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/aks-engine.md
+      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+      href: ./concepts/policy-for-kubernetes.md
     - name: Virtuele machines met gastconfiguratie controleren
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

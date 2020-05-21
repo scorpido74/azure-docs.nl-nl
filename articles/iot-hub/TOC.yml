@@ -81,6 +81,11 @@
       href: tutorial-firmware-update.md
     - name: Connectiviteit van apparaten testen
       href: tutorial-connectivity.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: TLS-ondersteuning

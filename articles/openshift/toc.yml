@@ -16,7 +16,7 @@
   expanded: true
   items:
     - name: Een Azure Red Hat OpenShift 4-privécluster maken
-      href: create-private-cluster.md
+      href: howto-create-private-cluster-4x.md
     - name: DNS forwarding configureren voor een Azure Red Hat OpenShift 4-cluster
       href: dns-forwarding.md
     - name: Azure Active Directory-verificatie configureren voor een Azure Red Hat OpenShift 4-cluster
@@ -48,7 +48,7 @@
         - name: Projecten beheren in een Azure Red Hat OpenShift 3.11-cluster
           href: howto-manage-projects.md
         - name: Een Azure Red Hat OpenShift 3.11-privécluster maken
-          href: howto-create-private-cluster.md
+          href: howto-create-private-cluster-3x.md
         - name: Bewaking en logboekregistratie voor Azure Red Hat OpenShift 3.11
           items:
             - name: Azure Monitor voor containers in Azure Red Hat OpenShift 3.11 (preview-versie)
