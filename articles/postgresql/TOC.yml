@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: Azure AD-integratie configureren
               href: howto-configure-sign-in-aad-authentication.md
+            - name: Verbinding maken met beheerde identiteit
+              href: howto-connect-with-managed-identity.md
         - name: Optimaliseren
           items:
             - name: Bulksgewijs invoegen

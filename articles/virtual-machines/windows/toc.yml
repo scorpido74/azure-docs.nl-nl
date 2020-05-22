@@ -134,10 +134,10 @@
           items:
             - name: Een virtuele machine en de bijbehorende gegevensschijven versleutelen
               href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-            - name: Controleren
-              items:
-                - name: Azure Monitor
-                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
+        - name: Controleren
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -149,6 +149,13 @@
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Regio's
       href: regions.md
+      items:
+        - name: Over Azure-extensies
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VM-agent voor Linux
+          href: ../extensions/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Functies
+          href: ../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Beschikbaarheid en prestaties
       items:
         - name: Beschikbaarheid
@@ -319,12 +326,18 @@
           href: disk-encryption-overview.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: virtual-machines-windows-security-controls.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Toestanden en levenscyclus
       href: states-lifecycle.md
     - name: Bewaking
-      href: monitor.md
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Back-ups maken en herstellen
       href: backup-recovery.md
+    - name: Cloud Adoption Framework
+      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+    - name: Architecturencentrum
+      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
     - name: Infrastructuurvoorbeeld
       href: infrastructure-example.md
 - name: Instructiegidsen
@@ -493,6 +506,22 @@
           href: security-recommendations.md
         - name: Just-in-time-toegang
           href: ../../security-center/security-center-just-in-time.md
+        - name: Azure Bastion gebruiken
+          items:
+            - name: Een Bastion-host maken
+              items:
+                - name: Portal
+                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bastion gebruiken om verbinding te maken
+              items:
+                - name: Bastion SSH-verbinding
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bastion RDP-verbinding
+              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Versleutelen
           items:
             - name: Schijfversleutelingsscenario's voor Windows
@@ -615,14 +644,113 @@
           href: scheduled-event-service.md
     - name: Virtuele machines bewaken
       items:
+        - name: Virtuele Azure-machine bewaken
+          href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Agents
+          items:
+            - name: Overzicht van agents
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Veelgestelde vragen
+              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents'
+            - name: Azure Diagnostics-extensie
+              items:
+                - name: Overzicht
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  items:
+                    - name: Verzenden naar metrische gegevens van Azure Monitor
+                      items:
+                        - name: Virtuele machine
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                        - name: VM-schaalset
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Verzenden naar Event Hubs
+                      href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Verzenden naar logboeken
+                      href: ../../azure-monitor/platform/diagnostics-extension-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Verzenden naar Application Insights
+                      href: ../../azure-monitor/platform/diagnostics-extension-to-application-insights.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Versiegeschiedenis
+                      href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Indelingen van resourcelogboeken van JSON-regels
+                      href: ../../azure-monitor/platform/diagnostic-logs-append-blobs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Problemen oplossen
+                      href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Log Analytics-agent
+              items:
+                - name: Overzicht
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Windows-agents
+                  href: ../../azure-monitor/platform/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: VM-extensie voor Windows
+                  href: ../../azure-monitor/../virtual-machines/windows/extensions-oms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                - name: Log Analytics-gateway
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Agents beheren
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Status van agent
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Gegevensbronnen
+                  items:
+                    - name: Overzicht
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Windows-gebeurtenissen
+                      href: ../../azure-monitor/platform/data-sources-windows-events.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Aangepaste JSON-gegevens
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Verzamelde prestatiegegevens
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Prestatiemeteritems
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: IIS-logboeken
+                      href: ../../azure-monitor/platform/data-sources-iis-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Aangepaste logboeken
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Aangepaste velden
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Problemen oplossen
+              items:
+                - name: VM-extensie voor Log Analytics
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Windows-agent voor Log Analytics
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/agent-windows-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure Monitor voor virtuele machines
-          href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Metrische waarschuwingen maken
-          href: ../../azure-monitor/platform/alerts-metric.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Logboekwaarschuwingen maken
-          href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Metrische gebruiksgegevens ophalen met REST
-          href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: Overzicht
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Veelgestelde vragen over algemene beschikbaarheid
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Veelgestelde vragen
+              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms'
+            - name: Bewaking inschakelen
+              items:
+                - name: Bewakingsoverzicht inschakelen
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Inschakelen voor één Azure-VM
+                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Inschakelen met Azure Policy
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Inschakelen met Azure PowerShell
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Inschakelen voor een hybride omgeving
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Afhankelijkheden toewijzen
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Prestaties bewaken
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Gegevens analyseren met logboekquery's
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Gegevens visualiseren met werkmappen
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Waarschuwingsregels maken
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dependency Agent upgraden
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bewaking uitschakelen
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Beschikbaarheid en schaal
       items:
         - name: Virtual Machine Scale Sets
@@ -751,20 +879,71 @@
     - name: Beheerde identiteiten configureren
       items:
         - name: Portal
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure Resource Manager-sjabloon
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure-SDK's
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: VM-extensies gebruiken
-      href: ../extensions/overview.md
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Extensies gebruiken
+      items:
+        - name: Installatie van extensie beperken
+          href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Extensies exporteren
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Problemen oplossen
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Disk Encryption
+          href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Key Vault
+          href: ../extensions/key-vault-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Backup voor SQL Server
+          href: ../extensions/backup-azure-sql-server-running-azure-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Aangepast script
+          href: ../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: IaaS-antimalware voor Windows
+          href: ../extensions/iaas-antimalware-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VM-momentopname
+          href: ../extensions/vmsnapshot-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Network Watcher-agent
+          href: ../extensions/network-watcher-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: NVIDIA GPU-stuurprogramma's
+          href: ../extensions/hpccompute-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: AMD GPU-stuurprogramma's
+          href: ../extensions/hpccompute-amd-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Monitor
+          items:
+            - name: Diagnostics-extensie
+              href: ../extensions/../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/virtual-machines/extensions/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Azure Monitor-agent voor Windows-afhankelijkheden
+              href: ../extensions/agent-dependency-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: DSC en Windows
+              href: ../extensions/dsc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Referenties verwerken
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Sjablonen gebruiken
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Toegang tot virtuele machines
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Extensies van derden
+          items:
+            - name: Chef
+              href: ../extensions/chef.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Stackify Retrace
+              href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Symantec
+              href: ../extensions/symantec.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM's verplaatsen
       items:
         - name: Abonnement of resourcegroep wijzigen
@@ -821,7 +1000,7 @@
     - name: Communitysjablonen
       href: 'https://azure.microsoft.com/documentation/templates'
     - name: Prijzen
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+      href: 'https://azure.microsoft.com/pricing/details/#Windows'
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Stack Overflow

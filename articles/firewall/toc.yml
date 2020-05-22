@@ -17,13 +17,13 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Implementeren met IP-groepen
+    - name: Implementeren met IP-groepen - ARM-sjabloon
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: Implementeren met meerdere adressen
+    - name: Implementeren met meerdere adressen - ARM-sjabloon
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Implementeren met beschikbaarheidszones
+    - name: Implementeren met Beschikbaarheidszones - ARM-sjabloon
       displayName: Resource Manager
       href: deploy-template.md
 - name: Voorbeelden

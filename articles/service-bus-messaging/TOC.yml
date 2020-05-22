@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Beheren
       items:
+        - name: Messaging-eenheden automatisch bijwerken
+          href: automate-update-messaging-units.md
         - name: Azure PowerShell gebruiken om entiteiten in te richten
           href: service-bus-manage-with-ps.md
         - name: Service Bus bewaken met Azure Monitor
@@ -209,7 +211,7 @@
           href: service-bus-ip-filtering.md
         - name: Service-eindpunten voor virtuele netwerken configureren
           href: service-bus-service-endpoints.md
-        - name: Privé-eindpunten configureren (preview)
+        - name: Privé-eindpunten configureren
           href: private-link-service.md
         - name: Door de klant beheerde sleutels configureren
           href: configure-customer-managed-key.md

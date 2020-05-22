@@ -4,15 +4,12 @@
   items:
     - name: Wat is Azure Arc voor servers?
       href: ./servers/overview.md
-- name: Voorbeelden
-  items:
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
 - name: Instructiegidsen
   items:
     - name: Verbinding maken met Azure Arc
       items:
+        - name: Overzicht van Connected Machine-agent
+          href: ./servers/agent-overview.md
         - name: Machines verbinden met Azure Arc vanuit de Azure-portal
           href: ./servers/onboard-portal.md
         - name: Machines op schaal verbinden met een service-principal
@@ -23,3 +20,8 @@
       items:
         - name: Agent beheren
           href: ./servers/manage-agent.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md

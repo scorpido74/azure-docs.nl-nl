@@ -42,8 +42,6 @@
         - name: 2. Gebruikersgegevens extraheren
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. Sentiment van uitingen van gebruiker ophalen
-          href: tutorial-publish-settings.md
     - name: App verbeteren
       items:
         - name: Onzekere voorspellingen herstellen
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Aangepaste entiteitsverwijzing
       items:
-        - name: Entiteit op basis van machine learning
+        - name: Machine learning-entiteit
           href: reference-entity-machine-learned-entity.md
         - name: Samengestelde entiteit
           href: reference-entity-composite.md

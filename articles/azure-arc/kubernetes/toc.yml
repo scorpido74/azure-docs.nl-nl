@@ -1,0 +1,28 @@
+- name: Kubernetes met Azure Arc
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over Kubernetes met Azure Arc
+      href: overview.md
+- name: Instructiegidsen
+  items:
+    - name: Clusterbewerkingen
+      items:
+        - name: Cluster verbinden
+          href: connect-cluster.md
+        - name: GitOps gebruiken voor verbonden clusters
+          href: use-gitops-connected-cluster.md
+        - name: GitOps gebruiken met Helm
+          href: use-gitops-with-helm.md
+        - name: Azure Monitor voor containers
+          href: deploy-azure-monitor-for-containers.md
+        - name: Azure Policy-invoegtoepassing installeren
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Azure Policy gebruiken
+          href: use-azure-policy.md
+        - name: IoT-workloads implementeren
+          href: deploy-azure-iot-edge-workloads.md
+        - name: Onboarding van een service-principal
+          href: create-onboarding-service-principal.md
+        - name: Problemen oplossen
+          href: Troubleshooting.md

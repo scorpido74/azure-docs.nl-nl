@@ -4,8 +4,13 @@
   items:
     - name: Wat is Azure Firewall Manager?
       href: overview.md
-- name: Zelfstudies
+- name: Snelstartgidsen
   expanded: true
+  items:
+    - name: Beveiligde virtuele hub
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: Zelfstudies
   items:
     - name: Uw virtuele WAN beveiligen - portal
       href: secure-cloud-network.md
@@ -49,7 +54,7 @@
       href: /rest/api/firewall
     - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Auteursjablonen
       href: ../azure-resource-manager/templates/template-syntax.md

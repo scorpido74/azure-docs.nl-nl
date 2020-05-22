@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: nl-NL
   ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83587473"
+  ms.locfileid: "83641876"
 landingContent:
 - title: Over externe identiteiten
   linkLists:
@@ -27,6 +27,18 @@ landingContent:
       url: compare-with-b2c.md
     - text: Wat is B2B-toegang voor gastgebruikers?
       url: what-is-b2b.md
+- title: Selfservice registreren (preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Selfservice registreren?
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een self-service voor registreren van gasten via gebruikersstromen toevoegen
+      url: self-service-sign-up-user-flow.md
+    - text: Aangepaste kenmerken voor gebruikersstromen definiëren
+      url: user-flow-add-custom-attributes.md
 - title: B2B-gastgebruikers uitnodigen
   linkLists:
   - linkListType: concept

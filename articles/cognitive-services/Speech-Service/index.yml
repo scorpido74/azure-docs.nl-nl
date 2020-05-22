@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: c065f3d12f98be85f45ed6233593d9ccab1cefa1
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
+  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201653"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83707969"
 highlightedContent:
   items:
   - title: Wat is de Speech-service?
@@ -47,7 +47,7 @@ conceptualContent:
       text: Basisbeginselen van spraakherkenning
       url: speech-to-text-basics.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-speech-to-text.yml
   - title: Tekst naar spraak
     links:
@@ -61,7 +61,7 @@ conceptualContent:
       text: Basisbeginselen van spraaksynthese
       url: text-to-speech-basics.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-text-to-speech.yml
   - title: Spraakomzetting
     links:
@@ -75,7 +75,7 @@ conceptualContent:
       text: Basisbeginselen van spraakomzetting
       url: speech-translation-basics.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-speech-translation.yml
   - title: Intentieherkenning
     links:
@@ -89,7 +89,7 @@ conceptualContent:
       text: Language Understanding-portal (LUIS)
       url: https://www.luis.ai
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-intent-recognition.yml
   - title: Gespreksscenario's
     links:
@@ -103,7 +103,7 @@ conceptualContent:
       text: Callcentertranscriptie
       url: call-center-transcription.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-conversation-scenarios.yml
   - title: Spraakassistenten
     links:
@@ -117,8 +117,16 @@ conceptualContent:
       text: Een spraakassistent maken met het Bot Framework
       url: direct-line-speech.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-voice-assistants.yml
+  - title: Speaker Recognition
+    links:
+    - itemType: how-to-guide
+      text: Over Speaker Recognition
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: Naslaginformatie voor de Speaker Recognition-API
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
   - title: Hulpprogramma's
     links:
     - itemType: overview
@@ -142,7 +150,7 @@ conceptualContent:
       text: Speech Service-containers in Azure Container Instances
       url: deploy-speech-on-container-instances.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-hosting.yml
   - title: Apparaten
     links:
@@ -156,7 +164,7 @@ conceptualContent:
       text: De Speech Devices SDK gebruiken
       url: speech-devices-sdk-quickstart.md
     footerLink:
-      text: Meer informatie
+      text: Meer
       url: index-devices.yml
   - title: Migratie
     links:

@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Een data factory maken - Resource Manager-sjabloon
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Beveiliging - Door de klant beheerde sleutelversleuteling inschakelen
-      href: quickstart-enable-customer-managed-key.md
     - name: Gegevensstroom maken
       href: data-flow-create.md
 - name: Zelfstudies
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: Rollen en machtigingen
       href: concepts-roles-permissions.md
-    - name: Inzicht krijgen in prijzen
-      href: pricing-concepts.md
     - name: Naamgevingsregels
       href: naming-rules.md
 - name: Instructiegidsen
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: SharePoint Online-lijst
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: Fouttolerantie
           href: copy-activity-fault-tolerance.md
+        - name: Verificatie van gegevensconsistentie
+          href: copy-activity-data-consistency.md
         - name: Ondersteuning voor indeling en compressie (verouderd)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Gegevens transformeren
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Beheerde identiteit voor Data Factory
           href: data-factory-service-identity.md
+        - name: Door de klant beheerde sleutelversleuteling
+          href: quickstart-enable-customer-managed-key.md
     - name: Controleren en beheren
       items:
+        - name: Visueel bewaken
+          href: monitor-visually.md
         - name: Controleren met Azure Monitor
           href: monitor-using-azure-monitor.md
         - name: Controleren met SDK's
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: 'Gedeelde, zelf-hostende integratie-runtime'
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: Automation-scripts van zelf-hostende Information Runtime
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: SSIS-pakketten uitvoeren in Azure
       items:
         - name: SSIS-pakketten uitvoeren in Azure vanuit SSDT
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure AD-verificatie inschakelen voor Azure-SSIS-integratieruntime
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Verbinding maken met gegevens met Windows-verificatie
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: Bestanden opslaan en koppelen aan bestandsshares
-          href: ssis-azure-files-file-shares.md
         - name: Enterprise Edition inrichten voor Azure-SSIS-integratieruntime
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Ingebouwde en vooraf geïnstalleerde onderdelen in Azure-SSIS IR
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Configuratie aanpassen voor Azure-SSIS-integratieruntime
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Gelicentieerde onderdelen installeren voor Azure-SSIS-integratieruntime
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: SSISDB-logboeken opschonen met taken voor Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Azure SQL Managed Instance met Azure-SSIS IR gebruiken
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSIS-taken migreren met SSMS
           href: how-to-migrate-ssis-job-ssms.md
     - name: Triggers maken
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: Transformatie met Azure Databricks
           href: solution-template-databricks-notebook.md
+    - name: Inzicht krijgen in prijzen
+      items:
+        - name: Kosten voorspellen en beheren
+          href: plan-manage-costs.md
+        - name: Prijsvoorbeelden
+          href: pricing-concepts.md
     - name: Handleidingen voor probleemoplossing
       items:
         - name: Activiteiten

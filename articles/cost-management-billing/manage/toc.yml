@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Beheer van Azure EA Portal
           href: ea-portal-administration.md
+        - name: Beheer van de Azure EA Portal voor partners
+          href: ea-partner-portal-administration.md
+        - name: Azure Enterprise-overdrachten
+          href: ea-transfers.md
         - name: EA-taken in Microsoft-klantovereenkomst
           href: mca-enterprise-operations.md
         - name: Azure EA-overeenkomsten en -aanpassingen
           href: ea-portal-agreements.md
         - name: Enterprise Enrollment-facturen
           href: ea-portal-enrollment-invoices.md
-        - name: REST-API's in Azure Enterprise
+        - name: Azure EA-prijzen
+          href: ea-pricing-overview.md
+        - name: REST API's in Azure Enterprise
           href: ea-portal-rest-apis.md
         - name: Gereserveerde exemplaren Azure EA-VM
           href: ea-portal-vm-reservations.md
         - name: Problemen met toegang tot Azure EA Portal oplossen
           href: ea-portal-troubleshoot.md
+        - name: Azure Marketplace
+          href: ea-azure-marketplace.md
 - name: Problemen oplossen
   items:
     - name: Geen abonnementen gevonden

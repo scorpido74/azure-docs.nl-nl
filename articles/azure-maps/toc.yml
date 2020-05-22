@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Weerservices
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Kaartmaakservice
+          items:
+            - name: Aliasservice
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: Conversieservice
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: Gegevenssetservice
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: Functiestatusservice
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: Tegelsetservice
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS-service
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Accountbeheer voor Maps
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: Javascript

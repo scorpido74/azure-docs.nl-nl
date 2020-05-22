@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planning clustercapaciteit
           href: ./hdinsight-capacity-planning.md
+        - name: Verhoging van CPU-kernquotum aanvragen
+          href: ./quota-increase-request.md
         - name: Best practices voor clusterbeheer
           href: ./cluster-management-best-practices.md
         - name: Beschikbaarheid en betrouwbaarheid
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Problemen met Apache Oozie oplossen
               href: ./troubleshoot-oozie.md
+            - name: Inzicht in problemen met WebHCat en deze oplossen
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Naslaginformatie
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Heapdumps voor Apache Hadoop-services inschakelen
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Inzicht in problemen met WebHCat en deze oplossen
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: Hulp op het forum
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: Prijscalculator
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Apache Spark-taken optimaliseren
           href: ./spark/apache-spark-perf.md
+        - name: Migreren naar Spark 2.3 of 2.4
+          href: ./spark/migrate-versions.md
     - name: Procedures
       items:
         - name: Hulpprogramma's gebruiken
@@ -736,6 +740,8 @@
       items:
         - name: Best practices voor gateway
           href: ./interactive-query/gateway-best-practices.md
+        - name: Richtlijnen voor aanpassing van grootte
+          href: ./interactive-query/sizing-guidelines.md
     - name: Procedures
       items:
         - name: Ontwikkelen
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Apache Tez-toepassing loopt vast
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Richtlijnen voor aanpassing van Apache Hive LLAP-grootte
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Query-prestaties van Apache Hive LLAP
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Trage reducer

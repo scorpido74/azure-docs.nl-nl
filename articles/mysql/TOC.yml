@@ -276,6 +276,8 @@
       items:
         - name: Azure AD-integratie configureren
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: Verbinding maken met beheerde identiteit
+          href: howto-connect-with-managed-identity.md
     - name: Openbare netwerktoegang weigeren
       items:
         - name: Azure Portal

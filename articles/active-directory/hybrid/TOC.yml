@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: Een synchronisatieregel maken en aanpassen
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Eindpunt-API voor Azure AD Connect-synchronisatie v2
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect Sync-servicebeheer
           items:
             - name: Het bewerkingstabblad van de servicemanager beheren

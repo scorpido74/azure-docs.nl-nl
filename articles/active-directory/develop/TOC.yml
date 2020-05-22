@@ -28,7 +28,9 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: Javascript
+        - name: JavaScript - Verificatiecodestroom
+          href: quickstart-v2-javascript-auth-code.md
+        - name: JavaScript - Impliciete stroom
           href: quickstart-v2-javascript.md
     - name: Web-apps
       items:
@@ -73,7 +75,9 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
-        - name: Javascript
+        - name: JavaScript - Verificatiecodestroom
+          href: tutorial-v2-javascript-auth-code.md
+        - name: JavaScript - Impliciete stroom
           href: tutorial-v2-javascript-spa.md
     - name: Web-apps
       items:
@@ -479,6 +483,10 @@
           href: active-directory-optional-claims.md
         - name: Levensduur van tokens configureren
           href: active-directory-configurable-token-lifetimes.md
+        - name: SameSite-cookiewijzigingen in Chrome-browser verwerken
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+        - name: ITP in Safari verwerken
+          href: reference-third-party-cookies-spas.md
     - name: Toepassingsconfiguratie
       displayName: App configuration
       items:
@@ -576,7 +584,7 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Fouten vaststellen tijdens verificatie
           href: vs-active-directory-error.md
-- name: Verwijzingen
+- name: Naslaginformatie
   items:
     - name: Manifest van de toepassing
       href: reference-app-manifest.md

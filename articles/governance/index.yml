@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 03/24/2020
-  ms.openlocfilehash: 8bb9c305a67ca1d87de31188d8455e210a414a42
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.date: 05/20/2020
+  ms.openlocfilehash: 4f88fc9d72a7a8bbdf80ed8553888da3b975804f
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/28/2020
-  ms.locfileid: "82234159"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83683543"
 highlightedContent:
   items:
   - title: Governance-overzicht
@@ -41,15 +41,15 @@ productDirectory:
       text: Overzicht
     - url: ./management-groups/index.yml
       text: Meer informatie >
-  - title: Beleid van Azure
+  - title: Azure Policy
     imageSrc: ./media/azure-policy.svg
     links:
     - url: ./policy/overview.md
       text: Overzicht
     - url: ./policy/how-to/get-compliance-data.md
       text: Naleving evalueren
-    - url: ./policy/concepts/rego-for-aks.md
-      text: AKS-configuratie beheren
+    - url: ./policy/concepts/policy-for-kubernetes.md
+      text: Kubernetes-configuratie beheren
     - url: ./policy/concepts/guest-configuration.md
       text: VM-configuratie beheren
     - url: ./policy/index.yml
@@ -87,7 +87,7 @@ tools:
   title: Voorbeelden
   summary: Beleidsdefinities, nalevingsblauwdrukken, resource-query's en meer
   items:
-  - title: Beleid van Azure
+  - title: Azure Policy
     imageSrc: ./media/azure-policy.svg
     url: ./policy/samples/index.md
   - title: Azure Blueprints
@@ -115,7 +115,9 @@ additionalContent:
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
       - text: REST
         url: /rest/api/resources/managementgroups
-    - title: Beleid van Azure
+      - text: Resource Manager-sjablonen
+        url: /azure/templates/microsoft.management/managementgroups
+    - title: Azure Policy
       links:
       - text: Azure CLI
         url: /cli/azure/policy

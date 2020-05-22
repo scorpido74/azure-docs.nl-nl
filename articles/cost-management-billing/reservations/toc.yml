@@ -6,7 +6,6 @@
     - name: Wat zijn Azure-reserveringen?
       href: save-compute-costs-reservations.md
 - name: Instructiegidsen
-  expanded: true
   items:
     - name: Bepalen wat u moet aanschaffen
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Reserveringen uitwisselen en restitutie
           href: exchange-and-refund-azure-reservations.md
+    - name: Kosten rapporteren
+      items:
+        - name: Reserveringstransacties weergeven
+          href: view-purchase-refunds.md
+        - name: Reserveringskosten terugstorten
+          href: charge-back-usage.md
     - name: Reserveringen verlengen
       items:
         - name: Een reservering verlengen
           href: reservation-renew.md
 - name: Concepten
-  expanded: true
   items:
     - name: Hoe reserveringsaanbevelingen worden gemaakt
       href: reserved-instance-purchase-recommendations.md

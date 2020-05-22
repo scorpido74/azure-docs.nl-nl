@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Spraak herkennen die is opgeslagen in blobopslag
           href: quickstarts/from-blob.md
+        - name: Beoordeling van de uitspraak met referentie-invoer
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Instructiegidsen
       items:
         - name: Spraakherkenningsmodus kiezen
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: Nauwkeurigheid van Custom Speech evalueren
           href: how-to-custom-speech-evaluate-data.md
+        - name: Nauwkeurigheid van Custom Speech verbeteren
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Een model trainen voor Custom Speech
           href: how-to-custom-speech-train-model.md
         - name: Aangepaste model implementeren

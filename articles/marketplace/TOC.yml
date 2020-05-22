@@ -1,7 +1,7 @@
 - name: Documentatie voor de commerciële marketplace
   href: index.yml
   items:
-    - name: Roadmap voor de commerciële marketplace
+    - name: Updates voor de commerciële marketplace
       href: ./marketplace-roadmap.md
     - name: Beleidsregels en voorwaarden voor de commerciële marketplace
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: Cloud Partner-portal
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: Migratie van Cloud Partner-portal naar Partnercentrum
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: Veelgestelde vragen over migratie
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Rondleiding door de portal
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: Aan de slag
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Nieuwe functies
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webanalyse
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: Definities
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuele-machineaanbieding
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: Vereisten
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: VM-aanbieding maken
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: Tabblad voor aanbiedingsinstellingen
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: Tabblad voor SKU's
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: Tabblad voor Test Drive
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Tabblad voor Marketplace
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: Tabblad voor ondersteuning
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: Technische assets voor de VM maken
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: VHD maken
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: Algemene problemen bij het maken van VHD's
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: Verbinding maken met de virtuele machine
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: De VM configureren
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows Remote Management
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: WinRM configureren nadat de virtuele machine is gemaakt
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: VM implementeren
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: Een VM-installatiekopie voor gebruikers maken
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: Sleutelkluiscertificaat maken
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Implementatiesjabloon voor sleutelkluis
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: Virtuele machine vanuit een gebruikers-VHD implementeren
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD-implementatiesjabloon
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: Een VM implementeren vanuit marketplace
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: VM-installatiekopie certificeren
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM-zelftestclient
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: SAS-URI ophalen
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: Veelvoorkomende problemen met SAS-URL
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: VM-aanbieding publiceren
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: Bestaande aanbieding bijwerken
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API-naslaginformatie
       items:
         - name: Overzicht
@@ -361,6 +294,8 @@
   items:
     - name: Overzicht van de commerciële marketplace
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Veelgestelde vragen over migratie
+      href: ./cloud-partner-portal-migration-faq.md
     - name: Accountbeheer
       items:
         - name: Een nieuw account voor het partnercentrum maken

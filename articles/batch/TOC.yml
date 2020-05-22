@@ -15,6 +15,9 @@
       href: quick-run-dotnet.md
     - name: Een Batch-taak uitvoeren - Python
       href: quick-run-python.md
+    - name: Een Batch-account maken - ARM-sjabloon
+      href: quick-create-template.md
+      displayName: Resource Manager
 - name: Zelfstudies
   items:
     - name: Parallelle bestandsverwerking - .NET
@@ -169,32 +172,32 @@
               href: batch-cli-templates.md
     - name: Batch Node.js-SDK gebruiken
       href: batch-nodejs-get-started.md
-- name: Workloads uitvoeren
-  items:
-    - name: MPI-taken
-      href: batch-mpi.md
-    - name: Containerwerkbelastingen
-      href: batch-docker-container-workloads.md
-    - name: Rendering
+    - name: Workloads uitvoeren
       items:
-        - name: Weergeven met Azure
-          href: batch-rendering-service.md
-        - name: VM-installatiekopieën weergeven
-          href: batch-rendering-applications.md
-        - name: Mogelijkheden voor weergave in batches
-          href: batch-rendering-functionality.md
-        - name: Batch Rendering gebruiken
-          href: batch-rendering-using.md
-        - name: Render Managers gebruiken
-          href: batch-rendering-render-managers.md
-        - name: Naslaginformatie voor weergavetoepassing
-          href: batch-rendering-application-reference.md
-        - name: Opslag en gegevensverplaatsing
-          href: batch-rendering-storage-data-movement.md
-        - name: Weergave-architecturen
-          href: batch-rendering-architectures.md
-    - name: Gegevensverwerking met Batch en Data Factory
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+        - name: MPI-taken
+          href: batch-mpi.md
+        - name: Containerwerkbelastingen
+          href: batch-docker-container-workloads.md
+        - name: Rendering
+          items:
+            - name: Weergeven met Azure
+              href: batch-rendering-service.md
+            - name: VM-installatiekopieën weergeven
+              href: batch-rendering-applications.md
+            - name: Mogelijkheden voor weergave in batches
+              href: batch-rendering-functionality.md
+            - name: Batch Rendering gebruiken
+              href: batch-rendering-using.md
+            - name: Render Managers gebruiken
+              href: batch-rendering-render-managers.md
+            - name: Naslaginformatie voor weergavetoepassing
+              href: batch-rendering-application-reference.md
+            - name: Opslag en gegevensverplaatsing
+              href: batch-rendering-storage-data-movement.md
+            - name: Weergave-architecturen
+              href: batch-rendering-architectures.md
+        - name: Gegevensverwerking met Batch en Data Factory
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Naslaginformatie
   items:
     - name: Azure CLI

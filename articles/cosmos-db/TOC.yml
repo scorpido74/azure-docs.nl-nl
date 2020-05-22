@@ -71,10 +71,8 @@
       href: sql-api-dotnet-samples.md
     - name: .NET V3 SDK-voorbeelden
       href: sql-api-dotnet-v3sdk-samples.md
-    - name: Java-voorbeelden
-      href: sql-api-java-samples.md
-    - name: Async Java-voorbeelden
-      href: sql-api-async-java-samples.md
+    - name: Java SDK v4-voorbeelden
+      href: sql-api-java-sdk-samples.md
     - name: Node.js-voorbeelden
       href: sql-api-nodejs-samples.md
     - name: Python-voorbeelden
@@ -132,11 +130,13 @@
         - name: Aanvraageenheden
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: Doorvoer voor containers en databases inrichten
+        - name: Inleiding tot ingerichte doorvoer
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Doorvoer inrichten - automatische schaalaanpassing
+        - name: Automatische schaalaanpassing voor doorvoer inrichten
           href: provision-throughput-autoscale.md
+        - name: Kiezen tussen automatische schaalaanpassing en standaard (handmatige) doorvoer
+          href: how-to-choose-offer.md
         - name: Veelgestelde vragen over automatische schaalaanpassing
           href: autoscale-faq.md
     - name: SQL-query
@@ -492,12 +492,14 @@
           href: change-feed-functions.md
         - name: Pull-model voor feed wijzigen
           href: change-feed-pull-model.md
-    - name: Analyses met Synapse Link
+    - name: Analyses met Azure Synapse Link
       items:
-        - name: Synapse Link voor Azure Cosmos DB
+        - name: Azure Synapse Link voor Cosmos DB
           href: synapse-link.md
         - name: Analytische opslag - Overzicht
           href: analytical-store-introduction.md
+        - name: Ondersteunde functies van Synapse Link
+          href: ../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Veelgestelde vragen over Synapse Link
           href: synapse-link-frequently-asked-questions.md
         - name: Use cases van Synapse Link
@@ -568,6 +570,8 @@
           href: online-backup-and-restore.md
         - name: Naleving
           href: compliance.md
+        - name: Ondersteuning voor Azure Policy
+          href: policy.md
     - name: Servicequota
       href: concepts-limits.md
 - name: 'Cassandra, MongoDB en andere API''s'
@@ -664,8 +668,6 @@
             - name: Xamarin
               href: create-mongodb-xamarin.md
             - name: Golang
-              href: create-mongodb-golang.md
-            - name: Aan de slag
               href: create-mongodb-go.md
         - name: Zelfstudies
           items:
@@ -922,12 +924,15 @@
           href: how-to-convert-session-token.md
     - name: Ingerichte doorvoer
       items:
-        - name: Doorvoer inrichten voor een container
+        - name: Standaard (handmatige) doorvoer voor een container inrichten
           displayName: 'request units, RUs, RU, collection level'
           href: how-to-provision-container-throughput.md
-        - name: Doorvoer inrichten voor een database
+        - name: Standaard (handmatige) doorvoer voor een database inrichten
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: Automatische schaalaanpassing voor doorvoer inrichten voor een database of een container
+          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+          href: how-to-provision-autoscale-throughput.md
         - name: Aanvraageenheden/seconde inschatten met Cosmos Capacity Planner
           displayName: 'request units, RUs, RU, capacity'
           href: estimate-ru-with-capacity-planner.md
@@ -1020,10 +1025,14 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Wijzigingenfeed - Asynchroon Java-voorbeeld
           href: create-sql-api-java-changefeed.md
-    - name: Analyses met Synapse Link
+    - name: Analyses met Azure Synapse Link
       items:
-        - name: Synapse Link configureren
+        - name: Azure Synapse Link configureren
           href: configure-synapse-link.md
+        - name: Verbinding maken met Azure Synapse Link
+          href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Query's uitvoeren met Azure Synapse Spark
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Ingebouwde analyse met Apache Spark
       items:
         - name: Spark-connector voor Azure Databricks
@@ -1034,8 +1043,12 @@
       items:
         - name: Notebooks inschakelen
           href: enable-notebooks.md
-        - name: Ingebouwde notebookopdrachten gebruiken
-          href: use-notebook-features-and-commands.md
+        - name: Notebooks importeren uit GitHub
+          href: import-github-notebooks.md
+        - name: Ingebouwde Python-notebookopdrachten gebruiken
+          href: use-python-notebook-features-and-commands.md
+        - name: 'Ingebouwde C#-notebookopdrachten gebruiken'
+          href: use-csharp-notebook-features-and-commands.md
     - name: Programmeren op de server
       items:
         - name: 'Opgeslagen procedures, triggers en UDF''s schrijven'
@@ -1160,6 +1173,8 @@
           href: migrate-relational-to-cosmos-db-sql-api.md
         - name: Migreren - Couchbase naar SQL API
           href: couchbase-cosmos-migration.md
+        - name: Migreren - DynamoDB naar SQL API
+          href: dynamo-to-cosmos.md
     - name: Bibliotheek voor bulksgewijs uitvoeren
       items:
         - name: Over de bibliotheek voor bulkuitvoering
@@ -1182,12 +1197,16 @@
       href: sql-api-sdk-dotnet-changefeed.md
     - name: Bibliotheek voor .NET-bulkuitvoering
       href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java
-      href: sql-api-sdk-java.md
     - name: Bibliotheek voor Java-bulkuitvoering
       href: sql-api-sdk-bulk-executor-java.md
-    - name: Async Java
-      href: sql-api-sdk-async-java.md
+    - name: Java-SDK v4 voor kern
+      href: sql-api-sdk-java-v4.md
+    - name: Oudere Java-SDK's voor kern
+      items:
+        - name: Async Java-SDK v2
+          href: sql-api-sdk-async-java.md
+        - name: Sync Java-SDK v2
+          href: sql-api-sdk-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

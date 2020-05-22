@@ -366,7 +366,7 @@
         - name: Dashboards en rapporten bouwen
           items:
             - name: Visualiseren met Power BI
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: Problemen oplossen
       items:
         - name: Connectiviteit
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Gegevensbeheer
           href: sql-data-warehouse-partner-data-management.md
+        - name: Openbare preview-partners
+          href: sql-data-warehouse-partner-launch.md

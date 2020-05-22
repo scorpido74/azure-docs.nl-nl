@@ -79,9 +79,8 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Designer-gegevenssets
-      href: sample-designer-datasets.md
-    - name: Designer-voorbeeldpijplijnen
+    - name: Voorbeelden en gegevenssets van Designer
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: MLOps-voorbeelden van volledige scenario's
       href: 'https://github.com/microsoft/MLOps'
@@ -261,6 +260,9 @@
             - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
               displayName: 'data, data set'
               href: how-to-version-track-datasets.md
+            - name: Privacy van gegevens behouden
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
     - name: Modellen trainen
       items:
         - name: Schattingen gebruiken voor ML
@@ -376,6 +378,9 @@
               href: how-to-monitor-data-drift.md
             - name: Controleren met behulp van Application Insights
               href: how-to-enable-app-insights.md
+        - name: Service voor versleutelde deductie implementeren
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
     - name: Machine Learning-pijplijnen maken en gebruiken
       displayName: pipelines
       items:
@@ -393,9 +398,6 @@
         - name: Fouten met pijplijnen opsporen in Application Insights
           displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
-        - name: Azure-pijplijnen voor CI/CD
-          displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: Gegevens transformeren met Designer
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -417,6 +419,9 @@
         - name: Machine learning-pijplijnen doorlopen en ontwikkelen
           displayName: modularizing testing
           href: concept-pipeline-practices-tips.md
+    - name: Azure-pijplijnen voor CI/CD
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md

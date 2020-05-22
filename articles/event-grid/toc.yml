@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure-abonnementen
               href: event-schema-subscriptions.md
+    - name: Partneronderwerpen
+      items:
+        - name: Overzicht van partneronderwerpen
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: Een Event Grid-partner worden
+          href: partner-onboarding-overview.md
     - name: Gebeurtenisdomeinen
       href: event-domains.md
     - name: Gebeurtenisschema-indelingen
@@ -186,6 +194,8 @@
   items:
     - name: Posten naar een aangepast onderwerp
       href: post-to-custom-topic.md
+    - name: Abonneren op Auth0-gebeurtenissen
+      href: auth0-how-to.md
     - name: Gebeurtenissen op HTTP-eindpunt ontvangen
       href: receive-events.md
     - name: Dead-letter en opnieuw proberen
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: Webhook beveiligen met AAD
           href: secure-webhook-delivery.md
+        - name: Gebeurtenisverzending met beheerde identiteit
+          href: managed-service-identity.md
     - name: Problemen oplossen
       items:
         - name: Diagnostische logboeken inschakelen

@@ -91,7 +91,7 @@
           items:
             - name: Toegang beperken met een privé-eindpunt
               href: container-registry-private-link.md
-            - name: Firewallregels van de service configureren
+            - name: Toegang tot openbare register configureren
               href: container-registry-access-selected-networks.md
             - name: Toegang met een service-eindpunt beperken (preview)
               href: container-registry-vnet.md

@@ -240,10 +240,7 @@
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
             - name: Azure Kubernetes Service
-              items:
-                - name: Kubernetes (afgeschaft)
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
+              href: app/kubernetes-codeless.md
             - name: 'Zelfstandig: elke omgeving'
               items:
                 - name: Java (preview)
@@ -1000,8 +997,6 @@
           items:
             - name: Beschikbaarheid
               href: app/monitor-web-app-availability.md
-            - name: Metrische waarschuwingen
-              href: app/alerts.md
         - name: Regels voor metrische waarschuwingen
           items:
             - name: Metrische waarschuwingen beheren
@@ -1268,6 +1263,8 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights-connector
           href: platform/app-insights-connector.md
+        - name: Application Insights voor AKS zonder code
+          href: app/kubernetes.md
         - name: Docker-toepassingen bewaken
           href: app/docker.md
         - name: Afschaffing van de OMS-portal

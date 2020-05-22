@@ -133,6 +133,8 @@
   items:
     - name: Verplaatsen tussen regio's
       href: move-across-regions.md
+    - name: Dynamisch partities toevoegen
+      href: dynamically-add-partitions.md
     - name: Blob Storage gebruiken als controlepuntopslag in Azure Stack Hub
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: Service-eindpunten voor virtuele netwerken configureren
           href: event-hubs-service-endpoints.md
-        - name: Privé-eindpunten configureren (preview)
+        - name: Privé-eindpunten configureren
           href: private-link-service.md
         - name: Door de klant beheerde sleutels configureren
           href: configure-customer-managed-key.md
