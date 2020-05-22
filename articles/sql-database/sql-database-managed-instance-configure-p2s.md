@@ -3,7 +3,7 @@ title: Een door P2S beheerd exemplaar configureren
 description: Verbinding maken met een Azure SQL Database beheerd exemplaar met behulp van SQL Server Management Studio met behulp van een punt-naar-site-verbinding vanaf een on-premises client computer.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 434b3d46d19138b494c9e29add3affb2eecc9c45
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268884"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773740"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Snelstartgids: een punt-naar-site-verbinding naar een door Azure SQL Database beheerd exemplaar van on-premises configureren
 
@@ -54,7 +54,7 @@ Voor deze snelstartgids geldt het volgende:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Plak het script in het Power shell-venster en geef de vereiste para meters op. De waarden voor `<subscriptionId>`, `<resourceGroup>`en `<virtualNetworkName>` moeten overeenkomen met die u hebt gebruikt voor de Snelstartgids voor het maken van een [beheerd exemplaar](sql-database-managed-instance-get-started.md) . De waarde voor `<certificateNamePrefix>` kan een teken reeks van uw keuze zijn.
+3. Plak het script in het Power shell-venster en geef de vereiste para meters op. De waarden voor `<subscriptionId>` , `<resourceGroup>` en `<virtualNetworkName>` moeten overeenkomen met die u hebt gebruikt voor de Snelstartgids voor het maken van een [beheerd exemplaar](sql-database-managed-instance-get-started.md) . De waarde voor `<certificateNamePrefix>` kan een teken reeks van uw keuze zijn.
 
 4. Voer het Power shell-script uit.
 
@@ -63,7 +63,7 @@ Voor deze snelstartgids geldt het volgende:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Een VPN-verbinding maken met uw beheerde exemplaar
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de resource groep waarin u de gateway van het virtuele netwerk hebt gemaakt en open vervolgens de bron van de virtuele netwerk gateway.
 3. Selecteer **punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden**.
 
@@ -81,7 +81,7 @@ Voor deze snelstartgids geldt het volgende:
 1. Ga naar **VPN** in **netwerk & Internet** op uw on-premises client computer en selecteer het virtuele netwerk van het beheerde exemplaar om een verbinding met dit VNet tot stand te brengen. Het VNet bevindt zich in de volgende afbeelding met de naam **MyNewVNet**.
 
     ![VPN-verbinding](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. Selecteer **Verbinden**.
+2. Selecteer **Verbinding maken**.
 3. Selecteer in het dialoog venster **verbinding maken**.
 
     ![VPN-verbinding](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  

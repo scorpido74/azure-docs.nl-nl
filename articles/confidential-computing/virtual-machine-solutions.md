@@ -8,20 +8,20 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187882"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773131"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
 
 Dit artikel bevat informatie over het implementeren van Azure vertrouwelijk computing virtual machines (Vm's) met Intel-processors die worden ondersteund door de [Intel software Guard extension](https://software.intel.com/sgx) (Intel SGX). 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>VM-grootten van Azure vertrouwelijk computing
+## <a name="azure-confidential-computing-vm-sizes"></a>VM-grootten van Azure Confidential Computing
 
-Azure vertrouwelijk computing virtual machines zijn ontworpen om het vertrouwelijk en de integriteit van uw gegevens en code te beschermen tijdens de verwerking in de Cloud 
+Azure vertrouwelijk computing virtual machines zijn ontworpen om de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de Cloud 
 
 [DCsv2-serie](../virtual-machines/dcv2-series.md) Vm's zijn de nieuwste en meest recente familie voor vertrouwelijke computing-grootte. Deze Vm's ondersteunen een groter aantal implementatie mogelijkheden, hebben twee maal de enclave-pagina cache (EPC) en een grotere selectie van grootten vergeleken met onze Vm's van de DC-serie. De vm's van de [DC-serie](../virtual-machines/sizes-previous-gen.md#preview-dc-series) zijn momenteel beschikbaar als preview-versie en worden afgeschaft en zijn niet opgenomen in de algemene Beschik baarheid.
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-Vanaf april 2020 zijn deze Sku's beschikbaar in de volgende regio's en beschikbaarheids zones:
+Vanaf mei 2020 zijn deze Sku's beschikbaar in de volgende regio's en beschikbaarheids zones:
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ Volg een zelf studie over het uitvoeren van een Snelstartgids voor het implement
   
 - **Grootte wijzigen** : vanwege hun gespecialiseerde hardware kunt u alleen de grootte van vertrouwelijke computing-instanties binnen dezelfde omvang aanpassen. U kunt bijvoorbeeld alleen het formaat van een virtuele machine uit de DCsv2-serie wijzigen van de grootte van een DCsv2-serie naar een andere. Het wijzigen van het formaat van een niet-vertrouwelijke computer grootte naar een vertrouwelijk computer formaat wordt niet ondersteund.  
 
-- **Afbeelding** : om Intel-software Guard-extensie (Intel SGX) ondersteuning te bieden voor vertrouwelijke Compute-instanties, moeten alle implementaties worden uitgevoerd op installatie kopieën van de tweede generatie. Azure vertrouwelijk computing ondersteunt werk belastingen die worden uitgevoerd op Ubuntu 18,04 gen 2, Ubuntu 16,04 gen 2 en Windows Server 2016 gen 2. Meer informatie over [ondersteuning voor virtuele machines van de tweede generatie op Azure](../virtual-machines/linux/generation-2.md) voor meer info over ondersteunde en niet-ondersteunde scenario's. 
+- **Afbeelding** : om Intel-software Guard-extensie (Intel SGX) ondersteuning te bieden voor vertrouwelijke Compute-instanties, moeten alle implementaties worden uitgevoerd op installatie kopieën van de tweede generatie. Azure vertrouwelijk computing ondersteunt werk belastingen die worden uitgevoerd op Ubuntu 18,04 gen 2, Ubuntu 16,04 gen 2, Windows Server 2019 Gen2 en Windows Server 2016 gen 2. Meer informatie over [ondersteuning voor virtuele machines van de tweede generatie op Azure](../virtual-machines/linux/generation-2.md) voor meer info over ondersteunde en niet-ondersteunde scenario's. 
 
 - **Opslag** : Azure vertrouwelijk computing gegevens schijven van virtuele machines en onze tijdelijke OS-schijven bevinden zich op NVMe-schijven. Instanties ondersteunen alleen Premium-SSD en Standard-SSD schijven, niet Ultra-SSD of Standard-HDD. De grootte van de virtuele machine **DC8_v2** biedt geen ondersteuning voor Premium Storage. 
 
@@ -104,11 +104,11 @@ Azure Resource Manager is de implementatie- en beheersservice voor Azure. Er wor
 
 Zie [Sjabloonimlementatie Overview](../azure-resource-manager/templates/overview.md)voor meer informatie over Azure Resource Manager sjablonen.
 
-Als u een DCsv2-serie wilt implementeren in een ARM-sjabloon, gebruikt u de resource van de [virtuele machine](../virtual-machines/windows/template-description.md). U moet ervoor zorgen dat u de juiste eigenschappen opgeeft voor **vmSize** en voor uw **imageReference**.
+Als u een DCsv2-serie wilt implementeren in een Azure Resource Manager-sjabloon, gebruikt u de [resource van de virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
 
 ### <a name="vm-size"></a>VM-grootte
 
-Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen**als **vmSize** geplaatst.
+Geef een van de volgende grootten op in uw Azure Resource Manager sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen**als **vmSize** geplaatst.
 
 ```json
   [
@@ -124,6 +124,12 @@ Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine b
 Onder **Eigenschappen**moet u ook verwijzen naar een installatie kopie onder **storageProfile**. Gebruik *slechts één* van de volgende installatie kopieën voor uw **imageReference**.
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ Onder **Eigenschappen**moet u ook verwijzen naar een installatie kopie onder **s
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-In dit artikel hebt u geleerd over de kwalificaties en configuraties die nodig zijn bij het maken van een virtuele machine met vertrouwelijke computing. U kunt nu de Azure Marketplace gebruiken om een virtuele machine uit de DCsv2-serie te implementeren.
+In dit artikel hebt u geleerd over de kwalificaties en configuraties die nodig zijn bij het maken van een virtuele machine met vertrouwelijke computing. U kunt nu de Microsoft Azure Marketplace gebruiken om een virtuele machine uit de DCsv2-serie te implementeren.
 
 > [!div class="nextstepaction"]
 > [Een virtuele machine uit de DCsv2-serie implementeren in azure Marketplace](quick-create-marketplace.md)

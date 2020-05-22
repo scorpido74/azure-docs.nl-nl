@@ -3,7 +3,7 @@ title: Overzicht van SQL Managed instance
 description: In dit artikel wordt Azure SQL Database beheerde instantie beschreven.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: cce871d2f38d7871bd1ba9c5cb7b086e514a6913
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 55e56d918b1e0c16887f069713203a7e4701baaf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120790"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772315"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -53,7 +53,7 @@ Het beheerde exemplaar is een combi natie van de beste functies die beschikbaar 
 
 De belangrijkste functies van beheerde exemplaren worden weer gegeven in de volgende tabel:
 
-|Onderdeel | Beschrijving|
+|Functie | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
 | Beheerde geautomatiseerde back-ups | Ja |

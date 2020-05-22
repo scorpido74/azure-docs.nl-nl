@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837189"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759027"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -82,7 +82,7 @@ Nadat u Azure AD Privileged Identity Management hebt ingeschakeld:
 
 4. Open Privileged Identity Management in de lijst **alle services** en vastmaken aan uw dash board.
 
-De eerste persoon die PIM in uw organisatie moet gebruiken, is toegewezen aan de beheerders rollen **beveiligings beheerder** en **geprivilegieerde rol** . Alleen bevoegde beheerdersrol kunnen de toewijzingen van Azure AD-Directory functies van gebruikers beheren. De wizard PIM-beveiliging leidt u door de eerste detectie-en toewijzings ervaring. U kunt de wizard afsluiten zonder verdere wijzigingen aan te brengen.
+Zorg ervoor dat de eerste persoon die PIM in uw organisatie gebruikt, is toegewezen aan de beheerders rollen **beveiligings beheerder** en **geprivilegieerde rol** . Alleen bevoegde beheerdersrol kunnen de toewijzingen van Azure AD-Directory functies van gebruikers beheren. De wizard PIM-beveiliging leidt u door de eerste detectie-en toewijzings ervaring. U kunt de wizard afsluiten zonder verdere wijzigingen aan te brengen.
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Accounts identificeren en categoriseren die zich in rollen met een hoge bevoegdheden bevinden
 
@@ -110,11 +110,11 @@ Het is mogelijk dat een gebruiker per ongeluk uit hun rol wordt uitgesloten. Als
 
 Met accounts voor toegang in nood gevallen kunt u de toegang in een Azure AD-organisatie beperken. Deze accounts zijn zeer privileged en worden niet toegewezen aan specifieke personen. Accounts voor toegang in nood gevallen zijn beperkt tot nood gevallen waarin normale beheerders accounts niet kunnen worden gebruikt. Zorg ervoor dat u het gebruik van het nood-account alleen beheert en beperkt tot die tijd waarvoor het nodig is.
 
-Evalueer de accounts die zijn toegewezen of die in aanmerking komen voor de rol van globale beheerder. Als u geen alleen-Cloud accounts met behulp van \*het. onmicrosoft.com-domein (voor ' Breek glazen ' nood toegang) ziet, maakt u deze. Zie [Beheer accounts voor nood toegang beheren in azure AD](directory-emergency-access.md)voor meer informatie.
+Evalueer de accounts die zijn toegewezen of die in aanmerking komen voor de rol van globale beheerder. Als u geen alleen-Cloud accounts met behulp \* van het. onmicrosoft.com-domein (voor ' Breek glazen ' nood toegang) ziet, maakt u deze. Zie [Beheer accounts voor nood toegang beheren in azure AD](directory-emergency-access.md)voor meer informatie.
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-factor Authentication inschakelen en alle andere niet-gefedereerde niet-federatieve beheerders accounts van één gebruiker registreren
 
-Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange Online beheerder en share point online-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat [https://aka.ms/mfasetup](https://aka.ms/mfasetup)alle gebruikers zijn geregistreerd op. Meer informatie vindt u in stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange Online beheerder en share point online-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat alle gebruikers zijn geregistreerd op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Meer informatie vindt u in stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fase 2: veelgebruikte aanvallen beperken
 
@@ -177,7 +177,7 @@ Azure AD Identity Protection is een op algoritme gebaseerd hulp programma voor b
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Uw Office 365 Secure score verkrijgen (als u Office 365 gebruikt)
 
-Met een beveiligde Score worden uw instellingen en activiteiten gecontroleerd op de Office 365-services die u gebruikt en vergelijkt deze met een basis lijn die door micro soft is ingesteld. U krijgt een score op basis van de manier waarop u de beveiligings procedures afstemt. Iedereen met beheerders machtigingen voor een Office 365 Business Premium-of ENTER prise-abonnement kan toegang krijgen tot de [https://securescore.office.com](https://securescore.office.com/)beveiligde Score op.
+Met een beveiligde Score worden uw instellingen en activiteiten gecontroleerd op de Office 365-services die u gebruikt en vergelijkt deze met een basis lijn die door micro soft is ingesteld. U krijgt een score op basis van de manier waarop u de beveiligings procedures afstemt. Iedereen met beheerders machtigingen voor een Office 365 Business Premium-of ENTER prise-abonnement kan toegang krijgen tot de beveiligde Score op [https://securescore.office.com](https://securescore.office.com/) .
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Raadpleeg de richt lijnen voor beveiliging en naleving van Office 365 (als u Office 365 gebruikt)
 
@@ -207,7 +207,7 @@ Gebruik de Enter prise Portal en de Azure Portal om de abonnementen in uw organi
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Micro soft-accounts uit beheerders rollen verwijderen
 
-Micro soft-accounts uit andere Program ma's, zoals Xbox, Live en Outlook, mogen niet worden gebruikt als beheerders account voor de abonnementen van uw organisatie. Beheer status verwijderen uit alle micro soft-accounts en vervangen door Azure AD (bijvoorbeeld chris@contoso.com) werk-of school accounts. Voor beheerders doeleinden is afhankelijk van accounts die zijn geverifieerd in azure AD en niet in andere services.
+Micro soft-accounts uit andere Program ma's, zoals Xbox, Live en Outlook, mogen niet worden gebruikt als beheerders account voor de abonnementen van uw organisatie. Beheer status verwijderen uit alle micro soft-accounts en vervangen door Azure AD (bijvoorbeeld chris@contoso.com ) werk-of school accounts. Voor beheerders doeleinden is afhankelijk van accounts die zijn geverifieerd in azure AD en niet in andere services.
 
 #### <a name="monitor-azure-activity"></a>Azure-activiteit bewaken
 

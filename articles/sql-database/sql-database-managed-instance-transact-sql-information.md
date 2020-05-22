@@ -3,7 +3,7 @@ title: Verschillen tussen beheerde exemplaren van T-SQL
 description: In dit artikel worden de T-SQL-verschillen tussen een beheerd exemplaar in Azure SQL Database beschreven en SQL Server
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e121d94b27710eb952f98bf97c3b4e5602866f4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bc5aed6c00afc5ffc9d44f43a9163b2ae2de1e17
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724629"
+ms.locfileid: "83772298"
 ---
 # <a name="managed-instance-t-sql-differences-and-limitations"></a>Verschillen en beperkingen van het beheerde exemplaar T-SQL
 

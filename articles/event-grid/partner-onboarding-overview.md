@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725922"
+ms.locfileid: "83758823"
 ---
-# <a name="become-and-event-grid-partner"></a>Partner worden en Event Grid
+# <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als een Azure Event Grid partner
 
 In dit artikel wordt beschreven hoe u de resources van de Event Grid partner privé kunt gebruiken en hoe u een openbaar beschikbaar partner onderwerp type kunt worden.
 
@@ -38,7 +38,7 @@ Met partner onderwerpen kunt u gebeurtenissen publiceren naar Azure Event Grid v
 
     ![Partner onderwerp maken](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Maak een of meer `partnerNamespaces` in elke regio waarvoor u gebeurtenissen wilt publiceren. Als onderdeel hiervan richt Event Grid-Service een publicatie-eind punt in (bijvoorbeeld, https://contoso.westus-1.eventgrid.azure.net/api/events) en toegangs sleutels.
+1. Maak een of meer `partnerNamespaces` in elke regio waarvoor u gebeurtenissen wilt publiceren. Als onderdeel hiervan wordt Event Grid-Service een publicatie-eind punt ingericht (bijvoorbeeld `https://contoso.westus-1.eventgrid.azure.net/api/events` ) en toegangs sleutels.
 
     ![Partner naam ruimte maken](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -105,7 +105,7 @@ Gebeurtenissen publiceren naar Azure Event Grid met behulp van het CloudEvents 1
 
 ### <a name="example-flow"></a>Voorbeeld stroom
 
-1.  De publicatie service voert een HTTP POST naar uit https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01 .
+1.  De publicatie service voert een HTTP POST naar uit `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 2.  Neem in de aanvraag een header-waarde met de naam AEG-SAS-sleutel op die een sleutel voor verificatie bevat. Deze sleutel is ingericht tijdens het maken van de partnerNamespace. Een geldige header-waarde is bijvoorbeeld AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 3.  Stel de content-type-header in op ' Application/cloudevents-batch + JSON; charset = UTF-8.
 4.  Voer een HTTP POST naar de bovenstaande publicatie-URL uit met een batch-gebeurtenis die overeenkomt met die regio. Bijvoorbeeld:
@@ -153,12 +153,12 @@ Nadat u naar het partnerNamespace-eind punt hebt gepost, ontvangt u een antwoord
 | Onjuist eind punt                 | 404 Niet gevonden         |
 | Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sjabloon schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST-API’s](https://docs.microsoft.com/rest/api/eventgrid/partnernamespaces)
+  * [REST-API’s](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI-extensie](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK's

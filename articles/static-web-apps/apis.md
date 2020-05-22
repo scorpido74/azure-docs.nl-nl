@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: b7729ff0b81a9b0271a51272930d5052229ff884
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655265"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758755"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-ondersteuning in de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -32,6 +32,7 @@ API-eind punten zijn beschikbaar voor de web-app via de _API_ -route. Terwijl de
 Azure static Web Apps biedt een API via Azure Functions. De mogelijkheden van Azure Functions zijn gericht op een specifieke set functies waarmee u een API voor een web-app kunt maken en de web-app in staat wilt stellen om op een veilige manier een API te gebruiken. Deze functies worden geleverd met enkele beperkingen, waaronder:
 
 - Het voor voegsel van de API-route moet _API_zijn.
+- De API-functie-app moet in Java script zijn.
 - Triggers en bindingen zijn beperkt tot [http](../azure-functions/functions-bindings-http-webhook.md).
   - Alle andere [Azure functions-triggers en-bindingen](../azure-functions/functions-triggers-bindings.md#supported-bindings) , met uitzonde ring van uitvoer bindingen, zijn beperkt.
 - Logboeken zijn alleen beschikbaar als u [Application Insights](../azure-functions/functions-monitoring.md) toevoegt aan uw functions-app.

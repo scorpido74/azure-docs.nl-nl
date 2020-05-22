@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617942"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758687"
 ---
 # <a name="models"></a>Modellen
 
@@ -36,8 +36,8 @@ Zodra een model is geconverteerd, kan het worden geladen vanuit Azure Blob-opsla
 
 Er zijn twee verschillende laad functies die verschillen van de manier waarop de Asset wordt opgelost in Blob Storage:
 
-* Het model kan worden aangepakt door de SAS-URI. Relevante laad functie is `LoadModelFromSASAsync` met para `LoadModelFromSASParams`meter. Gebruik deze variant ook bij het laden van [ingebouwde modellen](../samples/sample-model.md).
-* Het model kan rechtstreeks worden aangepakt door de Blob Storage-para meters, [als de Blob-opslag aan het account is gekoppeld](../how-tos/create-an-account.md#link-storage-accounts). Relevante laad functie in dit geval is `LoadModelAsync` een para `LoadModelParams`meter.
+* Het model kan worden aangepakt door de SAS-URI. Relevante laad functie is `LoadModelFromSASAsync` met para meter `LoadModelFromSASParams` . Gebruik deze variant ook bij het laden van [ingebouwde modellen](../samples/sample-model.md).
+* Het model kan rechtstreeks worden aangepakt door de Blob Storage-para meters, [als de Blob-opslag aan het account is gekoppeld](../how-tos/create-an-account.md#link-storage-accounts). Relevante laad functie in dit geval is een `LoadModelAsync` para meter `LoadModelParams` .
 
 De volgende code fragmenten laten zien hoe u modellen met beide functies kunt laden. Als u een model wilt laden met behulp van de SAS-URI, gebruikt u de code zoals hieronder wordt beschreven:
 
@@ -58,6 +58,28 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSASParams modelParams;
+    modelParams.ModelUrl = modelUri;
+    modelParams.Parent = modelParent;
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
+
+    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
+    {
+        printf("Loading: finished.");
+    });
+    loadOp->ProgressUpdated([](float progress)
+    {
+        printf("Loading: %.1f%%", progress*100.f);
+    });
+
+    return loadOp;
+}
+```
+
 Als u een model wilt laden door rechtstreeks de para meters voor de Blob-opslag te gebruiken, gebruikt u code die vergelijkbaar is met het volgende fragment:
 
 ```csharp
@@ -73,6 +95,20 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 
     var loadOp = session.Actions.LoadModelAsync(modelParams);
 
+    // ... (identical to the SAS URI snippet above)
+}
+```
+
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+{
+    LoadModelParams modelParams;
+    modelParams.Parent = modelParent;
+    modelParams.Blob.StorageAccountName = std::move(storageAccount);
+    modelParams.Blob.BlobContainerName = std::move(containerName);
+    modelParams.Blob.AssetPath = std::move(assetFilePath);
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
     // ... (identical to the SAS URI snippet above)
 }
 ```

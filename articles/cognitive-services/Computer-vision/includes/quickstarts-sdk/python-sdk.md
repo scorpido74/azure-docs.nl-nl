@@ -9,16 +9,16 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5f552dfc320459d23e538e65e5f34c085f5b5ad9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 909c787c8ddc9443dca46dd80c0757cf099449c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136005"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778203"
 ---
 <a name="HOLTop"></a>
 
-[Reference documentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | PiPy-voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [package)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)  |  van bibliotheek [Pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)  |  Voor [beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,11 +34,11 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/)
 
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het `COMPUTER_VISION_SUBSCRIPTION_KEY` eind `COMPUTER_VISION_ENDPOINT`punt-URL, respectievelijk met de naam en.
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
  
 ### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
-Maak bijvoorbeeld een nieuwe python&mdash;-script*QuickStart-file.py*. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
+Maak bijvoorbeeld een nieuwe python &mdash; -script*QuickStart-file.py*. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -78,7 +78,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) hebt gemaakt `COMPUTER_VISION_SUBSCRIPTION_KEY`voor uw computer vision sleutel met de naam.
+> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele hebt gemaakt](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) voor uw computer vision sleutel met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` .
 
 Exemplaar een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) -object te maken.
 
@@ -152,7 +152,7 @@ Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in d
 
 ### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
 
-Met de volgende code wordt informatie over het type afbeelding&mdash;afgedrukt, ongeacht of het een illustratie of lijn tekening is.
+Met de volgende code wordt informatie over het type afbeelding afgedrukt &mdash; , ongeacht of het een illustratie of lijn tekening is.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
@@ -162,19 +162,19 @@ Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze convertere
 
 ### <a name="call-the-read-api"></a>De Lees-API aanroepen
 
-Gebruik eerst de volgende code om de **batch_read_file** -methode voor de opgegeven installatie kopie aan te roepen. Hiermee wordt een bewerkings-ID geretourneerd en wordt een asynchroon proces gestart om de inhoud van de afbeelding te lezen.
+Gebruik eerst de volgende code om de **Lees** methode voor de gegeven afbeelding aan te roepen. Hiermee wordt een bewerkings-ID geretourneerd en wordt een asynchroon proces gestart om de inhoud van de afbeelding te lezen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 ### <a name="get-read-results"></a>Lees resultaten ophalen
 
-Vervolgens haalt u de bewerkings-ID op die wordt geretourneerd door de **batch_read_file** aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking met een interval van één seconde gecontroleerd totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekst gegevens afgedrukt naar de-console.
+Vervolgens haalt u de bewerkings-ID op die wordt geretourneerd door de **Lees** aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking met een interval van één seconde gecontroleerd totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekst gegevens afgedrukt naar de-console.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `python` de opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de `python` opdracht in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py

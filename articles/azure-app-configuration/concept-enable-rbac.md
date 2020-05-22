@@ -6,19 +6,19 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 18fa1b60b15b7eef96efa8dcc4fbf9cd7c4dc7f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec30aafe63259237a89de6597970b908fb969cf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472620"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773437"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Toegang tot Azure-app configuratie machtigen met behulp van Azure Active Directory
 Azure-app configuratie ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor app-configuratie-exemplaren.  Met Azure AD kunt u toegangs beheer op basis van rollen (RBAC) gebruiken om machtigingen toe te kennen aan een beveiligings-principal.  Een beveiligingsprincipal kan een gebruiker of een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md)van de toepassing zijn.  Zie voor meer informatie over rollen en roltoewijzingen [wat verschillende rollen zijn](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Overzicht
 Aanvragen van een beveiligingsprincipal (een gebruiker of een toepassing) voor toegang tot een app-configuratie resource moeten worden geautoriseerd.  Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat.
-1. De identiteit van de beveiligingsprincipal wordt geverifieerd en er wordt een OAuth 2,0-token geretourneerd.  De naam van de resource om een token `https://login.microsoftonline.com/{tenantID}` aan `{tenantID}` te vragen, komt overeen met de Azure Active Directory Tenant-ID waartoe de service-principal behoort.
+1. De identiteit van de beveiligingsprincipal wordt geverifieerd en er wordt een OAuth 2,0-token geretourneerd.  De naam van de resource om een token aan te vragen, `https://login.microsoftonline.com/{tenantID}` `{tenantID}` komt overeen met de Azure Active Directory Tenant-ID waartoe de service-principal behoort.
 2. Het token wordt door gegeven als onderdeel van een aanvraag bij de app Configuration-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime.  Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure Functions-app, een Azure-web-app of een Azure-VM, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources.  Zie voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden gemaakt naar Azure-app configuratie [verifiëren van toegang tot Azure-app configuratie resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](howto-integrate-azure-managed-service-identity.md).
@@ -33,9 +33,10 @@ Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verl
 ## <a name="built-in-rbac-roles-for-azure-app-configuration"></a>Ingebouwde RBAC-rollen voor Azure-app configuratie
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot app-configuratie gegevens met behulp van Azure AD en OAuth:
 
-- Azure-app eigenaar van de configuratie gegevens: gebruik deze rol om lees-/schrijftoegang te verlenen aan de configuratie resources van de app.
-- Azure-app configuratie gegevens lezer: gebruik deze rol om Lees toegang te verlenen tot de configuratie resources van de app.
-- Inzender: gebruik deze rol om beheerders toegang te geven tot de service zonder toegang te verlenen tot de gegevens die zijn opgeslagen in het app-configuratie-exemplaar.
+- **Eigenaar van app-configuratie gegevens**: gebruik deze rol voor het verlenen van toegang voor lezen/schrijven/verwijderen naar app-configuratie gegevens. Hiermee wordt geen toegang verleend tot de bron van de configuratie van de app.
+- **Gegevens lezer app-configuratie**: gebruik deze rol om Lees toegang te geven tot app-configuratie gegevens. Hiermee wordt geen toegang verleend tot de bron van de configuratie van de app.
+- **Inzender**: gebruik deze rol om de configuratie bron van de app te beheren. Terwijl de app-configuratie gegevens kunnen worden geopend met behulp van toegangs sleutels, verleent deze rol geen toegang tot de gegevens met behulp van Azure AD.
+- **Lezer**: gebruik deze rol om Lees toegang te verlenen aan de configuratie bron van de app. Hiermee wordt geen toegang verleend tot de toegangs sleutels van de resource en evenmin op de gegevens die zijn opgeslagen in de app-configuratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het gebruik van [beheerde identiteiten](howto-integrate-azure-managed-service-identity.md) voor het beheren van uw app-configuratie service.

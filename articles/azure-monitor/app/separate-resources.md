@@ -3,12 +3,12 @@ title: 'Hoe kunt u uw Application Insights-implementatie ontwerpen: een VS veel 
 description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-, test-en productie tempels.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125686"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773698"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
 
@@ -138,7 +138,7 @@ Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodu
 U ziet echter dat het build-versie nummer alleen wordt gegenereerd door de micro soft build engine, niet door de ontwikkel aars versie van Visual Studio.
 
 ### <a name="release-annotations"></a>Release-aantekeningen
-Als u Azure DevOps gebruikt, kunt u [een aantekeningen markering](../../azure-monitor/app/annotations.md) toevoegen aan uw diagrammen wanneer u een nieuwe versie uitgeeft. De volgende afbeelding toont hoe deze markering wordt weergegeven.
+Als u Azure DevOps gebruikt, kunt u [een aantekeningen markering](../../azure-monitor/app/annotations.md) toevoegen aan uw diagrammen wanneer u een nieuwe versie uitgeeft. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

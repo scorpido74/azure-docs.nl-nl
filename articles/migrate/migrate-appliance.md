@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656424"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758942"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -105,7 +105,7 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Azure Active Directory (AD)-apps voor het apparaat om te communiceren met Azure Migrate.
 management.azure.com | Maak Azure AD-apps voor het apparaat om te communiceren met de Azure Migrate-service.
 *.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
-*.vault.azure.net | Geheimen beheren in de Azure Key Vault.
+*.vault.azure.net | Geheimen beheren in de Azure Key Vault. Opmerking: Zorg ervoor dat computers voor replicatie toegang hebben.
 aka.ms/* | Toegang tot ook wel-koppelingen toestaan. Wordt gebruikt voor Azure Migrate apparaat-updates.
 download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
 *.servicebus.windows.net | Communicatie tussen het apparaat en de Azure Migrate service.
@@ -440,12 +440,12 @@ Controleren in het configuratie scherm:
 Als u een oudere versie voor een van de onderdelen uitvoert, moet u de service verwijderen en hand matig bijwerken naar de nieuwste versie.
 
 1. [Down load](https://aka.ms/latestapplianceservices) het bestand LatestComponents. json om te controleren op de nieuwste versies van de service van het apparaat.
-2.  Na het downloaden opent u het bestand LatestComponents. json in Klad blok.
+2.    Na het downloaden opent u het bestand LatestComponents. json in Klad blok.
 3. Zoek de nieuwste service versie in het bestand en de download koppeling hiervoor. Bijvoorbeeld:
 
     "Naam": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "versie": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Down load de nieuwste versie van een verouderde service met behulp van de download koppeling in het bestand.
+4.    Down load de nieuwste versie van een verouderde service met behulp van de download koppeling in het bestand.
 5. Nadat u hebt gedownload, voert u de volgende opdracht uit in een Administrator-opdracht venster om de integriteit van de gedownloade MSI te controleren.
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Bijvoorbeeld: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5

@@ -4,13 +4,13 @@ description: In dit artikel wordt de Azure Monitor voor Azure Redis Cache functi
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/07/2020
-ms.openlocfilehash: a6a8499a13e5c14869f9c9063528cea4ee82f419
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650425"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773903"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
 
@@ -123,6 +123,38 @@ Wanneer u de **fout** boven aan de pagina selecteert, wordt de tabel **fouten** 
 ### <a name="metric-definitions"></a>Metrische definities
 
 Raadpleeg het [artikel over de beschik bare metrische gegevens en rapportage-intervallen](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)voor een volledige lijst van de metrische definities die deze werkmappen vormen.
+
+## <a name="view-from-an-azure-cache-for-redis-resource"></a>Weer geven vanuit een Azure-cache voor redis-resource
+
+Voor toegang tot Azure Monitor voor Azure cache voor redis, rechtstreeks vanuit een afzonderlijke resource:
+
+1. Selecteer in de Azure Portal Azure-cache voor redis.
+
+2. Kies in de lijst een afzonderlijke Azure-cache voor redis-resource. Klik in de sectie bewaking op inzichten (preview-versie).
+
+    ![Scherm opname van menu opties met de woorden ' Insights (preview) ' gemarkeerd in een rood vak](./media/redis-cache-insights-overview/insights.png)
+
+Deze weer gaven zijn ook toegankelijk door de resource naam van een Azure-cache te selecteren voor de redis-resource in de werkmap van het Azure Monitor niveau.
+
+### <a name="resource-level-overview"></a>Overzicht van resource niveau
+
+Op de **overzichts** werkmap voor de Azure redis cache worden verschillende prestatie gegevens weer gegeven waarmee u toegang krijgt tot:
+
+- Interactieve prestatie grafieken met de meest essentiële gegevens met betrekking tot Azure cache voor redis-prestaties.
+
+- Met metrische gegevens en status tegels worden Shard-prestaties, het totale aantal verbonden clients en de algehele latentie gemarkeerd.
+
+![Scherm afbeelding van het dash board overzicht waarin informatie wordt weer gegeven over CPU-prestaties, gebruikt geheugen, verbonden clients, fouten, verlopen sleutels en verwijderde sleutels](./media/redis-cache-insights-overview/resource-overview.png)
+
+Als u een van de andere tabbladen voor **prestaties** of **bewerkingen** selecteert, worden de respectieve werkmappen geopend.
+
+### <a name="resource-level-performance"></a>Prestaties op resource niveau
+
+![Scherm afbeelding van grafieken voor bron prestaties](./media/redis-cache-insights-overview/resource-performance.png)
+
+### <a name="resource-level-operations"></a>Bewerkingen op resource niveau
+
+![Scherm afbeelding van grafieken voor bron bewerkingen](./media/redis-cache-insights-overview/resource-operations.png)
 
 ## <a name="pin-export-and-expand"></a>Vastmaken, exporteren en uitvouwen
 

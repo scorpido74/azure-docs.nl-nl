@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252520"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758568"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Gegevens verbinden vanuit Office 365-logboeken
 
@@ -36,6 +36,9 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 - Voor uw Tenant moet Unified auditing zijn ingeschakeld. Voor tenants met Office 365 E3-of E5-licenties is uniforme controle standaard ingeschakeld. <br>Als uw Tenant niet over een van deze licenties beschikt, moet u Unified auditing op uw Tenant inschakelen met een van de volgende methoden:
     - [Gebruik de cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) en schakel de para meter ' UnifiedAuditLogIngestionEnabled ' in.
     - [De Security & compliance Center-gebruikers interface gebruiken](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+   
+   > [!NOTE]
+   > De O365 Data Connector legt momenteel alleen Exchange-en share point-activiteitstype vast zoals vermeld op de pagina connector van de sectie gegevens typen. U wordt aangeraden dit artikel te controleren voor [het geval u teams gegevens moet controleren en teams kunt beveiligen met behulp van Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761). 
 
 ## <a name="connect-to-office-365"></a>Verbinding maken met Office 365
 

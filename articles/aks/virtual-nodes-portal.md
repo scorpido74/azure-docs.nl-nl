@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure Portal om een AKS-clu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 5f7bf75598c09c5c8c0654f7db863068f9e7be7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128867"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773420"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -74,7 +74,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Selecteer in de linkerbovenhoek van de Azure Portal **een resource** > **Kubernetes-service**maken.
+Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **Kubernetes-service**maken.
 
 Configureer op de pagina **basis beginselen** de volgende opties:
 
@@ -101,7 +101,7 @@ Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor ge
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kubernetes-opdrachtregelclient. De client `kubectl` is vooraf geïnstalleerd in Azure Cloud Shell.
 
-Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/bash](https://shell.azure.com/bash)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te gaan [https://shell.azure.com/bash](https://shell.azure.com/bash) . Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` te configureren om verbinding te maken met het Kubernetes-cluster. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
 
@@ -125,7 +125,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Een voor beeld-app implementeren
 
-In de Azure Cloud Shell maakt u een bestand met `virtual-node.yaml` de naam en kopieert u dit in de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd. Met deze instellingen kan de pod worden gepland op het virtuele knoop punt en wordt gecontroleerd of de functie is ingeschakeld.
+In de Azure Cloud Shell maakt u een bestand `virtual-node.yaml` met de naam en kopieert u dit in de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd. Met deze instellingen kan de pod worden gepland op het virtuele knoop punt en wordt gecontroleerd of de functie is ingeschakeld.
 
 ```yaml
 apiVersion: apps/v1
@@ -154,8 +154,6 @@ spec:
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Exists
-      - key: azure.com/aci
-        effect: NoSchedule
 ```
 
 Voer de toepassing uit met de opdracht [kubectl apply][kubectl-apply] .
@@ -164,7 +162,7 @@ Voer de toepassing uit met de opdracht [kubectl apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Gebruik de opdracht [kubectl Get peul][kubectl-get] with het `-o wide` argument voor het uitvoeren van een lijst met een van de peulen en het geplande knoop punt. U ziet dat `virtual-node-helloworld` de Pod is gepland op het `virtual-node-linux` knoop punt.
+Gebruik de opdracht [kubectl Get peul][kubectl-get] with het `-o wide` argument voor het uitvoeren van een lijst met een van de peulen en het geplande knoop punt. U ziet dat de `virtual-node-helloworld` Pod is gepland op het `virtual-node-linux` knoop punt.
 
 ```console
 kubectl get pods -o wide
@@ -178,7 +176,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 Aan de Pod wordt een intern IP-adres toegewezen vanuit het subnet van het virtuele netwerk van Azure dat is gedelegeerd voor gebruik met virtuele knoop punten.
 
 > [!NOTE]
-> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, kan er geen peulen gepland op virtuele knoop punten worden gestart en `HTTP response status code 400 error code "InaccessibleImage"`wordt de fout gerapporteerd.
+> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, kan er geen peulen gepland op virtuele knoop punten worden gestart en wordt de fout gerapporteerd `HTTP response status code 400 error code "InaccessibleImage"` .
 
 ## <a name="test-the-virtual-node-pod"></a>De pod van het virtuele knoop punt testen
 
@@ -188,13 +186,13 @@ Als u de pod die op het virtuele knoop punt wordt uitgevoerd wilt testen, blader
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Installeer `curl` in de Pod met `apt-get`:
+Installeer `curl` in de Pod met `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-U hebt nu toegang tot het adres van `curl`uw Pod met *http://10.241.0.4*, zoals. Geef uw eigen interne IP-adres op dat wordt `kubectl get pods` weer gegeven in de vorige opdracht:
+U hebt nu toegang tot het adres van uw Pod met `curl` , zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods` opdracht:
 
 ```console
 curl -L http://10.241.0.4
@@ -210,7 +208,7 @@ De voorbeeld toepassing wordt weer gegeven, zoals wordt weer gegeven in de volge
 [...]
 ```
 
-Sluit de terminal sessie met uw test pod met `exit`. Wanneer de sessie is beëindigd, wordt de pod verwijderd.
+Sluit de terminal sessie met uw test pod met `exit` . Wanneer de sessie is beëindigd, wordt de pod verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

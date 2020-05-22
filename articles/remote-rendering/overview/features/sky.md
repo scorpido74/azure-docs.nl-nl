@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680607"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759112"
 ---
 # <a name="sky-reflections"></a>Luchtreflecties
 
@@ -25,7 +25,7 @@ Azure remote rendering maakt gebruik van *fysiek gebaseerde rendering* (PBR) voo
 
 In de onderstaande afbeeldingen ziet u de resultaten van de verlichting van verschillende Opper vlakken alleen met een lucht patroon:
 
-| Ruw  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
+| Ruw  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
 | Niet-Metal  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
 | Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
@@ -37,9 +37,9 @@ Zie het hoofd stuk [materialen](../../concepts/materials.md) voor meer informati
 
 ## <a name="changing-the-sky-texture"></a>Het hemel patroon wijzigen
 
-Als u de omgevings kaart wilt wijzigen, hoeft u alleen [een structuur te laden](../../concepts/textures.md) en de sessie te `SkyReflectionSettings`wijzigen:
+Als u de omgevings kaart wilt wijzigen, hoeft u alleen [een structuur te laden](../../concepts/textures.md) en de sessie te wijzigen `SkyReflectionSettings` :
 
-``` cs
+```cs
 LoadTextureAsync _skyTextureLoad = null;
 void ChangeEnvironmentMap(AzureSession session)
 {
@@ -66,7 +66,31 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Houd er rekening `LoadTextureFromSASAsync` mee dat de variant wordt gebruikt, omdat een ingebouwd bitmappatroon wordt geladen. Gebruik de variant in het `LoadTextureAsync` geval van het laden vanuit [gekoppelde Blob-opslag](../../how-tos/create-an-account.md#link-storage-accounts).
+```cpp
+void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+{
+    LoadTextureFromSASParams params;
+    params.TextureType = TextureType::CubeMap;
+    params.TextureUrl = "builtin://VeniceSunset";
+    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
+
+    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
+            settings->SkyReflectionTexture(*res->Result());
+        }
+        else
+        {
+            printf("Texture loading failed!");
+        }
+    });
+}
+
+```
+
+Houd er rekening mee dat de `LoadTextureFromSASAsync` Variant wordt gebruikt, omdat een ingebouwd bitmappatroon wordt geladen. Gebruik de variant in het geval van het laden vanuit [gekoppelde Blob-opslag](../../how-tos/create-an-account.md#link-storage-accounts) `LoadTextureAsync` .
 
 ## <a name="sky-texture-types"></a>Lucht patroon typen
 
@@ -80,7 +104,7 @@ Ter referentie is dit een niet-verpakte cubemap:
 
 ![Een onverpakte cubemap](media/Cubemap-example.png)
 
-`AzureSession.Actions.LoadTextureAsync` /  Gebruiken `LoadTextureFromSASAsync` met `TextureType.CubeMap` voor het laden van cubemap-structuren.
+Gebruiken `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` met `TextureType.CubeMap` voor het laden van cubemap-structuren.
 
 ### <a name="sphere-environment-maps"></a>Sphere-omgevings kaarten
 

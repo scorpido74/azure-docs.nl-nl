@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539154135c35e034c889294d911fb53b3d45daa4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970101"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771006"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Onveranderbaarheid-beleid instellen en beheren voor Blob Storage
 
@@ -61,7 +61,7 @@ In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen e
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` deze uit om de opdrachten weer te geven.
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,9 +69,9 @@ De functie is opgenomen in de volgende opdracht groepen: `az storage container i
 
 De AZ. Storage-module ondersteunt onveranderbare opslag.  Voer de volgende stappen uit om de functie in te scha kelen:
 
-1. Controleer of u de meest recente versie van PowerShellGet hebt geïnstalleerd `Install-Module PowerShellGet –Repository PSGallery –Force`:.
+1. Controleer of u de meest recente versie van PowerShellGet hebt geïnstalleerd: `Install-Module PowerShellGet –Repository PSGallery –Force` .
 2. Verwijder alle eerdere installatie van Azure PowerShell.
-3. Azure PowerShell installeren: `Install-Module Az –Repository PSGallery –AllowClobber`.
+3. Azure PowerShell installeren: `Install-Module Az –Repository PSGallery –AllowClobber` .
 
 Het volgende Power shell-voorbeeld script is ter referentie. Met dit script maakt u een nieuw opslag account en een nieuwe container. Vervolgens wordt uitgelegd hoe u wettelijke wacht ruimten instelt en wist, een op tijd gebaseerd Bewaar beleid maakt en vergrendelt (ook wel een Onveranderbaarheid-beleid genoemd) en het Bewaar interval uitbreidt.
 
@@ -91,7 +91,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # Create your Azure storage account
-$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
     $storageAccount -SkuName Standard_ZRS -Location $location -Kind StorageV2
 
 # Create a new container using the context
@@ -119,7 +119,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
 Op tijd gebaseerd Onveranderbaarheid-beleid maken of bijwerken:
 
 ```powershell
-# Create a time-based immutablity policy
+# Create a time-based immutability policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -132,7 +132,7 @@ Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container
 ```
 
-Onveranderbaarheid-beleid vergren `-Force` delen (toevoegen om de prompt te negeren):
+Onveranderbaarheid-beleid vergren delen (toevoegen `-Force` om de prompt te negeren):
 
 ```powershell
 # Lock immutability policies
@@ -174,12 +174,12 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` deze uit om de opdrachten weer te geven.
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold` . Voer `-h` deze uit om de opdrachten weer te geven.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
-# Create an immutablity policy with appends allowed
+# Create an immutability policy with appends allowed
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
 ```

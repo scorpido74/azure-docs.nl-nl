@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203485"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772833"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van aanmelding met een micro soft-account
 
@@ -28,11 +28,11 @@ In dit onderwerp wordt beschreven hoe u Azure App Service of Azure Functions kun
 1. Ga naar [**app-registraties**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal. Meld u indien nodig aan met uw Microsoft-account.
 1. Selecteer **nieuwe registratie**en voer vervolgens een toepassings naam in.
 1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory (een Azure AD-adres lijst-multi tenant) en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)**
-1. In **omleidings-uri's**selecteert u **Web**en `https://<app-domain-name>/.auth/login/aad/callback`voert u in. Vervang * \<app-domain-name>* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
+1. In **omleidings-uri's**selecteert u **Web**en voert u in `https://<app-domain-name>/.auth/login/aad/callback` . Vervang * \< app-domain-name>* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
 
 1. Selecteer **Registreren**.
 1. Kopieer de **toepassings-id (client)**. U hebt deze later nodig.
-1. Selecteer in het linkerdeel venster **certificaten & geheimen** > **Nieuw client geheim**. Voer een beschrijving in, selecteer de geldigheids duur en selecteer **toevoegen**.
+1. Selecteer in het linkerdeel venster **certificaten & geheimen**  >  **Nieuw client geheim**. Voer een beschrijving in, selecteer de geldigheids duur en selecteer **toevoegen**.
 1. Kopieer de waarde die wordt weer gegeven op de pagina **certificaten & geheimen** . Nadat u de pagina verlaat, wordt deze niet meer weer gegeven.
 
     > [!IMPORTANT]
@@ -41,7 +41,7 @@ In dit onderwerp wordt beschreven hoe u Azure App Service of Azure Functions kun
 ## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Micro soft-account gegevens toevoegen aan uw app service-toepassing
 
 1. Ga naar uw toepassing in de [Azure Portal].
-1. Selecteer **instellingen** > **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
+1. Selecteer **instellingen**  >  **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
 1. Selecteer **Azure Active Directory**onder **verificatie providers**. Selecteer **Geavanceerd** onder **beheer modus**. Plak de client-ID en het client geheim die u eerder hebt verkregen. Gebruiken **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** voor het **URL** -veld van de uitgever.
 1. Selecteer **OK**.
 

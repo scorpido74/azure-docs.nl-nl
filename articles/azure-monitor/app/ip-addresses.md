@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/01/2020
-ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: f6b35551af61c50a3db2d15b47d8f3910024b527
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652750"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773724"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -22,7 +22,7 @@ De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md)
 > U kunt de labels van Azure [Network-Services](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 ) gebruiken om de toegang te beheren als u Azure-netwerk beveiligings groepen gebruikt. Als u toegang beheert voor hybride/on-premises resources, kunt u de equivalente IP-adres lijsten downloaden als [json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) die elke week worden bijgewerkt:. Als u alle uitzonde ringen in dit artikel wilt behandelen, moet u de service Tags: ' ActionGroup ', ' ApplicationInsightsAvailability ', ' AzureMonitor ' gebruiken.
 
-U kunt zich ook abonneren op deze pagina als een RSS-feed door toe https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom te voegen aan uw favoriete RSS/Atom-lezer om op de hoogte te worden gesteld van de laatste wijzigingen.
+U kunt zich ook abonneren op deze pagina als een RSS-feed door toe te voegen https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom aan uw favoriete RSS/Atom-lezer om op de hoogte te worden gesteld van de laatste wijzigingen.
 
 
 ## <a name="outgoing-ports"></a>Uitgaande poorten
@@ -30,7 +30,7 @@ U moet een aantal uitgaande poorten in de firewall van uw server openen zodat de
 
 | Doel | URL | IP | Poorten |
 | --- | --- | --- | --- |
-| Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
+| Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23 | 443 |
 | Live Metrics Stream (VS-Oost) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | Live Metrics Stream (Zuid-Centraal VS) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
 | Live Metrics Stream (Europa-noord) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
@@ -70,7 +70,7 @@ Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adresse
 ### <a name="addresses-grouped-by-location"></a>Adressen gegroepeerd op locatie
 
 > [!NOTE]
-> Deze adressen worden weer gegeven met een CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat een item zoals `51.144.56.112/28` het equivalent is aan 16 IP- `51.144.56.112` adressen, beginnend `51.144.56.127`bij en eindigt op.
+> Deze adressen worden weer gegeven met een CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat een item zoals het `51.144.56.112/28` equivalent is aan 16 IP-adressen, beginnend bij `51.144.56.112` en eindigt op `51.144.56.127` .
 
 ```
 Australia East

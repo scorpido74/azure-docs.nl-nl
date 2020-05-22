@@ -3,7 +3,7 @@ title: VIRTUELE client-beheerde instantie verbinden
 description: Verbinding maken met een Azure SQL Database beheerd exemplaar met behulp van SQL Server Management Studio van een virtuele machine van Azure.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2787756da048de0a4354d88feb8445c03fb3ef74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528425"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773675"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Snelstartgids: Azure VM configureren om verbinding te maken met een door Azure SQL Database beheerd exemplaar
 
@@ -28,7 +28,7 @@ In deze Quick Start worden de resources gebruikt die zijn gemaakt in [een beheer
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Een nieuw subnet in het VNet van het beheerde exemplaar maken
 
@@ -76,7 +76,7 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ---------------- | ----------------- | ----------- |
    | **Abonnement** | Een geldig abonnement | Moet een abonnement zijn waarin u gemachtigd bent om nieuwe resources te maken. |
-   | **Resource groep** |De resource groep die u hebt opgegeven in de Snelstartgids voor een [beheerd exemplaar maken](sql-database-managed-instance-get-started.md) .|Deze resource groep moet het VNet zijn.|
+   | **Resource Group** |De resource groep die u hebt opgegeven in de Snelstartgids voor een [beheerd exemplaar maken](sql-database-managed-instance-get-started.md) .|Deze resource groep moet het VNet zijn.|
    | **Locatie** | De locatie voor de resource groep | Deze waarde wordt ingevuld op basis van de geselecteerde resource groep. |
    | **Naam van de virtuele machine**  | Een geldige naam | Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen.|
    |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-virtual-machine).|
@@ -107,7 +107,7 @@ In de volgende stappen wordt uitgelegd hoe u verbinding maakt met uw nieuwe virt
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. Selecteer **Verbinden**.
+2. Selecteer **Verbinding maken**.
 
    Een Remote Desktop Protocol bestand (RDP-bestand) wordt weer gegeven met het open bare IP-adres en het poort nummer voor de virtuele machine.
 

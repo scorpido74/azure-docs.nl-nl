@@ -5,12 +5,12 @@ author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77cb6a693c5a73d0498b0acf9bc4ad8cc9f8f32f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77594206"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774007"
 ---
 # <a name="consul"></a>Consul
 
@@ -38,7 +38,7 @@ In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binn
 Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om consul te evalueren voor uw workloads:
 
 - [Consul-principes](#consul-principles)
-- [Functionaliteit](#capabilities)
+- [Functies](#capabilities)
 - [Scenario's](#scenarios)
 
 
@@ -53,7 +53,7 @@ De volgende principes [begeleiden][consul-principles] het consul-project:
 - **Breid en integreer** veilig werk belastingen over de infra structuur.
 
 
-### <a name="capabilities"></a>Functionaliteit
+### <a name="capabilities"></a>Functies
 
 Consul biedt de volgende mogelijkheden:
 
@@ -93,6 +93,7 @@ In de volgende documentatie wordt beschreven hoe u consul kunt installeren in az
 
 U kunt ook nog verder consul-functies en-architectuur verkennen:
 
+- [Zelf studies voor consul aan de slag][consul-getting-started]
 - [Consul-functies][consul-features]
 - [Consul-architectuur][consul-architecture]
 - [Consul-hoe Connect werkt][consul-how-connect-works]
@@ -104,6 +105,7 @@ U kunt ook nog verder consul-functies en-architectuur verkennen:
 [consul-sidecar]: https://www.consul.io/docs/connect/proxies.html
 [consul-how-connect-works]: https://www.consul.io/docs/connect/connect-internals.html
 [consul-principles]: https://www.consul.io/
+[consul-getting-started]:https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 
 [envoy-proxy]: https://www.envoyproxy.io/
 [grafana]: https://grafana.com/

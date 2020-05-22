@@ -3,7 +3,7 @@ title: Veelgestelde vragen over beheerdere exemplaren
 description: Veelgestelde vragen over SQL Database beheerde exemplaren
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 3ffa4bc905a08c1757865db7bab828193ff3c7ea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598484"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770139"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -76,7 +76,7 @@ U kunt [Data Base exporteren naar BACPAC](sql-database-export.md) en vervolgens 
 
 Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
-Systeem `COPY_ONLY` eigen back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server.
+Systeem eigen `COPY_ONLY` back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server.
 
 ## <a name="migrate-instance-db"></a>Instantie-data base migreren
 
@@ -129,7 +129,7 @@ Nee, back-upopslag wordt niet afgetrokken van de opslag ruimte voor uw beheerde 
 
 U kunt dit doen met behulp van de [Azure Cost Management-oplossing](/azure/cost-management/). Navigeer naar **abonnementen** in het [Azure Portal](https://portal.azure.com) en selecteer **kosten analyse**. 
 
-Gebruik de optie **geaccumuleerde kosten** en filter vervolgens op het **resource type** als `microsoft.sql/managedinstances`. 
+Gebruik de optie **geaccumuleerde kosten** en filter vervolgens op het **resource type** als `microsoft.sql/managedinstances` . 
   
 ## <a name="inbound-nsg-rules"></a>Inkomende NSG-regels
 
@@ -190,7 +190,7 @@ De DNS-configuratie wordt uiteindelijk vernieuwd:
 Als tijdelijke oplossing kunt u het beheerde exemplaar downgradeen naar 4 vCore en het later opnieuw bijwerken. Dit heeft een neven effect van het vernieuwen van de DNS-configuratie.
 
 
-## <a name="ip-address"></a>Het IP-adres
+## <a name="ip-address"></a>IP-adres
 
 **Kan ik verbinding maken met een beheerd exemplaar met behulp van een IP-adres?**
 

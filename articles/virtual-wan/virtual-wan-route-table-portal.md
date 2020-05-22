@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402926"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773165"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Een route tabel voor virtuele WAN-hub maken voor Nva's: Azure Portal
 
@@ -76,6 +76,9 @@ De hub bijwerken met een route tabel van de hub. Gebruik de volgende voorbeeld w
 3. Klik op de **...** en klik vervolgens op **virtuele hub bewerken**.
 4. Schuif op de pagina **virtuele hub bewerken** omlaag en selecteer de selectie vakje **tabel gebruiken voor route ring**.
 5. Voeg in de kolom **als het voor voegsel** van de bestemming de adres ruimten toe. Voeg in de kolom **verzenden naar volgende hop** het privé IP-adres van de DMZ NVA-netwerk interface toe.
+>[!NOTE]
+>Het DMZ NVA-netwerk is van toepassing op de lokale hub.
+>
 6. Klik op **bevestigen** om de resource hub bij te werken met de instellingen van de route tabel.
 
 ## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. de VNet-verbindingen maken

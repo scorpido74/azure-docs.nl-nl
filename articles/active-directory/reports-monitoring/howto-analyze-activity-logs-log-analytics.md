@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa952e0a237ca30a3bd109f51ee45c2f4dafa533
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008276"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758262"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken
 
@@ -47,7 +47,7 @@ Als u wilt volgen, hebt u het volgende nodig:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Ga naar de werk ruimte Log Analytics
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
 2. Selecteer **Azure Active Directory**en selecteer vervolgens **Logboeken** in het gedeelte **bewaking** om uw log Analytics-werk ruimte te openen. De werk ruimte wordt geopend met een standaard query.
 
@@ -60,8 +60,8 @@ De logboeken worden gepusht naar de **audit logs bevat** -en **SigninLogs** -tab
 
 1. Selecteer in de standaard query weergave in de vorige sectie **schema** en vouw de werk ruimte uit. 
 
-2. Vouw de sectie **logboek beheer** uit en vouw vervolgens **audit logs bevat** of **SignInLogs** uit om het logboek schema weer te geven.
-    ![Audit logboeken](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![aanmeldings logboeken](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+2. Vouw de sectie **logboek beheer** uit en vouw vervolgens **audit logs bevat** of **SigninLogs** uit om het logboek schema weer te geven.
+    ![Audit logboeken ](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![ aanmeldings logboeken](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Query's uitvoeren op de activiteiten logboeken van Azure AD
 

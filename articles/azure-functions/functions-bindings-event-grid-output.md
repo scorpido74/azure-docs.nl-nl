@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627684"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773956"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid uitvoer binding voor Azure Functions
 
@@ -40,7 +40,7 @@ public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTim
 }
 ```
 
-In het volgende voor beeld ziet u hoe `IAsyncCollector` u de interface gebruikt om een batch berichten te verzenden.
+In het volgende voor beeld ziet u hoe u de `IAsyncCollector` interface gebruikt om een batch berichten te verzenden.
 
 ```csharp
 [FunctionName("EventGridAsyncOutput")]
@@ -162,7 +162,53 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-De Event Grid uitvoer binding is niet beschikbaar voor python.
+In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Vervolgens wordt er een gebeurtenis verzonden naar het aangepaste Event Grid onderwerp, zoals opgegeven door de `topicEndpointUri` .
+
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Hier volgt het python-voor beeld voor het verzenden van een gebeurtenis naar een aangepast Event Grid onderwerp door het volgende in te stellen `EventGridOutputEvent` :
+
+```python
+import logging
+import azure.functions as func
+import datetime
+
+
+def main(eventGridEvent: func.EventGridEvent, 
+         outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
+
+    logging.log("eventGridEvent: ", eventGridEvent)
+
+    outputEvent.set(
+        func.EventGridOutputEvent(
+            id="test-id",
+            data={"tag1": "value1", "tag2": "value2"},
+            subject="test-subject",
+            event_type="test-event-1",
+            event_time=datetime.datetime.utcnow(),
+            data_version="1.0"))
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -209,14 +255,14 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `EventGrid` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `EventGrid` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**voert** | n.v.t. | Moet worden ingesteld op ' eventGrid '. |
 |**draaien** | n.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
 |**naam** | n.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
-|**topicEndpointUri** |**TopicEndpointUri** | De naam van een app-instelling die de URI voor het aangepaste onderwerp bevat, zoals `MyTopicEndpointUri`. |
+|**topicEndpointUri** |**TopicEndpointUri** | De naam van een app-instelling die de URI voor het aangepaste onderwerp bevat, zoals `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | De naam van een app-instelling die een toegangs sleutel voor het aangepaste onderwerp bevat. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -228,15 +274,15 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 # <a name="c"></a>[G #](#tab/csharp)
 
-Berichten verzenden met behulp van een methode parameter `out EventGridEvent paramName`, zoals. Als u meerdere berichten wilt schrijven, kunt `ICollector<EventGridEvent>` u `IAsyncCollector<EventGridEvent>` of gebruiken in `out EventGridEvent`plaats van.
+Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Berichten verzenden met behulp van een methode parameter `out EventGridEvent paramName`, zoals. In C#- `paramName` script is de waarde die is opgegeven `name` in de eigenschap van *Function. json*. Als u meerdere berichten wilt schrijven, kunt `ICollector<EventGridEvent>` u `IAsyncCollector<EventGridEvent>` of gebruiken in `out EventGridEvent`plaats van.
+Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-U krijgt toegang tot de uitvoer `context.bindings.<name>` gebeurtenis `<name>` door gebruik te maken van de `name` waarde die is opgegeven in de eigenschap van *Function. json*.
+U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken van `context.bindings.<name>` `<name>` de waarde die is opgegeven in de `name` eigenschap van *Function. json*.
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883240"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772128"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -49,7 +49,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
  
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar `response_mode` de `query` browser `fragment`(waarbij of).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben `groups` deze tokens geen `wids` claims.
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` `query` of `fragment` ).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben deze tokens geen `groups` `wids` claims.
 
 ## <a name="interactive"></a>Interactief
 
@@ -78,7 +78,7 @@ Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van p
 
 MSAL ondersteunt de [autorisatie code toekenning van OAuth 2](v2-oauth2-auth-code-flow.md). Deze toekenning kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps. 
 
-Wanneer gebruikers zich aanmelden bij webtoepassingen (websites), ontvangt de webtoepassing een autorisatie code.  De autorisatie code wordt ingewisseld om een token te verkrijgen voor het aanroepen van web-Api's. In ASP.NET-en ASP.NET Core-web-apps is het `AcquireTokenByAuthorizationCode` enige doel van om een token toe te voegen aan de token cache. Het token kan vervolgens worden gebruikt door de toepassing (meestal in de controllers, waardoor alleen een token voor een API wordt opgehaald met `AcquireTokenSilent`).
+Wanneer gebruikers zich aanmelden bij webtoepassingen (websites), ontvangt de webtoepassing een autorisatie code.  De autorisatie code wordt ingewisseld om een token te verkrijgen voor het aanroepen van web-Api's. In ASP.NET-en ASP.NET Core-web-apps is het enige doel van `AcquireTokenByAuthorizationCode` om een token toe te voegen aan de token cache. Het token kan vervolgens worden gebruikt door de toepassing (meestal in de controllers, waardoor alleen een token voor een API wordt opgehaald met `AcquireTokenSilent` ).
 
 ![Diagram van autorisatie code stroom](media/msal-authentication-flows/authorization-code.png)
 
@@ -91,7 +91,7 @@ In het voor gaande diagram wordt de toepassing:
 
 - U kunt de autorisatie code slechts eenmaal gebruiken voor het inwisselen van een token. Probeer niet meerdere keren een token te verkrijgen met dezelfde autorisatie code (dit is expliciet verboden door de specificatie van het Protocol standaard). Als u de code meermaals inwisselt, of omdat u niet weet dat een framework dit ook voor u doet, krijgt u de volgende fout:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Als u een ASP.NET-of ASP.NET Core-toepassing schrijft, kan dit gebeuren als u het Framework dat u al hebt ingewisseld, niet op de hoogte brengt. Hiervoor moet u de `context.HandleCodeRedemption()` -methode aanroepen van de `AuthorizationCodeReceived` gebeurtenis-handler.
+- Als u een ASP.NET-of ASP.NET Core-toepassing schrijft, kan dit gebeuren als u het Framework dat u al hebt ingewisseld, niet op de hoogte brengt. Hiervoor moet u de-methode aanroepen `context.HandleCodeRedemption()` van de `AuthorizationCodeReceived` gebeurtenis-handler.
 
 - Vermijd het delen van het toegangs token met ASP.NET. Dit kan ertoe leiden dat incrementele toestemming op de juiste wijze wordt voor komen. Zie [issue #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693)(Engelstalig) voor meer informatie.
 
@@ -151,7 +151,7 @@ Door de apparaatcode stroom te gebruiken, haalt de toepassing tokens op via een 
 
 In het bovenstaande diagram:
 
-1. Wanneer gebruikers verificatie is vereist, biedt de app een code en wordt de gebruiker gevraagd een ander apparaat (zoals een smartphone met Internet verbinding) te gebruiken om naar een URL te gaan (bijvoorbeeld `https://microsoft.com/devicelogin`). De gebruiker wordt vervolgens gevraagd de code in te voeren en gaat verder met een normale verificatie-ervaring, inclusief toestemming prompts en multi-factor Authentication, indien nodig.
+1. Wanneer gebruikers verificatie is vereist, biedt de app een code en wordt de gebruiker gevraagd een ander apparaat (zoals een smartphone met Internet verbinding) te gebruiken om naar een URL te gaan (bijvoorbeeld `https://microsoft.com/devicelogin` ). De gebruiker wordt vervolgens gevraagd de code in te voeren en gaat verder met een normale verificatie-ervaring, inclusief toestemming prompts en [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) , indien nodig.
 
 2. Wanneer de verificatie is geslaagd, ontvangt de opdracht regel-app de vereiste tokens via een back-upkanaal en worden ze gebruikt om de Web-API te laten aanroepen.
 
@@ -159,9 +159,9 @@ In het bovenstaande diagram:
 
 - De code stroom van het apparaat is alleen beschikbaar voor open bare client toepassingen.
 - De door gegeven instantie bij het maken van de open bare client toepassing moet een van de volgende zijn:
-  - Tenanted (van het formulier `https://login.microsoftonline.com/{tenant}/` waarbij `{tenant}` de GUID staat voor de Tenant-id of een domein dat is gekoppeld aan de Tenant).
-  - Voor elke werk-en school account`https://login.microsoftonline.com/organizations/`().
-- Persoonlijke micro soft-accounts worden nog niet ondersteund door het Azure AD v 2.0-eind punt `/common` ( `/consumers` u kunt de of tenants niet gebruiken).
+  - Tenanted (van het formulier `https://login.microsoftonline.com/{tenant}/` waarbij de `{tenant}` GUID staat voor de Tenant-id of een domein dat is gekoppeld aan de Tenant).
+  - Voor elke werk-en school account ( `https://login.microsoftonline.com/organizations/` ).
+- Persoonlijke micro soft-accounts worden nog niet ondersteund door het Azure AD v 2.0-eind punt (u kunt de `/common` of `/consumers` tenants niet gebruiken).
 
 ## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
 
@@ -182,11 +182,11 @@ IWA is bedoeld voor apps die zijn geschreven voor .NET Framework-, .NET core-en 
 
 IWA niet overs Laan multi-factor Authentication. Als multi-factor Authentication is geconfigureerd, kan IWA mislukken als een multi-factor Authentication-Challenge vereist is. Multi-factor Authentication vereist gebruikers interactie.
 
-U kunt niet bepalen wanneer de identiteits provider twee ledige verificatie aanvragen moet uitvoeren. De Tenant beheerder doet dat. Normaal gesp roken is twee ledige verificatie vereist wanneer u zich aanmeldt vanuit een ander land, wanneer u niet via VPN bent verbonden met een bedrijfs netwerk, en soms zelfs wanneer u verbinding hebt via VPN. Azure AD maakt gebruik van AI om voortdurend te leren wanneer twee ledige verificatie is vereist. Als IWA mislukt, moet u terugvallen op een [interactieve gebruikers prompt] (#interactive).
+U kunt niet bepalen wanneer de identiteits provider twee ledige verificatie aanvragen moet uitvoeren. De Tenant beheerder doet dat. Normaal gesp roken is twee ledige verificatie vereist wanneer u zich aanmeldt vanuit een ander land of een andere regio, wanneer u niet verbonden bent via VPN met een bedrijfs netwerk, en soms zelfs wanneer u verbinding hebt via VPN. Azure AD maakt gebruik van AI om voortdurend te leren wanneer twee ledige verificatie is vereist. Als IWA mislukt, moet u terugvallen op een [interactieve gebruikers prompt] (#interactive).
 
 De door gegeven instantie bij het maken van de open bare client toepassing moet een van de volgende zijn:
-- Tenanted (van het formulier `https://login.microsoftonline.com/{tenant}/` waarbij `tenant` de GUID staat voor de Tenant-id of een domein dat is gekoppeld aan de Tenant).
-- Voor elke werk-en school account`https://login.microsoftonline.com/organizations/`(). Persoonlijke micro soft-accounts worden niet ondersteund (u `/common` kunt `/consumers` geen tenants gebruiken).
+- Tenanted (van het formulier `https://login.microsoftonline.com/{tenant}/` waarbij de `tenant` GUID staat voor de Tenant-id of een domein dat is gekoppeld aan de Tenant).
+- Voor elke werk-en school account ( `https://login.microsoftonline.com/organizations/` ). Persoonlijke micro soft-accounts worden niet ondersteund (u kunt geen `/common` `/consumers` tenants gebruiken).
 
 Omdat IWA een stille stroom is, moet een van de volgende voor waarden worden voldaan:
 - De gebruiker van uw toepassing moet eerder hebben ingestemd om de toepassing te gebruiken. 

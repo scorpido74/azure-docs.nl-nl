@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116376"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770956"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke verificatie-en verificatie methoden zijn er beschikbaar in Azure Active Directory?
 
@@ -31,14 +31,15 @@ Een gebruiker in azure AD kan ervoor kiezen om te verifiëren met behulp van een
 
 Veel accounts in azure AD zijn ingeschakeld voor Self-service voor wachtwoord herstel (SSPR) of Azure Multi-Factor Authentication. Deze functies omvatten aanvullende verificatie methoden, zoals een telefoon gesprek of beveiligings vragen. Het is raadzaam dat u gebruikers verplicht om meerdere verificatie methoden te registreren. Wanneer een methode niet beschikbaar is voor een gebruiker, kunnen ze ervoor kiezen om te verifiëren met een andere methode.
 
-De volgende tabel bevat een overzicht van de verificatie-en verificatie methoden die beschikbaar zijn voor de verschillende scenario's:
+De volgende tabel geeft een overzicht van de methoden die beschikbaar zijn voor primaire of secundaire verificatie:
 
-| Methode | Gebruiken bij aanmelding | Gebruiken tijdens verificatie |
+| Methode | Primaire authenticatie | Secundaire verificatie |
 | --- | --- | --- |
-| [Wachtwoord](#password) | Ja | MFA en SSPR |
+| [Wachtwoord](#password) | Ja | |
 | [Microsoft Authenticator-app](#microsoft-authenticator-app) | Ja (preview-versie) | MFA en SSPR |
 | [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Ja | Alleen MFA |
-| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens) | Ja | SSPR en MFA |
+| [OATH-software tokens](#oath-software-tokens) | Nee | MFA |
+| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens-preview) | Ja | MFA |
 | [Sms](#phone-options) | Ja (preview-versie) | MFA en SSPR |
 | [Spraakoproep](#phone-options) | Nee | MFA en SSPR |
 | [Beveiligingsvragen](#security-questions) | Nee | Alleen SSPR |
@@ -73,7 +74,7 @@ De verificator-app kan helpen voor komen dat onbevoegde toegang tot accounts en 
 ![Scherm afbeelding van voor beeld webbrowser prompt voor verificator-app-melding voor het volt ooien van het aanmeldings proces](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Als uw organisatie mede werkers in de volks Republiek China heeft of op reis gaat, werkt de *melding via de mobiele app* -methode op Android-apparaten niet in dat land. Alternatieve verificatie methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
+> Als uw organisatie mede werkers heeft in of reist naar China, werkt de *melding via de mobiele app* -methode op Android-apparaten niet in dat land/deze regio. Alternatieve verificatie methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
 
 ### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
@@ -96,15 +97,29 @@ Gebruikers kunnen zich registreren en vervolgens een FIDO2-beveiligings sleutel 
 
 FIDO2-beveiligings sleutels in azure AD zijn momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
-## <a name="oath-hardware-tokens"></a>OATH-hardwaretokens
+## <a name="oath-tokens"></a>OATH-tokens
 
-OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. Azure AD biedt ondersteuning voor het gebruik van OATH-mobiele TOTP SHA-1-tokens van het 30-Second-of 60-Second-RAS. Klanten kunnen deze tokens aanschaffen bij de leverancier van hun keuze.
+OATH mobiele TOTP (tijd op basis van een tijd wacht woord) is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. OATH mobiele TOTP kan worden geïmplementeerd met behulp van software of hardware voor het genereren van de codes. Azure AD biedt geen ondersteuning voor OATH HOTP, een andere standaard code generatie.
 
-Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutel mag alleen de tekens *a-z* of *a-* z en cijfers *1-7*bevatten en moet worden gecodeerd in *Base32*.
+### <a name="oath-software-tokens"></a>OATH-software tokens
 
-OATH-hardware-tokens in azure AD zijn momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+Software OATH-tokens zijn doorgaans toepassingen zoals de Microsoft Authenticator-app en andere verificator-apps. Azure AD genereert de geheime sleutel, of Seed, die wordt ingevoerd in de app en die wordt gebruikt voor het genereren van elke OTP.
 
-![OATH-tokens uploaden naar het venster MFA OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+De verificator-app genereert automatisch codes bij het instellen van push meldingen, zodat een gebruiker een back-up heeft, zelfs als het apparaat geen verbinding heeft. Toepassingen van derden die gebruikmaken van OATH mobiele TOTP om codes te genereren, kunnen ook worden gebruikt.
+
+Sommige software-tokens van OATH mobiele TOTP zijn programmeerbaar, wat betekent dat ze niet worden geleverd met een geheime sleutel of een vooraf geprogrammeerd Zaai zaad. Deze Programmeer bare hardware-tokens kunnen worden ingesteld met behulp van de geheime sleutel of Seed die is verkregen van de installatie stroom van het software token. Klanten kunnen deze tokens aanschaffen bij de leverancier van hun keuze en de geheime sleutel of het Seed gebruiken in het installatie proces van de leverancier.
+
+### <a name="oath-hardware-tokens-preview"></a>OATH-hardware-tokens (preview-versie)
+
+Azure AD ondersteunt het gebruik van OATH-mobiele TOTP SHA-1-tokens waarmee codes elke 30 of 60 seconden worden vernieuwd. Klanten kunnen deze tokens aanschaffen bij de leverancier van hun keuze.
+
+OATH mobiele TOTP-hardware-tokens worden doorgaans geleverd met een geheime sleutel, of Seed, vooraf geprogrammeerd in het token. Deze sleutels moeten worden ingevoerd in azure AD, zoals beschreven in de volgende stappen. Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutel mag alleen de tekens *a-z* of *a-* z en cijfers *1-7*bevatten en moet worden gecodeerd in *Base32*.
+
+Programmeer bare OATH-mobiele TOTP die kunnen worden geseedd, kunnen ook worden ingesteld met Azure AD in de instellings stroom van het software token.
+
+OATH-hardware-tokens worden ondersteund als onderdeel van een open bare preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews
+
+![OATH-tokens uploaden naar de Blade MFA OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -116,7 +131,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt.
 
-Als een beheerder zich de juiste indeling als een CSV-bestand heeft aangemeld, kunt u zich aanmelden bij de Azure Portal, naar **Azure Active Directory**  >  **beveiligings**  >  **MFA**  >  **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
+Als een beheerder zich heeft geformatteerd als een CSV-bestand, kunt u zich aanmelden bij de Azure Portal, naar **Azure Active Directory > Security > MFA > OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
 
 Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Selecteer de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u moet oplossen. De veld namen in het gedownloade CSV-bestand wijken af van de geüploade versie.
 
@@ -133,7 +148,7 @@ Gebruikers kunnen zich ook zelf verifiëren via een mobiele telefoon of een zake
 Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld *+ 1 4251234567*.
 
 > [!NOTE]
-> Er moet een spatie zijn tussen de land code en het telefoon nummer.
+> Er moet een spatie zijn tussen de land-/regiocode en het telefoon nummer.
 >
 > Het opnieuw instellen van wacht woorden biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de *+ 1-4251234567X12345* worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
 
@@ -167,7 +182,7 @@ Als u problemen ondervindt met telefoon verificatie voor Azure AD, raadpleegt u 
 
 * De geblokkeerde beller-ID op één apparaat.
    * Bekijk alle geblokkeerde nummers die op het apparaat zijn geconfigureerd.
-* Onjuist telefoon nummer of onjuiste land code of Verwar ring tussen privé telefoon nummer en telefoon nummer van werk.
+* Onjuist telefoon nummer of onjuiste land-/regionummer of Verwar ring tussen privé telefoon nummer en telefoon nummer van werk.
    * Problemen oplossen met het gebruikers object en de geconfigureerde verificatie methoden. Controleer of de juiste telefoon nummers zijn geregistreerd.
 * Verkeerde pincode ingevoerd.
    * Bevestig dat de gebruiker de juiste pincode heeft gebruikt als geregistreerd voor hun account.

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 26b3cb343aba2d45d5a14944a7f8856715bca100
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690090"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770973"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity platform en het OAuth 2,0 Resource owner-wacht woord
 
@@ -29,10 +29,10 @@ Het micro soft Identity-platform biedt ondersteuning voor de [OAuth 2,0 Resource
 
 > [!IMPORTANT]
 >
-> * Het micro soft Identity platform-eind punt ondersteunt alleen ROPC voor Azure AD-tenants, niet voor persoonlijke accounts. Dit betekent dat u een Tenant-specifiek eind punt (`https://login.microsoftonline.com/{TenantId_or_Name}`) of het `organizations` eind punt moet gebruiken.
+> * Het micro soft Identity platform-eind punt ondersteunt alleen ROPC voor Azure AD-tenants, niet voor persoonlijke accounts. Dit betekent dat u een Tenant-specifiek eind punt ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) of het `organizations` eind punt moet gebruiken.
 > * Persoonlijke accounts die worden uitgenodigd voor een Azure AD-Tenant, kunnen ROPC niet gebruiken.
 > * Accounts die geen wacht woorden hebben, kunnen zich niet aanmelden via ROPC. Voor dit scenario raden we u aan om in plaats daarvan een andere stroom te gebruiken voor uw app.
-> * Als gebruikers multi-factor Authentication (MFA) moeten gebruiken om zich aan te melden bij de toepassing, zullen ze in plaats daarvan worden geblokkeerd.
+> * Als gebruikers [multi-factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) moeten gebruiken om zich aan te melden bij de toepassing, zullen ze in plaats daarvan worden geblokkeerd.
 > * ROPC wordt niet ondersteund in [hybride identiteits Federatie](/azure/active-directory/hybrid/whatis-fed) scenario's (bijvoorbeeld Azure AD en ADFS gebruikt voor het verifiëren van on-premises accounts). Als gebruikers worden omgeleid naar een volledige pagina naar een on-premises ID-provider, kan Azure AD de gebruikers naam en het wacht woord niet testen voor die id-aanbieder. [Pass-Through-verificatie](/azure/active-directory/hybrid/how-to-connect-pta) wordt echter ondersteund met ROPC.
 
 ## <a name="protocol-diagram"></a>Protocol diagram
@@ -66,14 +66,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden `common` ingesteld `consumers`op of, maar kan worden `organizations`ingesteld op. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers` , maar kan worden ingesteld op `organizations` . |
 | `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. |
-| `grant_type` | Vereist | Moet worden ingesteld op `password`. |
+| `grant_type` | Vereist | Moet worden ingesteld op `password` . |
 | `username` | Vereist | Het e-mailadres van de gebruiker. |
 | `password` | Vereist | Het wacht woord van de gebruiker. |
 | `scope` | Aanbevolen | Een door spaties gescheiden lijst met [bereiken](v2-permissions-and-consent.md)of machtigingen die voor de app zijn vereist. In een interactieve stroom moet de beheerder of de gebruiker vóór de tijd toestemming geven aan deze bereiken. |
-| `client_secret`| Soms vereist | Als uw app een open bare client is, dan `client_secret` kan `client_assertion` de of niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. |
-| `client_assertion` | Soms vereist | Een andere vorm van `client_secret`, gegenereerd met een certificaat.  Zie [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie. |
+| `client_secret`| Soms vereist | Als uw app een open bare client is, dan `client_secret` kan de of `client_assertion` niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. |
+| `client_assertion` | Soms vereist | Een andere vorm van `client_secret` , gegenereerd met een certificaat.  Zie [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie. |
 
 ### <a name="successful-authentication-response"></a>Geslaagde verificatie reactie
 
@@ -92,12 +92,12 @@ In het volgende voor beeld ziet u een geslaagd token antwoord:
 
 | Parameter | Indeling | Beschrijving |
 | --------- | ------ | ----------- |
-| `token_type` | Tekenreeks | Altijd ingesteld op `Bearer`. |
+| `token_type` | Tekenreeks | Altijd ingesteld op `Bearer` . |
 | `scope` | Door spaties gescheiden teken reeksen | Als er een toegangs token is geretourneerd, worden in deze para meter de scopes vermeld waarvoor het toegangs token geldig is. |
 | `expires_in`| int | Aantal seconden dat het opgenomen toegangs token geldig is voor. |
 | `access_token`| Dekkende teken reeks | Uitgegeven voor de aangevraagde [bereiken](v2-permissions-and-consent.md) . |
 | `id_token` | JWT | Uitgegeven als de oorspronkelijke `scope` para meter het `openid` bereik bevat. |
-| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope` para meter `offline_access`is opgenomen. |
+| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope` para meter is opgenomen `offline_access` . |
 
 U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen en tokens te vernieuwen met behulp van dezelfde stroom die wordt beschreven in de [documentatie over de OAuth-code stroom](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
@@ -107,8 +107,8 @@ Als de gebruiker geen juiste gebruikers naam of wacht woord heeft opgegeven, of 
 
 | Fout | Beschrijving | Client actie |
 |------ | ----------- | -------------|
-| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, wordt `consent_required` een fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
-| `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund `/common` voor `/consumers` de or-verificatie contexten.  Gebruik `/organizations` in plaats daarvan een Tenant-id. |
+| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, `consent_required` wordt een fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
+| `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund voor de `/common` or- `/consumers` verificatie contexten.  Gebruik `/organizations` in plaats daarvan een Tenant-id. |
 
 ## <a name="learn-more"></a>Meer informatie
 

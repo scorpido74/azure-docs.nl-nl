@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548459"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758619"
 ---
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Best practices voor beveiliging voor identiteitsbeheer en toegangsbeheer in Azure
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 
 In dit artikel bespreken we een verzameling van de aanbevolen procedures voor het beheren van Azure-identiteits beheer en-toegangs beheer. Deze aanbevolen procedures zijn afgeleid van onze ervaring met [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) en de ervaringen van klanten, zoals uzelf.
 
@@ -126,10 +126,10 @@ Gebruikers hebben vanaf elke locatie toegang tot de resources van uw organisatie
 Als u de beveiliging en productiviteit wilt afstemmen, moet u nadenken over de manier waarop een resource wordt geopend voordat u een beslissing kunt nemen over toegangs beheer. Met voorwaardelijke toegang van Azure AD kunt u deze vereiste aanpakken. Met voorwaardelijke toegang kunt u automatische beslissingen voor toegangs beheer maken op basis van de voor waarden voor toegang tot uw Cloud-apps.
 
 **Aanbevolen procedure**: toegang tot bedrijfs resources beheren en controleren.  
-**Details**: CONFIGUREER Azure AD [voorwaardelijke toegang](/azure/active-directory/active-directory-conditional-access-azure-portal) op basis van een groep, locatie en toepassings gevoeligheid voor SaaS-apps en Azure AD-verbonden apps.
+**Details**: Configureer algemene [beleids regels voor voorwaardelijke toegang](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) van Azure AD op basis van een groep, locatie en toepassings gevoeligheid voor SaaS-apps en Azure AD-verbonden apps.
 
 **Best Practice**: verouderde verificatie protocollen blok keren.
-**Details**: aanvallers maken misbruik van zwakke plekken in oudere protocollen elke dag, met name voor aanvallen met een wacht woord. Configureer voorwaardelijke toegang om verouderde protocollen te blok keren. Zie de video [Azure AD: doe dit](https://www.youtube.com/watch?v=wGk0J4z90GI) voor meer informatie.
+**Details**: aanvallers maken misbruik van zwakke plekken in oudere protocollen elke dag, met name voor aanvallen met een wacht woord. Configureer voorwaardelijke toegang om [verouderde protocollen te blok keren](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
 
 ## <a name="plan-for-routine-security-improvements"></a>Plannen voor routine matige beveiligings verbeteringen
 
@@ -175,11 +175,11 @@ Deze methode is beschikbaar voor alle licentie categorieën, maar kan niet worde
 Als u wilt weten waar Multi-Factor Authentication moet worden ingeschakeld, raadpleegt u [welke versie van Azure MFA het meest geschikt is voor mijn organisatie?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
 **Optie 3**: [multi-factor Authentication met beleid voor voorwaardelijke toegang inschakelen](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Voor deel**: met deze optie kunt u een verificatie in twee stappen onder specifieke voor waarden vragen door gebruik te maken van [voorwaardelijke toegang](/azure/active-directory/active-directory-conditional-access-azure-portal). Specifieke voor waarden kunnen gebruikers zich aanmelden vanaf verschillende locaties, niet-vertrouwde apparaten of toepassingen die u als riskant beschouwt. Als u specifieke voor waarden definieert waarvoor u verificatie in twee stappen nodig hebt, kunt u voor uw gebruikers geen constante vragen stellen, wat een onaangename gebruikers ervaring kan zijn.
+**Voor deel**: met deze optie kunt u een verificatie in twee stappen onder specifieke voor waarden vragen door gebruik te maken van [voorwaardelijke toegang](../../active-directory/conditional-access/concept-conditional-access-policy-common.md). Specifieke voor waarden kunnen gebruikers zich aanmelden vanaf verschillende locaties, niet-vertrouwde apparaten of toepassingen die u als riskant beschouwt. Als u specifieke voor waarden definieert waarvoor u verificatie in twee stappen nodig hebt, kunt u voor uw gebruikers geen constante vragen stellen, wat een onaangename gebruikers ervaring kan zijn.
 
 Dit is de meest flexibele manier om verificatie in twee stappen voor uw gebruikers in te scha kelen. Het inschakelen van een beleid voor voorwaardelijke toegang werkt alleen voor Azure-Multi-Factor Authentication in de Cloud en is een Premium-functie van Azure AD. Meer informatie over deze methode vindt u in [Azure multi-factor Authentication op basis van de Cloud implementeren](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Optie 4**: multi-factor Authentication met beleid voor voorwaardelijke toegang inschakelen door de gebruikers-en aanmeldings risico's van [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)te evalueren.   
+**Optie 4**: multi-factor Authentication met beleid voor voorwaardelijke toegang inschakelen door te evalueren [op risico gebaseerd beleid voor voorwaardelijke toegang](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
 **Voor deel**: met deze optie kunt u:
 
 * Detecteer mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie.

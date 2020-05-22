@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.date: 04/03/2020
-ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5e46e50da67559f69302357804f6f98fee70d4ad
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647751"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773301"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
@@ -41,6 +41,9 @@ Voor REST proxy-eindpunt aanvragen moet client toepassingen een OAuth-Token opha
 
 > [!NOTE]
 > Zie [toegang tot apps en bronnen beheren met Azure Active Directory groepen](../../active-directory/fundamentals/active-directory-manage-groups.md)voor meer informatie over Aad-beveiligings groepen. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/develop/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens.
+
+## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST-proxy met netwerk beveiligings groepen
+Als u uw eigen VNet en netwerk verkeer met netwerk beveiligings groepen wilt beheren, kunt u **Inkomend** verkeer op poort **9400** naast poort 443 toestaan. Dit zorgt ervoor dat de Kafka REST-proxy server bereikbaar is.
 
 ## <a name="prerequisites"></a>Vereisten
 

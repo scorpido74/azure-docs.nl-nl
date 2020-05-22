@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206728"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758126"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
@@ -92,7 +92,7 @@ Details over beslissings vragen:
 
 * **Geavanceerde scenario's**. Als organisaties hiervoor kiezen, is het mogelijk om inzichten te gebruiken van identiteiten met Azure AD Identity Protection rapporten met Azure AD Premium P2. Een voor beeld is het rapport met gelekte referenties. Windows hello voor bedrijven heeft [specifieke vereisten voor het gebruik van wachtwoord-hash-synchronisatie](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). Voor [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) is wachtwoord hash-synchronisatie vereist om gebruikers in te richten met hun bedrijfs referenties in het beheerde domein.
 
-    Organisaties waarvoor multi-factor Authentication met wachtwoord hash-synchronisatie vereist is, moeten gebruikmaken van [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)voor Azure AD multi-factor Authentication of voorwaardelijke toegang. Deze organisaties kunnen geen derden of on-premises multi-factor Authentication-methoden gebruiken die afhankelijk zijn van Federatie.
+    Organisaties waarvoor multi-factor Authentication met wachtwoord hash-synchronisatie vereist is, moeten [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)van Azure multi-factor Authentication of voorwaardelijke toegang gebruiken. Deze organisaties kunnen geen derden of on-premises multi-factor Authentication-methoden gebruiken die afhankelijk zijn van Federatie.
 
 > [!NOTE]
 > Voor voorwaardelijke toegang van Azure AD zijn [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) -licenties vereist.
@@ -139,7 +139,7 @@ Raadpleeg [implement-through-verificatie implementeren](../../active-directory/h
   * Verificatie waarvoor Smart Cards of certificaten zijn vereist.
   * On-premises MFA-servers of providers van derden waarvoor een federatieve id-provider is vereist.
   * Verificatie met behulp van verificatie oplossingen van derden. Zie de [Azure AD Federation-compatibiliteits lijst](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Meld u aan waarvoor een sAMAccountName vereist is, bijvoorbeeld Domein\gebruikersnaam, in plaats van een UPN (User Principal Name), bijvoorbeeld user@domain.com.
+  * Meld u aan waarvoor een sAMAccountName vereist is, bijvoorbeeld Domein\gebruikersnaam, in plaats van een UPN (User Principal Name), bijvoorbeeld user@domain.com .
 
 * **Bedrijfs continuïteit**. Federatieve systemen vereisen doorgaans een matrix met gelijke taak verdeling van servers, ook wel een farm genoemd. Deze farm is geconfigureerd in een interne netwerk-en perimeter netwerk topologie om te zorgen voor hoge Beschik baarheid van verificatie aanvragen.
 

@@ -3,7 +3,7 @@ title: Connectiviteits architectuur voor een beheerd exemplaar
 description: Meer informatie over Azure SQL Database beheerde instantie communicatie en connectiviteits architectuur, evenals hoe de onderdelen direct verkeer naar het beheerde exemplaar.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f341c3c2c299ca358b2a42210f04c6399fe2892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677174"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773603"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -66,7 +66,7 @@ Laten we een diep gaande van de connectiviteits architectuur voor beheerde insta
 
 ![Connectiviteits architectuur van het virtuele cluster](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam die het `<mi_name>.<dns_zone>.database.windows.net`formulier bevat. Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam die het formulier bevat `<mi_name>.<dns_zone>.database.windows.net` . Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Dit privé-IP-adres maakt deel uit van de interne load balancer van het beheerde exemplaar. De load balancer stuurt verkeer naar de gateway van het beheerde exemplaar. Omdat meerdere beheerde instanties binnen hetzelfde cluster kunnen worden uitgevoerd, gebruikt de gateway de hostnaam van het beheerde exemplaar om verkeer om te leiden naar de juiste SQL engine-service.
 
@@ -83,28 +83,28 @@ Wanneer verbindingen worden gestart binnen het beheerde exemplaar (net als bij b
 
 ## <a name="service-aided-subnet-configuration"></a>Met service ondersteunde subnetconfiguratie
 
-Om de beveiliging en beheer baarheid vereisten van de klant op te lossen, wordt het beheerde exemplaar overgezet van hand matig naar service-aided subnet-configuratie.
+Om tegemoet te komen aan de vereisten ten aanzien van de beveiliging en beheersbaarheid van klanten, wordt de configuratie van subnetten in Managed Instance niet meer handmatig uitgevoerd maar met service-ondersteuning.
 
-Met Service-aided subnet Configuration gebruiker bevindt zich volledig beheer van gegevens in TDS-verkeer, terwijl het beheerde exemplaar verantwoordelijk is voor een ononderbroken stroom van beheer verkeer om te voldoen aan de SLA.
+Met service ondersteunde subnetconfiguratie heeft de gebruiker volledige controle over gegevens (TDS), terwijl Managed Instance verantwoordelijk is voor een ononderbroken stroom van beheerverkeer om te voldoen aan de overeengekomen SLA.
 
-Service-aided subnet-configuratie bouwt voort op het niveau van de [overdracht van subnetten](../virtual-network/subnet-delegation-overview.md) van virtuele netwerken om automatisch netwerk configuratie beheer te bieden en service-eind punten in te scha kelen. Service-eind punten kunnen worden gebruikt voor het configureren van firewall regels voor virtuele netwerken op opslag accounts die back-ups/audit logboeken bewaren.
+Met service ondersteunde subnetconfiguratie is gebaseerd op de functie voor het [delegeren van subnetten](../virtual-network/subnet-delegation-overview.md) van virtuele netwerken om automatisch beheer van netwerkconfiguraties te bieden en service-eindpunten in te schakelen. Service-eindpunten kunnen worden gebruikt voor het configureren van firewallregels voor virtuele netwerken voor opslagaccounts waarin back-ups/auditlogboeken worden opgeslagen.
 
 ### <a name="network-requirements"></a>Netwerkvereisten 
 
 Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netwerk. Het subnet moet de volgende eigenschappen hebben:
 
-- **Toegewezen subnet:** Het subnet van het beheerde exemplaar kan geen andere Cloud service bevatten die eraan is gekoppeld en kan geen gateway-subnet zijn. Het subnet kan geen resource bevatten, maar het beheerde exemplaar, en u kunt later geen andere typen resources toevoegen in het subnet.
-- **Subnet-overdracht:** Het subnet van het beheerde exemplaar moet worden gedelegeerd naar `Microsoft.Sql/managedInstances` de resource provider.
-- **Netwerk beveiligings groep (NSG):** Een NSG moet worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt een NSG gebruiken om de toegang tot het gegevens eindpunt van het beheerde exemplaar te beheren door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer het beheerde exemplaar is geconfigureerd voor omleidings verbindingen. Met service worden automatisch de huidige [regels](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) ingericht en bewaard die nodig zijn om een ononderbroken stroom van beheer verkeer toe te staan.
-- Door de **gebruiker gedefinieerde route tabel (UDR):** Een UDR-tabel moet worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt vermeldingen toevoegen aan de route tabel om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA). Met service worden automatisch de huidige [vermeldingen](#user-defined-routes-with-service-aided-subnet-configuration) ingericht en bewaard die nodig zijn om een ononderbroken stroom van beheer verkeer toe te staan.
-- **Voldoende IP-adressen:** Het subnet van het beheerde exemplaar moet ten minste 16 IP-adressen hebben. De aanbevolen minimum waarde is 32 IP-adressen. Zie [de grootte van het subnet voor beheerde instanties bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md)voor meer informatie. U kunt beheerde exemplaren in [het bestaande netwerk](sql-database-managed-instance-configure-vnet-subnet.md) implementeren nadat u deze hebt geconfigureerd om te voldoen aan [de netwerk vereisten voor beheerde exemplaren](#network-requirements). Als dat niet het geval is, maakt u een [nieuw netwerk en subnet](sql-database-managed-instance-create-vnet-subnet.md).
+- **Toegewezen subnet:** Het subnet van het beheerde exemplaar kan geen andere cloudservice bevatten die eraan is gekoppeld en het subnet kan geen gatewaysubnet zijn. Het subnet kan geen enkele resource bevatten behalve het beheerde exemplaar, en u kunt later geen andere typen resources toevoegen in het subnet.
+- **Subnet-overdracht:** Het subnet van het beheerde exemplaar moet worden gedelegeerd naar de `Microsoft.Sql/managedInstances` resource provider.
+- **Netwerkbeveiligingsgroep (NSG):** Er moet een NSG worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt een NSG gebruiken om de toegang tot het gegevenseindpunt van het beheerde exemplaar te beheren door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer het beheerde exemplaar is geconfigureerd voor omleidingsverbindingen. De service zal automatisch de huidige [regels](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) inrichten en handhaven die vereist zijn voor een niet-onderbroken stroom van beheerverkeer.
+- **Door gebruiker gedefinieerde routetabel (UDR):** Er moet een UDR-tabel worden gekoppeld aan het subnet van het beheerde exemplaar. U kunt vermeldingen toevoegen aan de routetabel om verkeer met on-premises privé-IP-bereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerkapparaat (NVA). De service zal automatisch de huidige [vermeldingen](#user-defined-routes-with-service-aided-subnet-configuration) inrichten en handhaven die vereist zijn voor een niet-onderbroken stroom van beheerverkeer.
+- **Voldoende IP-adressen:** Het subnet van het beheerde exemplaar moet ten minste 16 IP-adressen hebben. Het aanbevolen minimumaantal is 32 IP-adressen. Zie [Determine VNet subnet size for Azure SQL Database Managed Instance](sql-database-managed-instance-determine-size-vnet-subnet.md) (Grootte van VNet-subnet bepalen voor Azure SQL Database Managed Instance) voor meer informatie. U kunt beheerde exemplaren implementeren in [het bestaande netwerk](sql-database-managed-instance-configure-vnet-subnet.md) nadat u de configuratie van het netwerk zo hebt aangepast dat dit voldoet aan [de netwerkvereisten voor beheerde exemplaren](#network-requirements). Als dat niet mogelijk is, kunt u een [nieuw netwerk en subnet](sql-database-managed-instance-create-vnet-subnet.md) maken.
 
 > [!IMPORTANT]
 > Wanneer u een beheerd exemplaar maakt, wordt een netwerk intentie beleid toegepast op het subnet om niet-compatibele wijzigingen in de netwerk installatie te voor komen. Nadat het laatste exemplaar van het subnet is verwijderd, wordt het netwerkintentiebeleid ook verwijderd.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten 
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Name       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -114,14 +114,14 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie 
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Name       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Door de gebruiker gedefinieerde routes met de service-aided subnet-configuratie 
 
-|Naam|Adresvoorvoegsel|Volgende hop|
+|Name|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -312,18 +312,18 @@ De volgende functies van het virtuele netwerk worden momenteel niet ondersteund 
 
 Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netwerk. Het subnet moet de volgende eigenschappen hebben:
 
-- **Toegewezen subnet:** Het subnet van het beheerde exemplaar kan geen andere Cloud service bevatten die eraan is gekoppeld en kan geen gateway-subnet zijn. Het subnet kan geen resource bevatten, maar het beheerde exemplaar, en u kunt later geen andere typen resources toevoegen in het subnet.
-- **Netwerk beveiligings groep (NSG):** Een NSG die aan het virtuele netwerk is gekoppeld, moet regels voor [inkomende beveiliging](#mandatory-inbound-security-rules) en [uitgaande beveiligings regels](#mandatory-outbound-security-rules) vóór andere regels definiëren. U kunt een NSG gebruiken om de toegang tot het gegevens eindpunt van het beheerde exemplaar te beheren door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer het beheerde exemplaar is geconfigureerd voor omleidings verbindingen.
+- **Toegewezen subnet:** Het subnet van het beheerde exemplaar kan geen andere cloudservice bevatten die eraan is gekoppeld en het subnet kan geen gatewaysubnet zijn. Het subnet kan geen enkele resource bevatten behalve het beheerde exemplaar, en u kunt later geen andere typen resources toevoegen in het subnet.
+- **Netwerk beveiligings groep (NSG):** Een NSG die aan het virtuele netwerk is gekoppeld, moet regels voor [inkomende beveiliging](#mandatory-inbound-security-rules) en [uitgaande beveiligings regels](#mandatory-outbound-security-rules) vóór andere regels definiëren. U kunt een NSG gebruiken om de toegang tot het gegevenseindpunt van het beheerde exemplaar te beheren door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer het beheerde exemplaar is geconfigureerd voor omleidingsverbindingen.
 - Door de **gebruiker gedefinieerde route tabel (UDR):** Een UDR-tabel die aan het virtuele netwerk is gekoppeld, moet specifieke [vermeldingen](#user-defined-routes)bevatten.
 - **Geen service-eind punten:** Er moet geen service-eind punt zijn gekoppeld aan het subnet van het beheerde exemplaar. Zorg ervoor dat de optie service-eind punten is uitgeschakeld tijdens het maken van het virtuele netwerk.
-- **Voldoende IP-adressen:** Het subnet van het beheerde exemplaar moet ten minste 16 IP-adressen hebben. De aanbevolen minimum waarde is 32 IP-adressen. Zie [de grootte van het subnet voor beheerde instanties bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md)voor meer informatie. U kunt beheerde exemplaren in [het bestaande netwerk](sql-database-managed-instance-configure-vnet-subnet.md) implementeren nadat u deze hebt geconfigureerd om te voldoen aan [de netwerk vereisten voor beheerde exemplaren](#network-requirements). Als dat niet het geval is, maakt u een [nieuw netwerk en subnet](sql-database-managed-instance-create-vnet-subnet.md).
+- **Voldoende IP-adressen:** Het subnet van het beheerde exemplaar moet ten minste 16 IP-adressen hebben. Het aanbevolen minimumaantal is 32 IP-adressen. Zie [Determine VNet subnet size for Azure SQL Database Managed Instance](sql-database-managed-instance-determine-size-vnet-subnet.md) (Grootte van VNet-subnet bepalen voor Azure SQL Database Managed Instance) voor meer informatie. U kunt beheerde exemplaren implementeren in [het bestaande netwerk](sql-database-managed-instance-configure-vnet-subnet.md) nadat u de configuratie van het netwerk zo hebt aangepast dat dit voldoet aan [de netwerkvereisten voor beheerde exemplaren](#network-requirements). Als dat niet mogelijk is, kunt u een [nieuw netwerk en subnet](sql-database-managed-instance-create-vnet-subnet.md) maken.
 
 > [!IMPORTANT]
 > U kunt geen nieuw beheerd exemplaar implementeren als het doel-subnet deze kenmerken niet heeft. Wanneer u een beheerd exemplaar maakt, wordt een netwerk intentie beleid toegepast op het subnet om niet-compatibele wijzigingen in de netwerk installatie te voor komen. Nadat het laatste exemplaar van het subnet is verwijderd, wordt het netwerkintentiebeleid ook verwijderd.
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Name       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -331,7 +331,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Name       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -349,7 +349,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
-|Naam|Adresvoorvoegsel|Volgende hop|
+|Name|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584348"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772196"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Aanmeldings flow voor apps met micro soft Identity platform
 
@@ -29,7 +29,7 @@ In dit onderwerp wordt de basis-aanmeldings stroom voor web-, desktop-en Mobile-
 Wanneer een gebruiker in de browser naar een web-app navigeert, gebeurt het volgende:
 
 * De web-app bepaalt of de gebruiker is geverifieerd.
-* Als de gebruiker niet is geverifieerd, wordt de web-app gemachtigd om zich aan te melden bij de gebruiker in azure AD. Deze aanmelding voldoet aan het beleid van de organisatie. Dit kan ertoe leiden dat de gebruiker de referenties invoert, met behulp van multi-factor Authentication of met een wacht woord helemaal (bijvoorbeeld met Windows hello).
+* Als de gebruiker niet is geverifieerd, wordt de web-app gemachtigd om zich aan te melden bij de gebruiker in azure AD. Deze aanmelding voldoet aan het beleid van de organisatie. Dit kan ertoe leiden dat de gebruiker de referenties invoert met behulp van [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) (ook wel twee ledige verificatie of twee ledige), of dat er geen wacht woord wordt gebruikt (bijvoorbeeld met Windows hello).
 * De gebruiker wordt gevraagd toestemming te geven voor de toegang die de client-app nodig heeft. Daarom moeten client-apps worden geregistreerd bij Azure AD, zodat het micro soft Identity-platform tokens kan leveren die de toegang hebben die de gebruiker heeft ingestemd.
 
 Wanneer de gebruiker is geverifieerd:
@@ -44,9 +44,9 @@ In het volgende sequentie diagram wordt deze interactie samenvatten:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Hoe een web-app bepaalt of de gebruiker is geverifieerd
 
-Web app-ontwikkel aars kunnen aangeven of voor alle of alleen bepaalde pagina's verificatie is vereist. In ASP.NET/ASP.NET core wordt dit bijvoorbeeld gedaan door het `[Authorize]` kenmerk toe te voegen aan de controller acties.
+Web app-ontwikkel aars kunnen aangeven of voor alle of alleen bepaalde pagina's verificatie is vereist. In ASP.NET/ASP.NET core wordt dit bijvoorbeeld gedaan door het kenmerk toe te voegen `[Authorize]` aan de controller acties.
 
-Met dit kenmerk wordt ASP.NET gecontroleerd op de aanwezigheid van een sessie cookie met de identiteit van de gebruiker. Als er geen cookie aanwezig is, stuurt ASP.NET de verificatie door naar de opgegeven id-provider. Als de ID-provider Azure AD is, wordt de verificatie door de web- `https://login.microsoftonline.com`app omgeleid naar, waardoor een dialoog venster voor aanmelden wordt weer gegeven.
+Met dit kenmerk wordt ASP.NET gecontroleerd op de aanwezigheid van een sessie cookie met de identiteit van de gebruiker. Als er geen cookie aanwezig is, stuurt ASP.NET de verificatie door naar de opgegeven id-provider. Als de ID-provider Azure AD is, wordt de verificatie door de web-app omgeleid naar `https://login.microsoftonline.com` , waardoor een dialoog venster voor aanmelden wordt weer gegeven.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Hoe een web-app zich kan aanmelden bij het micro soft Identity-platform en een token verkrijgt
 

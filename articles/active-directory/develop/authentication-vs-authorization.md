@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: fca794d51e06c72f157dc063445d1cab09d92d28
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115860"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772060"
 ---
-# <a name="authentication-vs-authorization"></a>Verificatie versus autorisatie
+# <a name="authentication-vs-authorization"></a>Verificatie vs. autorisatie
 
 In dit artikel worden verificatie en autorisatie gedefinieerd en wordt kort beschreven hoe u het micro soft-identiteits platform kunt gebruiken om gebruikers te verifiëren en te autoriseren in uw web-apps, Web-Api's of apps die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze [woorden lijst](developer-glossary.md) of onze [Video's over micro soft Identity platform](identity-videos.md) die basis concepten omvatten.
 
@@ -36,9 +36,9 @@ In dit artikel worden verificatie en autorisatie gedefinieerd en wordt kort besc
 
 In plaats van apps te maken die elk eigen gebruikers naam en wacht woord behouden, waardoor een hoge administratieve belasting optreedt wanneer u gebruikers wilt toevoegen aan of verwijderen uit meerdere apps, kunnen apps die verantwoordelijkheid delegeren aan een gecentraliseerde ID-provider.
 
-Azure Active Directory (Azure AD) is een gecentraliseerde ID-provider in de Cloud. Door de verificatie en autorisatie te delegeren, worden scenario's zoals beleids regels voor voorwaardelijke toegang die een gebruiker in een specifieke locatie moeten, het gebruik van multi-factor Authentication en het inschakelen van een gebruiker in één keer aanmelden en vervolgens automatisch aangemeld bij alle web-apps die dezelfde gecentraliseerde map delen. Deze mogelijkheid wordt **eenmalige aanmelding (SSO)** genoemd.
+Azure Active Directory (Azure AD) is een gecentraliseerde ID-provider in de Cloud. Door de verificatie en autorisatie te delegeren, worden scenario's zoals beleids regels voor voorwaardelijke toegang die een gebruiker in een specifieke locatie vereisen, het gebruik van [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) (ook wel twee ledige authenticatie of twee ledige genoemd), en wordt een gebruiker in staat gesteld om zich eenmaal aan te melden bij alle web-apps die dezelfde gecentraliseerde map delen. Deze mogelijkheid wordt **eenmalige aanmelding (SSO)** genoemd.
 
-Micro soft Identity platform vereenvoudigt verificatie en autorisatie voor toepassings ontwikkelaars door identiteit als een service te bieden, met ondersteuning voor industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect, evenals open-source-bibliotheken voor verschillende platformen, zodat u snel kunt beginnen met coderen. Ontwikkel aars kunnen toepassingen bouwen die zich aanmelden bij alle micro soft-identiteiten, tokens verkrijgen om [Microsoft Graph](https://developer.microsoft.com/graph/), andere Api's van micro soft of api's te roepen die ontwikkel aars hebben gebouwd. Zie [ontwikkeling van micro soft Identity platform](about-microsoft-identity-platform.md)voor meer informatie.
+Micro soft Identity platform vereenvoudigt autorisatie en verificatie voor toepassings ontwikkelaars door identiteit als een service te bieden, met ondersteuning voor industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect, evenals open-source-bibliotheken voor verschillende platformen, zodat u snel kunt beginnen met coderen. Ontwikkel aars kunnen toepassingen bouwen die zich aanmelden bij alle micro soft-identiteiten, tokens verkrijgen om [Microsoft Graph](https://developer.microsoft.com/graph/), andere Api's van micro soft of api's te roepen die ontwikkel aars hebben gebouwd. Zie [ontwikkeling van micro soft Identity platform](about-microsoft-identity-platform.md)voor meer informatie.
 
 Hieronder vindt u een korte vergelijking van de verschillende protocollen die worden gebruikt door het micro soft Identity-platform:
 
@@ -50,11 +50,10 @@ Hieronder vindt u een korte vergelijking van de verschillende protocollen die wo
 
 Voor andere onderwerpen met betrekking tot de basis van verificatie en autorisatie:
 
-* Zie [beveiligings tokens](security-tokens.md) voor meer informatie over het gebruik van toegangs tokens, het vernieuwen van tokens en id-tokens in verificatie en autorisatie.
+* Zie [beveiligings tokens](security-tokens.md) voor meer informatie over de toegangs tokens, het vernieuwen van tokens en id-tokens die worden gebruikt in autorisatie en verificatie.
 * Zie [toepassings model](application-model.md) voor meer informatie over het proces van het registreren van uw toepassing, zodat deze kan worden geïntegreerd met het micro soft Identity-platform.
 * Zie [app-aanmeldings flow](app-sign-in-flow.md) voor meer informatie over de aanmeldings stroom van web-, desktop-en Mobile-apps in het micro soft Identity-platform.
 
-Voor meer informatie over de protocollen die door micro soft Identity platform worden geïmplementeerd:
-
-* Zie [OAuth 2,0 en OpenID Connect Connect protocols op het micro soft Identity platform](active-directory-v2-protocols.md) voor meer informatie over de OpenID Connect Connect en OAuth 2,0-standaarden.
+* Zie [OAuth 2,0 en OpenID Connect Connect protocols op het micro soft Identity platform](active-directory-v2-protocols.md)voor meer informatie over de protocollen die door micro soft Identity platform worden geïmplementeerd.
 * Zie het [SAML-protocol voor eenmalige aanmelding](single-sign-on-saml-protocol.md) voor meer informatie over hoe micro soft Identity-platform eenmalige aanmelding ondersteunt.
+* Zie [eenmalige aanmelding bij toepassingen in azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de verschillende manieren waarop u eenmalige aanmelding in uw app kunt implementeren.

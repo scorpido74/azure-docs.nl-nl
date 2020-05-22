@@ -3,7 +3,7 @@ title: Automatische, geografisch redundante back-ups
 description: SQL Database maakt om de paar minuten automatisch een lokale back-up van de data base en maakt gebruik van geografisch redundante opslag met lees toegang voor geo-redundantie.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: dd5ca3c52364813a9aabe3db821c4f7e094fa637
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7858d626282b3090e6c95af9c06b3a0a7e603462
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634137"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773600"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 

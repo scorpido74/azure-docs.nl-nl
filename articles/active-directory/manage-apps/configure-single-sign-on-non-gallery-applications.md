@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244210"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758364"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerie toepassingen
 
@@ -26,17 +26,17 @@ Wanneer u [een galerie-app](add-gallery-app.md) of een [niet-galerij web-app](ad
 > [!NOTE]
 > Een galerie-app toevoegen? Stapsgewijze instructies voor het instellen van de installatie vindt u in de [lijst met zelf studies over SaaS-apps](../saas-apps/tutorial-list.md)
 
-Als u eenmalige SAML-aanmelding wilt configureren voor een niet-galerie toepassing zonder code te schrijven, moet u een abonnement hebben, samen met een Azure AD Premium-licentie en de toepassing SAML 2,0 ondersteunen. Ga voor meer informatie over Azure AD-versies naar [Azure ad-prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
+Als u eenmalige SAML-aanmelding wilt configureren voor een niet-galerie toepassing zonder dat u code hoeft te schrijven, moet u een Azure AD-abonnement hebben en moeten de toepassing SAML 2,0 ondersteunen. Ga voor meer informatie over Azure AD-versies naar [Azure ad-prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een niet-galerie-app toevoegen](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>Step 1. De basis-SAML-configuratie bewerken
+## <a name="step-1-edit-the-basic-saml-configuration"></a>Stap 1. De basis-SAML-configuratie bewerken
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
-2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen** en selecteer de toepassing in de lijst. 
+2. Ga naar **Azure Active Directory**  >  **bedrijfs toepassingen** en selecteer de toepassing in de lijst. 
    
    - Als u wilt zoeken naar de toepassing, selecteert u in het menu **toepassings type** **alle toepassingen**en selecteert u vervolgens **Toep assen**. Voer de naam van de toepassing in het zoekvak in en selecteer vervolgens de toepassing in de resultaten.
 
@@ -52,7 +52,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
 
     | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
     |:--|:--|:--|:--|
-    | **Id (Entiteits-id)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon:<subdomain>' https://. contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
+    | **Id (Entiteits-id)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon: ' https:// <subdomain> . contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
     | **Antwoord-URL** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
     | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
     | **Relaystatus** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. De waarde is doorgaans een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
@@ -102,7 +102,7 @@ Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtst
    - *De juiste handtekening optie en algoritme.*
    - *Het juiste e-mail adres (sen) van de melding.* Wanneer het actieve certificaat bijna de verloop datum heeft, stuurt Azure AD een melding naar het e-mail adres dat in dit veld is geconfigureerd.
 
-2. Als u het certificaat wilt downloaden, selecteert u een van de opties voor Base64-indeling, RAW-indeling of federatieve meta gegevens-XML. Azure AD biedt ook de **URL voor de federatieve meta gegevens** van de app, waar u de meta gegevens die specifiek `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`zijn voor de toepassing kunt openen in de indeling.
+2. Als u het certificaat wilt downloaden, selecteert u een van de opties voor Base64-indeling, RAW-indeling of federatieve meta gegevens-XML. Azure AD biedt ook de **URL voor de federatieve meta gegevens** van de app, waar u de meta gegevens die specifiek zijn voor de toepassing kunt openen in de indeling `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 3. Als u een certificaat wilt beheren, maken of importeren, selecteert u het **bewerkings** pictogram (een potlood) in de rechter bovenhoek van de sectie **SAML-handtekening certificaat** .
 
@@ -122,9 +122,9 @@ Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtst
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Stap 4. De toepassing instellen voor gebruik van Azure AD
 
-De sectie ** \<ApplicationName->instellen** bevat de waarden die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. De vereiste waarden variëren afhankelijk van de toepassing. Zie de SAML-documentatie van de toepassing voor meer informatie. Als u de documentatie wilt vinden, gaat u naar de kop ** \<toepassings naam instellen>** en selecteert u **Stapsgewijze instructies weer geven**. De documentatie wordt weer gegeven op de pagina **aanmelden configureren** . Op deze pagina vindt u instructies voor het invullen van de **aanmeldings-URL**, de **Azure ad-id**en de **afmeldings-URL** -waarden in de kop ** \<toepassings naam instellen>** .
+De sectie ** \< applicationname->instellen** bevat de waarden die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. De vereiste waarden variëren afhankelijk van de toepassing. Zie de SAML-documentatie van de toepassing voor meer informatie. Als u de documentatie wilt vinden, gaat u naar de kop ** \< toepassings naam instellen>** en selecteert u **Stapsgewijze instructies weer geven**. De documentatie wordt weer gegeven op de pagina **aanmelden configureren** . Op deze pagina vindt u instructies voor het invullen van de **aanmeldings-URL**, de **Azure ad-id**en de **afmeldings-URL** -waarden in de kop ** \< toepassings naam instellen>** .
 
-1. Schuif omlaag naar de sectie ** \<toepassings groep instellen>** . 
+1. Schuif omlaag naar de sectie **toepassings groep instellen \<>** . 
    
    ![Stap 4 de toepassing instellen](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435852"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772944"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
-Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reageren, verzamelt en verwerkt Azure Security Center gegevens over beveiliging, zoals configuratie-informatie, metagegevens, gebeurtenislogboeken, crashdumpbestanden en nog veel meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
+Om klanten te helpen bedreigingen te voor komen, te detecteren en erop te reageren, Azure Security Center gegevens verzamelen en verwerken, met inbegrip van configuratie-informatie, meta gegevens, gebeurtenis logboeken en meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
 
 In dit artikel wordt uitgelegd hoe gegevens worden beheerd en beveiligd in Azure Security Center.
 
@@ -31,19 +31,19 @@ Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in 
 - Azure Services: gebruikt informatie over de configuratie van de Azure-services die u hebt geïmplementeerd door te communiceren met de resourceprovider van die service.
 - Netwerkverkeer: gebruikt steekproefgewijs netwerkverkeermetagegevens uit de infrastructuur van Microsoft, zoals bron-/doel-IP/poort, pakketgrootte en netwerkprotocol.
 - Oplossingen van partners: gebruikt beveiligingswaarschuwingen van geïntegreerde partneroplossingen, zoals firewalls en antimalwareoplossingen.
-- Uw virtuele machines en servers: gebruikt configuratiegegevens en informatie over beveiligingsgebeurtenissen, zoals Windows-gebeurtenis- en auditlogboeken, IIS-logboeken, syslog-berichten en crashdumpbestanden van uw virtuele machines. Bovendien kan Azure Security Center wanneer er een waarschuwing wordt gemaakt een momentopname maken van de beïnvloede VM-schijf en machine-artefacten gekoppeld aan de waarschuwing van de VM-schijf, zoals een registerbestand, extraheren voor onderzoeksdoeleinden.
+- Uw Virtual Machines en servers: gebruikt configuratie-informatie en informatie over beveiligings gebeurtenissen, zoals Windows-gebeurtenis-en audit logboeken, IIS-logboeken en syslog-berichten van uw virtuele machines. Bovendien kan Azure Security Center wanneer er een waarschuwing wordt gemaakt een momentopname maken van de beïnvloede VM-schijf en machine-artefacten gekoppeld aan de waarschuwing van de VM-schijf, zoals een registerbestand, extraheren voor onderzoeksdoeleinden.
 
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 **Scheiding van gegevens**: gegevens worden op een logische manier apart van elkaar gehouden, in elk onderdeel van de service. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
 
-**Gegevenstoegang**: om beveiligingsaanbevelingen te doen en mogelijke beveiligingsrisico's te onderzoeken, kunnen medewerkers van Microsoft gegevens die zijn verzameld of geanalyseerd door Azure-services openen, waaronder crashdumpbestanden, procesgebeurtenissen, momentopnamen van de VM-schijf en artefacten, die onbedoeld klantgegevens of persoonlijke gegevens bevatten van uw virtuele machines. We voldoen aan de [voorwaarden voor Microsoft Online Services en de Privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die stellen dat Microsoft niet de klantgegevens gebruikt of gegevens ervan afleidt voor reclame- of vergelijkbare commerciële doeleinden. We gebruiken klantgegevens alleen indien nodig om u Azure-services te bieden, met inbegrip van doeleinden die compatibel zijn met het leveren van die services. U behoudt alle rechten op de klantgegevens.
+**Gegevens toegang**: om aanbevelingen voor beveiliging te bieden en mogelijke beveiligings Risico's te onderzoeken, kunnen mede werkers van micro soft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-Services, waaronder het maken van proces gebeurtenissen, moment opnamen van virtuele machines en artefacten, wat per ongeluk klant gegevens of persoonlijke gegevens van uw virtuele machine kan bevatten. We voldoen aan de [voorwaarden voor Microsoft Online Services en de Privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die stellen dat Microsoft niet de klantgegevens gebruikt of gegevens ervan afleidt voor reclame- of vergelijkbare commerciële doeleinden. We gebruiken klantgegevens alleen indien nodig om u Azure-services te bieden, met inbegrip van doeleinden die compatibel zijn met het leveren van die services. U behoudt alle rechten op de klantgegevens.
 
 **Gegevensgebruik**: Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; wij doen dit in overeenstemming met de privacyverplichtingen beschreven in onze [Privacyverklaring](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx).
 
 ## <a name="data-location"></a>Gegevenslocatie
 
-**Uw werkruimte(n)**: er wordt een werkruimte opgegeven voor de volgende geografische gebieden, en gegevens die worden verzameld van uw virtuele machines in Azure, waaronder crashdumps en bepaalde typen waarschuwingsgegevens, worden opgeslagen in de dichtstbijzijnde werkruimte.
+**Uw werk ruimte (n)**: er is een werk ruimte opgegeven voor de volgende geografische gebieden en gegevens die zijn verzameld van uw virtuele Azure-machines, met inbegrip van bepaalde typen waarschuwings gegevens, worden opgeslagen in de dichtstbijzijnde werk ruimte.
 
 | Geografisch gebied van virtuele machine                              | Geografisch gebied van werkruimte |
 |-------------------------------------|---------------|
@@ -63,16 +63,12 @@ Momentopnamen van de VM-schijf worden opgeslagen in hetzelfde opslagaccount als 
 
 Voor virtuele machines en servers die in andere omgevingen worden uitgevoerd, bijvoorbeeld on-premises, kunt u de werkruimte en de regio opgeven waarin verzamelde gegevens worden opgeslagen.
 
-**Azure Security Center-opslag**: informatie over beveiligingswaarschuwingen, met inbegrip van waarschuwingen van partners, wordt regionaal opgeslagen op basis van de locatie van de gerelateerde Azure-resource, terwijl informatie over de status van de beveiliging en aanbevelingen centraal wordt opgeslagen in de Verenigde Staten of in Europa, afhankelijk van de locatie van de klant.
-Azure Security Center verzamelt tijdelijke kopieën van uw crashdumpbestanden en analyseert deze op bewijs van pogingen tot misbruik en geslaagde aanvallen. Azure Security Center voert deze analyse uit binnen hetzelfde geografische gebied als de werkruimte en verwijdert de tijdelijke kopieën wanneer de analyse is voltooid.
-
-Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele machine.
-
+**Azure Security Center-opslag**: informatie over beveiligingswaarschuwingen, met inbegrip van waarschuwingen van partners, wordt regionaal opgeslagen op basis van de locatie van de gerelateerde Azure-resource, terwijl informatie over de status van de beveiliging en aanbevelingen centraal wordt opgeslagen in de Verenigde Staten of in Europa, afhankelijk van de locatie van de klant. Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele machine.
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Gegevensverzameling van virtuele machines beheren
 
 Wanneer u Security Center inschakelt in Azure, wordt gegevensverzameling ingeschakeld voor elk van uw Azure-abonnementen. U kunt gegevensverzameling voor uw abonnementen ook inschakelen in het gedeelte Beveiligingsbeleid van Azure Security Center. Wanneer het verzamelen van gegevens is ingeschakeld, wordt de Log Analytics agent door Azure Security Center ingericht op alle bestaande virtuele machines van Azure en nieuwe die worden gemaakt.
-De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt deze vast in [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) -traceringen (etw). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenis logboeken en ETW-traceringen en kopieert deze naar uw werk ruimte (n) voor analyse. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte (n), schakelt gebeurtenissen voor het maken van processen en controle van de opdracht regel in.
+De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt deze vast in [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) -traceringen (etw). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenis logboeken en ETW-traceringen en kopieert deze naar uw werk ruimte (n) voor analyse. De Log Analytics agent schakelt ook proces aanmaak gebeurtenissen en controle van de opdracht regel in.
 
 Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamelen van gegevens van virtuele machines ook uitschakelen in het beveiligingsbeleid. Het verzamelen van gegevens is vereist voor abonnementen uit de prijscategorie Standard. De verzameling van momentopnamen en artefacten voor de VM-schijf is nog steeds ingeschakeld, zelfs als het verzamelen van gegevens is uitgeschakeld.
 

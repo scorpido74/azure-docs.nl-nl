@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2682a85f88a537630fbca86dd55541a152d8f37e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025279"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758636"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen in Azure Active Directory
 
@@ -30,8 +30,8 @@ U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://por
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Een nieuwe aangepaste rol maken voor het verlenen van toegang voor het beheren van app-registraties
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > **rollen en beheerders** > **nieuwe aangepaste rol**.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com)   met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Selecteer **Azure Active Directory**  >  **rollen en beheerders**  >  **nieuwe aangepaste rol**.
 
    ![Rollen maken of bewerken op de pagina rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
 
@@ -141,6 +141,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
+  > [!Note]
+  > De "ontbrekende templateid": "GUID" is een optionele para meter die wordt verzonden in de hoofd tekst, afhankelijk van de vereiste. Als u een vereiste hebt voor het maken van meerdere verschillende aangepaste rollen met algemene para meters, kunt u het beste een sjabloon maken en een ontbrekende templateid definiëren. U kunt vooraf een ontbrekende templateid genereren met behulp van de Power shell-cmdlet (New-GUID). GPT. 
+
 1. Maak de roltoewijzing.
 
     HTTP-aanvraag voor het maken van een aangepaste roldefinitie.
@@ -160,6 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Een aangepast rollen bereik toewijzen aan een resource
 

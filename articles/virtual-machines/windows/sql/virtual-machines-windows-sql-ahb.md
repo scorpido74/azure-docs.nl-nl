@@ -14,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6f05b96eb856e7d2f2b79141e8da1203408f892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201816"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771431"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Het licentie model voor een SQL Server virtuele machine in azure wijzigen
+# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Licentiemodel voor een virtuele SQL Server-machine in Azure wijzigen
 In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL VM-resource provider **micro soft. SqlVirtualMachine**.
 
 Er zijn drie licentie modellen voor een virtuele machine die als host fungeert voor SQL Server: betalen per gebruik, Azure Hybrid Benefit en nood herstel (DR). U kunt het licentie model van uw SQL Server-VM wijzigen met behulp van de Azure Portal, de Azure CLI of Power shell. 
@@ -40,7 +40,7 @@ Om het gebruik van Azure Hybrid Benefit voor SQL Server op een virtuele Azure-ma
 - Richt een virtuele machine in met behulp van een betalen naar gebruik-SQL Server installatie kopie van Azure Marketplace en activeer de Azure Hybrid Benefit.
 - Installeer SQL Server zelf op een virtuele Azure-machine, [Registreer hand matig bij de resource provider van de SQL-VM](virtual-machines-windows-sql-register-with-resource-provider.md)en activeer Azure Hybrid Benefit.
 
-Het licentie type van SQL Server wordt ingesteld wanneer de virtuele machine wordt ingericht. U kunt deze later op elk gewenst moment wijzigen. Als u overschakelt tussen licentie modellen, wordt geen downtime gestart, wordt de VM of de SQL Server-service niet opnieuw opgestart, worden er geen extra kosten in rekening gebracht en direct van kracht. Het activeren van Azure Hybrid Benefit *verlaagt* de kosten.
+Het licentie type van SQL Server kan worden geconfigureerd wanneer de virtuele machine wordt ingericht of op elk gewenst moment. Als u overschakelt tussen licentie modellen, wordt geen downtime gestart, wordt de VM of de SQL Server-service niet opnieuw opgestart, worden er geen extra kosten in rekening gebracht en direct van kracht. Het activeren van Azure Hybrid Benefit *verlaagt* de kosten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -99,7 +99,7 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
 ```
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U kunt Power shell gebruiken om uw licentie model te wijzigen.
 
@@ -117,7 +117,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
-**Herstel na nood geval** 
+**Herstel na noodgevallen** 
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -154,7 +154,7 @@ Het wijzigen van het licentie model is:
 
 ## <a name="known-errors"></a>Bekende fouten
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines\</Resource-Group> ' onder resource groep\<' Resource-Group> ' is niet gevonden.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines/ \< resource-group> ' onder resource groep ' \< Resource-Group> ' is niet gevonden.
 
 Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virtuele machine te wijzigen die niet is geregistreerd bij de resource provider van de SQL-VM:
 
@@ -163,7 +163,7 @@ Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virt
 U moet uw abonnement registreren bij de resource provider en vervolgens [uw SQL Server-VM registreren bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Aan de virtuele machine\<vmname\>zijn meer dan één NIC gekoppeld
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Aan de virtuele machine \< vmname zijn \> meer dan één NIC gekoppeld
 
 Deze fout doet zich voor op virtuele machines met meer dan één NIC. Verwijder een van de Nic's voordat u het licentie model wijzigt. Hoewel u de NIC opnieuw kunt toevoegen aan de VM nadat u het licentie model hebt gewijzigd, worden de bewerkingen in de Azure Portal, zoals automatische back-up en patching, niet meer ondersteund. 
 

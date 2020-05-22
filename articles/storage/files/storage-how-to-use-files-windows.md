@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682447"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773097"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Een schermafbeelding van de vervolgkeuzelijst 'Netwerkverbinding maken'](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Selecteer de stationsletter en voer het UNC-pad in, de indeling van het UNC-pad `<storageAccountName>.file.core.windows.net/<fileShareName>` . Bijvoorbeeld: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Selecteer de stationsletter en voer het UNC-pad in, de indeling van het UNC-pad `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Bijvoorbeeld: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![Een schermafbeelding van het dialoogvenster 'Netwerkverbinding maken'](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

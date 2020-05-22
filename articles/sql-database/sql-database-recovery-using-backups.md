@@ -3,7 +3,7 @@ title: Een Data Base herstellen vanuit een back-up
 description: Meer informatie over tijdstippen herstellen, waarmee u een Azure-SQL database kunt terugdraaien tot 35 dagen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da841c2f1280bc0dc126e43a9f618e170d0d2553
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268741"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770683"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 
@@ -70,7 +70,7 @@ Over het algemeen herstelt u een Data Base naar een eerder tijdstip voor herstel
 
   Als u van plan bent de herstelde data base te vervangen door een vervanging voor de oorspronkelijke Data Base, moet u de reken grootte en de servicelaag van de oorspronkelijke data base opgeven. U kunt de naam van de oorspronkelijke data base wijzigen en de herstelde data base de oorspronkelijke naam geven met behulp van de opdracht [ALTER data base](/sql/t-sql/statements/alter-database-azure-sql-database) in T-SQL.
 
-- **Gegevens herstellen**
+- **Gegevensherstel**
 
   Als u van plan bent om gegevens op te halen uit de herstelde data base om te herstellen van een gebruiker of toepassings fout, moet u een gegevens herstel script schrijven en uitvoeren waarmee gegevens uit de herstelde data base worden geëxtraheerd en toegepast op de oorspronkelijke data base. Hoewel het herstellen van de herstel bewerking veel tijd kan duren, is de data base herstellen tijdens het herstel proces zichtbaar in de lijst met data bases. Als u de data base verwijdert tijdens het herstellen, wordt de herstel bewerking geannuleerd en worden er geen kosten in rekening gebracht voor de data base die het herstellen niet heeft voltooid.
   
@@ -147,7 +147,7 @@ Vanuit de Azure Portal maakt u een nieuwe single-of Managed instance-data base e
 
 Ga als volgt te werk om een enkele SQL database van de Azure Portal in de gewenste regio en server te herstellen:
 
-1. Selecteer in het **dash board**de optie**Create SQL database** **toevoegen** > . Voer de vereiste gegevens in op het tabblad **basis beginselen** .
+1. Selecteer in het **dash board**de optie **Add**  >  **Create SQL database**toevoegen. Voer de vereiste gegevens in op het tabblad **basis beginselen** .
 2. Selecteer **aanvullende instellingen**.
 3. Selecteer **back-up**voor het **gebruiken van bestaande gegevens**.
 4. Selecteer voor **back-up**een back-up in de lijst met beschik bare back-ups van geo-herstel.

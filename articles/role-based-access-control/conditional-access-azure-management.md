@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137413"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758772"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Toegang tot beheer van Azure beheren met voorwaardelijke toegang
 
@@ -47,5 +47,4 @@ Het beleid dat u maakt, is van toepassing op alle Azure Management-eind punten, 
 
 Houd er rekening mee dat het beleid van toepassing is op Azure PowerShell, waarmee de Azure Resource Manager-API wordt aangeroepen. Het is niet van toepassing op [Azure AD Power shell](/powershell/azure/active-directory/install-adv2), die Microsoft Graph aanroept.
 
-
-Zie [voorwaardelijke toegang in azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md)voor meer informatie over het instellen en gebruiken van voorwaardelijke toegang.
+Zie voor meer informatie over het instellen van een voorbeeld beleid voor het inschakelen van voorwaardelijke toegang voor Microsoft Azure beheer het artikel [voorwaardelijke toegang: MFA vereisen voor Azure-beheer](../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).

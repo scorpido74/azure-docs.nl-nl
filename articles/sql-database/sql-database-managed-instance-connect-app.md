@@ -3,7 +3,7 @@ title: Beheerde instance Connect-toepassing
 description: In dit artikel wordt beschreven hoe u uw toepassing verbindt met Azure SQL Database beheerde instantie.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc945dec20a15b02287e50bcbef4be0d860c892f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538083"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773669"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uw toepassing verbinden met het beheerde exemplaar van Azure SQL Database
 
@@ -101,7 +101,7 @@ Raadpleeg het volgende voor meer informatie over het oplossen van verbindings pr
 
    ![ingangs-en uitgangs nummers](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Controleer of de client computer (waarop de VPN-client wordt uitgevoerd) route vermeldingen bevat voor alle VNets waartoe u toegang wilt. De routes worden opgeslagen in `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`.
+- Controleer of de client computer (waarop de VPN-client wordt uitgevoerd) route vermeldingen bevat voor alle VNets waartoe u toegang wilt. De routes worden opgeslagen in `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 

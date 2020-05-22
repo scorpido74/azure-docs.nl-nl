@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76696092"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772077"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekende problemen met Internet Explorer en micro soft Edge-browsers (MSAL. js)
 
@@ -50,7 +50,7 @@ Gebruik onderstaande tijdelijke oplossingen.
 
 #### <a name="other-workarounds"></a>Andere tijdelijke oplossingen
 Zorg ervoor dat u test dat uw probleem alleen optreedt op de specifieke versie van de micro soft Edge-browser en werkt in de andere browsers voordat u deze tijdelijke oplossingen doorvoert.  
-1. Als eerste stap om deze problemen op te lossen, moet u ervoor zorgen dat het toepassings domein, en andere sites die betrokken zijn bij de omleidingen van de verificatie stroom worden toegevoegd als vertrouwde sites in de beveiligings instellingen van de browser, zodat deze deel uitmaken van dezelfde beveiligings zone.
+1. Als eerste stap om deze problemen op te lossen, moet u ervoor zorgen dat het toepassings domein en alle andere sites die betrokken zijn bij de omleidingen van de verificatie stroom worden toegevoegd als vertrouwde sites in de beveiligings instellingen van de browser, zodat deze deel uitmaken van dezelfde beveiligings zone.
 Hiervoor volgt u de volgende stappen:
     - Open **Internet Explorer** en klik in de rechter bovenhoek op het pictogram **instellingen** (tand wiel)
     - Selecteer **Internet opties**
@@ -63,7 +63,7 @@ Opmerking: Hiermee wordt het probleem voor InPrivate-Browsing niet opgelost omda
 
 ## <a name="issues-due-to-popup-blockers"></a>Problemen als gevolg van pop-upblokkeringen
 
-Er zijn gevallen waarin pop-ups worden geblokkeerd in IE of micro soft Edge, bijvoorbeeld wanneer een tweede pop-up wordt weer gegeven tijdens multi-factor Authentication. U ontvangt een waarschuwing in de browser om de pop-up één keer of altijd toe te staan. Als u ervoor kiest om toe te staan, wordt het pop-upvenster automatisch `null` geopend en wordt er een ingang voor de browser geretourneerd. Als gevolg hiervan heeft de bibliotheek geen ingang voor het venster en is er geen manier om het pop-upvenster te sluiten. Hetzelfde probleem treedt niet op in Chrome wanneer u wordt gevraagd popups toe te staan omdat er niet automatisch een pop-upvenster wordt geopend.
+Er zijn gevallen waarin pop-ups worden geblokkeerd in IE of micro soft Edge, bijvoorbeeld wanneer een tweede pop-up wordt weer gegeven tijdens [multi-factor Authentication](../authentication/concept-mfa-howitworks.md). U ontvangt een waarschuwing in de browser om de pop-up één keer of altijd toe te staan. Als u ervoor kiest om toe te staan, wordt het pop-upvenster automatisch geopend en wordt er een ingang voor de browser geretourneerd `null` . Als gevolg hiervan heeft de bibliotheek geen ingang voor het venster en is er geen manier om het pop-upvenster te sluiten. Hetzelfde probleem treedt niet op in Chrome wanneer u wordt gevraagd popups toe te staan omdat er niet automatisch een pop-upvenster wordt geopend.
 
 Als **tijdelijke oplossing**moeten ontwikkel aars pop-ups in Internet Explorer en micro soft Edge toestaan voordat ze hun app gaan gebruiken om dit probleem te voor komen.
 

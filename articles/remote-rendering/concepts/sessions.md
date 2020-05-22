@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681686"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758857"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessies
 
@@ -24,9 +24,9 @@ Dit betekent dat wanneer u de externe rendering van Azure gebruikt, een Cloud Se
 
 ## <a name="managing-sessions"></a>Sessies beheren
 
-Er zijn meerdere manieren om sessies te beheren en te gebruiken. De taal onafhankelijke manier om sessies te maken, bij te werken en af te sluiten, is via [de sessie beheer rest API](../how-tos/session-rest-api.md). In C# en C++ worden deze bewerkingen weer gegeven via de klassen `AzureFrontend` en `AzureSession`. Voor Unity-toepassingen zijn er verdere hulp functies van het `ARRServiceUnity` onderdeel beschikbaar.
+Er zijn meerdere manieren om sessies te beheren en te gebruiken. De taal onafhankelijke manier om sessies te maken, bij te werken en af te sluiten, is via [de sessie beheer rest API](../how-tos/session-rest-api.md). In C# en C++ worden deze bewerkingen weer gegeven via de klassen `AzureFrontend` en `AzureSession` . Voor Unity-toepassingen zijn er verdere hulp functies van het `ARRServiceUnity` onderdeel beschikbaar.
 
-Zodra u *verbinding hebt gemaakt* met een actieve sessie, worden bewerkingen zoals het [laden van modellen](models.md) en interactie met de scène weer gegeven `AzureSession` via de-klasse.
+Zodra u *verbinding hebt gemaakt* met een actieve sessie, worden bewerkingen zoals het [laden van modellen](models.md) en interactie met de scène weer gegeven via de- `AzureSession` klasse.
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Meerdere sessies tegelijk beheren
 
@@ -82,7 +82,7 @@ U kunt [de lease tijd](../how-tos/session-rest-api.md#update-a-session) van een 
 
 In de volgende code ziet u een eenvoudige implementatie van het starten van een sessie, het wachten op de status *gereed* , verbinding maken en de verbinding verbreken en vervolgens opnieuw.
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Meerdere `AzureFrontend` en `AzureSession` exemplaren kunnen worden onderhouden, gemanipuleerd en uit code worden opgevraagd. Maar er `AzureSession` kan slechts één apparaat tegelijk verbinding maken.
+Meerdere `AzureFrontend` en `AzureSession` exemplaren kunnen worden onderhouden, gemanipuleerd en uit code worden opgevraagd. Maar er kan slechts één apparaat tegelijk verbinding maken `AzureSession` .
 
-De levens duur van een virtuele machine is niet gekoppeld `AzureFrontend` aan het exemplaar `AzureSession` of het exemplaar. `AzureSession.StopAsync`moet worden aangeroepen om een sessie te stoppen.
+De levens duur van een virtuele machine is niet gekoppeld aan het `AzureFrontend` exemplaar of het `AzureSession` exemplaar. `AzureSession.StopAsync`moet worden aangeroepen om een sessie te stoppen.
 
-De permanente sessie-ID kan worden opgevraagd `AzureSession.SessionUUID()` en lokaal in de cache worden opgeslagen. Met deze ID kan een toepassing een binding `AzureFrontend.OpenSession` met die sessie aanroepen.
+De permanente sessie-ID kan worden opgevraagd `AzureSession.SessionUUID()` en lokaal in de cache worden opgeslagen. Met deze ID kan een toepassing een `AzureFrontend.OpenSession` binding met die sessie aanroepen.
 
-Wanneer `AzureSession.IsConnected` True is, `AzureSession.Actions` retourneert een exemplaar van `RemoteManager`, dat de functies bevat voor het [laden van modellen](models.md), het bewerken van [entiteiten](entities.md)en het [opvragen van informatie](../overview/features/spatial-queries.md) over de gerenderde scène.
+Wanneer `AzureSession.IsConnected` True is, `AzureSession.Actions` retourneert een exemplaar van `RemoteManager` , dat de functies bevat voor het [laden van modellen](models.md), het bewerken van [entiteiten](entities.md)en het [opvragen van informatie](../overview/features/spatial-queries.md) over de gerenderde scène.
 
 ## <a name="next-steps"></a>Volgende stappen
 

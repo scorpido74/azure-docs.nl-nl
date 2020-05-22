@@ -1,5 +1,6 @@
 ---
-title: Een bureau blad-app bouwen die web-Api's aanroept-micro soft Identity-platform | Azure
+title: Een bureau blad-app bouwen die web-Api's aanroept | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (overzicht)
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882997"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771856"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: bureau blad-app voor het aanroepen van web-Api's
 
@@ -50,7 +51,7 @@ U schrijft een bureaublad toepassing en u wilt gebruikers aanmelden bij uw toepa
   - Of, als het een .NET core-toepassing is en u akkoord gaat om de verificatie-interactie met Azure Active Directory (Azure AD) te laten plaatsvinden in de systeem browser.
 
 - Voor Windows-toepassingen die worden gehost, is het ook mogelijk voor toepassingen die worden uitgevoerd op computers die zijn toegevoegd aan een Windows-domein of Azure AD om een token op de achtergrond te verkrijgen met behulp van geïntegreerde Windows-verificatie.
-- Ten slotte, hoewel dit niet wordt aangeraden, kunt u een gebruikers naam en wacht woord in open bare client toepassingen gebruiken. Het is nog steeds nodig in sommige scenario's zoals DevOps. Met deze functie worden beperkingen voor uw toepassing opgelegd. Het is bijvoorbeeld niet mogelijk om een gebruiker aan te melden die multi-factor Authentication (voorwaardelijke toegang) moet uitvoeren. Uw toepassing profiteert ook niet van eenmalige aanmelding (SSO).
+- Ten slotte, hoewel dit niet wordt aangeraden, kunt u een gebruikers naam en wacht woord in open bare client toepassingen gebruiken. Het is nog steeds nodig in sommige scenario's zoals DevOps. Met deze functie worden beperkingen voor uw toepassing opgelegd. Het is bijvoorbeeld niet mogelijk om een gebruiker aan te melden die [multi-factor Authentication](../authentication/concept-mfa-howitworks.md) moet uitvoeren (voorwaardelijke toegang). Uw toepassing profiteert ook niet van eenmalige aanmelding (SSO).
 
   Het is ook van toepassing op de principes van moderne authenticatie en wordt alleen voor verouderde redenen verschaft.
 

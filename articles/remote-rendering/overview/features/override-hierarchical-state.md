@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680789"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758976"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
 In veel gevallen is het nood zakelijk om de vormgeving van onderdelen van een [model](../../concepts/models.md)dynamisch te wijzigen, bijvoorbeeld subgrafieken te verbergen of onderdelen te scha kelen naar transparante rendering. Het wijzigen van de materialen van elk betrokken deel is niet praktisch omdat het nodig is om het hele scène diagram te herhalen en het klonen van materialen en de toewijzing op elk knoop punt te beheren.
 
-Als u deze use-case wilt uitvoeren met de minst mogelijke overhead `HierarchicalStateOverrideComponent`, gebruikt u de. Dit onderdeel implementeert hiërarchische status updates op wille keurige vertakkingen van het scène diagram. Dit betekent dat een status kan worden gedefinieerd op een wille keurig niveau in het scène diagram en de hiërarchie trickles omlaag, totdat deze wordt overschreven door een nieuwe status of wordt toegepast op een leaf-object.
+Als u deze use-case wilt uitvoeren met de minst mogelijke overhead, gebruikt u de `HierarchicalStateOverrideComponent` . Dit onderdeel implementeert hiërarchische status updates op wille keurige vertakkingen van het scène diagram. Dit betekent dat een status kan worden gedefinieerd op een wille keurig niveau in het scène diagram en de hiërarchie trickles omlaag, totdat deze wordt overschreven door een nieuwe status of wordt toegepast op een leaf-object.
 
 Denk bijvoorbeeld aan het model van een auto en u wilt de hele auto overschakelen op transparant, met uitzonde ring van het deel van de interne engine. Deze use-case omvat slechts twee exemplaren van het onderdeel:
 
@@ -55,7 +55,7 @@ Elke status kan daarom worden ingesteld op een van de volgende opties:
 * `ForceOff`-de status is uitgeschakeld voor alle netten op en onder dit knoop punt
 * `InheritFromParent`-de status wordt niet beïnvloed door dit onderdrukkings onderdeel
 
-U kunt de statussen rechtstreeks of via `SetState` de functie wijzigen:
+U kunt de statussen rechtstreeks of via de `SetState` functie wijzigen:
 
 ```cs
 HierarchicalStateOverrideComponent component = ...;
@@ -68,6 +68,21 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 
 // set multiple states at once with the SetState function
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
+```
+
+```cpp
+ApiHandle<HierarchicalStateOverrideComponent> component = ...;
+
+// set one state directly
+component->HiddenState(HierarchicalEnableState::ForceOn);
+
+// set a state with the SetState function
+component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
+
+// set multiple states at once with the SetState function
+component->SetState(
+    (HierarchicalStates)((int32_t)HierarchicalStates::Hidden | (int32_t)HierarchicalStates::DisableCollision), HierarchicalEnableState::ForceOff);
+
 ```
 
 ### <a name="tint-color"></a>Tint kleur

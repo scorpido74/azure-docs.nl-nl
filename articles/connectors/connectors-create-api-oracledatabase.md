@@ -3,16 +3,16 @@ title: Verbinding maken met Oracle Database
 description: Records invoegen en beheren met Oracle Database REST-Api's en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b4f016b53c6c42831d5f5ae08a30ec8ac176e6e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147816"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773369"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Aan de slag met de Oracle Database-Connector
 
@@ -20,6 +20,13 @@ Met behulp van de Oracle Database-connector maakt u organisatie werk stromen die
 
 * Bouw uw werk stroom door een nieuwe klant toe te voegen aan een klanten database of een bestelling bij te werken in een Data Base voor orders.
 * Gebruik acties om een rij gegevens op te halen, een nieuwe rij in te voegen en zelfs te verwijderen. Als er bijvoorbeeld een record wordt gemaakt in Dynamics CRM Online (een trigger), voegt u een rij in een Oracle Database (een actie). 
+
+Deze connector biedt geen ondersteuning voor de volgende items:
+
+* Weergaven 
+* Een tabel met samengestelde sleutels
+* Geneste object typen in tabellen
+* Database functies met niet-scalaire waarden
 
 Dit artikel laat u zien hoe u de Oracle Database-Connector in een logische app kunt gebruiken.
 
@@ -60,13 +67,13 @@ Dit artikel laat u zien hoe u de Oracle Database-Connector in een logische app k
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > Dit is ook de snelste manier om de triggers en acties weer te geven die beschikbaar zijn voor elke connector. Typ een deel van de naam van de connector, `oracle`zoals. In de ontwerp functie worden alle triggers en acties weer gegeven. 
+    > Dit is ook de snelste manier om de triggers en acties weer te geven die beschikbaar zijn voor elke connector. Typ een deel van de naam van de connector, zoals `oracle` . In de ontwerp functie worden alle triggers en acties weer gegeven. 
 
 5. Selecteer een van de acties, zoals **Oracle database-rij ophalen**. Selecteer **verbinding via on-premises gegevens gateway**. Voer de naam van de Oracle-Server, de verificatie methode, de gebruikers naam, het wacht woord en selecteer de gateway:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. Zodra de verbinding is gemaakt, selecteert u een tabel in de lijst en voert u de rij-ID in voor uw tabel. U moet de id van de tabel weten. Als u dat niet weet, neemt u contact op met uw Oracle DB-beheerder `select * from yourTableName`en haalt u de uitvoer van. Dit geeft u de informatie die u nodig hebt om door te gaan.
+6. Zodra de verbinding is gemaakt, selecteert u een tabel in de lijst en voert u de rij-ID in voor uw tabel. U moet de id van de tabel weten. Als u dat niet weet, neemt u contact op met uw Oracle DB-beheerder en haalt u de uitvoer van `select * from yourTableName` . Dit geeft u de informatie die u nodig hebt om door te gaan.
 
     In het volgende voor beeld worden taak gegevens geretourneerd vanuit een Human Resources-Data Base: 
 
@@ -85,7 +92,7 @@ Dit artikel laat u zien hoe u de Oracle Database-Connector in een logische app k
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
-* Berichten worden verzonden naar een Service Bus wachtrij. U wilt deze berichten ophalen en in een Data Base opnemen. Voeg de `Service Bus - when a message is received in a queue` trigger toe aan een logische app en selecteer de wachtrij. Voeg vervolgens de `Oracle Database - Insert row` actie toe en selecteer de tabel:
+* Berichten worden verzonden naar een Service Bus wachtrij. U wilt deze berichten ophalen en in een Data Base opnemen. Voeg de trigger toe aan een logische app `Service Bus - when a message is received in a queue` en selecteer de wachtrij. Voeg vervolgens de `Oracle Database - Insert row` actie toe en selecteer de tabel:
 
     ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
@@ -108,12 +115,6 @@ Dit artikel laat u zien hoe u de Oracle Database-Connector in een logische app k
 **Oorzaak**: de tabel heeft geen primaire sleutel.  
 
 **Oplossing**: de Oracle Database-Connector vereist dat er een tabel met een primaire sleutel kolom wordt gebruikt.
-
-#### <a name="currently-not-supported"></a>Momenteel niet ondersteund
-
-* Weergaven 
-* Een tabel met samengestelde sleutels
-* Geneste object typen in tabellen
  
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
@@ -123,7 +124,7 @@ Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventue
 
 Het [Azure Logic apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) is een goede plaats om vragen te stellen, vragen te beantwoorden en te zien wat andere Logic Apps gebruikers doen. 
 
-U kunt Logic Apps en connectors verbeteren door te stemmen en uw ideeën in [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)te dienen. 
+U kunt Logic Apps en connectors verbeteren door te stemmen en uw ideeën in te dienen [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672635"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771193"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwings token?
 
@@ -39,7 +39,7 @@ De volgende Windows-onderdelen spelen een belang rijke rol bij het aanvragen en 
 
 Een PRT bevat claims die doorgaans zijn opgenomen in een Azure AD-vernieuwings token. Daarnaast zijn er enkele apparaatspecifieke claims opgenomen in de PRT. De verschillen zijn als volgt:
 
-* **Apparaat-id**: er wordt een PRT verleend aan een gebruiker op een specifiek apparaat. De claim `deviceID` apparaat-id bepaalt het apparaat waar het PRT aan de gebruiker is verleend. Deze claim wordt later verleend aan tokens die zijn verkregen via de PRT. De claim apparaat-ID wordt gebruikt om de autorisatie voor voorwaardelijke toegang te bepalen op basis van de status of naleving van het apparaat.
+* **Apparaat-id**: er wordt een PRT verleend aan een gebruiker op een specifiek apparaat. De claim apparaat-ID `deviceID` bepaalt het apparaat waar het PRT aan de gebruiker is verleend. Deze claim wordt later verleend aan tokens die zijn verkregen via de PRT. De claim apparaat-ID wordt gebruikt om de autorisatie voor voorwaardelijke toegang te bepalen op basis van de status of naleving van het apparaat.
 * **Sessie sleutel**: de sessie sleutel is een versleutelde symmetrische sleutel die wordt gegenereerd door de Azure AD-verificatie service, uitgegeven als onderdeel van de PRT. De sessie sleutel fungeert als bewijs van bezit wanneer een PRT wordt gebruikt om tokens voor andere toepassingen te verkrijgen.
 
 ### <a name="can-i-see-whats-in-a-prt"></a>Kan ik zien wat er in een PRT is?
@@ -60,7 +60,7 @@ De PRT wordt uitgegeven tijdens de gebruikers verificatie op een Windows 10-appa
 * **Azure AD join** of **hybride Azure AD join**: er wordt een PRT uitgegeven tijdens Windows-aanmelding wanneer een gebruiker zich aanmeldt met de referenties van de organisatie. Een PRT wordt uitgegeven met alle door Windows 10 ondersteunde referenties, bijvoorbeeld wacht woord en Windows hello voor bedrijven. In dit scenario is Azure AD CloudAP-invoeg toepassing de primaire instantie voor de PRT.
 * **Geregistreerd Azure AD-apparaat**: er wordt een PRT uitgegeven wanneer een gebruiker een secundair werk account toevoegt aan hun Windows 10-apparaat. Gebruikers kunnen op twee verschillende manieren een account toevoegen aan Windows 10:  
    * Een account toevoegen via het bericht **dit account overal gebruiken op dit apparaat** na aanmelding bij een app (bijvoorbeeld Outlook)
-   * Een account toevoegen vanuit **instellingen** > **accounts** > **toegang tot werk of school** > **verbinden**
+   * Een account toevoegen vanuit **instellingen**  >  **accounts**  >  **toegang tot werk of school**  >  **verbinden**
 
 In azure AD-scenario's voor geregistreerde apparaten is de Azure AD WAM-invoeg toepassing de primaire instantie voor de PRT, omdat Windows-aanmelding niet is gebeurd met dit Azure AD-account.
 
@@ -76,7 +76,7 @@ Zodra het apparaat is uitgegeven, is een PRT 14 dagen geldig en wordt het voortd
 Een PRT wordt gebruikt door twee belang rijke onderdelen in Windows:
 
 * **Azure AD CloudAP-invoeg toepassing**: tijdens Windows-aanmelding vraagt de Azure AD CloudAP-invoeg toepassing een PRT aan bij Azure AD met de referenties die door de gebruiker zijn geleverd. Ook wordt de PRT in de cache opgeslagen om aanmelden in cache in te scha kelen als de gebruiker geen toegang heeft tot een Internet verbinding.
-* **Azure AD WAM-invoeg toepassing**: wanneer gebruikers toegang proberen te krijgen tot toepassingen, gebruikt de Azure AD WAM-invoeg toepassing de PRT om SSO in te scha kelen in Windows 10. De Azure AD WAM-invoeg toepassing maakt gebruik van de PRT voor het aanvragen van vernieuwings-en toegangs tokens voor toepassingen die afhankelijk zijn van WAM voor token aanvragen. Ook wordt SSO op browsers ingeschakeld door de PRT in browser aanvragen in te voeren. Browser-SSO in Windows 10 wordt ondersteund in micro soft Edge (systeem eigen) en Chrome (via de uitbrei ding voor Windows 10-accounts of Office Online).
+* **Azure AD WAM-invoeg toepassing**: wanneer gebruikers toegang proberen te krijgen tot toepassingen, gebruikt de Azure AD WAM-invoeg toepassing de PRT om SSO in te scha kelen in Windows 10. De Azure AD WAM-invoeg toepassing maakt gebruik van de PRT voor het aanvragen van vernieuwings-en toegangs tokens voor toepassingen die afhankelijk zijn van WAM voor token aanvragen. Ook wordt SSO op browsers ingeschakeld door de PRT in browser aanvragen in te voeren. Browser-SSO in Windows 10 wordt ondersteund in micro soft Edge (systeem eigen) en Chrome (via de [Windows 10-accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) of [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) -extensies).
 
 ## <a name="how-is-a-prt-renewed"></a>Hoe wordt een PRT vernieuwd?
 

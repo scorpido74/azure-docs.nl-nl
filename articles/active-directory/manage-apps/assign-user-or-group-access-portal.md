@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409189"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772417"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Een gebruiker of groep toewijzen aan een bedrijfs-app in Azure Active Directory
 
@@ -38,7 +38,7 @@ Met de volgende typen toepassingen kunt u vereisen dat gebruikers aan de toepass
 - Toepassings proxy toepassingen die gebruikmaken van Azure Active Directory verificatie vooraf
 - Toepassingen die zijn gebouwd op het Azure AD-toepassings platform die gebruikmaken van OAuth 2,0/OpenID Connect Connect-verificatie nadat een gebruiker of beheerder heeft ingestemd met die toepassing.
 
-Wanneer de gebruikers toewijzing is vereist, kunnen alleen gebruikers die u expliciet aan de toepassing toewijst zich aanmelden. Ze hebben toegang tot de app op hun pagina mijn apps of met behulp van een directe koppeling. 
+Wanneer de gebruikers toewijzing is vereist, kunnen alleen gebruikers die u expliciet aan de toepassing toewijst (via directe gebruikers toewijzing of op basis van groepslid maatschap) zich aanmelden. Ze hebben toegang tot de app op hun pagina mijn apps of met behulp van een directe koppeling. 
 
 Wanneer de toewijzing *niet is vereist*, omdat u deze optie hebt ingesteld op **Nee** of omdat de toepassing een andere SSO-modus gebruikt, kan elke gebruiker toegang krijgen tot de toepassing als deze een rechtstreekse koppeling naar de toepassing of de **gebruikers toegangs-URL** hebben op de **Eigenschappen** pagina van de toepassing. 
 
@@ -90,9 +90,9 @@ Gebruikers toewijzing voor een toepassing vereisen:
 1. Open een verhoogde Windows Power shell-opdracht prompt.
 
    > [!NOTE]
-   > U moet de AzureAD-module installeren (gebruik de opdracht `Install-Module -Name AzureAD`). Als u wordt gevraagd een NuGet-module of de nieuwe Azure Active Directory v2 Power shell-module te installeren, typt u j en drukt u op ENTER.
+   > U moet de AzureAD-module installeren (gebruik de opdracht `Install-Module -Name AzureAD` ). Als u wordt gevraagd een NuGet-module of de nieuwe Azure Active Directory v2 Power shell-module te installeren, typt u j en drukt u op ENTER.
 
-1. Voer `Connect-AzureAD` uit en meld u aan met een gebruikers account voor globale beheerders.
+1. Voer uit `Connect-AzureAD` en meld u aan met een gebruikers account voor globale beheerders.
 1. Gebruik het volgende script om een gebruiker en een rol toe te wijzen aan een toepassing:
 
     ```powershell
@@ -110,9 +110,11 @@ Gebruikers toewijzing voor een toepassing vereisen:
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Raadpleeg de documentatie voor [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) voor meer informatie over het toewijzen van een gebruiker aan een toepassingsrol.
+Voor meer informatie over het toewijzen van een gebruiker aan een toepassingsrol raadpleegt u de documentatie voor [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
-Als u een groep aan een bedrijfs-app wilt toewijzen, moet `Get-AzureADUser` u `Get-AzureADGroup`vervangen door.
+Als u een groep aan een bedrijfs-app wilt toewijzen, moet u vervangen door `Get-AzureADUser` `Get-AzureADGroup` en vervangen door `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
+
+Zie de documentatie voor [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)voor meer informatie over het toewijzen van een groep aan een toepassingsrol.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -134,7 +136,7 @@ In dit voor beeld wordt de gebruiker Julia Simon toegewezen aan de [micro soft W
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Voer de opdracht `$sp.AppRoles` uit om de beschik bare functies voor de Application Analytics-toepassing weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
+1. Voer de opdracht uit `$sp.AppRoles` om de beschik bare functies voor de Application Analytics-toepassing weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
 
    ![Toont de functies die beschikbaar zijn voor een gebruiker met behulp van de rol werk plek Analytics](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 

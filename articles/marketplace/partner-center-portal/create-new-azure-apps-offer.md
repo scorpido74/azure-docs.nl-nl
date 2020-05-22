@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699516"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773267"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -354,7 +354,7 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Selecteer **Dit is een privé-abonnement** dat ervoor zorgt dat uw plan privé is en alleen zichtbaar is voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het worden weer gegeven voor iedereen. het kan niet opnieuw worden geconfigureerd als een persoonlijk abonnement.
 
-Als u de plant persoonlijk maakt, voert u een **Azure-abonnement-id** en de beschrijving in. Elk is een doel groep die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. Voeg Maxi maal 10 abonnements-Id's afzonderlijk toe, of 20.000 door een CSV-bestand te importeren. Azure-abonnements-Id's worden weer gegeven als GUID'S en letters moeten kleine letters zijn.
+Als u het abonnement privé maakt, voert u een **Azure-abonnement-id** en de beschrijving in. Elk is een doel groep die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. Voeg Maxi maal 10 abonnements-Id's afzonderlijk toe, of 20.000 door een CSV-bestand te importeren. Azure-abonnements-Id's worden weer gegeven als GUID'S en letters moeten kleine letters zijn.
 
 >[!Note]
 >Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad **Preview** . Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live op Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.
@@ -373,7 +373,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 #### <a name="markets"></a>Landen
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Een zoekvak en een knop voor het selecteren van de landen ' BTW geremitteerd ', waarin micro soft namens u de omzet en het gebruik van BTW verdeelt, zijn opgenomen om u te helpen.
+Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Een zoekvak en een knop voor het selecteren van de landen/regio's waarvoor ' BTW is geremitteerd ', waarin micro soft verkoop en het gebruik van BTW namens u verdeelt, zijn opgenomen om u te helpen.
 
 Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. De prijs voor elke markt altijd controleren voordat deze wordt gepubliceerd. U kunt de prijzen controleren met behulp van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
 
@@ -399,7 +399,7 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Selecteer **Dit is een privé-abonnement** dat ervoor zorgt dat uw plan privé is en alleen zichtbaar is voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het worden weer gegeven voor iedereen. het kan niet opnieuw worden geconfigureerd als een persoonlijk abonnement.
 
-Als u de plant persoonlijk maakt, voert u een **Azure-abonnement-id** en de beschrijving in. Elk is een doel groep die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. Voeg Maxi maal 10 abonnements-Id's afzonderlijk toe, of 20.000 door een CSV-bestand te importeren. Azure-abonnements-Id's worden weer gegeven als GUID'S en letters moeten kleine letters zijn.
+Als u het abonnement privé maakt, voert u een **Azure-abonnement-id** en de beschrijving in. Elk is een doel groep die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. Voeg Maxi maal 10 abonnements-Id's afzonderlijk toe, of 20.000 door een CSV-bestand te importeren. Azure-abonnements-Id's worden weer gegeven als GUID'S en letters moeten kleine letters zijn.
 
 >[!Note]
 >Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad **Preview** . Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live op Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.

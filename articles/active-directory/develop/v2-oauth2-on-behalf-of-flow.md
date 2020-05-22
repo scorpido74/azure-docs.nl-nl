@@ -1,5 +1,6 @@
 ---
 title: Micro soft Identity platform en OAuth 2.0 namens-of-flow | Azure
+titleSuffix: Microsoft identity platform
 description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om service te implementeren voor service verificatie met behulp van de OAuth 2.0 namens-of-stroom.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e1711bbb859d855d2490e49c21db5c654eca7f5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643374"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771517"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -156,7 +157,7 @@ Het volgende voor beeld toont een geslaagde reactie op een aanvraag voor een toe
 
 ### <a name="error-response-example"></a>Voor beeld van fout antwoorden
 
-Er wordt een fout bericht geretourneerd door het token-eind punt bij het ophalen van een toegangs token voor de downstream API als voor de downstream API een beleid voor voorwaardelijke toegang is ingesteld (zoals multi-factor Authentication). De middelste laag service moet deze fout op de client toepassing belicht, zodat de client toepassing de gebruikers interactie kan bieden om te voldoen aan het beleid voor voorwaardelijke toegang.
+Er wordt een fout bericht geretourneerd door het token-eind punt bij het ophalen van een toegangs token voor de downstream API als voor de downstream API een beleid voor voorwaardelijke toegang is ingesteld (zoals [multi-factor Authentication](../authentication/concept-mfa-howitworks.md)). De middelste laag service moet deze fout op de client toepassing belicht, zodat de client toepassing de gebruikers interactie kan bieden om te voldoen aan het beleid voor voorwaardelijke toegang.
 
 ```json
 {

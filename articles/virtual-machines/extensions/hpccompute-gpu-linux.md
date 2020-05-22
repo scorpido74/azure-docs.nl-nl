@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415794"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773114"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
@@ -72,10 +72,10 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| uitgever | Micro soft. HpcCompute | tekenreeks |
+| apiVersion | 2015-06-15 | datum |
+| publisher | Micro soft. HpcCompute | tekenreeks |
 | type | NvidiaGpuDriverLinux | tekenreeks |
 | typeHandlerVersion | 1.2 | int |
 
@@ -85,7 +85,7 @@ Alle instellingen zijn optioneel. Standaard wordt de kernel niet bijgewerkt als 
 
 | Naam | Beschrijving | Standaardwaarde | Geldige waarden | Gegevenstype |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | false | de waarde True, false | booleaans |
+| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | onjuist | de waarde True, false | booleaans |
 | driverVersion | NV: raster versie van het stuur programma<br> NC/ND: CUDA Toolkit-versie. De meest recente Stuur Programma's voor de gekozen CUDA worden automatisch geïnstalleerd. | meest recente | RASTER: ' 430,30 ', ' 418,70 ', ' 410,92 ', ' 410,71 ', ' 390,75 ', ' 390,57 ', ' 390,42 '<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
 | installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | waar | de waarde True, false | booleaans |
 
@@ -149,7 +149,7 @@ az vm extension set \
   --version 1.2 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85", \
+    "driverVersion": "9.1.85" \
   }'
 ```
 

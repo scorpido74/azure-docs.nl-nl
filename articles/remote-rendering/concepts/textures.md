@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09fa22d33377dfcbafd84f0caeb5f33a575b1bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681660"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759129"
 ---
 # <a name="textures"></a>Patronen
 
@@ -34,16 +34,16 @@ Als u een bitmappatroon met dezelfde URI twee keer laadt, wordt hetzelfde object
 
 Net als bij het laden van modellen zijn er twee varianten van het adresseren van een texture-asset in de bron-Blob-opslag:
 
-* De Asset Texture kan worden aangepakt door de SAS-URI. Relevante laad functie is `LoadTextureFromSASAsync` met para `LoadTextureFromSASParams`meter. Gebruik deze variant ook bij het laden van [ingebouwde structuren](../overview/features/sky.md#built-in-environment-maps).
-* Het bitmappatroon kan rechtstreeks worden aangepakt door de Blob Storage-para meters, [als de Blob-opslag is gekoppeld aan het account](../how-tos/create-an-account.md#link-storage-accounts). Relevante laad functie in dit geval is `LoadTextureAsync` een para `LoadTextureParams`meter.
+* De Asset Texture kan worden aangepakt door de SAS-URI. Relevante laad functie is `LoadTextureFromSASAsync` met para meter `LoadTextureFromSASParams` . Gebruik deze variant ook bij het laden van [ingebouwde structuren](../overview/features/sky.md#built-in-environment-maps).
+* Het bitmappatroon kan rechtstreeks worden aangepakt door de Blob Storage-para meters, [als de Blob-opslag is gekoppeld aan het account](../how-tos/create-an-account.md#link-storage-accounts). Relevante laad functie in dit geval is een `LoadTextureAsync` para meter `LoadTextureParams` .
 
 De volgende voorbeeld code laat zien hoe u een structuur kunt laden via de SAS-URI (of het ingebouwde bitmappatroon): Houd er rekening mee dat alleen de functie/para meter voor het laden verschilt voor de andere Case:
 
-``` cs
+```cs
 LoadTextureAsync _textureLoad = null;
 void LoadMyTexture(AzureSession session, string textureUri)
 {
-    _textureLoad = session.Actions.LoadTextureAsync(new LoadTextureParams(textureUri, TextureType.Texture2D));
+    _textureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams(textureUri, TextureType.Texture2D));
     _textureLoad.Completed +=
         (LoadTextureAsync res) =>
         {
@@ -59,6 +59,28 @@ void LoadMyTexture(AzureSession session, string textureUri)
         };
 }
 ```
+
+```cpp
+void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
+{
+    LoadTextureFromSASParams params;
+    params.TextureType = TextureType::Texture2D;
+    params.TextureUrl = std::move(textureUri);
+    ApiHandle<LoadTextureAsync> textureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
+    textureLoad->Completed([](ApiHandle<LoadTextureAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            //use res->Result()
+        }
+        else
+        {
+            printf("Texture loading failed!");
+        }
+    });
+}
+```
+
 
 Afhankelijk van waarvoor het bitmappatroon moet worden gebruikt, zijn er mogelijk beperkingen voor het type bitmappatroon en de inhoud. De grof toewijzing van een [PBR-materiaal](../overview/features/pbr-materials.md) moet bijvoorbeeld grijs waarden zijn.
 

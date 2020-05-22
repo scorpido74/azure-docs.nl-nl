@@ -3,7 +3,7 @@ title: Managed instance-in-time Restore (PITR)
 description: Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21af96e8527bb3fc18666c0353ab3bdbe2a010f1
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268806"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773815"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
 
@@ -54,7 +54,7 @@ Een bestaande data base herstellen naar hetzelfde exemplaar met behulp van de Az
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Ga naar uw beheerde exemplaar en selecteer de data base die u wilt herstellen.
 3. Selecteer **herstellen** op de pagina Data Base:
 

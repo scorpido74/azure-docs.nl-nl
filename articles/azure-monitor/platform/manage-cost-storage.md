@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6e6be4cd0f8053d356183a75c5a012dee0bd8c68
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196599"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771312"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -92,14 +92,20 @@ U kunt [de prijs categorie ook instellen via Azure Resource Manager](https://doc
 
 ## <a name="legacy-pricing-tiers"></a>Verouderde prijs Categorieën
 
-Abonnementen die een Log Analytics werk ruimte hebben of Application Insights resource vóór 2 april 2018 zijn gekoppeld aan een Enterprise Agreement die zijn gestart vóór 1 februari 2019, blijven toegang hebben tot de verouderde prijs Categorieën: **gratis**, **zelfstandig (per GB)** en **per knoop punt (OMS)**.  Voor werk ruimten in de gratis prijs categorie geldt een dagelijkse gegevens opname van 500 MB (met uitzonde ring van beveiligings gegevens typen die worden verzameld door Azure Security Center) en de Bewaar periode van gegevens is beperkt tot 7 dagen. De gratis prijs categorie is alleen bedoeld voor evaluatie doeleinden. Werk ruimten in de zelfstandige of per knooppunt prijs categorie hebben een door de gebruiker Configureer bare Bewaar periode van 30 tot 730 dagen.
+Abonnementen die een Log Analytics werk ruimte hebben of Application Insights resource vóór 2 april 2018 zijn gekoppeld aan een Enterprise Agreement die zijn gestart vóór 1 februari 2019, blijven toegang hebben tot de verouderde prijs Categorieën: **gratis**, **zelfstandig (per GB)** en **per knoop punt (OMS)**.  Voor werk ruimten in de gratis prijs categorie geldt een dagelijkse gegevens opname van 500 MB (met uitzonde ring van beveiligings gegevens typen die worden verzameld door [Azure Security Center](https://docs.microsoft.com/azure/security-center/)) en de Bewaar periode van gegevens is beperkt tot 7 dagen. De gratis prijs categorie is alleen bedoeld voor evaluatie doeleinden. Werk ruimten in de zelfstandige of per knooppunt prijs categorie hebben een door de gebruiker Configureer bare Bewaar periode van 30 tot 730 dagen.
 
 De prijs categorie per knoop punt kosten per bewaakte VM (knoop punt) op een granulatie van het uur. Voor elk bewaakt knoop punt wordt voor de werk ruimte 500 MB aan gegevens toegewezen per dag die niet wordt gefactureerd. Deze toewijzing wordt geaggregeerd op het niveau van de werk ruimte. Gegevens die boven de cumulatieve dagelijkse gegevens toewijzing zijn opgenomen, worden per GB in rekening gebracht als gegevens overschrijding. Op uw factuur wordt de service **Insight and Analytics** voor log Analytics gebruik als de werk ruimte zich in de prijs categorie per knoop punt bevindt. 
 
 > [!TIP]
 > Als uw werk ruimte toegang heeft tot de prijs categorie **per knoop punt** , maar u vraagt zich af of deze kosten lager zijn in een betalen per gebruik-laag, kunt u [de onderstaande query gebruiken](#evaluating-the-legacy-per-node-pricing-tier) om eenvoudig een aanbeveling te krijgen. 
 
-Werk ruimten die zijn gemaakt vóór 2016 april hebben ook toegang tot de oorspronkelijke **Standard** -en **Premium** -prijs categorieën die respectievelijk 30 en 365 dagen zijn bewaard. Nieuwe werk ruimten kunnen niet worden gemaakt in de prijs categorie **Standard** of **Premium** , en als een werk ruimte uit deze lagen wordt verplaatst, kan deze niet meer worden teruggezet. 
+Werk ruimten die zijn gemaakt vóór 2016 april hebben ook toegang tot de oorspronkelijke **Standard** -en **Premium** -prijs categorieën die respectievelijk 30 en 365 dagen zijn bewaard. Nieuwe werk ruimten kunnen niet worden gemaakt in de prijs categorie **Standard** of **Premium** , en als een werk ruimte uit deze lagen wordt verplaatst, kan deze niet meer worden teruggezet.
+
+Er zijn ook enkele gedragingen tussen het gebruik van verouderde Log Analytics lagen en hoe het gebruik wordt gefactureerd voor [Azure Security Center](https://docs.microsoft.com/azure/security-center/). 
+
+1. Als de werk ruimte zich in de verouderde laag Standard of Premium bevindt, wordt Azure Security Center alleen gefactureerd voor Log Analytics gegevens opname, niet per knoop punt.
+2. Als de werk ruimte zich in de laag verouderd per knoop punt bevindt, wordt Azure Security Center gefactureerd op basis van het huidige [Azure Security Center op knoop punt gebaseerde prijs model](https://azure.microsoft.com/pricing/details/security-center/). 
+3. In andere prijs categorieën (inclusief capaciteits reserveringen), als Azure Security Center is ingeschakeld vóór 19 juni 2017, wordt Azure Security Center alleen gefactureerd voor Log Analytics gegevens opname. Anders wordt Azure Security Center gefactureerd met het huidige prijs model voor Azure Security Center op basis van knoop punten.
 
 [Hier](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)vindt u meer informatie over de beperkingen van de prijs categorie.
 
@@ -125,7 +131,7 @@ Als de retentie is verlaagd, is er een respijt periode van een enkele dag voorda
 De retentie kan ook [via Azure Resource Manager worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de `retentionInDays` para meter. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de `immediatePurgeDataOn30Days` para meter, wat nuttig kan zijn voor nalevings scenario's. Deze functionaliteit is alleen beschikbaar via Azure Resource Manager. 
 
 
-Twee gegevens typen- `Usage` en `AzureActivity` --worden standaard 90 dagen bewaard en er worden geen kosten in rekening gebracht voor deze Bewaar periode van 90 dagen. Deze gegevens typen zijn ook gratis van de kosten voor gegevens opname. 
+Twee gegevens typen- `Usage` en `AzureActivity` --worden standaard gedurende een minimum van 90 dagen bewaard en er worden geen kosten in rekening gebracht voor deze Bewaar periode van 90 dagen. Als de retentie van de werk ruimte groter is dan 90 dagen, wordt de Bewaar periode van deze gegevens typen ook verhoogd.  Deze gegevens typen zijn ook gratis van de kosten voor gegevens opname. 
 
 Gegevens typen van Application Insights resources (,,,,,,,, en) op basis van een werk ruimte `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` `AppTraces` worden ook standaard 90 dagen bewaard en er worden geen kosten in rekening gebracht voor de Bewaar periode van 90 dagen. De retentie kan worden aangepast met de functionaliteit voor het bewaren van gegevens typen. 
 

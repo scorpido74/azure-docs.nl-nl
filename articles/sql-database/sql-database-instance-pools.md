@@ -3,7 +3,7 @@ title: Instantie groepen (preview-versie)
 description: In dit artikel worden Azure SQL Database-instantie groepen (preview-versie) beschreven.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a418972b78750dbed90f0148aac45dbcc2617f8e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878150"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773080"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Wat zijn SQL Database exemplaar groepen (preview)?
 
@@ -31,7 +31,7 @@ Daarnaast ondersteunen instantie groepen systeem eigen VNet-integratie zodat u m
 
 Exemplaar groepen bieden de volgende voor delen:
 
-1. De mogelijkheid om 2 vCore-instanties te hosten. *Alleen voor instanties in exemplaar groepen. \**
+1. De mogelijkheid om 2 vCore-instanties te hosten. * \* Alleen voor instanties in exemplaar groepen*.
 2. Voorspel bare en snelle exemplaar implementatie tijd (Maxi maal 5 minuten).
 3. Minimale toewijzing van IP-adressen.
 
@@ -59,7 +59,7 @@ De volgende lijst bevat de belangrijkste gebruiks situaties waarbij exemplaar gr
 
 ## <a name="architecture-of-instance-pools"></a>Architectuur van instantie groepen
 
-Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere beheerde instanties (*afzonderlijke instanties*). Voor de ondersteuning van [implementaties in azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md) en voor het afschermen en beveiligen van klanten kunnen exemplaar groepen ook worden gebaseerd op [virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
+Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere beheerde instanties (*afzonderlijke instanties*). Voor de ondersteuning van [implementaties in azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md)   en voor het afschermen en beveiligen van klanten kunnen exemplaar groepen ook worden gebaseerd op [virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
 
 Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine worden uitgevoerd.
 

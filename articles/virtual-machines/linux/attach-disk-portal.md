@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969355"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774186"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -94,13 +94,13 @@ Als u een bestaande schijf gebruikt die gegevens bevat, gaat u door met het kopp
 > [!NOTE]
 > Het is raadzaam om de meest recente versies van fdisk of een deel daarvan te gebruiken die beschikbaar zijn voor uw distributie.
 
-Partitioneer de schijf met `fdisk`. Als de schijf grootte 2 tebibytes (TiB) of groter is, moet u GPT-partitionering gebruiken `parted` om GPT-partitionering uit te voeren. Als de grootte van de schijf onder 2TiB is, kunt u MBR-of GPT-partitionering gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld `fdisk` wordt het proces op */dev/SDC*gestart:
+Partitioneer de schijf met `fdisk`. Als de schijf grootte 2 tebibytes (TiB) of groter is, moet u GPT-partitionering gebruiken `parted` om GPT-partitionering uit te voeren. Als de grootte van de schijf onder 2TiB is, kunt u MBR-of GPT-partitionering gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld wordt het `fdisk` proces op */dev/SDC*gestart:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen `p` we ook voor een primaire partitie en accepteren we de rest van de standaard waarden. De uitvoer ziet er ongeveer als volgt uit:
+Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en accepteren we de rest van de standaard waarden. De uitvoer ziet er ongeveer als volgt uit:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -122,7 +122,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Druk de partitie tabel af door `p` te typen en `w` vervolgens te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
+Druk de partitie tabel af door te typen `p` en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
 
 ```bash
 Command (m for help): p
@@ -179,12 +179,13 @@ Writing superblocks and filesystem accounting information: done
 Het hulp programma fdisk heeft interactieve invoer nodig en is daarom niet ideaal voor gebruik in Automation-scripts. [Het hulp](https://www.gnu.org/software/parted/) programma met functies kan echter worden gescripteerd en is daarom beter in automatiserings scenario's. Het hulp programma parted kan worden gebruikt voor het partitioneren en Format teren van een gegevens schijf. Voor de onderstaande procedure gebruiken we een nieuwe/dev/SDC voor de gegevens schijf en Format teer deze met het bestands systeem [xfs](https://xfs.wiki.kernel.org/) .
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 Zoals hierboven weer gegeven, gebruiken we het [partprobe](https://linux.die.net/man/8/partprobe) -hulp programma om ervoor te zorgen dat de kernel onmiddellijk op de hoogte is van de nieuwe partitie en het bestands systeem. Het gebruik van partprobe kan ertoe leiden dat de blkid-of lslbk-opdrachten de UUID voor het nieuwe bestands systeem niet direct retour neren.
 
 ### <a name="mount-the-disk"></a>De schijf koppelen
-Maak een map om het bestands systeem met `mkdir`te koppelen. In het volgende voor beeld maakt u een map op */datadrive*:
+Maak een map om het bestands systeem met te koppelen `mkdir` . In het volgende voor beeld maakt u een map op */datadrive*:
 
 ```bash
 sudo mkdir /datadrive

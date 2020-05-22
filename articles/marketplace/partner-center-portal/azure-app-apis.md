@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744896"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770054"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Partner Center-API voor het indienen van Azure-apps in het partner centrum
 
@@ -63,7 +63,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-Voor de *tenant_id* waarde in de `POST URI` para meters en *client_id* en *client_secret* geeft u de Tenant-id, de client-id en de sleutel voor uw toepassing op die u in het vorige gedeelte van partner centrum hebt opgehaald. Voor de para meter *resource* moet u opgeven `https://api.partner.microsoft.com`.
+Voor de *tenant_id* waarde in de `POST URI` para meters en *client_id* en *client_secret* geeft u de Tenant-id, de client-id en de sleutel voor uw toepassing op die u in het vorige gedeelte van partner centrum hebt opgehaald. Voor de para meter *resource* moet u opgeven `https://api.partner.microsoft.com` .
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>Stap 3: de Microsoft Store inzendings-API gebruiken
 
@@ -74,4 +74,4 @@ https://apidocs.microsoft.com/services/partneringestion/
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het maken van een [technische Asset](create-azure-container-technical-assets.md) voor het maken van een Azure-VM
-* Leer hoe u een [Azure-container aanbod](create-azure-container-offer.md) maakt
+* Meer informatie over het maken van een [Azure-container aanbieding](create-azure-container-offer.md)

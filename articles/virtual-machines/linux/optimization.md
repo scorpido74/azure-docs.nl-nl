@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf674170ff49f55fc7997a87d07f9069306fc0cd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757098"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774155"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux-VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -29,9 +29,9 @@ Op basis van de VM-grootte kunt u Maxi maal 16 extra schijven op a-Series, 32-sc
 
 Als u de hoogste IOps wilt benutten op Premium Storage schijven waarop de cache-instellingen zijn ingesteld op **alleen-lezen** of op **geen**, moet u **belemmeringen** uitschakelen bij het koppelen van het bestands systeem in Linux. U hebt geen obstakels nodig omdat de schrijf bewerkingen naar Premium Storage schijven duurzaam zijn voor deze cache-instellingen.
 
-* Als u **reiserFS**gebruikt, schakelt u belemmeringen uit met behulp van de optie `barrier=none` voor het `barrier=flush`koppelen (voor het inschakelen van belemmeringen)
-* Als u **ext3/ext4**gebruikt, schakelt u belemmeringen uit met de `barrier=0` optie voor het koppelen (voor `barrier=1`het inschakelen van belemmeringen)
-* Als u **xfs**gebruikt, schakelt u belemmeringen uit met de `nobarrier` optie voor het koppelen (voor het inschakelen `barrier`van barrières gebruikt u de optie)
+* Als u **reiserFS**gebruikt, schakelt u belemmeringen uit met behulp van de optie voor het koppelen `barrier=none` (voor het inschakelen van belemmeringen `barrier=flush` )
+* Als u **ext3/ext4**gebruikt, schakelt u belemmeringen uit met de optie voor het koppelen `barrier=0` (voor het inschakelen van belemmeringen `barrier=1` )
+* Als u **xfs**gebruikt, schakelt u belemmeringen uit met de optie voor het koppelen `nobarrier` (voor het inschakelen van barrières gebruikt u de optie `barrier` )
 
 ## <a name="unmanaged-storage-account-considerations"></a>Overwegingen voor onbeheerd opslag account
 De standaard actie bij het maken van een virtuele machine met Azure CLI is het gebruik van Azure Managed Disks.  Deze schijven worden verwerkt door het Azure-platform en vereisen geen voor bereiding of locatie om ze op te slaan.  Voor niet-beheerde schijven is een opslag account vereist en er zijn een aantal extra prestatie overwegingen.  Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](../windows/managed-disks-overview.md).  De volgende sectie geeft een overzicht van de prestatie overwegingen alleen wanneer u niet-beheerde schijven gebruikt.  De standaard en Aanbevolen opslag oplossing is om beheerde schijven te gebruiken.
@@ -51,7 +51,7 @@ In Ubuntu-Cloud installatie kopieën moet u Cloud-init gebruiken om de swap-part
 
 Voor installatie kopieën die geen ondersteuning voor Cloud-init hebben, hebben VM-installatie kopieën die zijn geïmplementeerd vanuit Azure Marketplace een Linux-VM-agent geïntegreerd met het besturings systeem. Met deze agent kan de virtuele machine communiceren met verschillende Azure-Services. Als u een standaard installatie kopie van Azure Marketplace hebt geïmplementeerd, moet u het volgende doen om de instellingen voor Linux-wissel bestand correct te configureren:
 
-Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren `ResourceDisk.EnableSwap` , zijn en`ResourceDisk.SwapSizeMB` 
+Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren, zijn `ResourceDisk.EnableSwap` en`ResourceDisk.SwapSizeMB` 
 
 Zorg ervoor dat de para meters de volgende instellingen hebben om een geschikt schijf en een gekoppeld wissel bestand in te scha kelen:
 
@@ -115,6 +115,8 @@ Voor de Red Hat-distributie familie hebt u alleen de volgende opdracht nodig:
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Ubuntu 18,04 met de door Azure afgestemde kernel maakt gebruik van I/O-planners met meerdere wacht rijen. In dat scenario `none` is de juiste selectie in plaats van `noop` . Zie [Ubuntu I/O-planners](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers)voor meer informatie.
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Software-RAID gebruiken om hogere I/ops te krijgen
 Als uw werk belasting meer IOps vereist dan één schijf kan bieden, moet u een software matige RAID-configuratie van meerdere schijven gebruiken. Omdat Azure schijf tolerantie al uitvoert op de lokale Fabric-laag, bereikt u het hoogste prestatie niveau van een RAID-0-Stripe-configuratie.  U kunt schijven inrichten en maken in de Azure-omgeving en deze koppelen aan uw virtuele Linux-machine voordat u partitioneert, de schijven formatteert en koppelt.  Meer informatie over het configureren van een software-RAID-installatie op uw virtuele Linux-machine in azure vindt u in het document **[Software RAID in Linux configureren](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .

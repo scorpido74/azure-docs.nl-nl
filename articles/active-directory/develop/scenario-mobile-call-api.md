@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882689"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771737"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Een web-API aanroepen vanuit een mobiele app
 
 Nadat uw app een gebruiker heeft ondertekend en tokens ontvangt, wordt er informatie weer gegeven over de gebruiker, de omgeving van de gebruiker en de uitgegeven tokens. Uw app kan deze waarden gebruiken om een web-API aan te roepen of een welkomst bericht voor de gebruiker weer te geven.
 
-In dit artikel kijken we eerst naar het MSAL-resultaat. Vervolgens gaan we kijken hoe u een toegangs token van `AuthenticationResult` gebruikt of `result` een beveiligde web-API aanroept.
+In dit artikel kijken we eerst naar het MSAL-resultaat. Vervolgens gaan we kijken hoe u een toegangs token van gebruikt `AuthenticationResult` of `result` een beveiligde web-API aanroept.
 
 ## <a name="msal-result"></a>MSAL resultaat
 MSAL biedt de volgende waarden: 
@@ -87,7 +87,7 @@ Nadat u het toegangs token hebt, kunt u een web-API aanroepen. In uw app wordt h
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens `MSALResult` retour neren een object. `MSALResult`beschrijft een `accessToken` eigenschap. U kunt gebruiken `accessToken` om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
+De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult`beschrijft een `accessToken` eigenschap. U kunt gebruiken `accessToken` om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -125,7 +125,7 @@ Als u dezelfde API meerdere keren moet aanroepen, of als u meerdere Api's moet a
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen met behulp van incrementele toestemming en voorwaardelijke toegang
 
-Als u meerdere Api's voor dezelfde gebruiker moet aanroepen, kunt u, nadat u een token voor de gebruiker hebt verkregen, voor komen dat de gebruiker herhaaldelijk om referenties wordt `AcquireTokenSilent` gevraagd door u vervolgens aan te roepen om een token op te halen:
+Als u meerdere Api's voor dezelfde gebruiker moet aanroepen, kunt u, nadat u een token voor de gebruiker hebt verkregen, voor komen dat de gebruiker herhaaldelijk om referenties wordt gevraagd door u vervolgens `AcquireTokenSilent` aan te roepen om een token op te halen:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 Interactie is vereist wanneer:
 
 - De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden gestemd op meer bereiken. In dit geval gebruikt u incrementele toestemming.
-- Voor de eerste API is geen meervoudige verificatie vereist, maar de volgende API doet dat wel.
+- De eerste API vereist geen [multi-factor Authentication](../authentication/concept-mfa-howitworks.md), maar de volgende API doet dat wel.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

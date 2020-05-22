@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 05/16/2020
+ms.date: 05/21/2020
 ms.topic: reference
-ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655863"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770581"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -217,11 +217,10 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. hardwaresecuritymodules/dedicatedhsms
 - micro soft. hdinsight/clusters
 - micro soft. healthcareapis/Services
+- micro soft. healthcareapis/Services/privateendpointconnections
 - micro soft. hybridcompute/machines
 - micro soft. hybridcompute/machines/uitbrei dingen
 - micro soft. hybriddata/datamanagers
-- micro soft. Hydra/-onderdelen
-- micro soft. Hydra/networkscopes
 - micro soft. importexport/Jobs
 - micro soft. industrydatalifecycle/derivedmodels
 - micro soft. Insights/actiongroups
@@ -361,9 +360,6 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. portalsdk/rootresources
 - micro soft. powerbi/workspacecollections
 - micro soft. powerbidedicated/capaciteiten
-- micro soft. projectarcadia/werk ruimten
-- micro soft. projectarcadia/werk ruimten/sparkcomputes
-- micro soft. projectarcadia/werk ruimten/sqlcomputes
 - micro soft. projectbabylon/accounts
 - micro soft. Quantum/werk ruimten
 - micro soft. Recovery Services/kluizen
@@ -440,8 +436,6 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. vmwarecloudsimple/informatie
 - micro soft. vmwareonazure/privateclouds
 - micro soft. vmwarevirtustream/privateclouds
-- micro soft. vnfmanager/apparaten
-- micro soft. vnfmanager/vnfs
 - micro soft. vsonline/accounts
 - micro soft. vsonline/plannen
 - micro soft. Web/apimanagementaccounts/api's

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68726730"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774048"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-faciliteiten,-locaties en fysieke beveiliging
 In dit artikel wordt beschreven wat micro soft doet bij het beveiligen van de Azure-infra structuur.
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven wat micro soft doet bij het beveiligen van de Az
 ## <a name="datacenter-infrastructure"></a>Data Center-infra structuur
 Azure bestaat uit een [wereld wijd gedistribueerde Data Center-infra structuur](https://azure.microsoft.com/global-infrastructure/), die ondersteuning biedt voor duizenden onlineservices en meer dan 100 uiterst veilige faciliteiten over de hele wereld.
 
-De infra structuur is ontworpen om toepassingen dichter bij gebruikers over de hele wereld te brengen, gegevens locatie te behouden en uitgebreide nalevings-en tolerantie opties voor klanten aan te bieden. Azure heeft 52 regio's over de hele wereld en is beschikbaar in 140 landen/regio's.
+De infra structuur is ontworpen om toepassingen dichter bij gebruikers over de hele wereld te brengen, gegevens locatie te behouden en uitgebreide nalevings-en tolerantie opties voor klanten aan te bieden. Azure heeft 58 regio's over de hele wereld en is beschikbaar in 140 landen/regio's.
 
 Een regio is een set data centers die zijn verbonden via een enorm en flexibel netwerk. Het netwerk bevat standaard distributie, taak verdeling, redundantie en versleuteling. Met meer wereld wijde regio's dan elke andere Cloud provider biedt Azure u de flexibiliteit om toepassingen te implementeren waar u ze nodig hebt.
 

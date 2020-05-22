@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639680"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771329"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Registratie van gecombineerde beveiligings gegevens inschakelen in Azure Active Directory
 
@@ -31,13 +31,13 @@ Voordat u de nieuwe ervaring inschakelt, raadpleegt u het artikel [registratie v
 Voer de volgende stappen uit om gecombineerde registratie in te scha kelen:
 
 1. Meld u aan bij de Azure Portal als gebruikers beheerder of globale beheerder.
-2. Ga naar **Azure Active Directory** > **gebruikers instellingen** > **instellingen voor de preview-versie van gebruikers onderdelen beheren**.
-3. Onder **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens**, kiezen om in te scha kelen voor een **geselecteerde** groep gebruikers of voor **alle** gebruikers.
+2. Ga naar **Azure Active Directory**  >  **gebruikers instellingen**  >  **instellingen voor de preview-versie van gebruikers onderdelen beheren**.
+3. Onder **gebruikers kunnen de functie voor registratie van gecombineerde beveiligings gegevens worden gebruikt**. Kies deze optie om in te scha kelen voor een **geselecteerde** groep gebruikers of voor **alle** gebruikers.
 
    ![De preview-ervaring voor gecombineerde beveiligings info voor alle gebruikers inschakelen](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!NOTE]
-> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoon nummer of mobiele app via de nieuwe ervaring registreren of bevestigen, deze gebruiken voor Multi-Factor Authentication en SSPR als deze methoden zijn ingeschakeld in het beleid voor Multi-Factor Authentication en SSPR. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die naar de vorige registratie pagina `https://aka.ms/ssprsetup` van de SSPR gaan, multi-factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot de pagina.
+> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoon nummer of mobiele app via de nieuwe ervaring registreren of bevestigen, deze gebruiken voor Multi-Factor Authentication en SSPR als deze methoden zijn ingeschakeld in het beleid voor Multi-Factor Authentication en SSPR. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die naar de vorige registratie pagina van de SSPR gaan, `https://aka.ms/ssprsetup` multi-factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot de pagina.
 
 Als u de lijst site toewijzing met zone hebt geconfigureerd in Internet Explorer, moeten de volgende sites zich in dezelfde zone bekomen:
 
@@ -55,7 +55,7 @@ Zie het artikel [Wat is de locatie voorwaarde in azure Active Directory voorwaar
 
 Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich willen registreren met de gecombineerde registratie-ervaring en blokkeert de toegang tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
 
-1. Blader in het **Azure Portal**naar **Azure Active Directory** > **voorwaardelijke toegang** voor**beveiliging** > 
+1. Blader in het **Azure Portal**naar **Azure Active Directory**  >  **Security**  >  **voorwaardelijke toegang** voor beveiliging
 1. Selecteer **+ Nieuw beleid**
 1. Voer een naam in voor dit beleid, zoals de *registratie van gecombineerde beveiligings gegevens op vertrouwde netwerken*.
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**. Kies de gebruikers en groepen waarop u dit beleid wilt Toep assen en selecteer vervolgens **gereed**.
@@ -67,12 +67,12 @@ Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich 
 
     ![Een beleid voor voorwaardelijke toegang maken om de registratie van beveiligings gegevens te beheren](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. Configureer onder **voor waarden** > **locaties**de volgende opties:
+1. Configureer onder **voor waarden**  >  **locaties**de volgende opties:
    1. **Ja** configureren
    1. **Een wille keurige locatie** toevoegen
    1. **Alle vertrouwde locaties** uitsluiten
 1. Selecteer **gereed** in het venster *locaties* en selecteer vervolgens **gereed** in het venster *voor waarden* .
-1. Onder **toegangs beheer** > **toekennen**kiest u **toegang blok keren**en **selecteert** u vervolgens
+1. Onder **toegangs beheer**  >  **toekennen**kiest u **toegang blok keren**en **selecteert** u vervolgens
 1. Beleid **instellen op aan** **inschakelen**
 1. Selecteer **maken** om het beleid te volt ooien
 
