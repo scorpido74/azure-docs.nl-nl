@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711411"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774391"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Ondersteunings beleid voor Azure Red Hat open Shift
 
@@ -29,6 +29,8 @@ Bepaalde configuraties voor Azure Red Hat open Shift 4-clusters kunnen van invlo
 * Verwijder of wijzig de logboek registratie van Azure Red Hat open Shift-service (mdsd peul) niet.
 * Verwijder of wijzig het arosvc.azurecr.io-cluster pull Secret niet.
 * Alle virtuele cluster machines moeten directe uitgaande internet toegang hebben, ten minste aan de eind punten Azure Resource Manager (ARM) en service logging (Genève).  Er wordt geen vorm van HTTPS-proxy ondersteund.
+* Wijzig de DNS-configuratie van het virtuele netwerk van het cluster niet. De standaard Azure DNS resolver moet worden gebruikt.
+* Overschrijf een van de MachineConfig-objecten van het cluster (bijvoorbeeld de kubelet-configuratie) op geen enkele manier.
 * De Azure Red Hat open Shift-service opent uw cluster via een privé koppelings service.  Geen toegang tot de service verwijderen of wijzigen.
 * Niet-RHCOS Compute-knoop punten worden niet ondersteund. U kunt bijvoorbeeld geen RHEL Compute-knoop punt gebruiken.
 
@@ -66,3 +68,11 @@ Azure Red Hat open Shift 4 ondersteunt worker-instanties voor werk knooppunten o
 |Fsv2|Standard_F8s_v2|8|16|
 |Fsv2|Standard_F16s_v2|16|32|
 |Fsv2|Standard_F32s_v2|32|64|
+
+### <a name="master-nodes"></a>Hoofd knooppunten
+
+|Reeks|Grootte|vCPU|Geheugen: GiB|
+|-|-|-|-|
+|Dsv3|Standard_D8s_v3|8|32|
+|Dsv3|Standard_D16s_v3|16|64|
+|Dsv3|Standard_D32s_v3|32|128|

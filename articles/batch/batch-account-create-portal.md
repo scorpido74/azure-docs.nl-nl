@@ -4,18 +4,18 @@ description: Informatie over het maken van een Azure Batch-account in Azure Port
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01c62270fc0195c430150a534df2a141808ffa6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726924"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778592"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Een Batch-account maken met behulp van Azure Portal
 
 Lees hoe u een Azure Batch-account maakt in de [Azure Portal][azure_portal] en kies de accounteigenschappen die aansluiten op uw berekeningsscenario. Lees waar u belangrijke accounteigenschappen, zoals toegangssleutels en account-URL's, kunt vinden.
 
-Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie over Batch-accounts en scenario's.
+Zie [batch-service werk stroom en resources](batch-service-workflow-features.md)voor achtergrond informatie over batch-accounts en-scenario's.
 
 ## <a name="create-a-batch-account"></a>Batch-account maken
 
@@ -39,7 +39,7 @@ Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie 
 
     d. **Locatie**: de Azure-regio om het Batch-account in te maken. Alleen de regio's die door uw abonnement en resourcegroep worden ondersteund, worden als opties weergegeven.
 
-    e. **Opslag account**: een optioneel Azure Storage account dat u aan uw batch-account koppelt. Een v2-opslagaccount voor algemeen gebruik wordt aanbevolen voor de beste prestaties. Zie het [Overzicht van Batch-functies](batch-api-basics.md#azure-storage-account) voor alle opslagaccountopties in Batch. Selecteer in de portal een bestaand opslagaccount of maak een nieuw opslagaccount.
+    e. **Opslag account**: een optioneel Azure Storage account dat u aan uw batch-account koppelt. Een v2-opslagaccount voor algemeen gebruik wordt aanbevolen voor de beste prestaties. Zie het [Overzicht van Batch-functies](accounts.md#azure-storage-accounts) voor alle opslagaccountopties in Batch. Selecteer in de portal een bestaand opslagaccount of maak een nieuw opslagaccount.
 
       ![Create a storage account][storage_account]
 
@@ -136,7 +136,7 @@ Naast het gebruik van Azure Portal kunt u met de volgende hulpprogramma's Batch-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Overzicht van Batch-functies](batch-api-basics.md) voor meer informatie over de concepten en functies van de Batch-service. In het artikel worden de primaire Batch-resources zoals pools, rekenknooppunten, jobs en taken besproken en vindt u een overzicht van de servicefuncties voor grootschalige rekenworkloads.
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 * Lees de basisbeginselen van het ontwikkelen van een voor Batch geschikte toepassing met behulp van de [clientbibliotheek Batch .NET](quick-run-dotnet.md) of [Python](quick-run-python.md). Deze snelstarts leiden u stapsgewijs door een voorbeeldtoepassing die gebruikmaakt van de Batch-service voor het uitvoeren van een workload op meerdere rekenknooppunten. U vindt er ook informatie over het gebruik van Azure Storage voor het faseren en ophalen van een workloadbestand.
 
 [azure_portal]: https://portal.azure.com

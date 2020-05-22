@@ -4,12 +4,12 @@ description: Een korte inleiding in de Azure PowerShell-cmdlets die u kunt gebru
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726550"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779611"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-resources beheren met PowerShell-cmdlets
 
@@ -114,7 +114,7 @@ Wanneer u veel van deze cmdlets gebruikt, moet u niet alleen een BatchContext-ob
 
 ### <a name="create-a-batch-pool"></a>Batch-pool maken
 
-Wanneer u een Batch-pool maakt of bijwerkt, selecteert u de cloudserviceconfiguratie of de virtuele-machineconfiguratie voor het besturingssysteem op de rekenknooppunten (zie [Overzicht van Batch-functies](batch-api-basics.md#pool)). Als u de cloudserviceconfiguratie opgeeft, worden uw rekenknooppunten gerepliceerd met één van de [Azure-gastbesturingssysteemversies](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Als u de VM-configuratie opgeeft, kunt u één van de ondersteunde Linux- of Windows-VM-installatiekopieën opgeven die worden vermeld in de [Azure Virtual Machines Marketplace][vm_marketplace], of u geeft een aangepaste installatiekopie op die u hebt gemaakt.
+Wanneer u een batch-pool maakt of bijwerkt, selecteert u de Cloud Services-configuratie of de virtuele-machine configuratie voor het besturings systeem op de reken knooppunten (Zie [knoop punten en groepen](nodes-and-pools.md#configurations)). Als u de cloudserviceconfiguratie opgeeft, worden uw rekenknooppunten gerepliceerd met één van de [Azure-gastbesturingssysteemversies](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Als u de VM-configuratie opgeeft, kunt u één van de ondersteunde Linux- of Windows-VM-installatiekopieën opgeven die worden vermeld in de [Azure Virtual Machines Marketplace][vm_marketplace], of u geeft een aangepaste installatiekopie op die u hebt gemaakt.
 
 Bij het uitvoeren van **New-AzBatchPool** geeft u de instellingen van het besturingssysteem door in een PSCloudServiceConfiguration- of PSVirtualMachineConfiguration-object. Met het volgende codefragment wordt bijvoorbeeld een Batch-groep gemaakt met rekenknooppunten met de grootte Standard_a1 in de configuratie van de virtuele machine, gerepliceerd met Ubuntu Server 18.04-LTS. Hier geeft de parameter **VirtualMachineConfiguration** de variabele *$configuration* op als het PSVirtualMachineConfiguration-object. Met de parameter **BatchContext** wordt een eerder gedefinieerde variabele *$context* opgegeven als het BatchAccountContext-object.
 

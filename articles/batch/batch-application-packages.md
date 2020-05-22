@@ -4,12 +4,12 @@ description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoud
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726873"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780315"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -68,7 +68,7 @@ Met toepassings pakketten hoeft de begin taak van de pool geen lange lijst op te
 U kunt de [Azure Portal][portal] -of de batch beheer-api's gebruiken om de toepassings pakketten in uw batch-account te beheren. In de volgende secties laten we eerst zien hoe u een opslag account koppelt en hoe u toepassingen en pakketten toevoegt en ze beheert met de portal.
 
 ### <a name="link-a-storage-account"></a>Een opslag account koppelen
-Als u toepassings pakketten wilt gebruiken, moet u eerst een [Azure Storage-account](batch-api-basics.md#azure-storage-account) koppelen aan uw batch-account. Als u nog geen opslag account hebt geconfigureerd, wordt in de Azure Portal een waarschuwing weer gegeven wanneer u voor het eerst op **toepassingen** in uw batch-account klikt.
+Als u toepassings pakketten wilt gebruiken, moet u eerst een [Azure Storage-account](accounts.md#azure-storage-accounts) koppelen aan uw batch-account. Als u nog geen opslag account hebt geconfigureerd, wordt in de Azure Portal een waarschuwing weer gegeven wanneer u voor het eerst op **toepassingen** in uw batch-account klikt.
 
 
 
@@ -170,7 +170,7 @@ Als u een bestaand toepassings pakket wilt bijwerken of verwijderen, opent u de 
 
 ![Een pakket bijwerken of verwijderen in Azure Portal][7]
 
-**Bijwerk**
+**Bijwerken**
 
 Wanneer u op **bijwerken**klikt, wordt de Windows **Update-pakket** weer gegeven. Dit venster is vergelijkbaar met het venster **Nieuw toepassings pakket** , maar alleen het selectie veld pakket is ingeschakeld, zodat u een nieuw zip-bestand kunt opgeven dat u wilt uploaden.
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Zie [omgevings instellingen voor taken](batch-api-basics.md#environment-settings-for-tasks) in het [overzicht van batch-functies](batch-api-basics.md) voor meer informatie over de instellingen van de omgeving voor het berekenen van knoop punten.
-> 
-> 
+> Zie [omgevings instellingen voor taken](jobs-and-tasks.md#environment-settings-for-tasks)voor meer informatie over de instellingen van de omgeving voor het berekenen van knoop punten. 
 
 ## <a name="update-a-pools-application-packages"></a>De toepassingspakketten van een groep bijwerken
 Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u een nieuw pakket voor de groep opgeven. Als u een nieuwe pakket verwijzing voor een groep opgeeft, is het volgende van toepassing:

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675875"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779781"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
 
@@ -134,10 +134,10 @@ Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het
 
 ### <a name="event-scope"></a>Gebeurtenis bereik     
 Geplande gebeurtenissen worden verzonden naar:
- - Zelfstandige Virtual Machines
- - Alle Virtual Machines in een Cloud service      
- - Alle Virtual Machines in een Beschikbaarheidsset      
- - Alle Virtual Machines in een plaatsings groep voor schaal sets (inclusief batch)        
+ - Zelfstandige Virtual Machines.
+ - Alle Virtual Machines in een Cloud service.     
+ - Alle Virtual Machines in een Beschikbaarheidsset.     
+ - Alle Virtual Machines in een plaatsings groep voor schaal sets (inclusief batch).       
 
 Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke vm's worden beïnvloed. 
 

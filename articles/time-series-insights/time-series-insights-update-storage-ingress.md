@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189178"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779167"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
@@ -58,7 +58,7 @@ De ondersteunde gegevens typen zijn:
 
 | Gegevenstype | Beschrijving |
 |---|---|
-| **booleaans** | Een gegevens type met een van de twee `true` statussen `false`: of. |
+| **booleaans** | Een gegevens type met een van de twee statussen: `true` of `false` . |
 | **dateTime** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. |
 | **double** | Een Double-Precision 64-bits [IEEE 754](https://ieeexplore.ieee.org/document/8766229) drijvende komma. |
 | **tekenreeks** | Tekst waarden, bestaande uit Unicode-tekens.          |
@@ -78,6 +78,17 @@ U wordt aangeraden de volgende aanbevolen procedures te gebruiken:
 * [Plan uw schaal behoeften](time-series-insights-update-plan.md) door uw verwachte opname frequentie te berekenen en te controleren of deze binnen de hieronder vermelde ondersteunde frequentie valt.
 
 * Meer informatie over het optimaliseren en vorm geven van uw JSON-gegevens, evenals de huidige beperkingen in de preview-versie, door [te lezen hoe u JSON voor ingress en query's kunt bepalen](./time-series-insights-update-how-to-shape-events.md).
+
+* Gebruik Streaming-opname alleen voor bijna realtime-en recente gegevens, en het streamen van historische gegevens wordt niet ondersteund.
+
+#### <a name="historical-data-ingestion"></a>Historische gegevens opname
+
+Het gebruik van de streaming-pijp lijn voor het importeren van historische gegevens wordt momenteel niet ondersteund in Azure Time Series Insights preview. Als u gegevens uit het verleden in uw omgeving wilt importeren, volgt u de onderstaande richt lijnen:
+
+* Streamt geen Live en historische gegevens parallel. Het opnemen van gegevens uit de volg orde resulteert in gedegradeerde query prestaties.
+* Neem historische gegevens op in een tijdgebonden manier om de beste prestaties te leveren.
+* Blijf binnen de limieten voor de doorvoer snelheid van de opname hieronder.
+* Schakel warme Store uit als de gegevens ouder zijn dan de Bewaar periode voor uw warme winkel.
 
 ### <a name="ingress-scale-and-preview-limitations"></a>Inkomend schalen en preview-beperkingen
 
@@ -99,15 +110,15 @@ Standaard kan met Time Series Insights preview inkomende gegevens worden opgenom
 > * Omgevings ondersteuning voor het opnemen van snelheden tot 16 MBps kan worden geboden door een aanvraag.
 > * Neem contact met ons op als u een hogere door voer nodig hebt door een ondersteunings ticket in te dienen via Azure Portal.
  
-* **Voorbeeld 1:**
+* **Voor beeld 1:**
 
-    Contoso-verzen ding heeft 100.000 apparaten die drie keer per minuut een gebeurtenis verzenden. De grootte van een gebeurtenis is 200 bytes. Ze gebruiken een IOT-hub met vier partities als de bron van de Time Series Insights gebeurtenis.
+    Contoso-verzen ding heeft 100.000 apparaten die drie keer per minuut een gebeurtenis verzenden. De grootte van een gebeurtenis is 200 bytes. Ze gebruiken een IoT Hub met vier partities als de bron van de Time Series Insights gebeurtenis.
 
     * De opname frequentie voor de Time Series Insights omgeving zou zijn: **100.000 apparaten * 200 bytes/gebeurtenis * (3/60 gebeurtenis/sec) = 1 Mbps**.
     * De opname frequentie per partitie zou 0,25 MBps zijn.
     * De opname snelheid van Contoso-verzen ding valt binnen de limiet voor de schaal van de preview-versie.
 
-* **Voorbeeld 2:**
+* **Voor beeld 2:**
 
     Contoso vloot Analytics heeft 60.000 apparaten die elke seconde een gebeurtenis verzenden. Ze gebruiken een event hub met een aantal partities van 4 als de bron van de Time Series Insights gebeurtenis. De grootte van een gebeurtenis is 200 bytes.
 
@@ -201,7 +212,7 @@ Om de query prestaties en de beschik baarheid van gegevens te garanderen, moet u
 
 Behalve dat u toegang hebt tot uw gegevens vanuit de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md) en de [Time Series-query](./time-series-insights-update-tsq.md), kunt u ook rechtstreeks toegang krijgen tot uw gegevens vanuit de Parquet-bestanden die zijn opgeslagen in het koude-archief. U kunt bijvoorbeeld gegevens in een Jupyter-notebook lezen, transformeren en opschonen en deze vervolgens gebruiken om uw Azure Machine Learning model te trainen in dezelfde Spark-werk stroom.
 
-Als u gegevens rechtstreeks vanuit uw Azure Storage-account wilt openen, moet u lees toegang hebben tot het account dat wordt gebruikt voor het opslaan van uw Time Series Insights preview-gegevens. U kunt vervolgens geselecteerde gegevens lezen op basis van de aanmaak tijd van het Parquet-bestand `PT=Time` dat zich bevindt in de map die hieronder wordt beschreven in de sectie [Parquet-bestands indeling](#parquet-file-format-and-folder-structure) .  Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie over het inschakelen van lees toegang tot uw opslag account.
+Als u gegevens rechtstreeks vanuit uw Azure Storage-account wilt openen, moet u lees toegang hebben tot het account dat wordt gebruikt voor het opslaan van uw Time Series Insights preview-gegevens. U kunt vervolgens geselecteerde gegevens lezen op basis van de aanmaak tijd van het Parquet-bestand dat zich bevindt in de `PT=Time` map die hieronder wordt beschreven in de sectie [Parquet-bestands indeling](#parquet-file-format-and-folder-structure) .  Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie over het inschakelen van lees toegang tot uw opslag account.
 
 #### <a name="data-deletion"></a>Gegevens verwijderen
 
@@ -215,7 +226,7 @@ Lees de [Parquet-documentatie](https://parquet.apache.org/documentation/latest/)
 
 In Time Series Insights preview worden kopieën van uw gegevens als volgt opgeslagen:
 
-* De eerste, eerste kopie wordt gepartitioneerd op basis van de opname tijd en slaat ruwweg gegevens op in volg orde van aankomst. Deze gegevens bevinden zich `PT=Time` in de map:
+* De eerste, eerste kopie wordt gepartitioneerd op basis van de opname tijd en slaat ruwweg gegevens op in volg orde van aankomst. Deze gegevens bevinden zich in de `PT=Time` map:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
@@ -223,20 +234,20 @@ In Time Series Insights preview worden kopieën van uw gegevens als volgt opgesl
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-In beide gevallen komt de eigenschap time van het Parquet-bestand overeen met de aanmaak tijd van de blob. De gegevens in `PT=Time` de map blijven behouden zonder wijzigingen zodra ze naar het bestand zijn geschreven. Gegevens in de `PT=TsId` map worden gedurende een bepaalde periode geoptimaliseerd en zijn niet statisch.
+In beide gevallen komt de eigenschap time van het Parquet-bestand overeen met de aanmaak tijd van de blob. De gegevens in de `PT=Time` map blijven behouden zonder wijzigingen zodra ze naar het bestand zijn geschreven. Gegevens in de `PT=TsId` map worden gedurende een bepaalde periode geoptimaliseerd en zijn niet statisch.
 
 > [!NOTE]
 >
 > * `<YYYY>`wordt toegewezen aan een jaar representatie van vier cijfers.
 > * `<MM>`wordt toegewezen aan een maand weergave met twee cijfers.
-> * `<YYYYMMDDHHMMSSfff>`is gekoppeld aan een tijds tempel weergave met vier cijfers per jaar (`YYYY`), een maand van twee cijfers`MM`(), een dag van twee`DD`cijfers (), een uur van`HH`twee cijfers (), een minuut`MM`van twee cijfers (), een`SS`tweede cijfer seconde () en een milliseconde`fff`van drie cijfers.
+> * `<YYYYMMDDHHMMSSfff>`is gekoppeld aan een tijds tempel weergave met vier cijfers per jaar ( `YYYY` ), een maand van twee cijfers (), een dag van twee cijfers (), een uur van twee cijfers (), een minuut van twee `MM` `DD` `HH` cijfers ( `MM` ), een tweede cijfer seconde ( `SS` ) en een milliseconde van drie cijfers `fff` .
 
 Time Series Insights preview-gebeurtenissen worden als volgt toegewezen aan de Parquet-bestands inhoud:
 
 * Elke gebeurtenis wordt toegewezen aan één rij.
 * Elke rij bevat de **Time Stamp** -kolom met een tijds tempel van de gebeurtenis. De eigenschap time stamp is nooit null. De standaard instelling is dat de gebeurtenis in de **wachtrij** wordt geplaatst als de eigenschap time stamp niet is opgegeven in de bron van de gebeurtenis. De opgeslagen tijds tempel is altijd in UTC.
-* Elke rij bevat de tijdreeks-ID (TSID) kolom (men) zoals deze is gedefinieerd wanneer de Time Series Insights omgeving wordt gemaakt. De TSID-eigenschaps naam `_string` bevat het achtervoegsel.
-* Alle andere eigenschappen die als telemetriegegevens worden verzonden, worden toegewezen aan kolom namen die eindigen `_string` op (String) `_bool` , (Booleaans) `_datetime` , (datetime) of `_double` (double), afhankelijk van het eigenschaps type.
+* Elke rij bevat de tijdreeks-ID (TSID) kolom (men) zoals deze is gedefinieerd wanneer de Time Series Insights omgeving wordt gemaakt. De TSID-eigenschaps naam bevat het `_string` achtervoegsel.
+* Alle andere eigenschappen die als telemetriegegevens worden verzonden, worden toegewezen aan kolom namen die eindigen `_string` op (String), `_bool` (Booleaans), `_datetime` (datetime) of `_double` (double), afhankelijk van het eigenschaps type.
 * Dit toewijzings schema is van toepassing op de eerste versie van de bestands indeling, waarnaar wordt verwezen als **V = 1** en wordt opgeslagen in de map base met dezelfde naam. Als deze functie zich ontwikkelt, kan dit toewijzings schema worden gewijzigd en wordt de referentie naam verhoogd.
 
 ## <a name="next-steps"></a>Volgende stappen

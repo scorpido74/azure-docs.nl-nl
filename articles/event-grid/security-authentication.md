@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588255"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774315"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Toegang tot Azure Event Grid-bronnen verifiëren
 In dit artikel vindt u informatie over de volgende scenario's:  
 
 - Verifieer clients die gebeurtenissen publiceren naar Azure Event Grid-onderwerpen met behulp van Shared Access Signature (SAS) of sleutel. 
-- Beveilig uw webhook-eind punt met Azure Active Directory (Azure AD) om Event Grid te verifiëren voor het **afleveren** van gebeurtenissen aan het eind punt.
+- Beveilig het webhook-eind punt dat wordt gebruikt voor het ontvangen van gebeurtenissen van Event Grid met behulp van Azure Active Directory (Azure AD) of een gedeeld geheim.
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>Publicerend clients verifiëren met SAS of sleutel
 Aangepaste onderwerpen gebruiken een Shared Access Signature (SAS) of sleutel verificatie. We raden SAS aan, maar sleutel verificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-Publishers.
@@ -83,18 +83,18 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
-Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest versleuteld is. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
+Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest wordt versleuteld. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Gebeurtenis levering verifiëren voor webhook-eind punten
 In de volgende secties wordt beschreven hoe u de levering van gebeurtenissen verifieert aan webhook-eind punten. U moet een mechanisme voor validatie-Handshake gebruiken, onafhankelijk van de methode die u gebruikt. Zie [webhook Event Delivery](webhook-event-delivery.md) voor meer informatie. 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory gebruiken (Azure AD)
-U kunt uw webhook-eind punt beveiligen door Azure Active Directory (Azure AD) te gebruiken om Event Grid te verifiëren en te autoriseren om gebeurtenissen te leveren aan uw eind punten. U moet een Azure AD-toepassing maken, een rol-en service beginsel maken in uw toepassing Event Grid en het gebeurtenis abonnement configureren voor het gebruik van de Azure AD-toepassing. [Meer informatie over het configureren van Azure Active Directory met Event grid](secure-webhook-delivery.md).
+U kunt het webhook-eind punt dat wordt gebruikt voor het ontvangen van gebeurtenissen van Event Grid, beveiligen met behulp van Azure AD. U moet een Azure AD-toepassing maken, een rol en service-principal maken in uw toepassing autoriseren Event Grid en het gebeurtenis abonnement configureren voor het gebruik van de Azure AD-toepassing. Meer informatie over het [configureren van Azure Active Directory met Event grid](secure-webhook-delivery.md).
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>Client geheim gebruiken als query parameter
-U kunt uw webhook-eind punt beveiligen door query parameters toe te voegen aan de webhook-URL bij het maken van een gebeurtenis abonnement. Stel een van deze query parameters in als een client geheim, zoals een [toegangs token](https://en.wikipedia.org/wiki/Access_token) of een gedeeld geheim. De webhook kan het geheim gebruiken om te herkennen dat de gebeurtenis afkomstig is van Event Grid met geldige machtigingen. Event Grid neemt deze query parameters op in elke gebeurtenis levering aan de webhook. Als het client geheim is bijgewerkt, moet het gebeurtenis abonnement ook worden bijgewerkt. Zorg ervoor dat de webhook zowel oude als nieuwe geheimen voor een beperkte duur aanvaardt om afleverings fouten te voor komen tijdens deze geheime draaiing. 
+U kunt ook uw webhook-eind punt beveiligen door query parameters toe te voegen aan de webhook-doel-URL die is opgegeven als onderdeel van het maken van een gebeurtenis abonnement. Stel een van de query parameters in als een client geheim, zoals een [toegangs token](https://en.wikipedia.org/wiki/Access_token) of een gedeeld geheim. Event Grid-Service bevat alle query parameters in elke aanvraag voor het leveren van gebeurtenissen naar de webhook. De webhook-service kan het geheim ophalen en valideren. Als het client geheim is bijgewerkt, moet het gebeurtenis abonnement ook worden bijgewerkt. Zorg ervoor dat de webhook zowel oude als nieuwe geheimen voor een beperkte duur accepteert voordat u het gebeurtenis abonnement met het nieuwe geheim bijwerkt om afleverings fouten te voor komen tijdens deze geheime draaiing. 
 
-Als query parameters kunnen client geheimen bevatten, worden ze behandeld met extra aandacht. Ze worden opgeslagen als versleuteld en niet toegankelijk voor service operators. Ze worden niet geregistreerd als onderdeel van de service logboeken/traceringen. Bij het bewerken van het gebeurtenis abonnement worden de query parameters niet weer gegeven of geretourneerd, tenzij de para meter [--include-Full-endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) wordt gebruikt in azure [cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Als query parameters kunnen client geheimen bevatten, worden ze behandeld met extra aandacht. Ze worden opgeslagen als versleuteld en zijn niet toegankelijk voor service operators. Ze worden niet geregistreerd als onderdeel van de service logboeken/traceringen. Bij het ophalen van de eigenschappen van het gebeurtenis abonnement worden de doel query parameters niet standaard geretourneerd. Bijvoorbeeld: [--include-Full-endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) -para meter moet worden gebruikt in azure [cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 Zie [webhook Event Delivery](webhook-event-delivery.md) (Engelstalig) voor meer informatie over het leveren van gebeurtenissen aan webhooks
 

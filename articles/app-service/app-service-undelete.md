@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272488"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779211"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Verwijderde App Service-apps herstellen met PowerShell
 
@@ -29,7 +29,7 @@ Sommige klanten kunnen een probleem ondervinden waarbij het ophalen van de lijst
 
 ## <a name="list-deleted-apps"></a>Verwijderde apps weer geven
 
-Als u de verzameling verwijderde Apps wilt ophalen, kunt u `Get-AzDeletedWebApp`gebruiken.
+Als u de verzameling verwijderde Apps wilt ophalen, kunt u gebruiken `Get-AzDeletedWebApp` .
 
 Voor meer informatie over een specifieke verwijderde app kunt u het volgende gebruiken:
 
@@ -48,14 +48,16 @@ De gedetailleerde informatie omvat:
 - **Verwijderings tijd**: wanneer is de app verwijderd  
 
 ## <a name="restore-deleted-app"></a>Verwijderde app herstellen
+>[!NOTE]
+> `Restore-AzDeletedWebApp`wordt niet ondersteund voor functie-apps.
 
-Zodra de app die u wilt herstellen is geïdentificeerd, kunt u deze herstellen met `Restore-AzDeletedWebApp`.
+Zodra de app die u wilt herstellen is geïdentificeerd, kunt u deze herstellen met `Restore-AzDeletedWebApp` .
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Implementatie sites worden niet teruggezet als onderdeel van uw app. Als u een faserings sleuf moet herstellen, gebruikt `-Slot <slot-name>` u de vlag.
+> Implementatie sites worden niet teruggezet als onderdeel van uw app. Als u een faserings sleuf moet herstellen, gebruikt u de `-Slot <slot-name>` vlag.
 >
 
 De invoer voor opdracht is:

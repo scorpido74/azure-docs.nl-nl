@@ -4,12 +4,12 @@ description: Schakel automatisch schalen in een Cloud groep in om het aantal rek
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 786bd594b3344ce144893161ade9d53d1bddf358
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726805"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780246"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -22,7 +22,7 @@ U kunt automatisch schalen inschakelen wanneer u een pool maakt of op een bestaa
 In dit artikel worden de verschillende entiteiten beschreven waaruit uw formules voor automatisch schalen, waaronder variabelen, Opera Tors, bewerkingen en functies, worden besproken. We bespreken hoe u verschillende reken resources en taak gegevens in batch kunt ophalen. U kunt deze metrische gegevens gebruiken om het aantal knoop punten van uw groep aan te passen op basis van het resource gebruik en de taak status. Vervolgens wordt beschreven hoe u een formule maakt en automatisch schalen op een groep inschakelt met behulp van de batch REST-en .NET-Api's. Ten slotte volt ooien we samen met enkele voor beelden van formules.
 
 > [!IMPORTANT]
-> Wanneer u een batch-account maakt, kunt u de [account configuratie](batch-api-basics.md#account)opgeven, waarmee wordt bepaald of groepen worden toegewezen in een batch service-abonnement (de standaard instelling) of in uw gebruikers abonnement. Als u uw batch-account hebt gemaakt met de standaard configuratie van de batch-service, is uw account beperkt tot een maximum aantal kernen dat kan worden gebruikt voor de verwerking. De batch-service schaalt alleen reken knooppunten tot die kern limiet. Daarom kan de batch-service niet het doel aantal reken knooppunten bereiken dat is opgegeven door een formule voor automatisch schalen. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md) voor meer informatie over het weer geven en uitbreiden van uw account quota's.
+> Wanneer u een batch-account maakt, kunt u de [account configuratie](accounts.md)opgeven, waarmee wordt bepaald of groepen worden toegewezen in een batch service-abonnement (de standaard instelling) of in uw gebruikers abonnement. Als u uw batch-account hebt gemaakt met de standaard configuratie van de batch-service, is uw account beperkt tot een maximum aantal kernen dat kan worden gebruikt voor de verwerking. De batch-service schaalt alleen reken knooppunten tot die kern limiet. Daarom kan de batch-service niet het doel aantal reken knooppunten bereiken dat is opgegeven door een formule voor automatisch schalen. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md) voor meer informatie over het weer geven en uitbreiden van uw account quota's.
 >
 >Als u uw account hebt gemaakt met de configuratie voor gebruikers abonnementen, worden uw account shares in het kern quotum voor het abonnement. Zie [Virtual Machines limits](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) (Limieten voor Virtuele Machines) in [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md) (Azure-abonnement en servicelimieten, -quota en -beperkingen) voor meer informatie.
 >

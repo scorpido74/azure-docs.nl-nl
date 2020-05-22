@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: c13ace67f18b619d5ad86106ecb648db722be9fa
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792442"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779336"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -54,7 +54,7 @@ Dit is de basis indeling van de sjabloon:
 
 ## <a name="type-and-api-version"></a>Type en API-versie
 
-Het `type` is het resource type, dat moet zijn `"Microsoft.VirtualMachineImages/imageTemplates"`. De `apiVersion` wordt na verloop van tijd gewijzigd wanneer de API wordt gewijzigd, `"2019-05-01-preview"` maar moet voor preview zijn.
+Het `type` is het resource type, dat moet zijn `"Microsoft.VirtualMachineImages/imageTemplates"` . De `apiVersion` wordt na verloop van tijd gewijzigd wanneer de API wordt gewijzigd, maar moet `"2019-05-01-preview"` voor preview zijn.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -222,8 +222,8 @@ Als u vindt dat er meer tijd nodig is voor het volt ooien van aanpassingen, stel
 
 De opbouw functie voor installatie kopieën ondersteunt meerdere ' Customizers '. Customizers zijn functies die worden gebruikt voor het aanpassen van uw installatie kopie, zoals het uitvoeren van scripts of het opnieuw opstarten van servers. 
 
-Bij gebruik `customize`van: 
-- U kunt meerdere aanpassingen gebruiken, maar ze moeten uniek `name`zijn.
+Bij gebruik van `customize` : 
+- U kunt meerdere aanpassingen gebruiken, maar ze moeten uniek zijn `name` .
 - Aanpassingen worden uitgevoerd in de volg orde die is opgegeven in de sjabloon.
 - Als een aanpassings functie mislukt, mislukt het hele aanpassings onderdeel en wordt er een fout melding weer gegeven.
 - U wordt aangeraden het script grondig te testen voordat u het in een sjabloon kunt gebruiken. Fout opsporing van het script op uw eigen VM is eenvoudiger.
@@ -287,7 +287,7 @@ Eigenschappen aanpassen:
     * De sha256Checksum genereren met behulp van een Terminal op Mac/Linux-uitvoering:`sha256sum <fileName>`
 
 
-Om opdrachten uit te voeren met super gebruikers bevoegdheden, moeten ze worden voorafgegaan door `sudo`.
+Om opdrachten uit te voeren met super gebruikers bevoegdheden, moeten ze worden voorafgegaan door `sudo` .
 
 > [!NOTE]
 > Wanneer u de shell-aanpassing uitvoert met de ISO-bron RHEL, moet u ervoor zorgen dat uw eerste aanpassings shell wordt geregistreerd met een Red Hat-rechten server voordat er aanpassingen worden uitgevoerd. Zodra de aanpassing is voltooid, moet het script de registratie bij de rechten server ongedaan maken.
@@ -385,7 +385,7 @@ Dit wordt ondersteund door Windows-mappen en Linux-paden, maar er zijn enkele ve
 Als er een fout optreedt bij het downloaden van het bestand of in een opgegeven map worden geplaatst, mislukt de stap voor het aanpassen en wordt deze weer gegeven in de aanpassings. log.
 
 > [!NOTE]
-> De bestands aanpassing is alleen geschikt voor kleine bestands downloads, < 20 MB. Voor grotere bestands downloads kunt u een script of inline opdracht gebruiken, de code gebruiken om bestanden te downloaden, zoals `wget` Linux `curl`of Windows, `Invoke-WebRequest`.
+> De bestands aanpassing is alleen geschikt voor kleine bestands downloads, < 20 MB. Voor grotere bestands downloads kunt u een script of inline opdracht gebruiken, de code gebruiken om bestanden te downloaden, zoals Linux `wget` of `curl` Windows, `Invoke-WebRequest` .
 
 Bestanden in file Customize kunnen worden gedownload van Azure Storage met [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
@@ -425,13 +425,24 @@ Als de opbouw functie van Azure image een Windows-aangepaste installatie kopie m
 
 #### <a name="default-sysprep-command"></a>Standaard Sysprep-opdracht
 ```powershell
-echo '>>> Waiting for GA to start ...'
+Write-Output '>>> Waiting for GA Service (RdAgent) to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start ...'
+while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-echo '>>> Sysprepping VM ...'
-if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
-while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
+Write-Output '>>> Sysprepping VM ...'
+if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
+  Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force
+}
+& $Env:SystemRoot\System32\Sysprep\Sysprep.exe /oobe /generalize /quiet /quit
+while($true) {
+  $imageState = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State).ImageState
+  Write-Output $imageState
+  if ($imageState -eq 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { break }
+  Start-Sleep -s 5
+}
+Write-Output '>>> Sysprep complete ...'
 ```
 #### <a name="default-linux-deprovision-command"></a>Standaard opdracht voor het ongedaan maken van Linux
 
@@ -457,7 +468,7 @@ Azure Image Builder ondersteunt drie distributie doelen:
 
 U kunt een installatie kopie distribueren naar beide doel typen in dezelfde configuratie, Zie [voor beelden](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Omdat er meer dan één doel kan zijn om naar te distribueren, houdt Image Builder een status bij voor elk distributie doel dat toegankelijk is door query's uit `runOutputName`te stellen op de.  Het `runOutputName` is een-object waarmee u een query kunt uitvoeren op distributie voor informatie over die distributie. U kunt bijvoorbeeld een query uitvoeren op de locatie van de VHD, of regio's waarnaar de versie van de installatie kopie is gerepliceerd, of de versie van de SIG-installatie kopie is gemaakt. Dit is een eigenschap van elke distributie doel. De `runOutputName` moet uniek zijn voor elk distributie doel. Hier volgt een voor beeld van het uitvoeren van een query op de distributie van een gedeelde installatie kopie galerie:
+Omdat er meer dan één doel kan zijn om naar te distribueren, houdt Image Builder een status bij voor elk distributie doel dat toegankelijk is door query's uit te stellen op de `runOutputName` .  Het `runOutputName` is een-object waarmee u een query kunt uitvoeren op distributie voor informatie over die distributie. U kunt bijvoorbeeld een query uitvoeren op de locatie van de VHD, of regio's waarnaar de versie van de installatie kopie is gerepliceerd, of de versie van de SIG-installatie kopie is gemaakt. Dit is een eigenschap van elke distributie doel. De `runOutputName` moet uniek zijn voor elk distributie doel. Hier volgt een voor beeld van het uitvoeren van een query op de distributie van een gedeelde installatie kopie galerie:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -510,7 +521,7 @@ De uitvoer van de installatie kopie is een beheerde afbeeldings bron.
  
 Eigenschappen distribueren:
 - **type** – managedImage 
-- **imageId** – resource-id van de doel afbeelding, verwachte indeling:\</Subscriptions/subscriptionId>\</resourcegroups/destinationResourceGroupName>\</providers/Microsoft.Compute/images/image naam>
+- **imageId** – resource-id van de doel afbeelding, verwachte indeling:/subscriptions/ \< subscriptionId>/ResourceGroups/ \< destinationResourceGroupName>/providers/Microsoft.Compute/images/ \< Image naam>
 - **locatie** : locatie van de beheerde installatie kopie.  
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.
@@ -550,7 +561,7 @@ Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een
 Eigenschappen voor gedeelde afbeeldings galerieën distribueren:
 
 - **type** -sharedImage  
-- **galleryImageId** : id van de galerie met gedeelde afbeeldingen. De indeling is:/Subscriptions/\<subscriptionId>/resourcegroups/\<resourceGroupName>/providers/Microsoft.Compute/Galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>.
+- **galleryImageId** : id van de galerie met gedeelde afbeeldingen. De indeling is:/Subscriptions/ \< subscriptionId>/ResourceGroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.
 - **replicationRegions** : matrix van regio's voor replicatie. Een van de regio's moet de regio zijn waarin de galerie wordt geïmplementeerd.
@@ -580,7 +591,7 @@ VHD-para meters distribueren:
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **Tags** -optioneel door de gebruiker opgegeven sleutel waarde-paar tags.
  
-De gebruiker kan met Azure Image Builder geen locatie opgeven voor het opslag account, maar u kunt wel een query uitvoeren `runOutputs` op de status van de om de locatie op te halen.  
+De gebruiker kan met Azure Image Builder geen locatie opgeven voor het opslag account, maar u kunt wel een query uitvoeren op de status van de `runOutputs` om de locatie op te halen.  
 
 ```azurecli-interactive
 az resource show \

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-controle
+title: Azure SQL auditing voor Azure SQL Database en Azure Synapse Analytics
 description: Azure SQL database-controle gebruiken om database gebeurtenissen in een audit logboek bij te houden.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff888cb1a2f2486fec7b387d9f9f02029b03aab
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096653"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779067"
 ---
-# <a name="azure-sql-auditing"></a>Azure SQL-controle
+# <a name="azure-sql-auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL auditing voor Azure SQL Database en Azure Synapse Analytics
 
 Controle voor Azure [SQL database](sql-database-technical-overview.md) en [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. 
 
@@ -174,7 +174,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 - Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - **Samenvoeg controle bestanden** in SQL Server Management Studio gebruiken (vanaf SSMS 17):
-    1. Selecteer in het menu SSMS **File** > **Open** > **Merge audit files**.
+    1. Selecteer in het menu SSMS **File**  >  **Open**  >  **Merge audit files**.
 
         ![Navigatievenster](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. Het dialoog venster **controle bestanden toevoegen** wordt geopend. Selecteer een van de opties voor **toevoegen** om te kiezen of u de audit bestanden van een lokale schijf wilt samen voegen of uit Azure Storage wilt importeren. U moet uw Azure Storage Details en de account sleutel opgeven.

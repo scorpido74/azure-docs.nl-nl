@@ -4,12 +4,12 @@ description: Een korte inleiding in de Batch-opdrachten in Azure CLI voor het be
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726788"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780234"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-resources beheren met Azure CLI
 
@@ -162,9 +162,9 @@ De volgende tips kunnen helpen bij het oplossen van problemen met Azure CLI:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
-* Meer informatie over Batch-resources vindt u in dit Engelstalige [overzicht van Azure Batch voor ontwikkelaars](batch-api-basics.md).
-* Zie [Azure Batch CLI-sjablonen en -bestandsoverdracht gebruiken](batch-cli-templates.md) voor meer informatie over het gebruik van Batch-sjablonen voor het maken van pools en taken zonder code te schrijven.
+* Raadpleeg de [documentatie van Azure cli](https://docs.microsoft.com/cli/azure).
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
+* Meer informatie over het gebruik van batch-sjablonen om Pools, taken en taken te maken zonder code te hoeven schrijven [Azure batch cli-sjablonen en-bestands overdracht](batch-cli-templates.md).
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

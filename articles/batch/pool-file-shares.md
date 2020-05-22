@@ -3,12 +3,12 @@ title: Azure-bestands share voor Azure Batch Pools
 description: Een Azure Files-share koppelen vanuit reken knooppunten in een Linux-of Windows-groep in Azure Batch.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723490"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780270"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestands share gebruiken met een batch-pool
 
@@ -172,6 +172,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor andere opties voor het lezen en schrijven van gegevens in batch, raadpleegt u het [overzicht van batch-functies](batch-api-basics.md) en de taak- [en taak uitvoer persistent](batch-task-output.md).
-
+* Zie voor andere opties voor het lezen en schrijven van gegevens in batch [persistente taak-en taak uitvoer](batch-task-output.md).
 * Zie ook de [batch Shipyard](https://github.com/Azure/batch-shipyard) Toolkit, die [Shipyard recepten](https://github.com/Azure/batch-shipyard/tree/master/recipes) bevat voor het implementeren van bestands systemen voor werk belastingen voor batch-containers.

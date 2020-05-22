@@ -4,12 +4,12 @@ description: Meer informatie over de API's en hulpprogramma's voor het ontwikkel
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e345e91b2f7d66f014427770614efe42b5fb7a44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f4138398e28797d8acb6517f33f7f97f2054a93
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232680"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780254"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Overzicht van Batch-API's en -hulpprogramma's
 
@@ -18,21 +18,21 @@ Het verwerken van parallelle workloads met Azure Batch gebeurt gewoonlijk via ee
 U kunt voor uw organisatie efficiënt grootschalige workloads verwerken of uw klanten een front-endservice aanbieden, zodat zij (op aanvraag of gepland) jobs en taken kunnen uitvoeren op één knooppunt of honderden of zelfs duizenden knooppunten. U kunt Azure Batch ook gebruiken als onderdeel van een grotere werkstroom, beheerd door hulpprogramma's zoals [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json).
 
 > [!TIP]
-> Wanneer u gereed bent om met de Batch-API aan de slag te gaan en u te verdiepen in de mogelijkheden ervan, leest u het [Overzicht van de Batch-functies voor ontwikkelaars](batch-api-basics.md).
+> Zie [batch service workflow and features](batch-service-workflow-features.md)(Engelstalig) voor meer informatie over de functies en werk stromen die worden gebruikt in azure batch.
 > 
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Azure-accounts voor Batch-ontwikkeling
 Wanneer u Batch-oplossingen ontwikkelt, gebruikt u de volgende accounts in uw Azure-abonnement:
 
-* **Batch-account** -Azure batch resources, zoals Pools, reken knooppunten, Jobs en taken, worden gekoppeld aan een Azure [batch-account](batch-api-basics.md#account). Als uw toepassing een aanvraag indient voor de Batch-service, verifieert deze de aanvraag met de Azure Batch-accountnaam, de URL van het account en een toegangssleutel of een Azure Active Directory-token. U kunt [een Batch-account maken](batch-account-create-portal.md) in Azure Portal of via een programma.
-* **Storage-account**: Batch bevat ingebouwde ondersteuning voor het werken met bestanden in [Azure Storage][azure_storage]. Vrijwel elk Batch-scenario gebruikt Azure Blob-opslag voor het faseren van de programma's die door de taken worden uitgevoerd en de gegevens die ze verwerken, en voor de opslag van uitvoergegevens die ze genereren. Zie voor opslagaccountopties in Batch het [Overzicht van Batch-functies](batch-api-basics.md#azure-storage-account).
+* **Batch-account** -Azure batch resources, zoals Pools, reken knooppunten, Jobs en taken, worden gekoppeld aan een Azure [batch-account](accounts.md). Als uw toepassing een aanvraag indient voor de Batch-service, verifieert deze de aanvraag met de Azure Batch-accountnaam, de URL van het account en een toegangssleutel of een Azure Active Directory-token. U kunt [een Batch-account maken](batch-account-create-portal.md) in Azure Portal of via een programma.
+* **Storage-account**: Batch bevat ingebouwde ondersteuning voor het werken met bestanden in [Azure Storage][azure_storage]. Vrijwel elk Batch-scenario gebruikt Azure Blob-opslag voor het faseren van de programma's die door de taken worden uitgevoerd en de gegevens die ze verwerken, en voor de opslag van uitvoergegevens die ze genereren. Elk batch-account wordt meestal gekoppeld aan een bijbehorend opslag account.
 
 ## <a name="batch-service-apis"></a>API’s voor Batch-service
 
 Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een of meer van de volgende clientbibliotheken gebruiken voor het uitvoeren en beheren van uw Azure Batch-workloads.
 
-| API | API-verwijzing | Download | Zelfstudie | Codevoorbeelden | Meer informatie |
+| API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden | Meer informatie |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |N.v.t. |- |- | [Ondersteunde versies](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Zelfstudie](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Release opmerkingen](https://aka.ms/batch-net-dataplane-changelog) |
@@ -44,7 +44,7 @@ Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een 
 
 De Azure Resource Manager-API's voor Batch bieden programmatisch toegang tot Batch-accounts. Met deze API's kunt u Batch-accounts, -quota, -toepassingspakketten en andere -resources programmatisch beheren via de Microsoft.Batch-provider.  
 
-| API | API-verwijzing | Download | Zelfstudie | Codevoorbeelden |
+| API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden |
 | --- | --- | --- | --- | --- |
 | **Batch Management REST** |[docs.microsoft.com][api_rest_mgmt] |N.v.t. |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Zelfstudie](batch-management-dotnet.md) |[GitHub][api_sample_net] |
@@ -74,7 +74,7 @@ Hier volgen enkele extra hulpprogramma's die mogelijk nuttig zijn voor het bouwe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk het [overzicht met Batch-functies voor ontwikkelaars](batch-api-basics.md), essentiële informatie voor iedereen die Batch wil gaan gebruiken. Het artikel bevat meer gedetailleerde informatie over de Batch-serviceresources zoals groepen, knooppunten, jobs en taken, en de vele API-functies die u tijdens het maken van de Batch-toepassing kunt gebruiken.
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 * Lees [Aan de slag met de Azure Batch-bibliotheek voor .NET](tutorial-parallel-dotnet.md) voor informatie over het gebruik van C# en de Batch .NET-bibliotheek om een eenvoudige workload uit te voeren met een gebruikelijke Batch-werkstroom. Een [Python-versie](tutorial-parallel-python.md) en een [Node.js-zelfstudie ](batch-nodejs-get-started.md) zijn ook beschikbaar.
 * Download de [codevoorbeelden op GitHub][github_samples] om te zien hoe C# en Python kunnen samenwerken met Batch om voorbeeldworkloads te plannen en te verwerken.
 

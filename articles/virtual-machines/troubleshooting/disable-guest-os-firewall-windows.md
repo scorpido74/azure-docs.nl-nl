@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422368"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774344"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>De firewall van het gastbesturingssysteem uitschakelen in Azure VM
 
@@ -49,7 +49,7 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   Zodra het beleid opnieuw wordt toegepast, wordt u echter niet meer op de externe sessie uitgevoerd. De permanente oplossing voor dit probleem is het wijzigen van het beleid dat op deze computer wordt toegepast.
@@ -90,7 +90,7 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
 
 Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)te gebruiken.
 
-1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar het **bestand** > **Connect netwerk Registry**.
+1.  Start de REGI ster-editor op de virtuele machine voor probleem oplossing en ga naar het **bestand**  >  **Connect netwerk Registry**.
 
 2.  Open de *doel machine*\System-vertakking en geef de volgende waarden op:
 

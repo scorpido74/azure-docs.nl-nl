@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086901"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778239"
 ---
 ## <a name="personal-information-entity-types"></a>Entiteit typen persoonlijke informatie:
 
@@ -25,7 +25,7 @@ Talen:
 
 | Naam subtype | Beschrijving                                               | Beschikbaar vanaf model versie |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| N.v.t.          | Herkende namen, bijvoorbeeld `Bill Gates``Marie Curie` | `2020-02-01`                           |
+| N.v.t.          | Herkende namen `Bill Gates` , bijvoorbeeld`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organisatie  
 
@@ -37,7 +37,7 @@ Talen:
 
 | Naam subtype | Beschrijving                                                                                       | Beschikbaar vanaf model versie|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| N.v.t.          | organisaties, bijvoorbeeld `Microsoft` `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| N.v.t.          | organisaties `Microsoft` , bijvoorbeeld, `NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefoonnummer
 
@@ -51,7 +51,7 @@ Talen:
 |--------------|------------------------------------------------|----------------------------------------|
 | N.v.t.          | Telefoon nummers van VS, bijvoorbeeld`(312) 555-0176` | `2020-02-01`                           |
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 
 E-mailadres. 
 
@@ -109,7 +109,7 @@ Talen:
 
 | Naam subtype | Beschrijving                   | Beschikbaar vanaf model versie |
 |--------------|-------------------------------|----------------------------------------|
-| Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
+| Datum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>EU GPS-coördinaten
 
@@ -127,7 +127,7 @@ Talen:
 
 Identificeer bare Azure-informatie, inclusief verificatie gegevens en verbindings reeksen. 
 
-* Beschikbaar vanaf model versie `2019-10-01`.
+* Beschikbaar vanaf model versie `2019-10-01` .
 
 Talen:
 
@@ -149,7 +149,7 @@ Talen:
 
 ### <a name="identification"></a>Identificatie
 
-* Beschikbaar vanaf model versie `2019-10-01`.
+* Beschikbaar vanaf model versie `2019-10-01` .
 
 Talen:
 
@@ -164,9 +164,9 @@ Talen:
 | Creditcard                | Creditcard nummers.                                                       |
 | IBAN-code                  | IBAN-codes voor informatie over de betalings instructie.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Overheid en land-specifieke identificatie
+#### <a name="government-and-countryregion-specific-identification"></a>Sofi en land/regio-specifieke identificatie
 
-De onderstaande entiteiten worden gegroepeerd en per land weer gegeven:
+De onderstaande entiteiten worden gegroepeerd en weer gegeven op land/regio:
 
 Argentinië
 * Sofi-nummer (National Identity)
@@ -205,7 +205,7 @@ Kroatië
 * ID-kaart nummer
 * Persoonlijk ID-nummer (OIB)
 
-Tsjechië
+Tsjechische Republiek
 * Nummer van nationale ID-kaart
 
 Denemarken

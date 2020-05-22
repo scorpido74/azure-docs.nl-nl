@@ -5,21 +5,21 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39c4674da2ddf63c5fab8b39e16a0cc0d9f299ac
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726584"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780186"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
 Azure Batch biedt virtuele machines met lage prioriteit (Vm's) om de kosten van batch-workloads te verlagen. Virtuele machines met lage prioriteit maken nieuwe typen batch werkbelasting mogelijk door een grote hoeveelheid reken kracht in te scha kelen die voor een zeer lage kosten kan worden gebruikt.
- 
+
 Vm's met lage prioriteit profiteren van de overschot capaciteit in Azure. Wanneer u virtuele machines met lage prioriteit in uw Pools opgeeft, kunt Azure Batch dit overschot gebruiken, indien beschikbaar.
- 
+
 Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze Vm's mogelijk niet kunnen worden toegewezen of op elk gewenst moment kunnen worden gebruikt, afhankelijk van de beschik bare capaciteit. Daarom zijn virtuele machines met lage prioriteit het meest geschikt voor bepaalde typen werk belastingen. Gebruik virtuele machines met lage prioriteit voor werk belastingen voor batch en asynchrone verwerking waarbij de voltooiings tijd van de taak flexibel is en het werk wordt gedistribueerd over meerdere Vm's.
- 
+
 Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde prijs vergeleken met toegewezen Vm's. Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor meer informatie over prijzen.
 
 > [!NOTE]
@@ -28,7 +28,6 @@ Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde pr
 > Azure Batch-groepen beginnen met het ondersteunen van spot-Vm's binnen een paar maanden nadat ze algemeen beschikbaar zijn, met nieuwe versies van de [batch-api's en-hulpprogram ma's](https://docs.microsoft.com/azure/batch/batch-apis-tools). Zodra er ondersteuning beschikbaar is voor virtuele machines met lage prioriteit, wordt de virtuele machine met goedkope werk worden afgeschaft. deze worden gedurende ten minste 12 maanden worden ondersteund met behulp van de huidige Api's en hulpprogram ma's van het hulp programma om voldoende tijd te bieden voor de migratie naar de locatie van virtuele machines. 
 >
 > Spot-Vm's worden niet ondersteund voor [Cloud service-configuratie](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) groepen. Als u gebruik wilt maken van spot-Vm's, moeten Cloud service groepen worden gemigreerd naar configuratie groepen van [virtuele machines](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
-
 
 ## <a name="use-cases-for-low-priority-vms"></a>Gebruiks voorbeelden voor Vm's met een lage prioriteit
 
@@ -72,8 +71,7 @@ Azure Batch biedt verschillende mogelijkheden die het gebruik van Vm's met lage 
     Het quotum voor virtuele machines met een lage prioriteit is hoger dan het quotum voor toegewezen virtuele machines, omdat virtuele machines met lage prioriteit minder kosten. Zie [quota en limieten](batch-quota-limit.md#resource-quotas)voor de batch-service voor meer informatie.    
 
 > [!NOTE]
-> Vm's met lage prioriteit worden momenteel niet ondersteund voor batch-accounts die zijn gemaakt in de [modus gebruikers abonnement](batch-api-basics.md#account).
->
+> Vm's met lage prioriteit worden momenteel niet ondersteund voor batch-accounts die zijn gemaakt in de [modus gebruikers abonnement](accounts.md).
 
 ## <a name="create-and-update-pools"></a>Groepen maken en bijwerken
 
@@ -183,6 +181,6 @@ U kunt als volgt de metrische gegevens weer geven in de Azure Portal:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk het [overzicht met Batch-functies voor ontwikkelaars](batch-api-basics.md), essentiële informatie voor iedereen die Batch wil gaan gebruiken. Het artikel bevat meer gedetailleerde informatie over de Batch-serviceresources zoals groepen, knooppunten, jobs en taken, en de vele API-functies die u tijdens het maken van de Batch-toepassing kunt gebruiken.
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 * Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
 * Begin met het plannen van de overstap van Vm's met lage prioriteit om virtuele machines te plaatsen. Als u virtuele machines met lage prioriteit gebruikt met configuratie groepen voor de **Cloud service** , moet u de **configuratie van de virtuele machine configureren** .

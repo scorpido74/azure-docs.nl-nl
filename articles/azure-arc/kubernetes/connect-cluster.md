@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 690955f0e7d18f9a784b4c9a2fa1733442cb70dc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725615"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780019"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -25,7 +25,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
 
 * Een Kubernetes-cluster dat actief is
 * U hebt toegang nodig met kubeconfig en toegang tot cluster beheerders. 
-* De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters.
+* De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters. De rol ' Azure Arc for Kubernetes-onboarding ' met deze machtigingen kan worden gebruikt voor roltoewijzingen op de gebruiker of service-principal die wordt gebruikt met Azure CLI voor onboarding.
 * Nieuwste versie van de *connectedk8s* -en *k8sconfiguration* -extensies
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s

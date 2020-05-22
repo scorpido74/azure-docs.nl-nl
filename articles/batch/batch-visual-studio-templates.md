@@ -4,21 +4,19 @@ description: Meer informatie over hoe u met Visual Studio project-sjablonen uw c
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725819"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779519"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio-project sjablonen gebruiken om batch-oplossingen te starten
 
 De **Visual Studio-sjablonen** van **taak beheer** en taak processor voor batch bevatten code waarmee u uw computerintensieve werk belastingen op batch kunt implementeren en uitvoeren met de minste inspanning. In dit document worden deze sjablonen beschreven en vindt u richt lijnen voor het gebruik ervan.
 
 > [!IMPORTANT]
-> In dit artikel worden alleen de gegevens van deze twee sjablonen beschreven en wordt ervan uitgegaan dat u bekend bent met de batch-service en de belangrijkste concepten die hieraan zijn gerelateerd: groepen, reken knooppunten, taken en taken, taak beheer taken, omgevings variabelen en andere relevante informatie. Meer informatie vindt u in [basis beginselen van Azure batch](batch-technical-overview.md) en [Batch functie overzicht voor ontwikkel aars](batch-api-basics.md).
-> 
-> 
+> In dit artikel worden alleen de gegevens van deze twee sjablonen beschreven en wordt ervan uitgegaan dat u bekend bent met de batch-service en de belangrijkste concepten die hieraan zijn gerelateerd: groepen, reken knooppunten, taken en taken, taak beheer taken, omgevings variabelen en andere relevante informatie. Meer informatie vindt u in [basis beginselen van Azure batch](batch-technical-overview.md) en [batch service-werk stroom en-resources](batch-service-workflow-features.md). 
 
 ## <a name="high-level-overview"></a>Overzicht op hoog niveau
 De sjablonen taak beheer en taak processor kunnen worden gebruikt voor het maken van twee nuttige onderdelen:
@@ -69,7 +67,7 @@ De job manager-sjabloon helpt u bij het implementeren van een taak beheer taak d
 * Dien deze taken in om uit te voeren op batch.
 
 > [!NOTE]
-> Zie [overzicht van batch-functies voor ontwikkel aars](batch-api-basics.md#job-manager-task)voor meer informatie over taken van taak beheer.
+> Zie [Jobs en taken](jobs-and-tasks.md#job-manager-task)voor meer informatie over taken van taak beheer.
 > 
 > 
 
@@ -188,7 +186,7 @@ Een taak beheer taak die is geïmplementeerd met de job manager-sjabloon kan dri
 
 In het geval van taak beheer mislukt, zijn er mogelijk nog enkele taken aan de service toegevoegd voordat de fout optrad. Deze taken worden normaal uitgevoerd. Zie ' taak splitter-fout ' hierboven voor discussie over dit codepad.
 
-Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie voor meer informatie [fout afhandeling](batch-api-basics.md#error-handling).
+Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie voor meer informatie [fout afhandeling](error-handling.md).
 
 ### <a name="client-considerations"></a>Overwegingen voor de client
 In deze sectie worden enkele vereisten voor client implementatie beschreven bij het aanroepen van een taak beheerder op basis van deze sjabloon. Zie [para meters en omgevings variabelen door geven uit de client code](#pass-environment-settings) voor meer informatie over het door geven van para meters en omgevings instellingen.

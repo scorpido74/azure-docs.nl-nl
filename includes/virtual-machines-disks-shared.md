@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57b6bf06e34068b5560829838eb9ee1315df6cde
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008518"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778233"
 ---
 Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee u tegelijkertijd een beheerde schijf kunt koppelen aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van [SCSI-permanente reserve ringen](https://www.t10.org/members/w_spc3.htm) (SCSI-PR). SCSI-PR is een industrie standaard die wordt gebruikt door toepassingen die on-premises worden uitgevoerd op Storage Area Network (SAN). Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren.
 
@@ -50,6 +50,10 @@ Enkele populaire toepassingen die worden uitgevoerd op WSFC zijn:
 ### <a name="linux"></a>Linux
 
 Linux-clusters kunnen gebruikmaken van cluster managers zoals [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker bouwt voort op [corosync](http://corosync.github.io/corosync/), waardoor cluster communicatie mogelijk wordt voor toepassingen die in Maxi maal beschik bare omgevingen worden geïmplementeerd. Enkele algemene geclusterde bestands systemen zijn [ocfs2](https://oss.oracle.com/projects/ocfs2/) en [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). U kunt reserve ringen en registraties bewerken met behulp van hulpprogram ma's zoals [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) en [sg_persist](https://linux.die.net/man/8/sg_persist).
+
+#### <a name="ubuntu"></a>Ubuntu
+
+Voor informatie over het instellen van Ubuntu hoge Beschik baarheid met corosync en pacemaker op gedeelde Azure-schijven, Zie [Ubuntu community discourse](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)(Engelstalig).
 
 ## <a name="persistent-reservation-flow"></a>Stroom permanente reserve ring
 

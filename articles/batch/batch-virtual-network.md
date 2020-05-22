@@ -4,12 +4,12 @@ description: Het maken van een batch-pool in een virtueel Azure-netwerk, zodat r
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726278"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779583"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
@@ -64,5 +64,5 @@ Wanneer u een door de gebruiker gedefinieerde route toevoegt, definieert u de ro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+- Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 - Zie voor meer informatie over het maken van een door de gebruiker gedefinieerde route [een door de gebruiker gedefinieerde route-Azure portal maken](../virtual-network/tutorial-create-route-table-portal.md).

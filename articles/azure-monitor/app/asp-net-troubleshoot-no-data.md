@@ -2,13 +2,13 @@
 title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 2770888c6cfacedcf186ed1612718133cc1ba363
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802583"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778678"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -127,13 +127,13 @@ Holpen
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Open in de Application Insights-Portal [Diagnostische gegevens zoeken](../../azure-monitor/app/diagnostic-search.md). Gegevens worden doorgaans als eerste weer gegeven.
 * Klik op de knop Vernieuwen. De Blade wordt regel matig vernieuwd, maar u kunt dit ook hand matig doen. Het Vernieuwings interval is langer voor grotere Peri Oden.
-* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights. config en zoek de `<instrumentationkey>`. Controleer of de twee sleutels gelijk zijn. Zo niet:  
+* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights. config en zoek de `<instrumentationkey>` . Controleer of de twee sleutels gelijk zijn. Zo niet:  
   * Klik in de portal op Application Insights en zoek de app-resource met de juiste sleutel. of
   * Klik in Visual Studio Solution Explorer met de rechter muisknop op het project en kies Application Insights, configureren. Stel de app opnieuw in om telemetrie naar de juiste resource te verzenden.
   * Als u de overeenkomende sleutels niet kunt vinden, controleert u of u dezelfde aanmeldings referenties in Visual Studio gebruikt als in voor de portal.
 * Ga in het [Microsoft Azure start-dash board](https://portal.azure.com)naar de service Health kaart. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
 * Controleer ook [onze status blog](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in `TelemetryContext`kan wijzigen? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
+* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in kan wijzigen `TelemetryContext` ? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
 * Als u ApplicationInsights. config hebt bewerkt, controleert u de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)zorgvuldig. Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Geen gegevens op pagina weergaven, browsers, gebruik
@@ -143,7 +143,7 @@ De gegevens zijn afkomstig van scripts in de webpagina's.
 
 * Als u Application Insights hebt toegevoegd aan een bestaand webproject, moet [u de scripts hand matig toevoegen](../../azure-monitor/app/javascript.md).
 * Zorg ervoor dat uw site niet wordt weer gegeven in de compatibiliteits modus van Internet Explorer.
-* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens `dc.services.visualstudio.com`naar worden verzonden.
+* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens naar worden verzonden `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Geen gegevens over afhankelijkheid of uitzonde ring
 Zie [afhankelijkheids telemetrie](../../azure-monitor/app/asp-net-dependencies.md) en [uitzonde ring telemetrie](asp-net-exceptions.md).
@@ -211,7 +211,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.8.2 en verwijst naar micro soft. ApplicationInsights versie 2.11.2. De versie van micro soft. AspNet. ApplicationInsights. HostingStartup die moet worden geïnstalleerd, moet daarom worden 2.11.2
 
-2. Wijzig `ConfigureServices` de methode in `Startup.cs` uw klasse.:
+2. Wijzig `ConfigureServices` de methode in uw `Startup.cs` klasse.:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
@@ -247,6 +247,14 @@ U kunt deze para meters naar behoefte wijzigen:
 Meer informatie
 - [Prestatie traceringen vastleggen met PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights gebeurtenis bronnen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="collect-logs-with-dotnet-trace"></a>Logboeken verzamelen met DotNet-Trace
+
+Een alternatieve methode voor het verzamelen van Logboeken voor het oplossen van problemen die bijzonder handig kunnen zijn voor Linux-omgevingen is[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
 
 ## <a name="how-to-remove-application-insights"></a>Application Insights verwijderen
 

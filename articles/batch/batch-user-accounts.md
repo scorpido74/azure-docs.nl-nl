@@ -1,15 +1,15 @@
 ---
 title: Taken uitvoeren onder gebruikers accounts
-description: Het is handig om het gebruikers account te configureren waaronder u wilt dat een taak wordt uitgevoerd. Meer informatie over de typen gebruikers accounts en hoe u deze kunt configureren.
+description: Meer informatie over de typen gebruikers accounts en hoe u deze kunt configureren.
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726261"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779498"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
 
@@ -40,7 +40,7 @@ Zowel een automatische gebruikers account als een benoemd gebruikers account heb
 
 Als een taak wordt uitgevoerd onder hetzelfde account dat is gebruikt voor het uitvoeren van een begin taak, heeft de taak lees-/schrijftoegang tot de map voor het starten van de taak. Evenzo geldt dat als een taak wordt uitgevoerd onder hetzelfde account dat is gebruikt voor het uitvoeren van een taak voorbereidings taak, de taak lees-/schrijftoegang heeft tot de map taak voorbereidings taak. Als een taak wordt uitgevoerd onder een ander account dan de taak begin taak of taak voorbereiding, heeft de taak alleen lees toegang tot de betreffende map.
 
-Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md#files-and-directories)voor meer informatie over het openen van bestanden en mappen van een taak.
+Zie [bestanden en mappen](files-and-directories.md)voor meer informatie over het openen van bestanden en mappen van een taak.
 
 ## <a name="elevated-access-for-tasks"></a>Verhoogde toegang voor taken 
 
@@ -322,4 +322,5 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
+* Meer informatie over [bestanden en mappen](files-and-directories.md) in azure batch.

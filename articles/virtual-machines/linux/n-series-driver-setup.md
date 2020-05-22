@@ -2,19 +2,18 @@
 title: Setup van het GPU-stuur programma voor Azure N-Series voor Linux
 description: NVIDIA GPU-Stuur Programma's instellen voor virtuele machines uit de N-serie waarop Linux wordt uitgevoerd in azure
 services: virtual-machines-linux
-author: cynthn
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.openlocfilehash: cb2d5c43b8c04829dd6830126b7bc01bee07133b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.author: vikancha
+ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628189"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779364"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -92,7 +91,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS of Red Hat Enterprise Linux
 
-1. Update de kernel (aanbevolen). Als u ervoor kiest om de kernel niet bij te werken, zorgt u `kernel-devel` ervoor `dkms` dat de versies van en geschikt zijn voor uw kernel.
+1. Update de kernel (aanbevolen). Als u ervoor kiest om de kernel niet bij te werken, zorgt u ervoor dat de versies van `kernel-devel` en `dkms` geschikt zijn voor uw kernel.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -184,7 +183,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    
    sudo apt-get install linux-azure -y
    ```
-3. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NVv2-Vm's.) Als u dit wilt doen, maakt u `/etc/modprobe.d` een `nouveau.conf` bestand met de naam met de volgende inhoud:
+3. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NVv2-Vm's.) Als u dit wilt doen, maakt u een bestand `/etc/modprobe.d` `nouveau.conf` met de naam met de volgende inhoud:
 
    ```
    blacklist nouveau
@@ -217,7 +216,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Voeg het volgende toe `/etc/nvidia/gridd.conf`aan:
+8. Voeg het volgende toe aan `/etc/nvidia/gridd.conf` :
  
    ```
    IgnoreSP=FALSE
@@ -234,7 +233,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS of Red Hat Enterprise Linux 
 
-1. Update de kernel-en DKMS (aanbevolen). Als u ervoor kiest om de kernel niet bij te werken, zorgt u `kernel-devel` ervoor `dkms` dat de versies van en geschikt zijn voor uw kernel.
+1. Update de kernel-en DKMS (aanbevolen). Als u ervoor kiest om de kernel niet bij te werken, zorgt u ervoor dat de versies van `kernel-devel` en `dkms` geschikt zijn voor uw kernel.
  
    ```bash  
    sudo yum update
@@ -248,7 +247,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo yum install hyperv-daemons
    ```
 
-2. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NV2-Vm's.) Als u dit wilt doen, maakt u `/etc/modprobe.d` een `nouveau.conf` bestand met de naam met de volgende inhoud:
+2. Schakel het Nouveau-kernelstuurprogramma uit, dat niet compatibel is met het NVIDIA-stuur programma. (Gebruik alleen het NVIDIA-stuur programma op NV-of NV2-Vm's.) Als u dit wilt doen, maakt u een bestand `/etc/modprobe.d` `nouveau.conf` met de naam met de volgende inhoud:
 
    ```
    blacklist nouveau
@@ -271,7 +270,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
 
    ```
  
-4. Maak opnieuw verbinding met de virtuele machine en `lspci` Voer de opdracht uit. Controleer of de NVIDIA M60-kaart of-kaarten als PCI-apparaten worden weer gegeven.
+4. Maak opnieuw verbinding met de virtuele machine en voer de `lspci` opdracht uit. Controleer of de NVIDIA M60-kaart of-kaarten als PCI-apparaten worden weer gegeven.
  
 5. Down load en installeer het raster stuur programma:
 
@@ -290,7 +289,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Voeg het volgende toe `/etc/nvidia/gridd.conf`aan:
+8. Voeg het volgende toe aan `/etc/nvidia/gridd.conf` :
  
    ```
    IgnoreSP=FALSE
@@ -315,7 +314,7 @@ Als het stuur programma is geïnstalleerd, ziet u uitvoer die vergelijkbaar is m
  
 
 ### <a name="x11-server"></a>X11-server
-Als u een X11-server nodig hebt voor externe verbindingen met een NV of NVv2 VM, wordt [x11vnc](http://www.karlrunge.com/x11vnc/) aanbevolen omdat hiermee hardwareversnelling van afbeeldingen mogelijk is. De BusID van het M60-apparaat moet hand matig worden toegevoegd aan het X11-configuratie bestand `etc/X11/xorg.conf`(meestal,). Voeg een `"Device"` sectie toe die er ongeveer als volgt uitziet:
+Als u een X11-server nodig hebt voor externe verbindingen met een NV of NVv2 VM, wordt [x11vnc](http://www.karlrunge.com/x11vnc/) aanbevolen omdat hiermee hardwareversnelling van afbeeldingen mogelijk is. De BusID van het M60-apparaat moet hand matig worden toegevoegd aan het X11-configuratie bestand (meestal, `etc/X11/xorg.conf` ). Voeg een `"Device"` sectie toe die er ongeveer als volgt uitziet:
  
 ```
 Section "Device"
@@ -327,7 +326,7 @@ Section "Device"
 EndSection
 ```
  
-Werk uw `"Screen"` sectie ook bij om dit apparaat te gebruiken.
+Werk uw sectie ook `"Screen"` bij om dit apparaat te gebruiken.
  
 De decimale BusID kan worden gevonden door uit te voeren
 
@@ -335,7 +334,7 @@ De decimale BusID kan worden gevonden door uit te voeren
 nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-De BusID kan worden gewijzigd wanneer een virtuele machine opnieuw wordt toegewezen of opnieuw wordt opgestart. Daarom wilt u mogelijk een script maken om de BusID in de X11-configuratie bij te werken wanneer een virtuele machine opnieuw wordt opgestart. U kunt bijvoorbeeld een script met de `busidupdate.sh` naam (of een andere naam die u hebt gekozen) maken met de inhoud vergelijkbaar met de volgende:
+De BusID kan worden gewijzigd wanneer een virtuele machine opnieuw wordt toegewezen of opnieuw wordt opgestart. Daarom wilt u mogelijk een script maken om de BusID in de X11-configuratie bij te werken wanneer een virtuele machine opnieuw wordt opgestart. U kunt bijvoorbeeld een script `busidupdate.sh` met de naam (of een andere naam die u hebt gekozen) maken met de inhoud vergelijkbaar met de volgende:
 
 ```bash 
 #!/bin/bash
@@ -355,7 +354,7 @@ Maak vervolgens een vermelding voor uw update script in `/etc/rc.d/rc3.d` zodat 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-* U kunt de modus voor persistentie instellen met behulp `nvidia-smi` van zodat de uitvoer van de opdracht sneller is als u behoefte hebt aan een query uit te voeren op kaarten. Voer `nvidia-smi -pm 1`uit om de modus voor persistentie in te stellen. Houd er rekening mee dat als de virtuele machine opnieuw wordt opgestart, de instelling van de modus verdwijnt. U kunt de modus instelling altijd scripteren om uit te voeren bij het opstarten.
+* U kunt de modus voor persistentie instellen met behulp `nvidia-smi` van zodat de uitvoer van de opdracht sneller is als u behoefte hebt aan een query uit te voeren op kaarten. Voer uit om de modus voor persistentie in te stellen `nvidia-smi -pm 1` . Houd er rekening mee dat als de virtuele machine opnieuw wordt opgestart, de instelling van de modus verdwijnt. U kunt de modus instelling altijd scripteren om uit te voeren bij het opstarten.
 * Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA-connectiviteit niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) om die verbinding opnieuw tot stand te brengen. 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -3,7 +3,7 @@ title: Aangepaste DNS voor het beheerde exemplaar
 description: In dit onderwerp worden configuratie opties beschreven voor een aangepaste DNS met een Azure SQL Database beheerd exemplaar.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
-ms.openlocfilehash: 9c98176413f858d236902c332553d47f749aa3c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b27d316114b84434a84fc8226eba9328a803dc8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247075"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774368"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Een aangepaste DNS configureren voor Azure SQL Database Managed Instance
 
@@ -25,7 +25,7 @@ Een Azure SQL Database beheerd exemplaar moet worden geïmplementeerd in een [vi
 Omdat voor het beheerde exemplaar dezelfde DNS wordt gebruikt voor de interne werking, moet u de aangepaste DNS-server zo configureren dat open bare domein namen kunnen worden omgezet.
 
 > [!IMPORTANT]
-> Gebruik altijd een Fully Qualified Domain Name (FQDN) voor de e-mail server, de SQL Server instantie en voor andere services, zelfs als ze zich in uw privé-DNS-zone bevinden. Gebruik `smtp.contoso.com` bijvoorbeeld voor uw e-mail server omdat `smtp` deze niet correct kan worden omgezet. Als u een gekoppelde server of replicatie wilt maken die verwijst naar SQL-Vm's binnen hetzelfde virtuele netwerk, hebt u ook een FQDN en een standaard-DNS-achtervoegsel nodig. Bijvoorbeeld `SQLVM.internal.cloudapp.net`. Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)voor meer informatie.
+> Gebruik altijd een Fully Qualified Domain Name (FQDN) voor de e-mail server, de SQL Server instantie en voor andere services, zelfs als ze zich in uw privé-DNS-zone bevinden. Gebruik bijvoorbeeld `smtp.contoso.com` voor uw e-mail server omdat deze `smtp` niet correct kan worden omgezet. Als u een gekoppelde server of replicatie wilt maken die verwijst naar SQL-Vm's binnen hetzelfde virtuele netwerk, hebt u ook een FQDN en een standaard-DNS-achtervoegsel nodig. Bijvoorbeeld `SQLVM.internal.cloudapp.net`. Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)voor meer informatie.
 
 > [!IMPORTANT]
 > Het bijwerken van de DNS-servers van het virtuele netwerk heeft geen invloed op het beheerde exemplaar direct. De DNS-configuratie van het beheerde exemplaar wordt bijgewerkt nadat de DHCP-lease verloopt of na de platform upgrade, afhankelijk van wat er eerst gebeurt. **Gebruikers wordt aangeraden hun DNS-configuratie voor het virtuele netwerk in te stellen voordat ze hun eerste beheerde exemplaar maken.**

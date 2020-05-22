@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456825"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780604"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Instellingen voor time-out voor TCP-inactiviteit configureren voor Azure Load Balancer
 
@@ -42,6 +42,10 @@ TCP Keep-Alive werkt voor scenario's waarbij de levens duur van de accu geen bep
 ![TCP-time-out](./media/load-balancer-tcp-idle-timeout/image1.png)
 
 In de volgende secties wordt beschreven hoe u time-outinstellingen voor inactiviteit wijzigt voor open bare IP-en load balancer-resources.
+
+>[!NOTE]
+> De time-out voor inactiviteit van TCP heeft geen invloed op de taakverdelings regels op het UDP-protocol.
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>De TCP-time-out voor uw open bare IP-adres op exemplaar niveau configureren tot 15 minuten
 

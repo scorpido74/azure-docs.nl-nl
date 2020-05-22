@@ -3,12 +3,12 @@ title: Een groot aantal taken indienen
 description: Efficiënte verzen ding van een zeer groot aantal taken in een enkele Azure Batch taak
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 42b7d0586139b3d03569374615945047b42a2520
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725683"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778956"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Een groot aantal taken verzenden naar een batch-taak
 
@@ -41,7 +41,7 @@ De maximale grootte van de taak verzameling die u in één aanroep kunt toevoege
 
 Het kan enige tijd duren om een grote verzameling taken toe te voegen aan een taak, bijvoorbeeld Maxi maal 1 minuut om 20.000 taken toe te voegen via de .NET API. Afhankelijk van de batch-API en uw workload, kunt u de door Voer van de taak verbeteren door een of meer van de volgende wijzigingen aan te brengen:
 
-* **Taak grootte** : het toevoegen van grote taken duurt langer dan kleinere items. Als u de grootte van elke taak in een verzameling wilt verkleinen, kunt u de taak opdracht regel vereenvoudigen, het aantal omgevings variabelen verminderen of de vereisten voor het uitvoeren van taken efficiënter afhandelen. In plaats van een groot aantal bron bestanden te gebruiken, moet u bijvoorbeeld taak afhankelijkheden installeren met behulp van een [begin taak](batch-api-basics.md#start-task) in de pool of een [toepassings pakket](batch-application-packages.md) of [docker-container](batch-docker-container-workloads.md)gebruiken.
+* **Taak grootte** : het toevoegen van grote taken duurt langer dan kleinere items. Als u de grootte van elke taak in een verzameling wilt verkleinen, kunt u de taak opdracht regel vereenvoudigen, het aantal omgevings variabelen verminderen of de vereisten voor het uitvoeren van taken efficiënter afhandelen. In plaats van een groot aantal bron bestanden te gebruiken, moet u bijvoorbeeld taak afhankelijkheden installeren met behulp van een [begin taak](jobs-and-tasks.md#start-task) in de pool of een [toepassings pakket](batch-application-packages.md) of [docker-container](batch-docker-container-workloads.md)gebruiken.
 
 * **Aantal parallelle bewerkingen** : Verhoog de door Voer, afhankelijk van de batch-API door het maximum aantal gelijktijdige bewerkingen door de batch-client te verhogen. Configureer deze instelling met behulp van de eigenschap [BatchClientParallelOptions. MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) in de .net API of de `threads` para meter van methoden zoals [TaskOperations. Add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) in de batch python SDK-extensie. (Deze eigenschap is niet beschikbaar in de systeem eigen batch python SDK.) Standaard is deze eigenschap ingesteld op 1, maar is deze hoger ingesteld om de door Voer van bewerkingen te verbeteren. U kunt een verhoogde door Voer afhandelen door gebruik te maken van de netwerk bandbreedte en enkele CPU-prestaties. De door Voer van de taak wordt verhoogd met Maxi maal 100 keer de `MaxDegreeOfParallelism` of `threads` . In de praktijk moet u het aantal gelijktijdige bewerkingen onder 100 instellen. 
  

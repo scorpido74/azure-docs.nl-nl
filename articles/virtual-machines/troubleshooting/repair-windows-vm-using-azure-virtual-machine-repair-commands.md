@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 97c4461fd2abd39e75838f67ab5d34bd52a79459
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6520d508a025aeeecf0c1890224a0691eae09f74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715610"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774427"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Windows-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
@@ -81,6 +81,7 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
 4. Voer `az vm repair run` uit. Met deze opdracht wordt het opgegeven herstel script op de gekoppelde schijf uitgevoerd via de reparatie-VM.  Als in de hand leiding voor probleem oplossing die u gebruikt, een run-id wordt gebruikt, kunt u deze hier gebruiken `az vm repair list-scripts` om beschik bare herstel scripts te bekijken.
 
    ```azurecli-interactive
+
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
    ```
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427794"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780437"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL-groepen in azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Meer informatie over statistieken vindt u in de artikelen [tabel statistieken be
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT-instructie in batches groeperen
 
-Een eenmalige belasting naar een kleine tabel met een INSERT-instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')`mogelijk de beste benadering is afhankelijk van uw behoeften. Als u echter duizenden of miljoenen rijen per dag moet laden, is het waarschijnlijk dat Singleton-INVOEG bladen niet optimaal zijn.
+Een eenmalige belasting naar een kleine tabel met een INSERT-instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')` mogelijk de beste benadering is afhankelijk van uw behoeften. Als u echter duizenden of miljoenen rijen per dag moet laden, is het waarschijnlijk dat Singleton-INVOEG bladen niet optimaal zijn.
 
 Een manier om dit probleem op te lossen is het ontwikkelen van een proces dat naar een bestand schrijft en vervolgens een ander proces om dit bestand periodiek te laden. Raadpleeg het artikel [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
@@ -169,7 +169,7 @@ Raadpleeg het artikel [resource klassen voor workload Management](../sql-data-wa
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Een kleinere resource klasse gebruiken om gelijktijdigheid te verg Roten
 
-Als u een lange vertraging in de gebruikers query's ziet, kunnen uw gebruikers in grotere bron klassen worden uitgevoerd. Met dit scenario wordt het verbruik van gelijktijdigheids sleuven verhoogd. Dit kan ertoe leiden dat andere query's in de wachtrij worden geplaatst.  Als u wilt bepalen of gebruikers query's in de wachtrij `SELECT * FROM sys.dm_pdw_waits` staan, voert u uit om te zien of er rijen worden geretourneerd.
+Als u een lange vertraging in de gebruikers query's ziet, kunnen uw gebruikers in grotere bron klassen worden uitgevoerd. Met dit scenario wordt het verbruik van gelijktijdigheids sleuven verhoogd. Dit kan ertoe leiden dat andere query's in de wachtrij worden geplaatst.  Als u wilt bepalen of gebruikers query's in de wachtrij staan, voert `SELECT * FROM sys.dm_pdw_waits` u uit om te zien of er rijen worden geretourneerd.
 
 In de [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md) en [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -artikelen vindt u meer informatie.
 
@@ -193,7 +193,7 @@ SQL-groepen hebben verschillende Dmv's die kunnen worden gebruikt voor het bewak
 
 Zie ook het artikel [over probleem oplossing](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor veelvoorkomende problemen en oplossingen.
 
-Als u informatie nodig hebt die niet in dit artikel wordt vermeld, gebruikt u de ' zoeken naar docs ' aan de linkerkant van deze pagina om alle documenten van de SQL-groep te doorzoeken.  Het [forum SQL-groep](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek waar u vragen kunt stellen aan andere gebruikers en de product groep van de SQL-groep.  
+Als u informatie nodig hebt die niet in dit artikel wordt vermeld, gebruikt u **filteren op titel** aan de linkerkant van deze pagina om alle documenten van de SQL-groep te doorzoeken.  Het [forum SQL-groep](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek waar u vragen kunt stellen aan andere gebruikers en de product groep van de SQL-groep.  
 
 We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure SQL-groep stack overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

@@ -3,12 +3,12 @@ title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te
 description: Maak een batch-pool met de galerie gedeelde afbeeldingen om aangepaste installatie kopieën in te richten op reken knooppunten die de software en gegevens bevatten die u nodig hebt voor uw toepassing. Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743580"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780506"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -83,7 +83,7 @@ Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met ged
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure CLI
 
-Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de `az batch pool create` opdracht. Geef de ID van de gedeelde installatie `--image` kopie op in het veld. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door`--node-agent-sku-id`
+Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de `az batch pool create` opdracht. Geef de ID van de gedeelde installatie kopie op in het `--image` veld. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door`--node-agent-sku-id`
 
 > [!NOTE]
 > U moet zich verifiëren met Azure AD. Als u gedeelde-sleutel verificatie gebruikt, krijgt u een verificatie fout.  
@@ -214,8 +214,8 @@ Als u van plan bent om een pool met honderden of duizenden Vm's of meer te maken
 
 * **Replica nummers van de galerie met gedeelde afbeeldingen.**  Voor elke groep met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld een groep met 3000 Vm's maakt, moet u ten minste vijf replica's van uw installatie kopie gebruiken. We suggereren altijd dat er meer replica's dan minimale vereisten zijn voor betere prestaties.
 
-* **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald) `resizeTimeout` , verhoogt u de eigenschap van de pool, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
+* **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald), verhoogt u de `resizeTimeout` eigenschap van de pool, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+* Zie [batch service workflow en resources](batch-service-workflow-features.md)voor een uitgebreid overzicht van batch.

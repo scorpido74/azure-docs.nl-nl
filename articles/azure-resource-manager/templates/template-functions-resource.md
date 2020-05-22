@@ -2,13 +2,13 @@
 title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/21/2020
+ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715916"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780568"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -129,7 +129,7 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Resourcetype | Functienaam |
 | ------------- | ------------- |
 | Micro soft. AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Micro soft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
+| Micro soft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Micro soft. AppConfiguration/configurationStores | Listkeys ophalen |
 | Micro soft. Automation/automationAccounts | [Listkeys ophalen](/rest/api/automation/keys/listbyautomationaccount) |
 | Micro soft. batch/batchAccounts | [listkeys ophalen](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -202,7 +202,7 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. Network/applicationSecurityGroups | listIpConfigurations |
 | Micro soft. notification hubs/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/namespaces/listkeys) |
 | Micro soft. notification hubs/naam ruimten/notification hubs/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Micro soft. OperationalInsights/werk ruimten | [Listkeys ophalen](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Micro soft. OperationalInsights/werk ruimten | [list](/rest/api/loganalytics/workspaces/list) |
 | Micro soft. PolicyInsights/herstel bewerkingen | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Micro soft. relay/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/relay/namespaces/listkeys) |
 | Micro soft. relay/naam ruimten/disasterRecoveryConfigs/authorizationRules | listkeys ophalen |
@@ -350,6 +350,8 @@ Om het SAS-token op te halen, geeft u een object voor de verloop tijd door. De v
     }
 }
 ```
+
+Zie voor een listKeyValue-voor beeld [Quick Start: geautomatiseerde VM-implementatie met app-configuratie en Resource Manager-sjabloon](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
 
 ## <a name="providers"></a>providers
 

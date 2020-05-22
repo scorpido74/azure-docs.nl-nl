@@ -3,12 +3,12 @@ title: Een aangepaste groep inrichten vanuit een beheerde installatie kopie
 description: Maak een batch-pool van een beheerde installatie kopie bron om reken knooppunten in te richten met de software en gegevens voor uw toepassing.
 ms.topic: article
 ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117315"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780207"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Een beheerde installatie kopie gebruiken om een pool van virtuele machines te maken
 
@@ -21,7 +21,7 @@ Als u een aangepaste installatie kopie wilt maken voor de virtuele machines van 
 
 - **Een beheerde installatie kopie bron**. Als u een groep virtuele machines wilt maken met behulp van een aangepaste installatie kopie, moet u een beheerde installatie kopie bron hebben of maken in hetzelfde Azure-abonnement en dezelfde regio als het batch-account. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven. Zie de volgende sectie voor meer informatie en stappen om een beheerde installatie kopie voor te bereiden.
   - Gebruik een unieke aangepaste installatie kopie voor elke groep die u maakt.
-  - Als u een groep wilt maken met de installatie kopie met behulp van de batch-Api's, geeft u de **resource-id** op van de afbeelding. Dit is van het formulier `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Als u de portal wilt gebruiken, gebruikt u de **naam** van de installatie kopie.  
+  - Als u een groep wilt maken met de installatie kopie met behulp van de batch-Api's, geeft u de **resource-id** op van de afbeelding. Dit is van het formulier `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . Als u de portal wilt gebruiken, gebruikt u de **naam** van de installatie kopie.  
   - De beheerde installatie kopie bron moet bestaan voor de levens duur van de groep zodat deze kan worden geschaald en kan worden verwijderd nadat de groep is verwijderd.
 
 - **Azure Active Directory (Aad)-verificatie**. De batch-client-API moet gebruikmaken van AAD-verificatie. Azure Batch ondersteuning voor AAD wordt beschreven in [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.md).
@@ -107,10 +107,10 @@ Het maken van een beheerde installatie kopie bron rechtstreeks met de Packer kan
 
 Zorg ervoor dat de resource die wordt gebruikt om de beheerde installatie kopie te maken, bestaat voor de levens duur van elke groep die verwijst naar de aangepaste installatie kopie. Als u dit niet doet, kan dit leiden tot geheugen toewijzings fouten en/of het formaat van fouten.
 
-Als de afbeelding of de onderliggende resource wordt verwijderd, wordt er mogelijk een fout bericht weer gegeven `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`die vergelijkbaar is met:. Als u deze fout ontvangt, controleert u of de onderliggende resource niet is verwijderd.
+Als de afbeelding of de onderliggende resource wordt verwijderd, wordt er mogelijk een fout bericht weer gegeven die vergelijkbaar is met: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed` . Als u deze fout ontvangt, controleert u of de onderliggende resource niet is verwijderd.
 
 Zie [een Linux-installatie kopie bouwen met een Packer](../virtual-machines/linux/build-image-with-packer.md) of [een Windows-installatie kopie bouwen met Packer](../virtual-machines/windows/build-image-with-packer.md)voor meer informatie over het gebruik van Packer voor het maken van een virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+- Zie [batch service workflow en resources](batch-service-workflow-features.md)voor een uitgebreid overzicht van batch.

@@ -3,12 +3,12 @@ title: Knoop punten in Azure Batch groep configureren
 description: Toegang tot SSH-of RDP-poorten op reken knooppunten in een Azure Batch pool configureren of uitschakelen.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 4b990e4223f37f71d453cd91b9b3a20bd70d0bbb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723507"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780294"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Externe toegang tot reken knooppunten in een Azure Batch groep configureren of uitschakelen
 
@@ -120,7 +120,5 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 - Zie [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over NSG-regels in Azure.
-
-- Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
-

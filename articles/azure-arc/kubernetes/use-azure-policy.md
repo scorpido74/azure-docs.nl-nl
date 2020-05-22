@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy gebruiken om cluster configuraties op schaal toe te passen
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: 64be872e4e76545c015378417410cbbfad95ebfd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c017e9422733069ffd93f6dff72ecb884da057c4
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680658"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779950"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Gebruik Azure Policy om cluster configuraties op schaal toe te passen (preview-versie)
 
@@ -64,4 +64,4 @@ Nadat de beleids toewijzing is gemaakt, wordt voor elke nieuwe `connectedCluster
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Policy gebruiken om de cluster configuratie te bepalen](./use-azure-policy.md)
+* [Azure Monitor instellen voor containers met Kubernetes-clusters die zijn ingeschakeld voor Arc](./deploy-azure-monitor-for-containers.md)

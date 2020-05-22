@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205097"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780512"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Zelf studie: ServiceNow configureren voor automatische gebruikers inrichting
 
@@ -45,7 +45,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een [ServiceNow Express-exemplaar](https://www.servicenow.com/) van Helsinki of hoger
 * Een gebruikers account in ServiceNow met de rol Admin
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en ServiceNow](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -80,7 +80,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor ServiceNow in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -141,7 +141,6 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * **InvalidLookupReference:** Bij het inrichten van bepaalde kenmerken, zoals afdeling en locatie in ServiceNow, moeten de waarden al bestaan in een verwijzings tabel in ServiceNow. U kunt bijvoorbeeld twee locaties (Seattle, Los Angeles) en drie afdelingen (verkoop, financiën, marketing) hebben in de tabel tabel **naam invoegen** in ServiceNow. Als u een gebruiker wilt inrichten waarbij zijn afdeling ' verkoop ' is en de locatie ' Seattle ' is, wordt hij met succes ingericht. Als u probeert een gebruiker in te richten met afdeling "verkoop" en locatie "LA", wordt de gebruiker niet ingericht. De locatie LA moet worden toegevoegd aan de verwijzings tabel in ServiceNow of het gebruikers kenmerk in azure AD moet worden bijgewerkt zodat dit overeenkomt met de indeling in ServiceNow. 
 * **EntryJoiningPropertyValueIsMissing:** Controleer de [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) om het overeenkomende kenmerk te identificeren. Deze waarde moet aanwezig zijn op de gebruiker of groep die u wilt inrichten. 
 * Bekijk de [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) om inzicht te krijgen in vereisten of beperkingen (bijvoorbeeld indeling om land code op te geven voor een gebruiker)
-* Voor sommige ServiceNow-implementaties is het toestaan van IP-adresbereiken vereist voor de Azure AD-inrichtings service. De gereserveerde IP-bereiken voor de Azure AD-inrichtings service vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519) onder "AzureActiveDirectoryDomainServices".
 * Inrichtings aanvragen worden standaard verzonden naar https://{uw-instance-name}. Service-now. com/{table-name}. Als u een aangepaste Tenant-URL nodig hebt, kunt u de volledige URL opgeven in het veld exemplaar naam.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen

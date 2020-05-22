@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096296"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774450"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -54,7 +54,7 @@ In de volgende stappen ontwikkelt u een model om te voors pellen of een bepaalde
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -159,9 +159,9 @@ plt.suptitle('')
 plt.show()
 ```
 
-![Het](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![spreidings diagram van het](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![histogram Box whisker tekenen](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+ ![ Het ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+ ![ spreidings diagram van het histogram Box whisker tekenen](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>De gegevens voorbereiden
 
@@ -208,7 +208,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Een logistiek regressie model maken
 
-De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` kolommen `weekdayString` en moeten worden geconverteerd naar gehele getallen. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
+De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` `weekdayString` kolommen en moeten worden geconverteerd naar gehele getallen. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -238,6 +238,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 ```
 
 Nu er twee DataFrames zijn, bestaat de volgende taak uit het maken van de model formule en voert u deze uit met de training data frame en valideert u vervolgens op basis van de test data frame. Experimenteer met verschillende versies van de model formule om de impact van verschillende combi Naties te bekijken.
+
+> [!Note]
+> Als u het model wilt opslaan, hebt u de Azure Storage Blob de RBAC-rol data contributor nodig. Navigeer onder uw opslag account naar Access Control (IAM) en selecteer roltoewijzing toevoegen. Wijs de RBAC-rol Storage BLOB data Inzender toe aan uw SQL Database-Server. Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor verschillende ingebouwde rollen voor Azure-resources.
 
 ```python
 ## Create a new LR object for the model

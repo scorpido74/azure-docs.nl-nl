@@ -4,12 +4,12 @@ description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Az
 ms.topic: how-to
 ms.date: 09/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a299ce05caa02432f96dfbb5eb675bc2d6f82ab5
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723711"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779155"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -86,5 +86,5 @@ Batch-Pools in de Cloud service configuratie ondersteunen alle [VM-grootten voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api-basics.md)voor een uitgebreid overzicht van batch.
+* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
 * Zie voor meer informatie over het gebruik van Compute-intensieve VM-grootten [RDMA-compatibele of GPU-compatibele instanties in batch-Pools gebruiken](batch-pool-compute-intensive-sizes.md).

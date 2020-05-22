@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: e945a1d39edb6dad43e66ac492eb1e5c36ff58e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684193"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779718"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps gebruiken voor een configuratie met Azure-Arc-functionaliteit (preview-versie)
 
@@ -31,7 +31,7 @@ In deze hand leiding vindt u instructies voor het Toep assen van een set configu
 
 ## <a name="create-a-configuration"></a>Een configuratie maken
 
-- Voor beeld van opslag plaats:<https://github.com/slack/cluster-config>
+- Voor beeld van opslag plaats:<https://github.com/Azure/arc-k8s-demo>
 
 De voor beeld-opslag plaats is gestructureerd rond de persoon van een cluster operator die een paar naam ruimten wil inrichten, een gemeen schappelijke werk belasting moet implementeren en een bepaalde specifieke configuratie voor het team moet bieden. Met deze opslag plaats worden de volgende resources op het cluster gemaakt:
 
@@ -40,7 +40,7 @@ De voor beeld-opslag plaats is gestructureerd rond de persoon van een cluster op
  **ConfigMap:**`team-a/endpoints`
 
 De `config-agent` pollt Azure voor nieuw of `sourceControlConfiguration` elke 30 seconden bijgewerkt.  Dit is de maximale tijd die nodig is `config-agent` om een nieuwe of bijgewerkte configuratie op te halen.
-Als u een privé opslagplaats koppelt, moet u er ook voor zorgen dat u de stappen in [configuratie Toep assen uit een privé Git-opslag plaats](https://github.com/Azure/azure-arc-kubernetes-preview/blob/master/docs/use-gitops-in-connected-cluster.md#apply-configuration-from-a-private-git-repository) uitvoert
+Als u een privé opslagplaats koppelt, moet u er ook voor zorgen dat u de stappen in [configuratie Toep assen uit een privé Git-opslag plaats](#apply-configuration-from-a-private-git-repository) uitvoert
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
@@ -145,9 +145,9 @@ Opties die worden ondersteund in--operator-params
 
 * Als enableHelmOperator is ingesteld op True, kunnen operatorInstanceName + operatorNamespace-teken reeksen niet langer zijn dan 47 tekens.  Als u niet aan deze limiet voldoet, krijgt u deze fout:
 
-```console
-{"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-```
+   ```console
+   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
+   ```
 
 Zie voor meer informatie de [documentatie over de stroom](https://aka.ms/FluxcdReadme).
 
