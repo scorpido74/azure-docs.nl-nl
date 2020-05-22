@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6eec99594ca748fa0610c60c83fd58e388f7923
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241018"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742892"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Georuimtelijke Api's om Maps, ruimtelijke analyse en mobiliteits oplossingen met Azure Maps toe te voegen
 
@@ -25,7 +25,7 @@ ms.locfileid: "80241018"
 - **Route ring**: geeft de kortste of snelste routes weer die op een bepaald moment beschikbaar zijn voor meerdere locaties. Route ring biedt ook gespecialiseerde routes en feiten voor walkie, fietsers en commerciële Voer tuigen.
 - **Tijd zones**: maakt het eenvoudig om te zien welke tijd het overal ter wereld is.
 - **Ruimtelijke bewerkingen**: Verbeter uw locatie Intelligence.
-- **Geolocatie**: Hiermee zoekt u het land van een IP-adres.
+- **Geolocatie**: Hiermee zoekt u het land/de regio van een IP-adres.
 - **Gegevens service**: uploadt en slaat georuimtelijke gegevens op voor gebruik met ruimtelijke bewerkingen of installatie kopieën samen stelling.
 - **Mobiliteit**: biedt informatie over de real-time locatie van open bare doorvoer Services in de buurt. De schattingen, route-informatie en reis tijd zijn opgenomen.
 

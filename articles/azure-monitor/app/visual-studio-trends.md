@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670862"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744136"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trends analyseren in Visual Studio
 Het hulpprogramma Application Insights Trends visualiseert hoe belangrijke telemetriegebeurtenissen van uw webtoepassing wijzigen gedurende een periode, zodat u snel problemen en afwijkingen kunt identificeren. Met koppelingen naar gedetailleerdere diagnostische gegevens kan Trends u helpen de prestaties van uw app te verbeteren, de oorzaken van uitzonderingen te achterhalen en inzichten op basis van aangepaste gebeurtenissen te bieden.
@@ -48,7 +48,7 @@ U gaat aan de slag door een van de vijf algemene trendanalysen te kiezen. Met el
 Deze vooraf gemaakte analysen zijn later beschikbaar via de knop **View common types of telemetry analysis** in de linkerbovenhoek van het venster Trends.
 
 ## <a name="visualize-trends-in-your-application"></a>Trends in uw toepassing visualiseren
-Application Insights Trends maakt een tijdreeksvisualisatie op basis van de telemetrie van uw toepassing. Elke keer reeksvisualisatie geeft een soort telemetrie, gegroepeerd op een eigenschap van die telemetrie over een bepaalde tijdspanne. Zo wilt u misschien serveraanvragen weergeven, gegroepeerd op het land van waaruit ze afkomstig zijn, in de afgelopen 24 uur. In dit voorbeeld zou elke bel in de weergave een telling van het aantal serveraanvragen voor een bepaald land / regio gedurende één uur voorstellen.
+Application Insights Trends maakt een tijdreeksvisualisatie op basis van de telemetrie van uw toepassing. Elke keer reeksvisualisatie geeft een soort telemetrie, gegroepeerd op een eigenschap van die telemetrie over een bepaalde tijdspanne. Stel dat u server aanvragen wilt weer geven, gegroepeerd op het land of de regio van waaruit ze afkomstig zijn, in de afgelopen 24 uur. In dit voorbeeld zou elke bel in de weergave een telling van het aantal serveraanvragen voor een bepaald land / regio gedurende één uur voorstellen.
 
 Gebruik de besturingselementen boven in het venster om aan te passen welke typen telemetrie u wilt weergeven. Kies eerst de telemetrietypen waarin u bent geïnteresseerd:
 

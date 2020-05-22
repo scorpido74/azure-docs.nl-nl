@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248747"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740447"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -101,7 +101,7 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 
 #### <a name="log-data"></a>Logboekgegevens
 
-* [Bericht opschonen](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
+* [Bericht opschonen](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
 * Status van leegmaken ophalen: de aanroep ' x-MS-status-location ' wordt door het aanroepen van de POST geretourneerd en bevat een URL die u kunt aanroepen om de status van uw opschoon API te bepalen. Bijvoorbeeld:
 
     ```

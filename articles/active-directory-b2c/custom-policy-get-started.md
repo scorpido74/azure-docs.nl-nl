@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407281"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738248"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "81407281"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
@@ -40,8 +40,8 @@ ms.locfileid: "81407281"
 ### <a name="create-the-signing-key"></a>De handtekening sleutel maken
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies **Options** `Generate`voor opties.
-1. Voer **Name** `TokenSigningKeyContainer`bij naam in. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
+1. Kies voor **Opties** `Generate` .
+1. Voer bij **naam**in `TokenSigningKeyContainer` . Het voor voegsel `B2C_1A_` kan automatisch worden toegevoegd.
 1. Selecteer voor **sleutel type** **RSA**.
 1. Selecteer voor **sleutel gebruik** **hand tekening**.
 1. Selecteer **Maken**.
@@ -49,8 +49,8 @@ ms.locfileid: "81407281"
 ### <a name="create-the-encryption-key"></a>De versleutelings sleutel maken
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies **Options** `Generate`voor opties.
-1. Voer **Name** `TokenEncryptionKeyContainer`bij naam in. Het voor `B2C_1A`voegsel _ kan automatisch worden toegevoegd.
+1. Kies voor **Opties** `Generate` .
+1. Voer bij **naam**in `TokenEncryptionKeyContainer` . Het voor voegsel `B2C_1A` _ kan automatisch worden toegevoegd.
 1. Selecteer voor **sleutel type** **RSA**.
 1. Voor **sleutel gebruik**selecteert u **versleuteling**.
 1. Selecteer **Maken**.
@@ -60,8 +60,8 @@ ms.locfileid: "81407281"
 Voeg het [app-geheim](identity-provider-facebook.md) van uw Facebook-toepassing toe als een beleids sleutel. U kunt het app-geheim gebruiken van de toepassing die u hebt gemaakt als onderdeel van de vereisten van dit artikel.
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies **Options** `Manual`voor opties.
-1. Voer **Name** `FacebookSecret`in bij naam. Het voor `B2C_1A_` voegsel kan automatisch worden toegevoegd.
+1. Kies voor **Opties** `Manual` .
+1. Voer **Name**in bij naam `FacebookSecret` . Het voor voegsel `B2C_1A_` kan automatisch worden toegevoegd.
 1. Voer in het **geheim**het *app-geheim* van uw Facebook-toepassing in vanuit developers.Facebook.com. Deze waarde is het geheim, niet de toepassings-ID.
 1. Selecteer voor **sleutel gebruik** **hand tekening**.
 1. Selecteer **Maken**.
@@ -78,21 +78,21 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 1. Selecteer in het menu **Azure Active Directory** overzicht onder **beheren**de optie **app-registraties (verouderd)**.
 1. Selecteer **Nieuwe toepassing registreren**.
-1. Voer **Name** `IdentityExperienceFramework`in bij naam.
+1. Voer **Name**in bij naam `IdentityExperienceFramework` .
 1. Kies voor **toepassings type** **Web-app/API**.
-1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`bij `your-tenant-name` **aanmeldings-URL**in, waarbij de naam van uw Azure AD B2C Tenant domein. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
+1. Voer bij **aanmeldings-URL**in `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de naam van uw Azure AD B2C Tenant domein. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
 1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 
 #### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
-1. Voer **Name** `IdentityExperienceFramework`in bij naam.
+1. Voer **Name**in bij naam `IdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
-1. Onder **omleidings-URI**selecteert u **Web**en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`vervolgens ENTER `your-tenant-name` , waarbij de domein naam van uw Azure AD B2C Tenant.
+1. Onder **omleidings-URI**selecteert u **Web**en vervolgens ENTER `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de domein naam van uw Azure AD B2C Tenant.
 1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
@@ -114,9 +114,9 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Selecteer in **app-registraties (verouderd)** de optie **nieuwe toepassing registreren**.
-1. Voer **Name** `ProxyIdentityExperienceFramework`in bij naam.
+1. Voer **Name**in bij naam `ProxyIdentityExperienceFramework` .
 1. Kies voor **toepassings type** **systeem eigen**.
-1. Voer `myapp://auth`voor **omleidings-URI**in.
+1. Voer voor **omleidings-URI**in `myapp://auth` .
 1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 1. Selecteer **instellingen**, selecteer de **gewenste machtigingen**en selecteer vervolgens **toevoegen**.
 1. Kies **een API selecteren**, zoek naar en selecteer **IdentityExperienceFramework**, en klik vervolgens op **selecteren**.
@@ -126,10 +126,10 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 #### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
-1. Voer **Name** `ProxyIdentityExperienceFramework`in bij naam.
+1. Voer **Name**in bij naam `ProxyIdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Gebruik onder **omleidings-URI**de vervolg keuzelijst om een **open bare client/systeem eigen (mobiele & bureau blad)** te selecteren.
-1. Voer `myapp://auth`voor **omleidings-URI**in.
+1. Voer voor **omleidings-URI**in `myapp://auth` .
 1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
@@ -138,7 +138,7 @@ Geef vervolgens op dat de toepassing moet worden behandeld als een open bare cli
 
 1. Selecteer onder **beheren**de optie **verificatie**.
 1. Selecteer **de nieuwe ervaring uitproberen** (indien weer gegeven).
-1. Schakel onder **Geavanceerde instellingen** **de optie toepassing behandelen als een open bare client** in (Selecteer **Ja**).
+1. Schakel onder **Geavanceerde instellingen** **de optie toepassing behandelen als een open bare client** in (Selecteer **Ja**). Zorg ervoor dat **' allowPublicClient ': True '** is ingesteld in het manifest van de toepassing. 
 1. Selecteer **Opslaan**.
 
 Ken nu machtigingen toe aan het API-bereik dat u eerder hebt weer gegeven in de *IdentityExperienceFramework* -registratie:
@@ -182,15 +182,15 @@ Down load de aangepaste beleids Starter Packs van GitHub en werk vervolgens de X
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-1. Vervang in alle bestanden in de map **SocialAndLocalAccounts** de teken reeks `yourtenant` door de naam van uw Azure AD B2C-Tenant.
+1. Vervang in alle bestanden in de map **SocialAndLocalAccounts** de teken reeks door `yourtenant` de naam van uw Azure AD B2C-Tenant.
 
-    Als de naam van uw B2C-Tenant bijvoorbeeld *contosotenant*is, worden `yourtenant.onmicrosoft.com` `contosotenant.onmicrosoft.com`alle exemplaren van.
+    Als de naam van uw B2C-Tenant bijvoorbeeld *contosotenant*is, worden alle exemplaren van `yourtenant.onmicrosoft.com` `contosotenant.onmicrosoft.com` .
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Toepassings-Id's toevoegen aan het aangepaste beleid
 
 Voeg de toepassings-Id's toe aan het extensie bestand *TrustFrameworkExtensions. XML*.
 
-1. Open `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** het element `<TechnicalProfile Id="login-NonInteractive">`en zoek het.
+1. Open `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** het element en zoek het `<TechnicalProfile Id="login-NonInteractive">` .
 1. Vervang beide exemplaren van `IdentityExperienceFrameworkAppId` door de toepassings-id van de IdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
 1. Vervang beide exemplaren van `ProxyIdentityExperienceFrameworkAppId` door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
 1. Sla het bestand op.
@@ -206,16 +206,16 @@ Voeg de toepassings-Id's toe aan het extensie bestand *TrustFrameworkExtensions.
     1. *ProfileEdit. XML*
     1. *PasswordReset. XML*
 
-Wanneer u de bestanden uploadt, voegt Azure het `B2C_1A_` voor voegsel toe aan elke.
+Wanneer u de bestanden uploadt, voegt Azure het voor voegsel `B2C_1A_` toe aan elke.
 
 > [!TIP]
-> Als uw XML-editor validatie ondersteunt, valideert u de `TrustFrameworkPolicy_0.3.0.0.xsd` bestanden op basis van het XML-schema dat zich in de hoofdmap van het Starter Pack bevindt. Validatie van XML-schema identificeert fouten voordat ze worden geüpload.
+> Als uw XML-editor validatie ondersteunt, valideert u de bestanden op basis `TrustFrameworkPolicy_0.3.0.0.xsd` van het XML-schema dat zich in de hoofdmap van het Starter Pack bevindt. Validatie van XML-schema identificeert fouten voordat ze worden geüpload.
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
 1. Selecteer **B2C_1A_signup_signin**onder **aangepast beleid**.
 1. Selecteer voor **Select-toepassing** op de pagina overzicht van het aangepaste beleid de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd.
-1. Zorg ervoor dat de **antwoord** -URL `https://jwt.ms`is.
+1. Zorg ervoor dat de **antwoord-URL** is `https://jwt.ms` .
 1. Selecteer **nu uitvoeren**.
 1. Meld u aan met een e-mail adres.
 1. Selecteer **nu uitvoeren** .
@@ -225,7 +225,7 @@ Wanneer u de bestanden uploadt, voegt Azure het `B2C_1A_` voor voegsel toe aan e
 
 Zoals vermeld in [vereisten](#prerequisites), is Facebook niet vereist voor het gebruik van aangepast beleid, maar wordt hier *niet* gebruikt om te laten zien hoe u federatieve sociale aanmelding kunt inschakelen in een aangepast beleid.
 
-1. Vervang in `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** het bestand de waarde van met `client_id` de id van de Facebook-toepassing:
+1. Vervang in het `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** bestand de waarde van `client_id` met de id van de Facebook-toepassing:
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">

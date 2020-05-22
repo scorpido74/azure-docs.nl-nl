@@ -16,12 +16,12 @@ ms.date: 04/24/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab2974cf95726f44641b4ac220c7ee871890ca56
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144502"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736837"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang
 
@@ -32,7 +32,7 @@ In een ideale wereld volgen alle gebruikers het toegangs beleid om de toegang to
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Waarom zou u gebruikers uitsluiten van beleid?
 
-Stel dat u als beheerder besluit om de [voorwaardelijke toegang van Azure AD](../conditional-access/overview.md) te gebruiken om multi-factor Authentication (MFA) te vereisen en verificatie aanvragen te beperken tot specifieke netwerken of apparaten. Tijdens het plannen van de implementatie beseft u dat niet alle gebruikers aan deze vereisten kunnen voldoen. Stel dat u gebruikers hebt die vanaf externe kant oren werken en geen deel uitmaken van uw interne netwerk. Het is ook mogelijk dat u gebruikers wilt voorzien van het maken van verbinding met niet-ondersteunde apparaten, terwijl u wacht tot deze apparaten worden vervangen. Kortom, het bedrijf heeft deze gebruikers nodig om zich aan te melden en hun taak uit te voeren, zodat u ze kunt uitsluiten van beleid voor voorwaardelijke toegang.
+Stel dat u als beheerder besluit om de [voorwaardelijke toegang van Azure AD](../conditional-access/concept-conditional-access-policy-common.md) te gebruiken om multi-factor Authentication (MFA) te vereisen en verificatie aanvragen te beperken tot specifieke netwerken of apparaten. Tijdens het plannen van de implementatie beseft u dat niet alle gebruikers aan deze vereisten kunnen voldoen. Stel dat u gebruikers hebt die vanaf externe kant oren werken en geen deel uitmaken van uw interne netwerk. Het is ook mogelijk dat u gebruikers wilt voorzien van het maken van verbinding met niet-ondersteunde apparaten, terwijl u wacht tot deze apparaten worden vervangen. Kortom, het bedrijf heeft deze gebruikers nodig om zich aan te melden en hun taak uit te voeren, zodat u ze kunt uitsluiten van beleid voor voorwaardelijke toegang.
 
 Een ander voor beeld is het mogelijk om [benoemde locaties](../conditional-access/location-condition.md) in voorwaardelijke toegang te gebruiken om een set landen en regio's op te geven waarvan u niet wilt dat gebruikers toegang hebben tot hun Tenant.
 

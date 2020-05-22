@@ -1,18 +1,18 @@
 ---
-title: Logboeken van VM's buiten bedrijfsuren starten/stoppen opvragen
-description: In dit artikel wordt beschreven hoe u een query uitvoert op logboek gegevens die zijn gegenereerd door VM's buiten bedrijfsuren starten/stoppen oplossing van Azure Monitor.
+title: Query's uitvoeren op Logboeken van Azure Automation VM's buiten bedrijfsuren starten/stoppen
+description: In dit artikel leest u hoe u Azure Monitor kunt gebruiken om logboek gegevens te zoeken die zijn gegenereerd door VM's buiten bedrijfsuren starten/stoppen.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864229"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743729"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Logboeken van VM's buiten bedrijfsuren starten/stoppen opvragen
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Query's uitvoeren op Logboeken van VM's buiten bedrijfsuren starten/stoppen
 
 Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log Analytics werk ruimte: taak logboeken en taak stromen. In dit artikel worden de gegevens weer gegeven die beschikbaar zijn voor [query's](../azure-monitor/log-query/log-query-overview.md) in azure monitor.
 
@@ -60,7 +60,7 @@ Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records va
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 
-De volgende tabel bevat voorbeeldzoekopdrachten in logboeken voor taakrecords die worden verzameld met deze oplossing.
+De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor taak records die worden verzameld door VM's buiten bedrijfsuren starten/stoppen.
 
 |Query’s uitvoeren | Beschrijving|
 |----------|----------|
@@ -71,4 +71,6 @@ De volgende tabel bevat voorbeeldzoekopdrachten in logboeken voor taakrecords di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De **VM's buiten bedrijfsuren starten/stoppen** oplossing bevat geen vooraf gedefinieerde set met waarschuwingen. Bekijk de [waarschuwingen voor het maken van Logboeken](../azure-monitor/platform/alerts-log.md) met Azure monitor voor meer informatie over het maken van mislukte waarschuwingen om uw DevOps of operationele processen en procedures te ondersteunen.
+* [Logboek waarschuwingen met Azure Monitor maken](../azure-monitor/platform/alerts-log.md)
+* [Vm's voor stoppen/starten configureren tijdens buiten kantoor uren](automation-solution-vm-management-config.md)
+* [Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)

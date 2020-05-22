@@ -1,49 +1,42 @@
 ---
-title: VM's buiten bedrijfsuren starten/stoppen oplossing Azure Automation configureren
-description: In dit artikel wordt beschreven hoe u de VM's buiten bedrijfsuren starten/stoppen-oplossing kunt configureren voor de ondersteuning van verschillende use cases of scenario's.
+title: Azure Automation VM's buiten bedrijfsuren starten/stoppen configureren
+description: In dit artikel leest u hoe u de VM's buiten bedrijfsuren starten/stoppen-functie kunt configureren voor het ondersteunen van verschillende use cases of scenario's.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864263"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743742"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>VM's buiten bedrijfsuren starten/stoppen oplossing configureren
+# <a name="configure-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen configureren
 
-Met de **VM's buiten bedrijfsuren starten/stoppen** oplossing kunt u het volgende doen:
-
-- [Plan vm's om te starten en te stoppen](#schedule).
-- Plan Vm's om in oplopende volg orde te starten en te stoppen met [behulp van Azure Tags](#tags) (niet ondersteund voor klassieke vm's).
-- Vm's automatisch stoppen op basis van [laag CPU-gebruik](#cpuutil).
-
-In dit artikel wordt beschreven hoe u de oplossing kunt configureren voor de ondersteuning van deze scenario's. U kunt ook meer informatie over het uitvoeren van andere algemene configuratie-instellingen voor de oplossing, zoals:
+In dit artikel wordt beschreven hoe u de [VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management.md) -functie configureert om de beschreven scenario's te ondersteunen. U kunt ook leren hoe u:
 
 * [E-mailmeldingen configureren](#configure-email-notifications)
-
 * [Een VM toevoegen](#add-a-vm)
-
 * [Een VM uitsluiten](#exclude-a-vm)
-
 * [De planningen voor opstarten en afsluiten wijzigen](#modify-the-startup-and-shutdown-schedules)
 
 ## <a name="scenario-1-startstop-vms-on-a-schedule"></a><a name="schedule"></a>Scenario 1: Vm's starten/stoppen volgens een planning
 
-Dit scenario is de standaard configuratie wanneer u de oplossing voor het eerst implementeert. U kunt deze bijvoorbeeld zo configureren dat alle virtuele machines in een abonnement worden gestopt wanneer u het werk in de avond verlaat en ze 's morgens start wanneer u weer terug bent in het kantoor. Wanneer u de planning **gepland-StartVM** en **gepland-StopVM** configureert tijdens de implementatie, worden de beoogde vm's gestart en gestopt. Het configureren van deze oplossing voor het stoppen van Vm's wordt ondersteund, Zie [de opstart-en afsluit Schema's wijzigen](#modify-the-startup-and-shutdown-schedules) voor meer informatie over het configureren van een aangepaste planning.
+Dit scenario is de standaard configuratie wanneer u VM's buiten bedrijfsuren starten/stoppen voor het eerst implementeert. U kunt de functie bijvoorbeeld zo configureren dat alle virtuele machines in een abonnement worden gestopt wanneer u het werk in de avond verlaat en ze op de morgen start wanneer u weer terug bent in het kantoor. Wanneer u de planning **gepland-StartVM** en **gepland-StopVM** configureert tijdens de implementatie, worden de beoogde vm's gestart en gestopt. 
+
+Het configureren van de functie om alleen Vm's te stoppen wordt ondersteund. Zie [de planningen voor opstarten en afsluiten wijzigen](#modify-the-startup-and-shutdown-schedules) voor meer informatie over het configureren van een aangepaste planning.
 
 > [!NOTE]
-> De tijd zone is uw huidige tijd zone bij het configureren van de plannings tijd parameter. Het wordt echter opgeslagen in UTC-indeling in Azure Automation. U hoeft geen tijd zone conversie uit te voeren, aangezien deze wordt verwerkt tijdens de implementatie.
+> De tijd zone die wordt gebruikt door de functie is uw huidige tijd zone bij het configureren van de plannings tijd parameter. Azure Automation slaat het echter in de UTC-indeling op in Azure Automation. U hoeft geen tijd zone conversie uit te voeren, aangezien deze wordt verwerkt tijdens de implementatie van de machine.
 
-U bepaalt welke Vm's binnen het bereik vallen door de volgende variabelen te configureren: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**en **External_ExcludeVMNames**.
+Als u de Vm's wilt beheren die binnen het bereik vallen, configureert u de variabelen: `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` .
 
 U kunt de actie richten op een abonnement en resource groep, of een specifieke lijst met Vm's maken, maar niet beide.
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>De start-en stop acties voor een abonnement en resource groep richten
 
-1. Configureer de `External_Stop_ResourceGroupNames` variabelen `External_ExcludeVMNames` en om de doel-vm's op te geven.
+1. Configureer de `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` variabelen en om de doel-vm's op te geven.
 
 2. De **geplande-StartVM** en **geplande StopVM-** schema's inschakelen en bijwerken.
 
@@ -55,42 +48,42 @@ U kunt de actie richten op een abonnement en resource groep, of een specifieke l
 
 2. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
 
-3. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en `External_Stop_ResourceGroupnames` niet nageleefd. Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](../automation/automation-schedules.md)voor meer informatie.
+3. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
 
     > [!NOTE]
-    > De waarde voor **doel-ResourceGroup namen** wordt opgeslagen als de waarde voor `External_Start_ResourceGroupNames` zowel `External_Stop_ResourceGroupNames`en. Voor nadere granulariteit kunt u elk van deze variabelen wijzigen in doel verschillende resource groepen. Voor het starten van actie `External_Start_ResourceGroupNames`, gebruiken en `External_Stop_ResourceGroupNames` gebruiken voor stop actie. Vm's worden automatisch toegevoegd aan de planningen starten en stoppen.
+    > De waarde voor **doel-ResourceGroup namen** wordt opgeslagen als de waarden voor `External_Start_ResourceGroupNames` zowel `External_Stop_ResourceGroupNames` en. Voor nadere granulariteit kunt u elk van deze variabelen wijzigen in doel verschillende resource groepen. Voor het starten van actie, gebruiken `External_Start_ResourceGroupNames` en gebruiken `External_Stop_ResourceGroupNames` voor stop actie. Vm's worden automatisch toegevoegd aan de planningen starten en stoppen.
 
 ## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>Scenario 2: VM'S in volg orde starten/stoppen met behulp van Tags
 
-In een omgeving met twee of meer onderdelen op meerdere Vm's die een gedistribueerde werk belasting ondersteunen, wordt de volg orde waarin de onderdelen worden gestart en gestopt, op de juiste wijze ondersteund. U kunt dit scenario uitvoeren door de volgende stappen uit te voeren:
+In een omgeving met twee of meer onderdelen op meerdere Vm's die een gedistribueerde werk belasting ondersteunen, wordt de volg orde waarin de onderdelen worden gestart en gestopt, op de juiste wijze ondersteund. 
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>De start-en stop acties voor een abonnement en resource groep richten
 
-1. Voeg een `sequencestart` en een `sequencestop` tag met een positieve integerwaarde toe aan vm's die zijn gericht `External_Start_ResourceGroupNames` op `External_Stop_ResourceGroupNames` en variabelen. De start-en stop acties worden in oplopende volg orde uitgevoerd. Zie een [virtuele Windows-machine coderen in azure](../virtual-machines/windows/tag.md) en [een virtuele Linux-machine in azure labelen](../virtual-machines/linux/tag.md)voor meer informatie over het coderen van een VM.
+1. Voeg een `sequencestart` en een `sequencestop` tag met positieve gehele waarden toe aan vm's die zijn gericht op `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` variabelen. De start-en stop acties worden in oplopende volg orde uitgevoerd. Zie een [virtuele Windows-machine coderen in azure](../virtual-machines/windows/tag.md) en [een virtuele Linux-machine in azure labelen](../virtual-machines/linux/tag.md)voor meer informatie over het coderen van een VM.
 
 2. Wijzig de planningen **Sequenced-StartVM** en **Sequence-StopVM** in de datum en tijd die aan uw vereisten voldoen en schakel de planning in.
 
 3. Voer het **SequencedStartStop_Parent** runbook uit met de **actie** ingesteld op **Start** en **WHATIF** ingesteld op True om een voor beeld van de wijzigingen weer te geven.
 
-4. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u het runbook hand matig uit met de para meter ingesteld op **Onwaar**, of laat u het Automation-schema `Sequenced-StartVM` automatisch `Sequenced-StopVM` uitvoeren volgens uw voorgeschreven planning.
+4. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u het runbook hand matig uit met de para meter ingesteld op **Onwaar**, of laat u het Automation **-schema Sequenced-StartVM** en **Sequence-StopVM** automatisch uitvoeren volgens uw voorgeschreven planning.
 
-### <a name="target-the-start-and-stop-action-by-vm-list"></a>De start-en stop actie richten op de VM-lijst
+### <a name="target-the-start-and-stop-actions-by-vm-list"></a>De start-en stop acties op de VM-lijst richten
 
-1. Voeg een `sequencestart` en een `sequencestop` tag toe met een positieve integerwaarde voor vm's die u wilt toevoegen aan `VMList` de para meter.
+1. Voeg een `sequencestart` en een `sequencestop` tag met positieve gehele waarden toe aan vm's die u wilt toevoegen aan de `VMList` para meter.
 
 2. Voer het **SequencedStartStop_Parent** runbook uit met de **actie** die is ingesteld op **starten**, voeg een door komma's gescheiden lijst met Vm's toe in het parameter veld **VMList** en stel **WHATIF** in op True. Bekijk een voor beeld van uw wijzigingen.
 
 3. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
 
-4. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en `External_Stop_ResourceGroupnames` niet nageleefd. Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](../automation/automation-schedules.md)voor meer informatie.
+4. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
 
-5. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u hand matig de **bewakings-en-diagnose/bewaking-Action-groupsrunbook** uit met de para meter ingesteld op **Onwaar**. U kunt het Automation-schema `Sequenced-StartVM` ook `Sequenced-StopVM` automatisch laten uitvoeren volgens uw voorgeschreven schema.
+5. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u hand matig de **bewakings-en-diagnose/bewaking-Action-groupsrunbook** uit met de para meter ingesteld op **Onwaar**. U kunt ook de automatiserings planning **Sequenced-StartVM** en **Sequence-StopVM** automatisch uitvoeren volgens uw voorgeschreven planning.
 
-## <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Scenario 3: automatisch starten/stoppen op basis van CPU-gebruik
+## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Scenario 3: automatisch starten of stoppen op basis van CPU-gebruik
 
-Met deze oplossing kunt u de kosten van het uitvoeren van Azure Resource Manager en klassieke virtuele machines in uw abonnement helpen beheren door Vm's te evalueren die niet worden gebruikt tijdens niet-piek perioden, zoals na uur, en ze automatisch af te sluiten als het processor gebruik minder is dan een opgegeven percentage.
+Met VM's buiten bedrijfsuren starten/stoppen kunt u de kosten van het uitvoeren van Azure Resource Manager en klassieke virtuele machines in uw abonnement controleren door machines te evalueren die niet worden gebruikt tijdens niet-piek perioden, zoals na uur, en ze automatisch uit te scha kelen als het processor gebruik lager is dan een opgegeven percentage.
 
-De oplossing is standaard vooraf geconfigureerd om het percentage CPU-metriek te evalueren om te controleren of het gemiddelde gebruik 5% of minder is. Dit scenario wordt bepaald door de volgende variabelen en kan worden gewijzigd als de standaard waarden niet voldoen aan uw vereisten:
+De functie is standaard vooraf geconfigureerd om het percentage CPU-metriek te evalueren om te zien of het gemiddelde gebruik 5% of minder is. Dit scenario wordt bepaald door de volgende variabelen en kan worden gewijzigd als de standaard waarden niet voldoen aan uw vereisten:
 
 * `External_AutoStop_MetricName`
 * `External_AutoStop_Threshold`
@@ -101,80 +94,80 @@ De oplossing is standaard vooraf geconfigureerd om het percentage CPU-metriek te
 
 U kunt de actie op basis van een abonnement en resource groep inschakelen en deze richten, of een specifieke lijst met Vm's richten.
 
-Wanneer u het **AutoStop_CreateAlert_Parent** runbook uitvoert, wordt gecontroleerd of het doel abonnement, de resource groep (en) en de vm's bestaan. Als de Vm's bestaan, roept het runbook het **AutoStop_CreateAlert_Child** runbook op voor elke GEVERIFIEERDE virtuele machine door het bovenliggende runbook. Dit onderliggende runbook voert het volgende uit:
+Wanneer u het **AutoStop_CreateAlert_Parent** runbook uitvoert, wordt gecontroleerd of het doel abonnement, de resource groep (en) en de virtuele machines bestaan. Als de virtuele machines bestaan, roept het runbook het **AutoStop_CreateAlert_Child** runbook op voor elke VM die wordt geverifieerd door het bovenliggende runbook. Dit onderliggende runbook:
 
 * Hiermee maakt u een waarschuwings regel voor metrische gegevens voor elke geverifieerde VM.
+* Hiermee wordt het **AutoStop_VM_Child** runbook voor een bepaalde virtuele machine geactiveerd als de CPU onder de geconfigureerde drempel waarde voor het opgegeven tijds interval daalt. 
+* Probeert de virtuele machine te stoppen.
 
-* Hiermee wordt het **AutoStop_VM_Child** runbook voor een bepaalde virtuele machine geactiveerd als de CPU onder de geconfigureerde drempel waarde voor het opgegeven tijds interval daalt. Dit runbook probeert vervolgens de virtuele machine te stoppen.
+### <a name="target-the-autostop-action-against-all-vms-in-a-subscription"></a>De actie voor autostop voor alle virtuele machines in een abonnement richten
 
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-subscription"></a>De actie automatisch stoppen voor alle virtuele machines in een abonnement instellen
+1. Zorg ervoor dat de `External_Stop_ResourceGroupNames` variabele leeg is of is ingesteld op * (joker tekens).
 
-1. Zorg ervoor dat `External_Stop_ResourceGroupNames` de variabele leeg is of is ingesteld op * (joker tekens).
+2. Beschrijving Als u sommige Vm's wilt uitsluiten van de actie autostop, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
 
-2. [Optionele stap] Als u sommige Vm's wilt uitsluiten van het automatisch afsluiten, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
+3. Schakel het **Schedule_AutoStop_CreateAlert_Parent** schema uit dat moet worden uitgevoerd om de vereiste waarschuwings regels voor het stoppen van de VM-metrische gegevens te maken voor alle virtuele machines in uw abonnement. Door dit type planning uit te voeren, kunt u nieuwe metrische waarschuwings regels maken wanneer er nieuwe virtuele machines aan het abonnement worden toegevoegd.
 
-3. Stel in `Schedule_AutoStop_CreateAlert_Parent` dat het schema moet worden uitgevoerd om de vereiste waarschuwings regels voor het stoppen van de VM-metrische gegevens voor alle virtuele machines in uw abonnement te maken. Door dit type planning uit te voeren, kunt u nieuwe metrische waarschuwings regels maken wanneer er nieuwe virtuele machines aan het abonnement worden toegevoegd.
+### <a name="target-the-autostop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>De actie autostop voor alle Vm's in een resource groep of meerdere resource groepen instellen
 
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>De actie automatisch stoppen voor alle Vm's in een resource groep of meerdere resource groepen instellen
+1. Voeg een door komma's gescheiden lijst met namen van resource groepen toe aan de `External_Stop_ResourceGroupNames` variabele.
 
-1. Voeg een door komma's gescheiden lijst met namen van resource groepen toe `External_Stop_ResourceGroupNames` aan de variabele.
-
-2. Als u sommige Vm's wilt uitsluiten van het automatisch afsluiten, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
+2. Als u sommige Vm's wilt uitsluiten van de autostop, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
 
 3. Schakel het **Schedule_AutoStop_CreateAlert_Parent** schema uit dat moet worden uitgevoerd om de vereiste waarschuwings regels voor het stoppen van de VM-metrische gegevens voor alle virtuele machines in de resource groepen te maken. Als u deze bewerking uitvoert volgens een planning, kunt u nieuwe metrische waarschuwings regels maken wanneer er nieuwe virtuele machines worden toegevoegd aan de resource groep (en).
 
-### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>De actie voor het uitschakelen van een lijst met Vm's
+### <a name="target-the-autostop-action-to-a-list-of-vms"></a>De actie voor autostop voor een lijst met Vm's richten
 
-1. Maak een nieuwe [planning](shared-resources/schedules.md#create-a-schedule) en koppel deze aan het **AutoStop_CreateAlert_Parent** runbook en voeg een door KOMMA'S gescheiden lijst met VM-namen toe `VMList` aan de para meter.
+1. Maak een nieuwe [planning](shared-resources/schedules.md#create-a-schedule) en koppel deze aan het **AutoStop_CreateAlert_Parent** runbook en voeg een door KOMMA'S gescheiden lijst met VM-namen toe aan de `VMList` para meter.
 
-2. Als u sommige Vm's wilt uitsluiten van automatisch afsluiten, kunt u desgewenst een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
+2. Als u sommige Vm's wilt uitsluiten van de actie voor autostop, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
 
 ## <a name="configure-email-notifications"></a>E-mailmeldingen configureren
 
-Als u e-mail meldingen wilt wijzigen nadat de oplossing is geïmplementeerd, wijzigt u de actie groep die tijdens de implementatie is gemaakt.  
+Als u e-mail meldingen wilt wijzigen nadat VM's buiten bedrijfsuren starten/stoppen is geïmplementeerd, kunt u de actie groep wijzigen die tijdens de implementatie is gemaakt.  
 
 > [!NOTE]
-> Abonnementen in de Azure Government Cloud bieden geen ondersteuning voor de e-mail functionaliteit van deze oplossing.
+> Abonnementen in de Azure Government Cloud bieden geen ondersteuning voor de e-mail functionaliteit van deze functie.
 
 1. Ga in het Azure Portal naar **controle**en vervolgens op **actie groepen**. Selecteer de actie groep met de naam **StartStop_VM_Notication**.
 
-    ![Pagina Automation Updatebeheer-oplossing](media/automation-solution-vm-management/azure-monitor.png)
+    ![Updatebeheer pagina Automation](media/automation-solution-vm-management/azure-monitor.png)
 
-2. Klik op de pagina **StartStop_VM_Notification** op **Details bewerken** onder **Details**. Hiermee opent u de pagina **e-mail/SMS/push/Voice** . Werk het e-mail adres bij en klik op **OK** om uw wijzigingen op te slaan.
+2. Klik op de pagina StartStop_VM_Notification op **Details bewerken** onder **Details**. Hiermee opent u de pagina E-mail/SMS/push/Voice. Werk het e-mail adres bij en klik op **OK** om uw wijzigingen op te slaan.
 
-    ![Pagina Automation Updatebeheer-oplossing](media/automation-solution-vm-management/change-email.png)
+    ![Updatebeheer pagina Automation](media/automation-solution-vm-management/change-email.png)
 
     U kunt ook aanvullende acties toevoegen aan de actie groep, Zie [actie groepen](../azure-monitor/platform/action-groups.md) voor meer informatie over actie groepen
 
-Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden wanneer virtuele machines worden afgesloten met de oplossing.
+Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden wanneer virtuele machines worden afgesloten met de functie.
 
-![Pagina Automation Updatebeheer-oplossing](media/automation-solution-vm-management/email.png)
+![Updatebeheer pagina Automation](media/automation-solution-vm-management/email.png)
 
-## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>Vm's toevoegen/uitsluiten
+## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Vm's toevoegen of uitsluiten
 
-De oplossing biedt de mogelijkheid om Vm's toe te voegen aan de hand van de oplossing of om specifieke machines uit te sluiten van de oplossing.
+Met de functie kunt u Vm's toevoegen die moeten worden aangeduid of uitgesloten. 
 
 ### <a name="add-a-vm"></a>Een VM toevoegen
 
-Er zijn twee opties die u kunt gebruiken om ervoor te zorgen dat een virtuele machine wordt opgenomen in de oplossing starten/stoppen wanneer deze wordt uitgevoerd.
+Er zijn twee manieren om ervoor te zorgen dat een virtuele machine wordt opgenomen wanneer de functie wordt uitgevoerd:
 
-* Elk van de bovenliggende [runbooks](automation-solution-vm-management.md#runbooks) van de oplossing heeft een `VMList` para meter. U kunt een door komma's gescheiden lijst met VM-namen door geven aan deze para meter bij het plannen van het juiste bovenliggende runbook voor uw situatie en deze Vm's worden opgenomen wanneer de oplossing wordt uitgevoerd.
+* Elk van de bovenliggende [runbooks](automation-solution-vm-management.md#runbooks) van de functie heeft een `VMList` para meter. U kunt een door komma's gescheiden lijst met VM-namen door geven aan deze para meter bij het plannen van het juiste bovenliggende runbook voor uw situatie en deze Vm's worden opgenomen wanneer de functie wordt uitgevoerd.
 
-* Als u meerdere Vm's wilt selecteren `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` stelt u en met de namen van de resource groepen die de vm's bevatten die u wilt starten of stoppen. U kunt ook de variabelen instellen op een waarde van `*` om de oplossing uit te voeren op alle resource groepen in het abonnement.
+* Als u meerdere Vm's wilt selecteren, stelt `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` u en met de namen van de resource groepen die de vm's bevatten die u wilt starten of stoppen. U kunt ook de variabelen instellen op een waarde van `*` om de functie uit te voeren op alle resource groepen in het abonnement.
 
 ### <a name="exclude-a-vm"></a>Een VM uitsluiten
 
-Als u een virtuele machine wilt uitsluiten van de oplossing, kunt u deze `External_ExcludeVMNames` toevoegen aan de variabele. Deze variabele is een door komma's gescheiden lijst met specifieke Vm's die moeten worden uitgesloten van de oplossing voor starten en stoppen. Deze lijst is beperkt tot 140 Vm's. Als u meer dan 140 Vm's toevoegt aan deze door komma's gescheiden lijst, kunnen Vm's die zijn ingesteld om te worden uitgesloten, onbedoeld worden gestart of gestopt.
+Als u een virtuele machine wilt uitsluiten van het stoppen/starten van Vm's buiten kantoor uren, kunt u de naam ervan toevoegen aan de `External_ExcludeVMNames` variabele. Deze variabele is een door komma's gescheiden lijst met specifieke Vm's die moeten worden uitgesloten van de functie. Deze lijst is beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan deze lijst toevoegt, kunnen de Vm's die zijn ingesteld om te worden uitgesloten, per ongeluk worden gestart of gestopt.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>De planningen voor opstarten en afsluiten wijzigen
 
-Het beheren van de opstart-en afsluit schema's in deze oplossing volgt dezelfde stappen als beschreven in [een Runbook plannen in azure Automation](automation-schedules.md). Er moet een apart schema zijn om Vm's te starten en te stoppen.
+Als u de opstart-en afsluit schema's in deze functie wilt beheren, volgt u dezelfde stappen als beschreven in [een Runbook plannen in azure Automation](shared-resources/schedules.md). Er zijn afzonderlijke schema's vereist om Vm's te starten en stoppen.
 
-Het configureren van de oplossing om alleen Vm's op een bepaald moment te stoppen, wordt ondersteund. In dit scenario maakt u alleen een **Stop** schema en geen bijbehorende **begin** planning. Hiervoor doet u het volgende:
+Het configureren van de functie om alleen Vm's op een bepaald moment te stoppen, wordt ondersteund. In dit scenario maakt u alleen een stop schema en geen bijbehorende begin planning. 
 
-1. Zorg ervoor dat u de resource groepen hebt toegevoegd voor de virtuele machines die u `External_Stop_ResourceGroupNames` wilt afsluiten in de variabele.
+1. Zorg ervoor dat u de resource groepen hebt toegevoegd voor de virtuele machines die u wilt afsluiten in de `External_Stop_ResourceGroupNames` variabele.
 
-2. Maak uw eigen planning voor het tijdstip waarop u de virtuele machines wilt afsluiten.
+2. Maak uw eigen planning voor het moment waarop u de virtuele machines wilt afsluiten.
 
 3. Ga naar het **ScheduledStartStop_Parent** runbook en klik op **schema**. Hierdoor kunt u het schema selecteren dat u in de vorige stap hebt gemaakt.
 
@@ -184,6 +177,6 @@ Het configureren van de oplossing om alleen Vm's op een bepaald moment te stoppe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [problemen oplossen met Vm's starten/stoppen](troubleshoot/start-stop-vm.md)voor meer informatie over het oplossen van VM's buiten bedrijfsuren starten/stoppen.
-
-* [Controleer](automation-solution-vm-management-logs.md) de Automation-records die zijn geschreven naar Azure monitor logboeken en het voor beeld van zoek query's in Logboeken om de status van Automation runbook-taken te analyseren van Vm's voor starten/stoppen.
+* [VM's buiten bedrijfsuren starten/stoppen inschakelen](automation-solution-vm-management.md)
+* [Query's uitvoeren op Logboeken van VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management-logs.md)
+* [Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)

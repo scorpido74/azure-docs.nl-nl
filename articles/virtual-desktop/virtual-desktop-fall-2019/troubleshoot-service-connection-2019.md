@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01aff34839cc7385834468a08f30696efe84561f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614770"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743606"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
 
@@ -39,45 +39,6 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 Controleer of de gebruiker zich aanmeldt met de juiste referenties.
 
 Als de WebClient wordt gebruikt, controleert u of er geen problemen met de referenties in de cache zijn.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enter prise-virtuele machines voor meerdere sessies reageren niet
-
-Als een virtuele machine niet reageert en u geen toegang via RDP hebt, moet u deze met de diagnostische functie oplossen door de status van de host te controleren.
-
-Voer de volgende cmdlet uit om de status van de host te controleren:
-
-```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
-```
-
-Als de status van de `NoHeartBeat`host is, betekent dit dat de virtuele machine niet reageert en de agent niet kan communiceren met de virtueel-bureaublad service van Windows.
-
-```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-```
-
-Er zijn enkele dingen die u kunt doen om de status van de HeartBeat te herstellen.
-
-### <a name="update-fslogix"></a>FSLogix bijwerken
-
-Als uw FSLogix niet up-to-date is, met name als het versie 2.9.7205.27375 van frxdrvvt. sys is, kan dit leiden tot een deadlock. Zorg ervoor dat u [FSLogix bijwerkt naar de nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2084562).
-
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask uitschakelen
-
-Als het bijwerken van FSLogix niet werkt, is het probleem mogelijk dat een BiSrv-onderdeel systeem bronnen uitgeput tijdens een wekelijkse onderhouds taak. Schakel de onderhouds taak tijdelijk uit door de BgTaskRegistrationMaintenanceTask uit te scha kelen met een van de volgende twee methoden:
-
-- Ga naar het menu Start en zoek naar **taak planner**. Navigeer naar > de bibliotheek van**micro soft** > **Windows** > **BrokerInfrastructure**voor de **taak planner**. Zoek naar een taak met de naam **BgTaskRegistrationMaintenanceTask**. Wanneer u het bestand hebt gevonden, klikt u er met de rechter muisknop op en selecteert u **uitschakelen** in de vervolg keuzelijst.
-- Open een opdracht regel menu als beheerder en voer de volgende opdracht uit:
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

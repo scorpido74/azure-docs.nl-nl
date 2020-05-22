@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062656"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739661"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
@@ -103,7 +103,7 @@ Als u geen toegang hebt tot uw Azure Active Directory-account (Azure AD), kan di
 
      Als u nog steeds geen toegang hebt tot uw account, neemt u contact op met de beheerder van uw organisatie voor meer hulp.
 
-Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail ontvangen van een account als ' micro \<Soft namens *your_organization*> '. Als u een soortgelijk e-mail bericht krijgt, maar u het wacht woord niet onlangs opnieuw hebt ingesteld, moet u onmiddellijk contact opnemen met de beheerder van uw organisatie.
+Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail ontvangen van een account als ' micro soft namens \< *your_organization*> '. Als u een soortgelijk e-mail bericht krijgt, maar u het wacht woord niet onlangs opnieuw hebt ingesteld, moet u onmiddellijk contact opnemen met de beheerder van uw organisatie.
 
 ## <a name="how-to-change-your-password"></a>Uw wachtwoord wijzigen
 
@@ -117,7 +117,7 @@ Gebruik deze methode als u normaal gesp roken toegang hebt tot uw apps via de Of
 
 2. Selecteer uw profiel aan de rechter kant en selecteer vervolgens **account weer geven**.
 
-3. Selecteer **beveiligings & privacy** > -**wacht woord**.
+3. Selecteer **beveiligings & privacy**-  >  **wacht woord**.
 
 4. Typ uw oude wacht woord, maak en bevestig uw nieuwe wacht woord en selecteer vervolgens **verzenden**.
 

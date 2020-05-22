@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad681f4996f713b8bb0c85b07a3f38f0dcb6708a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184516"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738231"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Gebruikers toegang beheren in Azure Active Directory B2C
 
@@ -66,15 +66,15 @@ Een aangepaste gebruikers stroom kan informatie over DOB en land/regio verzamele
 
 In de volgende stappen ziet u de logica die wordt gebruikt om **ageGroup** te berekenen op basis van de geboorte datum van de gebruiker:
 
-1. Probeer het land te vinden op de land code in de lijst. Als het land niet wordt gevonden, keert u terug naar de **standaard waarde**.
+1. Probeer het land/de regio te vinden op basis van de code in de lijst land/regio. Als het land/de regio niet wordt gevonden, keert u terug naar de **standaard waarde**.
 
-2. Als het **MinorConsent** -knoop punt aanwezig is in het land element:
+2. Als het **MinorConsent** -knoop punt aanwezig is in het land/regio-element:
 
     a. Bereken de datum waarop de gebruiker moet zijn geboren om als volwassen te worden beschouwd. Als de huidige datum bijvoorbeeld 14 maart 2015 en **MinorConsent** is 18, mag de geboorte datum niet later zijn dan 14 maart 2000.
 
     b. De minimale geboorte datum vergelijken met de werkelijke geboorte datum. Als de minimale geboorte datum vóór de geboorte datum van de gebruiker valt, retourneert de berekening een **secundaire** waarde als de leeftijds groep.
 
-3. Als het knoop punt **MinorNoConsentRequired** aanwezig is in het land element, herhaalt u stap 2a en 2b met de waarde van **MinorNoConsentRequired**. De uitvoer van 2b retourneert **MinorNoConsentRequired** als de minimale geboorte datum vóór de geboorte datum van de gebruiker ligt.
+3. Als het knoop punt **MinorNoConsentRequired** aanwezig is in het land/regio-element, herhaalt u stap 2a en 2b met de waarde van **MinorNoConsentRequired**. De uitvoer van 2b retourneert **MinorNoConsentRequired** als de minimale geboorte datum vóór de geboorte datum van de gebruiker ligt.
 
 4. Als geen van beide berekeningen waar retourneert, wordt **volwassene**geretourneerd.
 

@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450875"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737330"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory app-manifest
 
@@ -67,7 +67,7 @@ Het eind punt dat wordt gebruikt, v 1.0 of v 2.0, wordt gekozen door de client e
 
 Mogelijke waarden voor `accesstokenAcceptedVersion` zijn 1, 2 of null. Als de waarde Null is, wordt deze para meter standaard ingesteld op 1, die overeenkomt met het eind punt v 1.0.
 
-Als `signInAudience` dat `AzureADandPersonalMicrosoftAccount`het geval is, moet `2`de waarde zijn.
+Als `signInAudience` dat `AzureADandPersonalMicrosoftAccount` het geval is, moet de waarde zijn `2` .
 
 Voorbeeld:
 
@@ -365,7 +365,7 @@ Voorbeeld:
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Booleaans |
 
-Hiermee geeft u op of deze web-app OAuth 2.0 impliciet flow-toegangs tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina. Als u meer wilt weten `OAuth 2.0 implicit grant flow` , voert u in de inhouds opgave in en raadpleegt u de onderwerpen over impliciete stroom.
+Hiermee geeft u op of deze web-app OAuth 2.0 impliciet flow-toegangs tokens kan aanvragen. De standaard waarde is False. Deze markering wordt gebruikt voor apps die zijn gebaseerd op de browser, zoals Java script-apps met één pagina. Als u meer wilt weten, voert u `OAuth 2.0 implicit grant flow` in de inhouds opgave in en raadpleegt u de onderwerpen over impliciete stroom.
 
 Voorbeeld:
 
@@ -432,8 +432,8 @@ Voorbeeld:
 | :--- | :--- |
 | parentalControlSettings | Tekenreeks |
 
-- `countriesBlockedForMinors`Hiermee geeft u de landen op waarin de app is geblokkeerd voor minder jarigen.
-- `legalAgeGroupRule`Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors` `RequireConsentForKids`, of `BlockMinors`.  
+- `countriesBlockedForMinors`Hiermee geeft u de landen/regio's op waarin de app is geblokkeerd voor minder jarigen.
+- `legalAgeGroupRule`Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow` , `RequireConsentForPrivacyServices` , `RequireConsentForMinors` , `RequireConsentForKids` of `BlockMinors` .  
 
 Voorbeeld:
 
@@ -554,7 +554,7 @@ Voorbeeld:
 Met dynamische toestemming `requiredResourceAccess` verstuurt de beheerder toestemming en wordt de gebruikers toestemming verleend voor gebruikers die een statische toestemming gebruiken. Deze para meter is echter niet van toepassing op de gebruikers toestemming voor algemeen gebruik.
 
 - `resourceAppId`is de unieke id voor de resource waartoe de app toegang vereist. Deze waarde moet gelijk zijn aan de appId die is gedeclareerd voor de doel resource-app.
-- `resourceAccess`is een matrix met de OAuth 2.0-machtigings bereiken en app-rollen die voor de app van de opgegeven resource zijn vereist. Bevat de `id` en `type` -waarden van de opgegeven resources.
+- `resourceAccess`is een matrix met de OAuth 2.0-machtigings bereiken en app-rollen die voor de app van de opgegeven resource zijn vereist. Bevat de `id` en- `type` waarden van de opgegeven resources.
 
 Voorbeeld:
 

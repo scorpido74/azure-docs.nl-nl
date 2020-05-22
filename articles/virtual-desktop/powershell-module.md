@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195132"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743375"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>De Power shell-module voor Windows virtueel bureau blad instellen
 
@@ -63,7 +63,12 @@ Hiermee wordt u rechtstreeks aangemeld bij het abonnement dat standaard is voor 
 Als u het standaard abonnement wilt wijzigen nadat u zich hebt aangemeld, voert u deze cmdlet uit:
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+U kunt ook selecteren in een lijst met behulp van de out-GridView-cmdlet:
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 Wanneer u een nieuw abonnement selecteert, hoeft u de abonnements-ID niet op te geven in cmdlets die u later uitvoert. Met de volgende cmdlet wordt bijvoorbeeld een specifieke sessiehost opgehaald zonder dat hiervoor de abonnements-ID is vereist:

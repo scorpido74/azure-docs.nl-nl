@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257678"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744106"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -102,9 +102,14 @@ Ja. Wanneer u een Site Recovery kluis maakt in een regio, zorgen we ervoor dat a
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
 Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sites worden gerepliceerd-in-transit wordt ondersteund. Voor virtuele machines en fysieke servers die worden gerepliceerd naar Azure, wordt zowel versleuteling als door Voer [(in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) ondersteund.
 
-### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Hoe kan ik TLS 1,2 afdwingen op alle on-premises Azure Site Recovery onderdelen?
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Gebruikt Azure-to-Azure Site Recovery TLS 1,2 voor alle communicatie tussen micro services van Azure?
+Ja, het TLS 1,2-protocol wordt standaard afgedwongen voor Azure-to-Azure Site Recovery scenario. 
+
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>Hoe kan ik TLS 1,2 afdwingen voor scenario's met VMware-naar-Azure en fysieke server-naar-Azure Site Recovery?
 Mobility-agents die zijn geïnstalleerd op de gerepliceerde items communiceren alleen met de proces server op TLS 1,2. Communicatie van configuratie server naar Azure en van proces server naar Azure kan echter worden uitgevoerd op TLS 1,1 of 1,0. Volg de [richt lijnen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) voor het afdwingen van TLS 1,2 op alle configuratie servers en proces servers die door u zijn ingesteld.
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Hoe kan ik TLS 1,2 afdwingen voor Hyper-to-Azure Site Recovery-scenario's?
+Alle communicatie tussen de micro services van Azure Site Recovery gebeurt op het TLS 1,2-protocol. Site Recovery gebruikt beveiligings providers die zijn geconfigureerd in het systeem (OS) en maakt gebruik van het meest recente beschik bare TLS-protocol. U moet de TLS 1,2 expliciet inschakelen in het REGI ster en vervolgens Site Recovery gaan gebruiken van TLS 1,2 voor communicatie met Services. 
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 

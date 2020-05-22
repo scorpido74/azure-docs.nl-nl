@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f5e4515cfbacb656f60492613b5379c0bde60244
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208394"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736021"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -64,7 +64,7 @@ In de sectie contact gegevens ziet u de **weergave naam**van de uitgever, de **c
 
 #### <a name="payout-account"></a>Uitbetalings account
 
-Een uitbetalings account is de Bank rekening waarnaar de opbrengst wordt verzonden vanuit uw verkoop. Deze bank rekening moet zich in hetzelfde land bekomen als waar u uw partner centrum-account hebt geregistreerd.
+Een uitbetalings account is de Bank rekening waarnaar de opbrengst wordt verzonden vanuit uw verkoop. Deze bank rekening moet zich in hetzelfde land/dezelfde regio bevinden als waar u uw partner centrum-account hebt geregistreerd.
 
 Uw account voor betaling instellen:
 
@@ -80,21 +80,21 @@ Uw account voor betaling instellen:
 
 Controleer de huidige status van het BTW-profiel en bevestig dat het juiste **entiteits type** en de gegevens van het **BTW-certificaat** worden weer gegeven. Selecteer **bewerken** om de vereiste formulieren bij te werken of te volt ooien.
 
-Als u uw belasting status wilt bepalen, moet u het land van de woon plaats en het burgerschap opgeven en de juiste BTW-formulieren volt ooien die zijn gekoppeld aan uw land/regio.
+Als u uw belasting status wilt instellen, moet u uw land of regio van verblijf en burgerschap opgeven en de juiste BTW-formulieren volt ooien die zijn gekoppeld aan uw land/regio.
 
-Ongeacht uw land van verblijf of burgerschap moet u Verenigde Staten BTW-formulieren invullen om aanbiedingen via micro soft te verkopen. Partners die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere partners buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
+Ongeacht uw land/regio waar u woont of burgerschap, moet u Verenigde Staten BTW-formulieren invullen om aanbiedingen via micro soft te verkopen. Partners die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere partners buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
 
 Een Verenigde Staten afzonderlijke belastingplichtige-id (of ITIN) is niet vereist voor het ontvangen van betalingen van micro soft of voor het claimen van de voor delen van belasting verdragen.
 
 U kunt uw belasting formulieren elektronisch volt ooien en verzenden in het partner centrum. in de meeste gevallen hoeft u geen formulieren af te drukken en te verzenden.
 
-Verschillende landen en regio's hebben verschillende belasting vereisten. De exacte hoeveelheid die u in BTW moet betalen, is afhankelijk van de landen en regio's waar u uw aanbiedingen verkoopt. Micro soft verdeelt de omzet en gebruikt de belasting namens u in sommige landen. Deze landen worden geïdentificeerd in het proces van het aanbieden van uw aanbieding. In andere landen, afhankelijk van waar u bent Inge schreven, moet u mogelijk verkoop-en gebruiks belasting voor uw verkoop rechtstreeks aan de lokale belasting dienst remitteren. Daarnaast kan de verkoop opbrengst worden belast als bate. We raden u aan om contact op te nemen met de relevante instantie voor uw land of regio, die u het beste kan helpen bij het bepalen van de juiste belasting gegevens voor uw micro soft-verkoop transacties.
+Verschillende landen en regio's hebben verschillende belasting vereisten. De exacte hoeveelheid die u in BTW moet betalen, is afhankelijk van de landen en regio's waar u uw aanbiedingen verkoopt. Micro soft verdeelt de omzet en maakt gebruik van de belasting namens u in sommige landen/regio's. Deze landen/regio's worden geïdentificeerd in het proces van het aanbieden van uw aanbieding. In andere landen/regio's, afhankelijk van waar u bent Inge schreven, moet u mogelijk verkoop-en gebruiks belasting voor uw verkoop rechtstreeks aan de lokale belasting dienst remitteren. Daarnaast kan de verkoop opbrengst worden belast als bate. We raden u aan om contact op te nemen met de relevante instantie voor uw land of regio, die u het beste kan helpen bij het bepalen van de juiste belasting gegevens voor uw micro soft-verkoop transacties.
 
 ##### <a name="withholding-rates"></a>Inhoudings tarieven
-De gegevens die u in uw belasting formulieren verzendt, bepalen het juiste tarief voor belasting heffing. Het inhoudings bedrag geldt alleen voor verkopen die u in de Verenigde Staten. verkoop van niet-Amerikaanse locaties is niet van toepassing op inhoud. De inhoudings tarieven variëren, maar voor de meeste ontwikkel aars die buiten het Verenigde Staten worden geregistreerd, is de standaard tarief 30%. U hebt de mogelijkheid om dit tarief te verlagen als uw land met de Verenigde Staten heeft ingestemd op een inkomsten belasting verdrag.
+De gegevens die u in uw belasting formulieren verzendt, bepalen het juiste tarief voor belasting heffing. Het inhoudings bedrag geldt alleen voor verkopen die u in de Verenigde Staten. verkoop van niet-Amerikaanse locaties is niet van toepassing op inhoud. De inhoudings tarieven variëren, maar voor de meeste ontwikkel aars die buiten het Verenigde Staten worden geregistreerd, is de standaard tarief 30%. U hebt de mogelijkheid om dit tarief te verlagen als uw land/regio heeft ingestemd op een inkomen uit de inkomsten belasting met de Verenigde Staten.
 
 ##### <a name="tax-treaty-benefits"></a>Voor delen van belasting verdrag
-Als u zich buiten het Verenigde Staten bevindt, kunt u profiteren van de voor delen van belasting verdragen. Deze voor delen variëren per land en kunnen u de belasting van micro soft-inhoud beperken. U kunt voor delen van fiscale verdragen claimen door deel II van het formulier W-8BEN te volt ooien. We raden u aan om te communiceren met de juiste resources in uw land of regio om te bepalen of deze voor delen van toepassing zijn op u.
+Als u zich buiten het Verenigde Staten bevindt, kunt u profiteren van de voor delen van belasting verdragen. Deze voor delen variëren van land/regio tot land/regio en kunnen u de belasting van micro soft-inhoud beperken. U kunt voor delen van fiscale verdragen claimen door deel II van het formulier W-8BEN te volt ooien. We raden u aan om te communiceren met de juiste resources in uw land of regio om te bepalen of deze voor delen van toepassing zijn op u.
 
 Meer [informatie over belasting gegevens voor Windows app/Game-ontwikkel aars en Azure Marketplace-uitgevers](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
@@ -134,7 +134,7 @@ Zie [Veelgestelde vragen over het bijhouden van Azure-klanten met guid's](https:
 
 Als u een [Dynamics 365 voor klant betrokkenheid publiceert & Power apps](./create-new-customer-engagement-offer.md) of [Dynamics 365 for Operations](./create-new-operations-offer.md) -aanbieding, moet u uw **facturerings profiel**volt ooien.
 
-Het factuur adres is vooraf ingevuld op basis van uw rechts persoon en u kunt dit adres later bijwerken. De velden BTW-ID en BTW-nummer zijn optioneel.  De land naam en bedrijfs naam kunnen niet worden bewerkt.
+Het factuur adres is vooraf ingevuld op basis van uw rechts persoon en u kunt dit adres later bijwerken. De velden BTW-ID en BTW-nummer zijn optioneel.  De land/regio naam en bedrijfs naam kunnen niet worden bewerkt.
 
 ## <a name="multi-user-account-management"></a>Beheer van meerdere gebruikers accounts
 
@@ -225,7 +225,7 @@ Als u meer dan één groep selecteert om aan uw partner Center-account toe te vo
 
 Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze groep, toegang krijgen tot uw partner centrum-account, met de machtigingen die zijn gekoppeld aan de toegewezen rol van de groep.
 
-### <a name="add-a-new-group"></a>Een nieuwe groep maken
+### <a name="add-a-new-group"></a>Een nieuwe groep toevoegen
 
 Een gloed nieuwe groep toevoegen aan uw partner centrum-account:
 

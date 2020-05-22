@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063948"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741576"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
@@ -44,7 +44,7 @@ Voeg uw Google-account toe door twee ledige verificatie in te scha kelen en het 
 
 ### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, selecteer aan de **slag**en controleer uw identiteit.
+1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , selecteer **aan de slag**en controleer uw identiteit.
 
 2. Volg de stappen op de pagina om verificatie in twee stappen voor uw persoonlijke Google-account in te scha kelen.
 
@@ -80,7 +80,7 @@ Voeg uw Facebook-account toe door twee ledige verificatie in te scha kelen en he
 
 ### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Open Facebook op uw computer, selecteer de vervolg keuzelijst in de rechter bovenhoek en ga vervolgens naar **instellingen** > **beveiliging en aanmelding**.
+1. Open Facebook op uw computer, selecteer de vervolg keuzelijst in de rechter bovenhoek en ga vervolgens naar **instellingen**  >  **beveiliging en aanmelding**.
 
     De pagina **beveiliging en aanmelden** wordt weer gegeven.
 

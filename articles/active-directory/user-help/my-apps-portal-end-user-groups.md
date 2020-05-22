@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022293"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741986"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
@@ -40,7 +40,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 1. Meld u aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die door uw organisatie wordt weer gegeven. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die door uw organisatie wordt weer gegeven. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com .
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -82,7 +82,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
         - **Beveiligingsprincipal.** Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen.
 
-        - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep.
+        - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep.
 
     - **Groeps naam.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
 
@@ -98,7 +98,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het bijwerken van de bestaande informatie.
 
-1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de * &lt;pagina group_name&gt; * .
+1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de pagina * &lt; group_name &gt; * .
 
     Het vak **Details bewerken** wordt weer gegeven en u kunt de informatie bijwerken die u hebt toegevoegd tijdens de eerste keer dat u de groep hebt gemaakt.
 
@@ -108,7 +108,7 @@ Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het 
 
 U kunt leden toevoegen aan of verwijderen uit elke groep waarvan u eigenaar bent.
 
-1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer **+** vervolgens op de * &lt;pagina group_name&gt; * .
+1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer vervolgens **+** op de pagina * &lt; group_name &gt; * .
 
     ![Een groepslid toevoegen met +-teken gemarkeerd](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -118,7 +118,7 @@ U kunt leden toevoegen aan of verwijderen uit elke groep waarvan u eigenaar bent
 
     Er wordt een uitnodiging verzonden naar het nieuwe lid om aan de slag te gaan met de apps van de organisatie.
 
-3. Als u per ongeluk een lid hebt toegevoegd, of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op * &lt;de&gt; pagina group_name* te selecteren.
+3. Als u per ongeluk een lid hebt toegevoegd, of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op de pagina * &lt; group_name &gt; * te selecteren.
 
     ![Een lid verwijderen, waarbij de Verwijder koppeling is gemarkeerd](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -138,7 +138,7 @@ Als uw organisatie dit toestaat, kunt u een Office 365-groep vernieuwen en de ve
 
 U kunt uw eigen groepen op elk gewenst moment verwijderen. Als u echter een groep per ongeluk verwijdert, moet u deze maken en opnieuw leden toevoegen.
 
-1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de * &lt;pagina group_name&gt; * .
+1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de pagina * &lt; group_name &gt; * .
 
     ![<pagina Group_name> met de koppeling groep verwijderen gemarkeerd](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 

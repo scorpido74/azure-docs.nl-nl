@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869730"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741969"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
 
@@ -78,9 +78,9 @@ Er wordt aan de rechter kant van de **adres** balk een pictogram toegevoegd, zod
 
 U kunt kiezen hoeveel apps worden weer gegeven in het gedeelte **recent used** en bepalen of de interne url's van uw organisatie mogen worden omgeleid.
 
-1. Selecteer het pictogram uitbrei ding ![pictogram](media/my-apps-portal/my-apps-portal-extension-icon.png) voor **beveiligde aanmeldings extensie van mijn apps** rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan**.
+1. Selecteer het pictogram uitbrei ding pictogram voor **beveiligde aanmeldings extensie van mijn apps** ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan**.
 
-2. Klik **met de rechter** muisknop op ![de instellingen](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)pictogram instellingen en selecteer vervolgens **instellingen**.
+2. Klik met de rechter muisknop op **de instellingen pictogram** ![ instellingen ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) en selecteer vervolgens **instellingen**.
 
 3. Selecteer in het vak **instellingen** het aantal recente apps dat u wilt weer geven op de portal en geef aan of de interne url's van uw organisatie moeten worden omgeleid, zodat u ze op afstand kunt gebruiken.
 
@@ -98,7 +98,7 @@ Als u toegang hebt tot de Cloud-apps van uw organisatie, kunt u deze bekijken vi
 
 1. Meld u op uw computer aan bij uw werk-of school account.
 
-2. Open in een ondersteunde webbrowser en ga naar https://myapps.microsoft.com, of gebruik de koppeling die door uw organisatie wordt geboden als u naar een aangepaste pagina gaat, zoals. `https://myapps.microsoft.com/contoso.com`
+2. Open in een ondersteunde webbrowser en ga naar https://myapps.microsoft.com , of gebruik de koppeling die door uw organisatie wordt geboden als u naar een aangepaste pagina gaat, zoals `https://myapps.microsoft.com/contoso.com` .
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie die u kunt gebruiken.
 
@@ -112,7 +112,7 @@ De apps van uw organisatie weer geven en gebruiken vanaf een Intune Managed Brow
 
 1. Down load en installeer de Intune Managed Browser-app op uw mobiele apparaat vanuit de Apple App Store en de Google Play Store.
 
-2. Open de app Intune Managed Browser, ga naar https://myapps.microsoft.comof gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
+2. Open de app Intune Managed Browser, ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com .
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -126,7 +126,7 @@ De portal voor **mijn apps** bekijken en gebruiken vanaf een iPhone of iPad-appa
 
 1. Start een webbrowser-app, zoals Safari, op uw mobiele apparaat.
 
-2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com .
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie die u kunt gebruiken.
 
@@ -140,7 +140,7 @@ De portal **mijn apps** op een Android-apparaat weer geven en gebruiken.
 
 1. Start op uw mobiele apparaat een webbrowser-app, zoals Google Chrome.
 
-2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com .
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 

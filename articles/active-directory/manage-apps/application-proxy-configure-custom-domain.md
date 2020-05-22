@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481378"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736480"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
-Wanneer u een toepassing publiceert via Azure Active Directory-toepassingsproxy, maakt u een externe URL voor uw gebruikers. Met deze URL wordt het standaard domein *yourtenant.msappproxy.net*opgehaald. Als u bijvoorbeeld een app met de naam *uitgaven* in uw Tenant met de naam *Contoso*publiceert, is de externe URL *https\/:/expenses-contoso.msappproxy.net*. Als u uw eigen domein naam wilt gebruiken in plaats van *msappproxy.net*, kunt u een aangepast domein voor uw toepassing configureren. 
+Wanneer u een toepassing publiceert via Azure Active Directory-toepassingsproxy, maakt u een externe URL voor uw gebruikers. Met deze URL wordt het standaard domein *yourtenant.msappproxy.net*opgehaald. Als u bijvoorbeeld een app met de naam *uitgaven* in uw Tenant met de naam *Contoso*publiceert, is de externe URL *https: \/ /expenses-contoso.msappproxy.net*. Als u uw eigen domein naam wilt gebruiken in plaats van *msappproxy.net*, kunt u een aangepast domein voor uw toepassing configureren. 
 
 ## <a name="benefits-of-custom-domains"></a>Voor delen van aangepaste domeinen
 
@@ -128,7 +128,7 @@ U moet een PFX-certificaat gebruiken om ervoor te zorgen dat alle vereiste tusse
 
 Er is geen beperking voor de handtekening methoden van het certificaat. Elliptische curve cryptography (ECC), alternatieve naam voor onderwerp (SAN) en andere algemene certificaat typen worden ondersteund. 
 
-U kunt Joker certificaten gebruiken zolang het Joker teken overeenkomt met de externe URL. U moet joker tekens gebruiken voor [toepassingen met Joker](application-proxy-wildcard.md)tekens. Als u het certificaat wilt gebruiken om ook toegang te krijgen tot subdomeinen, moet u de joker tekens subdomein toevoegen als alternatieve namen voor het onderwerp in hetzelfde certificaat. Een certificaat voor * \*. Adventure-Works.com* werkt bijvoorbeeld niet voor * \*. apps.Adventure-Works.com* tenzij u * \*. apps.Adventure-Works.com* toevoegt als alternatieve naam voor het onderwerp. 
+U kunt Joker certificaten gebruiken zolang het Joker teken overeenkomt met de externe URL. U moet joker tekens gebruiken voor [toepassingen met Joker](application-proxy-wildcard.md)tekens. Als u het certificaat wilt gebruiken om ook toegang te krijgen tot subdomeinen, moet u de joker tekens subdomein toevoegen als alternatieve namen voor het onderwerp in hetzelfde certificaat. Een certificaat voor * \* . Adventure-Works.com* werkt bijvoorbeeld niet voor * \* . apps.Adventure-Works.com* tenzij u * \* . apps.Adventure-Works.com* toevoegt als alternatieve naam voor het onderwerp. 
 
 U kunt certificaten gebruiken die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan deze certificaten implementeren op beheerde apparaten. Voor niet-beheerde apparaten moet u deze certificaten hand matig installeren. 
 
@@ -143,6 +143,6 @@ U kunt hetzelfde certificaat gebruiken voor meerdere toepassingen. Als een geüp
 Wanneer een certificaat verloopt, wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een ander certificaat te uploaden. Als het certificaat wordt ingetrokken, zien uw gebruikers mogelijk een beveiligings waarschuwing bij het openen van de app. Als u het certificaat voor een app wilt bijwerken, gaat u naar de pagina **toepassings proxy** voor de app, selecteert u **certificaat**en uploadt u een nieuw certificaat. Als het oude certificaat niet door andere apps wordt gebruikt, wordt het automatisch verwijderd. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Schakel eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md) in voor uw gepubliceerde apps met Azure AD-verificatie.
-* [Schakel voorwaardelijke toegang](../conditional-access/overview.md) tot uw gepubliceerde apps in.
 
+* [Schakel eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md) in voor uw gepubliceerde apps met Azure AD-verificatie.
+* [Voorwaardelijke toegang](../conditional-access/concept-conditional-access-cloud-apps.md) voor uw gepubliceerde Cloud-apps.

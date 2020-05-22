@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: d6cf00fab14f91b151327b435068d689edab32b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778461"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737721"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -49,7 +49,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Microsoft Forms
 - Microsoft Intune
 - [Inschrijving Microsoft Intune](/intune/enrollment/multi-factor-authentication)
-- Micro soft planner
+- Microsoft Planner
 - Microsoft PowerApps
 - Micro soft Search in Bing
 - Microsoft StaffHub
@@ -117,6 +117,10 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 - [Toepassingen die zijn toegevoegd vanuit de galerie](../manage-apps/add-application-portal.md)
 - [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/add-non-gallery-app.md)
 - [Verouderde toepassingen die zijn gepubliceerd via app Delivery controllers en Networks](../manage-apps/secure-hybrid-access.md)
+
+> [!NOTE]
+> Omdat met het beleid voor voorwaardelijke toegang de vereisten voor het openen van een service worden ingesteld, kunt u dit niet Toep assen op een client toepassing (Public/native). Andere woorden: het beleid wordt niet rechtstreeks ingesteld op een client toepassing (Public/native), maar wordt toegepast wanneer een client een service aanroept. Een beleid dat is ingesteld op share point service is bijvoorbeeld van toepassing op de clients die share point aanroept. Een beleid dat is ingesteld op Exchange, is van toepassing op de poging toegang te krijgen tot het e-mail bericht met de Outlook-client Dat is de reden waarom client-(open bare/systeem eigen) toepassingen niet beschikbaar zijn voor selectie in de optie Cloud-apps kiezen en voorwaardelijke toegang is niet beschikbaar in de toepassings instellingen voor de toepassing client (openbaar/systeem eigen) die is geregistreerd in uw Tenant. 
+
 
 ## <a name="user-actions"></a>Gebruikersacties
 

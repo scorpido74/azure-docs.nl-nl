@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791979"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744002"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Sleuteltermextractie cognitieve vaardigheid
 
@@ -31,7 +31,7 @@ Deze mogelijkheid is handig als u snel de belangrijkste pratende punten in de re
 Micro soft. skills. Text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
@@ -44,10 +44,17 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer     | Beschrijving |
+| Invoer  | Beschrijving |
 |--------------------|-------------|
 | tekst | De tekst die moet worden geanalyseerd.|
 | languageCode  |  Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, wordt de standaardtaal code gebruikt voor het analyseren van de records. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) weer geven|
+
+## <a name="skill-outputs"></a>Vaardigheids uitvoer
+
+| Ouput  | Beschrijving |
+|--------------------|-------------|
+| keyPhrases | Een lijst met tref woorden die zijn geëxtraheerd uit de invoer tekst. De sleutel zinnen worden geretourneerd op volg orde van belang. |
+
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
 

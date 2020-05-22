@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: bf2c4ff1afbf3558d6c49cf7bec90cd37e17929b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740770"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -22,7 +22,7 @@ Dit artikel bevat suggesties voor het maken en aanbieden van commerciële Market
 
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Naam van aanbieding | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
+| Naam van aanbieding | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
 | Beschrijving van aanbieding | Geef een beschrijving van een duidelijk aanbod op:<br> <ul> <li> Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.</li> <li> Daarnaast moeten service voorbeelden van Consulting de door u geboden professionele service duidelijk vermelden. </li></ul> De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Het type gebruiker dat voor deel is van het product.</li><li>De klant nodig heeft of pijnt dat de product adressen.</li></ul> |
 
 De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Marketplace-aanbiedingen. Als u uw marketing materiaal wilt schrijven en configureren, gaat u naar het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/). 

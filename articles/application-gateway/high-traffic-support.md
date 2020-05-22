@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617205"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740396"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Ondersteuning voor intensief verkeer in Application Gateway
 
@@ -51,7 +51,7 @@ In dit voor beeld ziet u hoe u de Azure Portal kunt gebruiken om een waarschuwin
 > U kunt instellen dat de waarschuwing wordt uitgevoerd bij een lager of hoger CU-gebruiks percentage, afhankelijk van hoe gevoelig u wilt zijn voor mogelijke verkeers pieken.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>WAF met geofiltering en bot-beveiliging instellen om aanvallen te stoppen
-Als u voor uw toepassing een extra beveiligingslaag wilt, gebruikt u de Application Gateway WAF_v2 SKU voor WAF-mogelijkheden. U kunt de v2-SKU zo configureren dat alleen toegang tot uw toepassingen vanuit een bepaald land of bepaalde landen wordt toegestaan. U stelt een aangepaste regel voor WAF in om verkeer expliciet toe te staan of te blok keren op basis van de geolocatie. Zie [geofilterende aangepaste regels](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) en [aangepaste regels configureren op Application Gateway WAF_v2 SKU via Power shell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)voor meer informatie.
+Als u voor uw toepassing een extra beveiligingslaag wilt, gebruikt u de Application Gateway WAF_v2 SKU voor WAF-mogelijkheden. U kunt de v2-SKU zo configureren dat alleen toegang tot uw toepassingen vanuit een bepaald land/regio of landen/regio's is toegestaan. U stelt een aangepaste regel voor WAF in om verkeer expliciet toe te staan of te blok keren op basis van de geolocatie. Zie [geofilterende aangepaste regels](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) en [aangepaste regels configureren op Application Gateway WAF_v2 SKU via Power shell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)voor meer informatie.
 
 Schakel bot-beveiliging in om bekende beschadigde bots te blok keren. Dit verlaagt de hoeveelheid verkeer die wordt ontvangen naar uw toepassing. Zie [bot Protection with set up instructies](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)(Engelstalig) voor meer informatie.
 

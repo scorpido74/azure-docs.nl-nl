@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72887414"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736497"
 ---
 # <a name="identity-protection-policies"></a>Identiteitsbeveiligingbeleid
 
@@ -41,7 +41,7 @@ Als risico wordt gedetecteerd, kunnen gebruikers multi-factor Authentication uit
 
 ### <a name="custom-conditional-access-policy"></a>Aangepast beleid voor voorwaardelijke toegang
 
-Beheerders kunnen er ook voor kiezen om een aangepast beleid voor voorwaardelijke toegang te maken, inclusief aanmeldings risico als een toewijzings voorwaarde. Meer informatie over voorwaardelijke toegang vindt u in het artikel [Wat is voorwaardelijke toegang?](../conditional-access/overview.md)
+Beheerders kunnen er ook voor kiezen om een aangepast beleid voor voorwaardelijke toegang te maken, inclusief aanmeldings risico als een toewijzings voorwaarde. Meer informatie over Risico's als een voor waarde in het beleid voor voorwaardelijke toegang vindt u in het artikel [voorwaardelijke toegang: voor waarden](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)
 
 ![Beleid voor aangepaste aanmeldings Risico's voor voorwaardelijke toegang](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73175806"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737636"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma
 
 Het [hulp programma What if](what-if-tool.md) in voorwaardelijke toegang is krachtig wanneer u wilt weten waarom een beleid is of niet is toegepast op een gebruiker in een specifieke omstandigheid, of dat een beleid van toepassing zou zijn op een bekende status.
 
-Het hulp programma What if bevindt zich in de **Azure Portal** > **Azure Active Directory** > **voorwaardelijke toegang** > **What if**.
+Het hulp programma What if bevindt zich in de **Azure Portal**  >  **Azure Active Directory**  >  **voorwaardelijke toegang**  >  **What if**.
 
 ![What If tool voor voorwaardelijke toegang in de standaard status](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -37,7 +37,7 @@ De volgende aanvullende informatie is optioneel, maar helpt bij het beperken van
 
 * Cloud-apps of acties
 * IP-adres 
-* Land
+* Land/regio
 * Apparaatplatform
 * Client-apps (preview-versie)
 * Apparaatstatus (preview-versie) 

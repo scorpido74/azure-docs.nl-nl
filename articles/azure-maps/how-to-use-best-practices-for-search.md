@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335312"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742757"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Aanbevolen procedures voor het Azure Maps van Search Service
 
@@ -39,7 +39,7 @@ Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor m
 
 Wanneer u zoekt naar een volledig of gedeeltelijk adres met behulp van Azure Maps Search Service, leest de API tref woorden uit uw zoek opdracht. Vervolgens worden de lengte-en breedte coördinaten van het adres geretourneerd. Dit proces wordt *geocodering*genoemd. 
 
-De mogelijkheid tot Geocode in een land is afhankelijk van de beschik baarheid van gegevens over de weg en de nauw keurigheid van de geocoderings service. Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)voor meer informatie over Azure Maps mogelijkheden voor geocodering per land of regio.
+De mogelijkheid tot Geocode in een land/regio is afhankelijk van de beschik baarheid van weggegevens en de nauw keurigheid van de geocoderings service. Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)voor meer informatie over Azure Maps mogelijkheden voor geocodering per land of regio.
 
 ### <a name="limit-search-results"></a>Zoek resultaten beperken
 
@@ -52,25 +52,25 @@ De mogelijkheid tot Geocode in een land is afhankelijk van de beschik baarheid v
 
 Als u de resultaten van de gebruiker wilt geobias, voegt u altijd zoveel mogelijk locatie gegevens toe. U kunt de zoek resultaten beperken door enkele invoer typen op te geven:
 
-* Stel de `countrySet` para meter in. U kunt dit bijvoorbeeld instellen `US,FR`op. Standaard doorzoekt de API de hele wereld, zodat deze onnodige resultaten kan retour neren. Als uw query geen `countrySet` para meter heeft, kan de zoek opdracht mogelijk onnauwkeurige resultaten retour neren. Een zoek opdracht voor een stad met de naam *Bellevue* retourneert bijvoorbeeld resultaten van de Verenigde Staten en Frank rijk, omdat beide landen een stad met de naam *Bellevue*bevatten.
+* Stel de `countrySet` para meter in. U kunt dit bijvoorbeeld instellen op `US,FR` . Standaard doorzoekt de API de hele wereld, zodat deze onnodige resultaten kan retour neren. Als uw query geen `countrySet` para meter heeft, kan de zoek opdracht mogelijk onnauwkeurige resultaten retour neren. Een zoek opdracht voor een stad met de naam *Bellevue* retourneert bijvoorbeeld resultaten van de Verenigde Staten en Frank rijk, omdat beide landen/regio's een stad met de naam *Bellevue*bevatten.
 
-* U kunt de `btmRight` para meters en `topleft` gebruiken om het begrenzingsvak in te stellen. Met deze para meters wordt de zoek opdracht beperkt tot een specifiek gebied op de kaart.
+* U kunt de `btmRight` `topleft` para meters en gebruiken om het begrenzingsvak in te stellen. Met deze para meters wordt de zoek opdracht beperkt tot een specifiek gebied op de kaart.
 
-* Als u het relevantie gebied voor de resultaten wilt beïnvloeden, definieert `lat` u `lon` de para meters en coördineert u. Gebruik de `radius` para meter om de RADIUS van het zoek gebied in te stellen.
+* Als u het relevantie gebied voor de resultaten wilt beïnvloeden, definieert u de `lat` `lon` para meters en coördineert u. Gebruik de `radius` para meter om de RADIUS van het zoek gebied in te stellen.
 
 
 #### <a name="fuzzy-search-parameters"></a>Zoek parameters voor fuzzy
 
 U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) te gebruiken wanneer u de invoer van uw gebruikers niet kent voor een zoek opdracht. De API combineert POI-zoek acties en geocodering in een canonieke *Zoek opdracht op één regel*: 
 
-* De `minFuzzyLevel` para `maxFuzzyLevel` meters en kunnen relevante overeenkomsten retour neren, zelfs wanneer de query parameters niet exact overeenkomen met de informatie die de gebruiker wil. Stel Zoek query's in op standaard waarden van `minFuzzyLevel=1` en `maxFuzzyLevel=2`om de prestaties te maximaliseren en ongebruikelijke resultaten te verminderen. 
+* De `minFuzzyLevel` `maxFuzzyLevel` para meters en kunnen relevante overeenkomsten retour neren, zelfs wanneer de query parameters niet exact overeenkomen met de informatie die de gebruiker wil. Stel Zoek query's in op standaard waarden van en om de prestaties te maximaliseren en ongebruikelijke resultaten te verminderen `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
     Als de `maxFuzzyLevel` para meter bijvoorbeeld is ingesteld op 2, wordt de zoek term *restrant* gekoppeld aan het *restaurant*. U kunt de standaard niveaus voor fuzzy negeren wanneer dat nodig is. 
 
 * Gebruik de `idxSet` para meter om de prioriteit van de exacte set resultaat typen te bepalen. Als u een exacte set resultaten wilt priori teren, kunt u een door komma's gescheiden lijst met indexen verzenden. In uw lijst is de volg orde van de items niet van belang. Azure Maps ondersteunt de volgende indexen:
 
 * `Addr` - **Adresbereiken: adres**punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. Deze punten worden weer gegeven als adresbereiken.
-* `Geo` - **Geografi**: Administratieve divisies van grond. Een geografie kan bijvoorbeeld een land, provincie of stad zijn.
+* `Geo` - **Geografi**: Administratieve divisies van grond. Een geografie kan bijvoorbeeld een land/regio, staat of plaats zijn.
 * `PAD` - **Punt adressen**: adressen die een straat naam en-nummer bevatten. Punt adressen vindt u in een index. Een voor beeld is *Soquel Dr 2501*. Een punt adres biedt het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen.  
 * `POI` - Interessante **punten**: punten op een kaart die worden beschouwd als aandacht of die interessant kunnen zijn. De [Zoek adres-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) retourneert geen poi's.  
 * `Str` - **Streets**: Streets op de kaart.
@@ -81,11 +81,11 @@ U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.
 
 * `idxSet=POI`-Alleen naar Poi's zoeken. 
 
-* `idxSet=PAD,Addr`-Alleen zoeken naar adressen. `PAD`geeft het adres van het punt `Addr` aan en geeft het adres bereik aan.
+* `idxSet=PAD,Addr`-Alleen zoeken naar adressen. `PAD`geeft het adres van het punt aan en `Addr` geeft het adres bereik aan.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Reverse-Geocode en filter voor het entiteits type Geografie
 
-Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten `entityType` , neemt u de para meter op in uw aanvragen. 
+Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten, neemt u de `entityType` para meter op in uw aanvragen. 
 
 De resulterende reactie bevat de geografie-ID en het entiteits type dat overeenkomt. Als u meer dan één entiteit opgeeft, wordt met het eind punt de *kleinste beschik bare entiteit*geretourneerd. U kunt de geretourneerde geometrie-ID gebruiken om de geometrie van het geografie te verkrijgen via de [Search veelhoek-service](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 
@@ -137,9 +137,9 @@ Zie [Azure Maps ondersteunde talen](https://docs.microsoft.com/azure/azure-maps/
 
 ### <a name="use-predictive-mode-automatic-suggestions"></a>Voorspellings modus gebruiken (automatische suggesties)
 
-Als u meer overeenkomsten wilt vinden voor gedeeltelijke query's, `typeahead` stelt u `true`de para meter in op. Deze query wordt geïnterpreteerd als gedeeltelijke invoer en de zoek opdracht wordt voorspellende modus ingevoerd. Als u de `typeahead` para meter niet instelt `true`op, wordt ervan uitgegaan dat alle relevante gegevens zijn door gegeven in.
+Als u meer overeenkomsten wilt vinden voor gedeeltelijke query's, stelt `typeahead` u de para meter in op `true` . Deze query wordt geïnterpreteerd als gedeeltelijke invoer en de zoek opdracht wordt voorspellende modus ingevoerd. Als u de `typeahead` para meter niet instelt op `true` , wordt ervan uitgegaan dat alle relevante gegevens zijn door gegeven in.
 
-In de volgende voorbeeld query wordt de service Search Address opgevraagd voor *Microsoft*. Hier stelt u `typeahead` de para meter `true`in op. In het antwoord ziet u dat de zoek service de query als gedeeltelijke query heeft geïnterpreteerd. Het antwoord bevat resultaten voor een automatisch voorgestelde query.
+In de volgende voorbeeld query wordt de service Search Address opgevraagd voor *Microsoft*. Hier `typeahead` stelt u de para meter in op `true` . In het antwoord ziet u dat de zoek service de query als gedeeltelijke query heeft geïnterpreteerd. Het antwoord bevat resultaten voor een automatisch voorgestelde query.
 
 #### <a name="sample-query"></a>Voorbeeldquery
 
@@ -407,9 +407,9 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>Een URI coderen voor het verwerken van speciale tekens 
 
-U moet de URI coderen voor het afhandelen van speciale tekens in het adres om Cross Street-adressen te vinden. Bekijk dit adres voor beeld: *1e stap & vakbonds straat Seattle*. Codeer hier het & teken (`&`) voordat u de aanvraag verzendt. 
+U moet de URI coderen voor het afhandelen van speciale tekens in het adres om Cross Street-adressen te vinden. Bekijk dit adres voor beeld: *1e stap & vakbonds straat Seattle*. Codeer hier het & teken ( `&` ) voordat u de aanvraag verzendt. 
 
-Het is raadzaam om teken gegevens te coderen in een URI. In een URI Codeer u alle tekens met behulp van een`%`procent teken () en een hexadecimale waarde van twee tekens die overeenkomt met de tekens UTF-8.
+Het is raadzaam om teken gegevens te coderen in een URI. In een URI Codeer u alle tekens met behulp van een procent teken ( `%` ) en een hexadecimale waarde van twee tekens die overeenkomt met de tekens UTF-8.
 
 #### <a name="usage-examples"></a>Gebruiks voorbeelden
 
@@ -480,7 +480,7 @@ url.QueryEscape(query)
 
 In een POI-zoek opdracht kunt u POI-resultaten aanvragen op naam. U kunt bijvoorbeeld zoeken naar een bedrijf op naam. 
 
-We raden u ten zeerste aan `countrySet` de para meter te gebruiken om landen aan te geven waar uw toepassing behoefte heeft. Het standaard gedrag is het doorzoeken van de hele wereld. Deze brede zoek opdracht kan onnodig resultaten retour neren en de zoek opdracht kan enige tijd duren.
+We raden u ten zeerste `countrySet` aan de para meter te gebruiken om landen/regio's op te geven waar uw toepassing behoefte heeft. Het standaard gedrag is het doorzoeken van de hele wereld. Deze brede zoek opdracht kan onnodig resultaten retour neren en de zoek opdracht kan enige tijd duren.
 
 ### <a name="brand-search"></a>Merk zoeken
 
@@ -755,7 +755,7 @@ Als u de resultaten wilt beperken, raden we u aan om de RADIUS in te stellen.
 
 ## <a name="understanding-the-responses"></a>Meer informatie over de antwoorden
 
-We gaan een adres vinden in Seattle door een aanvraag voor het zoeken naar het Azure Maps Search Service te maken. In de volgende aanvraag-URL stellen we de `countrySet` para meter `US` in op om te zoeken naar het adres in de Verenigde Staten.
+We gaan een adres vinden in Seattle door een aanvraag voor het zoeken naar het Azure Maps Search Service te maken. In de volgende aanvraag-URL stellen we de `countrySet` para meter in op `US` om te zoeken naar het adres in de Verenigde Staten.
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
@@ -769,7 +769,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Adres bereik**: het adres bereik dat wordt geïnterpoleerd vanaf het begin en het einde van de straat.  
 
-* **Geografie**: gebieden op een kaart die administratieve divisies van een land vertegenwoordigen, bijvoorbeeld land, provincie of plaats. 
+* **Geografie**: gebieden op een kaart die administratieve divisies van een land vertegenwoordigen, bijvoorbeeld land/regio, staat of plaats. 
 
 * **POI**: punten op een kaart die aandacht best Eden en die mogelijk interessant zijn.
 
@@ -951,10 +951,10 @@ De `Score` para meter voor elk reactie object geeft aan hoe de overeenkomende Sc
 
 ### <a name="geometry"></a>Geometrie
 
-Een antwoord type van *geometrie* kan de geometrie-id bevatten die wordt geretourneerd in `dataSources` het object `geometry` onder `id`en. U kunt bijvoorbeeld de [Search veelhoek-service](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) gebruiken om de geometrie gegevens aan te vragen in een geojson-indeling. Met deze indeling kunt u een overzicht van de stad of de lucht haven voor een set entiteiten ophalen. U kunt deze grens gegevens vervolgens gebruiken voor het [instellen van een geofence](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) of [het zoeken naar poi's binnen de geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
+Een antwoord type van *geometrie* kan de geometrie-id bevatten die wordt geretourneerd in het `dataSources` object onder `geometry` en `id` . U kunt bijvoorbeeld de [Search veelhoek-service](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) gebruiken om de geometrie gegevens aan te vragen in een geojson-indeling. Met deze indeling kunt u een overzicht van de stad of de lucht haven voor een set entiteiten ophalen. U kunt deze grens gegevens vervolgens gebruiken voor het [instellen van een geofence](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) of [het zoeken naar poi's binnen de geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
 
 
-Reacties voor de API voor [Zoek adressen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) of de [Zoek fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -API kunnen de geometrie-id bevatten die wordt `dataSources` geretourneerd in `geometry` het `id`object onder en:
+Reacties voor de API voor [Zoek adressen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) of de [Zoek fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -API kunnen de geometrie-id bevatten die wordt geretourneerd in het `dataSources` object onder `geometry` en `id` :
 
 
 ```JSON 

@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262397"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738316"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dash board samen vatting in commerciële Marketplace-analyse
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Samenvatting in Commerciële marketplace-analyses
 
 Dit artikel bevat informatie over het dash board samen vatting in partner centrum. In dit dash board worden grafieken, trends en waarden van statistische gegevens weer gegeven waarin Marketplace-activiteiten voor uw aanbiedingen worden samenvatten.
 
@@ -70,7 +70,7 @@ De heatmap **klanten** op een wereld kaart geven een aantal klanten weer.
 - U kunt de kaart verplaatsen om de exacte locatie weer te geven.
 - U kunt inzoomen op een specifieke locatie.
 - De heatmap heeft een aanvullend raster voor het weer geven van de details van het aantal klanten, het aantal orders, genormaliseerde gebruiks uren op de specifieke locatie.
-- U kunt in het raster zoeken en een land selecteren om in te zoomen op de locatie in de kaart. Keer terug naar de oorspronkelijke weer gave door in de kaart op de knop **Start** te drukken.
+- U kunt zoeken en een land/regio in het raster selecteren om in te zoomen op de locatie in de kaart. Keer terug naar de oorspronkelijke weer gave door in de kaart op de knop **Start** te drukken.
 - Een **nieuwe** klant heeft een van uw aanbiedingen voor de eerste keer in de maand in het geselecteerde datum bereik gekocht.
 
 ### <a name="growth-trend-charts"></a>Diagrammen met groei trends

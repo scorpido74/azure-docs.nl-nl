@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569353"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743643"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren of vervangen
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om uw apparaat opnieuw in te stellen met behulp van
 
 Met de reset worden de gegevens van de gegevens schijven van apparaten gewist. Afhankelijk van de hoeveelheid gegevens op uw apparaat, neemt dit proces ongeveer 30-40 minuten in beslag.
 
-U kunt ook verbinding maken met de Power shell-interface van het apparaat `Reset-HcsAppliance` en de cmdlet gebruiken om de gegevens van de gegevens schijven te wissen. Zie [uw apparaat opnieuw instellen](azure-stack-edge-connect-powershell-interface.md#reset-your-device)voor meer informatie.
+U kunt ook verbinding maken met de Power shell-interface van het apparaat en de `Reset-HcsAppliance` cmdlet gebruiken om de gegevens van de gegevens schijven te wissen. Zie [uw apparaat opnieuw instellen](azure-stack-edge-connect-powershell-interface.md#reset-your-device)voor meer informatie.
 
 > [!NOTE]
 > - Als u uitwisselt of een upgrade naar een nieuw apparaat uitvoert, raden wij u aan uw apparaat opnieuw in te stellen nadat u het nieuwe apparaat hebt ontvangen.
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om het retour proces te starten.
 5. Breng het verzend label op dat u hebt ontvangen van Azure op het pakket.
 6. Maak een afspraak met een transportbedrijf voor het ophalen van de zending. Als u het apparaat in ons retourneert, kan uw provider UPS of FedEx zijn. Een ophaling plannen met UPS:
 
-    1. Neem contact op met de lokale nood voeding (land-specifiek gratis nummer).
+    1. Bel met UPS in de buurt (gratis land-/regiospecifiek nummer).
     2. Neem in uw gesprek het tracerings nummer van omgekeerde verzen ding op zoals op het afgedrukte label wordt weer gegeven.
     3. Als het tracking nummer niet wordt vermeld, moet u een extra kosten betalen tijdens het ophalen.
 

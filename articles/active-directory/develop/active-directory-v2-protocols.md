@@ -13,16 +13,16 @@ ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926813"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737483"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 en OpenID Connect Connect protocols op micro soft Identity platform
 
-Het micro soft Identity platform-eind punt voor Identity-as-a-service met industrie standaard protocollen, OpenID Connect Connect (OIDC) en OAuth 2,0. Hoewel de service compatibel is met standaarden, kunnen er subtiele verschillen zijn tussen twee implementaties van deze protocollen. Deze informatie is nuttig als u ervoor kiest om uw code te schrijven door rechtstreeks HTTP-aanvragen te verzenden en af te handelen of door een open-source bibliotheek van derden te gebruiken in plaats van een van de [open source-bibliotheken](reference-v2-libraries.md)te gebruiken.
+Het micro soft Identity platform-eind punt voor Identity-as-a-service implementeert verificatie en autorisatie met respectievelijk de OpenID Connect Connect (OIDC) en OAuth 2,0 van de industrie norm. Hoewel de service compatibel is met standaarden, kunnen er subtiele verschillen zijn tussen twee implementaties van deze protocollen. Deze informatie is nuttig als u ervoor kiest om uw code te schrijven door rechtstreeks HTTP-aanvragen te verzenden en af te handelen of door een open-source bibliotheek van derden te gebruiken in plaats van een van de [open source-bibliotheken](reference-v2-libraries.md)te gebruiken.
 
 ## <a name="the-basics"></a>De basisbeginselen
 

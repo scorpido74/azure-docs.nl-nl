@@ -1,20 +1,26 @@
 ---
-title: Een Watcher-taak maken in het Azure Automation-account
-description: Meer informatie over het maken van een Watcher-taak in het Azure Automation-account om te kijken naar nieuwe bestanden die in een map zijn gemaakt.
+title: Bijgewerkte bestanden bijhouden met een Azure Automation Watcher-taak
+description: In dit artikel leest u hoe u een Watcher-taak maakt in het Azure Automation-account om te controleren of er nieuwe bestanden in een map zijn gemaakt.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c41437773cf45e51e90dc55ad37e198c77f4373
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617363"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744152"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Een Azure Automation Watcher-taken maken om bestands wijzigingen op een lokale computer bij te houden
+# <a name="track-updated-files-with-a-watcher-task"></a>Bijgewerkte bestanden bijhouden met een Watcher-taak
 
 Azure Automation een Watcher-taak gebruikt om te zoeken naar gebeurtenissen en trigger acties met Power shell-runbooks. De Watcher-taak bevat twee delen: de Watcher en de actie. Een Watcher-runbook wordt uitgevoerd met een interval dat is gedefinieerd in de Watcher-taak en voert gegevens uit naar een actie runbook. 
+
+> [!NOTE]
+> Watcher-taken worden niet ondersteund in azure China ViaNet 21.
+
+> [!IMPORTANT]
+> Vanaf mei 2020 is het gebruik van Azure Logic Apps de ondersteunde manier om gebeurtenissen te controleren, terugkerende taken te plannen en acties te activeren. Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
 In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te controleren wanneer een nieuw bestand wordt toegevoegd aan een map. Procedures voor:
 
@@ -34,9 +40,6 @@ Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien
 * [Automation-account](automation-offering-get-started.md) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
 * Een [hybride runbook worker](automation-hybrid-runbook-worker.md) waarbij de Watcher-taak wordt uitgevoerd.
 * Power shell-runbooks. Power shell workflow-runbooks worden niet ondersteund door Watcher-taken.
-
-> [!NOTE]
-> Watcher-taken worden niet ondersteund in azure China.
 
 ## <a name="import-a-watcher-runbook"></a>Een Watcher-runbook importeren
 
@@ -166,5 +169,5 @@ In deze zelfstudie heeft u het volgende geleerd:
 Volg deze koppeling voor meer informatie over het ontwerpen van uw eigen runbook.
 
 > [!div class="nextstepaction"]
-> [Mijn eerste Power shell-runbook](automation-first-runbook-textual-powershell.md).
+> [Een PowerShell-runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)
 

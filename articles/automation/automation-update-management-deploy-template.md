@@ -1,37 +1,34 @@
 ---
-title: Azure Resource Manager sjablonen gebruiken voor onboarding Updatebeheer | Microsoft Docs
-description: U kunt een Azure Resource Manager sjabloon gebruiken om de Azure Automation Updatebeheer-oplossing uit te staan.
+title: Updatebeheer met Azure Resource Manager sjabloon inschakelen | Microsoft Docs
+description: In dit artikel leest u hoe u een Azure Resource Manager sjabloon kunt gebruiken om Updatebeheer in te scha kelen.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872205"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743462"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Updatebeheer oplossing voor onboarding met behulp van Azure Resource Manager-sjabloon
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer met behulp van Azure Resource Manager-sjabloon inschakelen
 
-U kunt [Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md) gebruiken om de Azure Automation updatebeheer oplossing in uw resource groep in te scha kelen. Dit artikel bevat een voorbeeld sjabloon waarmee het volgende kan worden geautomatiseerd:
+U kunt een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md) gebruiken om de functie Azure Automation updatebeheer in uw resource groep in te scha kelen. Dit artikel bevat een voorbeeld sjabloon waarmee het volgende kan worden geautomatiseerd:
 
 * Het maken van een Azure Monitor Log Analytics werk ruimte.
 * Het maken van een Azure Automation-account.
 * Koppel het Automation-account aan de Log Analytics-werk ruimte, als dat nog niet is gekoppeld.
-* Onboarding van de Azure Automation Updatebeheer oplossing.
+* Updatebeheer inschakelen.
 
-Met de sjabloon wordt het onboarden van een of meer virtuele machines in azure of niet-Azure geautomatiseerd.
+Met de sjabloon wordt het inschakelen van een of meer virtuele Azure-of niet-Azure-Vm's niet geautomatiseerd.
 
-Als u al een Log Analytics werk ruimte en een Automation-account hebt geïmplementeerd in een ondersteunde regio in uw abonnement, zijn deze niet gekoppeld. De Updatebeheer oplossing is niet al geïmplementeerd voor de werk ruimte. Met deze sjabloon maakt u de koppeling en implementeert u de Updatebeheer-oplossing. 
-
->[!NOTE]
->De **nxautomation** -gebruiker die is voorbereid als onderdeel van updatebeheer op Linux, voert alleen ondertekende runbooks uit.
+Als u al een Log Analytics werk ruimte en een Automation-account hebt geïmplementeerd in een ondersteunde regio in uw abonnement, zijn deze niet gekoppeld. Updatebeheer is nog niet ingeschakeld voor de werk ruimte. Met deze sjabloon maakt u de koppeling en implementeert u Updatebeheer voor uw virtuele machines. 
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
+>De **nxautomation** -gebruiker ingeschakeld als onderdeel van updatebeheer op Linux voert alleen ondertekende runbooks uit.
 
 ## <a name="api-versions"></a>API-versies
 
@@ -244,10 +241,10 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de Updatebeheer oplossing hebt geïmplementeerd, kunt u Vm's inschakelen voor beheer, update-evaluaties bekijken en updates implementeren om ze compatibel te maken.
+Nu u Updatebeheer hebt ingeschakeld, kunt u Vm's inschakelen voor beheer, update-evaluaties bekijken en updates implementeren om ze te laten voldoen aan het beleid.
 
-- Vanuit uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines en hand matig voor niet-Azure-machines.
+- Van uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines en hand matig voor niet-Azure-machines
 
-- Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's.
+- Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's
 
-- Voor [meerdere virtuele Azure-machines](manage-update-multi.md) door ze te selecteren op de pagina **virtual machines** in de Azure Portal. 
+- Voor [meerdere virtuele Azure-machines](manage-update-multi.md) door ze te selecteren op de pagina **virtual machines** in de Azure Portal 

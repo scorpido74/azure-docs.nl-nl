@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edbe76145c83e000c549f7e0dd89cc500e6f05f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266336"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741776"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uw profiel-en account gegevens bijwerken in de portal mijn apps
 
@@ -83,7 +83,7 @@ Als u het wacht woord voor uw werk-of school account wilt wijzigen, kunt u **wac
 
     ![Pagina wacht woord wijzigen](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Selecteer **Indienen**.
+3. Selecteer **Verzenden**.
 
     Uw wacht woord is gewijzigd. U moet zich aanmelden bij alle apps die u eerder hebt aangemeld voor het gebruik van uw werk-of school account.
 

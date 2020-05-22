@@ -3,12 +3,12 @@ title: Schijven uitsluiten van replicatie met Azure Site Recovery
 description: Schijven uitsluiten van replicatie naar Azure met Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900284"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740515"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Schijven uitsluiten van herstel na nood gevallen
 
@@ -24,9 +24,9 @@ In dit artikel wordt beschreven hoe u schijven uitsluiten van replicatie tijdens
 
 U kunt schijven uitsluiten van replicatie zoals in de tabel wordt samenvatten.
 
-**Azure naar Azure** | **VMware naar Azure** | **Hyper-V naar Azure** 
---- | --- | ---
-Ja | Ja | Ja 
+**Azure naar Azure** | **VMware naar Azure** | **Hyper-V naar Azure** | **Fysieke server naar Azure**
+--- | --- | --- | ---
+Ja | Ja | Ja | Ja
 
 ## <a name="exclude-limitations"></a>Beperkingen uitsluiten
 
@@ -179,7 +179,7 @@ Na de geplande failover (failback) van Azure naar on-premises Hyper-V heeft de v
 DB-Disk0-OS | Disk0 |   C:\ | Besturingssysteem schijf.
 DB-Disk1 | Disk1 | D:\ | SQL-systeem database en gebruiker Database1.
 DB-Disk2 (uitgesloten schijf) | Disk2 | E:\ | Tijdelijke bestanden.
-DB-Disk3 (uitgesloten schijf) | Disk3 | F:\ | SQL-TempDB-data base<br/><br/> Mappad (F:\MSSQL\Data\).
+DB-Disk3 (uitgesloten schijf) | Disk3 | F:\ | SQL-TempDB-data base<br/><br/> Mappad (F:\MSSQL\Data \) .
 DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase2
 
 

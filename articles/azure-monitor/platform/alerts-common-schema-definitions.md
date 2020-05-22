@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 62b2738324f4c728cd4b5959c04c93649c156afb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f0c99899b647c677025dbb38480b4d7f64c24fa
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114445"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739985"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
@@ -83,7 +83,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 | originAlertId | De ID van het waarschuwings exemplaar, zoals gegenereerd door de bewakings service die het genereert. |
 | firedDateTime | De datum en tijd waarop het waarschuwings exemplaar is geactiveerd in Coordinated Universal Time (UTC). |
 | resolvedDateTime | De datum en tijd waarop de monitor voorwaarde voor het waarschuwings exemplaar is ingesteld op **opgelost** in UTC. Momenteel alleen van toepassing op metrische waarschuwingen.|
-| description | De beschrijving, zoals gedefinieerd in de waarschuwings regel. |
+| beschrijving | De beschrijving, zoals gedefinieerd in de waarschuwings regel. |
 |essentialsVersion| Het versie nummer van de sectie Essentials.|
 |alertContextVersion | Het versie nummer voor de `alertContext` sectie. |
 
@@ -149,7 +149,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ### <a name="log-alerts"></a>Waarschuwingen voor logboeken
 
 > [!NOTE]
-> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag `IncludeSearchResults`te controleren. Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag te controleren `IncludeSearchResults` . Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

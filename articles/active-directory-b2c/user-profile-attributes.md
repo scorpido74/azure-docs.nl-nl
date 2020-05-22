@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057297"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738554"
 ---
 # <a name="user-profile-attributes"></a>Kenmerken van gebruikersprofiel
 
@@ -33,9 +33,9 @@ In de volgende tabel worden de kenmerken van het [bron type](https://docs.micros
 - Kenmerk Beschrijving
 - Als het kenmerk beschikbaar is in de Azure Portal
 - Als het kenmerk kan worden gebruikt in een gebruikers stroom
-- Als het kenmerk kan worden gebruikt in een aangepast beleid [voor Azure AD technische profielen](active-directory-technical-profile.md) en in welke sectie&lt;(&gt;InputClaims &lt;,&gt;OutputClaims of &lt;PersistedClaims&gt;)
+- Als het kenmerk kan worden gebruikt in een aangepast beleid voor [Azure AD technische profielen](active-directory-technical-profile.md) en in welke sectie ( &lt; InputClaims &gt; , &lt; OutputClaims &gt; of &lt; PersistedClaims &gt; )
 
-|Naam     |Type     |Beschrijving|Azure Portal|Gebruikersstromen|Aangepast beleid|
+|Name     |Type     |Beschrijving|Azure Portal|Gebruikersstromen|Aangepast beleid|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Booleaans|Hiermee wordt aangegeven of het gebruikers account is in-of uitgeschakeld: **True** als het account is ingeschakeld, anders **False**.|Ja|Nee|Persistent gemaakt, uitvoer|
 |ageGroup        |Tekenreeks|De leeftijds groep van de gebruiker. Mogelijke waarden: null, undefined, Minor, volwassene, NotAdult.|Ja|Nee|Persistent gemaakt, uitvoer|
@@ -46,21 +46,21 @@ In de volgende tabel worden de kenmerken van het [bron type](https://docs.micros
 |land         |Tekenreeks|Het land/de regio waarin de gebruiker zich bevindt. Voor beeld: "US" of "UK". Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
 |createdDateTime|DateTime|De datum waarop het gebruikers object is gemaakt. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
 |creationType    |Tekenreeks|Als het gebruikers account is gemaakt als een lokaal account voor een Azure Active Directory B2C Tenant, is de waarde LocalAccount of nameCoexistence. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
-|dateOfBirth     |Date|Geboortedatum.|Nee|Nee|Persistent gemaakt, uitvoer|
-|department      |Tekenreeks|De naam van de afdeling waarin de gebruiker werkt. Maximale lengte van 64.|Ja|Nee|Persistent gemaakt, uitvoer|
+|dateOfBirth     |Datum|Geboortedatum.|Nee|Nee|Persistent gemaakt, uitvoer|
+|afdeling      |Tekenreeks|De naam van de afdeling waarin de gebruiker werkt. Maximale lengte van 64.|Ja|Nee|Persistent gemaakt, uitvoer|
 |displayName     |Tekenreeks|De weergave naam voor de gebruiker. Maximale lengte van 256.|Ja|Ja|Persistent gemaakt, uitvoer|
 |facsimileTelephoneNumber<sup>1</sup>|Tekenreeks|Het telefoon nummer van de zakelijke faxmachine van de gebruiker.|Ja|Nee|Persistent gemaakt, uitvoer|
 |givenName       |Tekenreeks|De opgegeven naam (voor naam) van de gebruiker. Maximale lengte van 64.|Ja|Ja|Persistent gemaakt, uitvoer|
 |jobTitle        |Tekenreeks|De functie van de gebruiker. Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
 |immutableId     |Tekenreeks|Een id die meestal wordt gebruikt voor gebruikers die zijn gemigreerd vanuit een on-premises Active Directory.|Nee|Nee|Persistent gemaakt, uitvoer|
 |legalAgeGroupClassification|Tekenreeks|Groeps classificatie juridische leeftijd. Alleen-lezen en berekend op basis van de eigenschappen ageGroup en consentProvidedForMinor. Toegestane waarden: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult en volwassene.|Ja|Nee|Persistent gemaakt, uitvoer|
-|legalCountry<sup>1</sup>  |Tekenreeks|Land voor juridische doel einden.|Nee|Nee|Persistent gemaakt, uitvoer|
-|mail            |Tekenreeks|Het SMTP-adres voor de gebruiker, bijvoorbeeldbob@contoso.com. Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
+|legalCountry<sup>1</sup>  |Tekenreeks|Land/regio voor juridische doel einden.|Nee|Nee|Persistent gemaakt, uitvoer|
+|mail            |Tekenreeks|Het SMTP-adres voor de gebruiker, bijvoorbeeld bob@contoso.com . Alleen-lezen.|Nee|Nee|Persistent gemaakt, uitvoer|
 |mailNickName    |Tekenreeks|De e-mail alias voor de gebruiker. Maximale lengte van 64.|Nee|Nee|Persistent gemaakt, uitvoer|
 |mobiel (mobilePhone) |Tekenreeks|Het primaire mobiele telefoon nummer voor de gebruiker. Maximale lengte van 64.|Ja|Nee|Persistent gemaakt, uitvoer|
 |netId           |Tekenreeks|Net-ID.|Nee|Nee|Persistent gemaakt, uitvoer|
 |Id        |Tekenreeks|Een Globally Unique Identifier (GUID) die de unieke id voor de gebruiker is. Voor beeld: 12345678-9abc-def0-1234-56789abcde. Alleen-lezen, onveranderbaar.|Alleen-lezen|Ja|Invoer, persistent, uitvoer|
-|otherMails      |Teken reeks verzameling|Een lijst met aanvullende e-mail adressen voor de gebruiker. Voor beeld: [bob@contoso.com"",Robert@fabrikam.com""].|Ja (alternatief e-mail adres)|Nee|Persistent gemaakt, uitvoer|
+|otherMails      |Teken reeks verzameling|Een lijst met aanvullende e-mail adressen voor de gebruiker. Voor beeld: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ja (alternatief e-mail adres)|Nee|Persistent gemaakt, uitvoer|
 |wachtwoord        |Tekenreeks|Het wacht woord voor het lokale account tijdens het maken van de gebruiker.|Nee|Nee|Persistente|
 |passwordPolicies     |Tekenreeks|Het beleid van het wacht woord. Het is een teken reeks die bestaat uit een andere beleids naam, gescheiden door komma's. dat wil zeggen "DisablePasswordExpiration, DisableStrongPassword".|Nee|Nee|Persistent gemaakt, uitvoer|
 |physicalDeliveryOfficeName (officeLocation)|Tekenreeks|De kantoor locatie in de bedrijfs plaats van de gebruiker. Maximale lengte van 128.|Ja|Nee|Persistent gemaakt, uitvoer|
@@ -74,12 +74,12 @@ In de volgende tabel worden de kenmerken van het [bron type](https://docs.micros
 |state           |Tekenreeks|De staat of provincie in het adres van de gebruiker. Maximale lengte van 128.|Ja|Ja|Persistent gemaakt, uitvoer|
 |streetAddress   |Tekenreeks|Het adres van de bedrijfs locatie van de gebruiker. Maximale lengte van 1024.|Ja|Ja|Persistent gemaakt, uitvoer|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Tekenreeks|Het secundaire telefoon nummer van de gebruiker die wordt gebruikt voor multi-factor Authentication.|Ja|Nee|Persistent gemaakt, uitvoer|
-|strongAuthenticationEmailAddress<sup>1</sup>|Tekenreeks|Het SMTP-adres voor de gebruiker. Voor beeld:bob@contoso.com"" dit kenmerk wordt gebruikt voor aanmelding met gebruikers naam beleid, om het e-mail adres van de gebruiker op te slaan. Het e-mail adres wordt vervolgens gebruikt in een stroom voor het opnieuw instellen van een wacht woord.|Ja|Nee|Persistent gemaakt, uitvoer|
+|strongAuthenticationEmailAddress<sup>1</sup>|Tekenreeks|Het SMTP-adres voor de gebruiker. Voor beeld: " bob@contoso.com " dit kenmerk wordt gebruikt voor aanmelding met gebruikers naam beleid, om het e-mail adres van de gebruiker op te slaan. Het e-mail adres wordt vervolgens gebruikt in een stroom voor het opnieuw instellen van een wacht woord.|Ja|Nee|Persistent gemaakt, uitvoer|
 |strongAuthenticationPhoneNumber<sup>1</sup>|Tekenreeks|Het primaire telefoon nummer van de gebruiker die wordt gebruikt voor multi-factor Authentication.|Ja|Nee|Persistent gemaakt, uitvoer|
 |surname         |Tekenreeks|De voor naam van de gebruiker (familie naam of achternaam). Maximale lengte van 64.|Ja|Ja|Persistent gemaakt, uitvoer|
 |telephoneNumber (eerste vermelding van businessPhones)|Tekenreeks|Het primaire telefoon nummer van de bedrijfs plaats van de gebruiker.|Ja|Nee|Persistent gemaakt, uitvoer|
 |userPrincipalName    |Tekenreeks|De UPN (user Principal name) van de gebruiker. De UPN is een aanmeldings naam voor Internet-stijl voor de gebruiker op basis van Internet Standard RFC 822. Het domein moet aanwezig zijn in de verzameling van geverifieerde domeinen van de Tenant. Deze eigenschap is vereist wanneer een account wordt gemaakt. Onveranderbare.|Nee|Nee|Invoer, persistent, uitvoer|
-|usageLocation   |Tekenreeks|Vereist voor gebruikers aan wie licenties moeten worden toegewezen vanwege wettelijke vereisten om te controleren of er services beschikbaar zijn in landen. Geen Null-waarden. Een land code van twee letters (ISO-standaard 3166). Voor beelden: "US", "JP" en "GB".|Ja|Nee|Persistent gemaakt, uitvoer|
+|usageLocation   |Tekenreeks|Vereist voor gebruikers aan wie licenties moeten worden toegewezen als gevolg van wettelijke vereisten om te controleren of de services beschikbaar zijn in landen/regio's. Geen Null-waarden. Een land/regio code van twee letters (ISO-standaard 3166). Voor beelden: "US", "JP" en "GB".|Ja|Nee|Persistent gemaakt, uitvoer|
 |User type        |Tekenreeks|Een teken reeks waarde die kan worden gebruikt voor het classificeren van gebruikers typen in uw Directory. Waarde moet lid zijn. Alleen-lezen.|Alleen-lezen|Nee|Persistent gemaakt, uitvoer|
 |userState (externalUserState)<sup>2</sup>|Tekenreeks|Alleen voor Azure AD B2B-account geeft aan of de uitnodiging wordt PendingAcceptance of geaccepteerd.|Nee|Nee|Persistent gemaakt, uitvoer|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Toont de tijds tempel voor de laatste wijziging van de eigenschap UserState.|Nee|Nee|Persistent gemaakt, uitvoer|

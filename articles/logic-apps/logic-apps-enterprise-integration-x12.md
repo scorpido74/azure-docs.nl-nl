@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613041"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739529"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
@@ -31,7 +31,7 @@ Als u wilt werken met X12-berichten in Azure Logic Apps, kunt u de X12-connector
 
 * De [schema's](../logic-apps/logic-apps-enterprise-integration-schemas.md) die u voor XML-validatie wilt gebruiken die u al aan uw integratie account hebt toegevoegd. Zie [HIPAA-schema's](#hipaa-schemas)als u werkt met de Health-Schema's voor portabiliteit en aansprakelijkheids Act (HIPAA).
 
-* Voordat u de X12-connector kunt gebruiken, moet u een X12- [overeenkomst](../logic-apps/logic-apps-enterprise-integration-agreements.md) maken tussen uw handels partners en de overeenkomst opslaan in uw integratie account. Als u met Health Insurance-schema's (porteer baarheid en aansprakelijkheids Act) werkt, moet u een `schemaReferences` sectie toevoegen aan uw overeenkomst. Zie voor meer informatie [HIPAA-schema's](#hipaa-schemas).
+* Voordat u de X12-connector kunt gebruiken, moet u een X12- [overeenkomst](../logic-apps/logic-apps-enterprise-integration-agreements.md) maken tussen uw handels partners en de overeenkomst opslaan in uw integratie account. Als u met Health Insurance-schema's (porteer baarheid en aansprakelijkheids Act) werkt, moet u een sectie toevoegen `schemaReferences` aan uw overeenkomst. Zie voor meer informatie [HIPAA-schema's](#hipaa-schemas).
 
 <a name="receive-settings"></a>
 
@@ -319,8 +319,8 @@ Deze tabel bevat de betrokken bericht typen, varianten en de document versie num
 | Bericht type of-variant |  Beschrijving | Document versie nummer (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Melding van status van informatie over gezondheids zorg | 005010X212 |
-| 837_I | Claim tand gezondheids zorg | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | Gezondheids zorg claim institutionele | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | Gezondheids zorg claim institutionele | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Claim tand gezondheids zorg | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | Claim medewerker gezondheids zorg | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 
@@ -330,7 +330,7 @@ Voer de volgende stappen uit om deze document versie nummers en bericht typen op
 
 1. Vervang in uw HIPAA-schema het huidige bericht type door het bericht type variant voor het document versie nummer dat u wilt gebruiken.
 
-   Stel dat u het document versie nummer `005010X222A1` met het `837` bericht type wilt gebruiken. Vervang in uw schema elke `"X12_00501_837"` waarde door de `"X12_00501_837_P"` waarde in plaats daarvan.
+   Stel dat u het document versie nummer `005010X222A1` met het bericht type wilt gebruiken `837` . Vervang in uw schema elke `"X12_00501_837"` waarde door de `"X12_00501_837_P"` waarde in plaats daarvan.
 
    Voer de volgende stappen uit om het schema bij te werken:
 
@@ -338,9 +338,9 @@ Voer de volgende stappen uit om deze document versie nummers en bericht typen op
 
    1. In de bericht instellingen van uw overeenkomst selecteert u het gewijzigde schema.
 
-1. Voeg in het object `schemaReferences` van de overeenkomst een andere vermelding toe die het type variant bericht opgeeft dat overeenkomt met het versie nummer van uw document.
+1. Voeg in het object van de overeenkomst `schemaReferences` een andere vermelding toe die het type variant bericht opgeeft dat overeenkomt met het versie nummer van uw document.
 
-   Stel dat u het document versie nummer `005010X222A1` voor het `837` bericht type wilt gebruiken. Uw overeenkomst heeft een `schemaReferences` sectie met de volgende eigenschappen en waarden:
+   Stel dat u het document versie nummer `005010X222A1` voor het bericht type wilt gebruiken `837` . Uw overeenkomst heeft een `schemaReferences` sectie met de volgende eigenschappen en waarden:
 
    ```json
    "schemaReferences": [
@@ -358,7 +358,7 @@ Voer de volgende stappen uit om deze document versie nummers en bericht typen op
    * `"schemaVersion": "00501"`
    * `"schemaName": "X12_00501_837_P"`
 
-   Wanneer u klaar bent, ziet `schemaReferences` uw sectie er als volgt uit:
+   Wanneer u klaar bent, `schemaReferences` ziet uw sectie er als volgt uit:
 
    ```json
    "schemaReferences": [

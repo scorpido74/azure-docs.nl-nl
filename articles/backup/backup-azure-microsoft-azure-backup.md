@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7a442cb094f87852c9d4f781d378f5886f3a4a42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652129"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735868"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -48,7 +48,7 @@ De eerste stap voor het voorbereiden van de Azure Backup Server is het instellen
 
 Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, is het raadzaam om te beginnen met een galerie-installatie kopie van Windows Server 2016 Data Center of Windows Server 2019 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine in azure, zelfs als u Azure nog nooit eerder hebt gebruikt. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) zijn: Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
 
-Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
+Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. De [beveiligings matrix voor MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) helpt u bij het uitleggen van deze nuances. Lees dit artikel volledig voordat u de computer implementeert.
 
 ### <a name="using-an-on-premises-server"></a>Een on-premises server gebruiken
 
@@ -199,7 +199,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge√
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    De Scratch locatie is een vereiste voor het maken van een back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
+    De Scratch locatie is een vereiste voor het maken van een back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 5. Geef een sterk wacht woord op voor beperkte lokale gebruikers accounts en klik op **volgende**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)

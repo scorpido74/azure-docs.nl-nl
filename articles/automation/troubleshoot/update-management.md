@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 64df2e0f17322f8e650ede9d4453d90c36252135
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680015"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735885"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -50,7 +50,7 @@ Deze fout kan de volgende oorzaken hebben:
 
 * Ga naar [netwerk configuratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
 
-* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over de scope configuratie.
+* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
 * Verwijder de configuratie van de werk nemer door de stappen in [de Hybrid Runbook worker verwijderen van een on-premises Windows-computer uit](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) te voeren of [de Hybrid Runbook worker te verwijderen van een on-premises Linux-computer](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 
@@ -119,9 +119,9 @@ Dit probleem kan worden veroorzaakt door lokale configuratie problemen of door e
 
 4. Als uw computer niet in de query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet [de agent opnieuw installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines zijn geconfigureerd voor updatebeheer. 
+5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. 
 
-6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie [machines inschakelen in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over hoe u dit doet.
+6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie [machines inschakelen in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over hoe u dit doet.
 
 7. Voer deze query uit in uw werk ruimte.
 

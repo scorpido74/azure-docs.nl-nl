@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d7f14728f5acbcb76d3109d76b6de3c691e35543
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a932f4ec37eda66c353df2c865bb4036ddcc59fa
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658091"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741083"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
@@ -66,7 +66,7 @@ Als u partners wilt autoriseren, klikt u op **CSP-partners selecteren** en een m
 
 U kunt Zoek filters toep assen, zoals **land**, **competentie**of **vaardigheid**.
 
-![Land-, competentie-en vaardigheids filters voor het zoeken naar partners](media/marketplace-publishers-guide/csp-add-resellers.png)
+![Land-, regio-, competentie-en vaardigheids filters voor het zoeken naar partners](media/marketplace-publishers-guide/csp-add-resellers.png)
 
 Wanneer u de lijst met partners hebt gekozen, selecteert u **toevoegen**.
 

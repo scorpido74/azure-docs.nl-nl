@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125227"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739478"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
-Application Gateway en Web Application firewall (WAF) zijn ook beschikbaar onder een Standard_v2 en WAF_v2 SKU. De v2-SKU biedt prestatie verbeteringen en voegt ondersteuning toe voor essentiële nieuwe functies, zoals automatisch schalen, zone redundantie en ondersteuning voor statische Vip's. Bestaande functies onder de Standard-en WAF SKU worden nog steeds ondersteund in de nieuwe v2-SKU, met een paar uitzonde ringen die worden vermeld in het gedeelte [vergelijking](#differences-with-v1-sku) .
+Application Gateway en Web Application firewall (WAF) zijn ook beschikbaar onder een Standard_v2 en WAF_v2 SKU. De v2-SKU biedt prestatie verbeteringen en voegt ondersteuning toe voor essentiële nieuwe functies, zoals automatisch schalen, zone redundantie en ondersteuning voor statische Vip's. Bestaande functies onder de Standard-en WAF SKU worden nog steeds ondersteund in de nieuwe v2-SKU, met een paar uitzonde ringen die worden vermeld in het gedeelte [vergelijking](#differences-from-v1-sku) .
 
 De nieuwe v2-SKU bevat de volgende verbeteringen:
 
@@ -172,7 +172,9 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elke SKU.
 > [!NOTE]
 > De v2 SKU voor automatisch schalen ondersteunt nu [standaard status tests](application-gateway-probe-overview.md#default-health-probe) om de status van alle resources in de back-end-pool te controleren en de back-end-leden te markeren die als slecht worden beschouwd. De standaard status test wordt automatisch geconfigureerd voor back-ends die geen aangepaste test configuratie hebben. Zie [Health tests in Application Gateway](application-gateway-probe-overview.md)voor meer informatie.
 
-## <a name="differences-with-v1-sku"></a>Verschillen met v1 SKU
+## <a name="differences-from-v1-sku"></a>Verschillen van v1 SKU
+
+In deze sectie worden de functies en beperkingen beschreven van de v2-SKU die verschilt van de V1-SKU.
 
 |Verschil|Details|
 |--|--|

@@ -3,12 +3,12 @@ title: Functies-LUIS
 description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682158"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742713"
 ---
 # <a name="machine-learning-ml-features"></a>Functies voor machine learning (ML)
 
@@ -85,7 +85,7 @@ Als bijvoorbeeld de entiteit n Shipping Address een straat subentiteit bevat, wo
     * Adres (subentiteit)
     * Plaats (subentiteit)
     * Staat of provincie (subentiteit)
-    * Land (subentiteit)
+    * Land/regio (subentiteit)
     * Post code (subentiteit)
 
 ## <a name="nested-subentities-with-features"></a>Geneste subentiteiten met functies
@@ -118,14 +118,14 @@ U kunt door gaan met het voor beeld van het verzend adres:
     * Straat naam (subentiteit)
     * Plaats (subentiteit)
     * Staat of provincie (subentiteit)
-    * Land (subentiteit)
+    * Land/regio (subentiteit)
     * Post code (subentiteit)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Vereiste functie voor het gebruik van vooraf gemaakte entiteiten
 
-De plaats, de staat en het land zijn doorgaans een gesloten set lijsten, wat betekent dat ze niet veel in de loop van de tijd veranderen. Deze entiteiten kunnen de relevante aanbevolen functies hebben en deze functies kunnen worden gemarkeerd als vereist. Dit betekent dat het hele verzend adres niet wordt geretourneerd. de entiteiten met de vereiste onderdelen zijn niet gevonden.
+De plaats, de staat en het land/de regio zijn doorgaans een gesloten set lijsten, wat betekent dat ze niet veel in de loop van de tijd veranderen. Deze entiteiten kunnen de relevante aanbevolen functies hebben en deze functies kunnen worden gemarkeerd als vereist. Dit betekent dat het hele verzend adres niet wordt geretourneerd. de entiteiten met de vereiste onderdelen zijn niet gevonden.
 
-Wat gebeurt er als de stad, staat of land zich in de utterance bevindt, maar een locatie of slang die LUIS niet verwacht? Als u een aantal post verwerking wilt bieden bij het oplossen van de entiteit, vanwege een score met een lage betrouw baarheid van LUIS, moet u de functie niet als vereist markeren.
+Wat gebeurt er als de stad, staat of land/regio zich in de utterance bevindt, maar een locatie of slang die LUIS niet verwacht? Als u een aantal post verwerking wilt bieden bij het oplossen van de entiteit, vanwege een score met een lage betrouw baarheid van LUIS, moet u de functie niet als vereist markeren.
 
 Een ander voor beeld van een vereiste functie voor het verzend adres is het maken van het straat nummer een verplicht [vooraf gebouwd](luis-reference-prebuilt-entities.md) nummer. Hiermee kan een gebruiker "1 micro soft Way" of "One micro soft Way" invoeren. Beide worden omgezet naar een aantal ' 1 ' voor de subentiteit straat nummer.
 
@@ -133,19 +133,19 @@ Een ander voor beeld van een vereiste functie voor het verzend adres is het make
 
 Een [lijst entiteit](reference-entity-list.md) wordt gebruikt als een lijst met canonieke namen en de bijbehorende synoniemen. Als een vereiste functie als de utterance geen canonieke naam of synoniem bevat, wordt de entiteit niet geretourneerd als onderdeel van het Voorspellings eindpunt.
 
-Als u doorgaat met het verzend adres, wordt uw bedrijf alleen naar een beperkt aantal landen verzonden. U kunt een lijst entiteit maken die bestaat uit verschillende manieren waarop uw klant kan verwijzen naar het land. Als LUIS geen exacte overeenkomst in de tekst van de utterance vindt, wordt de entiteit (die de vereiste functie van de lijst entiteit bevat) niet geretourneerd in de voor spelling.
+Als u doorgaat met het voor beeld van het verzend adres, wordt uw bedrijf alleen naar een beperkt aantal landen/regio's verzonden. U kunt een lijst entiteit maken die bestaat uit verschillende manieren waarop uw klant kan verwijzen naar het land. Als LUIS geen exacte overeenkomst in de tekst van de utterance vindt, wordt de entiteit (die de vereiste functie van de lijst entiteit bevat) niet geretourneerd in de voor spelling.
 
 |Canonieke naam|Synoniemen|
 |--|--|
 |Verenigde Staten|U.S.<br>U. S. A<br>VS<br>VS<br>0|
 
-De client toepassing, zoals een chat-bot, kan een vervolg vraag stellen, zodat de klant begrijpt dat de selectie van het land beperkt is en _vereist_is.
+De client toepassing, zoals een chat-bot, kan een vervolg vraag stellen, zodat de klant begrijpt dat de selectie van het land/de regio beperkt is en _vereist_is.
 
 ### <a name="required-feature-using-regular-expression-entities"></a>Vereiste functie voor het gebruik van reguliere expressie-entiteiten
 
 Een [reguliere expressie-entiteit](reference-entity-regular-expression.md) die wordt gebruikt als een vereiste functie biedt uitgebreide tekst-overeenkomende mogelijkheden.
 
-Als u doorgaat met het verzend adres, kunt u een reguliere expressie maken waarmee de syntaxis regels van de post codes van het land worden vastgelegd.
+Als u doorgaat met het verzend adres, kunt u een reguliere expressie maken waarmee de syntaxis regels van de post codes van land/regio worden vastgelegd.
 
 ## <a name="global-features"></a>Algemene functies
 

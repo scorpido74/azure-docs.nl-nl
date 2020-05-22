@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657041"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742220"
 ---
 # <a name="glossary"></a>Woordenlijst
 
@@ -31,7 +31,7 @@ In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebrui
 
 <a name="altitude"></a>**Hoogte**: de hoogte of verticale verhoging van een punt boven een referentie-Opper vlak. De hoogte metingen zijn gebaseerd op een gegeven referentie datum, zoals gemiddeld Sea-niveau. Zie ook uitbrei ding van bevoegdheden.
 
-<a name="ambiguous"></a>**Ambigu**: een status van onzekerheid in de gegevens classificatie die bestaat wanneer een object twee of meer waarden voor een bepaald kenmerk kan toewijzen. Bij geocodering "CA" worden bijvoorbeeld twee dubbel zinnige resultaten geretourneerd: "Canada" en "Californië". "CA" is een land en een staat code, respectievelijk "Canada" en "Californië". 
+<a name="ambiguous"></a>**Ambigu**: een status van onzekerheid in de gegevens classificatie die bestaat wanneer een object twee of meer waarden voor een bepaald kenmerk kan toewijzen. Bij geocodering "CA" worden bijvoorbeeld twee dubbel zinnige resultaten geretourneerd: "Canada" en "Californië". "CA" is een land/regio en een status code, respectievelijk "Canada" en "Californië". 
 
 <a name="annotation"></a>**Aantekening**: tekst of afbeeldingen die worden weer gegeven op de kaart om informatie aan de gebruiker toe te voegen. Aantekening kan een specifieke kaart entiteit identificeren of beschrijven, algemene informatie geven over een gebied op de kaart of informatie over de kaart zelf opgeven.
 
@@ -93,7 +93,7 @@ In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebrui
 
 <a name="coordinate-system"></a>**Coördinaten systeem**: een referentie raamwerk dat wordt gebruikt voor het definiëren van de posities van punten in ruimte in twee of drie dimensies.
 
-<a name="country-code"></a>**Land nummer**: een unieke id voor een land/regio op basis van de ISO-standaard. ISO2 is een code van twee tekens voor een land (bijvoorbeeld Verenigde Staten), die ISO3 staat voor een code van drie tekens (bijvoorbeeld USA).
+<a name="country-code"></a>**Land nummer**: een unieke id voor een land/regio op basis van de ISO-standaard. ISO2 is een code van twee tekens voor een land/regio (bijvoorbeeld Verenigde Staten), die ISO3 staat voor een code van drie tekens (bijvoorbeeld USA).
 
 <a name="country-subdivision"></a>**Lands streek**: een deelvak van het hoogste niveau van een land/regio, algemeen bekend als een staat of provincie.
 
@@ -408,5 +408,5 @@ In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebrui
 
 <a name="zip-code"></a>**Post code**: Zie [Post code](#postal-code).
 
-<a name="Zoom level"></a>**Zoom niveau**: Hiermee geeft u het detail niveau en het gedeelte van de kaart weer gegeven. Wanneer u helemaal ingezoomd op het niveau van 0, is de volledige wereld kaart vaak zichtbaar. Maar in de kaart worden de beperkte gegevens weer gegeven, zoals namen van land/regio, randen en Oceaan. Wanneer u inzoomt op niveau 17, wordt in de kaart een gebied van een aantal plaatsings blokken weer gegeven met gedetailleerde informatie over de weg. In azure Maps is het hoogste zoom niveau 22. Zie de documentatie voor [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md) voor meer informatie.
+<a name="Zoom level"></a>**Zoom niveau**: Hiermee geeft u het detail niveau en het gedeelte van de kaart weer gegeven. Wanneer u helemaal ingezoomd op het niveau van 0, is de volledige wereld kaart vaak zichtbaar. Maar in de kaart worden de beperkte gegevens weer gegeven, zoals namen van land/regio, randen en Oceaan. Wanneer u inzoomt op niveau 17, wordt in de kaart een gebied van een aantal plaatsings blokken weer gegeven met gedetailleerde informatie over de weg. In Azure Maps is het hoogste zoom niveau 22. Zie de documentatie voor [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md) voor meer informatie.
 

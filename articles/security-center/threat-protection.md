@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636675"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744163"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -53,14 +53,6 @@ Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde 
     > De micro soft Defender ATP-sensor wordt automatisch ingeschakeld op Windows-servers die gebruikmaken van Security Center.
 
     Wanneer micro soft Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven op het Security Center dash board. Vanuit het dash board kunt u naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Zie voor meer informatie over micro soft Defender ATP [servers onboarding voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
-
-* **Crash dump analyse** <a name="windows-dump"></a> -Wanneer software vastloopt, legt een crash dump een deel van het geheugen vast op het moment dat het vastloopt.
-
-    Een crash kan zijn veroorzaakt door malware of schadelijke software bevatten. Om te voor komen dat wordt gedetecteerd door beveiligings producten, gebruiken verschillende vormen van malware een aanval zonder bestanden, waarmee het schrijven naar schijf of het versleutelen van software onderdelen die naar de schijf worden geschreven, wordt voor komen. Dit type aanval is moeilijk te detecteren met traditionele benaderingen op basis van schijven.
-
-    Door gebruik te maken van geheugen analyse, kunt u dit soort aanvallen echter detecteren. Door het geheugen in de crash dump te analyseren, kunt Security Center de technieken detecteren die de aanval gebruikt. De aanval kan bijvoorbeeld proberen misbruik te maken van beveiligings problemen in de software, toegang te krijgen tot vertrouwelijke gegevens en ongemerkt blijven bestaan binnen een gemanipuleerde computer. Security Center werkt dit met minimale gevolgen voor de prestaties van hosts.
-
-    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-windows)voor meer informatie over de waarschuwingen voor de crash dump analyse.
 
 * Detectie van bestanden met een **aanval** <a name="windows-fileless"></a> -Aanvallen die gericht zijn op uw eind punten, zijn gebruikelijk. Om detectie te voor komen, worden met aanvallen zonder bestanden schadelijke nettoladingen in het geheugen geïnjecteerd. Nettoladingen van aanvallers blijven aanwezig in het geheugen van verdachte processen en kunnen een breed scala aan schadelijke activiteiten uitvoeren.
 

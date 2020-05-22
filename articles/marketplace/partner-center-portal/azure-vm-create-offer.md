@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7ecd68023c5c48a82c07d98615807a895cdd0cae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726176"
+ms.locfileid: "83743105"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken in azure Marketplace
 
@@ -101,7 +101,7 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
@@ -370,7 +370,7 @@ Op dit tabblad configureert u het volgende:
 
 #### <a name="markets"></a>Landen
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar dit abonnement beschikbaar moet zijn voor aankoop (gebruikers op deze markten kunnen nog steeds de aanbieding implementeren voor alle Azure-regio's die zijn geselecteerd in de **[installatie van plannen](#plan-setup)**). De knop te **betalen BTW** bevat landen waarin micro soft verkoop-en gebruiks belasting verkrijgt voor u. Publiceren naar China is beperkt tot abonnementen die **gratis** of **Bring your own License** (BYOL) zijn.
+Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar dit abonnement beschikbaar moet zijn voor aankoop (gebruikers op deze markten kunnen nog steeds de aanbieding implementeren voor alle Azure-regio's die zijn geselecteerd in de **[installatie van plannen](#plan-setup)**). De knop **BTW-overgeschreven** bevat landen/regio's waarin micro soft verkoop-en gebruiks belasting voor u verkrijgt. Publiceren naar China is beperkt tot abonnementen die **gratis** of **Bring your own License** (BYOL) zijn.
 
 Als u de prijzen voor uw abonnement al hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. De prijs voor elke markt altijd controleren voordat deze wordt gepubliceerd. Bekijk de prijzen met de koppeling **prijzen exporteren (XLSX)** nadat u uw wijzigingen hebt opgeslagen.
 

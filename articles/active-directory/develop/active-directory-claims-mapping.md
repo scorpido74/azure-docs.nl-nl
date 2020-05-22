@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871216"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737500"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -319,16 +319,16 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | extensionattribute14 | Uitbreidings kenmerk 14 |
 | Gebruiker | extensionattribute15 | Uitbreidings kenmerk 15 |
 | Gebruiker | othermail | Andere E-mail |
-| Gebruiker | land | Land |
+| Gebruiker | land | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Status |
+| Gebruiker | state | Staat |
 | Gebruiker | JobTitle | Functie |
 | Gebruiker | employeeid | Werknemer-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
 | toepassing, resource, doel groep | displayname | Weergavenaam |
 | toepassing, resource, doel groep | geobjecteerd | ObjectID |
 | toepassing, resource, doel groep | tags | Service-Principal-tag |
-| Bedrijf | tenantcountry | Land van de Tenant |
+| Bedrijf | tenantcountry | Land/regio van de Tenant |
 
 **TransformationID:** Het TransformationID-element moet alleen worden opgegeven als het bron element is ingesteld op trans formatie.
 
@@ -360,8 +360,8 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 |TransformationMethod|Verwachte invoer|Verwachte uitvoer|Beschrijving|
 |-----|-----|-----|-----|
-|Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: "foo@bar.com", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim:foo@bar.com.sandbox""|
-|ExtractMailPrefix|mail|Output claim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: "foo@bar.com" resulteert in output claim: "foo". Als er \@ geen teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
+|Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: " foo@bar.com ", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: " foo@bar.com.sandbox "|
+|ExtractMailPrefix|mail|Output claim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
 
 **InputClaims:** Gebruik een InputClaims-element om de gegevens van een claim schema vermelding door te geven aan een trans formatie. Het heeft twee kenmerken: **ClaimTypeReferenceId** en **TransformationClaimType**.
 
@@ -415,7 +415,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 ### <a name="custom-signing-key"></a>Aangepaste handtekening sleutel
 
-Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de cmdlet `new-azureadapplicationkeycredential` Azure PowerShell gebruiken om een symmetrische sleutel referentie voor uw toepassings object te maken. Zie [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure PowerShell-cmdlet.
+Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de cmdlet Azure PowerShell gebruiken `new-azureadapplicationkeycredential` om een symmetrische sleutel referentie voor uw toepassings object te maken. Zie [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure PowerShell-cmdlet.
 
 Apps waarvoor claim toewijzing is ingeschakeld, moeten hun token handtekening sleutels valideren door `appid={client_id}` toe te voegen aan hun [OpenID Connect Connect-aanvragen voor meta gegevens](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Hieronder ziet u de indeling van het OpenID Connect Connect-meta gegevens document dat u moet gebruiken: 
 
@@ -478,7 +478,7 @@ In dit voor beeld maakt u een beleid waarmee de set basis claims wordt verwijder
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Voor beeld: een beleid maken en toewijzen om de werk nemer-en TenantCountry op te geven als claims in tokens die zijn uitgegeven aan een Service-Principal
 
-In dit voor beeld maakt u een beleid waarmee de werk nemer-en TenantCountry worden toegevoegd aan tokens die zijn uitgegeven aan gekoppelde service-principals. De werk nemer-aanvraag wordt verzonden als het naam claim type in SAML-tokens en JWTs. De TenantCountry wordt verzonden als het type land claim in zowel SAML-tokens als JWTs. In dit voor beeld blijven de basis claims in de tokens worden toegevoegd.
+In dit voor beeld maakt u een beleid waarmee de werk nemer-en TenantCountry worden toegevoegd aan tokens die zijn uitgegeven aan gekoppelde service-principals. De werk nemer-aanvraag wordt verzonden als het naam claim type in SAML-tokens en JWTs. De TenantCountry wordt verzonden als het land/de regio claim type in zowel de SAML-tokens als de JWTs. In dit voor beeld blijven de basis claims in de tokens worden toegevoegd.
 
 1. Maak een claim toewijzings beleid. Met dit beleid, dat is gekoppeld aan specifieke service-principals, worden de werk nemer-en TenantCountry claims toegevoegd aan tokens.
    1. Voer de volgende opdracht uit om het beleid te maken:  

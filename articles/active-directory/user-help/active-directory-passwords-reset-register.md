@@ -9,15 +9,15 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 397e1fd7695fd7e74e1f22959d0f9f24af7d1ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062639"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739603"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Uw informatie over de verificatie methode registreren om uw eigen wacht woord opnieuw in te stellen
 
@@ -26,7 +26,7 @@ Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt on
 Uw beheerder moet deze functie inschakelen om uw gegevens te kunnen registreren en uw eigen wacht woord opnieuw in te stellen. Als u de optie **mijn wacht woord verg eten** niet ziet, betekent dit dat uw beheerder de functie voor uw organisatie niet heeft ingeschakeld. Als u denkt dat dit onjuist is, neemt u contact op met de Help Desk voor ondersteuning.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die zich aanmelden voor selfservice voor wachtwoord herstel willen gebruiken. Dit betekent dat u uw eigen werk-of school wachtwoord opnieuw kunt instellen (zoals, alain@contoso.com), zonder dat u hiervoor de hulp van de beheerder hoeft te gebruiken. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Dit artikel is bedoeld voor gebruikers die zich aanmelden voor selfservice voor wachtwoord herstel willen gebruiken. Dit betekent dat u uw eigen werk-of school wachtwoord opnieuw kunt instellen (zoals, alain@contoso.com ), zonder dat u hiervoor de hulp van de beheerder hoeft te gebruiken. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>De verificatie methode voor het opnieuw instellen van het wacht woord instellen
 
@@ -42,7 +42,7 @@ Uw beheerder moet deze functie inschakelen om uw gegevens te kunnen registreren 
 
     - **Beveiligings sleutel.** Kies ervoor om een met micro soft compatibele beveiligings sleutel te gebruiken. Zie [een beveiligings sleutel instellen als verificatie methode](security-info-setup-security-key.md)voor meer informatie.
 
-    - **E-mailadres.** Kies of u een alternatief e-mail adres wilt gebruiken dat kan worden gebruikt zonder dat u het wacht woord verg eten of ontbreekt. Dit werkt alleen voor het opnieuw instellen van wacht woorden, niet als een beveiligings verificatie methode. Zie [een e-mail adres instellen als verificatie methode](security-info-setup-email.md)voor meer informatie over het instellen van een e-mail adres.
+    - **E-mail adres.** Kies of u een alternatief e-mail adres wilt gebruiken dat kan worden gebruikt zonder dat u het wacht woord verg eten of ontbreekt. Dit werkt alleen voor het opnieuw instellen van wacht woorden, niet als een beveiligings verificatie methode. Zie [een e-mail adres instellen als verificatie methode](security-info-setup-email.md)voor meer informatie over het instellen van een e-mail adres.
 
     - **Beveiligings vragen.** U kunt vooraf gedefinieerde beveiligings vragen instellen en beantwoorden die door uw beheerder zijn ingesteld. Dit werkt alleen voor het opnieuw instellen van wacht woorden, niet als een beveiligings verificatie methode. Zie [beveiligings vragen instellen als verificatie methode](security-info-setup-questions.md)voor meer informatie over beveiligings vragen.
 
@@ -57,7 +57,7 @@ Uw beheerder moet deze functie inschakelen om uw gegevens te kunnen registreren 
 
 | Foutbericht |  Mogelijke oplossing |
 | --- | --- | --- |
-| Neem contact op met de beheerder.<br>Het wacht woord voor uw gebruikers account wordt niet beheerd door micro soft. Als gevolg hiervan kunnen we uw wacht woord niet automatisch opnieuw instellen.<br>Neem contact op met uw IT-mede werkers voor verdere hulp.| Als dit fout bericht wordt weer gegeven nadat u uw gebruikers-ID hebt ingevoerd, betekent dit dat uw organisatie uw wacht woord intern beheert en u niet wilt dat uw wacht woord opnieuw wordt ingesteld op de koppeling **geen toegang tot uw account** . Als u uw wacht woord in deze situatie opnieuw wilt instellen, neemt u contact op met de Help Desk van uw organisatie of met uw beheerder voor hulp. |
+| Neem contact op met uw beheerder.<br>Het wacht woord voor uw gebruikers account wordt niet beheerd door micro soft. Als gevolg hiervan kunnen we uw wacht woord niet automatisch opnieuw instellen.<br>Neem contact op met uw IT-mede werkers voor verdere hulp.| Als dit fout bericht wordt weer gegeven nadat u uw gebruikers-ID hebt ingevoerd, betekent dit dat uw organisatie uw wacht woord intern beheert en u niet wilt dat uw wacht woord opnieuw wordt ingesteld op de koppeling **geen toegang tot uw account** . Als u uw wacht woord in deze situatie opnieuw wilt instellen, neemt u contact op met de Help Desk van uw organisatie of met uw beheerder voor hulp. |
 | Het account is niet ingeschakeld voor het opnieuw instellen van het wacht woord.<br>Uw IT-afdeling heeft uw account niet ingesteld voor gebruik met deze service.<br>Als u wilt, kunnen we contact opnemen met een beheerder in uw organisatie om uw wacht woord opnieuw in te stellen. | Als dit fout bericht wordt weer gegeven nadat u uw gebruikers-ID hebt ingevoerd, betekent dit dat uw organisatie de functie voor het opnieuw instellen van het wacht woord niet heeft ingeschakeld of dat u deze niet mag gebruiken. Als u uw wacht woord in deze situatie opnieuw wilt instellen, moet u de koppeling **contact opnemen met Administrator** selecteren. Nadat u op de koppeling hebt geklikt, wordt er een e-mail bericht verzonden naar de Help Desk of beheerder van uw organisatie, zodat u weet dat u uw wacht woord opnieuw wilt instellen. |
 | Uw account kan niet worden geverifieerd.<br>Als u wilt, kunnen we contact opnemen met een beheerder in uw organisatie om uw wacht woord opnieuw in te stellen. | Als dit fout bericht wordt weer gegeven nadat u uw gebruikers-ID hebt ingevoerd, betekent dit dat uw organisatie het opnieuw instellen van het wacht woord heeft ingeschakeld en dat u deze kunt gebruiken, maar niet hebt geregistreerd voor de service. In dit geval moet u contact opnemen met de Help Desk of beheerder van uw organisatie om uw wacht woord opnieuw in te stellen. Zie het bovenstaande procedure in dit artikel voor informatie over het registreren van het opnieuw instellen van het wacht woord voor wachtwoord herstel wanneer u weer op uw apparaat bent. |
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712193"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737755"
 ---
 # <a name="self-service-sign-up-preview"></a>Selfservice registreren (preview)
 |     |
@@ -35,7 +35,7 @@ Met een self-service voor het aanmelden van gebruikers wordt een aanmeldings erv
 U kunt instellingen voor de gebruikers stroom configureren om te bepalen hoe de gebruiker zich aanmeldt voor de toepassing:
 
 - Account typen die worden gebruikt voor aanmelding, zoals sociale accounts zoals Facebook of Azure AD-accounts
-- Kenmerken die moeten worden verzameld van de gebruiker die zich aanmeldt, zoals de voor naam, de post code of het land van locatie
+- Kenmerken die moeten worden verzameld van de gebruiker die zich aanmeldt, zoals de voor naam, de post code of het land of de regio van de locatie
 
 Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een web-, mobiel-, desktop-of single-page-toepassing (SPA), initieert de toepassing een autorisatie aanvraag naar het eind punt van de gebruikers stroom. De gebruikers stroom definieert en beheert de gebruikers ervaring. Wanneer de gebruiker de stroom voor het registreren van gebruikers voltooit, genereert Azure AD een token en leidt de gebruiker terug naar uw toepassing. Wanneer de aanmelding is voltooid, wordt een gast account ingericht voor de gebruiker in de Directory. Meerdere toepassingen kunnen dezelfde gebruikers stroom gebruiken.
 

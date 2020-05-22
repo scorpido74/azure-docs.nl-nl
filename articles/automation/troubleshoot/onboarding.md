@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681281"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739376"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Problemen met de implementatie van functies oplossen
 
@@ -71,7 +71,7 @@ Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen voor de vi
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat u de juiste machtigingen hebt voor de [implementatie van functies](../automation-role-based-access-control.md#onboarding-permissions)en probeer het onderdeel opnieuw te implementeren. Als u het fout bericht ontvangt `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , moet u ervoor zorgen dat u `Microsoft.OperationalInsights/workspaces/read` gemachtigd bent om te kunnen vinden of de virtuele machine is ingeschakeld voor een werk ruimte.
+Zorg ervoor dat u de juiste machtigingen hebt voor de [implementatie van functies](../automation-role-based-access-control.md#feature-setup-permissions)en probeer het onderdeel opnieuw te implementeren. Als u het fout bericht ontvangt `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , moet u ervoor zorgen dat u `Microsoft.OperationalInsights/workspaces/read` gemachtigd bent om te kunnen vinden of de virtuele machine is ingeschakeld voor een werk ruimte.
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: de implementatie van de functie mislukt met het bericht ' kan Automation-account niet configureren voor diagnostische logboek registratie '
 

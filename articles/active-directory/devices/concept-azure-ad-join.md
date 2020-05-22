@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672670"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737024"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
@@ -24,7 +24,7 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 
 |   | Azure AD-Join |
 | --- | --- |
-| **Definitie** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
+| **Beschrijving** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
 | **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |
 |   | Van toepassing op alle gebruikers in een organisatie |
 | **Apparaateigendom** | Organisatie |
@@ -43,7 +43,7 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 |   | Selfservice voor wachtwoord herstel en Windows hello pincode opnieuw instellen op vergrendelings scherm |
 |   | Enterprise State Roaming op verschillende apparaten |
 
-Aan Azure AD gekoppelde apparaten zijn aangemeld voor het gebruik van een Azure AD-account in de organisatie. Toegang tot resources in de organisatie kan verder worden beperkt op basis van het Azure AD-account en het [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) dat wordt toegepast op de apparaat-id.
+Aan Azure AD gekoppelde apparaten zijn aangemeld voor het gebruik van een Azure AD-account in de organisatie. Toegang tot resources in de organisatie kan verder worden beperkt op basis van het Azure AD-account en het [beleid voor voorwaardelijke toegang](../conditional-access/howto-conditional-access-policy-compliant-device.md) dat wordt toegepast op de apparaat-id.
 
 Beheerders kunnen apparaten die zijn toegevoegd aan Azure AD beveiligen en verder beheren met de MDM-hulpprogram ma's (Mobile Device Management), zoals Microsoft Intune of in scenario's voor co-beheer met micro soft endpoint Configuration Manager. Deze hulpprogram ma's bieden een manier om organisatie-vereiste configuraties af te dwingen, zoals het vereisen van een versleutelde opslag, wachtwoord complexiteit, software-installatie en software-updates. Beheerders kunnen organisatie toepassingen beschikbaar maken voor apparaten die lid zijn van Azure AD met behulp van Configuration Manager om [apps te beheren via de Microsoft Store voor bedrijven en onderwijs](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 

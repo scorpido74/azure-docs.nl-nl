@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438614"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743000"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -166,7 +166,7 @@ A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>V. Kan ik meerdere opslagaccounts gebruiken voor Data Box?
@@ -194,8 +194,8 @@ Wanneer het kopiëren van de gegevens is voltooid, voert u de volgende stappen u
 3. Rol het netsnoer op en plaats het veilig aan de achterzijde van het apparaat.
 4. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op die u eerder hebt opgeslagen. Ze geven u informatie over waar en wanneer u het apparaat moet neerzetten.
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Worden de land grenzen van mijn Data Box-apparaten tijdens de verzen ding overschreden?
-A. Alle Data Box apparaten worden verzonden vanuit hetzelfde land als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en vanuit elk land van de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>V. Worden er tijdens de verzen ding meerdere land-en regio grenzen door mijn Data Box apparaten?
+A. Alle Data Box apparaten worden vanuit hetzelfde land/dezelfde regio als de bestemming verzonden en passeren geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en naar elk land/regio in de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>V. Ik heb een Data Box in VS Oost besteld, maar ik heb een apparaat ontvangen dat is verzonden vanaf een locatie in VS West. Waar moet ik het apparaat retour neren?
 A. We proberen zo snel mogelijk een Data Box apparaat te verkrijgen. We geven een prioriteit aan de verzen ding van een Data Center dat het dichtst bij de locatie van uw opslag account ligt, maar verzendt een apparaat vanuit elk Azure-Data Center dat beschik bare inventaris. Uw Data Box moet worden teruggestuurd naar dezelfde locatie waar deze is verzonden, zoals wordt weer gegeven in het verzend label.
@@ -221,7 +221,7 @@ A. Als u uw apparaat niet kunt opstarten, gaat u terug naar uw bestelling in de 
 
 ## <a name="verify-and-upload"></a>Verifiëren en uploaden
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>V. Wanneer heb ik weer toegang tot mijn gegevens in Azure als ik de Data Box heb teruggestuurd? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>V. Hoe snel krijg ik toegang tot mijn gegevens in azure nadat ik de Data Box weer heb verzonden? 
 A.  Zodra de status van de bestelling voor het **kopiëren van gegevens** wordt weer gegeven als **voltooid**, kunt u direct toegang krijgen tot uw gegevens.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>V. Waar bevinden zich mijn gegevens in Azure na het uploaden?
@@ -258,7 +258,7 @@ A.  De volgende soorten rapporten zijn beschikbaar ter ondersteuning van de bewa
 - Opschoning van het Data Box-apparaat (volgens de norm NIST 800 88R1) nadat gegevens naar uw Azure-opslagaccount zijn gekopieerd.
 
 ### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Zijn de logboeken voor tracering van de koerier (van UPS) beschikbaar? 
-A.  De logboeken voor tracering van de koerier worden vastgelegd in de bestelgeschiedenis van Data Box. Dit rapport is beschikbaar nadat het apparaat naar het Azure-datacenter is geretourneerd en de gegevens op de schijven van het apparaat zijn opgeschoond. Als u ze direct nodig hebt, kunt u ook met het traceringsnummer van de bestelling naar de website van de koerier gaan en de traceringsinformatie opvragen.
+A.  De logboeken voor tracering van de koerier worden vastgelegd in de bestelgeschiedenis van Data Box. Dit rapport is beschikbaar nadat het apparaat naar het Azure-datacenter is geretourneerd en de gegevens op de schijven van het apparaat zijn opgeschoond. Voor onmiddellijke behoefte kunt u ook rechtstreeks naar de website van de vervoerder gaan met het order tracking nummer en de tracerings gegevens ophalen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kan ik de Data Box naar het Azure-datacenter vervoeren? 
 A.  Nee. Het Azure-datacenter accepteert momenteel geen levering van de Data Box door klanten of andere koeriers dan UPS.

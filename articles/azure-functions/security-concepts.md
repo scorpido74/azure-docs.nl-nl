@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7336974a0f982f2dd2394f16d7f6d520ecb8571d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664415"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744068"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -22,7 +22,7 @@ Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voo
 
 In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-app zo veilig mogelijk. 
 
-### <a name="security-center"></a>Beveiligingscentrum
+### <a name="security-center"></a>Security Center
 
 Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
 
@@ -181,7 +181,7 @@ Door een afzonderlijk SCM-eind punt te hebben, kunt u implementaties en andere f
 
 ### <a name="continuous-security-validation"></a>Continue beveiligings validatie
 
-Omdat de beveiliging moet worden beschouwd als een stap in het ontwikkelings proces, is het zinnig dat u ook beveiligings validaties in een continue implementatie omgeving implementeert. Dit wordt ook wel DevSecOps genoemd. Met Azure DevOps voor uw implementatie pijplijn kunt u validatie in het implementatie proces integreren. Zie voor meer informatie over [het toevoegen van continue beveiligings validatie aan uw CI/cd-pijp lijn](/devops/migrate/security-validation-cicd-pipeline).  
+Omdat de beveiliging moet worden beschouwd als een stap in het ontwikkelings proces, is het zinnig dat u ook beveiligings validaties in een continue implementatie omgeving implementeert. Dit wordt ook wel DevSecOps genoemd. Met Azure DevOps voor uw implementatie pijplijn kunt u validatie in het implementatie proces integreren. Zie voor meer informatie over [het toevoegen van continue beveiligings validatie aan uw CI/cd-pijp lijn](/azure/devops/migrate/security-validation-cicd-pipeline).  
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801005"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738815"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -80,7 +80,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -88,8 +88,8 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>E-mail Azure Resource Manager rol
-E-mail verzenden naar de leden van de rol van het abonnement. E-mail wordt alleen verzonden naar **Azure AD-gebruikers** leden van de rol. Er wordt geen e-mail bericht verzonden naar Azure AD-groepen of service-principals.
+### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
+E-mail verzenden naar de leden van de rol van het abonnement. E-mail wordt alleen verzonden naar **Azure AD-gebruikers** leden van de rol. Er wordt geen e-mail verzonden naar Azure AD-groepen of service-principals.
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
@@ -201,9 +201,9 @@ Zie de [informatie over het beperken](./../../azure-monitor/platform/alerts-rate
 Mogelijk hebt u een beperkt aantal SMS-acties in een actie groep.
 
 > [!NOTE]
-> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, wordt SMS niet ondersteund voor uw land.  Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). In de tussen tijd is het een goed werk om uw actie groep een webhook te laten aanroepen naar een SMS-provider van derden met ondersteuning in uw land.  
+> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land-/regiocode selecteert, wordt SMS niet ondersteund voor uw land/regio.  Als uw land-/regiocode niet beschikbaar is, kunt u stemmen om uw land/regio toe te voegen op de stem van de [gebruiker](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). In afwachting van een tijdelijke oplossing is het aan te bieden dat uw actie groep een webhook aanroept aan een SMS-provider van derden met ondersteuning in uw land/regio.  
 
-Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
+Prijzen voor ondersteunde landen/regio's worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
   
 
 ### <a name="voice"></a>Spraak
@@ -212,9 +212,9 @@ Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/
 Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
 
 > [!NOTE]
-> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, worden telefoon gesprekken niet ondersteund voor uw land. Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  In de tussen tijd is het een goed hulp om uw actie groep een webhook te laten aanroepen naar een aanbieder van een telefoon gesprek van derden met ondersteuning in uw land.  
+> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land-/regiocode selecteert, worden telefoon gesprekken niet ondersteund voor uw land/regio. Als uw land-/regiocode niet beschikbaar is, kunt u stemmen om uw land/regio toe te voegen op de stem van de [gebruiker](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  In de tussen tijd is het een goed hulp om uw actie groep een webhook te laten aanroepen naar een aanbieder van een telefoon oproep van derden met ondersteuning voor uw land/regio.  
 
-Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
+Prijzen voor ondersteunde landen/regio's worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
 Webhooks worden opnieuw geprobeerd met de volgende regels. De webhook-aanroep wordt Maxi maal twee keer opnieuw geprobeerd wanneer de volgende HTTP-status codes worden geretourneerd: 408, 429, 503, 504 of het HTTP-eind punt reageert niet. De eerste poging vindt plaats na 10 seconden. De tweede nieuwe poging gebeurt na 100 seconden. Na twee storingen wordt het eind punt gedurende 30 minuten niet door een actie groep aangeroepen. 

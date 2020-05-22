@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792884"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738282"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Stel uw betalingsaccount en belastingformulieren
 
@@ -36,13 +36,13 @@ Nadat u uw account hebt ingesteld, zijn er twee dingen die u moet doen voordat u
 
 Eerst moet u een BTW-profiel maken en toewijzen aan de Program ma's waarmee u deel uitmaakt. U kunt uw *BTW-profiel* voor de commerciële Marketplace maken door de volgende stappen uit te voeren:
 
-- Geef het land van de woon plaats en het burgerschap op.
+- Geef het land/de regio van de woon plaats en het burgerschap op.
 - Vul de juiste belasting formulieren in.
 
 U kunt uw belasting formulieren elektronisch volt ooien en verzenden in het partner centrum. in de meeste gevallen hoeft u geen formulieren af te drukken en te verzenden.
 
 > [!IMPORTANT]
-> Verschillende landen en regio's hebben verschillende belasting vereisten. De exacte hoeveelheid die u in BTW moet betalen, is afhankelijk van de landen en regio's waar u uw aanbieding verkoopt. Raadpleeg de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) voor meer informatie over welke landen micro soft verkoop en het gebruik van belasting namens u verkrijgt. In andere landen, afhankelijk van waar u bent Inge schreven, moet u mogelijk verkoop-en gebruiks belasting voor uw aanbiedings verkoop rechtstreeks aan de lokale belasting dienst remitteren. Daarnaast kan de omzet van de app die u ontvangt, als bate worden belast. We raden u aan om contact op te nemen met de relevante instantie voor uw land of regio, die u het beste kan helpen bij het bepalen van de juiste belasting gegevens voor uw commerciële Marketplace-activiteiten.
+> Verschillende landen en regio's hebben verschillende belasting vereisten. De exacte hoeveelheid die u in BTW moet betalen, is afhankelijk van de landen en regio's waar u uw aanbieding verkoopt. Raadpleeg de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) voor meer informatie over welke landen/regio's micro soft verkoop en het gebruik van belasting namens u verkrijgt. In andere landen/regio's, afhankelijk van waar u bent Inge schreven, moet u mogelijk verkoop-en gebruiks belasting voor uw aanbiedings verkoop rechtstreeks naar de lokale belasting dienst remitteren. Daarnaast kan de omzet van de app die u ontvangt, als bate worden belast. We raden u aan om contact op te nemen met de relevante instantie voor uw land of regio, die u het beste kan helpen bij het bepalen van de juiste belasting gegevens voor uw commerciële Marketplace-activiteiten.
 
 1. Selecteer in [partner centrum](https://partner.microsoft.com/dashboard)het pictogram **account instellingen** in de rechter bovenhoek en selecteer vervolgens **instellingen voor ontwikkel aars**.
 
@@ -54,20 +54,20 @@ U kunt uw belasting formulieren elektronisch volt ooien en verzenden in het part
 
 5. Klik op de knop **bewerken** om uw belasting gegevens te bewerken.
 
-6. Selecteer het juiste keuze rondje en selecteer uw land als u daarom wordt gevraagd. Met deze stap bepaalt u de zakelijke entiteit van micro soft die wordt gebruikt voor het maken van uitbetalingen voor uw account.
+6. Selecteer het juiste keuze rondje en selecteer uw land/regio als u daarom wordt gevraagd. Met deze stap bepaalt u de zakelijke entiteit van micro soft die wordt gebruikt voor het maken van uitbetalingen voor uw account.
 
-7. Afhankelijk van uw selecties in stap 6, wordt u gevraagd om de belasting gegevens op te geven die vereist zijn voor uw land.
+7. Afhankelijk van uw selecties in stap 6, wordt u gevraagd om de belasting gegevens op te geven die vereist zijn voor uw land/regio.
 
    > [!NOTE]
-   > Ongeacht uw land van verblijf of burgerschap moet u Verenigde Staten BTW-formulieren invullen om een aanbieding of invoeg toepassingen via de commerciële Marketplace te verkopen. Uitgevers die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere uitgevers buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
+   > Ongeacht het land/de regio waar u woont of burgerschap, moet u Verenigde Staten BTW-formulieren invullen om een aanbieding of invoeg toepassingen via de commerciële Marketplace te verkopen. Uitgevers die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere uitgevers buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
 
 ### <a name="withholding-rates"></a>Inhoudings tarieven
 
-De gegevens die u in uw belasting formulieren verzendt, bepalen het juiste tarief voor belasting heffing. Het inhoudings bedrag geldt alleen voor verkopen die u in de Verenigde Staten. verkoop van niet-Amerikaanse locaties is niet van toepassing op inhoud. De inhoudings tarieven variëren, maar voor de meeste uitgevers die buiten het Verenigde Staten worden geregistreerd, is de standaard tarief 30%. U hebt de mogelijkheid om dit tarief te verlagen als uw land met de Verenigde Staten heeft ingestemd op een inkomsten belasting verdrag.
+De gegevens die u in uw belasting formulieren verzendt, bepalen het juiste tarief voor belasting heffing. Het inhoudings bedrag geldt alleen voor verkopen die u in de Verenigde Staten. verkoop van niet-Amerikaanse locaties is niet van toepassing op inhoud. De inhoudings tarieven variëren, maar voor de meeste uitgevers die buiten het Verenigde Staten worden geregistreerd, is de standaard tarief 30%. U hebt de mogelijkheid om dit tarief te verlagen als uw land/regio heeft ingestemd op een inkomen uit de inkomsten belasting met de Verenigde Staten.
 
 ### <a name="tax-treaty-benefits"></a>Voor delen van belasting verdrag
 
-Als u zich buiten het Verenigde Staten bevindt, kunt u profiteren van de voor delen van belasting verdragen. Deze voor delen variëren van land tot land en kunnen u de belasting van de inhoud van de commerciële Marketplace verlagen. U kunt voor delen van fiscale verdragen claimen door deel II van het formulier W-8BEN te volt ooien. We raden u aan om te communiceren met de juiste resources in uw land of regio om te bepalen of deze voor delen van toepassing zijn op u.
+Als u zich buiten het Verenigde Staten bevindt, kunt u profiteren van de voor delen van belasting verdragen. Deze voor delen variëren van land/regio tot land/regio en kunnen u mogelijk de belasting hoeveelheid die de inhoudt van de commerciële Marketplace te verminderen. U kunt voor delen van fiscale verdragen claimen door deel II van het formulier W-8BEN te volt ooien. We raden u aan om te communiceren met de juiste resources in uw land of regio om te bepalen of deze voor delen van toepassing zijn op u.
 
 > [!NOTE]
 > Een Verenigde Staten afzonderlijke belastingplichtige-id (of ITIN) is niet vereist voor het ontvangen van betalingen van micro soft of voor het claimen van de voor delen van belasting verdragen.
