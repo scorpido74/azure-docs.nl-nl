@@ -1,25 +1,22 @@
 ---
-title: Integratie van broncodebeheer in Azure Automation
-description: In dit artikel wordt de integratie van broncode beheer met GitHub in Azure Automation beschreven.
+title: De integratie van broncode beheer in Azure Automation gebruiken
+description: In dit artikel wordt uitgelegd hoe u Azure Automation broncode beheer synchroniseert met andere opslag plaatsen.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132929"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744933"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
+# <a name="use-source-control-integration"></a>Integratie van bronbeheer gebruiken
 
  De integratie van broncode beheer in Azure Automation ondersteunt synchronisatie met één richting vanuit uw opslag plaats voor bron beheer. Met broncode beheer kunt u uw runbooks in uw Automation-account up-to-date houden met scripts in uw opslag plaats voor GitHub of Azure opslag plaatsen-bron beheer. Met deze functie kunt u eenvoudig code promoten die in uw ontwikkel omgeving is getest op uw productie Automation-account.
  
  Met broncode beheer integratie kunt u eenvoudig samen werken met uw team, wijzigingen bijhouden en terugkeren naar eerdere versies van uw runbooks. Met broncode beheer kunt u bijvoorbeeld verschillende vertakkingen in broncode beheer synchroniseren met uw ontwikkelings-, test-en productie Automation-accounts. 
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="source-control-types"></a>Broncode beheer typen
 
@@ -33,12 +30,12 @@ Azure Automation ondersteunt drie typen broncode beheer:
 
 * Een broncode beheer bibliotheek (GitHub of Azure opslag plaatsen)
 * Een [uitvoeren als-account](manage-runas-account.md)
-* De [meest recente Azure-modules](automation-update-azure-modules.md) in uw Automation- `Az.Accounts` account, inclusief de module ( `AzureRM.Profile`AZ module equivalent van)
+* De [meest recente Azure-modules](automation-update-azure-modules.md) in uw Automation-account, inclusief de `Az.Accounts` module (AZ module equivalent van `AzureRM.Profile` )
 
 > [!NOTE]
 > Synchronisatie taken voor broncode beheer worden uitgevoerd onder het Automation-account van de gebruiker en worden gefactureerd tegen hetzelfde aantal als andere Automation-taken.
 
-## <a name="configuring-source-control"></a>Broncode beheer configureren
+## <a name="configure-source-control"></a>Broncode beheer configureren
 
 In deze sectie wordt uitgelegd hoe u broncode beheer voor uw Automation-account kunt configureren. U kunt de Azure Portal of Power shell gebruiken.
 
@@ -90,7 +87,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Broncode beheer verbinding maken voor Azure opslag plaatsen (Git)
 
 > [!NOTE]
-> Azure opslag plaatsen (Git) maakt gebruik van een URL die toegang heeft tot **dev.Azure.com** in plaats van **VisualStudio.com**, die wordt gebruikt in eerdere notaties. De indeling `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` van de oudere URL is afgeschaft, maar wordt nog steeds ondersteund. De nieuwe indeling heeft de voor keur.
+> Azure opslag plaatsen (Git) maakt gebruik van een URL die toegang heeft tot **dev.Azure.com** in plaats van **VisualStudio.com**, die wordt gebruikt in eerdere notaties. De indeling van de oudere URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` is afgeschaft, maar wordt nog steeds ondersteund. De nieuwe indeling heeft de voor keur.
 
 
 ```powershell-interactive
@@ -100,7 +97,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Broncode beheer verbinding maken voor Azure opslag plaatsen (TFVC)
 
 > [!NOTE]
-> Azure opslag plaatsen (TFVC) gebruikt een URL die toegang heeft tot **dev.Azure.com** in plaats van **VisualStudio.com**, die wordt gebruikt in eerdere notaties. De indeling `https://<accountname>.visualstudio.com/<projectname>/_versionControl` van de oudere URL is afgeschaft, maar wordt nog steeds ondersteund. De nieuwe indeling heeft de voor keur.
+> Azure opslag plaatsen (TFVC) gebruikt een URL die toegang heeft tot **dev.Azure.com** in plaats van **VisualStudio.com**, die wordt gebruikt in eerdere notaties. De indeling van de oudere URL `https://<accountname>.visualstudio.com/<projectname>/_versionControl` is afgeschaft, maar wordt nog steeds ondersteund. De nieuwe indeling heeft de voor keur.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -139,7 +136,7 @@ In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die z
 
 <sup>1</sup> de `Service connections` machtiging is alleen vereist als u automatische synchronisatie hebt ingeschakeld.
 
-## <a name="synchronizing"></a>Momenteel
+## <a name="synchronize-with-source-control"></a>Synchroniseren met broncode beheer
 
 Volg deze stappen om te synchroniseren met broncode beheer. 
 
@@ -161,7 +158,7 @@ Volg deze stappen om te synchroniseren met broncode beheer.
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
-    Setting AzureRmEnvironment.
+    Setting AzEnvironment.
 
     Getting AzureRunAsConnection.
 
@@ -187,7 +184,7 @@ Volg deze stappen om te synchroniseren met broncode beheer.
 
 6. Aanvullende logboek registratie is beschikbaar door **alle logboeken** te selecteren op de pagina overzicht van de synchronisatie taak van broncode beheer. Deze aanvullende logboek vermeldingen kunnen u helpen bij het oplossen van problemen die zich kunnen voordoen bij het gebruik van broncode beheer.
 
-## <a name="disconnecting-source-control"></a>Verbinding met broncode beheer verbreken
+## <a name="disconnect-source-control"></a>Broncode beheer verbreken
 
 De verbinding met een broncode beheer bibliotheek verbreken:
 
@@ -197,11 +194,11 @@ De verbinding met een broncode beheer bibliotheek verbreken:
 
 3. Klik op de pagina overzicht van broncode beheer op **verwijderen**.
 
-## <a name="handling-encoding-issues"></a>Coderings problemen verwerken
+## <a name="handle-encoding-issues"></a>Coderings problemen verwerken
 
 Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>De PAT bijwerken
+## <a name="update-the-pat"></a>De PAT bijwerken
 
 Op dit moment kunt u de Azure Portal niet gebruiken om de PAT bij te werken in broncode beheer. Als uw PAT is verlopen of ingetrokken, kunt u op een van de volgende manieren broncode beheer bijwerken met een nieuw toegangs token:
 
@@ -210,4 +207,5 @@ Op dit moment kunt u de Azure Portal niet gebruiken om de PAT bij te werken in b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbook en hun voor delen en beperkingen.
+* [Azure Automation: broncode beheer integratie in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: Runbook-broncode beheer integreren met behulp van Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

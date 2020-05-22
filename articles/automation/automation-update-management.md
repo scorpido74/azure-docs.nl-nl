@@ -1,22 +1,22 @@
 ---
 title: Overzicht van Azure Automation Updatebeheer
-description: Overzicht van de functie Updatebeheer voor het beheren van updates voor uw Windows-en Linux-computers.
+description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 05/20/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714760"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745305"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
 U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
 
-U kunt Updatebeheer voor virtuele machines (Vm's) inschakelen met behulp van de volgende methoden:
+U kunt Updatebeheer voor virtuele machines op de volgende manieren inschakelen:
 
 * Van uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines.
 * Hand matig voor niet-Azure-machines.
@@ -31,7 +31,7 @@ Er is een [Azure Resource Manager sjabloon](automation-update-management-deploy-
 > [!NOTE]
 > U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd. 
 
-## <a name="update-management-overview"></a>Overzicht van updatebeheer
+## <a name="about-update-management"></a>Over Updatebeheer
 
 Computers die worden beheerd door Updatebeheer gebruiken de volgende configuraties voor het uitvoeren van analyses en het bijwerken van implementaties:
 
@@ -44,7 +44,7 @@ In het volgende diagram ziet u hoe Updatebeheer beveiligings updates evalueert e
 
 ![Updatebeheer werk stroom](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Updatebeheer kan worden gebruikt voor de systeemeigen onboarding van computers in meerdere abonnementen in dezelfde tenant.
+Updatebeheer kan worden gebruikt voor het implementeren van machines in meerdere abonnementen in dezelfde Tenant.
 
 Nadat een pakket is vrijgegeven, duurt het 2 tot 3 uur voordat de patch wordt weer gegeven voor Linux-machines voor evaluatie. Voor Windows-computers duurt het 12 tot 15 uur voordat de patch wordt weer gegeven voor evaluatie nadat deze is uitgebracht.
 
@@ -74,7 +74,7 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ### <a name="supported-client-types"></a>Ondersteunde client typen
 
-De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie [Deploying a Windows Hybrid Runbook worker](automation-windows-hrw-install.md) and [deploy a Linux Hybrid Runbook worker](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
+De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
 
 > [!NOTE]
 > Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
@@ -89,8 +89,7 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 |Ubuntu 14,04 LTS, 16,04 LTS en 18,04 (x86/x64)      |Linux-agents moeten toegang hebben tot een update opslagplaats.         |
 
 > [!NOTE]
-> Virtuele-machine schaal sets van Azure kunnen worden beheerd via Updatebeheer. Updatebeheer werkt op de instanties zelf en niet op basis van de installatie kopie. U moet de updates op een incrementele manier plannen, zodat niet alle VM-exemplaren tegelijk worden bijgewerkt.
-> U kunt knoop punten voor schaal sets voor virtuele machines toevoegen door de stappen onder [onboarding van een niet-Azure-computer](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)uit te voeren.
+> Virtuele-machine schaal sets van Azure kunnen worden beheerd via Updatebeheer. Updatebeheer werkt op de instanties zelf en niet op basis van de installatie kopie. U moet de updates op een incrementele manier plannen, zodat niet alle VM-exemplaren tegelijk worden bijgewerkt. U kunt knoop punten voor virtuele-machine schaal sets toevoegen door de stappen onder [een niet-Azure-computer toevoegen aan wijzigingen bijhouden en inventarisatie te](automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)volgen.
 
 ### <a name="unsupported-client-types"></a>Niet-ondersteunde client typen
 
@@ -98,11 +97,9 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [Windows Update voor Business](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) for Windows 10 client machine patch management. |
+|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
 |Windows Server 2016 Nano Server     | Niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
-
-
 
 ### <a name="client-requirements"></a>Clientvereisten
 
@@ -112,7 +109,7 @@ De volgende informatie beschrijft specifieke client vereisten voor het besturing
 
 Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update. Zie [Windows-computers verbinden met Azure monitor](../log-analytics/log-analytics-windows-agent.md)voor meer informatie over het installeren van de log Analytics-agent voor Windows.
 
-U kunt Updatebeheer gebruiken met micro soft endpoint Configuration Manager. Zie [Configuration Manager integreren met updatebeheer](updatemgmt-mecmintegration.md#configuration)voor meer informatie over integratie scenario's. De [log Analytics-agent voor Windows](../azure-monitor/platform/agent-windows.md) is vereist voor Windows-servers die worden beheerd door sites in uw Configuration Manager omgeving. 
+U kunt Updatebeheer gebruiken met micro soft endpoint Configuration Manager. Zie [updatebeheer integreren met Windows-eind punt Configuration Manager](updatemgmt-mecmintegration.md)voor meer informatie over integratie scenario's. De [log Analytics-agent voor Windows](../azure-monitor/platform/agent-windows.md) is vereist voor Windows-servers die worden beheerd door sites in uw Configuration Manager omgeving. 
 
 Standaard worden Windows-Vm's die zijn geïmplementeerd vanuit Azure Marketplace ingesteld voor het ontvangen van automatische updates van Windows Update service. Dit gedrag verandert niet wanneer u Windows-Vm's toevoegt aan uw werk ruimte. Als u updates niet actief beheert door gebruik te maken van Updatebeheer, is het standaard gedrag van toepassing (om updates automatisch toe te passen).
 
@@ -239,7 +236,7 @@ Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yu
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Updatebeheer integreren met Configuration Manager
 
-Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om software-updates te beheren. Zie [Configuration Manager integreren met updatebeheer](updatemgmt-mecmintegration.md)voor meer informatie over het integreren van Updatebeheer met Configuration Manager.
+Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om software-updates te beheren. Zie [updatebeheer integreren met Windows-eind punt Configuration Manager](updatemgmt-mecmintegration.md)voor meer informatie over het integreren van Updatebeheer met Configuration Manager.
 
 ## <a name="third-party-updates-on-windows"></a>Updates van derden in Windows
 
@@ -251,10 +248,10 @@ Een Azure [Resource Manager-sjabloon](automation-update-management-deploy-templa
 
 Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren die moeten worden beheerd:
 
-* [Van een virtuele machine](automation-onboard-solutions-from-vm.md).
-* [Meerdere machines doorzoeken](automation-onboard-solutions-from-browse.md).
-* [Van een Azure Automation-account](automation-onboard-solutions.md).
+* [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
+* [Van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
+* [Van een Azure Automation-account](automation-onboard-solutions.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [Veelgestelde](automation-faq.md) vragen over Azure Automation om veelgestelde vragen over updatebeheer te bekijken.
+[Veelgestelde vragen over Azure Automation](automation-faq.md)

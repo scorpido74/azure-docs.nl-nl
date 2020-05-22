@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791473"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744564"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Commercial Marketplace Analytics terminologie en veelgestelde vragen
 
@@ -48,20 +48,20 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Naam van Cloud exemplaar| Bestellen| De Microsoft Cloud waarin een VM-implementatie is opgetreden.||
 | Naam van Cloud exemplaar: Azure Global| Bestellen| De open bare wereld wijde micro soft-Cloud.|| |
 | Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende overheden: China, Duitsland of de Verenigde Staten van Amerika.| |
-| Klant plaats| Klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
-| Taal van klant communicatie  | Klant| De taal die door de klant wordt aanbevolen voor communicatie.||
+| Klant plaats| De klant| De naam van de plaats van de klant. De stad kan afwijken van de plaats in het Azure-abonnement van een klant.||
+| Taal van klant communicatie  | De klant| De taal die door de klant wordt aanbevolen voor communicatie.||
 | Bedrijfs naam van klant | Klant, order | De bedrijfs naam die door de klant is verschaft. De naam kan afwijken van de plaats in het Azure-abonnement van een klant.|  |
-| Klant land | Klant, order | De land naam van de klant. Het land kan afwijken van het land van het Azure-abonnement van de klant.|  |
-| E-mail van klant| Klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
-| Voor naam van klant| Klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
+| Land/regio van klant | Klant, order | De land/regio naam die door de klant wordt verschaft. Land/regio kan afwijken van het land/de regio in het Azure-abonnement van een klant.|  |
+| E-mail van klant| De klant| Het e-mail adres van de eind gebruiker. E-mail kan afwijken van het e-mail adres in het Azure-abonnement van een klant.||
+| Voor naam van klant| De klant| De naam van de klant. De naam kan afwijken van de naam die is opgenomen in het Azure-abonnement van de klant.| |
 | Klant-id | Klant, order | De unieke id die aan een klant is toegewezen. Een klant heeft mogelijk geen of meer Azure Marketplace-abonnementen.|  |
-| Post code van de klant  | Klant| De post code die de klant heeft ontvangen. De code kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.| |
-| Klant status| Klant| De status (adres) van de klant. De status kan afwijken van de status die is opgenomen in het Azure-abonnement van de klant.| |
-| Aanschaf datum| Klant| De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.| |
-| Datum verloren| Klant| De laatste datum waarop de klant de laatste van alle eerder gekochte aanbiedingen heeft geannuleerd.||
+| Post code van de klant  | De klant| De post code die de klant heeft ontvangen. De code kan afwijken van de post code die is opgenomen in het Azure-abonnement van een klant.| |
+| Klant status| De klant| De status (adres) van de klant. De status kan afwijken van de status die is opgenomen in het Azure-abonnement van de klant.| |
+| Aanschaf datum| De klant| De eerste datum waarop de klant een door u gepubliceerde aanbieding heeft gekocht.| |
+| Datum verloren| De klant| De laatste datum waarop de klant de laatste van alle eerder gekochte aanbiedingen heeft geannuleerd.||
 | Is nieuwe klant  | Bestellen| Met deze waarde wordt een nieuwe klant geïdentificeerd die voor de eerste keer een of meer van uw aanbiedingen aanschaft (of niet). De waarde is ' ja ' in dezelfde kalender maand voor ' verworven datum '. De waarde is "nee" als de klant een van de aanbiedingen vóór de gemelde kalender maand heeft gekocht. |
 | Is preview-SKU| Bestellen| De waarde laat u weten of u de SKU hebt gelabeld als ' preview '. De waarde is "ja" als de SKU dienovereenkomstig is gelabeld en alleen Azure-abonnementen die door u zijn geautoriseerd, kunnen deze installatie kopie implementeren en gebruiken. De waarde is ' nee ' als de SKU niet is geïdentificeerd als ' preview '.  |
-| Is de contact persoon voor de reclame in| Klant| De waarde laat u weten of de klant proactief heeft gekozen voor een contact persoon van uitgevers. Op dit moment bieden we geen optie voor klanten, dus hebben we "no" aangegeven op het bord. Zodra deze functie is geïmplementeerd, gaan we dienovereenkomstig met bijwerken.|
+| Is de contact persoon voor de reclame in| De klant| De waarde laat u weten of de klant proactief heeft gekozen voor een contact persoon van uitgevers. Op dit moment bieden we geen optie voor klanten, dus hebben we "no" aangegeven op het bord. Zodra deze functie is geïmplementeerd, gaan we dienovereenkomstig met bijwerken.|
 | Marketplace-licentie type| Bestellen| De facturerings methode van de Marketplace-aanbieding.||
 | Marketplace-licentie type: gefactureerd via Azure| Bestellen| Micro soft is uw agent voor deze Marketplace-aanbieding en factuurt klanten namens u. (PAYG credit card of ENTER prise-factuur)||
 | Marketplace-licentie type: Neem uw eigen licentie mee | Bestellen| Voor de virtuele machine is een licentie sleutel van de klant vereist om te implementeren. Micro soft factureert klanten niet op deze manier met hun aanbiedingen via Marketplace.||
@@ -87,8 +87,8 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Orderstatus| Bestellen| De status van een Marketplace-bestelling op het moment dat de gegevens voor het laatst zijn vernieuwd.|     |
 | Status van bestelling: actief  | Bestellen| De klant heeft een bestelling gekocht en heeft zijn order niet geannuleerd.|         |
 | Status van bestelling: geannuleerd | Bestellen| De klant heeft eerder een order aangeschaft en vervolgens de bestelling geannuleerd.||
-| E-mail van provider| Klant| Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
-| Provider naam| Klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| E-mail van provider| De klant| Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| Provider naam| De klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
 | SKU| Bestellen| SKU-naam zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.||
 | Eind datum van proef versie| Bestellen| De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.||
 

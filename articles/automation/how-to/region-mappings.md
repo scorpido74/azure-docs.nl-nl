@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 24ff69e76736ffa93cecb795be563f172c422355
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714505"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744754"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 
@@ -80,6 +80,6 @@ U kunt de werk ruimte ook ontkoppelen van uw Automation-account in de werk ruimt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van updatebeheer](../automation-update-management.md)
-* [Overzicht van Wijzigingen bijhouden en inventaris](../change-tracking.md)
-* [Overzicht van VM's buiten bedrijfsuren starten/stoppen](../automation-solution-vm-management.md)
+* Meer informatie over Updatebeheer in [updatebeheer Overview](../automation-update-management.md).
+* Meer informatie over Wijzigingen bijhouden en inventaris in [Wijzigingen bijhouden en inventaris overzicht](../change-tracking.md).
+* Meer informatie over VM's buiten bedrijfsuren starten/stoppen in [VM's buiten bedrijfsuren starten/stoppen Overview](../automation-solution-vm-management.md).

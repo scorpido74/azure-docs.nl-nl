@@ -8,16 +8,16 @@ ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266310"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745720"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -61,7 +61,7 @@ U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
     ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \<your_organization>* Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \< your_organization>* Azure AD**.
 
     ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -79,7 +79,7 @@ Als u uw apparaat al een tijdje hebt en het reeds is ingesteld, kunt u deze stap
 
     ![Het scherm voor een werk-of school account instellen](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. Typ uw **Let's get you signed in** e-mail adres (bijvoorbeeld alain@contoso.com) op het scherm de optie nu aanmelden. Klik vervolgens op **volgende**.
+4. Typ uw e-mail adres (bijvoorbeeld) op het scherm de optie **nu** aanmelden alain@contoso.com . Klik vervolgens op **volgende**.
 
     ![U kunt u aanmelden op het scherm](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
@@ -106,7 +106,7 @@ U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
     ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \<your_organization>* Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \< your_organization>* Azure AD**.
 
     ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384225"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744885"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK instellen op een virtuele Linux-machine
 
@@ -50,7 +50,7 @@ De volgende distributies van Azure Marketplace worden ondersteund:
 
 **Aangepaste kernel-ondersteuning**
 
-Zie [patches voor het bouwen van een door Azure afgestemde Linux-kernel](https://github.com/microsoft/azure-linux-kernel)voor een Linux-kernel-versie die niet wordt vermeld. U kunt ook contact opnemen met [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)voor meer informatie. 
+Zie [patches voor het bouwen van een door Azure afgestemde Linux-kernel](https://github.com/microsoft/azure-linux-kernel)voor een Linux-kernel-versie die niet wordt vermeld. U kunt ook contact opnemen met voor meer informatie [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Ondersteuning voor regio
 
@@ -109,10 +109,10 @@ zypper \
 ## <a name="set-up-the-virtual-machine-environment-once"></a>De virtuele-machine omgeving instellen (eenmaal)
 
 1. [Down load de meest recente DPDK](https://core.dpdk.org/download). Versie 18,11 LTS of 19,11 LTS is vereist voor Azure.
-2. Bouw de standaard configuratie met `make config T=x86_64-native-linuxapp-gcc`.
-3. Schakel de Mellanox PMDs in de gegenereerde `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`configuratie in met.
-4. Compileren `make`met.
-5. Installeren met `make install DESTDIR=<output folder>`.
+2. Bouw de standaard configuratie met `make config T=x86_64-native-linuxapp-gcc` .
+3. Schakel de Mellanox PMDs in de gegenereerde configuratie in met `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` .
+4. Compileren met `make` .
+5. Installeren met `make install DESTDIR=<output folder>` .
 
 ## <a name="configure-the-runtime-environment"></a>De runtime-omgeving configureren
 
@@ -126,20 +126,20 @@ Nadat de computer opnieuw is opgestart, voert u de volgende opdrachten eenmaal u
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * Maak een map om te koppelen `mkdir /mnt/huge`aan.
-   * Hugepages koppelen aan `mount -t hugetlbfs nodev /mnt/huge`.
-   * Controleer of hugepages zijn gereserveerd voor `grep Huge /proc/meminfo`.
+   * Maak een map om te koppelen aan `mkdir /mnt/huge` .
+   * Hugepages koppelen aan `mount -t hugetlbfs nodev /mnt/huge` .
+   * Controleer of hugepages zijn gereserveerd voor `grep Huge /proc/meminfo` .
 
      > ERAAN Er is een manier om het grub-bestand te wijzigen zodat hugepages tijdens het opstarten worden gereserveerd door de [instructies](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) voor de DPDK te volgen. De instructies bevinden zich onder aan de pagina. Wanneer u een virtuele machine van Azure Linux gebruikt, wijzigt u in plaats daarvan bestanden onder **/etc/config/grub.d** om hugepages te reserveren tijdens het opnieuw opstarten.
 
-2. MAC-& IP-adressen `ifconfig –a` : gebruik om het Mac-en IP-adres van de netwerk interfaces weer te geven. De *VF* -netwerk interface en de *NETVSC* -netwerk interface hebben hetzelfde MAC-adres, maar alleen de *NETVSC* -netwerk interface heeft een IP-adres. *VF* -interfaces worden uitgevoerd als onderliggende interfaces van *NETVSC* -interfaces.
+2. MAC-& IP-adressen: gebruik `ifconfig –a` om het Mac-en IP-adres van de netwerk interfaces weer te geven. De *VF* -netwerk interface en de *NETVSC* -netwerk interface hebben hetzelfde MAC-adres, maar alleen de *NETVSC* -netwerk interface heeft een IP-adres. *VF* -interfaces worden uitgevoerd als onderliggende interfaces van *NETVSC* -interfaces.
 
 3. PCI-adressen
 
    * Gebruik `ethtool -i <vf interface name>` om te bepalen welk PCI-adres voor *VF*moet worden gebruikt.
    * Als *eth0* versneld netwerken is ingeschakeld, zorgt u ervoor dat testpmd niet per ongeluk het *VF* -PCI-apparaat neemt voor *eth0*. Als de DPDK-toepassing per ongeluk de beheer netwerk interface overneemt en u uw SSH-verbinding verliest, gebruikt u de seriële console om de DPDK-toepassing te stoppen. U kunt de seriële console ook gebruiken om de virtuele machine te stoppen of te starten.
 
-4. Laad *ibuverbs* bij elke herstart `modprobe -a ib_uverbs`met. Voor SLES alleen 15, laadt *mlx4_ib* u ook `modprobe -a mlx4_ib`mlx4_ib met.
+4. Laad *ibuverbs* bij elke herstart met `modprobe -a ib_uverbs` . Voor SLES alleen 15, laadt u ook *mlx4_ib* met `modprobe -a mlx4_ib` .
 
 ## <a name="failsafe-pmd"></a>Failsafe PMD
 
@@ -149,7 +149,7 @@ Als u een DPDK-toepassing uitvoert via de failsafe-PMD, zorgt dit ervoor dat de 
 
 ## <a name="run-testpmd"></a>Testpmd uitvoeren
 
-Als u testpmd in de hoofd modus wilt `sudo` uitvoeren, gebruikt u vóór de opdracht *testpmd* .
+Als u testpmd in de hoofd modus wilt uitvoeren, gebruikt u `sudo` vóór de opdracht *testpmd* .
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Sanity-controle, initialisatie van de failsafe-adapter
 
@@ -172,9 +172,9 @@ Als u testpmd in de hoofd modus wilt `sudo` uitvoeren, gebruikt u vóór de opdr
    -- -i
    ```
 
-   Als u testpmd met meer dan twee Nic's gebruikt, volgt het `--vdev` argument dit patroon: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
+   Als u testpmd met meer dan twee Nic's gebruikt, volgt het `--vdev` argument dit patroon: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` .
 
-3.  Nadat de taak is gestart, `show port info all` voert u uit om de poort gegevens te controleren. U moet een of twee DPDK-poorten zien die net_failsafe (niet *net_mlx4*) zijn.
+3.  Nadat de taak is gestart, voert `show port info all` u uit om de poort gegevens te controleren. U moet een of twee DPDK-poorten zien die net_failsafe (niet *net_mlx4*) zijn.
 4.  Gebruiken `start <port> /stop <port>` om verkeer te starten.
 
 De vorige opdrachten starten *testpmd* in de interactieve modus. dit wordt aanbevolen voor het proberen van testpmd-opdrachten.
@@ -213,7 +213,7 @@ Met de volgende opdrachten worden periodiek de statistieken van pakketten per se
      --stats-period <display interval in seconds>
    ```
 
-Wanneer u de vorige opdrachten op een virtuele machine uitvoert, wijzigt u *IP_SRC_ADDR* en *IP_DST_ADDR* in `app/test-pmd/txonly.c` , zodat deze overeenkomen met het werkelijke IP-adres van de virtuele machines voordat u compileert. Anders worden de pakketten verwijderd voordat de ontvanger wordt bereikt.
+Wanneer u de vorige opdrachten op een virtuele machine uitvoert, wijzigt u *IP_SRC_ADDR* en *IP_DST_ADDR* in, `app/test-pmd/txonly.c` zodat deze overeenkomen met het werkelijke IP-adres van de virtuele machines voordat u compileert. Anders worden de pakketten verwijderd voordat de ontvanger wordt bereikt.
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>Geavanceerd: Eén afzender/één doorstuur server
 Met de volgende opdrachten worden periodiek de statistieken van pakketten per seconde afgedrukt:
@@ -249,7 +249,7 @@ Met de volgende opdrachten worden periodiek de statistieken van pakketten per se
      --stats-period <display interval in seconds>
     ```
 
-Wanneer u de vorige opdrachten op een virtuele machine uitvoert, wijzigt u *IP_SRC_ADDR* en *IP_DST_ADDR* in `app/test-pmd/txonly.c` , zodat deze overeenkomen met het werkelijke IP-adres van de virtuele machines voordat u compileert. Anders worden de pakketten verwijderd voordat de doorstuur server wordt bereikt. Het is niet mogelijk om een derde computer doorgestuurd verkeer te ontvangen, omdat de *testpmd* -doorstuur server de Layer 3-adressen niet wijzigt, tenzij u een aantal code wijzigingen aanbrengt.
+Wanneer u de vorige opdrachten op een virtuele machine uitvoert, wijzigt u *IP_SRC_ADDR* en *IP_DST_ADDR* in, `app/test-pmd/txonly.c` zodat deze overeenkomen met het werkelijke IP-adres van de virtuele machines voordat u compileert. Anders worden de pakketten verwijderd voordat de doorstuur server wordt bereikt. Het is niet mogelijk om een derde computer doorgestuurd verkeer te ontvangen, omdat de *testpmd* -doorstuur server de Layer 3-adressen niet wijzigt, tenzij u een aantal code wijzigingen aanbrengt.
 
 ## <a name="references"></a>Verwijzingen
 

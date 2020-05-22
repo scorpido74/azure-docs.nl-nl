@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793003"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746670"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Gebruiks dashboard in micro soft Commercial Marketplace Analytics
 
@@ -54,7 +54,7 @@ De tabel gebruiks overzicht bevat de gebruiks uren van de klant voor alle aanbie
 
 ### <a name="usage-by-geography"></a>Gebruik per Geografie
 
-**In het genormaliseerde gebruik van geografie** heatmap worden gebruiks tijden weer gegeven die zijn toegewezen op basis van het klant land. De kleur variatie voor het land vertegenwoordigt de genormaliseerde gebruiks concentratie. Keer terug naar de oorspronkelijke weer gave door op de knop **Start** op de kaart te drukken.
+**In het genormaliseerde gebruik van geografie** heatmap worden gebruiks tijden weer gegeven die zijn toegewezen op basis van het land of de regio van de klant. Kleur variatie van land/regio vertegenwoordigt genormaliseerde gebruiks concentratie. Keer terug naar de oorspronkelijke weer gave door op de knop **Start** op de kaart te drukken.
 
 ### <a name="usage-by-offers"></a>Gebruik per aanbiedingen
 
@@ -92,7 +92,7 @@ In de **tabel gebruiks gegevens** wordt een genummerde lijst weer gegeven met de
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records kleiner is dan 1000.
 - Als aantal records groter is dan 1000, worden de export gegevens asynchroon geplaatst op een pagina down loads die de volgende 30 dagen beschikbaar zullen zijn.
-- Filters kunnen worden toegepast op de **gedetailleerde gebruiks gegevens** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land, verkoop kanaal, Marketplace-licentie type, gebruiks type, naam van aanbieding, type aanbieding, gratis proef versies, abonnement-ID van Marketplace, klant-ID en bedrijfs naam.
+- Filters kunnen worden toegepast op de **gedetailleerde gebruiks gegevens** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land/regio, verkoop kanaal, licentie type Marketplace, gebruiks type, naam van aanbieding, type aanbieding, gratis proef versies, abonnement-ID van Marketplace, klant-ID en bedrijfs naam.
 
 > [!NOTE]
 > Selecteer het **gebruiks type** in het pagina filter om grafieken weer te geven op de pagina in de weer gave ' genormaliseerde weer gave ' of ' RAW '. De standaard weergave voor deze grafieken is ' genormaliseerde weer gave '.

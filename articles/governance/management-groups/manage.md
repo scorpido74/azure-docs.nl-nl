@@ -3,12 +3,12 @@ title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "81381669"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747479"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -29,7 +29,7 @@ U kunt de naam van de beheer groep wijzigen met behulp van de portal, Power shel
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. Selecteer de beheer groep waarvan u de naam wilt wijzigen.
 
@@ -76,7 +76,7 @@ Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden v
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. Selecteer de beheer groep die u wilt verwijderen.
 
@@ -119,7 +119,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen RBAC-rol
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. De pagina beheer groeps hiërarchie wordt geladen. Op deze pagina vindt u een onderzoek van alle beheer groepen en abonnementen waartoe u toegang hebt. Als u de groeps naam selecteert, wordt een niveau in de hiërarchie omlaag genoteerd. De navigatie werkt hetzelfde als een Verkenner.
 
@@ -223,7 +223,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. Selecteer de beheer groep die u van plan bent het bovenliggende te zijn.
 
@@ -239,7 +239,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. Selecteer de beheer groep die u wilt plannen die het huidige bovenliggende item is.  
 
@@ -289,7 +289,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **alle services** > -**beheer groepen**.
+1. Selecteer **alle services**-  >  **beheer groepen**.
 
 1. Selecteer de beheer groep die u van plan bent het bovenliggende te zijn.
 
@@ -344,7 +344,7 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 Het pad naar de scope wordt gebruikt bij het ophalen van een beleids definitie in een beheer groep.
 
 ```http
-GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

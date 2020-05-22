@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a07c419ecaa0cb0ec05c7c392a4d5ed9b0bfa491
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429978"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747411"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -35,7 +35,7 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Hoog  
 |Extra opslag ruimte                   | Nee                                           | Ja
 |Syntaxis                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
@@ -153,7 +153,7 @@ Om het resultaat in de cache te kunnen gebruiken, moet de vorm van de cache die 
 
 ## <a name="example"></a>Voorbeeld
 
-In dit voor beeld wordt een TPCDS-achtige query gebruikt waarmee klanten die meer geld uitgeven via catalog dan in winkels. Het identificeert ook de voorkeurs klanten en hun land van oorsprong.   De query moet het selecteren van TOP 100-records uit de samen VOEGing van drie subselect-instructies waarbij SUM () en GROUP BY worden geselecteerd.
+In dit voor beeld wordt een TPCDS-achtige query gebruikt waarmee klanten die meer geld uitgeven via catalog dan in winkels. Het identificeert ook de voorkeurs klanten en hun land/regio van oorsprong.   De query moet het selecteren van TOP 100-records uit de samen VOEGing van drie subselect-instructies waarbij SUM () en GROUP BY worden geselecteerd.
 
 ```sql
 WITH year_total AS (

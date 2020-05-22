@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac3f24e06553fd037ef5deaf374690fb92b0fa8c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715814"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742836"
 ---
 # <a name="create-modular-runbooks"></a>Modulaire runbooks maken
 
@@ -35,7 +35,7 @@ Als u een runbook inline aanroept, wordt dit uitgevoerd in dezelfde taak als het
 
 Wanneer een runbook wordt gepubliceerd, moeten alle onderliggende runbooks die worden aangeroepen, al worden gepubliceerd. De reden hiervoor is dat Azure Automation een koppeling bouwt met een wille keurige onderliggende runbooks wanneer het een runbook compileert. Als de onderliggende runbooks nog niet zijn gepubliceerd, lijkt het bovenliggende runbook goed te publiceren, maar genereert een uitzonde ring wanneer het wordt gestart. Als dit het geval is, kunt u het bovenliggende runbook opnieuw publiceren om naar behoren naar de onderliggende runbooks te verwijzen. U hoeft het bovenliggende runbook niet opnieuw te publiceren als een onderliggend runbook is gewijzigd, omdat de koppeling al is gemaakt.
 
-De para meters van een onderliggend runbook met de naam inline kunnen van elk gegevens type zijn, inclusief complexe objecten. Er is geen [JSON-serialisatie](start-runbooks.md#runbook-parameters), omdat u het runbook start met behulp van de Azure portal of met de cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) .
+De para meters van een onderliggend runbook met de naam inline kunnen van elk gegevens type zijn, inclusief complexe objecten. Er is geen [JSON-serialisatie](start-runbooks.md#work-with-runbook-parameters), omdat u het runbook start met behulp van de Azure portal of met de cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) .
 
 ### <a name="runbook-types"></a>Runbooktypen
 
@@ -80,7 +80,7 @@ De onderliggende runbook-uitvoer wordt niet betrouwbaar teruggestuurd naar het b
 
 Als u niet wilt dat het bovenliggende runbook wordt geblokkeerd tijdens het wachten, kunt u het onderliggende runbook starten met `Start-AzAutomationRunbook` zonder de `Wait` para meter. In dit geval moet uw runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) gebruiken om te wachten tot de taak is voltooid. Het moet ook [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) en [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) gebruiken om de resultaten op te halen.
 
-Para meters voor een onderliggend runbook dat is gestart met een cmdlet, worden opgegeven als een hash-tabel, zoals beschreven in [runbook-para meters](start-runbooks.md#runbook-parameters). Alleen eenvoudige gegevens typen kunnen worden gebruikt. Als het runbook een parameter met een complex gegevenstype heeft, moet dit inline worden aangeroepen.
+Para meters voor een onderliggend runbook dat is gestart met een cmdlet, worden opgegeven als een hash-tabel, zoals beschreven in [runbook-para meters](start-runbooks.md#work-with-runbook-parameters). Alleen eenvoudige gegevens typen kunnen worden gebruikt. Als het runbook een parameter met een complex gegevenstype heeft, moet dit inline worden aangeroepen.
 
 De context van het abonnement kan verloren gaan bij het starten van onderliggende runbooks als afzonderlijke taken. Voor het onderliggende runbook om AZ module-cmdlets uit te voeren op basis van een specifiek Azure-abonnement, moet het onderliggend element worden geverifieerd bij dit abonnement onafhankelijk van het bovenliggende runbook.
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een runbook starten in Azure Automation](start-runbooks.md)
+* [Start a runbook in Azure Automation](start-runbooks.md) (Een runbook starten in Azure Automation)
 * [Runbook-uitvoer en berichten in Azure Automation](automation-runbook-output-and-messages.md)

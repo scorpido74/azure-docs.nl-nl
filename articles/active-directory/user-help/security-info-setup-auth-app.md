@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 264b2803774bcec000fc767693cf96d15e684790
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628398"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744487"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Stel de Microsoft Authenticator-app in als uw verificatie methode
 
@@ -48,7 +48,7 @@ Afhankelijk van de instellingen van uw organisatie kunt u mogelijk een verificat
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>De app Microsoft Authenticator instellen
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myaccount.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de https://myaccount.microsoft.com/ pagina.
 
     ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 

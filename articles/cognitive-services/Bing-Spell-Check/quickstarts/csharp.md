@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: aa76a5773a20a103ceec075a58c79fac691eec6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382945"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747331"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en C #
 
@@ -34,7 +34,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe console oplossing met `SpellCheckSample` de naam in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
+1. Maak een nieuwe console oplossing met de naam `SpellCheckSample` in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
     
     ```csharp
     using System;
@@ -62,7 +62,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     }
     ```
 
-3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=`. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
+3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe na `mkt=` . De markt code is het land/de regio waarin u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=` . Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";

@@ -1,23 +1,20 @@
 ---
 title: Pre-scripts en post scripts beheren in uw Updatebeheer-implementatie in azure
-description: In dit artikel wordt beschreven hoe u vooraf-scripts en post scripts voor update-implementaties configureert en beheert.
+description: In dit artikel leest u hoe u vooraf-scripts en post scripts voor update-implementaties configureert en beheert.
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855338"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745118"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Pre-scripts en post-scripts beheren
 
 Pre-scripts en post scripts zijn runbooks die in uw Azure Automation-account worden uitgevoerd voordat (vóór taak) en na (na taak) een update-implementatie. Scripts en post scripts die in de Azure-context worden uitgevoerd, zijn niet lokaal. Pre-scripts worden uitgevoerd aan het begin van de update-implementatie. Post-scripts worden aan het einde van de implementatie uitgevoerd en nadat opnieuw opstarten is geconfigureerd.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="pre-script-and-post-script-requirements"></a>Pre-script-en post script-vereisten
 
@@ -41,7 +38,7 @@ De runbook-para meters pre-script en post-script bieden geen ondersteuning voor 
 
 Als u een ander object type nodig hebt, kunt u dit naar een ander type converteren met uw eigen logica in het runbook.
 
-Naast uw standaard runbook-para meters wordt `SoftwareUpdateConfigurationRunContext` de para meter (type JSON-teken reeks) opgegeven. Als u de para meter in uw pre-script of post-script-runbook definieert, wordt deze automatisch door gegeven door de update-implementatie. De para meter bevat informatie over de update-implementatie. Dit is een subset van informatie die wordt geretourneerd door de [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration). In de volgende secties worden de bijbehorende eigenschappen gedefinieerd.
+Naast uw standaard runbook-para meters `SoftwareUpdateConfigurationRunContext` wordt de para meter (type JSON-teken reeks) opgegeven. Als u de para meter in uw pre-script of post-script-runbook definieert, wordt deze automatisch door gegeven door de update-implementatie. De para meter bevat informatie over de update-implementatie. Dit is een subset van informatie die wordt geretourneerd door de [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration). In de volgende secties worden de bijbehorende eigenschappen gedefinieerd.
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-eigenschappen
 
@@ -51,7 +48,7 @@ Naast uw standaard runbook-para meters wordt `SoftwareUpdateConfigurationRunCont
 |SoftwareUpdateConfigurationRunId     | De unieke ID voor de uitvoering.        |
 |SoftwareUpdateConfigurationSettings     | Een verzameling eigenschappen die betrekking hebben op de configuratie van de software-update.         |
 |SoftwareUpdateConfigurationSettings. Operating     | De besturings systemen die zijn gericht op de update-implementatie.         |
-|SoftwareUpdateConfigurationSettings. duur     | De maximale duur van het uitvoeren van de update `PT[n]H[n]M[n]S` -implementatie zoals per iso8601; wordt ook wel het onderhouds venster genoemd.          |
+|SoftwareUpdateConfigurationSettings. duur     | De maximale duur van de update-implementatie zoals `PT[n]H[n]M[n]S` iso8601, ook wel het onderhouds venster genoemd.          |
 |SoftwareUpdateConfigurationSettings. Windows     | Een verzameling eigenschappen die betrekking hebben op Windows-computers.         |
 |SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Een lijst met Kb's die zijn uitgesloten van de update-implementatie.        |
 |SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | Update classificaties geselecteerd voor de update-implementatie.        |
@@ -94,7 +91,7 @@ Een volledig voor beeld met alle eigenschappen vindt u op: [Software-update conf
 > [!NOTE]
 > Het `SoftwareUpdateConfigurationRunContext` object kan dubbele vermeldingen voor machines bevatten. Dit kan ervoor zorgen dat scripts en post scripts meerdere keren op dezelfde computer worden uitgevoerd. U kunt dit probleem omzeilen door `Sort-Object -Unique` alleen unieke VM-namen te selecteren.
 
-## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>Een pre-script of post script gebruiken in een implementatie
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Een pre-script of post script gebruiken in een implementatie
 
 Als u een pre-script of post script wilt gebruiken in een update-implementatie, moet u beginnen met het maken van een update-implementatie. Selecteer **pre-scripts + post scripts**. Met deze actie opent **u de pagina pre-scripts + post-scripts selecteren** .
 
@@ -120,7 +117,7 @@ Als u de update-implementatie-uitvoering selecteert, worden er aanvullende detai
 
 es in uw script.
 
-## <a name="stopping-a-deployment"></a>Een implementatie stoppen
+## <a name="stop-a-deployment"></a>Een implementatie stoppen
 
 Als u een implementatie op basis van een pre-script wilt stoppen, moet u een uitzonde ring [genereren](automation-runbook-execution.md#throw) . Als dat niet het geval is, worden de implementatie en het post script nog steeds uitgevoerd. Het volgende code fragment laat zien hoe u een uitzonde ring genereert.
 
@@ -137,9 +134,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-
-
-## <a name="interacting-with-machines"></a>Interactie met computers
+## <a name="interact-with-machines"></a>Communiceren met computers
 
 Pre-scripts en post-tasks worden uitgevoerd als runbooks in uw Automation-account en niet rechtstreeks op de computers in uw implementatie. Taken en post-taken worden ook uitgevoerd in de Azure-context en hebben geen toegang tot niet-Azure-machines. In de volgende secties ziet u hoe u rechtstreeks met de computers kunt werken, ongeacht of het nu virtuele machines van Azure of niet-Azure is.
 
@@ -163,7 +158,7 @@ Taken en taken die na uitvoering worden uitgevoerd in de Azure-context en die ge
 
 Een bovenliggend runbook wordt uitgevoerd in de Azure-context om te communiceren met niet-Azure-machines. Met dit runbook wordt een onderliggend runbook aangeroepen met de cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) . U moet de `RunOn` para meter opgeven en de naam opgeven van de Hybrid Runbook worker waarmee het script moet worden uitgevoerd. Zie het runbook-voor beeld [updatebeheer: script lokaal uitvoeren](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
-## <a name="aborting-patch-deployment"></a>Patch implementatie afbreken
+## <a name="abort-patch-deployment"></a>Patch implementatie afbreken
 
 Als uw pre-script een fout retourneert, wilt u uw implementatie mogelijk afbreken. Hiervoor moet u een fout in het script [genereren](/powershell/module/microsoft.powershell.core/about/about_throw) voor eventuele logica die een fout zou vormen.
 
@@ -192,7 +187,7 @@ U kunt ook zoeken naar de naam van het script, zoals wordt weer gegeven in de vo
 > [!IMPORTANT]
 > Nadat u de runbooks hebt geïmporteerd, moet u deze publiceren voordat ze kunnen worden gebruikt. Hiertoe gaat u naar het runbook in uw Automation-account, selecteert u **bewerken**en selecteert u vervolgens **publiceren**.
 
-De voor beelden zijn gebaseerd op de basis sjabloon die in het volgende voor beeld is gedefinieerd. Deze sjabloon kan worden gebruikt om uw eigen runbook te maken voor gebruik met pre-scripts en post scripts. De benodigde logica voor verificatie met Azure en het verwerken `SoftwareUpdateConfigurationRunContext` van de para meter is opgenomen.
+De voor beelden zijn gebaseerd op de basis sjabloon die in het volgende voor beeld is gedefinieerd. Deze sjabloon kan worden gebruikt om uw eigen runbook te maken voor gebruik met pre-scripts en post scripts. De benodigde logica voor verificatie met Azure en het verwerken van de `SoftwareUpdateConfigurationRunContext` para meter is opgenomen.
 
 ```powershell
 <#
@@ -246,11 +241,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Voor niet-grafische power shell- `Add-AzAccount` runbooks `Add-AzureRMAccount` en aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de volgende zelf studie voor meer informatie over het beheren van updates voor uw virtuele Windows-machines:
-
-> [!div class="nextstepaction"]
-> [Updates en patches voor uw Windows Azure-VM's beheren](automation-tutorial-update-management.md)
+* [Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)

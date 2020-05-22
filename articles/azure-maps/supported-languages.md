@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334073"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746009"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Naam                   |  Kaarten | Search | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Name                   |  Maps | Search | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -142,12 +142,12 @@ Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor
 >    * Azure Maps Web-SDK
 >    * Azure Maps Android-SDK
 
-De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers. Stel vervolgens de **weer gave** -para meter op de juiste manier in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
+De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers. Stel vervolgens de **weer gave** -para meter op de juiste manier in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land/de regio waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Beschrijving                            |  Kaarten | Search | JS-Map Control |
+| Weergave         | Beschrijving                            |  Maps | Search | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |

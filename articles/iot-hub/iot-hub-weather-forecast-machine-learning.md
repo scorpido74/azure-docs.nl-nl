@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5551655843b8d3ed5b6d70f5d6ed3a0eb4d0e92f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122188"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746961"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Weers pellen met behulp van de sensor gegevens van uw IoT-hub in Azure Machine Learning
 
@@ -102,7 +102,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
    ![Voer het experiment uit om de stappen te valideren](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. Klik op **Web Service** > **Predictive webservice**instellen. Het diagram voor het voorspellende experiment wordt geopend.
+1. Klik op **Web Service**  >  **Predictive webservice**instellen. Het diagram voor het voorspellende experiment wordt geopend.
 
    ![Het weers voorspelling model in Azure Machine Learning Studio (klassiek) implementeren](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -142,7 +142,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
    ![Een Stream Analytics-taak maken in azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Klik op **maken**.
+1. Klik op **Maken**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
@@ -158,7 +158,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
    ![Een invoer toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Klik op **maken**.
+1. Klik op **Maken**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Een uitvoer aan de Stream Analytics-taak toevoegen
 
@@ -177,14 +177,14 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
    ![Een uitvoer toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Klik op **maken**.
+1. Klik op **Maken**.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Een functie toevoegen aan de Stream Analytics-taak om de door u geïmplementeerde webservice aan te roepen
 
-1. Klik onder **taak topologie**op **functies** > **toevoegen**.
+1. Klik onder **taak topologie**op **functies**  >  **toevoegen**.
 1. Voer de volgende informatie in:
 
-   **Functie alias**: Enter `machinelearning`.
+   **Functie alias**: Enter `machinelearning` .
 
    **Functie type**: Selecteer **Azure ml**.
 
@@ -196,7 +196,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
    ![Een functie toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Klik op **maken**.
+1. Klik op **Maken**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>De query van de Stream Analytics-taak configureren
 
@@ -207,7 +207,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[Scored Probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```
@@ -220,7 +220,7 @@ In deze sectie valideert u het model, stelt u een voorspellende webservice in op
 
 ### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
-**Klik in** > de taak stream Analytics**op Start****nu** > starten. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
+**Klik in**de taak stream Analytics op Start  >  **nu**starten  >  **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
 ![Voer de Stream Analytics-taak uit](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 

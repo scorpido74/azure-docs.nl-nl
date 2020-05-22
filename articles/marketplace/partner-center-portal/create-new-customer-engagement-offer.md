@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7de57c9a69e60e8c342e067ff1e95a0f2cfadec8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f975abcd05b92dd57eb736f076b63c88b4bf6769
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699321"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747261"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -258,9 +258,14 @@ Geef de URL op voor de configuratie webpagina waarmee de klant uw app kan config
 
 ### <a name="crm-package"></a>CRM-pakket
 
-Voer in het veld **URL van uw pakket locatie** de URL in van een Azure Storage-account dat het geüploade bestand CRM package. zip bevat. Deze URL moet een alleen-lezen SAS-sleutel bevatten zodat micro soft uw pakket voor verificatie kan ophalen.
+Voer in het veld **URL van uw pakket locatie** de URL in van een Azure Blob Storage-account dat het geüploade bestand CRM package. zip bevat. Neem een alleen-lezen SAS-sleutel op in de URL, zodat micro soft uw pakket voor verificatie kan ophalen.
 
-Schakel het selectie vakje in als dit van toepassing **is op meer dan één CRM-pakket in het pakket bestand**. Als dat het geval is, moet u alle pakketten in uw zip-bestand toevoegen.
+> [!IMPORTANT]
+> Als u een publicatie blok wilt voor komen, moet u ervoor zorgen dat de verval datum in de URL van de Blob-opslag nog niet is verlopen. U kunt de datum wijzigen door toegang tot uw beleid te krijgen. We raden u aan de **verloop tijd** ten minste één maand in de toekomst te hebben.
+
+Selecteer het vak met het label **Er is meer dan één CRM-pakket in het pakket bestand**, indien van toepassing. Als dat het geval is, moet u alle pakketten in uw zip-bestand toevoegen.
+
+Zie [stap 3: een AppSource-pakket maken voor uw app](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource)voor meer informatie over het bouwen van uw pakket en het bijwerken van de structuur.
 
 ### <a name="crm-package-availability"></a>Beschik baarheid van CRM-pakket
 

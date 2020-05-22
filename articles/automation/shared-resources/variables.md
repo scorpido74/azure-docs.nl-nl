@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713298"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744965"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Variabelen in Azure Automation beheren
 
@@ -194,6 +194,6 @@ De volgende afbeelding toont voorbeeld activiteiten om een variabele met een een
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Modules beheren in Azure Automation](modules.md)
-* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
-* [Overzicht van Azure Automation status configuratie](../automation-dsc-overview.md) 
+* Zie [modules beheren in azure Automation](modules.md)voor meer informatie over de cmdlets die worden gebruikt voor toegang tot variabelen.
+* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
+* Zie [Azure Automation status configuratie Overview](../automation-dsc-overview.md)(Engelstalig) voor meer informatie over DSC-configuraties.

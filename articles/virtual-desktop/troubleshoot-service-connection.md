@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612636"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747702"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
 
@@ -42,36 +42,6 @@ Get-AzRoleAssignment -SignInName <userupn>
 Controleer of de gebruiker zich aanmeldt met de juiste referenties.
 
 Als de WebClient wordt gebruikt, controleert u of er geen problemen met de referenties in de cache zijn.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enter prise-virtuele machines voor meerdere sessies reageren niet
-
-Als een virtuele machine niet reageert en u geen toegang via RDP hebt, moet u deze met de diagnostische functie oplossen door de status van de host te controleren.
-
-Voer de volgende cmdlet uit om de status van de host te controleren:
-
-```powershell
-Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
-```
-
-Als de status van de `NoHeartBeat`host is, betekent dit dat de virtuele machine niet reageert en de agent niet kan communiceren met de virtueel-bureaublad service van Windows.
-
-```powershell
-Name            : 0301HP/win10pd-0.contoso.com 
-LastHeartBeat   : 4/8/2020 1:48:35 AM 
-AllowNewSession : True 
-Status          : Available 
-
-Name            : 0301HP/win10pd-1.contoso.com 
-LastHeartBeat   : 4/8/2020 1:45:44 AM 
-AllowNewSession : True 
-Status          : NoHeartBeat
-```
-
-Er zijn enkele dingen die u kunt doen om de status van de HeartBeat te herstellen.
-
-### <a name="update-fslogix"></a>FSLogix bijwerken
-
-Als uw FSLogix niet up-to-date is, met name als het versie 2.9.7205.27375 van frxdrvvt. sys is, kan dit leiden tot een deadlock. Zorg ervoor dat u [FSLogix bijwerkt naar de nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2084562).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857014"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744816"
 ---
-# <a name="payout-summaries"></a>Overzicht van uitbetalingen
+# <a name="payout-summaries"></a>Betalingsoverzichten
 
 In de samen vatting van de uitbetaling ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
@@ -64,7 +64,7 @@ Selecteer de pijl-omlaag aan de rechter kant van de pagina om meer informatie ov
 
 Als u de transactie gegevens op deze pagina wilt exporteren, selecteert u **exporteren** en volgt u de instructies op de pagina gegevens exporteren. Bestanden die zijn geëxporteerd uit de pagina transactie geschiedenis, tonen gegevens in transactie valuta, winst in transactie valuta en Amerikaanse dollars en de betaalde waarde in betalen naar valuta.
 
-## <a name="payment-status"></a>Betalings status
+## <a name="payment-status"></a>Betalingsstatus
 
 | Status verdienen           | Reden                                                                                                                                      | Partner actie vereist?                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
@@ -73,7 +73,7 @@ Als u de transactie gegevens op deze pagina wilt exporteren, selecteert u **expo
 | Factuur met openstaande BTW      | Uw BTW-factuur is onvolledig of ongeldig                                                                                                  | U moet uw BTW-factuur bijwerken voordat u kunt betalen |
 | Afgewezen tijdens beoordeling   | De betaling is afgewezen tijdens de controle                                                                                                     | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
 | Mislukt                   | De betaling is mislukt vanwege een micro soft-systeem fout                                                                                         | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
-| Wordt uitgevoerd              | De betaling wordt uitgevoerd                                                                                                                 | Nee                                                         |
+| Actief              | De betaling wordt uitgevoerd                                                                                                                 | Nee                                                         |
 | Onjuiste betaling        | Het terugkoppelings bedrag wordt uitgevoerd                                                                                                       | Nee                                                         |
 | Verzonden                     | De betaling is verzonden naar uw bank                                                                                                     | Nee                                                         |
 | Verwerkt             | De betaling heeft een micro soft-systeem fout aangetroffen en wordt opnieuw verwerkt                                                                  | Nee                                                         |
@@ -112,7 +112,7 @@ Met deze optie kunt u de betalingen die u in uw bank hebt ontvangen, downloaden 
 | currencyCode             | Betalen naar valuta code                                                                                                                      |
 | paymentMethod            | De methode die wordt gebruikt om de partner te betalen, bijvoorbeeld elektronische bank overschrijving, credit nota                                                     |
 | paymentID                | De unieke id voor de betaling. Dit nummer is doorgaans zichtbaar in uw bank overzicht (alleen van toepassing op SAP-betalingen).              |
-| paymentStatus            | Betalings status                                                                                                                            |
+| paymentStatus            | Betalingsstatus                                                                                                                            |
 | paymentStatusDescription | Beschrijvende beschrijving van de betalings status                                                                                                    |
 | paymentDate              | De datum waarop de betaling is verzonden van micro soft                                                                                                      |
 |||
@@ -125,41 +125,41 @@ Deze optie biedt een down load van elk verdienen regel item dat u ziet op de pag
 
 | Kolomnaam                    | Beschrijving                                                                                                                              | Toepasselijkheid voor prikkels/Store/Azure Marketplace           |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| earningId                      | Unieke id voor elk verdienen                                                                                                       | Alle                                                            |
-| participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            | Alle                                                            |
-| participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          | Alle                                                            |
-| deel nemer                | Naam van de verdienen partner                                                                                                              | Alle                                                            |
-| partnerCountryCode             | Locatie/land van de verdienen partner                                                                                                  | Alle                                                            |
-| programName                    | Naam van het prestatie/archief programma                                                                                                             | Alle                                                            |
-| transactionId                  | De unieke id voor de trans actie                                                                                                    | Alle                                                            |
-| transactionCurrency            | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is geen valuta voor de partner locatie)                                     | Alle                                                            |
-| transactionDate                | De datum van de trans actie. Handig voor Program ma's waarbij veel trans acties bijdragen aan één verdienen                                           | Alle                                                            |
-| transactionExchangeRate        | De wisselkoers datum die wordt gebruikt voor het weer geven van het corresponderende bedrag van de transactie belasting                                                                 | Alle                                                            |
-| transactionAmount              | Transactie bedrag in de oorspronkelijke transactie valuta op basis waarvan het verdienen is gegenereerd                                              | Alle                                                            |
-| transactionAmountUSD           | Transactie bedrag in USD                                                                                                                | Alle                                                            |
-| kern                          | Geeft bedrijfs regel voor het verdienen aan                                                                                                  | Alle                                                            |
-| earningRate                    | Prestatie percentage toegepast op transactie bedrag om een verdienen te genereren                                                                      | Alle                                                            |
-| quantity                       | Is afhankelijk van het programma. Hiermee wordt de gefactureerde hoeveelheid voor transactionele Program ma's aangegeven                                                            | Alle                                                            |
-| quantityType                   | Hiermee wordt het type van de hoeveelheid aangegeven, bijvoorbeeld Gefactureerd aantal, MAU                                                                             | Alle                                                            |
-| earningType                    | Hiermee wordt aangegeven of het om kosten, korting, mede op, verkopen, enzovoort gaat                                                                                          | Alle                                                            |
-| earningAmount                  | Het verdienen van het bedrag in de oorspronkelijke transactie valuta                                                                                      | Alle                                                            |
-| earningAmountUSD               | Verdienen bedrag in USD                                                                                                                    | Alle                                                            |
-| earningDate                    | Datum van het verdienen                                                                                                                      | Alle                                                            |
-| calculationDate                | De datum waarop het verdienen is berekend in het systeem                                                                                            | Alle                                                            |
-| earningExchangeRate            | De wissel koers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven                                                                                  | Alle                                                            |
-| exchangeRateDate               | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD                                                                                   | Alle                                                            |
-| paymentAmountWOTax             | Betaalde hoeveelheid (zonder BTW) voor de factuur voor ' verzonden ' betalingen                                                                 | Alle                                                            |
-| paymentCurrency                | Betalen voor de valuta die wordt gekozen door de partner in het betalings profiel. Alleen weer gegeven voor verzonden betalingen                                                   | Alle                                                            |
-| paymentExchangeRate            | De wissel koers die wordt gebruikt om paymentAmountWOTax in de betalings valuta te berekenen met behulp van ExchangeRateDate                                            | Alle                                                            |
+| earningId                      | Unieke id voor elk verdienen                                                                                                       | Alles                                                            |
+| participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            | Alles                                                            |
+| participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          | Alles                                                            |
+| deel nemer                | Naam van de verdienen partner                                                                                                              | Alles                                                            |
+| partnerCountryCode             | Locatie/land/regio van de verdienen partner                                                                                                  | Alles                                                            |
+| programName                    | Naam van het prestatie/archief programma                                                                                                             | Alles                                                            |
+| transactionId                  | De unieke id voor de trans actie                                                                                                    | Alles                                                            |
+| transactionCurrency            | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is geen valuta voor de partner locatie)                                     | Alles                                                            |
+| transactionDate                | De datum van de trans actie. Handig voor Program ma's waarbij veel trans acties bijdragen aan één verdienen                                           | Alles                                                            |
+| transactionExchangeRate        | De wisselkoers datum die wordt gebruikt voor het weer geven van het corresponderende bedrag van de transactie belasting                                                                 | Alles                                                            |
+| transactionAmount              | Transactie bedrag in de oorspronkelijke transactie valuta op basis waarvan het verdienen is gegenereerd                                              | Alles                                                            |
+| transactionAmountUSD           | Transactie bedrag in USD                                                                                                                | Alles                                                            |
+| kern                          | Geeft bedrijfs regel voor het verdienen aan                                                                                                  | Alles                                                            |
+| earningRate                    | Prestatie percentage toegepast op transactie bedrag om een verdienen te genereren                                                                      | Alles                                                            |
+| quantity                       | Is afhankelijk van het programma. Hiermee wordt de gefactureerde hoeveelheid voor transactionele Program ma's aangegeven                                                            | Alles                                                            |
+| quantityType                   | Hiermee wordt het type van de hoeveelheid aangegeven, bijvoorbeeld Gefactureerd aantal, MAU                                                                             | Alles                                                            |
+| earningType                    | Hiermee wordt aangegeven of het om kosten, korting, mede op, verkopen, enzovoort gaat                                                                                          | Alles                                                            |
+| earningAmount                  | Het verdienen van het bedrag in de oorspronkelijke transactie valuta                                                                                      | Alles                                                            |
+| earningAmountUSD               | Verdienen bedrag in USD                                                                                                                    | Alles                                                            |
+| earningDate                    | Datum van het verdienen                                                                                                                      | Alles                                                            |
+| calculationDate                | De datum waarop het verdienen is berekend in het systeem                                                                                            | Alles                                                            |
+| earningExchangeRate            | De wissel koers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven                                                                                  | Alles                                                            |
+| exchangeRateDate               | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD                                                                                   | Alles                                                            |
+| paymentAmountWOTax             | Betaalde hoeveelheid (zonder BTW) voor de factuur voor ' verzonden ' betalingen                                                                 | Alles                                                            |
+| paymentCurrency                | Betalen voor de valuta die wordt gekozen door de partner in het betalings profiel. Alleen weer gegeven voor verzonden betalingen                                                   | Alles                                                            |
+| paymentExchangeRate            | De wissel koers die wordt gebruikt om paymentAmountWOTax in de betalings valuta te berekenen met behulp van ExchangeRateDate                                            | Alles                                                            |
 | claimId                        | Unieke id voor claim                                                                                                              | Prikkel-sommige Program ma's alleen                                |
 | planId                         | Unieke id voor plan                                                                                                               | Prikkel-sommige Program ma's alleen                                |
 | paymentId                      | De unieke id voor de betaling. Dit nummer is doorgaans zichtbaar in uw bank afschrift                                                 | Alleen SAP-betalingen                                              |
-| paymentStatus                  | Betalings status                                                                                                                           | Alle                                                            |
-| paymentStatusDescription       | Beschrijvende beschrijving van de betalings status                                                                                                   | Alle                                                            |
+| paymentStatus                  | Betalingsstatus                                                                                                                           | Alles                                                            |
+| paymentStatusDescription       | Beschrijvende beschrijving van de betalings status                                                                                                   | Alles                                                            |
 | customerId                     | Is altijd leeg                                                                                                                     | Alleen prikkel programma's (uitzonde ring: OEM) en Azure Marketplace |
 | customerName                   | Is altijd leeg                                                                                                                     | Alleen prikkel programma's (uitzonde ring: OEM) en Azure Marketplace |
 | partNumber                     | Is altijd leeg                                                                                                                     | Sommige stimulerings-en Store-Program ma's en Azure Marketplace        |
-| Product                    | Product naam gekoppeld aan trans actie                                                                                                       | Alle                                                            |
+| Product                    | Product naam gekoppeld aan trans actie                                                                                                       | Alles                                                            |
 | productId                      | Unieke product-id                                                                                                                | Store en Azure Marketplace                                    |
 | parentProductId                | Unieke id van het bovenliggende product. Als er geen bovenliggend product voor de trans actie is, dan is de product-id van de bovenliggende product-id. | Store en Azure Marketplace                                    |
 | parentProductName              | De naam van het bovenliggende product. Als er geen bovenliggend product voor de trans actie is, dan is de naam van het bovenliggende product = product naam.   | Store en Azure Marketplace                                    |
@@ -183,7 +183,7 @@ Deze optie biedt een down load van elk verdienen regel item dat u ziet op de pag
 | storeFee                       | Het bedrag dat door micro soft wordt bewaard als een vergoeding voor het maken van de app of invoeg toepassing die beschikbaar is in de Store                                           | Alleen opslaan                                                     |
 | transactionPaymentMethod       | Het betalings instrument van de klant dat wordt gebruikt voor de trans actie, zoals kaart, facturering van mobiele provider of PayPal                                | Store en Azure Marketplace                                    |
 | tpan                           | Hiermee wordt het AD-netwerk van derden aangegeven                                                                                                     | Alleen Store-Ads                                               |
-| customerCountry                | Klant land                                                                                                                         | Store en Azure Marketplace                                    |
+| customerCountry                | Land/regio van klant                                                                                                                         | Store en Azure Marketplace                                    |
 | customerCity                   | Klant plaats                                                                                                                            | Store en Azure Marketplace                                    |
 | customerState                  | Klant status                                                                                                                           | Store en Azure Marketplace                                    |
 | customerZip                    | Post code van de klant                                                                                                                 | Store en Azure Marketplace                                    |
@@ -234,7 +234,7 @@ De transactie geschiedenis van vóór juli 1 2019 wordt afzonderlijk afgehandeld
 | Inge houden belastingen          | Inge houden inkomsten belasting (gerekend in **gereserveerde** CSV-bestand)                                                                                                |
 | Betaling                 | De app verloopt over minder toepasselijke inhoudingen voor inkomsten belasting (bedrag weer gegeven in transactie valuta). Niet opgenomen in het **gereserveerde** CSV-bestand.                               |
 | FX-tarieven                 | Wissel koers die wordt gebruikt om transactie valuta om te zetten in de betalings valuta                                                                                         |
-| Betalings valuta        | De valuta waarin uw betaling is gedaan                                                                                                                                       |
+| Betalingsvaluta        | De valuta waarin uw betaling is gedaan                                                                                                                                       |
 | Omgezette betaling       | Bedrag van betaling dat is omgezet in de betalings valuta met het FX-percentage                                                                                                         |
 | Model voor belasting remise         | Partij verantwoordelijk voor het remitteren van belastingen (verkoop, gebruik of btw/GST-belastingen)                                                                                                   |
 | Datum en tijd van geschiktheid   | De datum en tijd waarop trans actie-opbrengsten in aanmerking komen voor uitbetaling (UTC). Wanneer er een uitbetaling wordt gemaakt, omvat deze trans actie-opbrengst met een datum/tijd van de geschiktheid vóór de aanmaak datum van de betaling (alleen opgenomen in het **gereserveerde** CSV-bestand). |
@@ -243,4 +243,4 @@ De transactie geschiedenis van vóór juli 1 2019 wordt afzonderlijk afgehandeld
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Details van uitbetalings beleid](./payout-policy-details.md)
+- [Details van betaalbeleid](./payout-policy-details.md)

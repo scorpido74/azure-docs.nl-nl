@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80c69ec38a364238eb03e786c23cc927d6181062
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684318"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746905"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -39,13 +39,6 @@ Nadat de resource provider een succes code heeft geretourneerd, wordt **AuditIfN
 
 Er is momenteel geen volg orde voor de evaluatie van de **EnforceOPAConstraint** -of **EnforceRegoPolicy** -effecten.
 
-## <a name="disabled"></a>Uitgeschakeld
-
-Dit effect is handig voor het testen van situaties of voor wanneer de beleids definitie van invloed is op de para meter. Deze flexibiliteit maakt het mogelijk een enkele toewijzing uit te scha kelen in plaats van alle toewijzingen van dat beleid uit te scha kelen.
-
-Een alternatief voor het uitgeschakelde effect is **enforcementMode** die is ingesteld op de beleids toewijzing.
-Wanneer **enforcementMode** is _uitgeschakeld_, worden er nog steeds resources geëvalueerd. Logboek registratie, zoals activiteiten logboeken, en het beleids effect vindt niet plaats. Zie [beleids toewijzing-afdwingings modus](./assignment-structure.md#enforcement-mode)voor meer informatie.
-
 ## <a name="append"></a>Toevoegen
 
 Append wordt gebruikt om extra velden toe te voegen aan de aangevraagde resource tijdens het maken of bijwerken. Een voor beeld hiervan is het opgeven van toegestane IP-adressen voor een opslag resource.
@@ -55,7 +48,7 @@ Append wordt gebruikt om extra velden toe te voegen aan de aangevraagde resource
 
 ### <a name="append-evaluation"></a>Evaluatie toevoegen
 
-Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[ \* ]** -versie van de alias.
+Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Gebruik de **\[\*\]** versie van de alias om een nieuwe waarde toe te voegen aan een bestaande matrix.
 
 Wanneer een beleids definitie die gebruikmaakt van het toevoeg effect wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
 
@@ -65,7 +58,7 @@ Een toevoeg effect heeft alleen een **detail** matrix, wat vereist is. Omdat **D
 
 ### <a name="append-examples"></a>Voor beelden toevoegen
 
-Voor beeld 1: een combi natie van één **veld/waarde** met een niet-**[ \* ]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet-**[ \* ]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
+Voor beeld 1: een combi natie van één **veld/waarde** met een niet- **\[\*\]** [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet- **\[\*\]** alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
 
 ```json
 "then": {
@@ -80,7 +73,7 @@ Voor beeld 1: een combi natie van één **veld/waarde** met een niet-**[ \* ]** 
 }
 ```
 
-Voor beeld 2: een combi natie van één **veld/waarde** met een **[ \* ]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **[ \* ]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
+Voor beeld 2: een combi natie van één **veld/waarde** met een **\[\*\]** [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Met behulp van de **\[\*\]** alias voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
 
 ```json
 "then": {
@@ -92,6 +85,346 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **[ \* ]** - [al
             "action": "Allow"
         }
     }]
+}
+```
+
+
+
+
+## <a name="audit"></a>Controleren
+
+Controle wordt gebruikt om een waarschuwings gebeurtenis in het activiteiten logboek te maken bij het evalueren van een niet-compatibele resource, maar de aanvraag wordt niet gestopt.
+
+### <a name="audit-evaluation"></a>Controle-evaluatie
+
+Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Azure Policy verzendt vervolgens de resource naar de resource provider. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
+
+### <a name="audit-properties"></a>Controle-eigenschappen
+
+Het controle-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+
+### <a name="audit-example"></a>Controle voorbeeld
+
+Voor beeld: het controle-effect gebruiken.
+
+```json
+"then": {
+    "effect": "audit"
+}
+```
+
+## <a name="auditifnotexists"></a>AuditIfNotExists
+
+Met AuditIfNotExists kunt **u** controleren op resources die overeenkomen met de **if** -voor waarde, maar waarvoor geen onderdelen zijn opgegeven in de **Details** van de voor waarde.
+
+### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
+
+AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
+
+### <a name="auditifnotexists-properties"></a>AuditIfNotExists-eigenschappen
+
+De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd.
+
+- **Type** [vereist]
+  - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
+  - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
+- **Naam** (optioneel)
+  - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` . In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
+- **ResourceGroupName** (optioneel)
+  - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
+  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
+  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
+- **ExistenceScope** (optioneel)
+  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Hiermee stelt u het bereik van waar de gerelateerde resource moet worden opgehaald om overeen te komen met.
+  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
+  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
+  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
+  - De standaard waarde is _ResourceGroup_.
+- **ExistenceCondition** (optioneel)
+  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de controle niet geactiveerd.
+  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
+  - Als een overeenkomende gerelateerde resource wordt geëvalueerd als waar, wordt het effect ervan afgehandeld en wordt de controle niet geactiveerd.
+  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
+  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
+
+### <a name="auditifnotexists-example"></a>AuditIfNotExists-voor beeld
+
+Voor beeld: Hiermee wordt Virtual Machines geëvalueerd om te bepalen of de uitbrei ding van de uitschakeling van de anti-malware bestaat en wordt gecontroleerd
+
+```json
+{
+    "if": {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachines"
+    },
+    "then": {
+        "effect": "auditIfNotExists",
+        "details": {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "existenceCondition": {
+                "allOf": [{
+                        "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+                        "equals": "Microsoft.Azure.Security"
+                    },
+                    {
+                        "field": "Microsoft.Compute/virtualMachines/extensions/type",
+                        "equals": "IaaSAntimalware"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+## <a name="deny"></a>Weigeren
+
+Weigeren wordt gebruikt om te voor komen dat een resource aanvraag die voldoet aan gedefinieerde normen via een beleids definitie, de aanvraag mislukt.
+
+### <a name="deny-evaluation"></a>Evaluatie weigeren
+
+Wanneer u een overeenkomende resource maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)` . In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen.
+
+Tijdens de evaluatie van bestaande resources zijn bronnen die overeenkomen met een beleids definitie voor weigeren als niet-compatibel gemarkeerd.
+
+### <a name="deny-properties"></a>Eigenschappen weigeren
+
+Het deny-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+
+### <a name="deny-example"></a>Voor beeld weigeren
+
+Voor beeld: het weigeren van het effect.
+
+```json
+"then": {
+    "effect": "deny"
+}
+```
+
+
+## <a name="deployifnotexists"></a>DeployIfNotExists
+
+Net als bij AuditIfNotExists voert een DeployIfNotExists-beleids definitie een sjabloon implementatie uit wanneer aan de voor waarde wordt voldaan.
+
+> [!NOTE]
+> [Geneste sjablonen](../../../azure-resource-manager/templates/linked-templates.md#nested-template) worden ondersteund met **deployIfNotExists**, maar [gekoppelde sjablonen](../../../azure-resource-manager/templates/linked-templates.md#linked-template) worden momenteel niet ondersteund.
+
+### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists-evaluatie
+
+DeployIfNotExists wordt ongeveer 15 minuten uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft afgehandeld en een status code voor geslaagd heeft geretourneerd. Een sjabloon implementatie treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd.
+De duur van de implementatie is afhankelijk van de complexiteit van de resources die in de sjabloon zijn opgenomen.
+
+Tijdens een evaluatie cyclus worden beleids definities met een DeployIfNotExists-effect dat overeenkomt met resources, gemarkeerd als niet-compatibel, maar wordt er geen actie ondernomen voor die bron. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md).
+
+### <a name="deployifnotexists-properties"></a>DeployIfNotExists-eigenschappen
+
+De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd en de sjabloon implementatie moet worden uitgevoerd.
+
+- **Type** [vereist]
+  - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
+  - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
+- **Naam** (optioneel)
+  - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` .
+- **ResourceGroupName** (optioneel)
+  - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
+  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
+  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
+  - Als er een sjabloon implementatie wordt uitgevoerd, wordt deze geïmplementeerd in de resource groep van deze waarde.
+- **ExistenceScope** (optioneel)
+  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Hiermee stelt u het bereik van waar de gerelateerde resource moet worden opgehaald om overeen te komen met.
+  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
+  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
+  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
+  - De standaard waarde is _ResourceGroup_.
+- **ExistenceCondition** (optioneel)
+  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de implementatie niet geactiveerd.
+  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
+  - Als een overeenkomende gerelateerde resource wordt geëvalueerd als waar, wordt het effect voldaan en wordt de implementatie niet geactiveerd.
+  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
+  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
+- **roleDefinitionIds** [vereist]
+  - Deze eigenschap moet een matrix van teken reeksen bevatten die overeenkomen met de op rollen gebaseerde toegangs beheer functie-ID die toegankelijk is voor het abonnement. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
+- **DeploymentScope** (optioneel)
+  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
+  - Hiermee stelt u het type implementatie in dat moet worden geactiveerd. Met het _abonnement_ wordt een [implementatie op abonnements niveau](../../../azure-resource-manager/templates/deploy-to-subscription.md)aangegeven. _ResourceGroup_ wijst op een implementatie naar een resource groep.
+  - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
+  - De standaard waarde is _ResourceGroup_.
+- **Implementatie** [vereist]
+  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` put-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
+
+  > [!NOTE]
+  > Alle functies in de **implementatie** -eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet het beleid. De uitzonde ring is de eigenschap **para meters** waarmee waarden van het beleid worden door gegeven aan de sjabloon. De **waarde** in deze sectie onder een sjabloon parameter naam wordt gebruikt om deze waarde door te geven (Zie _FullDbName_ in het DeployIfNotExists-voor beeld).
+
+### <a name="deployifnotexists-example"></a>DeployIfNotExists-voor beeld
+
+Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of transparentDataEncryption is ingeschakeld. Als dat niet het geval is, wordt er een implementatie uitgevoerd om in te scha kelen.
+
+```json
+"if": {
+    "field": "type",
+    "equals": "Microsoft.Sql/servers/databases"
+},
+"then": {
+    "effect": "DeployIfNotExists",
+    "details": {
+        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+        "name": "current",
+        "roleDefinitionIds": [
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+        ],
+        "existenceCondition": {
+            "field": "Microsoft.Sql/transparentDataEncryption.status",
+            "equals": "Enabled"
+        },
+        "deployment": {
+            "properties": {
+                "mode": "incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "fullDbName": {
+                            "type": "string"
+                        }
+                    },
+                    "resources": [{
+                        "name": "[concat(parameters('fullDbName'), '/current')]",
+                        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+                        "apiVersion": "2014-04-01",
+                        "properties": {
+                            "status": "Enabled"
+                        }
+                    }]
+                },
+                "parameters": {
+                    "fullDbName": {
+                        "value": "[field('fullName')]"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+## <a name="disabled"></a>Uitgeschakeld
+
+Dit effect is handig voor het testen van situaties of voor wanneer de beleids definitie van invloed is op de para meter. Deze flexibiliteit maakt het mogelijk een enkele toewijzing uit te scha kelen in plaats van alle toewijzingen van dat beleid uit te scha kelen.
+
+Een alternatief voor het uitgeschakelde effect is * * enforcementMode, dat is ingesteld op de beleids toewijzing.
+Wanneer **enforcementMode** is _uitgeschakeld_, worden er nog steeds resources geëvalueerd. Logboek registratie, zoals activiteiten logboeken, en het beleids effect vindt niet plaats. Zie [beleids toewijzing-afdwingings modus](./assignment-structure.md#enforcement-mode)voor meer informatie.
+
+
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
+
+Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.Kubernetes.Data` . Het wordt gebruikt voor het door geven van Gate Keeping-regels voor toegangs beheer die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) voor Kubernetes-clusters in Azure.
+
+> [!NOTE]
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
+
+De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
+Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint-eigenschappen
+
+De eigenschap **Details** van het effect EnforceOPAConstraint heeft de subeigenschappen waarmee de gate keeper v3 Admission Control-regel wordt beschreven.
+
+- **constraintTemplate** [vereist]
+  - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
+- **beperking** [vereist]
+  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In het onderstaande voor beeld zijn deze waarden `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}` .
+- **waarden** [Optioneel]
+  - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
+
+### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-voor beeld
+
+Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limieten voor container-CPU en geheugen bronnen in Kubernetes.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.ContainerService.Data` . Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan het bijgewerkte [EnforceOPAConstraint](#enforceopaconstraint) -effect.
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
+
+De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
+Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-eigenschappen
+
+De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenschappen waarmee de gate keeper v2 Admission Control-regel wordt beschreven.
+
+- **policyId** [vereist]
+  - Een unieke naam die als een para meter wordt door gegeven aan de Rego Admission Control-regel.
+- **beleid** [vereist]
+  - Hiermee geeft u de URI op van de Rego Admission Control-regel.
+- **policyParameters** [Optioneel]
+  - Hiermee worden alle para meters en waarden gedefinieerd die moeten worden door gegeven aan het Rego-beleid.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy-voor beeld
+
+Voor beeld: gate keeper v2 Admission Control regel om alleen de opgegeven container installatie kopieën in AKS toe te staan.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
+        }
+    }
 }
 ```
 
@@ -210,333 +543,7 @@ Voor beeld 2: de `env` tag verwijderen en de `environment` tag toevoegen of best
 }
 ```
 
-## <a name="deny"></a>Weigeren
 
-Weigeren wordt gebruikt om te voor komen dat een resource aanvraag die voldoet aan gedefinieerde normen via een beleids definitie, de aanvraag mislukt.
-
-### <a name="deny-evaluation"></a>Evaluatie weigeren
-
-Wanneer u een overeenkomende resource maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)` . In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen.
-
-Tijdens de evaluatie van bestaande resources zijn bronnen die overeenkomen met een beleids definitie voor weigeren als niet-compatibel gemarkeerd.
-
-### <a name="deny-properties"></a>Eigenschappen weigeren
-
-Het deny-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
-
-### <a name="deny-example"></a>Voor beeld weigeren
-
-Voor beeld: het weigeren van het effect.
-
-```json
-"then": {
-    "effect": "deny"
-}
-```
-
-## <a name="audit"></a>Controleren
-
-Controle wordt gebruikt om een waarschuwings gebeurtenis in het activiteiten logboek te maken bij het evalueren van een niet-compatibele resource, maar de aanvraag wordt niet gestopt.
-
-### <a name="audit-evaluation"></a>Controle-evaluatie
-
-Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Azure Policy verzendt vervolgens de resource naar de resource provider. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
-
-### <a name="audit-properties"></a>Controle-eigenschappen
-
-Het controle-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
-
-### <a name="audit-example"></a>Controle voorbeeld
-
-Voor beeld: het controle-effect gebruiken.
-
-```json
-"then": {
-    "effect": "audit"
-}
-```
-
-## <a name="auditifnotexists"></a>AuditIfNotExists
-
-Met AuditIfNotExists kunt **u** controleren op resources die overeenkomen met de **if** -voor waarde, maar waarvoor geen onderdelen zijn opgegeven in de **Details** van de voor waarde.
-
-### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
-
-AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
-
-### <a name="auditifnotexists-properties"></a>AuditIfNotExists-eigenschappen
-
-De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd.
-
-- **Type** [vereist]
-  - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
-  - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
-- **Naam** (optioneel)
-  - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` . In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
-- **ResourceGroupName** (optioneel)
-  - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
-- **ExistenceScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
-  - Hiermee stelt u het bereik van waar de gerelateerde resource moet worden opgehaald om overeen te komen met.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
-  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
-  - De standaard waarde is _ResourceGroup_.
-- **ExistenceCondition** (optioneel)
-  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de controle niet geactiveerd.
-  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
-  - Als een overeenkomende gerelateerde resource wordt geëvalueerd als waar, wordt het effect ervan afgehandeld en wordt de controle niet geactiveerd.
-  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
-  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
-
-### <a name="auditifnotexists-example"></a>AuditIfNotExists-voor beeld
-
-Voor beeld: Hiermee wordt Virtual Machines geëvalueerd om te bepalen of de uitbrei ding van de uitschakeling van de anti-malware bestaat en wordt gecontroleerd
-
-```json
-{
-    "if": {
-        "field": "type",
-        "equals": "Microsoft.Compute/virtualMachines"
-    },
-    "then": {
-        "effect": "auditIfNotExists",
-        "details": {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "existenceCondition": {
-                "allOf": [{
-                        "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
-                        "equals": "Microsoft.Azure.Security"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/extensions/type",
-                        "equals": "IaaSAntimalware"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-## <a name="deployifnotexists"></a>DeployIfNotExists
-
-Net als bij AuditIfNotExists voert een DeployIfNotExists-beleids definitie een sjabloon implementatie uit wanneer aan de voor waarde wordt voldaan.
-
-> [!NOTE]
-> [Geneste sjablonen](../../../azure-resource-manager/templates/linked-templates.md#nested-template) worden ondersteund met **deployIfNotExists**, maar [gekoppelde sjablonen](../../../azure-resource-manager/templates/linked-templates.md#linked-template) worden momenteel niet ondersteund.
-
-### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists-evaluatie
-
-DeployIfNotExists wordt ongeveer 15 minuten uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft afgehandeld en een status code voor geslaagd heeft geretourneerd. Een sjabloon implementatie treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd.
-De duur van de implementatie is afhankelijk van de complexiteit van de resources die in de sjabloon zijn opgenomen.
-
-Tijdens een evaluatie cyclus worden beleids definities met een DeployIfNotExists-effect dat overeenkomt met resources, gemarkeerd als niet-compatibel, maar wordt er geen actie ondernomen voor die bron. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md).
-
-### <a name="deployifnotexists-properties"></a>DeployIfNotExists-eigenschappen
-
-De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd en de sjabloon implementatie moet worden uitgevoerd.
-
-- **Type** [vereist]
-  - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
-  - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
-- **Naam** (optioneel)
-  - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet dit zijn `[field('name')]` .
-- **ResourceGroupName** (optioneel)
-  - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - De standaard waarde is de resource groep voor de **indienings** voorwaarde resource.
-  - Als er een sjabloon implementatie wordt uitgevoerd, wordt deze geïmplementeerd in de resource groep van deze waarde.
-- **ExistenceScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
-  - Hiermee stelt u het bereik van waar de gerelateerde resource moet worden opgehaald om overeen te komen met.
-  - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
-  - Voor _ResourceGroup_zou de resource groep van de **if** -voor waarde worden beperkt of de resource groep die is opgegeven in **ResourceGroupName**.
-  - Voor het _abonnement_voert u een query uit op het hele abonnement voor de gerelateerde resource.
-  - De standaard waarde is _ResourceGroup_.
-- **ExistenceCondition** (optioneel)
-  - Als u niets opgeeft, wordt een gerelateerde bron van het **type** voldoet aan het effect en wordt de implementatie niet geactiveerd.
-  - Maakt gebruik van dezelfde taal als de beleids regel voor de **if** -voor waarde, maar wordt voor elke gerelateerde resource afzonderlijk geëvalueerd.
-  - Als een overeenkomende gerelateerde resource wordt geëvalueerd als waar, wordt het effect voldaan en wordt de implementatie niet geactiveerd.
-  - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
-  - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
-- **roleDefinitionIds** [vereist]
-  - Deze eigenschap moet een matrix van teken reeksen bevatten die overeenkomen met de op rollen gebaseerde toegangs beheer functie-ID die toegankelijk is voor het abonnement. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
-- **DeploymentScope** (optioneel)
-  - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
-  - Hiermee stelt u het type implementatie in dat moet worden geactiveerd. Met het _abonnement_ wordt een [implementatie op abonnements niveau](../../../azure-resource-manager/templates/deploy-to-subscription.md)aangegeven. _ResourceGroup_ wijst op een implementatie naar een resource groep.
-  - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
-  - De standaard waarde is _ResourceGroup_.
-- **Implementatie** [vereist]
-  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` put-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
-
-  > [!NOTE]
-  > Alle functies in de **implementatie** -eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet het beleid. De uitzonde ring is de eigenschap **para meters** waarmee waarden van het beleid worden door gegeven aan de sjabloon. De **waarde** in deze sectie onder een sjabloon parameter naam wordt gebruikt om deze waarde door te geven (Zie _FullDbName_ in het DeployIfNotExists-voor beeld).
-
-### <a name="deployifnotexists-example"></a>DeployIfNotExists-voor beeld
-
-Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of transparentDataEncryption is ingeschakeld. Als dat niet het geval is, wordt er een implementatie uitgevoerd om in te scha kelen.
-
-```json
-"if": {
-    "field": "type",
-    "equals": "Microsoft.Sql/servers/databases"
-},
-"then": {
-    "effect": "DeployIfNotExists",
-    "details": {
-        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-        "name": "current",
-        "roleDefinitionIds": [
-            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-            "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-        ],
-        "existenceCondition": {
-            "field": "Microsoft.Sql/transparentDataEncryption.status",
-            "equals": "Enabled"
-        },
-        "deployment": {
-            "properties": {
-                "mode": "incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {
-                        "fullDbName": {
-                            "type": "string"
-                        }
-                    },
-                    "resources": [{
-                        "name": "[concat(parameters('fullDbName'), '/current')]",
-                        "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-                        "apiVersion": "2014-04-01",
-                        "properties": {
-                            "status": "Enabled"
-                        }
-                    }]
-                },
-                "parameters": {
-                    "fullDbName": {
-                        "value": "[field('fullName')]"
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
-
-Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.Kubernetes.Data` . Het wordt gebruikt voor het door geven van Gate Keeping-regels voor toegangs beheer die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) voor Kubernetes-clusters in Azure.
-
-> [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities.
-
-### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
-
-De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
-Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
-
-### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint-eigenschappen
-
-De eigenschap **Details** van het effect EnforceOPAConstraint heeft de subeigenschappen waarmee de gate keeper v3 Admission Control-regel wordt beschreven.
-
-- **constraintTemplate** [vereist]
-  - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
-- **beperking** [vereist]
-  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In het onderstaande voor beeld zou dit zijn `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}` .
-- **waarden** [Optioneel]
-  - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
-
-### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-voor beeld
-
-Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limieten voor container-CPU en geheugen bronnen in Kubernetes.
-
-```json
-"if": {
-    "allOf": [
-        {
-            "field": "type",
-            "in": [
-                "Microsoft.ContainerService/managedClusters",
-                "AKS Engine"
-            ]
-        },
-        {
-            "field": "location",
-            "equals": "westus2"
-        }
-    ]
-},
-"then": {
-    "effect": "enforceOPAConstraint",
-    "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
-        "values": {
-            "cpuLimit": "[parameters('cpuLimit')]",
-            "memoryLimit": "[parameters('memoryLimit')]"
-        }
-    }
-}
-```
-
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
-
-Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.ContainerService.Data` . Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
-
-> [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan het bijgewerkte [EnforceOPAConstraint](#enforceopaconstraint) -effect.
-
-### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
-
-De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
-Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
-
-### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-eigenschappen
-
-De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenschappen waarmee de gate keeper v2 Admission Control-regel wordt beschreven.
-
-- **policyId** [vereist]
-  - Een unieke naam die als een para meter wordt door gegeven aan de Rego Admission Control-regel.
-- **beleid** [vereist]
-  - Hiermee geeft u de URI op van de Rego Admission Control-regel.
-- **policyParameters** [Optioneel]
-  - Hiermee worden alle para meters en waarden gedefinieerd die moeten worden door gegeven aan het Rego-beleid.
-
-### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy-voor beeld
-
-Voor beeld: gate keeper v2 Admission Control regel om alleen de opgegeven container installatie kopieën in AKS toe te staan.
-
-```json
-"if": {
-    "allOf": [
-        {
-            "field": "type",
-            "equals": "Microsoft.ContainerService/managedClusters"
-        },
-        {
-            "field": "location",
-            "equals": "westus2"
-        }
-    ]
-},
-"then": {
-    "effect": "EnforceRegoPolicy",
-    "details": {
-        "policyId": "ContainerAllowedImages",
-        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
-        "policyParameters": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
-        }
-    }
-}
-```
 
 ## <a name="layering-policy-definitions"></a>Beleids definities voor lagen
 

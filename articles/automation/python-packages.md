@@ -1,16 +1,16 @@
 ---
 title: Python 2-pakketten beheren in Azure Automation
-description: In dit artikel wordt beschreven hoe u python 2-pakketten beheert in Azure Automation.
+description: In dit artikel leest u hoe u python 2-pakketten beheert in Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cc709be7a7f0d46d105e73b0a105a3dec8cc793c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508986"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746706"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Python 2-pakketten beheren in Azure Automation
 
@@ -48,10 +48,10 @@ Zodra de pakketten zijn gedownload, kunt u deze importeren in uw Automation-acco
 
  Als u een runbook wilt ophalen, [importeert u python 2-pakketten van pypi in azure Automation account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) uit de galerie in uw Automation-account. Zorg ervoor dat de uitvoerings instellingen zijn ingesteld op **Azure** en start het runbook met de para meters. Het runbook vereist een uitvoeren als-account voor het werken met het Automation-account. Zorg er voor elke para meter voor dat u deze met de switch start, zoals in de volgende lijst en afbeelding wordt weer gegeven:
 
-* -s \<subscriptionId\>
-* -g \<resourceGroup\>
-* -een \<Automation account\>
-* -m \<modulePackage\>
+* -s \< subscriptionId\>
+* -g \< resourceGroup\>
+* -een \< Automation account\>
+* -m \< modulePackage\>
 
 ![Pakket lijst](media/python-packages/import-python-runbook.png)
 
@@ -89,4 +89,4 @@ Als u uw python 2-runbooks offline wilt ontwikkelen en testen, kunt u de module 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [mijn eerste python 2-runbook](automation-first-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.
+[Een Python-runbook maken](learn/automation-tutorial-runbook-textual-python2.md)

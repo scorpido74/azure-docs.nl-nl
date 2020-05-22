@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: eb7f527885d1d49fe09407c3cbce109a098056f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744660"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -340,7 +340,7 @@ Op deze pagina kunt u de markten configureren waarop dit abonnement beschikbaar 
 
 #### <a name="markets-optional"></a>Markten (optioneel)
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Op deze pagina vindt u een zoekvak en optie voor het selecteren van de landen ' BTW geremitteerd ', waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
+Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Deze pagina bevat een zoekvak en een optie voor het selecteren van de landen/regio's waarvoor ' BTW is geremitteerd ', waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
 
 Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. Bekijk de prijs voor elke markt voordat u deze publiceert. Bekijk de prijzen op basis van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 7ae8a21d4ea9216bea13d47ad5ae41f3bc1c2089
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 80efee18ff7cc927ea9029c11aadcf13ad75781a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82630172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747599"
 ---
 # <a name="webhook-event-delivery"></a>Overdracht van gebeurtenis van webhook
 Webhooks zijn een van de vele manieren om gebeurtenissen van Azure Event Grid te ontvangen. Wanneer een nieuwe gebeurtenis gereed is, boekt Event Grid-Service een HTTP-aanvraag naar het geconfigureerde eind punt met de gebeurtenis in de hoofd tekst van de aanvraag.
@@ -31,21 +31,21 @@ Als u een ander type eind punt gebruikt, zoals een op een HTTP-trigger gebaseerd
 
 2. **Asynchrone Handshake**: in bepaalde gevallen kunt u de ValidationCode in antwoord niet synchroon retour neren. Als u bijvoorbeeld gebruikmaakt van een service van derden (zoals [`Zapier`](https://zapier.com) of [IFTTT](https://ifttt.com/)), kunt u niet programmatisch met de validatie code reageren.
 
-   Vanaf versie 2018-05-01-preview ondersteunt Event Grid een hand matige validatie-handshake. Als u een gebeurtenis abonnement met een SDK of een hulp programma maakt die gebruikmaakt van API versie 2018-05-01-preview of hoger, wordt `validationUrl` Event grid een eigenschap verzonden in het gedeelte gegevens van de validatie gebeurtenis voor het abonnement. Als u de handshake wilt volt ooien, gaat u naar die URL in de gebeurtenis gegevens en voert u een GET-aanvraag naar deze. U kunt een REST-client of uw webbrowser gebruiken.
+   Vanaf versie 2018-05-01-preview ondersteunt Event Grid een hand matige validatie-handshake. Als u een gebeurtenis abonnement met een SDK of een hulp programma maakt die gebruikmaakt van API versie 2018-05-01-preview of hoger, wordt Event Grid een `validationUrl` eigenschap verzonden in het gedeelte gegevens van de validatie gebeurtenis voor het abonnement. Als u de handshake wilt volt ooien, gaat u naar die URL in de gebeurtenis gegevens en voert u een GET-aanvraag naar deze. U kunt een REST-client of uw webbrowser gebruiken.
 
-   De beschik bare URL is **5 minuten**geldig. Gedurende die tijd is `AwaitingManualAction`de inrichtings status van het gebeurtenis abonnement. Als u de hand matige validatie niet binnen vijf minuten voltooit, wordt de inrichtings `Failed`status ingesteld op. U moet het gebeurtenis abonnement opnieuw maken voordat u de hand matige validatie start.
+   De beschik bare URL is **5 minuten**geldig. Gedurende die tijd is de inrichtings status van het gebeurtenis abonnement `AwaitingManualAction` . Als u de hand matige validatie niet binnen vijf minuten voltooit, wordt de inrichtings status ingesteld op `Failed` . U moet het gebeurtenis abonnement opnieuw maken voordat u de hand matige validatie start.
 
    Voor dit verificatie mechanisme moet ook het webhook-eind punt een HTTP-status code van 200 retour neren, zodat u weet dat het bericht voor de validatie gebeurtenis is geaccepteerd voordat het in de hand matige validatie modus kan worden geplaatst. Met andere woorden, als het eind punt 200 retourneert, maar niet synchroon een validatie antwoord terugkeert, wordt de modus overgezet naar de hand matige validatie modus. Als er binnen vijf minuten een GET op de validatie-URL is, wordt de validatie-Handshake als geslaagd beschouwd.
 
 > [!NOTE]
-> Het gebruik van zelfondertekende certificaten voor validatie wordt niet ondersteund. Gebruik in plaats daarvan een ondertekend certificaat van een certificerings instantie (CA).
+> Het gebruik van zelfondertekende certificaten voor validatie wordt niet ondersteund. Gebruik in plaats daarvan een ondertekend certificaat van een commerciële certificerings instantie (CA).
 
 ### <a name="validation-details"></a>Validatie Details
 
 - Op het moment dat het maken of bijwerken van het gebeurtenis abonnement wordt gemaakt, Event Grid een validatie gebeurtenis voor het abonnement op het eind punt van het doel.
 - De gebeurtenis bevat een header waarde "AEG-Event-type: SubscriptionValidation".
 - De hoofd tekst van de gebeurtenis heeft hetzelfde schema als andere Event Grid-gebeurtenissen.
-- De eigenschap Event type van de gebeurtenis `Microsoft.EventGrid.SubscriptionValidationEvent`is.
+- De eigenschap Event type van de gebeurtenis is `Microsoft.EventGrid.SubscriptionValidationEvent` .
 - De eigenschap data van de gebeurtenis bevat een `validationCode` eigenschap met een wille keurig gegenereerde teken reeks. Bijvoorbeeld "validationCode: acb13...".
 - De gebeurtenis gegevens bevatten ook een `validationUrl` eigenschap met een URL voor het hand matig valideren van het abonnement.
 - De matrix bevat alleen de validatie gebeurtenis. Andere gebeurtenissen worden verzonden in een afzonderlijke aanvraag nadat u de validatie code hebt teruggestuurd.

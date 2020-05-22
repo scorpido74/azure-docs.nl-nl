@@ -1,16 +1,16 @@
 ---
 title: Uitvoering van runbooks in Azure Automation
-description: Hierin worden de details van het verwerken van een runbook in Azure Automation beschreven.
+description: Dit artikel geeft een overzicht van de verwerking van runbooks in Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994746"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743914"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -29,9 +29,6 @@ In het volgende diagram ziet u de levens cyclus van een runbook-taak voor [Power
 ![Taak statussen-Power shell-werk stroom](./media/automation-runbook-execution/job-statuses.png)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="runbook-execution-environment"></a>Runbook Execution Environment
 
@@ -103,7 +100,7 @@ De logboeken die beschikbaar zijn voor de Log Analytics-agent en het **nxautomat
 * /var/opt/Microsoft/omsagent/run/automationworker/Worker.log-Automation-werk logboek
 
 >[!NOTE]
->De **nxautomation** -gebruiker die als onderdeel van updatebeheer alleen ondertekende runbooks uitvoert.
+>De **nxautomation** -gebruiker die is ingeschakeld als onderdeel van updatebeheer, voert alleen ondertekende runbooks uit.
 
 ## <a name="runbook-permissions"></a>Runbookmachtigingen
 
@@ -157,9 +154,9 @@ In deze sectie worden enkele manieren beschreven voor het afhandelen van uitzond
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
-De variabele [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe Power shell reageert op een niet-afsluit fout. Afsluit fouten worden altijd beëindigd en worden niet beïnvloed door `ErrorActionPreference`.
+De variabele [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe Power shell reageert op een niet-afsluit fout. Afsluit fouten worden altijd beëindigd en worden niet beïnvloed door `ErrorActionPreference` .
 
-Wanneer het runbook wordt `ErrorActionPreference`gebruikt, wordt een normaal niet-afsluit fout, `PathNotFound` zoals van de cmdlet [Get-Child item](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) , het runbook gestopt. In het volgende voor beeld ziet u `ErrorActionPreference`het gebruik van. De laatste opdracht voor [Write-output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) wordt nooit uitgevoerd, omdat het script stopt.
+Wanneer het runbook wordt gebruikt `ErrorActionPreference` , wordt een normaal niet-afsluit fout, zoals `PathNotFound` van de cmdlet [Get-Child item](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) , het runbook gestopt. In het volgende voor beeld ziet u het gebruik van `ErrorActionPreference` . De laatste opdracht voor [Write-output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) wordt nooit uitgevoerd, omdat het script stopt.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -189,7 +186,7 @@ catch
 
 ### <a name="throw"></a>Sprong
 
-[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) kan worden gebruikt om een afsluit fout te genereren. Dit mechanisme kan nuttig zijn bij het definiëren van uw eigen logica in een runbook. Als het script voldoet aan een criterium waardoor het wordt gestopt, kan het `throw` de instructie gebruiken om te stoppen. In het volgende voor beeld wordt deze instructie gebruikt om een vereiste functie parameter weer te geven.
+[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) kan worden gebruikt om een afsluit fout te genereren. Dit mechanisme kan nuttig zijn bij het definiëren van uw eigen logica in een runbook. Als het script voldoet aan een criterium waardoor het wordt gestopt, kan het de `throw` instructie gebruiken om te stoppen. In het volgende voor beeld wordt deze instructie gebruikt om een vereiste functie parameter weer te geven.
 
 ```powershell-interactive
 function Get-ContosoFiles
@@ -205,7 +202,7 @@ Uw runbooks moeten fouten afhandelen. Azure Automation ondersteunt twee typen Po
 
 Bij het beëindigen van fouten wordt de uitvoering van het runbook gestopt wanneer deze zich voordoen. Het runbook stopt met de taak status mislukt.
 
-Met niet-afsluit fouten kan een script worden voortgezet, zelfs nadat het is uitgevoerd. Een voor beeld van een niet-afsluit fout is een van de volgende situaties wanneer een runbook `Get-ChildItem` gebruikmaakt van de cmdlet met een pad dat niet bestaat. Power shell ziet dat het pad niet bestaat, een fout genereert en naar de volgende map gaat. Met de fout in dit geval wordt de status van de runbook-taak niet ingesteld op mislukt en is de taak mogelijk zelfs voltooid. Als u wilt afdwingen dat een runbook stopt bij een niet-afsluit fout, kunt `ErrorAction Stop` u gebruiken op de cmdlet.
+Met niet-afsluit fouten kan een script worden voortgezet, zelfs nadat het is uitgevoerd. Een voor beeld van een niet-afsluit fout is een van de volgende situaties wanneer een runbook gebruikmaakt `Get-ChildItem` van de cmdlet met een pad dat niet bestaat. Power shell ziet dat het pad niet bestaat, een fout genereert en naar de volgende map gaat. Met de fout in dit geval wordt de status van de runbook-taak niet ingesteld op mislukt en is de taak mogelijk zelfs voltooid. Als u wilt afdwingen dat een runbook stopt bij een niet-afsluit fout, kunt u gebruiken `ErrorAction Stop` op de cmdlet.
 
 ## <a name="calling-processes"></a>Processen aanroepen
 
@@ -217,7 +214,7 @@ Runbook-taken in azure-sandboxes hebben geen toegang tot de kenmerken van appara
 
 ## <a name="webhooks"></a>Webhooks
 
-Externe services, bijvoorbeeld Azure DevOps Services en GitHub, kunnen een runbook starten in Azure Automation. Voor dit type opstarten gebruikt de service een [webhook](automation-webhooks.md) via één HTTP-aanvraag. Door gebruik te maken van een webhook kunnen runbooks worden gestart zonder implementatie van een volledige Azure Automation-oplossing. 
+Externe services, bijvoorbeeld Azure DevOps Services en GitHub, kunnen een runbook starten in Azure Automation. Voor dit type opstarten gebruikt de service een [webhook](automation-webhooks.md) via één HTTP-aanvraag. Door gebruik te maken van een webhook kunnen runbooks worden gestart zonder implementatie van een volledige Azure Automation-functie. 
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>Gedeelde resources
 
@@ -231,7 +228,6 @@ Als u onderliggende runbooks gebruikt, wordt de totale hoeveelheid tijd voor het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Runbooks beheren in azure Automation](manage-runbooks.md)om aan de slag te gaan met een runbook.
-* Zie de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* [Runbooks in Azure Automation beheren](manage-runbooks.md)
+* [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

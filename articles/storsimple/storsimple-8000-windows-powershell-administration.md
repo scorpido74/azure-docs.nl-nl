@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277108"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747712"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Een apparaat beheren met Windows PowerShell voor StorSimple
 
@@ -105,7 +105,7 @@ U kunt kiezen uit de volgende instellingen:
      > [!NOTE]
      > Dit is de voorkeurs optie als u het beheerders wachtwoord van het apparaat verg eten bent en u geen verbinding kunt maken via optie 1 of 2.
 
-4. **Taal wijzigen** Met deze optie kunt u de weergave taal van de Windows Power shell-interface wijzigen. De ondersteunde talen zijn Engels, Japans, Russisch, Frans, Zuid-Koreaans, Spaans, Italiaans, Duits, Chinees en Portugees (Brazilië).
+4. **Taal wijzigen** Met deze optie kunt u de weergave taal van de Windows Power shell-interface wijzigen. De ondersteunde talen zijn Engels, Japans, Russisch, Frans, Zuid-Koreaans, Spaans, Italiaans, Duits, Chinees en Portugees.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Extern verbinding maken met StorSimple met behulp van Windows PowerShell voor StorSimple
 
@@ -158,7 +158,7 @@ Hier volgt een korte beschrijving van de Help-informatie voor deze Windows Power
 ### <a name="to-get-help-for-a-cmdlet"></a>Help voor een cmdlet verkrijgen
 
 * Gebruik de volgende opdracht om hulp te krijgen voor cmdlets of functies:`Get-Help <cmdlet-name>`
-* Als u online-Help voor een cmdlet wilt krijgen, gebruikt u de `-Online` vorige cmdlet met de para meter:`Get-Help <cmdlet-name> -Online`
+* Als u online-Help voor een cmdlet wilt krijgen, gebruikt u de vorige cmdlet met de `-Online` para meter:`Get-Help <cmdlet-name> -Online`
 * Voor volledige ondersteuning kunt u de `–Full` para meter gebruiken en voor beelden gebruiken de `–Examples` para meter.
 
 ### <a name="to-update-help"></a>Help bijwerken
@@ -169,10 +169,10 @@ U kunt de Help eenvoudig bijwerken in de Windows Power shell-interface. Voer de 
 1. Start Windows Power shell met de optie **als administrator uitvoeren** .
 2. Typ het volgende achter de opdracht prompt:`Update-Help`
 3. De bijgewerkte Help-bestanden worden geïnstalleerd.
-4. Nadat de Help-bestanden zijn geïnstalleerd, typt `Get-Help Get-Command`u:. Hiermee wordt een lijst met cmdlets weer gegeven waarvoor Help beschikbaar is.
+4. Nadat de Help-bestanden zijn geïnstalleerd, typt u: `Get-Help Get-Command` . Hiermee wordt een lijst met cmdlets weer gegeven waarvoor Help beschikbaar is.
 
 > [!NOTE]
-> Als u een lijst wilt weer geven met alle beschik bare cmdlets in een runs Pace, meldt u zich aan `Get-Command` bij de bijbehorende menu optie en voert u de cmdlet uit.
+> Als u een lijst wilt weer geven met alle beschik bare cmdlets in een runs Pace, meldt u zich aan bij de bijbehorende menu optie en voert u de `Get-Command` cmdlet uit.
 
 
 ## <a name="next-steps"></a>Volgende stappen

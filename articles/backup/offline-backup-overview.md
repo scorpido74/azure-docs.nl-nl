@@ -3,12 +3,12 @@ title: Overzicht van offline back-up
 description: Meer informatie over de onderdelen van offline back-ups. Ze omvatten offline back-ups op basis van Azure Data Box en offline back-ups op basis van de Azure import/export-service.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160918"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744641"
 ---
 # <a name="overview-of-offline-backup"></a>Overzicht van offline back-up
 
@@ -73,11 +73,11 @@ In de volgende tabel worden de twee beschik bare opties vergeleken, zodat u de j
 | Beveiliging (gegevens, apparaat en service)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256-bits versleuteld <br> [Apparaat](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) -robuuste behuizing, bedrijfs eigen, op referenties gebaseerde interface voor het kopiëren van gegevens <br> [Service](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) -beveiligd door Azure-beveiligings functies | Door BitLocker versleutelde gegevens                                 |
 | Tijdelijke opslag locatie inrichten                     | Niet vereist                                                | Meer dan of gelijk aan de geschatte grootte van de back-upgegevens        |
 | Ondersteunde regio’s                                           | [Azure Data Box schijf regio's](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box regio's](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure import/export-service regio's](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Verzen ding tussen landen                                     | Niet ondersteund  <br>    Het bron adres en het doel-Azure-Data Center moeten zich in hetzelfde land bedoen * | Ondersteund                                                    |
+| Verzen ding tussen landen                                     | Niet ondersteund  <br>    Het bron adres en het doel-Azure-Data Center moeten zich in hetzelfde land/dezelfde regio bevinden * | Ondersteund                                                    |
 | Logistiek overdragen (levering, Trans Port, ophalen)           | Volledig door micro soft beheerd                                     | Door de klant beheerd                                            |
 | Prijzen                                                      | [Azure Data Box prijzen](https://azure.microsoft.com/pricing/details/databox/) <br> [Prijzen Azure Data Box schijf](https://azure.microsoft.com/pricing/details/databox/disk/) | [Prijzen voor Azure import/export-service](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-* Als uw land geen Azure-Data Center heeft, moet u uw schijven verzenden naar een Azure-Data Center in een ander land.
+* Als uw land/regio geen Azure-Data Center heeft, moet u uw schijven verzenden naar een Azure-Data Center in een ander land/regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

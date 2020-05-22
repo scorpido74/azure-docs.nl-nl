@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76961086"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744303"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
 
 Aangepaste regels bieden u de mogelijkheid om op maat gemaakte regels te maken voor de exacte behoeften van uw toepassingen en beveiligings beleid. Nu kunt u de toegang tot uw webtoepassingen beperken op basis van land/regio. Net als bij alle aangepaste regels kan deze logica worden samengesteld met andere regels om te voldoen aan de behoeften van uw toepassing.
 
-Als u een aangepaste regel voor geografisch filteren wilt maken, selecteert u *geo-locatie* als het type overeenkomst en selecteert u vervolgens het land of de landen die u wilt toestaan of blok keren vanuit uw toepassing. Zie [aangepaste regels maken in Power shell](configure-waf-custom-rules.md) en meer voor beelden van aangepaste regels (Create-Custom-waf-rules.MD) voor meer informatie.
+Als u een aangepaste regel voor geografisch filteren wilt maken, selecteert u *geo-locatie* als het type overeenkomst en selecteert u vervolgens het land/de regio of landen/regio's die u wilt toestaan of blok keren vanuit uw toepassing. Zie [aangepaste regels maken in Power shell](configure-waf-custom-rules.md) en meer voor beelden van aangepaste regels (Create-Custom-waf-rules.MD) voor meer informatie.
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Land codes
+## <a name="countryregion-codes"></a>Land-/regiocodes
 
-Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende landen codes van twee cijfers zijn. 
+Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende land-of regio codes van twee cijfers zijn. 
 
-|Landcode | Land naam |
+|Land-/regiocode | Naam van land/regio |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Verenigde Arabische Emiraten|
@@ -72,7 +72,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | CU | Cuba|
 | CV | Cabo Verde|
 | CY | Cyprus|
-| CZ | Tsjechië|
+| CZ | Tsjechische Republiek|
 | DE | Duitsland|
 | DK | Denemarken|
 | DO | Dominicaanse Republiek|
@@ -98,7 +98,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | HK | Hongkong SAR|
 | HN | Honduras|
 | HR | Kroatië|
-| HT | Haiti|
+| HT | Haïti|
 | HU | Hongarije|
 | Id | Indonesië|
 | IE | Ierland|
@@ -112,7 +112,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | JO | Jordanië|
 | JP | Japan|
 | KE | Kenia|
-| KG | Kirgizië|
+| KG | Kirgistan|
 | KH | Cambodja|
 | KI | Kiribati|
 | KN | Saint Kitts en Nevis|
@@ -133,21 +133,21 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | LY | Libië |
 | MA | Marokko|
 | MD | Moldavië, Republiek|
-| MG | Madagascar|
+| MG | Madagaskar|
 | MK | Noord-Macedonië|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolië|
 | MO | Macau SAR|
 | MQ | Martinique|
-| MR | Mauretanië|
+| MR | Mauritanië|
 | MT | Malta|
 | MV | Maldiven|
 | MW | Malawi|
 | MX | Mexico|
 | MY | Maleisië|
 | MZ | Mozambique|
-| N.v.t. | Namibië|
+| NA | Namibië|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|
@@ -185,7 +185,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | SV | El Salvador|
 | SY | Arabische Republiek Syrië|
 | SZ | Swaziland|
-| TC | Turks- en Caicoseilanden|
+| TC | Turks- en Caicos-eilanden|
 | TG | Togo|
 | TH | Thailand|
 | TN | Tunesië|

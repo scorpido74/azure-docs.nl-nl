@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659282"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745373"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Beperkingen van de container Language Understanding (LUIS)
 
@@ -48,7 +48,7 @@ LUIS-containers bieden ondersteuning voor een subset van de talen die worden [on
 
 | Taal | Landinstelling | Vooraf gebouwd domein | Vooraf gebouwde entiteit | Aanbevelingen voor woordgroepen lijst | **[Tekst analyse](../text-analytics/language-support.md)<br>(Sentiment en<br>Woord|
 |--|--|:--:|:--:|:--:|:--:|
-| Amerikaans-Engels | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Engels (Verenigde Staten) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Frans (Frankrijk) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Frans (Canada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680903"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744318"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbook oplossen
 
@@ -45,7 +45,7 @@ Wanneer u fouten ontvangt tijdens het uitvoeren van een runbook in Azure Automat
     * [Vernieuw het certificaat](../manage-runas-account.md#cert-renewal) als het uitvoeren als-account is verlopen.
     * [Vernieuw de webhook](../automation-webhooks.md#renew-a-webhook) als u probeert een verlopen webhook te gebruiken om het runbook te starten.
     * [Controleer de status](../automation-runbook-execution.md#job-statuses) van de taak om de huidige runbooknaam en enkele mogelijke oorzaken van het probleem vast te stellen.
-    * [Voeg extra uitvoer](../automation-runbook-output-and-messages.md#message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
+    * [Voeg extra uitvoer](../automation-runbook-output-and-messages.md#monitor-message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
     * [Alle uitzonde ringen verwerken](../automation-runbook-execution.md#exceptions) die door uw taak worden gegenereerd.
 
 1. Voer deze stap uit als de runbook-taak of de omgeving op Hybrid Runbook Worker niet reageert.
@@ -479,7 +479,7 @@ Wanneer u de cmdlet uitvoert, wordt het volgende fout bericht weer gegeven `Get-
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden bij het ophalen van de taak uitvoer van een runbook met veel [uitgebreide stromen](../automation-runbook-output-and-messages.md#verbose-stream).
+Deze fout kan optreden bij het ophalen van de taak uitvoer van een runbook met veel [uitgebreide stromen](../automation-runbook-output-and-messages.md#monitor-verbose-stream).
 
 ### <a name="resolution"></a>Oplossing
 

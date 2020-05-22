@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582903"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744698"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -54,7 +54,7 @@ Zie [een dynamische groep maken of bijwerken](groups-create-rule.md)voor meer st
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Syntaxis van regels voor één expressie
 
-Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit `Property Operator Value`:, waarbij de syntaxis voor de eigenschap de naam van object. Property is.
+Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit: `Property Operator Value` , waarbij de syntaxis voor de eigenschap de naam van object. Property is.
 
 Hier volgt een voor beeld van een goed opgebouwde lidmaatschaps regel met één expressie:
 
@@ -78,7 +78,7 @@ De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis f
 
 Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-- Boolean-waarde
+- Booleaans
 - Tekenreeks
 - Teken reeks verzameling
 
@@ -118,16 +118,16 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. telephoneNumber-EQ "waarde") |
-| usageLocation |Land code van twee letters |(User. usageLocation-EQ "US") |
-| userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
+| usageLocation |Land-/regiocode met twee letters |(User. usageLocation-EQ "US") |
+| userPrincipalName |Wille keurige teken reeks waarde |(User. userPrincipalName-EQ " alias@domain ") |
 | User type |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
+| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat " alias@domain ") |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain ") |
 
 Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
 
@@ -185,8 +185,8 @@ Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juist
 
 * Dubbele aanhalings tekens zijn optioneel tenzij de waarde een teken reeks is.
 * Teken reeks-en regex-bewerkingen zijn niet hoofdletter gevoelig.
-* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens \` worden geescapet met behulp van het teken \`, bijvoorbeeld\`User. Department-EQ "Sales" is de juiste syntaxis als "Sales" de waarde is.
-* U kunt ook null-controles uitvoeren, waarbij null als waarde wordt gebruikt, bijvoorbeeld `user.department -eq null`.
+* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens worden geescapet met behulp \` van het teken, bijvoorbeeld User. Department-EQ \` "Sales \` " is de juiste syntaxis als "Sales" de waarde is.
+* U kunt ook null-controles uitvoeren, waarbij null als waarde wordt gebruikt, bijvoorbeeld `user.department -eq null` .
 
 ### <a name="use-of-null-values"></a>Gebruik van Null-waarden
 
@@ -252,7 +252,7 @@ Eigenschappen van meerdere waarden zijn verzamelingen van objecten van hetzelfde
 | Eigenschappen | Waarden | Gebruik |
 | --- | --- | --- |
 | assignedPlans | Elk object in de verzameling bevat de volgende teken reeks eigenschappen: capabilityStatus, service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-en assignedPlan. capabilityStatus-EQ "enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -bevat "Contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -bevat "Contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>De Opera tors-any en-all gebruiken
 
@@ -279,11 +279,11 @@ Met de volgende expressie worden alle gebruikers geselecteerd die een service pl
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het\_onderstrepings teken () gebruiken
+### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het onderstrepings teken ( \_ ) gebruiken
 
-De syntaxis van\_het onderstrepings teken () komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
+De syntaxis van het onderstrepings teken ( \_ ) komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
 
-Hier volgt een voor beeld van het gebruik van\_het onderstrepings teken () in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
+Hier volgt een voor beeld van het gebruik van het onderstrepings teken ( \_ ) in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -347,7 +347,7 @@ Extensie kenmerken en aangepaste extensie-eigenschappen worden ondersteund als t
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Aangepaste extensie-eigenschappen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling `user.extension_[GUID]_[Attribute]`van, waarbij:
+[Aangepaste extensie-eigenschappen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling van `user.extension_[GUID]_[Attribute]` , waarbij:
 
 * [GUID] is de unieke id in azure AD voor de toepassing die de eigenschap heeft gemaakt in azure AD
 * [Kenmerk] is de naam van de eigenschap die is gemaakt

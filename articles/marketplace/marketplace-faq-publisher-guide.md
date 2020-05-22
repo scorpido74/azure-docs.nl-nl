@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657885"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744837"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -40,7 +40,7 @@ De commerciële Marketplace is een uitgangs punt voor Go-to-Market-samen werking
 
 De commerciële Marketplace is beschikbaar in 141 regio's, per abonnement. 
 
-We beheren de belasting betaling in veel landen en bieden toegang tot ons wereld wijde kanaal netwerk van wederverkopers. U kunt de micro soft-klant overeenkomst van een klant of Enterprise Agreement gebruiken om te verkopen aan organisaties zonder dat u een nieuwe aanschaf relatie hoeft te maken.
+We beheren de BTW-betaling in veel landen/regio's en bieden toegang tot ons wereld wijde kanaal netwerk van wederverkopers. U kunt de micro soft-klant overeenkomst van een klant of Enterprise Agreement gebruiken om te verkopen aan organisaties zonder dat u een nieuwe aanschaf relatie hoeft te maken.
 
 Bekijk voor meer informatie de video op [Waarom u verkoop via Marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
 
@@ -225,7 +225,7 @@ Nee, betaalde of gesponsorde Azure-uitgaven kunnen niet worden gebruikt voor het
 
 Het gebruikers account moet de machtigingen *eigenaar* of *Inzender* hebben voor het Azure-abonnement.
 
-### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>In welke landen kunnen klanten aankopen doen via Microsoft AppSource en Azure Marketplace?
+### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>In welke landen/regio's kunnen klanten kopen via Microsoft AppSource en Azure Marketplace?
 
 Klanten kunnen oplossingen van de commerciële Marketplace vinden op 141 locaties over de hele wereld.
 
@@ -262,7 +262,7 @@ Als het plan wordt gewijzigd voor een bestaand abonnement, blijft de term ongewi
 
 ### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>Wat kan verhinderen dat een klant een aankoop kan volt ooien?
 
-Voor Microsoft AppSource moet de klant beschikken over een credit card met een facturerings adres in hetzelfde land als hun Azure AD-exemplaar en moet de Azure AD-beheerder van de klant ervoor zorgen dat het systeem niet voor komt dat verificatie wordt Microsoft AppSource.
+Voor Microsoft AppSource moet de klant beschikken over een credit card met een facturerings adres in hetzelfde land/dezelfde regio als hun Azure AD-exemplaar en moet de Azure AD-beheerder van de klant ervoor zorgen dat het systeem niet voor komt dat verificatie wordt Microsoft AppSource.
 
 Voor Azure Marketplace moet de klant beschikken over een actief Azure-abonnement en een gebruikers account met de machtigingen *eigenaar* of *Inzender* voor dat abonnement. De Azure-beheerder van de klant moet er zeker van zijn dat de Azure Policy niet in strijd is met de gebruikte aanbieding en dat kosten beheer niet kan worden ingesteld om Azure Marketplace uit te scha kelen.
 

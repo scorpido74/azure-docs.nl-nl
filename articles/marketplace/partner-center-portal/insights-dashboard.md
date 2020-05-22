@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857924"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745661"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace Insights-dash board in partner centrum
 
@@ -89,7 +89,7 @@ In de onderstaande heatmap ziet u het aantal **bezoeken van pagina's**, **aanroe
 De heatmap omvat de volgende mogelijkheden:
 
 - De heatmap heeft een aanvullend raster voor het weer geven van de details van de **bezoeken van pagina's**, **aanroepen van acties** en **unieke bezoekers** op een specifieke locatie. u kunt inzoomen op een specifieke locatie als voor keur.  
-- **Landen verspreiden** is het aantal landen van waaruit uw klanten pagina bezoeken hebben gerapporteerd tijdens het geselecteerde datum bereik.
+- De **sprei ding van landen/regio's** is het aantal landen/regio's van waaruit uw klanten pagina bezoeken hebben gerapporteerd tijdens het geselecteerde datum bereik.
 - U kunt zoeken en een land selecteren in het raster om in te zoomen op de locatie in de kaart. Keer terug naar de oorspronkelijke weer gave door **Start** op de kaart te selecteren.
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Pagina bezoeken tegenover unieke bezoekers trend

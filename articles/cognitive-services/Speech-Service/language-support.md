@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726074"
+ms.locfileid: "83746513"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -140,7 +140,7 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 | <sup>i</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "ar-EG-Hoda" |
 | `ar-SA` | Arabisch (Saoedi-Arabië) | Man | "AR-SA-Naayf" |
 | `bg-BG` | Bulgaars | Man |  "bg-BG-Ivan" |
-| `ca-ES` | Catalaans (Spanje) | Vrouw |  "ca-ES-HerenaRUS" |
+| `ca-ES` | Catalaans | Vrouw |  "ca-ES-HerenaRUS" |
 | `cs-CZ` | Tsjechisch | Man | "CS-CZ-Jakub" |
 | `da-DK` | Deens | Vrouw |  "da-DK-HelleRUS" |
 | `de-AT` | Duits (Oostenrijk) | Man | "de-Michael" |

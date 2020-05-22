@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bc439e3244be63bff1c54d3230eda17dfb9d88d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253438"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745593"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN van de overeenkomst voor waarden van de Verizon Premium-regels engine
 
@@ -30,7 +30,7 @@ U kunt bijvoorbeeld een match-voor waarde gebruiken voor het volgende:
 
 Met de voor waarde altijd vergelijken wordt een standaardset van functies toegepast op alle aanvragen.
 
-Naam | Doel
+Name | Doel
 -----|--------
 [Altijd](#always) | Hiermee wordt een standaardset met functies toegepast op alle aanvragen.
 
@@ -38,7 +38,7 @@ Naam | Doel
 
 De voor waarde voor het vergelijken van apparaten identificeert aanvragen die zijn gemaakt op basis van de eigenschappen van een mobiel apparaat.  
 
-Naam | Doel
+Name | Doel
 -----|--------
 [Apparaat](#device) | Identificeert aanvragen die zijn gemaakt op basis van de eigenschappen van een mobiel apparaat.
 
@@ -46,16 +46,16 @@ Naam | Doel
 
 Met de voor waarden voor de locatie overeenkomst worden aanvragen geïdentificeerd op basis van de locatie van de aanvrager.
 
-Naam | Doel
+Name | Doel
 -----|--------
 [Als getal](#as-number) | Identificeert aanvragen die afkomstig zijn van een bepaald netwerk.
-[Land](#country) | Identificeert aanvragen die afkomstig zijn uit de opgegeven landen/regio's.
+[Land/regio](#country) | Identificeert aanvragen die afkomstig zijn uit de opgegeven landen/regio's.
 
 ## <a name="origin-match-conditions"></a>Voor waarden van oorsprong
 
 De origin-voor waarden identificeren aanvragen die verwijzen naar Content Delivery Network opslag of een bron server van de klant.
 
-Naam | Doel
+Name | Doel
 -----|--------
 [CDN-oorsprong](#cdn-origin) | Hiermee worden aanvragen geïdentificeerd voor inhoud die is opgeslagen in Content Delivery Network opslag.
 [Oorsprong van klant](#customer-origin) | Identificeert aanvragen voor inhoud die is opgeslagen op een specifieke bron server van de klant.
@@ -64,7 +64,7 @@ Naam | Doel
 
 De aanvraag overeenkomst voor waarden identificeren aanvragen op basis van hun eigenschappen.
 
-Naam | Doel
+Name | Doel
 -----|--------
 [Client-IP-adres](#client-ip-address) | Identificeert aanvragen die afkomstig zijn van een bepaald IP-adres.
 [Cookie parameter](#cookie-parameter) | Controleert de cookies die zijn gekoppeld aan elke aanvraag voor de opgegeven waarde.
@@ -81,7 +81,7 @@ Naam | Doel
 
 De URL-matching-voor waarden identificeren aanvragen op basis van hun Url's.
 
-Naam | Doel
+Name | Doel
 -----|--------
 [URL-pad naar map](#url-path-directory) | Hiermee worden aanvragen geïdentificeerd op basis van het relatieve pad.
 [Extensie van URL-pad](#url-path-extension) | Hiermee worden aanvragen geïdentificeerd op basis van de bestandsnaam extensie.
@@ -112,7 +112,7 @@ Met de voor waarde altijd vergelijken wordt een standaardset van functies toegep
 
 Het AS-nummer netwerk wordt gedefinieerd door het autonome systeem nummer (ASN). 
 
-De optie **overeenkomsten**/**komen niet overeen met** de voor waarden waaronder de voor waarde voor de overeenkomst met het nummer voldoet:
+De optie **overeenkomsten** / **komen niet overeen met** de voor waarden waaronder de voor waarde voor de overeenkomst met het nummer voldoet:
 
 - **Overeenkomsten**: vereist dat het ASN van het client netwerk overeenkomt met een van de opgegeven asn's. 
 - **Komt niet overeen**: vereist dat het ASN van het client netwerk niet overeenkomt met een van de opgegeven asn's.
@@ -157,7 +157,7 @@ Belang rijke informatie:
 
 ### <a name="client-ip-address"></a>Client-IP-adres
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde aan het client-IP-adres voldoet:
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde aan het client-IP-adres voldoet:
 
 - **Overeenkomsten**: vereist dat het IP-adres van de client overeenkomt met een van de opgegeven IP-adressen. 
 - **Komt niet overeen**: vereist dat het IP-adres van de client niet overeenkomt met een van de opgegeven IP-adressen. 
@@ -186,7 +186,7 @@ Belang rijke informatie:
 
 ### <a name="cookie-parameter"></a>Cookie parameter
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor de cookie parameter overeenkomst wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor de cookie parameter overeenkomst wordt bereikt.
 
 - **Overeenkomsten**: vereist dat een aanvraag de opgegeven cookie bevat met een waarde die overeenkomt met ten minste één van de waarden die zijn gedefinieerd in deze match-voor waarde.
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -220,7 +220,7 @@ Belang rijke informatie:
 
 Met de voor waarde regex van de cookie para meter definieert u een cookie naam en-waarde. U kunt [reguliere expressies](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) gebruiken om de gewenste cookie waarde te definiëren.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde regex van de cookie parameter matching wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde regex van de cookie parameter matching wordt bereikt.
 
 - **Overeenkomsten**: vereist dat een aanvraag de opgegeven cookie bevat met een waarde die overeenkomt met de opgegeven reguliere expressie.
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -249,11 +249,11 @@ Belang rijke informatie:
 
 ---
 
-### <a name="country"></a>Land
+### <a name="country"></a>Land/regio
 
 U kunt de land code van een land opgeven. 
 
-De **overeenkomende**/optie komt**niet overeen met** de voor waarden waaronder aan de voor waarde voor land overeenkomst wordt voldaan:
+De **overeenkomende** / optie komt**niet overeen met** de voor waarden waaronder aan de voor waarde voor land overeenkomst wordt voldaan:
 
 - **Overeenkomsten**: vereist dat de aanvraag de opgegeven land code waarden bevat. 
 - **Komt niet overeen**: vereist dat de aanvraag de opgegeven land nummer waarden bevat.
@@ -279,9 +279,9 @@ Met deze match-voor waarde kunt u een groot aantal aanpassingen uitvoeren op bas
 - URL-pad naar Joker teken: Stel de [voor waarde URL-pad voor joker tekens](#url-path-wildcard) in op de map die wordt beveiligd. 
     Voeg aan het einde van het relatieve pad een sterretje toe om ervoor te zorgen dat de toegang tot alle onderliggende items wordt beperkt door deze regel.
 
-- Land overeenkomst: Stel de voor waarde land overeenkomst in op de gewenste set van landen.
-  - Toestaan: Stel de voor waarde land overeenkomst in op **komt niet overeen** met het toestaan dat alleen de opgegeven landen toegang hebben tot inhoud die is opgeslagen op de locatie die is gedefinieerd door de voor waarde joker tekens voor URL-pad.
-  - Blok keren: Stel de voor waarde land overeenkomst in op **overeenkomsten** om te voor komen dat de opgegeven landen toegang hebben tot inhoud die is opgeslagen op de locatie die is gedefinieerd door de voor waarde joker tekens voor URL-pad.
+- Land overeenkomst: Stel de voor waarde land overeenkomst in op de gewenste set van landen/regio's.
+  - Toestaan: Stel de voor waarde voor land overeenkomst in op **niet overeenkomen** met het toestaan dat alleen de opgegeven landen/regio's toegang hebben tot inhoud die is opgeslagen op de locatie die is gedefinieerd door de voor waarde joker tekens voor URL-pad.
+  - Blok keren: Stel de voor waarde voor land overeenkomst in op **overeenkomsten** om te voor komen dat de opgegeven landen/regio's toegang hebben tot inhoud die is opgeslagen op de locatie die is gedefinieerd door de voor waarde joker tekens voor URL-pad.
 
 - Toegang weigeren (403): Schakel de [functie toegang weigeren (403)](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) in om het deel van de functie voor het filteren van landen te repliceren of blok keren.
 
@@ -311,7 +311,7 @@ Belang rijke informatie:
 
 De voor waarde voor het vergelijken van apparaten identificeert aanvragen die zijn gemaakt op basis van de eigenschappen van een mobiel apparaat. De detectie van mobiele apparaten wordt bereikt via [WURFL](http://wurfl.sourceforge.net/). 
 
-De **overeenkomende**/optie komt**niet overeen met** de voor waarden waaronder aan de voor waarde voor het apparaat wordt voldaan:
+De **overeenkomende** / optie komt**niet overeen met** de voor waarden waaronder aan de voor waarde voor het apparaat wordt voldaan:
 
 - **Overeenkomsten**: vereist dat het apparaat van de aanvrager overeenkomt met de opgegeven waarde. 
 - **Komt niet overeen**: vereist dat het apparaat van de aanvrager niet overeenkomt met de opgegeven waarde.
@@ -352,10 +352,10 @@ Besturings systeem van apparaat | % {wurfl_cap_device_os} | Een teken reeks die 
 Versie besturingssysteem apparaat | % {wurfl_cap_device_os_version} | Een teken reeks die het versie nummer aangeeft van het besturings systeem dat op het apparaat is geïnstalleerd. | 1.0.1
 Dubbele stand | % {wurfl_cap_dual_orientation} | Een Booleaanse waarde die aangeeft of het apparaat dubbele stand-by ondersteunt. | waar
 HTML voorkeurs DTD | % {wurfl_cap_html_preferred_dtd} | Een teken reeks die de voorkeurs Document Type Definition (DTD) van het mobiele apparaat voor HTML-inhoud aangeeft. | geen<br/>xhtml_basic<br/>HTML5
-Afbeelding inbrengen | % {wurfl_cap_image_inlining} | Een Booleaanse waarde die aangeeft of het apparaat base64-gecodeerde installatie kopieën ondersteunt. | false
+Afbeelding inbrengen | % {wurfl_cap_image_inlining} | Een Booleaanse waarde die aangeeft of het apparaat base64-gecodeerde installatie kopieën ondersteunt. | onjuist
 Is Android | % {wurfl_vcap_is_android} | Een Booleaanse waarde die aangeeft of het apparaat het Android-besturings systeem gebruikt. | waar
-Is IOS | % {wurfl_vcap_is_ios} | Een Booleaanse waarde die aangeeft of het apparaat gebruikmaakt van iOS. | false
-Is slimme TV | % {wurfl_cap_is_smarttv} | Een Booleaanse waarde die aangeeft of het apparaat een slimme TV is. | false
+Is IOS | % {wurfl_vcap_is_ios} | Een Booleaanse waarde die aangeeft of het apparaat gebruikmaakt van iOS. | onjuist
+Is slimme TV | % {wurfl_cap_is_smarttv} | Een Booleaanse waarde die aangeeft of het apparaat een slimme TV is. | onjuist
 Is smartphone | % {wurfl_vcap_is_smartphone} | Een Booleaanse waarde die aangeeft of het apparaat een smartphone is. | waar
 Is Tablet | % {wurfl_cap_is_tablet} | Een Booleaanse waarde die aangeeft of het apparaat een Tablet is. Deze beschrijving is onafhankelijk van het besturings systeem. | waar
 Is draadloos apparaat | % {wurfl_cap_is_wireless_device} | Een Booleaanse waarde die aangeeft of het apparaat wordt beschouwd als een draadloos apparaat. | waar
@@ -398,7 +398,7 @@ Belang rijke informatie:
 
 De hostnaam die is gekoppeld aan de verwijzings groep waarlangs inhoud is aangevraagd, bepaalt of aan de voor waarde van de verwijzings domein wordt voldaan.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van het domein wordt voldaan:
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van het domein wordt voldaan:
 
 - **Overeenkomsten**: de verwijzende hostnaam moet overeenkomen met de opgegeven waarden. 
 - **Komt niet overeen**: vereist dat de naam van de verwijzende host niet overeenkomt met de opgegeven waarde.
@@ -424,7 +424,7 @@ Belang rijke informatie:
 
 ### <a name="request-header-literal"></a>Letterlijke aanvraag header
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder wordt voldaan aan de voor waarde van de letterlijke koptekst van de aanvraag header.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder wordt voldaan aan de voor waarde van de letterlijke koptekst van de aanvraag header.
 
 - **Overeenkomsten**: vereist dat de aanvraag de opgegeven header bevat. De waarde van het veld moet overeenkomen met het account dat is gedefinieerd in deze match-voor waarde.
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -449,7 +449,7 @@ Belang rijke informatie:
 
 ### <a name="request-header-regex"></a>Regex-aanvraag header
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor regex matching van de aanvraag header is voldaan.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor regex matching van de aanvraag header is voldaan.
 
 - **Overeenkomsten**: vereist dat de aanvraag de opgegeven header bevat. De waarde moet overeenkomen met het patroon dat is gedefinieerd in de opgegeven [reguliere expressie](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -480,7 +480,7 @@ Belang rijke informatie:
 
 ### <a name="request-header-wildcard"></a>Joker teken voor aanvraag header
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van joker tekens in de aanvraag header wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van joker tekens in de aanvraag header wordt bereikt.
 
 - **Overeenkomsten**: vereist dat de aanvraag de opgegeven header bevat. De waarde moet overeenkomen met ten minste één van de waarden die zijn gedefinieerd in deze match-voor waarde.
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -565,7 +565,7 @@ Belang rijke informatie:
 
 Identificeert een aanvraag op basis van het relatieve pad, waarbij de bestands naam van het aangevraagde activum wordt uitgesloten.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde directory-pad naar URL overeenkomt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde directory-pad naar URL overeenkomt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een relatief URL-pad bevat, met uitzonde ring van de bestands naam, die overeenkomt met het opgegeven URL-patroon.
 - **Komt niet overeen**: vereist dat de aanvraag een relatief URL-pad bevat, met uitzonde ring van de bestands naam, dat niet overeenkomt met het opgegeven URL-patroon.
@@ -577,23 +577,23 @@ Belang rijke informatie:
    De volgende waarden zijn beschikbaar voor de optie **relatief op** :
   - **Root**: geeft aan dat het URL-vergelijkings punt direct na de CDN-hostnaam begint. 
 
-  Bijvoorbeeld: http:\//WPC.0001. &lt;&gt;domein/**800001/myorigin/MyFolder**/index.htm
+  Bijvoorbeeld: http: \/ /WPC.0001. &lt; domein &gt; / **800001/myorigin/MyFolder**/index.htm
 
-  - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat azureedge.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde Origin gebruiken. **Origin** \* 
+  - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat \* AZUREEDGE.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde **Origin** gebruiken. 
 
-  Bijvoorbeeld: https:\//&lt;endpoint&gt;. azureedge.net/**MyFolder**/index.htm 
+  Bijvoorbeeld: https: \/ / &lt; endpoint &gt; . azureedge.net/**MyFolder**/index.htm 
 
-  Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http\/:/WPC.0001. &lt;domein&gt;/800001/myorigin/**MyFolder**/index.htm
+  Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http: \/ /WPC.0001. &lt; domein &gt; /800001/myorigin/**MyFolder**/index.htm
 
 - Een Edge CNAME-URL wordt opnieuw naar een CDN-URL geschreven vóór de vergelijking van de URL.
 
     Bijvoorbeeld: beide van de volgende Url's verwijzen naar hetzelfde activum en hebben daarom hetzelfde URL-pad.
-  - CDN-URL: http\/:/WPC.0001. &lt;domein&gt;-800001/CustomerOrigin/Path/Asset.htm
+  - CDN-URL: http: \/ /WPC.0001. &lt; domein &gt; -800001/CustomerOrigin/Path/Asset.htm
     
-  - Edge CNAME-URL: http\//&lt;:&gt;endpoint. azureedge.net/Path/Asset.htm
+  - Edge CNAME-URL: http: \/ / &lt; endpoint &gt; . azureedge.net/Path/Asset.htm
     
     Extra informatie:
-  - Aangepast domein: https:\//my.domain.com/Path/Asset.htm
+  - Aangepast domein: https: \/ /My.domain.com/Path/Asset.htm
     
     - URL-pad (ten opzichte van hoofdmap):/800001/CustomerOrigin/path/
     
@@ -623,7 +623,7 @@ Belang rijke informatie:
 
 Hiermee worden aanvragen geïdentificeerd aan de hand van de bestands extensie van de aangevraagde Asset.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor de extensie van het URL-pad voldoet aan.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor de extensie van het URL-pad voldoet aan.
 
 - **Overeenkomsten**: vereist dat de URL van de aanvraag een bestands extensie bevat die exact overeenkomt met het opgegeven patroon.
 
@@ -666,7 +666,7 @@ Aan deze match-voor waarde wordt voldaan wanneer Url's worden gevonden die met d
 
 Hiermee worden aanvragen geïdentificeerd op basis van de bestands naam van de aangevraagde Asset. In het kader van deze match-voor waarde bestaat een bestands naam uit de naam van het aangevraagde activum, een punt en de bestands extensie (bijvoorbeeld index. html).
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor de bestands naam van URL-paden overeenkomt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor de bestands naam van URL-paden overeenkomt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een bestands naam bevat in het URL-pad dat overeenkomt met het opgegeven patroon.
 - **Komt niet overeen**: vereist dat de aanvraag een bestands naam in het URL-pad bevat dat niet overeenkomt met het opgegeven patroon.
@@ -697,7 +697,7 @@ Belang rijke informatie:
 
 Vergelijkt het URL-pad van een aanvraag, inclusief de bestands naam, naar de opgegeven waarde.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor de letterlijke URL voor het pad naar url's wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor de letterlijke URL voor het pad naar url's wordt bereikt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-pad bevat dat overeenkomt met het opgegeven patroon.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-pad bevat dat niet overeenkomt met het opgegeven patroon.
@@ -709,20 +709,20 @@ Belang rijke informatie:
     De volgende waarden zijn beschikbaar voor de optie **relatief op** :
   - **Root**: geeft aan dat het URL-vergelijkings punt direct na de CDN-hostnaam begint.
 
-    Bijvoorbeeld: http:\//WPC.0001. &lt;&gt;domein/**800001/myorigin/MyFolder/index.htm**
+    Bijvoorbeeld: http: \/ /WPC.0001. &lt; domein &gt; / **800001/myorigin/MyFolder/index.htm**
 
-  - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat azureedge.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde Origin gebruiken. **Origin** \* 
+  - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat \* AZUREEDGE.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde **Origin** gebruiken. 
 
-    Bijvoorbeeld: https:\//&lt;eind punt&gt;. azureedge.net/**MyFolder/index.htm**
+    Bijvoorbeeld: https: \/ / &lt; eind punt &gt; . azureedge.net/**MyFolder/index.htm**
 
-  Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http\/:/WPC.0001. &lt;domein&gt;/800001/myorigin/**MyFolder/index.htm**
+  Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http: \/ /WPC.0001. &lt; domein &gt; /800001/myorigin/**MyFolder/index.htm**
 
 - Een Edge CNAME URL wordt herschreven naar een CDN-URL voordat een URL-vergelijking wordt gemaakt.
 
 Zo verwijzen beide van de volgende Url's naar hetzelfde activum en hebben ze daarom hetzelfde URL-pad:
 
-- CDN-URL: http\/:/WPC.0001. &lt;domein&gt;-800001/CustomerOrigin/Path/Asset.htm
-- Edge CNAME-URL: http\//&lt;:&gt;endpoint. azureedge.net/Path/Asset.htm
+- CDN-URL: http: \/ /WPC.0001. &lt; domein &gt; -800001/CustomerOrigin/Path/Asset.htm
+- Edge CNAME-URL: http: \/ / &lt; endpoint &gt; . azureedge.net/Path/Asset.htm
 
     Extra informatie:
     
@@ -746,7 +746,7 @@ Zo verwijzen beide van de volgende Url's naar hetzelfde activum en hebben ze daa
 
 Vergelijkt het URL-pad van een aanvraag naar de opgegeven [reguliere expressie](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde regex van het URL-pad wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde regex van het URL-pad wordt bereikt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-pad bevat dat overeenkomt met de opgegeven reguliere expressie.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-pad bevat dat niet overeenkomt met de opgegeven reguliere expressie.
@@ -757,9 +757,9 @@ Belang rijke informatie:
 
     Bijvoorbeeld: beide Url's verwijzen naar hetzelfde activum en hebben daarom hetzelfde URL-pad.
 
-     - CDN-URL: http\/:/WPC.0001. &lt;domein&gt;-800001/CustomerOrigin/Path/Asset.htm
+     - CDN-URL: http: \/ /WPC.0001. &lt; domein &gt; -800001/CustomerOrigin/Path/Asset.htm
 
-     - Edge CNAME-URL: http\/:/My.domain.com/Path/Asset.htm
+     - Edge CNAME-URL: http: \/ /My.domain.com/Path/Asset.htm
 
     Extra informatie:
     
@@ -781,7 +781,7 @@ Belang rijke informatie:
 
 Vergelijkt het relatieve URL-pad van een aanvraag naar het opgegeven Joker teken patroon.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor het Joker teken van het URL-pad wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor het Joker teken van het URL-pad wordt bereikt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-pad bevat dat overeenkomt met het opgegeven Joker teken patroon.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-pad bevat dat niet overeenkomt met het opgegeven Joker teken patroon.
@@ -793,19 +793,19 @@ Belang rijke informatie:
    Deze optie kan de volgende waarden hebben:
      - **Root**: geeft aan dat het URL-vergelijkings punt direct na de CDN-hostnaam begint.
 
-       Bijvoorbeeld: http:\//WPC.0001. &lt;&gt;domein/**800001/myorigin/MyFolder/index.htm**
+       Bijvoorbeeld: http: \/ /WPC.0001. &lt; domein &gt; / **800001/myorigin/MyFolder/index.htm**
 
-     - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat azureedge.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde Origin gebruiken. **Origin** \* 
+     - **Oorsprong**: geeft aan dat het URL-vergelijkings punt begint na het inhouds toegangs punt (bijvoorbeeld/000001 of/800001/myorigin). Omdat \* AZUREEDGE.net CNAME wordt gemaakt ten opzichte van de bronmap op de hostnaam van het Verizon CDN standaard, moeten Azure CDN gebruikers de waarde **Origin** gebruiken. 
 
-       Bijvoorbeeld: https:\//&lt;eind punt&gt;. azureedge.net/**MyFolder/index.htm**
+       Bijvoorbeeld: https: \/ / &lt; eind punt &gt; . azureedge.net/**MyFolder/index.htm**
 
-     Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http\/:/WPC.0001. &lt;domein&gt;/800001/myorigin/**MyFolder/index.htm**
+     Deze URL verwijst naar de volgende Verizon CDN-hostnaam: http: \/ /WPC.0001. &lt; domein &gt; /800001/myorigin/**MyFolder/index.htm**
 
 - Een Edge CNAME-URL wordt herschreven naar een CDN-URL voorafgaand aan de vergelijking van de URL.
 
     Zo verwijzen beide van de volgende Url's naar hetzelfde activum en hebben ze daarom hetzelfde URL-pad:
-     - CDN-URL http://wpc.0001.&lt:;d&gt;omain/800001/CustomerOrigin/Path/Asset.htm
-     - Edge CNAME-URL: http\//&lt;:&gt;endpoint. azureedge.net/Path/Asset.htm
+     - CDN-URL: http://wpc.0001.&lt ;d omain &gt; /800001/CustomerOrigin/Path/Asset.htm
+     - Edge CNAME-URL: http: \/ / &lt; endpoint &gt; . azureedge.net/Path/Asset.htm
     
     Extra informatie:
     
@@ -835,7 +835,7 @@ Waarde                   | Ten opzichte van    | Resultaat
 /80ABCD/origin/text/*   | Hoofdmap           | Dit patroon wordt vergeleken wanneer het aangevraagde activum voldoet aan de volgende criteria: <br />-Het moet zich bevinden op een oorsprong van de klant met de naam ' Origin '. <br />-Het relatieve pad moet beginnen met een map met de naam "text". Dat wil zeggen dat het aangevraagde activum zich bevindt in de map Text of in een recursieve submappen.
 */CSS/* */js/*          | Hoofdmap of oorsprong | Dit patroon wordt afgestemd op alle CDN-of Edge CNAME-Url's die een CSS-of js-map bevatten.
 *. jpg *. gif *. png       | Hoofdmap of oorsprong | Dit patroon wordt afgestemd op alle CDN-en Edge CNAME-Url's die eindigen op. jpg,. GIF of. png. Een alternatieve manier om dit patroon op te geven is met de [voor waarde matching van URL-pad](#url-path-extension).
-/images/* /media/*      | Oorsprong         | Dit patroon wordt afgestemd op CDN-of Edge CNAME-Url's waarvan het relatieve pad begint met een map ' Images ' of ' media '. <br />-CDN-URL: http\/:/WPC.0001. &lt;domein&gt;/800001/myorigin/images/Sales/event1.png<br />-Voor beeld van Edge CNAME URL:\/http:/CDN.mydomain.com/images/Sales/event1.png
+/images/* /media/*      | Oorsprong         | Dit patroon wordt afgestemd op CDN-of Edge CNAME-Url's waarvan het relatieve pad begint met een map ' Images ' of ' media '. <br />-CDN-URL: http: \/ /WPC.0001. &lt; domein &gt; /800001/myorigin/images/Sales/event1.png<br />-Voor beeld van Edge CNAME URL: http: \/ /CDN.mydomain.com/images/Sales/event1.png
 
 [Terug naar boven](#reference-for-rules-engine-match-conditions)
 
@@ -847,7 +847,7 @@ Waarde                   | Ten opzichte van    | Resultaat
 
 Vergelijkt de query reeks van een aanvraag naar de opgegeven waarde.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder wordt voldaan aan de voor waarde URL-query letterlijke matching.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder wordt voldaan aan de voor waarde URL-query letterlijke matching.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-query teken reeks bevat die overeenkomt met de opgegeven query reeks.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-query teken reeks bevat die niet overeenkomt met de opgegeven query reeks.
@@ -884,7 +884,7 @@ Belang rijke informatie:
 
 Hiermee worden aanvragen geïdentificeerd die de opgegeven query reeks parameter bevatten. Deze para meter wordt ingesteld op een waarde die overeenkomt met een opgegeven patroon. Query reeks parameters (bijvoorbeeld para meter = waarde) in de aanvraag-URL bepalen of aan deze voor waarde wordt voldaan. Deze match-voor waarde identificeert een query reeks parameter met de naam en accepteert een of meer waarden voor de waarde van de para meter. 
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van de URL-query parameter wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor het vergelijken van de URL-query parameter wordt bereikt.
 
 - **Overeenkomsten**: vereist dat een aanvraag de opgegeven para meter bevat met een waarde die overeenkomt met ten minste één van de waarden die zijn gedefinieerd in deze match-voor waarde.
 - **Komt niet overeen**: vereist dat de aanvraag voldoet aan een van de volgende criteria:
@@ -953,11 +953,11 @@ Belang rijke informatie:
 
 In het volgende voor beeld ziet u hoe deze optie in bepaalde situaties werkt:
 
-Naam  | Waarde |  Resultaat
+Name  | Waarde |  Resultaat
 ------|-------|--------
 Gebruiker  | Joe   | Dit patroon wordt vergeleken wanneer de query reeks voor een aangevraagde URL '? User = Joe ' is.
 Gebruiker  | *     | Dit patroon wordt vergeleken wanneer de query reeks voor een aangevraagde URL een gebruikers parameter bevat.
-E-mail | Joe\* | Dit patroon wordt vergeleken wanneer de query reeks voor een aangevraagde URL een e-mail parameter bevat die begint met ' Joe '.
+Email | Joe\* | Dit patroon wordt vergeleken wanneer de query reeks voor een aangevraagde URL een e-mail parameter bevat die begint met ' Joe '.
 
 [Terug naar boven](#reference-for-rules-engine-match-conditions)
 
@@ -969,7 +969,7 @@ E-mail | Joe\* | Dit patroon wordt vergeleken wanneer de query reeks voor een aa
 
 Hiermee worden aanvragen geïdentificeerd die de opgegeven query reeks parameter bevatten. Deze para meter wordt ingesteld op een waarde die overeenkomt met een opgegeven [reguliere expressie](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde URL-query regex matching is voldaan.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde URL-query regex matching is voldaan.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-query teken reeks bevat die overeenkomt met de opgegeven reguliere expressie.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-query teken reeks bevat die niet overeenkomt met de opgegeven reguliere expressie.
@@ -991,7 +991,7 @@ Belang rijke informatie:
 
    Houd er rekening mee dat percentage symbolen moeten worden voorafgegaan.
 
-- Dubbele Escape speciale reguliere expressie tekens (bijvoorbeeld \^$. +) om een back slash in de reguliere expressie op te neemt.
+- Dubbele Escape speciale reguliere expressie tekens (bijvoorbeeld \^ $. +) om een back slash in de reguliere expressie op te neemt.
 
    Bijvoorbeeld:
 
@@ -1017,7 +1017,7 @@ Belang rijke informatie:
 
 Vergelijkt de opgegeven waarde (n) met de query teken reeks van de aanvraag.
 
-De optie **treffers**/**komt niet overeen met** de voor waarden waaronder de voor waarde voor de URL-query Joker teken overeenkomst wordt bereikt.
+De optie **treffers** / **komt niet overeen met** de voor waarden waaronder de voor waarde voor de URL-query Joker teken overeenkomst wordt bereikt.
 
 - **Overeenkomsten**: vereist dat de aanvraag een URL-query teken reeks bevat die overeenkomt met de opgegeven Joker teken waarde.
 - **Komt niet overeen**: vereist dat de aanvraag een URL-query teken reeks bevat die niet overeenkomt met de opgegeven Joker teken waarde.
@@ -1056,7 +1056,7 @@ In het volgende voor beeld ziet u hoe deze optie in bepaalde situaties werkt:
  Naam                 | Beschrijving
  ---------------------|------------
 gebruiker = Joe              | Dit patroon wordt vergeleken wanneer de query reeks voor een aangevraagde URL '? User = Joe ' is.
-\*gebruiker =\* \*OptOut =\* | Dit patroon wordt vergeleken wanneer de URL-query van de CDN de para meter user of OptOut bevat.
+\*gebruiker = \* \* OptOut =\* | Dit patroon wordt vergeleken wanneer de URL-query van de CDN de para meter user of OptOut bevat.
 
 [Terug naar boven](#reference-for-rules-engine-match-conditions)
 
@@ -1066,6 +1066,6 @@ gebruiker = Joe              | Dit patroon wordt vergeleken wanneer de query ree
 
 - [Overzicht van Azure Content Delivery Network](cdn-overview.md)
 - [Referentie voor regels-engine](cdn-verizon-premium-rules-engine-reference.md)
-- [Voorwaardelijke expressies van regel engine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Functies van de engine voor regels](cdn-verizon-premium-rules-engine-reference-features.md)
+- [Voorwaardelijke expressies in de regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Functies van de regelengine](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Standaard HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)

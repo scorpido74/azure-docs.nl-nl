@@ -4,12 +4,12 @@ description: Waarschuwingen voor activiteiten logboeken maken met behulp van de 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132395"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744269"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor  
 
@@ -37,7 +37,7 @@ U kunt het Azure Portal gebruiken om waarschuwings regels voor het activiteiten 
 
 Gebruik de volgende procedure.
 
-1. Selecteer in de Azure Portal **controle** > **waarschuwingen**.
+1. Selecteer in de Azure Portal **controle**  >  **waarschuwingen**.
 2. Selecteer **nieuwe waarschuwings regel** in de linkerbovenhoek van het venster **waarschuwingen** .
 
      ![Nieuwe waarschuwings regel](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -48,7 +48,7 @@ Gebruik de volgende procedure.
 
 3. Geef onder **waarschuwings voorwaarde definiëren**de volgende informatie op en selecteer **gereed**:
 
-   - **Waarschuwings doel:** Als u het doel voor de nieuwe waarschuwing wilt weer geven en selecteren, gebruikt u **filteren op abonnements** / **filter op resource type**. Selecteer de resource of resource groep in de lijst die wordt weer gegeven.
+   - **Waarschuwings doel:** Als u het doel voor de nieuwe waarschuwing wilt weer geven en selecteren, gebruikt u **filteren op abonnements**  /  **filter op resource type**. Selecteer de resource of resource groep in de lijst die wordt weer gegeven.
 
      > [!NOTE]
      > 
@@ -67,6 +67,11 @@ Gebruik de volgende procedure.
      **Scherm criteria toevoegen**
 
      ![Criteria toevoegen](media/alerts-activity-log/add-criteria.png)
+     
+     > [!NOTE]
+     > 
+     >  Om een hoge kwaliteit en een efficiënte regel te hebben, vragen we u om ten minste één voor waarde toe te voegen aan regels met het signaal ' alle beheerders '. 
+     > Als onderdeel van de definitie van de waarschuwing moet u een van de vervolg keuzelijsten vullen: ' gebeurtenis niveau ', ' status ' of ' initiated by ' en door dat de regel specifieker is.
 
      - **Geschiedenis tijd**: gebeurtenissen die beschikbaar zijn voor de geselecteerde bewerking kunnen worden weer gegeven in de afgelopen 6, 12 of 24 uur of in de afgelopen week.
 
@@ -103,7 +108,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Weer geven en beheren in de Azure Portal
 
-1. Selecteer in de Azure Portal **controle** > **waarschuwingen**. Selecteer **waarschuwings regels beheren** in de linkerbovenhoek van het venster.
+1. Selecteer in de Azure Portal **controle**  >  **waarschuwingen**. Selecteer **waarschuwings regels beheren** in de linkerbovenhoek van het venster.
 
     ![Waarschuwingsregels beheren](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -127,7 +132,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
-Als u een waarschuwings regel voor een activiteiten logboek wilt maken met behulp van een Azure Resource Manager sjabloon, maakt `microsoft.insights/activityLogAlerts`u een resource van het type. Vervolgens vult u alle gerelateerde eigenschappen in. Hier volgt een sjabloon voor het maken van een waarschuwings regel voor het activiteiten logboek:
+Als u een waarschuwings regel voor een activiteiten logboek wilt maken met behulp van een Azure Resource Manager sjabloon, maakt u een resource van het type `microsoft.insights/activityLogAlerts` . Vervolgens vult u alle gerelateerde eigenschappen in. Hier volgt een sjabloon voor het maken van een waarschuwings regel voor het activiteiten logboek:
 
 ```json
 {

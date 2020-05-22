@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652106"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757973"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -142,14 +142,23 @@ Een lijst met alle logische volumes, namen en hun paden in een volume groep:
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+De ```lvdisplay``` opdracht geeft ook aan of de volume groepen actief zijn. Als de volume groep is gemarkeerd als inactief, moet deze opnieuw worden geactiveerd om te worden gekoppeld. Als de volume groep wordt weer gegeven als inactief, gebruikt u de volgende opdracht om deze te activeren.
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+Nadat de naam van de volume groep actief is, voert ```lvdisplay``` u de opdracht eenmaal meer uit om alle relevante kenmerken weer te geven.
 
 De logische volumes koppelen aan het pad naar keuze:
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Voor RAID-matrices

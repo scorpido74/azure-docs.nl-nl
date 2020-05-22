@@ -2,16 +2,20 @@
 title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft Docs
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298286"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744866"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
+
+> [!NOTE]
+> Continue export wordt alleen ondersteund voor klassieke Application Insights-resources. [Op werk ruimte gebaseerde Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) moeten [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)gebruiken.
+>
 
 Voordat u doorlopend exporteren instelt, zijn er enkele alternatieven die u wellicht wilt overwegen:
 
@@ -166,7 +170,7 @@ De continue export wordt opnieuw gestart.
 
 Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop-clusters in de Cloud. HDInsight biedt diverse technologieën voor het beheren en analyseren van big data, en u kunt deze gebruiken voor het verwerken van gegevens die zijn geëxporteerd uit Application Insights.
 
-## <a name="q--a"></a>Vragen en antwoorden
+## <a name="q--a"></a>Vragenronde
 * *Maar het enige wat ik wil, is een eenmalige down load van een grafiek.*  
 
     Ja, dat kunt u doen. Klik boven aan het tabblad op **gegevens exporteren**.

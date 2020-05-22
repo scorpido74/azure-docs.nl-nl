@@ -1,36 +1,52 @@
 ---
 title: Overzicht van verificatie van Azure Automation-account
-description: Dit artikel bevat een overzicht van Azure Automation beveiligings-en verificatie methoden voor Automation-accounts.
+description: Dit artikel bevat een overzicht van de verificatie van Azure Automation-account.
 keywords: automation-beveiliging, veilige automation; automation-verificatie
 services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e3c2b15b45eb15b40782a5d0ecfe1e736fc013
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f78161590c897e6337e8694acb9f8a6b34258246
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683519"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743805"
 ---
-# <a name="azure-automation-account-authentication-overview"></a>Overzicht van verificatie van Azure Automation-account
+# <a name="automation-account-authentication-overview"></a>Overzicht van Automation-accountverificatie
 
-Met Azure Automation kunt u taken automatiseren voor bronnen in Azure, on-premises en bij andere cloudproviders zoals Amazon Web Services (AWS). Voor een runbook om de vereiste acties uit te voeren, moet het een machtiging hebben om veilig toegang te krijgen tot de resources met de mini maal vereiste rechten binnen het abonnement.
+Met Azure Automation kunt u taken automatiseren voor bronnen in Azure, on-premises en bij andere cloudproviders zoals Amazon Web Services (AWS). U kunt runbooks gebruiken om uw taken te automatiseren, of een Hybrid Runbook Worker als u niet-Azure-taken wilt beheren. Beide omgevingen hebben machtigingen nodig om veilig toegang te krijgen tot de resources met de minimale rechten die zijn vereist binnen het Azure-abonnement.
 
-Wanneer u Azure Automation voor het eerst start, moet u ten minste één Automation-account maken. Met Automation-accounts kunt u uw Automation-resources (runbooks, assets, configuraties) isoleren van de resources in andere Automation-accounts. U kunt Automation-accounts gebruiken om resources onder te verdelen in afzonderlijke logische omgevingen. U kunt bijvoorbeeld één account maken voor ontwikkeling, één voor productie, en één voor uw on-premises omgeving. Een Azure Automation-account verschilt van uw Microsoft-account of de accounts die zijn gemaakt in uw Azure-abonnement.
+In dit artikel worden verificatie scenario's behandeld die door Azure Automation worden ondersteund en wordt uitgelegd hoe u aan de slag kunt gaan op basis van de omgeving of omgevingen die u wilt beheren.
 
-De Automation-resources voor elk Automation-account zijn gekoppeld aan één Azure-regio, maar Automation-accounts kunnen alle resources in uw abonnement beheren. De voornaamste reden om Automation-accounts in verschillende regio's te maken zou zijn als u beleid hebt waardoor gegevens en resources moeten worden geïsoleerd in een specifieke regio.
+## <a name="automation-account"></a>Automation-account 
 
-Alle taken die u uitvoert met behulp van Azure Resource Manager en de Azure-cmdlets in Azure Automation, moeten worden geverifieerd bij Azure met behulp van Azure Active Directory (Azure AD)-verificatie op basis van de identiteits referentie. Uitvoeren als-accounts in Azure Automation bieden verificatie voor het beheren van resources in azure met behulp van de Azure-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er een nieuwe Service-Principal-gebruiker gemaakt in azure AD en wordt de rol Inzender toegewezen aan deze gebruiker op het abonnements niveau. Voor runbooks die gebruikmaken van Hybrid Runbook Workers op Azure virtual machines, kunt u met behulp van [Runbook-verificatie met beheerde identiteiten](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) in plaats van uitvoeren als-accounts te verifiëren bij uw Azure-resources.
+Wanneer u Azure Automation voor het eerst start, moet u ten minste één Automation-account maken. Met Automation-accounts kunt u uw Automation-resources, runbooks, assets, configuraties, van de resources van andere accounts isoleren. U kunt Automation-accounts gebruiken om resources onder te verdelen in afzonderlijke logische omgevingen. U kunt bijvoorbeeld één account maken voor ontwikkeling, één voor productie, en één voor uw on-premises omgeving. Een Azure Automation-account verschilt van uw Microsoft-account of de accounts die zijn gemaakt in uw Azure-abonnement. Zie [een Automation-account maken](automation-quickstart-create-account.md)voor een inleiding tot het maken van een Automation-account.
+
+## <a name="automation-resources"></a>Automation-resources
+
+De Automation-resources voor elk Automation-account zijn gekoppeld aan één Azure-regio, maar het account kan alle resources in uw Azure-abonnement beheren. De belangrijkste reden voor het maken van Automation-accounts in verschillende regio's is als u beleids regels hebt waarvoor gegevens en resources moeten worden geïsoleerd in een bepaalde regio.
+
+Alle taken die u maakt met behulp van Azure Resource Manager en de Power shell-cmdlets in Azure Automation moeten worden geverifieerd bij Azure met behulp van Azure Active Directory (Azure AD)-verificatie op basis van de identiteit van de organisatie. 
+
+## <a name="run-as-account"></a>Run As-account
+
+Uitvoeren als-accounts in Azure Automation bieden verificatie voor het beheer van Azure-resources met behulp van Power shell-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er een nieuwe Service-Principal-gebruiker gemaakt in azure AD en wordt de rol Inzender toegewezen aan deze gebruiker op het abonnements niveau. Voor runbooks die Hybrid Runbook Workers op virtuele machines van Azure gebruiken, kunt u [Runbook-verificatie met beheerde identiteiten](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) gebruiken in plaats van run as-accounts om uw Azure-resources te verifiëren.
+
+## <a name="service-principal-for-run-as-account"></a>Service-Principal voor uitvoeren als-account
 
 De service-principal voor een uitvoeren als-account heeft geen machtigingen om Azure AD standaard te lezen. Als u machtigingen wilt toevoegen om Azure AD te lezen of te beheren, moet u de machtigingen voor de Service-Principal verlenen onder **API-machtigingen**. Zie [machtigingen toevoegen voor toegang tot Web-api's](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
 
-Op rollen gebaseerd toegangsbeheer is beschikbaar in Azure Resource Manager voor het toekennen van toegestane acties aan een Azure AD-gebruikersaccount en Uitvoeren als-account, en om die service-principal te verifiëren. Lees het artikel [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md) voor meer informatie die u helpt bij het ontwikkelen van een model voor het beheren van machtigingen in Automation.  
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Runbooks die worden uitgevoerd op een Hybrid Runbook Worker in uw Data Center of op computer services in andere Cloud omgevingen, zoals AWS, kunnen niet dezelfde methode gebruiken die doorgaans wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources. Dit is omdat deze resources buiten Azure worden uitgevoerd en er daarom voor deze resources eigen beveiligingsreferenties moeten worden gedefinieerd in Automation, zodat ze kunnen worden geverifieerd voor resources waartoe ze lokaal toegang hebben. Zie [Runbooks verifiëren voor Hybrid Runbook Workers](automation-hrw-run-runbooks.md)voor meer informatie over runbook-verificatie met runbook Workers. 
+Toegangs beheer op basis van rollen is beschikbaar met Azure Resource Manager om toegestane acties te verlenen aan een Azure AD-gebruikers account en een uitvoeren als-account en de service-principal te verifiëren. Lees het artikel [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md) voor meer informatie die u helpt bij het ontwikkelen van een model voor het beheren van machtigingen in Automation.  
+
+## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook-verificatie met Hybrid Runbook Worker 
+
+Runbooks die worden uitgevoerd op een Hybrid Runbook Worker in uw Data Center of voor computer services in andere Cloud omgevingen, zoals AWS, kunnen niet dezelfde methode gebruiken die doorgaans wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources. Dit is omdat deze resources buiten Azure worden uitgevoerd en er daarom voor deze resources eigen beveiligingsreferenties moeten worden gedefinieerd in Automation, zodat ze kunnen worden geverifieerd voor resources waartoe ze lokaal toegang hebben. Zie [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md)voor meer informatie over runbook-verificatie met runbook-werk rollen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Automation-account maken vanuit de Azure Portal](automation-create-standalone-account.md).
-* [Maak een Automation-account met Azure Resource Manager sjabloon](automation-create-account-template.md).
-* [Verifiëren met Amazon Web Services (AWS)](automation-config-aws-account.md).
+* [Een Automation-account maken vanuit Azure Portal](automation-create-standalone-account.md)
+* [Een Automation-account maken met Azure Resource Manager sjabloon](automation-create-account-template.md)
+* [Verifiëren met Amazon Web Services (AWS)](automation-config-aws-account.md)

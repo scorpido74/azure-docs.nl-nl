@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264919"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745757"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -295,7 +295,7 @@ ExpressRoute Premium is een verzameling van de volgende functies:
 * Het aantal VNets-en ExpressRoute-Global Reach verbindingen dat op een ExpressRoute-circuit kan worden ingeschakeld (de standaard waarde is 10). Zie de tabel met ExpressRoute- [limieten](#limits) voor meer informatie.
 * Connectiviteit met Office 365
 * Wereld wijde connectiviteit via het micro soft-basis netwerk. U kunt nu een VNet in een geopolitieke regio koppelen met een ExpressRoute-circuit in een andere regio.<br>
-    **Vindt**
+    **Voorbeelden:**
 
     *  U kunt een VNet dat is gemaakt in Europa West koppelen aan een ExpressRoute-circuit dat is gemaakt in silicone dal. 
     *  Op de micro soft-peering worden voor voegsels van andere geopolitieke regio's geadverteerd, zodat u verbinding kunt maken met bijvoorbeeld SQL Azure in Europa West vanuit een circuit in silicone dal.
@@ -342,7 +342,7 @@ Vergeleken met een standaard ExpressRoute-circuit heeft een lokaal circuit dezel
 ExpressRoute Local heeft ook dezelfde limieten voor bronnen (bijvoorbeeld het aantal VNets per circuit) als standaard. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Waar is ExpressRoute lokaal beschikbaar en welke Azure-regio's wordt elke peering-locatie toegewezen aan?
-ExpressRoute local is beschikbaar op de peering locaties waar een of twee Azure-regio's sluitend zijn. Het is niet beschikbaar op een peering-locatie waar zich geen Azure-regio in die staat of provincie bevindt. Zie de exacte toewijzingen op [de pagina locaties](expressroute-locations-providers.md).  
+ExpressRoute local is beschikbaar op de peering locaties waar een of twee Azure-regio's sluitend zijn. Het is niet beschikbaar op een peering-locatie waar zich geen Azure-regio bevindt in die staat of provincie of land/regio. Zie de exacte toewijzingen op [de pagina locaties](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>ExpressRoute voor Office 365
 

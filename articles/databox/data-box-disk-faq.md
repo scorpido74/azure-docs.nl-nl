@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77918934"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745802"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: veelgestelde vragen
 
@@ -36,7 +36,7 @@ A.  De service Azure Data Box is bedoeld voor offlinegegevensopname. Met deze se
 ### <a name="q-what-are-azure-data-box-disks"></a>V. Wat is Azure Data Box Disks?
 A. Met Azure Data Box Disks kunt u terabytes aan gegevens snel, goedkoop en veilig naar en vanuit Azure overdragen. U ontvangt maximaal vijf schijven, met een maximale opslagcapaciteit van 35 TB. U kunt deze schijven makkelijk configureren, verbinden en ontgrendelen via de Data Box-service in Azure Portal.  
 
-Schijven worden versleuteld met Microsoft BitLocker-stationsversleuteling en uw encryptiesleutels worden beheerd in Azure Portal. Vervolgens kopieert u de gegevens vanuit de servers van de klant. In het datacenter worden uw gegevens naar de cloud gemigreerd met behulp van een snelle uploadkoppeling via een privénetwerk en naar Azure geüpload.
+Schijven worden versleuteld met Microsoft BitLocker-stationsversleuteling en uw encryptiesleutels worden beheerd in Azure Portal. Vervolgens kopieert u de gegevens van de servers van de klant. In het datacenter worden uw gegevens naar de cloud gemigreerd met behulp van een snelle uploadkoppeling via een privénetwerk en naar Azure geüpload.
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>V. Wanneer moet ik Data Box Disks gebruiken?
 A. Als u 40 TB (of minder) aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box Disks.
@@ -56,8 +56,8 @@ A.  Als u wilt zien waar de Data Box schijven op dit moment beschikbaar zijn, ga
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>V. In welke regio's kan ik gegevens opslaan met Data Box Disks?
 A. Data Box Disk wordt ondersteund voor alle regio's binnen de Verenigde Staten, Canada, Australië, Europa-west en Europa-noord, Korea en Japan. Alleen de Azure-regio's met een openbare cloud worden ondersteund. Azure Government of andere onafhankelijke clouds worden niet ondersteund.
 
-### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>V. Worden de land grenzen van mijn Data Box Disk tijdens de verzen ding?
-A. Data Box Disk worden verzonden vanuit hetzelfde land als hun bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waarbij schijven kunnen worden verzonden naar en naar elk land van de EU.
+### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>V. Maakt mijn Data Box Disk tijdens de verzen ding deel uit van de land-en regio grenzen?
+A. Data Box Disk worden verzonden vanuit hetzelfde land/dezelfde regio als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waarbij schijven kunnen worden verzonden naar en vanuit elk land/regio in de EU.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box-schijven?
 A. Neem bij problemen met Data Box-schijven contact op met [Microsoft Ondersteuning](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -138,7 +138,7 @@ A.  U kunt het kopieerproces als volgt versnellen:
 
 - Maak een lokale VHDx in snelle opslag of maak een lege VHD op de HDD/SSD (langzamer).
 - Koppel deze aan een VM.
-- Kopieer de bestanden naar de schijf van de VM.
+- Kopieer de bestanden naar de schijf van de virtuele machine.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>V. Kan ik meerdere opslagaccounts gebruiken voor Data Box Disks?
 A.  Nee. Er wordt momenteel slechts één (algemeen of klassiek) opslagaccount ondersteund voor Data Box Disks. Zowel dynamische als statische blob wordt ondersteund. Op dit moment worden alleen de opslagaccounts in de V.S. en in West- en Noord-Europa in de openbare Azure-cloud ondersteund.
@@ -159,7 +159,7 @@ A. Azure Files worden ondersteund met Data Box Disk, maar werken niet goed met A
 
 ## <a name="verify-and-upload"></a>Verifiëren en uploaden
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>V. Wanneer heb ik weer toegang tot mijn gegevens in Azure als ik de schijven terug heb gestuurd? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>V. Hoe snel krijg ik toegang tot mijn gegevens in azure nadat ik de schijven weer heb verzonden? 
 A.  Zodra de bestellingsstatus voor Gegevens kopiëren als voltooid is aangemerkt, hebt u weer toegang tot uw gegevens.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>V. Waar bevinden zich mijn gegevens in Azure na het uploaden?

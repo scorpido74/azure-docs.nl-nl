@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565533"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757888"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -107,7 +107,7 @@ Apps die gebruikmaken van hun eigen verouderde methoden om te verifiëren met Az
 
 1. [Verouderde verificatie blok keren als u AD FS gebruikt](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Stel [share point online en Exchange Online in voor gebruik van moderne verificatie](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Als u Azure AD Premium hebt, gebruikt u [beleid voor voorwaardelijke toegang](../../active-directory/conditional-access/overview.md) om verouderde verificatie te blok keren, anders de [standaard instellingen voor Azure AD-beveiliging](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)te gebruiken.
+3. Als u Azure AD Premium hebt, gebruikt u beleid voor voorwaardelijke toegang om [verouderde verificatie te blok keren](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md), anders de [standaard instellingen voor Azure AD-beveiliging](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)te gebruiken.
 
 ### <a name="block-invalid-authentication-entry-points"></a>Ongeldige invoer punten voor verificatie blok keren
 
@@ -117,7 +117,7 @@ Als u de mentale schending wilt gebruiken, moet u de invloed van de gebruikers r
 
 Het is belang rijk om inzicht te krijgen in de verschillende ervaringen van de [Azure AD-toepassings instemming](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), de [typen machtigingen en toestemming](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)en de implicaties van de beveiligings postuur van uw organisatie. Standaard kunnen alle gebruikers in azure AD toepassingen verlenen die gebruikmaken van het micro soft-identiteits platform voor toegang tot de gegevens van uw organisatie. Hoewel gebruikers in staat stellen om op zichzelf toestemming te geven, kunnen ze eenvoudig nuttige toepassingen verwerven die worden geïntegreerd met Microsoft 365, Azure en andere services. het kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd.
 
-Micro soft adviseert [toekomstige acties voor de gebruikers toestemming uit te scha kelen](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden er nog steeds toestemming gegeven voor eerdere toestemmingen, maar moeten alle toekomstige toestemmings bewerkingen worden uitgevoerd door een beheerder. Toestemming van de beheerder kan worden aangevraagd door gebruikers via een geïntegreerde [aanvraag werk stroom](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) voor het beheer van toestemming of via uw eigen ondersteunings processen. Voordat u de toestemming van de eind gebruiker uitschakelt, moet u onze [aanbevelingen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) gebruiken om deze wijziging in uw organisatie te plannen. Als u wilt dat alle gebruikers toegang hebben, kunt u overwegen om toestemming te geven namens [alle gebruikers](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), en ervoor te zorgen dat gebruikers die nog niet afzonderlijk zijn gemachtigd, toegang hebben tot de app. Als u niet wilt dat deze toepassingen beschikbaar zijn voor alle gebruikers in alle scenario's, gebruikt u [toepassings toewijzing](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) en [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) om de gebruikers toegang tot apps te beperken.
+Micro soft adviseert [toekomstige acties voor de gebruikers toestemming uit te scha kelen](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden er nog steeds toestemming gegeven voor eerdere toestemmingen, maar moeten alle toekomstige toestemmings bewerkingen worden uitgevoerd door een beheerder. Toestemming van de beheerder kan worden aangevraagd door gebruikers via een geïntegreerde [aanvraag werk stroom](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) voor het beheer van toestemming of via uw eigen ondersteunings processen. Voordat u de toestemming van de eind gebruiker uitschakelt, moet u onze [aanbevelingen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) gebruiken om deze wijziging in uw organisatie te plannen. Als u wilt dat alle gebruikers toegang hebben, kunt u overwegen om toestemming te geven namens [alle gebruikers](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), en ervoor te zorgen dat gebruikers die nog niet afzonderlijk zijn gemachtigd, toegang hebben tot de app. Als u niet wilt dat deze toepassingen beschikbaar zijn voor alle gebruikers in alle scenario's, gebruikt u [toepassings toewijzing](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) en voorwaardelijke toegang om de gebruikers toegang tot [specifieke apps](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)te beperken.
 
 Zorg ervoor dat gebruikers goed keuring van de beheerder kunnen aanvragen voor nieuwe toepassingen om de wrijving van de gebruiker te verminderen, het ondersteunings volume te minimaliseren en te voor komen dat gebruikers zich aanmelden voor toepassingen met niet-Azure AD-referenties. Wanneer u uw toestemming bewerkingen hebt geregeld, moeten beheerders de app en de machtigingen regel matig controleren.
 

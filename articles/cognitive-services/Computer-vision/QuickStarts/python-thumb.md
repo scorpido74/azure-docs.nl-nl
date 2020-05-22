@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9f80d9be8966d1e2d8350f7fbc3c34182cb7b63e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 38fb7f3b0f2d85762161c384f4e5564078c9a63c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684127"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745182"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en python
 
-In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. Met de methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) kunt u de gewenste hoogte en breedte opgeven. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
+In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. Met de methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c) kunt u de gewenste hoogte en breedte opgeven. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
 Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/) voordat u begint.
 
@@ -47,7 +47,7 @@ from io import BytesIO
 subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
 endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-thumbnail_url = endpoint + "vision/v2.1/generateThumbnail"
+thumbnail_url = endpoint + "vision/v3.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
@@ -101,4 +101,4 @@ Verken vervolgens een python-toepassing die Computer Vision gebruikt voor het ui
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Python](../Tutorials/PythonTutorial.md)
 
-* Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+* Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c).

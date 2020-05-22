@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371639"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747300"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Onbewerkte HTTP-logboeken Azure CDN
 Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Onbewerkte logboeken verschillen van activiteiten Logboeken. Met activiteiten logboeken krijgt u inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Onbewerkte logboeken bieden een overzicht van de bewerkingen van uw resource.
@@ -23,7 +23,7 @@ Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten di
 > [!IMPORTANT]
 > De functie voor onbewerkte HTTP-Logboeken is beschikbaar voor Azure CDN van micro soft.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -33,7 +33,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren: 
 
-1. Selecteer in het menu Azure Portal **alle resources** >> **\<uw-CDN-profiel>**.
+1. Selecteer in het menu Azure Portal **alle resources**  >>  ** \< uw-CDN-profiel>**.
 
 2. Selecteer onder **Bewaking** de optie **Diagnostische instellingen**.
 
@@ -84,7 +84,7 @@ Azure CDN van de micro soft-service biedt momenteel onbewerkte Logboeken. RAW-lo
 | Keuzemenu                   | De rand pop, die op de aanvraag van de gebruiker reageerde. De afkortingen van Pop's zijn luchthaven codes van hun respectieve metro lijnen.                                                                                   |
 | Cache status          | Geeft aan of het object is geretourneerd uit de cache of afkomstig is van de oorsprong.                                                                                                             |
 > [!IMPORTANT]
-> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan naar geo-filtering onder CDN-eind punten worden genavigeerd en elk land dat niet relevant is voor hun werk belasting, blok keren en op Opslaan drukken. 
+> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan worden genavigeerd naar geo-filtering onder CDN-eind punten en alle landen/regio's blok keren die niet relevant zijn voor de werk belasting en op Opslaan drukken. 
 
 > [!NOTE]
 > De logboeken kunnen worden weer gegeven onder uw Log Analytics-profiel door een query uit te voeren. Een voorbeeld query zou er als volgt uitzien als AzureDiagnostics | Where Category = = "AzureCdnAccessLog"

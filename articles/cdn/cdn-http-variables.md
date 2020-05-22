@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253693"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747654"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regel engine
 HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens kunt ophalen. Deze meta gegevens kunnen vervolgens worden gebruikt om een aanvraag of antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende functies van de regel Engine:
@@ -34,13 +34,13 @@ HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens
 In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt een lege waarde geretourneerd als GEO-meta gegevens (bijvoorbeeld post code) niet beschikbaar zijn voor een bepaalde aanvraag.
 
 
-| Naam | Variabele | Beschrijving | Voorbeeldwaarde |
+| Name | Variabele | Beschrijving | Voorbeeldwaarde |
 | ---- | -------- | ----------- | ------------ |
 | ASN (aanvrager) | % {geo_asnum} | Hiermee wordt het AS-nummer van de aanvrager aangegeven. <br /><br />**Afgeschaft:** % {virt_dst_asnum}. <br />Deze variabele is vervangen door% {geo_asnum}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
 | Plaats (aanvrager) | % {geo_city} | Hiermee wordt de plaats van de aanvrager aangegeven. | Los Angeles |
 | Continent (aanvrager) | % {geo_continent} | Geeft het continent van de aanvrager aan met de afkorting. <br />Geldige waarden zijn: <br />AF: Afrika<br />ALS: Azië<br />EU: Europa<br />N.V.T.: Noord-Amerika<br />OC: Oceania<br />SA: Zuid-Amerika<br /><br />**Afgeschaft:** % {virt_dst_continent}. <br />Deze variabele is vervangen door% {geo_continent}. <br />Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken.| N.v.t. |
 | Cookie waarde | % {cookie_Cookie} | Retourneert de waarde die overeenkomt met de cookie sleutel die wordt geïdentificeerd door de cookie term. | Voorbeeld gebruik: <br />% {cookie__utma}<br /><br />Voorbeeld waarde:<br />111662281.2.10.1222100123 |
-| Land (aanvrager) | % {geo_country} | Geeft het land van oorsprong van de aanvrager aan via de land code. <br />**Afgeschaft:** % {virt_dst_country}. <br /><br />Deze variabele is vervangen door% {geo_country}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | VS |
+| Land/regio (aanvrager) | % {geo_country} | Geeft het land of de regio van oorsprong van de aanvrager aan via het land-of regio nummer. <br />**Afgeschaft:** % {virt_dst_country}. <br /><br />Deze variabele is vervangen door% {geo_country}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | VS |
 | Aangewezen markt gebied (aanvrager) | % {geo_dma_code} |Geeft de media markt van de aanvrager aan op basis van de regio code. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn van de Verenigde Staten.| 745 |
 | HTTP-aanvraag methode | % {request_method} | Hiermee wordt de HTTP-aanvraag methode aangegeven. | GET |
 | HTTP-status code | % {status} | Hiermee wordt de HTTP-status code voor het antwoord aangegeven. | 200 |
@@ -52,7 +52,7 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 | Post code (aanvrager) | % {geo_postal_code} | Hiermee wordt de post code van de aanvrager aangegeven. | 90210 |
 | Query reeks gevonden | % {is_args} | De waarde voor deze variabele is afhankelijk van het feit of de aanvraag een query reeks bevat.<br /><br />-Query reeks gevonden:?<br />-Geen query reeks: NULL | ? |
 | Query teken reeks parameter gevonden | % {is_amp} | De waarde voor deze variabele is afhankelijk van het feit of de aanvraag ten minste één query teken reeks parameter bevat.<br /><br />-Para meter gevonden: &<br />-Geen para meters: NULL | & |
-| Parameter waarde van de query reeks | % {arg_&lt;para&gt;meter} | Retourneert de waarde die overeenkomt met de query teken reeks parameter &lt;geïdentificeerd&gt; door de parameter term. | Voorbeeld gebruik: <br />% {arg_language}<br /><br />Voorbeeld query teken reeks parameter: <br />? language = en<br /><br />Voorbeeld waarde: en |
+| Parameter waarde van de query reeks | % {arg_ &lt; para meter &gt; } | Retourneert de waarde die overeenkomt met de query teken reeks parameter geïdentificeerd door de &lt; parameter &gt; term. | Voorbeeld gebruik: <br />% {arg_language}<br /><br />Voorbeeld query teken reeks parameter: <br />? language = en<br /><br />Voorbeeld waarde: en |
 | Query teken reeks waarde | % {query_string} | Hiermee wordt de volledige query teken reeks waarde aangegeven die in de aanvraag-URL is gedefinieerd. |Key1 = val1&Key2 = val2&Key3 = val3 |
 | Verwijzend domein | % {referring_domain} | Hiermee wordt het domein aangegeven dat is gedefinieerd in de header van de verwijzings aanvraag. | <www.google.com> |
 | Regio (aanvrager) | % {geo_region} | Geeft de regio van de aanvrager (bijvoorbeeld staat of provincie) aan met de alfanumerieke afkorting. | CA |
@@ -62,8 +62,8 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 | Aanvraag schema | % {schema} | Hiermee wordt het aanvraag schema aangegeven. |http |
 | Aanvraag-URI (relatief) | % {request_uri} | Hiermee wordt het relatieve pad aangegeven, inclusief de query reeks, gedefinieerd in de aanvraag-URI. | /Marketing/foo.js? loggedin = True |
 | URI van aanvraag (relatief zonder query teken reeks) | % {URI} | Hiermee wordt het relatieve pad naar de aangevraagde inhoud aangegeven. <br /><br/>Belang rijke informatie:<br />-Dit relatieve pad sluit de query reeks uit.<br />-Dit relatieve pad duidt op het herschrijven van URL'S. Een URL wordt onder de volgende omstandigheden opnieuw geschreven:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Functie voor het herschrijven van URL'S: met deze functie wordt het relatieve pad dat in de aanvraag-URI is gedefinieerd, opnieuw geschreven.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL: dit type aanvraag wordt herschreven naar de bijbehorende CDN-URL. |/800001/corigin/rewrittendir/foo.js |
-| Aanvraag-URI | % {Request} | Hiermee wordt de aanvraag beschreven. <br />Syntaxis: &lt;http-&gt; &lt;protocol bij&gt; &lt;methode relatief pad&gt; | /Marketing/foo.js ophalen? loggedin = True HTTP/1.1 |
-| Waarde van de antwoord header | % {resp_&lt;ResponseHeader&gt;} | Retourneert de waarde die overeenkomt met de antwoord header die &lt;wordt&gt; geïdentificeerd door de ResponseHeader-term. <br /><br />Als de naam van de antwoord header een streepje bevat (bijvoorbeeld user-agent), vervangt u dit door een onderstrepings teken (bijvoorbeeld User_Agent). | Voorbeeld gebruik:% {resp_Content_Length}<br /><br />Voorbeeld waarde: 100 |
+| Aanvraag-URI | % {Request} | Hiermee wordt de aanvraag beschreven. <br />Syntaxis: &lt; http-protocol bij methode &gt; &lt; relatief pad &gt; &lt;&gt; | /Marketing/foo.js ophalen? loggedin = True HTTP/1.1 |
+| Waarde van de antwoord header | % {resp_ &lt; ResponseHeader &gt; } | Retourneert de waarde die overeenkomt met de antwoord header die wordt geïdentificeerd door de &lt; ResponseHeader- &gt; term. <br /><br />Als de naam van de antwoord header een streepje bevat (bijvoorbeeld user-agent), vervangt u dit door een onderstrepings teken (bijvoorbeeld User_Agent). | Voorbeeld gebruik:% {resp_Content_Length}<br /><br />Voorbeeld waarde: 100 |
 
 ## <a name="usage"></a>Gebruik
 De volgende tabel beschrijft de juiste syntaxis voor het opgeven van een HTTP-variabele.
@@ -71,9 +71,9 @@ De volgende tabel beschrijft de juiste syntaxis voor het opgeven van een HTTP-va
 
 | Syntaxis | Voorbeeld | Beschrijving |
 | ------ | -------- | ---------- |
-| % {&lt;HTTPVariable&gt;} | % {host} | Gebruik deze syntaxis om de volledige waarde op te halen die overeenkomt met de opgegeven &lt;HTTPVariable&gt;. |
-| % {&lt;HTTPVariableDelimiter&gt;} | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt met de opgegeven &lt;HTTPVariableDelimiter&gt;. |
-| % {&lt;HTTPVariableDelimiterExpression&gt;} | % {host/= ^ www\.([^\.] +)\.([^\.:] +)/CDN. $2. $3:80} | Gebruik een reguliere expressie voor &lt;HTTPVariableDelimiterExpression&gt; om de waarde van een http-variabele te vervangen, te verwijderen of te bewerken. |
+| % { &lt; HTTPVariable &gt; } | % {host} | Gebruik deze syntaxis om de volledige waarde op te halen die overeenkomt met de opgegeven &lt; HTTPVariable &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt met de opgegeven &lt; HTTPVariableDelimiter &gt; . |
+| % { &lt; HTTPVariableDelimiterExpression &gt; } | % {host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Gebruik een reguliere expressie voor &lt; HTTPVariableDelimiterExpression &gt; om de waarde van een http-variabele te vervangen, te verwijderen of te bewerken. |
 
 Namen van HTTP-variabelen ondersteunen alleen alfabetische tekens en onderstrepingen. Converteer niet-ondersteunde tekens naar onderstrepingen.
 
@@ -160,15 +160,15 @@ Belang rijke informatie:
 
 In het volgende voor beeld wordt gebruikgemaakt van de volgende voorbeeld aanvraag-URL:
 
-https:\//CDN.mydomain.com/folder/marketing/myconsultant/proposal.html
+https: \/ /CDN.mydomain.com/folder/marketing/myconsultant/proposal.html
 
 De volgende teken reeks demonstreert verschillende methoden voor het bewerken van variabelen:
 
-https:\//www%{HTTP_HOST: 3}/Mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
+https: \/ /www%{HTTP_HOST: 3}/mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
 
 Op basis van de voor beeld-aanvraag-URL wordt met de bovenstaande variabele manipulatie de volgende waarde geproduceerd:
 
-https:\//www.mydomain.com/Mobile/Marketing/proposal.htm
+https: \/ /www.mydomain.com/Mobile/Marketing/proposal.htm
 
 
 ### <a name="pattern-removal"></a>Patroon verwijderen

@@ -1,18 +1,18 @@
 ---
-title: Integratie van broncode beheer in Azure Automation-verouderd
-description: In dit artikel wordt de integratie van broncode beheer met GitHub in Azure Automation beschreven.
+title: Broncode beheer integratie gebruiken in Azure Automation-verouderd
+description: In dit artikel leest u hoe u de integratie van broncode beheer kunt gebruiken.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: fac6a3b55f4a9150e827682cb3a134c203231978
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855355"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744950"
 ---
-# <a name="source-control-integration-in-azure-automation---legacy"></a>Integratie van broncode beheer in Azure Automation-verouderd
+# <a name="use-source-control-integration-in-azure-automation---legacy"></a>Broncode beheer integratie gebruiken in Azure Automation-verouderd
 
 > [!NOTE]
 > Er is een nieuwe ervaring voor broncode beheer. Zie [broncode beheer (preview)](source-control-integration.md)voor meer informatie over de nieuwe ervaring.
@@ -24,7 +24,7 @@ Met broncode beheer kunt u code pushen van Azure Automation naar broncode beheer
 > [!NOTE]
 > Broncode beheer ondersteunt het ophalen en pushen van [Power shell workflow-runbooks](automation-runbook-types.md#powershell-workflow-runbooks) en [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks). [Grafische runbooks](automation-runbook-types.md#graphical-runbooks) worden nog niet ondersteund.
 
-## <a name="configuring-source-control"></a>Broncode beheer configureren
+## <a name="configure-source-control"></a>Broncode beheer configureren
 
 Er zijn twee eenvoudige stappen vereist voor het configureren van broncode beheer voor uw Automation-account en slechts één als u al een GitHub-account hebt. 
 
@@ -47,7 +47,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
    | Pad naar runbookmap |Het pad naar de runbookmap specificeert het pad in de GitHub-opslag plaats van waaruit u de code wilt pushen of ophalen. De waarde moet worden opgegeven in de notatie **/FolderName/subfoldername**. Alleen runbooks in het pad naar de runbookmap worden gesynchroniseerd met uw Automation-account. Runbooks in de submappen van het pad naar de runbookmap worden **niet** gesynchroniseerd. Gebruiken **/** voor het synchroniseren van alle runbooks in de opslag plaats. |
 3. Bijvoorbeeld als u een opslag plaats hebt met de naam **PowerShellScripts** die een map bevat met de naam **root folder**, die een map met de **naam submap bevat.** U kunt de volgende teken reeksen gebruiken om elk mapniveau te synchroniseren:
 
-   1. Om runbooks vanuit de **opslag plaats**te synchroniseren, is **/** het pad naar de runbookmap.
+   1. Om runbooks vanuit de **opslag plaats**te synchroniseren, is het pad naar de runbookmap **/** .
    2. Als u runbooks wilt synchroniseren vanuit **root folder**, is het pad naar de runbookmap **/RootFolder**.
    3. Als u runbooks wilt **synchroniseren vanuit een submap,** is het pad naar de runbookmap **/RootFolder/subfolder**.
 4. Nadat u de para meters hebt geconfigureerd, worden deze weer gegeven op de pagina broncode beheer instellen.  
@@ -64,7 +64,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
      |:--- |:--- |
      | `Name`  |Micro soft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Tekenreeks |
-     | `Value` |{"Branch":\<*de naam van uw vertakking*>, "RunbookFolderPath\<":*pad naar de runbookmap*>, "ProviderType":\<*heeft een waarde van 1 voor github*>,\<"opslagplaats":*naam van uw opslag plaats*>\<, "username":*uw github-gebruikers naam*>} |
+     | `Value` |{' Vertakking ': \< *De naam van de vertakking*>, ' RunbookFolderPath ': \< *pad naar de Runbookmap*>, ' ProviderType ': \< *heeft een waarde van 1 voor github*>, ' opslagplaats ': \< *naam van uw opslag plaats*>, ' gebruikers naam ': \< *uw github-gebruikers naam*>} |
 
    * De variabele **micro soft. Azure. Automation. SourceControl. OAuthToken**, bevat de beveiligde versleutelde waarde van uw OAuthToken.  
 
@@ -76,11 +76,11 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
      ![Een venster met bron beheer variabelen](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **Het besturings element voor automatiserings bronnen** wordt toegevoegd als een geautoriseerde toepassing aan uw github-account. Als u de toepassing wilt weer geven, gaat u op de start pagina van github naar **profiel** > **instellingen** > **toepassingen**. Met deze toepassing kan Azure Automation uw GitHub-opslag plaats synchroniseren met een Automation-account.  
+   * **Het besturings element voor automatiserings bronnen** wordt toegevoegd als een geautoriseerde toepassing aan uw github-account. Als u de toepassing wilt weer geven, gaat u op de start pagina van github naar **profiel**  >  **instellingen**  >  **toepassingen**. Met deze toepassing kan Azure Automation uw GitHub-opslag plaats synchroniseren met een Automation-account.  
 
      ![Toepassings instellingen in GitHub](media/source-control-integration-legacy/automation-GitApplication.png)
 
-## <a name="using-source-control-in-automation"></a>Broncode beheer gebruiken in Automation
+## <a name="use-source-control-in-automation"></a>Broncode beheer gebruiken in Automation
 
 Met het inchecken van een runbook kunt u de wijzigingen die u hebt aangebracht in een runbook in Azure Automation naar uw opslag plaats voor broncode beheer pushen. Hieronder vindt u de stappen voor het controleren van een runbook:
 
@@ -124,15 +124,13 @@ Met de knop synchroniseren op de pagina bibliotheek synchronisatie kunt u alle r
 
 ![Een venster met alle logboeken van een Suspended resource control Sync-taak](media/source-control-integration-legacy/automation-AllLogs.png)
 
-## <a name="disconnecting-source-control"></a>Verbinding met broncode beheer verbreken
+## <a name="disconnect-source-control"></a>Broncode beheer verbreken
 
 Als u de verbinding met uw GitHub-account wilt verbreken, opent u de pagina bibliotheek synchronisatie en klikt u op **verbinding verbreken**. Wanneer u de verbinding met broncode beheer verbreekt, blijven de runbooks die eerder zijn gesynchroniseerd in uw Automation-account, maar wordt de pagina synchronisatie van de bibliotheek niet ingeschakeld.  
 
   ![Een venster met de knop verbinding verbreken om broncode beheer te verbreken](media/source-control-integration-legacy/automation-Disconnect.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Raadpleeg de volgende bronnen voor meer informatie over de integratie van bron beheer:  
 
 * [Azure Automation: broncode beheer integratie in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
 * [Azure Automation: Runbook-broncode beheer integreren met behulp van Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

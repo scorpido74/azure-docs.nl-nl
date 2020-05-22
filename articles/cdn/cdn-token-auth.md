@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929125"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745447"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-assets beveiligen met token verificatie
 
@@ -33,7 +33,7 @@ Token verificatie is een mechanisme waarmee u kunt voor komen dat de Azure-Conte
 
 Token verificatie verifieert of aanvragen worden gegenereerd door een vertrouwde site door aanvragen te vereisen die een token waarde bevatten die gecodeerde informatie over de aanvrager bevat. Inhoud wordt alleen aan een aanvrager geleverd als de gecodeerde gegevens voldoen aan de vereisten. anders worden aanvragen geweigerd. U kunt de vereisten instellen met behulp van een of meer van de volgende para meters:
 
-- Land: aanvragen die afkomstig zijn van de landen/regio's die zijn opgegeven door hun [land code](/previous-versions/azure/mt761717(v=azure.100))toestaan of weigeren.
+- Land/regio: aanvragen die afkomstig zijn van de landen/regio's die zijn opgegeven door hun [land/regio code](/previous-versions/azure/mt761717(v=azure.100))toestaan of weigeren.
 - URL: alleen aanvragen toestaan die overeenkomen met het opgegeven item of pad.
 - Host: aanvragen die gebruikmaken van de opgegeven hosts in de aanvraag header toestaan of weigeren.
 - Verwijzende site: de aanvraag toestaan of weigeren van de opgegeven verwijzings site.
@@ -100,31 +100,31 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Wijst een verloop tijd toe aan een token, waarna het token verloopt. Aanvragen die zijn verzonden na de verloop tijd, worden geweigerd. Deze para meter maakt gebruik van een UNIX-tijds tempel dat is gebaseerd op het aantal seconden sinds de standaard `1/1/1970 00:00:00 GMT`-UNIX-epoche van. (U kunt online-hulpprogram ma's gebruiken om te converteren tussen de standaard tijd en de Unix-tijd.)> 
-      >    Als u bijvoorbeeld wilt dat het token verloopt op, voert `12/31/2016 12:00:00 GMT`u de UNIX- `1483185600`time stamp waarde in. 
+      >    <td>Wijst een verloop tijd toe aan een token, waarna het token verloopt. Aanvragen die zijn verzonden na de verloop tijd, worden geweigerd. Deze para meter maakt gebruik van een UNIX-tijds tempel dat is gebaseerd op het aantal seconden sinds de standaard-UNIX-epoche van `1/1/1970 00:00:00 GMT` . (U kunt online-hulpprogram ma's gebruiken om te converteren tussen de standaard tijd en de Unix-tijd.)> 
+      >    Als u bijvoorbeeld wilt dat het token verloopt op `12/31/2016 12:00:00 GMT` , voert u de Unix-Time Stamp waarde in `1483185600` . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
       >    <td>Met kunt u tokens aanpassen aan een bepaald activum of pad. Hiermee beperkt u de toegang tot aanvragen waarvan de URL met een specifiek relatief pad begint. Url's zijn hoofdletter gevoelig. Voer meerdere paden in door elk pad met een komma te scheiden. Voeg geen spaties toe. Afhankelijk van uw vereisten kunt u verschillende waarden instellen om een ander toegangs niveau te bieden.> 
-      >    Voor de URL `http://www.mydomain.com/pictures/city/strasbourg.png`zijn bijvoorbeeld deze aanvragen toegestaan voor de volgende invoer waarden: 
+      >    Voor de URL `http://www.mydomain.com/pictures/city/strasbourg.png` zijn bijvoorbeeld deze aanvragen toegestaan voor de volgende invoer waarden: 
       >    <ul>
-      >       <li>Invoer waarde `/`: alle aanvragen zijn toegestaan.</li>
-      >       <li>Invoer waarde `/pictures`, de volgende aanvragen zijn toegestaan: <ul>
+      >       <li>Invoer waarde `/` : alle aanvragen zijn toegestaan.</li>
+      >       <li>Invoer waarde `/pictures` , de volgende aanvragen zijn toegestaan: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Invoer waarde `/pictures/`: alleen aanvragen met het `/pictures/` pad zijn toegestaan. Bijvoorbeeld `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Invoer waarde `/pictures/city/strasbourg.png`: alleen aanvragen voor dit specifieke pad en activum zijn toegestaan.</li>
+      >       <li>Invoer waarde `/pictures/` : alleen aanvragen met het `/pictures/` pad zijn toegestaan. Bijvoorbeeld `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Invoer waarde `/pictures/city/strasbourg.png` : alleen aanvragen voor dit specifieke pad en activum zijn toegestaan.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Alleen aanvragen die afkomstig zijn van een of meer opgegeven landen/regio's, worden toegestaan. Aanvragen die afkomstig zijn van alle andere landen/regio's, worden geweigerd. Gebruik een [ISO 3166-land code](/previous-versions/azure/mt761717(v=azure.100)) van twee letters voor elk land en scheid deze met een komma. Voeg geen spatie toe. Als u bijvoorbeeld alleen toegang wilt toestaan vanaf de Verenigde Staten en Frank rijk, voert `US,FR`u in.</td>
+      >    <td>Alleen aanvragen die afkomstig zijn van een of meer opgegeven landen/regio's, worden toegestaan. Aanvragen die afkomstig zijn van alle andere landen/regio's, worden geweigerd. Gebruik een [ISO 3166-land/regio code](/previous-versions/azure/mt761717(v=azure.100)) van twee letters voor elk land/regio en scheid deze met een komma. Voeg geen spatie toe. Als u bijvoorbeeld alleen toegang wilt toestaan vanaf de Verenigde Staten en Frank rijk, voert u in `US,FR` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Weigert aanvragen die afkomstig zijn uit een of meer opgegeven landen/regio's. Aanvragen die afkomstig zijn uit alle andere landen/regio's zijn toegestaan. De implementatie is hetzelfde als de para meter <b>ec_country_allow</b> . Als er een land code aanwezig is in de para meters <b>ec_country_allow</b> en <b>ec_country_deny</b> , heeft de para meter <b>ec_country_allow</b> prioriteit.</td>
+      >    <td>Weigert aanvragen die afkomstig zijn uit een of meer opgegeven landen/regio's. Aanvragen die afkomstig zijn uit alle andere landen/regio's zijn toegestaan. De implementatie is hetzelfde als de para meter <b>ec_country_allow</b> . Als een land-/regionummer aanwezig is in zowel de para meter <b>ec_country_allow</b> als <b>ec_country_deny</b> , heeft de para meter <b>ec_country_allow</b> prioriteit.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -134,9 +134,9 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
       >       <li>Een hostnaam of hostnaam en een pad.</li>
       >       <li>Meerdere verwijzende sites. Als u meerdere verwijzende sites wilt toevoegen, scheidt u elke verwijzing naar een komma. Voeg geen spatie toe. Als u een verwijzende waarde opgeeft, maar de verwijzende gegevens worden niet in de aanvraag verzonden door de browser configuratie, wordt de aanvraag standaard geweigerd.</li> 
       >       <li>Aanvragen met ontbrekende of lege verwijzende informatie. Standaard worden deze typen aanvragen geblokkeerd door de para meter <b>ec_ref_allow</b> . Als u deze aanvragen wilt toestaan, typt u de tekst ' ontbreekt ' of voert u een lege waarde in (met behulp van een afsluitende komma).</li> 
-      >       <li>Subdomeinen. Als u subdomeinen wilt toestaan, voert u\*een asterisk () in. Als u bijvoorbeeld alle subdomeinen van `contoso.com`wilt toestaan, voert `*.contoso.com`u in.</li>
+      >       <li>Subdomeinen. Als u subdomeinen wilt toestaan, voert u een asterisk ( \* ) in. Als u bijvoorbeeld alle subdomeinen van wilt toestaan `contoso.com` , voert u in `*.contoso.com` .</li>
       >    </ul> 
-      >    Als u bijvoorbeeld toegang wilt verlenen voor aanvragen van `www.contoso.com`, voert `contoso2.com` `www.contoso.com,*.contoso.com,missing`u alle subdomeinen onder en aanvragen met lege of ontbrekende verwijzende sites in.</td>
+      >    Als u bijvoorbeeld toegang wilt verlenen voor aanvragen van `www.contoso.com` , voert u alle subdomeinen onder `contoso2.com` en aanvragen met lege of ontbrekende verwijzende sites in `www.contoso.com,*.contoso.com,missing` .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
@@ -144,7 +144,7 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>Alleen aanvragen van het opgegeven protocol zijn toegestaan. Geldige waarden zijn `http`, `https`of `http,https`.</td>
+      >    <td>Alleen aanvragen van het opgegeven protocol zijn toegestaan. Geldige waarden zijn `http` , `https` of `http,https` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
@@ -152,7 +152,7 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
       > </tr>
       > <tr>
       >    <td><b>ec_clientip</b></td>
-      >    <td>Hiermee beperkt u de toegang tot het opgegeven IP-adres van de aanvrager. Zowel IPV4 als IPV6 worden ondersteund. U kunt één IP-adres of IP-adressen voor aanvragen opgeven die zijn gekoppeld aan een specifiek subnet. `11.22.33.0/22` Hiermee kunnen bijvoorbeeld aanvragen van IP-adressen 11.22.32.1 naar 11.22.35.254 worden toegestaan.</td>
+      >    <td>Hiermee beperkt u de toegang tot het opgegeven IP-adres van de aanvrager. Zowel IPV4 als IPV6 worden ondersteund. U kunt één IP-adres of IP-adressen voor aanvragen opgeven die zijn gekoppeld aan een specifiek subnet. `11.22.33.0/22`Hiermee kunnen bijvoorbeeld aanvragen van IP-adressen 11.22.32.1 naar 11.22.35.254 worden toegestaan.</td>
       > </tr>
       > </table>
 
@@ -195,7 +195,7 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Prijzen van Azure CDN-functies en-providers
 

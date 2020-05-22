@@ -1,24 +1,21 @@
 ---
-title: Op rollen gebaseerd toegangsbeheer in Azure Automation
-description: Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over toegangsbeheer voor Azure-resources. In dit artikel wordt beschreven hoe u RBAC instelt in Azure Automation.
+title: Rolmachtigingen en beveiliging in Azure Automation beheren
+description: In dit artikel leest u hoe u op rollen gebaseerd toegangs beheer (RBAC) kunt gebruiken om toegang te krijgen tot Azure-resources.
 keywords: automatisering rbac, rolgebaseerde toegangscontrole, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cdde8d1142ec47f835e4a06e7fe2e843d796a3a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535567"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743930"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Op rollen gebaseerd toegangsbeheer in Azure Automation
+# <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
 Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over toegangsbeheer voor Azure-resources. Met [RBAC](../role-based-access-control/overview.md)kunt u taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers, groepen en toepassingen die ze nodig hebben om hun taken uit te voeren. U kunt op rollen gebaseerde toegang verlenen aan gebruikers met behulp van de Azure Portal, Azure-opdracht regel Programma's of Azure Management-Api's.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-accounts
 
@@ -32,7 +29,7 @@ In Azure Automation wordt toegang verleend door de juiste RBAC-rol toe te wijzen
 | Automation-operator |Met de rol Automation-operator kunt u de naam en eigenschappen van een runbook weer geven en taken maken en beheren voor alle runbooks in een Automation-account. Deze rol is handig als u uw Automation-account resources wilt beveiligen, zoals de gegevens assets en runbooks, maar nog steeds leden van uw organisatie kunnen deze runbooks uitvoeren. |
 |Automation-taak operator|Met de rol Automation-taak operator kunt u taken maken en beheren voor alle runbooks in een Automation-account.|
 |Automation-Runbook-operator|Met de rol Automation-Runbook-operator kunt u de naam en eigenschappen van een runbook weer geven.|
-| Inzender van Log Analytics | Met de rol Log Analytics Inzender kunt u alle bewakings gegevens lezen en bewakings instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's, het lezen van opslag account sleutels voor het configureren van verzameling logboeken vanuit Azure Storage, het maken en configureren van Automation-accounts, het toevoegen van oplossingen en het configureren van Azure Diagnostics voor alle Azure-resources.|
+| Inzender van Log Analytics | Met de rol Log Analytics Inzender kunt u alle bewakings gegevens lezen en bewakings instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's, het lezen van opslag account sleutels om het verzamelen van Logboeken vanuit Azure Storage te kunnen configureren, Automation-accounts te maken en te configureren, Azure Automation-functies toe te voegen en Azure Diagnostics te configureren voor alle Azure-resources.|
 | Lezer van Log Analytics | Met de rol Log Analytics lezer kunt u alle bewakings gegevens weer geven en doorzoeken, evenals controle-instellingen weer geven. Dit omvat het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. |
 | Inzender bewaken | Met de rol bewakings bijdrager kunt u alle bewakings gegevens lezen en bewakings instellingen bijwerken.|
 | Bewakings lezer | Met de rol controle lezer kunt u alle bewakings gegevens lezen. |
@@ -130,7 +127,7 @@ Er wordt een Automation Runbook-operator functie verleend op het Runbook-bereik.
 
 ### <a name="log-analytics-contributor"></a>Inzender van Log Analytics
 
-Een Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
+Een Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; functies toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
 |**Acties**  |**Beschrijving**  |
 |---------|---------|
@@ -142,7 +139,7 @@ Een Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instell
 |Micro soft. Insights/alertRules/*|Waarschuwings regels lezen/schrijven/verwijderen.|
 |Micro soft. Insights/diagnosticSettings/*|Diagnostische instellingen lezen/schrijven/verwijderen.|
 |Micro soft. OperationalInsights/*|Azure Monitor logboeken beheren.|
-|Micro soft. OperationsManagement/*|Beheer oplossingen in werk ruimten.|
+|Micro soft. OperationsManagement/*|Beheer Azure Automation functies in werk ruimten.|
 |Micro soft. resources/implementaties/*|Implementaties van resource groepen maken en beheren.|
 |Micro soft. resources/abonnementen/ResourceGroups/implementaties/*|Implementaties van resource groepen maken en beheren.|
 |Micro soft. Storage/Storage accounts/Listkeys ophalen/Action|Sleutels van opslag account weer geven.|
@@ -207,11 +204,11 @@ Een beheerder van de gebruikers toegang kan de gebruikers toegang tot Azure-reso
 |Micro soft. Authorization/*|Autorisatie beheren|
 |Micro soft. support/*|Ondersteunings tickets maken en beheren|
 
-## <a name="onboarding-permissions"></a>Onboarding-machtigingen
+## <a name="feature-setup-permissions"></a>Installatie machtigingen voor onderdelen
 
-In de volgende secties worden de mini maal vereiste machtigingen beschreven die nodig zijn voor het voorbereiden van virtuele machines voor het bijhouden van wijzigingen of update beheer oplossingen.
+In de volgende secties worden de minimale vereiste machtigingen beschreven die nodig zijn voor het inschakelen van de functies Updatebeheer en Wijzigingen bijhouden en inventaris.
 
-### <a name="permissions-for-onboarding-from-a-vm"></a>Machtigingen voor het onboarden van een virtuele machine
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-a-vm"></a>Machtigingen voor het inschakelen van Updatebeheer en Wijzigingen bijhouden en inventaris van een virtuele machine
 
 |**Actie**  |**Machtiging**  |**Minimum bereik**  |
 |---------|---------|---------|
@@ -231,9 +228,9 @@ In de volgende secties worden de mini maal vereiste machtigingen beschreven die 
 | Controle van de werk ruimte voor VM<sup>1</sup> voorbereiden       | Micro soft. OperationalInsights/werk ruimten/lezen         | Abonnement         |
 | De Log Analytics provider registreren |Micro soft. Insights/registreren/actie | Abonnement|
 
-<sup>1</sup> deze machtiging is vereist voor de onboarding van de VM-Portal.
+<sup>1</sup> deze machtiging is nodig om functies in te scha kelen via de VM-Portal-ervaring.
 
-### <a name="permissions-for-onboarding-from-automation-account"></a>Machtigingen voor onboarding van het Automation-account
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-an-automation-account"></a>Machtigingen voor het inschakelen van Updatebeheer en Wijzigingen bijhouden en inventaris vanuit een Automation-account
 
 |**Actie**  |**Machtiging** |**Minimum bereik**  |
 |---------|---------|---------|
@@ -248,7 +245,7 @@ In de volgende secties worden de mini maal vereiste machtigingen beschreven die 
 |Opgeslagen zoek opdracht maken/bewerken     | Micro soft. OperationalInsights/werk ruimten/schrijven        | Werkruimte        |
 |Scope configuratie maken/bewerken     | Micro soft. OperationalInsights/werk ruimten/schrijven        | Werkruimte        |
 | De Log Analytics provider registreren |Micro soft. Insights/registreren/actie | Abonnement|
-|**Stap 2: meerdere Vm's onboarden**     |         |         |
+|**Stap 2: meerdere Vm's inschakelen**     |         |         |
 |Blade VMOnboarding-uitbrei ding MMA maken     | Micro soft. Compute/informatie/schrijven           | Virtuele machine        |
 |Opgeslagen zoek opdracht maken/bewerken     | Micro soft. OperationalInsights/werk ruimten/schrijven           | Werkruimte        |
 |Scope configuratie maken/bewerken  | Micro soft. OperationalInsights/werk ruimten/schrijven   | Werkruimte|
@@ -385,7 +382,7 @@ Gebruik [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/A
 Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Vervang `sign-in ID of a user you wish to remove`, `SubscriptionID` `Resource Group Name`, en `Automation account name` door uw account gegevens in het voor gaande voor beeld. Kies **Ja** wanneer u wordt gevraagd om te bevestigen voordat u doorgaat met het verwijderen van de toewijzingen van gebruikers rollen.
+Vervang `sign-in ID of a user you wish to remove` ,, `SubscriptionID` `Resource Group Name` en `Automation account name` door uw account gegevens in het voor gaande voor beeld. Kies **Ja** wanneer u wordt gevraagd om te bevestigen voordat u doorgaat met het verwijderen van de toewijzingen van gebruikers rollen.
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Gebruikers ervaring voor de rol van Automation-operator-Automation-account
 
@@ -428,6 +425,6 @@ Wanneer een gebruiker die is toegewezen aan de rol Automation-operator in het Ru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [RBAC beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie over manieren om rbac voor Azure Automation te configureren.
-* Zie [een Runbook starten](automation-starting-a-runbook.md)voor meer informatie over manieren om een runbook te starten.
-* Raadpleeg [Azure Automation-runbook-typen](automation-runbook-types.md)voor meer informatie over typen runbook.
+* [RBAC beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Start a runbook in Azure Automation](start-runbooks.md) (Een runbook starten in Azure Automation)
+* [Azure Automation typen runbook](automation-runbook-types.md)

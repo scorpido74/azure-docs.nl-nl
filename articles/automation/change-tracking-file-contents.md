@@ -1,41 +1,41 @@
 ---
 title: Wijzigingen bijhouden en inventaris in Azure Automation beheren
-description: In dit artikel leest u hoe u Wijzigingen bijhouden en inventaris kunt gebruiken om wijzigingen in de software en micro soft-Services bij te houden die in uw omgeving optreden.
+description: In dit artikel leest u hoe u Wijzigingen bijhouden en inventaris kunt gebruiken om wijzigingen in de software en micro soft-Services in uw omgeving bij te houden.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779294"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744393"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
-Wanneer u een nieuw bestand of een nieuwe register sleutel toevoegt om bij te houden, Azure Automation deze optie inschakelen voor de functie [Wijzigingen bijhouden en inventaris](change-tracking.md) . Dit artikel bevat procedures voor het werken met deze functie.
+Azure Automation maakt de functie [Wijzigingen bijhouden en inventarisatie](change-tracking.md) mogelijk voor computers in uw omgeving. Met de functie worden wijzigingen bijgehouden en beschikbaar gemaakt in register sleutels, bestanden, inhoud en dergelijke. Dit artikel bevat procedures voor het werken met deze functie.
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>De functie volledige Wijzigingen bijhouden en inventaris inschakelen
 
-Als u [FIM (File Integrity Monitoring) hebt Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)ingeschakeld, kunt u de functie volledige wijzigingen bijhouden en inventaris gebruiken, zoals hieronder wordt beschreven. Uw instellingen worden niet verwijderd door dit proces.
+Als u [FIM (File Integrity Monitoring) hebt Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)ingeschakeld, kunt u de volledige wijzigingen bijhouden-en inventarisatie functie voor uw machines gebruiken, zoals hieronder wordt beschreven. Uw instellingen worden niet verwijderd door dit proces.
 
 > [!NOTE]
 > Het inschakelen van de functie volledige Wijzigingen bijhouden en inventarisatie kan extra kosten veroorzaken. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op **verwijderen**, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Als u Wijzigingen bijhouden en inventaris opnieuw wilt inschakelen, gaat u naar het Automation-account en selecteert u **Wijzigingen bijhouden** onder **configuratie beheer**.
+3. Als u Wijzigingen bijhouden en inventaris opnieuw wilt inschakelen, gaat u naar het Automation-account en selecteert u **Wijzigingen bijhouden** of **inventaris** onder **configuratie beheer**.
 4. Kies de Log Analytics werk ruimte en het Automation-account, bevestig de instellingen van uw werk ruimte en klik op **inschakelen**.
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Computers onboarden naar Wijzigingen bijhouden en inventaris
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Machines inschakelen voor Wijzigingen bijhouden en inventaris
 
-Als u wijzigingen wilt bijhouden, moet u Wijzigingen bijhouden en inventaris inschakelen in Azure Automation. Hier volgen de aanbevolen en ondersteunde manieren om uw machines uit te geven voor deze functie: 
+Als u wijzigingen wilt bijhouden, moet u Wijzigingen bijhouden en inventaris inschakelen in Azure Automation. Hier volgen de aanbevolen en ondersteunde manieren om deze functie in te scha kelen voor uw machines: 
 
-* [Onboarding vanaf een virtuele machine](automation-onboard-solutions-from-vm.md)
-* [Onboarding van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
-* [Onboarding uitvoeren vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
-* [Onboarding in een Azure Automation runbook](automation-onboard-solutions.md)
+* [Inschakelen op basis van een virtuele machine](automation-onboard-solutions-from-vm.md)
+* [Meerdere machines kunnen surfen](automation-onboard-solutions-from-browse.md)
+* [Inschakelen vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
+* [Inschakelen in een Azure Automation runbook](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>Bestanden bijhouden
 
@@ -53,7 +53,7 @@ Gebruik de volgende stappen om bestands tracering op Windows-computers te config
     |Ingeschakeld     | Waar als de instelling wordt toegepast en anders false.        |
     |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
     |Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
-    |Pad invoeren     | Het pad om het bestand te controleren, bijvoorbeeld: **\\\*c:\Temp. txt**. U kunt ook omgevings variabelen gebruiken, zoals `%winDir%\System32\\\*.*`.       |
+    |Pad invoeren     | Het pad om het bestand te controleren, bijvoorbeeld: **c:\Temp \\ \* . txt**. U kunt ook omgevings variabelen gebruiken, zoals `%winDir%\System32\\\*.*` .       |
     |Padtype     | Het type pad. Mogelijke waarden zijn bestand en Directory.        |    
     |Recursie     | Waar als recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden, en ONWAAR anders onwaar.        |    
     |Bestands inhoud uploaden | True voor het uploaden van bestands inhoud op bijgehouden wijzigingen en ONWAAR, anders onwaar.|
@@ -164,7 +164,7 @@ In het volgende voor beeld ziet u dat het bestand **C:\Windows\System32\drivers\
 We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor een wijziging te bespreken.
 
 1. Selecteer in uw Automation-account **Wijzigingen bijhouden** onder **configuratie beheer**en selecteer vervolgens **log Analytics**. 
-2. Zoek in de logboeken zoeken naar inhouds wijzigingen in het bestand **hosts** met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Met deze query wordt gezocht naar een wijziging in de inhoud voor bestanden met een volledig gekwalificeerd pad met het woord ' hosts '. U kunt ook een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen, bijvoorbeeld met behulp `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`van.
+2. Zoek in de logboeken zoeken naar inhouds wijzigingen in het bestand **hosts** met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Met deze query wordt gezocht naar een wijziging in de inhoud voor bestanden met een volledig gekwalificeerd pad met het woord ' hosts '. U kunt ook een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen, bijvoorbeeld met behulp van `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
 
 3. Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op **nieuwe waarschuwings regel** in de zoek opdracht voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze pagina navigeren via **Azure monitor** in de Azure Portal. 
 
@@ -178,6 +178,6 @@ We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van wijzigingen bijhouden en inventaris](change-tracking.md)voor basis principes van wijzigingen bijhouden en inventarisatie.
-* Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van wijzigingen voor een virtuele machine in Azure.
-* [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde gegevens voor het bijhouden van wijzigingen weer te geven.
+* [Overzicht van Wijzigingen bijhouden en inventaris](change-tracking.md)
+* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
+* [Zoek opdrachten in Logboeken in Azure Monitor logboeken](../log-analytics/log-analytics-log-searches.md)

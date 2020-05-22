@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985623"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747614"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect met China met behulp van Azure Virtual WAN en Secure hub
 
@@ -137,7 +137,7 @@ Het verkeer dat naar de onderling verbonden branches of van deze naar de locatie
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-ExpressRoute Global Reach is momenteel niet beschikbaar in elk land, maar u kunt een oplossing configureren met behulp van Azure Virtual WAN.
+Momenteel is ExpressRoute Global Reach niet beschikbaar in elk land/elke regio, maar u kunt een oplossing configureren met behulp van Azure Virtual WAN.
 
 U kunt bijvoorbeeld een ExpressRoute configureren met micro soft-peering en een VPN-tunnel verbinden via die peering met Azure Virtual WAN. U hebt nu opnieuw de door Voer tussen VPN-en ExpressRoute ingeschakeld, zonder Global Reach en provider en service van derden, zoals Mega Port Cloud.
 

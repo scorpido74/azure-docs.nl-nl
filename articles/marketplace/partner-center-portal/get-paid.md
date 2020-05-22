@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780494"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744560"
 ---
 # <a name="getting-paid-in-commercial-marketplace"></a>Betalen in commerciële Marketplace
 
@@ -30,7 +30,7 @@ De winkel kosten worden toegepast op alle aanbiedingen die zijn verzameld door d
 
 ## <a name="price-tiers"></a>Prijs Categorieën
 
-De prijs categorie (s) die u selecteert, stelt de verkoop prijs in in alle landen waar u uw aanbieding wilt distribueren. U kunt ook aanvullende prijs functies gebruiken, zoals het kiezen van verschillende prijzen voor verschillende markten.
+De prijs categorie die u selecteert, stelt de verkoop prijs in alle landen/regio's in waar u uw aanbieding wilt distribueren. U kunt ook aanvullende prijs functies gebruiken, zoals het kiezen van verschillende prijzen voor verschillende markten.
 
 U kunt uw app gratis aanbieden of u kunt kiezen voor een prijs die klanten moeten betalen om uw aanbieding te verkrijgen. Prijs categorieën beginnen bij. 99 USD, met extra stappen (1,09 USD, 1,19 USD, enzovoort). De toename tussen prijs categorieën neemt toe naarmate de prijs hoger wordt.
 

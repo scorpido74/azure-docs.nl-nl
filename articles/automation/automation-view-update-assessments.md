@@ -1,18 +1,18 @@
 ---
-title: Azure Automation Updatebeheer update-evaluaties weer geven
-description: In dit artikel wordt beschreven hoe update-evaluaties voor update-implementaties worden weer gegeven.
+title: Azure Automation update-evaluaties weer geven
+description: In dit artikel leest u hoe u update-evaluaties weergeeft voor Updatebeheer-implementaties.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c66f54b8b01b5131defce6e709af52f9b2732d1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617384"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745240"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Automation Updatebeheer update-evaluaties weer geven
+# <a name="view-update-assessments"></a>Update-evaluaties bekijken
 
 Selecteer in uw Azure Automation-account **updatebeheer** om de status van uw computers weer te geven.
 
@@ -28,7 +28,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Update classifications
+## <a name="work-with-update-classifications"></a>Werken met update classificaties
 
 De volgende tabellen geven een lijst van de ondersteunde update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
@@ -64,4 +64,4 @@ Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de update-evaluaties hebt bekeken, kunt u een update-implementatie plannen door de stappen te volgen op [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md).
+[Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)

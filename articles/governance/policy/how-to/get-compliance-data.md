@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684516"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747093"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -191,7 +191,7 @@ Gebruik ARMClient of een soortgelijk hulp programma voor het afhandelen van veri
 Met de REST API kan samen vatting worden uitgevoerd door container, definitie of toewijzing. Hier volgt een voor beeld van een samen vatting op het abonnements niveau met behulp van Azure Policy Insight- [samen vatting voor het abonnement](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
-POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
 De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer hieronder vindt u een overzicht van de naleving onder **waarde. results. nonCompliantResources** en **Value. results. nonCompliantPolicies**. Deze aanvraag bevat meer informatie, waaronder elke toewijzing die de niet-compatibele getallen en de definitie-informatie voor elke toewijzing heeft opgeleverd. Elk beleids object in de hiërarchie bevat een **queryResultsUri** die kan worden gebruikt om aanvullende details op dat niveau op te halen.
@@ -204,7 +204,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -212,7 +212,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -221,7 +221,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -235,7 +235,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
 In het bovenstaande voor beeld bevat **Value. policyAssignments. policyDefinitions. results. queryResultsUri** een voor beeld-URI voor alle niet-compatibele resources voor een specifieke beleids definitie. Op de **$filter** waarde is IsCompliant gelijk aan False, PolicyAssignmentId is opgegeven voor de beleids definitie en vervolgens de PolicyDefinitionId zelf. De reden voor het opnemen van de PolicyAssignmentId in het filter is omdat de PolicyDefinitionId kan bestaan in verschillende beleids-of initiatief toewijzingen met verschillende bereiken. Door zowel de PolicyAssignmentId als de PolicyDefinitionId op te geven, kunnen we expliciet worden gebruikt in de resultaten die we zoeken. Voorheen werd voor PolicyStates de laatste **versie**gebruikt, waarbij automatisch een **van** - **en-** tijd venster van de laatste 24 uur wordt ingesteld.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 Het onderstaande voor beeld antwoord is afgekapt tot één niet-conforme resource voor de boog. Het gedetailleerde antwoord heeft verschillende gegevens over de resource, het beleid of het initiatief en de toewijzing. U ziet dat u ook kunt zien welke toewijzings parameters zijn door gegeven aan de beleids definitie.
@@ -281,7 +281,7 @@ Het onderstaande voor beeld antwoord is afgekapt tot één niet-conforme resourc
 Wanneer een resource wordt gemaakt of bijgewerkt, wordt een resultaat van een beleids evaluatie gegenereerd. Resultaten worden _beleids gebeurtenissen_genoemd. Gebruik de volgende URI om recente beleids gebeurtenissen weer te geven die zijn gekoppeld aan het abonnement.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01
 ```
 
 De resultaten zien er ongeveer als volgt uit:

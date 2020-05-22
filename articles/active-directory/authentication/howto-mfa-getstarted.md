@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451122"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757598"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -55,7 +55,7 @@ Micro soft biedt [communicatie sjablonen](https://aka.ms/mfatemplates) en [docum
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
-Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met voorwaardelijke toegang af te dwingen. Een [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) kan vereisen dat gebruikers multi-factor Authentication uitvoeren wanneer aan bepaalde criteria wordt voldaan, zoals:
+Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met voorwaardelijke toegang af te dwingen. Een beleid voor voorwaardelijke toegang kan vereisen dat gebruikers multi-factor Authentication uitvoeren wanneer aan bepaalde criteria wordt voldaan, zoals:
 
 * Alle gebruikers, een specifieke gebruiker, lid van een groep of toegewezen rol
 * Specifieke Cloud toepassing waartoe toegang wordt verkregen
@@ -114,7 +114,7 @@ Beheerders kunnen de [verificatie methoden](../authentication/concept-authentica
 Er wordt een push melding verzonden naar de Microsoft Authenticator-app op uw mobiele apparaat. De gebruiker bekijkt de melding en selecteert **goed keuren** om de verificatie te volt ooien. Push meldingen via een mobiele app bieden de minst opvallendste optie voor gebruikers. Ze zijn ook de meest betrouw bare en veilige optie omdat ze een gegevens verbinding gebruiken in plaats van telefoon.
 
 > [!NOTE]
-> Als uw organisatie mede werkers heeft in of reist naar China, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
+> Als uw organisatie mede werkers heeft die in China werken of onderweg zijn, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land/deze regio. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
 
 ### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
@@ -180,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Als uw gebruikers zijn ingeschakeld met behulp van gebruikers die per gebruiker zijn ingeschakeld en Azure Multi-Factor Authentication afgedwongen, kan de volgende Power shell u helpen bij het converteren van de conversie naar voorwaardelijke toegang op basis van Azure Multi-Factor Authentication.
 
-Voer deze Power shell uit in een ISE-venster of `.PS1` Sla het bestand op om lokaal uit te voeren.
+Voer deze Power shell uit in een ISE-venster of sla het `.PS1` bestand op om lokaal uit te voeren.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -221,14 +221,14 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ## <a name="plan-conditional-access-policies"></a>Beleid voor voorwaardelijke toegang plannen
 
-Als u de strategie van het beleid voor voorwaardelijke toegang wilt plannen, wat bepaalt wanneer MFA en andere besturings elementen vereist zijn, raadpleegt u [Wat is voorwaardelijke toegang in azure Active Directory?](../conditional-access/overview.md).
+Voor het plannen van de strategie voor het beleid voor voorwaardelijke toegang, die bepaalt wanneer MFA en andere besturings elementen vereist zijn, raadpleegt u [Common Access policies (algemene beleids regels voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-policy-common.md)).
 
 Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen. U kunt de impact van dit onbedoelde gebrek aan administratieve toegang verminderen door [twee of meer accounts voor toegang tot een nood geval in uw Tenant te maken](../users-groups-roles/directory-emergency-access.md) en ze uit te sluiten van uw beleid voor voorwaardelijke toegang.
 
 ### <a name="create-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
    ![Een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de test groep](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geef een beschrijvende naam op voor uw beleid.
@@ -244,10 +244,10 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
    * Optioneel: als u vertrouwde locaties of benoemde locaties hebt geconfigureerd, kunt u opgeven dat deze locaties moeten worden opgenomen of uitgesloten van het beleid.
 1. Zorg ervoor dat onder **Grant**het keuze rondje **toegang verlenen** is geselecteerd.
     * Schakel het selectie vakje voor **multi-factor Authentication vereisen**in.
-    * Klik op **selecteren**.
+    * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
-1. Klik op **maken**.
+1. Klik op **Maken**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 
@@ -324,7 +324,7 @@ Op elke AD FS-server, in het archief van de lokale computer, is er een zelfonder
 
 Als de geldigheids periode van uw certificaten bijna is verlopen, [genereert en verifieert u een nieuw MFA-certificaat op elke AD FS-server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn `New-AdfsAzureMfaTenantCertificate` gegenereerd via de Power shell-cmdlet twee jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
+In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn gegenereerd via de `New-AdfsAzureMfaTenantCertificate` Power shell-cmdlet twee jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
 
 ## <a name="implement-your-plan"></a>Uw abonnement implementeren
 

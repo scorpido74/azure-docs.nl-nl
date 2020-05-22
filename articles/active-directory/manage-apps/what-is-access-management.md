@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409063"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739822"
 ---
 # <a name="managing-access-to-apps"></a>Toegang tot apps beheren
 
@@ -78,7 +78,7 @@ Met Azure AD kunnen toepassingen zoals Sales Force vooraf worden geconfigureerd 
 
 In dit geval worden alle toegewezen gebruikers automatisch ingericht voor Sales Force, omdat ze worden toegevoegd aan verschillende groepen hun roltoewijzing wordt bijgewerkt in Sales Force. Gebruikers zouden Sales Force kunnen ontdekken en openen via het toegangs venster van micro soft-toepassingen, Office-webclients of zelfs door te navigeren naar de aanmeldings pagina van de organisatie Sales Force. Beheerders kunnen de gebruiks-en toewijzings status eenvoudig weer geven met Azure AD-rapportage.
 
-Beheerders kunnen [voorwaardelijke toegang tot Azure AD](../active-directory-conditional-access-azure-portal.md) gebruiken om toegangs beleid in te stellen voor specifieke rollen. Deze beleids regels kunnen omvatten of toegang is toegestaan buiten de bedrijfs omgeving en zelfs Multi-Factor Authentication-of apparaats vereisten om in verschillende gevallen toegang te verkrijgen.
+Beheerders kunnen [voorwaardelijke toegang tot Azure AD](../conditional-access/concept-conditional-access-users-groups.md) gebruiken om toegangs beleid in te stellen voor specifieke rollen. Deze beleids regels kunnen omvatten of toegang is toegestaan buiten de bedrijfs omgeving en zelfs Multi-Factor Authentication-of apparaats vereisten om in verschillende gevallen toegang te verkrijgen.
 
 ## <a name="access-to-microsoft-applications"></a>Toegang tot micro soft-toepassingen
 
@@ -97,5 +97,5 @@ Gebruikers hebben toegang tot Office 365-toepassingen via hun Office 365-portals
 Net als bij zakelijke apps kunt u [gebruikers toewijzen](assign-user-or-group-access-portal.md) aan bepaalde micro soft-toepassingen via de Azure portal of, als de portal optie niet beschikbaar is, met behulp van Power shell.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Apps beveiligen met voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)
+* [Apps beveiligen met voorwaardelijke toegang](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Self-service voor groeps beheer/SSAA](../users-groups-roles/groups-self-service-management.md)

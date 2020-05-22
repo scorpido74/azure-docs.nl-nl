@@ -3,12 +3,12 @@ title: Azure Backup Server installeren op Azure Stack
 description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77583432"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747439"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -57,7 +57,7 @@ Als het wordt gedeeld met andere virtuele machines, worden de grootte van het op
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup tijdelijke schijf opslag configureren
 
-Elke Azure Stack virtuele machine wordt geleverd met tijdelijke schijf opslag, die beschikbaar is voor de gebruiker als `D:\`volume. Het lokale faserings gebied dat door Azure Backup nodig is `D:\`, kan zodanig worden geconfigureerd dat het zich bevindt en `C:\`de cache locatie kan op worden geplaatst. Op deze manier moet er geen opslag gehaald worden verwijderd van de gegevens schijven die zijn gekoppeld aan de virtuele machine van Azure Backup Server.
+Elke Azure Stack virtuele machine wordt geleverd met tijdelijke schijf opslag, die beschikbaar is voor de gebruiker als volume `D:\` . Het lokale faserings gebied dat door Azure Backup nodig is, kan zodanig worden geconfigureerd dat het zich bevindt `D:\` en de cache locatie kan op worden geplaatst `C:\` . Op deze manier moet er geen opslag gehaald worden verwijderd van de gegevens schijven die zijn gekoppeld aan de virtuele machine van Azure Backup Server.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Back-upgegevens opslaan op een lokale schijf en in azure
 
@@ -91,7 +91,7 @@ De Azure Backup Server virtuele machine moet lid zijn van een domein. Een domein
 
 Wanneer u een server voor Azure Backup Server kiest, start u met een installatie kopie van Windows Server 2012 R2 Data Center of Windows Server 2016 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hier volgt een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) moeten zijn: a2 Standard met twee kernen en 3,5 GB RAM-geheugen.
 
-Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
+Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. De [beveiligings matrix voor MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) helpt u bij het uitleggen van deze nuances. Lees dit artikel volledig voordat u de computer implementeert.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een specifieke virtuele machine met één doel. U kunt Azure Backup Server niet installeren op:
@@ -112,7 +112,7 @@ Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tu
 De instelling voor opslagreplicatie bewerken:
 
 1. Selecteer uw kluis om het dash board kluis en het menu instellingen te openen. Als het menu **instellingen** niet wordt geopend, klikt u op **alle instellingen** in het kluis dashboard.
-2. Klik in het menu **instellingen** op back-**upconfiguratie** **Backup-infra structuur** > om het menu **back-upconfiguratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
+2. Klik in het menu **instellingen** op back-upconfiguratie **Backup-infra structuur**  >  **Backup Configuration** om het menu **back-upconfiguratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
 
     ![Lijst met back-upkluizen](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -243,7 +243,7 @@ Azure Backup Server deelt code met Data Protection Manager. Verwijzingen naar Da
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
+    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. Geef in het scherm **beveiligings instellingen** een sterk wacht woord op voor beperkte lokale gebruikers accounts en klik op **volgende**.
 
@@ -318,7 +318,7 @@ De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azu
 
 ## <a name="network-connectivity"></a>Netwerkconnectiviteit
 
-Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, ```Get-DPMCloudConnection``` gebruikt u de cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
+Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de ```Get-DPMCloudConnection``` cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

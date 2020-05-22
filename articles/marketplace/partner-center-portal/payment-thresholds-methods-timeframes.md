@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 29b6b47a30760887fb01700e50ecdeb5dd307ad4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858176"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745017"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
 
@@ -38,7 +38,7 @@ We sturen doorgaans elke betaling die in een bepaalde maand verschuldigd is door
 
 Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden gebruikt voor elke Marketplace. De drempel waarde voor betaling in alle gevallen is $50 USD.
 
-| Land | Azure Marketplace | Store, Advertising, mixer en Minecraft | Kantoor | PayPal-betalingen  |
+| Land/regio | Azure Marketplace | Store, Advertising, mixer en Minecraft | Office | PayPal-betalingen  |
 | --- | --- | --- | --- | --- |
 | Afghanistan | Ja | Ja | Nee | Nee |
 | Albanië | Ja | Ja | Ja | Ja |
@@ -78,7 +78,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Côte D'Ivoire | Ja | Ja | Ja | Nee |
 | Kroatië | Ja | Ja | Ja | Nee |
 | Cyprus | Ja | Ja | Ja | Ja |
-| Tsjechië | Ja | Ja | Ja | Ja |
+| Tsjechische Republiek | Ja | Ja | Ja | Ja |
 | Denemarken | Ja | Ja | Ja | Ja |
 | Dominica | Ja | Ja | Nee | Ja |
 | Dominicaanse Republiek | Ja | Ja | Ja | Ja |
@@ -97,7 +97,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Griekenland | Ja | Ja | Ja | Ja |
 | Guatemala | Ja | Ja | Ja | Ja |
 | Guinee | Ja | Ja | Ja | Nee |
-| Haiti | Ja | Ja | Ja | Nee |
+| Haïti | Ja | Ja | Ja | Nee |
 | Honduras | Ja | Ja | Ja | Ja |
 | Hongkong | Ja | Ja | Ja | Ja |
 | Hongarije | Ja | Ja | Ja | Ja |
@@ -115,7 +115,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Kenia | Ja | Ja | Ja | Ja |
 | Korea (Zuid) | Ja | Ja | Ja | Nee |
 | Koeweit | Ja | Ja | Ja | Ja |
-| Kirgizië | Nee | Nee | Ja | Nee |
+| Kirgistan | Nee | Nee | Ja | Nee |
 | Laos | Ja | Ja | Ja | Nee |
 | Letland | Ja | Ja | Ja | Nee |
 | Libanon | Ja | Ja | Nee | Nee |
@@ -124,7 +124,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Litouwen | Ja | Ja | Ja | Nee |
 | Luxemburg | Ja | Ja | Ja | Ja |
 | Macedonië (FYROM) | Nee | Ja | Ja | Nee |
-| Madagascar | Ja | Ja | Ja | Nee |
+| Madagaskar | Ja | Ja | Ja | Nee |
 | Malawi | Ja | Ja | Ja | Ja |
 | Maleisië | Ja | Ja | Ja | Ja |
 | Mali | Ja | Ja | Ja | Nee |
@@ -196,4 +196,4 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Overzicht van overzicht van uitbetalingen](./payout-summary-overview.md)
+- [Betalingsoverzicht](./payout-summary-overview.md)

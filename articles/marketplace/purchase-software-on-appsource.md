@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80284973"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746644"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
@@ -29,11 +29,11 @@ Voor het kopen van SaaS-aanbiedingen hebt u het volgende nodig:
 - Een geldige credit card in het land of de regio waar u de aanbieding koopt.
 
     > [!Note]
-    > Het facturerings land van de credit card kan worden vergrendeld op de locatie van uw Azure Active Directory-exemplaar.
+    > Het land/de regio voor facturering van credit cards kan worden vergrendeld op de locatie van uw Azure Active Directory-exemplaar.
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>Stappen voor het maken van aankopen op AppSource
 
-1. Selecteer uw regio voor facturering/land op [AppSource](https://appsource.microsoft.com/).
+1. Selecteer uw land/regio voor facturering op [AppSource](https://appsource.microsoft.com/).
 1. Zoek de toepassing die u wilt kopen.
 1. Selecteer **nu downloaden**.
 1. Kies het abonnement:

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691660"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744778"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen1 analyseren met behulp van Power BI
 In dit artikel leert u hoe u Power BI Desktop kunt gebruiken voor het analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
@@ -81,10 +81,10 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
         ![Cirkel diagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
 16. Als u een bepaald land/regio selecteert in de filters op pagina niveau, kunt u nu het aantal Stuur Programma's weer geven in elke plaats van het geselecteerde land/de regio. Selecteer bijvoorbeeld onder het tabblad **Visualisaties** de optie **Brazilië**onder **filters op pagina niveau**.
     
-    ![Selecteer een land](./media/data-lake-store-power-bi/select-country.png "Een land/regio selecteren")
+    ![Een land/regio selecteren](./media/data-lake-store-power-bi/select-country.png "Een land/regio selecteren")
 17. Het cirkel diagram wordt automatisch bijgewerkt om de Stuur Programma's in de steden van Brazilië weer te geven.
     
-    ![Stuur Programma's in een land](./media/data-lake-store-power-bi/driver-per-country.png "Stuur Programma's per land/regio")
+    ![Stuur Programma's in een land/regio](./media/data-lake-store-power-bi/driver-per-country.png "Stuur Programma's per land/regio")
 18. Klik in het menu **bestand** op **Opslaan** om de visualisatie op te slaan als een Power bi desktop bestand.
 
 ## <a name="publish-report-to-power-bi-service"></a>Rapport publiceren naar Power BI-service

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72afc4f6e03b24e545ad18948119d418970cddf3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382848"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747580"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en node. js
 
@@ -30,7 +30,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Stel de beperking in en vereist `https`. Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Stel de beperking in en vereist `https` . Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Maak variabelen voor de zoek parameters en de tekst die u wilt controleren. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=`. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
+2. Maak variabelen voor de zoek parameters en de tekst die u wilt controleren. Voeg uw markt code toe na `mkt=` . De markt code is het land/de regio waarin u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=` . Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
 
     ```javascript
     let mkt = "en-US";

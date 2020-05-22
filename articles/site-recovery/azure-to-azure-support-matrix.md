@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8101f00f4ffc3735becbad2ecde26f5a208ff4a1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983496"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744818"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -178,7 +178,7 @@ Azure Gallery-installatie kopieën-derde partij gepubliceerd | Ondersteund | Wor
 Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Vm's die zijn gemigreerd met behulp van Site Recovery | Ondersteund | Als een VMware-VM of fysieke machine met Site Recovery is gemigreerd naar Azure, moet u de oudere versie van Mobility service op de computer verwijderen en de computer opnieuw opstarten voordat u deze naar een andere Azure-regio repliceert.
 RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (RBAC) op Vm's worden niet gerepliceerd naar de failover-VM in de doel regio.
-Uitbreidingen | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
+Extensies | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
 Proximity-plaatsings groepen | Niet ondersteund | Virtuele machines die zich in een proximity-plaatsings groep bevinden, kunnen niet worden beveiligd met Site Recovery.
 
 
@@ -262,7 +262,7 @@ Interne Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer ko
 Openbaar IP-adres | Ondersteund | Een bestaand openbaar IP-adres koppelen aan de NIC. U kunt ook een openbaar IP-adres maken en dit koppelen aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op NIC | Ondersteund | Koppel de NSG aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op subnet | Ondersteund | Koppel de NSG aan het subnet met behulp van een Azure Automation script in een herstel plan.
-Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en een subnet opgeven in de**instellingen** > voor de **gerepliceerde items** > **Compute-en netwerk** > **netwerk interfaces**.
+Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en een subnet opgeven in de instellingen voor de **gerepliceerde items**  >  **Settings**  >  **Compute-en netwerk**  >  **netwerk interfaces**.
 Dynamisch IP-adres | Ondersteund | Als de NIC op de bron dynamische IP-adres Sering heeft, is de NIC op de virtuele machine waarvoor een failover is uitgevoerd, standaard ook dynamisch.<br/><br/> U kunt dit zo nodig wijzigen in een vast IP-adres.
 Meerdere IP-adressen | Niet ondersteund | Wanneer u een failover van een virtuele machine met meerdere IP-adressen hebt uitgevoerd, wordt alleen het primaire IP-adres van de NIC in de bron regio bewaard. Als u meerdere IP-adressen wilt toewijzen, kunt u virtuele machines toevoegen aan een [herstel plan](recovery-plan-overview.md) en een script koppelen om extra IP-adressen toe te wijzen aan het plan, of u kunt de wijziging hand matig of met een script uitvoeren na een failover.
 Traffic Manager     | Ondersteund | U kunt Traffic Manager vooraf configureren zodat verkeer regel matig wordt gerouteerd naar het eind punt in de bron regio, en naar het eind punt in de doel regio in het geval van een failover.
@@ -274,6 +274,8 @@ VPN site-naar-site-verbinding met on-premises<br/><br/>(met of zonder ExpressRou
 VNET-naar-VNET-verbinding    | Ondersteund | [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)
 Service-eindpunten voor virtueel netwerk | Ondersteund | Als u de toegang tot het virtuele netwerk beperkt tot opslag accounts, moet u ervoor zorgen dat de vertrouwde micro soft-Services toegang krijgen tot het opslag account.
 Versneld netwerken | Ondersteund | Versnelde netwerken moeten zijn ingeschakeld op de bron-VM. [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Palo Alto-netwerk apparaat | Niet ondersteund | Bij apparaten van derden worden er vaak beperkingen opgelegd door de provider in de virtuele machine. Azure Site Recovery behoefte aan agents, uitbrei dingen en uitgaande connectiviteit beschikbaar. Het apparaat staat echter niet toe dat er uitgaande activiteiten worden geconfigureerd in de virtuele machine.
+IPv6  | Niet ondersteund | Gemengde configuraties met zowel IPv4 als IPv6 worden ook niet ondersteund. Maak het subnet van het IPv6-bereik vóór een Site Recovery bewerking.
 
 
 

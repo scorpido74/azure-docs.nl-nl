@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527364"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747352"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Naleving in Azure Cosmos DB 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB is beschikbaar in alle Azure-regio's. Micro soft maakt vijf afzo
 
 * **Open bare Azure** -Cloud, die wereld wijd beschikbaar is.
 
-* **Azure China 21vianet** is beschikbaar via een unieke samen werking tussen micro soft en 21vianet, een van de grootste Internet providers van het land.
+* **Azure China 21vianet** is beschikbaar via een unieke samen werking tussen micro soft en 21vianet, een van de grootste Internet providers van het land/de regio.
 
 * **Azure Duitsland** biedt services onder een model van de gegevens beheerder, wat ervoor zorgt dat klant gegevens in Duitsland blijven, onder controle van T-Systems International GmbH, een dochter onderneming van Deutsche Telecom, die fungeert als de Duitse gegevens beheerder.
 
@@ -59,7 +59,7 @@ De volgende tabel geeft een lijst van de certificeringen die worden ondersteund 
 | ISO 9001:2012 | DoD SRG Level 5 | | 
 | ISO 27001:2013 | FedRAMP High | |
 | ISO 9001:2015 | IRS 1075|  |
-| ISO 27017:2014 | NIST/KVP | |
+| ISO 27017:2014 | NIST CSF | |
 | ISO 27018:2015 | NIST SP 800-171 | |
 | SOC 1, 2, 3 | | |
 

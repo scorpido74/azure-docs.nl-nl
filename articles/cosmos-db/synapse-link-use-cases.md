@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744666"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse-koppeling voor Azure Cosmos DB: nabije realtime analyse-use cases
 
@@ -106,7 +106,7 @@ Met de koppeling Azure Synapse kunnen Azure Cosmos DB niet alleen Power transact
 
 De volgende afbeelding toont de werkbelasting patronen met behulp van Azure Cosmos DB: ![ Azure Synapse-koppeling voor Azure Cosmos DB werkbelasting patronen](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-Laat ons het voor beeld van een e-commerce-bedrijf CompanyXYZ met wereld wijde bewerkingen in 20 landen om de voor delen te illustreren van het kiezen van Azure Cosmos DB als de single realtime-data base, zowel transactionele als analytische vereisten van een platform voor voorraad beheer.
+Laat ons het voor beeld van een e-commerce-bedrijf CompanyXYZ met wereld wijde bewerkingen in 20 landen/regio's om de voor delen te illustreren van het kiezen van Azure Cosmos DB als de single realtime-data base, zowel transactionele als analytische vereisten van een platform voor voorraad beheer.
 
 * De kern activiteit van CompanyXYZ is afhankelijk van het voorraadbeheer systeem, dus Beschik baarheid & betrouw baarheid zijn kern vereisten voor de pijler. Voor delen van het gebruik van Azure Cosmos DB:
 

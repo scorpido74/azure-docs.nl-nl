@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701514"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744593"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Klant in Commerciële marketplace-analyses
 
@@ -52,9 +52,9 @@ Er zijn drie **typen klanten**: nieuw, bestaand en overlopend.
 
 ### <a name="customer-by-geography"></a>Klant op geografie
 
-In het diagram **klant per geografie** ziet u de aantallen klanten en klanten die zijn aangeschaft tijdens het geselecteerde datum bereik en die worden toegewezen op basis van het land van de klant. Het licht tot donkerere kleur op de kaart vertegenwoordigt de laag tot hoogste waarde van het aantal van de klant. Klik op een record in de tabel om in te zoomen op een land.
+In het diagram **klant per geografie** ziet u de aantallen klanten en klanten die zijn aangeschaft tijdens het geselecteerde datum bereik en die worden toegewezen op basis van het land of de regio van de klant. Het licht tot donkerere kleur op de kaart vertegenwoordigt de laag tot hoogste waarde van het aantal van de klant. Klik op een record in de tabel om in te zoomen op een land/regio.
 
-In het heatmap wordt het aantal klanten en de klant land weer gegeven. U kunt de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het% van klanten per locatie kunt bekijken, evenals de klanten die nieuw aan die locatie zijn toegevoegd.
+In het heatmap wordt het aantal klanten en% per klant land/regio weer gegeven. U kunt de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het% van klanten per locatie kunt bekijken, evenals de klanten die nieuw aan die locatie zijn toegevoegd.
 
 ### <a name="customer-trends"></a>Klant trends
 
@@ -97,7 +97,7 @@ In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klante
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als het record nummer groter is dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren gegane datum, klant-e-mail, land/regio/plaats/post code, klant taal, enzovoort.
+- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren gegane datum, klant-e-mail, land/regio/staat/plaats/post code, klant taal, enzovoort.
 - Wanneer een aanbieding wordt gekocht door een beveiligde klant, worden de gegevens van de **gedetailleerde gegevens** van de klant gemaskeerd (* * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Pagina filters van klant

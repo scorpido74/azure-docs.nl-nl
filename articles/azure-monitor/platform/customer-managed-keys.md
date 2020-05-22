@@ -5,47 +5,47 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/13/2020
-ms.openlocfilehash: aec093d829964c770f59ec7bd328fabdd56e6e86
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: aa27ba30c7a403cf70396e219b0619e2e84b0d4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654847"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747737"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
 Dit artikel bevat achtergrond informatie en stappen voor het configureren van door de klant beheerde sleutels (CMK) voor uw Log Analytics-werk ruimten. Eenmaal geconfigureerd, worden alle gegevens die naar uw werk ruimten worden verzonden, versleuteld met uw Azure Key Vault sleutel.
 
-U wordt aangeraden [beperkingen en beperkingen](#limitations-and-constraints) hieronder vóór de configuratie te bekijken.
-
-## <a name="disclaimers"></a>Disclaimers
-
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw abonnements white list te ontvangen.
+U wordt aangeraden [beperkingen en beperkingen](#limitationsandconstraints) hieronder vóór de configuratie te bekijken.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Overzicht van door de klant beheerde sleutel (CMK)
 
-Versleuteling bij rest ( https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) is een veelvoorkomende privacy-en beveiligings vereiste in organisaties. U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
+[Versleuteling bij rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   is een veelvoorkomende privacy-en beveiligings vereiste in organisaties.U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
 
-Azure Monitor zorgt ervoor dat alle gegevens in rust worden versleuteld met door Azure beheerde sleutels. Azure Monitor biedt ook een optie voor gegevens versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) en toegankelijk is via opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)   verificatie. Deze sleutel kan [software of hardware-HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview)zijn die is beveiligd. 
+Azure Monitor zorgt ervoor dat alle gegevens in rust worden versleuteld met door Azure beheerde sleutels.Azure Monitor biedt ook een optie voor gegevens versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)   en toegankelijk is via opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)   verificatie.Deze sleutel kan [software of hardware-HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview)zijn die is beveiligd.
 
 Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   werkt.
 
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
+Met CMK kunt u de toegang tot uw gegevens beheren en deze op elk gewenst moment intrekken. Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
 De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
-De frequentie waarmee Azure Monitor opslag toegang krijgt Key Vault voor omloop-en onverpakte bewerkingen ligt tussen 6 en 60 seconden.Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur.
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw white list voor uw abonnement op te halen voordat u begint met het configureren van CMK.
+
+Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)   maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hoe CMK werkt in Azure Monitor
 
-Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen.Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource. De identiteit van het Log Analytics cluster wordt ondersteund op het cluster niveau en dit bepaalt dat de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster. Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster* bron wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten, waarmee de identiteit tussen het log Analytics cluster en uw Key Vault wordt gehandhaafd. De Log Analytics cluster opslag maakt gebruik van de beheerde identiteit die \' aan de *cluster* bron is gekoppeld om uw Azure Key Vault via Azure Active Directory te verifiëren en te openen.
+Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen.Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource, terwijl de identiteit van het Log Analytics cluster op cluster niveau wordt ondersteund.Dit bepaalt of de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster.Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster*   resource wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten.De Log Analytics cluster opslag maakt gebruik van de beheerde identiteit die \' aan de *cluster*   bron is gekoppeld om de Azure Key Vault via Azure Active Directory te verifiëren. 
+Na de configuratie van CMK worden gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster*   bron, versleuteld met uw sleutel in Key Vault. U kunt werk ruimten op elk gewenst moment loskoppelen van de *cluster*   resource.Nieuwe gegevens worden opgenomen in Log Analytics opslag en versleuteld met de micro soft-sleutel, terwijl u uw nieuwe en oude gegevens naadloos kunt opvragen.
 
 ![Overzicht van CMK](media/customer-managed-keys/cmk-overview-8bit.png)
-1.    Key Vault
-2.    Log Analytics *cluster* bron met beheerde identiteit met machtigingen voor Key Vault--de identiteit wordt door gegeven aan de toegewezen log Analytics-cluster opslag van aan
-3.    Toegewezen Log Analytics cluster
-4.    Werk ruimten die zijn gekoppeld aan *cluster* bron voor CMK-versleuteling
+
+1. Key Vault
+2. Log Analytics *cluster* bron met beheerde identiteit met machtigingen voor Key Vault--de identiteit wordt door gegeven aan de toegewezen log Analytics-cluster opslag van aan
+3. Toegewezen Log Analytics cluster
+4. Werk ruimten die zijn gekoppeld aan *cluster* bron voor CMK-versleuteling
 
 ## <a name="encryption-keys-operation"></a>Versleutelings sleutel bewerking
 
@@ -72,8 +72,8 @@ De volgende regels zijn van toepassing:
 1. Abonnements white list: de CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw abonnements white list te ontvangen
 2. Azure Key Vault maken en de sleutel opslaan
 3. Een *cluster* bron maken
-5. Machtigingen verlenen aan uw Key Vault
-6. Log Analytics werk ruimten koppelen
+4. Machtigingen verlenen aan uw Key Vault
+5. Log Analytics werk ruimten koppelen
 
 De procedure wordt momenteel niet ondersteund in de gebruikers interface en het inrichtings proces wordt uitgevoerd via REST API.
 
@@ -151,7 +151,7 @@ Bewerking is mislukt
 
 ### <a name="subscription-whitelisting"></a>White list abonnement
 
-CMK-functionaliteit is een vroegtijdige functie voor toegang. De abonnementen waar u *cluster* bronnen wilt maken, moeten vooraf worden white list door de Azure-product groep. Gebruik uw contact personen in micro soft om uw abonnementen-Id's op te geven.
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters.Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw contact personen in micro soft om uw abonnementen-Id's op te geven.
 
 > [!IMPORTANT]
 > De functionaliteit van CMK is regionaal. Uw Azure Key Vault, *cluster* bron en gekoppelde log Analytics-werk ruimten moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
@@ -171,10 +171,10 @@ Deze instellingen zijn beschikbaar via CLI en Power shell:
 Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw Log Analytics-werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn white list, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden.
 
 U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
-    
+
 De eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* bron en de bijbehorende gegevens:
 - *cluster* (standaard): de facturering wordt toegeschreven aan het abonnement dat als host fungeert voor uw *cluster* bron
-- *werk ruimten* : de facturering wordt toegeschreven aan de abonnementen die proportioneel als host fungeren voor uw werk ruimten 
+- *werk ruimten* : de facturering wordt toegeschreven aan de abonnementen die proportioneel als host fungeren voor uw werk ruimten
 
 > [!NOTE]
 > Nadat u de *cluster* bron hebt gemaakt, kunt u deze bijwerken met *SKU*, *keyVaultProperties* of *BILLINGTYPE* met behulp van een patch rest-aanvraag.
@@ -202,6 +202,7 @@ Content-type: application/json
   "location": "<region-name>",
 }
 ```
+
 De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
 
 **Beantwoord**
@@ -212,7 +213,6 @@ Hoewel het inrichten van het Log Analytics cluster a is voltooid, kunt u de inri
 
 1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
 2. Verzend een GET-aanvraag op de *cluster* resource en kijk naar de waarde *provisioningState* . Het is *ProvisioningAccount* tijdens het *inrichten en voltooid wanneer het is voltooid* .
-
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -272,11 +272,11 @@ Als u de *cluster* bron met de details van de Key Vault *sleutel-id* wilt bijwer
 
 Werk de *cluster* bron-KeyVaultProperties bij met sleutel-id-Details.
 
-**Bijwerk**
+**Bijwerken**
 
 Deze aanvraag van een resource manager is een asynchrone bewerking bij het bijwerken van sleutel-id-Details, terwijl deze synchroon is tijdens het bijwerken van de capaciteits waarde.
 
-> [!Note]
+> [!NOTE]
 > U kunt een gedeeltelijke hoofd tekst opgeven in *cluster* resource om een *SKU*, *keyVaultProperties* of *billingType*bij te werken.
 
 ```rst
@@ -295,14 +295,15 @@ Content-type: application/json
    "properties": {
     "billingType": "cluster",
      "KeyVaultProperties": {
-       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-       KeyName: "<key-name>",
-       KeyVersion: "<current-version>"
+       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
+       "KeyName": "<key-name>",
+       "KeyVersion": "<current-version>"
        }
    },
    "location":"<region-name>"
 }
 ```
+
 ' KeyVaultProperties ' bevat de details van de Key Vault sleutel-id.
 
 **Beantwoord**
@@ -328,9 +329,9 @@ Een antwoord op de GET-aanvraag voor de *cluster* bron moet er als volgt uitzien
     },
   "properties": {
     "keyVaultProperties": {
-      keyVaultUri: "https://key-vault-name.vault.azure.net",
-      kyName: "key-name",
-      keyVersion: "current-version"
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
@@ -381,6 +382,7 @@ Opgenomen gegevens worden tijdens de koppelings bewerking opgeslagen die zijn ve
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+Authorization: Bearer <token>
 ```
 
 **Beantwoord**
@@ -395,7 +397,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
       "name": "pricing-tier-name",
       "lastSkuUpdate": "Tue, 28 Jan 2020 12:26:30 GMT"
     },
-    "retentionInDays": days,
+    "retentionInDays": 31,
     "features": {
       "legacy": 0,
       "searchVersion": 1,
@@ -427,33 +429,9 @@ Met opslag worden uw Key Vault periodiek gecontroleerd om te proberen om de vers
 
 Voor de draaiing van CMK is een expliciete update van de *cluster* bron vereist met de nieuwe sleutel versie in azure Key Vault. Volg de instructies in de stap *cluster* resource bijwerken met sleutel-id Details. Als u de nieuwe sleutel-id-Details in de *cluster* bron niet bijwerkt, blijft de log Analytics cluster opslag uw vorige sleutel gebruiken voor versleuteling. Als u de oude sleutel uitschakelt of verwijdert voordat u de nieuwe sleutel in de *cluster* bron bijwerkt, krijgt u een [belang rijke intrekkings](#cmk-kek-revocation) status.
 
-Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sleutel, inclusief gegevens die zijn opgenomen vóór de draaiing en daarna, omdat gegevens altijd zijn versleuteld met de versleutelings sleutel van het account (AEK) terwijl AEK nu wordt versleuteld met uw nieuwe Key Encryption Key (KEK)-versie in Key Vault.
+Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sleutel, omdat gegevens altijd worden versleuteld met de account versleutelings sleutel (AEK) terwijl AEK nu wordt versleuteld met uw nieuwe Key Encryption Key (KEK)-versie in Key Vault.
 
-## <a name="limitations-and-constraints"></a>Beperkingen en beperkingen
-
-- De CMK wordt ondersteund op toegewezen Log Analytics cluster en is geschikt voor klanten die 1 TB per dag of langer verzenden.
-
-- Het maximum aantal *cluster* resources per regio en abonnement is 2
-
-- U kunt een werk ruimte aan uw *cluster* bron koppelen en deze vervolgens loskoppelen wanneer de CMK voor de gegevens niet langer nodig zijn of een andere reden. Het aantal werkruimte koppelingen dat u binnen een periode van 30 dagen kunt uitvoeren op een werk ruimte is beperkt tot 2
-
-- Werkruimte koppeling met een *cluster* bron moet alleen worden uitgevoerd nadat u hebt gecontroleerd of de inrichting van het log Analytics cluster is voltooid. Gegevens die vóór de voltooiing naar uw werk ruimte worden verzonden, worden verwijderd en kunnen niet worden hersteld.
-
-- CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-configuratie. Gegevens die zijn opgenomen vóór de CMK-configuratie, blijven versleuteld met micro soft-sleutel. U kunt een query uitvoeren op gegevens die zijn opgenomen voor en na de CMK-configuratie naadloos.
-
-- De Azure Key Vault moet worden geconfigureerd als herstelbaar. Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell:
-
-  - [Zacht verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) moet zijn ingeschakeld
-  - Het [opschonen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) van de beveiliging moet zijn ingeschakeld om te beschermen tegen het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
-
-- Het verplaatsen van een *cluster* bron naar een andere resource groep of een ander abonnement wordt momenteel niet ondersteund.
-
-- Uw Azure Key Vault, *cluster* resource en gekoppelde werk ruimten moeten zich in dezelfde regio en in dezelfde Azure Active Directory (Azure AD)-Tenant bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
-
-- Werkruimte koppeling met *cluster* bron mislukt als deze is gekoppeld aan een andere *cluster* bron
-
-
-## <a name="management"></a>Beheer
+## <a name="cmk-manage"></a>CMK beheren
 
 - **Alle *cluster* resources voor een resource groep ophalen**
 
@@ -461,7 +439,7 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
-    
+
   **Beantwoord**
   
   ```json
@@ -480,9 +458,9 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
           },
         "properties": {
            "keyVaultProperties": {
-              keyVaultUri: "https://key-vault-name.vault.azure.net",
-              keyName: "key-name",
-              keyVersion: "current-version"
+              "keyVaultUri": "https://key-vault-name.vault.azure.net",
+              "keyName": "key-name",
+              "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
           "clusterType": "LogAnalytics", 
@@ -513,6 +491,7 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
   Wanneer het gegevens volume naar uw gekoppelde werk ruimten in de loop van de tijd verandert en u het capaciteits reserverings niveau op de juiste wijze wilt bijwerken. Volg de [Update *cluster* bron](#update-cluster-resource-with-key-identifier-details) en geef uw nieuwe capaciteits waarde op. Dit kan binnen het bereik van 1.000 tot 2.000 GB per dag zijn en in stappen van 100. Voor een niveau hoger dan 2.000 GB per dag, bereikt u uw micro soft-contact persoon om dit in te scha kelen. Houd er rekening mee dat u de volledige REST-aanvraag tekst niet hoeft op te geven en moet de SKU bevatten:
 
+  **organen**
   ```json
   {
     "sku": {
@@ -520,7 +499,7 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
       "Capacity": 1000
     }
   }
-  ``` 
+  ```
 
 - ***BillingType* in *cluster* bron bijwerken**
 
@@ -530,6 +509,7 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   
   Volg de [Update *cluster* resource](#update-cluster-resource-with-key-identifier-details) en geef de nieuwe billingType-waarde op. Houd er rekening mee dat u de volledige REST-aanvraag tekst niet hoeft op te geven en moet de *billingType*bevatten:
 
+  **organen**
   ```json
   {
     "properties": {
@@ -546,6 +526,7 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
   ```
 
   **Beantwoord**
@@ -556,7 +537,6 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
   1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
   2. Een [werk ruimte verzenden: aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de niet-gekoppelde werk ruimte heeft niet de *clusterResourceId* onder *functies*.
-
 
 - **De *cluster* bron verwijderen**
 
@@ -575,13 +555,37 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   
   Een *cluster* bron die in de afgelopen 14 dagen is verwijderd, is in de status voorlopig verwijderen en kan worden hersteld met de bijbehorende gegevens. Omdat alle werk ruimten die zijn ontkoppeld *Cluster* van de cluster *resource,* worden verwijderd, moet u uw werk ruimten na het herstel voor CMK-versleuteling opnieuw koppelen. De herstel bewerking wordt momenteel hand matig uitgevoerd door de product groep. Gebruik uw micro soft-kanaal voor herstel aanvragen.
 
+## <a name="limitationsandconstraints"></a>Beperkingen en beperkingen
+
+-De CMK wordt ondersteund op toegewezen Log Analytics cluster en is geschikt voor klanten die 1 TB per dag of langer verzenden.
+
+-Het maximum aantal *cluster*   resources per regio en abonnement is 2
+
+-U kunt een werk ruimte aan uw *cluster*   bron koppelen en deze vervolgens loskoppelen als CMK niet vereist is voor de werk ruimte.Het aantal werkruimte koppelingen op een bepaalde werk ruimte in een periode van 30 dagen is beperkt tot 2
+
+-Werkruimte koppeling met *cluster*   bron moet alleen worden uitgevoerd nadat u hebt gecontroleerd of de inrichting van het log Analytics cluster is voltooid.Gegevens die vóór de voltooiing naar uw werk ruimte worden verzonden, worden verwijderd en kunnen niet worden hersteld.
+
+-CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-      configuratie.Gegevens die zijn opgenomen vóór de CMK      -Configuratie, blijven versleuteld met micro soft-sleutel.U kunt een query uitvoeren op gegevens die zijn opgenomen      voor en na de CMK-configuratie naadloos.
+
+-De Azure Key Vault moet worden geconfigureerd als herstelbaar.Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell: de functie    - voor  [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)moet zijn ingeschakeld 
+         -  [Purge protection](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   om de beveiliging op te heffen tegen het afdwingen van het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
+
+- *Cluster*   resource verplaatsing naar een andere resource groep of een ander abonnement      wordt momenteel niet ondersteund.
+
+-Uw Azure Key Vault, *cluster*   resource en gekoppelde werk ruimten moeten zich in dezelfde regio en in dezelfde Azure Active Directory (Azure AD)-Tenant bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
+
+-De koppeling van de werk ruimte met de *cluster*   bron mislukt als deze is      gekoppeld aan een andere *cluster*   bron
+
 ## <a name="troubleshooting"></a>Problemen oplossen
+
 - Gedrag met Key Vault Beschik baarheid
   - In normale werking: opslag caches AEK gedurende korte tijd en terugvallen op Key Vault om regel matig de vertraging op te lossen.
     
   - Tijdelijke verbindings fouten--opslag verwerkt tijdelijke fouten (time-outs, verbindings fouten, DNS-problemen) doordat sleutels gedurende langere tijd in de cache blijven staan. Dit geeft een kleine problemen in Beschik baarheid. De mogelijkheden voor het uitvoeren van query's en opname worden zonder onderbreking voortgezet.
     
   - Live site--de niet-beschik baarheid van ongeveer 30 minuten leidt ertoe dat het opslag account niet meer beschikbaar is. De query mogelijkheid is niet beschikbaar en opgenomen gegevens worden gedurende enkele uren in de cache opgeslagen met behulp van micro soft-code om gegevens verlies te voor komen. Wanneer toegang tot Key Vault wordt hersteld, wordt de query beschikbaar en worden de gegevens in de tijdelijke cache opgenomen in de gegevens opslag en versleuteld met CMK.
+
+  - Toegangs snelheid van Key Vault: de frequentie waarmee Azure Monitor toegang tot Key Vault voor verpakte en onverpakte bewerkingen tussen 6 en 60 seconden ligt.
 
 - Als u een *cluster* bron maakt en de KeyVaultProperties onmiddellijk opgeeft, kan de bewerking mislukken omdat het toegangs beleid niet kan worden gedefinieerd totdat de systeem identiteit is toegewezen aan de *cluster* bron.
 
@@ -597,5 +601,4 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
 - Als u de sleutel versie bijwerkt in Key Vault en de nieuwe sleutel-id-details niet bijwerkt in de *cluster* bron, blijft de log Analytics cluster uw vorige sleutel gebruiken en worden uw gegevens niet meer toegankelijk. De nieuwe sleutel-id-gegevens in de *cluster* bron bijwerken om gegevens opname en de mogelijkheid om gegevens op te vragen, te hervatten.
 
-- Gebruik uw micro soft-contact persoon om contact met ons op te nemen voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.
-
+- Gebruik uw contact personen in micro soft voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.

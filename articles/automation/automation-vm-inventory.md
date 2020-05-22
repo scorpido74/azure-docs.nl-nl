@@ -1,51 +1,51 @@
 ---
-title: Een virtuele Azure-machine beheren met inventarisverzameling | Microsoft Docs
-description: Een virtuele machine beheren met inventarisverzameling
+title: Azure Automation voorraad verzameling beheren vanaf Vm's | Microsoft Docs
+description: In dit artikel leest u hoe u inventaris verzameling van Vm's beheert.
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617375"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745266"
 ---
-# <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Een virtuele Azure-machine met inventarisverzameling beheren
+# <a name="manage-inventory-collection-from-vms"></a>Een inventarisverzameling beheren vanuit VM's
 
-U kunt Inventaris bijhouden voor een virtuele Azure-machine inschakelen vanaf de resourcepagina van de computer. U kunt de volgende inventaris gegevens verzamelen en weer geven op uw computers:
+U kunt voorraad tracering inschakelen voor een virtuele Azure-machine vanaf de pagina resource van de machine. U kunt de volgende inventaris gegevens verzamelen en weer geven op uw computers:
 
-- Windows-software (Windows-toepassingen en Windows-updates), services, bestanden en register sleutels
-- Linux-software (pakketten) daemons en bestanden
+- Windows-updates, Windows-toepassingen,-services,-bestanden en-register sleutels
+- Linux-software pakketten,-daemons en-bestanden
 
-Deze methode biedt een gebruikersinterface op basis van een browser voor het instellen en configureren van een inventarisverzameling.
+Azure Automation Wijzigingen bijhouden en inventaris biedt een gebruikers interface op basis van een browser voor het instellen en configureren van inventaris verzameling.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/).
 
-In dit artikel wordt ervan uitgegaan dat u een virtuele machine hebt waarmee u de oplossing kunt configureren. Als u nog geen virtuele Azure-machine hebt, [maak dan een virtuele machine](../virtual-machines/windows/quick-create-portal.md).
+In dit artikel wordt ervan uitgegaan dat u een virtuele machine hebt om in te scha kelen met Wijzigingen bijhouden en inventaris. Als u geen Azure-VM hebt, kunt u [een virtuele machine maken](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Verzamelen van inventaris inschakelen op de resourcepagina van de virtuele machine
+## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Voorraad verzameling inschakelen op de VM-resource pagina
 
 1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Virtuele machines**.
-2. Selecteer een virtuele machine in de lijst met virtuele machine.
+2. Selecteer een computer in de lijst met Vm's.
 3. Selecteer in het menu **resource** onder **bewerkingen**de optie **inventaris**.
 4. Selecteer een Log Analytics-werk ruimte om uw gegevens logboeken op te slaan.
     Als er geen werkruimte beschikbaar is voor deze regio, wordt u gevraagd om een standaardwerkruimte en een Automation-account te maken.
-5. Selecteer **Inschakelen** om de onboarding voor uw computer te starten.
+5. Selecteer **inschakelen**om de computer in te scha kelen.
 
    ![Opties voor onboarding weergeven](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    In een statusbalk ziet u de melding dat de oplossing wordt ingeschakeld. Dit proces duurt maximaal 15 minuten. Gedurende deze tijd kunt u het venster sluiten, of u kunt het openen en u krijgt een melding wanneer de oplossing is ingeschakeld. U kunt de implementatiestatus controleren vanuit het deelvenster met meldingen.
+    Een status balk waarschuwt u dat de functie voor Wijzigingen bijhouden en inventarisatie is ingeschakeld. Dit proces duurt maximaal 15 minuten. Gedurende deze tijd kunt u het venster sluiten, of u kunt het openen en u krijgt een melding wanneer de functie is ingeschakeld. U kunt de implementatiestatus controleren vanuit het deelvenster met meldingen.
 
-   ![De inventarisoplossing onmiddellijk na de onboarding weergeven](./media/automation-vm-inventory/inventory-onboarded.png)
+   ![Inventaris weergeven](./media/automation-vm-inventory/inventory-onboarded.png)
 
 Wanneer de implementatie is voltooid, verdwijnt de statusbalk. Het systeem is nog bezig met het verzamelen van inventarisgegevens en de gegevens zijn daarom mogelijk nog niet zichtbaar. Het duurt maximaal 24 uur voordat een volledige verzameling van de gegevens beschikbaar is.
 
@@ -57,7 +57,7 @@ Standaard worden software-, Windows Services- en Linux-daemons geconfigureerd vo
 2. Als u een nieuwe instelling voor de verzameling wilt toevoegen, gaat u naar de instellings categorie die u wilt toevoegen door het tabblad **Windows-REGI ster**, **Windows-bestanden**of Linux- **bestanden** te selecteren.
 3. Selecteer de juiste categorie en klik boven aan de pagina op **toevoegen** .
 
-De volgende tabellen bevatten informatie over elke eigenschap die kan worden geconfigureerd voor de verschillende categorieën.
+De volgende secties bevatten informatie over elke eigenschap die kan worden geconfigureerd voor de verschillende categorieën.
 
 ### <a name="windows-registry"></a>Windows-register
 
@@ -110,14 +110,14 @@ Als u een nieuwe machine groep wilt maken, klikt u op **+ een computer groep mak
 
 ![Nieuwe computer groep maken](./media/automation-vm-inventory/create-new-group.png)
 
-## <a name="disconnect-your-virtual-machine-from-management"></a>De virtuele machine loskoppelen van beheer
+## <a name="disconnect-your-vm-from-management"></a>De virtuele machine loskoppelen van beheer
 
-Ga als volgt te werk om uw virtuele machine te verwijderen uit inventarisbeheer:
+De virtuele machine uit het voorraad beheer verwijderen:
 
-1. Selecteer in het linkermenu van de Azure-portal de optie **Log Analytics** en selecteer de werkruimte die u hebt gebruikt tijdens de onboarding van de virtuele machine.
+1. Selecteer **log Analytics**in het linkerdeel venster van de Azure Portal en selecteer vervolgens de werk ruimte die u hebt gebruikt bij het inschakelen van de virtuele machine voor wijzigingen bijhouden en inventarisatie.
 2. Open op de pagina Log Analytics het **resource** menu.
 3. Selecteer **virtual machines** onder **gegevens bronnen voor de werk ruimte**.
-4. Selecteer in de lijst de virtuele machine die u wilt loskoppelen. De virtuele machine heeft een groen vinkje naast de tekst **Deze werkruimte** in de kolom **OMS-verbinding**.
+4. Selecteer in de lijst de virtuele machine die u wilt loskoppelen. De machine heeft een groen vinkje naast **deze werk ruimte** in de kolom **OMS-verbinding** .
 
    >[!NOTE]
    >Operations Management Suite (OMS) wordt nu Azure Monitor-logboeken genoemd.
@@ -127,5 +127,6 @@ Ga als volgt te werk om uw virtuele machine te verwijderen uit inventarisbeheer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Track software changes in your environment with the Change Tracking solution](../log-analytics/log-analytics-change-tracking.md) (Wijzigingen in uw omgeving bijhouden met de oplossing Wijzigingen bijhouden) voor meer informatie over het beheren van wijzigingen in bestands- en registerinstellingen.
-* Zie [de updatebeheer-oplossing in azure](../operations-management-suite/oms-solution-update-management.md)voor meer informatie over het beheren van Windows en pakket updates op uw virtuele machines.
+* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
+* [Houd software wijzigingen in uw omgeving bij met wijzigingen bijhouden](../log-analytics/log-analytics-change-tracking.md).
+* [Updatebeheer in azure](../operations-management-suite/oms-solution-update-management.md).

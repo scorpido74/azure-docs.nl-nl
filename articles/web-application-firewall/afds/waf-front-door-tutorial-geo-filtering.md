@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb97a2d848441a153db47b41644a6226e9d75782
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135867"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747746"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Een WAF-beleid voor geo-filtering instellen voor uw voor deur
 
@@ -52,7 +52,7 @@ Maak een voor deur profiel door de instructies te volgen die worden beschreven i
 
 ## <a name="define-geo-filtering-match-condition"></a>Voor waarde voor geografische filtering definiëren
 
-Maak een voor waarde voor het vergelijken van een voor beeld waarbij aanvragen die niet afkomstig zijn van "US" worden geselecteerd met [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) in para meters bij het maken van een matching voorwaarde. Er zijn twee letter land codes naar land toewijzing opgenomen in [wat geo-filtering is op een domein voor Azure front-deur?](waf-front-door-geo-filtering.md).
+Maak een voor waarde voor het vergelijken van een voor beeld waarbij aanvragen die niet afkomstig zijn van "US" worden geselecteerd met [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) in para meters bij het maken van een matching voorwaarde. De land-/regiocodes van twee letters naar land/regio-toewijzing zijn te vinden in [wat geo-filtering is op een domein voor Azure front-deur?](waf-front-door-geo-filtering.md).
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -64,7 +64,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Overeenkomstvoorwaarde voor geofilter toevoegen aan een regel met Actie en Prioriteit
 
-Maak een CustomRule- `nonUSBlockRule` object op basis van de voor waarde match, een actie en een prioriteit met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Een CustomRule kan meerdere overeenkomstvoorwaarden hebben.  In dit voorbeeld is Actie ingesteld op Blokkeren en is Prioriteit ingesteld op 1, de hoogste prioriteit.
+Maak een CustomRule `nonUSBlockRule` -object op basis van de voor waarde match, een actie en een prioriteit met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Een CustomRule kan meerdere overeenkomstvoorwaarden hebben.  In dit voorbeeld is Actie ingesteld op Blokkeren en is Prioriteit ingesteld op 1, de hoogste prioriteit.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
@@ -77,7 +77,7 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 
 ## <a name="add-rules-to-a-policy"></a>Regels toevoegen aan een beleid
 
-Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzResourceGroup`behulp van. Maak vervolgens een `geoPolicy` beleids object dat `nonUSBlockRule` gebruikmaakt van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat. U moet een unieke naam opgeven voor het geo-beleid. 
+Zoek de naam van de resource groep die het voorste deur profiel bevat met behulp van `Get-AzResourceGroup` . Maak vervolgens een `geoPolicy` beleids object dat `nonUSBlockRule` gebruikmaakt van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat. U moet een unieke naam opgeven voor het geo-beleid. 
 
 In het volgende voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken. Vervang in het onderstaande voor beeld de beleids naam *geoPolicyAllowUSOnly* door een unieke beleids naam.
 
@@ -101,7 +101,7 @@ $geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupF
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-Stel vervolgens de front-end WebApplicationFirewallPolicyLink-eigenschap in op de `geoPolicy`resourceId van de using [set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
+Stel vervolgens de front-end WebApplicationFirewallPolicyLink-eigenschap in op de resourceId van de `geoPolicy` using [set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
 
 ```
 Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]

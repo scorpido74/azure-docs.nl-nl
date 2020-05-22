@@ -1,18 +1,18 @@
 ---
-title: Overzicht van Wijzigingen bijhouden en inventaris in Azure Automation
-description: Wijzigingen bijhouden en inventaris helpt u bij het identificeren van software-en micro soft-service wijzigingen die zich in uw omgeving voordoen.
+title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
+description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u software-en micro soft-service wijzigingen kunt identificeren die in uw omgeving optreden.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744364"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>Overzicht van Wijzigingen bijhouden en inventaris
+# <a name="change-tracking-and-inventory-overview"></a>Overzicht van Wijzigingen bijhouden en inventaris
 
 In dit artikel wordt beschreven hoe u Wijzigingen bijhouden en inventariseert in Azure Automation. Deze functie houdt wijzigingen in de virtuele machines en server infrastructuur bij, zodat u operationele en omgevings problemen kunt lokaliseren met software die wordt beheerd door Distribution Package Manager. Items die worden bijgehouden door Wijzigingen bijhouden en inventaris omvatten: 
 
@@ -50,7 +50,7 @@ Andere beperkingen:
 Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
 * Hotfix-updates worden niet verzameld op computers met Windows Server 2016 core RS3.
-* Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop `SvcRunLevels` de gegevens in het [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
+* Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop de `SvcRunLevels` gegevens in het [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -136,7 +136,7 @@ Wijzigingen bijhouden en inventaris maakt gebruik van [Azure Security Center Fil
 Wijzigingen bijhouden en inventarisatie ondersteunt recursie, waarmee u Joker tekens kunt opgeven om het bijhouden van meerdere mappen te vereenvoudigen. Recursie biedt ook omgevings variabelen waarmee u bestanden kunt volgen in omgevingen met meerdere of dynamische stations. De volgende lijst bevat algemene informatie die u moet kennen bij het configureren van recursie:
 
 * Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
-* Joker tekens kunnen alleen worden gebruikt in het laatste segment van een pad, bijvoorbeeld **\\c:\folder file*** of **/etc/*. conf**.
+* Joker tekens kunnen alleen worden gebruikt in het laatste segment van een pad, bijvoorbeeld **c:\folder \\ File*** of **/etc/*. conf**.
 * Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar het pad mislukt tijdens de uitvoering.
 * Vermijd algemene padnamen bij het instellen van het pad, omdat dit type instelling ertoe kan leiden dat er te veel mappen worden gepasseerd.
 
@@ -184,17 +184,18 @@ Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt 
 
 |Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c:\\Windows\\System32\\drivers\\"|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
-|ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: Windows\\\\System32\\drivers\\etc\\-hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|
+|ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\ Windows \\ System32 \\ drivers \\ "|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
+|ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: \\ Windows \\ System32 \\ drivers etc- \\ \\ hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "micro soft-Services" en SvcName bevat "W3SVC" en SvcState = = "gestopt"|Dit is handig voor het bijhouden van wijzigingen in essentiële services van het systeem.|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "daemons" en SvcName bevat "SSH" en SvcState! = "running"|Dit is handig voor het bijhouden van wijzigingen in essentiële services van het systeem.|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "software" en ChangeCategory = = "toegevoegd"|Dit is handig voor omgevingen waarvoor een vergrendelde software configuratie nodig is.|
 |ConfigurationData <br>&#124; waarbij de softwarenaam "bewakings agent" en CurrentVersion! = "8.0.11081.0" bevat|Nuttig als u wilt zien op welke computers een verouderde of niet-compatibele software versie is geïnstalleerd. Deze query rapporteert de laatst gerapporteerde configuratie status, maar brengt geen wijzigingen aan.|
-|ConfigurationChange <br>&#124; waarbij RegistryKey = = @ "HKEY_LOCAL_MACHINE\\software\\micro\\Soft\\Windows\\CurrentVersion QualityCompat"| Dit is handig voor het bijhouden van wijzigingen in essentiële antivirus sleutels.|
-|ConfigurationChange <br>&#124; waarbij RegistryKey @ "\\HKEY_LOCAL_MACHINE System\\CurrentControlSet\\Services\\SharedAccess\\para meters\\FirewallPolicy" bevat| Dit is handig voor het bijhouden van wijzigingen in Firewall-instellingen.|
+|ConfigurationChange <br>&#124; waarbij RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ software \\ micro soft \\ Windows \\ CurrentVersion \\ QualityCompat"| Dit is handig voor het bijhouden van wijzigingen in essentiële antivirus sleutels.|
+|ConfigurationChange <br>&#124; waarbij RegistryKey @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ para meters \\ FirewallPolicy" bevat| Dit is handig voor het bijhouden van wijzigingen in Firewall-instellingen.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u wilt werken met Wijzigingen bijhouden en inventaris in uw runbooks, raadpleegt u [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md).
-* Raadpleeg [troubleshooting wijzigingen bijhouden and Inventory](automation-tutorial-troubleshoot-changes.md)om fouten met wijzigingen bijhouden en inventarisatie op te lossen.
-* [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde gegevens voor het bijhouden van wijzigingen weer te geven.
+* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
+* [Zoek opdrachten in Logboeken in Azure Monitor logboeken](../log-analytics/log-analytics-log-searches.md)
+* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
+* [Problemen met wijzigingen in een virtuele Azure-machine oplossen](automation-tutorial-troubleshoot-changes.md)

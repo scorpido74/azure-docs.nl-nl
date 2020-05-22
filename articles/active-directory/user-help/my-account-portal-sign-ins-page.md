@@ -8,15 +8,15 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625405"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744516"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken via de pagina Mijn aanmeldingen (preview)
 
@@ -30,7 +30,7 @@ U kunt al uw recente aanmeldings activiteiten voor werk-of school accounts bekij
 
 ## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldingsactiviteiten bekijken
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myaccount.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de https://myaccount.microsoft.com/ pagina.
 
 2. Selecteer **mijn aanmeldingen (preview)** in het navigatie deel venster links of selecteer de koppeling **recente activiteit controleren** van het blok **mijn aanmeldingen (preview)** .
 
@@ -56,7 +56,7 @@ Als er een niet-geslaagde aanmelding wordt weer geven, met een opmerking onder s
 
 U kunt uw recente aanmeldings activiteit doorzoeken op een van de beschik bare gegevens. U kunt bijvoorbeeld zoeken naar uw recente aanmeldings activiteit per besturings systeem, locatie, app, enzovoort.
 
-1. Typ op de pagina **recente activiteit controleren** de informatie waarnaar u wilt zoeken in de **Zoek** balk. Typ `My Account` bijvoorbeeld om te zoeken naar alle activiteiten die worden verzameld door de app mijn account.
+1. Typ op de pagina **recente activiteit controleren** de informatie waarnaar u wilt zoeken in de **Zoek** balk. Typ bijvoorbeeld `My Account` om te zoeken naar alle activiteiten die worden verzameld door de app mijn account.
 
 2. Selecteer de knop **zoeken** om te beginnen met zoeken.
 

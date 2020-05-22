@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472602"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747777"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Wat is geo-filteren op een domein voor Azure Front Door?
 
 Standaard reageert AFD op gebruikersaanvragen, ongeacht de locatie van deze gebruiker. In sommige gevallen wilt u echter mogelijk de toegang tot uw webtoepassingen beperken op basis van land/regio. Met de WAF-service (Web Application firewall) aan de voor deur kunt u een beleid definiëren met aangepaste toegangs regels voor een specifiek pad op uw eind punt om toegang toe te staan of te blok keren voor bepaalde landen/regio's. 
 
-Een WAF-beleid bevat meestal een set aangepaste regels. Een regel bestaat uit voorwaarden voor overeenkomsten, een actie en een prioriteit. In de voorwaarde voor overeenkomst definieert u een overeenkomende variabele, een operator en een overeenkomende waarde.  Voor de ge-filterregel is REMOTE_ADDR de overeenkomende variabele, GeoMatch de operator, en de waarde is het landnummer van twee letters. U kunt een GeoMatch-voorwaarde combineren met een REQUEST_URI-tekenreeks-voorwaarde voor overeenkomst om een op een pad gebaseerde geo-filterregel te maken.
+Een WAF-beleid bevat meestal een set aangepaste regels. Een regel bestaat uit voorwaarden voor overeenkomsten, een actie en een prioriteit. In de voorwaarde voor overeenkomst definieert u een overeenkomende variabele, een operator en een overeenkomende waarde.  Voor de geo-filter regel is de overeenkomende variabele REMOTE_ADDR, de operator is geomatch, de waarde is de code van het land of de regio van de tweede letter. U kunt een GeoMatch-voorwaarde combineren met een REQUEST_URI-tekenreeks-voorwaarde voor overeenkomst om een op een pad gebaseerde geo-filterregel te maken.
 
 U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik te maken van [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) of door gebruik te maken van de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
-## <a name="country-code-reference"></a>Land code referentie
+## <a name="countryregion-code-reference"></a>Verwijzing naar land/regio code
 
-|Landcode | Land naam |
+|Land-/regiocode | Regio? Regio naam |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Verenigde Arabische Emiraten|
@@ -70,7 +70,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | CU | Cuba|
 | CV | Cabo Verde|
 | CY | Cyprus|
-| CZ | Tsjechië|
+| CZ | Tsjechische Republiek|
 | DE | Duitsland|
 | DK | Denemarken|
 | DO | Dominicaanse Republiek|
@@ -96,7 +96,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | HK | Hongkong SAR|
 | HN | Honduras|
 | HR | Kroatië|
-| HT | Haiti|
+| HT | Haïti|
 | HU | Hongarije|
 | Id | Indonesië|
 | IE | Ierland|
@@ -110,7 +110,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | JO | Jordanië|
 | JP | Japan|
 | KE | Kenia|
-| KG | Kirgizië|
+| KG | Kirgistan|
 | KH | Cambodja|
 | KI | Kiribati|
 | KN | Saint Kitts en Nevis|
@@ -131,21 +131,21 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | LY | Libië |
 | MA | Marokko|
 | MD | Moldavië, Republiek|
-| MG | Madagascar|
+| MG | Madagaskar|
 | MK | Noord-Macedonië|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolië|
 | MO | Macau SAR|
 | MQ | Martinique|
-| MR | Mauretanië|
+| MR | Mauritanië|
 | MT | Malta|
 | MV | Maldiven|
 | MW | Malawi|
 | MX | Mexico|
 | MY | Maleisië|
 | MZ | Mozambique|
-| N.v.t. | Namibië|
+| NA | Namibië|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|
@@ -183,7 +183,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | SV | El Salvador|
 | SY | Arabische Republiek Syrië|
 | SZ | Swaziland|
-| TC | Turks- en Caicoseilanden|
+| TC | Turks- en Caicos-eilanden|
 | TG | Togo|
 | TH | Thailand|
 | TN | Tunesië|

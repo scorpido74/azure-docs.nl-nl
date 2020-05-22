@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788850"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744608"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Wat is Azure Media Services Video Indexer?
 
@@ -70,8 +70,8 @@ In de volgende lijst ziet u de inzichten die u uit uw Video's kunt ophalen met V
 
 ### <a name="audio-insights"></a>Audio inzichten
 
-* **Audio-transcriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
-* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Portugees (Brazilië). Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
+* **Audio-transcriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Arabisch, Russisch, Portugees, Hindi en Koreaans.
+* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
 * **Meertalige spraak-identificatie en transcriptie** (preview-versie): identificeert automatisch de gesp roken taal in verschillende segmenten van audio. Elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en vervolgens wordt de transcriptie opnieuw gecombineerd tot één Unified transcriptie. Zie voor meer informatie [automatisch inhoud identificeren en transcriberen in meerdere talen](multi-language-identification-transcription.md).
 * **Ondertiteling**: hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
 * **Twee kanaal verwerking**: automatisch detecteert afzonderlijke transcripten en samen voegingen op één tijd lijn.

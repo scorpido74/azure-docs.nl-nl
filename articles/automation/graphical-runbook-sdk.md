@@ -1,28 +1,28 @@
 ---
-title: De Azure Automation grafische runbook SDK gebruiken
-description: In dit artikel wordt beschreven hoe u de Azure Automation grafische runbook SDK gebruikt.
+title: De Azure Automation grafische runbook SDK gebruiken (preview-versie)
+description: In dit artikel leest u hoe u de Azure Automation grafische runbook SDK (preview) gebruikt.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690739"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744334"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>De Azure Automation grafische runbook SDK gebruiken
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>De Azure Automation grafische runbook SDK gebruiken (preview-versie)
 
 Met [grafische runbooks](automation-graphical-authoring-intro.md) kunt u de complexiteit van de onderliggende Windows Power shell-of Power shell-werk stroom code beheren. Met de Microsoft Azure Automation-SDK voor grafische elementen kunnen ontwikkel aars grafische runbooks maken en bewerken voor gebruik met Azure Automation. In dit artikel worden de basis stappen beschreven voor het maken van een grafisch runbook vanuit uw code.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Importeer het `Orchestrator.GraphRunbook.Model.dll` pakket in uw project.
+Importeer het `Orchestrator.GraphRunbook.Model.dll` pakket door de [SDK](https://www.microsoft.com/download/details.aspx?id=50734)te downloaden.
 
 ## <a name="create-a-runbook-object-instance"></a>Een runbook-object instantie maken
 
-Verwijs `Orchestrator.GraphRunbook.Model` naar de assembly en maak een `Orchestrator.GraphRunbook.Model.GraphRunbook` exemplaar van de klasse:
+Verwijs naar de `Orchestrator.GraphRunbook.Model` Assembly en maak een exemplaar van de `Orchestrator.GraphRunbook.Model.GraphRunbook` klasse:
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -33,7 +33,7 @@ var runbook = new GraphRunbook();
 
 ## <a name="add-runbook-parameters"></a>Runbook-para meters toevoegen
 
-Objecten `Orchestrator.GraphRunbook.Model.Parameter` instantiëren en toevoegen aan het runbook:
+Objecten instantiëren `Orchestrator.GraphRunbook.Model.Parameter` en toevoegen aan het runbook:
 
 ```csharp
 runbook.AddParameter(
@@ -91,7 +91,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 
 Activiteiten worden geïmplementeerd door de volgende klassen in de `Orchestrator.GraphRunbook.Model` naam ruimte.
 
-|Klasse  |Activiteit  |
+|Klas  |Activiteit  |
 |---------|---------|
 |CommandActivity     | Hiermee wordt een Power shell-opdracht (cmdlet, function, enz.) aangeroepen.        |
 |InvokeRunbookActivity     | Hiermee wordt een ander runbook inline aangeroepen.        |
@@ -101,7 +101,7 @@ Activiteiten worden geïmplementeerd door de volgende klassen in de `Orchestrato
 > [!NOTE]
 > U hoeft uw eigen activiteiten niet af te leiden van de beschik bare klassen. Azure Automation kan geen runbooks gebruiken met aangepaste typen activiteiten.
 
-U moet `InvokeRunbookActivity` para `CommandActivity` meters opgeven als waarde-descriptors, niet directe waarden. Met Value-descriptors geeft u op hoe de werkelijke parameter waarden moeten worden geproduceerd. De volgende descriptors voor waarden zijn momenteel beschikbaar:
+U moet `CommandActivity` `InvokeRunbookActivity` para meters opgeven als waarde-descriptors, niet directe waarden. Met Value-descriptors geeft u op hoe de werkelijke parameter waarden moeten worden geproduceerd. De volgende descriptors voor waarden zijn momenteel beschikbaar:
 
 
 |Descriptor  |Definitie  |
@@ -137,8 +137,8 @@ var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
 U kunt deze teken reeks opslaan in een bestand met de extensie **. graphrunbook** . Het bijbehorende runbook kan worden geïmporteerd in Azure Automation.
-De geserialiseerde indeling kan worden gewijzigd in toekomstige versies van `Orchestrator.GraphRunbook.Model.dll`. We hebben achterwaartse compatibiliteit voor u: elk runbook dat is geserialiseerd met `Orchestrator.GraphRunbook.Model.dll` een oudere versie van kan worden gedeserialiseerd met een nieuwere versie. Voorwaartse compatibiliteit is niet gegarandeerd: een runbook dat is geserialiseerd met een nieuwere versie, mag niet worden gedeserialiseerd door oudere versies.
+De geserialiseerde indeling kan worden gewijzigd in toekomstige versies van `Orchestrator.GraphRunbook.Model.dll` . We hebben achterwaartse compatibiliteit voor u: elk runbook dat is geserialiseerd met een oudere versie van `Orchestrator.GraphRunbook.Model.dll` kan worden gedeserialiseerd met een nieuwere versie. Voorwaartse compatibiliteit is niet gegarandeerd: een runbook dat is geserialiseerd met een nieuwere versie, mag niet worden gedeserialiseerd door oudere versies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Inleiding tot grafisch ontwerpen](automation-graphical-authoring-intro.md)voor meer informatie over grafische runbooks in azure Automation.
+[Grafische runbooks ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)

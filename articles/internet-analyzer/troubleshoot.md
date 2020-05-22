@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069214"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745472"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Problemen met Azure Internet Analyzer oplossen
 
@@ -25,7 +25,7 @@ Dit artikel bevat probleemoplossings stappen voor veelvoorkomende problemen met 
 ## <a name="azure-portal"></a>Azure Portal
 **' Er is geen Score Card gegenereerd voor de geselecteerde filter combinatie ' in de sectie Score cards**
 - Score cards worden dagelijks gegenereerd (aan het einde van elke dag, UTC-tijd).
-- Score cards worden alleen gegenereerd als er meer dan 100 metingen zijn verzameld voor de geselecteerde filter combinatie (test, tijds periode, land, enzovoort).
+- Score cards worden alleen gegenereerd als er meer dan 100 metingen zijn verzameld voor de geselecteerde filter combinatie (test, tijds periode, land/regio enzovoort).
 
 **"Totaal aantal metingen" is nul voor een of beide eind punten in een test**
 - Tijds reeksen en meet aantallen worden één keer per uur berekend. u moet er dus voor zorgen dat er ten minste een hoeveelheid tijd nodig is om nieuwe meet gegevens weer te geven.

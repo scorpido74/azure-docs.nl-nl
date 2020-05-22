@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9542fe6cb574b36b03151a50a0352c9175a22b55
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711462"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745027"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Certificaten in Azure Automation beheren
 
@@ -165,6 +165,7 @@ print cert
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Modules beheren in Azure Automation](modules.md)
-* [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
-* [Overzicht van Azure Automation status configuratie](../automation-dsc-overview.md) 
+* Zie [modules beheren in azure Automation](modules.md)voor meer informatie over de cmdlets die worden gebruikt voor toegang tot certificaten.
+* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
+* Zie [Azure Automation status configuratie Overview](../automation-dsc-overview.md)(Engelstalig) voor meer informatie over DSC-configuraties. 
+

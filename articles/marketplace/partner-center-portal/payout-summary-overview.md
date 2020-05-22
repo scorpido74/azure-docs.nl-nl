@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783511"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746209"
 ---
-# <a name="payout-summary-overview"></a>Overzicht van overzicht van uitbetalingen
+# <a name="payout-summary-overview"></a>Betalingsoverzicht
 
 In de [samen vatting van de uitbetaling](./payout-summary.md) ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
@@ -70,7 +70,7 @@ Deze optie biedt een down load van elk verdienen regel item dat u op de pagina t
 | participantId | De primaire identiteit van de partner die onder het programma is aangegaan |
 | participantIdType | Programma-ID voor prikkel Programma's en verkopers als het programma is voor opslag Programma's en Azure Marketplace |
 | deel nemer | Naam van de verdienen partner |
-| partnerCountryCode | Locatie/land van de verdienen partner |
+| partnerCountryCode | Locatie/land/regio van de verdienen partner |
 | programName | Naam van het prestatie/archief programma |
 | transactionId | De unieke id voor de trans actie |
 | transactionCurrency | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is niet de valuta van de partner locatie) |
@@ -89,11 +89,11 @@ Deze optie biedt een down load van elk verdienen regel item dat u op de pagina t
 | calculationDate | De datum waarop het verdienen is berekend in het systeem |
 | earningExchangeRate | De wissel koers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven |
 | exchangeRateDate | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD |
-| paymentAmountWOTax | Betaalde hoeveelheid (zonder BTW) voor de valuta voor &quot;verzonden betalingen&quot; |
+| paymentAmountWOTax | Betaalde hoeveelheid (zonder BTW) voor de valuta voor &quot; verzonden &quot; betalingen |
 | paymentCurrency | Betalen voor de valuta die wordt gekozen door de partner in het betalings profiel. Alleen weer gegeven voor verzonden betalingen |
 | paymentExchangeRate | De wissel koers die wordt gebruikt om paymentAmountWOTax in de betalings valuta te berekenen met behulp van ExchangeRateDate |
 | paymentId | De unieke id voor de betaling. Dit nummer is zichtbaar in uw bank afschrift |
-| paymentStatus | Betalings status |
+| paymentStatus | Betalingsstatus |
 | paymentStatusDescription | Beschrijving van de betalings status |
 | customerId | Is altijd leeg |
 | customerName | Is altijd leeg |
@@ -113,15 +113,15 @@ Deze optie biedt een down load van elk verdienen regel item dat u op de pagina t
 | storeFee | Het bedrag dat door micro soft wordt bewaard als een vergoeding voor het maken van de app of invoeg toepassing die beschikbaar is in de commerciële Marketplace. |
 | transactionPaymentMethod | Het betalings instrument van de klant dat wordt gebruikt voor de trans actie (zoals kaart, Mobile provider-facturering en PayPal) |
 | tpan | AD-netwerk van derden |
-| customerCountry | Klant land |
+| customerCountry | Land/regio van klant |
 | customerCity | Klant plaats |
 | customerState | Klant status |
 | customerZip | Post code van de klant |
 | TenantID | De ID van de Tenant |
 | externalReferenceId | De unieke id voor het programma |
 | externalReferenceIdLabel | Label voor unieke id |
-| transactionCountryCode | Land code waarin de trans actie plaatsvond |
-| taxCountry | Land van de klant |
+| transactionCountryCode | Land-/regiocode waarin de trans actie plaatsvond |
+| taxCountry | Land/regio van de klant |
 | taxState | Provincie van de klant |
 | taxCity | Plaats van klant |
 | taxZipCode | Post code van de klant |
@@ -132,7 +132,7 @@ Deze optie biedt een down load van elk verdienen regel item dat u op de pagina t
 | AssetId | De unieke id voor de klant orders voor uw Marketplace-service. Het vertegenwoordigt de inkoop regel items. Er kunnen meerdere assets zijn. |
 | OrderId | Is gekoppeld aan de factuur van een klant |
 | LineItemId | Afzonderlijke regel in de factuur van een klant |
-| Klant land | De land naam van de klant. Dit kan afwijken van het land van het Azure-abonnement van de klant. |
+| Land/regio van klant | De land/regio naam die door de klant wordt verschaft. Dit kan afwijken van het land/de regio in het Azure-abonnement van een klant. |
 | EmailAddress klant | Het e-mail adres van de klant. Dit kan afwijken van het e-mail adres in het Azure-abonnement van een klant. |
 | SkuId | SKU-ID zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding. |
 
@@ -144,4 +144,4 @@ Neem contact op met de ondersteuning voor commerciële Marketplace- [Uitgever](h
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Overzicht van uitbetalingen](./payout-summary.md)
+- [Betalingsoverzichten](./payout-summary.md)

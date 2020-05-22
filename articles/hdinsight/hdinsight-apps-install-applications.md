@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c0644a84b917acff60060a0c48f8e9aac30e16
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366339"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746221"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Apache Hadoop-toepassingen van derden installeren op Azure HDInsight
 
@@ -31,7 +31,7 @@ De volgende lijst bevat de gepubliceerde toepassingen:
 |[Dataiku DSS op HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS in een Enter prise data Science-platform waarmee gegevens wetenschappers en gegevens analisten kunnen samen werken om nieuwe gegevens producten en-services efficiënter te ontwerpen en uit te voeren, waardoor onbewerkte gegevens worden omgezet in impactieve voor spellingen. |
 |[WANdisco Fusion HDI-app](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, Storm, Kafka |Het bijhouden van gegevens consistentie in een gedistribueerde omgeving is een enorme uitdaging voor gegevens bewerkingen. WANdisco Fusion, een software platform op bedrijfs niveau, lost dit probleem op door ongestructureerde gegevens consistentie in alle omgevingen in te scha kelen. |
 |[H2O SparklingWater voor HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O mousserend water biedt ondersteuning voor de volgende gedistribueerde algoritmen: GLM, Naïve Bayes, gedistribueerd wille keurig forest, Gradient Boosting machine, diep Neural Networks, diep leren, K-houdt, PCA, gegeneraliseerde lage-positie modellen, anomalie detectie, automatische code ring. |
-|[Realtimeplatform voor realtime gegevens integratie naar HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBase, Storm, Spark, Kafka |Realtimeplatform (uitgesp roken: ' stream ') is een end-to-end streaming Data Integration + intelligence-platform, waarmee u doorlopende opname, verwerking en analyse van verschillende gegevens stromen kunt maken. |
+|[Realtimeplatform voor realtime gegevens integratie naar HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |Realtimeplatform (uitgesp roken: ' stream ') is een end-to-end streaming Data Integration + intelligence-platform, waarmee u doorlopende opname, verwerking en analyse van verschillende gegevens stromen kunt maken. |
 |[Jumbune Enter prise-Versnel BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Op hoog niveau helpt Jumbune ondernemingen met, 1. Versnellen van TEZ, MapReduce & op basis van Spark-engine, Java, scala workload-prestaties. 2. Proactieve Hadoop-cluster bewaking, 3. Het kwaliteits beheer van gegevens in een gedistribueerd bestands systeem vaststellen. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Kyligence Enter prise, dat is aangedreven door Apache Kylin, maakt BI op Big data mogelijk. Als een Enter prise OLAP-engine op Hadoop kan Kyligence Enter prise de bedrijfs analist op Hadoop bouwen op basis van de industrie standaard data warehouse en BI-methodologie. |
 |[Sterren explosie Presto voor Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto is een snelle en schaal bare gedistribueerde SQL-query-engine. Presto is ontworpen voor de schei ding van opslag en Compute en is ideaal voor het opvragen van gegevens in Azure Data Lake Storage, Azure Blob Storage, SQL-en NoSQL-data bases en andere gegevens bronnen. |
@@ -51,8 +51,8 @@ De volgende procedure beschrijft hoe u HDInsight-toepassingen in een bestaand HD
 
 **Een HDInsight-toepassing installeren**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services** > **Analytics** > **HDInsight-clusters**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.  Als u deze niet hebt, maakt u die eerst.  Zie [Clusters maken](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
@@ -75,8 +75,8 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 
 **Lijst met HDInsight-toepassingen en weer gave-eigenschappen**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services** > **Analytics** > **HDInsight-clusters**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.
 4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
@@ -85,7 +85,7 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 
     |Eigenschap | Beschrijving |
     |---|---|
-    |Naam van app |Toepassings naam. |
+    |App-naam |Toepassings naam. |
     |Status |Toepassings status. |
     |Webpagina |De URL van de webtoepassing die u hebt geïmplementeerd op het Edge-knoop punt. De referenties zijn dezelfde als de HTTP-gebruikersreferenties die u hebt geconfigureerd voor het cluster. |
     |SSH-eind punt |U kunt SSH gebruiken om verbinding te maken met het Edge-knoop punt. De SSH-referenties zijn dezelfde als de SSH-gebruikersreferenties die u hebt geconfigureerd voor het cluster. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie. |

@@ -3,12 +3,12 @@ title: Omgevingsvariabelen voor de runtime van taken
 description: Richt lijnen voor de omgevings variabele van de taak runtime en naslag informatie voor Azure Batch Analytics.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2027716283ca4910f45ae3e32111896ef0045ce8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726754"
+ms.locfileid: "83745336"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
 
@@ -48,7 +48,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_JOB_ID                 | De ID van de job waartoe de taak behoort. | Alle taken behalve taak starten. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | Het volledige pad van de map voor taak voorbereidings [taak][files_dirs] op het knoop punt. | Alle taken behalve taak begin taak en taak voorbereiden. Alleen beschikbaar als de taak is geconfigureerd met een taak voorbereidings taak. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Het volledige pad naar de werkmap van de taak voorbereidings [taak][files_dirs] op het knoop punt. | Alle taken behalve taak begin taak en taak voorbereiden. Alleen beschikbaar als de taak is geconfigureerd met een taak voorbereidings taak. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | Het IP-adres en de poort van het reken knooppunt waarop de primaire taak van een [taak met meerdere exemplaren][multi_instance] wordt uitgevoerd. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | Het IP-adres en de poort van het reken knooppunt waarop de primaire taak van een [taak met meerdere exemplaren][multi_instance] wordt uitgevoerd. Gebruik niet de poort die u hier hebt opgegeven voor de MPI-of NCCL-communicatie. deze is gereserveerd voor de Azure Batch-service. Gebruik in plaats daarvan de variabele MASTER_PORT, door deze in te stellen met een waarde die wordt door gegeven via de opdracht regel argument (poort 6105 is een goede standaard keuze) of gebruik de waarde AML-sets als dat wel het geval is. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | De ID van het knoop punt waaraan de taak is toegewezen. | Alle taken. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Als `true` het huidige knoop punt een toegewezen knoop punt is. Als `false` is het een [knoop punt met een lage prioriteit](batch-low-pri-vms.md). | Alle taken. | `true` |
 | AZ_BATCH_NODE_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de indeling `nodeIP;nodeIP` . | Primaire en subtaken voor meerdere instanties. | `10.0.0.4;10.0.0.5` |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548309"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757820"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -74,7 +74,7 @@ Netwerken moeten zich ontwikkelen van traditionele beveiligingen, omdat netwerke
 Aanbevolen procedures zijn:
 
 **Best Practice**: Geef voorwaardelijke toegang tot resources op basis van apparaat, identiteit, Assurance, netwerk locatie en meer.  
-**Details**: met [voorwaardelijke toegang van Azure AD](/azure/active-directory/conditional-access/overview) kunt u de juiste toegangs controles Toep assen door geautomatiseerde beslissingen voor toegangs beheer te implementeren op basis van de vereiste voor waarden. Zie [toegang tot Azure management beheren met voorwaardelijke toegang](../../role-based-access-control/conditional-access-azure-management.md)voor meer informatie.
+**Details**: met [voorwaardelijke toegang van Azure AD](../../active-directory/conditional-access/overview.md) kunt u de juiste toegangs controles Toep assen door geautomatiseerde beslissingen voor toegangs beheer te implementeren op basis van de vereiste voor waarden. Zie [toegang tot Azure management beheren met voorwaardelijke toegang](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md)voor meer informatie.
 
 **Aanbevolen procedure**: Schakel poort toegang alleen in na workflowgoedkeuring.  
 **Details**: u kunt [just-in-time-VM-toegang in azure Security Center](../../security-center/security-center-just-in-time.md) gebruiken om inkomend verkeer naar uw Azure-vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind.
@@ -104,8 +104,8 @@ Azure-netwerk beveiligings apparaten kunnen betere beveiliging bieden dan bij we
 
 * Firewall
 * Inbraak detectie/inbraak preventie
-* Beveiligings beheer
-* Toepassings beheer
+* Beheer van beveiligingsproblemen
+* Toepassingsbeheer
 * Anomalie detectie op basis van het netwerk
 * Webfiltering
 * Antivirus

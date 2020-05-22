@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481225"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739965"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Beveiligings overwegingen voor het extern openen van apps met Azure AD-toepassingsproxy
 
@@ -47,7 +47,7 @@ Als u passthrough kiest als uw methode voor verificatie vooraf, krijgt u dit voo
 
 Pas de besturings elementen voor uitgebreid beleid toe voordat er verbindingen met uw netwerk tot stand worden gebracht.
 
-Met [voorwaardelijke toegang](../conditional-access/overview.md)kunt u beperkingen definiëren voor welk verkeer toegang heeft tot uw back-end-toepassingen. U kunt beleids regels maken die aanmeldingen beperken op basis van locatie, sterkte van verificatie en gebruikers risico profiel.
+Met [voorwaardelijke toegang](../conditional-access/concept-conditional-access-cloud-apps.md)kunt u beperkingen definiëren voor de manier waarop gebruikers toegang krijgen tot uw toepassingen. U kunt beleids regels maken die aanmeldingen beperken op basis van locatie, sterkte van verificatie en gebruikers risico profiel.
 
 U kunt ook voorwaardelijke toegang gebruiken om Multi-Factor Authentication-beleid te configureren en een extra beveiligingslaag toe te voegen aan uw gebruikers verificaties. Daarnaast kunnen uw toepassingen ook worden doorgestuurd naar Microsoft Cloud App Security via voorwaardelijke toegang van Azure AD om realtime bewaking en controles mogelijk te maken via [toegangs](https://docs.microsoft.com/cloud-app-security/access-policy-aad) -en [sessie](https://docs.microsoft.com/cloud-app-security/session-policy-aad) beleid
 
@@ -79,7 +79,7 @@ U hoeft zich geen zorgen te maken over het onderhouden en patchen van on-premise
 
 Niet-gepatched software-accounts voor een groot aantal aanvallen. Azure AD-toepassingsproxy is een Internet-Scale-service die micro soft eigenaar is, zodat u altijd de meest recente beveiligings patches en upgrades krijgt.
 
-Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door Azure AD-toepassingsproxy, blok keren we het robots van webcrawlers van het indexeren en archiveren van uw toepassingen. Telkens wanneer een webcrawler robot probeert de robot instellingen voor een gepubliceerde app op te halen, reageert de toepassings proxy met een robots. txt-bestand `User-agent: * Disallow: /`dat bevat.
+Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door Azure AD-toepassingsproxy, blok keren we het robots van webcrawlers van het indexeren en archiveren van uw toepassingen. Telkens wanneer een webcrawler robot probeert de robot instellingen voor een gepubliceerde app op te halen, reageert de toepassings proxy met een robots. txt-bestand dat bevat `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Service
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117390"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745717"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -114,7 +114,7 @@ Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit t
 
 Nu u een Azure Automation account hebt, moet u ook een Azure Automation uitvoeren als-account maken om toegang te krijgen tot uw Azure-resources.
 
-Een [Azure Automation uitvoeren als-account](../../automation/manage-runas-account.md) biedt verificatie voor het beheren van resources in azure met de Azure-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er in Azure Active Directory een nieuwe Service-Principal-gebruiker gemaakt en wordt de rol Inzender toegewezen aan de Service-Principal-gebruiker op het abonnements niveau. het uitvoeren als-account van Azure is een uitstekende manier om veilig te verifiëren met certificaten en een Service Principal Name zonder dat u een gebruikers naam en wacht woord in een referentie object hoeft op te slaan. Zie machtigingen voor het [uitvoeren als-account beperken](../../automation/manage-runas-account.md#limiting-run-as-account-permissions)voor meer informatie over uitvoeren als-verificatie.
+Een [Azure Automation uitvoeren als-account](../../automation/manage-runas-account.md) biedt verificatie voor het beheren van resources in azure met de Azure-cmdlets. Wanneer u een uitvoeren als-account maakt, wordt er in Azure Active Directory een nieuwe Service-Principal-gebruiker gemaakt en wordt de rol Inzender toegewezen aan de Service-Principal-gebruiker op het abonnements niveau. het uitvoeren als-account van Azure is een uitstekende manier om veilig te verifiëren met certificaten en een Service Principal Name zonder dat u een gebruikers naam en wacht woord in een referentie object hoeft op te slaan. Zie machtigingen voor het [uitvoeren als-account beperken](../../automation/manage-runas-account.md#limit-run-as-account-permissions)voor meer informatie over uitvoeren als-verificatie.
 
 Elke gebruiker die lid is van de rol abonnements beheerders en mede beheerder van het abonnement kan een uitvoeren als-account maken door de instructies in de volgende sectie te volgen.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681660"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745926"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -215,7 +215,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. De antwoord tekst wordt geleverd in geojson-indeling en bevat alle verzamelingen in de gegevensset. In dit voor beeld wordt alleen de verzameling weer gegeven `unit` . Zie WFS voor meer informatie over het [beschrijven van verzamelingen API](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview)voor een voor beeld dat alle verzamelingen bevat. Als u meer wilt weten over een verzameling, kunt u klikken op een van de Url's in het `link` element.
+3. De antwoord tekst wordt geleverd in geojson-indeling en bevat alle verzamelingen in de gegevensset. In dit voor beeld wordt alleen de verzameling weer gegeven `unit` . Zie WFS voor meer informatie over het [beschrijven van verzamelingen API](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview)voor een voor beeld dat alle verzamelingen bevat. Als u meer wilt weten over een verzameling, kunt u klikken op een van de Url's in het `link` element.
 
     ```json
     {
@@ -285,7 +285,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
 
 1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
 
-2. Maak een **post** -aanvraag naar de API voor het maken van de [statusset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview). Gebruik de `datasetId` van de gegevensset die de status bevat die u wilt wijzigen. De aanvraag moet er ongeveer uitzien als de volgende URL:
+2. Maak een **post** -aanvraag naar de API voor het maken van de [statusset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview). Gebruik de `datasetId` van de gegevensset die de status bevat die u wilt wijzigen. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

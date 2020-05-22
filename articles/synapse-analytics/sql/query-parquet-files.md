@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9731b869b20c7d8cfc3b1e234711c818a2b7422
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431694"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744240"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -22,34 +22,11 @@ In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (pr
 
 ## <a name="prerequisites"></a>Vereisten
 
-Lees de volgende artikelen voordat u de rest van dit artikel leest:
-
-- [Eerste keer instellen](query-data-storage.md#first-time-setup)
-- [Vereisten](query-data-storage.md#prerequisites)
+De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron die verwijst naar een [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) -opslag account. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 ## <a name="dataset"></a>Gegevensset
 
-U kunt een query uitvoeren op Parquet-bestanden op dezelfde manier als bij het lezen van CSV-bestanden. Het enige verschil is dat de File Format-para meter moet worden ingesteld op PARQUET. In de voor beelden in dit artikel ziet u de specifieke informatie over het lezen van Parquet-bestanden.
-
-> [!NOTE]
-> U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. SQL on demand maakt gebruik van meta gegevens in het Parquet-bestand en verbindt kolommen op naam.
-
-U gebruikt de map *Parquet/taxi* voor de voorbeeld query's. Het bevat NYC-gele taxi-excursie records van 2016 juli. tot juni 2018.
-
-De gegevens worden gepartitioneerd per jaar en maand en de mapstructuur is als volgt:
-
-- Year = 2016
-  - maand = 6
-  - ...
-  - maand = 12
-- Year = 2017
-  - maand = 1
-  - ...
-  - maand = 12
-- Year = 2018
-  - maand = 1
-  - ...
-  - maand = 6
+In dit voor beeld wordt een [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) -gegevensset gebruikt. U kunt een query uitvoeren op Parquet-bestanden op dezelfde manier als bij het [lezen van CSV-bestanden](query-parquet-files.md). Het enige verschil is dat de `FILEFORMAT` para meter moet worden ingesteld op `PARQUET` . In de voor beelden in dit artikel ziet u de specifieke informatie over het lezen van Parquet-bestanden.
 
 ## <a name="query-set-of-parquet-files"></a>Query set van Parquet-bestanden
 
@@ -57,23 +34,24 @@ U kunt alleen de interessante kolommen opgeven wanneer u Parquet-bestanden opvra
 
 ```sql
 SELECT
-        YEAR(pickup_datetime),
-        passenger_count,
+        YEAR(tpepPickupDateTime),
+        passengerCount,
         COUNT(*) AS cnt
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) WITH (
-        pickup_datetime DATETIME2,
-        passenger_count INT
+        tpepPickupDateTime DATETIME2,
+        passengerCount INT
     ) AS nyc
 GROUP BY
-    passenger_count,
-    YEAR(pickup_datetime)
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    YEAR(pickup_datetime),
-    passenger_count;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="automatic-schema-inference"></a>Automatische schema-deinterferentie
@@ -86,13 +64,13 @@ In het onderstaande voor beeld ziet u de mogelijkheden voor het automatisch afne
 > U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. In dat geval worden meta gegevens in de SQL-query service op aanvraag gebruikt in het Parquet-bestand en worden kolommen op naam gebonden.
 
 ```sql
-SELECT
-    COUNT_BIG(*)
-FROM
+SELECT TOP 10 *
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc;
+    ) AS nyc
 ```
 
 ### <a name="query-partitioned-data"></a>Gepartitioneerde gegevens opvragen
@@ -104,27 +82,25 @@ De gegevensset die in dit voor beeld wordt gegeven, wordt in afzonderlijke subma
 
 ```sql
 SELECT
-    nyc.filepath(1) AS [year],
-    nyc.filepath(2) AS [month],
-    payment_type,
-    SUM(fare_amount) AS fare_total
-FROM
+        YEAR(tpepPickupDateTime),
+        passengerCount,
+        COUNT(*) AS cnt
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=*/month=*/*.parquet',
+        BULK 'puYear=*/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc
+    ) nyc
 WHERE
     nyc.filepath(1) = 2017
     AND nyc.filepath(2) IN (1, 2, 3)
-    AND pickup_datetime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
+    AND tpepPickupDateTime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
 GROUP BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="type-mapping"></a>Type toewijzing
@@ -141,12 +117,12 @@ Parquet-bestanden bevatten type beschrijvingen voor elke kolom. In de volgende t
 | INT64 | | bigint |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |binair |
-| WAARDE |UTF8 |varchar \*(UTF8-sortering) |
-| WAARDE |TEKENREEKSEXPRESSIE |varchar \*(UTF8-sortering) |
-| WAARDE |VASTE|varchar \*(UTF8-sortering) |
+| WAARDE |UTF8 |varchar \* (UTF8-sortering) |
+| WAARDE |TEKENREEKSEXPRESSIE |varchar \* (UTF8-sortering) |
+| WAARDE |VASTE|varchar \* (UTF8-sortering) |
 | WAARDE |MEE |uniqueidentifier |
 | WAARDE |KOMMA |decimal |
-| WAARDE |JSON |varchar (max) \*(UTF8-sortering) |
+| WAARDE |JSON |varchar (max) \* (UTF8-sortering) |
 | WAARDE |BSON |varbinary (max) |
 | FIXED_LEN_BYTE_ARRAY |KOMMA |decimal |
 | BYTE_ARRAY |BEREIK |varchar (max), geserialiseerd in gestandaardiseerde indeling |
@@ -156,7 +132,7 @@ Parquet-bestanden bevatten type beschrijvingen voor elke kolom. In de volgende t
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |date |
+| INT32 |DATE |datum |
 | INT32 |KOMMA |decimal |
 | INT32 |TIJD (MILLIS)|tijd |
 | INT64 |INT (64, True) |bigint |

@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: d0b002c4043bacb451d5d837c48f8bdf33949e86
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714624"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745418"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -130,6 +130,11 @@ Een back-upbeleid definieert wanneer er back-ups worden gemaakt en hoe lang ze w
 
 * Een beleid wordt gemaakt op kluisniveau.
 * U kunt hetzelfde back-upbeleid gebruiken voor meerdere kluizen, maar u moet het back-upbeleid toepassen op elke kluis.
+
+>[!NOTE]
+>Azure Backup wordt niet automatisch aangepast aan de zomer-en winter tijd bij het maken van een back-up van een SAP HANA-data base die wordt uitgevoerd in een Azure VM.
+>
+>Pas het beleid zo nodig hand matig aan.
 
 Geef de beleids instellingen als volgt op:
 

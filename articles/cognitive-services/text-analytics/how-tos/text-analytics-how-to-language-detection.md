@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70387793"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745575"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Voor beeld: taal detecteren met Text Analytics
 
@@ -25,7 +25,7 @@ Deze mogelijkheid is handig voor inhoudsarchieven die willekeurige tekst verzame
 
 Met de functie Taaldetectie kunt u een breed scala aan talen, varianten, dialecten en bepaalde regionale of culturele talen detecteren. De exacte lijst met talen voor deze functie wordt niet gepubliceerd.
 
-Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u de functie Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd `unknown`is.
+Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u de functie Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd is `unknown` .
 
 > [!TIP]
 > Text Analytics biedt ook een Docker-containerinstallatiekopie op basis van Linux voor taaldetectie. U kunt de [Text Analytics-container dus dicht bij uw gegevens installeren en uitvoeren](text-analytics-how-to-install-containers.md).
@@ -69,7 +69,7 @@ Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor mee
 
 + Maak een POST-aanvraag. Als u de API-documentatie voor deze aanvraag wilt bekijken, raadpleegt u de [taaldetectie-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-+ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics resource in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet in `/text/analytics/v2.1/languages` de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics resource in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet `/text/analytics/v2.1/languages` in de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 
@@ -155,9 +155,9 @@ Een positief score van 1.0 staat voor het hoogst mogelijke vertrouwensniveau van
 
 ### <a name="ambiguous-content"></a>Niet-eenduidige inhoud
 
-In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis van de invoer. U kunt de `countryHint` para meter gebruiken om een land nummer van twee letters op te geven. Standaard gebruikt de API de standaard countryHint om dit gedrag te verwijderen, kunt u deze para meter opnieuw instellen door deze waarde in te stellen op een lege teken reeks `countryHint = ""` .
+In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis van de invoer. U kunt de `countryHint` para meter gebruiken om een land-of regio code van twee letters op te geven. Standaard gebruikt de API de standaard countryHint om dit gedrag te verwijderen, kunt u deze para meter opnieuw instellen door deze waarde in te stellen op een lege teken reeks `countryHint = ""` .
 
-"Onmogelijk" is bijvoorbeeld gebruikelijk voor Engels en Frans, en als dit wordt gegeven met een beperkte context, wordt het antwoord gebaseerd op de "Amerikaanse" land hint. Als de tekst uit Frankrijk afkomstig is, kan dat als hint worden gegeven.
+"Onmogelijk" is bijvoorbeeld gebruikelijk voor Engels en Frans, en als dit wordt gegeven met een beperkte context, wordt het antwoord gebaseerd op de ' VS ' land/regio-hint. Als de tekst uit Frankrijk afkomstig is, kan dat als hint worden gegeven.
 
 **Invoer**
 
@@ -209,7 +209,7 @@ De service heeft nu aanvullende context om een betere beslissing te nemen:
     }
 ```
 
-Als de analyse functie de invoer niet kan parseren `(Unknown)`, wordt geretourneerd. Een voor beeld is als u een tekst blok verzendt dat uitsluitend uit Arabische cijfers bestaat.
+Als de analyse functie de invoer niet kan parseren, wordt geretourneerd `(Unknown)` . Een voor beeld is als u een tekst blok verzendt dat uitsluitend uit Arabische cijfers bestaat.
 
 ```json
     {
@@ -269,7 +269,7 @@ In dit artikel hebt u concepten en werk stromen geleerd voor taal detectie door 
 
 + [Taal detectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) is beschikbaar voor een breed scala aan talen, varianten, dialecten en enkele regionale of culturele talen.
 + JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID en tekst.
-+ De POST-aanvraag is naar `/languages` een eind punt met behulp van een aangepaste [toegangs sleutel en een eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
++ De POST-aanvraag is naar een `/languages` eind punt met behulp van een aangepaste [toegangs sleutel en een eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
 + De reactie-uitvoer bestaat uit taal-id's voor elke document-ID. De uitvoer kan worden gestreamd naar alle apps die JSON accepteren. Voor beeld-apps zijn Excel en Power BI, om een paar te noemen.
 
 ## <a name="see-also"></a>Zie ook

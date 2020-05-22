@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cef4f83881aed67c46477110de530bbf191ee39f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984737"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741616"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Persoonlijke micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
@@ -59,7 +59,7 @@ U kunt uw persoonlijke Microsoft-account toevoegen door eerst twee ledige verifi
 
     ![Selecteer een Microsoft-account of scan een QR-code indien beschikbaar](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
 
-1. Meld u aan bij uw persoonlijke account met het juiste e-mail adres ( alain@outlook.comzoals) en selecteer vervolgens **volgende**.
+1. Meld u aan bij uw persoonlijke account met het juiste e-mail adres (zoals alain@outlook.com ) en selecteer vervolgens **volgende**.
 
     >[!Note]
     >Als u geen persoonlijke Microsoft-account hebt, [kunt u er een maken](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index).

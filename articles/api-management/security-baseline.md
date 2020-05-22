@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649165"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736072"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
 
@@ -568,7 +568,7 @@ Configureer geavanceerde bewaking met API Management met behulp van het `log-to-
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -1096,7 +1096,7 @@ Beheerde identiteiten kunnen worden gebruikt voor het verkrijgen van certificate
 
 **Hulp**bij het valideren van back-ups door het herstellen van de service en certificaten van back-ups te testen.
 
-* [De herstel bewerking van API Management aanroepen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [De herstel bewerking van API Management aanroepen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 * [Azure Key Vault certificaten herstellen](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 

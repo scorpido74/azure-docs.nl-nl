@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606208"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747504"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -42,7 +42,7 @@ De volgende beperkingen gelden alleen voor standaard aangepaste Setup:
 
 - Als u *Gacutil. exe* in uw script wilt gebruiken voor het installeren van assembly's in de Global assembly cache (GAC), moet u *Gacutil. exe* opgeven als onderdeel van de aangepaste installatie. U kunt ook gebruikmaken van de kopie die is opgenomen in de *open bare preview* -container, die later wordt beschreven in de sectie ' instructies '.
 
-- Als u wilt verwijzen naar een submap in uw script, ondersteunt *Msiexec. exe* de `.\` notatie niet om te verwijzen naar de hoofdmap. Gebruik een opdracht, `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` zoals in plaats `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`van.
+- Als u wilt verwijzen naar een submap in uw script, ondersteunt *Msiexec. exe* de notatie niet `.\` om te verwijzen naar de hoofdmap. Gebruik een opdracht, zoals `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` in plaats van `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
 - Beheerders shares of verborgen netwerk shares die automatisch door Windows worden gemaakt, worden momenteel niet ondersteund op de Azure-SSIS IR.
 
@@ -68,7 +68,7 @@ Als u uw Azure-SSIS IR wilt aanpassen, hebt u de volgende items nodig:
 
    * U moet een script bestand met de naam *Main. cmd*hebben. Dit is het toegangs punt van uw aangepaste installatie.  
    * Om ervoor te zorgen dat het script op de achtergrond kan worden uitgevoerd, raden we u aan het eerst op uw lokale machine te testen.  
-   * Als u wilt dat extra logboeken die worden gegenereerd door andere hulpprogram ma's (bijvoorbeeld *Msiexec. exe*), worden geüpload naar de container, geeft u de `CUSTOM_SETUP_SCRIPT_LOG_DIR`vooraf gedefinieerde omgevings variabele op, als de logboekmap in uw scripts (bijvoorbeeld *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
+   * Als u wilt dat extra logboeken die worden gegenereerd door andere hulpprogram ma's (bijvoorbeeld *Msiexec. exe*), worden geüpload naar de container, geeft u de vooraf gedefinieerde omgevings variabele op, `CUSTOM_SETUP_SCRIPT_LOG_DIR` als de logboekmap in uw scripts (bijvoorbeeld *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
 
 1. Down load, installeer en open [Azure Storage Explorer](https://storageexplorer.com/). Dit doet u als volgt:
 
@@ -123,7 +123,7 @@ Als u uw Azure-SSIS IR wilt aanpassen, hebt u de volgende items nodig:
 
      * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://hedda.io/ssis-component/)Het onderdeel io-gegevens kwaliteit/opschonen van oh22 op uw Azure-SSIS IR na het aanschaffen van de service. De huidige geïntegreerde versie is **1.0.13**.
 
-     * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.43**.
+     * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.43**.
 
      * Als u het **SSIS Integration Toolkit** -onderdeel van de KingswaySoft selecteert, kunt u het pakket met de [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) van connectors voor CRM/ERP/marketing/samenwerkings-apps installeren, zoals micro soft Dynamics/share point/Project Server, Oracle/sales force marketing Cloud, Azure-SSIS IR enzovoort door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **2019,2**.
 
@@ -135,7 +135,7 @@ Als u uw Azure-SSIS IR wilt aanpassen, hebt u de volgende items nodig:
 
    ![Geavanceerde instellingen met aangepaste installatie](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
 
-1. Wanneer u de Azure-SSIS IR met Power shell instelt of opnieuw configureert, kunt u de aangepaste Setup toevoegen of verwijderen door de `Set-AzDataFactoryV2IntegrationRuntime` cmdlet uit te voeren voordat u met de Azure-SSIS IR begint.
+1. Wanneer u de Azure-SSIS IR met Power shell instelt of opnieuw configureert, kunt u de aangepaste Setup toevoegen of verwijderen door de cmdlet uit te voeren `Set-AzDataFactoryV2IntegrationRuntime` voordat u met de Azure-SSIS IR begint.
    
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
@@ -299,7 +299,7 @@ Als u uw Azure-SSIS IR wilt aanpassen, hebt u de volgende items nodig:
    
       Wanneer u de Azure-SSIS IR instelt of opnieuw configureert met behulp van de Data Factory-gebruikers interface, schakelt u het selectie vakje **Azure-SSIS Integration runtime met aanvullende systeem configuraties/onderdelen installeren** in het gedeelte **Geavanceerde instellingen** in en voert u de SAS-URI van uw container in het vak **aangepaste installatie container SAS URI** in.
    
-      Wanneer u uw Azure-SSIS IR instelt of opnieuw configureert met Power shell, voert u `Set-AzDataFactoryV2IntegrationRuntime` de cmdlet uit met de SAS-URI van uw container als `SetupScriptContainerSasUri` waarde voor de para meter.
+      Wanneer u uw Azure-SSIS IR instelt of opnieuw configureert met Power shell, voert u de `Set-AzDataFactoryV2IntegrationRuntime` cmdlet uit met de SAS-URI van uw container als waarde voor de `SetupScriptContainerSasUri` para meter.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652744"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744793"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
@@ -26,9 +26,9 @@ Een vaardig heden is een herbruikbare resource in azure Cognitive Search waarmee
 
 Een vaardighedenset heeft drie eigenschappen:
 
-+   ```skills```, een niet-geordende verzameling vaardig heden waarvoor het platform de volg orde van de uitvoering bepaalt op basis van de vereiste invoer voor elke vaardigheid
-+   ```cognitiveServices```, de cognitieve Services-sleutel die is vereist voor de facturering van de cognitieve vaardig heden
-+   ```knowledgeStore```, het opslag account waarin uw verrijkte documenten worden geprojecteerd
++    ```skills```, een niet-geordende verzameling vaardig heden waarvoor het platform de volg orde van de uitvoering bepaalt op basis van de vereiste invoer voor elke vaardigheid
++    ```cognitiveServices```, de cognitieve Services-sleutel die is vereist voor de facturering van de cognitieve vaardig heden
++    ```knowledgeStore```, het opslag account waarin uw verrijkte documenten worden geprojecteerd
 
 
 
@@ -54,14 +54,14 @@ Voor de rest van dit document gaan we ervan uit dat we een [voor beeld van een h
 
 ### <a name="context"></a>Context
 Elke vaardigheid vereist een context. Een context bepaalt het volgende:
-+   Het aantal keren dat de vaardigheid wordt uitgevoerd, op basis van de geselecteerde knoop punten. Bij context waarden van het type verzameling wordt een ```/*``` aan het einde toegevoegd, waardoor de vaardigheid één keer wordt aangeroepen voor elke instantie in de verzameling. 
-+   In de verrijkings structuur worden de vaardigheids uitvoer toegevoegd. Uitvoer wordt altijd aan de structuur toegevoegd als onderliggende elementen van het context knooppunt. 
-+   Vorm van de invoer. Voor verzamelingen op meerdere niveaus is het instellen van de context voor de bovenliggende verzameling van invloed op de vorm van de invoer voor de vaardigheid. Als u bijvoorbeeld een verrijkings structuur hebt met een lijst met landen, wordt elk verrijkt met een lijst met statussen die een lijst met ZIPcodes bevatten.
++    Het aantal keren dat de vaardigheid wordt uitgevoerd, op basis van de geselecteerde knoop punten. Bij context waarden van het type verzameling wordt een ```/*``` aan het einde toegevoegd, waardoor de vaardigheid één keer wordt aangeroepen voor elke instantie in de verzameling. 
++    In de verrijkings structuur worden de vaardigheids uitvoer toegevoegd. Uitvoer wordt altijd aan de structuur toegevoegd als onderliggende elementen van het context knooppunt. 
++    Vorm van de invoer. Voor verzamelingen op meerdere niveaus is het instellen van de context voor de bovenliggende verzameling van invloed op de vorm van de invoer voor de vaardigheid. Als u bijvoorbeeld een verrijkings structuur hebt met een lijst met landen/regio's, wordt elke verrijkt met een lijst met statussen die een lijst met ZIPcodes bevatten.
 
 |Context|Invoer|Vorm van invoer|Aanroepen van vaardig heden|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Een lijst met alle ZIPcodes in het land |Eenmaal per land |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Een lijst met ZIPcodes in de status | Eenmaal per combi natie van land en provincie|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Een lijst met alle ZIPcodes in het land/de regio |Eenmaal per land/regio |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Een lijst met ZIPcodes in de status | Eenmaal per combi natie van land/regio en provincie|
 
 ### <a name="sourcecontext"></a>SourceContext
 

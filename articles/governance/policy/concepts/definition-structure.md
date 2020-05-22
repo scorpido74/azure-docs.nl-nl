@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509d4424e26873d8e8da8fac96eb7e380b0fa262
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700612"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746987"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -676,7 +676,7 @@ De lijst met aliassen is altijd groeien. Als u wilt weten welke aliassen momente
 - REST API-ARMClient
 
   ```http
-  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  GET https://management.azure.com/providers/?api-version=2019-10-01&$expand=resourceTypes/aliases
   ```
 
 ### <a name="understanding-the--alias"></a>Informatie over de alias [*]

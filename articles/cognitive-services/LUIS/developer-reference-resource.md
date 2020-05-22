@@ -3,12 +3,12 @@ title: Bronnen voor ontwikkel aars-Language Understanding
 description: Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c86dad46b09c2f761e73f38187b4824c0a17406f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655562"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758058"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
 
@@ -79,7 +79,7 @@ Het [app-schema](app-schema-definition.md) wordt geïmporteerd en geëxporteerd 
 
 ### <a name="language-based-sdks"></a>Op taal gebaseerde Sdk's
 
-|Taal |Referentie documentatie|Pakket|Voorbeelden|Quickstarts|
+|Taal |Referentie documentatie|Pakket|Voorbeelden|Snelstartgidsen|
 |--|--|--|--|--|
 |C#|[Ontwerpen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Voorspellings](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet ontwerpen](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-voor spelling](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK-voorbeelden](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Een app maken en beheren](sdk-authoring.md?pivots=programming-language-csharp)<br>[Eindpunt queryvoorspelling](sdk-query-prediction-endpoint.md)|
 |Aan de slag|[Ontwerpen en voors pellen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Voorspellings](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Ontwerpen en voors pellen met REST](luis-get-started-get-intent-from-rest.md)|
@@ -119,7 +119,7 @@ Bot Framework biedt [verschillende hulpprogram ma's](https://github.com/microsof
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) : automatisch een back-up van C#/typescript-klassen voor uw Luis-intentie en-entiteiten genereren.
 * [Bot Framework-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) : een bureaublad toepassing die bot-ontwikkel aars in staat stelt om bots te testen en op te sporen met behulp van de bot Framework SDK
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) : een geïntegreerd hulp programma voor ontwikkel aars en meerdere disciplinaire teams voor het bouwen van bots-en gespreks ervaringen met het micro soft bot Framework
-
+* Voor [beelden van bot-Framework](https://github.com/microsoft/botbuilder-samples) -in #C, java script, type script en python
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de veelvoorkomende [HTTP-fout codes](luis-reference-response-codes.md)

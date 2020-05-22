@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 02b88ae0fa0473ad3d11346f0443582d80e75f5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691129"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745221"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Gegevens uit de share point online-lijst kopiëren met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,8 +55,8 @@ De share Point List Online-connector maakt gebruik van Service-Principal-verific
     1. Open de share point online-site koppeling bijvoorbeeld `https://[your_site_url]/_layouts/15/appinv.aspx` (Vervang de Tenant en de naam van de site).
     2. Zoek de toepassings-ID die u hebt geregistreerd, vul de lege velden in en klik op maken.
 
-        - App-domein: localhost.com
-        - Omleidings-URL:https://www.localhost.com
+        - App-domein:`localhost.com`
+        - Omleidings-URL:`https://www.localhost.com`
         - XML voor machtigings aanvraag:
 
         ```xml

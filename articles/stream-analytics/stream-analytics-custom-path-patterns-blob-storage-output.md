@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426385"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747623"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics
 
@@ -65,7 +65,7 @@ U ziet dat elke record in de BLOB een **client_id** kolom heeft die overeenkomt 
 
 ## <a name="custom-datetime-path-patterns"></a>Patronen voor aangepaste DateTime-paden
 
-Met de aangepaste DateTime-paden kunt u een uitvoer indeling opgeven die wordt afgestemd op de conventies van Hive-streaming, waardoor Azure Stream Analytics de mogelijkheid om gegevens te verzenden naar Azure HDInsight en Azure Databricks voor downstream-verwerking. Aangepaste DateTime-paden kunnen eenvoudig worden geïmplementeerd met `datetime` behulp van het sleutel woord in het veld voor voegsel voor het pad van de BLOB-uitvoer, samen met de indelings aanduiding. Bijvoorbeeld `{datetime:yyyy}`.
+Met de aangepaste DateTime-paden kunt u een uitvoer indeling opgeven die wordt afgestemd op de conventies van Hive-streaming, waardoor Azure Stream Analytics de mogelijkheid om gegevens te verzenden naar Azure HDInsight en Azure Databricks voor downstream-verwerking. Aangepaste DateTime-paden kunnen eenvoudig worden geïmplementeerd met behulp `datetime` van het sleutel woord in het veld voor voegsel voor het pad van de BLOB-uitvoer, samen met de indelings aanduiding. Bijvoorbeeld `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Ondersteunde tokens
 
@@ -77,10 +77,10 @@ De volgende indelings specificatie tokens kunnen alleen worden gebruikt of in co
 |{DateTime: MM}|Maand van 01 tot en met 12|01|
 |{DateTime: M}|Maand van 1 tot en met 12|1|
 |{DateTime: dd}|Dag van 01 tot 31|02|
-|{DateTime: d}|Dag van 1 tot 12|2|
+|{DateTime: d}|Dag van 1 tot 31|2|
 |{DateTime: HH}|Uur met een 24-uurs notatie van 00 tot 23|10|
-|{DateTime: mm}|Minuten van 00 tot 24|06|
-|{DateTime: m}|Minuten van 0 tot 24|6|
+|{DateTime: mm}|Minuten van 00 tot 60|06|
+|{DateTime: m}|Minuten van 0 tot 60|6|
 |{DateTime: SS}|Seconden van 00 tot 60|08|
 
 Als u geen aangepaste DateTime-patronen wilt gebruiken, kunt u het token {date} en/of {time} toevoegen aan het pad voor voegsel om een vervolg keuzelijst met ingebouwde datum notaties te genereren.
@@ -89,9 +89,9 @@ Als u geen aangepaste DateTime-patronen wilt gebruiken, kunt u het token {date} 
 
 ### <a name="extensibility-and-restrictions"></a>Uitbreid baarheid en beperkingen
 
-U kunt zoveel tokens `{datetime:<specifier>}`gebruiken als u wilt in het pad patroon totdat u het pad voor het voor voegsel van de spatie bereikt. Indelings aanduidingen kunnen niet worden gecombineerd in één token naast de combi naties die al door de vervolg keuzelijst voor datum en tijd worden weer gegeven. 
+U kunt zoveel tokens gebruiken `{datetime:<specifier>}` Als u wilt in het pad patroon totdat u het pad voor het voor voegsel van de spatie bereikt. Indelings aanduidingen kunnen niet worden gecombineerd in één token naast de combi naties die al door de vervolg keuzelijst voor datum en tijd worden weer gegeven. 
 
-Voor een pad-partitie `logs/MM/dd`van:
+Voor een pad-partitie van `logs/MM/dd` :
 
 |Geldige expressie   |Ongeldige expressie   |
 |----------|-----------|
@@ -101,7 +101,7 @@ U kunt dezelfde indelings specificatie meerdere keren gebruiken in het voor voeg
 
 ### <a name="hive-streaming-conventions"></a>Conventies voor Hive-streaming
 
-Aangepaste paden voor Blob Storage kunnen worden gebruikt in combi natie met de component streaming-Conventie, waarbij wordt verwacht dat mappen `column=` worden aangeduid met de naam in de mapnaam.
+Aangepaste paden voor Blob Storage kunnen worden gebruikt in combi natie met de component streaming-Conventie, waarbij wordt verwacht dat mappen worden aangeduid met `column=` de naam in de mapnaam.
 
 Bijvoorbeeld `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 

@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680702"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746856"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -19,7 +19,7 @@ U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoord
 
 De tabel bevat een overzicht van de ondersteunde detectie-, evaluatie-en migratie scenario's.
 
-**Implementatie** | **Nadere** 
+**Implementatie** | **Details** 
 --- | --- 
 **App-specifieke detectie** | U kunt apps, rollen en functies ontdekken die worden uitgevoerd op virtuele VMware-machines. Deze functie is momenteel beperkt tot detectie. De evaluatie bevindt zich momenteel op het niveau van de computer. We bieden nog geen app, rol of functie-specifieke evaluatie. 
 **On-premises evaluatie** | Evalueer on-premises workloads en gegevens die worden uitgevoerd op virtuele VMware-machines, virtuele Hyper-V-machines en fysieke servers. Evalueer het gebruik van Azure Migrate server assessment en Microsoft Data Migration Assistant (DMA), evenals andere hulpprogram ma's en ISV-aanbiedingen.
@@ -35,24 +35,24 @@ Specifieke ondersteuning van het hulp programma wordt in de tabel samenvatten.
 **Hulpprogramma** | **Vast** | **Migreren** 
 --- | --- | ---
 Evaluatie van Azure Migrate-server | Evalueer [virtuele VMware-machines](tutorial-prepare-vmware.md), [virtuele Hyper-V-machines](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md). |  Niet beschikbaar (NA)
-Azure Migrate-servermigratie | N.v.t. | Migreer [VMware-vm's](tutorial-migrate-vmware.md), [virtuele Hyper-V-machines](tutorial-migrate-hyper-v.md)en [fysieke servers](tutorial-migrate-physical-virtual-machines.md).
-[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | N.v.t. | Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen. 
-[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | N.v.t.
+Azure Migrate-servermigratie | NA | Migreer [VMware-vm's](tutorial-migrate-vmware.md), [virtuele Hyper-V-machines](tutorial-migrate-hyper-v.md)en [fysieke servers](tutorial-migrate-physical-virtual-machines.md).
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Evalueer en migreer VMware-Vm's, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen. |  Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen.
-[Apparaat 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud.| N.v.t.
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | On-premises SQL Server data bases evalueren. | N.v.t.
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | N.v.t. | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Virtual Desktop Infrastructure (VDI) evalueren | N.v.t.
-[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | Bewaak virtuele VMWare-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | N.v.t.
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | N.v.t. | Virtuele VMWare-machines migreren, virtuele Hyper-V-machines, xen-Vm's, KVM-Vm's, fysieke machines, open bare Cloud werkbelastingen 
-[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | N.v.t.
-[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Evalueer virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen en SQL Server data bases. | N.v.t.
+[Apparaat 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud.| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | On-premises SQL Server data bases evalueren. | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Virtual Desktop Infrastructure (VDI) evalueren | NA
+[Movere](https://www.movere.io/) | Bewaak virtuele VMWare-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | NA
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | Virtuele VMWare-machines migreren, virtuele Hyper-V-machines, xen-Vm's, KVM-Vm's, fysieke machines, open bare Cloud werkbelastingen 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | NA
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Evalueer virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen en SQL Server data bases. | NA
 [Webapp Migration Assistant](https://appmigration.microsoft.com/) | Web-apps evalueren | Web-apps migreren.
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projecten
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 Abonnement | U kunt meerdere Azure Migrate-projecten in een abonnement hebben.
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
@@ -65,7 +65,7 @@ Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bev
 
 Azure Migrate werkt alleen met Azure als u deze machtigingen hebt voordat u computers gaat beoordelen en migreren.
 
-**Taak** | **Machtigingen** | **Nadere**
+**Taak** | **Machtigingen** | **Details**
 --- | --- | ---
 Een Azure Migrate-project maken | Uw Azure-account heeft machtigingen nodig om een project te maken. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-create-project).
 Het Azure Migrate apparaat registreren| Azure Migrate maakt gebruik van een licht gewicht [Azure migrate apparaat](migrate-appliance.md) om computers te beoordelen met de evaluatie van Azure migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Met dit apparaat worden machines gedetecteerd en worden meta gegevens en prestaties naar Azure Migrate verzonden.<br/><br/> Tijdens de registratie worden providers (micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis) geregistreerd bij het abonnement dat is geselecteerd in het apparaat, zodat het abonnement samenwerkt met de resource provider. Als u zich wilt registreren, moet u de toegang tot mede werkers of eigenaar hebben voor het abonnement.<br/><br/> **VMware**: tijdens het voorbereiden van Azure migrate worden twee Azure Active Directory-apps (Azure AD) gemaakt. De eerste app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. De tweede app heeft alleen toegang tot een Azure Key Vault die is gemaakt in het gebruikers abonnement voor VMware-migratie zonder agent. Bij migratie zonder agent maakt Azure Migrate een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Het heeft RBAC-toegang op de Azure Key Vault (in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.<br/><br/> **Hyper-V**-tijdens onboarding. Azure Migrate maakt een Azure AD-app. De app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
@@ -92,7 +92,7 @@ Verenigde Staten | VS-midden, VS-West 2
 
 ## <a name="supported-geographies-azure-government"></a>Ondersteunde geographs (Azure Government)
 
-**Taak** | **Geografie** | **Nadere**
+**Taak** | **Geografie** | **Details**
 --- | --- | ---
 Project maken | Verenigde Staten | Meta gegevens worden opgeslagen in US Gov-Arizona, US Gov-Virginia
 Doel evaluatie | Verenigde Staten | Doel regio's: US Gov-Arizona, US Gov-Virginia, US Gov-Texas

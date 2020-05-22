@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165b84ee6b124d3f6a04c8db177ef17e32784ff9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647999"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757412"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Functies en licenties voor Azure Multi-Factor Authentication
 
@@ -32,9 +32,9 @@ Azure Multi-Factor Authentication kan worden gebruikt en in licentie worden gege
 | Als u een gebruiker bent van | Mogelijkheden en use cases |
 | --- | --- |
 | EMS of Microsoft 365 E3 en E5 | EMS E3 of Microsoft 365 E3 (met inbegrip van EMS en Office 365), bevat Azure AD Premium P1. EMS E5 of Microsoft 365 E5 bevat Azure AD Premium P2. U kunt dezelfde functies voor voorwaardelijke toegang in de volgende secties gebruiken om multi-factor Authentication toe te voegen aan gebruikers. |
-| Azure AD Premium P1 | U kunt [voorwaardelijke toegang van Azure AD](../conditional-access/overview.md) gebruiken om gebruikers te vragen voor multi-factor Authentication tijdens bepaalde scenario's of gebeurtenissen die aan uw bedrijfs vereisten voldoen. |
+| Azure AD Premium P1 | U kunt [voorwaardelijke toegang van Azure AD](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) gebruiken om gebruikers te vragen voor multi-factor Authentication tijdens bepaalde scenario's of gebeurtenissen die aan uw bedrijfs vereisten voldoen. |
 | Azure AD Premium P2 | Biedt de sterkste beveiligings positie en verbeterde gebruikers ervaring. Voegt [op Risico's gebaseerde voorwaardelijke toegang](../conditional-access/howto-conditional-access-policy-risk.md) toe aan de Azure AD Premium P1-functies die worden aangepast aan de patronen van gebruikers en minimaliseert multi-factor Authentication-prompts. |
-| Office 365 Business Premium, E3 of E5 | Azure Multi-Factor Authentication is ingeschakeld of uitgeschakeld voor alle gebruikers, voor alle aanmeld gebeurtenissen. Het is niet mogelijk om multi-factor Authentication in te scha kelen voor een subset van gebruikers of alleen onder bepaalde scenario's. Beheer gaat via de Office 365-Portal. Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie [beveiligde Office 365-resources met multi-factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
+| Office 365 Business Premium, E3 of E5 | Azure Multi-Factor Authentication kan worden [ingeschakeld per gebruiker of worden in-](howto-mfa-userstates.md)of uitgeschakeld voor alle gebruikers, voor alle aanmeldings gebeurtenissen, met behulp van de standaard instellingen van de beveiliging. Beheer van Azure Multi-Factor Authentication is via de Office 365-Portal. Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie [beveiligde Office 365-resources met multi-factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
 | Azure AD Free | U kunt de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md) gebruiken om multi-factor Authentication in te scha kelen voor alle gebruikers, telkens wanneer er een verificatie aanvraag wordt gedaan. U hebt geen nauw keurige controle van ingeschakelde gebruikers of scenario's, maar biedt wel de extra beveiligings stap.<br /> Zelfs als de standaard instellingen voor beveiliging niet worden gebruikt om multi-factor Authentication voor iedereen in te scha kelen, kunnen gebruikers die de rol van *Azure AD globale beheerder* hebben toegewezen, worden geconfigureerd voor het gebruik van multi-factor Authentication. Deze functie van de gratis laag zorgt ervoor dat de essentiële beheerders accounts worden beveiligd door multi-factor Authentication. |
 
 ## <a name="feature-comparison-of-versions"></a>Functie vergelijking van versies
@@ -86,4 +86,6 @@ Als u Azure Multi-Factor Authentication niet wilt inschakelen voor alle gebruike
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [prijzen voor Azure multi-factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)voor meer informatie over de kosten.
+* Zie [prijzen voor Azure multi-factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)voor meer informatie over de kosten.
+* [Wat is voorwaardelijke toegang?](../conditional-access/overview.md)
+

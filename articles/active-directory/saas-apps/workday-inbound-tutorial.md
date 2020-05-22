@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 9c953c43ff119d42cdadcd2aba6e15f69765afc2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201632"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745443"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -454,11 +454,11 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
 
 1. Voer de sectie **beheerders referenties** als volgt uit:
 
-   * **Workday-gebruikers naam** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Het moet er ongeveer als volgt uitzien: **username\@tenant_name**
+   * **Workday-gebruikers naam** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Het moet er ongeveer als volgt uitzien: **username \@ tenant_name**
 
    * **Wacht woord voor werk dagen –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks.
+   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt uitzien: `https://wd3-impl-services1.workday.com/ccx/service/contoso4` , waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks.
 
      > [!NOTE]
      > De app maakt standaard gebruik van workday Web Services (WWS) v 21.1 als er geen versie gegevens zijn opgegeven in de URL. Als u een specifieke API-versie van WWS wilt gebruiken, moet u de URL-indeling gebruiken:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
@@ -561,14 +561,14 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
 | **PreferredNameData**    |  genoemd    |   |   Geschreven bij alleen maken |
-| **SelectUniqueValue (toevoegen ("\@", samen voegen (". \["\], \[voor\]naam, achternaam), "contoso.com")\@, samen voegen ("", samen voegen\](".", Mid \[(\]\[FirstName, 1, 1), LastName),\@"contoso.com"), deel nemen (""\[,\]lid (".", \[mid\](FirstName, 1, 2), LastName), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
+| **SelectUniqueValue (toevoegen (" \@ ", samen voegen (".", voor \[ naam \] , \[ achternaam \] ), "contoso.com"), samen voegen (" \@ ", samen voegen (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), deel nemen (" \@ ", lid (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Geschreven bij alleen maken |
-| **Switch (\[actief\],, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
+| **Switch ( \[ actief \] ,, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
 | **Voor**   | givenName       |     |    + Update maken |
 | **Naam**   |   sn   |     |  + Update maken |
 | **PreferredNameData**  |  displayName |     |   + Update maken |
 | **Bedrijfs**         | bedrijf   |     |  + Update maken |
-| **SupervisoryOrganization**  | department  |     |  + Update maken |
+| **SupervisoryOrganization**  | afdeling  |     |  + Update maken |
 | **ManagerReference**   | manager  |     |  + Update maken |
 | **BusinessTitle**   |  titel     |     |  + Update maken | 
 | **AddressLineData**    |  streetAddress  |     |   + Update maken |
@@ -582,7 +582,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **Fax**      | facsimileTelephoneNumber     |     |    + Update maken |
 | **Mobiel**  |    mobiel       |     |       + Update maken |
 | **LocalReference** |  preferredLanguage  |     |  + Update maken |                                               
-| **Switch (\[gemeente\], "OE = standaard gebruikers, OE = gebruikers, OE = standaard, OE = locaties, DC = contoso, DC = com", "Rotterdam", "OE = Standard users, OU = gebruikers, OE = Rotterdam, ou = locations, DC = contoso, DC = com", "Austin", "OE = Standard users, OU = Users, OU = Austin, OE = locaties, DC = contoso, DC = com", "Seattle", "OE = standaard gebruikers, OU = gebruikers, OE = Seattle, ou = locaties, DC = contoso, DC = com", "Londen", "OE = Standard users, OU = gebruikers, ou = Londen, DC =", DC = contoso, dc's = com ")**  | parentDistinguishedName     |     |  + Update maken |
+| **Switch ( \[ gemeente \] , "OE = standaard gebruikers, OE = gebruikers, OE = standaard, OE = locaties, DC = CONTOSO, DC = com", "Rotterdam", "OE = Standard users, ou = gebruikers, OE = Rotterdam, ou = locations, DC = CONTOSO, DC = com", "Austin", "OE = Standard users, OU = Users, ou = Austin, OE = locaties, DC = CONTOSO, DC = com", "Seattle", "OE = standaard gebruikers, ou = gebruikers, OE = Seattle, ou = locaties, DC = CONTOSO, DC = com", "Londen", "OE = Standard users, ou = gebruikers, ou = Londen, DC =", DC = CONTOSO, dc's = com ")**  | parentDistinguishedName     |     |  + Update maken |
 
 Zodra de configuratie van de kenmerk toewijzing is voltooid, kunt u [de User Provisioning Service nu inschakelen en starten](#enable-and-launch-user-provisioning).
 
@@ -621,7 +621,7 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
    * **Wacht woord voor werk dagen –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks. Als deze URL niet bekend is, moet u samen werken met uw werkdag integratie partner of ondersteunings medewerker om te bepalen welke URL moet worden gebruikt.
+   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt uitzien: `https://wd3-impl-services1.workday.com/ccx/service/contoso4` , waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks. Als deze URL niet bekend is, moet u samen werken met uw werkdag integratie partner of ondersteunings medewerker om te bepalen welke URL moet worden gebruikt.
 
      > [!NOTE]
      > Standaard gebruikt de app workday Web Services v 21.1 als er geen versie gegevens zijn opgegeven in de URL. Als u een specifieke workday Web Services API-versie wilt gebruiken, moet u de URL-indeling gebruiken:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
@@ -719,11 +719,11 @@ Volg deze instructies voor het configureren van write-back van gebruikers-e-mail
 
 8. Voer de sectie **beheerders referenties** als volgt uit:
 
-   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Moet er ongeveer als volgt uitzien: *gebruikers naam\@contoso4*
+   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Moet er ongeveer als volgt uitzien: *gebruikers naam \@ contoso4*
 
    * **Beheerders wachtwoord –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Tenant-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks (indien nodig).
+   * **Tenant-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt uitzien: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` , waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks (indien nodig).
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
 
@@ -823,9 +823,9 @@ Deze functionaliteit wordt momenteel niet ondersteund. De aanbevolen tijdelijke 
 De oplossing maakt momenteel gebruik van de volgende workday-Api's:
 
 * De URL-indeling van de **workday Web Services API** die in de sectie **beheerders referenties** wordt gebruikt, bepaalt de API-versie die wordt gebruikt voor Get_Workers
-  * Als de URL-indeling is:\#\#\#\#\.https://\.workday com/CCX/service/tenantnaam, wordt API v 21.1 gebruikt. 
-  * Als de URL-indeling is:\#\#\#\#\.https://\.workday com/CCX/service/Tenant/Human\_resources, wordt API v 21.1 gebruikt 
-  * Als de URL-indeling is:\#\#\#\#\.https://\.workday com/CCX/service/tenantnaam/\_human resources/\# \# \. \# v, wordt de opgegeven API-versie gebruikt. (Voor beeld: als v 34.0 is opgegeven, wordt het gebruikt.)  
+  * Als de URL-indeling is: https:// \# \# \# \# \. workday \. com/CCX/service/tenantnaam, wordt API v 21.1 gebruikt. 
+  * Als de URL-indeling is: https:// \# \# \# \# \. workday \. com/CCX/service/Tenant/Human \_ resources, wordt API v 21.1 gebruikt 
+  * Als de URL-indeling is: https:// \# \# \# \# \. workday \. com/CCX/service/tenantnaam/Human \_ resources/v \# \# \. \# , wordt de opgegeven API-versie gebruikt. (Voor beeld: als v 34.0 is opgegeven, wordt het gebruikt.)  
    
 * De functie voor het terugschrijven van dagen per dag maakt gebruik van Change_Work_Contact_Information (v 30.0) 
 * De functie voor het terugschrijven van workday-gebruikers namen maakt gebruik van Update_Workday_Account (v 31.2) 
@@ -864,7 +864,7 @@ Wanneer u een nieuw idee bekijkt, moet u controleren of iemand anders een vergel
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Hoe kan ik weet ik welke versie van mijn inrichtings agent u hebt?
 
 * Meld u aan bij de Windows-Server waarop de inrichtings agent is geïnstalleerd.
-* Ga naar **configuratie scherm** -> **verwijderen of wijzigen van een programma** menu
+* Ga naar **configuratie scherm**  ->  **verwijderen of wijzigen van een programma** menu
 * Zoek naar de versie die overeenkomt met de vermelding **Microsoft Azure AD inrichtings agent verbinden**
 
   ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
@@ -916,15 +916,15 @@ Ja, een inrichtings agent kan worden geconfigureerd voor het verwerken van meerd
 * Haal de *Tenant-id* van uw Azure AD-Tenant op uit het Azure Portal.
 * Meld u aan bij de Windows-Server waarop de inrichtings agent wordt uitgevoerd.
 * Open Power shell als Windows-beheerder.
-* Ga naar de map met de registratie scripts en voer de volgende opdrachten uit om \[de Tenant\] -id-para meter te vervangen door de waarde van uw Tenant-id.
+* Ga naar de map met de registratie scripts en voer de volgende opdrachten uit om de \[ Tenant-ID- \] para meter te vervangen door de waarde van uw Tenant-id.
 
   ```powershell
-  cd “C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder”
+  cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder"
   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder\AppProxyPSModule.psd1"
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* In de lijst met agents die worden weer gegeven, kopieert u `id` de waarde van het veld van die resource waarvan *ResourceName* gelijk is aan uw AD-domein naam.
+* In de lijst met agents die worden weer gegeven, kopieert u de waarde van het `id` veld van die resource waarvan *ResourceName* gelijk is aan uw AD-domein naam.
 * Plak de ID-waarde in deze opdracht en voer de opdracht uit in Power shell.
 
   ```powershell
@@ -937,7 +937,7 @@ Ja, een inrichtings agent kan worden geconfigureerd voor het verwerken van meerd
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>De inrichtings agent Hoe kan ik verwijderen?
 
 * Meld u aan bij de Windows-Server waarop de inrichtings agent is geïnstalleerd.
-* Ga naar **configuratie scherm** -> **verwijderen of wijzigen van een programma** menu
+* Ga naar **configuratie scherm**  ->  **verwijderen of wijzigen van een programma** menu
 * Verwijder de volgende Program ma's:
   * Inrichtings agent Microsoft Azure AD verbinding maken
   * Updater Microsoft Azure AD-agent
@@ -979,7 +979,7 @@ De oplossing biedt momenteel geen ondersteuning voor het instellen van binaire k
 * Klik op de kenmerk toewijzingen 
 * Selecteer onder **toewijzingen** **werk dagen synchroniseren met on-premises Active Directory** (of **SYNCHRONISEER werk dagen in azure AD**).
 * Schuif op de pagina kenmerk toewijzingen omlaag en schakel het selectie vakje ' Geavanceerde opties weer geven ' in.  Klik op **kenmerk lijst bewerken voor werkdag**
-* Op de Blade die wordt geopend, zoekt u het mobiele kenmerk en klikt u op de rij zodat u de **API-expressie** ![Mobile AVG kunt bewerken](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* Op de Blade die wordt geopend, zoekt u het mobiele kenmerk en klikt u op de rij zodat u de **API-expressie** ![ Mobile AVG kunt bewerken](./media/workday-inbound-tutorial/mobile_gdpr.png)
 
 * Vervang de **API-expressie** door de volgende nieuwe expressie, waarmee het mobiele werk nummer wordt opgehaald als de ' open bare gebruiks vlag ' is ingesteld op ' True ' in workday.
 
@@ -1003,21 +1003,21 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
      | ----------------- | -------------------- |
      | PreferredFirstName | Word: worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: First_Name/text () |
      | PreferredLastName | Word: worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/text () |
-     | Bedrijf | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID@wd:type[= ' Organization_Type_ID '] = ' bedrijf ']/wd:Organization_Reference/@wd:Descriptor |
-     | SupervisoryOrganization | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID@wd:type[= ' Organization_Type_ID '] = ' toezicht ']/wd: Organization_Name/text () |
+     | Bedrijf | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' bedrijf ']/wd:Organization_Reference/@wd:Descriptor |
+     | SupervisoryOrganization | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' toezicht ']/WD: Organization_Name/text () |
   
    Bevestig met uw werkdag team dat de API-expressie hierboven geldig is voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
 
-* Evenzo worden de land gegevens die aanwezig zijn in workday opgehaald met behulp van het volgende XPATH: *WD: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
+* Evenzo worden de land-of regio gegevens die aanwezig zijn in workday opgehaald met behulp van het volgende XPATH: *WD: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
 
-     Er zijn vijf landspecifieke kenmerken die beschikbaar zijn in de sectie lijst met kenmerk dagen.
+     Er zijn vijf land-en regiospecifieke kenmerken die beschikbaar zijn in de sectie lijst met kenmerk dagen.
 
      | Kenmerk workday | API XPATH-expressie |
      | ----------------- | -------------------- |
-     | CountryReference | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID@wd:type[= ' ISO_3166-1_Alpha-3_Code ']/text () |
+     | CountryReference | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [ @wd:type = ' ISO_3166-1_Alpha-3_Code ']/text () |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID@wd:type[= ' ISO_3166-1_Numeric-3_Code ']/text () |
-     | CountryReferenceTwoLetter | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID@wd:type[= ' ISO_3166-1_Alpha-2_Code ']/text () |
+     | CountryReferenceNumeric | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [ @wd:type = ' ISO_3166-1_Numeric-3_Code ']/text () |
+     | CountryReferenceTwoLetter | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [ @wd:type = ' ISO_3166-1_Alpha-2_Code ']/text () |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Bevestig met uw werkdag team dat de API-expressies hierboven geldig zijn voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
@@ -1027,7 +1027,7 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Als u de juiste expressie hebt, bewerkt u de tabel kenmerk toewijzingen en wijzigt u de kenmerk toewijzing *DisplayName* , zoals hieronder ![wordt weer gegeven: DisplayName toewijzen](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Als u de juiste expressie hebt, bewerkt u de tabel kenmerk toewijzingen en wijzigt u de kenmerk toewijzing *DisplayName* , zoals hieronder wordt weer gegeven: ![ DisplayName toewijzen](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * Als u het bovenstaande voor beeld uitbreidt, kunt u plaatsnamen van de werkdag omzetten in steno waarden en deze vervolgens gebruiken om weergave namen te maken, zoals *Smit, John (Chi)* of *Jansen, Jane (NYC)*. dit resultaat kan worden bereikt met behulp van een switch-expressie met het workday-kenmerk *gemeente* als de determinant-variabele.
 
@@ -1210,7 +1210,7 @@ In deze sectie worden veelvoorkomende fouten behandeld met het inrichten van wer
 |#|Foutscenario |Mogelijke oorzaken|Aanbevolen oplossing|
 |--|---|---|---|
 |1.| Fout bij het installeren van de inrichtings agent met het volgende fout bericht: *service ' Microsoft Azure AD Connect inrichtings agent ' (AADConnectProvisioningAgent) is niet gestart. Controleer of u voldoende rechten hebt om het systeem te starten.* | Deze fout wordt meestal weer gegeven als u probeert de inrichtings agent te installeren op een domein controller en groeps beleid voor komt dat de service wordt gestart.  Het wordt ook weer gegeven als er een eerdere versie van de agent wordt uitgevoerd en u deze nog niet hebt verwijderd voordat u een nieuwe installatie start.| Installeer de inrichtings agent op een niet-domein controller. Zorg ervoor dat vorige versies van de agent zijn verwijderd voordat u de nieuwe agent installeert.|
-|2.| De Windows-service ' Microsoft Azure AD Connect inrichtings agent ' bevindt zich in de *Start* status en schakelt niet over naar de *actieve* status. | Als onderdeel van de installatie maakt de wizard agent een lokaal account (**NT service\\AADConnectProvisioningAgent**) op de server. Dit is het aanmeldings account dat wordt gebruikt voor het starten van de service. Als een beveiligings beleid op uw Windows-Server verhindert dat lokale accounts de services uitvoeren, wordt deze fout weer gestuit. | Open de *console Services*. Klik met de rechter muisknop op de Windows-service ' Microsoft Azure AD Connect inrichtings agent ' en geef op het tabblad Logon het account van een domein beheerder op om de service uit te voeren. Start de service opnieuw. |
+|2.| De Windows-service ' Microsoft Azure AD Connect inrichtings agent ' bevindt zich in de *Start* status en schakelt niet over naar de *actieve* status. | Als onderdeel van de installatie maakt de wizard agent een lokaal account (**NT service \\ AADConnectProvisioningAgent**) op de server. Dit is het aanmeldings account dat wordt gebruikt voor het starten van de service. Als een beveiligings beleid op uw Windows-Server verhindert dat lokale accounts de services uitvoeren, wordt deze fout weer gestuit. | Open de *console Services*. Klik met de rechter muisknop op de Windows-service ' Microsoft Azure AD Connect inrichtings agent ' en geef op het tabblad Logon het account van een domein beheerder op om de service uit te voeren. Start de service opnieuw. |
 |3.| Bij het configureren van de inrichtings agent met uw AD-domein in de stap *Connect Active Directory*, neemt de wizard lange tijd in beslag bij het laden van het AD-schema en uiteindelijk een time-out. | Deze fout komt meestal voor als de wizard geen contact kan maken met de controllerserver van het AD-domein door firewallproblemen. | Wanneer u de referenties voor uw AD-domein opgeeft in het scherm *verbinding maken met* de wizard Active Directory, is de optie *domein controller selecteren prioriteit*. Gebruik deze optie om een domein controller te selecteren die zich op dezelfde site bevindt als de agent server en ervoor te zorgen dat er geen firewall regels zijn die de communicatie blok keren. |
 
 #### <a name="connectivity-errors"></a>Connectiviteitsfouten
@@ -1268,11 +1268,11 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
-6. Stel het veld **locatie** in `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`op, maar vervang ' IMPL-CC ' door het daad werkelijke exemplaar type en ' TENANT ' door de naam van uw echte TENANT.
+6. Stel het veld **locatie** in op `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` , maar vervang ' IMPL-CC ' door het daad werkelijke exemplaar type en ' TENANT ' door de naam van uw echte TENANT.
 
 7. De **bewerking** instellen op **Get_Workers**
 
-8.  Klik op de kleine koppeling **configureren** onder de deel Vensters aanvraag/antwoord om uw workday-referenties in te stellen. Controleer de **verificatie**en voer vervolgens de gebruikers naam en het wacht woord in voor uw workday-integratie systeem account. Zorg ervoor dat u de naam van de gebruiker\@wijzigt als Tenant en de optie **WS-Security UsernameToken** geselecteerd laten.
+8.    Klik op de kleine koppeling **configureren** onder de deel Vensters aanvraag/antwoord om uw workday-referenties in te stellen. Controleer de **verificatie**en voer vervolgens de gebruikers naam en het wacht woord in voor uw workday-integratie systeem account. Zorg ervoor dat u de naam van de gebruiker wijzigt als \@ Tenant en de optie **WS-Security UsernameToken** geselecteerd laten.
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
@@ -1323,9 +1323,9 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 17. Verwijder de **/env: envelop/env: Body/WD: Get_Workers_Response/WD: Response_Data/** voor voegsel van de gekopieerde expressie.
 
-18. Als het laatste item in de gekopieerde expressie een knoop punt is (bijvoorbeeld: "/WD: Birth_Date"), voegt u **/Text ()** toe aan het einde van de expressie. Dit is niet nodig als het laatste item een kenmerk is (bijvoorbeeld: "/@wd: type").
+18. Als het laatste item in de gekopieerde expressie een knoop punt is (bijvoorbeeld: "/WD: Birth_Date"), voegt u **/Text ()** toe aan het einde van de expressie. Dit is niet nodig als het laatste item een kenmerk is (bijvoorbeeld: " /@wd: type").
 
-19. Het resultaat moet er ongeveer als `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`volgt uitzien. Deze waarde wordt gekopieerd naar de Azure Portal.
+19. Het resultaat moet er ongeveer als volgt uitzien `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()` . Deze waarde wordt gekopieerd naar de Azure Portal.
 
 **Uw aangepaste workday-gebruikers kenmerk toevoegen aan uw inrichtings configuratie:**
 

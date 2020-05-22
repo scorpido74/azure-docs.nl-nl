@@ -1,17 +1,17 @@
 ---
 title: Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
-description: Meer informatie over het gebruik van Azure Policy voor het implementeren van governance en controles voor Cosmos DB resources.
+description: Meer informatie over het gebruik van Azure Policy voor het implementeren van governance en controles voor Azure Cosmos DB resources.
 author: plzm
 ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 6b8823b586ae0d0d9f6a2c50286aa754a9ab8025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665157"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747381"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
 
@@ -32,7 +32,7 @@ Bij de stap om een beleids definitie te selecteren, voert u `Cosmos DB` in het z
 > [!TIP]
 > U kunt ook de namen van ingebouwde beleids regels die worden weer gegeven in het deel venster **beschik bare definities** met Azure PowerShell, Azure CLI of arm-sjablonen gebruiken om beleids toewijzingen te maken.
 
-:::image type="content" source="./media/policy/available-definitions.png" alt-text="Zoeken naar Cosmos DB ingebouwde beleids definities":::
+:::image type="content" source="./media/policy/available-definitions.png" alt-text="Zoeken naar Azure Cosmos DB ingebouwde beleids definities":::
 
 ## <a name="create-a-custom-policy-definition"></a>Een aangepaste beleidsdefinitie maken
 
@@ -115,7 +115,7 @@ De scherm afbeelding toont de volgende resultaten van de compliantie-evaluatie:
 - Nul van een Azure Cosmos DB accounts in het opgegeven bereik voldoen aan de beleids toewijzing om te controleren of de resources zijn geïmplementeerd in toegestane regio's.
 - Een van de twee Azure Cosmos DB Data Base-of verzamelings resources in het opgegeven bereik voldoet aan de beleids toewijzing om te controleren of de ingerichte door Voer de opgegeven maximum limiet overschrijdt.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Zoeken naar Cosmos DB ingebouwde beleids definities":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Zoeken naar Azure Cosmos DB ingebouwde beleids definities":::
 
 Als u de niet-compatibele resources wilt herstellen, raadpleegt u het artikel [opgelost met Azure Policy](../governance/policy/how-to/remediate-resources.md) .
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0e4208f4f9a01bc42d4c6134ec3ec4fb1cb19fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431590"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744284"
 ---
 # <a name="query-csv-files"></a>CSV-bestanden opvragen
 
@@ -176,7 +176,7 @@ WHERE
 ```
 
 > [!NOTE]
-> Deze query mislukt als ESCAPECHAR niet is opgegeven omdat de komma in "slov, enia" als veld scheidings teken wordt beschouwd in plaats van een deel van de land naam. "Slov, enia" worden beschouwd als twee kolommen. Daarom zou de betreffende rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de WITH-component.
+> Deze query mislukt als ESCAPECHAR niet is opgegeven omdat de komma in "slov, enia" als veld scheidings teken wordt beschouwd in plaats van een deel van de naam van het land/de regio. "Slov, enia" worden beschouwd als twee kolommen. Daarom zou de betreffende rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de WITH-component.
 
 ## <a name="tab-delimited-files"></a>Door tabs gescheiden bestanden
 
@@ -210,7 +210,7 @@ WHERE
 
 Tot nu toe hebt u het CSV-bestands schema opgegeven met behulp van en een lijst met alle kolommen. U kunt alleen kolommen opgeven die u daad werkelijk nodig hebt in uw query door gebruik te maken van een rang nummer voor elke gewenste kolom. U kunt ook kolommen zonder interesse weglaten.
 
-Met de volgende query wordt het aantal verschillende land namen in een bestand geretourneerd, waarbij alleen de benodigde kolommen worden opgegeven:
+Met de volgende query wordt het aantal afzonderlijke land/regio namen in een bestand geretourneerd, waarbij alleen de benodigde kolommen worden opgegeven:
 
 > [!NOTE]
 > Bekijk de WITH-component in de query hieronder en houd er rekening mee dat er ' 2 ' (zonder aanhalings tekens) aan het einde van de rij is waar u de kolom *[country_name]* definieert. Dit betekent dat de kolom *[country_name]* de tweede kolom in het bestand is. Met de query worden alle kolommen in het bestand genegeerd, met uitzonde ring van de tweede.

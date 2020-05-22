@@ -1,30 +1,30 @@
 ---
-title: Updatebeheer logboeken van Azure doorzoeken
-description: In dit artikel wordt beschreven hoe u een query kunt uitvoeren op de logboeken voor Updatebeheer in uw Log Analytics-werk ruimte.
+title: Azure Automation Updatebeheer-logboeken opvragen
+description: In dit artikel leest u hoe u een query kunt uitvoeren op de logboeken voor Updatebeheer in uw Log Analytics-werk ruimte.
 services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2e9a97dac4d69ea4e470a932cb446d83b425dde
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617426"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745289"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query's voor Updatebeheer bijwerken in Azure Monitor logboeken
+# <a name="query-update-management-logs"></a>Query's uitvoeren op Updatebeheer-logboeken
 
-Naast de details die in de Updatebeheer oplossing zijn opgenomen, kunt u zoeken op de logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte. Selecteer op de pagina oplossing in het linkerdeel venster **Logboeken**. De pagina zoeken in Logboeken wordt geopend.
+Naast de details die tijdens Updatebeheer-implementatie worden gegeven, kunt u de logboeken zoeken die zijn opgeslagen in uw Log Analytics-werk ruimte. Als u de logboeken wilt doorzoeken vanuit uw Automation-account, selecteert u **Update beheer** en opent u de log Analytics werk ruimte die aan uw implementatie is gekoppeld.
 
-U kunt ook meer informatie over het aanpassen van de query's of het gebruik ervan van verschillende clients. Raadpleeg de [documentatie van log Analytics Search API](https://dev.loganalytics.io/).
+U kunt ook de logboek query's aanpassen of ze van verschillende clients gebruiken. Raadpleeg de [documentatie van log Analytics Search API](https://dev.loganalytics.io/).
 
-## <a name="update-records"></a>Records bijwerken
+## <a name="query-update-records"></a>Query's uitvoeren op records
 
 Updatebeheer verzamelt records voor virtuele Windows-en Linux-machines en de gegevens typen die worden weer gegeven in de zoek resultaten van de logboeken. In de volgende secties worden deze records beschreven.
 
-### <a name="required-updates"></a>Vereiste updates
+### <a name="query-required-updates"></a>Vereiste updates voor query
 
-Er `RequiredUpdate` wordt een record met een type gemaakt die de updates vertegenwoordigt die vereist zijn voor een machine. Deze records hebben de eigenschappen in de volgende tabel:
+Er wordt een record met een type `RequiredUpdate` gemaakt die de updates vertegenwoordigt die vereist zijn voor een machine. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
@@ -33,19 +33,19 @@ Er `RequiredUpdate` wordt een record met een type gemaakt die de updates vertege
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. | 
 | Product | De producten waarvoor de update van toepassing is. | 
 | PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| server | | 
+| Server | | 
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *OperationsManager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
 | TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
 | Type | *Bijwerken* | 
 | UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligingsupdates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
-| UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Prioriteit*<br> *Laag* |
+| UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matig*<br> *Laag* |
 | UpdateTitle | De titel van de update.|
 
-### <a name="update"></a>Bijwerken
+### <a name="query-update-record"></a>Query update record
 
-Er `Update` wordt een record met het type gemaakt die de beschik bare updates en de installatie status voor een machine vertegenwoordigt. Deze records hebben de eigenschappen in de volgende tabel:
+Er wordt een record met het type `Update` gemaakt die de beschik bare updates en de installatie status voor een machine vertegenwoordigt. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
@@ -55,7 +55,7 @@ Er `Update` wordt een record met het type gemaakt die de beschik bare updates en
 | Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
 | ComputerEnvironment | Variabelen. Mogelijke waarden zijn Azure of niet-Azure. |
 | MSRCBulletinID | ID-nummer van beveiligings bulletin. | 
-| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> Kritiek<br> Belangrijk<br> Gemiddeld<br> Laag |  
+| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> Kritiek<br> Belangrijk<br> Matig<br> Laag |  
 | KBID | Knowledge Base-artikel-ID voor Windows Update. |
 | ManagementGroupName | De naam van de Operations Manager beheer groep of de Log Analytics-werk ruimte. |
 | UpdateID | De unieke id van de software-update. |
@@ -67,7 +67,7 @@ Er `Update` wordt een record met het type gemaakt die de beschik bare updates en
 | VMUUID | De unieke id voor de virtuele machine. |
 | MG | De unieke id voor de beheer groep of Log Analytics werk ruimte. | 
 | TenantId | De unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. | 
-| SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager`. | 
+| SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager` . | 
 | TimeGenerated | De datum en het tijdstip waarop de record is gemaakt. | 
 | SourceComputerId | De unieke id van de bron computer. | 
 | Titel | De titel van de update. |
@@ -80,9 +80,9 @@ Er `Update` wordt een record met het type gemaakt die de beschik bare updates en
 | Resource | De naam van de resource. | 
 | ResourceType | Het resource type. | 
 
-### <a name="update-agent"></a>Agent bijwerken
+### <a name="query-update-agent-record"></a>Record voor query Update Agent
 
-Er `UpdateAgent` wordt een record met het type gemaakt met details van de Update Agent op de computer. Deze records hebben de eigenschappen in de volgende tabel:
+Er wordt een record met `UpdateAgent` het type gemaakt met details van de Update Agent op de computer. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
@@ -92,16 +92,16 @@ Er `UpdateAgent` wordt een record met het type gemaakt met details van de Update
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSVersion | De versie van het besturings systeem. |
-| server | |
+| Server | |
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
-| SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager`. | 
+| SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager` . | 
 | TenantId | De unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. |
 | TimeGenerated | De datum en het tijdstip waarop de record is gemaakt. |
 | Type | Record type. De waarde is update. | 
 | WindowsUpdateAgentVersion | De versie van de Windows Update-Agent. |
 | WSUSServer | Fouten als er een probleem is met de Windows Update-Agent, om hulp te bieden bij het oplossen van problemen. |
 
-### <a name="update-deployment-status"></a>Implementatie status bijwerken 
+### <a name="query-update-deployment-status-record"></a>Status record voor de implementatie van query's bijwerken
 
 Een record met een type `UpdateRunProgress` wordt gemaakt die de update-implementatie status van een geplande implementatie per computer biedt. Deze records hebben de eigenschappen in de volgende tabel:
 
@@ -122,20 +122,20 @@ Een record met een type `UpdateRunProgress` wordt gemaakt die de update-implemen
 | ResourceProvider | De resource provider. | 
 | ResourceType | Resource type. | 
 | SourceComputerId | De unieke id van de bron computer. | 
-| SourceSystem | Bron systeem voor de record. De waarde is `OperationsManager`. |
+| SourceSystem | Bron systeem voor de record. De waarde is `OperationsManager` . |
 | StartTime | Tijdstip waarop de update is gepland om te worden geïnstalleerd. |
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
 | SucceededOnRetry | Waarde die aangeeft of de uitvoering van de update bij de eerste poging is mislukt en dat de huidige bewerking een nieuwe poging doet. |
 | TimeGenerated | De datum en het tijdstip waarop de record is gemaakt. |
 | Titel | De titel van de update. |
-| Type | Het type update. De waarde is `UpdateRunProgress`. |
+| Type | Het type update. De waarde is `UpdateRunProgress` . |
 | UpdateId | De unieke id van de software-update. |
 | VMUUID | De unieke id voor de virtuele machine. |
 | ResourceId | De unieke id voor de resource die aan de record is gekoppeld. |
 
-### <a name="update-summary"></a>Samen vatting van update 
+### <a name="query-update-summary-record"></a>Samenvattings record voor bijwerken van query
 
-Er `UpdateSummary` wordt een record met het type gemaakt die een update overzicht per computer biedt. Deze records hebben de eigenschappen in de volgende tabel:
+Er wordt een record met het type `UpdateSummary` gemaakt die een update overzicht per computer biedt. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
@@ -156,11 +156,11 @@ Er `UpdateSummary` wordt een record met het type gemaakt die een update overzich
 | RestartPending | Waar als opnieuw opstarten in behandeling is of anders onwaar. |
 | SecurityUpdatesMissing | Aantal ontbrekende beveiligings updates die van toepassing zijn.| 
 | SourceComputerId | De unieke id voor de virtuele machine. |
-| SourceSystem | Bron systeem voor de record. De waarde is `OpsManager`. | 
+| SourceSystem | Bron systeem voor de record. De waarde is `OpsManager` . | 
 | SubscriptionId | De unieke id voor het Azure-abonnement. |
 | TimeGenerated | De datum en het tijdstip waarop de record is gemaakt. |
 | TotalUpdatesMissing | Totaal aantal ontbrekende updates dat van toepassing is. | 
-| Type | Record type. De waarde is `UpdateSummary`. |
+| Type | Record type. De waarde is `UpdateSummary` . |
 | VMUUID | De unieke id voor de virtuele machine. |
 | WindowsUpdateAgentVersion | De versie van de Windows Update-Agent. |
 | WindowsUpdateSetting | De status van de Windows Update-Agent. Mogelijke waarden zijn:<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
@@ -171,7 +171,7 @@ Er `UpdateSummary` wordt een record met het type gemaakt die een update overzich
 
 De volgende secties bieden voorbeeld logboek query's voor update records die worden verzameld voor Updatebeheer.
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Controleren of niet-Azure-machines zijn voor bereid
+### <a name="confirm-that-non-azure-machines-are-enabled-for-update-management"></a>Controleren of niet-Azure-machines zijn ingeschakeld voor Updatebeheer
 
 Als u wilt controleren of rechtstreeks verbonden computers communiceren met Azure Monitor-logboeken, voert u een van de volgende zoek opdrachten in het logboek uit.
 
@@ -197,7 +197,7 @@ Op een Windows-computer kunt u de volgende informatie controleren om de agent co
 Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
 
 > [!NOTE]
-> Als uw Linux-systemen zijn geconfigureerd om te communiceren met een proxy-of Log Analytics gateway en u deze oplossing onboardt, werkt u de *proxy. conf* -machtigingen om de omiuser-groep lees machtigingen te verlenen voor het bestand met de volgende opdrachten:
+> Als uw Linux-systemen zijn geconfigureerd om te communiceren met een proxy-of Log Analytics gateway en u Updatebeheer inschakelt, werkt u de `proxy.conf` machtigingen bij om de groep omiuser Lees machtigingen voor het bestand te verlenen met behulp van de volgende opdrachten:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zoek opdrachten in Logboeken in [Azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde update gegevens weer te geven.
-* [Waarschuwingen maken](automation-tutorial-update-management.md#configure-alerts) voor de implementatie status van de update.
+* [Azure Monitor-logboeken](../log-analytics/log-analytics-log-searches.md)
+* [Waarschuwingen configureren](automation-tutorial-update-management.md#configure-alerts)

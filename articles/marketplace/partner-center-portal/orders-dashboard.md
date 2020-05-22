@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699052"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747795"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Bestellingen in Commerciële marketplace-analyses
 
@@ -58,7 +58,7 @@ De percentage waarde naast totaal aantal orders vertegenwoordigt de hoeveelheid 
 
 ### <a name="orders-by-geography"></a>Orders op geografie
 
-In het heatmap **Orders per geografie** wordt een telling weer gegeven van uw orders op een wereld kaart en worden de stoelen weer gegeven die zijn toegewezen op basis van het klant land. Deze heatmap werkt op dezelfde locatie als de **[klant op geografie heatmap](./customer-dashboard.md#customer-by-geography)**.
+In het heatmap **Orders per geografie** wordt een telling weer gegeven van uw orders op een wereld kaart en worden de stoelen weer gegeven die zijn toegewezen op basis van het land of de regio van de klant. Deze heatmap werkt op dezelfde locatie als de **[klant op geografie heatmap](./customer-dashboard.md#customer-by-geography)**.
 
 ![Partner centrum orders per geografie analyseren](./media/orders-by-geography.png)
 
@@ -103,7 +103,7 @@ In de tabel Order Details wordt een genummerde lijst met de 1000 belangrijkste o
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op land, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, een gratis spoor, abonnements-ID, klant-ID en bedrijfs naam.
+- Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op land/regio, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, de gratis sporen, de abonnements-ID van de Marketplace, de klant-ID en de bedrijfs naam.
 - Omdat SaaS-aanbiedingen zijn gekocht via Azure Marketplace of AppSource geen Azure-abonnement vereist, wordt de Marketplace-abonnements-ID weer gegeven als 00000000-0000-0000-0000-000000000000 in de sectie **gedetailleerde order gegevens** .
 
 #### <a name="orders-page-filters"></a>Pagina filters voor orders

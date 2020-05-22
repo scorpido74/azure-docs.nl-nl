@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981542"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747534"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -168,7 +168,7 @@ Registreer de Azure Insights-provider als deze nog niet is geregistreerd voor uw
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Als u nog geen Azure Storage account hebt om NSG-stroom logboeken op te slaan in, moet u een opslag account maken. U kunt een opslag account maken met behulp van de volgende opdracht. Voordat u de opdracht uitvoert, `<replace-with-your-unique-storage-account-name>` vervangt u door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters. U kunt ook de naam van de resource groep wijzigen, indien nodig.
+Als u nog geen Azure Storage account hebt om NSG-stroom logboeken op te slaan in, moet u een opslag account maken. U kunt een opslag account maken met behulp van de volgende opdracht. Voordat u de opdracht uitvoert, vervangt `<replace-with-your-unique-storage-account-name>` u door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters. U kunt ook de naam van de resource groep wijzigen, indien nodig.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -196,9 +196,9 @@ Selecteer de volgende opties, zoals wordt weer gegeven in de afbeelding:
 
     ![Selectie van opslag account, Log Analytics werk ruimte en Traffic Analytics-activering](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Herhaal de vorige stappen voor andere Nsg's waarvoor u Traffic Analytics wilt inschakelen voor. Gegevens uit stroom logboeken worden verzonden naar de werk ruimte, dus zorg ervoor dat de lokale wetten en voor Schriften in uw land gegevens opslag toestaan in de regio waar de werk ruimte zich bevindt. Als u verschillende verwerkings intervallen voor verschillende Nsg's hebt ingesteld, worden de gegevens op verschillende tijdstippen verzameld. Bijvoorbeeld: u kunt ervoor kiezen om het verwerkings interval van 10 minuten voor kritieke VNETs en 1 uur voor niet-kritieke VNETs in te scha kelen.
+Herhaal de vorige stappen voor andere Nsg's waarvoor u Traffic Analytics wilt inschakelen voor. Gegevens uit stroom logboeken worden verzonden naar de werk ruimte, dus zorg ervoor dat de lokale wetten en voor Schriften in uw land/regio gegevens opslag toestaan in de regio waar de werk ruimte zich bevindt. Als u verschillende verwerkings intervallen voor verschillende Nsg's hebt ingesteld, worden de gegevens op verschillende tijdstippen verzameld. Bijvoorbeeld: u kunt ervoor kiezen om het verwerkings interval van 10 minuten voor kritieke VNETs en 1 uur voor niet-kritieke VNETs in te scha kelen.
 
-U kunt ook Traffic Analytics configureren met de Power shell [-cmdlet Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) in azure PowerShell. Voer `Get-Module -ListAvailable Az` uit om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
+U kunt ook Traffic Analytics configureren met de Power shell [-cmdlet Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) in azure PowerShell. Voer uit `Get-Module -ListAvailable Az` om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Traffic Analytics weer geven
 
