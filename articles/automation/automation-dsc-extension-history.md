@@ -9,12 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713196"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836920"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Versie geschiedenis van de desired state Configuration-extensie voor Azure gebruiken
 
@@ -251,5 +251,5 @@ Dit artikel bevat informatie over elke versie van de Azure DSC VM-extensie, de o
 
 - Voor meer informatie over Power shell DSC raadpleegt u het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
 - Bekijk de [Resource Manager-sjabloon voor de DSC-extensie](/azure/virtual-machines/extensions/dsc-template).
-- Voor meer functionaliteit die u kunt beheren met Power shell DSC, en voor meer DSC-resources, gaat u naar de [Power shell Gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Voor meer functionaliteit en bronnen die u kunt beheren met Power shell DSC, gaat u naar de [Power shell-galerie](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Zie voor meer informatie over het door geven van gevoelige para meters in configuraties [veilig beheer referenties met de DSC-extensie-handler](/azure/virtual-machines/extensions/dsc-credentials).

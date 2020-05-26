@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 798cf3a7a8b94a06331e2f8e27c143b4182b718e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735834"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836308"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Updatebeheer integreren met Windows-eind punt Configuration Manager
 
@@ -48,4 +48,4 @@ Nadat u deze configuratie wijziging hebt uitgevoerd, maakt u een nieuwe implemen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een update-implementatie plannen](automation-tutorial-update-management.md#schedule-an-update-deployment)
+Zie [een update-implementatie plannen](automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over het instellen van een integratie schema.

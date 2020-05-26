@@ -1,6 +1,6 @@
 ---
-title: Een Azure AD-adres lijst verwijderen-Azure Active Directory | Microsoft Docs
-description: Hierin wordt uitgelegd hoe u een Azure AD-Directory voorbereidt voor verwijdering, inclusief self-service directory's
+title: Een Azure AD-organisatie (Tenant) verwijderen-Azure Active Directory | Microsoft Docs
+description: Legt uit hoe u een Azure AD-organisatie (Tenant) voorbereidt voor verwijdering, met inbegrip van selfservice organisaties
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,50 +9,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/21/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5ea42f5196b2c4ffe06c139e595dd4641752d35
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73961818"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816196"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>Een map in Azure Active Directory verwijderen
+# <a name="delete-a-tenant-in-azure-active-directory"></a>Een Tenant verwijderen in Azure Active Directory
 
-Wanneer een Azure AD-Directory wordt verwijderd, worden ook alle resources verwijderd die in de map zijn opgenomen. Bereid uw organisatie voor door de bijbehorende resources te minimaliseren voordat u verwijdert. Alleen een globale beheerder van een Azure Active Directory (Azure AD) kan een Azure AD-Directory verwijderen uit de portal.
+Wanneer een Azure AD-organisatie (Tenant) wordt verwijderd, worden ook alle resources verwijderd die deel uitmaken van de organisatie. Bereid uw organisatie voor door de bijbehorende resources te minimaliseren voordat u verwijdert. Alleen een globale beheerder van een Azure Active Directory (Azure AD) kan een Azure AD-organisatie uit de Portal verwijderen.
 
-## <a name="prepare-the-directory"></a>De Directory voorbereiden
+## <a name="prepare-the-organization"></a>De organisatie voorbereiden
 
-U kunt een map in azure AD pas verwijderen als er verschillende controles worden door gegeven. Deze controles verminderen het risico dat het verwijderen van een Azure AD-Directory een negatieve invloed heeft op de gebruikers toegang, zoals de mogelijkheid om zich aan te melden bij Office 365 of om toegang te krijgen tot resources in Azure. Als de map die is gekoppeld aan een abonnement, bijvoorbeeld per ongeluk is verwijderd, hebben gebruikers geen toegang tot de Azure-resources voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
+U kunt een organisatie in azure AD pas verwijderen als er verschillende controles worden door gegeven. Deze controles verminderen het risico dat het verwijderen van een Azure AD-organisatie een negatieve invloed heeft op de gebruikers toegang, zoals de mogelijkheid om zich aan te melden bij Office 365 of om toegang te krijgen tot resources in Azure. Als de organisatie die is gekoppeld aan een abonnement, bijvoorbeeld per ongeluk is verwijderd, hebben gebruikers geen toegang tot de Azure-resources voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
 
-* Er kunnen zich geen gebruikers in de map bevinden, met uitzonde ring van één globale beheerder die de Directory verwijdert. Andere gebruikers moeten worden verwijderd voordat de directory kan worden verwijderd. Als gebruikers van on-premises worden gesynchroniseerd, moet de synchronisatie eerst worden uitgeschakeld en moeten de gebruikers worden verwijderd uit de Cloud Directory met behulp van de Azure Portal-of Azure PowerShell-cmdlets.
-* Er mogen in de directory geen toepassingen aanwezig zijn. Alle toepassingen moeten worden verwijderd voordat de map kan worden verwijderd.
-* Er kunnen geen multi-factor Authentication-providers aan de Directory zijn gekoppeld.
-* Aan de directory mogen geen abonnementen op Microsoft Online Services zijn gekoppeld, zoals een abonnement op Microsoft Azure, Office 365 of Azure AD Premium. Als er bijvoorbeeld een standaarddirectory voor u is gemaakt in Azure, kunt u deze directory niet verwijderen als uw Azure-abonnement deze directory gebruikt voor verificatie. Het is evenmin mogelijk om een directory te verwijderen als een andere gebruiker er een abonnement aan heeft gekoppeld.
+* Er kunnen zich geen gebruikers in de Azure AD-organisatie (Tenant) bevinden, met uitzonde ring van één globale beheerder die de organisatie moet verwijderen. Andere gebruikers moeten worden verwijderd voordat de organisatie kan worden verwijderd. Als gebruikers van on-premises worden gesynchroniseerd, moet de synchronisatie eerst worden uitgeschakeld en moeten de gebruikers worden verwijderd uit de Cloud organisatie met behulp van de Azure Portal-of Azure PowerShell-cmdlets.
+* Er kunnen geen toepassingen in de organisatie zijn. Alle toepassingen moeten worden verwijderd voordat de organisatie kan worden verwijderd.
+* Er kunnen geen multi-factor Authentication-providers zijn gekoppeld aan de organisatie.
+* Er kunnen geen abonnementen zijn voor micro soft Online Services, zoals Microsoft Azure, Office 365 of Azure AD Premium die zijn gekoppeld aan de organisatie. Als er bijvoorbeeld een standaard Azure AD-organisatie is gemaakt in azure, kunt u deze organisatie niet verwijderen als uw Azure-abonnement voor verificatie nog steeds afhankelijk is van deze organisatie. Op dezelfde manier kunt u een organisatie niet verwijderen als een andere gebruiker er een abonnement aan heeft gekoppeld.
 
-## <a name="delete-the-directory"></a>De map verwijderen
+## <a name="delete-the-organization"></a>De organisatie verwijderen
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat de globale beheerder is voor uw organisatie.
 
 2. Selecteer **Azure Active Directory**.
 
-3. Ga naar de map die u wilt verwijderen.
+3. Schakel over naar de organisatie die u wilt verwijderen.
   
    ![Organisatie bevestigen vóór verwijderen](./media/directory-delete-howto/delete-directory-command.png)
 
-4. Selecteer **map verwijderen**.
+4. Selecteer **Tenant verwijderen**.
   
    ![Selecteer de opdracht voor het verwijderen van de organisatie](./media/directory-delete-howto/delete-directory-list.png)
 
-5. Als uw Directory niet aan een of meer controles voldoet, krijgt u een koppeling naar meer informatie over hoe u kunt door geven. Nadat u alle controles hebt door lopen, selecteert u **verwijderen** om het proces te volt ooien.
+5. Als uw organisatie niet aan een of meer controles voldoet, krijgt u een koppeling naar meer informatie over hoe u kunt door geven. Nadat u alle controles hebt door lopen, selecteert u **verwijderen** om het proces te volt ooien.
 
-## <a name="if-you-cant-delete-the-directory"></a>Als u de map niet kunt verwijderen
+## <a name="if-you-cant-delete-the-organization"></a>Als u de organisatie niet kunt verwijderen
 
-Wanneer u uw Azure AD-adres lijst hebt geconfigureerd, hebt u mogelijk ook op licenties gebaseerde abonnementen geactiveerd voor uw organisatie, zoals Azure AD Premium P2, Office 365 Business Premium of Enterprise Mobility + Security E5. Om onbedoeld gegevens verlies te voor komen, kunt u een map pas verwijderen als de abonnementen volledig zijn verwijderd. De abonnementen moeten een niet- **ingerichte** status hebben om het verwijderen van de map toe te staan. Een **verlopen** of **geannuleerde** abonnement wordt verplaatst naar de **Uitgeschakelde** status en de laatste fase is de status provisioned. **Deprovisioned**
+Wanneer u uw Azure AD-organisatie hebt geconfigureerd, hebt u mogelijk ook op licenties gebaseerde abonnementen geactiveerd voor uw organisatie, zoals Azure AD Premium P2, Office 365 Business Premium of Enterprise Mobility + Security E5. Om onbedoeld gegevens verlies te voor komen, kunt u een organisatie pas verwijderen als de abonnementen volledig zijn verwijderd. De abonnementen moeten een niet- **ingerichte** status hebben om het verwijderen van de organisatie toe te staan. Een **verlopen** of **geannuleerde** abonnement wordt verplaatst naar de **Uitgeschakelde** status en de laatste fase is de status provisioned. **Deprovisioned**
 
 Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen. 
 
@@ -67,7 +67,7 @@ Inrichting ongedaan gemaakt (30 dagen na uitgeschakeld) | Gegevens verwijderd (a
 
 Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene** status laten verwijderen in drie dagen.
 
-1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
+1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u de organisatie Contoso wilt verwijderen die de oorspronkelijke standaard domein contoso.onmicrosoft.com heeft, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com .
 
 2. Bekijk een voor beeld van het nieuwe Microsoft 365-beheer centrum door ervoor te zorgen dat de nieuwe schakel optie voor het **beheer centrum** is ingeschakeld.
 
@@ -91,18 +91,18 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
 7. Nu is de status van het abonnement gewijzigd en is het abonnement gemarkeerd voor verwijdering. Het abonnement treedt de **status van** 72 uur later op.
 
-8. Zodra u een abonnement in uw map hebt verwijderd en 72 uur is verstreken, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en mogen er geen abonnementen worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
+8. Zodra u een abonnement in uw organisatie hebt verwijderd en 72 uur is verstreken, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en mogen er geen abonnementen worden genomen om de verwijdering van uw organisatie te blok keren. U moet uw Azure AD-organisatie kunnen verwijderen.
   
    ![controle van het abonnement door geven op het scherm van verwijderen](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proef abonnement dat verwijderen blokkeert
 
-Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie wordt gemaakt in uw Azure AD-adres lijst. Met deze self-service producten worden verwijderde mappen geblokkeerd tot ze volledig zijn verwijderd uit de map, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
+Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie in uw Azure AD-organisatie wordt gemaakt. Met deze self-service producten worden verwijderde mappen geblokkeerd totdat de producten volledig zijn verwijderd uit de organisatie, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
 
 Er zijn twee soorten self-service registratie producten die worden toegewezen: 
 
 * Toewijzing op organisatie niveau: een Azure AD-beheerder wijst het product toe aan de hele organisatie en een gebruiker kan actief gebruikmaken van de service met deze toewijzing op organisatie niveau, zelfs als ze niet afzonderlijk een licentie hebben.
-* Toewijzing op gebruikers niveau: een afzonderlijke gebruiker tijdens een self-service-aanmelding wijst het product zonder beheerder toe aan zichzelf. Zodra de organisatie wordt beheerd door een beheerder (Zie [beheerders overname van een onbeheerde map](domains-admin-takeover.md), kan de beheerder het product rechtstreeks aan gebruikers toewijzen zonder selfservice registratie.  
+* Toewijzing op gebruikers niveau: een afzonderlijke gebruiker tijdens een self-service-aanmelding wijst het product zonder beheerder toe aan zichzelf. Zodra de organisatie wordt beheerd door een beheerder (Zie [beheerders overname van een onbeheerde organisatie](domains-admin-takeover.md), kan de beheerder het product rechtstreeks aan gebruikers toewijzen zonder selfservice registratie.  
 
 Wanneer u het verwijderen van het self-service-aanmeldings product start, worden de gegevens door de actie permanent verwijderd en wordt alle gebruikers toegang tot de service verwijderd. Gebruikers aan wie de aanbieding afzonderlijk of op het niveau van de organisatie is toegewezen, kunnen zich niet aanmelden of toegang tot bestaande gegevens krijgen. Als u gegevens verlies wilt voor komen met het self-service registratie product zoals [micro soft power bi Dash boards](https://docs.microsoft.com/power-bi/service-export-to-pbix) of [Rights Management Services-beleids configuratie](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), moet u ervoor zorgen dat er een back-up van de gegevens wordt gemaakt en op een andere locatie worden opgeslagen.
 
@@ -113,13 +113,13 @@ Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Of
 Product status | Gegevens | Toegang tot gegevens
 ------------- | ---- | --------------
 Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot een self-service voor het registreren van een product, bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
-Verwijderen | Gegevens verwijderd | Gebruikers kunnen geen toegang krijgen tot een self-service voor het aanmelden, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
+Verwijderd | Gegevens verwijderd | Gebruikers kunnen geen toegang krijgen tot een self-service voor het aanmelden, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hoe kan ik een self-service-aanmeld product verwijderen in de Azure Portal?
 
 U kunt een self-service registratie product, zoals micro soft Power BI of Azure Rights Management Services, in een **verwijderings** status plaatsen zodat ze onmiddellijk worden verwijderd in de Azure AD-Portal.
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u de organisatie Contoso wilt verwijderen die de oorspronkelijke standaard domein contoso.onmicrosoft.com heeft, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com .
 
 2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
 
@@ -137,7 +137,7 @@ U kunt een self-service registratie product, zoals micro soft Power BI of Azure 
 
     ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/product-deleted.png)
 
-6. Zodra u alle producten hebt verwijderd, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en hoeft u geen actie te ondernemen en kunnen er geen producten worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
+6. Zodra u alle producten hebt verwijderd, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en hoeven er geen producten te worden verwijderd. U moet uw Azure AD-organisatie kunnen verwijderen.
 
     ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/delete-organization.png)
 

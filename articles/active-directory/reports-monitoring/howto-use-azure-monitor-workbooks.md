@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690619"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799373"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -42,13 +42,13 @@ Wilt u:
 
 - Krijg meer inzicht in aanmeldings logboek query's, de werkmap rapporteert aan hoeveel gebruikers toegang is verleend of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben overgeslagen bij het openen van bronnen.
 
-- Azure Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
+- Azure Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
 
 
 
 Dit artikel:
 
-- Er wordt van uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van werk bladen controleren](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Er wordt van uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van werk bladen controleren](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
 
 - In dit artikel wordt uitgelegd hoe u Bewaak werkmappen gebruikt om inzicht te krijgen in het effect van uw beleid voor voorwaardelijke toegang, problemen met aanmelding op te lossen en verouderde authenticaties te identificeren.
  
@@ -83,7 +83,7 @@ Voor toegang tot werkmappen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Navigeer naar **Azure Active Directory** > **bewakings** > **werkmappen**. 
+1. Navigeer naar **Azure Active Directory**  >  **bewakings**  >  **werkmappen**. 
 
 1. Selecteer een rapport of sjabloon of selecteer **openen**op de werk balk. 
 
@@ -302,4 +302,4 @@ Azure Monitor biedt u een uitsplitsing van de volgende categorieën om u te help
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Interactieve rapporten maken met behulp van werk bladen bewaken](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Interactieve rapporten maken met behulp van werk bladen bewaken](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).

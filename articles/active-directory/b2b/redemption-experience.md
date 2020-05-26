@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585892"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826091"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inwisseling uitnodiging Azure Active Directory B2B-samen werking
 
@@ -25,7 +25,7 @@ In dit artikel worden de manieren beschreven waarop gast gebruikers toegang hebb
 Wanneer u een gast gebruiker aan uw Directory toevoegt, heeft het gast gebruikers account een toestemmings status (zichtbaar in Power shell) die in eerste instantie is ingesteld op **PendingAcceptance**. Deze instelling blijft actief totdat de gast uw uitnodiging aanvaardt en akkoord gaat met uw privacybeleid en gebruiks voorwaarden. Daarna wordt de status van de toestemming gewijzigd in **geaccepteerd**en worden de pagina's met toestemming niet meer aan de gast gepresenteerd.
 
    > [!IMPORTANT]
-   > **Vanaf 31 maart 2021**biedt micro soft geen ondersteuning meer voor de terugbetaling van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en-tenants voor B2B-samenwerkings scenario's. In de voor bereiding raden wij klanten aan om te kiezen voor [verificatie via een eenmalige wachtwoord code](one-time-passcode.md). We hebben uw feedback over deze open bare preview-functie en zijn enthousiast om nog meer manieren te maken om samen te werken.
+   > **Vanaf 31 maart 2021** heeft Microsoft geen ondersteuning meer voor het aflossen van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en -tenants voor B2B-samenwerkingsscenario's. In de voorbereiding raden wij klanten aan om te kiezen voor de [verificatie van de eenmalige wachtwoordcode e-mailen](one-time-passcode.md). We waarderen uw feedback over deze openbare preview-functie en willen graag nog meer manieren te maken om samen te werken.
 
 ## <a name="redemption-through-the-invitation-email"></a>Inwisselen via e-mail met uitnodiging
 
@@ -42,9 +42,9 @@ Als alternatief voor de uitnodigings-e-mail kunt u een gast een rechtstreekse ko
 
 > [!IMPORTANT]
 > De directe koppeling moet Tenant-specifiek zijn. Met andere woorden, het moet een Tenant-ID of geverifieerd domein bevatten zodat de gast kan worden geverifieerd in uw Tenant, waar de gedeelde app zich bevindt. Een gemeen schappelijke URL https://myapps.microsoft.com kan niet worden gebruikt voor een gast omdat deze wordt omgeleid naar hun eigen Tenant voor authenticatie. Hier volgen enkele voor beelden van directe koppelingen met de context van de Tenant:
- > - Toegangs venster voor apps: https://myapps.microsoft.com/?tenantid=&lt ; Tenant-id&gt; 
- > - Toegangs paneel voor apps voor een geverifieerd domein: https://myapps.microsoft.com/&lt ; geverifieerd domein&gt;
- > - Azure Portal: https://portal.azure.com/&lt ; Tenant-id&gt;
+ > - Toegangs venster voor apps:`https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Toegangs venster voor apps voor een geverifieerd domein:`https://myapps.microsoft.com/<;verified domain>`
+ > - Azure Portal: `https://portal.azure.com/<tenant id>`
  > - Afzonderlijke app: zie een [koppeling voor direct aanmelden](../manage-apps/end-user-experiences.md#direct-sign-on-links) gebruiken
 
 Er zijn enkele gevallen waarin de e-mail uitnodiging wordt aanbevolen via een directe koppeling. Als deze speciale gevallen belang rijk zijn voor uw organisatie, raden we u aan gebruikers uit te nodigen met behulp van methoden die nog steeds de uitnodigings-e-mail verzenden:
@@ -90,7 +90,7 @@ Wanneer een gast zich voor de eerste keer aanmeldt voor toegang tot resources in
 
 1. De gast controleert de pagina **machtigingen controleren** met een beschrijving van de privacyverklaring van de uitnodigende organisatie. Een gebruiker moet het gebruik van hun gegevens in overeenstemming met het privacybeleid van de uitnodigende organisatie **accepteren** om door te gaan.
 
-   ![Scherm opname met de pagina Machtigingen controleren](media/redemption-experience/review-permissions.png) 
+   ![Schermopname van de pagina Machtigingen controleren](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
    > Voor informatie over hoe u als een Tenant beheerder kunt koppelen aan de privacyverklaring van uw organisatie, raadpleegt u [How to: privacy-informatie van uw organisatie toevoegen in azure Active Directory](https://aka.ms/adprivacystatement).

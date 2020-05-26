@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658962"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836359"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, machtigingen en beveiliging in Azure Monitor
 
@@ -28,7 +28,7 @@ Personen die de rol bewakings lezer toegewezen kunnen alle bewakings gegevens in
 
 * Bekijk bewakings dashboards in de portal en maak hun eigen persoonlijke bewakings dashboards.
 * Waarschuwings regels weer geven die zijn gedefinieerd in [Azure-waarschuwingen](alerts-overview.md)
-* Query's uitvoeren voor metrische gegevens met behulp van de [Azure Monitor rest API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [Power shell-cmdlets](powershell-quickstart-samples.md)of [kruislingse platform-cli](cli-samples.md).
+* Query's uitvoeren voor metrische gegevens met behulp van de [Azure Monitor rest API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [Power shell-cmdlets](powershell-quickstart-samples.md)of [kruislingse platform-cli](../samples/cli-samples.md).
 * Query's uitvoeren op het activiteiten logboek met behulp van de portal, Azure Monitor REST API, Power shell-cmdlets of kruislingse platform-CLI.
 * De [Diagnostische instellingen](diagnostic-settings.md) voor een resource weer geven.
 * Het [logboek profiel](activity-log-export.md) voor een abonnement weer geven.
@@ -181,7 +181,7 @@ Azure Monitor moet toegang hebben tot uw Azure-resources om de services te kunne
 ### <a name="secured-storage-accounts"></a>Beveiligde opslag accounts 
 
 Bewakings gegevens worden vaak naar een opslag account geschreven. U kunt er ook voor zorgen dat de gegevens die naar een opslag account worden gekopieerd, niet toegankelijk zijn voor onbevoegde gebruikers. Voor extra beveiliging kunt u netwerk toegang vergren delen om alleen uw geautoriseerde resources en vertrouwde micro soft-Services toegang te geven tot een opslag account door een opslag account te beperken om ' geselecteerde netwerken ' te gebruiken.
-![Azure Storage instellingen dialoog](./media/roles-permissions-security/secured-storage-example.png) venster Azure monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw beveiligde-opslag account. het schrijven van schrijf Azure Monitor bron logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account met deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
+![Azure Storage instellingen dialoog venster ](./media/roles-permissions-security/secured-storage-example.png) Azure monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw account voor beveiligde opslag, waardoor het schrijven van Azure monitor resource logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account onder deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
 
 
 Zie [netwerk beveiliging en Azure Storage](../../storage/common/storage-network-security.md) voor meer informatie.

@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 29d6edd5463de78bba039e4ed6219575d924ac10
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749142"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836648"
 ---
-# <a name="remove-vms-from-update-management"></a>Vm's uit Updatebeheer verwijderen
+# <a name="remove-vms-from-update-management"></a>VM's verwijderen uit Updatebeheer
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -20,7 +20,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving, kunt u deze verwijderen uit de functie [updatebeheer](automation-update-management.md) .
 
-1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer**.
+1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 
 2. Gebruik de volgende opdracht om de UUID te identificeren van een virtuele machine die u wilt verwijderen uit het beheer.
 
@@ -40,12 +40,7 @@ Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)
-* [De werk ruimte ontkoppelen van het Automation-account voor Updatebeheer](automation-unlink-workspace-update-management.md)
-* [Updatebeheer van een Automation-account inschakelen](automation-onboard-solutions-from-automation-account.md)
-* [Updatebeheer van de Azure Portal inschakelen](automation-onboard-solutions-from-browse.md)
-* [Updatebeheer inschakelen vanuit een runbook](automation-onboard-solutions.md)
-* [Updatebeheer van een virtuele machine in azure inschakelen](automation-onboard-solutions-from-vm.md)
-* [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md)
-* [Problemen met Windows Update agent oplossen](troubleshoot/update-agent-issues.md)
-* [Problemen met Linux Update agent oplossen](troubleshoot/update-agent-issues-linux.md)
+* Als u wilt blijven werken met Updatebeheer, raadpleegt u [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md).
+* Zie problemen [met updatebeheer oplossen](troubleshoot/update-management.md)voor informatie over het oplossen van algemene problemen met functies.
+* Zie problemen met [Windows Update agent oplossen](troubleshoot/update-agent-issues.md)voor problemen met de Windows Update-Agent.
+* Zie problemen met de [Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor problemen met de Linux-Update Agent.

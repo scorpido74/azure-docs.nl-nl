@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474843"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836393"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -27,7 +27,7 @@ In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerd
 > [!NOTE]
 > Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [MSDN-forum van Azure Media Services]. 
+We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het MSDN-forum van [Azure Media Services]. 
 
 ## <a name="known-issues"></a><a id="issues"/>Bekende problemen
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Algemene problemen Media Services
@@ -35,7 +35,7 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 | Probleem | Beschrijving |
 | --- | --- |
 | Er zijn geen enkele algemene HTTP-headers in de REST API. |Als u Media Services toepassingen ontwikkelt met behulp van de REST API, worden enkele veelvoorkomende HTTP-header velden (met inbegrip van CLIENT-REQUEST-ID, aanvraag-ID en retour-CLIENT-REQUEST-ID) niet ondersteund. De kopteksten worden toegevoegd in een toekomstige update. |
-| Percentage-code ring is niet toegestaan. |Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het maken van Url's voor de streaming-inhoud ( `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`bijvoorbeeld). Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap name mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ &= + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie. |
+| Percentage-code ring is niet toegestaan. |Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het maken van Url's voor de streaming-inhoud (bijvoorbeeld `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap name mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ &= + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie. |
 | De methode ListBlobs die deel uitmaakt van de Azure Storage SDK-versie 3. x is mislukt. |Media Services genereert SAS-Url's op basis van de [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) -versie. Als u de opslag-SDK wilt gebruiken om blobs in een BLOB-container weer te geven, gebruikt u de methode [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) die deel uitmaakt van de Storage SDK versie 2. x. |
 | Het Media Services beperkings mechanisme beperkt het resource gebruik voor toepassingen die overmatige aanvragen naar de service doen. De service kan de HTTP-status code ' service niet beschikbaar 503 ' retour neren. |Zie de beschrijving van de 503 HTTP-status code in [Media Services fout codes](media-services-encoding-error-codes.md)voor meer informatie. |
 | Wanneer u een query uitvoert op entiteiten, wordt een limiet van 1.000 entiteiten tegelijk geretourneerd, omdat de open bare REST versie 2 de query resultaten beperkt tot 1.000 resultaten. |Gebruik overs Laan en ondernemen (.NET)/top (REST) zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -253,13 +253,13 @@ Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dy
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Release van augustus 2015
 * De Media Services SDK voor de 0.8.0-release van Java versie en nieuwe voor beelden zijn nu beschikbaar. Zie voor meer informatie:
     
-* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio stromen. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)voor meer informatie.
+* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio stromen. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/) voor meer informatie.
 
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>Release van juli 2015
-* De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)voor meer informatie.
+* De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/) voor meer informatie.
   
     Media Encoder Standard maakt gebruik van voor instellingen, zoals beschreven in [deze sectie](https://go.microsoft.com/fwlink/?LinkId=618336). Wanneer u een vooraf ingestelde voor 4 KB-code ring gebruikt, haalt u het gereserveerde type voor de Premium-eenheid op. Zie [schaal codering](media-services-scale-media-processing-overview.md)voor meer informatie.
-* Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)voor meer informatie.
+* Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/) voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.4.0.0. De volgende updates zijn uitgevoerd: 
@@ -573,7 +573,7 @@ De volgende functionaliteit was nieuw in de release van november van de SDK:
 <!-- Images. -->
 
 <!--- URLs. --->
-[MSDN-forum Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Microsoft Q&A question page for Azure Media Services]: https://docs.microsoft.com/answers/topics/azure-media-services.html
 [Naslag informatie over Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Invoermetagegevens]: https://msdn.microsoft.com/library/azure/dn783120.aspx

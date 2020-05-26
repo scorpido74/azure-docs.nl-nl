@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 95c7205116808650c09f8b6fdd24844d9c0a6dbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647878"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797885"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Controle toepassings bewaking van nul voor Kubernetes-gehoste toepassingen met Istio-DEPRECATED
 
@@ -18,7 +18,7 @@ ms.locfileid: "83647878"
 > Deze functionaliteit wordt momenteel afgeschaft en wordt na 1 augustus 2020 niet meer ondersteund.
 > Momenteel kan de bewaking zonder code alleen worden ingeschakeld voor [Java via een zelfstandige agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Voor andere talen kunt u met de Sdk's uw apps controleren op AKS: [ASP.net core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [Java script](https://docs.microsoft.com/azure/azure-monitor/app/javascript)en [python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
-Azure Monitor maakt nu gebruik van de teching van service-net op uw Kubernetes-cluster om te voorzien in de bewaking van de box-toepassing voor elke door Kubernetes gehoste app. Met de standaard functies van Application Insight zoals [toepassings overzicht](../../azure-monitor/app/app-map.md) kunt u uw afhankelijkheden model leren, [Live Metrics stream](../../azure-monitor/app/live-stream.md) voor realtime-bewaking, krachtige visualisaties met het [standaard dash board](../../azure-monitor/app/overview-dashboard.md), [metrische Explorer](../../azure-monitor/platform/metrics-getting-started.md)en [werkmappen](../../azure-monitor/app/usage-workbooks.md). Deze functie helpt gebruikers bij het herkennen van prestatie knelpunten en fout HOTS POTS in alle Kubernetes-werk belastingen binnen een geselecteerde Kubernetes-naam ruimte. Door gebruik te maken van uw bestaande service-mesh-investeringen met technologieën zoals Istio, Azure Monitor automatisch gestuurde app-bewaking inschakelen zonder dat de code van uw toepassing hoeft te worden gewijzigd.
+Azure Monitor maakt nu gebruik van de teching van service-net op uw Kubernetes-cluster om te voorzien in de bewaking van de box-toepassing voor elke door Kubernetes gehoste app. Met de standaard functies van Application Insight zoals [toepassings overzicht](../../azure-monitor/app/app-map.md) kunt u uw afhankelijkheden model leren, [Live Metrics stream](../../azure-monitor/app/live-stream.md) voor realtime-bewaking, krachtige visualisaties met het [standaard dash board](../../azure-monitor/app/overview-dashboard.md), [metrische Explorer](../../azure-monitor/platform/metrics-getting-started.md)en [werkmappen](../../azure-monitor/platform/workbooks-overview.md). Deze functie helpt gebruikers bij het herkennen van prestatie knelpunten en fout HOTS POTS in alle Kubernetes-werk belastingen binnen een geselecteerde Kubernetes-naam ruimte. Door gebruik te maken van uw bestaande service-mesh-investeringen met technologieën zoals Istio, Azure Monitor automatisch gestuurde app-bewaking inschakelen zonder dat de code van uw toepassing hoeft te worden gewijzigd.
 
 > [!NOTE]
 > Dit is een van de vele manieren om toepassings bewaking op Kubernetes uit te voeren.U kunt ook alle apps die worden gehost in Kubernetes, met behulp van de [SDK van Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) , zonder dat u een service-net hoeft te gebruiken. Als u Kubernetes wilt bewaken zonder de toepassing te instrumenteren met een SDK, kunt u de onderstaande methode gebruiken.

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0b288bf6d987b9db682c8d1439879cf6b499f213
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457328"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799978"
 ---
 # <a name="logs-in-azure-monitor"></a>Logboeken in Azure Monitor
 
@@ -42,7 +42,7 @@ De volgende tabel geeft een lijst van de verschillende manieren waarop u Logboek
 |  |  |
 |:---|:---|
 | Analyseren | Gebruik [log Analytics](../log-query/get-started-portal.md) in de Azure Portal om [logboek query's](../log-query/log-query-overview.md) te schrijven en logboek gegevens interactief te analyseren met behulp van de krachtige Data Explorer Analysis-engine.<br>Gebruik de [Application Insights Analytics-console](../app/analytics.md) in de Azure Portal om logboek query's te schrijven en logboek gegevens interactief van Application Insights te analyseren. |
-| Visualiseren | Query resultaten weer geven als tabellen of grafieken aan een [Azure-dash board](../../azure-portal/azure-portal-dashboards.md).<br>Een [werkmap](../app/usage-workbooks.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. <br>De resultaten van een query exporteren naar [Power bi](powerbi.md) om verschillende visualisaties te gebruiken en te delen met gebruikers buiten Azure.<br>De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen.|
+| Visualiseren | Query resultaten weer geven als tabellen of grafieken aan een [Azure-dash board](../../azure-portal/azure-portal-dashboards.md).<br>Een [werkmap](../platform/workbooks-overview.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. <br>De resultaten van een query exporteren naar [Power bi](powerbi.md) om verschillende visualisaties te gebruiken en te delen met gebruikers buiten Azure.<br>De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen.|
 | Waarschuwing | Een [waarschuwings regel](alerts-log.md) voor het logboek configureren die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de resultaten van de query overeenkomen met een bepaald resultaat.<br>Een [regel voor metrische waarschuwingen](alerts-metric-logs.md) configureren voor bepaalde logboek gegevens logboeken die zijn geëxtraheerd als metriek. |
 | Ophalen | Toegang tot logboek query resultaten van een opdracht regel met behulp van [Azure cli](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Access-logboek query resultaten van een opdracht regel met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Toegang tot logboek query resultaten van een aangepaste toepassing met behulp van [rest API](https://dev.loganalytics.io/). |
 | Exporteren | Maak een werk stroom om logboek gegevens op te halen en kopieer deze naar een externe locatie met behulp van [Logic apps](~/articles/logic-apps/index.yml). |
@@ -55,7 +55,7 @@ Logboek gegevens van Application Insights gebruiken dezelfde Log Analytics engin
 
 In logboek query's worden gegevens uit een Log Analytics-werk ruimte of een Application Insights toepassing gebruikt. U kunt een query voor meerdere [bronnen](../log-query/cross-workspace-query.md) gebruiken om toepassings gegevens samen met andere logboek gegevens te analyseren of om query's te maken, inclusief meerdere werk ruimten of toepassingen.
 
-![Workspaces](media/data-platform-logs/workspaces.png)
+![Werkruimten](media/data-platform-logs/workspaces.png)
 
 ## <a name="log-queries"></a>Logboekquery's
 Gegevens in Azure Monitor logboeken worden opgehaald met een [logboek query](../log-query/log-query-overview.md) die is geschreven met de [Kusto-query taal](../log-query/get-started-queries.md), waarmee u snel verzamelde gegevens kunt ophalen, consolideren en analyseren. Gebruik [log Analytics](../log-query/portals.md) om logboek query's te schrijven en te testen in de Azure Portal. Hiermee kunt u interactief met de resultaten werken of deze vastmaken aan een dash board om ze te bekijken met andere visualisaties.
@@ -106,7 +106,7 @@ Azure Monitor kunt logboek gegevens verzamelen van verschillende bronnen in zowe
 | Gegevens traceren | De resultaten van [gedistribueerde tracering](../app/distributed-tracing.md) worden opgeslagen in de tabel _traces_ . |
 | Beschikbaarheidstests | Samenvattings gegevens van [beschikbaarheids testen](../app/monitor-web-app-availability.md) worden opgeslagen in de tabel _availabilityResults_ . Gedetailleerde gegevens van deze tests bevinden zich in afzonderlijke opslag en zijn toegankelijk via Application Insights in de Azure Portal. |
 
-### <a name="insights"></a>Insights
+### <a name="insights"></a>Inzichten
 
 | Gegevens | Beschrijving |
 |:---|:---|

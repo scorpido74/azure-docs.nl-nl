@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2bd4a59ee1b82b8f6eb3bf172b11239af1a9f4c5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714267"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837124"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verbindingen in Azure Automation beheren
 
@@ -192,6 +192,6 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Modules beheren in Azure Automation](shared-resources/modules.md)
-* [Uitvoering van runbooks in Azure Automation](automation-runbook-execution.md)
-* [Overzicht van State Configuration](automation-dsc-overview.md)
+* Zie [modules beheren in azure Automation](shared-resources/modules.md)voor meer informatie over de cmdlets die worden gebruikt voor toegang tot verbindingen.
+* Zie voor algemene informatie over runbooks [Runbook-uitvoering in azure Automation](automation-runbook-execution.md).
+* Zie [status configuratie-overzicht](automation-dsc-overview.md)voor meer informatie over DSC-configuraties.

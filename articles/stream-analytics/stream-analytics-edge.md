@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475889"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837209"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics op IoT Edge
  
@@ -188,7 +188,7 @@ Een taak met referentie gegevens aan de rand maken:
 
 3. Een bestand met referentie gegevens gereed is voor het apparaat. Plaats voor een Windows-container het bestand met referentie gegevens op de lokale schijf en deel het lokale station met de docker-container. Voor een Linux-container maakt u een docker-volume en vult u het gegevens bestand in op het volume.
 
-4. Stel het bestandspad in. Voor Windows host-besturings systeem en Windows-container gebruikt u het `E:\<PathToFile>\v1.csv`absolute pad:. Voor een Windows host-besturings systeem en een Linux-container of een Linux-besturings systeem en een Linux-container `<VolumeName>/file1.txt`gebruikt u het pad in het volume:.
+4. Stel het bestandspad in. Voor Windows host-besturings systeem en Windows-container gebruikt u het absolute pad: `E:\<PathToFile>\v1.csv` . Voor een Windows host-besturings systeem en een Linux-container of een Linux-besturings systeem en een Linux-container gebruikt u het pad in het volume: `<VolumeName>/file1.txt` .
 
 ![Nieuwe invoer van referentie gegevens voor Azure Stream Analytics taak op IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
@@ -225,8 +225,8 @@ Deze versie-informatie is voor het laatst bijgewerkt op 2019-06-27:
       - besturings systeem: Windows
       
       
-## <a name="get-help"></a>Help opvragen
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+## <a name="get-help"></a>Hulp vragen
+Ga voor meer hulp naar de [pagina micro soft Q&een vraag voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 

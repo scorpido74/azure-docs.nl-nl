@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658085"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799866"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -74,7 +74,7 @@ Voor AppSource worden de in aanmerking komende competenties vermeld in de volgen
 
 Aanvullende bronnen en ondersteuning:
 
-* [Micro soft Cloud-activerings Bureau](https://partner.microsoft.com/campaigns/ced-nomination-form/): voltooi het partner Benoemings formulier voor de door de Cloud stand-by Bureau begeleide ervaring om verbinding te maken met een specialist van een Cloud programma die Microsoft Partner Network voor delen kan opgeleen en kan worden gebruikt als richt lijn voor competentie doel.  
+* [Micro soft Cloud-activerings Bureau](https://aka.ms/CEDnominate): voltooi het partner Benoemings formulier voor de door de Cloud stand-by Bureau begeleide ervaring om verbinding te maken met een specialist van een Cloud programma die Microsoft Partner Network voor delen kan opgeleen en kan worden gebruikt als richt lijn voor competentie doel.  
 * [Word een Power bi partner](https://powerbi.microsoft.com/become-a-partner/): dien een aanvraag in om weer te geven op Power bi show case.
 
 Ga naar de pagina [competenties van Microsoft Partner Network](https://partner.microsoft.com/membership/competencies) voor meer informatie over competenties.

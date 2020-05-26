@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fbdf947eb36e1591cc9da52a85e389be63c8535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864280"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826652"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -100,7 +100,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name. naam |
-| jobTitle |title |
+| jobTitle |titel |
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
@@ -149,21 +149,21 @@ Binnen de [SCIM 2,0-protocol specificatie](http://www.simplecloud.info/#Specific
 * Biedt ondersteuning voor het maken van gebruikers, en optioneel ook groepen, zoals wordt bepaald door para graaf [3,3 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.3).  
 * Ondersteunt het wijzigen van gebruikers of groepen met PATCH aanvragen, zoals wordt bepaald door [de sectie 3.5.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
 * Biedt ondersteuning voor het ophalen van een bekende resource voor een eerder gemaakte gebruiker of groep, zoals wordt bepaald door [de sectie 3.4.1 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Biedt ondersteuning voor het uitvoeren van query's op gebruikers of groepen, zoals wordt bepaald door sectie [3.4.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Gebruikers worden standaard opgehaald `id` door hun en er wordt een query uitgevoerd op de `username` groepen `externalid`en en er wordt een query uitgevoerd `displayName`.  
+* Biedt ondersteuning voor het uitvoeren van query's op gebruikers of groepen, zoals wordt bepaald door sectie [3.4.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Gebruikers worden standaard opgehaald door hun en er wordt een query uitgevoerd op `id` de `username` `externalid` groepen en en er wordt een query uitgevoerd `displayName` .  
 * Biedt ondersteuning voor het uitvoeren van query's op de gebruiker door de ID en per Manager, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Ondersteunt het opvragen van groepen op ID en op lid, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Hiermee wordt één Bearer-token geaccepteerd voor verificatie en autorisatie van Azure AD voor uw toepassing.
 
 Volg deze algemene richt lijnen bij het implementeren van een SCIM-eind punt om te zorgen voor compatibiliteit met Azure AD:
 
-* `id`is een vereiste eigenschap voor alle resources. Elk antwoord dat een resource retourneert, moet ervoor zorgen dat elke resource deze eigenschap bevat `ListResponse` , met uitzonde ring van nul leden.
-* Antwoord op een query/filter aanvraag moet altijd a `ListResponse`zijn.
+* `id`is een vereiste eigenschap voor alle resources. Elk antwoord dat een resource retourneert, moet ervoor zorgen dat elke resource deze eigenschap bevat, met uitzonde ring van `ListResponse` nul leden.
+* Antwoord op een query/filter aanvraag moet altijd a zijn `ListResponse` .
 * Groepen zijn optioneel, maar worden alleen ondersteund als de implementatie van de SCIM PATCH aanvragen ondersteunt.
 * Het is niet nodig om de volledige resource op te neemen in de reactie van de PATCH.
 * Microsoft Azure AD maakt alleen gebruik van de volgende Opera tors:  
     - `eq`
     - `and`
-* Geen hoofdletter gevoelige overeenkomst voor structurele elementen in SCIM vereist, in het bijzonder PATCH `op` bewerkings waarden, zoals gedefinieerd https://tools.ietf.org/html/rfc7644#section-3.5.2in. Azure AD verzendt de waarden van ' op ' als `Add`, `Replace`en `Remove`.
+* Geen hoofdletter gevoelige overeenkomst voor structurele elementen in SCIM vereist, in het bijzonder PATCH `op` bewerkings waarden, zoals gedefinieerd in https://tools.ietf.org/html/rfc7644#section-3.5.2 . Azure AD verzendt de waarden van ' op ' als `Add` , `Replace` en `Remove` .
 * Microsoft Azure AD maakt aanvragen voor het ophalen van een wille keurige gebruiker en groep om ervoor te zorgen dat het eind punt en de referenties geldig zijn. Het wordt ook uitgevoerd als onderdeel van een **test verbindings** stroom in de [Azure Portal](https://portal.azure.com). 
 * Het kenmerk waarin de resources kunnen worden opgevraagd, moet worden ingesteld als een overeenkomend kenmerk op de toepassing in de [Azure Portal](https://portal.azure.com). Zie voor meer informatie [aanpassen van kenmerk toewijzingen](customize-application-attributes.md) voor het inrichten van gebruikers
 
@@ -191,36 +191,36 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 > Als u wilt weten hoe en wanneer de Azure AD User Provisioning-Service de hieronder beschreven bewerkingen afrondt, raadpleegt u de sectie [cycli inrichten: eerste en incrementeel](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) in de werking van [inrichten](how-provisioning-works.md).
 
 [Gebruikers bewerkingen](#user-operations)
-  - [Gebruiker maken](#create-user) ([Request](#request) / [antwoord](#response)aanvraag)
-  - [Gebruiker ophalen](#get-user) ([Request](#request-1) / [reactie](#response-1)op aanvraag)
-  - [Gebruiker ophalen op basis van query](#get-user-by-query) ([antwoord](#response-2)van[aanvraag](#request-2) / )
-  - [Gebruiker ophalen op basis van query-nul resultaten](#get-user-by-query---zero-results) ([reactie](#response-3)van[aanvraag](#request-3)
-/ )
-  - [Gebruiker bijwerken [eigenschappen met meerdere waarden]](#update-user-multi-valued-properties) ([Request](#request-4) /  [antwoord](#response-4)van aanvraag)
-  - [Update gebruiker [eigenschappen met één waarde]](#update-user-single-valued-properties) ([Request](#request-5)
-/ [antwoord](#response-5)van aanvraag) 
-  - [Gebruiker uitschakelen](#disable-user) ([Request](#request-14) / 
-[antwoord](#response-14)aanvraag)
-  - [Gebruiker verwijderen](#delete-user) ([Request](#request-6) / 
-[antwoord](#response-6)aanvraag)
+  - [Gebruiker maken](#create-user) ([Request](#request)  /  [antwoord](#response)aanvraag)
+  - [Gebruiker ophalen](#get-user) ([Request](#request-1)  /  [reactie](#response-1)op aanvraag)
+  - [Gebruiker ophalen op basis van query](#get-user-by-query) (antwoord van[aanvraag](#request-2)  /  [Response](#response-2))
+  - [Gebruiker ophalen op basis van query-nul resultaten](#get-user-by-query---zero-results) (reactie van[aanvraag](#request-3) 
+/  [Response](#response-3))
+  - [Gebruiker bijwerken [eigenschappen met meerdere waarden]](#update-user-multi-valued-properties) ([Request](#request-4)  /   [antwoord](#response-4)van aanvraag)
+  - [Update gebruiker [eigenschappen met één waarde]](#update-user-single-valued-properties) ([Request](#request-5) 
+/  [antwoord](#response-5)van aanvraag) 
+  - [Gebruiker uitschakelen](#disable-user) ([Request](#request-14)  / 
+ [antwoord](#response-14)aanvraag)
+  - [Gebruiker verwijderen](#delete-user) ([Request](#request-6)  / 
+ [antwoord](#response-6)aanvraag)
 
 
 [Groeps bewerkingen](#group-operations)
-  - [Groep maken](#create-group) ( [Request](#request-7) / [antwoord](#response-7)van aanvraag)
-  - [Groep ophalen](#get-group) ( [Request](#request-8) / [reactie](#response-8)op aanvraag)
-  - [Groeperen op DisplayName ophalen](#get-group-by-displayname) ([Request](#request-9) / [reactie](#response-9)op aanvraag)
+  - [Groep maken](#create-group) ( [Request](#request-7)  /  [antwoord](#response-7)van aanvraag)
+  - [Groep ophalen](#get-group) ( [Request](#request-8)  /  [reactie](#response-8)op aanvraag)
+  - [Groeperen op DisplayName ophalen](#get-group-by-displayname) ([Request](#request-9)  /  [reactie](#response-9)op aanvraag)
   - [Update groep [kenmerken die geen deel](#update-group-non-member-attributes) uitmaken] ([aanvraag](#request-10) /
   [antwoord](#response-10))
-  - [Update groep [leden toevoegen]](#update-group-add-members) ( [aanvraag](#request-11) /
-[antwoord](#response-11))
-  - [Update groep [leden verwijderen]](#update-group-remove-members) ( [Request](#request-12) /
-[reactie](#response-12)van aanvraag)
-  - [Groep verwijderen](#delete-group) ([Request](#request-13) /
-[antwoord](#response-13)op aanvraag)
+  - [Update groep [leden toevoegen]](#update-group-add-members) ( [aanvraag](#request-11)  /
+ [antwoord](#response-11))
+  - [Update groep [leden verwijderen]](#update-group-remove-members) ( [Request](#request-12)  /
+ [reactie](#response-12)van aanvraag)
+  - [Groep verwijderen](#delete-group) ([Request](#request-13)  /
+ [antwoord](#response-13)op aanvraag)
 
 ### <a name="user-operations"></a>Gebruikers bewerkingen
 
-* Gebruikers kunnen worden doorzocht met `userName` of `email[type eq "work"]` -kenmerken.  
+* Gebruikers kunnen worden doorzocht met `userName` of- `email[type eq "work"]` kenmerken.  
 
 #### <a name="create-user"></a>Gebruiker maken
 
@@ -803,9 +803,9 @@ Gebruik de volgende koppeling voor meer informatie over HTTPS in ASP.NET Core: [
 
 Aanvragen van Azure Active Directory een OAuth 2,0 Bearer-token bevatten. Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant.
 
-In het token wordt de verlener geïdentificeerd aan de hand van een ISS-claim `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`, zoals. In dit voor beeld is het basis adres van de claim waarde `https://sts.windows.net`, dat Azure Active Directory als de verlener identificeert, terwijl het relatieve adres segment _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven.
+In het token wordt de verlener geïdentificeerd aan de hand van een ISS-claim, zoals `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . In dit voor beeld is het basis adres van de claim waarde, `https://sts.windows.net` dat Azure Active Directory als de verlener identificeert, terwijl het relatieve adres segment _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven.
 
-De doel groep van het token is de toepassings sjabloon-ID voor de toepassing in de galerie. elk van de toepassingen die in één Tenant zijn geregistreerd, kan `iss` dezelfde claim ontvangen met scim-aanvragen. De toepassings sjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_. Het token dat is gegenereerd door de Azure AD-inrichtings service mag alleen worden gebruikt voor het testen. Het mag niet worden gebruikt in productie omgevingen.
+De doel groep van het token is de toepassings sjabloon-ID voor de toepassing in de galerie. elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met scim-aanvragen. De toepassings sjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_. Het token dat is gegenereerd door de Azure AD-inrichtings service mag alleen worden gebruikt voor het testen. Het mag niet worden gebruikt in productie omgevingen.
 
 In de voorbeeld code worden aanvragen geverifieerd met het pakket micro soft. AspNetCore. Authentication. JwtBearer. De volgende code dwingt dat aanvragen voor een van de service-eind punten worden geverifieerd met behulp van het Bearer-token dat is uitgegeven door Azure Active Directory voor een opgegeven Tenant:
 
@@ -1127,7 +1127,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat in dit artikel w
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). Houd er rekening mee dat u toegang krijgt tot een gratis proef versie voor Azure Active Directory met P2-licenties door u aan te melden voor het [ontwikkelaars programma](https://developer.microsoft.com/office/dev-program)
 2. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst met alle geconfigureerde apps weer gegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
-3. Selecteer **+ nieuwe toepassing** > **alle** > **niet-galerie toepassingen**.
+3. Selecteer **+ nieuwe toepassing**  >  **alle**  >  **niet-galerie toepassingen**.
 4. Voer een naam in voor uw toepassing en selecteer **toevoegen** om een app-object te maken. De nieuwe app wordt toegevoegd aan de lijst met bedrijfs toepassingen en wordt geopend op het scherm voor het beheren van apps.
 
    ![Scherm opname toont de Azure AD-toepassings galerie](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
@@ -1220,10 +1220,6 @@ We raden u aan om uw bestaande documentatie bij te werken en de integratie in uw
 * **Technische documentatie.** Maak een Help Center-artikel of technische documentatie over hoe klanten aan de slag kunnen. [Voor beeld: Envoy + Microsoft Azure Active Directory-integratie.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Communicatie van de klant.** Waarschuw klanten van de nieuwe integratie via uw klant communicatie (maandelijkse nieuws brieven, e-mail campagnes, opmerkingen bij de release van het product). 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>IP-adressen die worden gebruikt door de Azure AD-inrichtings service toestaan om SCIM-aanvragen te maken
-
-Bepaalde apps staan inkomend verkeer naar hun app toe. De Azure AD-inrichtings service werkt alleen zoals verwacht als de gebruikte IP-adressen zijn toegestaan. Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). U kunt deze Ip's naar behoefte downloaden en Program meren in uw firewall. De gereserveerde IP-bereiken voor Azure AD-inrichting vindt u onder ' AzureActiveDirectoryDomainServices '.
 
 ## <a name="related-articles"></a>Verwante artikelen:
 

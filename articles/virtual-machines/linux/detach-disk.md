@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036371"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830001"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Een gegevensschijf loskoppelen van een virtuele Linux-machine
 
@@ -106,12 +106,10 @@ De schijf blijft in de opslag, maar is niet meer gekoppeld aan een virtuele mach
 ## <a name="detach-a-data-disk-using-the-portal"></a>Een gegevensschijf ontkoppelen via de portal
 
 1. Selecteer in het linkermenu **virtual machines**.
-2. Selecteer de virtuele machine met de gegevens schijf die u wilt loskoppelen en klik op **stoppen** om de toewijzing van de VM ongedaan te maken.
-3. Selecteer **schijven**in het deel venster virtuele machine.
-4. Selecteer boven in het deel venster **schijven** de optie **bewerken**.
-5. Klik in het deel venster **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de ![knop knop afbeelding](./media/detach-disk/detach.png) loskoppelen.
-5. Nadat de schijf is verwijderd, klikt u boven aan het deel venster op opslaan.
-6. Klik in het deel venster virtuele machine op **overzicht** en klik vervolgens op de knop **Start** boven aan het deel venster om de VM opnieuw op te starten.
+1. Selecteer **schijven**op de Blade van de virtuele machine.
+1. Selecteer boven aan de Blade **schijven** de optie **bewerken**.
+1. Klik op de Blade **schijven** helemaal rechts van de gegevens schijf die u wilt loskoppelen op de ![ knop knop afbeelding loskoppelen ](./media/detach-disk/detach.png) .
+1. Nadat de schijf is verwijderd, klikt u boven aan de Blade op **Opslaan** .
 
 De schijf blijft in de opslag, maar is niet meer gekoppeld aan een virtuele machine.
 

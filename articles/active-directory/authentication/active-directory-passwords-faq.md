@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407161"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826465"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Veelgestelde vragen over wachtwoord beheer
 
 Hier volgen enkele veelgestelde vragen (FAQ) voor alle zaken met betrekking tot het opnieuw instellen van wacht woorden.
 
-Als u een algemene vraag hebt over Azure Active Directory (Azure AD) en self-service voor wachtwoord herstel (SSPR) die hier niet wordt beantwoord, kunt u de Community vragen om hulp in het [Azure AD-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Leden van de Community bevatten technici, product managers, Mvp's en andere IT-professionals.
+Als u een algemene vraag hebt over Azure Active Directory (Azure AD) en self-service voor het opnieuw instellen van wacht woorden (SSPR) die hier niet wordt beantwoord, kunt u de Community vragen om hulp op de [pagina micro soft Q&een vraag voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Leden van de Community bevatten technici, product managers, Mvp's en andere IT-professionals.
 
 Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
@@ -36,7 +36,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
 * **V: kunnen mijn gebruikers hun eigen wachtwoord herstel gegevens registreren?**
 
-  > **A:** Ja. Zolang het wacht woord opnieuw moet worden ingesteld en de licenties zijn ingeschakeld, kunnen gebruikers naar de registratie portal voor hethttps://aka.ms/ssprsetup) opnieuw instellen van het wacht woord gaan (om hun verificatie gegevens te registreren. Gebruikers kunnen zich ook registreren via het toegangs vensterhttps://myapps.microsoft.com)(. Als u zich wilt registreren via het toegangs venster, moeten ze hun profiel afbeelding selecteren, **profiel**selecteren en vervolgens de optie **registreren voor wacht woord opnieuw instellen** selecteren.
+  > **A:** Ja. Zolang het wacht woord opnieuw moet worden ingesteld en de licenties zijn ingeschakeld, kunnen gebruikers naar de registratie portal voor het opnieuw instellen van het wacht woord gaan ( https://aka.ms/ssprsetup) om hun verificatie gegevens te registreren. Gebruikers kunnen zich ook registreren via het toegangs venster ( https://myapps.microsoft.com) . Als u zich wilt registreren via het toegangs venster, moeten ze hun profiel afbeelding selecteren, **profiel**selecteren en vervolgens de optie **registreren voor wacht woord opnieuw instellen** selecteren.
   >
   >
 * **V: als ik het opnieuw instellen van het wacht woord inschakel voor een groep en vervolgens besluit dit voor iedereen in te scha kelen, moeten mijn gebruikers zich opnieuw registreren?**
@@ -101,7 +101,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   > Als u de melding in dit tijds bestek niet ontvangt:
   > * Controleer de map Ongewenste e-mail.
   > * Controleer of het nummer of het e-mail adres waarmee u bent gecontactt, het account is dat u verwacht.
-  > * Controleer of de verificatie gegevens in de Directory correct zijn ingedeeld, bijvoorbeeld + 1 4255551234 of *gebruiker\@contoso.com*. 
+  > * Controleer of de verificatie gegevens in de Directory correct zijn ingedeeld, bijvoorbeeld + 1 4255551234 of *gebruiker \@ contoso.com*. 
 * **V: welke talen worden ondersteund door het wacht woord opnieuw instellen?**
 
   > **A:** De gebruikers interface voor het opnieuw instellen van wacht woorden, SMS-berichten en telefoon gesprekken worden gelokaliseerd in dezelfde talen die worden ondersteund in Office 365.

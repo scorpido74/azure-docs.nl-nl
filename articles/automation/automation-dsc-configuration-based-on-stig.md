@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d1b05f9e77d3530f3e883aa3f9d98de09c8f54c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711377"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836988"
 ---
-# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Gegevens configureren op basis van STIG voor de configuratie van de Azure Automation status
+# <a name="configure-data-based-on-stig"></a>Gegevens configureren op basis van STIG
 
 > Van toepassing op: Windows Power shell 5,1
 
@@ -43,6 +43,6 @@ Als u PowerSTIG wilt uitproberen, gaat u naar de [PowerShell Gallery](https://ww
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
-- [DSC-resources](/powershell/scripting/dsc/resources/resources)
-- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview)(Engelstalig) voor meer informatie over Power shell DSC.
+- Meer informatie over Power shell DSC-resources in [DSC-resources](/powershell/scripting/dsc/resources/resources).
+- Zie [Configuring the local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)(Engelstalig) voor meer informatie over de configuratie van de lokale Configuration Manager.

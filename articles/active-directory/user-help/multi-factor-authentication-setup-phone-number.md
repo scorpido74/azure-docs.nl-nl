@@ -1,79 +1,79 @@
 ---
-title: Stel een mobiel apparaat in als uw twee ledige verificatie methode-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het instellen van een mobiel apparaat als uw verificatie methode met twee factoren.
+title: Een mobiel apparaat instellen als tweeledige verificatiemethode - Azure Active Directory | Microsoft Docs
+description: Meer informatie over het instellen van een mobiel apparaat als tweeledige verificatiemethode.
 services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: b0bfaa87c77ba9fff9f6605c1989e48ffbc3fb35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062503"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735987"
 ---
-# <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Een mobiel apparaat instellen als uw verificatie methode met twee factoren
+# <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Een mobiel apparaat instellen als tweeledige verificatiemethode
 
-U kunt uw mobiele apparaat instellen om te fungeren als uw verificatie methode met twee factoren. Uw mobiele telefoon kan een SMS-bericht ontvangen met een verificatie code of telefoon gesprek.
+U kunt uw mobiele apparaat instellen als tweeledige verificatiemethode. Uw mobiele telefoon kan een sms-bericht of een oproep met een verificatiecode ontvangen.
 
 >[!Note]
-> Als de optie telefoon voor verificatie grijs wordt weer gegeven, is het mogelijk dat uw organisatie geen telefoon nummer of SMS-bericht mag gebruiken voor verificatie. In dit geval moet u een andere methode selecteren of contact opnemen met de beheerder voor meer hulp.
+> Als de telefoonoptie voor verificatie grijs wordt weergegeven, is het mogelijk dat u van uw organisatie geen telefoonnummer of sms-berichten voor verificatie mag gebruiken. In dat geval moet u een andere methode selecteren of contact opnemen met de beheerder voor meer hulp.
 
-## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Stel uw mobiele apparaat in voor het gebruik van een SMS-bericht als verificatie methode
+## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Uw mobiele apparaat instellen om sms-berichten te gebruiken als verificatiemethode
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie telefoon nummer voor **authenticatie** in **stap 1: hoe moeten we contact met u opnemen?** Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens uw mobiele apparaat.
+1. Selecteer op de pagina **Aanvullende beveiligingsverificatie** de optie **Telefoon voor verificatie** in het gedeelte **Stap 1: Hoe moeten we contact met u opnemen**, selecteer in de vervolgkeuzelijst uw land of regio en typ vervolgens het nummer van uw mobiele telefoon.
 
-2. Selecteer **Ik wil een code per SMS-bericht** in het gedeelte **methode** verzenden en selecteer **volgende**.
+2. Selecteer **Code per sms-bericht verzenden** in het gedeelte **Methode** en selecteer vervolgens **Volgende**.
 
-    ![Aanvullende beveiligings verificatie pagina met verificatie telefoon en SMS-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![Pagina met aanvullende beveiligingsverificatie, met telefoon voor verificatie en sms-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Typ de verificatie code uit het SMS-bericht dat van micro soft wordt verzonden naar de **stap 2: we hebben een SMS-bericht naar uw telefoon gebied verzonden** en selecteer vervolgens **verifiëren**.
+3. Typ de verificatiecode uit het sms-bericht dat door Microsoft is verzonden in het gedeelte **Stap 2: Er is een sms-bericht naar uw telefoon verzonden** en selecteer vervolgens **Verifiëren**.
 
-    ![Aanvullende beveiligings verificatie pagina met verificatie telefoon en SMS-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
+    ![Pagina met aanvullende beveiligingsverificatie, met telefoon voor verificatie en sms-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. In **stap 3: het gebied bestaande toepassingen blijven gebruiken** , kopieert u het opgegeven app-wacht woord en plakt u het op een veilige plek.
+4. In het gedeelte **Stap 3: Bestaande toepassingen behouden**, kopieert u het opgegeven app-wachtwoord en plakt u het in een veilige plaats.
 
-    ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+    ![Het gedeelte App-wachtwoorden op de pagina Aanvullende beveiligingsverificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >Zie [app-wacht woorden beheren](multi-factor-authentication-end-user-app-passwords.md)voor meer informatie over het gebruik van het app-wacht woord met uw oudere apps. U hoeft alleen app-wacht woorden te gebruiken als u oudere apps gaat gebruiken die geen ondersteuning bieden voor twee ledige verificatie.
+    >Zie [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md) voor informatie over het gebruik van het app-wachtwoord voor oudere apps. U hoeft alleen app-wachtwoorden te gebruiken als u oudere apps blijft gebruiken die geen ondersteuning bieden voor tweeledige verificatie.
 
 5. Selecteer **Done**.
 
-## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Uw mobiele apparaat instellen om een telefoon gesprek te ontvangen
+## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Uw mobiele apparaat instellen om een oproep te ontvangen
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie telefoon nummer voor **authenticatie** in **stap 1: hoe moeten we contact met u opnemen?** Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens uw mobiele apparaat.
+1. Selecteer op de pagina **Aanvullende beveiligingsverificatie** de optie **Telefoon voor verificatie** in het gedeelte **Stap 1: Hoe moeten we contact met u opnemen**, selecteer in de vervolgkeuzelijst uw land of regio en typ vervolgens het nummer van uw mobiele telefoon.
 
-2. Selecteer **mij bellen** in het gedeelte **methode** en selecteer vervolgens **volgende**.
+2. Selecteer **Mij bellen** in het gedeelte **Methode** en selecteer vervolgens **Volgende**.
 
-    ![Aanvullende beveiligings verificatie pagina, met verificatie telefoon en telefoon gesprek](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
+    ![Pagina met aanvullende beveiligingsverificatie, met telefoon voor verificatie en oproep](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
 
-3. U ontvangt een telefonische oproep van micro soft. u wordt gevraagd op het hekje (#) op uw mobiele apparaat te drukken om uw identiteit te verifiëren.
+3. U ontvangt een oproep van Microsoft. U wordt gevraagd op het hekje (#) op uw mobiele apparaat te drukken om uw identiteit te verifiëren.
 
-    ![Het opgegeven telefoon nummer testen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
+    ![Het opgegeven telefoonnummer testen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. In **stap 3: het gebied bestaande toepassingen blijven gebruiken** , kopieert u het opgegeven app-wacht woord en plakt u het op een veilige plek.
+4. In het gedeelte **Stap 3: Bestaande toepassingen behouden**, kopieert u het opgegeven app-wachtwoord en plakt u het in een veilige plaats.
 
-    ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+    ![Het gedeelte App-wachtwoorden op de pagina Aanvullende beveiligingsverificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >Zie [app-wacht woorden beheren](multi-factor-authentication-end-user-app-passwords.md)voor meer informatie over het gebruik van het app-wacht woord met uw oudere apps. U hoeft alleen app-wacht woorden te gebruiken als u oudere apps gaat gebruiken die geen ondersteuning bieden voor twee ledige verificatie.
+    >Zie [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md) voor informatie over het gebruik van het app-wachtwoord voor oudere apps. U hoeft alleen app-wachtwoorden te gebruiken als u oudere apps blijft gebruiken die geen ondersteuning bieden voor tweeledige verificatie.
 
 5. Selecteer **Done**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de twee ledige verificatie methode hebt ingesteld, kunt u extra methoden toevoegen, uw instellingen en app-wacht woorden beheren, aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met twee ledige verificatie.
+Nadat u de tweeledige verificatiemethode hebt ingesteld, kunt u extra methoden toevoegen, uw instellingen en app-wachtwoorden beheren, u aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met tweeledige verificatie.
 
-- [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
+- [Instellingen voor tweeledige verificatiemethode beheren](multi-factor-authentication-end-user-manage-settings.md)
 
 - [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Aanmelden met twee ledige verificatie](multi-factor-authentication-end-user-signin.md)
+- [Aanmelden met behulp van tweeledige verificatie](multi-factor-authentication-end-user-signin.md)
 
-- [Hulp krijgen bij twee ledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)
+- [Hulp krijgen bij tweeledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)

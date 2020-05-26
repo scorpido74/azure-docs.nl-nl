@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657980"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800604"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
@@ -52,7 +52,7 @@ Bekijk de [overzichts video voor partners](https://partner.microsoft.com/asset/d
 
 ## <a name="submit-a-nomination"></a>Een nominatie indienen
 
-Partners die willen deel nemen aan het programma, moeten andere partners identificeren waarmee ze willen werken. Ze moeten het formulier voor de [benoeming van geïntegreerde oplossingen](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)invullen. Het team van Integrated Solutions Program controleert de benoeming en volgt binnen 10 werk dagen. Het team geeft goed keuring en de volgende stappen.
+Partners die willen deel nemen aan het programma, moeten andere partners identificeren waarmee ze willen werken. Ze moeten het formulier voor de [benoeming van geïntegreerde oplossingen](https://aka.ms/AA5qicu)invullen. Het team van Integrated Solutions Program controleert de benoeming en volgt binnen 10 werk dagen. Het team geeft goed keuring en de volgende stappen.
 
 ## <a name="develop-an-integrated-solution"></a>Een geïntegreerde oplossing ontwikkelen
 
@@ -84,8 +84,8 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
 
     Gebruik deze bronnen voor het ontwikkelings proces:
 
-    * [Discussie gids voor bedrijfs beslissingen workshop](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-business-workshop.pptx)
-    * [Discussie gids technisch besluit workshop](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-technical-workshop.pptx)
+    * [Discussie gids voor bedrijfs beslissingen workshop](https://aka.ms/AA5qicx)
+    * [Discussie gids technisch besluit workshop](https://aka.ms/AA5qid1)
     * [Quick Start-video: geïntegreerde oplossingen workshops](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
 
 1. Identificeer een project manager tussen partners voor het plannen van het project plan en de tijd lijn die u hebt ontwikkeld in de zakelijke en technische workshops.
@@ -98,8 +98,8 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
 
     * De naam van de gecombineerde oplossing.
     * Een beschrijving van de geïntegreerde oplossing. Volg de [Aanbevolen procedures voor aanbiedingen](./gtm-offer-listing-best-practices.md).
-    * Een breedte van één pagina naar klanten. Gebruik de [sjabloon met één pager](https://assetsprod.microsoft.com/mpn/integrated-solutions-customer-one-pager-template.pptx).
-    * Een presentatie van een klant. De [presentatie sjabloon](https://assetsprod.microsoft.com/mpn/customer-presentation-template.pptx)gebruiken.
+    * Een breedte van één pagina naar klanten. Gebruik de [sjabloon met één pager](https://aka.ms/AA5s08a).
+    * Een presentatie van een klant. De [presentatie sjabloon](https://aka.ms/AA5s7ql)gebruiken.
     * Een logo voor de gecombineerde oplossing.
 
 ## <a name="publish-your-integrated-solution"></a>Uw geïntegreerde oplossing publiceren

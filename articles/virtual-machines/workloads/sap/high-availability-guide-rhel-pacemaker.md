@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/17/2018
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: 21c551721815847eea4cb1435298ea6f7bf37966
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264477"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800738"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
 
@@ -206,7 +206,7 @@ Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Micros
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
-2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http:\//localhost) en klik op toevoegen.  
+2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http: \/ /localhost) en klik op toevoegen.  
    De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
@@ -273,6 +273,9 @@ Gebruik de volgende opdracht om het Fence-apparaat te configureren.
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
+
+> [!TIP]
+>De Azure Fence-agent vereist uitgaande connectiviteit met open bare eind punten zoals gedocumenteerd, samen met mogelijke oplossingen, in [open bare-eindpunt connectiviteit voor vm's met behulp van standaard ILB](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 ## <a name="next-steps"></a>Volgende stappen
 

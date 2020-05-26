@@ -1,6 +1,6 @@
 ---
-title: Je beveiligings gegevens instellen vanaf een aanmeldings prompt-Azure AD
-description: Hoe u uw beveiligings gegevens voor uw werk-of school account instelt, nadat u op de aanmeldings pagina van uw organisatie wordt gevraagd.
+title: Beveiligingsgegevens instellen vanaf een aanmeldingsprompt - Azure AD
+description: Informatie over het instellen van beveiligingsgegevens voor uw werk- of schoolaccount, als hierom wordt gevraagd op de aanmeldingspagina van uw organisatie.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,34 +8,34 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454410"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747272"
 ---
-# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Je beveiligings gegevens instellen via een aanmeldings prompt
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Beveiligingsgegevens instellen vanaf een aanmeldingsprompt
 
 U kunt deze stappen volgen als u wordt gevraagd uw beveiligingsgegevens in te stellen, onmiddellijk nadat u zich aanmeldt bij uw werk- of schoolaccount.
 
-Deze vraag wordt alleen weer gegeven als u de beveiligings gegevens die uw organisatie nodig hebt, niet hebt ingesteld. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
+U ziet deze prompt alleen als u niet de beveiligingsgegevens hebt ingesteld die zijn vereist door uw organisatie. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligings verificatie versus wachtwoord herstel verificatie
+## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligingsverificatie versus verificatie voor het opnieuw instellen van het wachtwoord
 
-Beveiligings informatie methoden worden gebruikt voor verificatie met twee factoren en voor het opnieuw instellen van wacht woorden. Niet elke methode kan echter voor beide worden gebruikt.
+Methoden voor beveiligingsgegevens worden zowel gebruikt voor tweeledige beveiligingsverificatie als voor het opnieuw instellen van het wachtwoord. Niet elke methode kan echter voor beide worden gebruikt.
 
 | Methode | Gebruikt voor |
 | ------ | -------- |
 | Authenticator-app | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | Sms-berichten | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | Telefoonoproep | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
-| Beveiligings sleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Beveiligingssleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | E-mailaccount | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 | Beveiligingsvragen | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 
@@ -70,7 +70,7 @@ Volg deze stappen voor het instellen van uw beveiligingsgegevens voor uw werk- o
 4. Open de Microsoft Authenticator-app, selecteer dat u meldingen toestaat (als u hierom wordt gevraagd), selecteer **Account toevoegen** uit het pictogram **Aanpassen en controle** in de rechterbovenhoek en selecteer vervolgens **Werk- of schoolaccount**.
 
     >[!Note]
-    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of dat de app afbeeldingen en record video (Android) mag maken. U moet **toestaan** inschakelen zodat de verificator-app toegang heeft tot uw camera om een foto van de QR-code in de volgende stap te maken. Als u de camera niet toestaat, kunt u nog steeds de verificator-app instellen, maar u moet de code gegevens hand matig toevoegen. Zie [hand matig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md)voor meer informatie over het hand matig toevoegen van de code.
+    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
 5. Ga terug naar de pagina **Uw account instellen** op uw computer en selecteer vervolgens **Volgende**.
 
@@ -80,7 +80,7 @@ Volg deze stappen voor het instellen van uw beveiligingsgegevens voor uw werk- o
 
 6. Scan de weergegeven code met de QR-codelezer van de Microsoft Authenticator-app die op uw mobiele apparaat wordt weergegeven nadat u uw werk of school-account hebt gemaakt in stap 5.
 
-    De verificator-app moet nu uw werk of schoolaccount toevoegen zonder aanvullende informatie van u. Als de QR-code lezer de code echter niet kan lezen, kunt u de **QR-afbeelding niet scannen** en de code en URL hand matig invoeren in de app Microsoft Authenticator. Zie voor meer informatie over het handmatig toevoegen van een code [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md).
+    De verificator-app moet nu uw werk of schoolaccount toevoegen zonder aanvullende informatie van u. Als de QR-codelezer de code echter niet kan lezen, kunt u **Kan de QR-afbeelding niet scannen** selecteren en de code en URL handmatig invoeren in de Microsoft Authenticator-app. Zie voor meer informatie over het handmatig toevoegen van een code [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md).
 
 7. Selecteer **Volgende** op de pagina **QR-code scannen** op uw computer.
 
@@ -115,52 +115,52 @@ Volg deze stappen voor het instellen van uw beveiligingsgegevens voor uw werk- o
     ![Pagina Wizard is voltooid](media/security-info/securityinfo-prompt-setup-success.png)
 
     >[!Note]
-    >Als uw organisatie vereist dat u app-wacht woorden gebruikt, ziet u mogelijk een extra sectie in deze wizard, waar u deze kunt instellen. Als er een derde sectie met de naam **app-wacht woorden**wordt weer geven, moet u deze invullen voordat u de wizard kunt volt ooien. Zie de sectie [uw app-wacht woorden beheren](#manage-your-app-passwords) in dit artikel voor instructies over het toevoegen van een app-wacht woord.
+    >Als uw organisatie vereist dat u app-wachtwoorden gebruikt, ziet u mogelijk een extra sectie in deze wizard waar u deze kunt instellen. Als er een derde sectie met de naam **App-wachtwoorden**wordt weergegeven, moet u deze invullen voordat u de wizard kunt voltooien. Voor stappen over het toevoegen van een app-wachtwoord raadpleegt u de sectie [Uw app-wachtwoorden beheren](#manage-your-app-passwords) in dit artikel.
 
-### <a name="manage-your-app-passwords"></a>Uw app-wacht woorden beheren
+### <a name="manage-your-app-passwords"></a>Uw app-wachtwoorden beheren
 
-Bepaalde apps, zoals Outlook 2010, bieden geen ondersteuning voor verificatie in twee stappen. Dit gebrek aan ondersteuning betekent dat als u verificatie in twee stappen in uw organisatie gebruikt, de app niet werkt. Om dit probleem op te lossen, kunt u een automatisch gegenereerd wacht woord maken voor gebruik met elke niet-browser-app, gescheiden van uw normale wacht woord.
+Bepaalde apps, zoals Outlook 2010, bieden geen ondersteuning voor verificatie in twee stappen. Dit gebrek aan ondersteuning betekent dat als u in uw organisatie verificatie in twee stappen gebruikt, de app niet werkt. Om dit probleem op te lossen, kunt u een automatisch gegenereerd wachtwoord maken voor gebruik met elke niet-browser-app, gescheiden van uw normale wachtwoord.
 
 >[!Note]
->Als deze optie niet wordt weer geven in de wizard, betekent dit dat uw beheerder deze niet heeft ingesteld. Als dit niet is ingesteld, maar u weet dat u app-wacht woorden moet gebruiken, kunt u de stappen in de [pagina app-wacht woorden instellen van de beveiligings informatie](security-info-app-passwords.md)volgen.
+>Als deze optie niet wordt weergegeven in de wizard, betekent dit dat uw beheerder deze niet heeft ingesteld. Als dit niet is ingesteld, maar u weet dat u app-wachtwoorden moet gebruiken, kunt u de stappen op de pagina [App-wachtwoorden instellen op de pagina Beveiligingsgegevens](security-info-app-passwords.md) volgen.
 
-Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onthouden:
+Wanneer u app-wachtwoorden gebruikt, is het belangrijk om het volgende te onthouden:
 
-- App-wacht woorden worden automatisch gegenereerd en eenmaal per app ingevoerd.
+- App-wachtwoorden worden automatisch gegenereerd en eenmaal per app ingevoerd.
 
-- Er is een limiet van 40 wacht woorden per gebruiker. Als u later een van deze limieten probeert te maken, wordt u gevraagd een bestaand wacht woord te verwijderen voordat u de nieuwe kunt maken.
+- Er is een limiet van 40 wachtwoorden per gebruiker. Als u meer wachtwoorden wilt maken dan dat, wordt u gevraagd een bestaand wachtwoord te verwijderen voordat u het nieuwe wachtwoord kunt maken.
 
-- Gebruik één app-wacht woord per apparaat, niet per app. U kunt bijvoorbeeld één wacht woord maken voor alle apps op uw laptop en vervolgens een ander wacht woord voor alle apps op uw bureau blad.
+- Gebruik één app-wachtwoord per apparaat, niet per app. Maak bijvoorbeeld één wachtwoord voor alle apps op uw laptop, en één ander wachtwoord voor alle apps op uw bureaubladcomputer.
 
-#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>App-wacht woorden toevoegen in de wizard Aanmelden
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>App-wachtwoorden toevoegen in de wizard Aanmelden
 
-1. Nadat u de vorige secties van de wizard hebt voltooid, selecteert u **volgende** en voltooit u de sectie **app-wacht woord** .
+1. Nadat u de vorige secties van de wizard hebt voltooid, selecteert u **Volgende** en voltooit u de sectie **App-wachtwoord**.
 
-2. Typ bijvoorbeeld `Outlook 2010`de naam van de app waarvoor het wacht woord nodig is, en selecteer vervolgens **volgende**.
+2. Typ de naam van de app waarvoor het wachtwoord is vereist, bijvoorbeeld `Outlook 2010`, en selecteer **Volgende**.
 
-    ![De naam van het app-wacht woord toevoegen in de wizard](media/security-info/app-password-app-password.png)
+    ![De naam van het app-wachtwoord toevoegen in de wizard](media/security-info/app-password-app-password.png)
 
-3. Kopieer de wachtwoord code uit het scherm voor het **app-wacht woord** en plak deze in het **wachtwoord** gebied van de app (in dit voor beeld Outlook 2010).
+3. Kopieer de wachtwoordcode uit het scherm **App-wachtwoord** en plak deze in het gebied **Wachtwoord** van de app (in dit voorbeeld Outlook 2010).
 
-    ![De pagina app-wacht woord, met een wacht woord voor kopiëren](media/security-info/app-password-copy-password.png)
+    ![De pagina App-wachtwoord, met een wachtwoord om te kopiëren](media/security-info/app-password-copy-password.png)
 
-4. Nadat u het wacht woord hebt gekopieerd en in de app hebt geplakt, keert u terug naar deze wizard om ervoor te zorgen dat alle gegevens van uw aanmeldings methode nauw keurig zijn en selecteert u **gereed**.
+4. Nadat u het wachtwoord hebt gekopieerd en in de app hebt geplakt, keert u terug naar deze wizard om ervoor te zorgen dat alle gegevens van uw aanmeldingsmethode juist zijn en selecteert u **Gereed**.
 
-    ![Pagina app-wacht woord met voltooiings kennisgeving](media/security-info/app-password-complete.png)
+    ![App-wachtwoordpagina met voltooiingskennisgeving](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Als u standaard-info beveiligingsmethoden wilt wijzigen, wissen of bijwerken, zie:
 
-    - [Beveiligings gegevens instellen voor een verificator-app](security-info-setup-auth-app.md).
+    - [Beveiligingsgegevens instellen voor een Authenticator-app](security-info-setup-auth-app.md).
 
-    - [Beveiligings gegevens instellen voor tekst berichten](security-info-setup-text-msg.md).
+    - [Beveiligingsgegevens instellen voor sms-berichten](security-info-setup-text-msg.md).
 
-    - [Stel beveiligings gegevens in om telefoon gesprekken te gebruiken](security-info-setup-phone-number.md).
+    - [Beveiligingsgegevens instellen om telefonische boodschappen te gebruiken](security-info-setup-phone-number.md).
 
-    - [Beveiligings gegevens instellen om e-mail te gebruiken](security-info-setup-email.md).
+    - [Beveiligingsgegevens instellen om e-mail te gebruiken](security-info-setup-email.md).
 
-    - [Beveiligings informatie instellen om vooraf gedefinieerde beveiligings vragen te gebruiken](security-info-setup-questions.md).
+    - [Beveiligingsgegevens instellen om vooraf gedefinieerde beveiligingsvragen te gebruiken](security-info-setup-questions.md).
 
 - Zie voor meer informatie over hoe u zich aanmelden met de opgegeven methode [Hoe u zich aanmeldt](user-help-sign-in.md).
 

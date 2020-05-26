@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: aa27ba30c7a403cf70396e219b0619e2e84b0d4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747737"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800036"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -28,8 +28,6 @@ Azure Monitor zorgt ervoor dat alle gegevens in rust worden versleuteld met door
 Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   werkt.
 
 Met CMK kunt u de toegang tot uw gegevens beheren en deze op elk gewenst moment intrekken. Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
-
-De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
 De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw white list voor uw abonnement op te halen voordat u begint met het configureren van CMK.
 
@@ -272,7 +270,7 @@ Als u de *cluster* bron met de details van de Key Vault *sleutel-id* wilt bijwer
 
 Werk de *cluster* bron-KeyVaultProperties bij met sleutel-id-Details.
 
-**Bijwerken**
+**Bijwerk**
 
 Deze aanvraag van een resource manager is een asynchrone bewerking bij het bijwerken van sleutel-id-Details, terwijl deze synchroon is tijdens het bijwerken van de capaciteits waarde.
 

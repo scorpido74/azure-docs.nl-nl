@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261162"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827292"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.
@@ -48,7 +48,7 @@ Onderaan staan knoppen voor het handelen op een geselecteerde synchronisatie reg
 De meest voorkomende wijzigingen zijn de kenmerk stromen. De gegevens in de bron directory zijn mogelijk niet hetzelfde als in azure AD. In het voor beeld in deze sectie moet u ervoor zorgen dat de opgegeven naam van een gebruiker *altijd in orde*is.
 
 ### <a name="disable-the-scheduler"></a>De scheduler uitschakelen
-De [scheduler](how-to-connect-sync-feature-scheduler.md) wordt standaard elke 30 minuten uitgevoerd. Zorg ervoor dat deze niet wordt gestart tijdens het maken van wijzigingen en het oplossen van problemen met uw nieuwe regels. Als u de scheduler tijdelijk wilt uitschakelen, start u `Set-ADSyncScheduler -SyncCycleEnabled $false`Power shell en voert u uit.
+De [scheduler](how-to-connect-sync-feature-scheduler.md) wordt standaard elke 30 minuten uitgevoerd. Zorg ervoor dat deze niet wordt gestart tijdens het maken van wijzigingen en het oplossen van problemen met uw nieuwe regels. Als u de scheduler tijdelijk wilt uitschakelen, start u Power shell en voert u uit `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![De scheduler uitschakelen](./media/how-to-connect-sync-change-the-configuration/schedulerdisable.png)  
 
@@ -107,7 +107,7 @@ Open de **synchronisatie service** vanuit het menu **Start** . De stappen in dez
 ![Metaverse zoeken](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>De Scheduler inschakelen
-Als alles zoals verwacht, kunt u de Scheduler opnieuw inschakelen. Voer `Set-ADSyncScheduler -SyncCycleEnabled $true`uit in Power shell.
+Als alles zoals verwacht, kunt u de Scheduler opnieuw inschakelen. Voer uit in Power shell `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="other-common-attribute-flow-changes"></a>Andere veelvoorkomende kenmerk stroom wijzigingen
 In de vorige sectie is beschreven hoe u wijzigingen aanbrengt in een kenmerk stroom. In deze sectie worden enkele aanvullende voor beelden gegeven. De stappen voor het maken van de synchronisatie regel worden afgekort, maar u kunt de volledige stappen in de vorige sectie vinden.
@@ -200,7 +200,7 @@ Het kenmerk User type is standaard niet ingeschakeld voor synchronisatie omdat e
 
 - Azure AD accepteert alleen twee waarden voor het kenmerk User type: **lid** en **gast**.
 - Als het kenmerk User type niet is ingeschakeld voor synchronisatie in Azure AD Connect, zou de Azure AD-gebruikers die zijn gemaakt via Directory-synchronisatie, het kenmerk User type hebben ingesteld op **lid**.
-- Azure AD staat niet toe dat het kenmerk User type van bestaande Azure AD-gebruikers door Azure AD Connect wordt gewijzigd. Het kan alleen worden ingesteld tijdens het maken van de Azure AD-gebruikers en [gewijzigd via Power shell](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
+- Vóór versie 1.5.30.0 heeft Azure AD het kenmerk User type op bestaande Azure AD-gebruikers niet toegestaan door Azure AD Connect. In oudere versies kan deze alleen worden ingesteld tijdens het maken van de Azure AD-gebruikers en [gewijzigd via Power shell](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Voordat u synchronisatie van het kenmerk User type inschakelt, moet u eerst bepalen hoe het kenmerk wordt afgeleid van on-premises Active Directory. Hier volgen de meest voorkomende benaderingen:
 
@@ -208,9 +208,9 @@ Voordat u synchronisatie van het kenmerk User type inschakelt, moet u eerst bepa
 
     Als u deze aanpak kiest, moet u ervoor zorgen dat het aangewezen kenmerk is gevuld met de juiste waarde voor alle bestaande gebruikers objecten in on-premises Active Directory die zijn gesynchroniseerd met Azure AD voordat u synchronisatie van het kenmerk User type inschakelt.
 
-- U kunt ook de waarde voor het kenmerk User type afleiden uit andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als **gast** als hun on-premises AD userPrincipalName-kenmerk eindigt met het domein onderdeel <em>@partners.fabrikam123.org</em>. 
+- U kunt ook de waarde voor het kenmerk User type afleiden uit andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als **gast** als hun on-premises AD userPrincipalName-kenmerk eindigt met het domein onderdeel <em>@partners.fabrikam123.org</em> . 
 
-    Zoals eerder vermeld, staat Azure AD Connect niet toe dat het kenmerk User type van bestaande Azure AD-gebruikers door Azure AD Connect wordt gewijzigd. Daarom moet u ervoor zorgen dat de logica die u hebt besloten, consistent is met de manier waarop het kenmerk User type al is geconfigureerd voor alle bestaande Azure AD-gebruikers in uw Tenant.
+    Zoals eerder vermeld, staat oudere versies van Azure AD Connect niet toe dat het kenmerk User type van bestaande Azure AD-gebruikers door Azure AD Connect wordt gewijzigd. Daarom moet u ervoor zorgen dat de logica die u hebt besloten, consistent is met de manier waarop het kenmerk User type al is geconfigureerd voor alle bestaande Azure AD-gebruikers in uw Tenant.
 
 De stappen voor het inschakelen van de synchronisatie van het kenmerk User type kunnen als volgt worden samenvatten:
 
@@ -229,8 +229,8 @@ De stappen voor het inschakelen van de synchronisatie van het kenmerk User type 
 Om te voor komen dat u onbedoelde wijzigingen naar Azure AD exporteert, moet u ervoor zorgen dat er geen synchronisatie plaatsvindt terwijl u de synchronisatie regels bijwerkt. De ingebouwde synchronisatie planner uitschakelen:
 
  1. Start een Power shell-sessie op de Azure AD Connect-server.
- 2. Schakel de geplande synchronisatie uit door de `Set-ADSyncScheduler -SyncCycleEnabled $false`cmdlet uit te voeren.
- 3. Open de Synchronization Service Manager door de**synchronisatie service**te **starten** > .
+ 2. Schakel de geplande synchronisatie uit door de cmdlet uit te voeren `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+ 3. Open de Synchronization Service Manager door de **Start**  >  **synchronisatie service**te starten.
  4. Ga naar het tabblad **bewerkingen** en controleer of er geen bewerking is met de status wordt *uitgevoerd*.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Stap 2: het bron kenmerk toevoegen aan het on-premises AD-connector schema
@@ -257,7 +257,7 @@ Het kenmerk User type wordt standaard niet geïmporteerd in de Azure AD Connect 
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Stap 4: een regel voor binnenkomende synchronisatie maken om de kenmerk waarde van on-premises Active Directory uit te stromen
 De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waarde van het bron kenmerk van on-premises Active Directory naar de omgekeerde tekst kan stromen:
 
-1. Open de editor voor synchronisatie regels door te gaan naar de**Editor voor synchronisatie regels** **starten** > .
+1. Open de editor voor synchronisatie regels door te **Start**gaan naar de  >  **Editor voor synchronisatie regels**starten.
 2. Stel de **richting** van het zoek filter in op **binnenkomend**.
 3. Klik op de knop **nieuwe regel toevoegen** om een nieuwe regel voor binnenkomende verbindingen te maken.
 4. Geef onder het tabblad **Beschrijving** de volgende configuratie op:
@@ -286,11 +286,11 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
     | --- | --- | --- | --- | --- |
     | Direct | UserType | extensionAttribute1 | Niet ingeschakeld | Bijwerken |
 
-    In een ander voor beeld wilt u de waarde voor het kenmerk User type afleiden van andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als gast als hun on-premises AD userPrincipalName-kenmerk eindigt met het domein onderdeel <em>@partners.fabrikam123.org</em>. U kunt als volgt een expressie implementeren:
+    In een ander voor beeld wilt u de waarde voor het kenmerk User type afleiden van andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als gast als hun on-premises AD userPrincipalName-kenmerk eindigt met het domein onderdeel <em>@partners.fabrikam123.org</em> . U kunt als volgt een expressie implementeren:
 
     | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Expressie | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (/gebruiker) (LCase ([userPrincipalName]),@partners.fabrikam123.org"") = 0), "lid", "gast"), fout ("userPrincipalName is niet aanwezig om User type te bepalen")) | Niet ingeschakeld | Bijwerken |
+    | Expressie | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (/gebruiker) (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "lid", "gast"), fout ("userPrincipalName is niet aanwezig om User type te bepalen")) | Niet ingeschakeld | Bijwerken |
 
 7. Klik op **toevoegen** om de regel voor binnenkomend verkeer te maken.
 
@@ -389,7 +389,7 @@ U kunt de volgende stappen gebruiken om de wijzigingen te controleren terwijl u 
 De ingebouwde synchronisatie planner opnieuw inschakelen:
 
 1. Start een Power shell-sessie.
-2. Schakel geplande synchronisatie opnieuw in door de cmdlet `Set-ADSyncScheduler -SyncCycleEnabled $true`uit te voeren.
+2. Schakel geplande synchronisatie opnieuw in door de cmdlet uit te voeren `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 ## <a name="next-steps"></a>Volgende stappen

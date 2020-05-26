@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1c41437773cf45e51e90dc55ad37e198c77f4373
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744152"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830579"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Bijgewerkte bestanden bijhouden met een Watcher-taak
 
@@ -36,7 +36,7 @@ In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te co
 
 Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien:
 
-* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](automation-offering-get-started.md) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
 * Een [hybride runbook worker](automation-hybrid-runbook-worker.md) waarbij de Watcher-taak wordt uitgevoerd.
 * Power shell-runbooks. Power shell workflow-runbooks worden niet ondersteund door Watcher-taken.
@@ -170,4 +170,3 @@ Volg deze koppeling voor meer informatie over het ontwerpen van uw eigen runbook
 
 > [!div class="nextstepaction"]
 > [Een PowerShell-runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)
-

@@ -1623,20 +1623,6 @@
                     - name: Overzicht van verificatie met Azure AD-tokens
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: Een Azure AD-token ophalen met behulp van de Azure AD Authentication Library
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: Een Azure AD-token ophalen met behulp van een service-principal
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: Problemen oplossen met Azure AD-toegangstokens
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory-tokens
-                  items:
-                    - name: Overzicht van verificatie met Azure AD-tokens
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: Een Aazure AD-token ophalen met behulp van de AAD Authentication Library
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
@@ -1996,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: Een vraag stellen - MSDN-forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: Een vraag stellen - Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: Een vraag stellen - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: Beschikbaarheid in regio’s

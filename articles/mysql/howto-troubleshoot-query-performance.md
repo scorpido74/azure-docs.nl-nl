@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067829"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836121"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MySQL kunt bepalen
 **Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
@@ -167,4 +167,4 @@ Door gebruik te maken van uitleg en verschillende typen indexen kunnen de presta
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

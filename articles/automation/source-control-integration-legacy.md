@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fac6a3b55f4a9150e827682cb3a134c203231978
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744950"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828930"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Broncode beheer integratie gebruiken in Azure Automation-verouderd
 
@@ -38,7 +38,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
 2. De pagina broncode beheer wordt geopend, waar u uw GitHub-account gegevens kunt configureren. Hieronder volgt de lijst met te configureren parameters:  
 
-   | **Parameter** | **Beschrijving** |
+   | **Bepaalde** | **Beschrijving** |
    |:--- |:--- |
    | Bron kiezen |Selecteer de bron. Momenteel wordt alleen **github** ondersteund. |
    | Autorisatie |Klik op de knop **autoriseren** om Azure Automation toegang te verlenen tot uw github-opslag plaats. Als u al bent aangemeld bij uw GitHub-account in een ander venster, worden de referenties van dat account gebruikt. Zodra de autorisatie is geslaagd, wordt op de pagina uw GitHub-gebruikers naam weer gegeven onder **autorisatie-eigenschap**. |
@@ -60,7 +60,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
    * De variabele **micro soft. Azure. Automation. SourceControl. Connection** bevat de waarden van de Connection String, zoals hieronder wordt weer gegeven.  
 
-     | **Parameter** | **Waarde** |
+     | **Bepaalde** | **Waarde** |
      |:--- |:--- |
      | `Name`  |Micro soft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Tekenreeks |
@@ -68,7 +68,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
    * De variabele **micro soft. Azure. Automation. SourceControl. OAuthToken**, bevat de beveiligde versleutelde waarde van uw OAuthToken.  
 
-     |**Parameter**            |**Waarde** |
+     |**Bepaalde**            |**Waarde** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |
@@ -132,5 +132,5 @@ Als u de verbinding met uw GitHub-account wilt verbreken, opent u de pagina bibl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Automation: broncode beheer integratie in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Automation: Runbook-broncode beheer integreren met behulp van Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* Zie [Azure Automation: broncode beheer integratie in azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)voor informatie over het integreren van broncode beheer in azure Automation.  
+* Zie [Azure Automation: runbook-bron beheer integreren met Visual Studio online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)voor informatie over het integreren van runbook-bron beheer met Visual Studio online.  

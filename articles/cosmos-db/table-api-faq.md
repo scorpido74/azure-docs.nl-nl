@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: ce3313f2e96dacff95ed1587e2e979c4628ec022
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674329"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836223"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Table-API in Azure Cosmos DB
 
@@ -293,7 +293,7 @@ Azure Cosmos DB is een SLA-systeem dat latentie, door Voer, Beschik baarheid en 
 U kunt uw feedback op de volgende manieren delen:
 
 * [Mening van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN-forum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 ## <a name="next-steps"></a>Volgende stappen

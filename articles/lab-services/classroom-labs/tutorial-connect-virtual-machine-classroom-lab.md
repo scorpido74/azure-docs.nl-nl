@@ -12,60 +12,64 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d2d40c007a06bad09748b14394da46c50c80dc19
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77134042"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589445"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Zelfstudie: toegang tot een leslokaallab in Azure Lab Services
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Zelfstudie: Toegang tot een leslokaallab in Azure Lab Services
 In deze zelfstudie maakt u als student verbinding met een virtuele machine (VM) in een leslokaallab. 
 
 In deze zelfstudie voert u de volgende acties uit:
 
 > [!div class="checklist"]
-> * Registreren bij het lab
+> * Registreren voor het lab
 > * De virtuele machine starten
 > * Verbinding maken met de virtuele machine
 
-## <a name="register-to-the-lab"></a>Registreren bij het lab
+## <a name="register-to-the-lab"></a>Registreren voor het lab
 
-1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. Gebruik in plaats daarvan de URL [https://labs.azure.com](https://labs.azure.com):. Internet Explorer 11 wordt nog niet ondersteund. 
+1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. In plaats daarvan gebruikt u deze URL: [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
+
+    ![Registreren voor het lab](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Meld u aan bij de service met uw schoolaccount om de registratie te voltooien. 
 
     > [!NOTE]
-    > Een Microsoft-account is vereist voor het gebruik van Azure Lab Services. Als u uw niet-Microsoft-account zoals Yahoo of Google-accounts wilt gebruiken om u aan te melden bij de portal, volgt u de instructies voor het maken van een Microsoft-account dat wordt gekoppeld aan uw niet-Microsoft-account. Volg vervolgens de stappen om het registratie proces te volt ooien. 
+    > Een Microsoft-account is vereist voor het gebruik van Azure Lab Services. Als u uw niet-Microsoft-account zoals Yahoo of Google-accounts wilt gebruiken om u aan te melden bij de portal, volgt u de instructies voor het maken van een Microsoft-account dat wordt gekoppeld aan uw niet-Microsoft-account. Volg vervolgens de stappen om het registratieproces te voltooien. 
 1. Controleer nadat u zich hebt geregistreerd of u de virtuele machines ziet voor het lab waartoe u toegang hebt. 
-1. Wacht tot de virtuele machine klaar is. Let op de volgende velden op de VM-tegel:
-    1. Boven aan de tegel ziet u de **naam van het lab**.
-    1. Aan de rechter kant ziet u het pictogram voor het **besturings systeem (OS)** van de virtuele machine. In dit voor beeld is het Windows-besturings systeem. 
-    1. De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aantal aan u toegewezen [quota-uren](how-to-configure-student-usage.md#set-quotas-for-users) . Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. 
-    1. U ziet pictogrammen/knoppen onder aan de tegel om de virtuele machine te starten/stoppen en verbinding te maken met de virtuele machine. 
-    1. Rechts van de knoppen ziet u de status van de virtuele machine. Controleer of de status van de virtuele machine is **gestopt**. 
+
+    ![Toegankelijke VM's](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
+1. Wacht totdat de virtuele machine gereed is. Let op de volgende velden op de VM-tegel:
+    1. Boven aan de tegel ziet u de **naam van de testomgeving**.
+    1. Aan de rechterkant ziet u het pictogram dat het **besturingssysteem (OS)** van de virtuele machine aangeeft. In dit voorbeeld is dit het Windows-besturingssysteem. 
+    1. De voortgangsbalk op de tegel toont het aantal uren dat is gebruikt voor het aantal [quotumuren](how-to-configure-student-usage.md#set-quotas-for-users) die aan u zijn toegewezen. Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. 
+    1. U ziet pictogrammen/knoppen onderaan de tegel om de virtuele machine te starten/stoppen en verbinding te maken met de virtuele machine. 
+    1. Rechts van de knoppen ziet u de status van de virtuele machine. Controleer of de status van de virtuele machine **gestopt** is. 
 
         ![VM is gestopt](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
 ## <a name="start-the-vm"></a>De virtuele machine starten
-1. **Start** de virtuele machine door de eerste knop te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Dit proces duurt enige tijd.  
+1. **Start** de VM door de eerste knop te selecteren, zoals in de volgende afbeelding. Dit proces duurt enige tijd.  
 
     ![De virtuele machine starten](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. Controleer of de status van de virtuele machine is ingesteld op **actief**. 
+4. Controleer of de status van de virtuele machine **Uitvoeren** is. 
 
-    ![VM in uitvoerings status](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
+    ![VM wordt uitgevoerd](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-    U ziet dat het pictogram van de eerste knop is gewijzigd om een **Stop** bewerking weer te geven. U kunt deze knop selecteren om de virtuele machine te stoppen. 
+    U ziet dat het pictogram van de eerste knop is gewijzigd om een **stop**-bewerking aan te geven. U kunt deze knop selecteren om de virtuele machine te stoppen. 
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-1. Selecteer de tweede knop zoals weer gegeven in de volgende afbeelding om **verbinding te maken** met de VM van het lab. 
+1. Selecteer de tweede knop zoals in de volgende afbeelding wordt weergegeven om **verbinding** te maken met de VM van het lab. 
 
     ![Verbinding maken met de virtuele machine](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Voer een van de volgende stappen uit: 
-    1. Sla het **RDP** -bestand op de harde schijf op voor virtuele **Windows** -machines. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikers naam** en het **wacht woord** die u van uw docent/docent krijgt om u aan te melden bij de computer. 
-    3. Voor virtuele **Linux** -machines kunt u **SSH** of **RDP** gebruiken (als deze is ingeschakeld) om er verbinding mee te maken. Zie [verbinding met extern bureau blad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md)voor meer informatie. 
+    1. Voor een virtuele **Windows**-machine, moet u het **RDP-bestand** opslaan op de harde schijf. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikersnaam** en het **wachtwoord** dat u van uw docent hebt gekregen om u aan te melden bij de computer. 
+    3. Voor virtuele machines van **Linux** kunt u **SSH** of **RDP** (als deze is ingeschakeld) gebruiken om verbinding mee te maken. Zie voor meer informatie [verbinding met extern bureaublad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u een leslokaallab geopend met behulp van de registratiekoppeling die u van uw docent krijgt.

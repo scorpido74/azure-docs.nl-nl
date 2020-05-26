@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: Een classificatiemodel van een TensorFlow-installatiekopie trainen en implementeren
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Een werkruimte maken met een Resource Manager-sjabloon
+      href: tutorial-resource-manager-workspace.md
 - name: Voorbeelden
   items:
     - name: Jupyter Notebooks

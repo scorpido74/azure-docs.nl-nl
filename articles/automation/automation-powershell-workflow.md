@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6156b28a3baa51e84e2c46b74e63a6c8e81491cc
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715474"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836682"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Power shell-werk stroom voor Azure Automation leren
 
@@ -296,4 +296,4 @@ Zie [controle punten toevoegen aan een script werk stroom](https://technet.micro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Mijn eerste Power shell workflow-runbook](automation-first-runbook-textual.md)
+* Zie [zelf studie: een Power shell workflow-Runbook maken](learn/automation-tutorial-runbook-textual.md)voor meer informatie over Power shell workflow-runbooks.

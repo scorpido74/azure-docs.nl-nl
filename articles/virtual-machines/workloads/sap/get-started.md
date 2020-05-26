@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5991c6e073001e565a965a8db3cf32ca76d843f4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b95112146c0003f3fc5ea563e5561dc26ea064e8
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684414"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800733"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -111,6 +111,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 05/21/2020: wijziging in het [instellen van pacemaker op sles in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) en het [instellen van pacemaker op RHEL in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) om een koppeling toe te voegen aan [open bare-eindpunt connectiviteit voor Vm's met behulp van Azure Standard ILB in SAP ha-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 - 05/19/2020: belang rijk bericht toevoegen dat geen hoofd volume groep mag gebruiken bij gebruik van LVM voor HANA-gerelateerde volumes in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 05/19/2020: toevoegen van een nieuw ondersteund besturings systeem voor HANA grote instantie type II in [compatibele besturings systemen voor HANA grote instanties] (https://docs.microsoft.com/
 - Azure/virtual-machines/workloads/SAP/OS-Compatibility-Matrix-Hana-large-instance)

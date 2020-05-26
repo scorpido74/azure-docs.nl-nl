@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: Home Realm Discovery
               href: configure-authentication-for-federated-users-portal.md
+        - name: Eenmalige aanmelding op basis van SAML automatiseren met MS Graph API's
+          href: application-saml-sso-configure-api.md
         - name: Apps migreren naar Azure AD
           items:
             - name: Migratieresources

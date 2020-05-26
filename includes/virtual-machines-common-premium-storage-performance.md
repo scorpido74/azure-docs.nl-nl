@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204606"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821508"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -140,7 +140,7 @@ Een i/o-aanvraag is een eenheid voor invoer/uitvoer die door uw toepassing wordt
 I/o-grootte is een van de belang rijke factoren. De i/o-grootte is de grootte van de invoer-en uitvoer bewerkings aanvraag die wordt gegenereerd door uw toepassing. De i/o-grootte heeft een grote invloed op de prestaties, met name op de IOPS en band breedte die de toepassing kan krijgen. In de volgende formule ziet u de relatie tussen IOPS, i/o-grootte en band breedte/door voer.  
     ![](media/premium-storage-performance/image1.png)
 
-Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [\_DB-blok\_grootte](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
+Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [DB- \_ blok \_ grootte](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
 
 Als u een toepassing gebruikt die u niet toestaat de i/o-grootte te wijzigen, gebruikt u de richt lijnen in dit artikel om de prestatie-KPI te optimaliseren die het meest relevant is voor uw toepassing. Bijvoorbeeld:
 
@@ -189,15 +189,15 @@ Stel dat een toepassings vereiste een maximum van 4.000 IOPS is. U kunt dit doen
 *Kosten van bewerking*  
 In veel gevallen is het mogelijk dat uw totale kosten voor bewerking met behulp van Premium Storage lager zijn dan het gebruik van standaard opslag.
 
-Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Als u deze prestaties wilt verzorgen, hebt u\_een Standard D14 Azure IaaS VM nodig, die een maximale IOPS van 16.000 kan bieden met behulp van 32 Standard Storage 1 TB-schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
+Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Als u deze prestaties wilt verzorgen, hebt u een Standard \_ D14 Azure IaaS VM nodig, die een maximale IOPS van 16.000 kan bieden met behulp van 32 Standard Storage 1 TB-schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
 
-Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard\_DS13-VM kan voldoen aan de 16.000-IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
+Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard \_ DS13-VM kan voldoen aan de 16.000-IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
 | &nbsp; | **Standaard** | **Premium** |
 | --- | --- | --- |
-| **Kosten van VM per maand** |$1.570,58 (standaard\_D14) |$1.003,66 (standaard\_DS13) |
+| **Kosten van VM per maand** |$1.570,58 (standaard \_ D14) |$1.003,66 (standaard \_ DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
 | **Totale kosten per maand** |$3.208,98 |$1.544,34 |
 
@@ -237,7 +237,7 @@ High Scale-Vm's die gebruikmaken van Azure Premium Storage, hebben een cache tec
 > [!WARNING]
 > Schijf cache gebruik wordt niet ondersteund voor schijven van 4 TiB en groter. Als er meerdere schijven aan uw virtuele machine zijn gekoppeld, ondersteunt elke schijf die kleiner is dan 4 TiB de cache.
 >
-> Wanneer u de cache-instelling van een Azure-schijf wijzigt, wordt de doel schijf losgekoppeld en opnieuw gekoppeld. Als de schijf van het besturings systeem is, wordt de VM opnieuw opgestart. Stop alle toepassingen en services die kunnen worden beïnvloed door deze onderbreking voordat u de schijfcache-instelling wijzigt.
+> Wanneer u de cache-instelling van een Azure-schijf wijzigt, wordt de doel schijf losgekoppeld en opnieuw gekoppeld. Als de schijf van het besturings systeem is, wordt de VM opnieuw opgestart. Stop alle toepassingen en services die kunnen worden beïnvloed door deze onderbreking voordat u de schijfcache-instelling wijzigt. Het volgen van deze aanbevelingen kan leiden tot gegevens beschadiging.
 
 Raadpleeg het blog bericht over [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) voor meer informatie over de werking van BlobCache.
 
@@ -280,9 +280,9 @@ Als voor beeld kunt u deze richt lijnen Toep assen op SQL Server die worden uitg
 
 Voor alle Premium-Ssd's of Ultra disks met cache is ingesteld op **ReadOnly** of **geen**, moet u ' obstakels ' uitschakelen wanneer u het bestands systeem koppelt. U hebt geen obstakels nodig in dit scenario omdat de schrijf bewerkingen naar Premium Storage-schijven duurzaam zijn voor deze cache-instellingen. Wanneer de schrijf aanvraag is voltooid, zijn de gegevens naar het permanente archief geschreven. Gebruik een van de volgende methoden om belemmeringen uit te scha kelen. Kies de naam van het bestands systeem:
   
-* Voor **reiserFS**kunt u de `barrier=none` optie koppelen gebruiken om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier=flush`, gebruikt u.)
-* Gebruik de optie voor het `barrier=0` koppelen van **ext3/ext4**om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier=1`, gebruikt u.)
-* Voor **xfs**kunt u de `nobarrier` optie koppelen gebruiken om belemmeringen uit te scha kelen. (Als u belemmeringen wilt inschakelen `barrier`, gebruikt u.)
+* Voor **reiserFS**kunt u de optie koppelen gebruiken om belemmeringen uit te scha kelen `barrier=none` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier=flush` .)
+* Gebruik de optie voor het koppelen van **ext3/ext4**om belemmeringen uit te scha kelen `barrier=0` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier=1` .)
+* Voor **xfs**kunt u de optie koppelen gebruiken om belemmeringen uit te scha kelen `nobarrier` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier` .)
 * Voor Premium Storage-schijven waarbij cache is ingesteld op **readwrite**, schakelt u belemmeringen voor schrijf duurzaamheid in.
 * Als u wilt dat volume namen behouden blijven nadat u de virtuele machine opnieuw hebt opgestart, moet u bestand/etc/fstab bijwerken met de UUID-verwijzingen (Universally Unique Identifier) naar de schijven. Zie [een beheerde schijf toevoegen aan een virtuele Linux-machine](../articles/virtual-machines/linux/add-disk.md)voor meer informatie.
 
@@ -384,3 +384,4 @@ Voor een striped volume moet u een hoge wachtrij diepte hebben, zodat elke schij
 Azure Premium Storage voorziet in een opgegeven aantal IOPS en door Voer, afhankelijk van de grootte van de virtuele machine en de schijf groottes die u kiest. Telkens wanneer uw toepassing probeert te gaan van IOPS of door Voer boven deze limieten van wat de virtuele machine of schijf kan verwerken, Premium Storage deze beperking. Dit manifesteert in de vorm van verminderde prestaties in uw toepassing. Dit kan betekenen hogere latentie, lagere door Voer of lagere IOPS. Als Premium Storage niet wordt beperkt, kan uw toepassing volledig mislukken door te overschrijden wat de bronnen kunnen bereiken. Om prestatie problemen te voor komen vanwege beperking, moet u altijd voldoende resources inrichten voor uw toepassing. Houd rekening met wat we hebben besproken in de secties VM-grootten en schijf grootten hierboven. Benchmarking is de beste manier om erachter te komen welke resources u nodig hebt om uw toepassing te hosten.
 
 ## <a name="next-steps"></a>Volgende stappen
+

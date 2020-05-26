@@ -5,14 +5,14 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec954c2da317e2e4b332b959b9627cf96792da84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714182"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837056"
 ---
-# <a name="set-up-continuous-deployment-with-chocolatey"></a>Continue implementatie met chocolade instellen
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Doorlopende implementatie instellen met Chocolatey
 
 In een DevOps-wereld zijn er veel hulpprogram ma's om te helpen bij verschillende punten in de pipeline voor continue integratie. Azure Automation [status configuratie](automation-dsc-overview.md) is een nieuwe aanvulling op de opties die DevOps teams kunnen gebruiken. 
 
@@ -209,10 +209,9 @@ Vanaf dat moment is het tot de virtuele machines die afhankelijk zijn van die co
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Automation State Configuration](automation-dsc-overview.md)(Engelstalig) voor een overzicht.
-- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
-- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [Azure Automation status configuratie Overview](automation-dsc-overview.md)(Engelstalig) voor een overzicht.
+- Zie aan de slag [met Azure Automation status configuratie](automation-dsc-getting-started.md)om aan de slag te gaan met het gebruik van de functie.
+- Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )(Engelstalig) voor een Power shell-cmdlet-verwijzing.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie raadpleegt u [continue implementatie met behulp van Azure Automation-status configuratie en Choco lade](automation-dsc-cd-chocolatey.md).

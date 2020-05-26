@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188757"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798118"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -41,7 +41,7 @@ Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid te
 
 Een Integration Runtime met meer kernen verhoogt het aantal knoop punten in de Spark-reken omgevingen en biedt meer verwerkings kracht voor het lezen, schrijven en transformeren van uw gegevens. ADF-gegevens stromen gebruiken Spark voor de compute-engine. De Spark-omgeving werkt goed op resources die zijn geoptimaliseerd voor geheugen.
 * Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat de verwerkings snelheid hoger is dan uw invoer snelheid.
-* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden.
+* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden. Als er geheugen fouten optreden tijdens het uitvoeren van uw gegevens stromen, schakelt u over naar een geoptimaliseerd voor geheugen Azure IR-configuratie.
 
 ![Nieuwe IR](media/data-flow/ir-new.png "Nieuwe IR")
 
@@ -140,6 +140,10 @@ Als u bijvoorbeeld een lijst met gegevens bestanden van juli 2019 hebt die u wil
 ```DateFiles/*_201907*.txt```
 
 Als u Joker tekens gebruikt, bevat uw pijp lijn slechts één gegevens stroom activiteit. Dit zal beter zijn dan een zoek actie voor de BLOB-Store die vervolgens doorloopt over alle overeenkomende bestanden met behulp van een ForEach met de activiteit gegevens stroom uitvoeren in.
+
+Met de pijp lijn voor elk in parallelle modus worden meerdere clusters gemaakt door taak clusters in te stellen voor elke uitgevoerde activiteit van de gegevens stroom. Dit kan leiden tot een beperkt aantal gelijktijdige uitvoeringen van Azure-service. Het gebruik van de stroom voor het uitvoeren van gegevens binnen een voor elk met een sequentiële set in de pijp lijn zorgt er echter voor dat beperking en bron uitputting wordt voor komen. Dit zorgt ervoor dat Data Factory elke bestanden op volg orde van een gegevens stroom worden uitgevoerd.
+
+U kunt het beste de TTL-instelling gebruiken in de Azure Integration Runtime als u voor elk gebruikt met een gegevens stroom. Dit komt doordat elk bestand een volledige periode van vijf minuten voor het opstarten van het cluster in de iterator zal oplopen.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimaliseren voor CosmosDB
 

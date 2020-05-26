@@ -1,15 +1,14 @@
 ---
-title: 'Zelf studie: de Azure Batch-client bibliotheek gebruiken voor node. js'
+title: Zelfstudie - De Azure Batch-clientbibliotheek voor Node.js gebruiken
 description: Leer de basisconcepten van Azure Batch en bouw een eenvoudige oplossing met behulp van Node.js.
-ms.assetid: ''
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/22/2017
-ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116856"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780181"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Aan de slag met de Batch-SDK voor Node.js
 
@@ -45,7 +44,7 @@ De Node.js-client implementeert een Batch-taak met een voorbereidingstaak (dit w
 
 U gaat nu het stapsgewijze proces volgen om de Node.js-client te bouwen:
 
-### <a name="step-1-install-azure-batch-sdk"></a>Stap 1: de Azure Batch-SDK installeren
+### <a name="step-1-install-azure-batch-sdk"></a>Stap 1: De Azure Batch-SDK installeren
 
 U kunt de Azure Batch-SDK voor Node.js installeren met de installatieopdracht npm.
 
@@ -58,9 +57,9 @@ Met deze opdracht wordt de meest recente versie van de Azure Batch Node-SDK geï
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>Stap 2: een Azure Batch-account maken
+### <a name="step-2-create-an-azure-batch-account"></a>Stap 2: Een Azure Batch-account maken
 
-U kunt deze maken via de [Azure Portal](batch-account-create-portal.md) of vanaf de opdracht regel ([Power shell](batch-powershell-cmdlets-get-started.md) /[Azure cli](/cli/azure)).
+U kunt het maken via [Azure Portal](batch-account-create-portal.md) of vanaf de opdrachtregel ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure-CLI](/cli/azure)).
 
 Nu volgende opdrachten om er een te maken via Azure CLI.
 
@@ -78,7 +77,7 @@ Elk Batch-account heeft bijbehorende toegangssleutels. Deze sleutels zijn nodig 
 
 Kopieer en bewaar de benodigde sleutel voor gebruik in de volgende stappen.
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>Stap 3: een Azure Batch-serviceclient maken
+### <a name="step-3-create-an-azure-batch-service-client"></a>Stap 3: Een Azure Batch-serviceclient maken
 Met de volgende codefragmenten wordt als eerste de Azure Batch Node.js-module geïmporteerd en daarna wordt een Batch-serviceclient gemaakt. U moet eerst een SharedKeyCredentials-object maken met de Batch-accountsleutel die u in de vorige stap hebt gekopieerd.
 
 ```nodejs
@@ -112,7 +111,7 @@ Zie de schermafbeelding:
 
 
 
-### <a name="step-4-create-an-azure-batch-pool"></a>Stap 4: een Azure Batch-pool maken
+### <a name="step-4-create-an-azure-batch-pool"></a>Stap 4: Een Azure Batch-pool maken
 Een Azure Batch-pool bestaat uit meerdere virtuele machines (ook wel Batch-knooppunten genoemd). De Azure Batch-service implementeert de taken op deze knooppunten en beheert ze. U kunt de volgende configuratieparameters definiëren voor uw pool.
 
 * Type VM-installatiekopie
@@ -247,7 +246,7 @@ Hieronder staat een voorbeeldresultaatobject dat is geretourneerd door de functi
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>Stap 4: een Azure Batch-taak verzenden
+### <a name="step-4-submit-an-azure-batch-job"></a>Stap 4: Een Azure Batch-taak verzenden
 Een Azure Batch-taak is een logische groep vergelijkbare taken. In dit scenario is dit 'CSV omzetten in JSON'. Bij elke taak worden er hier CSV-bestanden omgezet die aanwezig zijn in Azure Storage-containers.
 
 Deze taken worden gelijktijdig uitgevoerd en op verschillende knooppunten geïmplementeerd, of ingedeeld door de Azure Batch-service.
@@ -272,14 +271,14 @@ U kunt het script uploaden naar een Azure Storage-account en een SAS-URI generer
 
 Er wordt tijdens het verzenden van een Azure Batch-taak een voorbereidingstaak opgegeven. Hieronder volgen de configuratieparameters voor de voorbereidingstaak:
 
-* **ID**: de unieke id van de voorbereidingstaak
-* **commandLine**: de opdrachtregel voor het uitvoeren van het uitvoerbare taakbestand
-* **resourceFiles**: matrix met objecten die informatie bieden over welke bestanden moeten worden gedownload om deze taak te kunnen uitvoeren.  Hieronder vindt u de bijbehorende opties
-    - blobSource: de SAS-URI van het bestand
-    - filePath: het lokale pad voor het downloaden en opslaan van het bestand
+* **Id**: De unieke id van de voorbereidingstaak
+* **commandLine**: De opdrachtregel voor het uitvoeren van het uitvoerbare bestand voor de taak
+* **resourceFiles**: Matrix met objecten die informatie bieden over welke bestanden moeten worden gedownload om deze taak te kunnen uitvoeren.  Hieronder vindt u de bijbehorende opties
+    - blobSource: De SAS-URI van het bestand
+    - filePath: Het lokale pad voor het downloaden en opslaan van het bestand
     - fileMode: fileMode is alleen van toepassing op Linux-knooppunten en heeft een octale indeling met de standaardwaarde 0770
-* **waitForSuccess**: als deze optie is ingesteld op true, wordt de taak niet uitgevoerd wanneer er fouten optreden bij het uitvoeren van in de voorbereidingstaak
-* **runElevated**: deze optie wordt ingesteld op true als er verhoogde bevoegdheden nodig zijn om de taak te kunnen uitvoeren.
+* **waitForSuccess**: Als deze optie is ingesteld op True, wordt de taak niet uitgevoerd voor mislukte voorbereidingstaken
+* **runElevated**: U moet deze optie instellen op True als er verhoogde bevoegdheden nodig zijn om de taak uit te voeren.
 
 Met het volgende codefragment wordt het configuratievoorbeeld weergegeven van het script van de voorbereidingstaak:
 
@@ -310,8 +309,8 @@ Nu de taak voor het verwerken van CSV-bestanden is gemaakt, maakt u taken voor d
 
 In het [Python-script](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) ziet u dat er twee parameters worden geaccepteerd:
 
-* container name: de opslagcontainer waaruit de bestanden worden gedownload
-* pattern: een optionele parameter voor een bestandsnaampatroon
+* containernaam: De opslagcontainer waaruit de bestanden worden gedownload
+* patroon: Een optionele parameter voor een bestandsnaampatroon
 
 Als u vier containers hebt (con1, con2, con3 en con4) staat in de volgende code dat er taken worden verzonden naar de Azure Batch-taak voor het verwerken van CSV-bestanden die eerder is gemaakt.
 
@@ -346,6 +345,6 @@ De portal biedt een gedetailleerd overzicht van de taken en de taakstatus. U kun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees het artikel [Overzicht van Azure Batch-functies](batch-api-basics.md). Dit is raadzaam als u niet vertrouwd bent met de service.
+- Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
 - Zie de [naslaginformatie voor Batch Node.js](/javascript/api/overview/azure/batch) voor informatie over de Batch-API.
 

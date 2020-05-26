@@ -18,7 +18,7 @@
       href: internet-analyzer-custom-endpoint.md
     - name: Uw scorecard interpreteren
       href: internet-analyzer-scorecard.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen over Internet Analyzer
       href: internet-analyzer-faq.md
@@ -30,8 +30,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Preview van SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

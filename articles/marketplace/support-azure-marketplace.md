@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 624bce67e01a0d7dbee382ed77a833705ecd5c89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871549"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800371"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
 
@@ -20,13 +20,13 @@ Hebt u vragen over hoe u aan de slag kunt met micro soft Commercial Marketplace 
 
 ## <a name="onboarding"></a>Onboarding
 
-Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https://partner.microsoft.com/support/v2/?stage=1) voor problemen met onboarding en aan de slag.
+Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https://aka.ms/marketplacepublishersupport) voor problemen met onboarding en aan de slag.
 
-## <a name="partner-center"></a>Partner centrum   
+## <a name="partner-center"></a>Partner centrum
 
 | Ondersteuningskanaal | Beschrijving | Beschikbaarheid |  
 |:--- |:--- |:--- |  
-| Ga voor meer informatie naar de pagina een incident maken op [Marketplace-ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)</li> </ul> | Ondersteuning voor partner centrum. | Ondersteuning is 24x5. |  
+| Ga voor meer informatie naar de pagina een incident maken op [Marketplace-ondersteuning](https://aka.ms/marketplacepublishersupport)</li> </ul> | Ondersteuning voor partner centrum. | Ondersteuning is 24x5. |  
 
 ## <a name="technical"></a>Technisch  
 

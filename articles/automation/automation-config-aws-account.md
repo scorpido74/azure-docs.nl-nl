@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c724b1782381c0499991124c359d3e1339109d3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715797"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837180"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Runbooks verifiëren met Amazon Web Services
 
@@ -39,4 +39,4 @@ Nadat u uw AWS-beveiligings sleutels hebt gemaakt en gekopieerd, moet u een refe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Implementatie van een virtuele machine in Amazon Web Services automatiseren](automation-scenario-aws-deployment.md)
+* Zie [een Amazon Web Services VM implementeren met een runbook](automation-scenario-aws-deployment.md)voor meer informatie over het maken van runbooks om taken te AUTOMATISEREN in AWS.

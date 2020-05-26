@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 56059304026b060e2215ce73e0e94e3200573a14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670981"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797699"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Gebruikers, sessies en gebeurtenissen analyse in Application Insights
 
@@ -62,5 +62,5 @@ De sectie **aan uw gebruikers voldoen** bevat informatie over vijf voorbeeld geb
     - [Trechters](usage-funnels.md)
     - [Bewaartermijn](usage-retention.md)
     - [Gebruikersstromen](usage-flows.md)
-    - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)

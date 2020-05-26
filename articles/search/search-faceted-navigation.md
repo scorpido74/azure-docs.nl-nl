@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283158"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836087"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -27,7 +27,7 @@ De implementatie van de facet navigatie wijkt af van de verschillende Zoek techn
 
 -   In de query's die uw toepassing bouwt, moet een query *facet query parameters* verzenden om de beschik bare facet filter waarden voor die document resultaten te verkrijgen.
 
--   Als u de resultatenset van het document daad werkelijk wilt bijsnijden, `$filter` moet de toepassing ook een expressie Toep assen.
+-   Als u de resultatenset van het document daad werkelijk wilt bijsnijden, moet de toepassing ook een expressie Toep assen `$filter` .
 
 Bij het ontwikkelen van uw toepassing is het schrijven van code voor het maken van query's het meren deel van het werk. Veel van de toepassings gedragingen die u verwacht van facet navigatie, worden geleverd door de service, inclusief ingebouwde ondersteuning voor het definiëren van bereiken en het ophalen van aantallen voor facet resultaten. De service omvat ook redelijke standaard instellingen waarmee u onhandige navigatie structuren kunt voor komen. 
 
@@ -47,7 +47,7 @@ De zoek ervaring voor facet navigatie is iteratief, dus laten we het eerst weten
 
 Het begin punt is een toepassings pagina die facet navigatie biedt, die meestal in de omtrek wordt geplaatst. Facet navigatie is vaak een boom structuur, met selectie vakjes voor elke waarde of klik bare tekst. 
 
-1. Met een query die wordt verzonden naar Azure Cognitive Search wordt de facet navigatie structuur opgegeven via een of meer facet query parameters. Zo kan de query bijvoorbeeld bevatten `facet=Rating`, mogelijk met een `:values` of `:sort` -optie om de presentatie verder te verfijnen.
+1. Met een query die wordt verzonden naar Azure Cognitive Search wordt de facet navigatie structuur opgegeven via een of meer facet query parameters. Zo kan de query bijvoorbeeld bevatten `facet=Rating` , mogelijk met een `:values` of- `:sort` optie om de presentatie verder te verfijnen.
 2. De presentatielaag geeft een zoek pagina weer met facet navigatie, met behulp van de facetten die zijn opgegeven in de aanvraag.
 3. Gezien een facet navigatie structuur die classificatie bevat, klikt u op 4 om aan te geven dat alleen producten met een classificatie van 4 of hoger moeten worden weer gegeven. 
 4. Als antwoord wordt met de toepassing een query verzonden met daarin`$filter=Rating ge 4` 
@@ -55,11 +55,11 @@ Het begin punt is een toepassings pagina die facet navigatie biedt, die meestal 
 
 Een facet is een query parameter, maar verwar het niet met query-invoer. Het wordt nooit gebruikt als selectie criterium in een query. U kunt in plaats daarvan facet query parameters beschouwen als invoer voor de navigatie structuur die in het antwoord wordt weer gegeven. Voor elke facet query parameter die u opgeeft, wordt door Azure Cognitive Search geëvalueerd hoeveel documenten de gedeeltelijke resultaten voor elke facet waarde hebben.
 
-Let op `$filter` de in stap 4. Het filter is een belang rijk aspect van facet navigatie. Hoewel facetten en filters onafhankelijk zijn in de API, hebt u beide nodig om de ervaring te leveren die u wilt bieden. 
+Let `$filter` op de in stap 4. Het filter is een belang rijk aspect van facet navigatie. Hoewel facetten en filters onafhankelijk zijn in de API, hebt u beide nodig om de ervaring te leveren die u wilt bieden. 
 
 ### <a name="app-design-pattern"></a>App-ontwerp patroon
 
-In toepassings code moet het patroon de facet query parameters gebruiken om de facet navigatie structuur te retour neren samen met facet resultaten, plus een $filter expressie.  Met de filter expressie wordt de gebeurtenis Click voor de facet waarde verwerkt. U kunt de `$filter` expressie beschouwen als de code achter de werkelijke bijsnijden van de zoek resultaten die worden geretourneerd naar de presentatielaag. Op basis van een kleuren facet wordt het klikken op de kleur rood `$filter` uitgevoerd via een expressie waarmee alleen de items worden geselecteerd die de kleur rood hebben. 
+In toepassings code moet het patroon de facet query parameters gebruiken om de facet navigatie structuur te retour neren samen met facet resultaten, plus een $filter expressie.  Met de filter expressie wordt de gebeurtenis Click voor de facet waarde verwerkt. `$filter`U kunt de expressie beschouwen als de code achter de werkelijke bijsnijden van de zoek resultaten die worden geretourneerd naar de presentatielaag. Op basis van een kleuren facet wordt het klikken op de kleur rood uitgevoerd via een `$filter` expressie waarmee alleen de items worden geselecteerd die de kleur rood hebben. 
 
 ### <a name="query-basics"></a>Basis informatie over query's
 
@@ -68,7 +68,7 @@ In azure Cognitive Search wordt een aanvraag opgegeven via een of meer query par
 Nauw keurigheid, gezien als de mogelijkheid om irrelevante treffers te filteren, wordt bereikt door middel van een of beide van de volgende expressies:
 
 -   **Search =**  
-    De waarde van deze para meter vormt de zoek expressie. Het kan een enkel tekst fragment zijn of een complexe Zoek expressie die meerdere voor waarden en Opera tors bevat. Op de-server wordt een zoek expressie gebruikt voor Zoek opdrachten in volledige tekst, query's uitvoeren op Doorzoek bare velden in de index voor overeenkomende termen, waarbij resultaten worden geretourneerd in rang orde. Als u instelt `search` op NULL, wordt de uitvoering van de query ten opzichte van `search=*`de volledige index (dat wil zeggen). In dit geval zijn andere elementen van de query, zoals `$filter` een of Score profiel, de primaire factoren die van invloed zijn op welke documenten `($filter`worden geretourneerd) en in welke`scoringProfile` Volg `$orderby`orde (of).
+    De waarde van deze para meter vormt de zoek expressie. Het kan een enkel tekst fragment zijn of een complexe Zoek expressie die meerdere voor waarden en Opera tors bevat. Op de-server wordt een zoek expressie gebruikt voor Zoek opdrachten in volledige tekst, query's uitvoeren op Doorzoek bare velden in de index voor overeenkomende termen, waarbij resultaten worden geretourneerd in rang orde. Als u instelt `search` op NULL, wordt de uitvoering van de query ten opzichte van de volledige index (dat wil zeggen `search=*` ). In dit geval zijn andere elementen van de query, zoals een `$filter` of Score profiel, de primaire factoren die van invloed zijn op welke documenten worden geretourneerd `($filter` ) en in welke volg orde ( `scoringProfile` of `$orderby` ).
 
 -   **$filter =**  
     Een filter is een krachtig mechanisme voor het beperken van de grootte van de zoek resultaten op basis van de waarden van specifieke document kenmerken. A `$filter` wordt eerst geëvalueerd, gevolgd door de facet logica waarmee de beschik bare waarden en de bijbehorende aantallen voor elke waarde worden gegenereerd
@@ -91,11 +91,11 @@ In toepassingen die facet navigatie bevatten, moet u ervoor zorgen dat elke gebr
 ## <a name="build-a-faceted-navigation-app"></a>Een facet navigatie-app bouwen
 U implementeert facet navigatie met Azure Cognitive Search in de code van uw toepassing die de zoek aanvraag bouwt. De facet navigatie is afhankelijk van elementen in het schema dat u eerder hebt gedefinieerd.
 
-Vooraf gedefinieerd in uw zoek index is `Facetable [true|false]` het index kenmerk, ingesteld op geselecteerde velden om het gebruik in een facet navigatie structuur in of uit te scha kelen. Zonder `"Facetable" = true`een veld kan niet worden gebruikt in facet navigatie.
+Vooraf gedefinieerd in uw zoek index is het `Facetable [true|false]` index kenmerk, ingesteld op geselecteerde velden om het gebruik in een facet navigatie structuur in of uit te scha kelen. Zonder `"Facetable" = true` een veld kan niet worden gebruikt in facet navigatie.
 
 De presentatielaag in uw code biedt de gebruikers ervaring. Het moet een lijst zijn met de onderdelen van de facet navigatie, zoals de labels, waarden, selectie vakjes en de telling. De Azure Cognitive Search REST API is platform neutraal. gebruik dus elke taal en elk platform dat u wilt. Het is belang rijk dat u UI-elementen opneemt die incrementeel vernieuwen ondersteunen, met de bijgewerkte status van de gebruikers interface, terwijl elk extra facet wordt geselecteerd. 
 
-Tijdens het uitvoeren van de query wordt met de code van de `facet=[string]`toepassing een aanvraag gemaakt die een aanvraag parameter bevat waarmee het veld kan worden gefacett door. Een query kan meerdere facetten hebben, zoals elk `&facet=color&facet=category&facet=rating`, gescheiden door een en-teken (&).
+Tijdens het uitvoeren van de query wordt met de code van de toepassing een aanvraag gemaakt die een `facet=[string]` aanvraag parameter bevat waarmee het veld kan worden gefacett door. Een query kan meerdere facetten hebben, zoals `&facet=color&facet=category&facet=rating` elk, gescheiden door een en-teken (&).
 
 Toepassings code moet ook een `$filter` expressie maken voor het afhandelen van de klik gebeurtenissen in facet navigatie. Een `$filter` vermindert de zoek resultaten met behulp van de facet waarde als filter criterium.
 
@@ -106,8 +106,8 @@ In de volgende secties ziet u hoe u elk onderdeel kunt bouwen.
 <a name="buildindex"></a>
 
 ## <a name="build-the-index"></a>De index maken
-Facetatie is ingeschakeld voor een veld per veld in de index via dit index kenmerk: `"Facetable": true`.  
-Alle veld typen die mogelijk in facet navigatie kunnen worden gebruikt, `Facetable` zijn standaard. Dergelijke veld typen bevatten `Edm.String`, `Edm.DateTimeOffset`, en alle numerieke veld typen (in feite zijn alle veld typen kunnen alleen `Edm.GeographyPoint`worden gebruikt in facet navigatie). 
+Facetatie is ingeschakeld voor een veld per veld in de index via dit index kenmerk: `"Facetable": true` .  
+Alle veld typen die mogelijk in facet navigatie kunnen worden gebruikt, zijn `Facetable` standaard. Dergelijke veld typen bevatten `Edm.String` , `Edm.DateTimeOffset` , en alle numerieke veld typen (in feite zijn alle veld typen kunnen alleen `Edm.GeographyPoint` worden gebruikt in facet navigatie). 
 
 Bij het bouwen van een index is een best practice voor facet navigatie het expliciet uitschakelen van facetten uitschakelen voor velden die nooit als een facet moeten worden gebruikt.  In het bijzonder moeten teken reeks velden voor Singleton waarden, zoals een ID of product naam, worden ingesteld op `"Facetable": false` om te voor komen dat ze per ongeluk (en oneffectief) gebruikmaken van facet navigatie. Als u de facet ring uitschakelt en u deze niet nodig hebt, blijft de grootte van de index klein en worden de prestaties meestal verbeterd.
 
@@ -139,7 +139,7 @@ Hieronder volgt een deel van het schema voor de voorbeeld toepassing van de job 
 }
 ```
 
-Zoals u kunt zien in het voorbeeld schema, `Facetable` is uitgeschakeld voor teken reeks velden die niet als facetten mogen worden gebruikt, zoals id-waarden. Als u de facet ring uitschakelt en u deze niet nodig hebt, blijft de grootte van de index klein en worden de prestaties meestal verbeterd.
+Zoals u kunt zien in het voorbeeld schema, `Facetable` is uitgeschakeld voor teken reeks velden die niet als facetten mogen worden gebruikt, zoals ID-waarden. Als u de facet ring uitschakelt en u deze niet nodig hebt, blijft de grootte van de index klein en worden de prestaties meestal verbeterd.
 
 > [!TIP]
 > Neem als best practice de volledige set index kenmerken voor elk veld op. Hoewel `Facetable` de standaard instelling is ingeschakeld voor bijna alle velden, kunt u elk kenmerk zo instellen dat u rekening moet houden met de implicaties van elk schema besluit. 
@@ -169,7 +169,7 @@ In termen van facet navigatie wordt in uw web-of toepassings pagina de facet nav
 
 Voor webtoepassingen wordt AJAX doorgaans gebruikt in de presentatielaag, omdat u hiermee incrementele wijzigingen kunt vernieuwen. U kunt ook ASP.NET MVC of een ander visualisatie platform gebruiken dat verbinding kan maken met een Azure Cognitive Search-service via HTTP. De voorbeeld toepassing waarnaar wordt verwezen in dit artikel--de demo van de **Azure Cognitive Search-taak Portal** – gebeurt als een ASP.NET MVC-toepassing.
 
-In het voor beeld is facet navigatie ingebouwd in de pagina met zoek resultaten. In het volgende voor beeld, dat `index.cshtml` afkomstig is uit het bestand van de voorbeeld toepassing, wordt de statische HTML-structuur weer gegeven voor het weer geven van facet navigatie op de pagina met zoek resultaten. De lijst met facetten wordt dynamisch gebouwd of opnieuw opgebouwd wanneer u een zoek term verzendt, of u kunt een facet selecteren of wissen.
+In het voor beeld is facet navigatie ingebouwd in de pagina met zoek resultaten. In het volgende voor beeld, dat afkomstig is uit het `index.cshtml` bestand van de voorbeeld toepassing, wordt de statische HTML-structuur weer gegeven voor het weer geven van facet navigatie op de pagina met zoek resultaten. De lijst met facetten wordt dynamisch gebouwd of opnieuw opgebouwd wanneer u een zoek term verzendt, of u kunt een facet selecteren of wissen.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -219,7 +219,7 @@ Met de code die u voor het maken van query's schrijft, moeten alle delen van een
 
 U ziet dat facetten integraal zijn in deze voorbeeld toepassing. De zoek ervaring in de job Portal-demo is ontworpen rond de facet navigatie en filters. De prominente plaatsing van facet navigatie op de pagina laat zien hoe belang rijk is. 
 
-Een voor beeld is vaak een goede plaats om te beginnen. In het volgende voor beeld, dat `JobsSearch.cs` uit het bestand is gehaald, wordt een aanvraag gebouwd waarmee facet navigatie wordt gemaakt op basis van de zakelijke titel, locatie, boekings type en mini maal salaris. 
+Een voor beeld is vaak een goede plaats om te beginnen. In het volgende voor beeld, dat uit het bestand is gehaald `JobsSearch.cs` , wordt een aanvraag gebouwd waarmee facet navigatie wordt gemaakt op basis van de zakelijke titel, locatie, boekings type en mini maal salaris. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -230,9 +230,9 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst `count:<integer>`met, `sort:<>`, `interval:<integer>`, en `values:<list>`worden uitgebreid met para meters. Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
+Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst met `count:<integer>` , `sort:<>` , `interval:<integer>` , en worden uitgebreid met para meters `values:<list>` . Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
 
-Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?*. Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?*. Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat `$filter=Color eq 'Red'`de volgende query die door de toepassing wordt verzonden.
+Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?*. Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?*. Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat de volgende query die door de toepassing wordt verzonden `$filter=Color eq 'Red'` .
 
 Het volgende code fragment van de `JobsSearch.cs` pagina voegt de geselecteerde zakelijke titel toe aan het filter als u een waarde selecteert in het facet van de zakelijke titel.
 
@@ -248,7 +248,7 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Indexerings tips
 **De efficiëntie van de index verbeteren als u geen zoekvak gebruikt**
 
-Als uw toepassing uitsluitend gebruikmaakt van facet navigatie (dat wil zeggen, geen zoekvak), kunt u het veld markeren `searchable=false`als `facetable=true` , om een compactere index te maken. Bovendien vindt het indexeren alleen plaats op de gehele facet waarden, zonder het woord-of index nummer van de onderdeel onderdelen van een waarde met meerdere woorden.
+Als uw toepassing uitsluitend gebruikmaakt van facet navigatie (dat wil zeggen, geen zoekvak), kunt u het veld markeren als `searchable=false` , `facetable=true` om een compactere index te maken. Bovendien vindt het indexeren alleen plaats op de gehele facet waarden, zonder het woord-of index nummer van de onderdeel onderdelen van een waarde met meerdere woorden.
 
 **Opgeven welke velden kunnen worden gebruikt als facetten**
 
@@ -256,16 +256,16 @@ U kunt het schema van de index gebruiken om te bepalen welke velden beschikbaar 
 
 De waarden onder elk label worden opgehaald uit de index. Als het facet veld bijvoorbeeld *kleur*is, zijn de waarden die beschikbaar zijn voor aanvullende filters de waarden voor dat veld-rood, zwart, enzovoort.
 
-Alleen voor numerieke en datum/tijd-waarden kunt u expliciet waarden instellen voor het facet veld (bijvoorbeeld `facet=Rating,values:1|2|3|4|5`). Een waarden lijst is toegestaan voor deze veld typen om de schei ding van facet resultaten te vereenvoudigen in aaneengesloten bereiken (bereiken op basis van numerieke waarden of tijds perioden). 
+Alleen voor numerieke en datum/tijd-waarden kunt u expliciet waarden instellen voor het facet veld (bijvoorbeeld `facet=Rating,values:1|2|3|4|5` ). Een waarden lijst is toegestaan voor deze veld typen om de schei ding van facet resultaten te vereenvoudigen in aaneengesloten bereiken (bereiken op basis van numerieke waarden of tijds perioden). 
 
 **Standaard kunt u slechts één niveau van facet navigatie hebben** 
 
-Zoals genoteerd, is er geen rechtstreekse ondersteuning voor het nesten van facetten in een hiërarchie. Facet navigatie in azure Cognitive Search ondersteunt standaard slechts één filter niveau. Er zijn echter tijdelijke oplossingen. U kunt een hiërarchische facet structuur coderen in `Collection(Edm.String)` een met één ingangs punt per hiërarchie. Het implementeren van deze tijdelijke oplossing valt buiten het bereik van dit artikel. 
+Zoals genoteerd, is er geen rechtstreekse ondersteuning voor het nesten van facetten in een hiërarchie. Facet navigatie in azure Cognitive Search ondersteunt standaard slechts één filter niveau. Er zijn echter tijdelijke oplossingen. U kunt een hiërarchische facet structuur coderen in een `Collection(Edm.String)` met één ingangs punt per hiërarchie. Het implementeren van deze tijdelijke oplossing valt buiten het bereik van dit artikel. 
 
 ### <a name="querying-tips"></a>Query's uitvoeren op tips
 **Velden valideren**
 
-Als u de lijst met facetten dynamisch bouwt op basis van niet-vertrouwde gebruikers invoer, controleert u of de namen van de facet velden geldig zijn. U kunt ook de namen weglaten wanneer u Url's bouwt `Uri.EscapeDataString()` met behulp van in .net of op basis van het platform van uw keuze.
+Als u de lijst met facetten dynamisch bouwt op basis van niet-vertrouwde gebruikers invoer, controleert u of de namen van de facet velden geldig zijn. U kunt ook de namen weglaten wanneer u Url's bouwt met behulp `Uri.EscapeDataString()` van in .net of op basis van het platform van uw keuze.
 
 ### <a name="filtering-tips"></a>Tips filteren
 **De zoek precisie verg Roten met filters**
@@ -282,7 +282,7 @@ In facet inzoomen wilt u meestal alleen documenten met de facet waarde in een sp
 
 **Facet resultaten knippen met meer filters**
 
-Facet resultaten zijn documenten gevonden in de zoek resultaten die overeenkomen met een facet term. In het volgende voor beeld, in Zoek resultaten voor *Cloud Computing*, hebben 254-items ook een *interne specificatie* als een inhouds type. Items zijn niet noodzakelijkerwijs wederzijds exclusief. Als een item voldoet aan de criteria van beide filters, wordt dit in elk filter geteld. Deze duplicatie kan worden gebruikt wanneer facetten `Collection(Edm.String)` op velden, die vaak worden toegepast voor het implementeren van document tagging.
+Facet resultaten zijn documenten gevonden in de zoek resultaten die overeenkomen met een facet term. In het volgende voor beeld, in Zoek resultaten voor *Cloud Computing*, hebben 254-items ook een *interne specificatie* als een inhouds type. Items zijn niet noodzakelijkerwijs wederzijds exclusief. Als een item voldoet aan de criteria van beide filters, wordt dit in elk filter geteld. Deze duplicatie kan worden gebruikt wanneer facetten op `Collection(Edm.String)` velden, die vaak worden toegepast voor het implementeren van document tagging.
 
         Search term: "cloud computing"
         Content type
@@ -297,7 +297,7 @@ In het algemeen is het raadzaam om meer filters toe te voegen, als u merkt dat f
 
 Voor elk facet veld in de navigatie structuur geldt een standaard limiet van 10 waarden. Deze standaard instelling is zinvol voor navigatie structuren, omdat de waarden lijst een beheer bare grootte behoudt. U kunt de standaard instelling onderdrukken door een waarde toe te wijzen die moet worden geteld.
 
-* `&facet=city,count:5`Hiermee geeft u op dat alleen de eerste vijf steden in de bovenste gerangschikte resultaten worden geretourneerd als een facet resultaat. Bekijk een voorbeeld query met de zoek term ' lucht haven ' en 32 overeenkomsten. Als met de query `&facet=city,count:5`wordt opgegeven, worden alleen de eerste vijf unieke steden met de meeste documenten in de zoek resultaten opgenomen in de facet resultaten.
+* `&facet=city,count:5`Hiermee geeft u op dat alleen de eerste vijf steden in de bovenste gerangschikte resultaten worden geretourneerd als een facet resultaat. Bekijk een voorbeeld query met de zoek term ' lucht haven ' en 32 overeenkomsten. Als met de query wordt opgegeven `&facet=city,count:5` , worden alleen de eerste vijf unieke steden met de meeste documenten in de zoek resultaten opgenomen in de facet resultaten.
 
 Let op het onderscheid tussen facet resultaten en zoek resultaten. Zoek resultaten zijn alle documenten die overeenkomen met de query. Facet resultaten zijn de overeenkomsten voor elke facet waarde. In het voor beeld omvatten Zoek resultaten plaats namen die niet voor komen in de facet classificatie lijst (5 in ons voor beeld). Resultaten die worden gefilterd via facet navigatie, worden zichtbaar wanneer u facetten wist of andere facetten kiezen naast plaats. 
 
@@ -313,20 +313,20 @@ Let op het onderscheid tussen facet resultaten en zoek resultaten. Zoek resultat
 
 **Aantallen ophalen in facet resultaten**
 
-Wanneer u een filter aan een facet query toevoegt, wilt u mogelijk de facet instructie behouden (bijvoorbeeld `facet=Rating&$filter=Rating ge 4`). Technisch, facet = classificatie is niet nodig, maar blijft het aantal facet waarden voor beoordelingen 4 en hoger retour neren. Als u bijvoorbeeld op 4 klikt en de query een filter bevat dat groter is dan of gelijk is aan 4, worden de aantallen geretourneerd voor elke classificatie van 4 en hoger.  
+Wanneer u een filter aan een facet query toevoegt, wilt u mogelijk de facet instructie behouden (bijvoorbeeld `facet=Rating&$filter=Rating ge 4` ). Technisch, facet = classificatie is niet nodig, maar blijft het aantal facet waarden voor beoordelingen 4 en hoger retour neren. Als u bijvoorbeeld op 4 klikt en de query een filter bevat dat groter is dan of gelijk is aan 4, worden de aantallen geretourneerd voor elke classificatie van 4 en hoger.  
 
 **Zorg ervoor dat u nauw keurige facet aantallen krijgt**
 
-Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in Azure Cognitive Search (forum bericht)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in Azure Cognitive Search (micro soft Q&een vraag pagina)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
 
 De facet aantallen kunnen onnauwkeurig zijn als gevolg van de sharding-architectuur. Elke zoek index heeft meerdere Shards en elke Shard rapporteert de bovenste N facetten per document telling, die vervolgens in één resultaat wordt gecombineerd. Als sommige Shards veel overeenkomende waarden hebben, terwijl anderen minder hebben, is het mogelijk dat sommige facet waarden ontbreken of worden ondergeteld in de resultaten.
 
-Hoewel dit gedrag op elk gewenst moment kan worden gewijzigd, kunt u dit probleem omzeilen door de telling\<van het aantal> naar een groot aantal te beperken om de volledige rapportage van elke Shard af te dwingen. Als de waarde van Count: groter is dan of gelijk is aan het aantal unieke waarden in het veld, worden nauw keurige resultaten gegarandeerd. Maar wanneer het aantal documenten hoog is, is er sprake van prestatie vermindering. Gebruik deze optie daarom verstandig.
+Hoewel dit gedrag op elk gewenst moment kan worden gewijzigd, kunt u dit probleem omzeilen door de telling van het aantal \<> naar een groot aantal te beperken om de volledige rapportage van elke Shard af te dwingen. Als de waarde van Count: groter is dan of gelijk is aan het aantal unieke waarden in het veld, worden nauw keurige resultaten gegarandeerd. Maar wanneer het aantal documenten hoog is, is er sprake van prestatie vermindering. Gebruik deze optie daarom verstandig.
 
 ### <a name="user-interface-tips"></a>Tips voor de gebruikers interface
 **Labels voor elk veld in de facet navigatie toevoegen**
 
-Labels worden meestal gedefinieerd in de HTML of het formulier`index.cshtml` (in de voorbeeld toepassing). Er is geen API in azure Cognitive Search voor facet navigatie labels of andere meta gegevens.
+Labels worden meestal gedefinieerd in de HTML of het formulier ( `index.cshtml` in de voorbeeld toepassing). Er is geen API in azure Cognitive Search voor facet navigatie labels of andere meta gegevens.
 
 <a name="rangefacets"></a>
 
@@ -339,7 +339,7 @@ Azure Cognitive Search vereenvoudigt de bereik constructie door twee benaderinge
 Als u prijs facetten in $10 stappen wilt instellen, geeft u het volgende op:`&facet=price,interval:10`
 
 **Benadering 2: een lijst met waarden gebruiken**  
-Voor numerieke gegevens kunt u een lijst met waarden gebruiken.  Houd rekening met het facet bereik `listPrice` voor een veld dat als volgt wordt weer gegeven:
+Voor numerieke gegevens kunt u een lijst met waarden gebruiken.  Houd rekening met het facet bereik voor een `listPrice` veld dat als volgt wordt weer gegeven:
 
   ![Lijst met voorbeeld waarden](media/search-faceted-navigation/Facet-5-Prices.PNG "Lijst met voorbeeld waarden")
 
@@ -350,7 +350,7 @@ Als u een facet bereik wilt opgeven zoals in de vorige scherm afbeelding, gebrui
 Elk bereik is gebouwd op basis van 0 als uitgangs punt, een waarde uit de lijst als een eind punt en wordt vervolgens bijgesneden van het vorige bereik om discrete intervallen te maken. Azure Cognitive Search doet dit als onderdeel van facet navigatie. U hoeft geen code te schrijven voor het structureren van elk interval.
 
 ### <a name="build-a-filter-for-a-range"></a>Een filter maken voor een bereik
-Als u documenten wilt filteren op basis van een bereik dat u hebt geselecteerd `"ge"` , `"lt"` kunt u de Opera tors en filteren in een expressie met twee delen waarmee de eind punten van het bereik worden gedefinieerd. Als u bijvoorbeeld het bereik 10-25 voor een `listPrice` veld kiest, zou het filter zijn. `$filter=listPrice ge 10 and listPrice lt 25` In de voorbeeld code gebruikt de filter expressie **priceFrom** -en **priceTo** -para meters om de eind punten in te stellen. 
+Als u documenten wilt filteren op basis van een bereik dat u hebt geselecteerd, kunt u de `"ge"` `"lt"` Opera tors en filteren in een expressie met twee delen waarmee de eind punten van het bereik worden gedefinieerd. Als u bijvoorbeeld het bereik 10-25 voor een `listPrice` veld kiest, zou het filter zijn `$filter=listPrice ge 10 and listPrice lt 25` . In de voorbeeld code gebruikt de filter expressie **priceFrom** -en **priceTo** -para meters om de eind punten in te stellen. 
 
   ![Query voor een reeks waarden](media/search-faceted-navigation/Facet-6-buildfilter.PNG "Query voor een reeks waarden")
 
@@ -391,7 +391,7 @@ Bekijk bij het werken met zoek resultaten de URL voor wijzigingen in de bouw van
    
    ![Resultaten zoeken na het selecteren van facetten](media/search-faceted-navigation/faceted-search-after-facets.png "Resultaten zoeken na het selecteren van facetten")
 
-5. Als u de facet query wilt wissen zodat u verschillende query gedrag kunt proberen, klikt `[X]` u op de na de geselecteerde facetten om de facetten te wissen.
+5. Als u de facet query wilt wissen zodat u verschillende query gedrag kunt proberen, klikt u op de `[X]` na de geselecteerde facetten om de facetten te wissen.
    
 <a name="nextstep"></a>
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411096"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829512"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema gebruiken voor het afstemmen van prestaties en het beheren van data bases in Azure Database for MySQL
 
@@ -83,4 +83,4 @@ Indexen zijn fantastische hulp middelen voor het verbeteren van de Lees prestati
 In samen vatting is de sys_schema een geweldig hulp middel voor het afstemmen van prestaties en het onderhoud van de data base. Zorg ervoor dat u deze functie in uw Azure Database for MySQL kunt gebruiken. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

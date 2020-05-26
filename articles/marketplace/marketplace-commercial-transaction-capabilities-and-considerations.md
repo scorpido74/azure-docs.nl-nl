@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657904"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800054"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -165,7 +165,7 @@ Klanten kopen normaal gesp roken gebruik van de Enterprise Agreement of een op e
 
 Zie de [Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (beschikbaar in Partner Center) voor meer informatie en juridisch beleid.
 
-Neem contact op met de ondersteuning voor [commerciële Marketplace-Uitgever](https://partner.microsoft.com/support/v2/?stage=1)voor hulp bij het vragen over facturering.
+Neem contact op met de ondersteuning voor [commerciële Marketplace-Uitgever](https://aka.ms/marketplacepublishersupport)voor hulp bij het vragen over facturering.
 
 ## <a name="transact-requirements"></a>Transact-vereisten
 

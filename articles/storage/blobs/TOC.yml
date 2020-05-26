@@ -166,6 +166,8 @@
               href: storage-blob-change-feed.md
             - name: Terugzetten naar eerder tijdstip
               href: point-in-time-restore-overview.md
+        - name: Objectreplicatie
+          href: object-replication-overview.md
         - name: Toegang- en prestatielagen
           items:
             - name: Toegangslagen
@@ -399,6 +401,8 @@
               href: storage-blob-change-feed-how-to.md
             - name: Herstel naar een bepaald tijdstip inschakelen
               href: point-in-time-restore-manage.md
+        - name: Objectreplicatie configureren
+          href: object-replication-configure.md
         - name: Herstel na noodgevallen beheren
           items:
             - name: De eigenschap Laatst gesynchroniseerd controleren

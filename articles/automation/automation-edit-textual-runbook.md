@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2b30b807764159378c594f82ae6cfc55cfa4f7e4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712907"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836835"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>De tekst runbooks in Azure Automation bewerken
 
@@ -91,14 +91,14 @@ Import-AzAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookN
 Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="next-steps"></a>Volgende stappen
 
-* [Runbooks in Azure Automation beheren](manage-runbooks.md)
-* [Power shell-werk stroom leren](automation-powershell-workflow.md)
-* [Grafisch ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
-* [Certificaten](automation-certificates.md)
-* [Verbindingen](automation-connections.md)
-* [Referenties](automation-credentials.md)
-* [Planningen](automation-schedules.md)
-* [Variabelen](automation-variables.md)
-* [Naslagdocumentatie voor PowerShell-cmdlet](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [Runbooks in azure Automation beheren](manage-runbooks.md).
+* [Power shell-werk stroom leren](automation-powershell-workflow.md).
+* [Grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md).
+* [Certificaten](automation-certificates.md).
+* [Verbindingen](automation-connections.md).
+* [Referenties](automation-credentials.md).
+* [Schema's](automation-schedules.md).
+* [Variabelen](automation-variables.md).
+* [Naslag informatie over Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

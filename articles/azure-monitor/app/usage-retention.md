@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892407"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797733"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van gebruikers retentie voor webtoepassingen met Application Insights
 
@@ -63,7 +63,7 @@ Meer [informatie over het schrijven van aangepaste gebeurtenissen](../../azure-m
     - [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Gebruikersstromen](usage-flows.md)
-    - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)
 
 

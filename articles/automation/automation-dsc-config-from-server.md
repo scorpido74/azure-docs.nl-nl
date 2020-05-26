@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d783ce7193faed4110d07988d3f3f05951c80a45
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711394"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837005"
 ---
-# <a name="create-configurations-from-existing-servers-for-azure-automation-state-configuration"></a>Configuraties maken op basis van bestaande servers voor Azure Automation status configuratie
+# <a name="create-configurations-from-existing-servers"></a>Configuraties maken op basis van bestaande servers
 
 > Van toepassing op: Windows Power shell 5,1
 
@@ -45,6 +45,6 @@ Als u ReverseDSC wilt uitproberen, gaat u naar de [PowerShell Gallery](https://w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
-- [DSC-resources](/powershell/scripting/dsc/resources/resources)
-- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview)(Engelstalig) voor meer informatie over Power shell DSC.
+- Meer informatie over Power shell DSC-resources in [DSC-resources](/powershell/scripting/dsc/resources/resources).
+- Zie [Configuring the local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)(Engelstalig) voor meer informatie over de configuratie van de lokale Configuration Manager.

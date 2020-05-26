@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744933"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828879"
 ---
 # <a name="use-source-control-integration"></a>Integratie van bronbeheer gebruiken
 
@@ -123,7 +123,7 @@ In de volgende tabel worden de minimale machtigingen voor PAT gedefinieerd die z
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimale machtigingen voor PAT voor Azure opslag plaatsen
 
-In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor Azure opslag plaatsen. Zie [toegang verifiëren met persoonlijke toegangs tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)voor meer informatie over het maken van een Pat in azure opslag plaatsen.
+In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor Azure opslag plaatsen. Zie [toegang verifiëren met persoonlijke toegangs tokens](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)voor meer informatie over het maken van een Pat in azure opslag plaatsen.
 
 | Bereik  |  Toegangs type  |
 |---------| ----------|
@@ -196,16 +196,16 @@ De verbinding met een broncode beheer bibliotheek verbreken:
 
 ## <a name="handle-encoding-issues"></a>Coderings problemen verwerken
 
-Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>De PAT bijwerken
 
 Op dit moment kunt u de Azure Portal niet gebruiken om de PAT bij te werken in broncode beheer. Als uw PAT is verlopen of ingetrokken, kunt u op een van de volgende manieren broncode beheer bijwerken met een nieuw toegangs token:
 
 * Gebruik de [rest API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Gebruik de cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
+* Gebruik de cmdlet [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Automation: broncode beheer integratie in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Automation: Runbook-broncode beheer integreren met behulp van Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* Zie [Azure Automation: broncode beheer integratie in azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)voor informatie over het integreren van broncode beheer in azure Automation.  
+* Zie [Azure Automation: runbook-bron beheer integreren met Visual Studio online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)voor informatie over het integreren van runbook-bron beheer met Visual Studio online.

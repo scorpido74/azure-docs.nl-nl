@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197997"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799884"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -38,13 +38,9 @@ Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwin
 
 1. Verbind door Extern bureaublad naar elke VM van de NVv4-serie.
 
-2. Als u een NVv4 preview-klant bent, stopt u de virtuele machine en wacht u totdat deze is verplaatst naar de status gestopt (toewijzing ongedaan gemaakt).
+2. Down load en installeer het meest recente stuur programma.
 
-3. Start de virtuele machine en down load het nieuwste [hulp programma voor het opschonen van AMD](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Verwijder het bestaande stuur programma door ' amdcleanuputility-x64. exe ' uit te voeren. Gebruik geen bestaand hulp programma voor opschoning dat is geïnstalleerd met het vorige stuur programma.  
-
-4. Down load en installeer het meest recente stuur programma.
-
-5. Start de VM opnieuw op.
+3. Start de VM opnieuw op.
 
 ## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
 

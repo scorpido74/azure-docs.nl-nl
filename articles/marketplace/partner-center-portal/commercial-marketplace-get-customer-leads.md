@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837325"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800935"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
@@ -48,9 +48,9 @@ Hier vindt u plaatsen waar een lead wordt gegenereerd:
 
 ## <a name="understand-lead-data"></a>Informatie over leads
 
-Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Het eerste veld dat moet worden uitgecheckt `LeadSource` , is het veld, dat de volgende indeling heeft: de**aanbieding**voor de **bron actie** | .
+Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Het eerste veld dat moet worden uitgecheckt `LeadSource` , is het veld, dat de volgende indeling heeft: de aanbieding voor de **bron actie**  |  **Offer**.
 
-**Bronnen**: de waarde voor dit veld wordt ingevuld op basis van de Marketplace die de lead heeft gegenereerd. Mogelijke waarden zijn `"AzureMarketplace"`, `"AzurePortal"`en `"AppSource (SPZA)"`.
+**Bronnen**: de waarde voor dit veld wordt ingevuld op basis van de Marketplace die de lead heeft gegenereerd. Mogelijke waarden zijn `"AzureMarketplace"` , `"AzurePortal"` en `"AppSource (SPZA)"` .
 
 **Acties**: de waarde voor dit veld wordt ingevuld op basis van de actie die de klant heeft ondernomen op de Marketplace die de lead heeft gegenereerd.
 
@@ -64,7 +64,7 @@ Mogelijke waarden zijn:
 
 **Aanbiedingen**: mogelijk hebt u meerdere aanbiedingen in de commerciële Marketplace. De waarde voor dit veld wordt ingevuld op basis van de aanbieding die de lead heeft gegenereerd. De uitgevers-ID en aanbiedings-ID worden beide in dit veld verzonden en zijn de waarden die u hebt ingevoerd tijdens het publiceren van de aanbieding naar de Marketplace.
 
-In de volgende voor beelden worden waarden in de `publisherid.offerid`verwachte indeling weer gegeven: 
+In de volgende voor beelden worden waarden in de verwachte indeling weer gegeven `publisherid.offerid` : 
 
 - `checkpoint.check-point-r77-10sg-byol`
 - `bitnami.openedxcypress`
@@ -76,7 +76,7 @@ De gegevens van de klant worden verzonden via meerdere velden. In het volgende v
 
 - Voor naam: John
 - LastName: Smit
-- E-mail: jsmith\@Microsoft.com
+- E-mail: jsmith \@ Microsoft.com
 - Telefoon: 1234567890
 - Land: VS
 - Bedrijf: micro soft
@@ -96,7 +96,7 @@ De gegevens van de klant worden verzonden via meerdere velden. In het volgende v
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?
 
-Volg de stappen in de sectie [verbinding maken met uw CRM-systeem](#connect-to-your-crm-system)of dien een ondersteunings ticket in via de [Help en ondersteuning van het partner centrum](https://partner.microsoft.com/support/v2/?stage=1). Selecteer vervolgens **aanbieding maken** > **uw type** > **configuratie van lead beheer**.
+Volg de stappen in de sectie [verbinding maken met uw CRM-systeem](#connect-to-your-crm-system)of dien een ondersteunings ticket in via de [Help en ondersteuning van het partner centrum](https://aka.ms/marketplacepublishersupport). Selecteer vervolgens **aanbieding maken**  >  **uw type**  >  **configuratie van lead beheer**.
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Moet ik een lead bestemming configureren om een aanbieding in de commerciële Marketplace te publiceren?
 
@@ -133,7 +133,7 @@ Azure Blob-opslag wordt niet langer ondersteund als een lead bestemming, dus er 
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail bericht ontvangen van de commerciële Marketplace, maar waarom kan ik de lead niet vinden in mijn CRM?
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoonlijke gegevens uit het domein. edu door. Verzend een ondersteunings ticket via het [partner centrum hulp en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
+Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoonlijke gegevens uit het domein. edu door. Verzend een ondersteunings ticket via het [partner centrum hulp en ondersteuning](https://aka.ms/marketplacepublishersupport).
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Hoe kan ik de leads weer geven?
 
@@ -155,11 +155,11 @@ Vanwege het beleid voor persoonlijke gegevens kunnen we geen lead gegevens delen
 
 De gegevens voor het genereren van leads zijn laag. Het is minder dan 1 GB voor bijna alle uitgevers. De kosten zijn afhankelijk van het aantal ontvangen leads. Als bijvoorbeeld 1.000-leads per maand worden ontvangen, zijn de kosten ongeveer 50 cent. Zie [Azure Storage-overzicht](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
-Als uw vraag niet wordt beantwoord, neemt u contact op met Microsoft Ondersteuning via de [Help en ondersteuning van het partner centrum](https://aka.ms/marketplacepublishersupport). Selecteer vervolgens **aanbieding maken** > **uw type** > **configuratie van lead beheer**.
+Als uw vraag niet wordt beantwoord, neemt u contact op met Microsoft Ondersteuning via de [Help en ondersteuning van het partner centrum](https://aka.ms/marketplacepublishersupport). Selecteer vervolgens **aanbieding maken**  >  **uw type**  >  **configuratie van lead beheer**.
 
 ### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Ik ontvang e-mail meldingen wanneer er nieuwe leads van klanten worden ontvangen. Hoe kan ik iemand anders configureren voor het ontvangen van deze e-mail berichten?
 
-Krijg toegang tot uw aanbieding in Partner Center en ga naar de pagina voor het instellen van de **aanbieding** > **lead beheer** > **bewerken**. Werk de e-mail adressen bij in het veld **e-mail adres van contact persoon** .
+Krijg toegang tot uw aanbieding in Partner Center en ga naar de pagina voor het instellen van de **aanbieding** > **lead beheer**  >  **bewerken**. Werk de e-mail adressen bij in het veld **e-mail adres van contact persoon** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

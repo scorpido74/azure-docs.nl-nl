@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713145"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836903"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Configuratie van Azure Automation status inschakelen
 
@@ -22,7 +22,7 @@ In dit onderwerp wordt beschreven hoe u uw machines kunt instellen voor beheer m
 
 ## <a name="enable-azure-vms"></a>Virtuele Azure-machines inschakelen
 
-Met de configuratie van Azure Automation status kunt u Azure-Vm's eenvoudig inschakelen voor configuratie beheer, met behulp van de Azure Portal, Azure Resource Manager sjablonen of Power shell. Onder de schermen en zonder een beheerder die een virtuele machine op afstand heeft, registreert de Azure VM desired state Configuration extension de VM met Azure Automation status configuratie. Omdat de Azure-extensie asynchroon wordt uitgevoerd, stappen om de voortgang op te sporen of problemen op te lossen, vindt u in [problemen met de VM-installatie voor status configuratie](#troubleshoot-vm-setup-for-state-configuration).
+Met de configuratie van Azure Automation status kunt u Azure-Vm's eenvoudig inschakelen voor configuratie beheer, met behulp van de Azure Portal, Azure Resource Manager sjablonen of Power shell. Onder de schermen en zonder een beheerder die een virtuele machine op afstand heeft, registreert de Azure VM desired state Configuration extension de VM met Azure Automation status configuratie. Omdat de Azure-extensie asynchroon wordt uitgevoerd, worden de stappen voor het volgen van de voortgang weer gegeven in de [status controleren van de VM-installatie](#check-status-of-vm-setup).
 
 > [!NOTE]
 >Voor het implementeren van DSC voor een Linux-knoop punt wordt de map **map/tmp** gebruikt. Modules die `nxautomation` tijdelijk worden gedownload voor verificatie voordat ze op hun juiste locaties worden geïnstalleerd. Om ervoor te zorgen dat modules correct worden geïnstalleerd, heeft de Log Analytics-agent voor Linux Lees-en schrijf machtigingen nodig voor de map **map/tmp** .<br><br>
@@ -307,27 +307,26 @@ Na het registreren van een computer als een DSC-knoop punt in Azure Automation s
 
 U kunt een knoop punt opnieuw registreren, net zoals u het knoop punt in eerste instantie hebt geregistreerd, met behulp van een van de methoden die in dit document worden beschreven. U hoeft de registratie van een knoop punt bij Azure Automation status configuratie niet ongedaan te maken voordat u het opnieuw registreert.
 
-## <a name="troubleshoot-vm-setup-for-state-configuration"></a>Problemen met de VM-installatie voor de status configuratie oplossen
+## <a name="check-status-of-vm-setup"></a>De status van de VM-installatie controleren
 
 Met status configuratie kunt u gemakkelijk Azure Windows-Vm's inschakelen voor configuratie beheer. Onder de schermen wordt de Azure VM desired state Configuration-extensie gebruikt voor het registreren van de virtuele machine met Azure Automation status configuratie. Omdat de configuratie-uitbrei ding desired state van Azure VM asynchroon wordt uitgevoerd, kunt u de voortgang bijhouden en de uitvoering ervan oplossen.
 
 > [!NOTE]
 > Elke methode voor het inschakelen van Azure Windows-Vm's voor status configuratie die gebruikmaakt van de desired state Configuration-extensie van Azure, kan tot een uur duren voordat Azure Automation de Vm's als geregistreerd weergeeft. Deze vertraging wordt veroorzaakt door de installatie van WMF 5 op de VM door de configuratie-uitbrei ding desired state van Azure VM, die vereist is om Vm's in te scha kelen voor status configuratie.
 
-Problemen oplossen of de status van de configuratie-uitbrei ding voor de gewenste Azure-VM weer geven:
+De status van de configuratie-uitbrei ding voor de gewenste Azure-VM weer geven:
 
 1. Navigeer in het Azure Portal naar de virtuele machine die wordt ingeschakeld.
 2. Klik op **uitbrei dingen** onder **instellingen**. 
 3. Selecteer nu **DSC** of **DSCForLinux**, afhankelijk van uw besturings systeem. 
 4. Klik op **gedetailleerde status weer geven**voor meer informatie.
 
-Zie [problemen met de configuratie van Azure Automation status oplossen](./troubleshoot/desired-state-configuration.md)voor meer informatie over het oplossen van problemen.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
-- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )(Engelstalig) voor een Power shell-cmdlet-verwijzing.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Zie voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie, [voor beeld van gebruik: doorlopende implementatie naar virtuele machines met behulp van Azure Automation-status configuratie en Choco lade](automation-dsc-cd-chocolatey.md).
+- Zie voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie een [continue implementatie met Choco lade instellen](automation-dsc-cd-chocolatey.md).
+- Zie [problemen met de configuratie van Azure Automation status oplossen](./troubleshoot/desired-state-configuration.md)voor informatie over het oplossen van problemen.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2e9a97dac4d69ea4e470a932cb446d83b425dde
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745289"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830766"
 ---
 # <a name="query-update-management-logs"></a>Query's uitvoeren op Updatebeheer-logboeken
 
@@ -38,7 +38,7 @@ Er wordt een record met een type `RequiredUpdate` gemaakt die de updates vertege
 | SourceSystem | *OperationsManager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
 | TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
-| Type | *Bijwerken* | 
+| Type | *Bijwerk* | 
 | UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligingsupdates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
 | UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matig*<br> *Laag* |
 | UpdateTitle | De titel van de update.|
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Monitor-logboeken](../log-analytics/log-analytics-log-searches.md)
-* [Waarschuwingen configureren](automation-tutorial-update-management.md#configure-alerts)
+* Zie [Azure monitor-logboeken](../log-analytics/log-analytics-log-searches.md)voor meer informatie over Azure monitor Logboeken.
+* Zie [Configuring Alerts (waarschuwingen configureren](automation-tutorial-update-management.md#configure-alerts)) voor meer informatie.

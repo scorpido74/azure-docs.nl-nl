@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: Power shell, runbook, JSON, Azure Automation
-ms.openlocfilehash: dcb1f5919db71bb233f59cc5b5ba92648b8476d9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714284"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837073"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Een Azure Resource Manager-sjabloon implementeren in een Power shell-runbook
 
@@ -21,7 +21,7 @@ In dit artikel maken we een Power shell-runbook dat gebruikmaakt van een resourc
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [u aanmelden voor een gratis account](https://azure.microsoft.com/free/).
+* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [zich aanmelden voor een gratis account](https://azure.microsoft.com/free/).
 * [Automation-account](automation-sec-configure-azure-runas-account.md) om het runbook te bevatten en te verifiëren voor Azure-resources.  Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * [Azure Storage account](../storage/common/storage-create-storage-account.md) waarin de Resource Manager-sjabloon moet worden opgeslagen
 * Azure PowerShell geïnstalleerd op een lokale computer. Zie [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) voor meer informatie over het verkrijgen van Azure PowerShell.
@@ -229,8 +229,8 @@ Get-AzStorageAccount
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
-* [Runbook- en modulegalerieën voor Azure Automation](automation-runbook-gallery.md)
-* [Sjablonen voor Azure Quick Start](https://azure.microsoft.com/resources/templates/)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md)voor meer informatie over Resource Manager-sjablonen.
+* Zie [Inleiding tot Azure Storage](../storage/common/storage-introduction.md)om aan de slag te gaan met Azure Storage.
+* Zie [runbooks en modules in azure Automation gebruiken](automation-runbook-gallery.md)om andere nuttige Azure Automation runbooks te vinden.
+* Zie [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen voor meer informatie over andere nuttige Resource Manager-sjablonen.
+* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

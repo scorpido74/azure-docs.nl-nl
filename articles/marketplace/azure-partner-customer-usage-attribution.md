@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4dd42c6eabf02bc7a4eb956b9cd5ab2aec28176b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186200"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800795"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -37,10 +37,10 @@ De toewijzing van klant gebruik ondersteunt drie implementatie opties:
 
 ## <a name="create-guids"></a>GUID'S maken
 
-Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S voor bijhouden wilt maken, moet u een GUID-generator gebruiken. Het Azure Storage team heeft een [GUID-Generator formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) gemaakt dat u een GUID van de juiste indeling stuurt en kan worden hergebruikt in de verschillende tracking systemen.
+Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S voor bijhouden wilt maken, moet u een GUID-generator gebruiken. Het Azure Storage team heeft een [GUID-Generator formulier](https://aka.ms/StoragePartners) gemaakt dat u een GUID van de juiste indeling stuurt en kan worden hergebruikt in de verschillende tracking systemen.
 
 > [!NOTE]
-> Het is raadzaam om de GUID- [Generator van Azure Storage](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) te gebruiken om uw GUID te maken. Zie [Veelgestelde vragen](#faq)voor meer informatie.
+> Het is raadzaam om de GUID- [Generator van Azure Storage](https://aka.ms/StoragePartners) te gebruiken om uw GUID te maken. Zie [Veelgestelde vragen](#faq)voor meer informatie.
 
 We raden u aan om voor elk product een unieke GUID te maken voor elk aanbod en distributie kanaal. U kunt ervoor kiezen om een enkele GUID voor de meerdere distributie kanalen van het product te gebruiken als u niet wilt dat rapportage wordt gesplitst.
 
@@ -61,7 +61,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 
-1. Meld u aan als een [commerciële Marketplace-Uitgever](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Meld u aan als een [commerciële Marketplace-Uitgever](https://aka.ms/JoinMarketplace).
 
    * Partners moeten [beschikken over een profiel in Partner Center](https://docs.microsoft.com/azure/marketplace/become-publisher). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
    * Partners kunnen meerdere GUID'S registreren.
@@ -169,7 +169,7 @@ Zie [Azure SDK voor Go](https://docs.microsoft.com/azure/go/)voor meer informati
 
 ## <a name="use-terraform"></a>Terraform gebruiken
 
-De ondersteuning voor terraform is beschikbaar via de 1.21.0-versie van Azure [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)provider:.  Deze ondersteuning is van toepassing op alle partners die hun oplossing implementeren via terraform, en alle resources die zijn geïmplementeerd en gemeten door de Azure-provider (versie 1.21.0 of hoger).
+De ondersteuning voor terraform is beschikbaar via de 1.21.0-versie van Azure provider: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019) .  Deze ondersteuning is van toepassing op alle partners die hun oplossing implementeren via terraform, en alle resources die zijn geïmplementeerd en gemeten door de Azure-provider (versie 1.21.0 of hoger).
 
 Azure provider voor terraform heeft een nieuw optioneel veld met de naam [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) toegevoegd, waarin u de tracerings-GUID opgeeft die u voor uw oplossing gebruikt. De waarde van dit veld kan ook worden gebrond op basis van de variabele *ARM_PARTNER_ID* omgeving.
 
@@ -230,7 +230,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapport
 
-U kunt het rapport voor de toewijzing van klant gebruik in uw partner Center-Dash[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)Board () vinden. Als u het rapport wilt weer geven, moet u uw partner centrum referenties gebruiken om u aan te melden. Als u problemen ondervindt met een rapport of meldt, maakt u een ondersteunings aanvraag volgens de instructie in het gedeelte ondersteuning verkrijgen.
+U kunt het rapport voor de toewijzing van klant gebruik in uw partner Center-dash board ( [https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure) ) vinden. Als u het rapport wilt weer geven, moet u uw partner centrum referenties gebruiken om u aan te melden. Als u problemen ondervindt met een rapport of meldt, maakt u een ondersteunings aanvraag volgens de instructie in het gedeelte ondersteuning verkrijgen.
 
 Kies bijgehouden sjabloon in de keuze lijst van het type partner koppeling om het rapport weer te geven.
 
@@ -238,15 +238,15 @@ Kies bijgehouden sjabloon in de keuze lijst van het type partner koppeling om he
 
 ## <a name="notify-your-customers"></a>Uw klanten op de hoogte stellen
 
-Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang \<in de voor beelden partner> door de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
+Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang in de voor beelden \< PARTNER> door de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Melding voor implementaties van Resource Manager-sjablonen
 
-Wanneer u deze sjabloon implementeert, kan micro soft de installatie van \<partner> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden https://www.microsoft.com/trustcenterop.
+Wanneer u deze sjabloon implementeert, kan micro soft de installatie van \< PARTNER> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Melding voor SDK-of API-implementaties
 
-Wanneer u partner \<> software implementeert, kan micro soft de installatie van \<partner> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden https://www.microsoft.com/trustcenterop.
+Wanneer u \< partner> software implementeert, kan micro soft de installatie van \< partner> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -286,7 +286,7 @@ U kunt ook technische richt lijnen ontvangen van een technische consultant van m
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Een technische consultatie aanvraag indienen
 
-1. Ga naar [technische services van partners](https://partner.microsoft.com/training/partner-technical-services).
+1. Ga naar [technische services van partners](https://aka.ms/TechnicalJourney).
 1. Selecteer Cloud infrastructuur en-beheer en er wordt een nieuwe pagina geopend om de technische reis te bekijken.
 1. Klik onder implementatie services op de knop een aanvraag indienen
 1. Meld u aan met uw MSA (MPN-account) of uw AAD (partner dashboard account). op basis van uw aanmeldings referenties wordt een online aanvraag formulier geopend:
@@ -295,7 +295,7 @@ U kunt ook technische richt lijnen ontvangen van een technische consultant van m
     * Voer een titel en de beschrijving van het probleem in (Geef zo veel mogelijk details op).
 1. Klik op Submit
 
-Bekijk stapsgewijze instructies voor het [gebruik van technische preverkoop-en implementatie services](https://support.microsoft.com/help/3121537/using-technical-presales-and-deployment-services#request%20a%20technical%20consultation)met scherm opnamen.
+Bekijk stapsgewijze instructies voor het [gebruik van technische preverkoop-en implementatie services](https://aka.ms/TechConsultInstructions)met scherm opnamen.
 
 ### <a name="whats-next"></a>Volgend onderwerp
 
@@ -329,7 +329,7 @@ Het formulier GUID-Generator van Azure Storage is gegarandeerd een GUID van de v
 
 **Kan ik een persoonlijke, aangepaste VHD voor een oplossings sjabloon aanbieding in azure Marketplace gebruiken?**
 
-Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van de Azure [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)Marketplace, zie:.
+Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van de Azure Marketplace, zie: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
 
 U kunt een VM-aanbieding in Marketplace maken met behulp van uw aangepaste VHD en markeren als privé, zodat niemand deze kan zien. Ga vervolgens naar deze virtuele machine in uw oplossings sjabloon.
 

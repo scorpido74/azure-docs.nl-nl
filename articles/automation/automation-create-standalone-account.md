@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ffe7edd5faf5ae4f88f9f3e0c40256bee32395d7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714862"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837090"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -101,8 +101,9 @@ Klassieke uitvoeren als-accounts worden niet meer standaard gemaakt wanneer u ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Grafisch ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
-* [Mijn eerste PowerShell-runbook](automation-first-runbook-textual-powershell.md)
-* [Mijn eerste Power shell workflow-runbook](automation-first-runbook-textual.md)
-* [Mijn eerste Python2-runbook](automation-first-runbook-textual-python2.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Zie [grafische Runbooks ontwerpen in azure Automation](automation-graphical-authoring-intro.md)voor meer informatie over het ontwerpen van grafieken.
+* Zie [zelf studie: een Power shell-Runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)om aan de slag te gaan met Power shell-runbooks.
+* Zie [zelf studie: een Power shell workflow-Runbook maken](learn/automation-tutorial-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
+* Zie [zelf studie: een python 2-Runbook maken](learn/automation-tutorial-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.
+* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

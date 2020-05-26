@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702149"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815788"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face-containers installeren en uitvoeren (preview-versie)
 
@@ -38,7 +38,7 @@ U moet voldoen aan de volgende vereisten voordat u de face service-containers ge
 
 ## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
 
-Vul het [aanvraag formulier](https://aka.ms/VisionContainersPreview) in en verzend het om toegang tot de container aan te vragen. 
+Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 

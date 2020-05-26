@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef321e82f1737df4b13d259824acd943a7eea440
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649351"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798800"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -99,14 +99,6 @@ Alle Azure DevOps-beleids regels voor ondernemingen kunnen worden beheerd door g
 ### <a name="azure-information-protection-administrator"></a>[Azure Information Protection beheerder](#azure-information-protection-administrator-permissions)
 
 Gebruikers met deze rol hebben alle machtigingen in de Azure Information Protection-Service. Deze rol staat het configureren van labels toe voor het Azure Information Protection beleid, het beheren van beveiligings sjablonen en het activeren van de beveiliging. Deze rol verleent geen enkele machtiging in Identity Protection Center, Privileged Identity Management, Bewaak Office 365 Service Health of Office 365 Security & compliance Center.
-
-### <a name="b2c-user-flow-administrator"></a>[Beheerder van B2C-gebruikers stroom](#b2c-user-flow-administrator-permissions)
-
-Gebruikers met deze rol kunnen B2C-Gebruikersstromen (ook wel ingebouwde beleids regels genoemd) maken en beheren in de Azure Portal.Door gebruikers stromen te maken of te bewerken, kunnen deze gebruikers de HTML/CSS/java script-inhoud van de gebruikers ervaring wijzigen, MFA-vereisten per gebruikers stroom wijzigen, claims in het token wijzigen en sessie-instellingen aanpassen voor alle beleids regels in de Azure AD-organisatie. Aan de andere kant omvat deze rol niet de mogelijkheid om gebruikers gegevens te controleren of wijzigingen aan te brengen in de kenmerken die zijn opgenomen in het schema van de organisatie.Wijzigingen in het Framework voor identiteits ervaring (ook wel aangepast) zijn ook buiten het bereik van deze rol.
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[B2C-gebruikers stroom kenmerk beheerder](#b2c-user-flow-attribute-administrator-permissions)
-
-Gebruikers met deze rol kunnen aangepaste kenmerken die beschikbaar zijn voor alle gebruikers stromen in de Azure AD-organisatie toevoegen of verwijderen.Als zodanig kunnen gebruikers met deze rol nieuwe elementen wijzigen of toevoegen aan het schema van de eind gebruiker en de invloed hebben op de werking van alle gebruikers stromen en indirect als gevolg van wijzigingen in welke gegevens kunnen worden gesteld aan eind gebruikers en uiteindelijk worden verzonden als claims naar toepassingen.Deze rol kan geen gebruikers stromen bewerken.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF sleutelsetcursor](#b2c-ief-keyset-administrator-permissions)
 
@@ -214,6 +206,15 @@ Gebruikers met deze rol hebben algemene machtigingen in micro soft Exchange Onli
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als de Exchange-service beheerder. Het is ' Exchange Administrator ' in de [Azure Portal](https://portal.azure.com). Het is ' Exchange Online Administrator ' in het [Exchange-beheer centrum](https://go.microsoft.com/fwlink/p/?LinkID=529144).
 
+
+### <a name="external-id-user-flow-administrator"></a>[Externe ID gebruikers stroom beheerder](#external-id-user-flow-administrator-permissions)
+
+Gebruikers met deze rol kunnen B2C-Gebruikersstromen (ook wel ingebouwde beleids regels genoemd) maken en beheren in de Azure Portal.Door gebruikers stromen te maken of te bewerken, kunnen deze gebruikers de HTML/CSS/java script-inhoud van de gebruikers ervaring wijzigen, MFA-vereisten per gebruikers stroom wijzigen, claims in het token wijzigen en sessie-instellingen aanpassen voor alle beleids regels in de Azure AD-organisatie. Aan de andere kant omvat deze rol niet de mogelijkheid om gebruikers gegevens te controleren of wijzigingen aan te brengen in de kenmerken die zijn opgenomen in het schema van de organisatie.Wijzigingen in het Framework voor identiteits ervaring (ook wel aangepast) zijn ook buiten het bereik van deze rol.
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[Externe ID gebruikers stroom kenmerk beheerder](#external-id-user-flow-attribute-administrator-permissions)
+
+Gebruikers met deze rol kunnen aangepaste kenmerken die beschikbaar zijn voor alle gebruikers stromen in de Azure AD-organisatie toevoegen of verwijderen.Als zodanig kunnen gebruikers met deze rol nieuwe elementen wijzigen of toevoegen aan het schema van de eind gebruiker en de invloed hebben op de werking van alle gebruikers stromen en indirect als gevolg van wijzigingen in welke gegevens kunnen worden gesteld aan eind gebruikers en uiteindelijk worden verzonden als claims naar toepassingen.Deze rol kan geen gebruikers stromen bewerken.
+
 ### <a name="external-identity-provider-administrator"></a>[Beheerder van externe ID-provider](#external-identity-provider-administrator-permissions)
 
 Deze beheerder beheert Federatie tussen Azure AD-organisaties en externe ID-providers.Met deze rol kunnen gebruikers nieuwe id-providers toevoegen en alle beschik bare instellingen configureren (bijvoorbeeld het pad Authentication, Service-ID, toegewezen sleutel containers).Deze gebruiker kan de Azure AD-organisatie in staat stellen verificaties van externe ID-providers te vertrouwen.De impact op de ervaring van de eind gebruiker is afhankelijk van het type organisatie:
@@ -237,8 +238,6 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 > [!NOTE]
 > De rol van globale lezer heeft nu enkele beperkingen:
 >
->- [Onedrive-beheer centrum](https://admin.onedrive.com/) : het onedrive-beheer centrum biedt geen ondersteuning voor de globale lezer-rol.
->- [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
 >- [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
 >- [Office Security & compliance Center](https://sip.protection.office.com/homepage) : globale lezer kan geen SCC-controle logboeken lezen, inhoud zoeken of een beveiligde Score bekijken.
 >- [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
@@ -599,22 +598,6 @@ Kan alle aspecten van de Azure Information Protection-Service beheren.
 | micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>Beheerders machtigingen voor B2C-gebruikers stroom
-
-Alle aspecten van gebruikers stromen maken en beheren.
-
-| **Acties** | **Beschrijving** |
-| --- | --- |
-| micro soft. Aad. B2C/userFlows/allTasks | Gebruikers stromen lezen en configureren in Azure Active Directory B2C. |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>Beheer machtigingen voor B2C-gebruikers stroom kenmerken
-
-Het kenmerk schema maken en beheren dat beschikbaar is voor alle gebruikers stromen.
-
-| **Acties** | **Beschrijving** |
-| --- | --- |
-| micro soft. Aad. B2C/userAttributes/allTasks | Gebruikers kenmerken lezen en configureren in Azure Active Directory B2C. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF sleutelsetcursor
 
@@ -1030,6 +1013,22 @@ Kan alle aspecten van het Exchange-product beheren.
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 | micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+
+### <a name="external-id-user-flow-administrator-permissions"></a>Beheer machtigingen voor gebruikers stroom externe ID
+
+Alle aspecten van gebruikers stromen maken en beheren.
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. Aad. B2C/userFlows/allTasks | Gebruikers stromen lezen en configureren in Azure Active Directory B2C. |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Externe ID gebruikers stroom kenmerk beheer machtigingen
+
+Het kenmerk schema maken en beheren dat beschikbaar is voor alle gebruikers stromen.
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. Aad. B2C/userAttributes/allTasks | Gebruikers kenmerken lezen en configureren in Azure Active Directory B2C. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Beheerders machtigingen voor externe ID-providers
 
@@ -1809,8 +1808,6 @@ Toepassingsontwikkelaar | Toepassings ontwikkelaar | CF1C38E5-3621-4004-A7CB-879
 Verificatie beheerder | Verificatie beheerder | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps-beheerder | Azure DevOps-beheerder | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection beheerder | Azure Information Protection beheerder | 7495fdc4-34c4-4d15-a289-98788ce399fd
-Beheerder van B2C-gebruikers stroom | Beheerder van B2C-gebruikers stroom | 6e591065-9bad-43ed-90f3-e9424366d2f0
-B2C-gebruikers stroom kenmerk beheerder | B2C-gebruikers stroom kenmerk beheerder | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF sleutelsetcursor | B2C IEF sleutelsetcursor | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF-beleids beheerder | B2C IEF-beleids beheerder | 3edaf663-341e-4475-9f94-5c398ef6c070
 Factureringsbeheerder | Factureringsbeheerder | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1831,6 +1828,8 @@ Adreslijst lezers | Adreslijst lezers | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | d29b2b05-8046-44ba-8758-1e26182fcf32
 Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange service-beheerder | Exchange-beheerder | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Externe ID gebruikers stroom beheerder | Externe ID gebruikers stroom beheerder | 6e591065-9bad-43ed-90f3-e9424366d2f0
+Externe ID gebruikers stroom kenmerk beheerder | Externe ID gebruikers stroom kenmerk beheerder | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Beheerder van externe ID-provider | Beheerder van externe ID-provider | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Algemene lezer | Algemene lezer | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Groeps beheerder | Groeps beheerder | fdd7a751-b60b-444a-984c-02652fe8fa1c 

@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: Bericht-entiteiten onderbreken en opnieuw activeren
           href: entity-suspend.md
+        - name: Gebruik Service Bus Explorer om gegevensbewerkingen uit te voeren in Service Bus
+          href: explorer.md
         - name: ARM-sjabloon gebruiken
           href: service-bus-resource-manager-overview.md
           items:

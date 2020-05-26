@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Spraak herkennen die is opgeslagen in blobopslag
           href: quickstarts/from-blob.md
-        - name: Beoordeling van de uitspraak met referentie-invoer
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Instructiegidsen
       items:
         - name: Spraakherkenningsmodus kiezen
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: Hulpprogramma's
   items:
-    - name: SPX
+    - name: Speech-CLI
+      displayName: SPX
       items:
-        - name: Wat is SPX?
+        - name: Wat is de Speech-CLI?
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: SPX-basisbeginselen
+        - name: Basisbeginselen van de Speech-CLI
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

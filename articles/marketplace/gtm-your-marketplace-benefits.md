@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190330"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800500"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -36,7 +36,7 @@ De minimale vereiste voor het publiceren op de winkel is een MPNID. deze voor de
 
 U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook [op uw eigen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)manier kunt controleren.
 
-Gedetailleerde beschrijvingen van alle programma voordelen vindt u in het [Marketplace-programma voor markt beloningen](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Gedetailleerde beschrijvingen van alle programma voordelen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 
 De stappen om aan de slag te gaan zijn eenvoudig:
 
@@ -56,7 +56,7 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 2. Het gebruik van de voor delen van Azure sponsor wordt gedeeld via een e-mail wanneer u deze voor delen ontgrendelt.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen, of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren bij [Help en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen, of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 
@@ -68,7 +68,7 @@ In de volgende tabel vindt u een overzicht van de vereisten voor lijst-en proef 
 
 ![Go-to-Market-voor delen](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-beloningen voor Transact-partners
 
@@ -89,7 +89,7 @@ Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen eng
 
 \*De drempel voor de verkochte seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2020.
 
-Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c).
+Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 
 Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dynamics-aanbiedingen gepubliceerd naar Microsoft AppSource aanvullende Program ma's beschikbaar [maken via ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). Dit omvat technische, marketing-en verkoop ondersteuning die speciaal is gericht op de behoeften van zakelijke toepassings partners.
 
@@ -97,7 +97,7 @@ Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dy
 
 ### <a name="publisher-agreement"></a>Uitgevers overeenkomst
 
-Alle activiteiten die op deze pagina worden beschreven, worden gedekt door de [uitgevers overeenkomst voor Marketplace](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) en zijn onderworpen aan de addendum van het programma voor commerciële voor delen.
+Alle activiteiten die op deze pagina worden beschreven, worden gedekt door de [uitgevers overeenkomst voor Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) en zijn onderworpen aan de addendum van het programma voor commerciële voor delen.
 
 ### <a name="cancellation-policy"></a>Annulerings beleid
 
@@ -122,6 +122,6 @@ Als u uw aanbieding in [partner centrum](https://partner.microsoft.com/dashboard
 
 Bekijk de [zelf-beschik bare resources die voor u beschikbaar zijn](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Meld u aan voor het [Community-Forum voor Microsoft AppSource en Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) , lees meer over relevante onderwerpen of neem lid van de discussie.
+Meld u aan voor het [Community-Forum voor Microsoft AppSource en Azure Marketplace](https://aka.ms/MarketplaceCommunity) , lees meer over relevante onderwerpen of neem lid van de discussie.
 
 ---

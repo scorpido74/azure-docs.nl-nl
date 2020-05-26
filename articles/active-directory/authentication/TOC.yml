@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Verificatie op basis van SMS gebruiken (preview)
       href: howto-authentication-sms-signin.md
+    - name: Aanmelden met e-mailadres gebruiken (preview)
+      href: howto-authentication-use-email-signin.md
     - name: Slimme vergrendeling van Azure AD
       href: howto-password-smart-lockout.md
     - name: Verificatie op basis van certificaat
@@ -223,8 +225,8 @@
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Service-updates

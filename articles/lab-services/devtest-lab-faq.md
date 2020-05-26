@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: c5e5437db480646275a8bbe34e1a64c005a32a16
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996902"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827723"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -47,7 +47,7 @@ Onze Twitter-ingang:[@azlabservices](https://twitter.com/azlabservices)
 Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen helpen om een antwoord te vinden.
 
 - Plaats een vraag aan het einde van deze veelgestelde vragen.
-- Als u een breder publiek wilt bereiken, plaatst u een vraag op het [MSDN-forum van Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Neem contact op met het Azure DevTest Labs team en andere leden van de community.
+- Als u een breder publiek wilt bereiken, plaatst u een vraag op de [pagina micro soft Q&een vraag voor Azure DevTest Labs](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html). Neem contact op met het Azure DevTest Labs team en andere leden van de community.
 - Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure DevTest Labs gebruikers stem](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Wat is een Microsoft-account?
@@ -307,7 +307,7 @@ Azure Marketplace moet standaard worden gebruikt, tenzij u specifieke problemen 
 - Nalevings-of regelgeving (bijvoorbeeld beveiligings beleid) die voor alle machines aanwezig moet zijn.
 - Het gebruik van aangepaste installatie kopieën mag niet lichter worden beschouwd. Ze introduceren extra complexiteit, omdat u nu VHD-bestanden moet beheren voor de onderliggende basis installatie kopieën. U moet deze basis installatie kopieën ook regel matig patchen met software-updates. Deze updates omvatten nieuwe besturings systemen (OS)-updates en eventuele updates of configuratie wijzigingen die nodig zijn voor het software pakket zelf.
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Wat zijn artefacten?
 Artefacten zijn aanpas bare elementen die u kunt gebruiken om uw nieuwste bits te implementeren of uw ontwikkel hulpprogramma's te implementeren op een VM. Koppel artefacten aan uw virtuele machine wanneer u de virtuele machine maakt. Nadat de virtuele machine is ingericht, worden de artefacten geïmplementeerd en geconfigureerd voor uw VM. Verschillende bestaande artefacten zijn beschikbaar in onze [open bare github-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). U kunt ook [uw eigen artefacten ontwerpen](devtest-lab-artifact-author.md).
@@ -327,7 +327,7 @@ De [opslag plaats voor open bare artefacten](https://github.com/Azure/azure-devt
 Als onderdeel van de algehele beheer-en configuratie strategie van uw organisatie wordt u aangeraden een gecentraliseerde opslag plaats te gebruiken. Wanneer u meerdere opslag plaatsen gebruikt, kunnen ze gedurende de periode een silo van onbeheerde software worden. Met een centrale opslag plaats kunnen meerdere teams artefacten uit deze opslag plaats gebruiken voor hun projecten. Het dwingt de standaardisatie af, de beveiliging, het gemak van het beheer en elimineert het dupliceren van inspanningen. Als onderdeel van de gecentraliseerde zijn de volgende acties aanbevolen procedures voor het beheer en duurzaamheid op lange termijn:
 
 - Koppel de Azure-opslag plaatsen aan dezelfde Azure Active Directory-Tenant die door het Azure-abonnement wordt gebruikt voor verificatie en autorisatie.
-- Maak een groep met `All DevTest Labs Developers` de naam in azure Active Directory die centraal wordt beheerd. Ontwikkel aars die bijdraagt aan het ontwikkelen van artefacten, moeten in deze groep worden geplaatst.
+- Maak een groep met de naam `All DevTest Labs Developers` in azure Active Directory die centraal wordt beheerd. Ontwikkel aars die bijdraagt aan het ontwikkelen van artefacten, moeten in deze groep worden geplaatst.
 - Dezelfde Azure Active Directory groep kan worden gebruikt om toegang te bieden tot de Azure opslag plaatsen-opslag plaats en het lab.
 - In azure opslag plaatsen moet vertakkingen of forking worden gebruikt voor het scheiden van een opslag plaats in ontwikkeling van de primaire productie opslagplaats. Inhoud wordt alleen toegevoegd aan de hoofd vertakking met een pull-aanvraag nadat de juiste code is gecontroleerd. Zodra de code revisor de wijziging heeft goedgekeurd, wordt een lead ontwikkelaar, die verantwoordelijk is voor het onderhoud van de hoofd vertakking, samengevoegd met de bijgewerkte code.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743826"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836563"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typen runbook
 
@@ -115,7 +115,7 @@ Python runbooks compileren onder python 2. U kunt de code van het runbook rechts
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Runbooks in Azure Automation beheren](manage-runbooks.md)
-* [Power shell-werk stroom voor Azure Automation leren](automation-powershell-workflow.md)
-* [Grafische runbooks ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
-* [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)
+* Zie [zelf studie: een Power shell-Runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)voor meer informatie over Power shell-runbooks.
+* Zie [zelf studie: een Power shell workflow-Runbook maken](learn/automation-tutorial-runbook-textual.md)voor meer informatie over Power shell workflow-runbooks.
+* Zie [zelf studie: een grafisch Runbook maken](learn/automation-tutorial-runbook-graphical.md)voor meer informatie over grafische runbooks.
+* Zie [zelf studie: een python-Runbook maken](learn/automation-tutorial-runbook-textual-python2.md)voor meer informatie over python-runbooks.

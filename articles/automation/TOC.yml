@@ -63,7 +63,7 @@
           href: automation-role-based-access-control.md
         - name: Een Automation-account verplaatsen naar een ander abonnement
           href: how-to/move-account.md
-        - name: Migreren vanuit System Center Orchestrator
+        - name: Migreren van Orchestrator naar Azure Automation (bèta)
           href: automation-orchestrator-migration.md
     - name: Gedeelde resources
       items:
@@ -89,7 +89,7 @@
           href: troubleshoot/shared-resources.md
     - name: Procesautomatisering
       items:
-        - name: Runbooks en modules zoeken in de PowerShell Gallery
+        - name: Runbooks en modules gebruiken in PowerShell Gallery
           href: automation-runbook-gallery.md
         - name: PowerShell-werkstroom leren
           href: automation-powershell-workflow.md
@@ -123,11 +123,11 @@
               href: automation-runbook-graphical-error-handling.md
             - name: Taakgegevens doorsturen naar Azure Monitor-logboeken
               href: automation-manage-send-joblogs-log-analytics.md
-        - name: Problemen oplossen
+        - name: Problemen met runbooks oplossen
           items:
             - name: Problemen met runbooks oplossen
               href: troubleshoot/runbooks.md
-            - name: Gegevens die u moet verzamelen voordat u een ondersteuningscase opent
+            - name: Te verzamelen gegevens bij het openen van een case voor Microsoft Azure Automation
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Werken met een Hybrid Runbook Worker
           items:
@@ -143,69 +143,75 @@
           href: source-control-integration.md
     - name: Configuration Management
       items:
-        - name: State Configuration (DSC)
+        - name: Azure Automation State Configuration
           items:
             - name: Overzicht
               href: automation-dsc-overview.md
             - name: Aan de slag met State Configuration
               href: automation-dsc-getting-started.md
-            - name: Machines onboarden voor beheer
+            - name: State Configuration inschakelen
               href: automation-dsc-onboarding.md
-            - name: Machines configureren met een gewenste status
+            - name: Servers configureren naar een gewenste status en afwijkingen beheren
               href: tutorial-configure-servers-desired-state.md
-            - name: DSC-configuraties compileren
-              href: automation-dsc-compile.md
-            - name: Gegevensdrift bij configuratie oplossen
-              href: automation-dsc-remediate.md
             - name: DSC-configuraties samenstellen
               href: compose-configurationwithcompositeresources.md
+            - name: DSC-configuraties compileren
+              href: automation-dsc-compile.md
+            - name: Niet-compatibele State Configuration-servers herstellen
+              href: automation-dsc-remediate.md
             - name: Doorlopende implementatie instellen met Chocolatey
               href: automation-dsc-cd-chocolatey.md
             - name: Integratie met Azure Monitor-logboeken
               href: automation-dsc-diagnostics.md
-            - name: Problemen met DSC oplossen
-              href: troubleshoot/desired-state-configuration.md
-            - name: Versiegeschiedenis van Azure DSC-extensie
+            - name: Werken met de versiehistorie van State Configuration-extensies
               href: automation-dsc-extension-history.md
+            - name: Problemen met State Configuration oplossen
+              href: troubleshoot/desired-state-configuration.md
         - name: Wijzigingen bijhouden en inventaris
           items:
             - name: Overzicht
               href: change-tracking.md
-            - name: Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
+            - name: Regio's voor gekoppelde Log Analytics-werkruimte ondersteunen
               href: how-to/region-mappings.md
-            - name: Wijzigingen bijhouden en Inventaris inschakelen
+            - name: Inschakelen
               items:
-                - name: Azure Portal gebruiken
-                  href: automation-onboard-solutions-from-browse.md
-                - name: Vanuit een Azure-VM
-                  href: automation-onboard-solutions-from-vm.md
-                - name: Vanuit een Automation-account
-                  href: automation-onboard-solutions-from-automation-account.md
-                - name: Vanuit een Automation-runbook
-                  href: automation-onboard-solutions.md
+                - name: Wijzigingen bijhouden en inventaris inschakelen via Azure Portal
+                  href: automation-enable-changes-from-browse.md
+                - name: Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine
+                  href: automation-enable-changes-from-vm.md
+                - name: Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account
+                  href: automation-enable-changes-from-auto-acct.md
+                - name: Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook
+                  href: automation-enable-changes-from-runbook.md
             - name: Wijzigingen bijhouden en inventaris beheren
               href: change-tracking-file-contents.md
             - name: Een inventarisverzameling beheren vanuit VM's
               href: automation-vm-inventory.md
+            - name: Werken met scopeconfiguraties
+              href: automation-scope-configurations-change-tracking.md
+            - name: De werkruimte ontkoppelen van het Automation-account
+              href: automation-unlink-workspace-change-tracking.md
+            - name: VM's verwijderen uit Wijzigingen bijhouden en inventaris
+              href: automation-remove-vms-from-change-tracking.md
             - name: Problemen oplossen
               items:
-                - name: Onboarding
+                - name: Problemen met VM-implementatie oplossen
                   href: troubleshoot/onboarding.md
-                - name: Wijzigingen bijhouden en inventarisatie gebruiken
+                - name: Problemen met Wijzigingen bijhouden en inventaris oplossen
                   href: troubleshoot/change-tracking.md
     - name: VM's starten/stoppen buiten kantooruren
       items:
         - name: Overzicht
           href: automation-solution-vm-management.md
-        - name: Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
+        - name: Regio's voor gekoppelde Log Analytics-werkruimte ondersteunen
           href: how-to/region-mappings.md
-        - name: Inschakelen
+        - name: VM's buiten bedrijfsuren starten/stoppen inschakelen
           href: automation-solution-vm-management-enable.md
-        - name: Configureren
+        - name: VM's buiten bedrijfsuren starten/stoppen configureren
           href: automation-solution-vm-management-config.md
-        - name: Gegevens analyseren met logboekquery's
+        - name: Query's uitvoeren op logboeken vanuit VM's buiten bedrijfsuren starten/stoppen
           href: automation-solution-vm-management-logs.md
-        - name: Problemen oplossen
+        - name: Problemen oplossen met VM's buiten bedrijfsuren starten/stoppen
           href: troubleshoot/start-stop-vm.md
     - name: Updatebeheer
       items:
@@ -215,21 +221,23 @@
           href: how-to/region-mappings.md
         - name: Inschakelen
           items:
-            - name: Een Resource Manager-sjabloon gebruiken
+            - name: Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
               href: automation-update-management-deploy-template.md
-            - name: Azure Portal gebruiken
+            - name: Updatebeheer inschakelen via Azure Portal
               href: automation-onboard-solutions-from-browse.md
-            - name: Vanuit een Azure-VM
+            - name: Updatebeheer inschakelen vanaf een virtuele Azure-machine
               href: automation-onboard-solutions-from-vm.md
-            - name: Vanuit een Automation-account
+            - name: Updatebeheer inschakelen vanaf een Automation-account
               href: automation-onboard-solutions-from-automation-account.md
+            - name: Updatebeheer inschakelen vanuit een runbook
+              href: automation-onboard-solutions.md
         - name: Updates voor uw Azure-VM’s beheren
           href: automation-tutorial-update-management.md
         - name: Updates voor meerdere virtuele machines beheren
           href: manage-update-multi.md
         - name: Update-evaluaties bekijken
           href: automation-view-update-assessments.md
-        - name: Pre- en post-scripts beheren
+        - name: 'Scripts voorafgaand aan de back-up en scripts die erop volgen, beheren'
           href: pre-post-scripts.md
         - name: Integreren met Configuration Manager
           href: updatemgmt-mecmintegration.md
@@ -239,11 +247,17 @@
           href: automation-update-management-groups.md
         - name: Query's uitvoeren op Updatebeheer-logboeken
           href: automation-update-management-query-logs.md
+        - name: Werken met scopeconfiguraties
+          href: automation-scope-configurations-update-management.md
+        - name: De werkruimte ontkoppelen van het Automation-account
+          href: automation-unlink-workspace-update-management.md
+        - name: VM's verwijderen uit Updatebeheer
+          href: automation-remove-vms-from-update-management.md
         - name: Problemen oplossen
           items:
-            - name: Onboarding
+            - name: Problemen met implementatie van functies oplossen
               href: troubleshoot/onboarding.md
-            - name: Updatebeheer gebruiken
+            - name: Problemen met Updatebeheer oplossen
               href: troubleshoot/update-management.md
             - name: Problemen met de Windows Update-agent oplossen
               href: troubleshoot/update-agent-issues.md
@@ -269,7 +283,9 @@
           href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: Naslaginformatie
   items:
-    - name: Azure PowerShell
+    - name: Azure PowerShell Az
+      href: /powershell/module/az.automation
+    - name: Azure PowerShell AzureRM
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

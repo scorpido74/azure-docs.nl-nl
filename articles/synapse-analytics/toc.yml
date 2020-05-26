@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Zelfstudies
   items:
+    - name: Aan de slag
+      href: get-started.md
     - name: Apache Spark-toepassingen uitvoeren voor Spark-pools
       href: ./spark/intellij-tool-synapse.md
     - name: Spark-taakdefinities

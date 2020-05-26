@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97605b0cdc7ac6368b21e9427f64e4bca7e35d4a
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250229"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815941"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Onderhoud voor virtuele machines in Azure
 
@@ -21,7 +21,7 @@ Azure werkt periodiek het platform bij om de betrouw baarheid, prestaties en bev
 Updates zijn zelden van invloed op de gehoste Vm's. Wanneer de updates een effect hebben, kiest Azure de methode van de minst meest impact op updates:
 
 - Als de update niet opnieuw moet worden opgestart, wordt de virtuele machine onderbroken terwijl de host wordt bijgewerkt, of wordt de virtuele machine Live gemigreerd naar een al bijgewerkte host. 
-- Als het onderhoud opnieuw moet worden opgestart, ontvangt u een melding van het geplande onderhoud. Azure biedt ook een tijd venster waarin u het onderhoud zelf kunt starten, op het moment dat u voor u werkt. Het venster zelf onderhoud is doorgaans 30 dagen, tenzij het onderhoud urgent is. Azure is investeren in technologieën om het aantal cases te verminderen waarvoor gepland platform onderhoud vereist dat de Vm's opnieuw worden opgestart. Zie voor instructies voor het beheren van gepland onderhoud geplande onderhouds meldingen verwerken met Azure [cli](maintenance-notifications-cli.md), [Power shell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
+- Als het onderhoud opnieuw moet worden opgestart, ontvangt u een melding van het geplande onderhoud. Azure biedt ook een tijd venster waarin u het onderhoud zelf kunt starten, op het moment dat u voor u werkt. Het venster voor zelf onderhoud is doorgaans 35 dagen, tenzij het onderhoud urgent is. Azure is investeren in technologieën om het aantal cases te verminderen waarvoor gepland platform onderhoud vereist dat de Vm's opnieuw worden opgestart. Zie voor instructies voor het beheren van gepland onderhoud geplande onderhouds meldingen verwerken met Azure [cli](maintenance-notifications-cli.md), [Power shell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
 
 Op deze pagina wordt beschreven hoe Azure beide soorten onderhoud uitvoert. Zie [de beschik baarheid van vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over niet-geplande gebeurtenissen (uitval).
 
@@ -37,11 +37,11 @@ De meeste onderhoud van niet-nul-impact pauzeert de virtuele machine korter dan 
 
 Het onderhoud van geheugen-behoud werkt meer dan 90 procent van de Azure-Vm's. Het werkt niet voor G, M, N en H-serie. Azure maakt steeds meer gebruik van Live-migratie technologieën en verbetert de onderhouds mechanismen van het geheugen om de onderbrekings duur te verminderen.  
 
-Voor deze onderhouds bewerkingen die niet opnieuw moeten worden opgestart, wordt één fout domein tegelijk toegepast. Deze worden gestopt als er waarschuwings status signalen worden ontvangen. 
+Voor deze onderhouds bewerkingen die niet opnieuw moeten worden opgestart, wordt één fout domein tegelijk toegepast. Deze worden gestopt als er waarschuwings signalen worden ontvangen van de hulpprogram ma's voor het controleren van het platform. 
 
 Deze typen updates kunnen van invloed zijn op sommige toepassingen. Wanneer de virtuele machine Live naar een andere host wordt gemigreerd, kan het even duren voordat de virtuele machine wordt onderbroken door bepaalde gevoelige workloads. Voor de voor bereiding op het onderhoud van de virtuele machine en het verminderen van de impact tijdens het onderhoud van Azure, kunt [u Scheduled Events voor Windows](./windows/scheduled-events.md) of [Linux](./linux/scheduled-events.md) gebruiken voor dergelijke toepassingen. 
 
-Er is ook een functie, onderhouds beheer, in open bare preview die u kan helpen onderhoud te beheren waarvoor opnieuw opstarten niet nodig is. U moet een met [Azure toegewezen hosts](./linux/dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de mogelijkheid om platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daags venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control-cli.md)voor meer informatie.
+Voor meer controle over alle onderhouds activiteiten, inclusief het bijwerken van nul of het opnieuw opstarten van updates, kunt u de functie onderhouds beheer gebruiken. U moet een met [Azure toegewezen hosts](./linux/dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de optie om alle platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daagse venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control.md)voor meer informatie.
 
 
 ### <a name="live-migration"></a>Livemigratie

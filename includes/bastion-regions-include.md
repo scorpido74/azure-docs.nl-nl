@@ -5,21 +5,21 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78668918"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721218"
 ---
 >[!NOTE]
->We werken hard om extra regio's toe te voegen. Wanneer een regio wordt toegevoegd, worden deze toegevoegd aan deze lijst.
+>We werken hard om aanvullende regio's toe te voegen. Wanneer een regio wordt toegevoegd, voegen we deze toe aan deze lijst.
 >
 
-**Amerikaanse**
+**Noord- en Zuid-Amerika**
 * Brazilië - zuid
 * Canada - midden
 * VS - centraal
@@ -34,7 +34,9 @@ ms.locfileid: "78668918"
 **Europa**
 * Frankrijk - centraal
 * Europa - noord
-* Noor wegen-Oost
+* Noorwegen - oost
+* Noorwegen - west
+* Zwitserland - noord
 * Verenigd Koninkrijk Zuid
 * Verenigd Koninkrijk West
 * Europa -west
@@ -49,6 +51,7 @@ ms.locfileid: "78668918"
 * Korea - centraal
 * Korea - zuid
 * Azië - zuidoost
+* India - centraal
 * India - west
 
 **Midden-Oosten en Afrika**
