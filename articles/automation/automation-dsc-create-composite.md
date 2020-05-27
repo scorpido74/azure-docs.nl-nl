@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99fd7b2d0581b3eda97ec6fadeb43b55a3ad2bf0
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b3a49fac5600e6338d5fb56281a3360f0abaa39a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711326"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836971"
 ---
-# <a name="convert-configurations-to-composite-resources-for-azure-automation-state-configuration"></a>Configuraties converteren naar samengestelde resources voor Azure Automation status configuratie
+# <a name="convert-configurations-to-composite-resources"></a>Configuraties converteren naar samengestelde resources
 
 > Van toepassing op: Windows Power shell 5,1
 
@@ -57,6 +57,6 @@ Als u het maken van samengestelde resources voor DSC wilt automatiseren, gaat u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
-- [DSC-resources](/powershell/scripting/dsc/resources/resources)
-- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview)(Engelstalig) voor meer informatie over Power shell DSC.
+- Meer informatie over Power shell DSC-resources in [DSC-resources](/powershell/scripting/dsc/resources/resources).
+- Zie [Configuring the local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)(Engelstalig) voor meer informatie over de configuratie van de lokale Configuration Manager.

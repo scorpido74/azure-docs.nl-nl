@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/22/2020
+ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712669"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837141"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
 
@@ -26,6 +26,8 @@ Met de sjabloon wordt het inschakelen van virtuele Azure-of niet-Azure-machines 
 
 >[!NOTE]
 >Het maken van het uitvoeren als-account voor Automation wordt niet ondersteund wanneer u een Azure Resource Manager sjabloon gebruikt. Zie [Run as-accounts beheren](manage-runas-account.md)als u een uitvoeren als-account hand matig wilt maken vanuit de portal of met Power shell.
+
+Nadat u deze stappen hebt voltooid, moet u de [Diagnostische instellingen](automation-manage-send-joblogs-log-analytics.md) voor uw Automation-account configureren om de status en taak stromen van de runbook-taak te verzenden naar de gekoppelde log Analytics-werk ruimte. 
 
 ## <a name="api-versions"></a>API-versies
 
@@ -310,6 +312,4 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een PowerShell-runbook maken](automation-first-runbook-textual-powershell.md)
-* [Een Power shell workflow-runbook maken](automation-first-runbook-textual.md)
-* [Een Python-runbook maken](automation-first-runbook-textual-python2.md)
+Als u de status van de runbook-taak en taak stromen wilt door sturen naar de gekoppelde Log Analytics-werk ruimte, raadpleegt [u Azure Automation taak gegevens naar Azure monitor logboeken](automation-manage-send-joblogs-log-analytics.md). Hiermee configureert u de diagnostische instellingen van het Automation-account met Azure PowerShell opdrachten voor het volt ooien van de integratie voor het verzenden van logboeken naar de werk ruimte voor analyse. 

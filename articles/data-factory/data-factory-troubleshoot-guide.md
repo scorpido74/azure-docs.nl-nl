@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744771"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836155"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,7 +56,7 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 
 - **Oorzaak**:`Bad authoring.`
 
-- **Aanbeveling**: Geef een absoluut pad op voor werk ruimte-adresserings `dbfs:/folder/subfolder/foo.py` schema's of voor bestanden die zijn opgeslagen in de Databricks-bestands systeem (DFS).
+- **Aanbeveling**: Geef een absoluut pad op voor werk ruimte-adresserings schema's of `dbfs:/folder/subfolder/foo.py` voor bestanden die zijn opgeslagen in de Databricks-BESTANDS systeem (DFS).
 
 <br/> 
 
@@ -102,7 +102,7 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 
 <br/> 
 
-- **Bericht**: `User: `SimpleUserContext {gebruikersID =..., naam =user@company.com, orgId =...}` is not authorized to access cluster.`
+- **Bericht**: `User: ` SimpleUserContext {gebruikersID =..., naam = user@company.com , orgId =...}` is not authorized to access cluster.`
 
 - **Oorzaak**: de gebruiker die het toegangs token heeft gegenereerd, heeft geen toegang tot het Databricks-cluster dat is opgegeven in de gekoppelde service.
 
@@ -226,7 +226,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: de definitie van de Azure function-activiteit is niet voltooid.
 
-- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit `functionKey`een eigenschap heeft met de naam.
+- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit een eigenschap heeft met de naam `functionKey` .
 
 ### <a name="error-code-3607"></a>Fout code: 3607
 
@@ -234,7 +234,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: de definitie van de Azure function-activiteit is niet voltooid.
 
-- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit `functionName`een eigenschap heeft met de naam.
+- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit een eigenschap heeft met de naam `functionName` .
 
 ### <a name="error-code-3608"></a>Fout code: 3608
 
@@ -250,7 +250,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: de definitie van de Azure function-activiteit is niet voltooid.
 
-- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit `functionAppUrl`een eigenschap heeft met de naam.
+- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit een eigenschap heeft met de naam `functionAppUrl` .
 
 ### <a name="error-code-3610"></a>Fout code: 3610
 
@@ -266,7 +266,7 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Oorzaak**: de definitie van de Azure function-activiteit is niet voltooid.
 
-- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit `method`een eigenschap heeft met de naam.
+- **Aanbeveling**: Controleer of de JSON-definitie van de Azure function activity-activiteit een eigenschap heeft met de naam `method` .
 
 ### <a name="error-code-3612"></a>Fout code: 3612
 
@@ -282,9 +282,9 @@ De volgende tabel is van toepassing op U-SQL.
 
 - **Bericht**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **Oorzaak**: onjuiste indeling of ontbrekende definitie van eigenschap `%propertyName;`.
+- **Oorzaak**: onjuiste indeling of ontbrekende definitie van eigenschap `%propertyName;` .
 
-- **Aanbeveling**: Controleer of de eigenschap `%activityName;` `%propertyName;` met de juiste gegevens is gedefinieerd voor de activiteit.
+- **Aanbeveling**: Controleer of de `%activityName;` eigenschap `%propertyName;` met de juiste gegevens is gedefinieerd voor de activiteit.
 
 ### <a name="error-code-4110"></a>Fout code: 4110
 
@@ -592,7 +592,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Bericht**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **Oorzaak**: het fout bericht bevat een bericht dat lijkt `The remote name could not be resolved.`op. De gegeven URI van het cluster is mogelijk ongeldig.
+- **Oorzaak**: het fout bericht bevat een bericht dat lijkt op `The remote name could not be resolved.` . De gegeven URI van het cluster is mogelijk ongeldig.
 
 - **Aanbeveling**: Controleer of het cluster niet is verwijderd en of de gegeven URI juist is. Wanneer u de URI in een browser opent, ziet u de Ambari-gebruikers interface. Als het cluster zich in een virtueel netwerk bevindt, moet de URI de persoonlijke URI zijn. Gebruik een virtuele machine (VM) die deel uitmaakt van hetzelfde virtuele netwerk om deze te openen.
 
@@ -600,7 +600,7 @@ De volgende tabel is van toepassing op Azure Batch.
  
  </br>
 
-- **Oorzaak**: als het fout bericht een bericht bevat dat lijkt `A task was canceled.`op, is er een time-out opgetreden voor de taak verzending.
+- **Oorzaak**: als het fout bericht een bericht bevat dat lijkt op `A task was canceled.` , is er een time-out opgetreden voor de taak verzending.
 
 - **Aanbeveling**: het probleem kan algemeen HDInsight-connectiviteit of een netwerk verbinding zijn. Controleer eerst of de gebruikers interface van HDInsight Ambari beschikbaar is vanuit elke browser. Controleer vervolgens of uw referenties nog geldig zijn.
    
@@ -610,7 +610,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
  </br>
 
-- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar `User admin is locked out in Ambari` is `Unauthorized: Ambari user name or password is incorrect`met of, zijn de referenties voor HDInsight onjuist of verlopen.
+- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar is met `User admin is locked out in Ambari` of `Unauthorized: Ambari user name or password is incorrect` , zijn de referenties voor HDInsight onjuist of verlopen.
 
 - **Aanbeveling**: Corrigeer de referenties en implementeer de gekoppelde service opnieuw. Controleer eerst of de referenties werken op HDInsight door de cluster-URI in een browser te openen en u aan te melden. Als de referenties niet werken, kunt u ze opnieuw instellen op de Azure Portal.
 
@@ -618,12 +618,12 @@ De volgende tabel is van toepassing op Azure Batch.
 
  </br>
 
-- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar `502 - Web server received an invalid response while acting as a gateway or proxy server`is met, wordt deze fout geretourneerd door de HDInsight-service.
+- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar `502 - Web server received an invalid response while acting as a gateway or proxy server` is met, wordt deze fout geretourneerd door de HDInsight-service.
 
 - **Aanbeveling**: er treedt vaak een 502-fout op wanneer het proces van de Ambari-server is afgesloten. U kunt de Ambari-services opnieuw starten door het hoofd knooppunt opnieuw op te starten.
 
     1. Verbinding maken met een van uw knoop punten op HDInsight met behulp van SSH.
-    1. Zoek de host van het actieve hoofd knooppunt `ping headnodehost`door uit te voeren.
+    1. Zoek de host van het actieve hoofd knooppunt door uit te voeren `ping headnodehost` .
     1. Maak met SSH verbinding met het actieve hoofd knooppunt als Ambari server. 
     1. Start het actieve hoofd knooppunt opnieuw op.
 
@@ -635,7 +635,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
  </br>
 
-- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar `Unable to service the submit job request as templeton service is busy with too many submit job requests` is `Queue root.joblauncher already has 500 applications, cannot accept submission of application`met of, worden er op hetzelfde moment te veel taken verzonden naar HDInsight.
+- **Oorzaak**: wanneer het fout bericht een bericht bevat dat vergelijkbaar is met `Unable to service the submit job request as templeton service is busy with too many submit job requests` of `Queue root.joblauncher already has 500 applications, cannot accept submission of application` , worden er op hetzelfde moment te veel taken verzonden naar HDInsight.
 
 - **Aanbeveling**: Beperk het aantal gelijktijdige taken dat is verzonden naar HDInsight. Raadpleeg Data Factory gelijktijdige activiteit als de taken worden verzonden door dezelfde activiteit. Wijzig de triggers zodat de gelijktijdige pijplijn uitvoeringen in de loop van de tijd worden verdeeld.
 
@@ -649,7 +649,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Aanbeveling**: deze fout treedt op wanneer ADF geen antwoord ontvangt van HDInsight-cluster wanneer wordt geprobeerd om de status van de actieve taak aan te vragen. Dit probleem kan zich voordoen op het cluster zelf of de HDInsight-service kan een storing hebben.
 
-   Raadpleeg de documentatie voor het oplossen https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guidevan problemen met HDInsight op of neem contact op met de ondersteuning voor verdere ondersteuning.
+   Raadpleeg de documentatie voor het oplossen van problemen met HDInsight op https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide of neem contact op met de ondersteuning voor verdere ondersteuning.
 
 ### <a name="error-code-2302"></a>Fout code: 2302
 
@@ -667,10 +667,10 @@ De volgende tabel is van toepassing op Azure Batch.
  1. Een voor beeld van een test taak uitvoeren.
     1. Als u dezelfde taak uitvoert op HDInsight-back-end, controleert u of deze is geslaagd. Zie voor voor beelden van voorbeeld uitvoeringen [de MapReduce-voor beelden in HDInsight uitvoeren](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
  1. Als de taak nog steeds is mislukt op HDInsight, controleert u de logboeken en informatie over de toepassing, die u kunt bieden om ondersteuning te geven voor:
-    1. Controleer of de taak is verzonden naar GARENs. Als de taak niet is verzonden naar garens `--master yarn`, gebruikt u.
+    1. Controleer of de taak is verzonden naar GARENs. Als de taak niet is verzonden naar garens, gebruikt u `--master yarn` .
     1. Als de toepassing is uitgevoerd, verzamelt u de begin tijd en eind tijd van de toepassing voor GARENs. Als de toepassing de uitvoering niet heeft voltooid, verzamelt u start tijd/start tijd.
-    1. Controleer en verzamel het toepassings logboek `yarn logs -applicationId <Insert_Your_Application_ID>`met.
-    1. Controleer en verzamel de logboeken van de garens `/var/log/hadoop-yarn/yarn` -Resource Manager in de Directory.
+    1. Controleer en verzamel het toepassings logboek met `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Controleer en verzamel de logboeken van de garens-Resource Manager in de `/var/log/hadoop-yarn/yarn` Directory.
     1. Als deze stappen niet voldoende zijn om het probleem op te lossen, neemt u contact op met het Azure HDInsight-team voor ondersteuning en geeft u de bovenstaande logboeken en tijds tempels op.
 
 ### <a name="error-code-2303"></a>Fout code: 2303
@@ -689,10 +689,10 @@ De volgende tabel is van toepassing op Azure Batch.
  1. Een voor beeld van een test taak uitvoeren.
     1. Als u dezelfde taak uitvoert op HDInsight-back-end, controleert u of deze is geslaagd. Zie voor voor beelden van voorbeeld uitvoeringen [de MapReduce-voor beelden in HDInsight uitvoeren](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) 
  1. Als de taak nog steeds is mislukt op HDInsight, controleert u de logboeken en informatie over de toepassing, die u kunt bieden om ondersteuning te geven voor:
-    1. Controleer of de taak is verzonden naar GARENs. Als de taak niet is verzonden naar garens `--master yarn`, gebruikt u.
+    1. Controleer of de taak is verzonden naar GARENs. Als de taak niet is verzonden naar garens, gebruikt u `--master yarn` .
     1. Als de toepassing is uitgevoerd, verzamelt u de begin tijd en eind tijd van de toepassing voor GARENs. Als de toepassing de uitvoering niet heeft voltooid, verzamelt u start tijd/start tijd.
-    1. Controleer en verzamel het toepassings logboek `yarn logs -applicationId <Insert_Your_Application_ID>`met.
-    1. Controleer en verzamel de logboeken van de garens `/var/log/hadoop-yarn/yarn` -Resource Manager in de Directory.
+    1. Controleer en verzamel het toepassings logboek met `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Controleer en verzamel de logboeken van de garens-Resource Manager in de `/var/log/hadoop-yarn/yarn` Directory.
     1. Als deze stappen niet voldoende zijn om het probleem op te lossen, neemt u contact op met het Azure HDInsight-team voor ondersteuning en geeft u de bovenstaande logboeken en tijds tempels op.
 
 ### <a name="error-code-2304"></a>Fout code: 2304
@@ -801,7 +801,7 @@ De volgende tabel is van toepassing op Azure Batch.
     1. Controleer of de referenties juist zijn door de Ambari-gebruikers interface van het HDInsight-cluster in een browser te openen.
     1. Als het cluster zich in Virtual Network (VNet) bevindt en er een zelf-hostende IR wordt gebruikt, moet de HDI-URL de privé-URL in VNets zijn en moet '-int ' worden weer gegeven na de cluster naam.
     
-       Wijzig `https://mycluster.azurehdinsight.net/` bijvoorbeeld in `https://mycluster-int.azurehdinsight.net/`. Let op `-int` de `mycluster`na, maar vóór`.azurehdinsight.net`
+       Wijzig bijvoorbeeld `https://mycluster.azurehdinsight.net/` in `https://mycluster-int.azurehdinsight.net/` . Let `-int` op de na `mycluster` , maar vóór`.azurehdinsight.net`
     1. Als het cluster zich in VNet bevindt, wordt de zelf-hostende IR gebruikt en wordt de persoonlijke URL gebruikt. de verbinding is echter nog steeds mislukt. vervolgens wordt de virtuele machine waarop de IR is geïnstalleerd problemen ondervonden met het verbinding maken met de HDI. 
     
        Maak verbinding met de virtuele machine waarop de IR is geïnstalleerd en open de Ambari-gebruikers interface in een browser. Gebruik de persoonlijke URL voor het cluster. Deze verbinding moet werken vanuit de browser. Als dat niet het geval is, neemt u contact op met het HDInsight-ondersteunings team.
@@ -957,7 +957,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Bericht**:`The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
 
-- **Oorzaak**: de opgegeven waarde voor de eigenschap `TimeToLive` required heeft een ongeldige indeling. 
+- **Oorzaak**: de opgegeven waarde voor de eigenschap Required `TimeToLive` heeft een ongeldige indeling. 
 
 - **Aanbeveling**: werk de waarde bij naar het voorgestelde bereik en probeer het opnieuw.
 
@@ -1016,7 +1016,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 1. Down load, installeer en open [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Als uw webtoepassing gebruikmaakt van HTTPS, gaat u naar **hulpprogram ma's** > **Fiddler opties** > **https**.
+1. Als uw webtoepassing gebruikmaakt van HTTPS, gaat u naar **hulpprogram ma's**  >  **Fiddler opties**  >  **https**.
 
    1. Selecteer op het tabblad HTTPS beide **vastleg ging-https maakt verbinding** en **VERsleutelt HTTPS-verkeer**.
 
@@ -1024,9 +1024,9 @@ De volgende tabel is van toepassing op Azure Batch.
 
 1. Als uw toepassing gebruikmaakt van TLS/SSL-certificaten, voegt u het Fiddler-certificaat toe aan uw apparaat.
 
-   Ga naar: **extra** > **Fiddler opties** > **https** > **acties** > **basis certificaat exporteren naar het bureau blad**.
+   Ga naar: **extra**  >  **Fiddler opties**  >  **https**  >  **acties**  >  **basis certificaat exporteren naar het bureau blad**.
 
-1. Vastleggen uitschakelen door te gaan naar het **bestand** > **Capture-verkeer**. Of druk op **F12**.
+1. Vastleggen uitschakelen door te gaan naar het **bestand**  >  **Capture-verkeer**. Of druk op **F12**.
 
 1. Wis de cache van uw browser zodat alle items in de cache worden verwijderd en opnieuw moet worden gedownload.
 
@@ -1042,7 +1042,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 1. Schakel het vastleggen van verkeer in en voltooi de problematische trans actie op de pagina.
 
-1. Ga naar: **bestanden** > **Save** > **alle sessies**opslaan.
+1. Ga naar: **bestanden**  >  **Save**  >  **alle sessies**opslaan.
 
 Zie [aan de slag met Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)voor meer informatie.
 
@@ -1055,4 +1055,4 @@ Probeer deze bronnen voor meer informatie over probleem oplossing:
 * [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-video's](https://azure.microsoft.com/resources/videos/index/)
-* [MSDN-forum](https://social.msdn.microsoft.com/Forums/home)
+* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

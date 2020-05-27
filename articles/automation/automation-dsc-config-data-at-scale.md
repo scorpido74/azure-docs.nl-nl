@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f6773d9f2210fd1b0342c9586d89155082bf8ff
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711445"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837022"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Gegevens op schaal configureren voor Azure Automation status configuratie
 
@@ -51,6 +51,6 @@ Als u de datum wilt proberen, gaat u naar de [PowerShell Gallery](https://www.po
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
-- [DSC-resources](/powershell/scripting/dsc/resources/resources)
-- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview)(Engelstalig) voor meer informatie over Power shell DSC.
+- Meer informatie over Power shell DSC-resources in [DSC-resources](/powershell/scripting/dsc/resources/resources).
+- Zie [Configuring the local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)(Engelstalig) voor meer informatie over de configuratie van de lokale Configuration Manager.

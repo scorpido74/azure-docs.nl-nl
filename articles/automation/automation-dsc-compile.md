@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: de66c124bd7627ee95b91ab4932bd7f868ec16f6
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: de46f4e2fd53b888981076256fda28a2a14995af
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715729"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837039"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in de configuratie van de Azure Automation status
 
@@ -277,8 +277,8 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
-- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )(Engelstalig) voor een Power shell-cmdlet-verwijzing.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie raadpleegt u [continue implementatie naar virtuele machines met behulp van de configuratie van Azure Automation State en Choco lade](automation-dsc-cd-chocolatey.md).
+- Zie [continue implementatie instellen met Choco lade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van status configuratie in een pijp lijn voor continue implementatie.

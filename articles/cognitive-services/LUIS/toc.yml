@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: Migreren
       items:
+        - name: Overzicht
+          href: migration.md
         - name: Migreren vanuit samengestelde entiteit
           href: migrate-from-composite-entity.md
         - name: Naar ontwerpresource migreren

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343300"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837935"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -455,6 +455,6 @@ Het opslaan van alleen-lezen-en lees-en schrijf bewerkingen in de host wordt ond
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 
-Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Gebruik het MSDN [Azure Storage-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)om contact op te nemen met het Azure Storage team en andere leden van de community over dit artikel.
+Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Als u contact wilt opnemen met het Azure Storage team en andere leden van de community over dit artikel, gebruikt u de [pagina MSDN micro soft Q&een vraag voor Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage).
 
 Als u functies wilt aanvragen, moet u uw aanvragen en ideeën verzenden naar het [Feedback forum van Azure Storage](https://feedback.azure.com/forums/217298-storage).

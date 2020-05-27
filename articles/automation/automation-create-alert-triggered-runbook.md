@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30ef3e0ccef859ec183d8aad18c0b9910a5d3c9f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712499"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837107"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Een waarschuwing gebruiken om een Azure Automation runbook te activeren
 
@@ -50,9 +50,9 @@ Het runbook maakt gebruik van het `AzureRunAsConnection` [Run as-account](automa
 Gebruik dit voor beeld om een runbook met de naam **Stop-AzureVmInResponsetoVMAlert**te maken. U kunt het Power shell-script wijzigen en het gebruiken met veel verschillende bronnen.
 
 1. Ga naar uw Azure Automation-account.
-2. Selecteer **Runbooks**onder **proces automatisering**.
-3. Selecteer boven aan de lijst met runbooks **+ een Runbook maken**.
-4. Voer op de pagina **Runbook toevoegen** de waarde **Stop-AzureVmInResponsetoVMAlert** in voor de runbooknaam. Selecteer voor het type runbook **Power shell**. Ten slotte selecteert u **Create**.  
+2. Selecteer onder **Procesautomatisering** de optie **Runbooks**.
+3. Selecteer boven aan de lijst met runbooks de optie **+ Een runbook maken**.
+4. Voer op de pagina **Runbook toevoegen** de waarde **Stop-AzureVmInResponsetoVMAlert** in voor de runbooknaam. Selecteer **PowerShell** voor het type runbook. Ten slotte selecteert u **Create**.  
 5. Kopieer het volgende Power shell-voor beeld naar de pagina **bewerken** .
 
     ```powershell-interactive
@@ -164,7 +164,7 @@ Gebruik dit voor beeld om een runbook met de naam **Stop-AzureVmInResponsetoVMAl
     }
     ```
 
-6. Selecteer **publiceren** om het runbook op te slaan en te publiceren.
+6. Selecteer **Publiceren** om het runbook op te slaan en te publiceren.
 
 ## <a name="create-the-alert"></a>De waarschuwing maken
 
@@ -175,7 +175,7 @@ Waarschuwingen gebruiken actie groepen, die bestaan uit verzamelingen acties die
 1. Klik op **selecteren** onder **resource**. Selecteer op de pagina **een resource selecteren** de virtuele machine waarvoor u een waarschuwing wilt ontvangen en klik op **gereed**.
 1. Klik op **voor waarde toevoegen** onder **voor waarde**. Selecteer het signaal dat u wilt gebruiken, bijvoorbeeld **percentage CPU** en klik op **gereed**.
 1. Voer op de pagina **signaal logica configureren** uw **drempel waarde** in onder **waarschuwings logica**en klik op **gereed**.
-1. Selecteer onder **actie groepen**de optie **nieuwe maken**.
+1. Selecteer onder **Actiegroepen** de optie **Nieuwe maken**.
 1. Geef op de pagina **actie groep toevoegen** een naam en een korte naam op voor de actie groep.
 1. Geef een naam op voor de actie. Selecteer **Automation Runbook**voor het actie type.
 1. Selecteer **Details bewerken**. Selecteer op de pagina **Runbook configureren** onder **Runbook-bron**de optie **gebruiker**.  
@@ -191,8 +191,8 @@ Waarschuwingen gebruiken actie groepen, die bestaan uit verzamelingen acties die
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een runbook starten vanuit een webhook](automation-webhooks.md)
-* [Een runbook starten](automation-starting-a-runbook.md)
-* [Waarschuwingen voor activiteiten logboeken maken](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Een waarschuwings regel maken in de Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Als u een runbook wilt starten met een webhook, raadpleegt u [een Runbook starten vanuit een webhook](automation-webhooks.md).
+* Zie [een Runbook starten](automation-starting-a-runbook.md)om verschillende manieren te ontdekken om een runbook te starten.
+* Zie [waarschuwingen voor activiteiten logboek maken](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)voor informatie over het maken van een waarschuwing voor een activiteiten logboek.
+* Zie [een waarschuwings regel maken in de Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)voor meer informatie over het maken van een nabije realtime-waarschuwing.
+* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 8a3f2c231544d07d614e6175bf703f20e4a9d9b0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 39ebdb6937b03d72365e9d3785af9571ebb66186
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743947"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836053"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Updatebeheer inschakelen vanuit een runbook
 
@@ -101,8 +101,9 @@ U moet Updatebeheer op een Azure-VM hebben ingeschakeld om dit runbook te starte
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Raadpleeg [Planningen beheren in Azure Automation](shared-resources/schedules.md) om een runbook te plannen.
 * Zie [Updates en patches voor uw Azure-VM's beheren](automation-tutorial-update-management.md) voor het gebruiken van Updatebeheer voor VM's.
-* Zie [Werken met bereikconfiguraties voor Updatebeheer](automation-scope-configurations-update-management.md)voor bereikconfiguraties.
+* Raadpleeg [Werken met bereikconfiguraties](automation-scope-configurations-update-management.md) voor bereikconfiguraties.
 * Als u de Log Analytics-werkruimte niet meer nodig hebt, raadpleegt u de instructies in [Werkruimte ontkoppelen van Automation-account voor Updatebeheer](automation-unlink-workspace-update-management.md).
 * Als u VM's uit Updatebeheer wilt verwijderen, raadpleegt u [VM's uit Updatebeheer verwijderen](automation-remove-vms-from-update-management.md).
 * Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd32d176b3e8821236f39dd1677d6dbe78b40adb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195159"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836070"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Open-source software ondersteuning in azure HDInsight
 
@@ -40,7 +40,7 @@ Als gebruiker van het cluster kunt u in uw workload elk onderdeel dat beschikbaa
 > [!WARNING]  
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Ondersteuning kunt het probleem mogelijk oplossen. Het kan ook zijn dat u beschik bare kanalen moet betrekken voor de open source technologieën waar diep gaande expertise voor die technologie wordt gevonden. Veel community-sites kunnen worden gebruikt. Voor beelden zijn [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) en [stack overflow](https://stackoverflow.com).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft Ondersteuning kunt het probleem mogelijk oplossen. Het kan ook zijn dat u beschik bare kanalen moet betrekken voor de open source technologieën waar diep gaande expertise voor die technologie wordt gevonden. Veel community-sites kunnen worden gebruikt. Voor beelden zijn [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) en [stack overflow](https://stackoverflow.com).
 >
 > Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org). Een voor beeld is [Hadoop](https://hadoop.apache.org/).
 

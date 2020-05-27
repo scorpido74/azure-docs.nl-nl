@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd2440ecf04bb4481b5497317e0acd2641710ccf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133310"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836869"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
@@ -77,11 +77,11 @@ U kunt de query dan als volgt herschrijven:
 
 Start de taak nu opnieuw en laat deze enkele minuten uitvoeren. Zoek vervolgens temp1 en temp2 met Visual Studio Cloud Explorer om de volgende tabellen te maken:
 
-**temp1-tabel**
-![selecteren in temp1-tabel stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**temp1-tabel** 
+ ![ SELECTEREN in temp1-tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**temp2-tabel**
-![selecteren in temp2-tabel stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**temp2-tabel** 
+ ![ SELECTEREN in temp2-tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Zoals u ziet, zijn temp1 en temp2 beide gegevens en de kolom naam correct ingevuld in temp2. Maar omdat er nog steeds geen gegevens in de uitvoer zijn, is er een fout opgetreden:
 
@@ -101,9 +101,9 @@ Deze keer worden de gegevens in de uitvoer opgemaakt en ingevuld zoals verwacht.
 
 ![SELECTEREN in uiteindelijke tabel Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
