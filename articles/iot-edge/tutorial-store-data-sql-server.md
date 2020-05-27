@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c239c16103dc0c1f847c5d4354aed89a143a28c6
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592063"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745510"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Zelfstudie: Gegevens aan de rand opslaan met SQL Server-databases
 
@@ -41,7 +41,7 @@ Voordat u met deze zelfstudie begint, moet u de vorige zelfstudie hebben doorlop
 
 * Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een AMD64 [Linux-apparaat met Azure IoT Edge](quickstart-linux.md).
-  * Op ARM-apparaten, zoals Raspberry Pi's, kan SQL Server niet worden uitgevoerd. Als u SQL wilt gebruiken op een ARM-apparaat, kunt u zich registreren om een preview van [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) uit te proberen.
+  * Op ARM-apparaten, zoals Raspberry Pi's, kan SQL Server niet worden uitgevoerd. Als u SQL wilt gebruiken op een ARM-apparaat, kunt u zich registreren om een preview van [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) uit te proberen.
 * Een containerregister, zoals [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio Code](https://code.visualstudio.com/) geconfigureerd met de [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) geconfigureerd voor het uitvoeren van Linux-containers.
