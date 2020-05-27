@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382681"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849583"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en python
 
-Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) met extra foutafhandeling en codeaantekeningen.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige python-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
 
-U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://mybinder.org) door te klikken op de badge launch binder: 
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) met extra foutafhandeling en codeaantekeningen.
+
+U kunt dit voor beeld als een Jupyter-notebook in [MyBinder](https://mybinder.org) uitvoeren door de badge van de **Binder starten** te selecteren: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -34,13 +36,13 @@ U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://my
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de volgende bibliotheken.
+1. Maak een nieuw python-bestand in uw favoriete IDE of editor en importeer de volgende bibliotheken:
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Maak variabelen voor uw abonnementssleutel, zoekeindpunt en een zoekterm. `search_url`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
+2.  Maak variabelen voor uw abonnements sleutel, zoek eindpunt en zoek term. Voor de `search_url` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
     
     ```python
     subscription_key = None
@@ -57,7 +59,7 @@ U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://my
 
 ## <a name="send-your-request"></a>Uw aanvraag verzenden
 
-1. Voeg de parameters toe aan uw aanvraag door het maken van een woordenlijst met de naam `params`. Voeg uw zoekterm toe aan de parameter `q`, stel het aantal video's in op 5, geef `free` op als de prijs van geretourneerde video's en `short` voor de lengte van de video's.
+1. Voeg de parameters toe aan uw aanvraag door het maken van een woordenlijst met de naam `params`. Voeg uw zoek termen toe aan de `q` para meter: een video-aantal van 5, `free` de prijs van geretourneerde Video's en `short` de video lengte.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}

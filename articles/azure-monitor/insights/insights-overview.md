@@ -6,15 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657245"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836036"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Overzicht van inzichten in Azure Monitor
 Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en services. Ze slaan gegevens op in het [Azure monitor-gegevens platform](../platform/data-platform.md) en maken gebruik van andere Azure monitor functies voor analyse en waarschuwingen, maar kunnen ook extra gegevens verzamelen en een unieke gebruikers ervaring bieden in de Azure Portal. Krijg toegang tot inzichten via de sectie **inzichten** van het menu Azure monitor in het Azure Portal.
+
 
 In de volgende secties vindt u een korte beschrijving van de inzichten die momenteel beschikbaar zijn in Azure Monitor. Raadpleeg de gedetailleerde documentatie voor meer informatie.
 

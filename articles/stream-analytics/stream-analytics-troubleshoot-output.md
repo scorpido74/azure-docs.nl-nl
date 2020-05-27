@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bee40bc30a0ffbdacf8cc7bf88d1512c4fc43fa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb01bf613ef007be6eafa98e12f4c5f4b5c607ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147950"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831162"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -87,9 +87,9 @@ Houd rekening met de volgende waarnemingen bij het configureren van IGNORE_DUP_K
 
 Wanneer u het oorspronkelijke compatibiliteits niveau (1,0) gebruikt, worden de namen van de kolommen Azure Stream Analytics gewijzigd in kleine letters. Dit gedrag is in latere compatibiliteits niveaus verholpen. Als u het probleem wilt behouden, gaat u naar compatibiliteits niveau 1,1 of hoger. Zie [compatibiliteits niveau voor stream Analytics taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)voor meer informatie.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 

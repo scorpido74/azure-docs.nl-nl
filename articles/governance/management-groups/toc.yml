@@ -14,6 +14,8 @@
       href: ./create.md
     - name: Uw resources beheren
       href: ./manage.md
+    - name: Uw resourcehiërarchie beveiligen
+      href: ./how-to/protect-resource-hierarchy.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

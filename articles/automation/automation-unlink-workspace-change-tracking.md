@@ -5,14 +5,14 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: df2de44c2c8831fa4319b80484a119052434f8fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749107"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828250"
 ---
-# <a name="unlink-workspace-from-automation-account-for-change-tracking-and-inventory"></a>De werk ruimte ontkoppelen van het Automation-account voor Wijzigingen bijhouden en inventaris
+# <a name="unlink-workspace-from-automation-account"></a>De werkruimte ontkoppelen van het Automation-account
 
 U kunt ervoor kiezen uw Automation-account niet te integreren met een Log Analytics-werk ruimte bij het inschakelen van [Wijzigingen bijhouden-en inventaris](change-tracking.md) bewerkingen. In dit artikel leest u hoe u de werk ruimte ontkoppelt van uw account.
 
@@ -37,7 +37,5 @@ U kunt de Log Analytics-werk ruimte ook ontkoppelen van uw Automation-account va
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
-* [Vm's uit Wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md)
-* [Problemen met wijzigingen in een virtuele Azure-machine oplossen](automation-tutorial-troubleshoot-changes.md)
-* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)als u wilt werken met wijzigingen bijhouden en inventarisatie.
+* Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met functies.

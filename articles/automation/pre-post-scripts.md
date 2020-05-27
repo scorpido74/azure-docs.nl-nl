@@ -5,14 +5,14 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745118"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835169"
 ---
-# <a name="manage-pre-scripts-and-post-scripts"></a>Pre-scripts en post-scripts beheren
+# <a name="manage-pre-scripts-and-post-scripts"></a>Scripts voorafgaand aan de back-up en scripts die erop volgen, beheren
 
 Pre-scripts en post scripts zijn runbooks die in uw Azure Automation-account worden uitgevoerd voordat (vóór taak) en na (na taak) een update-implementatie. Scripts en post scripts die in de Azure-context worden uitgevoerd, zijn niet lokaal. Pre-scripts worden uitgevoerd aan het begin van de update-implementatie. Post-scripts worden aan het einde van de implementatie uitgevoerd en nadat opnieuw opstarten is geconfigureerd.
 
@@ -245,4 +245,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)
+* Zie [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)voor meer informatie over update beheer.

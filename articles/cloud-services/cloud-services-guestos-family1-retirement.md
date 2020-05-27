@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359580"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835628"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Kennisgeving van buitengebruikstelling van serie 1 van gastbesturingssysteem
 De buiten gebruiks telling van besturingssysteem familie 1 werd voor het eerst aangekondigd op 1 juni 2013.
@@ -23,7 +23,7 @@ De buiten gebruiks telling van besturingssysteem familie 1 werd voor het eerst a
 
 **3 November 2014** Uitgebreide ondersteuning voor gast besturingssysteem familie 1 is beëindigd en is volledig buiten gebruik gesteld. Alle services die nog op familie 1 worden getroffen, worden beïnvloed. We kunnen deze services op elk gewenst moment stoppen. Er is geen garantie dat uw services blijven worden uitgevoerd, tenzij u deze hand matig bijwerkt.
 
-Als u nog meer vragen hebt, gaat u naar de [Cloud Services forums](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) of [neemt u contact op met de ondersteuning van Azure](https://azure.microsoft.com/support/options/).
+Als u meer vragen hebt, gaat u naar de [pagina micro soft Q&een vraag voor Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) of [neemt u contact op met de ondersteuning van Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Hebt u last van dit probleem?
 Uw Cloud Services worden beïnvloed als een van de volgende van toepassing is:

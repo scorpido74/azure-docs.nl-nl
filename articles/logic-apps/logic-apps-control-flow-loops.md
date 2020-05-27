@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270574"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831616"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
@@ -50,7 +50,7 @@ In deze voorbeeld logische app wordt een dagelijks overzicht verzonden voor een 
 2. Voeg tussen de actie RSS-trigger en e-mail bericht verzenden een ' foreach-lus toe. 
 
    1. Als u een lus tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. 
-   Kies het **plus teken** (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Kies het **plus teken** ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
       ![Selecteer een actie toevoegen](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -81,7 +81,7 @@ In deze voorbeeld logische app wordt een dagelijks overzicht verzonden voor een 
 
 ## <a name="foreach-loop-definition-json"></a>"Foreach"-loop definitie (JSON)
 
-Als u werkt in de code weergave voor uw logische app, kunt u in plaats `Foreach` daarvan de lus definiëren in de JSON-definitie van de logische app, bijvoorbeeld:
+Als u werkt in de code weergave voor uw logische app, kunt u in `Foreach` plaats daarvan de lus definiëren in de JSON-definitie van de logische app, bijvoorbeeld:
 
 ``` json
 "actions": {
@@ -232,7 +232,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
       | Eigenschap | Waarde | Beschrijving |
       | -------- | ----- | ----------- | 
-      | **Aan** | *\<e-mail\@adres domein>* | Het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
+      | **Aan** | *\<e-mail adres \@ domein>* | Het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
       | **Onderwerp** | De huidige waarde voor limiet is **limiet** | Geef het onderwerp van de e-mail op. Voor dit voor beeld moet u de **limiet** variabele toevoegen. | 
       | **Hoofdtekst** | <*e-mail: inhoud*> | Geef de inhoud van het e-mail bericht op die u wilt verzenden. Voor dit voor beeld voert u de gewenste tekst in. | 
       |||| 
@@ -259,7 +259,7 @@ Als u deze standaard limieten wilt wijzigen, kiest u **Geavanceerde opties weer 
 
 ## <a name="until-definition-json"></a>De ' until ' definitie (JSON)
 
-Als u werkt in de code weergave voor uw logische app, kunt u in plaats `Until` daarvan een lus definiëren in de JSON-definitie van de logische app, bijvoorbeeld:
+Als u werkt in de code weergave voor uw logische app, kunt u in `Until` plaats daarvan een lus definiëren in de JSON-definitie van de logische app, bijvoorbeeld:
 
 ``` json
 "actions": {
@@ -297,11 +297,11 @@ Als u werkt in de code weergave voor uw logische app, kunt u in plaats `Until` d
 }
 ```
 
-In dit voor beeld ' until ' wordt een HTTP-eind punt aangeroepen, waardoor een resource wordt gemaakt. De lus stopt wanneer de hoofd tekst van het HTTP `Completed` -antwoord retourneert met de status. Om te voor komen dat er eindeloos lussen optreden, stopt de lus ook als een van deze voor waarden zich voordoet:
+In dit voor beeld ' until ' wordt een HTTP-eind punt aangeroepen, waardoor een resource wordt gemaakt. De lus stopt wanneer de hoofd tekst van het HTTP-antwoord retourneert met de `Completed` status. Om te voor komen dat er eindeloos lussen optreden, stopt de lus ook als een van deze voor waarden zich voordoet:
 
-* De lus heeft 10 keer uitgevoerd zoals opgegeven door `count` het kenmerk. De standaard waarde is 60 keer. 
+* De lus heeft 10 keer uitgevoerd zoals opgegeven door het `count` kenmerk. De standaard waarde is 60 keer. 
 
-* De lus is twee uur uitgevoerd, zoals opgegeven door `timeout` het kenmerk in de ISO 8601-indeling. De standaard waarde is een uur.
+* De lus is twee uur uitgevoerd, zoals opgegeven door het `timeout` kenmerk in de ISO 8601-indeling. De standaard waarde is een uur.
   
 ``` json
 "actions": {
@@ -335,7 +335,7 @@ In dit voor beeld ' until ' wordt een HTTP-eind punt aangeroepen, waardoor een r
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * [Azure Logic apps site voor gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

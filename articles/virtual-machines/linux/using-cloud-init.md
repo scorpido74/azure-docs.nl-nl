@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701590"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827315"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -53,11 +53,12 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-LVM | n.v.t.| updates van geen installatie kopieën om het einde van mei mogelijk te volt ooien| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7,7 | n.v.t.| updates van geen installatie kopieën om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 (gen1) |RHEL-BYOS | RHEL-lvm77 | 7.7.2020051912 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien  | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 (Gen2) |RHEL-BYOS | RHEL-lvm77 | 7.7.2020051913 |updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien  | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1) |RHEL-BYOS | RHEL-lvm77 | 7.7.20200416 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien  | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 8,1 (gen1) |RHEL |8,1-CI |8.1.2020042511 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020|
 |RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020 |
 

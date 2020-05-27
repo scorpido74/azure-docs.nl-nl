@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e26c344284541116a5b98bc330804b71a64e28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944833"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833772"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
@@ -73,14 +73,14 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: een Recovery Services kluis maken
 
-1. Open de [Azure Portal](https://portal.azure.com).
-2. Selecteer **een resource** > **beheer** > **back-up** en **site Recovery (OMS)** maken. U kunt ook **Bladeren** > **Recovery Services kluis** > **toevoegen**selecteren. 
+1. Open [Azure Portal](https://portal.azure.com).
+2. Selecteer **een resource**  >  **beheer**  >  **back-up** en **site Recovery (OMS)** maken. U kunt ook **Bladeren**  >  **Recovery Services kluis**  >  **toevoegen**selecteren. 
 3. Geef een regio op waarnaar Vm's worden gerepliceerd. Voor het doel van de migratie in dezelfde regio selecteert u de regio waar uw bron-Vm's en bron opslag accounts zijn. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Stap 2: Kies uw beveiligings doelen 
 
 1. Open de [Azure Portal](https://portal.azure.com)op de virtuele machine waarop u de configuratie server wilt installeren.
-2. Ga naar **Recovery Services kluizen** > -**instellingen** > **site Recovery** > **stap 1: infrastructuur** > **beveiliging**voorbereiden.
+2. Ga naar **Recovery Services kluizen**-  >  **instellingen**  >  **site Recovery**  >  **stap 1: infrastructuur**  >  **beveiliging**voorbereiden.
 
    ![Bladeren naar het deel venster beveiligings doelstelling][2]
 
@@ -90,7 +90,7 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Stap 3: de bron omgeving instellen (configuratie server)
 
-1. Down load **Azure site Recovery Unified Setup** en de kluis registratie sleutel door te gaan naar de deel Vensters voor het voorbereiden van de**bron** > voor het**toevoegen** van de **infra structuur** > . 
+1. Down load **Azure site Recovery Unified Setup** en de kluis registratie sleutel door te gaan naar de deel Vensters voor het voorbereiden van de bron voor het toevoegen van de **infra structuur**  >  **Prepare source**  >  **Add Server** . 
  
    U hebt de kluis registratie sleutel nodig om de geïntegreerde installatie uit te voeren. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
@@ -123,7 +123,7 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-4-set-up-the-target-environment"></a>Stap 4: de doel omgeving instellen
 
-Selecteer **infrastructuur** > **doel**voorbereiden en geef het implementatie model op dat u wilt gebruiken voor vm's na een failover. U kunt **klassiek** of **Resource Manager**kiezen, afhankelijk van uw scenario.
+Selecteer **infrastructuur**  >  **doel**voorbereiden en geef het implementatie model op dat u wilt gebruiken voor vm's na een failover. U kunt **klassiek** of **Resource Manager**kiezen, afhankelijk van uw scenario.
 
 ![Doel venster][10]
 
@@ -152,7 +152,7 @@ Als u wilt controleren of uw configuratie server is gekoppeld aan het replicatie
    De failover-VM heeft twee tijdelijke schijven: een van de primaire virtuele machine en de andere die is gemaakt tijdens het inrichten van de virtuele machine in de herstel regio. Als u de tijdelijke schijf vóór replicatie wilt uitsluiten, installeert u de Mobility-service voordat u replicatie inschakelt. Zie [schijven uitsluiten van replicatie](../../site-recovery/vmware-walkthrough-overview.md)voor meer informatie over het uitsluiten van de tijdelijke schijf.
 
 2. Schakel als volgt replicatie in:
-   1. Selecteer **toepassings** > **bron**repliceren. Nadat u de replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende machines.
+   1. Selecteer **toepassings**  >  **bron**repliceren. Nadat u de replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende machines.
    2. In stap 1 stelt u de **bron** in als uw proces server.
    3. Geef in stap 2 het implementatie model na failover op, een Premium-opslag account om te migreren naar, een Standard-opslag account om logboeken op te slaan en een virtueel netwerk te laten mislukken.
    4. Voeg in stap 3 beveiligde Vm's toe op IP-adres. (Mogelijk hebt u een intern IP-adres nodig om ze te vinden.)
@@ -173,14 +173,14 @@ U kunt een implementatie model na failover kiezen op basis van uw behoeften. Als
 
 ### <a name="step-8-run-a-test-failover"></a>Stap 8: een testfailover uitvoeren
 
-Als u wilt controleren of de replicatie is voltooid, selecteert u uw site Recovery-exemplaar en selecteert u vervolgens **instellingen** > **gerepliceerde items**. U ziet de status en het percentage van het replicatie proces. 
+Als u wilt controleren of de replicatie is voltooid, selecteert u uw site Recovery-exemplaar en selecteert u vervolgens **instellingen**  >  **gerepliceerde items**. U ziet de status en het percentage van het replicatie proces. 
 
 Nadat de initiële replicatie is voltooid, voert u een testfailover uit om uw replicatie strategie te valideren. Zie [een Testfailover uitvoeren in site Recovery](../../site-recovery/vmware-walkthrough-overview.md)voor gedetailleerde stappen van een testfailover. 
 
 > [!NOTE]
 > Voordat u een failover uitvoert, moet u ervoor zorgen dat uw Vm's en replicatie strategie voldoen aan de vereisten. Voor meer informatie over het uitvoeren van een testfailover raadpleegt [u testfailover naar Azure in site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-U kunt de status van uw testfailover bekijken in **instellingen** > **taken** > *YOUR_FAILOVER_PLAN_NAME*. In het deel venster ziet u een overzicht van de stappen en geslaagde/mislukte resultaten. Als de testfailover in een wille keurige stap mislukt, selecteert u de stap om het fout bericht te controleren. 
+U kunt de status van uw testfailover bekijken in **instellingen**  >  **taken**  >  *YOUR_FAILOVER_PLAN_NAME*. In het deel venster ziet u een overzicht van de stappen en geslaagde/mislukte resultaten. Als de testfailover in een wille keurige stap mislukt, selecteert u de stap om het fout bericht te controleren. 
 
 ### <a name="step-9-run-a-failover"></a>Stap 9: een failover uitvoeren
 
@@ -203,7 +203,7 @@ Site Recovery maakt een VM-exemplaar waarvan het type hetzelfde is als of vergel
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 * [Beveiliging van virtuele machines en fysieke servers controleren en problemen oplossen](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft Azure Site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Micro soft Q&een vraag pagina voor Microsoft Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778198"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837904"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Aanmelden bij de LUIS-Portal
 
 Een nieuwe gebruiker aan LUIS moet deze procedure volgen:
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai), selecteer uw land/regio en ga akkoord met de gebruiks voorwaarden. Als u in plaats daarvan **mijn apps** ziet, bestaat er al een Luis-resource en gaat u verder met het maken van een app.
+1. Meld u aan bij de [Luis-Portal](https://www.luis.ai), selecteer uw land/regio en ga akkoord met de gebruiks voorwaarden. Als u in plaats daarvan **mijn apps** ziet, bestaat er al een Luis-resource en gaat u verder met het maken van een app. Voor ondersteunde regio's gaat u naar [ontwerp-en publicatie regio's en de bijbehorende sleutels](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
 
 1. Selecteer **Azure-resource maken** en selecteer vervolgens **een ontwerp bron maken om uw apps naar te migreren.**
 

@@ -2,13 +2,13 @@
 title: Ongeldige sjabloon fouten
 description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154054"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832518"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Fouten met een ongeldige sjabloon oplossen
 
@@ -115,7 +115,7 @@ Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worde
 
 ## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3-para meter is niet geldig
 
-Als u een parameter waarde opgeeft die niet van de toegestane waarden is, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:
+Als u een parameter waarde voor een van de toegestane waarden opgeeft, wordt een bericht weer gegeven dat vergelijkbaar is met de volgende fout:
 
 ```
 Code=InvalidTemplate;
@@ -130,7 +130,7 @@ Controleer de toegestane waarden in de sjabloon en geef er een op tijdens de imp
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4: te veel doel resource groepen
 
-Als u meer dan vijf doel resource groepen in één implementatie opgeeft, wordt deze fout weer gegeven. U kunt het aantal resource groepen in uw implementatie consolideren, of een aantal sjablonen implementeren als afzonderlijke implementaties. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
+Mogelijk ziet u deze fout in eerdere implementaties omdat u beperkt tot vijf doel resource groepen hebt in één implementatie. In mei 2020 is die limiet verhoogd naar 800 resource groepen. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
 
 <a id="circular-dependency" />
 

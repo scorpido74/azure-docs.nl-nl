@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614965"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827468"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
 
@@ -75,6 +75,18 @@ Als u een gebruiker aan een specifieke sessiehost wilt toewijzen, voert u de vol
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>Een gebruikers toewijzing verwijderen
+
+U kunt een gebruikers toewijzing verwijderen omdat de gebruiker niet langer het persoonlijke bureau blad nodig heeft, de gebruiker het bedrijf heeft verlaten of als u het bureau blad voor iemand anders wilt gebruiken.
+
+Op dit moment kunt u de gebruikers toewijzing voor een persoonlijk bureau blad het beste verwijderen door de sessiehost volledig te verwijderen. Als u de sessiehost wilt verwijderen, voert u de volgende cmdlet uit:
+
+```powershell
+Remove-RdsSessionHost
+```
+
+Als u de sessiemap weer wilt toevoegen aan de Personal Desktop-hostgroep, verwijdert u het virtuele bureau blad van Windows op die computer en volgt u de stappen in [een hostgroep met Power shell maken](create-host-pools-powershell-2019.md) om de sessiehost opnieuw te registreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

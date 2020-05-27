@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530050"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834302"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MariaDB kunt bepalen
 **Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
@@ -166,4 +166,4 @@ In de uitleg ziet u nu dat MariaDB een gecombineerde index kan gebruiken om extr
 Door gebruik te maken van uitleg en verschillende typen indexen kunnen de prestaties aanzienlijk toenemen. Het gebruik van een index voor de tabel betekent niet noodzakelijkerwijs dat MariaDB dit voor uw query's zou kunnen gebruiken. Valideer uw hypo theses altijd met uitleg en Optimaliseer uw query's met behulp van indexen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.
+- Ga naar [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)als u op zoek bent naar peer antwoorden op uw vragen of als u een nieuwe vraag/antwoord wilt plaatsen.

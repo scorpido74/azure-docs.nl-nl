@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793246"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831497"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Voorwaardelijke instructies maken waarmee werk stroom acties in Azure Logic Apps worden beheerd
 
@@ -36,7 +36,7 @@ Stel dat u een logische app hebt die te veel e-mail berichten verzendt wanneer n
 
 1. Voeg een voor waarde toe op de gewenste locatie. 
 
-   Als u een voor waarde tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl waar u de voor waarde wilt toevoegen. Kies het **plus teken** (**+**) dat wordt weer gegeven en kies vervolgens **een actie toevoegen**. Bijvoorbeeld:
+   Als u een voor waarde tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl waar u de voor waarde wilt toevoegen. Kies het **plus teken** ( **+** ) dat wordt weer gegeven en kies vervolgens **een actie toevoegen**. Bijvoorbeeld:
 
    ![Actie tussen stappen toevoegen](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -65,8 +65,8 @@ Stel dat u een logische app hebt die te veel e-mail berichten verzendt wanneer n
 
    ![Voltooide voorwaarde](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Als u een andere rij wilt toevoegen aan uw voor waarde **, kiest** > u**rij toevoegen**toevoegen. 
-   **Kies** > toevoegen**groep**toevoegen om een groep met subvoorwaarden toe te voegen. 
+   Als u een andere rij wilt toevoegen aan uw voor waarde **, kiest u**  >  **rij toevoegen**toevoegen. 
+   **Kies toevoegen groep toevoegen om**een groep met subvoorwaarden toe te voegen  >  **Add group**. 
    Als u bestaande rijen wilt groeperen, selecteert u de selectie vakjes voor die rijen, kiest u de knop met weglatings tekens (...) voor elke rij en kiest **u groep maken**.
 
 1. Voeg onder **if True** en **indien onwaar**, de stappen toe die moeten worden uitgevoerd op basis van het feit of aan de voor waarde wordt voldaan. Bijvoorbeeld:
@@ -110,7 +110,7 @@ Hier volgt de code definitie op hoog niveau achter een voorwaardelijke instructi
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

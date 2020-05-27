@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abce9387d4c23cd6cb5ecf73e3d5c8428d83d459
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759605"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833656"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub controleren, vaststellen en problemen oplossen
 
@@ -83,7 +83,7 @@ Wanneer u Diagnostische logboeken en waarschuwingen voor verbonden apparaten ins
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Als er resultaten zijn, zoekt u `OperationName`naar `ResultType` , (fout code) en `ResultDescription` (fout bericht) om meer details te krijgen over de fout.
+1. Als er resultaten zijn, zoekt `OperationName` u naar, `ResultType` (fout code) en `ResultDescription` (fout bericht) om meer details te krijgen over de fout.
 
    ![Voor beeld van een fouten logboek](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
@@ -105,7 +105,7 @@ Als de vorige stappen niet zijn uitgevoerd, probeert u het volgende:
 
 * Als uw apparaat gebruikmaakt van het MQTT-protocol, controleert u of poort 8883 is geopend. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie.
 
-* Krijg hulp van [azure IOT hub forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)of [ondersteuning voor Azure](https://azure.microsoft.com/support/options/).
+* Krijg hulp van [micro soft Q&een vraag pagina voor azure IOT hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)of [ondersteuning voor Azure](https://azure.microsoft.com/support/options/).
 
 Als u de documentatie voor iedereen wilt verbeteren, kunt u in de sectie feedback hieronder een opmerking plaatsen als deze hand leiding u niet heeft geholpen.
 

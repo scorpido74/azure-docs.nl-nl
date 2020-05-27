@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851150"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833129"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
@@ -35,11 +35,11 @@ Zorg ervoor dat u het volgende hebt voordat u begint:
 ## <a name="add-power-bi-output"></a>Power BI uitvoer toevoegen
 In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag verzonden. In deze sectie voegt u een uitvoer toe waarmee gegevens naar Power BI worden verzonden.
 
-1. Open in de Azure Portal de streaming Analytics-taak die u eerder hebt gemaakt. Als u de voorgestelde naam hebt gebruikt, wordt de taak `sa_frauddetection_job_demo`een naam genoemd.
+1. Open in de Azure Portal de streaming Analytics-taak die u eerder hebt gemaakt. Als u de voorgestelde naam hebt gebruikt, wordt de taak een naam genoemd `sa_frauddetection_job_demo` .
 
 2. Selecteer in het linkermenu **uitvoer** onder **taak topologie**. Selecteer vervolgens **+ toevoegen** en kies **Power bi** in het vervolg keuzemenu.
 
-3. Selecteer **+** > **Power bi**toevoegen. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
+3. Selecteer **+**  >  **Power bi**toevoegen. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
@@ -56,7 +56,7 @@ In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag v
 
 4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**.
 
-8. Klik op **maken**.
+8. Klik op **Maken**.
 
 De gegevensset wordt gemaakt met de volgende instellingen:
 
@@ -74,10 +74,10 @@ Zie voor meer informatie over Power BI gegevens sets de referentie [Power BI res
 
 2. Klik op het **query** -vak. 
 
-3. Voer de volgende query in. Deze query is vergelijkbaar met de Self-deelname query die u hebt gemaakt in de zelf studie voor fraude detectie. Het verschil is dat met deze query resultaten worden verzonden naar de nieuwe uitvoer die`CallStream-PowerBI`u hebt gemaakt (). 
+3. Voer de volgende query in. Deze query is vergelijkbaar met de Self-deelname query die u hebt gemaakt in de zelf studie voor fraude detectie. Het verschil is dat met deze query resultaten worden verzonden naar de nieuwe uitvoer die u hebt gemaakt ( `CallStream-PowerBI` ). 
 
     >[!NOTE]
-    >`CallStream` Als u de invoer niet in de zelf studie voor `CallStream` fraude detectie hebt benoemen, vervangt u uw naam door in de componenten **from** en **joinexpressie** in de query.
+    >Als u de invoer niet `CallStream` in de zelf studie voor fraude detectie hebt benoemen, vervangt u uw naam door `CallStream` in de componenten **from** en **joinexpressie** in de query.
 
    ```SQL
    /* Our criteria for fraud:
@@ -137,11 +137,11 @@ De stream Analytics-taak begint met zoeken naar frauduleuze aanroepen in de binn
 
     ![Locatie van streaming-gegevensset in Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. Klik in uw werk ruimte op ** + &nbsp;maken**.
+2. Klik in uw werk ruimte op ** + &nbsp; maken**.
 
     ![De knop maken in Power BI werk ruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Maak een nieuw dash board en geef `Fraudulent Calls`het een naam.
+3. Maak een nieuw dash board en geef het een naam `Fraudulent Calls` .
 
     ![Een dash board maken en dit een naam geven in Power BI werk ruimte](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
@@ -228,14 +228,14 @@ Op basis van deze configuratie kunt u de oorspronkelijke query wijzigen in het v
 ```
 
 ### <a name="renew-authorization"></a>Autorisatie vernieuwen
-Als het wacht woord is gewijzigd sinds de taak is gemaakt of de laatste keer is geverifieerd, moet u uw Power BI-account opnieuw verifiëren. Als Azure Multi-Factor Authentication is geconfigureerd op uw Azure Active Directory-Tenant (Azure AD), moet u Power BI autorisatie ook elke twee weken vernieuwen. Als u het abonnement niet verlengt, ziet u symptomen zoals een gebrek aan taak uitvoer of `Authenticate user error` een in de bewerkings Logboeken.
+Als het wacht woord is gewijzigd sinds de taak is gemaakt of de laatste keer is geverifieerd, moet u uw Power BI-account opnieuw verifiëren. Als Azure Multi-Factor Authentication is geconfigureerd op uw Azure Active Directory-Tenant (Azure AD), moet u Power BI autorisatie ook elke twee weken vernieuwen. Als u het abonnement niet verlengt, ziet u symptomen zoals een gebrek aan taak uitvoer of een `Authenticate user error` in de bewerkings Logboeken.
 
 Als een taak wordt gestart nadat het token is verlopen, treedt er een fout op en wordt de taak mislukt. U kunt dit probleem oplossen door de taak die wordt uitgevoerd, te stoppen en naar uw Power BI-uitvoer te gaan. Om gegevens verlies te voor komen, selecteert u de koppeling **autorisatie vernieuwen** en start u de taak opnieuw vanaf de **laatste keer**dat deze is gestopt.
 
 Nadat de autorisatie is vernieuwd met Power BI, wordt een groene waarschuwing weer gegeven in het autorisatie gebied om aan te geven dat het probleem is opgelost.
 
-## <a name="get-help"></a>Help opvragen
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+## <a name="get-help"></a>Hulp vragen
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

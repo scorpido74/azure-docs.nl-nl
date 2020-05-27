@@ -3,14 +3,14 @@ title: Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken
 description: In dit artikel leest u hoe u taak status-en runbook-taak stromen verzendt om logboeken te Azure Monitor.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/05/2019
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6cd1983a6aa1ea942fb6f3154d8bb99e255f51e9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715440"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835241"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken
 
@@ -46,11 +46,11 @@ Voer de volgende Power shell-opdracht uit om de resource-ID voor uw Log Analytic
 Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
-Als u meer dan één Automation-account of werk ruimte hebt in de uitvoer van de voor gaande opdrachten, zoekt u de naam die u nodig hebt om de waarde voor de resource-ID te configureren en te kopiëren.
+Als u meer dan één Automation-account of werk ruimte hebt in de uitvoer van de voor gaande opdrachten, kunt u de naam en andere gerelateerde eigenschappen vinden die deel uitmaken van de volledige Resource-ID van uw Automation-account door het volgende uit te voeren:
 
-1. Selecteer in de Azure Portal uw Automation-account op de Blade **Automation-account** en selecteer **alle instellingen**. 
-2. Selecteer op de Blade **alle instellingen** onder **account instellingen**de optie **Eigenschappen**.  
-3. In de Blade **Eigenschappen** noteert u de eigenschappen die hieronder worden weer gegeven.
+1. Selecteer in de Azure Portal uw Automation-account op de pagina **Automation-accounts** . 
+2. Selecteer op de pagina van het geselecteerde Automation-account onder **account instellingen**de optie **Eigenschappen**.  
+3. Op de pagina **Eigenschappen** ziet u de details die hieronder worden weer gegeven.
 
     ![Eigenschappen van Automation-account](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
@@ -105,11 +105,11 @@ Met Azure Automation diagnostische gegevens worden twee typen records gemaakt in
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>Integratie met Azure Monitor-logboeken instellen
 
 1. Start Windows Power shell op uw computer vanuit het **Start** scherm.
-2. Voer de volgende Power shell-opdrachten uit en bewerk de waarden voor `[your resource ID]` en `[resource ID of the log analytics workspace]` met de waarden uit de voor gaande sectie.
+2. Voer de volgende Power shell-opdrachten uit en bewerk de waarden voor `$automationAccountId` en `$workspaceId` met de waarden uit de voor gaande sectie.
 
    ```powershell-interactive
-   $workspaceId = "[resource ID of the log analytics workspace]"
-   $automationAccountId = "[resource ID of your Automation account]"
+   $workspaceId = "resource ID of the log analytics workspace"
+   $automationAccountId = "resource ID of your Automation account"
 
    Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
@@ -139,14 +139,16 @@ Voer de volgende query uit om de logboeken weer te geven:`AzureDiagnostics | whe
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Een e-mail verzenden wanneer een runbook-taak is mislukt of onderbroken
 
-Een van de belangrijkste klanten vraagt om een e-mail of tekst te verzenden wanneer er iets mis gaat met een runbook-taak.
+De volgende stappen laten zien hoe u waarschuwingen instelt in Azure Monitor om u te waarschuwen wanneer er iets mis gaat met een runbook-taak.
 
 Als u een waarschuwings regel wilt maken, moet u beginnen met het maken van een zoek opdracht in het logboek voor de runbook-taak records die de waarschuwing moeten aanroepen. Klik op de knop **waarschuwing** om de waarschuwings regel te maken en te configureren.
 
 1. Klik op de pagina overzicht van Log Analytics werk ruimte op **Logboeken weer geven**.
+
 2. Maak een zoek opdracht in het logboek voor uw waarschuwing door de volgende zoek opdracht in het query veld in te voeren:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>U kunt ook groeperen op de naam van het runbook met behulp van:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Als u logboeken van meer dan één Automation-account of-abonnement op uw werk ruimte instelt, kunt u uw waarschuwingen groeperen op abonnement en Automation-account. De naam van het Automation-account vindt u in het `Resource` veld in de zoek actie van `JobLogs` .
+
 3. Als u het scherm **regel maken** wilt openen, klikt u op **nieuwe waarschuwings regel** boven aan de pagina. Zie [logboek waarschuwingen in azure](../azure-monitor/platform/alerts-unified-log.md)voor meer informatie over de opties voor het configureren van de waarschuwing.
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Alle taken zoeken die zijn voltooid met fouten
@@ -154,7 +156,9 @@ Als u een waarschuwings regel wilt maken, moet u beginnen met het maken van een 
 Naast het melden van fouten, kunt u nagaan wanneer een runbook-taak een niet-afsluit fout heeft. In dergelijke gevallen produceert Power shell een fout stroom, maar de niet-afsluit fouten zorgen ervoor dat uw taak niet wordt onderbroken of mislukt.
 
 1. Klik in de werk ruimte Log Analytics op **Logboeken**.
+
 2. Typ in het veld query `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` .
+
 3. Klik op de knop **zoeken** .
 
 ### <a name="view-job-streams-for-a-job"></a>Taak stromen voor een taak weer geven
@@ -182,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor hulp bij het oplossen van problemen Log Analytics [problemen oplossen waarom log Analytics niet langer gegevens verzamelt](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
-* Zie [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md)voor meer informatie over het maken van verschillende Zoek query's en het controleren van de Automation-taak logboeken met Azure monitor-Logboeken.
-* Zie [Runbook-uitvoer en berichten](automation-runbook-output-and-messages.md)voor informatie over het maken en ophalen van uitvoer-en fout berichten van runbooks.
+* Zie [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md)voor meer informatie over het maken van zoek query's en het controleren van de Automation-taak logboeken met Azure monitor-Logboeken.
+* Zie [runbook-uitvoer bewaken](automation-runbook-output-and-messages.md)voor meer informatie over het maken en ophalen van uitvoer-en fout berichten van runbooks.
 * Voor meer informatie over het uitvoeren van een runbook, het controleren van runbook-taken en andere technische details raadpleegt u [runbook execution in azure Automation](automation-runbook-execution.md).
 * Zie [Azure Storage-gegevens verzamelen in azure monitor logs Overview](../azure-monitor/platform/collect-azure-metrics-logs.md)voor meer informatie over Azure monitor logboeken en bronnen voor gegevens verzameling.
+* Zie voor hulp bij het oplossen van problemen Log Analytics [problemen oplossen waarom log Analytics niet langer gegevens verzamelt](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: Voor DevOps
       href: team-data-science-process-for-devops.md
-- name: Procedure
+- name: Procedures
   items:
     - name: Gegevenswetenschapomgevingen instellen
       href: environment-setup.md
@@ -206,7 +206,7 @@
           href: predictive-maintenance-architecture.md
         - name: Technische handleiding
           href: predictive-maintenance-technical-guide.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Organisaties die TDSP gebruiken
       items:
@@ -216,8 +216,8 @@
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: Gerelateerde Microsoft-services
       items:
-        - name: MSDN-forum
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: Microsoft Q&A-vragenpagina
+          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: Video's

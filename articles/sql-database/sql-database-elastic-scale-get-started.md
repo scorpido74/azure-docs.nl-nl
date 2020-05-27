@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff92ae0763a7e8cc10e89b0eb1a73fdbed6323b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76987019"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834217"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Aan de slag met Elastic Database-Hulpprogram Ma's
 
@@ -56,7 +56,7 @@ Ga als volgt te werk om de JAR-bestanden te maken en aan de slag te gaan met het
 
     ![Voortgang-java][5]
     
-Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt. 
+Gefeliciteerd U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt. 
 
 Voeg de volgende afhankelijkheden toe aan uw POM-bestand om de client bibliotheek toe te voegen aan uw eigen Maven-project:
 
@@ -93,7 +93,7 @@ Voer de volgende stappen uit om het voor beeld te downloaden en uit te voeren:
    
     ![Voortgang][4]
 
-Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt.
+Gefeliciteerd U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt.
 
 > [!IMPORTANT]
 > U wordt aangeraden altijd de nieuwste versie van Management Studio te gebruiken, zodat u gesynchroniseerd blijft met updates voor Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -132,7 +132,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Elastic Database-Hulpp
   * [Shard-elasticiteit op Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [aankondiging voor Elastic Scale](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Channel 9: [overzicht van video over Elastic Scale](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Discussie forum: [Azure SQL database Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Discussie forum: [micro soft Q&een vraag pagina voor Azure SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
 * Prestaties meten: [prestatie meter items voor Shard-toewijzings beheer](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

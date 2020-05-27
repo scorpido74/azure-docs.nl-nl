@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743462"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830988"
 ---
-# <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer met behulp van Azure Resource Manager-sjabloon inschakelen
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
 
 U kunt een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md) gebruiken om de functie Azure Automation updatebeheer in uw resource groep in te scha kelen. Dit artikel bevat een voorbeeld sjabloon waarmee het volgende kan worden geautomatiseerd:
 
@@ -241,10 +241,9 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u Updatebeheer hebt ingeschakeld, kunt u Vm's inschakelen voor beheer, update-evaluaties bekijken en updates implementeren om ze te laten voldoen aan het beleid.
-
-- Van uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines en hand matig voor niet-Azure-machines
-
-- Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's
-
-- Voor [meerdere virtuele Azure-machines](manage-update-multi.md) door ze te selecteren op de pagina **virtual machines** in de Azure Portal 
+* Zie [Updates en patches voor uw Azure-VM's beheren](automation-tutorial-update-management.md) voor het gebruiken van Updatebeheer voor VM's.
+* Als u de Log Analytics-werkruimte niet meer nodig hebt, raadpleegt u de instructies in [Werkruimte ontkoppelen van Automation-account voor Updatebeheer](automation-unlink-workspace-update-management.md).
+* Als u VM's uit Updatebeheer wilt verwijderen, raadpleegt u [VM's uit Updatebeheer verwijderen](automation-remove-vms-from-update-management.md).
+* Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.
+* Zie [Problemen met Windows-updateagent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van problemen met de Windows Update-agent.
+* Zie [problemen met Linux Update-agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux Update-agent.

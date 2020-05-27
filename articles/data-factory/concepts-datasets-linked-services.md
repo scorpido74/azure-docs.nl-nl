@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 33b2ca8db75acff1ce423aa50087961cce6092b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418402"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826108"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Gegevenssets in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -34,9 +34,9 @@ Als u geen ervaring hebt met Data Factory, raadpleegt u [Introduction to Azure D
 ## <a name="overview"></a>Overzicht
 Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijp lijn** is een logische groep **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. Nu is een **gegevensset** een benoemde weer gave van gegevens waarmee u de gegevens die u in uw **activiteiten** wilt gebruiken als invoer en uitvoer, eenvoudigweg wijst of ernaar verwijst. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Blob-opslag van waaruit de activiteit de gegevens moet lezen.
 
-Voordat u een gegevensset maakt, moet u een [**gekoppelde service**](concepts-linked-services.md) maken om uw gegevens archief te koppelen aan de Data Factory. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken. de gegevensset vertegenwoordigt de structuur van de gegevens in de gekoppelde gegevens archieven en de gekoppelde service definieert de verbinding met de gegevens bron. Een Azure Storage gekoppelde service koppelt bijvoorbeeld een opslag account aan de data factory. Een Azure Blob-gegevensset vertegenwoordigt de BLOB-container en de map in dat Azure-opslag account die de invoer-blobs bevat die moeten worden verwerkt.
+Voordat u een gegevensset maakt, moet u een [**gekoppelde service**](concepts-linked-services.md) maken om uw gegevens archief te koppelen aan de Data Factory. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken. de gegevensset vertegenwoordigt de structuur van de gegevens in de gekoppelde gegevens archieven en de gekoppelde service definieert de verbinding met de gegevens bron. Een Azure Storage gekoppelde service koppelt bijvoorbeeld een opslag account aan de data factory. Een Azure Blob-gegevensset vertegenwoordigt de BLOB-container en de map binnen die Azure Storage account dat de invoer-blobs bevat die moeten worden verwerkt.
 
-Hier volgt een voorbeeld scenario. Als u gegevens wilt kopiëren van Blob-opslag naar een SQL database, maakt u twee gekoppelde services: Azure Storage en Azure SQL Database. Maak vervolgens twee gegevens sets: Azure Blob-gegevensset (die verwijst naar de Azure Storage gekoppelde service) en de gegevensset van de Azure SQL-tabel (die verwijst naar de Azure SQL Database gekoppelde service). De Azure Storage-en Azure SQL Database gekoppelde services bevatten verbindings reeksen die Data Factory in runtime gebruiken om respectievelijk verbinding te maken met uw Azure Storage en Azure SQL Database. De Azure Blob-gegevensset bevat de BLOB en BLOB-map die de invoer-blobs in uw Blob-opslag bevat. De gegevensset van de Azure SQL-tabel geeft de SQL-tabel in de SQL database aan waarnaar de gegevens moeten worden gekopieerd.
+Hier volgt een voorbeeld scenario. Als u gegevens wilt kopiëren van Blob-opslag naar een SQL Database, maakt u twee gekoppelde services: Azure Storage en Azure SQL Database. Maak vervolgens twee gegevens sets: Azure Blob-gegevensset (die verwijst naar de Azure Storage gekoppelde service) en de gegevensset van de Azure SQL-tabel (die verwijst naar de Azure SQL Database gekoppelde service). De Azure Storage-en Azure SQL Database gekoppelde services bevatten verbindings reeksen die Data Factory in runtime gebruiken om respectievelijk verbinding te maken met uw Azure Storage en Azure SQL Database. De Azure Blob-gegevensset bevat de BLOB en BLOB-map die de invoer-blobs in uw Blob-opslag bevat. De gegevensset van de Azure SQL-tabel geeft de SQL-tabel in de SQL Database aan waarnaar de gegevens moeten worden gekopieerd.
 
 In het volgende diagram ziet u de relaties tussen pijp lijn, activiteit, gegevensset en gekoppelde service in Data Factory:
 
@@ -124,7 +124,7 @@ typeProperties | De type-eigenschappen verschillen voor elk type (bijvoorbeeld: 
 
 
 ## <a name="dataset-example"></a>Gegevensset-voor beeld
-In het volgende voor beeld vertegenwoordigt de gegevensset een tabel met de naam MyTable in een SQL database.
+In het volgende voor beeld vertegenwoordigt de gegevensset een tabel met de naam MyTable in een SQL Database.
 
 ```json
 {
@@ -185,8 +185,8 @@ Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
 name | De naam van de kolom. | Ja
 type | Het gegevens type van de kolom. Data Factory ondersteunt de volgende tussenliggende gegevens typen als toegestane waarden: **Int16, Int32, Int64, enkel, dubbel, decimaal, byte [], Booleaans, teken reeks, GUID, datetime, date time offset en time span** | Nee
-culturele | . Op netgebaseerde cultuur die moet worden gebruikt wanneer het type een .NET- `Datetime` type `Datetimeoffset`is: of. De standaardwaarde is `en-us`. | Nee
-formaat | Indelings teken reeks die moet worden gebruikt wanneer het type een .NET `Datetime` - `Datetimeoffset`type is: of. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee
+culturele | . Op netgebaseerde cultuur die moet worden gebruikt wanneer het type een .NET-type is: `Datetime` of `Datetimeoffset` . De standaardwaarde is `en-us`. | Nee
+formaat | Indelings teken reeks die moet worden gebruikt wanneer het type een .NET-type is: `Datetime` of `Datetimeoffset` . Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee
 
 ### <a name="example"></a>Voorbeeld
 In het volgende voor beeld zijn de gegevens van de bron-Blob in CSV-indeling en bevatten ze drie kolommen: GebruikersID, name en lastlogindate. Ze zijn van het type Int64, teken reeks en datum/tijd met een aangepaste datum/tijd-indeling die de dag van de week afgekort Franse namen gebruikt.
@@ -207,7 +207,7 @@ Definieer de structuur van de BLOB-gegevensset als volgt in combi natie met de t
 De volgende richt lijnen helpen u te begrijpen wanneer u structuur informatie moet toevoegen en wat u in de sectie **structure** moet toevoegen. Meer informatie over hoe data factory bron gegevens toewijst aan Sink en wanneer u structuur gegevens van [schema en type toewijzing](copy-activity-schema-and-type-mapping.md)opgeeft.
 
 - **Voor sterke schema gegevens bronnen**geeft u de sectie structuur alleen op als u wilt dat bron kolommen van de kaart worden gefilterd en de namen ervan niet hetzelfde zijn. In dit soort gestructureerde gegevens bronnen worden gegevens schema's en typen informatie opgeslagen samen met de gegevens zelf. Voor beelden van gestructureerde gegevens bronnen zijn SQL Server, Oracle en Azure SQL Database.<br/><br/>Als type-informatie is al beschikbaar voor gestructureerde gegevens bronnen, moet u geen type gegevens opgeven wanneer u de sectie structure insluit.
-- **Voor geen/zwak schema gegevens bronnen, zoals tekst bestand in Blob Storage**, neemt u structuur op wanneer de gegevensset een invoer is voor een Kopieer activiteit en gegevens typen van de bron-gegevensset moeten worden geconverteerd naar systeem eigen typen voor de sink. En neem structuur op als u bron kolommen wilt toewijzen aan Sink-kolommen.
+- **Voor geen/zwakke schema gegevens bronnen bijvoorbeeld: tekst bestand in Blob Storage**, een structuur toevoegen wanneer de gegevensset een invoer is voor een Kopieer activiteit en gegevens typen van de bron-gegevensset moeten worden geconverteerd naar systeem eigen typen voor de sink. En een structuur toevoegen wanneer u bron kolommen wilt toewijzen aan Sink-kolommen
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 U kunt gegevens sets maken met behulp van een van deze hulpprogram ma's of Sdk's: [.net API](quickstart-create-data-factory-dot-net.md), [power shell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sjabloon en Azure Portal

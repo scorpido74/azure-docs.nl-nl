@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c30bd8a3bb4fa1085e56dd93c66c016c3612e352
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749135"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832160"
 ---
 # <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>Werken met Scope configuraties voor Wijzigingen bijhouden en inventaris
 
@@ -42,7 +42,7 @@ Wanneer een computer wordt toegevoegd aan Wijzigingen bijhouden en inventaris, w
 
 1. Navigeer naar uw Log Analytics-werk ruimte en selecteer **opgeslagen Zoek opdrachten** onder **Algemeen**. De opgeslagen zoek opdracht die door Updatebeheer wordt gebruikt, is:
 
-    |Name     |Categorie  |Alias  |
+    |Naam     |Categorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
@@ -52,11 +52,5 @@ Wanneer een computer wordt toegevoegd aan Wijzigingen bijhouden en inventaris, w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van wijzigingen bijhouden en inventaris](change-tracking.md)voor algemene informatie over de functie.
-* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)als u de functie wilt gebruiken.
-* Als u een Automation-account wilt gebruiken om de functie in te scha kelen, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md).
-* Als u de Azure Portal wilt gebruiken om de functie in te scha kelen, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen in de Azure Portal](automation-enable-changes-from-browse.md).
-* Als u een runbook wilt gebruiken om de functie in te scha kelen, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md).
-* Als u een virtuele machine van Azure wilt gebruiken om de functie in te scha kelen, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen op een virtuele Azure-machine](automation-enable-changes-from-vm.md).
-* Zie [problemen met wijzigingen in een virtuele Azure-machine oplossen](automation-tutorial-troubleshoot-changes.md)voor informatie over het oplossen van problemen met wijzigings-en inventarisatie op een VM.
-* Zie [problemen met wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van functie fouten.
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)als u wilt werken met wijzigingen bijhouden en inventarisatie.
+* Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met functies.

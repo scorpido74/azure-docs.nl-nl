@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780437"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834982"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL-groepen in azure Synapse Analytics
 
@@ -193,7 +193,7 @@ SQL-groepen hebben verschillende Dmv's die kunnen worden gebruikt voor het bewak
 
 Zie ook het artikel [over probleem oplossing](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor veelvoorkomende problemen en oplossingen.
 
-Als u informatie nodig hebt die niet in dit artikel wordt vermeld, gebruikt u **filteren op titel** aan de linkerkant van deze pagina om alle documenten van de SQL-groep te doorzoeken.  Het [forum SQL-groep](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek waar u vragen kunt stellen aan andere gebruikers en de product groep van de SQL-groep.  
+Als u informatie nodig hebt die niet in dit artikel wordt vermeld, zoekt u op de [pagina van micro soft Q&een vraag naar Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en de product groep van de SQL-groep.  
 
 We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure SQL-groep stack overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

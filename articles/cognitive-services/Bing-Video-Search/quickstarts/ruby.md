@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448370"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849566"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en ruby
 
-Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Ruby-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) met extra foutafhandeling en codeaantekeningen.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige ruby-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) met extra foutafhandeling en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,7 +31,7 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. importeer de volgende pakketten in uw codebestand.
+1. Importeer de volgende pakketten in het code bestand:
 
     ```ruby
     require 'net/https'
@@ -37,7 +39,7 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de video-API, uw abonnementssleutel en de zoekterm. `uri`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de video-API, uw abonnementssleutel en de zoekterm. Voor de `url` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,20 +50,20 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Gebruik de variabelen uit de laatste stap om een zoek-URL voor de aanvraag op te maken. Combineer uw URI en het pad, en pas URL-codering toe op de zoekterm voordat u deze toevoegt aan de parameter `?q=`.
+1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de aanvraag op te maken. Combi neer uw URI en pad en voer vervolgens een URL-code uit voor uw zoek term voordat u deze toevoegt aan de `?q=` para meter.
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. Voeg de volledige zoek-URL toe aan de aanvraag en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
+2. Voeg de volledige zoek-URL toe aan de aanvraag en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. Verzend de aanvraag en sla het antwoord op.
+3. Verzend de aanvraag en sla de reactie op.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,11 +73,11 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
 
 ## <a name="process-and-view-the-response"></a>De reactie verwerken en weergeven
 
-1. Nadat het antwoord is ontvangen, kunt u het JSON-antwoord weergeven.
+Nadat het antwoord is ontvangen, drukt u het JSON-antwoord af.
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>JSON-antwoord
 

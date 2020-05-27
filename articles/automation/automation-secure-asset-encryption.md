@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: b26498357db6b1bc006c27285546fd0f3ebe6c4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743793"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830120"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Versleuteling van beveiligde activa in Azure Automation
 
@@ -189,8 +189,8 @@ Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is Azure Sleutelkluis?](../key-vault/general/overview.md)
-- [Certificaten in Azure Automation beheren](shared-resources/certificates.md)
-- [Referenties beheren in Azure Automation](shared-resources/credentials.md)
-- [Variabelen in Azure Automation beheren](shared-resources/variables.md)
-- [Verbindingen in Azure Automation beheren](automation-connections.md)
+- Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md)voor meer informatie Azure Key Vault.
+- Zie [certificaten beheren in azure Automation](shared-resources/certificates.md)om met certificaten te werken.
+- Zie [referenties beheren in azure Automation](shared-resources/credentials.md)voor informatie over het afhandelen van referenties.
+- Als u Automation-variabelen wilt gebruiken, [beheert u variabelen in azure Automation](shared-resources/variables.md).
+- Zie [verbindingen beheren in azure Automation](automation-connections.md)voor hulp bij het werken met verbindingen.

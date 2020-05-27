@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 465ca1d012c6d2057e33fe1460e794e4d5966be6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431673"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831208"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmatisch een Stream Analytics taak controle maken
 
@@ -144,7 +144,7 @@ Met de volgende code wordt de bewaking voor een **bestaande** stream Analytics-t
 > 
 > Alle Stream Analytics-taken (en alle andere Azure-resources) in diezelfde regio delen dit opslag account om bewakings gegevens op te slaan. Als u een ander opslag account opgeeft, kan dit leiden tot onbedoelde neven effecten bij de bewaking van uw andere Stream Analytics-taken of andere Azure-resources.
 > 
-> De naam van het opslag account dat u gebruikt `<YOUR STORAGE ACCOUNT NAME>` voor het vervangen van de volgende code moet een opslag account zijn dat zich in hetzelfde abonnement bevindt als de stream Analytics-taak waarvoor u controle inschakelt.
+> De naam van het opslag account dat u gebruikt voor `<YOUR STORAGE ACCOUNT NAME>` het vervangen van de volgende code moet een opslag account zijn dat zich in hetzelfde abonnement bevindt als de stream Analytics-taak waarvoor u controle inschakelt.
 > 
 > 
 >    ```csharp
@@ -169,7 +169,7 @@ Met de volgende code wordt de bewaking voor een **bestaande** stream Analytics-t
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 

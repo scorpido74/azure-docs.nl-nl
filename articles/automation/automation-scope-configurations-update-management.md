@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 95563e816fa4f0931e547b6bd163dce23c338a44
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749121"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832024"
 ---
 # <a name="work-with-scope-configurations-for-update-management"></a>Werken met Scope configuraties voor Updatebeheer
 
@@ -42,7 +42,7 @@ Wanneer een computer wordt toegevoegd aan Updatebeheer, wordt deze ook toegevoeg
 
 1. Navigeer naar uw Log Analytics-werk ruimte en selecteer **opgeslagen Zoek opdrachten** onder **Algemeen**. De opgeslagen zoek opdracht die door Updatebeheer wordt gebruikt, is:
 
-|Name     |Categorie  |Alias  |
+|Naam     |Categorie  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 
@@ -52,12 +52,7 @@ Wanneer een computer wordt toegevoegd aan Updatebeheer, wordt deze ook toegevoeg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van updatebeheer](automation-update-management.md)voor algemene informatie over de functie.
 * Zie [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)voor meer informatie over het gebruik van de functie.
-* Als u een Automation-account wilt gebruiken om de functie in te scha kelen, raadpleegt u [updatebeheer inschakelen vanuit een Automation-account](automation-onboard-solutions-from-automation-account.md).
-* Als u wilt bladeren door de Azure Portal om de functie in te scha kelen, raadpleegt u [updatebeheer inschakelen in de Azure Portal](automation-onboard-solutions-from-browse.md).
-* Als u een runbook wilt gebruiken om de functie in te scha kelen, raadpleegt u [updatebeheer inschakelen vanuit een runbook](automation-onboard-solutions.md).
-* Als u een virtuele machine van Azure wilt gebruiken om de functie in te scha kelen, raadpleegt u [updatebeheer inschakelen op een virtuele machine van Azure](automation-onboard-solutions-from-vm.md).
 * Zie [problemen met updatebeheer oplossen](troubleshoot/update-management.md)voor informatie over het oplossen van functie fouten.
 * Zie problemen [met Windows Update agent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van fouten in Windows Update Agent.
 * Zie problemen [met de Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met Linux-update agenten.
