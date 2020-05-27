@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: Metagegevens bewerken
       href: edit-metadata.md
+    - name: Gegevens in opslaglocaties groeperen
+      href: group-data-into-bins.md
     - name: Gegevens samenvoegen
       href: join-data.md
     - name: Gegevens normaliseren
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: Tekstanalyse
   items:
+    - name: Word converteren naar vector
+      href: convert-word-to-vector.md
     - name: N-Gram-functies uit tekst halen
       href: extract-n-gram-features-from-text.md
     - name: Functie-hashing

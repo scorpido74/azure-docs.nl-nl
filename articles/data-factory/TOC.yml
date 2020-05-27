@@ -543,6 +543,8 @@
       items:
         - name: Beveiligingsoverwegingen bij het verplaatsen van gegevens
           href: data-movement-security-considerations.md
+        - name: Strategieën voor gegevenstoegang
+          href: data-access-strategies.md
         - name: IP-adressen van Azure Integration Runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Referenties opslaan in Azure Key Vault

@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: Een kluis verwijderen
               href: delete-vault.md
-    - name: Site Recovery-ondersteuning voor nabijheidsplaatsingsgroepen
+    - name: Site Recovery voor nabijheidsplaatsingsgroepen
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: Herstel na noodgeval voor apps
       items:

@@ -31,6 +31,8 @@
       href: storage-files-networking-overview.md
     - name: Over opslag in cloudlagen
       href: storage-sync-cloud-tiering.md
+    - name: Onbedoelde gegevensverwijdering voorkomen
+      href: storage-files-prevent-file-share-deletion.md
     - name: Over opslagaccounts
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Momentopnamen van Azure-bestandsshares
@@ -118,6 +120,8 @@
           href: storage-sync-files-server-registration.md
         - name: Een Azure Files Sync-servereindpunt toevoegen
           href: storage-sync-files-server-endpoint.md
+        - name: Voorlopig verwijderen inschakelen
+          href: storage-files-enable-soft-delete.md
         - name: Opslag in onafhankelijke Azure-clouds beheren
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Gegevensredundantie beheren

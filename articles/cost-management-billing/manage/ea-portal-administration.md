@@ -3,34 +3,20 @@ title: Beheer van Azure EA Portal
 description: In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 2b2ec7a5954649c36cf9da5d7933c83eec67faa3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a3551b4f09202b33cee768a69f31a6c5d5d36777
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692643"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648207"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
 In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert (https://ea.azure.com). Azure EA Portal is een online beheerportal waarmee klanten de kosten van hun Azure EA-services kunnen beheren. Zie het artikel [Aan de slag met Azure EA Portal](ea-portal-get-started.md) voor inleidende informatie over Azure EA Portal.
-
-## <a name="add-a-new-enterprise-administrator"></a>Een nieuwe ondernemingsbeheerder toevoegen
-
-Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [Een andere ondernemingsbeheerder maken](ea-portal-get-started.md#create-another-enterprise-administrator) voor meer informatie over het toevoegen van ondernemingsbeheerders. Zie [Rollen en taken voor factureringsprofiel ](understand-mca-roles.md#billing-profile-roles-and-tasks) voor meer informatie over de rollen en taken voor het factureringsprofiel.
-
-## <a name="update-user-state-from-pending-to-active"></a>De status van een gebruiker bijwerken van in behandeling naar actief
-
-Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan een Azure EA-inschrijving, krijgen ze de status _In behandeling_. Zodra een nieuwe accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Zodra het account wordt geactiveerd, wordt de accountstatus bijgewerkt van _In behandeling_ naar _Actief_. De accounteigenaar moet het waarschuwingsbericht lezen en **Doorgaan** selecteren. Nieuwe gebruikers worden mogelijk gevraagd hun voor- en achternaam op te geven om een Commerce-account te maken. Als dat het geval is, moeten ze de vereiste informatie toevoegen om door te gaan, waarna het account wordt geactiveerd.
-
-## <a name="add-a-department-admin"></a>Een afdelingsbeheerder toevoegen
-
-Nadat een Azure EA-beheerder een afdeling heeft gemaakt, kan de Azure Enterprise-beheerder afdelingsbeheerders toevoegen en deze koppelen aan een afdeling. Een afdelingsbeheerder kan nieuwe accounts maken. Nieuwe accounts zijn nodig om nieuwe Azure EA-abonnementen te maken.
-
-Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-get-started.md#add-a-department-administrator) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
 
 ## <a name="associate-an-account-to-a-department"></a>Een account aan een afdeling koppelen
 
@@ -114,108 +100,6 @@ Wanneer een gebruiker via Azure EA Portal als accounteigenaar wordt toegevoegd, 
 
 De Dev/Test-aanbieding is op dit moment niet van toepassing op Azure Gov-klanten.
 
-## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Een ondernemingsaccount overdragen naar een nieuwe inschrijving
-
-Bij een accountoverdracht wordt een accounteigenaar verplaatst van de ene inschrijving naar een andere. Alle verwante abonnementen onder de accounteigenaar worden verplaatst naar de doelinschrijving. Gebruik een accountoverdracht wanneer u meerdere actieve inschrijvingen hebt en alleen de geselecteerde accounteigenaren wilt verplaatsen.
-
-Deze sectie is alleen bedoeld voor informatieve doeleinden, omdat de actie niet kan worden uitgevoerd door een ondernemingsbeheerder. Er is een ondersteuningsaanvraag nodig om een ondernemingsaccount over te brengen naar een nieuwe inschrijving.
-
-Houd rekening met de volgende punten wanneer u een Enterprise-account overdraagt naar een nieuwe inschrijving:
-
-- Alleen de accounts in de aanvraag worden overgedragen. Als alle accounts worden gekozen, worden ze allemaal overgedragen.
-- De status van de broninschrijving blijft actief of uitgebreid. U kunt de inschrijving blijven gebruiken totdat deze verloopt.
-
-### <a name="prerequisites"></a>Vereisten
-
-Wanneer u een accountoverdracht aanvraagt, verstrekt u de volgende gegevens:
-
-- Het nummer van de doelinschrijving, de accountnaam, en het e-mailadres van de accounteigenaar voor het account dat moet worden overgedragen
-- Voor de broninschrijving het inschrijvingsnummer en het account dat moet worden overgedragen
-
-Andere punten waarmee u rekening moet houden voordat u een account overdraagt:
-
-- Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving
-- Als een accountoverdracht niet aan uw vereisten voldoet, kunt u een inschrijvingsoverdracht overwegen.
-- De accountoverdracht draagt alle services en abonnementen over die betrekking hebben op de specifieke accounts.
-- Nadat de overdracht is voltooid, verschijnt het overgedragen account als inactief onder de broninschrijving en als actief onder de doelinschrijving.
-- In het account wordt de einddatum getoond die correspondeert met de effectieve overdrachtsdatum op de broninschrijving en als een begindatum op de doelinschrijving.
-- Elk gebruik dat met het account is uitgevoerd vóór de effectieve overgangsdatum, blijft onder de broninschrijving bestaan.
-
-
-## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Enterprise-inschrijving overdragen naar een nieuwe inschrijving
-
-Een inschrijvingsoverdracht wordt overwogen wanneer:
-
-- De toezeggingstermijn van een huidige inschrijving tot een einde is gekomen.
-- Een inschrijving de status verlopen/uitgebreid heeft en er wordt onderhandeld over een nieuwe overeenkomst.
-- U meerdere inschrijvingen hebt en alle accounts en facturering wilt samenvoegen onder één inschrijving.
-
-Deze sectie is alleen bedoeld voor informatieve doeleinden, omdat de actie niet kan worden uitgevoerd door een ondernemingsbeheerder. Er is een ondersteuningsaanvraag nodig om een ondernemingsinschrijving over te brengen naar een nieuwe inschrijving.
-
-Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een inschrijving aanvraagt, worden de volgende acties uitgevoerd:
-
-- Alle services, abonnementen, accounts en afdelingen van Azure, en de volledige inschrijvingsstructuur, inclusief alle EA-afdelingsbeheerders, worden overgedragen naar een nieuwe doelinschrijving.
-- De inschrijvingsstatus wordt ingesteld op _Overgedragen_. De overgedragen inschrijving is alleen beschikbaar voor rapportage van het historische gebruik.
-- U kunt geen rollen of abonnementen toevoegen aan een overgedragen inschrijving. De status Overgedragen voorkomt aanvullend gebruik van de inschrijving.
-- Het saldo van de resterende financiële toezegging in de overeenkomst gaat verloren, met inbegrip van toekomstige voorwaarden.
--    Als de inschrijving van waaruit u de overdracht uitvoert over RI-aankopen beschikt, blijven de kosten voor de aanschaf van RI in de broninschrijving. Alle RI-voordelen worden echter overgedragen zodat u deze in de nieuwe inschrijving kunt gebruiken.
--    De eenmalige aanschafkosten via de marketplace en eventuele vaste maandelijkse kosten die al bij de oude inschrijving in rekening zijn gebracht, worden niet naar de nieuwe inschrijving overgedragen. Marketplace-kosten op basis van gebruik worden wel overgedragen.
-
-### <a name="effective-transfer-date"></a>Werkelijke overdrachtsdatum
-
-De werkelijke overdrachtsdatum kan zijn op of na de startdatum van de doelinschrijving.
-
-Het gebruik van de broninschrijving wordt verrekend met de financiële toezegging of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
-
-### <a name="prerequisites"></a>Vereisten
-
-Wanneer u een inschrijvingsoverdracht aanvraagt, verstrekt u de volgende gegevens:
-
-- Voor de broninschrijving is dit het inschrijvingsnummer.
-- Voor de doelinschrijving het inschrijvingsnummer waarnaar moet worden overgedragen.
-- De werkelijke datum van de inschrijvingsoverdracht kan een datum op of na de begindatum van de doelinschrijving zijn. De gekozen datum is niet van invloed op het gebruik voor een overschrijdingsfactuur die al is uitgegeven.
-
-Andere punten waarmee u rekening moet houden voordat u een inschrijving overdraagt:
-
-- Goedkeuring van een EA-beheerder is vereist voor zowel de doel- als broninschrijving.
-- Als een inschrijvingsoverdracht niet aan uw vereisten voldoet, kunt u een accountoverdracht overwegen.
-- De status van de broninschrijving wordt bijgewerkt naar overgedragen, en is alleen beschikbaar voor rapportagedoeleinden over historisch gebruik.
-
-### <a name="monetary-commitment"></a>Financiële toezegging
-
-De financiële toezegging is niet overdraagbaar tussen inschrijvingen. De financiële toezeggingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De financiële toezegging is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
-
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Er worden geen services beïnvloed voor de overdracht van accounts en inschrijvingen
-
-Er is geen downtime tijdens de overdracht van accounts en inschrijvingen. Indien alle vereiste gegevens worden verstrekt, kan de overdracht nog op de dag van uw aanvraag worden voltooid.
-
-## <a name="change-account-owner"></a>Accounteigenaar wijzigen
-
-In Azure EA Portal kunnen abonnementen worden overdragen van de ene accounteigenaar naar de andere. Zie [Accounteigenaar wijzigen](ea-portal-get-started.md#change-account-owner) voor meer informatie.
-
-## <a name="subscription-transfer-effects"></a>Gevolgen van een abonnementsoverdracht
-
-Wanneer een Azure-abonnement wordt overgedragen naar een account in een andere tenant, verliezen alle gebruikers, groepen en service-principals met [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/overview.md) voor het beheren van de resources in het abonnement, hun toegang.
-
-Gebruikers met RBAC-toegang tot het abonnement weergeven:
-
-1. Open in Azure Portal **Abonnementen**.
-2. Selecteer het abonnement dat u wilt weergeven en selecteer vervolgens **Toegangsbeheer (IAM)** .
-3. Selecteer **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met RBAC-toegang tot het abonnement.
-
-Als het abonnement wordt overgedragen naar een account in een andere Azure AD-tenant, verliezen alle gebruiker, groepen en service-principals met [RBAC](../../role-based-access-control/overview.md) om resources te beheren, _hun toegang_. Hoewel er geen RBAC-toegang aanwezig is, is het abonnement mogelijk toegankelijk via een beveiligingsmechanisme, inclusief:
-
-- Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie.
-- Toegangssleutels voor services zoals Storage. Zie [Overzicht van Azure-opslagaccount](../../storage/common/storage-account-overview.md) voor meer informatie.
-- Referenties voor externe toegang voor services zoals Azure Virtual Machines.
-
-Als ontvangers de toegang tot hun Azure-resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt door de volgende stappen uit te voeren:
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer in het Hub-menu **Alle resources**.
-3. Selecteer de resource.
-4. Selecteer op de resourcepagina **Instellingen** om bestaande geheimen weer te geven en bij te werken.
-
 ## <a name="delete-subscription"></a>Abonnement verwijderen
 
 Als u een abonnement waarvoor u de accounteigenaar bent, wilt verwijderen, doet u het volgende:
@@ -260,60 +144,6 @@ Een contactpersoon toevoegen:
 De nieuwe contactpersoon voor meldingen wordt weergegeven in het gedeelte **Contactpersoon voor meldingen**. Als u de meldingsfrequentie wilt wijzigen, selecteert u de contactpersoon voor meldingen en selecteert u rechts van de geselecteerde rij het potloodpictogram. Stel de frequentie in **dagelijks**, **wekelijks**, **maandelijks** of **geen**.
 
 U kunt de _naderende einddatum van de dekkingsperiode_ onderdrukken en de meldingen over de levenscyclus _uitschakelen en de inrichting van de datum ongedaan maken_. Als u de meldingen over de levenscyclus uitschakelt, worden meldingen over de dekkingsperiode en de einddatum van de overeenkomst onderdrukt.
-
-## <a name="manage-partner-administrators"></a>Partnerbeheerders beheren
-
-Elke partnerbeheerder in Azure EA Portal beschikt over de mogelijkheid om andere partnerbeheerders toe te voegen of te verwijderen. Partnerbeheerders zijn gekoppeld aan de partnerorganisaties van indirecte inschrijvingen en zijn niet rechtstreeks aan de inschrijvingen gekoppeld.
-
-### <a name="add-a-partner-administrator"></a>Een partnerbeheerder toevoegen
-
-Selecteer het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
-
-1. Meld u aan als partnerbeheerder.
-1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
-1. Selecteer het tabblad **Partner**.
-1. Selecteer **+ Beheerder toevoegen** en vul het e-mailadres, de contactpersoon voor meldingen en meldingsgegevens in.
-1. Selecteer **Toevoegen**.
-
-### <a name="remove-a-partner-administrator"></a>Een partnerbeheerder verwijderen
-
-Selecteer het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
-
-1. Meld u aan als partnerbeheerder.
-1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
-1. Selecteer het tabblad **Partner**.
-1. Selecteer in de sectie Beheerder de juiste rij voor de beheerder die u wilt verwijderen.
-1. Selecteer het X-pictogram aan de rechterkant.
-1. Bevestig dat u de beheerder wilt verwijderen.
-
-## <a name="manage-partner-notifications"></a>Partnermeldingen beheren
-
-Partnerbeheerders kunnen beheren met welke frequentie ze gebruiksmeldingen voor hun inschrijvingen ontvangen. Ze ontvangen automatisch wekelijkse meldingen over hun niet-gefactureerd saldo. Ze kunnen de frequentie van afzonderlijke meldingen wijzigen in maandelijks, wekelijks, dagelijks of ze volledig uitschakelen.
-
-Als er geen melding door een gebruiker wordt ontvangen, controleert u aan de hand van de volgende stappen of de instellingen voor meldingen van de gebruiker juist.
-
-1. Meld u als een partnerbeheerder aan bij Azure EA Portal.
-2. Selecteer **Beheren** en selecteer vervolgens het tabblad **Partner**.
-3. Bekijk in de sectie Beheerder de lijst met beheerders.
-4. Als u de meldingsvoorkeuren wilt bewerken, plaatst u de muisaanwijzer op de desbetreffende beheerder en selecteert u het potloodpictogram.
-5. Verhoog de meldingsfrequentie en het aantal meldingen over de levenscyclus naar wens.
-6. Voeg indien nodig een contactpersoon toe en selecteer **Toevoegen**.
-7. Selecteer **Opslaan**.
-
-![Voorbeeld met het venster Contactpersoon toevoegen ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
-
-## <a name="view-enrollments-for-partner-administrators"></a>Inschrijvingen voor partnerbeheerders weergeven
-
-Partnerbeheerders kunnen een lijst met al hun directe en indirecte inschrijvingen in Azure EA Portal weergeven. Er worden vakken met een overzicht van elke inschrijving weergegeven, voorzien van het inschrijvingsnummer, de inschrijvingsnaam, het saldo en de hoogte van overschrijdingen.
-
-### <a name="view-a-list-of-enrollments"></a>Een lijst met inschrijvingen weergeven
-
-1. Meld u aan als partnerbeheerder.
-1. Selecteer in het navigatiemenu aan de linkerkant van de pagina **Beheren**.
-1. Selecteer het tabblad **Inschrijving**.
-1. Schakel het selectievakje in voor de inschrijving.
-
-Bovenaan de pagina blijft een lijst met alle inschrijvingen zichtbaar, waarbij elke inschrijving van een selectievakje is voorzien. Daarnaast kunt u tussen inschrijvingen navigeren door in het navigatiemenu aan de linkerkant van de pagina het nummer van de huidige inschrijving te selecteren. Er wordt een pop-upbericht weergegeven waarin u naar inschrijvingen kunt zoeken of een andere inschrijving kunt selecteren door het desbetreffende selectievakje te selecteren.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-aanbieding
 
