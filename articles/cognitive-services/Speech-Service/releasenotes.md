@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584906"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800241"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-mei release
 
-**Opdracht console voor SPX Azure speech Services**
+**De Azure speech CLI**
 - **SPX** is een nieuw opdracht regel programma waarmee u herkenning, synthese, vertaling, batch transcriptie en aangepaste spraak beheer kunt uitvoeren vanaf de opdracht regel. Gebruik deze functie om de service Azure speech te testen of om de spraak service taken te script die u moet uitvoeren. Down load het hulp programma en lees de documentatie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview).
 
 **Nieuwe functies**
@@ -364,7 +364,7 @@ De volgende nieuwe inhoud is beschikbaar in onze [voorbeeld opslagplaats](https:
   - De SDK is nu gebouwd op basis van de iOS SDK-versie 12,1.
   - De SDK ondersteunt nu iOS-versies 9,2 en hoger.
   - Verbeter de referentie documentatie en los diverse eigenschapnamen op.
-- JavaScript
+- Javascript
   - Voeg ondersteuning toe voor het `Connection` object.
   - Type definitie bestanden voor gebundelde java script toevoegen
   - Eerste ondersteuning en implementatie voor woordgroepen hints.
@@ -396,7 +396,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 
 - Python
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
-- JavaScript
+- Javascript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - Node. js wordt nu ondersteund. meer informatie vindt u [hier](quickstart-js-node.md).
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.

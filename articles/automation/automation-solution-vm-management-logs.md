@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743729"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827553"
 ---
-# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Query's uitvoeren op Logboeken van VM's buiten bedrijfsuren starten/stoppen
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Query's uitvoeren op logboeken vanuit VM's buiten bedrijfsuren starten/stoppen
 
 Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log Analytics werk ruimte: taak logboeken en taak stromen. In dit artikel worden de gegevens weer gegeven die beschikbaar zijn voor [query's](../azure-monitor/log-query/log-query-overview.md) in azure monitor.
 
@@ -71,6 +71,6 @@ De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor taak 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Logboek waarschuwingen met Azure Monitor maken](../azure-monitor/platform/alerts-log.md)
-* [Vm's voor stoppen/starten configureren tijdens buiten kantoor uren](automation-solution-vm-management-config.md)
-* [Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)
+* Als u de functie wilt instellen, raadpleegt u [virtuele machines stoppen/starten configureren tijdens buiten kantoor uren](automation-solution-vm-management-config.md).
+* Zie [logboek waarschuwingen maken met Azure monitor](../azure-monitor/platform/alerts-log.md)voor meer informatie over logboek waarschuwingen tijdens de implementatie van onderdelen.
+* Raadpleeg [problemen met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)om de functie fouten op te lossen.

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189093"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827961"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
 U kunt Azure Service Fabric gebruiken om Service Fabric-clusters te maken op alle virtuele machines of computers waarop Windows Server wordt uitgevoerd. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving met een set onderling verbonden Windows Server-computers, deze on-premises of met een Cloud provider. Service Fabric biedt een installatie pakket om Service Fabric clusters te maken die het zelfstandige Windows Server-pakket worden genoemd. Traditionele Service Fabric clusters op Azure zijn beschikbaar als beheerde service, terwijl zelfstandige Service Fabric clusters self-service zijn. Zie [Azure en zelfstandige service Fabric clusters vergelijken](./service-fabric-deploy-anywhere.md)voor meer informatie over de verschillen.
@@ -25,7 +25,7 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van een Servi
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Ontvang ondersteuning voor de Service Fabric voor Windows Server-pakket
-* Vraag de community naar het zelfstandige Service Fabric-pakket voor Windows Server in het [Azure service Fabric-forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
+* Vraag de community naar het zelfstandige Service Fabric-pakket voor Windows Server op de [pagina micro soft Q&een vraag voor Azure service Fabric](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
 * Open een ticket voor [professionele ondersteuning voor service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Meer informatie over Professional Support van micro soft [vindt u hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * U kunt ook ondersteuning voor dit pakket krijgen als onderdeel van [micro soft Premier Support](https://support.microsoft.com/en-us/premier).
 * Raadpleeg de [ondersteunings opties voor Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)voor meer informatie.
@@ -109,7 +109,7 @@ De clusterbeheerder die het cluster implementeert en configureert, moet administ
 
 #### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Scenario C: een offline cluster (verbinding met Internet) maken
 Het runtime pakket voor Service Fabric wordt automatisch gedownload tijdens het maken van het cluster. Wanneer u een cluster implementeert op computers die niet zijn verbonden met internet, moet u het Service Fabric runtime pakket afzonderlijk downloaden en het pad naar het cluster maken.
-Het runtime pakket kan afzonderlijk worden gedownload, van een andere computer die is verbonden met internet, via de [Download koppeling-service Fabric runtime-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Kopieer het runtime pakket naar de locatie waarvandaan u het offline cluster implementeert en maak het cluster door uit `CreateServiceFabricCluster.ps1` te voeren `-FabricRuntimePackagePath` met de para meter opgenomen, zoals wordt weer gegeven in dit voor beeld: 
+Het runtime pakket kan afzonderlijk worden gedownload, van een andere computer die is verbonden met internet, via de [Download koppeling-service Fabric runtime-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Kopieer het runtime pakket naar de locatie waarvandaan u het offline cluster implementeert en maak het cluster door uit te voeren `CreateServiceFabricCluster.ps1` met de `-FabricRuntimePackagePath` para meter opgenomen, zoals wordt weer gegeven in dit voor beeld: 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Stap 3: het cluster visualiseren met Service Fabric Explorer
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) is een goed hulpmiddel om een cluster te visualiseren en toepassingen te beheren.  Service Fabric Explorer is een service die in het cluster wordt uitgevoerd en die u gebruikt om toegang te krijgen tot een `http://localhost:19080/Explorer`browser door naar te navigeren.
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) is een goed hulpmiddel om een cluster te visualiseren en toepassingen te beheren.  Service Fabric Explorer is een service die in het cluster wordt uitgevoerd en die u gebruikt om toegang te krijgen tot een browser door naar te navigeren `http://localhost:19080/Explorer` .
 
 Het clusterdashboard bevat een overzicht van het cluster, inclusief een overzicht van de toepassings- en knooppuntstatus. In de knooppuntweergave ziet u de fysieke indeling van het cluster. Voor elk knooppunt kunt u controleren voor welke toepassingen er op het knooppunt code is geïmplementeerd.
 
@@ -172,9 +172,9 @@ Dit script kan worden uitgevoerd op elke computer met beheerders toegang tot all
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>De telemetriegegevens die zijn verzameld en hoe u deze kunt afmelden
-Standaard verzamelt het product telemetrie op het Service Fabric gebruik om het product te verbeteren. De best practice Analyzer die als onderdeel van de installatie wordt uitgevoerd, controleert de verbinding [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)met. Als deze niet bereikbaar is, mislukt de installatie tenzij u de telemetrie afmeldt.
+Standaard verzamelt het product telemetrie op het Service Fabric gebruik om het product te verbeteren. De best practice Analyzer die als onderdeel van de installatie wordt uitgevoerd, controleert de verbinding met [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) . Als deze niet bereikbaar is, mislukt de installatie tenzij u de telemetrie afmeldt.
 
-1. De telemetrie-pijp lijn probeert de volgende gegevens één [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) keer per dag te uploaden. Het is een upload van het hoogste aantal en heeft geen invloed op de functionaliteit van het cluster. De telemetrie wordt alleen verzonden vanuit het knoop punt dat de primaire failover Manager uitvoert. Geen andere knoop punten verzenden telemetrie.
+1. De telemetrie-pijp lijn probeert de volgende gegevens [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) één keer per dag te uploaden. Het is een upload van het hoogste aantal en heeft geen invloed op de functionaliteit van het cluster. De telemetrie wordt alleen verzonden vanuit het knoop punt dat de primaire failover Manager uitvoert. Geen andere knoop punten verzenden telemetrie.
 2. De telemetrie bestaat uit het volgende:
 
 * Aantal services

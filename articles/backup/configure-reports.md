@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713825"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797530"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -18,7 +18,7 @@ Een veelvoorkomende vereiste voor back-upbeheerders is het verkrijgen van inzich
 - Controle van back-ups en herstel bewerkingen.
 - De belangrijkste trends op verschillende niveaus nauw keurig te identificeren.
 
-Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) en [Azure-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks). Met deze resources krijgt u inzicht in uw back-ups over uw hele back-ups. In dit artikel wordt uitgelegd hoe u Azure Backup-rapporten configureert en weergeeft.
+Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) en [Azure-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Met deze resources krijgt u inzicht in uw back-ups over uw hele back-ups. In dit artikel wordt uitgelegd hoe u Azure Backup-rapporten configureert en weergeeft.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 

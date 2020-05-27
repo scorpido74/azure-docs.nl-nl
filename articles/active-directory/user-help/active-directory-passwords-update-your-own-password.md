@@ -11,16 +11,16 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739661"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828403"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
-Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en uw eigen wacht woord opnieuw instelt.
+Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en [uw eigen wacht woord opnieuw instelt](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
 
 Als u uw wacht woord kent, maar dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) in dit artikel.
 

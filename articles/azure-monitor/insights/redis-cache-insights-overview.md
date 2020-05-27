@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773903"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800015"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
 
@@ -186,4 +186,4 @@ Nadat u een aangepaste werkmap hebt opgeslagen, gaat u naar de werkmap galerie o
 
 * [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen die ondersteuning bieden bij het detecteren van problemen.
 
-* Meer informatie over de scenario's die door werkmappen worden ondersteund, over het ontwerpen of aanpassen van rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../app/usage-workbooks.md)te controleren.
+* Meer informatie over de scenario's die door werkmappen worden ondersteund, over het ontwerpen of aanpassen van rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.

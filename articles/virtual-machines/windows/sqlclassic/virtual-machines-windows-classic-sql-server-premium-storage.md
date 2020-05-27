@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965674"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833928"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Azure Premium Storage gebruiken met SQL Server op virtuele machines
 
@@ -68,7 +68,7 @@ Voor DS *-Vm's moet u de Virtual Network (VNET) configureren die uw Vm's hosten 
 
 ![RegionalVNET][1]
 
-U kunt een micro soft-ondersteunings ticket genereren om te migreren naar een regionaal VNET. Micro soft brengt vervolgens een wijziging aan. Wijzig de eigenschap AffinityGroup in de netwerk configuratie om de migratie naar regionale VNETs te volt ooien. Exporteer eerst de netwerk configuratie in Power shell en vervang vervolgens de eigenschap **AffinityGroup** in het element **VirtualNetworkSite** door een **locatie** -eigenschap. Geef `Location = XXXX` op `XXXX` waar zich een Azure-regio bevindt. Importeer vervolgens de nieuwe configuratie.
+U kunt een micro soft-ondersteunings ticket genereren om te migreren naar een regionaal VNET. Micro soft brengt vervolgens een wijziging aan. Wijzig de eigenschap AffinityGroup in de netwerk configuratie om de migratie naar regionale VNETs te volt ooien. Exporteer eerst de netwerk configuratie in Power shell en vervang vervolgens de eigenschap **AffinityGroup** in het element **VirtualNetworkSite** door een **locatie** -eigenschap. Geef op `Location = XXXX` waar `XXXX` zich een Azure-regio bevindt. Importeer vervolgens de nieuwe configuratie.
 
 Bijvoorbeeld overwegende over de volgende VNET-configuratie:
 
@@ -142,7 +142,7 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. Noteer de diskette en LUN.
 
     ![DisknameAndLUN][2]
-1. Extern bureau blad in de VM. Ga vervolgens naar **computer beheer** | **Apparaatbeheer** | **schijf stations**. Bekijk de eigenschappen van elk van de ' virtuele micro soft-schijven '
+1. Extern bureau blad in de VM. Ga vervolgens naar **computer beheer**  |  **Apparaatbeheer**  |  **schijf stations**. Bekijk de eigenschappen van elk van de ' virtuele micro soft-schijven '
 
     ![VirtualDiskProperties][3]
 1. Het LUN-nummer hier is een verwijzing naar het LUN-nummer dat u opgeeft wanneer u de VHD koppelt aan de virtuele machine.
@@ -271,7 +271,7 @@ $pass = "mycomplexpwd4*"
 $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
 #Add Data and Log Disks to VM Config
-#Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
+#Note the size specified '-DiskSizeInGB 1023', this attaches 2 x P30 Premium Storage Disk Type
 #Utilising the Premium Storage enabled Storage account
 
 $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Stap 2: Verhoog de toegestane storingen voor \<resources optioneel>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Stap 2: Verhoog de toegestane storingen voor resources \< optioneel>
 
 Voor bepaalde resources die deel uitmaken van uw beschikbaarheids groep altijd, gelden er limieten voor het aantal storingen dat in een bepaalde periode kan optreden, waarbij de Cluster service de resource groep probeert te starten. U kunt dit het beste verhogen, omdat u deze procedure doorloopt, omdat als u niet hand matig failovers doorvoert en failovers doorschakelt door machines af te sluiten, kan deze limiet bijna worden bereikt.
 
@@ -691,7 +691,7 @@ Het is verstandig om de fout limiet te verdubbelen. Als u dit wilt doen in Failo
 
 Wijzig het maximum aantal fouten in 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: toevoeging van een IP-adres resource \<voor een cluster groep optioneel>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: toevoeging van een IP-adres resource voor een cluster groep \< optioneel>
 
 Als u slechts één IP-adres voor de cluster groep hebt en dit is afgestemd op het Cloud subnet, moet u er rekening mee houden als u per ongeluk alle cluster knooppunten in de Cloud op dat netwerk offline neemt, de cluster-IP-bron en de cluster netwerk naam niet online kunnen worden gebracht. In deze situatie voor komt u dat er updates voor andere cluster bronnen worden bijgewerkt.
 
@@ -1246,10 +1246,10 @@ Als u een IP-adres wilt toevoegen, raadpleegt u de bijlage, stap 14.
 
     ![Appendix15][25]
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Premium Storage](../disks-types.md)
-* [Virtuele machines](https://azure.microsoft.com/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server in azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899099"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826057"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-taken migreren naar Azure Logic Apps
 
@@ -53,7 +53,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
    Volg voor de basis stappen [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Typ `when a http request` in het zoekvak om de aanvraag trigger te vinden. Selecteer in de lijst triggers deze trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**
+1. Typ in het zoekvak `when a http request` om de aanvraag trigger te vinden. Selecteer in de lijst triggers deze trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**
 
    ![Trigger voor aanvraag toevoegen](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -80,7 +80,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
 1. Selecteer **volgende stap**onder de trigger.
 
-1. Voer `delay until` in het zoekvak in als uw filter. Selecteer in de lijst acties de optie deze actie: **vertraging tot**
+1. Voer in het zoekvak in `delay until` als uw filter. Selecteer in de lijst acties de optie deze actie: **vertraging tot**
 
    Met deze actie wordt de werk stroom van uw logische app onderbroken tot een opgegeven datum en tijd.
 
@@ -116,7 +116,7 @@ Als u bijvoorbeeld de Postman-app gebruikt, kunt u een POST-aanvraag maken met d
 
 | Aanvraag methode | URL | Hoofdtekst | Headers |
 |----------------|-----|------|---------|
-| **POST** | <*eind punt-URL*> | **uitgang** <p>**JSON (toepassing/JSON)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
+| **Verzenden** | <*eind punt-URL*> | **uitgang** <p>**JSON (toepassing/JSON)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
 |||||
 
 ![Aanvraag verzenden om uw logische app hand matig te activeren](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -239,7 +239,7 @@ Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvra
 
 **Community**
 
-* [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
+* [Micro soft Q&een vraag pagina voor Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954380"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829780"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Een Linux-hoofddoelserver voor failback installeren
 Nadat u uw virtuele machines naar Azure hebt gefailovert, kunt u een failback uitvoeren voor de virtuele machines naar de on-premises site. Als u een failback wilt uitvoeren, moet u de virtuele machine opnieuw beveiligen van Azure naar de on-premises site. Voor dit proces hebt u een on-premises Master doel server nodig om het verkeer te ontvangen. 
@@ -27,7 +27,7 @@ Als uw beveiligde virtuele machine een virtuele Windows-machine is, hebt u een W
 ## <a name="overview"></a>Overzicht
 Dit artikel bevat instructies voor het installeren van een Linux-hoofd doel.
 
-Post opmerkingen of vragen aan het einde van dit artikel of op het [Azure Recovery Services-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Post opmerkingen of vragen aan het einde van dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -160,7 +160,7 @@ Als u de ID voor elke SCSI harde schijf in een virtuele Linux-machine wilt ophal
 
 3. Selecteer het tabblad **Opties** .
 
-4. Selecteer **Geavanceerd** > **Algemeen**in het linkerdeel venster en selecteer vervolgens de knop **configuratie parameters** in het rechter gedeelte van het scherm.
+4. Selecteer **Geavanceerd**algemeen in het linkerdeel venster  >  **General**en selecteer vervolgens de knop **configuratie parameters** in het rechter gedeelte van het scherm.
 
     ![Configuratie parameter openen](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -244,7 +244,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
 
     ![ID voor meerdere paden](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Format teer het station en maak vervolgens een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/\<retentie schijf-id voor meerdere paden>**.
+3. Format teer het station en maak vervolgens een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/ \< retentie schijf-id voor meerdere paden>**.
     
     ![Bestandssysteem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
     
     Selecteer **Invoegen** om te beginnen met het bewerken van het bestand. Maak een nieuwe regel en voeg de volgende tekst toe. Bewerk de schijf-ID voor meerdere paden op basis van de gemarkeerde multipath ID van de vorige opdracht.
 
-    **/dev/mapper/\<retentie schijven multipath id>/mnt/retention ext4 RW 0 0**
+    **/dev/mapper/ \< retentie schijven multipath id>/mnt/retention ext4 rw 0 0**
 
     Selecteer **ESC**en typ **: wq** (schrijven en sluiten) om het editor venster te sluiten.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db133f52a99bd716c2228add0573e8d44255c9e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736514"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799581"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Overzicht van Azure Multi-Factor Authentication voor uw organisatie
 
@@ -32,7 +32,7 @@ Hoe schakelt uw organisatie MFA zelfs gratis in voordat u een statistiek krijgt?
 
 Klanten die gebruikmaken van de gratis voor delen van Azure AD, kunnen gebruikmaken van de [standaard instellingen](../fundamentals/concept-fundamentals-security-defaults.md) om multi-factor Authentication in hun omgeving in te scha kelen.
 
-## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 of E5
+## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 of E5
 
 Voor klanten met Office 365 zijn er twee opties:
 

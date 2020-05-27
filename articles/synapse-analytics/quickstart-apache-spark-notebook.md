@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een Apache Spark notitie blok maken'
-description: In deze Quick start ziet u hoe u met de webhulpprogramma's een Apache Spark groep maakt (preview) in azure Synapse Analytics en voert u een Spark SQL-query uit.
+title: 'Quickstart: Een Apache Spark voor Azure Synapse Analytics-notebook maken'
+description: In deze quickstart leert u hoe u met de webhulpprogramma's een Apache Spark-pool (preview) maakt in Azure Synapse Analytics en hoe u een Spark SQL-query uitvoert.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,48 +9,48 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786665"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592947"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Snelstartgids: een Apache Spark groep maken (preview) in azure Synapse Analytics met behulp van web-hulpprogram ma's
+# <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool (preview) maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 
-In deze Quick Start leert u hoe u een Apache Spark pool (preview) maakt in azure Synapse met behulp van web tools. Vervolgens leert u hoe u verbinding maakt met de Apache Spark pool en Spark SQL-query's uitvoert op bestanden en tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Zie [overzicht: Apache Spark op Azure Synapse](./spark/apache-spark-overview.md)voor meer informatie over Spark in azure Synapse.
+In deze quickstart leert u hoe u een Apache Spark-pool (preview) maakt in Azure Synapse met behulp van webhulpprogramma's. Vervolgens leert u hoe u verbinding maakt met de Apache Spark-pool en Spark SQL-query's uitvoert op bestanden en tabellen. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. Informatie over Spark in Azure Synapse kunt u lezen in [Wat is Apache Spark in Azure Synapse Azure Synapse Analytics](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
-> Facturering voor Spark-instanties wordt per minuut naar beneden geclassificeerd, ongeacht of u deze gebruikt. Zorg ervoor dat u de Spark-instantie afsluit nadat u deze hebt gebruikt of een korte time-out hebt ingesteld. Zie voor meer informatie de sectie **Resources opschonen** van dit artikel.
+> Spark-instanties worden pro rato per minuut gefactureerd, ongeacht of u ze wel of niet gebruikt. Zorg er daarom voor dat u de Spark-instantie afsluit wanneer u deze niet meer nodig hebt of stel een korte time-out in. Zie voor meer informatie de sectie **Resources opschonen** van dit artikel.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https://azure.microsoft.com/free/).
+Als u geen Azure-abonnement hebt, [maakt u een gratis account voordat u begint](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- [Synapse Analytics-werk ruimte](quickstart-create-workspace.md)
-- [Apache Spark pool](quickstart-create-apache-spark-pool.md)
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- [Synapse Analytics-werkruimte](quickstart-create-workspace.md)
+- [Apache Spark-pool](quickstart-create-apache-spark-pool.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-a-notebook"></a>Een notebook maken
 
-Een notebook is een interactieve omgeving die verschillende programmeer talen ondersteunt. Met het notitie blok kunt u communiceren met uw gegevens, code combi neren met prijs verlaging, tekst en eenvoudige visualisaties.
+Een notebook is een interactieve omgeving die verschillende programmeertalen ondersteunt. Via de notebook kunt u interactie hebben met uw gegevens, code combineren met markdown en tekst, en eenvoudige visualisaties uitvoeren.
 
-1. Selecteer in de weer gave Azure Portal voor de Azure Synapse-werk ruimte die u wilt gebruiken, de optie **Start Synapse Studio**.
-2. Zodra Synapse Studio is gestart, selecteert u **ontwikkelen**. Beweeg vervolgens de muis aanwijzer over de **notitieblok** vermelding. Selecteer het beletsel teken (**...**).
-3. Selecteer vervolgens **Nieuw notitie blok**. Er wordt een nieuw notitie blok gemaakt en geopend met een automatisch gegenereerde naam.
-  ![Nieuw notitie blok](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nieuw notitie blok")
+1. Ga naar de weergave in de Azure-portal van de Azure Synapse-werkruimte die u wilt gebruiken en selecteer **Synapse Studio starten**.
+2. Zodra Synapse Studio is gestart, selecteert u **Ontwikkelen**. Beweeg vervolgens de muisaanwijzer over de vermelding **Notebooks**. Selecteer het beletselteken ( **...** ).
+3. Selecteer **Nieuwe notebook**. Er wordt een nieuwe notebook gemaakt en deze wordt geopend onder een automatisch gegenereerde naam.
+  ![Nieuwe notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nieuwe notebook")
 
-4. Geef in het venster **Eigenschappen** een naam op voor het notitie blok.
-5. Klik op de werk balk op **publiceren**.
-6. Als er slechts één Apache Spark pool in uw werk ruimte is, wordt deze standaard geselecteerd. Gebruik de vervolg keuzelijst om de juiste Apache Spark pool te selecteren als er geen is geselecteerd.
-7. Klik op **code toevoegen**. De standaard taal is `Pyspark`. U gaat een combi natie van Pyspark en Spark SQL gebruiken. de standaard keuze is dus prima.
-8. Vervolgens maakt u een eenvoudig Spark data frame-object dat u kunt bewerken. In dit geval maakt u deze vanuit code. Er zijn drie rijen en drie kolommen:
+4. Geef in het venster **Eigenschappen** een naam op voor de notebook.
+5. Klik op de werkbalk op **Publiceren**.
+6. Als uw werkruimte slechts één Apache Spark-pool bevat, wordt deze standaard geselecteerd. Gebruik de vervolgkeuzelijst om de juiste Apache Spark-pool te selecteren als er meerdere pools beschikbaar zijn.
+7. Klik op **Code toevoegen**. De standaardtaal is `Pyspark`. U gaat een mix van Pyspark en Spark SQL gebruiken, dus u kunt de standaardkeuze gewoon accepteren.
+8. Vervolgens maakt u een eenvoudig Spark DataFrame-object om te manipuleren. In dit geval maakt u het object met behulp van code. Hiervoor zijn drie rijen en drie kolommen nodig:
 
    ```python
    new_rows = [('CA',22, 45000),("WA",35,65000) ,("WA",50,85000)]
@@ -58,20 +58,20 @@ Een notebook is een interactieve omgeving die verschillende programmeer talen on
    demo_df.show()
    ```
 
-9. Voer nu de cel uit met een van de volgende methoden:
+9. Voer de cel nu uit met behulp van een van de volgende methoden:
 
-   - Druk op **SHIFT + ENTER**.
-   - Selecteer het blauwe afspeel pictogram links van de cel.
-   - Selecteer de knop **alles uitvoeren** op de werk balk.
+   - Druk op **Shift+Enter**.
+   - Selecteer het blauwe afspeelpictogram links van de cel.
+   - Selecteer de knop **Alles uitvoeren** op de werkbalk.
 
-   ![Gegevens frame object maken](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Uitvoer van de Spark-taak")
+   ![DataFrame-object maken](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Uitvoer van de Spark-taak")
 
-10. Als de instantie van de Apache Spark-groep niet al wordt uitgevoerd, wordt deze automatisch gestart. U ziet de status van het exemplaar van de Apache Spark pool onder de cel die u uitvoert en ook in het status paneel onder aan het notitie blok. Afhankelijk van de grootte van de pool, moet beginnen 2-5 minuten duren. Als de uitvoering van de code is voltooid, wordt in de informatie onder de cel weer gegeven hoe lang het duurde om te worden uitgevoerd en de uitvoering ervan. In de cel uitvoer ziet u de uitvoer.
+10. Als de instantie van de Apache Spark-pool nog niet wordt uitgevoerd, wordt deze automatisch gestart. U ziet de status van de instantie van de Apache Spark-pool onder de cel die u uitvoert, evenals in het statuspaneel onderaan de notebook. Afhankelijk van de grootte van de pool, duurt het starten 2-5 minuten. Als de uitvoering van de code is voltooid, ziet u onder de cel hoe lang het uitvoeren van de code heeft geduurd. In de uitvoercel ziet u de uitvoer.
 
     ![Uitvoer van het uitvoeren van een cel](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Uitvoer van de Spark-taak")
 
-11. De gegevens bevinden zich nu in een data frame van waaruit u de gegevens op diverse manieren kunt gebruiken. U hebt deze nodig in verschillende indelingen voor de rest van deze Quick Start.
-12. Voer de onderstaande code in een andere cel in en voer deze uit. Hiermee maakt u een Spark-tabel, een CSV en een Parquet-bestand met kopieën van de gegevens:
+11. De gegevens bevinden zich nu in een DataFrame, van waaruit u de gegevens op allerlei manieren kunt gebruiken. U hebt de gegevens in verschillende indelingen nodig voor de rest van deze quickstart.
+12. Voer de onderstaande code in een andere cel in en voer deze uit om een Spark-tabel, een CSV-bestand en een Parquet-bestand te maken met kopieën van de gegevens:
 
     ```python
      demo_df.createOrReplaceTempView('demo_df')
@@ -79,26 +79,26 @@ Een notebook is een interactieve omgeving die verschillende programmeer talen on
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    Als u de opslag Verkenner gebruikt, is het mogelijk om te zien wat het effect is van de twee verschillende manieren om een bestand te schrijven dat hierboven wordt gebruikt. Als er geen bestands systeem is opgegeven, wordt de standaard waarde gebruikt, in `default>user>trusted-service-user>demo_df`dit geval. De gegevens worden opgeslagen op de locatie van het opgegeven bestands systeem.
+    Als u de opslagverkenner gebruikt, kunt u zien wat het effect is van de twee verschillende manieren die hierboven worden gebruikt om een bestand te schrijven. Als er geen bestandssysteem is opgegeven, wordt de standaardwaarde gebruikt, wat in dit geval `default>user>trusted-service-user>demo_df` is. De gegevens worden opgeslagen op de locatie van het opgegeven bestandssysteem.
 
-    U ziet in de indelingen ' CSV ' en ' Parquet ', schrijf bewerkingen een map wordt gemaakt met veel gepartitioneerde bestanden.
+    Bij de indelingen 'csv' en 'parquet' wordt bij schrijfbewerkingen een map gemaakt met verschillende gepartitioneerde bestanden.
 
-    ![De weer gave van de opslag Verkenner van de uitvoer](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "De weer gave van de opslag Verkenner van de uitvoer")
+    ![Weergave van uitvoer in opslagverkenner](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "Weergave van uitvoer in opslagverkenner")
 
-    ![De weer gave van de opslag Verkenner van de uitvoer](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "De weer gave van de opslag Verkenner van de uitvoer")
+    ![Weergave van uitvoer in opslagverkenner](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Weergave van uitvoer in opslagverkenner")
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL-instructies uitvoeren
 
-Structured Query Language (SQL) is de meest gebruikte en veelgebruikte taal voor het uitvoeren van query's en het definiëren van gegevens. Spark SQL fungeert als een uitbreiding van Apache Spark voor het verwerken van gestructureerde gegevens, met behulp van de bekende SQL-syntaxis.
+SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor het uitvoeren van query's en het definiëren van gegevens. Spark SQL fungeert als een uitbreiding van Apache Spark voor het verwerken van gestructureerde gegevens, met behulp van de bekende SQL-syntaxis.
 
-1. Plak de volgende code in een lege cel en voer de code uit. De opdracht geeft een lijst van de tabellen in de groep.
+1. Plak de volgende code in een lege cel en voer de code uit. Met de opdracht worden de tabellen in de pool weergegeven.
 
    ```sql
    %%sql
    SHOW TABLES
    ```
 
-   Wanneer u een notebook gebruikt met uw Azure Synapse Apache Spark pool, krijgt u een vooraf `sqlContext` ingestelde voor instelling die u kunt gebruiken om query's uit te voeren met Spark SQL. `%%sql`geeft aan dat het notitie blok de `sqlContext` voor instelling moet gebruiken om de query uit te voeren. De query haalt de bovenste 10 rijen op uit een systeem tabel die standaard wordt geleverd met alle Azure Synapse-Apache Spark groepen.
+   Als u een notebook gebruikt met uw Apache Spark-pool van Azure Synapse, krijgt u een voorinstelling `sqlContext` die u kunt gebruiken om query's uit te voeren met behulp van Spark SQL. Met `%%sql` krijgt de notebook opdracht om de voorinstelling `sqlContext` te gebruiken voor het uitvoeren van de query. De query haalt de eerste tien rijen op uit een systeemtabel die standaard Apache Spark-pools van Azure Synapse bevat.
 
 2. Voer een andere query uit om de gegevens in `demo_df` te zien.
 
@@ -107,43 +107,43 @@ Structured Query Language (SQL) is de meest gebruikte en veelgebruikte taal voor
     SELECT * FROM demo_df
     ```
 
-    De code produceert twee uitvoer cellen, een die gegevens bevat, de andere, waarin de taak weergave wordt weer gegeven.
+    De code produceert twee uitvoercellen: een met de resulterende gegevens en de andere met de taakweergave.
 
-    In de resultaten weergave wordt standaard een raster weer gegeven. Maar er is een weergave schakelaar onder het raster waarmee de weer gave kan overschakelen tussen raster-en grafiek weergaven.
+    De resultatenweergave bestaat standaard uit een raster. Onder het raster kan echter via een schakeloptie worden gewisseld tussen een raster- en grafiekweergave.
 
-    ![Query uitvoer in azure Synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Query uitvoer in azure Synapse Spark")
+    ![Query-uitvoer in Azure Synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Query-uitvoer in Azure Synapse Spark")
 
-3. Selecteer in de **weergave** schakelaar de optie **diagram**.
-4. Selecteer het pictogram **weergave opties** aan de rechter kant.
-5. Selecteer in het veld **grafiek type** de optie staaf diagram.
-6. Selecteer status in het kolom veld X-as.
-7. Selecteer ' salaris ' in het kolom veld van de Y-as.
-8. Selecteer in het veld **aggregatie** de optie ' Gem '.
+3. Selecteer **Grafiek** in de schakeloptie **Weergave**.
+4. Selecteer helemaal rechts het pictogram **Weergaveopties**.
+5. Selecteer 'staafdiagram' in het veld **Grafiektype**.
+6. Selecteer 'state' in het veld Kolom X-as.
+7. Selecteer 'salary' in het veld Kolom Y-as.
+8. Selecteer AVG in het veld **Aggregatie**.
 9. Selecteer **Toepassen**.
 
-   ![Grafiek uitvoer in azure Synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Grafiek uitvoer in azure Synapse Spark")
+   ![Grafiekuitvoer in Azure Synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Grafiekuitvoer in Azure Synapse Spark")
 
-10. Het is mogelijk om dezelfde ervaring te krijgen met het uitvoeren van SQL, maar zonder dat u talen hoeft te wijzigen. U kunt dit doen door de SQL-cel hierboven te vervangen door deze PySpark-cel, de uitvoer ervaring is hetzelfde omdat de **weer gave** -opdracht wordt gebruikt:
+10. U kunt dezelfde ervaring krijgen door het uitvoeren van SQL, maar zonder dat u van taal hoeft te veranderen. U kunt dit doen door de SQL-cel hierboven te vervangen door deze PySpark-cel; de uitvoerervaring is hetzelfde omdat de opdracht **weer display** wordt gebruikt:
 
     ```python
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. Elk van de cellen die eerder zijn uitgevoerd, had de optie om naar de **geschiedenis server** en **controle**te gaan. Als u op de koppelingen klikt, gaat u naar verschillende onderdelen van de gebruikers ervaring.
+11. Elk van de cellen die eerder is uitgevoerd had de mogelijkheid om naar **History Server** en **Monitoring** te gaan. Als u op de koppelingen klikt, gaat u naar verschillende onderdelen van de gebruikerservaring.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Met Azure Synapse worden uw gegevens opgeslagen in Azure Data Lake Storage. U kunt een Spark-exemplaar veilig uitschakelen wanneer het niet in gebruik is. Er worden kosten in rekening gebracht voor een Azure Synapse Apache Spark pool zolang deze wordt uitgevoerd, zelfs als deze niet in gebruik is. De kosten voor de groep zijn vaak meer dan de kosten voor opslag. Als zodanig is het economisch zinnig dat Spark-instanties worden afgesloten wanneer ze niet worden gebruikt.
+Uw gegevens worden door Azure Synapse opgeslagen in Azure Data Lake Storage. U kunt een Spark-instantie dan ook veilig uitschakelen wanneer deze niet in gebruik is. Er worden namelijk kosten in rekening gebracht voor een Azure Synapse Apache Spark-pool zolang deze wordt uitgevoerd, zelfs als de pool niet in gebruik is. De kosten voor de pool zijn vaak hoger dan de kosten voor opslag. Het is dan ook verstandig om Spark-instanties af te sluiten wanneer u ze niet nodig hebt.
 
-Om ervoor te zorgen dat de Spark-instantie wordt afgesloten, beëindigt u alle verbonden sessies (notebooks). De pool wordt afgesloten wanneer de **niet-actieve tijd** die is opgegeven in de Apache Spark pool wordt bereikt. U kunt ook **sessie beëindigen** selecteren in de status balk onder aan het notitie blok.
+Om ervoor te zorgen dat de Spark-instantie wordt afgesloten, beëindigt u alle verbonden sessies (notebooks). De pool wordt afgesloten wanneer de **niet-actieve tijd** is bereikt die is opgegeven in de Apache Spark-pool. U kunt ook **sessie beëindigen** selecteren op de statusbalk onder aan de notebook.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Synapse Apache Spark pool maakt en een eenvoudige Spark SQL-query uitvoert.
+In deze quickstart hebt u geleerd hoe u een Azure Synapse Apache Spark-pool maakt en een eenvoudige Spark SQL-query uitvoert.
 
 - [Azure Synapse Analytics](overview-what-is.md)
-- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Apache Spark officiële documentatie](https://spark.apache.org/docs/latest/)
+- [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Officiële documentatie voor Apache Spark](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die niet beschikbaar is in azure Synapse Spark. Gebruik in plaats daarvan de ervaring [notebook](quickstart-apache-spark-notebook.md) of [IntelliJ](./spark/intellij-tool-synapse.md) .
+> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die echter niet beschikbaar is in Azure Synapse Spark. Gebruik in plaats daarvan de ervaring met [notebooks](quickstart-apache-spark-notebook.md) of [IntelliJ](./spark/intellij-tool-synapse.md).

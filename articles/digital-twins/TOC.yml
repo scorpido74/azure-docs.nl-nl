@@ -71,10 +71,10 @@
   items:
     - name: Bibliotheek met door de gebruiker gedefinieerde functies
       href: reference-user-defined-functions-client-library.md
-- name: Bronnen
+- name: Resources
   expanded: true
   items:
-    - name: Resources voor ontwikkelaars
+    - name: Bronnen voor ontwikkelaars
       items:
         - name: Graph Viewer voor Azure Digital Twins
           href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
@@ -98,14 +98,14 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-        - name: MSDN-forum
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Microsoft Q&A-vragenpagina
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: Codevoorbeelden voor Azure IoT
           href: 'https://docs.microsoft.com/samples/browse/?term=iot'
     - name: Feedback en forums
       items:
-        - name: MSDN-forum
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Microsoft Q&A-vragenpagina
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: Productaanvragen en -suggesties
           href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
     - name: Verhalen van klanten

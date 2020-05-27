@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a27cee7a94ee6f33c399d10f90e47ec574e7380
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4b8bcf2b6ed5ab9c1160df49b1a6082aaf02f65
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744182"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830460"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -78,7 +78,7 @@ Down load het script **New-OnPremiseHybridWorker. ps1** van de [PowerShell Galle
 | `WorkspaceName` | Optioneel | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
 
 > [!NOTE]
-> Bij het inschakelen van functies ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
+> Bij het inschakelen van functies ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen.
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Stap 2: Windows Power shell-opdracht regel shell openen
 
@@ -204,5 +204,5 @@ Als u een Hybrid Runbook Worker groep wilt verwijderen, moet u eerst de Hybrid R
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Runbooks uitvoeren op een Hybrid Runbook Worker](automation-hrw-run-runbooks.md)
-* [Problemen met Hybrid Runbook Worker oplossen](troubleshoot/hybrid-runbook-worker.md#windows)
+* Zie [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md)voor meer informatie over het configureren van uw runbooks om processen te automatiseren in uw on-premises Data Center of andere cloud omgeving.
+* Zie [problemen met Hybrid Runbook worker oplossen](troubleshoot/hybrid-runbook-worker.md#general)voor meer informatie over het oplossen van problemen met uw Hybrid Runbook Workers.

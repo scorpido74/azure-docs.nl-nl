@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647246"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827044"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -204,4 +204,4 @@ Als u andere antwoord codes ziet, zoals 407 of 502, betekent dit dat de proxy ve
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
-* Als u problemen ondervindt met connector verbindings problemen, vraagt u uw vraag in het [Azure Active Directory Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) of maakt u een ticket met het ondersteunings team.
+* Als u problemen ondervindt met connector verbindings problemen, kunt u uw vraag stellen op de [pagina micro soft Q&een vraag voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) of een ticket maken met het ondersteunings team.

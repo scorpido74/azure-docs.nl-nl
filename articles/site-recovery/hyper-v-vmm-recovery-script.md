@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084877"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826278"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstel plan
 
 In dit artikel wordt beschreven hoe u een System Center Virtual Machine Manager (VMM)-script maakt en dit toevoegt aan een herstel plan in [Azure site Recovery](site-recovery-overview.md).
 
-Plaats opmerkingen of vragen onder aan dit artikel of op het [Azure Recovery Services-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Post opmerkingen of vragen onderaan dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,7 +29,7 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
     - Als er een fout optreedt, wordt de rest van het script niet uitgevoerd.
     - Als er een fout optreedt wanneer u een niet-geplande failover uitvoert, wordt het herstel plan voortgezet.
     - Als er een fout optreedt wanneer u een geplande failover uitvoert, wordt het herstel plan gestopt. Herstel het script, Controleer of het wordt uitgevoerd zoals verwacht en voer het herstel plan opnieuw uit.
-        - De `Write-Host` opdracht werkt niet in een herstel plan script. Als u de `Write-Host` opdracht in een script gebruikt, mislukt het script. Als u een uitvoer wilt maken, maakt u een proxy script dat op zijn beurt uw hoofd script uitvoert. Gebruik de ** \> ** opdracht om ervoor te zorgen dat alle uitvoer wordt uitgepiped.
+        - De `Write-Host` opdracht werkt niet in een herstel plan script. Als u de `Write-Host` opdracht in een script gebruikt, mislukt het script. Als u een uitvoer wilt maken, maakt u een proxy script dat op zijn beurt uw hoofd script uitvoert. Gebruik de opdracht om ervoor te zorgen dat alle uitvoer wordt uitgepiped **\>\>** .
         - Er wordt een time-out van het script gegeven als het niet binnen 600 seconden wordt geretourneerd.
         - Als er iets wordt geschreven naar STDERR, wordt het script als mislukt geclassificeerd. Deze informatie wordt weer gegeven in de details van de uitvoering van het script.
 
@@ -41,11 +41,11 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
     Zie [aan de slag met Windows Power shell en VMM](https://technet.microsoft.com/library/hh875013.aspx)voor meer informatie.
 * Zorg ervoor dat uw VMM-implementatie ten minste één bibliotheek server bevat. Het pad naar de bibliotheek share voor een VMM-server bevindt zich standaard lokaal op de VMM-server. De mapnaam is MSCVMMLibrary.
 
-  Als het pad naar de bibliotheek share extern is (of als het lokaal is, maar niet is gedeeld met MSCVMMLibrary), configureert u de \\share als volgt met behulp van libserver2. contoso. com\share\ als voor beeld:
+  Als het pad naar de bibliotheek share extern is (of als het lokaal is, maar niet is gedeeld met MSCVMMLibrary), configureert u de share als volgt met behulp van \\ libserver2. contoso. com\share\ als voor beeld:
   
   1. Open de REGI ster-editor en ga naar **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
 
-  1. Wijzig de waarde voor **ScriptLibraryPath** in ** \\\libserver2.contoso.com\share\\**. Geef de volledige FQDN op. Machtigingen voor de share locatie opgeven. Dit is het hoofd knooppunt van de share. Als u wilt controleren op het hoofd knooppunt, gaat u in VMM naar het hoofd knooppunt in de bibliotheek. Het pad dat wordt geopend, is de hoofdmap van het pad. Dit is het pad dat u moet gebruiken in de variabele.
+  1. Wijzig de waarde voor **ScriptLibraryPath** in ** \\ \libserver2.contoso.com\share \\ **. Geef de volledige FQDN op. Machtigingen voor de share locatie opgeven. Dit is het hoofd knooppunt van de share. Als u wilt controleren op het hoofd knooppunt, gaat u in VMM naar het hoofd knooppunt in de bibliotheek. Het pad dat wordt geopend, is de hoofdmap van het pad. Dit is het pad dat u moet gebruiken in de variabele.
 
   1. Test het script met behulp van een gebruikers account dat hetzelfde niveau van gebruikers rechten heeft als het VMM-service account. Met deze gebruikers rechten wordt gecontroleerd of zelfstandige, geteste scripts op dezelfde manier worden uitgevoerd als in herstel plannen. Stel op de VMM-server het uitvoerings beleid als volgt in op bypass:
 
@@ -60,9 +60,9 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
 Als u een VMM-bron site hebt, kunt u een script maken op de VMM-server. Neem vervolgens het script op in het herstel plan.
 
-1. Maak een nieuwe map in de bibliotheek share. Bijvoorbeeld VMM- \<server naam> \msscvmmlibrary\rpscripts. Plaats de map op de bron-en doel-VMM-servers.
+1. Maak een nieuwe map in de bibliotheek share. Bijvoorbeeld VMM- \< Server naam> \msscvmmlibrary\rpscripts. Plaats de map op de bron-en doel-VMM-servers.
 1. Maak het script. Geef bijvoorbeeld het script de naam RPScript. Controleer of het script werkt zoals verwacht.
-1. Plaats het script in de \<naam van de VMM-server> map \msscvmmlibrary op de bron-en doel-VMM-servers.
+1. Plaats het script in de \< naam van de VMM-server> map \msscvmmlibrary op de bron-en doel-VMM-servers.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Het script toevoegen aan een herstel plan
 

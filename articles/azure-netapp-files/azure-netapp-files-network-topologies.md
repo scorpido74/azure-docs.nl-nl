@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667863"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797435"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
@@ -36,10 +36,12 @@ U moet rekening houden met enkele overwegingen bij het plannen van Azure NetApp 
 De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp Files: 
 
 * Netwerk beveiligings groepen (Nsg's) die zijn toegepast op het overgedragen subnet
-* Door de gebruiker gedefinieerde routes (Udr's) met adres voorvoegsel als Azure NetApp files-subnet
+* Door de gebruiker gedefinieerde routes (Udr's) die worden toegepast op het overgedragen subnet
 * Azure-beleid (bijvoorbeeld aangepaste naamgevings beleid) op de Azure NetApp Files interface
 * Load balancers voor Azure NetApp Files verkeer
-* Azure NetApp Files wordt niet ondersteund met Azure Virtual WAN
+* Azure Virtual WAN 
+* Zone redundante Virtual Network gateways (gateway-Sku's met AZ) 
+* Actieve/actieve Virtual Network GWs 
 
 De volgende netwerk beperkingen zijn van toepassing op Azure NetApp Files:
 
@@ -82,9 +84,10 @@ Als het VNet is gekoppeld aan een ander VNet, kunt u de VNet-adres ruimte niet u
 
 ### <a name="udrs-and-nsgs"></a>Udr's en Nsg's
 
-Door de gebruiker gedefinieerde routes (Udr's) en netwerk beveiligings groepen (Nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp Files.
+Door de gebruiker gedefinieerde routes (Udr's) en netwerk beveiligings groepen (Nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp Files. U kunt echter Udr's en Nsg's Toep assen op andere subnetten, zelfs binnen hetzelfde VNet als het subnet dat is overgedragen aan Azure NetApp Files.
 
-Als tijdelijke oplossing kunt u Nsg's Toep assen op andere subnetten die het verkeer van en naar het Azure NetApp Files overgedragen subnet toestaan of weigeren.  
+* Udr's definieert vervolgens de verkeers stromen van de andere subnetten naar het Azure NetApp Files overgedragen subnet. Dit helpt ervoor te zorgen dat dit wordt uitgelijnd op de verkeers stroom van Azure NetApp Files naar de andere subnetten met behulp van de systeem routes.  
+* Nsg's vervolgens het verkeer van en naar het overgedragen subnet Azure NetApp Files toestaan of weigeren. 
 
 ## <a name="azure-native-environments"></a>Systeem eigen Azure-omgevingen
 

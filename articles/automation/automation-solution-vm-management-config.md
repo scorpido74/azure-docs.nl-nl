@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743742"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827672"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen configureren
 
@@ -177,6 +177,5 @@ Het configureren van de functie om alleen Vm's op een bepaald moment te stoppen,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VM's buiten bedrijfsuren starten/stoppen inschakelen](automation-solution-vm-management.md)
-* [Query's uitvoeren op Logboeken van VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management-logs.md)
-* [Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)
+* Zie [query logboeken van VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management-logs.md)om de functie tijdens de bewerking te controleren.
+* Zie problemen [met VM's buiten bedrijfsuren starten/stoppen oplossen](troubleshoot/start-stop-vm.md)voor informatie over het afhandelen van problemen tijdens VM-beheer.

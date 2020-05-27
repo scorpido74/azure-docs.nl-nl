@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478903"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816095"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -204,7 +204,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Is de data base actief?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Micro soft. SQL/server/data bases
+## <a name="microsoftsqlserversdatabases"></a>Micro soft. SQL/servers/data bases
 |Controles uitgevoerd|
 |---|
 |<ul><li>Hebt u aanmeldingen bij de data base?</li></ul>|

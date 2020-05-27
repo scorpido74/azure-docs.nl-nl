@@ -330,8 +330,18 @@
           href: ./spark/spark-best-practices.md
         - name: Apache Spark-instellingen configureren
           href: ./spark/apache-spark-settings.md
-        - name: Apache Spark-taken optimaliseren
-          href: ./spark/apache-spark-perf.md
+        - name: Optimalisatie
+          items:
+            - name: Apache Spark-taken optimaliseren
+              href: ./spark/apache-spark-perf.md
+            - name: Gegevensverwerking optimaliseren
+              href: ./spark/optimize-data-processing.md
+            - name: Gegevensopslag optimaliseren
+              href: ./spark/optimize-data-storage.md
+            - name: Geheugengebruik optimaliseren
+              href: ./spark/optimize-memory-usage.md
+            - name: Clusterconfiguratie optimaliseren
+              href: ./spark/optimize-cluster-configuration.md
         - name: Migreren naar Spark 2.3 of 2.4
           href: ./spark/migrate-versions.md
     - name: Procedures

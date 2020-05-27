@@ -1,122 +1,122 @@
 ---
-title: Stel een verificator-app in als uw twee ledige verificatie methode-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het instellen van de Microsoft Authenticator-app als uw verificatie methode met twee factoren.
+title: Een verificator-app instellen als tweeledige verificatiemethode - Azure Active Directory | Microsoft Docs
+description: Informatie over het instellen van de app Microsoft Authenticator als tweeledige verificatiemethode.
 services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062571"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738639"
 ---
-# <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Een verificator-app instellen als uw verificatie methode met twee factoren
+# <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Een verificator-app instellen als tweeledige verificatiemethode
 
-U kunt een verificator-app instellen voor het verzenden van een melding naar uw mobiele apparaat of om u een verificatie code te sturen als uw methode voor beveiligings verificatie. U hoeft de Microsoft Authenticator-app niet te gebruiken en u kunt een andere app selecteren tijdens het instellen van het proces. In dit artikel wordt echter gebruikgemaakt van de app Microsoft Authenticator.
+U kunt een verificator-app instellen voor het verzenden van een melding naar uw mobiele apparaat of om u een verificatiecode te sturen als uw methode voor beveiligingsverificatie. U bent niet verplicht de app Microsoft Authenticator te gebruiken en u kunt een andere app selecteren tijdens het instellingsproces. In dit artikel wordt echter uitgegaan van de app Microsoft Authenticator.
 
 >[!Important]
->Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [app downloaden en installeren](user-help-auth-app-download-install.md) .
+>Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [De app downloaden en installeren](user-help-auth-app-download-install.md).
 
 >[!Note]
-> Als de optie voor de mobiele app grijs wordt weer gegeven, is het mogelijk dat uw organisatie geen verificatie-app mag gebruiken voor verificatie. In dit geval moet u een andere methode selecteren of contact opnemen met de beheerder voor meer hulp.
+> Als de optie Mobiele app grijs wordt weergegeven, is het mogelijk dat u van uw organisatie geen Authenticator-app voor verificatie mag gebruiken. In dat geval moet u een andere methode selecteren of contact opnemen met de beheerder voor meer hulp.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>De app Microsoft Authenticator instellen voor het verzenden van meldingen
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **mobiele app** in de sectie **stap 1: hoe moet er contact met u worden opgenomen** .
+1. Selecteer op de pagina [Aanvullende beveiligingsverificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) de optie **Mobiele app** in het gedeelte **Stap 1: Hoe moet er contact met u worden opgenomen?**
 
-2. Selecteer **meldingen ontvangen voor verificatie** vanuit het gebied voor de **mobiele app** en selecteer vervolgens **instellen**.
+2. Selecteer **Meldingen voor verificatie ontvangen** in het gedeelte **Hoe wilt u de mobiele app gebruiken?** en selecteer vervolgens **Instellen**.
 
-    ![Extra beveiligings verificatie pagina, met de optie mobiele app en meldingen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![Pagina Aanvullende beveiligingsverificatie, met opties voor mobiele app en meldingen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
-    De pagina **mobiele app configureren** wordt weer gegeven.
+    De pagina **Mobiele app configureren** wordt weergegeven.
 
     ![Scherm met de QR-code](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
 
-3. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **werk-of school account**.
+3. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en controle** in de rechterbovenhoek en selecteer vervolgens **Werk- of schoolaccount**.
 
     >[!Note]
-    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of dat de app afbeeldingen en record video (Android) mag maken. U moet **toestaan** inschakelen zodat de verificator-app toegang heeft tot uw camera om een foto van de QR-code in de volgende stap te maken. Als u de camera niet toestaat, kunt u nog steeds de verificator-app instellen, maar u moet de code gegevens hand matig toevoegen. Zie [hand matig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md)voor meer informatie over het hand matig toevoegen van de code.
+    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de app wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
-4. Gebruik de camera van uw apparaat om de QR-code te scannen vanuit het scherm **mobiele app configureren** op uw computer en kies vervolgens **volgende**.
+4. Gebruik de camera van uw apparaat om de QR-code te scannen vanuit het scherm **Mobiele app configureren** op uw computer en kies vervolgens **Volgende**.
 
-5. Ga terug naar de computer en de **aanvullende beveiligings verificatie** pagina, zorg ervoor dat u het bericht krijgt dat uw configuratie is geslaagd en selecteer **volgende**.
+5. Ga op uw computer terug naar de pagina **Aanvullende beveiligingsverificatie**, controleer of u het bericht hebt gekregen dat uw configuratie is geslaagd en selecteer vervolgens **Volgende**.
 
-    ![Extra beveiligings verificatie pagina, met succes bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![Pagina Aanvullende beveiligingsverificatie, met bericht dat de configuratie is geslaagd](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
-    De verificator-app stuurt als test een melding naar uw mobiele apparaat.
+    De Authenticator-app stuurt als test een melding naar uw mobiele apparaat.
 
-6. Selecteer **goed keuren**op uw mobiele apparaat.
+6. Selecteer **Goedkeuren** op uw mobiele apparaat.
 
-7. Voeg op uw computer het telefoon nummer van uw mobiele apparaat toe aan **stap 3: als u geen toegang meer hebt tot het gebied voor mobiele apps** en vervolgens **volgende**selecteert.
+7. Voeg op uw computer het telefoonnummer van uw mobiele apparaat toe in het gedeelte **Stap 3: Als u geen toegang meer hebt tot de mobiele app** en selecteer vervolgens **Volgende**.
 
-    We raden u ten zeerste aan om het telefoon nummer van uw mobiele apparaat toe te voegen als back-up als u de mobiele app om welke reden dan ook niet kunt gebruiken.
+    U wordt ten sterkste aangeraden het telefoonnummer van uw mobiele apparaat toe te voegen als back-up als u de mobiele app om welke reden dan ook niet kunt gebruiken.
 
-8. In de **stap 4: Blijf uw bestaande toepassingen gebruiken** , kopieer het opgegeven app-wacht woord en plak het ergens veilig.
+8. Kopieer vanuit het gedeelte **Stap 4: Bestaande toepassingen behouden**, het opgegeven app-wachtwoord en plak het in een veilige plaats.
 
-    ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+    ![Het gedeelte App-wachtwoorden op de pagina Aanvullende beveiligingsverificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >Zie [app-wacht woorden beheren](multi-factor-authentication-end-user-app-passwords.md)voor meer informatie over het gebruik van het app-wacht woord met uw oudere apps. U hoeft alleen app-wacht woorden te gebruiken als u oudere apps gaat gebruiken die geen ondersteuning bieden voor twee ledige verificatie.
+    >Zie [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md) voor informatie over het gebruik van het app-wachtwoord voor oudere apps. U hoeft alleen app-wachtwoorden te gebruiken als u oudere apps blijft gebruiken die geen ondersteuning bieden voor tweeledige verificatie.
 
 9. Selecteer **Done**.
 
-## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Stel de Microsoft Authenticator-app in voor het gebruik van verificatie codes
+## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>De app Microsoft Authenticator instellen voor het gebruik van verificatiecodes
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **mobiele app** in de sectie **stap 1: hoe moet er contact met u worden opgenomen** .
+1. Selecteer op de pagina **Aanvullende beveiligingsverificatie** de optie **Mobiele app** in het gedeelte **Stap 1: Hoe moet er contact met u worden opgenomen?**
 
-2. Selecteer **verificatie code gebruiken** in het gedeelte **Hoe wilt u het gebied voor mobiele apps gebruiken** en selecteer vervolgens **instellen**.
+2. Selecteer **Verificatiecode gebruiken** in het gedeelte **Hoe wilt u de mobiele app gebruiken?** en selecteer vervolgens **Instellen**.
 
-    ![Extra beveiligings verificatie pagina, met de optie mobiele app en meldingen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-code.png)
+    ![Pagina Aanvullende beveiligingsverificatie, met opties voor mobiele app en meldingen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-code.png)
 
-    De pagina **mobiele app configureren** wordt weer gegeven.
+    De pagina **Mobiele app configureren** wordt weergegeven.
 
     ![Scherm met de QR-code](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
 
-3. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **werk-of school account**.
+3. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en controle** in de rechterbovenhoek en selecteer vervolgens **Werk- of schoolaccount**.
 
     >[!Note]
-    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of dat de app afbeeldingen en record video (Android) mag maken. U moet **toestaan** inschakelen zodat de verificator-app toegang heeft tot uw camera om een foto van de QR-code in de volgende stap te maken. Als u de camera niet toestaat, kunt u nog steeds de verificator-app instellen, maar u moet de code gegevens hand matig toevoegen. Zie [hand matig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md)voor meer informatie over het hand matig toevoegen van de code.
+    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de app wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
-4. Gebruik de camera van uw apparaat om de QR-code te scannen vanuit het scherm **mobiele app configureren** op uw computer en kies vervolgens **volgende**.
+4. Gebruik de camera van uw apparaat om de QR-code te scannen vanuit het scherm **Mobiele app configureren** op uw computer en kies vervolgens **Volgende**.
 
-5. Ga terug naar de computer en de **aanvullende beveiligings verificatie** pagina, zorg ervoor dat u het bericht krijgt dat uw configuratie is geslaagd en selecteer **volgende**.
+5. Ga op uw computer terug naar de pagina **Aanvullende beveiligingsverificatie**, controleer of u het bericht hebt gekregen dat uw configuratie is geslaagd en selecteer vervolgens **Volgende**.
 
-    ![Extra beveiligings verificatie pagina, met succes bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-confirm.png)
+    ![Pagina Aanvullende beveiligingsverificatie, met bericht dat de configuratie is geslaagd](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-confirm.png)
 
-    De verificator-app vraagt om een verificatie code als test.
+    De Authenticator-app vraagt als test om een verificatiecode.
 
-6. Ga vanuit de Microsoft Authenticator-app omlaag naar uw werk-of school account, kopieer en plak de 6-cijferige code van de app in de **stap 2: Voer de verificatie code uit het vak mobiele app** op uw computer in en selecteer vervolgens **controleren**.
+6. Schuif in de Microsoft Authenticator-app omlaag naar uw werk- of schoolaccount, kopieer en plak de 6-cijferige code van de app in het vak **Stap 2: Verificatiecode van mobiele app invoeren** op de computer en selecteer **Verifiëren**.
 
-    ![Aanvullende beveiligings verificatie pagina, met verificatie code testen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
+    ![Pagina Aanvullende beveiligingsverificatie, met test van verificatiecode](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
 
-7. Voeg op uw computer het telefoon nummer van uw mobiele apparaat toe aan **stap 3: als u geen toegang meer hebt tot het gebied voor mobiele apps** en vervolgens **volgende**selecteert.
+7. Voeg op uw computer het telefoonnummer van uw mobiele apparaat toe in het gedeelte **Stap 3: Als u geen toegang meer hebt tot de mobiele app** en selecteer vervolgens **Volgende**.
 
-    We raden u ten zeerste aan om het telefoon nummer van uw mobiele apparaat toe te voegen als back-up als u de mobiele app om welke reden dan ook niet kunt gebruiken.
+    U wordt ten sterkste aangeraden het telefoonnummer van uw mobiele apparaat toe te voegen als back-up als u de mobiele app om welke reden dan ook niet kunt gebruiken.
 
-8. In de **stap 4: Blijf uw bestaande toepassingen gebruiken** , kopieer het opgegeven app-wacht woord en plak het ergens veilig.
+8. Kopieer vanuit het gedeelte **Stap 4: Bestaande toepassingen behouden**, het opgegeven app-wachtwoord en plak het in een veilige plaats.
 
-    ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+    ![Het gedeelte App-wachtwoorden op de pagina Aanvullende beveiligingsverificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >Zie [app-wacht woorden beheren](multi-factor-authentication-end-user-app-passwords.md)voor meer informatie over het gebruik van het app-wacht woord met uw oudere apps. U hoeft alleen app-wacht woorden te gebruiken als u oudere apps gaat gebruiken die geen ondersteuning bieden voor twee ledige verificatie.
+    >Zie [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md) voor informatie over het gebruik van het app-wachtwoord voor oudere apps. U hoeft alleen app-wachtwoorden te gebruiken als u oudere apps blijft gebruiken die geen ondersteuning bieden voor tweeledige verificatie.
 
 9. Selecteer **Done**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de twee ledige verificatie methode hebt ingesteld, kunt u extra methoden toevoegen, uw instellingen en app-wacht woorden beheren, aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met twee ledige verificatie.
+Nadat u de tweeledige verificatiemethode hebt ingesteld, kunt u extra methoden toevoegen, uw instellingen en app-wachtwoorden beheren, u aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met tweeledige verificatie.
 
-- [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
+- [Instellingen voor tweeledige verificatiemethode beheren](multi-factor-authentication-end-user-manage-settings.md)
 
 - [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Aanmelden met twee ledige verificatie](multi-factor-authentication-end-user-signin.md)
+- [Aanmelden met behulp van tweeledige verificatie](multi-factor-authentication-end-user-signin.md)
 
-- [Hulp krijgen bij twee ledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)
+- [Hulp krijgen bij tweeledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)

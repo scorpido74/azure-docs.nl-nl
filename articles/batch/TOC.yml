@@ -53,12 +53,26 @@
       items:
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-    - name: Functies voor ontwikkelaars
-      href: batch-api-basics.md
+    - name: Workflow en resources van batchservice
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch-accounts
+          displayName: storage account
+          href: accounts.md
+        - name: Knooppunten en pools
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: Taken
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: Bestanden en mappen
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API's en hulpprogramma’s
       href: batch-apis-tools.md
-    - name: Fouten in Batch-service detecteren en afhandelen
-      href: batch-retry-after-errors.md
+    - name: Foutafhandeling en -detectie
+      href: error-handling.md
     - name: Aanbevolen procedures
       href: best-practices.md
     - name: Quota en limieten
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: Key Vault veilig openen met Batch
           href: credential-access-key-vault.md
+        - name: Certificaten gebruiken met Batch
+          href: batch-certificates.md
+    - name: Toepassingspakketten gebruiken
+      href: batch-application-packages.md
     - name: Bestanden en toepassingen kopiëren naar groepsknooppunten
       items:
         - name: Toepassingen en gegevens kopiëren naar groepsknooppunten

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772060"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83825955"
 ---
-# <a name="authentication-vs-authorization"></a>Verificatie vs. autorisatie
+# <a name="authentication-vs-authorization"></a>Verificatie versus autorisatie
 
 In dit artikel worden verificatie en autorisatie gedefinieerd en wordt kort beschreven hoe u het micro soft-identiteits platform kunt gebruiken om gebruikers te verifiëren en te autoriseren in uw web-apps, Web-Api's of apps die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze [woorden lijst](developer-glossary.md) of onze [Video's over micro soft Identity platform](identity-videos.md) die basis concepten omvatten.
 
@@ -43,7 +43,7 @@ Micro soft Identity platform vereenvoudigt autorisatie en verificatie voor toepa
 Hieronder vindt u een korte vergelijking van de verschillende protocollen die worden gebruikt door het micro soft Identity-platform:
 
 * **OAuth versus OpenID Connect Connect**: OAuth wordt gebruikt voor autorisatie en OpenID Connect Connect (OIDC) wordt gebruikt voor verificatie. OpenID Connect Connect is gebaseerd op OAuth 2,0, dus de terminologie en de stroom zijn vergelijkbaar tussen de twee. U kunt zelfs een gebruiker verifiëren (met behulp van OpenID Connect Connect) en toestemming krijgen om toegang te krijgen tot een beveiligde resource die de gebruiker in een aanvraag bezit (met behulp van OAuth 2,0). Zie [OAuth 2,0 en OpenID Connect Connect protocollen](active-directory-v2-protocols.md) en [OpenID Connect Connect protocol](v2-protocols-oidc.md)(Engelstalig) voor meer informatie.
-* **OAuth versus SAML**: OAuth wordt gebruikt voor autorisatie en SAML wordt gebruikt voor verificatie. Zie [micro soft Identity platform en OAuth 2,0-bevestigings stroom voor SAML Bearer](v2-saml-bearer-assertion.md) voor meer informatie over de manier waarop de twee protocollen kunnen worden gebruikt om een gebruiker te verifiëren (met behulp van SAML) en om autorisatie te verkrijgen voor toegang tot een beveiligde bron (met behulp van OAuth 2,0).
+* **OAuth VS SAML**: OAuth wordt gebruikt voor autorisatie en SAML wordt gebruikt voor verificatie. Zie [micro soft Identity platform en OAuth 2,0-bevestigings stroom voor SAML Bearer](v2-saml-bearer-assertion.md) voor meer informatie over de manier waarop de twee protocollen kunnen worden gebruikt om een gebruiker te verifiëren (met behulp van SAML) en om autorisatie te verkrijgen voor toegang tot een beveiligde bron (met behulp van OAuth 2,0).
 * **OpenID Connect Connect versus SAML**: zowel OpenID Connect Connect als SAML worden gebruikt voor het verifiëren van een gebruiker en worden gebruikt om eenmalige aanmelding in te scha kelen. SAML-verificatie wordt meestal gebruikt met id-providers, zoals Active Directory Federation Services (ADFS), die zijn gekoppeld aan Azure AD en worden daarom vaak gebruikt in bedrijfs toepassingen. OpenID Connect Connect wordt meestal gebruikt voor apps die zich uitsluitend in de cloud bevinden, zoals mobiele apps, websites en Web-Api's.
 
 ## <a name="next-steps"></a>Volgende stappen

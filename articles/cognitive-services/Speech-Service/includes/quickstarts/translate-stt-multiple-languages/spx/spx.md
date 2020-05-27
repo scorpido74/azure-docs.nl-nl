@@ -5,26 +5,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 94d50a15b0d5d7bed2bd43516952036044d7f0c0
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c73ee93d89a350763e8ced490187e1c47f8918de
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715091"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806557"
 ---
-## <a name="run-the-spx-tool"></a>Het hulp programma SPX uitvoeren
+## <a name="run-the-speech-cli"></a>De speech CLI uitvoeren
 
-U kunt nu het hulp programma SPX uitvoeren om spraak naar tekst in twee verschillende talen om te zetten.
+U bent nu klaar om de speech CLI uit te voeren om spraak naar tekst in twee verschillende talen om te zetten.
 
-Ga vanaf de opdracht regel naar de map die het binaire bestand van het hulp programma SPX bevat en typ het volgende:
+Ga vanaf de opdracht regel naar de map die het binaire bestand speech CLI bevat en typ het volgende:
 
 ```bash
 spx translate --microphone --target de-DE --target es-MX
 ```
 
-Het hulp programma SPX zorgt voor de vertaling van gesp roken tekst in natuurlijke taal in het Duits en het Spaans (Mexico).
+Met de spraak-CLI wordt het gesp roken van de natuurlijke taal omgezet in tekst die in het Duits en Spaans (Mexico) is gedrukt.
 Druk op ENTER om het hulp programma te stoppen.
 
 > [!NOTE]
-> Het hulp programma SPX wordt standaard ingesteld op Engels. U kunt een andere taal kiezen [in de tabel met spraak-naar-tekst](../../../../language-support.md).
+> De spraak-CLI wordt standaard ingesteld op Engels. U kunt een andere taal kiezen [in de tabel met spraak-naar-tekst](../../../../language-support.md).
 > Voeg bijvoorbeeld toe `--source ja-JP` om Japanse spraak herkenning te herkennen.

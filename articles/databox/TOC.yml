@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: Beheren via lokale webinterface
               href: data-box-local-web-ui-admin.md
+            - name: Zelfbeheerde verzending gebruiken
+              href: data-box-portal-customer-managed-shipping.md
             - name: Door de klant beheerde sleutel inschakelen
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Gegevens verplaatsen naar een blob-laag
@@ -117,6 +119,8 @@
           items:
             - name: Beheren via Azure Portal
               href: data-box-portal-ui-admin.md
+            - name: Zelfbeheerde verzending gebruiken
+              href: data-box-disk-portal-customer-managed-shipping.md
             - name: Problemen oplossen
               items:
                 - name: Problemen met ontgrendelen

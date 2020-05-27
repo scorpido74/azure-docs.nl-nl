@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161882"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798948"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-gatewayoverdracht configureren voor peering voor virtuele netwerken
 
@@ -30,6 +30,11 @@ In dit document worden twee scenario's beschreven:
 
 1. Beide virtuele netwerken gebruiken het implementatiemodel van Resource Manager
 2. Het spoke virtuele netwerk is Classic en het hub virtuele netwerk met de gateway is in de Resource Manager
+
+
+>[!NOTE]
+> Als u een wijziging aanbrengt in de topologie van uw netwerk en Windows VPN-clients hebt, moet het VPN-client pakket voor Windows-clients opnieuw worden gedownload en geïnstalleerd om de wijzigingen toe te passen op de client.
+>
 
 ## <a name="requirements"></a>Vereisten
 
