@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593442"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680505"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Zelfstudie: Gegevens synchroniseren vanuit Azure SQL Edge naar Azure SQL Database met behulp van SQL Data Sync
 
@@ -32,7 +32,7 @@ Bij deze zelfstudie is een Windows-computer vereist die is geconfigureerd met de
 
 * De tabellen en andere benodigde objecten in uw Azure SQL Database-implementatie maken.
 
-* De benodigde tabellen en objecten in uw Azure SQL Edge-implementatie maken. Zie [SQL Database DAC-pakketten gebruiken met SQL Edge](stream-analytics.md) voor meer informatie.
+* De benodigde tabellen en objecten in uw Azure SQL Edge-implementatie maken. Zie [SQL Database DAC-pakketten gebruiken met SQL Edge](deploy-dacpac.md) voor meer informatie.
 
 * De Azure SQL Edge-instantie registreren met de Data Sync-agent voor Azure SQL Data Sync. Zie [Een on-premises SQL Server-Data Base toevoegen](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem) voor meer informatie.
 
