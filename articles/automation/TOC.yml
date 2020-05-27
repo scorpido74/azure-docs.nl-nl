@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: Verificatie configureren met Amazon Web Services
           href: automation-config-aws-account.md
+        - name: Verificatie configureren met Azure AD
+          href: automation-use-azure-ad.md
         - name: Een Uitvoeren als-account van Automation beheren
           href: manage-runas-account.md
         - name: Rolmachtigingen en beveiliging beheren

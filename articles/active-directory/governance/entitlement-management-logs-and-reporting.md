@@ -16,12 +16,12 @@ ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380195"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799510"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Logboeken en rapporten archiveren op het beheer van rechten van Azure AD in Azure Monitor
 
@@ -158,7 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-U kunt uw Power shell-sessie opnieuw verifiëren en koppelen aan dit abonnement met behulp `Connect-AzAccount –Subscription $subs[0].id`van een opdracht zoals. Zie [Aanmelden met Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+U kunt uw Power shell-sessie opnieuw verifiëren en koppelen aan dit abonnement met behulp van een opdracht zoals `Connect-AzAccount –Subscription $subs[0].id` . Zie [Aanmelden met Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )voor meer informatie over het verifiëren van Azure vanuit Power shell, inclusief niet-interactief.
 
 Als u meerdere Log Analytics-werk ruimten in dat abonnement hebt, wordt met de cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) de lijst met werk ruimten geretourneerd. Vervolgens kunt u de logboeken met de Azure AD-logbestanden vinden. Het `CustomerId` veld dat door deze cmdlet wordt geretourneerd, is hetzelfde als de waarde van de werk ruimte-id die wordt weer gegeven in de Azure Portal in het log Analytics overzicht van de werk ruimte.
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Volgende stappen:
-- [Interactieve rapporten maken met Azure Monitor werkmappen](../../azure-monitor/app/usage-workbooks.md) 
+- [Interactieve rapporten maken met Azure Monitor werkmappen](../../azure-monitor/platform/workbooks-overview.md) 
 

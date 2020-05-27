@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/21/2020
 ms.author: apimpm
-ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 92473dc7553286867a33100d7328dd0320d55823
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196990"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799924"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -136,9 +136,9 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Openbare Azure-peering      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-black.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-red.prod.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-red.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Openbare Azure-peering      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>global.prod.microsoftmetrics.com (**Nieuw**)</li><li>global.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2.prod.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod.microsoftmetrics.com (**Nieuw**)</li><li>prod3-black.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-red.prod.microsoftmetrics.com (**Nieuw**)</li><li>prod3-red.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**Nieuw**)</li><li>global.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2.prod.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Nieuw**)</li><li>global.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2.prod.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > De wijziging van de bovenstaande clusters met DNS-zone **. nsatc.net** naar **. microsoftmetrics.com** is doorgaans een DNS-wijziging. Het IP-adres van het cluster wordt niet gewijzigd.
@@ -203,7 +203,7 @@ Voor elke extra schaal eenheid van API Management zijn twee meer IP-adressen ver
 
 De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor binnenkomende aanvragen dat is gemarkeerd met **Global** moet worden white list samen met het specifieke IP-adres van de **regio** .
 
-| **Azure-omgeving**|   **Deel**|  **Het IP-adres**|
+| **Azure-omgeving**|   **Regio**|  **IP-adres**|
 |-----------------|-------------------------|---------------|
 | Openbare Azure-peering| VS Zuid-Centraal (wereld wijd)| 104.214.19.224|
 | Openbare Azure-peering| VS Noord-Centraal (wereld wijd)| 52.162.110.80|
@@ -257,10 +257,10 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Azure China 21Vianet| China-oost 2| 40.73.104.4|
 | Azure Government| USGove Virginia (Global)| 52.127.42.160|
 | Azure Government| USGov Texas (wereld wijd)| 52.127.34.192|
-| Azure Government| USGov - Virginia| 52.227.222.92|
+| Azure Government| USGov Virginia| 52.227.222.92|
 | Azure Government| USGov Iowa| 13.73.72.21|
 | Azure Government| USGov Arizona| 52.244.32.39|
-| Azure Government| USGov - Texas| 52.243.154.118|
+| Azure Government| USGov Texas| 52.243.154.118|
 | Azure Government| USDoD-centraal| 52.182.32.132|
 | Azure Government| USDoD-Oost| 52.181.32.192|
 

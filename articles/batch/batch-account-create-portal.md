@@ -4,12 +4,12 @@ description: Informatie over het maken van een Azure Batch-account in Azure Port
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 6cccef176e3e5ba0f4774a5897f082c4847a4005
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778592"
+ms.locfileid: "83800259"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Een Batch-account maken met behulp van Azure Portal
 
@@ -52,6 +52,9 @@ Zie [batch-service werk stroom en resources](batch-service-workflow-features.md)
 ## <a name="view-batch-account-properties"></a>Eigenschappen van Batch-account weergeven
 
 Zodra het account is gemaakt, selecteert u het account om naar de instellingen en eigenschappen te gaan. U hebt toegang tot alle eigenschappen en accountinstellingen via het linkermenu.
+
+> [!NOTE]
+> De naam van het batch-account is de ID en kan niet worden gewijzigd. Als u de naam van een batch-account wilt wijzigen, moet u het account verwijderen en een nieuwe maken met de gewenste naam.
 
 ![Pagina Batch-account in Azure Portal][account_blade]
 

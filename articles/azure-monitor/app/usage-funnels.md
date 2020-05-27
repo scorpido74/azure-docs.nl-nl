@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671049"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797820"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Ontdek hoe klanten uw toepassing gebruiken met Application Insights trechters
 
@@ -46,7 +46,7 @@ De vorige scherm afbeelding bevat vijf gemarkeerde gebieden. Dit zijn de functie
   * [Overzicht van gebruik](usage-overview.md)
   * [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
   * [Bewaartermijn](usage-retention.md)
-  * [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
+  * [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
   * [Gebruikers context toevoegen](usage-send-user-context.md)
   * [Exporteren naar Power BI](../../azure-monitor/app/export-power-bi.md )
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a36ac44fa861b902bfcc370472a2a87e036e5de6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654998"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800293"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -38,7 +38,7 @@ Voordat u code incheckt, voert u [code beoordelingen](https://docs.microsoft.com
 
 ### <a name="perform-static-code-analysis"></a>Statische codeanalyse uitvoeren
 
-[Statische code analyse](https://www.owasp.org/index.php/Static_Code_Analysis) (ook wel bekend als *broncode analyse*) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statische code analyse](https://owasp.org/www-community/controls/Static_Code_Analysis) (ook wel bekend als *broncode analyse*) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace biedt [ontwikkel hulpprogramma's](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) voor het uitvoeren van een statische code analyse en hulp bij het evalueren van code.
 

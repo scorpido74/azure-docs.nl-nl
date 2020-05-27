@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670930"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797687"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Gebruikers context-Id's verzenden om gebruiks ervaringen in Azure-toepassing Insights in te scha kelen
 
@@ -22,7 +22,7 @@ Met Application Insights kunt u uw gebruikers bewaken en volgen via een aantal h
 - [Gebruikers, sessies, gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Trechters](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [Retentie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Cohorten
-- [Werkmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 Application Insights moet een ID voor elke gebruiker of sessie hebben om bij te houden wat een gebruiker heeft geduurd. Neem de volgende Id's op in elke aangepaste gebeurtenis of pagina weergave.
 
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Bewaartermijn](usage-retention.md)
-    - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
+    - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667190"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797604"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Doorlopende bewaking met Azure Monitor
 
@@ -74,7 +74,7 @@ Een kritiek aspect van bewaking is het proactief om beheerders op de hoogte te s
 Zorg ervoor dat uw ontwikkeling en bewerkingen toegang hebben tot dezelfde telemetrie en hulpprogram ma's voor het weer geven van patronen in uw hele omgeving en om uw gemiddelde tijd te minimaliseren (MTTD) en de gemiddelde tijd om te herstellen (MTTR).
 
 - Bereid [aangepaste Dash boards](../azure-monitor/learn/tutorial-app-dashboards.md) voor op basis van algemene metrische gegevens en logboeken voor de verschillende rollen in uw organisatie. Dash boards kunnen gegevens van alle Azure-resources combi neren.
-- [Werkmappen](../azure-monitor/app/usage-workbooks.md) voorbereiden om te zorgen voor kennis delen tussen ontwikkeling en bewerkingen. Deze kunnen worden voor bereid als dynamische rapporten met metrische grafieken en logboek query's, of zelfs als richt lijnen voor probleem oplossing die door ontwikkel aars worden ondersteund om de ondersteuning of bewerkingen van klanten te helpen bij het verwerken van basis problemen.
+- [Werkmappen](../azure-monitor/platform/workbooks-overview.md) voorbereiden om te zorgen voor kennis delen tussen ontwikkeling en bewerkingen. Deze kunnen worden voor bereid als dynamische rapporten met metrische grafieken en logboek query's, of zelfs als richt lijnen voor probleem oplossing die door ontwikkel aars worden ondersteund om de ondersteuning of bewerkingen van klanten te helpen bij het verwerken van basis problemen.
 
 ## <a name="continuously-optimize"></a>Continu optimaliseren
  Bewaking is een van de fundamentele aspecten van de populaire build-Measure-leer filosofie, waarmee u uw Kpi's en gebruikers gedrags gegevens voortdurend kunt bijhouden en deze vervolgens kunt optimaliseren door plannings iteraties. Azure Monitor helpt u metrische gegevens en logboeken te verzamelen die relevant zijn voor uw bedrijf en om zo nodig nieuwe gegevens punten in de volgende implementatie toe te voegen.

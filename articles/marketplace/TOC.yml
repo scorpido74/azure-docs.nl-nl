@@ -328,13 +328,13 @@
           items:
             - name: Een Azure Virtual Machine-aanbieding maken
               href: ./partner-center-portal/azure-vm-create-offer.md
-            - name: Technische assets voor Azure-VM maken
+            - name: Een technische asset voor een Azure-VM maken
               items:
-                - name: Technische assets voor Azure-VM maken
+                - name: Een technische asset voor een Azure-VM maken
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Veelgestelde vragen over technische assets van Azure-VM
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Azure-VM-installatiekopie certificeren
+                - name: Een Azure-VM-installatiekopie certificeren
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS-URI
                   items:

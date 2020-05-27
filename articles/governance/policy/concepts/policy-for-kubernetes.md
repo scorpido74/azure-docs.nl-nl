@@ -1,16 +1,16 @@
 ---
-title: Azure Policy leren voor Kubernetes
-description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
+title: Voor beeld-Azure Policy leren voor Kubernetes
+description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 738b6ae0a2482d1229fdbfe89d0c3dd99a33ec6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772757"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800358"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters begrijpen
+# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
 Azure Policy breidt [gate keeper](https://github.com/open-policy-agent/gatekeeper) v3, een _toegangs controller-Webhook_ voor [Open Policy Agent](https://www.openpolicyagent.org/) (opa), uit om afdwingingen en beveiligingen op uw clusters op een gecentraliseerde, consistente manier toe te passen. Azure Policy maakt het mogelijk om de compatibiliteits status van uw Kubernetes-clusters vanaf één locatie te beheren en te rapporteren. Met de invoeg toepassing worden de volgende functies aangenomen:
 
@@ -21,7 +21,7 @@ Azure Policy breidt [gate keeper](https://github.com/open-policy-agent/gatekeepe
 Azure Policy voor Kubernetes ondersteunt de volgende cluster omgevingen:
 
 - [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
-- [Kubernetes voor Azure-Arc ingeschakeld](../../../azure-arc/kubernetes/overview.md)
+- [Kubernetes met Azure Arc](../../../azure-arc/kubernetes/overview.md)
 - [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ Als u Azure Policy met uw Kubernetes-cluster wilt inschakelen en gebruiken, voer
 
 1. Configureer uw Kubernetes-cluster en installeer de invoeg toepassing:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
-   - [Kubernetes voor Azure-Arc ingeschakeld](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+   - [Kubernetes met Azure Arc](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS-engine](#install-azure-policy-add-on-for-aks-engine)
 
 1. [Inzicht in de Azure Policy taal voor Kubernetes](#policy-language)
@@ -49,6 +49,9 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 1. U moet de Azure CLI-versie 2.0.62 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 1. Registreer de resource providers en preview-functies.
+
+   > [!CAUTION]
+   > Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
    - Azure Portal:
 

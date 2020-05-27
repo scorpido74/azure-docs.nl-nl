@@ -4,23 +4,23 @@ description: In dit artikel vindt u een overzicht van de belangrijkste voor dele
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79498591"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797363"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Inleiding tot de Azure Cosmos DB etcd-API (preview)
 
 Azure Cosmos DB is de wereldwijd gedistribueerde databaseservice met meerdere modellen van Microsoft voor essentiële toepassingen. Het biedt kant-en-klare wereld wijde distributie, elastische schaal baarheid van door Voer en opslag, latenties in milliseconden van één cijfer op het 99e percentiel en gegarandeerd hoge Beschik baarheid, die allemaal worden ondersteund door toonaangevende SLA.
 
-[Etcd](https://github.com/etcd-io/etcd) is een gedistribueerd sleutel/waarde-archief. In [Kubernetes](https://kubernetes.io/)wordt etcd gebruikt om de status en de configuratie van de Kubernetes-clusters op te slaan. Het garanderen van de beschik baarheid, betrouw baarheid en prestaties van etcd is van cruciaal belang voor de algehele cluster status, schaal baarheid, beschik bare elasticiteit en prestaties van een Kubernetes-cluster. 
+[Etcd](https://github.com/etcd-io/etcd) is een gedistribueerd sleutel/waarde-archief. In [Kubernetes](https://kubernetes.io/)wordt etcd gebruikt om de status en de configuratie van de Kubernetes-clusters op te slaan. Het garanderen van de beschik baarheid, betrouw baarheid en prestaties van etcd is van cruciaal belang voor de algehele cluster status, schaal baarheid, beschik bare elasticiteit en prestaties van een Kubernetes-cluster.
 
-Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor [Azure Kubernetes](../aks/index.yml). etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Azure Cosmos DB implementeert het etcd wire-protocol. Met etcd-API in Azure Cosmos DB krijgen ontwikkel aars automatisch een zeer betrouw [bare](high-availability.md), [wereld wijd gedistribueerde](distribute-data-globally.md) Kubernetes. Met deze API kunnen ontwikkel aars Kubernetes-status beheer schalen op een volledig beheerde PaaS-service in de Cloud. 
+Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor Azure Kubernetes. etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Azure Cosmos DB implementeert het etcd wire-protocol. Met etcd-API in Azure Cosmos DB krijgen ontwikkel aars automatisch een zeer betrouw [bare](high-availability.md), [wereld wijd gedistribueerde](distribute-data-globally.md) Kubernetes. Met deze API kunnen ontwikkel aars Kubernetes-status beheer schalen op een volledig beheerde PaaS-service in de Cloud. 
 
 > [!NOTE]
 > In tegens telling tot andere Api's in Azure Cosmos DB kunt u geen etcd-API-account inrichten via de Azure Portal, CLI of Sdk's. U kunt een etcd-API-account inrichten door alleen de Resource Manager-sjabloon te implementeren. Zie voor gedetailleerde stappen [Azure Kubernetes inrichten met Azure Cosmos DB](bootstrap-kubernetes-cluster.md) -artikel. Azure Cosmos DB etcd-API is momenteel een beperkte preview-versie. U kunt [zich registreren voor de preview-versie](https://aka.ms/cosmosetcdapi-signup)door het aanmeldings formulier in te vullen.

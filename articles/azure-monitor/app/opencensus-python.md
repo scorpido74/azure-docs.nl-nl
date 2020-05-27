@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701518"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815720"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -39,7 +39,7 @@ Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee e
    | Instelling        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
    | **Naam**      | Wereld wijd unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken |
-   | **Resource groep**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
+   | **Resource Group**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
    | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
 
 1. Selecteer **Maken**.
@@ -254,13 +254,13 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
 
 Standaard wordt door de export functie voor metrische gegevens een aantal standaard metrische gegevens naar Azure Monitor verzonden. U kunt dit uitschakelen door de `enable_standard_metrics` vlag in te stellen op `False` de constructor van de metrische gegevens Exporter.
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 Hieronder ziet u een lijst met standaard metrische gegevens die momenteel worden verzonden:
 
 - Beschikbaar geheugen (bytes)
@@ -338,8 +338,8 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
 
 4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens vinden onder `traces` . 
 
-> [!NOTE]
-> `traces`in deze context is niet hetzelfde als `Tracing` . `traces`verwijst naar het type telemetrie dat u in Azure Monitor kunt zien wanneer u de gebruikt `AzureLogHandler` . `Tracing`verwijst naar een concept in opentellingen en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+    > [!NOTE]
+    > `traces`in deze context is niet hetzelfde als `Tracing` . `traces`verwijst naar het type telemetrie dat u in Azure Monitor kunt zien wanneer u de gebruikt `AzureLogHandler` . `Tracing`verwijst naar een concept in opentellingen en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Als u uw logboek berichten wilt Format teren, kunt u gebruiken `formatters` in de ingebouwde python- [logboek registratie-API](https://docs.python.org/3/library/logging.html#formatter-objects).
 
@@ -371,8 +371,8 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
     ```
 
 6. U kunt ook aangepaste eigenschappen toevoegen aan uw logboek berichten in het argument *extra* tref woord met behulp van het veld custom_dimensions. Deze worden weer gegeven als sleutel-waardeparen in `customDimensions` in azure monitor.
-> [!NOTE]
-> Als u deze functie wilt gebruiken, moet u een woorden lijst door geven aan het veld custom_dimensions. Als u argumenten van elk ander type doorgeeft, worden deze door de logboeken genegeerd.
+    > [!NOTE]
+    > Als u deze functie wilt gebruiken, moet u een woorden lijst door geven aan het veld custom_dimensions. Als u argumenten van elk ander type doorgeeft, worden deze door de logboeken genegeerd.
 
     ```python
     import logging
@@ -395,25 +395,25 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
 
 Met opentellingen python worden telemetrie niet automatisch bijgehouden en verzonden `exception` . Ze worden via de `AzureLogHandler` logboek bibliotheek van python verzonden met behulp van uitzonde ringen. U kunt aangepaste eigenschappen toevoegen, net als bij normale logboek registratie.
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 Aangezien u uitzonde ringen expliciet moet vastleggen, is het aan de gebruiker te weten hoe ze niet-verwerkte uitzonde ringen willen vastleggen. Opentelling heeft geen beperkingen voor de manier waarop een gebruiker dit wil doen, zolang een telemetrie van een uitzonde ring expliciet wordt vastgelegd.
 
 #### <a name="sampling"></a>Steekproeven

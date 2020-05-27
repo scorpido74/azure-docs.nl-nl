@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74028131"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816179"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -39,12 +39,12 @@ Een organisatie moet mogelijk een account voor nood toegang gebruiken in de volg
 
 ## <a name="create-emergency-access-accounts"></a>Nood toegangs accounts maken
 
-Maak twee of meer nood toegangs accounts. Deze accounts moeten alleen Cloud accounts zijn die het \*onmicrosoft.com-domein gebruiken en die niet federatief of gesynchroniseerd zijn vanuit een on-premises omgeving.
+Maak twee of meer nood toegangs accounts. Deze accounts moeten alleen Cloud accounts zijn die het onmicrosoft.com- \* domein gebruiken en die niet federatief of gesynchroniseerd zijn vanuit een on-premises omgeving.
 
 Bij het configureren van deze accounts moet aan de volgende vereisten worden voldaan:
 
 - De accounts voor toegang in nood gevallen mogen niet worden gekoppeld aan een afzonderlijke gebruiker in de organisatie. Zorg ervoor dat uw accounts niet zijn verbonden met mobiele telefoons die door werk nemers worden geleverd, hardware-tokens die met afzonderlijke werk nemers reizen of andere specifieke referenties voor werk nemers. Deze voorzorgsmaatregel geldt voor instanties waarbij een individuele werk nemer onbereikbaar is wanneer de referentie nodig is. Het is belang rijk om ervoor te zorgen dat geregistreerde apparaten worden bewaard op een bekende, veilige locatie met meerdere manieren om te communiceren met Azure AD.
-- Het authenticatie mechanisme dat wordt gebruikt voor een account voor toegang in nood gevallen moet verschillend zijn van de accounts die worden gebruikt door uw andere Administrator, waaronder andere accounts voor toegang tot een nood geval.  Als uw normale beheerder zich bijvoorbeeld via on-premises MFA bevindt, is Azure MFA een ander mechanisme.  Als Azure MFA echter het primaire deel van de verificatie is voor uw beheerders accounts, kunt u een andere benadering gebruiken, zoals het gebruik van voorwaardelijke toegang met een externe MFA-provider.
+- Het authenticatie mechanisme dat wordt gebruikt voor een account voor toegang in nood gevallen moet verschillend zijn van de accounts die worden gebruikt door uw andere Administrator, waaronder andere accounts voor toegang tot een nood geval.  Als uw normale beheerder zich bijvoorbeeld via on-premises MFA bevindt, is Azure MFA een ander mechanisme.  Als Azure MFA echter het primaire deel van de verificatie is voor uw beheerders accounts, kunt u een andere benadering gebruiken, zoals het gebruik van voorwaardelijke toegang met een externe MFA-provider via [aangepaste besturings elementen](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
 - Het apparaat of de referentie mag niet verlopen of een automatische opschoning hebben vanwege een gebrek aan gebruik.  
 - U moet de globale beheerdersrol permanent maken voor uw accounts voor toegang voor nood gevallen. 
 
@@ -79,7 +79,7 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Object-Id's van de afbreek glazen accounts ophalen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat is toegewezen aan de rol gebruikers beheerder.
-1. Selecteer **Azure Active Directory** > **gebruikers**.
+1. Selecteer **Azure Active Directory**  >  **gebruikers**.
 1. Zoek het afbreek glas account en selecteer de naam van de gebruiker.
 1. Kopieer het kenmerk object ID en sla het op, zodat u het later kunt gebruiken.
 1. Herhaal de vorige stappen voor het tweede account voor het afbreek glas.
@@ -89,7 +89,7 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat is toegewezen aan de rol voor het controleren van inzender in azure monitor.
 1. Selecteer **alle services**', voer ' Log Analytics ' in de zoek opdracht in en selecteer vervolgens **log Analytics-werk ruimten**.
 1. Selecteer een werkruimte.
-1. Selecteer in uw werk ruimte **waarschuwingen** > **nieuwe waarschuwings regel**.
+1. Selecteer in uw werk ruimte **waarschuwingen**  >  **nieuwe waarschuwings regel**.
     1. Controleer onder **resource**of het abonnement is waarmee u de waarschuwings regel wilt koppelen.
     1. Selecteer onder **voor waarde**de optie **toevoegen**.
     1. Selecteer **aangepaste zoek opdracht in logboek** onder **signaal naam**.

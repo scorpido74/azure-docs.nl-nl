@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789841"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798592"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Lead beheer voor commerciële Marketplace
 
@@ -86,7 +86,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?** 
 
-U kunt documentatie vinden op [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) of een ondersteunings ticket indienen bij [Help en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1). Selecteer type aanbieding en beheer van leads. 
+U kunt documentatie vinden op [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) of een ondersteunings ticket indienen bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport). Selecteer type aanbieding en beheer van leads. 
 
 **Moet ik een lead bestemming configureren om een aanbieding op Marketplace te publiceren?**
 
@@ -116,7 +116,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Naam van aanbieding> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Naam van aanbieding> 
 
 OID = 00Do0000000ZHog 
 
@@ -183,7 +183,7 @@ De lead wordt alleen geschreven wanneer u Azure BLOB-opslag als uw lead bestemmi
 
 **Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?**  
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Ter bescherming van de privacy geven we geen persoonlijke Identificeer bare gegevens uit het domein. edu door. Dien een ondersteunings ticket in bij [Help en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
+Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Ter bescherming van de privacy geven we geen persoonlijke Identificeer bare gegevens uit het domein. edu door. Dien een ondersteunings ticket in bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
 
 **Ik heb Azure Table/Azure-BLOB geconfigureerd als mijn lead doel, hoe kan ik de leads weer geven?** 
 
@@ -193,7 +193,7 @@ U kunt toegang krijgen tot de BLOB of tabel vanuit Azure Portal, of u kunt [Azur
 
 Ja, volg de instructies voor het instellen van de Azure Table +-functie in de documentatie [hier](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md). 
 
-**Ik heb Sales Force geconfigureerd als mijn lead-doel waarom kan ik de leads niet vinden?** 
+**Ik heb Sales Force geconfigureerd als mijn lead-doel waarom kan ik de leads niet vinden?**
 
 Controleer of het formulier Web to lead een verplicht veld is op basis van een selectie lijst. Zo ja, schakelt u over naar het veld naar een niet-verplicht tekst veld.  
  

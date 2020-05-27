@@ -1,7 +1,7 @@
 ---
-title: SPX-basis beginselen-spraak service
+title: Basis beginselen van spraak-CLI
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van het opdracht regel programma SPX om met de spraak-SDK te werken zonder code en minimale Setup.
+description: Meer informatie over het gebruik van het opdracht regel programma speech CLI voor het werken met de spraak service zonder code en minimale Setup.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2e75e177c1a5af13c1907b3a1abc9218096e8d45
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715644"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800696"
 ---
-# <a name="learn-the-basics-of-spx"></a>Meer informatie over de basis principes van SPX
+# <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basis principes van de speech CLI
 
-In dit artikel leert u de basis gebruiks patronen van SPX, een opdracht regel programma voor het gebruik van de spraak service zonder code te schrijven. U kunt snel de belangrijkste functies van de spraak service testen zonder ontwikkel omgevingen te maken of code te schrijven om te controleren of er voldoende problemen zijn met het gebruik van uw gebruiks voorbeelden. Daarnaast is SPX gereed voor productie en kan worden gebruikt voor het automatiseren van eenvoudige werk stromen in de spraak service, met behulp van `.bat` of shell-scripts.
+In dit artikel leert u de basis gebruiks patronen van de speech CLI, een opdracht regel programma voor het gebruik van de spraak service zonder code te schrijven. U kunt snel de belangrijkste functies van de spraak service testen zonder ontwikkel omgevingen te maken of code te schrijven om te controleren of er voldoende problemen zijn met het gebruik van uw gebruiks voorbeelden. Daarnaast is de spraak-CLI gereed voor productie en kan worden gebruikt voor het automatiseren van eenvoudige werk stromen in de spraak service, met behulp van `.bat` of met shell-scripts.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -31,15 +31,15 @@ In deze sectie worden enkele eenvoudige SPX-opdrachten weer gegeven die vaak nut
 spx recognize --microphone
 ```
 
-Nadat u de opdracht hebt ingevoerd, luistert SPX naar audio op het huidige actieve invoer apparaat en stopt het nadat u hebt geklikt `ENTER` . De opgenomen spraak wordt vervolgens herkend en geconverteerd naar tekst in de console-uitvoer. De tekst-naar-spraak-synthese is ook eenvoudig te gebruiken met behulp van SPX. 
+Nadat u de opdracht hebt ingevoerd, luistert SPX naar audio op het huidige actieve invoer apparaat en stopt het nadat u hebt geklikt `ENTER` . De opgenomen spraak wordt vervolgens herkend en geconverteerd naar tekst in de console-uitvoer. Tekst-naar-spraak-synthese is ook eenvoudig te gebruiken met de spraak-CLI. 
 
 Als u de volgende opdracht uitvoert, wordt de ingevoerde tekst als invoer uitgevoerd en wordt de gesynthesizerde spraak naar het huidige actieve uitvoer apparaat uitgevoerd.
 
 ```shell
-spx synthesize --text "Testing synthesis using SPX" --speakers
+spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 ```
 
-Naast spraak herkenning en synthese kunt u ook spraak omzetting met SPX uitvoeren. Net als bij de opdracht voor spraak herkenning hierboven voert u de volgende opdracht uit voor het vastleggen van audio van de standaard microfoon en voert u een vertaling uit naar tekst in de doel taal.
+Naast spraak herkenning en synthese kunt u ook spraak omzetting uitvoeren met de spraak-CLI. Net als bij de opdracht voor spraak herkenning hierboven voert u de volgende opdracht uit voor het vastleggen van audio van de standaard microfoon en voert u een vertaling uit naar tekst in de doel taal.
 
 ```shell
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
@@ -59,7 +59,7 @@ De opdrachten in de vorige sectie zijn handig om snel te zien hoe de speech-serv
 
 ## <a name="batch-speech-recognition"></a>Spraak herkenning voor batch
 
-Als u een map met audio bestanden hebt, is het eenvoudig met SPX om snel batch-spraak herkenning uit te voeren. Voer gewoon de volgende opdracht uit en wijs naar uw map met de `--files` opdracht. In dit voor beeld voegt u `\*.wav` toe aan de Directory om alle `.wav` bestanden in de map te herkennen. Daarnaast moet u het `--threads` argument opgeven om de herkenning uit te voeren op 10 parallelle threads.
+Als u een map met audio bestanden hebt, kunt u eenvoudig de speech CLI gebruiken om snel batch-spraak herkenning uit te voeren. Voer gewoon de volgende opdracht uit en wijs naar uw map met de `--files` opdracht. In dit voor beeld voegt u `\*.wav` toe aan de Directory om alle `.wav` bestanden in de map te herkennen. Daarnaast moet u het `--threads` argument opgeven om de herkenning uit te voeren op 10 parallelle threads.
 
 > [!NOTE]
 > Het `--threads` argument kan ook worden gebruikt in de volgende sectie voor `spx synthesize` -opdrachten en de beschik bare threads zijn afhankelijk van de CPU en het huidige belasting percentage.
@@ -76,11 +76,11 @@ De herkende spraak uitvoer wordt geschreven naar `speech_output.tsv` met behulp 
 
 ## <a name="batch-text-to-speech-synthesis"></a>Batch-naar-spraak-synthese
 
-De eenvoudigste manier om batch tekst-naar-spraak uit te voeren is het maken `.tsv` van een nieuw bestand (door tabs gescheiden waarden) en het gebruik `--foreach` van de opdracht in SPX. Houd rekening met het volgende bestand `text_synthesis.tsv` :
+De eenvoudigste manier om batch tekst naar spraak uit te voeren is het maken van een nieuw `.tsv` bestand (door tabs gescheiden waarden) en de `--foreach` opdracht in de speech cli. Houd rekening met het volgende bestand `text_synthesis.tsv` :
 
     audio.output    text
     C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using SPX to run batch-synthesis.
+    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
     C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 
  Vervolgens voert u een opdracht uit om naar te verwijzen `text_synthesis.tsv` , op elk veld synthese uit te voeren `text` en het resultaat naar het bijbehorende pad te schrijven `audio.output` als een `.wav` bestand. 
@@ -99,7 +99,7 @@ Als u echter een bestand hebt `.tsv` zoals in het volgende voor beeld, met kolom
 
     wav_path    str_text
     C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using SPX to run batch-synthesis.
+    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
     C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 
 U kunt deze veld namen vervangen door de juiste argumenten met de volgende syntaxis in de `--foreach` aanroep. Dit is dezelfde aanroep als hierboven.

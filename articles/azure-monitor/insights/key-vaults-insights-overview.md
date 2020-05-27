@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 2387f14a537c15c891bff968573bf4d698c01770
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211301"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797674"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault (preview-versie)
 Azure Monitor voor Key Vault (preview) biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -212,4 +212,4 @@ U kunt de bestaande werkmap bewerken met behulp van de bewerkings modus en vervo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)te controleren.
+Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)te controleren.

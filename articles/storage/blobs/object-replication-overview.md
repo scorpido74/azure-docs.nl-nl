@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c23360360f97babebe9efe8afecc6a27052faad5
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758419"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800765"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs (preview-versie)
 
@@ -54,7 +54,7 @@ Wanneer u een replicatie regel maakt, worden standaard alleen de nieuwe blok-blo
 
 U kunt ook een of meer filters opgeven als onderdeel van een replicatie regel voor het filteren van blok-blobs op voor voegsel. Wanneer u een voor voegsel opgeeft, worden alleen blobs die overeenkomen met het voor voegsel in de bron container gekopieerd naar de doel container.
 
-De bron-en doel containers moeten beide bestaan voordat u ze in een regel kunt opgeven. Nadat u het replicatie beleid hebt gemaakt, wordt de doel container alleen-lezen. Pogingen om naar de doel container te schrijven, mislukken met fout code 409 (conflict). U kunt echter de bewerking [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier.md) aanroepen op een BLOB in de doel container om deze te verplaatsen naar een andere Access-laag. U kunt bijvoorbeeld blobs in de doel container verplaatsen naar de archief-laag om kosten op te slaan.
+De bron-en doel containers moeten beide bestaan voordat u ze in een regel kunt opgeven. Nadat u het replicatie beleid hebt gemaakt, wordt de doel container alleen-lezen. Pogingen om naar de doel container te schrijven, mislukken met fout code 409 (conflict). U kunt echter de bewerking [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier) aanroepen op een BLOB in de doel container om deze te verplaatsen naar een andere Access-laag. U kunt bijvoorbeeld blobs in de doel container verplaatsen naar de archief-laag om kosten op te slaan.
 
 ## <a name="about-the-preview"></a>Over de preview-versie
 

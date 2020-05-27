@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739157"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798530"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Zelf studie: uw gegevens visualiseren en bewaken
 
 
 
-Zodra u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
+Zodra u [uw gegevens bronnen](quickstart-onboard.md)   aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/platform/workbooks-overview.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
 
 
 Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
@@ -52,7 +52,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
    > Hiermee wordt een Azure-resource gemaakt op basis van de relevante sjabloon en wordt het JSON-sjabloon bestand zelf en niet de gegevens opgeslagen.
 
 
-1. Selecteer **werkmap weer geven**. Klik vervolgens bovenaan op de knop **bewerken** . U kunt de werkmap nu bewerken en aanpassen op basis van uw behoeften. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap.
+1. Selecteer **werkmap weer geven**. Klik vervolgens bovenaan op de knop **bewerken** . U kunt de werkmap nu bewerken en aanpassen op basis van uw behoeften. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap.
 ![werkmappen weer geven](./media/tutorial-monitor-data/workbook-graph.png)
 1. Nadat u de wijzigingen hebt aangebracht, kunt u de werkmap opslaan. 
 
@@ -64,7 +64,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 1. Ga naar **werkmappen** en selecteer vervolgens **werkmap toevoegen** om een nieuwe werkmap helemaal opnieuw te maken.
   ![Ga naar werkmappen](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Als u de werkmap wilt bewerken, selecteert u **bewerken**en voegt u indien nodig tekst, query's en para meters toe. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap. 
+1. Als u de werkmap wilt bewerken, selecteert u **bewerken**en voegt u indien nodig tekst, query's en para meters toe. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap. 
 
 1. Wanneer u een query bouwt, stelt u de **gegevens bron** in op **Logboeken**, wordt het **resource type** ingesteld op **log Analytics** en kiest u vervolgens de relevante werk ruimte (n). 
 
@@ -72,7 +72,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 
 1. Als u wilt dat anderen in uw organisatie de werkmap kunnen gebruiken, klikt u onder **Opslaan om** **gedeelde rapporten**te selecteren. Als u wilt dat deze werkmap alleen voor u beschikbaar is, selecteert u **mijn rapporten**.
 
-1. Als u wilt scha kelen tussen werkmappen in uw werk ruimte **Open** ![, kunt u](./media/tutorial-monitor-data/switch.png)open switch-werkmappen selecteren in het bovenste deel venster van een werkmap. In het venster dat aan de rechter kant wordt geopend, schakelt u tussen werkmappen.
+1. Als u wilt scha kelen tussen werkmappen in uw werk ruimte, kunt u **Open** ![ Switch-werkmappen selecteren ](./media/tutorial-monitor-data/switch.png) in het bovenste deel venster van een werkmap. In het venster dat aan de rechter kant wordt geopend, schakelt u tussen werkmappen.
 
    ![Scha kelen tussen werkmappen](./media/tutorial-monitor-data/switch-workbooks.png)
 
