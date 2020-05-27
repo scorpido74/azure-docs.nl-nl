@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744364"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835101"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht van Wijzigingen bijhouden en inventaris
 
@@ -195,7 +195,10 @@ Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
-* [Zoek opdrachten in Logboeken in Azure Monitor logboeken](../log-analytics/log-analytics-log-searches.md)
-* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
-* [Problemen met wijzigingen in een virtuele Azure-machine oplossen](automation-tutorial-troubleshoot-changes.md)
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met wijzigingen bijhouden en inventarisatie.
+* Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)om de functie in te scha kelen in een runbook.
+* Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md)om de functie in te scha kelen vanuit een Automation-account.
+* Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen van Azure Portal](automation-onboard-solutions-from-browse.md).
+* Als u de functie wilt inschakelen vanaf een virtuele Azure-machine, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen op een virtuele Azure-machine](automation-enable-changes-from-vm.md).
+* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md).
+* Zie [problemen met wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van functie fouten.

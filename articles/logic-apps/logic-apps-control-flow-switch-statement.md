@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793233"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834523"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-instructies maken waarmee werk stroom acties worden uitgevoerd op basis van specifieke waarden in Azure Logic Apps
 
@@ -42,7 +42,7 @@ Stel dat u een logische app wilt die verschillende stappen uitvoert op basis van
 
 1. Voor dit voor beeld voegt u een instructie switch toe aan het einde van uw voorbeeld werk stroom. Klik na de laatste stap op **nieuwe stap**.
 
-   Wanneer u een switch-instructie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl waaraan u de instructie switch wilt toevoegen. Kies het **plus teken** (**+**) dat wordt weer gegeven en kies vervolgens **een actie toevoegen**.
+   Wanneer u een switch-instructie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl waaraan u de instructie switch wilt toevoegen. Kies het **plus teken** ( **+** ) dat wordt weer gegeven en kies vervolgens **een actie toevoegen**.
 
 1. In het zoekvak voert u "switch" in als uw filter. Selecteer deze actie: **Switch-Control**
 
@@ -57,7 +57,7 @@ Stel dat u een logische app wilt die verschillende stappen uitvoert op basis van
 
    ![Selecteer ' token '](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Voor het afhandelen van de gevallen waarin `Approve` de `Reject`fiatteur een andere case selecteert of een andere aanvraag tussen **Case** en **standaard**toevoegt. 
+1. Voor het afhandelen van de gevallen waarin de fiatteur `Approve` `Reject` een andere case selecteert of een andere aanvraag tussen **Case** en **standaard**toevoegt. 
 
    ![Een andere case toevoegen](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -116,12 +116,12 @@ Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken 
 | `"type": "Switch"` | Geeft aan dat de actie een switch instructie is |
 | `"expression"`     | In dit voor beeld geeft u de geselecteerde optie van de fiatteur op die wordt geëvalueerd op basis van elke case, zoals later in de definitie wordt gedeclareerd. |
 | `"cases"` | Hiermee definieert u een wille keurig aantal cases. Voor elk geval `"Case_*"` is de standaard naam voor dat geval, waarmee u de naam van de Lees baarheid kunt wijzigen |
-| `"case"` | Hiermee geeft u de waarde van de case op. dit moet een constante en een unieke waarde zijn die de instructie switch gebruikt voor vergelijking. Als er geen gevallen overeenkomen met het resultaat van de switch- `"default"` expressie, worden de acties in de sectie uitgevoerd. | 
+| `"case"` | Hiermee geeft u de waarde van de case op. dit moet een constante en een unieke waarde zijn die de instructie switch gebruikt voor vergelijking. Als er geen gevallen overeenkomen met het resultaat van de switch-expressie, worden de acties in de `"default"` sectie uitgevoerd. | 
 | | | 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies of suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

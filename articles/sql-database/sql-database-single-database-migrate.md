@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12600b9a5086d785afc8581a9c4382bd3618f0d1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268611"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835747"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server database migratie naar Azure SQL Database
 
@@ -113,7 +113,7 @@ Er zijn veel verschillende compatibiliteitsproblemen die zich kunnen voordoen. D
 - [Database Engine-functionaliteit in SQL Server 2008 R2 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [Database Engine-functionaliteit in SQL Server 2005 stopgezet](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
-In aanvulling op deze resources en uw zoekopdrachten op internet kunt u ook de [MSDN SQL Server-communityforums](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver) of [StackOverflow](https://stackoverflow.com/) raadplegen.
+Naast het zoeken op internet en het gebruik van deze resources, gebruikt u de [pagina micro soft Q&een vraag voor Azure SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) of [stack overflow](https://stackoverflow.com/).
 
 > [!IMPORTANT]
 > Met SQL Database Managed Instance kunt u een bestaand SQL Server exemplaar en de bijbehorende data bases migreren met minimale problemen met de compatibiliteit. Zie [Wat is een beheerd exemplaar](sql-database-managed-instance.md).

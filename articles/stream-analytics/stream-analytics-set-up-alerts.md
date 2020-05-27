@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2bd1f59d5cf33ae7f1f2e33e6c3f1312b5a13e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8219fba44be608a9fd31139a89c8dac2cc3e3082
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127577"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835407"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Waarschuwingen instellen voor Azure Stream Analytics taken
 
@@ -64,11 +64,11 @@ De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties 
 |Watermerk vertraging|Groter dan|Maximum|Wanneer de gemiddelde waarde van deze metriek over de laatste 15 minuten groter is dan de tolerantie voor de latere aankomst (in seconden). Als u de tolerantie voor late aankomst niet hebt gewijzigd, wordt de standaard waarde 5 seconden ingesteld.|Verhoog het aantal SUs of gelijktijdig uw query. Zie over het [begrijpen en aanpassen van streaming-eenheden](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)voor meer informatie over SUs. Zie gelijktijdig [query parallel Lise ring in azure stream Analytics](stream-analytics-parallelization.md)voor meer informatie over het uitvoeren van uw query.|
 |Fouten bij het deserialiseren van de invoer|Groter dan|Totaal|0|Bekijk de activiteiten of de logboeken van de resource en breng de gewenste wijzigingen aan in de invoer. Zie [problemen oplossen Azure stream Analytics met resource logboeken](stream-analytics-job-diagnostic-logs.md) voor meer informatie over bron logboeken|
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 
 Zie [waarschuwings meldingen ontvangen](../azure-monitor/platform/alerts-overview.md)voor meer informatie over het configureren van waarschuwingen in de Azure Portal.  
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

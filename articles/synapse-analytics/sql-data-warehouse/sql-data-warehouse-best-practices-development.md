@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e149c45c720a5da6b051b7ce9581d74c64fa35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745362"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834472"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Aanbevolen procedures voor het ontwikkelen van de Synapse SQL-groep
 
@@ -120,7 +120,7 @@ Zie ook [tabel indexen](sql-data-warehouse-tables-index.md), [Column Store-index
 
 Als u in dit artikel niet vindt wat u zoekt, kunt u het document ' zoeken naar docs ' aan de linkerkant van deze pagina gebruiken om alle Azure Synapse-documenten te doorzoeken.  
 
-Het [Azure Synapse-forum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse-Product groep.  We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
+De [pagina van micro soft Q&een vraag voor Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse-Product groep.  We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
 
 We hebben ook een [Stack Overflow-forum Azure SQL Data Warehouse](https://stackoverflow.com/questions/tagged/azure-sqldw) voor als u uw vragen liever in Stack Overflow stelt.
 

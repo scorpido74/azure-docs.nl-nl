@@ -1,14 +1,14 @@
 ---
 title: Azure-blauw drukken-functies
 description: Hierin worden de functies beschreven die beschikbaar zijn voor gebruik met blauw drukken artefacten in definities en toewijzingen van Azure.
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280675"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834778"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
@@ -265,7 +265,7 @@ Gebruik vervolgens de `resourceGroup()` functie in de context van een blauw druk
 
 `resourceGroups(placeholderName)`
 
-Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. In tegens telling `resourceGroup()`tot, waarvoor context van het artefact is vereist, wordt deze functie gebruikt om de eigenschappen van een specifieke tijdelijke aanduiding van een resource groep op te halen wanneer deze niet in de context van die resource groep is.
+Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. In tegens telling tot `resourceGroup()` , waarvoor context van het artefact is vereist, wordt deze functie gebruikt om de eigenschappen van een specifieke tijdelijke aanduiding van een resource groep op te halen wanneer deze niet in de context van die resource groep is.
 
 ### <a name="parameters"></a>Parameters
 
@@ -344,7 +344,7 @@ Het geretourneerde object heeft de volgende indeling:
 
 ### <a name="example"></a>Voorbeeld
 
-Gebruik de weergave naam van het abonnement en `concat()` de functie om een naamgevings Conventie te maken die is door gegeven als parameter _bron_ voor het sjabloon artefact.
+Gebruik de weergave naam van het abonnement en de `concat()` functie om een naamgevings Conventie te maken die is door gegeven als parameter _bron_ voor het sjabloon artefact.
 
 ```json
 {

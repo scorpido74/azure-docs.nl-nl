@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257067"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835050"
 ---
 # <a name="monitor-the-process-server"></a>De proces server bewaken
 
@@ -51,9 +51,9 @@ Om problemen met de proces server te voor komen, is het belang rijk om het volge
 
 De proces server genereert een aantal status waarschuwingen die in de volgende tabel worden samenvatten.
 
-**Waarschuwingstype** | **Nadere**
+**Waarschuwingstype** | **Details**
 --- | ---
-![Goed][green] | De proces server is verbonden en in orde.
+![In orde][green] | De proces server is verbonden en in orde.
 ![Waarschuwing][yellow] | CPU-gebruik > 80% gedurende de afgelopen 15 minuten
 ![Waarschuwing][yellow] | Geheugen gebruik > 80% gedurende de afgelopen 15 minuten
 ![Waarschuwing][yellow] | Beschik bare ruimte in de cachemap < 30% gedurende de afgelopen 15 minuten
@@ -96,7 +96,7 @@ U kunt ook proces servers in de kluis bewaken onder **site Recovery-infra struct
 ## <a name="next-steps"></a>Volgende stappen
 
 - Als u problemen ondervindt met de proces servers, volgt u de [richt lijnen voor probleem oplossing](vmware-physical-azure-troubleshoot-process-server.md)
-- Als u meer hulp nodig hebt, kunt u uw vraag in het [Azure site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)plaatsen. 
+- Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

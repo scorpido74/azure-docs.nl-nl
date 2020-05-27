@@ -1,16 +1,16 @@
 ---
-title: Werk stroom en resources voor batch-service
+title: Workflow en resources van batchservice
 description: Meer informatie over de functies van de batch-service en de werk stroom op hoog niveau van een ontwikkelings standpunt.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 8112f6059a14bb18bf1fbf4011ceb074d71b5837
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791132"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835917"
 ---
-# <a name="batch-service-workflow-and-resources"></a>Werk stroom en resources voor batch-service
+# <a name="batch-service-workflow-and-resources"></a>Workflow en resources van batchservice
 
 In dit overzicht van de kern onderdelen van de Azure Batch-service bespreken we de werk stroom op hoog niveau die door batch ontwikkelaars kan worden gebruikt om grootschalige parallelle reken oplossingen te bouwen, samen met de primaire service resources die worden gebruikt.
 
@@ -38,8 +38,8 @@ De volgende werkstroom op hoog niveau is gangbaar voor bijna alle toepassingen e
 In de volgende onderwerpen worden de bronnen van de batch besproken die uw gedistribueerde reken kundige scenario's mogelijk maken.
 
 - [Batch-accounts en-opslag accounts](accounts.md)
-- [Knoop punten en Pools](nodes-and-pools.md)
-- [Taken en taken](jobs-and-tasks.md)
+- [Knooppunten en pools](nodes-and-pools.md)
+- [Taken](jobs-and-tasks.md)
 - [Bestanden en mappen](files-and-directories.md)
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -47,4 +47,4 @@ In de volgende onderwerpen worden de bronnen van de batch besproken die uw gedis
 - Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
 - Lees de basisbeginselen van het ontwikkelen van een voor Batch geschikte toepassing met behulp van de [clientbibliotheek Batch .NET](quick-run-dotnet.md) of [Python](quick-run-python.md). Deze snelstarts leiden u stapsgewijs door een voorbeeldtoepassing die gebruikmaakt van de Batch-service voor het uitvoeren van een workload op meerdere rekenknooppunten. U vindt er ook informatie over het gebruik van Azure Storage voor het faseren en ophalen van een workloadbestand.
 - Download en installeer [Batch Explorer](https://azure.github.io/BatchExplorer/) voor gebruik bij het ontwikkelen van uw Batch-oplossingen. Gebruik Batch Explorer bij het maken en bewaken van en opsporen van fouten in Azure Batch-toepassingen.
-- Zie community-bronnen, waaronder [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), de [batch-Community opslag plaats](https://github.com/Azure/Batch)en het [Azure batch-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch).
+- Zie community-bronnen, waaronder [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), de [batch-Community opslag plaats](https://github.com/Azure/Batch)en het [Azure batch-forum](https://docs.microsoft.com/answers/topics/azure-batch.html).

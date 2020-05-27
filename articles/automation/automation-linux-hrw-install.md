@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a6cf348142d694a03da24f32793fc72325701931
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712448"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835220"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -131,4 +131,4 @@ Als u een Hybrid Runbook Worker groep van Linux-computers wilt verwijderen, gebr
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md)voor meer informatie over het configureren van uw runbooks om processen te automatiseren in uw on-premises Data Center of andere cloud omgeving.
-* Zie [problemen met Linux Hybrid Runbook Workers oplossen](troubleshoot/hybrid-runbook-worker.md#linux)voor meer informatie over het oplossen van problemen met uw Hybrid runbook Workers.
+* Zie [problemen met Hybrid Runbook worker problemen oplossen-Linux](troubleshoot/hybrid-runbook-worker.md#linux)voor meer informatie over het oplossen van problemen met uw Hybrid Runbook Workers.

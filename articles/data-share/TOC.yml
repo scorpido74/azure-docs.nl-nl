@@ -19,7 +19,7 @@
       href: terminology.md
     - name: Functies en vereisten
       href: concepts-roles-permissions.md
-    - name: Herstel na noodgevallen
+    - name: Herstel na noodgeval
       href: disaster-recovery.md
 - name: Voorbeelden
   items:
@@ -29,7 +29,7 @@
       href: samples-powershell.md
 - name: Instructiegidsen
   items:
-    - name: Bewaken
+    - name: Controleren
       href: how-to-monitor.md
     - name: Gegevenssettoewijzingen configureren
       href: how-to-configure-mapping.md
@@ -51,10 +51,10 @@
       href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
     - name: REST-API
       href: /rest/api/datashare
-- name: Bronnen
+- name: Resources
   items:
-    - name: MSDN-forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04e32a88dcfb9f069e51b2f18207155b95da37d6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744353"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835067"
 ---
 # <a name="compose-dsc-configurations"></a>DSC-configuraties samenstellen
 
@@ -23,7 +23,7 @@ Azure Automation maakt het mogelijk om [samengestelde resources te importeren en
 
 Voordat u een configuratie kunt toewijzen van samengestelde resources in de Azure Portal, moet u de configuratie opstellen. Samen stelling maakt gebruik van de **opstel configuratie** op de pagina State Configuration (DSC) en op het tabblad **configuraties** of de **gecompileerde configuraties** .
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
 1. Selecteer op de pagina Automation-account **status configuratie (DSC)** onder **configuratie beheer**.
 1. Klik op de pagina status configuratie (DSC) op het tabblad **configuraties** of **gecompileerde configuraties** en klik vervolgens op **configuratie opstellen** in het menu boven aan de pagina.
@@ -42,8 +42,9 @@ Wanneer de compilatie is voltooid, wordt de nieuwe configuratie weer gegeven op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)
-- [Configuratie van Azure Automation status inschakelen](automation-dsc-onboarding.md)
-- [DSC-configuraties compileren in de configuratie van de Azure Automation status](automation-dsc-compile.md)
-- [Continue implementatie met chocolade instellen](automation-dsc-cd-chocolatey.md)
-- [Prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)
+- Zie [Azure Automation status configuratie inschakelen](automation-dsc-onboarding.md)voor meer informatie over het inschakelen van knoop punten.
+- Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
+- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
+- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

@@ -74,8 +74,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Netwerkblog
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Netwerkforum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A-vragenpagina over netwerken
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Netwerkfeedback
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Prijzen

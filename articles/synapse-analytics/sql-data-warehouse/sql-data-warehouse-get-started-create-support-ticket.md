@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eaa6ceded9893b278b28d517cbddb303f8469e10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350901"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835458"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Vraag quota toe en ontvang ondersteuning voor Azure Synapse Analytics
 
@@ -95,9 +95,9 @@ Als uw abonnement toegang moet hebben tot een bepaalde regio, gebruikt u de opti
 
 ![Andere quotum Details](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
-## <a name="submit-your-request"></a>Uw aanvraag verzenden
+## <a name="submit-your-request"></a>De aanvraag verzenden
 
-De laatste stap is het invullen van de resterende Details van de ondersteunings aanvraag van SQL Database. Selecteer **volgende: controleren +>>maken **en klik na het controleren van de aanvraag gegevens op **maken** om de aanvraag in te dienen.
+De laatste stap is het invullen van de resterende Details van de ondersteunings aanvraag van SQL Database. Selecteer vervolgens**Volgende: Controleren en maken > >** en klik na het controleren van de aanvraagdetails op **Maken** om de aanvraag in te dienen.
 
 ## <a name="monitor-a-support-ticket"></a>Een ondersteuningsticket bewaken
 
@@ -107,5 +107,5 @@ Nadat u het ondersteunings verzoek hebt ingediend, neemt het ondersteunings team
 
 ## <a name="other-resources"></a>Meer informatie
 
-U kunt ook verbinding maken met de Azure Synapse Analytics-Community op [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) of via het [MSDN-forum van Azure SQL Data Warehouse](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/).
+U kunt ook verbinding maken met de Azure Synapse Analytics-Community op [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) of via de [pagina micro soft Q&een vraag voor Azure SQL Data Warehouse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

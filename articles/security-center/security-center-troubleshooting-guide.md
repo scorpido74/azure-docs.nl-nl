@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585329"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836002"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
@@ -81,7 +81,7 @@ Er zijn twee installatie scenario's die verschillende resultaten kunnen oplevere
 
 **Bewakingsstatus** toont de reden waarom Security Center VM's en computers die zijn geïnitialiseerd voor automatische inrichting niet afdoende kan bewaken. In de volgende tabel ziet u de waarden, beschrijvingen en oplossingen voor **Bewakingsstatus**.
 
-| Bewakingsstatus | Beschrijving | Oplossingen |
+| Bewakingsstatus | Beschrijving | Stappen om het probleem op te lossen |
 |---|---|---|
 | Agent wacht op installatie | De installatie van de Log Analytics-agent is nog actief.  De installatie kan enkele uren duren. | Wacht totdat de automatische installatie is voltooid. |
 | Energiestatus uitgeschakeld | De virtuele machine is gestopt.  De Log Analytics-agent kan alleen worden geïnstalleerd op een virtuele machine waarop wordt uitgevoerd. | Start de VM opnieuw. |
@@ -132,7 +132,7 @@ Als u problemen ondervindt met het laden van het dashboard van Security Center, 
 
 ## <a name="contacting-microsoft-support"></a>Contact opnemen met Microsoft-ondersteuning
 
-Bepaalde problemen kunnen worden geïdentificeerd aan de hand van de richtlijnen in dit artikel. Andere problemen vindt u ook beschreven in het openbare [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) van Security Center. Als u echter meer problemen wilt oplossen, kunt u een nieuwe ondersteunings aanvraag openen met **Azure Portal** , zoals hieronder wordt weer gegeven:
+Sommige problemen kunnen worden geïdentificeerd aan de hand van de richt lijnen in dit artikel, anderen die u ook kunt vinden op de pagina Security Center open bare [micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-security-center.html). Als u echter meer problemen wilt oplossen, kunt u een nieuwe ondersteunings aanvraag openen met **Azure Portal** , zoals hieronder wordt weer gegeven:
 
 ![Microsoft-ondersteuning](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

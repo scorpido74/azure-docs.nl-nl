@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478983"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835543"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Een ondersteuningsaanvraag maken voor Azure
 
@@ -53,7 +53,7 @@ Als u een ondersteunings aanvraag wilt starten vanaf elke locatie in de Azure Po
 
    ![Help en ondersteuning](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Selecteer een **nieuwe ondersteunings aanvraag**. Volg de aanwijzingen om ons informatie te geven over uw probleem. We suggereren een aantal mogelijke oplossingen, verzamelen Details over het probleem en helpen u bij het indienen en bijhouden van de ondersteunings aanvraag.
+2. Selecteer **Nieuwe ondersteuningsaanvraag**. Volg de aanwijzingen om ons informatie te geven over uw probleem. We suggereren een aantal mogelijke oplossingen, verzamelen Details over het probleem en helpen u bij het indienen en bijhouden van de ondersteunings aanvraag.
 
    ![Nieuw ondersteuningsverzoek](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -98,7 +98,7 @@ Nadat u alle informatie over het probleem hebt, kiest u hoe u ondersteuning kunt
 
 Vul vervolgens de sectie **contact gegevens** in zodat we weten hoe ze contact met u kunnen opnemen.
 
-### <a name="review--create"></a>Controleren en maken
+### <a name="review--create"></a>Beoordelen en maken
 
 Vul alle vereiste gegevens op elk tabblad in en selecteer vervolgens **controleren + maken**. Controleer de details die u gaat verzenden naar ondersteuning. Ga terug naar een tabblad om zo nodig een wijziging aan te brengen. Wanneer u hebt nagevraagd of het ondersteunings verzoek is voltooid, selecteert u **maken**.
 
@@ -106,7 +106,7 @@ Een ondersteunings agent neemt contact met u op met de methode die u hebt opgege
 
 ## <a name="all-support-requests"></a>Alle ondersteunings aanvragen
 
-U kunt de details en status van ondersteunings aanvragen weer geven door naar **Help en ondersteuning** >  te gaan voor**alle ondersteunings aanvragen**.
+U kunt de details en status van ondersteunings aanvragen weer geven door naar **Help en ondersteuning**te gaan voor  >   **alle ondersteunings aanvragen**.
 
 ![Alle ondersteunings aanvragen](./media/how-to-create-azure-support-request/allrequestslower.png)
 
@@ -128,5 +128,5 @@ Bekijk de volgende video voor meer informatie over de ondersteunings opties voor
 
 * [Stuur ons uw feedback en suggesties](https://feedback.azure.com/forums/266794-support-feedback)
 * Neem contact met ons op [Twitter](https://twitter.com/azuresupport)
-* Hulp krijgen van uw collega's in de [MSDN-Forums](https://social.msdn.microsoft.com/Forums/azure)
+* Hulp krijgen van uw peers op de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/products/azure)
 * Meer informatie in de [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)

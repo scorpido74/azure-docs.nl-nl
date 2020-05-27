@@ -12,7 +12,7 @@
       href: cloud-services-dotnet-get-started.md
     - name: Voorbeeld van Python voor Visual Studio-cloudservice
       href: cloud-services-python-ptvs.md
-- name: Procedure
+- name: Procedures
   items:
     - name: Plannen
       items:
@@ -102,7 +102,7 @@
           href: cloud-services-certs-create.md
         - name: SSL configureren
           href: cloud-services-configure-ssl-certificate-portal.md
-    - name: Bewaken
+    - name: Controleren
       items:
         - name: Een cloudservice bewaken
           href: cloud-services-how-to-monitor.md
@@ -185,14 +185,14 @@
           href: schema-cscfg-networkconfiguration.md
     - name: REST
       href: /rest/api/compute/cloudservices/
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Leertraject
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN-forum
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Prijscalculator

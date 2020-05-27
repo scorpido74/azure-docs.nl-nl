@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843623"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835985"
 ---
 # <a name="region-or-sku-unavailable"></a>Regio of SKU is niet beschikbaar
 
@@ -68,7 +68,7 @@ Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvr
 
 1. Voor **probleem type**kiest **u probleem type selecteren**.
 
-1. Kies voor **type probleem selecteren**een optie, bijvoorbeeld, **geen toegang tot mijn abonnement of resource** > **mijn probleem niet wordt vermeld**. Selecteer **Opslaan**.
+1. Kies voor **type probleem selecteren**een optie, bijvoorbeeld, **geen toegang tot mijn abonnement of resource**  >  **mijn probleem niet wordt vermeld**. Selecteer **Opslaan**.
 
    ![Geef een probleem op voor de aanvraag](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -76,11 +76,11 @@ Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvr
 
 1. Voer aanvullende informatie in, samen met uw contact gegevens.
 
-1. Selecteer **controleren + maken**. Nadat u uw gegevens hebt gecontroleerd, selecteert u **maken** om de aanvraag te maken.
+1. Selecteer **Controleren + maken**. Nadat u uw gegevens hebt gecontroleerd, selecteert u **maken** om de aanvraag te maken.
 
 ## <a name="send-us-your-suggestions"></a>Stuur ons uw suggesties
 
-We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of de [MSDN-Forums](https://social.msdn.microsoft.com/Forums/azure).
+We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of op de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/products/azure).
 
 ## <a name="learn-more"></a>Meer informatie
 

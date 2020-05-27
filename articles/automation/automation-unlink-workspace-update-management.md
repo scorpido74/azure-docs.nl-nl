@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4261b3c3fa7aab830f5f57e86ee25f8ba5894849
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749065"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835781"
 ---
 # <a name="unlink-workspace-from-automation-account-for-update-management"></a>De werk ruimte ontkoppelen van het Automation-account voor Updatebeheer
 
@@ -40,6 +40,7 @@ U kunt de Log Analytics-werk ruimte ook ontkoppelen van uw Automation-account va
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)
-* [Vm's uit Updatebeheer verwijderen](automation-remove-vms-from-update-management.md)
-* [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md)
+* Zie [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)voor meer informatie over het gebruik van de functie.
+* Zie [problemen met updatebeheer oplossen](troubleshoot/update-management.md)voor informatie over het oplossen van functie fouten.
+* Zie problemen [met Windows Update agent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van fouten in Windows Update Agent.
+* Zie problemen [met de Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met Linux-update agenten.

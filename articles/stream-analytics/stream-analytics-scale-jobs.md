@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257543"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835594"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Een Azure Stream Analytics taak schalen om de door voer te verhogen
 In dit artikel wordt beschreven hoe u een Stream Analytics query kunt afstemmen om de door Voer voor streaming Analytics-taken te verhogen. U kunt de volgende hand leiding gebruiken om uw taak te schalen om een hogere belasting te verwerken en te profiteren van meer systeem bronnen (zoals meer band breedte, meer CPU-bronnen, meer geheugen).
@@ -77,8 +77,8 @@ Voor bepaalde ISV-use-cases, waarbij het rendabeler is om gegevens van meerdere 
 
 
 
-## <a name="get-help"></a>Help opvragen
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+## <a name="get-help"></a>Hulp vragen
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 35d3146c0ca5571e6e16793c97378de1e2db362e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711717"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835390"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafische runbooks ontwerpen in Azure Automation
 
@@ -256,7 +256,7 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Name | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
+| Naam | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
 | Beschrijving |Optioneel. Beschrijving van het doel van de invoer parameter. |
 | Type | Optioneel. Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. Ondersteunde parameter typen zijn String, Int32, Int64, Decimal, Boolean, DateTime en object. Als er geen gegevens type is geselecteerd, wordt standaard de teken reeks gebruikt.|
 | Verplicht | Optioneel. Instelling die aangeeft of er een waarde moet worden opgegeven voor de para meter. Als u kiest `yes` , moet u een waarde opgeven wanneer het runbook wordt gestart. Als u kiest `no` , is een waarde niet vereist wanneer het runbook wordt gestart en kan een standaard waarde worden gebruikt. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
@@ -432,9 +432,7 @@ U hebt de mogelijkheid om terug te keren naar de gepubliceerde versie van een ru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [mijn eerste Power shell workflow-runbook](automation-first-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
-* Zie [mijn eerste grafische runbook](automation-first-runbook-graphical.md)om aan de slag te gaan met grafische runbooks.
+* Zie [zelf studie: een grafisch Runbook maken](learn/automation-tutorial-runbook-graphical.md)om aan de slag te gaan met grafische runbooks.
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbook en hun voor delen en beperkingen.
-* Zie [uitvoeren als-account voor Azure configureren](automation-sec-configure-azure-runas-account.md)voor meer informatie over het verifiëren met behulp van het uitvoeren als-account voor Automation.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [uitvoeren als-account](automation-security-overview.md#run-as-account)voor informatie over het verifiëren met behulp van het uitvoeren als-account voor Automation.
+* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1121a4a006e4208c76193a38262d4309e67584
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745348"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834438"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Aanbevolen procedures voor Synapse SQL pool in azure Synapse Analytics (voorheen SQL DW)
 
@@ -54,7 +54,7 @@ Zie ook [uw workload controleren met dmv's](sql-data-warehouse-manage-monitor.md
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT-instructie in batches groeperen
 
-Een eenmalige belasting naar een kleine tabel met een INSERT-instructie of zelfs een periodiek opnieuw laden van een zoek opdracht kan goed worden uitgevoerd voor uw behoeften, met een `INSERT INTO MyLookup VALUES (1, 'Type 1')`instructie zoals.  
+Een eenmalige belasting naar een kleine tabel met een INSERT-instructie of zelfs een periodiek opnieuw laden van een zoek opdracht kan goed worden uitgevoerd voor uw behoeften, met een instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')` .  
 
 Als u echter gedurende de dag duizenden of zelfs miljoenen rijen moet laden, voldoen afzonderlijke INSERT-instructies mogelijk niet meer.  U kunt uw processen ook zo instellen dat ze naar een bestand schrijven, en een ander proces instellen dat het bestand periodiek laadt.
 
@@ -180,7 +180,7 @@ Zie ook [resource klassen voor workload Management](resource-classes-for-workloa
 
 Zie ook ons artikel [Problemen oplossen](sql-data-warehouse-troubleshoot.md) voor veelvoorkomende problemen en oplossingen.
 
-Als u in dit artikel niet hebt gevonden wat u zoekt, kunt u het document ' zoeken naar docs ' aan de linkerkant van deze pagina gebruiken om alle Azure Synapse-documenten te doorzoeken.  Het [Azure Synapse-forum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse-Product groep. We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
+Als u in dit artikel niet hebt gevonden wat u zoekt, kunt u het document ' zoeken naar docs ' aan de linkerkant van deze pagina gebruiken om alle Azure Synapse-documenten te doorzoeken.  De [pagina van micro soft Q&een vraag voor Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse-Product groep. We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
 
 Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure Synapse stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

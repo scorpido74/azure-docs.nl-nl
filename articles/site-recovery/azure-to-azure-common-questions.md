@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983275"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834574"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -163,7 +163,7 @@ Nee, Site Recovery blijven al uw vorige herstel punten bewaard. Afhankelijk van 
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Hoe kan ik het replicatie beleid wijzigen nadat de replicatie is ingeschakeld op een VM?
 
-Ga naar **site Recovery kluis** > **site Recovery infrastructuur** > **beleid voor replicatie**. Selecteer het beleid dat u wilt bewerken en sla de wijzigingen op. Elke wijziging is ook van toepassing op alle bestaande replicaties.
+Ga naar **site Recovery kluis**  >  **site Recovery infrastructuur**  >  **beleid voor replicatie**. Selecteer het beleid dat u wilt bewerken en sla de wijzigingen op. Elke wijziging is ook van toepassing op alle bestaande replicaties.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Zijn alle herstel punten een volledige kopie van de virtuele machine of een differentieel exemplaar?
 
@@ -315,4 +315,4 @@ Ja, de versleuteling van door Voer en [versleuteling op rest in azure](https://d
 
 - [Bekijk de vereisten voor Azure-naar-Azure-ondersteuning](azure-to-azure-support-matrix.md).
 - [Azure-naar-Azure-replicatie instellen](azure-to-azure-tutorial-enable-replication.md).
-- Als u vragen hebt nadat u dit artikel hebt gelezen, plaatst u het in het [Azure Recovery Services-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+- Als u vragen hebt na het lezen van dit artikel, plaatst u deze op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256859"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835798"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
 
@@ -32,9 +32,9 @@ Voordat u begint met het oplossen van problemen:
 
 Voor optimale prestaties van proces servers hebben we een aantal algemene aanbevolen procedures toegelicht.
 
-**Aanbevolen procedure** | **Nadere**
+**Aanbevolen procedure** | **Details**
 --- |---
-**Belasting** | Zorg ervoor dat de configuratie server/zelfstandige proces server alleen wordt gebruikt voor het beoogde doel. U hoeft niets anders op de computer uit te voeren.
+**Gebruik** | Zorg ervoor dat de configuratie server/zelfstandige proces server alleen wordt gebruikt voor het beoogde doel. U hoeft niets anders op de computer uit te voeren.
 **IP-adres** | Zorg ervoor dat de proces server een statisch IPv4-adres heeft en dat NAT niet is geconfigureerd.
 **Beheer geheugen/CPU-gebruik** |Behoud het CPU-en geheugen gebruik onder 70%.
 **Beschik bare ruimte** | Beschik bare ruimte verwijst naar de cache schijf ruimte op de proces server. Replicatie gegevens worden opgeslagen in de cache voordat ze worden geüpload naar Azure.<br/><br/> Beschik bare ruimte boven 25% blijven. Als deze onder 20% komt, wordt de replicatie beperkt voor gerepliceerde machines die aan de proces server zijn gekoppeld.
@@ -51,7 +51,7 @@ De proces server genereert een aantal status waarschuwingen. Deze waarschuwingen
 
 **Waarschuwingstype** | **Fout** | **Problemen oplossen**
 --- | --- | --- 
-![Goed][green] | Geen  | De proces server is verbonden en in orde.
+![In orde][green] | Geen  | De proces server is verbonden en in orde.
 ![Waarschuwing][yellow] | De opgegeven services worden niet uitgevoerd. | 1. Controleer of de services worden uitgevoerd.<br/> 2. als de services worden uitgevoerd zoals verwacht, volgt u de onderstaande instructies voor het oplossen van problemen [met connectiviteit en replicatie](#check-connectivity-and-replication).
 ![Waarschuwing][yellow]  | CPU-gebruik > 80% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
 ![Kritiek][red] |  CPU-gebruik > 95% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).<br/> 4. als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) voor de replicatie van VMware/fysieke servers uit.
@@ -113,7 +113,7 @@ Controleer of het Site Recovery niet wordt geblokkeerd door antivirus software o
 3. Controleer of de verbinding is geslaagd.
 
 
-**Connectiviteit** | **Nadere** | **Actie**
+**Connectiviteit** | **Details** | **Actie**
 --- | --- | ---
 **Laatste** | Telnet toont een leeg scherm en de proces server is bereikbaar. | Er is geen verdere actie vereist.
 **Mislukt** | U kunt geen verbinding maken | Zorg ervoor dat binnenkomende poort 9443 is toegestaan op de proces server. Als u bijvoorbeeld een perimeter netwerk of een gescreend subnet hebt. Controleer de connectiviteit opnieuw.
@@ -235,7 +235,7 @@ Controleer of de op IP-adres gebaseerde firewall op de proces server de toegang 
 
     a) zoeken naar **Microsoft Azure backup**.
 
-    b) Open **Microsoft Azure backup**en selecteer Eigenschappen van **actie** > **wijzigen**.
+    b) Open **Microsoft Azure backup**en selecteer Eigenschappen van **actie**  >  **wijzigen**.
 
     c) op het tabblad **proxy configuratie** moet het proxy adres gelijk zijn aan het proxy adres dat wordt weer gegeven in de Register instellingen. Als dat niet het geval is, wijzigt u dit in hetzelfde adres.
 
@@ -246,7 +246,7 @@ Verg root de band breedte tussen de proces server en Azure en controleer of het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer hulp nodig hebt, kunt u uw vraag in het [Azure site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)plaatsen. 
+Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

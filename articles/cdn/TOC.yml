@@ -67,8 +67,6 @@
           href: cdn-restrict-access-by-country.md
         - name: De prestaties verbeteren door bestanden te comprimeren
           href: cdn-improve-performance.md
-        - name: Eindpunt met meerdere origines
-          href: endpoint-multiorigin.md
         - name: Cachinggedrag beheren
           items:
             - name: Cachinggedrag beheren met cachingregels
@@ -185,8 +183,8 @@
       href: cdn-billing.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: Prijscalculator

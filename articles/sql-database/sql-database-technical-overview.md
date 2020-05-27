@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cace4bdc1b8558fb7186f6300189c22753cc8bf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133244"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834846"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Wat is de service Azure SQL Database?
 
@@ -254,7 +254,7 @@ SQL Database-klanten beschikken over de volgende rechten die zijn gekoppeld aan 
 
 - [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): vragen over het beheer van data bases.
 - [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): Stel ontwikkel vragen in.
-- [MSDN-Forums](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Stel technische vragen.
+- [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): Stel technische vragen in.
 - [Feedback](https://aka.ms/sqlfeedback): rapporten van fouten en aanvragen.
 - [Reddit](https://www.reddit.com/r/SQLServer/): bespreek SQL Server.
 

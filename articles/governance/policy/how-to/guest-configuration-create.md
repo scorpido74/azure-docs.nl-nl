@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d72b9b2dbf4c9f88f94fcfea2a99e6b27fd1fccd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647779"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835951"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gast configuratie beleidsregels voor Windows maken
 
@@ -171,6 +171,9 @@ U kunt ook [service-eind punten](../../../storage/common/storage-network-securit
 Een DSC-configuratie maken om instellingen te controleren. In het volgende Power shell-voorbeeld script wordt een configuratie met de naam **AuditBitLocker**gemaakt, de **PsDscResources** -resource module geïmporteerd en de `Service` resource gebruikt om te controleren of er een actieve service is. Het configuratie script kan worden uitgevoerd vanaf een Windows-of macOS-computer.
 
 ```powershell
+# Add PSDscResources module to environment
+Install-Module 'PSDscResources'
+
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {

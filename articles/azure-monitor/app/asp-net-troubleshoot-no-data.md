@@ -3,12 +3,12 @@ title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 2770888c6cfacedcf186ed1612718133cc1ba363
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 882081f28a53e347612a4b30374e294bb7352796
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778678"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835135"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -261,4 +261,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 Meer informatie over het verwijderen van Application Insights in Visual Studio door de stappen te volgen in het [artikel](../../azure-monitor/app/remove-application-insights.md)over het verwijderen.
 
 ## <a name="still-not-working"></a>Nog steeds niet werken...
-* [Application Insights forum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [Micro soft Q&een vraag pagina voor Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)

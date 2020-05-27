@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478952"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834727"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -76,10 +76,10 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
 
 Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure grijs is en u niet met Azure bent verbonden via een snelle route of een site-naar-site-VPN-verbinding, dan,
 
-1. Ga naar**netwerken**van de **virtuele machine** > en klik op de naam van de vereiste netwerk interface.  ![netwerk interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Ga naar **Virtual machine**  >  **netwerken**van de virtuele machine en klik op de naam van de vereiste netwerk interface.  ![netwerk interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Navigeer naar **IP-configuraties**en klik vervolgens op het veld naam van de vereiste IP-configuratie. ![Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Als u openbaar IP-adres wilt inschakelen, klikt u op **inschakelen**. ![IP inschakelen](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klik op **vereiste instellingen** > configureren**nieuwe maken**. ![Nieuwe maken](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+4. Klik op **vereiste instellingen configureren**  >  **nieuwe maken**. ![Nieuwe maken](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Voer de naam van het open bare adres in, kies de standaard opties voor **SKU** en **toewijzing**en klik vervolgens op **OK**.
 6. Klik nu op **Opslaan**om de gemaakte wijzigingen op te slaan.
 7. Sluit de deel Vensters en navigeer naar **overzicht** sectie van de virtuele machine om verbinding te maken/RDP.
@@ -173,4 +173,4 @@ Om het probleem op te lossen:
 - Problemen met de [RDP-verbinding met de Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) oplossen
 - Problemen met [SSH-verbinding met Linux VM](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) oplossen
 
-Als u meer hulp nodig hebt, plaatst u uw query op [site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) of verlaat u een opmerking aan het einde van dit document. We hebben een actieve community die u kan helpen.
+Als u meer hulp nodig hebt, plaatst u uw query op [micro soft Q&een vraag pagina voor site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) of verlaat u een opmerking aan het einde van dit document. We hebben een actieve community die u kan helpen.

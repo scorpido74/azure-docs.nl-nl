@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f114dd0428e13b3e1a205fea353b38b1f8a6f97
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792121"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835356"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Meer gegevens, items of records ophalen met behulp van paginering in Azure Logic Apps
 
@@ -32,7 +32,7 @@ Hier volgt een lijst met slechts enkele Connect oren waar u de standaard pagina 
 * [Excel](https://docs.microsoft.com/connectors/excel/)
 * [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
 * [IBM DB2](https://docs.microsoft.com/connectors/db2/)
-* [Micro soft teams](https://docs.microsoft.com/connectors/teams/)
+* [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
 * [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
 * [SalesForce](https://docs.microsoft.com/connectors/salesforce/)
 * [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
@@ -62,7 +62,7 @@ Als u wilt bepalen of een actie paginering ondersteunt in de ontwerp functie voo
 
 ## <a name="workflow-definition---pagination"></a>Werk stroom definitie-paginering
 
-Wanneer u paginering inschakelt voor een actie die ondersteuning biedt voor deze mogelijkheid, bevat de werk stroom definitie `"paginationPolicy"` van de logische app `"minimumItemCount"` de eigenschap samen met de `"runtimeConfiguration"` eigenschap in de eigenschap van die actie, bijvoorbeeld:
+Wanneer u paginering inschakelt voor een actie die ondersteuning biedt voor deze mogelijkheid, bevat de werk stroom definitie van de logische app de `"paginationPolicy"` eigenschap samen met de `"minimumItemCount"` eigenschap in de eigenschap van die actie `"runtimeConfiguration"` , bijvoorbeeld:
 
 ```json
 "actions": {
@@ -84,4 +84,4 @@ Wanneer u paginering inschakelt voor een actie die ondersteuning biedt voor deze
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).

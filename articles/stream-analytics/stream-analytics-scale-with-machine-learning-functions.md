@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929040"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835577"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Uw Stream Analytics-taak schalen met de functies Azure Machine Learning Studio (klassiek)
 
@@ -140,7 +140,7 @@ Houd rekening met de volgende factoren om een Stream Analytics-taak te schalen m
 2. De getolerantiede latentie voor de actieve Stream Analytics-taak (en dus de Batch grootte van de Machine Learning aanvragen van de webservice).
 3. De ingerichte Stream Analytics SUs en het aantal Machine Learning aanvragen voor webservices (de aanvullende kosten met betrekking tot de functie).
 
-Een volledig gepartitioneerde Stream Analytics query is als voor beeld gebruikt. Als er een complexere query nodig is, is het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) een fantastische bron om meer hulp te krijgen van het Stream Analytics-team.
+Een volledig gepartitioneerde Stream Analytics query is als voor beeld gebruikt. Als er een complexere query nodig is, is de [pagina van micro soft Q&een vraag voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) een fantastische bron voor het verkrijgen van aanvullende hulp van het Stream Analytics team.
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over Stream Analytics raadpleegt u:

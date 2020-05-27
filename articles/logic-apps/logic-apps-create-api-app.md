@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005254"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834489"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
 
@@ -96,21 +96,21 @@ Laten we dit polling-patroon dus weer toewijzen. De bakker vertegenwoordigt uw a
 
 Hier vindt u de specifieke stappen voor de API die u kunt volgen, zoals beschreven in het perspectief van de API:
 
-1. Wanneer uw API een HTTP-aanvraag voor het starten van het werk krijgt, `202 ACCEPTED` retourneert dan onmiddellijk `location` een HTTP-antwoord met de header die verderop in deze stap wordt beschreven. Met deze reactie kan de Logic Apps Engine weten dat uw API de aanvraag heeft ontvangen, dat de aanvraag lading (gegevens invoer) is geaccepteerd en nu wordt verwerkt. 
+1. Wanneer uw API een HTTP-aanvraag voor het starten van het werk krijgt, retourneert dan onmiddellijk een HTTP- `202 ACCEPTED` antwoord met de `location` header die verderop in deze stap wordt beschreven. Met deze reactie kan de Logic Apps Engine weten dat uw API de aanvraag heeft ontvangen, dat de aanvraag lading (gegevens invoer) is geaccepteerd en nu wordt verwerkt. 
    
    Het `202 ACCEPTED` antwoord moet deze headers bevatten:
    
    * *Vereist*: een `location` header waarmee het absolute pad naar een URL wordt opgegeven waar de Logic Apps Engine de taak status van de API kan controleren
 
-   * *Optioneel*: een `retry-after` header waarmee het aantal seconden wordt opgegeven dat de engine moet wachten voordat de URL `location` voor de taak status wordt gecontroleerd. 
+   * *Optioneel*: een `retry-after` header waarmee het aantal seconden wordt opgegeven dat de engine moet wachten voordat de `location` URL voor de taak status wordt gecontroleerd. 
 
-     Standaard wordt elke 20 seconden gecontroleerd door de engine. Als u een ander interval wilt opgeven, `retry-after` neemt u de koptekst en het aantal seconden op voor de volgende poll.
+     Standaard wordt elke 20 seconden gecontroleerd door de engine. Als u een ander interval wilt opgeven, neemt u de `retry-after` koptekst en het aantal seconden op voor de volgende poll.
 
-2. Nadat de opgegeven tijd is verstreken, wordt de URL door de `location` Logic Apps-Engine gecontroleerd om de taak status te controleren. Uw API moet deze controles uitvoeren en deze antwoorden retour neren:
+2. Nadat de opgegeven tijd is verstreken, wordt de URL door de Logic Apps-Engine gecontroleerd `location` om de taak status te controleren. Uw API moet deze controles uitvoeren en deze antwoorden retour neren:
    
-   * Als de taak is voltooid, retourneert u een `200 OK` http-antwoord, samen met de reactie lading (invoer voor de volgende stap).
+   * Als de taak is voltooid, retourneert u een HTTP- `200 OK` antwoord, samen met de reactie lading (invoer voor de volgende stap).
 
-   * Als de taak nog wordt verwerkt, retour neren we `202 ACCEPTED` nog een HTTP-antwoord, maar met dezelfde headers als het oorspronkelijke antwoord.
+   * Als de taak nog wordt verwerkt, retour neren we nog een HTTP- `202 ACCEPTED` antwoord, maar met dezelfde headers als het oorspronkelijke antwoord.
 
 Wanneer uw API dit patroon volgt, hoeft u niets te doen in de werk stroom definitie van de logische app om door te gaan met het controleren van de taak status. Wanneer de engine een HTTP- `202 ACCEPTED` antwoord en een geldige `location` header ontvangt, respecteert de engine het asynchrone patroon en `location` wordt de header gecontroleerd totdat uw API een niet-202-antwoord retourneert.
 
@@ -130,9 +130,9 @@ Wanneer de taak is voltooid, gebruikt uw API de URL om de engine op de hoogte te
 
 Stel voor dit patroon twee eind punten in op uw controller: `subscribe` en`unsubscribe`
 
-*  `subscribe`eind punt: wanneer de uitvoering van de API de actie in de werk stroom bereikt, roept `subscribe` de Logic Apps-Engine het eind punt aan. Deze stap zorgt ervoor dat de logische app een call back-URL maakt die uw API opslaat, en wacht vervolgens op de retour aanroep vanuit uw API wanneer het werk is voltooid. Uw API roept vervolgens terug met een HTTP POST naar de URL en geeft alle geretourneerde inhoud en kopteksten als invoer door aan de logische app.
+*  `subscribe`eind punt: wanneer de uitvoering van de API de actie in de werk stroom bereikt, roept de Logic Apps-Engine het `subscribe` eind punt aan. Deze stap zorgt ervoor dat de logische app een call back-URL maakt die uw API opslaat, en wacht vervolgens op de retour aanroep vanuit uw API wanneer het werk is voltooid. Uw API roept vervolgens terug met een HTTP POST naar de URL en geeft alle geretourneerde inhoud en kopteksten als invoer door aan de logische app.
 
-* `unsubscribe`eind punt: als de uitvoering van de logische app wordt geannuleerd, roept de Logic Apps `unsubscribe` -engine het eind punt aan. Uw API kan de registratie van de call back-URL vervolgens ongedaan maken en alle processen zo nodig stoppen.
+* `unsubscribe`eind punt: als de uitvoering van de logische app wordt geannuleerd, roept de Logic Apps-Engine het `unsubscribe` eind punt aan. Uw API kan de registratie van de call back-URL vervolgens ongedaan maken en alle processen zo nodig stoppen.
 
 ![Actie patroon van webhook](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -140,9 +140,9 @@ Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van
 
 Hier volgen enkele andere tips en opmerkingen:
 
-* Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
+* Als u de URL voor terugbellen wilt door geven, kunt u `@listCallbackUrl()` indien nodig de werk stroom functie in een van de vorige velden gebruiken.
 
-* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het `unsubscribe` eind punt niet aan te roepen nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
+* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het eind punt niet aan te roepen `unsubscribe` nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
 
 <a name="triggers"></a>
 
@@ -166,22 +166,22 @@ Hier vindt u specifieke stappen voor een polling trigger, zoals beschreven in he
 | Hebt u nieuwe gegevens of gebeurtenissen gevonden?  | API-antwoord | 
 | ------------------------- | ------------ |
 | Gevonden | Een HTTP- `200 OK` status retour neren met de nettolading van het antwoord (invoer voor de volgende stap). <br/>Dit antwoord maakt een exemplaar van een logische app en start de werk stroom. | 
-| Niet gevonden | Een HTTP- `202 ACCEPTED` status retour neren `location` met een koptekst `retry-after` en een header. <br/>Voor triggers moet de `location` header ook een `triggerState` query parameter bevatten, die meestal een ' tijds tempel ' is. Uw API kan deze id gebruiken om de laatste keer dat de logische app werd geactiveerd, bij te houden. | 
+| Niet gevonden | Een HTTP- `202 ACCEPTED` status retour neren met een `location` koptekst en een `retry-after` header. <br/>Voor triggers moet de `location` header ook een `triggerState` query parameter bevatten, die meestal een ' tijds tempel ' is. Uw API kan deze id gebruiken om de laatste keer dat de logische app werd geactiveerd, bij te houden. | 
 ||| 
 
 Als u bijvoorbeeld uw service regel matig wilt controleren op nieuwe bestanden, kunt u een polling trigger maken die het volgende gedrag heeft:
 
-| Aanvraag bevat `triggerState`? | API-antwoord | 
+| Aanvraag bevat `triggerState` ? | API-antwoord | 
 | -------------------------------- | -------------| 
-| Nee | Retour neer een `202 ACCEPTED` HTTP-status `location` plus een `triggerState` header met ingesteld op de huidige tijd `retry-after` en het interval tot 15 seconden. | 
-| Ja | Controleer uw service op bestanden die worden toegevoegd `DateTime` na `triggerState`de for. | 
+| Nee | Retour neer een HTTP- `202 ACCEPTED` status plus een `location` header met `triggerState` ingesteld op de huidige tijd en het `retry-after` interval tot 15 seconden. | 
+| Ja | Controleer uw service op bestanden die worden toegevoegd na de `DateTime` for `triggerState` . | 
 ||| 
 
 | Aantal gevonden bestanden | API-antwoord | 
 | --------------------- | -------------| 
-| Eén bestand | Retour neer een `200 OK` HTTP-status en de nettolading `triggerState` `DateTime` van de inhoud, werk de voor het geretourneerde `retry-after` bestand bij en stel het interval in op 15 seconden. | 
-| Meerdere bestanden | Retour neer één bestand per keer en een HTTP `200 OK` -status, `triggerState`update en stel het `retry-after` interval in op 0 seconden. </br>Met deze stappen kan de engine weten dat er meer gegevens beschikbaar zijn en dat de engine onmiddellijk de gegevens van de URL in de `location` header moet aanvragen. | 
-| Geen bestanden | Retour neer een `202 ACCEPTED` HTTP-status, `triggerState`Wijzig niet en stel `retry-after` het interval in op 15 seconden. | 
+| Eén bestand | Retour neer een HTTP- `200 OK` status en de nettolading van de inhoud, werk de `triggerState` `DateTime` voor het geretourneerde bestand bij en stel het `retry-after` interval in op 15 seconden. | 
+| Meerdere bestanden | Retour neer één bestand per keer en een HTTP- `200 OK` status, update en `triggerState` Stel het `retry-after` interval in op 0 seconden. </br>Met deze stappen kan de engine weten dat er meer gegevens beschikbaar zijn en dat de engine onmiddellijk de gegevens van de URL in de header moet aanvragen `location` . | 
+| Geen bestanden | Retour neer een HTTP- `202 ACCEPTED` status, Wijzig niet `triggerState` en stel het `retry-after` interval in op 15 seconden. | 
 ||| 
 
 > [!TIP]
@@ -192,11 +192,11 @@ Als u bijvoorbeeld uw service regel matig wilt controleren op nieuwe bestanden, 
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Wacht en luister naar nieuwe gegevens of gebeurtenissen met het trigger patroon webhook
 
 Een webhook-trigger is een *Push trigger* waarmee wordt gewacht op nieuwe gegevens of gebeurtenissen op uw service-eind punt. Als nieuwe gegevens of een gebeurtenis aan de opgegeven voor waarde voldoet, wordt de trigger geactiveerd en wordt er een logische app-instantie gemaakt, die de gegevens vervolgens verwerkt als invoer.
-Webhook-triggers functioneren op dezelfde manier als de [webhook-acties](#webhook-actions) die eerder in dit onderwerp zijn beschreven `subscribe` en `unsubscribe` worden ingesteld met en eind punten. 
+Webhook-triggers functioneren op dezelfde manier als de [webhook-acties](#webhook-actions) die eerder in dit onderwerp zijn beschreven en worden ingesteld met `subscribe` en `unsubscribe` eind punten. 
 
-* `subscribe`eind punt: wanneer u een webhook-trigger toevoegt en opslaat in uw logische app, wordt het `subscribe` eind punt aangeroepen door de Logic Apps Engine. Deze stap zorgt ervoor dat de logische app een call back-URL maakt die uw API opslaat. Wanneer er nieuwe gegevens zijn of een gebeurtenis die voldoet aan de opgegeven voor waarde, wordt uw API teruggebeld met een HTTP POST naar de URL. De nettolading van de inhoud en de headers worden door gegeven als invoer voor de logische app.
+* `subscribe`eind punt: wanneer u een webhook-trigger toevoegt en opslaat in uw logische app, wordt het eind punt aangeroepen door de Logic Apps Engine `subscribe` . Deze stap zorgt ervoor dat de logische app een call back-URL maakt die uw API opslaat. Wanneer er nieuwe gegevens zijn of een gebeurtenis die voldoet aan de opgegeven voor waarde, wordt uw API teruggebeld met een HTTP POST naar de URL. De nettolading van de inhoud en de headers worden door gegeven als invoer voor de logische app.
 
-* `unsubscribe`eind punt: als de webhook-trigger of de volledige logische app wordt verwijderd, roept de `unsubscribe` Logic Apps-Engine het eind punt aan. Uw API kan de registratie van de call back-URL vervolgens ongedaan maken en alle processen zo nodig stoppen.
+* `unsubscribe`eind punt: als de webhook-trigger of de volledige logische app wordt verwijderd, roept de Logic Apps-Engine het `unsubscribe` eind punt aan. Uw API kan de registratie van de call back-URL vervolgens ongedaan maken en alle processen zo nodig stoppen.
 
 ![Patroon van de webhook-trigger](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
@@ -204,11 +204,11 @@ Momenteel biedt de Logic app Designer geen ondersteuning voor het detecteren van
 
 Hier volgen enkele andere tips en opmerkingen:
 
-* Als u de URL voor terugbellen wilt door geven, `@listCallbackUrl()` kunt u indien nodig de werk stroom functie in een van de vorige velden gebruiken.
+* Als u de URL voor terugbellen wilt door geven, kunt u `@listCallbackUrl()` indien nodig de werk stroom functie in een van de vorige velden gebruiken.
 
 * Om te voor komen dat dezelfde gegevens meerdere keren worden verwerkt, moet de trigger gegevens opschonen die al zijn gelezen en zijn door gegeven aan de logische app.
 
-* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het `unsubscribe` eind punt niet aan te roepen nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
+* Als u zowel de logische app als de geabonneerde service hebt, hoeft u het eind punt niet aan te roepen `unsubscribe` nadat de call back-URL is aangeroepen. Anders moet de Logic Apps runtime het `unsubscribe` eind punt aanroepen om aan te geven dat er geen aanroepen meer worden verwacht en dat het opschonen van resources aan de server zijde is toegestaan.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Verbeter de beveiliging van aanroepen naar uw Api's vanuit Logic apps
 
@@ -226,9 +226,9 @@ Als u uw aangepaste Api's beschikbaar wilt maken voor alle gebruikers in Logic A
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Voor specifieke hulp bij aangepaste Api's, neemt [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)u contact op met.
+* Voor specifieke hulp bij aangepaste Api's, neemt u contact op met [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 
 * Ter verbetering van Logic Apps kunt u stemmen op ideeën of ideeën indienen op de [site voor gebruikersfeedback van Logic Apps](https://aka.ms/logicapps-wish). 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583945"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835968"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -41,7 +41,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 > [!IMPORTANT]
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: MSDN- `https://stackoverflow.com` [forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight). Ook Apache-projecten hebben project sites `https://apache.org`op.
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [micro soft Q&een vraag pagina voor HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) `https://stackoverflow.com` . Ook Apache-projecten hebben project sites op `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>Informatie over de standaard installatie van python
 
@@ -105,7 +105,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het hoofd knooppunt van het `/usr/bin/anaconda/bin/conda info -e` cluster en uitvoeren om alle virtuele omgevingen weer te geven.
+    Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het hoofd knooppunt van het cluster en uitvoeren `/usr/bin/anaconda/bin/conda info -e` om alle virtuele omgevingen weer te geven.
 
 3. Wijzig Spark-en livy-configuraties en ga naar de gemaakte virtuele omgeving.
 
@@ -146,9 +146,9 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
 ## <a name="known-issue"></a>Bekend probleem
 
-Er is een bekende fout voor Anaconda- `4.7.11`versie `4.7.12`, en `4.8.0`. Als uw script acties zijn vastgelopen in `"Collecting package metadata (repodata.json): ...working..."` en mislukken met. `"Python script has been killed due to timeout after waiting 3600 secs"` U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
+Er is een bekende fout voor Anaconda `4.7.11` -versie, `4.7.12` en `4.8.0` . Als uw script acties zijn vastgelopen in `"Collecting package metadata (repodata.json): ...working..."` en mislukken met `"Python script has been killed due to timeout after waiting 3600 secs"` . U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
 
-Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het knoop `/usr/bin/anaconda/bin/conda --v`punt cluster header en uitvoeren.
+Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het knoop punt cluster header en uitvoeren `/usr/bin/anaconda/bin/conda --v` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

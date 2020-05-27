@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc7babdb7b64b12ecc9ef4590a91c7a3683a6558
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799789"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834557"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Een e-mailbericht vanuit een runbook verzenden
 
@@ -138,7 +138,7 @@ Als u wilt controleren of het runbook wordt uitgevoerd, kunt u de stappen volgen
 
 Als u uw test-e-mailbericht in eerste instantie niet ziet, controleert u de mappen **Ongewenste e-mail** en **Spam**.
 
-## <a name="clean-up-after-the-email-operation"></a>Opschonen na de e-mailbewerking
+## <a name="clean-up-resources-after-the-email-operation"></a>Resources opschonen na de e-mailbewerking
 
 1. Wanneer u het runbook niet meer nodig hebt, selecteert u het in de lijst met runbooks en klikt u op **Verwijderen**.
 
@@ -152,7 +152,6 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure PowerShell-modules bijwerken](automation-update-azure-modules.md)
-* [Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken](automation-manage-send-joblogs-log-analytics.md)
-* [Een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)
-* [Problemen met runbooks oplossen](./troubleshoot/runbooks.md)
+* Raadpleeg [Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken](automation-manage-send-joblogs-log-analytics.md) als u runbook-taakgegevens wilt verzenden naar uw Log Analytics-werkruimte.
+* Raadpleeg [Een waarschuwing gebruiken om een Azure Automation-runbook te activeren](automation-create-alert-triggered-runbook.md) als u metrische gegevens en logboeken op basisniveau wilt bewaken.
+* Raadpleeg [Problemen met runbooks oplossen](./troubleshoot/runbooks.md) om problemen op te lossen die tijdens runbook-bewerkingen ontstaan.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c47eebc965319575020eace87825af9d9ad5a18
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74421220"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835016"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Bestaande data bases migreren om uit te schalen
 
@@ -161,13 +161,13 @@ De hulpprogram ma's bevinden zich ook in GitHub: [Azure/Elastic-db-tools](https:
 
 Gebruik het hulp programma voor splitsen en samen voegen om gegevens van of naar een model met meerdere tenants te verplaatsen naar één Tenant model. Zie het [hulp programma splitsing samen voegen](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Zie voor informatie over algemene gegevensarchitectuurpatronen van multitenant software as a service (SaaS)-databasetoepassingen, [Ontwerppatronen voor multitenant SaaS-toepassingen met Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Vragen en functie aanvragen
 
-Voor vragen kunt u het [SQL database-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functie aanvragen toevoegen aan het [SQL database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
+Gebruik voor vragen de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) en voeg deze voor functie aanvragen toe aan het [forum SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png
