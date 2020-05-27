@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681296"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844502"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Een Azure Remote Rendering-account maken
 
@@ -48,7 +48,7 @@ Bekijk de [lijst met beschik bare regio's](../reference/regions.md) voor het inv
 
 De waarden voor **`arrAccountId`** en **`arrAccountKey`** zijn te vinden in de portal, zoals beschreven in de volgende stappen:
 
-* Ga naar [Azure Portal](https://www.portal.azure.com)
+* Ga naar de [Azure Portal](https://www.portal.azure.com)
 * Zoek uw **"externe rendering-account"** -deze moet zich in de lijst met **recente resources** bevinden. U kunt er ook naar zoeken in de zoek balk bovenin. In dat geval moet u ervoor zorgen dat het abonnement dat u wilt gebruiken, is geselecteerd in het standaard abonnements filter (filter pictogram naast zoek balk):
 
 ![Abonnements filter](./media/azure-subscription-filter.png)
@@ -81,9 +81,12 @@ Hierbij wordt ervan uitgegaan dat u een opslag account hebt. Ga naar het opslag 
 
 ![IAM van opslag account](./media/azure-add-role-assignment.png)
 
-* De eerste rol die moet worden toegewezen, is **eigenaar** , zoals wordt weer gegeven in de bovenstaande scherm afbeelding. 
-* Selecteer **extern rendering-account** in de ***wijs toegang toe aan** de vervolg keuzelijst.
+* De eerste rol die moet worden toegewezen, is **eigenaar** , zoals wordt weer gegeven in de bovenstaande scherm afbeelding.
+* Selecteer **extern rendering-account** in de vervolg keuzelijst **toegang toewijzen aan** .
 * Selecteer uw abonnement en het account voor externe rendering in de laatste vervolg keuzelijst.
+
+> [!WARNING]
+> Als uw externe rendering-account niet wordt weer gegeven, raadpleegt u de [sectie problemen oplossen](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Herhaal nieuwe rollen nog twee keer voor de respectievelijke selecties in de vervolg keuzelijst **rol** :
 * **Inzender voor opslagaccounts**

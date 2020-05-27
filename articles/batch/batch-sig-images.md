@@ -1,14 +1,14 @@
 ---
 title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
-description: Maak een batch-pool met de galerie gedeelde afbeeldingen om aangepaste installatie kopieën in te richten op reken knooppunten die de software en gegevens bevatten die u nodig hebt voor uw toepassing. Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
-ms.topic: article
-ms.date: 08/28/2019
-ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+description: Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780506"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844485"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -24,50 +24,51 @@ Met een gedeelde installatie kopie bespaart u tijd bij het voorbereiden van de r
 
 Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigureerd, kan verschillende voor delen bieden:
 
-* **Gebruik dezelfde installatie kopieën in de regio's.** U kunt replica's van gedeelde installatie kopieën maken in verschillende regio's zodat al uw Pools gebruikmaken van dezelfde installatie kopie.
-* **Het besturings systeem (OS) configureren.** U kunt de configuratie van de besturingssysteem schijf van de installatie kopie aanpassen.
-* **Installeer toepassingen vooraf.** Het vooraf installeren van toepassingen op de besturingssysteem schijf is efficiënter en minder fout gevoelig dan het installeren van toepassingen na het inrichten van de reken knooppunten met een begin taak.
-* **Kopieer een grote hoeveelheid gegevens eenmaal.** Statische gegevens delen van de beheerde gedeelde installatie kopie maken door deze te kopiëren naar de gegevens schijven van een beheerde installatie kopie. Dit hoeft slechts één keer te worden gedaan en er worden gegevens beschikbaar gemaakt voor elk knoop punt van de groep.
-* **Verg root Pools tot grotere grootten.** Met de galerie gedeelde afbeeldingen kunt u met uw aangepaste installatie kopieën grote groepen maken, samen met meer gedeelde afbeeldings replica's.
-* **Betere prestaties dan aangepaste installatie kopie.** Als u gedeelde installatie kopieën gebruikt, is de tijd die nodig is om de groep te bereiken, tot 25% sneller en is de latentie van de virtuele machine niet langer dan 30%.
-* **Installatie kopie versie en groepering voor eenvoudiger beheer.** De definitie van de groepering van installatie kopieën bevat informatie over waarom de installatie kopie is gemaakt, waarvoor het besturings systeem is en informatie over het gebruik van de installatie kopie. Door installatie kopieën te groeperen kunt u het beheer van afbeeldingen vereenvoudigen. Zie [afbeeldings definities](../virtual-machines/windows/shared-image-galleries.md#image-definitions)voor meer informatie.
+- **Gebruik dezelfde installatie kopieën in de regio's.** U kunt replica's van gedeelde installatie kopieën maken in verschillende regio's zodat al uw Pools gebruikmaken van dezelfde installatie kopie.
+- **Het besturings systeem (OS) configureren.** U kunt de configuratie van de besturingssysteem schijf van de installatie kopie aanpassen.
+- **Installeer toepassingen vooraf.** Het vooraf installeren van toepassingen op de besturingssysteem schijf is efficiënter en minder fout gevoelig dan het installeren van toepassingen na het inrichten van de reken knooppunten met een begin taak.
+- **Kopieer een grote hoeveelheid gegevens eenmaal.** Statische gegevens delen van de beheerde gedeelde installatie kopie maken door deze te kopiëren naar de gegevens schijven van een beheerde installatie kopie. Dit hoeft slechts één keer te worden gedaan en er worden gegevens beschikbaar gemaakt voor elk knoop punt van de groep.
+- **Verg root Pools tot grotere grootten.** Met de galerie gedeelde afbeeldingen kunt u met uw aangepaste installatie kopieën grote groepen maken, samen met meer gedeelde afbeeldings replica's.
+- **Betere prestaties dan aangepaste installatie kopie.** Als u gedeelde installatie kopieën gebruikt, is de tijd die nodig is om de groep te bereiken, tot 25% sneller en is de latentie van de virtuele machine niet langer dan 30%.
+- **Installatie kopie versie en groepering voor eenvoudiger beheer.** De definitie van de groepering van installatie kopieën bevat informatie over waarom de installatie kopie is gemaakt, waarvoor het besturings systeem is en informatie over het gebruik van de installatie kopie. Door installatie kopieën te groeperen kunt u het beheer van afbeeldingen vereenvoudigen. Zie [afbeeldings definities](../virtual-machines/windows/shared-image-galleries.md#image-definitions)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!NOTE]
 > U moet zich verifiëren met Azure AD. Als u gedeelde-sleutel verificatie gebruikt, krijgt u een verificatie fout.  
 
-* **Een Azure Batch-account.** Als u een batch-account wilt maken, raadpleegt u de batch-Quick starts met behulp van de [Azure Portal](quick-create-portal.md) of [Azure cli](quick-create-cli.md).
+- **Een Azure Batch-account.** Als u een batch-account wilt maken, raadpleegt u de batch-Quick starts met behulp van de [Azure Portal](quick-create-portal.md) of [Azure cli](quick-create-cli.md).
 
-* **Een afbeelding van de galerie met gedeelde afbeeldingen**. Als u een gedeelde installatie kopie wilt maken, moet u een beheerde installatie kopie bron hebben of maken. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven. Zie [een beheerde installatie kopie voorbereiden](#prepare-a-managed-image)voor meer informatie.
+- **Een afbeelding van de galerie met gedeelde afbeeldingen**. Als u een gedeelde installatie kopie wilt maken, moet u een beheerde installatie kopie bron hebben of maken. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven.
 
 > [!NOTE]
-> De gedeelde installatie kopie moet zich in hetzelfde abonnement als het batch-account bevallen. De gedeelde installatie kopie kan zich in verschillende regio's bevinden, zolang deze replica's bevat in dezelfde regio als uw batch-account.
+> De gedeelde installatie kopie moet zich in hetzelfde abonnement als het batch-account bevallen. De installatie kopie kan zich in verschillende regio's bevinden, zolang deze replica's bevat in dezelfde regio als uw batch-account.
 
-## <a name="prepare-a-managed-image"></a>Een beheerde installatie kopie voorbereiden
+## <a name="prepare-a-custom-image"></a>Een aangepaste installatie kopie voorbereiden
 
-In azure kunt u een beheerde installatie kopie voorbereiden vanaf:
+In azure kunt u een aangepaste installatie kopie voorbereiden van:
 
-* Moment opnamen van het besturings systeem en de gegevens schijven van een virtuele machine van Azure
-* Een gegeneraliseerde Azure-VM met beheerde schijven
-* Een gegeneraliseerde on-premises VHD die is geüpload naar de Cloud
+- Moment opnamen van het besturings systeem en de gegevens schijven van een virtuele machine van Azure
+- Een gegeneraliseerde Azure-VM met beheerde schijven
+- Een gegeneraliseerde on-premises VHD die is geüpload naar de Cloud
 
-Als u batch-Pools betrouwbaar wilt schalen met een aangepaste installatie kopie, kunt u het beste een beheerde installatie kopie maken met *alleen* de eerste methode: met behulp van moment opnamen van de schijven van de virtuele machine. Raadpleeg de volgende stappen om een virtuele machine voor te bereiden, een moment opname te maken en een installatie kopie van de moment opname.
+> [!NOTE]
+> Op dit moment ondersteunt batch alleen gegeneraliseerde gedeelde installatie kopieën. U kunt op dit moment geen aangepaste installatie kopie groep maken van een speciale gedeelde installatie kopie.
+
+De volgende stappen laten zien hoe u een virtuele machine voorbereidt, een moment opname maakt en een installatie kopie van de moment opname kunt maken.
 
 ### <a name="prepare-a-vm"></a>Een virtuele machine voorbereiden
 
 Als u een nieuwe VM voor de installatie kopie maakt, gebruikt u een Azure Marketplace-installatie kopie van de eerste partij die door batch wordt ondersteund als basis installatie kopie voor uw beheerde installatie kopie. Alleen installatie kopieën van de eerste partij kunnen worden gebruikt als basis installatie kopie. Voor een volledige lijst met voor beelden van Azure Marketplace-installatie kopieën die door Azure Batch worden ondersteund, raadpleegt u de [List node agent sku's](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) -bewerking.
 
 > [!NOTE]
-> U kunt geen afbeelding van derden gebruiken die aanvullende licentie-en aankoop voorwaarden als uw basis installatie kopie heeft. Zie de richt lijnen voor [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) -of [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) -vm's voor meer informatie over deze installatie kopieën voor Marketplace.
+> U kunt geen afbeelding van derden gebruiken die aanvullende licentie-en aankoop voorwaarden als uw basis installatie kopie heeft. Zie de richt lijnen voor [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -of [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -vm's voor meer informatie over deze installatie kopieën voor Marketplace.
 
-* Zorg ervoor dat de virtuele machine is gemaakt met een beheerde schijf. Dit is de standaard instelling voor opslag wanneer u een VM maakt.
-* Installeer geen Azure-extensies, zoals de aangepaste script extensie, op de VM. Als de installatie kopie een vooraf geïnstalleerde extensie bevat, kan Azure problemen ondervinden bij het implementeren van de batch-pool.
-* Wanneer u gekoppelde gegevens schijven gebruikt, moet u de schijven koppelen en Format teren vanuit een VM om ze te gebruiken.
-* Zorg ervoor dat de basis installatie kopie van het besturings systeem dat u opgeeft, gebruikmaakt van het standaard tijdelijke station. De batch-knooppunt agent verwacht momenteel het standaard tijdelijke station.
-* Zodra de virtuele machine wordt uitgevoerd, maakt u verbinding met de VM via RDP (voor Windows) of SSH (voor Linux). Installeer de benodigde software of kopieer de gewenste gegevens.  
+- Zorg ervoor dat de virtuele machine is gemaakt met een beheerde schijf. Dit is de standaard instelling voor opslag wanneer u een VM maakt.
+- Installeer geen Azure-extensies, zoals de aangepaste script extensie, op de VM. Als de installatie kopie een vooraf geïnstalleerde extensie bevat, kan Azure problemen ondervinden bij het implementeren van de batch-pool.
+- Wanneer u gekoppelde gegevens schijven gebruikt, moet u de schijven koppelen en Format teren vanuit een VM om ze te gebruiken.
+- Zorg ervoor dat de basis installatie kopie van het besturings systeem dat u opgeeft, gebruikmaakt van het standaard tijdelijke station. De batch-knooppunt agent verwacht momenteel het standaard tijdelijke station.
+- Zodra de virtuele machine wordt uitgevoerd, maakt u verbinding met de VM via RDP (voor Windows) of SSH (voor Linux). Installeer de benodigde software of kopieer de gewenste gegevens.  
 
 ### <a name="create-a-vm-snapshot"></a>Een VM-moment opname maken
 
@@ -212,10 +213,11 @@ Gebruik de volgende stappen om een groep te maken op basis van een gedeelde inst
 
 Als u van plan bent om een pool met honderden of duizenden Vm's of meer te maken met behulp van een gedeelde installatie kopie, gebruikt u de volgende richt lijnen.
 
-* **Replica nummers van de galerie met gedeelde afbeeldingen.**  Voor elke groep met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld een groep met 3000 Vm's maakt, moet u ten minste vijf replica's van uw installatie kopie gebruiken. We suggereren altijd dat er meer replica's dan minimale vereisten zijn voor betere prestaties.
+- **Replica nummers van de galerie met gedeelde afbeeldingen.**  Voor elke groep met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld een groep met 3000 Vm's maakt, moet u ten minste vijf replica's van uw installatie kopie gebruiken. We suggereren altijd dat er meer replica's dan minimale vereisten zijn voor betere prestaties.
 
-* **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald), verhoogt u de `resizeTimeout` eigenschap van de pool, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
+- **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald), verhoogt u de `resizeTimeout` eigenschap van de pool, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [batch service workflow en resources](batch-service-workflow-features.md)voor een uitgebreid overzicht van batch.
+- Zie [batch service workflow en resources](batch-service-workflow-features.md)voor een uitgebreid overzicht van batch.
+- Meer informatie over de [Galerie met gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md).

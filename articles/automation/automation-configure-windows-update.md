@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715775"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837158"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Windows Update instellingen voor Azure Automation configureren Updatebeheer
 
@@ -62,4 +62,4 @@ Als u computers wilt beperken tot de interne Update service, stelt u [geen verbi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)
+Plan een update-implementatie met behulp van de instructies in [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md).

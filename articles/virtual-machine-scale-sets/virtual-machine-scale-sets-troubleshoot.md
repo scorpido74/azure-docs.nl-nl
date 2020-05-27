@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 11/16/2017
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125142"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837226"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
 **Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
@@ -73,7 +73,7 @@ Hieronder vindt u enkele dingen die u moet overwegen:
     Als er geen gegevens zijn, wordt het probleem veroorzaakt door de diagnostische uitbrei ding die in de Vm's wordt uitgevoerd. Als de gegevens daar zich bevinden, is er een probleem met uw schaal regels of met de Insights-service. Controleer de [status van Azure](https://azure.microsoft.com/status/).
     
     Als u deze stappen hebt uitgevoerd, kunt u, als u nog steeds problemen hebt met automatisch schalen, de volgende resources proberen: 
-    * Lees de forums op [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)of [stack overflow](https://stackoverflow.com/questions/tagged/azure) 
+    * Lees de forums op [micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)of [stack overflow](https://stackoverflow.com/questions/tagged/azure) 
     * Een ondersteunings oproep registreren. Bereid u voor op het delen van de sjabloon en een weer gave van uw prestatie gegevens.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
