@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699600"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860766"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory visueel bewaken
 
@@ -142,7 +142,7 @@ Als u op het pictogram klikt, wordt een verbruiks rapport geopend met de resourc
 
 ![Verbruik bewaken](media/monitor-visually/monitor-consumption-2.png)
 
-U kunt deze waarden koppelen aan de [Azure-prijs calculator]. ( https://azure.microsoft.com/pricing/details/data-factory/) voor het schatten van de kosten van de pijplijn uitvoering. Zie [prijs](pricing-concepts.md)informatie voor meer informatie over Azure Data Factory prijzen.
+U kunt deze waarden in de [Azure-prijs calculator](https://azure.microsoft.com/pricing/details/data-factory/) aansluiten om de kosten van de pijplijn uitvoering te schatten. Zie [prijs](pricing-concepts.md)informatie voor meer informatie over Azure Data Factory prijzen.
 
 > [!NOTE]
 > Deze waarden die worden geretourneerd door de prijs calculator is een schatting. Dit geeft niet het exacte bedrag weer dat wordt gefactureerd door Azure Data Factory 
@@ -170,7 +170,7 @@ Selecteer het **informatie** pictogram linksonder. Selecteer vervolgens rond **l
 
 U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer **bewakings**  >  **waarschuwingen & metrische gegevens** op de pagina Data Factory controle om aan de slag te gaan.
 
-![Pagina Data Factory-monitor](media/monitor-visually/alerts01.png)
+![Pagina Data Factory-monitor](media/monitor-visually/start-page.png)
 
 Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten voor deze functie:
 
@@ -180,31 +180,31 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
 1.  Selecteer **nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
-    ![Knop nieuwe waarschuwings regel](media/monitor-visually/alerts02.png)
+    ![Knop nieuwe waarschuwings regel](media/monitor-visually/new-alerts.png)
 
 1.  Geef de naam van de regel op en selecteer de ernst van de waarschuwing.
 
-    ![Vakken voor naam en ernst van de regel](media/monitor-visually/alerts03.png)
+    ![Vakken voor naam en ernst van de regel](media/monitor-visually/name-and-severity.png)
 
 1.  Selecteer de waarschuwings criteria.
 
-    ![Vak voor doel criteria](media/monitor-visually/alerts04.png)
+    ![Vak voor doel criteria](media/monitor-visually/add-criteria-1.png)
 
-    ![Lijst met criteria](media/monitor-visually/alerts05.png)
+    ![Lijst met criteria](media/monitor-visually/add-criteria-2.png)
 
 1.  De waarschuwings logica configureren. U kunt een waarschuwing maken voor de geselecteerde metrische gegevens voor alle pijp lijnen en bijbehorende activiteiten. U kunt ook een bepaald activiteitstype, de naam van de activiteit, de naam van de pijp lijn of het type fout selecteren.
 
-    ![Opties voor het configureren van waarschuwings logica](media/monitor-visually/alerts06.png)
+    ![Opties voor het configureren van waarschuwings logica](media/monitor-visually/alert-logic.png)
 
 1.  E-mail-, SMS-, push-en voicemail meldingen configureren voor de waarschuwing. Een actie groep maken of een bestaande kiezen, voor de waarschuwings meldingen.
 
-    ![Opties voor het configureren van meldingen](media/monitor-visually/alerts07.png)
+    ![Opties voor het configureren van meldingen](media/monitor-visually/configure-notification-1.png)
 
-    ![Opties voor het toevoegen van een melding](media/monitor-visually/alerts08.png)
+    ![Opties voor het toevoegen van een melding](media/monitor-visually/configure-notification-2.png)
 
 1.  De waarschuwings regel maken.
 
-    ![Opties voor het maken van een waarschuwings regel](media/monitor-visually/alerts09.png)
+    ![Opties voor het maken van een waarschuwings regel](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

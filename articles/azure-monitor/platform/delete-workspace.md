@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2020
-ms.openlocfilehash: 5ab71ee67b66cacbcd1b23fa35d6f424021fa9cc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.date: 05/26/2020
+ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757509"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860661"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -45,7 +45,7 @@ U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.mic
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Selecteer in het Azure Portal **alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 3. Selecteer een werk ruimte in de lijst met Log Analytics-werk ruimten en klik vervolgens op **verwijderen** boven in het middelste deel venster.
 4. Er wordt een bevestigings pagina weer gegeven waarin de gegevens opname in de afgelopen week wordt weer gegeven in de werk ruimte. Typ de naam van de werk ruimte die u wilt bevestigen en klik vervolgens op **verwijderen**.
@@ -57,16 +57,6 @@ U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.mic
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
-### <a name="troubleshooting"></a>Problemen oplossen
-
-U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimte te verwijderen.<br>
-Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
-* De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
-* De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
-   1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werk ruimte.
-   2. Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
-   3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.
-
 ## <a name="permanent-workspace-delete"></a>Permanente werk ruimte verwijderen
 De methode voor het zacht verwijderen past mogelijk niet in sommige scenario's zoals ontwikkelen en testen, waarbij u een implementatie met dezelfde instellingen en werkruimte naam moet herhalen. In dergelijke gevallen kunt u uw werk ruimte permanent verwijderen en de periode voor voorlopig verwijderen negeren. Met de bewerking permanent verwijderen van werk ruimte wordt de naam van de werk ruimte vrijgegeven en kunt u een nieuwe werk ruimte maken met dezelfde naam.
 
@@ -74,22 +64,21 @@ De methode voor het zacht verwijderen past mogelijk niet in sommige scenario's z
 > [!IMPORTANT]
 > Gebruik de permanente bewerking voor het verwijderen van werk ruimten met een waarschuwing omdat het onomkeerbaar is en u de werk ruimte en de gegevens niet kunt herstellen.
 
-Het permanent verwijderen van de werk ruimte kan momenteel worden uitgevoerd via REST API.
+Als u uw werk ruimte permanent wilt verwijderen, gebruikt u de [werk ruimten – rest-aanvraag verwijderen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) met een Force-tag:
 
-> [!NOTE]
-> Elke API-aanvraag moet een Bearer-autorisatie token in de aanvraag header bevatten.
->
-> U kunt het token verkrijgen met behulp van:
-> - [App-registraties](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
-> - Ga in de browser naar Azure Portal met behulp van de console van de ontwikkelaar (F12). Zoek in een van de **batch?** instanties voor de verificatie reeks onder **aanvraag headers**. Dit is de patroon *autorisatie: Bearer <token> *. Kopieer en voeg dit toe aan uw API-oproep, zoals wordt weer gegeven in de voor beelden.
-> - Ga naar de site van de Azure REST-documentatie. Druk op **try it** op een API, kopieer het Bearer-token en voeg dit toe aan uw API-aanroep.
-Als u uw werk ruimte permanent wilt verwijderen, gebruikt u de [werk ruimten-rest-API-aanroep verwijderen]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) met een Force-tag:
->
-> ```rst
-> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
-> ```
-Waarbij ' eyJ0eXAiOiJKV1Qi... ' vertegenwoordigt het volledige verificatie token.
+```rst
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+Authorization: Bearer <token>
+```
+
+U kunt ook de bewerking uitvoeren vanuit de Azure REST-documentatie site:
+1.  Navigeer naar [werk ruimten – verwijder](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) rest API en klik op **Probeer het opnieuw**. 
+2.  Geef de details op van de werk ruimte die u definitief wilt verwijderen
+3.  Ender een nieuwe para meter *forceren* met de waarde *True*
+4.  Klik op het pictogram ' + ' aan de rechter kant van de waarde. Hiermee wordt *geforceerd = True* toegevoegd aan de URI in de aanvraag
+5.  Klik op de knop *uitvoeren*
+
+Het antwoord moet 200 OK zijn
 
 ## <a name="recover-workspace"></a>Werk ruimte herstellen
 Wanneer u per ongeluk een Log Analytics-werk ruimte verwijdert, wordt de werk ruimte door de service in een tijdelijke verwijderings status geplaatst, waardoor deze niet toegankelijk is voor een wille keurige bewerking. De naam van de verwijderde werk ruimte blijft behouden tijdens de tijdelijke verwijderings periode en kan niet worden gebruikt voor het maken van een nieuwe werk ruimte. Na de periode voor het voorlopig verwijderen is de werk ruimte niet-herstelbaar, wordt deze gepland voor permanent verwijderen en wordt de naam ervan vrijgegeven en kan deze worden gebruikt voor het maken van een nieuwe werk ruimte.
@@ -103,7 +92,7 @@ U kunt uw werk ruimte herstellen tijdens de tijdelijke periode, inclusief gegeve
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Selecteer in het Azure Portal **alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**. U ziet de lijst met werk ruimten die u in het geselecteerde bereik hebt.
 3. Klik in het menu linksboven op **herstellen** om een pagina met werk ruimten in de status zacht verwijderen te openen die kan worden hersteld.
 
@@ -123,6 +112,13 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 De werk ruimte en alle bijbehorende gegevens worden teruggezet na de herstel bewerking. Oplossingen en gekoppelde services zijn permanent verwijderd uit de werk ruimte toen ze werd verwijderd en moeten opnieuw worden geconfigureerd om de werk ruimte naar de eerder geconfigureerde status te brengen. Sommige gegevens zijn mogelijk niet beschikbaar voor de query nadat de werk ruimte is hersteld en de bijbehorende schema's worden toegevoegd aan de werk ruimte.
 
 > [!NOTE]
-> * Werkruimte herstel wordt niet ondersteund in de [Azure Portal](https://portal.azure.com). 
 > * Wanneer u tijdens de tijdelijke verwijderings periode een werk ruimte opnieuw maakt, geeft u een indicatie dat deze werkruimte naam al in gebruik is. 
-> 
+ 
+### <a name="troubleshooting"></a>Problemen oplossen
+U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimte te verwijderen.<br>
+Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
+* De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
+* De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
+   1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werk ruimte.
+   2. Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
+   3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176087"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869716"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -60,7 +60,7 @@ Wanneer u Azure File Sync implementeert, kunt u het volgende doen:
 - Let op de limieten voor de IOPS van een opslag account bij het implementeren van Azure-bestands shares. In het ideale geval wijst u bestands shares 1:1 met opslag accounts toe, maar dit is mogelijk niet altijd mogelijk als gevolg van verschillende limieten en beperkingen, zowel vanuit uw organisatie als vanuit Azure. Wanneer het niet mogelijk is om slechts één bestands share in één opslag account te implementeren, moet u overwegen welke shares Maxi maal actief zullen zijn en welke shares minder actief zijn om ervoor te zorgen dat de meest uitgebreide bestands shares niet samen in hetzelfde opslag account worden geplaatst.
 
 ## <a name="windows-file-server-considerations"></a>Aandachtspunten voor Windows-Bestands server
-Als u de synchronisatie mogelijkheid wilt inschakelen op Windows Server, moet u de Azure File Sync Download bare agent installeren. De Azure File Sync-agent biedt twee hoofd onderdelen `FileSyncSvc.exe`:, de achtergrond Windows-service die verantwoordelijk is voor het bewaken van wijzigingen op de server-eind punten en `StorageSync.sys`het initiëren van synchronisatie sessies, en, een bestandssysteem filter waarmee Cloud lagen en snelle herstel na nood gevallen kunnen worden gestart.  
+Als u de synchronisatie mogelijkheid wilt inschakelen op Windows Server, moet u de Azure File Sync Download bare agent installeren. De Azure File Sync-agent biedt twee hoofd onderdelen: `FileSyncSvc.exe` , de achtergrond Windows-service die verantwoordelijk is voor het bewaken van wijzigingen op de server-eind punten en het initiëren van synchronisatie sessies, en `StorageSync.sys` , een bestandssysteem filter waarmee Cloud lagen en snelle herstel na nood gevallen kunnen worden gestart.  
 
 ### <a name="operating-system-requirements"></a>Vereisten voor het besturingssysteem
 Azure File Sync wordt ondersteund met de volgende versies van Windows Server:
@@ -160,7 +160,7 @@ De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies:
 
 <a id="files-skipped"></a>Azure File Sync worden ook bepaalde tijdelijke bestanden en systeem mappen overs Laan:
 
-| Bestand/map | Opmerking |
+| Bestand/map | Notitie |
 |-|-|
 | pagefile.sys | Bestand dat specifiek is voor systeem |
 | Desktop. ini | Bestand dat specifiek is voor systeem |
@@ -275,7 +275,7 @@ Azure File Sync werkt niet met NTFS Encrypted File System (NTFS EFS) of versleut
 ### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 
 > [!NOTE]
-> De ondersteuning voor TLS 1.0 en 1,1 wordt in augustus 2020 door Azure File Sync service verwijderd. Alle ondersteunde Azure File Sync agent versies gebruiken standaard al TLS 1.2. Het gebruik van een eerdere versie van TLS kan optreden als TLS 1.2 is uitgeschakeld op uw server of als er een proxy wordt gebruikt. Als u een proxy gebruikt, raden we u aan om de proxy configuratie te controleren. Azure File Sync Service regio's die zijn toegevoegd na 5/1/2020, ondersteunen alleen TLS 1.2 en ondersteuning voor TLS 1.0 en 1,1 worden verwijderd uit bestaande regio's in augustus 2020.  Zie voor meer informatie de [hand leiding](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)voor het oplossen van problemen.
+> Met Azure File Sync Service wordt de ondersteuning voor TLS 1.0 en 1,1 op 1 augustus 2020 verwijderd. Alle ondersteunde Azure File Sync agent versies gebruiken standaard al TLS 1.2. Het gebruik van een eerdere versie van TLS kan optreden als TLS 1.2 is uitgeschakeld op uw server of als er een proxy wordt gebruikt. Als u een proxy gebruikt, raden we u aan om de proxy configuratie te controleren. Azure File Sync Service regio's die zijn toegevoegd na 5/1/2020, ondersteunen alleen TLS 1.2 en ondersteuning voor TLS 1.0 en 1,1 worden verwijderd uit bestaande regio's op 1 augustus 2020.  Zie voor meer informatie de [hand leiding](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)voor het oplossen van problemen.
 
 Azure File Sync Agent communiceert met de opslag synchronisatie service en de Azure-bestands share met behulp van het Azure File Sync REST-protocol en het FileREST-protocol, die beide altijd HTTPS gebruiken via poort 443. Azure File Sync verzendt geen niet-versleutelde aanvragen via HTTP. 
 
@@ -354,7 +354,7 @@ Als u een bestaande Windows-Bestands server hebt, kan Azure File Sync rechtstree
 
 - Maak server eindpunten voor uw oude bestands share en uw nieuwe bestands share en laat Azure File Sync de gegevens van de server-eind punten synchroniseren. Het voor deel van deze benadering is dat het heel eenvoudig is om de opslag op uw nieuwe bestands server te overschreven, omdat Azure File Sync Cloud Tiering heeft. Wanneer u klaar bent, kunt u de eind gebruikers naar de bestands share op de nieuwe server knippen en het server eindpunt van de oude bestands share verwijderen.
 
-- Maak een server eindpunt alleen op de nieuwe bestands server en kopieer gegevens naar van de oude bestands share met `robocopy`. Afhankelijk van de topologie van de bestands shares op de nieuwe server (hoeveel shares u op elk volume hebt, hoe gratis elk volume is, enzovoort), moet u mogelijk tijdelijk extra opslag ruimte inrichten, omdat ervan wordt uitgegaan dat `robocopy` van uw oude server naar uw nieuwe server in uw on-premises Data Center sneller is dan Azure file sync gegevens naar Azure verplaatst.
+- Maak een server eindpunt alleen op de nieuwe bestands server en kopieer gegevens naar van de oude bestands share met `robocopy` . Afhankelijk van de topologie van de bestands shares op de nieuwe server (hoeveel shares u op elk volume hebt, hoe gratis elk volume is, enzovoort), moet u mogelijk tijdelijk extra opslag ruimte inrichten, omdat ervan wordt uitgegaan dat `robocopy` van uw oude server naar uw nieuwe server in uw on-premises Data Center sneller is dan Azure file sync gegevens naar Azure verplaatst.
 
 Het is ook mogelijk om Data Box te gebruiken om gegevens te migreren naar een Azure File Sync-implementatie. De meeste tijd, wanneer klanten Data Box willen gebruiken om gegevens op te nemen, doen ze dit omdat ze denken dat ze de snelheid van de implementatie verg Roten of dat ze hulp kunnen bieden bij beperkte bandbreedte scenario's. Hoewel het gebruik van een Data Box voor het opnemen van gegevens in uw Azure File Sync-implementatie het bandbreedte gebruik verlaagt, is het waarschijnlijk sneller voor de meeste scenario's om een online gegevens upload uit te voeren via een van de hierboven beschreven methoden. Zie voor meer informatie over het gebruik van Data Box om gegevens op te nemen in uw Azure File Sync-implementatie de [gegevens migreren naar Azure file sync met Azure data Box](storage-sync-offline-data-transfer.md).
 

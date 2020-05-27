@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203391"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848920"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Gebruikers bulksgewijs maken in Azure Active Directory
 
@@ -39,7 +39,7 @@ Down load en vul het CSV-sjabloon bulksgewijs uploaden in om Azure AD-gebruikers
 De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
 - **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
-- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `Name [displayName] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
+- **Kolom koppen**: de indeling van de kolom koppen is de &lt; *item naam* &gt; [propertyname] &lt; *vereist of leeg* &gt; . Bijvoorbeeld `Name [displayName] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
 - **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
 ### <a name="additional-guidance"></a>Aanvullende richtlijnen
@@ -52,7 +52,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-create-users-in-bulk"></a>Gebruikers bulksgewijs maken
 
 1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
-1. Selecteer in azure AD de optie **gebruikers** > **bulksgewijs maken**.
+1. Selecteer in azure AD de optie **gebruikers**  >  **bulksgewijs maken**.
 1. Selecteer op de pagina **bulk maken gebruiker** **downloaden** om een geldig CSV-bestand (Comma-Separated Values) van gebruikers eigenschappen te ontvangen en voeg vervolgens gebruikers toevoegen toe die u wilt maken.
 
    ![Selecteer een lokaal CSV-bestand waarin de gebruikers worden vermeld die u wilt toevoegen](./media/users-bulk-add/upload-button.png)
@@ -66,7 +66,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure bulk bewerking te starten waarmee de nieuwe gebruikers worden geïmporteerd.
 1. Wanneer de import bewerking is voltooid, ziet u een melding van de taak status van de bulk bewerking.
 
-Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven op de pagina **resultaten van bulk bewerking** . Het bestand bevat de reden voor elke fout.
+Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven op de pagina **resultaten van bulk bewerking** . Het bestand bevat de reden voor elke fout. Het verzenden van bestanden moet overeenkomen met de opgegeven sjabloon en de exacte kolom namen bevatten.
 
 ## <a name="check-status"></a>Status controleren
 

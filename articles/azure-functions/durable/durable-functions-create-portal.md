@@ -4,12 +4,12 @@ description: Meer informatie over het installeren van de Durable Functions exten
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120137"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848757"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
 
@@ -57,6 +57,8 @@ Als u Java script-Durable Functions maakt, moet u het NPM- [ `durable-functions`
 4. Nadat uw `package.json` is geüpload, voert u de `npm install` opdracht uit vanuit de kudu-console voor externe uitvoering.
 
    ![Kudu uitvoeren NPM installeren](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. Ten slotte (compatibiliteits modus inschakelen) [ https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ] door een app-instelling `FUNCTIONS_V2_COMPATIBILITY_MODE` met de waarde van toe te voegen `true` .
 
 ## <a name="create-an-orchestrator-function"></a>Een Orchestrator-functie maken
 

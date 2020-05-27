@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a0d05c56670c54aca25232a86b5a0e89d2f0bcfd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983649"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849362"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -22,7 +22,7 @@ Als u virtuele VMware-machines wilt beoordelen, maakt u een Azure Migrate projec
 --- | ---
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement.<br/><br/> U kunt Maxi maal 35.000 VMware-Vm's in één [project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen. Een project kan ook fysieke servers en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
 **Detectie** | Het Azure Migrate-apparaat kan Maxi maal 10.000 VMware-Vm's detecteren op een vCenter Server.
-**Beoordeling** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
+**Onderzoek** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
@@ -39,7 +39,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **vCenter-referenties** | App-detectie heeft een vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor Virtual Machines >-gast bewerkingen.
 **VM-referenties** | App-detectie biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
 **VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.
-**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**PowerShell** | Op Windows-Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 **Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
 
@@ -53,7 +53,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5 of 6,7.
 **Machtigingen (beoordeling)** | vCenter Server alleen-lezen-account.
 **Machtigingen (app-detectie)** | vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor **virtuele machines > gast bewerkingen**.
-**Machtigingen (visualisatie van afhankelijkheden)** | vCenter Server account met alleen-lezen toegang en de bevoegdheden die zijn ingeschakeld voor**gast bewerkingen**voor **virtuele machines** > .
+**Machtigingen (visualisatie van afhankelijkheden)** | vCenter Server account met alleen-lezen toegang en de bevoegdheden die zijn **Virtual machines**ingeschakeld voor  >  **gast bewerkingen**voor virtuele machines.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten
@@ -67,7 +67,7 @@ Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor d
 
 ## <a name="port-access"></a>Poort toegang
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | ---
 Apparaat | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 vCenter-server | Binnenkomende verbindingen op TCP-poort 443 zodat het apparaat configuratie-en prestatie-meta gegevens voor evaluaties kan verzamelen. <br/><br/> Het apparaat maakt standaard verbinding met vCenter op poort 443. Als de vCenter-Server op een andere poort luistert, kunt u de poort wijzigen bij het instellen van detectie.
@@ -105,7 +105,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
 **VMware-Hulpprogram Ma's** | VMware-Hulpprogram Ma's (hoger dan 10,2) moeten zijn geïnstalleerd en worden uitgevoerd op elke virtuele machine die u wilt analyseren.
 **vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen. 
-**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**PowerShell** | Op Windows-Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt analyseren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 
 
@@ -122,7 +122,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **Log Analytics-werkruimte** | De werk ruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> Azure Migrate ondersteunt werk ruimten die zich in het VS-Oost, Zuidoost-Azië en Europa-west regio's bevinden.<br/><br/>  De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd.
 **Kosten** | De Servicetoewijzing oplossing heeft geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics koppelt aan het Azure Migrate project)/<br/><br/> Na 180 dagen gelden de standaardkosten voor Log Analytics.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden [standaard kosten](https://azure.microsoft.com/pricing/details/log-analytics/) in rekening gebracht voor log Analytics.<br/><br/> Wanneer het Azure Migrate project wordt verwijderd, wordt de werk ruimte samen niet verwijderd. Na het verwijderen van het project is Servicetoewijzing gebruik niet gratis en worden voor elk knoop punt de kosten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte/<br/><br/>Als u projecten hebt die u hebt gemaakt vóór Azure Migrate algemene Beschik baarheid (GA 28 februari 2018), hebt u mogelijk extra Servicetoewijzing kosten in rekening gebracht. Om ervoor te zorgen dat u na 180 dagen alleen betaalt, is het raadzaam om een nieuw project te maken, omdat bestaande werk ruimten voor GA nog steeds toerekenbaar zijn.
 **Beheer** | Wanneer u agents registreert bij de werk ruimte, gebruikt u de ID en de sleutel van het Azure Migrate project.<br/><br/> U kunt de Log Analytics-werk ruimte gebruiken buiten Azure Migrate.<br/><br/> Als u het gekoppelde Azure Migrate project verwijdert, wordt de werk ruimte niet automatisch verwijderd. [Verwijder deze hand matig](../azure-monitor/platform/manage-access.md).<br/><br/> Verwijder de werk ruimte die is gemaakt door Azure Migrate, tenzij u het Azure Migrate project verwijdert. Als u dat wel doet, werkt de visualisatie functionaliteit voor afhankelijkheden niet zoals verwacht.
-**Verbinding met internet** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
+**Internetconnectiviteit** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
 **Azure Government** | Afhankelijkheids analyse op basis van een agent wordt niet ondersteund.
 
 

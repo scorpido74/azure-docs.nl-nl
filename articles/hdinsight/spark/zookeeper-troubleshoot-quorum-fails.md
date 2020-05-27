@@ -6,54 +6,124 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/20/2019
-ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133278"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860491"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server kan geen quorum vormen in azure HDInsight
 
-In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
+In dit artikel worden probleemoplossings stappen en mogelijke oplossingen beschreven voor problemen met betrekking tot Zookeepers in azure HDInsight-clusters.
 
-## <a name="issue"></a>Probleem
+## <a name="symptoms"></a>Symptomen
 
-Apache ZooKeeper server niet in orde is, kunnen symptomen het volgende omvatten: zowel resource managers/naam knooppunten bevinden zich in de stand-bymodus, eenvoudige `zkFailoverController` HDFS-bewerkingen werken niet, is gestopt en kan niet worden gestart, garens/Spark/livy mislukken vanwege ZooKeeper fouten. LLAP-daemons kunnen ook niet worden gestart op beveiligde Spark-of interactieve Hive-clusters. Er wordt mogelijk een fout bericht met de volgende strekking weer gegeven:
+* Beide resource managers gaan naar stand-by-modus
+* Namenodes zijn beide in de modus stand-by
+* Spark-, Hive-en garen taken of Hive-query's mislukken vanwege Zookeeper-verbindings fouten
+* LLAP-daemons worden niet gestart op beveiligde Spark of veilige, interactieve Hive-clusters
 
+## <a name="sample-log"></a>Voorbeeld logboek
+
+Er wordt mogelijk een fout bericht met de volgende strekking weer gegeven:
+
+```output
+2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
+Message
+2020-05-05 03:17:07.7924490|Received RMFatalEvent of type STATE_STORE_FENCED, caused by org.apache.zookeeper.KeeperException$NoAuthException: KeeperErrorCode = NoAuth
+...
+2020-05-05 03:17:08.3890350|State store operation failed 
+2020-05-05 03:17:08.3890350|Transitioning to standby state
 ```
-19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
-19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
+
+## <a name="related-issues"></a>Gerelateerde problemen
+
+* Services met hoge Beschik baarheid zoals garens, NameNode en livy kunnen om verschillende redenen dalen.
+* Controleer de logboeken die zijn gerelateerd aan Zookeeper-verbindingen
+* Zorg ervoor dat het probleem herhaaldelijk optreedt (gebruik deze oplossingen niet voor eenmalige cases)
+* Taken kunnen tijdelijk mislukken vanwege Zookeeper-verbindings problemen
+
+## <a name="common-causes-for-zookeeper-failure"></a>Veelvoorkomende oorzaken voor Zookeeper-fout
+
+* Hoog CPU-gebruik op de Zookeeper-servers
+  * Als u in de Ambari-gebruikers interface bijna 100% heeft gestaand CPU-gebruik op de Zookeeper-servers ziet, kunnen de Zookeeper-sessies gedurende die tijd verlopen en time-out hebben
+* Zookeeper-clients rapporteren veelvuldige time-outs
+  * In de logboeken voor Resource Manager, Namenode en anderen ziet u veelvuldige time-outs voor client verbindingen
+  * Dit kan leiden tot quorum verlies, veelvuldige failovers en andere problemen
+
+## <a name="check-for-zookeeper-status"></a>Controleren op Zookeeper-status
+
+* De Zookeeper-servers vinden in het bestand/etc/hosts-bestand of in de Ambari-gebruikers interface
+* Voer de volgende opdracht uit
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(of 2182)  
+  * Poort 2181 is het Apache Zookeeper-exemplaar
+  * Poort 2182 wordt gebruikt door de HDInsight-Zookeeper (om HA te bieden voor services die geen systeem eigen HA zijn)
+  * Als de opdracht geen uitvoer bevat, betekent dit dat de Zookeeper-servers niet worden uitgevoerd
+  * Als de servers worden uitgevoerd, omvat het resultaat ook statische verbindingen van client verbinding en andere statistieken
+
+```output
+Zookeeper version: 3.4.6-8--1, built on 12/05/2019 12:55 GMT
+Clients:
+ /10.2.0.57:50988[1](queued=0,recved=715,sent=715)
+ /10.2.0.57:46632[1](queued=0,recved=138340,sent=138347)
+ /10.2.0.34:14688[1](queued=0,recved=264653,sent=353420)
+ /10.2.0.52:49680[1](queued=0,recved=134812,sent=134814)
+ /10.2.0.57:50614[1](queued=0,recved=19812,sent=19812)
+ /10.2.0.56:35034[1](queued=0,recved=2586,sent=2586)
+ /10.2.0.52:63982[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.57:53024[1](queued=0,recved=19805,sent=19805)
+ /10.2.0.57:45126[1](queued=0,recved=19621,sent=19621)
+ /10.2.0.56:41270[1](queued=0,recved=1348743,sent=1348788)
+ /10.2.0.53:59097[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.56:41088[1](queued=0,recved=788,sent=802)
+ /10.2.0.34:10246[1](queued=0,recved=19575,sent=19575)
+ /10.2.0.56:40944[1](queued=0,recved=717,sent=717)
+ /10.2.0.57:45466[1](queued=0,recved=19861,sent=19861)
+ /10.2.0.57:59634[0](queued=0,recved=1,sent=0)
+ /10.2.0.34:14704[1](queued=0,recved=264622,sent=353355)
+ /10.2.0.57:42244[1](queued=0,recved=49245,sent=49248)
+
+Latency min/avg/max: 0/3/14865
+Received: 238606078
+Sent: 239139381
+Connections: 18
+Outstanding: 0
+Zxid: 0x1004f99be
+Mode: follower
+Node count: 133212
 ```
 
-In de Zookeeper-server logboeken op een Zookeeper-\*host op/var/log/Zookeeper/Zookeeper-Zookeeper-server-. out ziet u mogelijk ook de volgende fout:
+## <a name="cpu-load-peaks-up-every-hour"></a>CPU-belasting pieken elk uur omhoog
 
-```
-2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
-java.nio.channels.CancelledKeyException
-```
+* Meld u aan bij de Zookeeper-server en controleer de/etc/crontab
+* Als er op dit moment elk uur taken worden uitgevoerd, kunt u de begin tijd op verschillende Zookeeper-servers wille keurig maken.
+  
+## <a name="purging-old-snapshots"></a>Oude moment opnamen verwijderen
 
-## <a name="cause"></a>Oorzaak
+* Zookeepers zijn geconfigureerd voor het automatisch verwijderen van oude moment opnamen
+* De laatste 30 moment opnamen blijven standaard behouden
+* Het aantal moment opnamen dat wordt bewaard, wordt bepaald door de configuratie sleutel `autopurge.snapRetainCount` . Deze eigenschap kan worden gevonden in de volgende bestanden:
+  * `/etc/zookeeper/conf/zoo.cfg`voor Hadoop-Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`voor HDInsight Zookeeper
+* Stel `autopurge.snapRetainCount` in op een waarde van 3 en start de Zookeeper-servers opnieuw op
+  * Hadoop Zookeeper config kan worden bijgewerkt en de service kan opnieuw worden gestart via Ambari
+  * HDInsight-Zookeeper hand matig stoppen en opnieuw starten
+    * `sudo lsof -i :2182`geeft u de proces-ID die u wilt afsluiten
+    * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
+* Moment opnamen niet hand matig verwijderen: het hand matig verwijderen van moment opnamen kan leiden tot verlies van gegevens
 
-Wanneer het volume van de momentopname bestanden groot is of momentopname bestanden zijn beschadigd, kan de ZooKeeper-server geen quorum vormen, waardoor ZooKeeper gerelateerde services beschadigd raken. De ZooKeeper-server verwijdert geen oude momentopname bestanden uit de bijbehorende gegevens Directory, maar het is een periodieke taak die door gebruikers moet worden uitgevoerd om de healthiness van ZooKeeper te onderhouden. Zie [ZooKeeper-sterke punten en beperkingen](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)voor meer informatie.
+## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException in het Zookeeper-server logboek vereist geen opschoning van de moment opname
 
-## <a name="resolution"></a>Oplossing
-
-Controleer de ZooKeeper- `/hadoop/zookeeper/version-2` gegevens `/hadoop/hdinsight-zookeeper/version-2` Directory en zoek uit of de bestands grootte van de moment opnamen groot is. Voer de volgende stappen uit als er grote moment opnamen bestaan:
-
-1. Controleer de status van andere ZooKeeper-servers in hetzelfde quorum om er zeker van te zijn dat ze goed werken met`echo stat | nc {zk_host_ip} 2181 (or 2182)`de opdracht.  
-
-1. Meld de problematische ZooKeeper-host, back-upmomentopnamen `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeeper/version-2`transactie logboeken aan en en opruim deze bestanden in de twee directory's. 
-
-1. Start de problematische ZooKeeper-server in Ambari of de ZooKeeper-host opnieuw. Start de service met problemen opnieuw op.
+* Deze uitzonde ring betekent meestal dat de client niet langer actief is en dat de server geen bericht kan verzenden
+* Met deze uitzonde ring wordt ook aangegeven dat de Zookeeper-client tijdig sessies beëindigt
+* Zoek naar de andere symptomen die in dit document worden beschreven
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
-
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
-
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 - Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

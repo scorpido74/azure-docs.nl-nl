@@ -3,12 +3,12 @@ title: Persoonlijke koppeling instellen
 description: Een persoonlijk eind punt instellen in een container register en toegang inschakelen via een persoonlijke koppeling in een lokaal virtueel netwerk
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701410"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850042"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
 
@@ -267,7 +267,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     |Privé-DNS zone |Selecteer *(nieuw) privatelink.azurecr.io* |
     |||
 
-1. Selecteer **controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
 2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
 
 Nadat het persoonlijke eind punt is gemaakt, worden de DNS-instellingen in de privé zone weer gegeven op de pagina **privé-eind punten** in de portal:
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Open bare toegang uitschakelen-Portal
 
 1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
-1. Selecteer **uitgeschakeld**op het tabblad **open bare toegang** in **open bare toegang toestaan**. Selecteer vervolgens **Opslaan**.
+1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan**de optie **uitgeschakeld**. Selecteer vervolgens **Opslaan**.
 
 ## <a name="validate-private-link-connection"></a>Verbinding met persoonlijke koppeling valideren
 

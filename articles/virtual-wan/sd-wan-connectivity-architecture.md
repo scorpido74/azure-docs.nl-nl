@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 17db9d615dcdd78ca50f88b5dad72d596bf29276
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402482"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860576"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architectuur van de SD-WAN-verbinding met Azure Virtual WAN
 
@@ -39,7 +39,7 @@ Het SD-WAN CPE blijft de plek waar het verkeer wordt geoptimaliseerd en het sele
 
 In dit model worden bepaalde eigen verkeer optimalisaties op basis van real-time verkeers kenmerken mogelijk niet ondersteund, omdat de verbinding met Virtual WAN via IPsec verloopt en het IPsec VPN wordt beëindigd op de virtuele WAN-VPN-gateway. Dynamische paden kunnen bijvoorbeeld worden geselecteerd bij het vertakkings verschil als gevolg van het vertakkings apparaat waarbij verschillende netwerk pakket gegevens worden uitgewisseld met een ander SD-WAN-knoop punt, waardoor de beste koppeling kan worden gebruikt voor verschillende verkeer dat dynamisch wordt geprioriteerd op het filiaal. Deze functie kan nuttig zijn in gebieden waar de optimalisatie van de laatste mijl (vertakking naar de dichtstbijzijnde micro soft-POP) is vereist.
 
-Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit is een op beleid gebaseerde Padselectie op meerdere ISP-koppelingen van het vertakkings CPE tot virtuele WAN-gateways. Met Virtual WAN kunt u meerdere koppelingen (paden) van dezelfde SD-WAN-vertakking CPE instellen. elke koppeling vertegenwoordigt een dubbele tunnel verbinding van een uniek openbaar IP-adres van het SD-WAN-netwerk tot twee verschillende exemplaren van Azure Virtual WAN VPN gateway. Leveranciers van SD-WAN kunnen het meest optimale pad naar Azure implementeren op basis van het Traffic-beleid dat is ingesteld door hun beleids engine op de CPE-koppelingen.
+Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit is een op beleid gebaseerde Padselectie op meerdere ISP-koppelingen van het vertakkings CPE tot virtuele WAN-gateways. Met Virtual WAN kunt u meerdere koppelingen (paden) van dezelfde SD-WAN-vertakking CPE instellen. elke koppeling vertegenwoordigt een dubbele tunnel verbinding van een uniek openbaar IP-adres van het SD-WAN-netwerk tot twee verschillende exemplaren van Azure Virtual WAN VPN gateway. Leveranciers van SD-WAN kunnen het meest optimale pad naar Azure implementeren op basis van het Traffic-beleid dat is ingesteld door hun beleids engine op de CPE-koppelingen. Op het eind punt van Azure worden alle binnenkomende verbindingen op dezelfde manier behandeld.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model voor indirecte Interconnect
 

@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67476259"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868032"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Een of meer toegangs beoordelingen maken
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476259"
     ![Gebruikers bereik voor revisie van rollidmaatschap van](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Als u meerdere rollen selecteert, worden er meerdere toegangs beoordelingen gemaakt. Als u bijvoorbeeld vijf rollen selecteert, worden er vijf afzonderlijke toegangs beoordelingen gemaakt.
+    > - Rollen die hier zijn geselecteerd [, zijn zowel permanente als in aanmerking komende rollen](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
+    > - Als u meerdere rollen selecteert, worden er meerdere toegangs beoordelingen gemaakt. Als u bijvoorbeeld vijf rollen selecteert, worden er vijf afzonderlijke toegangs beoordelingen gemaakt.
 
-    Als u een toegangs beoordeling van Azure AD-rollen maakt, ziet u een voor beeld van de lijst lidmaatschap controleren.
+    Als u een toegangs beoordeling van **Azure AD-rollen**maakt, ziet u een voor beeld van de lijst lidmaatschap controleren.
 
     ![Bekijk het deel venster lidmaatschap van de Azure AD-rollen die u kunt selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Als u een toegangs beoordeling van Azure-resource rollen maakt, ziet u een voor beeld van de lijst lidmaatschap controleren.
+    Als u een toegangs beoordeling van Azure- **resource rollen**maakt, ziet u in de volgende afbeelding een voor beeld van de lijst lidmaatschap controleren.
 
     ![Deel venster lidmaatschap weer geven Azure-resource rollen bekijken die u kunt selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

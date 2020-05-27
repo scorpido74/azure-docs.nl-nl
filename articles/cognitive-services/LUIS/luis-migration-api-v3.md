@@ -4,12 +4,12 @@ description: De V3 Api's voor de query Voorspellings-endpoint zijn gewijzigd. Ge
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653864"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849328"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
 
@@ -283,4 +283,4 @@ De v2 API wordt niet afgeschaft gedurende ten minste negen maanden na de preview
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de V3 API-documentatie om bestaande REST-aanroepen bij te werken naar LUIS [endpoint](https://aka.ms/luis-api-v3) -api's.
+Gebruik de V3 API-documentatie om bestaande REST-aanroepen bij te werken naar LUIS [endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) -api's.

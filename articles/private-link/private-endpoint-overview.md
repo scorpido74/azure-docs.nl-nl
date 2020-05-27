@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659687"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849651"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -63,6 +63,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Database for PostgreSQL-één server** | Micro soft. DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Micro soft. DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Micro soft. DBforMariaDB/servers    | mariadbServer |
+|**Azure IoT Hub** | Micro soft. devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Micro soft.-sleutel kluis/-kluizen    | kluis |
 |**Azure Kubernetes-service-Kubernetes-API** | Micro soft. container service/managedClusters    | managedCluster |
 |**Azure Search** | Micro soft. Search/searchService| searchService|  

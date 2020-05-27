@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835390"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849753"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafische runbooks ontwerpen in Azure Automation
 
@@ -256,7 +256,7 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Naam | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
+| Name | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
 | Beschrijving |Optioneel. Beschrijving van het doel van de invoer parameter. |
 | Type | Optioneel. Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. Ondersteunde parameter typen zijn String, Int32, Int64, Decimal, Boolean, DateTime en object. Als er geen gegevens type is geselecteerd, wordt standaard de teken reeks gebruikt.|
 | Verplicht | Optioneel. Instelling die aangeeft of er een waarde moet worden opgegeven voor de para meter. Als u kiest `yes` , moet u een waarde opgeven wanneer het runbook wordt gestart. Als u kiest `no` , is een waarde niet vereist wanneer het runbook wordt gestart en kan een standaard waarde worden gebruikt. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
@@ -268,7 +268,7 @@ Met grafische ontwerpen worden gegevens opgeslagen die zijn gemaakt door een act
 
 ## <a name="work-with-powershell-expressions"></a>Werken met Power shell-expressies
 
-Een van de voor delen van het ontwerpen van afbeeldingen is dat u een runbook met minimale kennis van Power shell kunt bouwen. Op dit moment moet u echter wel een bit van Power shell kennen voor het invullen van bepaalde [parameter waarden](#use-activities) en voor het instellen van [koppelings voorwaarden](#use-links-for-workflow). In deze sectie vindt u een korte inleiding tot Power shell-expressies. Volledige informatie over Power shell is beschikbaar op [Scripting met Windows Power shell](https://technet.microsoft.com/library/bb978526.aspx).
+Een van de voor delen van het ontwerpen van afbeeldingen is dat u een runbook met minimale kennis van Power shell kunt bouwen. Op dit moment moet u echter wel een bit van Power shell kennen voor het invullen van bepaalde [parameter waarden](#use-activities) en voor het instellen van [koppelings voorwaarden](#use-links-for-workflow). In deze sectie vindt u een korte inleiding tot Power shell-expressies. Volledige informatie over Power shell is beschikbaar op [Scripting met Windows Power shell](https://docs.microsoft.com/powershell/scripting/overview).
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Een Power shell-expressie gebruiken als gegevens bron
 

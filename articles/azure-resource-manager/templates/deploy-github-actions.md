@@ -3,12 +3,12 @@ title: Resource Manager-sjablonen implementeren met behulp van GitHub-acties
 description: Hierin wordt beschreven hoe u Azure Resource Manager-sjablonen implementeert met behulp van GitHub-acties.
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 5fe147a9c42e83d5e644b0c08dfa67de88ec05c0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82875192"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869180"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sjablonen implementeren met behulp van GitHub-acties
 
@@ -61,7 +61,7 @@ Het script voert een JSON-object uit dat er ongeveer als volgt uitziet:
 Kopieer de JSON-uitvoer en sla deze op als een GitHub-geheim in uw GitHub-opslag plaats. Zie het [vereiste](#prerequisites) als u nog geen opslag plaats hebt.
 
 1. Selecteer in uw GitHub-opslag plaats het tabblad **instellingen** .
-1. Selecteer **geheim** in het menu links.
+1. Selecteer **geheimen** in het menu links.
 1. Voer de volgende waarden in:
 
     - **Naam**: AZURE_CREDENTIALS

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436201"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849039"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -49,6 +49,22 @@ Windows-of Linux IaaS-Vm's komen in aanmerking als:
 - De virtuele machine wordt uitgevoerd.
 - De Windows-of Linux [Azure virtual machine-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) is geïnstalleerd.
 - De virtuele machine wordt niet gebruikt als een apparaat zoals Web Application Firewall of een firewall van de volgende generatie.
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>Waar is de standaard Log Analytics werkruimte gemaakt?
+
+De locatie van de standaardwerk ruimte is afhankelijk van uw Azure-regio:
+
+- Voor virtuele machines in de Verenigde Staten en Brazilië is de locatie van de werk ruimte de Verenigde Staten
+- Voor Vm's in Canada is de locatie van de werk ruimte Canada
+- Voor Vm's in Europa is de locatie van de werk ruimte Europa
+- Voor Vm's in het Verenigd Konink rijk is de locatie van de werk ruimte het Verenigd Konink rijk
+- Voor virtuele machines in Azië-oost en Zuidoost-Azië is de locatie van de werk ruimte Azië
+- Voor Vm's in Korea is de locatie van de werk ruimte Korea
+- Voor Vm's in India is de locatie van de werk ruimte India
+- Voor Vm's in Japan is de locatie van de werk ruimte Japan
+- Voor Vm's in China is de locatie van de werk ruimte China
+- Voor Vm's in Australië is de locatie van de werk ruimte Australië
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kan ik de standaardwerk ruimten verwijderen die zijn gemaakt door Security Center?

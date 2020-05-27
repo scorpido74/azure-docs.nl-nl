@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7fbe27845164eb7711d3531173fb440c5a3570f4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789705"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849129"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Sales Force configureren
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 
        ![Setup van Sales Force](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. Ga op de pagina **Setup** naar **platform tools** > **functie instellingen** > **marketing** > **Web-to-lead**.
+    1. Ga op de pagina **Setup** naar **platform tools**  >  **functie instellingen**  >  **marketing**  >  **Web-to-lead**.
 
         ![Sales Force-webto-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
@@ -41,7 +41,7 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 
        ![Klassieke instellingen voor Sales Force](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. Selecteer op de pagina **Setup** de optie **Build** > **Customize** > **leads** > **Web-to-lead**.
+    1. Selecteer op de pagina **Setup** de optie **Build**  >  **Customize**  >  **leads**  >  **Web-to-lead**.
 
         ![Sales Force-klassiek: Web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
@@ -70,11 +70,11 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
 
-1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
+1. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
 
-    ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="Leads van klanten":::
 
-1. Selecteer in het pop-upvenster **verbindings Details** de optie **Sales Force** voor de **doel bestemming** en `oid` plak de waarde vanuit het formulier web-naar-lead dat u in het veld **organisatie-id** hebt gemaakt.
+1. Selecteer in het pop-upvenster **verbindings Details** de optie **Sales Force** voor de **doel bestemming** en plak de `oid` waarde vanuit het formulier web-naar-lead dat u in het veld **organisatie-id** hebt gemaakt.
 
     ![Pop-upvenster verbindings Details het vak e-mail adres van contact persoon valideren](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 

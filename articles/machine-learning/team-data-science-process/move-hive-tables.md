@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251659"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860610"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage
 
@@ -30,7 +30,7 @@ In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 * Externe toegang tot het cluster ingeschakeld, aangemeld en de Hadoop-opdracht regel console geopend. Zie [Apache Hadoop-clusters beheren](../../hdinsight/hdinsight-administer-use-portal-linux.md)als u instructies nodig hebt.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure Blob Storage
-Als u een virtuele machine van Azure hebt gemaakt met behulp van de instructies in [een virtuele Azure-machine instellen voor geavanceerde analyse](../../machine-learning/data-science-virtual-machine/overview.md), moet dit script bestand zijn gedownload naar de map *C\\:\>\\gebruikers\\\\\<gebruikers naam documenten data Science scripts* op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.
+Als u een virtuele machine van Azure hebt gemaakt met behulp van de instructies in [een virtuele Azure-machine instellen voor geavanceerde analyse](../../machine-learning/data-science-virtual-machine/overview.md), moet dit script bestand zijn gedownload naar de map *C: \\ gebruikers \\ \< gebruikers naam \> \\ documenten \\ Data Science scripts* op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.
 
 We gaan ervan uit dat de gegevens voor Hive-tabellen een **gedecomprimeerde** tabel indeling hebben en dat de gegevens zijn geüpload naar de standaard container van het opslag account dat wordt gebruikt door het Hadoop-cluster.
 
@@ -54,7 +54,7 @@ Bij het verzenden van een Hive-query kunt u ook de bestemming van de uitvoer van
 ### <a name="submit-hive-queries-through-hadoop-command-line-in-headnode-of-hadoop-cluster"></a><a name="headnode"></a>Hive-query's verzenden via Hadoop-opdracht regel in hoofd knooppunt van Hadoop-cluster
 Als de Hive-query complex is, leidt het verzenden van deze rechtstreeks in het hoofd knooppunt van het Hadoop-cluster ertoe toe dat deze sneller kan worden omzeild dan het verzenden met een Hive-editor of Azure PowerShell scripts.
 
-Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop-opdracht regel op het bureau blad van het hoofd knooppunt `cd %hive_home%\bin`en voer de opdracht in.
+Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop-opdracht regel op het bureau blad van het hoofd knooppunt en voer de opdracht in `cd %hive_home%\bin` .
 
 U kunt op drie manieren Hive-query's verzenden in de Hadoop-opdracht regel:
 
@@ -63,12 +63,12 @@ U kunt op drie manieren Hive-query's verzenden in de Hadoop-opdracht regel:
 * met de Hive-opdracht console
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Hive-query's rechtstreeks verzenden in de Hadoop-opdracht regel.
-U kunt de opdracht uitvoeren `hive -e "<your hive query>;` als om eenvoudige Hive-query's rechtstreeks in Hadoop-opdracht regel in te dienen. Hier volgt een voor beeld waarin het rode vak een overzicht geeft van de opdracht waarmee de Hive-query wordt verzonden. in het groene vak wordt de uitvoer van de Hive-query beschreven.
+U kunt de opdracht uitvoeren als `hive -e "<your hive query>;` om eenvoudige Hive-query's rechtstreeks in Hadoop-opdracht regel in te dienen. Hier volgt een voor beeld waarin het rode vak een overzicht geeft van de opdracht waarmee de Hive-query wordt verzonden. in het groene vak wordt de uitvoer van de Hive-query beschreven.
 
 ![Opdracht voor het verzenden van Hive-query met uitvoer van Hive-query](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>Hive-query's in. HQL-bestanden verzenden
-Wanneer de Hive-query ingewik kelder is en meerdere lijnen heeft, is het bewerken van query's in opdracht regel of Hive-opdracht console niet praktisch. U kunt ook een tekst editor gebruiken in het hoofd knooppunt van het Hadoop-cluster om de Hive-query's in een. HQL-bestand op te slaan in een lokale map van het hoofd knooppunt. Vervolgens kan de Hive-query in het bestand '. HQL ' als volgt worden verzonden `-f` met behulp van het argument:
+Wanneer de Hive-query ingewik kelder is en meerdere lijnen heeft, is het bewerken van query's in opdracht regel of Hive-opdracht console niet praktisch. U kunt ook een tekst editor gebruiken in het hoofd knooppunt van het Hadoop-cluster om de Hive-query's in een. HQL-bestand op te slaan in een lokale map van het hoofd knooppunt. Vervolgens kan de Hive-query in het bestand '. HQL ' als volgt worden verzonden met behulp van het `-f` argument:
 
     hive -f "<path to the '.hql' file>"
 
@@ -76,13 +76,13 @@ Wanneer de Hive-query ingewik kelder is en meerdere lijnen heeft, is het bewerke
 
 **Scherm afdruk van voortgangs status onderdrukken van Hive-query's**
 
-Na het uitvoeren van Hive-query op de Hadoop-opdracht regel wordt de voortgang van de taak toewijzen/verminderen standaard afgedrukt op het scherm. Als u de scherm afdruk van de voortgang van de taak toewijzing/verminderen wilt onderdrukken, kunt `-S` u als volgt een argument ("S" in hoofd letters) op de opdracht regel gebruiken:
+Na het uitvoeren van Hive-query op de Hadoop-opdracht regel wordt de voortgang van de taak toewijzen/verminderen standaard afgedrukt op het scherm. Als u de scherm afdruk van de voortgang van de taak toewijzing/verminderen wilt onderdrukken, kunt u `-S` als volgt een argument ("S" in hoofd letters) op de opdracht regel gebruiken:
 
     hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive-query's in Hive-opdracht console verzenden.
-U kunt ook eerst de Hive-opdracht console invoeren door de `hive` opdracht in Hadoop opdracht regel uit te voeren en vervolgens Hive-Query's in Hive-opdracht console te verzenden. Hier volgt een voorbeeld. In dit voor beeld markeren de twee rode vakjes de opdrachten die worden gebruikt om de Hive-opdracht console in te voeren en de Hive-query die respectievelijk in de Hive-opdracht console is ingediend. In het groene vak wordt de uitvoer van de Hive-query gemarkeerd.
+U kunt ook eerst de Hive-opdracht console invoeren door de opdracht `hive` in Hadoop opdracht regel uit te voeren en vervolgens Hive-query's in Hive-opdracht console te verzenden. Hier volgt een voorbeeld. In dit voor beeld markeren de twee rode vakjes de opdrachten die worden gebruikt om de Hive-opdracht console in te voeren en de Hive-query die respectievelijk in de Hive-opdracht console is ingediend. In het groene vak wordt de uitvoer van de Hive-query gemarkeerd.
 
 ![Component-opdracht console openen en opdracht invoeren, Hive-query-uitvoer weer geven](./media/move-hive-tables/run-hive-queries-2.png)
 
@@ -93,7 +93,7 @@ Als u de resultaten van de Hive-query wilt uitvoeren naar een lokale map op het 
 
     hive -e "<hive query>" > <local path in the head node>
 
-In het volgende voor beeld wordt de uitvoer van Hive-query naar een bestand `hivequeryoutput.txt` in de `C:\apps\temp`map geschreven.
+In het volgende voor beeld wordt de uitvoer van Hive-query naar een bestand `hivequeryoutput.txt` in de map geschreven `C:\apps\temp` .
 
 ![Uitvoer van Hive-query](./media/move-hive-tables/output-hive-results-1.png)
 
@@ -103,7 +103,7 @@ U kunt ook de resultaten van de Hive-query uitvoeren naar een Azure-Blob in de s
 
     insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-In het volgende voor beeld wordt de uitvoer van Hive-query geschreven naar een BLOB `queryoutputdir` -map binnen de standaard container van het Hadoop-cluster. Hier hoeft u alleen de naam van de map op te geven, zonder de naam van de blob. Er wordt een fout gegenereerd als u namen van mappen en blobs opgeeft, `wasb:///queryoutputdir/queryoutput.txt`zoals.
+In het volgende voor beeld wordt de uitvoer van Hive-query geschreven naar een BLOB-map `queryoutputdir` binnen de standaard container van het Hadoop-cluster. Hier hoeft u alleen de naam van de map op te geven, zonder de naam van de blob. Er wordt een fout gegenereerd als u namen van mappen en blobs opgeeft, zoals `wasb:///queryoutputdir/queryoutput.txt` .
 
 ![Uitvoer van Hive-query](./media/move-hive-tables/output-hive-results-2.png)
 
@@ -112,7 +112,7 @@ Als u de standaard container van het Hadoop-cluster met Azure Storage Explorer o
 ![Azure Storage Explorer de uitvoer van de Hive-query wordt weer gegeven](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>Hive-query's verzenden met de Hive-editor
-U kunt ook de query console (Hive-editor) gebruiken door een URL in te voeren van het formulier *https:\//\<Hadoop-cluster naam>. azurehdinsight.net/Home/HiveEditor* in een webbrowser. U moet zijn aangemeld met de informatie in deze console en daarom moet u uw Hadoop-cluster referenties hier opgeven.
+U kunt ook de query console (Hive-editor) gebruiken door een URL in te voeren van het formulier *https: \/ / \< Hadoop-cluster naam>. azurehdinsight.net/Home/HiveEditor* in een webbrowser. U moet zijn aangemeld met de informatie in deze console en daarom moet u uw Hadoop-cluster referenties hier opgeven.
 
 ### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>Hive-query's met Azure PowerShell-opdrachten verzenden
 U kunt ook Power shell gebruiken om Hive-query's te verzenden. Zie [Hive-taken verzenden met Power shell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)voor instructies.
@@ -137,11 +137,11 @@ Dit is de Hive-query waarmee een Hive-tabel wordt gemaakt.
 
 Hier volgen de beschrijvingen van de velden die u nodig hebt om in te sluiten en andere configuraties:
 
-* **database naam\>: de naam van de data base die u wilt \<** maken. Als u alleen de standaard database wilt gebruiken, kan de query "*Data Base maken...*" worden wegge laten.
-* **tabel naam\>: de naam van de tabel die u in de opgegeven Data Base wilt \<** maken. Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden aangeduid met \<\> * \<een tabel naam\> * zonder database naam.
-* **veld scheidings\>teken: het scheidings teken dat velden in het gegevens bestand begrenst dat naar de Hive-tabel moet worden geüpload. \<**
-* **lijn scheidings\>teken: het scheidings teken dat de regels in het gegevens bestand opsplitsen. \<**
-* **opslag locatie\>: de locatie van de Azure Storage om de gegevens van Hive-tabellen op te \<** slaan. Als u geen *locatie \<opslag locatie\>* opgeeft, worden de data base en de tabellen standaard opgeslagen in *Hive/Warehouse/* Directory in de standaard container van het Hive-cluster. Als u de opslag locatie wilt opgeven, moet de opslag locatie zich in de standaard container voor de data base en de tabellen bevinden. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *wasb:///\<Directory 1>/'* of *'\<wasb:///Directory 1>\</map 2>/'*, enzovoort. Nadat de query is uitgevoerd, worden de relatieve directory's in de standaard container gemaakt.
+* ** \< database naam \> **: de naam van de data base die u wilt maken. Als u alleen de standaard database wilt gebruiken, kan de query "*Data Base maken...*" worden wegge laten.
+* ** \< tabel naam \> **: de naam van de tabel die u in de opgegeven Data Base wilt maken. Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden aangeduid met een * \< tabel naam \> * zonder \< database naam \> .
+* ** \< veld scheidings \> **teken: het scheidings teken dat velden in het gegevens bestand begrenst dat naar de Hive-tabel moet worden geüpload.
+* ** \< lijn scheidings \> **teken: het scheidings teken dat de regels in het gegevens bestand opsplitsen.
+* ** \< opslag locatie \> **: de locatie van de Azure Storage om de gegevens van Hive-tabellen op te slaan. Als u geen *locatie \< opslag \> locatie*opgeeft, worden de data base en de tabellen standaard opgeslagen in *Hive/Warehouse/* Directory in de standaard container van het Hive-cluster. Als u de opslag locatie wilt opgeven, moet de opslag locatie zich in de standaard container voor de data base en de tabellen bevinden. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *wasb:/// \< directory 1>/'* of *' wasb:/// \< Directory 1>/ \< map 2>/'*, enzovoort. Nadat de query is uitgevoerd, worden de relatieve directory's in de standaard container gemaakt.
 * **TBLPROPERTIES ("Skip. header. line. Count" = "1")**: als het gegevens bestand een header-regel bevat, moet u deze eigenschap toevoegen **aan het einde** van de query *Create Table* . Anders wordt de header regel geladen als een record in de tabel. Als het gegevens bestand geen header-regel heeft, kan deze configuratie worden wegge laten in de query.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Gegevens laden in Hive-tabellen
@@ -149,7 +149,7 @@ Dit is de Hive-query waarmee gegevens worden geladen in een Hive-tabel.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **pad naar blobgegevens\>: als het blobbestand dat naar de Hive-tabel moet worden geüpload zich in de standaard container van het HDInsight Hadoop-cluster bevindt, moet het pad naar BLOB-gegevens in de indeling ' wasb://in deze container voor komen>/BLOB-bestands naam> '. \<** * \<\> * *\<\<* Het blobbestand kan ook een extra container van het HDInsight Hadoop-cluster zijn. In dit geval moet het * \<pad naar de\> BLOB-gegevens* in de indeling *'\<wasb://container name \<' staan>naam van het\<opslag account>. blob.core.Windows.net/BLOB-bestands naam> '*.
+* ** \< pad naar blobgegevens \> **: als het blobbestand dat naar de Hive-tabel moet worden geüpload zich in de standaard container van het HDInsight Hadoop-cluster bevindt, moet het * \< pad naar BLOB-gegevens \> * in de indeling *' wasb:// \< in deze container voor komen>/BLOB- \< Bestands naam> '*. Het blobbestand kan ook een extra container van het HDInsight Hadoop-cluster zijn. In dit geval moet het * \< pad naar de \> BLOB-gegevens* de indeling *' wasb:// \< container name> @ \< Storage account name>. blob.core.Windows.net/ \< BLOB-bestands naam> '* hebben.
 
   > [!NOTE]
   > De BLOB-gegevens die naar de Hive-tabel moeten worden geüpload, moeten zich in de standaard-of extra container van het opslag account voor het Hadoop-cluster bevinden. Als dat niet het geval is, kan de query voor het *laden van gegevens* geen toegang krijgen tot de gegevens.
@@ -174,7 +174,7 @@ Hier volgt de Hive-query waarmee een gepartitioneerde tabel wordt gemaakt en er 
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-Bij het uitvoeren van query's op gepartitioneerde tabellen wordt aanbevolen om de partitie voorwaarde toe **beginning** te voegen `where` aan het begin van de component, waardoor de efficiëntie van de zoek opdracht wordt verbeterd.
+Bij het uitvoeren van query's op gepartitioneerde tabellen wordt aanbevolen om de partitie voorwaarde toe te voegen aan het **begin** van de `where` component, waardoor de efficiëntie van de zoek opdracht wordt verbeterd.
 
     select
         field1, field2, ..., fieldN
@@ -216,7 +216,7 @@ Selecteer gegevens uit de externe tabel in stap 1 en voeg deze in de tabel ORC i
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Als de * \<naam\>van de TEXTFILE-\< tabel database. de naam\> van de externe TEXTFILE-tabel* bevat partities, in stap 3, de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele selecteert als een veld in de gegevensset die wordt geretourneerd. Deze invoegen in de * \<database naam\>.\< \> De naam* van de Orc-tabel is mislukt, omdat * \<de database naam.\< \> De Orc-\> tabel naam* heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen in de * \<database naam\>specifiek selecteren.\< De naam\> * van de Orc-tabel is als volgt:
+> Als de naam van de TEXTFILE-tabel * \< database \> . \< de naam \> van de externe TEXTFILE-tabel* bevat partities, in stap 3, de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele selecteert als een veld in de gegevensset die wordt geretourneerd. Deze invoegen in de * \< database naam \> . \< De naam \> * van de Orc-tabel is mislukt, omdat de * \< database naam \> . \< De ORC- \> tabel naam* heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen in de * \< database naam specifiek selecteren \> . \< De naam \> * van de Orc-tabel is als volgt:
 >
 >
 
@@ -225,7 +225,7 @@ Selecteer gegevens uit de externe tabel in stap 1 en voeg deze in de tabel ORC i
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Het is veilig om de * \<\> tabel naam van het externe tekst bestand* te verwijderen wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in * \<de database naam\>.\< ORC-tabel\>naam*:
+Het is veilig om de * \< tabel naam \> van het externe tekst bestand* te verwijderen wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in de * \< database naam \> . \< ORC-tabel \> naam*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

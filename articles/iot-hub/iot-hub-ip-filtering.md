@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649371"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849829"
 ---
 # <a name="use-ip-filters"></a>IP-filters gebruiken
 
@@ -39,17 +39,19 @@ Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-r
 
 Het **IP-filter** raster in de portal voor een IOT-hub is standaard leeg. Deze standaard instelling betekent dat uw hub verbindingen van elk IP-adres accepteert. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert.
 
-![IoT Hub standaard instellingen voor IP-filter](./media/iot-hub-ip-filtering/ip-filter-default.png)
+Als u de pagina IP-filter instellingen wilt weer geven, selecteert u **netwerken**, **open bare toegang**en kiest u **geselecteerde IP-bereiken**:
+
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="IoT Hub standaard instellingen voor IP-filter":::
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Een IP-filter regel toevoegen of bewerken
 
 Als u een IP-filter regel wilt toevoegen, selecteert u **+ IP-filter regel toevoegen**.
 
-![Een IP-filter regel toevoegen aan een IoT-hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Een IP-filter regel toevoegen aan een IoT-hub":::
 
 Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
 
-![Nadat u een IP-filter regel toevoegen hebt geselecteerd](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Nadat u een IP-filter regel toevoegen hebt geselecteerd":::
 
 * Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` worden geaccepteerd.
 
@@ -59,7 +61,7 @@ Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
 
 Nadat u de velden hebt ingevuld, selecteert u **Opslaan** om de regel op te slaan. U ziet een waarschuwing dat de update wordt uitgevoerd.
 
-![Melding over het opslaan van een IP-filter regel](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Melding over het opslaan van een IP-filter regel":::
 
 De optie **toevoegen** is uitgeschakeld wanneer u het maximum van 10 IP-filter regels bereikt.
 
@@ -69,7 +71,7 @@ Als u een bestaande regel wilt bewerken, selecteert u de gegevens die u wilt wij
 
 Als u een IP-filter regel wilt verwijderen, selecteert u het prullenbak pictogram op die rij en selecteert u vervolgens **Opslaan**. De regel wordt verwijderd en de wijziging wordt opgeslagen.
 
-![Een IoT Hub IP-filter regel verwijderen](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Een IoT Hub IP-filter regel verwijderen":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-filters ophalen en bijwerken met behulp van Azure CLI
 
@@ -159,11 +161,10 @@ U kunt de volg orde van de IP-filter regels in het raster wijzigen door te klikk
 
 Klik op **Opslaan**als u de nieuwe IP-filter regel wilt opslaan.
 
-![De volg orde van de IoT Hub IP-filter regels wijzigen](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="De volg orde van de IP-filter regels van uw IoT-HUb wijzigen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
-* [Controle van bewerkingen](iot-hub-operations-monitoring.md)
 * [IoT Hub metrische gegevens](iot-hub-metrics.md)

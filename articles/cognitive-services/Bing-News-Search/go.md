@@ -8,29 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053813"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869269"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Snelstartgids: Nieuws resultaten ophalen met behulp van de Bing News Search REST API en go
 
 In deze Snelstartgids wordt gebruikgemaakt van de go-taal om de Bing Nieuws zoeken-API aan te roepen. De resultaten zijn onder andere namen en Url's van nieuws bronnen die worden geïdentificeerd door de query teken reeks.
 
 ## <a name="prerequisites"></a>Vereisten
-* De [Go binaire bestanden](https://golang.org/dl/) installeren
-* Installeer de go-spew-bibliotheek voor it-pretty printer om resultaten weer te geven
-    * Deze bibliotheek installeren:`$ go get -u https://github.com/davecgh/go-spew`
+* Installeer de [binaire bestanden voor Go](https://golang.org/dl/).
+* Installeer de go-spew-bibliotheek om een diepe mooie printer te gebruiken om de resultaten weer te geven. Gebruik deze opdracht om de bibliotheek te installeren: `$ go get -u https://github.com/davecgh/go-spew` .
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Een project maken en bibliotheken importeren
 
-Maak een nieuw go-project in uw IDE of editor. Importeer `net/http` vervolgens voor aanvragen `ioutil` om het antwoord te lezen en `encoding/json` om de JSON-tekst van de resultaten te verwerken. De go-spew-bibliotheek is nodig voor het parseren van JSON. 
+Maak een nieuw go-project in uw IDE of editor. Importeer vervolgens `net/http` voor aanvragen `ioutil` om de reactie te lezen, `encoding/json` om de JSON-tekst van de resultaten te verwerken en de `go-spew` bibliotheek om de JSON-resultaten te parseren. 
 
 ```go
 package main
@@ -47,7 +46,7 @@ import (
 
 ## <a name="create-a-struct-to-format-the-news-search-results"></a>Een struct maken om de zoek resultaten van de nieuws te Format teren
 
-Met de struct `NewsAnswer` worden de gegevens opgemaakt die zijn opgegeven in het antwoord. De JSON van de reactie is meerdere niveaus en zeer complex.  De volgende implementatie heeft betrekking op de essentiële elementen.
+De `NewsAnswer` struct maakt de gegevens op die zijn opgenomen in de JSON van de reactie, met meerdere niveaus en complex. De volgende implementatie heeft betrekking op de essentiële onderdelen:
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +86,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>De hoofdfunctie declareren en variabelen definiëren  
 
-Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eind punt juist is en vervang vervolgens de `token` waarde door een geldige abonnements sleutel van uw Azure-account. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```go
 func main() {
@@ -108,7 +107,7 @@ func main() {
 
 ## <a name="query-and-header"></a>Query en koptekst
 
-De query teken reeks en de toegangs sleutel header toevoegen
+Voeg de query reeks en de toegangs sleutel header toe.
 
 ```go
 // Add the query to the request.  
@@ -139,7 +138,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-Verzend de aanvraag en lees de resultaten `ioutil`met behulp van.
+Verzend de aanvraag en lees de resultaten met behulp van `ioutil` .
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +159,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-Met `Unmarshall` de functie wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Nieuws zoeken-API.  Vervolgens kunt u de knoop punten uit de resultaten weer `go-spew` geven met behulp van de pretty printer.
+`Unmarshall`Met de functie wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Bing Nieuws zoeken-API. Vervolgens worden de knoop punten weer gegeven van de resultaten met de `go-spew` mooie printer.
 
 ```go
 // Create a new answer object 
@@ -181,7 +180,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>Resultaten
 
-De resultaten bevatten de naam en URL van elk resultaat.
+De volgende uitvoer bevat de naam en URL van elk resultaat:
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"

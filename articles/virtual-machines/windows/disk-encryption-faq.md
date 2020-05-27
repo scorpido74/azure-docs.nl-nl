@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6748ef520b3d03727aca045660f7563f75b200d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828335"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848835"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -48,8 +48,6 @@ Het [overzichts artikel Azure Disk Encryption](disk-encryption-overview.md) beva
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Kan ik zowel opstart-als gegevens volumes versleutelen met Azure Disk Encryption?
 
 U kunt zowel opstart-als gegevens volumes versleutelen, maar u kunt de gegevens niet versleutelen zonder eerst het volume van het besturings systeem te versleutelen.
-
-Nadat u het volume van het besturings systeem hebt versleuteld, wordt het uitschakelen van versleuteling op het volume van het besturings systeem niet ondersteund.
 
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Kan ik een niet-gekoppeld volume versleutelen met Azure Disk Encryption?
 

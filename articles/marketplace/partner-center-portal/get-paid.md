@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744560"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849022"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>Betalen in commerciële Marketplace
+# <a name="getting-paid-in-the-commercial-marketplace"></a>Betalen in de commerciële Marketplace
 
 Hieronder vindt u belang rijke informatie over het ontvangen van betalingen voor uw aanbiedingen, invoeg toepassingen en reclame-inkomsten.
 
@@ -43,17 +43,15 @@ U hebt ook de mogelijkheid om een prijs voor vrije vorm in te voeren voor uw keu
 
 Houd er rekening mee dat de prijs die u selecteert, mogelijk verkoop of belasting toegevoegde waarde bevat die uw klanten moeten betalen. Zie [belasting Details voor betaalde aanbieding](tax-details-paid-transactions.md)voor meer informatie.
 
-
 ## <a name="payout-reporting"></a>Betalingsrapportage
 
 U kunt meer informatie krijgen over uw betalings gegevens en rapporten downloaden in het **overzicht** van uitbetalingen van [Partner Center](https://partner.microsoft.com/dashboard). Zie [overzicht van uitbetalings](payout-summary-overview.md)overzicht voor meer informatie over de informatie die hier wordt weer gegeven en hoe we het geld dat u verdient gecategoriseerd.
-
 
 ## <a name="payout-time-frame"></a>Tijds bestek voor uitbetaling
 
 Betalingen worden maandelijks uitgevoerd (op voor waarde dat de toepasselijke betalings drempel is bereikt en u hebt uw betaling niet in de wacht stand gezet, zoals hieronder wordt beschreven). We sturen doorgaans een betaling die in een bepaalde maand vervalt op de vijftiende dag van die maand. Houd er rekening mee dat betalingen over het algemeen tussen 3 en 10 extra dagen duren om uw uitbetalings account te bereiken. Zie [betalings drempels, methoden en tijd frames](payment-thresholds-methods-timeframes.md)voor meer informatie.
 
-##  <a name="payout-hold-status"></a>Status uitbetalings blokkering
+## <a name="payout-hold-status"></a>Status uitbetalings blokkering
 
 Standaard worden betalingen maandelijks verzonden, zoals hierboven wordt beschreven. U hebt echter de mogelijkheid om uw uitbetalingen voor een programma in de wacht te zetten, waardoor we geen betalingen naar uw account kunnen verzenden. Als u ervoor kiest om uw uitbetalingen in de wacht te zetten, blijven we de omzet die u behaalt vastleggen en de details in de **samen vatting**van de betaling opgeven. Er worden echter geen betalingen naar uw account verzonden totdat u de blok kering verwijdert.
 

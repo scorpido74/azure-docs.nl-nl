@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724255"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849413"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -112,7 +112,7 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestands servers en 448 voor app-ser
 
 ## <a name="support-for-file-level-restore"></a>Ondersteuning voor herstel op bestands niveau
 
-**Herstellen** | **Geboden**
+**Herstellen** | **Ondersteund**
 --- | ---
 Bestanden herstellen over besturings systemen | U kunt bestanden herstellen op elke computer die hetzelfde (of compatibel) besturings systeem heeft als de back-up van de virtuele machine. Zie de [tabel met compatibele besturings systemen](backup-azure-restore-files-from-vm.md#system-requirements).
 Bestanden herstellen van versleutelde Vm's | Niet ondersteund.
@@ -125,7 +125,7 @@ Bestanden herstellen met speciale netwerk instellingen | Terugzetten wordt niet 
 
 De volgende tabel bevat een overzicht van de ondersteuning voor back-ups tijdens taken voor VM-beheer, zoals het toevoegen of vervangen van VM-schijven.
 
-**Herstellen** | **Geboden**
+**Herstellen** | **Ondersteund**
 --- | ---
 Herstellen in het abonnement/de regio/zone. | Niet ondersteund.
 Herstellen naar een bestaande virtuele machine | Gebruik de optie schijf vervangen.
@@ -172,7 +172,7 @@ Gedeelde opslag| Het maken van back-ups van virtuele machines met Cluster Shared
 
 ### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Back-ups van virtuele machines van Azure met Maxi maal 32 schijven
 
-Azure Backup ondersteunt nu back-ups van virtuele Azure-machines met Maxi maal 32 gekoppelde schijven.  Deze functie is beschikbaar in de open bare preview in West-Centraal vs.  Als u geïnteresseerd bent in deze functie in andere regio's, kunt u zich aanmelden voor de beperkte preview door te schrijven naar ons AskAzureBackupTeam@microsoft.com .  
+Azure Backup ondersteunt nu back-ups van virtuele Azure-machines met Maxi maal 32 gekoppelde schijven.  Deze functie is beschikbaar in de open bare preview in West-Centraal VS, Canada-centraal, Azië-Zuidoost, Brazilië-zuid, Canada-oost, Frankrijk-centraal, Frankrijk-zuid, India centraal, India-Zuid, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Zuid-Afrika-noord, UK-zuid, UK-West, Australië-Oost.  Als u geïnteresseerd bent in deze functie in andere regio's, kunt u zich aanmelden voor de beperkte preview door te schrijven naar ons AskAzureBackupTeam@microsoft.com .  
 
 >[!NOTE]
 >Azure Backup ondersteunt Maxi maal 16 schijven voor virtuele Azure-machines met onbeheerde schijven of klassieke Vm's.
@@ -231,10 +231,10 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-On-premises Windows-machines zonder DPM/MABS | NA | ![Ja][green]
+On-premises Windows-machines zonder DPM/MABS | NA | ![Yes][green]
 Azure-VM's | NA | NA
-On-premises/Azure VM's met DPM | ![Ja][green] | ![Ja][green]
-On-premises/Azure VM's met MABS | ![Ja][green] | ![Ja][green]
+On-premises/Azure VM's met DPM | ![Yes][green] | ![Ja][green]
+On-premises/Azure VM's met MABS | ![Yes][green] | ![Ja][green]
 
 ## <a name="next-steps"></a>Volgende stappen
 

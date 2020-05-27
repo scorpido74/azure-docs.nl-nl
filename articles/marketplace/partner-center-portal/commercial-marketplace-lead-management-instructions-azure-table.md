@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791014"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848008"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -151,7 +151,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
     1. **Naar**: Voer een e-mail adres in voor iedereen die deze melding ontvangt.
     1. **Onderwerp**: Geef een onderwerp op voor het e-mail adres. Een voor beeld is **nieuwe leads.**
-    1. **Hoofd**tekst: Voeg de tekst toe die u in elk e-mail bericht wilt toevoegen (optioneel) en `body('Get_entities')?['value']`plak deze vervolgens in.
+    1. **Hoofd**tekst: Voeg de tekst toe die u in elk e-mail bericht wilt toevoegen (optioneel) en plak deze vervolgens in `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >U kunt aanvullende statische of dynamische gegevens punten invoegen naar de hoofd tekst van deze e-mail.
@@ -182,8 +182,9 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
 
-1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
-     ![Leadbeheer](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Leads van klanten":::
 
 1. Selecteer in het pop-upvenster **verbindings Details** de optie **Azure-tabel** voor de **doel locatie**van de lead. 
      ![Lead beheer, verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

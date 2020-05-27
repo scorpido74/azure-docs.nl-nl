@@ -60,6 +60,32 @@
           href: learn/tutorial-app-dashboards.md
 - name: Voorbeelden
   items:
+    - name: Resource Manager-sjablonen
+      items:
+        - name: Overzicht
+          href: samples/resource-manager-samples.md
+        - name: Agents
+          href: samples/resource-manager-agent.md
+        - name: Waarschuwingen
+          items:
+            - name: Waarschuwingsregels voor logboeken
+              href: samples/resource-manager-alerts-log.md
+            - name: Regels voor metrische waarschuwingen
+              href: samples/resource-manager-alerts-metric.md
+            - name: Actiegroepen
+              href: samples/resource-manager-action-groups.md
+        - name: Diagnostische instellingen
+          href: samples/resource-manager-diagnostic-settings.md
+        - name: Log Analytics-werkruimten
+          href: samples/resource-manager-workspace.md
+        - name: Logboekquery's
+          href: samples/resource-manager-log-queries.md
+        - name: Werkmappen
+          href: samples/resource-manager-workbooks.md
+        - name: Azure Monitor voor containers
+          href: samples/resource-manager-container-insights.md
+        - name: Azure Monitor voor virtuele machines
+          href: samples/resource-manager-vminsights.md
     - name: Azure CLI
       href: samples/cli-samples.md
     - name: Azure PowerShell

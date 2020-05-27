@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409493"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848242"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-ondersteuning in IoT Hub
 
@@ -24,7 +24,7 @@ TLS 1,0 en 1,1 worden beschouwd als verouderd en zijn gepland voor afschaffing. 
 
 Voor extra beveiliging wordt u aangeraden om uw IoT-hubs zo te configureren dat *alleen* client verbindingen met TLS-versie 1,2 worden toegestaan en het gebruik van [Aanbevolen code](#recommended-ciphers)ringen wordt afgedwongen.
 
-Hiertoe dient u een nieuw IoT Hub in te richten in een van de [ondersteunde regio's](#supported-regions) en `minTlsVersion` de eigenschap `1.2` in te stellen op de resource specificatie van de IOT hub van uw Azure Resource Manager-sjabloon:
+Hiertoe dient u een nieuw IoT Hub in te richten in een van de [ondersteunde regio's](#supported-regions) en de `minTlsVersion` eigenschap in te stellen op de `1.2` resource specificatie van de IoT hub van uw Azure Resource Manager-sjabloon:
 
 ```json
 {
@@ -54,7 +54,7 @@ Met de gemaakte IoT Hub resource die gebruikmaakt van deze configuratie, worden 
 > [!NOTE]
 > De `minTlsVersion` eigenschap is alleen-lezen en kan niet worden gewijzigd nadat de IOT hub resource is gemaakt. Daarom is het essentieel dat u op de juiste wijze test en controleert of *al* uw IOT-apparaten en-Services compatibel zijn met TLS 1,2 en de [Aanbevolen coderingen](#recommended-ciphers) vooraf.
 
-### <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 IoT-hubs waarvoor het gebruik van TLS 1,2 vereist is, kunnen in de volgende regio's worden gemaakt:
 
@@ -67,7 +67,7 @@ IoT-hubs waarvoor het gebruik van TLS 1,2 vereist is, kunnen in de volgende regi
 > [!NOTE]
 > Bij failovers blijft de `minTlsVersion` eigenschap van uw IOT hub geldig in de geo-paard Region-post-failover.
 
-### <a name="recommended-ciphers"></a>Aanbevolen code ringen
+## <a name="recommended-ciphers"></a>Aanbevolen code ringen
 
 IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook het gebruik van de volgende aanbevolen code ringen:
 
@@ -76,7 +76,22 @@ IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook 
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>TLS 1,2 gebruiken in uw IoT Hub Sdk's
+Voor IoT-hubs die niet zijn geconfigureerd voor TLS 1,2-afdwinging, werkt TLS 1,2 nog steeds met de volgende code ringen:
+
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_CBC_SHA256`
+* `TLS_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+## <a name="use-tls-12-in-your-iot-hub-sdks"></a>TLS 1,2 gebruiken in uw IoT Hub Sdk's
 
 Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegestane code ringen in IoT Hub client-Sdk's.
 
@@ -89,6 +104,6 @@ Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegest
 | Node.js   | Versie 1.12.2 of nieuwer            | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie
+## <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie
 
 IoT Edge-apparaten kunnen worden geconfigureerd voor het gebruik van TLS 1,2 bij de communicatie met IoT Hub. Gebruik voor dit doel de pagina met de [IOT Edge documentatie](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

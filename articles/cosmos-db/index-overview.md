@@ -1,17 +1,17 @@
 ---
 title: Indexeren in Azure Cosmos DB
 description: Begrijpen hoe indexering werkt in Azure Cosmos DB, verschillende soorten indexen, zoals bereik, ruimtelijke, samengestelde indexen worden ondersteund.
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.author: thweiss
-ms.openlocfilehash: fb3467e60ada92c90a84d8e89f6b5f5e94ca42e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746432"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849787"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -105,7 +105,7 @@ De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik ind
    ```
 
    ```sql
-   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
 - `ORDER BY`aanvragen

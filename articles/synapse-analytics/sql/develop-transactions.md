@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c921b05dd98c55c8e7db8beac93d1b724de1cd7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428717"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869299"
 ---
 # <a name="using-transactions-in-sql-pool"></a>Trans acties in de SQL-groep gebruiken
 
@@ -92,7 +92,7 @@ Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt 
 De SQL-groep maakt gebruik van de functie XACT_STATE () om een mislukte trans actie te rapporteren met de waarde-2. Deze waarde betekent dat de trans actie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. Er kan `SELECT 1/0` bijvoorbeeld een fout optreden, maar geen trans actie geforceerd worden uitgevoerd. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met de SQL-groep kunt u dit echter niet doen. Als er een fout optreedt in een SQL-groeps transactie, wordt automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie terug is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code gebruikmaakt van XACT_STATE (), omdat u mogelijk code wijzigingen moet aanbrengen.
+> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. Er `SELECT 1/0` kan bijvoorbeeld een fout optreden, maar geen trans actie geforceerd worden uitgevoerd. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met de SQL-groep kunt u dit echter niet doen. Als er een fout optreedt in een SQL-groeps transactie, wordt automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie terug is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code gebruikmaakt van XACT_STATE (), omdat u mogelijk code wijzigingen moet aanbrengen.
 
 In SQL Server ziet u bijvoorbeeld een trans actie die er ongeveer als volgt uitziet:
 
@@ -206,4 +206,4 @@ De verschillen zijn als volgt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor trans acties](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over het optimaliseren van trans acties. Er zijn ook aanvullende best practices-hand leidingen beschikbaar voor [SQL-groep](best-practices-sql-pool.md) en [SQL on-demand (preview)](on-demand-workspace-overview.md).
+Zie [Aanbevolen procedures voor trans acties](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over het optimaliseren van trans acties. Er zijn ook aanvullende best practices-hand leidingen beschikbaar voor [SQL-groep](best-practices-sql-pool.md) en [SQL on-demand (preview)](best-practices-sql-on-demand.md).

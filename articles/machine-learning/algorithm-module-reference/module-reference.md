@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/13/2020
-ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 53cfb983579c8a02ed6c1d80ff4821efa5950298
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458195"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848208"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
@@ -27,15 +27,15 @@ Zie voor hulp bij het kiezen van algoritmen
 * [Cheat-werk blad Azure Machine Learning-algoritme](../algorithm-cheat-sheet.md)
 
 > [!TIP]
-> In een pijp lijn in de ontwerp functie kunt u informatie ophalen over een specifieke module. Selecteer de module en selecteer vervolgens de koppeling **meer Help** in het deel venster **snelle Help** .
+> In een pijp lijn in de ontwerp functie kunt u informatie ophalen over een specifieke module. Selecteer de koppeling **meer informatie** in de module kaart bij het aanwijzen van de module in de module lijst of in het rechterdeel venster van de module.
 
 ## <a name="data-preparation-modules"></a>Modules voor gegevens voorbereiding
 
 
 | Functionaliteit | Beschrijving | Module |
 | --- |--- | --- |
-| Invoer en uitvoer van gegevens | Verplaats gegevens van Cloud bronnen naar uw pijp lijn. Schrijf uw resultaten of tussenliggende gegevens naar Azure Storage, een SQL database of Hive, terwijl u een pijp lijn uitvoert, of gebruik Cloud opslag voor het uitwisselen van gegevens tussen pijp lijnen.  | [Gegevens handmatig invoeren](enter-data-manually.md) <br/> [Gegevens exporteren](export-data.md) <br/> [Gegevens importeren](import-data.md) |
-| Gegevenstransformatie | Bewerkingen op gegevens die uniek zijn voor machine learning, zoals het normaliseren of Binningen van gegevens, het beperken van de afmetingen en het converteren van gegevens over verschillende bestands indelingen.| [Kolommen toevoegen](add-columns.md) <br/> [Rijen toevoegen](add-rows.md) <br/> [Wiskundige bewerking toepassen](apply-math-operation.md) <br/> [SQL-transformatie toepassen](apply-sql-transformation.md) <br/> [Ontbrekende gegevens opschonen](clean-missing-data.md) <br/> [Waarden inperken](clip-values.md) <br/> [Converteren naar CSV](convert-to-csv.md) <br/> [Converteren naar gegevensset](convert-to-dataset.md) <br/> [Converteren naar indicatorwaarden](convert-to-indicator-values.md) <br/> [Metagegevens bewerken](edit-metadata.md) <br/> [Gegevens samenvoegen](join-data.md) <br/> [Gegevens normaliseren](normalize-data.md) <br/> [Partitie en voorbeeld](partition-and-sample.md)  <br/> [Dubbele rijen verwijderen](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Kolomtransformatie selecteren](select-columns-transform.md) <br/> [Kolommen in gegevensset selecteren](select-columns-in-dataset.md) <br/> [Gegevens splitsen](split-data.md) |
+| Gegevens invoer en-uitvoer | Verplaats gegevens van Cloud bronnen naar uw pijp lijn. Schrijf uw resultaten of tussenliggende gegevens naar Azure Storage, een SQL database of Hive, terwijl u een pijp lijn uitvoert, of gebruik Cloud opslag voor het uitwisselen van gegevens tussen pijp lijnen.  | [Gegevens handmatig invoeren](enter-data-manually.md) <br/> [Gegevens exporteren](export-data.md) <br/> [Gegevens importeren](import-data.md) |
+| Gegevens transformatie | Bewerkingen op gegevens die uniek zijn voor machine learning, zoals het normaliseren of Binningen van gegevens, het beperken van de afmetingen en het converteren van gegevens over verschillende bestands indelingen.| [Kolommen toevoegen](add-columns.md) <br/> [Rijen toevoegen](add-rows.md) <br/> [Wiskundige bewerking toepassen](apply-math-operation.md) <br/> [SQL-transformatie toepassen](apply-sql-transformation.md) <br/> [Ontbrekende gegevens opschonen](clean-missing-data.md) <br/> [Waarden inperken](clip-values.md) <br/> [Converteren naar CSV](convert-to-csv.md) <br/> [Converteren naar gegevensset](convert-to-dataset.md) <br/> [Converteren naar indicatorwaarden](convert-to-indicator-values.md) <br/> [Metagegevens bewerken](edit-metadata.md) <br/> [Gegevens groeperen in opslag locaties](group-data-into-bins.md) <br/> [Gegevens samenvoegen](join-data.md) <br/> [Gegevens normaliseren](normalize-data.md) <br/> [Partitie en voorbeeld](partition-and-sample.md)  <br/> [Dubbele rijen verwijderen](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Kolomtransformatie selecteren](select-columns-transform.md) <br/> [Kolommen in gegevensset selecteren](select-columns-in-dataset.md) <br/> [Gegevens splitsen](split-data.md) |
 | Functie selectie | Selecteer een subset van relevante, nuttige functies om te gebruiken bij het bouwen van een analytisch model. | [Functieselectie op basis van filters](filter-based-feature-selection.md) <br/> [Belang van permutatiefunctie](permutation-feature-importance.md) |
 | Statistische functies | Bieden een groot aantal statistische methoden die zijn gerelateerd aan data Science. | [Gegevens samenvatten](summarize-data.md)|
 
@@ -51,11 +51,11 @@ Zie voor hulp bij het kiezen van algoritmen
 
 | Functionaliteit | Beschrijving | Module |
 | --- |--- | --- |
-| Modeltraining | Voer gegevens uit via de algoritme. |  [Clustermodel trainen](train-clustering-model.md) <br/> [Model trainen](train-model.md)  <br/> [Model Hyperparameters afstemmen](tune-model-hyperparameters.md) |
+| Model training | Voer gegevens uit via de algoritme. |  [Clustermodel trainen](train-clustering-model.md) <br/> [Model trainen](train-model.md)  <br/> [Model Hyperparameters afstemmen](tune-model-hyperparameters.md) |
 | Model leren en evalueren | Meet de nauw keurigheid van het getrainde model. | [Transformatie toepassen](apply-transformation.md) <br/> [Gegevens aan cluster toewijzen](assign-data-to-clusters.md) <br/> [Kruisvalidatie van model valideren](cross-validate-model.md) <br/> [Model evalueren](evaluate-model.md) <br/> [Score Model](score-model.md) |
 | Python-taal | Schrijf code en sluit deze in een module in om python met uw pijp lijn te integreren. | [Python-model maken](create-python-model.md) <br/> [Python-script uitvoeren](execute-python-script.md) |
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-Script uitvoeren](execute-r-script.md) |
-| Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. | [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
+| Text Analytics | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Woord naar vector converteren](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
 | Aanbeveling | Aanbevelings modellen bouwen. | [Aanbevelingsfunctie voor evaluatie](evaluate-recommender.md) <br/> [Aanbevelingsfunctie voor SVD-score](score-svd-recommender.md) <br/> [Aanbevelingsfunctie van SVD-training](train-SVD-recommender.md) |
 | Anomaliedetectie | Anomalie detectie modellen bouwen. | [Anomaliedetectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Anomaliedetectiemodel trainen](train-anomaly-detection-model.md) |
 

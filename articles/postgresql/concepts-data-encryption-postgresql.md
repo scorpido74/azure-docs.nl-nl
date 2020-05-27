@@ -1,24 +1,24 @@
 ---
 title: Gegevens versleuteling met door de klant beheerde sleutel-Azure Database for PostgreSQL-één server
-description: Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens.
+description: Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Daarnaast kunnen organisaties hiermee een scheiding van taken implementeren bij het beheer van sleutels en gegevens.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297019"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849468"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
 > [!NOTE]
-> Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Neem hiervoor contact op met AskAzureDBforPostgreSQL@service.microsoft.com.
+> Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Neem hiervoor contact op met AskAzureDBforPostgreSQL@service.microsoft.com .
 
-Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt u de mogelijkheid om uw eigen sleutel (BYOK) te nemen voor gegevens bescherming. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt u de mogelijkheid om uw eigen sleutel (BYOK) te nemen voor gegevens bescherming. Daarnaast kunnen organisaties hiermee een scheiding van taken implementeren bij het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor, en hebt u het volledige beheer over, de levenscyclus van een sleutel, de machtigingen voor sleutelgebruik, en het controleren van de bewerkingen van sleutels.
 
 Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server, wordt ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 
@@ -44,7 +44,7 @@ Sleutel versleutelings **sleutel (KEK)**: een versleutelings sleutel die wordt g
 
 De DEKs, versleuteld met de KEKs, worden afzonderlijk opgeslagen. Alleen een entiteit met toegang tot de KEK kan deze DEKs ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
 
-## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Hoe gegevens versleuteling met een door de klant beheerde sleutel werkt
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Hoe gegevens versleuteling met een door de klant beheerde sleutel werkt
 
 ![Diagram waarin een overzicht van Bring Your Own Key wordt weer gegeven](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
 
@@ -63,17 +63,15 @@ Wanneer de server is geconfigureerd voor het gebruik van de door de klant beheer
 Hier volgen de vereisten voor het configureren van Key Vault:
 
 * Key Vault en Azure Database for PostgreSQL één server moeten tot dezelfde Azure Active Directory (Azure AD)-Tenant behoren. Cross-Tenant Key Vault en server interacties worden niet ondersteund. Als u later resources wilt verplaatsen, moet u de gegevens versleuteling opnieuw configureren.
-* U moet de functie voor voorlopig verwijderen inschakelen op de sleutel kluis om te beschermen tegen gegevens verlies als een onbedoelde sleutel (of Key Vault) wordt verwijderd. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de gebruiker deze in de tussen tijd herstelt of verwijdert. De herstel-en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een Key Vault toegangs beleid. De functie voor voorlopig verwijderen is standaard uitgeschakeld, maar u kunt deze inschakelen via Power shell of de Azure CLI (Houd er rekening mee dat u deze niet via de Azure Portal hoeft in te scha kelen).
+* Schakel de functie voor het voorlopig verwijderen van de sleutel kluis in om te beschermen tegen gegevens verlies als een onbedoelde sleutel (of Key Vault) wordt verwijderd. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de gebruiker deze in de tussen tijd herstelt of verwijdert. De herstel-en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een Key Vault toegangs beleid. De functie voor voorlopig verwijderen is standaard uitgeschakeld, maar u kunt deze inschakelen via Power shell of de Azure CLI (Houd er rekening mee dat u deze niet via de Azure Portal hoeft in te scha kelen).
 * Verleen de Azure Database for PostgreSQL enkele server toegang tot de sleutel kluis met de machtigingen Get, wrapKey en sleutel uitpakken met behulp van de unieke beheerde identiteit. In de Azure Portal wordt de unieke identiteit automatisch gemaakt wanneer gegevens versleuteling is ingeschakeld op de PostgreSQL één server. Zie [gegevens versleuteling voor Azure database for PostgreSQL Eén server met behulp van de Azure Portal](howto-data-encryption-portal.md) voor gedetailleerde, stapsgewijze instructies voor het gebruik van de Azure Portal.
-
-* Wanneer u een firewall met Key Vault gebruikt, moet u de optie **vertrouwde micro soft-Services toestaan voor het overs laan van de firewall**inschakelen.
 
 Hieronder vindt u de vereisten voor het configureren van de door de klant beheerde sleutel:
 
-* De door de klant beheerde sleutel die moet worden gebruikt voor het versleutelen van de DEK kan alleen asymmetrisch zijn: RSA 2028.
+* De door de klant beheerde sleutel die moet worden gebruikt voor het versleutelen van de DEK kan alleen asymmetrisch zijn: RSA 2048.
 * De datum en tijd waarop de sleutel wordt geactiveerd, moeten in het verleden liggen. De verval datum (indien ingesteld) moet een datum en tijd in de toekomst zijn.
 * De sleutel moet de *ingeschakelde* status hebben.
-* Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen (`.pfx`, `.byok`, `.backup`).
+* Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen ( `.pfx` , `.byok` , `.backup` ).
 
 ## <a name="recommendations"></a>Aanbevelingen
 
@@ -81,8 +79,10 @@ Wanneer u gegevens versleuteling gebruikt door gebruik te maken van een door de 
 
 * Stel een resource vergrendeling in op Key Vault om te bepalen wie deze kritieke resource kan verwijderen en om onbedoelde of niet-geautoriseerde verwijdering te voor komen.
 * Schakel controle en rapportage in voor alle versleutelings sleutels. Key Vault biedt logboeken die eenvoudig kunnen worden ingevoegd in andere hulpprogram ma's voor beveiligings informatie en beheer van gebeurtenissen. Azure Monitor Log Analytics is een voor beeld van een service die al is geïntegreerd.
+* Zorg ervoor dat Key Vault en Azure Database for PostgreSQL enkele server zich in dezelfde regio bevinden, zodat u een snellere toegang hebt tot DEK-terugloop en de bewerking voor het uitpakken.
+* Vergrendel de Azure-sleutel kluis alleen op **privé-eind punten en geselecteerde netwerken** en sta alleen *vertrouwde micro soft* -Services toe om de bronnen te beveiligen.
 
-* Zorg ervoor dat Key Vault en Azure Database for PostgreSQL enkele server zich in dezelfde regio bevinden, zodat u snel toegang hebt tot DEK-terugloop en onverpakte bewerkingen.
+    ![Trusted-service-with-Azure](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
 
 Hier vindt u aanbevelingen voor het configureren van een door de klant beheerde sleutel:
 
@@ -92,7 +92,13 @@ Hier vindt u aanbevelingen voor het configureren van een door de klant beheerde 
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Niet-toegankelijke door de klant beheerde sleutel voorwaarde
 
-Wanneer u gegevens versleuteling configureert met een door de klant beheerde sleutel in Key Vault, is continue toegang tot deze sleutel vereist voor de server om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde sleutel in Key Vault, begint de server binnen 10 minuten alle verbindingen te weigeren. De server geeft een bijbehorend fout bericht en wijzigt de status van de server in niet- *toegankelijk*. De enige actie die is toegestaan voor een data base in deze status, wordt verwijderd.
+Wanneer u gegevens versleuteling configureert met een door de klant beheerde sleutel in Key Vault, is continue toegang tot deze sleutel vereist voor de server om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde sleutel in Key Vault, begint de server binnen 10 minuten alle verbindingen te weigeren. De server geeft een bijbehorend fout bericht en wijzigt de status van de server in niet- *toegankelijk*. Een van de redenen waarom de server deze status kan bereiken, is:
+
+* Als we een herstel punt maken op het moment dat de server op uw Azure Database for PostgreSQL één server wordt gemaakt, waarvoor gegevens versleuteling is ingeschakeld, heeft de nieuwe server de status niet *toegankelijk* . U kunt de status van de server via [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) of [cli](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)oplossen.
+* Als we een lees replica maken voor uw Azure Database for PostgreSQL één server waarvoor gegevens versleuteling is ingeschakeld, heeft de replica server de status niet *toegankelijk* . U kunt de status van de server via [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) of [cli](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)oplossen.
+* Als u de sleutel kluis verwijdert, is de Azure Database for PostgreSQL enkele server niet in staat om toegang te krijgen tot de code en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar*te maken.
+* Als we de sleutel verwijderen uit de hoofd kluis, heeft de Azure Database for PostgreSQL enkele server geen toegang tot de sleutel en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [sleutel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar*te maken.
+* Als de sleutel die is opgeslagen in de Azure-hoofd kluis verloopt, wordt de sleutel ongeldig en wordt de Azure Database for PostgreSQL enkele server overgezet naar de status *unaccessible* . Breid de verval datum van de sleutel uit met [cli](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) en valideer vervolgens de gegevens versleuteling om de server *beschikbaar*te maken.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Het intrekken van onbedoelde sleutel toegang van Key Vault
 
@@ -112,7 +118,7 @@ Configureer de volgende Azure-functies om de status van de data base te controle
 * [Azure resource Health](../service-health/resource-health-overview.md): een ontoegankelijke data base die de toegang tot de klant sleutel heeft verloren, wordt weer gegeven als ' niet toegankelijk ' nadat de eerste verbinding met de data base is geweigerd.
 * [Activiteiten logboek](../service-health/alerts-activity-log-service-notifications.md): wanneer de toegang tot de klant sleutel in de door de klant beheerde Key Vault mislukt, worden de gegevens toegevoegd aan het activiteiten logboek. U kunt zo snel mogelijk toegang herstellen als u waarschuwingen voor deze gebeurtenissen maakt.
 
-* [Actie groepen](../azure-monitor/platform/action-groups.md): Definieer deze voor het verzenden van meldingen en waarschuwingen op basis van uw voor keuren.
+* [Actie groepen](../azure-monitor/platform/action-groups.md): Definieer deze groepen voor het verzenden van meldingen en waarschuwingen op basis van uw voor keuren.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Herstellen en repliceren met de beheerde sleutel van een klant in Key Vault
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254441"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848038"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics uitvoer naar Azure Cosmos DB  
 Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. Dit document bevat enkele aanbevolen procedures voor het implementeren van deze configuratie.
@@ -64,7 +64,7 @@ Als u *alle* documenten wilt opslaan, inclusief de bestanden met een dubbele id,
 Met Azure Cosmos DB worden partities automatisch geschaald op basis van uw werk belasting. We raden u daarom aan [onbeperkte](../cosmos-db/partition-data.md) containers te plaatsen als benadering voor het partitioneren van uw gegevens. Als Stream Analytics naar een onbeperkt aantal containers schrijft, worden er zoveel parallelle schrijvers als de vorige query stap of het schema voor het partitioneren van gegevens gebruikt.
 
 > [!NOTE]
-> Azure Stream Analytics ondersteunt alleen onbeperkte containers met partitie sleutels op het hoogste niveau. `/region` Wordt bijvoorbeeld ondersteund. Geneste partitie sleutels (bijvoorbeeld `/region/name`) worden niet ondersteund. 
+> Azure Stream Analytics ondersteunt alleen onbeperkte containers met partitie sleutels op het hoogste niveau. `/region`Wordt bijvoorbeeld ondersteund. Geneste partitie sleutels (bijvoorbeeld `/region/name` ) worden niet ondersteund. 
 
 Afhankelijk van de partitie sleutel die u kiest, kan deze _waarschuwing_worden weer gegeven:
 
@@ -72,7 +72,7 @@ Afhankelijk van de partitie sleutel die u kiest, kan deze _waarschuwing_worden w
 
 Het is belang rijk om een partitie sleutel eigenschap te kiezen die een aantal afzonderlijke waarden heeft en waarmee u de werk belasting gelijkmatig over deze waarden kunt verdelen. Als een natuurlijk artefact van partitioneren, worden aanvragen die betrekking hebben op dezelfde partitie sleutel beperkt door de maximale door Voer van één partitie. 
 
-De opslag grootte voor documenten die deel uitmaken van dezelfde partitie sleutel is beperkt tot 10 GB. Een ideale partitie sleutel is een code die regel matig wordt weer gegeven als filter in uw query's en voldoende kardinaliteit heeft om ervoor te zorgen dat uw oplossing schaalbaar is.
+De opslag grootte voor documenten die deel uitmaken van dezelfde partitie sleutel is beperkt tot 20 GB. Een ideale partitie sleutel is een code die regel matig wordt weer gegeven als filter in uw query's en voldoende kardinaliteit heeft om ervoor te zorgen dat uw oplossing schaalbaar is.
 
 Een partitie sleutel is ook de grens voor trans acties in opgeslagen procedures en triggers voor Azure Cosmos DB. U moet de partitie sleutel kiezen, zodat documenten die in trans acties samen komen, dezelfde partitie sleutel waarde hebben. Het artikel [partitioneren in azure Cosmos DB](../cosmos-db/partitioning-overview.md) biedt meer informatie over het kiezen van een partitie sleutel.
 
@@ -112,14 +112,14 @@ Met Azure Cosmos DB als uitvoer in Stream Analytics wordt de volgende prompt voo
 |Account-id      | De naam of eind punt-URI van het Azure Cosmos DB-account.|
 |Accountsleutel     | De gedeelde toegangs sleutel voor het Azure Cosmos DB-account.|
 |Database        | De naam van de Azure Cosmos DB-Data Base.|
-|Containernaam | De naam van de container, `MyContainer`zoals. Er is een `MyContainer` container met de naam moet bestaan.  |
+|Containernaam | De naam van de container, zoals `MyContainer` . Er is een container met de naam `MyContainer` moet bestaan.  |
 |Document-ID     | Optioneel. De kolom naam in uitvoer gebeurtenissen die wordt gebruikt als de unieke sleutel waarop INSERT-of update-bewerkingen moeten worden gebaseerd. Als u dit leeg laat, worden alle gebeurtenissen ingevoegd, zonder update optie.|
 
 Nadat u de Azure Cosmos DB uitvoer hebt geconfigureerd, kunt u deze in de query gebruiken als het doel van een [into-instructie](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Wanneer u een Azure Cosmos DB uitvoer op die manier gebruikt, [moet een partitie sleutel expliciet worden ingesteld](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
 
 De uitvoer record moet een hoofdletter gevoelige kolom bevatten met de naam na de partitie sleutel in Azure Cosmos DB. Om meer parallel Lise ring te verkrijgen, kan de instructie een [partitie by-component](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) vereisen die gebruikmaakt van dezelfde kolom.
 
-Hier volgt een voor beeld van een query:
+Hier ziet u een voorbeeld:
 
 ```SQL
     SELECT TollBoothId, PartitionId

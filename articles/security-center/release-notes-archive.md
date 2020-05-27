@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c0883e91d5e806fb166c3ddeafc4ce130ff3f66f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210841"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860899"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
-De belangrijkste [nieuwe functies in azure Active Directory?](release-notes.md) de pagina release opmerkingen bevat updates voor de afgelopen zes maanden, terwijl deze pagina oudere items bevat.
+De belangrijkste [nieuwe functies in azure Security Center?](release-notes.md) de pagina release opmerkingen bevat updates voor de afgelopen zes maanden, terwijl deze pagina oudere items bevat.
 
 Op deze pagina vindt u informatie over:
 

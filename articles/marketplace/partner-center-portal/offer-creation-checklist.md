@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281337"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850008"
 ---
 # <a name="saas-offer-creation-checklist"></a>Controlelijst voor SaaS-aanbieding maken
 
@@ -51,14 +51,14 @@ Op de pagina aanbieding instellen kunt u kiezen uit verschillende kanalen en ver
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------|  
-| Wilt u door micro soft verkopen?  | Vereist. Standaard: Ja |
+| Wilt u door micro soft verkopen?  | Vereist. Standaardinstelling: Ja |
 | Hoe wilt u dat potentiële klanten met de aanbieding kunnen communiceren? (Actie aanroepen)  | Vereist als niet wordt verkocht via micro soft. Standaard: gratis proef versie, opties: ' nu downloaden ', ' gratis proef versie ', ' contact met mij opnemen '. |
 | URL van proef versie  | Vereist als ' gratis proef versie ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbieding. |
 | Aanbiedings-URL  | Vereist als ' nu ophalen ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbiedings vermelding |
 | Kanalen  | Optioneel. Standaard: geen gekozen voor het CSP-kanaal (reseller).  |
 | Test Drive | Optioneel. Standaard: er is geen test drive ingeschakeld.  |
 | Type van het test station | Vereist als een test drive is ingeschakeld. Standaard: geen geselecteerd. Opties: Azure Resource Manager, Dynamics 365 voor bedrijven Central, Dynamics 365 voor klant betrokkenheid, Dynamics 365 voor Operations, Logic app, Power BI.  |
-| Lead beheer-verbinding maken met een CRM-systeem | Vereist als er wordt verkocht via micro soft, of als een aanbieding wordt aangeboden als ' contact met mij opnemen '. Standaard: er is geen CRM-systeem verbonden. CRM-opties: Azure Table, Azure-Blob, Dynamics CRM Online, HTTPs-eind punt, Marketo, Sales Force  |
+| Leads van klanten-verbinding maken met een CRM-systeem | Vereist als er wordt verkocht via micro soft, of als een aanbieding wordt aangeboden als ' contact met mij opnemen '. Standaard: er is geen CRM-systeem verbonden. CRM-opties: Azure Table, Azure-Blob, Dynamics CRM Online, HTTPs-eind punt, Marketo, Sales Force  |
 
 ## <a name="properties-page"></a>De pagina Eigenschappen
 
@@ -78,7 +78,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veldnaam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Naam  | Vereist, Maxi maal 50 tekens. |
+| Name  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
 | Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |

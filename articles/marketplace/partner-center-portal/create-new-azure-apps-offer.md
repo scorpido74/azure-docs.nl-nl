@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773267"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848784"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -128,7 +128,7 @@ Zie voor meer informatie over publicatie vereisten voor elk toepassings plan [op
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
-Op de pagina **aanbieding instellen** kunt u een test drive en Lead beheer configureren voor uw aanbieding. 
+Op de pagina **aanbieding instellen** kunt u een test drive en Lead beheer configureren voor uw aanbieding.
 
 ### <a name="test-drive"></a>Station testen
 
@@ -141,7 +141,7 @@ Zie [Test uw aanbieding in de commerciële Marketplace](https://docs.microsoft.c
 >[!Note]
 >Omdat alle Azure-toepassingen worden geïmplementeerd met behulp van een Azure Resource Manager sjabloon, is het enige type test drive dat beschikbaar is voor een Azure-toepassing een [Azure Resource Manager test drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
 
-## <a name="lead-management"></a>Leadbeheer
+### <a name="customer-leads"></a>Leads van klanten
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

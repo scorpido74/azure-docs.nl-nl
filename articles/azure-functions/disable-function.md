@@ -3,12 +3,12 @@ title: Functies in Azure Functions uitschakelen
 description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115559"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848736"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
@@ -122,7 +122,8 @@ of
 
 In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is en is ingesteld op `true` of 1.
 
-U kunt het bestand bewerken in de Azure Portal of de knoppen **inschakelen** en **uitschakelen** op de **overzichts** pagina van de functie gebruiken. De portal-switch werkt door het bestand *Function. json* te wijzigen.
+>[!IMPORTANT]  
+>De portal gebruikt nu toepassings instellingen om v1. x-functies uit te scha kelen. Wanneer een toepassings instelling een conflict veroorzaakt met het bestand function. json, treedt er een fout op. U moet de `disabled` eigenschap uit het bestand function. json verwijderen om fouten te voor komen. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

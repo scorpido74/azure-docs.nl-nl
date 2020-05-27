@@ -12,15 +12,15 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/27/2020
-ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/26/2020
+ms.openlocfilehash: 66c2c5e52ef81f74f7177af897f33eec4ae1779e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654626"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860640"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Aan de slag met controleren van beheerd exemplaar voor Azure SQL Database
+# <a name="azure-sql-database-managed-instance-auditing"></a>Controle van beheerde exemplaren Azure SQL Database
 
 Met controle van [beheerde exemplaren](sql-database-managed-instance.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. De controlefunctie biedt ook deze mogelijkheden:
 
@@ -37,7 +37,9 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
    1. Ga naar het Azure Storage waar u de audit logboeken wilt opslaan.
 
       > [!IMPORTANT]
-      > Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen. Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen. 
+      > - Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Als u de retentie periode van 0 (onbeperkte retentie) wijzigt naar een andere waarde, moet u er rekening mee houden dat bewaren alleen van toepassing is op Logboeken die zijn geschreven nadat de Bewaar waarde is gewijzigd (de logboeken die zijn geschreven tijdens de periode waarin retentie is ingesteld op onbeperkt, blijven behouden, zelfs nadat de retentie is ingeschakeld).
 
    1. Ga in het opslag account naar **overzicht** en klik op **blobs**.
 

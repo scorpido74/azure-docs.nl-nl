@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249267"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849668"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -49,7 +49,7 @@ Er zijn mogelijk Azure Monitor kosten gekoppeld aan het volgende. Zie [Azure mon
 - Toegang tot metrische gegevens via API.
 
 ## <a name="monitoring-data"></a>Bewakingsgegevens
-Resources in azure genereren [Logboeken](../platform/data-platform-logs.md) en [metrische gegevens](../platform/data-platform-metrics.md) die het volgende diagram weer geven. Raadpleeg de documentatie voor elke Azure-service voor de specifieke gegevens die ze genereren en eventuele aanvullende oplossingen of inzichten die ze bieden.
+Resources in azure genereren [Logboeken](../platform/data-platform-logs.md) en [metrische gegevens](../platform/data-platform-metrics.md) die in het volgende diagram worden weer gegeven. Raadpleeg de documentatie voor elke Azure-service voor de specifieke gegevens die ze genereren en eventuele aanvullende oplossingen of inzichten die ze bieden.
 
 ![Overzicht](media/monitor-azure-resource/logs-metrics.png)
 
@@ -100,7 +100,7 @@ Sommige services bieden nog meer hulp middelen dan de standaard functies van Azu
 
 Als een service een Azure Monitor inzicht heeft, kunt u deze openen vanuit **bewaking** in elk resource menu. Toegang tot alle inzichten en oplossingen vanuit het **Azure monitor** menu.
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Inzichten](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metrische gegevens
 Analyseer de metrische gegevens in de Azure Portal met behulp van [Metrics Explorer](../platform/metrics-getting-started.md) , die beschikbaar is via de menu opdracht **metrische gegevens** voor de meeste services. Met dit hulp programma kunt u met afzonderlijke metrische gegevens werken of meerdere combi neren om correlaties en trends te identificeren. 

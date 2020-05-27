@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197850"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848818"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -31,12 +31,12 @@ Dit artikel bevat algemene richt lijnen over het detecteren van afhankelijkheden
 
 De datums waarop deze wijzigingen van kracht worden, zijn:
 
-| Cloud               | Begin datum fase 1 | Begin datum fase 2      |
-|---------------------|--------------------|-------------------------|
-| Azure (globaal)      |  13 januari 2020  | 11 mei 2020            |
-| Azure Government    |  13 maart 2020    | 11 mei 2020            |
-| Azure Duitsland       |  13 maart 2020    | 11 mei 2020            |
-| Azure China         |  13 maart 2020    | 11 mei 2020            |
+| Cloud                | Begin datum fase 1 | Begin datum fase 2      |
+|----------------------|--------------------|-------------------------|
+| Azure (globaal)       |  13 januari 2020  | 11 mei 2020            |
+| Azure Government     |  13 maart 2020    | 11 mei 2020            |
+| Azure Duitsland        |  13 maart 2020    | 11 mei 2020            |
+| Azure China 21Vianet |  13 maart 2020    | 11 mei 2020            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Controleren of uw toepassing al compatibel is
 
@@ -55,7 +55,12 @@ Redis .NET-clients gebruiken standaard de oudste TLS-versie op .NET Framework 4.
 
 ### <a name="net-core"></a>.NET Core
 
-Redis .NET core-clients gebruiken standaard de meest recente TLS-versie.
+Redis .NET core-clients standaard ingesteld op de standaard TLS-versie van het besturings systeem, wat duidelijk afhankelijk is van het besturings systeem zelf. 
+
+Afhankelijk van het moment waarop het besturings systeem is uitgebracht en als andere patches de standaard versie van TLS hebben gewijzigd, kan de TLS-versie van het besturings systeem heel gevarieerd zijn. Hoewel er hier geen volledige informatie over is, kunt u [hier](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)meer informatie vinden. 
+
+Als u echter een oud besturings systeem gebruikt of als u zeker weet dat u de voor Keurs-TLS-versie hand matig wilt configureren via de client.
+
 
 ### <a name="java"></a>Java
 

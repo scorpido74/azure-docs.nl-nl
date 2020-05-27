@@ -3,12 +3,12 @@ title: Toegangs regels voor Firewall
 description: Configureer regels voor toegang tot een Azure container Registry van achter een firewall, door toegang toe te staan (' white list ') REST API en domein namen van gegevens eindpunten of servicespecifieke IP-adresbereiken.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 109764a5697920547230530de41a3e5acfe0117d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701911"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849979"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
 
@@ -137,7 +137,7 @@ Gegevens eindpunten inschakelen met behulp van de portal:
 
 Het gegevens eindpunt of eind punt wordt weer gegeven in de portal.
 
-![Toegewezen data-eind punten in de portal](./media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png)
+:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Toegewezen data-eind punten in de portal":::
 
 ### <a name="azure-cli"></a>Azure CLI
 

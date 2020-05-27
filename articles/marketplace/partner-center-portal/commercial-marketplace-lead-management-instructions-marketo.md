@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789875"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849171"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -59,8 +59,8 @@ In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verk
 
     Een andere manier om deze waarden te berekenen:
 
-    - De server-ID bevindt zich in de URL van uw Marketo- `serverID.marketo.com`exemplaar, bijvoorbeeld.
-    - Als u de Munchkin-id van uw abonnement wilt **Admin** > ophalen, gaat u naar het**Munchkin** menu van de **Munchkin-account-id** of vanuit het eerste deel van uw Market- `https://{Munchkin ID}.mktorest.com`rest API host-subdomein:.
+    - De server-ID bevindt zich in de URL van uw Marketo-exemplaar, bijvoorbeeld `serverID.marketo.com` .
+    - Als u de Munchkin-id van uw abonnement wilt ophalen, gaat u **naar het**  >  **Munchkin** menu van de **Munchkin-account-id** of vanuit het eerste deel van uw Market-rest API host-subdomein: `https://{Munchkin ID}.mktorest.com` .
     - De formulier-ID is de ID van het insluit code formulier dat u in stap 7 hebt gemaakt om leads van de Marketplace te routeren.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Uw aanbieding configureren voor het verzenden van leads naar Marketo
@@ -71,9 +71,9 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
 
-1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
+1. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
 
-    ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Leads van klanten":::
 
 1. Selecteer in het pop-upvenster **verbindings Details** de optie **marketo** voor de **doel locatie**van de lead.
 
