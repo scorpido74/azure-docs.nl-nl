@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Heapdumps voor Apache Hadoop-services inschakelen
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Hulp op het forum
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: Vraag om hulp op de Microsoft Q&A-vragenpagina
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: Prijscalculator
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Windows-hulpprogramma's voor HDInsight

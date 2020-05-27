@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b83dbdb928b7b5810864a9202134dee30f9582df
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73823642"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834239"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Veelgestelde vragen over hulpprogram ma's voor Elastic data base
 
@@ -34,7 +34,7 @@ Het gebruik van de client bibliotheek voor Elastic data base maakt geen kosten i
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Waarom werken mijn referenties niet wanneer ik een Shard van een andere server toevoeg
 
-Gebruik geen referenties in de vorm ' gebruikers-ID =username@servername', in plaats daarvan alleen ' gebruikers-ID = gebruikers naam ' te gebruiken.  Zorg er ook voor dat de aanmelding ' gebruikers naam ' machtigingen heeft voor de Shard.
+Gebruik geen referenties in de vorm ' gebruikers-ID = username@servername ', in plaats daarvan alleen ' gebruikers-ID = gebruikers naam ' te gebruiken.  Zorg er ook voor dat de aanmelding ' gebruikers naam ' machtigingen heeft voor de Shard.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Moet ik een Shard-toewijzings beheer maken en Shards elke keer invullen wanneer ik mijn toepassingen start
 
@@ -42,7 +42,7 @@ Nee: het maken van het Shard-toewijzings beheer (bijvoorbeeld [ShardMapManagerFa
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Ik heb vragen over het gebruik van hulpprogram ma's voor elastische data bases, hoe krijg ik deze antwoorden
 
-Neem contact met ons op het [SQL database-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Neem contact met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Wanneer ik een database verbinding krijg met behulp van een sharding-sleutel, kan ik nog steeds gegevens opvragen voor andere sharding-sleutels op dezelfde Shard.  Is dit per ontwerp
 

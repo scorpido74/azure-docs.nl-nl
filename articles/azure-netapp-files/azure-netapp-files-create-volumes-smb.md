@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625521"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832814"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -58,7 +58,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     |    SAM/LSA            |    445       |    UDP           |
     |    W32Time            |    123       |    UDP           |
 
-* De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de aanbevolen procedures, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
+* De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de richt lijnen, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
 
     De adres ruimte voor het virtuele netwerk waar Azure NetApp Files wordt geïmplementeerd, moet worden toegevoegd aan een nieuwe of bestaande Active Directory site (waarbij een domein controller bereikbaar is voor Azure NetApp Files). 
 
@@ -79,7 +79,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
 
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
@@ -98,7 +98,7 @@ U kunt uw favoriete [Active Directory-sites en-services](https://docs.microsoft.
 
 Als u wilt zoeken naar de naam van uw site wanneer u toevoegt, kunt u contact opnemen met de beheer groep in uw organisatie die verantwoordelijk is voor Active Directory Domain Services. In het onderstaande voor beeld ziet u de Active Directory-invoeg toepassing sites en services waar de site naam wordt weer gegeven: 
 
-![Sites en services van Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+![Sites en services van Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
 Wanneer u een AD-verbinding voor Azure NetApp Files configureert, geeft u de site naam in bereik op voor het veld **ad-site naam** .
 
@@ -111,15 +111,15 @@ Er zijn aanvullende AADDS-overwegingen van toepassing op Azure NetApp Files:
 * Zorg ervoor dat het VNet of subnet waar AADDS wordt geïmplementeerd, zich in dezelfde Azure-regio bevindt als de Azure NetApp Files-implementatie.
 * Als u een ander VNet gebruikt in de regio waar Azure NetApp Files is geïmplementeerd, moet u een peering tussen de twee VNets maken.
 * Azure NetApp Files ondersteunt `user` en `resource forest` typen.
-* Voor het synchronisatie type kunt u of `All` `Scoped`selecteren.   
-    Als u selecteert `Scoped`, moet u ervoor zorgen dat de juiste Azure AD-groep is geselecteerd voor toegang tot SMB-shares.  Als u niet zeker weet, kunt u het `All` synchronisatie type gebruiken.
+* Voor het synchronisatie type kunt u `All` of selecteren `Scoped` .   
+    Als u selecteert `Scoped` , moet u ervoor zorgen dat de juiste Azure AD-groep is geselecteerd voor toegang tot SMB-shares.  Als u niet zeker weet, kunt u het `All` synchronisatie type gebruiken.
 * Het gebruik van de Enter prise-of Premium-SKU is vereist. De standaard-SKU wordt niet ondersteund.
 
 Wanneer u een Active Directory verbinding maakt, moet u rekening houden met de volgende specifieke voor AADDS:
 
 * In het menu AADDS vindt u informatie over de **primaire**DNS-, **secundaire DNS**-en **AD DNS-domein naam** .  
 Voor DNS-servers worden er twee IP-adressen gebruikt voor het configureren van de Active Directory-verbinding. 
-* Het **pad voor de organisatie-eenheid** is `OU=AADDC Computers`.  
+* Het **pad voor de organisatie-eenheid** is `OU=AADDC Computers` .  
 Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** onder **NetApp-account**:
 
   ![Pad naar de organisatie-eenheid](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
@@ -152,11 +152,20 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 
         Met de service worden zo nodig extra machine accounts in Active Directory gemaakt.
 
+        > [!IMPORTANT] 
+        > Als u de naam van het SMB-server voorvoegsel wijzigt nadat u de Active Directory verbinding hebt gemaakt, verstoort het. U moet bestaande SMB-shares opnieuw koppelen na het wijzigen van de naam van het voor voegsel van de SMB-server.
+
     * **Pad naar de organisatie-eenheid**  
         Dit is het LDAP-pad voor de organisatie-eenheid (OE) waar de computer accounts van de SMB-server worden gemaakt. Dat wil zeggen OU = 2e niveau, OE = eerste niveau. 
 
-        Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
-        
+        Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is het pad voor de organisatie-eenheid `OU=AADDC Computers` Wanneer u Active Directory configureert voor uw NetApp-account.
+
+     * **Back-upbeleid gebruikers**  
+        U kunt aanvullende accounts toevoegen waarvoor verhoogde bevoegdheden zijn vereist voor het computer account dat is gemaakt voor gebruik met Azure NetApp Files. De opgegeven accounts kunnen de NTFS-machtigingen op bestands-of mapniveau wijzigen. U kunt bijvoorbeeld een niet-privileged service account opgeven dat wordt gebruikt voor het migreren van gegevens naar een SMB-bestands share in Azure NetApp Files.  
+
+        > [!IMPORTANT] 
+        > Voor het gebruik van de gebruikers functie back-upbeleid is white list vereist. E-mail anffeedback@microsoft.com met uw abonnements-id om deze functie aan te vragen. 
+
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
     ![Active Directory toevoegen](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
@@ -185,12 +194,12 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 
         Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U kunt niet `default` gebruiken als de volume naam.
+        U kunt niet gebruiken `default` als de volume naam.
 
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
 
-    * **Quotum**  
+    * **Quota**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  
@@ -231,8 +240,8 @@ Toegang tot een SMB-volume wordt beheerd via machtigingen.
 
 Een nieuw volume heeft standaard de machtigingen delen **iedereen/volledig beheer** . Leden van de groep domein Administrators kunnen de share machtigingen wijzigen door gebruik te maken van computer beheer op het computer account dat wordt gebruikt voor het Azure NetApp Files volume.
 
-![SMB-koppel](../media/azure-netapp-files/smb-mount-path.png) 
-![pad machtigingen voor delen instellen](../media/azure-netapp-files/set-share-permissions.png) 
+![SMB-koppel pad ](../media/azure-netapp-files/smb-mount-path.png) 
+ ![ machtigingen voor delen instellen](../media/azure-netapp-files/set-share-permissions.png) 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS-bestands-en mapmachtigingen  
 

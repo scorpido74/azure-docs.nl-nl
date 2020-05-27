@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705867"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832551"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v2
 
@@ -56,7 +56,7 @@ A: als u assets van een Media Services account wilt kopiëren met behulp van .NE
 
 V: wat zijn de ondersteunde tekens voor het benoemen van bestanden bij het werken met AMS?
 
-A: Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het bouwen van Url's voor de streaming-inhoud (bijvoorbeeld http://{AMSAccount}. Origin. Media Services. Windows. net/{GUID}/{IAssetFile. name}/streamingParameters.) Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap **name** mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ &= + $,/?% # [] '. Er kan ook één '. ' zijn. voor de bestandsnaam extensie.
+A: Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het bouwen van Url's voor de streaming-inhoud (bijvoorbeeld http://{AMSAccount}. Origin. Media Services. Windows. net/{GUID}/{IAssetFile. name}/streamingParameters.) Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap **name** mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ &= + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie.
 
 V: verbinding maken met behulp van REST?
 

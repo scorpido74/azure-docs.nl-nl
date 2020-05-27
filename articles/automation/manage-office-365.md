@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u Azure Automation kunt gebruiken om Off
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbd01f3868f44d975e0822a7812262d9e15ca299
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745345"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831161"
 ---
 # <a name="manage-office-365-services"></a>Office 365-services beheren
 
@@ -111,7 +111,7 @@ Als u uw runbook wilt publiceren en vervolgens wilt plannen, raadpleegt u [Runbo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Runbooks in Azure Automation beheren](https://docs.microsoft.com/azure/automation/manage-runbooks)
-* [Modules beheren in Azure Automation](shared-resources/modules.md)
-* [Referenties beheren in Azure Automation](shared-resources/credentials.md)
-* [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)
+* Zie [referenties beheren in azure Automation](shared-resources/credentials.md)voor meer informatie over het gebruik van referenties.
+* Zie [modules beheren in azure Automation](shared-resources/modules.md)voor meer informatie over modules.
+* Als u een runbook moet starten, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).
+* Zie Power shell- [documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell.

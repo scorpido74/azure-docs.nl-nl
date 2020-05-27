@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9cdde8d1142ec47f835e4a06e7fe2e843d796a3a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d60885f7dbcd090e4f2172015787bc34d4ee7bcf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743930"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832500"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
@@ -425,6 +425,6 @@ Wanneer een gebruiker die is toegewezen aan de rol Automation-operator in het Ru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [RBAC beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-* [Start a runbook in Azure Automation](start-runbooks.md) (Een runbook starten in Azure Automation)
-* [Azure Automation typen runbook](automation-runbook-types.md)
+* Zie [RBAC beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie over Power shell RBAC.
+* Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbooks.
+* Als u een runbook wilt starten, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).

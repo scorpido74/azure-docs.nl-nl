@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74787366"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831922"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
 
@@ -82,7 +82,7 @@ Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-besta
 
 1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **acties** de actie **http + Swagger** .
 
@@ -137,9 +137,9 @@ U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet 
 
 1. [Upload het Swagger-bestand naar de BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), hetzij via de [Azure Portal](https://portal.azure.com) of [Azure Storage Explorer](https://storageexplorer.com/).
 
-1. Als u wilt verwijzen naar het bestand in de BLOB-container, gebruikt u een HTTPS-koppeling met de volgende indeling, die hoofdletter gevoelig is:
+1. Als u wilt verwijzen naar het bestand in de BLOB-container, haalt u de HTTPS-URL op die volgt op de notatie (hoofdletter gevoelig) van Azure Storage Explorer:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
@@ -152,7 +152,7 @@ Hier vindt u meer informatie over de uitvoer van een HTTP + Swagger-trigger of-a
 | statuscode | int | De status code van de aanvraag |
 |||
 
-| Statuscode | Beschrijving |
+| Statuscode | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Geaccepteerd |

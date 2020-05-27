@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: e517516715871f3fbcdcab6383e6452523773363
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a4a3dbd54256fbc193fba299d0f7504f407254
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743881"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832262"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>Fouten in grafische runbooks afhandelen
 
@@ -65,6 +65,4 @@ Fout koppelingen stromen van deze activiteiten naar een enkele `error management
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Grafische runbooks ontwerpen in Azure Automation](automation-graphical-authoring-intro.md#use-links-for-workflow)
-* [Uitvoering van runbooks in Azure Automation](automation-runbook-execution.md)
-* [Runbooks in Azure Automation beheren](manage-runbooks.md)
+* Zie [problemen met Runbook oplossen](troubleshoot/runbooks.md)voor meer informatie over het oplossen van grafische runbook-fouten.

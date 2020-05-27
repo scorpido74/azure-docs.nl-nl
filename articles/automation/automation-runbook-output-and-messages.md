@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 57728c3dcbb0dd88ae954ec711ffa4827e14579d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743845"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832279"
 ---
 # <a name="monitor-runbook-output"></a>Runbook-uitvoer bewaken
 
@@ -259,6 +259,7 @@ Zie voor meer informatie over het configureren van de integratie met Azure Monit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uitvoering van runbooks in Azure Automation](automation-runbook-execution.md)
-* [Modulaire runbooks maken](automation-child-runbooks.md)
-* [Power shell docs](/powershell/scripting/overview)
+* Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor het werken met runbooks.
+* Zie [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)(Engelstalig) voor meer informatie over Power shell.
+* * Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
