@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Synapse Link voor Azure Cosmos DB
+title: Verbinding maken met Azure Synapse Link voor Azure Cosmos DB
 description: Een Azure Cosmos-database verbinden met een Synapse-werkruimte met behulp van Synapse Link
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: dbacb70cd2166b601a47200b81f31a8eb7bb79ec
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 81cc7745790c7a89576dc5d0ff925dbaff2b2334
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599096"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700376"
 ---
-# <a name="connect-to-synapse-link-for-azure-cosmos-db"></a>Verbinding maken met Synapse Link voor Azure Cosmos DB
+# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Verbinding maken met Azure Synapse Link voor Azure Cosmos DB
 
 In dit artikel wordt beschreven hoe u toegang krijgt tot een Azure Cosmos DB-database vanuit Azure Synapse Analytics Studio met behulp van Synapse Link. 
 
@@ -33,7 +33,7 @@ Als u grootschalige analyses wilt uitvoeren in Azure Cosmos DB zonder de prestat
 
 ## <a name="navigate-to-synapse-studio"></a>Ga naar Synapse Studio
 
-Selecteer vanuit de Synapse-werkruimte de optie **Synapse Studio starten**. Selecteer op de startpagina van Synapse Studio de optie **Gegevens. U wordt nu naar **Data Object Explorer** geleid.
+Selecteer **Synapse Studio starten** vanuit uw Synapse-werkruimte. Selecteer op de startpagina van Synapse Studio de optie **Gegevens. U wordt nu naar **Data Object Explorer** geleid.
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Een Azure Cosmos DB-database verbinden met een Synapse-werkruimte
 
