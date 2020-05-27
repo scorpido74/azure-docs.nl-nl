@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 21fc51aef664b2ea9360c4d8ca8e722bb7bbb349
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701156"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847970"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
@@ -59,7 +59,7 @@ Deze pagina bevat koppelingen voor het uitvoeren van bewerkingen op deze aanbied
 
 Volg deze stappen om uw aanbieding in te stellen.
 
-### <a name="connect-lead-management"></a>Lead beheer verbinden
+### <a name="customer-leads"></a>Leads van klanten
 
 Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, kunt u deze optioneel koppelen aan uw CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
 

@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77614837"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845981"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection voor Azure Cosmos DB (preview-versie)
 
@@ -36,11 +36,15 @@ Advanced Threat Protection voor Azure Cosmos DB detecteert afwijkende activiteit
 
 - **Ongebruikelijke gegevens extractie**: deze waarschuwing wordt geactiveerd wanneer een client een ongebruikelijke hoeveelheid gegevens uit een Azure Cosmos DB-account uitpakt. Dit kan het symptoom zijn van sommige gegevens exfiltration die worden uitgevoerd om alle gegevens die zijn opgeslagen in het account over te dragen naar een extern gegevens archief.
 
-## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 
-### <a name="set-up-atp-using-the-portal"></a>ATP instellen met behulp van de portal
 
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
+## <a name="configure-advanced-threat-protection"></a>Advanced Threat Protection configureren
+
+U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging**.
 
@@ -51,14 +55,14 @@ Advanced Threat Protection voor Azure Cosmos DB detecteert afwijkende activiteit
     * Klik op de optie **geavanceerde beveiliging tegen bedreigingen** om deze **in**te stellen op aan.
     * Klik op **Opslaan** om het nieuwe of bijgewerkte Advanced Threat Protection-beleid op te slaan.   
 
-### <a name="set-up-atp-using-rest-api"></a>ATP instellen met behulp van REST API
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Gebruik rest API-opdrachten om de instelling geavanceerde beveiliging tegen bedreigingen te maken, bij te werken of op te halen voor een specifiek Azure Cosmos DB-account.
 
 * [Advanced Threat Protection-maken](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Advanced Threat Protection-ophalen](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>ATP instellen met behulp van Azure PowerShell
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gebruik de volgende Power shell-cmdlets:
 
@@ -66,12 +70,12 @@ Gebruik de volgende Power shell-cmdlets:
 * [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Geavanceerde bedreigings beveiliging uitschakelen](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
+### <a name="arm-template"></a>[ARM-sjabloon](#tab/arm-template)
 
-Gebruik een Azure Resource Manager sjabloon om Cosmos DB in te stellen als Advanced Threat Protection is ingeschakeld.
+Gebruik een Azure Resource Manager ARM-sjabloon om Cosmos DB in te stellen als Advanced Threat Protection is ingeschakeld.
 Zie [een CosmosDB-account maken met geavanceerde beveiliging tegen bedreigingen](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)voor meer informatie.
 
-### <a name="using-azure-policy"></a>Azure Policy gebruiken
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Gebruik een Azure Policy om geavanceerde bedreigingen beveiliging in te scha kelen voor Cosmos DB.
 
@@ -90,6 +94,9 @@ Gebruik een Azure Policy om geavanceerde bedreigingen beveiliging in te scha kel
 
 
 1. Voer de andere para meters in en klik op **toewijzen**.
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>ATP-beveiligings waarschuwingen beheren
 

@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd99934ca74736c1f80bd47d701120398437e27a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885681"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845318"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -34,7 +34,7 @@ Als u de claims die in het SAML-token aan de toepassing zijn uitgegeven, wilt we
 
 Er zijn twee mogelijke redenen waarom u de claims die in het SAML-token zijn uitgegeven, mogelijk moet bewerken:
 
-* De toepassing vereist dat `NameIdentifier` de of NameID-claim iets anders is dan de gebruikers naam (of User Principal Name) die is opgeslagen in azure AD.
+* De toepassing vereist `NameIdentifier` dat de of NameID-claim iets anders is dan de gebruikers naam (of User Principal Name) die is opgeslagen in azure AD.
 * De toepassing is geschreven om een andere set claim-Uri's of claim waarden te vereisen.
 
 ## <a name="editing-nameid"></a>NameID bewerken
@@ -56,7 +56,7 @@ U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naa
 
 | NameID-indeling | Beschrijving |
 |---------------|-------------|
-| **Prijs** | Azure AD gebruikt de standaard indeling voor de bron. |
+| **Standaard** | Azure AD gebruikt de standaard indeling voor de bron. |
 | **Permanent** | Azure AD gebruikt persistent als de NameID-indeling. |
 | **EmailAddress** | Azure AD maakt gebruik van EmailAddress als NameID-indeling. |
 | **Niet opgegeven** | Azure AD gebruikt niet opgegeven als NameID-indeling. |
@@ -100,8 +100,8 @@ U kunt ook de functies voor het transformeren van claims gebruiken.
 
 | Functie | Beschrijving |
 |----------|-------------|
-| **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com). |
-| **Samen voegen ()** | Voegt een kenmerk toe aan een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres (joe_smith@contoso.com) als de waarde van de gebruikers-ID selecteert en contoso.onmicrosoft.com selecteert als het geverifieerde domein joe_smith@contoso.onmicrosoft.com, resulteert dit in. |
+| **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com ). |
+| **Samen voegen ()** | Voegt een kenmerk toe aan een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres ( joe_smith@contoso.com ) als de waarde van de gebruikers-ID selecteert en contoso.onmicrosoft.com selecteert als het geverifieerde domein, resulteert dit in joe_smith@contoso.onmicrosoft.com . |
 | **ToLower()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar kleine letters. |
 | **ToUpper()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar hoofd letters. |
 
@@ -119,7 +119,7 @@ Een trans formatie Toep assen op een gebruikers kenmerk:
 
 1. Selecteer in **claim beheren**de optie *trans formatie* als claim bron om de pagina **trans formatie beheren** te openen.
 2. Selecteer de functie in de vervolg keuzelijst transformeren. Afhankelijk van de functie die u hebt geselecteerd, moet u para meters en een constante waarde opgeven om in de trans formatie te evalueren. Raadpleeg de onderstaande tabel voor meer informatie over de beschik bare functies.
-3. Als u meerdere trans formatie wilt Toep assen, klikt u op **trans formatie toevoegen**. U kunt Maxi maal twee trans formatie op een claim Toep assen. U kunt bijvoorbeeld eerst het e-mail voorvoegsel van de `user.mail`toevoegen. Vervolgens maakt u de reeks hoofd letters.
+3. Als u meerdere trans formatie wilt Toep assen, klikt u op **trans formatie toevoegen**. U kunt Maxi maal twee trans formatie op een claim Toep assen. U kunt bijvoorbeeld eerst het e-mail voorvoegsel van de toevoegen `user.mail` . Vervolgens maakt u de reeks hoofd letters.
 
    ![De NameID-waarde (naam-id) bewerken](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
@@ -127,11 +127,11 @@ U kunt de volgende functies gebruiken om claims te transformeren.
 
 | Functie | Beschrijving |
 |----------|-------------|
-| **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com). |
-| **Samen voegen ()** | Hiermee maakt u een nieuwe waarde door twee kenmerken samen te voegen. U kunt desgewenst een scheidings teken tussen de twee kenmerken gebruiken. Voor NameID-claim transformatie is de koppeling beperkt tot een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres (joe_smith@contoso.com) als de waarde van de gebruikers-ID selecteert en contoso.onmicrosoft.com selecteert als het geverifieerde domein joe_smith@contoso.onmicrosoft.com, resulteert dit in. |
+| **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com ). |
+| **Samen voegen ()** | Hiermee maakt u een nieuwe waarde door twee kenmerken samen te voegen. U kunt desgewenst een scheidings teken tussen de twee kenmerken gebruiken. Voor NameID-claim transformatie is de koppeling beperkt tot een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres ( joe_smith@contoso.com ) als de waarde van de gebruikers-ID selecteert en contoso.onmicrosoft.com selecteert als het geverifieerde domein, resulteert dit in joe_smith@contoso.onmicrosoft.com . |
 | **ToLower()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar kleine letters. |
 | **ToUpper()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar hoofd letters. |
-| **Contains ()** | Voert een kenmerk of constante uit als de invoer overeenkomt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarbij de waarde het e-mail adres van de gebruiker is als deze het domein@contoso.combevat, moet u anders de User Principal name uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: gebruiker. e-mail adres<br/>*Waarde*: "@contoso.com"<br/>Para meter 2 (uitvoer): gebruiker. e-mail adres<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. userPrincipalName |
+| **Contains ()** | Voert een kenmerk of constante uit als de invoer overeenkomt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarbij de waarde het e-mail adres van de gebruiker is als deze het domein bevat @contoso.com , moet u anders de User Principal name uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: gebruiker. e-mail adres<br/>*Waarde*: " @contoso.com "<br/>Para meter 2 (uitvoer): gebruiker. e-mail adres<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. userPrincipalName |
 | **EndWith()** | Voert een kenmerk of constante uit als de invoer eindigt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemer-ID van de gebruiker is als de werk nemer-ID eindigt op ' 000 ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: User. EmployeeID<br/>*Waarde*: 000<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
 | **StartWith()** | Voert een kenmerk of constante uit als de invoer begint met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemers-ID van de gebruiker is als het land/de regio begint met ' VS ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)*: gebruiker. land<br/>*Waarde*: "US"<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
 | **Extra heren ()-na overeenkomende** | Retourneert de subtekenreeks nadat deze overeenkomt met de opgegeven waarde.<br/>Als de waarde van de invoer bijvoorbeeld ' Finance_BSimon ' is, is de overeenkomende waarde ' Finance_ ', en de uitvoer van de claim is ' BSimon '. |
@@ -169,9 +169,9 @@ Een claim voorwaarde toevoegen:
 
 De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. 
 
-Zo is Brita Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Brita zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door Azure AD.
+Zo is Julia Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Julia zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door Azure AD.
 
-Eerst controleert Azure AD of het gebruikers type van de Brita is `All guests`. Aangezien dit het geval is, wijst Azure AD de bron voor de claim toe aan `user.extensionattribute1`. Ten tweede controleert Azure AD of het gebruikers type van Brita is `AAD guests`, omdat dit ook waar is, wijst Azure AD de bron voor de claim toe aan `user.mail`. Ten slotte wordt de claim verzonden met de waarde `user.email` voor Brita.
+Eerst controleert Azure AD of het gebruikers type van de Julia is `All guests` . Aangezien dit het geval is, wijst Azure AD de bron voor de claim toe aan `user.extensionattribute1` . Ten tweede controleert Azure AD of het gebruikers type van Julia is `AAD guests` , omdat dit ook waar is, wijst Azure AD de bron voor de claim toe aan `user.mail` . Ten slotte wordt de claim verzonden met de waarde `user.mail` voor Julia.
 
 ![Voorwaardelijke configuratie van claims](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

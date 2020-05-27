@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983360"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847409"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -49,7 +49,7 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten visualiseren** om de resultaten te bekijken.
+Nadat u het **model evalueren**hebt uitgevoerd, selecteert u de module om het navigatie paneel voor het **model evalueren** te openen aan de rechter kant.  Kies vervolgens het tabblad **uitvoer en logboeken** en op dat tabblad bevat de sectie **gegevens uitvoer** meerdere pictogrammen.   Het pictogram **visualiseren** bevat een pictogram van een staaf diagram en is een eerste manier om de resultaten weer te geven.
 
 Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
 Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  

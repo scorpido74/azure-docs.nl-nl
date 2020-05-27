@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274539"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846525"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
 ![IT Service Management-connector-symbool](media/itsmc-overview/itsmc-symbol.png)
 
-Met de IT Service Management-connector (ITSMC) kunt u verbinding maken met Azure en een ondersteund ITSM-product (IT Service Management).
+Met de IT Service Management-connector (ITSMC) kunt u Azure verbinden met een ondersteund ITSM-product/service (IT-servicebeheer).
 
 Azure-Services zoals Log Analytics en Azure Monitor bieden hulp middelen voor het detecteren, analyseren en oplossen van problemen met uw Azure-en niet-Azure-resources. De werk items die betrekking hebben op een probleem bevinden zich meestal echter in een ITSM-product/-service. De ITSM-connector biedt een bidirectionele verbinding tussen Azure-en ITSM-hulpprogram ma's die u helpen problemen sneller op te lossen.
 
@@ -57,7 +57,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
 3. Selecteer in de sectie **OMS-werk ruimte** de Azure log Analytics-werk ruimte waar u de oplossing wilt installeren.
    >[!NOTE]
    > * Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
-   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, West VS2, Zuid-Centraal VS, West-Centraal VS, Centraal-Canada, Europa-west, Zuid-Brittannië, Zuidoost-Azië, Oost-Japan, Centraal-India, Zuidoost-Australië.
+   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, West VS2, Zuid-Centraal VS, VS-West-Centraal, Fairfax, Centraal-Canada, Europa-west, Zuid-Brittannië, Zuidoost-Azië, Oost-Japan, Centraal-India, Zuidoost-Australië.
 
 4. Selecteer in de sectie **OMS-werk ruimte** de ResourceGroup waar u de oplossings resource wilt maken.
 
@@ -65,7 +65,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **maken**.
+5. Klik op **Maken**.
 
 Wanneer de oplossings resource is geïmplementeerd, verschijnt er een melding in de rechter bovenhoek van het venster.
 
@@ -290,7 +290,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
    -  ITSMC: de oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
-   - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie rechtstreeks met `*`behulp van de query ServiceDeskLog_CL`*`.
+   - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie rechtstreeks met behulp van de query `*` ServiceDeskLog_CL `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen
 1.  In het geval van problemen met de implementatie van web-apps, moet u ervoor zorgen dat u voldoende machtigingen hebt in het abonnement dat wordt vermeld voor het maken/implementeren van resources.
@@ -300,7 +300,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 ## <a name="contact-us"></a>Contact opnemen
 
-Neem voor eventuele query's of feedback over de IT Service Management-connector contact met ons [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)op.
+Neem voor eventuele query's of feedback over de IT Service Management-connector contact met ons op [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Volgende stappen
 [Voeg ITSM-producten/-services toe aan IT Service Management-connector](../../azure-monitor/platform/itsmc-connections.md).

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582966"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845947"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
 
@@ -49,6 +49,10 @@ U kunt Maxi maal 900 beheerde domein namen toevoegen. Als u al uw domeinen confi
 
 Als u een domein naam van een derde niveau, zoals ' europe.contoso.com ', aan uw Directory wilt toevoegen, moet u eerst het domein van het tweede niveau toevoegen en controleren, zoals contoso.com. Het subdomein wordt automatisch gecontroleerd door Azure AD. Vernieuw de lijst met domeinen in de browser om te zien dat het subdomein dat u hebt toegevoegd, is geverifieerd.
 
+Notitie
+
+Als u al een contoso.com-domein aan een Azure AD-Tenant hebt toegevoegd, kunt u ook het subdomein europe.contoso.com toevoegen aan een tweede Azure AD-Tenant. Wanneer u het subdomein toevoegt, wordt u gevraagd een TXT-record toe te voegen aan de DNS-hosting provider.
+
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Wat u moet doen als u de DNS-registratie functie voor uw aangepaste domein naam wijzigt
 
 Als u de DNS-registratie service wijzigt, zijn er geen aanvullende configuratie taken in azure AD. U kunt de domein naam zonder onderbreking blijven gebruiken met Azure AD. Als u uw aangepaste domein naam gebruikt met Office 365, intune of andere services die afhankelijk zijn van aangepaste domein namen in azure AD, raadpleegt u de documentatie voor deze services.
@@ -67,7 +71,7 @@ U moet deze resource in uw Azure AD-adres lijst wijzigen of verwijderen voordat 
 
 ### <a name="forcedelete-option"></a>ForceDelete optie
 
-U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoals "user@contoso.com" bij naar de oorspronkelijke standaard domein naam, zoalsuser@contoso.onmicrosoft.com"." 
+U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoals " user@contoso.com " bij naar de oorspronkelijke standaard domein naam, zoals " user@contoso.onmicrosoft.com ." 
 
 Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit geldt ook voor Exchange mail-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
@@ -90,8 +94,8 @@ Er wordt een fout geretourneerd wanneer:
 **V: waarom mislukt het verwijderen van het domein met een fout die aangeeft dat ik Gemastered groups heb op deze domein naam?** <br>
 **A:** Momenteel worden bepaalde groepen, zoals beveiligings groepen met e-mail functionaliteit en gedistribueerde lijsten, door Exchange ingericht en moeten ze hand matig worden opgeschoond in [Exchange-beheer centrum (SBV)](https://outlook.office365.com/ecp/). Er is mogelijk een achtergebleven ProxyAddresses die afhankelijk is van de aangepaste domein naam en moet hand matig worden bijgewerkt naar een andere domein naam. 
 
-**V: Ik ben aangemeld als beheerder\@contoso.com, maar ik kan de domein naam ' contoso.com ' niet verwijderen?**<br>
-**A:** U kunt niet verwijzen naar de aangepaste domein naam die u probeert te verwijderen in de naam van uw gebruikers account. Zorg ervoor dat het account van de globale beheerder de oorspronkelijke standaard domein naam (. onmicrosoft.com) gebruikt admin@contoso.onmicrosoft.com, zoals. Meld u aan met een ander account voor globale beheerders, admin@contoso.onmicrosoft.com zoals een andere aangepaste domein naam, zoals ' fabrikam.com ', waarbij admin@fabrikam.comhet account is.
+**V: Ik ben aangemeld als beheerder \@ contoso.com, maar ik kan de domein naam ' contoso.com ' niet verwijderen?**<br>
+**A:** U kunt niet verwijzen naar de aangepaste domein naam die u probeert te verwijderen in de naam van uw gebruikers account. Zorg ervoor dat het account van de globale beheerder de oorspronkelijke standaard domein naam (. onmicrosoft.com) gebruikt, zoals admin@contoso.onmicrosoft.com . Meld u aan met een ander account voor globale beheerders, zoals een admin@contoso.onmicrosoft.com andere aangepaste domein naam, zoals ' fabrikam.com ', waarbij het account is admin@fabrikam.com .
 
 **V: Ik heb op de knop domein verwijderen geklikt en Zie `In Progress` status voor de Verwijder bewerking. Hoe lang duurt het? Wat gebeurt er als dit mislukt?**<br>
 **A:** De bewerking domein verwijderen is een asynchrone achtergrond taak waarmee alle verwijzingen naar de domein naam worden hernoemd. Deze moet binnen een minuut of twee worden voltooid. Als het verwijderen van het domein mislukt, zorg er dan voor dat u niet beschikt over:

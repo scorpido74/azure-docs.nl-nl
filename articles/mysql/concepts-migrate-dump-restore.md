@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78163774"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845543"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL
@@ -24,6 +24,8 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) -opdracht regel programma dat op een computer is geïnstalleerd.
 - MySQL Workbench [MySQL Workbench down load](https://dev.mysql.com/downloads/workbench/) of een ander mysql-hulp programma van derden om dump-en herstel opdrachten uit te voeren.
 
+Als u grote data bases wilt migreren met data base-grootten van meer dan 1 TBs, kunt u overwegen om gebruik te maken van de hulpprogram ma's van de Community zoals mydumper/myloader, die ondersteuning bieden voor parallel exporteren en importeren. Parallelle dump en herstel kunnen helpen de migratie tijd voor grote data bases aanzienlijk te verlagen. U kunt de techcommunity- [blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699) raadplegen voor aanbevolen procedures voor het migreren van grote data bases naar Azure database for MySQL-service met mydumper/myloader-hulpprogram ma's.
+
 ## <a name="use-common-tools"></a>Algemene hulpprogram ma's gebruiken
 Gebruik veelvoorkomende hulpprogram ma's en hulpprogram ma's zoals MySQL Workbench of mysqldump om gegevens extern te verbinden en te herstellen in Azure Database for MySQL. Gebruik deze hulpprogram ma's op de client computer met een Internet verbinding om verbinding te maken met de Azure Database for MySQL. Gebruik een met SSL versleutelde verbinding voor best practices voor beveiliging, Zie [SSL-connectiviteit ook configureren in azure database for MySQL](concepts-ssl-connection-security.md). U hoeft de dump bestanden niet te verplaatsen naar een speciale Cloud locatie wanneer u migreert naar Azure Database for MySQL. 
 
@@ -32,17 +34,17 @@ U kunt MySQL-hulpprogram ma's, zoals mysqldump en mysqlpump, gebruiken om data b
 
 - Gebruik database dumps wanneer u de gehele data base migreert. Deze aanbeveling houdt in dat u een grote hoeveelheid MySQL-gegevens verplaatst of wanneer u de service onderbreking voor Live sites of toepassingen wilt minimaliseren. 
 -  Zorg ervoor dat alle tabellen in de database gebruikmaken van de InnoDB-opslag-engine bij het laden van gegevens in Azure Database for MySQL. Azure Database for MySQL ondersteunt alleen de InnoDB-opslag engine en biedt daarom geen ondersteuning voor alternatieve opslag engines. Als uw tabellen zijn geconfigureerd met andere opslag engines, converteert u deze naar de InnoDB-engine-indeling voordat u de migratie naar Azure Database for MySQL.
-   Als u bijvoorbeeld een WordPress of WebApp met behulp van de MyISAM-tabellen hebt, moet u deze tabellen eerst converteren door de migratie naar de InnoDB-indeling voordat u naar Azure Database for MySQL herstelt. Gebruik de- `ENGINE=InnoDB` component om de engine in te stellen die wordt gebruikt bij het maken van een nieuwe tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de herstel bewerking. 
+   Als u bijvoorbeeld een WordPress of WebApp met behulp van de MyISAM-tabellen hebt, moet u deze tabellen eerst converteren door de migratie naar de InnoDB-indeling voordat u naar Azure Database for MySQL herstelt. Gebruik de-component `ENGINE=InnoDB` om de engine in te stellen die wordt gebruikt bij het maken van een nieuwe tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de herstel bewerking. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- U kunt compatibiliteitsproblemen voorkomen door ervoor te zorgen dat dezelfde versie van MySQL wordt gebruikt in het bron- en doelsysteem bij het dumpen van databases. Als uw bestaande MySQL-server bijvoorbeeld versie 5,7 is, moet u migreren naar Azure Database for MySQL geconfigureerd voor het uitvoeren van versie 5,7. De `mysql_upgrade` opdracht werkt niet op een Azure database for mysql-server en wordt niet ondersteund. Als u een upgrade wilt uitvoeren naar MySQL-versies, moet u eerst de data base van uw lagere versie dumpen of exporteren naar een hogere versie van MySQL in uw eigen omgeving. Voer vervolgens `mysql_upgrade`uit voordat u een migratie uitvoert in een Azure database for MySQL.
+- U kunt compatibiliteitsproblemen voorkomen door ervoor te zorgen dat dezelfde versie van MySQL wordt gebruikt in het bron- en doelsysteem bij het dumpen van databases. Als uw bestaande MySQL-server bijvoorbeeld versie 5,7 is, moet u migreren naar Azure Database for MySQL geconfigureerd voor het uitvoeren van versie 5,7. De `mysql_upgrade` opdracht werkt niet op een Azure database for mysql-server en wordt niet ondersteund. Als u een upgrade wilt uitvoeren naar MySQL-versies, moet u eerst de data base van uw lagere versie dumpen of exporteren naar een hogere versie van MySQL in uw eigen omgeving. Voer vervolgens uit `mysql_upgrade` voordat u een migratie uitvoert in een Azure database for MySQL.
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 Bekijk de volgende overwegingen bij het dumpen van grote data bases om de prestaties te optimaliseren:
 -   Gebruik de `exclude-triggers` optie in mysqldump bij het dumpen van data bases. Sluit triggers uit van dump bestanden om te voor komen dat trigger opdrachten worden geactiveerd tijdens het herstellen van gegevens. 
--   Gebruik de `single-transaction` optie om de modus voor transactie isolatie in te stellen op herhaalbaar lezen en een SQL-instructie voor het starten van een trans actie naar de server te verzenden voordat gegevens worden gedumpt. Het dumpen van veel tabellen binnen één trans actie leidt ertoe dat er tijdens het herstellen enkele extra opslag ruimte wordt gebruikt. De `single-transaction` optie en de `lock-tables` optie sluiten elkaar wederzijds uit omdat vergrendelings tabellen alle trans acties die in behandeling zijn, impliciet moeten worden doorgevoerd. Als u grote tabellen wilt dumpen `single-transaction` , moet u `quick` de optie combi neren met de optie. 
+-   Gebruik de `single-transaction` optie om de modus voor transactie isolatie in te stellen op herhaalbaar lezen en een SQL-instructie voor het starten van een trans actie naar de server te verzenden voordat gegevens worden gedumpt. Het dumpen van veel tabellen binnen één trans actie leidt ertoe dat er tijdens het herstellen enkele extra opslag ruimte wordt gebruikt. De `single-transaction` optie en de `lock-tables` optie sluiten elkaar wederzijds uit omdat vergrendelings tabellen alle trans acties die in behandeling zijn, impliciet moeten worden doorgevoerd. Als u grote tabellen wilt dumpen, moet u de optie combi neren `single-transaction` met de `quick` optie. 
 -   Gebruik de `extended-insert` syntaxis met meerdere rijen die verschillende waardelijsten bevat. Dit leidt tot een kleiner dump bestand en versnelt het invoegen wanneer het bestand opnieuw wordt geladen.
 -  Gebruik de `order-by-primary` optie in mysqldump bij het dumpen van data bases, zodat de gegevens in de volg orde van de primaire sleutel worden gescripteerd.
 -   Gebruik de `disable-keys` optie in mysqldump bij het dumpen van gegevens om refererende-sleutel beperkingen voor het laden uit te scha kelen. Het uitschakelen van externe-sleutel controles levert prestatie verbeteringen. Schakel de beperkingen in en controleer de gegevens na de belasting om de referentiële integriteit te waarborgen.
@@ -65,7 +67,7 @@ De para meters die u moet opgeven, zijn:
 - [upbestand. SQL] de bestands naam van de back-up van de data base 
 - [--opt] De optie mysqldump 
 
-Als u bijvoorbeeld een back-up wilt maken van een Data Base met de naam ' testdb ' op de MySQL-server met de gebruikers naam ' test ' en zonder wacht woord aan een bestand testdb_backup. SQL, gebruikt u de volgende opdracht. De opdracht maakt een back- `testdb` up van de Data Base `testdb_backup.sql`in een bestand met de naam, dat alle SQL-instructies bevat die nodig zijn om de data base opnieuw te maken. 
+Als u bijvoorbeeld een back-up wilt maken van een Data Base met de naam ' testdb ' op de MySQL-server met de gebruikers naam ' test ' en zonder wacht woord aan een bestand testdb_backup. SQL, gebruikt u de volgende opdracht. De opdracht maakt een back-up van de `testdb` Data base in een bestand met de naam `testdb_backup.sql` , dat alle SQL-instructies bevat die nodig zijn om de data base opnieuw te maken. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -90,6 +92,16 @@ Voeg de verbindings gegevens toe aan uw MySQL Workbench.
 
 ![MySQL Workbench-verbindings reeks](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
+## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>De doel Azure Database for MySQL server voorbereiden voor het snel laden van gegevens
+De volgende server parameters en configuratie moeten worden gewijzigd om de doel Azure Database for MySQL server voor te bereiden voor sneller laden van gegevens.
+- max_allowed_packet: ingesteld op 1073741824 (1 GB) om te voor komen dat een overflow probleem wordt veroorzaakt door lange rijen.
+- slow_query_log: ingesteld op uit om het langzame query logboek uit te scha kelen. Hiermee elimineert u de overhead die wordt veroorzaakt door het langzaam registreren van query's tijdens het laden van gegevens.
+- query_store_capture_mode: Stel beide in op geen om het query archief uit te scha kelen. Dit elimineert de overhead die wordt veroorzaakt door steekproef activiteiten door de query Store.
+- innodb_buffer_pool_size: de server omhoog schalen naar 32 vCore geoptimaliseerd voor geheugen van de prijs categorie van de portal tijdens de migratie om de innodb_buffer_pool_size te verg Roten. Innodb_buffer_pool_size kunnen alleen worden verhoogd door de reken kracht voor Azure Database for MySQL server omhoog te schalen.
+- innodb_write_io_threads & innodb_write_io_threads-Wijzig in 16 van de server parameters in Azure Portal om de snelheid van de migratie te verbeteren.
+- Opslaglaag omhoog schalen: de IOPs voor Azure Database for MySQL server neemt geleidelijk toe met de toename van de opslaglaag. Als u sneller wilt laden, kunt u de opslaglaag verhogen om de ingerichte IOPs te verg Roten. Houd er rekening mee dat de opslag alleen omhoog kan worden geschaald.
+
+Zodra de migratie is voltooid, kunt u de server parameters en de configuratie van de compute-laag herstellen naar de vorige waarden. 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>Uw MySQL-data base herstellen met behulp van opdracht regel of MySQL Workbench
 Wanneer u de doel database hebt gemaakt, kunt u de MySQL-opdracht of MySQL Workbench gebruiken om de gegevens in de specifieke zojuist gemaakte data base te herstellen vanuit het dump bestand.
@@ -100,7 +112,6 @@ In dit voor beeld herstelt u de gegevens in de zojuist gemaakte Data Base op de 
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-
 ## <a name="export-using-phpmyadmin"></a>Exporteren met behulp van PHPMyAdmin
 Als u wilt exporteren, kunt u gebruikmaken van de algemene hulp middelen phpMyAdmin, die u mogelijk al lokaal hebt geïnstalleerd in uw omgeving. Uw MySQL-data base exporteren met behulp van PHPMyAdmin:
 1. Open phpMyAdmin.
@@ -118,6 +129,9 @@ Het importeren van uw data base lijkt op het exporteren. Voer de volgende acties
 4. Klik op de **SQL** -koppeling om de pagina weer te geven waarop u SQL-opdrachten kunt typen of uw SQL-bestand moet uploaden. 
 5. Gebruik de knop **Bladeren** om het database bestand te zoeken. 
 6. Klik op de knop **Go** om de back-up te exporteren, de SQL-opdrachten uit te voeren en de data base opnieuw te maken.
+
+## <a name="known-issues"></a>Bekende problemen
+Voor bekende problemen, tips en trucs raden we u aan onze [techcommunity-blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912)te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Toepassingen verbinden met Azure database for MySQL](./howto-connection-string.md).

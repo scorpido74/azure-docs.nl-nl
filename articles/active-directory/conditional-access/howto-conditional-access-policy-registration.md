@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9eb3c8f34308271eb216cad25a5db4a62d03cb
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457906"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845370"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Voorwaardelijke toegang: registratie van beveiligings gegevens beveiligen
 
@@ -26,7 +26,7 @@ Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Au
 
 Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich willen registreren met de gecombineerde registratie-ervaring en blokkeert de toegang tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
 
-1. Blader in het **Azure Portal**naar **Azure Active Directory** > **voorwaardelijke toegang**voor**beveiliging** > .
+1. Blader in het **Azure Portal**naar **Azure Active Directory**  >  **Security**  >  **voorwaardelijke toegang**voor beveiliging.
 1. Selecteer **Nieuw beleid**.
 1. Voer bij naam een naam in voor dit beleid. Bijvoorbeeld **registratie van gegevens over gecombineerde beveiliging op vertrouwde netwerken**.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**en selecteert u de gebruikers en groepen waarop u dit beleid wilt Toep assen.
@@ -35,14 +35,14 @@ Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich 
    > Gebruikers moeten zijn ingeschakeld voor de [gecombineerde registratie](../authentication/howto-registration-mfa-sspr-combined.md).
 
 1. Onder **Cloud-apps of-acties**selecteert u **gebruikers acties**, check **Security Information registreren**.
-1. Onder **voor waarden** > **locaties**.
+1. Onder **voor waarden**  >  **locaties**.
    1. Configureer **Ja**.
    1. **Een wille keurige locatie**bevatten.
    1. **Alle vertrouwde locaties**uitsluiten.
    1. Selecteer **gereed** op de Blade locaties.
    1. Selecteer **gereed** op de Blade voor waarden.
-1. Onder **voor waarden** > **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
-1. Onder **toegangs beheer** > **verlenen**.
+1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
+1. Onder **toegangs beheer**  >  **verlenen**.
    1. Selecteer **toegang blok keren**.
    1. Klik vervolgens op **Selecteren**.
 1. Stel **Beleid inschakelen** in op **Aan**.
@@ -52,7 +52,7 @@ Bij stap 6 in dit beleid hebben organisaties keuzes die ze kunnen maken. Voor he
 
 Sommige kunnen ervoor kiezen om de apparaatstatus te gebruiken in plaats van locatie in stap 6 hierboven:
 
-6. Onder **voor waarden** > **Apparaatstatus (preview-versie)**.
+6. Onder **voor waarden**  >  **Apparaatstatus (preview-versie)**.
    1. Configureer **Ja**.
    1. **Alle Apparaatstatus**toevoegen.
    1. **Hybride Azure AD-join** en/of **apparaat dat is gemarkeerd als compatibel** uitsluiten voor apparaat
@@ -61,6 +61,7 @@ Sommige kunnen ervoor kiezen om de apparaatstatus te gebruiken in plaats van loc
 
 > [!WARNING]
 > Als u Apparaatstatus als een voor waarde in uw beleid gebruikt, kan dit van invloed zijn op gast gebruikers in de Directory. De [modus alleen rapport](concept-conditional-access-report-only.md) kan helpen bij het bepalen van de impact van beleids beslissingen.
+> Houd er rekening mee dat de modus alleen rapport is niet van toepassing op CA-beleid met het bereik ' gebruikers acties '.
 
 ## <a name="next-steps"></a>Volgende stappen
 

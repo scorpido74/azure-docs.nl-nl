@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800015"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847358"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
 
@@ -35,8 +35,6 @@ Het biedt:
 
 - **Aanpassing** van deze ervaring, die is gebouwd hierop Azure monitor werkmap sjablonen. Met de-ervaring kunt u wijzigen welke metrische gegevens worden weer gegeven en aanpassen of drempel waarden instellen die met uw limieten worden uitgelijnd. U kunt de wijzigingen opslaan in een aangepaste werkmap en vervolgens werkmap grafieken vastmaken aan Azure-Dash boards.
 
-- **Aanpassing** van deze ervaring is gebouwd hierop Azure monitor werkmap sjablonen. Met de-ervaring kunt u wijzigen welke metrische gegevens worden weer gegeven en aanpassen of drempel waarden instellen die met uw limieten worden uitgelijnd. U kunt de wijzigingen opslaan in een aangepaste werkmap en vervolgens werkmap grafieken vastmaken aan Azure-Dash boards.
-
 Voor deze functie hoeft u niets in te scha kelen of te configureren. De Azure-cache voor redis-gegevens wordt standaard verzameld.
 
 >[!NOTE]
@@ -46,7 +44,7 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. De Azure-ca
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts voor al uw abonnementen weer te geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek naar **monitor**en selecteer **monitor**.
 
@@ -81,7 +79,7 @@ Wanneer u de naam van het Azure-cache geheugen selecteert voor de redis-resource
 - **Cachemissers**
 - **Fouten (max)**
 
-### <a name="operations"></a>Bewerkingen
+### <a name="operations"></a>Operations
 
 Wanneer u **bewerkingen** boven aan de pagina selecteert, wordt de tabel **bewerkingen** van de werkmap sjabloon geopend. Deze kolommen worden weer gegeven:
 

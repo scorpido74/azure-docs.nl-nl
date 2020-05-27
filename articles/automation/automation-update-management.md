@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Updatebeheer
 description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830698"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847325"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -97,7 +97,7 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
+|Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [Windows Update voor Business](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) for Windows 10 client machine patch management. |
 |Windows Server 2016 Nano Server     | Niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
 
@@ -167,9 +167,9 @@ De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
-| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
+| Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Yes |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -255,13 +255,5 @@ Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)voor meer informatie over het werken met updatebeheer.
-* Als u een dynamische VM-groep wilt richten op updates, raadpleegt u [dynamische groepen gebruiken met updatebeheer](automation-update-management-groups.md).
-* Zie [updatebeheer gebruiken met Azure Resource Manager sjabloon](automation-update-management-deploy-template.md)om de functie in te scha kelen met behulp van een Azure Resource Manager sjabloon.
-* Zie [updatebeheer inschakelen vanuit een runbook](automation-onboard-solutions.md)om de functie in te scha kelen vanuit een runbook.
-* Zie [updatebeheer inschakelen vanuit een Automation-account](automation-onboard-solutions-from-automation-account.md)om de functie in te scha kelen vanuit een Automation-account.
-* Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [updatebeheer van Azure Portal inschakelen](automation-onboard-solutions-from-browse.md).
-* Als u de functie wilt inschakelen vanaf een virtuele Azure-machine, raadpleegt u [updatebeheer inschakelen op een virtuele machine van Azure](automation-onboard-solutions-from-vm.md).
-* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Query updatebeheer-logboeken](automation-update-management-query-logs.md).
-* Zie [problemen met updatebeheer oplossen](troubleshoot/update-management.md)voor informatie over het oplossen van functie fouten.
-* Zie problemen [met Windows Update agent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van fouten in Windows Update Agent.
-* Zie problemen [met de Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met Linux-update agenten.
+
+* Raadpleeg Veelgestelde vragen over Updatebeheer in de [Azure Automation Veelgestelde vragen](automation-faq.md).

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792102"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846049"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -61,7 +61,7 @@ Er zijn echter beperkingen om rekening mee te houden:
 
 Als een master server geen bestaande replica servers heeft, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie.
 
-Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for MySQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de hoofd server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de Master en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren.
+Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for MySQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de hoofd server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de Master en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren. De replica server wordt altijd gemaakt in dezelfde resource groep en hetzelfde abonnement als de hoofd server. Als u een replica server wilt maken naar een andere resource groep of een ander abonnement, kunt u [de replica-server verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) nadat u deze hebt gemaakt.
 
 Elke replica is ingeschakeld voor [automatische groei](concepts-pricing-tiers.md#storage-auto-grow)van opslag. Met de functie voor automatisch uitbreiden kan de replica de gegevens repliceren, en wordt voor komen dat er een onderbreking in de replicatie wordt veroorzaakt door problemen met de opslag.
 
@@ -85,7 +85,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MySQL levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
 
-Deze metrische gegevens worden berekend met `seconds_behind_master` behulp van de beschik bare metrische gegevens in de opdracht van `SHOW SLAVE STATUS` mysql.
+Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de opdracht van MySQL `SHOW SLAVE STATUS` .
 
 Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
@@ -148,7 +148,7 @@ De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-var
 
 Als u een van de bovenstaande para meters op de hoofd server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de Master bij en maakt u de replica's opnieuw.
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 
 - Algemene trans actie-id's (GTID) worden niet ondersteund.
 - Het maken van een replica van een replica wordt niet ondersteund.

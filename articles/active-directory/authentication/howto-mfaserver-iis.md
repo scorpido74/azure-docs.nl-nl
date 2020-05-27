@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6189e2bc6c3c8f28b767902b525b03cb72968bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652898"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845437"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Azure Multi-Factor Authentication-server configureren voor IIS-webtoepassingen
 
 Gebruik de IIS-verificatiesectie van de Azure Multi-Factor Authentication-server (MFA) om IIS-verificatie in te schakelen en te configureren voor integratie met Microsoft IIS-webtoepassingen. Met de Azure MFA-server wordt een invoegtoepassing geïnstalleerd voor het filteren van aanvragen die worden ingediend bij de IIS-webserver om Azure Multi-Factor Authentication te kunnen toevoegen. De IIS-invoegtoepassing biedt ondersteuning voor verificatie op basis van formulier en geïntegreerde Windows-verificatie voor HTTP. Goedgekeurde IP-adressen kunnen ook zo worden geconfigureerd dat interne IP-adressen worden vrijgesteld van verificatie met twee factoren.
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren. Wanneer u Azure Multi-Factor Authentication op basis van de Cloud gebruikt, is er geen alternatief voor de IIS-invoeg toepassing die is verschaft door de Azure Multi-Factor Authentication-Server (MFA). Gebruik in plaats daarvan Web Application proxy (WAP) met Active Directory Federation Services (AD FS) of de toepassings proxy van Azure Active Directory.
 
 ![IIS-verificatie in MFA-server](./media/howto-mfaserver-iis/iis.png)
 
@@ -33,8 +33,8 @@ Als u een IIS-webtoepassing wilt beveiligen die gebruikmaakt van verificatie op 
 
 1. Klik op de Azure Multi-Factor Authentication-server in het menu links op het pictogram IIS-verificatie.
 2. Klik op het tabblad **op formulier gebaseerd** .
-3. Klik op **Add**.
-4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren `https://localhost/contoso/auth/login.aspx`, voert u de AANMELDINGS-URL (bijvoorbeeld) in het dialoog venster formulier-gebaseerde website automatisch configureren in en klikt u op **OK**.
+3. Klik op **Toevoegen**.
+4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren, voert u de aanmeldings-URL (bijvoorbeeld `https://localhost/contoso/auth/login.aspx` ) in het dialoog venster formulier-gebaseerde website automatisch configureren in en klikt u op **OK**.
 5. Schakel het selectievakje **Overeenkomende Multi-Factor Authentication-gebruiker vereisen** in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan Multi-Factor Authentication moeten worden onderworpen. Als een groot aantal gebruikers nog niet is geïmporteerd in de server en/of vrijgesteld zal zijn van Multi-Factor Authentication, laat u het vakje uitgeschakeld.
 6. Als de paginavariabelen niet automatisch kunnen worden gedetecteerd, klikt u op de **Handmatig opgeven** in het dialoogvenster Formulier-gebaseerde website automatisch configureren.
 7. Voer in het dialoogvenster Formulier-gebaseerde website toevoegen in het veld Indienings-URL de URL naar de aanmeldingspagina in en voer een toepassingsnaam in (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
@@ -57,8 +57,8 @@ Als u een IIS-webtoepassing wilt beveiligen die gebruikmaakt van geïntegreerde 
 
 1. Klik op de Azure Multi-Factor Authentication-server in het menu links op het pictogram IIS-verificatie.
 2. Klik op het tabblad **http** .
-3. Klik op **Add**.
-4. Voer in het dialoog venster basis-URL toevoegen in het veld de URL in voor de website waar de HTTP <http://localhost/owa>-verificatie wordt uitgevoerd (zoals) en geef een toepassings naam op (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
+3. Klik op **Toevoegen**.
+4. Voer in het dialoog venster basis-URL toevoegen in het veld de URL in voor de website waar de HTTP-verificatie wordt uitgevoerd (zoals <http://localhost/owa> ) en geef een toepassings naam op (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
 5. Pas de tijd voor time-out voor inactiviteit en voor Maximale sessie aan als de standaardwaarde niet voldoende is.
 6. Schakel het selectievakje **Overeenkomende Multi-Factor Authentication-gebruiker vereisen** in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan Multi-Factor Authentication moeten worden onderworpen. Als een groot aantal gebruikers nog niet is geïmporteerd in de server en/of vrijgesteld zal zijn van Multi-Factor Authentication, laat u het vakje uitgeschakeld.
 7. Schakel, indien gewenst, het selectievakje **Cookie gebruiken om voltooide authenticaties in de cache op te slaan** in.
@@ -77,6 +77,6 @@ Nadat u de URL's en instellingen voor op formulier gebaseerde of HTTP-verificati
 De goedgekeurde IP-adressen bieden gebruikers de mogelijkheid om Azure Multi-Factor Authentication over te slaan voor websiteverzoeken die afkomstig zijn van bepaalde IP-adressen of subnetten. Zo kunt u gebruikers vrijstellen van Azure Multi-Factor Authentication wanneer zij zich op kantoor aanmelden. Hiervoor geeft u het subnet van de werkplek op als een goedgekeurd IP-adres. Gebruik de volgende procedure als u goedgekeurde IP-adressen wilt configureren:
 
 1. Klik in de sectie IIS-verificatie op het tabblad **vertrouwde IP-adressen** .
-2. Klik op **Add**.
+2. Klik op **Toevoegen**.
 3. Wanneer het dialoog venster vertrouwde Ip's toevoegen wordt weer gegeven, selecteert u het keuze rondje **Eén IP**-adres, **IP-bereik**of **subnet** .
 4. Voer het IP-adres, het bereik van de IP-adressen of het subnet in dat moet worden toegestaan. Als u een subnet wilt invoeren, selecteert u het geschikte Netmasker en klikt u op **OK**.

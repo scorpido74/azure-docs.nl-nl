@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790980"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847807"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Een HTTPS-eind punt gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -183,7 +183,7 @@ In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische ene
 
 U kunt uw configuratie testen met behulp van [postman](https://app.getpostman.com/app/download/win64). Er is een online down load van Postman beschikbaar voor Windows. 
 
-1. Start postman en selecteer **nieuwe** > **aanvraag** om uw test programma in te stellen. 
+1. Start postman en selecteer **nieuwe**  >  **aanvraag** om uw test programma in te stellen. 
 
    ![Aanvraag voor het instellen van uw test programma](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -229,8 +229,9 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
 
-1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
-    ![Knop verbinding maken met lead beheer](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Leads van klanten":::
 
 1. Selecteer in het pop-upvenster **verbindings Details** het **https-eind punt** voor de **doel locatie**van de lead. Plak de URL van de HTTP POST uit de stroom die u hebt gemaakt door eerdere stappen in het veld **https-eind punt URL** te volgen.
     ![Verbindings gegevens contact opnemen met e-mail](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)

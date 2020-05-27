@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 957d7911a1373504265c014e3ba141c150e60c2a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800592"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847919"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -73,7 +73,7 @@ Uw technische team moet een basis kennis hebben van de volgende micro soft-techn
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Azure Marketplace-aanbieding en in Azure PowerShell en de Azure CLI, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. De ID kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding *https://azuremarketplace.microsoft.com/marketplace/../test-offer-1* .
+- Gebruik alleen kleine letters en cijfers. De ID kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. De aanbiedings alias is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -96,7 +96,7 @@ Aanvullende bronnen voor test stations:
 - [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Het overzicht van het test station downloaden](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF-bestand (zorg ervoor dat pop-upblokkering is uitgeschakeld).
 
-### <a name="lead-management"></a>Leadbeheer
+### <a name="customer-leads"></a>Leads van klanten
 
 Wanneer u uw aanbieding publiceert naar de commerciële Marketplace met het partner centrum, sluit u deze aan op het CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product. Verbinding maken met een CRM is vereist als u een test station wilt inschakelen (Zie de voor gaande sectie). Anders is het maken van een verbinding met een CRM optioneel.
 
@@ -175,7 +175,7 @@ Op de **aanbiedings** pagina kunt u de details van het voor stel opgeven, zoals 
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Naam
+#### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt aangevuld met de naam die u hebt ingevoerd in het vak **aanbiedings alias** tijdens het maken van de aanbieding. U kunt deze naam later wijzigen. De naam:
 
@@ -221,7 +221,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Naam
+- Name
 - E-mail
 - Telefoon
 
@@ -229,7 +229,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Naam
+- Name
 - E-mail
 - Telefoon
 

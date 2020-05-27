@@ -11,15 +11,15 @@
   items:
     - name: Toegang voor een gebruiker bekijken
       href: check-access.md
+    - name: ARM-sjabloon
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: Zelfstudies
   items:
     - name: Een gebruiker toegang verlenen - Portal
       href: quickstart-assign-role-user-portal.md
     - name: Een gebruiker toegang verlenen - PowerShell
       href: tutorial-role-assignments-user-powershell.md
-    - name: Een gebruiker toegang verlenen - Resource Manager-sjabloon
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: Een groep toegang verlenen - PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Een aangepaste rol maken - PowerShell
@@ -67,7 +67,8 @@
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
-        - name: Template
+        - name: ARM-sjabloon
+          displayName: Resource Manager
           href: role-assignments-template.md
     - name: Lijst met geweigerde toewijzingen weergeven
       items:
@@ -113,8 +114,8 @@
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST-API
       href: /rest/api/authorization/
-    - name: Resource Manager-sjablonen
-      displayName: ARM
+    - name: ARM-sjablonen
+      displayName: Resource Manager
       items:
         - name: Roltoewijzingen
           href: /azure/templates/microsoft.authorization/roleassignments

@@ -3,12 +3,12 @@ title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683748"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847664"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -240,7 +240,7 @@ Neem in de aanvraag een JSON-object op waarmee de eigenschappen voor de vergren 
     } 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Tags gebruiken om uw resources te organiseren](tag-resources.md) voor meer informatie over het logisch ordenen van uw resources
+* Zie [Tags gebruiken om uw resources te organiseren](tag-resources.md)voor meer informatie over het logisch ordenen van uw resources.
 * U kunt beperkingen en conventies Toep assen op uw abonnement met aangepast beleid. Zie [Wat is Azure Policy?](../../governance/policy/overview.md) voor meer informatie.
 * Voor begeleiding bij de manier waarop ondernemingen Resource Manager effectief kunnen gebruiken voor het beheer van abonnementen, gaat u naar [Azure enterprise-platform - Prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

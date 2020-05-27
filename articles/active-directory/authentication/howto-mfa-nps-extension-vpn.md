@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113150"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845743"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -178,7 +178,7 @@ U kunt een standaard instelling (op basis van een wizard) of een geavanceerde co
 
     ![Geef het venster gebruikers groepen op om toegang toe te staan of te weigeren](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Selecteer **Next**.
+9. Selecteer **Volgende**.
 
 10. Selecteer **volgende**in het venster **IP-filters opgeven** .
 
@@ -228,9 +228,9 @@ In deze sectie configureert u de VPN-server voor het gebruik van RADIUS-verifica
 
 2. Selecteer in Serverbeheer **extra**en selecteer vervolgens **route ring en externe toegang**.
 
-3. Klik in het venster **route ring en RAS** met de rechter muisknop op ** \<server naam> (lokaal)** en selecteer vervolgens **Eigenschappen**.
+3. Klik in het venster **route ring en RAS** met de rechter muisknop op ** \< Server naam> (lokaal)** en selecteer vervolgens **Eigenschappen**.
 
-4. Selecteer in het ** \<venster Eigenschappen van server naam> (lokaal)** het tabblad **beveiliging** .
+4. Selecteer in het venster ** \< Eigenschappen van server naam> (lokaal)** het tabblad **beveiliging** .
 
 5. Op het tabblad **beveiliging** , onder **verificatie provider**, selecteert u **RADIUS-verificatie**en selecteert **u configureren**.
 
@@ -245,9 +245,9 @@ In deze sectie configureert u de VPN-server voor het gebruik van RADIUS-verifica
     b. Voor het **gedeelde geheim**selecteert u **wijzigen**en voert u het gedeelde geheime wacht woord in dat u eerder hebt gemaakt en geregistreerd.
 
     c. Voer in het vak **time-out (seconden)** de waarde **30**in.  
-    De time-outwaarde is nodig om voldoende tijd te bieden om de tweede verificatie factor te volt ooien.
+    De time-outwaarde is nodig om voldoende tijd te bieden om de tweede verificatie factor te volt ooien. Sommige Vpn's of regio's vereisen een time-outinstellingen van meer dan 30 seconden om te voor komen dat gebruikers meerdere telefoon gesprekken ontvangen. Als gebruikers met dit probleem te maken krijgen, verhoogt u de time-outwaarde **(seconden)** in stappen van 30 seconden totdat het probleem niet opnieuw optreedt.
 
-    ![Het venster RADIUS-server toevoegen de time-out configureren](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![Het venster RADIUS-server toevoegen de time-out configureren](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. Selecteer **OK**.
 
@@ -376,7 +376,7 @@ Als u het script wilt gebruiken, geeft u de extensie op met uw Azure Active Dire
 
     ![Het configuratie script AzureMfsNpsExtnConfigSetup. ps1 uitvoeren](./media/howto-mfa-nps-extension-vpn/image38.png)
 
-    Als er een beveiligings fout is opgetreden vanwege TLS, schakelt u TLS 1,2 `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` in met behulp van de opdracht uit de Power shell-prompt.
+    Als er een beveiligings fout is opgetreden vanwege TLS, schakelt u TLS 1,2 in met behulp `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` van de opdracht uit de Power shell-prompt.
     
     Nadat het script de installatie van de Power shell-module heeft gecontroleerd, wordt het aanmeldings venster van de Azure Active Directory Power shell-module weer gegeven.
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 2e4de91034de0d036cd99e265949ba85a5939180
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b62122e7ce981a73fe8b8b3028c123054e16330d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629324"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847596"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0-schema gebruiken met Event Grid
 Naast het [standaard schema](event-schema.md)van de gebeurtenis, ondersteunt Azure Event grid systeem eigen gebeurtenissen in de [JSON-implementatie van CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) en [http-protocol binding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) is een [open specificatie](https://github.com/cloudevents/spec/blob/v1.0/spec.md) voor het beschrijven van gebeurtenis gegevens.
@@ -61,7 +61,7 @@ Hier volgt een voor beeld van een Azure Blob Storage-gebeurtenis in de indeling 
 
 [Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)vindt u een gedetailleerde beschrijving van de beschik bare velden, hun typen en definities in CloudEvents v 1.0.
 
-De waarden van headers voor gebeurtenissen die in het CloudEvents-schema en het Event Grid schema worden bezorgd, `content-type`zijn hetzelfde, behalve voor. Voor het CloudEvents-schema is `"content-type":"application/cloudevents+json; charset=utf-8"`die header waarde. Voor Event Grid schema is `"content-type":"application/json; charset=utf-8"`die header waarde.
+De waarden van headers voor gebeurtenissen die in het CloudEvents-schema en het Event Grid schema worden bezorgd, zijn hetzelfde, behalve voor `content-type` . Voor het CloudEvents-schema is die header waarde `"content-type":"application/cloudevents+json; charset=utf-8"` . Voor Event Grid schema is die header waarde `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Event Grid configureren voor CloudEvents
 
@@ -192,7 +192,7 @@ module.exports = function (context, req) {
         // If the request is for subscription validation, send back the validation code
         
         context.log('Validate request received');
-        context.res = { status: 200, body: { "ValidationResponse": code } };
+        context.res = { status: 200 };
         context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
     }
     else

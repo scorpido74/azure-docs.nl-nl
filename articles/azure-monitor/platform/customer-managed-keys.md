@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800036"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845095"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -35,8 +35,10 @@ Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/a
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hoe CMK werkt in Azure Monitor
 
-Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen.Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource, terwijl de identiteit van het Log Analytics cluster op cluster niveau wordt ondersteund.Dit bepaalt of de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster.Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster*   resource wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten.De Log Analytics cluster opslag maakt gebruik van de beheerde identiteit die \' aan de *cluster*   bron is gekoppeld om de Azure Key Vault via Azure Active Directory te verifiëren. 
-Na de configuratie van CMK worden gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster*   bron, versleuteld met uw sleutel in Key Vault. U kunt werk ruimten op elk gewenst moment loskoppelen van de *cluster*   resource.Nieuwe gegevens worden opgenomen in Log Analytics opslag en versleuteld met de micro soft-sleutel, terwijl u uw nieuwe en oude gegevens naadloos kunt opvragen.
+Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang tot uw Azure Key Vault te verlenen. Door het systeem toegewezen beheerde identiteit kan alleen worden gekoppeld aan één Azure-resource, terwijl de identiteit van het Log Analytics cluster wordt ondersteund op cluster niveau. Dit bepaalt of de CMK-mogelijkheid wordt geleverd op een toegewezen Log Analytics cluster. Ter ondersteuning van CMK op meerdere werk ruimten, een nieuwe Log Analytics *cluster* resource wordt uitgevoerd als een tussenliggende identiteits verbinding tussen uw Key Vault en uw log Analytics-werk ruimten. De Log Analytics cluster opslag maakt gebruik van de beheerde identiteit die \' aan de *cluster* bron is gekoppeld om de Azure Key Vault via Azure Active Directory te verifiëren. 
+
+Na de configuratie van CMK worden gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster* bron, versleuteld met uw sleutel in Key Vault. U kunt werk ruimten op elk gewenst moment loskoppelen van de *cluster* resource. Nieuwe gegevens worden opgenomen in Log Analytics opslag en versleuteld met de micro soft-sleutel, terwijl u uw nieuwe en oude gegevens naadloos kunt opvragen.
+
 
 ![Overzicht van CMK](media/customer-managed-keys/cmk-overview-8bit.png)
 
@@ -118,6 +120,29 @@ Bewerking wordt uitgevoerd
     "name": "operation-id", 
     "status" : "InProgress", 
     "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
+
+De update bewerking voor de sleutel-id wordt uitgevoerd
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Updating", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+*Cluster* bron verwijderen wordt uitgevoerd: wanneer u een *cluster* resource verwijdert die werk ruimten aan werk ruimten heeft gekoppeld, wordt er een ontkoppelings bewerking uitgevoerd voor elk van de werk ruimten in asynchrone bewerkingen die even kunnen duren.
+Dit is niet relevant wanneer u een *cluster* verwijdert zonder gekoppelde werk ruimte. in dit geval wordt de *cluster* bron onmiddellijk verwijderd.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Deleting", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
 }
 ```
 
@@ -270,7 +295,7 @@ Als u de *cluster* bron met de details van de Key Vault *sleutel-id* wilt bijwer
 
 Werk de *cluster* bron-KeyVaultProperties bij met sleutel-id-Details.
 
-**Bijwerk**
+**Bijwerken**
 
 Deze aanvraag van een resource manager is een asynchrone bewerking bij het bijwerken van sleutel-id-Details, terwijl deze synchroon is tijdens het bijwerken van de capaciteits waarde.
 

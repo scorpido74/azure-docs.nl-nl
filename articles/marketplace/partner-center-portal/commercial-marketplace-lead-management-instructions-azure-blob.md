@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792714"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845783"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob-opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792714"
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, volgt u de onderstaande stappen:
 
 1. Navigeer naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
-2. Selecteer **verbinding maken** in het gedeelte Lead beheer.
+2. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
 
-    ![Connect-aanbieding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Leads van klanten":::
 
 3. Selecteer in het pop-upvenster verbindings Details de optie **Azure Blob** voor de doel locatie van de lead.
 
@@ -85,7 +85,7 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 4. Geef de **container naam** en de **verbindings reeks voor het opslag account** op die u hebt gevolgd door deze instructies.
 
     * Container naam voor beeld:`marketplaceleadcontainer`
-    * Voor beeld van verbindings reeks voor `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![opslag account: Details van verbinding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Voor beeld van verbindings reeks voor opslag account: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Details van verbinding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Selecteer **Opslaan**.
 

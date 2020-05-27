@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262995"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845182"
 ---
-# <a name="national-clouds"></a>Nationale Clouds
+# <a name="national-clouds"></a>Nationale clouds
 
 Nationale Clouds zijn fysiek geïsoleerde exemplaren van Azure. Deze regio's van Azure zijn zodanig ontworpen dat de vereisten voor gegevens locatie, soevereiniteit en naleving binnen geografische grenzen worden gerespecteerd.
 
@@ -60,8 +60,8 @@ De volgende tabel bevat de basis-Url's voor de Azure AD-eind punten die worden g
 
 U kunt aanvragen indienen bij de autorisatie-of Token-eind punten van Azure AD met behulp van de juiste regiospecifieke basis-URL. Bijvoorbeeld voor Azure Duitsland:
 
-  - Het gebruikelijke eind punt `https://login.microsoftonline.de/common/oauth2/authorize`voor autorisatie is.
-  - Token common-eind `https://login.microsoftonline.de/common/oauth2/token`punt is.
+  - Het gebruikelijke eind punt voor autorisatie is `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+  - Token common-eind punt is `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 Vervang voor toepassingen met één Tenant "common" in de vorige Url's door uw Tenant-ID of-naam. Een voorbeeld is `https://login.microsoftonline.de/contoso.com`.
 

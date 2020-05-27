@@ -6,14 +6,14 @@ services: internet-peering
 author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 5/21/2020
+ms.date: 5/2/2020
 ms.author: derekol
-ms.openlocfilehash: 62aec65498f75e51ecb1df15b525294aef026745
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 259ced3032eb43a946de7f1cf4dad9abb99d4a11
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800516"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845223"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Een Exchange-peering maken of wijzigen met behulp van de Azure Portal
 
@@ -33,14 +33,14 @@ Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](how
 ### <a name="create-an-exchange-peering"></a><a name=create></a>Een Exchange-peering maken
 
 
-Als Internet Exchange-provider kunt u een aanvraag voor directe peering maken door [een peering te maken]( https://go.microsoft.com/fwlink/?linkid=2129593).
+Als Internet Exchange-provider kunt u een uitwisselings aanvraag maken door [een peering te maken]( https://go.microsoft.com/fwlink/?linkid=2129593).
 
 1. Vul op de pagina **een peering maken** op het tabblad **basis beginselen** de selectie vakjes in, zoals hier wordt weer gegeven:
 
->    [!div class="mx-imgBorder"]
->   ![Peering Service registreren](./media/setup-basics-tab.png)
+    > [!div class="mx-imgBorder"] 
+    > ![Peering Service registreren](./media/setup-basics-tab.png)
 
-* Selecteer uw Azure-abonnement.
+*    Selecteer uw Azure-abonnement.
 
 * Voor resource groep kunt u een bestaande resource groep in de vervolg keuzelijst kiezen of een nieuwe groep maken door nieuw maken te selecteren. We maken een nieuwe resource groep voor dit voor beeld.
 
@@ -49,12 +49,12 @@ Als Internet Exchange-provider kunt u een aanvraag voor directe peering maken do
 * De regio wordt automatisch geselecteerd als u een bestaande resource groep hebt gekozen. Als u ervoor hebt gekozen om een nieuwe resource groep te maken, moet u ook de Azure-regio kiezen waar u de resource wilt opslaan.
 
 >[!NOTE]
-    De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
+>De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
 
 * Selecteer uw ASN in het vak **PeerASN** .
 
 >[!IMPORTANT] 
-U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van **[peer ASN koppelen aan Azure-abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)**.
+>U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van **[peer ASN koppelen aan Azure-abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)**.
 
 * Selecteer **volgende: Configuratie** om door te gaan.
 
