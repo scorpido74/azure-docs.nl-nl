@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735904"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827893"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Machines configureren met een gewenste status
 
@@ -26,8 +26,6 @@ Met de configuratie van Azure Automation status kunt u configuraties voor uw ser
 Voor deze zelf studie gebruiken we een eenvoudige [DSC-configuratie](/powershell/scripting/dsc/configurations/configurations) die ervoor zorgt dat IIS op de virtuele machine is geïnstalleerd.
 
 ## <a name="prerequisites"></a>Vereisten
-
-Voor deze zelfstudie hebt u het volgende nodig:
 
 - Een Azure Automation-account. Zie [Azure Uitvoeren-als-account](automation-sec-configure-azure-runas-account.md) voor instructies over het maken van een Azure Automation Uitvoeren-als-account.
 - Een Azure Resource Manager-VM (niet klassiek) met Windows Server 2008 R2 of hoger. Zie [uw eerste virtuele Windows-machine maken in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)voor instructies voor het maken van een VM.
@@ -163,9 +161,10 @@ Als u de registratie van een knoop punt bij de configuratie service van Azure Au
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aan de slag met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)
-* [Configuratie van Azure Automation status inschakelen](automation-dsc-onboarding.md)
-* [Configuraties compileren in Azure Automation status configuratie](automation-dsc-compile.md)
-* [Azure Automation status configuratie-cmdlets](/powershell/module/azurerm.automation/#automation)
-* [Prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)
-- [Continue implementatie met chocolade instellen](automation-dsc-cd-chocolatey.md)
+- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
+- Zie [Azure Automation status configuratie inschakelen](automation-dsc-onboarding.md)voor meer informatie over het inschakelen van knoop punten.
+- Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
+- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
+- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

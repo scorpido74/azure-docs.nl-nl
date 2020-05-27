@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743341"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826601"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
 
@@ -30,7 +30,7 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
 - Sommige externe referentie providers zijn bekend om problemen met deze functie te veroorzaken.
 - Het uitschakelen van UAC via wijziging van de [register sleutel EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend bij het veroorzaken van problemen.
 - Deze functie werkt niet voor netwerken met 802.1 x-netwerk verificatie geïmplementeerd en de optie ' direct voor gebruikers aanmelding uitvoeren '. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
-- Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan.
+- Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan. Dit betekent dat apparaten op het interne netwerk van de organisatie of op een VPN met netwerk toegang tot een on-premises domein controller moeten zijn. 
 - Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - De volgende instellingen zijn bekend om te voor komen dat wacht woorden op Windows 10-apparaten kunnen worden gebruikt en opnieuw worden ingesteld
     - Als Ctrl + Alt + del vereist is voor het beleid in versies van Windows 10 vóór v1809, werkt **wacht woord opnieuw instellen** niet.
@@ -66,7 +66,7 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Een beleid voor apparaatconfiguratie maken in Intune
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Intune**.
-1. Een nieuw configuratie profiel voor **het apparaat maken** > door te gaan naar apparaatconfiguratie**profielen** > **profiel maken**
+1. Een nieuw configuratie profiel voor het apparaat maken door te **gaan naar apparaatconfiguratie**  >  **profielen**  >  **profiel maken**
    - Geef een beschrijvende naam op voor het profiel
    - Geef eventueel een duidelijke beschrijving van het profiel op
    - Platform **Windows 10 en hoger**
@@ -80,7 +80,7 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
       - **Waarde** ingesteld op **1**
       - Klik op **OK**
    - Klik op **OK**
-1. Klik op **maken**
+1. Klik op **Maken**.
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Inschakelen voor Windows 10 met behulp van het REGI ster
@@ -97,7 +97,7 @@ Het auditlogboek van Azure AD bevat informatie over het IP-adres en het ClientTy
 
 ![Voor beeld van een Windows 7-wacht woord opnieuw instellen in het Azure AD-controle logboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings scherm van een Windows 10-apparaat, `defaultuser1` wordt een tijdelijke account met beperkte bevoegdheden gemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf heeft een wille keurig gegenereerd wacht woord, wordt niet weer gegeven voor het aanmelden van apparaten en wordt automatisch verwijderd nadat de gebruiker het wacht woord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar deze kunnen veilig worden genegeerd.
+Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings scherm van een Windows 10-apparaat, wordt een tijdelijke account met beperkte bevoegdheden `defaultuser1` gemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf heeft een wille keurig gegenereerd wacht woord, wordt niet weer gegeven voor het aanmelden van apparaten en wordt automatisch verwijderd nadat de gebruiker het wacht woord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar deze kunnen veilig worden genegeerd.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8,1 wacht woord opnieuw instellen
 
@@ -141,8 +141,8 @@ Als aanvullende logboek registratie vereist is, kan een register sleutel op de c
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Als u uitgebreide logboek registratie wilt inschakelen, `REG_DWORD: "EnableLogging"`maakt u een en stelt u deze in op 1.
-- Als u uitgebreide logboek registratie wilt uitschakelen, `REG_DWORD: "EnableLogging"` wijzigt u in 0.
+- Als u uitgebreide logboek registratie wilt inschakelen, maakt `REG_DWORD: "EnableLogging"` u een en stelt u deze in op 1.
+- Als u uitgebreide logboek registratie wilt uitschakelen, wijzigt `REG_DWORD: "EnableLogging"` u in 0.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 

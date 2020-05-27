@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u runbooks bewaakt op basis van metrisch
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: c5f51ec34ea0b31f4c8fc349246b439425112104
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715848"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828743"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
 
@@ -50,7 +50,7 @@ Navigeer in het Azure Portal naar uw Automation-account. Onder **bewaking**selec
 
 ### <a name="define-the-action-to-take"></a>Definieer de actie die moet worden uitgevoerd
 
-1. Minder dan **3. Actie groep definiëren**, klikt u op **+ nieuwe actie groep**. Een actie groep is een groep acties die u in meer dan één waarschuwing kunt gebruiken. Deze kunnen bestaan uit, maar zijn niet beperkt tot, e-mail meldingen, runbooks, webhooks en nog veel meer. Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen
+1. Minder dan **3. Actie groep definiëren**, klikt u op **+ nieuwe actie groep**. Een actie groep is een groep acties die u in meer dan één waarschuwing kunt gebruiken. Deze kunnen bestaan uit, maar zijn niet beperkt tot, e-mail meldingen, runbooks, webhooks en nog veel meer. Zie voor meer informatie over actie groepen [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)
 
 1. Voer in het vak **Naam van de actiegroep** een beschrijvende naam en een korte naam in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
 
@@ -77,4 +77,4 @@ Zodra de metriek niet langer buiten de opgegeven drempel waarde ligt, wordt de w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)
+* Zie [een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)voor meer informatie.

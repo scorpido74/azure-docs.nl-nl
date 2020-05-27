@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7568a8a80550677e1608e1a8a52ebeacce765c81
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68568287"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826414"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Over clouddatabases gedistribueerde transacties
 
@@ -143,9 +143,9 @@ Gebruik dynamische beheer weergaven (Dmv's) in SQL Data Base om de status en voo
 
 Deze Dmv's zijn bijzonder nuttig:
 
-* **sys.DM\_Tran\_actieve\_trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx) voor meer informatie.
-* **sys.DM\_Tran\_-\_database transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx) voor meer informatie.
-* **sys.DM\_Tran\_-vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx) voor meer informatie.
+* **sys.DM \_ Tran \_ actieve \_ trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx) voor meer informatie.
+* **sys.DM \_ Tran- \_ database \_ transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx) voor meer informatie.
+* **sys.DM \_ Tran- \_ vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -157,7 +157,7 @@ De volgende beperkingen zijn momenteel van toepassing op elastische data base-tr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor vragen kunt u contact opnemen met ons op het [SQL database-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functie aanvragen, voeg ze toe aan het [forum van SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).
+Neem voor vragen contact op met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) en voeg deze toe aan het [feedback forum van SQL database](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

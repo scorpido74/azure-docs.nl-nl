@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 1b23340840c2b88ea3f4f9927364bd3e01d8d55a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8325d63881c72a795e3b9e9a6d1d8498c84972ad
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598442"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829321"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Routerings voorkeur configureren voor een virtuele machine met behulp van Azure PowerShell
 
@@ -27,12 +27,12 @@ In dit artikel wordt beschreven hoe u een virtuele machine maakt met een openbaa
 
 > [!IMPORTANT]
 > De voor keuren voor route ring is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="register-the-feature-for-your-subscription"></a>De functie voor uw abonnement registreren
 De functie voor route ring is momenteel beschikbaar als preview-versie. Registreer de functie voor uw abonnement als volgt:
 ```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken

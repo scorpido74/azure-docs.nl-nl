@@ -10,7 +10,7 @@
       items:
         - name: Beginnen met analyseren van kosten
           href: quick-acm-cost-analysis.md
-        - name: Een budget maken met een sjabloon
+        - name: Een budget maken - ARM-sjabloon
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: Zelfstudies

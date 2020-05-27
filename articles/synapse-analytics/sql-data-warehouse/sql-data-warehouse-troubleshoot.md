@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650458"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829984"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -80,6 +80,6 @@ Als u meer informatie wilt over het vinden van oplossingen voor uw probleem, kun
 * [Functieverzoeken](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
-* [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 * [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

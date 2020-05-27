@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745266"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830613"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Een inventarisverzameling beheren vanuit VM's
 
@@ -30,7 +30,7 @@ In dit artikel wordt ervan uitgegaan dat u een virtuele machine hebt om in te sc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Voorraad verzameling inschakelen op de VM-resource pagina
 
@@ -112,7 +112,7 @@ Als u een nieuwe machine groep wilt maken, klikt u op **+ een computer groep mak
 
 ## <a name="disconnect-your-vm-from-management"></a>De virtuele machine loskoppelen van beheer
 
-De virtuele machine uit het voorraad beheer verwijderen:
+Uw virtuele machine verwijderen uit Wijzigingen bijhouden en voorraad beheer:
 
 1. Selecteer **log Analytics**in het linkerdeel venster van de Azure Portal en selecteer vervolgens de werk ruimte die u hebt gebruikt bij het inschakelen van de virtuele machine voor wijzigingen bijhouden en inventarisatie.
 2. Open op de pagina Log Analytics het **resource** menu.
@@ -127,6 +127,6 @@ De virtuele machine uit het voorraad beheer verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
-* [Houd software wijzigingen in uw omgeving bij met wijzigingen bijhouden](../log-analytics/log-analytics-change-tracking.md).
-* [Updatebeheer in azure](../operations-management-suite/oms-solution-update-management.md).
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met de functie.
+* Zie [software wijzigingen bijhouden in uw omgeving met wijzigingen bijhouden](../log-analytics/log-analytics-change-tracking.md)voor meer informatie over het bijhouden van software wijzigingen.
+* Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met de functie.

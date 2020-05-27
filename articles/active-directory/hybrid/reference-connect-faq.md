@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77149810"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827145"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -218,7 +218,7 @@ Ja, u moet nog steeds een upgrade uitvoeren naar versie 1.1.750.0 of hoger. Het 
 U hoeft niet de gebruikers naam en het wacht woord te weten die voor het eerst zijn gebruikt voor het bijwerken van Azure AD Connect. Gebruik een Azure AD-account met de rol globale beheerder.
 
 **V: hoe kan ik zien welke versie van Azure AD Connect Ik gebruik?**  
-Als u wilt controleren welke versie van Azure AD Connect op uw server is geïnstalleerd, gaat u naar configuratie scherm en zoekt u de geïnstalleerde versie van Microsoft Azure AD verbinding maken door **Program** > ma's**en onderdelen**van het selectie vakje te selecteren, zoals hier wordt weer gegeven:
+Als u wilt controleren welke versie van Azure AD Connect op uw server is geïnstalleerd, gaat u naar configuratie scherm en zoekt u de geïnstalleerde versie van Microsoft Azure AD verbinding maken door **Program**ma's en onderdelen van het selectie vakje te selecteren  >  **Programs and Features**, zoals hier wordt weer gegeven:
 
 ![Azure AD Connect-versie in het configuratie scherm](./media/reference-connect-faq/faq1.png)
 
@@ -265,9 +265,9 @@ Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Con
 
 * Zoek in de KB naar technische oplossingen voor veelvoorkomende problemen met de ondersteuning voor Azure AD Connect.
 
-[Azure Active Directory forums](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[Micro soft Q&een vraag pagina voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
-* Zoek technische vragen en antwoorden of vraag uw eigen vragen door naar [de Azure AD-Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)te gaan.
+* Zoek technische vragen en antwoorden of vraag uw eigen vragen door naar [de Azure AD-Community](https://docs.microsoft.com/answers/topics/azure-active-directory.html)te gaan.
 
 [Ondersteuning voor Azure AD vragen](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 

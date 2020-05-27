@@ -4,12 +4,12 @@ description: Automatisch schalen in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 08b39fce046ea9dee02ddf6ffe34971b81c3b5b7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928700"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828981"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Overzicht van automatisch schalen in Microsoft Azure
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
@@ -33,7 +33,7 @@ De volgende uitleg is van toepassing op de onderdelen van het vorige diagram.
 
 ## <a name="resource-metrics"></a>Metrische gegevens voor resource
 Resources die metrische gegevens verzenden, worden deze metrische gegevens later verwerkt door regels. Metrische gegevens zijn beschikbaar via verschillende methoden.
-Virtuele-machine schaal sets gebruiken telemetriegegevens van Azure Diagnostics-agents, terwijl telemetrie voor web-apps en Cloud Services rechtstreeks afkomstig is van de Azure-infra structuur. Enkele veelgebruikte statistieken zijn CPU-gebruik, geheugen gebruik, aantal threads, wachtrij lengte en schijf gebruik. Zie [algemene metrische gegevens automatisch schalen](../../azure-monitor/platform/autoscale-common-metrics.md)voor een lijst met de telemetriegegevens die u kunt gebruiken.
+Virtuele-machine schaal sets gebruiken telemetriegegevens van Azure Diagnostics-agents, terwijl telemetrie voor web-apps en Cloud Services rechtstreeks afkomstig is van de Azure-infra structuur. Enkele veelgebruikte statistieken zijn CPU-gebruik, geheugen gebruik, aantal threads, wachtrij lengte en schijf gebruik. Zie [algemene metrische gegevens automatisch schalen](autoscale-common-metrics.md)voor een lijst met de telemetriegegevens die u kunt gebruiken.
 
 ## <a name="custom-metrics"></a>Aangepaste metrische gegevens
 U kunt ook uw eigen aangepaste metrische gegevens gebruiken die door uw toepassing (en) kunnen worden verzonden. Als u uw toepassing (en) hebt geconfigureerd voor het verzenden van metrische gegevens naar Application Insights, kunt u gebruikmaken van deze metrische gegevens om beslissingen te nemen over het al dan niet schalen.
@@ -78,7 +78,7 @@ De volledige lijst met Configureer bare velden en beschrijvingen is beschikbaar 
 
 Zie voor code voorbeelden.
 
-* [Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)  
+* [Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
 * [REST API automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Horizon taal versus verticaal schalen
@@ -89,20 +89,20 @@ Verticaal schalen daarentegen wijkt af van elkaar af. Het houdt hetzelfde aantal
 ## <a name="methods-of-access"></a>Toegangs methoden
 U kunt automatisch schalen instellen via
 
-* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
-* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
-* [Platformonafhankelijke opdrachtregelinterface (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
+* [Azure Portal](autoscale-get-started.md)
+* [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Platformonafhankelijke opdrachtregelinterface (CLI)](../samples/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Ondersteunde services voor automatisch schalen
 | Service | & documenten voor schema |
 | --- | --- |
-| Web Apps |[Web Apps schalen](../../azure-monitor/platform/autoscale-get-started.md) |
+| Web Apps |[Web Apps schalen](autoscale-get-started.md) |
 | Cloud Services |[Een Cloud service automatisch schalen](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klassiek |[De beschik baarheid van klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows-schaal sets |[Schaal sets voor virtuele machines in Windows schalen](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux-schaal sets |[Schaal sets voor virtuele machines in Linux schalen](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
 | API Management-service|[Exemplaar van Azure API Management automatisch schalen](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 | Azure Data Explorer-clusters|[Het schalen van Azure Data Explorer-clusters beheren voor het wijzigen van de vraag](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
 | Azure App Service |[Een app omhoog schalen in Azure-app service](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
@@ -110,9 +110,9 @@ U kunt automatisch schalen instellen via
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over automatisch schalen gebruikt u de instructies voor automatisch schalen die eerder zijn vermeld of raadpleegt u de volgende bronnen:
 
-* [Azure Monitor automatisch schalen van algemene metrische gegevens](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Best practices voor automatische schaalaanpassing in Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Acties voor automatisch schalen gebruiken om e-mail berichten en webhook-waarschuwings meldingen te verzenden](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Azure Monitor automatisch schalen van algemene metrische gegevens](autoscale-common-metrics.md)
+* [Best practices voor automatische schaalaanpassing in Azure Monitor](autoscale-best-practices.md)
+* [Acties voor automatisch schalen gebruiken om e-mail berichten en webhook-waarschuwings meldingen te verzenden](autoscale-webhook-email.md)
 * [REST API automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Problemen oplossen Virtual Machine Scale Sets automatisch schalen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 

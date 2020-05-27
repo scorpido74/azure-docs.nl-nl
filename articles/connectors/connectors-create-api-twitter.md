@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789083"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829593"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Twitter controleren en beheren met behulp van Azure Logic Apps
 
@@ -55,7 +55,7 @@ U kunt triggers gebruiken die reacties ophalen van uw Twitter-account en de uitv
        -of-
 
      * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
-     Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+     Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
      
        Voer in het zoekvak ' Twitter ' in als uw filter. 
        Selecteer in de lijst acties de gewenste actie.
@@ -84,7 +84,7 @@ Raadpleeg de [referentie pagina](/connectors/twitterconnector/)van de connector 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen

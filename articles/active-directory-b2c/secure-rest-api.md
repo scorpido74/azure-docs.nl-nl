@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680382"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826669"
 ---
 # <a name="secure-your-restful-services"></a>Uw REST-services beveiligen 
 
@@ -68,11 +68,11 @@ Als u een REST API technisch profiel met HTTP-basis verificatie wilt configurere
 Nadat u de benodigde sleutels hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar de referenties.
 
 1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
-1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
-1. Wijzig de *AuthenticationType* in `Basic`.
-1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
+1. Wijzig de *AuthenticationType* in `Basic` .
+1. Wijzig de *AllowInsecureAuthInProduction* in `false` .
+1. Voeg direct na het afsluitende `</Metadata>` element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
         <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_RestApiUsername" />
@@ -124,9 +124,9 @@ Als u nog geen certificaat hebt, kunt u voor niet-productie omgevingen een zelfo
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. Open **gebruikers certificaten** > beheren**huidige gebruiker** > **persoonlijke** > **certificaten** > *yourappname.yourtenant.onmicrosoft.com*.
-1. Selecteer de **actie** > certificaat >**alle taken** > **exporteren**.
-1. Selecteer **Ja** > **volgende** > **Ja, de persoonlijke sleutel** > exporteren**volgende**.
+1. Open **gebruikers certificaten beheren**  >  **huidige gebruiker**  >  **persoonlijke**  >  **certificaten**  >  *yourappname.yourtenant.onmicrosoft.com*.
+1. Selecteer de **actie**certificaat >  >  **alle taken**  >  **exporteren**.
+1. Selecteer **Ja**  >  **volgende**  >  **Ja, de persoonlijke sleutel exporteren**  >  **volgende**.
 1. Accepteer de standaard instellingen voor de **export bestands indeling**.
 1. Geef een wacht woord op voor het certificaat.
 
@@ -149,11 +149,11 @@ Als u nog geen certificaat hebt, kunt u voor niet-productie omgevingen een zelfo
 Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het client certificaat.
 
 1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
-1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
-1. Wijzig de *AuthenticationType* in `ClientCertificate`.
-1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
+1. Wijzig de *AuthenticationType* in `ClientCertificate` .
+1. Wijzig de *AllowInsecureAuthInProduction* in `false` .
+1. Voeg direct na het afsluitende `</Metadata>` element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
        <Key Id="ClientCertificate" StorageReferenceId="B2C_1A_RestApiClientCertificate" />
@@ -208,7 +208,7 @@ De volgende stappen laten zien hoe u client referenties gebruikt om een Bearer-t
 
 Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. Het [claim schema](claimsschema.md) is de plaats waar u uw claims declareert. Het toegangs token moet worden opgeslagen in een claim om later te worden gebruikt. 
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
 1. Voeg de volgende claims toe aan het **ClaimsSchema** -element.  
@@ -241,7 +241,7 @@ Vervang uw-Tenant naam voor de ServiceUrl door de naam van uw Azure AD-Tenant. Z
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.microsoft.com/oauth2/v2.0/token</Item>
+    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token</Item>
     <Item Key="AuthenticationType">Basic</Item>
      <Item Key="SendClaimsIn">Form</Item>
   </Metadata>
@@ -265,13 +265,13 @@ Vervang uw-Tenant naam voor de ServiceUrl door de naam van uw Azure AD-Tenant. Z
 Als u Bearer-token verificatie wilt ondersteunen in uw aangepaste beleid, wijzigt u het technische profiel van REST API met de volgende opties:
 
 1. Open in uw werkmap het extensie beleids bestand *TrustFrameworkExtensions. XML* .
-1. Zoek het `<TechnicalProfile>` knoop punt dat bevat `Id="REST-API-SignUp"`.
+1. Zoek het `<TechnicalProfile>` knoop punt dat bevat `Id="REST-API-SignUp"` .
 1. Zoek het `<Metadata>` element op.
 1. Wijzig de *AuthenticationType* als *volgt*:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Wijzig of Voeg de *UseClaimAsBearerToken* als volgt toe aan *bearerToken*. De *bearerToken* is de naam van de claim waarvan het Bearer-token wordt opgehaald (de uitvoer claim van `SecureREST-AccessToken`).
+1. Wijzig of Voeg de *UseClaimAsBearerToken* als volgt toe aan *bearerToken*. De *bearerToken* is de naam van de claim waarvan het Bearer-token wordt opgehaald (de uitvoer claim van `SecureREST-AccessToken` ).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -319,10 +319,10 @@ Maak een beleids sleutel om de token waarde van de Bearer op te slaan.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels**en selecteer vervolgens **toevoegen**.
-1. Kies **Options** `Manual`voor opties.
-1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `RestApiBearerToken`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Kies voor **Opties** `Manual` .
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `RestApiBearerToken`. Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-1. Selecteer `Encryption`voor **sleutel gebruik**.
+1. Selecteer voor **sleutel gebruik** `Encryption` .
 1. Selecteer **Maken**.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Uw REST API technische profiel configureren voor het gebruik van de sleutel voor het Bearer-token beleid
@@ -330,11 +330,11 @@ Maak een beleids sleutel om de token waarde van de Bearer op te slaan.
 Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het Bearer-token.
 
 1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
-1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
-1. Wijzig de *AuthenticationType* in `Bearer`.
-1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
+1. Wijzig de *AuthenticationType* in `Bearer` .
+1. Wijzig de *AllowInsecureAuthInProduction* in `false` .
+1. Voeg direct na het afsluitende `</Metadata>` element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
        <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />

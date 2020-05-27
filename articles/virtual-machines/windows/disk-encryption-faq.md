@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: a6748ef520b3d03727aca045660f7563f75b200d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901288"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828335"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -136,7 +136,7 @@ Azure Backup biedt een mechanisme voor het maken van back-ups en het herstellen 
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Waar kan ik vragen stellen of feedback geven?
 
-U kunt vragen stellen of feedback geven op het [Azure Disk Encryption forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
+U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voor Azure Disk Encryption](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot Azure Disk Encryption. Raadpleeg de volgende artikelen voor meer informatie over deze service:

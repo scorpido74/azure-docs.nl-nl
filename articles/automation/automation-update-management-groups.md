@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 792f69c900853d76dc260ad1de2e635e47bb2b4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744392"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830936"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dynamische groepen gebruiken met Updatebeheer
 
@@ -49,4 +49,4 @@ Een dynamische groep voor niet-Azure-machines gebruikt opgeslagen Zoek opdrachte
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)
+Als u met Updatebeheer wilt werken, raadpleegt u [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md).

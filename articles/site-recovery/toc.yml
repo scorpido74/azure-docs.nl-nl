@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: Een kluis verwijderen
               href: delete-vault.md
+    - name: Site Recovery-ondersteuning voor nabijheidsplaatsingsgroepen
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: Herstel na noodgeval voor apps
       items:
         - name: Over herstel na noodgevallen voor on-premises apps
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: Forum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Microsoft Q&A-vragenpagina
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: Leertraject
       href: /learn/azure/
     - name: Prijzen

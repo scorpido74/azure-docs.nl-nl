@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742836"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828641"
 ---
 # <a name="create-modular-runbooks"></a>Modulaire runbooks maken
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Start a runbook in Azure Automation](start-runbooks.md) (Een runbook starten in Azure Automation)
-* [Runbook-uitvoer en berichten in Azure Automation](automation-runbook-output-and-messages.md)
+* Als u het runbook wilt uitvoeren, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).
+* Zie [runbook-uitvoer en berichten in azure Automation](automation-runbook-output-and-messages.md)voor het controleren van de runbook-bewerking.

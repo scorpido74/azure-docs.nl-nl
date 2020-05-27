@@ -5,14 +5,14 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: b53c63fc1a14c456e0bca0725ca29b311301ce66
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749079"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826822"
 ---
-# <a name="enable-change-tracking-and-inventory-from-the-azure-portal"></a>Wijzigingen bijhouden en inventaris inschakelen via de Azure Portal
+# <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit Azure Portal
 
 In dit artikel wordt beschreven hoe u de functie voor [Wijzigingen bijhouden en inventaris](change-tracking.md) kunt inschakelen voor vm's door te bladeren door de Azure Portal. Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande VM inschakelen met behulp van Wijzigingen bijhouden en inventarisatie. 
 
@@ -23,7 +23,7 @@ Het aantal resource groepen dat u kunt gebruiken voor het beheren van uw Vm's, w
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-account](automation-offering-get-started.md) voor het beheren van computers.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md).
 
@@ -60,10 +60,9 @@ Meld u aan bij Azure op https://portal.azure.com .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)
-* [Werken met Scope configuraties voor Wijzigingen bijhouden en inventaris](automation-scope-configurations-change-tracking.md)
-* [Software op een virtuele machine identificeren](automation-tutorial-installed-software.md)
-* [De werk ruimte ontkoppelen van het Automation-account voor Wijzigingen bijhouden en inventaris](automation-unlink-workspace-change-tracking.md)
-* [Vm's uit Wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md)
-* [Problemen met wijzigingen in een virtuele Azure-machine oplossen](automation-tutorial-troubleshoot-changes.md)
-* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met de functie.
+* Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
+* Zie [ontdekken welke software is geïnstalleerd op uw virtuele machines](automation-tutorial-installed-software.md)voor meer informatie over het gebruik van de functie voor het identificeren van software die is geïnstalleerd in uw omgeving.
+* Als u uw Automation-account niet wilt integreren met een Log Analytics-werk ruimte wanneer u de functie inschakelt, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account](automation-unlink-workspace-change-tracking.md).
+* Wanneer u klaar bent met het implementeren van wijzigingen in Vm's, kunt u ze verwijderen zoals beschreven in [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).
+* Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met de functie.

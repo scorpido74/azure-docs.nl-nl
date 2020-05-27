@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121147"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827511"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Veilige toegang tot een sleutel kluis
 
@@ -54,8 +54,8 @@ De volgende tabel bevat de eind punten voor de beheer-en gegevens abonnementen.
 
 | Toegangs &nbsp; vlak | Eindpunten voor toegang | Bewerkingen | Mechanisme voor toegangs &nbsp; beheer |
 | --- | --- | --- | --- |
-| Beheerlaag | **Internationaal**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure van de Amerikaanse overheid:**<br> management.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> management.microsoftazure.de:443 | Sleutel kluizen maken, lezen, bijwerken en verwijderen<br><br>Key Vault toegangs beleid instellen<br><br>Key Vault Tags instellen | Azure Resource Manager RBAC |
-| Gegevenslaag | **Internationaal**<br> &lt;kluisnaam&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;kluisnaam&gt;.vault.azure.cn:443<br><br> **Azure van de Amerikaanse overheid:**<br> &lt;kluisnaam&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> &lt;kluisnaam&gt;.vault.microsoftazure.de:443 | Sleutels: ontsleutelen, versleutelen,<br> uitpakken, terugloop, verifiëren, ondertekenen,<br> ophalen, weer geven, bijwerken, maken,<br> importeren, verwijderen, back-ups maken en herstellen<br><br> Geheimen: ophalen, lijst, instellen, verwijderen | Toegangs beleid Key Vault |
+| Beheerlaag | **Internationaal**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure-Amerikaanse overheid:**<br> management.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> management.microsoftazure.de:443 | Sleutel kluizen maken, lezen, bijwerken en verwijderen<br><br>Key Vault toegangs beleid instellen<br><br>Key Vault Tags instellen | Azure Resource Manager RBAC |
+| Gegevenslaag | **Internationaal**<br> &lt;kluisnaam&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;kluisnaam&gt;.vault.azure.cn:443<br><br> **Azure-Amerikaanse overheid:**<br> &lt;kluisnaam&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> &lt;kluisnaam&gt;.vault.microsoftazure.de:443 | Sleutels: ontsleutelen, versleutelen,<br> uitpakken, terugloop, verifiëren, ondertekenen,<br> ophalen, weer geven, bijwerken, maken,<br> importeren, verwijderen, back-ups maken en herstellen<br><br> Geheimen: ophalen, lijst, instellen, verwijderen | Toegangs beleid Key Vault |
 
 ## <a name="management-plane-and-rbac"></a>Beheer vlak en RBAC
 
@@ -233,4 +233,4 @@ Zie [Azure Key Vault logging](logging.md)) voor meer informatie over de logboek 
 
 Zie [over sleutels en geheimen](https://msdn.microsoft.com/library/azure/dn903623.aspx)voor meer informatie over het gebruik van sleutels en geheimen met Azure Key Vault.
 
-Als u vragen hebt over Key Vault, gaat u naar de [forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Als u vragen hebt over Key Vault, gaat u naar de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

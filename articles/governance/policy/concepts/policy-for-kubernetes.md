@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800358"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828624"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -403,9 +403,9 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
 1. **Parameter waarden** instellen 
 
-   - Als u Kubernetes-naam ruimten van beleids evaluatie wilt uitsluiten, geeft u de lijst met naam ruimten in de para meters van de **naam ruimte**op. Het wordt aanbevolen om het volgende uit te sluiten: _uitvoeren-System_ 
+   - Als u Kubernetes-naam ruimten van beleids evaluatie wilt uitsluiten, geeft u de lijst met naam ruimten in de para meters van de **naam ruimte**op. Het wordt aanbevolen om: _uitvoeren-System_, _gate keeper-System_en _Azure-Arc_uit te sluiten.
 
-1. Selecteer **controleren + maken**.
+1. Selecteer **Controleren + maken**.
 
 U kunt ook de Snelstartgids [een beleid toewijzen-Portal](../assign-policy-portal.md) gebruiken om een Kubernetes-beleid te zoeken en toe te wijzen. Zoek in plaats van het voor beeld ' vm's controleren ' naar een Kubernetes-beleids definitie.
 

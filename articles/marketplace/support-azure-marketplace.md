@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 624bce67e01a0d7dbee382ed77a833705ecd5c89
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800371"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828097"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
 
@@ -32,7 +32,7 @@ Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https:/
 
 | Ondersteuningskanaal | Beschrijving |  
 |:--- |:--- |  
-| MSDN-Forums: marketplace bevindt zich op [Social.MSDN.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Het forum voor micro soft Developer Network. |  
+| MSDN-Forums: marketplace bevindt zich op [de micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/products/azure) | Het forum voor micro soft Developer Network. |  
 | Stack Overflow: Azure bevindt zich op [stackoverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow omgeving om oplossingen te verkrijgen en vragen te stellen over alles wat met Azure Marketplace te maken heeft.<ul> <li>Stack Overflow: Azure Marketplace bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager bevindt zich op [stackoverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines op Azure op [stackoverflow.com/questions/Tagged/Azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: containers op Azure bevinden zich op [stackoverflow.com/search?q=Azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Marketing Resources  
