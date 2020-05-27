@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199555"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871225"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -205,9 +205,12 @@ Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is ge
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Aanvullende stappen Microsoft Azure Government
 
-Voor klanten die Azure Government Cloud gebruiken, zijn de volgende aanvullende configuratie stappen vereist op elke NPS-server:
+Voor klanten die Azure Government Cloud gebruiken, zijn de volgende aanvullende configuratie stappen vereist op elke NPS-server.
 
-1. Open de **REGI ster-editor** op de NPS-server.
+> [!IMPORTANT]
+> Configureer deze register instellingen alleen als u een Azure Government klant bent.
+
+1. Als u een Azure Government klant bent, opent u de **REGI ster-editor** op de NPS-server.
 1. Navigeer naar `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Stel de volgende sleutel waarden in:
 
     | Registersleutel       | Waarde |

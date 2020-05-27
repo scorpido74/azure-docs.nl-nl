@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7a017f9485ec847c0a2c045e4c511b6a68db0cb2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889916"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873323"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
 
@@ -29,7 +29,7 @@ Azure Security Center vergelijkt voortdurend de configuratie van uw resources me
 
 Industrie normen, regelgevings normen en benchmarks worden in Security Center weer gegeven als *nalevings pakketten*.  Elk pakket is een initiatief dat is gedefinieerd in Azure Policy. Als u de nalevings gegevens wilt zien die zijn toegewezen als evaluaties in uw dash board, voegt u een nalevings pakket toe aan de beheer groep of het abonnement vanuit de pagina **beveiligings beleid** . (Meer informatie over Azure Policy en initiatieven bij het [werken met beveiligings beleid](tutorial-security-policy.md).)
 
-Wanneer u een standaard of Bench Mark hebt voor het geselecteerde bereik, wordt de standaard weer gegeven in het dash board nalevings beleid met alle gekoppelde nalevings gegevens die zijn toegewezen als evaluaties. U kunt ook samenvattings rapporten downloaden voor een van de standaarden die zijn voor bereid.
+Wanneer u een standaard of Bench Mark hebt voor het geselecteerde bereik, wordt het initiatief aan het bereik toegewezen en wordt de standaard weer gegeven in het dash board nalevings beleid met alle gekoppelde nalevings gegevens die zijn toegewezen als evaluaties. U kunt ook samenvattings rapporten downloaden voor een van de standaarden die zijn voor bereid.
 
 Micro soft houdt ook de regelgevings normen zelf bij en verbetert de dekking in een aantal pakketten in de loop van de tijd. Wanneer micro soft nieuwe inhoud voor het initiatief uitbrengt (nieuwe beleids regels die zijn toegewezen aan meer besturings elementen in de standaard), wordt de extra inhoud automatisch weer gegeven in het dash board.
 

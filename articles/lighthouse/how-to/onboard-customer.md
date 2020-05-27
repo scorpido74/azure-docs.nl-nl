@@ -1,18 +1,18 @@
 ---
 title: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: a6cdfea7e0520aa704e70a12784f7a7ba5d6aa6d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161105"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871125"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
-In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opsturen naar een Azure-gedelegeerd resource beheer, zodat de gedelegeerde resources (abonnementen en/of resource groepen) kunnen worden geopend en beheerd via uw eigen Azure Active Directory (Azure AD)-Tenant. Hoewel we hier naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opsturen naar een Azure-gedelegeerd resource beheer, zodat de gedelegeerde resources (abonnementen en/of resource groepen) kunnen worden geopend en beheerd via uw eigen Azure Active Directory (Azure AD)-Tenant. Hoewel we hier naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken voor het instellen van Azure Lighthouse en het samen voegen van hun beheer ervaring.
 
 U kunt dit proces herhalen als u resources beheert voor meerdere klanten. Wanneer een geautoriseerde gebruiker zich aanmeldt bij uw Tenant, kan die gebruiker worden geautoriseerd door de klant pacht bereiken om beheer bewerkingen uit te voeren zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 

@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446647"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872614"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en go
 
-In deze Quick Start wordt gebruikgemaakt van de programmeer taal Go om de Bing Visual Search-API aan te roepen en de resultaten weer te geven. Een POST-aanvraag uploadt een installatie kopie naar het API-eind punt. De resultaten omvatten Url's en beschrijvende informatie over afbeeldingen die vergelijkbaar zijn met de geüploade afbeelding.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Visual Search-API te maken met behulp van de programmeer taal go. Een POST-aanvraag uploadt een installatie kopie naar het API-eind punt. De resultaten omvatten Url's en beschrijvende informatie over afbeeldingen die vergelijkbaar zijn met de geüploade afbeelding.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer de [binaire bestanden voor Go](https://golang.org/dl/).
-* De go-spew diepe pretty-printer wordt gebruikt om de resultaten weer te geven. U kunt go-spew installeren met behulp van de `$ go get -u https://github.com/davecgh/go-spew` opdracht.
+* Installeer de go-spew diepe Pretty-Printer, die wordt gebruikt om de resultaten weer te geven. Als u go-spew wilt installeren, gebruikt u de `$ go get -u https://github.com/davecgh/go-spew` opdracht.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Project en bibliotheken
 
-Maak een go-project in uw IDE of editor. Importeer `net/http` vervolgens voor aanvragen `ioutil` om het antwoord te lezen en `encoding/json` om de JSON-tekst van de resultaten te verwerken. De `go-spew` bibliotheek wordt gebruikt voor het parseren van JSON-resultaten.
+Maak een go-project in uw IDE of editor. Importeer vervolgens `net/http` voor aanvragen `ioutil` om het antwoord te lezen en `encoding/json` om de JSON-tekst van de resultaten te verwerken. Gebruik de `go-spew` bibliotheek voor het parseren van JSON-resultaten.
 
 ```go
 package main
@@ -109,7 +109,12 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Hoofd functie en variabelen  
 
-Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. De `batchNumber` is een GUID die is vereist voor voor loop-en volg grenzen van de post gegevens. De `fileName` variabele identificeert het afbeeldings bestand voor het bericht. `endpoint`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource:
+Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen: 
+
+1. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. 
+2. `batchNumber`Wijs voor een GUID toe die is vereist voor de voor loop-en volg grenzen van de post gegevens. 
+3. Wijs voor het `fileName` afbeeldings bestand dat u wilt gebruiken voor het bericht. 
+4. Voor `endpoint` kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```go
 func main() {
@@ -159,7 +164,12 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>Grenzen van POST hoofdtekst
 
-Een POST-aanvraag naar het Visual Search-eind punt vereist voor loop-en volg grenzen die de POST gegevens omsluiten. De voorloop grens bevat een batch nummer, de inhouds type- `Content-Disposition: form-data; name="image"; filename=`id en de bestands naam van de afbeelding die moet worden geplaatst. De afsluitende grens is gewoon het batch nummer. Deze functies zijn niet opgenomen in het `main` blok:
+Een POST-aanvraag naar het Visual Search-eind punt vereist voorloop-en volg grenzen om de POST gegevens te sluiten. Deze functies zijn niet opgenomen in het `main()` blok.
+
+De voorloop grens bevat een batch nummer, de inhouds type `Content-Disposition: form-data; name="image"; filename=` -id en de bestands naam van de afbeelding die moet worden geplaatst. 
+
+De afsluitende grens bevat alleen het batch nummer. 
+
 
 ```go
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +188,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Afbeeldings bytes toevoegen aan bericht tekst
 
-Dit code segment maakt de POST-aanvraag die afbeeldings gegevens bevat:
+Met de volgende code wordt de POST-aanvraag gemaakt die afbeeldings gegevens bevat:
 
 ```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -226,7 +236,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-Met `Unmarshall` de functie wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Visual Search-API. De `go-spew` mooie printer geeft de resultaten weer:
+`Unmarshall`Met de functie wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Visual Search-API. De `go-spew` printer krijgt de resultaten.
 
 ```go
     // Create a new answer.  
@@ -249,7 +259,7 @@ Met `Unmarshall` de functie wordt informatie opgehaald uit de JSON-tekst die wor
 
 ## <a name="results"></a>Resultaten
 
-De resultaten identificeren installatie kopieën die vergelijkbaar zijn met de afbeelding in de hoofd tekst van het bericht. De handigste velden `WebSearchUrl` zijn `Name`en:
+De resultaten identificeren installatie kopieën die vergelijkbaar zijn met de afbeelding in de hoofd tekst van het bericht. De handigste velden zijn `WebSearchUrl` en `Name` .
 
 ```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {

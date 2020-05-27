@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371879"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871274"
 ---
 Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python voor het volgende:
 
@@ -24,57 +24,16 @@ Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python 
 * Voeg onderdelen, zoals een woordgroepen lijst, toe.
 * Train en publiceer een app.
 
-[Naslag informatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | voor de pypi-voor[beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [Authoring package)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | van de documentatie bibliotheek
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  van bibliotheek [Ontwerp pakket (pypi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  Voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Language Understanding-Portal account (LUIS): [Maak er gratis een](https://www.luis.ai).
-* [Python 3. x](https://www.python.org/)
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* De huidige versie van [python 3. x](https://www.python.org/).
+* Wanneer u uw Azure-abonnement hebt, [maakt u een language Understanding-ontwerp bron](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) in de Azure Portal om uw sleutel en eind punt op te halen. Wacht tot de implementatie is geïmplementeerd en klik op de knop **naar resource** .
+    * U hebt de sleutel en het eind punt nodig van de resource die u [maakt](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) om uw toepassing te koppelen aan language Understanding-ontwerp. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start. U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen.
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>Uw Language Understanding-starter sleutel (LUIS) ophalen
-
-Haal uw [Start sleutel](../luis-how-to-azure-subscription.md#starter-key) op door een Luis-ontwerp bron te maken. Behoud de sleutel en de regio van de sleutel voor de volgende stap.
-
-### <a name="create-an-environment-variable"></a>Een omgevings variabele maken
-
-Met uw sleutel, en de regio voor de sleutel, maakt u twee omgevings variabelen voor verificatie:
-
-* `LUIS_AUTHORING_KEY`-De bron sleutel voor het verifiëren van uw aanvragen.
-* `LUIS_REGION`-De regio die aan uw sleutel is gekoppeld. Bijvoorbeeld `westus`.
-
-Volg de instructies voor uw besturings systeem.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-Nadat u de omgevings variabele hebt toegevoegd, start u het console venster opnieuw.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Bewerk uw `.bash_profile`en voeg de omgevings variabele toe:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
-***
 
 ### <a name="install-the-python-library-for-luis"></a>Installeer de python-bibliotheek voor LUIS
 
@@ -146,7 +105,7 @@ Gebruik de methode [model. add_intent](https://docs.microsoft.com/python/api/azu
 
 Hoewel entiteiten niet vereist zijn, worden ze in de meeste apps gevonden. De entiteit extraheert informatie uit de utterance van de gebruiker, die nodig is om de bedoeling van de gebruiker te fullfilen. Er zijn verschillende typen [vooraf ontwikkelde](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) en aangepaste entiteiten met hun eigen DTO-modellen (Data Transformation object).  Algemene vooraf gemaakte entiteiten die u wilt toevoegen aan uw app, zijn [Number](../luis-reference-prebuilt-number.md), [datetimeV2](../luis-reference-prebuilt-datetimev2.md), [geographyV2](../luis-reference-prebuilt-geographyv2.md), [Ordinal](../luis-reference-prebuilt-ordinal.md).
 
-Met deze **add_entities** methode is `Location` een eenvoudige entiteit gemaakt met twee rollen `Class` , een eenvoudige entiteit `Flight` , een samengestelde entiteit en worden verschillende vooraf gemaakte entiteiten toegevoegd.
+Met deze **add_entities** methode `Location` is een eenvoudige entiteit gemaakt met twee rollen, een `Class` eenvoudige entiteit, een `Flight` samengestelde entiteit en worden verschillende vooraf gemaakte entiteiten toegevoegd.
 
 Het is belang rijk te weten dat entiteiten niet zijn gemarkeerd met een bedoeling. Ze kunnen en meestal worden toegepast op veel intenties. Alleen voor beelden van gebruikers uitingen zijn gemarkeerd voor een specifiek, enkelvoudig doel.
 
@@ -182,7 +141,7 @@ Publiceer de LUIS-app met de methode [app. publish](https://docs.microsoft.com/p
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `python` de opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de `python` opdracht in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py

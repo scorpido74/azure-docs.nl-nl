@@ -1,30 +1,22 @@
 ---
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-ms.date: 04/03/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725802"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871363"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
-In dit artikel wordt een verzameling aanbevolen procedures beschreven voor het effectief en efficiënt gebruik van de Azure Batch-service. Deze aanbevolen procedures zijn afgeleid van onze ervaring met batch en de ervaringen van batch-klanten. Het is belang rijk dat u dit artikel begrijpt om te voor komen dat u problemen met het ontwerpen, potentiële prestaties en anti patronen tijdens het ontwikkelen voor en gebruikt, batch.
-
-In dit artikel leert u het volgende:
-
-> [!div class="checklist"]
-> - Wat zijn de aanbevolen procedures
-> - Waarom u aanbevolen procedures moet gebruiken
-> - Wat er kan gebeuren als u de aanbevolen procedures niet kunt volgen
-> - De aanbevolen procedures volgen
+In dit artikel wordt een verzameling aanbevolen procedures beschreven voor het effectief en efficiënt gebruik van de Azure Batch-service, op basis van de praktijk ervaring met batch. Lees dit artikel om te voor komen dat Valk uilen, potentiële prestatie problemen en anti patronen tijdens het ontwikkelen voor en met behulp van batch.
 
 ## <a name="pools"></a>Pools
 
-Batch-Pools zijn de reken resources voor het uitvoeren van taken voor de batch-service. In de volgende secties vindt u richt lijnen voor de aanbevolen procedures voor het werken met batch-Pools.
+[Pools](nodes-and-pools.md#pools) zijn de reken resources voor het uitvoeren van taken voor de batch-service. De volgende secties bevatten aanbevelingen voor het werken met batch-Pools.
 
 ### <a name="pool-configuration-and-naming"></a>Groeps configuratie en-naamgeving
 
@@ -61,98 +53,121 @@ Groeps toewijzings fouten kunnen zich voordoen op elk moment tijdens de eerste t
 
 ### <a name="unplanned-downtime"></a>Niet-geplande uitvaltijd
 
-Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Het is belang rijk dat u rekening houdt met het plannen en ontwikkelen van uw scenario of werk stroom voor batch.
+Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Houd dit in acht wanneer u uw scenario of werk stroom voor batch plant en ontwikkelt.
 
-In het geval dat een knoop punt uitvalt, probeert batch automatisch deze reken knooppunten te herstellen namens u. Dit kan leiden tot het opnieuw plannen van elke actieve taak op het knoop punt dat wordt hersteld. Zie [ontwerpen voor nieuwe pogingen voor](#designing-for-retries-and-re-execution) meer informatie over onderbroken taken.
+In het geval dat een knoop punt uitvalt, probeert batch automatisch deze reken knooppunten te herstellen namens u. Dit kan leiden tot het opnieuw plannen van elke actieve taak op het knoop punt dat wordt hersteld. Zie [ontwerpen voor nieuwe pogingen voor](#design-for-retries-and-re-execution) meer informatie over onderbroken taken.
 
-- **Azure-regio afhankelijkheid** Als u een tijd gevoelige of productie werk belasting hebt, is het raadzaam om niet afhankelijk te zijn van één Azure-regio. Soms zijn er problemen die invloed kunnen hebben op een hele regio. Als uw verwerking bijvoorbeeld op een specifiek tijdstip moet worden gestart, kunt u overwegen om de groep in uw primaire regio goed te schalen voor *de start tijd*. Als deze pool schaal mislukt, kunt u terugvallen om een pool omhoog te schalen in een back-upgebied (of regio's). Pools over meerdere accounts in verschillende regio's bieden een kant-en-klare back-up als er iets mis is met een andere groep. Zie [uw toepassing ontwerpen voor hoge Beschik baarheid](high-availability-disaster-recovery.md)voor meer informatie.
+### <a name="azure-region-dependency"></a>Azure-regio afhankelijkheid
+
+Als u een tijd gevoelige of productie werk belasting hebt, is het raadzaam om niet afhankelijk te zijn van één Azure-regio. Soms zijn er problemen die invloed kunnen hebben op een hele regio. Als uw verwerking bijvoorbeeld op een specifiek tijdstip moet worden gestart, kunt u overwegen om de groep in uw primaire regio goed te schalen voor *de start tijd*. Als deze pool schaal mislukt, kunt u terugvallen om een pool omhoog te schalen in een back-upgebied (of regio's). Pools over meerdere accounts in verschillende regio's bieden een kant-en-klare back-up als er iets mis is met een andere groep. Zie [uw toepassing ontwerpen voor hoge Beschik baarheid](high-availability-disaster-recovery.md)voor meer informatie.
 
 ## <a name="jobs"></a>Taken
 
-Een taak is een container die is ontworpen om honderden, duizenden of zelfs miljoenen taken te bevatten.
+Een [taak](jobs-and-tasks.md#jobs) is een container die is ontworpen om honderden, duizenden of zelfs miljoenen taken te bevatten. Volg deze richt lijnen bij het maken van taken.
 
-- **Veel taken in een taak opnemen** Het gebruik van een taak voor het uitvoeren van één taak is inefficiënt. Het is bijvoorbeeld efficiënter om één taak te gebruiken met 1000 taken in plaats van dat u 100 taken maakt die elk 10 taken bevatten. Het uitvoeren van 1000-taken, elk met één taak, is de minst efficiënte, langzaamste en meest dure aanpak.
+### <a name="fewer-jobs-more-tasks"></a>Minder taken, meer taken
 
-    Ontwerp geen batch-oplossing die duizenden gelijktijdig actieve taken vereist. Er zijn geen quota voor taken, dus als u zoveel taken uitvoert, worden de [taak-en taak plannings quota](batch-quota-limit.md#resource-quotas)efficiënt gebruikt.
+Het gebruik van een taak voor het uitvoeren van één taak is inefficiënt. Het is bijvoorbeeld efficiënter om één taak te gebruiken met 1000 taken in plaats van dat u 100 taken maakt die elk 10 taken bevatten. Het uitvoeren van 1000-taken, elk met één taak, is de minst efficiënte, langzaamste en meest dure aanpak.
 
-- **Taak levensduur** Een batch-taak heeft een onbeperkte levens duur tot deze uit het systeem is verwijderd. De status van een taak bepaalt of er meer taken kunnen worden geaccepteerd voor de planning of niet. Een taak wordt niet automatisch verplaatst naar de status voltooid, tenzij deze expliciet is beëindigd. Dit kan automatisch worden geactiveerd via de eigenschap [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) of [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints).
+Zorg er daarom voor dat u niet een batch-oplossing ontwerpt waarvoor duizenden gelijktijdig actieve taken vereist zijn. Er zijn geen quota voor taken, dus het uitvoeren van veel taken onder zo weinig mogelijk taken maakt gebruik van uw [taak-en taak schema quota's](batch-quota-limit.md#resource-quotas).
+
+### <a name="job-lifetime"></a>Taak levensduur
+
+Een batch-taak heeft een onbeperkte levens duur tot deze uit het systeem is verwijderd. De status geeft aan of er meer taken kunnen worden geaccepteerd voor de planning of niet.
+
+Een taak wordt niet automatisch verplaatst naar de status voltooid, tenzij deze expliciet is beëindigd. Dit kan automatisch worden geactiveerd via de eigenschap [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) of [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints).
 
 Er is een standaard quotum voor taak- [en taak planning](batch-quota-limit.md#resource-quotas). Taken en taak planningen in de status voltooid tellen niet mee voor dit quotum.
 
 ## <a name="tasks"></a>Taken
 
-Taken zijn afzonderlijke werk eenheden waaruit een taak bestaat. Taken worden door de gebruiker verzonden en gepland door batch op reken knooppunten. Er zijn verschillende ontwerp overwegingen voor het maken en uitvoeren van taken. In de volgende secties worden veelvoorkomende scenario's beschreven en wordt uitgelegd hoe u taken kunt ontwerpen om problemen op te lossen en efficiënt uit te voeren.
+[Taken](jobs-and-tasks.md#tasks) zijn afzonderlijke werk eenheden waaruit een taak bestaat. Taken worden door de gebruiker verzonden en gepland door batch op reken knooppunten. Er zijn verschillende ontwerp overwegingen voor het maken en uitvoeren van taken. In de volgende secties worden veelvoorkomende scenario's beschreven en wordt uitgelegd hoe u taken kunt ontwerpen om problemen op te lossen en efficiënt uit te voeren.
 
-- **Taak gegevens opslaan als onderdeel van de taak.**
-    Reken knooppunten zijn van nature. Er zijn veel functies in batch, zoals automatisch groeperen en automatisch schalen, waarmee knoop punten eenvoudig kunnen worden verwijderd. Wanneer knoop punten de pool verlaten (vanwege het wijzigen van het formaat of het verwijderen van een pool), worden alle bestanden op deze knoop punten ook verwijderd. Als gevolg hiervan wordt het aanbevolen dat voordat een taak wordt voltooid, de uitvoer van het knoop punt dat wordt uitgevoerd, wordt verplaatst naar een duurzame opslag, op dezelfde manier als een taak is mislukt, moeten logboeken worden verplaatst die nodig zijn voor het vaststellen van de fout in een duurzame opslag. Batch heeft geïntegreerde ondersteunings Azure Storage voor het uploaden van gegevens via [OutputFiles](batch-task-output-files.md), evenals een groot aantal gedeelde bestands systemen, of u kunt de upload zelf in uw taken uitvoeren.
+### <a name="save-task-data"></a>Taak gegevens opslaan
 
-### <a name="task-lifetime"></a>Levens duur van taak
+Reken knooppunten zijn van nature. Er zijn veel functies in batch, zoals automatisch groeperen en automatisch schalen, waarmee knoop punten eenvoudig kunnen worden verwijderd. Wanneer knoop punten de pool verlaten (vanwege het wijzigen van het formaat of het verwijderen van een pool), worden alle bestanden op deze knoop punten ook verwijderd. Als gevolg hiervan moet een taak de uitvoer van het knoop punt waarop het wordt uitgevoerd, verplaatsen naar een duurzame Store voordat deze wordt voltooid. Als een taak mislukt, moeten de logboeken worden verplaatst die nodig zijn om de fout in een duurzame opslag te diagnosticeren.
 
-- **Taken verwijderen wanneer deze zijn voltooid.**
-    Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -taak in. Als er een `retentionTime` is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak wordt gebruikt wanneer de `retentionTime` verloopt.
+Batch heeft geïntegreerde ondersteunings Azure Storage voor het uploaden van gegevens via [OutputFiles](batch-task-output-files.md), evenals een groot aantal gedeelde bestands systemen, of u kunt de upload zelf in uw taken uitvoeren.
 
-    Als u taken verwijdert, worden twee dingen uitgevoerd. Het zorgt ervoor dat u niet beschikt over een build van taken in de taak, waardoor u de taak die u wilt doorzoeken en die u in een later moment wilt filteren, kunt uitvoeren. Ook worden de bijbehorende taak gegevens op het knoop punt opgeschoond (de waarde `retentionTime` is nog niet al bereikt). Zo zorgt u ervoor dat uw knoop punten niet worden gevuld met taak gegevens en er geen schijf ruimte meer beschikbaar is.
+### <a name="manage-task-lifetime"></a>Levens duur van taken beheren
 
-### <a name="task-submission"></a>Verzen ding van taken
+Verwijder taken wanneer ze niet meer nodig zijn of stel een beperking voor een [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -taak in. Als er een `retentionTime` is ingesteld, wordt door batch automatisch de schijf ruimte opgeschoond die door de taak wordt gebruikt wanneer de `retentionTime` verloopt.
 
-- **Een groot aantal taken verzenden in een verzameling.**
-    Taken kunnen worden verzonden op individuele basis of in verzamelingen. Verzend taken in [verzamelingen](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) van maxi maal 100 tegelijk bij het bulksgewijs verzenden van taken om de overhead-en inzendings tijd te verminderen.
+Als u taken verwijdert, worden twee dingen uitgevoerd. Het zorgt ervoor dat u niet beschikt over een opgebouwde taak in de taak, waardoor het lastig is om een query uit te voeren/te zoeken naar de taken die u wilt uitvoeren (omdat u de voltooide taken moet filteren). Ook worden de bijbehorende taak gegevens op het knoop punt opgeschoond (de waarde `retentionTime` is nog niet al bereikt). Dit helpt ervoor te zorgen dat uw knoop punten niet worden gevuld met taak gegevens en dat er geen schijf ruimte meer beschikbaar is.
 
-### <a name="task-execution"></a>Taak uitvoering
+### <a name="submit-large-numbers-of-tasks-in-collection"></a>Een groot aantal taken in de verzameling verzenden
 
-- **Het maximum aantal taken per knoop punt kiezen** Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep met) verbruikt `maxTasksPerNode = 8` .
+Taken kunnen worden verzonden op individuele basis of in verzamelingen. Verzend taken in [verzamelingen](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) van maxi maal 100 tegelijk bij het bulksgewijs verzenden van taken om de overhead-en inzendings tijd te verminderen.
 
-### <a name="designing-for-retries-and-re-execution"></a>Ontwerpen voor nieuwe pogingen en opnieuw uitvoeren
+### <a name="set-max-tasks-per-node-appropriately"></a>Het juiste aantal taken per knoop punt instellen
+
+Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep met) verbruikt `maxTasksPerNode = 8` .
+
+### <a name="design-for-retries-and-re-execution"></a>Ontwerpen voor nieuwe pogingen en opnieuw uitvoeren
 
 Taken kunnen automatisch opnieuw worden uitgevoerd op batch. Er zijn twee soorten nieuwe pogingen: door de gebruiker beheerd en intern. Door de gebruiker beheerde nieuwe pogingen worden opgegeven door de [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)van de taak. Wanneer een programma dat is opgegeven in de taak wordt afgesloten met een afsluit code die niet gelijk is aan nul, wordt de taak opnieuw uitgevoerd tot de waarde van `maxTaskRetryCount` .
 
 Hoewel zeldzame gevallen kan een taak intern opnieuw worden geprobeerd vanwege storingen op het reken knooppunt, zoals het niet mogelijk is interne status of een fout op het knoop punt bij te werken terwijl de taak wordt uitgevoerd. De taak wordt indien mogelijk opnieuw geprobeerd op hetzelfde reken knooppunt, tot een interne limiet voordat de taak wordt uitgevoerd en de taak moet worden uitgesteld op basis van een batch, mogelijk op een ander reken knooppunt.
 
-- **Duurzame taken bouwen** Taken moeten zodanig zijn ontworpen dat ze zich kunnen voordoen en het opnieuw proberen. Dit is vooral belang rijk voor langlopende taken. Als u dit wilt doen, moet u ervoor zorgen dat taken hetzelfde resultaat genereren, zelfs als ze meer dan één keer worden uitgevoerd. Een manier om dit te doen is het maken van de taken "Doelzoeken". Een andere manier is om ervoor te zorgen dat uw taken idempotent zijn (taken hebben hetzelfde resultaat, ongeacht het aantal keren dat ze worden uitgevoerd).
+Er zijn geen ontwerp verschillen bij het uitvoeren van uw taken op knoop punten met specifieke of lage prioriteit. Of een taak al dan niet wordt uitgevoerd op een knoop punt met lage prioriteit of wordt onderbroken als gevolg van een storing op een toegewezen knoop punt, maar beide situaties worden mogelijk verholpen door de taak te ontwerpen en de fout te achterhalen.
 
-    Een veelvoorkomend voor beeld is een taak voor het kopiëren van bestanden naar een reken knooppunt. Een eenvoudige benadering is een taak waarmee alle opgegeven bestanden elke keer dat deze wordt uitgevoerd, wordt gekopieerd, wat inefficiënt is en niet is opgebouwd om de fout op te vangen. Maak in plaats daarvan een taak om ervoor te zorgen dat de bestanden zich op het reken knooppunt bevinden. een taak waarmee bestanden die al aanwezig zijn, niet opnieuw worden gekopieerd. Op deze manier wordt de taak opgehaald waar deze wordt afgebroken als deze is onderbroken.
+### <a name="build-durable-tasks"></a>Duurzame taken bouwen
 
-- **Knoop punten met een lage prioriteit** Er zijn geen ontwerp verschillen bij het uitvoeren van uw taken op knoop punten met specifieke of lage prioriteit. Of een taak al dan niet wordt uitgevoerd op een knoop punt met lage prioriteit of wordt onderbroken als gevolg van een storing op een toegewezen knoop punt, maar beide situaties worden mogelijk verholpen door de taak te ontwerpen en de fout te achterhalen.
+Taken moeten zodanig zijn ontworpen dat ze zich kunnen voordoen en het opnieuw proberen. Dit is vooral belang rijk voor langlopende taken. Als u dit wilt doen, moet u ervoor zorgen dat taken hetzelfde resultaat genereren, zelfs als ze meer dan één keer worden uitgevoerd. Een manier om dit te doen is het maken van de taken ' Doelzoeken '. Een andere manier is om ervoor te zorgen dat uw taken idempotent zijn (taken hebben hetzelfde resultaat, ongeacht het aantal keren dat ze worden uitgevoerd).
 
-- **Uitvoerings tijd van de taak** Vermijd taken met korte uitvoerings tijd. Taken die slechts een tot twee seconden worden uitgevoerd, zijn niet ideaal. Probeer een aanzienlijke hoeveelheid werk uit te voeren in een afzonderlijke taak (mini maal 10 seconden, Maxi maal uur of dagen). Als elke taak gedurende één minuut (of meer) wordt uitgevoerd, is de plannings overhead als Fractie van de totale reken tijd klein.
+Een veelvoorkomend voor beeld is een taak voor het kopiëren van bestanden naar een reken knooppunt. Een eenvoudige benadering is een taak waarmee alle opgegeven bestanden elke keer dat deze wordt uitgevoerd, wordt gekopieerd, wat inefficiënt is en niet is opgebouwd om de fout op te vangen. Maak in plaats daarvan een taak om ervoor te zorgen dat de bestanden zich op het reken knooppunt bevinden. een taak waarmee bestanden die al aanwezig zijn, niet opnieuw worden gekopieerd. Op deze manier wordt de taak opgehaald waar deze wordt afgebroken als deze is onderbroken.
+
+### <a name="avoid-short-execution-time"></a>Korte uitvoerings tijd voor komen
+
+Taken die slechts een tot twee seconden worden uitgevoerd, zijn niet ideaal. Probeer een aanzienlijke hoeveelheid werk uit te voeren in een afzonderlijke taak (mini maal 10 seconden, Maxi maal uur of dagen). Als elke taak gedurende één minuut (of meer) wordt uitgevoerd, is de plannings overhead als Fractie van de totale reken tijd klein.
+
 
 ## <a name="nodes"></a>Knooppunten
 
-- **Start taken moeten worden idempotent** Net als bij andere taken moet de begin taak van het knoop punt idempotent zijn, aangezien deze elke keer dat het knoop punt wordt opgestart opnieuw wordt uitgevoerd. Een idempotent-taak is slechts een, wat een consistent resultaat oplevert wanneer er meerdere keren worden uitgevoerd.
+Een [reken knooppunt](nodes-and-pools.md#nodes) is een virtuele machine (VM) of Cloud service-VM van Azure die is toegewezen aan het verwerken van een deel van de werk belasting van uw toepassing. Volg deze richt lijnen bij het werken met knoop punten.
 
-- **Beheer langlopende Services via de service-interface van het besturings systeem.**
-    Soms moet er een andere agent naast de batch-agent in het knoop punt worden uitgevoerd, bijvoorbeeld om gegevens van het knoop punt te verzamelen en te rapporteren. U wordt aangeraden deze agents als OS-Services te implementeren, zoals een Windows-service of een Linux- `systemd` service.
+### <a name="idempotent-start-tasks"></a>Idempotent Start taken
 
-    Bij het uitvoeren van deze services mogen ze geen bestands vergrendeling hebben op bestanden in door batch beheerde directory's op het knoop punt, omdat in andere gevallen deze directory's niet kunnen worden verwijderd vanwege de vergren deling van het bestand. Als u bijvoorbeeld een Windows-service in een begin taak installeert in plaats van de service rechtstreeks vanuit de werkmap voor het starten van de taak te starten, kopieert u de bestanden ergens anders (als de bestanden alleen over de kopie staan). Installeer de service vanaf die locatie. Wanneer uw start taak door batch opnieuw wordt uitgevoerd, wordt de werkmap voor het starten van de taak verwijderd en opnieuw gemaakt. Dit werkt omdat de service Bestands vergrendelingen heeft op de andere map, niet op de werkmap voor het starten van de taak.
+Net als bij andere taken moet de [begin taak](jobs-and-tasks.md#start-task) van het knoop punt idempotent zijn, omdat deze elke keer dat het knoop punt wordt opgestart opnieuw wordt uitgevoerd. Een idempotent-taak is slechts een, wat een consistent resultaat oplevert wanneer er meerdere keren worden uitgevoerd.
 
-- **Vermijd het maken van adreslijst koppelingen in Windows** Directory-koppelingen, ook wel vaste koppelingen naar mappen genoemd, zijn moeilijk te verwerken tijdens het opschonen van taken en taken. Gebruik symlinks (soft-koppelingen) in plaats van vaste koppelingen.
+### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Langlopende Services beheren via de interface van het besturings systeem-services
 
-- **De batch Agent-logboeken verzamelen als er een probleem is** Als u een probleem ondervindt met betrekking tot het gedrag van een knoop punt of taken die worden uitgevoerd op een knoop punt, is het raadzaam om de batch Agent-logboeken te verzamelen voordat u de betreffende knoop punten ongedaan maakt. U kunt de batch Agent-logboeken verzamelen met de API voor het uploaden van batch-service Logboeken. Deze logboeken kunnen worden verstrekt als onderdeel van een ondersteunings ticket voor micro soft en helpt u bij het oplossen van problemen en oplossingen.
+Soms moet er een andere agent naast de batch-agent in het knoop punt worden uitgevoerd. U kunt bijvoorbeeld gegevens verzamelen van het knoop punt en dit rapport rapporteren. U wordt aangeraden deze agents als OS-Services te implementeren, zoals een Windows-service of een Linux- `systemd` service.
 
-## <a name="security"></a>Beveiliging
+Bij het uitvoeren van deze services mogen ze geen bestands vergrendeling hebben op bestanden in door batch beheerde directory's op het knoop punt, omdat in andere gevallen deze directory's niet kunnen worden verwijderd vanwege de vergren deling van het bestand. Als u bijvoorbeeld een Windows-service in een begin taak installeert in plaats van de service rechtstreeks vanuit de werkmap voor het starten van de taak te starten, kopieert u de bestanden ergens anders (of als de bestanden zich alleen over de kopie bevinden). Installeer de service vervolgens vanaf die locatie. Wanneer uw start taak door batch opnieuw wordt uitgevoerd, wordt de werkmap voor het starten van de taak verwijderd en opnieuw gemaakt. Dit werkt omdat de service Bestands vergrendelingen heeft op de andere map, niet op de werkmap voor het starten van de taak.
 
-### <a name="security-isolation"></a>Beveiligings isolatie
+### <a name="avoid-creating-directory-junctions-in-windows"></a>Vermijd het maken van adreslijst koppelingen in Windows
 
-Als voor uw scenario het isoleren van taken van elkaar is vereist, moet u deze taken isoleren door ze in afzonderlijke groepen te laten staan. Een pool is de grens van beveiligings isolatie in batch, en twee groepen zijn standaard niet zichtbaar of kunnen met elkaar communiceren. Vermijd het gebruik van afzonderlijke batch-accounts als isolatie methode.
+Directory-koppelingen, ook wel vaste koppelingen naar mappen genoemd, zijn moeilijk te verwerken tijdens het opschonen van taken en taken. Gebruik symlinks (soft-koppelingen) in plaats van vaste koppelingen.
 
-## <a name="moving"></a>Verplaatsen
+### <a name="collect-the-batch-agent-logs"></a>De batch Agent-logboeken verzamelen
 
-### <a name="move-batch-account-across-regions"></a>Batch-account verplaatsen tussen regio's
+Als u een probleem ondervindt met betrekking tot het gedrag van een knoop punt of taken die worden uitgevoerd op een knoop punt, verzamelt u de logboeken van de batch agent voordat u de desbetreffende knoop punten ongedaan maakt. U kunt de batch Agent-logboeken verzamelen met de API voor het uploaden van batch-service Logboeken. Deze logboeken kunnen worden verstrekt als onderdeel van een ondersteunings ticket voor micro soft en helpt u bij het oplossen van problemen en oplossingen.
 
-Er zijn verschillende scenario's waarin u uw bestaande batch-account wilt verplaatsen van de ene regio naar een andere. U kunt bijvoorbeeld overschakelen naar een andere regio als onderdeel van de planning voor nood herstel.
+## <a name="isolation-security"></a>Isolatie beveiliging
 
-Azure Batch accounts kunnen niet worden verplaatst van de ene regio naar een andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van uw batch-account te exporteren.  U kunt de resource vervolgens in een andere regio zetten door het batch-account te exporteren naar een sjabloon, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio. Nadat u de sjabloon naar de nieuwe regio hebt geüpload, moet u certificaten, taak schema's en toepassings pakketten opnieuw maken. Als u de wijzigingen wilt door voeren en het batch-account wilt verplaatsen, moet u het oorspronkelijke batch-account of de resource groep verwijderen.
+Als voor uw scenario het isoleren van taken van elkaar is vereist, moet u deze in afzonderlijke groepen laten staan. Een pool is de grens van beveiligings isolatie in batch, en twee groepen zijn standaard niet zichtbaar of kunnen met elkaar communiceren. Vermijd het gebruik van afzonderlijke batch-accounts als isolatie methode.
+
+## <a name="moving-batch-accounts-across-regions"></a>Batch-accounts verplaatsen tussen regio's
+
+Er zijn scenario's waarin het nuttig kan zijn om een bestaand batch-account van de ene regio naar een andere te verplaatsen. U kunt bijvoorbeeld overschakelen naar een andere regio als onderdeel van de planning voor nood herstel.
+
+Azure Batch accounts kunnen niet rechtstreeks worden verplaatst van de ene regio naar een andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van uw batch-account te exporteren. U kunt de resource vervolgens in een andere regio zetten door het batch-account te exporteren naar een sjabloon, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio.
+
+Nadat u de sjabloon naar de nieuwe regio hebt geüpload, moet u certificaten, taak schema's en toepassings pakketten opnieuw maken. Als u de wijzigingen wilt door voeren en het batch-account wilt verplaatsen, moet u het oorspronkelijke batch-account of de resource groep verwijderen.
 
 Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-## <a name="connectivity-to-the-batch-service"></a>Connectiviteit met de batch-service
+## <a name="connectivity"></a>Connectiviteit
+
+Raadpleeg de volgende richt lijnen bij het overwegen van connectiviteit in uw batch-oplossingen.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Netwerk beveiligings groepen (Nsg's) en door de gebruiker gedefinieerde routes (Udr's)
 
 Bij het inrichten van [batch-Pools in een virtueel netwerk](batch-virtual-network.md), moet u ervoor zorgen dat u voldoet aan de richt lijnen met betrekking tot het gebruik van de `BatchNodeManagement` service tags, poorten, protocollen en richting van de regel.
-Het gebruik van het servicetag wordt sterk aanbevolen en niet de onderliggende IP-adressen van de batch-service, aangezien deze kunnen veranderen in de loop van de tijd. Het rechtstreeks gebruiken van de IP-adressen van de batch-service kan zich als onstabiel, onderbrekingen of storingen voordoen als de batch-service de IP-adressen die in de loop van de tijd worden gebruikt, worden bijgewerkt. Als u momenteel batch service-IP-adressen in uw NSG-regels gebruikt, is het raadzaam om over te scha kelen naar het gebruik van de servicetag.
+Het gebruik van het servicetag wordt sterk aanbevolen, in plaats van het gebruik van de onderliggende batch service-IP-adressen. Dit komt doordat de IP-adressen na verloop van tijd kunnen worden gewijzigd. Het rechtstreeks gebruiken van IP-adressen van batch Services kan leiden tot instabiliteit, onderbrekingen of storingen voor uw batch-Pools.
 
-Voor door de gebruiker gedefinieerde routes moet u ervoor zorgen dat u over een proces beschikt om de batch service-IP-adressen periodiek bij te werken in uw route tabel als deze wijziging in de loop van de tijd plaatsvindt. Als u wilt weten hoe u de lijst met IP-adressen van batch-service kunt verkrijgen, raadpleegt u [on-premises service Tags](../virtual-network/service-tags-overview.md). De IP-adressen van de batch-service worden gekoppeld aan de servicetag `BatchNodeManagement` (of de regionale variant die overeenkomt met de regio van uw batch-account).
+Voor door de gebruiker gedefinieerde routes (Udr's), moet u ervoor zorgen dat u over een proces beschikt om de batch service-IP-adressen periodiek bij te werken in uw route tabel, omdat deze adressen in de loop van de tijd veranderen. Zie [on-premises service Tags](../virtual-network/service-tags-overview.md)voor meer informatie over het verkrijgen van de lijst met IP-adressen van batch-service. De IP-adressen van de batch-service worden gekoppeld aan de servicetag `BatchNodeManagement` (of de regionale variant die overeenkomt met de regio van uw batch-account).
 
 ### <a name="honoring-dns"></a>DNS naleven
 
@@ -164,3 +179,25 @@ Als uw aanvragen een HTTP-reactie van het 5xx-niveau ontvangen en er in het antw
 
 Zorg ervoor dat uw batch-service-clients over het juiste beleid voor nieuwe pogingen beschikken om uw aanvragen automatisch opnieuw uit te voeren, zelfs tijdens normale werking en niet alleen tijdens een service-onderhouds periode. Deze beleids regels voor opnieuw proberen moeten een interval van ten minste vijf minuten omvatten. Automatische mogelijkheden voor opnieuw proberen worden geboden bij verschillende batch-Sdk's, zoals de [.net RetryPolicyProvider-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
 
+## <a name="batch-node-underlying-dependencies"></a>Onderliggende afhankelijkheden van het batch knooppunt
+
+Houd rekening met de volgende afhankelijkheden en beperkingen bij het ontwerpen van uw batch-oplossingen.
+
+### <a name="system-created-resources"></a>Door het systeem gemaakte resources
+
+Azure Batch maakt en beheert een set gebruikers en groepen op de VM, wat niet mag worden gewijzigd. De verschillen zijn als volgt:
+
+#### <a name="windows"></a>Windows
+
+- Een gebruiker met de naam **PoolNonAdmin**
+- Een gebruikers groep met de naam **WATaskCommon**
+
+#### <a name="linux"></a>Linux
+
+- Een gebruiker met de naam **_azbatch**
+
+### <a name="file-cleanup"></a>Bestanden opschonen
+
+Batch probeert actief de werkmap op te schonen waarin de taken worden uitgevoerd, zodra de retentie tijd verloopt. Bestanden die buiten deze map zijn geschreven, zijn [uw verantwoordelijkheid om op te schonen](#manage-task-lifetime) om te voor komen dat u schijf ruimte kunt invullen. 
+
+De automatische opschoning voor de werkmap wordt geblokkeerd als u een service uitvoert in Windows vanuit de werkmap startTask, omdat de map nog in gebruik is. Dit leidt tot slechte prestaties. Om dit probleem op te lossen, wijzigt u de map voor die service in een afzonderlijke map die niet wordt beheerd door batch.

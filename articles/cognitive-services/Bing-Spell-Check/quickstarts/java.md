@@ -8,30 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735110"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869799"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en Java
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Java-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Java-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. 
+
+Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * De Java Development Kit (JDK) 7 of hoger.
 
-* Importeer de [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) of de meest recente [gson](https://github.com/google/gson) -versie. Voor het uitvoeren van de opdracht regel `.jar` moet u de map aan uw Java toevoegen met de hoofd klasse.
+* Importeer de [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) of de meest recente [gson](https://github.com/google/gson) -versie. Voor de uitvoering van de opdracht regel `.jar` moet u de map aan uw Java toevoegen met de hoofd klasse.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-an-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Java-project in uw favoriete IDE of editor met een klassen naam van uw keuze en importeer de volgende pakketten.
+1. Maak een nieuw Java-project in uw favoriete IDE of editor met een klassen naam van uw keuze en importeer vervolgens de volgende pakketten:
 
     ```java
     import java.io.*;
@@ -40,7 +42,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Maak variabelen voor het eindpunt, de host en het pad van de API, en uw abonnementssleutel. Maak vervolgens variabelen voor uw markt, de tekst waarop u spellingcontrole wilt uitvoeren en een tekenreeks voor de spellingcontrolemodus. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het eindpunt, de host en het pad van de API, en uw abonnementssleutel. Maak vervolgens variabelen voor uw markt, de tekst die u wilt controleren en een teken reeks voor de spelling controle modus. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +57,11 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Maak een functie met de naam `check()` om de API-aanvraag te maken en verzenden. Volg binnen de functie deze stappen. Maak een tekenreeks voor de aanvraagparameters. voeg de parameter `?mkt=` toe aan uw markttekenreeks en de parameter `&mode=` aan uw spellingcontrolemodus.  
+1. Maak een functie met de naam `check()` om de API-aanvraag te maken en verzenden. In deze functie voegt u de code toe die u in de volgende stappen hebt opgegeven. Een teken reeks maken voor de aanvraag parameters:
+
+   a. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. 
+
+   b. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. 
 
    ```java
    public static void check () throws Exception {
@@ -64,14 +70,14 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
    }
    ```
 
-2. Maak een URL door het eindpunt, de host, het pad en de parametertekenreeks te combineren. Een nieuw `HttpsURLConnection` object maken.
+2. Maak een URL door de teken reeks voor het eindpunt, het pad en de para meters te combi neren. Een nieuw `HttpsURLConnection` object maken.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Open een verbinding met de URL. Stel de aanvraagmethode in op `POST`. Voeg uw aanvraagparameters toe. Vergeet niet om de abonnementssleutel toe te voegen aan de `Ocp-Apim-Subscription-Key`-header.
+3. Open een verbinding met de URL. Stel de aanvraag methode in op `POST` en voeg uw aanvraag parameters toe. Zorg ervoor dat u uw abonnements sleutel aan de `Ocp-Apim-Subscription-Key` koptekst toevoegt.
 
     ```java
     connection.setRequestMethod("POST");
@@ -80,7 +86,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     connection.setDoOutput(true);
     ```
 
-4. Maak een nieuw `DataOutputStream`-object en verzend de aanvraag naar de API.
+4. Maak een nieuw `DataOutputStream` object en verzend de aanvraag naar de API.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -91,7 +97,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="format-and-read-the-api-response"></a>De API-reactie opmaken en lezen
 
-1. Voeg deze methode toe aan uw klasse. De JSON wordt opgemaakt voor een lees bare uitvoer.
+1. Voeg de `prettify()` methode toe aan uw klasse, waarmee de JSON wordt opgemaakt voor een beter Lees bare uitvoer.
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +123,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="call-the-api"></a>De API aanroepen
 
-In de hoofd functie van uw toepassing roept u de hierboven gemaakte controle methode aan.
+In de hoofd functie van uw toepassing roept u de `check()` methode aan die u eerder hebt gemaakt.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +137,19 @@ In de hoofd functie van uw toepassing roept u de hierboven gemaakte controle met
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Uw project bouwen en uitvoeren.
+Uw project bouwen en uitvoeren. Als u de opdracht regel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren:
 
-Als u de opdracht regel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren.
+1. De toepassing bouwen:
 
-**PE**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**Uitvoeringsrun**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. Voer de toepassing uit:
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
@@ -193,4 +199,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app met één pagina maken](../tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

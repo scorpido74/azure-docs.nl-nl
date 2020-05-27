@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446669"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872765"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en C #
 
-In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visual Search-API en hoe u de inzichten die het retourneert, weergeeft.
+In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visual Search-API en hoe u deze weergeeft.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visu
     using System.Collections.Generic;
     ```
 
-2. Voeg variabelen toe voor de sleutel van het abonnement, het eind punt en het pad naar de installatie kopie die u wilt uploaden. `uriBase`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource:
+2. Voeg variabelen toe voor de sleutel van het abonnement, het eind punt en het pad naar de installatie kopie die u wilt uploaden. Voor de `uriBase` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visu
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Maak een methode met `GetImageFileName()` de naam om het pad voor de installatie kopie op te halen:
+3. Maak een methode `GetImageFileName()` met de naam om het pad voor uw installatie kopie op te halen.
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visu
             }
     ```
 
-4. Maak een methode om de binaire gegevens van de installatie kopie op te halen:
+4. Maak een methode om de binaire gegevens van de installatie kopie op te halen.
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ In deze Quick start ziet u hoe u een installatie kopie uploadt naar de Bing Visu
 
 ## <a name="build-the-form-data"></a>De formuliergegevens maken
 
-Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier gegevens om deze naar de API te verzenden. De formulier gegevens moeten de `Content-Disposition` koptekst bevatten, de `name` para meter moet worden ingesteld op "afbeelding" en de `filename` para meter kan worden ingesteld op een wille keurige teken reeks. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldings grootte die u kunt uploaden, is 1 MB.
+1. Als u een lokale installatie kopie wilt uploaden, moet u eerst de formulier gegevens bouwen om deze naar de API te verzenden. De formulier gegevens bevatten de `Content-Disposition` koptekst, de `name` para meter die is ingesteld op "afbeelding" en de `filename` para meter die is ingesteld op de bestands naam van de installatie kopie. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldings grootte die u kunt uploaden, is 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
     --boundary_1234-abcd--
     ```
 
-1. Voeg grens teken reeksen toe om de POST-formulier gegevens op te maken. Met grens teken reeksen wordt de begin-, eind-en nieuwe regel tekens voor de gegevens bepaald:
+2. Voeg grens teken reeksen toe om de POST-formulier gegevens op te maken. Met grens teken reeksen wordt de begin-, eind-en nieuwe regel tekens voor de gegevens bepaald.
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +90,14 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. Gebruik de volgende variabelen om para meters toe te voegen aan de formulier gegevens:
+3. Gebruik de volgende variabelen om para meters toe te voegen aan de formulier gegevens:
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Maak een functie met `BuildFormDataStart()` de naam om het begin van de formulier gegevens te maken met behulp van de grens teken reeksen en het pad naar de afbeelding:
+4. Maak een functie met `BuildFormDataStart()` de naam om het begin van de formulier gegevens te maken met behulp van de grens teken reeksen en het pad naar de afbeelding.
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
         }
     ```
 
-4. Maak een functie met `BuildFormDataEnd()` de naam om het einde van de formulier gegevens te maken met behulp van de grens teken reeksen:
+5. Maak een functie met `BuildFormDataEnd()` de naam om het einde van de formulier gegevens te maken met behulp van de grens teken reeksen.
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -122,11 +122,11 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
 
 ## <a name="call-the-bing-visual-search-api"></a>De Bing Visual Search-API aanroepen
 
-1. Maak een functie om het Bing Visual Search-eind punt aan te roepen en het JSON-antwoord te retour neren. De functie neemt het begin en het einde van de formulier gegevens, een byte matrix met de afbeeldings gegevens en `contentType` een waarde.
+1. Maak een functie om het Bing Visual Search-eind punt aan te roepen en het JSON-antwoord te retour neren. De functie neemt het begin en het einde van de formulier gegevens, een byte matrix met de afbeeldings gegevens en een `contentType` waarde.
 
 2. Gebruik een `WebRequest` voor het opslaan van de URI, contentType waarde en headers.  
 
-3. Gebruik `request.GetRequestStream()` om uw formulier-en afbeeldings gegevens te schrijven en ontvang vervolgens het antwoord. De functie moet er ongeveer als volgt uitzien:
+3. Gebruiken `request.GetRequestStream()` om uw formulier-en afbeeldings gegevens te schrijven en vervolgens de reactie te ontvangen. De functie moet er ongeveer uitzien als de volgende code:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -158,14 +158,14 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
 
 ## <a name="create-the-main-method"></a>De methode Main maken
 
-1. In de `Main` methode van uw toepassing haalt u de bestands naam en binaire gegevens van uw installatie kopie op:
+1. Haal in de `Main()` methode van uw toepassing de bestands naam en binaire gegevens van uw installatie kopie op.
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Maak de POST-body door de grens hiervoor te bepalen. Vervolgens roept `startFormData()` u `endFormData` de formulier gegevens op en maakt u deze:
+2. Stel de hoofd tekst in door de grens van de POST te Format teren. Vervolgens roept `BuildFormDataStart()` `BuildFormDataEnd()` u de formulier gegevens aan en maakt u deze.
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Maak de `ContentType` waarde op basis `CONTENT_TYPE_HEADER_PARAMS` van de notatie en de grens van het formulier gegevens:
+3. Maak de `ContentType` waarde op basis van `CONTENT_TYPE_HEADER_PARAMS` de notatie en de grens van het formulier gegevens.
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. De API-reactie ophalen door `BingImageSearch()` het antwoord aan te roepen en af te drukken:
+4. Ontvang de API-reactie door `BingImageSearch()` aan te roepen en druk vervolgens het antwoord af.
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,81 +191,81 @@ Als u een lokale installatie kopie wilt uploaden, bouwt u eerst de formulier geg
 
 ## <a name="using-httpclient"></a>Met behulp van HttpClient
 
-Als u gebruikt `HttpClient`, kunt u de `MultipartFormDataContent` -klasse gebruiken om de formulier gegevens te maken. Gebruik alleen de volgende code gedeelten om de bijbehorende methoden in het vorige voor beeld te vervangen.
+Als u gebruikt `HttpClient` , kunt u de- `MultipartFormDataContent` klasse gebruiken om de formulier gegevens te maken. Gebruik de volgende code secties om de bijbehorende methoden in het vorige voor beeld te vervangen:
 
-Vervang de `Main` -methode door de volgende code:
+1. Vervang de `Main()`-methode door de volgende code:
 
-```csharp
-        static void Main()
-        {
-            try
-            {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+   ```csharp
+           static void Main()
+           {
+               try
+               {
+                   Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
+                   if (accessKey.Length == 32)
+                   {
+                       if (IsImagePathSet(imagePath))
+                       {
+                           var filename = GetImageFileName(imagePath);
+                           Console.WriteLine("Getting image insights for image: " + filename);
+                           var imageBinary = GetImageBinary(imagePath);
 
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
+                           var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+                           var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
 
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
+                           Console.WriteLine("\nJSON Response:\n");
+                           Console.WriteLine(JsonPrettyPrint(json));
+                       }
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid Bing Visual Search API subscription key!");
+                       Console.WriteLine("Please paste yours into the source code.");
+                   }
 
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-```
+                   Console.Write("\nPress Enter to exit ");
+                   Console.ReadLine();
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e.Message);
+               }
+           }
+   ```
 
-Vervang de `BingImageSearch` -methode door de volgende code:
+2. Vervang de `BingImageSearch()`-methode door de volgende code:
 
-```csharp
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
-        static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
-        {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
+   ```csharp
+           /// <summary>
+           /// Calls the Bing visual search endpoint and returns the JSON response.
+           /// </summary>
+           static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
+           {
+               var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+               requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
 
-            var content = new MultipartFormDataContent(boundary);
-            content.Add(new ByteArrayContent(image), "image", "myimage");
-            requestMessage.Content = content;
+               var content = new MultipartFormDataContent(boundary);
+               content.Add(new ByteArrayContent(image), "image", "myimage");
+               requestMessage.Content = content;
 
-            var httpClient = new HttpClient();
+               var httpClient = new HttpClient();
 
-            Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-            HttpResponseMessage httpResponse = httpRequest.Result;
-            HttpStatusCode statusCode = httpResponse.StatusCode;
-            HttpContent responseContent = httpResponse.Content;
+               Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+               HttpResponseMessage httpResponse = httpRequest.Result;
+               HttpStatusCode statusCode = httpResponse.StatusCode;
+               HttpContent responseContent = httpResponse.Content;
 
-            string json = null;
+               string json = null;
 
-            if (responseContent != null)
-            {
-                Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
-                json = stringContentsTask.Result;
-            }
+               if (responseContent != null)
+               {
+                   Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
+                   json = stringContentsTask.Result;
+               }
 
-            return json;
-        }
-```
+               return json;
+           }
+   ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,40 +8,38 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb31c36e8c614a72b86f95cb7e7d1c588692f97
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475532"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873090"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quick Start: een query verzenden naar de Bing lokale Business Search-API met behulp van node. js
 
-Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing wordt geschreven in node. js, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
+Gebruik deze Quick Start om te leren hoe u aanvragen verzendt naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing wordt geschreven in node. js, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
 
-In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor de `hotel in Bellevue`Zoek query.
+In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor een zoek query.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
+* De [Java script-aanvraag bibliotheek](https://github.com/request/request).
+* Een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing zoeken-API's. Voor deze Quick start is de [gratis proef versie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) voldoende. Sla de API-sleutel op die wordt weer gegeven wanneer u de gratis proef versie activeert. Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
 
-* De [JavaScript-aanvragenbibliotheek](https://github.com/request/request)
-
-U moet een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) hebben met Bing-api's. De [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) is voldoende voor deze quickstart. Gebruik de toegangs sleutel die wordt gebruikt door de gratis proef versie.  Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Codescenario
 
-Met de volgende code wordt de aanvraag gedefinieerd en verzonden. De code wordt in de volgende stappen geïmplementeerd:
+Met de volgende code wordt de aanvraag gedefinieerd en verzonden, die in de volgende stappen wordt geïmplementeerd:
 
 1. Declareer variabelen om het eindpunt op te geven met een host en pad.
 2. Geef de query op en voeg de query parameter toe.
 3. Maak een handlerfunctie voor het antwoord.
-4. Definieer de Search-functie die de aanvraag maakt en de header Ocp-Apim-Subscription-Key toevoegt.
-5. Voer de Search-functie uit.
+4. Definieer de zoek functie die de aanvraag maakt en voegt de `Ocp-Apim-Subscription-Key` header toe.
+5. Voer de zoek functie uit.
 
-Dit is de volledige code voor deze demo:
 
 ```javascript
 'use strict';
@@ -94,6 +92,6 @@ Search();
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids voor lokale zakelijke Zoek opdrachten](local-quickstart.md)
+* [Lokale zakelijke zoek acties C# Quick Start](local-quickstart.md)
 * [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](local-search-java-quickstart.md)
 * [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)

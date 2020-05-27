@@ -2,13 +2,13 @@
 title: 'Snelstartgids: Knowledge Base-QnA Maker maken, trainen en publiceren'
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base op basis van een eenvoudige Veelgestelde vragen pagina om vragen te beantwoorden QnA Maker.
 ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756822"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871395"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
 
@@ -34,15 +34,15 @@ U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelge
 
 1. Selecteer in **stap 3**uw Active Directory, abonnement, service (resource) en de taal voor alle Knowledge bases die in de service zijn gemaakt.
 
-   ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
-
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Scherm opname van het selecteren van een QnA Maker service Knowledge Base":::
+    
 1. In **stap 3**moet u de Knowledge Base het voor **beeld QnA KB**noemen.
 
 1. Configureer in **stap 4**de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Geselecteerd|
+    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Ingeschakeld|
     |**Standaard antwoord tekst**| `Quickstart - default answer not found.`|
     |**+ URL toevoegen**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**Chit-Chat**|**Professionele** selecteren|
@@ -64,9 +64,9 @@ U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelge
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ Voeg de vraag toe als tekst en het antwoord dat is opgemaakt met de prijs verlaging.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Voeg de vraag toe als tekst en het antwoord dat is opgemaakt met de prijs verlaging.":::
 
-    Het symbool `*`voor de prijs verlaging, dat wordt gebruikt voor opsommings tekens. De `\n` wordt gebruikt voor een nieuwe regel.
+    Het symbool voor de prijs verlaging, `*` dat wordt gebruikt voor opsommings tekens. De `\n` wordt gebruikt voor een nieuwe regel.
 
     Op de pagina **bewerken** wordt de prijs verlaging weer gegeven. Wanneer u het deel venster **testen** later gebruikt, ziet u dat de prijs correct wordt weer gegeven.
 
@@ -81,7 +81,7 @@ Selecteer in de rechter bovenhoek de optie **opslaan en trainen** om uw bewerkin
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ Voer een voor beeld van een gebruikers query in het tekstvak in. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Voer een voor beeld van een gebruikers query in het tekstvak in.":::
 
 1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het venster test wordt gebruikt om uw wijzigingen in de Knowledge Base te testen voordat u uw kennis database publiceert.
 
@@ -89,7 +89,7 @@ Selecteer in de rechter bovenhoek de optie **opslaan en trainen** om uw bewerkin
 
 ## <a name="publish-the-knowledge-base"></a>De knowledge base publiceren
 
-Wanneer u een kennis database publiceert, wordt de inhoud van uw kennis basis verplaatst van `test` de index naar `prod` een index in azure Search.
+Wanneer u een kennis database publiceert, wordt de inhoud van uw kennis basis verplaatst van de `test` index naar een `prod` index in azure Search.
 
 ![Scherm afbeelding van het verplaatsen van de inhoud van uw Knowledge Base](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
@@ -131,7 +131,7 @@ Wanneer u wijzigingen aanbrengt in de Knowledge Base en opnieuw publiceert, hoef
 
     De chat-bot reageert met een antwoord van uw Knowledge Base.
 
-    ![Voer een gebruikers query in op de Web Chat testen.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Voer een gebruikers query in op de Web Chat testen.":::
 
 ## <a name="what-did-you-accomplish"></a>Wat hebt u gedaan?
 

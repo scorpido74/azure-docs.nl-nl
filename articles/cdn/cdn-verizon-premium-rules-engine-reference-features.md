@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253489"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872716"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN van de functies van de functie van Verizon Premium-regels
 
@@ -20,150 +20,9 @@ In dit artikel vindt u gedetailleerde beschrijvingen van de beschik bare functie
 
 Het derde deel van een regel is de functie. Een functie definieert het type actie dat wordt toegepast op het aanvraag type dat wordt geïdentificeerd door een set matching voorwaarden.
 
-## <a name="access-features"></a>Access-functies
 
-Deze functies zijn ontworpen om de toegang tot inhoud te beheren.
+Voor de meest recente functies raadpleegt u de documentatie van de [Verizon-regel engine](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions).
 
-Naam | Doel
------|--------
-[Toegang weigeren (403)](#deny-access-403) | Hiermee wordt bepaald of alle aanvragen worden afgewezen met een 403 verboden-antwoord.
-[Token verificatie](#token-auth) | Hiermee wordt bepaald of verificatie op basis van tokens wordt toegepast op een aanvraag.
-[Weigerings code voor token auth](#token-auth-denial-code) | Hiermee wordt het type reactie bepaald dat wordt geretourneerd naar een gebruiker wanneer een aanvraag wordt geweigerd vanwege verificatie op basis van tokens.
-[URL-Case negeren van token verificatie](#token-auth-ignore-url-case) | Hiermee wordt bepaald of URL-vergelijkingen die worden uitgevoerd door verificatie op basis van tokens hoofdletter gevoelig zijn.
-[Token auth-para meter](#token-auth-parameter) | Hiermee wordt bepaald of de naam van de op tokens gebaseerde verificatie query teken reeks parameter moet worden gewijzigd.
-
-## <a name="caching-features"></a>Cache functies
-
-Deze functies zijn ontworpen om aan te passen wanneer en hoe inhoud in de cache wordt opgeslagen.
-
-Naam | Doel
------|--------
-[Bandbreedte parameters](#bandwidth-parameters) | Bepaalt of para meters voor bandbreedte regeling (bijvoorbeeld ec_rate en ec_prebuf) actief zijn.
-[Bandbreedte regeling](#bandwidth-throttling) | Beperkt de band breedte voor het antwoord dat wordt gegeven door de POP (Point-of-Presence).
-[Cache overs Laan](#bypass-cache) | Hiermee wordt bepaald of caching moet worden overgeslagen voor de aanvraag.
-[Cache-controle header verwerking](#cache-control-header-treatment) | Hiermee bepaalt u de `Cache-Control` generatie van headers door de pop wanneer de functie voor de externe Max-leeftijd actief is.
-[Cache sleutel query reeks](#cache-key-query-string) | Hiermee wordt bepaald of de cache sleutel query teken reeks parameters bevat of uitsluit die aan een aanvraag zijn gekoppeld.
-[Cache sleutel opnieuw schrijven](#cache-key-rewrite) | Hiermee wordt de cache sleutel die is gekoppeld aan een aanvraag, opnieuw geschreven.
-[Volledige cache opvulling](#complete-cache-fill) | Hiermee wordt bepaald wat er gebeurt wanneer een aanvraag resulteert in een gedeeltelijke cache Missing in een POP.
-[Bestands typen comprimeren](#compress-file-types) | Hiermee definieert u de bestands indelingen voor de bestanden die op de server zijn gecomprimeerd.
-[Standaard interne Max. leeftijd](#default-internal-max-age) | Hiermee wordt het standaard interval voor de maximum leeftijd van de POP-to-Origin-server cache hervalidatie bepaald.
-[Verwerking van verlooptde header](#expires-header-treatment) | Hiermee bepaalt u de `Expires` generatie van kopteksten door een pop wanneer de functie voor de externe Max-Age actief is.
-[Extern Max-Age](#external-max-age) | Hiermee wordt het maximale leeftijds interval voor browser naar hervalidatie van POP-caches bepaald.
-[Interne Max. duur forceren](#force-internal-max-age) | Hiermee wordt het maximale leeftijds interval voor de hervalidatie van de server cache voor POP-to-Origin bepaald.
-[H. 264-ondersteuning (HTTP progressieve down load)](#h264-support-http-progressive-download) | Bepaalt de typen H. 264-bestands indelingen die kunnen worden gebruikt om inhoud te streamen.
-[Geen cache aanvragen](#honor-no-cache-request) | Hiermee wordt bepaald of er geen aanvragen van een HTTP-client worden doorgestuurd naar de oorspronkelijke server.
-[Geen cache oorsprong negeren](#ignore-origin-no-cache) | Hiermee wordt bepaald of bepaalde instructies van een oorspronkelijke server worden genegeerd door het CDN.
-[Unsatisfiable-bereiken negeren](#ignore-unsatisfiable-ranges) | Bepaalt het antwoord dat wordt geretourneerd aan clients wanneer een aanvraag een 416-status code voor het aangevraagde bereik genereert.
-[Intern Max-verouderd](#internal-max-stale) | Hiermee bepaalt u hoe lang de normale verloop tijd van een activum in de cache kan worden uitgevoerd vanuit een POP wanneer de POP de asset in het cache geheugen niet opnieuw kan valideren met de oorspronkelijke server.
-[Delen van cache gedeeltelijk](#partial-cache-sharing) | Hiermee wordt bepaald of een aanvraag gedeeltelijk in de cache opgeslagen inhoud kan genereren.
-[Inhoud in cache voorvalideren](#prevalidate-cached-content) | Hiermee wordt bepaald of inhoud in de cache in aanmerking komt voor eerdere hervalidaties voordat de TTL verloopt.
-[Cache bestanden met nul bytes vernieuwen](#refresh-zero-byte-cache-files) | Hiermee wordt bepaald hoe de aanvraag van een HTTP-client voor een cache-Asset van 0 bytes door de Pop's wordt verwerkt.
-[Cacheable status codes instellen](#set-cacheable-status-codes) | Hiermee definieert u de set status codes die kunnen resulteren in inhoud in de cache.
-[Verouderde inhouds levering bij fout](#stale-content-delivery-on-error) | Hiermee wordt bepaald of verlopen inhoud in de cache wordt bezorgd als er een fout optreedt tijdens de hervalidatie van de cache of wanneer de aangevraagde inhoud wordt opgehaald van de bron server van de klant.
-[Verouderd tijdens opnieuw valideren](#stale-while-revalidate) | Verbetert de prestaties doordat de Pop's een verouderde client aan de aanvrager kunnen leveren terwijl er hervalidatie plaatsvindt.
-
-## <a name="comment-feature"></a>Functie voor opmerkingen
-
-Deze functie is ontworpen om in een regel aanvullende informatie te bieden.
-
-Naam | Doel
------|--------
-[Opmerking](#comment) | Hiermee kan een notitie worden toegevoegd binnen een regel.
-
-## <a name="header-features"></a>Koptekst functies
-
-Deze functies zijn ontworpen om kopteksten toe te voegen, te wijzigen of te verwijderen uit de aanvraag of het antwoord.
-
-Naam | Doel
------|--------
-[Header van ouderdoms reactie](#age-response-header) | Hiermee wordt bepaald of een ouderdoms reactie header is opgenomen in het antwoord dat naar de aanvrager wordt verzonden.
-[Debug cache-antwoord headers](#debug-cache-response-headers) | Hiermee wordt bepaald of in een antwoord de reactie header X-EC-debug wordt vermeld, die informatie bevat over het cache beleid voor de aangevraagde Asset.
-[Header van client aanvraag wijzigen](#modify-client-request-header) | Hiermee wordt een koptekst van een aanvraag overschreven, toegevoegd of verwijderd.
-[Reactie header van client wijzigen](#modify-client-response-header) | Hiermee wordt een header overschreven, toegevoegd of verwijderd uit een antwoord.
-[Aangepaste client-IP-header instellen](#set-client-ip-custom-header) | Hiermee kan het IP-adres van de aanvragende client worden toegevoegd aan de aanvraag als aangepaste aanvraag header.
-
-## <a name="logging-features"></a>Logboek registratie functies
-
-Deze functies zijn ontworpen om de gegevens die zijn opgeslagen in onbewerkte logboek bestanden aan te passen.
-
-Naam | Doel
------|--------
-[Aangepast logboek veld 1](#custom-log-field-1) | Bepaalt de indeling en de inhoud die is toegewezen aan het aangepaste logboek veld in een onbewerkte logboek bestand.
-[Query reeks voor logboek](#log-query-string) | Hiermee wordt bepaald of een query reeks wordt opgeslagen samen met de URL in de logboeken van de toegang.
-
-
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>Oorsprongs functies
-
-Deze functies zijn ontworpen om te bepalen hoe het CDN communiceert met een oorspronkelijke server.
-
-Naam | Doel
------|--------
-[Maximum aantal Keep-Alive-aanvragen](#maximum-keep-alive-requests) | Hiermee definieert u het maximum aantal aanvragen voor een keep-alive-verbinding voordat het wordt gesloten.
-[Proxy-speciale headers](#proxy-special-headers) | Hiermee wordt de set CDN-specifieke aanvraag headers gedefinieerd die vanuit een POP worden doorgestuurd naar een bron server.
-
-## <a name="specialty-features"></a>Speciale functies
-
-Deze functies bieden geavanceerde functionaliteit voor geavanceerde gebruikers.
-
-Naam | Doel
------|--------
-[Cacheable HTTP-methoden](#cacheable-http-methods) | Bepaalt de set extra HTTP-methoden die in het netwerk in de cache kunnen worden opgeslagen.
-[Grootte van cacheable aanvraag hoofdtekst](#cacheable-request-body-size) | Definieert de drempel waarde voor het bepalen of een POST-antwoord in de cache kan worden opgeslagen.
-[Gebruikers variabele](#user-variable) | Alleen voor intern gebruik.
-
-## <a name="url-features"></a>URL-functies
-
-Met deze functies kan een aanvraag worden omgeleid of herschreven naar een andere URL.
-
-Naam | Doel
------|--------
-[Omleidingen volgen](#follow-redirects) | Hiermee wordt bepaald of aanvragen kunnen worden omgeleid naar de hostnaam die is opgegeven in de locatie-header die wordt geretourneerd door een server van de klant.
-[URL-omleiding](#url-redirect) | Stuurt aanvragen via de locatie header.
-[URL opnieuw genereren](#url-rewrite)  | Hiermee herschrijft u de aanvraag-URL.
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Naslag informatie over de functies van de functie voor Azure CDN van Verizon Premium-regels
 
@@ -255,7 +114,7 @@ Uitgeschakeld|Leidt ertoe dat Pop's activa in de cache opslaan volgens het cache
 Belang rijke informatie:
 
 - Deze functie gaat ervan uit dat het ophalen van antwoorden altijd in de cache moet worden opgeslagen. Als gevolg hiervan moet de GET HTTP-methode niet worden opgenomen bij het instellen van deze functie.
-- Deze functie ondersteunt alleen de POST-HTTP-methode. POST-antwoord caching inschakelen door deze functie in `POST`te stellen op.
+- Deze functie ondersteunt alleen de POST-HTTP-methode. POST-antwoord caching inschakelen door deze functie in te stellen op `POST` .
 - Standaard worden alleen aanvragen waarvan de hoofd tekst kleiner is dan 14 KB in de cache opgeslagen. Gebruik de functie grootte van cacheable aanvraag hoofdtekst om de maximale grootte van de aanvraag tekst in te stellen.
 
 **Standaard gedrag:** Alleen antwoorden ophalen worden in de cache opgeslagen.
@@ -292,16 +151,16 @@ Belang rijke informatie:
 
 ### <a name="cache-control-header-treatment"></a>Cache-controle header verwerking
 
-**Doel:** Hiermee bepaalt u de `Cache-Control` generatie van headers door de pop wanneer de functie voor de externe Max-Age actief is.
+**Doel:** Hiermee bepaalt u de generatie van `Cache-Control` headers door de pop wanneer de functie voor de externe Max-Age actief is.
 
 De eenvoudigste manier om dit type configuratie te beheersen is het plaatsen van de verwerkings functies External Max-Age en de cache-Control header in dezelfde instructie.
 
 Waarde|Resultaat
 --|--
 Overschrijven|Zorgt ervoor dat de volgende acties worden uitgevoerd:<br/> -Overschrijft de `Cache-Control` header die is gegenereerd door de oorspronkelijke server. <br/>-Voegt de `Cache-Control` koptekst die door de externe functie Max-Age wordt gemaakt, toe aan het antwoord.
-Door geven|Zorgt ervoor dat `Cache-Control` de koptekst die wordt geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Cache-Control` koptekst produceert, wordt deze door gegeven aan de eind gebruiker. <br/> Als de bron server geen `Cache-Control` header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Cache-Control` header bevat.
-Als ontbrekend toevoegen|Als er `Cache-Control` geen koptekst van de oorspronkelijke server is ontvangen, wordt met deze optie de `Cache-Control` header toegevoegd die wordt gemaakt door de externe functie Max-Age. Deze optie is handig om ervoor te zorgen dat aan alle activa `Cache-Control` een kop wordt toegewezen.
-Verwijderen| Deze optie zorgt ervoor dat `Cache-Control` er geen koptekst wordt opgenomen in het antwoord van de header. Als er `Cache-Control` al een header is toegewezen, wordt deze verwijderd uit het antwoord van de header.
+Door geven|Zorgt ervoor dat de `Cache-Control` koptekst die wordt geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Cache-Control` koptekst produceert, wordt deze door gegeven aan de eind gebruiker. <br/> Als de bron server geen `Cache-Control` header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Cache-Control` header bevat.
+Als ontbrekend toevoegen|Als er `Cache-Control` geen koptekst van de oorspronkelijke server is ontvangen, wordt met deze optie de `Cache-Control` header toegevoegd die wordt gemaakt door de externe functie Max-Age. Deze optie is handig om ervoor te zorgen dat aan alle activa een kop wordt toegewezen `Cache-Control` .
+Verwijderen| Deze optie zorgt ervoor dat er `Cache-Control` geen koptekst wordt opgenomen in het antwoord van de header. Als er `Cache-Control` al een header is toegewezen, wordt deze verwijderd uit het antwoord van de header.
 
 **Standaard gedrag:** Schrijft.
 
@@ -338,7 +197,7 @@ Als u de cache-instelling voor de query reeks ' no-cache ' op de cache-pagina va
 
 Het volgende voor beeld van het gebruik van deze functie biedt een voorbeeld aanvraag en de standaard cache sleutel:
 
-- **Voorbeeld aanvraag:** http://wpc.0001.&lt;D omain&gt;/800001/Origin/folder/Asset.htm? SessionID = 1234&language = en&userid = 01
+- **Voorbeeld aanvraag:** http://wpc.0001.&lt ;D omain &gt; /800001/Origin/folder/Asset.htm? SessionID = 1234&language = EN&userid = 01
 - **Standaard cache-sleutel:** /800001/Origin/folder/Asset.htm
 
 ##### <a name="include"></a>Opnemen
@@ -456,7 +315,7 @@ Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan de
 - Client-IP-adres
 - Cookie parameter
 - Cookie para meter regex
-- Land
+- Land/regio
 - Apparaat
 - Micro soft Edge CNAME
 - Verwijzende domein
@@ -516,7 +375,7 @@ De notatie voor het opgeven van aanvraag-en reactie headers wordt als volgt gede
 
 Koptekst type|Indeling|Voorbeelden
 -|-|-
-Aanvraagheader|`%{[RequestHeader]()}[i]()` | % {Accept-Encoding} i <br/> {Verwijzende} i <br/> % {Authorization} i
+Aanvraagkoptekst|`%{[RequestHeader]()}[i]()` | % {Accept-Encoding} i <br/> {Verwijzende} i <br/> % {Authorization} i
 Reactieheader|`%{[ResponseHeader]()}[o]()`| % {Leeftijd} o <br/> % {Content-type} o <br/> % {Cookie} o
 
 Belang rijke informatie:
@@ -547,7 +406,7 @@ Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende 
 
 `X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
-**Hierbij**
+**Voorbeeld:**
 
 X-EC-debug: x-EU-cache, x-EC-check-cache, x-EG-cache-sleutel, x-EC-cache-status
 
@@ -569,7 +428,7 @@ Uitgeschakeld|De reactie header X-EC-debug wordt van het antwoord uitgesloten.
 
 Belang rijke informatie:
 
-- Deze actie wordt alleen uitgevoerd voor antwoorden van een originele server die geen maximale leeftijds aanduiding in de `Cache-Control` of `Expires` -header heeft toegewezen.
+- Deze actie wordt alleen uitgevoerd voor antwoorden van een originele server die geen maximale leeftijds aanduiding in de of-header heeft `Cache-Control` toegewezen `Expires` .
 - Deze actie wordt niet uitgevoerd voor activa die niet als cachebaar worden beschouwd.
 - Deze actie heeft geen invloed op de hervalidaties van POP-caches in de browser. Deze typen hervalidaties worden bepaald door de `Cache-Control` of `Expires` -headers die naar de browser worden verzonden en die kunnen worden aangepast met de externe functie voor de maximale leeftijd.
 - De resultaten van deze actie hebben geen waarneembaar effect op de antwoord headers en de inhoud die wordt geretourneerd van Pop's voor uw inhoud, maar kan ook invloed hebben op de hoeveelheid hervalidatie verkeer dat vanuit Pop's naar uw oorspronkelijke server wordt verzonden.
@@ -577,7 +436,7 @@ Belang rijke informatie:
     - De status code selecteren waarvoor een standaard interne Max-leeftijd kan worden toegepast.
     - Geef een geheel getal op en selecteer vervolgens de gewenste tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort). Met deze waarde wordt het standaard interval voor een intern maximum leeftijd gedefinieerd.
 
-- Als u de tijds eenheid instelt op ' uit ', wordt een standaard interne interval van 7 dagen toegewezen voor aanvragen waaraan geen maximale leeftijds aanduiding in hun `Cache-Control` of `Expires` koptekst is toegewezen.
+- Als u de tijds eenheid instelt op ' uit ', wordt een standaard interne interval van 7 dagen toegewezen voor aanvragen waaraan geen maximale leeftijds aanduiding in hun of koptekst is toegewezen `Cache-Control` `Expires` .
 
 **Standaard waarde:** 7 dagen
 
@@ -588,7 +447,7 @@ Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan de
 - Client-IP-adres
 - Cookie parameter
 - Cookie para meter regex
-- Land
+- Land/regio
 - Apparaat
 - Edge CNAME
 - Verwijzende domein
@@ -630,16 +489,16 @@ Uitgeschakeld| Hiermee herstelt u het standaard gedrag. Het standaard gedrag is 
 
 ### <a name="expires-header-treatment"></a>Verwerking van verlooptde header
 
-**Doel:** Hiermee bepaalt u de `Expires` generatie van kopteksten door een pop wanneer de functie voor de externe Max-Age actief is.
+**Doel:** Hiermee bepaalt u de generatie van `Expires` kopteksten door een pop wanneer de functie voor de externe Max-Age actief is.
 
 De eenvoudigste manier om dit type configuratie te behaalt, is door de verwerkings functies voor de externe en verlopende header in dezelfde instructie te plaatsen.
 
 Waarde|Resultaat
 --|--
 Overschrijven|Zorgt ervoor dat de volgende acties worden uitgevoerd:<br/>-Overschrijft de `Expires` header die is gegenereerd door de oorspronkelijke server.<br/>-Voegt de `Expires` koptekst die door de externe functie Max-Age wordt gemaakt, toe aan het antwoord.
-Door geven|Zorgt ervoor dat `Expires` de koptekst die wordt geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Expires` koptekst produceert, wordt deze door gegeven aan de eind gebruiker. <br/>Als de oorspronkelijke server geen `Expires` header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Expires` header bevat.
+Door geven|Zorgt ervoor dat de `Expires` koptekst die wordt geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Expires` koptekst produceert, wordt deze door gegeven aan de eind gebruiker. <br/>Als de oorspronkelijke server geen `Expires` header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Expires` header bevat.
 Als ontbrekend toevoegen| Als er `Expires` geen koptekst van de oorspronkelijke server is ontvangen, wordt met deze optie de `Expires` header toegevoegd die wordt gegenereerd door de externe functie Max-Age. Deze optie is handig om ervoor te zorgen dat aan alle activa een `Expires` kop wordt toegewezen.
-Verwijderen| Zorgt ervoor dat `Expires` er geen koptekst is opgenomen in het antwoord van de header. Als er `Expires` al een header is toegewezen, wordt deze verwijderd uit het antwoord van de header.
+Verwijderen| Zorgt ervoor dat er `Expires` geen koptekst is opgenomen in het antwoord van de header. Als er `Expires` al een header is toegewezen, wordt deze verwijderd uit het antwoord van de header.
 
 **Standaard gedrag:** Schrijft
 
@@ -653,14 +512,14 @@ Verwijderen| Zorgt ervoor dat `Expires` er geen koptekst is opgenomen in het ant
 
 **Doel:** Hiermee wordt het maximale leeftijds interval voor browser naar hervalidatie van POP-caches bepaald. Met andere woorden, de hoeveelheid tijd die wordt door gegeven voordat een browser een nieuwe versie van een Asset van een POP kan controleren.
 
-Als u deze functie inschakelt, worden de Pop's gegenereerd `Cache-Control: max-age` en `Expires` worden er KOPTEKSTEN naar de HTTP-client verzonden. Standaard worden deze headers die zijn gemaakt door de oorspronkelijke server overschreven. De header verwerking van de cache en de verlopende header verwerking kan echter worden gebruikt om dit gedrag te wijzigen.
+Als u deze functie inschakelt, worden `Cache-Control: max-age` de pop's gegenereerd en worden er `Expires` kopteksten naar de HTTP-client verzonden. Standaard worden deze headers die zijn gemaakt door de oorspronkelijke server overschreven. De header verwerking van de cache en de verlopende header verwerking kan echter worden gebruikt om dit gedrag te wijzigen.
 
 Belang rijke informatie:
 
-- Deze actie heeft geen invloed op de hervalidaties van de server cache met de oorspronkelijke POP. Deze typen hervalidaties worden bepaald door de `Cache-Control` en `Expires` de headers die zijn ontvangen van de oorspronkelijke server en kunnen worden aangepast met de standaard interne Max-leeftijd en de functies voor het afdwingen van interne Max.
+- Deze actie heeft geen invloed op de hervalidaties van de server cache met de oorspronkelijke POP. Deze typen hervalidaties worden bepaald door de en de headers die zijn `Cache-Control` `Expires` Ontvangen van de oorspronkelijke server en kunnen worden aangepast met de standaard interne Max-leeftijd en de functies voor het afdwingen van interne Max.
 - U kunt deze functie configureren door een geheel getal op te geven en de gewenste tijds eenheid te selecteren (bijvoorbeeld seconden, minuten, uren, enzovoort).
-- Als u deze functie instelt op een negatieve waarde, verzendt de Pop's `Cache-Control: no-cache` een en `Expires` een tijd die in het verleden is ingesteld met elke reactie op de browser. Hoewel een HTTP-client het antwoord niet in de cache opslaat, heeft deze instelling geen invloed op de mogelijkheid van de Pop's om de reactie van de oorspronkelijke server op te slaan in de cache.
-- Als u de tijds eenheid instelt op uit, wordt deze functie uitgeschakeld. De `Cache-Control` - `Expires` en-headers in de cache met het antwoord van de oorspronkelijke server worden door gegeven aan de browser.
+- Als u deze functie instelt op een negatieve waarde, verzendt de Pop's een `Cache-Control: no-cache` en een `Expires` tijd die in het verleden is ingesteld met elke reactie op de browser. Hoewel een HTTP-client het antwoord niet in de cache opslaat, heeft deze instelling geen invloed op de mogelijkheid van de Pop's om de reactie van de oorspronkelijke server op te slaan in de cache.
+- Als u de tijds eenheid instelt op uit, wordt deze functie uitgeschakeld. De-en-headers in de `Cache-Control` `Expires` cache met het antwoord van de oorspronkelijke server worden door gegeven aan de browser.
 
 **Standaard gedrag:** Office
 
@@ -697,7 +556,7 @@ Uitgeschakeld|Aanvragen worden niet omgeleid.
 
 Belang rijke informatie:
 
-- Deze functie overschrijft het maximale leeftijds interval dat is `Cache-Control` gedefinieerd `Expires` in of kopteksten die zijn gegenereerd op basis van een oorspronkelijke server.
+- Deze functie overschrijft het maximale leeftijds interval dat is gedefinieerd in `Cache-Control` of `Expires` kopteksten die zijn gegenereerd op basis van een oorspronkelijke server.
 - Deze functie heeft geen invloed op de hervalidaties van POP-caches in de browser. Deze typen hervalidaties worden bepaald door de `Cache-Control` of `Expires` kopteksten die naar de browser worden verzonden.
 - Deze functie heeft geen waarneembaar effect op het antwoord dat door een POP aan de aanvrager wordt geleverd. Het kan echter ook invloed hebben op de hoeveelheid hervalidatie van verkeer dat van de Pop's naar de oorspronkelijke server wordt verzonden.
 - Deze functie configureren door:
@@ -715,7 +574,7 @@ Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan de
 - Client-IP-adres
 - Cookie parameter
 - Cookie para meter regex
-- Land
+- Land/regio
 - Apparaat
 - Edge CNAME
 - Verwijzende domein
@@ -756,7 +615,7 @@ Belang rijke informatie:
 
 **Doel:** Hiermee wordt bepaald of er geen aanvragen van een HTTP-client worden doorgestuurd naar de oorspronkelijke server.
 
-Er treedt een no-cache-aanvraag op wanneer de HTTP `Cache-Control: no-cache` -client een `Pragma: no-cache` -en/of-header in de HTTP-aanvraag verzendt.
+Er treedt een no-cache-aanvraag op wanneer de HTTP-client een- `Cache-Control: no-cache` en/of- `Pragma: no-cache` header in de HTTP-aanvraag verzendt.
 
 Waarde|Resultaat
 --|--
@@ -765,7 +624,7 @@ Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is o
 
 Voor alle productie verkeer wordt het nadrukkelijk aanbevolen om deze functie in te scha kelen met de standaard uitgeschakelde status. Als dat niet het geval is, worden de oorspronkelijke servers niet afgeschermd van eind gebruikers die per ongeluk veel no-cache aanvragen kunnen activeren bij het vernieuwen van webpagina's, of van de vele populaire media spelers die zijn gecodeerd om een no-cache-header met elke video aanvraag te verzenden. Deze functie kan echter nuttig zijn om te worden toegepast op bepaalde niet-productie staging of test directory's, zodat nieuwe inhoud op aanvraag kan worden opgehaald van de oorspronkelijke server.
 
-De cache status die wordt gerapporteerd voor een aanvraag die kan worden doorgestuurd naar een originele server als gevolg van deze functie `TCP_Client_Refresh_Miss`is. Het rapport cache statussen, dat beschikbaar is in de module kern rapportage, biedt statistische informatie over de cache status. Met dit rapport kunt u het aantal en het percentage bijhouden van aanvragen die worden doorgestuurd naar een originele server als gevolg van deze functie.
+De cache status die wordt gerapporteerd voor een aanvraag die kan worden doorgestuurd naar een originele server als gevolg van deze functie is `TCP_Client_Refresh_Miss` . Het rapport cache statussen, dat beschikbaar is in de module kern rapportage, biedt statistische informatie over de cache status. Met dit rapport kunt u het aantal en het percentage bijhouden van aanvragen die worden doorgestuurd naar een originele server als gevolg van deze functie.
 
 **Standaard gedrag:** Geblokkeerd.
 
@@ -799,7 +658,7 @@ Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan de
 - Client-IP-adres
 - Cookie parameter
 - Cookie para meter regex
-- Land
+- Land/regio
 - Apparaat
 - Edge CNAME
 - Verwijzende domein
@@ -848,7 +707,7 @@ Als met de POP geen verbinding kan worden gemaakt met de bron server tijdens een
 
 Houd er rekening mee dat dit tijds interval begint wanneer de duur van het activum verloopt, niet wanneer de hervalidatie is mislukt. Daarom is de maximale periode gedurende welke een activum kan worden geleverd zonder geslaagde hervalidatie, de hoeveelheid tijd die is opgegeven door de combi natie van Max-Age plus Max-verouderd. Als een Asset bijvoorbeeld is opgeslagen in de cache bij 9:00 met een maximum leeftijd van 30 minuten en een maximum verouderd van 15 minuten, zou een mislukte hervalidatie poging op 9:44 resulteren in een eind gebruiker die de verouderde in de cache geplaatste Asset ontvangt, terwijl een mislukte hervalidatie poging om 9:46 zou resulteren in een time-out van een 504-Gateway.
 
-Elke waarde die voor deze functie is geconfigureerd, is `Cache-Control: must-revalidate` vervangen `Cache-Control: proxy-revalidate` door of headers die zijn ontvangen van de oorspronkelijke server. Als een van deze headers wordt ontvangen van de oorspronkelijke server wanneer een asset in eerste instantie in de cache wordt geplaatst, zal de POP geen verouderde asset in de cache hebben. Als in dat geval de POP niet opnieuw kan worden gevalideerd met de oorsprong wanneer het maximale leeftijds interval van het activum is verlopen, retourneert de POP een time-outfout van 504-Gateway.
+Elke waarde die voor deze functie is geconfigureerd, is vervangen door `Cache-Control: must-revalidate` of headers die zijn `Cache-Control: proxy-revalidate` Ontvangen van de oorspronkelijke server. Als een van deze headers wordt ontvangen van de oorspronkelijke server wanneer een asset in eerste instantie in de cache wordt geplaatst, zal de POP geen verouderde asset in de cache hebben. Als in dat geval de POP niet opnieuw kan worden gevalideerd met de oorsprong wanneer het maximale leeftijds interval van het activum is verlopen, retourneert de POP een time-outfout van 504-Gateway.
 
 Belang rijke informatie:
 
@@ -867,7 +726,7 @@ Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan de
 - Client-IP-adres
 - Cookie parameter
 - Cookie para meter regex
-- Land
+- Land/regio
 - Apparaat
 - Edge CNAME
 - Verwijzende domein
@@ -1168,7 +1027,7 @@ Uitgeschakeld|De fout van de bron server wordt doorgestuurd naar de aanvrager.
 Belang rijke informatie:
 
 - Het gedrag van deze functie is afhankelijk van de geselecteerde tijds eenheid.
-    - **Tijds eenheid:** Geef een tijds duur op en selecteer een tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort) om verouderde levering van inhoud toe te staan. Met dit type installatie kan de CDN de tijds duur verlengen die inhoud kan leveren voordat de validatie volgens de volgende formule wordt vereist: **TTL** + **verouderd tijdens opnieuw valideren**
+    - **Tijds eenheid:** Geef een tijds duur op en selecteer een tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort) om verouderde levering van inhoud toe te staan. Met dit type installatie kan de CDN de tijds duur verlengen die inhoud kan leveren voordat de validatie volgens de volgende formule wordt vereist: **TTL**  +  **verouderd tijdens opnieuw valideren**
     - **Uit:** Selecteer uit om hervalidatie te vereisen voordat een aanvraag voor verouderde inhoud kan worden geleverd.
         - Geef geen tijds duur op omdat deze niet van toepassing is en wordt genegeerd.
 
@@ -1322,25 +1181,25 @@ Het is raadzaam om een absolute URL te gebruiken. Het gebruik van een relatieve 
 
 **Voorbeeld scenario**
 
-In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-CDN\/-URL: http:/marketing.azureedge.net/brochures
+In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-CDN-URL: http: \/ /marketing.azureedge.net/brochures
 
-Kwalificerende aanvragen worden omgeleid naar deze URL van de basis Edge CNAME: http:\//CDN.mydomain.com/resources
+Kwalificerende aanvragen worden omgeleid naar deze URL van de basis Edge CNAME: http: \/ /CDN.mydomain.com/resources
 
-Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![ URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Belangrijke punten:**
 
 - De URL-omleidings functie definieert de Url's van de aanvraag die worden omgeleid. Als gevolg hiervan zijn er geen aanvullende match-voor waarden vereist. Hoewel de match-voor waarde is gedefinieerd als ' Always ', worden alleen aanvragen die verwijzen naar de map ' brochures ' op de oorsprong van de klant, omgeleid.
 - Alle overeenkomende aanvragen worden omgeleid naar de URL van de Edge CNAME die is gedefinieerd in de doel optie.
     - Voorbeeld scenario #1:
-        - Voorbeeld aanvraag (CDN-URL): http\/:/marketing.azureedge.net/brochures/widgets.PDF
-        - Aanvraag-URL (na omleiding):\/http:/CDN.mydomain.com/resources/widgets.PDF  
+        - Voorbeeld aanvraag (CDN-URL): http: \/ /marketing.azureedge.net/brochures/widgets.PDF
+        - Aanvraag-URL (na omleiding): http: \/ /CDN.mydomain.com/resources/widgets.PDF  
     - Voorbeeld scenario #2:
-        - Voorbeeld aanvraag (Edge CNAME URL): http:\//marketing.mydomain.com/brochures/widgets.PDF
-        - Aanvraag-URL (na omleiding):\/http:/CDN.mydomain.com/resources/widgets.PDF-voorbeeld scenario
+        - Voorbeeld aanvraag (Edge CNAME URL): http: \/ /marketing.mydomain.com/brochures/widgets.PDF
+        - Aanvraag-URL (na omleiding): http: \/ /CDN.mydomain.com/resources/widgets.PDF-voorbeeld scenario
     - Voorbeeld scenario #3:
-        - Voorbeeld aanvraag (Edge CNAME URL): http:\//brochures.mydomain.com/campaignA/Final/productC.ppt
-        - Aanvraag-URL (na omleiding):\/http:/CDN.mydomain.com/resources/campaignA/Final/productC.ppt 
+        - Voorbeeld aanvraag (Edge CNAME URL): http: \/ /brochures.mydomain.com/campaignA/Final/productC.ppt
+        - Aanvraag-URL (na omleiding): http: \/ /CDN.mydomain.com/resources/campaignA/Final/productC.ppt 
 - De variabele voor het aanvraag schema (% {Scheme}) wordt gebruikt in de doel optie, wat ervoor zorgt dat het schema van de aanvraag ongewijzigd blijft na omleiding.
 - De URL-segmenten die van de aanvraag zijn vastgelegd, worden toegevoegd aan de nieuwe URL via ' $1 '.
 
@@ -1367,17 +1226,17 @@ Optie|Beschrijving
 
 **Voorbeeld scenario 1**
 
-In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-\/CDN-URL: http:/marketing.azureedge.net/brochures/
+In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-CDN-URL: http: \/ /marketing.azureedge.net/brochures/
 
-Kwalificerende aanvragen worden omgeleid naar deze URL van de basis Edge CNAME: http:\//MyOrigin.azureedge.net/Resources/
+Kwalificerende aanvragen worden omgeleid naar deze URL van de basis Edge CNAME: http: \/ /MyOrigin.azureedge.net/Resources/
 
-Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![ URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Voorbeeld scenario 2**
 
 In dit voor beeld ziet u hoe u een Edge CNAME-URL kunt omleiden van hoofd letters naar kleine letters met reguliere expressies.
 
-Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![ URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 **Belangrijke punten:**
 
@@ -1416,13 +1275,10 @@ Deze functie bevat overeenkomende criteria waaraan moet worden voldaan voordat d
 **Doel:** Alleen voor intern gebruik.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Referentie voor regels-engine](cdn-verizon-premium-rules-engine-reference.md)
-- [Voorwaardelijke expressies van regel engine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Overeenkomende voor waarden voor regel engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Voorwaardelijke expressies in de regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Criteria voor overeenkomst in de regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)
 - [Overzicht van Azure CDN](cdn-overview.md)

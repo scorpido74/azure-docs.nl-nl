@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 6d8e87dd52871b82109ccc794af04244efe95b06
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854599"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873307"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
 
@@ -45,7 +45,7 @@ Specifieke integratie-en gebruiks voorbeelden kunnen per geval worden geëvaluee
 
 **Kan ik vSphere-Vm's migreren uit on-premises omgevingen om persoonlijke Clouds te AVS?**
 
-Ja. VM-migratie en vMotion kunnen worden gebruikt om virtuele machines naar een privécloud te verplaatsen als aan de standaard-cross vCenterhttps://kb.vmware.com/s/article/210695[vMotion-vereisten] [] wordt voldaan.
+Ja. VM-migratie en vMotion kunnen worden gebruikt om virtuele machines naar een privécloud te verplaatsen als aan de standaard-cross vCenter [vMotion-vereisten] [ https://kb.vmware.com/s/article/210695 ] wordt voldaan.
 
 **Is een specifieke versie van vSphere vereist in on-premises omgevingen?**
 
@@ -66,6 +66,35 @@ Er is geen wijziging in de bestaande Azure VMware-oplossing door CloudSimple. We
 **Kan ik migreren van een Azure VMware-oplossing door CloudSimple naar deze nieuwe oplossing?**
 
 Ja, de Azure VMware-oplossing ondersteunt migratie met behulp van vertrouwde VMware-hulpprogram ma's, zoals HCX. Voor klanten die willen migreren naar de nieuwe oplossing, kunt u het beste contact met uw Microsoft-account team vinden om opties en beschik bare ondersteuning te verkennen.
+
+<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Hoe kan ik een toename van een host-quotum voor een bestaande Azure VMware-oplossing aanvragen?**
+
+U kunt een quotum verhoging aanvragen door [een ondersteunings aanvraag](..\azure-portal\supportability\how-to-create-azure-support-request.md)in te dienen. Het quotum beheer team evalueert de aanvraag en keurt deze binnen drie werk dagen goed.  
+
+> [!IMPORTANT]
+> Voordat u een quotum verhoging kunt aanvragen, moet u ervoor zorgen dat u [de resource provider **micro soft. AVS** registreert](tutorial-create-private-cloud.md) in de Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Zie [Azure-resource providers en-typen](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)voor meer manieren om de resource provider te registreren.
+
+1. Maak in uw Azure Portal onder **Help en ondersteuning**een **nieuwe ondersteunings aanvraag** en geef de volgende informatie op voor het ticket:
+   - **Type probleem:** Documentatie
+   - **Abonnement:** Uw abonnements-ID
+   - **Service:**  Azure VMware-oplossing 
+   - **Samen vatting:** Quotum verhoging
+   - **Probleem type:** Problemen met capaciteits beheer
+   - **Subtype van probleem:** Klant aanvraag voor extra quotum/capaciteit van host
+
+1. Geef op het tabblad Details van het ondersteunings ticket de volgende informatie op:
+   - Aantal extra knoop punten   
+   - Node-SKU
+   - Regio
+
+   > [!NOTE] 
+   > Standaard worden er mini maal vier knoop punten verleend.
+
+1. Klik op **beoordeling + maken** om de aanvraag in te dienen.
 
 ## <a name="compute-network-and-storage"></a>Compute, netwerk en opslag
 

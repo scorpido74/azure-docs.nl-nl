@@ -3,12 +3,12 @@ title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682896"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873093"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
 
@@ -193,7 +193,7 @@ Als u wilt implementeren in verschillende omgevingen, moet u meer dan één para
 
 U kunt inline-para meters en een lokaal parameter bestand gebruiken in dezelfde implementatie bewerking. U kunt bijvoorbeeld een aantal waarden opgeven in het lokale parameter bestand en andere waarden inline toevoegen tijdens de implementatie. Als u waarden opgeeft voor een para meter in zowel het lokale parameter bestand als inline, heeft de inline-waarde prioriteit.
 
-Wanneer u echter een extern parameter bestand gebruikt, kunt u geen andere waarden door geven in line of vanuit een lokaal bestand. Alle inline-para meters worden genegeerd. Geef alle parameter waarden op in het externe bestand.
+Het is mogelijk om een extern parameter bestand te gebruiken door de URI naar het bestand op te geven. Wanneer u dit doet, kunt u geen andere waarden door geven in line of vanuit een lokaal bestand. Alle inline-para meters worden genegeerd. Geef alle parameter waarden op in het externe bestand.
 
 ## <a name="parameter-name-conflicts"></a>Conflicten met parameter namen
 

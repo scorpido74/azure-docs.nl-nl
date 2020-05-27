@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 7c9f713d50e31557999c9127cd219bfe9b3a8c82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199863"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873247"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met Java
 
@@ -63,8 +63,8 @@ Gebruik deze Quick Start om te leren hoe u zoek resultaten kunt aanvragen van uw
 
 3. Maak nog een klasse met de naam `SearchResults` voor het antwoord van het Bing Aangepaste zoekopdrachten-exemplaar.
 
-    ```csharp
-    class SearchResults{
+    ```java
+    class SearchResults {
         HashMap<String, String> relevantHeaders;
         String jsonResponse;
         SearchResults(HashMap<String, String> headers, String json) {

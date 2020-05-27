@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553ecc971235b5ba7d55a2dcb6963200919a3480
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853457"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870936"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
@@ -60,18 +60,13 @@ Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/
         | **8080** (optioneel) | Agents rapporteren hun status elke 10 minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. |
      
    - Als uw firewall regels afdwingt op basis van de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als een netwerk service worden uitgevoerd.
-   - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen \*toe aan. \*msappproxy.net en. servicebus.Windows.net. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
+   - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen toe aan \* . msappproxy.net en \* . servicebus.Windows.net. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
    - Uw agenten hebben toegang tot login.windows.net en login.microsoftonline.com nodig voor de eerste registratie. Open ook uw firewall voor deze Url's.
-   - Voor validatie van het certificaat kunt u de volgende Url's blok keren: mscrl.microsoft.com:80, crl.microsoft.com:80,\.OCSP.msocsp.com:80 en www Microsoft.com:80. Deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, zodat u deze Url's mogelijk al hebt gedeblokkeerd.
+   - Voor validatie van het certificaat kunt u de volgende Url's blok keren: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 en www \. Microsoft.com:80. Deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, zodat u deze Url's mogelijk al hebt gedeblokkeerd.
 
-### <a name="verify-the-port"></a>De poort controleren
-Als u wilt controleren of Azure luistert op poort 443 en dat uw agent ermee kan communiceren, gebruikt u de volgende URL:
+>[!NOTE]
+> Het is niet mogelijk om de inrichtings agent voor Clouds te installeren op Windows Server Core.
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
-
-![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify2.png)
 
 ### <a name="additional-requirements"></a>Aanvullende vereisten
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 

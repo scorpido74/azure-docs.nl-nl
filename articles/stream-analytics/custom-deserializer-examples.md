@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612058"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873039"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -20,9 +20,9 @@ Aangepaste deserializers van .NET bieden uw Azure Stream Analytics-taak de mogel
 
 ## <a name="net-custom-deserializer"></a>Aangepaste .NET-deserialisatie
 
-De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer definiëren en `StreamDeserializer<T>`implementeren.
+De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer definiëren en implementeren `StreamDeserializer<T>` .
 
-`UserDefinedOperator`is de basis klasse voor alle aangepaste streaming-Opera tors. Het wordt geïnitialiseerd `StreamingContext`, wat een context biedt met het mechanisme voor het publiceren van diagnostische gegevens waarvoor u fouten wilt opsporen in problemen met uw deserializer.
+`UserDefinedOperator`is de basis klasse voor alle aangepaste streaming-Opera tors. Het wordt geïnitialiseerd `StreamingContext` , wat een context biedt met het mechanisme voor het publiceren van diagnostische gegevens waarvoor u fouten wilt opsporen in problemen met uw deserializer.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -33,19 +33,19 @@ De volgende code voorbeelden zijn de interfaces die de aangepaste deserializer d
 
 Het volgende code fragment is de deserialisatie voor het streamen van gegevens. 
 
-Skippable-fouten moeten worden verzonden met `IStreamingDiagnostics` door gegeven `UserDefinedOperator`via de initialisatie methode. Alle uitzonde ringen worden beschouwd als fouten en de deserializer wordt opnieuw gemaakt. Na een bepaald aantal fouten wordt de taak naar de status mislukt.
+Skippable-fouten moeten worden verzonden met `IStreamingDiagnostics` door gegeven via `UserDefinedOperator` de initialisatie methode. Alle uitzonde ringen worden beschouwd als fouten en de deserializer wordt opnieuw gemaakt. Na een bepaald aantal fouten wordt de taak naar de status mislukt.
 
-`StreamDeserializer<T>`deserialeert een stroom naar een object van `T`het type. Aan de volgende voor waarden moet worden voldaan:
+`StreamDeserializer<T>`deserialeert een stroom naar een object van het type `T` . Aan de volgende voor waarden moet worden voldaan:
 
 1. T is een klasse of een struct.
 1. Alle open bare velden in T zijn
     1. Een van [sbyte, byte, short, USHORT, int, uint, Long, DateTime, String, float, Double] of hun null-equivalenten.
     1. Een andere struct of klasse volgens dezelfde regels.
-    1. Matrix van het `T2` type dat dezelfde regels volgt.
-    1. IList`T2` waarbij T2 dezelfde regels volgt.
+    1. Matrix van `T2` het type dat dezelfde regels volgt.
+    1. IList `T2` waarbij T2 dezelfde regels volgt.
     1. Heeft geen recursieve typen.
 
-De para `stream` meter is de stroom die het geserialiseerde object bevat. `Deserialize`retourneert een verzameling `T` exemplaren.
+De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deserialize`retourneert een verzameling `T` exemplaren.
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-Vanuit `protoc.exe` de **Google. protobuf. tools** NuGet wordt een. CS-bestand met de definitie gegenereerd. Het gegenereerde bestand wordt hier niet weer gegeven.
+`protoc.exe`Vanuit de **Google. protobuf. tools** NuGet wordt een. CS-bestand met de definitie gegenereerd. Het gegenereerde bestand wordt hier niet weer gegeven. U moet ervoor zorgen dat de versie van protobuf Nuget die u in uw Stream Analytics-project gebruikt, overeenkomt met de protobuf-versie die is gebruikt voor het genereren van de invoer. 
 
 Het volgende code fragment is de implementatie van de deserializer, ervan uitgaande dat het gegenereerde bestand is opgenomen in het project. Deze implementatie is een smalle wrapper op het gegenereerde bestand.
 
@@ -219,7 +219,7 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 }  
 ```
 
-`serializationClassName`moet een klasse zijn die wordt geïmplementeerd `StreamDeserializer<T>`. Dit wordt beschreven in de volgende sectie.
+`serializationClassName`moet een klasse zijn die wordt geïmplementeerd `StreamDeserializer<T>` . Dit wordt beschreven in de volgende sectie.
 
 ## <a name="region-support"></a>Ondersteuning voor regio
 

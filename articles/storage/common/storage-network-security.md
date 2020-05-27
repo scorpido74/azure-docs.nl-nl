@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 911172bd6ef9c08419e74828657c8bdb2f8d1b30
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4b72f94548a5222fcb950141e983007efde7fe4e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930638"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871185"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage firewalls en virtuele netwerken configureren
 
@@ -223,7 +223,7 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
     ```
 
     > [!TIP]
-    > Als u een regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde subnet\<-id in\>de\<notatie '/Subscriptions/\>Subscription\<-id/resourceGroups/\>resourceGroup\<-name/providers/Microsoft.Network/virtualNetworks/\>VNet-name/subnets/subnet-name '.
+    > Als u een regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde subnet-ID in de notatie '/Subscriptions/ \< Subscription-id \> /resourceGroups/ \< resourceGroup-name \> /providers/Microsoft.Network/virtualNetworks/ \< VNet-name \> /subnets/ \< subnet-name \> '.
     >
     > U kunt de para meter **abonnement** gebruiken om de subnet-id op te halen voor een VNet dat deel uitmaakt van een andere Azure AD-Tenant.
 
@@ -237,7 +237,7 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
 > [!IMPORTANT]
 > Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen via een IP-adres bereik van Internet
+## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-bereik
 
 U kunt opslag accounts configureren om toegang toe te staan vanaf specifieke IP-adresbereiken voor het open bare Internet. Deze configuratie verleent toegang tot specifieke op internet gebaseerde services en on-premises netwerken en blokkeert algemeen Internet verkeer.
 
@@ -246,7 +246,7 @@ Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://
    > [!NOTE]
    > Kleine adresbereiken die gebruikmaken van de grootte van het voor voegsel/31 of/32, worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke IP-adres regels.
 
-IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met _10. *_, _172,16. *_ - _172,31. *_ en _192,168. *_.
+IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met _10. *_, _172,16. *_  -  _172,31. *_ en _192,168. *_.
 
    > [!NOTE]
    > IP-netwerk regels hebben geen invloed op aanvragen die afkomstig zijn uit dezelfde Azure-regio als het opslag account. Gebruik [regels voor virtuele netwerken](#grant-access-from-a-virtual-network) om aanvragen van dezelfde regio toe te staan.
@@ -276,7 +276,7 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
 
 1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in CIDR-indeling) in onder **firewall** > **adressen**.
+1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in CIDR-indeling) in onder **firewall**  >  **adressen**.
 
 1. Als u een IP-netwerk regel wilt verwijderen, klikt u op het prullenbak pictogram naast het adres bereik.
 
@@ -392,6 +392,7 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bep
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |
 | Azure Data Factory             | Micro soft. DataFactory/fabrieken        | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
 | Azure Data Share               | Micro soft. DataShare/accounts           | Hiermee wordt toegang tot opslag accounts via een gegevens share toegestaan. |
+| Azure IoT Hub                  | Micro soft. devices/IotHubs              | Hiermee kunnen gegevens van een IoT-hub worden geschreven naar de Blob-opslag. [Meer informatie](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Micro soft. Logic/werk stromen              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 870d4f053b85c70e800c352aaf908899b7863082
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7a8c9083ecbadbf63cf0ac65dc1803b478e939fe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828369"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873390"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -70,7 +70,7 @@ FROM
 
 ## <a name="query-json-files-using-json_value"></a>Een query uitvoeren op JSON-bestanden met JSON_VALUE
 
-De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de getiteld *Probabilistic-en statistische methoden in Cryptology, een inleiding op geselecteerde artikelen*:
+De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
 
 ```sql
 SELECT
@@ -119,7 +119,7 @@ WHERE
 
 ## <a name="query-json-files-using-openjson"></a>Een query uitvoeren op JSON-bestanden met openjson
 
-De volgende query maakt gebruik van [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Er worden objecten en eigenschappen opgehaald binnen een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op geselecteerde artikelen*:
+De volgende query maakt gebruik van [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Er worden objecten en eigenschappen opgehaald binnen een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
 
 ```sql
 SELECT

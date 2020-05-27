@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dcb9f554b214813439ab8753cf21e7d11a0fba56
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744593"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872570"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Klant in Commerciële marketplace-analyses
 
@@ -99,6 +99,7 @@ In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klante
 - Als het record nummer groter is dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
 - Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren gegane datum, klant-e-mail, land/regio/staat/plaats/post code, klant taal, enzovoort.
 - Wanneer een aanbieding wordt gekocht door een beveiligde klant, worden de gegevens van de **gedetailleerde gegevens** van de klant gemaskeerd (* * * * * * * * * * * *).
+- Details van klant dimensies, zoals de bedrijfs naam, de klant naam en het e-mail adres van de klant, bevinden zich op het niveau van de organisatie-ID en niet op Azure Marketplace of AppSource-transactie niveau.
 
 ### <a name="customer-page-filters"></a>Pagina filters van klant
 

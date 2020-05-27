@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28b768e421ac72be363ab187312e52ba15d34970
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81616486"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872991"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Beveiligingsaanbevelingen voor Azure Key Vault
 
@@ -28,27 +28,27 @@ Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt doo
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
-|Voorlopig verwijderen inschakelen | [Voorlopig verwijderen](overview-soft-delete.md)) Hiermee kunt u verwijderde kluizen en kluis objecten herstellen |  - |
+|Voorlopig verwijderen inschakelen | Met [zacht verwijderen](overview-soft-delete.md) kunt u verwijderde kluizen en kluis objecten herstellen |  - |
 | Toegang tot kluis gegevens beperken  | Het principe van minimale bevoegdheid volgen en beperken welke leden van uw organisatie toegang hebben tot de kluis gegevens |  - |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Het aantal gebruikers met toegang tot Inzender beperken | Als een gebruiker Inzender machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie de rol Inzender heeft toegang tot uw sleutel kluizen. Zorg ervoor dat alleen degenen met een nood zaak van toegang die bevoegd is toegang hebben tot uw kluizen en deze kunnen beheren. U kunt [beveiligde toegang tot een sleutel kluis](secure-your-key-vault.md)lezen.) | - |
 
 ## <a name="monitoring"></a>Bewaking
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
  Diagnostische logboeken in Key Vault moeten zijn ingeschakeld | Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. | [Ja](../../security-center/security-center-identity-access.md) |
 | Beperk wie toegang heeft tot uw Azure Key kluis-logboeken | [Key Vault logboeken](logging.md)) Sla informatie op over de activiteiten die zijn uitgevoerd op uw kluis, zoals het maken of verwijderen van kluizen, sleutels, geheimen en kunnen worden gebruikt tijdens een onderzoek |  - |
 
 ## <a name="networking"></a>Netwerken
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 |Netwerk risico beperken | Netwerk toegang moet worden beperkt tot de virtuele netwerken die worden gebruikt door oplossingen waarvoor kluis toegang is vereist. Bekijk de informatie over de [service-eind punten van het virtuele netwerk voor Azure Key Vault](overview-vnet-service-endpoints.md)) | - |
 

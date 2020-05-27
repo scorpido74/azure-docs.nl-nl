@@ -5,34 +5,26 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: jlian
-ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652358"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871238"
 ---
-# <a name="iot-hub-support-for-virtual-networks"></a>Ondersteuning voor virtuele netwerken IoT Hub
+# <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
-In dit artikel wordt het VNET-verbindings patroon geïntroduceerd en wordt uitgelegd hoe u een persoonlijke connectiviteits ervaring kunt instellen voor een IoT-hub via een Azure-VNET dat eigendom is van de klant.
+Standaard worden de hostnamen van IoT Hub toegewezen aan een openbaar eind punt met een openbaar routeerbaar IP-adres via internet. Verschillende klanten delen dit IoT Hub open bare eind punt en IoT-apparaten in meer dan Wide Area Networks en on-premises netwerken hebben toegang tot het netwerk.
 
-> [!NOTE]
-> De IoT Hub functies die in dit artikel worden beschreven, zijn momenteel beschikbaar voor IoT-hubs die zijn [gemaakt met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity) in de volgende REGIO'S: VS-Oost, Zuid-Centraal VS en VS-West 2.
-
-
-## <a name="introduction"></a>Inleiding
-
-IoT Hub hostnamen worden standaard toegewezen aan een openbaar eind punt met een openbaar routeerbaar IP-adres via internet. Zoals in de onderstaande afbeelding wordt weer gegeven, wordt dit IoT Hub open bare eind punt gedeeld tussen hubs die eigendom zijn van verschillende klanten en kunnen ze toegankelijk zijn voor IoT-apparaten via Wide Area-netwerken, evenals on-premises netwerken.
-
-Verschillende IoT Hub functies, waaronder [bericht routering](./iot-hub-devguide-messages-d2c.md), het [uploaden van bestanden](./iot-hub-devguide-file-upload.md)en het [importeren/exporteren van bulk apparaten](./iot-hub-bulk-identity-mgmt.md) , vereisen een verbinding van IOT hub naar een Azure-resource van een klant in het open bare eind punt. Zoals hieronder wordt beschreven, vormen deze connectiviteits paden gezamenlijk het uitgaande verkeer van IoT Hub naar klant resources.
 ![IoT Hub openbaar eind punt](./media/virtual-network-support/public-endpoint.png)
 
+IoT Hub functies, waaronder [bericht routering](./iot-hub-devguide-messages-d2c.md), het [uploaden van bestanden](./iot-hub-devguide-file-upload.md)en [bulksgewijs importeren/exporteren van apparaten](./iot-hub-bulk-identity-mgmt.md) , moet u ook een verbinding van IOT hub hebben met een Azure-resource die eigendom is van een klant over het open bare eind punt. Deze connectiviteits paden vormen samen het uitgaande verkeer van IoT Hub naar klant resources.
 
-Om verschillende redenen kunnen klanten de connectiviteit met hun Azure-resources (inclusief IoT Hub) beperken via een VNET waarvan ze eigenaar zijn en werken. Dit zijn de volgende redenen:
+Mogelijk wilt u de verbinding met uw Azure-resources (inclusief IoT Hub) beperken via een VNet dat u bezit en gebruikt. Dit zijn de volgende redenen:
 
-* Introductie van extra beveiligings lagen via isolatie op netwerk niveau voor uw IoT-hub door te voor komen dat de verbinding met uw hub via het open bare Internet wordt blootgesteld.
+* Introductie van de netwerk isolatie voor uw IoT-hub door te voor komen dat de connectiviteit bloot staat aan het open bare Internet.
 
 * Het inschakelen van een persoonlijke connectiviteits ervaring van uw on-premises netwerk assets zorgt ervoor dat uw gegevens en verkeer rechtstreeks naar het Azure-backbone netwerk worden verzonden.
 
@@ -40,59 +32,35 @@ Om verschillende redenen kunnen klanten de connectiviteit met hun Azure-resource
 
 * Hieronder zijn de Azure-brede connectiviteits patronen ingesteld met behulp van [privé-eind punten](../private-link/private-endpoint-overview.md).
 
+In dit artikel wordt beschreven hoe u deze doelen kunt bereiken met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) voor ingangs connectiviteit met IOT hub en een vertrouwde micro soft Services-uitzonde ring gebruiken voor het afleiden van connectiviteit vanuit IOT hub met andere Azure-resources.
 
-In dit artikel wordt beschreven hoe u deze doelen kunt bereiken met behulp van [persoonlijke eind punten](../private-link/private-endpoint-overview.md) voor ingangs connectiviteit met IOT hub, zoals het gebruik van Azure Trusted First partij Services-uitzonde ring voor het afleiden van connectiviteit vanuit IOT hub met andere Azure-resources.
+## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Connectiviteit met IoT Hub met behulp van een persoonlijke Azure-koppeling
 
-
-## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Ingangs connectiviteit met IoT Hub persoonlijke eind punten
-
-Een persoonlijk eind punt is een privé-IP-adres dat is toegewezen in een VNET van de klant via welke een Azure-resource bereikbaar is. Door een persoonlijk eind punt voor uw IoT-hub te hebben, kunt u ervoor zorgen dat services in uw VNET IoT Hub bereiken zonder dat er verkeer naar het open bare eind punt van IoT Hub hoeft te worden verzonden. Op dezelfde manier kunnen apparaten die in uw on-premises werken, gebruikmaken van [VPN (virtueel particulier netwerk)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering om verbinding te krijgen met uw VNET in Azure en vervolgens naar uw IOT hub (via het persoonlijke eind punt). Als gevolg hiervan kunnen klanten die de connectiviteit met de open bare eind punten van de IoT-hub willen beperken (of deze mogelijk volledig blok keren) dit doel halen met behulp van [IOT hub IP-filter](./iot-hub-ip-filtering.md) en [route ring configureren om geen gegevens naar het ingebouwde eind punt te verzenden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Deze benadering houdt connectiviteit met hun hub met behulp van het privé-eind punt voor apparaten. De hoofd focus van deze installatie is voor apparaten in een on-premises netwerk. Deze installatie wordt niet aanbevolen voor apparaten die zijn geïmplementeerd in een Wide Area-netwerk.
+Een persoonlijk eind punt is een privé-IP-adres dat is toegewezen in een VNet van de klant via welke een Azure-resource bereikbaar is. Met de persoonlijke koppeling van Azure kunt u een persoonlijk eind punt instellen voor uw IoT-hub zodat services in uw VNet IoT Hub kunnen bereiken zonder dat er verkeer naar het open bare eind punt van IoT Hub hoeft te worden verzonden. Op dezelfde manier kunnen uw on-premises apparaten gebruikmaken van [virtueel particulier netwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) peering om verbinding te krijgen met uw VNet en uw IOT hub (via het persoonlijke eind punt). Als gevolg hiervan kunt u de verbinding met de open bare eind punten van uw IoT-hub beperken of volledig blok keren met behulp van [IOT hub IP-filter](./iot-hub-ip-filtering.md) en [route ring configureren om geen gegevens naar het ingebouwde eind punt te verzenden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Deze aanpak houdt connectiviteit met uw hub met behulp van het privé-eind punt voor apparaten. De hoofd focus van deze installatie is voor apparaten in een on-premises netwerk. Deze installatie wordt niet aanbevolen voor apparaten die zijn geïmplementeerd in een Wide Area-netwerk.
 
 ![IoT Hub openbaar eind punt](./media/virtual-network-support/virtual-network-ingress.png)
 
 Voordat u doorgaat, controleert u of aan de volgende vereisten wordt voldaan:
 
-* Uw IoT-hub moet worden ingericht met een [beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity).
+* U hebt [een Azure VNet gemaakt](../virtual-network/quick-create-portal.md) met een subnet waarin het persoonlijke eind punt wordt gemaakt.
 
-* Uw IoT-hub moet worden ingericht in een van de [ondersteunde regio's](#regional-availability-private-endpoints).
-
-* U hebt een Azure VNET ingericht met een subnet waarin het persoonlijke eind punt wordt gemaakt. Zie [een virtueel netwerk maken met behulp van Azure cli](../virtual-network/quick-create-cli.md) voor meer informatie.
-
-* Voor apparaten die in een on-premises netwerk werken, stelt u [VPN (virtueel particulier netwerk)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering in op uw Azure VNET.
-
-
-### <a name="regional-availability-private-endpoints"></a>Regionale Beschik baarheid (privé-eind punten)
-
-Privé-eind punten die worden ondersteund in de IoT Hub zijn gemaakt in de volgende regio's:
-
-* VS - oost
-
-* VS - zuid-centraal
-
-* VS - west 2
-
+* Voor apparaten die in on-premises netwerken actief zijn, moet u [VPN (virtueel particulier netwerk)](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering in uw Azure VNet instellen.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Een persoonlijk eind punt voor IoT Hub ingang instellen
 
-Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
+1. Selecteer in Azure Portal **netwerken**, verbindingen met een **persoonlijk eind punt**en klik op het **+ persoonlijke eind punt**.
 
-1. Voer de volgende Azure CLI-opdracht uit om Azure IoT Hub provider opnieuw te registreren bij uw abonnement:
+    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Scherm opname waarin wordt getoond waar een persoonlijk eind punt moet worden toegevoegd voor IoT Hub":::
 
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.Devices --wait --subscription  <subscription-name>
-    ```
+1. Geef het abonnement, de resource groep, de naam en de regio op voor het maken van het nieuwe persoonlijke eind punt in. In het ideale geval moet het persoonlijke eind punt worden gemaakt in dezelfde regio als uw hub.
 
-2. Ga naar het tabblad verbindingen met het **persoonlijke eind punt** in uw IOT hub Portal (dit tabblad is alleen beschikbaar voor IOT-hubs in de [ondersteunde regio's](#regional-availability-private-endpoints)) en klik op het **+** teken om een nieuw persoonlijk eind punt toe te voegen.
+1. Klik op **volgende: resource**, geef het abonnement voor uw IOT hub resource op en selecteer **' micro soft. devices/IotHubs '** als resource type, uw IOT hub naam als **resource**en **iotHub** als doel subresource.
 
-3. Geef het abonnement, de resource groep, de naam en de regio voor het maken van het nieuwe persoonlijke eind punt op (in het ideale geval moet het persoonlijke eind punt worden gemaakt in dezelfde regio als uw hub; Zie de [sectie regionale Beschik baarheid](#regional-availability-private-endpoints) voor meer informatie).
+1. Klik op **volgende: Configuratie** en geef uw virtuele netwerk en subnet op om het persoonlijke eind punt in te maken. Selecteer de optie voor de integratie met de persoonlijke DNS-zone van Azure, indien gewenst.
 
-4. Klik op **volgende: resource**, geef het abonnement voor uw IOT hub resource op en selecteer **' micro soft. devices/IotHubs '** als resource type, uw IOT hub naam als **resource**en **iotHub** als doel-subresource.
+1. Klik op **volgende: Tags**en geef eventueel labels voor uw resource op.
 
-5. Klik op **volgende: Configuratie** en geef uw virtuele netwerk en subnet op om het persoonlijke eind punt in te maken. Selecteer de optie voor de integratie met de persoonlijke DNS-zone van Azure, indien gewenst.
-
-6. Klik op **volgende: Tags**en geef eventueel labels voor uw resource op.
-
-7. Klik op **beoordeling + maken** om uw persoonlijke koppelings bron te maken.
+1. Klik op **beoordeling + maken** om uw persoonlijke koppelings bron te maken.
 
 ### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Het ingebouwde Event hub-compatibele eind punt biedt geen ondersteuning voor toegang via een persoonlijk eind punt
 
@@ -104,128 +72,37 @@ Het [IP-filter](iot-hub-ip-filtering.md) van IOT hub beheert ook niet de open ba
 1. Open bare netwerk toegang uitschakelen door IP-filter te gebruiken om alle IP-adressen te blok keren
 1. Het ingebouwde Event hub-eind punt uitschakelen door [route ring in te stellen zodat er geen gegevens naar worden verzonden](iot-hub-devguide-messages-d2c.md)
 1. De [terugval route](iot-hub-devguide-messages-d2c.md#fallback-route) uitschakelen
-1. Uitgaand verkeer naar andere Azure-resources configureren met behulp van [vertrouwde services van Azure](#egress-connectivity-from-iot-hub-to-other-azure-resources)
+1. Uitgaand verkeer configureren voor andere Azure-resources met behulp van [vertrouwde micro soft-Services](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
-### <a name="pricing-private-endpoints"></a>Prijzen (privé-eind punten)
+### <a name="pricing-for-private-link"></a>Prijs voor privé koppeling
 
 Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
 
-
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>De connectiviteit van IoT Hub met andere Azure-resources afbreken
 
-IoT Hub moet toegang hebben tot uw Azure Blob-opslag, Event hubs, service bus-resources voor [bericht routering](./iot-hub-devguide-messages-d2c.md), het [uploaden van bestanden](./iot-hub-devguide-file-upload.md)en het [importeren/exporteren van bulk apparaten](./iot-hub-bulk-identity-mgmt.md), wat doorgaans plaatsvindt via het open bare eind punt van de resource. In het geval dat u uw opslag account, Event hubs of service bus-bron verbindt met een VNET, blokkeert de aanbevolen configuratie standaard de connectiviteit met de bron. Hierdoor wordt de functionaliteit van IoT Hub waarvoor toegang tot de resources nodig is, belemmerd.
+IoT Hub kunt verbinding maken met uw Azure Blob-opslag, Event Hub, service bus-resources voor [bericht routering](./iot-hub-devguide-messages-d2c.md), het [uploaden van bestanden](./iot-hub-devguide-file-upload.md)en het [bulksgewijs importeren/exporteren van apparaten](./iot-hub-bulk-identity-mgmt.md) via het open bare eind punt van de resource. Het binden van uw bron aan een VNet blokkeert standaard de connectiviteit met de bron. Als gevolg hiervan voor komt deze configuratie dat IoT Hub van het werken met het verzenden van gegevens naar uw resources. U kunt dit probleem oplossen door de verbinding van uw IoT Hub-bron met uw opslag account, Event Hub of service bus-resources in te scha kelen via de optie **vertrouwde micro soft-service** .
 
-Om deze situatie op te lossen, moet u de connectiviteit van uw IoT Hub-bron naar uw opslag account, Event hubs of service bus-resources inschakelen via de optie **voor vertrouwde services van Azure** .
+### <a name="turn-on-managed-identity-for-iot-hub"></a>Beheerde identiteit inschakelen voor IoT Hub
 
-De vereisten zijn als volgt:
+Om ervoor te zorgen dat andere services uw IoT-hub als een vertrouwde micro soft-service kunnen vinden, moet deze een door het systeem toegewezen beheerde identiteit hebben.
 
-* Uw IoT-hub moet worden ingericht in een van de [ondersteunde regio's](#regional-availability-trusted-microsoft-first-party-services).
+1. Ga naar **identiteit** in uw IOT hub-Portal
 
-* Aan uw IoT Hub moet een beheerde service-identiteit worden toegewezen bij de inrichtings tijd van de hub. Volg de instructies voor het [maken van een hub met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity).
+1. Onder **status**selecteert u **aan**en klikt u vervolgens op **Opslaan**.
 
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm afbeelding die laat zien hoe u de beheerde identiteit voor IoT Hub inschakelt":::
 
-### <a name="regional-availability-trusted-microsoft-first-party-services"></a>Regionale Beschik baarheid (vertrouwde micro soft-Services voor de eerste partij)
+### <a name="pricing-for-managed-identity"></a>Prijzen voor beheerde identiteit
 
-Azure-uitzonde ring voor services van de eerste partij om firewall beperkingen te omzeilen voor Azure Storage, Event hubs en service bus-bronnen worden alleen ondersteund voor IoT-hubs in de volgende regio's:
-
-* VS - oost
-
-* VS - zuid-centraal
-
-* VS - west 2
-
-
-### <a name="pricing-trusted-microsoft-first-party-services"></a>Prijzen (vertrouwde micro soft-Services voor de eerste partij)
-
-De betrouw bare micro soft-functie voor de eerste partij Services-uitzonde ring is gratis in IoT-hubs in de [ondersteunde regio's](#regional-availability-trusted-microsoft-first-party-services). Kosten voor de ingerichte opslag accounts, Event hubs of service bus-resources worden afzonderlijk toegepast.
-
-
-### <a name="create-an-iot-hub-with-managed-service-identity"></a>Een IoT-hub maken met een beheerde service-identiteit
-
-Een beheerde service-identiteit kan worden toegewezen aan uw hub op het tijdstip van de inrichting van resources (deze functie wordt momenteel niet ondersteund voor bestaande hubs), waarvoor de IoT-hub TLS 1,2 moet gebruiken als de minimale versie. Voor dit doel moet u de ARM-resource sjabloon hieronder gebruiken:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Devices/IotHubs",
-      "apiVersion": "2020-03-01",
-      "name": "<provide-a-valid-resource-name>",
-      "location": "<any-of-supported-regions>",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "properties": {
-        "minTlsVersion": "1.2"
-      },
-      "sku": {
-        "name": "<your-hubs-SKU-name>",
-        "tier": "<your-hubs-SKU-tier>",
-        "capacity": 1
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
-      "dependsOn": [
-        "<provide-a-valid-resource-name>"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "contentVersion": "0.9.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Devices/IotHubs",
-              "apiVersion": "2020-03-01",
-              "name": "<provide-a-valid-resource-name>",
-              "location": "<any-of-supported-regions>",
-              "identity": {
-                "type": "SystemAssigned"
-              },
-              "properties": {
-                "minTlsVersion": "1.2"
-              },
-              "sku": {
-                "name": "<your-hubs-SKU-name>",
-                "tier": "<your-hubs-SKU-tier>",
-                "capacity": 1
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-Nadat u de waarden voor uw resource hebt vervangen `name` , `location` en, `SKU.name` `SKU.tier` kunt u Azure CLI gebruiken om de resource in een bestaande resource groep te implementeren met behulp van:
-
-```azurecli-interactive
-az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
-```
-
-Nadat de resource is gemaakt, kunt u de beheerde service-identiteit ophalen die aan uw hub is toegewezen met behulp van Azure CLI:
-
-```azurecli-interactive
-az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
-```
-
-Als IoT Hub met een beheerde service-identiteit is ingericht, volgt u de bijbehorende sectie om routerings eindpunten in te stellen voor [opslag accounts](#egress-connectivity-to-storage-account-endpoints-for-routing), [Event hubs](#egress-connectivity-to-event-hubs-endpoints-for-routing)en [Service Bus](#egress-connectivity-to-service-bus-endpoints-for-routing) -resources, of om het [importeren en exporteren](#egress-connectivity-to-storage-accounts-for-bulk-device-importexport)van [bestanden](#egress-connectivity-to-storage-accounts-for-file-upload) te configureren.
-
+Betrouw bare micro soft-functie voor eerste partij uitzonde ringen is gratis. Kosten voor de ingerichte opslag accounts, Event hubs of service bus-resources worden afzonderlijk toegepast.
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>De connectiviteit met de eind punten van het opslag account voor route ring
 
-IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een opslag account dat eigendom is van een klant. Als u wilt dat de routerings functionaliteit toegang krijgt tot een opslag account terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde service-identiteit hebben (Zie [een hub maken met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity)) voor meer informatie. Nadat een beheerde service-identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
+IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub moet een [beheerde identiteit](#turn-on-managed-identity-for-iot-hub)hebben om de routerings functionaliteit toegang te geven tot een opslag account terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer **gegevens Inzender voor opslag-BLOB** als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
@@ -233,14 +110,13 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een op
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **opslag** als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
+6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **maken** .
 
 Nu is uw aangepaste opslag eindpunt ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en heeft deze toegang tot uw opslag Resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
-
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Connectiviteit met Event hubs-eind punten voor route ring
 
-IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een event hubs-naam ruimte die eigendom is van een klant. Als u wilt dat de routerings functionaliteit toegang krijgt tot een event hubs-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde service-identiteit hebben (Zie [een hub maken met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity)) voor meer informatie. Nadat een beheerde service-identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw event hubs.
+IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een event hubs-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit in staat te stellen om toegang te krijgen tot een event hubs-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is gemaakt, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw event hubs.
 
 1. Ga in het Azure Portal naar uw **iam-tabblad (Event hubs Access Control)** en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -256,10 +132,9 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een ev
 
 Uw aangepaste Event hubs-eind punt is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en heeft toegang tot uw event hubs-resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
-
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Connectiviteit met Service Bus-eind punten voor route ring
 
-IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een service bus-naam ruimte die eigendom is van een klant. Als u wilt dat de routerings functionaliteit toegang krijgt tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde service-identiteit hebben (Zie [een hub maken met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity)) voor meer informatie. Nadat een beheerde service-identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
+IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een service bus-naam ruimte die eigendom is van een klant. Uw IoT Hub moet een beheerde identiteit hebben om de routerings functionaliteit toegang te geven tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van de service bus en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
@@ -269,46 +144,43 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een se
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bericht routering** .
 
-5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **Service Bus-wachtrij** of **Service Bus-onderwerp** (indien van toepassing) als type eind punt.
+5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **Service Bus-wachtrij** of **Service Bus onderwerp** (indien van toepassing) als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Klik op de knop **Maken**.
+6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Klik op de knop **maken** .
 
 Nu het aangepaste service bus-eind punt is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw service bus-resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
-
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>De connectiviteit met opslag accounts voor het uploaden van bestanden
 
-Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten bestanden uploaden naar een opslag account van de klant. Als u wilt toestaan dat het bestand kan worden geüpload, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account. Als er firewall beperkingen zijn ingesteld op het opslag account, moeten uw apparaten gebruikmaken van het mechanisme van het ondersteunde opslag account (inclusief [particuliere eind punten](../private-link/create-private-endpoint-storage-portal.md), [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) of [directe firewall configuratie](../storage/common/storage-network-security.md)) om verbinding te kunnen maken. Als er firewall beperkingen zijn ingesteld op het opslag account, moet IoT Hub worden geconfigureerd voor toegang tot de opslag bron via de uitzonde ring vertrouwde micro soft-Services. Voor dit doel moet uw IoT Hub een beheerde service-identiteit hebben (Zie How to [Create a hub with Managed Service Identity](#create-an-iot-hub-with-managed-service-identity)) (Engelstalig) voor meer informatie. Nadat een beheerde service-identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
+Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten bestanden uploaden naar een opslag account van de klant. Als u wilt toestaan dat het bestand kan worden geüpload, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account. Als er firewall beperkingen zijn ingesteld op het opslag account, moeten uw apparaten gebruikmaken van het mechanisme van het ondersteunde opslag account (inclusief [particuliere eind punten](../private-link/create-private-endpoint-storage-portal.md), [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)of [directe firewall configuratie](../storage/common/storage-network-security.md)) om verbinding te kunnen maken. Als er firewall beperkingen zijn ingesteld op het opslag account, moet IoT Hub worden geconfigureerd voor toegang tot de opslag bron via de uitzonde ring vertrouwde micro soft-Services. Voor dit doel moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer **gegevens Inzender voor opslag-BLOB** als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bestand uploaden** .
 
-5. Op de pagina die wordt weer gegeven, selecteert u de container die u in uw Blob-opslag wilt gebruiken, configureert u de **instellingen voor bestands meldingen**, **SAS TTL**, **standaard-TTL** en **maximum aantal levering** . Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
+5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **maken** .
 
 Nu uw opslag eindpunt voor het uploaden van bestanden is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw opslag Resource ondanks de firewall beperkingen.
-
 
 ### <a name="egress-connectivity-to-storage-accounts-for-bulk-device-importexport"></a>De connectiviteit met opslag accounts voor bulk import/export
 
 IoT Hub ondersteunt de functionaliteit voor het [importeren/exporteren](./iot-hub-bulk-identity-mgmt.md) van informatie over apparaten in bulk van/naar een door de klant verschafte opslag-blob. Als u de functie voor bulk import/export wilt gebruiken, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account.
 
-Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account. Als u toegang wilt krijgen tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde service-identiteit hebben (Zie [een hub maken met een beheerde service-identiteit](#create-an-iot-hub-with-managed-service-identity)) voor meer informatie. Nadat een beheerde service-identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
+Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account. Als u toegang wilt krijgen tot een service bus-resource terwijl er firewall beperkingen zijn ingesteld, moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw service bus.
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 
-2. Selecteer **gegevens Inzender voor opslag-BLOB** als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** als **toegangs toewijzing aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
+2. Selecteer de **gegevens bijdrager** van de opslag-BLOB ([*niet* Inzender of Inzender voor opslag accounts](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **rol**, **Azure AD-gebruiker,-groep of Service-Principal** , zoals **toegangs rechten toewijzen aan** en selecteer de resource naam van uw IOT hub in de vervolg keuzelijst. Klik op de knop **Opslaan**.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
-U kunt nu de Azure IoT-REST API gebruiken voor het [maken van import export-taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. Houd er rekening mee dat u de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag moet opgeven en `inputBlobContainerUri="https://..."` dat u `outputBlobContainerUri="https://..."` als de invoer-en uitvoer-URL van uw opslag account.
+U kunt nu de Azure IoT REST-Api's gebruiken voor het [maken van import-export taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. U moet de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag opgeven en `inputBlobContainerUri="https://..."` de `outputBlobContainerUri="https://..."` invoer-en uitvoer-url's van uw opslag account gebruiken.
 
-
-Azure IoT Hub SDK biedt ook ondersteuning voor deze functionaliteit in het register beheer van de service-client. Het volgende code fragment laat zien hoe u een import-of export taak initieert in met behulp van de C#-SDK.
+Azure IoT Hub Sdk's ondersteunen deze functionaliteit ook in het register beheer van de service-client. Het volgende code fragment laat zien hoe u een import-of export taak initieert in met behulp van de C#-SDK.
 
 ```csharp
 // Call an import job on the IoT Hub
@@ -324,8 +196,7 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-
-Voor het gebruik van deze regio-beperkte versie van de Azure IoT Sdk's met ondersteuning voor virtuele netwerken voor C#, Java en node. js:
+Voor het gebruik van deze versie van de Azure IoT Sdk's met ondersteuning voor virtuele netwerken voor C#, Java en node. js:
 
 1. Maak een omgevings variabele `EnableStorageIdentity` met de naam en stel de waarde in op `1` .
 

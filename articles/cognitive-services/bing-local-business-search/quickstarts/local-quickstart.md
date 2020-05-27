@@ -8,31 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: da7d210140bf348e734f16cef2aaa01caf7e4f8b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475608"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873118"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Snelstartgids: een query naar de Bing Local Business Search-API in C verzenden #
 
-Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
+Gebruik deze Quick Start om te leren hoe u aanvragen verzendt naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
 
-In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor de `hotel in Bellevue`Zoek query.
+In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor een zoek query.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Alle edities van [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
-
-U moet een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) hebben met Bing zoeken-API's. De [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) is voldoende voor deze quickstart.  Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing zoeken-API's. Voor deze Quick start is de [gratis proef versie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) voldoende. Sla de API-sleutel op die wordt weer gegeven wanneer u de gratis proef versie activeert. Zie [Cognitive Services prijzen-Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)voor meer informatie.
 
 ## <a name="create-the-request"></a>De aanvraag maken 
 
-Met de volgende code maakt `WebRequest`u een, stelt de kop van de toegangs sleutel in en voegt een query reeks toe voor ' restaurant in Bellevue '.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
+Met de volgende code maakt u een `WebRequest` , stelt de kop van de toegangs sleutel in en voegt een query reeks voor het *restaurant in Bellevue*.  Vervolgens wordt de aanvraag verzonden en het antwoord toegewezen aan een tekenreeks die de JSON-tekst moet bevatten.
 
 ```csharp
     // Replace the accessKey string value with your valid access key.
@@ -54,10 +53,10 @@ Met de volgende code maakt `WebRequest`u een, stelt de kop van de toegangs sleut
 
 ## <a name="run-the-complete-application"></a>De volledige toepassing uitvoeren
 
-De Bing Local Business Search-API retourneert gelokaliseerde Zoek resultaten van de Bing zoek machine.
-1. Maak een nieuwe Console-oplossing in Visual Studio (de Community Edition volstaat).
+De volgende code maakt gebruik van de Bing lokale Business Search-API om gelokaliseerde Zoek resultaten te retour neren van de Bing zoek machine. U kunt deze code gebruiken door de volgende stappen uit te voeren:
+1. Maak een nieuwe console oplossing in Visual Studio (de Community Edition is voldoende).
 2. Vervang Program.cs door de code hieronder.
-3. Vervang de waarde van accessKey door een toegangs sleutel die geldig is voor uw abonnement.
+3. Vervang de waarde `accessKey` door een geldige toegangssleutel voor uw abonnement.
 4. Voer het programma uit.
 
 ```csharp
@@ -210,5 +209,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](local-search-java-quickstart.md)
-- [Quick start voor lokaal bedrijfs Zoek knooppunt](local-search-node-quickstart.md)
+- [Snelstartgids voor lokaal zoeken in node. js](local-search-node-quickstart.md)
 - [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)

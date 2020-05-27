@@ -7,38 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20ec1039dc8fc477410891495762395b408f2d6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241041"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870574"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Verificatie toevoegen en gebruikers identiteiten beheren in uw mobiele apps
 
 Met een weer gave van de gebruiker en hun gedrag in uw toepassing kunnen ontwikkel aars gebruikers beter helpen bij het maken van aangepaste ervaringen. Of u nu een toepassings ontwikkelaar bent die een samenwerkings toepassing bouwt voor gebruikers binnen uw organisatie of als u het volgende sociale netwerk platform maakt, u hebt een manier nodig om gebruikers te verifiëren en gebruikers identiteiten te beheren. Een service voor identiteits beheer is een van de belangrijkste functies van een mobiele back-end-service.
 
 Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw mobiele apps.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center auth](/appcenter/auth/) is een op de cloud gebaseerde service voor identiteits beheer die ontwikkel aars kunnen gebruiken om gebruikers te verifiëren en gebruikers identiteiten te beheren. App Center auth kan ook worden geïntegreerd met andere onderdelen van Visual Studio App Center. Ontwikkel aars kunnen de gebruikers-id gebruiken om [gebruikers gegevens](/appcenter/data/index) in andere services te bekijken en ook [Push meldingen naar gebruikers te verzenden in plaats van afzonderlijke apparaten](/appcenter/push/push-to-user#setting-user-identity). 
-
-**Belangrijke functies**
-- Aangedreven door Azure Active Directory B2C (Azure AD B2C). 
-    - Bedrijfs kwaliteit.
-    - Maxi maal beschikbaar.
-    - Veilige en wereld wijde service.
-- Neem uw eigen identiteit en de optie voor het gebruik van andere populaire providers voor identiteits-en toegangs beheer, zoals Auth0 en Firebase.
-- Ondersteuning voor Azure Active Directory.
-    - Verbind bestaande Azure AD-tenants. 
-    - Verificatie op basis van een bedrijfs domein inschakelen.
-    - Toegang tot gevoelige gegevens beheren.
-- Eenvoudige gebruikers ervaring en Magical SDK-ervaring door micro soft-verificatie bibliotheek aan te pakken met de Visual Studio App Center SDK.
-- Platform ondersteuning voor iOS, Android, Xamarin en reageren systeem eigen.
-
-**Verwijzingen**
-- [Meld u aan met Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-- [Aan de slag met App Center auth](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) is een identiteits beheer service van Business-to-consumer (B2C) die ontwikkel aars kunnen gebruiken om hun klanten te verifiëren. Met deze service met witte labels kunnen ontwikkel aars aanpassen en bepalen hoe gebruikers veilig werken met hun web-, Desktop-, mobiele of single-page toepassingen. Met Azure AD B2C kunnen gebruikers zich registreren, aanmelden, kunnen ze wachtwoorden herstellen en profielen bewerken. In Azure AD B2C is een formulier geïmplementeerd van de OpenID Connect- en OAuth 2.0-protocollen. 
@@ -55,7 +35,7 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 **Verwijzingen**
 - [Azure Portal](https://portal.azure.com/)
 - [Documentatie over Azure AD B2C](/azure/active-directory-b2c/)
-- [Snelstartgidsen](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
+- [Quickstarts](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
 - [Voorbeelden](/azure/active-directory-b2c/code-samples)
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
@@ -73,4 +53,4 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 - [Azure Portal](https://portal.azure.com/)
 - [Wat is Azure AD?](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Aan de slag met Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
-- [Snelstartgidsen](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Quickstarts](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)

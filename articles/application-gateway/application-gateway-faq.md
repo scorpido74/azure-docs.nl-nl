@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836662"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873494"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -94,7 +94,7 @@ Zie [Application Gateway de grootte](https://docs.microsoft.com/azure/applicatio
 
 Ja. Naast meerdere exemplaren van een bepaalde Application Gateway-implementatie, kunt u een andere unieke Application Gateway resource inrichten voor een bestaand subnet dat een andere Application Gateway resource bevat.
 
-Eén subnet biedt geen ondersteuning voor zowel Standard_v2 als standaard Application Gateway samen.
+Eén subnet biedt geen ondersteuning voor zowel v2-als v1 Application Gateway-Sku's.
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Ondersteunt Application Gateway V2 door de gebruiker gedefinieerde routes (UDR)?
 
@@ -211,7 +211,7 @@ Zie [volg orde van verwerkings regels](https://docs.microsoft.com/azure/applicat
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Wat is het veld host voor aangepaste tests?
 
-In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De indeling is \<protocol\>://\<host\>:\<poort\>\<pad\>.
+In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De indeling is \< protocol \> :// \< host \> : \< poort \> \< pad \> .
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kan ik Application Gateway toegang tot slechts enkele bron-IP-adressen toestaan?
 
@@ -246,7 +246,7 @@ Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres
     
     e. De uitgaande Internet verbinding kan niet worden geblokkeerd. Anders worden er problemen met logboek registratie, metrische gegevens, enzovoort.
 
-Voor beeld van NSG-configuratie voor alleen persoonlijke ![IP-toegang: Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
+Voor beeld van NSG-configuratie voor alleen persoonlijke IP-toegang: ![ Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ## <a name="configuration---tls"></a>Configuratie-TLS
 
@@ -334,8 +334,8 @@ Nee, gebruik alleen alfanumerieke tekens in het wacht woord voor het pfx-bestand
 
 ### <a name="what-is-an-ingress-controller"></a>Wat is een ingangs controller?
 
-Met Kubernetes kan het `deployment` maken `service` van en de resource een groep van Peul intern in het cluster weer geven. Om dezelfde service extern beschikbaar te maken, wordt een [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource gedefinieerd die taak verdeling, TLS-beëindiging en op naam gebaseerde virtuele hosting biedt.
-Om aan deze `Ingress` resource te voldoen, moet een ingangs controller worden geluisterd naar wijzigingen `Ingress` in resources en wordt het Load Balancer beleid geconfigureerd.
+Met Kubernetes kan het maken van `deployment` en `service` de resource een groep van Peul intern in het cluster weer geven. Om dezelfde service extern beschikbaar te maken, wordt een [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource gedefinieerd die taak verdeling, TLS-beëindiging en op naam gebaseerde virtuele hosting biedt.
+Om aan deze `Ingress` resource te voldoen, moet een ingangs controller worden geluisterd naar wijzigingen in `Ingress` resources en wordt het Load Balancer beleid geconfigureerd.
 
 Met de Application Gateway ingangs controller kan [Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) worden gebruikt als binnenkomend verkeer voor een [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/) , ook wel een AKS-cluster genoemd.
 
@@ -357,7 +357,7 @@ Alle logboeken worden elke 60 seconden verzameld. Zie voor meer informatie [back
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Hoe kan ik weet of de leden van de back-endadresgroep in orde zijn?
 
-Controleer de status met behulp van `Get-AzApplicationGatewayBackendHealth` de Power shell-cmdlet of de portal. Zie [Application Gateway Diagnostics (diagnostische](application-gateway-diagnostics.md)gegevens) voor meer informatie.
+Controleer de status met behulp van de Power shell-cmdlet `Get-AzApplicationGatewayBackendHealth` of de portal. Zie [Application Gateway Diagnostics (diagnostische](application-gateway-diagnostics.md)gegevens) voor meer informatie.
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Wat is het Bewaar beleid voor de diagnostische logboeken?
 
@@ -409,7 +409,7 @@ Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres
     
     e. De uitgaande Internet verbinding kan niet worden geblokkeerd. Anders worden er problemen met logboek registratie, metrische gegevens, enzovoort.
 
-Voor beeld van NSG-configuratie voor alleen persoonlijke ![IP-toegang: Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
+Voor beeld van NSG-configuratie voor alleen persoonlijke IP-toegang: ![ Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Ondersteunt Application Gateway kenmerk SameSite-cookie?
 Ja, de [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een mandaat geïntroduceerd op http-cookies zonder SameSite kenmerk dat moet worden behandeld als SameSite = slordig. Dit betekent dat de Application Gateway affiniteits cookie niet wordt verzonden door de browser in een context van een derde partij. Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-overview.md#cookie-based-affinity) voor meer informatie.

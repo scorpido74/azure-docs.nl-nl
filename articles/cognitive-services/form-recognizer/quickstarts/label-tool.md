@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691340"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871379"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
 In deze Quick Start gebruikt u de REST API formulier Recognizer met het hulp programma voor het labelen van het voor beeld om een aangepast model met hand matig gelabelde gegevens te trainen. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -143,6 +143,7 @@ Vervolgens maakt u tags (labels) en past u deze toe op de tekst elementen die u 
     > * Label waarden zoals ze in het formulier worden weer gegeven. Probeer geen waarde te splitsen in twee delen met twee verschillende Tags. Een adres veld moet bijvoorbeeld worden gelabeld met één tag, zelfs als het meerdere regels omvat.
     > * Geen sleutels in uw gelabelde velden bevatten &mdash; alleen de waarden.
     > * Tabel gegevens moeten automatisch worden gedetecteerd en beschikbaar zijn in het uiteindelijke uitvoer-JSON-bestand. Als het model echter niet alle tabel gegevens detecteert, kunt u deze velden ook hand matig labelen. Elke cel in de tabel labelen met een ander label. Als uw formulieren tabellen met een wisselend aantal rijen bevatten, moet u ervoor zorgen dat u ten minste één formulier met de grootste mogelijke tabel labelt.
+    > * Als u een toegepaste tag wilt verwijderen, selecteert u de rechthoek in de document weergave en drukt u op de toets DELETE.
 
 ![Venster van de hoofd editor van het hulp programma voor het labelen van voor beelden](../media/label-tool/main-editor.png)
 
@@ -164,6 +165,27 @@ De volgende waardetypen en variaties worden momenteel ondersteund:
     * standaard, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
+
+> [!NOTE]
+> Zie de volgende regels voor datum notatie:
+> 
+> De volgende tekens kunnen worden gebruikt als DMY: `, - / . \` . Witruimte kan niet worden gebruikt als scheidings teken. Bijvoorbeeld:
+> * 01, 01, 2020
+> * 01-01-2020
+> * 01/01/2020
+>
+> De dag en maand kunnen worden geschreven als een of twee cijfers, en het jaar kan twee of vier cijfers zijn:
+> * 1-1-2020
+> * 1-01-20
+>
+> Als een DMY datum teken reeks acht cijfers bevat, is het scheidings teken optioneel:
+> * 01012020
+> * 01 01 2020
+>
+> De maand kan ook worden geschreven als volledige of korte naam. Als de naam wordt gebruikt, zijn de scheidings tekens optioneel:
+> * 01/Jan/2020
+> * 01Jan2020
+> * 01 januari 2020
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 

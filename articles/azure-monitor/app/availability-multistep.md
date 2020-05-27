@@ -2,14 +2,13 @@
 title: Bewaken met webtests met meerdere stappen-Azure-toepassing inzichten
 description: Webtests met meerdere stappen instellen om uw webtoepassingen te bewaken met Azure-toepassing Insights
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.reviewer: sdash
-ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655937"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873350"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
@@ -17,13 +16,16 @@ U kunt een vastgelegde reeks Url's en interacties bewaken met een website via we
 
 > [!NOTE]
 > Webtests met meerdere stappen zijn afhankelijk van bestanden van Visual Studio Web testen. Het werd [aangekondigd](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) dat Visual Studio 2019 de laatste versie is met de webtest-functionaliteit. Het is belang rijk om te begrijpen dat er geen nieuwe functies worden toegevoegd, maar dat de webtest-functionaliteit in Visual Studio 2019 nog steeds wordt ondersteund en wordt ondersteund tijdens de levens cyclus van het product. Het Azure Monitor-product team heeft [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)vragen gesteld over de toekomst van Beschik baarheid van meerdere stappen.  
+> </br>
+> Webtests met meerdere stappen **worden niet ondersteund** in de [Azure Government](https://docs.microsoft.com/azure/azure-government/) Cloud.
+
 
 ## <a name="pre-requisites"></a>Vereisten
 
 * Visual Studio 2017 Enter prise of hoger.
 * Visual Studio Web Performance en load test tools.
 
-Om de vereiste voor de test hulpprogramma's te vinden. Start de**afzonderlijke onderdelen** > van **Visual Studio Installer** > **fouten opsporen en testen** > op**webprestaties en laad Programma's**.
+Om de vereiste voor de test hulpprogramma's te vinden. Start de afzonderlijke onderdelen van **Visual Studio Installer**  >  **Individual components**  >  **fouten opsporen en testen**op  >  **webprestaties en laad Programma's**.
 
 ![Scherm afbeelding van de gebruikers interface van Visual Studio Installer waarbij afzonderlijke onderdelen zijn geselecteerd met een selectie vakje naast het item voor de hulpprogram ma's voor webprestaties en laad Programma's](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -39,7 +41,7 @@ Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.micr
 
 ## <a name="upload-the-web-test"></a>De webtest uploaden
 
-1. Selecteer in de Portal Application Insights in het deel venster Beschik baarheid de optie test test**type** > **multi-step web test** **maken** > .
+1. Selecteer in de Portal Application Insights in het deel venster **Create Test**Beschik baarheid de optie test test  >  **type**  >  **multi-step web test**maken.
 
 2. Stel de test locaties, frequentie en waarschuwings parameters in.
 
@@ -64,7 +66,7 @@ Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.micr
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel = waarde voor **waarschuwings locaties****aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel waarde voor **waarschuwings locaties**  =  **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="configuration"></a>Configuratie
 

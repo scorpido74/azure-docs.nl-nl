@@ -8,36 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383609"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871140"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Java en het Bing News Search REST API
 
-Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige Java-toepassing wordt een zoek opdracht voor nieuws naar de API verzonden en wordt het JSON-antwoord weer gegeven.
 
-Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
-De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
+De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit(JDK) 7 of 8](https://aka.ms/azure-jdks)
-
-* De [Gson-bibliotheek](https://github.com/google/gson)
+* De [Java Development Kit (JDK) 7 of 8](https://aka.ms/azure-jdks).
+* De [Gson-bibliotheek](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken.
+1. Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken:
 
     ```java
     import java.net.*;
@@ -50,7 +49,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     import com.google.gson.JsonParser;
     ```
 
-2. Maak een nieuwe klasse, met variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak een nieuwe klasse. Voeg variabelen toe voor het API-eind punt, uw abonnements sleutel en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +63,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>De zoekopdracht opbouwen en een JSON-antwoord ontvangen
 
-1. Gebruik de variabelen uit de laatste stap om een zoek-URL voor de API-aanvraag te formatteren. Houd er rekening mee dat uw zoekterm URL-gecodeerd moet zijn voordat deze wordt toegevoegd aan de aanvraag.
+1. Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag op te maken. URL: Codeer uw zoek term voordat u deze toevoegt aan de aanvraag.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -75,7 +74,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     }
     ```
 
-2. Ontvang het JSON-antwoord van de Bing Nieuws zoeken-API, en bouw het resultaatobject op.
+2. Het JSON-antwoord van de Bing Nieuws zoeken-API te ontvangen en het resultaat object samen te stellen.
 
     ```java
     // receive JSON body
@@ -88,6 +87,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 ## <a name="process-the-json-response"></a>Het JSON-antwoord verwerken
 
 1. Scheid de Bing-gerelateerde HTTP-headers van de JSON-hoofdtekst, sluit de stroom en retourneer het API-antwoord.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,8 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     return results;
     ```
 
-2. Een methode maken om JSON te parseren en reserialiseren
+2. Maak een methode om de JSON-resultaten te parseren en te serialiseren.
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -112,8 +113,9 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     }
     ```
 
-3. Roep de zoekmethode aan in de hoofdmethode van uw toepassing en geef de resultaten weer.
-    ```csharp
+3. In de hoofd methode van uw toepassing roept u de Zoek methode aan en geeft u de resultaten weer.
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -126,7 +128,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     }
     ```
 
-## <a name="json-response"></a>JSON-antwoord
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld:
 

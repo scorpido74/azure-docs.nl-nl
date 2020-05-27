@@ -9,18 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75380623"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873295"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainings gegevensverzameling voor een aangepast model bouwen
 
-Wanneer u het aangepaste model voor formulier herkenning gebruikt, geeft u uw eigen trainings gegevens op zodat het model kan worden opgeleid voor uw branchespecifieke formulieren. U kunt een model trainen met vijf ingevulde formulieren of een leeg formulier (u moet het woord ' empty ' in de bestands naam) plus twee ingevulde formulieren toevoegen. Zelfs als u over voldoende ingevulde formulieren beschikt voor het trainen van, kunt u een leeg formulier toevoegen aan uw trainings gegevensset om de nauw keurigheid van het model te verbeteren.
+Wanneer u het aangepaste model voor formulier herkenning gebruikt, geeft u uw eigen trainings gegevens op zodat het model kan worden opgeleid voor uw branchespecifieke formulieren. 
 
-Als u hand matig gelabelde trainings gegevens wilt gebruiken, moet u beginnen met ten minste vijf soorten van hetzelfde type. U kunt nog steeds niet-gelabelde formulieren en een leeg formulier in dezelfde gegevensset gebruiken.
+Als u training hebt zonder hand matige labels, kunt u vijf ingevulde formulieren gebruiken of een leeg formulier (u moet het woord ' empty ' in de bestands naam) plus twee ingevulde formulieren toevoegen. Zelfs als u voldoende ingevulde formulieren hebt, kunt u een leeg formulier toevoegen aan uw trainings gegevensset om de nauw keurigheid van het model te verbeteren.
+
+Als u hand matig gelabelde trainings gegevens wilt gebruiken, moet u beginnen met ten minste vijf ingevulde formulieren van hetzelfde type. Naast de vereiste gegevensset kunt u nog steeds niet-gelabelde formulieren en een leeg formulier gebruiken.
 
 ## <a name="training-data-tips"></a>Tips voor trainings gegevens
 
@@ -42,9 +44,11 @@ Zorg ervoor dat uw trainings gegevensverzameling ook voldoet aan de invoer verei
 
 Wanneer u de set formulier documenten die u voor training gebruikt, hebt samengesteld, moet u deze uploaden naar een Azure Blob Storage-container. Als u niet weet hoe u een Azure-opslag account maakt met een container, volgt u de [Azure Storage Snelstartgids voor Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
+Als u hand matig gelabelde gegevens wilt gebruiken, moet u ook de bestanden *. labels. json* en *. OCR. json* uploaden die overeenkomen met uw trainings documenten. U kunt het voor [beeld-label programma](./quickstarts/label-tool.md) (of uw eigen gebruikers interface) gebruiken om deze bestanden te genereren.
+
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organiseer uw gegevens in submappen (optioneel)
 
-Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) van uw opslag container bevinden. U kunt echter met gegevens in submappen trainen als u deze in de API-aanroep opgeeft. Normaal gesp roken heeft de hoofd tekst van de [trein aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) aanroep het volgende formulier `<SAS URL>` , waarbij de URL van de gedeelde Access-hand tekening van de container is:
+Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) van uw opslag container bevinden. U kunt echter met gegevens in submappen trainen als u deze in de API-aanroep opgeeft. Normaal gesp roken heeft de hoofd tekst van de [trein aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) aanroep de volgende indeling, waarbij `<SAS URL>` de URL van de gedeelde Access-hand tekening van de container is:
 
 ```json
 {
@@ -52,7 +56,7 @@ Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](
 }
 ```
 
-Als u de volgende inhoud aan de aanvraag tekst toevoegt, wordt de API getraind met documenten die zich in submappen bevinden. Het `"prefix"` veld is optioneel en beperkt de set trainings gegevens tot bestanden waarvan het pad begint met de opgegeven teken reeks. Een waarde van `"Test"`bijvoorbeeld resulteert in de API alleen om te kijken naar de bestanden of mappen die beginnen met het woord ' test '.
+Als u de volgende inhoud aan de aanvraag tekst toevoegt, wordt de API getraind met documenten die zich in submappen bevinden. Het `"prefix"` veld is optioneel en beperkt de set trainings gegevens tot bestanden waarvan het pad begint met de opgegeven teken reeks. Een waarde van bijvoorbeeld `"Test"` resulteert in de API alleen om te kijken naar de bestanden of mappen die beginnen met het woord ' test '.
 
 ```json
 {
@@ -69,6 +73,7 @@ Als u de volgende inhoud aan de aanvraag tekst toevoegt, wordt de API getraind m
 
 Nu u hebt geleerd hoe u een set trainings gegevens bouwt, volgt u een Snelstartgids om een aangepast model voor formulier herkenning te trainen en te beginnen met het gebruik ervan in uw formulieren.
 
-* [Snelstartgids: een model trainen en formulier gegevens extra heren met behulp van krul](./quickstarts/curl-train-extract.md)
-* [Quick Start: een model trainen en formulier gegevens extra heren met behulp van de REST API met python](./quickstarts/python-train-extract.md)
+* [Een model trainen en formulier gegevens extra heren met behulp van krul](./quickstarts/curl-train-extract.md)
+* [Een model trainen en formulier gegevens extra heren met behulp van de REST API en python](./quickstarts/python-train-extract.md)
+* [Trainen met labels met behulp van het voor beeld-label programma](./quickstarts/label-tool.md)
 * [Trainen met labels met behulp van de REST API en Python](./quickstarts/python-labeled-data.md)

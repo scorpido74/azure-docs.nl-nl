@@ -6,16 +6,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c638004d209996e52b0e57b467bfa184a77779c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873459"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>TLS-beëindiging met Key Vault certificaten configureren met behulp van Azure PowerShell
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>TLS-beëindiging met Key Vault certificaten met behulp van Azure PowerShell configureren
 
 [Azure Key Vault](../key-vault/general/overview.md) is een door een platform beheerd geheim archief dat u kunt gebruiken voor het beveiligen van geheimen, sleutels en TLS/SSL-certificaten. Azure-toepassing gateway ondersteunt de integratie met Key Vault voor server certificaten die zijn gekoppeld aan listeners met HTTPS-functionaliteit. Deze ondersteuning is beperkt tot de SKU van Application Gateway v2.
 
@@ -23,7 +23,7 @@ Zie [TLS Terminate with Key Vault certificates](key-vault-certs.md)(Engelstalig)
 
 In dit artikel leest u hoe u een Azure PowerShell script kunt gebruiken om uw sleutel kluis te integreren met uw toepassings gateway voor het beëindigen van TLS/SSL-certificaten.
 
-Voor dit artikel is Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in dit artikel wilt uitvoeren, moet u ook een verbinding maken met Azure door `Connect-AzAccount`uit te voeren.
+Voor dit artikel is Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in dit artikel wilt uitvoeren, moet u ook een verbinding maken met Azure door uit te voeren `Connect-AzAccount` .
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -44,9 +44,11 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> De naam van de sleutel kluis moet universeel uniek zijn.
 
 ### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Een resource groep en een door de gebruiker beheerde identiteit maken
 

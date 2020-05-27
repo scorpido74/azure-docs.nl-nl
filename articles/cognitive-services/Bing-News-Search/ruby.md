@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448550"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873407"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Ruby en het Bing News Search REST API
 
-Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Met deze eenvoudige JavaScript-toepassing wordt een zoekquery naar de API verzonden en worden de resultaten verwerkt.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige ruby-toepassing wordt een zoek query naar de API verzonden en wordt het JSON-antwoord verwerkt.
 
-Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
+Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+
+De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +34,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. importeer de volgende pakketten in uw codebestand.
+1. Importeer de volgende pakketten in het code bestand:
 
     ```ruby
     require 'net/https'
@@ -40,7 +42,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, de Nieuws zoeken-URL, uw abonnementssleutel en de zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eind punt, de zoek-URL voor nieuws, uw abonnements sleutel en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
 
 ## <a name="format-and-make-an-api-request"></a>Een API-aanvraag opmaken en maken
 
-Gebruik de variabelen uit de laatste stap om een zoek-URL voor de API-aanvraag te formatteren. Verzend vervolgens de aanvraag.
+Gebruik de variabelen uit de vorige stap om een zoek-URL voor de API-aanvraag op te maken. Verzend vervolgens de aanvraag.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>Het JSON-antwoord verwerken en afdrukken
 
-Nadat het JSON-antwoord is ontvangen, kunt u het parseren en zowel de hoofdtekst van het antwoord afdrukken, als de headers:
+Nadat het antwoord is ontvangen, parseert u de JSON en drukt u vervolgens zowel de hoofd tekst als de bijbehorende headers af.
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON-antwoord
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld:
 
@@ -177,4 +179,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een app met één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)

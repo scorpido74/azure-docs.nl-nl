@@ -19,7 +19,7 @@
           href: quickstarts/local-quickstart.md
         - name: Java gebruiken
           href: quickstarts/local-search-java-quickstart.md
-        - name: Node gebruiken
+        - name: Node.js gebruiken
           href: quickstarts/local-search-node-quickstart.md
         - name: Python gebruiken
           href: quickstarts/local-search-python-quickstart.md
@@ -38,7 +38,7 @@
       maintainContext: true
     - name: Referentie voor de Bing-API voor zoeken naar lokale bedrijven
       href: local-search-reference.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Cognitive Services proberen
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'

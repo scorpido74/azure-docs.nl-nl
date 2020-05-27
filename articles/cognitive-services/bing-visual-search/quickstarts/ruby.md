@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379637"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870369"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en ruby
 
-In deze Quick Start wordt de ruby-programmeer taal gebruikt om Bing Visual Search aan te roepen en resultaten weer te geven. Een POST-aanvraag uploadt een installatie kopie naar het API-eind punt. De resultaten omvatten Url's en beschrijvende informatie over afbeeldingen die vergelijkbaar zijn met de geüploade afbeelding.
+Gebruik deze Quick Start om ervoor te zorgen dat uw eerste oproep naar de Bing Visual Search-API met behulp van de ruby-programmeer taal. Een POST-aanvraag uploadt een installatie kopie naar het API-eind punt. De resultaten omvatten Url's en beschrijvende informatie over afbeeldingen die vergelijkbaar zijn met de geüploade afbeelding.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze snelstartgids uitvoeren:
-
-* [Ruby 2,4 of hoger](https://www.ruby-lang.org/en/downloads/) installeren
-* Een abonnements sleutel ophalen:
+* Installeer [Ruby 2,4 of hoger](https://www.ruby-lang.org/en/downloads/).
+* Een abonnements sleutel ophalen.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Project en de vereiste modules
 
-Maak een nieuw ruby-project in uw IDE of editor. De `net/http`JSON `uri` -tekst `json` van de resultaten importeren,, en verwerken. De `base64` bibliotheek wordt gebruikt om de teken reeks voor de bestands naam te coderen: 
+Maak een nieuw ruby-project in uw IDE of editor. `net/http` `uri` `json` De JSON-tekst van de resultaten importeren,, en verwerken. Importeer de `base64` bibliotheek, die de teken reeks voor de bestands naam codeert. 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Met de volgende code worden de vereiste variabelen toegewezen. Controleer of het eind punt juist is en vervang `accessKey` de waarde door een abonnements sleutel van uw Azure-account.  De `batchNumber` is een GUID die is vereist voor voor loop-en volg grenzen van de post gegevens.  De `fileName` variabele identificeert het afbeeldings bestand voor het bericht.  De `if` blok tests voor een geldige abonnements sleutel.
+Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen: 
 
-```
+1. Controleer of het eindpunt juist is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. 
+2. `batchNumber`Wijs voor een GUID toe die is vereist voor de voor loop-en volg grenzen van de post gegevens. 
+3. Wijs voor het `fileName` afbeeldings bestand dat u wilt gebruiken voor het bericht. 
+4. Gebruik een `if` blok om te testen op een geldige abonnements sleutel.
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>Formulier gegevens voor POST-aanvraag
 
-De afbeeldings gegevens die moeten worden geplaatst, worden inge sloten door de voor loop-en volg grenzen. Met de volgende functies worden de grenzen ingesteld:
+1. Plaats de afbeeldings gegevens in een bericht met de voor loop-en volg grenzen. Met de volgende functies worden de grenzen ingesteld:
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-Maak vervolgens de eind punt-URI en een matrix om de hoofd tekst te bevatten.  Gebruik de functie Previous om de start grens in de matrix te laden. Lees het afbeeldings bestand in de matrix. Lees vervolgens de eind grens in de matrix:
+2. Maak de eind punt-URI en een matrix om de hoofd tekst te bevatten. Gebruik de functie Previous om de start grens in de matrix te laden. Lees het afbeeldings bestand in de matrix en lees de eind grens in de matrix.
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>De HTTP-aanvraag maken
 
-Stel de `Ocp-Apim-Subscription-Key` koptekst in.  Maak de aanvraag. Vervolgens wijst u de header en het inhouds type toe. Word lid van de POST hoofd tekst die u eerder hebt gemaakt voor de aanvraag:
+Stel de `Ocp-Apim-Subscription-Key` koptekst in. Maak de aanvraag en wijs vervolgens de header en het inhouds type toe. Word lid van de POST-hoofd tekst die u eerder hebt gemaakt voor de aanvraag.
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Aanvraag en antwoord
 
-Ruby verzendt de aanvraag en haalt de reactie op met de volgende regel code:
+Ruby verzendt de aanvraag en ontvangt het antwoord met de volgende code:
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 De kopteksten van het antwoord afdrukken en de JSON-bibliotheek gebruiken om de uitvoer op te maken:
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>Resultaten
+## <a name="json-response"></a>JSON-antwoord
 
 De volgende JSON is een segment van de uitvoer:
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6
@@ -284,5 +286,5 @@ JSON Response:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Overzicht van Bing Visual Search](../overview.md)
-> [een Visual Search Web-app met één pagina bouwen](../tutorial-bing-visual-search-single-page-app.md)
+> [Wat is de Bing Visual Search-API?](../overview.md) 
+>  [Een Visual Search Web-app met één pagina bouwen](../tutorial-bing-visual-search-single-page-app.md)
