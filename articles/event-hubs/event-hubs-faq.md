@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726244"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835611"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -250,7 +250,7 @@ Event Hubs ondersteunt twee typen [Diagnostische logboeken](event-hubs-diagnosti
 
 ### <a name="support-and-sla"></a>Ondersteuning en SLA
 
-Technische ondersteuning voor Event Hubs is beschikbaar via de [forums](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)van de community. Ondersteuning bij facturering en abonnements beheer is gratis.
+Technische ondersteuning voor Event Hubs is beschikbaar via de [pagina micro soft Q&een vraag voor Azure service bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html). Ondersteuning bij facturering en abonnements beheer is gratis.
 
 Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) .
 

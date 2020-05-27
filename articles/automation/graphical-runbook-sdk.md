@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 969e60cd08a65adb1dd731aa7c6c3f9872e288fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744334"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835033"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>De Azure Automation grafische runbook SDK gebruiken (preview-versie)
 
@@ -141,4 +141,4 @@ De geserialiseerde indeling kan worden gewijzigd in toekomstige versies van `Orc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Grafische runbooks ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
+Zie [grafische Runbooks ontwerpen in azure Automation](automation-graphical-authoring-intro.md)voor meer informatie.

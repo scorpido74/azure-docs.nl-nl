@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745305"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830698"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -254,4 +254,14 @@ Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Veelgestelde vragen over Azure Automation](automation-faq.md)
+* Zie [updates en patches voor uw virtuele Azure-machines beheren](automation-tutorial-update-management.md)voor meer informatie over het werken met updatebeheer.
+* Als u een dynamische VM-groep wilt richten op updates, raadpleegt u [dynamische groepen gebruiken met updatebeheer](automation-update-management-groups.md).
+* Zie [updatebeheer gebruiken met Azure Resource Manager sjabloon](automation-update-management-deploy-template.md)om de functie in te scha kelen met behulp van een Azure Resource Manager sjabloon.
+* Zie [updatebeheer inschakelen vanuit een runbook](automation-onboard-solutions.md)om de functie in te scha kelen vanuit een runbook.
+* Zie [updatebeheer inschakelen vanuit een Automation-account](automation-onboard-solutions-from-automation-account.md)om de functie in te scha kelen vanuit een Automation-account.
+* Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [updatebeheer van Azure Portal inschakelen](automation-onboard-solutions-from-browse.md).
+* Als u de functie wilt inschakelen vanaf een virtuele Azure-machine, raadpleegt u [updatebeheer inschakelen op een virtuele machine van Azure](automation-onboard-solutions-from-vm.md).
+* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Query updatebeheer-logboeken](automation-update-management-query-logs.md).
+* Zie [problemen met updatebeheer oplossen](troubleshoot/update-management.md)voor informatie over het oplossen van functie fouten.
+* Zie problemen [met Windows Update agent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van fouten in Windows Update Agent.
+* Zie problemen [met de Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met Linux-update agenten.

@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u Azure AD in Azure Automation kunt gebr
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745257"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830562"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD gebruiken voor verificatie bij Azure
 
@@ -159,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Referenties beheren in Azure Automation](shared-resources/credentials.md)
-* [Modules beheren in Azure Automation](shared-resources/modules.md)
-* [Start a runbook in Azure Automation](start-runbooks.md) (Een runbook starten in Azure Automation)
-* [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)
+* Zie [referenties beheren in azure Automation](shared-resources/credentials.md)voor meer informatie over het gebruik van referenties.
+* Zie [modules beheren in azure Automation](shared-resources/modules.md)voor meer informatie over modules.
+* Als u een runbook moet starten, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).
+* Zie Power shell- [documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell.
