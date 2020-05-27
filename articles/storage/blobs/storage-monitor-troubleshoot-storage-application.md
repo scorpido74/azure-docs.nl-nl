@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68844880"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652155"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Een toepassing voor cloudopslag bewaken en problemen oplossen
 
@@ -33,15 +33,15 @@ Logboekregistratie en metrische gegevens van opslagaccounts worden ingeschakeld 
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com)
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="turn-on-logging-and-metrics"></a>Logboekregistratie en metrische gegevens inschakelen
 
 Selecteer in het menu links **Resourcegroepen**, selecteer **myResourceGroup** en selecteer vervolgens uw opslagaccount in de lijst met resources.
 
-Stel onder **Diagnostische instellingen (klassiek)****Status** in op **Aan**. Zorg ervoor dat alle opties onder **Blob-eigenschappen** zijn ingeschakeld.
+Stel onder **Diagnostische instellingen (klassiek)** **Status** in op **Aan**. Zorg ervoor dat alle opties onder **Blob-eigenschappen** zijn ingeschakeld.
 
-Wanneer u klaar bent, klikt u op **Opslaan**
+Na het voltooien klikt u op **Opslaan**.
 
 ![Het deelvenster Diagnostische gegevens](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -51,9 +51,9 @@ Waarschuwingen bieden een manier waarbij beheerders e-mails ontvangen of dat er 
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Navigeren naar het opslagaccount in Azure Portal
 
-Selecteer onder het gedeelte **Bewaking** de optie **Waarschuwingen (klassiek)**.
+Selecteer onder het gedeelte **Bewaking** de optie **Waarschuwingen (klassiek)** .
 
-Selecteer **Waarschuwing voor metrische gegevens toevoegen (klassiek)** en voltooi het formulier **Regel toevoegen** door de vereiste gegevens in te vullen. In de vervolgkeuzelijst **Metrisch** selecteert u `SASClientOtherError`. Als u wilt toestaan dat de waarschuwing bij de eerste fout wordt geactiveerd, selecteert u in de vervolgkeuzelijst **Voorwaarde****Groter dan of gelijk aan**.
+Selecteer **Waarschuwing voor metrische gegevens toevoegen (klassiek)** en voltooi het formulier **Regel toevoegen** door de vereiste gegevens in te vullen. In de vervolgkeuzelijst **Metrisch** selecteert u `SASClientOtherError`. Als u wilt toestaan dat de waarschuwing bij de eerste fout wordt geactiveerd, selecteert u in de vervolgkeuzelijst **Voorwaarde** **Groter dan of gelijk aan**.
 
 ![Het deelvenster Diagnostische gegevens](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
@@ -87,9 +87,9 @@ In dit scenario gaat u [Microsoft Message Analyzer](https://technet.microsoft.co
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer downloaden
 
-Download [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) en installeer de toepassing.
+Download [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) en installeer de toepassing.
 
-Start de toepassing en kies **bestand** > **openen** > **uit andere bestands bronnen**.
+Start de toepassing en kies **Bestand** > **Openen** > **Vanuit andere bestandsbronnen**.
 
 Selecteer in het dialoogvenster **Bestandsselector** de optie **+ Azure-verbinding toevoegen**. Voer uw **opslagaccountnaam** en **accountsleutel** in en klik op **OK**.
 
