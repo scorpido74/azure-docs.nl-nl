@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167672"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873893"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en C #
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze C#-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze C#-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in C#, is de API een betrouw bare webservice die compatibel is met de meeste programmeer talen.
+
+In dit voorbeeld programma in deze Snelstartgids worden alleen .NET core-klassen gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,13 +32,11 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Een abonnementssleutel
 
-In dit voorbeeldprogramma worden alleen .NET Core-klassen gebruikt.
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Een project maken en afhankelijkheden declareren
 
-Maak een nieuw project in Visual Studio of Mono. Gebruik vervolgens deze code om vereiste naamruimten en typen te importeren.
+Maak een nieuw project in Visual Studio of Mono. Gebruik de volgende code om de vereiste naam ruimten en typen te importeren:
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan.  `uriBase`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of de `uriBase` geldig is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen. Vergeet niet om deze code toe te `Program` voegen aan de klasse zoals hierboven wordt vermeld.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. Voeg deze code toe aan de `Program` klasse die u in de vorige sectie hebt gemaakt: 
+
+1. Voor de `uriBase` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. 
+
+2. Controleer of `uriBase` het geldig is en vervang de `accessKey` waarde door een abonnements sleutel van uw Azure-account. 
+
+3. U kunt de zoek query eventueel aanpassen door de waarde voor te vervangen `searchTerm` . 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>De methode Main declareren
 
-De `Main()` methode is vereist en is de eerste methode die wordt aangeroepen wanneer het programma wordt gestart. In deze toepassing valideert de methode Man de `accessKey`, doet een aanvraag en drukt het antwoord af.
+De `Main()` methode is vereist en is de eerste methode die wordt aangeroepen wanneer u het programma start. In deze toepassing valideert de methode Man de `accessKey`, doet een aanvraag en drukt het antwoord af.
 
-Houd er rekening mee dat `main()` afhankelijk is van methoden die in de volgende secties worden gemaakt.
+De `main()` methode is afhankelijk van de methoden die u in de volgende secties maakt.
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Een struct voor zoekresultaten maken
 
-Deze struct retourneert zoekresultaten met relevante headers. Het wordt aangeroepen bij het maken van een aanvraag voor de Bing Webzoekopdrachten-API om een resultaat object te creëren.
+Maak een struct waarmee Zoek resultaten worden geretourneerd met relevante kopteksten. U kunt deze aanroepen wanneer u een aanvraag indient bij de Bing Webzoekopdrachten-API om een resultaat object te maken.
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>Het antwoord opmaken
 
-Met deze methode wordt het JSON-antwoord opgemaakt, voornamelijk door het toevoegen van inspringing en regeleinden.
+Met deze methode wordt het JSON-antwoord opgemaakt, voornamelijk door het inspringen en toevoegen van regel einden.
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-De laatste stap is het uitvoeren van uw code. Als u uw code wilt vergelijken met de onze, is er [voorbeeldcode beschikbaar op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs).
+De laatste stap is het uitvoeren van uw code. Zie de [voorbeeld code op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)als u uw code wilt vergelijken met onze.
 
-## <a name="sample-response"></a>Voorbeeldantwoord
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.  
 
@@ -366,6 +372,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

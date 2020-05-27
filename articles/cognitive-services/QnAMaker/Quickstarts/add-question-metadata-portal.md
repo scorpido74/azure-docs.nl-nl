@@ -1,20 +1,14 @@
 ---
 title: 'Snelstartgids: vragen en antwoorden toevoegen in QnA Maker Portal'
 description: Deze Quick Start laat zien hoe u vraag-en antwoord sets kunt toevoegen met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756681"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873694"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Snelstartgids: vragen toevoegen en antwoord geven met QnA Maker Portal
 
@@ -82,11 +76,11 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toep
 
 1. Selecteer **weergave opties**en selecteer vervolgens **meta gegevens weer geven**.
 
-1. Voor het QnA-paar dat u zojuist hebt toegevoegd, selecteert u **Tags voor meta gegevens toevoegen**en vervolgens de `service` naam `search`en de waarde van toevoegen. Dit ziet er als volgt `service:search`uit:.
+1. Voor het QnA-paar dat u zojuist hebt toegevoegd, selecteert u **Tags voor meta gegevens toevoegen**en vervolgens de naam `service` en de waarde van toevoegen `search` . Dit ziet er als volgt uit: `service:search` .
 
-1. Voeg een andere meta gegevens code met `link_in_answer` de naam en `false`waarde van toe. Dit ziet er als volgt `link_in_answer:false`uit:.
+1. Voeg een andere meta gegevens code met de naam `link_in_answer` en waarde van toe `false` . Dit ziet er als volgt uit: `link_in_answer:false` .
 
-1. Zoek het eerste antwoord in de tabel, `How large a knowledge base can I create?`.
+1. Zoek het eerste antwoord in de tabel, `How large a knowledge base can I create?` .
 
 1. Voeg Meta gegevensparen toe voor dezelfde twee meta gegevenslabels:
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735620"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874039"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen
 
@@ -26,7 +26,7 @@ ms.locfileid: "82735620"
 
 ## <a name="get-object-ids"></a>Object-Id's ophalen
 
-Als u een rol wilt toewijzen, moet u de ID opgeven van de gebruiker, groep of toepassing waaraan u de rol wilt toewijzen. De ID heeft de volgende indeling `11111111-1111-1111-1111-111111111111`:. U kunt de ID ophalen met behulp van de Azure Portal, Azure PowerShell of Azure CLI.
+Als u een rol wilt toewijzen, moet u de ID opgeven van de gebruiker, groep of toepassing waaraan u de rol wilt toewijzen. De ID heeft de volgende indeling: `11111111-1111-1111-1111-111111111111` . U kunt de ID ophalen met behulp van de Azure Portal, Azure PowerShell of Azure CLI.
 
 ### <a name="user"></a>Gebruiker
 
@@ -77,7 +77,7 @@ De volgende sjabloon toont een eenvoudige manier om een roltoewijzing toe te voe
 Als u de sjabloon wilt gebruiken, moet u het volgende doen:
 
 - Een nieuw JSON-bestand maken en de sjabloon kopiëren
-- Vervang `<your-principal-id>` door de id van een gebruiker, groep of toepassing om de rol toe te wijzen aan
+- Vervang door `<your-principal-id>` de id van een gebruiker, groep of toepassing om de rol toe te wijzen aan
 
 ```json
 {
@@ -173,7 +173,7 @@ Als u de sjabloon wilt gebruiken, moet u de volgende invoer opgeven:
 ```
 
 > [!NOTE]
-> Deze sjabloon is niet idempotent tenzij dezelfde `roleNameGuid` waarde wordt gegeven als een para meter voor elke implementatie van de sjabloon. Als er `roleNameGuid` geen wordt geleverd, wordt er standaard een nieuwe GUID gegenereerd voor elke implementatie en mislukken volgende implementaties met een `Conflict: RoleAssignmentExists` fout.
+> Deze sjabloon is niet idempotent tenzij dezelfde `roleNameGuid` waarde wordt gegeven als een para meter voor elke implementatie van de sjabloon. Als er geen `roleNameGuid` wordt geleverd, wordt er standaard een nieuwe GUID gegenereerd voor elke implementatie en mislukken volgende implementaties met een `Conflict: RoleAssignmentExists` fout.
 
 Het bereik van de roltoewijzing wordt bepaald op basis van het niveau van de implementatie. Hier vindt u een voor beeld van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment opdrachten maken](/cli/azure/group/deployment#az-group-deployment-create) voor het starten van de implementatie in een bereik van een resource groep.
 
@@ -293,7 +293,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ge
 
 ### <a name="new-service-principal"></a>Nieuwe Service-Principal
 
-Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u `principalType` de eigenschap `ServicePrincipal` instellen op bij het maken van de roltoewijzing.
+Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u de `principalType` eigenschap instellen op `ServicePrincipal` bij het maken van de roltoewijzing.
 
 In de volgende sjabloon ziet u:
 
@@ -358,6 +358,15 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een nieuwe beheerde ID service-principal na de implementatie van de sjabloon.
 
 ![Roltoewijzing voor een nieuwe beheerde ID service-principal](./media/role-assignments-template/role-assignment-template-msi.png)
+
+## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
+
+In azure RBAC kunt u de functie toewijzing verwijderen om de toegang tot een Azure-resource te verwijderen. Er is geen manier om een roltoewijzing te verwijderen met behulp van een sjabloon. Als u een roltoewijzing wilt verwijderen, moet u andere hulpprogram ma's gebruiken, zoals:
+
+- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure-CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Volgende stappen
 

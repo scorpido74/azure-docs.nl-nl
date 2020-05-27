@@ -3,13 +3,13 @@ title: Een Windows Server-container maken op een Azure Kubernetes service (AKS)-
 description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken, hoe u een toepassing implementeert in een Windows Server-container in azure Kubernetes service (AKS) met behulp van Power shell.
 services: container-service
 ms.topic: article
-ms.date: 05/12/2020
-ms.openlocfilehash: d488935a9f45d775578179cb58423d882a1cee27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/26/2020
+ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724986"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873573"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Power shell
 
@@ -24,9 +24,6 @@ In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernet
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 Als u Power shell lokaal wilt gebruiken, moet u voor dit artikel de AZ Power shell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Zie [Install Azure PowerShell][install-azure-powershell](Engelstalig) voor meer informatie over het installeren van de AZ Power shell-module.
-
-> [!IMPORTANT]
-> In dit artikel wordt gebruikgemaakt van een preview-versie van de Power shell-module AZ. AKS. U moet deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Zodra de preview-versie van de Power shell-module AZ. AKS algemeen beschikbaar is, wordt deze onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

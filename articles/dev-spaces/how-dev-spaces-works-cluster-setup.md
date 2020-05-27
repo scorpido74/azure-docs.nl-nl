@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u een Azure Kubernetes-service cluster instelt voor Azure dev Spaces werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241723"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873546"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Hoe instellen van een cluster voor Azure dev Spaces werkt
 
@@ -18,7 +18,7 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 ## <a name="prepare-your-aks-cluster"></a>Uw AKS-cluster voorbereiden
 
-Als u uw AKS-cluster wilt voorbereiden op ontwikkel ruimten, controleert u of uw AKS-cluster zich in een regio bevindt [die wordt ondersteund door Azure dev Spaces][supported-regions] en of u Kubernetes 1.10.3 of hoger uitvoert. Als u Azure-ontwikkel ruimten op uw cluster wilt inschakelen vanuit de Azure Portal, navigeert u naar uw cluster, klikt u op *ontwikkelaars ruimten*, wijzigt u *dev Spaces* in *Ja*en klikt u op *Opslaan*. U kunt ook Azure dev-ruimten inschakelen vanuit de Azure CLI door `az aks use-dev-spaces`uit te voeren.
+Als u uw AKS-cluster wilt voorbereiden op ontwikkel ruimten, controleert u of uw AKS-cluster zich in een regio bevindt [die wordt ondersteund door Azure dev Spaces][supported-regions] en of u Kubernetes 1.10.3 of hoger uitvoert. Als u Azure-ontwikkel ruimten op uw cluster wilt inschakelen vanuit de Azure Portal, navigeert u naar uw cluster, klikt u op *ontwikkelaars ruimten*, wijzigt u *dev Spaces* in *Ja*en klikt u op *Opslaan*. U kunt ook Azure dev-ruimten inschakelen vanuit de Azure CLI door uit te voeren `az aks use-dev-spaces` .
 
 Zie de [Snelstartgids voor team ontwikkeling][quickstart-team]voor een voor beeld van het instellen van een AKS-cluster voor dev Spaces.
 
@@ -50,7 +50,7 @@ Als u Azure dev Spaces wilt gebruiken, moet er ten minste één dev-ruimte zijn.
 
 Wanneer een naam ruimte wordt aangewezen als een dev-ruimte, voegt de controller het label *azds.io/Space=True* toe aan die naam ruimte om het te identificeren als een dev-ruimte. De eerste ontwikkel ruimte die u maakt of aanwijst, is standaard geselecteerd nadat u het cluster hebt voor bereid. Wanneer er een ruimte is geselecteerd, wordt deze door Azure-ontwikkel ruimten gebruikt voor het maken van nieuwe werk belastingen.
 
-U kunt het hulp programma aan de client zijde gebruiken om nieuwe ontwikkel ruimten te maken en bestaande ontwikkel ruimten te verwijderen. Als gevolg van een beperking in Kubernetes kan de *standaard* -ontwikkel ruimte niet worden verwijderd. De controller verwijdert ook alle bestaande Kubernetes-naam ruimten met de naam *azds* om te `azds` voor komen dat er conflicten ontstaan met de opdracht die wordt gebruikt door het hulp programma aan de client zijde.
+U kunt het hulp programma aan de client zijde gebruiken om nieuwe ontwikkel ruimten te maken en bestaande ontwikkel ruimten te verwijderen. Als gevolg van een beperking in Kubernetes kan de *standaard* -ontwikkel ruimte niet worden verwijderd. De controller verwijdert ook alle bestaande Kubernetes-naam ruimten met de naam *azds* om te voor komen dat er conflicten ontstaan met de `azds` opdracht die wordt gebruikt door het hulp programma aan de client zijde.
 
 De Kubernetes-webhook-toegangs server wordt gebruikt voor het injecteren van Peul met drie containers tijdens de implementatie voor instrumentatie: een devspaces-proxy container, een devspaces-proxy-init-container en een devspaces-build-container. **Alle drie deze containers worden uitgevoerd met toegang tot het hoofd niveau van uw AKS-cluster.** Ze gebruiken ook dezelfde service-principal die uw AKS-cluster gebruikt om service aanroepen naar andere Azure dev Space-onderdelen te maken.
 
@@ -78,15 +78,15 @@ Met het hulp programma aan de client zijde kan de gebruiker het volgende doen:
 
 Terwijl uw toepassing wordt uitgevoerd, wordt het hulp programma voor de client ook gebruikt:
 * Hiermee worden stdout en stderr ontvangen en weer gegeven vanuit uw toepassing die wordt uitgevoerd in AKS.
-* Maakt gebruik van een [poort](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) om webtoegang toe te staan voor uw toepassing\/via http:/localhost.
+* Maakt gebruik van een [poort](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) om webtoegang toe te staan voor uw toepassing via http: \/ /localhost.
 * Hiermee koppelt u een fout opsporingsprogramma aan uw actieve toepassing in AKS.
 * Synchroniseert de bron code naar uw ontwikkel ruimte wanneer een wijziging wordt gedetecteerd voor incrementele builds, waardoor snelle herhaling mogelijk is.
 * Hiermee kunt u uw ontwikkelaars computer rechtstreeks aansluiten op uw AKS-cluster.
 
-U kunt het hulp programma aan de client zijde vanaf de opdracht regel gebruiken als onderdeel van `azds` de opdracht. U kunt ook het hulp programma aan de client zijde gebruiken met:
+U kunt het hulp programma aan de client zijde vanaf de opdracht regel gebruiken als onderdeel van de `azds` opdracht. U kunt ook het hulp programma aan de client zijde gebruiken met:
 
 * Visual Studio code met behulp van de [Azure dev Spaces-extensie](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio met [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio met de werk belasting Azure Development.
 
 ## <a name="next-steps"></a>Volgende stappen
 

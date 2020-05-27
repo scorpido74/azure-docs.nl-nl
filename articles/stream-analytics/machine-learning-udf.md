@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481976"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874071"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
 U kunt machine learning modellen implementeren als een door de gebruiker gedefinieerde functie (UDF) in uw Azure Stream Analytics taken om in realtime scores en voor spellingen te doen op uw invoer gegevens voor streaming. Met [Azure machine learning](../machine-learning/overview-what-is-azure-ml.md) kunt u een veelgebruikt open source-hulp programma gebruiken, zoals tensor flow, scikit-Learn of PyTorch, voor het voorbereiden, trainen en implementeren van modellen.
-
-> [!NOTE]
-> Deze functionaliteit bevindt zich in de open bare preview. U kunt deze functie alleen gebruiken op de Azure Portal met de [Stream Analytics Portal-preview-koppeling](https://aka.ms/asaportalpreview). Deze functionaliteit is ook beschikbaar in de nieuwste versie van [Stream Analytics-hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +28,7 @@ Voer de volgende stappen uit voordat u een machine learning model toevoegt als e
 
 3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 
-4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die op Azure Container Instances worden geïmplementeerd, worden momenteel niet ondersteund, maar worden in de komende maanden beschikbaar.
+4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die worden geïmplementeerd op Azure Container Instances worden alleen ondersteund wanneer u de Azure Portal gebruikt.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning model toevoegen aan uw taak
 
@@ -73,7 +70,7 @@ Stream Analytics biedt alleen ondersteuning voor het door geven van één para m
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Meerdere invoer parameters door geven aan de UDF
 
-De meest voorkomende voor beelden van invoer voor machine learning modellen zijn numpy-matrices en DataFrames. U kunt een matrix maken met behulp van een Java script UDF en een JSON-geserialiseerd data frame maken `WITH` met behulp van de-component.
+De meest voorkomende voor beelden van invoer voor machine learning modellen zijn numpy-matrices en DataFrames. U kunt een matrix maken met behulp van een Java script UDF en een JSON-geserialiseerd data frame maken met behulp van de- `WITH` component.
 
 ### <a name="create-an-input-array"></a>Een invoer matrix maken
 
@@ -110,7 +107,7 @@ De volgende JSON is een voorbeeld aanvraag:
 
 ### <a name="create-a-pandas-or-pyspark-dataframe"></a>Een Panda-of PySpark-data frame maken
 
-U kunt de `WITH` -component gebruiken om een JSON serialized data frame te maken die als invoer kan worden door gegeven aan uw Azure machine learning UDF, zoals hieronder wordt weer gegeven.
+U kunt de- `WITH` component gebruiken om een JSON serialized data frame te maken die als invoer kan worden door gegeven aan uw Azure machine learning UDF, zoals hieronder wordt weer gegeven.
 
 Met de volgende query maakt u een data frame door de gewenste velden te selecteren en de data frame als invoer te gebruiken voor de Azure Machine Learning UDF.
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7b33a857953b7f96180e306195dd0e8b21450556
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446592"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874005"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en python
 
-Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten weer te geven. Deze python-toepassing uploadt een installatie kopie naar de API en geeft de informatie weer die wordt geretourneerd. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Visual Search-API te maken. Deze python-toepassing uploadt een installatie kopie naar de API en geeft de informatie weer die wordt geretourneerd. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
     import requests, json
     ```
 
-2. Maak variabelen voor de abonnementssleutel, het eindpunt en het pad voor de afbeelding die u uploadt. `BASE_URI`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource:
+2. Maak variabelen voor de abonnementssleutel, het eindpunt en het pad voor de afbeelding die u uploadt. Voor de waarde van `BASE_URI` kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```python
 
@@ -44,7 +44,7 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
     imagePath = 'your-image-path'
     ```
     
-    Wanneer u een lokale installatie kopie uploadt, moeten de formulier gegevens `Content-Disposition` de koptekst bevatten. U moet de `name` para meter instellen op "afbeelding" en u kunt de `filename` para meter instellen op elke wille keurige teken reeks. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldings grootte die u kunt uploaden, is 1 MB.
+3. Wanneer u een lokale installatie kopie uploadt, moeten de formulier gegevens de `Content-Disposition` koptekst bevatten. Stel de `name` para meter in op "image" en stel de `filename` para meter in op de bestands naam van de installatie kopie. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldings grootte die u kunt uploaden, is 1 MB.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
     --boundary_1234-abcd--
     ```
 
-3. Maak een woordenlijst object voor de koptekst gegevens van uw aanvraag. Verbind uw abonnements sleutel met de `Ocp-Apim-Subscription-Key`teken reeks, zoals hieronder wordt weer gegeven:
+4. Maak een woordenlijst object voor de koptekst gegevens van uw aanvraag. Verbind uw abonnements sleutel met de teken reeks `Ocp-Apim-Subscription-Key` .
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Maak een andere woorden lijst die uw afbeelding bevat, die wordt geopend en geüpload wanneer u de aanvraag verzendt:
+5. Maak een andere woorden lijst die uw afbeelding bevat, die wordt geopend en geüpload wanneer u de aanvraag verzendt.
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +69,27 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
 
 ## <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-1. Maak een methode met `print_json()` de naam die u in de API-reactie wilt nemen en druk de JSON af:
+Maak een aangeroepen methode `print_json()` voor het accepteren van de API-reactie en druk de JSON af.
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-1. Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. Afdrukken `response.json()` met `print_json()`:
+Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. Afdrukken `response.json()` met `print_json()` .
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

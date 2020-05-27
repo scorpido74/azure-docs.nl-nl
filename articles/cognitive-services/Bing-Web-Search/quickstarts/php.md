@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169733"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873826"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Snelstart: PHP gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 ## <a name="enable-secure-http-support"></a>Beveiligde HTTP-ondersteuning inschakelen
 
-Voordat we aan de slag gaan, gaat u eerst naar `php.ini` en haalt u de opmerkingen weg bij deze regel:
+Voordat we aan de slag gaan, gaat u naar PHP. ini en geeft u een opmerking over deze regel:
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ Voordat we aan de slag gaan, gaat u eerst naar `php.ini` en haalt u de opmerking
 
 ## <a name="create-a-project-and-define-variables"></a>Een project maken en variabelen definiëren
 
-Maak een nieuw PHP-project in uw favoriete IDE of editor. Vergeet niet om de tags voor openen en sluiten `<?php` en `?>` toe te voegen.
+1. Maak een nieuw PHP-project in uw favoriete IDE of editor. Open-en afsluit Tags toevoegen: `<?php` en `?>` .
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `$endpoint`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of `$endpoint` juist is en vervang de waarde `$accesskey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `$term` te vervangen.
+2. Voor de `$endpoint` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. 
+
+3. Controleer of de `$endpoint` waarde juist is en vervang de `$accesskey` waarde door een geldige abonnements sleutel van uw Azure-account. 
+
+4. U kunt de zoek query eventueel aanpassen door de waarde voor te vervangen `$term` .
 
 ```php
 $accessKey = 'enter key here';
@@ -53,7 +57,7 @@ $term = 'Microsoft Cognitive Services';
 
 ## <a name="construct-a-request"></a>Een aanvraag samenstellen
 
-Met deze code wordt een functie gedeclareerd met de naam `BingWebSearch`, die wordt gebruikt om aanvragen naar de Bing Webzoekopdrachten-API samen te stellen. Hiervoor zijn drie argumenten nodig: `$url`, `$key` en `$query`.
+Deze code declareert een functie met de naam `BingWebSearch` die wordt gebruikt om aanvragen te maken voor de Bing webzoekopdrachten-API. Hiervoor zijn drie argumenten nodig: `$url`, `$key` en `$query`.
 
 ```php
 function BingWebSearch ($url, $key, $query) {
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-De laatste stap bestaat uit het valideren van uw code en het uitvoeren hiervan. Als u uw code wilt vergelijken met die van ons, volgt hier het volledige programma:
+De laatste stap is om de code te valideren en uit te voeren. Als u uw code wilt vergelijken met die van ons, volgt hier het volledige programma:
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>Voorbeeldantwoord
+## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
 Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.  
 
@@ -284,6 +288,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie voor app met één pagina voor Bing Web Search ](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

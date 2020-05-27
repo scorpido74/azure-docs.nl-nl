@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898956"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873524"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
 
@@ -47,9 +47,9 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-Met `use-dev-spaces` deze opdracht wordt ook de Azure dev Space cli geïnstalleerd.
+Met deze `use-dev-spaces` opdracht wordt ook de Azure dev Space cli geïnstalleerd.
 
-Als u Azure dev Spaces wilt verwijderen uit uw AKS- `azds remove` cluster, gebruikt u de opdracht. Bijvoorbeeld:
+Als u Azure dev Spaces wilt verwijderen uit uw AKS-cluster, gebruikt u de `azds remove` opdracht. Bijvoorbeeld:
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -84,7 +84,6 @@ U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communicere
 
 * Installeer de [Azure dev Space-extensie][vscode-extension]in [Visual Studio code][vscode].
 * Installeer de werk belasting Azure Development in [Visual Studio 2019][visual-studio].
-* Installeer in Visual Studio 2017 de workload Web Development-en [Visual Studio Tools voor Kubernetes][visual-studio-k8s-tools].
 * Down load en installeer de [Windows][cli-win]-, [Mac][cli-mac]-of [Linux][cli-linux] -cli.
 
 ## <a name="next-steps"></a>Volgende stappen

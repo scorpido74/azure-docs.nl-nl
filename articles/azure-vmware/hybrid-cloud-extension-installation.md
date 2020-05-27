@@ -1,18 +1,18 @@
 ---
 title: Hybrid Cloud extension (HCX) installeren
-description: De VMWare Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMWare-oplossing (AVS)
+description: De VMware Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing (AVS)
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 74bc0dece2fc565aebc6e5301ef7a36187d6a250
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776473"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873655"
 ---
-# <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMWare-oplossing installeren
+# <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
-In dit artikel gaan we procedures volgen voor het instellen van de VMWare Hybrid Cloud extension (HCX)-oplossing voor uw Azure VMWare-oplossing (AVS) Private Cloud. HCX Advanced (standaard installatie) ondersteunt Maxi maal drie externe sites, waarbij elke externe site vereist dat een HCX Enter prise Manager of connector moet worden geïnstalleerd en geactiveerd.
+In dit artikel gaan we procedures volgen voor het instellen van de VMware Hybrid Cloud extension (HCX)-oplossing voor uw Azure VMware-oplossing (AVS) Private Cloud. HCX Advanced (standaard installatie) ondersteunt Maxi maal drie externe sites, waarbij elke externe site vereist dat een HCX Enter prise Manager of connector moet worden geïnstalleerd en geactiveerd.
 HCX maakt de migratie van uw VMware-workloads naar de Cloud en of andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen. Als er meer dan drie sites zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing via ondersteuning in te scha kelen. HCX Enter prise heeft extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [Software versie](#software-version-requirements)en de [vereisten eerst.](#prerequisites) 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176138"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873582"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Overzicht van share-momentopnamen voor Azure Files 
 Azure Files biedt de mogelijkheid om moment opnamen van shares van bestands shares te maken. Met moment opnamen delen wordt de status van de share op dat moment vastgelegd. In dit artikel wordt beschreven welke mogelijkheden moment opnamen delen bieden en hoe u deze kunt gebruiken in uw aangepaste use-case.
@@ -28,7 +28,7 @@ Stel dat u werkt met een tekst bestand in een bestands share. Wanneer het tekst 
 ### <a name="general-backup-purposes"></a>Algemene back-updoeleinden
 Nadat u een bestands share hebt gemaakt, kunt u regel matig een moment opname van de share van de bestands share maken om deze te gebruiken voor gegevens back-up. Als u regel matig een moment opname van een share maakt, kunt u de vorige versies van de gegevens behouden die kunnen worden gebruikt voor toekomstige controle vereisten of herstel na nood gevallen.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 Een moment opname van een share is een alleen-lezen kopie van uw gegevens. U kunt moment opnamen maken, verwijderen en beheren met behulp van de REST API. Dezelfde mogelijkheden zijn ook beschikbaar in de client bibliotheek, Azure CLI en Azure Portal. 
 
 U kunt moment opnamen van een share weer geven door zowel de REST API als SMB te gebruiken. U kunt de lijst met versies van de map of het bestand ophalen en u kunt een specifieke versie rechtstreeks koppelen als een station (alleen beschikbaar voor Windows-Zie [limieten](#limits)). 
@@ -37,7 +37,7 @@ Nadat een moment opname van een share is gemaakt, kan deze worden gelezen, gekop
 
 De functionaliteit van de moment opname van shares wordt op bestands share niveau gegeven. Ophalen wordt op afzonderlijke bestands niveau gegeven, zodat afzonderlijke bestanden kunnen worden teruggezet. U kunt een volledige bestands share herstellen met behulp van SMB, de REST API, de portal, de client bibliotheek of het Power shell/CLI-hulp programma.
 
-Een moment opname van een share van een bestands share is identiek aan de basis bestands share. Het enige verschil is dat een **datum/tijd** -waarde wordt toegevoegd aan de share-URI om het tijdstip aan te geven waarop de moment opname van de share is gemaakt. Als een bestands share-URI bijvoorbeeld http:\//storagesample.core.file.Windows.net/MyShare is, is de URI van de moment opname van de share gelijk aan:
+Een moment opname van een share van een bestands share is identiek aan de basis bestands share. Het enige verschil is dat een **datum/tijd** -waarde wordt toegevoegd aan de share-URI om het tijdstip aan te geven waarop de moment opname van de share is gemaakt. Als een bestands share-URI bijvoorbeeld http: \/ /storagesample.core.file.Windows.net/MyShare is, is de URI van de moment opname van de share gelijk aan:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -80,7 +80,7 @@ Wanneer u een infra structuur uitvoert op Azure, moet u, indien mogelijk, back-u
 
 Voordat u de planner voor delen van snap shots implementeert, moet u de instellingen voor moment opnamen van delen en de Bewaar periode zorgvuldig overwegen om onnodige kosten te vermijden.
 
-Moment opnamen delen bieden alleen beveiliging op bestands niveau. Moment opnamen delen verhinderen niet dat FAT-Finger wordt verwijderd op een bestands share of opslag account. Als u een opslag account wilt helpen beveiligen tegen onbedoeld verwijderen, kunt u het opslag account of de resource groep vergren delen.
+Moment opnamen delen bieden alleen beveiliging op bestands niveau. Moment opnamen delen verhinderen niet dat FAT-Finger wordt verwijderd op een bestands share of opslag account. Als u een opslag account wilt beveiligen tegen onbedoeld verwijderen, kunt u [zacht verwijderen inschakelen](storage-files-prevent-file-share-deletion.md)of het opslag account en/of de resource groep vergren delen.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Werken met moment opnamen van shares in:

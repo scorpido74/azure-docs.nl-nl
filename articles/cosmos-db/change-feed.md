@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e36e95aeb25c83ccd94f11e25bfe9f1b8f7bfdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984858"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873977"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Wijzigingenfeed in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB-Api's 
 
 ## <a name="change-feed-and-different-operations"></a>Feed en verschillende bewerkingen wijzigen
 
-U ziet nu alle invoegingen en updates in de feed voor wijzigingen. U kunt de wijzigings feed niet filteren voor een specifiek type bewerking. Een mogelijke alternatief is het toevoegen van een ' zachte markering ' voor het item voor updates en filteren op basis van die bij het verwerken van items in de wijzigings feed.
+U ziet nu alle invoegingen en updates in de feed voor wijzigingen. U kunt de wijzigings feed niet filteren op een specifiek type bewerking. Een mogelijke alternatief is het toevoegen van een ' zachte markering ' voor het item voor updates en filteren op basis van die bij het verwerken van items in de wijzigings feed.
 
 Wijzigingen in de feed worden niet in het logboek geregistreerd. Net als in het vorige voor beeld kunt u een zachte markering toevoegen voor de items die worden verwijderd. U kunt bijvoorbeeld een kenmerk toevoegen aan het item met de naam ' verwijderd ' en instellen op ' True ' en een TTL instellen voor het item, zodat het automatisch kan worden verwijderd. U kunt de wijzigings feed voor historische items lezen (de meest recente wijziging die overeenkomt met het item, het bevat geen tussenliggende wijzigingen), bijvoorbeeld items die vijf jaar geleden zijn toegevoegd. U kunt de wijzigings feed tot nu toe lezen als de oorsprong van de container, maar als een item wordt verwijderd, wordt het verwijderd uit de wijzigings feed.
 
