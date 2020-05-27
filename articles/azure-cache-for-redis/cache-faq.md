@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010219"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828267"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -20,7 +20,7 @@ Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevole
 Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden.
 
 * U kunt een vraag stellen in de opmerkingen aan het einde van deze veelgestelde vragen en samen werken met het Azure cache-team en andere leden van de community over dit artikel.
-* Als u een breder publiek wilt bereiken, kunt u een vraag stellen op het [MSDN-forum van Azure cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) en samen werken met het Azure cache-team en andere leden van de community.
+* Als u een breder publiek wilt bereiken, kunt u een vraag stellen op de [pagina micro soft Q&een vraag voor Azure cache](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) en het Azure cache-team en andere leden van de community te benaderen.
 * Als u een functie aanvraag wilt maken, kunt u uw aanvragen en ideeën voor [redis gebruikers Voice verzenden naar Azure cache](https://feedback.azure.com/forums/169382-cache).
 * U kunt ook een e-mail verzenden naar ons via de [externe feedback van Azure cache](mailto:azurecache@microsoft.com).
 
@@ -82,7 +82,7 @@ Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis
 
 * U kunt een van de zelf studies bekijken die beschikbaar zijn voor [.net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [node. js](cache-nodejs-get-started.md)en [python](cache-python-get-started.md).
 * U kunt bekijken [hoe u krachtige apps bouwt met Microsoft Azure cache voor redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* U kunt de client documentatie raadplegen voor de clients die overeenkomen met de ontwikkelings taal van uw project om te zien hoe u redis kunt gebruiken. Er zijn veel redis-clients die kunnen worden gebruikt met Azure cache voor redis. Zie [https://redis.io/clients](https://redis.io/clients)voor een lijst met redis-clients.
+* U kunt de client documentatie raadplegen voor de clients die overeenkomen met de ontwikkelings taal van uw project om te zien hoe u redis kunt gebruiken. Er zijn veel redis-clients die kunnen worden gebruikt met Azure cache voor redis. Zie voor een lijst met redis-clients [https://redis.io/clients](https://redis.io/clients) .
 
 Als u nog geen Azure-account hebt, kunt u het volgende doen:
 
@@ -112,7 +112,7 @@ Hier volgen enkele aandachtspunten voor het kiezen van een cache aanbieding.
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure cache voor redis-prestaties
-De volgende tabel bevat de maximum waarden voor de band breedte tijdens het testen van verschillende groottes van de `redis-benchmark.exe` standaard-en Premium-caches met behulp van een IaaS-VM op basis van de Azure-cache voor redis-eind punt. Voor TLS-door Voer wordt redis-Bench Mark gebruikt met stunnel om verbinding te maken met het Azure-cache geheugen voor redis-eind punten.
+De volgende tabel bevat de maximum waarden voor de band breedte tijdens het testen van verschillende groottes van de standaard-en Premium-caches met behulp `redis-benchmark.exe` van een IaaS-VM op basis van de Azure-cache voor redis-eind punt. Voor TLS-door Voer wordt redis-Bench Mark gebruikt met stunnel om verbinding te maken met het Azure-cache geheugen voor redis-eind punten.
 
 >[!NOTE] 
 >Deze waarden zijn niet gegarandeerd en er is geen SLA voor deze getallen, maar het moet gebruikelijk zijn. U moet de test uw eigen toepassing laden om de juiste cache grootte voor uw toepassing te bepalen.
@@ -142,7 +142,7 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 | P4 |  53 GB |  8 | 6.000/750   | 400,000 | 373.000 |
 | P5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
 
-Voor instructies voor het instellen van stunnel of het downloaden van de redis `redis-benchmark.exe`-hulpprogram ma's, zoals, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
+Voor instructies voor het instellen van stunnel of het downloaden van de redis `redis-benchmark.exe` -hulpprogram ma's, zoals, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
 <a name="cache-region"></a>
 
@@ -192,7 +192,7 @@ Meestal zijn de standaard waarden van de client voldoende. U kunt de opties aanp
   
 * **Time-outwaarden**
   * Denk aan uw werk belasting en stel de waarden dienovereenkomstig in. Als u grote waarden opslaat, stelt u de time-out in op een hogere waarde.
-  * Stel `AbortOnConnectFail` deze waarde in op False en laat stack Exchange. redis opnieuw verbinding maken.
+  * Stel deze waarde `AbortOnConnectFail` in op False en laat stack Exchange. redis opnieuw verbinding maken.
   * Gebruik één ConnectionMultiplexer-exemplaar voor de toepassing. U kunt een LazyConnection gebruiken om één exemplaar te maken dat wordt geretourneerd door een eigenschap Connection, zoals wordt weer gegeven in [verbinding maken met de cache met behulp van de klasse ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Stel de `ConnectionMultiplexer.ClientName` eigenschap in op een unieke naam voor het app-exemplaar voor diagnostische doel einden.
   * Gebruik meerdere `ConnectionMultiplexer` instanties voor aangepaste werk belastingen.
@@ -201,7 +201,7 @@ Meestal zijn de standaard waarden van de client voldoende. U kunt de opties aanp
       * U kunt één multiplexer voor het omgaan met kleine sleutels hebben.
       * U kunt verschillende waarden instellen voor verbindingstime-outs en pogings logica voor elke ConnectionMultiplexer die u gebruikt.
       * Stel de `ClientName` eigenschap in op elke multiplexer om te helpen met diagnostische gegevens.
-      * Deze richt lijnen kunnen leiden tot meer gestroomlijnde `ConnectionMultiplexer`latentie per.
+      * Deze richt lijnen kunnen leiden tot meer gestroomlijnde latentie per `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Welke Azure-cache voor redis-clients kan ik gebruiken?
 Een van de fantastische dingen over redis is dat er veel clients zijn die veel verschillende ontwikkelings talen ondersteunen. Zie [redis-clients](https://redis.io/clients)voor een actuele lijst met clients. Zie [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en de artikelen in de inhouds opgave voor meer zelf studies over verschillende talen en clients.
@@ -240,7 +240,7 @@ U kunt elk van de opdrachten die worden weer gegeven op [redis opdrachten](https
 * Als u een Standard-of Premium-cache hebt, kunt u redis-opdrachten uitvoeren met behulp van de [redis-console](cache-configure.md#redis-console). De redis-console biedt een veilige manier om redis-opdrachten uit te voeren in de Azure Portal.
 * U kunt ook de redis-opdracht regel Programma's gebruiken. Als u deze wilt gebruiken, voert u de volgende stappen uit:
 * Down load de [redis-opdracht regel Programma's](https://github.com/MSOpenTech/redis/releases/).
-* Verbinding maken met de cache `redis-cli.exe`met behulp van. Pass het cache-eind punt met behulp van de-h-switch en de sleutel met-a zoals wordt weer gegeven in het volgende voor beeld:
+* Verbinding maken met de cache met behulp van `redis-cli.exe` . Pass het cache-eind punt met behulp van de-h-switch en de sleutel met-a zoals wordt weer gegeven in het volgende voor beeld:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
@@ -256,7 +256,7 @@ Microsoft Azure Cache voor Redis is gebaseerd op de populaire open source Azure 
 Omdat elke client verschilt, is er niet één gecentraliseerde klassen verwijzing op MSDN en houdt elke client zijn eigen referentie documentatie bij. Naast de referentie documentatie zijn er verschillende zelf studies die laten zien hoe u aan de slag gaat met Azure cache voor redis met behulp van verschillende talen en cache-clients. Voor toegang tot deze zelf studies raadpleegt u [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en de artikelen in de inhouds opgave op hetzelfde niveau.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Kan ik Azure cache gebruiken voor redis als een PHP-sessie cache?
-Ja, als u Azure cache voor redis wilt gebruiken als een PHP-sessie cache, geeft u de connection string op voor uw Azure `session.save_path`-cache voor redis-instantie in.
+Ja, als u Azure cache voor redis wilt gebruiken als een PHP-sessie cache, geeft u de connection string op voor uw Azure-cache voor redis-instantie in `session.save_path` .
 
 > [!IMPORTANT]
 > Wanneer u Azure cache gebruikt voor redis als een PHP-sessie cache, moet u de URL coderen die wordt gebruikt om verbinding te maken met de cache, zoals wordt weer gegeven in het volgende voor beeld:
@@ -289,7 +289,7 @@ Redis server biedt geen systeem eigen ondersteuning voor TLS, maar Azure cache v
 >
 >
 
-Redis-hulpprogram ma's `redis-cli` zoals niet werken met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies in de aankondiging van de [ASP.net-sessie status provider voor redis preview release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) -blog post te volgen.
+Redis-hulpprogram ma's zoals `redis-cli` niet werken met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies in de aankondiging van de [ASP.net-sessie status provider voor redis preview release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) -blog post te volgen.
 
 Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
@@ -352,7 +352,7 @@ De volgende opdrachten bieden een voor beeld van het gebruik van redis-benchmark
 ### <a name="important-details-about-threadpool-growth"></a>Belang rijke informatie over de groei van de thread pool
 De CLR-thread pool heeft twee soorten threads: "worker" en "I/O-voltooiings poort" (IOCP).
 
-* Worker-threads worden gebruikt voor zaken zoals `Task.Run(…)`het verwerken `ThreadPool.QueueUserWorkItem(…)` van de-of-methoden. Deze threads worden ook gebruikt door verschillende onderdelen in de CLR wanneer het werk moet plaatsvinden op een achtergrond thread.
+* Worker-threads worden gebruikt voor zaken zoals het verwerken van de `Task.Run(…)` -of- `ThreadPool.QueueUserWorkItem(…)` methoden. Deze threads worden ook gebruikt door verschillende onderdelen in de CLR wanneer het werk moet plaatsvinden op een achtergrond thread.
 * IOCP-threads worden gebruikt wanneer asynchrone IO plaatsvindt, bijvoorbeeld bij het lezen van het netwerk.
 
 De thread pool biedt nieuwe werkthreads of I/O-voltooiings threads op aanvraag (zonder enige beperking) totdat de instelling ' minimum ' voor elk type thread wordt bereikt. Standaard is het minimum aantal threads ingesteld op het aantal processors op een systeem.
@@ -381,7 +381,7 @@ Op basis van deze informatie raden we u ten zeerste aan dat klanten de minimale 
 
 Deze instelling configureren:
 
-* U wordt aangeraden deze instelling programmatisch te wijzigen met behulp van de methode [thread pool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) in `global.asax.cs`. Bijvoorbeeld:
+* U wordt aangeraden deze instelling programmatisch te wijzigen met behulp van de methode [thread pool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) in `global.asax.cs` . Bijvoorbeeld:
 
 ```cs
 private readonly int minThreads = 200;
@@ -398,10 +398,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)**.
 
-* Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de configuratie-instelling `<processModel>` [ *minIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het configuratie- `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`element in `Machine.config`, meestal bevindt zich op. **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
+* Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de [configuratie-instelling *MinIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het `<processModel>` configuratie-element in `Machine.config` , meestal bevindt zich op `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
 
   > [!NOTE]
-  > De waarde die is opgegeven in dit configuratie-element is een instelling *per kern* . Als u bijvoorbeeld een computer met vier kernen hebt en u wilt dat uw *minIoThreads* -instelling 200 tijdens runtime, gebruikt `<processModel minIoThreads="50"/>`u.
+  > De waarde die is opgegeven in dit configuratie-element is een instelling *per kern* . Als u bijvoorbeeld een computer met vier kernen hebt en u wilt dat uw *minIoThreads* -instelling 200 tijdens runtime, gebruikt u `<processModel minIoThreads="50"/>` .
   >
 
 <a name="server-gc"></a>

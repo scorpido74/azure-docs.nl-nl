@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 28ddd2a2d75ab8a57dfc3176eefd703f6c43d0b6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745068"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834693"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -338,6 +338,8 @@ foreach($item in $output)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uitvoering van runbooks in Azure Automation](automation-runbook-execution.md)
-* [De tekst runbooks in Azure Automation bewerken](automation-edit-textual-runbook.md)
-* [Grafische runbooks ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)
+* Zie [runbook-uitvoering in azure Automation](automation-runbook-execution.md)voor meer informatie over het beheren van runbook.
+* Zie [tekst Runbooks bewerken in azure Automation](automation-edit-textual-runbook.md)om een Power shell-runbook voor te bereiden.
+* Zie [informatie over Power shell-werk stroom voor Azure Automation](automation-powershell-workflow.md)voor hulp bij het schrijven van een Power shell workflow-runbook.
+* Zie [grafische Runbooks ontwerpen in azure Automation](automation-graphical-authoring-intro.md)voor meer informatie over het schrijven van grafische runbooks.
+* Zie problemen met [Runbook oplossen](troubleshoot/runbooks.md)voor informatie over het oplossen van problemen met het uitvoeren van een runbook.

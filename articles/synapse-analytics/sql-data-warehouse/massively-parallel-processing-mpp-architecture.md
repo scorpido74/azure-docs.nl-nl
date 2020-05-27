@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6768bc2420008db1e708cdbe3ef70a6146ed8010
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658482"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835509"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW)
 
-Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften.
+Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor directe BI- en machine learning-behoeften.
 
  Azure Synapse heeft vier onderdelen:
 
@@ -119,6 +119,6 @@ Nu u een beetje weet over Azure Synapse, leert u hoe u snel [een SQL-groep maakt
 - [Functieverzoeken](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: a932f4ec37eda66c353df2c865bb4036ddcc59fa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741083"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798136"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
@@ -105,7 +105,7 @@ Als u een partner hebt geautoriseerd in het CSP-programma en die partner het pro
 
 Als een partner in het CSP-programma uw product niet aan hun klanten heeft verkocht en u de CSP wilt verwijderen nadat uw aanbieding is gepubliceerd, gebruikt u de volgende instructies:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://partner.microsoft.com/support/v2/?stage=1). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
 
    > [!NOTE]
    > Wijzig de vooraf gevulde vervolg menu selecties niet.
@@ -127,7 +127,7 @@ Gebruik deze sectie om te navigeren tussen de drie CSP-reseller opties.
 
 Als uw aanbieding momenteel is ingesteld **op ' 1 ': alle partners in het CSP-programma** en u wilt navigeren naar een van de twee andere opties, gebruik de volgende instructies om een aanvraag te maken:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://partner.microsoft.com/support/v2/?stage=1). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
 
    > [!NOTE]
    > Wijzig de vooraf gevulde vervolg menu selecties niet.
@@ -145,7 +145,7 @@ Als uw aanbieding momenteel is ingesteld **op ' 1 ': alle partners in het CSP-pr
 
 Als uw aanbieding momenteel is ingesteld **op 2: specifieke partners in het CSP-programma dat ik selecteer** en u wilt naar **optie 1 navigeren: een partner in het CSP-programma**, gebruik de volgende instructies om een aanvraag te maken:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://partner.microsoft.com/support/v2/?stage=1). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
 
    > [!NOTE]
    > Wijzig de vooraf gevulde vervolg menu selecties niet.
@@ -158,7 +158,7 @@ Als uw aanbieding momenteel is ingesteld **op 2: specifieke partners in het CSP-
 
  Als uw aanbieding momenteel is ingesteld **op 2: specifieke partners in het CSP-programma dat ik selecteer** en u wilt navigeren naar **optie 3: geen partners in het CSP-programma**, u kunt alleen naar deze optie navigeren als de partners in het CSP-programma dat u eerder hebt geautoriseerd, uw aanbieding niet aan eind klanten hebben verkocht. Gebruik de volgende instructies om een aanvraag te maken:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://partner.microsoft.com/support/v2/?stage=1). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
 
    > [!NOTE]
    > Wijzig de vooraf gevulde vervolg menu selecties niet.

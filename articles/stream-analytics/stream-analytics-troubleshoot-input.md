@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628739"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831888"
 ---
 # <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
@@ -139,9 +139,9 @@ FROM data
 
 Voor query's waarin drie of meer invoer waarden zijn gekoppeld aan dezelfde Event Hubs consumenten groep, maakt u afzonderlijke consumenten groepen. Hiervoor moet u aanvullende Stream Analytics invoer maken.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 

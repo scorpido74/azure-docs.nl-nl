@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f857449d4511b6ae0a5a25bf7aca9e1abc1ae7c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453436"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833690"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Parallelle vertakkingen maken of koppelen aan werk stroom acties in Azure Logic Apps
 
@@ -34,14 +34,14 @@ Als u op hetzelfde moment onafhankelijke stappen wilt uitvoeren, kunt u parallel
 
 ![Stappen parallel uitvoeren](media/logic-apps-control-flow-branches/parallel.png)
 
-Uw logische app wacht totdat alle vertakkingen zijn voltooid voordat u doorgaat met de werk stroom. Parallelle vertakkingen worden alleen uitgevoerd `runAfter` wanneer hun eigenschaps waarden overeenkomen met de voltooide status van de bovenliggende stap. `branchAction1` Zo worden beide `branchAction2` en zo ingesteld dat ze alleen worden uitgevoerd als `parentAction` de `Succeeded` status voltooid is.
+Uw logische app wacht totdat alle vertakkingen zijn voltooid voordat u doorgaat met de werk stroom. Parallelle vertakkingen worden alleen uitgevoerd wanneer hun `runAfter` eigenschaps waarden overeenkomen met de voltooide status van de bovenliggende stap. Zo `branchAction1` worden beide en zo `branchAction2` ingesteld dat ze alleen worden uitgevoerd als de `parentAction` status voltooid is `Succeeded` .
 
 > [!NOTE]
 > Voordat u begint, moet uw logische app al een stap bevatten waarin u parallelle vertakkingen kunt toevoegen.
 
 1. Open in de <a href="https://portal.azure.com" target="_blank">Azure Portal</a>uw logische app in de ontwerp functie voor logische apps.
 
-1. Beweeg de aanwijzer over de pijl boven de stap waar u parallelle vertakkingen wilt toevoegen. Kies het **plus** teken (**+**) dat wordt weer gegeven, en kies vervolgens **een parallelle vertakking toevoegen**. 
+1. Beweeg de aanwijzer over de pijl boven de stap waar u parallelle vertakkingen wilt toevoegen. Kies het **plus** teken ( **+** ) dat wordt weer gegeven, en kies vervolgens **een parallelle vertakking toevoegen**. 
 
    ![Parallelle vertakking toevoegen](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -53,7 +53,7 @@ Uw logische app wacht totdat alle vertakkingen zijn voltooid voordat u doorgaat 
 
    ![Zoek en selecteer de gewenste actie](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Voeg nu in elke parallelle vertakking de gewenste stappen toe. Als u nog een actie aan een vertakking wilt toevoegen, plaatst u de muis aanwijzer op de actie waar u een opeenvolgende actie wilt toevoegen. Kies het **plus** teken**+**() dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+1. Voeg nu in elke parallelle vertakking de gewenste stappen toe. Als u nog een actie aan een vertakking wilt toevoegen, plaatst u de muis aanwijzer op de actie waar u een opeenvolgende actie wilt toevoegen. Kies het **plus** **+** teken () dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
    ![Sequentiële actie toevoegen aan parallelle vertakking](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -183,7 +183,7 @@ Als u in de code weergave werkt, kunt u in plaats daarvan de joinlijn definiëre
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

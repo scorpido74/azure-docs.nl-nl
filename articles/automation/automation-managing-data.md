@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715423"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835203"
 ---
 # <a name="management-of-azure-automation-data"></a>Beheer van Azure Automation-gegevens
 
@@ -76,6 +76,5 @@ De geo-replicatie service voor automatisering is niet rechtstreeks toegankelijk 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Secure assets in azure Automation versleutelen](automation-secure-asset-encryption.md)voor meer informatie over beveiligde assets in azure Automation.
-
+* Zie voor meer informatie over beveiligde assets in Azure Automation [versleuteling van beveiligde assets in azure Automation](automation-secure-asset-encryption.md).
 * Zie [actieve geo-replicatie maken en gebruiken](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)om meer te weten te komen over geo-replicatie.

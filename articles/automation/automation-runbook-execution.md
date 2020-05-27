@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743914"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832347"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -228,6 +228,8 @@ Als u onderliggende runbooks gebruikt, wordt de totale hoeveelheid tijd voor het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Runbooks in Azure Automation beheren](manage-runbooks.md)
-* [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Zie [zelf studie: een Power shell-Runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)om aan de slag te gaan met een Power shell-runbook.
+* Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor het werken met runbooks.
+* Zie [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)(Engelstalig) voor meer informatie over Power shell.
+* * Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

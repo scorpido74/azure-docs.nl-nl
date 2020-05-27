@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701390"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834903"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -70,7 +70,7 @@ U kunt ook de [Azure Cosmos DB-emulator](local-emulator.md) gebruiken om uw toep
 
 Als u een technische vraag wilt stellen, kunt u een bericht plaatsen op een van deze twee vraag-en antwoord forums:
 
-* [MSDN-forum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 Als u nieuwe functies wilt aanvragen, maakt u een nieuwe aanvraag voor [gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db).

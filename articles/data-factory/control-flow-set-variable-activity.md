@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417977"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832779"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Variabele activiteit instellen in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,14 +28,14 @@ Gebruik de activiteit variabele instellen om de waarde in te stellen van een bes
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
 name | De naam van de activiteit in de pijp lijn | ja
-description | Tekst die beschrijft wat de activiteit doet | nee
+beschrijving | Tekst die beschrijft wat de activiteit doet | nee
 type | Moet worden ingesteld op **SetVariable** | ja
-waarde | Letterlijke teken reeks of expressie object waarde waaraan de variabele wordt toegewezen | ja
-variableName | Naam van de variabele die wordt ingesteld door deze activiteit | ja
+waarde | Letterlijke teken reeks of waarde van het expressie object waaraan de variabele is toegewezen | ja
+variableName | Naam van de variabele die door deze activiteit wordt ingesteld | ja
 
 ## <a name="incrementing-a-variable"></a>Een variabele verhogen
 
-Een veelvoorkomend scenario waarbij variabelen in Azure Data Factory wordt gebruikt een variabele als een iterator binnen een activiteit tot of foreach. In een set variabele-activiteit kunt u niet verwijzen naar de variabele die `value` in het veld is ingesteld. Als u deze beperking wilt omzeilen, stelt u een tijdelijke variabele in en maakt u vervolgens een tweede set variabele-activiteit. Met de tweede set variabele activity wordt de waarde van de iterator ingesteld op de tijdelijke variabele. 
+Een veelvoorkomend scenario waarbij variabelen in Azure Data Factory wordt gebruikt een variabele als een iterator binnen een activiteit tot of foreach. In een set variabele-activiteit kunt u niet verwijzen naar de variabele die in het veld is ingesteld `value` . Als u deze beperking wilt omzeilen, stelt u een tijdelijke variabele in en maakt u vervolgens een tweede set variabele-activiteit. Met de tweede set variabele activity wordt de waarde van de iterator ingesteld op de tijdelijke variabele. 
 
 Hieronder ziet u een voor beeld van dit patroon:
 

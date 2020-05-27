@@ -3,12 +3,12 @@ title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283953"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797781"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
@@ -22,7 +22,7 @@ De beste ervaring wordt verkregen door Application Insights te installeren in de
 
     * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat deze wordt ``</head>``gesloten. Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
+2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat deze wordt gesloten ``</head>`` . Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
     
     ```html
     <script type="text/javascript">
@@ -155,9 +155,9 @@ In de initialisatie functie van de web-app, zoals Global.asax.cs:
 **ASP.NET Core-apps**
 
 > [!NOTE]
-> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core toepassingen. 
+> Het toevoegen van initializer met `ApplicationInsights.config` of gebruikt `TelemetryConfiguration.Active` is niet geldig voor ASP.net core toepassingen. 
 
-Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van `Startup.cs` uw klasse.
+Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van uw `Startup.cs` klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -175,5 +175,5 @@ Alle nieuwe TelemetryClients voegen automatisch de eigenschaps waarde toe die u 
    - [Trechters](usage-funnels.md)
    - [Bewaartermijn](usage-retention.md)
    - [Gebruikersstromen](usage-flows.md)
-   - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
+   - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
    - [Gebruikers context toevoegen](usage-send-user-context.md)

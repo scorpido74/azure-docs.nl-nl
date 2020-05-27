@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248981"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826907"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
 
@@ -26,7 +26,7 @@ Als u de webhook-URI wilt toevoegen of bijwerken, gaat u in het [Azure Portal](h
 
 ![Een waarschuwings regel deel venster toevoegen](./media/alerts-webhooks/Alertwebhook.png)
 
-U kunt ook een waarschuwing configureren voor het plaatsen van een bericht naar een webhook-URI door gebruik te maken van [Azure PowerShell-cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), een [cross-platform-cli](../../azure-monitor/platform/cli-samples.md#work-with-alerts)of [Azure monitor rest-api's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+U kunt ook een waarschuwing configureren voor het plaatsen van een bericht naar een webhook-URI door gebruik te maken van [Azure PowerShell-cmdlets](../samples/powershell-samples.md#create-metric-alerts), een [cross-platform-cli](../samples/cli-samples.md#work-with-alerts)of [Azure monitor rest-api's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>De webhook verifiëren
 De webhook kan worden geverifieerd met behulp van autorisatie op basis van tokens. De webhook-URI wordt opgeslagen met een token-ID. Bijvoorbeeld: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -75,7 +75,7 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 | tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
 | id |J | |Elke waarschuwings regel heeft een unieke ID. |
 | name |J | |De naam van de waarschuwing. |
-| description |J | |Een beschrijving van de waarschuwing. |
+| beschrijving |J | |Een beschrijving van de waarschuwing. |
 | conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
 | regeling |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
 | metricName |Voor metrische waarschuwingen | |De naam van de metriek die definieert wat de regel controleert. |

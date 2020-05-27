@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77483751"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827162"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory naadloze eenmalige aanmelding
 
@@ -36,7 +36,7 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 ![Naadloze eenmalige aanmelding](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Voor naadloze SSO moet het apparaat van de gebruiker alleen lid worden van een **domein** , maar dit wordt niet gebruikt op apparaten die zijn toegevoegd aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) . SSO op Azure AD join en hybride Azure AD zijn toegevoegd op basis van het [primaire vernieuwings token](../devices/concept-primary-refresh-token.md).
+>Voor naadloze SSO moet het apparaat van de gebruiker alleen lid worden van een **domein** , maar dit wordt niet gebruikt op apparaten die zijn toegevoegd aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) . SSO op Azure AD join, hybride Azure AD toegevoegd en geregistreerde Azure AD-apparaten werken op basis van het [primaire vernieuwings token](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
@@ -51,10 +51,10 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 
 ## <a name="feature-highlights"></a>Functie hoogtepunten
 
-- De aanmeldings naam van de gebruiker kan de on-premises standaard gebruikersnaam`userPrincipalName`() zijn of een ander kenmerk dat`Alternate ID`is geconfigureerd in azure AD Connect (). Beide use-cases werken omdat bij naadloze `securityIdentifier` SSO de claim in het Kerberos-ticket wordt gebruikt om het bijbehorende gebruikers object in azure AD op te zoeken.
+- De aanmeldings naam van de gebruiker kan de on-premises standaard gebruikersnaam ( `userPrincipalName` ) zijn of een ander kenmerk dat is geconfigureerd in azure AD Connect ( `Alternate ID` ). Beide use-cases werken omdat bij naadloze SSO de `securityIdentifier` claim in het Kerberos-ticket wordt gebruikt om het bijbehorende gebruikers object in azure AD op te zoeken.
 - Naadloze SSO is een functie van opportunistisch. Als de gebruiker om welke reden dan ook niet kan worden uitgevoerd, gaat de aanmeldings procedure voor gebruikers terug naar het normale gedrag, dat wil zeggen dat de gebruiker het wacht woord moet invoeren op de aanmeldings pagina.
-- Als een `https://myapps.microsoft.com/contoso.com`toepassing (bijvoorbeeld) een `domain_hint` (OpenID Connect Connect) of `whr` (SAML)-para meter-identificatie van uw Tenant of `login_hint` para meter-identificatie van de gebruiker doorstuurt, worden gebruikers in de aanmeldings aanvraag van Azure AD automatisch aangemeld zonder dat ze gebruikers namen of wacht woorden hoeven in te voeren.
-- Gebruikers krijgen ook de mogelijkheid om `https://contoso.sharepoint.com`zich aan te `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` `https://login.microsoftonline.com/common/<...>`melden als een toepassing (bijvoorbeeld) aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, of-in plaats van het gemeen schappelijke eind punt van Azure AD.
+- Als een toepassing (bijvoorbeeld `https://myapps.microsoft.com/contoso.com` ) een `domain_hint` (OpenID Connect Connect) of `whr` (SAML)-para meter-identificatie van uw Tenant of `login_hint` para meter-identificatie van de gebruiker doorstuurt, worden gebruikers in de AANMELDINGS aanvraag van Azure AD automatisch aangemeld zonder dat ze gebruikers namen of wacht woorden hoeven in te voeren.
+- Gebruikers krijgen ook de mogelijkheid om zich aan te melden als een toepassing (bijvoorbeeld `https://contoso.sharepoint.com` ) aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, `https://login.microsoftonline.com/contoso.com/<..>` of `https://login.microsoftonline.com/<tenant_ID>/<..>` -in plaats van het gemeen schappelijke eind punt van Azure AD `https://login.microsoftonline.com/common/<...>` .
 - Afmelden wordt ondersteund. Hiermee kunnen gebruikers een ander Azure AD-account kiezen om zich aan te melden met, in plaats van dat automatisch wordt aangemeld met naadloze SSO.
 - Office 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
 - Het kan worden ingeschakeld via Azure AD Connect.

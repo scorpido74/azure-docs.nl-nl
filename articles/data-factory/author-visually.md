@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674566"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832774"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visueel ontwerpen in Azure Data Factory
 
@@ -41,7 +41,7 @@ Voor resources op het hoogste niveau, zoals pijp lijnen, gegevens sets en data s
 
 ![Canvas ontwerpen](media/author-visually/properties-pane.png)
 
-Het deel venster Eigenschappen is standaard alleen open bij het maken van resources. Als u deze wilt bewerken, klikt u op het deel venster Eigenschappen in de rechter bovenhoek van het canvas.
+Het deel venster Eigenschappen wordt alleen standaard geopend bij het maken van resources. Als u deze wilt bewerken, klikt u op het deel venster Eigenschappen in de rechter bovenhoek van het canvas.
 
 ## <a name="expressions-and-functions"></a>Expressies en functies
 

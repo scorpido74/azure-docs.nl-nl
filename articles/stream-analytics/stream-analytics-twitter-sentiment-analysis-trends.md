@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240306"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834761"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analyse van realtime Twitter-gevoel in Azure Stream Analytics
 
@@ -33,7 +33,7 @@ Voor het identificeren van trending onderwerpen in realtime op Twitter, heeft he
 
 In deze hand leiding kunt u een client toepassing gebruiken die verbinding maakt met Twitter en zoekt naar tweets met bepaalde Hashtags (die u kunt instellen). Als u de toepassing wilt uitvoeren en de tweets wilt analyseren met behulp van Azure streaming Analytics, hebt u het volgende nodig:
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/).
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
 * Een [Twitter](https://twitter.com) -account.
 
@@ -56,7 +56,7 @@ In deze sectie maakt u een Event Hub naam ruimte en voegt u een Event Hub toe aa
  
 4. Wanneer de implementatie van de naam ruimte is voltooid, gaat u naar de resource groep en zoekt u de Event Hub naam ruimte in de lijst met Azure-resources. 
 
-5. Selecteer in de nieuwe naam ruimte ** + &nbsp;** 
+5. Selecteer in de nieuwe naam ruimte ** + &nbsp; Event hub**. 
 
 6. Geef de nieuwe Event Hub *socialtwitter-eh*. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft geen andere opties voor de Event Hub in te stellen.
  
@@ -89,7 +89,7 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, heeft de Event Hub
    Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
    ```
 
-   U ziet dat de Connection String meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint`, `SharedAccessKeyName` `SharedAccessKey`, en `EntityPath`.  
+   U ziet dat de Connection String meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint` ,, en `SharedAccessKeyName` `SharedAccessKey` `EntityPath` .  
 
    > [!NOTE]
    > Voor de beveiliging zijn delen van de connection string in het voor beeld verwijderd.
@@ -127,7 +127,7 @@ Voordat de toepassing wordt uitgevoerd, hebt u bepaalde gegevens van u nodig, zo
 
 1. Zorg ervoor dat u de [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) -toepassing hebt gedownload, zoals vermeld in de vereisten.
 
-2. Gebruik een tekst editor om het bestand *app. config* te openen. Breng de volgende wijzigingen aan in `<appSettings>` het element:
+2. Gebruik een tekst editor om het bestand *app. config* te openen. Breng de volgende wijzigingen aan in het `<appSettings>` element:
 
    * Ingesteld `oauth_consumer_key` op de Twitter-consument sleutel (API-sleutel). 
    * Ingesteld `oauth_consumer_secret` op de Twitter-consument geheim (geheime API-sleutel).
@@ -154,7 +154,7 @@ Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een 
 
 1. Selecteer in uw Stream Analytics-taak de optie **invoer** in het menu links onder **taak topologie**.
 
-2. ** +Selecteer &nbsp;add Stream Input** > **Event hub**. Vul het **nieuwe invoer** formulier in met de volgende informatie:
+2. Selecteer ** + &nbsp; add Stream Input**  >  **Event hub**. Vul het **nieuwe invoer** formulier in met de volgende informatie:
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
@@ -162,7 +162,7 @@ Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een 
    |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
    |Event hub-naamruimte | *ASA-Twitter-eventhub* |
    |Event Hub-naam | *socialtwitter-eh* | Kies *bestaande gebruiken*. Selecteer vervolgens de Event hub die u hebt gemaakt.|
-   |Type gebeurtenis compressie| GZip | Het type gegevens compressie.|
+   |Gebeurteniscompressietype| GZip | Het type gegevens compressie.|
 
    Wijzig de resterende standaard waarden en selecteer **Opslaan**.
 
@@ -205,12 +205,12 @@ In deze hand leiding schrijft u de geaggregeerde Tweet-gebeurtenissen van de taa
 
 1. Selecteer in het gedeelte **taak topologie** in het navigatie menu links de optie **uitvoer**. 
 
-2. Klik op de pagina **uitvoer** op ** + &nbsp;toevoegen** en **Blob Storage/Data Lake Storage Gen2**:
+2. Klik op de pagina **uitvoer** op ** + &nbsp; toevoegen** en **Blob Storage/Data Lake Storage Gen2**:
 
-   * **Uitvoer alias**: gebruik de naam `TwitterStream-Output`. 
+   * **Uitvoer alias**: gebruik de naam `TwitterStream-Output` . 
    * **Opties voor importeren**: Selecteer **opslag selecteren bij uw abonnementen**.
    * **Opslag account**. Selecteer uw opslagaccount.
-   * **Container**. Selecteer **nieuwe maken** en invoeren `socialtwitter`.
+   * **Container**. Selecteer **nieuwe maken** en invoeren `socialtwitter` .
    
 4. Selecteer **Opslaan**.   
 
@@ -225,7 +225,7 @@ Er zijn een invoer-, query-en uitvoer taak opgegeven. U bent klaar om de Stream 
 3. Selecteer op de pagina **taak starten** voor de **Start tijd van de taak uitvoer**de optie **nu** en selecteer vervolgens **starten**.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

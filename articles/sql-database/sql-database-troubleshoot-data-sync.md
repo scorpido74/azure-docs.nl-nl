@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79d7bd57ff4ba5533caba1927703ea545e077f2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382899"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830426"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
 
@@ -39,7 +39,7 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 
 - [Ik zie een aanzienlijke vermindering van de prestaties](#sync-perf)
 
-- [Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de \<kolom kolom>. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen?](#sync-nulls)
+- [Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \< kolom>. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen?](#sync-nulls)
 
 - [Hoe worden kring verwijzingen verwerkt met gegevens synchronisatie? Dat wil zeggen, wanneer dezelfde gegevens worden gesynchroniseerd in meerdere synchronisatie groepen en blijven veranderen als resultaat?](#sync-circ)
 
@@ -78,7 +78,7 @@ Een van de volgende voor waarden kan ertoe leiden dat een synchronisatie groep v
     1. Als de status van de service is **gestopt**, klikt u met de rechter muisknop op de naam van de service en selecteert u vervolgens **starten**.
 
 > [!NOTE]
-> Als de voor gaande informatie uw synchronisatie groep niet uit de verwerkings status verplaatst, kan Microsoft Ondersteuning de status van de synchronisatie groep opnieuw instellen. Als u de status van de synchronisatie groep opnieuw wilt instellen, moet u in het [Azure SQL database-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)een bericht maken. Neem in het bericht de abonnements-ID en de synchronisatie groep-ID op voor de groep die opnieuw moet worden ingesteld. Een Microsoft Ondersteuning-Engineer reageert op uw bericht en laat u weten wanneer de status opnieuw is ingesteld.
+> Als de voor gaande informatie uw synchronisatie groep niet uit de verwerkings status verplaatst, kan Microsoft Ondersteuning de status van de synchronisatie groep opnieuw instellen. Als u de status van de synchronisatie groep opnieuw wilt instellen, maakt u een bericht op de [pagina micro soft Q&een vraag voor Azure SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html). Neem in het bericht de abonnements-ID en de synchronisatie groep-ID op voor de groep die opnieuw moet worden ingesteld. Een Microsoft Ondersteuning-Engineer reageert op uw bericht en laat u weten wanneer de status opnieuw is ingesteld.
 
 ### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Ik zie onjuiste gegevens in mijn tabellen
 
@@ -104,7 +104,7 @@ Uw prestaties worden aanzienlijk verminderd, mogelijk op het punt waar u de gebr
 
 - **Oplossing**. De beste oplossing is voor komen. Zorg ervoor dat uw synchronisatie groepen geen kring verwijzingen bevatten. Een rij die is gesynchroniseerd door één synchronisatie groep kan niet worden gesynchroniseerd met een andere synchronisatie groep.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de \<kolom kolom>. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \< kolom>. Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
 Dit fout bericht geeft aan dat een van de volgende twee problemen heeft plaatsgevonden:
 -  Een tabel heeft geen primaire sleutel. U kunt dit probleem oplossen door een primaire sleutel toe te voegen aan alle tabellen die u synchroniseert.
 -  Er is een WHERE-component in uw CREATE INDEX-instructie. Met gegevens synchronisatie wordt deze voor waarde niet verwerkt. U kunt dit probleem oplossen door de component WHERE te verwijderen of de wijzigingen hand matig door te voeren voor alle data bases. 
@@ -138,7 +138,7 @@ Zie problemen met de [Data Sync-agent oplossen voor informatie](sql-database-dat
 
 - **Oorzaak**. Het bericht ' schijf is onvoldoende ruimte ' kan worden weer gegeven als overgebleven bestanden moeten worden verwijderd. Dit kan worden veroorzaakt door antivirus software, of bestanden zijn geopend wanneer er delete-bewerkingen worden uitgevoerd.
 
-- **Oplossing**. Verwijder de synchronisatie bestanden in de map% Temp% (`del \*sync\* /s`) hand matig. Verwijder vervolgens de submappen in de map% Temp%.
+- **Oplossing**. Verwijder de synchronisatie bestanden in de map% Temp% () hand matig `del \*sync\* /s` . Verwijder vervolgens de submappen in de map% Temp%.
 
 > [!IMPORTANT]
 > Geen bestanden verwijderen terwijl de synchronisatie wordt uitgevoerd.
@@ -193,7 +193,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 - **Oplossing**. Meld u aan bij het gebruikers account voor aanmelding bij een service aan de gebruiker:
 
-  1. Ga naar **Start** > **configuratie scherm** > **systeem beheer** > van lokale**beleids** > **gebruikers Rights Management**van het lokale**beveiligings beleid** > .
+  1. Ga naar **Start**  >  **configuratie scherm**  >  **systeem beheer**van lokale  >  **Local Security Policy**  >  **beleids**  >  **gebruikers Rights Management**van het lokale beveiligings beleid.
   1. Selecteer **Aanmelden als een service**.
   1. Voeg in het dialoog venster **Eigenschappen** het gebruikers account toe.
   1. Selecteer **Apply** en vervolgens **OK**.

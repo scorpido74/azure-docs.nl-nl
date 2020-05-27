@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744393"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830477"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
@@ -178,6 +178,5 @@ We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Wijzigingen bijhouden en inventaris](change-tracking.md)
-* [Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)
-* [Zoek opdrachten in Logboeken in Azure Monitor logboeken](../log-analytics/log-analytics-log-searches.md)
+* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md).
+* Zie [problemen met wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van functie fouten.

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b86a38278ae345fac376958d18912a878a53872b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789304"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834795"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>E-mails verzenden en mailing lijsten beheren in SendGrid met behulp van Azure Logic Apps
 
@@ -52,7 +52,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
      -of-
 
    * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
-   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Voer in het zoekvak ' sendgrid ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
@@ -68,7 +68,7 @@ Raadpleeg de [referentie pagina](/connectors/sendgrid/)van de connector voor tec
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -4,18 +4,21 @@ description: Met alleen CLI-opdrachten kunt u een pool maken, invoer gegevens up
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726771"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815992"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
 
-Met een Azure Batch extensie voor Azure CLI kunt u batch-taken uitvoeren zonder code te schrijven.
+Met behulp van een batch-uitbrei ding naar de Azure CLI kunt u batch-taken uitvoeren zonder code te schrijven.
 
 Met de Azure CLI JSON-sjabloon bestanden maken en gebruiken om batch-Pools,-taken en-taken te maken. Gebruik CLI-extensie opdrachten om eenvoudig taak invoer bestanden te uploaden naar het opslag account dat is gekoppeld aan het batch-account en download uitvoer bestanden voor de taak.
+
+> [!NOTE]
+> JSON-bestanden ondersteunen niet dezelfde functionaliteit als [Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md). Ze zijn bedoeld om te worden ingedeeld zoals de hoofd tekst van de onbewerkte REST-aanvraag. De CLI-extensie wijzigt geen bestaande opdrachten, maar heeft een vergelijk bare sjabloon optie waarmee gedeeltelijke Azure Resource Manager sjabloon functionaliteit wordt toegevoegd. Zie [Azure batch cli-uitbrei dingen voor Windows, Mac en Linux](https://github.com/Azure/azure-batch-cli-extensions).
 
 ## <a name="overview"></a>Overzicht
 

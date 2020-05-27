@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e8bb448e88d7aaa3d59ec9392a3b3ac69373c4d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715491"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836750"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migreren van Orchestrator naar Azure Automation (bèta)
 
@@ -130,8 +130,8 @@ Orchestrator slaat runbooks op een database server op en voert deze uit op runbo
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-* [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
-* [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
-* [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
-* [Standaard activiteiten van Orchestrator](https://technet.microsoft.com/library/hh403832.aspx)
-* [System Center Orchestrator Migration Toolkit downloaden](https://www.microsoft.com/download/details.aspx?id=47323)
+* Zie [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)voor Orchestrator-Details.
+* Meer informatie over het automatiseren van het beheer van services in [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx).
+* Details van Orchestrator-activiteiten vindt u in de [standaard activiteiten van Orchestrator](https://technet.microsoft.com/library/hh403832.aspx).
+* Zie [System Center Orchestrator Migration Toolkit downloaden](https://www.microsoft.com/download/details.aspx?id=47323)om de Orchestrator Migration Toolkit te verkrijgen.
+* Zie [overzicht van Hybrid Runbook worker](automation-hybrid-runbook-worker.md)voor een overzicht van de Azure Automation Hybrid Runbook Worker.

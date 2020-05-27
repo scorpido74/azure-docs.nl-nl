@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741032"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834625"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Updates voor meerdere virtuele machines beheren
 
@@ -96,7 +96,7 @@ Het kan dertig minuten tot zes uur duren voordat er in het dashboard bijgewerkte
 Als u updates wilt installeren, plant u een implementatie die wordt uitgelijnd met uw release planning en service venster. U kunt kiezen welke typen updates moeten worden opgenomen in de implementatie. Zo kunt u belangrijke updates of beveiligingsupdates opnemen en updatepakketten uitsluiten.
 
 >[!NOTE]
->Wanneer u een update-implementatie plant, wordt er een [plannings](shared-resources/schedules.md) resource gemaakt die is gekoppeld aan het **patch-MicrosoftOMSComputers-** runbook dat de update-implementatie op de doel computers afhandelt. Als u de plannings resource uit de Azure Portal verwijdert of Power shell na het maken van de implementatie gebruikt, wordt de geplande update-implementatie verbroken en wordt er een fout weer gegeven wanneer u deze opnieuw probeert te configureren vanuit de portal. U kunt de plannings resource alleen verwijderen door het bijbehorende implementatie schema te verwijderen.
+>Wanneer u een update-implementatie plant, wordt er een [plannings](shared-resources/schedules.md) resource gemaakt die is gekoppeld aan het **patch-MicrosoftOMSComputers-** runbook dat de update-implementatie op de doel computers afhandelt. Als u de plannings resource uit de Azure Portal verwijdert of Power shell na het maken van de implementatie gebruikt, wordt de geplande update-implementatie verbroken en wordt er een fout weer gegeven wanneer u deze opnieuw probeert te configureren vanuit de portal. U kunt de planningsresource alleen verwijderen door het bijbehorende implementatieschema te verwijderen.
 >
 
 Als u een nieuwe update-implementatie wilt plannen voor een of meer virtuele machines, selecteert u onder **Update beheer**de optie **Update-implementatie plannen**.
@@ -111,7 +111,7 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
    >[!NOTE]
    >Als u de optie voor opgeslagen Zoek opdrachten selecteert, worden geen computer identiteiten, alleen hun namen, geretourneerd. Als u meerdere virtuele machines met dezelfde naam in meerdere resource groepen hebt, worden deze geretourneerd in de resultaten. Het gebruik van de optie **voor het bijwerken van groepen** wordt aanbevolen om ervoor te zorgen dat u unieke vm's opneemt die aan uw criteria voldoen.
 
-   Als u **computers**kiest, wordt de gereedheid van de machine weer gegeven in de kolom **gereedheid van de Update Agent** . U kunt de status van de machine bekijken voordat u de update-implementatie plant. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
+   Als u **computers**kiest, wordt de gereedheid van de machine weer gegeven in de kolom **gereedheid van de Update Agent** . U kunt de status van de machine bekijken voordat u de update-implementatie plant. Zie [computer groepen in azure monitor-logboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende methoden voor het maken van computer groepen in azure monitor-Logboeken.
 
   ![Deel venster nieuwe update-implementatie](./media/manage-update-multi/update-select-computers.png)
 
@@ -128,10 +128,10 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
 - **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [een update-implementatie plannen](automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over het verwerken van de opname.
 
 > [!NOTE]
-> Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van opgeeft `*` , worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
+> Het is belangrijk te weten dat uitsluitingen insluitingen overschrijven. Als u bijvoorbeeld een uitsluitings regel van opgeeft `*` , worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog wel weergegeven als ontbrekend op de computer. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
 
 > [!NOTE]
-> U kunt geen updates opgeven die zijn vervangen om te worden opgenomen in de update-implementatie.
+> U kunt updates die zijn vervangen, niet opgeven om te worden opgenomen in de update-implementatie.
 
 - **Schema-instellingen**: U kunt de standaarddatum en -tijd accepteren (30 minuten na de huidige tijd). U kunt ook een andere tijd opgeven.
 
@@ -182,4 +182,4 @@ Selecteer **Fouten** voor gedetailleerde informatie over fouten die zijn opgetre
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Query's uitvoeren op Updatebeheer-logboeken](automation-update-management-query-logs.md)
+* Zie [Query updatebeheer-logboeken](automation-update-management-query-logs.md)als u wilt zoeken naar update Logboeken.

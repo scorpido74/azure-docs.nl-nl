@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74791486"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831570"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
@@ -130,7 +130,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
 
       ![Selecteer ' verkeer duur verkeer '](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Nadat het veld is omgezet in JSON-indeling, voegt **comma** u een```,```komma () toe, ```60``` gevolgd door het getal, zodat u de waarde in **verkeers duur verkeer** van seconden naar minuten converteert. 
+   1. Nadat het veld is omgezet in JSON-indeling, voegt u een **komma** () toe, ```,``` gevolgd door het getal ```60``` , zodat u de waarde in **verkeers duur verkeer** van seconden naar minuten converteert. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -161,7 +161,7 @@ Vervolgens voegt u een bereik toe zodat u specifieke acties kunt groeperen en de
 1. Voeg een bereik toe op de gewenste werk stroom locatie. Als u bijvoorbeeld een bereik wilt toevoegen tussen de bestaande stappen in de werk stroom van de logische app, voert u de volgende stappen uit: 
 
    1. Beweeg de aanwijzer over de pijl waar u het bereik wilt toevoegen. 
-   Kies het **plus teken** (**+**) > **een actie toe te voegen**.
+   Kies het **plus teken** ( **+** ) > **een actie toe te voegen**.
 
       ![Een bereik toevoegen](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -196,14 +196,14 @@ Vervolgens voegt u een bereik toe zodat u specifieke acties kunt groeperen en de
 
    1. Voor beide rijen selecteert u **is gelijk aan** als de operator. 
    
-   1. Voer `Failed`in de eerste rij de waarde in voor de vergelijkings waarden. 
-   Voer `Aborted`in de tweede rij in. 
+   1. Voer in de eerste rij de waarde in voor de vergelijkings waarden `Failed` . 
+   Voer in de tweede rij in `Aborted` . 
 
       Wanneer u klaar bent, ziet de voorwaarde eruit zoals in dit voorbeeld:
 
       ![Expressie toevoegen waarmee de status van het bereik wordt gecontroleerd](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-      Stel nu de eigenschap van `runAfter` de voor waarde in zodat de voor waarde de scope status controleert en voert de overeenkomende actie uit die u in latere stappen hebt gedefinieerd.
+      Stel nu de eigenschap van de voor waarde in `runAfter` zodat de voor waarde de scope status controleert en voert de overeenkomende actie uit die u in latere stappen hebt gedefinieerd.
 
    1. Kies de knop met **weglatings** tekens (...) op de voor waarde **als het bereik is mislukt** en kies vervolgens **uitvoeren na**.
 
@@ -388,7 +388,7 @@ Als u in de code weergave werkt, kunt u in plaats daarvan een bereik structuur d
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen
