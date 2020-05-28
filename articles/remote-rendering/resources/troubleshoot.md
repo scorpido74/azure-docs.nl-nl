@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844558"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018817"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -29,7 +29,7 @@ Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) niet d
 * **8266 (TCP + UDP)** -vereist voor gegevens overdracht
 * **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** -vereist voor [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Fout ' verbinding verbroken: VideoFormatNotAvailable '
+## <a name="error-disconnected-videoformatnotavailable"></a>Fout ' `Disconnected: VideoFormatNotAvailable` '
 
 Controleer of uw GPU hardware-video-decodering ondersteunt. Zie [ontwikkel-PC](../overview/system-requirements.md#development-pc).
 
@@ -37,7 +37,7 @@ Als u werkt met een laptop met twee Gpu's, is het mogelijk dat de GPU waarop u u
 
 ## <a name="h265-codec-not-available"></a>De H265-codec is niet beschikbaar
 
-Er zijn twee redenen waarom de server geen verbinding kan maken met een **niet-beschik bare codec** .
+Er zijn twee redenen waarom de server geen verbinding kan maken met een `codec not available` fout.
 
 **De H265-codec is niet geïnstalleerd:**
 
@@ -107,7 +107,7 @@ Als deze twee stappen niet helpen, is het nodig om erachter te komen of video fr
 
 Zie specifieke [beperkingen](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
 
-**Het model bevindt zich niet in de weer gave-frustum:**
+**Het model bevindt zich niet in de camera frustum:**
 
 In veel gevallen wordt het model correct weer gegeven, maar buiten de camera frustum. Een veelvoorkomende reden is dat het model is geëxporteerd met een uit de weg geplaatste draaiing, zodat het wordt geknipt door het ver knip vlak van de camera. Het helpt het model in het kader van een programma op te vragen en het vak met eenheid als een lijn vak te visualiseren of de waarden in het logboek voor fout opsporing af te drukken.
 
@@ -142,7 +142,7 @@ Er kunnen twee problemen zijn met dit selectie kader die leiden tot onzichtbare 
 
 **De unit weergave-pijp lijn bevat geen render-hooks:**
 
-Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *venster > analyse > frame debugger*. Schakel dit in en zorg ervoor dat er twee vermeldingen zijn voor de `HolographicRemotingCallbackPass` in de pijp lijn:
+Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *:::no-loc text="Window > Analysis > Frame debugger":::* . Schakel dit in en zorg ervoor dat er twee vermeldingen zijn voor de `HolographicRemotingCallbackPass` in de pijp lijn:
 
 ![Unity frame debugger](./media/troubleshoot-unity-pipeline.png)
 

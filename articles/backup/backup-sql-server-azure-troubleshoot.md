@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93e06cc3219d5588c1740220af01950a25fcb52f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183327"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017015"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -46,7 +46,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    Vervang `C:\` door de letter van het *Systeem station*.
+    Vervang door `C:\` de letter van het *Systeem station*.
 
 1. De volgende drie processen die worden uitgevoerd in een VM uitsluiten van antivirus scans:
 
@@ -60,7 +60,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 ### <a name="backup-type-unsupported"></a>Het back-uptype wordt niet ondersteund
 
-| Severity | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
+| Ernst | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
 | Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 
@@ -219,7 +219,7 @@ Als de teken reeks grootte van de inhoud groter is dan 20.000 bytes, worden de d
 
 ### <a name="override-the-default-target-restore-file-path"></a>Het pad van het standaard doel bestand voor terugzetten overschrijven
 
-U kunt het pad voor het terugzetten van het doel bestand overschrijven tijdens de herstel bewerking door een JSON-bestand met de toewijzing van het database bestand te plaatsen in het pad naar de doel-herstellen. Maak een `database_name.json` bestand en plaats het op de locatie `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`.
+U kunt het pad voor het terugzetten van het doel bestand overschrijven tijdens de herstel bewerking door een JSON-bestand met de toewijzing van het database bestand te plaatsen in het pad naar de doel-herstellen. Maak een `database_name.json` bestand en plaats het op de locatie `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` .
 
 De inhoud van het bestand moet de volgende indeling hebben:
 
@@ -267,4 +267,4 @@ Dit bestand moet worden geplaatst voordat u de herstel bewerking kunt activeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure backup voor SQL-vm's](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)voor meer informatie over Azure Backup voor SQL Server vm's (open bare preview).
+Zie [Azure backup voor SQL-vm's](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup)voor meer informatie over Azure Backup voor SQL Server vm's (open bare preview).

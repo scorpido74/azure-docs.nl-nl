@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668317"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020044"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor verificatie en autorisatie in azure Kubernetes service (AKS)
 
@@ -19,6 +19,7 @@ Bij het implementeren en onderhouden van clusters in azure Kubernetes service (A
 In dit artikel Best practices wordt uitgelegd hoe een cluster operator de toegang en identiteit voor AKS-clusters kan beheren. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * AKS-cluster gebruikers verifiëren met Azure Active Directory
 > * Toegang tot resources beheren met op rollen gebaseerd toegangs beheer (RBAC)
 > * Een beheerde identiteit gebruiken om zichzelf te verifiëren met andere services
@@ -62,7 +63,7 @@ rules:
   verbs: ["*"]
 ```
 
-Vervolgens wordt er een RoleBinding gemaakt die de Azure AD-gebruiker *developer1\@contoso.com* koppelt aan de RoleBinding, zoals wordt weer gegeven in het volgende YAML-manifest:
+Vervolgens wordt er een RoleBinding gemaakt die de Azure AD-gebruiker *developer1 \@ contoso.com* koppelt aan de RoleBinding, zoals wordt weer gegeven in het volgende YAML-manifest:
 
 ```yaml
 kind: RoleBinding
@@ -80,7 +81,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Wanneer *developer1\@contoso.com* wordt geverifieerd op basis van het AKS-cluster, hebben ze volledige machtigingen voor bronnen in de naam ruimte *Finance-App* . Op deze manier kunt u de toegang tot resources logisch scheiden en beheren. Kubernetes RBAC moet worden gebruikt in combi natie met Azure AD-Integration, zoals beschreven in de vorige sectie.
+Wanneer *developer1 \@ contoso.com* wordt geverifieerd op basis van het AKS-cluster, hebben ze volledige machtigingen voor bronnen in de naam ruimte *Finance-App* . Op deze manier kunt u de toegang tot resources logisch scheiden en beheren. Kubernetes RBAC moet worden gebruikt in combi natie met Azure AD-Integration, zoals beschreven in de vorige sectie.
 
 Zie [toegang tot cluster bronnen beheren met op rollen gebaseerd toegangs beheer en Azure Active Directory-identiteiten in AKS][azure-ad-rbac]voor meer informatie over het gebruik van Azure ad-groepen voor het beheren van de toegang tot Kubernetes-resources met behulp van RBAC.
 
@@ -97,14 +98,14 @@ Met beheerde identiteiten voor Azure-resources (momenteel geïmplementeerd als e
 
 Wanneer een Peul toegang tot een Azure-service vraagt, worden de netwerk regels het verkeer omgeleid naar de NMI-server (node management Identity). De NMI-server identificeert de peulen die toegang aanvragen tot Azure-Services op basis van hun externe adres en query's uitvoeren op de beheerde identiteits controller (MIC). De microfoon controleert op Azure Identity-toewijzingen in het AKS-cluster en de NMI-server vraagt vervolgens een toegangs token van Azure Active Directory (AD) op op basis van de identiteits toewijzing van het pod. Azure AD biedt toegang tot de NMI-server, die wordt geretourneerd aan de pod. Dit toegangs token kan door de pod worden gebruikt om toegang tot services in azure te vragen.
 
-In het volgende voor beeld maakt een ontwikkelaar een pod die gebruikmaakt van een beheerde identiteit om toegang aan te vragen voor een Azure SQL Server-exemplaar:
+In het volgende voor beeld maakt een ontwikkelaar een pod die gebruikmaakt van een beheerde identiteit om toegang aan te vragen bij Azure SQL Database:
 
 ![Met Pod-identiteiten kan een pod automatisch toegang tot andere services aanvragen](media/operator-best-practices-identity/pod-identities.png)
 
 1. De cluster operator maakt eerst een service account dat kan worden gebruikt voor het toewijzen van identiteiten wanneer per peul toegang tot Services wordt aangevraagd.
 1. De NMI-server en-microfoon worden geïmplementeerd voor het door sturen van pod-aanvragen voor toegangs tokens naar Azure AD.
 1. Een ontwikkelaar implementeert een pod met een beheerde identiteit die een toegangs token aanvraagt via de NMI-server.
-1. Het token wordt geretourneerd naar de Pod en wordt gebruikt voor toegang tot een Azure SQL Server-exemplaar.
+1. Het token wordt geretourneerd naar de Pod en wordt gebruikt voor toegang tot Azure SQL Database
 
 > [!NOTE]
 > Beheerde pod-identiteiten zijn een open-source project en worden niet ondersteund door de technische ondersteuning van Azure.

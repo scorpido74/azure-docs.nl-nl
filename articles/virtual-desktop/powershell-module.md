@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9224b361adff8bfc53ca2f31dccb2519591dc7e5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743375"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021803"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>De Power shell-module voor Windows virtueel bureau blad instellen
 
@@ -21,7 +21,7 @@ ms.locfileid: "83743375"
 >Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows.
 >
 > De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 De Windows Power shell-module voor virtueel bureau blad is geïntegreerd in de module Azure PowerShell. In dit artikel leest u hoe u de Power shell-module instelt, zodat u cmdlets kunt uitvoeren voor virtuele Windows-Bureau bladen.
 
@@ -66,7 +66,8 @@ Als u het standaard abonnement wilt wijzigen nadat u zich hebt aangemeld, voert 
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-U kunt ook selecteren in een lijst met behulp van de out-GridView-cmdlet:
+U kunt er ook een selecteren in een lijst met behulp van de out-GridView-cmdlet:
+
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```

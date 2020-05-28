@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758840"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021293"
 ---
 # <a name="spatial-queries"></a>Ruimtelijke query's
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 Er zijn drie methoden voor het verzamelen van treffers:
 
-* **Dichtstbijzijnde:** In deze modus wordt alleen de meest overeenkomende treffer gerapporteerd.
-* **Alle:** U kunt de voor keur geven aan deze modus wanneer u alleen wilt weten *of* een Ray iets zou kunnen raken, maar niet zeker weet wat er precies is bereikt. Deze query kan aanzienlijk goed koper zijn om te evalueren, maar heeft ook maar weinig toepassingen.
-* **Alle:** In deze modus worden alle treffers langs de Ray gerapporteerd, gesorteerd op afstand. Gebruik deze modus alleen als u meer nodig hebt dan de eerste treffer. Beperk het aantal gerapporteerde treffers met de `MaxHits` optie.
+* ** `Closest` :** In deze modus wordt alleen de meest overeenkomende treffer gerapporteerd.
+* ** `Any` :** De voor keur geven aan deze modus wanneer u wilt weten *of* een Ray iets zou kunnen raken, maar niet zeker weet wat er precies is bereikt. Deze query kan aanzienlijk goed koper zijn om te evalueren, maar heeft ook maar weinig toepassingen.
+* ** `All` :** In deze modus worden alle treffers langs de Ray gerapporteerd, gesorteerd op afstand. Gebruik deze modus alleen als u meer nodig hebt dan de eerste treffer. Beperk het aantal gerapporteerde treffers met de `MaxHits` optie.
 
 Om te voor komen dat objecten selectief worden uitgesloten van Ray-casts, kan het onderdeel [HierarchicalStateOverrideComponent](override-hierarchical-state.md) worden gebruikt.
 
@@ -106,11 +106,11 @@ Het resultaat van een Ray cast-query is een matrix met treffers. De matrix is le
 
 Een treffer heeft de volgende eigenschappen:
 
-* **HitEntity:** De [entiteit](../../concepts/entities.md) waarop is geklikt.
-* **Subpartid:** Welk *subnet* is bereikt in een [MeshComponent](../../concepts/meshes.md). Kan worden gebruikt voor het indexeren `MeshComponent.UsedMaterials` en opzoeken van het [materiaal](../../concepts/materials.md) op dat moment.
-* **HitPosition:** De positie waar de Ray het object kruist.
-* **HitNormal:** De wereld wijde ruimte van het net op de positie van het snij punt.
-* **DistanceToHit:** De afstand van de begin positie van de Ray naar de treffer.
+* ** `HitEntity` :** De [entiteit](../../concepts/entities.md) is geraakt.
+* ** `SubPartId` :** Welk *subnet* is bereikt in een [MeshComponent](../../concepts/meshes.md). Kan worden gebruikt voor het indexeren `MeshComponent.UsedMaterials` en opzoeken van het [materiaal](../../concepts/materials.md) op dat moment.
+* ** `HitPosition` :** De positie waar de Ray het object kruist.
+* ** `HitNormal` :** De wereld wijde ruimte van het net op de positie van het snij punt.
+* ** `DistanceToHit` :** De afstand tussen de Ray-begin positie en de treffer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

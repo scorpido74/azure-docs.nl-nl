@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584077"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021208"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
 
@@ -323,7 +323,7 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 
 ## <a name="sql-database-limits"></a>SQL Database limieten
 
-Zie [SQL database resource limieten voor afzonderlijke data bases](../../sql-database/sql-database-vcore-resource-limits-single-databases.md), [SQL database resource limieten voor elastische Pools en gegroepeerde Data bases](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)en [SQL database resource limieten voor beheerde instanties](../../sql-database/sql-database-managed-instance-resource-limits.md)voor SQL database limieten.
+Zie [SQL database resource limieten voor afzonderlijke data bases](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL database resource limieten voor elastische Pools en gegroepeerde Data bases](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)en [SQL database resource limieten voor beheerde instanties](../../azure-sql/managed-instance/resource-limits.md)voor SQL database limieten.
 
 ## <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse limieten
 

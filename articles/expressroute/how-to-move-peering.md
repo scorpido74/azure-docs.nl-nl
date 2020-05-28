@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436846"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019448"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Overstappen van openbare peering op Microsoft-peering
 
@@ -33,7 +33,7 @@ Als u verbinding wilt maken met micro soft-peering, moet u NAT instellen en behe
 
 Raadpleeg [asymmetrische route ring met meerdere netwerk paden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) voor voor behoud van asymmetrische route ring voordat u micro soft-peering configureert.
 
-* Als u gebruikmaakt van open bare peering en momenteel IP-netwerk regels voor open bare IP-adressen gebruikt voor toegang tot [Azure Storage](../storage/common/storage-network-security.md) of [Azure SQL database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), moet u ervoor zorgen dat de NAT IP-adres groep die is geconfigureerd met micro soft-peering, is opgenomen in de lijst met open bare IP-adressen voor het Azure-opslag account of het Azure SQL-account.<br>
+* Als u gebruikmaakt van open bare peering en momenteel IP-netwerk regels voor open bare IP-adressen gebruikt voor toegang tot [Azure Storage](../storage/common/storage-network-security.md) of [Azure SQL database](../azure-sql/database/vnet-service-endpoint-rule-overview.md), moet u ervoor zorgen dat de NAT IP-adres groep die is geconfigureerd met micro soft-peering, is opgenomen in de lijst met open bare IP-adressen voor het Azure-opslag account of het Azure SQL-account.<br>
 * Als u wilt overschakelen naar micro soft-peering zonder downtime, volgt u de stappen in dit artikel in de volg orde waarin ze worden weer gegeven.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. micro soft-peering maken
