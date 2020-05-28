@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005154"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014924"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -32,6 +32,9 @@ Bekijk de [lijst met Azure Load Balancer Quick](https://docs.microsoft.com/azure
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>Wat is het verschil tussen binnenkomende NAT-regels en de regels voor taak verdeling?
 NAT-regels worden gebruikt om een back-end-bron op te geven voor het routeren van verkeer naar. U kunt bijvoorbeeld een specifieke load balancer poort configureren voor het verzenden van RDP-verkeer naar een specifieke virtuele machine. Taakverdelings regels worden gebruikt om een pool van back-endservers op te geven voor het routeren van verkeer naar, waarbij de belasting voor elk exemplaar wordt verdeeld. Een load balancer regel kan bijvoorbeeld TCP-pakketten routeren op poort 80 van de load balancer in een groep webservers.
+
+## <a name="what-is-ip-1686312916"></a>Wat is IP-168.63.129.16?
+Het virtuele IP-adres voor de host die als Azure-infra structuur is gelabeld Load Balancer waar de Azure Health-tests afkomstig zijn. Bij het configureren van back-end-exemplaren, moeten ze verkeer van dit IP-adres toestaan om te reageren op status controles. Deze regel communiceert niet met toegang tot uw Load Balancer frontend. Als u geen gebruik maakt van de Azure Load Balancer, kunt u deze regel onderdrukken. Meer informatie over service Tags vindt u [hier](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
 
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt vermeld, kunt u met uw vraag feedback over deze pagina sturen. Hiermee maakt u een GitHub-probleem voor het product team om ervoor te zorgen dat al onze vragen van de gewaardeerde klant worden beantwoord.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79201022"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021837"
 ---
 # <a name="azure-database-security-checklist"></a>Controle lijst voor Azure data base-beveiliging
 
@@ -28,7 +28,7 @@ Azure Data Base bevat een aantal ingebouwde beveiligings functies die u kunt geb
 
 Deze omvatten:
 
--    Een firewall waarmee u [firewall regels](../../sql-database/sql-database-firewall-configure.md) kunt maken die de connectiviteit beperken op basis van IP-adres,
+-    Een firewall waarmee u [firewall regels](../../azure-sql/database/firewall-configure.md) kunt maken die de connectiviteit beperken op basis van IP-adres,
 -    Firewall op server niveau die toegankelijk is vanaf de Azure Portal
 -    Firewall regels op database niveau die toegankelijk zijn vanaf SSMS
 -    De connectiviteit met uw data base beveiligen met behulp van beveiligde verbindings reeksen
@@ -50,10 +50,10 @@ We raden u aan het artikel over de [Best practices van Azure data base Security]
 | <br> Versleuteling in Motion/Transit| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), voor gegevens versleuteling wanneer gegevens worden verplaatst naar de netwerken.</li><li>Data base vereist beveiligde communicatie van clients op basis van het [TDS-protocol (Tabular Data stream)](https://msdn.microsoft.com/library/dd357628.aspx) via TLS (Transport Layer Security).</li></ul> |
 |<br>Versleuteling 'at rest'| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242), wanneer inactieve gegevens fysiek worden opgeslagen in een digitaal formulier.</li></ul>|
 |**Toegang beheren**||  
-|<br> Toegang tot de database | <ul><li>[Verificatie](../../sql-database/sql-database-manage-logins.md) (Azure Active Directory-verificatie) ad-verificatie maakt gebruik van identiteiten die worden beheerd door Azure Active Directory.</li><li>[Autorisatie](../../sql-database/sql-database-manage-logins.md) verlenen gebruikers de mini maal benodigde bevoegdheden.</li></ul> |
-|<br>Toegang tot toepassingen| <ul><li>[Beveiliging op rijniveau](https://msdn.microsoft.com/library/dn765131) (met behulp van het beveiligings beleid, tegelijk het beperken van toegang op rijniveau op basis van de identiteit, rol of uitvoerings context van een gebruiker).</li><li>[Dynamische gegevens maskering](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (met behulp van machtiging & beleid, beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers)</li></ul>|
+|<br> Toegang tot de database | <ul><li>[Verificatie](../../azure-sql/database/logins-create-manage.md) (Azure Active Directory-verificatie) ad-verificatie maakt gebruik van identiteiten die worden beheerd door Azure Active Directory.</li><li>[Autorisatie](../../azure-sql/database/logins-create-manage.md) verlenen gebruikers de mini maal benodigde bevoegdheden.</li></ul> |
+|<br>Toegang tot toepassingen| <ul><li>[Beveiliging op rijniveau](https://msdn.microsoft.com/library/dn765131) (met behulp van het beveiligings beleid, tegelijk het beperken van toegang op rijniveau op basis van de identiteit, rol of uitvoerings context van een gebruiker).</li><li>[Dynamische gegevens maskering](../../azure-sql/database/dynamic-data-masking-overview.md) (met behulp van machtiging & beleid, beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers)</li></ul>|
 |**Proactieve controle**||  
-| <br>Bijhouden & detecteren| <ul><li>Met [auditing](../../sql-database/sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek/activiteiten logboek in uw [Azure Storage-account](../../storage/common/storage-create-storage-account.md)geschreven.</li><li>De Azure data base-status bijhouden met behulp van [Azure monitor activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md).</li><li>Met [detectie van bedreigingen](../../sql-database/sql-database-threat-detection.md) worden afwijkende database activiteiten gedetecteerd die potentiële beveiligings dreigingen voor de data base aangeven. </li></ul> |
+| <br>Bijhouden & detecteren| <ul><li>Met [auditing](../../sql-database/sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek/activiteiten logboek in uw [Azure Storage-account](../../storage/common/storage-create-storage-account.md)geschreven.</li><li>De Azure data base-status bijhouden met behulp van [Azure monitor activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md).</li><li>Met [detectie van bedreigingen](../../azure-sql/database/threat-detection-configure.md) worden afwijkende database activiteiten gedetecteerd die potentiële beveiligings dreigingen voor de data base aangeven. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Gegevens bewaking](../../security-center/security-center-enable-auditing-on-sql-databases.md) Gebruik Azure Security Center als een gecentraliseerde oplossing voor beveiligings bewaking voor SQL en andere Azure-Services.</li></ul>|        
 
 ## <a name="conclusion"></a>Conclusie
@@ -62,7 +62,7 @@ Azure data base is een robuust database platform met een volledig scala aan beve
 ## <a name="next-steps"></a>Volgende stappen
 U hoeft slechts een paar eenvoudige stappen uit te voeren om de beveiliging van uw database tegen kwaadwillende gebruikers of onbevoegde toegang te verbeteren. In deze zelfstudie leert u het volgende:
 
-- Stel [firewall regels](../../sql-database/sql-database-firewall-configure.md) in voor uw server en of Data Base.
+- Stel [firewall regels](../../azure-sql/database/firewall-configure.md) in voor uw server en of Data Base.
 - Bescherm uw gegevens met [versleuteling](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).
 - Schakel [SQL database controle](../../sql-database/sql-database-auditing.md)in.
 

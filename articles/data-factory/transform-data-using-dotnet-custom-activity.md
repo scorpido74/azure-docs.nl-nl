@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f0eb89893ff7394390d2fc1fc77497f1bf948d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418946"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019959"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 
@@ -35,7 +35,7 @@ Als u gegevens wilt verplaatsen naar/van een gegevens archief dat Data Factory n
 
 Zie de volgende artikelen als u geen ervaring hebt met Azure Batch-service:
 
-* [Azure batch basis principes](../batch/batch-technical-overview.md) voor een overzicht van de Azure batch-service.
+* [Azure batch basis principes](../azure-sql/database/sql-database-paas-overview.md) voor een overzicht van de Azure batch-service.
 * De cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) om een Azure batch-account (of) te maken [Azure Portal](../batch/batch-account-create-portal.md) het Azure batch-account te maken met behulp van Azure Portal. Zie het artikel over het [beheren van Azure batch-account met](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) behulp van Power shell voor gedetailleerde instructies voor het gebruik van de cmdlet.
 * De cmdlet [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) om een Azure batch groep te maken.
 
@@ -106,7 +106,7 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 | description           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
 | type                  | Voor aangepaste activiteit is het type activiteit **aangepast**. | Ja      |
 | linkedServiceName     | Gekoppelde service aan Azure Batch. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  | Ja      |
-| command               | Opdracht van de aangepaste toepassing die moet worden uitgevoerd. Als de toepassing al beschikbaar is op het Azure Batch groeps knooppunt, kunnen de resourceLinkedService en folderPath worden overgeslagen. U kunt bijvoorbeeld de opdracht opgeven `cmd /c dir`, die wordt ondersteund door het knoop punt Windows Batch-groep. | Ja      |
+| command               | Opdracht van de aangepaste toepassing die moet worden uitgevoerd. Als de toepassing al beschikbaar is op het Azure Batch groeps knooppunt, kunnen de resourceLinkedService en folderPath worden overgeslagen. U kunt bijvoorbeeld de opdracht opgeven `cmd /c dir` , die wordt ondersteund door het knoop punt Windows Batch-groep. | Ja      |
 | resourceLinkedService | Azure Storage gekoppelde service naar het opslag account waarin de aangepaste toepassing is opgeslagen | Geen &#42;       |
 | folderPath            | Pad naar de map van de aangepaste toepassing en alle bijbehorende afhankelijkheden<br/><br/>Als er afhankelijkheden zijn opgeslagen in submappen, dat wil zeggen, in een hiërarchische mappen structuur onder *FolderPath* : de mapstructuur wordt op dit moment afgevlakt wanneer de bestanden worden gekopieerd naar Azure batch. Dat wil zeggen dat alle bestanden naar één map zonder submappen worden gekopieerd. U kunt dit probleem omzeilen door de bestanden te comprimeren, het gecomprimeerde bestand te kopiëren en deze vervolgens te uitgepakt met aangepaste code op de gewenste locatie. | Geen &#42;       |
 | referenceObjects      | Een matrix met bestaande gekoppelde services en gegevens sets. De gekoppelde services en gegevens sets waarnaar wordt verwezen, worden door gegeven aan de aangepaste toepassing in JSON-indeling zodat uw aangepaste code kan verwijzen naar resources van de Data Factory | Nee       |
@@ -298,15 +298,15 @@ Activity Error section:
 "target": "MyCustomActivity"
 ```
 
-Als u de inhoud van stdout. txt in downstream activiteiten wilt gebruiken, kunt u het pad naar het bestand stdout. txt in de expressie '\@activiteit ' (' MyCustomActivity '). output. outputs [0] '.
+Als u de inhoud van stdout. txt in downstream activiteiten wilt gebruiken, kunt u het pad naar het bestand stdout. txt in de expressie ' activiteit ' \@ (' MyCustomActivity '). output. outputs [0] '.
 
 > [!IMPORTANT]
-> - De activity. json, linkedServices. json en data sets. json worden opgeslagen in de runtime-map van de batch-taak. Voor dit voor beeld worden de activity. json, linkedServices. json en data sets. json opgeslagen in `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` het pad. Als dat nodig is, moet u deze afzonderlijk opschonen.
+> - De activity. json, linkedServices. json en data sets. json worden opgeslagen in de runtime-map van de batch-taak. Voor dit voor beeld worden de activity. json, linkedServices. json en data sets. json opgeslagen in het `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` pad. Als dat nodig is, moet u deze afzonderlijk opschonen.
 > - Voor gekoppelde services die gebruikmaken van de zelf-Hostende Integration Runtime, worden gevoelige gegevens, zoals sleutels of wacht woorden, versleuteld door de zelf-Hostende Integration Runtime om ervoor te zorgen dat referenties blijven bestaan in door de klant gedefinieerde particuliere netwerk omgeving. Er ontbreken mogelijk enkele gevoelige velden wanneer ernaar wordt verwezen door uw aangepaste toepassings code. Gebruik SecureString in extendedProperties in plaats van een gekoppelde service verwijzing zo nodig te gebruiken.
 
 ## <a name="pass-outputs-to-another-activity"></a>Uitvoer door geven aan een andere activiteit
 
-U kunt aangepaste waarden van uw code in een aangepaste activiteit naar Azure Data Factory verzenden. U kunt dit doen door ze te schrijven `outputs.json` vanuit uw toepassing. Data Factory kopieert de inhoud van `outputs.json` en voegt deze toe aan de uitvoer van de activiteit als waarde van `customOutput` de eigenschap. (De limiet voor de grootte is 2 MB.) Als u de inhoud van `outputs.json` in downstream activiteiten wilt gebruiken, kunt u de waarde ophalen met behulp van de `@activity('<MyCustomActivity>').output.customOutput`-expressie.
+U kunt aangepaste waarden van uw code in een aangepaste activiteit naar Azure Data Factory verzenden. U kunt dit doen door ze te schrijven `outputs.json` vanuit uw toepassing. Data Factory kopieert de inhoud van `outputs.json` en voegt deze toe aan de uitvoer van de activiteit als waarde van de `customOutput` eigenschap. (De limiet voor de grootte is 2 MB.) Als u de inhoud van `outputs.json` in downstream activiteiten wilt gebruiken, kunt u de waarde ophalen met behulp van de-expressie `@activity('<MyCustomActivity>').output.customOutput` .
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-uitvoer ophalen
 
@@ -323,13 +323,13 @@ Gevoelige eigenschaps waarden die zijn opgegeven als type *SecureString*, zoals 
 
 Deze serialisatie is niet echt veilig en is niet bedoeld om te worden beveiligd. Het doel is om Data Factory om de waarde te maskeren op het tabblad controle.
 
-Als u eigenschappen van het type *SecureString* vanuit een aangepaste activiteit wilt openen `activity.json` , leest u het bestand, dat zich in dezelfde map als uw heeft bevindt. EXE, deserialiseren van de JSON en vervolgens toegang tot de JSON-eigenschap (extendedProperties => [propertyname] => waarde).
+Als u eigenschappen van het type *SecureString* vanuit een aangepaste activiteit wilt openen, leest u het `activity.json` bestand, dat zich in dezelfde map als uw heeft bevindt. EXE, deserialiseren van de JSON en vervolgens toegang tot de JSON-eigenschap (extendedProperties => [propertyname] => waarde).
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>V2-aangepaste activiteit vergelijken en versie 1 (aangepast) DotNet-activiteit
 
-In Azure Data Factory versie 1 implementeert u een (aangepaste) DotNet-activiteit door een .NET Class Library-project te maken met een klasse die `Execute` de methode van `IDotNetActivity` de interface implementeert. De gekoppelde services, gegevens sets en uitgebreide eigenschappen in de JSON-nettolading van een (aangepaste) DotNet-activiteit worden door gegeven aan de uitvoerings methode als objecten met een sterk type. Zie [(aangepast) DotNet in versie 1](v1/data-factory-use-custom-activities.md)voor meer informatie over het gedrag van versie 1. Als gevolg van deze implementatie moet uw versie 1 DotNet-activiteit code .NET Framework 4.5.2. De activiteit versie 1 DotNet moet ook worden uitgevoerd op op Windows gebaseerde Azure Batch pool-knoop punten.
+In Azure Data Factory versie 1 implementeert u een (aangepaste) DotNet-activiteit door een .NET Class Library-project te maken met een klasse die de `Execute` methode van de interface implementeert `IDotNetActivity` . De gekoppelde services, gegevens sets en uitgebreide eigenschappen in de JSON-nettolading van een (aangepaste) DotNet-activiteit worden door gegeven aan de uitvoerings methode als objecten met een sterk type. Zie [(aangepast) DotNet in versie 1](v1/data-factory-use-custom-activities.md)voor meer informatie over het gedrag van versie 1. Als gevolg van deze implementatie moet uw versie 1 DotNet-activiteit code .NET Framework 4.5.2. De activiteit versie 1 DotNet moet ook worden uitgevoerd op op Windows gebaseerde Azure Batch pool-knoop punten.
 
-In de aangepaste v2-activiteit van Azure Data Factory is het niet nodig om een .NET-interface te implementeren. U kunt nu direct opdrachten, scripts en uw eigen aangepaste code uitvoeren, gecompileerd als een uitvoerbaar bestand. Als u deze implementatie wilt configureren, geeft `Command` u de eigenschap samen `folderPath` met de eigenschap op. De aangepaste activiteit uploadt het uitvoer bare bestand en de bijbehorende `folderpath` afhankelijkheden naar en voert de opdracht voor u uit.
+In de aangepaste v2-activiteit van Azure Data Factory is het niet nodig om een .NET-interface te implementeren. U kunt nu direct opdrachten, scripts en uw eigen aangepaste code uitvoeren, gecompileerd als een uitvoerbaar bestand. Als u deze implementatie wilt configureren, geeft u de `Command` eigenschap samen met de `folderPath` eigenschap op. De aangepaste activiteit uploadt het uitvoer bare bestand en de bijbehorende afhankelijkheden naar `folderpath` en voert de opdracht voor u uit.
 
 De gekoppelde services, gegevens sets (gedefinieerd in referenceObjects) en uitgebreide eigenschappen die zijn gedefinieerd in de JSON-payload van een aangepaste versie van Data Factory v2-activiteit, kunnen worden gebruikt door uw uitvoer bare bestand als JSON-bestand. U kunt de vereiste eigenschappen openen met behulp van een JSON serializer, zoals wordt weer gegeven in het voor gaande voor beeld van SampleApp. exe.
 
@@ -350,11 +350,11 @@ In de volgende tabel worden de verschillen beschreven tussen de aangepaste Data 
 Als u bestaande .NET-code hebt geschreven voor een DotNet-activiteit van versie 1 (aangepast), moet u de code zodanig aanpassen dat deze werkt met de huidige versie van de aangepaste activiteit. Werk uw code bij door deze richt lijnen op hoog niveau te volgen:
 
   - Wijzig het project van een .NET-klassebibliotheek naar een console-app.
-  - Start uw toepassing met de `Main` -methode. De `Execute` methode van de `IDotNetActivity` interface is niet meer vereist.
+  - Start uw toepassing met de- `Main` methode. De `Execute` methode van de `IDotNetActivity` interface is niet meer vereist.
   - De gekoppelde services, gegevens sets en activiteiten met een JSON-serialisatiefunctie lezen en parseren, en niet als sterk getypte objecten. Geef de waarden van de vereiste eigenschappen door aan uw belangrijkste aangepaste code logica. Raadpleeg de voor gaande SampleApp. exe-code als voor beeld.
   - Het logboek object wordt niet meer ondersteund. Uitvoer van het uitvoer bare bestand kan worden afgedrukt op de-console en wordt opgeslagen in stdout. txt.
   - Het NuGet-pakket micro soft. Azure. Management. DataFactories is niet meer nodig.
-  - Compileer uw code, upload het uitvoer bare bestand en de bijbehorende afhankelijkheden naar Azure Storage en definieer het `folderPath` pad in de eigenschap.
+  - Compileer uw code, upload het uitvoer bare bestand en de bijbehorende afhankelijkheden naar Azure Storage en definieer het pad in de `folderPath` eigenschap.
 
 Voor een volledig voor beeld van de manier waarop het end-to-end DLL-en pijp lijn-voor beeld dat wordt beschreven in het artikel Data Factory versie 1 [aangepaste activiteiten gebruiken in een Azure Data Factory pijp lijn](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) kunnen worden herschreven als Data Factory aangepaste activiteit, Zie [Data Factory aangepaste activiteit voor beeld](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 

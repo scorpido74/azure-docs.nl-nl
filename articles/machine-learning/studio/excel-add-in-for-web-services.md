@@ -10,16 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204372"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118455"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u code hoeft te schrijven.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Stappen voor het gebruik van een bestaande webservice in de werkmap
@@ -76,7 +75,7 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
 5. Klik op **Add Web Service**.
 6. Plak de URL in het tekstvak Excel-invoeg toepassing met de naam **URL**.
 7. Plak de API/Primary-sleutel in de label- **API-sleutel**van het tekstvak.
-8. Klik op **Add**.
+8. Klik op **Toevoegen**.
    
     ![URL en API-sleutel voor een klassieke webservice.](./media/excel-add-in-for-web-services/image6.png)
 9. Als u de webservice wilt gebruiken, volgt u de voor gaande instructies, ' stappen voor het gebruik van een bestaande webservice '.

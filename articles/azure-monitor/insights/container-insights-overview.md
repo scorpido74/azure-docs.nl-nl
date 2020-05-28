@@ -3,12 +3,12 @@ title: Overzicht van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden Azure Monitor beschreven voor containers die de AKS-container Insights-oplossing bewaakt en de waarde die wordt geleverd door de status van uw AKS-clusters en Container Instances in azure te controleren.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275228"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118083"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Overzicht van Azure Monitor voor containers
 
@@ -48,7 +48,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 
 De belangrijkste verschillen in het bewaken van een Windows Server-cluster in vergelijking met een Linux-cluster zijn als volgt:
 
-- De metrische gegevens van het geheugen zijn niet beschikbaar voor Windows-knoop punten en-containers.
+- Windows heeft geen gegevens over de geheugen-RSS en is daarom niet beschikbaar voor Windows-knoop punten en-containers. Werkset is beschikbaar. Meer informatie over [geheugen beheer in Windows](https://docs.microsoft.com/windows/win32/memory/working-set).
 - Informatie over capaciteit van schijf opslag is niet beschikbaar voor Windows-knoop punten.
 - Container logboeken zijn niet beschikbaar voor containers die worden uitgevoerd in Windows-knoop punten.
 - Ondersteuning voor de functie Live data (preview) is beschikbaar in de uitzonde ring van Windows-container Logboeken.

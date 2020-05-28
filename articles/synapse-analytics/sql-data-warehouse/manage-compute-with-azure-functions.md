@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014890"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
@@ -29,7 +29,7 @@ Als u Azure functie-app wilt gebruiken met SQL-pool, moet u een [Service-Princip
 Als u de sjabloon wilt implementeren, hebt u de volgende informatie nodig:
 
 - De naam van de resource groep waaraan uw exemplaar van SQL-groep is in
-- Naam van de logische server waarvan uw SQL-groeps instantie zich bevindt
+- De naam van de server waar de SQL-pool instantie zich bevindt
 - De naam van het exemplaar van de SQL-groep
 - Tenant-id (directory-id) van de Azure Active Directory
 - Abonnements-id
@@ -101,7 +101,7 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
    ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Selecteer in Taal de optie *JavaScript* en vervolgens *TimerTrigger*.
+2. Selecteer vanuit taal *Java script*en selecteer vervolgens *Timer trigger*.
 
    ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
 5. Stel de bewerkings variabele als volgt in op het gewenste gedrag:
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +141,7 @@ In deze sectie wordt uitgelegd wat u nodig hebt om een complexere planning van o
 
 Elke dag om 8:00 uur omhoog schalen naar DW600 en om 20:00 uur omlaag schalen naar DW200.
 
-| Functie  | Planning     | Bewerking                                |
+| Functie  | Schema     | Bewerking                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Functie2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +150,7 @@ Elke dag om 8:00 uur omhoog schalen naar DW600 en om 20:00 uur omlaag schalen na
 
 Schaal dagelijks op 8 a.m. naar DW1000, schaal omlaag naar DW600 op 4 p.m. en schaal omlaag naar 10pm naar DW200.
 
-| Functie  | Planning     | Bewerking                                |
+| Functie  | Schema     | Bewerking                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Functie2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +160,7 @@ Schaal dagelijks op 8 a.m. naar DW1000, schaal omlaag naar DW600 op 4 p.m. en sc
 
 Op weekdagen om 8:00 uur omhoog schalen naar DW1000 en om 16:00 uur omlaag schalen naar DW600. Onderbreken op vrijdag om 23:00 uur, hervatten op maandag om 7:00 uur.
 
-| Functie  | Planning       | Bewerking                                |
+| Functie  | Schema       | Bewerking                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Functie1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Functie2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

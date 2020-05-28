@@ -9,16 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982187"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117861"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 In deze zelf studie leert u hoe u ML Studio (klassiek) kunt gebruiken om R-code te maken, te testen en uit te voeren. Uiteindelijk hebt u een volledige oplossing voor prognoses.  
@@ -37,7 +35,7 @@ Het maken van prognoses is een veelgebruikte en zeer nuttige analyse methode. Ve
 
 In deze zelf studie gebruikt u de productie-en prijs gegevens van Californië zuivel, waaronder maandelijkse gegevens over de productie van verschillende zuivel producten en de prijs van melkvet, een bench Mark-basis.
 
-De gegevens die in dit artikel worden gebruikt, samen met R-scripts, kunnen worden gedownload van [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Gegevens in het bestand `cadairydata.csv` werden oorspronkelijk gesynthesizerd op basis van de informatie die beschikbaar is [https://dairymarkets.com](https://dairymarkets.com)van de University of Wisconsin op.
+De gegevens die in dit artikel worden gebruikt, samen met R-scripts, kunnen worden gedownload van [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Gegevens in het bestand `cadairydata.csv` werden oorspronkelijk gesynthesizerd op basis van de informatie die beschikbaar is van de University of Wisconsin op [https://dairymarkets.com](https://dairymarkets.com) .
 
 
 
@@ -125,9 +123,9 @@ Lees de informatie over als u de laatste regel van deze code op dit moment niet 
 
 RStudio is een veel gebruikte IDE voor R. Ik gebruik RStudio voor het bewerken, testen en opsporen van fouten in een deel van de R-code die in deze hand leiding wordt gebruikt. Zodra de R-code is getest en klaar is, kunt u eenvoudig knippen en plakken vanuit de RStudio-editor naar een klassieke [R-script][execute-r-script] module voor het uitvoeren van een machine learning Studio.  
 
-Als u de R-programmeer taal niet op uw computer hebt geïnstalleerd, raden we u aan om dit nu te doen. Gratis down loads van de open source R-taal zijn beschikbaar op het uitgebreide R-archief netwerk [https://www.r-project.org/](https://www.r-project.org/)(kranen) op. Er zijn down loads beschikbaar voor Windows, Mac OS en Linux/UNIX. Kies een nabijgelegen mirror en volg de download instructies. Daarnaast bevat KRANen een schat aan nuttige analyse-en gegevens manipulatie-pakketten.
+Als u de R-programmeer taal niet op uw computer hebt geïnstalleerd, raden we u aan om dit nu te doen. Gratis down loads van de open source R-taal zijn beschikbaar op het uitgebreide R-archief netwerk (KRANen) op [https://www.r-project.org/](https://www.r-project.org/) . Er zijn down loads beschikbaar voor Windows, Mac OS en Linux/UNIX. Kies een nabijgelegen mirror en volg de download instructies. Daarnaast bevat KRANen een schat aan nuttige analyse-en gegevens manipulatie-pakketten.
 
-Als u niet bekend bent met RStudio, moet u de desktop versie downloaden en installeren. U kunt de RStudio-down loads voor Windows, Mac OS en Linux/UNIX http://www.rstudio.com/products/RStudio/vinden op. Volg de instructies voor het installeren van RStudio op uw desktop computer.  
+Als u niet bekend bent met RStudio, moet u de desktop versie downloaden en installeren. U kunt de RStudio-down loads voor Windows, Mac OS en Linux/UNIX vinden op http://www.rstudio.com/products/RStudio/ . Volg de instructies voor het installeren van RStudio op uw desktop computer.  
 
 Een zelf studie Inleiding tot RStudio is beschikbaar op [het gebruik van de RSTUDIO IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
 
@@ -218,7 +216,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio (klassiek) behandelt bestanden in de post alsof ze zich in de map src/directory bevinden, dus u moet uw bestands namen met deze naam van de map voor voegsel. Als de zip bijvoorbeeld de bestanden en `yourfile.R` `yourData.rdata` in de hoofdmap van het zip-bestand bevat, moet u de volgende adressen `src/yourfile.R` gebruiken `src/yourData.rdata` als en `source` wanneer `load`u en gebruikt.
+> Azure Machine Learning Studio (klassiek) behandelt bestanden in de post alsof ze zich in de map src/directory bevinden, dus u moet uw bestands namen met deze naam van de map voor voegsel. Als de zip bijvoorbeeld de bestanden `yourfile.R` en `yourData.rdata` in de hoofdmap van het zip-bestand bevat, moet u de volgende adressen `src/yourfile.R` gebruiken als en wanneer u `src/yourData.rdata` `source` en gebruikt `load` .
 
 [De gegevensset voor het](#loading)laden van gegevens sets is al besproken. Als u het R-script hebt gemaakt en getest dat in de vorige sectie wordt weer gegeven, gaat u als volgt te werk:
 
@@ -245,7 +243,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. Koppel de uitvoer van het pictogram **zip-gegevens** aan de invoer van de **script bundel** van de module voor het uitvoeren van een [R-script][execute-r-script] .
 
-1. Typ de `source()` functie met de naam van het zip-bestand in het code venster voor de module voor het uitvoeren van een [R-script][execute-r-script] . In mijn geval heb ik `source("src/simpleplot.R")`getypt.  
+1. Typ de `source()` functie met de naam van het zip-bestand in het code venster voor de module voor het uitvoeren van een [R-script][execute-r-script] . In mijn geval heb ik getypt `source("src/simpleplot.R")` .  
 
 1. Zorg ervoor dat u **Opslaan**selecteert.
 
@@ -257,7 +255,7 @@ Zodra deze stappen zijn voltooid, wordt [het r][execute-r-script] -script in het
 
 #### <a name="dataset1"></a>Dataset1
 
-U kunt een rechthoekige tabel met gegevens door geven aan uw R-code met behulp van de Dataset1-invoer. In ons eenvoudige script wordt `maml.mapInputPort(1)` de functie gelezen van de gegevens van poort 1. Deze gegevens worden vervolgens toegewezen aan de naam van een data frame-variabele in uw code. In ons eenvoudige script voert de eerste regel code de toewijzing uit.
+U kunt een rechthoekige tabel met gegevens door geven aan uw R-code met behulp van de Dataset1-invoer. In ons eenvoudige script wordt de `maml.mapInputPort(1)` functie gelezen van de gegevens van poort 1. Deze gegevens worden vervolgens toegewezen aan de naam van een data frame-variabele in uw code. In ons eenvoudige script voert de eerste regel code de toewijzing uit.
 
 ```R
 cadairydata <- maml.mapInputPort(1)
@@ -305,13 +303,13 @@ Deze resultaten zijn voornamelijk zoals verwacht, met 228 waarnemingen en 9 kolo
 
 #### <a name="dataset2"></a>Dataset2
 
-Het gedrag van de Dataset2-invoer is gelijk aan die van Dataset1. Met deze invoer kunt u een tweede rechthoekige tabel met gegevens door geven aan uw R-code. De functie `maml.mapInputPort(2)`, met het argument 2, wordt gebruikt om deze gegevens door te geven.  
+Het gedrag van de Dataset2-invoer is gelijk aan die van Dataset1. Met deze invoer kunt u een tweede rechthoekige tabel met gegevens door geven aan uw R-code. De functie `maml.mapInputPort(2)` , met het argument 2, wordt gebruikt om deze gegevens door te geven.  
 
 ### <a name="execute-r-script-outputs"></a>Uitvoer van R-script uitvoeren
 
 #### <a name="output-a-dataframe"></a>Een data frame uitvoeren
 
-U kunt de inhoud van een R-data frame uitvoeren als een rechthoekige tabel via de Dataset1-poort van `maml.mapOutputPort()` het resultaat met behulp van de functie. In ons eenvoudige R-script wordt dit uitgevoerd door de volgende regel.
+U kunt de inhoud van een R-data frame uitvoeren als een rechthoekige tabel via de Dataset1-poort van het resultaat met behulp van de `maml.mapOutputPort()` functie. In ons eenvoudige R-script wordt dit uitgevoerd door de volgende regel.
 
 ```
 maml.mapOutputPort('cadairydata')
@@ -359,7 +357,7 @@ Wanneer tabellaire gegevens in R van een externe bron worden gelezen, is het alt
 
 Gelukkig is het eenvoudig om het ene type naar het andere te converteren, zolang de toewijzing mogelijk is. U kunt bijvoorbeeld ' Nevada ' niet converteren naar een numerieke waarde, maar deze converteren naar een factor (categorische-variabele). Een ander voor beeld: u kunt een numerieke waarde 1 omzetten in een teken ' 1 ' of een factor.  
 
-De syntaxis voor een van deze conversies is eenvoudig: `as.datatype()`. Deze functies voor type conversie zijn onder andere de volgende.
+De syntaxis voor een van deze conversies is eenvoudig: `as.datatype()` . Deze functies voor type conversie zijn onder andere de volgende.
 
 * `as.numeric()`
 * `as.character()`
@@ -503,7 +501,7 @@ Goed nieuws. De verwachte resultaten worden opgehaald.
 
 Als u een time series-model wilt maken, is het handig om een kolom te hebben die de maanden sinds het begin van de tijd reeks bevat. Er wordt een nieuwe kolom month. Count gemaakt.
 
-Voor het indelen van de code gaan we onze eerste eenvoudige functie `num.month()`maken. Vervolgens worden deze functies toegepast om een nieuwe kolom in de data frame te maken. De nieuwe code is als volgt.
+Voor het indelen van de code gaan we onze eerste eenvoudige functie maken `num.month()` . Vervolgens worden deze functies toegepast om een nieuwe kolom in de data frame te maken. De nieuwe code is als volgt.
 
 ```R
 ## Create a new column with the month count
@@ -559,7 +557,7 @@ Als u de waarden in de samen vattingen van onze data frame bekijkt, moet u hier 
 
 Voor ons prognose model gebruiken we een multiplicative-model voor trend en seizoen aanpassing van deze gegevens. Met een logboek transformatie kan ons een lineair model gebruiken, waardoor dit proces wordt vereenvoudigd. We kunnen de logboek transformatie Toep assen in dezelfde functie als de vermenigvuldiger wordt toegepast.
 
-In de volgende code definieert u een nieuwe functie `log.transform()`en past u deze toe op de rijen met de numerieke waarden. De functie `Map()` R wordt gebruikt om de `log.transform()` functie toe te passen op de geselecteerde kolommen van de data frame. `Map()`is vergelijkbaar met `apply()` maar biedt meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers het tweede argument `log.transform()` voor de functie levert. De `na.omit()` functie wordt gebruikt als een beetje opschoning om ervoor te zorgen dat er geen ontbrekende of niet-gedefinieerde waarden in de data frame zijn.
+In de volgende code definieert u een nieuwe functie `log.transform()` en past u deze toe op de rijen met de numerieke waarden. De `Map()` functie R wordt gebruikt om de `log.transform()` functie toe te passen op de geselecteerde kolommen van de data frame. `Map()`is vergelijkbaar met `apply()` maar biedt meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers het tweede argument voor de `log.transform()` functie levert. De `na.omit()` functie wordt gebruikt als een beetje opschoning om ervoor te zorgen dat er geen ontbrekende of niet-gedefinieerde waarden in de data frame zijn.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -602,8 +600,8 @@ Als u niet wordt gebruikt om een verdedigings programma in R te maken, is het mo
 
 1. Er wordt een vector van vier berichten gedefinieerd. Deze berichten worden gebruikt voor het communiceren van informatie over een aantal van de mogelijke fouten en uitzonde ringen die kunnen optreden met deze code.
 2. Ik retour neer de waarde N.V.T. voor elke aanvraag. Er zijn veel andere mogelijkheden die mogelijk minder neven effecten hebben. Ik kan bijvoorbeeld een vector van nullen of de oorspronkelijke invoer vector retour neren.
-3. Controles worden uitgevoerd op de argumenten voor de functie. Als er een fout wordt gedetecteerd, wordt er in elk geval een standaard waarde geretourneerd en wordt er een bericht gegenereerd `warning()` door de functie. Ik gebruik `warning()` in plaats van `stop()` de laatste, waardoor de uitvoering wordt beëindigd, precies wat ik probeer te voor komen. Houd er rekening mee dat de code in een procedure stijl is geschreven, zoals in dit geval een functionele benadering gecompliceerd en onzichtbaar is.
-4. De logboek berekeningen worden verpakt zodat uitzonde ringen geen plotselinge onderbreking van `tryCatch()` de verwerking veroorzaken. Zonder `tryCatch()` de meeste fouten die zijn opgetreden door R-functies, resulteert dit in een stop signaal. Dit betekent alleen dat.
+3. Controles worden uitgevoerd op de argumenten voor de functie. Als er een fout wordt gedetecteerd, wordt er in elk geval een standaard waarde geretourneerd en wordt er een bericht gegenereerd door de `warning()` functie. Ik gebruik `warning()` in plaats van `stop()` de laatste, waardoor de uitvoering wordt beëindigd, precies wat ik probeer te voor komen. Houd er rekening mee dat de code in een procedure stijl is geschreven, zoals in dit geval een functionele benadering gecompliceerd en onzichtbaar is.
+4. De logboek berekeningen worden verpakt `tryCatch()` zodat uitzonde ringen geen plotselinge onderbreking van de verwerking veroorzaken. Zonder `tryCatch()` de meeste fouten die zijn opgetreden door R-functies, resulteert dit in een stop signaal. Dit betekent alleen dat.
 
 Voer deze R-code uit in uw experiment en Bekijk de gedrukte uitvoer in het bestand output. log. U ziet nu de getransformeerde waarden van de vier kolommen in het logboek, zoals wordt weer gegeven in afbeelding 13.
 
@@ -803,11 +801,11 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 Er is een zeer beetje in de `ts.detrend()` functie. Met de meeste van deze code wordt gecontroleerd op mogelijke problemen met de argumenten of het verwerken van uitzonde ringen. deze kunnen zich nog steeds voordoen tijdens de berekeningen. Slechts een paar regels van deze code voeren feitelijk de berekeningen uit.
 
-We hebben al een voor beeld van een verdedigings programma in waarde-trans formaties besproken. Beide reken blokken worden ingepakt `tryCatch()`in. Voor sommige fouten is het zinvol om de oorspronkelijke invoer vector te retour neren, en in andere gevallen wordt er een vector van nullen geretourneerd.  
+We hebben al een voor beeld van een verdedigings programma in waarde-trans formaties besproken. Beide reken blokken worden ingepakt in `tryCatch()` . Voor sommige fouten is het zinvol om de oorspronkelijke invoer vector te retour neren, en in andere gevallen wordt er een vector van nullen geretourneerd.  
 
 Houd er rekening mee dat de lineaire regressie die wordt gebruikt voor de trending een tijd reeks regressie is. De Voorspellings variabele is een time Series-object.  
 
-Eenmaal `ts.detrend()` is gedefinieerd, worden deze toegepast op de variabelen van belang in onze data frame. We moeten de resulterende lijst die is gemaakt met `lapply()` gegevens data frame, afdwingen `as.data.frame()`met behulp van. Vanwege de verdedigings aspecten `ts.detrend()`van, is het mislukken van het verwerken van een van de variabelen niet de juiste verwerking van de andere waarden te voor komen.  
+Eenmaal `ts.detrend()` is gedefinieerd, worden deze toegepast op de variabelen van belang in onze data frame. We moeten de resulterende lijst die is gemaakt met `lapply()` gegevens data frame, afdwingen met behulp van `as.data.frame()` . Vanwege de verdedigings aspecten van `ts.detrend()` , is het mislukken van het verwerken van een van de variabelen niet de juiste verwerking van de andere waarden te voor komen.  
 
 De laatste regel code maakt een Pairwise-scatterplot. Na het uitvoeren van de R-code worden de resultaten van de scatterplot weer gegeven in afbeelding 17.
 
@@ -925,8 +923,8 @@ outframe
 De eerste regel code is een beetje truc en enkele uitleg kan u helpen bij het begrijpen. Als u aan de slag gaat, hebt u het volgende nodig:
 
 1. De operator '**[[**' met het argument '**1**' selecteert de vector van correlaties in de lags van het eerste element van de CCF-object lijst.
-2. De `do.call()` functie past de `rbind()` functie toe op de elementen van de lijst die `lapply()`worden geretourneerd door.
-3. Met `data.frame()` de functie wordt het resultaat dat is `do.call()` geproduceerd door naar een data frame, afgedwongen.
+2. De `do.call()` functie past de `rbind()` functie toe op de elementen van de lijst die worden geretourneerd door `lapply()` .
+3. `data.frame()`Met de functie wordt het resultaat dat is geproduceerd door `do.call()` naar een data frame, afgedwongen.
 
 Houd er rekening mee dat de namen van de rijen in een kolom van de data frame staan. Hierbij blijven de rijnaam behouden wanneer deze worden uitgevoerd vanuit het [script Execute R][execute-r-script].
 
@@ -995,7 +993,7 @@ Met dit resultaat gaan we onze analyse nu starten.
 
 ### <a name="create-a-training-dataset"></a>Een trainings gegevensset maken
 
-Met de data frame die zijn gebouwd, moeten we een trainings gegevensset maken. Deze gegevens omvatten alle waarnemingen, met uitzonde ring van de laatste 12 van het jaar 2013, wat onze test gegevensset is. Met de volgende code worden de data frame en de productie-en prijs variabelen van zuivel gemaakt. Ik maak vervolgens een grafiek van de vier productie-en prijs variabelen. Een anonieme functie wordt gebruikt voor het definiëren van een aantal uitbrei ding voor het waarnemings punt en herhaalt vervolgens de lijst met andere `Map()`twee argumenten met. Als u denkt dat u hier een for-lus zou hebben gewerkt, bent u er goed aan. Maar omdat R een functionele taal is, wordt er een functionele benadering weer gegeven.
+Met de data frame die zijn gebouwd, moeten we een trainings gegevensset maken. Deze gegevens omvatten alle waarnemingen, met uitzonde ring van de laatste 12 van het jaar 2013, wat onze test gegevensset is. Met de volgende code worden de data frame en de productie-en prijs variabelen van zuivel gemaakt. Ik maak vervolgens een grafiek van de vier productie-en prijs variabelen. Een anonieme functie wordt gebruikt voor het definiëren van een aantal uitbrei ding voor het waarnemings punt en herhaalt vervolgens de lijst met andere twee argumenten met `Map()` . Als u denkt dat u hier een for-lus zou hebben gewerkt, bent u er goed aan. Maar omdat R een functionele taal is, wordt er een functionele benadering weer gegeven.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1057,7 +1055,7 @@ Hiermee wordt het volgende gegenereerd.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-Uit P-waarden`Pr(>|t|)`() in deze uitvoer ziet u dat de gekwadrateerde term mogelijk niet significant is. Ik gebruik de `update()` functie om dit model te wijzigen door de vier Kante term neer te zetten.
+Uit P-waarden ( `Pr(>|t|)` ) in deze uitvoer ziet u dat de gekwadrateerde term mogelijk niet significant is. Ik gebruik de `update()` functie om dit model te wijzigen door de vier Kante term neer te zetten.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
@@ -1187,7 +1185,7 @@ Het residuele waarnemings punt wordt weer gegeven in afbeelding 25.
 
 Deze verschillen zien er redelijk uit. Er is geen specifieke structuur, met uitzonde ring van het effect van de 2008-2009-recessie, waardoor ons model niet bijzonder goed werkt.
 
-Het waarnemings punt dat wordt weer gegeven in afbeelding 25 is handig voor het detecteren van tijd afhankelijke patronen in de verschillen. De expliciete aanpak van het berekenen en uitzetten van de verschillen die ik heb gebruikt, plaatst de resten in de tijd volgorde op het waarnemings punt. Als ik daarentegen uitgetrokken `milk.lm$residuals`, zou het waarnemings punt niet in de juiste volg orde staan.
+Het waarnemings punt dat wordt weer gegeven in afbeelding 25 is handig voor het detecteren van tijd afhankelijke patronen in de verschillen. De expliciete aanpak van het berekenen en uitzetten van de verschillen die ik heb gebruikt, plaatst de resten in de tijd volgorde op het waarnemings punt. Als ik daarentegen uitgetrokken, `milk.lm$residuals` zou het waarnemings punt niet in de juiste volg orde staan.
 
 U kunt ook gebruiken `plot.lm()` om een reeks diagnostische grafieken te maken.
 
@@ -1262,7 +1260,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-Net als bij `log.transform()` de functie die we in de sectie ' waarde transformaties ' hebben besproken, is er een groot aantal fout controles en code voor het herstellen van uitzonde ringen in deze functie. De gebruikte principes zijn hetzelfde. Het werk wordt uitgevoerd op twee plaatsen in `tryCatch()`. Ten eerste is de tijd reeks exponentiated, omdat we werken met de logboeken van de waarden. Ten tweede wordt de werkelijke RMS-fout berekend.  
+Net als bij de `log.transform()` functie die we in de sectie ' waarde transformaties ' hebben besproken, is er een groot aantal fout controles en code voor het herstellen van uitzonde ringen in deze functie. De gebruikte principes zijn hetzelfde. Het werk wordt uitgevoerd op twee plaatsen in `tryCatch()` . Ten eerste is de tijd reeks exponentiated, omdat we werken met de logboeken van de waarden. Ten tweede wordt de werkelijke RMS-fout berekend.  
 
 Met een functie die de RMS-fout meet, gaan we een data frame maken en uitvoeren die de RMS-fouten bevat. We zullen alleen voor waarden voor het trend model en het volledige model met seizoensgebonden factoren meenemen. De volgende code voert de taak uit met behulp van de twee lineaire modellen die we hebben gebouwd.
 
@@ -1302,7 +1300,7 @@ RStudio is behoorlijk goed gedocumenteerd. Hier vindt u enkele koppelingen naar 
 * Het **bewerken en uitvoeren van r code** -RStudio biedt een geïntegreerde omgeving voor het bewerken en uitvoeren van r-code. Zie [code bewerken en uitvoeren](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) voor meer informatie.
 * **Fout opsporing** -RStudio bevat krachtige functies voor fout opsporing. Zie [fout opsporing met RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) voor meer informatie over deze functies. Zie [probleem oplossing](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)voor meer informatie over functies voor het oplossen van onderbrekings punten.
 
-## <a name="further-reading"></a><a id="appendixb"></a>Meer informatie
+## <a name="further-reading"></a><a id="appendixb"></a>Meer lezen
 
 Deze zelf studie R-programmeer behandelt de basis beginselen van wat u nodig hebt om de R-taal met Azure Machine Learning Studio (klassiek) te gebruiken. Als u niet bekend bent met R, zijn er twee inleidingen beschikbaar op KRANen:
 
@@ -1315,7 +1313,7 @@ Er zijn veel boeken op R die u kunnen helpen om aan de slag te gaan. Hier vindt 
 * **R Cookbook** door Paul Teetor biedt een probleem en oplossings benadering voor het gebruik van R.  
 * De **R in actie** van Robert Kabacoff is een ander handig inleidende boek. De [snelle R-website](https://www.statmethods.net/) van de Companion is een nuttige resource.
 * **R Inferno** door Patrick branding is een verrassend humoristische Book dat een aantal trucige en moeilijke onderwerpen behandelt die tijdens het Program meren in R kunnen worden gevonden. Het boek is gratis beschikbaar op [het R-Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Als u een grondige kennis wilt hebben van geavanceerde onderwerpen in R, bekijkt u het boek **Advanced R** by Hadley Wickham. De online versie van dit boek is gratis beschikbaar op [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
+* Als u een grondige kennis wilt hebben van geavanceerde onderwerpen in R, bekijkt u het boek **Advanced R** by Hadley Wickham. De online versie van dit boek is gratis beschikbaar op [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/) .
 
 Een catalogus met R time series-pakketten vindt u in de [taak weergave kranen: analyse van de tijd reeks](https://cran.r-project.org/web/views/TimeSeries.html). Raadpleeg de documentatie voor het desbetreffende pakket voor meer informatie over specifieke Series-object pakketten.
 

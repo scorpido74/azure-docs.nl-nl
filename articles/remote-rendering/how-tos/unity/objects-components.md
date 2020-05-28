@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f9f0e164f7ab0a6b146aad3a2809bf85e5aa4be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409861"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020656"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interactie met Unity-gameobjecten en -onderdelen
 
@@ -22,7 +22,7 @@ De eenheids integratie van Azure remote rendering wordt daarom geleverd met extr
 
 ## <a name="load-a-model-in-unity"></a>Een model in Unity laden
 
-Wanneer u een model laadt, krijgt u een verwijzing naar het hoofd object van het geladen model. Deze verwijzing is geen unit-Game object, maar u kunt dit omzetten in een-bestand met behulp van de uitbreidings methode `Entity.GetOrCreateGameObject()`. Deze functie verwacht een argument van het `UnityCreationMode`type. Als u passeert `CreateUnityComponents`, wordt het nieuw gemaakte object Unity Game ook gevuld met proxy onderdelen voor alle onderdelen voor externe rendering die op de host bestaan. We raden `DoNotCreateUnityComponents`u echter aan om de overhead zo min mogelijk te houden.
+Wanneer u een model laadt, krijgt u een verwijzing naar het hoofd object van het geladen model. Deze verwijzing is geen unit-Game object, maar u kunt dit omzetten in een-bestand met behulp van de uitbreidings methode `Entity.GetOrCreateGameObject()` . Deze functie verwacht een argument van het type `UnityCreationMode` . Als u passeert `CreateUnityComponents` , wordt het nieuw gemaakte object Unity Game ook gevuld met proxy onderdelen voor alle onderdelen voor externe rendering die op de host bestaan. We raden u echter aan om `DoNotCreateUnityComponents` de overhead zo min mogelijk te houden.
 
 ### <a name="load-model-with-task"></a>Model laden met taak
 
@@ -82,21 +82,21 @@ async void LoadModelWithAwait()
 }
 ```
 
-De bovenstaande code voorbeelden hebben het laad traject voor het model via SAS gebruikt, omdat het ingebouwde model is geladen. Het model wordt met behulp van de `LoadModelAsync` BLOB `LoadModelParams`-containers (met en) volledig vergelijkbaar.
+De bovenstaande code voorbeelden hebben het laad traject voor het model via SAS gebruikt, omdat het ingebouwde model is geladen. Het model wordt met behulp van de BLOB-containers (met `LoadModelAsync` en `LoadModelParams` ) volledig vergelijkbaar.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Als u een unit-spel object maakt, `RemoteEntitySyncObject` wordt impliciet een onderdeel toegevoegd aan het spel object. Dit onderdeel wordt gebruikt om de entiteits transformatie te synchroniseren met de-server. De gebruiker `RemoteEntitySyncObject` moet standaard expliciet aanroepen `SyncToRemote()` om de status van de lokale eenheid te synchroniseren met de server. Als `SyncEveryFrame` u inschakelt, wordt het object automatisch gesynchroniseerd.
+Als u een unit-spel object maakt, wordt impliciet een `RemoteEntitySyncObject` onderdeel toegevoegd aan het spel object. Dit onderdeel wordt gebruikt om de entiteits transformatie te synchroniseren met de-server. `RemoteEntitySyncObject`De gebruiker moet standaard expliciet aanroepen `SyncToRemote()` om de status van de lokale eenheid te synchroniseren met de server. Als u inschakelt `SyncEveryFrame` , wordt het object automatisch gesynchroniseerd.
 
-Objecten met een `RemoteEntitySyncObject` kunnen hun externe onderliggende items hebben geïnstantieerd en weer gegeven in de Unity-editor met de knop **onderliggende items weer geven** .
+Objecten met een `RemoteEntitySyncObject` kunnen hun externe onderliggende items hebben geïnstantieerd en worden weer gegeven in de eenheids editor met behulp van de **:::no-loc text="Show children":::** knop.
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
 ## <a name="wrapper-components"></a>Wrapper-onderdelen
 
-[Onderdelen](../../concepts/components.md) die zijn gekoppeld aan externe rendering-entiteiten, worden blootgesteld `MonoBehavior`aan de eenheid via proxy s. Deze proxy's vertegenwoordigen het externe onderdeel in eenheid en sturen alle wijzigingen door naar de host.
+[Onderdelen](../../concepts/components.md) die zijn gekoppeld aan externe rendering-entiteiten, worden blootgesteld aan de eenheid via proxy `MonoBehavior` s. Deze proxy's vertegenwoordigen het externe onderdeel in eenheid en sturen alle wijzigingen door naar de host.
 
-Als u externe rendering-onderdelen voor proxy wilt maken, `GetOrCreateArrComponent`gebruikt u de extensie methode:
+Als u externe rendering-onderdelen voor proxy wilt maken, gebruikt u de extensie methode `GetOrCreateArrComponent` :
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
@@ -104,9 +104,9 @@ var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteMa
 
 ## <a name="coupled-lifetimes"></a>Gekoppelde levens duur
 
-De levens duur van een externe [entiteit](../../concepts/entities.md) en een unit-Game object wordt gekoppeld wanneer deze zijn gebonden `RemoteEntitySyncObject`via een. Als u een `UnityEngine.Object.Destroy(...)` dergelijk spel object aanroept, wordt de externe entiteit ook verwijderd.
+De levens duur van een externe [entiteit](../../concepts/entities.md) en een unit-Game object wordt gekoppeld wanneer deze zijn gebonden via een `RemoteEntitySyncObject` . Als u `UnityEngine.Object.Destroy(...)` een dergelijk spel object aanroept, wordt de externe entiteit ook verwijderd.
 
-Als u het eenheids spel object wilt vernietigen zonder dat dit van invloed is op de externe `Unbind()` entiteit, `RemoteEntitySyncObject`moet u eerst aanroepen op de.
+Als u het eenheids spel object wilt vernietigen zonder dat dit van invloed is op de externe entiteit, moet u eerst aanroepen `Unbind()` op de `RemoteEntitySyncObject` .
 
 Dit geldt ook voor alle proxy onderdelen. Als u alleen de client-side vertegenwoordiging wilt vernietigen, moet u `Unbind()` eerst het proxy-onderdeel aanroepen:
 

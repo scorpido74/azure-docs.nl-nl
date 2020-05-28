@@ -1,6 +1,6 @@
 ---
-title: Uitvoeringen van SSIS-pakketten plannen met behulp van Azure SQL Database Managed instance agent
-description: Meer informatie over het plannen van SSIS-pakket uitvoeringen met behulp van Azure SQL Database Managed instance agent.
+title: SSIS-pakketten uitvoeren met Azure SQL Managed instance agent
+description: Meer informatie over het uitvoeren van SSIS-pakketten met behulp van Azure SQL Database Managed instance agent.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,16 +9,14 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1a0015c12f942eebb0a26738f5d7144bbe28ef1c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628483"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022287"
 ---
-# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>Uitvoeringen van SSIS-pakketten plannen met behulp van Azure SQL Database Managed instance agent
-
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+# <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren met behulp van de Azure SQL Managed instance agent
 
 In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert met behulp van Azure SQL Database Managed instance agent. Deze functie biedt problemen die vergelijkbaar zijn met het plannen van SSIS-pakketten door gebruik te maken van SQL Server Agent in uw on-premises omgeving.
 
@@ -81,7 +79,7 @@ In deze procedure gebruikt u Azure SQL Database Managed instance agent om een SS
 
         ![Opties voor bestands bron type](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
       
-        Het pad naar het **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** pakket is.
+        Het pad naar het pakket is **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
       
         Voer onder **toegangs referenties voor pakket bestanden**de naam van het Azure-bestands account en de account sleutel in voor toegang tot het Azure-bestand. Het domein is ingesteld als **Azure**.
 
@@ -92,14 +90,14 @@ In deze procedure gebruikt u Azure SQL Database Managed instance agent om een SS
         Geef het domein, de gebruikers naam en het bijbehorende wacht woord op om toegang te krijgen tot het pakket bestand van de netwerk share.
    1. Als uw pakket bestand is versleuteld met een wacht woord, selecteert u **versleutelings wachtwoord** en voert u het wacht woord in.
 1. Voer op het tabblad **configuraties** het pad naar het configuratie bestand in als u een configuratie bestand nodig hebt om het SSIS-pakket uit te voeren.
-   Als u de configuratie opslaat in Azure Files, wordt het configuratiepad **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`**.
+   Als u de configuratie opslaat in Azure Files, wordt het configuratiepad **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`** .
 1. Op het tabblad **uitvoerings opties** kunt u kiezen of u Windows- **verificatie** of **32-bits runtime** wilt gebruiken om het SSIS-pakket uit te voeren.
 1. Op het tabblad **logboek registratie** kunt u het pad voor logboek registratie en bijbehorende toegangs referenties voor logboek registratie kiezen om de logboek bestanden op te slaan. 
    Het pad voor logboek registratie is standaard hetzelfde als het pad naar de map van het pakket en de toegangs referenties voor logboek registratie is hetzelfde als de toegangs referentie voor het pakket.
-   Als u uw logboeken opslaat in Azure Files, wordt het pad voor **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** logboek registratie.
+   Als u uw logboeken opslaat in Azure Files, wordt het pad voor logboek registratie **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`** .
 1. Op het tabblad **waarden instellen** kunt u het pad en de waarde van de eigenschap opgeven om de pakket eigenschappen te overschrijven.
  
-   Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling **`\Package.Variables[User::<variable name>].Value`** in:.
+   Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: **`\Package.Variables[User::<variable name>].Value`** .
 1. Selecteer **OK** om de taak configuratie van de agent op te slaan.
 1. Start de agent taak om het SSIS-pakket uit te voeren.
 

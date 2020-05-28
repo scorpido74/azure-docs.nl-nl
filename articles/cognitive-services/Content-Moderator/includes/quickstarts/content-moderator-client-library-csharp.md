@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 50572c037cc7927a06bcf8d95305353238989ae9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24319fe80130c1ac116c8423e1d82a5bc08b4b20
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187348"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124264"
 ---
 Ga aan de slag met de Content Moderator-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Content Moderator is een cognitieve service waarmee tekst-, afbeeldings-en video-inhoud wordt gecontroleerd op materiaal dat mogelijk aanstootgevend, riskant of anderszins ongewenst is. Wanneer dergelijk materiaal wordt gevonden, past de service de relevante labels (vlaggen) op de inhoud toe. Uw app kan vervolgens gemarkeerde inhoud verwerken om te voldoen aan de voor Schriften of de beoogde omgeving voor gebruikers te onderhouden.
 
@@ -25,7 +25,7 @@ Gebruik de Content Moderator-client bibliotheek voor .NET voor het volgende:
 * [Gemiddelde afbeeldingen](#moderate-images)
 * [Een beoordeling maken](#create-a-review)
 
-[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | NuGet-voor[beelden](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [package)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  van bibliotheek [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  Voor [beelden](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,13 +41,13 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/)
 
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het `CONTENT_MODERATOR_SUBSCRIPTION_KEY` eind `CONTENT_MODERATOR_ENDPOINT`punt-URL, respectievelijk met de naam en.
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt-URL, `CONTENT_MODERATOR_SUBSCRIPTION_KEY` respectievelijk met de naam en `CONTENT_MODERATOR_ENDPOINT` .
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
 Maak een nieuwe .NET core-toepassing in uw favoriete tekst editor of IDE. 
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt u de `dotnet new` opdracht om een nieuwe console-app met de naam `content-moderator-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *Program.cs*.
+In een console venster (zoals cmd, Power shell of bash) gebruikt `dotnet new` u de opdracht om een nieuwe console-app met de naam te maken `content-moderator-quickstart` . Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *Program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -130,7 +130,7 @@ Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255,
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-Voeg de volgende methode aanroep toe aan `Main` de methode:
+Voeg de volgende methode aanroep toe aan de `Main` methode:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
@@ -151,14 +151,14 @@ Definieer de invoer-en uitvoer bestanden:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-Maak vervolgens het invoer bestand *ImageFiles. txt*in de hoofdmap van het project. In dit bestand voegt u de Url's van installatie kopieën toe om&mdash;één URL op elke regel te analyseren. U kunt de volgende voorbeeld afbeeldingen gebruiken:
+Maak vervolgens het invoer bestand *ImageFiles. txt*in de hoofdmap van het project. In dit bestand voegt u de Url's van installatie kopieën toe om &mdash; één URL op elke regel te analyseren. U kunt de volgende voorbeeld afbeeldingen gebruiken:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-Geef de invoer-en uitvoer bestanden op in de volgende methode aanroep `Main` in de-methode. U definieert deze methode in een latere stap.
+Geef de invoer-en uitvoer bestanden op in de volgende methode aanroep in de- `Main` methode. U definieert deze methode in een latere stap.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
@@ -258,7 +258,7 @@ Als u in dit scenario een call back-eind punt hebt gebruikt, wordt er een gebeur
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit vanuit de map van uw `dotnet run` toepassing met de opdracht.
+Voer de toepassing uit vanuit de map van uw toepassing met de `dotnet run` opdracht.
 
 ```dotnet
 dotnet run 

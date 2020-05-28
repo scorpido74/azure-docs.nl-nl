@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 855f0782f1979f91fcd83bcc469d8d2feaf8c643
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650500"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015698"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Verbindings problemen in de Synapse SQL-pool oplossen
 
@@ -50,11 +50,11 @@ Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud ge
 
 ## <a name="check-your-firewall-settings"></a>Uw firewallinstellingen controleren
 
-De SQL-groeps database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Meer informatie over Firewall configuraties vindt u [hier](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
+De SQL-groeps database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw [logische server](../../azure-sql/database/logical-servers.md) , tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>De instellingen van uw VNet/service-eindpunt controleren
 
-Als u fouten 40914 en 40615 ontvangt, raadpleegt u de [fout beschrijving en oplossingen hier](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
+Als u fouten 40914 en 40615 ontvangt, raadpleegt u de [fout beschrijving en oplossingen hier](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
 
 ## <a name="check-for-the-latest-drivers"></a>Controleren op de meest recente stuurprogramma's
 
@@ -109,7 +109,7 @@ Controleer of er sprake is van een zware belasting op de server met een groot aa
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 
-Fouten 40914 en 40615, Zie [hier de beschrijving en oplossing](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)van de fout.
+Fouten 40914 en 40615, Zie [hier de beschrijving en oplossing](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)van de fout.
 
 ## <a name="still-having-connectivity-issues"></a>Hebt u nog steeds verbindings problemen?
 

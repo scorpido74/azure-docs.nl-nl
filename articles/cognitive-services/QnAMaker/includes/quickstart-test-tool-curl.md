@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203953"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998032"
 ---
 In deze op krul gebaseerde Snelstartgids wordt u begeleid bij het verkrijgen van een antwoord uit uw Knowledge Base.
 
@@ -34,13 +34,13 @@ In deze op krul gebaseerde Snelstartgids wordt u begeleid bij het verkrijgen van
 Gebruik de Knowledge Base van de vorige snel om een antwoord te zoeken op basis van meta gegevens.
 
 1. Selecteer op de pagina **instellingen** van de Knowledge Base het tabblad **krul** om een voor beeld van een krul opdracht te zien die wordt gebruikt voor het genereren van een antwoord uit de Knowledge Base.
-1. Kopieer de opdracht naar een Bewerk bare omgeving (zoals een tekst bestand), zodat u de opdracht kunt bewerken. Bewerk de waarde van de vraag als volgt zodat de meta `service:qna_maker` gegevens van worden gebruikt als een filter voor de QnA-paren.
+1. Kopieer de opdracht naar een Bewerk bare omgeving (zoals een tekst bestand), zodat u de opdracht kunt bewerken. Bewerk de waarde van de vraag als volgt zodat de meta gegevens van `service:qna_maker` worden gebruikt als een filter voor de QnA-paren.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    De vraag is slechts één woord, `size`waardoor een van de twee QnA-paren kan worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen `qna_maker` de antwoorden.
+    De vraag is slechts één woord, `size` waardoor een van de twee QnA-paren kan worden geretourneerd. De `strictFilters` matrix vertelt het antwoord om te beperken tot alleen de `qna_maker` antwoorden.
 
 1. Het antwoord bevat alleen het antwoord dat voldoet aan de filter criteria. De volgende krul reactie is opgemaakt voor de Lees baarheid:
 
@@ -77,11 +77,11 @@ Gebruik de Knowledge Base van de vorige snel om een antwoord te zoeken op basis 
     }
     ```
 
-    Als er een vraag-en-antwoordset is die niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt de set niet geretourneerd. In plaats daarvan wordt het `No good match found in KB.` algemene antwoord geretourneerd.
+    Als er een vraag-en antwoord paar is dat niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
 ## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
 
-Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt `debug` u de eigenschap toe:
+Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
 
 ```json
 Debug: {Enable:true}
@@ -300,7 +300,7 @@ In het JSON-antwoord wordt hetzelfde schema gebruikt als voor de gepubliceerde K
 
 U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt voldaan aan de drempel waarde, wordt het standaard antwoord geretourneerd.
 
-1. Voeg de `threshold` eigenschap toe om te `size` vragen om een antwoord met een drempel van 80% of hoger. De Knowledge Base mag dat antwoord niet vinden omdat de Score van de vraag 71% is. Het resultaat retourneert het standaard antwoord dat u hebt gegeven tijdens het maken van de Knowledge Base.
+1. Voeg de `threshold` eigenschap toe om te vragen om een antwoord `size` met een drempel van 80% of hoger. De Knowledge Base mag dat antwoord niet vinden omdat de Score van de vraag 71% is. Het resultaat retourneert het standaard antwoord dat u hebt gegeven tijdens het maken van de Knowledge Base.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
@@ -325,7 +325,7 @@ U kunt een minimale drempel waarde voor het antwoord aanvragen. Als niet wordt v
     }
     ```
 
-    QnA Maker heeft een score geretourneerd `0`van, wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
+    QnA Maker heeft een score geretourneerd van `0` , wat betekent dat u geen betrouw baarheid hebt. Ook wordt het standaard antwoord geretourneerd.
 
 1. Wijzig de drempel waarde in 60% en vraag de query opnieuw aan:
 

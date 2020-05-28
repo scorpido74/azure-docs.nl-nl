@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3275a372e496b79da2c9f31258f557389c5b1ee1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209363"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118408"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Wanneer u een voorspellend experiment maakt, voegt u doorgaans een invoer en uitvoer van een webservice toe. Wanneer u het experiment implementeert, kunnen gebruikers gegevens van de webservice verzenden en ontvangen via de invoer en uitvoer. Voor sommige toepassingen is het mogelijk dat de gegevens van een consument beschikbaar zijn via een gegevensfeed of al aanwezig zijn in een externe gegevens bron, zoals Azure Blob Storage. In deze gevallen hebben ze geen lees-en schrijf gegevens met behulp van de invoer en uitvoer van webservices. Ze kunnen in plaats daarvan de batch Execution Service (BES) gebruiken voor het lezen van gegevens uit de gegevens bron met behulp van een import data-module en de Score resultaten naar een andere gegevens locatie schrijven met behulp van een module export data.
 
@@ -101,7 +99,7 @@ Als u de service als een klassieke webservice wilt implementeren en een toepassi
 2. Wanneer de uitvoering is voltooid, klikt u op **webservice implementeren** en selecteert u **Web-service implementeren [klassiek]**.
 3. Zoek uw API-sleutel op in het dash board van de webservice. Kopieer de app en sla deze op om later te gebruiken.
 4. Klik in de tabel **standaard eindpunt** op de koppeling voor **batch uitvoering** om de API Help-pagina te openen.
-5. Maak in Visual Studio een C#-console toepassing: **Nieuw** > **project** > **Visual C#** > **Windows klassieke bureau blad** > **console-app (.NET Framework)**.
+5. Maak in Visual Studio een C#-console toepassing: **Nieuw**  >  **project**  >  **Visual C#**  >  **Windows klassieke bureau blad**  >  **console-app (.NET Framework)**.
 6. Op de API Help-pagina, onder aan de pagina, gaat u naar de sectie **voorbeeld code** .
 7. Kopieer de C#-voorbeeld code en plak deze in uw Program.cs-bestand en verwijder alle verwijzingen naar de Blob-opslag.
 8. Werk de waarde van de variabele *apiKey* bij met de API-sleutel die u eerder hebt opgeslagen.
@@ -130,7 +128,7 @@ Als u een nieuwe webservice wilt implementeren en een toepassing wilt maken om d
 3. Voer op de pagina experiment implementeren een naam in voor uw webservice, selecteer een prijs plan en klik vervolgens op **implementeren**.
 4. Klik op de pagina **Quick** start op **verbruikt**.
 5. Klik in de sectie **voorbeeld code** op **batch**.
-6. Maak in Visual Studio een C#-console toepassing: **Nieuw** > **project** > **Visual C#** > **Windows klassieke bureau blad** > **console-app (.NET Framework)**.
+6. Maak in Visual Studio een C#-console toepassing: **Nieuw**  >  **project**  >  **Visual C#**  >  **Windows klassieke bureau blad**  >  **console-app (.NET Framework)**.
 7. Kopieer de C#-voorbeeld code en plak deze in uw Program.cs-bestand.
 8. Werk de waarde van de variabele *apiKey* bij met de **primaire sleutel** in de sectie **basis informatie over verbruik** .
 9. Zoek de *scoreRequest* -declaratie en werk de waarden bij van de webservice-para meters die worden door gegeven aan de modules *gegevens importeren* en *exporteren* . In dit geval gebruikt u de oorspronkelijke query, maar definieert u een nieuwe tabel naam.
