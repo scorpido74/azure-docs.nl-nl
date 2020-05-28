@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479252"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995850"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Aangepaste handlers Azure Functions (preview-versie)
 
@@ -20,9 +20,9 @@ Aangepaste handlers zijn Lightweight webservers die gebeurtenissen ontvangen van
 
 Aangepaste handlers zijn het meest geschikt voor situaties waar u het volgende wilt doen:
 
-- Implementeer een functions-app in een andere taal dan de officieel ondersteunde talen
-- Een functions-app implementeren in een taal versie of-runtime die standaard niet wordt ondersteund
-- Nauw keurige controle hebben over de uitvoerings omgeving van de app
+- Implementeer een functie-app in een taal die niet officieel wordt ondersteund.
+- Implementeer een functie-app in een taal versie of runtime die niet standaard wordt ondersteund.
+- Bieden een gedetailleerdere controle over de uitvoerings omgeving van de functie-app.
 
 Met aangepaste handlers worden alle [Triggers en invoer-en uitvoer bindingen](./functions-triggers-bindings.md) ondersteund via [uitbreidings bundels](./functions-bindings-register.md).
 
@@ -60,7 +60,7 @@ In het volgende diagram ziet u hoe deze bestanden eruitzien op het bestands syst
 
 De toepassing wordt geconfigureerd via het bestand *host. json* . Dit bestand vertelt de functions-host waar aanvragen worden verzonden door te verwijzen naar een webserver die HTTP-gebeurtenissen kan verwerken.
 
-Er wordt een aangepaste handler gedefinieerd door het bestand *host. json* te configureren met informatie over het uitvoeren van de webserver `httpWorker` via de sectie.
+Er wordt een aangepaste handler gedefinieerd door het bestand *host. json* te configureren met informatie over het uitvoeren van de webserver via de `httpWorker` sectie.
 
 ```json
 {
@@ -73,7 +73,7 @@ Er wordt een aangepaste handler gedefinieerd door het bestand *host. json* te co
 }
 ```
 
-De `httpWorker` sectie verwijst naar een doel zoals gedefinieerd door de `defaultExecutablePath`. Het doel van de uitvoering kan een opdracht, een uitvoerbaar bestand of een file zijn waarin de webserver is geïmplementeerd.
+De `httpWorker` sectie verwijst naar een doel zoals gedefinieerd door de `defaultExecutablePath` . Het doel van de uitvoering kan een opdracht, een uitvoerbaar bestand of een file zijn waarin de webserver is geïmplementeerd.
 
 Voor scripted apps `defaultExecutablePath` verwijst naar de runtime van de script taal en `defaultWorkerPath` verwijst naar de locatie van het script bestand. In het volgende voor beeld ziet u hoe een Java script-app in node. js wordt geconfigureerd als een aangepaste handler.
 
@@ -89,7 +89,7 @@ Voor scripted apps `defaultExecutablePath` verwijst naar de runtime van de scrip
 }
 ```
 
-U kunt ook argumenten door geven met `arguments` behulp van de matrix:
+U kunt ook argumenten door geven met behulp van de `arguments` matrix:
 
 ```json
 {
@@ -123,7 +123,7 @@ De aanvraag lading voor zuivere HTTP-functies is de onbewerkte HTTP-aanvraag net
 
 Elk ander type functie dat ofwel invoer, uitvoer bindingen of wordt geactiveerd via een andere gebeurtenis bron dan HTTP, heeft een aangepaste aanvraag lading.
 
-De volgende code vertegenwoordigt een nettolading van de voorbeeld aanvraag. De payload bevat een JSON-structuur met twee leden `Data` : `Metadata`en.
+De volgende code vertegenwoordigt een nettolading van de voorbeeld aanvraag. De payload bevat een JSON-structuur met twee leden: `Data` en `Metadata` .
 
 Het `Data` lid bevat sleutels die overeenkomen met de namen van de invoer en de trigger, zoals gedefinieerd in de bindingen matrix in het bestand *Function. json* .
 
@@ -181,9 +181,9 @@ Per Conventie worden functie reacties opgemaakt als sleutel/waarde-paren. Onders
 
 | <nobr>Payload-sleutel</nobr>   | Gegevenstype | Opmerkingen                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Bevat reactie waarden zoals gedefinieerd door de `bindings` matrix het bestand *Function. json* .<br /><br />Als een functie bijvoorbeeld is geconfigureerd met een Blob Storage-uitvoer binding met de naam ' BLOB ', `Outputs` dan bevat een sleutel `blob`met de naam, die is ingesteld op de waarde van de blob. |
+| `Outputs`     | JSON      | Bevat reactie waarden zoals gedefinieerd door de `bindings` matrix het bestand *Function. json* .<br /><br />Als een functie bijvoorbeeld is geconfigureerd met een Blob Storage-uitvoer binding met de naam ' BLOB ', dan `Outputs` bevat een sleutel met `blob` de naam, die is ingesteld op de waarde van de blob. |
 | `Logs`        | matrix     | Berichten worden weer gegeven in de functie Logboeken van functies.<br /><br />Bij het uitvoeren in Azure worden berichten weer gegeven in Application Insights. |
-| `ReturnValue` | tekenreeks    | Wordt gebruikt om een reactie te geven wanneer een uitvoer is `$return` geconfigureerd als in het bestand *Function. json* . |
+| `ReturnValue` | tekenreeks    | Wordt gebruikt om een reactie te geven wanneer een uitvoer is geconfigureerd als `$return` in het bestand *Function. json* . |
 
 Zie het [voor beeld voor een nettolading van een](#bindings-implementation)voor beeld.
 
@@ -196,7 +196,7 @@ Aangepaste handlers kunnen worden geïmplementeerd in elke taal waarin HTTP-gebe
 
 ## <a name="http-only-function"></a>Alleen HTTP-functie
 
-In het volgende voor beeld ziet u hoe u een door HTTP geactiveerde functie kunt configureren zonder extra bindingen of uitvoer. Het scenario dat in dit voor beeld wordt geïmplementeerd, `http` bevat een functie `GET` met `POST` de naam die een of accepteert.
+In het volgende voor beeld ziet u hoe u een door HTTP geactiveerde functie kunt configureren zonder extra bindingen of uitvoer. Het scenario dat in dit voor beeld wordt geïmplementeerd, bevat een functie met de naam `http` die een `GET` of accepteert `POST` .
 
 Het volgende code fragment vertegenwoordigt hoe een aanvraag voor de functie is samengesteld.
 
@@ -233,9 +233,9 @@ In een map met de naam *http*, wordt met het bestand *Function. json* de door ht
 }
 ```
 
-De functie is geconfigureerd om zowel `GET` als `POST` -aanvragen te accepteren en de resultaat waarde wordt opgegeven via een `res`argument met de naam.
+De functie is geconfigureerd om zowel als-aanvragen te accepteren `GET` `POST` en de resultaat waarde wordt opgegeven via een argument met de naam `res` .
 
-In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het `server.js` bestand te laten wijzen.
+In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het bestand te laten wijzen `server.js` .
 
 ```json
 {
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld `FUNCTIONS_HTTPWORKER_PORT`om te Luis teren naar aanvragen via de.
+In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld om te Luis teren naar aanvragen via de `FUNCTIONS_HTTPWORKER_PORT` .
 
-De functie wordt gedefinieerd in het pad van `/hello`. `GET`aanvragen worden verwerkt door een eenvoudig JSON-object te retour `POST` neren en aanvragen hebben toegang tot de hoofd `req.body`tekst van de aanvraag via.
+De functie wordt gedefinieerd in het pad van `/hello` . `GET`aanvragen worden verwerkt door een eenvoudig JSON-object te retour neren en `POST` aanvragen hebben toegang tot de hoofd tekst van de aanvraag via `req.body` .
 
-De route voor de functie order is `/hello` hier niet `/api/hello` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
+De route voor de functie order is hier `/hello` niet `/api/hello` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
 
 >[!NOTE]
 >De `FUNCTIONS_HTTPWORKER_PORT` is niet de open bare poort die wordt gebruikt om de functie aan te roepen. Deze poort wordt gebruikt door de host functions om de aangepaste handler aan te roepen.
 
 ## <a name="function-with-bindings"></a>Functie met bindingen
 
-Het scenario dat in dit voor beeld wordt geïmplementeerd, `order` bevat een functie `POST` met de naam die een-Payload accepteert die een product order vertegenwoordigt. Als een order wordt gepost naar de functie, wordt een Queue Storage bericht gemaakt en wordt een HTTP-antwoord geretourneerd.
+Het scenario dat in dit voor beeld wordt geïmplementeerd, bevat een functie met de naam `order` die een-Payload accepteert die `POST` een product order vertegenwoordigt. Als een order wordt gepost naar de functie, wordt een Queue Storage bericht gemaakt en wordt een HTTP-antwoord geretourneerd.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -333,7 +333,7 @@ In een map met de naam *order*, wordt met het bestand *Function. json* de door h
 
 Deze functie is gedefinieerd als een [http-geactiveerde functie](./functions-bindings-http-webhook-trigger.md) die een [http-antwoord](./functions-bindings-http-webhook-output.md) retourneert en een [wachtrij-opslag](./functions-bindings-storage-queue-output.md) bericht uitvoert.
 
-In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het `server.js` bestand te laten wijzen.
+In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het bestand te laten wijzen `server.js` .
 
 ```json
 {
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld `FUNCTIONS_HTTPWORKER_PORT`om te Luis teren naar aanvragen via de.
+In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld om te Luis teren naar aanvragen via de `FUNCTIONS_HTTPWORKER_PORT` .
 
-De functie wordt gedefinieerd in het pad van `/order` .  De route voor de functie order is `/order` hier niet `/api/order` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
+De functie wordt gedefinieerd in het pad van `/order` .  De route voor de functie order is hier `/order` niet `/api/order` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
 
 Wanneer `POST` er aanvragen worden verzonden naar deze functie, worden gegevens via een paar punten weer gegeven:
 
 - De aanvraag tekst is beschikbaar via`req.body`
 - De gegevens die naar de functie worden gepost, zijn beschikbaar via`req.body.Data.req.Body`
 
-De reactie van de functie is ingedeeld in een sleutel/waarde-paar `Outputs` waarbij het lid een JSON-waarde bevat waarin de sleutels overeenkomen met de uitvoer zoals gedefinieerd in het bestand *Function. json* .
+De reactie van de functie is ingedeeld in een sleutel/waarde-paar waarbij het `Outputs` lid een JSON-waarde bevat waarin de sleutels overeenkomen met de uitvoer zoals gedefinieerd in het bestand *Function. json* .
 
-Als de `message` instelling gelijk is aan het bericht dat is ontvangen van de aanvraag `res` en aan het verwachte HTTP-antwoord, voert deze functie een bericht uit dat Queue Storage en wordt een HTTP-antwoord geretourneerd.
+Als `message` de instelling gelijk is aan het bericht dat is ontvangen van de aanvraag en `res` aan het verwachte HTTP-antwoord, voert deze functie een bericht uit dat Queue Storage en wordt een HTTP-antwoord geretourneerd.
 
 ## <a name="debugging"></a>Foutopsporing
 
 Als u fouten wilt opsporen in uw aangepaste handler-app voor functies, moet u argumenten toevoegen die geschikt zijn voor de taal en runtime om fout opsporing in te scha kelen.
 
-Als u bijvoorbeeld fouten wilt opsporen in een node. js `--inspect` -toepassing, wordt de vlag door gegeven als een argument in het bestand *host. json* .
+Als u bijvoorbeeld fouten wilt opsporen in een node. js-toepassing, `--inspect` wordt de vlag door gegeven als een argument in het bestand *host. json* .
 
 ```json
 {

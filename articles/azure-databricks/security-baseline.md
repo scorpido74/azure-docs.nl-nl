@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681695"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016335"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure-beveiligings basislijn voor Azure Databricks
 
@@ -200,7 +200,7 @@ Voor controle logboek registratie biedt Azure Databricks uitgebreide end-to-end 
 
 Opmerking: voor Azure Databricks Diagnostische logboeken is het Azure Databricks Premium plan vereist
 
-* [Diagnostische instellingen inschakelen voor Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 * [Diagnostische instellingen inschakelen voor Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs)
 
@@ -262,7 +262,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 Opmerking: voor Azure Databricks Diagnostische logboeken is het Azure Databricks Premium plan vereist
 
-* [Azure Databricks logboeken naar log Analytics werk ruimte verzenden](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery))
+* [Azure Databricks logboeken verzenden naar Log Analytics werk ruimte](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery)
 
 * [Waarschuwingen configureren in Log Analytics werk ruimte](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 
@@ -454,7 +454,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid**: momenteel niet beschikbaar
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

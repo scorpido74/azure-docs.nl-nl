@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631222"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020843"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Back-ups maken en herstellen in azure Synapse SQL-pool
 
@@ -30,7 +30,7 @@ Een *Data Warehouse Restore* is een nieuw data warehouse dat is gemaakt op basis
 
 ## <a name="automatic-restore-points"></a>Automatische herstelpunten
 
-Moment opnamen zijn een ingebouwde functie van de service waarmee herstel punten worden gemaakt. U hoeft deze mogelijkheid niet in te scha kelen. De SQL-groep moet echter een actieve status hebben voor het maken van herstel punten. Als de SQL-groep regel matig wordt onderbroken, kunnen er geen automatische herstel punten worden gemaakt, dus zorg ervoor dat u een door de gebruiker gedefinieerd herstel punt maakt voordat u de SQL-groep onderbreekt. Automatische herstel punten op dit moment kunnen niet door gebruikers worden verwijderd omdat de service deze herstel punten gebruikt om de Sla's voor herstel te onderhouden.
+Moment opnamen zijn een ingebouwde functie voor het maken van herstel punten. U hoeft deze mogelijkheid niet in te scha kelen. De SQL-groep moet echter een actieve status hebben voor het maken van herstel punten. Als de SQL-groep regel matig wordt onderbroken, kunnen er geen automatische herstel punten worden gemaakt, dus zorg ervoor dat u een door de gebruiker gedefinieerd herstel punt maakt voordat u de SQL-groep onderbreekt. Automatische herstel punten op dit moment kunnen niet door gebruikers worden verwijderd omdat de service deze herstel punten gebruikt om de Sla's voor herstel te onderhouden.
 
 Moment opnamen van uw data warehouse worden gedurende de hele dag genomen om herstel punten te maken die zeven dagen beschikbaar zijn. Deze Bewaar periode kan niet worden gewijzigd. SQL-pool ondersteunt een RPO (acht Recovery Point Objective uur). U kunt uw data warehouse in de primaire regio herstellen vanuit een van de moment opnamen die in de afgelopen zeven dagen zijn gemaakt.
 
@@ -65,7 +65,7 @@ De volgende lijst bevat Details voor de Bewaar periode van het herstel punt:
 Wanneer u een SQL-groep verwijdert, wordt een laatste moment opname gemaakt en gedurende zeven dagen opgeslagen. U kunt de SQL-groep herstellen naar het laatste herstel punt dat bij het verwijderen is gemaakt. Als de SQL-groep wordt verwijderd in een onderbroken status, wordt er geen moment opname gemaakt. Zorg er in dat scenario voor dat u een door de gebruiker gedefinieerd herstel punt maakt voordat u de SQL-groep verwijdert.
 
 > [!IMPORTANT]
-> Als u een logisch exemplaar van SQL Server verwijdert, worden ook alle data bases die deel uitmaken van het exemplaar, verwijderd en kunnen ze niet worden hersteld. U kunt een verwijderde server niet herstellen.
+> Als u de server die als host fungeert voor een SQL-groep verwijdert, worden ook alle data bases die deel uitmaken van de server verwijderd en kunnen deze niet worden hersteld. U kunt een verwijderde server niet herstellen.
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geo-back-ups en herstel na nood gevallen
 
@@ -96,7 +96,7 @@ Als u een verwijderd of onderbroken Data Warehouse wilt herstellen, kunt u [een 
 
 ## <a name="cross-subscription-restore"></a>Meerdere abonnementen herstellen
 
-Als u het abonnement direct wilt herstellen, moet u [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)stemmen voor deze functie. Herstel op een andere logische server en [Verplaats](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) de server over abonnementen om een abonnement op meerdere abonnementen uit te voeren.
+Als u het abonnement direct wilt herstellen, moet u [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)stemmen voor deze functie. Herstel op een andere server en [' Verplaats '](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) de server over abonnementen om een abonnement op meerdere abonnementen uit te voeren.
 
 ## <a name="geo-redundant-restore"></a>Geografisch redundant herstel
 
@@ -107,4 +107,4 @@ U kunt [uw SQL-groep herstellen](sql-data-warehouse-restore-from-geo-backup.md#r
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van bedrijfs continuïteit](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie over planning voor nood gevallen
+Zie [overzicht van bedrijfs continuïteit](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie over planning voor nood gevallen

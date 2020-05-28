@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 05/25/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 1ac45d88c0af33114106f36798fd56473d18ea28
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d1e432ef99a3c83fe06c00b15acbb00c630e1be1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798049"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014388"
 ---
 # <a name="workday-attribute-reference"></a>Verwijzing naar Workday-kenmerk
 
@@ -30,7 +30,7 @@ In de volgende tabel wordt de lijst met workday-kenmerken en bijbehorende XPATH-
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Workday geen versie gegevens":::
 
 
-| \# | Naam                                  | Workday API-expressie                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Naam workday-kenmerk                                  | Workday XPATH API-expressie                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Actief                                | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker \_ \_ -status gegevens/WD: actief/tekst\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: positiongegevens \_ /WD: Business \_ site \_ Summary \_ Data/WD: adres \_ gegevens/WD: adres \_ regel \_ gegevens \[ @wd:Type = ' adres \_ regel \_ 2 ' \] /Text\(\)                                                                                                                                                                                                                             |
@@ -125,7 +125,7 @@ Als u WWS API v 30.0 of hoger gebruikt in de verbindings-URL, zoals hieronder wo
 Raadpleeg de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)als u aanvullende xpaths wilt configureren. 
 
 
-| \# | Naam                                  | Workday XPATH API-expressie                                                                                                                                                                                                                                                                                                                                                |
+| \# | Naam workday-kenmerk                                  | Workday XPATH API-expressie                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Actief                                | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker \_ \_ -status gegevens/WD: actief/tekst\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker- \_ taak \_ gegevens \[ @wd:Primary_Job = 1]/WD: Positioning \_ Data/WD: Business \_ site \_ Summary \_ Data/WD: adres \_ Data/WD: adres \_ regel \_ gegevens \[ @wd:Type = ' adres \_ regel \_ 2 ' \] /Text\(\)                                                                                                                                                            |
@@ -208,4 +208,44 @@ Raadpleeg de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-
 | 79 | WorkerType                            | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker \_ \_ -taak gegevens \[ @wd:Primary_Job = 1]/WD: Position \_ Data/WD: worker \_ type \_ Reference/WD: id \[ @wd:type = "werk nemers \_ type \_ -ID" \] /Text\(\)                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: worker- \_ taak \_ gegevens \[ @wd:Primary_Job = 1]/WD: Position \_ Data/WD: werk \_ ruimte\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
+## <a name="custom-xpath-values"></a>Aangepaste XPATH-waarden
+De volgende tabel bevat een lijst met andere veelgebruikte aangepaste XPATH API-expressies bij het inrichten van werk nemers van workday tot Active Directory of Azure AD. Test de XPATH API-expressies die u hier opgeeft in uw versie van workday en Raadpleeg de instructies in de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration).
+
+Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van klanten die deze integratie implementeren, laat u hieronder een opmerking of een [bijdrage leveren](https://docs.microsoft.com/contribute) aan het artikel. 
+
+> [!div class="mx-tdBreakAll"]
+> | \# | Naam workday-kenmerk  | Workday API-versie | Workday XPATH API-expressie   |
+> |----|-------------------------|---------------------|--------------------------------|
+> | 1  | Universele ID  | v 30.0 +   | Word: worker/WD: Worker_Data/WD: Universal_ID/text ()      |
+> | 2  | Gebruikersnaam     | v 30.0 +   | Word: worker/WD: Worker_Data/WD: User_Account_Data/WD: User_Name/text () |
+> | 3  | Beheer niveau-ID  | v 30.0 +  | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Worker_Job_Data [ @wd:Primary_Job = 1]/WD: Position_Data/WD: Job_Profile_Summary_Data/WD: Management_Level_Reference/WD: id [ @wd:type = "Management_Level_ID"]/text ()  |
+> | 4 | Inhuren aannemen | v 30.0 + | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Worker_Status_Data/WD: Hire_Rescinded/text () |
+> | 5 | Toegewezen inrichtings groep | v 21.1 + | Word: worker/WD: Worker_Data/WD: Account_Provisioning_Data/WD: Provisioning_Group_Assignment_Data [WD: status = ' Assigned ']/WD: Provisioning_Group/text () | 
+
+
+## <a name="supported-xpath-functions"></a>Ondersteunde XPATH-functies
+Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Microsoft .net XPath-bibliotheek](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , die u kunt gebruiken tijdens het maken van de XPath API-expressie. 
+
+* name
+* duren
+* position
+* tekenreeks
+* subtekenreeks
+* concat
+* subtekenreeks-na
+* starts-with
+* teken reeks-lengte
+* bevat
+* translate
+* normaliseren-ruimte
+* subtekenreeks-vóór
+* booleaans
+* waar
+* not
+* onjuist
+* getal
+* maximum
+* eind
+* round
+* Floor
 

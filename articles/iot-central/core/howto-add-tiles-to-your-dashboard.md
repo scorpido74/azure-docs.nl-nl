@@ -1,102 +1,85 @@
 ---
-title: Tegels aan uw dash board toevoegen | Microsoft Docs
-description: Als ontwerper leert u hoe u het standaard dash board van Azure IoT Central Application kunt configureren.
-author: mavoge
-ms.author: mavoge
-ms.date: 10/17/2019
+title: Tegels toevoegen aan uw Azure IoT Central-dash board | Microsoft Docs
+description: Als ontwerper leert u hoe u de standaard Azure IoT Central Application dash board kunt configureren met tegels.
+author: Haley-Rowland
+ms.author: harowl
+ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 1110f76a792a7e3955d5fd32e01ac1566d467151
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659086"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022861"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassings dashboard configureren
 
-Het **dash board** is de pagina die wordt geladen wanneer gebruikers die toegang hebben tot de toepassing, naar de URL van de toepassing navigeren. Als u uw toepassing hebt gemaakt vanuit een van de **toepassings sjablonen**, heeft uw toepassing een vooraf gedefinieerd dash board om te starten. Als u uw toepassing hebt gemaakt op basis van een sjabloon voor een **aangepaste toepassings** toepassing, worden in het dash board enkele tips weer gegeven om aan de slag te gaan.
+Het **dash board** is de eerste pagina die u ziet wanneer u verbinding maakt met een IOT Central-toepassing. Als u uw toepassing maakt vanuit een van de [toepassingen](./concepts-app-templates.md)die in de praktijk zijn gericht, heeft uw toepassing een vooraf gedefinieerd dash board om te starten. Als u uw toepassing maakt op basis van een aangepaste [toepassings sjabloon](./concepts-app-templates.md), bevat uw dash board enkele tips om aan de slag te gaan.
 
-> [!NOTE]
+> [!TIP]
 > Gebruikers kunnen naast het standaard toepassings dashboard [meerdere Dash boards maken](howto-create-personal-dashboards.md) . Deze Dash boards kunnen alleen persoonlijk zijn voor de gebruiker of worden gedeeld met alle gebruikers van de toepassing.  
 
 ## <a name="add-tiles"></a>Tegels toevoegen
 
-In de volgende scherm afbeelding ziet u het dash board in een toepassing die is gemaakt op basis van de sjabloon voor **aangepaste toepassingen** . Als u het standaard dashboard voor uw toepassing wilt aanpassen, selecteert u **bewerken** in de linkerbovenhoek van de pagina.
+In de volgende scherm afbeelding ziet u het dash board in een toepassing die is gemaakt op basis van de sjabloon voor **aangepaste toepassingen** . Als u het huidige dash board wilt aanpassen, selecteert u **bewerken**, selecteert u **Nieuw**persoonlijk of gedeeld dash board toevoegen.
 
-> [!div class="mx-imgBorder"]
-> ![Dash board voor toepassingen op basis van de sjabloon ' voor beeld Contoso '](media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png)
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
 
-Als u **bewerken** selecteert, wordt het deel venster dashboard bibliotheek geopend. De bibliotheek bevat de tegels en dashboard primitieven die u kunt gebruiken om het dash board aan te passen.
+Nadat u **bewerken** of **Nieuw**hebt geselecteerd, bevindt het dash board zich in de *bewerkings* modus. U kunt de hulpprogram ma's in het deel venster **dash board bewerken** gebruiken om tegels aan het dash board toe te voegen en tegels op het dash board zelf aan te passen en te verwijderen. Als u bijvoorbeeld een **telemetrie** -tegel wilt toevoegen om de huidige Tempe ratuur weer te geven die wordt gerapporteerd door een of meer apparaten:
 
-> [!div class="mx-imgBorder"]
-> ![Dashboard bibliotheek](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
+1. Selecteer een **apparaatgroep**in het deel venster **dash board bewerken** .
+1. Selecteer een of meer apparaten in de vervolg keuzelijst **apparaten** om weer te geven op de tegel. U ziet nu de beschik bare telemetrie, eigenschappen en opdrachten van de apparaten.
+1. Selecteer **Tempe ratuur** in het gedeelte telemetrie en selecteer vervolgens **tegel toevoegen**. De tegel wordt nu weer gegeven op het dash board, waar u de visualisatie kunt wijzigen, het formaat van de tegel wijzigt en deze configureert:
 
-U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ratuur van het apparaat. Dit doet u als volgt:
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Een tweemetrische temperatuur tegel toevoegen aan het dash board":::
 
-1. Een sjabloon voor een **apparaat** selecteren
-1. Selecteer een apparaat in **apparaten** voor het apparaat dat u wilt weer geven op een dashboard tegel. Vervolgens ziet u een lijst met de eigenschappen van het apparaat die kunnen worden gebruikt op de tegel.
-1. Als u de tegel op het dash board wilt maken, klikt u op **Tempe ratuur** en sleept u deze naar het dashboard gebied. U kunt ook op het selectie vakje naast **Tempe ratuur** klikken en vervolgens op **tegel toevoegen**klikken. In de volgende scherm afbeelding ziet u hoe u een Apparaataccount en een apparaatinstantie selecteert en vervolgens een temperatuur telemetrie-tegel op het dash board maakt.
-1. Selecteer in de linkerbovenhoek op **Opslaan** om de tegel op het dash board op te slaan.
+Wanneer u klaar bent met het toevoegen en aanpassen van tegels op het dash board, selecteert u **Opslaan**.
 
-> [!div class="mx-imgBorder"]
-> ![Formulier Details van apparaat configureren met Details voor instellingen en eigenschappen](media/howto-add-tiles-to-your-dashboard/device-details.png)
+## <a name="customize-tiles"></a>Tegels aanpassen
 
-Wanneer een operator nu het standaard toepassings dashboard weergeeft, zien ze de nieuwe tegel met de **Tempe ratuur** voor het apparaat. Elke tegel heeft een vooraf geselecteerde grafiek, grafiek, enzovoort die wordt weer gegeven wanneer de tegel wordt gemaakt. Gebruikers kunnen er echter voor kiezen om deze visualisatie te bewerken en te wijzigen.  
+Als u een tegel op het dash board wilt aanpassen, moet het dash board zich in de bewerkings modus bevindt. De beschik bare aanpassings opties zijn afhankelijk van het [type tegel](#tile-types):
 
-> [!div class="mx-imgBorder"]
-> ![Tabblad dash board met weer gegeven instellingen en eigenschappen voor de tegel](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
+* Met het pictogram liniaal op een tegel kunt u de visualisatie wijzigen. Visualisaties zijn onder andere lijn diagrammen, laatste bekende waarden en heatmap.
 
-## <a name="edit-tiles"></a>Tegels bewerken
+* Met het pictogram met het vier kant kunt u het formaat van de tegel wijzigen.
 
-Als u een tegel op het dash board wilt bewerken, klikt u eerst op **bewerken** in de linkerbovenhoek van de pagina, waardoor de bewerkings modus voor het dash board en alle tegels wordt geopend.  
-
-> [!div class="mx-imgBorder"]
-> ![Dashboard scherm met bewerkings modus geactiveerd voor een geselecteerde tegel](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
-
-Klik vervolgens op het **tandwiel** pictogram in de rechter bovenhoek van de tegel die u wilt bewerken. Hier kunt u aspecten van de tegel bewerken, met inbegrip van de titel, de visualisatie, de aggregatie, enzovoort.
-
-> [!div class="mx-imgBorder"]
-> ![Vervolg keuzelijst voor aggregatie-instellingen voor tegel](media/howto-add-tiles-to-your-dashboard/aggregation-settings.png)
-
-U kunt de grafiek visualisatie ook wijzigen door op het **liniaal** pictogram op de tegel te klikken.
-
-> [!div class="mx-imgBorder"]
-> ![Vervolg keuzelijst voor visualisatie-instellingen van Tegel](media/howto-add-tiles-to-your-dashboard/visualization-settings.png)
+* Met het tandwiel pictogram kunt u de visualisatie configureren. Voor een lijn diagram visualisatie kunt u bijvoorbeeld kiezen om de legenda en assen weer te geven en het tijds bereik te kiezen dat u wilt uitzetten.
 
 ## <a name="tile-types"></a>Tegel typen
 
-De volgende tabel bevat een overzicht van het gebruik van tegels in azure IoT Central:
+In de volgende tabel worden de verschillende typen tegels beschreven die u aan een dash board kunt toevoegen:
 
-| Tegel | Dashboard | Beschrijving
-| ----------- | ------- | ------- |
-| Inhoud | Dash boards van toepassingen en apparaten instellen |Ondersteunde tegels kunnen worden weer gegeven op tegels die kop-en beschrijvings tekst bevatten. U kunt deze tegel ook gebruiken als koppelings tegel om een gebruiker in staat te stellen te navigeren naar een URL die betrekking heeft op uw toepassing.|
-| Installatiekopie | Dash boards van toepassingen en apparaten instellen |Afbeeldings tegels geven een aangepaste afbeelding weer en kunnen worden geklikt. Gebruik een tegel voor afbeeldingen om afbeeldingen toe te voegen aan een dash board en schakel optioneel een gebruiker in om naar een URL te navigeren die relevant is voor uw toepassing.|
-| Label | Toepassings dashboards |Met label tegels wordt aangepaste tekst op een dash board weer gegeven. U kunt de grootte van de tekst kiezen. Gebruik een label tegel om relevante informatie toe te voegen aan het dash board, zoals beschrijvingen, contact gegevens of Help.|
-| Kaart | Dash boards van toepassingen en apparaten |Kaart tegels geven de locatie van een apparaat op een kaart weer. U kunt ook Maxi maal 100 punten van de locatie geschiedenis van een apparaat weer geven. U kunt bijvoorbeeld een voor beeld van een route weer geven van waaruit een apparaat in de afgelopen week is geweest.|
-| Lijn diagram | Dash boards van toepassingen en apparaten |Met lijn diagram tegels wordt een diagram weer gegeven van de cumulatieve meting voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een lijn diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
-| Staaf diagram | Dash boards van toepassingen en apparaten |In staafdiagram tegels wordt een grafiek weer gegeven met statistische metingen voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een staaf diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
-| Cirkel diagram | Dash boards van toepassingen en apparaten instellen |Cirkel diagram tegels geven een diagram van geaggregeerde metingen voor een apparaat gedurende een bepaalde periode.|
-| Heat Map | Dash boards van toepassingen en apparaten instellen |Heatmap tegels geven informatie weer over het apparaat, weer gegeven als kleuren.|
-| Gebeurtenis geschiedenis | Dash boards van toepassingen en apparaten |Met de tegels van gebeurtenis geschiedenis worden de gebeurtenissen voor een apparaat gedurende een bepaalde periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om alle temperatuur wijzigingen voor een apparaat in het afgelopen uur weer te geven.|
-| Status geschiedenis | Dash boards van toepassingen en apparaten |In tegels met status geschiedenis worden de meet waarden voor een tijds periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om de temperatuur waarden voor een apparaat in het afgelopen uur weer te geven.|
-| KPI | Dash boards van toepassingen en apparaten | KPI-tegels geven een geaggregeerde telemetrie of gebeurtenis meting voor een tijds periode weer. U kunt dit bijvoorbeeld gebruiken om de maximale Tempe ratuur voor een apparaat in het afgelopen uur weer te geven.|
-| Laatst bekende waarde | Dash boards van toepassingen en apparaten |De laatste bekende waarde-tegels geven de meest recente waarde weer voor een telemetrie of status meting. U kunt deze tegel bijvoorbeeld gebruiken om de meest recente metingen van de Tempe ratuur, druk en lucht vochtigheid voor een apparaat weer te geven. |
-| Eigenschap | Dash boards van toepassingen en apparaten | Eigenschappen tegels geven de huidige waarde weer voor eigenschappen en Cloud eigenschappen van een apparaat. U kunt deze tegel bijvoorbeeld gebruiken om apparaateigenschappen weer te geven, zoals de fabrikant of firmware versie voor een apparaat. |
+| Tegel             | Beschrijving |
+| ---------------- | ----------- |
+| Markdown         | Geprijsde tegels kunnen worden weer gegeven op tegels met een kop en beschrijving tekst die is opgemaakt met prijs verlaging. De URL kan een relatieve koppeling zijn naar een andere pagina in de toepassing of een absolute koppeling naar een externe site.|
+| Installatiekopie            | Afbeeldings tegels geven een aangepaste afbeelding weer en kunnen worden geklikt. De URL kan een relatieve koppeling zijn naar een andere pagina in de toepassing of een absolute koppeling naar een externe site.|
+| Label            | Met label tegels wordt aangepaste tekst op een dash board weer gegeven. U kunt de grootte van de tekst kiezen. Gebruik een label tegel om relevante informatie toe te voegen aan het dash board, zoals beschrijvingen, contact gegevens of Help.|
+| Count            | Met de tegels tellen wordt het aantal apparaten in een apparaatgroep weer gegeven.|
+| Kaart              | Kaart tegels geven de locatie weer van een of meer apparaten op een kaart. U kunt ook Maxi maal 100 punten van de locatie geschiedenis van een apparaat weer geven. U kunt bijvoorbeeld een bemonsterde route weer geven van waar een apparaat zich in de afgelopen week bevindt.|
+| KPI              |  KPI-tegels geven geaggregeerde telemetrie-waarden weer voor een of meer apparaten gedurende een bepaalde periode. U kunt dit bijvoorbeeld gebruiken om de maximale Tempe ratuur en druk voor een of meer apparaten in het afgelopen uur weer te geven.|
+| Lijndiagram       | Met tegels in lijn diagrammen worden een of meer geaggregeerde telemetriegegevens voor een of meer apparaten voor een bepaalde periode getekend. U kunt bijvoorbeeld een lijn diagram weer geven om de gemiddelde Tempe ratuur en druk van een of meer apparaten in het afgelopen uur af te zetten.|
+| Staafdiagram        | In staafdiagram tegels worden een of meer geaggregeerde telemetriegegevens voor een of meer apparaten voor een bepaalde periode getekend. U kunt bijvoorbeeld een staaf diagram weer geven om de gemiddelde Tempe ratuur en druk van een of meer apparaten in het afgelopen uur weer te geven.|
+| Cirkeldiagram        | Cirkel diagram tegels geven een of meer geaggregeerde telemetriegegevens voor een of meer apparaten voor een bepaalde periode weer.|
+| Heatmap         | Heatmap tegels geven informatie weer over een of meer apparaten, weer gegeven als kleuren.|
+| Laatst bekende waarde | De laatste bekende waarde-tegels geven de laatste telemetriegegevens voor een of meer apparaten weer. U kunt deze tegel bijvoorbeeld gebruiken om de meest recente waarden voor de Tempe ratuur, druk en lucht vochtigheid voor een of meer apparaten weer te geven. |
+| Gebeurtenis geschiedenis    | Met de tegels van gebeurtenis geschiedenis worden de gebeurtenissen voor een apparaat gedurende een bepaalde periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om alle kleppen open-en Close-gebeurtenissen weer te geven voor een of meer apparaten tijdens het laatste uur.|
+| Eigenschap         |  Eigenschappen tegels geven de huidige waarde weer voor eigenschappen en Cloud eigenschappen van een of meer apparaten. U kunt deze tegel bijvoorbeeld gebruiken om apparaateigenschappen weer te geven, zoals de fabrikant of firmware versie voor een apparaat. |
+
+Op dit moment kunt u Maxi maal 10 apparaten toevoegen aan tegels die ondersteuning bieden voor meerdere apparaten.
 
 ### <a name="customizing-visualizations"></a>Visualisaties aanpassen
 
-Voor lijn diagrammen, staaf diagrammen en cirkel diagrammen kunt u de kleuren aanpassen die worden weer gegeven door verschillende teleelementen in uw grafiek. Als u dit wilt doen, selecteert u het palet pictogram naast de telemetrie die u wilt aanpassen en kiest u een kleur.
+Voor tegels die statistische waarden weer geven, selecteert u het tandwiel pictogram naast het type telemetrie in het deel venster **grafiek configureren** om de aggregatie te kiezen. U kunt kiezen uit gemiddelde, som, maximum, minimum en aantal.
 
-> [!div class="mx-imgBorder"]
-> ![Vervolg keuzelijst voor de instellingen voor telemetrie-kleuren weer geven](media/howto-add-tiles-to-your-dashboard/color-customization.png)
+Voor lijn diagrammen, staaf diagrammen en cirkel diagrammen kunt u de kleur van de verschillende telemetrie-waarden aanpassen. Selecteer het palet pictogram naast de telemetrie die u wilt aanpassen:
 
-Voor teleelementen of eigenschappen die van het type teken reeks zijn, kunt u kiezen hoe u de tekst wilt visualiseren. Als uw apparaat bijvoorbeeld een URL als een teken reeks-telemetrie verzendt, kunt u die URL visualiseren als een klikable koppeling. Als de URL verwijst naar een afbeelding, kunt u de installatie kopie weer geven in een laatste bekende waarde of eigenschaps tegel. U kunt de weer gave van de telemetrie van de teken reeks wijzigen door de tand wiel naast de naam van de telemetrie te selecteren. Op deze manier kunt u de tekst weer geven als tekst, een koppeling of een afbeelding.
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="De kleur van een telemetrie-waarde wijzigen":::
 
-> [!div class="mx-imgBorder"]
-> ![Vervolg keuzelijst voor visualisatie-instellingen voor teken reeksen](media/howto-add-tiles-to-your-dashboard/string-viz-customization.png)
+Voor tegels die teken reeks eigenschappen of telemetrie-waarden weer geven, kunt u kiezen hoe u de tekst wilt weer geven. Als het apparaat bijvoorbeeld een URL in een teken reeks eigenschap opslaat, kunt u deze weer geven als een klikbare koppeling. Als de URL verwijst naar een afbeelding, kunt u de installatie kopie weer geven in een laatste bekende waarde of eigenschaps tegel. Als u wilt wijzigen hoe een teken reeks wordt weer gegeven, selecteert u in de tegel configuratie het tandwiel pictogram naast het type telemetrie of de eigenschap:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bepalen hoe een teken reeks op een tegel wordt weer gegeven":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

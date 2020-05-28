@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653011"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012905"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
 
@@ -31,8 +31,8 @@ De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse 
 | CPU-percentage          | CPU-gebruik in alle knoop punten voor het Data Warehouse      | Gem, min, Max    |
 | Gegevens-I/O-percentage      | IO-gebruik over alle knoop punten voor het Data Warehouse       | Gem, min, Max    |
 | Geheugen percentage       | Geheugen gebruik (SQL Server) op alle knoop punten voor het Data Warehouse | Gem, min, Max   |
-| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
-| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Sum              |
+| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Som              |
+| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Som              |
 | Geslaagde verbindingen  | Aantal geslaagde verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Geblokkeerd door de firewall     | Aantal aanmeldingen bij het data warehouse dat is geblokkeerd     | Som, aantal       |
@@ -42,14 +42,14 @@ De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse 
 | Percentage cache treffers    | (cache treffers/cache-missers) * 100 waarbij treffers in cache de som zijn van alle treffers in de lokale SSD-cache en de cache-Misser is de column Store-segmenten in de lokale SSD-cache die is opgeteld voor alle knoop punten | Gem, min, Max    |
 | Percentage gebruikt cache   | (cache capaciteit gebruikt/cache) * 100 waarbij gebruikte cache de som is van alle bytes in de lokale SSD-cache op alle knoop punten en de cache capaciteit is de som van de opslag capaciteit van de lokale SSD-cache op alle knoop punten | Gem, min, Max    |
 | Lokaal TempDB-percentage | Lokaal TempDB-gebruik voor alle reken knooppunten: de waarden worden elke vijf minuten verzonden | Gem, min, Max    |
-| Grootte van gegevens opslag (GB) | De totale grootte van de data base. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de data base om de prestaties van query's en laden te optimaliseren. | Sum |
-| Grootte van nood herstel (GB) | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Sum |
-| Grootte van de opslag voor moment opnamen (GB) | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Sum |
+| Grootte van gegevens opslag (GB) | De totale grootte van de data base. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de data base om de prestaties van query's en laden te optimaliseren. | Som |
+| Grootte van nood herstel (GB) | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Som |
+| Grootte van de opslag voor moment opnamen (GB) | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Som |
 
 Aandachtspunten bij het weer geven van metrische gegevens en het instellen van waarschuwingen:
 
 - DWU die wordt gebruikt, duidt alleen op een **hoog niveau van gebruik** in de SQL-groep en is niet bedoeld als een uitgebreide indicatie van het gebruik. Als u wilt bepalen of u omhoog of omlaag wilt schalen, moet u rekening houden met alle factoren die van invloed kunnen zijn op DWU zoals gelijktijdigheid, geheugen, tempdb en adaptieve cache capaciteit. We raden u [aan om uw werk belasting uit te voeren op verschillende DWU-instellingen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om te voldoen aan uw bedrijfs doelstellingen.
-- Er zijn mislukte en geslaagde verbindingen gerapporteerd voor een bepaald data warehouse, niet voor de logische server
+- Mislukte en geslaagde verbindingen worden gerapporteerd voor een bepaald data warehouse, niet voor de server zelf.
 - Het geheugen percentage weerspiegelt het gebruik, zelfs als het Data Warehouse zich in niet-actieve status bevindt, het actieve verbruik van het workload-geheugen niet weer spie gelen. Gebruik en volg deze metrische gegevens samen met anderen (TempDB, Gen2 cache) om een holistische beslissing te nemen over als het schalen voor extra cache capaciteit de prestaties van de werk belasting verg root om te voldoen aan uw vereisten.
 
 ## <a name="query-activity"></a>Query activiteit

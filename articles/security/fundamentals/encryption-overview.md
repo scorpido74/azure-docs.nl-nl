@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454642"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012973"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -28,7 +28,7 @@ Dit artikel bevat een overzicht van de manier waarop versleuteling wordt gebruik
 
 ## <a name="encryption-of-data-at-rest"></a>Versleuteling van data-at-rest
 
-Data-at-rest bevat informatie die zich in een permanente opslag op fysieke media bevindt, in een digitale indeling. De media kunnen bestanden bevatten op magnetische of optische media, gearchiveerde gegevens en gegevens back-ups. Microsoft Azure biedt diverse oplossingen voor gegevens opslag om te voldoen aan verschillende vereisten, waaronder bestands-, schijf-, Blob-en tabel opslag. Micro soft biedt ook versleuteling om [Azure SQL database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)en Azure data Lake te beveiligen.
+Data-at-rest bevat informatie die zich in een permanente opslag op fysieke media bevindt, in een digitale indeling. De media kunnen bestanden bevatten op magnetische of optische media, gearchiveerde gegevens en gegevens back-ups. Microsoft Azure biedt diverse oplossingen voor gegevens opslag om te voldoen aan verschillende vereisten, waaronder bestands-, schijf-, Blob-en tabel opslag. Micro soft biedt ook versleuteling om [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)en Azure data Lake te beveiligen.
 
 Gegevens versleuteling op rest is beschikbaar voor services in de Cloud modellen software as a Service (SaaS), platform as a Service (PaaS) en Infrastructure as a Service (IaaS). In dit artikel vindt u een overzicht van en informatie bronnen die u helpen bij het gebruik van de opties voor Azure-versleuteling.
 
@@ -85,11 +85,11 @@ Ten slotte kunt u ook de Azure Storage-client bibliotheek voor Java gebruiken om
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Versleuteling van gegevens in rust met Azure SQL Database
 
-[Azure SQL database](../../sql-database/sql-database-technical-overview.md) is een relationele database service voor algemeen gebruik in azure die ondersteuning biedt voor structuren zoals relationele gegevens, JSON, ruimtelijke en XML. SQL Database ondersteunt zowel versleuteling aan de server zijde via de functie Transparent Data Encryption (TDE) als versleuteling aan client zijde via de Always Encrypted-functie.
+[Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md) is een relationele database service voor algemeen gebruik in azure die ondersteuning biedt voor structuren zoals relationele gegevens, JSON, ruimtelijke en XML. SQL Database ondersteunt zowel versleuteling aan de server zijde via de functie Transparent Data Encryption (TDE) als versleuteling aan client zijde via de Always Encrypted-functie.
 
 #### <a name="transparent-data-encryption"></a>Transparante gegevensversleuteling
 
-[TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt om gegevens bestanden [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../sql-database/sql-database-technical-overview.md)en [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in realtime te versleutelen met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
+[TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt om gegevens bestanden [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md)en [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in realtime te versleutelen met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
 
 TDE beschermt gegevens en logboek bestanden met behulp van AES-en Triple Data Encryption Standard (3DES)-versleutelings algoritmen. Versleuteling van het database bestand wordt uitgevoerd op pagina niveau. De pagina's in een versleutelde data base worden versleuteld voordat ze naar de schijf worden geschreven en worden ontsleuteld wanneer ze in het geheugen worden gelezen. TDE is nu standaard ingeschakeld voor nieuw gemaakte Azure SQL-data bases.
 

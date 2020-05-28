@@ -1,22 +1,22 @@
 ---
 title: 'Snelstartgids: vragen en antwoorden toevoegen in QnA Maker Portal'
-description: Deze Quick Start laat zien hoe u vraag-en antwoord sets kunt toevoegen met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
+description: Deze Quick Start laat zien hoe u vraag-en antwoord paren kunt toevoegen met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873694"
+ms.locfileid: "83994660"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Snelstartgids: vragen toevoegen en antwoord geven met QnA Maker Portal
 
-Nadat u een Knowledge Base hebt gemaakt, voegt u QnA-sets (vraag en antwoord) met meta gegevens toe om het antwoord te filteren. De vragen in de volgende tabel zijn informatie over de limieten voor Azure-Services, maar moeten allemaal met een andere Azure-service.
+Nadat u een Knowledge Base hebt gemaakt, voegt u de paren vraag en antwoord (QnA) met meta gegevens toe om het antwoord te filteren. De vragen in de volgende tabel zijn informatie over de limieten voor Azure-Services, maar moeten allemaal met een andere Azure-service.
 
 <a name="qna-table"></a>
 
-|Instellen|Vragen|Antwoord|Metagegevens|
+|Beperkt|Vragen|Antwoord|Metagegevens|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ Zodra meta gegevens worden toegevoegd aan een QnA-paar, kan de client toepassing
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Aanvullende vragen met een alternatieve formule toevoegen
 
-De huidige Knowledge Base heeft de QnA Maker het oplossen van problemen met QnA-paren. Deze sets zijn gemaakt toen de URL werd toegevoegd aan de Knowledge Base tijdens het maken van het proces.
+De huidige Knowledge Base heeft de QnA Maker het oplossen van problemen met QnA-paren. Deze paren zijn gemaakt toen de URL werd toegevoegd aan de Knowledge Base tijdens het maken van het proces.
 
 Wanneer deze URL is geïmporteerd, is er slechts één vraag gemaakt met één antwoord. In deze procedure voegt u aanvullende vragen toe.
 
-1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven de vraag-en-antwoord sets om de vraag te vinden`How large a knowledge base can I create?`
+1. Gebruik op de pagina **bewerken** het tekstvak Zoeken boven het vraag-en antwoord paar om de vraag te vinden`How large a knowledge base can I create?`
 
 1. Selecteer in de kolom **vraag** **+ alternatieve formule ring** toevoegen en voeg vervolgens elke nieuwe formule ring toe, zoals in de volgende tabel.
 
@@ -70,9 +70,9 @@ Wanneer deze URL is geïmporteerd, is er slechts één vraag gemaakt met één a
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Meta gegevens toevoegen om de antwoorden te filteren
 
-Door meta gegevens toe te voegen aan een vraag-en-antwoordset kan uw client toepassing gefilterde antwoorden aanvragen. Dit filter wordt toegepast voordat de [eerste en tweede rang orde](../concepts/query-knowledge-base.md#ranker-process) worden toegepast.
+Door meta gegevens toe te voegen aan een vraag-en-antwoord-paar kan uw client toepassing gefilterde antwoorden aanvragen. Dit filter wordt toegepast voordat de [eerste en tweede rang orde](../concepts/query-knowledge-base.md#ranker-process) worden toegepast.
 
-1. Voeg de tweede vraag en antwoordset, zonder de meta gegevens, toe uit de [eerste tabel in deze Snelstartgids](#qna-table)en ga daarna verder met de volgende stappen.
+1. Voeg het tweede vraag-en antwoord paar toe zonder de meta gegevens uit de [eerste tabel in deze Quick](#qna-table)start. Ga daarna verder met de volgende stappen.
 
 1. Selecteer **weergave opties**en selecteer vervolgens **meta gegevens weer geven**.
 

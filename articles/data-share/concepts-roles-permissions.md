@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265504"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020894"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -24,6 +24,7 @@ Met de Azure data share-service kunt u gegevens delen zonder dat er referenties 
 De beheerde identiteit van de Azure-gegevens share bron moet toegang krijgen tot de gegevens opslag van Azure. Azure data share service gebruikt deze beheerde identiteit vervolgens om gegevens te lezen en te schrijven voor het delen op basis van moment opnamen en om een symbolische koppeling tot stand te brengen voor het delen in de locatie. 
 
 Om gegevens te delen of te ontvangen van een Azure-gegevens archief, moet de gebruiker ten minste over de volgende machtigingen beschikken. Er zijn aanvullende machtigingen vereist voor het delen op basis van SQL.
+
 * Toestemming om te schrijven naar de Azure-gegevens opslag. Normaal gesp roken bestaat deze machtiging in de rol **Inzender** .
 * Machtiging voor het maken van een roltoewijzing in de Azure-gegevens opslag. Normaal gesp roken is machtiging voor het maken van roltoewijzingen in de rol **eigenaar** , de rol gebruikers toegang beheerder of een aangepaste rol met micro soft. autorisatie/roltoewijzingen/schrijf machtiging toegewezen. Deze machtiging is niet vereist als de beheerde identiteit van de bron van de gegevens share al toegang tot de Azure-gegevens opslag heeft gekregen. Zie de onderstaande tabel voor de vereiste rol.
 
@@ -48,8 +49,8 @@ Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een extern
 |Azure Synapse Analytics (voorheen SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 
+### <a name="data-provider"></a>Gegevens provider
 
-### <a name="data-provider"></a>Gegevens provider 
 Als u een gegevensset wilt toevoegen aan de Azure-gegevens share, moet de beheerde identiteit van de provider gegevens share resource toegang krijgen tot de Azure-bron gegevens opslag. In het geval van een opslag account krijgt de beheerde identiteit van de gegevens share bron bijvoorbeeld de rol Storage BLOB data Reader. 
 
 Dit wordt automatisch uitgevoerd door de Azure data share-service wanneer de gebruiker gegevensset toevoegt via Azure Portal en de gebruiker de juiste machtigingen heeft. De gebruiker is bijvoorbeeld een eigenaar van het Azure-gegevens archief of is een lid van een aangepaste rol waaraan de machtiging voor micro soft. Authorization/Role/permission is toegewezen. 
@@ -97,7 +98,7 @@ Als u de uitnodiging voor Azure data share voor het eerst wilt weer geven in uw 
 1. Selecteer het abonnement dat u voor Azure-gegevens share gebruikt.
 1. Klik op **resource providers**.
 1. Zoek naar micro soft. DataShare.
-1. Klik op **registreren**.
+1. Klik op **Registreren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

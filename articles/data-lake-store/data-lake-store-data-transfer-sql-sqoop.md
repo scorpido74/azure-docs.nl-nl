@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839065"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015927"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Gegevens kopiëren tussen Data Lake Storage Gen1 en Azure SQL Database met behulp van Sqoop
 
@@ -35,7 +35,7 @@ Voordat u begint, moet u het volgende hebben:
 
 ## <a name="create-sample-tables-in-the-azure-sql-database"></a>Voorbeeld tabellen maken in de Azure SQL database
 
-1. Als u wilt beginnen, maakt u twee voorbeeld tabellen in Azure SQL database. Gebruik [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) of Visual Studio om verbinding te maken met de data base en voer vervolgens de volgende query's uit.
+1. Als u wilt beginnen, maakt u twee voorbeeld tabellen in Azure SQL database. Gebruik [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) of Visual Studio om verbinding te maken met de data base en voer vervolgens de volgende query's uit.
 
     **Maken Tabel1**
 
@@ -81,7 +81,7 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Gegevens importeren van Azure SQL Database naar Data Lake Storage Gen1
 
-1. Navigeer naar de map waar Sqoop-pakketten beschikbaar zijn. Normaal gesp roken is `/usr/hdp/<version>/sqoop/bin`deze locatie.
+1. Navigeer naar de map waar Sqoop-pakketten beschikbaar zijn. Normaal gesp roken is deze locatie `/usr/hdp/<version>/sqoop/bin` .
 
 1. Importeer de gegevens van **Tabel1** in het data Lake Storage gen1-account. Gebruik de volgende syntaxis:
 
@@ -117,7 +117,7 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Controleer of de gegevens zijn geüpload naar de tabel SQL Database. Gebruik [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) of Visual Studio om verbinding te maken met de Azure SQL database en voer vervolgens de volgende query uit.
+1. Controleer of de gegevens zijn geüpload naar de tabel SQL Database. Gebruik [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) of Visual Studio om verbinding te maken met de Azure SQL database en voer vervolgens de volgende query uit.
 
        SELECT * FROM TABLE2
 

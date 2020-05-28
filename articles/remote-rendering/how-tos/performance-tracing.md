@@ -5,22 +5,22 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681309"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021157"
 ---
 # <a name="create-client-side-performance-traces"></a>Prestatietracering aan de clientzijde maken
 
 Er zijn verschillende redenen waarom de prestaties van de externe rendering van Azure niet zo goed mogelijk zijn. Afgezien van de zuivere rendering-prestaties op de Cloud Server, met name de kwaliteit van de netwerk verbinding, heeft dit een grote invloed op de ervaring. Als u de prestaties van de server wilt profileren, raadpleegt u de hoofd stukken voor [prestatie query's](../overview/features/performance-queries.md)op de server.
 
-Dit hoofd stuk richt zich op het identificeren van mogelijke knel punten aan de client zijde via *prestatie traceringen*.
+Dit hoofd stuk richt zich op het identificeren van mogelijke knel punten aan de client zijde via *:::no-loc text="performance traces":::* .
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u geen ervaring hebt met de functionaliteit voor het traceren van Windows-prestaties, wordt in deze sectie de meest fundamentele voor waarden en toepassingen vermeld om u op weg te helpen.
+Als u niet bekend bent met de Windows :::no-loc text="performance tracing"::: -functionaliteit, wordt in deze sectie de meest fundamentele voor waarden en toepassingen vermeld om u op weg te helpen.
 
 ### <a name="installation"></a>Installatie
 
@@ -37,11 +37,11 @@ Wanneer u zoekt naar informatie over prestatie traceringen, zult u onvermijdelij
 
 **Etw** staat voor [ **E**ventilator **T**-race voor **W**Windows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Het is gewoon de naam van de overkoepelend voor de efficiënte tracering faciliteit op kernelniveau die is ingebouwd in Windows. Het wordt *gebeurtenis* tracering genoemd, omdat toepassingen die ondersteuning bieden voor etw, gebeurtenissen kunnen verzenden naar logboek acties die kunnen helpen bij het volgen van prestatie problemen. Standaard verzendt het besturings systeem al gebeurtenissen voor zaken als schijf toegang, taak switches en dergelijke. Toepassingen zoals ARR verzenden bovendien aangepaste gebeurtenissen, bijvoorbeeld het geval van verwijderde frames, netwerk vertraging, enzovoort.
 
-**ETL** staat voor **E**ventilator **T**race **L**ogging. Dit betekent gewoon dat een tracering is verzameld (vastgelegd) en wordt daarom doorgaans gebruikt als de bestands extensie voor bestanden die de tracerings gegevens opslaan. Als u een tracering volgt, hebt u meestal een \*ETL-bestand.
+**ETL** staat voor **E**ventilator **T**race **L**ogging. Dit betekent gewoon dat een tracering is verzameld (vastgelegd) en wordt daarom doorgaans gebruikt als de bestands extensie voor bestanden die de tracerings gegevens opslaan. Als u een tracering volgt, hebt u meestal een \* ETL-bestand.
 
-De **aanvraag staat voor** [ **W**Windows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de toepassing die de registratie van gebeurtenis traceringen start en stopt. Voor het aanmeldingen wordt\*een profiel bestand (. wprp) gebruikt dat de exacte gebeurtenissen configureert die moeten worden geregistreerd. Een `wprp` dergelijk bestand wordt meegeleverd met de ARR-SDK. Bij het uitvoeren van traceringen op een desktop computer, kunt u direct op de slag starten. Wanneer u een tracering op de HoloLens uitvoert, gaat u doorgaans door de webinterface.
+De **aanvraag staat voor** [ **W**Windows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de toepassing die de registratie van gebeurtenis traceringen start en stopt. Voor het aanmeldingen wordt een profiel bestand ( \* . wprp) gebruikt dat de exacte gebeurtenissen configureert die moeten worden geregistreerd. Een dergelijk `wprp` bestand wordt meegeleverd met de ARR-SDK. Bij het uitvoeren van traceringen op een desktop computer, kunt u direct op de slag starten. Wanneer u een tracering op de HoloLens uitvoert, gaat u doorgaans door de webinterface.
 
-**WPA** staat voor [ **W**Windows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) en is de naam van de GUI-toepassing die wordt gebruikt voor \*het openen van. etl-bestanden en SIFT door de gegevens om prestatie problemen te identificeren. Met WPA kunt u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weer geven, meer informatie bekijken en gegevens correleren.
+**WPA** staat voor [ **W**Windows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) en is de naam van de GUI-toepassing die wordt gebruikt voor \* het openen van. etl-bestanden en SIFT door de gegevens om prestatie problemen te identificeren. Met WPA kunt u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weer geven, meer informatie bekijken en gegevens correleren.
 
 U kunt ETL-traceringen maken op elk Windows-apparaat (lokale PC, HoloLens, Cloud Server, enzovoort), ze worden meestal opgeslagen op schijf en geanalyseerd met WPA op een desktop-PC. ETL-bestanden kunnen naar andere ontwikkel aars worden verzonden om ze te laten zien. Houd er rekening mee dat gevoelige informatie, zoals bestands paden en IP-adressen, in ETL-traceringen kan worden vastgelegd. U kunt ETW op twee manieren gebruiken: voor het vastleggen van traceringen of voor het analyseren van traceringen. Registratie traceringen zijn recht vooruit en vereisen een minimale installatie. Voor het analyseren van traceringen voor de andere kant is een goede uitleg vereist van zowel het WPA-hulp programma als het probleem dat u onderzoekt. Algemeen materiaal voor Learning WPA vindt u hieronder en richt lijnen voor het interpreteren van ARR-specifieke traceringen.
 
@@ -51,7 +51,7 @@ Als u problemen met ARR-prestaties wilt identificeren, kunt u het beste rechtstr
 
 ### <a name="wpr-configuration"></a>Configuratie van de aanaan
 
-1. Start de [Windows-prestatie recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) vanuit het *menu Start*.
+1. Start de [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) vanuit het *menu Start*.
 1. **Meer opties** uitbreiden
 1. Klik op **profielen toevoegen...**
 1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
@@ -67,7 +67,7 @@ Daarna moet de configuratie van uw aangaan eruitzien als volgt:
 
 ### <a name="recording"></a>Opnemen
 
-Klik op **starten** om het vastleggen van een tracering te starten. U kunt de opname op elk gewenst moment starten en stoppen. u hoeft uw toepassing niet te sluiten voordat u dit doet. Zoals u kunt zien, is het niet nodig om op te geven welke toepassing moet worden getraceerd, omdat ETW altijd een tracering vastlegt voor het hele systeem. In `wprp` het bestand wordt opgegeven welke typen gebeurtenissen moeten worden vastgelegd.
+Klik op **starten** om het vastleggen van een tracering te starten. U kunt de opname op elk gewenst moment starten en stoppen. u hoeft uw toepassing niet te sluiten voordat u dit doet. Zoals u kunt zien, is het niet nodig om op te geven welke toepassing moet worden getraceerd, omdat ETW altijd een tracering vastlegt voor het hele systeem. `wprp`In het bestand wordt opgegeven welke typen gebeurtenissen moeten worden vastgelegd.
 
 Klik op **Opslaan** om de opname te stoppen en op te geven waar het ETL-bestand moet worden opgeslagen.
 
@@ -81,7 +81,7 @@ Als u een tracering op een HoloLens wilt vastleggen, start u uw apparaat op en v
 
 1. Ga aan de linkerkant naar *prestaties > prestatie tracering*.
 1. **Aangepaste profielen** selecteren
-1. Klik op **Bladeren...**
+1. Schakel**:::no-loc text="Browse...":::**
 1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
 1. Klik op **Tracering starten**
 1. De HoloLens is nu bezig met het vastleggen van een tracering. Zorg ervoor dat de prestatie problemen die u wilt onderzoeken, worden geactiveerd. Klik vervolgens op **tracering stoppen**.

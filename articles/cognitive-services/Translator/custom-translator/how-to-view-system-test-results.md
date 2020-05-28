@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: eee2271b6d1fb51ff4b27c0d612306b1f7f8747a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584719"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994256"
 ---
 # <a name="view-system-test-results"></a>Testresultaten voor systeem weergeven
 
@@ -92,7 +92,7 @@ Implementatie-instellingen bijwerken:
 
     ![Model implementeren](media/how-to/how-to-update-undeploy-model.png)
 
-3.  Selecteer **Update**.
+3.  Selecteer **Bijwerken**.
 4.  Selecteer **geïmplementeerd** of niet- **geïmplementeerd** voor de regio's waar u uw model wilt implementeren of niet wilt implementeren en klik vervolgens op **Opslaan**.
 
     ![Model implementeren](media/how-to/how-to-undeploy-model.png)

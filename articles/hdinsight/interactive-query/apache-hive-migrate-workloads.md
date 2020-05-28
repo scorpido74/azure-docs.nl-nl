@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594233"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015009"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -34,12 +34,12 @@ Een voor deel van het onderdeel is de mogelijkheid om meta gegevens te exportere
 De tabellen HDInsight 3,6 en HDInsight 4,0 zuren begrijpen zuur verschillen. De enige vereiste actie voor de migratie is het uitvoeren van ' primaire ' compressie voor elke ACID-tabel op het 3,6-cluster. Raadpleeg de [hand leiding](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) van de Hive-taal voor meer informatie over compressie.
 
 ### <a name="2-copy-sql-database"></a>2. SQL database kopiëren
-Maak een nieuwe kopie van uw externe meta Store. Als u een externe meta Store gebruikt, is een van de veilige en eenvoudige manieren om een kopie van de meta Store te maken, [het herstellen van de data base](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) met een andere naam met behulp van de functie voor het terugzetten van SQL database.  Zie [externe meta gegevensopslag plaatsen in azure HDInsight gebruiken](../hdinsight-use-external-metadata-stores.md) voor meer informatie over het koppelen van een externe metadata voor een HDInsight-cluster.
+Maak een nieuwe kopie van uw externe meta Store. Als u een externe meta Store gebruikt, is een van de veilige en eenvoudige manieren om een kopie van de meta Store te maken, [het herstellen van de data base](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) met een andere naam met behulp van de functie voor het terugzetten van SQL database.  Zie [externe meta gegevensopslag plaatsen in azure HDInsight gebruiken](../hdinsight-use-external-metadata-stores.md) voor meer informatie over het koppelen van een externe metadata voor een HDInsight-cluster.
 
 ### <a name="3-upgrade-metastore-schema"></a>3. het meta Store-schema bijwerken
 Zodra de meta Store- **kopie** is voltooid, voert u een schema-upgrade script uit in [script actie](../hdinsight-hadoop-customize-cluster-linux.md) op het bestaande HDInsight 3,6-cluster om de nieuwe Meta Store naar Hive 3-schema bij te werken. (Voor deze stap is het niet nodig om de nieuwe Meta Store te koppelen aan een cluster.) Hierdoor kan de Data Base worden gekoppeld als HDInsight 4,0-meta Store.
 
-Gebruik de waarden in de tabel hieronder. Vervang `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` door de juiste waarden voor de Hive-metastore **kopie**, gescheiden door spaties. Neem '. database.windows.net ' niet op bij het opgeven van de naam van de SQL-Server.
+Gebruik de waarden in de tabel hieronder. Vervang door `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` de juiste waarden voor de Hive-metastore **kopie**, gescheiden door spaties. Neem '. database.windows.net ' niet op bij het opgeven van de naam van de SQL-Server.
 
 |Eigenschap | Waarde |
 |---|---|
@@ -124,7 +124,7 @@ De HDInsight 3,6-en 4,0-clusters moeten hetzelfde opslag account gebruiken.
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * Voor een gewoon HDInsight-cluster zonder ESP voert `exporthive_hdi_3_6.sh`u gewoon uit.
+    * Voor een gewoon HDInsight-cluster zonder ESP voert u gewoon uit `exporthive_hdi_3_6.sh` .
 
     * Voor een cluster met ESP, kinit en wijzig de argumenten in beeline: Voer het volgende uit en definieer de gebruikers en het domein voor de Azure AD-gebruiker met volledige Hive-machtigingen.
 
@@ -221,14 +221,14 @@ In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer g
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Knooppunt type (n)|Head|
 
-Wacht 10 tot 15 minuten en start vervolgens Data Analytics Studio met behulp van deze `https://CLUSTERNAME.azurehdinsight.net/das/`URL:.
+Wacht 10 tot 15 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: `https://CLUSTERNAME.azurehdinsight.net/das/` .
 
 Een vernieuwing van de Ambari-gebruikers interface en/of het opnieuw opstarten van alle Ambari-onderdelen is mogelijk vereist voordat DAS wordt geopend.
 
 Als DAS is geïnstalleerd en u de query's die u hebt uitgevoerd, niet in de query viewer ziet, voert u de volgende stappen uit:
 
 1. Stel de configuraties voor Hive, TEZ en DAS in, zoals beschreven in [deze hand leiding voor het oplossen van problemen met das-installatie](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
-2. Zorg ervoor dat de volgende Azure Storage Directory-configuraties pagina-blobs zijn en dat ze worden vermeld onder `fs.azure.page.blob.dirs`:
+2. Zorg ervoor dat de volgende Azure Storage Directory-configuraties pagina-blobs zijn en dat ze worden vermeld onder `fs.azure.page.blob.dirs` :
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. Start HDFS, Hive, TEZ en DAS op beide hoofd knooppunten.

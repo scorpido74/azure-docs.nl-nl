@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767583"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013007"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Apache Sqoop-taken in HDInsight uitvoeren met krul
 
@@ -26,7 +26,7 @@ Krul wordt gebruikt om te laten zien hoe u kunt communiceren met HDInsight door 
 
 * Volt ooien van de [instelling test omgeving](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [voor het gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
-* Een client om de Azure SQL Database op te vragen. Overweeg het gebruik van [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) of [Visual Studio code](../../sql-database/sql-database-connect-query-vscode.md).
+* Een client om de Azure SQL Database op te vragen. Overweeg het gebruik van [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) of [Visual Studio code](../../azure-sql/database/connect-query-vscode.md).
 
 * [Krul](https://curl.haxx.se/). Krul is een hulp programma voor het overdragen van gegevens van of naar een HDInsight-cluster.
 
@@ -41,7 +41,7 @@ Gebruik krul om gegevens te exporteren met Apache Sqoop-taken van Azure Storage 
 > [!NOTE]  
 > Wanneer u Curl of een andere REST-communicatie gebruikt met WebHCat, moet u de aanvragen verifiëren door de gebruikersnaam en het wachtwoord voor de beheerder van het HDInsight-cluster op te geven. U moet ook de clusternaam gebruiken als onderdeel van de URI (Uniform Resource Identifier) die wordt gebruikt om de aanvragen naar de server te verzenden.
 
-Voor de opdrachten in deze sectie vervangt `USERNAME` u door de gebruiker om te verifiëren bij het cluster en vervangt `PASSWORD` u het wacht woord voor het gebruikers account. Vervang `CLUSTERNAME` door de naam van uw cluster.
+Voor de opdrachten in deze sectie vervangt `USERNAME` u door de gebruiker om te verifiëren bij het cluster en vervangt u het `PASSWORD` wacht woord voor het gebruikers account. Vervang `CLUSTERNAME` door de naam van uw cluster.
 
 De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Basic_access_authentication). U moet aanvragen altijd uitvoeren via een beveiligde HTTP-verbinding (HTTPS). Zo zorgt u ervoor dat uw referenties veilig worden verzonden naar de server.
 
@@ -91,7 +91,7 @@ De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Ba
        {"id":"job_1415651640909_0026"}
        ```
 
-1. Gebruik de volgende opdracht om de status van de taak te controleren. Vervang `JOBID` door de waarde die u in de vorige stap hebt geretourneerd. Als de retour waarde bijvoorbeeld was `{"id":"job_1415651640909_0026"}`, `JOBID` zou zijn. `job_1415651640909_0026` Wijzig de locatie van `jq` waar nodig.
+1. Gebruik de volgende opdracht om de status van de taak te controleren. Vervang door `JOBID` de waarde die u in de vorige stap hebt geretourneerd. Als de retour waarde bijvoorbeeld was `{"id":"job_1415651640909_0026"}` , `JOBID` zou zijn `job_1415651640909_0026` . Wijzig de locatie van waar `jq` nodig.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -104,7 +104,7 @@ De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Ba
    > [!NOTE]  
    > Deze krul aanvraag retourneert een JavaScript Object Notation (JSON)-document met informatie over de taak. JQ wordt gebruikt om alleen de status waarde op te halen.
 
-1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query bevat de locatie van het uitvoer bestand. in dit geval `wasb:///example/data/sqoop/curl`. Dit adres bevat de uitvoer van de taak in de `example/data/sqoop/curl` map op de standaard opslag container die wordt gebruikt door uw HDInsight-cluster.
+1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query bevat de locatie van het uitvoer bestand, in dit geval `wasb:///example/data/sqoop/curl` . Dit adres bevat de uitvoer van de taak in de `example/data/sqoop/curl` map op de standaard opslag container die wordt gebruikt door uw HDInsight-cluster.
 
     U kunt de Azure Portal gebruiken om toegang te krijgen tot stderr-en stdout-blobs.
 
@@ -118,7 +118,7 @@ De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Ba
 ## <a name="limitations"></a>Beperkingen
 
 * Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of Azure SQL Database momenteel geen bulk toevoegingen ondersteunt.
-* Batch verwerking: met HDInsight op basis van Linux, worden bij `-batch` het gebruik van de switch tijdens het invoegen meerdere inserts uitgevoerd in plaats van batch verwerking van de Insert-bewerkingen.
+* Batch verwerking: met HDInsight op basis van Linux, worden bij het gebruik `-batch` van de switch tijdens het invoegen meerdere inserts uitgevoerd in plaats van batch verwerking van de Insert-bewerkingen.
 
 ## <a name="summary"></a>Samenvatting
 

@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157503"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015296"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Wat te doen wanneer een Azure-service wordt onderbroken, wat gevolgen heeft voor Azure Cloud Services
 Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
@@ -47,7 +47,7 @@ Zie [een Cloud service maken en implementeren](cloud-services-how-to-create-depl
 Afhankelijk van de gegevens bronnen van uw toepassing, moet u mogelijk de herstel procedures voor de gegevens bron van uw toepassing controleren.
 
 * Zie [Azure Storage redundantie](../storage/common/storage-redundancy.md) voor het controleren van de beschik bare opties op basis van het gekozen redundantie model voor uw toepassing voor Azure Storage gegevens bronnen.
-* Lees overzicht voor SQL Database bronnen [: bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL database](../sql-database/sql-database-business-continuity.md) om de opties te controleren die beschikbaar zijn op basis van het gekozen replicatie model voor uw toepassing.
+* Lees overzicht voor SQL Database bronnen [: bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL database](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) om de opties te controleren die beschikbaar zijn op basis van het gekozen replicatie model voor uw toepassing.
 
 
 ## <a name="option-3-wait-for-recovery"></a>Optie 3: wachten op herstel

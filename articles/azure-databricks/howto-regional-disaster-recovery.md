@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161933"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016930"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
@@ -150,7 +150,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -225,7 +225,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
    De taak configuratie vereist instellingen voor een nieuw of een bestaand cluster. Als u een bestaand cluster gebruikt, probeert het script/code hieronder de oude cluster-ID te vervangen door de nieuwe cluster-ID.
 
-   Kopieer het volgende python-script en sla het op in een bestand. Vervang de waarde voor `old_cluster_id` en `new_cluster_id`door de uitvoer van de cluster migratie die in de vorige stap is uitgevoerd. Voer deze uit in de databricks-cli-opdracht regel, bijvoorbeeld `python scriptname.py`.
+   Kopieer het volgende python-script en sla het op in een bestand. Vervang de waarde voor `old_cluster_id` en door `new_cluster_id` de uitvoer van de cluster migratie die in de vorige stap is uitgevoerd. Voer deze uit in de databricks-cli-opdracht regel, bijvoorbeeld `python scriptname.py` .
 
    ```python
    from subprocess import call, check_output
@@ -308,7 +308,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Herstel na nood geval voor uw Azure-ecosysteem
 
-Als u andere Azure-Services gebruikt, moet u er ook voor zorgen dat u aanbevolen procedures voor herstel na nood gevallen voor die Services implementeert. Als u bijvoorbeeld een exemplaar van een externe Hive-metastore wilt gebruiken, moet u rekening houden met nood herstel voor [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)en/of [Azure database for MySQL](../mysql/concepts-business-continuity.md). Zie [herstel na nood gevallen voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)voor algemene informatie over herstel na nood gevallen.
+Als u andere Azure-Services gebruikt, moet u er ook voor zorgen dat u aanbevolen procedures voor herstel na nood gevallen voor die Services implementeert. Als u bijvoorbeeld een exemplaar van een externe Hive-metastore wilt gebruiken, moet u rekening houden met nood herstel voor [Azure SQL database](../azure-sql/database/disaster-recovery-guidance.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)en/of [Azure database for MySQL](../mysql/concepts-business-continuity.md). Zie [herstel na nood gevallen voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)voor algemene informatie over herstel na nood gevallen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942960"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021854"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database beveiligings functies    
 Azure SQL Database biedt een relationele database service in Azure. SQL Database heeft een eigen set beveiligings mogelijkheden om klant gegevens te beschermen en krachtige beveiligings functies te bieden die klanten verwachten van een relationele database service. Deze mogelijkheden zijn gebaseerd op de besturings elementen die worden overgenomen van Azure.
@@ -31,13 +31,13 @@ Azure SQL Database biedt een relationele database service in Azure. SQL Database
 Azure SQL Database ondersteunt alleen het tabular data stream (TDS)-protocol, waarmee de data base alleen toegankelijk is via de standaard poort van TCP-1433.
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database firewall
-Azure SQL Database een firewall functionaliteit biedt om klant gegevens te helpen beveiligen, die standaard niet alle toegang tot de SQL Database Server voor komt, zoals hieronder wordt weer gegeven.
+Azure SQL Database een firewall functionaliteit biedt om klant gegevens te helpen beveiligen, die standaard niet alle toegang tot SQL Database voor komt, zoals hieronder wordt weer gegeven.
 
 ![Azure SQL Database firewall](./media/infrastructure-sql/sql-database-firewall.png)
 
 De firewall van de gateway kan adressen beperken, waardoor klanten nauw keurig kunnen bepalen hoeveel IP-adressen moeten worden opgegeven. De firewall verleent toegang op basis van het oorspronkelijke IP-adres van elke aanvraag.
 
-Klanten kunnen de firewall configureren met behulp van een beheer portal of programmatisch met behulp van de Azure SQL Database beheer REST API. De Azure SQL Database gateway firewall voor komt standaard dat alle TDS-toegang van klanten tot Azure SQL database-exemplaren. Klanten moeten toegang configureren met behulp van toegangs beheer lijsten (Acl's) voor het toestaan van Azure SQL Database verbindingen op basis van bron-en doel-Internet adressen,-protocollen en-poort nummers.
+Klanten kunnen de firewall configureren met behulp van een beheer portal of programmatisch met behulp van de Azure SQL Database beheer REST API. De Azure SQL Database gateway firewall voor komt standaard dat de TDS-toegang van klanten tot Azure SQL Database. Klanten moeten toegang configureren met behulp van toegangs beheer lijsten (Acl's) voor het toestaan van Azure SQL Database verbindingen op basis van bron-en doel-Internet adressen,-protocollen en-poort nummers.
 
 ### <a name="dosguard"></a>DoSGuard
 DoS-aanvallen (Denial of service) worden gereduceerd door een SQL Database Gateway Service met de naam DoSGuard. DoSGuard traceert actief mislukte aanmeldingen van IP-adressen. Als er binnen een bepaalde periode meerdere mislukte aanmeldingen vanaf een specifiek IP-adres zijn, heeft het IP-adres geen toegang tot resources in de service voor een vooraf gedefinieerde tijds periode.

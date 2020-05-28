@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652233"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021395"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -74,7 +74,7 @@ De uiteindelijke schaal factor wordt toegepast op de geometrie hoekpunten en de 
 Het is belang rijk om te centreren als het bron model ver van de oorsprong wordt overgeplaatst, omdat in dat geval problemen met drijvende-komma precisie kunnen leiden tot rendering-artefacten.
 
 * `opaqueMaterialDefaultSidedness`-De rendering-engine veronderstelt dat dekkende materialen dubbelzijdig worden weer gegeven.
-Als dat niet het beoogde gedrag is, moet deze para meter worden ingesteld op ' SingleSided '. Zie [Single-Side rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
+Als dat niet het beoogde gedrag is, moet deze para meter worden ingesteld op ' SingleSided '. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
 
 ### <a name="material-overrides"></a>Overschrijvingen van materiaal
 
@@ -90,7 +90,7 @@ De rendering-engine verwacht dat kleur waarden in lineaire ruimte worden weer ge
 Als een model is gedefinieerd met behulp van gamma ruimte, moeten deze opties worden ingesteld op True.
 
 * `gammaToLinearMaterial`-Materiaal kleuren van gamma-ruimte naar lineaire ruimte converteren
-* `gammaToLinearVertex`-Vertex kleuren van gamma-ruimte naar lineaire ruimte converteren
+* `gammaToLinearVertex`- :::no-loc text="vertex"::: Kleuren van gamma-ruimte naar lineaire ruimte converteren
 
 > [!NOTE]
 > Voor FBX-bestanden worden deze instellingen standaard ingesteld op `true` . Voor alle andere bestands typen is de standaard waarde `false` .
@@ -127,12 +127,12 @@ De `none` modus heeft de minste runtime overhead en ook iets betere laad tijden.
 
 * `axis`-Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]` . In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
 
-### <a name="vertex-format"></a>Hoek punt notatie
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::Formatteer
 
-Het is mogelijk om de hoekpunt notatie voor een net aan te passen, zodat de hoeveelheid geheugen wordt bespaard. Met een lagere geheugen capaciteit kunt u grotere modellen laden of betere prestaties behaalt. Afhankelijk van uw gegevens kan dit echter een onjuiste indeling hebben die de weergave kwaliteit aanzienlijk kan beïnvloeden.
+Het is mogelijk om de :::no-loc text="vertex"::: indeling van een net aan te passen aan de handels nauwkeurigheid voor het besparen van geheugen. Met een lagere geheugen capaciteit kunt u grotere modellen laden of betere prestaties behaalt. Afhankelijk van uw gegevens kan dit echter een onjuiste indeling hebben die de weergave kwaliteit aanzienlijk kan beïnvloeden.
 
 > [!CAUTION]
-> Het wijzigen van de vertex notatie moet een laatste redmiddel zijn wanneer modellen niet meer in het geheugen passen, of wanneer u optimaliseert voor de best mogelijke prestaties. Wijzigingen kunnen eenvoudig rendering-artefacten introduceren, zowel duidelijke als subtiele items. Tenzij u weet wat er moet worden gezocht voor, moet u de standaard instelling niet wijzigen.
+> Het wijzigen :::no-loc text="vertex"::: van de indeling zou een laatste redmiddel moeten zijn wanneer modellen niet meer in het geheugen passen, of bij het optimaliseren van de best mogelijke prestaties. Wijzigingen kunnen eenvoudig rendering-artefacten introduceren, zowel duidelijke als subtiele items. Tenzij u weet wat er moet worden gezocht voor, moet u de standaard instelling niet wijzigen.
 
 Deze aanpassingen zijn mogelijk:
 
@@ -159,11 +159,11 @@ De volgende `vertex` sectie in het `.json` bestand is optioneel. Voor elk gedeel
 
 Door een onderdeel af te dwingen naar `NONE` wordt gegarandeerd dat het uitvoer gaas niet de respectieve stroom heeft.
 
-#### <a name="component-formats-per-vertex-stream"></a>Onderdeel indelingen per vertex stroom
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>Onderdeel indelingen per :::no-loc text="vertex"::: Stream
 
 Deze indelingen zijn toegestaan voor de respectieve onderdelen:
 
-| Component vertex | Ondersteunde indelingen (vet = standaard) |
+| :::no-loc text="Vertex"::: -onderdeel | Ondersteunde indelingen (vet = standaard) |
 |:-----------------|:------------------|
 |position| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, geen |
@@ -178,7 +178,7 @@ Deze indelingen zijn toegestaan voor de respectieve onderdelen:
 
 De geheugen footprint van de indelingen zijn als volgt:
 
-| Indeling | Beschrijving | Bytes per hoek punt |
+| Indeling | Beschrijving | Bytes per:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|twee onderdelen met een volledige zwevende komma precisie|8
 |16_16_FLOAT|twee onderdelen, half zwevende punt precisie|4
@@ -197,11 +197,11 @@ De geheugen footprint van de indelingen zijn als volgt:
 
 #### <a name="example"></a>Voorbeeld
 
-Stel dat u een Photogrammetry-model hebt, wat de belichtings geïntegreerde in de bitmappatronen heeft. Alles wat nodig is om het model weer te geven, zijn hoekpunt posities en textuur coördinaten.
+Stel dat u een Photogrammetry-model hebt, wat de belichtings geïntegreerde in de bitmappatronen heeft. Alles wat nodig is om het model weer te geven, zijn :::no-loc text="vertex"::: Positions en texture-coördinaten.
 
-Het conversie programma moet er standaard van uitgaan dat u op een bepaald moment PBR-materialen wilt gebruiken op een model, zodat er `normal` `tangent` `binormal` gegevens voor u worden gegenereerd. Daarom is het geheugen gebruik per vertex `position` (12 bytes) + `texcoord0` (8 bytes) + `normal` (4 bytes) + `tangent` (4 bytes) + `binormal` (4 bytes) = 32 bytes. Grotere modellen van dit type kunnen eenvoudig tal van hoek punten hebben, wat resulteert in modellen die meerdere gigabytes aan geheugen kunnen innemen. Dergelijke grote hoeveel heden gegevens zijn van invloed op de prestaties. het kan zelfs voor komen dat er onvoldoende geheugen beschikbaar is.
+Het conversie programma moet er standaard van uitgaan dat u op een bepaald moment PBR-materialen wilt gebruiken op een model, zodat er `normal` `tangent` `binormal` gegevens voor u worden gegenereerd. Daarom is het geheugen gebruik per vertex `position` (12 bytes) + `texcoord0` (8 bytes) + `normal` (4 bytes) + `tangent` (4 bytes) + `binormal` (4 bytes) = 32 bytes. Grotere modellen van dit type kunnen eenvoudig een groot aantal modellen hebben, waardoor er :::no-loc text="vertices"::: meerdere GB geheugen kan worden opgedeeld. Dergelijke grote hoeveel heden gegevens zijn van invloed op de prestaties. het kan zelfs voor komen dat er onvoldoende geheugen beschikbaar is.
 
-Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en u zeker weet dat alle textuur coördinaten binnen het `[0; 1]` bereik vallen, kunt u, `normal` `tangent` , en `binormal` tot en met de `NONE` `texcoord0` halve precisie () instellen, `16_16_FLOAT` wat resulteert in slechts 16 bytes per hoek punt. Als u de netgegevens in tweeën knipt, kunt u grotere modellen laden en mogelijk de prestaties verbeteren.
+Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en u zeker weet dat alle Texture-coördinaten binnen het `[0; 1]` bereik vallen, kunt u, `normal` `tangent` , en `binormal` tot en met de `NONE` `texcoord0` halve precisie () instellen, `16_16_FLOAT` wat resulteert in slechts 16 bytes per :::no-loc text="vertex"::: . Als u de netgegevens in tweeën knipt, kunt u grotere modellen laden en mogelijk de prestaties verbeteren.
 
 ## <a name="typical-use-cases"></a>Typische gebruiks voorbeelden
 
@@ -215,7 +215,7 @@ Er zijn bepaalde klassen van use cases die in aanmerking komen voor specifieke o
 
 * Wanneer u onderdelen wilt verplaatsen, betekent dat doorgaans ook dat u ondersteuning nodig hebt voor raycasts of andere [ruimtelijke query's](../../overview/features/spatial-queries.md), zodat u deze onderdelen in de eerste plaats kunt kiezen. Daarentegen, als u niet van plan bent om iets rond te verplaatsen, is de kans groot dat u deze ook niet nodig hebt om deel te nemen aan ruimtelijke query's en daarom de vlag uit te scha kelen `generateCollisionMesh` . Deze switch heeft aanzienlijke invloed op de conversie tijden, laad tijden en runtime per kader update kosten.
 
-* Als de toepassing geen [geknipte abonnementen](../../overview/features/cut-planes.md)gebruikt, `opaqueMaterialDefaultSidedness` moet de vlag worden uitgeschakeld. De prestatie verbetering is doorgaans 20%-30%. Knip abonnementen kunnen nog steeds worden gebruikt, maar er zijn geen back-upobjecten bij het zoeken naar de binnenste delen van objecten, waardoor teller-intuïtief wordt weer gegeven. Zie [Single-Side rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
+* Als de toepassing geen [geknipte abonnementen](../../overview/features/cut-planes.md)gebruikt, `opaqueMaterialDefaultSidedness` moet de vlag worden uitgeschakeld. De prestatie verbetering is doorgaans 20%-30%. Knip abonnementen kunnen nog steeds worden gebruikt, maar er zijn geen back-upobjecten bij het zoeken naar de binnenste delen van objecten, waardoor teller-intuïtief wordt weer gegeven. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
 
 ### <a name="use-case-photogrammetry-models"></a>Use-case: Photogrammetry-modellen
 

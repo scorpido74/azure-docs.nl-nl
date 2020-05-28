@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208513"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117298"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Meerdere webservice-eind punten maken van een experiment met ML Studio (klassiek) en Power shell
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Hier volgt een veelvoorkomend machine learning probleem: u wilt een groot aantal modellen maken die dezelfde werk stroom hebben en dezelfde algoritme gebruiken. Maar u wilt dat ze verschillende trainings gegevens sets als invoer hebben. Dit artikel laat u zien hoe u dit kunt doen op schaal in Azure Machine Learning Studio (klassiek) door slechts één experiment te gebruiken.
 
@@ -96,7 +94,7 @@ U hebt nu 10 eind punten gemaakt en deze bevatten allemaal hetzelfde getrainde m
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>De eind punten bijwerken om afzonderlijke trainings gegevens sets te gebruiken met Power shell
 De volgende stap is het bijwerken van de eind punten met modellen die uniek zijn getraind voor elke afzonderlijke gegevens van de klant. Maar eerst moet u deze modellen maken op basis van de trainings-webservice voor de **fiets** . We gaan terug naar de web-service voor de **huur training** van de fiets. U moet het BES-eind punt 10 keer aanroepen met tien verschillende trainings gegevens sets om 10 verschillende modellen te kunnen produceren. Gebruik hiervoor de Power shell-cmdlet **InovkeAmlWebServiceBESEndpoint** .
 
-U moet ook referenties voor uw Blob Storage-account opgeven in `$configContent`. Dat wil zeggen, in `AccountName`de `AccountKey`velden, `RelativeLocation`en. Dit `AccountName` kan een van uw account namen zijn, zoals wordt weer gegeven op het tabblad **Azure Portal** (*opslag* ). Nadat u op een opslag account hebt geklikt, `AccountKey` kunt u het vinden door op de knop **toegangs sleutels beheren** onderaan te drukken en de *primaire toegangs sleutel*te kopiëren. Het `RelativeLocation` is het pad dat relatief is ten opzichte van uw opslag locatie waar een nieuw model wordt opgeslagen. Zo verwijst het pad `hai/retrain/bike_rental/` in het volgende script naar een container met de naam `hai`en `/retrain/bike_rental/` submappen zijn. Op dit moment kunt u geen submappen maken via de portal-gebruikers interface, maar er zijn [verschillende Azure Storage Explorers](../../storage/common/storage-explorers.md) waarmee u dit kunt doen. Het is raadzaam om een nieuwe container in uw opslag ruimte te maken om de nieuwe getrainde modellen (iLearner-bestanden) als volgt op te slaan: Klik op de knop **toevoegen** onder aan de pagina opslag `retrain`en geef deze de naam. In samen vatting zijn de benodigde wijzigingen in het volgende script van `AccountName`toepassing `AccountKey`op, `RelativeLocation` en (`"retrain/model' + $seq + '.ilearner"`:).
+U moet ook referenties voor uw Blob Storage-account opgeven in `$configContent` . Dat wil zeggen, in de velden `AccountName` , `AccountKey` en `RelativeLocation` . Dit `AccountName` kan een van uw account namen zijn, zoals wordt weer gegeven op het tabblad **Azure Portal** (*opslag* ). Nadat u op een opslag account hebt geklikt, kunt u het `AccountKey` vinden door op de knop **toegangs sleutels beheren** onderaan te drukken en de *primaire toegangs sleutel*te kopiëren. Het `RelativeLocation` is het pad dat relatief is ten opzichte van uw opslag locatie waar een nieuw model wordt opgeslagen. Zo verwijst het pad `hai/retrain/bike_rental/` in het volgende script naar een container met de naam `hai` en `/retrain/bike_rental/` submappen zijn. Op dit moment kunt u geen submappen maken via de portal-gebruikers interface, maar er zijn [verschillende Azure Storage Explorers](../../storage/common/storage-explorers.md) waarmee u dit kunt doen. Het is raadzaam om een nieuwe container in uw opslag ruimte te maken om de nieuwe getrainde modellen (iLearner-bestanden) als volgt op te slaan: Klik op de knop **toevoegen** onder aan de pagina opslag en geef deze de naam `retrain` . In samen vatting zijn de benodigde wijzigingen in het volgende script van toepassing op `AccountName` , `AccountKey` en `RelativeLocation` (: `"retrain/model' + $seq + '.ilearner"` ).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

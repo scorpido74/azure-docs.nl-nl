@@ -16,16 +16,16 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978208"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017647"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Verbinding maken met een virtuele SQL Server-machine op Azure (klassieke implementatie)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)
 > * [Klassiek](../classic/sql-connect.md)
 > 
 > 
@@ -34,7 +34,7 @@ ms.locfileid: "75978208"
 In dit onderwerp wordt beschreven hoe u verbinding maakt met uw SQL Server-exemplaar dat wordt uitgevoerd op een virtuele Azure-machine. Dit omvat enkele [algemene verbindings scenario's](#connection-scenarios) en bevat [gedetailleerde stappen voor het configureren van SQL Server connectiviteit in een Azure-VM](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u Resource Manager-Vm's gebruikt, raadpleegt u [verbinding maken met een SQL Server virtuele machine in azure met behulp van Resource Manager](../sql/virtual-machines-windows-sql-connect.md).
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u Resource Manager-Vm's gebruikt, raadpleegt u [verbinding maken met een SQL Server virtuele machine in azure met behulp van Resource Manager](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).
 
 ## <a name="connection-scenarios"></a>Verbindings scenario's
 De manier waarop een client verbinding maakt met SQL Server die op een virtuele machine wordt uitgevoerd, verschilt afhankelijk van de locatie van de client en de configuratie van de computer/netwerk. Deze scenario's omvatten:
@@ -106,9 +106,9 @@ Het pad van de verbinding wordt samenvatten in het volgende diagram:
 ## <a name="next-steps"></a>Volgende stappen
 Als u ook van plan bent om AlwaysOn-beschikbaarheidsgroepen te gebruiken voor hoge Beschik baarheid en herstel na nood gevallen, kunt u overwegen een listener te implementeren. Data base-clients maken verbinding met de listener in plaats van rechtstreeks naar een van de SQL Server exemplaren. De listener stuurt clients naar de primaire replica in de beschikbaarheids groep. Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheidsgroepen in azure](../classic/ps-sql-int-listener.md)voor meer informatie.
 
-Het is belang rijk dat u alle aanbevolen beveiligings procedures controleert voor SQL Server die worden uitgevoerd op een virtuele machine van Azure. Zie [Veiligheidsoverwegingen voor SQL Server in virtuele Azure-machines](../sql/virtual-machines-windows-sql-security.md) voor meer informatie.
+Het is belang rijk dat u alle aanbevolen beveiligings procedures controleert voor SQL Server die worden uitgevoerd op een virtuele machine van Azure. Zie [Veiligheidsoverwegingen voor SQL Server in virtuele Azure-machines](../../../azure-sql/virtual-machines/windows/security-considerations-best-practices.md) voor meer informatie.
 
 [Bekijk het leertraject](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) voor virtuele SQL Server-machines in Azure. 
 
-Zie [SQL Server op azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
+Zie [SQL Server op azure virtual machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
 

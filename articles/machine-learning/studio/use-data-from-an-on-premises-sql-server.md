@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204179"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117795"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een on-premises SQL Server Data Base
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bedrijven die werken met on-premises gegevens, willen vaak profiteren van de schaal en flexibiliteit van de Cloud voor hun machine learning werk belastingen. Maar ze willen hun huidige bedrijfs processen en werk stromen niet verstoren door hun on-premises gegevens naar de cloud te verplaatsen. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens van een on-premises SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hoeft de gegevens niet meer hand matig te kopiëren en te synchroniseren tussen de Cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanaf uw on-premises SQL Server-Data Base voor uw trainings-en Score taken.
 
@@ -70,7 +68,7 @@ Meer informatie over de installatie vereisten, installatie stappen en tips voor 
 In dit scenario stelt u een Azure Data Factory Integration Runtime in een Azure Machine Learning-werk ruimte in, configureert u deze en leest u vervolgens gegevens van een on-premises SQL Server-Data Base.
 
 > [!TIP]
-> Voordat u begint, schakelt u de pop-upblokkering van uw browser `studio.azureml.net`uit voor. Als u de Google Chrome-browser gebruikt, downloadt en installeert u een van de verschillende invoeg toepassingen die beschikbaar zijn in Google Chrome-webstore. [Klik eenmaal op app-extensie](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Voordat u begint, schakelt u de pop-upblokkering van uw browser uit voor `studio.azureml.net` . Als u de Google Chrome-browser gebruikt, downloadt en installeert u een van de verschillende invoeg toepassingen die beschikbaar zijn in Google Chrome-webstore. [Klik eenmaal op app-extensie](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
 > Azure Data Factory zelf-hostende Integration Runtime voorheen bekend als Data Management Gateway. In de zelf studie voor stapsgewijze instructies blijft deze als een gateway verwijzen.  
@@ -113,7 +111,7 @@ De eerste stap is om de gateway te maken en in te stellen voor toegang tot uw on
 12. Ga in de micro soft Data Management Gateway Configuration Manager naar het tabblad **certificaat** . Het certificaat dat is opgegeven op dit tabblad wordt gebruikt voor het versleutelen/ontsleutelen van referenties voor het on-premises gegevens archief dat u in de portal opgeeft. Dit certificaat is het standaard certificaat. Micro soft raadt aan om dit te wijzigen in uw eigen certificaat waarvan u een back-up hebt gemaakt in uw certificaat beheersysteem. Klik in plaats daarvan op **wijzigen** om uw eigen certificaat te gebruiken.
 
     ![Gateway certificaat wijzigen](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. Beschrijving Als u uitgebreide logboek registratie wilt inschakelen om problemen met de gateway op te lossen, gaat u in de micro soft Data Management Gateway Configuration Manager naar het tabblad **Diagnostische gegevens** en schakelt u de optie **uitgebreide logboek registratie inschakelen voor probleem oplossing** . De informatie over logboek registratie vindt u in de Windows-Logboeken onder de - &gt; **Logboeken toepassingen en services** **Data Management Gateway** knoop punt. U kunt ook het tabblad **diagnostiek** gebruiken om de verbinding met een on-premises gegevens bron te testen met behulp van de gateway.
+13. Beschrijving Als u uitgebreide logboek registratie wilt inschakelen om problemen met de gateway op te lossen, gaat u in de micro soft Data Management Gateway Configuration Manager naar het tabblad **Diagnostische gegevens** en schakelt u de optie **uitgebreide logboek registratie inschakelen voor probleem oplossing** . De informatie over logboek registratie vindt u in de Windows-Logboeken onder de **Logboeken toepassingen en services**  - &gt; **Data Management Gateway** knoop punt. U kunt ook het tabblad **diagnostiek** gebruiken om de verbinding met een on-premises gegevens bron te testen met behulp van de gateway.
 
     ![Uitgebreide logboekregistratie inschakelen](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 

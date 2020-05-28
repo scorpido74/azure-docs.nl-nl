@@ -89,7 +89,7 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
    
     c. **Quotum type**  >  **Batch**
       
-    Selecteer **Volgende**.
+    Selecteer **Next**.
     
 1. In **Details**:
       
@@ -109,7 +109,7 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 
     b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
 1. Bij **contact gegevens**:
    
@@ -134,7 +134,7 @@ Deze resources worden toegewezen in het abonnement met het virtuele netwerk dat 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Maak een Azure batch-account met behulp van de Azure Portal](batch-account-create-portal.md).
-* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
+* Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
 * Meer informatie over [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [portal]: https://portal.azure.com

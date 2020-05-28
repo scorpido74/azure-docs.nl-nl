@@ -3,12 +3,12 @@ title: Zacht verwijderen voor Azure Backup
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791388"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116407"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Zacht verwijderen voor Azure Backup
 
@@ -16,7 +16,10 @@ Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware e
 
 Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor de klant.
 
-De [beveiliging tegen verwijderen van virtuele machines van Azure](soft-delete-virtual-machines.md) en het [voorlopig verwijderen voor SQL Server in azure VM en het voorlopig verwijderen van SAP Hana in azure VM-workloads](soft-delete-sql-saphana-in-azure-vm.md) zijn voor iedereen beschikbaar.
+Tijdelijke verwijderings beveiliging is beschikbaar voor deze services:
+
+- [Voorlopig verwijderen voor virtuele machines van Azure](soft-delete-virtual-machines.md)
+- [Zacht verwijderen voor SQL Server in azure VM en voorlopig verwijderen voor SAP HANA in azure VM-workloads](soft-delete-sql-saphana-in-azure-vm.md)
 
 In dit stroom diagram worden de verschillende stappen en statussen van een back-upitem weer gegeven wanneer zacht verwijderen is ingeschakeld:
 
@@ -32,8 +35,8 @@ Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgege
 
 Voer de volgende stappen uit om de tijdelijke verwijdering uit te scha kelen:
 
-1. Ga in het Azure Portal naar uw kluis en ga naar **instellingen** -> **Eigenschappen**.
-2. Selecteer **beveiligings instellingen** -> **bijwerken**in het deel venster Eigenschappen.  
+1. Ga in het Azure Portal naar uw kluis en ga naar **instellingen**  ->  **Eigenschappen**.
+2. Selecteer **beveiligings instellingen**bijwerken in het deel venster Eigenschappen  ->  **Update**.  
 3. Selecteer in het deel venster beveiligings instellingen onder **voorlopig verwijderen**de optie **uitschakelen**.
 
 ![Tijdelijke verwijdering uitschakelen](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3f8f0ff50138c3b08abd118493cc30a6476640f5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116842"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quick Start: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met python
 
@@ -41,10 +41,10 @@ Eerst hebt u een set trainings gegevens nodig in een Azure Storage BLOB-containe
 
 Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
-1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
-1. Vervang `<endpoint>` door de URL van het eind punt voor de resource voor uw formulier herkenning.
-1. Vervang `<Blob folder name>` door het pad naar de map in Blob Storage waar uw formulieren zich bevinden. Als uw formulieren zich in de hoofdmap van de container bevinden, laat u deze teken reeks leeg.
+1. Vervang door `<SAS URL>` de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang door `<endpoint>` de URL van het eind punt voor de resource voor uw formulier herkenning.
+1. Vervang door `<Blob folder name>` het pad naar de map in Blob Storage waar uw formulieren zich bevinden. Als uw formulieren zich in de hoofdmap van de container bevinden, laat u deze teken reeks leeg.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -66,7 +66,7 @@ Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure 
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,
@@ -196,7 +196,7 @@ Kopieer de `"modelId"` waarde voor gebruik in de volgende stappen.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Wanneer het proces is voltooid, ontvangt u een `200 (Success)` reactie met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars `"pageResults"` bevinden zich in het knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, worden in `"readResults"` het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
+Wanneer het proces is voltooid, ontvangt u een `200 (Success)` reactie met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars bevinden zich in het `"pageResults"` knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, `"readResults"` worden in het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
 
 ```bash
 {

@@ -14,7 +14,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83700652"
 ---
-# <a name="event-delivery-with-managed-identity"></a>Levering van gebeurtenissen met beheerde identiteit
+# <a name="event-delivery-with-managed-identity"></a>Gebeurtenisverzending met beheerde identiteit
 In dit artikel wordt beschreven hoe u de [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een event grid-onderwerp of-domein inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
 
 Hier volgen de stappen die in dit artikel worden besproken:

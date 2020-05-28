@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e40367e07fcda572cca73a3c01d9036e322c85c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77067394"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020095"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Apache Ambari-gebruik in azure HDInsight
 
@@ -56,7 +56,7 @@ Dit is de volg orde waarin de service wordt gestart bij het opstarten:
 
 ## <a name="ambari-database"></a>Ambari-data base
 
-HDInsight maakt SQL Azure data base aan de achtergrond die als de Data Base voor Ambari-server fungeert. De [standaardlaag van de service is S0](../sql-database/sql-database-elastic-pool-scale.md).
+HDInsight maakt SQL Azure data base aan de achtergrond die als de Data Base voor Ambari-server fungeert. De [standaardlaag van de service is S0](../azure-sql/database/elastic-pool-scale.md).
 
 Voor een cluster met een aantal worker-knoop punten dat groter is dan 16 tijdens het maken van het cluster, is S2 de data base-servicelaag.
 
@@ -75,6 +75,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

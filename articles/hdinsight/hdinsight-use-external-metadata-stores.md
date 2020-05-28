@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/30/2020
-ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d956a9c93280ac22c4707f22c0769853f0f36c83
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929329"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015145"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe metagegevensopslag gebruiken in Azure HDInsight
 
@@ -38,7 +38,7 @@ HDInsight maakt standaard een meta Store met elk cluster type. U kunt in plaats 
 
 * U kunt de standaard META Store niet delen met andere clusters.
 
-* In de standaard-META Store wordt gebruikgemaakt van de Basic Azure SQL-data base, die een limiet heeft van vijf DTU (data base Trans Action Unit).
+* In de standaard-META Store wordt gebruikgemaakt van de basis Azure SQL Database, die een limiet heeft van vijf DTU (data base Trans Action Unit).
 Deze standaard META Store wordt doorgaans gebruikt voor relatief eenvoudige workloads. Werk belastingen waarvoor geen meerdere clusters zijn vereist en die geen meta gegevens nodig hebben die langer zijn dan de levens cyclus van het cluster.
 
 * Voor werk belastingen wordt u aangeraden naar een externe meta Store te migreren. Raadpleeg de volgende sectie voor meer informatie.
@@ -53,7 +53,7 @@ HDInsight biedt ook ondersteuning voor aangepaste meta Stores, die worden aanbev
 
 * Met een aangepaste meta Store kunt u meerdere clusters en cluster typen aan die meta Store koppelen. Een voor beeld: een enkele meta Store kan worden gedeeld tussen interactieve query-, Hive-en Spark-clusters in HDInsight.
 
-* U betaalt voor de kosten van een meta Store (Azure SQL DB) op basis van het prestatie niveau dat u kiest.
+* U betaalt voor de kosten van een meta Store (Azure SQL Database) op basis van het prestatie niveau dat u kiest.
 
 * U kunt de meta Store naar behoefte omhoog schalen.
 
@@ -63,9 +63,9 @@ HDInsight biedt ook ondersteuning voor aangepaste meta Stores, die worden aanbev
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Azure SQL Database maken en configureren voor de aangepaste meta Store
 
-Maak een bestaande Azure SQL Database voordat u een aangepaste Hive-metastore voor een HDInsight-cluster instelt.  Zie [Quick Start: een enkele data base maken in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)voor meer informatie.
+Maak een bestaande Azure SQL Database voordat u een aangepaste Hive-metastore voor een HDInsight-cluster instelt.  Zie [Quick Start: een enkele data base maken in Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)voor meer informatie.
 
-Tijdens het maken van het cluster moet de HDInsight-service verbinding maken met de externe meta Store en uw referenties verifiëren. Configureer Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. Schakel deze optie in het Azure Portal in door **Server firewall instellen**te selecteren. Selecteer vervolgens **niet** onder **open bare netwerk toegang weigeren**en **Ja** onder **toestaan dat Azure-Services en-bronnen toegang hebben tot deze server** voor de Azure SQL database-server of-Data Base. Zie [IP-firewall regels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie.
+Tijdens het maken van het cluster moet de HDInsight-service verbinding maken met de externe meta Store en uw referenties verifiëren. Configureer Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. Schakel deze optie in het Azure Portal in door **Server firewall instellen**te selecteren. Selecteer vervolgens **niet** onder **open bare netwerk toegang weigeren**en **Ja** hieronder **toestaan dat Azure-Services en-bronnen toegang hebben tot deze server** voor Azure SQL database. Zie [IP-firewall regels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie.
 
 Privé-eind punten voor SQL-archieven worden niet ondersteund.
 
@@ -87,7 +87,7 @@ U kunt uw cluster op elk gewenst moment naar een eerder gemaakt Azure SQL Databa
 
 * Als u van plan bent meerdere HDInsight-clusters te gebruiken voor toegang tot afzonderlijke gegevens, gebruikt u een afzonderlijke Data Base voor de meta Store op elk cluster. Als u een meta Store deelt op meerdere HDInsight-clusters, betekent dit dat de clusters dezelfde data-en onderliggende gebruikers gegevens bestanden gebruiken.
 
-* Maak regel matig een back-up van uw aangepaste meta Store. Azure SQL Database maakt automatisch back-ups, maar de periode voor het bewaren van back-ups varieert. Zie [informatie over automatische SQL database back-ups](../sql-database/sql-database-automated-backups.md)voor meer informatie.
+* Maak regel matig een back-up van uw aangepaste meta Store. Azure SQL Database maakt automatisch back-ups, maar de periode voor het bewaren van back-ups varieert. Zie [informatie over automatische SQL database back-ups](../azure-sql/database/automated-backups-overview.md)voor meer informatie.
 
 * Zoek de meta Store en het HDInsight-cluster in dezelfde regio. Deze configuratie biedt de hoogste prestaties en de laagste kosten voor het uitgaand verkeer van het netwerk.
 

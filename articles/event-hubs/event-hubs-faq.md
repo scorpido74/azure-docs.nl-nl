@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835611"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996615"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -102,6 +102,24 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
     <name>-s3.servicebus.windows.net
     ```
 3. Voer nslookup uit voor elk met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die worden uitgevoerd in drie beschikbaarheids zones, 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Waar kan ik het IP-adres van de client vinden dat berichten naar mijn naam ruimte verzendt of ontvangt?
+Schakel eerst [IP-filtering](event-hubs-ip-filtering.md) in voor de naam ruimte. 
+
+Schakel vervolgens de volgende instructies in [Diagnostische logboeken inschakelen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)in om Diagnostische logboeken in te scha kelen voor [Event hubs gebeurtenissen van een virtueel netwerk](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) . U ziet het IP-adres waarvoor verbinding wordt geweigerd.
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Integratie van Apache Kafka
 

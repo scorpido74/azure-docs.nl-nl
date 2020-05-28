@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131754"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117515"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-De Computer Vision service van Azure biedt ontwikkel aars toegang tot geavanceerde algoritmen waarmee afbeeldingen worden verwerkt en gegevens worden geretourneerd, afhankelijk van de visuele functies die u wilt gebruiken. Computer Vision kan bijvoorbeeld bepalen of een afbeelding inhoud voor volwassenen bevat of alle menselijke gezichten in een afbeelding vinden.
+De Computer Vision service van Azure biedt ontwikkel aars toegang tot geavanceerde algoritmen waarmee afbeeldingen worden verwerkt en gegevens worden geretourneerd op basis van de visuele functies die u wilt gebruiken. Computer Vision kunt bijvoorbeeld bepalen of een afbeelding inhoud voor volwassenen bevat, specifieke merken of objecten zoeken, of mensen zoeken.
 
-U kunt Computer Vision in uw toepassing gebruiken via een systeem eigen SDK of door de REST API rechtstreeks aan te roepen. Deze pagina laat grosso modo zien wat u kunt doen met Computer Vision.
+U kunt Computer Vision in uw toepassing gebruiken via een SDK van de client bibliotheek of door de REST API rechtstreeks aan te roepen. Deze pagina laat grosso modo zien wat u kunt doen met Computer Vision.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision voor beheer van digitale activa
 
@@ -32,7 +32,7 @@ Computer Vision kunt veel software voor het beheer van digitale activa (moeder) 
 
 ## <a name="analyze-images-for-insight"></a>Analyseren van afbeeldingen voor inzicht
 
-U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele kenmerken en eigenschappen van die afbeeldingen. Alle functies in de onderstaande tabel worden geleverd door de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API.
+U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele functies en kenmerken. Alle functies in de onderstaande tabel worden geleverd door de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API.
 
 | Bewerking | Beschrijving |
 | ------ | ----------- |
@@ -50,7 +50,7 @@ U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele kenmerken en 
 
 ## <a name="extract-text-from-images"></a>Extraheren van tekst uit afbeeldingen
 
-U kunt Computer Vision [Lees](concept-recognizing-text.md#read-api) -API gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van onze nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Engels en Spaans zijn momenteel de enige talen die worden ondersteund.
+U kunt de Computer Vision [Lees](concept-recognizing-text.md#read-api) -API gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van de nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Het werkt op dit moment voor zeven verschillende talen (Zie [taal ondersteuning](./language-support.md)).
 
 U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text.md#ocr-optical-character-recognition-api) gebruiken om gedrukte tekst in verschillende talen te extra heren. Via OCR wordt zo nodig de draaiing van de herkende tekst gecorrigeerd en worden de framecoördinaten van elk woord weergegeven. OCR ondersteunt 25 talen en detecteert automatisch de taal van de herkende tekst.
 

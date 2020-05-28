@@ -9,18 +9,131 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 4372c7da2da67446bced99dd6650313cc6f1b3c5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 53c5440a07e1a095ce2134aa8f041835e200de4e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123867"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022228"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2020-05-26"></a>2020-05-26
+
+### <a name="azure-machine-learning-sdk-for-python-v160"></a>Azure Machine Learning SDK voor python v-1.6.0
+
++ **Nieuwe functies**
+  + **azureml-automl-runtime**
+    + AutoML-prognoses bieden nu ondersteuning voor klanten prognose buiten het vooraf opgegeven maximum horizon zonder het model opnieuw te trainen. Wanneer de Voorspellings bestemming zich verder in de toekomst bevindt dan de opgegeven maximum horizon, maakt de functie Forecast () nog steeds voor speld naar de latere datum met behulp van een recursieve bewerkings modus. Voor de afbeelding van de nieuwe functie, zie de sectie ' prognoses verder dan de maximum Horizon ' van ' prognose maken-functie ' Notebook ' in de [map](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)'.
+  
+  + **azureml-pipeline-steps**
+    + ParallelRunStep is nu uitgebracht en maakt deel uit van het pakket met **azureml-pipelines** . Bestaande ParallelRunStep in **azureml-contrib-pijp lijn-stappen** pakket is afgeschaft. Wijzigingen in de open bare preview-versie:
+      + `run_max_try`De optionele Configureer bare para meter voor het beheren van de maximale aanroep naar de uitvoerings methode voor een bepaalde batch is toegevoegd. de standaard waarde is 3.
+      + Er worden geen PipelineParameters meer automatisch gegenereerd. De volgende Configureer bare waarden kunnen expliciet worden ingesteld als PipelineParameter.
+        + mini_batch_size
+        + node_count
+        + process_count_per_node
+        + logging_level
+        + run_invocation_timeout
+        + run_max_try
+      + De standaard waarde voor process_count_per_node is gewijzigd in 1. De gebruiker moet deze waarde afstemmen voor betere prestaties. Aanbevolen procedure is om in te stellen als het aantal GPU-of CPU-knoop punt.
+      + ParallelRunStep geen pakketten injecteert, moet de gebruiker de pakketten voor **azureml-core** en **azureml-dataprep [Pandas, zeker]** opnemen in de omgevings definitie. Als de aangepaste docker-installatie kopie wordt gebruikt met user_managed_dependencies moet de gebruiker Conda installeren op de installatie kopie.
+      
++ **Wijzigingen die fouten veroorzaken**
+  + **azureml-pipeline-steps**
+    + Het gebruik van azureml. dprep. gegevensstroom is afgeschaft als een geldig type invoer voor AutoMLConfig
+  + **azureml-train-automl-client**
+    + Het gebruik van azureml. dprep. gegevensstroom is afgeschaft als een geldig type invoer voor AutoMLConfig
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + De bug opgelost waarbij een waarschuwing kan worden afgedrukt tijdens `get_output` de gebruiker om de client te downgradeen.
+    + Mac bijgewerkt om te vertrouwen op cudatoolkit = 9.0, omdat deze nog niet beschikbaar is op versie 10.
+    + Beperkingen voor phrophet-en xgboost-modellen verwijderen bij getraind op externe compute.
+    + Verbeterde logboek registratie in AutoML
+    + De fout afhandeling voor aangepaste parametrisatie in prognose taken is verbeterd.
+    + Er is functionaliteit toegevoegd om gebruikers toe te staan getraagde functies te gebruiken voor het genereren van prognoses.
+    + Hiermee wordt het fout bericht bijgewerkt zodat de gebruikers fout correct wordt weer gegeven.
+    + Ondersteuning voor cv_split_column_names die worden gebruikt met training_data
+    + Werk de logboek registratie van het uitzonderings bericht en traceback.
+  + **azureml-automl-runtime**
+    + Schakel Guardrails in voor het voors pellen van ontbrekende waarde-toerekeningen.
+    + Verbeterde logboek registratie in AutoML
+    + Toegevoegde probleemloze fout afhandeling voor dataprep-uitzonde ringen
+    + Beperkingen voor phrophet-en xgboost-modellen verwijderen bij getraind op externe compute.
+    + `azureml-train-automl-runtime`en `azureml-automl-runtime` hebben bijgewerkte afhankelijkheden voor `pytorch` , `scipy` , en `cudatoolkit` . We ondersteunen nu `pytorch==1.4.0` , `scipy>=1.0.0,<=1.3.1` en `cudatoolkit==10.1.243` .
+    + De fout afhandeling voor aangepaste parametrisatie in prognose taken is verbeterd.
+    + Het mechanisme voor het detecteren van de frequentie van gegevens sets is verbeterd.
+    + Probleem opgelost met Prophet model training voor sommige gegevens sets.
+    + De automatische detectie van de maximale horizon tijdens de prognose is verbeterd.
+    + Er is functionaliteit toegevoegd om gebruikers toe te staan getraagde functies te gebruiken voor het genereren van prognoses.
+    +  Voegt functionaliteit toe aan de functie Forecast om prognoses te bieden buiten de getrainde horizon zonder het prognose model opnieuw te trainen.
+    + Ondersteuning voor cv_split_column_names die worden gebruikt met training_data
+  + **azureml-contrib-automl-DNN-Forecasting**
+    + Verbeterde logboek registratie in AutoML
+  + **azureml-contrib-Mir**
+    + Er is ondersteuning toegevoegd voor Windows-Services in ManagedInferencing
+    + Oude MIR-werk stromen verwijderen, zoals MIR Compute koppelen, SingleModelMirWebservice klasse-opschonen model Profiler geplaatst in contrib-Mir-pakket
+  + **azureml-contrib-pipeline-steps**
+    + Kleine oplossing voor YAML-ondersteuning
+    + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving van afschaffing en worden verplaatst naar azureml. pipeline. stappen
+  + **azureml-contrib-reinforcementlearning**
+    + Hulp programma voor het testen van RL-belasting
+    + RL Estimator heeft slimme standaard waarden
+  + **azureml-core**
+    + Oude MIR-werk stromen verwijderen, zoals MIR Compute koppelen, SingleModelMirWebservice klasse-opschonen model Profiler geplaatst in contrib-Mir-pakket
+    + De gegevens die aan de gebruiker zijn verstrekt, zijn in het geval van een profilerings fout opgelost: de opgenomen aanvraag-id en het bericht is opnieuw ingesteld voor een duidelijkere betekenis. Er is een nieuwe profilerings werk stroom toegevoegd voor het profileren van uitlopers
+    + Aanzienlijk verbeterde fout tekst in het geval van fouten bij de uitvoering van een gegevensset.
+    + De ondersteuning voor de werk ruimte-cli is toegevoegd.
+    + Er is een optionele para meter toegevoegd `invalid_lines` aan `Dataset.Tabular.from_json_lines_files` waarmee kan worden opgegeven hoe regels worden verwerkt die een ongeldige JSON bevatten.
+    + Het maken van een compute-bewerking in de volgende release wordt teruggebracht. U kunt het beste een werkelijk Amlcompute-cluster maken als een persistent Compute-doel en de cluster naam gebruiken als het reken doel in uw uitvoerings configuratie. Bekijk hier een voor beeld van een notitie blok: aka.ms/amlcomputenb
+    + Aanzienlijk verbeterde fout berichten in het geval van fouten bij de uitvoering van een gegevensset.
+  + **azureml-dataprep**
+    + Er is een waarschuwing gemaakt om de pyarrow-versie meer expliciet te upgraden.
+    + Verbeterde fout afhandeling en geretourneerd bericht in het geval van een fout tijdens het uitvoeren van de gegevens stroom.
+  + **azureml-interpreteren**
+    + Documentatie-updates voor pakketten met azureml-interpretatie.
+    + Pakketten en notebooks met vaste interpretaties kunnen compatibel zijn met de nieuwste sklearn-update
+  + **azureml-opendatasets**
+    + Geen retour waarde wanneer er geen gegevens zijn geretourneerd.
+    + Verbeter de prestaties van to_pandas_dataframe.
+  + **azureml-pipeline-core**
+    + Snelle oplossing voor ParallelRunStep, waarbij het laden van YAML is verbroken
+    + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving met betrekking tot de afschaffing. pijp lijn. stappen: nieuwe functies zijn: 1. Gegevens sets als PipelineParameter 2. Nieuwe para meter run_max_retry 3. Configureer bare append_row uitvoer bestands naam
+  + **azureml-pipeline-steps**
+    + Verouderd azureml. dprep. gegevensstroom als een geldig type voor invoer gegevens.
+    + Snelle oplossing voor ParallelRunStep, waarbij het laden van YAML is verbroken
+    + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving van afschaffing en worden verplaatst naar azureml. pipeline. stappen-nieuwe functies zijn:
+      + Gegevens sets als PipelineParameter
+      + Nieuwe para meter run_max_retry
+      + Configureer bare append_row uitvoer bestands naam
+  + **azureml-telemetry**
+    + Werk de logboek registratie van het uitzonderings bericht en traceback.
+  + **azureml-train-automl-client**
+    + Verbeterde logboek registratie in AutoML
+    + Hiermee wordt het fout bericht bijgewerkt zodat de gebruikers fout correct wordt weer gegeven.
+    + Ondersteuning voor cv_split_column_names die worden gebruikt met training_data
+    + Verouderd azureml. dprep. gegevensstroom als een geldig type voor invoer gegevens.
+    + Mac bijgewerkt om te vertrouwen op cudatoolkit = 9.0, omdat deze nog niet beschikbaar is op versie 10.
+    + Beperkingen voor phrophet-en xgboost-modellen verwijderen bij getraind op externe compute.
+    + `azureml-train-automl-runtime`en `azureml-automl-runtime` hebben bijgewerkte afhankelijkheden voor `pytorch` , `scipy` , en `cudatoolkit` . We ondersteunen nu `pytorch==1.4.0` , `scipy>=1.0.0,<=1.3.1` en `cudatoolkit==10.1.243` .
+    + Er is functionaliteit toegevoegd om gebruikers toe te staan getraagde functies te gebruiken voor het genereren van prognoses.
+  + **azureml-Train-automl-runtime**
+    + Verbeterde logboek registratie in AutoML
+    + Toegevoegde probleemloze fout afhandeling voor dataprep-uitzonde ringen
+    + Beperkingen voor phrophet-en xgboost-modellen verwijderen bij getraind op externe compute.
+    + `azureml-train-automl-runtime`en `azureml-automl-runtime` hebben bijgewerkte afhankelijkheden voor `pytorch` , `scipy` , en `cudatoolkit` . We ondersteunen nu `pytorch==1.4.0` , `scipy>=1.0.0,<=1.3.1` en `cudatoolkit==10.1.243` .
+    + Hiermee wordt het fout bericht bijgewerkt zodat de gebruikers fout correct wordt weer gegeven.
+    + Ondersteuning voor cv_split_column_names die worden gebruikt met training_data
+  + **azureml-train-core**
+    + Er is een nieuwe set HyperDrive-specifieke uitzonde ringen toegevoegd. in azureml. Train. Hyperdrive worden nu gedetailleerde uitzonde ringen gegenereerd.
+  + **azureml-widgets**
+    + AzureML-widgets worden niet weer gegeven in Jjupyterlab
+  
 
 ## <a name="2020-05-11"></a>2020-05-11
 
@@ -79,7 +192,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + De verwerking van Beschrijf bare python-omgevingen verbeteren wanneer .NET-afhankelijkheden vereist zijn voor het leveren van gegevens.
     + Het maken van een vaste gegevensstroom voor een bestand met voorloop lege records.
     + Er zijn opties voor fout afhandeling toegevoegd voor `to_partition_iterator` vergelijkbaar met `to_pandas_dataframe` .
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Beperkte lengte limieten voor het pad van de uitleg om de kans op een continue Windows-limiet te verminderen
     + Bugfix voor zeldzame uitleg gemaakt met behulp van een lineair surrogaat model met de gesimuleerde uitleger.
   + **azureml-opendatasets**
@@ -145,7 +258,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Verbeterde documentatie voor de `grant_workspace_msi` para meter voor `Datastore.register_azure_blob_store` .
     + Er is een fout opgelost met `datastore.upload` ter ondersteuning van het `src_dir` argument dat eindigt op een `/` of `\` .
     + Er is een fout bericht toegevoegd dat kan worden uitgevoerd bij het uploaden naar een Azure Blob Storage-gegevens opslag dat geen toegangs sleutel of SAS-token heeft.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Er is een bovengrens voor de bestands grootte van de visualisatie gegevens op geüploade uitleg toegevoegd.
   + **azureml-train-automl-client**
     + Expliciet controleren op label_column_name & weight_column_name para meters voor AutoMLConfig is van het type teken reeks.
@@ -182,7 +295,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Gegevensset: we voegen een index toe voor de kolom tijds Erie wanneer u een tijds Erie-gegevensset opent als een Panda dataframes, die wordt gebruikt om de toegang tot tijds Erie op basis van gegevens toegang te versnellen.  Voorheen werd de index dezelfde naam gegeven als de time stamp-kolom, waardoor gebruikers die de werkelijke time stamp-kolom bevinden en de index zijn. We geven de index nu geen specifieke naam, aangezien deze niet als kolom mag worden gebruikt. 
     + Gegevensset: probleem met vaste gegevensset-verificatie in soevereine Cloud.
     + Gegevensset: er is een `Dataset.to_spark_dataframe` fout opgelost voor gegevens sets die zijn gemaakt op basis van Azure postgresql-gegevens opslag.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Globale scores toegevoegd aan visualisatie als lokale urgentie waarden verspreid zijn
     + Update voor azureml-interpret voor gebruik van interpretatie-Community 0,9. *
     + Probleem opgelost met het downloaden van een uitleg die verspreide evaluatie gegevens had
@@ -226,7 +339,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De mogelijkheid om ADLS Gen2 te registreren in de Azure Machine Learning CLI is toegevoegd
     + De naam van de para meter fine_grain_timestamp is gewijzigd in tijds tempel en de para meter coarse_grain_timestamp naar partition_timestamp voor de methode with_timestamp_columns () in TabularDataset om het gebruik van de para meters beter weer te geven.
     + De maximale lengte van de experiment naam is verhoogd tot 255.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Updated azureml-interprete voor interprete-Community 0,7. *
   + **azureml-SDK**
     + Het wijzigen van afhankelijkheden met compatibele versie-tilde voor de ondersteuning van patches van voorlopige versies en stabiele releases.
@@ -242,7 +355,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 + **Wijzigingen die fouten veroorzaken**
   + **2.0.0 van semantische versie**
-    + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Hier vindt u meer informatie](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
+    + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Meer informatie vindt u hier](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **Azure-cli-ml**
@@ -296,7 +409,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een fout opgelost waarbij hoofd letters niet kunnen worden gebruikt als de invoer naam van de gegevensset.
   + **azureml-standaards**
     + `azureml-dataprep`wordt nu geïnstalleerd als onderdeel van `azureml-defaults` . Het is niet meer nodig om dataprep [zeker] hand matig te installeren op Compute-doelen om gegevens sets te koppelen.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Updated azureml-interprete voor interprete-Community 0,6. *
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
     + Uitzonde ringen voor azureml-stijl toegevoegd aan azureml-interprete
@@ -346,7 +459,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
       + De methode voor het bijwerken van de werk ruimte is openbaar beschikbaar gemaakt.
       + Er is een image_build_compute para meter toegevoegd aan de methode voor het bijwerken van de werk ruimte om de computer toe te staan om de compute
     +  Er zijn afschaffing-berichten toegevoegd aan de oude profilerings werk stroom. Vaste profilering CPU en geheugen limieten
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Update azureml-interprete voor interprete-Community 0,6. *
   + **azureml-mlflow**
     + Ondersteuning voor soevereine Clouds toevoegen aan azureml. mlflow
@@ -354,7 +467,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Verplaatst `AutoMLStep` naar de `azureml-pipeline-steps package` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
   + **azureml-train-automl-client**
     + Er is een probleem opgelost waarbij bepaalde pakketten op externe uitvoeringen op onjuiste versies kunnen worden geïnstalleerd.
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + Het probleem met de frequentie detectie is opgelost in de externe uitvoeringen
     + Verplaatst `AutoMLStep` naar de `azureml-pipeline-steps package` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
   + **azureml-train-core**
@@ -394,7 +507,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + update voor azureml-tensorboard om tensor Flow 2,0 te ondersteunen
   + **azureml-train-automl-client**
     + Er is een vast FeaturizationConfig-probleem opgetreden waardoor aangepaste parametrisatie-configuratie wordt gefilterd.
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + De `AutoMLStep` in het pakket is verplaatst `azureml-pipeline-steps` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
   + **azureml-train-core**
     + Ondersteuning voor PyTorch-versie 1,4 in de PyTorch-estimator
@@ -405,7 +518,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 + **Wijzigingen die fouten veroorzaken**
   + **2.0.0 van semantische versie**
-    + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Hier vindt u meer informatie](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
+    + Vanaf versie 1,1 Azure ML python SDK worden semantische versie beheer 2.0.0. [Meer informatie vindt u hier](https://semver.org/). Alle volgende versies volgen een nieuw Nummerings schema en een contract voor semantische versie. 
   
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-automl-runtime**
@@ -413,7 +526,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De frequentie controle tijdens de score is opgelost. in de prognose taken is geen strikte frequentie-equivalentie vereist tussen de trein-en testset.
   + **azureml-core**
     + De gebruiker kan nu een waarde opgeven voor de verificatie sleutel bij het opnieuw genereren van sleutels voor webservices.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
   + **azureml-pipeline-core**
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
@@ -452,9 +565,9 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Vaste get_active_runs
   + **azureml-uitleg-model**
     + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + Er is een Matthews-correlatie coëfficiënt toegevoegd als classificatie-metriek voor zowel binaire als multi klassen classificatie.
     + Preproces-markering van code uitdrukken en vervangen door parametrisatie-parametrisatie is standaard ingeschakeld
 
@@ -558,7 +671,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De mogelijkheid om Azure SQL Database gegevens opslag te registreren met behulp van gebruikers naam-en wachtwoord verificatie is toegevoegd
     + Oplossing voor het laden van RunConfigurations vanaf relatieve paden.
     + Bij het aanroepen `keep_columns` of `drop_columns` dat resulteert in een tijds Erie-kolom die wordt verwijderd, worden ook de bijbehorende mogelijkheden voor de gegevensset verwijderd.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + bijgewerkte versie van interprete-community naar 0.2.0
   + **azureml-pipeline-steps**
     + Gedocumenteerde ondersteunde waarden voor de `runconfig_pipeline_params` stappen van azure machine learning-pijp lijn.
@@ -569,7 +682,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-train-automl-client**
     + Er is een thin client toegevoegd voor het verzenden van AutoML experimenten zonder dat machine learning afhankelijkheden lokaal moeten worden geïnstalleerd.
     + Vaste logboek registratie van automatisch gedetecteerde lags, grootte van het rollend venster en maximum aantal Horizons in de externe uitvoeringen.
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + Er is een nieuw AutoML-pakket toegevoegd om machine learning-en runtime-onderdelen van de client te isoleren.
   + **azureml-contrib-Train-RL**
     + Extra ondersteuning voor het leren van de versterking in SDK.
@@ -608,7 +721,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Append_prefix BOOL-para meter is toegevoegd aan download_files in run.py en download_artifacts_from_prefix in artifacts_client. Deze markering wordt gebruikt om het oorspronkelijke bestandspad op te platen zodat alleen de naam van het bestand of de map wordt toegevoegd aan de output_directory
     + Los het deserialisatie probleem op voor het `run_config.yml` gebruik van de gegevensset.
     + Bij het aanroepen `keep_columns` of `drop_columns` dat resulteert in een time series-kolom die wordt verwijderd, worden ook de bijbehorende mogelijkheden voor de gegevensset verwijderd.
-  + **azureml-interpret**
+  + **azureml-interpreteren**
     + Bijgewerkte interpretatie-Community-versie naar 0.1.0.3
   + **azureml-Train-automl**
     + Er is een probleem opgelost waarbij automl_step mogelijk geen validatie problemen afdrukt.
@@ -1777,7 +1890,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
 
 + **Nieuwe functies**
   + Azure Machine Learning pijp lijnen hebben AzureBatchStep ([notebook](https://aka.ms/pl-azbatch)), HyperDriveStep (notebook) en op tijd gebaseerde plannings functionaliteit ([notebook](https://aka.ms/pl-schedule)) toegevoegd.
-  +  DataTranferStep is bijgewerkt met Azure SQL Server en Azure data base for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)).
+  +  DataTranferStep is bijgewerkt om te werken met Azure SQL Database en Azure data base for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)).
 
 + **Gewijzigde**
   + Afgeschaft `PublishedPipeline.get_published_pipeline` ten gunste van `PublishedPipeline.get` .
@@ -1896,7 +2009,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met behulp van Azur
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **Bijgewerkt**
++ **Vernieuwd**
   + Voor machine learning pijp lijnen:
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) accepteert nu runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) wordt nu gekopieerd van en naar een SQL-gegevens bron
@@ -2056,7 +2169,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   * log_table () en log_row () worden ondersteund in details over de uitvoering.
   * Automatisch grafieken maken voor tabellen en rijen met 1, 2 of 3 numerieke kolommen en een optionele kolom categorische.
 
-+ **Automatische Machine Learning**
++ **Geautomatiseerde Machine Learning**
   * Verbeterde fout afhandeling en documentatie
   * Prestatie problemen bij het ophalen van de eigenschap Fixed run.
   * Probleem met het uitvoeren van de uitvoering.
@@ -2066,7 +2179,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   * De extra index logica is verwijderd.
   * Filter verwijderd uit get_output-API.
 
-+ **Pijplijnen**
++ **Pipelines**
   * Een methode pijplijn. publish () is toegevoegd om een pijp lijn rechtstreeks te publiceren, zonder eerst een uitvoering uit te voeren.
   * Er is een methode PipelineRun. get_pipeline_runs () toegevoegd voor het ophalen van de pijplijn uitvoeringen die zijn gegenereerd op basis van een gepubliceerde pijp lijn.
 

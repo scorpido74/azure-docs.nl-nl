@@ -3,15 +3,15 @@ title: Resource Manager-sjablonen voor Azure Cosmos DB Cassandra-API
 description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB Cassandra-API te maken en te configureren.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 630c965eadf17e21c75e1bd180fec4496df830e2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 925bad729cacfb7c342c61872f66dd059cf3560a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117158"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra-API resources beheren met behulp van Azure Resource Manager sjablonen
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139263"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019908"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
 > [!NOTE]
@@ -62,7 +62,7 @@ U kunt de tegel **voorbeeld pijplijnen** gebruiken op de start pagina van uw Dat
 3. Klik op de Blade **voorbeeld pijplijnen** op het voor **beeld** dat u wilt implementeren.
 
     ![Blade voorbeeld pijplijnen](./media/data-factory-samples/SampleTile.png)
-4. Geef de configuratie-instellingen voor het voor beeld op. Bijvoorbeeld uw Azure Storage-account naam en account sleutel, naam van Azure SQL-Server, Data Base, gebruikers-ID en wacht woord, enzovoort.
+4. Geef de configuratie-instellingen voor het voor beeld op. Bijvoorbeeld uw Azure Storage-account naam en de account sleutel, de naam van de logische SQL-Server, de data base, de gebruikers-ID en het wacht woord, enzovoort.
 
     ![Voorbeeld Blade](./media/data-factory-samples/SampleBlade.png)
 5. Nadat u klaar bent met het opgeven van de configuratie-instellingen, klikt u op **maken** om de voorbeeld pijplijnen en gekoppelde services/tabellen die door de pijp lijnen worden gebruikt, te maken/te implementeren.
@@ -80,7 +80,7 @@ De volgende zaken moeten op uw computer zijn geïnstalleerd:
 
 * Visual Studio 2013 of Visual Studio 2015
 * Download de Azure SDK voor Visual Studio 2013 of Visual Studio 2015. Ga naar de [Azure-downloadpagina](https://azure.microsoft.com/downloads/) en klik in het gedeelte **.NET** op **VS 2013** of **VS 2015**.
-* Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Als u Visual Studio 2013 gebruikt, kunt u de invoeg toepassing ook bijwerken door de volgende stappen uit te voeren: Klik in het menu op **extra** -> **extensies en updates** -> **online** -> **Visual Studio-galerie** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**.
+* Download de nieuwste Azure Data Factory-invoegtoepassing voor Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) of [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Als u Visual Studio 2013 gebruikt, kunt u de invoeg toepassing ook bijwerken door de volgende stappen uit te voeren: Klik in het menu op **extra**  ->  **extensies en updates**  ->  **online**  ->  **Visual Studio-galerie**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**.
 
 ### <a name="use-data-factory-templates"></a>Data Factory sjablonen gebruiken
 1. Klik op **bestand** in het menu, wijs **Nieuw**aan en klik op **project**.

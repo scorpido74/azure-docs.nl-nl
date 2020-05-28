@@ -3,12 +3,12 @@ title: Een Knowledge Base bewerken-QnA Maker
 description: Met QnA Maker kunt u de inhoud van uw Knowledge Base beheren door een gebruiks vriendelijke ervaring te bieden.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650860"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993572"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-paren in uw Knowledge Base bewerken
 
@@ -85,7 +85,7 @@ Elk veld in een QnA paar kan worden bewerkt, ongeacht de oorspronkelijke gegeven
 
 ## <a name="delete-a-qna-pair"></a>Een QnA-paar verwijderen
 
-Als u een QnA wilt verwijderen, klikt u op het pictogram **verwijderen** helemaal rechts van de rij QnA. Dit is een permanente bewerking. Deze kan niet ongedaan worden gemaakt. U kunt uw KB exporteren vanaf de pagina **publiceren** voordat u sets verwijdert.
+Als u een QnA wilt verwijderen, klikt u op het pictogram **verwijderen** helemaal rechts van de rij QnA. Dit is een permanente bewerking. Deze kan niet ongedaan worden gemaakt. U kunt uw KB exporteren vanaf de pagina **publiceren** voordat u paren verwijdert.
 
 ![QnA paar verwijderen](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ U kunt geen QnA-paren koppelen in de meta gegevens van het antwoord.
 
 ## <a name="add-metadata"></a>Meta gegevens toevoegen
 
-Voeg sets meta gegevens toe door eerst **weergave opties**te selecteren en vervolgens **meta gegevens weer geven**te selecteren. Hiermee wordt de kolom meta gegevens weer gegeven. Selecteer vervolgens het **+** teken om een set meta gegevens toe te voegen. Deze set bestaat uit één sleutel en één waarde.
+Voeg eerst de **Opties voor**het toevoegen van meta gegevens toe, en selecteer vervolgens **meta gegevens weer geven**. Hiermee wordt de kolom meta gegevens weer gegeven. Selecteer vervolgens het **+** teken om een meta gegevens paar toe te voegen. Dit paar bestaat uit één sleutel en één waarde.
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Wijzigingen in de QnA-paren opslaan
 

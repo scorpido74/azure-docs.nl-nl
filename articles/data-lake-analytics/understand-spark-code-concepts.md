@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74424001"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016947"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Apache Spark code voor U-SQL-ontwikkel aars begrijpen
 
@@ -42,9 +42,9 @@ Daarnaast biedt Azure Data Lake Analytics U-SQL in een serverloze taak Service o
 
 U-SQL-scripts volgen het volgende verwerkings patroon:
 
-1. Gegevens worden gelezen van ongestructureerde bestanden, met behulp van `EXTRACT` de instructie, een locatie of een specificatie van de set en het ingebouwde of door de gebruiker gedefinieerde Extractor en gewenst schema, of vanuit U-SQL-tabellen (beheerde of externe tabellen). Deze wordt weer gegeven als een rijenset.
+1. Gegevens worden gelezen van ongestructureerde bestanden, met behulp van de `EXTRACT` instructie, een locatie of een specificatie van de set en het ingebouwde of door de gebruiker gedefinieerde Extractor en gewenst schema, of vanuit U-SQL-tabellen (beheerde of externe tabellen). Deze wordt weer gegeven als een rijenset.
 2. De rijen sets worden getransformeerd in meerdere U-SQL-instructies waarmee U-SQL-expressies worden toegepast op de rijen sets en nieuwe rijen sets worden geproduceerd.
-3. Ten slotte worden de resulterende rijen sets in beide bestanden uitgevoerd met behulp van de `OUTPUT` -instructie waarmee de locatie (s) en een ingebouwde of door de gebruiker gedefinieerde outputter of een u-SQL-tabel worden opgegeven.
+3. Ten slotte worden de resulterende rijen sets in beide bestanden uitgevoerd met behulp van de- `OUTPUT` instructie waarmee de locatie (s) en een ingebouwde of door de gebruiker gedefinieerde outputter of een u-SQL-tabel worden opgegeven.
 
 Het script wordt geëvalueerd vertraagd, wat inhoudt dat elke extractie-en transformatie stap is samengesteld in een expressie structuur en wereld wijd geëvalueerd (de gegevens stroom).
 
@@ -100,7 +100,7 @@ Als u een script moet transformeren dat verwijst naar de cognitieve Services-bib
 
 ## <a name="transform-typed-values"></a>Getypte waarden transformeren
 
-Omdat het type systeem van U-SQL is gebaseerd op het .NET-type systeem en Spark een eigen type systeem heeft dat wordt beïnvloed door de binding van de host-taal, moet u ervoor zorgen dat de typen die u aan het werk bent, worden gesloten en voor bepaalde typen, het type bereik, de precisie en/of de schaal iets anders kan zijn. Verder behandelen `null` U-SQL-en Spark-waarden anders.
+Omdat het type systeem van U-SQL is gebaseerd op het .NET-type systeem en Spark een eigen type systeem heeft dat wordt beïnvloed door de binding van de host-taal, moet u ervoor zorgen dat de typen die u aan het werk bent, worden gesloten en voor bepaalde typen, het type bereik, de precisie en/of de schaal iets anders kan zijn. Verder behandelen U-SQL-en Spark- `null` waarden anders.
 
 ### <a name="data-types"></a>Gegevenstypen
 
@@ -141,9 +141,9 @@ In Spark, typen per standaard NULL-waarden toestaan in U-SQL, kunt u scalair, ni
 
 In Spark geeft NULL aan dat de waarde onbekend is. Een vonk NULL-waarde wijkt af van een wille keurige waarde, waaronder zichzelf. Vergelijkingen tussen twee Spark NULL-waarden, of tussen een NULL-waarde en een andere waarde, retour neren Unknown, omdat de waarde van elke NULL onbekend is.  
 
-Dit gedrag wijkt af van U-SQL, die volgt op C#-semantiek `null` , waarbij een andere waarde dan of gelijk is aan zichzelf.  
+Dit gedrag wijkt af van U-SQL, die volgt op C#-semantiek, waarbij `null` een andere waarde dan of gelijk is aan zichzelf.  
 
-Daarom zou een `SELECT` SparkSQL-instructie `WHERE column_name = NULL` die gebruikmaakt van nul rijen retourneert, zelfs als er `column_name`Null-waarden zijn in, terwijl U in U-SQL de `column_name` rijen zou retour `null`neren waar is ingesteld op. Op dezelfde manier `SELECT` `WHERE column_name != NULL` retourneert een Spark-instructie waarin nul wordt geretourneerd, zelfs als er niet-null `column_name`-waarden zijn in, terwijl u in U-SQL de rijen zou retour neren die niet null zijn. Als u wilt dat de u-SQL-controle semantiek is, moet u de respectievelijk [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) en [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (of het bijbehorende DSL-equivalent) gebruiken.
+Daarom zou een SparkSQL- `SELECT` instructie die gebruikmaakt `WHERE column_name = NULL` van nul rijen retourneert, zelfs als er Null-waarden zijn in `column_name` , terwijl U in U-SQL de rijen zou retour neren waar `column_name` is ingesteld op `null` . Op dezelfde manier retourneert een Spark `SELECT` -instructie waarin `WHERE column_name != NULL` nul wordt geretourneerd, zelfs als er niet-Null-waarden zijn in `column_name` , terwijl u in U-SQL de rijen zou retour neren die niet null zijn. Als u wilt dat de u-SQL-controle semantiek is, moet u de respectievelijk [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) en [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (of het bijbehorende DSL-equivalent) gebruiken.
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL-catalogus objecten transformeren
 
@@ -160,8 +160,8 @@ Als de U-SQL-catalogus is gebruikt voor het delen van gegevens en code objecten 
 De kern taal van U-SQL is het transformeren van rijsets en is gebaseerd op SQL. Hier volgt een niet-limitatieve lijst met de meest voorkomende Rijset-expressies die worden aangeboden in U-SQL:
 
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Aggregaties +`HAVING`/`ORDER BY`+`FETCH`
-- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN` expressies
-- `CROSS`/`OUTER``APPLY` expressies
+- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`expressies
+- `CROSS`/`OUTER``APPLY`expressies
 - `PIVOT`/`UNPIVOT`termen
 - `VALUES`constructor Rijset
 
@@ -170,8 +170,8 @@ De kern taal van U-SQL is het transformeren van rijsets en is gebaseerd op SQL. 
 Daarnaast biedt U-SQL een aantal scalaire expressies op basis van SQL, zoals
 
 - `OVER`expressies in Vensters
-- een aantal ingebouwde aggregaties en rangorde functies (`SUM` `FIRST` enzovoort)
-- Enkele van de meest bekende scalaire SQL- `CASE`expressies `LIKE`:,`NOT`, `IN`( `AND`) `OR` , enzovoort.
+- een aantal ingebouwde aggregaties en rangorde functies ( `SUM` `FIRST` enzovoort)
+- Enkele van de meest bekende scalaire SQL-expressies: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` enzovoort.
 
 Spark biedt gelijkwaardige expressies in het DSL-en SparkSQL-formulier voor de meeste van deze expressies. Sommige van de expressies die standaard niet worden ondersteund in Spark, moeten opnieuw worden geschreven met een combi natie van de systeem eigen Spark-expressies en semantisch gelijkwaardige patronen. U moet bijvoorbeeld `OUTER UNION` worden vertaald naar de equivalente combi natie van projecties en samen voegingen.
 
@@ -179,11 +179,11 @@ Als gevolg van de andere verwerking van NULL-waarden, komt een U-SQL-samen voegi
 
 ## <a name="transform-other-u-sql-concepts"></a>Andere U-SQL-concepten transformeren
 
-U-SQL biedt ook allerlei andere functies en concepten, zoals federatieve query's voor SQL Server data bases, para meters, scalaire en lambda-expressie variabelen, systeem `OPTION` variabelen, hints.
+U-SQL biedt ook allerlei andere functies en concepten, zoals federatieve query's voor SQL Server data bases, para meters, scalaire en lambda-expressie variabelen, systeem variabelen, `OPTION` hints.
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>Federatieve Query's voor SQL Server data bases/externe tabellen
 
-U-SQL biedt gegevens bron en externe tabellen, evenals directe query's voor Azure SQL Database. Hoewel Spark niet dezelfde object abstractie biedt, biedt het een Spark- [Connector voor Azure SQL database](../sql-database/sql-database-spark-connector.md) dat kan worden gebruikt om SQL-data bases op te vragen.
+U-SQL biedt gegevens bron en externe tabellen, evenals directe query's voor Azure SQL Database. Hoewel Spark niet dezelfde object abstractie biedt, biedt het een Spark- [Connector voor Azure SQL database](../azure-sql/database/spark-connector.md) dat kan worden gebruikt om SQL-data bases op te vragen.
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL-para meters en-variabelen
 
@@ -196,7 +196,7 @@ var x = 2 * 3;
 println(x)
 ```
 
-De systeem variabelen van U-SQL (variabelen die `@@`beginnen met) kunnen worden onderverdeeld in twee categorieën:
+De systeem variabelen van U-SQL (variabelen die beginnen met `@@` ) kunnen worden onderverdeeld in twee categorieën:
 
 - Instel bare systeem variabelen die kunnen worden ingesteld op specifieke waarden om het gedrag van scripts te beïnvloeden
 - Informatief systeem variabelen die informatie over systeem-en taak niveau opvragen
@@ -209,7 +209,7 @@ U-SQL biedt verschillende manieren om hints te bieden aan de query Optimizer en 
 
 - Een U-SQL-systeem variabele instellen
 - een `OPTION` component die is gekoppeld aan de Rijset-expressie om een gegevens-of plan hint op te geven
-- een instructie voor samen voegen in de syntaxis van de expressie voor samen `BROADCASTLEFT`voegen (bijvoorbeeld)
+- een instructie voor samen voegen in de syntaxis van de expressie voor samen voegen (bijvoorbeeld `BROADCASTLEFT` )
 
 De op kosten gebaseerde query optimalisatie van Spark heeft zijn eigen mogelijkheden om hints te bieden en de query prestaties af te stemmen. Raadpleeg de bijbehorende documentatie.
 

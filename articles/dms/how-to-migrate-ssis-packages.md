@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648526"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021514"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-pakketten opnieuw implementeren om te Azure SQL Database met Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Als u SQL Server Integration Services (SSIS) gebruikt en u uw SSIS-projecten/-pa
 Als de gebruikte SSIS-versie ouder is dan 2012, moet u deze eerst converteren met behulp van de wizard Integratie Services-project conversie, die ook kan worden gestart vanuit SSMS, voordat u uw SSIS-projecten/-pakketten opnieuw implementeert in het implementatie model van het project. Zie het artikel [Converting projects to the project Deployment model](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)(Engelstalig) voor meer informatie.
 
 > [!NOTE]
-> De Azure Database Migration Service (DMS) biedt momenteel geen ondersteuning voor de migratie van een bron-SSISDB naar een Azure SQL Database-Server, maar u kunt uw SSIS-projecten/-pakketten opnieuw implementeren met behulp van het volgende proces.
+> De Azure Database Migration Service (DMS) biedt momenteel geen ondersteuning voor de migratie van een bron-SSISDB naar Azure SQL Database, maar u kunt uw SSIS-projecten/-pakketten opnieuw implementeren met behulp van het volgende proces.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
@@ -39,20 +39,20 @@ In dit artikel leert u het volgende:
 Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 * SSMS-versie 17,2 of hoger.
-* Een exemplaar van de doel database server voor het hosten van SSISDB. Als u er nog geen hebt, maakt u een Azure SQL Database Server (zonder een Data Base) met behulp van de Azure Portal door naar het [formulier](https://ms.portal.azure.com/#create/Microsoft.SQLServer)SQL Server (alleen logische server) te navigeren.
-* SSIS moet worden ingericht in Azure Data Factory (ADF) met Azure-SSIS Integration Runtime (IR) met de doel-SSISDB die wordt gehost door het exemplaar van Azure SQL Database Server (zoals beschreven in het artikel [de Azure-SSIS Integration runtime in azure Data Factory in te richten](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
+* Een exemplaar van de doel database server voor het hosten van SSISDB. Als u er nog geen hebt, maakt u een [logische SQL-Server](../azure-sql/database/logical-servers.md) (zonder een Data Base) met behulp van de Azure portal door te navigeren naar het [formulier](https://ms.portal.azure.com/#create/Microsoft.SQLServer)SQL Server (alleen logische server).
+* SSIS moet worden ingericht in Azure Data Factory (ADF) met Azure-SSIS Integration Runtime (IR) met de doel-SSISDB die wordt gehost door SQL Database (zoals beschreven in het artikel [richt de Azure-SSIS Integration runtime in azure Data Factory in](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
 
 ## <a name="assess-source-ssis-projectspackages"></a>Bron-SSIS-projecten/-pakketten beoordelen
 
-Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base Migration Assistant (DMA) of de Azure Database Migration Service (DMS), worden uw SSIS-projecten/-pakketten beoordeeld/gevalideerd omdat ze opnieuw worden geïmplementeerd naar de doel-SSISDB die worden gehost op een Azure SQL Database Server.
+Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base Migration Assistant (DMA) of de Azure Database Migration Service (DMS), worden uw SSIS-projecten/-pakketten beoordeeld/gevalideerd omdat ze opnieuw worden geïmplementeerd naar de doel-SSISDB die worden gehost door Azure SQL Database.
 
 ## <a name="migrate-ssis-projectspackages"></a>SSIS-projecten/-pakketten migreren
 
-Voer de volgende stappen uit om SSIS-projecten/-pakketten naar Azure SQL Database-Server te migreren.
+Voer de volgende stappen uit om SSIS-projecten/-pakketten naar Azure SQL Database te migreren.
 
 1. Open SSMS en selecteer vervolgens **Opties** om het dialoog venster **verbinding maken met server** weer te geven.
 
-2. Geef op het tabblad **aanmelding** de gegevens op die nodig zijn om verbinding te maken met de Azure SQL database-server die als host moet fungeren voor de doel-SSISDB.
+2. Geef op het tabblad **aanmelding** de gegevens op die nodig zijn om verbinding te maken met de server die als host moet fungeren voor de doel-SSISDB.
 
     ![Tabblad SSIS-aanmelding](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om SSIS-projecten/-pakketten naar Azure SQL Databas
 8. Selecteer **Next**.
 9. Geef op de pagina **doel selecteren** het doel voor uw project op.
 
-    a. Voer in het tekstvak Server naam de volledig gekwalificeerde Azure SQL Database Server naam in (<server_name>. database.windows.net).
+    a. Voer in het tekstvak Server naam de volledig gekwalificeerde server naam in (<server_name>. database.windows.net).
 
     b. Geef de verificatie gegevens op en selecteer vervolgens **verbinding maken**.
 

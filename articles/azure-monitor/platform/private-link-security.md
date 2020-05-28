@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a1b111ddfc134d2ec51fb2d0e9787a6eac8648f2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816715"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996445"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -33,7 +33,7 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 
 Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Azure Monitor bereik van een persoonlijke koppeling is een groeperings bron voor het verbinden van een of meer privé-eind punten (en dus de virtuele netwerken die ze bevatten) naar een of meer Azure Monitor resources. De resources bevatten Log Analytics-werk ruimten en Application Insights onderdelen.
 
@@ -188,7 +188,7 @@ De nieuwste versies van de Windows-en Linux-agents moeten worden gebruikt op par
 
 **Windows-agent voor Log Analytics**
 
-Gebruik de Log Analytics agent versie 18.20.18038.0 of hoger.
+Gebruik de Log Analytics agent versie 10.20.18038.0 of hoger.
 
 **Linux-agent voor Log Analytics**
 

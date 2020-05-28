@@ -3,15 +3,15 @@ title: Logboeken met Azure Functions trigger voor Cosmos DB configureren en leze
 description: Meer informatie over hoe u de logboeken kunt weer geven in de pipeline voor Azure Functions Logboeken bij het gebruik van Azure Functions trigger voor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bd53eda7197c1083f5eca70bb8602137c9fb1a8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441829"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117133"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>De logboeken configureren en lezen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -25,7 +25,7 @@ De status logboeken beschrijven hoe de Azure Functions trigger voor Cosmos DB zi
 
 ## <a name="enabling-logging"></a>Logboek registratie inschakelen
 
-Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voor Cosmos DB `host.json` gebruikt, zoekt u het bestand in uw Azure functions project of Azure functions app en [configureert u het niveau van de vereiste logboek registratie](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). U moet de traceringen inschakelen `Host.Triggers.CosmosDB` , zoals wordt weer gegeven in het volgende voor beeld:
+Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voor Cosmos DB gebruikt, zoekt u het `host.json` bestand in uw Azure functions project of Azure functions app en [configureert u het niveau van de vereiste logboek registratie](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). U moet de traceringen inschakelen `Host.Triggers.CosmosDB` , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```js
 {
@@ -39,7 +39,7 @@ Als u logboek registratie wilt inschakelen wanneer u Azure Functions trigger voo
 }
 ```
 
-Nadat de Azure function is geïmplementeerd met de bijgewerkte configuratie, ziet u de Azure Functions trigger voor Cosmos DB-Logboeken als onderdeel van uw traceringen. U kunt de logboeken weer geven in uw geconfigureerde logboek registratie provider onder de *categorie* `Host.Triggers.CosmosDB`.
+Nadat de Azure function is geïmplementeerd met de bijgewerkte configuratie, ziet u de Azure Functions trigger voor Cosmos DB-Logboeken als onderdeel van uw traceringen. U kunt de logboeken weer geven in uw geconfigureerde logboek registratie provider onder de *categorie* `Host.Triggers.CosmosDB` .
 
 ## <a name="query-the-logs"></a>Query's uitvoeren op de logboeken
 

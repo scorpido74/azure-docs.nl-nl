@@ -27,7 +27,7 @@ Voeg uw persoonlijke micro soft-accounts, zoals voor Outlook.com-en Xbox LIVE-ac
 - **Aanmeldings methode zonder wacht woord.** Typ uw gebruikers naam in het apparaat waarmee u zich aanmeldt voor het gebruik van uw persoonlijke Microsoft-account en gebruik vervolgens uw mobiele apparaat om te controleren of u uw vinger afdruk, gezicht of pincode gebruikt. Voor deze methode hoeft u niet uw wachtwoord op te geven.
 
 >[!Important]
->Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [app downloaden en installeren](user-help-auth-app-download-install.md) .
+>Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [De app downloaden en installeren](user-help-auth-app-download-install.md).
 
 U kunt uw persoonlijke Microsoft-account toevoegen door eerst twee ledige verificatie in te scha kelen en vervolgens het account toe te voegen aan de app. U hoeft niet twee ledige verificatie in te scha kelen als u alleen een aanmelding zonder wacht woord voor uw account wilt gebruiken, maar we raden u ten zeerste aan om twee ledige verificatie in te scha kelen voor extra account beveiliging.
 

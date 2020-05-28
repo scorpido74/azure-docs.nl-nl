@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664856"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015281"
 ---
 # <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Database Managed instance met SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
 
@@ -24,17 +24,17 @@ ms.locfileid: "83664856"
 
 U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en workloads naar de Azure-Cloud verplaatsen. U kunt SSIS-projecten en-pakketten implementeren, uitvoeren en beheren op Azure SQL Database of SQL Database beheerde instantie met vertrouwde hulpprogram ma's zoals SQL Server Management Studio (SSMS). In dit artikel worden de volgende specifieke gebieden uitgelegd bij het gebruik van Azure SQL Database beheerde instantie met Azure-SSIS Integration runtime (IR):
 
-- [Een Azure-SSIS IR inrichten met een SSIS-catalogus (SSISDB) die wordt gehost door Azure SQL Database beheerde instantie](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [Een Azure-SSIS IR inrichten met een SSIS-catalogus (SSISDB) die wordt gehost door Azure SQL Database beheerde instantie](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS-pakketten uitvoeren met Azure SQL Managed instance agent-taak](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSISDB-logboeken opschonen door de Azure SQL Managed instance agent-taak](#clean-up-ssisdb-logs)
 - [Azure-SSIS IR failover met Azure SQL Database beheerd exemplaar](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [On-premises SSIS-workloads migreren naar SSIS in ADF met Azure SQL Database Managed instance als bewerkings werkbelasting doel van data base](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [On-premises SSIS-workloads migreren naar SSIS in ADF met Azure SQL Database Managed instance als bewerkings werkbelasting doel van data base](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>Azure-SSIS IR inrichten met SSISDB die worden gehost door Azure SQL Database beheerde instantie
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure-SSIS IR inrichten met SSISDB die door Azure SQL Managed instance worden gehost
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. [Schakel Azure Active Directory (Azure AD) in op Azure SQL database beheerde instantie](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance)bij het kiezen van Azure Active Directory-verificatie.
+1. [Schakel Azure Active Directory (Azure AD) in op Azure SQL database beheerde instantie](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)bij het kiezen van Azure Active Directory-verificatie.
 
 1. Kies hoe u verbinding wilt maken met SQL Managed instance, via een privé-eind punt of via een openbaar eind punt:
 
@@ -90,8 +90,8 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
     1. Zorg ervoor dat de resource groep van het virtuele netwerk bepaalde Azure-netwerk resources kan maken en verwijderen.
 
         Het Azure-SSIS IR moet bepaalde netwerk bronnen maken onder dezelfde resource groep als het virtuele netwerk. Deze resources omvatten:
-        - Een Azure-load balancer, met de naam * \< GUID>-azurebatch-cloudserviceloadbalancer*
-        - Een netwerk beveiligings groep, met de naam * \< Guid>-azurebatch-cloudservicenetworksecuritygroup
+        - Een Azure-load balancer met de naam * \<Guid> -azurebatch-cloudserviceloadbalancer*
+        - Een netwerk beveiligings groep, met de naam * \<Guid> -azurebatch-cloudservicenetworksecuritygroup
         - Een openbaar IP-adres van Azure, met de naam-azurebatch-cloudservicepublicip
 
         Deze resources worden gemaakt wanneer uw Azure-SSIS IR wordt gestart. Ze worden verwijderd wanneer uw Azure-SSIS IR wordt gestopt. Als u wilt voor komen dat uw Azure-SSIS IR worden gestopt, moet u deze netwerk bronnen niet opnieuw gebruiken in uw andere resources.
@@ -147,7 +147,7 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
 
     ![catalogus-openbaar-eind punt](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Zie voor meer informatie over het inschakelen van Azure AD-verificatie [Azure AD inschakelen op Azure SQL database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+    Zie voor meer informatie over het inschakelen van Azure AD-verificatie [Azure AD inschakelen op Azure SQL database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Voeg Azure-SSIS IR toe aan het virtuele netwerk wanneer dit van toepassing is.
 

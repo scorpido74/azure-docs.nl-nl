@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.custom: mqtt
-ms.openlocfilehash: 68186e777051e77deca7b6e5891eb392cac23260
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20bbd3fbc7623f01e60acbd08eed0c09b7e1a26d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729038"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117576"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub Sdk's begrijpen en gebruiken
 
@@ -116,6 +116,11 @@ Azure IoT Hub Service SDK voor python:
 * [Broncode](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 Azure IoT Hub Service-SDK voor C: 
+
+De Azure IoT Service SDK voor C wordt niet meer geactiveerd.
+We zullen kritieke bugs blijven corrigeren, zoals crashes, beschadiging van gegevens en beveiligings problemen. We zullen geen nieuwe functies toevoegen of fouten corrigeren die niet essentieel zijn.
+
+Ondersteuning voor Azure IOT Service SDK is beschikbaar in talen van een hoger niveau ([C#](https://github.com/Azure/azure-iot-sdk-csharp), [Java](https://github.com/Azure/azure-iot-sdk-java), [node](https://github.com/Azure/azure-iot-sdk-node), [python](https://github.com/Azure/azure-iot-sdk-python)).
 
 * Downloaden van [apt-get, MBED, ARDUINO IDE of NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Broncode](https://github.com/Azure/azure-iot-sdk-c)

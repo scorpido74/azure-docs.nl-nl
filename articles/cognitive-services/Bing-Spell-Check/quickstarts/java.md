@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869799"
+ms.locfileid: "83995970"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en Java
 
@@ -59,9 +59,9 @@ Hoewel deze toepassing wordt geschreven in Java, is de API een REST-webservice d
 
 1. Maak een functie met de naam `check()` om de API-aanvraag te maken en verzenden. In deze functie voegt u de code toe die u in de volgende stappen hebt opgegeven. Een teken reeks maken voor de aanvraag parameters:
 
-   a. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. 
+   1. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. 
 
-   b. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. 
+   1. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. 
 
    ```java
    public static void check () throws Exception {

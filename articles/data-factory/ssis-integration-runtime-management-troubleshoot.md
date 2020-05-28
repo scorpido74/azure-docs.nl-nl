@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414703"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118821"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -30,27 +30,27 @@ Als u een probleem ondervindt bij het inrichten of ongedaan maken van de SSIS-IR
 
 Als de fout code InternalServerError is, heeft de service tijdelijke problemen. Voer de bewerking later opnieuw uit. Als een nieuwe poging niet helpt, neemt u contact op met het ondersteunings team van Azure Data Factory.
 
-Anders kunnen drie belang rijke externe afhankelijkheden fouten veroorzaken: een Azure SQL Database Server of een beheerd exemplaar, een aangepast installatie script en een configuratie van een virtueel netwerk.
+Anders kunnen drie belang rijke externe afhankelijkheden fouten veroorzaken: Azure SQL Database of Azure SQL Managed instance, een aangepast installatie script en een configuratie van een virtueel netwerk.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Problemen met de Azure SQL Database Server of het beheerde exemplaar
+## <a name="sql-database-or-sql-managed-instance-issues"></a>Problemen met SQL Database of SQL Managed instance
 
-Er is een Azure SQL Database-server of een beheerd exemplaar vereist als u SSIS IR inricht met een SSIS-catalogusdatabase. SSIS IR moet toegang hebben tot de Azure SQL Database-server of het beheerde exemplaar. Daarnaast moet het account van de Azure SQL Database-server of het beheerde exemplaar gemachtigd zijn om een SSIS-catalogusdatabase (SSISDB) te maken. Als er een fout optreedt, wordt een foutcode met een gedetailleerd SQL-uitzonderingsbericht weergegeven in de Data Factory-portal. Gebruik de informatie in de volgende lijst om de problemen met de foutcodes op te lossen.
+SQL Database of SQL Managed instance is vereist als u SSIS IR inricht met een SSIS-catalogus database. De SSIS IR moet toegang kunnen krijgen tot SQL Database of een door SQL beheerd exemplaar. Daarnaast moet het aanmeldings account voor de SQL Database of het SQL Managed instance zijn gemachtigd om een SSIS-catalogus database (SSISDB) te maken. Als er een fout optreedt, wordt een foutcode met een gedetailleerd SQL-uitzonderingsbericht weergegeven in de Data Factory-portal. Gebruik de informatie in de volgende lijst om de problemen met de foutcodes op te lossen.
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 U kunt dit probleem tegenkomen wanneer u een nieuwe SSIS IR inricht of wanneer IR wordt uitgevoerd. Als u deze fout tijdens het inrichten van IR ondervindt, kunt u een gedetailleerd SqlException-bericht ontvangen in het foutbericht dat op een van de volgende problemen wijst:
 
-* Een probleem met een netwerkverbinding. Controleer of de hostnaam van SQL Server of het beheerde exemplaar toegankelijk is. Controleer ook of een firewall of netwerkbeveiligingsgroep (NSG) de toegang voor SSIS IR tot de server blokkeert.
+* Een probleem met een netwerkverbinding. Controleer of de hostnaam voor SQL Database of SQL Managed instance toegankelijk is. Controleer ook of een firewall of netwerkbeveiligingsgroep (NSG) de toegang voor SSIS IR tot de server blokkeert.
 * De aanmelding is mislukt tijdens SQL-verificatie. Met het opgegeven account kan niet bij de SQL Server-database worden aangemeld. Geef het juiste gebruikersaccount op.
 * De aanmelding is mislukt tijdens de verificatie van Microsoft Azure Active Directory (Azure AD) (beheerde identiteit). Voeg de beheerde identiteit van uw factory toe aan een AAD-groep en zorg ervoor dat de beheerde identiteit toegangsmachtigingen heeft voor de server van de catalogusdatabase.
 * Time-out van verbinding. Deze fout wordt altijd veroorzaakt door een beveiligingsconfiguratie. U wordt aangeraden dat u:
   1. Maak een nieuwe virtuele machine.
   1. Voeg de virtuele machine toe aan dezelfde Microsoft Azure Virtual Network van IR als IR zich in een virtueel netwerk bevindt.
-  1. Installeer SSMS en controleer de status van de Azure SQL Database-Server of het beheerde exemplaar.
+  1. Installeer SSMS en controleer de status van het SQL Database of SQL Managed instance.
 
-Voor andere problemen lost u het probleem op dat wordt weergegeven in het uitgebreide SQL-uitzonderingsfoutbericht. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van de Azure SQL Database-server of het beheerde exemplaar.
+Voor andere problemen lost u het probleem op dat wordt weergegeven in het uitgebreide SQL-uitzonderingsfoutbericht. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteunings team van SQL Database of SQL Managed instance.
 
-Als u de fout ziet wanneer IR wordt uitgevoerd, verhinderen de wijzigingen aan de netwerkbeveiligingsgroep of firewall waarschijnlijk dat het SSIS IR-werkknooppunt toegang heeft tot de Azure SQL Database-server of het beheerde exemplaar. Deblokkeer het SSIS IR-werkknooppunt zodat het toegang heeft tot de Azure SQL Database-server of het beheerde exemplaar.
+Als u de fout ziet wanneer IR wordt uitgevoerd, worden de netwerk beveiligings groep of de firewall wijzigingen waarschijnlijk verhinderd dat het SSIS IR worker-knoop punt toegang krijgt tot SQL Database of een door SQL beheerd exemplaar. Deblokkeren van het SSIS IR worker-knoop punt zodat het toegang heeft tot SQL Database of SQL Managed instance.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ De mogelijke oplossingen zijn:
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Deze fout betekent dat de Azure SQL Database-server of het beheerde exemplaar al een SSISDB heeft en dat deze door een andere IR wordt gebruikt. U moet een andere Azure SQL Database-server of een ander beheerd exemplaar opgeven, of de bestaande SSISDB verwijderen en de nieuwe IR opnieuw opstarten.
+Deze fout betekent dat SQL Database of SQL Managed instance al een SSISDB heeft en dat het wordt gebruikt door een andere IR. U moet een andere SQL Database of een door SQL beheerd exemplaar opgeven, of de bestaande SSISDB verwijderen en de nieuwe IR opnieuw opstarten.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 Deze fout kan een van de volgende oorzaken hebben:
 
 * Het gebruikersaccount dat is geconfigureerd voor de SSIS IR beschikt niet over de machtiging om de database te maken. U kunt de gebruiker machtigen om de database te maken.
-* Er treedt een time-out op tijdens het maken van de database, zoals een time-out tijdens uitvoering of een time-out voor de werking van de database. U kunt de bewerking later opnieuw uitvoeren. Als u daarna nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van de Azure SQL Database-server of het beheerde exemplaar.
+* Er treedt een time-out op tijdens het maken van de database, zoals een time-out tijdens uitvoering of een time-out voor de werking van de database. U kunt de bewerking later opnieuw uitvoeren. Als de nieuwe poging niet werkt, neemt u contact op met het ondersteunings team van SQL Database of SQL Managed instance.
 
-Voor andere problemen controleert u het foutbericht van SQL-uitzondering en lost u het probleem op dat wordt vermeld in de foutdetails. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteuningsteam van de Azure SQL Database-server of het beheerde exemplaar.
+Voor andere problemen controleert u het foutbericht van SQL-uitzondering en lost u het probleem op dat wordt vermeld in de foutdetails. Als u nog steeds problemen ondervindt, neemt u contact op met het ondersteunings team van SQL Database of SQL Managed instance.
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Dit type fout bericht ziet er als volgt uit: ' ongeldige object naam ' Catalog. catalog_properties '. ' In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande database met de naam SSISDB verwijderen, maar u kunt ook een nieuwe Azure SQL Database-server of een beheerd exemplaar voor de IR configureren.
+Dit type fout bericht ziet er als volgt uit: ' ongeldige object naam ' Catalog. catalog_properties '. ' In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande data base met de naam SSISDB verwijderen, maar u kunt ook een nieuw SQL Database of een door SQL beheerd exemplaar configureren voor de IR.
 
 ## <a name="custom-setup-issues"></a>Aangepaste installatie problemen
 

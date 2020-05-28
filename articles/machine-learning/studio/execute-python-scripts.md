@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7d34cd8a841f7931ce85d3f9830c5497bb2f93
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218087"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118506"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python is een waardevol hulp middel in de hulp middelen van veel gegevens wetenschappers. Deze wordt gebruikt in elke fase van typische machine learning werk stromen, inclusief gegevens exploratie, extractie van functies, model training en-implementatie.
 
@@ -27,7 +25,7 @@ In dit artikel wordt beschreven hoe u de script module python uitvoeren kunt geb
 
 ## <a name="using-the-execute-python-script-module"></a>De script module python uitvoeren gebruiken
 
-De primaire interface naar python in Studio (klassiek) is via de [script][execute-python-script] module voor het uitvoeren van python. Het accepteert Maxi maal drie invoer en produceert Maxi maal twee uitvoer, vergelijkbaar met de script module voor het [uitvoeren van R][execute-r-script] . Python-code wordt in het vak para meter ingevoerd via een speciaal benoemde ingangs punt `azureml_main`functie, genaamd.
+De primaire interface naar python in Studio (klassiek) is via de [script][execute-python-script] module voor het uitvoeren van python. Het accepteert Maxi maal drie invoer en produceert Maxi maal twee uitvoer, vergelijkbaar met de script module voor het [uitvoeren van R][execute-r-script] . Python-code wordt in het vak para meter ingevoerd via een speciaal benoemde ingangs punt functie, genaamd `azureml_main` .
 
 ![Python-script module uitvoeren](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -71,7 +69,7 @@ Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hierva
 
 De back-end die wordt gebruikt om python uit te voeren, is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte weten schappelijke python-distributie. Het wordt geleverd met dicht bij 200 van de meest voorkomende Python-pakketten die worden gebruikt in gegevens gerichte werk belastingen. Studio (klassiek) biedt momenteel geen ondersteuning voor het gebruik van pakket beheer systemen zoals PIP of Conda voor het installeren en beheren van externe bibliotheken.  Als u meer bibliotheken nodig hebt, moet u het volgende scenario gebruiken als richt lijn.
 
-Een veelvoorkomend gebruik van cases is het opnemen van bestaande python-scripts in Studio-experimenten (klassiek). De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met `azureml_main` de functie toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
+Een veelvoorkomend gebruik van cases is het opnemen van bestaande python-scripts in Studio-experimenten (klassiek). De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met de `azureml_main` functie toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
 
 Bekijk een voor beeld van het bestand Hello.py dat een eenvoudige ' Hello, World '-functie bevat.
 
@@ -87,7 +85,7 @@ Upload het zip-bestand als een gegevensset in Studio (klassiek). Maak en voer ve
 
 ![Door de gebruiker gedefinieerde python-code die is geüpload als een zip-bestand](./media/execute-python-scripts/figure6b.png)
 
-In de module-uitvoer ziet u dat het zip-bestand is uitgepakt en dat `print_hello` de functie is uitgevoerd.
+In de module-uitvoer ziet u dat het zip-bestand is uitgepakt en dat de functie `print_hello` is uitgevoerd.
 
 ![Module-uitvoer met door de gebruiker gedefinieerde functie](./media/execute-python-scripts/figure7.png)
 

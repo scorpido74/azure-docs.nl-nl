@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509496"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018749"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
 Virtual Network (VNet) service-eind punten verlengen uw persoonlijke adres ruimte van uw virtuele netwerk. De eind punten verg Roten ook de identiteit van uw VNet met de Azure-Services via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk.
 
-Deze functie is beschikbaar voor de volgende Azure-Services en-regio's. *Micro soft.\* * resource bevindt zich tussen haakjes. Schakel deze bron in vanaf de subnetten tijdens het configureren van service-eind punten voor uw service:
+Deze functie is beschikbaar voor de volgende Azure-Services en-regio's. *Micro soft. \* * resource bevindt zich tussen haakjes. Schakel deze bron in vanaf de subnetten tijdens het configureren van service-eind punten voor uw service:
 
 **Algemeen verkrijgbaar**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*micro soft. Storage*): algemeen beschikbaar in alle Azure-regio's.
-- **[Azure SQL database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in alle Azure-regio's.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in alle Azure-regio's.
+- **[Azure SQL database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in alle Azure-regio's.
+- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in alle Azure-regio's.
 - **[Azure database for postgresql server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in azure-regio's waar de database service beschikbaar is.
 - **[Azure database for mysql server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in azure-regio's waar de database service beschikbaar is.
 - **[Azure database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*micro soft. SQL*): algemeen beschikbaar in azure-regio's waar de database service beschikbaar is.
@@ -147,8 +147,8 @@ Zie [Veelgestelde vragen over Virtual Network Service-eind punten](https://docs.
 
 - [Service-eindpunten voor virtuele netwerken configureren](tutorial-restrict-network-access-to-resources.md)
 - [Een Azure Storage-account beveiligen met een virtueel netwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Een Azure SQL Database beveiligen met een virtueel netwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Een Azure SQL Data Warehouse beveiligen met een virtueel netwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Een Azure SQL Database beveiligen met een virtueel netwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Een Azure SQL Data Warehouse beveiligen met een virtueel netwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integratie van Azure-Services in virtuele netwerken](virtual-network-for-azure-services.md)
 - [Virtual Network service-eindpunt beleid](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

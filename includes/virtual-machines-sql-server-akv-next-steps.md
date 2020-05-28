@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784092"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014690"
 ---
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -17,9 +17,9 @@ Nadat u Azure Key Vault-integratie hebt ingeschakeld, kunt u SQL Server versleut
 
 Er zijn verschillende soorten versleuteling waarmee u kunt profiteren van:
 
-* [TDE (Transparent Data Encryption)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Versleutelde back-ups](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Versleuteling op kolom niveau (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [TDE (Transparent Data Encryption)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Versleutelde back-ups](/sql/relational-databases/backup-restore/backup-encryption)
+* [Versleuteling op kolom niveau (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 De volgende Transact-SQL-scripts bieden voor beelden voor elk van deze gebieden.
 
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 Zie voor meer informatie over het gebruik van deze versleutelings functies [EKM gebruiken met SQL Server-versleutelings functies](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-In de stappen in dit artikel wordt ervan uitgegaan dat u al SQL Server hebt uitgevoerd op een virtuele machine van Azure. Als dat niet het geval is, raadpleegt u [een SQL Server virtuele machine inrichten in azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Zie [SQL Server op azure virtual machines Overview](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het uitvoeren van SQL Server op Azure-vm's.
+In de stappen in dit artikel wordt ervan uitgegaan dat u al SQL Server hebt uitgevoerd op een virtuele machine van Azure. Als dat niet het geval is, raadpleegt u [een SQL Server virtuele machine inrichten in azure](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Zie [SQL Server op azure virtual machines Overview](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie over het uitvoeren van SQL Server op Azure-vm's.

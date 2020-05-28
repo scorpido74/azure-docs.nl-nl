@@ -75,7 +75,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Congo (DRC) | Ja | Ja | Ja | Nee |
 | Congo, Republiek | Ja | Ja | Ja | Nee |
 | Costa Rica | Ja | Ja | Ja | Ja |
-| Côte D'Ivoire | Ja | Ja | Ja | Nee |
+| Ivoorkust | Ja | Ja | Ja | Nee |
 | Kroatië | Ja | Ja | Ja | Nee |
 | Cyprus | Ja | Ja | Ja | Ja |
 | Tsjechische Republiek | Ja | Ja | Ja | Ja |

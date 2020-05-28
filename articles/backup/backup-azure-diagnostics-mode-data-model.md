@@ -35,9 +35,9 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
 | AlertOccurrenceDateTime_s |Datum/tijd |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
-|AlertTimeToResolveInMinutes_s    | Getal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
+|AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-|CountOfAlertsConsolidated_s     |Getal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
+|CountOfAlertsConsolidated_s     |Aantal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
 |AlertRaisedOn_s     |Tekst         |Het type entiteit waarop de waarschuwing is opgetreden         |
 |AlertCode_s     |Tekst         |Code voor een unieke identificatie van een waarschuwings type         |
 |RecommendedAction_s   |Tekst         |Aanbevolen actie om de waarschuwing op te lossen         |
@@ -155,8 +155,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | JobStartDateTime_s |Datum/tijd |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
-| JobDurationInSecs_s | Getal |Totale taak duur in seconden |
-| DataTransferredInMB_s | Getal |Gegevens die worden overgebracht in MB voor deze taak|
+| JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
+| DataTransferredInMB_s | Aantal |Gegevens die worden overgebracht in MB voor deze taak|
 | JobUniqueId_g |Tekst |Unieke ID voor het identificeren van de taak |
 | RecoveryJobDestination_s |Tekst | Doel van een herstel taak, waarbij de gegevens worden hersteld |
 | RecoveryJobRPDateTime_s |DateTime | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
@@ -204,7 +204,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | YearlyRetentionDaysOfTheMonth_s |Tekst ||De datums van de maand die zijn geselecteerd voor een jaarlijkse Bewaar periode |
 | SynchronisationFrequencyPerDay_s |Geheel getal |v2|Aantal keren per dag dat een back-up van een bestand wordt gesynchroniseerd voor SC DPM en MABS |
 | DiffBackupFormat_s |Tekst |v2|Indeling voor differentiële back-ups voor SQL in azure VM-back-up |
-| DiffBackupTime_s |Time |v2|Tijd voor differentiële back-ups voor SQL in azure VM-back-up|
+| DiffBackupTime_s |Tijd |v2|Tijd voor differentiële back-ups voor SQL in azure VM-back-up|
 | DiffBackupRetentionDuration_s |Decimaal getal |v2|Bewaar periode voor differentiële back-ups voor SQL in azure VM-back-up|
 | LogBackupFrequency_s |Decimaal getal |v2|Frequentie voor logboek back-ups voor SQL|
 | LogBackupRetentionDuration_s |Decimaal getal |v2|Bewaar periode voor back-ups van Logboeken voor SQL in azure VM-back-up|
@@ -297,8 +297,8 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit|
 | VaultUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit|
-| StorageConsumedInMBs_s |Getal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
-| StorageAllocatedInMBs_s |Getal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
+| StorageConsumedInMBs_s |Aantal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs_s |Aantal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
 
 ### <a name="vault"></a>Kluis
 

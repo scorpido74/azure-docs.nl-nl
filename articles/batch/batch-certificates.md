@@ -21,7 +21,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83764336"
 ---
-# <a name="using-certificates-with-batch"></a>Certificaten gebruiken met batch
+# <a name="using-certificates-with-batch"></a>Certificaten gebruiken met Batch
 
 Momenteel is het gebruik van certificaten met batch niet mogelijk als er toepassingen worden uitgevoerd in Pools die moeten worden geverifieerd met een eind punt. 
 

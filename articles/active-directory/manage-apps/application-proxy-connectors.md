@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583125"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116615"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD-toepassingsproxy-connectors begrijpen
 
@@ -175,9 +175,9 @@ en Windows-prestatie meter items.
 
 ![Tellers toevoegen aan de connector met de prestatie meter](./media/application-proxy-connectors/performance-monitor.png)
 
-De connectors hebben zowel beheer-als sessie Logboeken. De beheerder logboeken bevatten belang rijke gebeurtenissen en fouten. De sessie logboeken bevatten alle trans acties en de bijbehorende verwerkings gegevens.
+De connectors hebben zowel **beheer** -als **sessie** Logboeken. Het logboek **beheerder** bevat belang rijke gebeurtenissen en fouten. Het **sessie** logboek bevat alle trans acties en de bijbehorende verwerkings gegevens.
 
-Als u de logboeken wilt weer geven, gaat u naar de Logboeken, opent u het menu **weer gave** en schakelt u **analyse en logboeken voor fout opsporing weer geven**in. Schakel deze vervolgens in om het verzamelen van gebeurtenissen te starten. Deze logboeken worden niet weer gegeven in Web Application proxy in Windows Server 2012 R2, omdat de connectors zijn gebaseerd op een recentere versie.
+Als u de logboeken wilt weer geven, opent u **Logboeken** en gaat u naar **toepassingen en services**  >  **wordt de micro soft**  >  **AadApplicationProxy**-  >  **connector**geregistreerd. Als u het **sessie** logboek zichtbaar wilt maken, selecteert u in het menu **beeld** de optie **analyse logboeken en fout opsporing weer geven**. Het **sessie** logboek wordt doorgaans gebruikt voor het oplossen van problemen en is standaard uitgeschakeld. Schakel deze optie in om het verzamelen van gebeurtenissen te starten en deze uit te scha kelen wanneer deze niet meer nodig is.
 
 U kunt de status van de service controleren in het venster Services. De connector bestaat uit twee Windows-Services: de daad werkelijke connector en de Updater. Beide moeten beide tijd worden uitgevoerd.
 

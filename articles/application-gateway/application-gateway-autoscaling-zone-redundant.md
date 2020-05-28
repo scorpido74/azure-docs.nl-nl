@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f84098d376f2494805465a8c713a21fceae6438d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739478"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116856"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -45,7 +45,7 @@ Met de v2-SKU wordt het prijs model aangestuurd door verbruik en niet meer gekop
 - **Vaste prijs** : dit is elk uur (of een gedeeltelijke uur) prijs om een Standard_v2 of WAF_v2 gateway in te richten. 0 extra minimum aantal exemplaren garandeert nog steeds een hoge Beschik baarheid van de service, die altijd is opgenomen in een vaste prijs.
 - **Eenheids prijs van capaciteit** : dit is een kosten op basis van verbruik die naast de vaste kosten worden berekend. De kosten voor de capaciteits eenheid worden ook elk uur of gedeeltelijk per uur berekend. Er zijn drie dimensies tot capaciteits eenheid: reken eenheid, permanente verbindingen en door voer. Rekeneenheid is een meting van de verbruikte processorcapaciteit. Factoren die de rekeneenheid beïnvloeden, zijn: TLS-verbindingen per seconde, berekeningen voor het herschrijven van URL's en de verwerking van WAF-regels. Permanente verbinding is een meting van de tot stand gebrachte TCP-verbindingen met de toepassings gateway in een bepaald facturerings interval. De door Voer is het gemiddelde aantal megabits per seconde dat door het systeem wordt verwerkt in een opgegeven facturerings interval.  De facturering vindt plaats op het niveau van de capaciteits eenheid voor alle boven het gereserveerde exemplaar aantal.
 
-Elke capaciteits eenheid bestaat uit Maxi maal 1 Compute-eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
+Elke capaciteits eenheid bestaat uit Maxi maal: 1 reken eenheid, 2500 permanente verbindingen en door Voer van 2,22-Mbps.
 
 Richt lijnen voor reken eenheden:
 
@@ -92,7 +92,7 @@ Zoals u kunt zien, wordt u alleen gefactureerd voor vier capaciteits eenheden, n
 > De functie Max retourneert de grootste waarde in een paar waarden.
 
 
-**Voor beeld 3**
+**Voorbeeld 3**
 
 Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van vijf exemplaren. Ervan uitgaande dat er geen verkeer is en er geen verbinding is, is uw prijs:
 
@@ -183,7 +183,7 @@ In deze sectie worden de functies en beperkingen beschreven van de v2-SKU die ve
 |Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie over ondersteunde scenario's.|
 |NSG voor binnenkomend poort bereik| -65200 tot 65535 voor Standard_v2 SKU<br>-65503 tot 65534 voor standaard-SKU.<br>Raadpleeg de [Veelgestelde vragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)voor meer informatie.|
 |Prestatie Logboeken in azure Diagnostics|Niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
-|Billing|De facturering is gepland om te beginnen op 1 juli 2019.|
+|Facturering|De facturering is gepland om te beginnen op 1 juli 2019.|
 |FIPS-modus|Deze worden momenteel niet ondersteund.|
 |Modus alleen ILB|Dit wordt momenteel niet ondersteund. De open bare en ILB modus samen worden ondersteund.|
 |Netwerk-Watcher-integratie|Niet ondersteund.|

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460219"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015842"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Hebt u vragen? Bekijk de volgende veelgestelde vragen voor meer informatie.
@@ -48,7 +48,7 @@ De Azure DevOps-build-taken zijn in het algemeen direct wrappers rond de opdrach
 
 Merk bare verschillen:
 
-- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is\_C:\agent work\1\s.
+- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is C:\agent \_ work\1\s.
 - Paden in de argumenten kunnen relatief zijn ten opzichte van de hoofdmap van de eerder vermelde bron directory. Paden kunnen ook absoluut zijn. U krijgt absolute paden met behulp van Azure DevOps build-variabelen of door een on-premises agent uit te voeren met bekende implementatie locaties van lokale bronnen.
 - Hulpprogram ma's geven automatisch een pad naar een uitvoer bestand of een map. Als u een uitvoer locatie voor een build-taak opgeeft, wordt die locatie vervangen door een pad naar de bekende locatie van de logboeken op de build-agent
 - Enkele aanvullende opdracht regel argumenten zijn gewijzigd voor sommige hulpprogram ma's. Een voor beeld hiervan is het toevoegen of verwijderen van opties die ervoor zorgen dat er geen GUI wordt gestart.
@@ -63,7 +63,7 @@ Met de build-taken wordt een aantal gebruikers invoer gefilterd. De locatie van 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Waar worden de uitvoer bestanden gegenereerd door de hulpprogram ma's die worden opgeslagen? 
 
-De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent.\_BuildDirectory) sdt\logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
+De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent. BuildDirectory) \_ sdt\logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Kan ik een build in de wachtrij plaatsen om deze taken uit te voeren op een gehoste build-agent? 
 
@@ -123,11 +123,11 @@ De hash-sleutel van het geheim van het uitvoer bestand CredScan is vereist, zoal
 
 De bestands expressie kan een bestands naam zijn. Het kan ook het grondtal van een volledig bestandspad of een bestands naam zijn. Jokertekens worden niet ondersteund.
 
-In de volgende voor beelden ziet u hoe u \<het bestand InputPath> \src\js\lib\angular.js onderdrukt
+In de volgende voor beelden ziet u hoe u het bestand \<InputPath> \src\JS\lib\angular.js onderdrukt
 
 Voor beelden van geldige onderdrukkings regels:
 
-- \<InputPath> \src\JS\lib\angular.js-onderdrukt het bestand in het opgegeven pad
+- \<InputPath>\src\JS\lib\angular.js: Hiermee wordt het bestand in het opgegeven pad onderdrukt
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
@@ -155,7 +155,7 @@ Voor beelden van geldige onderdrukkings regels:
 De volgende bronnen helpen u veilig geheimen te beheren en toegang te krijgen tot gevoelige informatie in uw toepassingen:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Azure AD-Managed Service Identity (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Beheerde identiteiten in Azure App Service en Azure Functions](../../app-service/overview-managed-identity.md)
@@ -173,7 +173,7 @@ Een inhouds zoekmachine wordt als volgt gedefinieerd:
 - **Naam**: de beschrijvende naam van de zoek functie die moet worden gebruikt in uitvoer bestanden voor referentie scanners. We raden u aan de Camel-Case-naamgevings Conventie voor namen van zoek functies te gebruiken.
 - **RuleId**: de stabiele dekkende id van de zoek functie:
     - Een standaard zoekmachine voor referentie scanners is toegewezen aan een **RuleId** -waarde zoals CSCAN0010, CSCAN0020 of CSCAN0030. Het laatste cijfer is gereserveerd voor het mogelijk samen voegen of delen van zoek groepen via reguliere expressies (regex).
-    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder\<andere\>CSCAN naam ruimte 0010\<,\>CSCAN-namespace 0020 en\<CSCAN\>-namespace 0030.
+    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder andere CSCAN- \<Namespace\> 0010, CSCAN- \<Namespace\> 0020 en CSCAN- \<Namespace\> 0030.
     - Een volledig gekwalificeerde Zoek naam is de combi natie van een **RuleId** -waarde en een naam van een zoek programma. Voor beelden zijn CSCAN0010. KeyStoreFiles en CSCAN0020. Base64EncodedCertificate.
 - **ResourceMatchPattern**: regex van bestands extensies die moeten worden gecontroleerd op de zoek functie.
 - **ContentSearchPatterns**: een matrix met teken reeksen die overeenkomen met regex-instructies. Als er geen Zoek patronen zijn gedefinieerd, worden alle bestanden geretourneerd die overeenkomen met de waarde van **ResourceMatchPattern** .
@@ -202,13 +202,13 @@ In een stap tussen uw belangrijkste build-en Roslyn-analyse stappen is het mogel
 
 Het volledige fout bericht:
 
-' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C:\\*BBBB*. dll: kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem kan het opgegeven bestand niet vinden. "
+' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C: \\ *BBBB*. dll: kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem kan het opgegeven bestand niet vinden. "
 
 Zorg ervoor dat uw compiler Roslyn-analyse functies ondersteunt. Het uitvoeren van de opdracht **CSC. exe/version** moet een versie waarde van 2,6 of hoger rapporteren.
 
 Soms kan een. csproj-bestand de installatie van de Visual Studio voor het bouwen van de machine overschrijven door te verwijzen naar een pakket van Microsoft.Net. compilers. Als u geen specifieke versie van de compiler wilt gebruiken, verwijdert u verwijzingen naar Microsoft.Net. compilers. Controleer anders of de versie van het pakket waarnaar wordt verwezen ook 2,6 of hoger is.
 
-Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>De versie van het C#-compileer programma is niet recent genoeg
 

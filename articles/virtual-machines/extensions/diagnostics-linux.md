@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289172"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118560"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -49,13 +49,28 @@ Met deze installatie-instructies en een [Download bare voorbeeld configuratie](h
 
 De Download bare configuratie is slechts een voor beeld. Wijzig deze in uw eigen behoeften.
 
+### <a name="supported-linux-distributions"></a>Ondersteunde Linux-distributies
+
+De diagnostische Linux-extensie ondersteunt de volgende distributies en versies. De lijst met distributies en versies is alleen van toepassing op installatie kopieën voor Linux-leveranciers van Azure. BYOL-en BYOS-installatie kopieën van derden, zoals toestellen, worden in het algemeen niet ondersteund voor de diagnostische extensie van Linux.
+
+Een distributie waarin alleen primaire versies, zoals Debian 7, wordt vermeld, wordt ook voor alle secundaire versies ondersteund. Als er een specifieke secundaire versie is opgegeven, wordt alleen die specifieke versie ondersteund; als "+" is toegevoegd, worden secundaire versies die gelijk zijn aan of groter zijn dan de opgegeven versie worden ondersteund.
+
+Ondersteunde distributies en versies:
+
+- Ubuntu 18,04, 16,04, 14,04
+- CentOS 7, 6.5 +
+- Oracle Linux 7, 6.4 +
+- OpenSUSE 13.1 +
+- SUSE Linux Enterprise Server 12
+- Debian 9, 8, 7
+- RHEL 7, 6,7 +
+
 ### <a name="prerequisites"></a>Vereisten
 
-* **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer `/usr/sbin/waagent -version` uit om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) om de app bij te werken.
+* **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) om de app bij te werken.
 * **Azure cli**. [Stel de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) -omgeving in op uw machine.
-* De wget-opdracht als u deze nog niet hebt: Voer `sudo apt-get install wget`uit.
+* De wget-opdracht als u deze nog niet hebt: Voer uit `sudo apt-get install wget` .
 * Een bestaand Azure-abonnement en een bestaand opslag account voor het opslaan van de gegevens.
-* De lijst met ondersteunde Linux-distributies is ingeschakeldhttps://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
 ### <a name="sample-installation"></a>Voorbeeld installatie
 
@@ -139,7 +154,7 @@ Vereisten
   * Onder virtuele machines van Azure Resource Manager-implementatie model, neemt u ' "autoUpgradeMinorVersion": True ' op in de sjabloon VM-implementatie.
 * Gebruik een nieuw/ander opslag account voor LAD 3,0. Er zijn enkele kleine incompatibiliteiten tussen LAD 2,3 en LAD 3,0 die het delen van een account lastige:
   * LAD 3,0 slaat syslog-gebeurtenissen op in een tabel met een andere naam.
-  * De counterSpecifier-teken `builtin` reeksen voor metrische gegevens verschillen in Lad 3,0.
+  * De counterSpecifier-teken reeksen voor `builtin` metrische gegevens verschillen in LAD 3,0.
 
 ## <a name="protected-settings"></a>Beveiligde instellingen
 
@@ -155,11 +170,11 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Naam | Waarde
+Name | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
-storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare `https://core.windows.net`Azure-Cloud. Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
-storageAccountSasToken | Een [SAS-token](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) van het account voor Blob en`ss='bt'`Table Services (), dat van toepassing`srt='co'`is op containers en objecten (), die toevoegen, maken, lijst, bijwerken`sp='acluw'`en schrijf machtigingen () verleent. Neem de eerste vraag teken (?) *niet* op.
+storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
+storageAccountSasToken | Een [SAS-token](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) van het account voor Blob en Table Services ( `ss='bt'` ), dat van toepassing is op containers en objecten ( `srt='co'` ), die toevoegen, maken, lijst, bijwerken en schrijf machtigingen ( `sp='acluw'` ) verleent. Neem de eerste vraag teken (?) *niet* op.
 mdsdHttpProxy | Beschrijving Er zijn HTTP-proxy gegevens nodig om de extensie in te scha kelen om verbinding te maken met het opgegeven opslag account en eind punt.
 sinksConfig | Beschrijving Details van alternatieve doelen waarop metrische gegevens en gebeurtenissen kunnen worden geleverd. De specifieke details van elke gegevens sink die wordt ondersteund door de uitbrei ding, worden behandeld in de volgende secties.
 
@@ -172,7 +187,7 @@ U kunt eenvoudig de vereiste SAS-token maken via de Azure Portal.
 1. Maak de juiste secties zoals eerder beschreven
 1. Klik op de knop SAS genereren.
 
-![installatiekopie](./media/diagnostics-linux/make_sas.png)
+![image](./media/diagnostics-linux/make_sas.png)
 
 Kopieer de gegenereerde SA'S naar het veld storageAccountSasToken. Verwijder de toonaangevende vraag teken (?).
 
@@ -243,7 +258,7 @@ Gegevens die zijn gericht op een JsonBlob-sink, worden opgeslagen in blobs in az
 
 ## <a name="public-settings"></a>Open bare instellingen
 
-Deze structuur bevat verschillende blokken instellingen die de informatie bepalen die door de extensie wordt verzameld. Elke instelling is optioneel. Als u opgeeft `ladCfg`, moet u ook opgeven `StorageAccount`.
+Deze structuur bevat verschillende blokken instellingen die de informatie bepalen die door de extensie wordt verzameld. Elke instelling is optioneel. Als u opgeeft `ladCfg` , moet u ook opgeven `StorageAccount` .
 
 ```json
 {
@@ -280,8 +295,8 @@ Deze optionele structuur bepaalt het verzamelen van metrische gegevens en logboe
 
 Element | Waarde
 ------- | -----
-eventVolume | Beschrijving Hiermee bepaalt u het aantal partities dat in de opslag tabel is gemaakt. Moet een van `"Large"`, `"Medium"`of `"Small"`zijn. Als dat niet is opgegeven, is `"Medium"`de standaard waarde.
-sampleRateInSeconds | Beschrijving Het standaard interval tussen het verzamelen van metrische gegevens (niet-geaggregeerde). De kleinste ondersteunde sample frequentie is 15 seconden. Als dat niet is opgegeven, is `15`de standaard waarde.
+eventVolume | Beschrijving Hiermee bepaalt u het aantal partities dat in de opslag tabel is gemaakt. Moet een van `"Large"` , `"Medium"` of zijn `"Small"` . Als dat niet is opgegeven, is de standaard waarde `"Medium"` .
+sampleRateInSeconds | Beschrijving Het standaard interval tussen het verzamelen van metrische gegevens (niet-geaggregeerde). De kleinste ondersteunde sample frequentie is 15 seconden. Als dat niet is opgegeven, is de standaard waarde `15` .
 
 #### <a name="metrics"></a>metrics
 
@@ -342,12 +357,12 @@ type | Identificeert de werkelijke provider van de metriek.
 klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counter | Samen met "class" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counterSpecifier | Identificeert de specifieke metrische waarde binnen de metrische naam ruimte van Azure.
-regeling | Beschrijving Selecteert een specifiek exemplaar van het object waarop de metriek van toepassing is of selecteert de aggregatie voor alle exemplaren van dat object. Zie `builtin` metrische definities voor meer informatie.
+regeling | Beschrijving Selecteert een specifiek exemplaar van het object waarop de metriek van toepassing is of selecteert de aggregatie voor alle exemplaren van dat object. Zie metrische definities voor meer informatie `builtin` .
 sampleRate | IS 8601-interval waarmee de snelheid wordt ingesteld waarmee onbewerkte voor beelden voor deze metrische gegevens worden verzameld. Als deze niet is ingesteld, wordt het verzamelings interval ingesteld met de waarde [sampleRateInSeconds](#ladcfg). De kortste ondersteunde sample frequentie is 15 seconden (PT15S).
 eenheid | Moet een van de volgende teken reeksen zijn: "Count", "bytes", "seconden", "percent", "CountPerSecond", "BytesPerSecond", "milliseconde". Hiermee definieert u de eenheid voor de metriek. Consumenten van de verzamelde gegevens verwachten dat de verzamelde gegevens waarden overeenkomen met deze eenheid. Dit veld wordt door LAD genegeerd.
 displayName | Het label (in de taal die is opgegeven door de instellingen van de bijbehorende land instellingen) dat aan deze gegevens in azure-metrieken moet worden gekoppeld. Dit veld wordt door LAD genegeerd.
 
-De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens, zoals het Azure Portal grafiek-en waarschuwings onderdeel, gebruiken counterSpecifier als de "sleutel" waarmee een metriek of een exemplaar van een metriek wordt aangeduid. Voor `builtin` metrische gegevens raden we u aan om counterSpecifier-waarden te gebruiken `/builtin/`die beginnen met. Als u een specifiek exemplaar van een metriek verzamelt, raden we u aan de id van het exemplaar te koppelen aan de waarde counterSpecifier. Een aantal voorbeelden:
+De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens, zoals het Azure Portal grafiek-en waarschuwings onderdeel, gebruiken counterSpecifier als de "sleutel" waarmee een metriek of een exemplaar van een metriek wordt aangeduid. Voor `builtin` metrische gegevens raden we u aan om counterSpecifier-waarden te gebruiken die beginnen met `/builtin/` . Als u een specifiek exemplaar van een metriek verzamelt, raden we u aan de id van het exemplaar te koppelen aan de waarde counterSpecifier. Een aantal voorbeelden:
 
 * `/builtin/Processor/PercentIdleTime`-Niet-actieve tijd, gemiddeld in alle Vcpu's
 * `/builtin/Disk/FreeSpace(/mnt)`-Beschik bare ruimte voor het/mnt-bestands systeem
@@ -355,14 +370,14 @@ De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens,
 
 LAD en de Azure Portal verwacht dat de counterSpecifier-waarde overeenkomt met een patroon. Wees consistent met het samen stellen van counterSpecifier-waarden.
 
-Wanneer u opgeeft `performanceCounters`, schrijft Lad altijd gegevens naar een tabel in azure Storage. U kunt dezelfde gegevens schrijven naar JSON-blobs en/of Event Hubs, maar u kunt het opslaan van gegevens naar een tabel niet uitschakelen. Alle exemplaren van de diagnostische uitbrei ding die is geconfigureerd voor gebruik van dezelfde opslag accountnaam en-eind punt, voegen hun metrische gegevens en Logboeken toe aan dezelfde tabel. Als er te veel virtuele machines naar dezelfde tabel partitie schrijven, kan Azure de schrijf bewerkingen naar die partitie beperken. De instelling eventVolume zorgt ervoor dat vermeldingen worden verdeeld over 1 (klein), 10 (gemiddeld) of 100 (grote) verschillende partities. Normaal gesp roken is ' medium ' voldoende om ervoor te zorgen dat verkeer niet wordt beperkt. De functie voor Azure-metrieken van de Azure Portal gebruikt de gegevens in deze tabel om grafieken te maken of om waarschuwingen te activeren. De tabel naam is de samen voeging van deze teken reeksen:
+Wanneer u opgeeft `performanceCounters` , schrijft Lad altijd gegevens naar een tabel in azure Storage. U kunt dezelfde gegevens schrijven naar JSON-blobs en/of Event Hubs, maar u kunt het opslaan van gegevens naar een tabel niet uitschakelen. Alle exemplaren van de diagnostische uitbrei ding die is geconfigureerd voor gebruik van dezelfde opslag accountnaam en-eind punt, voegen hun metrische gegevens en Logboeken toe aan dezelfde tabel. Als er te veel virtuele machines naar dezelfde tabel partitie schrijven, kan Azure de schrijf bewerkingen naar die partitie beperken. De instelling eventVolume zorgt ervoor dat vermeldingen worden verdeeld over 1 (klein), 10 (gemiddeld) of 100 (grote) verschillende partities. Normaal gesp roken is ' medium ' voldoende om ervoor te zorgen dat verkeer niet wordt beperkt. De functie voor Azure-metrieken van de Azure Portal gebruikt de gegevens in deze tabel om grafieken te maken of om waarschuwingen te activeren. De tabel naam is de samen voeging van deze teken reeksen:
 
 * `WADMetrics`
 * De "scheduledTransferPeriod" voor de geaggregeerde waarden die in de tabel zijn opgeslagen
 * `P10DV2S`
 * Een datum, in de vorm "JJJMMDD", die elke 10 dagen verandert
 
-Voor beelden `WADMetricsPT1HP10DV2S20170410` zijn `WADMetricsPT1MP10DV2S20170609`en.
+Voor beelden zijn `WADMetricsPT1HP10DV2S20170410` en `WADMetricsPT1MP10DV2S20170609` .
 
 #### <a name="syslogevents"></a>syslogEvents
 
@@ -384,15 +399,15 @@ De syslogEventConfiguration-verzameling heeft één vermelding voor elke syslog-
 Element | Waarde
 ------- | -----
 wastafel | Een door komma's gescheiden lijst met de namen van de sinks waarnaar afzonderlijke logboek gebeurtenissen worden gepubliceerd. Alle logboek gebeurtenissen die overeenkomen met de beperkingen in syslogEventConfiguration, worden gepubliceerd naar elke vermelde sink. Voor beeld: "EHforsyslog"
-facilityName | De naam van een syslog-faciliteit (bijvoorbeeld\_' Log User ' of\_' Log LOCAL0 '). Zie de sectie ' faciliteit ' op de [pagina syslog man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst.
-minSeverity | Een niveau van syslog-Ernst (zoals ' logboek\_fout ' of ' logboek\_gegevens '). Zie de sectie ' niveau ' van de [pagina syslog-man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst. De extensie legt gebeurtenissen vast die zijn verzonden naar de faciliteit op of boven het opgegeven niveau.
+facilityName | De naam van een syslog-faciliteit (bijvoorbeeld ' LOG \_ User ' of ' Log \_ LOCAL0 '). Zie de sectie ' faciliteit ' op de [pagina syslog man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst.
+minSeverity | Een niveau van syslog-Ernst (zoals ' logboek \_ fout ' of ' logboek \_ gegevens '). Zie de sectie ' niveau ' van de [pagina syslog-man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst. De extensie legt gebeurtenissen vast die zijn verzonden naar de faciliteit op of boven het opgegeven niveau.
 
-Wanneer u opgeeft `syslogEvents`, schrijft Lad altijd gegevens naar een tabel in azure Storage. U kunt dezelfde gegevens schrijven naar JSON-blobs en/of Event Hubs, maar u kunt het opslaan van gegevens naar een tabel niet uitschakelen. Het partitioneren van deze tabel is hetzelfde als de beschrijving voor `performanceCounters`. De tabel naam is de samen voeging van deze teken reeksen:
+Wanneer u opgeeft `syslogEvents` , schrijft Lad altijd gegevens naar een tabel in azure Storage. U kunt dezelfde gegevens schrijven naar JSON-blobs en/of Event Hubs, maar u kunt het opslaan van gegevens naar een tabel niet uitschakelen. Het partitioneren van deze tabel is hetzelfde als de beschrijving voor `performanceCounters` . De tabel naam is de samen voeging van deze teken reeksen:
 
 * `LinuxSyslog`
 * Een datum, in de vorm "JJJMMDD", die elke 10 dagen verandert
 
-Voor beelden `LinuxSyslog20170410` zijn `LinuxSyslog20170609`en.
+Voor beelden zijn `LinuxSyslog20170410` en `LinuxSyslog20170609` .
 
 ### <a name="perfcfg"></a>perfCfg
 
@@ -468,7 +483,7 @@ PercentPrivilegedTime | Niet-actieve tijd, het percentage dat is uitgegeven in d
 
 De eerste vier prestatie meter items moeten worden opgeteld bij 100%. De laatste drie tellers zijn ook opgeteld bij 100%; ze onderverdelen de som van PercentProcessorTime, PercentIOWaitTime en PercentInterruptTime.
 
-Stel `"condition": "IsAggregate=TRUE"`in om een enkele metrische waarde voor alle processors te verkrijgen. Stel `"condition": "Name=\\"1\\""`in om een metrische waarde voor een specifieke processor te verkrijgen, zoals de tweede logische processor van een virtuele machine met vier vCPU. De logische processor nummers bevinden zich `[0..n-1]`in het bereik.
+Stel in om een enkele metrische waarde voor alle processors te verkrijgen `"condition": "IsAggregate=TRUE"` . Stel in om een metrische waarde voor een specifieke processor te verkrijgen, zoals de tweede logische processor van een virtuele machine met vier vCPU `"condition": "Name=\\"1\\""` . De logische processor nummers bevinden zich in het bereik `[0..n-1]` .
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>ingebouwde metrische gegevens voor de klasse Memory
 
@@ -505,7 +520,7 @@ TotalRxErrors | Aantal ontvangst fouten sinds opstarten
 TotalTxErrors | Aantal verzend fouten sinds het opstarten
 TotalCollisions | Aantal conflicten dat is gerapporteerd door de netwerk poorten sinds het opstarten
 
- Hoewel deze klasse wordt instantied, biedt LAD geen ondersteuning voor het vastleggen van netwerk metrieken die zijn geaggregeerd op alle netwerk apparaten. Voor het verkrijgen van de metrische gegevens voor een specifieke interface, zoals eth0, `"condition": "InstanceID=\\"eth0\\""`set.
+ Hoewel deze klasse wordt instantied, biedt LAD geen ondersteuning voor het vastleggen van netwerk metrieken die zijn geaggregeerd op alle netwerk apparaten. Voor het verkrijgen van de metrische gegevens voor een specifieke interface, zoals eth0, set `"condition": "InstanceID=\\"eth0\\""` .
 
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>ingebouwde metrische gegevens voor de klasse File System
 
@@ -526,7 +541,7 @@ ReadsPerSecond | Lees bewerkingen per seconde
 WritesPerSecond | Schrijf bewerkingen per seconde
 TransfersPerSecond | Lees-of schrijf bewerkingen per seconde
 
-Geaggregeerde waarden voor alle bestands systemen kunnen worden verkregen door in `"condition": "IsAggregate=True"`te stellen. Waarden voor een specifiek gekoppeld bestands systeem, zoals '/mnt ', kunnen worden verkregen door in te `"condition": 'Name="/mnt"'`stellen. 
+Geaggregeerde waarden voor alle bestands systemen kunnen worden verkregen door in te stellen `"condition": "IsAggregate=True"` . Waarden voor een specifiek gekoppeld bestands systeem, zoals '/mnt ', kunnen worden verkregen door in te stellen `"condition": 'Name="/mnt"'` . 
 
 **Opmerking**: als u de Azure-Portal gebruikt in plaats van JSON, is het veld voor de juiste voorwaarde waarde name = '/mnt '
 
@@ -547,7 +562,7 @@ ReadBytesPerSecond | Aantal gelezen bytes per seconde
 WriteBytesPerSecond | Aantal geschreven bytes per seconde
 BytesPerSecond | Aantal gelezen of geschreven bytes per seconde
 
-Geaggregeerde waarden voor alle schijven kunnen worden verkregen door in `"condition": "IsAggregate=True"`te stellen. Als u informatie wilt ophalen voor een specifiek apparaat (bijvoorbeeld/dev/sdf1), stelt `"condition": "Name=\\"/dev/sdf1\\""`u in.
+Geaggregeerde waarden voor alle schijven kunnen worden verkregen door in te stellen `"condition": "IsAggregate=True"` . Als u informatie wilt ophalen voor een specifiek apparaat (bijvoorbeeld/dev/sdf1), stelt u in `"condition": "Name=\\"/dev/sdf1\\""` .
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>LAD 3.0 via de CLI installeren en configureren
 
@@ -557,7 +572,7 @@ Ervan uitgaande dat uw beveiligde instellingen zich in het bestand PrivateConfig
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
 ```
 
-De opdracht gaat ervan uit dat u gebruikmaakt van de Azure resource management-modus (arm) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over`azure config mode asm`naar de modus ASM () en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](https://docs.microsoft.com/azure/xplat-cli-connect)voor meer informatie.
+De opdracht gaat ervan uit dat u gebruikmaakt van de Azure resource management-modus (arm) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over naar de modus ASM ( `azure config mode asm` ) en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](https://docs.microsoft.com/azure/xplat-cli-connect)voor meer informatie.
 
 ## <a name="an-example-lad-30-configuration"></a>Een voor beeld van een LAD-configuratie van 3,0
 
@@ -618,9 +633,9 @@ Deze persoonlijke instellingen configureren:
 Deze open bare instellingen veroorzaken LAD:
 
 * De gegevens voor het percentage van processor tijd en gebruikte schijf ruimte uploaden naar de `WADMetrics*` tabel
-* Berichten van de syslog-faciliteit ' gebruiker ' en de ernst ' info ' uploaden `LinuxSyslog*` naar de tabel
+* Berichten van de syslog-faciliteit ' gebruiker ' en de ernst ' info ' uploaden naar de `LinuxSyslog*` tabel
 * OMI-query resultaten (PercentProcessorTime en PercentIdleTime) uploaden naar de benoemde `LinuxCPU` tabel
-* Toegevoegde regels in het bestand `/var/log/myladtestlog` uploaden naar de `MyLadTestLog` tabel
+* Toegevoegde regels in het bestand uploaden `/var/log/myladtestlog` naar de `MyLadTestLog` tabel
 
 In elk geval worden gegevens ook geüpload naar:
 
@@ -714,7 +729,7 @@ De `resourceId` in de configuratie moet overeenkomen met die van de VM of de sch
 
 Gebruik de Azure Portal om prestatie gegevens weer te geven of waarschuwingen in te stellen:
 
-![installatiekopie](./media/diagnostics-linux/graph_metrics.png)
+![image](./media/diagnostics-linux/graph_metrics.png)
 
 De `performanceCounters` gegevens worden altijd opgeslagen in een Azure Storage tabel. Azure Storage-Api's zijn beschikbaar voor veel talen en platforms.
 
@@ -727,7 +742,7 @@ Daarnaast kunt u deze hulpprogram ma's voor de gebruikers interface gebruiken om
 
 Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gegenereerde Azure Storage tabellen en containers van een correct geconfigureerde LAD 3,0-extensie op een test-VM. De installatie kopie komt niet exact overeen met de voor [beeld-LAD 3,0-configuratie](#an-example-lad-30-configuration).
 
-![installatiekopie](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
 Raadpleeg de relevante [Event hubs-documentatie](../../event-hubs/event-hubs-what-is-event-hubs.md) voor meer informatie over het gebruiken van berichten die zijn gepubliceerd op een event hubs-eind punt.
 

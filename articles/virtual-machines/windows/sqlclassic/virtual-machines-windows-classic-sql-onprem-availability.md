@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978050"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017576"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>On-premises AlwaysOn-beschikbaarheidsgroepen uitbreiden naar Azure
 AlwaysOn-beschikbaarheids groepen bieden een hoge Beschik baarheid voor groepen data base door secundaire replica's toe te voegen. Met deze replica's kunnen data bases mislukken bij een storing. Daarnaast kunnen ze worden gebruikt voor het offloaden van Lees-workloads of back-uptaken.
@@ -41,7 +41,7 @@ In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebr
 > [!IMPORTANT]
 > De **wizard Azure replica toevoegen** ondersteunt alleen virtuele machines die zijn gemaakt met het klassieke implementatie model. Nieuwe VM-implementaties moeten het nieuwere Resource Manager-model gebruiken. Als u Vm's gebruikt met Resource Manager, moet u de secundaire Azure-replica hand matig toevoegen met behulp van Transact-SQL-opdrachten (deze worden hier niet weer gegeven). Deze wizard werkt niet in het Resource Manager-scenario.
 
-1. Vouw in SQL Server Management Studio altijd de**beschikbaarheids groepen** > met **hoge Beschik baarheid** > uit **[naam van uw beschikbaarheids groep]**.
+1. Vouw in SQL Server Management Studio altijd de beschikbaarheids groepen met **hoge Beschik baarheid**uit  >  **Availability Groups**  >  **[naam van uw beschikbaarheids groep]**.
 2. Klik met de rechter muisknop op **beschikbaarheids replica's**en klik vervolgens op **replica toevoegen**.
 3. Standaard wordt de **wizard replica toevoegen aan beschikbaarheids groep** weer gegeven. Klik op **Volgende**.  Als u de optie **Deze pagina niet opnieuw weer geven** onder aan de pagina hebt geselecteerd tijdens een vorige keer dat deze wizard wordt gestart, wordt dit scherm niet weer gegeven.
    
@@ -90,7 +90,7 @@ In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebr
 Nadat de beschikbaarheids groep is gemaakt, maakt u een listener voor clients om verbinding te maken met de replica's. Listeners sturen binnenkomende verbindingen naar de primaire of een alleen-lezen secundaire replica. Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](../classic/ps-sql-int-listener.md)voor meer informatie over listeners.
 
 ## <a name="next-steps"></a>Volgende stappen
-Naast het gebruik van de **wizard Azure replica toevoegen** om uw AlwaysOn-beschikbaarheids groep uit te breiden naar Azure, kunt u ook enkele SQL Server workloads volledig naar Azure verplaatsen. Zie [een SQL Server virtuele machine inrichten in azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)om aan de slag te gaan.
+Naast het gebruik van de **wizard Azure replica toevoegen** om uw AlwaysOn-beschikbaarheids groep uit te breiden naar Azure, kunt u ook enkele SQL Server workloads volledig naar Azure verplaatsen. Zie [een SQL Server virtuele machine inrichten in azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)om aan de slag te gaan.
 
-Zie [SQL Server op azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
+Zie [SQL Server op azure virtual machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
 

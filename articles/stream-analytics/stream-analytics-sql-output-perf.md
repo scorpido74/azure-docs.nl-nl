@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839110"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018783"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
 
 In dit artikel worden tips beschreven voor betere schrijf doorvoer prestaties wanneer u gegevens laadt in SQL Azure data base met behulp van Azure Stream Analytics.
 
-SQL-uitvoer in Azure Stream Analytics ondersteunt schrijven parallel als een optie. Met deze optie kunt u [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) taak topologieën maken waarbij meerdere uitvoer partities parallel worden geschreven naar de doel tabel. Het inschakelen van deze optie in Azure Stream Analytics is echter mogelijk niet voldoende voor hogere door Voer, omdat deze aanzienlijk afhankelijk is van de SQL Azure database configuratie en het tabel schema. De keuze van indexen, cluster sleutel, index opvul factor en compressie hebben invloed op de tijd voor het laden van tabellen. Zie voor meer informatie over het optimaliseren van uw SQL Azure-Data Base voor het verbeteren van de prestaties van query's en laden op basis van interne benchmarks [SQL database prestatie richtlijnen](../sql-database/sql-database-performance-guidance.md). De volg orde van schrijf bewerkingen is niet gegarandeerd bij het parallel schrijven naar SQL Azure data base.
+SQL-uitvoer in Azure Stream Analytics ondersteunt schrijven parallel als een optie. Met deze optie kunt u [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) taak topologieën maken waarbij meerdere uitvoer partities parallel worden geschreven naar de doel tabel. Het inschakelen van deze optie in Azure Stream Analytics is echter mogelijk niet voldoende voor hogere door Voer, omdat deze aanzienlijk afhankelijk is van de SQL Azure database configuratie en het tabel schema. De keuze van indexen, cluster sleutel, index opvul factor en compressie hebben invloed op de tijd voor het laden van tabellen. Zie voor meer informatie over het optimaliseren van uw SQL Azure-Data Base voor het verbeteren van de prestaties van query's en laden op basis van interne benchmarks [SQL database prestatie richtlijnen](../azure-sql/database/performance-guidance.md). De volg orde van schrijf bewerkingen is niet gegarandeerd bij het parallel schrijven naar SQL Azure data base.
 
 Hier vindt u enkele configuraties binnen elke service die de algehele door Voer van uw oplossing kunnen helpen verbeteren.
 
@@ -37,7 +37,7 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 
 - **Gepartitioneerde tabel en indexen** : door gebruik te maken van een [gepartitioneerde](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-tabel en gepartitioneerde indexen in de tabel met dezelfde kolom als uw partitie sleutel (bijvoorbeeld PartitionId) kunnen de conflicten tussen partities tijdens het schrijven aanzienlijk verminderen. Voor een gepartitioneerde tabel moet u een [partitie functie](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) en een [partitie schema](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) maken voor de primaire bestands groep. Hierdoor wordt ook de beschik baarheid van bestaande gegevens verhoogd terwijl er nieuwe gegevens worden geladen. De i/o-limiet voor logboeken kan worden bereikt op basis van het aantal partities dat kan worden verhoogd door de SKU bij te werken.
 
-- **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel overtredingen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door [de\_sleutel\_optie dubbele negeren](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) in te stellen op uw indexen.
+- **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel overtredingen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door [de \_ \_ sleutel optie dubbele negeren](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) in te stellen op uw indexen.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory-en in-Memory-tabellen
 

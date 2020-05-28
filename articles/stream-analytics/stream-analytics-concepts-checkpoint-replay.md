@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426394"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020605"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Controle punten en concepten voor opnieuw afspelen in Azure Stream Analytics taken
 In dit artikel worden het interne controle punt en de concepten voor het opnieuw afspelen van Azure Stream Analytics beschreven en de invloed hiervan op de taak herstel. Telkens wanneer een Stream Analytics taak wordt uitgevoerd, wordt de status informatie intern onderhouden. Deze status informatie wordt periodiek opgeslagen in een controle punt. In sommige gevallen wordt de controlepunt informatie gebruikt voor taak herstel als een taak fout of een upgrade optreedt. In andere gevallen kan het controle punt niet worden gebruikt voor herstel, en moet er een herhaling worden uitgevoerd.
@@ -47,7 +47,7 @@ Micro soft werkt af en toe de binaire bestanden die de Stream Analytics-taken ui
 
 Op dit moment wordt de indeling van het herstel controlepunt niet bewaard tussen upgrades. Als gevolg hiervan moet de status van de streaming-query volledig worden hersteld met behulp van de replay-techniek. Als u wilt toestaan dat Stream Analytics-taken exact dezelfde invoer van tevoren herhalen, is het belang rijk om het Bewaar beleid voor de bron gegevens in te stellen op ten minste de venster grootten in uw query. Als u dit niet doet, kan dit leiden tot onjuiste of gedeeltelijke resultaten tijdens de upgrade van de service, omdat de bron gegevens mogelijk niet voldoende lang genoeg zijn om de volledige venster grootte toe te voegen.
 
-Over het algemeen geldt dat de hoeveelheid opnieuw afspelen evenredig is met de grootte van het venster vermenigvuldigd met het gemiddelde gebeurtenis percentage. Een voor beeld: voor een taak met een invoer frequentie van 1000 gebeurtenissen per seconde, wordt een venster grootte van meer dan één uur beschouwd als een grote replay grootte. Het kan Maxi maal één uur duren voordat de gegevens opnieuw worden verwerkt om de status te initialiseren, zodat deze volledige en juiste resultaten kan veroorzaken. Dit kan leiden tot een vertraagde uitvoer (geen uitvoer) gedurende een langere periode. Query's zonder Windows of andere tijdelijke Opera Tors, zoals `JOIN` of `LAG`, zouden geen herhaling hebben.
+Over het algemeen geldt dat de hoeveelheid opnieuw afspelen evenredig is met de grootte van het venster vermenigvuldigd met het gemiddelde gebeurtenis percentage. Een voor beeld: voor een taak met een invoer frequentie van 1000 gebeurtenissen per seconde, wordt een venster grootte van meer dan één uur beschouwd als een grote replay grootte. Het kan Maxi maal één uur duren voordat de gegevens opnieuw worden verwerkt om de status te initialiseren, zodat deze volledige en juiste resultaten kan veroorzaken. Dit kan leiden tot een vertraagde uitvoer (geen uitvoer) gedurende een langere periode. Query's zonder Windows of andere tijdelijke Opera Tors, zoals `JOIN` of `LAG` , zouden geen herhaling hebben.
 
 ## <a name="estimate-replay-catch-up-time"></a>Indruk tijd van raming voor replay
 Als u de lengte van de vertraging wilt schatten als gevolg van een service-upgrade, kunt u deze techniek volgen:
@@ -58,7 +58,7 @@ Als u de lengte van de vertraging wilt schatten als gevolg van een service-upgra
 
 3. De tijd meten tussen de begin tijd en de eerste uitvoer die wordt gegenereerd. De tijd is de hoeveelheid vertraging die de taak zou opleveren tijdens een service-upgrade.
 
-4. Als de vertraging te lang is, probeert u de taak te partitioneren en het aantal SUs te verhogen. de belasting wordt dus naar meer knoop punten verdeeld. U kunt ook de venster grootten in uw query verkleinen en verdere aggregatie of andere stateful verwerking uitvoeren op de uitvoer die wordt geproduceerd door de Stream Analytics-taak in de stroomafwaartse Sink (bijvoorbeeld met behulp van Azure SQL database).
+4. Als de vertraging te lang is, probeert u de taak te partitioneren en het aantal SUs te verhogen. de belasting wordt dus naar meer knoop punten verdeeld. U kunt ook de venster grootten in uw query verkleinen en verdere aggregatie of andere stateful verwerking uitvoeren op de uitvoer die wordt geproduceerd door de Stream Analytics-taak in de stroomafwaartse Sink (bijvoorbeeld met behulp van Azure SQL Database).
 
 Voor algemene service stabiliteits bezorgdheid tijdens de upgrade van essentiële taken kunt u overwegen dubbele taken uit te voeren in gekoppelde Azure-regio's. Zie voor meer informatie [garantie stream Analytics taak betrouw baarheid tijdens service-updates](stream-analytics-job-reliability.md).
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c2f171c79423e0cfe8b57c05b8248679f9ada9f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25517b48ad7dcddffaaeb4ac2f86397d99e0be2c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017508"
 ---
 # <a name="azure-activity-log-event-schema"></a>Gebeurtenis schema voor Azure-activiteiten logboek
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema voor elke categorie beschreven. 
@@ -287,7 +287,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 
 
 ## <a name="alert"></a>Waarschuwing
-Deze categorie bevat de registratie van alle activeringen van Azure-waarschuwingen. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' CPU% op myVM is in de afgelopen vijf minuten meer dan 80. ' Een groot aantal Azure-systemen heeft een waarschuwings concept: u kunt een regel van een bepaalde sortering definiëren en een melding ontvangen wanneer de voor waarden overeenkomen met die regel. Telkens wanneer een ondersteund Azure-waarschuwings type ' activeren ' of aan de voor waarden wordt voldaan om een melding te genereren, wordt er ook een record van de activering naar deze categorie van het activiteiten logboek gepusht.
+Deze categorie bevat de registratie van alle activeringen van klassieke Azure-waarschuwingen. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' CPU% op myVM is in de afgelopen vijf minuten meer dan 80. ' Een groot aantal Azure-systemen heeft een waarschuwings concept: u kunt een regel van een bepaalde sortering definiëren en een melding ontvangen wanneer de voor waarden overeenkomen met die regel. Telkens wanneer een ondersteund Azure-waarschuwings type ' activeren ' of aan de voor waarden wordt voldaan om een melding te genereren, wordt er ook een record van de activering naar deze categorie van het activiteiten logboek gepusht.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
 
