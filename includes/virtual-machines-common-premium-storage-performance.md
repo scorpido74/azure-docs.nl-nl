@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821508"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017598"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -333,7 +333,7 @@ Een belang rijke configuratie van schijf striping is de Stripe-grootte. De Strip
 
 Als een i/o-aanvraag die door uw toepassing is gegenereerd, groter is dan de schijf Stripe-grootte, wordt deze door het opslag systeem naar de grenzen van Stripe-eenheden op meer dan één schijf geschreven. Wanneer het tijd is om toegang te krijgen tot deze gegevens, moet er meer dan één Stripe-eenheid worden verzameld om de aanvraag te volt ooien. Het cumulatieve effect van dit gedrag kan leiden tot aanzienlijke prestatie vermindering. Aan de andere kant, als de IO-aanvraag grootte kleiner is dan de Stripe-grootte en als deze wille keurige aard is, kunnen de i/o-aanvragen op dezelfde schijf worden toegevoegd die een knel punt veroorzaken en uiteindelijk de i/o-prestaties verlagen.
 
-Afhankelijk van het type werk belasting dat door uw toepassing wordt uitgevoerd, kiest u de juiste Stripe-grootte. Gebruik voor wille keurige kleine i/o-aanvragen een kleinere Stripe-grootte. Dat voor grote sequentiële IO-aanvragen een grotere Stripe-grootte gebruiken. Bekijk de aanbevelingen voor de Stripe-grootte voor de toepassing die u wilt uitvoeren op Premium Storage. Configureer voor SQL Server de Stripe-grootte van 64 KB voor OLTP-workloads en 256 KB voor werk belastingen voor gegevens opslag. Zie [Aanbevolen procedures voor de prestaties van SQL Server op virtuele machines van Azure voor](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) meer informatie.
+Afhankelijk van het type werk belasting dat door uw toepassing wordt uitgevoerd, kiest u de juiste Stripe-grootte. Gebruik voor wille keurige kleine i/o-aanvragen een kleinere Stripe-grootte. Dat voor grote sequentiële IO-aanvragen een grotere Stripe-grootte gebruiken. Bekijk de aanbevelingen voor de Stripe-grootte voor de toepassing die u wilt uitvoeren op Premium Storage. Configureer voor SQL Server de Stripe-grootte van 64 KB voor OLTP-workloads en 256 KB voor werk belastingen voor gegevens opslag. Zie [Aanbevolen procedures voor de prestaties van SQL Server op virtuele machines van Azure voor](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) meer informatie.
 
 > [!NOTE]
 > U kunt Maxi maal 32 Premium-opslag schijven samen voegen op een DS-serie VM en 64 Premium-opslag schijven op een GS-serie VM.

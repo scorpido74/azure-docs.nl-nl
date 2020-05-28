@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721367"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022432"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
 
@@ -62,7 +62,7 @@ BCP is een opdracht regel programma dat wordt geïnstalleerd met SQL Server en i
 >
 >
 
-1. Zorg ervoor dat de data base en de tabellen zijn gemaakt op de doel-SQL Server Data Base. Hier volgt een voor beeld van hoe u dit kunt doen `Create Database` met `Create Table` behulp van de-opdrachten:
+1. Zorg ervoor dat de data base en de tabellen zijn gemaakt op de doel-SQL Server Data Base. Hier volgt een voor beeld van hoe u dit kunt doen met behulp van de- `Create Database` `Create Table` opdrachten:
 
     ```sql
     CREATE DATABASE <database_name>
@@ -174,7 +174,7 @@ U kunt ook de volgende migratie strategieën gebruiken:
 Hieronder vindt u een beschrijving van elk van deze opties:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Een SQL Server-Data Base implementeren op een Microsoft Azure VM-wizard
-De **wizard een SQL Server-Data Base implementeren naar een Microsoft Azure VM** is een eenvoudige en aanbevolen manier om gegevens van een on-premises SQL Server exemplaar te verplaatsen naar SQL Server op een virtuele machine van Azure. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)voor gedetailleerde stappen en een bespreking van andere alternatieven.
+De **wizard een SQL Server-Data Base implementeren naar een Microsoft Azure VM** is een eenvoudige en aanbevolen manier om gegevens van een on-premises SQL Server exemplaar te verplaatsen naar SQL Server op een virtuele machine van Azure. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)voor gedetailleerde stappen en een bespreking van andere alternatieven.
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exporteren naar plat bestand
 Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQL Server bulksgewijs te exporteren, zoals wordt beschreven in het onderwerp [bulksgewijs importeren en exporteren van gegevens (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) . In dit document wordt het bulksgewijze Kopieer programma (BCP) als voor beeld behandeld. Wanneer gegevens worden geëxporteerd naar een plat bestand, kunnen ze worden geïmporteerd in een andere SQL-Server met behulp van bulk import.
@@ -182,7 +182,7 @@ Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQ
 1. De gegevens van on-premises SQL Server exporteren naar een bestand met behulp van het BCP-hulp programma
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
-2. Maak de data base en de tabel op SQL Server VM in azure met `create database` behulp van de en `create table` voor het tabel schema dat u in stap 1 hebt geëxporteerd.
+2. Maak de data base en de tabel op SQL Server VM in azure met behulp van de `create database` en `create table` voor het tabel schema dat u in stap 1 hebt geëxporteerd.
 3. Maak een indelings bestand voor het beschrijven van het tabel schema van de gegevens die worden geëxporteerd/geïmporteerd. Details van het indelings bestand worden beschreven in [een indelings bestand maken (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
     Het genereren van bestanden opmaken bij het uitvoeren van BCP vanaf de SQL Server machine
@@ -210,9 +210,9 @@ Hieronder ziet u een scherm opname van de opties data base back-up/herstellen va
 ![Hulp programma SQL Server importeren][1]
 
 ## <a name="resources"></a>Resources
-[Een Data Base migreren naar SQL Server op een virtuele Azure-machine](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Een Data Base migreren naar SQL Server op een virtuele Azure-machine](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Overzicht van SQL Server op virtuele machines in Azure](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Overzicht van SQL Server op virtuele machines in Azure](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

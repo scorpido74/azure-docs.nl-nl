@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2020
+ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22f66a7be27f42bfd0305ad1eaf297ca8c8029fa
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245237"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996751"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -97,7 +97,7 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
-| Trend Micro: alle versies * | Windows Server-familie  | Nee | Ja |
+| Trend Micro – diepe beveiliging | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Linux-Server familie  | Nee | Klikt**\*** |
@@ -106,15 +106,11 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
  **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de werk ruimte Log Analytics die aan uw beveiligde abonnementen is gekoppeld. Het wordt niet weer gegeven in de Azure Security Center Portal.
 
 > [!NOTE]
-> - Voor de detectie van System Center Endpoint Protection (SCEP) op een virtuele machine met Windows Server 2008 R2 moet SCEP worden geïnstalleerd na Power Shell 3,0 (of een hogere versie).
-> - Detectie van Trend Micro bescherming wordt ondersteund voor diepe beveiligings agenten.  OfficeScan-agents worden niet ondersteund.
+> Voor de detectie van System Center Endpoint Protection (SCEP) op een virtuele machine met Windows Server 2008 R2 moet SCEP worden geïnstalleerd na Power Shell 3,0 (of een hogere versie).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [Security Center verzamelen van gegevens en de log Analytics-agent](security-center-enable-data-collection.md).
 - Meer informatie over het [Security Center beheren en beveiligen van gegevens](security-center-data-security.md).
-- Meer informatie over [het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center](security-center-planning-and-operations-guide.md).
 - Bekijk de [platforms die Security Center ondersteunen](security-center-os-coverage.md).
-- Meer informatie over [beveiliging tegen bedreigingen voor Windows-en Linux-machines in azure Security Center](threat-protection.md#windows-machines).
-- Vind [Veelgestelde vragen over Azure Security Center](faq-general.md).

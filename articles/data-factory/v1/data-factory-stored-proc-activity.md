@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931632"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113707"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server opgeslagen procedure-activiteit
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -84,7 +84,7 @@ In de volgende procedure wordt gebruikgemaakt van de opgeslagen procedure-activi
     ```
 
    > [!IMPORTANT]
-   > **Naam** en **behuizing** van de para meter (datetime in dit voor beeld) moet overeenkomen met de para meter die is opgegeven in de JSON van de pijp lijn/activiteit. Zorg ervoor dat **\@** in de opgeslagen procedure definitie wordt gebruikt als voor voegsel voor de para meter.
+   > **Naam** en **behuizing** van de para meter (datetime in dit voor beeld) moet overeenkomen met de para meter die is opgegeven in de JSON van de pijp lijn/activiteit. Zorg ervoor dat in de opgeslagen procedure definitie **\@** wordt gebruikt als voor voegsel voor de para meter.
 
 ### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
@@ -114,10 +114,10 @@ Nadat u de data factory hebt gemaakt, maakt u een gekoppelde Azure SQL-service w
    ![Nieuwe gegevens opslag](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Breng de volgende wijzigingen aan in het JSON-script:
 
-   1. Vervang `<servername>` door de naam van uw Azure SQL database-server.
-   2. Vervang `<databasename>` door de Data Base waarin u de tabel en de opgeslagen procedure hebt gemaakt.
-   3. Vervang `<username@servername>` door het gebruikers account dat toegang heeft tot de data base.
-   4. Vervang `<password>` door het wacht woord voor het gebruikers account.
+   1. Vervang door `<servername>` de naam van uw server.
+   2. Vervang door `<databasename>` de Data Base waarin u de tabel en de opgeslagen procedure hebt gemaakt.
+   3. Vervang door `<username@servername>` het gebruikers account dat toegang heeft tot de data base.
+   4. Vervang door `<password>` het wacht woord voor het gebruikers account.
 
       ![Nieuwe gegevens opslag](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. Klik op **implementeren** op de opdracht balk om de gekoppelde service te implementeren. Controleer of de AzureSqlLinkedService in de structuur weergave aan de linkerkant wordt weer gegeven.
@@ -159,7 +159,7 @@ Let op de volgende eigenschappen:
 
 - De eigenschap **type** wordt ingesteld op **SqlServerStoredProcedure**.
 - De **storedProcedureName** in type eigenschappen is ingesteld op **usp_sample** (naam van de opgeslagen procedure).
-- De sectie **storedProcedureParameters** bevat één para meter met de naam **DateTime**. De naam en het hoofdletter gebruik van de para meter in JSON moeten overeenkomen met de naam en de behuizing van de para meter in de definitie van de opgeslagen procedure. Als u null moet door geven voor een para meter, gebruikt u `"param1": null` de syntaxis: (alle kleine letters).
+- De sectie **storedProcedureParameters** bevat één para meter met de naam **DateTime**. De naam en het hoofdletter gebruik van de para meter in JSON moeten overeenkomen met de naam en de behuizing van de para meter in de definitie van de opgeslagen procedure. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: `"param1": null` (alle kleine letters).
 
 1. Klik op **... Meer** op de opdracht balk en klik op **nieuwe pijp lijn**.
 2. Kopieer/plak het volgende JSON-fragment:
@@ -204,10 +204,10 @@ Let op de volgende eigenschappen:
 2. In de **diagram weergave**ziet u een overzicht van de pijp lijnen en gegevens sets die in deze zelf studie worden gebruikt.
 
     ![diagram tegel](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. Dubbel klik in de diagram weergave op de gegevensset `sprocsampleout`. U ziet de segmenten met de status gereed. Er moeten vijf segmenten zijn omdat er een segment wordt geproduceerd voor elk uur tussen de begin-en eind tijd van de JSON.
+3. Dubbel klik in de diagram weergave op de gegevensset `sprocsampleout` . U ziet de segmenten met de status gereed. Er moeten vijf segmenten zijn omdat er een segment wordt geproduceerd voor elk uur tussen de begin-en eind tijd van de JSON.
 
     ![diagram tegel](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Wanneer een segment de status **gereed** heeft, voert u `select * from sampletable` een query uit op de Azure-SQL database om te controleren of de gegevens in de tabel zijn ingevoegd door de opgeslagen procedure.
+4. Wanneer een segment de status **gereed** heeft, voert u een query uit op `select * from sampletable` de Azure-SQL database om te controleren of de gegevens in de tabel zijn ingevoegd door de opgeslagen procedure.
 
    ![Uitvoergegevens](./media/data-factory-stored-proc-activity/output.png)
 

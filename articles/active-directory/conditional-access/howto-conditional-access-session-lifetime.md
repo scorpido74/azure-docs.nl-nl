@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bba37b5d72bd9dca2e10c699f4ba259319a6c71
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995076"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Verificatie sessie beheer met voorwaardelijke toegang configureren
 
@@ -50,6 +50,10 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 - Web-client voor teams
 - Dynamics CRM Online
 - Azure Portal
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Aanmeldings frequentie van gebruikers en multi-factor Authentication
+
+De aanmeldings frequentie is eerder alleen toegepast op de eerste factor Authentication op apparaten die zijn toegevoegd aan Azure AD, hybride Azure AD en geregistreerde Azure AD. Er is geen eenvoudige manier voor onze klanten om multi-factor Authentication (MFA) op deze apparaten opnieuw af te dwingen. Op basis van feedback van klanten is de aanmeldings frequentie ook van toepassing op MFA.
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Aanmeldings frequentie van gebruikers en apparaat-id's
 
@@ -90,7 +94,7 @@ Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Prem
    > [!NOTE]
    > Het is raadzaam om een gelijke frequentie voor verificatie prompts in te stellen voor Key Microsoft Office-apps, zoals Exchange Online en share point online voor een optimale gebruikers ervaring.
 
-1. Ga naar de **Access controls** > -**sessie** en klik op **aanmeldings frequentie**
+1. Ga naar de **Access controls**-  >  **sessie** en klik op **aanmeldings frequentie**
 1. Voer de vereiste waarde van dagen en uren in het eerste tekstvak in
 1. Een waarde van **uren** of **dagen** selecteren in de vervolg keuzelijst
 1. Uw beleid opslaan
@@ -109,7 +113,7 @@ Als u een andere aanmeldings frequentie hebt geconfigureerd voor verschillende w
    > [!NOTE]
    > Houd er rekening mee dat dit besturings element vereist dat alle Cloud-apps als voor waarde worden gekozen. De browser sessie persistentie wordt bepaald door het verificatie sessie token. Alle tabbladen in een browser sessie delen één sessie token en daarom moeten alle gebruikers de persistentie status delen.
 
-1. Ga naar de **Access controls** > -**sessie** en klik op **permanente browser sessie**
+1. Ga naar de **Access controls**-  >  **sessie** en klik op **permanente browser sessie**
 1. Selecteer een waarde in de vervolg keuzelijst
 1. Beleid opslaan
 

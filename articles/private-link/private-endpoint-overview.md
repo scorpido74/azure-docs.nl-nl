@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849651"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022194"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -24,7 +24,7 @@ Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig 
 
 |Eigenschap  |Beschrijving |
 |---------|---------|
-|Name    |    Een unieke naam binnen de resource groep.      |
+|Naam    |    Een unieke naam binnen de resource groep.      |
 |Subnet    |  Het subnet voor het implementeren en toewijzen van privé-IP-adressen van een virtueel netwerk. Zie de sectie beperkingen in dit artikel voor meer informatie over het subnet.         |
 |Persoonlijke koppelings bron    |   De bron van de persoonlijke koppeling om verbinding te maken met behulp van de resource-ID of alias, uit de lijst met beschik bare typen. Er wordt een unieke netwerk-id gegenereerd voor al het verkeer dat wordt verzonden naar deze bron.       |
 |Doel-subresource   |      De subresource waarmee verbinding moet worden gemaakt. Elk resource type voor een persoonlijke koppeling heeft verschillende opties om te selecteren op basis van voor keur.    |
@@ -86,7 +86,7 @@ U kunt uw workloads volledig vergren delen voor het openen van open bare eind pu
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Toegang tot een persoonlijke koppelings bron via een goedkeurings werk stroom 
 U kunt verbinding maken met een persoonlijke koppelings bron met behulp van de volgende verbindings goedkeurings methoden:
-- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: micro soft. \<>/<van provider resource_type>/privateEndpointConnectionApproval/action
+- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: micro soft. \<Provider> /<resource_type>/privateEndpointConnectionApproval/action
 - **Hand matige** aanvraag wanneer u niet over de vereiste machtigingen beschikt en u toegang wilt aanvragen. Er wordt een goedkeurings werk stroom gestart. Het privé-eindpunt en de erop volgende verbinding met het privé-eindpunt worden in de status In behandeling gemaakt. De eigenaar van de Private Link-resource moet de verbinding goedkeuren. Nadat het is goedgekeurd, is het persoonlijke eind punt ingeschakeld voor het normaal verzenden van verkeer, zoals wordt weer gegeven in het volgende goedkeurings werk stroom diagram.  
 
 ![workflowgoedkeuring](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,9 +124,9 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van portal](create-private-endpoint-portal.md)
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van Power shell](create-private-endpoint-powershell.md)
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van CLI](create-private-endpoint-cli.md)
+- [Een persoonlijk eind punt maken voor SQL Database met behulp van portal](create-private-endpoint-portal.md)
+- [Een persoonlijk eind punt maken voor SQL Database met behulp van Power shell](create-private-endpoint-powershell.md)
+- [Een persoonlijk eind punt maken voor SQL Database met CLI](create-private-endpoint-cli.md)
 - [Een persoonlijk eind punt maken voor opslag account met behulp van portal](create-private-endpoint-storage-portal.md)
 - [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Uw eigen persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: naadloze eenmalige aanmelding-snel starten | Microsoft Docs'
+title: 'Azure AD Connect: naadloze eenmalige aanmelding | Microsoft Docs'
 description: In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Active Directory naadloze eenmalige aanmelding
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261201"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993487"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding implementeren
 
@@ -37,7 +37,7 @@ Zorg ervoor dat aan de volgende vereisten is voldaan:
 
 * **Uw Azure AD Connect-server instellen**: als u [Pass-Through-verificatie](how-to-connect-pta.md) gebruikt als uw aanmeldings methode, is er geen aanvullende controle op vereisten vereist. Als u [wachtwoord hash-synchronisatie](how-to-connect-password-hash-synchronization.md) gebruikt als uw aanmeldings methode en als er een firewall is tussen Azure AD Connect en Azure AD, moet u ervoor zorgen dat:
    - U gebruikt versie 1.1.644.0 of hoger van Azure AD Connect. 
-   - Als uw firewall of Proxy DNS-White List toestaat, white list u de verbindingen met de ** \*. msappproxy.net** -url's via poort 443. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
+   - Als uw firewall of proxy toestaat, voegt u de verbindingen toe aan de lijst met toegestane ** \* Msappproxy.net** -url's via poort 443. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
 
     >[!NOTE]
     >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u de synchronisatie van wacht woord-hash _niet_ wilt gebruiken in combi natie met Pass-Through-verificatie, raadpleegt u de opmerkingen bij de [Azure AD Connect-release](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) voor meer informatie.
@@ -93,15 +93,16 @@ Volg deze instructies om te controleren of naadloze SSO op de juiste wijze is in
 ![Azure Portal: Azure AD Connect deel venster](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Met naadloze SSO wordt een computer account `AZUREADSSOACC` gemaakt met de naam in uw on-premises Active Directory (AD) in elk AD-forest. Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts `AZUREADSSOACC` machtigingen heeft voor het computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben.
+> Met naadloze SSO wordt een computer account gemaakt `AZUREADSSOACC` met de naam in uw on-premises Active Directory (AD) in elk AD-forest. Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts machtigingen heeft voor het `AZUREADSSOACC` computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben.
 
 >[!NOTE]
-> Als u de architecturen van Pass-the-hash en referentie diefstal wilt gebruiken in uw on-premises omgeving, moet u de juiste wijzigingen `AZUREADSSOACC` aanbrengen om ervoor te zorgen dat het computer account niet in de quarantaine container wordt beëindigd. 
+> Als u de architecturen van Pass-the-hash en referentie diefstal wilt gebruiken in uw on-premises omgeving, moet u de juiste wijzigingen aanbrengen om ervoor te zorgen dat het `AZUREADSSOACC` computer account niet in de quarantaine container wordt beëindigd. 
 
 ## <a name="step-3-roll-out-the-feature"></a>Stap 3: de functie implementeren
 
-U kunt met behulp van de onderstaande instructies de naadloze SSO voor uw gebruikers geleidelijk uitrollen. U begint met het toevoegen van de volgende Azure AD-URL aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van groepsbeleid in Active Directory:
+U kunt met behulp van de onderstaande instructies de naadloze SSO voor uw gebruikers geleidelijk uitrollen. U begint met het toevoegen van de volgende Azure AD-Url's aan alle of geselecteerde intranet zone-instellingen van gebruikers met behulp van groepsbeleid in Active Directory:
 
+- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Daarnaast moet u de beleids instelling voor intranet zones met de naam **updates toestaan voor de status balk via script** inschakelen via Groepsbeleid. 
@@ -111,7 +112,7 @@ Daarnaast moet u de beleids instelling voor intranet zones met de naam **updates
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Waarom moet u de intranet zone-instellingen van gebruikers wijzigen?
 
-De browser berekent standaard automatisch de juiste zone, Internet of intranet, van een specifieke URL. Bijvoorbeeld: is `http://contoso/` toegewezen aan de intranet zone, terwijl `http://intranet.contoso.com/` wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden geen Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, tenzij u de URL expliciet toevoegt aan de intranet zone van de browser.
+De browser berekent standaard automatisch de juiste zone, Internet of intranet, van een specifieke URL. Bijvoorbeeld: is `http://contoso/` toegewezen aan de intranet zone, terwijl wordt `http://intranet.contoso.com/` toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden geen Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, tenzij u de URL expliciet toevoegt aan de intranet zone van de browser.
 
 Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzigen:
 
@@ -124,7 +125,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
 1. Open het Groepsbeleidsbeheer-editor-hulp programma.
 2. Bewerk het groeps beleid dat is toegepast op enkele of al uw gebruikers. In dit voor beeld wordt het **standaard domein beleid**gebruikt.
-3. Blader naar **gebruikers configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **Internet Explorer** > **Internet configuratie scherm** > **beveiliging**. Selecteer vervolgens de **lijst site naar zone toewijzing**.
+3. Blader naar **gebruikers configuratie**  >  **beleid**  >  **Beheersjablonen**  >  pagina**Windows-onderdelen**  >  **Internet Explorer**  >  **Internet configuratie scherm**  >  **beveiliging**. Selecteer vervolgens de **lijst site naar zone toewijzing**.
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Schakel het beleid in en voer de volgende waarden in het dialoog venster in:
    - **Waardenaam**: de Azure AD-URL waar de Kerberos-tickets worden doorgestuurd.
@@ -144,7 +145,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Blader naar **gebruikers configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **Internet Explorer** > Internet-**configuratie scherm** > **intranet zone**van**beveiligings pagina** > . Selecteer vervolgens **updates toestaan voor status balk via script**.
+6. Blader naar **gebruikers configuratie**  >  **beleid**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Internet Explorer**Internet-  >  **configuratie scherm**  >  **Security Page**  >  **intranet zone**van beveiligings pagina. Selecteer vervolgens **updates toestaan voor status balk via script**.
 
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +157,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
 1. Open het Groepsbeleidsbeheer-editor-hulp programma.
 2. Bewerk het groeps beleid dat is toegepast op enkele of al uw gebruikers. In dit voor beeld wordt het **standaard domein beleid**gebruikt.
-3. Bladeren naar **gebruikers configuratie** > **voor keuren** > **Windows Settings** > het**REGI ster** > **Nieuw** > **register item**.
+3. Bladeren naar **gebruikers configuratie**  >  **voor keuren**het  >  **Windows Settings**  >  **REGI ster**  >  **Nieuw**  >  **register item**.
 
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -175,7 +176,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (alle platformen)
 
 In Mozilla Firefox wordt niet automatisch Kerberos-verificatie gebruikt. Elke gebruiker moet de URL van Azure AD hand matig toevoegen aan hun Firefox-instellingen door de volgende stappen te volgen:
-1. Voer Firefox uit en `about:config` Voer in de adres balk in. Sluit alle meldingen die u ziet.
+1. Voer Firefox uit en voer `about:config` in de adres balk in. Sluit alle meldingen die u ziet.
 2. Zoek naar de voor keuren **netwerk. Negotiate-auth. Trusted-uri's** . In deze voor keur worden vertrouwde sites van Firefox voor Kerberos-verificatie weer gegeven.
 3. Klik met de rechter muisknop en selecteer **wijzigen**.
 4. Voer `https://autologon.microsoftazuread-sso.com` in het veld in.
@@ -187,19 +188,19 @@ Zorg ervoor dat de computer waarop het macOS wordt uitgevoerd, is gekoppeld aan 
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Micro soft Edge op basis van chroom (alle platformen)
 
-Als u de [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) of de [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL (`https://autologon.microsoftazuread-sso.com`) van Azure AD toevoegen.
+Als u de [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) of de [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL () van Azure AD toevoegen `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Micro soft Edge op basis van chroom (macOS en andere niet-Windows-platforms)
 
-Voor micro soft Edge op basis van chroom op Mac OS en andere niet-Windows-platforms, raadpleegt u [de micro soft Edge op basis van de lijst met chroom beleid](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) voor informatie over het toevoegen van de Azure AD-URL voor geïntegreerde verificatie voor de acceptatie lijst.
+Voor micro soft Edge op basis van chroom op macOS en andere niet-Windows-platforms, raadpleegt u [de micro soft Edge op basis van de lijst met chroom beleid](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) voor informatie over het toevoegen van de Azure AD-URL voor geïntegreerde verificatie voor uw acceptatie lijst.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle platformen)
 
-Als u de [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) of de [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL (`https://autologon.microsoftazuread-sso.com`) van Azure AD toevoegen.
+Als u de [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) of de [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) -beleids instellingen in uw omgeving hebt overschreven, moet u ook de URL () van Azure AD toevoegen `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS en andere niet-Windows-platforms)
 
-Voor Google Chrome op Mac OS en andere niet-Windows-platforms raadpleegt u [de lijst met Chroom project beleid](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) voor informatie over het white list van de Azure AD-URL voor geïntegreerde verificatie.
+Voor Google Chrome op macOS en andere niet-Windows-platforms raadpleegt u [de lijst met Chroom project beleid](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) voor informatie over het beheren van de acceptatie lijst voor de Azure AD-URL voor geïntegreerde verificatie.
 
 Het gebruik van groepsbeleid Active Directory uitbrei dingen van derden voor het implementeren van de Azure AD-URL naar Firefox en Google Chrome op Mac-gebruikers valt buiten het bereik van dit artikel.
 
@@ -216,11 +217,11 @@ Als u de functie voor een specifieke gebruiker wilt testen, moet u ervoor zorgen
   - U hebt [de functie](#step-3-roll-out-the-feature) door Groepsbeleid naar deze gebruiker samengevouwen.
 
 Het scenario testen waarbij de gebruiker alleen de gebruikers naam invoert, maar niet het wacht woord:
-   - Meld u aan `https://myapps.microsoft.com/` bij een nieuwe persoonlijke browser sessie.
+   - Meld u aan bij `https://myapps.microsoft.com/` een nieuwe persoonlijke browser sessie.
 
 Als u het scenario wilt testen waarbij de gebruiker de gebruikers naam of het wacht woord niet hoeft in te voeren, gebruikt u een van de volgende stappen: 
-   - Meld u aan `https://myapps.microsoft.com/contoso.onmicrosoft.com` bij een nieuwe persoonlijke browser sessie. Vervang *Contoso* door de naam van uw Tenant.
-   - Meld u aan `https://myapps.microsoft.com/contoso.com` bij een nieuwe persoonlijke browser sessie. Vervang *contoso.com* door een geverifieerd domein (niet een federatief domein) in uw Tenant.
+   - Meld u aan bij `https://myapps.microsoft.com/contoso.onmicrosoft.com` een nieuwe persoonlijke browser sessie. Vervang *Contoso* door de naam van uw Tenant.
+   - Meld u aan bij `https://myapps.microsoft.com/contoso.com` een nieuwe persoonlijke browser sessie. Vervang *contoso.com* door een geverifieerd domein (niet een federatief domein) in uw Tenant.
 
 ## <a name="step-5-roll-over-keys"></a>Stap 5: toetsen met rollen
 

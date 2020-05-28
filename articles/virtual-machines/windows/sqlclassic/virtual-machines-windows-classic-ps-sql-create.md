@@ -15,12 +15,12 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914786"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014873"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Een virtuele SQL Server-machine inrichten met Azure PowerShell (klassiek)
 
@@ -31,7 +31,7 @@ In dit artikel worden de stappen beschreven voor het maken van een SQL Server vi
 > [!NOTE] 
 > Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
-Voor de Resource Manager-versie van dit onderwerp raadpleegt [u een SQL Server virtuele machine inrichten met behulp van Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
+Voor de Resource Manager-versie van dit onderwerp raadpleegt [u een SQL Server virtuele machine inrichten met behulp van Azure PowerShell Resource Manager](../../../azure-sql/virtual-machines/windows/create-sql-vm-powershell.md).
 
 ### <a name="install-and-configure-powershell"></a>Power Shell installeren en configureren:
 1. Als u geen Azure-account hebt, gaat u naar [Azure, gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
@@ -203,8 +203,8 @@ Nadat u zich hebt aangemeld bij de computer met extern bureau blad, configureert
 
 Meer instructies voor het inrichten van virtuele machines met Power shell vindt u in de [documentatie van virtual machines](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-In veel gevallen is de volgende stap het migreren van uw data bases naar deze nieuwe SQL Server VM. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor meer informatie over database migratie.
+In veel gevallen is de volgende stap het migreren van uw data bases naar deze nieuwe SQL Server VM. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor meer informatie over database migratie.
 
-Als u de Azure Portal ook wilt gebruiken om SQL-Virtual Machines te maken, raadpleegt u [een SQL Server virtuele machine inrichten in azure](../sql/virtual-machines-windows-portal-sql-server-provision.md). Houd er rekening mee dat de zelf studie die u via de portal doorgeeft, virtuele machines maakt met behulp van het aanbevolen Resource Manager-model in plaats van het klassieke model dat wordt gebruikt in dit Power shell-onderwerp.
+Als u de Azure Portal ook wilt gebruiken om SQL-Virtual Machines te maken, raadpleegt u [een SQL Server virtuele machine inrichten in azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Houd er rekening mee dat de zelf studie die u via de portal doorgeeft, virtuele machines maakt met behulp van het aanbevolen Resource Manager-model in plaats van het klassieke model dat wordt gebruikt in dit Power shell-onderwerp.
 
-Naast deze bronnen wordt u aangeraden [andere onderwerpen te bekijken die betrekking hebben op het uitvoeren van SQL Server in Azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Naast deze bronnen wordt u aangeraden [andere onderwerpen te bekijken die betrekking hebben op het uitvoeren van SQL Server in Azure virtual machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

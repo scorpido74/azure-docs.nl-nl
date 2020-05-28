@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: bestand voor industrie taxonomie toevoegen
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
@@ -26,8 +26,8 @@ U kunt optioneel Maxi maal twee branches selecteren en twee verticale, onder elk
 | * Automobiel     | * Automobiel |
 | Landbouw     | * Overig-niet-gesegmenteerd |
 | Distributie    | * Groot handel <br> * Pakket verzen ding van Parcel & |
-| Education     | * Hoger onderwijs <br> * Primaire & secundair onderwijs/K-12 <br> * Bibliotheken & musea |
-| Financiële dienstverlening     | * Bankieren & kapitaal markten <br> * Verzekering |
+| Onderwijs     | * Hoger onderwijs <br> * Primaire & secundair onderwijs/K-12 <br> * Bibliotheken & musea |
+| Financiële diensten     | * Bankieren & kapitaal markten <br> * Verzekering |
 | Overheid    | * Verdediging &e intelligentie (gebruikt voor de zogenaamde nationale en open bare veiligheid) <br> * Open bare veiligheid & rechtvaardigheid <br> * Burger overheid |
 | Gezondheids zorg (gebruikt voor de status)   | * Status betaler <br> * Health-provider <br> * Farmaceutische producten |
 | Resources voor productie & (gebruikt voor de zogenaamde productie)   | * Chemisch & Agrochemical <br> * Discrete productie <br> * Energie |

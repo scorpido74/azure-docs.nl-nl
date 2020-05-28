@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015825"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -86,7 +86,7 @@ Maak in het Azure Portal een Synapse-werk ruimte:
 
 De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijnen kunnen worden uitgevoerd en systeem taken worden uitgevoerd.
 
-- Open de Azure Portal
+- Open de Azure-portal
 - STG1 zoeken
 - Ga naar CNT1
 - Zorg ervoor dat het MSI-bestand (Managed Service Identity) voor WS1 is toegewezen aan de rol van de **BLOB-gegevens bijdrager voor opslag** op CNT1
@@ -95,7 +95,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>STAP 5: beheerders toegang voor SQL-groepen configureren
 
-- Open de Azure Portal
+- Open de Azure-portal
 - Ga naar WS1
 - Klik onder **instellingen**op **SQL Active Directory-beheerder**
 - Klik op **beheerder instellen** en kies WS1 \_ SQLAdmins
@@ -130,7 +130,7 @@ Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 
 ## <a name="step-8-network-security"></a>STAP 8: netwerk beveiliging
 
-De werkruimte firewall, het virtuele netwerk en de [persoonlijke koppeling](../../sql-database/sql-database-private-endpoint-overview.md)configureren.
+De werkruimte firewall, het virtuele netwerk en de [persoonlijke koppeling](../../azure-sql/database/private-endpoint-overview.md)configureren.
 
 ## <a name="step-9-completion"></a>STAP 9: voltooiing
 

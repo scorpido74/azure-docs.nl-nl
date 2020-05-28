@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849039"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996241"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -65,6 +65,14 @@ De locatie van de standaardwerk ruimte is afhankelijk van uw Azure-regio:
 - Voor Vm's in Japan is de locatie van de werk ruimte Japan
 - Voor Vm's in China is de locatie van de werk ruimte China
 - Voor Vm's in Australië is de locatie van de werk ruimte Australië
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Welke gegevens worden verzameld door de Log Analytics-agent?
+
+Zie [wat wordt bewaakt door Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)voor een volledige lijst van de toepassingen en services die door de agent worden bewaakt.
+
+> [!IMPORTANT]
+> Houd er rekening mee dat voor sommige services, zoals Azure Firewall, als u logboek registratie hebt ingeschakeld en een intensieve-bron hebt gekozen voor aanmelding (bijvoorbeeld door het logboek in te stellen op *uitgebreid*), u mogelijk belang rijke gevolgen voor uw log Analytics werkruimte opslag nodig hebt. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Kan ik de standaardwerk ruimten verwijderen die zijn gemaakt door Security Center?
@@ -201,9 +209,17 @@ Hand matig verwijderen van de agent:
 
 ## <a name="how-do-i-disable-data-collection"></a>Gegevens verzameling Hoe kan ik uitschakelen?
 
-Automatische inrichting is standaard uitgeschakeld. U kunt op elk gewenst moment automatische inrichting van resources uitschakelen door deze instelling uit te scha kelen in het beveiligings beleid. Automatisch inrichten wordt sterk aanbevolen om beveiligings waarschuwingen en aanbevelingen te ontvangen over systeem updates, OS-beveiligings problemen en Endpoint Protection.
+Automatisch inrichten wordt sterk aanbevolen om beveiligings waarschuwingen en aanbevelingen te ontvangen over systeem updates, OS-beveiligings problemen en Endpoint Protection. Automatisch inrichten is standaard uitgeschakeld.
 
-Als u gegevens verzameling wilt uitschakelen, [meldt u zich aan bij de Azure Portal](https://portal.azure.com), selecteert u **Bladeren**, selecteert u **Security Center**en selecteert u **vervolgens beleid selecteren**. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen. Wanneer u een beveiligings beleid voor abonnementen selecteert **: gegevens verzamelen** wordt geopend. Onder **automatische inrichting**selecteert u **uit**.
+Als u het hebt ingeschakeld, maar nu wilt uitschakelen:
+
+1. Open **Security Center** in [het Azure Portal](https://portal.azure.com)en selecteer **beveiligings beleid**.
+
+1. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
+
+    **Beveiligings beleid: gegevens verzamelen** wordt geopend.
+
+1. Onder **automatische inrichting**selecteert u **uit**.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Gegevens verzameling Hoe kan ik inschakelen?
@@ -233,9 +249,6 @@ Voor het verzamelen van de gegevens moet elke virtuele machine en server verbind
 De agent verbruikt een nominale hoeveelheid systeem bronnen en moet weinig invloed hebben op de prestaties. Zie de [plannings-en bedienings handleiding](security-center-planning-and-operations-guide.md#data-collection-and-storage)voor meer informatie over de invloed op de prestaties en de agent en de uitbrei ding.
 
 
-## <a name="where-is-my-data-stored"></a>Waar worden mijn gegevens opgeslagen?
-
-Gegevens die van deze agent worden verzameld, worden opgeslagen in een bestaande Log Analytics werk ruimte die is gekoppeld aan uw abonnement of een nieuwe werk ruimte. Zie [Data Security](security-center-data-security.md)(Engelstalig) voor meer informatie.
 
 
 <!--Image references-->

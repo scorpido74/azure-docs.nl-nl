@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978088"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014652"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatische patching voor SQL Server in azure Virtual Machines (klassiek)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/automated-patching.md)
 > * [Klassiek](../classic/sql-automated-patching.md)
 > 
 > 
@@ -37,7 +37,7 @@ Met Geautomatiseerd patchen wordt een onderhoudsvenster tot stand gebracht voor 
 Geautomatiseerd patchen is afhankelijk van de [extensie voor de SQL Server IaaS-agent](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [automatische patching voor SQL Server in Azure virtual machines Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md).
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [automatische patching voor SQL Server in Azure virtual machines Resource Manager](../../../azure-sql/virtual-machines/windows/automated-patching.md).
 
 ## <a name="prerequisites"></a>Vereisten
 Als u automatische patching wilt gebruiken, moet u rekening houden met de volgende vereisten:
@@ -67,7 +67,7 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 
 | Instelling | Mogelijke waarden | Beschrijving |
 | --- | --- | --- |
-| **Automatische patching** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee schakelt u automatische patching voor een virtuele machine van Azure in of uit. |
+| **Automatisch patchen** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee schakelt u automatische patching voor een virtuele machine van Azure in of uit. |
 | **Onderhoudsplanning** |Dagelijks, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag |Het schema voor het downloaden en installeren van Windows-, SQL Server-en micro soft-updates voor uw virtuele machine. |
 | **Start-uur onderhoud** |0-24 |De lokale start tijd voor het bijwerken van de virtuele machine. |
 | **Duur van onderhouds venster** |30-180 |Het aantal minuten dat het downloaden en installeren van updates is voltooid. |
@@ -96,5 +96,5 @@ Als u automatische patching wilt uitschakelen, voert u hetzelfde script uit zond
 ## <a name="next-steps"></a>Volgende stappen
 Zie [SQL Server IaaS agent extension](../classic/sql-server-agent-extension.md)(Engelstalig) voor meer informatie over andere beschik bare automatiserings taken.
 
-Zie [SQL Server op azure virtual machines Overview](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het uitvoeren van SQL Server op virtuele machines in Azure.
+Zie [SQL Server op azure virtual machines Overview](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie over het uitvoeren van SQL Server op virtuele machines in Azure.
 

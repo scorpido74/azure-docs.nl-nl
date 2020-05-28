@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593298"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014431"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -81,15 +81,16 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Globale beheerders toegang van Azure AD om de Azure AD Connect-inrichtings agent te configureren.
+- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) to configure the Azure AD Connect inrichtings agent.
+- De rol van de Azure AD- [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) voor het configureren van de inrichtings-app in de Azure Portal
 - Een test-en productie-exemplaar van de Cloud-HR-app.
 - Beheerders machtigingen in de Cloud HR-app om een systeem integratie gebruiker te maken en wijzigingen aan te brengen voor het testen van werknemers gegevens voor test doeleinden.
-- Voor het inrichten van gebruikers aan Active Directory is een server met Windows Server 2012 of hoger met .NET 4.7.1 + runtime vereist voor het hosten van de [Azure AD Connect-inrichtings agent](https://go.microsoft.com/fwlink/?linkid=847801).
+- Voor het inrichten van gebruikers aan Active Directory is een server met Windows Server 2012 of hoger met .NET 4.7.1 + runtime vereist voor het hosten van de Azure AD Connect-inrichtings agent
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) voor het synchroniseren van gebruikers tussen Active Directory en Azure AD.
 
 ### <a name="training-resources"></a>Trainings bronnen
 
-| **Resources** | **Koppeling en beschrijving** |
+| **Bronnen** | **Koppeling en beschrijving** |
 |:-|:-|
 | Video's | [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) |
 | | [Het inrichten van gebruikers in Active Azure Directory implementeren](https://youtu.be/pKzyts6kfrw) |
@@ -248,7 +249,7 @@ Het kenmerk in de Cloud-HR-app dat de unieke werk nemer-ID vertegenwoordigt, wor
 
 U kunt meerdere overeenkomende kenmerken instellen en overeenkomende prioriteit toewijzen. Ze worden geëvalueerd op volg orde van overeenkomst. Zodra er een overeenkomst wordt gevonden, worden er geen verdere overeenkomende kenmerken geëvalueerd.
 
-U kunt ook [de standaard kenmerk toewijzingen aanpassen](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types), zoals het wijzigen of verwijderen van bestaande kenmerk toewijzingen. U kunt ook nieuwe kenmerk toewijzingen maken op basis van de behoeften van uw bedrijf. Zie voor meer informatie de zelf studie over Cloud-HR-apps (zoals [workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
+U kunt ook [de standaard kenmerk toewijzingen aanpassen](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types), zoals het wijzigen of verwijderen van bestaande kenmerk toewijzingen. U kunt ook nieuwe kenmerk toewijzingen maken op basis van de behoeften van uw bedrijf. Zie voor meer informatie de zelf studie over Cloud-HR-apps (zoals [workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
 
 ### <a name="determine-user-account-status"></a>De status van het gebruikers account bepalen
 
@@ -285,7 +286,7 @@ Wanneer u het proces voor het verwijderen van samenvoegers-verplaatsers start, m
 | | Welke ingangs datums worden er in rekening gehouden voor het verwerken van gebruikers beëindiging? |
 | | Hoe beïnvloeden de conversies van werk nemers en voorwaardelijke werk nemers de bestaande Active Directory accounts? |
 
-Afhankelijk van uw vereisten kunt u de toewijzingen aanpassen om te voldoen aan uw integratie doelen. Voor meer informatie raadpleegt u de specifieke zelf studie over de Cloud-HR-app (zoals [workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
+Afhankelijk van uw vereisten kunt u de toewijzingen aanpassen om te voldoen aan uw integratie doelen. Voor meer informatie raadpleegt u de specifieke zelf studie over de Cloud-HR-app (zoals [workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
 
 ### <a name="generate-a-unique-attribute-value"></a>Een unieke kenmerk waarde genereren
 
@@ -365,7 +366,9 @@ De implementatie van de gebruikers inrichting in de Cloud voor HR kan niet naar 
 
 Kies de Cloud-HR-app die wordt uitgelijnd met uw oplossings vereisten.
 
-**Workday**: voor het importeren van worker-profielen van workday in Active Directory en Azure AD, Zie [zelf studie: werk dagen configureren voor automatische gebruikers inrichting](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Desgewenst kunt u het e-mail adres en de gebruikers naam naar workday terugschrijven.
+**Workday**: voor het importeren van worker-profielen van workday in Active Directory en Azure AD, Zie [zelf studie: werk dagen configureren voor automatische gebruikers inrichting](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Desgewenst kunt u het e-mail adres, de gebruikers naam en het telefoon nummer naar werkdag terugschrijven.
+
+**SAP-SuccessFactors**: Zie [zelf studie: Configure SAP SuccessFactors for automatic user Provisioning](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)(Engelstalig) voor het importeren van worker-profielen van SuccessFactors in Active Directory en Azure AD. U kunt desgewenst het e-mail adres en de gebruikers naam naar SuccessFactors schrijven.
 
 ## <a name="manage-your-configuration"></a>Uw configuratie beheren
 

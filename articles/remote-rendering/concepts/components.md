@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021667"
 ---
 # <a name="components"></a>Onderdelen
 
 Azure remote rendering maakt gebruik van het [systeem patroon entity component](https://en.wikipedia.org/wiki/Entity_component_system) . Hoewel [entiteiten](entities.md) de positie en de hiërarchische samen stelling van objecten vertegenwoordigen, zijn onderdelen verantwoordelijk voor het implementeren van het gedrag.
 
-De meest gebruikte typen onderdelen zijn [netonderdelen](meshes.md), waarmee u netten kunt toevoegen aan de rendering-pijp lijn. Op dezelfde manier worden [lichte onderdelen](../overview/features/lights.md) gebruikt voor het toevoegen van de onderdelen verlichting en [knip vlak](../overview/features/cut-planes.md) , waarmee open mazen worden geknipt.
+De meest gebruikte typen onderdelen zijn [:::no-loc text="mesh components":::](meshes.md) , waarmee u netten kunt toevoegen aan de rendering-pijp lijn. Op dezelfde manier worden [lichte onderdelen](../overview/features/lights.md) gebruikt voor het toevoegen van de onderdelen verlichting en [knip vlak](../overview/features/cut-planes.md) , waarmee open mazen worden geknipt.
 
 Al deze onderdelen gebruiken de trans formatie (positie, rotatie, schaal) van de entiteit waaraan ze zijn gekoppeld, als referentie punt.
 

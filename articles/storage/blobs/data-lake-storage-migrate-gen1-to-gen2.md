@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55ef2ee7d39d68804fe44c9d7a6eb0ee199e6109
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131423"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019857"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
 
@@ -79,7 +79,7 @@ Migreer gegevens, werk belastingen en toepassingen met behulp van het gewenste p
    
 5. Scripts bijwerken om Data Lake Storage Gen2 [Power shell-cmdlets](data-lake-storage-directory-file-acl-powershell.md)en [Azure cli-opdrachten](data-lake-storage-directory-file-acl-cli.md)te gebruiken.
    
-6. Zoek naar URI-verwijzingen die de teken `adl://` reeks in code bestanden bevatten, of in Databricks-notebooks, Apache Hive HQL-bestanden of een ander bestand dat wordt gebruikt als onderdeel van uw werk belastingen. Vervang deze verwijzingen door de met [Gen2 geformatteerde URI](data-lake-storage-introduction-abfs-uri.md) van uw nieuwe opslag account. Bijvoorbeeld: de gen1-URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` wordt mogelijk `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`. 
+6. Zoek naar URI-verwijzingen die de teken reeks `adl://` in code bestanden bevatten, of in Databricks-notebooks, Apache Hive HQL-bestanden of een ander bestand dat wordt gebruikt als onderdeel van uw werk belastingen. Vervang deze verwijzingen door de met [Gen2 geformatteerde URI](data-lake-storage-introduction-abfs-uri.md) van uw nieuwe opslag account. Bijvoorbeeld: de gen1-URI: wordt `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` mogelijk `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
 7. Configureer de beveiliging van uw account voor op [rollen gebaseerd toegangs beheer (RBAC) rollen](../common/storage-auth-aad-rbac-portal.md), [beveiliging op bestands-en mapniveau](data-lake-storage-access-control.md)en [Azure Storage firewalls en virtuele netwerken](../common/storage-network-security.md).
 
@@ -93,7 +93,7 @@ Wanneer u zeker weet dat uw toepassingen en workloads stabiel zijn op Gen2, kunt
 
 Deze tabel vergelijkt de mogelijkheden van gen1 tot die van Gen2.
 
-|Onderwerp |Gen1   |Gen2 |
+|Gebied |Gen1   |Gen2 |
 |---|---|---|
 |Gegevens organisatie|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor bestanden en mappen|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor containers, bestanden en mappen |
 |Geo-redundantie| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [Ra-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
@@ -103,7 +103,7 @@ Deze tabel vergelijkt de mogelijkheden van gen1 tot die van Gen2.
 |VNET-ondersteuning|[VNET-integratie](../../data-lake-store/data-lake-store-network-security.md)|[Service-eind punten](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [persoonlijke eind punten](../common/storage-private-endpoints.md)|
 |Ontwikkelaars ervaring|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [python](../../data-lake-store/data-lake-store-data-operations-python.md), [Power shell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure cli](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Algemeen beschikbaar- [rest](/rest/api/storageservices/data-lake-storage-gen2), [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [python](data-lake-storage-directory-file-acl-python.md)<br>Open bare preview- [Java script](data-lake-storage-directory-file-acl-javascript.md), [Power shell](data-lake-storage-directory-file-acl-powershell.md), [Azure cli](data-lake-storage-directory-file-acl-cli.md)|
 |Resourcelogboeken|Klassieke logboeken<br>[Azure Monitor geïntegreerd](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klassieke logboeken](../common/storage-analytics-logging.md) -algemeen beschikbaar<br>Integratie van Azure monitor – tijd lijn TBD|
-|Ecosysteem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 en hoger)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 en hoger)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ecosysteem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 en hoger)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 en hoger)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />
 

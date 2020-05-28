@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79d0e917ba741e72e2bbecd4a1f94a4c99e5393
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260902"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996054"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Overzicht van de verwerking van Service Bus transacties
 
@@ -36,8 +36,8 @@ Service Bus biedt ondersteuning voor het groeperen van bewerkingen voor één be
 
 De bewerkingen die kunnen worden uitgevoerd binnen een transactie bereik zijn als volgt:
 
-* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send, SendAsync, methode sendbatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: complete, CompleteAsync, abandon, AbandonAsync, Deadletter, DeadletterAsync, defer, DeferAsync, RenewLock, RenewLockAsync 
+* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` ,`RenewLockAsync` 
 
 Ontvangst bewerkingen worden niet opgenomen, omdat ervan wordt uitgegaan dat de toepassing berichten ophaalt via de modus [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) , in een bepaalde receive-lus of met een [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -call back, en vervolgens een transactie bereik opent om het bericht te verwerken.
 
@@ -45,7 +45,7 @@ De toestand van het bericht (volledig, afwijzen, onbestelbare letter, defer) wor
 
 ## <a name="transfers-and-send-via"></a>Overdrachten en verzenden via
 
-Service Bus *biedt ondersteuning*voor het transactionele overdracht van gegevens uit een wachtrij naar een processor en vervolgens naar een andere wachtrij. Bij een overdrachts bewerking verzendt een afzender eerst een bericht naar een *overdrachts wachtrij*. de overdrachts wachtrij verplaatst het bericht onmiddellijk naar de beoogde doel wachtrij met behulp van dezelfde krachtige overdrachts implementatie waarbij de mogelijkheid tot automatisch door sturen afhankelijk is. Het bericht wordt nooit doorgevoerd in het logboek van de overdrachts wachtrij op een manier die zichtbaar wordt voor de consumenten van de overdrachts wachtrij.
+Service Bus *biedt ondersteuning*voor het transactionele overdracht van gegevens uit een wachtrij naar een processor en vervolgens naar een andere wachtrij. Bij een overdrachts bewerking verzendt een afzender eerst een bericht naar een *overdrachts wachtrij*. de overdrachts wachtrij verplaatst het bericht onmiddellijk naar de beoogde doel wachtrij met behulp van dezelfde krachtige overdrachts implementatie als de functie voor direct door sturen. Het bericht wordt nooit doorgevoerd in het logboek van de overdrachts wachtrij op een manier die zichtbaar wordt voor de consumenten van de overdrachts wachtrij.
 
 De kracht van deze transactionele mogelijkheden wordt duidelijk wanneer de overdrachts wachtrij zelf de bron is van de invoer berichten van de afzender. Met andere woorden, Service Bus kunt het bericht overzetten naar de doel wachtrij via de overdrachts wachtrij, terwijl een volledige (of deferische of onbestelbare) bewerking wordt uitgevoerd op het invoer bericht, allemaal in één atomische bewerking. 
 
@@ -97,13 +97,16 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>Time-out
+Een trans actie verkeert na 2 minuten. De trans actie-timer wordt gestart wanneer de eerste bewerking in de trans actie wordt gestart. 
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende artikelen voor meer informatie over Service Bus wachtrijen:
 
 * [Service Bus-wachtrijen gebruiken](service-bus-dotnet-get-started-with-queues.md)
-* [Service Bus entiteiten koppelen met automatisch door sturen](service-bus-auto-forwarding.md)
-* [Voor beeld van automatisch door sturen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Service Bus entiteiten koppelen met autoforwarding](service-bus-auto-forwarding.md)
+* [Voor beeld van door sturen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Atomische trans acties met Service Bus-voor beeld](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [Vergeleken met Azure queues en Service Bus-wacht rijen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
