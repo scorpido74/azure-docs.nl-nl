@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635292"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142075"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -74,6 +74,7 @@ Zodra u hebt geverifieerd op basis van de Active Directory, haalt u een token op
 
 ## <a name="additional-considerations"></a>Aanvullende overwegingen
 
+- Azure Active Directory-verificatie is alleen beschikbaar voor MySQL 5,7 en nieuwer.
 - Er kan slechts één Azure AD-beheerder op elk gewenst moment worden geconfigureerd voor een Azure Database for MySQL-server.
 - Alleen een Azure AD-beheerder voor MySQL kan eerst verbinding maken met de Azure Database for MySQL met behulp van een Azure Active Directory-account. De beheerder van de Active Directory kan nieuwe Azure AD-database gebruikers configureren.
 - Als een gebruiker uit Azure AD wordt verwijderd, kan die gebruiker niet langer worden geverifieerd bij Azure AD, waardoor het niet langer mogelijk is om een toegangs token voor die gebruiker te verkrijgen. In dit geval, hoewel de overeenkomende gebruiker zich nog steeds in de Data Base bevindt, is het niet mogelijk om verbinding te maken met de server met die gebruiker.

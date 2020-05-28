@@ -6,16 +6,19 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652246"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140885"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het configureren van Azure Active Directory toegang met Azure Database for MySQL en hoe u verbinding maakt met behulp van een Azure AD-token.
+
+> [!IMPORTANT]
+> Azure Active Directory-verificatie is alleen beschikbaar voor MySQL 5,7 en nieuwer.
 
 ## <a name="setting-the-azure-ad-admin-user"></a>De gebruiker van de Azure AD-beheerder instellen
 

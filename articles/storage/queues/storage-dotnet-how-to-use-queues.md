@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: afdd9b1b063d0a82c8cdb27ef01b412daaa9f1df
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6dc94cca66370daa307a21daa6c96a778baed08c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198907"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017627"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -52,7 +52,7 @@ Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen 
 3. Selecteer **Consoletoepassing (.NET Framework)**
 4. Selecteer **volgende**
 5. Voer in het veld **project naam** een naam in voor uw toepassing
-6. Selecteer **maken**
+6. Selecteer **Maken**
 
 Alle code voorbeelden in deze zelf studie kunnen worden toegevoegd aan de methode **Main ()** van het **Program.cs** -bestand van uw console toepassing.
 
@@ -500,7 +500,7 @@ Nu u de basisprincipes van Queue Storage hebt geleerd, volgt u deze koppelingen 
 - Bekijk meer functiehandleidingen voor informatie over aanvullende mogelijkheden voor het opslaan van gegevens in Azure.
   - [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) voor het opslaan van gestructureerde gegevens.
   - [Aan de slag met Azure Blob Storage met .NET](../blobs/storage-dotnet-how-to-use-blobs.md) voor het opslaan van niet-gestructureerde gegevens.
-  - [Verbinding maken met SQL Database met behulp van .NET (C#)](../../sql-database/sql-database-connect-query-dotnet-core.md) voor het opslaan van relationele gegevens.
+  - [Verbinding maken met SQL Database met behulp van .NET (C#)](../../azure-sql/database/connect-query-dotnet-core.md) voor het opslaan van relationele gegevens.
 
 [Download and install the Azure SDK for .NET]: /develop/net/
 [.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409

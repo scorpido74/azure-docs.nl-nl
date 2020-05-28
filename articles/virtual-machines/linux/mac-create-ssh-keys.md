@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969044"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141735"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Snelle stappen: maken en gebruiken van een openbaar persoonlijk sleutel paar met SSH voor Linux-Vm's in azure
 
@@ -37,7 +37,7 @@ Met de volgende opdracht wordt een SSH-sleutel paar gemaakt met behulp van RSA-v
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Als u de [Azure cli](/cli/azure) gebruikt om uw virtuele machine te maken met de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) , kunt u optioneel open bare en persoonlijke SSH-sleutel bestanden `--generate-ssh-keys` genereren met behulp van de optie. De sleutel bestanden worden opgeslagen in de map ~/.SSH, tenzij anders is aangegeven `--ssh-dest-key-path` met de optie. Met `--generate-ssh-keys` deze optie worden bestaande sleutel bestanden niet overschreven, in plaats daarvan wordt een fout geretourneerd. Vervang *VMname* en *RGname* door uw eigen waarden in de volgende opdracht:
+Als u de [Azure cli](/cli/azure) gebruikt om uw virtuele machine te maken met de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) , kunt u optioneel open bare en persoonlijke SSH-sleutel bestanden genereren met behulp van de `--generate-ssh-keys` optie. De sleutel bestanden worden opgeslagen in de map ~/.SSH, tenzij anders is aangegeven met de `--ssh-dest-key-path` optie. Met deze `--generate-ssh-keys` optie worden bestaande sleutel bestanden niet overschreven, in plaats daarvan wordt een fout geretourneerd. Vervang *VMname* en *RGname* door uw eigen waarden in de volgende opdracht:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --generate-ssh-keys 
@@ -51,7 +51,7 @@ Als u een virtuele Linux-machine wilt maken die gebruikmaakt van SSH-sleutels vo
 * [Een virtuele Linux-machine maken met de Azure CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Een virtuele Linux-machine maken met een Azure-sjabloon](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Als u niet bekend bent met de indeling van een open bare SSH-sleutel, kunt u uw open bare sleutel weer `cat` geven met de `~/.ssh/id_rsa.pub` volgende opdracht, indien nodig vervangen door het pad en de bestands naam van uw eigen open bare-sleutel bestand:
+Als u niet bekend bent met de indeling van een open bare SSH-sleutel, kunt u uw open bare sleutel weer geven met de volgende `cat` opdracht, `~/.ssh/id_rsa.pub` indien nodig vervangen door het pad en de bestands naam van uw eigen open bare-sleutel bestand:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
@@ -63,15 +63,21 @@ Een typische waarde voor een open bare sleutel ziet er als volgt uit:
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-Als u de inhoud van het open bare-sleutel bestand kopieert en plakt voor gebruik in de Azure Portal of een resource manager-sjabloon, moet u ervoor zorgen dat u geen afsluitende spaties kopieert. Als u een open bare sleutel in macOS wilt kopiëren, kunt u het open bare `pbcopy`-sleutel bestand door sluizen naar. Op dezelfde manier kunt u in Linux het open bare-sleutel bestand door sluizen `xclip`naar Program ma's zoals.
+Als u de inhoud van het open bare-sleutel bestand kopieert en plakt voor gebruik in de Azure Portal of een resource manager-sjabloon, moet u ervoor zorgen dat u geen afsluitende spaties kopieert. Als u een open bare sleutel in macOS wilt kopiëren, kunt u het open bare-sleutel bestand door sluizen naar `pbcopy` . Op dezelfde manier kunt u in Linux het open bare-sleutel bestand door sluizen naar Program ma's zoals `xclip` .
 
-De open bare sleutel die u op uw virtuele Linux-machine in azure plaatst, wordt standaard opgeslagen in ~/.ssh/id_rsa. pub, tenzij u een andere locatie hebt opgegeven tijdens het maken van het sleutel paar. Als u de [Azure CLI 2,0](/cli/azure) wilt gebruiken om uw virtuele machine te maken met een bestaande open bare sleutel, geeft u de waarde en optioneel de locatie van deze open bare sleutel op met `--ssh-key-values` behulp van de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) met de optie. Vervang in de volgende opdracht *VMname*, *RGname*en *keyFile* door uw eigen waarden:
+De open bare sleutel die u op uw virtuele Linux-machine in azure plaatst, wordt standaard opgeslagen in ~/.ssh/id_rsa. pub, tenzij u een andere locatie hebt opgegeven tijdens het maken van het sleutel paar. Als u de [Azure CLI 2,0](/cli/azure) wilt gebruiken om uw virtuele machine te maken met een bestaande open bare sleutel, geeft u de waarde en optioneel de locatie van deze open bare sleutel op met behulp van de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) met de `--ssh-key-values` optie. Vervang in de volgende opdracht *myVM*, *myResourceGroup*, *UbuntuLTS*, *azureuser*en *mysshkey. pub* door uw eigen waarden:
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
-Als u meerdere SSH-sleutels met uw virtuele machine wilt gebruiken, kunt u ze in een door spaties gescheiden lijst invoeren `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`.
+Als u meerdere SSH-sleutels met uw virtuele machine wilt gebruiken, kunt u ze in een door spaties gescheiden lijst invoeren `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` .
 
 
 ## <a name="ssh-into-your-vm"></a>SSH in uw virtuele machine

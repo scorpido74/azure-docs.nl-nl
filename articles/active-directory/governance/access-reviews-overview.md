@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a711fa522f6b105eb98d57d4f63afb90be255b3f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262085"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995034"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -78,6 +78,12 @@ Voer de volgende stappen uit om een toegangs beoordeling te maken:
 
    ![Start pagina toegangs beoordelingen](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Toegangs beoordeling maken voor een groep die kan worden toegewezen aan de Azure AD-rol
+Als u zich in de nieuwste versie van toegangs beoordelingen bevindt (uw revisoren zijn standaard gericht op **Mijn toegang** ), kan alleen de globale beheerder toegangs beoordeling maken voor door rollen toewijs bare groepen. Als u echter een oudere versie van toegangs beoordelingen hebt (uw revisoren zijn standaard gericht op het **toegangs venster** ), dan kunnen globale beheerder en gebruikers beheerder toegangs beoordeling maken voor door rollen toewijs bare groepen.  
+
+De nieuwe ervaring wordt op 1 augustus naar alle klanten geïmplementeerd 2020, maar als u eerder een upgrade wilt uitvoeren, kunt u hier een aanvraag doen: [Azure AD-toegangs beoordelingen-bijgewerkte revisor ervaring in mijn Access-aanmelding](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+
+[Meer informatie over het toewijzen van groepen aan Azure AD-rollen](https://go.microsoft.com/fwlink/?linkid=2103037).
 
 ## <a name="learn-about-access-reviews"></a>Meer informatie over toegangs beoordelingen
 
@@ -120,7 +126,7 @@ Hier volgen enkele voor beelden van licentie scenario's die u helpen bij het bep
 | Een beheerder maakt een toegangs beoordeling van groep B met 500 gebruikers en 3 groeps eigenaren en wijst de drie groeps eigenaren toe als controleurs. | 3 licenties voor elke groeps eigenaar als revisoren | 3 |
 | Een beheerder maakt een toegangs beoordeling van groep B met 500 gebruikers. Maakt het een zelf beoordeling. | 500 licenties voor elke gebruiker als eigen revisoren | 500 |
 | Een beheerder maakt een toegangs beoordeling van groep C met 50 leden van gebruikers en 25 gast gebruikers. Maakt het een zelf beoordeling. | 50 licenties voor elke gebruiker als eigen revisors.<br/>(gast gebruikers worden gedekt in de vereiste verhouding van 1:5) | 50 |
-| Een beheerder maakt een toegangs beoordeling van groep D met 6 leden gebruikers en 108 gast gebruikers. Maakt het een zelf beoordeling. | 6 licenties voor elke gebruiker als eigen revisoren + 16 extra licenties voor alle 108 gast gebruikers in de vereiste 1:5 verhouding. 6 licenties, die betrekking hebben\*op 6 5 = 30 gast gebruikers. Voor de resterende (108-6\*5) = 78 gast gebruikers, 78/5 = 16 extra licenties zijn vereist. In totaal moeten 6 + 16 = 22 licenties zijn vereist. | 22 |
+| Een beheerder maakt een toegangs beoordeling van groep D met 6 leden gebruikers en 108 gast gebruikers. Maakt het een zelf beoordeling. | 6 licenties voor elke gebruiker als eigen revisoren + 16 extra licenties voor alle 108 gast gebruikers in de vereiste 1:5 verhouding. 6 licenties, die betrekking hebben op 6 \* 5 = 30 gast gebruikers. Voor de resterende (108-6 \* 5) = 78 gast gebruikers, 78/5 = 16 extra licenties zijn vereist. In totaal moeten 6 + 16 = 22 licenties zijn vereist. | 22 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

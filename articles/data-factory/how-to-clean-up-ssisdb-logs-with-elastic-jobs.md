@@ -10,30 +10,30 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15ab5f08b7f9f5bc4824aec8980ed4b711ae1d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606181"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020282"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-logboeken opschonen met Azure Elastic Database-taken
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u Azure Elastic Database-taken gebruikt voor het activeren van de opgeslagen procedure waarmee logboeken worden `SSISDB`opgeschoond voor de SQL Server Integration Services catalogus database.
+In dit artikel wordt beschreven hoe u Azure Elastic Database-taken gebruikt voor het activeren van de opgeslagen procedure waarmee logboeken worden opgeschoond voor de SQL Server Integration Services catalogus database `SSISDB` .
 
 Elastic Database-taken is een Azure-service waarmee u eenvoudig taken kunt automatiseren en uitvoeren op een Data Base of een groep data bases. U kunt deze taken plannen, uitvoeren en bewaken met behulp van de Azure Portal, Transact-SQL, Power shell of REST-Api's. Gebruik de taak Elastic Database om de opgeslagen procedure voor het eenmalig of volgens een logboek te activeren. U kunt het plannings interval kiezen op basis van het resource gebruik van SSISDB om te voor komen dat de data base wordt geladen.
 
-Zie [groepen met data bases beheren met Elastic database Jobs](../sql-database/elastic-jobs-overview.md)voor meer informatie.
+Zie [groepen met data bases beheren met Elastic database Jobs](../azure-sql/database/elastic-jobs-overview.md)voor meer informatie.
 
-In de volgende secties wordt beschreven hoe u de opgeslagen `[internal].[cleanup_server_retention_window_exclusive]`procedure kunt activeren, waarmee u SSISDB-logboeken verwijdert die zich buiten het Bewaar venster bevinden dat door de beheerder is ingesteld.
+In de volgende secties wordt beschreven hoe u de opgeslagen procedure kunt activeren `[internal].[cleanup_server_retention_window_exclusive]` , waarmee u SSISDB-logboeken verwijdert die zich buiten het Bewaar venster bevinden dat door de beheerder is ingesteld.
 
 ## <a name="clean-up-logs-with-power-shell"></a>Logboeken opschonen met Power shell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-De volgende Power shell-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [een elastische-taak agent maken met behulp van Power shell](../sql-database/elastic-jobs-powershell.md)voor meer informatie.
+De volgende Power shell-voorbeeld scripts maken een nieuwe elastische taak om de opgeslagen procedure voor het opschonen van SSISDB-logboeken te activeren. Zie [een elastische-taak agent maken met behulp van Power shell](../azure-sql/database/elastic-jobs-powershell-create.md)voor meer informatie.
 
 ### <a name="create-parameters"></a>Parameters maken
 
@@ -41,7 +41,7 @@ De volgende Power shell-voorbeeld scripts maken een nieuwe elastische taak om de
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +52,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -191,7 +191,7 @@ De volgende Transact-SQL-voorbeeld scripts maken een nieuwe elastische taak om d
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Verleen de juiste machtigingen voor de SSISDB-data base. De SSISDB-catalogus moet de juiste machtigingen hebben voor de opgeslagen procedure om de SSISDB-logboek opruiming te kunnen uitvoeren. Zie [aanmeldingen beheren](../sql-database/sql-database-manage-logins.md)voor meer informatie.
+4. Verleen de juiste machtigingen voor de SSISDB-data base. De SSISDB-catalogus moet de juiste machtigingen hebben voor de opgeslagen procedure om de SSISDB-logboek opruiming te kunnen uitvoeren. Zie [aanmeldingen beheren](../azure-sql/database/logins-create-manage.md)voor meer informatie.
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: ad24f8db2f8f212ebcccf661241016b438ec730c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 43474100844f3828107f67f1e80dca57692fec59
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655386"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021021"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Blob-opslag met behulp van Azure Data Factory
 
@@ -276,7 +276,7 @@ Raadpleeg [toegang tot Azure Storage verifiëren met behulp van Azure Active Dir
     - Ken **als Sink**, in toegangs beheer (IAM), ten minste de rol van **BLOB data contributor voor opslag** .
 
 >[!IMPORTANT]
->Als u poly base gebruikt voor SQL Database het laden van gegevens uit een BLOB (als bron of als fase ring) in SQL Data Warehouse, moet u, wanneer u beheerde identiteits verificatie voor BLOB gebruikt, ervoor zorgen dat u de stappen 1 en 2 in [deze richt lijnen](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) aan de hand van de gegevens van de SQL database server registreert bij Azure Active Directory (Azure AD) en 2). de rest wordt afgehandeld door Data Factory. Als uw Blobopslag is geconfigureerd met een Azure Virtual Network-eind punt, moet u de beheerde identiteits verificatie gebruiken zoals vereist is door poly Base om poly Base te gebruiken voor het laden van gegevens uit de opslag.
+>Als u poly base gebruikt voor het laden van gegevens uit een BLOB (als bron of als fase ring) in SQL Data Warehouse, moet u, wanneer u beheerde identiteits verificatie voor BLOB gebruikt, ervoor zorgen dat u ook de stappen 1 en 2 in [deze richt lijn](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) registreert op 1) uw server registreren bij Azure Active Directory (Azure AD) en 2) de rol van BLOB-gegevens Inzender aan uw server toewijzen de rest wordt afgehandeld door Data Factory. Als uw Blobopslag is geconfigureerd met een Azure Virtual Network-eind punt, moet u de beheerde identiteits verificatie gebruiken zoals vereist is door poly Base om poly Base te gebruiken voor het laden van gegevens uit de opslag.
 
 Deze eigenschappen worden ondersteund voor een gekoppelde Azure Blob Storage-service:
 

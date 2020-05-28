@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70995105"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142143"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodel voor Azure NetApp Files 
 
@@ -50,6 +50,8 @@ In het onderstaande diagram ziet u deze concepten.
 ## <a name="overage-in-capacity-consumption"></a>Overschrijding in capaciteits verbruik  
 
 Wanneer de totale gebruikte capaciteit van een pool de ingerichte capaciteit overschrijdt, zijn gegevens schrijf bewerkingen nog steeds toegestaan.  Na de respijt periode (één uur), als de gebruikte capaciteit van de pool nog steeds de ingerichte capaciteit overschrijdt, wordt de pool grootte automatisch verhoogd in stappen van 1 TiB totdat de ingerichte capaciteit groter is dan de totale gebruikte capaciteit.  Als in de bovenstaande afbeelding bijvoorbeeld het volume 3 blijft groeien en het werkelijke verbruik 1,2 TiB bereikt, wordt de grootte van de groep na de respijt periode automatisch gewijzigd in 5 TiB.  Het resultaat is dat de ingerichte capaciteit van de groep (5 TiB) de gebruikte capaciteit (4,2 TiB) overschrijdt.  
+
+Hoewel de grootte van de capaciteits groep automatisch groeit om te voldoen aan de vraag van het volume, wordt deze niet automatisch gereduceerd wanneer de grootte van het volume afneemt. Als u de grootte van de capaciteits groep wilt verkleinen nadat een volume grootte afneemt (bijvoorbeeld na het opruimen van een volume), moet u de grootte van de capaciteits groep _hand matig_ verlagen.
 
 ## <a name="manual-changes-of-the-pool-size"></a>Hand matige wijzigingen van de pool grootte  
 

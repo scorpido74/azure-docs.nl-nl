@@ -3,12 +3,12 @@ title: Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-wor
 description: Overzicht en architectuur van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 834096ec529673bae1728877310ba7153ae94cb3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ab6a1b7e5569be39cc3b2934ec9891d5aa5712ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460576"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012990"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads
 
@@ -33,7 +33,7 @@ Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig
 - Een virtueel netwerk met één subnet en een koppeling met een al bestaande omgeving met [gedeelde services](../iso27001-shared/index.md), waarbij al het verkeer wordt gedwongen de firewall voor [gedeelde services](../iso27001-shared/index.md) te passeren. Het virtuele netwerk hosts de volgende resources:
   - Een [Azure App Service Environment](../../../../app-service/environment/intro.md) die kan worden gebruikt voor het hosten van een of meer web-apps, web-API's of functies
   - Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar met een VNet-service-eindpunt, voor het opslaan van geheimen die worden gebruikt door in de workloadomgeving uitgevoerde toepassingen
-  - Een [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md)-serverexemplaar met een VNet-service-eindpunt, voor het hosten van databases die worden gebruikt voor toepassingen in de workloadomgeving
+  - Een [Azure SQL Database](../../../../azure-sql/database/sql-database-paas-overview.md)-serverexemplaar met een VNet-service-eindpunt, voor het hosten van databases die worden gebruikt voor toepassingen in de workloadomgeving
 
 ## <a name="next-steps"></a>Volgende stappen
 

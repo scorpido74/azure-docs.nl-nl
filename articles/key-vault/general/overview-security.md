@@ -77,7 +77,7 @@ Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen gegevens van 
 
 Raadpleeg voor meer informatie over Azure Key Vault netwerk adres [service-eind punten voor virtuele netwerken voor Azure Key Vault](overview-vnet-service-endpoints.md))
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Met Key Vault logboek registratie wordt informatie opgeslagen over de activiteiten die zijn uitgevoerd op uw kluis. Key Vault logboeken:
 

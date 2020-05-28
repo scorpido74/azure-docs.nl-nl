@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 3bb126dc31620515c54a653ef595bfc017aaac73
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 104edff35ec4b8cad53242e5f2d5ce4449123409
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869590"
+ms.locfileid: "83996003"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en C #
 
@@ -70,9 +70,9 @@ Hoewel deze toepassing is geschreven in C#, is de API een betrouw bare webservic
 
 3. Een teken reeks maken voor uw zoek parameters: 
 
-   a. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. De markt code is de code van het land of de regio waarvan u de aanvraag maakt. 
+   1. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. De markt code is de code van het land of de regio waarvan u de aanvraag maakt. 
 
-   b. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. De modus kan ofwel `proof` (de meeste spelling-en grammatica fouten) of `spell` (de meeste spel fouten worden onderschept, maar niet zo veel grammatica fouten).
+   1. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. De modus kan ofwel `proof` (de meeste spelling-en grammatica fouten) of `spell` (de meeste spel fouten worden onderschept, maar niet zo veel grammatica fouten).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
