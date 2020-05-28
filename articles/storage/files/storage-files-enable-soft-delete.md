@@ -1,6 +1,6 @@
 ---
 title: Voorlopig verwijderen inschakelen-Azure-bestands shares
-description: Meer informatie over het inschakelen van zacht verwijderen in azure-bestands shares voor gegevens herstel en het voor komen van onopzettelijke verwijderingen.
+description: Meer informatie over het inschakelen van zacht verwijderen (preview) in azure-bestands shares voor gegevens herstel en het voor komen van onopzettelijke verwijderingen.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 70081114995d46e7c5db7c9549cfce2fdff42975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a31fc675ca32697ece1fe7240112bb5610feda9d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116500"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142092"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Zacht verwijderen inschakelen op Azure-bestands shares
 
-Azure Storage biedt zacht verwijderen voor bestands shares, zodat u uw gegevens eenvoudig kunt herstellen wanneer deze per ongeluk worden verwijderd door een toepassing of een andere gebruiker van het opslag account. Voor meer informatie over zacht verwijderen, Zie [How to onopzettelijk verwijderen van Azure-bestands shares](storage-files-prevent-file-share-deletion.md).
+Azure Storage biedt zacht verwijderen voor bestands shares (preview), zodat u uw gegevens eenvoudiger kunt herstellen wanneer deze per ongeluk worden verwijderd door een toepassing of een ander opslag account. Voor meer informatie over zacht verwijderen, Zie [How to onopzettelijk verwijderen van Azure-bestands shares](storage-files-prevent-file-share-deletion.md).
 
 In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestands shares kunt inschakelen en gebruiken voor een bestaand opslag account:
 

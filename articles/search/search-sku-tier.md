@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617713"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119210"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -41,7 +41,7 @@ De lagen worden onderscheiden door:
 
 De laag die u selecteert, bepaalt het factureer bare percentage. De volgende scherm afbeelding van Azure Portal toont de beschik bare lagen, minus prijzen (die u kunt vinden in de portal en op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/search/). **Gratis**, **basis**en **standaard** zijn de meest voorkomende lagen.
 
-Met **gratis** kunt u een beperkte zoek service voor kleinere projecten maken, met inbegrip van Quick starts en zelf studies. Intern, replica's en partities die worden gedeeld tussen meerdere abonnees. U kunt een gratis service niet schalen of aanzienlijke werk belastingen uitvoeren.
+Met **gratis** kunt u een beperkte zoek service voor kleinere projecten maken, met inbegrip van Quick starts en zelf studies. Replica's en partities worden intern gedeeld tussen meerdere abonnees. U kunt een gratis service niet schalen of aanzienlijke werk belastingen uitvoeren.
 
 **Basic** en **Standard** zijn de meest gebruikte factureer bare lagen, waarbij **standaard** de standaard instelling is. Met speciale resources onder uw besturings element kunt u grotere projecten implementeren, de prestaties optimaliseren en de capaciteit instellen.
 

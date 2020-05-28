@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683078"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119089"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -35,14 +35,15 @@ Gegevens wetenschappers, analisten en ontwikkel aars in verschillende branches k
 
 ### <a name="classification"></a>Classificatie
 
-Classificatie is een algemene machine learning taak. Classificatie is een soort gecontroleerde lessen waarin modellen informatie leren met behulp van trainings gegevens en deze informatie kan Toep assen op nieuwe gegevens. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-use-automated-ml-for-ml-models.md#featurization). 
+Classificatie is een algemene machine learning taak. Classificatie is een soort gecontroleerde lessen waarin modellen informatie leren met behulp van trainings gegevens en deze informatie kan Toep assen op nieuwe gegevens. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-configure-auto-features.md#featurization). 
 
 Het belangrijkste doel van classificatie modellen is om te voors pellen welke categorieën nieuwe gegevens zijn op basis van de informatie van de trainings gegevens. Voor beelden van veelvoorkomende classificaties zijn fraude detectie, handschrift herkenning en object detectie.  Meer informatie en een voor beeld van [classificatie met automatische machine learning](tutorial-train-models-with-aml.md).
 
 Zie voor beelden van classificatie en geautomatiseerde machine learning in deze python-notebooks: [fraude detectie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [marketing voorspelling](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)en [gegevens classificatie van nieuws groep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
 ### <a name="regression"></a>Regressie
-Net als bij de classificatie zijn regressie taken ook een veelvoorkomende taak onder toezicht. Azure Machine Learning biedt [featurizations specifiek voor deze taken](how-to-use-automated-ml-for-ml-models.md#featurization).
+
+Net als bij de classificatie zijn regressie taken ook een veelvoorkomende taak onder toezicht. Azure Machine Learning biedt [featurizations specifiek voor deze taken](how-to-configure-auto-features.md#featurization).
 
 Anders dan classificatie waarbij voorspelde uitvoer waarden categorische zijn, hebben regressie modellen voor speld numerieke uitvoer waarden op basis van onafhankelijke voor spellingen. In regressie is het doel om te helpen bij het vaststellen van de relatie tussen deze onafhankelijke Voorspellings variabelen door te schatten hoe de ene variabele invloed heeft op de andere. Bijvoorbeeld prijs voor auto Mobile op basis van functies zoals het beslagen van gas, veiligheids classificatie, enzovoort. Lees meer informatie en Bekijk een voor beeld van [regressie met automatische machine learning](tutorial-auto-train-models.md).
 
@@ -99,18 +100,19 @@ Hoewel het bouwen van modellen geautomatiseerd is, kunt u ook [zien hoe belang r
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>Verwerking
+## <a name="feature-engineering"></a>Functie-engineering
 
-In elk automatisch machine learning experiment worden uw gegevens voorverwerkt met behulp van de standaard methoden en optioneel via geavanceerde voor verwerking.
+Feature engineering is het proces van het gebruik van domein kennis van de gegevens voor het maken van functies waarmee u beter ML-algoritmen kunt leren. In Azure Machine Learning worden technieken voor schalen en normalisatie toegepast om functie techniek te vergemakkelijken. Deze technieken en functie techniek worden gezamenlijk aangeduid als parametrisatie.
+
+Voor automatische machine learning experimenten wordt parametrisatie automatisch toegepast, maar kan ook worden aangepast op basis van uw gegevens. Meer [informatie over wat parametrisatie is inbegrepen](how-to-configure-auto-features.md#featurization).  
 
 > [!NOTE]
-> Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
+> Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
 
-### <a name="automatic-preprocessing-standard"></a>Automatische voor verwerking (standaard)
+### <a name="automatic-featurization-standard"></a>Automatische parametrisatie (standaard)
 
-In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren.  Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model. Meer informatie over hoe autoML helpt [om te voor komen dat gegevens in uw modellen worden gespreid en niet in evenwicht worden gegeven](concept-manage-ml-pitfalls.md) .
+In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren. Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model. Meer informatie over hoe AutoML helpt [om te voor komen dat gegevens in uw modellen worden gespreid en niet in evenwicht worden gegeven](concept-manage-ml-pitfalls.md) .
 
 |Normalisatie aanpassen &nbsp; & &nbsp;| Beschrijving |
 | ------------- | ------------- |
@@ -122,15 +124,15 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Deze transformator voert lineaire dimensionaliteit uit met behulp van een afgekapte enkelvouds waarde (SVD). In tegens telling tot PCA worden met deze Estimator de gegevens niet gecentreerd voordat de enkelvoudige waarde wordt uitgevouwen. Dit betekent dat deze kan werken met scipy. sparse-matrices |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Elk voor beeld (dat wil zeggen, elke rij van de gegevens matrix) met ten minste één niet-nul onderdeel, wordt afzonderlijk van andere steek proeven opnieuw geschaald, zodat de norm (L1 of L2) gelijk is aan 1 |
 
-### <a name="advanced-preprocessing--featurization"></a>Geavanceerde voor verwerking van & parametrisatie
+### <a name="customize-featurization"></a>Parametrisatie aanpassen
 
-Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals gegevens Guardrails, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-use-automated-ml-for-ml-models.md#featurization). Schakel deze instelling in met:
+Er zijn ook extra technieken voor functie techniek, zoals code ring en trans formaties, beschikbaar. 
 
-+ Azure Machine Learning studio: **automatische parametrisatie** inschakelen in de sectie **aanvullende configuratie weer geven** [met de volgende stappen](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+Schakel deze instelling in met:
 
-+ Python-SDK: opgeven `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` voor de [ `AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
++ Azure Machine Learning studio: **automatische parametrisatie** inschakelen in de sectie **aanvullende configuratie weer geven** [met de volgende stappen](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
-
++ Python-SDK: Geef `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` in uw [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) -object op. Meer informatie over [enabling parametrisatie] (How-to-configure-auto-features.md). 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellen
 

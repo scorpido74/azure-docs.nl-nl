@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u een Azure Kubernetes-service cluster instelt voor Azure dev Spaces werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873546"
+ms.locfileid: "83995884"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Hoe instellen van een cluster voor Azure dev Spaces werkt
 
@@ -18,7 +18,7 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 ## <a name="prepare-your-aks-cluster"></a>Uw AKS-cluster voorbereiden
 
-Als u uw AKS-cluster wilt voorbereiden op ontwikkel ruimten, controleert u of uw AKS-cluster zich in een regio bevindt [die wordt ondersteund door Azure dev Spaces][supported-regions] en of u Kubernetes 1.10.3 of hoger uitvoert. Als u Azure-ontwikkel ruimten op uw cluster wilt inschakelen vanuit de Azure Portal, navigeert u naar uw cluster, klikt u op *ontwikkelaars ruimten*, wijzigt u *dev Spaces* in *Ja*en klikt u op *Opslaan*. U kunt ook Azure dev-ruimten inschakelen vanuit de Azure CLI door uit te voeren `az aks use-dev-spaces` .
+Als u uw AKS-cluster wilt voorbereiden op ontwikkel ruimten, controleert u of uw AKS-cluster zich in een regio bevindt [die wordt ondersteund door Azure dev Spaces][supported-regions] en of u Kubernetes 1.10.3 of hoger uitvoert. U kunt Azure dev-ruimten inschakelen vanuit de Azure CLI door uit te voeren `az aks use-dev-spaces` .
 
 Zie de [Snelstartgids voor team ontwikkeling][quickstart-team]voor een voor beeld van het instellen van een AKS-cluster voor dev Spaces.
 

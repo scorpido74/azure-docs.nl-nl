@@ -21,6 +21,6 @@ U kunt een van de volgende hulpprogram ma's of Sdk's gebruiken om de Kopieer act
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python-SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
-- [REST-API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager sjabloon](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
+- [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
+- [Azure Resource Manager-sjabloon](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 

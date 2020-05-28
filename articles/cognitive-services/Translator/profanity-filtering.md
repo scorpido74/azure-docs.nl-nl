@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586793"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996156"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Filters voor scheld woorden toevoegen met het conversie programma
 
@@ -26,10 +26,10 @@ Als u wilt voor komen dat er grove taal in de vertaling wordt weer gegeven, zelf
 De methode relate () gebruikt de para meter ' Options ', die het nieuwe element ' ProfanityAction ' bevat. De geaccepteerde waarden van ProfanityAction zijn ' geen actie ', ' gemarkeerd ' en ' verwijderd '.
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Geaccepteerde waarden van ProfanityAction en voor beelden
-|Waarde ProfanityAction | Actie | Voor beeld: bron-Japans | Voor beeld: doel-Engels|
+|Waarde ProfanityAction | Bewerking | Voor beeld: bron-Japans | Voor beeld: doel-Engels|
 | :---|:---|:---|:---|
 | Geen actie | Standaard. Hetzelfde als de optie niet instellen. Gods gang van de bron naar het doel. | 彼は変態です Marketplace. | Hij is een schokkerige. |
-| Duidelijke | Ongepaste woorden zijn omgeven door XML-codes \<>... \< /profanity>. | 彼は変態です Marketplace. | Hij is een \< grove>e \< /profanity->. |
+| Duidelijke | Ongepaste woorden worden omgeven door XML-tags \<profanity> ... \</profanity> . | 彼は変態です Marketplace. | Hij is een \<profanity> schokkerige \</profanity> . |
 | Verwijderd | Ongepaste woorden worden verwijderd uit de uitvoer zonder vervanging. | 彼は Marketplace. | Hij is een. |
 
 ## <a name="next-steps"></a>Volgende stappen

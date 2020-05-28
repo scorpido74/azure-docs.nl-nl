@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e6c8dc7438e05f960504b2cacee7fc987adf70
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410419"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022369"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.

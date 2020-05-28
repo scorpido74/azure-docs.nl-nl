@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856068"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996394"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -20,7 +20,7 @@ Azure-toepassing gateway bestaat uit verschillende onderdelen die u op verschill
 
 ![Stroom diagram van Application Gateway onderdelen](./media/configuration-overview/configuration-overview1.png)
 
-Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor `http://acme.com/*` en. `http://fabrikam.com/*` Luister beide op poort 80. De derde is een eenvoudige listener met end-to-end Transport Layer Security (TLS) beëindiging, voorheen bekend als Secure Sockets Layer (SSL).
+Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor `http://acme.com/*` en `http://fabrikam.com/*` . Luister beide op poort 80. De derde is een eenvoudige listener met end-to-end Transport Layer Security (TLS) beëindiging, voorheen bekend als Secure Sockets Layer (SSL).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -219,14 +219,12 @@ Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u 
 
 Wanneer u een regel maakt, kiest u tussen [ *basis* en *op basis van het pad*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Kies basis als u alle aanvragen voor de gekoppelde listener (bijvoorbeeld *blog<i></i>. contoso.com/\*)* wilt door sturen naar één back-end-groep.
+- Kies basis als u alle aanvragen voor de gekoppelde listener (bijvoorbeeld *blog <i></i> . contoso.com/ \* )* wilt door sturen naar één back-end-groep.
 - Kies op basis van pad als u aanvragen van specifieke URL-paden naar specifieke back-endservers wilt routeren. Het pad patroon wordt alleen toegepast op het pad van de URL, niet op de query parameters.
 
 #### <a name="order-of-processing-rules"></a>Volg orde van de verwerkings regels
 
-Voor de V1-SKU wordt het vergelijken van het patroon van binnenkomende aanvragen verwerkt in de volg orde waarin de paden worden weer gegeven in de URL-pad toewijzing van de op pad gebaseerde regel. Als een aanvraag overeenkomt met het patroon in twee of meer paden in de pad-map, wordt het pad dat als eerste wordt weer gegeven. En de aanvraag wordt doorgestuurd naar de back-end die is gekoppeld aan het pad.
-
-Voor de v2-SKU is een exacte overeenkomst een hogere prioriteit dan de volg orde van paden in de URL-pad toewijzing. Als een aanvraag overeenkomt met het patroon in twee of meer paden, wordt de aanvraag doorgestuurd naar de back-end die is gekoppeld aan het pad dat precies overeenkomt met de aanvraag. Als het pad in de binnenkomende aanvraag niet exact overeenkomt met een pad in de kaart, wordt het vergelijken van het patroon van de aanvraag verwerkt in de volg orde van de pad-map voor de regel op basis van het pad.
+Voor de v1-en v2-SKU wordt het vergelijken van het patroon van binnenkomende aanvragen verwerkt in de volg orde waarin de paden worden weer gegeven in de URL-pad toewijzing van de op pad gebaseerde regel. Als een aanvraag overeenkomt met het patroon in twee of meer paden in de pad-map, wordt het pad dat als eerste wordt weer gegeven. En de aanvraag wordt doorgestuurd naar de back-end die is gekoppeld aan het pad.
 
 ### <a name="associated-listener"></a>Gekoppelde listener
 
@@ -250,7 +248,7 @@ Voor een regel op basis van een pad voegt u meerdere back-end-HTTP-instellingen 
 
 ### <a name="redirection-setting"></a>Omleidings instelling
 
-Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */Cart/\**. Dit is een omleiding *op basis van pad* .
+Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */Cart/ \* *. Dit is een omleiding *op basis van pad* .
 
 Zie [Application Gateway omleidings overzicht](redirect-overview.md)voor meer informatie over omleidingen.
 
@@ -378,7 +376,7 @@ U hoeft deze instelling niet in te scha kelen voor een aangepast domein waarvan 
 
 Deze functie vervangt de *host* -header in de inkomende aanvraag op de toepassings gateway met de hostnaam die u opgeeft.
 
-Als bijvoorbeeld *www.contoso.com* is opgegeven in de instelling voor de **hostnaam** , wordt de oorspronkelijke aanvraag *`https://appgw.eastus.cloudapp.azure.com/path1` gewijzigd in *`https://www.contoso.com/path1` wanneer de aanvraag wordt doorgestuurd naar de back-endserver.
+Als bijvoorbeeld *www.contoso.com* is opgegeven in de instelling voor de **hostnaam** , wordt de oorspronkelijke aanvraag * `https://appgw.eastus.cloudapp.azure.com/path1` gewijzigd in * `https://www.contoso.com/path1` wanneer de aanvraag wordt doorgestuurd naar de back-endserver.
 
 ## <a name="back-end-pool"></a>Back-endgroep
 

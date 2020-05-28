@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265725"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020129"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -53,7 +53,7 @@ Voor de zelf studie maakt u een Azure Batch-account met een groep Vm's. Dit zijn
 
 1. Maak een **Azure batch-account** met behulp van de [Azure Portal](https://portal.azure.com). Zie [een artikel over een Azure batch-account maken en beheren][batch-create-account] voor instructies.
 2. Noteer de naam van het Azure Batch account, de account sleutel, de URI en de naam van de groep. U hebt ze nodig om een Azure Batch gekoppelde service te maken.
-    1. Op de start pagina van Azure Batch account ziet u een **URL** in de volgende indeling: `https://myaccount.westus.batch.azure.com`. In dit voor beeld is **MyAccount** de naam van het Azure batch-account. De URI die u in de definitie van de gekoppelde service gebruikt, is de URL zonder de naam van het account. Bijvoorbeeld: `https://<region>.batch.azure.com`.
+    1. Op de start pagina van Azure Batch account ziet u een **URL** in de volgende indeling: `https://myaccount.westus.batch.azure.com` . In dit voor beeld is **MyAccount** de naam van het Azure batch-account. De URI die u in de definitie van de gekoppelde service gebruikt, is de URL zonder de naam van het account. Bijvoorbeeld: `https://<region>.batch.azure.com`.
     2. Klik in het linkermenu op **sleutels** en kopieer de **primaire toegangs sleutel**.
     3. Als u een bestaande pool wilt gebruiken, klikt u op **Pools** in het menu en noteert u de **id** van de groep. Als u geen bestaande groep hebt, gaat u naar de volgende stap.
 2. Een **Azure batch groep**maken.
@@ -372,7 +372,7 @@ De-methode retourneert een woorden lijst die kan worden gebruikt om aangepaste a
     > Stel 4.5.2-versie van .NET Framework in als het doel raamwerk voor uw project: Klik met de rechter muisknop op het project en klik op **Eigenschappen** om het doel raamwerk in te stellen. Data Factory biedt geen ondersteuning voor aangepaste activiteiten die zijn gecompileerd op .NET Framework-versies later dan 4.5.2.
 
 11. Start **Windows Verkenner**en navigeer naar de map **bin\debug** of **bin\release** , afhankelijk van het type Build.
-12. Maak een zip-bestand **MyDotNetActivity. zip** dat alle binaire bestanden bevat in \<de map\>\bin\Debug van het project. Neem het bestand **MyDotNetActivity. pdb** op zodat u aanvullende details krijgt, zoals regel nummer in de bron code die het probleem heeft veroorzaakt als er een fout is opgetreden.
+12. Maak een zip-bestand **MyDotNetActivity. zip** dat alle binaire bestanden in de \<project folder\> map \bin\Debug bevat. Neem het bestand **MyDotNetActivity. pdb** op zodat u aanvullende details krijgt, zoals regel nummer in de bron code die het probleem heeft veroorzaakt als er een fout is opgetreden.
 
     > [!IMPORTANT]
     > Alle bestanden in het zip-bestand voor de aangepaste activiteit moeten zich op het **hoogste niveau** bevinden, zonder submappen.
@@ -440,7 +440,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
 2. Klik op **Nieuw gegevens archief** op de opdracht balk en kies **Azure Storage**. U ziet het JSON-script voor het maken van een gekoppelde Azure Storage-service in de editor.
 
     ![Nieuwe gegevens opslag-Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Vervang `<accountname>` door de naam van uw Azure Storage- `<accountkey>` account en door de toegangs sleutel van het Azure-opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
+3. Vervang door `<accountname>` de naam van uw Azure Storage-account en `<accountkey>` door de toegangs sleutel van het Azure-opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 
     ![Azure Storage bevonden service](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Klik op de opdrachtbalk op **Implementeren** om de gekoppelde service te implementeren.
@@ -451,7 +451,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
     ![Nieuwe Compute-Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. Breng de volgende wijzigingen aan in het JSON-script:
 
-   1. Geef Azure Batch account naam op voor de eigenschap **AccountName** . De **URL** van de **Blade Azure batch account** heeft de volgende indeling: `http://accountname.region.batch.azure.com`. Voor de eigenschap **batchUri** in de JSON moet u verwijderen `accountname.` uit de URL en de `accountname` voor de `accountName` JSON-eigenschap gebruiken.
+   1. Geef Azure Batch account naam op voor de eigenschap **AccountName** . De **URL** van de **Blade Azure batch account** heeft de volgende indeling: `http://accountname.region.batch.azure.com` . Voor de eigenschap **batchUri** in de JSON moet u verwijderen `accountname.` uit de URL en de `accountname` voor de `accountName` JSON-eigenschap gebruiken.
    2. Geef de sleutel van het Azure Batch-account op voor de eigenschap **accessKey** .
    3. Geef de naam op van de groep die u hebt gemaakt als onderdeel van vereisten voor de eigenschap **pool** naam. U kunt ook de ID van de pool opgeven in plaats van de naam van de pool.
    4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Bijvoorbeeld: `https://westus.batch.azure.com`.
@@ -1031,7 +1031,7 @@ Het voor beeld van de [Azure Data Factory-lokale omgeving](https://github.com/gb
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

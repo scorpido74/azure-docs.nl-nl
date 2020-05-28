@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757204"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020792"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Taakverdelingsservices gebruiken in Azure
 
@@ -65,7 +65,7 @@ In het volgende diagram ziet u de architectuur van dit scenario:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>Stap 1: een Traffic Manager profiel maken
 
-1. Klik in de Azure Portal op **een resource** > **netwerk** > **Traffic Manager profiel** > **maken**.
+1. Klik in de Azure Portal op **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
 2. Voer de volgende basis informatie in:
 
    * **Naam**: geef uw Traffic Manager een naam voor het DNS-voor voegsel.
@@ -80,7 +80,7 @@ In het volgende diagram ziet u de architectuur van dit scenario:
 
 ### <a name="step-2-create-the-application-gateways"></a>Stap 2: de toepassings gateways maken
 
-1. Klik in het linkerdeel venster van de Azure Portal op **een resource** > maken**netwerk** > **Application Gateway**.
+1. Klik in het linkerdeel venster van de Azure Portal op **een resource maken**  >  **netwerk**  >  **Application Gateway**.
 2. Voer de volgende basis informatie over de toepassings gateway in:
 
    * **Naam**: de naam van de toepassings gateway.
@@ -96,7 +96,7 @@ In het volgende diagram ziet u de architectuur van dit scenario:
 
 #### <a name="configure-url-routing-for-application-gateways"></a>URL-route ring configureren voor toepassings gateways
 
-Wanneer u een back-end-pool kiest, neemt een toepassings gateway die is geconfigureerd met een regel op basis van een pad patroon van de aanvraag-URL naast round robin-distributie. In dit scenario voegen we een regel op basis van een pad toe om elke URL met '\*/images/' om te leiden naar de Server groep voor installatie kopieën. Voor meer informatie over het configureren van op URL-pad gebaseerde route ring voor een toepassings gateway, raadpleegt u [een op pad gebaseerde regel voor een toepassings gateway maken](../application-gateway/application-gateway-create-url-route-portal.md).
+Wanneer u een back-end-pool kiest, neemt een toepassings gateway die is geconfigureerd met een regel op basis van een pad patroon van de aanvraag-URL naast round robin-distributie. In dit scenario voegen we een regel op basis van een pad toe om elke URL met '/images/ \* ' om te leiden naar de Server groep voor installatie kopieën. Voor meer informatie over het configureren van op URL-pad gebaseerde route ring voor een toepassings gateway, raadpleegt u [een op pad gebaseerde regel voor een toepassings gateway maken](../application-gateway/application-gateway-create-url-route-portal.md).
 
 ![Diagram van de weblaag Application Gateway](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -127,7 +127,7 @@ Wanneer u een back-end-pool kiest, neemt een toepassings gateway die is geconfig
    + **Http-instelling**: de HTTP-instellingen die met deze regel moeten worden gebruikt.
 
    > [!IMPORTANT]
-   > Paden: geldige paden moeten beginnen met "/". Het Joker teken\*is alleen toegestaan aan het einde. Geldige voor beelden zijn/XYZ,\*/XYZ of/xyz/\*.
+   > Paden: geldige paden moeten beginnen met "/". Het Joker teken \* is alleen toegestaan aan het einde. Geldige voor beelden zijn/XYZ,/XYZ \* of/xyz/ \* .
 
    ![Application Gateway Blade ' op pad gebaseerde regel toevoegen '](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
@@ -154,11 +154,11 @@ In dit scenario is Traffic Manager verbonden met toepassings gateways (zoals gec
 
 In dit scenario distribueert Load Balancer verbindingen van de weblaag naar de data bases binnen een cluster met hoge Beschik baarheid.
 
-Als uw database cluster met hoge Beschik baarheid gebruikmaakt van SQL Server AlwaysOn, raadpleegt u [een of meer listeners voor Always on-beschikbaarheids groep configureren](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) voor stapsgewijze instructies.
+Als uw database cluster met hoge Beschik baarheid gebruikmaakt van SQL Server AlwaysOn, raadpleegt u [een of meer listeners voor Always on-beschikbaarheids groep configureren](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) voor stapsgewijze instructies.
 
 Zie [een interne Load Balancer in de Azure portal maken](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)voor meer informatie over het configureren van een interne Load Balancer.
 
-1. Klik in het linkerdeel venster van de Azure Portal op **een resource** > **netwerk** > **taak verdeler**maken.
+1. Klik in het linkerdeel venster van de Azure Portal op **een resource**  >  **netwerk**  >  **taak verdeler**maken.
 2. Kies een naam voor de load balancer.
 3. Stel het **type** in op **intern**en kies het juiste virtuele netwerk en subnet voor de Load Balancer zich in bevindt.
 4. Onder **IP-adres toewijzing**selecteert u **dynamisch** of **statisch**.

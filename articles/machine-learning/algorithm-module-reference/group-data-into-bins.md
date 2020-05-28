@@ -1,5 +1,5 @@
 ---
-title: Gegevens groeperen in opslag locaties
+title: Gegevens in opslaglocaties groeperen
 titleSuffix: Azure Machine Learning
 description: Informatie over het gebruik van de groeps gegevens in de module opslag locaties voor het groeperen van nummers of het wijzigen van de distributie van doorlopende gegevens.
 services: machine-learning
@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83853825"
 ---
-# <a name="group-data-into-bins"></a>Gegevens groeperen in opslag locaties
+# <a name="group-data-into-bins"></a>Gegevens in opslaglocaties groeperen
 
 In dit artikel wordt beschreven hoe u de [groeps gegevens](group-data-into-bins.md) in de module opslag locaties in azure machine learning Designer (preview) gebruikt om getallen te groeperen of de distributie van doorlopende gegevens te wijzigen.
 

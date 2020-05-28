@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261616"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141990"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -60,7 +60,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
       ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Als u wilt controleren of uw Connection String is gekoppeld aan uw service bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de `EntityPath`  Connection String voor de para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
+   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de `EntityPath`   para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger toevoegen
 
@@ -114,7 +114,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 1. Selecteer **nieuwe stap**onder de stap waar u een actie wilt toevoegen.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer **een actie toevoegen**.
 
 1. Onder **Kies een actie**, voert u in het zoekvak ' Azure service bus ' in als uw filter. Selecteer in de lijst acties de gewenste actie. 
 
@@ -152,11 +152,21 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>Gecorreleerde berichten in de juiste volg orde verzenden
+
+Wanneer u verwante berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) gebruiken met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
+
+Wanneer u een logische app maakt, kunt u de **gecorreleerde order levering selecteren met behulp van service bus-sessie** sjabloon, waarmee het sequentiële verwerkings-patroon wordt geïmplementeerd. Zie [Verwante berichten verzenden in de aangegeven volg orde](../logic-apps/send-related-messages-sequential-convoy.md)voor meer informatie.
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>Connector-verwijzing
 
 De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een service bus naar de connector cache opslaan. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Message Sessions](../service-bus-messaging/message-sessions.md)(Engelstalig) voor meer informatie.
 
-Raadpleeg de [referentie pagina](/connectors/servicebus/)van de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de OpenAPI (voorheen Swagger) van de connector. Zie [Wat is Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md)? voor meer informatie over Azure Service Bus berichten.
+Raadpleeg de [referentie pagina](/connectors/servicebus/)voor de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de Swagger-beschrijving van de connector. Zie [Wat is Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md)? voor meer informatie over Azure Service Bus berichten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

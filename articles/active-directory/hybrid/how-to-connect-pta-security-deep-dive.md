@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185563"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014363"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Uitgebreide kennis van Pass-Through-verificatie Azure Active Directory
 
@@ -72,9 +72,12 @@ In de volgende secties worden deze fasen uitvoerig besproken.
 
 ### <a name="authentication-agent-installation"></a>Verificatie agent installeren
 
-Alleen globale beheerders kunnen een verificatie agent (met behulp van Azure AD Connect of zelfstandig) installeren op een on-premises server. De installatie voegt twee nieuwe vermeldingen toe aan de lijst**Program** > ma's**en onderdelen** van het **configuratie scherm** > :
+Alleen globale beheerders kunnen een verificatie agent (met behulp van Azure AD Connect of zelfstandig) installeren op een on-premises server. De installatie voegt twee nieuwe vermeldingen toe **Control Panel**aan de  >  lijst**Program**ma's  >  **en onderdelen** van het configuratie scherm:
 - De verificatie agent-toepassing zelf. Deze toepassing wordt uitgevoerd met [netwerk](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) toegangs rechten.
 - De updater-toepassing die wordt gebruikt om de verificatie agent automatisch bij te werken. Deze toepassing wordt uitgevoerd met [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) -bevoegdheden.
+
+>[!IMPORTANT]
+>Uit veiligheids oogpunt moeten beheerders de server waarop de PTA-agent wordt uitgevoerd, behandelen alsof het een domein controller is.  De PTA-agent servers moeten worden gehard over dezelfde regels als beschreven in [domein controllers beveiligen tegen aanvallen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)
 
 ### <a name="authentication-agent-registration"></a>Registratie van verificatie agent
 

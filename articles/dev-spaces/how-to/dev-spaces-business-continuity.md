@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Meer informatie over het gebruik van Azure dev Spaces en Azure Kubernetes Services voor bedrijfs continuïteit en voor bereiding op nood herstel
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295824"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996921"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
 
@@ -27,14 +27,6 @@ Door ontwikkel ruimten in AKS-clusters in verschillende regio's in te scha kelen
 
 Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Ontwikkel ruimten inschakelen via de Azure Portal
-
-Selecteer de menu opdracht **dev Spaces** onder de instellingen van elk cluster in de Azure Portal. Kies vervolgens de optie om dev Spaces in te scha kelen en op te slaan.
-
-![Ontwikkel ruimten inschakelen via Azure Portal](../media/common/enable-dev-spaces.jpg)
-
-Herhaal dit proces voor elk cluster.
-
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Ontwikkel ruimten inschakelen via de Azure CLI
 
 U kunt ook dev Spaces inschakelen op de opdracht regel:
@@ -45,7 +37,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>De basis lijn van uw team implementeren voor elk cluster
 
-Wanneer u met dev Spaces werkt, implementeert u doorgaans de volledige toepassing naar een bovenliggende ontwikkel ruimte op uw Kubernetes-cluster. Standaard wordt de `default` ruimte gebruikt. De eerste implementatie omvat alle services en de externe resources waarvan deze services afhankelijk zijn, zoals data bases of wacht rijen. Dit staat bekend als de *basis lijn*. Zodra u een basis lijn in de bovenliggende ontwikkel ruimte hebt ingesteld, kunt u de afzonderlijke services in onderliggende ontwikkel ruimten opsporen en fout opsporing uitvoeren.
+Wanneer u met dev Spaces werkt, implementeert u doorgaans de volledige toepassing naar een bovenliggende ontwikkel ruimte op uw Kubernetes-cluster. Standaard `default` wordt de ruimte gebruikt. De eerste implementatie omvat alle services en de externe resources waarvan deze services afhankelijk zijn, zoals data bases of wacht rijen. Dit staat bekend als de *basis lijn*. Zodra u een basis lijn in de bovenliggende ontwikkel ruimte hebt ingesteld, kunt u de afzonderlijke services in onderliggende ontwikkel ruimten opsporen en fout opsporing uitvoeren.
 
 U moet de meest recente versies van uw Baseline set services implementeren voor clusters in meerdere regio's. Als u de basislijn Services op deze manier bijwerkt, kunt u ontwikkel ruimten blijven gebruiken als er sprake is van een Azure-regio fout. Als u bijvoorbeeld de basis lijn via een CI/CD-pijp lijn implementeert, wijzigt u de pijp lijn zodanig dat deze wordt geïmplementeerd in meerdere clusters in verschillende regio's.
 
@@ -88,11 +80,11 @@ Herhaal deze stappen voor andere projecten die zijn geconfigureerd voor gebruik 
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Toegang tot een service op een back-upcluster
 
-Als u uw service hebt geconfigureerd voor het gebruik van een open bare DNS-naam, heeft de service een andere URL als u deze uitvoert op een back-upcluster. Open bare DNS-namen zijn altijd in `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`de indeling. Als u overschakelt naar een ander cluster, worden de cluster-GUID en de regio mogelijk gewijzigd.
+Als u uw service hebt geconfigureerd voor het gebruik van een open bare DNS-naam, heeft de service een andere URL als u deze uitvoert op een back-upcluster. Open bare DNS-namen zijn altijd in de indeling `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Als u overschakelt naar een ander cluster, worden de cluster-GUID en de regio mogelijk gewijzigd.
 
-In dev ruimten wordt altijd de juiste URL voor de service weer `azds up`gegeven wanneer deze wordt uitgevoerd, of in het uitvoer venster in Visual Studio onder **Azure dev Spaces**.
+In dev ruimten wordt altijd de juiste URL voor de service weer gegeven wanneer deze wordt uitgevoerd `azds up` , of in het uitvoer venster in Visual Studio onder **Azure dev Spaces**.
 
-U kunt de URL ook vinden door de `azds list-uris` opdracht uit te voeren:
+U kunt de URL ook vinden door de opdracht uit te voeren `azds list-uris` :
 ```
 $ azds list-uris
 Uri                                                     Status

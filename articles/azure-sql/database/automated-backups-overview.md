@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: e450d9ede3b073d2d1a791b341e4376b40919933
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116467"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141837"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,11 +49,11 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
-| Retentie van back-ups wijzigen | [SQL Database](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Lange termijn retentie van back-ups wijzigen | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Door SQL beheerd exemplaar-N.v.t.  | [SQL Database](long-term-backup-retention-configure.md)<br/>Door SQL beheerd exemplaar-N.v.t.  |
-| Een Data Base vanaf een bepaald moment herstellen | [SQL Database](recovery-using-backups.md#point-in-time-restore) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Een verwijderde database herstellen | [SQL Database](recovery-using-backups.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Een Data Base herstellen vanuit Azure Blob-opslag | SQL Database-N.v.t. <br/>Door SQL beheerd exemplaar-N.v.t.  | SQL Database-N.v.t. <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| Retentie van back-ups wijzigen | [Eén data base](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Beheerd exemplaar](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Eén data base](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Lange termijn retentie van back-ups wijzigen | [Eén data base](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Eén data base](long-term-backup-retention-configure.md)<br/>Beheerd exemplaar-N.v.t.  |
+| Een Data Base vanaf een bepaald moment herstellen | [Eén data base](recovery-using-backups.md#point-in-time-restore) | [Eén data base](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| Een verwijderde database herstellen | [Eén data base](recovery-using-backups.md) | [Eén data base](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Een Data Base herstellen vanuit Azure Blob-opslag | Eén data base-N.v.t. <br/>Beheerd exemplaar-N.v.t.  | Eén data base-N.v.t. <br/>[Beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-frequency"></a>Back-upfrequentie
 
@@ -61,7 +61,7 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
 SQL Database en SQL Managed instance ondersteunen self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt en differentiële back-ups van data bases worden over het algemeen elke 12 uur gemaakt. Back-ups van transactie logboeken worden over het algemeen elke vijf tot tien minuten gemaakt. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
 
-De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van back-ups van alle data bases wordt bepaald door SQL Database en SQL Managed instance als de algemene systeem workload wordt gesaldeerd. U kunt de back-uptaken niet wijzigen of uitschakelen.
+De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle database back-ups wordt bepaald door de SQL Database of de SQL Managed instance service, omdat deze de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen.
 
 ### <a name="default-backup-retention-period"></a>Standaard retentie periode voor back-ups
 
@@ -79,20 +79,20 @@ Voor meer informatie over LTR, Zie [lange termijn retentie van back-ups](long-te
 
 ## <a name="backup-storage-consumption"></a>Opslag gebruik back-ups
 
-Voor afzonderlijke data bases in SQL Database en beheerde exemplaren in een SQL Managed instance wordt deze vergelijking gebruikt voor het berekenen van het totale opslag gebruik van back-ups:
+Voor afzonderlijke data bases en beheerde exemplaren wordt deze vergelijking gebruikt voor het berekenen van het totale opslag gebruik van back-ups:
 
 `Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`
 
-Voor gegroepeerde Data bases in SQL Database wordt de totale opslag grootte van de back-up geaggregeerd op het groeps niveau en wordt als volgt berekend:
+Voor gegroepeerde Data bases wordt de totale opslag grootte van de back-up geaggregeerd op het groeps niveau en wordt als volgt berekend:
 
 `Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`
 
 Back-ups die plaatsvinden vóór de Bewaar periode, worden automatisch opgeschoond op basis van hun tijds tempel. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up is vereist, worden ze samen in wekelijkse segmenten opgeschoond.
 
 SQL Database en SQL Managed instance berekenen uw totale in-retentie back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de data base is verwijderd, neemt het verbruik af als ouderdom van back-ups. Nadat back-ups ouder zijn geworden dan de retentie periode, wordt de facturering stopgezet.
-
+   
    > [!IMPORTANT]
-   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen veelvuldig opslag-en reken kosten worden bespaard, waardoor de opslag kosten voor back-ups toenemen, omdat micro soft een back-up van de opgegeven Bewaar periode voor elke verwijderde data base vasthoudt, elke keer dat deze wordt verwijderd.
+   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen veelvuldig opslag-en reken kosten worden bespaard, waardoor de opslag kosten voor back-ups toenemen, omdat micro soft een back-up van de opgegeven Bewaar periode voor elke verwijderde data base vasthoudt, elke keer dat deze wordt verwijderd. 
 
 ### <a name="monitor-consumption"></a>Verbruik bewaken
 
@@ -142,18 +142,21 @@ Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base
 
 ## <a name="backup-retention"></a>Retentie van back-ups
 
-Alle data bases in Microsoft Azure SQL hebben een standaard periode van 7 dagen voor het bewaren van back-ups. U kunt [de Bewaar periode voor back-ups wijzigen naar een](#change-the-pitr-backup-retention-period) waarde van 35 dagen.
+Alle data bases in Microsoft Azure SQL hebben een standaard periode van 7 dagen voor het bewaren van back-ups. U kunt [de Bewaar periode voor back-ups wijzigen](#change-the-pitr-backup-retention-period) naar elke locatie tussen 1-35 dagen.
 
 Als u een Data Base verwijdert, houdt Azure de back-ups op dezelfde manier als voor een online-data base. Als u bijvoorbeeld een eenvoudige data base verwijdert met een Bewaar periode van zeven dagen, wordt een back-up die vier dagen oud is, drie dagen lang opgeslagen.
 
 Als u de back-ups langer wilt bewaren dan de maximale Bewaar periode, kunt u de back-upeigenschappen wijzigen om een of meer lange termijn Bewaar perioden toe te voegen aan uw data base. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 
 > [!IMPORTANT]
-> Als u de server of het beheerde exemplaar verwijdert, worden ook alle data bases die worden beheerd door die server of het beheerde exemplaar verwijderd. Ze kunnen niet worden hersteld. U kunt een verwijderde server of een beheerd exemplaar niet herstellen. Maar als u lange termijn retentie voor SQL Database hebt geconfigureerd, worden de back-ups voor de data bases met LTR niet verwijderd en kunnen deze data bases worden hersteld.
+> Het instellen van de Bewaar periode voor back-ups op 1 dag (of op een wille keurige waarde tussen 1-7) wordt op dit moment alleen ondersteund via Power shell of REST API. Mini maal vereiste versie AZ. SQL module is v 2.6.0, of kan worden uitgevoerd via Cloud shell, die altijd de nieuwste AZ. SQL-versie heeft.
+
+> [!IMPORTANT]
+> Als u de server of het beheerde exemplaar verwijdert, worden ook alle data bases die worden beheerd door die server of het beheerde exemplaar verwijderd. Ze kunnen niet worden hersteld. U kunt een verwijderde server of een beheerd exemplaar niet herstellen. Maar als u lange termijn retentie voor SQL Database of beheerd-exemplaar hebt geconfigureerd, worden de back-ups voor de data bases met LTR niet verwijderd en kunnen deze data bases worden hersteld.
 
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 
-Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Wanneer TDE is ingeschakeld voor SQL Database of SQL Managed instance, worden back-ups ook versleuteld. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie [transparent Data Encryption met SQL database en SQL Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)(Engelstalig) voor meer informatie over TDe.
+Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Wanneer TDE is ingeschakeld voor SQL Database of SQL Managed instance, worden back-ups ook versleuteld. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
 
 ## <a name="backup-integrity"></a>Back-upintegriteit
 

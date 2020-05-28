@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681075"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021378"
 ---
 # <a name="color-materials"></a>Kleurmaterialen
 
@@ -22,7 +22,7 @@ Kleur materiaal is efficiënter om weer te geven dan [PBR-materialen](pbr-materi
 
 Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
-* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of *vertex kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking `1` , met een volledig `0` ondoorzichtigheid en duidelijk doorzichtig. De standaard waarde is wit.
+* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of * :::no-loc text="vertex"::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
 
   > [!NOTE]
   > Omdat kleur materialen niet overeenkomen met de omgeving, wordt een volledig transparant kleuren materiaal onzichtbaar. Dit wijkt af van de [PBR-materialen](pbr-materials.md).
@@ -33,15 +33,15 @@ Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
 * **textureCoordinateScale** en **textureCoordinateOffset:** de schaal wordt vermenigvuldigd met de UV-textuur coördinaten, de offset wordt hieraan toegevoegd. Kan worden gebruikt om de bitmappatronen te spreiden en te verschuiven. De standaard schaal is (1, 1) en de offset is (0, 0).
 
-* **useVertexColor:** Als de mesh hoekpunt kleuren bevat en deze optie is ingeschakeld, worden de vertex kleuren van de mazen vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard zijn vertex kleuren uitgeschakeld.
+* **useVertexColor:** Als de mesh :::no-loc text="vertex"::: kleuren bevat en deze optie is ingeschakeld, wordt de kleur van de netten :::no-loc text="vertex"::: vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard is *useVertexColor* uitgeschakeld.
 
-* **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Deze optie is standaard uitgeschakeld. Zie ook [Single-Side rendering](single-sided-rendering.md).
+* **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Deze optie is standaard uitgeschakeld. Zie ook [ :::no-loc text="Single-sided"::: rendering](single-sided-rendering.md).
 
 ## <a name="color-material-properties"></a>Eigenschappen van kleur materiaal
 
 De volgende eigenschappen zijn specifiek voor kleuren materialen:
 
-* **vertexMix:** Deze waarde tussen `0` en `1` geeft aan hoe sterk de hoekpunt kleur in een [net](../../concepts/meshes.md) bijdraagt aan de uiteindelijke kleur. Bij de standaard waarde van 1 wordt de hoekpunt kleur in de albedo-kleuren volledig vermenigvuldigd. Met de waarde 0 worden de hoekpunt kleuren volledig genegeerd.
+* **vertexMix:** Deze waarde tussen `0` en `1` geeft aan hoe sterk de :::no-loc text="vertex"::: kleur in een [net](../../concepts/meshes.md) bijdraagt aan de uiteindelijke kleur. Bij de standaard waarde van 1 wordt de :::no-loc text="vertex"::: kleur in de albedo-kleuren volledig vermenigvuldigd. Met de waarde 0 :::no-loc text="vertex"::: worden de kleuren volledig genegeerd.
 
 * **transparencyMode:** In tegens telling tot [PBR-materialen](pbr-materials.md), onderscheidt kleur materiaal van verschillende transparantie modi:
 

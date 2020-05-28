@@ -6,4 +6,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398830"
 ---
-<Token>**Van toepassing op:** ![](../media/applies-to/yes.png)Ja ![Azure Data Factory](../media/applies-to/no.png)geen Azure Synapse Analytics (preview-versie)</Token>
+<Token>**van toepassing op:** ![ Ja ](../media/applies-to/yes.png) Azure Data Factory ![ geen ](../media/applies-to/no.png) Azure Synapse Analytics (preview-versie)</Token>

@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 868130b23bc29acf0f1271f68a45f44cee98fe98
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653045"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015621"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Verifiëren bij Azure Synapse Analytics
 
@@ -54,16 +54,16 @@ De verbinding maakt standaard verbinding met de *hoofd* database en niet op uw g
 Azure Active Directory voor delen zijn onder andere:
 
 * Biedt een alternatief voor SQL Server-verificatie.
-* Helpt de verspreiding van gebruikers identiteiten over database servers te stoppen.
+* Helpt de verspreiding van gebruikers identiteiten op meerdere servers te stoppen.
 * Maakt rotatie van wachtwoorden op één plek mogelijk
 * Beheer database machtigingen met externe groepen (Azure AD).
-* Elimineert het opslaan van wacht woorden door geïntegreerde Windows-authenticatie en andere vormen van verificatie die door Azure Active Directory worden ondersteund, in te scha kelen.
+* Elimineert het opslaan van wacht woorden door geïntegreerde Windows-verificatie in te scha kelen en o Ndere-verificatie methoden die door Azure Active Directory worden ondersteund.
 * Gebruikt Inge sloten database gebruikers voor het verifiëren van identiteiten op database niveau.
 * Biedt ondersteuning voor verificatie op basis van tokens voor toepassingen die verbinding maken met de SQL-groep.
-* Ondersteunt multi-factor Authentication via Active Directory universele verificatie voor verschillende hulpprogram ma's, waaronder [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+* Ondersteunt multi-factor Authentication via Active Directory universele verificatie voor verschillende hulpprogram ma's, waaronder [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 > [!NOTE]
-> Azure Active Directory nog steeds relatief nieuw is en enkele beperkingen heeft. Zie [Azure AD-functies en-beperkingen](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations), met name de aanvullende overwegingen, om ervoor te zorgen dat Azure Active Directory geschikt is voor uw omgeving.
+> Azure Active Directory nog steeds relatief nieuw is en enkele beperkingen heeft. Zie [Azure AD-functies en-beperkingen](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations), met name de aanvullende overwegingen, om ervoor te zorgen dat Azure Active Directory geschikt is voor uw omgeving.
 
 ### <a name="configuration-steps"></a>Configuratiestappen
 
@@ -80,7 +80,7 @@ Momenteel worden gebruikers Azure Active Directory niet weer gegeven in SSDT Obj
 
 ### <a name="find-the-details"></a>De details zoeken
 
-* De stappen voor het configureren en gebruiken van Azure Active Directory verificatie zijn bijna identiek voor Azure SQL Database en Synapse SQL in azure Synapse. Volg de gedetailleerde stappen in het onderwerp [verbinding maken met SQL database of SQL-groep met behulp van Azure Active Directory-verificatie](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+* De stappen voor het configureren en gebruiken van Azure Active Directory verificatie zijn bijna identiek voor Azure SQL Database en Synapse SQL in azure Synapse. Volg de gedetailleerde stappen in het onderwerp [verbinding maken met SQL database of SQL-groep met behulp van Azure Active Directory-verificatie](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 * Aangepaste database rollen maken en gebruikers toevoegen aan de rollen. Ken vervolgens gedetailleerde machtigingen toe aan de rollen. Zie aan de slag met de machtigingen voor de [Data base-engine](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen

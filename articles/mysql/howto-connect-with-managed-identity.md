@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664667"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141718"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Verbinding maken met beheerde identiteit voor Azure Database for MySQL
 
@@ -22,6 +22,9 @@ In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor ee
 > * Maak een gebruiker in de data base die de door de gebruiker toegewezen identiteit van de virtuele machine vertegenwoordigt
 > * Een toegangs Token ophalen met behulp van de VM-identiteit en dit gebruiken om een Azure Database for MySQL server op te vragen
 > * Het ophalen van tokens implementeren in een C#-voorbeeld toepassing
+
+> [!IMPORTANT]
+> Verbinding maken met een beheerde identiteit is alleen beschikbaar voor MySQL 5,7 en hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 

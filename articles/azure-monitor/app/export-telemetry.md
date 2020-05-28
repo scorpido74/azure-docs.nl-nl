@@ -2,13 +2,13 @@
 title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft Docs
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744866"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017529"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
@@ -53,7 +53,8 @@ Continue export **biedt geen ondersteuning** voor de volgende functies/configura
 
 4. Maak of selecteer een container in de opslag.
 
-Zodra u uw export hebt gemaakt, wordt deze gestart. U ontvangt alleen gegevens die binnenkomen nadat u de export hebt gemaakt.
+> [!NOTE]
+> Zodra u uw export hebt gemaakt, gaan nieuwe opgenomen gegevens naar Azure Blob-opslag stromen. Continue export verzendt alleen nieuwe telemetrie die is gemaakt/opgenomen nadat continue export is ingeschakeld. Alle gegevens die bestonden vóór het inschakelen van continue export worden niet geëxporteerd en er wordt geen ondersteunde manier geboden om eerder gemaakte gegevens te exporteren met doorlopende export.
 
 Er kan een vertraging van ongeveer een uur optreden voordat de gegevens in de opslag worden weer gegeven.
 

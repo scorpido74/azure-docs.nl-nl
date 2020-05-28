@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c587a9fc0b3c59e5a9a3c9c04f51bca71667dd8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128048"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140545"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Migratie handleiding voor ADAL naar MSAL voor python
 
@@ -44,7 +44,7 @@ Zie [Wat is er anders in het micro soft Identity platform (v 2.0)-eind punt?](ht
 
 ADAL python schaft tokens voor bronnen aan, maar MSAL python verkrijgt tokens voor scopes. Het API-Opper vlak in MSAL python heeft geen resource parameter meer. U moet bereiken opgeven als een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Zie [Microsoft Graph scopes](https://docs.microsoft.com/graph/permissions-reference)voor een voor beeld van bereiken.
 
-U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com`is `https://graph.microsoft.com/.default`de equivalente bereik waarde.  Als de bron zich niet in het URL-formulier bevindt, maar een resource `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`-id van het formulier, kunt u de `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`waarde van bereik nog steeds gebruiken als.
+U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com` is de equivalente bereik waarde `https://graph.microsoft.com/.default` .  Als de bron zich niet in het URL-formulier bevindt, maar een resource-ID van het formulier `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kunt u de waarde van bereik nog steeds gebruiken als `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) en de [scopes voor een web API die v 1.0-tokens accepteert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
 
@@ -77,30 +77,48 @@ De micro soft Authentication Library (MSAL) abstracten het concept van vernieuwi
 
 De volgende code helpt u bij het migreren van uw vernieuwings tokens die worden beheerd door een andere OAuth2-bibliotheek (inclusief maar niet beperkt tot ADAL python) die moeten worden beheerd door MSAL voor python. Een reden voor het migreren van deze vernieuwings tokens is om te voor komen dat bestaande gebruikers zich opnieuw moeten aanmelden wanneer u uw app migreert naar MSAL voor python.
 
-De methode voor het migreren van een vernieuwings token is het gebruik van MSAL voor python om een nieuw toegangs token te verkrijgen met het vorige vernieuwings token. Wanneer het nieuwe vernieuwings token wordt geretourneerd, worden deze in de cache opgeslagen met MSAL voor python. Hier volgt een voor beeld van hoe u het kunt doen:
+De methode voor het migreren van een vernieuwings token is het gebruik van MSAL voor python om een nieuw toegangs token te verkrijgen met het vorige vernieuwings token. Wanneer het nieuwe vernieuwings token wordt geretourneerd, worden deze in de cache opgeslagen met MSAL voor python.
+Sinds MSAL python 1.3.0 bieden we voor dit doel een API in MSAL.
+Raadpleeg het volgende code fragment, dat wordt vermeld bij [een voltooid voor beeld van het migreren van vernieuwings tokens met MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.3.0/sample/migrate_rt.py#L28-L67)
 
 ```python
-from msal import PublicClientApplication
+import msal
+def get_preexisting_rt_and_their_scopes_from_elsewhere():
+    # Maybe you have an ADAL-powered app like this
+    #   https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/1.2.3/sample/device_code_sample.py#L72
+    # which uses a resource rather than a scope,
+    # you need to convert your v1 resource into v2 scopes
+    # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
+    # You may be able to append "/.default" to your v1 resource to form a scope
+    # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-def get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    raise NotImplementedError("You will need to implement this by yourself")
+    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # powered by some 3rd-party auth library, and persist its tokens somehow.
 
-app = PublicClientApplication(..., token_cache=...)
+    # Either way, you need to extract RTs from there, and return them like this.
+    return [
+        ("old_rt_1", ["scope1", "scope2"]),
+        ("old_rt_2", ["scope3", "scope4"]),
+        ]
 
-for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    # Assuming the old scope could be a space-delimited string.
-    # MSAL expects a list, like ["scope1", "scope2"].
-    scopes = old_scope.split()
-        # If your old refresh token came from ADAL for Python, which uses a resource rather than a scope,
-        # you need to convert your v1 resource into v2 scopes
-        # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
-        # You may be able to append "/.default" to your v1 resource to form a scope
-        # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    result = app.client.obtain_token_by_refresh_token(old_rt, scope=scopes)
-    # When this call returns the new token(s), a new refresh token is issued by the Microsoft identity platform and MSAL for Python
-    # stores it in the token cache.
+# We will migrate all the old RTs into a new app powered by MSAL
+app = msal.PublicClientApplication(
+    "client_id", authority="...",
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# We choose a migration strategy of migrating all RTs in one loop
+for old_rt, scopes in get_preexisting_rt_and_their_scopes_from_elsewhere():
+    result = app.acquire_token_by_refresh_token(old_rt, scopes)
+    if "error" in result:
+        print("Discarding unsuccessful RT. Error: ", json.dumps(result, indent=2))
+
+print("Migration completed")
 ```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,18 +6,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835067"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020350"
 ---
 # <a name="compose-dsc-configurations"></a>DSC-configuraties samenstellen
 
 Wanneer u resources moet beheren met meer dan één desired state Configuration (DSC), is het beste om [samengestelde resources](/powershell/scripting/dsc/resources/authoringresourcecomposite)te gebruiken. Een samengestelde resource is een geneste en geparametriseerde configuratie die wordt gebruikt als een DSC-resource in een andere configuratie. Met samengestelde resources kunt u complexe configuraties maken, terwijl de onderliggende samengestelde resources afzonderlijk kunnen worden beheerd en gebouwd.
 
-Azure Automation maakt het mogelijk om [samengestelde resources te importeren en te compileren](automation-dsc-compile.md). Zodra u samengestelde resources hebt geïmporteerd in uw Automation-account, kunt u Azure Automation status configuratie gebruiken via de **status configuratie (DSC-** functie in de Azure Portal.
+Azure Automation maakt het mogelijk om [samengestelde resources te importeren en te compileren](automation-dsc-compile.md). Zodra u samengestelde resources hebt geïmporteerd in uw Automation-account, kunt u Azure Automation status configuratie gebruiken via de functie **status configuratie (DSC)** in de Azure Portal.
 
 ## <a name="compose-a-configuration"></a>Een configuratie opstellen
 

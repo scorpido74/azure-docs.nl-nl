@@ -4,12 +4,12 @@ description: Azure Block Chain Workbench preview implementeren
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1a5efe4dd5a6f2a0b016626421f33202ede419
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943208"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021174"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
 
@@ -28,7 +28,7 @@ Met block Chain Workbench kunt u een Block Chain-boek implementeren, samen met e
 * Event Grid
 * Azure Key Vault
 * Service Bus
-* SQL Database (Standard S0) + logische SQL-Server
+* SQL Database (standaard S0)
 * Azure Storage-account (standaard LRS)
 * Schaalset voor virtuele machines met een capaciteit van 1
 * Virtual Network resource groep (met Load Balancer, netwerk beveiligings groep, openbaar IP-adres, Virtual Network)
@@ -54,7 +54,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant waar u Azure Block Chain Workbench wilt implementeren.
 1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
-1. Selecteer **Block Chain** > **Azure Block Chain workbench (preview-versie)**.
+1. Selecteer **Block Chain**  >  **Azure Block Chain workbench (preview-versie)**.
 
     ![Azure Block Chain Workbench maken](media/deploy/blockchain-workbench-settings-basic.png)
 
@@ -64,8 +64,8 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
     | VM-gebruikers naam | De gebruikers naam wordt gebruikt als beheerder voor alle virtuele machines (VM). |
     | Verificatietype | Selecteer deze optie als u een wacht woord of sleutel wilt gebruiken om verbinding te maken met Vm's. |
     | Wachtwoord | Het wacht woord wordt gebruikt om verbinding te maken met Vm's. |
-    | SSH | Gebruik een open bare RSA-sleutel in de indeling met één regel die begint met **ssh-rsa** of gebruik de PEM-indeling met meerdere regels. U kunt SSH-sleutels genereren `ssh-keygen` met behulp van Linux en OS X, of met behulp van puttygen in Windows. Zie [SSH-sleutels gebruiken met Windows op Azure voor](../../virtual-machines/linux/ssh-from-windows.md)meer informatie over SSH-sleutels. |
-    | Data Base-en block Chain-wacht woord | Geef het wacht woord op dat moet worden gebruikt voor toegang tot de data base die is gemaakt als onderdeel van de implementatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;) |
+    | SSH | Gebruik een open bare RSA-sleutel in de indeling met één regel die begint met **ssh-rsa** of gebruik de PEM-indeling met meerdere regels. U kunt SSH-sleutels genereren met behulp `ssh-keygen` van Linux en OS X, of met behulp van puttygen in Windows. Zie [SSH-sleutels gebruiken met Windows op Azure voor](../../virtual-machines/linux/ssh-from-windows.md)meer informatie over SSH-sleutels. |
+    | Data Base-en block Chain-wacht woord | Geef het wacht woord op dat moet worden gebruikt voor toegang tot de data base die is gemaakt als onderdeel van de implementatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;) |
     | Implementatie regio | Geef op waar u Block Chain Workbench-resources wilt implementeren. Voor de beste Beschik baarheid moet dit overeenkomen met de **locatie** -instelling. |
     | Abonnement | Geef het Azure-abonnement op dat u wilt gebruiken voor uw implementatie. |
     | Resourcegroepen | Maak een nieuwe resource groep door **Nieuw maken** te selecteren en geef een unieke naam op voor de resource groep. |
@@ -177,10 +177,9 @@ Als u ervoor kiest om de Azure AD-instellingen voor de implementatie hand matig 
 
 Voor de implementatie van Block Chain Workbench is registratie van een Azure AD-toepassing vereist. U hebt een Azure Active Directory-Tenant (Azure AD) nodig om de app te registreren. U kunt een bestaande Tenant gebruiken of een nieuwe Tenant maken. Als u een bestaande Azure AD-Tenant gebruikt, hebt u voldoende machtigingen nodig voor het registreren van toepassingen, het verlenen van Graph API machtigingen en het toestaan van gast toegang binnen een Azure AD-Tenant. Als u onvoldoende machtigingen hebt in een bestaande Azure AD-Tenant, maakt u een nieuwe Tenant.
 
-
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant. De Tenant moet de Tenant van de abonnements beheerder zijn van het abonnement waar Azure Block Chain Workbench wordt geïmplementeerd en u voldoende machtigingen hebt om toepassingen te registreren.
-1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties** > **nieuwe registratie**.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties**  >  **nieuwe registratie**.
 
     ![App-registratie](media/deploy/app-registration.png)
 
@@ -194,11 +193,9 @@ Voor de implementatie van Block Chain Workbench is registratie van een Azure AD-
 
 Vervolgens moet u het manifest wijzigen om toepassings rollen binnen Azure AD te gebruiken om Block Chain Workbench-beheerders op te geven.  Zie [Azure Active Directory Application manifest](../../active-directory/develop/reference-app-manifest.md)voor meer informatie over toepassings manifesten.
 
-
-1. Er is een GUID vereist voor het manifest. U kunt een GUID genereren met behulp van `[guid]::NewGuid()` de `New-GUID` Power shell-opdracht of cmdlet. Een andere mogelijkheid is om een GUID-Generator website te gebruiken.
+1. Er is een GUID vereist voor het manifest. U kunt een GUID genereren met behulp van de Power shell-opdracht `[guid]::NewGuid()` of `New-GUID` cmdlet. Een andere mogelijkheid is om een GUID-Generator website te gebruiken.
 1. Voor de toepassing die u hebt geregistreerd, selecteert u **manifest** in het gedeelte **beheren** .
-1. Werk vervolgens de sectie **appRoles** van het manifest bij. Vervang `"appRoles": []` door de gegeven JSON. Zorg ervoor dat u de waarde voor het veld **id** vervangt door de GUID die u hebt gegenereerd. 
-
+1. Werk vervolgens de sectie **appRoles** van het manifest bij. Vervang door `"appRoles": []` de gegeven JSON. Zorg ervoor dat u de waarde voor het `id` veld vervangt door de GUID die u hebt gegenereerd.
     ![Manifest bewerken](media/deploy/edit-manifest.png)
 
     ``` json
@@ -262,7 +259,7 @@ De toepassings-ID en Tenant gegevens zijn vereist voor de implementatie. Verzame
 
 ### <a name="get-tenant-domain-name"></a>Domein naam van Tenant ophalen
 
-Verzamel en sla de Active Directory Tenant domein naam op waar de toepassingen zijn geregistreerd. 
+Verzamel en sla de Active Directory Tenant domein naam op waar de toepassingen zijn geregistreerd.
 
 Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **Namen van aangepaste domeinen**. Kopieer de domein naam en sla deze op.
 
@@ -274,7 +271,7 @@ Als u gast gebruikers in uw Azure AD-Tenant hebt, volgt u de extra stappen om er
 
 1. Schakel over naar uw Azure AD-Tenant en selecteer **Azure Active Directory > gebruikers instellingen > externe instellingen voor samen werking beheren**.
 1. Stel **gast gebruikers machtigingen** in op **Nee**.
-    ![Instellingen voor externe samenwerking](media/deploy/user-collaboration-settings.png)
+    ![Instellingen voor externe samen werking](media/deploy/user-collaboration-settings.png)
 
 ## <a name="configuring-the-reply-url"></a>De antwoord-URL configureren
 
@@ -284,8 +281,8 @@ Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL*
 1. Controleer of u zich in de Tenant bevindt waarin u de Azure AD-client toepassing hebt geregistreerd.
 1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties**.
 1. Selecteer de Azure AD-client toepassing die u hebt geregistreerd in de sectie vereisten.
-1. Selecteer **Verificatie**.
-1. Geef de web-URL op van de Azure Block Chain Workbench-implementatie die u hebt opgehaald in de sectie [Block Chain Workbench web URL](#blockchain-workbench-web-url) . De antwoord-URL wordt voorafgegaan door `https://`. Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
+1. Selecteer **verificatie**.
+1. Geef de web-URL op van de Azure Block Chain Workbench-implementatie die u hebt opgehaald in de sectie [Block Chain Workbench web URL](#blockchain-workbench-web-url) . De antwoord-URL wordt voorafgegaan door `https://` . Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Antwoord-Url's voor verificatie](media/deploy/configure-reply-url.png)
 
@@ -299,7 +296,7 @@ Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL*
 
 Wanneer een implementatie niet meer nodig is, kunt u een implementatie verwijderen door de resource groep Block Chain Workbench te verwijderen.
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen. 
+1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
 1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
 
     ![Resourcegroep verwijderen](media/deploy/delete-resource-group.png)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75771254"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022808"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Meerdere frontends voor Azure Load Balancer
 
@@ -146,7 +146,7 @@ Het doel van de binnenkomende stroom is het frontend-IP-adres op de loop back-in
 
 U ziet dat in dit voor beeld de doel poort niet wordt gewijzigd. Hoewel dit een zwevend IP-scenario is, biedt Azure Load Balancer ook ondersteuning voor het definiëren van een regel voor het herschrijven van de back-end-doel poort en om deze te onderscheiden van de front-end-doel poort.
 
-Het type zwevende IP-regel is de basis van verschillende load balancer configuratie patronen. Een voor beeld dat momenteel beschikbaar is, is de [SQL AlwaysOn met meerdere listeners](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) configuratie. Na verloop van tijd worden er meer van deze scenario's gedocumenteerd.
+Het type zwevende IP-regel is de basis van verschillende load balancer configuratie patronen. Een voor beeld dat momenteel beschikbaar is, is de [SQL AlwaysOn met meerdere listeners](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) configuratie. Na verloop van tijd worden er meer van deze scenario's gedocumenteerd.
 
 ## <a name="limitations"></a>Beperkingen
 

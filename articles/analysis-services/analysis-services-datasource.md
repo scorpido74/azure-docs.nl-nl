@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71df537535003fe23902949c70b086a30a6b5049
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4f026a6a0155f9d4add15adb26951b4913d11685
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698135"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019806"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -27,18 +27,19 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |Azure Blob Storage      |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup> |
 |Azure-tabelopslag     |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Ja        |  Nee        |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store gen1      |   Ja       |    Nee      |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Ja       |    Nee      |<sup>[i](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Ja       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
 |Azure HDInsight HDFS    |     Ja     |   Nee       |<sup>[i](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Ja       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-**Noten**   
+**Noten**
+
 <a name="tab1400a">1</a> : alleen modellen in tabel vorm 1400 en hoger.  
-<a name="azprovider">2</a> -als de gegevens bron van een *provider* in tabellaire 1200 en hoger modellen is opgegeven, is voor zowel in-Memory als DirectQuery-modellen micro soft OLE DB-stuur programma vereist voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.    
-<a name="azsqlmanaged">3</a> -Azure SQL database beheerde instantie wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.    
-<a name="databricks">4</a> -Azure Databricks het gebruik van de Spark-connector wordt momenteel niet ondersteund.   
-<a name="gen2">5</a> -ADLS Gen2 connector wordt momenteel niet ondersteund, maar de Azure Blob Storage-connector kan worden gebruikt met een ADLS Gen2-gegevens bron.   
+<a name="azprovider">2</a> -als de gegevens bron van een *provider* in tabellaire 1200 en hoger modellen is opgegeven, is voor zowel in-Memory als DirectQuery-modellen micro soft OLE DB-stuur programma vereist voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
+<a name="azsqlmanaged">3</a> -Azure SQL database beheerde instantie wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.  
+<a name="databricks">4</a> -Azure Databricks het gebruik van de Spark-connector wordt momenteel niet ondersteund.  
+<a name="gen2">5</a> -ADLS Gen2 connector wordt momenteel niet ondersteund, maar de Azure Blob Storage-connector kan worden gebruikt met een ADLS Gen2-gegevens bron.
 
 ## <a name="other-data-sources"></a>Andere gegevensbronnen
 
@@ -67,7 +68,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |SAP HANA     |  Ja | Nee |  |
 |SAP Business Warehouse    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |SharePoint-lijst      |   Ja | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-database     |  Ja | Nee |  |
 |Teradata | Ja  | Ja  | <sup>[6](#teradata)</sup> |
@@ -75,15 +76,15 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |XML-tabel    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 | | | |
 
-**Noten**   
+**Noten**  
 <a name="tab1400b">6</a> : alleen in tabel vorm 1400 en hoger.  
 <a name="sqlim">7</a> -als de gegevens bron van een *provider* is opgegeven in tabellaire 1200 en hoger, geeft u micro soft OLE DB driver op voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
 <a name="instgw">8</a> -als MSOLEDBSQL als gegevens provider worden opgegeven, kan het nodig zijn om het [micro soft OLE DB-stuur programma voor SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) te downloaden en te installeren op dezelfde computer als de on-premises gegevens gateway.  
 <a name="oracle">9</a> : Geef de Oracle 1200-gegevens provider voor .net op, of als een *provider* gegevens bron in tabellaire 1400 en-modellen.  
-<a name="teradata">10</a> -voor in tabel 1200-modellen, of als gegevens bron van een *provider* in tabellaire 1400 + modellen, geeft u de Teradata-gegevens provider voor .net op.   
+<a name="teradata">10</a> -voor in tabel 1200-modellen, of als gegevens bron van een *provider* in tabellaire 1400 + modellen, geeft u de Teradata-gegevens provider voor .net op.  
 <a name="filesSP">11</a> -bestanden in on-premises share point worden niet ondersteund.
 
-Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Analysis Services-server is een [on-premises gateway](analysis-services-gateway.md)vereist. Wanneer u een gateway gebruikt, zijn 64-bits-providers vereist. 
+Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Analysis Services-server is een [on-premises gateway](analysis-services-gateway.md)vereist. Wanneer u een gateway gebruikt, zijn 64-bits-providers vereist.
 
 ## <a name="understanding-providers"></a>Wat zijn providers?
 
@@ -105,7 +106,6 @@ Net als bij tabellaire 1200 model projecten gebruikt u de **wizard tabel importe
 
 ![Geavanceerde eigenschappen van verouderde gegevens bronnen](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
-
 ## <a name="impersonation"></a>Imitatie
 In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio of SQL Server Management Studio (SSMS).
 
@@ -120,11 +120,11 @@ Voor gegevens bronnen in de Cloud:
 
 ## <a name="oauth-credentials"></a>OAuth-referenties
 
-Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de modus in het geheugen, Azure SQL Database, Azure Synapse Analytics (SQL Data Warehouse), Dynamics 365 en share Point List ondersteunen OAuth-referenties. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
+Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de modus in het geheugen, Azure SQL Database, Azure Synapse (voorheen SQL Data Warehouse), Dynamics 365 en share Point List ondersteunen OAuth-referenties. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
 
 De direct query-modus wordt niet ondersteund met OAuth-referenties.
 
 ## <a name="next-steps"></a>Volgende stappen
-[On-premises gateway](analysis-services-gateway.md)   
-[Uw server beheren](analysis-services-manage.md)   
 
+* [On-premises gateway](analysis-services-gateway.md)
+* [Uw server beheren](analysis-services-manage.md)

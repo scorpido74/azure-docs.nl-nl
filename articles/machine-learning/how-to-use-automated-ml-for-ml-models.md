@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: nibaccam
-author: tsikiksr
+author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/10/2020
-ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653846"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115874"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Een Azure Machine Learning-werk ruimte met een type **Enter prise-editie**. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  Als u een bestaande werk ruimte wilt bijwerken naar Enter prise Edition, raadpleegt [u upgrade to Enter prise Edition](how-to-manage-workspace.md#upgrade)(Engelstalig).
 
@@ -41,7 +41,7 @@ Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een
 
 1. Ga naar het linkerdeel venster. Selecteer **automatische ml** onder het gedeelte **Auteur** .
 
-[![Navigatie deel venster van Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
+[![Navigatievenster van Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
 
  Als dit de eerste keer is dat er experimenten worden uitgevoerd, ziet u een lege lijst en koppelingen naar documentatie. 
 
@@ -74,7 +74,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
         Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.
     
-        Selecteer **Volgende**.
+        Selecteer **Next**.
 
     1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
@@ -82,7 +82,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevens profilering](#profile).
 
-        Selecteer **Volgende**.
+        Selecteer **Next**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
 1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
@@ -104,7 +104,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     >[!NOTE]
     > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [taak typen definiëren](how-to-define-task-type.md) voor meer informatie.
 
@@ -120,14 +120,16 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     Aanvullende configuraties|Beschrijving
     ------|------
     Primaire metriek| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische parametrisatie| Selecteer deze optie om de voor verwerking van automatische machine learning in of uit te scha kelen. Preverwerking omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. Niet ondersteund voor het taak type time series-prognose. [Meer informatie over voor verwerking](#featurization). 
+    Automatische parametrisatie| Selecteer deze optie om de parametrisatie in of uit te scha kelen die door automatische machine learning worden uitgevoerd. Automatische parametrisatie omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. Niet ondersteund voor het taak type time series-prognose. Meer [informatie over parametrisatie](how-to-configure-auto-features.md#featurization). 
     Aanbevolen model uitleggen | Schakel deze optie in of uit om de uitleg mogelijkheid van het aanbevolen model weer te geven
     Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak.
     Criterium afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)*: hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
     Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-auto-train.md).
     Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
 
-1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest om **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , is dit formulier waar u kunt opgeven welke kolommen u wilt uitvoeren voor deze featurizations en selecteert u welke statistische waarde moet worden gebruikt voor ontbrekende waarde-toerekeningen.
+1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , worden de standaard parametrisatie-technieken toegepast. In de **instellingen van de weer gave-parametrisatie** kunt u deze standaard waarden wijzigen en dienovereenkomstig aanpassen. Meer informatie over het [aanpassen van featurizations](#customize-featurization). 
+
+    ![Formulier Azure Machine Learning Studio-taak type](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 <a name="profile"></a>
 
@@ -155,58 +157,19 @@ Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemi
 Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
 Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
-<a name="featurization"></a>
+## <a name="customize-featurization"></a>Parametrisatie aanpassen
 
-## <a name="advanced-featurization-options"></a>Geavanceerde opties voor parametrisatie
+In het formulier **parametrisatie** kunt u automatische parametrisatie in-en uitschakelen en de automatische parametrisatie-instellingen voor uw experiment aanpassen. Als u dit formulier wilt openen, raadpleegt u stap 10 in het gedeelte [experiment maken en uitvoeren](#create-and-run-experiment) . 
 
-Automatische machine learning biedt automatisch voor verwerkings-en gegevens Guardrails, om u te helpen potentiële problemen met uw gegevens te identificeren en te beheren, zoals [over-en onevenwichtige gegevens](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
+De volgende tabel bevat een overzicht van de aanpassingen die momenteel beschikbaar zijn via Studio. 
 
-### <a name="preprocessing"></a>Verwerking
+Kolom| Aanpassing
+---|---
+Inbegrepen | Hiermee geeft u op welke kolommen moeten worden toegevoegd voor de training.
+Onderdeel type| Wijzig het waardetype voor de geselecteerde kolom.
+Toegerekend met| Selecteer welke waarde er ontbrekende waarden moeten worden toegerekend met in uw gegevens.
 
-> [!NOTE]
-> Als u van plan bent om uw automatisch gegenereerde modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangeduid met een * ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). 
-
-|Stappen voor voor verwerking &nbsp;| Beschrijving |
-| ------------- | ------------- |
-|Hoge kardinaliteit of geen variantie-functies verwijderen * |Verwijder deze uit de trainings-en validatie sets, inclusief functies waarbij alle waarden ontbreken, dezelfde waarde over alle rijen of met extreem hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
-|Ontbrekende waarden toegerekend * |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
-|Extra functies genereren * |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bi-gram en Tri-Character-gram.|
-|Transformeren en coderen *|Numerieke functies met weinig unieke waarden worden omgezet in categorische-functies.<br/><br/>Er wordt één Hot encoding uitgevoerd voor lage kardinaliteit categorische; voor hoge kardinaliteit, een-hot-hash-code ring.|
-|Woord insluitingen|Tekst featurizer waarmee vectoren van tekst tokens worden geconverteerd naar sentence vectoren met behulp van een vooraf getraind model. De insluitings vector van elk woord in een document wordt samen geaggregeerd om een document functie Vector te maken.|
-|Doel codering|Voor categorische-functies wijst elke categorie toe met de gemiddelde doel waarde voor regressie problemen en op basis van de klasse-kans voor elke klasse voor classificatie problemen. De Kruis validatie op basis van frequentie en k-vouwen wordt toegepast om de toewijzing en het lawaai dat door sparse gegevens categorieën wordt veroorzaakt, te verminderen.|
-|Coderen van tekst doel|Voor tekst invoer wordt een gestapeld lineair model met Bag-of-woorden gebruikt om de kans van elke klasse te genereren.|
-|Gewicht van bewijs (WoE)|Hiermee wordt WoE berekend als een maat eenheid van de correlatie tussen categorische-kolommen en de doel kolom. Het wordt berekend als het logboek van de verhouding van de in-class versus van de cursus kansen. Met deze stap wordt één numerieke functie kolom per klasse uitgevoerd en wordt de nood zaak om ontbrekende waarden en uitschieter-behandeling expliciet te toegerekend.|
-|Cluster afstand|Treinen a k: cluster model op alle numerieke kolommen.  Hiermee worden k nieuwe functies, een nieuwe numerieke functie per cluster, met de afstand van elk voor beeld naar de massa middelpunt van elk cluster uitgevoerd.|
-
-### <a name="data-guardrails"></a>Gegevens Guardrails
-
-Data Guardrails worden toegepast wanneer automatische parametrisatie is ingeschakeld of validatie is ingesteld op auto. Data Guardrails helpt u bij het identificeren van mogelijke problemen met uw gegevens (bijvoorbeeld ontbrekende waarden, klasse onevenwicht) en het nemen van corrigerende maat regelen voor betere resultaten. 
-
-Gebruikers kunnen gegevens Guardrails bekijken in de studio op het tabblad **gegevens Guardrails** van een automatische ml-uitvoering of door in te stellen ```show_output=True``` bij het verzenden van een experiment met behulp van de python-SDK. 
-
-#### <a name="data-guardrail-states"></a>Status gegevens Guardrail
-
-In data Guardrails worden een van de volgende drie statussen weer gegeven: **door gegeven**, **voltooid**of **gewaarschuwd**.
-
-Staat| Beschrijving
-----|----
-Buffer| Er zijn geen gegevens problemen gedetecteerd en er is geen gebruikers actie vereist. 
-Gereed| Er zijn wijzigingen toegepast op uw gegevens. We moedigen gebruikers aan om de corrigerende maat regelen te controleren om ervoor te zorgen dat de wijzigingen worden uitgelijnd met de verwachte resultaten. 
-Gewaarschuwd| Er is een gegevens probleem gedetecteerd dat niet kan worden opgelost. We raden gebruikers aan om het probleem te herzien en op te lossen. 
-
->[!NOTE]
-> In vorige versies van automatische ML experimenten wordt een vierde staat weer gegeven: **opgelost**. Deze status wordt niet weer gegeven in nieuwere experimenten en alle Guardrails die de status **Fixed** hebben **weer gegeven,** worden nu weer gegeven.   
-
-In de volgende tabel worden de gegevens Guardrails beschreven die momenteel worden ondersteund, en de bijbehorende statussen die gebruikers kunnen krijgen bij het verzenden van hun experiment.
-
-Guardrail|Status|Voor waarde &nbsp; voor &nbsp; trigger
----|---|---
-Ontbrekende functie waarden toerekening |**Buffer** <br><br><br> **Gereed**| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over [ontbrekende waarden toegerekend.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens en toegerekend.
-Functie verwerking met hoge kardinaliteit |**Buffer** <br><br><br> **Gereed**| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over de [detectie van hoge functies voor kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
-Verwerking van splitsing van validatie |**Gereed**| *De validatie configuratie is ingesteld op auto en de trainings gegevens bevatten **minder** dan 20.000 rijen.* <br> Elke iteratie van het getrainde model is door Kruis validatie gevalideerd. Meer informatie over [validatie gegevens.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *De validatie configuratie is ingesteld op ' auto ' en de trainings gegevens bevatten **meer** dan 20.000 rijen.* <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
-Detectie van klasse-verdeling |**Buffer** <br><br><br><br> **Gewaarschuwd** | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie in de gegevensset heeft, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Als u model bias wilt herstellen, lost u het probleem op. Meer informatie over [gegevens](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data) die niet in balans zijn.
-Detectie van geheugen problemen |**Buffer** <br><br><br><br> **Gereed** |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) voor time series. <br><br><br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. De configuratie van de vertraging of het uitrollen venster is uitgeschakeld.
-Frequentie detectie |**Buffer** <br><br><br><br> **Gereed** |<br> De tijd reeks is geanalyseerd en alle gegevens punten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijd reeks is geanalyseerd en gegevens punten die niet zijn uitgelijnd met de gedetecteerde frequentie, zijn gedetecteerd. Deze gegevens punten zijn verwijderd uit de gegevensset. Meer informatie over het [voorbereiden van gegevens voor time series-prognoses.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+![Formulier Azure Machine Learning Studio-taak type](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
 
@@ -255,6 +218,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     Het menu *Geavanceerd* biedt standaard implementatie functies, zoals het [verzamelen van gegevens](how-to-enable-app-insights.md) en het gebruik van bron instellingen. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
 
 1. Selecteer **Implementeren**. Het volt ooien van de implementatie kan ongeveer 20 minuten duren.
+    Zodra de implementatie is gestart, wordt het tabblad **model Details** weer gegeven. Zie de voortgang van de implementatie in het gedeelte **Implementatie status** van het deel venster **Eigenschappen** . 
 
 U hebt nu een Operational web service voor het genereren van voor spellingen. U kunt de voor spellingen testen door de service te doorzoeken van de [ingebouwde Azure machine learning ondersteuning van Power bi](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 

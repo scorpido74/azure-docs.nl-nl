@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780841"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022211"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -44,6 +44,14 @@ Zie [capaciteits planning voor HDInsight-clusters](https://docs.microsoft.com/az
 
 Zie [resource typen in azure HDInsight-clusters](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Wat zijn de aanbevolen procedures voor het maken van grote HDInsight-clusters?
+
+1. Het is raadzaam HDInsight-clusters in te stellen met een [aangepaste Ambari-data base](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) om de schaal baarheid van het cluster te verbeteren.
+2. Gebruik [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) om HDInsight-clusters te maken om te profiteren van meer band breedte en andere prestatie kenmerken van Azure data Lake Storage Gen2.
+3. Hoofd knooppunten moet voldoende groot zijn om meerdere Master services te kunnen uitvoeren op deze knoop punten.
+4. Bepaalde werk belastingen, zoals interactieve Query's, hebben ook grotere Zookeeper-knoop punten nodig. Houd rekening met mini maal 8 kern-Vm's.
+5. Gebruik [externe Hive-metastore](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)in het geval van Hive en Spark.
+
 ## <a name="individual-components"></a>Afzonderlijke onderdelen
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Kan ik extra onderdelen installeren op mijn cluster?
@@ -68,7 +76,7 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hoe kan ik tijd zone wijzigen in Ambari?
 
-1. Open de Ambari-webgebruikersinterface `https://CLUSTERNAME.azurehdinsight.net`op, waarbij clustername de naam van uw cluster is.
+1. Open de Ambari-webgebruikersinterface op `https://CLUSTERNAME.azurehdinsight.net` , waarbij clustername de naam van uw cluster is.
 2. Selecteer in de rechter bovenhoek de optie beheer | Instellingen. 
 
    ![Ambari-instellingen](media/hdinsight-faq/ambari-settings.png)
@@ -79,9 +87,9 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ## <a name="metastore"></a>Metastore
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Hoe kan ik migreren van de bestaande meta Store naar Azure SQL Server? 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>Hoe kan ik migreren van de bestaande meta Store naar Azure SQL Database? 
 
-Zie [zelf studie: SQL Server migreren naar een enkele data base of gegroepeerde Data base in Azure SQL database offline met behulp van DMS](../dms/tutorial-sql-server-to-azure-sql.md)als u wilt migreren van SQL Server naar Azure SQL Server.
+Als u wilt migreren van SQL Server naar Azure SQL Database, raadpleegt u [zelf studie: SQL Server migreren naar één data base of gegroepeerde Data base in Azure SQL database offline met behulp van DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Wordt het Hive-metastore verwijderd wanneer het cluster wordt verwijderd?
 
@@ -133,7 +141,7 @@ Ja, u kunt een extra virtuele machine implementeren binnen hetzelfde subnet als 
 
 - Edge-knoop punten: u kunt een ander Edge-knoop punt toevoegen aan het cluster, zoals wordt beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md).
 
-- Zelfstandige knoop punten: u kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en vanaf die virtuele machine toegang krijgen tot het cluster met behulp van `https://<CLUSTERNAME>-int.azurehdinsight.net`het persoonlijke eind punt. Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie.
+- Zelfstandige knoop punten: u kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en vanaf die virtuele machine toegang krijgen tot het cluster met behulp van het persoonlijke eind punt `https://<CLUSTERNAME>-int.azurehdinsight.net` . Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie.
 
 ### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Moet ik gegevens opslaan op de lokale schijf van een Edge-knoop punt?
 
@@ -184,7 +192,7 @@ Voor controle vereisten raadt micro soft aan Azure Monitor Logboeken in te scha 
 
 `Clamscan`is de antivirus software die wordt uitgevoerd op het HDInsight-cluster en wordt gebruikt door Azure Security (azsecd) om uw clusters te beschermen tegen virus aanvallen. Micro soft raadt u ten zeerste aan dat gebruikers geen wijzigingen aanbrengen in de standaard `Clamscan` configuratie.
 
-Dit proces heeft geen invloed op de conflicten met of het uitvoeren van andere processen. Er wordt altijd naar een ander proces geoogst. CPU-pieken `Clamscan` van moeten alleen worden gezien wanneer het systeem niet actief is.  
+Dit proces heeft geen invloed op de conflicten met of het uitvoeren van andere processen. Er wordt altijd naar een ander proces geoogst. CPU-pieken van `Clamscan` moeten alleen worden gezien wanneer het systeem niet actief is.  
 
 In scenario's waarin u het schema moet beheren, kunt u de volgende stappen uitvoeren:
 
@@ -203,7 +211,7 @@ LLAP is om veiligheids redenen (Apache zwerver), geen prestaties. Gebruik groter
 
 ### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Hoe kan ik extra AAD-groepen toevoegen nadat ik een ESP-cluster heb gemaakt?
 Er zijn twee manieren om dit doel te verzorgen: 1. u kunt het cluster opnieuw maken en de extra groep toevoegen op het moment dat het cluster wordt gemaakt. Als u met scoped Synchronization in AAD-DS gebruikt, moet u ervoor zorgen dat groep B is opgenomen in de synchronisatie met het bereik.
-2: Voeg de groep toe als een geneste subgroep van de vorige groep die is gebruikt voor het maken van het ESP-cluster. Als u bijvoorbeeld een ESP-cluster met groep `A`hebt gemaakt, kunt u later op groep `B` toevoegen als geneste subgroep van `A` en na ongeveer één uur dat deze automatisch wordt gesynchroniseerd en beschikbaar in het cluster. 
+2: Voeg de groep toe als een geneste subgroep van de vorige groep die is gebruikt voor het maken van het ESP-cluster. Als u bijvoorbeeld een ESP-cluster met groep hebt gemaakt `A` , kunt u later op groep toevoegen `B` als geneste subgroep van `A` en na ongeveer één uur dat deze automatisch wordt gesynchroniseerd en beschikbaar in het cluster. 
 
 ## <a name="storage"></a>Storage
 
@@ -276,14 +284,14 @@ U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster
 
 U kunt de volgende REST-eind punten gebruiken om de benodigde gegevens in JSON-indeling te halen. Basis verificatie headers gebruiken om de aanvragen uit te voeren.
 
-- `Tez Query View`: *https:\//\<cluster naam>. azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`: *https:\//\<cluster naam>. azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https: \/ / \<cluster name> . azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https: \/ / \<cluster name> . azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hoe kan ik de configuratie gegevens uit het HDI-cluster op te halen met behulp van een Azure Active Directory gebruiker?
 
 Als u de juiste verificatie tokens met uw AAD-gebruiker wilt onderhandelen, gaat u door de gateway via de volgende indeling:
 
-* https://`<cluster dnsname>`. azurehdinsight.net/API/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https:// `<cluster dnsname>` . azurehdinsight.net/API/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hoe kan ik Ambari rest API gebruiken om de prestaties van een garen te controleren?
 
@@ -313,7 +321,7 @@ Als u de opdracht van buiten het virtuele netwerk of vanuit een niet-gekoppeld v
 > [!NOTE]
 > Met krul wordt u om een wacht woord gevraagd. U moet een geldig wacht woord opgeven voor de gebruikers naam van het cluster.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Hoeveel kost het om een HDInsight-cluster te implementeren?
 

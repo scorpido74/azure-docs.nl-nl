@@ -3,15 +3,15 @@ title: Informatie over het beheren van databaseaccounts in Azure Cosmos DB
 description: Meer informatie over het beheren van Azure Cosmos DB-resources met behulp van de Azure Portal-, Power shell-, CLI-en Azure Resource Manager-sjablonen
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745031"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116695"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
@@ -43,7 +43,7 @@ Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-
 
 1. Ga naar uw Azure Cosmos-account en open het **wereld wijde menu gegevens repliceren** .
 
-1. Als u regio's wilt toevoegen, selecteert u de zeshoeken op de **+** kaart met het label dat overeenkomt met de gewenste regio (s). Als u een regio wilt toevoegen, selecteert u de optie **+ regio toevoegen** en kiest u een regio in de vervolg keuzelijst.
+1. Als u regio's wilt toevoegen, selecteert u de zeshoeken op de kaart met het **+** label dat overeenkomt met de gewenste regio (s). Als u een regio wilt toevoegen, selecteert u de optie **+ regio toevoegen** en kiest u een regio in de vervolg keuzelijst.
 
 1. Als u regio's wilt verwijderen, wist u een of meer regio's van de kaart door de blauwe zeshoeken met vinkjes te selecteren. Of selecteer het prullenbakpictogram (🗑) rechts van de regio.
 
@@ -81,7 +81,7 @@ Zie [meerdere schrijven-regio's inschakelen met Power shell](manage-with-powersh
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-sjabloon
 
-Een account kan worden gemigreerd van een Single-Master naar meerdere masters door de Resource Manager-sjabloon te implementeren die wordt gebruikt om `enableMultipleWriteLocations: true`het account en de instelling te maken. De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
+Een account kan worden gemigreerd van een Single-Master naar meerdere masters door de Resource Manager-sjabloon te implementeren die wordt gebruikt om het account en de instelling te maken `enableMultipleWriteLocations: true` . De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
 
 ```json
 {
@@ -196,7 +196,7 @@ Zie [prioriteit van failover instellen met Azure cli](manage-with-cli.md#set-fai
 
 Zie [prioriteit van failover instellen met Power shell](manage-with-powershell.md#modify-failover-priority)
 
-## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Hand matige failover uitvoeren op een Azure Cosmos-account
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Handmatige failover uitvoeren voor een Azure Cosmos-account
 
 > [!IMPORTANT]
 > Het Azure Cosmos-account moet worden geconfigureerd voor een hand matige failover zodat deze bewerking kan worden voltooid.

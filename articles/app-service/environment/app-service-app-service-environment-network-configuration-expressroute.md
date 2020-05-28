@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804432"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013394"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Details van de netwerk configuratie voor het App Service Environment van PowerApps met Azure ExpressRoute
 
@@ -35,7 +35,7 @@ App Service Environment moeten de volgende instellingen voor netwerk connectivit
 
 * Uitgaande netwerk verbinding met de Azure Files-service op poort 445.
 
-* Uitgaande netwerk verbinding met Azure SQL Database eind punten die zich in dezelfde regio bevinden als App Service Environment. SQL Database-eind punten worden omgezet onder het domein database.windows.net, waarvoor open toegang is vereist voor de poorten 1433, 11000-11999 en 14000-14999. Zie [poorten na 1433 voor ADO.NET 4,5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)voor meer informatie over het gebruik van SQL database V12 poort.
+* Uitgaande netwerk verbinding met Azure SQL Database eind punten die zich in dezelfde regio bevinden als App Service Environment. SQL Database-eind punten worden omgezet onder het domein database.windows.net, waarvoor open toegang is vereist voor de poorten 1433, 11000-11999 en 14000-14999. Zie [poorten na 1433 voor ADO.NET 4,5](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md)voor meer informatie over het gebruik van SQL database V12 poort.
 
 * Uitgaande netwerk verbinding met de Azure-beheer vlak-eind punten (zowel het klassieke Azure-implementatie model als Azure Resource Manager-eind punten). Connectiviteit met deze eind punten omvat de domeinen management.core.windows.net en management.azure.com. 
 
@@ -87,7 +87,7 @@ In deze sectie ziet u een voor beeld van een UDR-configuratie voor App Service E
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Installeer Azure PowerShell vanaf de [pagina Azure down loads][AzureDownloads]. Kies een down load met een datum van 2015 juni of hoger. Onder **opdracht regel Programma's** > **Windows Power shell**selecteert u **installeren** om de meest recente Power shell-cmdlets te installeren.
+* Installeer Azure PowerShell vanaf de [pagina Azure down loads][AzureDownloads]. Kies een down load met een datum van 2015 juni of hoger. Onder **opdracht regel Programma's**  >  **Windows Power shell**selecteert u **installeren** om de meest recente Power shell-cmdlets te installeren.
 
 * Maak een uniek subnet voor exclusief gebruik door App Service Environment. Het unieke subnet zorgt ervoor dat de Udr's die op het subnet wordt toegepast, het uitgaande verkeer alleen voor App Service Environment heeft geopend.
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757463"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022791"
 ---
 # <a name="server-side-performance-queries"></a>Prestatiequery's aan serverzijde
 
@@ -18,7 +18,7 @@ Goede weergave prestaties op de server zijn essentieel voor stabiele frame snelh
 
 De meest impact op de weergave prestaties zijn de gegevens van het model invoer. U kunt de invoer gegevens aanpassen, zoals wordt beschreven in [de model conversie configureren](../../how-tos/conversion/configure-model-conversion.md).
 
-Prestaties van toepassingen aan client zijde kunnen ook een knel punt zijn. Voor een diep gaande analyse van prestaties aan client zijde wordt het aanbevolen een [prestatie tracering](../../how-tos/performance-tracing.md)uit te voeren.
+Prestaties van toepassingen aan client zijde kunnen ook een knel punt zijn. Voor een diep gaande analyse van prestaties aan client zijde is het raadzaam om een te maken [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) .
 
 ## <a name="clientserver-timeline"></a>Tijd lijn van client/server
 

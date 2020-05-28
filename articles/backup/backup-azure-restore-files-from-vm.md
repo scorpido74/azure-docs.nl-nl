@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 0cb3b588aadcda232d1a9a07fc6d9336448cb5a5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757973"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118132"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -228,7 +228,7 @@ Als u het script uitvoert op een computer met beperkte toegang, controleert u of
 
 - `download.microsoft.com`
 - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Voor open bare Azure-geografische gebieden)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Voor open bare Azure-regio's)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Voor Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Voor Azure Amerikaanse overheid)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Voor Azure Duitsland)

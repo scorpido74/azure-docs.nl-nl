@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683645"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995816"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Een Oracle Database maken in een Azure VM
 
@@ -55,7 +55,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt op het volgende voor beeld. Noteer de waarde voor `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt op het volgende voor beeld. Noteer de waarde voor `publicIpAddress` . U gebruikt dit adres voor toegang tot de virtuele machine.
 
 ```output
 {
@@ -72,7 +72,7 @@ Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt o
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht om een SSH-sessie met de virtuele machine te maken. Vervang het IP-adres door `publicIpAddress` de waarde voor uw VM.
+Gebruik de volgende opdracht om een SSH-sessie met de virtuele machine te maken. Vervang het IP-adres door de `publicIpAddress` waarde voor uw VM.
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -85,7 +85,7 @@ De Oracle-software is al geïnstalleerd op de Marketplace-installatie kopie. Maa
 1.  Schakel over naar de *Oracle* -super gebruiker en Initialiseer vervolgens de listener voor logboek registratie:
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -150,7 +150,7 @@ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-U kunt ook ORACLE_HOME-en ORACLE_SID variabelen toevoegen aan het. bashrc-bestand. Hiermee worden de omgevings variabelen voor toekomstige aanmeldingen opgeslagen. Controleer of de volgende instructies aan het bestand `~/.bashrc` zijn toegevoegd met de editor van uw keuze.
+U kunt ook ORACLE_HOME-en ORACLE_SID variabelen toevoegen aan het. bashrc-bestand. Hiermee worden de omgevings variabelen voor toekomstige aanmeldingen opgeslagen. Controleer of de volgende instructies aan het bestand zijn toegevoegd `~/.bashrc` met de editor van uw keuze.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -209,13 +209,13 @@ De Oracle-Data Base wordt standaard niet automatisch gestart wanneer u de virtue
     sudo su -
     ```
 
-2.  Bewerk het bestand `/etc/oratab` met uw favoriete editor en wijzig de standaard instelling `N` in `Y`:
+2.  Bewerk het bestand met uw favoriete editor `/etc/oratab` en wijzig de standaard instelling `N` in `Y` :
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Maak een bestand met `/etc/init.d/dbora` de naam en plak de volgende inhoud:
+3.  Maak een bestand `/etc/init.d/dbora` met de naam en plak de volgende inhoud:
 
     ```bash
     #!/bin/sh
