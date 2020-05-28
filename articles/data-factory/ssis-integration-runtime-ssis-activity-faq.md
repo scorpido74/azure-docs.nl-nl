@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414675"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118099"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -38,7 +38,7 @@ Dit zijn mogelijke oorzaken en aanbevolen acties:
 * De gegevens bron of het doel is overbelast. Controleer de belasting van de gegevens bron of het doel en kijk of het voldoende capaciteit heeft. Als u bijvoorbeeld Azure SQL Database hebt gebruikt, kunt u overwegen omhoog te schalen als de data base waarschijnlijk een time-out heeft.
 * Het netwerk tussen de SSIS Integration runtime en de gegevens bron of het doel is Insta Biel, vooral wanneer de verbinding over meerdere regio's of tussen on-premises en Azure gaat. Pas het patroon voor opnieuw proberen in het SSIS-pakket toe door de volgende stappen uit te voeren:
   * Zorg ervoor dat uw SSIS-pakketten bij storingen zonder neven effecten (bijvoorbeeld gegevens verlies of gegevens duplicatie) opnieuw kunnen worden uitgevoerd.
-  * Configureer het **interval** voor **opnieuw proberen** en de activiteit voor het **uitvoeren van SSIS** - ![pakketten op het tabblad **Algemeen** . Stel eigenschappen in op het tabblad Algemeen.](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * Configureer het **interval** voor **opnieuw proberen** en de activiteit voor het **uitvoeren van SSIS-pakketten** op het tabblad **Algemeen** . ![ Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * Stel voor een ADO.NET-en OLE DB bron-of doel onderdeel **ConnectRetryCount** en **ConnectRetryInterval** in in VERBINDINGS beheer in de SSIS-pakket-of-SSIS-activiteit.
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Fout bericht: de ADO-netwerk bron kan de verbinding niet verkrijgen... met ' er is een netwerk-of instantie-specifieke fout opgetreden bij het tot stand brengen van een verbinding met SQL Server. De server is niet gevonden of niet toegankelijk. "
@@ -74,10 +74,10 @@ Deze fout geeft aan dat de lokale schijf wordt gebruikt in het SSIS Integration 
 * Mogelijke oorzaak en aanbevolen actie:
   * Als de SSIS-activiteit een pakket uit het bestands systeem (pakket bestand of project bestand) uitvoert, treedt deze fout op als het project, het pakket of het configuratie bestand niet toegankelijk is met de toegangs referentie voor het pakket dat u in de SSIS-activiteit hebt gegeven
     * Als u Azure-bestand gebruikt:
-      * Het bestandspad moet beginnen met de \\ \\ \<naam\>van het opslag account\\\<. file.core.Windows.NET pad naar bestands share\>
+      * Het bestandspad moet beginnen met \\ \\ \<storage account name\> . file.core.Windows.net\\\<file share path\>
       * Het domein moet ' Azure ' zijn
-      * De gebruikers naam moet \<de naam van het opslag account zijn\>
-      * Het wacht woord moet \<de toegangs sleutel voor opslag zijn\>
+      * De gebruikers naam moet\<storage account name\>
+      * Het wacht woord moet\<storage access key\>
     * Als uw on-premises bestand wordt gebruikt, controleert u of VNet, toegangs referenties voor het pakket en de machtigingen juist zijn geconfigureerd, zodat uw Azure SSIS Integration runtime toegang heeft tot uw on-premises bestands share.
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Fout bericht: ' de bestands naam '... ' opgegeven in de verbinding is ongeldig
@@ -95,20 +95,20 @@ Deze fout treedt op wanneer de pakket uitvoering geen bestand kan vinden op de l
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Fout bericht: de grootte van de data base SSISDB is bereikt
 
-Een mogelijke oorzaak is dat de SSISDB-database die is gemaakt in de Azure SQL-database of een beheerd exemplaar tijdens het maken van een SSIS-integratieruntime, zijn quotum heeft bereikt. Voer de volgende acties uit:
-* Overweeg de DTU van uw database te vergroten. U kunt meer informatie vinden in [SQL Database-resourcelimieten voor een Azure SQL-databaseserver](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+Een mogelijke oorzaak is dat de SSISDB-data base die is gemaakt in Azure SQL Database of in het SQL Managed instance het quotum heeft bereikt. Voer de volgende acties uit:
+* Overweeg de DTU van uw database te vergroten. U vindt meer informatie in [SQL database limieten voor een logische server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
 * Controleer of uw pakket een groot aantal logboeken kan genereren. Als dat het geval is, kunt u een elastische taak configureren om deze logboeken op te schonen. Meer informatie kunt u vinden in [SSISDB-logboeken opschonen met taken voor Azure Elastic Database](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Fout bericht: de aanvraag limiet voor de data base is... en is bereikt. "
 
-Als er een groot aantal pakketten parallel wordt uitgevoerd in de SSIS Integration runtime, kan deze fout optreden omdat SSISDB de aanvraag limiet heeft bereikt. Overweeg de DTC van SSISDB te verhogen om dit probleem op te lossen. U kunt meer informatie vinden in [SQL Database-resourcelimieten voor een Azure SQL-databaseserver](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+Als er een groot aantal pakketten parallel wordt uitgevoerd in de SSIS Integration runtime, kan deze fout optreden omdat SSISDB de aanvraag limiet heeft bereikt. Overweeg de DTC van SSISDB te verhogen om dit probleem op te lossen. U vindt meer informatie in [SQL database limieten voor een logische server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Fout bericht: de SSIS-bewerking is mislukt met een onverwachte bewerkings status:...
 
 De fout wordt meestal veroorzaakt door een tijdelijk probleem, dus probeer de uitvoering van het pakket opnieuw uit te voeren. Pas het patroon voor opnieuw proberen in het SSIS-pakket toe door de volgende stappen uit te voeren:
 
 * Zorg ervoor dat uw SSIS-pakketten bij storingen zonder neven effecten (bijvoorbeeld gegevens verlies of gegevens duplicatie) opnieuw kunnen worden uitgevoerd.
-* Configureer het **interval** voor **opnieuw proberen** en de activiteit voor het **uitvoeren van SSIS** - ![pakketten op het tabblad **Algemeen** . Stel eigenschappen in op het tabblad Algemeen.](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* Configureer het **interval** voor **opnieuw proberen** en de activiteit voor het **uitvoeren van SSIS-pakketten** op het tabblad **Algemeen** . ![ Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * Stel voor een ADO.NET-en OLE DB bron-of doel onderdeel **ConnectRetryCount** en **ConnectRetryInterval** in in VERBINDINGS beheer in de SSIS-pakket-of-SSIS-activiteit.
 
 ### <a name="error-message-there-is-no-active-worker"></a>Fout bericht: er is geen actieve werk nemer.
@@ -157,7 +157,7 @@ Een mogelijke oorzaak is dat uw zelf-Hostende Integration runtime niet op de jui
   * Het uitvoerings logboek vindt u in het [rapport SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) of in de logboekmap die u hebt opgegeven in de activiteit SSIS-pakket uitvoering.
   * vNet kan ook worden gebruikt om toegang te krijgen tot on-premises gegevens als alternatief. Meer informatie vindt u in een [Azure-SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "de afsluit code van de SSIS-uitvoerder:-1. \ n", "LogLocation": "... \\SSISTelemetry\\ExecutionLog\\... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "de afsluit code van de SSIS-uitvoerder:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"
 
 Zorg ervoor dat Visual C++ runtime is geïnstalleerd op een zelf-Hostende Integration runtime-computer. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
@@ -179,7 +179,7 @@ Dit zijn mogelijke oorzaken en aanbevolen acties:
   * Zie [een Azure SSIS Integration runtime maken in azure Data Factory](create-azure-ssis-integration-runtime.md)voor meer informatie over het instellen van het aantal knoop punten en het maximum aantal parallelle uitvoeringen per knoop punt.
 * De SSIS Integration runtime is gestopt of heeft een slechte status. Zie [Azure-SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)voor meer informatie over het controleren van de runtime status en-fouten van de SSIS-integratie.
 
-We raden u ook aan om een time-out **General** op het tabblad ![algemeen in te stellen: Stel](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)eigenschappen in op het tabblad Algemeen.
+We raden u ook aan om een time-out op het tabblad **Algemeen** in te stellen: ![ Stel eigenschappen in op het tabblad algemeen ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png) .
 
 ### <a name="poor-performance-in-package-execution"></a>Slechte prestaties bij het uitvoeren van een pakket
 

@@ -3,12 +3,12 @@ title: Wat is QnA Maker-service?
 description: QnA Maker is een op de cloud gebaseerde NLP-service waarmee u eenvoudig een natuurlijk gesprek slaag maakt over uw gegevens. Het kan worden gebruikt om het meest geschikte antwoord te vinden voor een bepaalde invoer in natuurlijke taal, vanuit uw aangepaste Knowledge Base (KB) aan informatie.
 ms.topic: overview
 ms.date: 05/26/2020
-ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873726"
+ms.locfileid: "83994864"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Wat is de QnA Maker-service?
 
@@ -40,9 +40,9 @@ Zodra een QnA Maker Knowledge Base is gepubliceerd, stuurt een client toepassing
 
 ## <a name="what-is-a-knowledge-base"></a>Wat is een kennis database?
 
-QnA Maker [uw inhoud importeert](../concepts/knowledge-base.md) in een Knowledge Base met vraag-en antwoord sets. Het import proces haalt informatie over de relatie tussen de onderdelen van uw gestructureerde en semi-gestructureerde inhoud om relaties tussen de vraag-en antwoord sets te impliceren. U kunt deze vraag-en antwoord sets bewerken of nieuwe sets toevoegen.
+QnA Maker [uw inhoud importeert](../concepts/knowledge-base.md) in een Knowledge Base met vraag-en antwoord paren. Het import proces haalt informatie over de relatie tussen de onderdelen van uw gestructureerde en semi-gestructureerde inhoud om relaties tussen de vraag-en antwoord paren te impliceren. U kunt deze vraag-en antwoord paren bewerken of nieuwe paren toevoegen.
 
-De inhoud van de vraag en de antwoordset bevat:
+De inhoud van het vraag-en antwoord paar bevat:
 * Alle andere vormen van de vraag
 * Meta gegevenslabels die worden gebruikt voor het filteren van antwoord keuzes tijdens de zoek opdracht
 * Vragen om de zoek verfijning voort te zetten
@@ -53,7 +53,7 @@ Nadat u uw Knowledge Base hebt gepubliceerd, verzendt een client toepassing de v
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Maken, beheren en publiceren naar een bot zonder code
 
-De QnA Maker Portal biedt de volledige ontwerp ervaring op basis van kennis. U kunt documenten in hun huidige vorm importeren in uw Knowledge Base. Deze documenten (zoals een veelgestelde vragen, een werk blad of een webpagina) worden omgezet in vraag-en antwoord sets. Elke set wordt geanalyseerd op opvolgings prompts en verbonden met andere sets. De uiteindelijke _verkoop_ vorm biedt ondersteuning voor uitgebreide presentaties, waaronder afbeeldingen en koppelingen.
+De QnA Maker Portal biedt de volledige ontwerp ervaring op basis van kennis. U kunt documenten in hun huidige vorm importeren in uw Knowledge Base. Deze documenten (zoals een veelgestelde vragen, een werk blad of een webpagina) worden omgezet in vraag-en antwoord paren. Elk paar wordt geanalyseerd voor opvolgings prompts en verbonden met andere paren. De uiteindelijke _verkoop_ vorm biedt ondersteuning voor uitgebreide presentaties, waaronder afbeeldingen en koppelingen.
 
 Zodra uw kennis database is bewerkt, publiceert u de Knowledge Base naar een werkende [Azure web app-bot](https://azure.microsoft.com/services/bot-service/) zonder dat u code hoeft te schrijven. Test uw bot in het [Azure Portal](https://portal.azure.com) of down load en blijf de ontwikkeling.
 
@@ -63,7 +63,7 @@ Het systeem van QnA Maker is een gelaagde classificatie benadering. De gegevens 
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker verbetert het conversatie proces
 
-QnA Maker biedt vragen over meerdere schakelingen en actief leren om u te helpen bij het verbeteren van uw basis vraag-en-antwoord sets.
+QnA Maker biedt vragen over meerdere schakelingen en actief leren om u te helpen uw basis paren voor vraag en antwoord te verbeteren.
 
 Met **vragen over meerdere schakelingen** krijgt u de mogelijkheid om vraag-en antwoord paren te verbinden. Met deze verbinding kan de client toepassing een antwoord op het hoogste niveau geven en kunnen er meer vragen worden gesteld om de zoek opdracht te verfijnen voor een eind antwoord.
 

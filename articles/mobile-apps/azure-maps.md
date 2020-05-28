@@ -29,7 +29,7 @@ ms.locfileid: "83742892"
 - **Gegevens service**: uploadt en slaat georuimtelijke gegevens op voor gebruik met ruimtelijke bewerkingen of installatie kopieën samen stelling.
 - **Mobiliteit**: biedt informatie over de real-time locatie van open bare doorvoer Services in de buurt. De schattingen, route-informatie en reis tijd zijn opgenomen.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
   - [Azure Portal](https://portal.azure.com) 
   - [Documentatie over Azure Maps](/azure/azure-maps/about-azure-maps)
   - [Ontwikkelaarsgids](/azure/azure-maps/how-to-use-android-map-control-library)

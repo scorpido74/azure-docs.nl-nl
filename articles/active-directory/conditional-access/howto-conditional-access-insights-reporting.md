@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641593"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112781"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Inzichten en rapportage voor voorwaardelijke toegang
 
@@ -46,11 +46,11 @@ Als u geen Azure AD-Logboeken hebt geïntegreerd met Azure Monitor-logboeken, mo
 1. [Een log Analytics-werk ruimte maken in azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
 1. [Integreer Azure AD-logboeken met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
-## <a name="how-it-works"></a>Hoe het werkt 
+## <a name="how-it-works"></a>Hoe werkt het? 
 
 Voor toegang tot de werkmap inzichten en rapportage:  
 
-1. Meld u aan bij **Azure Portal**.
+1. Meld u aan bij de **Azure-portal**.
 1. Blader naar **Azure Active Directory**  >  **Security**  >  **Conditional Access**  >  **inzichten en rapportage**voor voorwaardelijke toegang van de beveiliging.
 
 ### <a name="get-started-select-parameters"></a>Aan de slag: para meters selecteren 
@@ -98,6 +98,23 @@ Bekijk de uitsplitsing van gebruikers of aanmeldingen voor elk van de voor waard
 U kunt ook de aanmeldingen van een specifieke gebruiker onderzoeken door te zoeken naar aanmeldingen aan de onderkant van het dash board. In de query aan de linkerkant worden de meest voorkomende gebruikers weer gegeven. Als u een gebruiker selecteert, wordt de query aan de rechter kant gefilterd.  
 
 ## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Waarom mislukken query's als gevolg van een machtigings fout?
+
+Als u toegang wilt krijgen tot de werkmap, hebt u de juiste Azure AD-machtigingen nodig, evenals Log Analytics werkruimte machtigingen. Als u wilt testen of u over de juiste machtigingen voor de werk ruimte beschikt door een voorbeeld query voor log Analytics uit te voeren:
+
+1. Meld u aan bij de **Azure-portal**.
+1. Blader naar **Azure Active Directory**  >  **Logboeken**.
+1. Typ `SigninLogs` in het vak query en selecteer **uitvoeren**.
+1. Als de query geen resultaten retourneert, is de werk ruimte mogelijk niet op de juiste wijze geconfigureerd. 
+
+![Problemen met mislukte query's oplossen](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Zie het artikel [Azure AD-logboeken integreren met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)voor meer informatie over het streamen van Azure AD-aanmeldings logboeken naar een log Analytics-werk ruimte.
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Waarom is de para meter voor het beleid voor voorwaardelijke toegang leeg?
+
+De lijst met beleids regels wordt gegenereerd door te kijken naar het beleid dat wordt geëvalueerd voor de meest recente aanmeldings gebeurtenis. Als uw Tenant geen recente aanmeldingen bevat, moet u mogelijk enkele minuten wachten totdat de werkmap de lijst met beleids regels voor voorwaardelijke toegang heeft geladen. Dit kan gebeuren onmiddellijk na het configureren van Log Analytics of langer duren als een Tenant geen recente aanmeldings activiteit heeft.
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>Waarom neemt de werkmap veel tijd in beslag om te worden geladen?  
 

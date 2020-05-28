@@ -321,7 +321,7 @@ Gebruik privileged Identity Management met Azure AD-beheerders rollen voor het b
 Met Azure-logboek integratie kunt u onbewerkte logboeken van uw Azure-resources integreren in de bestaande Security Information and Event Management-systemen (SIEM) van uw organisatie. [Azure-logboek integratie](../../security/fundamentals/azure-log-integration-overview.md) verzamelt Windows-gebeurtenissen van Windows Logboeken-Logboeken en Azure-resources vanaf:
 
 * Activiteiten logboeken van Azure
-* Azure Security Center waarschuwingen
+* Azure Security Center-waarschuwingen
 * Azure-resource logboeken
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Aanvullende stappen voor organisaties die toegang tot andere Cloud-apps beheren via Azure AD

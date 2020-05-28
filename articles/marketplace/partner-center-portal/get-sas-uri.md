@@ -126,4 +126,4 @@ Controleer elke gegenereerde SAS-URI door de volgende controle lijst te gebruike
 
 Zie [veelvoorkomende SAS-URL-problemen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)als u problemen hebt met het maken van een SAS-URI. Sla anders de SAS-URI (s) op een veilige locatie op voor later gebruik. U hebt deze nodig voor het publiceren van uw VM-aanbieding in het partner centrum.
 
-* [Een Azure Virtual Machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Een Azure virtual machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)

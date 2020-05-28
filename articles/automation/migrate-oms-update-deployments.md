@@ -57,9 +57,9 @@ Voer de volgende stappen uit om deze bestaande opgeslagen zoek opdracht te gebru
 
     | Eigenschap | Beschrijving |
     | --- | --- |
-    |Name |Unieke naam voor het identificeren van de update-implementatie. |
+    |Naam |Unieke naam voor het identificeren van de update-implementatie. |
     |Besturingssysteem| Selecteer **Linux** of **Windows**.|
-    |Machines die moeten worden bijgewerkt |Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of machine kiezen in de vervolg keuzelijst en selecteer afzonderlijke machines. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
+    |Machines die moeten worden bijgewerkt |Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of machine kiezen in de vervolg keuzelijst en selecteer afzonderlijke machines. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [computer groepen in azure monitor-logboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende methoden voor het maken van computer groepen in azure monitor-Logboeken. |
     |Update classifications|Selecteer alle update classificaties die u nodig hebt. CentOS biedt geen ondersteuning voor dit out-of-Box.|
     |Updates die moeten worden uitgesloten|Voer de updates in die moeten worden uitgesloten. Voer voor Windows het KB-artikel in zonder het voor voegsel **KB** . Voor Linux voert u de pakket naam in of gebruikt u een Joker teken.  |
     |Schema-instellingen|Selecteer het tijdstip waarop u wilt beginnen en selecteer vervolgens **een of meer keren of** **terugkerend** voor het terugkeer patroon. | 

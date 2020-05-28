@@ -321,7 +321,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | land | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Staat |
+| Gebruiker | state | Status |
 | Gebruiker | JobTitle | Functie |
 | Gebruiker | employeeid | Werknemer-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |

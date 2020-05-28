@@ -78,10 +78,10 @@ Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
 
 ## <a name="related-office-content"></a>Verwante Office-inhoud
 
-- [Meld u aan om uw Office-product te beheren](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+- [Aanmelden voor het beheren van uw Office-product](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Ga naar de pagina **mijn mijn account** in Office](https://portal.office.com/account/)
+- [Ga naar de pagina **Mijn account** van Office](https://portal.office.com/account/)
 
-- [Ga naar de pagina Office **mijn installaties**](https://portal.office.com/account/#installs)
+- [Ga naar de pagina **Mijn installaties** van Office](https://portal.office.com/account/#installs)
 
-- [Ga naar de pagina met Office- **abonnementen**](https://portal.office.com/account/#subscriptions)
+- [Ga naar de pagina **Abonnementen** van Office](https://portal.office.com/account/#subscriptions)

@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217783"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115490"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Studio (klassiek)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [top]: #machine-learning-sample-datasets
 
@@ -46,7 +44,7 @@ Een subset van de 1994-optelling data base, met behulp van werk volwassenen in d
 <p></p>
 <b>Gebruik:</b> Classificeer gebruikers met demografische gegevens om te voors pellen of een persoon meer dan 50.000 een jaar verdient.
 <p></p>
-<b>Verwant onderzoek:</b> Kohavi, R., Becker, B., (1996). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Kohavi, R., Becker, B., (1996). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -67,7 +65,7 @@ De risico Score is in eerste instantie gekoppeld aan automatische prijs. De waar
 <p></p>
 <b>Gebruik:</b> De risico Score door functies te voors pellen met behulp van regressie of multidimensionale classificatie. 
 <p></p>
-<b>Verwant onderzoek:</b> Schlimmer, J.C. (1987). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Schlimmer, J.C. (1987). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -98,7 +96,7 @@ Donor gegevens omvatten de maanden sinds de laatste donatie), de frequentie of h
 <p></p>
 <b>Gebruik:</b> Het doel is om te voors pellen via de classificatie of het donor gedoneerde bloed in maart 2007, waarbij 1 staat voor een donor tijdens de doel periode en 0 een niet-donor. 
 <p></p>
-<b>Verwant onderzoek:</b> Yeh, I.C., (2008). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Yeh, I.C., (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang en afschrijven, label-PN, ' kennis detectie op RFM model met behulp van Bernoulli sequence ', ' experts Systems with Applications, 2008,<a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -111,7 +109,7 @@ Een van de drie aan kanker gerelateerde gegevens sets die worden verschaft door 
 <p></p>
 <b>Gebruik:</b> Het type kanker classificeren, gebaseerd op 9 kenmerken, sommige lineair en sommige zijn categorische. 
 <p></p>
-<b>Verwant onderzoek:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -164,7 +162,7 @@ Een verzameling gesimuleerde energie profielen, op basis van 12 verschillende vo
 <p></p>
 <b>Gebruik:</b> Gebruik regressie of classificatie om de classificatie van energie-efficiëntie te voors pellen op basis van twee echte reacties. Voor classificatie met meerdere klassen wordt de reactie variabele afgerond op het dichtstbijzijnde gehele getal. 
 <p></p>
-<b>Verwant onderzoek:</b> Xifara, A. & Tsanas, A. (2012). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Xifara, A. & Tsanas, A. (2012). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -189,7 +187,7 @@ Registreert aankomst van vlieg tuigen en vertrek binnen Verenigde Staten van okt
 <p></p>
 <b>Gebruik:</b> Vertragingen in de vlucht voors pellen. 
 <p></p>
-<b>Verwant onderzoek:</b> Van de Amerikaanse afdeling. Trans <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>Port.
+<b>Verwant onderzoek:</b> Van de Amerikaanse afdeling. Trans Port <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> .
   </td>
 </tr>
 
@@ -200,9 +198,9 @@ Bevat weer gegevens, zoals de indices van Tempe ratuur en vochtigheid en wind sn
 <p></p>
 <b>Gebruik:</b> Dit is een moeilijke regressie taak, waarbij het doel is om het gebrande gebied van de bosbranden te voors pellen. 
 <p></p>
-<b>Verwant onderzoek:</b> Cortez, P., & Morais, A. (2008). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Cortez, P., & Morais, A. (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
 <p></p>
-[Cortez en Morais, 2007] P. Cortez en een. Morais. Een aanpak van gegevens analyse voor het voors pellen van forests met behulp van meteorologische gegevens. In J. Neves, M. F. Santos en J. Machado eds., nieuwe trends in kunst matige intelligentie, procedures voor de 13 EPIA 2007-Portugese conferentie over kunst matige intelligentie, december, Guimarães, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Beschikbaar op: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+[Cortez en Morais, 2007] P. Cortez en een. Morais. Een aanpak van gegevens analyse voor het voors pellen van forests met behulp van meteorologische gegevens. In J. Neves, M. F. Santos en J. Machado eds., nieuwe trends in kunst matige intelligentie, procedures voor de 13 EPIA 2007-Portugese conferentie over kunst matige intelligentie, december, Guimarães, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Beschikbaar op: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> .
   </td>
 </tr>
 
@@ -229,7 +227,7 @@ Dit is mogelijk de best bekende data base die wordt gevonden in de documentatie 
 <p></p>
 <b>Gebruik:</b> Het Iris type voors pellen op basis van de metingen.  
 <p></p>
-<b>Verwant onderzoek:</b> Fisher, R.A. (1988). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Fisher, R.A. (1988). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -248,7 +246,7 @@ Het brandstof verbruik voor verschillende auto's in mijlen per gallon wordt weer
 <p></p>
 <b>Gebruik:</b> Brandstof voordelen voors pellen op basis van drie discrete kenmerken met meerdere waarden en vijf doorlopende kenmerken. 
 <p></p>
-<b>Verwant onderzoek:</b> StatLib, Carnegie Mellon University, (1993). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> StatLib, Carnegie Mellon University, (1993). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -258,7 +256,7 @@ Een subset van gegevens uit de data base van het National Institute of diabetes 
 <p></p>
 <b>Gebruik:</b> Voor spelt u of het onderwerp diabetes heeft (binaire classificatie). 
 <p></p>
-<b>Verwant onderzoek:</b> Sigillito, V. (1990). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/mlopslag plaats</a>. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Sigillito, V. (1990). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml opslag plaats</a>. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
 </tr>
 
 <tr>
@@ -268,7 +266,7 @@ Een set meta gegevens over klanten, met inbegrip van demografische informatie en
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
   </td>
 </tr>
 
@@ -279,7 +277,7 @@ Een set meta gegevens over restaurants en hun functies, zoals voedsel type, rest
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
   </td>
 </tr>
 
@@ -290,7 +288,7 @@ Bevat beoordelingen van gebruikers aan restaurants op een schaal van 0 tot 2.
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
   </td>
 </tr>
 
@@ -303,7 +301,7 @@ Deze gegevensset bevat een reeks records uit stalen annealing-experimenten. Het 
 <p></p>
 Staal kwaliteiten volgen een set-standaard, gedefinieerd door SAE en andere organisaties. U zoekt naar een specifieke ' grade ' (de variabele Class) en u wilt meer inzicht krijgen in de waarden die nodig zijn. 
 <p></p>
-<b>Verwant onderzoek:</b> Sterling, D. & Buntine, W. (NA). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Sterling, D. & Buntine, W. (NA). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
 <p></p>
 Een nuttige hand leiding voor staal kwaliteiten vindt u hier:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -324,7 +322,7 @@ De gegevens zijn vooraf verwerkt voor het maken van een rek-cluster met de lange
 <p></p>
 Houd er ook rekening mee dat het aantal achtergrond gebeurtenissen (h, voor hadronic Showers) wordt onderschat. In echte metingen vertegenwoordigt de klasse h of Noise het meren deel van de gebeurtenissen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bock, R.K. (1995). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>opslag plaats. Irvine, CA: Universiteit van Californië, school van informatie </td>
+<b>Verwant onderzoek:</b> Bock, R.K. (1995). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie </td>
 </tr>
 
 <tr>
@@ -345,7 +343,7 @@ De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de wee
 <tr>
   <td>Wikipedia SP 500-gegevensset</td>
   <td>
-Gegevens worden afgeleid van Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) op basis van artikelen van elke S&P 500-bedrijf, opgeslagen als XML-gegevens.
+Gegevens worden afgeleid van Wikipedia ( <a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a> ) op basis van artikelen van elke S&P 500-bedrijf, opgeslagen als XML-gegevens.
 <p></p>
 Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
@@ -393,7 +391,7 @@ De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. topics. qrels. CSV</a></td>
   <td>
-Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset van Reuters. Een nieuws artikel kan worden toegewezen aan verschillende onderwerpen. De indeling van elke rij is '&lt;naam&gt; &lt;van onderwerp document&gt; -id 1 '. De gegevensset bevat 2.6 M-onderwerps toewijzingen. De gegevensset is beschikbaar gesteld door David. D. Lewis.
+Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset van Reuters. Een nieuws artikel kan worden toegewezen aan verschillende onderwerpen. De indeling van elke rij is ' &lt; naam van onderwerp &gt; &lt; document-id &gt; 1 '. De gegevensset bevat 2.6 M-onderwerps toewijzingen. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 

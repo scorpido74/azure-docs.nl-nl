@@ -9,16 +9,14 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e70467d0ef956802e1ab7f416da7c2cbec37c58
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204133"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115569"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Beheer van toepassings levenscyclus in Azure Machine Learning Studio (klassiek)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (klassiek) is een hulp programma voor het ontwikkelen van machine learning experimenten die operationeel zijn in het Azure-Cloud platform. Het is vergelijkbaar met de Visual Studio IDE en de schaal bare Cloud service die is samengevoegd met één platform. U kunt standaard ALM-procedures (Application Lifecycle Management) opnemen van het versie beheer van verschillende assets tot geautomatiseerde uitvoering en implementatie, in Azure Machine Learning Studio (klassiek). In dit artikel worden enkele van de opties en benaderingen besproken.
 
@@ -46,7 +44,7 @@ De moment opnamen van de uitvoerings geschiedenis blijven een onveranderbare ver
 Het JSON-bestand is een tekst weergave van de experimentele grafiek, die mogelijk een verwijzing bevat naar assets in de werk ruimte, zoals een gegevensset of een getraind model. Het bevat geen geserialiseerde versie van de Asset. Als u het JSON-document weer in de werk ruimte probeert te importeren, moeten de activa waarnaar wordt verwezen al bestaan met dezelfde activa-Id's waarnaar in het experiment wordt verwezen. Anders hebt u geen toegang tot het geïmporteerde experiment.
 
 ## <a name="versioning-trained-model"></a>Getraind model voor versie beheer
-Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd in een indeling die wordt aangeduid als een`.iLearner`iLearner-bestand () en wordt opgeslagen in het Azure Blob Storage-account dat is gekoppeld aan de werk ruimte. Een manier om een kopie van het iLearner-bestand op te halen, is via de retraining-API. In [dit artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wordt uitgelegd hoe de retraining-API werkt. De stappen op hoog niveau:
+Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd in een indeling die wordt aangeduid als een iLearner-bestand ( `.iLearner` ) en wordt opgeslagen in het Azure Blob Storage-account dat is gekoppeld aan de werk ruimte. Een manier om een kopie van het iLearner-bestand op te halen, is via de retraining-API. In [dit artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wordt uitgelegd hoe de retraining-API werkt. De stappen op hoog niveau:
 
 1. Stel uw trainings experiment in.
 2. Voeg een webservice-uitvoer poort toe aan de module Train model of de module die het getrainde model produceert, zoals model afstemming afstemmen of R-model maken.

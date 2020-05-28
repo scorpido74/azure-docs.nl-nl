@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ec2f9101f724d0c5c6c5e52bb69fea82513efe5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196270"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118022"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -82,7 +82,7 @@ Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste serv
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-Server | |
+server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -208,7 +208,7 @@ Ja. De gegevens in Azure zijn in rust versleuteld.
 
 De back-upgegevens worden nooit door Microsoft ontsleuteld.
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Wat is de minimale lengte van de versleutelingssleutel die wordt gebruikt om back-upgegevens te versleutelen?
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wat is de minimale lengte van de versleutelings sleutel die wordt gebruikt om back-upgegevens te versleutelen?
 
 Als u gebruikmaakt van een Azure Backup-agent, moet de versleutelingssleutel ten minste 16 tekens bevatten. Voor virtuele Azure-machines is er geen limiet voor de lengte van de sleutels die door Azure KeyVault worden gebruikt.
 

@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: dc4a2f83f59ab94d1bff8a005b37124f2822c72b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 45acac646fece808065d12081bdc28eff92a1b79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209414"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119338"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Logboek registratie inschakelen voor Azure Machine Learning Studio (klassieke) webservices
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Dit document bevat informatie over de logboek registratie van Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie, behalve een fout nummer en een bericht, waarmee u uw aanroepen naar de Machine Learning Studio (klassieke) Api's kunt oplossen.  
 
@@ -28,7 +26,7 @@ Dit document bevat informatie over de logboek registratie van Machine Learning S
 
 U schakelt logboek registratie in via de [Web Services-portal van Azure machine learning Studio (klassiek)](https://services.azureml.net) . 
 
-1. Meld u aan bij de portal voor webservices van Azure Machine Learning Studio [https://services.azureml.net](https://services.azureml.net)(klassiek) op. Voor een klassieke webservice kunt u ook naar de portal gaan door te klikken op **nieuwe Web Services-ervaring** op de pagina machine learning Studio (klassiek) Web Services in Studio (klassiek).
+1. Meld u aan bij de portal voor webservices van Azure Machine Learning Studio (klassiek) op [https://services.azureml.net](https://services.azureml.net) . Voor een klassieke webservice kunt u ook naar de portal gaan door te klikken op **nieuwe Web Services-ervaring** op de pagina machine learning Studio (klassiek) Web Services in Studio (klassiek).
 
    ![Koppeling nieuwe Web Services-ervaring](./media/web-services-logging/new-web-services-experience-link.png)
 

@@ -45,7 +45,7 @@ Als u de iKey eenvoudiger wilt maken, moet u deze in code instellen in plaats va
 
 Stel de sleutel in een initialisatie methode in, zoals global.aspx.cs in een ASP.NET-service:
 
-*G #*
+*C#*
 
     protected void Application_Start()
     {

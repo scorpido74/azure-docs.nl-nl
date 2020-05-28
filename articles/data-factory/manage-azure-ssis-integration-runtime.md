@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: ffebb8f82a69f0404974e6c8ea91bec951ca80e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9228d33ac8ad4dd2d274c8ae642861bf3fbdc888
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415772"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118257"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>De Azure-SSIS-integratieruntime opnieuw configureren
 
@@ -45,7 +45,7 @@ U kunt Data Factory gebruikers interface gebruiken om een Azure-SSIS IR te stopp
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Nadat u een exemplaar van Azure SSIS Integration runtime hebt ingericht en gestart, kunt u het opnieuw configureren door `Stop`  -  `Set`  -  `Start` een reeks Power shell-cmdlets achter elkaar uit te voeren. Het volgende Power shell-script wijzigt bijvoorbeeld het aantal knoop punten dat voor het Azure-SSIS Integration runtime-exemplaar is toegewezen aan vijf.
+Nadat u een exemplaar van Azure SSIS Integration runtime hebt ingericht en gestart, kunt u het opnieuw configureren door een reeks `Stop`  -  `Set`  -  `Start` Power shell-cmdlets achter elkaar uit te voeren. Het volgende Power shell-script wijzigt bijvoorbeeld het aantal knoop punten dat voor het Azure-SSIS Integration runtime-exemplaar is toegewezen aan vijf.
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>Een Azure-SSIS IR opnieuw configureren
 
@@ -96,8 +96,8 @@ Nadat u een exemplaar van Azure SSIS Integration runtime hebt ingericht en gesta
 Zie de volgende onderwerpen voor meer informatie over Azure-SSIS runtime: 
 
 - [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dit artikel bevat conceptuele informatie over integratie-Runtimes in het algemeen, met inbegrip van de Azure-SSIS IR. 
-- [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). Dit artikel biedt stapsgewijze instructies voor het maken van een Azure-SSIS IR en maakt gebruik van een Azure SQL-database voor het hosten van de SSIS-catalogus. 
-- [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van Azure SQL Database beheerde instantie en het toevoegen van de IR aan een virtueel netwerk. 
+- [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). In dit artikel vindt u stapsgewijze instructies voor het maken van een Azure-SSIS IR en het gebruik van Azure SQL Database voor het hosten van de SSIS-catalogus. 
+- [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van Azure SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
 - [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat algemene informatie over het toevoegen van een Azure-SSIS IR aan een virtueel netwerk van Azure. Er wordt ook beschreven hoe u Azure Portal gebruikt om een virtueel netwerk te configureren voor het deelnemen van Azure-SSIS IR aan het virtueel netwerk. 
 - [Een Azure-SSIS IR controleren](monitor-integration-runtime.md#azure-ssis-integration-runtime). In dit artikel leest u hoe u informatie over een Azure-SSIS IR ophaalt. Daarnaast bevat het artikel beschrijvingen van statuswaarden die worden gebruikt in de geretourneerde informatie. 
  

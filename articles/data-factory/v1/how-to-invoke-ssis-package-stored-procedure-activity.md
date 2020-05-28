@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 225414760507bb023d0a514290420fc7cb59b950
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438790"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118320"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket aanroepen met behulp van opgeslagen procedure activiteit in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SSIS-pakket aanroept vanuit een Azure Data Factory pijp lijn met behulp van een opgeslagen procedure activiteit. 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u een SSIS-pakket aanroept vanuit een Azure 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-In de procedure in dit artikel wordt gebruikgemaakt van een Azure-SQL database die als host fungeert voor de SSIS-catalogus. U kunt ook een door Azure SQL Database beheerd exemplaar gebruiken.
+In de stapsgewijze instructies in dit artikel wordt gebruikgemaakt van Azure SQL Database. U kunt ook een door Azure SQL beheerd exemplaar gebruiken.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Een Azure SSIS Integration Runtime maken
 Een Azure SSIS Integration runtime maken als u er nog geen hebt door de stapsgewijze instructie in de [zelf studie te volgen: SSIS-pakketten implementeren](../tutorial-create-azure-ssis-runtime-portal.md). U kunt Data Factory versie 1 niet gebruiken om een Azure SSIS Integration runtime te maken. 
@@ -87,7 +87,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
 1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
 
     > [!IMPORTANT]
-    > Vervang &lt;&gt;servername &lt;, username&gt;@&gt; servername en &lt;Password&gt; door de waarden van uw Azure SQL database voordat u het bestand opslaat.&lt;
+    > Vervang &lt; servername &gt; , &lt; username &gt; @ &lt; servername &gt; en &lt; Password door de &gt; waarden van uw Azure SQL database voordat u het bestand opslaat.
 
     ```json
     {
@@ -138,7 +138,7 @@ In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met 
 1. Maak een JSON-bestand met de naam **MyPipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 
     > [!IMPORTANT]
-    > Vervang &lt;de mapnaam&gt;, &lt;de project&gt;naam &lt;, de&gt; pakket naam met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat.
+    > Vervang &lt; de mapnaam &gt; , &lt; de project naam &gt; , &lt; de pakket naam &gt; met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat.
 
     ```json
     {
@@ -190,7 +190,7 @@ In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met 
 
     U kunt deze cmdlet blijven uitvoeren tot u ziet dat het segment de status **Gereed** of **Mislukt** heeft gekregen. 
 
-    U kunt de volgende query uitvoeren op de SSISDB-data base in uw Azure SQL-Server om te controleren of het pakket is uitgevoerd. 
+    U kunt de volgende query uitvoeren op de SSISDB-data base in uw server om te controleren of het pakket is uitgevoerd. 
 
     ```sql
     select * from catalog.executions

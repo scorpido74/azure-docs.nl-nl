@@ -3,26 +3,26 @@ title: Ondersteunings matrix voor back-up van Azure-bestands share
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van Azure-bestands shares.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 09ca5264280c990db8f57400aef1a876f842a210
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684619"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117690"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
 U kunt de [Azure backup-service](https://docs.microsoft.com/azure/backup/backup-overview) gebruiken om een back-up te maken van Azure-bestands shares. Dit artikel bevat een overzicht van de ondersteunings instellingen bij het maken van back-ups van Azure-bestands shares met Azure Backup.
 
-## <a name="supported-geos"></a>Ondersteunde geografische gebieden
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
-Back-ups voor Azure-bestands shares zijn beschikbaar in de volgende geografische gebieden:
+### <a name="ga-regions-for-azure-file-shares-backup"></a>GA-regio's voor back-up van Azure-bestands shares
 
-**Ga-gebieden**:<br>
-Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), Zuid-Centraal VS (SCUS), VS-West 2 (WUS 2), India Zuid (invoeg toepassingen), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid-Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India-West (INW), Australië-centraal (ACL), Korea-centraal (KRC), Japan-West (JPW), Zuid-Afrika-noord (SAN) , UK-zuid (UKS), UK-west (UKW), Korea-zuid (KRS), Europa-noord (NE), Duitsland-noord (GN), Noor wegen West (NWW), Zuid-Afrika-west (zaag), Zwitserland-noord (SZN), Duitsland-west-centraal (GWC), UAE-noord (UAN), Frankrijk-centraal (FRC), India Central (INC), Canada-oost (CNE), Azië-oost (EA), Australië-oost (AE), Central US (CUS), VS-West (WUS), US Gov-Arizona (UGA), US Gov-Texas (UGT) , US Gov-Virginia (UGV), US DoD-centraal (UDC), US DoD-oost (USIEF)
+Back-ups van Azure-bestands shares zijn beschikbaar in alle regio's, **met uitzonde ring** van: Duitsland-centraal (soeverein), Duitsland-Noordoost (soeverein), China-oost, China-Oost 2, China-noord, China-noord 2 US gov-Iowa
 
-**Ondersteunde regio's (als onderdeel van de preview-versie) maar nog geen ga**:<br>
-VS-Oost (EUS), VS-Oost 2 (EUS2), Europa-west (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>Ondersteunde regio's voor onbedoeld verwijderen van beveiliging
+
+VS - west-centraal
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 

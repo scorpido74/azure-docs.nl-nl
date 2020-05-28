@@ -5,39 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6afa3d4d2d62541a51c3bab85843d41b48397100
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830477"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118782"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
-Azure Automation maakt de functie [Wijzigingen bijhouden en inventarisatie](change-tracking.md) mogelijk voor computers in uw omgeving. Met de functie worden wijzigingen bijgehouden en beschikbaar gemaakt in register sleutels, bestanden, inhoud en dergelijke. Dit artikel bevat procedures voor het werken met deze functie.
+Wanneer u een nieuw bestand of register sleutel toevoegt om bij te houden, Azure Automation dit voor [Wijzigingen bijhouden en inventaris](change-tracking.md)inschakelen. In dit artikel wordt beschreven hoe u tracering configureert, traceer resultaten controleert en hoe u waarschuwingen afhandelt wanneer er wijzigingen worden gedetecteerd.
 
-## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>De functie volledige Wijzigingen bijhouden en inventaris inschakelen
+Voordat u de procedures in dit artikel gebruikt, moet u ervoor zorgen dat u Wijzigingen bijhouden en inventaris op uw Vm's hebt ingeschakeld met een van de volgende technieken:
 
-Als u [FIM (File Integrity Monitoring) hebt Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)ingeschakeld, kunt u de volledige wijzigingen bijhouden-en inventarisatie functie voor uw machines gebruiken, zoals hieronder wordt beschreven. Uw instellingen worden niet verwijderd door dit proces.
-
-> [!NOTE]
-> Het inschakelen van de functie volledige Wijzigingen bijhouden en inventarisatie kan extra kosten veroorzaken. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/).
-
-1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
-2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op **verwijderen**, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Als u Wijzigingen bijhouden en inventaris opnieuw wilt inschakelen, gaat u naar het Automation-account en selecteert u **Wijzigingen bijhouden** of **inventaris** onder **configuratie beheer**.
-4. Kies de Log Analytics werk ruimte en het Automation-account, bevestig de instellingen van uw werk ruimte en klik op **inschakelen**.
-
-## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Machines inschakelen voor Wijzigingen bijhouden en inventaris
-
-Als u wijzigingen wilt bijhouden, moet u Wijzigingen bijhouden en inventaris inschakelen in Azure Automation. Hier volgen de aanbevolen en ondersteunde manieren om deze functie in te scha kelen voor uw machines: 
-
-* [Inschakelen op basis van een virtuele machine](automation-onboard-solutions-from-vm.md)
-* [Meerdere machines kunnen surfen](automation-onboard-solutions-from-browse.md)
-* [Inschakelen vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
-* [Inschakelen in een Azure Automation runbook](automation-onboard-solutions.md)
+* [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md)
+* [Wijzigingen bijhouden en inventaris inschakelen door te bladeren door de Azure Portal](automation-enable-changes-from-browse.md)
+* [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)
+* [Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine](automation-enable-changes-from-vm.md)
 
 ## <a name="track-files"></a>Bestanden bijhouden
+
+U kunt Wijzigingen bijhouden en inventaris gebruiken om wijzigingen in bestanden en mappen/mappen bij te houden. In deze sectie wordt beschreven hoe u bestands tracering configureert in Windows en op Linux.
 
 ### <a name="configure-file-tracking-on-windows"></a>Bestands tracering configureren in Windows
 
@@ -46,7 +34,7 @@ Gebruik de volgende stappen om bestands tracering op Windows-computers te config
 1. Selecteer in uw Automation-account de optie **Wijzigingen bijhouden** onder **configuratie beheer**. 
 2. Klik op **Instellingen bewerken** (het tandwiel symbool).
 3. Selecteer op de pagina werkruimte configuratie de optie **Windows-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen om bij te houden.
-4. Voer in het deel venster Windows-bestand voor Wijzigingen bijhouden toevoegen de informatie in voor het bestand dat u wilt bijhouden en klik op **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie.
+4. Voer in het deel venster Windows-bestand voor Wijzigingen bijhouden toevoegen de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie.
 
     |Eigenschap  |Beschrijving  |
     |---------|---------|
@@ -54,7 +42,7 @@ Gebruik de volgende stappen om bestands tracering op Windows-computers te config
     |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
     |Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
     |Pad invoeren     | Het pad om het bestand te controleren, bijvoorbeeld: **c:\Temp \\ \* . txt**. U kunt ook omgevings variabelen gebruiken, zoals `%winDir%\System32\\\*.*` .       |
-    |Padtype     | Het type pad. Mogelijke waarden zijn bestand en Directory.        |    
+    |Padtype     | Het type pad. Mogelijke waarden zijn bestand en map.        |    
     |Recursie     | Waar als recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden, en ONWAAR anders onwaar.        |    
     |Bestands inhoud uploaden | True voor het uploaden van bestands inhoud op bijgehouden wijzigingen en ONWAAR, anders onwaar.|
 
@@ -78,7 +66,7 @@ Gebruik de volgende stappen om bestands tracering op Linux-computers te configur
     |Padtype     | Het type pad. Mogelijke waarden zijn bestand en Directory.        |
     |Recursie     | Waar als recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden, en ONWAAR anders onwaar.        |
     |Sudo gebruiken     | True om sudo te gebruiken bij het controleren op het item en ONWAAR, anders false.         |
-    |Koppelingen     | Instelling die bepaalt hoe symbolische koppelingen moeten worden verwerkt bij het door lopen van directory's. Mogelijke waarden zijn:<br> Negeren: Hiermee worden symbolische koppelingen genegeerd en worden de bestanden/mappen waarnaar wordt verwezen, niet meegenomen.<br>Follow-volgt de symbolische koppelingen tijdens recursie en bevat ook de bestanden/mappen waarnaar wordt verwezen.<br>Beheren: volgt de symbolische koppelingen en staat het wijzigen van geretourneerde inhoud toe. **Opmerking** : deze optie wordt niet aanbevolen omdat het ophalen van bestands inhoud niet wordt ondersteund.    |
+    |Koppelingen     | Instelling die bepaalt hoe symbolische koppelingen moeten worden verwerkt bij het door lopen van directory's. Mogelijke waarden zijn:<br> Negeren: Hiermee worden symbolische koppelingen genegeerd en worden de bestanden/mappen waarnaar wordt verwezen, niet meegenomen.<br>Follow-volgt de symbolische koppelingen tijdens recursie en bevat ook de bestanden/mappen waarnaar wordt verwezen.<br>Beheren: volgt de symbolische koppelingen en staat de wijziging van geretourneerde inhoud toe.<br>**Opmerking:** De optie beheren wordt niet aanbevolen, omdat deze geen ondersteuning biedt voor het ophalen van bestands inhoud.    |
     |Bestands inhoud uploaden | True voor het uploaden van bestands inhoud op bijgehouden wijzigingen en ONWAAR, anders onwaar. |
 
 5. Zorg ervoor dat u waar opgeeft voor het **uploaden van bestands inhoud**. Met deze instelling schakelt u het bijhouden van bestands inhoud in voor het opgegeven bestandspad.
@@ -87,23 +75,22 @@ Gebruik de volgende stappen om bestands tracering op Linux-computers te configur
 
 ## <a name="track-file-contents"></a>Bestands inhoud bijhouden
 
-Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand voor en na een bijgehouden wijziging bekijken. De functie slaat de inhoud van het bestand op in een opslag account nadat elke wijziging is doorgevoerd. Hier volgen enkele regels om de inhoud van het bestand bij te houden:
+Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand voor en na een bijgehouden wijziging bekijken. De functie slaat de inhoud van het bestand op in een [opslag account](https://docs.microsoft.com/azure/storage/common/storage-account-overview) nadat elke wijziging is doorgevoerd. Hier volgen enkele regels om de inhoud van het bestand bij te houden:
 
 * Een standaard opslag account met het Resource Manager-implementatie model is vereist voor het opslaan van bestands inhoud. 
-
 * Gebruik geen Premium-en klassieke implementatie model opslag accounts. Zie [over Azure Storage-accounts](../storage/common/storage-create-storage-account.md).
-
-* Het opslag account dat u gebruikt, kan worden verbonden met slechts één Automation-account.
-
-* [Wijzigingen bijhouden en inventarisatie](change-tracking.md) is ingeschakeld in uw Automation-account.
+* U kunt het opslag account koppelen aan slechts één Automation-account.
+* [Wijzigingen bijhouden en inventaris](change-tracking.md) moeten zijn ingeschakeld in uw Automation-account.
 
 ### <a name="enable-tracking-for-file-content-changes"></a>Bijhouden van wijzigingen in bestands inhoud inschakelen
+
+Voer de volgende stappen uit om het bijhouden van wijzigingen in de bestands inhoud in te scha kelen:
 
 1. Open uw Automation-account in het Azure Portal en selecteer vervolgens **Wijzigingen bijhouden** onder **configuratie beheer**.
 2. Klik op **Instellingen bewerken** (het tandwiel symbool).
 3. Selecteer **Bestands inhoud** en klik op **koppelen**. Met deze selectie wordt het deel venster locatie van inhoud toevoegen voor Wijzigingen bijhouden geopend.
 
-   ![Locatie van inhoud inschakelen](./media/change-tracking-file-contents/enable.png)
+   ![Locatie van inhoud toevoegen](./media/change-tracking-file-contents/enable.png)
 
 4. Selecteer het abonnement en het opslag account dat moet worden gebruikt voor het opslaan van de bestands inhoud. 
 
@@ -123,7 +110,7 @@ Zodra Wijzigingen bijhouden en de inventaris een wijziging voor een bijgehouden 
 
 1. Open uw Automation-account in het Azure Portal en selecteer vervolgens **Wijzigingen bijhouden** onder **configuratie beheer**.
 
-2. Kies een bestand in de lijst met wijzigingen en selecteer **wijzigingen in bestands inhoud weer geven** om de inhoud van het bestand te bekijken. In het deel venster Details wijzigen ziet u de standaard voor-en na-bestands gegevens.
+2. Kies een bestand in de lijst met wijzigingen en selecteer **wijzigingen in bestands inhoud weer geven** om de inhoud van het bestand te bekijken. In het deel venster Details wijzigen ziet u de standaard voor en na de bestands informatie voor elke eigenschap.
 
    ![Details wijzigen](./media/change-tracking-file-contents/change-details.png)
 
@@ -133,7 +120,7 @@ Zodra Wijzigingen bijhouden en de inventaris een wijziging voor een bijgehouden 
 
 Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-computers te configureren:
 
-1. Selecteer in uw Automation-account de optie **Wijzigingen bijhouden** onder **configuratie beheer**. 
+1. Open uw Automation-account in het Azure Portal en selecteer vervolgens **Wijzigingen bijhouden** onder **configuratie beheer**. 
 2. Klik op **Instellingen bewerken** (het tandwiel symbool).
 3. Selecteer op de pagina werkruimte configuratie de optie **Windows-REGI ster**.
 4. Klik op **+ toevoegen** om een nieuwe register sleutel aan de tracering toe te voegen.
@@ -144,7 +131,7 @@ Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-co
     |Ingeschakeld     | Waar als een instelling wordt toegepast en anders false.        |
     |Itemnaam     | Beschrijvende naam van de register sleutel die moet worden gevolgd.        |
     |Groep     | Groeps naam voor het logisch groeperen van register sleutels.        |
-    |Windows-registersleutel   | Sleutel naam met pad, bijvoorbeeld **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\explorer\user shell Folders\Common gestart**.      |
+    |Windows-registersleutel   | Sleutel naam met pad, bijvoorbeeld `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Zoek logboeken voor wijzigings records
 
@@ -152,27 +139,27 @@ U kunt verschillende zoek acties uitvoeren op de Azure Monitor logboeken voor wi
 
 |Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|ConfigurationData<br>&#124; waarbij ConfigDataType = = "micro soft-Services" en SvcStartupType = = "auto"<br>&#124; waarbij SvcState = = "gestopt"<br>&#124; arg_max (TimeGenerated, *) samenvatten op software naam, computer         | Toont de meest recente inventaris records voor micro soft-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt. De resultaten zijn beperkt tot de meest recente record voor de opgegeven software naam en computer.    |
-|ConfigurationChange<br>&#124; waarbij ConfigChangeType = = "software" en ChangeCategory = = "verwijderd"<br>&#124; order by TimeGenerated desc|Geeft wijzigings records weer voor verwijderde software.|
+|`ConfigurationData`<br>&#124;`where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Toont de meest recente inventaris records voor micro soft-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt. De resultaten zijn beperkt tot de meest recente record voor de opgegeven software naam en computer.    |
+|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Geeft wijzigings records weer voor verwijderde software.|
 
 ## <a name="create-alerts-on-changes"></a>Waarschuwingen maken voor wijzigingen
 
-In het volgende voor beeld ziet u dat het bestand **C:\Windows\System32\drivers\etc\hosts** op een machine is gewijzigd. Dit bestand is belang rijk omdat Windows het gebruikt om hostnamen om te zetten in IP-adressen. Deze bewerking heeft voor rang op DNS en kan leiden tot verbindings problemen. Het kan ook leiden tot omleiding van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
+In het volgende voor beeld ziet u dat het bestand **c:\Windows\System32\drivers\etc\hosts** op een machine is gewijzigd. Dit bestand is belang rijk omdat Windows het gebruikt om hostnamen om te zetten in IP-adressen. Deze bewerking heeft voor rang op DNS en kan leiden tot verbindings problemen. Het kan ook leiden tot omleiding van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
 
-![Een grafiek met de wijziging van het bestand hosts](./media/change-tracking-file-contents/changes.png)
+![Grafiek met de wijziging van het bestand hosts](./media/change-tracking-file-contents/changes.png)
 
 We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor een wijziging te bespreken.
 
 1. Selecteer in uw Automation-account **Wijzigingen bijhouden** onder **configuratie beheer**en selecteer vervolgens **log Analytics**. 
-2. Zoek in de logboeken zoeken naar inhouds wijzigingen in het bestand **hosts** met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Met deze query wordt gezocht naar een wijziging in de inhoud voor bestanden met een volledig gekwalificeerd pad met het woord ' hosts '. U kunt ook een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen, bijvoorbeeld met behulp van `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
+2. Zoek in de logboeken zoeken naar inhouds wijzigingen in het bestand **hosts** met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Met deze query wordt gezocht naar wijzigingen in de inhoud voor bestanden met volledig gekwalificeerde padnamen die het woord bevatten `hosts` . U kunt ook een specifiek bestand vragen door het pad naar de volledig gekwalificeerde vorm te wijzigen, bijvoorbeeld met behulp van `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
 
-3. Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op **nieuwe waarschuwings regel** in de zoek opdracht voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze pagina navigeren via **Azure monitor** in de Azure Portal. 
+3. Nadat de query de resultaten heeft geretourneerd, klikt u op **nieuwe waarschuwings regel** in de zoek opdracht voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze pagina navigeren via **Azure monitor** in de Azure Portal. 
 
 4. Controleer de query opnieuw en wijzig de logica van de waarschuwing. In dit geval moet de waarschuwing worden geactiveerd als er zelfs één wijziging wordt gedetecteerd op alle computers in de omgeving.
 
     ![Wijziging in query voor het bijhouden van wijzigingen in het bestand hosts](./media/change-tracking-file-contents/change-query.png)
 
-5. Nadat de waarschuwings logica is ingesteld, wijst u actie groepen toe om acties uit te voeren als reactie op de waarschuwing die wordt geactiveerd. In dit geval worden e-mail berichten ingesteld om te worden verzonden en wordt een ITSM-ticket (IT Service Management) gemaakt. 
+5. Nadat de waarschuwings logica is ingesteld, wijst u actie groepen toe om acties uit te voeren als reactie op het activeren van de waarschuwing. In dit geval worden e-mail berichten ingesteld om te worden verzonden en wordt een ITSM-ticket (IT Service Management) gemaakt. 
 
     ![Actie groep configureren voor waarschuwing bij wijziging](./media/change-tracking/action-groups.png)
 

@@ -32,7 +32,7 @@ ms.locfileid: "83738248"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
@@ -78,7 +78,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 1. Selecteer in het menu **Azure Active Directory** overzicht onder **beheren**de optie **app-registraties (verouderd)**.
 1. Selecteer **Nieuwe toepassing registreren**.
@@ -87,13 +87,13 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app
 1. Voer bij **aanmeldings-URL**in `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de naam van uw Azure AD B2C Tenant domein. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
 1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview)](#tab/app-reg-preview/)
 
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **App-registraties (preview)** en selecteer daarna **Nieuwe registratie**.
 1. Voer **Name**in bij naam `IdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Onder **omleidings-URI**selecteert u **Web**en vervolgens ENTER `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de domein naam van uw Azure AD B2C Tenant.
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
+1. Selecteer in **Machtigingen** het selectievakje *Beheerdersgoedkeuring verlenen aan machtigingen van OpenID en offline_access*.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 
@@ -123,14 +123,14 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 1. Schakel het selectie vakje naast **toegangs IdentityExperienceFramework**in, klik op **selecteren**en klik vervolgens op **gereed**.
 1. Selecteer **machtigingen verlenen**en Bevestig door **Ja**te selecteren.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview)](#tab/app-reg-preview/)
 
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **App-registraties (preview)** en selecteer daarna **Nieuwe registratie**.
 1. Voer **Name**in bij naam `ProxyIdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
-1. Gebruik onder **omleidings-URI**de vervolg keuzelijst om een **open bare client/systeem eigen (mobiele & bureau blad)** te selecteren.
+1. Gebruik **Omleidings-URI**, gebruik het vervolgkeuzemenu om **Openbare client/systeemeigen (mobiel en desktop)** te selecteren.
 1. Voer voor **omleidings-URI**in `myapp://auth` .
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
+1. Selecteer in **Machtigingen** het selectievakje *Beheerdersgoedkeuring verlenen aan machtigingen van OpenID en offline_access*.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 

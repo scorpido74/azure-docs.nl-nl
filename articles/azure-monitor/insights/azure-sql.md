@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275462"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116553"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -41,12 +41,12 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-analyse opties
 
-De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee versies van het dash board Azure SQL-analyse, één voor afzonderlijke en gepoolde data bases en elastische Pools, en de andere voor beheerde instanties en exemplaar databases.
+De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee versies van het dash board Azure SQL-analyse, één voor Azure SQL Database en de andere voor Azure SQL Managed instance-data bases.
 
-| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor enkelvoudige en gepoolde data bases en elastische Pools | Ondersteuning voor beheerde exemplaren en instanties database |
+| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
 | --- | ------- | ----- | ----- |
 | Resource per type | Perspectief dat alle bewaakte resources telt. | Ja | Ja |
-| Insights | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |
+| Inzichten | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |
 | Fouten | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
 | Time-outs | Voorziet in hiërarchische inzoomen op SQL-time-outs die zijn opgetreden in de data bases. | Ja | Nee |
 | Blok keren | Voorziet in hiërarchische inzoomen op SQL-blok keringen die zijn opgetreden in de data bases. | Ja | Nee |
@@ -62,7 +62,7 @@ Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Opl
 
 Zodra u Azure SQL-analyse oplossing hebt gemaakt in uw werk ruimte, moet u **elke resource configureren** die u wilt bewaken om de diagnostische telemetrie naar Azure SQL-analyse te streamen. Volg de gedetailleerde instructies op deze pagina:
 
-- Schakel Azure Diagnostics voor uw Azure SQL database in om de [telemetrie diagnostische gegevens naar Azure SQL-analyse te streamen](../../sql-database/sql-database-metrics-diag-logging.md).
+- Schakel Azure Diagnostics voor uw Azure SQL database in om de [telemetrie diagnostische gegevens naar Azure SQL-analyse te streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 De bovenstaande pagina bevat ook instructies voor het inschakelen van ondersteuning voor het bewaken van meerdere Azure-abonnementen vanuit een enkele Azure SQL-analyse-werk ruimte als één glas venster.
 
@@ -72,13 +72,13 @@ Wanneer u Azure SQL-analyse toevoegt aan uw werk ruimte, wordt de Azure SQL-anal
 
 ![Tegel Azure SQL-analyse overzicht](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Zodra de tegel is geladen, wordt het aantal afzonderlijke en gepoolde data bases, elastische groepen, beheerde exemplaren en beheerde exemplaar databases waarvan Azure SQL-analyse diagnostische gegevens over de telemetrie ontvangt, weer gegeven.
+Zodra de tegel is geladen, wordt het aantal data bases en elastische Pools weer gegeven in SQL Database en beheerde exemplaren en instantie databases in het SQL-beheerde exemplaar van waaruit Azure SQL-analyse diagnostische telemetrie ontvangt.
 
 ![Azure SQL-analyse tegel](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL-analyse biedt twee afzonderlijke weer gaven: één voor het bewaken van afzonderlijke data bases en gepoolde data bases en elastische Pools, en de andere weer gave voor het bewaken van beheerde instanties en exemplaar databases.
+Azure SQL-analyse biedt twee afzonderlijke weer gaven: één voor het bewaken van SQL Database en de andere weer gave voor het bewaken van het SQL-beheerde exemplaar.
 
-Klik op het bovenste gedeelte van de tegel om Azure SQL-analyse bewakings dashboard weer te geven voor enkelvoudige en gepoolde data bases en elastische Pools. Klik op het onderste deel van de tegel om Azure SQL-analyse bewakings dashboard te bekijken voor beheerde instanties en exemplaar databases.
+Als u Azure SQL-analyse bewakings dashboard voor SQL Database wilt weer geven, klikt u op het bovenste gedeelte van de tegel. Klik op het onderste deel van de tegel om Azure SQL-analyse bewakings dashboard voor SQL Managed instance te bekijken.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Azure SQL-analyse gegevens weer geven
 
@@ -86,7 +86,7 @@ Het dash board bevat het overzicht van alle data bases die via verschillende per
 
 Als sommige metrische gegevens of logboeken niet naar Azure Monitor worden gestreamd, worden de tegels in Azure SQL-analyse niet gevuld met controle-informatie.
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>Enkelvoudige en gepoolde data bases en elastische Pools weer geven
+### <a name="sql-database-view"></a>SQL Database weer gave
 
 Zodra de Azure SQL-analyse tegel voor de data base is geselecteerd, wordt het bewakings dashboard weer gegeven.
 
@@ -98,7 +98,7 @@ Als u een tegel selecteert, wordt er een inzoom rapport in het specifieke perspe
 
 Elk perspectief in deze weer gave bevat samen vattingen van het abonnement, de server, de elastische pool en de database niveaus. Daarnaast toont elk perspectief een specifiek perspectief voor het rapport aan de rechter kant. Als u abonnement, Server, pool of data base selecteert in de lijst, wordt het inzoomen voortgezet.
 
-### <a name="managed-instance-and-instances-databases-view"></a>Weer gave beheerde instantie en instanties-data bases
+### <a name="sql-managed-instance-view"></a>Weer gave SQL Managed instance
 
 Zodra de Azure SQL-analyse tegel voor de data bases is geselecteerd, wordt het bewakings dashboard weer gegeven.
 
@@ -106,13 +106,13 @@ Zodra de Azure SQL-analyse tegel voor de data bases is geselecteerd, wordt het b
 
 Als u een tegel selecteert, wordt er een inzoom rapport in het specifieke perspectief geopend. Zodra het perspectief is geselecteerd, wordt het inzoom rapport geopend.
 
-Als u de weer gave van een beheerd exemplaar selecteert, worden details weer gegeven over het gebruik van het beheerde exemplaar, de data bases die het bevat en telemetrie voor de query's die in het exemplaar worden uitgevoerd.
+Als u de weer gave SQL Managed instance selecteert, worden de details weer gegeven van het gebruik van het beheerde exemplaar, de data bases die het bevat en telemetrie voor de query's die in het exemplaar worden uitgevoerd.
 
 ![Azure SQL-analyse-time-outs](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights rapport
 
-Azure SQL Database [intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) kunt u zien wat er gebeurt met de prestaties van alle Azure SQL-data bases. Alle Intelligent Insights verzamelde gegevens kunnen worden gevisualiseerd en geopend via het inzichten-perspectief.
+Azure SQL Database [intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) kunt u zien wat er gebeurt met de prestaties van alle Azure SQL-data bases. Alle Intelligent Insights verzamelde gegevens kunnen worden gevisualiseerd en geopend via het inzichten-perspectief.
 
 ![Inzichten Azure SQL-analyse](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +170,7 @@ Zodra de nieuwe rol is gemaakt, wijst u deze rol toe aan elke gebruiker die u no
 
 ## <a name="analyze-data-and-create-alerts"></a>Gegevens analyseren en waarschuwingen maken
 
-Gegevens analyse in Azure SQL-analyse is gebaseerd op [log Analytics taal](../log-query/get-started-queries.md) voor uw aangepaste query en rapportage. Hier vindt u een beschrijving van de beschik bare gegevens die zijn verzameld uit de database resource voor aangepaste query's in [metrische gegevens en logboeken](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+Gegevens analyse in Azure SQL-analyse is gebaseerd op [log Analytics taal](../log-query/get-started-queries.md) voor uw aangepaste query en rapportage. Hier vindt u een beschrijving van de beschik bare gegevens die zijn verzameld uit de database resource voor aangepaste query's in [metrische gegevens en logboeken](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
 
 Automatische waarschuwingen in Azure SQL-analyse is gebaseerd op het schrijven van een Log Analytics query die een waarschuwing activeert wanneer aan een voor waarde wordt voldaan. Zoek hieronder een aantal voor beelden over Log Analytics query's waarop waarschuwingen kunnen worden ingesteld in Azure SQL-analyse.
 
@@ -178,7 +178,7 @@ Automatische waarschuwingen in Azure SQL-analyse is gebaseerd op het schrijven v
 
 U kunt eenvoudig [waarschuwingen maken](../platform/alerts-metric.md) met de gegevens die afkomstig zijn uit Azure SQL database resources. Hier volgen enkele nuttige [logboek query's](../log-query/log-query-overview.md) die u kunt gebruiken met een logboek waarschuwing:
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Hoge CPU op Azure SQL Database
+#### <a name="high-cpu"></a>Hoog CPU-gebruik
 
 ```
 AzureMetrics
@@ -194,7 +194,7 @@ AzureMetrics
 > - De vereiste voor het instellen van deze waarschuwing is dat bewaakte data bases basis gegevens streamen naar Azure SQL-analyse.
 > - Vervang de waarde van metric cpu_percent door dtu_consumption_percent om in plaats daarvan hoge DTU-resultaten te verkrijgen.
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Hoge CPU op Azure SQL Database elastische Pools
+#### <a name="high-cpu-on-elastic-pools"></a>Hoge CPU op elastische Pools
 
 ```
 AzureMetrics
@@ -210,7 +210,7 @@ AzureMetrics
 > - De vereiste voor het instellen van deze waarschuwing is dat bewaakte data bases basis gegevens streamen naar Azure SQL-analyse.
 > - Vervang de waarde van metric cpu_percent door dtu_consumption_percent om in plaats daarvan hoge DTU-resultaten te verkrijgen.
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Azure SQL Database opslag met een gemiddelde van 95% in de afgelopen uur
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>Opslag met een gemiddelde van meer dan 95% in de afgelopen uur
 
 ```
 let time_range = 1h;
@@ -254,9 +254,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>Waarschuwingen voor beheerde instanties maken
+### <a name="creating-alerts-for-sql-managed-instance"></a>Waarschuwingen maken voor SQL Managed instance
 
-#### <a name="managed-instance-storage-is-above-90"></a>Beheerde exemplaar opslag is meer dan 90%
+#### <a name="storage-is-above-90"></a>Opslag is meer dan 90%
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +272,7 @@ AzureDiagnostics
 > - De eerste vereiste voor het instellen van deze waarschuwing is dat de beheerde instantie het streamen van ResourceUsageStats-logboek heeft ingeschakeld voor Azure SQL-analyse.
 > - Deze query vereist dat er een waarschuwings regel wordt ingesteld om een waarschuwing te starten wanneer er resultaten zijn (> 0 resultaten) van de query, waarbij wordt opgegeven dat de voor waarde bestaat op het beheerde exemplaar. De uitvoer is opslag percentage van het beheerde exemplaar.
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Het gemiddelde CPU-verbruik van het beheerde exemplaar is hoger dan 95% in de afgelopen uur
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Het gemiddelde CPU-verbruik is hoger dan 95% in de afgelopen uur
 
 ```
 let cpu_percentage_threshold = 95;

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fd240abee3bb19b3c54650756a3329d4d1ef8ae5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118401"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113527"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul
 
@@ -41,9 +41,9 @@ Eerst hebt u een set trainings gegevens in een Azure Storage BLOB nodig. U moet 
 
 Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API voor het **[trainende aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende krul opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
-1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
-1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
+1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang door `<SAS URL>` de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
@@ -55,15 +55,15 @@ U ontvangt een `201 (Success)` antwoord met een **locatie** -header. De waarde v
 
 Nadat u de trein bewerking hebt gestart, gebruikt u een nieuwe bewerking, **[haalt u aangepast model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** op om de trainings status te controleren. Geef de model-ID door aan deze API-aanroep om de trainings status te controleren:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning.
 1. Vervangen `<subscription key>` door de sleutel van uw abonnement
-1. Vervang `<model ID>` door de model-id die u in de vorige stap hebt ontvangen
+1. Vervang door `<model ID>` de model-id die u in de vorige stap hebt ontvangen
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. Let op `"status"` het veld. Dit heeft de waarde `"ready"` wanneer de training is voltooid. Als het model niet is getraind, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
+U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. Let op het `"status"` veld. Dit heeft de waarde `"ready"` wanneer de training is voltooid. Als het model niet is getraind, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
 Het `"modelId"` veld bevat de id van het model dat u wilt trainen. Dit hebt u nodig voor de volgende stap.
 
@@ -137,9 +137,9 @@ Het `"modelId"` veld bevat de id van het model dat u wilt trainen. Dit hebt u no
 
 Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een document en het extra heren van sleutel-waardeparen en tabellen. Roep de **[analyse formulier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** -API aan door de volgende krul opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<model ID>` door de model-id die u in de vorige sectie hebt ontvangen.
-1. Vervang `<SAS URL>` door een SAS-URL naar uw bestand in azure Storage. Volg de stappen in de sectie training, maar in plaats van een SAS-URL voor de hele BLOB-container op te halen, haalt u er een op voor het specifieke bestand dat u wilt analyseren.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang door `<model ID>` de model-id die u in de vorige sectie hebt ontvangen.
+1. Vervang door `<SAS URL>` een SAS-URL naar uw bestand in azure Storage. Volg de stappen in de sectie training, maar in plaats van een SAS-URL voor de hele BLOB-container op te halen, haalt u er een op voor het specifieke bestand dat u wilt analyseren.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
@@ -152,17 +152,17 @@ U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie-** header. 
 
 Gebruik de volgende API om de resultaten van de analyse bewerking op te vragen.
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<result ID>` door de id die u in de vorige sectie hebt ontvangen.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang door `<result ID>` de id die u in de vorige sectie hebt ontvangen.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. De uitvoer is kort voor eenvoud. U ziet `"status"` het veld onder aan de onderkant. Dit heeft de waarde `"succeeded"` wanneer de analyse bewerking is voltooid. Als de analyse bewerking nog niet is voltooid, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
+U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. De uitvoer is kort voor eenvoud. U ziet het `"status"` veld onder aan de onderkant. Dit heeft de waarde `"succeeded"` wanneer de analyse bewerking is voltooid. Als de analyse bewerking nog niet is voltooid, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
-De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars `"pageResults"` bevinden zich in het knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, worden in `"readResults"` het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
+De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars bevinden zich in het `"pageResults"` knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, `"readResults"` worden in het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
 
 ```json
 {

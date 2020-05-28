@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d8e8e9ec7a0a5c502e3046b0c6ddb3a7da064739
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208530"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117284"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) maken en delen
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Als u Azure Machine Learning Studio (klassiek) wilt gebruiken, moet u een Machine Learning Studio (klassieke) werk ruimte hebben. Deze werkruimte bevat de hulpprogramma's die u nodig hebt om experimenten te maken, beheren en publiceren.
 
@@ -45,7 +43,7 @@ Als u een werk ruimte in Machine Learning Studio (klassiek) wilt openen, moet u 
 
      ![Een nieuwe studio-werk ruimte maken](./media/create-workspace/create-new-workspace.png)
 
-5. Klik op **maken**.
+5. Klik op **Maken**.
 
    Machine Learning is momenteel beschikbaar in een beperkt aantal regio's. Als uw abonnement niet een van deze regio's bevat, wordt het fout bericht ' u hebt geen abonnementen in de toegestane regio's ' weer gegeven.  Als u een regio wilt toevoegen aan uw abonnement, maakt u een nieuwe micro soft-ondersteunings aanvraag van de Azure Portal, kiest u **facturering** als het probleem type en volgt u de aanwijzingen om uw aanvraag in te dienen.
 
@@ -56,7 +54,7 @@ Als u het opslag account per ongeluk verwijdert, maakt u het opslag account opni
 
 Nadat de werk ruimte is geïmplementeerd, kunt u deze openen in Machine Learning Studio (klassiek).
 
-1. Blader naar Machine Learning Studio (klassiek) op [https://studio.azureml.net/](https://studio.azureml.net/).
+1. Blader naar Machine Learning Studio (klassiek) op [https://studio.azureml.net/](https://studio.azureml.net/) .
 
 2. Selecteer uw werkruimte in de rechterbovenhoek.
 

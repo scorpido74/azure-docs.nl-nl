@@ -1,7 +1,7 @@
 ---
 title: Meta gegevens met GenerateAnswer-API-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Met QnA Maker kunt u meta gegevens, in de vorm van sleutel/waarde-paren, toevoegen aan uw vraag/antwoord sets. U kunt de resultaten filteren op gebruikers query's en aanvullende informatie opslaan die kan worden gebruikt bij opvolgings gesprekken.
+description: Met QnA Maker kunt u meta gegevens, in de vorm van sleutel/waarde-paren, toevoegen aan uw vraag/antwoord-paren. U kunt de resultaten filteren op gebruikers query's en aanvullende informatie opslaan die kan worden gebruikt bij opvolgings gesprekken.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659557"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993504"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
 Als u het voorspelde antwoord wilt ontvangen op de vraag van een gebruiker, gebruikt u de GenerateAnswer-API. Wanneer u een Knowledge Base publiceert, kunt u informatie bekijken over het gebruik van deze API op de pagina **publiceren** . U kunt de API ook configureren om antwoorden te filteren op basis van meta gegevenslabels en de Knowledge Base te testen op het eind punt met de teken reeks parameter test query.
 
-Met QnA Maker kunt u meta gegevens, in de vorm van sleutel-en waardeparen, toevoegen aan uw sets met vragen en antwoorden. U kunt deze informatie vervolgens gebruiken om de resultaten te filteren op gebruikers query's en om aanvullende informatie op te slaan die kan worden gebruikt bij opvolgings gesprekken. Zie de [Knowledge Base](../Concepts/knowledge-base.md)voor meer informatie.
+Met QnA Maker kunt u meta gegevens, in de vorm van sleutel-en waardeparen, toevoegen aan uw paren van vragen en antwoorden. U kunt deze informatie vervolgens gebruiken om de resultaten te filteren op gebruikers query's en om aanvullende informatie op te slaan die kan worden gebruikt bij opvolgings gesprekken. Zie de [Knowledge Base](../Concepts/knowledge-base.md)voor meer informatie.
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ Elke QnA-entiteit heeft een unieke en permanente ID. U kunt de ID gebruiken om u
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Vraag voor spellingen ophalen met de GenerateAnswer-API
 
-U gebruikt de [GenerateAnswer-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) in uw bot of toepassing om de Knowledge Base te doorzoeken met een vraag van de gebruiker, zodat de beste overeenkomst wordt opgehaald uit de vraag-en-antwoord sets.
+U gebruikt de [GenerateAnswer-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) in uw bot of toepassing om een query uit te geven op uw Knowledge Base met een gebruikers vraag, om het beste resultaat te krijgen van de vraag-en antwoord paren.
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ Omdat de resultaten alleen vereist zijn voor het restaurant "Paradise", kunt u e
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Vraag-en antwoord resultaten gebruiken om de discussie context te blijven
 
-De reactie op de GenerateAnswer bevat de bijbehorende meta gegevens van de overeenkomende vraag en antwoordset. U kunt deze informatie in uw client toepassing gebruiken om de context van de vorige conversatie op te slaan voor gebruik in latere conversaties.
+Het antwoord op de GenerateAnswer bevat de bijbehorende meta gegevens van de overeenkomende vraag en het antwoord paar. U kunt deze informatie in uw client toepassing gebruiken om de context van de vorige conversatie op te slaan voor gebruik in latere conversaties.
 
 ```json
 {

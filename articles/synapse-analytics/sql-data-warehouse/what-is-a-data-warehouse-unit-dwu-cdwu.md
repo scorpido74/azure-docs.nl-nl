@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3c2bdd2dcd5fcef62c0a4691160c5457d19f196
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408052"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112601"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-eenheden (Dwu's)
 
@@ -72,7 +72,7 @@ Elke prestatie tier maakt gebruik van een iets andere maat eenheid voor de Data 
 
 Zowel Dwu's als cDWUs ondersteunen het schalen van de computer naar boven of beneden en het onderbreken van de reken kracht wanneer u het Data Warehouse niet hoeft te gebruiken. Deze bewerkingen zijn allemaal op aanvraag. Gen2 maakt gebruik van een lokale schijf cache op de reken knooppunten om de prestaties te verbeteren. Wanneer u het systeem schaalt of onderbreekt, wordt de cache ongeldig en wordt er een periode voor het opwarmen van de cache vereist voordat optimale prestaties worden gerealiseerd.  
 
-Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft een [DTU-quotum (data base Trans Action Unit)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) waarmee een specifiek aantal data warehouse-eenheden kan worden toegestaan. Zie [capaciteits limieten voor werk belasting beheer](sql-data-warehouse-service-capacity-limits.md#workload-management)voor meer informatie.
+Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft een [DTU-quotum (data base Trans Action Unit)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) waarmee een specifiek aantal data warehouse-eenheden kan worden toegestaan. Zie [capaciteits limieten voor werk belasting beheer](sql-data-warehouse-service-capacity-limits.md#workload-management)voor meer informatie.
 
 ## <a name="capacity-limits"></a>Capaciteitslimieten
 
@@ -107,7 +107,7 @@ Ingebouwde rollen voor Azure-resources, zoals Inzender voor SQL-data bases en SQ
 De huidige DWU-instelling weer geven:
 
 1. Open SQL Server-objectverkenner in Visual Studio.
-2. Verbinding maken met de hoofd database die aan de logische SQL Database-Server is gekoppeld.
+2. Verbinding maken met de hoofd database die aan de logische SQL-Server is gekoppeld.
 3. Selecteer in de weer gave sys. database_service_objectives Dynamic Management. Hier volgt een voorbeeld:
 
 ```sql
@@ -129,7 +129,7 @@ Dwu's wijzigen:
 
 2. Verplaats onder **schalen**de schuif regelaar naar links of rechts om de instelling DWU te wijzigen.
 
-3. Klik op **Opslaan**. Er verschijnt een bevestigingsbericht. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
+3. Klik op **Opslaan**. Er wordt een bevestigingsbericht weergegeven. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -149,7 +149,7 @@ Met T-SQL kunt u de huidige DWUsettings weer geven, de instellingen wijzigen en 
 
 De Dwu's wijzigen:
 
-1. Maak verbinding met de hoofd database die aan uw logische SQL Database-Server is gekoppeld.
+1. Verbinding maken met de hoofd database die aan uw server is gekoppeld.
 2. Gebruik de instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. In het volgende voor beeld wordt de serviceniveau doelstelling ingesteld op DW1000c voor de data base-MySQLDW.
 
 ```Sql
@@ -185,7 +185,7 @@ U kunt de status van de data base niet controleren op scale-out-bewerkingen met 
 
 De status van DWU-wijzigingen controleren:
 
-1. Maak verbinding met de hoofd database die aan uw logische SQL Database-Server is gekoppeld.
+1. Verbinding maken met de hoofd database die aan uw server is gekoppeld.
 2. Verzend de volgende query om de status van de data base te controleren.
 
 ```sql

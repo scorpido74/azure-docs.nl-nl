@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b1f2d97aabfee47110946336c0ad8ad03d86a163
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118484"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116582"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met krul
 
-In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie in Amerikaanse verkoop ontvangsten te extra heren en te identificeren.
+In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie uit de Amerikaanse verkoop ontvangsten te extra heren en te identificeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - [krul](https://curl.haxx.se/windows/) geïnstalleerd.
-- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze Quick Start.
+- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) gebruiken voor deze Quick Start.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -36,15 +36,15 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **[analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** van de ontvangst aan met behulp van de onderstaande krul opdracht. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
-1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
-1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
+1. Vervang door `<your receipt URL>` het URL-adres van een kwitantie-installatie kopie.
+1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-U ontvangt een `202 (Success)` antwoord met de kopregel ' **bewerkings locatie** '. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken `operations/` reeks na de bewerkings-id.
+U ontvangt een `202 (Success)` antwoord met de kopregel ' **bewerkings locatie** '. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken reeks na `operations/` de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -54,8 +54,8 @@ https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations
 
 Nadat u de API voor het analyseren van de **kwitantie** hebt aangeroepen, roept u de API **[analyse van ontvangst resultaten ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<operationId>` door de bewerkings-id uit de vorige stap.
+1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang door `<operationId>` de bewerkings-id uit de vorige stap.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
@@ -64,7 +64,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat `"recognitionResults"` het veld elke regel tekst die is geëxtraheerd uit de ontvangst en het `"understandingResults"` veld bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst. Als de bewerking niet is voltooid, is de waarde `"status"` van is `"running"` of `"notStarted"`en moet u de API opnieuw aanroepen, hetzij hand matig of via een script. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
+U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"` , geeft de status van de bewerking aan. Als de bewerking is voltooid, `"recognitionResults"` bevat het veld elke regel tekst die is geëxtraheerd uit de ontvangst en het `"understandingResults"` veld bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst. Als de bewerking niet is voltooid, is de waarde van `"status"` is `"running"` of `"notStarted"` en moet u de API opnieuw aanroepen, hetzij hand matig of via een script. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
 Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is inge kort voor de Lees baarheid.
 

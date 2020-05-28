@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9a02efedb0e002ac13294429c06e39ea18019c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399011"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117471"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving configureren voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -145,7 +145,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
     Voer de volgende opdracht uit om de omgeving te maken.
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     Activeer vervolgens de omgeving.
@@ -154,7 +154,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
     conda activate myenv
     ```
 
-    In dit voor beeld wordt een omgeving gemaakt met behulp van python 3.6.5, maar alle specifieke subversies kunnen worden gekozen. SDK-compatibiliteit is mogelijk niet gegarandeerd met bepaalde primaire versies (3.5 + wordt aanbevolen) en het wordt aanbevolen een andere versie/Subversion te gebruiken in uw Anaconda-omgeving als u fouten ondervindt. Het duurt enkele minuten om de omgeving te maken terwijl onderdelen en pakketten worden gedownload.
+    In dit voor beeld wordt een omgeving gemaakt met behulp van python 3.7.7, maar alle specifieke subversies kunnen worden gekozen. SDK-compatibiliteit is mogelijk niet gegarandeerd met bepaalde primaire versies (3.5 + wordt aanbevolen) en het wordt aanbevolen een andere versie/Subversion te gebruiken in uw Anaconda-omgeving als u fouten ondervindt. Het duurt enkele minuten om de omgeving te maken terwijl onderdelen en pakketten worden gedownload.
 
 1. Voer de volgende opdrachten uit in uw nieuwe omgeving om specifieke IPython-kernels in te scha kelen. Dit zorgt voor een verwachte kernel-en pakket import gedrag bij het werken met Jupyter-notebooks in Anaconda-omgevingen:
 
@@ -170,7 +170,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
 1. Gebruik de volgende opdrachten om pakketten te installeren:
 
-    Met deze opdracht wordt de basis-Azure Machine Learning SDK met `automl` notebook en extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
+    Met deze opdracht wordt de basis-Azure Machine Learning SDK met notebook en `automl` extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` Extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
 
     ```bash
     pip install azureml-sdk[notebooks,automl]
@@ -181,7 +181,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * Vanaf macOS Catalina is zsh (Z Shell) de standaard aanmeldings shell en de interactieve shell. Gebruik in zsh de volgende opdracht waarmee haakjes worden voorafgegaan door "\\" (back slash):
+   > * Vanaf macOS Catalina is zsh (Z Shell) de standaard aanmeldings shell en de interactieve shell. Gebruik in zsh de volgende opdracht waarmee haakjes worden voorafgegaan door " \\ " (back slash):
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -189,13 +189,13 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
 1. Installeer andere pakketten voor uw machine learning experimenten.
 
-    Gebruik een van de volgende opdrachten en vervang * \<nieuw pakket>* door het pakket dat u wilt installeren. Voor het installeren `conda install` van pakketten via moet het pakket deel uitmaken van de huidige kanalen (nieuwe kanalen kunnen worden toegevoegd in de Anaconda-Cloud).
+    Gebruik een van de volgende opdrachten en vervang door *\<new package>* het pakket dat u wilt installeren. `conda install`Voor het installeren van pakketten via moet het pakket deel uitmaken van de huidige kanalen (nieuwe kanalen kunnen worden toegevoegd in de Anaconda-Cloud).
 
     ```bash
     conda install <new package>
     ```
 
-    U kunt ook pakketten installeren via `pip`.
+    U kunt ook pakketten installeren via `pip` .
 
     ```bash
     pip install <new package>
@@ -234,7 +234,7 @@ Deze onderdelen in uw Jupyter Notebook omgeving inschakelen:
     azureml.core.VERSION
     ```
 
-1. Als u problemen ondervindt bij het importeren `ModuleNotFoundError`van modules en een ontvangt, moet u ervoor zorgen dat uw Jupyter-kernel is verbonden met het juiste pad voor uw omgeving door de volgende code in een notebook-cel uit te voeren.
+1. Als u problemen ondervindt bij het importeren van modules en een ontvangt, moet u `ModuleNotFoundError` ervoor zorgen dat uw Jupyter-kernel is verbonden met het juiste pad voor uw omgeving door de volgende code in een notebook-cel uit te voeren.
 
     ```python
     import sys
@@ -299,11 +299,11 @@ Wacht totdat het cluster wordt uitgevoerd voordat u doorgaat.
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>De juiste SDK installeren in een Databricks-bibliotheek
 Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) om het juiste Azure machine learning SDK-pakket aan uw cluster toe te voegen.
 
-1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create** > **bibliotheek**maken.
+1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create**  >  **bibliotheek**maken.
 
 1. Kies **slechts één** optie (er worden geen andere SDK-installaties ondersteund)
 
-   |SDK&nbsp;-&nbsp;pakket extra's|Bron|PyPi&nbsp;-naam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK- &nbsp; pakket &nbsp; extra's|Bron|PyPi- &nbsp; naam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Voor Databricks| Python-ei of PyPI uploaden | azureml-SDK [databricks]|
    |Voor Databricks-with-<br> automatische ML-mogelijkheden| Python-ei of PyPI uploaden | azureml-SDK [automl]|
@@ -329,17 +329,17 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
 
 Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
 
-SDK voor Databricks **_zonder_** geautomatiseerde machine learning ![Azure machine learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK voor Databricks **_zonder_** geautomatiseerde machine learning ![ Azure machine learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK voor Databricks **met** geautomatiseerde machine learning ![SDK met geautomatiseerde machine learning geïnstalleerd op Databricks](./media/how-to-configure-environment/automlonadb.png)
+SDK voor Databricks **met** geautomatiseerde machine learning ![ SDK met geautomatiseerde machine learning geïnstalleerd op Databricks](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Begin met verkennen
 
 Uitproberen:
 + Er zijn veel voorbeeld notitieblokken beschikbaar, **maar alleen [deze voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) werken met Azure Databricks.**
 
-+ Importeer deze voor beelden rechtstreeks vanuit uw werk ruimte. Zie hieronder: ![Selecteer import](./media/how-to-configure-environment/azure-db-screenshot.png)
-![paneel importeren](./media/how-to-configure-environment/azure-db-import.png)
++ Importeer deze voor beelden rechtstreeks vanuit uw werk ruimte. Zie hieronder: ![ Selecteer import ](./media/how-to-configure-environment/azure-db-screenshot.png)
+ ![ paneel importeren](./media/how-to-configure-environment/azure-db-import.png)
 
 + Meer informatie over het [maken van een pijp lijn met Databricks als de trainings Compute](how-to-create-your-first-pipeline.md).
 
@@ -357,7 +357,7 @@ Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK verte
 
 Dit JSON-bestand moet zich in de mapstructuur bevinden die uw python-scripts of Jupyter-notebooks bevat. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map.
 
-Gebruik `ws=Workspace.from_config()`om dit bestand uit uw code te gebruiken. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
+Gebruik om dit bestand uit uw code te gebruiken `ws=Workspace.from_config()` . Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
 
 U kunt het configuratie bestand op drie manieren maken:
 

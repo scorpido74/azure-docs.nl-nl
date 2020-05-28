@@ -5,18 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836648"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117420"
 ---
 # <a name="remove-vms-from-update-management"></a>VM's verwijderen uit Updatebeheer
-
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-
-Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving, kunt u deze verwijderen uit de functie [updatebeheer](automation-update-management.md) .
 
@@ -28,7 +24,7 @@ Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving,
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Open in uw Log Analytics-werk ruimte onder **Algemeen**de opgeslagen Zoek opdrachten.
+3. Open in uw Log Analytics-werk ruimte onder **Algemeen**de opgeslagen Zoek opdrachten voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates` .
 
 4. Klik voor de opgeslagen zoek opdracht `MicrosoftDefaultComputerGroup` op het weglatings teken aan de rechter kant en selecteer **bewerken**. 
 

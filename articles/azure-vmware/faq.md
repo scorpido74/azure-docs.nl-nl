@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873307"
+ms.locfileid: "84112691"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
 
@@ -67,34 +67,7 @@ Er is geen wijziging in de bestaande Azure VMware-oplossing door CloudSimple. We
 
 Ja, de Azure VMware-oplossing ondersteunt migratie met behulp van vertrouwde VMware-hulpprogram ma's, zoals HCX. Voor klanten die willen migreren naar de nieuwe oplossing, kunt u het beste contact met uw Microsoft-account team vinden om opties en beschik bare ondersteuning te verkennen.
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Hoe kan ik een toename van een host-quotum voor een bestaande Azure VMware-oplossing aanvragen?**
 
-U kunt een quotum verhoging aanvragen door [een ondersteunings aanvraag](..\azure-portal\supportability\how-to-create-azure-support-request.md)in te dienen. Het quotum beheer team evalueert de aanvraag en keurt deze binnen drie werk dagen goed.  
-
-> [!IMPORTANT]
-> Voordat u een quotum verhoging kunt aanvragen, moet u ervoor zorgen dat u [de resource provider **micro soft. AVS** registreert](tutorial-create-private-cloud.md) in de Azure Portal.  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> Zie [Azure-resource providers en-typen](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)voor meer manieren om de resource provider te registreren.
-
-1. Maak in uw Azure Portal onder **Help en ondersteuning**een **nieuwe ondersteunings aanvraag** en geef de volgende informatie op voor het ticket:
-   - **Type probleem:** Documentatie
-   - **Abonnement:** Uw abonnements-ID
-   - **Service:**  Azure VMware-oplossing 
-   - **Samen vatting:** Quotum verhoging
-   - **Probleem type:** Problemen met capaciteits beheer
-   - **Subtype van probleem:** Klant aanvraag voor extra quotum/capaciteit van host
-
-1. Geef op het tabblad Details van het ondersteunings ticket de volgende informatie op:
-   - Aantal extra knoop punten   
-   - Node-SKU
-   - Regio
-
-   > [!NOTE] 
-   > Standaard worden er mini maal vier knoop punten verleend.
-
-1. Klik op **beoordeling + maken** om de aanvraag in te dienen.
 
 ## <a name="compute-network-and-storage"></a>Compute, netwerk en opslag
 
@@ -164,7 +137,7 @@ Nee, u hoeft NSX niet on-premises te gebruiken.
 
 **Wat is de upgrade en update planning voor VMware-software in een privécloud?**
 
-De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente release van de software bundel formulier VMware te laten staan. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, VSAN).
+De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente release van de software bundel uit VMware te laten. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, VSAN).
 
 **Hoe vaak wordt de software stack voor de privécloud bijgewerkt?**
 
@@ -233,6 +206,35 @@ Ondersteuning voor AVS wordt geleverd door micro soft. Houd er rekening mee dat 
 **Welke accounts heb ik nodig om een privécloud te maken?**
 
 U hebt een Azure-account in een Azure-abonnement nodig.
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Hoe kan ik een toename voor een quotum van een host voor een Azure VMware-oplossing aanvragen?**
+
+U kunt een quotum verhoging aanvragen door [een ondersteunings aanvraag](..\azure-portal\supportability\how-to-create-azure-support-request.md)in te dienen. Het quotum beheer team evalueert de aanvraag en keurt deze binnen drie werk dagen goed.  
+
+> [!IMPORTANT]
+> Voordat u een quotum verhoging kunt aanvragen, moet u ervoor zorgen dat u de resource provider **micro soft. AVS** registreert in de Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Zie [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)voor meer manieren om de resource provider te registreren.
+
+1. Maak in uw Azure Portal onder **Help en ondersteuning**een **nieuwe ondersteunings aanvraag** en geef de volgende informatie op voor het ticket:
+   - **Type probleem:** Documentatie
+   - **Abonnement:** Uw abonnements-ID
+   - **Service:**  Azure VMware-oplossing 
+   - **Samen vatting:** Quotum verhoging
+   - **Probleem type:** Problemen met capaciteits beheer
+   - **Subtype van probleem:** Klant aanvraag voor extra quotum/capaciteit van host
+
+1. Geef op het tabblad Details van het ondersteunings ticket de volgende informatie op:
+   - Aantal extra knoop punten   
+   - Node-SKU
+   - Regio
+
+   > [!NOTE] 
+   > Standaard worden er mini maal vier knoop punten verleend.
+
+1. Klik op **beoordeling + maken** om de aanvraag in te dienen.
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

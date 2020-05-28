@@ -35,7 +35,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#windows-machines)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Er is een aanmelding met een schadelijk IP-adres gedetecteerd**|Een geslaagde externe verificatie voor het account ' Bart. schleining ' en het proces ' Advapi ' is opgetreden, maar het aanmeldings-IP-adres (x. x. x. x) is eerder als schadelijk of zeer ongebruikelijk gerapporteerd. Er is waarschijnlijk een geslaagde aanval opgetreden.|-|Hoog|
 |**Er is een aanmelding van een schadelijk IP-adres gedetecteerd. [meerdere malen gezien]**|Een geslaagde externe authenticatie voor het account ' IUSR_10001 ' en het proces ' Advapi ' is opgetreden, maar het aanmeldings-IP-adres (x. x. x. x) is eerder gerapporteerd als schadelijk of zeer ongebruikelijk. Er is waarschijnlijk een geslaagde aanval opgetreden. Bestanden met de extensie. SCR zijn scherm beveiligings bestanden en zijn normaal en worden uitgevoerd vanuit de systeemmap van Windows.|-|Hoog|
@@ -125,7 +125,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#linux-machines)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Er is een kernel-module geladen**|Er is een kernel-module geladen op de host% {aangetast host} met behulp van de opdracht% {opdracht used} door de gebruiker% {user}.|-|Laag|
 |**Er is een kernel-module verwijderd**|Er is een kernel-module op de host% {aangetast host} verwijderd met behulp van de opdracht% {opdracht used} door de gebruiker% {user}.|-|Normaal|
@@ -214,7 +214,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#app-services)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Een poging om Linux-opdrachten uit te voeren op een Windows-App Service**|Tijdens de analyse van App Service processen is een poging tot het uitvoeren van een Linux-opdracht op een Windows-App Service gedetecteerd. Deze actie is uitgevoerd door de webtoepassing. Dit gedrag wordt vaak weer gegeven tijdens campagnes die misbruik maken van een beveiligingslek in een gemeen schappelijke webtoepassing.|-|Normaal|
 |**Er is een IP-adres gevonden dat is verbonden met uw Azure App Service FTP-interface in bedreigings informatie**|App Service FTP-logboeken analyse heeft een verbinding gedetecteerd van een bron adres dat is gevonden in de feed voor bedreigings informatie. Tijdens deze verbinding heeft een gebruiker toegang tot de pagina's die worden weer gegeven.|-|Normaal|
@@ -239,7 +239,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#azure-containers)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Container met een gevoelige volume koppeling gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe container met een gevoelige volume koppeling gedetecteerd. Het gedetecteerde volume is een hostPath-type dat een gevoelige bestand of map van het knoop punt koppelt aan de container. Als de container wordt aangetast, kan de aanvaller deze koppeling gebruiken om toegang te krijgen tot het knoop punt.|PrivilegeEscalation|Normaal|
 |**Analyse container voor digitale valuta gedetecteerd**|Kubernetes-controle logboek analyse heeft een container gedetecteerd met een installatie kopie die is gekoppeld aan een hulp programma voor het analyseren van digitale valuta.|Uitvoering|Hoog|
@@ -254,7 +254,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#azure-containers)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Geprivilegieerde container gedetecteerd**|Computer logboeken geven aan dat een geprivilegieerde docker-container wordt uitgevoerd. Een gemachtigde container heeft volledige toegang tot de resources van de host. Als er is geknoeid, kan een aanvaller de geprivilegieerde container gebruiken om toegang te krijgen tot de hostmachine.|PrivilegeEscalation/uitvoering|Laag|
 |**Geprivilegieerde opdracht uitgevoerd in container**|Computer logboeken geven aan dat een geprivilegieerde opdracht is uitgevoerd in een docker-container. Een geprivilegieerde opdracht heeft uitgebreide bevoegdheden op de hostmachine.|PrivilegeEscalation|Laag|
@@ -270,7 +270,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#data-sql)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Een mogelijk beveiligings probleem met SQL-injectie**|Een toepassing heeft een mislukte SQL-instructie gegenereerd in de data base. Dit kan duiden op een mogelijke kwets baarheid voor SQL-injectie aanvallen. Er zijn twee mogelijke redenen voor een defecte instructie. Een fout in de toepassings code kan de beschadigde SQL-instructie hebben opgebouwd. Het is ook mogelijk dat toepassings code of opgeslagen procedures geen gebruikers invoer opschonen bij het samen stellen van de foutieve SQL-instructie, die kan worden misbruikt voor SQL-injectie.|-|Normaal|
 |**Poging tot aanmelden door een mogelijk schadelijke toepassing**|Er is een mogelijk schadelijke toepassing gebruikt om toegang te krijgen tot de data base. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een aanval die gebruikmaakt van algemene hulpprogram ma's.|Scannen|Hoog|
@@ -288,7 +288,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#azure-storage)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Toegang vanaf een Tor-eind knooppunt naar een opslag account**|Geeft aan dat de toegang tot dit account is verkregen vanaf een IP-adres dat een actief eind knooppunt van Tor (een anoniem-proxy) wordt genoemd. Bij de ernst van deze waarschuwing wordt rekening gehouden met het gebruikte verificatie type (indien van toepassing) en of dit het eerste geval van dergelijke toegang is. Mogelijke oorzaken kunnen een aanvaller zijn die toegang heeft gehad tot uw opslag account via Tor of een rechtmatige gebruiker die toegang heeft gehad tot uw opslag account met behulp van Tor.|Zoeken/misbruik|Hoog|
 |**Toegang vanaf een ongebruikelijke locatie naar een opslag account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Storage-account. Iemand heeft toegang verkregen tot dit account vanuit een IP-adres dat als niet-vertrouwd wordt beschouwd in vergelijking met recente activiteiten. Een aanvaller heeft toegang verkregen tot het account of een rechtmatige gebruiker heeft verbinding gemaakt vanaf een nieuwe of ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|Beveiliging|Laag|
@@ -309,7 +309,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#cosmos-db)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Toegang vanaf een ongebruikelijke locatie naar een Cosmos DB-account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Cosmos DB-account. Iemand heeft dit account geopend vanuit een onbekend IP-adres, vergeleken met de recente activiteit. Een aanvaller heeft toegang tot het account of een rechtmatige gebruiker heeft dit geopend vanaf een nieuwe en ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|Beveiliging|Normaal|
 |**Ongebruikelijke hoeveelheid gegevens die is geëxtraheerd uit een Cosmos DB-account**|Geeft aan dat er een wijziging is opgetreden in het patroon voor gegevens extractie van een Azure Cosmos DB-account. Iemand heeft een ongebruikelijke hoeveelheid gegevens geëxtraheerd in vergelijking met de recente activiteit. Een aanvaller kan een grote hoeveelheid gegevens uit een Azure Cosmos DB-Data Base (bijvoorbeeld gegevens exfiltration of lekkage of een niet-geautoriseerde overdracht van gegevens) hebben geëxtraheerd. Het is ook mogelijk dat een rechtmatige gebruiker of toepassing een ongebruikelijke hoeveelheid gegevens uit een container heeft geëxtraheerd (bijvoorbeeld voor onderhoud back-upactiviteit).|Exfiltration|Normaal|
@@ -320,7 +320,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#network-layer)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Netwerk communicatie met een schadelijke computer gedetecteerd**|Analyse van netwerk verkeer geeft aan dat uw computer (IP% {IP-adres van het slacht offer) heeft gecommuniceerd met wat mogelijk een opdracht-en beheer centrum is. Wanneer de aangetaste bron een load balancer of een toepassings gateway is, kan de verdachte activiteit erop wijzen dat een of meer van de resources in de back-end-pool (van de load balancer of toepassings gateway) heeft gecommuniceerd met wat mogelijk een opdracht-en beheer centrum is.|-|Normaal|
 |**Mogelijke geïnfecteerde machine gedetecteerd**|Met bedreigings informatie wordt aangegeven dat uw computer (op IP% {machine IP}) mogelijk is aangetast door een malware van het type Conficker. Conficker was een computer worm die gericht is op het micro soft Windows-besturings systeem en is voor het eerst gedetecteerd in november 2008. Conficker geïnfecteerde miljoenen computers, waaronder overheids-, bedrijfs-en thuis computers in meer dan 200 landen/regio's, waardoor IT de grootste bekende computer worm infectie is sinds de Welchia-worm van 2003.|-|Normaal|
@@ -345,7 +345,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#management-layer)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Activiteit van anonieme IP-adressen**|Gebruikers activiteit van een IP-adres dat is geïdentificeerd als een anonieme proxy-IP-adres is gedetecteerd.<br>Deze proxy's worden gebruikt door mensen die het IP-adres van hun apparaat willen verbergen en kunnen worden gebruikt voor kwaad aardige doel einden. Deze detectie maakt gebruik van een algoritme voor machine learning dat onjuiste positieven, zoals verkeerd gelabelde IP-adressen die veel worden gebruikt door gebruikers in de organisatie, vermindert.|-|Normaal|
 |**Activiteit van het niet-frequente land**|Activiteit van een locatie die niet recent of ooit door een gebruiker in de organisatie is bezocht.<br>Deze detectie houdt rekening met vroegere activiteiten locaties om nieuwe en niet-frequente locaties te bepalen. De anomalie detectie-Engine slaat informatie over eerdere locaties die worden gebruikt door gebruikers in de organisatie.|-|Normaal|
@@ -364,7 +364,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#azure-keyvault)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**Toegang vanaf een TOR-eind knooppunt naar een Key Vault**|De Key Vault is geopend door iemand die het TOR IP anoniem maken-systeem gebruikt om de locatie te verbergen.Kwaad aardige actors proberen vaak hun locatie te verbergen wanneer er wordt geprobeerd om onbevoegde toegang te krijgen tot bronnen met Internet verbinding.|-|Normaal|
 |**Grote hoeveelheid bewerkingen in een Key Vault**|Er is een groter volume van Key Vault bewerkingen uitgevoerd in vergelijking met historische gegevens. Key Vault activiteit is doorgaans in de loop van de tijd hetzelfde. Dit kan een rechtmatige wijziging in de activiteit zijn. Het is ook mogelijk dat uw infra structuur is aangetast en dat er verdere onderzoeken nood zakelijk zijn.|-|Normaal|
@@ -382,7 +382,7 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 
 [Meer details en opmerkingen](threat-protection.md#azure-ddos)
 
-|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Severity|
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|Ernst|
 |----|----|:----:|--|
 |**DDoS-aanval gedetecteerd voor openbaar IP-adres**|Er is een DDoS-aanval gedetecteerd voor open bare IP (IP-adres) en deze wordt verholpen.|Scannen|Hoog|
 |**DDoS-aanval beperkt voor openbaar IP-adres**|DDoS-aanval voor open bare IP (IP-adres) wordt beperkt.|Scannen|Laag|

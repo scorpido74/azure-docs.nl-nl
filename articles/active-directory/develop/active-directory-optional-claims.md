@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737551"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993692"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Procedure: optionele claims voor uw Azure AD-App opgeven
 
@@ -35,7 +35,7 @@ Hoewel optionele claims worden ondersteund in de indelings tokens v 1.0 en v 2.0
 
 **Tabel 1: toepasselijkheid**
 
-| Account type               | v 1.0-tokens | v 2.0-tokens |
+| Accounttype               | v 1.0-tokens | v 2.0-tokens |
 |----------------------------|-------------|-------------|
 | Persoonlijke Microsoft-account | N.v.t.         | Ondersteund   |
 | Microsoft Azure Active Directory-account           | Ondersteund   | Ondersteund   |
@@ -85,7 +85,6 @@ Deze claims zijn altijd opgenomen in de Azure AD-tokens v 1.0, maar zijn niet op
 | `pwd_exp`     | Wachtwoordverlooptijd        | De datum/tijd waarop het wacht woord verloopt. |       |
 | `pwd_url`     | URL voor wacht woord wijzigen             | Een URL die de gebruiker kan bezoeken om het wacht woord te wijzigen.   |   |
 | `in_corp`     | Binnen bedrijfsnetwerk        | Geeft aan of de client zich aanmeldt vanuit het bedrijfs netwerk. Als dat niet het geval is, is de claim niet opgenomen.   |  Op basis van de instellingen voor [vertrouwde IP-adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips) in MFA.    |
-| `nickname`    | Naam                        | Een extra naam voor de gebruiker. De bijnaam is gescheiden van de voor-en achternaam. Vereist het `profile` bereik.|
 | `family_name` | Achternaam                       | Hiermee geeft u de achternaam, de achternaam of de familynaam van de gebruiker, zoals gedefinieerd in het gebruikers object. <br>"family_name": "Miller" | Ondersteund in MSA en Azure AD. Vereist het `profile` bereik.   |
 | `given_name`  | Voornaam                      | Hiermee wordt de eerste of de naam van de gebruiker opgegeven, zoals ingesteld op het gebruikers object.<br>"given_name": "Frank"                   | Ondersteund in MSA en Azure AD.  Vereist het `profile` bereik. |
 | `upn`         | User principal name | Een id voor de gebruiker die kan worden gebruikt met de para meter username_hint.  Geen duurzame id voor de gebruiker en mag niet worden gebruikt voor belang rijke gegevens. | Zie de onderstaande [aanvullende eigenschappen](#additional-properties-of-optional-claims) voor de configuratie van de claim. Vereist het `profile` bereik.|
@@ -185,7 +184,7 @@ Declareert de optionele claims die worden aangevraagd door een toepassing. Een t
 
 **Tabel 5: eigenschappen van OptionalClaims-type**
 
-| Name          | Type                       | Description                                           |
+| Naam          | Type                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Verzameling (OptionalClaim) | De optionele claims die zijn geretourneerd in het JWT-ID-token.     |
 | `accessToken` | Verzameling (OptionalClaim) | De optionele claims die worden geretourneerd in het JWT-toegangs token. |
@@ -198,7 +197,7 @@ Als dit wordt ondersteund door een specifieke claim, kunt u ook het gedrag van d
 
 **Tabel 6: eigenschappen van OptionalClaim-type**
 
-| Name                   | Type                    | Beschrijving                                                                                                                                                                                                                                                                                                   |
+| Naam                   | Type                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | De naam van de optionele claim.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | De bron (Directory-object) van de claim. Er zijn vooraf gedefinieerde claims en door de gebruiker gedefinieerde claims van extensie-eigenschappen. Als de bron waarde Null is, is de claim een vooraf gedefinieerde optionele claim. Als de bron waarde gebruiker is, is de waarde in de eigenschap naam de extensie-eigenschap van het gebruikers object. |
@@ -401,7 +400,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 **Manifest configuratie:**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Zoek de toepassing waarvoor u de optionele claims wilt configureren in de lijst en selecteer deze.

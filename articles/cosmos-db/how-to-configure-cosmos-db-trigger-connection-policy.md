@@ -3,15 +3,15 @@ title: Azure Functions trigger voor Cosmos DB verbindings beleid
 description: Meer informatie over het configureren van het verbindings beleid dat wordt gebruikt door Azure Functions trigger voor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df30a0ddca58e6d7bd74184fa7287df6818cfc37
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604966"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117148"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Het verbindings beleid configureren dat wordt gebruikt door Azure Functions trigger voor Cosmos DB
 
@@ -36,7 +36,7 @@ Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configu
 
 Waar `connectionMode` moet de gewenste verbindings modus (direct of gateway) en `protocol` het gewenste verbindings Protocol (TCP of https) hebben. 
 
-Als uw Azure Functions project werkt met Azure Functions v1-runtime, heeft de configuratie een geringe naam verschil. u moet in `documentDB` plaats van `cosmosDB`het volgende gebruiken:
+Als uw Azure Functions project werkt met Azure Functions v1-runtime, heeft de configuratie een geringe naam verschil. u moet `documentDB` in plaats van het `cosmosDB` volgende gebruiken:
 
 ```js
 {

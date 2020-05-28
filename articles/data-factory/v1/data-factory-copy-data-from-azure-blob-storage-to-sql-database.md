@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75979731"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118589"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Zelf studie: gegevens kopiëren van Blob Storage naar SQL Database met behulp van Data Factory
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75979731"
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-> * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
+> * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
@@ -66,7 +66,7 @@ U hebt de account naam en de account sleutel van uw Azure Storage-account nodig 
 7. Sluit alle Blades door op **X**te klikken.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, Data Base, gebruikers namen verzamelen
-U hebt de namen van Azure SQL Server, data base en gebruiker nodig om deze zelf studie uit te voeren. Noteer de namen van de **Server**, de **Data Base**en de **gebruiker** voor uw Azure-SQL database.
+U hebt de namen van de logische SQL-Server,-data base en-gebruiker nodig om deze zelf studie uit te voeren. Noteer de namen van de **Server**, de **Data Base**en de **gebruiker** voor uw Azure-SQL database.
 
 1. Klik in het **Azure Portal**op **alle services** aan de linkerkant en selecteer **SQL-data bases**.
 2. Selecteer in de **Blade SQL-data bases**de **Data Base** die u wilt gebruiken in deze zelf studie. Noteer de naam van de **Data Base**.  
@@ -75,7 +75,7 @@ U hebt de namen van Azure SQL Server, data base en gebruiker nodig om deze zelf 
 5. Sluit alle Blades door op **X**te klikken.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure-Services toegang geven tot SQL Server
-Zorg ervoor dat de instelling **toegang tot Azure-Services** **is ingeschakeld voor** uw Azure SQL-server, zodat de Data Factory-service toegang heeft tot uw Azure SQL-Server. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
+Zorg ervoor dat **toegang tot de Azure-Services** -instelling voor uw server is ingeschakeld, zodat de Data Factory-service toegang heeft tot uw server. **ON** Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
 
 1. Klik op **alle services** hub aan de linkerkant en klik op **SQL-servers**.
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
@@ -107,9 +107,9 @@ Bereid nu uw Azure Blob-opslag en Azure SQL database voor op de zelf studie door
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Als SQL Server 2012/2014 is geïnstalleerd op uw computer:** Volg de instructies van het [beheer van Azure SQL database met behulp van SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) om verbinding te maken met uw Azure SQL-Server en het SQL-script uit te voeren.
+    **Als SQL Server 2012/2014 is geïnstalleerd op uw computer:** Volg de instructies van het [beheer van Azure SQL database met behulp van SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) om verbinding te maken met uw server en het SQL-script uit te voeren.
 
-    Als de client geen toegang heeft tot de Azure SQL-server, moet u de firewall configureren voor uw Azure SQL-server zodat toegang vanaf uw apparaat (IP-adres) wordt toegestaan. Raadpleeg [dit artikel](../../sql-database/sql-database-configure-firewall-settings.md) voor stappen waarmee u uw firewall kunt configureren voor uw Azure SQL-server.
+    Als uw client geen toegang heeft tot de logische SQL-Server, moet u de firewall configureren voor uw server om toegang vanaf uw apparaat (IP-adres) toe te staan. Raadpleeg [dit artikel](../../sql-database/sql-database-configure-firewall-settings.md) voor stappen voor het configureren van de firewall voor uw server.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 U hebt de vereisten voltooid. U kunt op een van de volgende manieren een data factory maken. Klik op een van de opties in de vervolg keuzelijst aan de bovenkant of de volgende koppelingen om de zelf studie uit te voeren.     
@@ -118,7 +118,7 @@ U hebt de vereisten voltooid. U kunt op een van de volgende manieren een data fa
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
+* [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
