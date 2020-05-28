@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645841"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022539"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645841"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -374,10 +374,10 @@ De minimale configuratie is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle\<sid> \Origlogaa & mirrlogB | Premium | Geen | Niet vereist |
-| \oracle\<sid> \Origlogab & mirrlogA | Premium | Geen | Niet vereist |
-| \oracle\<-sid> \sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
-| \oracle\<-sid> \oraarch | Standard | Geen | Niet vereist |
+| \oracle \<SID> \origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| \oracle \<SID> \origlogaB & mirrlogA | Premium | Geen | Niet vereist |
+| \oracle \<SID> \sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
+| \oracle \<SID> \oraarch | Standard | Geen | Niet vereist |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
 
 
@@ -387,13 +387,13 @@ De configuratie van de prestaties is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle\<-sid> \origlogaa | Premium | Geen | Kan worden gebruikt  |
-| \oracle\<-sid> \origlogab | Premium | Geen | Kan worden gebruikt |
-| \oracle\<-sid> \mirrlogab | Premium | Geen | Kan worden gebruikt |
-| \oracle\<-sid> \mirrlogba | Premium | Geen | Kan worden gebruikt |
-| \oracle\<-sid> \sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
+| \oracle \<SID> \origlogaA | Premium | Geen | Kan worden gebruikt  |
+| \oracle \<SID> \origlogaB | Premium | Geen | Kan worden gebruikt |
+| \oracle \<SID> \mirrlogAB | Premium | Geen | Kan worden gebruikt |
+| \oracle \<SID> \mirrlogBA | Premium | Geen | Kan worden gebruikt |
+| \oracle \<SID> \sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
 | \oracle\SID\sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| \oracle\<-sid> \oraarch * | Premium | Geen | Niet vereist |
+| \oracle \<SID> \oraarch * | Premium | Geen | Niet vereist |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
 
 * (n + 1): host systeem, TEMP en ongedaan maken van tablespaces. Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
@@ -420,7 +420,7 @@ Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azur
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
@@ -464,10 +464,10 @@ Minimale configuratie:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<sid>/Origlogaa & mirrlogB | Premium | Geen | Niet vereist |
-| /Oracle/\<sid>/Origlogab & mirrlogA | Premium | Geen | Niet vereist |
-| /Oracle/\<-sid>/sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
-| /Oracle/\<-sid>/oraarch | Standard | Geen | Niet vereist |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Geen | Niet vereist |
+| /Oracle/ \<SID> /sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
+| /Oracle/ \<SID> /oraarch | Standard | Geen | Niet vereist |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
 
 * Verwijderen: LVM Stripe of MDADM met RAID0
@@ -478,13 +478,13 @@ Configuratie van prestaties:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<-sid>/origlogaa | Premium | Geen | Kan worden gebruikt  |
-| /Oracle/\<-sid>/origlogab | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid>/mirrlogab | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid>/mirrlogba | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid>/sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| /Oracle/\<sid>/sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid>/oraarch * | Premium | Geen | Niet vereist |
+| /Oracle/ \<SID> /origlogaA | Premium | Geen | Kan worden gebruikt  |
+| /Oracle/ \<SID> /origlogaB | Premium | Geen | Kan worden gebruikt |
+| /Oracle/ \<SID> /mirrlogAB | Premium | Geen | Kan worden gebruikt |
+| /Oracle/ \<SID> /mirrlogBA | Premium | Geen | Kan worden gebruikt |
+| /Oracle/ \<SID> /sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
+| /Oracle/ \<SID> /oraarch * | Premium | Geen | Niet vereist |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
 
 * Verwijderen: LVM Stripe of MDADM met RAID0
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.

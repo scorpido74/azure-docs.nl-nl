@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdb913434d7aab3ceadbbf19d7a95000abf6776c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281546"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022007"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Reken omgevingen die worden ondersteund door Azure Data Factory
 > [!NOTE]
@@ -49,7 +49,7 @@ Micro soft werkt de lijst met ondersteunde HDInsight-versies bij met de nieuwste
 Na 15 december 2017:
 
 - U kunt geen clusters van versie 3,3 (of lager) op basis van Linux maken met behulp van een gekoppelde on-demand HDInsight-service in Data Factory versie 1. 
-- Als de [eigenschappen **osType** en **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) niet expliciet zijn opgegeven in de JSON-definitie voor een bestaande Data Factory versie 1-gekoppelde HDInsight-service op aanvraag, wordt de standaard waarde gewijzigd van **versie = 3.1, osType = Windows** naar **versie =\<nieuwste HDI\>-https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)standaard versie (, osType = Linux**.
+- Als de [eigenschappen **OsType** en **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) niet expliciet zijn opgegeven in de JSON-definitie voor een bestaande Data Factory versie 1-gekoppelde HDInsight-service op aanvraag, wordt de standaard waarde gewijzigd van **versie = 3.1, osType = Windows** naar **versie = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux**.
 
 Na 31 juli 2018:
 
@@ -122,7 +122,7 @@ De volgende JSON definieert een gekoppelde HDInsight-service op aanvraag van Lin
 | Eigenschap                     | Beschrijving                              | Vereist |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Stel de eigenschap type in op **HDInsightOnDemand**. | Ja      |
-| clusterSize                  | Het aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met twee hoofd knooppunten, naast het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten hebben een grootte Standard_D3, die vier kernen heeft. Een cluster van 4 worker-knoop punten neemt 24 kernen (4\*4 = 16 kernen voor worker\*-knoop punten, plus 2 4 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over de laag Standard_D3. | Ja      |
+| clusterSize                  | Het aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met twee hoofd knooppunten, naast het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten hebben een grootte Standard_D3, die vier kernen heeft. Een cluster van 4 worker-knoop punten neemt 24 kernen (4 \* 4 = 16 kernen voor worker-knoop punten, plus 2 \* 4 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over de laag Standard_D3. | Ja      |
 | timeToLive                   | De toegestane tijd niet-actief voor het HDInsight-cluster op aanvraag. Hiermee geeft u op hoelang het HDInsight-cluster op aanvraag actief blijft wanneer de uitvoering van een activiteit is voltooid, als er geen andere actieve taken in het cluster zijn.<br /><br />Als bijvoorbeeld het uitvoeren van een activiteit zes minuten duurt en **timeToLive** is ingesteld op 5 minuten, blijft het cluster 5 minuten na de 6 minuten van verwerking van de uitvoering van de activiteit actief. Als er een andere uitvoering van de activiteit wordt uitgevoerd in het venster van 6 minuten, wordt deze verwerkt door hetzelfde cluster.<br /><br />Het maken van een HDInsight-cluster op aanvraag is een dure bewerking (dit kan enige tijd duren). Gebruik deze instelling als dat nodig is om de prestaties van een data factory te verbeteren door opnieuw gebruik te maken van een on-demand HDInsight-cluster.<br /><br />Als u de waarde **timeToLive** instelt op **0**, wordt het cluster verwijderd zodra de uitvoering van de activiteit is voltooid. Als u echter een hoge waarde instelt, kan het cluster niet-actief blijven, wat leidt tot hoge kosten. Het is belang rijk dat u de juiste waarde instelt op basis van uw behoeften.<br /><br />Als de **timeToLive** -waarde op de juiste wijze is ingesteld, kunnen meerdere pijp lijnen het exemplaar van het HDInsight-cluster op aanvraag delen. | Ja      |
 | versie                      | De versie van het HDInsight-cluster. Zie [ondersteunde hdinsight-versies](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)voor toegestane hdinsight-versies. Als deze waarde niet is opgegeven, wordt de [meest recente HDI-standaard versie](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) gebruikt. | Nee       |
 | linkedServiceName            | De Azure Storage gekoppelde service die moet worden gebruikt door het cluster op aanvraag om gegevens op te slaan en te verwerken. Het HDInsight-cluster wordt gemaakt in dezelfde regio als dit opslag account.<p>Op dit moment kunt u geen HDInsight-cluster op aanvraag maken dat gebruikmaakt van Azure Data Lake Store als opslag. Als u de resultaat gegevens van HDInsight-verwerking in Data Lake Store wilt opslaan, gebruikt u Kopieer activiteit om de gegevens uit de Blobopslag te kopiëren naar Data Lake Store. </p> | Ja      |
@@ -268,7 +268,7 @@ U kunt een batch-gekoppelde service maken om een batch-pool van virtuele machine
 
 Als u geen ervaring hebt met het gebruik van de batch-service:
 
-* Meer informatie over de [basis principes van Azure batch](../../batch/batch-technical-overview.md).
+* Meer informatie over de [basis principes van Azure batch](../../azure-sql/database/sql-database-paas-overview.md).
 * Meer informatie over de cmdlet [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) . Gebruik deze cmdlet om een batch-account te maken. U kunt ook het batch-account maken met behulp van de [Azure Portal](../../batch/batch-account-create-portal.md). Voor gedetailleerde informatie over het gebruik van de cmdlet raadpleegt u [Power shell gebruiken voor het beheren van een batch-account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
 * Meer informatie over de cmdlet [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) . Gebruik deze cmdlet om een batch-pool te maken.
 
@@ -289,7 +289,7 @@ Als u geen ervaring hebt met het gebruik van de batch-service:
 }
 ```
 
-Voor de eigenschap **AccountName** , toevoegen **.\< \> ** de naam van de regio voor uw batch-account. Bijvoorbeeld:
+Voor de eigenschap **AccountName** , toevoegen **. \<region name\> ** naar de naam van uw batch-account. Bijvoorbeeld:
 
 ```json
 "accountName": "mybatchaccount.eastus"

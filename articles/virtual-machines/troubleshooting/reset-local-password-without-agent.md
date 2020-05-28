@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921620"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021259"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Offline een lokaal Windows-wachtwoord opnieuw instellen voor een virtuele Azure-machine
 U kunt het lokale Windows-wacht woord van een virtuele machine in azure opnieuw instellen met behulp van de [Azure portal of Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , op voor waarde dat de Azure-gast agent is geïnstalleerd. Deze methode is de belangrijkste manier om een wacht woord opnieuw in te stellen voor een Azure-VM. Als u problemen ondervindt met de Azure Guest agent die niet reageert of als u niet kunt installeren na het uploaden van een aangepaste installatie kopie, kunt u een Windows-wacht woord hand matig opnieuw instellen. In dit artikel wordt beschreven hoe u een wacht woord voor een lokaal account opnieuw instelt door de virtuele schijf van het bron besturingssysteem te koppelen aan een andere virtuele machine. De stappen die in dit artikel worden beschreven, zijn niet van toepassing op Windows-domein controllers. 
@@ -50,7 +50,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
    > [!WARNING]
    > Zorg ervoor dat u niet per ongeluk de volgende bestanden in C:\Windows maakt, het station van het besturings systeem voor de virtuele machine voor probleem oplossing. Maak de volgende bestanden in het station met het besturings systeem voor de bron-VM die is gekoppeld als een gegevens schijf.
    
-   * Voeg de volgende regels toe aan `gpt.ini` het bestand dat u hebt gemaakt:
+   * Voeg de volgende regels toe aan het `gpt.ini` bestand dat u hebt gemaakt:
      
      ```
      [General]
@@ -61,9 +61,9 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      
      ![GPT maken. ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\`. Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, `Machine` maakt `Scripts` u de mappen of.
+4. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of.
    
-   * Voeg de volgende regels toe `scripts.ini` aan het bestand dat u hebt gemaakt:
+   * Voeg de volgende regels toe aan het `scripts.ini` bestand dat u hebt gemaakt:
      
      ```
      [Startup]
@@ -89,7 +89,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 
 7. [Wijzig de besturingssysteem schijf voor de betrokken VM](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm).
 
-8. Nadat de nieuwe virtuele machine is uitgevoerd, maakt u verbinding met de virtuele machine met Extern bureaublad met het nieuwe wacht `FixAzureVM.cmd` woord dat u in het script hebt opgegeven.
+8. Nadat de nieuwe virtuele machine is uitgevoerd, maakt u verbinding met de virtuele machine met Extern bureaublad met het nieuwe wacht woord dat u in het script hebt opgegeven `FixAzureVM.cmd` .
 
 9. Verwijder de volgende bestanden van uw externe sessie naar de nieuwe virtuele machine om de omgeving op te schonen:
     
@@ -115,9 +115,9 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      
      ![Bestaande VM verwijderen](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
-2. Koppel de besturingssysteem schijf van de bron-VM aan de virtuele machine voor probleem oplossing. De virtuele machine voor probleem oplossing moet zich in dezelfde regio bevinden als de besturingssysteem schijf van de `West US`bron-VM (zoals):
+2. Koppel de besturingssysteem schijf van de bron-VM aan de virtuele machine voor probleem oplossing. De virtuele machine voor probleem oplossing moet zich in dezelfde regio bevinden als de besturingssysteem schijf van de bron-VM (zoals `West US` ):
    
-   1. Selecteer de virtuele machine voor probleem oplossing in de Azure Portal. Klik op *schijven* | *bestaande koppelen*:
+   1. Selecteer de virtuele machine voor probleem oplossing in de Azure Portal. Klik op *schijven*  |  *bestaande koppelen*:
      
       ![Bestaande schijf koppelen](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
@@ -149,12 +149,12 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      
       ![Gekoppelde gegevens schijf weer geven](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. Maken `gpt.ini` in `\Windows\System32\GroupPolicy` op het station van de bron-VM `gpt.ini` (indien aanwezig, `gpt.ini.bak`naam wijzigen in):
+4. Maken `gpt.ini` in `\Windows\System32\GroupPolicy` op het station van de bron-VM (indien `gpt.ini` aanwezig, naam wijzigen in `gpt.ini.bak` ):
    
    > [!WARNING]
-   > Zorg ervoor dat u niet per ongeluk de volgende bestanden maakt `C:\Windows`in, het station van het besturings systeem voor de virtuele machine voor probleem oplossing. Maak de volgende bestanden in het station met het besturings systeem voor de bron-VM die is gekoppeld als een gegevens schijf.
+   > Zorg ervoor dat u niet per ongeluk de volgende bestanden maakt in `C:\Windows` , het station van het besturings systeem voor de virtuele machine voor probleem oplossing. Maak de volgende bestanden in het station met het besturings systeem voor de bron-VM die is gekoppeld als een gegevens schijf.
    
-   * Voeg de volgende regels toe aan `gpt.ini` het bestand dat u hebt gemaakt:
+   * Voeg de volgende regels toe aan het `gpt.ini` bestand dat u hebt gemaakt:
      
      ```
      [General]
@@ -165,9 +165,9 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      
      ![GPT maken. ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\`. Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, `Machine` maakt `Scripts` u de mappen of.
+5. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of.
    
-   * Voeg de volgende regels toe `scripts.ini` aan het bestand dat u hebt gemaakt:
+   * Voeg de volgende regels toe aan het `scripts.ini` bestand dat u hebt gemaakt:
 
      ```
      [Startup]
@@ -209,7 +209,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>De ervaring voor het maken van virtuele machines volt ooien
 
-1. Nadat de nieuwe virtuele machine is uitgevoerd, maakt u verbinding met de virtuele machine met Extern bureaublad met het nieuwe wacht `FixAzureVM.cmd` woord dat u in het script hebt opgegeven.
+1. Nadat de nieuwe virtuele machine is uitgevoerd, maakt u verbinding met de virtuele machine met Extern bureaublad met het nieuwe wacht woord dat u in het script hebt opgegeven `FixAzureVM.cmd` .
 
 2. Verwijder de volgende bestanden van uw externe sessie naar de nieuwe virtuele machine om de omgeving op te schonen:
     
@@ -218,7 +218,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
     * Van`%windir%\System32\GroupPolicy\Machine\Scripts`
       * verwijdert`scripts.ini`
     * Van`%windir%\System32\GroupPolicy`
-      * Verwijder `gpt.ini` (indien `gpt.ini` aanwezig voor, en u de naam ervan hebt gewijzigd `gpt.ini.bak`in), `.bak` Wijzig de naam `gpt.ini`van het bestand in)
+      * Verwijder `gpt.ini` (indien `gpt.ini` aanwezig voor, en u de naam ervan hebt gewijzigd in `gpt.ini.bak` ), wijzig de naam van het `.bak` bestand in `gpt.ini` )
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [hand leiding voor probleem oplossing van RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)als u nog steeds geen verbinding kunt maken met behulp van extern bureaublad. De [gedetailleerde hand leiding](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor het oplossen van problemen met RDP ziet u in plaats van specifieke stappen op probleemoplossings methoden. U kunt ook [een ondersteunings aanvraag voor Azure openen](https://azure.microsoft.com/support/options/) voor praktische hulp.

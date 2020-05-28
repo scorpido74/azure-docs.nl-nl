@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951850"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018834"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop gebruiken met Hadoop in HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Meer informatie over het gebruik van Apache Sqoop in HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure-SQL database.
+Meer informatie over het gebruik van Apache Sqoop in HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en Azure SQL Database.
 
 Hoewel Apache Hadoop een natuurlijke keus is voor het verwerken van niet-gestructureerde en semi-gestructureerde gegevens, zoals Logboeken en bestanden, kan het ook nodig zijn om gestructureerde gegevens te verwerken die zijn opgeslagen in relationele data bases.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) is een hulp programma dat is ontworpen om gegevens over te dragen tussen Hadoop-clusters en relationele data bases. U kunt dit gebruiken om gegevens te importeren uit een relationele Database Management System (RDBMS), zoals SQL Server, MySQL of Oracle in het Hadoop Distributed File System (HDFS), de gegevens in Hadoop te transformeren met MapReduce of Apache Hive en vervolgens de gegevens terug te exporteren naar een RDBMS. In dit artikel gebruikt u een SQL Server-Data Base voor uw relationele data base.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) is een hulp programma dat is ontworpen om gegevens over te dragen tussen Hadoop-clusters en relationele data bases. U kunt dit gebruiken om gegevens te importeren uit een relationele Database Management System (RDBMS), zoals SQL Server, MySQL of Oracle in het Hadoop Distributed File System (HDFS), de gegevens in Hadoop te transformeren met MapReduce of Apache Hive en vervolgens de gegevens terug te exporteren naar een RDBMS. In dit artikel gebruikt u Azure SQL Database voor uw relationele data base.
 
 > [!IMPORTANT]  
 > In dit artikel wordt een test omgeving ingesteld voor het uitvoeren van de gegevens overdracht. Vervolgens kiest u een methode voor gegevens overdracht voor deze omgeving van een van de methoden in de sectie [Sqoop-taken uitvoeren](#run-sqoop-jobs), verder hieronder.
@@ -33,7 +33,7 @@ Zie [Wat is er nieuw in de cluster versies van hdinsight?](../hdinsight-componen
 
 HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt de volgende twee voor beelden:
 
-* Een Apache Log4j-logboek bestand, dat zich bevindt in `/example/data/sample.log`. De volgende logboeken worden opgehaald uit het bestand:
+* Een Apache Log4j-logboek bestand, dat zich bevindt in `/example/data/sample.log` . De volgende logboeken worden opgehaald uit het bestand:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,7 +42,7 @@ HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt d
 ...
 ```
 
-* Een Hive-tabel `hivesampletable`met de naam, die verwijst naar het `/hive/warehouse/hivesampletable`gegevens bestand dat zich bevindt in. De tabel bevat enkele gegevens van mobiele apparaten.
+* Een Hive-tabel `hivesampletable` met de naam, die verwijst naar het gegevens bestand dat zich bevindt in `/hive/warehouse/hivesampletable` . De tabel bevat enkele gegevens van mobiele apparaten.
   
   | Veld | Gegevenstype |
   | --- | --- |
@@ -62,7 +62,7 @@ In dit artikel gebruikt u deze twee gegevens sets om het importeren en exportere
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Test omgeving instellen
 
-Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt met behulp van een Azure Resource Manager sjabloon. De sjabloon is te vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)start-sjablonen. Met de Resource Manager-sjabloon wordt een Bacpac-pakket aangeroepen om de tabel schema's te implementeren in een SQL database.  Het Bacpac-pakket bevindt zich in een open https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpacbare BLOB-container. Als u een persoonlijke container wilt gebruiken voor de Bacpac-bestanden, gebruikt u de volgende waarden in de sjabloon:
+Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt met behulp van een Azure Resource Manager sjabloon. De sjabloon is te vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)start-sjablonen. Met de Resource Manager-sjabloon wordt een Bacpac-pakket aangeroepen om de tabel schema's te implementeren in een SQL database.  Het Bacpac-pakket bevindt zich in een open bare BLOB-container https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac . Als u een persoonlijke container wilt gebruiken voor de Bacpac-bestanden, gebruikt u de volgende waarden in de sjabloon:
 
 ```json
 "storageKeyType": "Primary",
@@ -84,18 +84,18 @@ Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt 
     |Resourcegroep |Selecteer uw resource groep in de vervolg keuzelijst of maak een nieuwe.|
     |Locatie |Selecteer een regio in de vervolg keuzelijst.|
     |Clusternaam |Voer een naam in voor het Hadoop-cluster. Alleen kleine letters gebruiken.|
-    |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin`.|
+    |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin` .|
     |Wachtwoord voor clusteraanmelding |Voer een wacht woord in.|
-    |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser`.|
+    |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser` .|
     |SSH-wacht woord |Voer een wacht woord in.|
-    |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser`.|
+    |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser` .|
     |Wacht woord voor SQL-beheerder |Voer een wacht woord in.|
     |_artifacts locatie | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
     |SAS-token _artifacts locatie |Leeg laten.|
     |Bacpac-bestands naam |Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand wilt gebruiken.|
     |Locatie |Gebruik de standaardwaarde.|
 
-    De naam van de Azure- `<ClusterName>dbserver`SQL Server is. De naam van de data `<ClusterName>db`Base is. De standaard naam van het opslag account `e6qhezrh2pdqu`is.
+    De naam van de [logische SQL-Server](../../azure-sql/database/logical-servers.md) is `<ClusterName>dbserver` . De naam van de data base is `<ClusterName>db` . De standaard naam van het opslag account is `e6qhezrh2pdqu` .
 
 3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
 
@@ -113,8 +113,8 @@ HDInsight kan Sqoop-taken uitvoeren met behulp van verschillende methoden. Gebru
 
 ## <a name="limitations"></a>Beperkingen
 
-* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of Azure SQL Database momenteel geen bulk toevoegingen ondersteunt.
-* Batch verwerking: met HDInsight op basis van Linux, worden bij `-batch` het gebruik van de switch tijdens het invoegen meerdere toevoegingen uitgevoerd in plaats van de invoeg bewerkingen batch-Sqoop.
+* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of SQL Database momenteel geen bulk toevoegingen ondersteunt.
+* Batch verwerking: met HDInsight op basis van Linux, worden bij het gebruik `-batch` van de switch tijdens het invoegen meerdere toevoegingen uitgevoerd in plaats van de invoeg bewerkingen batch-Sqoop.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969293"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021888"
 ---
 # <a name="use-case---customer-profiling"></a>Use case-klant profilering
 Azure Data Factory is een van de vele services die worden gebruikt voor het implementeren van de Cortana Intelligence Suite oplossings versnellers.  Ga voor meer informatie over Cortana Intelligence naar [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In dit document beschrijven we een eenvoudige use-case om u te helpen aan de slag te gaan met informatie over hoe Azure Data Factory veelvoorkomende analyse problemen kunt oplossen.
@@ -38,7 +38,7 @@ Alles wat u nodig hebt om toegang te krijgen tot deze eenvoudige use-case is een
 3. Klik op de Blade **voorbeeld pijplijnen** op de **klant profilering** die u wilt implementeren.
 
     ![Blade voorbeeld pijplijnen](./media/data-factory-samples/SampleTile.png)
-4. Geef de configuratie-instellingen voor het voor beeld op. Bijvoorbeeld uw Azure Storage-account naam en-sleutel, naam van Azure SQL-Server, Data Base, gebruikers-ID en wacht woord.
+4. Geef de configuratie-instellingen voor het voor beeld op. Bijvoorbeeld uw Azure Storage-account naam en-sleutel, naam van logische SQL-Server, Data Base, gebruikers-ID en wacht woord.
 
     ![Voorbeeld Blade](./media/data-factory-samples/SampleBlade.png)
 5. Nadat u klaar bent met het opgeven van de configuratie-instellingen, klikt u op **maken** om de voorbeeld pijplijnen en gekoppelde services/tabellen die door de pijp lijnen worden gebruikt, te maken/te implementeren.

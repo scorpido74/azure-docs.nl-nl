@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 7fb87380047d046a580d1ad62b1d7107a94bb297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddcf1d05933daadd29bf2f93850ac3299dc9e734
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239890"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020112"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -284,9 +284,9 @@ ms.locfileid: "80239890"
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -497,7 +497,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
    * **Gebruikers naam** en **beheerders wachtwoord**voor de beheerder: een gebruikers naam en wacht woord.
      Er wordt een nieuwe gebruiker gemaakt om u aan te melden bij de virtuele machine.
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt of een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit&lt;:/Subscriptions/-abonnements&lt;-id>/ResourceGroups/naam&lt;van de resource groep>&lt;/providers/Microsoft.Network/virtualnetworks/naam van het virtuele netwerk>/subnets/-subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -540,7 +540,7 @@ U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voo
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Om een Linux-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten bepaalde Linux-instellingen worden abstracted of gegeneraliseerd op de on-premises VM. U kunt dit `waagent -deprovision` gebruiken om dit te doen. Zie [een virtuele Linux-machine vastleggen die wordt uitgevoerd op Azure][virtual-machines-linux-capture-image] en de [Gebruikers handleiding voor de Azure Linux-agent][virtual-machines-linux-agent-user-guide-command-line-options]voor meer informatie.
+> Om een Linux-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten bepaalde Linux-instellingen worden abstracted of gegeneraliseerd op de on-premises VM. U kunt `waagent -deprovision` dit gebruiken om dit te doen. Zie [een virtuele Linux-machine vastleggen die wordt uitgevoerd op Azure][virtual-machines-linux-capture-image] en de [Gebruikers handleiding voor de Azure Linux-agent][virtual-machines-linux-agent-user-guide-command-line-options]voor meer informatie.
 >
 >
 
@@ -630,14 +630,14 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
       * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: opslag met hoge prestaties voor werk belastingen van virtuele Azure-machines][storage-premium-storage-preview-portal]
       * [Inleiding tot Microsoft Azure Storage][storage-introduction]
-   * **VHD-URI van gebruikers installatie kopie** (alleen sjabloon voor onbeheerde schijf installatie kopie): de URI van de VHD van de persoonlijke&lt;installatie kopie, bijvoorbeeld https://AccountName>. blob.core.Windows.net/VHDs/userimage.VHD.
-   * **Opslag account voor gebruikers installatie kopie** (alleen sjabloon voor onbeheerde schijf installatie kopieën): de naam van het opslag account waarin de installatie kopie van het privé &lt;-besturings systeem is opgeslagen&lt;, bijvoorbeeld accountname> in https://account naam>. blob.core.Windows.net/VHDs/userimage.VHD.
+   * **VHD-URI van gebruikers installatie kopie** (alleen sjabloon voor onbeheerde schijf installatie kopie): de URI van de VHD van de persoonlijke installatie kopie, bijvoorbeeld https:// &lt; accountname>. blob.core.Windows.net/VHDs/userimage.VHD.
+   * **Opslag account voor gebruikers installatie kopie** (alleen sjabloon voor onbeheerde schijf installatie kopieën): de naam van het opslag account waarin de installatie kopie van het privé-besturings systeem is opgeslagen, bijvoorbeeld &lt; accountname> in https:// &lt; account naam>. blob.core.Windows.net/VHDs/userimage.VHD.
    * **userImageId** (alleen sjabloon voor beheerde schijf kopieën): id van de beheerde schijf kopie die u wilt gebruiken
    * **Gebruikers naam** en **wacht woord**beheerder: de gebruikers naam en het wacht woord.
 
      Er wordt een nieuwe gebruiker gemaakt om u aan te melden bij de virtuele machine.
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt of een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit&lt;:/Subscriptions/-abonnements&lt;-id>/ResourceGroups/naam&lt;van de resource groep>&lt;/providers/Microsoft.Network/virtualnetworks/naam van het virtuele netwerk>/subnets/-subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -722,10 +722,10 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
       * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: opslag met hoge prestaties voor werk belastingen van virtuele Azure-machines][storage-premium-storage-preview-portal]
       * [Inleiding tot Microsoft Azure Storage][storage-introduction]
-   * **VHD-URI van besturingssysteem schijf** (alleen onbeheerde schijf sjabloon): de URI van de persoonlijke besturingssysteem schijf, bijvoorbeeld https://&lt;accountnaam>. blob.core.Windows.net/VHDs/osdisk.VHD.
+   * **VHD-URI van besturingssysteem schijf** (alleen onbeheerde schijf sjabloon): de URI van de persoonlijke besturingssysteem schijf, bijvoorbeeld https:// &lt; accountnaam>. blob.core.Windows.net/VHDs/osdisk.VHD.
    * **Beheerde schijf-id van de besturingssysteem schijf** (alleen beheerde schijf sjabloon): de id van de beheerde schijf van het besturings systeem,/Subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/Group/providers/Microsoft.Compute/disks/Win
    * **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet wordt gemaakt, of dat er een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit&lt;:/Subscriptions/-abonnements&lt;-id>/ResourceGroups/naam&lt;van de resource groep>&lt;/providers/Microsoft.Network/virtualnetworks/naam van het virtuele netwerk>/subnets/-subnet naam>
+   * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/ &lt; -abonnements-id>/ResourceGroups/naam van de &lt; resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het &lt; virtuele netwerk>/subnets/- &lt; subnet naam>
 
 1. Voor **waarden**:  
     Bekijk en accepteer de juridische voor waarden.
@@ -879,8 +879,8 @@ De stappen die u moet nemen voor het configureren van de proxy in Windows versch
 Proxy-instellingen moeten correct worden ingesteld voor het lokale systeem account om toegang te krijgen tot internet. Als uw proxy instellingen niet zijn ingesteld door groepsbeleid, kunt u de instellingen voor het lokale systeem account configureren.
 
 1. Ga naar **Start**, Voer **gpedit. msc**in en selecteer vervolgens **Enter**.
-1. Selecteer **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **Internet Explorer**. Zorg ervoor dat de instelling **proxy-instellingen per computer (in plaats van per gebruiker)** is uitgeschakeld of niet is geconfigureerd.
-1. Ga in **het configuratie scherm**naar de > **Internet opties**van **netwerk centrum en delen**.
+1. Selecteer **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Internet Explorer**. Zorg ervoor dat de instelling **proxy-instellingen per computer (in plaats van per gebruiker)** is uitgeschakeld of niet is geconfigureerd.
+1. Ga in **het configuratie scherm**naar de Internet opties van **netwerk centrum en delen**  >  **Internet Options**.
 1. Op het tabblad **verbindingen** selecteert u de knop **LAN-instellingen** .
 1. Schakel het selectievakje **Instellingen automatisch detecteren** uit.
 1. Schakel het selectie vakje **een proxy server gebruiken voor uw LAN** in en voer vervolgens het proxy adres en de poort in.
@@ -889,7 +889,7 @@ Proxy-instellingen moeten correct worden ingesteld voor het lokale systeem accou
 
 #### <a name="linux"></a>Linux
 
-Configureer de juiste proxy in het configuratie bestand van de Microsoft Azure Guest-agent, die zich op \\etc\\waagent. conf bevindt.
+Configureer de juiste proxy in het configuratie bestand van de Microsoft Azure Guest-agent, die zich op \\ etc \\ waagent. conf bevindt.
 
 Stel de volgende para meters in:
 
@@ -913,18 +913,18 @@ Stel de volgende para meters in:
    sudo service waagent restart
    ```
 
-De proxy-instellingen \\in\\etc waagent. conf zijn ook van toepassing op de vereiste VM-extensies. Als u de Azure-opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat het verkeer naar deze opslag plaatsen niet via uw on-premises intranet gaat. Als u door de gebruiker gedefinieerde routes hebt gemaakt om geforceerde Tunneling in te scha kelen, moet u ervoor zorgen dat u een route toevoegt die verkeer naar de opslag plaatsen rechtstreeks naar het internet stuurt, en niet via uw site-naar-site-VPN-verbinding.
+De proxy-instellingen in \\ etc \\ waagent. conf zijn ook van toepassing op de vereiste VM-extensies. Als u de Azure-opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat het verkeer naar deze opslag plaatsen niet via uw on-premises intranet gaat. Als u door de gebruiker gedefinieerde routes hebt gemaakt om geforceerde Tunneling in te scha kelen, moet u ervoor zorgen dat u een route toevoegt die verkeer naar de opslag plaatsen rechtstreeks naar het internet stuurt, en niet via uw site-naar-site-VPN-verbinding.
 
 * **SLES**
 
-  U moet ook routes toevoegen voor de IP-adressen die worden \\vermeld\\in etc regionserverclnt. cfg. In de volgende afbeelding ziet u een voor beeld:
+  U moet ook routes toevoegen voor de IP-adressen die worden vermeld in \\ etc \\ regionserverclnt. cfg. In de volgende afbeelding ziet u een voor beeld:
 
   ![Geforceerde tunneling][deployment-guide-figure-50]
 
 
 * **RHEL**
 
-  U moet ook routes toevoegen voor de IP-adressen van de hosts die worden \\vermeld\\in etc yum. opslag plaatsen\\. d rhui-load balancers. Zie de voor gaande afbeelding voor een voor beeld.
+  U moet ook routes toevoegen voor de IP-adressen van de hosts die worden vermeld in \\ etc \\ yum. opslag plaatsen. d \\ rhui-load balancers. Zie de voor gaande afbeelding voor een voor beeld.
 
 * **Oracle Linux**
 
@@ -944,7 +944,7 @@ De Azure-extensie voor SAP installeren met behulp van Power shell:
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.  
 1. Voer de volgende PowerShell-cmdlet uit.
-    Voer uit `commandlet Get-AzEnvironment`voor een lijst met beschik bare omgevingen. Als u wereld wijd Azure wilt gebruiken, is uw omgeving **Cloud**. Voor Azure in China selecteert u **AzureChinaCloud**.
+    Voer uit voor een lijst met beschik bare omgevingen `commandlet Get-AzEnvironment` . Als u wereld wijd Azure wilt gebruiken, is uw omgeving **Cloud**. Voor Azure in China selecteert u **AzureChinaCloud**.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -955,7 +955,7 @@ De Azure-extensie voor SAP installeren met behulp van Power shell:
     ```
 
 Nadat u uw account gegevens hebt ingevoerd en de virtuele Azure-machine hebt geïdentificeerd, implementeert het script de vereiste uitbrei dingen en schakelt de vereiste functies in. Dit kan enkele minuten duren.
-Zie `Set-AzVMAEMExtension` [set-AzVMAEMExtension][msdn-set-Azvmaemextension]voor meer informatie over.
+`Set-AzVMAEMExtension`Zie [set-AzVMAEMExtension][msdn-set-Azvmaemextension]voor meer informatie over.
 
 ![De SAP-specifieke Azure-cmdlet Set-AzVMAEMExtension is uitgevoerd.][deployment-guide-figure-900]
 
@@ -1015,7 +1015,7 @@ De Azure-extensie voor SAP installeren met behulp van Azure CLI:
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Controleer of de Azure-extensie voor SAP actief is op de virtuele Azure Linux-machine. Controleer of het bestand \\var\\lib\\AzureEnhancedMonitor\\PerfCounters bestaat. Als deze bestaat, voert u bij een opdracht prompt de volgende opdracht uit om de gegevens weer te geven die zijn verzameld door de Azure-extensie voor SAP:
+1. Controleer of de Azure-extensie voor SAP actief is op de virtuele Azure Linux-machine. Controleer of het bestand \\ var \\ lib \\ AzureEnhancedMonitor \\ PerfCounters bestaat. Als deze bestaat, voert u bij een opdracht prompt de volgende opdracht uit om de gegevens weer te geven die zijn verzameld door de Azure-extensie voor SAP:
 
    ```console
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1044,7 +1044,7 @@ Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP
 
 1. Meld u aan bij de virtuele machine van Azure (met een beheerders account is niet nodig).
 1. Open een opdrachtpromptvenster.
-1. Ga naar de opdracht prompt en wijzig de map in de installatiemap van de Azure-extensie voor SAP: C\\:\\pakketten\\invoeg toepassingen micro soft. AzureCAT.\\&lt;AzureEnhancedMonitoring. \\AzureCATExtensionHandler versie>drop
+1. Ga naar de opdracht prompt en wijzig de map in de installatiemap van de Azure-extensie voor SAP: C: \\ pakketten \\ invoeg toepassingen \\ micro soft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; versie>\\ Drop
 
    De *versie* in het pad naar de extensie kan variëren. Als er mappen worden weer gegeven voor meerdere versies van de uitbrei ding in de installatiemap, controleert u de configuratie van de AzureEnhancedMonitoring Windows-service en schakelt u over naar de map die wordt aangegeven als *pad naar uitvoerbaar bestand*.
 
@@ -1123,7 +1123,7 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol`.
+1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
    a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
 
@@ -1137,10 +1137,10 @@ Als een van deze controles mislukt en voor gedetailleerde informatie over het op
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Status controle voor de Azure-extensie voor SAP-configuratie
 
-Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1], voert u de `Test-AzVMAEMExtension` cmdlet uit om te controleren of de Azure-infra structuur en de Azure-extensie voor SAP correct zijn geconfigureerd.
+Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1], voert `Test-AzVMAEMExtension` u de cmdlet uit om te controleren of de Azure-infra structuur en de Azure-extensie voor SAP correct zijn geconfigureerd.
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd, zoals beschreven in [Azure PowerShell-cmdlets implementeren][deployment-guide-4.1].
-1. Voer de volgende PowerShell-cmdlet uit. Voer de cmdlet `Get-AzEnvironment`uit voor een lijst met beschik bare omgevingen. Als u wereld wijd Azure wilt gebruiken, selecteert u de **Cloud** -omgeving. Voor Azure in China selecteert u **AzureChinaCloud**.
+1. Voer de volgende PowerShell-cmdlet uit. Voer de cmdlet uit voor een lijst met beschik bare omgevingen `Get-AzEnvironment` . Als u wereld wijd Azure wilt gebruiken, selecteert u de **Cloud** -omgeving. Voor Azure in China selecteert u **AzureChinaCloud**.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1173,7 +1173,7 @@ De AzureEnhancedMonitoring Windows-service verzamelt prestatie gegevens in Azure
 
 ###### <a name="issue"></a>Probleem
 
-De installatie directory C:\\pakketten\\invoeg\\toepassingen micro soft. AzureCAT. AzureEnhancedMonitoring\\&lt;. AzureCATExtensionHandler \\versie>drop is leeg.
+De installatie directory C: \\ pakketten \\ invoeg toepassingen \\ micro soft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; versie>\\ Drop is leeg.
 
 ###### <a name="solution"></a>Oplossing
 
@@ -1210,7 +1210,7 @@ De configuratie is onjuist. Start de Azure-extensie voor SAP in de VM opnieuw, z
 
 De AzureEnhancedMonitoring Windows-service verzamelt prestatie gegevens in Azure. De service haalt gegevens op uit verschillende bronnen. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Diagnostics. Opslag tellers worden gebruikt vanuit uw logboek registratie op het niveau van het opslag abonnement.
 
-Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u `Set-AzVMAEMExtension` het configuratie script opnieuw uit. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
+Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u het `Set-AzVMAEMExtension` configuratie script opnieuw uit. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
 
 #### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
@@ -1220,7 +1220,7 @@ Metrische gegevens over prestaties in Azure worden verzameld door een daemon. Al
 
 ###### <a name="issue"></a>Probleem
 
-De map \\var\\lib\\Waagent\\ heeft geen submap voor de Azure-extensie voor SAP.
+De map \\ var \\ lib \\ waagent heeft \\ geen submap voor de Azure-extensie voor SAP.
 
 ###### <a name="solution"></a>Oplossing
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772859"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022398"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -569,26 +569,6 @@ Als u gekoppelde sjablonen wilt gebruiken in plaats van de volledige Resource Ma
 Vergeet niet om de Data Factory scripts in uw CI/CD-pijp lijn vóór en na de implementatie taak toe te voegen.
 
 Als u geen git hebt geconfigureerd, kunt u de gekoppelde sjablonen openen via **arm-sjabloon exporteren** in de lijst met **arm** -sjablonen.
-
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Azure-SSIS-integratie-Runtimes uitsluiten van CI/CD
-
-Als uw Development Factory Azure-SSIS Integration runtime heeft, kunt u in het onderstaande scenario alle Azure-SSIS-integratie-Runtimes uitsluiten van het CI/CD-proces:
-
-- Azure-SSIS IR-infra structuur is complex en varieert in elke omgeving.  
-- Azure-SSIS IR wordt hand matig ingesteld voor elke omgeving met dezelfde naam. Anders mislukt het publiceren als er activiteiten zijn afhankelijk van Azure-SSIS IR.
-
-Azure SSIS Integration runtime uitsluiten:
-
-1. Voeg een publish_config. JSON-bestand toe aan de hoofdmap in de collaboration Branch, als dit niet bestaat.
-1. Onderstaande instelling toevoegen aan publish_config. json: 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-Bij het publiceren vanuit de samenwerkings vertakking worden Azure-SSIS-integratie-Runtimes uitgesloten van de gegenereerde Resource Manager-sjabloon.
 
 ## <a name="hotfix-production-branch"></a>Productie vertakking hotfix
 

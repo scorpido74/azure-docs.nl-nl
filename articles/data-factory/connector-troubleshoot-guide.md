@@ -9,12 +9,12 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7e818a80f9df97ce4e5f5b8f1ef9385d2e6b0ecc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827757"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022330"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problemen met Azure Data Factory-connectors oplossen
 
@@ -203,7 +203,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: als het fout bericht ' client met IP-adres '... ' bevat heeft geen toegang tot de server, en u probeert verbinding te maken met Azure SQL Database. dit wordt meestal veroorzaakt door Azure SQL Database firewall probleem.
 
-- **Aanbeveling**: Schakel in configuratie van Azure SQL Server firewall de optie ' Azure-Services en-bronnen toestaan voor toegang tot deze server ' in. Verwijzings document: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
+- **Aanbeveling**: Schakel in de configuratie van de logische SQL Server-firewall de optie ' Azure-Services en-bronnen toestaan voor toegang tot deze server ' in. Verwijzings document: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Fout code: SqlOperationFailed

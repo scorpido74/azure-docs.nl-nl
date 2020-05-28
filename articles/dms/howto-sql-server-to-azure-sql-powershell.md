@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650687"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021480"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>SQL Server on-premises migreren naar Azure SQL Database met behulp van Azure PowerShell
 
-In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar een Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een on-premises SQL Server-exemplaar migreren naar `Az.DataMigration` Azure SQL database met behulp van de module in Microsoft Azure PowerShell.
+In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar een Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een on-premises SQL Server-exemplaar migreren naar Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
@@ -65,7 +65,7 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 ## <a name="create-an-instance-of-azure-database-migration-service"></a>Een instantie van Azure Database Migration Service maken
 
-U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp van de `New-AzDataMigrationService` -cmdlet. Voor deze cmdlet worden de volgende vereiste para meters verwacht:
+U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp van de- `New-AzDataMigrationService` cmdlet. Voor deze cmdlet worden de volgende vereiste para meters verwacht:
 
 * *Naam van de Azure-resource groep*. U kunt de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) gebruiken om een Azure-resource groep te maken zoals eerder wordt weer gegeven en de naam opgeven als een para meter.
 * *Service naam*. Teken reeks die overeenkomt met de gewenste unieke service naam voor Azure Database Migration Service 
@@ -93,7 +93,7 @@ Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een 
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Een database verbindings info-object maken voor de bron-en doel verbindingen
 
-U kunt een object data base-verbindings gegevens maken met `New-AzDmsConnInfo` behulp van de-cmdlet. Deze cmdlet verwacht de volgende para meters:
+U kunt een object data base-verbindings gegevens maken met behulp van de- `New-AzDmsConnInfo` cmdlet. Deze cmdlet verwacht de volgende para meters:
 
 * *Server type*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
 * *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL database.
@@ -109,7 +109,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-In het volgende voor beeld ziet u het maken van verbindings gegevens voor een Azure SQL database-server met de naam SQLAzureTarget met behulp van SQL-verificatie:
+Het volgende voor beeld toont het maken van verbindings gegevens voor een server met de naam SQLAzureTarget met behulp van SQL-verificatie:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -122,7 +122,7 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 Maak een lijst met `AzDataMigrationDatabaseInfo` objecten die data bases opgeven als onderdeel van het Azure data base Migration project dat kan worden opgegeven als para meter voor het maken van het project. De cmdlet `New-AzDataMigrationDatabaseInfo` kan worden gebruikt om AzDataMigrationDatabaseInfo te maken. 
 
-In het volgende voor `AzDataMigrationDatabaseInfo` beeld wordt een project gemaakt voor de **AdventureWorks2016** -data base en wordt dit toegevoegd aan de lijst die als para meter voor het maken van het project moet worden aangeboden.
+In het volgende voor beeld wordt een `AzDataMigrationDatabaseInfo` project gemaakt voor de **AdventureWorks2016** -data base en wordt dit toegevoegd aan de lijst die als para meter voor het maken van het project moet worden aangeboden.
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>Een project-object maken
 
-Ten slotte kunt u een Azure data base Migration-project maken met de naam `New-AzDataMigrationProject` *MyDMSProject* dat zich in *VS Oost* bevindt met en de eerder gemaakte bron-en doel verbindingen en de lijst met te migreren data bases toe te voegen.
+Ten slotte kunt u een Azure data base Migration-project maken met de naam *MyDMSProject* dat zich in *VS Oost* bevindt met `New-AzDataMigrationProject` en de eerder gemaakte bron-en doel verbindingen en de lijst met te migreren data bases toe te voegen.
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -176,7 +176,7 @@ $tableMap.Add("HumanResources.JobCandidate","HumanResources.JobCandidate")
 $tableMap.Add("HumanResources.Shift","HumanResources.Shift")
 ```
 
-De volgende stap bestaat uit het selecteren van de bron-en doel databases en het opgeven van de tabel toewijzing als een `New-AzDmsSelectedDB` para meter met behulp van de cmdlet, zoals wordt weer gegeven in het volgende voor beeld:
+De volgende stap bestaat uit het selecteren van de bron-en doel databases en het opgeven van de tabel toewijzing als een para meter met behulp van de `New-AzDmsSelectedDB` cmdlet, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```powershell
 $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks2016 `

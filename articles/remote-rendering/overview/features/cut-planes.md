@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759078"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021361"
 ---
 # <a name="cut-planes"></a>Vlakken knippen
 
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 De volgende eigenschappen worden weer gegeven op een knip vlak onderdeel:
 
-* **Ingeschakeld:** U kunt het knippen van abonnementen tijdelijk uitschakelen door het onderdeel uit te scha kelen. Uitgeschakelde knip abonnementen zijn geen rendering-overhead en worden ook niet meegeteld op basis van de algemene grens voor het snij vlak.
+* `Enabled`: U kunt het knippen van abonnementen tijdelijk uitschakelen door het onderdeel uit te scha kelen. Uitgeschakelde knip abonnementen zijn geen rendering-overhead en worden ook niet meegeteld op basis van de algemene grens voor het snij vlak.
 
-* **Normaal:** Geeft aan welke richting (+ X,-X, + Y,-Y, + Z,-Z) wordt gebruikt als het vlak normaal. Deze richting is relatief ten opzichte van de richting van de eigenaar van de entiteit. Verplaats en roteer de entiteit eigenaar voor een exacte plaatsing.
+* `Normal`: Hiermee geeft u op welke richting (+ X,-X, + Y,-Y, + Z,-Z) wordt gebruikt als het vlak normaal. Deze richting is relatief ten opzichte van de richting van de eigenaar van de entiteit. Verplaats en roteer de entiteit eigenaar voor een exacte plaatsing.
 
-* **FadeColor** en **FadeLength:**
+* `FadeColor` en `FadeLength`:
 
   Als de Alfa waarde van *FadeColor* niet gelijk is aan nul, wordt pixels dicht bij het Knip vlak overvloeien naar het RGB-onderdeel van FadeColor. De sterkte van het Alfa kanaal bepaalt of deze volledig naar de vervagings kleur of slechts gedeeltelijk vervaagt. *FadeLength* definieert de afstand die de vervaging zal plaatsvinden.
 

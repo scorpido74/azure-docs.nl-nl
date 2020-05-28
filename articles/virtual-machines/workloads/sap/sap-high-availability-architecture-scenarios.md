@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279908"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021123"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
 
@@ -90,7 +90,7 @@ ms.locfileid: "79279908"
 [planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92
 
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md
 
 [sap-ha-bc-virtual-env-hyperv-vmware-white-paper]:https://scn.sap.com/docs/DOC-44415
 [sap-ha-partner-information]:https://scn.sap.com/docs/DOC-8541
@@ -265,7 +265,7 @@ Er is momenteel een SLA van 99,9% voor één VM met Premium Storage. Om een idee
 
 De basis voor de berekening is 30 dagen per maand of 43.200 minuten. Een downtime van 0,05% komt bijvoorbeeld overeen met 21,6 minuten. Zoals gebruikelijk, wordt de beschik baarheid van de verschillende services op de volgende manier berekend:
 
-(Beschikbaarheids service #1/100) * (beschikbaarheids Service #2/100) * (beschikbaarheids service #3/100) \*...
+(Beschikbaarheids service #1/100) * (beschikbaarheids Service #2/100) * (beschikbaarheids service #3/100) \* ...
 
 Bijvoorbeeld:
 
@@ -367,8 +367,8 @@ Het aantal update-en fout domeinen dat kan worden gebruikt door een Azure-beschi
 
 Als u een paar SAP-toepassings server exemplaren in hun specifieke Vm's implementeert, ervan uitgaande dat er vijf update domeinen zijn, komt de volgende afbeelding aan de orde. Het werkelijke maximum aantal update-en fout domeinen in een beschikbaarheidsset kan in de toekomst worden gewijzigd:
 
-![Afbeelding 2: hoge Beschik baarheid van SAP-toepassings servers in een][planning-guide-figure-3000]
-Azure Availability set-_**afbeelding 2:** hoge Beschik baarheid van SAP-toepassings servers in een Azure-beschikbaarheidsset_
+![Afbeelding 2: hoge Beschik baarheid van SAP-toepassings servers in een Azure Availability set- ][planning-guide-figure-3000]
+ _**afbeelding 2:** hoge Beschik baarheid van SAP-toepassings servers in een Azure-beschikbaarheidsset_
 
 Zie [de beschik baarheid van virtuele Windows-machines beheren in azure][azure-virtual-machines-manage-availability]voor meer informatie.
 
