@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592074"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996683"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dit artikel bevat stappen voor het maken, starten en bewaken van een trigger voor een tumblingvenstertriggers-venster. Zie [pijp lijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md)voor algemene informatie over triggers en de ondersteunde typen.
 
-Tumblingvenstertriggers zijn triggers die vanaf een opgegeven begintijd worden geactiveerd met een periodiek tijdsinterval en die hun status behouden. Tumblingvensters bestaan uit een reeks niet-overlappende en aaneengesloten tijdsintervallen van vaste duur. Een tumblingvenstertriggers-venster trigger heeft een een-op-een-relatie met een pijp lijn en kan alleen verwijzen naar een enkelvoudige pijp lijn.
+Tumblingvenstertriggers zijn triggers die vanaf een opgegeven begintijd worden geactiveerd met een periodiek tijdsinterval en die hun status behouden. Tumblingvensters bestaan uit een reeks niet-overlappende en aaneengesloten tijdsintervallen van vaste duur. Een tumblingvenstertriggers-venster trigger heeft een een-op-een-relatie met een pijp lijn en kan alleen verwijzen naar een enkelvoudige pijp lijn. De tumblingvenstertriggers-venster trigger is een meer zwarer alternatief voor Schedule trigger die een reeks functies voor complexe scenario's biedt ([afhankelijkheid van andere tumblingvenstertriggers-venster triggers](#tumbling-window-trigger-dependency), [het opnieuw uitvoeren van een mislukte taak](tumbling-window-trigger-dependency.md#monitor-dependencies) en [opnieuw instellen van de gebruiker voor pijp lijnen](#user-assigned-retries-of-pipelines)). Als u meer inzicht wilt krijgen in het verschil tussen plannings trigger en tumblingvenstertriggers venster trigger, kunt u [hier](concepts-pipeline-execution-triggers.md#trigger-type-comparison)terecht.
 
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory
 
@@ -97,10 +97,10 @@ De volgende tabel bevat een overzicht op hoog niveau van de belangrijkste JSON-e
 | JSON-element | Beschrijving | Type | Toegestane waarden | Vereist |
 |:--- |:--- |:--- |:--- |:--- |
 | **voert** | Het type van de trigger. Het type is de vaste waarde ' TumblingWindowTrigger '. | Tekenreeks | "TumblingWindowTrigger" | Ja |
-| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking**: dit element is \<alleen-lezen>. | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Ja |
+| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking**: dit element is \<readOnly> . | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Ja |
 | **ingang** | Een teken reeks die de frequentie-eenheid (minuten of uren) aangeeft waarmee de trigger wordt herhaald. Als de **datum waarden** voor de start tijd meer nauw keuriger zijn dan de **frequentie** waarde, worden de datums van de **StartTime** meegenomen wanneer de venster grenzen worden berekend. Als de waarde van de **frequentie** bijvoorbeeld elk uur is en de waarde voor **StartTime** is 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," uur "  | Ja |
 | **bereik** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** is ingesteld op ' uur ', wordt de trigger elke drie uur herhaald. <br/>**Opmerking**: het minimale venster interval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
-| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is (**StartTime**, **StartTime** + -**interval**). | DateTime | Een datum/tijd-waarde. | Ja |
+| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is (**StartTime**, **StartTime**  +  -**interval**). | DateTime | Een datum/tijd-waarde. | Ja |
 | **endTime**| De laatste instantie, die in het verleden kan zijn. | DateTime | Een datum/tijd-waarde. | Ja |
 | **spoedig** | De hoeveelheid tijd die het starten van de gegevens verwerking voor het venster moet vertragen. De pijplijn uitvoering wordt gestart na de verwachte uitvoerings tijd plus de hoeveelheid **vertraging**. De **vertraging** bepaalt hoe lang de trigger na de eind tijd wacht voordat een nieuwe uitvoering wordt geactiveerd. De **vertraging** wijzigt de **StartTime**van het venster niet. Een **vertragings** waarde van 00:10:00 impliceert bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(UU: mm: SS)  | Een time span-waarde waarbij de standaard instelling is 00:00:00. | Nee |
 | **maxConcurrency** | Het aantal gelijktijdige trigger uitvoeringen dat wordt geactiveerd voor Windows die gereed zijn. Als u bijvoorbeeld per uur back-upvulling voor gisteren wilt uitvoeren, worden er 24 vensters weer gegeven. Als **maxConcurrency** = 10, worden trigger gebeurtenissen alleen geactiveerd voor de eerste 10 windows (00:00-01:00-09:00-10:00). Nadat de eerste tien geactiveerde pijplijn uitvoeringen zijn voltooid, worden de trigger uitvoeringen geactiveerd voor de volgende 10 Windows (10:00-11:00-19:00-20:00). Als u doorgaat met dit voor beeld van **maxConcurrency** = 10, zijn er 10 Windows klaar, dan zijn er 10 totale pijplijn uitvoeringen. Als er slechts één venster gereed is, is er slechts één pijplijn uitvoering. | Geheel getal | Een geheel getal tussen 1 en 50. | Ja |
@@ -146,13 +146,19 @@ U kunt de systeem variabelen **WindowStart** en **WindowEnd** van de tumblingven
 Als u de waarden van de systeem variabelen **WindowStart** en **WindowEnd** in de pijplijn definitie wilt gebruiken, gebruikt u de para meters ' MyWindowStart ' en ' MyWindowEnd ' dienovereenkomstig.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Uitvoerings volgorde van Windows in een backfill-scenario
-Als er meerdere vensters zijn voor uitvoering (met name in een backfill-scenario), is de volg orde van de uitvoering voor Windows deterministisch, van oudste naar nieuwste intervallen. Dit gedrag kan op dit moment niet worden aangepast.
+
+Als de start tijd van de trigger zich in het verleden bevindt, wordt op basis van deze formule, M = (CurrentTime-TriggerStartTime)/TriggerSliceSize, de trigger een {M}-backfill (in het verleden) gegenereerd, waarna de gelijktijdige uitvoeringen worden uitgevoerd. De volg orde van de uitvoering voor Windows is deterministisch, van oudste naar nieuwste intervallen. Dit gedrag kan op dit moment niet worden aangepast.
 
 ### <a name="existing-triggerresource-elements"></a>Bestaande TriggerResource-elementen
-De volgende punten zijn van toepassing op bestaande **TriggerResource** -elementen:
 
-* Als de waarde voor het **frequentie** -element (of de venster grootte) van de trigger wordt gewijzigd, wordt de status van de Vensters die al zijn verwerkt, *niet* opnieuw ingesteld. De trigger wordt geactiveerd voor de Windows vanaf het laatste venster dat het heeft uitgevoerd met behulp van de nieuwe venster grootte.
+De volgende punten zijn van toepassing op het bijwerken van bestaande **TriggerResource** -elementen:
+
+* De waarde voor het **frequentie** -element (of de venster grootte) van de trigger samen met het **interval** element kan niet worden gewijzigd nadat de trigger is gemaakt. Dit is vereist voor een goede werking van triggerRun-reruns en afhankelijkheids evaluaties
 * Als de waarde voor het element **EndTime** van de trigger verandert (toegevoegd of bijgewerkt), wordt de status van de Windows die al is verwerkt, *niet* opnieuw ingesteld. De trigger voldoet aan de nieuwe **EndTime** -waarde. Als de nieuwe **EndTime** -waarde voor de Windows is die al wordt uitgevoerd, wordt de trigger gestopt. Anders stopt de trigger wanneer de nieuwe **EndTime** -waarde wordt aangetroffen.
+
+### <a name="user-assigned-retries-of-pipelines"></a>Door de gebruiker toegewezen nieuwe pogingen van pijp lijnen
+
+In het geval van pijp lijn fouten kan de tumblingvenstertriggers-venster trigger automatisch de uitvoering van de pijp lijn waarnaar wordt verwezen, opnieuw proberen, zonder tussen komst van de gebruiker. Dit kan worden opgegeven met de eigenschap ' retryPolicy ' in de trigger definitie.
 
 ### <a name="tumbling-window-trigger-dependency"></a>Afhankelijkheid van tumblingvenstertriggers-venster trigger
 

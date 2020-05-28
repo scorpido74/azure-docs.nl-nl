@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386728"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015366"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -124,7 +124,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **maken**.
+5. Klik op **Maken**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -152,8 +152,8 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 8. Schakel **Toegang van Azure-services tot server toestaan** in.
 9. Klik op **Selecteren** voor de nieuwe server.
 
-    ![Nieuwe SQL Database-server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **maken**.
+    ![Nieuwe server](./media/cloud-services-dotnet-get-started/newdbserver.png)
+10. Klik op **Maken**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -176,7 +176,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **maken**.
+7. Klik op **Maken**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -353,7 +353,7 @@ Nadat de oplossing is gemaakt, bekijkt u de code die uniek is voor cloudservicep
 6. Zoek het NuGet-pakket *Microsoft.WindowsAzure.ConfigurationManager* op en installeer het in het werkrolproject.
 
 ### <a name="set-project-references"></a>Projectverwijzingen instellen
-1. Stel in het project ContosoAdsWeb een verwijzing in naar het project ContosoAdsCommon. Klik met de rechter muisknop op het project ContosoAdsWeb en klik vervolgens op **verwijzingen** - **add References**. Selecteer in het dialoogvenster **Reference Manager** de optie **Solution – Projects** (in het linkerdeelvenster). Selecteer vervolgens **ContosoAdsCommon** en klik op **OK**.
+1. Stel in het project ContosoAdsWeb een verwijzing in naar het project ContosoAdsCommon. Klik met de rechter muisknop op het project ContosoAdsWeb en klik vervolgens op **verwijzingen**  -  **add References**. Selecteer in het dialoogvenster **Reference Manager** de optie **Solution – Projects** (in het linkerdeelvenster). Selecteer vervolgens **ContosoAdsCommon** en klik op **OK**.
 2. Stel in het project ContosoAdsWorker een verwijzing in naar het project ContosoAdsCommon.
 
     ContosoAdsCommon bevat de Entity Framework-contextklasse en het bijbehorende gegevensmodel die door zowel de front-end als de back-end worden gebruikt.
@@ -398,7 +398,7 @@ In deze sectie configureert u Azure Storage- en SQL-verbindingsreeksen om lokaal
 ### <a name="add-code-files"></a>Codebestanden toevoegen
 In deze sectie kopieert u codebestanden vanuit de gedownloade oplossing naar de nieuwe oplossing. In de volgende secties worden belangrijke onderdelen van deze code weergegeven en uitgelegd.
 
-Als u bestanden wilt toevoegen aan een project of een map, klikt u met de rechter muisknop op het project of de map en klikt u op**bestaand item** **toevoegen** - . Selecteer de gewenste bestanden en klik op **Add**. Als u wordt gevraagd of u de bestaande bestanden wilt vervangen, klikt u op **Yes**.
+Als u bestanden wilt toevoegen aan een project of een map, klikt u met de rechter muisknop op **Add**het project of de map en klikt u op  -  **bestaand item**toevoegen. Selecteer de gewenste bestanden en klik op **Add**. Als u wordt gevraagd of u de bestaande bestanden wilt vervangen, klikt u op **Yes**.
 
 1. Verwijder in het project ContosoAdsCommon het bestand *Class1.cs* en voeg in plaats hiervan de bestanden *Ad.cs* en *ContosoAdscontext.cs* uit het gedownloade project toe.
 2. Voeg in het project ContosoAdsWeb de volgende bestanden uit het gedownloade project toe.

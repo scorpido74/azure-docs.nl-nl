@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van Change feed in de Azure Cosmos
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 3707ee81c0e50ae028ad7e0bf8178e2f3eff2c64
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115227"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Feed wijzigen in de Azure Cosmos DB-API voor Cassandra
 
@@ -22,7 +22,7 @@ In het volgende voor beeld ziet u hoe u een wijzigings feed kunt ophalen voor al
 
 Bij elke iteratie wordt de query hervat op het laatste punt dat wijzigingen zijn gelezen, met behulp van de wissel status. We kunnen een doorlopende stroom van nieuwe wijzigingen in de tabel in de spatie weer geven. Er worden wijzigingen in rijen weer geven die zijn ingevoegd of bijgewerkt. Het is niet mogelijk om bewerkingen voor verwijderen te volgen met behulp van Change feed in Cassandra-API.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -113,7 +113,7 @@ Bij elke iteratie wordt de query hervat op het laatste punt dat wijzigingen zijn
 
 U kunt de primaire sleutel in de query toevoegen om de wijzigingen in één rij op primaire sleutel op te halen. In het volgende voor beeld ziet u hoe u wijzigingen bijhoudt voor de rij met ' user_id = 1 '
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1

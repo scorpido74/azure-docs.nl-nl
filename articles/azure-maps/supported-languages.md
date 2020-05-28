@@ -25,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Name                   |  Maps | Search | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Naam                   |  Maps | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -147,7 +147,7 @@ De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Beschrijving                            |  Maps | Search | JS-Map Control |
+| Weergave         | Beschrijving                            |  Maps | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |

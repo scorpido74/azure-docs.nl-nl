@@ -1,26 +1,25 @@
 ---
 title: Ondersteunde talen in Azure Functions
-description: Meer informatie over welke talen worden ondersteund (GA) en wat experimentele of in Preview zijn.
+description: Meer informatie over welke talen worden ondersteund (GA) en in de preview-versie en hoe u de ontwikkeling van functies kunt uitbreiden naar andere talen.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942253"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994898"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Ondersteunde talen in Azure Functions
 
-Dit artikel bevat informatie over de ondersteunings niveaus voor talen die u kunt gebruiken met Azure Functions.
+Dit artikel bevat informatie over de ondersteunings niveaus voor talen die u kunt gebruiken met Azure Functions. Ook worden strategieën beschreven voor het maken van functies met behulp van talen die niet systeem eigen worden ondersteund.
 
 ## <a name="levels-of-support"></a>Ondersteunings niveaus
 
-Er zijn drie ondersteunings niveaus:
+Er zijn twee ondersteunings niveaus:
 
 * **Algemeen beschikbaar (ga)** : volledig ondersteund en goedgekeurd voor productie gebruik.
 * **Preview** -wordt nog niet ondersteund, maar wordt naar verwachting in de toekomst bereikt.
-* **Experimenteel** -niet ondersteund en kan in de toekomst worden afgebroken; geen garantie voor de uiteindelijke preview-of GA-status.
 
 ## <a name="languages-by-runtime-version"></a>Talen per runtime versie 
 
@@ -28,15 +27,11 @@ Er zijn [drie versies van de Azure functions runtime](functions-versions.md) bes
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimentele talen
+## <a name="custom-handlers-preview"></a>Aangepaste handlers (preview-versie) 
 
-De experimentele talen in versie 1. x worden niet goed geschaald en bieden geen ondersteuning voor alle bindingen.
+Aangepaste handlers zijn Lightweight webservers die gebeurtenissen van de Azure Functions host ontvangen. Elke taal die HTTP-primitieven ondersteunt, kan een aangepaste handler implementeren. Dit betekent dat aangepaste handlers kunnen worden gebruikt voor het maken van functies in talen die niet officieel worden ondersteund. Zie [Azure functions Custom handlers (preview)](functions-custom-handlers.md)voor meer informatie.
 
-Gebruik geen experimentele functies voor alles wat u vertrouwt, aangezien er geen officiële ondersteuning voor hen is. Ondersteunings cases mogen niet worden geopend voor problemen met experimentele talen. 
-
-Latere runtime versies bieden geen ondersteuning voor experimentele talen. Ondersteuning voor nieuwe talen wordt alleen toegevoegd wanneer de taal in productie kan worden ondersteund. 
-
-### <a name="language-extensibility"></a>Taal uitbreid baarheid
+## <a name="language-extensibility"></a>Taal uitbreid baarheid
 
 Met ingang van versie 2. x is de runtime ontworpen om [taal uitbreid baarheid](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)aan te bieden. De Java script-en Java-talen in de 2. x-runtime zijn gebouwd met deze uitbrei ding.
 

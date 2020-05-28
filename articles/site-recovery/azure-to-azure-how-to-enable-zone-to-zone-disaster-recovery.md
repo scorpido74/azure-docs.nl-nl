@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891500"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996496"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -65,7 +65,7 @@ Zoals hierboven vermeld, vermindert zone-to-zone-herstel na nood gevallen de com
 
 Voordat u de zone implementeert naar zone herstel na nood gevallen voor uw virtuele machines, is het belang rijk om ervoor te zorgen dat andere functies die zijn ingeschakeld op de virtuele machine, compatibel zijn met zones voor herstel na nood gevallen.
 
-|Onderdeel  | Ondersteunings verklaring  |
+|Functie  | Ondersteunings verklaring  |
 |---------|---------|
 |Klassieke VM's   |     Niet ondersteund    |
 |ARM-Vm's    |    Ondersteund    |
@@ -117,6 +117,9 @@ Het team van de Site Recovery-team en het Azure Capacity Management-abonnement v
 
 **4. welke besturings systemen worden ondersteund?**
 Zone-naar-zone herstel na nood gevallen ondersteunt dezelfde besturings systemen als Azure voor herstel na nood gevallen. Raadpleeg [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)de ondersteunings matrix.
+
+**5. zijn de bron-en doel resource groepen hetzelfde?**
+Nee, u moet een failover naar een andere resource groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

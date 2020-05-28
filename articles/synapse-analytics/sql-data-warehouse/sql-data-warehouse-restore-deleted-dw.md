@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 963d55ff2309d25771259947ce6cdc37cc98f170
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745128"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020262"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Een verwijderde SQL-groep herstellen met behulp van Azure Synapse Analytics
 
@@ -26,28 +26,28 @@ In dit artikel leert u hoe u een SQL herstelt met behulp van de Azure Portal of 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Controleer de DTU-capaciteit.** Elke SQL-groep wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) die een standaard DTU-quotum heeft.  Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
+**Controleer de DTU-capaciteit.** Elke SQL-groep wordt gehost door een [logische SQL-Server](../../azure-sql/database/logical-servers.md) (bijvoorbeeld MyServer.database.Windows.net) die een standaard DTU-quotum heeft.  Controleer of de server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Een verwijderd Data Warehouse herstellen via Power shell
 
-Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Als de bijbehorende logische server ook is verwijderd, kunt u dat data warehouse niet herstellen.
+Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Als de bijbehorende server ook is verwijderd, kunt u dat data warehouse niet herstellen.
 
 1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
-4. Selecteer het abonnement dat het verwijderde data warehouse bevat dat moet worden hersteld.
+4. Selecteer het abonnement dat de verwijderde SQL-groep bevat die moet worden hersteld.
 5. Het specifieke verwijderde data warehouse ophalen.
-6. Het verwijderde data warehouse herstellen
-    1. Als u de verwijderde SQL Data Warehouse wilt herstellen naar een andere logische server, moet u de naam van de andere logische server opgeven.  Deze logische server kan zich ook in een andere resource groep en regio bevinden.
-    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [verplaatsen](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) om de logische server naar een ander abonnement te verplaatsen.
+6. De verwijderde SQL-groep herstellen
+    1. Als u de verwijderde SQL-groep naar een andere server wilt herstellen, moet u de naam van de andere server opgeven.  Deze server kan zich ook in een andere resource groep en regio bevinden.
+    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [verplaatsen](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) om de server naar een ander abonnement te verplaatsen.
 7. Controleer of het herstelde data warehouse online is.
-8. Nadat de herstel bewerking is voltooid, kunt u uw herstelde data warehouse configureren door [de data base na het herstel te configureren](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
+8. Nadat de herstel bewerking is voltooid, kunt u uw herstelde data warehouse configureren door [de data base na het herstel te configureren](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
+#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different server.
 #$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -62,7 +62,7 @@ $DeletedDatabase = Get-AzSqlDeletedDatabaseBackup -ResourceGroupName $ResourceGr
 # Restore deleted database
 $RestoredDatabase = Restore-AzSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $DeletedDatabase.ResourceID
 
-# Use the following command to restore deleted data warehouse to a different logical server
+# Use the following command to restore deleted data warehouse to a different server
 #$RestoredDatabase = Restore-AzSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $TargetResourceGroupName -ServerName $TargetServerName -TargetDatabaseName $NewDatabaseName –ResourceId $DeletedDatabase.ResourceID
 
 # Verify the status of restored database
@@ -72,7 +72,7 @@ $RestoredDatabase.status
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Een verwijderde data base herstellen met behulp van de Azure Portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar de SQL-server waarop uw verwijderde data warehouse werd gehost.
+2. Ga naar de server waarop uw verwijderde data warehouse werd gehost.
 3. Selecteer het pictogram **Verwijderde data bases** in de inhouds opgave.
 
     ![Verwijderde data bases](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-01.png)

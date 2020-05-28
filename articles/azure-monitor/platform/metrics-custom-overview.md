@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837308"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018528"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
@@ -28,7 +28,7 @@ Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monit
 - Instrumenteer uw toepassing met behulp van de Azure-toepassing Insights-SDK en verzend aangepaste telemetrie naar Azure Monitor. 
 - Installeer de Windows Azure Diagnostics (WAD)-extensie op [uw Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassieke virtuele](collect-custom-metrics-guestos-vm-classic.md)machine of [klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) en verzend prestatie meter items naar Azure monitor. 
 - Installeer de [InfluxData-telegrafa-agent](collect-custom-metrics-linux-telegraf.md) op uw virtuele Azure Linux-machine en verzend metrische gegevens met behulp van de invoeg toepassing Azure monitor-uitvoer.
-- Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-rentention"></a>Prijs model en retentiegerelateerde
 
@@ -51,7 +51,7 @@ Als u aangepaste metrische gegevens naar Azure Monitor wilt verzenden, moet de e
 Azure Monitor valideert het toepassings token met behulp van open bare Azure AD-sleutels om de aanvraag te verifiëren. De rol van uitgever van de bestaande **bewakings metrieken** heeft deze machtiging al. Deze is beschikbaar in de Azure Portal. De Service-Principal, afhankelijk van de resources waarvoor de aangepaste metrische gegevens worden verstrekt, kan de rol van de **Uitgever van metrische gegevens voor bewaking** aan het vereiste bereik krijgen. Voor beelden zijn een abonnement, resource groep of specifieke resource.
 
 > [!TIP]  
-> Wanneer u een Azure AD-token aanvraagt om aangepaste metrische gegevens te verzenden, moet u ervoor zorgen dat de doel groep `https://monitoring.azure.com/`of de bron waarvoor het token wordt aangevraagd, is. Zorg ervoor dat u de opvolging '/' opgeeft.
+> Wanneer u een Azure AD-token aanvraagt om aangepaste metrische gegevens te verzenden, moet u ervoor zorgen dat de doel groep of de bron waarvoor het token wordt aangevraagd, is `https://monitoring.azure.com/` . Zorg ervoor dat u de opvolging '/' opgeeft.
 
 ### <a name="subject"></a>Onderwerp
 Met deze eigenschap wordt vastgelegd voor welke Azure-Resource-ID de aangepaste metrische gegevens worden gerapporteerd. Deze informatie wordt gecodeerd in de URL van de API-aanroep die wordt gemaakt. Elke API kan alleen metrische waarden voor één Azure-resource indienen.
@@ -189,31 +189,31 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |Azure-regio |Voor voegsel regionale eind punt|
 |---|---|
 | **VS en Canada** | |
-|VS - west-centraal | https:\//westcentralus.monitoring.Azure.com/ |
-|VS - west 2       | https:\//westus2.monitoring.Azure.com/ |
-|VS - noord-centraal | https:\//northcentralus.monitoring.Azure.com
-|VS - zuid-centraal| https:\//southcentralus.monitoring.Azure.com/ |
-|VS - centraal      | https:\//centralus.monitoring.Azure.com |
-|Canada - midden | https:\//canadacentral.monitoring.Azure.comc
-|VS - oost| https:\//eastus.monitoring.Azure.com/ |
+|VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com/ |
+|VS - west 2       | https: \/ /westus2.monitoring.Azure.com/ |
+|VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
+|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com/ |
+|VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
+|Canada - midden | https: \/ /canadacentral.monitoring.Azure.comc
+|VS - oost| https: \/ /eastus.monitoring.Azure.com/ |
 | **Europa** | |
-|Europa - noord    | https:\//northeurope.monitoring.Azure.com/ |
-|Europa -west     | https:\//westeurope.monitoring.Azure.com/ |
-|Verenigd Koninkrijk Zuid | https:\//uksouth.monitoring.Azure.com
-|Frankrijk - centraal | https:\//francecentral.monitoring.Azure.com |
+|Europa - noord    | https: \/ /northeurope.monitoring.Azure.com/ |
+|Europa -west     | https: \/ /westeurope.monitoring.Azure.com/ |
+|Verenigd Koninkrijk Zuid | https: \/ /uksouth.monitoring.Azure.com
+|Frankrijk - centraal | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
-|Zuid-Afrika - noord | https:\//southafricanorth.monitoring.Azure.com
-| **Asia** | |
-|India - centraal | https:\//centralindia.monitoring.Azure.com
-|Australië - oost | https:\//australiaeast.monitoring.Azure.com
-|Japan - oost | https:\//japaneast.monitoring.Azure.com
-|Azië - zuidoost  | https:\//southeastasia.monitoring.Azure.com |
-|Azië - oost | https:\//EastAsia.monitoring.Azure.com
-|Korea - centraal   | https:\//koreacentral.monitoring.Azure.com
+|Zuid-Afrika - noord | https: \/ /southafricanorth.monitoring.Azure.com
+| **Azië** | |
+|India - centraal | https: \/ /centralindia.monitoring.Azure.com
+|Australië - oost | https: \/ /australiaeast.monitoring.Azure.com
+|Japan - oost | https: \/ /japaneast.monitoring.Azure.com
+|Azië - zuidoost  | https: \/ /southeastasia.monitoring.Azure.com |
+|Azië - oost | https: \/ /EastAsia.monitoring.Azure.com
+|Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com
 
 ## <a name="latency-and-storage-retention"></a>Latentie en opslag bewaren
 
-Het toevoegen van een gloed nieuwe waarde of een nieuwe dimensie die wordt toegevoegd aan een metriek kan tot 2 tot drie minuten duren. In het systeem moeten gegevens in minder dan 30 seconden 99% van de tijd worden apear. 
+Het toevoegen van een gloed nieuwe waarde of een nieuwe dimensie die wordt toegevoegd aan een metriek kan tot 2 tot drie minuten duren. In het systeem moeten gegevens in minder dan 30 seconden 99% van de tijd worden weer gegeven. 
 
 Als u een metriek verwijdert of een dimensie verwijdert, kan de wijziging een week duren om een maand uit het systeem te verwijderen.
 
@@ -234,6 +234,6 @@ Aangepaste metrische gegevens van verschillende services gebruiken:
  - [Schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassiek)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuele Linux-machine met behulp van de Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
- - [REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

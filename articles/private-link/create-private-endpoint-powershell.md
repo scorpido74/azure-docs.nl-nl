@@ -7,17 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 7db3ac13cd4e2f2e2b712f9d53b86f9ccda5e736
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583769"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021718"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
 
-In deze Quick Start leert u hoe u een virtuele machine kunt maken op een Azure-Virtual Network, een SQL Database-Server met een persoonlijk Azure-eind punt met behulp van Azure PowerShell. Daarna kunt u veilig toegang krijgen tot de SQL Database-Server vanaf de VM.
+In deze Quick Start leert u hoe u een virtuele machine maakt in een Azure-Virtual Network, een logische SQL-Server met een Azure-privé-eind punt met behulp van Azure PowerShell. Vervolgens kunt u veilig toegang krijgen tot SQL Database via de virtuele machine.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> Het is eenvoudig om de `PrivateEndpointNetworkPoliciesFlag` para meter te verwarren met een andere `PrivateLinkServiceNetworkPoliciesFlag`beschik bare vlag, omdat deze zowel lange woorden als een vergelijk bare vormgeving hebben.  Zorg ervoor dat u de juiste versie gebruikt `PrivateEndpointNetworkPoliciesFlag`.
+> Het is eenvoudig om de `PrivateEndpointNetworkPoliciesFlag` para meter te verwarren met een andere beschik bare vlag, `PrivateLinkServiceNetworkPoliciesFlag` omdat deze zowel lange woorden als een vergelijk bare vormgeving hebben.  Zorg ervoor dat u de juiste versie gebruikt `PrivateEndpointNetworkPoliciesFlag` .
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Het subnet aan de Virtual Network koppelen
 
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>Een SQL Database-Server maken 
+## <a name="create-a-logical-sql-server"></a>Een logische SQL-Server maken 
 
-Maak een SQL Database-Server met behulp van de opdracht New-AzSqlServer. Houd er rekening mee dat de naam van uw SQL Database-Server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde:
+Maak een logische SQL-Server met behulp van de opdracht New-AzSqlServer. Houd er rekening mee dat de naam van uw server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 
-Persoonlijk eind punt voor de SQL Database-Server in uw Virtual Network met [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+Persoonlijk eind punt voor de server in uw Virtual Network met [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>De Privé-DNS zone configureren 
-Maak een privé-DNS-zone voor SQL Database Server domein en maak een koppelings koppeling met het virtuele netwerk: 
+Maak een privé-DNS-zone voor SQL Database domein en maak een koppelings koppeling met het virtuele netwerk: 
 
 ```azurepowershell
 
@@ -195,7 +195,7 @@ mstsc /v:<publicIpAddress>
 3. Selecteer **OK**. 
 4. Er kan een certificaatwaarschuwing worden weergegeven. Als dit het geval is, selecteert u **Ja** of **Doorgaan**. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
+## <a name="access-sql-database-privately-from-the-vm"></a>SQL Database privé toegang tot de VM
 
 1. Open Power shell in de Extern bureaublad van myVM.
 2. Voer `nslookup myserver.database.windows.net` in. Vergeet niet door `myserver` de naam van uw SQL-Server te vervangen.
@@ -222,13 +222,13 @@ mstsc /v:<publicIpAddress>
     | Wachtwoord | Voer het wacht woord in dat u hebt opgegeven tijdens het maken |
     | Wacht woord onthouden | Ja |
     
-5. Selecteer **Verbinden**.
+5. Selecteer **Verbinding maken**.
 6. Blader door **data bases** in het menu links. 
 7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
 8. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-Wanneer u klaar bent met het persoonlijke eind punt, SQL Database Server en de virtuele machine, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources te verwijderen die het bevat:
+Wanneer u klaar bent met het persoonlijke eind punt, SQL Database en de virtuele machine, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources te verwijderen die het bevat:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

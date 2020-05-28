@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572795"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015499"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services beheren
 Zodra u een Analysis Services server hebt gemaakt in azure, zijn er mogelijk een aantal beheer-en beheer taken die u direct moet uitvoeren, of ergens anders in de weg. U kunt bijvoorbeeld de verwerking uitvoeren op de gegevens vernieuwen, bepalen wie toegang heeft tot de modellen op uw server of de status van uw server controleren. Sommige beheer taken kunnen alleen worden uitgevoerd in Azure Portal, andere in SQL Server Management Studio (SSMS) en sommige taken kunnen worden uitgevoerd in een van beide.
@@ -51,7 +51,7 @@ Zorg ervoor dat u de nieuwste versie van SSMS gebruikt om alle nieuwste functies
 
     **Active Directory wachtwoord verificatie** om een organisatie account te gebruiken. Wanneer u bijvoorbeeld verbinding maakt vanaf een computer die niet lid is van een domein.
 
-    **Active Directory-Universal met MFA-ondersteuning** voor het gebruik van [niet-interactieve of multi-factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Active Directory-Universal met MFA-ondersteuning** voor het gebruik van [niet-interactieve of multi-factor Authentication](../azure-sql/database/authentication-mfa-ssms-overview.md). 
    
     ![Verbinding maken in SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

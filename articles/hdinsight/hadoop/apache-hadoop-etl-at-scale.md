@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020078"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
 
@@ -106,9 +106,9 @@ HBase Adaptive is afhankelijk van het aantal knoop punten in het HDInsight-clust
 
 Azure biedt drie relationele data bases voor PaaS:
 
-- [Azure SQL database](../../sql-database/sql-database-technical-overview.md) is een implementatie van Microsoft SQL Server. Zie [prestaties afstemmen in Azure SQL database](../../sql-database/sql-database-performance-guidance.md)voor meer informatie over prestaties.
-- [Azure database for MySQL](../../mysql/overview.md) is een implementatie van Oracle MySQL.
-- [Azure database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) is een implementatie van postgresql.
+* [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md) is een implementatie van Microsoft SQL Server. Zie [prestaties afstemmen in Azure SQL database](../../azure-sql/database/performance-guidance.md)voor meer informatie over prestaties.
+* [Azure database for MySQL](../../mysql/overview.md) is een implementatie van Oracle MySQL.
+* [Azure database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) is een implementatie van postgresql.
 
 Voeg meer CPU en geheugen toe om deze producten te schalen.  U kunt er ook voor kiezen om Premium-schijven met de producten te gebruiken voor betere I/O-prestaties.
 

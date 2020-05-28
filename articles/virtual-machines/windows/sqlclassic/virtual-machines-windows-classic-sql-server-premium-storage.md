@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833928"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020877"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Azure Premium Storage gebruiken met SQL Server op virtuele machines
 
@@ -41,7 +41,7 @@ Het is belang rijk om inzicht te krijgen in het end-to-end proces van het gebrui
 * Mogelijke migratie benaderingen.
 * Volledig end-to-end-voor beeld met Azure, Windows en SQL Server stappen voor de migratie van een bestaande always on-implementatie.
 
-Zie [SQL Server in azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer achtergrond informatie over SQL Server in azure virtual machines.
+Zie [SQL Server in azure virtual machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer achtergrond informatie over SQL Server in azure virtual machines.
 
 **Auteur:** Een van de **volgende technische revisoren:** Luis Carlos Vargas haring, Sanjay Mishra, Pravin Mital, Juergen Thomas, Gonzalo Ruiz.
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Stap 2: Verhoog de toegestane storingen voor resources \< optioneel>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Stap 2: de toegestane storingen voor resources verhogen\<Optional>
 
 Voor bepaalde resources die deel uitmaken van uw beschikbaarheids groep altijd, gelden er limieten voor het aantal storingen dat in een bepaalde periode kan optreden, waarbij de Cluster service de resource groep probeert te starten. U kunt dit het beste verhogen, omdat u deze procedure doorloopt, omdat als u niet hand matig failovers doorvoert en failovers doorschakelt door machines af te sluiten, kan deze limiet bijna worden bereikt.
 
@@ -691,7 +691,7 @@ Het is verstandig om de fout limiet te verdubbelen. Als u dit wilt doen in Failo
 
 Wijzig het maximum aantal fouten in 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: toevoeging van een IP-adres resource voor een cluster groep \< optioneel>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: de resource van het IP-adres voor de cluster groep toevoegen\<Optional>
 
 Als u slechts één IP-adres voor de cluster groep hebt en dit is afgestemd op het Cloud subnet, moet u er rekening mee houden als u per ongeluk alle cluster knooppunten in de Cloud op dat netwerk offline neemt, de cluster-IP-bron en de cluster netwerk naam niet online kunnen worden gebracht. In deze situatie voor komt u dat er updates voor andere cluster bronnen worden bijgewerkt.
 
@@ -1250,7 +1250,7 @@ Als u een IP-adres wilt toevoegen, raadpleegt u de bijlage, stap 14.
 
 * [Azure Premium Storage](../disks-types.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-* [SQL Server in azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server in azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

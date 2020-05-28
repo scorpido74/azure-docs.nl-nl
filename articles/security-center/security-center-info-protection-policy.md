@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611063"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020401"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
@@ -29,7 +29,7 @@ Information Protection is een geavanceerde beveiligings mogelijkheid voor het de
 - Beveiligings scenario's zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens
 - Het beheren van de toegang tot en het beveiligen van de beveiliging van gegevens archieven met uiterst gevoelige gegevens
  
-[Sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementeert dit paradigma voor uw SQL-gegevens archieven, die momenteel worden ondersteund voor Azure SQL database. SQL Information Protection detecteert en classificeert mogelijk gevoelige gegevens automatisch, biedt een label mechanisme voor het permanent coderen van gevoelige gegevens met classificatie kenmerken en biedt een gedetailleerd dash board met de classificatie status van de data base. Daarnaast berekent de IT de gevoeligheid van de resultatenset van SQL-query's, zodat query's die gevoelige gegevens ophalen, expliciet kunnen worden gecontroleerd en de gegevens kunnen worden beveiligd. Zie [Azure SQL database voor gegevens detectie en-classificatie](../sql-database/sql-database-data-discovery-and-classification.md)voor meer informatie over SQL Information Protection.
+[Sql Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) implementeert dit paradigma voor uw SQL-gegevens archieven, die momenteel worden ondersteund voor Azure SQL database. SQL Information Protection detecteert en classificeert mogelijk gevoelige gegevens automatisch, biedt een label mechanisme voor het permanent coderen van gevoelige gegevens met classificatie kenmerken en biedt een gedetailleerd dash board met de classificatie status van de data base. Daarnaast berekent de IT de gevoeligheid van de resultatenset van SQL-query's, zodat query's die gevoelige gegevens ophalen, expliciet kunnen worden gecontroleerd en de gegevens kunnen worden beveiligd. Zie [Azure SQL database voor gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md)voor meer informatie over SQL Information Protection.
  
 Het classificatie mechanisme is gebaseerd op twee primaire constructs **die samen de classificatie-en** **informatie typen**voor het classificeren vormen.
 - **Labels** : de belangrijkste classificatie kenmerken, die worden gebruikt voor het definiëren van het gevoeligheids niveau van de gegevens die zijn opgeslagen in de kolom. 
@@ -79,7 +79,7 @@ Nadat uw Information Protection-beleid volledig is gedefinieerd en opgeslagen, i
  
 ## <a name="next-steps"></a>Volgende stappen
  
-In dit artikel hebt u geleerd hoe u een SQL Information Protection-beleid definieert in Azure Security Center. Zie [Azure SQL database gegevens detectie en-classificatie](../sql-database/sql-database-data-discovery-and-classification.md)voor meer informatie over het gebruik van SQL Information Protection voor het classificeren en beveiligen van gevoelige gegevens in uw SQL-data bases. 
+In dit artikel hebt u geleerd hoe u een SQL Information Protection-beleid definieert in Azure Security Center. Zie [Azure SQL database gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md)voor meer informatie over het gebruik van SQL Information Protection voor het classificeren en beveiligen van gevoelige gegevens in uw SQL-data bases. 
 
 Raadpleeg de volgende artikelen voor meer informatie over beveiligings beleid en gegevens beveiliging in Azure Security Center:
  

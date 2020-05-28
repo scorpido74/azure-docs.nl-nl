@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 236c68b3c26049073d3e6e942ce2a6be8b7f4fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82d6fe190b191b6aca3bd51dcefb03ecda95b4f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298905"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020435"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS
 
-U kunt Azure Database Migration Service gebruiken om de data bases van een on-premises SQL Server exemplaar te migreren naar een [Azure SQL database beheerd exemplaar](../sql-database/sql-database-managed-instance.md) met minimale downtime. In het artikel [Een SQL Server-exemplaar migreren naar een beheerd Azure SQL Database-exemplaar](../sql-database/sql-database-managed-instance-migrate.md) vindt u aanvullende methoden, waarvoor enkele handmatige stappen nodig kunnen zijn.
+U kunt Azure Database Migration Service gebruiken om de data bases van een on-premises SQL Server exemplaar te migreren naar een [Azure SQL database beheerd exemplaar](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) met minimale downtime. In het artikel [Een SQL Server-exemplaar migreren naar een beheerd Azure SQL Database-exemplaar](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md) vindt u aanvullende methoden, waarvoor enkele handmatige stappen nodig kunnen zijn.
 
 In deze zelf studie migreert u de **Adventureworks2012** -data base vanuit een on-premises exemplaar van SQL Server naar een SQL database beheerd exemplaar met minimale downtime door gebruik te maken van Azure database Migration service.
 
@@ -267,5 +267,5 @@ Nadat de volledige back-up van de data base is hersteld op het doel exemplaar va
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [een back-up terugzetten naar een beheerd exemplaar met behulp van de opdracht herstellen](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)voor een zelf studie waarin wordt beschreven hoe u een Data Base naar een beheerd exemplaar migreert met de opdracht voor het terugzetten van T-SQL.
-* Zie [Wat is een beheerd exemplaar](../sql-database/sql-database-managed-instance.md)? voor meer informatie over een beheerd exemplaar.
-* Zie [toepassingen verbinden](../sql-database/sql-database-managed-instance-connect-app.md)voor meer informatie over het verbinden van apps met een beheerd exemplaar.
+* Zie [Wat is een beheerd exemplaar](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)? voor meer informatie over een beheerd exemplaar.
+* Zie [toepassingen verbinden](../azure-sql/managed-instance/connect-application-instance.md)voor meer informatie over het verbinden van apps met een beheerd exemplaar.

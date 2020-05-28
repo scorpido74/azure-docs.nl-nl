@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978145"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014856"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>De AlwaysOn-beschikbaarheids groep configureren op een virtuele Azure-machine met Power shell
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75978145"
 > * [Klassiek: Power shell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Bedenk voordat u begint dat u deze taak nu kunt volt ooien in het Azure Resource Manager-model. We raden het Azure Resource Manager-model aan voor nieuwe implementaties. Zie SQL Server AlwaysOn- [beschikbaarheids groepen op virtuele machines van Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Bedenk voordat u begint dat u deze taak nu kunt volt ooien in het Azure Resource Manager-model. We raden het Azure Resource Manager-model aan voor nieuwe implementaties. Zie SQL Server AlwaysOn- [beschikbaarheids groepen op virtuele machines van Azure](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).
 
 > [!IMPORTANT]
 > Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel.
@@ -158,7 +158,7 @@ Deze zelf studie is bedoeld om u te laten zien welke stappen u moet uitvoeren om
    * **Add-AzureDataDisk** voegt de gegevens schijf toe die u gebruikt voor het opslaan van Active Directory gegevens, waarbij de optie cache is ingesteld op geen.
    * **New-AzureVM** maakt een nieuwe Cloud service en maakt de nieuwe virtuele machine van Azure in de nieuwe Cloud service.
 
-7. Wacht tot de nieuwe virtuele machine volledig is ingericht en down load het extern bureau blad-bestand naar uw werkmap. Omdat de nieuwe virtuele machine van Azure veel tijd in beslag neemt `while` , blijft de lus de nieuwe VM pollen tot deze klaar is voor gebruik.
+7. Wacht tot de nieuwe virtuele machine volledig is ingericht en down load het extern bureau blad-bestand naar uw werkmap. Omdat de nieuwe virtuele machine van Azure veel tijd in beslag neemt, `while` blijft de lus de nieuwe VM pollen tot deze klaar is voor gebruik.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -481,7 +481,7 @@ Ten slotte bent u klaar om de beschikbaarheids groep te configureren. U gebruikt
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Down load **CreateAzureFailoverCluster. ps1** van het maken van een failovercluster voor AlwaysOn- [beschikbaarheids groepen in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen bij het maken van een functioneel failovercluster. Zie [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure virtual machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor belang rijke informatie over de interactie van Windows Failover Clustering met het Azure-netwerk.
+7. Down load **CreateAzureFailoverCluster. ps1** van het maken van een failovercluster voor AlwaysOn- [beschikbaarheids groepen in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen bij het maken van een functioneel failovercluster. Zie [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure virtual machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor belang rijke informatie over de interactie van Windows Failover Clustering met het Azure-netwerk.
 8. Ga naar uw werkmap en maak het failovercluster met het gedownloade script.
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Ten slotte bent u klaar om de beschikbaarheids groep te configureren. U gebruikt
 ## <a name="next-steps"></a>Volgende stappen
 U hebt nu de implementatie SQL Server altijd voltooid door een beschikbaarheids groep te maken in Azure. Zie een ILB-listener configureren voor AlwaysOn- [beschikbaarheids groepen in azure](../classic/ps-sql-int-listener.md)voor informatie over het configureren van een listener voor deze beschikbaarheids groep.
 
-Zie [SQL Server op virtuele machines van Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het gebruik van SQL Server in Azure.
+Zie [SQL Server op virtuele machines van Azure](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie over het gebruik van SQL Server in Azure.

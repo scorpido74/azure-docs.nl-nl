@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873524"
+ms.locfileid: "83996258"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
 
@@ -60,24 +60,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 Met de bovenstaande opdracht worden Azure dev Spaces verwijderd uit het *MyAKS* -cluster in *MyResourceGroup*. Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Azure-ontwikkel ruimten in-of uitschakelen met behulp van de Azure Portal
-
-Voordat u ontwikkel ruimten kunt inschakelen met behulp van de Azure Portal, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account]maken.
-* [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
-
-Azure-ontwikkel ruimten inschakelen met behulp van de Azure Portal:
-1. Meld u aan bij de [Azure-portal][az-portal].
-1. Navigeer naar uw AKS-cluster.
-1. Selecteer de menu opdracht *dev Spaces* .
-1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
-
-![Ontwikkel ruimten in de Azure Portal inschakelen](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
-
-Wanneer u Azure dev Spaces inschakelt met behulp van de Azure Portal **, worden geen** hulpprogram Ma's voor Azure-ontwikkel ruimten geïnstalleerd.
-
-Als u Azure-ontwikkel ruimten wilt verwijderen uit uw AKS-cluster, wijzigt u de *optie ontwikkel ruimten* in *Nee* en klikt u op *Opslaan*. Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
-
 ## <a name="install-the-client-side-tools"></a>De hulpprogram ma's aan de client zijde installeren
 
 U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om de hulpprogram ma's aan de client zijde te installeren:
@@ -94,7 +76,6 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 > [Team ontwikkeling in azure dev Spaces][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
-[create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md

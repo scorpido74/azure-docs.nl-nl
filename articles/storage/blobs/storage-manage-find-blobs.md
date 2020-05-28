@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722893"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996037"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Gegevens in Azure Blob Storage beheren en zoeken met Blob-index (preview)
 
@@ -26,7 +26,7 @@ Met Blob index kunt u:
 - Voorwaardelijk gedrag voor BLOB-Api's opgeven op basis van de evaluatie van index Tags
 - Gebruik index Tags voor geavanceerde besturings elementen op BLOB-platform functies zoals [levenscyclus beheer](storage-lifecycle-management-concepts.md)
 
-Denk na over het scenario waarin u miljoenen blobs in uw opslag account hebt geschreven en die toegankelijk zijn voor veel verschillende toepassingen. U wilt alle gerelateerde gegevens uit één project zoeken, maar u weet niet wat het bereik is omdat de gegevens kunnen worden verdeeld over meerdere containers met verschillende regels voor de naamgeving van blobs. U weet echter dat uw toepassingen alle gegevens uploaden met tags op basis van hun respectievelijke project en beschrijving. In plaats van miljoenen blobs te doorzoeken en namen en eigenschappen te vergelijken, kunt u gewoon `Project = Contoso` gebruiken als detectie criterium. Met Blob-index worden alle containers in het hele opslag account gefilterd, zodat u alleen de set van 50 blobs uit `Project = Contoso`kunt vinden en retour neren. 
+Denk na over het scenario waarin u miljoenen blobs in uw opslag account hebt geschreven en die toegankelijk zijn voor veel verschillende toepassingen. U wilt alle gerelateerde gegevens uit één project zoeken, maar u weet niet wat het bereik is omdat de gegevens kunnen worden verdeeld over meerdere containers met verschillende regels voor de naamgeving van blobs. U weet echter dat uw toepassingen alle gegevens uploaden met tags op basis van hun respectievelijke project en beschrijving. In plaats van miljoenen blobs te doorzoeken en namen en eigenschappen te vergelijken, kunt u gewoon gebruiken `Project = Contoso` als detectie criterium. Met Blob-index worden alle containers in het hele opslag account gefilterd, zodat u alleen de set van 50 blobs uit kunt vinden en retour neren `Project = Contoso` . 
 
 Zie [BLOB-index gebruiken om gegevens te beheren en te zoeken](storage-blob-index-how-to.md)om aan de slag te gaan met voor beelden van het gebruik van BLOB-index.
 
@@ -70,7 +70,7 @@ De volgende limieten gelden voor BLOB-index Tags:
 - Label sleutels moeten tussen 1 en 128 tekens lang zijn
 - Label waarden moeten tussen de 0 en 256 tekens lang zijn
 - Code sleutels en waarden zijn hoofdletter gevoelig
-- Code sleutels en waarden bieden alleen ondersteuning voor teken reeks gegevens typen. wille keurige getallen of speciale tekens worden opgeslagen als teken reeksen
+- Code sleutels en waarden bieden alleen ondersteuning voor teken reeks gegevens typen. getallen, datums, tijden of speciale tekens worden opgeslagen als teken reeksen
 - Code sleutels en waarden moeten voldoen aan de volgende naamgevings regels:
   - Alfanumerieke numerieke tekens: a-z, A-Z, 0-9
   - Speciale tekens: spatie, plus teken, minteken, punt, dubbele punt, gelijkteken, onderstrepings teken, slash
@@ -107,8 +107,15 @@ In de onderstaande tabel ziet u alle geldige Opera tors voor FindBlobsByTags:
 |    EN     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
 | @container |  Bereik naar een specifieke container   | @container= ' videofiles ' en ' status ' = ' gereed ' |
 
+> [!NOTE]
+> Zorg dat u bekend bent met lexicographical-volg orde bij het instellen en uitvoeren van query's op Tags.
+> - Getallen worden vóór letters gesorteerd. Getallen worden gesorteerd op basis van het eerste cijfer.
+> - Hoofd letters worden gesorteerd vóór kleine letters.
+> - Symbolen zijn niet standaard. Sommige symbolen worden vóór numerieke waarden gesorteerd. Andere symbolen worden vóór of na letters gesorteerd.
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Voorwaardelijke BLOB-bewerkingen met Blob index Tags
-In REST versies 2019-10-10 en hoger ondersteunen de meeste [BLOB service-api's](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) nu een voorwaardelijke header, x-MS-if-Tags, zodat de bewerking alleen kan worden uitgevoerd als aan de opgegeven voor waarde voor de BLOB-index is voldaan. Als niet aan de voor waarde wordt voldaan, krijgt `error 412: The condition specified using HTTP conditional header(s) is not met`u.
+In REST versies 2019-10-10 en hoger ondersteunen de meeste [BLOB service-api's](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) nu een voorwaardelijke header, x-MS-if-Tags, zodat de bewerking alleen kan worden uitgevoerd als aan de opgegeven voor waarde voor de BLOB-index is voldaan. Als niet aan de voor waarde wordt voldaan, krijgt u `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
 De header x-MS-if-Tags kan worden gecombineerd met de andere bestaande HTTP-voorwaardelijke headers (if-match, if-none-match, enz.).  Als er meerdere voorwaardelijke headers in een aanvraag worden gegeven, moeten ze allemaal de waarde True evalueren voordat de bewerking kan worden voltooid.  Alle voorwaardelijke headers worden in feite gecombineerd met logische en. 
 
@@ -138,7 +145,7 @@ Met het nieuwe blobIndexMatch als een regel filter in levenscyclus beheer kunt u
 
 U kunt een overeenkomende BLOB-index instellen als een zelfstandig filter dat is ingesteld in een levenscyclus regel om acties op gelabelde gegevens toe te passen. U kunt ook een voor voegsel combi neren en een BLOB-index die overeenkomt met meer specifieke gegevens sets. Het Toep assen van meerdere filters op een levenscyclus regel is een logische en-bewerking, zodat de actie alleen van toepassing is als alle filter criteria overeenkomen. 
 
-De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs in de container ' videofiles ' en lagen van blobs om opslag alleen te archiveren als de gegevens overeenkomen met de criteria van de BLOB-index code van ```"Status" = 'Processed' AND "Source" == 'RAW'```.
+De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs in de container ' videofiles ' en lagen van blobs om opslag alleen te archiveren als de gegevens overeenkomen met de criteria van de BLOB-index code van ```"Status" = 'Processed' AND "Source" == 'RAW'``` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 ![Voor beeld van een overeenkomende regel voor een BLOB-index voor levenscyclus beheer in Azure Portal](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
@@ -246,9 +253,11 @@ Prijzen voor BLOB-indexen zijn momenteel beschikbaar als open bare preview-versi
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionale Beschik baarheid en ondersteuning voor opslag accounts
 
-BLOB index is momenteel alleen beschikbaar met Algemeen v2-accounts (GPv2). In de Azure Portal kunt u een bestaand Algemeen-account (GPv1) upgraden naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
+BLOB-index is momenteel alleen beschikbaar voor Algemeen v2-accounts (GPv2) met een hiërarchische naam ruimte (HNS) is uitgeschakeld. Algemeen-accounts (GPV1) worden niet ondersteund, maar u kunt een upgrade uitvoeren voor een GPv1-account naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
 
 In de open bare preview-versie is Blob index momenteel alleen beschikbaar in de volgende regio's selecteren:
+- Canada - midden
+- Canada - oost
 - Frankrijk - centraal
 - Frankrijk - zuid
 
@@ -276,9 +285,9 @@ az provider register --namespace 'Microsoft.Storage'
 In deze sectie worden bekende problemen en voor waarden in de huidige open bare preview van de BLOB-index beschreven. Net als bij de meeste previews mag deze functie niet worden gebruikt voor werk belastingen van de productie, totdat het het gedrag bereikt dat kan veranderen.
 
 -   Voor de preview moet u eerst uw abonnement registreren voordat u de BLOB-index voor uw opslag account in de preview-regio's kunt gebruiken.
--   Alleen GPv2-accounts worden momenteel ondersteund in de preview-versie. BLOB-, BlockBlobStorage-en HNS-DataLake Gen2-accounts worden momenteel niet ondersteund met een BLOB-index.
+-   Alleen GPv2-accounts worden momenteel ondersteund in de preview-versie. BLOB-, BlockBlobStorage-en HNS-DataLake Gen2-accounts worden momenteel niet ondersteund met een BLOB-index. GPv1-accounts worden niet ondersteund.
 -   Als u pagina-blobs met index Tags uploadt, blijven de tags op dit moment behouden. U moet de tags instellen na het uploaden van een pagina-blob.
--   Wanneer het bereik van het filter is beperkt tot één container @container , kan de eigenschap alleen worden door gegeven als alle index Tags in de filter expressie gelijkheids controles zijn (Key = waarde). 
+-   Wanneer het bereik van het filter is beperkt tot één container, @container kan de eigenschap alleen worden door gegeven als alle index Tags in de filter expressie gelijkheids controles zijn (Key = waarde). 
 -   Wanneer u de operator Range gebruikt met de voor waarde, kunt u alleen dezelfde index code sleutel naam opgeven (leeftijd > ' 013 ' en leeftijd < ' 100 ').
 -   Versie beheer en BLOB-index worden momenteel niet ondersteund. BLOB-index Tags blijven behouden voor versies, maar worden momenteel niet door gegeven aan de BLOB-index engine.
 -   Failover van account wordt momenteel niet ondersteund. De BLOB-index wordt mogelijk niet goed bijgewerkt na een failover.
@@ -290,6 +299,9 @@ In deze sectie worden bekende problemen en voor waarden in de huidige open bare 
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Kan de BLOB-index Help me filteren en inhoud in mijn blobs doorzoeken? 
 Nee, index Tags van blobs kunnen u helpen bij het vinden van de blobs die u zoekt. Als u wilt zoeken in uw blobs, gebruikt u query versnelling of Azure Search.
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Zijn er speciale overwegingen met betrekking tot de waarden van BLOB-index Tags?
+BLOB-index Tags bieden alleen ondersteuning voor teken reeks gegevens typen en query's retour neren resultaten met lexicographical-volg orde. Voor getallen wordt het aanbevolen om het nummer in te vullen. Voor datum en tijd is het raadzaam om op te slaan als een ISO 8601-compatibele indeling.
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Zijn er labels voor BLOB-indexen en Azure Resource Manager labels?
 Nee, met Azure Resource Manager Tags kunt u beheer vlak resources zoals abonnementen, resource groepen en opslag accounts ordenen. BLOB-index Tags bieden object beheer en detectie op gegevens vlak bronnen zoals blobs in een opslag account.

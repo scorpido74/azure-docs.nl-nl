@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 43ff230d4769a23c9007b3da29858d2105366f9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978100"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014669"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatische back-up voor SQL Server in azure Virtual Machines (klassiek)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 > * [Klassiek](../classic/sql-automated-backup.md)
 > 
 > 
@@ -32,7 +32,7 @@ ms.locfileid: "75978100"
 Automatische back-up configureert automatisch [beheerde back-ups voor Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) voor alle bestaande en nieuwe data bases op een virtuele Azure-machine met SQL Server 2014 Standard of ENTER prise. Zo kunt u regel matige back-ups van de data base configureren die gebruikmaken van duurzame Azure Blob-opslag. Automatische back-up is afhankelijk van de [uitbrei ding IaaS agent van SQL Server](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [automatische back-up voor SQL Server in Azure virtual machines Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [automatische back-up voor SQL Server in Azure virtual machines Resource Manager](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md).
 
 ## <a name="prerequisites"></a>Vereisten
 Als u automatische back-ups wilt gebruiken, moet u rekening houden met de volgende vereisten:
@@ -70,7 +70,7 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 | --- | --- | --- |
 | **Automatische back-up** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee wordt automatische back-ups voor een Azure-VM met SQL Server 2014 Standard of ENTER prise in-of uitgeschakeld. |
 | **Bewaar periode** |1-30 dagen (30 dagen) |Het aantal dagen dat een back-up moet worden bewaard. |
-| **Opslag account** |Azure Storage-account (het opslag account dat is gemaakt voor de opgegeven VM) |Een Azure-opslag account dat moet worden gebruikt voor het opslaan van automatische back-upbestanden in Blob Storage. Er wordt een container gemaakt op deze locatie om alle back-upbestanden op te slaan. De naamgevings regels voor back-ups bevatten de datum, de tijd en de machine naam. |
+| **Opslagaccount** |Azure Storage-account (het opslag account dat is gemaakt voor de opgegeven VM) |Een Azure-opslag account dat moet worden gebruikt voor het opslaan van automatische back-upbestanden in Blob Storage. Er wordt een container gemaakt op deze locatie om alle back-upbestanden op te slaan. De naamgevings regels voor back-ups bevatten de datum, de tijd en de machine naam. |
 | **Versleuteling** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee wordt versleuteling in-of uitgeschakeld. Als versleuteling is ingeschakeld, bevinden de certificaten die worden gebruikt voor het herstellen van de back-up zich in het opgegeven opslag account in dezelfde automaticbackup-container met dezelfde naam Conventie. Als het wacht woord wordt gewijzigd, wordt er een nieuw certificaat met dat wacht woord gegenereerd, maar blijft het oude certificaat voor het herstellen van eerdere back-ups. |
 | **Wachtwoord** |Wachtwoord tekst (geen) |Een wacht woord voor versleutelings sleutels. Dit is alleen vereist als versleuteling is ingeschakeld. Als u een versleutelde back-up wilt herstellen, moet u het juiste wacht woord en het bijbehorende certificaat hebben dat is gebruikt op het moment dat de back-up werd gemaakt. |
 | **Back-up maken van systeemdatabases** | Inschakelen/uitschakelen (uitgeschakeld) | Volledige back-ups maken van Master, model en MSDB |
@@ -109,9 +109,9 @@ Als u automatische back-ups wilt uitschakelen, voert u hetzelfde script uit zond
 ## <a name="next-steps"></a>Volgende stappen
 Met geautomatiseerde back-up wordt beheerde back-up geconfigureerd op virtuele machines van Azure. Het is dus belang rijk dat u [de documentatie voor beheerde back-up bekijkt](https://msdn.microsoft.com/library/dn449496.aspx) om het gedrag en de implicaties ervan te begrijpen.
 
-Meer richt lijnen voor back-up en herstel van SQL Server op virtuele Azure-machines vindt u in het volgende onderwerp: [back-up maken en herstellen voor SQL Server in azure virtual machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Meer richt lijnen voor back-up en herstel van SQL Server op virtuele Azure-machines vindt u in het volgende onderwerp: [back-up maken en herstellen voor SQL Server in azure virtual machines](../../../azure-sql/virtual-machines/windows/backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
 Zie [SQL Server IaaS agent extension](../classic/sql-server-agent-extension.md)(Engelstalig) voor meer informatie over andere beschik bare automatiserings taken.
 
-Zie [SQL Server op azure virtual machines Overview](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer informatie over het uitvoeren van SQL Server op virtuele machines in Azure.
+Zie [SQL Server op azure virtual machines Overview](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie over het uitvoeren van SQL Server op virtuele machines in Azure.
 

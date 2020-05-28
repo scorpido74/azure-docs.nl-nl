@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681179"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021140"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Het Remote Rendering-pakket voor Unity installeren
 
@@ -22,7 +22,7 @@ Unity-pakketten zijn containers die kunnen worden beheerd via [Package Manager](
 Dit pakket bevat de volledige C# API en alle binaire bestanden voor invoeg toepassingen die vereist zijn voor het gebruik van externe rendering van Azure met eenheid.
 Het naam schema van de volgende eenheid voor pakketten wordt het pakket **com. micro soft. Azure. remote-rendering**genoemd.
 
-Het pakket maakt geen deel uit van de [opslag plaats ARR](https://github.com/Azure/azure-remote-rendering)-voor beelden en is niet beschikbaar in het interne pakket register van de eenheid. Als u het aan een project wilt toevoegen, moet u het bestand van `manifest.md` het project hand matig bewerken om het volgende toe te voegen:
+Het pakket maakt geen deel uit van de [opslag plaats ARR](https://github.com/Azure/azure-remote-rendering)-voor beelden en is niet beschikbaar in het interne pakket register van de eenheid. Als u het aan een project wilt toevoegen, moet u het bestand van het project hand matig bewerken `manifest.md` om het volgende toe te voegen:
 ```json
 {
   "scopedRegistries": [
@@ -43,9 +43,9 @@ Meer uitgebreide instructies vindt u in de [zelf studie: een geheel nieuw eenhei
 
 ## <a name="unity-render-pipelines"></a>Unit weergave-pijp lijnen
 
-Externe rendering werkt met zowel de **universele rendering-pijp lijn** als de **standaard weergave pijplijn**. Uit prestatie overwegingen wordt de universele rendering-pijp lijn aanbevolen.
+Externe rendering werkt met zowel de **:::no-loc text="Universal render pipeline":::** als **:::no-loc text="Standard render pipeline":::** . Uit prestatie overwegingen wordt de universele rendering-pijp lijn aanbevolen.
 
-Als u de **universele rendering-pijp lijn**wilt gebruiken, moet het bijbehorende pakket worden geïnstalleerd in Unity. Dit kan worden gedaan in de gebruikers interface van de **Package Manager** van Unit (pakket naam **Universal RP**, version 7.2.1 of hoger) of `Packages/manifest.json` via het bestand, zoals beschreven in de [zelf studie over unit project Setup](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
+Als u het wilt gebruiken, moet het **:::no-loc text="Universal render pipeline":::** bijbehorende pakket worden geïnstalleerd in eenheid. Dit kan worden gedaan in de gebruikers interface van de **Package Manager** van Unit (pakket naam **Universal RP**, version 7.2.1 of hoger) of via het `Packages/manifest.json` bestand, zoals beschreven in de [zelf studie over unit project Setup](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
