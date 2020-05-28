@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75659896"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020163"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Een app omhoog schalen in Azure App Service
 
@@ -62,7 +62,7 @@ Als uw app afhankelijk is van andere services, zoals Azure SQL Database of Azure
    
     ![Ga naar de pagina van de resource groep om uw Azure-app omhoog te schalen](./media/web-sites-scale/ResourceGroup.png)
 
-    Zie de documentatie voor het specifieke resource type om de gerelateerde resource omhoog te schalen. Als u bijvoorbeeld één SQL Database wilt opschalen, raadpleegt u de [resources van één data base schalen in Azure SQL database](../sql-database/sql-database-single-database-scale.md). Zie [MySQL-resources schalen](../mysql/concepts-pricing-tiers.md#scale-resources)voor meer informatie over het omhoog schalen van een Azure database for MySQL resource.
+    Zie de documentatie voor het specifieke resource type om de gerelateerde resource omhoog te schalen. Als u bijvoorbeeld één SQL Database wilt opschalen, raadpleegt u de [resources van één data base schalen in Azure SQL database](../azure-sql/database/single-database-scale.md). Zie [MySQL-resources schalen](../mysql/concepts-pricing-tiers.md#scale-resources)voor meer informatie over het omhoog schalen van een Azure database for MySQL resource.
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>

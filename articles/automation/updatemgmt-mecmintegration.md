@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836308"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013194"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Updatebeheer integreren met Windows-eind punt Configuration Manager
 
@@ -38,7 +38,7 @@ Voer de volgende stappen uit als u wilt door gaan met het beheren van update-imp
 1. Selecteer **updatebeheer**in azure Automation. Maak een nieuwe implementatie aan de hand van de stappen die worden beschreven in [een update-implementatie maken](automation-tutorial-update-management.md#schedule-an-update-deployment) en selecteer **geïmporteerde groepen** op de vervolg keuzelijst **type** om de juiste Windows-eindpunt Configuration Manager verzameling te selecteren. Houd rekening met de volgende belang rijke punten: a. Als er een onderhouds venster is gedefinieerd voor het geselecteerde Windows-eind punt Configuration Manager-apparaat, voldoen de leden van de verzameling deze in plaats van **de waarde-** instelling die in de geplande implementatie is gedefinieerd.
     b. Leden van de doel verzameling moeten een verbinding hebben met internet (hetzij direct, via een proxy server of via de gateway van Log Analytics).
 
-Na het volt ooien van de update-implementatie via Azure Automation, zullen de doel computers die lid zijn van de geselecteerde computer groep updates installeren op de geplande tijd van de lokale client cache. U kunt de [status van de update-implementatie bekijken](automation-tutorial-update-management.md#view-results-of-an-update-deployment) om de resultaten van uw implementatie te bewaken.
+Na het volt ooien van de update-implementatie via Azure Automation, zullen de doel computers die lid zijn van de geselecteerde computer groep updates installeren op de geplande tijd van de lokale client cache. U kunt de [status van de update-implementatie bekijken](automation-tutorial-update-management.md#check-deployment-status) om de resultaten van uw implementatie te bewaken.
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Software-updates beheren via Azure Automation
 

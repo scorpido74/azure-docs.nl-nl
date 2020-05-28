@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 59f969a920c30bb017e10d2aa233df02d69918e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594165"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116913"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van REST API en python
 
 In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het trainen van een aangepast model met hand matig gelabelde gegevens. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,15 +34,15 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 ## <a name="set-up-training-data"></a>Trainings gegevens instellen
 
-Vervolgens moet u de vereiste invoer gegevens instellen. De functie voor gelabelde gegevens heeft speciale invoer vereisten dan die nodig zijn voor het trainen van een aangepast model. 
+Vervolgens moet u de vereiste invoer gegevens instellen. De functie voor gelabelde gegevens heeft speciale invoer vereisten, behalve wat u nodig hebt om een aangepast model zonder labels te trainen.
 
 Zorg ervoor dat alle trainings documenten dezelfde indeling hebben. Als u formulieren in meerdere indelingen hebt, kunt u deze indelen in submappen op basis van de algemene indeling. Wanneer u traint, moet u de API naar een submap sturen.
 
 Als u een model wilt trainen met behulp van gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u informatie over het maken van dit bestand.
 
 * **Bron formulieren** : de formulieren waaruit gegevens moeten worden opgehaald. Ondersteunde typen zijn JPEG, PNG, PDF of TIFF.
-* **OCR-indelings bestanden** : json-bestanden waarin de grootte en positie van alle Lees bare tekst in elk bron formulier worden beschreven. U gebruikt de indelings-API voor formulier herkenning om deze gegevens te genereren. 
-* **Label bestanden** : json-bestanden met een beschrijving van gegevenslabels die een gebruiker hand matig heeft ingevoerd.
+* **OCR-indelings bestanden** : Dit zijn json-bestanden die de grootte en positie van alle Lees bare tekst in elk bron formulier beschrijven. U gebruikt de indelings-API voor formulier herkenning om deze gegevens te genereren. 
+* **Label bestanden** : Dit zijn json-bestanden die de gegevenslabels beschrijven die een gebruiker hand matig heeft ingevoerd.
 
 Al deze bestanden moeten dezelfde submap innemen en de volgende indeling hebben:
 
@@ -116,7 +116,7 @@ U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bi
 
 ### <a name="create-the-label-files"></a>De label bestanden maken
 
-Label bestanden bevatten koppelingen naar sleutel waarden die een gebruiker hand matig heeft ingevoerd. Ze zijn nodig voor gelabelde gegevens training, maar niet elk bron bestand moet een bijbehorend label bestand hebben. Bron bestanden zonder labels worden behandeld als gewone trainings documenten. We raden vijf of meer gelabelde bestanden aan voor een betrouw bare training.
+Label bestanden bevatten koppelingen naar sleutel waarden die een gebruiker hand matig heeft ingevoerd. Ze zijn nodig voor gelabelde gegevens training, maar niet elk bron bestand moet een bijbehorend label bestand hebben. Bron bestanden zonder labels worden behandeld als gewone trainings documenten. We raden vijf of meer gelabelde bestanden aan voor een betrouw bare training. U kunt een hulp programma voor de gebruikers interface gebruiken zoals het hulp programma voor het [labelen](./label-tool.md) van voor beelden om deze bestanden te genereren.
 
 Wanneer u een label bestand maakt, kunt u optioneel regio's &mdash; op exacte posities van waarden in het document opgeven. Hiermee krijgt de training nog nauw keuriger. Regio's worden ingedeeld als een set van acht waarden die overeenkomen met vier X, Y-coördinaten: linksboven, rechtsboven, rechtsonder en linksonder. Coördinaat waarden liggen tussen nul en één, geschaald naar de afmetingen van de pagina.
 
@@ -187,8 +187,8 @@ Voor elk bron formulier moet de oorspronkelijke bestands naam worden toegevoegd 
                 ...
 ```
 
-> [!NOTE]
-> U kunt slechts één label Toep assen op elk tekst element en elk label kan slechts eenmaal per pagina worden toegepast. U kunt momenteel geen label op meerdere pagina's Toep assen.
+> [!IMPORTANT]
+> U kunt slechts één label Toep assen op elk tekst element en elk label kan slechts eenmaal per pagina worden toegepast. U kunt geen label Toep assen op meerdere pagina's.
 
 
 ## <a name="train-a-model-using-labeled-data"></a>Een model trainen met behulp van gelabelde gegevens
@@ -554,4 +554,7 @@ We begrijpen dat dit scenario essentieel is voor onze klanten en we werken eraan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u de formulier Recognizer REST API met python kunt gebruiken om een model te trainen met hand matig gelabelde gegevens. Bekijk vervolgens de [API-referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) om de formulier Recognizer API te verkennen.
+In deze Quick Start hebt u geleerd hoe u de formulier Recognizer REST API met python kunt gebruiken om een model te trainen met hand matig gelabelde gegevens. Bekijk vervolgens de API-referentie documentatie om de formulier Recognizer API te verkennen.
+
+> [!div class="nextstepaction"]
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

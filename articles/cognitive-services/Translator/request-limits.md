@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592233"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995782"
 ---
 # <a name="request-limits-for-translator"></a>Aanvraag limieten voor Translator
 
@@ -27,14 +27,14 @@ Elke Vertaal aanvraag is beperkt tot 5.000 tekens, in alle doel talen waarnaar u
 
 De volgende tabel bevat een overzicht van matrix elementen en teken limieten voor elke bewerking van de vertaler.
 
-| Bewerking | Maximale grootte van matrix element |   Maximum aantal matrix elementen |  Maximale aanvraag grootte (tekens) |
+| Bewerking | Maximale grootte van matrix element |    Maximum aantal matrix elementen |    Maximale aanvraag grootte (tekens) |
 |:----|:----|:----|:----|
-| Vertalen | 5.000 | 100   | 5.000 |
-| Transcriberen | 5.000 | 10    | 5.000 |
-| Detecteren | 10.000 | 100 |   50,000 |
-| BreakSentence | 10.000    | 100 | 50,000 |
-| Opzoeken in woordenlijst| 100 |  10  | 1000 |
-| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|   2.000 |
+| Vertalen | 5.000    | 100    | 5.000 |
+| Transcriberen | 5.000    | 10    | 5.000 |
+| Detecteren | 10.000 |    100 |    50,000 |
+| BreakSentence | 10.000    | 100 |    50,000 |
+| Opzoeken in woordenlijst| 100 |    10    | 1000 |
+| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|    2.000 |
 
 ## <a name="character-limits-per-hour"></a>Maximum aantal tekens per uur
 
@@ -82,4 +82,4 @@ Wanneer u de functie [BreakSentence](https://docs.microsoft.com/azure/cognitive-
 
 * [Prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionale beschikbaarheid](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [V3 Translator-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 Translator-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

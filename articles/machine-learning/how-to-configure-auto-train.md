@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 625c1ea474693732ab19e82de4730d2f8c971979
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736123"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117491"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -196,15 +196,15 @@ Meer informatie over de specifieke definities van deze metrische gegevens in [in
 
 ### <a name="data-featurization"></a>Gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-use-automated-ml-for-ml-models.md#featurization).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](how-to-configure-auto-features.md#) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties.
 
-Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling inschakelen `featurization` . De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
+Wanneer u uw experimenten in uw `AutoMLConfig` object configureert, kunt u de instelling in-of uitschakelen `featurization` . De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
 |Parametrisatie-configuratie | Beschrijving |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-configure-auto-features.md#featurization) automatisch worden uitgevoerd. **Standaardinstelling**|
 |`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
-|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch worden uitgevoerd.|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-features.md#customize-featurization).|
 
 > [!NOTE]
 > Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
@@ -361,7 +361,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Geautomatiseerde functie techniek
 
-Bekijk de lijst met voor verwerkings-en [automatische functie techniek](concept-automated-ml.md#preprocess) die zich voordoet wanneer `"featurization": 'auto'` .
+Bekijk de lijst met voor verwerkings-en [automatische functie techniek]() die zich voordoet wanneer `"featurization": 'auto'` .
 
 Bekijk dit voor beeld:
 + Er zijn vier invoer functies: A (numeriek), B (numeriek), C (numeriek), D (DateTime)
@@ -430,36 +430,9 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
    |Minder|Hiermee wordt aangegeven of de invoer functie is verwijderd of gebruikt.|
    |EngineeringFeatureCount|Aantal functies dat wordt gegenereerd via geautomatiseerde functie technische trans formaties.|
    |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
-   
-### <a name="customize-feature-engineering"></a>Functie techniek aanpassen
-Als u functie techniek wilt aanpassen, geeft u op  `"featurization": FeaturizationConfig` .
-
-Ondersteunde aanpassingen zijn onder andere:
-
-|Aanpassing|Definitie|
-|--|--|
-|Update van het kolom doel|Het functie type voor de opgegeven kolom overschrijven.|
-|Para meter bijwerken van trans formatie |De para meters voor de opgegeven transformator bijwerken. Biedt momenteel ondersteuning voor toerekening (gemiddelde, meest frequente & mediaan) en HashOneHotEncoder.|
-|Kolommen neerzetten |Kolommen die moeten worden verwijderd uit de featurized.|
-|Trans formaties blok keren| Blok keren dat trans formaties moeten worden gebruikt in het parametrisatie-proces.|
-
-Het FeaturizationConfig-object maken met API-aanroepen:
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Schalen/normaliseren en algoritmen met afstemming-waarden:
 
-Gebruik fitted_model om inzicht te krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn. Meer [informatie over schalen/normalisatie](concept-automated-ml.md#preprocess). Hier volgt een voorbeeld van uitvoer:
+Gebruik fitted_model om inzicht te krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn. Meer [informatie over schalen/normalisatie](). Hier volgt een voorbeeld van uitvoer:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

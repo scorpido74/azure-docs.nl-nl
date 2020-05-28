@@ -10,12 +10,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629385"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118808"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Toegang tot gegevensarchieven en bestandsshares met Windows-verificatie van SSIS-pakketten in Azure
 
@@ -25,16 +25,16 @@ U kunt Windows-verificatie gebruiken voor toegang tot gegevens archieven, zoals 
 
 | Verbindingsmethode | Effectief bereik | Setup-stap | Toegangs methode in pakketten | Aantal referentie sets en verbonden resources | Type van verbonden resources | 
 |---|---|---|---|---|---|
-| Een uitvoerings context op activiteit niveau instellen | Per uitvoering van SSIS-pakket activiteit | Configureer de **Windows-verificatie** -eigenschap voor het instellen van een ' uitvoering/uitvoeren als-context wanneer SSIS-pakketten worden uitgevoerd als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen.<br/><br/> Zie [Configure SSIS package-activiteit](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files `\\YourFileShareServerName\YourFolderName` gebruikt: of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor slechts één referentieset voor alle verbonden resources | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
-| Een uitvoerings context op catalogus niveau instellen | Per Azure-SSIS IR, maar wordt overschreven bij het instellen van een uitvoerings context op activiteit niveau (zie hierboven) | Voer de `catalog.set_execution_credential` opgeslagen procedure SSISDB uit om een context voor uitvoeren/uitvoeren als in te stellen.<br/><br/> Zie de rest van dit artikel voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files `\\YourFileShareServerName\YourFolderName` gebruikt: of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor slechts één referentieset voor alle verbonden resources | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
-| Referenties blijven behouden via `cmdkey` de opdracht | Per Azure-SSIS IR, maar wordt overschreven bij het instellen van een activiteit/uitvoerings context op catalogus niveau (zie hierboven) | Voer `cmdkey` de opdracht uit in een aangepast installatie`main.cmd`script () bij het inrichten van uw Azure-SSIS IR, bijvoorbeeld als u bestands shares of Azure files `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` gebruikt `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey`: of.<br/><br/> Zie [Customize setup for Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files `\\YourFileShareServerName\YourFolderName` gebruikt: of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor meerdere referentie sets voor verschillende verbonden bronnen | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
-| Schijven koppelen aan de uitvoerings tijd van het pakket (niet-persistent) | Per pakket | Opdracht `net use` uitvoeren in taak uitvoeren proces die aan het begin van de controle stroom in uw pakketten wordt toegevoegd, bijvoorbeeld`net use D: \\YourFileShareServerName\YourFolderName` | Toegang tot bestands shares via toegewezen stations | Ondersteuning voor meerdere stations voor verschillende bestands shares | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
+| Een uitvoerings context op activiteit niveau instellen | Per uitvoering van SSIS-pakket activiteit | Configureer de **Windows-verificatie** -eigenschap voor het instellen van een ' uitvoering/uitvoeren als-context wanneer SSIS-pakketten worden uitgevoerd als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen.<br/><br/> Zie [Configure SSIS package-activiteit](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files gebruikt: `\\YourFileShareServerName\YourFolderName` of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor slechts één referentieset voor alle verbonden resources | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
+| Een uitvoerings context op catalogus niveau instellen | Per Azure-SSIS IR, maar wordt overschreven bij het instellen van een uitvoerings context op activiteit niveau (zie hierboven) | Voer `catalog.set_execution_credential` de opgeslagen procedure SSISDB uit om een context voor uitvoeren/uitvoeren als in te stellen.<br/><br/> Zie de rest van dit artikel voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files gebruikt: `\\YourFileShareServerName\YourFolderName` of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor slechts één referentieset voor alle verbonden resources | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
+| Referenties blijven behouden via de `cmdkey` opdracht | Per Azure-SSIS IR, maar wordt overschreven bij het instellen van een activiteit/uitvoerings context op catalogus niveau (zie hierboven) | Voer `cmdkey` de opdracht uit in een aangepast installatie script ( `main.cmd` ) bij het inrichten van uw Azure-SSIS IR, bijvoorbeeld als u bestands shares of Azure files gebruikt: `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` of `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` .<br/><br/> Zie [Customize setup for Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)voor meer informatie. | Toegang tot bronnen rechtstreeks in pakketten via een UNC-pad, bijvoorbeeld als u bestands shares of Azure Files gebruikt: `\\YourFileShareServerName\YourFolderName` of`\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Ondersteuning voor meerdere referentie sets voor verschillende verbonden bronnen | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -SQL-servers on-premises/Azure-Vm's met Windows-verificatie<br/><br/> -Andere bronnen met Windows-verificatie |
+| Schijven koppelen aan de uitvoerings tijd van het pakket (niet-persistent) | Per pakket | `net use`Opdracht uitvoeren in taak uitvoeren proces die aan het begin van de controle stroom in uw pakketten wordt toegevoegd, bijvoorbeeld`net use D: \\YourFileShareServerName\YourFolderName` | Toegang tot bestands shares via toegewezen stations | Ondersteuning voor meerdere stations voor verschillende bestands shares | -Bestands shares op locatie/Azure Vm's<br/><br/> -Azure Files, Zie [een Azure-bestands share gebruiken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
 |||||||
 
 > [!WARNING]
 > Als u geen van de bovenstaande methoden gebruikt om toegang te krijgen tot gegevens archieven met Windows-verificatie, hebben uw pakketten die afhankelijk zijn van Windows-authenticatie, geen toegang tot ze en kunnen ze niet worden uitgevoerd tijdens runtime. 
 
-In de rest van dit artikel wordt beschreven hoe u de SSIS-catalogus (SSISDB) die wordt gehost in Azure SQL Database Server/beheerd exemplaar, kunt configureren voor het uitvoeren van pakketten op Azure-SSIS IR die gebruikmaken van Windows-verificatie voor toegang tot gegevens archieven. 
+In de rest van dit artikel wordt beschreven hoe u de SSIS-catalogus (SSISDB) die wordt gehost in SQL Database/SQL Managed Instance kunt configureren voor het uitvoeren van pakketten op Azure-SSIS IR die gebruikmaken van Windows-verificatie voor toegang tot gegevens archieven. 
 
 ## <a name="you-can-only-use-one-set-of-credentials"></a>U kunt slechts één set met referenties gebruiken
 
@@ -44,7 +44,7 @@ Wanneer u Windows-verificatie gebruikt in een SSIS-pakket, kunt u slechts één 
 
 Ga als volgt te werk om domein referenties op te geven waarmee pakketten Windows-verificatie kunnen gebruiken voor toegang tot gegevens archieven op locatie:
 
-1. Met SQL Server Management Studio (SSMS) of een ander hulp programma kunt u verbinding maken met Azure SQL Database Server/beheerd exemplaar waarop SSISDB wordt gehost. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
+1. Met SQL Server Management Studio (SSMS) of een ander hulp programma kunt u verbinding maken met SQL Database/SQL Managed instance die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
 
 2. Open een query venster met SSISDB als de huidige data base.
 
@@ -60,7 +60,7 @@ Ga als volgt te werk om domein referenties op te geven waarmee pakketten Windows
 
 Ga als volgt te werk om de referenties van het actieve domein weer te geven:
 
-1. Met SSMS of een ander hulp programma kunt u verbinding maken met Azure SQL Database Server/beheerde instantie die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
+1. Met SSMS of een ander hulp programma kunt u verbinding maken met SQL Database/SQL Managed instance die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
 
 2. Open een query venster met SSISDB als de huidige data base.
 
@@ -75,7 +75,7 @@ Ga als volgt te werk om de referenties van het actieve domein weer te geven:
 ### <a name="clear-domain-credentials"></a>Domein referenties wissen
 Ga als volgt te werk om de referenties die u hebt gegeven, zoals beschreven in dit artikel, te wissen en te verwijderen:
 
-1. Met SSMS of een ander hulp programma kunt u verbinding maken met Azure SQL Database Server/beheerde instantie die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
+1. Met SSMS of een ander hulp programma kunt u verbinding maken met SQL Database/SQL Managed instance die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
 
 2. Open een query venster met SSISDB als de huidige data base.
 
@@ -109,7 +109,7 @@ Ga als volgt te werk om toegang te krijgen tot een SQL Server op locatie van pak
 
 3. Voeg uw Azure-SSIS IR toe aan een Microsoft Azure Virtual Network dat is verbonden met de SQL Server on-premises.  Zie [Azure-SSIS IR toevoegen aan een Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
 
-4. Gebruik de `catalog.set_execution_credential` opgeslagen procedure SSISDB om referenties op te geven zoals beschreven in dit artikel.
+4. Gebruik `catalog.set_execution_credential` de opgeslagen procedure SSISDB om referenties op te geven zoals beschreven in dit artikel.
 
 ## <a name="connect-to-a-file-share-on-premises"></a>Verbinding maken met een bestands share op locatie
 
@@ -134,13 +134,13 @@ Ga als volgt te werk om toegang te krijgen tot een bestands share op locatie van
 
 2. Voeg uw Azure-SSIS IR toe aan een Microsoft Azure Virtual Network dat is verbonden met de bestands share on-premises.  Zie [Azure-SSIS IR toevoegen aan een Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
 
-3. Gebruik de `catalog.set_execution_credential` opgeslagen procedure SSISDB om referenties op te geven zoals beschreven in dit artikel.
+3. Gebruik `catalog.set_execution_credential` de opgeslagen procedure SSISDB om referenties op te geven zoals beschreven in dit artikel.
 
 ## <a name="connect-to-a-file-share-on-azure-vm"></a>Verbinding maken met een bestands share op een virtuele Azure-machine
 
 Ga als volgt te werk om toegang te krijgen tot een bestands share op Azure VM vanuit pakketten die worden uitgevoerd in Azure:
 
-1. Met SSMS of een ander hulp programma kunt u verbinding maken met Azure SQL Database Server/beheerde instantie die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
+1. Met SSMS of een ander hulp programma kunt u verbinding maken met SQL Database/SQL Managed instance die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
 
 2. Open een query venster met SSISDB als de huidige data base.
 
@@ -156,7 +156,7 @@ Zie [Azure files](https://azure.microsoft.com/services/storage/files/)voor meer 
 
 Ga als volgt te werk om toegang te krijgen tot een bestands share in Azure Files van pakketten die worden uitgevoerd in Azure:
 
-1. Met SSMS of een ander hulp programma kunt u verbinding maken met Azure SQL Database Server/beheerde instantie die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
+1. Met SSMS of een ander hulp programma kunt u verbinding maken met SQL Database/SQL Managed instance die als host fungeert voor SSISDB. Zie [verbinding maken met SSISDB in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)voor meer informatie.
 
 2. Open een query venster met SSISDB als de huidige data base.
 

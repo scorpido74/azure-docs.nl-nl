@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758806"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022415"
 ---
 # <a name="z-fighting-mitigation"></a>Beperking van Z-bestrijding
 
-Wanneer twee Opper vlakken elkaar overlappen, is het niet duidelijk dat deze boven op de andere moeten worden weer gegeven. Het resultaat is zelfs per pixel afhankelijk, wat resulteert in een weergave afhankelijke artefacten. Als de camera of het net wordt verplaatst, knipt u deze patronen daarom duidelijk. Dit artefact wordt *z-vechten*genoemd. Voor AR-en VR-toepassingen wordt het probleem geïntensiveerd omdat apparaten die zijn gekoppeld aan de vizier altijd worden verplaatst. Om te voor komen dat viewer met z-bestrij ding van de beperking van de beveiliging beschikbaar is in azure rendering op afstand.
+Wanneer twee Opper vlakken elkaar overlappen, is het niet duidelijk dat deze boven op de andere moeten worden weer gegeven. Het resultaat is zelfs per pixel afhankelijk, wat resulteert in een camera weergave-afhankelijke artefacten. Als de camera of het net wordt verplaatst, knipt u deze patronen daarom duidelijk. Dit artefact wordt *z-vechten*genoemd. Voor AR-en VR-toepassingen wordt het probleem geïntensiveerd omdat apparaten die zijn gekoppeld aan de vizier altijd worden verplaatst. Om te voor komen dat viewer met z-bestrij ding van de beperking van de beveiliging beschikbaar is in azure rendering op afstand.
 
 ## <a name="z-fighting-mitigation-modes"></a>Z-bestrij ding van risico modi
 

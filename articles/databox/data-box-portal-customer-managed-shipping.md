@@ -29,7 +29,7 @@ Zelf-beheerde verzen ding is beschikbaar als optie wanneer u [Azure data Box ord
 * Singapore
 * Zuid-Korea
 
-## <a name="use-self-managed-shipping"></a>Zelf-beheerde verzen ding gebruiken
+## <a name="use-self-managed-shipping"></a>Zelfbeheerde verzending gebruiken
 
 Wanneer u een Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen.
 

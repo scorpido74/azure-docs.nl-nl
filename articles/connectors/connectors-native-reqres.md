@@ -51,7 +51,7 @@ De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](
 
 Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u de [aanvraag trigger type](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met https-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak in `http request` als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 

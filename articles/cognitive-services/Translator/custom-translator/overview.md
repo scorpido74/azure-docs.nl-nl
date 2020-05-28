@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 12/09/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592760"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996938"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
@@ -33,7 +33,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 |[Maak gebruik van neurale technologie voor automatische vertalingen](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbeter de vertalingen door gebruik te maken van neurale machinevertalingen (NMT) van Custom Translator.       |
 |[Bouw systemen met uw eigen vaktermen](what-are-parallel-documents.md)     |  Bouw vertaalsystemen en pas vertaalsystemen aan met behulp van parallelle documenten in de terminologie van uw eigen bedrijf en bedrijfstak.       |
 |[Een woordenlijst gebruiken om uw modellen te bouwen](what-is-dictionary.md)     |   Als u geen set met trainingsgegevens hebt, kunt u een model trainen met alleen de gegevens van een woordenlijst.       |
-|[Werk samen met anderen](how-to-manage-settings.md#share-your-workspace)     |   Werk samen met uw team door uw werk te delen met andere personen.     |
+|[Samenwerken met anderen](how-to-manage-settings.md#share-your-workspace)     |   Werk samen met uw team door uw werk te delen met andere personen.     |
 |[Toegang tot uw aangepaste vertaalmodel](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Uw aangepaste Vertaal model kan op elk gewenst moment worden geopend door uw bestaande toepassingen/Program ma's via Translator v3.       |
 
 ## <a name="get-better-translations"></a>Betere vertalingen verkrijgen

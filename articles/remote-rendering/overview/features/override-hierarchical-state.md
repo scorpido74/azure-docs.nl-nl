@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758976"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021327"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
@@ -27,23 +27,23 @@ Denk bijvoorbeeld aan het model van een auto en u wilt de hele auto overschakele
 
 De vaste set statussen die kunnen worden overschreven is:
 
-* **Verborgen**: respectievelijke mazen in het scène diagram worden verborgen of weer gegeven.
-* **Tint kleur**: een gerenderd object kan worden voorzien van een kleur tint met de afzonderlijke tint kleur en het tinten-gewicht. De onderstaande afbeelding toont kleuren tinten van de velg van een wiel.
+* **`Hidden`**: Respectievelijke mazen in het scène diagram worden verborgen of weer gegeven.
+* **`Tint color`**: Een gerenderd object kan worden voorzien van een kleur tint met de afzonderlijke tint kleur en het tinten-gewicht. De onderstaande afbeelding toont kleuren tinten van de velg van een wiel.
   
   ![Kleur tint](./media/color-tint.png)
 
-* **Zie-through**: de geometrie wordt semi-transparant weer gegeven, bijvoorbeeld om de binnenste delen van een object zichtbaar te maken. In de volgende afbeelding ziet u dat de volledige auto wordt weer gegeven in de doorlees modus, met uitzonde ring van de rode rem Caliper:
+* **`See-through`**: De geometrie wordt semi-transparant gerenderd, bijvoorbeeld om de binnenste delen van een object zichtbaar te maken. In de volgende afbeelding ziet u dat de volledige auto wordt weer gegeven in de doorlees modus, met uitzonde ring van de rode rem Caliper:
 
   ![Zie](./media/see-through.png)
 
   > [!IMPORTANT]
   > Het effect doorkijk werkt alleen wanneer de *TileBasedComposition* - [rendering modus](../../concepts/rendering-modes.md) wordt gebruikt.
 
-* **Geselecteerd**: de geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
+* **`Selected`**: De geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
 
   ![Selectie overzicht](./media/selection-outline.png)
 
-* **DisableCollision**: de geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). Met de vlag **Hidden** worden geen botsingen uitgeschakeld, zodat deze twee vlaggen vaak samen worden ingesteld.
+* **`DisableCollision`**: De geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). De **`Hidden`** vlag heeft geen invloed op de status vlag voor conflicten, zodat deze twee vlaggen vaak samen worden ingesteld.
 
 ## <a name="hierarchical-overrides"></a>Hiërarchische onderdrukkingen
 
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>Tint kleur
 
-De kleur onderdrukking van tinten is iets speciaal omdat er sprake is van een aan/uit/overgenomen status en een tint kleur eigenschap. Het gedeelte alpha van de tint kleur definieert het gewicht van het effect van de tint: als deze is ingesteld op 0,0, is geen tint kleur zichtbaar en als deze is ingesteld op 1,0, wordt het object weer gegeven met de kleur puur tint. Voor in-tussen waarden wordt de uiteindelijke kleur gemengd met de tint kleur. De tint kleur kan per frame worden gewijzigd om een kleur animatie te bereiken.
+De `tint color` onderdrukking is iets speciaal omdat er sprake is van een aan/uit/overgenomen status en een tint kleur eigenschap. Het gedeelte alpha van de tint kleur definieert het gewicht van het effect van de tint: als deze is ingesteld op 0,0, is geen tint kleur zichtbaar en als deze is ingesteld op 1,0, wordt het object weer gegeven met de kleur puur tint. Voor in-tussen waarden wordt de uiteindelijke kleur gemengd met de tint kleur. De tint kleur kan per frame worden gewijzigd om een kleur animatie te bereiken.
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 

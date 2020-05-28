@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 7a935fa4c4e91cf8adcd6df467ac56eeecaf46c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605942"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114526"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit Opgeslagen procedure in Azure Data Factory
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u een SSIS-pakket uitvoert in een Azure Data
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-In de procedure in dit artikel wordt gebruikgemaakt van een Azure-SQL database die als host fungeert voor de SSIS-catalogus. U kunt ook een door Azure SQL Database beheerd exemplaar gebruiken.
+In de stapsgewijze instructies in dit artikel wordt gebruikgemaakt van Azure SQL Database voor het hosten van de SSIS-catalogus. U kunt ook Azure SQL Managed instance gebruiken.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Een Azure SSIS Integration Runtime maken
 Een Azure SSIS Integration runtime maken als u er nog geen hebt door de stapsgewijze instructie in de [zelf studie te volgen: SSIS-pakketten implementeren](tutorial-create-azure-ssis-runtime-portal.md).
@@ -62,7 +62,7 @@ De eerste stap is het maken van een data factory met behulp van de Azure Portal.
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst ziet u alleen locaties die worden ondersteund in Data Factory. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich op andere locaties bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
-7. Klik op **maken**.
+7. Klik op **Maken**.
 8. Op het dash board ziet u de volgende tegel met de status: **Data Factory implementeren**. 
 
      ![tegel met de status 'gegevensfactory implementeren'](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -86,7 +86,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
 4. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit: 
 
     1. Selecteer **Azure SQL database** voor **type**.
-    2. Selecteer de **standaard** Azure Integration runtime om verbinding te maken met de Azure SQL database die `SSISDB` als host fungeert voor de-data base.
+    2. Selecteer de **standaard** Azure Integration runtime om verbinding te maken met de Azure SQL database die als host fungeert voor de- `SSISDB` Data Base.
     3. Selecteer de Azure SQL Database die als host fungeert voor de SSISDB-Data Base voor het veld **Server naam** .
     4. Selecteer **SSISDB** voor de naam van de **Data Base**.
     5. Voer bij **gebruikers naam**de naam in van de gebruiker die toegang heeft tot de data base.
@@ -98,7 +98,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
 5. Ga in het venster Eigenschappen naar het tabblad **opgeslagen procedure** van het tabblad **SQL-account** en voer de volgende stappen uit: 
 
     1. Selecteer **bewerken**. 
-    2. Voer `sp_executesql`in het veld **opgeslagen procedure naam** in. 
+    2. Voer in het veld **opgeslagen procedure naam** in `sp_executesql` . 
     3. Klik op **+ Nieuw** in het gedeelte **para meters van de opgeslagen procedure** . 
     4. Voer **stmt**in bij **naam** van de para meter. 
     5. Voer een **teken reeks**in bij het **type** van de para meter. 
@@ -134,7 +134,7 @@ In deze sectie gaat u een pijplijn uitvoering activeren en vervolgens controlere
 
     ![Uitvoering van activiteiten](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. U kunt de volgende **query** uitvoeren op de SSISDB-data base in uw Azure SQL-Server om te controleren of het pakket is uitgevoerd. 
+4. U kunt de volgende **query** uitvoeren op de SSISDB-data base in SQL database om te controleren of het pakket is uitgevoerd. 
 
     ```sql
     select * from catalog.executions
@@ -201,7 +201,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
 1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
 
     > [!IMPORTANT]
-    > Vervang &lt;&gt;servername &lt;,&gt;username en &lt;Password&gt; door de waarden van uw Azure SQL database voordat u het bestand opslaat.
+    > Vervang &lt; servername &gt; , &lt; username &gt; en &lt; Password door de &gt; waarden van uw Azure SQL database voordat u het bestand opslaat.
 
     ```json
     {
@@ -229,7 +229,7 @@ In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met 
 1. Maak een JSON-bestand met de naam **RunSSISPackagePipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 
     > [!IMPORTANT]
-    > Vervang &lt;de mapnaam&gt;, &lt;de project&gt;naam &lt;, de&gt; pakket naam met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat. 
+    > Vervang &lt; de mapnaam &gt; , &lt; de project naam &gt; , &lt; de pakket naam &gt; met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat. 
 
     ```json
     {
@@ -353,7 +353,7 @@ In de vorige stap hebt u de pijp lijn op aanvraag geactiveerd. U kunt ook een sc
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    U kunt de volgende query uitvoeren op de SSISDB-data base in uw Azure SQL-Server om te controleren of het pakket is uitgevoerd. 
+    U kunt de volgende query uitvoeren op de SSISDB-data base in SQL Database om te controleren of het pakket is uitgevoerd. 
 
     ```sql
     select * from catalog.executions

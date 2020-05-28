@@ -4,19 +4,19 @@ description: Beleid voor voorwaardelijke toegang maken om verbeteringen van de i
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9cfba377aba30d4687bab4ba7c5a311c70c4905
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295156"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995153"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Voorwaardelijke toegang: voorwaardelijke toegang op basis van een risico
 
@@ -53,8 +53,8 @@ Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiliging
    1. Selecteer **Done**.
 1. Selecteer onder **voor waarden** **gebruikers risico**en kies **hoog**.
    1. Klik op **selecteren** en vervolgens op **gereed**.
-1. Kies onder **controle** > van**toegang**de optie **toegang toestaan**, en selecteer vervolgens **wachtwoord wijziging vereisen**.
-   1. Klik op **selecteren**.
+1. Kies onder **controle**van  >  **toegang**de optie **toegang toestaan**, en selecteer vervolgens **wachtwoord wijziging vereisen**.
+   1. Klik op **Selecteren**.
 1. Stel **beleid afdwingen** in **op aan**.
 1. Klik op **Opslaan**.
 
@@ -71,8 +71,8 @@ De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer 
    1. Selecteer **Done**.
 1. Selecteer onder **voor waarden** **aanmeldings risico**en kies vervolgens **medium en hoger**.
    1. Klik op **selecteren** en vervolgens op **gereed**.
-1. Kies onder **Controls** > **Access**de optie **toegang toestaan**en selecteer vervolgens **multi-factor Authentication vereisen**.
-   1. Klik op **selecteren**.
+1. Kies onder **Controls**  >  **Access**de optie **toegang toestaan**en selecteer vervolgens **multi-factor Authentication vereisen**.
+   1. Klik op **Selecteren**.
 1. Stel **beleid afdwingen** in **op aan**.
 1. Klik op **Opslaan**.
 

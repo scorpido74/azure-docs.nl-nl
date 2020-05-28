@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 05/27/2020
 tags: connectors
-ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651012"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118671"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -49,23 +49,38 @@ Als u dit artikel wilt volgen, hebt u de volgende items nodig:
 
 * Uw [SAP-toepassings server](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) of [SAP-berichten server](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Down load en installeer de meest recente [on-premises gegevens gateway](https://www.microsoft.com/download/details.aspx?id=53127) op elke on-premises computer. Zorg ervoor dat u uw gateway in de Azure Portal hebt ingesteld voordat u doorgaat. De gateway helpt u veilig toegang te krijgen tot on-premises gegevens en bronnen. Zie [een on-premises gegevens gateway installeren voor Azure Logic apps](../logic-apps/logic-apps-gateway-install.md)voor meer informatie.
+* [Down load en installeer de on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) op uw lokale computer. Maak vervolgens [een Azure gateway-resource](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) voor die gateway in het Azure Portal. De gateway helpt u veilig toegang te krijgen tot on-premises gegevens en bronnen. 
+
+  * Zorg er als best practice voor dat u een ondersteunde versie van de on-premises gegevens gateway gebruikt. Micro soft brengt elke maand een nieuwe versie uit. Op dit moment ondersteunt micro soft de laatste zes versies. Als u een probleem met uw gateway ondervindt, voert u [een upgrade uit naar de nieuwste versie](https://aka.ms/on-premises-data-gateway-installer), die mogelijk updates bevat om het probleem op te lossen.
+
+* [Down load, installeer en configureer de meest recente SAP-client bibliotheek](#sap-client-library-prerequisites) op dezelfde computer als de on-premises gegevens gateway.
+
+* Bericht inhoud die u kunt verzenden naar uw SAP-server, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
+
+### <a name="sap-client-library-prerequisites"></a>Vereisten voor SAP-client bibliotheek
+
+* Standaard plaatst het SAP-installatie programma de assembly bestanden in de standaardmap voor installatie. Kopieer de assembly bestanden uit de standaardmap voor installatie naar de installatiemap van de gateway.
+
+    * Als uw SAP-verbinding mislukt met het fout bericht "Controleer de account gegevens en/of de machtigingen en probeer het opnieuw", de assembly bestanden kunnen zich op de verkeerde locatie bevindt. Zorg ervoor dat u de assembly bestanden hebt gekopieerd naar de installatiemap van de gateway. Gebruik vervolgens [de logboek viewer voor .NET-assembly-bindingen voor het oplossen van problemen](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), waarmee u kunt controleren of de assembly bestanden zich op de juiste locatie bevinden.
+
+    * U kunt eventueel de optie **globale assembly-cache registratie** selecteren wanneer u de SAP-client bibliotheek installeert.
+
+* Zorg ervoor dat u de nieuwste versie, [SAP connector (NCo 3,0) voor Microsoft .net 3.0.22.0 die is gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://softwaredownloads.sap.com/file/0020000001000932019), om de volgende redenen hebt geïnstalleerd:
+
+    * Eerdere SAP NCo-versies kunnen worden gedeadlockd wanneer meer dan één IDoc-bericht tegelijk wordt verzonden. Deze voor waarde blokkeert alle latere berichten die worden verzonden naar de SAP-bestemming, waardoor er een time-out optreedt voor de berichten.
+    * De on-premises gegevens gateway wordt alleen uitgevoerd op 64-bits systemen. Anders krijgt u een fout bericht over een onjuiste afbeelding omdat de data gateway-hostservice geen 32-bits-assembly's ondersteunt.
+
+    * Zowel de data gateway-hostservice als de micro soft SAP-adapter gebruiken .NET Framework 4,5. De SAP-NCo voor .NET Framework 4,0 werkt met processen die .NET runtime 4,0 gebruiken in 4.7.1. De SAP-NCo voor .NET Framework 2,0 werkt met processen die gebruikmaken van .NET runtime 2,0 tot 3,5, maar werkt niet meer met de meest recente on-premises gegevens gateway.
+
+### <a name="snc-prerequisites"></a>Vereisten voor SNC
+
+Configureer deze instellingen als u SNC (optioneel) gebruikt:
 
 * Als u SNC gebruikt met SSO, moet u ervoor zorgen dat de gateway wordt uitgevoerd als een gebruiker die is toegewezen aan de SAP-gebruiker. Als u het standaard account wilt wijzigen, selecteert u **account wijzigen**en voert u de gebruikers referenties in.
 
   ![Gateway account wijzigen](./media/logic-apps-using-sap-connector/gateway-account.png)
 
 * Als u SNC inschakelt met een extern beveiligings product, kopieert u de SNC-bibliotheek of-bestanden op dezelfde computer waarop de gateway is geïnstalleerd. Enkele voor beelden van SNC-producten zijn [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos en NTLM.
-
-* Down load en installeer de meest recente SAP-client bibliotheek, die momenteel [SAP connector (NCo 3,0) is voor Microsoft .net 3.0.22.0 gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://softwaredownloads.sap.com/file/0020000001000932019), op dezelfde computer als de on-premises gegevens gateway. Installeer deze versie of later om de volgende redenen:
-
-  * Eerdere SAP NCo-versies kunnen worden gedeadlockd wanneer meer dan één IDoc-bericht tegelijk wordt verzonden. Deze voor waarde blokkeert alle latere berichten die worden verzonden naar de SAP-bestemming, waardoor er een time-out optreedt voor de berichten.
-  
-  * De on-premises gegevens gateway wordt alleen uitgevoerd op 64-bits systemen. Anders krijgt u een fout bericht over een onjuiste afbeelding omdat de data gateway-hostservice geen 32-bits-assembly's ondersteunt.
-  
-  * Zowel de data gateway-hostservice als de micro soft SAP-adapter gebruiken .NET Framework 4,5. De SAP-NCo voor .NET Framework 4,0 werkt met processen die .NET runtime 4,0 gebruiken in 4.7.1. De SAP-NCo voor .NET Framework 2,0 werkt met processen die gebruikmaken van .NET runtime 2,0 tot 3,5, maar werkt niet meer met de meest recente on-premises gegevens gateway.
-
-* Bericht inhoud die u kunt verzenden naar uw SAP-server, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
 
 <a name="migrate"></a>
 
@@ -89,11 +104,14 @@ In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een H
 
 In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
+> [!NOTE]
+> Wanneer een logische app IDoc pakketten van SAP ontvangt, wordt het ' Plain ' XML-schema dat door SAP WE60 IDoc-documentatie is gegenereerd niet door de [aanvraag trigger](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) ondersteund. Het ' Plain ' XML-schema wordt echter ondersteund voor scenario's waarin berichten van Logic apps *naar SAP worden* verzonden. U kunt de aanvraag trigger met SAP IDoc XML gebruiken, maar niet met IDoc via RFC. Of u kunt de XML omzetten in de gewenste indeling. 
+
 In dit voor beeld maakt u een logische app met een eind punt in azure, zodat u *http post-aanvragen* kunt verzenden naar uw logische app. Wanneer uw logische app deze HTTP-aanvragen ontvangt, wordt de trigger geactiveerd en wordt de volgende stap in uw werk stroom uitgevoerd.
 
 1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer `http request` in het zoekvak in als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Voer in het zoekvak in `http request` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
@@ -113,7 +131,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    ![Nieuwe stap toevoegen aan logische app](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Voer `sap` in het zoekvak in als uw filter. Selecteer in de lijst **acties** de optie **bericht naar SAP verzenden**.
+1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **acties** de optie **bericht naar SAP verzenden**.
   
    ![Selecteer de actie bericht verzenden naar SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -182,7 +200,7 @@ Voeg nu een reactie actie toe aan de werk stroom van uw logische app en neem de 
 
 1. Selecteer in de ontwerp functie van de Logic app, onder de actie SAP, de optie **nieuwe stap**.
 
-1. Voer `response` in het zoekvak in als uw filter. Selecteer in de lijst **acties** de optie **antwoord**.
+1. Voer in het zoekvak in `response` als uw filter. Selecteer in de lijst **acties** de optie **antwoord**.
 
 1. Klik in het vak **hoofd tekst** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst onder **bericht naar SAP verzenden**het veld **hoofd tekst** .
 
@@ -227,7 +245,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
 1. Maak in de Azure Portal een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer `sap` in het zoekvak in als uw filter. Selecteer in de lijst **Triggers** **Wanneer een bericht wordt ontvangen van SAP**.
+1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een bericht wordt ontvangen van SAP**.
 
    ![SAP-trigger toevoegen](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
@@ -259,7 +277,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
       Logic Apps stelt uw verbinding in en test deze om te controleren of de verbinding goed werkt.
 
-1. Geef de vereiste para meters op op basis van de configuratie van uw SAP-systeem.
+1. Geef de [vereiste para meters](#parameters) op op basis van de configuratie van uw SAP-systeem.
 
    U kunt desgewenst een of meer SAP-acties opgeven. Met deze lijst met acties worden de berichten opgegeven die de trigger via de gegevens gateway van uw SAP-server ontvangt. Een lege lijst geeft aan dat de trigger alle berichten ontvangt. Als de lijst meer dan één bericht bevat, ontvangt de trigger alleen de berichten die in de lijst zijn opgegeven. Alle andere berichten die vanaf uw SAP-server worden verzonden, worden geweigerd door de gateway.
 
@@ -284,6 +302,16 @@ Uw logische app is nu klaar om berichten te ontvangen van uw SAP-systeem.
 > [!NOTE]
 > De SAP-trigger is geen polling-trigger, maar is in plaats daarvan een webhook-trigger. De trigger wordt alleen aangeroepen vanuit de gateway als er een bericht bestaat, dus er is geen polling nodig.
 
+<a name="parameters"></a>
+
+#### <a name="parameters"></a>Parameters
+
+De SAP-connector accepteert samen met eenvoudige teken reeks-en nummer invoer de volgende tabel parameters ( `Type=ITAB` invoer):
+
+* Tabel richting para meters, zowel invoer als uitvoer, voor oudere SAP-releases.
+* Para meters wijzigen, waardoor de tabel richtings parameters worden vervangen door nieuwere SAP-releases.
+* Hiërarchische tabel parameters
+
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
 1. Als u uw logische app wilt activeren, verzendt u een bericht van uw SAP-systeem.
@@ -304,13 +332,13 @@ Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit e
 
    ![SAP-trigger toevoegen aan de logische app](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Haal de hoofd naam ruimte op uit de XML-IDOC die uw logische app van SAP ontvangt. Als u deze naam ruimte uit het XML-document wilt extra heren, voegt u een stap toe die een lokale teken reeks variabele `xpath()` maakt en slaat die naam ruimte op met behulp van een expressie:
+1. Haal de hoofd naam ruimte op uit de XML-IDOC die uw logische app van SAP ontvangt. Als u deze naam ruimte uit het XML-document wilt extra heren, voegt u een stap toe die een lokale teken reeks variabele maakt en slaat die naam ruimte op met behulp van een `xpath()` expressie:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
    ![Hoofd naam ruimte ophalen van IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Als u een afzonderlijke IDOC wilt extra heren, voegt u een stap toe waarmee een matrix variabele wordt gemaakt en wordt `xpath()` de IDOC-verzameling opgeslagen met behulp van een andere expressie:
+1. Als u een afzonderlijke IDOC wilt extra heren, voegt u een stap toe waarmee een matrix variabele wordt gemaakt en wordt de IDOC-verzameling opgeslagen met behulp van een andere `xpath()` expressie:
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
@@ -320,7 +348,7 @@ Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit e
 
    ![IDOC naar SFTP-server verzenden](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Elke IDOC moet de hoofd naam ruimte bevatten. Dit is de reden waarom de bestands inhoud in een `<Receive></Receive` -element samen met de hoofd naam ruimte wordt verpakt voordat de IDOC naar de downstream-app of de sftp-server in dit geval wordt verzonden.
+   Elke IDOC moet de hoofd naam ruimte bevatten. Dit is de reden waarom de bestands inhoud in een- `<Receive></Receive` element samen met de hoofd naam ruimte wordt verpakt voordat de IDOC naar de downstream-app of de sftp-server in dit geval wordt verzonden.
 
 U kunt de Quick Start-sjabloon voor dit patroon gebruiken door deze sjabloon te selecteren in de ontwerp functie voor logische apps wanneer u een nieuwe logische app maakt.
 
@@ -334,7 +362,7 @@ In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een H
 
 1. Maak in de Azure Portal een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend.
 
-1. Voer `http request` in het zoekvak in als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Voer in het zoekvak in `http request` als uw filter. Selecteer in de lijst **Triggers** **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
@@ -351,7 +379,7 @@ Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    ![Nieuwe stap toevoegen aan logische app](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Voer `sap` in het zoekvak in als uw filter. Selecteer in de lijst **acties** de optie **schema's genereren**.
+1. Voer in het zoekvak in `sap` als uw filter. Selecteer in de lijst **acties** de optie **schema's genereren**.
   
    ![Actie ' schema's genereren ' toevoegen aan logische app](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -417,7 +445,7 @@ U kunt de gegenereerde schema's ook downloaden of opslaan in opslag plaatsen, zo
 
 1. Selecteer in de Logic app Designer onder de trigger **nieuwe stap**.
 
-1. Voer `Resource Manager` in het zoekvak in als uw filter. Selecteer **een resource maken of bijwerken**.
+1. Voer in het zoekvak in `Resource Manager` als uw filter. Selecteer **een resource maken of bijwerken**.
 
    ![Azure Resource Manager actie selecteren](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 
@@ -434,7 +462,7 @@ U kunt de gegenereerde schema's ook downloaden of opslaan in opslag plaatsen, zo
    ![Azure Resource Manager actie met ' voor elke ' lus](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)
 
    > [!NOTE]
-   > De schema's maken gebruik van base64-gecodeerde indeling. Als u de schema's naar een integratie account wilt uploaden, moeten ze worden gedecodeerd met behulp van de `base64ToString()` functie. Hier volgt een voor beeld waarin de code voor het `"properties"` element wordt weer gegeven:
+   > De schema's maken gebruik van base64-gecodeerde indeling. Als u de schema's naar een integratie account wilt uploaden, moeten ze worden gedecodeerd met behulp van de `base64ToString()` functie. Hier volgt een voor beeld waarin de code voor het element wordt weer gegeven `"properties"` :
    >
    > ```json
    > "properties": {
@@ -466,7 +494,7 @@ Voordat u begint, moet u ervoor zorgen dat u voldoet aan de eerder genoemde [ver
 
    | Eigenschap | Beschrijving |
    |----------| ------------|
-   | **Pad naar SNC-bibliotheek** | De naam of het pad van de SNC-bibliotheek ten opzichte van de NCo-installatie locatie of het absolute pad. Voor beelden `sapsnc.dll` zijn `.\security\sapsnc.dll` of `c:\security\sapsnc.dll`of. |
+   | **Pad naar SNC-bibliotheek** | De naam of het pad van de SNC-bibliotheek ten opzichte van de NCo-installatie locatie of het absolute pad. Voor beelden zijn `sapsnc.dll` of `.\security\sapsnc.dll` of `c:\security\sapsnc.dll` . |
    | **SNC SSO** | Wanneer u verbinding maakt via SNC, wordt de SNC-identiteit meestal gebruikt voor het verifiëren van de oproepende functie. Een andere optie is om te overschrijven zodat gebruikers-en wachtwoord gegevens kunnen worden gebruikt voor het verifiëren van de oproepende functie, maar de regel wordt nog steeds versleuteld. |
    | **Mijn naam SNC** | In de meeste gevallen kan deze eigenschap worden wegge laten. De geïnstalleerde SNC-oplossing kent meestal een eigen SNC-naam. Alleen voor oplossingen die ondersteuning bieden voor meerdere identiteiten, moet u mogelijk de identiteit opgeven die moet worden gebruikt voor deze specifieke bestemming of server. |
    | **Naam van SNC-partner** | De naam voor de back-end-SNC. |
@@ -480,7 +508,7 @@ Voordat u begint, moet u ervoor zorgen dat u voldoet aan de eerder genoemde [ver
 
 ## <a name="safe-typing"></a>Veilig typen
 
-Wanneer u uw SAP-verbinding maakt, wordt standaard een sterk type gebruikt om te controleren op ongeldige waarden door XML-validatie uit te voeren op basis van het schema. Dit gedrag kan u helpen bij het detecteren van eerder gemaakte problemen. De optie voor **veilig typen** is beschikbaar voor achterwaartse compatibiliteit en controleert alleen de lengte van de teken reeks. Als u kiest **voor veilig typen**, worden het type DATS en het type TIM'S in SAP behandeld als teken reeksen in plaats van als XML `xs:date` - `xs:time`equivalenten `xmlns:xs="http://www.w3.org/2001/XMLSchema"`, en, waar. Een veilige type is van invloed op het gedrag voor het genereren van het schema, het bericht verzenden voor de payload ' verzonden ' en het antwoord ' is ontvangen ', en de trigger. 
+Wanneer u uw SAP-verbinding maakt, wordt standaard een sterk type gebruikt om te controleren op ongeldige waarden door XML-validatie uit te voeren op basis van het schema. Dit gedrag kan u helpen bij het detecteren van eerder gemaakte problemen. De optie voor **veilig typen** is beschikbaar voor achterwaartse compatibiliteit en controleert alleen de lengte van de teken reeks. Als u kiest voor **veilig typen**, worden het type DATS en het type TIM'S in SAP behandeld als teken reeksen in plaats van als XML-equivalenten, `xs:date` en `xs:time` , waar `xmlns:xs="http://www.w3.org/2001/XMLSchema"` . Een veilige type is van invloed op het gedrag voor het genereren van het schema, het bericht verzenden voor de payload ' verzonden ' en het antwoord ' is ontvangen ', en de trigger. 
 
 Wanneer sterk type wordt gebruikt (**veilig typen** is niet ingeschakeld), wijst het schema de DATS-en Tim's-typen toe aan meer eenvoudige XML-typen:
 

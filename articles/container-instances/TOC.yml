@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: Relatie met orchestrators
       href: container-instances-orchestrator-relationship.md
-    - name: Beveiligingsoverwegingen
-      href: container-instances-image-security.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
+        - name: Beveiligingsoverwegingen
+          href: container-instances-image-security.md
     - name: Virtueel netwerk
       href: container-instances-virtual-network-concepts.md
 - name: Instructiegidsen

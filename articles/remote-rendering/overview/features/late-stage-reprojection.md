@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680984"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022177"
 ---
 # <a name="late-stage-reprojection"></a>Vertraagde fase van het project
 
@@ -24,7 +24,7 @@ Beide LSR-modi verbeteren de hologram stabiliteit, maar ze hebben hun specifieke
 
 ## <a name="choose-lsr-mode-in-unity"></a>Kies de LSR-modus in eenheid
 
-In de Unity editor gaat u naar *bestand > instellingen bouwen*. Selecteer linksonder de instellingen van de *speler* en controleer vervolgens onder *Player > XR Settings > Virtual Reality Sdk's > Windows Mixed Reality* of het **delen van diepte buffer inschakelen** is ingeschakeld:
+Ga in eenheids editor naar *:::no-loc text="File > Build Settings":::* . Selecteer linksonder *:::no-loc text="Player Settings":::* en controleer of het selectie vakje *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* **:::no-loc text="Enable Depth Buffer Sharing":::** is ingeschakeld:
 
 ![Vlag voor diepte buffer delen ingeschakeld](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,7 +44,7 @@ Bij vlakke LSR worden deze objecten het beste opnieuw geprojecteerd die dicht bi
 
 ### <a name="configure-planar-lsr-in-unity"></a>Vlakke LSR in unit configureren
 
-De para meters voor het vlak worden afgeleid van een zodanige *focus punt*, dat u elk frame `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`via moet opgeven. Zie de [API van het unit-focus punt](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focus punt instelt, wordt er een terugval gekozen. Automatische terugval leidt echter vaak tot het afleiden van de beste resultaten.
+De para meters voor het vlak worden afgeleid van een zodanige *focus punt*, dat u elk frame via moet opgeven `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Zie de [API van het unit-focus punt](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focus punt instelt, wordt er een terugval gekozen. Automatische terugval leidt echter vaak tot het afleiden van de beste resultaten.
 
 U kunt het focus punt zelf berekenen, hoewel het zinvol is om het te baseren op het bedrag dat wordt berekend door de externe rendering-host. Aanroep `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` om die te verkrijgen. U wordt gevraagd een coördinaten frame op te geven waarin het focus punt wordt uitdrukt. In de meeste gevallen kunt u het beste het resultaat `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` hier opgeven.
 

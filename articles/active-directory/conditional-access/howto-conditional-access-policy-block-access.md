@@ -4,19 +4,19 @@ description: Een aangepast beleid voor voorwaardelijke toegang maken naar
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755078"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995306"
 ---
 # <a name="conditional-access-block-access"></a>Voorwaardelijke toegang: toegang blok keren
 
@@ -43,7 +43,7 @@ De volgende stappen helpen u bij het maken van beleid voor voorwaardelijke toega
 Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Office 365-toepassingen als dat niet op een vertrouwde locatie is.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
@@ -54,13 +54,13 @@ Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Offi
    1. Onder **insluiten**selecteert u **alle Cloud-apps**.
    1. Onder **uitsluiten**selecteert u **Office 365 (preview)**, selecteert **u selecteren**en selecteert u **gereed**.
 1. Onder **voor waarden**:
-   1. Onder **voor waarden** > **locatie**.
+   1. Onder **voor waarden**  >  **locatie**.
       1. Stel **configureren** op **Ja** in
       1. Onder **insluiten**selecteert u **een wille keurige locatie**.
       1. Selecteer **alle vertrouwde locaties**onder **uitsluiten**.
       1. Selecteer **Done**.
    1. Stel **onder client-apps (preview)** **configureren** in op **Ja**en selecteer **gereed**en vervolgens **gereed**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang blok keren**en selecteert u **selecteren**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang blok keren**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
 1. Selecteer **maken** om uw beleid in te stellen.
 
@@ -72,8 +72,8 @@ Hieronder wordt een tweede beleid gemaakt om multi-factor Authentication of een 
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties** > **, selecteert**u **apps selecteren**, kiest **u** **Office 365 (preview)** en selecteert u selecteren en **gereed**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert **u apps selecteren**, kiest u **Office 365 (preview)** en selecteert u **selecteren**en **gereed**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**.
    1. Selecteer **multi-factor Authentication vereisen** en **vereisen dat het apparaat moet worden gemarkeerd als compatibel** selectie **vakje**selecteren.
    1. Zorg ervoor dat **alle geselecteerde besturings elementen** zijn geselecteerd.
    1. Kies **Selecteren**.

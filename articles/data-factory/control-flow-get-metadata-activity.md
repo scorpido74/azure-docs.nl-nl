@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417111"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112641"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ De volgende functionaliteit is beschikbaar in de controle stroom:
 - U kunt de uitvoer van de activiteit meta gegevens ophalen in voorwaardelijke expressies gebruiken om validatie uit te voeren.
 - U kunt een pijp lijn activeren wanneer aan een voor waarde wordt voldaan via do until-lus.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 2 MB.
 
@@ -47,7 +47,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob-opslag](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -56,8 +56,8 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - Wanneer u activiteit voor het ophalen van meta gegevens voor een map gebruikt, moet u ervoor zorgen dat u beschikt over de machtiging lijst/uitvoeren voor de opgegeven map.
-- Voor Amazon S3 en Google Cloud Storage `lastModified` is van toepassing op de Bucket en de sleutel, maar niet op de virtuele `exists` map, en is van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
-- Voor Azure Blob Storage geldt `lastModified` voor de container en de blob, maar niet voor de virtuele map.
+- Voor Amazon S3 en Google Cloud Storage `lastModified` is van toepassing op de Bucket en de sleutel, maar niet op de virtuele map, en `exists` is van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
+- Voor Azure Blob Storage `lastModified` geldt voor de container en de blob, maar niet voor de virtuele map.
 - `lastModified`filter is momenteel van toepassing op het filteren van onderliggende items, maar niet voor de opgegeven map/bestand zelf.
 - Het Joker teken filter voor mappen/bestanden wordt niet ondersteund voor de activiteit meta gegevens ophalen.
 
@@ -66,7 +66,7 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 | Connector/meta gegevens | structuur | Aantal | reeds |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Beheerde instantie Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
@@ -77,7 +77,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 | Meta gegevens type | Beschrijving |
 |:--- |:--- |
 | itemName | De naam van het bestand of de map. |
-| Item type | Het type van het bestand of de map. Geretourneerde waarde `File` is `Folder`of. |
+| Item type | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder` . |
 | grootte | Grootte van het bestand in bytes. Alleen van toepassing op bestanden. |
 | toegevoegd | Er is een datum/tijd gemaakt van het bestand of de map. |
 | lastModified | Datum/tijd waarop het bestand of de map voor het laatst is gewijzigd. |
@@ -85,13 +85,13 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 | contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
 | structuur | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
-| reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening `exists` mee dat als is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats `exists: false` daarvan wordt geretourneerd in de uitvoer. |
+| reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening mee dat als `exists` is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan `exists: false` wordt geretourneerd in de uitvoer. |
 
 >[!TIP]
->Als u wilt controleren of een bestand, map of tabel bestaat, geeft `exists` u in de velden lijst activiteit van meta gegevens ophalen op. U kunt vervolgens het `exists: true/false` resultaat controleren in de uitvoer van de activiteit. Als `exists` niet wordt opgegeven in de lijst met velden, mislukt de activiteit meta gegevens ophalen als het object niet is gevonden.
+>Als u wilt controleren of een bestand, map of tabel bestaat, geeft u `exists` in de velden lijst activiteit van meta gegevens ophalen op. U kunt vervolgens het `exists: true/false` resultaat controleren in de uitvoer van de activiteit. Als `exists` niet wordt opgegeven in de lijst met velden, mislukt de activiteit meta gegevens ophalen als het object niet is gevonden.
 
 >[!NOTE]
->Wanneer u meta gegevens ophaalt uit het `modifiedDatetimeStart` bestand `modifiedDatetimeEnd`archieven en `childItems` configureren of, bevat de uitvoer alleen bestanden in het opgegeven pad met een tijd die het laatst is gewijzigd binnen het opgegeven bereik. In zijn geen items in submappen inbegrepen.
+>Wanneer u meta gegevens ophaalt uit het bestand archieven en configureren `modifiedDatetimeStart` of `modifiedDatetimeEnd` , `childItems` bevat de uitvoer alleen bestanden in het opgegeven pad met een tijd die het laatst is gewijzigd binnen het opgegeven bereik. In zijn geen items in submappen inbegrepen.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -146,7 +146,7 @@ storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Ne
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
-De resultaten van de meta gegevens ophalen worden weer gegeven in de uitvoer van de activiteit. Hieronder vindt u twee voor beelden van uitgebreide opties voor meta gegevens. Gebruik dit patroon om de resultaten in een volgende activiteit te gebruiken: `@{activity('MyGetMetadataActivity').output.itemName}`.
+De resultaten van de meta gegevens ophalen worden weer gegeven in de uitvoer van de activiteit. Hieronder vindt u twee voor beelden van uitgebreide opties voor meta gegevens. Gebruik dit patroon om de resultaten in een volgende activiteit te gebruiken: `@{activity('MyGetMetadataActivity').output.itemName}` .
 
 ### <a name="get-a-files-metadata"></a>Meta gegevens van een bestand ophalen
 

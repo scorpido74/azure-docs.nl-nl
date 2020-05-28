@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u met Visual Studio code en Azure dev Spaces fouten oplost en snel uw Kubernetes-toepassingen kunt herhalen
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2f6f2ef072748bddee5b3004dc69f3a9c03be16
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240445"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996224"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hoe Visual Studio code werkt met Azure dev Spaces
 
@@ -29,13 +29,13 @@ Visual Studio code en de Azure dev Space-extensie genereren de volgende assets v
 * Een `azds.yaml` bestand, het [configuratie bestand voor Azure dev Spaces][azds-yaml] voor uw project
 * Een `.vscode` map met de Visual Studio code-start configuratie van uw project voor Java-toepassingen met behulp van Maven, node. js-toepassingen en .net core-toepassingen
 
-De Dockerfile-, helm-grafiek `azds.yaml` en-bestanden zijn dezelfde activa die worden `azds prep`gegenereerd wanneer ze worden uitgevoerd. Deze bestanden kunnen ook buiten Visual Studio code worden gebruikt om uw project uit te voeren in AKS, zoals het `azds up`uitvoeren van. De `.vscode` map wordt alleen gebruikt door Visual Studio code voor het uitvoeren van uw project in AKS vanuit Visual Studio code.
+De Dockerfile-, helm-grafiek en- `azds.yaml` bestanden zijn dezelfde activa die worden gegenereerd wanneer ze worden uitgevoerd `azds prep` . Deze bestanden kunnen ook buiten Visual Studio code worden gebruikt om uw project uit te voeren in AKS, zoals het uitvoeren van `azds up` . De `.vscode` map wordt alleen gebruikt door Visual Studio code voor het uitvoeren van uw project in AKS vanuit Visual Studio code.
 
 ## <a name="run-your-service-in-aks"></a>Uw service uitvoeren in AKS
 
-Nadat u de assets voor uw project hebt gegenereerd, kunt u uw Java-, node. js-en .NET Core-Services uitvoeren in een bestaande ontwikkel ruimte van Visual Studio code. Op de pagina *fout opsporing* van Visual Studio code kunt u de start configuratie aanroepen vanuit `.vscode` de Directory om uw project uit te voeren.
+Nadat u de assets voor uw project hebt gegenereerd, kunt u uw Java-, node. js-en .NET Core-Services uitvoeren in een bestaande ontwikkel ruimte van Visual Studio code. Op de pagina *fout opsporing* van Visual Studio code kunt u de start configuratie aanroepen vanuit de `.vscode` Directory om uw project uit te voeren.
 
-U moet uw AKS-cluster maken en Azure-ontwikkel ruimten in uw cluster buiten Visual Studio code inschakelen. U kunt bijvoorbeeld de Azure CLI of de Azure Portal gebruiken om deze installatie uit te voeren. U kunt bestaande Dockerfiles-, helm-grafieken en `azds.yaml` bestanden die buiten Visual Studio code zijn gemaakt, hergebruiken, zoals de `azds prep`activa die worden gegenereerd door uit te voeren. Als u activa opnieuw wilt gebruiken die buiten Visual Studio code zijn gegenereerd, hebt u nog steeds `.vscode` een map nodig. Deze `.vscode` map kan opnieuw worden gegenereerd door Visual Studio code en de Azure dev Spaces-extensie en uw bestaande assets worden niet overschreven.
+U moet uw AKS-cluster maken en Azure-ontwikkel ruimten in uw cluster buiten Visual Studio code inschakelen. U kunt bestaande Dockerfiles-, helm-grafieken en `azds.yaml` bestanden die buiten Visual Studio code zijn gemaakt, hergebruiken, zoals de activa die worden gegenereerd door uit te voeren `azds prep` . Als u activa opnieuw wilt gebruiken die buiten Visual Studio code zijn gegenereerd, hebt u nog steeds een `.vscode` map nodig. Deze `.vscode` map kan opnieuw worden gegenereerd door Visual Studio code en de Azure dev Spaces-extensie en uw bestaande assets worden niet overschreven.
 
 Voor .NET core-projecten moet de C#- [extensie][csharp-extension] zijn geïnstalleerd om uw .net-service vanuit Visual Studio code uit te voeren. Voor Java-projecten met maven moet u ook de [Java-fout opsporingsprogramma voor Azure dev Spaces-extensie][java-extension] installeren [en Maven geïnstalleerd en geconfigureerd][maven] om uw Java-service vanuit Visual Studio code uit te voeren.
 

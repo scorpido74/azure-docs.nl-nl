@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "75613755"
 ---
 >[!Note]
->Als u graag persoonlijke gegevens wilt bekijken of verwijderen, raadpleegt u de informatie van Microsoft hierover op de site [Windows Data Subject Requests for the GDPR](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) (Windows-aanvragen van betrokkenen voor de AVG). Als u op zoek bent naar algemene informatie over de AVG, raadpleegt u het [AVG-gedeelte van Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Als u geïnteresseerd bent in het bekijken of verwijderen van persoonsgegevens, raadpleegt u de richtlijnen op de site [Windows Data Subject Requests for the GDPR](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) (Aanvragen in het kader van de AVG voor gegevensonderwerpen van Windows). Als u op zoek bent naar algemene informatie over de AVG, raadpleegt u het [AVG-gedeelte van Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837090"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118800"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -31,7 +31,7 @@ Als dit account voor u is gemaakt, kunt u snel runbooks bouwen en implementeren 
 Als u een Automation-account wilt maken of bijwerken en de in dit artikel beschreven taken wilt uitvoeren, moet u over de volgende bevoegdheden en machtigingen beschikken:
 
 * Als u een Automation-account wilt maken, moet uw Azure AD-gebruikers account worden toegevoegd aan een rol met machtigingen die equivalent zijn aan de rol van eigenaar voor `Microsoft.Automation` resources. Zie voor meer informatie [Access Control op basis van rollen in azure Automation](automation-role-based-access-control.md).
-* **Azure Active Directory**  >  **MANAGE**  >  Als **app-registraties** is ingesteld op **Ja**in de Azure Portal, kunt u, onder Azure Active Directory**gebruikers instellingen**beheren, gebruikers die geen beheerder zijn in uw Azure AD-Tenant [Active Directory toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Als **app-registraties** is ingesteld op **Nee**, moet de gebruiker die deze actie uitvoert een globale beheerder zijn in azure AD.
+* **Azure Active Directory**  >  **MANAGE**  >  Als **app-registraties** is ingesteld op **Ja**in de Azure Portal, kunt u, onder Azure Active Directory**gebruikers instellingen**beheren, gebruikers die geen beheerder zijn in uw Azure AD-Tenant [Active Directory toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Als **app-registraties** is ingesteld op **Nee**, moet de gebruiker die deze actie uitvoert, ten minste een rol voor toepassings ontwikkelaar hebben in azure AD.
 
 Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van de globale beheerder/cobeheerder van het abonnement, wordt u als gast toegevoegd aan Active Directory. In dit scenario ziet u dit bericht in het deel venster Automation-account toevoegen:`You do not have permissions to create.`
 

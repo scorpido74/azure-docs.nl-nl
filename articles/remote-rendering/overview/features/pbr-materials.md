@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021310"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
 
@@ -26,7 +26,7 @@ PBR-materialen zijn echter geen universele oplossing. Afhankelijk van de weergav
 
 Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
-* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of *vertex kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking `1` , met een volledig `0` ondoorzichtigheid en duidelijk doorzichtig. De standaard waarde is wit.
+* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of * :::no-loc text="vertex "::: kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking, met een `1` volledig ondoorzichtigheid en duidelijk `0` doorzichtig. De standaard waarde is wit.
 
   > [!NOTE]
   > Wanneer een PBR-materiaal volledig transparant is, zoals een perfect gereinigd glas, wordt de omgeving nog steeds weer gegeven. Heldere vlekken zoals de zon zijn nog steeds zichtbaar in de reflectie. Dit wijkt af van [kleur materialen](color-materials.md).
@@ -37,9 +37,9 @@ Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
 * **textureCoordinateScale** en **textureCoordinateOffset:** de schaal wordt vermenigvuldigd met de UV-textuur coördinaten, de offset wordt hieraan toegevoegd. Kan worden gebruikt om de bitmappatronen te spreiden en te verschuiven. De standaard schaal is (1, 1) en de offset is (0, 0).
 
-* **useVertexColor:** Als de mesh hoekpunt kleuren bevat en deze optie is ingeschakeld, worden de vertex kleuren van de mazen vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard zijn vertex kleuren uitgeschakeld.
+* **useVertexColor:** Als de mesh :::no-loc text="vertex"::: kleuren bevat en deze optie is ingeschakeld, wordt de kleur van de netten :::no-loc text="vertex"::: vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard is *useVertexColor* uitgeschakeld.
 
-* **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Voor de verlichting van PBR-materialen wordt ook correct berekend voor back-gezichten. Deze optie is standaard uitgeschakeld. Zie ook [Single-Side rendering](single-sided-rendering.md).
+* **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Voor de verlichting van PBR-materialen wordt ook correct berekend voor back-gezichten. Deze optie is standaard uitgeschakeld. Zie ook [ :::no-loc text="Single-sided"::: rendering](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>Eigenschappen van het PBR-materiaal
 
@@ -47,11 +47,11 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
 * **baseColor:** In PBR-materialen wordt de *albedo-kleur* aangeduid als de *basis kleur*. In azure rendering op afstand de eigenschap *albedo Color* is al aanwezig via de algemene eigenschappen van het materiaal, dus er is geen aanvullende eigenschap Base Color.
 
-* **ruw** en **roughnessMap:** de juistheid van het Opper vlak. Ruwe Opper vlakken verstrooien het licht in meer richtingen dan gladde Opper vlakken, waardoor reflecties wazig zijn in plaats van scherp. Het waardebereik is van `0.0` tot. `1.0` Als `roughness` gelijk is `0.0`, zijn reflecties scherper. Als `roughness` gelijk is `0.5`, worden reflecties wazig.
+* **ruw** en **roughnessMap:** de juistheid van het Opper vlak. Ruwe Opper vlakken verstrooien het licht in meer richtingen dan gladde Opper vlakken, waardoor reflecties wazig zijn in plaats van scherp. Het waardebereik is van `0.0` tot `1.0` . Als `roughness` gelijk is `0.0` , zijn reflecties scherper. Als `roughness` gelijk is `0.5` , worden reflecties wazig.
 
   Als zowel een grove waarde als een grove kaart wordt opgegeven, is de uiteindelijke waarde het product van de twee.
 
-* **metaal** -en **metalnessMap:** bij fysieke fysica komt deze eigenschap overeen met het feit of een Opper vlak een uitvoerbaar of dielectric is. Het uitvoeren van materialen heeft verschillende reflecterende eigenschappen, en ze zijn meestal reflecteel zonder albedo kleur. In PBR-materialen is deze eigenschap van invloed op het gedeelte van het Opper vlak van de omgeving. De waarden variëren `0.0` van `1.0`tot. Wanneer de metaaling `0.0`is, is de kleur van de albedo volledig zichtbaar en ziet het materiaal eruit als plastic of keramische stoffen. Wanneer de metaaling `0.5`is, ziet deze eruit als geschilderd metaal. Wanneer de metaaling `1.0`is, verliest het Opper vlak bijna de albedo kleur en wordt alleen de omgeving weer gegeven. `metalness` Bijvoorbeeld, als `1.0` is en `roughness` is `0.0` , ziet een Opper vlak eruit als een echte mirror.
+* **metaal** -en **metalnessMap:** bij fysieke fysica komt deze eigenschap overeen met het feit of een Opper vlak een uitvoerbaar of dielectric is. Het uitvoeren van materialen heeft verschillende reflecterende eigenschappen, en ze zijn meestal reflecteel zonder albedo kleur. In PBR-materialen is deze eigenschap van invloed op het gedeelte van het Opper vlak van de omgeving. De waarden variëren van `0.0` tot `1.0` . Wanneer de metaaling is `0.0` , is de kleur van de albedo volledig zichtbaar en ziet het materiaal eruit als plastic of keramische stoffen. Wanneer de metaaling is `0.5` , ziet deze eruit als geschilderd metaal. Wanneer de metaaling is `1.0` , verliest het Opper vlak bijna de albedo kleur en wordt alleen de omgeving weer gegeven. Bijvoorbeeld, als `metalness` is `1.0` en is `roughness` , `0.0` ziet een Opper vlak eruit als een echte mirror.
 
   Als er zowel een waarde voor metaaliteit als een koppeling naar een metaliteit is opgegeven, is de uiteindelijke waarde het product van de twee.
 
@@ -61,7 +61,7 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
 * **normalMap:** Voor het simuleren van nauw keurige details kan er een [normale kaart](https://en.wikipedia.org/wiki/Normal_mapping) worden gegeven.
 
-* **occlusionMap** en **aoScale:** [omgevings bedekking](https://en.wikipedia.org/wiki/Ambient_occlusion) maken objecten met crevices er realistischer uit door scha duwen aan occluded gebieden toe te voegen. Bedekking-waarde is `0.0` van `1.0`tot, `0.0` waarbij ' donker ' (occluded `1.0` ) en betekent dat er geen occlusions is. Als een 2D-structuur wordt gegeven als een bedekking-kaart, wordt het effect ingeschakeld en fungeert *aoScale* als een vermenigvuldiger.
+* **occlusionMap** en **aoScale:** [omgevings bedekking](https://en.wikipedia.org/wiki/Ambient_occlusion) maken objecten met crevices er realistischer uit door scha duwen aan occluded gebieden toe te voegen. Bedekking-waarde `0.0` is van tot `1.0` , waarbij ' donker ' `0.0` (occluded) en `1.0` betekent dat er geen occlusions is. Als een 2D-structuur wordt gegeven als een bedekking-kaart, wordt het effect ingeschakeld en fungeert *aoScale* als een vermenigvuldiger.
 
   ![Bedekking-kaart](./media/boom-box-ao2.gif)
 
@@ -69,7 +69,7 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
   Transparante geometrie is duur om weer te geven. Als u alleen gaten in een Opper vlak nodig hebt, bijvoorbeeld voor de bladeren van een structuur, is het beter om in plaats daarvan alpha-knipsels te gebruiken.
 
-  ![Transparantie](./media/transparency.png) in de bovenstaande afbeelding ziet u hoe de meest rechtse sfeer volledig transparant is, maar de reflectie nog steeds zichtbaar is.
+  ![Transparantie ](./media/transparency.png) in de bovenstaande afbeelding ziet u hoe de meest rechtse sfeer volledig transparant is, maar de reflectie nog steeds zichtbaar is.
 
   > [!IMPORTANT]
   > Als materialen moeten worden overgeschakeld van dekkend naar transparant tijdens runtime, moet de renderer gebruikmaken van de rendermethode *TileBasedComposition* [rendering mode](../../concepts/rendering-modes.md). Deze beperking is niet van toepassing op materialen die worden geconverteerd als transparante materialen om te beginnen met.

@@ -1,29 +1,29 @@
 ---
 title: Ontwerp kennis basis-QnA Maker
-description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord sets (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
+description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord-paren (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756783"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992994"
 ---
-# <a name="question-and-answer-set-concepts"></a>Concepten van vraag-en antwoord sets
+# <a name="question-and-answer-pair-concepts"></a>Concepten van vraag-en antwoord paren
 
-Een Knowledge Base bestaat uit vraag-en antwoord sets (QnA).  Elke set heeft één antwoord en een set bevat alle informatie die aan het _antwoord_is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
+Een Knowledge Base bestaat uit vraag-en antwoord paren (QnA).  Elk paar heeft één antwoord en een paar bevat alle informatie die aan het _antwoord_is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
 
-## <a name="question-and-answer-sets"></a>Vraag-en-antwoord-sets
+## <a name="question-and-answer-pairs"></a>Vraag-en antwoord paren
 
-De **vereiste** instellingen in een vraag-en-antwoord-set (QnA) zijn:
+De **vereiste** instellingen in een vraag-en-antwoord-paar (QnA) zijn:
 
 * een **vraag** : tekst van de gebruikers query, die wordt gebruikt om de machine trainingen van de gebruiker uit te QnA Maker, om af te stemmen met de vraag van gebruikers met andere woorden, maar hetzelfde antwoord
-* het **antwoord: het antwoord van** de set is de reactie die wordt geretourneerd wanneer een gebruikers query overeenkomt met de bijbehorende vraag
+* het **antwoord: het antwoord van** het paar is het antwoord dat wordt geretourneerd wanneer een gebruikers query overeenkomt met de bijbehorende vraag
 
-Elke set wordt vertegenwoordigd door een **id**.
+Elk paar wordt vertegenwoordigd door een **id**.
 
-De **optionele** instellingen voor een set zijn onder andere:
+De **optionele** instellingen voor een paar zijn onder andere:
 
 * **Alternatieve vormen van de vraag** : dit helpt QnA Maker het juiste antwoord te retour neren voor een groter aantal vraag frasen
 * **Meta gegevens**: meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.

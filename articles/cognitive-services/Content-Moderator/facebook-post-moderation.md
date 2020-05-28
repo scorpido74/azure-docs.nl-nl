@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774274"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118638"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Zelf studie: gematige Facebook-berichten en-opdrachten met Azure Content Moderator
 
@@ -70,14 +70,14 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
     
     | Naam van app-instelling | waarde   | 
     | -------------------- |-------------|
-    | cm:TeamId   | De id van het Content Moderator-team  | 
-    | cm:SubscriptionKey | Uw abonnementssleutel voor Content Moderator: zie [Referenties](review-tool-user-guide/credentials.md) |
-    | cm:Region | De naam van uw Content Moderator-regio, zonder de spaties. U kunt dit vinden in het veld **locatie** van het tabblad **overzicht** van uw Azure-resource.|
-    | cm:ImageWorkflow | De naam van de werkstroom om uit te voeren voor afbeeldingen |
-    | cm:TextWorkflow | De naam van de werkstroom om uit te voeren voor tekst |
-    | cm:CallbackEndpoint | De URL voor de CMListener-functie-app die u later in deze hand leiding gaat maken |
-    | fb:VerificationToken | Een geheim token dat u maakt, dat wordt gebruikt voor het abonneren op Facebook-feeds gebeurtenissen |
-    | fb:PageAccessToken | Het toegangstoken voor de Facebook Graph-API verloopt niet en maakt het mogelijk de functie voor het verbergen/verwijderen van berichten namens u uit te voeren. U ontvangt dit token in een latere stap. |
+    | `cm:TeamId`   | De id van het Content Moderator-team  | 
+    | `cm:SubscriptionKey` | Uw abonnementssleutel voor Content Moderator: zie [Referenties](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | De naam van uw Content Moderator-regio, zonder de spaties. U kunt deze naam vinden in het veld **locatie** van het tabblad **overzicht** van uw Azure-resource.|
+    | `cm:ImageWorkflow` | De naam van de werkstroom om uit te voeren voor afbeeldingen |
+    | `cm:TextWorkflow` | De naam van de werkstroom om uit te voeren voor tekst |
+    | `cm:CallbackEndpoint` | De URL voor de CMListener-functie-app die u later in deze hand leiding gaat maken |
+    | `fb:VerificationToken` | Een geheim token dat u maakt, dat wordt gebruikt voor het abonneren op Facebook-feeds gebeurtenissen |
+    | `fb:PageAccessToken` | Het toegangstoken voor de Facebook Graph-API verloopt niet en maakt het mogelijk de functie voor het verbergen/verwijderen van berichten namens u uit te voeren. U ontvangt dit token in een latere stap. |
 
     Klik boven aan de pagina op de knop **Opslaan** .
 
@@ -87,7 +87,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
 
     1. Klik op de tegel met de melding **http-trigger**.
     1. Voer de naam **FBListener** in. Stel **Autorisatieniveau** in op **Functie**.
-    1. Klik op **maken**.
+    1. Klik op **Maken**.
     1. Vervang de inhoud van het **Run. CSX** door de inhoud van **FbListener/run. CSX**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

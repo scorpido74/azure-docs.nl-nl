@@ -167,9 +167,9 @@ De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
-| Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Yes |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
+| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 

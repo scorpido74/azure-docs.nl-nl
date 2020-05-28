@@ -80,7 +80,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com

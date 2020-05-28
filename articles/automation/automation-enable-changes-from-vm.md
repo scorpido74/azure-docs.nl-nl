@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 5379f2c46bbeaba4ee8509603b7b739b75d08f04
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7e87d5b3a4488dac05758e160b09f8fa8b393d09
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836784"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117948"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine
 
@@ -41,14 +41,14 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 5. Kies de Log Analytics werk ruimte en het Automation-account en klik op **inschakelen** om wijzigingen bijhouden en inventaris voor de virtuele machine in te scha kelen. Het volt ooien van de installatie duurt Maxi maal 15 minuten. 
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>De scope configuratie controleren
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
 
-Wijzigingen bijhouden en inventarisatie maakt gebruik van een scope configuratie in de werk ruimte om de computers te richten die moeten worden ingeschakeld voor de functie. De scope configuratie is een groep van een of meer opgeslagen Zoek opdrachten die wordt gebruikt om het bereik van de functie te beperken tot specifieke computers. Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie.
+Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van wijzigingen. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met de functie.
-* Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
+* Zie [limiet voor wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
 * Zie [ontdekken welke software is geïnstalleerd op uw virtuele machines](automation-tutorial-installed-software.md)voor meer informatie over het gebruik van de functie voor het identificeren van software die is geïnstalleerd in uw omgeving.
 * Als u uw Automation-account niet wilt integreren met een Log Analytics-werk ruimte wanneer u de functie inschakelt, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account](automation-unlink-workspace-change-tracking.md).
 * Wanneer u klaar bent met het implementeren van wijzigingen in Vm's, kunt u ze verwijderen zoals beschreven in [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).

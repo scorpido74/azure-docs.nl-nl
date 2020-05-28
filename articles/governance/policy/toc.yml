@@ -198,7 +198,7 @@
     - name: GitHub - Community Policy-opslagplaats
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A voor Azure Policy
-      href: /answers/topics/azure-policy.html
+      href: /answers/topics/azure-policy.html.html
     - name: YouTube-kanaal Governance
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Video's over gastconfiguratie

@@ -9,16 +9,15 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 90d35dc55cfc971ad8f77f0f2a76075d371b29fb
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982017"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117308"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
 
 Er zijn vier hoofd soorten machine learning modellen in Azure Machine Learning Studio (klassiek):

@@ -1,5 +1,5 @@
 ---
-title: Open bare toegang tot het REGI ster configureren
+title: Toegang tot openbare register configureren
 description: Configureer IP-regels voor toegang tot een Azure container Registry vanuit geselecteerde open bare IP-adressen of adresbereiken.
 ms.topic: article
 ms.date: 05/19/2020

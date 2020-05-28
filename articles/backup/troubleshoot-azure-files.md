@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562080"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116732"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -50,7 +50,7 @@ Voer de registratie opnieuw uit. Neem contact op met de ondersteuning als het pr
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Kan de Recovery Services kluis niet verwijderen na het ongedaan maken van de beveiliging van een bestands share
 
-Open in de Azure Portal uw **kluis** > **back-upinfrastructuur** > **opslag accounts** en klik op **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
+Open in de Azure Portal uw **kluis**  >  **back-upinfrastructuur**  >  **opslag accounts** en klik op **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
 
 >[!NOTE]
 >Een Recovery Services-kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.
@@ -276,6 +276,45 @@ Fout code: BMSUserErrorObjectLocked
 Fout bericht: er wordt een andere bewerking uitgevoerd voor het geselecteerde item.
 
 Wacht totdat de andere bewerking in uitvoering is voltooid en probeer het later opnieuw.
+
+Uit het bestand: troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>Veelvoorkomende problemen bij zacht verwijderen
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState: dit herstel punt is niet beschikbaar omdat de moment opname die is gekoppeld aan dit punt zich in een bestands share bevindt die de status zacht verwijderd heeft
+
+Fout code: UserErrorRestoreAFSInSoftDeleteState
+
+Fout bericht: dit herstel punt is niet beschikbaar omdat de moment opname die is gekoppeld aan dit punt zich in een bestands share bevindt die de status zacht verwijderd heeft.
+
+U kunt geen herstel bewerking uitvoeren wanneer de bestands share de status zacht verwijderd heeft. Verwijder de bestands share uit de bestanden portal of gebruik het [script verwijderen](scripts/backup-powershell-script-undelete-file-share.md) en probeer vervolgens te herstellen.
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState-weer gegeven herstel punten zijn niet beschikbaar omdat de bijbehorende bestands share die de moment opnamen van het herstel punt bevat permanent is verwijderd
+
+Fout code: UserErrorRestoreAFSInDeleteState
+
+Fout bericht: de vermelde herstel punten zijn niet beschikbaar omdat de bijbehorende bestands share die de moment opnamen van herstel punten bevat permanent is verwijderd.
+
+Controleer of de back-up van de bestands share is verwijderd. Als de status zacht verwijderd was, controleert u of de tijdelijke verwijdering van de Bewaar periode is afgelopen en niet is hersteld. In een van deze gevallen gaan alle moment opnamen permanent verloren en kunnen de gegevens niet worden hersteld.
+
+>[!NOTE]
+> U wordt aangeraden de back-ups van de bestands share niet te verwijderen, of als deze de status zacht verwijderd heeft, verwijdert u de verwijdering voordat de tijdelijke verwijderings periode eindigt, om te voor komen dat alle herstel punten verloren gaan.
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-back-up is mislukt omdat de Azure-bestands share de status zacht verwijderd heeft
+
+Fout code: UserErrorBackupAFSInSoftDeleteState
+
+Fout bericht: de back-up is mislukt omdat de Azure-bestands share de status zacht verwijderd heeft
+
+Verwijder de bestands share uit de **bestanden Portal** of gebruik het [script verwijderen](scripts/backup-powershell-script-undelete-file-share.md) om door te gaan met de back-up en permanente verwijdering van gegevens te voor komen.
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState-back-up is mislukt omdat de gekoppelde Azure-bestands share permanent is verwijderd
+
+Fout code: UserErrorBackupAFSInDeleteState
+
+Fout bericht: de back-up is mislukt omdat de gekoppelde Azure-bestands share permanent is verwijderd
+
+Controleer of de back-up van de bestands share permanent is verwijderd. Zo ja, stop de back-up voor de bestands share om herhaalde back-upfouten te voor komen. Zie [stoppen met beveiliging voor Azure-bestands share voor](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share) meer informatie over het stoppen van de beveiliging
 
 ## <a name="next-steps"></a>Volgende stappen
 

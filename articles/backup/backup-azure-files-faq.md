@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836104"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118011"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -95,13 +95,13 @@ Hier volgt een voor beeld van hoe dit werkt:
 
 #### <a name="existing-policy-p1"></a>Bestaand beleid [P1]
 
-|Type Bewaar periode |Planning |Bewaartermijn  |
+|Type Bewaar periode |Schema |Bewaartermijn  |
 |---------|---------|---------|
 |Dagelijks    |    Elke dag om 8 uur    |  100 dagen       |
 
 #### <a name="new-policy-modified-p1"></a>Nieuw beleid [gewijzigde P1]
 
-| Type Bewaar periode | Planning                       | Bewaartermijn |
+| Type Bewaar periode | Schema                       | Bewaartermijn |
 | -------------- | ------------------------------ | --------- |
 | Dagelijks          | Elke dag om 9 uur              | 50 dagen   |
 | Wekelijks         | Op zondag om 9 uur              | 3 weken   |
@@ -129,14 +129,14 @@ Hier volgt een voor beeld van hoe dit werkt:
 
 #### <a name="existing-policy-p2"></a>Bestaand beleid [P2]
 
-| Type Bewaar periode | Planning           | Bewaartermijn |
+| Type Bewaar periode | Schema           | Bewaartermijn |
 | -------------- | ------------------ | --------- |
 | Dagelijks          | Elke dag om 8 uur | 50 dagen   |
 | Wekelijks         | Op maandag om 8 uur  | 3 weken   |
 
 #### <a name="new-policy-modified-p2"></a>Nieuw beleid [aangepaste P2]
 
-| Type Bewaar periode | Planning               | Bewaartermijn |
+| Type Bewaar periode | Schema               | Bewaartermijn |
 | -------------- | ---------------------- | --------- |
 | Dagelijks          | Elke dag om 9 uur     | 10 dagen   |
 | Wekelijks         | Op maandag om 9 uur      | 2 weken   |
@@ -157,8 +157,4 @@ Hier volgt een voor beeld van hoe dit werkt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie enkele van deze veelgestelde vragen over back-ups voor meer informatie over andere gebieden van Azure Backup:
-
-- [Veelgestelde vragen over Recovery Services-kluis](backup-azure-backup-faq.md)
-- [Veelgestelde vragen over Azure VM-back-ups](backup-azure-vm-backup-faq.md)
-- [Veelgestelde vragen over Azure Backup-agent](backup-azure-file-folder-backup-faq.md)
+- [Problemen oplossen bij het maken van back-ups van Azure-bestands shares](troubleshoot-azure-files.md)

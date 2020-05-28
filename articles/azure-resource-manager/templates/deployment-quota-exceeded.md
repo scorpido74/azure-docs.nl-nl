@@ -2,17 +2,20 @@
 title: Het implementatie quotum is overschreden
 description: Hierin wordt beschreven hoe u de fout van het gebruik van meer dan 800 implementaties in de geschiedenis van de resource groep kunt oplossen.
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80245086"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117805"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties groter is dan 800
 
 Elke resource groep is beperkt tot 800 implementaties in de implementatie geschiedenis. In dit artikel wordt de fout beschreven die u ontvangt wanneer een implementatie mislukt, omdat deze de toegestane 800-implementaties zou overschrijden. U kunt deze fout oplossen door implementaties te verwijderen uit de geschiedenis van de resource groep. Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
+
+> [!NOTE]
+> Vanaf 2020 juni verwijdert Azure Resource Manager automatisch implementaties uit uw geschiedenis als u de limiet hebt bereikt. Deze fout kan nog steeds worden weer geven als u automatische verwijderingen hebt gekozen. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
 
 ## <a name="symptom"></a>Symptoom
 
