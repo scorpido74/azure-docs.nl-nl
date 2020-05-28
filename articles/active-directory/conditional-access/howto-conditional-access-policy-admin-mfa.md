@@ -32,7 +32,7 @@ Micro soft raadt u aan MFA verplicht te stellen voor de volgende rollen ten mins
 * Wachtwoordbeheerder
 * Beveiligingsbeheerder
 * SharePoint-beheerder
-* Gebruikers beheerder
+* Gebruikersbeheerder
 
 Organisaties kunnen ervoor kiezen om rollen op te nemen of uit te sluiten zoals ze passen.
 
@@ -64,7 +64,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
       * Wachtwoordbeheerder
       * Beveiligingsbeheerder
       * SharePoint-beheerder
-      * Gebruikers beheerder
+      * Gebruikersbeheerder
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**en selecteert u **gereed**.
