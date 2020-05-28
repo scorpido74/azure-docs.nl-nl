@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402597"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020724"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
@@ -26,7 +26,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) of [Azure-SQL database](../sql-database/sql-database-get-started-portal.md)
+* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) of [Azure-SQL database](../azure-sql/database/single-database-create-quickstart.md)
 
   Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u een Azure SQL Database maakt, kunt u voorbeeld databases gebruiken die zijn opgenomen.
 

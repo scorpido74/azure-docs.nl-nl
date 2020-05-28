@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713993"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014329"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eind gebruikers toestemming geven voor toepassingen
 
@@ -49,7 +49,7 @@ Instellingen voor gebruikers toestemming configureren via de Azure Portal:
 1. Selecteer onder **toestemming van de gebruiker voor toepassingen**de instelling van de toestemming die u wilt configureren voor alle gebruikers.
 1. Selecteer **Opslaan** om uw instellingen op te slaan.
 
-![Instellingen voor gebruikers toestemming](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Instellingen voor gebruikers toestemming":::
 
 > [!TIP]
 > U kunt [de beheer goedkeurings werk stroom inschakelen](configure-admin-consent-workflow.md) om gebruikers toe te staan de controle en goed keuring van een beheerder aan te vragen van een toepassing waarbij de gebruiker niet toestemming mag geven, bijvoorbeeld wanneer toestemming van de gebruiker is uitgeschakeld of wanneer een toepassing machtigingen aanvraagt die de gebruiker niet mag verlenen.
@@ -102,7 +102,7 @@ Met machtigings classificaties kunt u de invloed identificeren die verschillende
 
 In dit voor beeld hebben we de minimale set vereiste machtiging voor eenmalige aanmelding geclassificeerd:
 
-![Machtigings classificaties](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="Machtigings classificaties":::
 
 > [!TIP]
 > Voor de Microsoft Graph-API zijn de minimale machtigingen die nodig zijn voor eenvoudige enkelvoudige aanmelding `openid` ,, `profile` `User.Read` en `offline_access` . Met deze machtigingen kan een app de profiel gegevens van de aangemelde gebruiker lezen en kan deze toegang behouden, zelfs wanneer de gebruiker de app niet meer gebruikt.
@@ -192,7 +192,7 @@ U kunt configureren welke gebruikers toestemming mogen geven om toegang te krijg
 
 In dit voor beeld mogen alle groeps eigenaren toestemming geven voor apps die toegang hebben tot de gegevens van hun groepen:
 
-![Machtigings classificaties](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="Instellingen voor toestemming van groeps eigenaar":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Toestemming van groeps eigenaar configureren met behulp van Power shell
 
@@ -230,7 +230,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Booleaans | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
+    | _EnableGroupSpecificConsent_   | Boolean | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
 
 1. Update-instellingen waarden voor de gewenste configuratie:
@@ -288,7 +288,7 @@ U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configure
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
+    | _BlockUserConsentForRiskyApps_   | Boolean |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
 1. Vervang de volgende waarde in stap 3:
 

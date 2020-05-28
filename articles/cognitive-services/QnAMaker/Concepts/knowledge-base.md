@@ -1,24 +1,24 @@
 ---
 title: Importeren uit gegevens bronnen-QnA Maker
-description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord sets (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
+description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord-paren (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804279"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993096"
 ---
 # <a name="importing-from-data-sources"></a>Importeren uit gegevensbronnen
 
-Een kennis database bestaat uit vraag-en antwoord sets in open bare Url's en bestanden.
+Een kennis database bestaat uit vraag-en antwoord paren in open bare Url's en bestanden.
 
 ## <a name="data-source-locations"></a>Gegevens bron locaties
 
 Inhoud wordt in een Knowledge Base van een gegevens bron gebracht. Gegevens bron locaties zijn **open bare url's of bestanden**, waarvoor geen verificatie is vereist.
 
-[Share Point-bestanden](../how-to/add-sharepoint-datasources.md)die zijn beveiligd met verificatie, zijn de uitzonde ring. Share point-resources moeten bestanden, niet webpagina's zijn. Als de URL eindigt met een webextensie, zoals. ASPX, wordt niet geïmporteerd in QnA Maker vanuit share point.
+[Share Point-bestanden](../how-to/add-sharepoint-datasources.md)die zijn beveiligd met verificatie, zijn de uitzonde ring. Share point-resources moeten bestanden, niet webpagina's zijn. Als de URL eindigt met een webextensie zoals. ASPX, kan deze niet worden geïmporteerd in QnA Maker vanuit SharePoint.
 
 ## <a name="chit-chat-content"></a>Chat inhoud Chit
 
@@ -26,7 +26,7 @@ De Chit Chat QnA-inhoudset wordt aangeboden als een volledige inhouds bron voor 
 
 ## <a name="structured-data-format-through-import"></a>Gestructureerde gegevens indeling via importeren
 
-Als u een Knowledge Base importeert, wordt de inhoud van de bestaande Knowledge Base vervangen. Voor het importeren is `.tsv` een gestructureerd bestand vereist dat vragen en antwoorden bevat. Deze informatie helpt bij het QnA Maker groeperen van de vraag-antwoord sets en het kenmerk hiervan aan een bepaalde gegevens bron.
+Als u een Knowledge Base importeert, wordt de inhoud van de bestaande Knowledge Base vervangen. Voor het importeren is een gestructureerd `.tsv` bestand vereist dat vragen en antwoorden bevat. Deze informatie helpt bij het QnA Maker groeperen van de vraag-antwoord paren en het kenmerk ervan aan een bepaalde gegevens bron.
 
 | Vraag  | Antwoord  | Bron| Meta gegevens (1 sleutel: 1 waarde) |
 |-----------|---------|----|---------------------|
@@ -35,12 +35,12 @@ Als u een Knowledge Base importeert, wordt de inhoud van de bestaande Knowledge 
 
 ## <a name="structured-multi-turn-format-through-import"></a>Indeling voor gestructureerde multi-draaiing via importeren
 
-U kunt de multi-turn-conversaties maken `.tsv` in een bestands indeling. De indeling biedt u de mogelijkheid om de multi-turn-conversaties te maken door eerdere chat logboeken te analyseren (met andere processen, niet met QnA Maker) en `.tsv` vervolgens het bestand te maken via Automation. Importeer het bestand om de bestaande Knowledge Base te vervangen.
+U kunt de multi-turn-conversaties maken in een `.tsv` bestands indeling. De indeling biedt u de mogelijkheid om de multi-turn-conversaties te maken door eerdere chat logboeken te analyseren (met andere processen, niet met QnA Maker) en vervolgens het bestand te maken `.tsv` via Automation. Importeer het bestand om de bestaande Knowledge Base te vervangen.
 
 > [!div class="mx-imgBorder"]
 > ![Conceptueel model van 3 niveaus van de multi-turn-vraag](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-De kolom voor een multi-turn `.tsv`, specifiek voor meerdere zetten, is een **prompt**. Een voor `.tsv`beeld, weer gegeven in Excel, toont de gegevens die moeten worden opgenomen om de multi-turn-kinderen te definiëren:
+De kolom voor een multi-turn `.tsv` , specifiek voor meerdere zetten, is een **prompt**. Een voor beeld `.tsv` , weer gegeven in Excel, toont de gegevens die moeten worden opgenomen om de multi-turn-kinderen te definiëren:
 
 ```JSON
 [
@@ -58,7 +58,7 @@ De **display order** is numeriek en de **weergave** tekst is Text die geen prijs
 
 Als u niet zeker weet hoe u uw QnA-paar in het `.tsv` bestand kunt vertegenwoordigen:
 * Gebruik dit [Download bare voor beeld van github](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
-* Of maak de set in de QnA Maker Portal, sla de Knowledge Base op en exporteer deze vervolgens naar een voor beeld van hoe de set wordt vertegenwoordigd.
+* Of maak het paar in de QnA Maker Portal, sla de Knowledge Base op en exporteer deze vervolgens naar een voor beeld van hoe het paar vertegenwoordigt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -72,9 +72,9 @@ Gebruik de QnA Maker [prijs informatie](../reference-markdown-format.md) om u te
 [Overzicht van QnA Maker](../Overview/overview.md)
 
 Een Knowledge Base maken en bewerken met:
-* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Een antwoord genereren met:
-* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

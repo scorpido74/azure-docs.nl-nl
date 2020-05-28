@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651948"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021684"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Referentie gegevens van een SQL Database gebruiken voor een Azure Stream Analytics taak
 
@@ -40,7 +40,7 @@ Gebruik de volgende stappen om Azure SQL Database toe te voegen als een invoer b
 
    ![Configuratie van SQL Database-referentie](./media/sql-reference-data/sql-input-config.png)
 
-3. Test de momentopname query in de SQL-query-editor. Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](../sql-database/sql-database-connect-query-portal.md) voor meer informatie
+3. Test de momentopname query in de SQL-query-editor. Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](../azure-sql/database/connect-query-portal.md) voor meer informatie
 
 ### <a name="specify-storage-account-in-job-config"></a>Geef het opslag account op in de taak configuratie
 
@@ -69,7 +69,7 @@ Gebruik de volgende stappen om Azure SQL Database toe te voegen als een invoer b
 
 ### <a name="create-a-sql-database-table"></a>Een SQL Database tabel maken
 
-Gebruik SQL Server Management Studio om een tabel te maken voor het opslaan van de referentie gegevens. Zie [uw eerste Azure-SQL database ontwerpen met behulp van SSMS](../sql-database/sql-database-design-first-database.md) voor meer informatie.
+Gebruik SQL Server Management Studio om een tabel te maken voor het opslaan van de referentie gegevens. Zie [uw eerste Azure-SQL database ontwerpen met behulp van SSMS](../azure-sql/database/design-first-database-tutorial.md) voor meer informatie.
 
 De voorbeeld tabel die in het volgende voor beeld wordt gebruikt, is gemaakt op basis van de volgende instructie:
 
@@ -129,7 +129,7 @@ Voordat u de taak implementeert in azure, kunt u de query logica lokaal testen o
 
 ## <a name="delta-query"></a>Delta query
 
-Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL database](../sql-database/sql-database-temporal-tables.md) aanbevolen.
+Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL database](../azure-sql/temporal-tables.md) aanbevolen.
 
 1. Maak een tijdelijke tabel in Azure SQL Database.
    

@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218146"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118441"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Model prestaties in Azure Machine Learning Studio evalueren (klassiek)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In dit artikel wordt gedemonstreerd hoe u de prestaties van een model in Azure Machine Learning Studio kunt evalueren (klassiek) en geeft u een korte uitleg van de metrische gegevens die voor deze taak beschikbaar zijn. Er worden drie veelvoorkomende leer scenario's weer gegeven: 
 
@@ -151,7 +149,7 @@ Verbind de poorten zoals hieronder wordt weer gegeven in afbeelding 10.
 
 Stel de index van de label kolom van de module [Train model][train-model] in op 5. De gegevensset heeft geen koprij, maar we weten dat de klassen labels zich in de vijfde kolom bevinden.
 
-Klik op de [module gegevens importeren][import-data] en stel de eigenschap *gegevens bron* in op *Web-URL via http*en de *URL* naar. http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
+Klik op de module [gegevens importeren][import-data] en stel de eigenschap *gegevens bron* in op *Web-URL via http*en de *URL* naar http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
 
 Stel het gedeelte van de instanties in dat moet worden gebruikt voor de training in de module voor het [splitsen van gegevens][split] (bijvoorbeeld 0,7).
 

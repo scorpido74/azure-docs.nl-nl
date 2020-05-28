@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418861"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019891"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Voorspellende pijplijnen maken met Azure Machine Learning en Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -67,7 +67,7 @@ U maakt een **Azure machine learning** gekoppelde service om een Azure machine l
 
 Zie het artikel [Compute linked Services](compute-linked-services.md) voor beschrijvingen van eigenschappen in de JSON-definitie.
 
-Azure Machine Learning ondersteunen zowel klassieke webservices als nieuwe webservices voor uw voorspellende experiment. U kunt kiezen welk recht er moet worden gebruikt in Data Factory. Als u de vereiste informatie voor het maken van de gekoppelde Azure Machine Learning-service https://services.azureml.netwilt ophalen, gaat u naar, waar al uw (nieuwe) webservices en klassieke webservices worden weer gegeven. Klik op de webservice die u wilt openen en klik op pagina **verbruikt** . Kopieer de **primaire sleutel** voor de eigenschap **apiKey** en **batch-aanvragen** voor de eigenschap **mlEndpoint** .
+Azure Machine Learning ondersteunen zowel klassieke webservices als nieuwe webservices voor uw voorspellende experiment. U kunt kiezen welk recht er moet worden gebruikt in Data Factory. Als u de vereiste informatie voor het maken van de gekoppelde Azure Machine Learning-service wilt ophalen, gaat u naar https://services.azureml.net , waar al uw (nieuwe) webservices en klassieke webservices worden weer gegeven. Klik op de webservice die u wilt openen en klik op pagina **verbruikt** . Kopieer de **primaire sleutel** voor de eigenschap **apiKey** en **batch-aanvragen** voor de eigenschap **mlEndpoint** .
 
 ![Azure Machine Learning-webservices](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -192,7 +192,7 @@ In dit scenario maakt de Azure Machine Learning-webservice voor spellingen met b
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenario 2: experimenten met behulp van Reader/Writer-modules om te verwijzen naar gegevens in verschillende opslag ruimten
 Een ander algemeen scenario bij het maken van Azure Machine Learning Studio (klassieke) experimenten is het gebruik van import gegevens-en uitvoer gegevens modules. De module gegevens importeren wordt gebruikt om gegevens te laden in een experiment en de module output data is om gegevens van uw experimenten op te slaan. Zie voor meer informatie over het importeren van gegevens en uitvoer gegevens modules de onderwerpen [gegevens importeren](https://msdn.microsoft.com/library/azure/dn905997.aspx) en [uitvoer gegevens](https://msdn.microsoft.com/library/azure/dn905984.aspx) in de MSDN-bibliotheek.
 
-Wanneer u de modules gegevens importeren en uitvoer gegevens gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een module voor gegevens import die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen om een andere Azure-SQL Server in te `YYY.database.windows.net`stellen. U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
+Wanneer u de modules gegevens importeren en uitvoer gegevens gebruikt, is het verstandig om een para meter voor de webservice te gebruiken voor elke eigenschap van deze modules. Met deze web-para meters kunt u de waarden tijdens runtime configureren. U kunt bijvoorbeeld een experiment maken met een module voor gegevens import die gebruikmaakt van een Azure SQL Database: XXX.database.windows.net. Nadat de webservice is geïmplementeerd, wilt u de gebruikers van de webservice in staat stellen een andere logische SQL-Server op te geven `YYY.database.windows.net` . U kunt een webservice-para meter gebruiken om deze waarde te kunnen configureren.
 
 > [!NOTE]
 > De invoer en uitvoer van webservices verschillen van de para meters van de webservice. In het eerste scenario hebt u gezien hoe u een invoer-en uitvoer kunt opgeven voor een webservice Azure Machine Learning Studio (klassiek). In dit scenario geeft u para meters door voor een webservice die overeenkomt met de eigenschappen van de modules import data/output data.
@@ -227,5 +227,5 @@ Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere 
 * [MapReduce-activiteit](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
-* [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
+* [Aangepaste .NET-activiteit](transform-data-using-dotnet-custom-activity.md)
 * [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

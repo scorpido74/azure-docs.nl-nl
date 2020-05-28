@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: nitinme
-ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ff160c57b86e2269165f5fe1d2808684d2e6e86e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118264"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118539"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Zelf studie: formulier herkenner gebruiken met Azure Logic Apps voor het analyseren van facturen
 
@@ -58,7 +58,7 @@ U gebruikt deze container om voorbeeld gegevens te uploaden die nodig zijn om he
 
 Down load de voorbeeld gegevens die beschikbaar zijn op [github](https://go.microsoft.com/fwlink/?linkid=2090451). Extraheer de gegevens naar een lokale map en upload de inhoud van de map **/Train** naar de **formrecocontainer** die u eerder hebt gemaakt. Volg de instructies bij het [uploaden van een blok-BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) voor het uploaden van gegevens naar een container.
 
-Kopieer de URL van de container. U hebt deze URL later in de zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, is de URL *https:\//formrecostorage.blob.core.Windows.net/formrecocontainer/*.
+Kopieer de URL van de container. U hebt deze URL later in de zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, is de URL *https: \/ /formrecostorage.blob.core.Windows.net/formrecocontainer/*.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -73,20 +73,20 @@ U kunt Azure Logic Apps gebruiken om taken en werk stromen te automatiseren en t
 
 Volg deze stappen om uw werk stroom in te stellen.
 
-1. Selecteer in het hoofd menu van Azure **een resource** > **Integration** > **Logic-app**maken.
+1. Selecteer in het hoofd menu van Azure **een resource**  >  **Integration**  >  **Logic-app**maken.
 
 1. Onder **Logische app maken** geeft u informatie op over uw logische app zoals hier wordt weergegeven. Wanneer u klaar bent, selecteert u **maken**.
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*Logic-app-naam*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes`-`(), onderstrepings tekens`_`(), haakjes`(`( `)`,) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Naam** | <*Logic-app-naam*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes ( `-` ), onderstrepings tekens ( `_` ), haakjes ( `(` , `)` ) en punten ( `.` ) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-abonnement-naam*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](./../../azure-resource-manager/management/overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
    | **Locatie** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
-   | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
+   | **Log Analytics** | Aan | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u in de Azure-werk balk de optie **meldingen** > **gaat u** naar de resource voor uw geïmplementeerde logische app. U kunt ook uw logische app zoeken en selecteren door de naam in het zoekvak te typen.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u in de Azure-werk balk de optie **meldingen**  >  **gaat u** naar de resource voor uw geïmplementeerde logische app. U kunt ook uw logische app zoeken en selecteren door de naam in het zoekvak te typen.
 
    De Logic Apps-ontwerpfunctie wordt geopend en u ziet een pagina met een inleidende video en veelgebruikte triggers. Kies onder **Sjablonen** de optie **Lege logische app**.
 
@@ -127,7 +127,7 @@ Voordat u de Form Recognizer-service kunt gebruiken voor het analyseren van fact
     > [!div class="mx-imgBorder"]
     > ![Verbindings naam voor de formulier herkenning](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Klik op **maken**.
+    Klik op **Maken**.
 
 1. Voer in het dialoog venster **Train model** , voor **bron**, de URL in voor de container waarnaar u de voorbeeld gegevens hebt geüpload.
 
@@ -377,7 +377,6 @@ Als u de logische app wilt testen, gebruikt u de voor beelden van facturen in de
       }
     ]
     ```
-    U hebt deze zelf studie voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

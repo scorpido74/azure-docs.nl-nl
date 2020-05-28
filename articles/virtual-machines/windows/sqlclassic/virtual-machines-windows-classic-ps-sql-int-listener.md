@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978171"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014809"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een ILB-listener configureren voor beschikbaarheids groepen op Azure SQL Server Vm's
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "75978171"
 > [!IMPORTANT]
 > Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het klassieke implementatie model besproken. Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
-Als u een listener wilt configureren voor een AlwaysOn-beschikbaarheids groep in het Resource Manager-model, raadpleegt u [een Load Balancer configureren voor een always on-beschikbaarheids groep in azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+Als u een listener wilt configureren voor een AlwaysOn-beschikbaarheids groep in het Resource Manager-model, raadpleegt u [een Load Balancer configureren voor een always on-beschikbaarheids groep in azure](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md).
 
 Uw beschikbaarheids groep kan replica's bevatten die alleen on-premises zijn of alleen voor Azure, of die zowel on-premises als Azure omvatten voor hybride configuraties. Azure-replica's kunnen zich in dezelfde regio bevinden of in meerdere regio's die gebruikmaken van meerdere virtuele netwerken. In de procedures in dit artikel wordt ervan uitgegaan dat u al [een beschikbaarheids groep hebt geconfigureerd](../classic/portal-sql-alwayson-availability-groups.md) , maar nog geen listener hebt geconfigureerd.
 
@@ -78,7 +78,7 @@ Maak een eind punt met gelijke taak verdeling voor elke virtuele machine die als
         (Get-AzureVNetConfig).XMLConfiguration
 9. Noteer de *naam van het subnet voor* het subnet dat de virtuele machines bevat die als host voor de replica's fungeren. Deze naam wordt gebruikt in de para meter $SubnetName in het script.
 
-10. Noteer de naam van de *VirtualNetworkSite* en de eerste *AddressPrefix* voor het subnet met de virtuele machines die de replica's hosten. Zoek naar een beschikbaar IP-adres door beide waarden door te `Test-AzureStaticVNetIP` geven aan de opdracht en door de *AvailableAddresses*te controleren. Als het virtuele netwerk bijvoorbeeld de naam *MyVNet* heeft en een adres bereik voor het subnet heeft dat begint bij *172.16.0.128*, wordt in de volgende opdracht de lijst met beschik bare adressen vermeld:
+10. Noteer de naam van de *VirtualNetworkSite* en de eerste *AddressPrefix* voor het subnet met de virtuele machines die de replica's hosten. Zoek naar een beschikbaar IP-adres door beide waarden door te geven aan de `Test-AzureStaticVNetIP` opdracht en door de *AvailableAddresses*te controleren. Als het virtuele netwerk bijvoorbeeld de naam *MyVNet* heeft en een adres bereik voor het subnet heeft dat begint bij *172.16.0.128*, wordt in de volgende opdracht de lijst met beschik bare adressen vermeld:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. Selecteer een van de beschik bare adressen en gebruik deze in de para meter $ILBStaticIP van het script in de volgende stap.
@@ -105,7 +105,7 @@ Maak een eind punt met gelijke taak verdeling voor elke virtuele machine die als
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Nadat u de variabelen hebt ingesteld, kopieert u het script van de tekst editor naar uw Power shell-sessie om het uit te voeren. Als de prompt nog steeds **>>** wordt weer gegeven, drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
+13. Nadat u de variabelen hebt ingesteld, kopieert u het script van de tekst editor naar uw Power shell-sessie om het uit te voeren. Als de prompt nog steeds wordt weer gegeven **>>** , drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Controleer of KB2854082 is geïnstalleerd, indien nodig
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster b
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Nadat u de variabelen hebt ingesteld, opent u een Windows Power shell-venster met verhoogde bevoegdheden en plakt u het script uit de tekst editor in uw Power shell-sessie om het uit te voeren. Als de prompt nog steeds **>>** wordt weer gegeven, drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
+3. Nadat u de variabelen hebt ingesteld, opent u een Windows Power shell-venster met verhoogde bevoegdheden en plakt u het script uit de tekst editor in uw Power shell-sessie om het uit te voeren. Als de prompt nog steeds wordt weer gegeven **>>** , drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
 
 4. Herhaal de voor gaande stappen voor elke virtuele machine.  
     Met dit script wordt de IP-adres bron geconfigureerd met het IP-adres van de Cloud service en worden andere para meters ingesteld, zoals de test poort. Wanneer de IP-adres bron online wordt gebracht, kan deze reageren op de polling op de test poort van het eind punt met gelijke taak verdeling die u eerder hebt gemaakt.
