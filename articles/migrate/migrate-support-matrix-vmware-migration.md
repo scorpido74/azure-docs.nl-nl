@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743672"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140477"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -27,7 +27,7 @@ Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u 
 ## <a name="migration-limitations"></a>Migratiebeperkingen
 
 - U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
-- Voor VMware-agentloze migratie kunt u Maxi maal 100 replicaties tegelijk uitvoeren.
+- Voor VMware-agentloze migratie kunt u Maxi maal 300 replicaties tegelijk uitvoeren.
 
 ## <a name="agentless-vmware-servers"></a>Zonder agent-VMware-servers
 
@@ -60,7 +60,7 @@ Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u 
 **Team kaarten** | Niet ondersteund.
 **IPv6** | Niet ondersteund.
 **Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
-**Gelijktijdige replicatie** | 100 Vm's per vCenter Server. Als u meer hebt, migreert u deze in batches van 100.
+**Gelijktijdige replicatie** | 300 Vm's per vCenter Server. Als u meer hebt, migreert u deze in batches van 300.
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Zonder agent-Azure Migrate apparaat 
@@ -73,7 +73,7 @@ Migratie zonder agent maakt gebruik van het [Azure migrate apparaat](migrate-app
 
 ## <a name="agentless-ports"></a>Zonder agents-poorten
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | ---
 Apparaat | Uitgaande verbindingen op poort 443 voor het uploaden van gerepliceerde gegevens naar Azure en om te communiceren met Azure Migrate services die replicatie en migratie coördineren.
 vCenter-server | Binnenkomende verbindingen op poort 443 om het apparaat in staat te stellen de replicatie te organiseren-moment opnamen maken, gegevens kopiëren, moment opnamen van de release
@@ -130,7 +130,7 @@ Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon di
 
 ## <a name="agent-based-ports"></a>Poorten op basis van agents
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | ---
 VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
 Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
@@ -153,7 +153,7 @@ Gedeelde VHD | Niet ondersteund. | De controle is mislukt als dit niet wordt ond
 FC-schijf | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 BitLocker | Niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.
 VM-naam | Van 1 tot 63 tekens.<br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
-Verbinding maken na migratie-Windows | Verbinding maken met virtuele Azure-machines na de migratie:<br/> -Voordat de migratie RDP op de on-premises VM maakt. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/> Schakel voor site-naar-site-VPN-toegang RDP in en sta RDP toe in **Windows Firewall** -> **toegestane apps en functies** voor **domein-en particuliere** netwerken. Controleer bovendien of het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](prepare-for-migration.md). |
+Verbinding maken na migratie-Windows | Verbinding maken met virtuele Azure-machines na de migratie:<br/> -Voordat de migratie RDP op de on-premises VM maakt. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/> Schakel voor site-naar-site-VPN-toegang RDP in en sta RDP toe in **Windows Firewall**  ->  **toegestane apps en functies** voor **domein-en particuliere** netwerken. Controleer bovendien of het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](prepare-for-migration.md). |
 Verbinding maken na migratie-Linux | Verbinding maken met virtuele Azure-machines na de migratie met SSH:<br/> Controleer voordat u de migratie op de on-premises computer controleert of de Secure shell-service is ingesteld op Start en of de firewall regels een SSH-verbinding toestaan.<br/> Nadat de failover is uitgevoerd op de Azure-VM, moet u binnenkomende verbindingen met de SSH-poort toestaan voor de regels voor de netwerk beveiligings groep op de virtuele machine die is mislukt en voor het Azure-subnet waarmee deze is verbonden. Voeg bovendien een openbaar IP-adres voor de virtuele machine toe. |  
 
 

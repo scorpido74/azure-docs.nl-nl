@@ -9,21 +9,24 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588651"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014975"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel verbinden met AWS CloudTrail
 
 Gebruik de AWS-connector om al uw AWS CloudTrail-gebeurtenissen in azure Sentinel te streamen. Dit verbindings proces delegeert de toegang voor Azure Sentinel naar uw AWS-bron logboeken, waardoor er een vertrouwens relatie tussen AWS CloudTrail en Azure Sentinel wordt gemaakt. Dit wordt bereikt op AWS door een rol te maken waarmee u toegang krijgt tot de AWS-logboeken van Azure.
+
+> [!NOTE]
+> AWS CloudTrail heeft [ingebouwde beperkingen](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in de LOOKUPEVENTS-API. Het kan Maxi maal twee trans acties per seconde (TPS) per account bevatten en elke query kan Maxi maal 50 records retour neren. Als één Tenant voortdurend meer dan 100 records per seconde in de ene regio genereert, zullen de achterstand en vertragingen in gegevens opname resulteren.
 
 ## <a name="prerequisites"></a>Vereisten
 

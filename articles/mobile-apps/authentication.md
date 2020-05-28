@@ -32,10 +32,10 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 - U kunt eenvoudig integreren met CRM-data bases, hulpprogram ma's voor marketing analyse en systemen voor account verificatie.
 - Aanmeld-, voorkeurs-en conversie gegevens vastleggen voor klanten.
 
-**Verwijzingen**
+**Referenties**
 - [Azure Portal](https://portal.azure.com/)
 - [Documentatie over Azure AD B2C](/azure/active-directory-b2c/)
-- [Quickstarts](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
+- [Snelstartgidsen](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
 - [Voorbeelden](/azure/active-directory-b2c/code-samples)
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
@@ -49,8 +49,8 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 - Duizenden vooraf geïntegreerde apps voor commerciële en aangepaste toepassingen, zoals Office 365, Salesforce.com en Box.
 - De mogelijkheid om toegang op schaal te beheren.
 
-**Verwijzingen**
+**Referenties**
 - [Azure Portal](https://portal.azure.com/)
 - [Wat is Azure AD?](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Aan de slag met Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
-- [Quickstarts](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Snelstartgidsen](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)

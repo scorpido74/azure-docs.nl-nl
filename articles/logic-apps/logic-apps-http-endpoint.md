@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005510"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141786"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
@@ -40,7 +40,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
    In dit voor beeld wordt de trigger voor aanvragen gebruikt, maar u kunt elke trigger gebruiken die binnenkomende HTTPS-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie voor meer informatie over de aanvraag trigger [binnenkomende https-aanroepen ontvangen en erop reageren met behulp van Azure Logic apps](../connectors/connectors-native-reqres.md).
 
-1. Selecteer in het zoekvak **ingebouwde**. Voer `request` in het zoekvak in als uw filter. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
+1. Selecteer in het zoekvak **ingebouwde**. Voer in het zoekvak in `request` als uw filter. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
    ![De aanvraag trigger zoeken en selecteren](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -154,6 +154,9 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
   Deze waarden worden door gegeven via een relatief pad in de URL van het eind punt. U moet ook expliciet [de methode selecteren](#select-method) die de trigger verwacht. Bij een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer door rechtstreeks naar die uitvoer te verwijzen.
 
+> [!NOTE]
+> De URL maakt gebruik van het symbool ' at ' ( **@** ), maar niet het hash-symbool ( **#** ).
+
 <a name="get-parameters"></a>
 
 ### <a name="accept-values-through-get-parameters"></a>Waarden accepteren via GET-para meters
@@ -164,15 +167,15 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 1. Voeg onder de trigger voor aanvragen de actie toe waarvoor u de parameter waarde wilt gebruiken. Voor dit voor beeld voegt u de **reactie** actie toe.
 
-   1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger voor aanvragen.
+   1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
    
-   1. Voer `response` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **reactie** .
+   1. Voer onder **Kies een actie**in het zoekvak in `response` als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
-1. Voer de volgende `triggerOutputs()` stappen uit om de expressie op te bouwen waarmee de parameter waarde wordt opgehaald:
+1. Voer de volgende stappen uit om de expressie op te bouwen `triggerOutputs()` waarmee de parameter waarde wordt opgehaald:
 
    1. Klik in de eigenschap **Body** van de antwoord actie, zodat de lijst met dynamische inhoud wordt weer gegeven en selecteer **expressie**.
 
-   1. In het vak **expressie** voert u deze expressie in, `parameter-name` vervangt u door de naam van de para meter en selecteert u **OK**.
+   1. In het vak **expressie** voert u deze expressie in, vervangt `parameter-name` u door de naam van de para meter en selecteert u **OK**.
 
       `triggerOutputs()['queries']['parameter-name']`
 
@@ -190,11 +193,11 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      Stel bijvoorbeeld dat u een waarde wilt door geven voor een para meter met de `postalCode`naam. De eigenschap **Body** geeft de teken reeks `Postal Code: ` aan, met een spatie, gevolgd door de bijbehorende expressie:
+      Stel bijvoorbeeld dat u een waarde wilt door geven voor een para meter met de naam `postalCode` . De eigenschap **Body** geeft de teken reeks aan, `Postal Code: ` met een spatie, gevolgd door de bijbehorende expressie:
 
       ![Voor beeld ' triggerOutputs () '-expressie toevoegen aan trigger](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. Als u uw aanroep bare eind punt wilt testen, kopieert u de call back-URL uit de trigger voor aanvragen en plakt u de URL in een ander browser venster. Voeg in de URL de parameter naam en de waarde achter het vraag teken (`?`) toe aan de URL in de volgende notatie en druk op ENTER.
+1. Als u uw aanroep bare eind punt wilt testen, kopieert u de call back-URL uit de trigger voor aanvragen en plakt u de URL in een ander browser venster. Voeg in de URL de parameter naam en de waarde achter het vraag teken ( `?` ) toe aan de URL in de volgende notatie en druk op ENTER.
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,11 +207,11 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    ![Antwoord van het verzenden van een aanvraag naar een call back-URL](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. Als u de parameter naam en-waarde op een andere positie binnen de URL wilt plaatsen, moet u het en`&`-teken () als voor voegsel gebruiken, bijvoorbeeld:
+1. Als u de parameter naam en-waarde op een andere positie binnen de URL wilt plaatsen, moet u het `&` en-teken () als voor voegsel gebruiken, bijvoorbeeld:
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   In dit voor beeld wordt de call back-URL met de naam `postalCode=123456` en waarde van de voor beeld-para meter in verschillende posities binnen de URL weer gegeven:
+   In dit voor beeld wordt de call back-URL met de naam en waarde van de voor beeld-para meter `postalCode=123456` in verschillende posities binnen de URL weer gegeven:
 
    * 1e positie:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
@@ -222,21 +225,21 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    ![Eigenschap relatief pad toevoegen aan trigger](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. Geef in de eigenschap **relatief pad** het relatieve pad voor de para meter in uw JSON-schema op dat u door de URL wilt laten accepteren, `/address/{postalCode}`bijvoorbeeld.
+1. Geef in de eigenschap **relatief pad** het relatieve pad voor de para meter in uw JSON-schema op dat u door de URL wilt laten accepteren, bijvoorbeeld `/address/{postalCode}` .
 
    ![Geef het relatieve pad op voor de para meter](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 1. Voeg onder de trigger voor aanvragen de actie toe waarvoor u de parameter waarde wilt gebruiken. Voor dit voor beeld voegt u de **reactie** actie toe.
 
-   1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger voor aanvragen.
+   1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
 
-   1. Voer `response` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **reactie** .
+   1. Voer onder **Kies een actie**in het zoekvak in `response` als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
 1. Neem in de eigenschap **hoofd tekst** van de reactie actie het token op dat staat voor de para meter die u hebt opgegeven in het relatieve pad van uw trigger.
 
-   Stel dat u wilt dat de reactie actie wordt geretourneerd `Postal Code: {postalCode}`.
+   Stel dat u wilt dat de reactie actie wordt geretourneerd `Postal Code: {postalCode}` .
 
-   1. Voer `Postal Code: ` in de eigenschap **Body** een afsluitende spatie in. Bewaar de cursor binnen het invoervak zodat de lijst met dynamische inhoud geopend blijft.
+   1. Voer in de eigenschap **Body** `Postal Code: ` een afsluitende spatie in. Bewaar de cursor binnen het invoervak zodat de lijst met dynamische inhoud geopend blijft.
 
    1. Selecteer in de lijst dynamische inhoud, in de sectie **Wanneer een HTTP-aanvraag wordt ontvangen** , het **Post code** -token.
 
@@ -252,7 +255,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. Als u uw aanroep bare eind punt wilt testen, kopieert u de bijgewerkte call back-URL uit de trigger voor aanvragen, plakt u `{postalCode}` de URL in een `123456`ander browser venster, vervangt u in de URL door en drukt u op ENTER.
+1. Als u uw aanroep bare eind punt wilt testen, kopieert u de bijgewerkte call back-URL uit de trigger voor aanvragen, plakt u de URL in een ander browser venster, vervangt u `{postalCode}` in de URL door `123456` en drukt u op ENTER.
 
    De browser retourneert een antwoord met deze tekst:`Postal Code: 123456`
 
@@ -260,7 +263,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logische app aanroepen via eind punt-URL
 
-Nadat u het eind punt hebt gemaakt, kunt u de logische app activeren door een `POST` HTTPS-aanvraag naar de volledige URL van het eind punt te verzenden. Logic apps hebben ingebouwde ondersteuning voor directe toegangs punten.
+Nadat u het eind punt hebt gemaakt, kunt u de logische app activeren door een HTTPS- `POST` aanvraag naar de volledige URL van het eind punt te verzenden. Logic apps hebben ingebouwde ondersteuning voor directe toegangs punten.
 
 <a name="generated-tokens"></a>
 
@@ -268,7 +271,7 @@ Nadat u het eind punt hebt gemaakt, kunt u de logische app activeren door een `P
 
 Wanneer u een JSON-schema in de aanvraag trigger opgeeft, worden in de ontwerp functie voor logische apps tokens voor de eigenschappen in dat schema gegenereerd. U kunt vervolgens deze tokens gebruiken voor het door geven van gegevens via de werk stroom van uw logische app.
 
-Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"`aan uw JSON-schema, zijn tokens voor die eigenschappen beschikbaar voor gebruik in de volgende stappen voor uw logische app. Dit is het volledige JSON-schema:
+Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"` aan uw JSON-schema, zijn tokens voor die eigenschappen beschikbaar voor gebruik in de volgende stappen voor uw logische app. Dit is het volledige JSON-schema:
 
 ```json
    {
@@ -302,9 +305,9 @@ Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"`aan uw JSON-schem
 
 U kunt werk stromen nesten in uw logische app door andere logische apps toe te voegen die aanvragen kunnen ontvangen. Voer de volgende stappen uit om deze Logic apps op te nemen:
 
-1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de stap waarin u een andere logische app wilt aanroepen.
+1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de stap waarin u een andere logische app wilt aanroepen.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `logic apps` in het zoekvak in als uw filter. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `logic apps` als uw filter. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
 
    ![Logische app nesten in huidige logische app](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -316,9 +319,9 @@ U kunt werk stromen nesten in uw logische app door andere logische apps toe te v
 
 ## <a name="reference-content-from-an-incoming-request"></a>Verwijzen naar inhoud van een binnenkomende aanvraag
 
-Als het inhouds type van de inkomende aanvraag `application/json`is, kunt u naar de eigenschappen in de binnenkomende aanvraag verwijzen. Anders wordt deze inhoud behandeld als een enkele binaire eenheid die u kunt door geven aan andere Api's. Als u wilt verwijzen naar deze inhoud in de werk stroom van uw logische app, moet u deze inhoud eerst converteren.
+Als het inhouds type van de inkomende aanvraag is `application/json` , kunt u naar de eigenschappen in de binnenkomende aanvraag verwijzen. Anders wordt deze inhoud behandeld als een enkele binaire eenheid die u kunt door geven aan andere Api's. Als u wilt verwijzen naar deze inhoud in de werk stroom van uw logische app, moet u deze inhoud eerst converteren.
 
-Als u bijvoorbeeld inhoud doorgeeft die van het type `application/xml` is, kunt u de [ `@xpath()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#xpath) gebruiken om een XPath-extractie uit te voeren of de [ `@json()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#json) gebruiken voor het converteren van XML naar JSON. Meer informatie over het werken met ondersteunde [inhouds typen](../logic-apps/logic-apps-content-type.md).
+Als u bijvoorbeeld inhoud `application/xml` doorgeeft die van het type is, kunt u de [ `@xpath()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#xpath) gebruiken om een XPath-extractie uit te voeren of de [ `@json()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#json) gebruiken voor het converteren van XML naar JSON. Meer informatie over het werken met ondersteunde [inhouds typen](../logic-apps/logic-apps-content-type.md).
 
 Als u de uitvoer van een binnenkomende aanvraag wilt ophalen, kunt u de [ `@triggerOutputs` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)gebruiken. Stel dat u een uitvoer hebt die er ongeveer zo uitziet als in dit voor beeld:
 
@@ -333,7 +336,7 @@ Als u de uitvoer van een binnenkomende aanvraag wilt ophalen, kunt u de [ `@trig
 }
 ```
 
-Voor toegang tot specifiek `body` de eigenschap kunt u de [ `@triggerBody()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) gebruiken als een snelkoppeling.
+Voor toegang tot specifiek de `body` eigenschap kunt u de [ `@triggerBody()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) gebruiken als een snelkoppeling.
 
 ## <a name="respond-to-requests"></a>Reageren op aanvragen
 
@@ -345,7 +348,7 @@ Voor geneste logische apps blijft de bovenliggende logische app wachten op een r
 
 ### <a name="construct-the-response"></a>Het antwoord maken
 
-In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De koptekst van dit antwoord geeft bijvoorbeeld aan dat het inhouds type van het antwoord `application/json` is en dat de hoofd tekst waarden bevat `town` voor `postalCode` de eigenschappen en, op basis van het JSON-schema dat eerder in dit onderwerp voor de aanvraag trigger is beschreven.
+In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De koptekst van dit antwoord geeft bijvoorbeeld aan dat het inhouds type van het antwoord is `application/json` en dat de hoofd tekst waarden bevat voor de `town` `postalCode` Eigenschappen en, op basis van het JSON-schema dat eerder in dit onderwerp voor de aanvraag trigger is beschreven.
 
 ![Reactie-inhoud voor HTTPS-reactie actie opgeven](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
@@ -354,7 +357,7 @@ Antwoorden hebben de volgende eigenschappen:
 | Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Kopteksten** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 

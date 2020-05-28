@@ -8,18 +8,18 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 96e3d5001d11455337ae092776a1a4c5c3738012
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9ffc065cb877c7f87cd38671f586f0754a42b2b8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883070"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141582"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Onopzettelijke verwijdering van Azure-bestands shares voor komen
 
-Azure Storage biedt nu een tijdelijke verwijdering voor bestands shares. Met zacht verwijderen kunt u uw gegevens herstellen wanneer deze per ongeluk worden verwijderd door een toepassing of een ander opslag account.
+Azure Storage biedt nu zacht verwijderen voor bestands shares (preview). Met zacht verwijderen kunt u uw gegevens herstellen wanneer deze per ongeluk worden verwijderd door een toepassing of een ander opslag account.
 
-## <a name="how-soft-delete-works"></a>Hoe zacht verwijderen werkt
+## <a name="how-soft-delete-preview-works"></a>Hoe zacht verwijderen (preview) werkt
 
 Wanneer deze optie is ingeschakeld, kunt u met zacht verwijderen uw bestands shares opslaan en herstellen wanneer ze worden verwijderd. Wanneer gegevens worden verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens worden hersteld, configureren voordat deze permanent wordt verwijderd.
 
@@ -29,7 +29,7 @@ Voor soft-verwijderde Premium-bestands shares wordt het quotum voor bestands sha
 
 ### <a name="availability"></a>Beschikbaarheid
 
-Zacht verwijderen voor Azure-bestands shares is beschikbaar op alle opslag lagen, alle typen opslag accounts en in elke regio die Azure Files beschikbaar is in.
+Zacht verwijderen voor Azure-bestands shares (preview) is beschikbaar op alle opslag lagen, alle typen opslag accounts en in elke regio waarin Azure Files beschikbaar is.
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 

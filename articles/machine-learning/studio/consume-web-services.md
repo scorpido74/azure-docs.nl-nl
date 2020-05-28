@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b97fe6e55e2c36b6f101071e702952f529146281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 537c7e70176d902c5bc7458b60de7a70ea040c85
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631662"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117349"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) gebruiken
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Nadat u een Azure Machine Learning Studio (klassiek) voorspellend model als een webservice hebt geïmplementeerd, kunt u een REST API gebruiken om gegevens te verzenden en voor spellingen te ontvangen. U kunt de gegevens in realtime of in batch modus verzenden.
 
@@ -99,7 +97,7 @@ Als u verbinding wilt maken met een Machine Learning-webservice, moet u het NuGe
 **Micro soft. AspNet. WebApi. client NuGet installeren in Visual Studio**
 
 1. Publiceer de gegevensset voor downloaden van UCI: provider van de verzamelings gegevens van de volwassen 2-klasse.
-2. Klik op **extra** > **NuGet package manager** > **Package Manager-console**.
+2. Klik op **extra**  >  **NuGet package manager**  >  **Package Manager-console**.
 3. Kies **install-package micro soft. AspNet. WebApi. client**.
 
 **Het code voorbeeld uitvoeren**
@@ -306,7 +304,7 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>Java script-voor beeld
 
-Als u verbinding wilt maken met een Machine Learning-webservice, gebruikt u het NPM-pakket van de **aanvraag** in uw project. U gebruikt het `JSON` object ook om uw invoer op te maken en het resultaat te parseren. Installeer met `npm install request --save`of Voeg aan `"request": "*"` uw package. json toe `dependencies` en voer deze `npm install`uit.
+Als u verbinding wilt maken met een Machine Learning-webservice, gebruikt u het NPM-pakket van de **aanvraag** in uw project. U gebruikt het object ook `JSON` om uw invoer op te maken en het resultaat te parseren. Installeer met `npm install request --save` of Voeg `"request": "*"` aan uw package. json toe `dependencies` en voer deze uit `npm install` .
 
 **Hier ziet u hoe een volledige aanvraag eruitziet.**
 ```js

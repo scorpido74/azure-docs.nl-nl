@@ -4,14 +4,14 @@ description: Meer informatie over het instellen van een persoonlijke Azure-koppe
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697877"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116667"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -41,7 +41,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
     | **Exemplaar Details** |  |
-    | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
+    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||
 1. Selecteer **volgende: resource**.
@@ -69,7 +69,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     |Privé-DNS zone |Selecteer **privatelink.Documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
     |||
 
-1. Selecteer **controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
+1. Selecteer **Controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
 1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
 
 Wanneer u een persoonlijke koppeling hebt goedgekeurd voor een Azure Cosmos-account, is de optie **alle netwerken** in het deel venster **firewall en virtuele netwerken** niet beschikbaar in de Azure Portal.
@@ -618,9 +618,11 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 * Als u geen firewall regels configureert, kan standaard al het verkeer toegang krijgen tot een Azure Cosmos-account.
 
-* Als u openbaar verkeer of een service-eind punt configureert en u persoonlijke eind punten maakt, worden verschillende soorten binnenkomend verkeer geautoriseerd door het bijbehorende type firewall regel.
+* Als u openbaar verkeer of een service-eind punt configureert en u persoonlijke eind punten maakt, worden verschillende soorten binnenkomend verkeer geautoriseerd door het bijbehorende type firewall regel. Als een persoonlijk eind punt is geconfigureerd in een subnet waar service-eind punt ook is geconfigureerd:
+  * verkeer naar het database account dat is toegewezen door het persoonlijke eind punt, wordt doorgestuurd via een particulier eind punt,
+  * verkeer naar andere database accounts van het subnet wordt doorgestuurd via service-eind punt.
 
-* Als u geen openbaar verkeer of service-eind punt configureert en u persoonlijke eind punten maakt, is het Azure Cosmos-account alleen toegankelijk via de persoonlijke eind punten. Als u geen openbaar verkeer of een service-eind punt configureert, wordt het account geopend voor het hele netwerk nadat alle goedgekeurde privé-eind punten zijn afgewezen of verwijderd.
+* Als u geen openbaar verkeer of service-eind punt configureert en u persoonlijke eind punten maakt, is het Azure Cosmos-account alleen toegankelijk via de persoonlijke eind punten. Als u geen openbaar verkeer of een service-eind punt configureert nadat alle goedgekeurde persoonlijke eind punten zijn afgewezen of verwijderd, is het account geopend voor het hele netwerk, tenzij PublicNetworkAccess is ingesteld op uitgeschakeld (Zie de sectie hieronder).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Toegang tot open bare netwerken blok keren tijdens het maken van het account
 

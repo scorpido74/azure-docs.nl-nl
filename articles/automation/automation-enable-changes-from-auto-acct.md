@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 31390d260f51bdc1e9858d21153aa96ea7c54405
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826839"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116659"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account
 
@@ -37,9 +37,9 @@ Meld u aan bij Azure op https://portal.azure.com .
 
     ![Wijzigingen bijhouden en Inventaris inschakelen](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>De scope configuratie controleren
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
 
-Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van wijzigingen. De scope configuratie is een groep van een of meer opgeslagen Zoek opdrachten die wordt gebruikt om het bereik van de functie te beperken tot specifieke computers. Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie.
+Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van wijzigingen. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
 ## <a name="enable-azure-vms"></a>Virtuele Azure-machines inschakelen
 
@@ -47,7 +47,7 @@ Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de we
 
 2. Klik op **+ virtuele machines van Azure toevoegen** en selecteer een of meer virtuele machines in de lijst. Virtuele machines die niet kunnen worden ingeschakeld, worden grijs weer gegeven en kunnen niet worden geselecteerd. Azure-Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account. 
 
-3. Klik op **inschakelen** om de geselecteerde vm's toe te voegen aan de computer groep opgeslagen zoek opdracht voor de functie. Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie.
+3. Klik op **inschakelen** om de geselecteerde vm's toe te voegen aan de computer groep opgeslagen zoek opdracht voor de functie. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
     ![Virtuele Azure-machines inschakelen](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -80,7 +80,7 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over de functie.
-* Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
+* Zie [limiet voor wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
 * Zie [ontdekken welke software is geïnstalleerd op uw virtuele machines](automation-tutorial-installed-software.md)voor meer informatie over het gebruik van de functie voor het identificeren van software die is geïnstalleerd in uw omgeving.
 * Als u uw Automation-account niet wilt integreren met een Log Analytics-werk ruimte wanneer u de functie inschakelt, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account](automation-unlink-workspace-change-tracking.md).
 * Wanneer u klaar bent met het implementeren van wijzigingen in Vm's, kunt u ze verwijderen zoals beschreven in [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).

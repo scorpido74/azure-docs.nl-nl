@@ -45,7 +45,7 @@ Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een extern
 | |  |  |
 |---|---|---|
 |**SQL Database type**|**SQL-gebruikers machtiging voor de gegevens provider**|**SQL-gebruikers machtiging voor gegevens verbruiker**|
-|Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
+|Azure SQL-database | db_datareader | db_datareader, db_datawriter db_ddladmin
 |Azure Synapse Analytics (voorheen SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 

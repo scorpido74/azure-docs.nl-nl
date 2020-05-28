@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592726"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996071"
 ---
 # <a name="language-and-region-support-for-translator"></a>Taal-en regio ondersteuning voor Translator
 
@@ -40,80 +40,80 @@ Het conversie programma ondersteunt de volgende talen voor tekst vertaling. Neur
 > [!NOTE]
 > Momenteel is een subset van de Neural-talen beschikbaar in het aangepaste conversie programma en worden er geleidelijk extra toegevoegd. [Talen weer geven die momenteel beschikbaar zijn in het aangepaste conversie programma](#customization).
 
-|Taal|  Taalcode|  V3-API|
+|Taal|    Taalcode|    V3-API|
 |:-----|:-----:|:-----|
-|Afrikaans| `af`|   Neural|
-|Arabisch|    `ar`    |   Neural|
-|Bengalese|    `bn`    |   Neural|
-|Bosnisch (Latijns)|   `bs`    |   Neural|
-|Bulgaars| `bg`    |   Neural|
-|Kantonees (traditioneel)|   `yue`|  Statische|
-|Catalaans|   `ca`    |   Statische|
+|Afrikaans|    `af`|    Neural|
+|Arabisch|    `ar`    |    Neural|
+|Bengalese|    `bn`    |    Neural|
+|Bosnisch (Latijns)|    `bs`    |    Neural|
+|Bulgaars|    `bg`    |    Neural|
+|Kantonees (traditioneel)|    `yue`|    Statische|
+|Catalaans|    `ca`    |    Statische|
 |Vereenvoudigd Chinees|    `zh-Hans`|Neural|
-|Traditioneel Chinees|   `zh-Hant`       |Neural|
-|Kroatisch|  `hr`    |Neural|
-|Tsjechisch| `cs`    |   Neural|
+|Traditioneel Chinees|    `zh-Hant`        |Neural|
+|Kroatisch|    `hr`    |Neural|
+|Tsjechisch|    `cs`    |    Neural|
 |Deens|    `da`        |Neural|
-|Nederlands| `nl`|   Neural|
-|Engels|   `en`    |   Neural|
-|Ests|  `et`    |   Neural|
-|Fijian|    `fj`    |   Statische|
-|Filipino|  `fil`   |   Statische|
-|Fins|   `fi`    |   Neural|
-|Frans|    `fr`    |   Neural|
-|Duits|    `de`    |   Neural|
-|Grieks| `el`    |   Neural|
-|Gujarati|  `gu`    |   Neural|
+|Nederlands|    `nl`|    Neural|
+|Engels|    `en`    |    Neural|
+|Ests|    `et`    |    Neural|
+|Fijian|    `fj`    |    Statische|
+|Filipino|    `fil`    |    Statische|
+|Fins|    `fi`    |    Neural|
+|Frans|    `fr`    |    Neural|
+|Duits|    `de`    |    Neural|
+|Grieks|    `el`    |    Neural|
+|Gujarati|    `gu`    |    Neural|
 |Haïtiaans|    `ht`        |Statische|
-|Hebreeuws |`he`   |Neural
-|Hindi| `hi`    |   Neural|
-|Hmong Daw| `mww`   |   Statische|
-|Hongaars| `hu`    |   Neural|
-|IJslands| `is`    |   Neural|
-|Indonesisch|    `id`    |   Statische|
+|Hebreeuws    |`he`    |Neural
+|Hindi|    `hi`    |    Neural|
+|Hmong Daw|    `mww`    |    Statische|
+|Hongaars|    `hu`    |    Neural|
+|IJslands|    `is`    |    Neural|
+|Indonesisch|    `id`    |    Statische|
 |Iers | `ga`| Neural
-|Italiaans|   `it`    |   Neural|
-|Japans|  `ja`    |   Neural|
+|Italiaans|    `it`    |    Neural|
+|Japans|    `ja`    |    Neural|
 |Kannada|`kn`| Neural
-|Swahili| `sw`    |   Statische|
-|Klingon|   `tlh`   |   Statische|
-|Klingon (plqaD)|   `tlh-Qaak`  |   Statische|
-|Koreaans |`ko`   |   Neural|
-|Lets|   `lv`    |   Neural|
-|Litouws|    `lt`    |   Neural|
-|Malagassische|  `mg`    |   Statische|
-|Maleisisch| `ms`        |Statische|
+|Swahili|    `sw`    |    Statische|
+|Klingon|    `tlh`    |    Statische|
+|Klingon (plqaD)|    `tlh-Qaak`    |    Statische|
+|Koreaans    |`ko`    |    Neural|
+|Lets|    `lv`    |    Neural|
+|Litouws|    `lt`    |    Neural|
+|Malagassische|    `mg`    |    Statische|
+|Maleisisch|    `ms`        |Statische|
 |Malajalam| `ml` | Neural
-|Maltees|   `mt`    |   Statische|
+|Maltees|    `mt`    |    Statische|
 |Maori| `mi`  | Neural|
 |Marathi| `mr`  | Neural|
-|Noors| `nb`    |   Neural|
-|Perzisch|   `fa`    |   Neural|
-|Pools|    `pl`    |   Neural|
-|Portugees (Brazilië)|   `pt-br` |   Neural|
+|Noors|    `nb`    |    Neural|
+|Perzisch|    `fa`    |    Neural|
+|Pools|    `pl`    |    Neural|
+|Portugees (Brazilië)|    `pt-br`    |    Neural|
 |Portugees (Portugal)| `pt-pt` | Neural
 |Punjabi|`pa`|Neural
-|Queretaro Otomi|   `otq`   |   Statische|
-|Roemeens|  `ro`    |   Neural|
-|Russisch|   `ru`    |   Neural|
-|Samoan|    `sm`    |   Statische|
-|Servisch (Cyrillisch)|    `sr-Cyrl`|  Statische|
-|Servisch (Latijns)|   `sr-Latn`       |Statische|
-|Slowaaks|    `sk`    |   Neural|
-|Sloveens| `sl`    |   Neural|
-|Spaans|   `es`    |   Neural|
-|Zweeds|   `sv`    |Neural|
-|Tahitian|  `ty`    |Statische|
-|Tamil| `ta`    |   Neural|
-|Telugu|    `te`    |   Neural|
-|Thai|  `th`    |   Neural|
-|Tongaanse|    `to`    |   Statische|
-|Turks|   `tr`        |Neural|
-|Oekraïens| `uk`    |   Neural|
-|Urdu|  `ur`    |   Statische|
-|Vietnamees|    `vi`    |   Neural|
-|Welsh| `cy`    |   Neural|
-|Yucatec Maya|  `yua`   |   Statische|
+|Queretaro Otomi|    `otq`    |    Statische|
+|Roemeens|    `ro`    |    Neural|
+|Russisch|    `ru`    |    Neural|
+|Samoan|    `sm`    |    Statische|
+|Servisch (Cyrillisch)|    `sr-Cyrl`|    Statische|
+|Servisch (Latijns)|    `sr-Latn`        |Statische|
+|Slowaaks|    `sk`    |    Neural|
+|Sloveens|    `sl`    |    Neural|
+|Spaans|    `es`    |    Neural|
+|Zweeds|    `sv`    |Neural|
+|Tahitian|    `ty`    |Statische|
+|Tamil|    `ta`    |    Neural|
+|Telugu|    `te`    |    Neural|
+|Thai|    `th`    |    Neural|
+|Tongaanse|    `to`    |    Statische|
+|Turks|    `tr`        |Neural|
+|Oekraïens|    `uk`    |    Neural|
+|Urdu|    `ur`    |    Statische|
+|Vietnamees|    `vi`    |    Neural|
+|Welsh|    `cy`    |    Neural|
+|Yucatec Maya|    `yua`    |    Statische|
 
 > [!NOTE]
 > Taal code `pt` wordt standaard ingesteld op `pt-br` Portugees (Brazilië).
@@ -224,7 +224,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Vereenvoudigd Chinees      | `zh-Hans`          |
-|Traditioneel Chinees|   `zh-Hant`   |
+|Traditioneel Chinees|    `zh-Hant`    |
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
@@ -239,15 +239,15 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Hindi      | `hi`          |
 | Hongaars      | `hu`          |
 | IJslands | `is` |
-| Indonesisch|   `id`    |
-| Iers | `ga`  |
+| Indonesisch|    `id`    |
+| Iers | `ga`    |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
 | Swahili|    `sw`    |
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
-| Malagassische| `mg`    |
+| Malagassische|    `mg`    |
 | Maori| `mi`  |
 | Noors      | `nb`          |
 | Perzisch      | `fa`          |
@@ -255,7 +255,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Portugees (Brazilië) | `pt-br` |
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |
-| Samoan|   `sm`    |
+| Samoan|    `sm`    |
 | Servisch (Latijns)      | `sr-Latn`          |
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |

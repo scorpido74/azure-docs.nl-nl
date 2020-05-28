@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c58c99faa83d6f04ac37d03789202e111f1b06d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f879ebd2f3628b8282342d730a5f3957cf2a615f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611157"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994984"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` en te ![plakken: in uw](./media/whats-new/feed-icon-16x16.png) RSS feed reader pictogram feed lezer.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Active+Directory%22&locale=en-us` in uw ![ RSS feed reader pictogram ](./media/whats-new/feed-icon-16x16.png) feed lezer.
 
 Azure AD ontvangt voortdurend verbeteringen. Dit artikel bevat informatie over het volgende om op de hoogte te blijven van de meest recente ontwikkelingen:
 
@@ -487,7 +487,7 @@ Azure Monitor integratie met Azure AD-Logboeken is nu beschikbaar in Azure Gover
 **Service categorie:** Identiteits beveiliging  
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-We zijn enthousiast over het delen van de vernieuwde [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs) ervaring in de [Microsoft Azure Government Portal](https://portal.azure.us/). Zie voor meer informatie ons [aankondigings blog bericht](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667).
+We zijn enthousiast over het delen van de vernieuwde [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)   ervaring in de [Microsoft Azure Government Portal](https://portal.azure.us/). Zie voor meer informatie ons [aankondigings blog bericht](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667).
 
 ---
 
@@ -544,7 +544,7 @@ Vanaf nu kunnen klanten met gratis tenants toegang krijgen tot de [aanmeldings l
 **Service categorie:** Groeps beheer  
 **Product mogelijkheden:** Werking
 
-Om ervoor te zorgen dat klanten flexibele groepen kunnen maken die het beste aan hun behoeften voldoen, hebben we de optie voor de **hele Directory groepen** vervangen uit de**algemene** instellingen voor **groepen** > in de Azure Portal met een koppeling naar de [documentatie van dynamische groepen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership). We hebben onze documentatie verbeterd met meer instructies zodat beheerders alle groepen kunnen maken die gast gebruikers bevatten of uitsluiten.
+Om ervoor te zorgen dat klanten flexibele groepen kunnen maken die het beste aan hun behoeften voldoen, hebben we de optie voor de **hele Directory groepen** vervangen uit de **Groups**  >  **algemene** instellingen voor groepen in de Azure Portal met een koppeling naar de [documentatie van dynamische groepen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership). We hebben onze documentatie verbeterd met meer instructies zodat beheerders alle groepen kunnen maken die gast gebruikers bevatten of uitsluiten.
 
 ---
 
@@ -658,7 +658,7 @@ Mijn account, de ene-stop-shop voor alle beheer behoeften voor eind gebruikers, 
 **Service categorie:** Mijn profiel/account  
 **Product mogelijkheden:** Ervaringen van eind gebruikers
  
-De nieuwe ervaring voor eind gebruikers van mijn account wordt in de volgende `https://myaccount.microsoft.com` maand bijgewerkt naar de URL. Meer informatie over de ervaring en alle accounts selfservice mogelijkheden voor eind gebruikers vindt u in de [Help van mijn account Portal](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview).
+De nieuwe ervaring voor eind gebruikers van mijn account wordt `https://myaccount.microsoft.com` in de volgende maand bijgewerkt naar de URL. Meer informatie over de ervaring en alle accounts selfservice mogelijkheden voor eind gebruikers vindt u in de [Help van mijn account Portal](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview).
 
 ---
  
@@ -789,7 +789,7 @@ Zie wat zijn de standaard beveiligings [instellingen?](https://docs.microsoft.co
 **Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Gebruikers verificatie
 
-Als onderdeel van een beveiligd standaard model voor cookies wordt de Chrome 80-browser gewijzigd hoe cookies zonder het `SameSite` kenmerk worden behandeld. Elke cookie waarbij het `SameSite` kenmerk niet wordt opgegeven, wordt behandeld alsof het is ingesteld op `SameSite=Lax`. Hierdoor kunnen Chrome bepaalde scenario's voor het delen van cookies op meerdere domeinen blok keren waarvan uw app afhankelijk is. Als u het oudere Chrome-gedrag wilt behouden, kunt `SameSite=None` u het kenmerk gebruiken en `Secure` een extra kenmerk toevoegen, zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Chrome is gepland om deze wijziging te volt ooien op 4 februari 2020.
+Als onderdeel van een beveiligd standaard model voor cookies wordt de Chrome 80-browser gewijzigd hoe cookies zonder het kenmerk worden behandeld `SameSite` . Elke cookie waarbij het kenmerk niet `SameSite` wordt opgegeven, wordt behandeld alsof het is ingesteld op `SameSite=Lax` . Hierdoor kunnen Chrome bepaalde scenario's voor het delen van cookies op meerdere domeinen blok keren waarvan uw app afhankelijk is. Als u het oudere Chrome-gedrag wilt behouden, kunt u het `SameSite=None` kenmerk gebruiken en een extra `Secure` kenmerk toevoegen, zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Chrome is gepland om deze wijziging te volt ooien op 4 februari 2020.
 
 We raden aan dat alle ontwikkel aars hun apps testen met behulp van deze richt lijnen:
 

@@ -35,7 +35,7 @@ Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Sp
 | Scala                                 | 2,10 of hoger            |
 | Micro soft JDBC-stuur programma voor SQL Server  | 6,2 of hoger             |
 | Microsoft SQL Server                  | SQL Server 2008 of hoger |
-| Azure SQL Database                    | Ondersteund                |
+| Azure SQL-database                    | Ondersteund                |
 | Azure SQL Managed Instance            | Ondersteund                |
 
 De Spark-connector maakt gebruik van het micro soft JDBC-stuur programma voor SQL Server om gegevens tussen Spark-werk knooppunten en SQL-data bases te verplaatsen:

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2020
-ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461074"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020554"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
 
@@ -42,12 +42,12 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Azure SQL Data Warehouse: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure SQL Data Warehouse hebt, raadpleegt u de instructies in [Create a SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../sql-database/sql-database-get-started-portal.md)te volgen.
+* Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../azure-sql/database/single-database-create-quickstart.md)te volgen.
 * Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**:
+1. Selecteer in het menu links de optie **een resource maken**  >  **gegevens en analyses**  >  **Data Factory**:
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de volgende items:
 

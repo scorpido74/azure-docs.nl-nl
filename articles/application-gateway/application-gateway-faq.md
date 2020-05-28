@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e5e60fbcbdd7784cf131b7acb461065251a2dfd7
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873494"
+ms.locfileid: "84116162"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -211,7 +211,7 @@ Zie [volg orde van verwerkings regels](https://docs.microsoft.com/azure/applicat
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Wat is het veld host voor aangepaste tests?
 
-In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De indeling is \< protocol \> :// \< host \> : \< poort \> \< pad \> .
+In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De notatie is \<protocol\> :// \<host\> : \<port\> \<path\> .
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kan ik Application Gateway toegang tot slechts enkele bron-IP-adressen toestaan?
 
@@ -411,8 +411,6 @@ Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres
 
 Voor beeld van NSG-configuratie voor alleen persoonlijke IP-toegang: ![ Application Gateway v2 NSG configuratie alleen voor privé-IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Ondersteunt Application Gateway kenmerk SameSite-cookie?
-Ja, de [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een mandaat geïntroduceerd op http-cookies zonder SameSite kenmerk dat moet worden behandeld als SameSite = slordig. Dit betekent dat de Application Gateway affiniteits cookie niet wordt verzonden door de browser in een context van een derde partij. Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-overview.md#cookie-based-affinity) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

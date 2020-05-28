@@ -3,17 +3,19 @@ title: Implementatie geschiedenis
 description: Hierin wordt beschreven hoe u Azure Resource Manager implementatie bewerkingen kunt weer geven met de portal, Power shell, Azure CLI en REST API.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117837"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Implementatie geschiedenis met Azure Resource Manager weer geven
 
-Met Azure Resource Manager kunt u de implementatie geschiedenis bekijken en specifieke bewerkingen in eerdere implementaties onderzoeken. U kunt de resources zien die zijn geïmplementeerd en informatie over eventuele fouten ophalen.
+Met Azure Resource Manager kunt u de implementatie geschiedenis weer geven. U kunt specifieke bewerkingen in eerdere implementaties onderzoeken en zien welke resources zijn geïmplementeerd. Deze geschiedenis bevat informatie over fouten.
+
+De implementatie geschiedenis voor een resource groep is beperkt tot 800 implementaties. In de buurt van de limiet worden implementaties automatisch uit de geschiedenis verwijderd. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
 
 Zie [algemene fouten oplossen bij het implementeren van resources in azure met Azure Resource Manager](common-deployment-errors.md)voor hulp bij het oplossen van bepaalde implementatie fouten.
 
@@ -117,7 +119,7 @@ Elke implementatie kan meerdere bewerkingen bevatten. Raadpleeg de implementatie
 
 1. Selecteer op de samen vatting van een implementatie **bewerkings gegevens**.
 
-    ![Implementatie bewerkingen selecteren](./media/deployment-history/get-operation-details.png)
+    ![Details van bewerking selecteren](./media/deployment-history/get-operation-details.png)
 
 1. U ziet de Details voor die stap van de implementatie. Als er een fout optreedt, bevatten de details het fout bericht.
 
@@ -210,6 +212,6 @@ Het antwoord bevat een fout bericht.
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [algemene fouten oplossen bij het implementeren van resources in azure met Azure Resource Manager](common-deployment-errors.md)voor hulp bij het oplossen van bepaalde implementatie fouten.
-* Zie [activiteiten logboeken weer geven om Azure-resources te beheren](../management/view-activity-logs.md)voor meer informatie over het gebruik van de activiteiten logboeken voor het controleren van andere typen acties.
+* Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie over hoe implementaties in de geschiedenis worden beheerd.
 * Zie [een resource groep implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)om uw implementatie te valideren voordat u deze uitvoert.
 

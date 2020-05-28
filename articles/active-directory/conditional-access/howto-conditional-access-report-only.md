@@ -4,19 +4,19 @@ description: Modus alleen rapport gebruiken in voorwaardelijke toegang tot de hu
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690359"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994966"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport
 
@@ -26,7 +26,7 @@ Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport:
 > Als uw organisatie nog niet is, [stelt u Azure monitor integratie in met Azure AD](#set-up-azure-monitor-integration-with-azure-ad). Dit proces moet worden uitgevoerd voordat er gegevens beschikbaar zijn om te worden gecontroleerd.
 
 1. Meld u aan bij de **Azure Portal** als beheerder voor voorwaardelijke toegang, beveiligings beheerder of globale beheerder.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Configureer de beleids voorwaarden en de vereiste granting-besturings elementen als dat nodig is.
 1. Stel onder **beleid inschakelen** de modus voor **alleen rapport** in.
@@ -40,7 +40,7 @@ Alleen rapport weer geven als resultaat in Logboeken van Azure AD-aanmelding.
 Het resultaat van een alleen-rapport beleid voor een bepaalde aanmelding weer geven:
 
 1. Meld u aan bij de **Azure Portal** als een rapport lezer, beveiligings lezer, beveiligings beheerder of globale beheerder.
-1. Blader naar **Azure Active Directory** > **aanmeldingen**.
+1. Blader naar **Azure Active Directory**  >  **aanmeldingen**.
 1. Selecteer een aanmelding of Voeg filters toe om de resultaten te beperken.
 1. Selecteer in de **detail** lade het tabblad **alleen rapport** om het beleid weer te geven dat is geëvalueerd tijdens het aanmelden.
 
@@ -61,7 +61,7 @@ Meer informatie over Azure Monitor prijzen vindt u op de [pagina met Azure monit
 Wanneer u uw Azure AD-Logboeken hebt geïntegreerd met Azure Monitor, kunt u de impact van het beleid voor voorwaardelijke toegang bewaken met behulp van de nieuwe voorwaardelijke toegang-werkmappen.
 
 1. Meld u aan bij de **Azure Portal** als beveiligings beheerder of globale beheerder.
-1. Blader naar **Azure Active Directory** > -**werkmappen**.
+1. Blader naar **Azure Active Directory**-  >  **werkmappen**.
 1. Selecteer **inzicht in voorwaardelijke toegang**.
 1. Selecteer een of meer beleids regels uit de vervolg keuzelijst **voorwaardelijk toegangs beleid** . Alle ingeschakelde beleids regels zijn standaard geselecteerd.
 1. Selecteer een tijds bereik (als het tijds bereik de beschik bare gegevensset overschrijdt, worden alle beschik bare gegevens in het rapport weer gegeven). Wanneer u het beleid voor **voorwaardelijke toegang** en het **tijds bereik** hebt ingesteld, wordt het rapport geladen.

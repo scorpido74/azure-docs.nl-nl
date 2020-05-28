@@ -114,7 +114,7 @@ Gebruikers met deze rol kunnen alle aangepaste beleids regels maken, lezen, bijw
 > [!IMPORTANT]
 > De B2 IEF-beleids beheerder is een zeer gevoelige rol die zeer beperkt moet worden toegewezen aan organisaties in de productie omgeving.Activiteiten door deze gebruikers moeten nauw keurig worden gecontroleerd, met name voor organisaties die in productie zijn.
 
-### <a name="billing-administrator"></a>[Factureringsbeheerder](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[Facturerings beheerder](#billing-administrator-permissions)
 
 Doet aankopen, beheert abonnementen, beheert ondersteuningstickets en bewaakt de servicestatus.
 
@@ -482,7 +482,7 @@ Gebruikers met deze rol kunnen communicatie problemen in micro soft-teams oploss
 
 Gebruikers met deze rol kunnen alle aspecten van de werk belasting van micro soft teams beheren via micro soft teams & het beheer centrum van Skype voor bedrijven en de respectieve Power shell-modules. Dit omvat onder andere alle beheer hulpprogramma's die betrekking hebben op telefonie, berichten, vergaderingen en de teams zelf. Deze rol verleent daarnaast de mogelijkheid om alle Office 365-groepen te maken en beheren, ondersteunings tickets te beheren en de service status te controleren.
 
-### <a name="user-administrator"></a>[Gebruikersbeheerder](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Gebruikers beheerder](#user-administrator-permissions)
 
 Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers met enkele beperkingen beheren (zie hieronder) en het verloop beleid voor wacht woorden kan bijwerken. Daarnaast kunnen gebruikers met deze rol alle groepen maken en beheren. Deze rol omvat ook de mogelijkheid om gebruikers weergaven te maken en beheren, ondersteunings tickets te beheren en de service status te controleren. Gebruikers beheerders hebben geen machtiging om bepaalde gebruikers eigenschappen voor gebruikers te beheren in de meeste beheerders rollen. Gebruiker met deze rol heeft geen machtigingen voor het beheren van MFA. De functies die uitzonde ringen op deze beperking zijn, worden weer gegeven in de volgende tabel.
 
@@ -490,7 +490,7 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 | --- | --- |
 |Algemene machtigingen|<p>Gebruikers en groepen maken</p><p>Gebruikersweergaven maken en beheren</p><p>Office-ondersteunings tickets beheren<p>Verloop beleid voor wacht woorden bijwerken|
 |<p>Voor alle gebruikers, inclusief alle beheerders</p>|<p>Licenties beheren</p><p>Alle gebruikers eigenschappen beheren, met uitzonde ring van Principal-naam van gebruiker</p>
-|Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikersbeheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
+|Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikers beheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -1871,7 +1871,7 @@ Helpdesk beheerder | Helpdesk beheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Hybride identiteits beheerder | Hybride identiteits beheerder | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Intune-servicebeheerder | Intune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-beheerder | Kaizala-beheerder | 74ef975b-6605-40af-a5d2-b9539d836353
-Licentie beheerder | Licentie beheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
+Licentie beheerder | Licentiebeheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-service beheerder | Skype voor Bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
 Berichten centrum-privacy-lezer | Berichten centrum-privacy-lezer | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Berichten centrum-lezer | Berichten centrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
@@ -1900,7 +1900,7 @@ Mede werker communicatie technicus voor teams | Mede werker communicatie technic
 Specialist communicatie ondersteuning teams | Specialist communicatie ondersteuning teams | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams service-beheerder | Teams service-beheerder | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Beheerder van gebruikers account | Gebruikers beheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
+Beheerder van gebruikers account | Gebruikersbeheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
 Werkplek apparaat toevoegen | Afgeschaft | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Afgeschafte functies

@@ -35,7 +35,7 @@ Wanneer u een verwijzing naar een installatie kopie van een virtuele machine con
 
 | **Eigenschappen van afbeeldings verwijzing** | **Voorbeeld** |
 | --- | --- |
-| Publisher |Canonical |
+| Uitgever |Canonical |
 | Aanbieding |UbuntuServer |
 | SKU |18,04-LTS |
 | Versie |meest recente |
