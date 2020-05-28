@@ -9,27 +9,27 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb9e12f29c148ea6854dde57456d8cf796cc8c34
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655019"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994065"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
 Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap voor klanten die momenteel gebruikmaken van het klassieke virtuele netwerk model naar het Resource Manager-model van het virtuele netwerk. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
 
-In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren.
+In dit artikel vindt u een overzicht van de overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren. Zie voor delen [van de migratie van het klassieke naar het Resource Manager-implementatie model in Azure AD DS][migration-benefits]voor een aantal voor delen.
 
 > [!NOTE]
 > In 2017 is Azure AD Domain Services beschikbaar voor de host in een Azure Resource Manager netwerk. Sindsdien hebben we een veiligere service met de moderne mogelijkheden van Azure Resource Manager kunnen bouwen. Omdat Azure Resource Manager implementaties volledig worden vervangen door klassieke implementaties, worden Azure AD DS-implementaties met een klassiek virtueel netwerk ingetrokken op 1 maart 2023.
 >
-> Zie voor meer informatie de [officiële afschaffing melding](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
+> Zie de [officiële afschaffing](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)voor meer informatie.
 
 ## <a name="overview-of-the-migration-process"></a>Overzicht van het migratie proces
 
-Bij het migratie proces wordt een bestaand exemplaar van Azure AD DS uitgevoerd dat in een klassiek virtueel netwerk draait en het verplaatst naar een bestaand virtueel netwerk van Resource Manager. De migratie wordt uitgevoerd met behulp van Power shell en heeft twee belang rijke fasen voor het uitvoeren van de voor *bereiding* en *migratie*.
+Bij het migratie proces wordt een bestaand exemplaar van Azure AD DS uitgevoerd dat in een klassiek virtueel netwerk draait en het verplaatst naar een bestaand virtueel netwerk van Resource Manager. De migratie wordt uitgevoerd met behulp van Power shell en heeft twee belang rijke uitvoerings fasen: voor *bereiding* en *migratie*.
 
 ![Overzicht van het migratie proces voor Azure AD DS](media/migrate-from-classic-vnet/migration-overview.png)
 
@@ -40,21 +40,6 @@ In de *voorbereidings* fase maakt Azure AD DS een back-up van het domein om de l
 In de *migratie* fase worden de onderliggende virtuele schijven voor de domein controllers uit het klassieke Azure AD DS Managed Domain gekopieerd om de vm's te maken met behulp van het Resource Manager-implementatie model. Het door Azure AD DS beheerde domein wordt vervolgens opnieuw gemaakt, inclusief de LDAPS-en DNS-configuratie. Synchronisatie met Azure AD wordt opnieuw gestart en LDAP-certificaten worden hersteld. U hoeft geen computers opnieuw samen te voegen met een door Azure AD DS beheerd domein. ze blijven lid worden van het beheerde domein en zonder wijzigingen worden uitgevoerd.
 
 ![Migratie van Azure AD DS](media/migrate-from-classic-vnet/migration-process.png)
-
-## <a name="migration-benefits"></a>Migratie voordelen
-
-Wanneer u een door Azure AD DS beheerd domein verplaatst met dit migratie proces, voor komt u dat de computers opnieuw aan het beheerde domein worden toegevoegd of dat u het Azure AD DS-exemplaar verwijdert en een volledig nieuwe maakt. Vm's blijven aan het eind van het migratie proces lid worden van de Azure AD DS beheerde domein.
-
-Na de migratie biedt Azure AD DS veel functies die alleen beschikbaar zijn voor domeinen die gebruikmaken van virtuele netwerken van Resource Manager, zoals:
-
-* Ondersteuning van nauw keurig wachtwoord beleid.
-* AD-account vergrendelings beveiliging.
-* E-mail meldingen van waarschuwingen in het door Azure AD DS beheerde domein.
-* Audit logboeken met behulp van Azure Monitor.
-* Integratie van Azure Files
-* HD Insights-integratie
-
-Met Azure AD DS beheerde domeinen die gebruikmaken van een virtueel netwerk van Resource Manager kunt u up-to-date blijven met de nieuwste nieuwe functies. Ondersteuning voor Azure-AD DS met behulp van klassieke virtuele netwerken moet in de toekomst worden afgeschaft.
 
 ## <a name="example-scenarios-for-migration"></a>Voorbeeld scenario's voor migratie
 
@@ -367,6 +352,7 @@ Als uw Azure AD DS beheerd domein is gemigreerd naar het Resource Manager-implem
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [tshoot-ldaps]: tshoot-ldaps.md
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
+[migration-benefits]: concepts-migration-benefits.md
 
 <!-- EXTERNAL LINKS -->
 [powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte PHP-c
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758872"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142109"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Een Linux PHP-app voor Azure App Service configureren
 
@@ -43,11 +43,11 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
 
-1. Voer een aangepast script uit, `PRE_BUILD_SCRIPT_PATH`indien opgegeven door.
+1. Voer een aangepast script uit, indien opgegeven door `PRE_BUILD_SCRIPT_PATH` .
 1. Voer `php composer.phar install` uit.
-1. Voer een aangepast script uit, `POST_BUILD_SCRIPT_PATH`indien opgegeven door.
+1. Voer een aangepast script uit, indien opgegeven door `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Voor het uitvoeren van opdrachten die vooraf zijn `PRE_BUILD_COMMAND`gebouwd, definieert u. Als u opdrachten na het bouwen wilt uitvoeren `POST_BUILD_COMMAND`, definieert u.
+`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Voor het uitvoeren van opdrachten die vooraf zijn gebouwd, definieert u `PRE_BUILD_COMMAND` . Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND` .
 
 In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
 
@@ -62,7 +62,7 @@ Zie [Oryx documentation](https://github.com/microsoft/Oryx/blob/master/doc/runti
 
 ## <a name="customize-start-up"></a>Opstarten aanpassen
 
-De ingebouwde PHP-container voert standaard de Apache-server uit. Bij het opstarten wordt het uitgevoerd `apache2ctl -D FOREGROUND"`. Als u wilt, kunt u tijdens het opstarten een andere opdracht uitvoeren door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
+De ingebouwde PHP-container voert standaard de Apache-server uit. Bij het opstarten wordt het uitgevoerd `apache2ctl -D FOREGROUND"` . Als u wilt, kunt u tijdens het opstarten een andere opdracht uitvoeren door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -85,7 +85,7 @@ De standaard PHP-installatie kopie voor App Service gebruikt Apache en het is ni
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-
+    RewriteCond %{REQUEST_URI} ^/$
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -116,7 +116,7 @@ Als u wijzigingen moet aanbrengen in uw PHP-installatie, kunt u de [php. ini-ins
 
 Als u de richt lijnen PHP_INI_USER, PHP_INI_PERDIR en PHP_INI_ALL (Zie [php. ini-instructies](https://www.php.net/manual/ini.list.php)) wilt aanpassen, voegt u een *. htaccess* -bestand toe aan de hoofdmap van uw app.
 
-Voeg in het *. htaccess* -bestand de instructies toe met `php_value <directive-name> <value>` behulp van de syntaxis. Bijvoorbeeld:
+Voeg in het *. htaccess* -bestand de instructies toe met behulp van de `php_value <directive-name> <value>` syntaxis. Bijvoorbeeld:
 
 ```
 php_value upload_max_filesize 1000M
@@ -134,19 +134,19 @@ Als alternatief voor het gebruik van *. htaccess*kunt u [ini_set ()](https://www
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM-instructies aanpassen
 
-U kunt de *htaccess* -methode niet gebruiken om PHP_INI_SYSTEM-instructies (Zie de [instructies in PHP. ini](https://www.php.net/manual/ini.list.php)) aan te passen. App Service biedt een afzonderlijk mechanisme voor het `PHP_INI_SCAN_DIR` gebruik van de app-instelling.
+U kunt de *htaccess* -methode niet gebruiken om PHP_INI_SYSTEM-instructies (Zie de [instructies in PHP. ini](https://www.php.net/manual/ini.list.php)) aan te passen. App Service biedt een afzonderlijk mechanisme voor het gebruik van de `PHP_INI_SCAN_DIR` app-instelling.
 
-Voer eerst de volgende opdracht uit in het [Cloud shell](https://shell.azure.com) om een toepassings instelling toe te `PHP_INI_SCAN_DIR`voegen:
+Voer eerst de volgende opdracht uit in het [Cloud shell](https://shell.azure.com) om een toepassings instelling toe te voegen `PHP_INI_SCAN_DIR` :
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`is de standaardmap waarin *php. ini* zich bevindt. `/home/site/ini`is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met `:`een.
+`/usr/local/etc/php/conf.d`is de standaardmap waarin *php. ini* zich bevindt. `/home/site/ini`is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met een `:` .
 
-Ga naar de Web SSH-sessie met uw Linux-`https://<app-name>.scm.azurewebsites.net/webssh/host`container ().
+Ga naar de Web SSH-sessie met uw Linux-container ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Maak een map in `/home/site` de `ini`naam en maak vervolgens een *. ini* -bestand `/home/site/ini` in de map (bijvoorbeeld *Settings. ini)* met de instructies die u wilt aanpassen. Gebruik de syntaxis die u zou gebruiken in een *php. ini* -bestand. 
+Maak een map in `/home/site` `ini` de naam en maak vervolgens een *. ini* -bestand in de `/home/site/ini` map (bijvoorbeeld *Settings. ini)* met de instructies die u wilt aanpassen. Gebruik de syntaxis die u zou gebruiken in een *php. ini* -bestand. 
 
 > [!TIP]
 > In de ingebouwde Linux-containers in App Service wordt */Home* gebruikt als permanente gedeelde opslag. 
@@ -199,10 +199,10 @@ Wanneer een werkende PHP-app zich op een andere manier gedraagt in App Service o
 
 - [Open de logboek stroom](#access-diagnostic-logs).
 - Test de app lokaal in de productie modus. App Service worden uw node. js-apps in de productie modus uitgevoerd. u moet er dus voor zorgen dat uw project in de productie modus lokaal werkt zoals verwacht. Bijvoorbeeld:
-    - Afhankelijk van uw *Composer. json*kunnen verschillende pakketten worden geïnstalleerd voor de productie modus (`require` vs. `require-dev`).
+    - Afhankelijk van uw *Composer. json*kunnen verschillende pakketten worden geïnstalleerd voor de productie modus ( `require` VS. `require-dev` ).
     - Bepaalde web Frameworks kunnen statische bestanden in de productie modus anders implementeren.
     - Bepaalde web Frameworks kunnen aangepaste opstart scripts gebruiken wanneer ze in de productie modus worden uitgevoerd.
-- Voer uw app uit in App Service in de foutopsporingsmodus. In [Laravel](https://meanjs.org/)kunt u bijvoorbeeld uw app configureren voor het uitvoeren van debug-berichten in de productie door [de `APP_DEBUG` app-instelling `true`in te stellen op ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+- Voer uw app uit in App Service in de foutopsporingsmodus. In [Laravel](https://meanjs.org/)kunt u bijvoorbeeld uw app configureren voor het uitvoeren van debug-berichten in de productie door [de `APP_DEBUG` app-instelling `true` in te stellen op ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

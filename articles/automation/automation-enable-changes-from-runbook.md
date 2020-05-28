@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 014442dee1be23a189e22a505abf86050601b2aa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3220c364a4c94f95fa26d334a95f8e0d3155d5ab
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826739"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118000"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook
 
@@ -102,9 +102,8 @@ U moet Wijzigingen bijhouden en inventaris inschakelen voor een virtuele Azure-m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Schema's beheren in azure Automation](shared-resources/schedules.md)voor het plannen van een runbook.
+* Raadpleeg [Planningen beheren in Azure Automation](shared-resources/schedules.md) om een runbook te plannen.
 * Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met de functie.
-* Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
 * Zie [ontdekken welke software is geïnstalleerd op uw virtuele machines](automation-tutorial-installed-software.md)voor meer informatie over het gebruik van de functie voor het identificeren van software die is geïnstalleerd in uw omgeving.
 * Als u uw Automation-account niet wilt integreren met een Log Analytics-werk ruimte wanneer u de functie inschakelt, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account](automation-unlink-workspace-change-tracking.md).
 * Wanneer u klaar bent met het implementeren van wijzigingen in Vm's, kunt u ze verwijderen zoals beschreven in [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).

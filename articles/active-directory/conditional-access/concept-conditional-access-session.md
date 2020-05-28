@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671878"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993848"
 ---
 # <a name="conditional-access-session"></a>Voorwaardelijke toegang: sessie
 
@@ -48,7 +48,7 @@ Met App-beheer voor voorwaardelijke toegang kunnen gebruikers app-toegang en-ses
 
 Zie voor meer informatie het artikel [app-beheer voor voorwaardelijke toegang implementeren voor aanbevolen apps](/cloud-app-security/proxy-deployment-aad).
 
-## <a name="sign-in-frequency-preview"></a>Aanmeldings frequentie (preview-versie)
+## <a name="sign-in-frequency"></a>Aanmeldings frequentie
 
 Met de aanmeldings frequentie wordt de tijds periode gedefinieerd voordat een gebruiker wordt gevraagd om zich opnieuw aan te melden wanneer wordt geprobeerd om toegang te krijgen tot een bron.
 
@@ -66,7 +66,7 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 
 Zie voor meer informatie het artikel [verificatie sessie beheer met voorwaardelijke toegang configureren](howto-conditional-access-session-lifetime.md#user-sign-in-frequency).
 
-## <a name="persistent-browser-session-preview"></a>Permanente browser sessie (preview-versie)
+## <a name="persistent-browser-session"></a>Permanente browser sessie
 
 Met een permanente browser sessie kunnen gebruikers aangemeld blijven nadat ze het browser venster hebben gesloten en opnieuw hebben geopend.
 

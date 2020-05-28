@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684400"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021531"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
@@ -38,8 +38,8 @@ Met de Batch-service definieert u Azure-rekenresources om uw toepassingen parall
 
  Als u niet bekend bent met batch, kunt u de volgende artikelen gebruiken om inzicht te krijgen in de architectuur/implementatie van de oplossing die in dit artikel wordt beschreven:   
 
-* [Basis principes van batch](../../batch/batch-technical-overview.md)
-* [Overzicht van de functies van Batch](../../batch/batch-api-basics.md)
+* [Basis principes van batch](../../azure-sql/database/sql-database-paas-overview.md)
+* [Overzicht van de functies van Batch](../../batch/batch-service-workflow-features.md)
 
 Zie ook [de batch-documentatie](https://docs.microsoft.com/azure/batch/)voor meer informatie over batch.
 
@@ -578,7 +578,7 @@ In deze stap maakt u een gekoppelde service voor uw batch-account dat wordt gebr
    d. Voer de batch-URI in voor de JSON-eigenschap **batchUri** .
 
       > [!IMPORTANT]
-      > De URL van de Blade **batch-account** heeft de volgende indeling: \< AccountName \> . \< Region \> . batch.Azure.com. Voor de eigenschap **batchUri** in het JSON-script moet u A88 ' AccountName ' verwijderen. * * van de URL. Een voorbeeld is `"batchUri": "https://eastus.batch.azure.com"`.
+      > De URL van de Blade **batch-account** heeft de volgende indeling: \<accountname\> . \<region\> . batch.azure.com. Voor de eigenschap **batchUri** in het JSON-script moet u A88 ' AccountName ' verwijderen. * * van de URL. Een voorbeeld is `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
@@ -793,9 +793,9 @@ In deze stap maakt u een pijp lijn met één activiteit, de aangepaste activitei
 
    * Er bevindt zich slechts één activiteit in de pijp lijn en het is van het type **DotNetActivity**.
    * **Assemblyname** is ingesteld op de naam van het dll-bestand **MyDotNetActivity. dll**.
-   * **Entry Point** wordt ingesteld op **MyDotNetActivityNS. MyDotNetActivity**. Het is in principe \< naam ruimte \> . \< ClassName \> in uw code.
+   * **Entry Point** wordt ingesteld op **MyDotNetActivityNS. MyDotNetActivity**. Dat is in wezen \<namespace\> .\<classname\> in uw code.
    * **PackageLinkedService** is ingesteld op **StorageLinkedService**, die verwijst naar de Blob-opslag met het zip-bestand van de aangepaste activiteit. Als u verschillende opslag accounts gebruikt voor invoer-en uitvoer bestanden en het zip-bestand van de aangepaste activiteit, moet u een andere opslag-gekoppelde service maken. In dit artikel wordt ervan uitgegaan dat u hetzelfde opslag account gebruikt.
-   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity. zip**. Het is in de indeling \< containerforthezip \> / \< nameofthezip. zip \> .
+   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity. zip**. Het is in de indeling \<containerforthezip\> / \<nameofthezip.zip\> .
    * De aangepaste activiteit krijgt **input dataset** als invoer en **output dataset** als uitvoer.
    * De eigenschap **linkedServiceName** van de aangepaste activiteit verwijst naar **AzureBatchLinkedService**, wat aangeeft Data Factory dat de aangepaste activiteit moet worden uitgevoerd op batch.
    * De **gelijktijdigheids** instelling is belang rijk. Als u de standaard waarde (1) gebruikt, zelfs als u twee of meer reken knooppunten in de batch-pool hebt, worden de segmenten na elkaar verwerkt. Daarom neemt u geen gebruik van de parallelle verwerkings mogelijkheid van batch. Als u **gelijktijdigheid** instelt op een hogere waarde, zegt 2, betekent dit dat twee segmenten (overeenkomt met twee taken in batch) tegelijk kunnen worden verwerkt. In dit geval worden zowel de virtuele machines in de batch-pool gebruikt. Stel de gelijktijdigheids eigenschap op de juiste wijze in.
@@ -972,8 +972,8 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
   * [Aangepaste activiteiten gebruiken in een Data Factory pijp lijn](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Basis principes van batch](../../batch/batch-technical-overview.md)
-  * [Overzicht van batch-functies](../../batch/batch-api-basics.md)
+  * [Basis principes van batch](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Overzicht van batch-functies](../../batch/batch-service-workflow-features.md))
   * [Een batch-account maken en beheren in de Azure Portal](../../batch/batch-account-create-portal.md)
   * [Aan de slag met de batch-client bibliotheek voor .NET](../../batch/quick-run-dotnet.md)
 

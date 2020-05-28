@@ -116,7 +116,7 @@ U ziet dat de query de resultaten van alle Shards samenvoegt en de volgende uitv
 3. Klik **in andere bronnen** op en klik op **van SQL Server**.
 
    ![Excel importeren uit andere bronnen][5]
-4. Typ in de **wizard gegevens verbinding** de server naam en aanmeldings referenties. Klik vervolgens op **Volgende**.
+4. Typ in de **wizard gegevens verbinding** de server naam en aanmeldings referenties. Klik of tik op **Volgende**.
 5. **Selecteer de data base die de gewenste gegevens bevat**in het dialoog venster, selecteer de **ElasticDBQuery** -data base.
 6. Selecteer de tabel **klanten** in de lijst weergave en klik op **volgende**. Klik vervolgens op **Voltooien**.
 7. Selecteer in het formulier **gegevens importeren** onder **Selecteer hoe u deze gegevens wilt weer geven in uw werkmap** **tabel** en klik vervolgens op **OK**.
