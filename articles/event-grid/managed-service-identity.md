@@ -7,31 +7,31 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d96f28b98cccada2ac5c77589acc6df1430bb02
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700652"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167992"
 ---
-# <a name="event-delivery-with-managed-identity"></a>Gebeurtenisverzending met beheerde identiteit
-In dit artikel wordt beschreven hoe u de [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een event grid-onderwerp of-domein inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
+# <a name="event-delivery-with-a-managed-identity"></a>Gebeurtenis levering met een beheerde identiteit
+In dit artikel wordt beschreven hoe u een [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) kunt inschakelen voor een Azure Event grid onderwerp of domein. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
 
 Hier volgen de stappen die in dit artikel worden besproken:
-1. Een onderwerp of domein maken met een door het systeem toegewezen identiteit (of) een bestaand onderwerp of domein bijwerken om identiteit in te scha kelen. 
-2. Voeg de identiteit toe aan een geschikte rol (bijvoorbeeld: Service Bus gegevens verzender) op de bestemming (bijvoorbeeld: een Service Bus wachtrij)
-3. Wanneer u gebeurtenis abonnementen maakt, moet u het gebruik van de identiteit inschakelen voor het leveren van gebeurtenissen aan de bestemming. 
+1. Maak een onderwerp of domein met een door het systeem toegewezen identiteit of werk een bestaand onderwerp of domein bij om identiteit in te scha kelen. 
+1. Voeg de identiteit toe aan een geschikte rol (bijvoorbeeld Service Bus verzender van gegevens) op de bestemming (bijvoorbeeld een Service Bus wachtrij).
+1. Wanneer u gebeurtenis abonnementen maakt, moet u het gebruik van de identiteit inschakelen voor het leveren van gebeurtenissen aan de bestemming. 
 
 ## <a name="create-a-topic-or-domain-with-an-identity"></a>Een onderwerp of domein maken met een identiteit
 Laten we eerst eens kijken hoe u een onderwerp of een domein met een door een systeem beheerde identiteit maakt.
 
-### <a name="using-azure-portal"></a>Azure Portal gebruiken
-U kunt de door het systeem toegewezen identiteit voor een onderwerp/domein inschakelen tijdens het maken van de Azure Portal. In de volgende afbeelding ziet u hoe u door het systeem beheerde identiteit voor een onderwerp inschakelt. In principe selecteert u de optie **systeem toegewezen identiteit inschakelen** op de pagina **Geavanceerd** van de wizard voor het maken van het onderwerp. U ziet deze optie ook op de pagina **Geavanceerd** van de wizard voor het maken van het domein. 
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+U kunt de door het systeem toegewezen identiteit inschakelen voor een onderwerp of domein terwijl u deze maakt in de Azure Portal. De volgende afbeelding laat zien hoe u een door een systeem beheerde identiteit voor een onderwerp inschakelt. In principe selecteert u de optie **systeem toegewezen identiteit inschakelen** op de pagina **Geavanceerd** van de wizard voor het maken van het onderwerp. U ziet deze optie ook op de pagina **Geavanceerd** van de wizard voor het maken van het domein. 
 
 ![Identiteit inschakelen tijdens het maken van een onderwerp](./media/managed-service-identity/create-topic-identity.png)
 
-### <a name="using-azure-cli"></a>Azure CLI gebruiken
-U kunt ook Azure CLI gebruiken om een onderwerp of domein te maken met een door het systeem toegewezen identiteit. Gebruik de `az eventgrid topic create` opdracht met de `--identity` para meter ingesteld op `systemassigned` . Als u geen waarde voor deze para meter opgeeft, wordt de standaard waarde `noidentity` gebruikt. 
+### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+U kunt ook de Azure CLI gebruiken om een onderwerp of domein te maken met een door het systeem toegewezen identiteit. Gebruik de `az eventgrid topic create` opdracht met de `--identity` para meter ingesteld op `systemassigned` . Als u geen waarde voor deze para meter opgeeft, wordt de standaard waarde `noidentity` gebruikt. 
 
 ```azurecli-interactive
 # create a topic with a system-assigned identity
@@ -40,19 +40,19 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 
 Op dezelfde manier kunt u de `az eventgrid domain create` opdracht gebruiken om een domein te maken met een door het systeem beheerde identiteit.
 
-## <a name="enable-identity-for-an-existing-topic-or-domain"></a>Identiteit voor een bestaand onderwerp of domein inschakelen
-In de laatste sectie hebt u geleerd hoe u door het systeem beheerde identiteit kunt inschakelen tijdens het maken van een onderwerp of een domein. In deze sectie leert u hoe u door het systeem beheerde identiteit kunt inschakelen voor een bestaand onderwerp of domein. 
+## <a name="enable-an-identity-for-an-existing-topic-or-domain"></a>Een identiteit voor een bestaand onderwerp of domein inschakelen
+In de vorige sectie hebt u geleerd hoe u een door het systeem beheerde identiteit inschakelt tijdens het maken van een onderwerp of een domein. In deze sectie leert u hoe u een door het systeem beheerde identiteit voor een bestaand onderwerp of domein inschakelt. 
 
-### <a name="using-azure-portal"></a>Azure Portal gebruiken
-1. Ga naar [Azure Portal](https://portal.azure.com)
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Zoek naar **Event grid-onderwerpen** in de zoek balk.
 3. Selecteer het **onderwerp** waarvoor u de beheerde identiteit wilt inschakelen. 
 4. Ga naar het tabblad **identiteit** . 
 5. Schakel de switch in om de identiteit in te scha kelen. 
 
-    U kunt soort gelijke stappen gebruiken om identiteit in te scha kelen voor een event grid-domein.
+U kunt soort gelijke stappen gebruiken om een identiteit in te scha kelen voor een Event Grid domein.
 
-### <a name="using-azure-cli"></a>Azure CLI gebruiken
+### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 Gebruik de `az eventgrid topic update` opdracht met `--identity` ingesteld op `systemassigned` om de door het systeem toegewezen identiteit in te scha kelen voor een bestaand onderwerp. Als u de identiteit wilt uitschakelen, geeft u `noidentity` de waarde op. 
 
 ```azurecli-interactive
@@ -62,40 +62,40 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 De opdracht voor het bijwerken van een bestaand domein is vergelijkbaar ( `az eventgrid domain update` ).
 
-## <a name="supported-destinations-and-role-based-access-check-rbac-roles"></a>Ondersteunde doelen en functies op basis van op rollen gebaseerde toegangs controle (RBAC)
-Nadat u de identiteit voor het onderwerp of het domein van het gebeurtenis raster hebt ingeschakeld, maakt Azure automatisch een identiteit in de Azure Active Directory (Azure AD). Voeg deze identiteit toe aan de juiste RBAC-rollen zodat het onderwerp of het domein gebeurtenissen naar ondersteunde bestemmingen kan door sturen. U kunt bijvoorbeeld de identiteit toevoegen aan de rol **Azure Event hubs data Sender** voor een event hubs naam ruimte, zodat het event grid-onderwerp gebeurtenissen kan door sturen naar Event hubs in die naam ruimte.  
+## <a name="supported-destinations-and-rbac-roles"></a>Ondersteunde doelen en RBAC-rollen
+Nadat u de identiteit voor het onderwerp of het domein van het gebeurtenis raster hebt ingeschakeld, maakt Azure automatisch een identiteit in Azure Active Directory. Voeg deze identiteit toe aan de juiste RBAC-rollen (Role-based Access Control), zodat het onderwerp of het domein gebeurtenissen naar ondersteunde bestemmingen kan door sturen. U kunt bijvoorbeeld de identiteit toevoegen aan de rol **azure Event hubs data Sender** voor een Azure Event hubs-naam ruimte, zodat het onderwerp Event grid gebeurtenissen kan door sturen naar Event hubs in die naam ruimte. 
 
-Azure Event Grid ondersteunt momenteel onderwerpen of domeinen die zijn geconfigureerd met door het systeem toegewezen beheerde identiteit voor het door sturen van gebeurtenissen naar de volgende bestemmingen. In deze tabel vindt u ook de rollen waarin de identiteit zich moet bevinden, zodat het onderwerp de gebeurtenissen kan door sturen.
+Azure Event Grid ondersteunt momenteel onderwerpen of domeinen die zijn geconfigureerd met een door het systeem toegewezen beheerde identiteit voor het door sturen van gebeurtenissen naar de volgende bestemmingen. In deze tabel vindt u ook de rollen waarin de identiteit zich moet bevinden, zodat het onderwerp de gebeurtenissen kan door sturen.
 
 | Doel | RBAC-rol | 
 | ----------- | --------- | 
 | Service Bus-wacht rijen en-onderwerpen | [Afzender van Azure Service Bus gegevens](../service-bus-messaging/authenticate-application.md#built-in-rbac-roles-for-azure-service-bus) |
-| Event Hub | [Afzender van Azure Event Hubs gegevens](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
-| Blob Storage | [Inzender voor Storage BLOB-gegevens](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Queue Storage |[Afzender gegevens bericht van opslag wachtrij](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Event Hubs | [Afzender van Azure Event Hubs gegevens](../event-hubs/authorize-access-azure-active-directory.md#built-in-rbac-roles-for-azure-event-hubs) | 
+| Azure Blob Storage | [Inzender voor Storage BLOB-gegevens](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
+| Azure Queue Storage |[Afzender gegevens bericht van opslag wachtrij](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
 
-## <a name="add-identity-to-rbac-roles-on-destinations"></a>Identiteit toevoegen aan RBAC-rollen op bestemmingen
+## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Een identiteit toevoegen aan RBAC-rollen op bestemmingen
 In deze sectie wordt beschreven hoe u de identiteit voor uw onderwerp of domein toevoegt aan een RBAC-rol. 
 
-### <a name="using-azure-portal"></a>Azure Portal gebruiken
-U kunt de **Azure Portal** gebruiken om het onderwerp/de domein-id toe te wijzen aan een geschikte rol, zodat het onderwerp/het domein gebeurtenissen naar de bestemming kan door sturen. 
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+U kunt de Azure Portal gebruiken om het onderwerp of de domein-id toe te wijzen aan een geschikte rol, zodat het onderwerp of het domein gebeurtenissen naar de bestemming kan door sturen. 
 
-In het volgende voor beeld wordt een beheerde identiteit voor een event grid-onderwerp met de naam **msitesttopic** toegevoegd aan de rol voor het **verzenden van Azure Service Bus gegevens** voor een service bus **naam ruimte** die een wachtrij of onderwerp-resource bevat. Wanneer u aan de rol op het niveau van de naam ruimte toevoegt, kan het onderwerp gebeurtenissen door sturen naar alle entiteiten in de naam ruimte. 
+In het volgende voor beeld wordt een beheerde identiteit voor een event grid-onderwerp met de naam **msitesttopic** toegevoegd aan de rol voor het **verzenden van Azure Service Bus gegevens** voor een service bus naam ruimte die een wachtrij of onderwerp-resource bevat. Wanneer u aan de rol op het niveau van de naam ruimte toevoegt, kan het onderwerp gebeurtenissen door sturen naar alle entiteiten in de naam ruimte. 
 
-1. Navigeer naar uw **Service Bus-naam ruimte** in de [Azure Portal](https://portal.azure.com). 
-2. Selecteer **Access Control** in het linkerdeel venster. 
-3. Selecteer **toevoegen** in de sectie **toewijzing van een rol toevoegen** . 
-4. Voer op de pagina **een roltoewijzing toevoegen** de volgende stappen uit:
+1. Ga naar de **naam ruimte** van uw service bus in de [Azure Portal](https://portal.azure.com). 
+1. Selecteer **Access Control** in het linkerdeel venster. 
+1. Selecteer **toevoegen** in de sectie **toewijzing van een rol toevoegen** . 
+1. Voer op de pagina **een roltoewijzing toevoegen** de volgende stappen uit:
     1. Selecteer de rol. In dit geval is het **Azure Service Bus gegevens verzender**. 
-    2. Selecteer de **identiteit** voor uw onderwerp of domein. 
-    3. Selecteer **Opslaan** om de configuratie op te slaan.
+    1. Selecteer de **identiteit** voor uw onderwerp of domein. 
+    1. Selecteer **Opslaan** om de configuratie op te slaan.
 
 De stappen zijn vergelijkbaar voor het toevoegen van een identiteit aan andere rollen die in de tabel worden genoemd. 
 
-### <a name="using-azure-cli"></a>Azure CLI gebruiken
-In het voor beeld in deze sectie wordt beschreven hoe u **Azure cli** gebruikt om een identiteit toe te voegen aan een RBAC-rol. De voorbeeld opdrachten zijn voor Event grid-onderwerpen. De opdrachten voor Event grid-domeinen zijn vergelijkbaar. 
+### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+In het voor beeld in deze sectie wordt beschreven hoe u de Azure CLI gebruikt om een identiteit toe te voegen aan een RBAC-rol. De voorbeeld opdrachten zijn voor Event grid-onderwerpen. De opdrachten voor Event Grid domeinen zijn vergelijkbaar. 
 
-#### <a name="get-principal-id-for-the-topics-system-identity"></a>Principal-ID ophalen voor de systeem identiteit van het onderwerp 
+#### <a name="get-the-principal-id-for-the-topics-system-identity"></a>De principal-ID voor de systeem identiteit van het onderwerp ophalen 
 Haal eerst de principal-ID op van de door het systeem beheerde identiteit van het onderwerp en wijs de identiteit toe aan de juiste rollen.
 
 ```azurecli-interactive
@@ -103,7 +103,7 @@ topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o 
 ```
 
 #### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>Een roltoewijzing maken voor Event hubs in verschillende bereiken 
-In het volgende CLI-voor beeld ziet u hoe u de identiteit van een onderwerp kunt toevoegen aan de rol van **Azure Event hubs data Sender** op het niveau van de naam ruimte of op Event hub niveau. Als u de roltoewijzing maakt in de naam ruimte, kan het onderwerp gebeurtenissen door sturen naar alle Event hubs in die naam ruimte. Als u op Event Hub niveau maakt, kan het onderwerp alleen gebeurtenissen door sturen naar die specifieke Event Hub. 
+In het volgende CLI-voor beeld ziet u hoe u de identiteit van een onderwerp kunt toevoegen aan de rol van **Azure Event hubs data Sender** op het niveau van de naam ruimte of op Event hub niveau. Als u de roltoewijzing op het niveau van de naam ruimte maakt, kan het onderwerp gebeurtenissen door sturen naar alle Event hubs in die naam ruimte. Als u een roltoewijzing op Event Hub niveau maakt, kan het onderwerp alleen gebeurtenissen door sturen naar die specifieke Event Hub. 
 
 
 ```azurecli-interactive
@@ -118,8 +118,8 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$names
 az role assignment create --role "$role" --assignee "$topic_pid" --scope "$eventhubresourceid" 
 ```
 
-#### <a name="create-a-role-assignment-for-service-bus-topic-at-various-scopes"></a>Een roltoewijzing maken voor Service Bus onderwerp in verschillende bereiken 
-In het volgende CLI-voor beeld ziet u hoe u de identiteit van een onderwerp kunt toevoegen aan de rol van de **Azure Service Bus gegevens afzender** op het niveau van de naam ruimte of op het niveau van service bus onderwerp. Als u de roltoewijzing in de naam ruimte maakt, kan het event grid-onderwerp gebeurtenissen voor alle entiteiten (Service Bus wacht rijen of onderwerpen) in die naam ruimte door sturen. Als u op het niveau van de Service Bus wachtrij of onderwerp maakt, kan het event grid-onderwerp alleen gebeurtenissen door sturen naar die specifieke Service Bus wachtrij of het onderwerp. 
+#### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>Een roltoewijzing maken voor een Service Bus onderwerp in verschillende bereiken 
+In het volgende CLI-voor beeld ziet u hoe u de identiteit van een onderwerp kunt toevoegen aan de rol van de **Azure Service Bus gegevens afzender** op het niveau van de naam ruimte of op het niveau van service bus onderwerp. Als u de roltoewijzing op het niveau van de naam ruimte maakt, kan het event grid-onderwerp gebeurtenissen door sturen naar alle entiteiten (Service Bus wacht rijen of onderwerpen) binnen die naam ruimte. Als u een roltoewijzing maakt op het niveau van de Service Bus wachtrij of het onderwerp, kan het event grid-onderwerp alleen gebeurtenissen door sturen naar die specifieke Service Bus wachtrij of het onderwerp. 
 
 ```azurecli-interactive
 role="Azure Service Bus Data Sender" 
@@ -133,20 +133,20 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$names
 az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbustopicresourceid" 
 ```
 
-## <a name="create-event-subscriptions-that-use-identity"></a>Gebeurtenis abonnementen maken die gebruikmaken van de identiteit
-Nadat u een onderwerp of een domein met een door een systeem beheerde identiteit hebt gemaakt en de identiteit hebt toegevoegd aan de juiste rol op de bestemming, kunt u abonnementen maken die gebruikmaken van de identiteit. 
+## <a name="create-event-subscriptions-that-use-an-identity"></a>Gebeurtenis abonnementen maken die gebruikmaken van een identiteit
+Nadat u een onderwerp of een domein hebt met een door het systeem beheerde identiteit en de identiteit hebt toegevoegd aan de juiste rol op de bestemming, kunt u abonnementen maken die gebruikmaken van de identiteit. 
 
-### <a name="using-azure-portal"></a>Azure Portal gebruiken
-Bij het maken van een gebeurtenis abonnement ziet u een optie om het gebruik van door het systeem toegewezen identiteit voor een eind punt in de sectie **EINDPUNT Details** in te scha kelen. 
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+Wanneer u een gebeurtenis abonnement maakt, ziet u een optie om het gebruik van een door het systeem toegewezen identiteit voor een eind punt in de sectie **EINDPUNT Details** in te scha kelen. 
 
-![Identiteit inschakelen tijdens het maken van een gebeurtenis abonnement voor Service Bus wachtrij](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
+![Identiteit inschakelen tijdens het maken van een gebeurtenis abonnement voor een Service Bus wachtrij](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
 
-U kunt ook het gebruik van door het systeem toegewezen identiteiten inschakelen voor onbestelbare berichten op het tabblad **extra functies** . 
+U kunt ook inschakelen met behulp van een door het systeem toegewezen identiteit voor onbestelbare berichten op het tabblad **extra functies** . 
 
 ![Door het systeem toegewezen identiteit inschakelen voor onbestelbare berichten](./media/managed-service-identity/enable-deadletter-identity.png)
 
-### <a name="using-azure-cli---service-bus-queue"></a>Azure CLI-Service Bus wachtrij gebruiken 
-In deze sectie leert u hoe u **Azure cli** kunt gebruiken om het gebruik van door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen in een service bus wachtrij. De identiteit moet lid zijn van de rol **Azure Service Bus gegevens afzender** . Het moet ook lid zijn van de rol **Storage BLOB data Inzender** op het opslag account dat wordt gebruikt voor het onbestelen van berichten. 
+### <a name="use-the-azure-cli---service-bus-queue"></a>De Azure CLI-Service Bus-wachtrij gebruiken 
+In deze sectie leert u hoe u de Azure CLI gebruikt om het gebruik van een door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen in een Service Bus wachtrij. De identiteit moet lid zijn van de rol **Azure Service Bus gegevens afzender** . Het moet ook lid zijn van de rol **Storage BLOB data Inzender** op het opslag account dat wordt gebruikt voor het onbestelen van berichten. 
 
 #### <a name="define-variables"></a>Variabelen definiëren
 Geef eerst waarden op voor de volgende variabelen die moeten worden gebruikt in de CLI-opdracht. 
@@ -161,8 +161,8 @@ queueid=$(az servicebus queue show --namespace-name <SERVICE BUS NAMESPACE NAME>
 sb_esname = "<Specify a name for the event subscription>" 
 ```
 
-#### <a name="create-an-event-subscription-using-managed-identity-for-delivery"></a>een gebeurtenis abonnement maken met behulp van beheerde identiteit voor levering 
-Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor het eindpunt type is ingesteld op **Service Bus wachtrij**. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering 
+Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor een eindpunt type is ingesteld op **Service Bus wachtrij**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -173,8 +173,8 @@ az eventgrid event-subscription create
     -n $sb_esname 
 ```
 
-#### <a name="create-an-event-subscription-using-managed-identity-for-delivery-and-dead-lettering"></a>een gebeurtenis abonnement maken met behulp van beheerde identiteit voor levering en onbestelbare berichten
-Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor het eindpunt type is ingesteld op **Service Bus wachtrij**. Er wordt ook aangegeven dat de door het systeem beheerde identiteit moet worden gebruikt voor onbestelbare berichten. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering en onbestelbare berichten
+Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor een eindpunt type is ingesteld op **Service Bus wachtrij**. Er wordt ook aangegeven dat de door het systeem beheerde identiteit moet worden gebruikt voor onbestelbare berichten. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -190,8 +190,8 @@ az eventgrid event-subscription create
     -n $sb_esnameq 
 ```
 
-### <a name="azure-cli---event-hubs"></a>Azure CLI-Event Hubs 
-In deze sectie leert u hoe u **Azure cli** kunt gebruiken om het gebruik van door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen aan een event hub. De identiteit moet lid zijn van de rol **Azure Event hubs data Sender** . Het moet ook lid zijn van de rol **Storage BLOB data Inzender** op het opslag account dat wordt gebruikt voor het onbestelen van berichten. 
+### <a name="use-the-azure-cli---event-hubs"></a>Azure CLI-Event Hubs gebruiken 
+In deze sectie leert u hoe u de Azure CLI gebruikt om het gebruik van een door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen aan een Event Hub. De identiteit moet lid zijn van de rol **Azure Event hubs data Sender** . Het moet ook lid zijn van de rol **Storage BLOB data Inzender** op het opslag account dat wordt gebruikt voor het onbestelen van berichten. 
 
 #### <a name="define-variables"></a>Variabelen definiëren
 ```azurecli-interactive
@@ -203,8 +203,8 @@ hubid=$(az eventhubs eventhub show --name <EVENT HUB NAME> --namespace-name <NAM
 eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery"></a>gebeurtenis abonnement maken met beheerde identiteit voor levering 
-Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor het eindpunt type is ingesteld op **Event hubs**. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering 
+Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor een eindpunt type is ingesteld op **Event hubs**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -215,8 +215,8 @@ az eventgrid event-subscription create
     -n $sbq_esname 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery--deadletter"></a>Gebeurtenis abonnement maken met beheerde identiteit voor levering en deadletter 
-Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor het eindpunt type is ingesteld op **Event hubs**. Er wordt ook aangegeven dat de door het systeem beheerde identiteit moet worden gebruikt voor onbestelbare berichten. 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering en deadletter 
+Met deze voorbeeld opdracht maakt u een gebeurtenis abonnement voor een event grid-onderwerp waarvoor een eindpunt type is ingesteld op **Event hubs**. Er wordt ook aangegeven dat de door het systeem beheerde identiteit moet worden gebruikt voor onbestelbare berichten. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -232,8 +232,8 @@ az eventgrid event-subscription create
     -n $eh_esname 
 ```
 
-### <a name="azure-cli---azure-storage-queue"></a>Azure CLI-Azure Storage wachtrij 
-In deze sectie leert u hoe u **Azure cli** kunt gebruiken om het gebruik van door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen in een Azure Storage wachtrij. De identiteit moet lid zijn van de rol **Storage BLOB data Inzender** op het opslag account.
+### <a name="use-the-azure-cli---azure-storage-queue"></a>De Azure CLI-Azure Storage-wachtrij gebruiken 
+In deze sectie leert u hoe u de Azure CLI gebruikt om het gebruik van een door het systeem toegewezen identiteit in te scha kelen voor het leveren van gebeurtenissen in een Azure Storage wachtrij. De identiteit moet lid zijn van de rol **Storage BLOB data Inzender** op het opslag account.
 
 #### <a name="define-variables"></a>Variabelen definiëren  
 
@@ -251,7 +251,7 @@ queueid="$storageid/queueservices/default/queues/<QUEUE NAME>"
 sa_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery"></a>Gebeurtenis abonnement maken met beheerde identiteit voor levering 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering 
 
 ```azurecli-interactive
 az eventgrid event-subscription create 
@@ -262,7 +262,7 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
-#### <a name="create-event-subscription-using-managed-identity-for-delivery--deadletter"></a>Gebeurtenis abonnement maken met beheerde identiteit voor levering en deadletter 
+#### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Een gebeurtenis abonnement maken met behulp van een beheerde identiteit voor levering en deadletter 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)

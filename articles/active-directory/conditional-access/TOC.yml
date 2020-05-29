@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: Problemen met het hulpprogramma What If oplossen
           href: troubleshoot-conditional-access-what-if.md
+        - name: Veelgestelde vragen
+          href: faqs.md
 - name: Resources
   items:
     - name: Azure-feedbackforum

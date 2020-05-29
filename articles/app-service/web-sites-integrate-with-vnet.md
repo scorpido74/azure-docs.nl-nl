@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770839"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170780"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een virtueel Azure-netwerk
 
@@ -117,17 +117,17 @@ Als u Gateway-vereiste VNet-integratie met peering gebruikt, moet u enkele extra
 
 1. Een peering-verbinding toevoegen op het VNet waarmee uw app verbinding maakt. Wanneer u de peering-verbinding toevoegt, schakelt u **toegang tot virtueel netwerk toestaan** in en selecteert u **doorgestuurd verkeer toestaan** en **Gateway doorvoer**toestaan.
 1. Voeg een peering-verbinding toe op het VNet dat wordt gekoppeld aan het VNet waarmee u verbinding hebt. Wanneer u de peering-verbinding op het doel-VNet toevoegt, schakelt u **toegang tot virtueel netwerk toestaan** in en selecteert u **doorgestuurd verkeer toestaan** en **externe gateways toestaan**.
-1. Ga naar de **app service plan** > **Network** > **VNet Integration** UI in de portal. Selecteer het VNet waarmee uw app verbinding maakt. Voeg onder de sectie route ring het adres bereik toe van het VNet dat is gekoppeld aan het VNet waarmee uw app is verbonden.
+1. Ga naar de **app service plan**  >  **Network**  >  **VNet Integration** UI in de portal. Selecteer het VNet waarmee uw app verbinding maakt. Voeg onder de sectie route ring het adres bereik toe van het VNet dat is gekoppeld aan het VNet waarmee uw app is verbonden.
 
 ## <a name="manage-vnet-integration"></a>VNet-integratie beheren
 
-Het verbinden en verbreken van de verbinding met een VNet bevindt zich op een app-niveau. Bewerkingen die van invloed kunnen zijn op de VNet-integratie tussen meerdere apps, bevinden zich op het niveau van de App Service plan. Vanuit de app > **Network** > **VNet-integratie** Portal kunt u meer informatie krijgen over uw VNet. U kunt vergelijk bare gegevens bekijken op het niveau van de app service plan in het **app service plan** > **Network** > **VNet Integration** Portal.
+Het verbinden en verbreken van de verbinding met een VNet bevindt zich op een app-niveau. Bewerkingen die van invloed kunnen zijn op de VNet-integratie tussen meerdere apps, bevinden zich op het niveau van de App Service plan. Vanuit de app > **Network**  >  **VNet-integratie** Portal kunt u meer informatie krijgen over uw VNet. U kunt vergelijk bare gegevens bekijken op het niveau van de app service plan in het **app service plan**  >  **Network**  >  **VNet Integration** Portal.
 
 De enige bewerking die u kunt uitvoeren in de app-weer gave van uw VNet-integratie-exemplaar is het verbreken van de verbinding tussen uw app en het VNet waarmee momenteel verbinding is gemaakt. Als u uw app wilt loskoppelen van een VNet, selecteert u **verbinding verbreken**. Uw app wordt opnieuw gestart wanneer u de verbinding met een VNet verbreekt. Als u de verbinding verbreekt, wordt uw VNet niet gewijzigd. Het subnet of de gateway wordt niet verwijderd. Als u uw VNet vervolgens wilt verwijderen, moet u eerst uw app loskoppelen van het VNet en de resources hierin verwijderen, zoals gateways.
 
 In de gebruikers interface van het App Service plan VNet-integratie ziet u alle VNet-integraties die worden gebruikt door de apps in uw App Service-abonnement. Als u de details van elk VNet wilt bekijken, selecteert u het VNet waarin u bent geïnteresseerd. Er zijn twee acties die u hier kunt uitvoeren voor gateway-vereiste VNet-integratie:
 
-* **Netwerk synchroniseren**: de bewerking netwerk synchroniseren wordt alleen gebruikt voor de gateway-afhankelijke VNet-integratie functie. Wanneer u een synchronisatie netwerk uitvoert, zorgt u ervoor dat uw certificaten en netwerk gegevens synchroon zijn. Als u de DNS van uw VNet toevoegt of wijzigt, moet u een synchronisatie netwerk bewerking uitvoeren. Met deze bewerking worden alle apps die gebruikmaken van dit VNet, opnieuw gestart.
+* **Netwerk synchroniseren**: de bewerking netwerk synchroniseren wordt alleen gebruikt voor de gateway-afhankelijke VNet-integratie functie. Wanneer u een synchronisatie netwerk uitvoert, zorgt u ervoor dat uw certificaten en netwerk gegevens synchroon zijn. Als u de DNS van uw VNet toevoegt of wijzigt, moet u een synchronisatie netwerk bewerking uitvoeren. Met deze bewerking worden alle apps die gebruikmaken van dit VNet, opnieuw gestart. Deze bewerking werkt niet als u een app en een vnet gebruikt dat deel uitmaakt van verschillende abonnementen.
 * **Routes toevoegen**: door routes toe te voegen, wordt uitgaand verkeer naar uw VNet gestuurd.
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Gateway-vereiste VNet-integratie routering

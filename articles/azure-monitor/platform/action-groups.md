@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738815"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170457"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -118,7 +118,7 @@ Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om d
     > U moet lid zijn van de [rol Azure AD-toepassings beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) om dit script uit te voeren.
     
     - Wijzig de aanroep van de Connect-AzureAD van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
-    - De variabele $myAzureADApplicationObjectId van het Power shell-script wijzigen om de object-ID van uw Azure AD-toepassing te gebruiken
+    - Wijzig de variabele van het Power shell-script $myAzureADApplicationObjectId om de object-ID van uw Azure AD-toepassing te gebruiken.
     - Voer het gewijzigde script uit.
     
 1. Configureer de actie groep beveiligde webhooks.
@@ -245,7 +245,7 @@ Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [gedrag van SMS-waarschuwingen](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Krijg [inzicht in het webhook-schema van waarschuwingen voor activiteiten logboeken](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Meer informatie over [ITSM-connector](../../azure-monitor/platform/itsmc-overview.md)
+* Meer informatie over [ITSM-connector](../../azure-monitor/platform/itsmc-overview.md).
 * Meer informatie over de [frequentie limiet](../../azure-monitor/platform/alerts-rate-limiting.md) voor waarschuwingen.
 * Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

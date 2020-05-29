@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: a89fd0ba39de3d4528dda44280d02a993bedd6b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047354"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171137"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -208,7 +208,7 @@ Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken*, zoals 
 
 *Fout oplossing:* Voer het IP-adres van de client in als een IP-regel. Doe dit met behulp van het deelvenster Firewall in de Azure Portal.
 
-<a name="anchor-how-to-by-using-firewall-portal-59j" />
+<a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>De portal kan een regel voor een virtueel netwerk maken
 
@@ -236,7 +236,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 - De relevante naam van het eindpunt type is **micro soft. SQL**.
 - Zie [controleren of uw subnet een eind punt is][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]als uw subnet mogelijk niet is gelabeld met de type naam.
 
-<a name="a-portal-steps-for-vnet-rule-200" />
+<a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
@@ -275,7 +275,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 > - **Verwijderd:** Is alleen van toepassing op de Verwijder bewerking en geeft aan dat de regel is verwijderd en niet langer van toepassing is.
 > - **InProgress:** Geeft aan dat de bewerking wordt uitgevoerd. De oude regel is van toepassing terwijl de bewerking zich in deze status bevindt.
 
-<a name="anchor-how-to-links-60h" />
+<a name="anchor-how-to-links-60h"></a>
 
 ## <a name="related-articles"></a>Verwante artikelen:
 

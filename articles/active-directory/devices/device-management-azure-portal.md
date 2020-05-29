@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79474d85d9b2349c79aeff0c33ffed9afad690fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262241"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169687"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren met de Azure Portal
 
@@ -27,12 +27,14 @@ Dit artikel:
 - Er wordt van uitgegaan dat u bekend bent met de [Inleiding tot apparaat-id-beheer in azure Active Directory](overview.md)
 - Biedt informatie over het beheren van uw apparaat-id's met behulp van de Azure AD-Portal
 
+![Weer gave alle apparaten in de Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)
+
 ## <a name="manage-device-identities"></a>Apparaatidentiteiten beheren
 
 De Azure AD-Portal biedt een centrale plek voor het beheren van uw apparaat-id's. U kunt deze locatie bereiken met behulp van een [directe koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) of:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **apparaten**.
+1. Blader naar **Azure Active Directory**  >  **apparaten**.
 
 Op de pagina **apparaten** kunt u het volgende doen:
 
@@ -47,7 +49,7 @@ Als u uw apparaat-id's wilt beheren met de Azure AD-Portal, moeten uw apparaten 
 
 Op de pagina Apparaatinstellingen kunt u instellingen configureren met betrekking tot apparaat-id's:
 
-![Een intune-apparaat beheren](./media/device-management-azure-portal/21.png)
+![Apparaatinstellingen met betrekking tot Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - **Gebruikers kunnen apparaten toevoegen aan Azure AD** : met deze instelling kunt u de gebruikers selecteren die hun apparaten als aan Azure AD gekoppelde apparaten kunnen registreren. De standaardwaarde is **alle**.
 
@@ -55,7 +57,7 @@ Op de pagina Apparaatinstellingen kunt u instellingen configureren met betrekkin
 > **Gebruikers mogen apparaten toevoegen aan de Azure AD** -instelling is alleen van toepassing op Azure AD-deelname op Windows 10.
 
 - **Aanvullende lokale beheerders op aan Azure AD gekoppelde apparaten** : u kunt de gebruikers selecteren die lokale beheerders rechten op een apparaat krijgen. Gebruikers die hier worden toegevoegd, worden toegevoegd aan de rol van het *apparaat Administrators* in azure AD. Globale beheerders in azure AD en eigen aren van apparaten krijgen standaard lokale beheerders rechten. Deze optie is een Premium Edition-mogelijkheid die beschikbaar is via producten als Azure AD Premium of de Enter prise Mobility Suite (EMS).
-- **Gebruikers kunnen hun apparaten registreren bij Azure AD** . u moet deze instelling configureren zodat Windows 10 Personal-, Ios-, Android-en macOs-apparaten kunnen worden geregistreerd bij Azure AD. Als u **geen**selecteert, mogen apparaten zich niet registreren bij Azure AD. Inschrijving met Microsoft Intune of Mobile Device Management (MDM) voor Office 365 vereist registratie. Als u een van deze services hebt geconfigureerd, is **Alles** **geselecteerd en is er geen beschikbaar** .
+- **Gebruikers kunnen hun apparaten registreren bij Azure AD** . u moet deze instelling configureren zodat Windows 10 Personal-, Ios-, Android-en macOS-apparaten kunnen worden geregistreerd bij Azure AD. Als u **geen**selecteert, mogen apparaten zich niet registreren bij Azure AD. Inschrijving met Microsoft Intune of Mobile Device Management (MDM) voor Office 365 vereist registratie. Als u een van deze services hebt geconfigureerd, is **Alles** **geselecteerd en is er geen beschikbaar** .
 - **Multi-factor Authentication vereisen voor het toevoegen van apparaten** : u kunt kiezen of gebruikers een extra verificatie factor moeten opgeven om hun apparaat toe te voegen aan Azure AD. De standaard waarde is **Nee**. U wordt aangeraden multi-factor Authentication te vereisen bij het registreren van een apparaat. Voordat u multi-factor Authentication inschakelt voor deze service, moet u ervoor zorgen dat multi-factor Authentication is geconfigureerd voor de gebruikers die hun apparaten registreren. Zie aan de slag [met Azure multi-factor Authentication](../authentication/concept-mfa-whichversion.md)voor meer informatie over de verschillende Azure multi-factor Authentication-Services. 
 
 > [!NOTE]
@@ -82,13 +84,9 @@ Met beide opties kunt u een weer gave openen die:
 - Biedt een gedetailleerd overzicht van geregistreerde en gekoppelde apparaten
 - Hiermee kunt u algemene beheer taken voor apparaten uitvoeren
 
-![Alle apparaten](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* Als u een apparaat ziet dat ' hybride Azure AD join ' met de status ' in behandeling ' heeft in de kolom geregistreerd, geeft dit aan dat het apparaat is gesynchroniseerd vanuit Azure AD Connect en wacht op het volt ooien van de registratie van de client. Meer informatie over het [plannen van uw hybride Azure AD-koppelings implementatie](hybrid-azuread-join-plan.md). Meer informatie vindt u in het artikel, [Veelgestelde vragen over apparaten](faq.md).
->
->   ![Apparaten in behandeling](./media/device-management-azure-portal/75.png)
 >
 >* Voor sommige iOS-apparaten kunnen de apparaatnamen die apostrofs bevatten mogelijk andere tekens gebruiken die eruitzien als apostrofs. Het is dus lastig om dergelijke apparaten te doorzoeken: als u de zoek resultaten niet op de juiste manier ziet, moet u ervoor zorgen dat de zoek reeks overeenkomt met het apostrof-teken.
 
@@ -103,7 +101,7 @@ In deze sectie vindt u informatie over algemene beheer taken voor identiteiten v
 
 ### <a name="manage-an-intune-device"></a>Een intune-apparaat beheren
 
-Als u intune-beheerder bent, kunt u apparaten beheren die zijn gemarkeerd als **Microsoft intune**. Als het apparaat niet is inge schreven bij Microsoft Intune wordt de optie ' beheren ' grijs weer gegeven.
+Als u intune-beheerder bent, kunt u apparaten beheren die zijn gemarkeerd als **Microsoft intune**. Als het apparaat niet is inge schreven bij Microsoft Intune, wordt de optie beheren grijs weer gegeven.
 
 ![Een intune-apparaat beheren](./media/device-management-azure-portal/31.png)
 
@@ -170,6 +168,27 @@ Als u de BitLocker-sleutels wilt bekijken of kopiëren, moet u eigenaar zijn van
 
 > [!NOTE]
 > Hybride Azure AD-gekoppelde Windows 10-apparaten hebben geen eigenaar. Als u dus op zoek bent naar een apparaat op basis van de eigenaar en niet hebt gevonden, zoekt u op de apparaat-ID.
+
+### <a name="device-list-filtering-preview"></a>Filteren van apparaten lijst (preview-versie)
+
+Voorheen kon u de lijst met apparaten alleen filteren op activiteit en status ingeschakeld. Met deze preview-versie kunt u nu de lijst met apparaten filteren op de volgende kenmerken op een apparaat:
+
+- Ingeschakelde status
+- Status conform
+- Koppelings type (Azure AD toegevoegd, hybride Azure AD toegevoegd, Azure AD geregistreerd)
+- Tijdstempel van activiteit
+- Besturingssysteem
+- Apparaattype (printers, beveiligde Vm's, gedeelde apparaten, geregistreerde apparaten)
+
+De functie voor beeld filtering inschakelen in de weer gave **alle apparaten** :
+
+![Preview-functionaliteit voor filteren inschakelen](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Blader naar **Azure Active Directory**  >  **apparaten**.
+1. Selecteer de banner waarin wordt **vermeld, probeer de nieuwe verbeteringen voor het filteren van apparaten uit. Klik om de preview-versie in te scha kelen.**
+
+U kunt nu **filters toevoegen** aan uw weer gave **alle apparaten** .
 
 ## <a name="audit-logs"></a>Auditlogboeken
 

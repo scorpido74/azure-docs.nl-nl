@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650734"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171596"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB node. js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -44,23 +44,23 @@ ms.locfileid: "83650734"
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name=""></a><a name="3.1.0"/>3.1.0</a>
+### <a name="310"></a><a name="3.1.0"></a>3.1.0
 * Stel de standaard ResponseContinuationTokenLimitInKB in op 1 KB. Standaard wordt dit in 1 KB om te voor komen dat lange headers (node. js een globale header-grootte heeft). Een gebruiker kan dit veld zo instellen dat er langere kopteksten worden toegestaan. Dit kan helpen bij het optimaliseren van query's.
 * Verwijder disableSSLVerification. Bij deze optie worden nieuwe alternatieven beschreven in [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
-### <a name=""></a><a name="3.0.4"/>3.0.4</a>
+### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * InitialHeaders toestaan om de partitie sleutel header expliciet in te stellen
 * Package. json #-bestanden gebruiken om te voor komen dat externe bestanden worden gepubliceerd
 * Sorteer fout voor routerings toewijzing herstellen voor oudere versie van knoop punt + V8
 * Lost een probleem op wanneer de gebruiker opties voor gedeeltelijke nieuwe pogingen oplevert
 
-### <a name=""></a><a name="3.0.3"/>3.0.3</a>
+### <a name="303"></a><a name="3.0.3"></a>3.0.3
 * Voor komen dat webpakket voor het omzetten van modules met de naam vereist
 
-### <a name=""></a><a name="3.0.2"/>3.0.2</a>
+### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * Hiermee wordt een lange uitmuntende bug opgelost waarbij RUs altijd werd gerapporteerd als 0 voor aggregatie query's
 
-### <a name=""></a><a name="3.0.0"/>3.0.0</a>
+### <a name="300"></a><a name="3.0.0"></a>3.0.0
 
 🎉 V3-release. 🎉 veel nieuwe functies, fout oplossingen en enkele belang rijke wijzigingen. Primaire doel stellingen van deze release:
 
@@ -211,30 +211,30 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * NoUnusedLocals en noUnusedParameters (#275) inschakelen
 * Azure pipelines YAML voor CI-builds (#298)
 
-### <a name=""></a><a name="2.1.5"/>versie 2.1.5</a>
+### <a name="215"></a><a name="2.1.5"></a>versie 2.1.5
 * Er worden geen code wijzigingen doorgevoerd. Hiermee wordt een probleem opgelost waarbij sommige extra bestanden zijn opgenomen in punt 2.1.4 van het pakket.
 
-### <a name=""></a><a name="2.1.4"/>2.1.4</a>
+### <a name="214"></a><a name="2.1.4"></a>2.1.4
 * Regionale failover herstellen in beleid voor opnieuw proberen
 * ChangeFeed hasMoreResults eigenschap herstellen
 * Updates voor dev dependency
 * PolicheckExclusions. txt toevoegen
 
-### <a name=""></a><a name="2.1.3"/>2.1.3</a>
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * _Ts type wijzigen van teken reeks naar getal
 * Standaard indexerings tests corrigeren
 * Backport uniqueKeyPolicy naar v2
 * Oplossingen voor demo-en demo fouten
 
-### <a name=""></a><a name="2.1.2"/>2.1.2</a>
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * Backport bieden oplossingen van de V3-vertakking
 * De hand tekening van het type executeNext () corrigeren
 * Type correcties
 
-### <a name=""></a><a name="2.1.1"/>2.1.1</a>
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Bouw herstructurering. Maakt het mogelijk de SDK-versie tijdens het bouwen te halen.
 
-### <a name=""></a><a name="2.1.0"/>2.1.0</a>
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 #### <a name="new-features"></a>Nieuwe functies
 * Ondersteuning voor ChangeFeed (#196) toegevoegd
 * Het multiveelhoeke gegevens type voor indexering is toegevoegd (#191)
@@ -247,76 +247,76 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * Integratie test voor type script-verbruik toevoegen (#199)
 * Installeren rechtstreeks vanuit GitHub inschakelen (#194)
 
-### <a name=""></a><a name="2.0.5"/>2.0.5</a>
+### <a name="205"></a><a name="2.0.5"></a>2.0.5
 * Voegt interface toe voor het type knooppunt agent. Type script-gebruikers hoeven niet meer te installeren @types/node als afhankelijkheid
 * Voorkeurs locaties worden nu op de juiste wijze nageleefd
 * Verbeteringen in de documentatie van bijdragende ontwikkel aars
 * Verschillende type fouten opgelost
 
-### <a name=""></a><a name="2.0.4"/>2.0.4</a>
+### <a name="204"></a><a name="2.0.4"></a>2.0.4
 * Hiermee wordt een probleem met het type definitie opgelost dat is geïntroduceerd in 2.0.3
 
-### <a name=""></a><a name="2.0.3"/>2.0.3</a>
+### <a name="203"></a><a name="2.0.3"></a>2.0.3
 * `big-integer`Afhankelijkheid verwijderen
 * Overschakelen naar referentie richtlijnen voor het type AsyncIterable. Type script-gebruikers hoeven hun "lib"-instelling niet meer aan te passen.
 * Type correcties
 
-### <a name=""></a><a name="2.0.2"/>2.0.2</a>
+### <a name="202"></a><a name="2.0.2"></a>2.0.2
 * Leesmij-koppelingen oplossen
 
-### <a name=""></a><a name="2.0.1"/>2.0.1</a>
+### <a name="201"></a><a name="2.0.1"></a>2.0.1
 * Implementatie van interface opnieuw proberen herstellen
 
-### <a name=""></a><a name="2.0.0"/>2.0.0</a>
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * GA van versie 2.0.0 van de Java script-SDK
 * Er is ondersteuning toegevoegd voor schrijf bewerkingen in meerdere regio's.
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0-3</a>
+### <a name="200-3"></a><a name="2.0.0-3"></a>2.0.0-3
 * RC1 van versie 2.0.0 van de Java script-SDK voor open bare preview.
 * Nieuw object model, met CosmosClient en-methoden op het hoogste niveau, worden verdeeld over de relevante data base-, container-en item klassen. 
 * Ondersteuning voor [beloofde](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). 
 * SDK geconverteerd naar type script.
 
-### <a name=""></a><a name="1.14.4"/>1.14.4</a>
+### <a name="1144"></a><a name="1.14.4"></a>1.14.4
 * NPM-documentatie is opgelost.
 
-### <a name=""></a><a name="1.14.3"/>1.14.3</a>
+### <a name="1143"></a><a name="1.14.3"></a>1.14.3
 * Er is ondersteuning toegevoegd voor standaard nieuwe pogingen bij verbindings problemen.
 * Ondersteuning toegevoegd om feed voor het wijzigen van de verzameling te lezen.
 * Fout bij de consistentie van de sessie, waarbij de ' Lees sessie niet beschikbaar ' wordt veroorzaakt.
 * Er is ondersteuning toegevoegd voor metrische gegevens van de query.
 * Het maximum aantal verbindingen van de http-agent is gewijzigd.
 
-### <a name=""></a><a name="1.14.2"/>1.14.2</a>
+### <a name="1142"></a><a name="1.14.2"></a>1.14.2
 * Bijgewerkte documentatie om te verwijzen naar Azure Cosmos DB in plaats van met Azure DocumentDB.
 * Er is ondersteuning toegevoegd voor de instelling proxyUrl in Connection Policy.
 
-### <a name=""></a><a name="1.14.1"/>1.14.1</a>
+### <a name="1141"></a><a name="1.14.1"></a>1.14.1
 * Kleine oplossing voor hoofdletter gevoelige bestands systemen.
 
-### <a name=""></a><a name="1.14.0"/>1.14.0</a>
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * Voegt ondersteuning toe voor sessie consistentie.
 * Voor deze SDK-versie is de nieuwste versie van [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator)vereist.
 
-### <a name=""></a><a name="1.13.0"/>1.13.0</a>
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * Gesplitste query's voor kruis partities splitsen.
 * Voegt ondersteuning toe voor de resource koppeling met voor loop-en volg spaties (en bijbehorende tests).
 
-### <a name=""></a><a name="1.12.2"/>1.12.2</a>
+### <a name="1122"></a><a name="1.12.2"></a>1.12.2
 *    NPM-documentatie is opgelost.
 
-### <a name=""></a><a name="1.12.1"/>1.12.1</a>
+### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * Er is een fout opgelost in executeStoredProcedure waarbij de betrokken documenten speciale Unicode-tekens (LS, PS) hadden.
 * Er is een fout opgelost bij het verwerken van documenten met Unicode-tekens in de partitie sleutel.
 * Vaste ondersteuning voor het maken van verzamelingen met de naam media. GitHub-probleem #114.
 * Vaste ondersteuning voor machtigings autorisatie token. GitHub-probleem #178.
 
-### <a name=""></a><a name="1.12.0"/>1.12.0</a>
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * Er is ondersteuning toegevoegd voor een nieuw [consistentie niveau](consistency-levels.md) met de naam ConsistentPrefix.
 * Er is ondersteuning toegevoegd voor UriFactory.
 * Er is een fout met Unicode-ondersteuning opgelost. GitHub-probleem #171.
 
-### <a name=""></a><a name="1.11.0"/>1.11.0</a>
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * De ondersteuning voor aggregatie query's (aantal, MIN, MAX, SUM en AVG) is toegevoegd.
 * De optie voor het beheren van de mate van parallelle uitvoering voor kruis partitie query's is toegevoegd.
 * De optie voor het uitschakelen van TLS-verificatie is toegevoegd bij het uitvoeren van Azure Cosmos DB emulator.
@@ -324,87 +324,87 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * De vervolg token fout voor de verzameling met één partitie is opgelost. GitHub-probleem #107.
 * De executeStoredProcedure-fout in de verwerking van 0 als enkele param is opgelost. GitHub-probleem #155.
 
-### <a name=""></a><a name="1.10.2"/>1.10.2</a>
+### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * Vaste gebruikers Agent-header voor het insluiten van de SDK-versie.
 * Secundaire code opschonen.
 
-### <a name=""></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1101"></a><a name="1.10.1"></a>1.10.1
 * TLS-verificatie uitschakelen bij gebruik van de SDK om de emulator te richten (hostnaam = localhost).
 * Er is ondersteuning toegevoegd voor het inschakelen van script logboek registratie tijdens de uitvoering van de opgeslagen procedure.
 
-### <a name=""></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * Er is ondersteuning toegevoegd voor parallelle query's op meerdere partities.
 * Er is ondersteuning toegevoegd voor TOP/ORDER BY query's voor gepartitioneerde verzamelingen.
 
-### <a name=""></a><a name="1.9.0"/>1.9.0</a>
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * De ondersteuning voor het beleid voor opnieuw proberen is toegevoegd voor vertraagde aanvragen. (Vertraagde aanvragen ontvangen een aanvraag frequentie te grote uitzonde ring, fout code 429.) Azure Cosmos DB worden standaard negen keer geprobeerd voor elke aanvraag wanneer de fout code 429 wordt aangetroffen, waarbij de retryAfter-tijd in de reactie header wordt nageleefd. Een vast interval voor opnieuw proberen kan nu worden ingesteld als onderdeel van de eigenschap RetryOptions van het object Connection Policy als u de retryAfter-tijd wilt negeren die door de server wordt geretourneerd tussen de nieuwe pogingen. Azure Cosmos DB wacht nu een maximum van 30 seconden voor elke aanvraag die wordt beperkt (ongeacht het aantal nieuwe pogingen) en retourneert de reactie met fout code 429. Deze tijd kan ook worden overschreven in de eigenschap RetryOptions van het object Connection Policy.
 * Cosmos DB retourneert nu x-MS-Throttle-retry-Count en x-MS-Throttle-retry-Wait-Time-MS als de antwoord headers in elke aanvraag om het aantal nieuwe pogingen te geven en de cumulatieve tijd die de aanvraag tussen het opnieuw proberen.
 * De klasse RetryOptions is toegevoegd, waardoor de eigenschap RetryOptions wordt weer gegeven op de klasse Connection Policy die kan worden gebruikt om een aantal van de standaard opties voor opnieuw proberen te negeren.
 
-### <a name=""></a><a name="1.8.0"/>1.8.0</a>
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * De ondersteuning voor meerdere regio's database accounts is toegevoegd.
 
-### <a name=""></a><a name="1.7.0"/>1.7.0</a>
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * De ondersteuning voor time to Live (TTL)-functie voor documenten is toegevoegd.
 
-### <a name=""></a><a name="1.6.0"/>1.6.0</a>
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md).
 
-### <a name=""></a><a name="1.5.6"/>1.5.6</a>
+### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Er is een fout opgetreden bij het herstellen van RangePartitionResolver. resolveForRead, waarbij er geen koppelingen zijn geretourneerd vanwege een onjuiste concat van resultaten.
 
-### <a name=""></a><a name="1.5.5"/>1.5.5</a>
+### <a name="155"></a><a name="1.5.5"></a>1.5.5
 * Fixed hashPartitionResolver resolveForRead (): als er geen partitie sleutel is opgegeven, wordt een uitzonde ring gegenereerd, in plaats van een lijst met alle geregistreerde koppelingen te retour neren.
 
-### <a name=""></a><a name="1.5.4"/>1.5.4</a>
+### <a name="154"></a><a name="1.5.4"></a>1.5.4
 * Oplossingen geven [#100](https://github.com/Azure/azure-documentdb-node/issues/100) toegewezen https-agent: Vermijd het wijzigen van de globale Agent voor Azure Cosmos DB doel einden. Gebruik een toegewezen agent voor alle aanvragen van de lib.
 
-### <a name=""></a><a name="1.5.3"/>1.5.3</a>
+### <a name="153"></a><a name="1.5.3"></a>1.5.3
 * Opgelost probleem [#81](https://github.com/Azure/azure-documentdb-node/issues/81) -afbreek streepjes in Media-id's afhandelen.
 
-### <a name=""></a><a name="1.5.2"/>1.5.2</a>
+### <a name="152"></a><a name="1.5.2"></a>1.5.2
 * Corrigeert problemen [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -EventEmitter.
 
-### <a name=""></a><a name="1.5.1"/>1.5.1</a>
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Oplossen van problemen [#92](https://github.com/Azure/azure-documentdb-node/issues/90) -de naam van de map-hash wijzigen naar hash voor hoofdletter gevoelige systemen.
 
-### <a name=""></a><a name="1.5.0"/>1.5.0</a>
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * Implementeer sharding-ondersteuning door het toevoegen van & voor het bereik van hash-partitionering.
 
-### <a name=""></a><a name="1.4.0"/>1.4.0</a>
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * Implementeer Upsert. Nieuwe upsertXXX-methoden op documentClient.
 
-### <a name=""></a><a name="1.3.0"/>1.3.0</a>
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * Overgeslagen om versie nummers in overeenstemming met andere Sdk's te brengen.
 
-### <a name=""></a><a name="1.2.2"/>1.2.2</a>
+### <a name="122"></a><a name="1.2.2"></a>1.2.2
 * Split-Q belooft wrapper naar nieuwe opslag plaats.
 * Update naar pakket bestand voor NPM-REGI ster.
 
-### <a name=""></a><a name="1.2.1"/>1.2.1</a>
+### <a name="121"></a><a name="1.2.1"></a>1.2.1
 * Implementeert route ring op basis van ID'S.
 * Oplossen van problemen [#49](https://github.com/Azure/azure-documentdb-node/issues/49) -huidige eigenschaps conflicten met methode Current ().
 
-### <a name=""></a><a name="1.2.0"/>1.2.0</a>
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * Er is ondersteuning toegevoegd voor georuimtelijke index.
 * Valideert de eigenschap ID voor alle resources. Id's voor resources mogen geen?,/, #,  &#47;&#47;, tekens bevatten of eindigen met een spatie.
 * Hiermee wordt de voortgang van de index transformatie van de nieuwe header toegevoegd aan ResourceResponse.
 
-### <a name=""></a><a name="1.1.0"/>1.1.0</a>
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * Implementeert v2-indexerings beleid.
 
-### <a name=""></a><a name="1.0.3"/>1.0.3</a>
+### <a name="103"></a><a name="1.0.3"></a>1.0.3
 * Geef [#40](https://github.com/Azure/azure-documentdb-node/issues/40) -geïmplementeerde eslint-en grunt-configuraties in de core-en Promise-SDK.
 
-### <a name=""></a><a name="1.0.2"/>1.0.2</a>
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 * Probleem [#45](https://github.com/Azure/azure-documentdb-node/issues/45) -belooft wrapper bevat geen header met fout.
 
-### <a name=""></a><a name="1.0.1"/>1.0.1</a>
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * De mogelijkheid om conflicten op te vragen, is geïmplementeerd door readConflicts, readConflictAsync en queryConflicts toe te voegen.
 * Bijgewerkte API-documentatie.
 * Geef een fout [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -client. createDocumentAsync.
 
-### <a name=""></a><a name="1.0.0"/>1.0.0</a>
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &

@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758891"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170576"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -81,9 +81,9 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
 > | vergren delingen | toewijzings bereik | 1-90 | Alfanumerieken, punten, onderstrepings tekens, afbreek streepjes en haakjes.<br><br>Kan niet eindigen met een periode. |
-> | policyassignments | toewijzings bereik | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
-> | policydefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
-> | policySetDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie.  |
+> | policyAssignments | toewijzings bereik | weergave naam 1-128<br><br>resource naam voor 1-64 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
+> | policyDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-64 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie. |
+> | policySetDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-64<br><br>1-24-resource naam in het beheer groeps bereik | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet bevatten `%` en mag niet eindigen met een punt of spatie.  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 

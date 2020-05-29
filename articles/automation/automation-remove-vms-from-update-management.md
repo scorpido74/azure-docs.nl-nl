@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 796cf18ae4dbab50eb7f968bda065ae0351f2ae8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117420"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169403"
 ---
 # <a name="remove-vms-from-update-management"></a>VM's verwijderen uit Updatebeheer
 
 Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving, kunt u deze verwijderen uit de functie [updatebeheer](automation-update-management.md) .
+
+## <a name="to-remove-your-vms"></a>Uw Vm's verwijderen
 
 1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 

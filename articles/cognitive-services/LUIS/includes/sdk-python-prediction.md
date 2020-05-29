@@ -6,29 +6,29 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: eabec50f57785bde6760db053eb3b12f6f5b6452
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732101"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171266"
 ---
 Gebruik de voor Spellings-client bibliotheek van Language Understanding (LUIS) voor python voor het volgende:
 
 * Voor spelling per sleuf ophalen
 * Voor spellingen ophalen op basis van versie
 
-[Naslag informatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | over de voor spellingen van het[runtime pakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [ ](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS) in de documentatie[bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | 
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  van bibliotheek [Voorspellings runtime pakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  Voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Language Understanding-Portal account (LUIS): [Maak er gratis een](https://www.luis.ai) .
 * [Python 3. x](https://www.python.org/)
-* Een LUIS-App-ID: gebruik de open bare IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`-app-id van. De gebruikers query die in de Quick Start code wordt gebruikt, is specifiek voor die app.
+* Een LUIS-App-ID: gebruik de open bare IoT-App-ID van `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . De gebruikers query die in de Quick Start code wordt gebruikt, is specifiek voor die app.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -40,7 +40,7 @@ Down load uw [runtime sleutel](../luis-how-to-azure-subscription.md) door een Lu
 
 ### <a name="create-a-new-python-file"></a>Een nieuw python-bestand maken
 
-Maak een nieuw python-bestand in uw voorkeurs editor of IDE, `prediction_quickstart.py`met de naam.
+Maak een nieuw python-bestand in uw voorkeurs editor of IDE, met de naam `prediction_quickstart.py` .
 
 ### <a name="install-the-sdk"></a>De SDK installeren
 
@@ -67,28 +67,28 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de Language Und
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open het `prediction_quickstart.py` bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende afhankelijkheden toe:
+Open het bestand in de map van het project `prediction_quickstart.py` in uw voorkeurs editor of IDE. Voeg de volgende afhankelijkheden toe:
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Dependencies)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 1. Maak variabelen voor uw eigen vereiste LUIS-informatie:
 
-    Voeg variabelen toe om de Voorspellings sleutel te beheren die wordt opgehaald uit `LUIS_RUNTIME_KEY`een omgevings variabele met de naam. Als u de omgevings variabele hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden later gemaakt.
+    Voeg variabelen toe om de Voorspellings sleutel te beheren die wordt opgehaald uit een omgevings variabele met de naam `LUIS_RUNTIME_KEY` . Als u de omgevings variabele hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden later gemaakt.
 
-    Maak een variabele voor de naam `LUIS_RUNTIME_ENDPOINT`van uw resource.
+    Maak een variabele voor de naam van uw resource `LUIS_RUNTIME_ENDPOINT` .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=AuthorizationVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Maak een variabele voor de App-ID als een omgevings `LUIS_APP_ID`variabele met de naam. Stel de omgevings variabele in op de open bare **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** IOT-app. Maak een variabele om de `production` gepubliceerde sleuf in te stellen.
+1. Maak een variabele voor de App-ID als een omgevings variabele met de naam `LUIS_APP_ID` . Stel de omgevings variabele in op de open bare IoT-app **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Maak een variabele om de gepubliceerde sleuf in te stellen `production` .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=OtherVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Maak een referenties-object met uw sleutel en gebruik dit met uw eind punt om een [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() -object te maken.
+1. Maak een referenties-object met uw sleutel en gebruik dit met uw eind punt om een [LUISRuntimeClientConfiguration]-object te maken https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Client)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 
 ## <a name="get-prediction-from-runtime"></a>Voor spelling van runtime ophalen
 
@@ -98,7 +98,7 @@ De gebruiker utterance maakt deel uit van het [prediction_request](https://docs.
 
 De **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** methode heeft verschillende para meters nodig, zoals de App-ID, de naam van de sleuf en het aanvraag object voor de voor spelling om te voldoen aan de aanvraag. De andere opties, zoals uitgebreid, alle intenten weer geven en logboeken zijn optioneel. De aanvraag retourneert een [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) -object.
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=predict)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=predict)]
 
 ## <a name="main-code-for-the-prediction"></a>Hoofd code voor de voor spelling
 
@@ -109,7 +109,7 @@ predict(luisAppID, luisSlotName)
 ```
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `python prediction_quickstart.py` de opdracht uit de toepassingsmap.
+Voer de toepassing uit met de `python prediction_quickstart.py` opdracht uit de toepassingsmap.
 
 ```console
 python prediction_quickstart.py

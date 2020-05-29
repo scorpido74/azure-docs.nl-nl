@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735885"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170253"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -50,7 +50,7 @@ Deze fout kan de volgende oorzaken hebben:
 
 * Ga naar [netwerk configuratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
 
-* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
+* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
 * Verwijder de configuratie van de werk nemer door de stappen in [de Hybrid Runbook worker verwijderen van een on-premises Windows-computer uit](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) te voeren of [de Hybrid Runbook worker te verwijderen van een on-premises Linux-computer](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 

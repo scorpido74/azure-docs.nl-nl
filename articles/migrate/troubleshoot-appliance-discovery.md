@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677328"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170899"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -31,7 +31,7 @@ Ga als volgt te werk als u de fout melding ' het opgegeven manifest bestand is o
 2. Als de implementatie nog steeds mislukt, en u de VMware vSphere-client gebruikt om het OVF-bestand te implementeren, probeert u het te implementeren via de vSphere-webclient. Als de implementatie nog steeds mislukt, kunt u proberen een andere webbrowser te gebruiken.
 3. Als u de vSphere-webclient gebruikt en deze probeert te implementeren op vCenter Server 6,5 of 6,7, probeert u de eicellen rechtstreeks op de ESXi-host te implementeren:
    - Maak rechtstreeks verbinding met de ESXi-host (in plaats van vCenter Server) met de webclient (https://<*host IP-adres*>/UI).
-   - Selecteer in **huisraad** > **inventaris** **bestand** > **implementeren OVF sjabloon**. Blader naar de eicellen en voltooi de implementatie.
+   - Selecteer in **huisraad**  >  **inventaris** **bestand**  >  **implementeren OVF sjabloon**. Blader naar de eicellen en voltooi de implementatie.
 4. Als de implementatie nog steeds mislukt, neemt u contact op met Azure Migrate ondersteuning.
 
 ## <a name="cant-connect-to-the-internet"></a>Kan geen verbinding maken met Internet
@@ -135,7 +135,7 @@ Als dit niet werkt en u de VMware-servers wilt detecteren:
 
 Als gedetecteerde Vm's niet worden weer gegeven in de portal of als de VM-gegevens verouderd zijn, wacht u een paar minuten. Het duurt Maxi maal 30 minuten voordat wijzigingen in gedetecteerde VM-configuratie gegevens worden weer gegeven in de portal. Het kan enkele uren duren voordat wijzigingen in de toepassings gegevens worden weer gegeven. Als er na deze tijd geen gegevens zijn, kunt u als volgt vernieuwen
 
-1. Selecteer in **servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
+1. Selecteer in **servers**  >  **Azure migrate server-evaluatie**de optie **overzicht**.
 2. Selecteer onder **beheren**de optie **status van agent**.
 3. Selecteer **agent vernieuwen**.
 4. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
@@ -150,8 +150,8 @@ Azure Migrate ondersteunt de detectie van toepassingen, functies en onderdelen m
 
 Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatten. 
 
-**Fout** | **Wordt** | **Actie**
---- | --- | --- | ---
+**Fout** | **Oorzaak** | **Actie**
+--- | --- | --- 
 10000: de toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als het besturings systeem van de computer niet Windows of Linux is. | Gebruik app-detectie alleen voor Windows/Linux.
 10001: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | Interne fout: sommige bestanden ontbreken in het apparaat. | Neem contact op met Microsoft Ondersteuning.
 10002: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | De detectie agent op het apparaat werkt mogelijk niet goed. | Neem contact op met de ondersteuning als het probleem zich binnen 24 uur niet kan oplossen.
@@ -170,8 +170,8 @@ Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatte
 9010: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | Dit kan een interne fout zijn.  | Tf het probleem wordt binnen 24 uur niet opgelost. Neem contact op met de ondersteuning.
 9011: kan het bestand niet downloaden van de gast-VM | Het probleem kan optreden vanwege een interne fout. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
 9012: de inhoud van het resultaat bestand is leeg. | Het probleem kan optreden vanwege een interne fout. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
-9013: er wordt een nieuw tijdelijk profiel gemaakt voor elke aanmelding bij de virtuele VMware-machine | Voor elke aanmelding bij de VM wordt een nieuw tijdelijk profiel gemaakt | Zorg ervoor dat de gebruikers naam in de referenties van de gast-VM de UPN-indeling heeft.
-9015: ' kan geen verbinding maken met VMware-Vm's vanwege onvoldoende bevoegdheden op vCenter ' | De rol gast bewerkingen is niet ingeschakeld op het vCenter-gebruikers account | Zorg ervoor dat de rol gast taken is ingeschakeld op het vCenter-gebruikers account.
+9013: er wordt een nieuw tijdelijk profiel gemaakt voor elke aanmelding bij de virtuele VMware-machine | Voor elke aanmelding bij de virtuele machine wordt een nieuw tijdelijk profiel gemaakt. | Zorg ervoor dat de gebruikers naam die is opgenomen in de referenties van de gast-VM in de UPN-indeling is. Nadat u de gebruikers naam die is gegeven in de gast-VM-referenties, hebt gewijzigd in de UPN-indeling, start u in taak beheer van het apparaat de Microsoft Azure VMWare Discovery-service opnieuw op om de nieuwe detectie te vinden.
+9015: ' kan geen verbinding maken met VMware-Vm's vanwege onvoldoende bevoegdheden op vCenter ' | De rol gast bewerkingen is niet ingeschakeld op het vCenter-gebruikers account. | Zorg ervoor dat de rol gast taken is ingeschakeld op het vCenter-gebruikers account.
 9016: ' kan geen verbinding maken met VMware-Vm's omdat de gast Operations-agent geen gegevens meer heeft ' | VMware-hulpprogram ma's zijn niet juist geïnstalleerd of zijn niet up-to-date. | Controleer of de VMware-hulpprogram ma's correct zijn geïnstalleerd en up-to-date zijn.
 9017: het bestand met gedetecteerde meta gegevens is niet gevonden op de virtuele machine. | Het probleem kan optreden vanwege een interne fout. | Neem contact op met Microsoft Ondersteuning voor een oplossing.
 9018: Power shell is niet geïnstalleerd in de gast-Vm's. | Power shell is niet beschikbaar in de gast-VM. | Installeer Power shell in de gast-VM.
@@ -182,7 +182,7 @@ Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatte
 9023: de waarde van de System root-omgevings variabele is leeg. | Niet bekend | Neem contact op met Microsoft Ondersteuning.
 9024: de waarde van de omgevings variabele TEMP is leeg. | Niet bekend | Neem contact op met Microsoft Ondersteuning.
 9025: Power shell is beschadigd in de gast-Vm's. | Niet bekend | Installeer Power shell opnieuw in de gast-VM en controleer of Power shell kan worden uitgevoerd op de gast-VM.
-8084: kan geen toepassingen detecteren vanwege VMware-fout: <Exception from VMware> | Het Azure Migrate-apparaat gebruikt VMware-Api's om toepassingen te detecteren. Dit probleem kan zich voordoen als er een uitzonde ring wordt gegenereerd door vCenter Server tijdens het detecteren van toepassingen. De fout melding van VMware wordt weer gegeven in het fout bericht dat wordt weer gegeven in de portal. | Zoek het bericht in de [VMware-documentatie](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)en volg de stappen om dit op te lossen. Neem contact op met micro soft ondersteuning als u deze niet kunt oplossen.
+8084: kan geen toepassingen detecteren vanwege VMware-  <Exception from VMware> fout: | Het Azure Migrate-apparaat gebruikt VMware-Api's om toepassingen te detecteren. Dit probleem kan zich voordoen als er een uitzonde ring wordt gegenereerd door vCenter Server tijdens het detecteren van toepassingen. De fout melding van VMware wordt weer gegeven in het fout bericht dat wordt weer gegeven in de portal. | Zoek het bericht in de [VMware-documentatie](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)en volg de stappen om dit op te lossen. Neem contact op met micro soft ondersteuning als u deze niet kunt oplossen.
 
 
 

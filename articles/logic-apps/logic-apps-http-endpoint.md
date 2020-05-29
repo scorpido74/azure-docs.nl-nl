@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141786"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170270"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
@@ -154,9 +154,6 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
   Deze waarden worden door gegeven via een relatief pad in de URL van het eind punt. U moet ook expliciet [de methode selecteren](#select-method) die de trigger verwacht. Bij een volgende actie kunt u de parameter waarden ophalen als trigger uitvoer door rechtstreeks naar die uitvoer te verwijzen.
 
-> [!NOTE]
-> De URL maakt gebruik van het symbool ' at ' ( **@** ), maar niet het hash-symbool ( **#** ).
-
 <a name="get-parameters"></a>
 
 ### <a name="accept-values-through-get-parameters"></a>Waarden accepteren via GET-para meters
@@ -217,6 +214,9 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    * 2e positie:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
+> [!NOTE]
+> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
+
 <a name="relative-path"></a>
 
 ### <a name="accept-values-through-a-relative-path"></a>Waarden accepteren via een relatief pad
@@ -260,6 +260,9 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
    De browser retourneert een antwoord met deze tekst:`Postal Code: 123456`
 
    ![Antwoord van het verzenden van een aanvraag naar een call back-URL](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+> [!NOTE]
+> Als u het hash-of hekje-symbool ( **#** ) in de URI wilt toevoegen, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logische app aanroepen via eind punt-URL
 

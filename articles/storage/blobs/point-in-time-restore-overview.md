@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 38f6cfef60cf3bfe66742cba204d74db1c22ca77
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195218"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169284"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs (preview-versie)
 
@@ -26,15 +26,13 @@ Zie herstel naar een bepaald tijdstip voor [blok-blobs (preview-versie inschakel
 
 Als u herstel naar een bepaald tijdstip wilt inschakelen, maakt u een beheer beleid voor het opslag account en geeft u een Bewaar periode op. Tijdens de retentie periode kunt u blok-blobs van de huidige status herstellen naar een status op een eerder tijdstip.
 
-Als u een herstel tijdstip voor een bepaald tijdstip wilt initiëren, roept u de bewerking [BLOB Ranges herstellen](/rest/api/storagerp/storageaccounts/restoreblobranges) aan en geeft u een herstel punt op in UTC-tijd. U kunt een lexicographical bereik van container-en BLOB-namen opgeven om te herstellen, of het bereik weglaten om alle containers in het opslag account te herstellen. De bewerking **BLOB-bereiken herstellen** retourneert een Restore-id waarmee de bewerking op unieke wijze wordt geïdentificeerd.
+Als u een herstel tijdstip voor een bepaald tijdstip wilt initiëren, roept u de bewerking [BLOB Ranges herstellen](/rest/api/storagerp/storageaccounts/restoreblobranges) aan en geeft u een herstel punt op in UTC-tijd. U kunt lexicographical-bereiken van container-en BLOB-namen opgeven om te herstellen, of het bereik weglaten om alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking.
 
 Azure Storage analyseert alle wijzigingen die zijn aangebracht in de opgegeven blobs tussen het aangevraagde herstel punt, opgegeven in UTC-tijd en het huidige moment. De herstel bewerking is atomisch, waardoor alle wijzigingen volledig worden hersteld of niet kan worden uitgevoerd. Als er blobs zijn die niet kunnen worden hersteld, mislukt de bewerking en worden lees-en schrijf bewerkingen naar de betrokken containers hervat.
 
-Wanneer u een herstel bewerking aanvraagt, blokkeert Azure Storage gegevens bewerkingen op de blobs in het bereik dat wordt hersteld voor de duur van de bewerking. Lees-, schrijf-en verwijder bewerkingen worden geblokkeerd op de primaire locatie. Lees bewerkingen van de secundaire locatie kunnen door gaan tijdens de herstel bewerking als het opslag account geo-gerepliceerd is.
-
 Er kan slechts één herstel bewerking tegelijk worden uitgevoerd op een opslag account. Een herstel bewerking kan niet worden geannuleerd zodra deze wordt uitgevoerd, maar er kan wel een tweede herstel bewerking worden uitgevoerd om de eerste bewerking ongedaan te maken.
 
-Als u de status van een herstel tijdstip wilt controleren, roept u de bewerking **herstel status ophalen** aan met de herstel-id die wordt geretourneerd door de bewerking **BLOB-bereiken herstellen** .
+De bewerking **BLOB-bereiken herstellen** retourneert een Restore-id waarmee de bewerking op unieke wijze wordt geïdentificeerd. Als u de status van een herstel tijdstip wilt controleren, roept u de bewerking **herstel status ophalen** aan met de herstel-id die wordt geretourneerd door de bewerking **BLOB-bereiken herstellen** .
 
 Houd bij het herstellen de volgende beperkingen in acht:
 
@@ -42,6 +40,11 @@ Houd bij het herstellen de volgende beperkingen in acht:
 - Een blob met een actieve lease kan niet worden hersteld. Als een blob met een actieve lease is opgenomen in het bereik van blobs dat moet worden hersteld, mislukt de herstel bewerking Atomic.
 - Moment opnamen worden niet gemaakt of verwijderd als onderdeel van een herstel bewerking. Alleen de basis-BLOB wordt teruggezet naar de vorige status.
 - Als een BLOB tussen de warme en koele lagen is verplaatst in de periode tussen het huidige moment en het herstel punt, wordt de BLOB teruggezet naar de vorige laag. Een blob die is verplaatst naar de archief laag, wordt echter niet hersteld.
+
+> [!IMPORTANT]
+> Wanneer u een herstel bewerking uitvoert, blokkeert Azure Storage gegevens bewerkingen op de blobs in de bereiken die worden teruggezet voor de duur van de bewerking. Lees-, schrijf-en verwijder bewerkingen worden geblokkeerd op de primaire locatie. Daarom kunnen bewerkingen, zoals het weer geven van containers in het Azure Portal, niet worden uitgevoerd zoals verwacht tijdens het terugzetten.
+>
+> Lees bewerkingen van de secundaire locatie kunnen door gaan tijdens de herstel bewerking als het opslag account geo-gerepliceerd is.
 
 > [!CAUTION]
 > Herstel naar een bepaald tijdstip biedt alleen ondersteuning voor het herstellen van bewerkingen op blok-blobs. Bewerkingen op containers kunnen niet worden hersteld. Als u een container uit het opslag account verwijdert door de bewerking [Delete container](/rest/api/storageservices/delete-container) aan te roepen tijdens de preview-fase van het herstel punt, kan deze container niet worden hersteld met een herstel bewerking. In plaats van een container te verwijderen, kunt u tijdens de preview-versie de afzonderlijke blobs verwijderen als u deze wilt herstellen.

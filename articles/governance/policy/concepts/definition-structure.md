@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746987"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168502"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -24,7 +24,7 @@ U gebruikt JSON om een beleids definitie te maken. De beleids definitie bevat el
 - mode
 - parameters
 - weergave naam
-- beschrijving
+- description
 - beleids regel
   - logische evaluatie
   - effect
@@ -82,7 +82,7 @@ U wordt aangeraden de **modus** `all` in de meeste gevallen in te stellen. Alle 
 
 `indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Met beleids definities die locatie of tags voor een resource groep of-abonnement afdwingen, moet u de **modus** instellen op `all` en het doel `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` opgeven. Zie voor een voor beeld [patroon: Labels-voor beeld #1](../samples/pattern-tags.md). Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Resource provider modi (preview-versie)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Resource provider modi (preview-versie)
 
 De volgende resource provider modi worden momenteel ondersteund tijdens de preview-versie:
 
@@ -284,11 +284,11 @@ De volgende velden worden ondersteund:
 - `tags`
 - `tags['<tagName>']`
   - De syntaxis van het haakje ondersteunt label namen met lees tekens zoals een afbreek streepje, een punt of een spatie.
-  - Waarbij ** \< tagName \> ** de naam van de tag is voor het valideren van de voor waarde voor.
+  - Waar de **\<tagName\>** naam van de tag is voor het valideren van de voor waarde voor.
   - Voor beelden: `tags['Acct.CostCenter']` waarbij **acct. CostCenter** de naam van de tag is.
 - `tags['''<tagName>''']`
   - De syntaxis van het haakje ondersteunt label namen met apostrofs in het teken met dubbele apostrofs.
-  - Waarbij ** \< tagName \> ** de naam is van het label voor het valideren van de voor waarde voor.
+  - Waarbij **' \<tagName\> '** de naam van het label is voor het valideren van de voor waarde voor.
   - Voor beeld: `tags['''My.Apostrophe.Tag''']` waarbij **' My. apostrof. tag '** de naam van de tag is.
 - eigenschaps aliassen: Zie [aliassen](#aliases)voor een lijst.
 
@@ -432,7 +432,7 @@ De volgende eigenschappen worden gebruikt met **aantal**:
 - **Count. Field** (vereist): bevat het pad naar de matrix en moet een matrix alias zijn. Als de matrix ontbreekt, wordt de expressie geëvalueerd naar _False_ zonder rekening te houden met de voor waarde-expressie.
 - **Count. where** (optioneel): de voor waarde-expressie voor het afzonderlijk evalueren van elke [ \[ \* \] alias](#understanding-the--alias) matrix lid van het **veld Count.**. Als deze eigenschap niet is gegeven, worden alle matrix leden met het pad van ' Field ' geëvalueerd als _waar_. Elke [voor waarde](../concepts/definition-structure.md#conditions) kan worden gebruikt in deze eigenschap.
   [Logische Opera tors](#logical-operators) kunnen worden gebruikt in deze eigenschap om complexe evaluatie vereisten te maken.
-- ** \< voor \> waarde** (vereist): de waarde wordt vergeleken met het aantal items dat aan het **aantal is voldaan. where** -voor waarde-expressie. Er moet een numerieke [voor waarde](../concepts/definition-structure.md#conditions) worden gebruikt.
+- **\<condition\>**(vereist): de waarde wordt vergeleken met het aantal items dat aan het aantal is voldaan **. where** -voor waarde-expressie. Er moet een numerieke [voor waarde](../concepts/definition-structure.md#conditions) worden gebruikt.
 
 #### <a name="count-examples"></a>Aantal voor beelden
 

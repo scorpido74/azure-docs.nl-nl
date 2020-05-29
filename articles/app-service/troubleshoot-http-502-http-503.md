@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688328"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170797"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
 "502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt u bij het oplossen van deze fouten.
@@ -38,7 +38,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 [App service](overview.md) biedt u verschillende opties bij elke stap.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
@@ -62,7 +62,7 @@ Zie voor meer informatie:
 * [Apps in Azure App Service bewaken](web-sites-monitor.md)
 * [Waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. gegevens verzamelen
 #### <a name="use-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens gebruiken
@@ -73,7 +73,7 @@ Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App
 #### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
 App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Dit wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam>. scm.azurewebsites.net/**.
+U kunt dit dash board openen door naar de koppeling te gaan **https:// &lt; uw app-naam>. scm.azurewebsites.net/**.
 
 Enkele van de dingen die kudu biedt:
 
@@ -86,7 +86,7 @@ Een andere handige functie van kudu is dat, als uw toepassing uitzonde ringen vo
 
 Zie voor meer informatie over de beschik bare functies in kudu [Azure websites online-hulpprogram ma's waarover u moet weten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen

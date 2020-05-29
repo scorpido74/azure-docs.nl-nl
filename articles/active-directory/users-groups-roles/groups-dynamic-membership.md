@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744698"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171154"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -78,7 +78,7 @@ De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis f
 
 Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-- Booleaans
+- Boolean
 - Tekenreeks
 - Teken reeks verzameling
 
@@ -384,7 +384,7 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  deviceManufacturer | wille keurige teken reeks waarde | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
  deviceOwnership | Persoonlijk, bedrijf, onbekend | (apparaat. deviceOwnership-EQ "bedrijf")
- enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
+ enrollmentProfileName | Naam van het inschrijvings profiel voor Apple-apparaten, de naam van het bedrijfs eigendom van het Android Enter prise-apparaat of de naam van het Windows auto pilot-profiel | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: e193b272460fe97f599adff414fcac6e80648104
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6025c4c694da1e036201aef35ab73500429f7e2c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738367"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170559"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partner onderwerpen
 ![Auth0-logo](./media/auth0-overview/auth0-logo.png)
@@ -26,21 +26,24 @@ Met de integratie kunt u uw Auth0-logboek gebeurtenissen streamen met hoge betro
 Voor organisaties die gebruikmaken van Auth0 en Azure, kunt u met deze integratie gegevens naadloos integreren in uw hele stack. 
  
 ## <a name="available-event-types"></a>Beschik bare gebeurtenis typen
-[Hier](https://auth0.com/docs/logs/references/log-event-type-codes)vindt u een volledige lijst met beschik bare Auth0-gebeurtenis typen en de bijbehorende beschrijvingen.
+De volledige lijst met beschik bare Auth0-gebeurtenis typen en de bijbehorende beschrijvingen is beschikbaar op [deze website](https://auth0.com/docs/logs/references/log-event-type-codes).
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 ### <a name="engage-with-your-users"></a>Neem contact op met uw gebruikers
-Het leveren van een sterke gebruikers ervaring is van cruciaal belang om het verloop te verminderen en uw gebruikers te houden. Lever meer aangepaste toepassings ervaringen met behulp van Auth0-gebeurtenissen met Azure Functions en Logic Apps. 
+Het leveren van een sterke gebruikers ervaring is van cruciaal belang om het verloop te verminderen en uw gebruikers te houden. Lever meer aangepaste toepassings ervaringen door gebruik te maken van Auth0-gebeurtenissen met Azure Functions en Azure Logic Apps. 
 
 ### <a name="understand-user-behavior"></a>Gebruikers gedrag begrijpen
-Begrijpen wanneer gebruikers toegang krijgen tot uw product, waar ze zijn aangemeld en welke apparaten ze gebruiken. Ontwikkel een goed beeld van de product gebieden die het meest belang rijk zijn door deze signalen bij te houden. Met deze signalen kunt u bepalen welke browsers en apparaten ondersteuning bieden voor de talen waarin uw app wordt gelokaliseerd en wanneer uw piek verkeer plaatsvindt. 
+Begrijpen wanneer gebruikers toegang krijgen tot uw product, waar ze zijn aangemeld en welke apparaten ze gebruiken. Ontwikkel een goed beeld van de product gebieden die het meest belang rijk zijn door deze signalen bij te houden. Deze signalen helpen u bij het bepalen van het volgende:
+- Welke browsers en apparaten worden ondersteund. 
+- In welke talen u uw app kunt lokaliseren in. 
+- Wanneer uw piek verkeer is. 
 
-### <a name="manage-user-data"></a>Gebruikers gegevens beheren
-Het bijhouden en controleren van uw gebruikers acties is van cruciaal belang voor het onderhouden van de beveiliging en de volgende industriële voor Schriften. De mogelijkheid om gebruikers gegevens te bewerken, te verwijderen of te exporteren, wordt steeds belang rijker voor het volgen van de privacy-wetten, zoals de AVG van de Europese Unie (AVG).
+### <a name="manage-user-data"></a>Gebruikersgegevens beheren
+Het bijhouden en controleren van uw gebruikers acties is van cruciaal belang voor het onderhouden van de beveiliging en de volgende industriële voor Schriften. De mogelijkheid om gebruikers gegevens te bewerken, te verwijderen of te exporteren is steeds belang rijker voor de volgende privacy-wetten, zoals de AVG van de Europese Unie (AVG).
 
 ### <a name="secure-your-application"></a>Uw toepassing beveiligen
-Het combi neren van beveiligings bewaking en antwoord procedures voor incidenten is belang rijk bij het beveiligen van een gedistribueerd systeem. Daarom is het belang rijk om alle gegevens op één plek te houden en de hele stack te bewaken. 
+Het combi neren van beveiligings bewaking en antwoord procedures voor incidenten is belang rijk wanneer u een gedistribueerd systeem beveiligt. Daarom is het belang rijk om alle gegevens op één plek te houden en de hele stack te bewaken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6c7464eb1bf51a4e42d0db98d92459dc39fbb11
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304188"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170814"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer uitgaande regels
 
@@ -42,7 +42,7 @@ Uitgaande regels worden [scenario 2](load-balancer-outbound-connections.md#lb) u
 
 Net als alle Load Balancer regels volgen uitgaande regels dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels:
 
-**frontend** + -**para meters** + **back-end-pool**
+Front- **End**  +  **para meters**  +  **back-end-groep**
 
 Met een uitgaande regel wordt uitgaande NAT geconfigureerd voor _alle virtuele machines die door de back-endadresgroep worden geïdentificeerd_ om te worden vertaald naar de front- _End_.  En _para meters_ bieden extra nauw keurige controle over de uitgaande NAT-algoritme.
 
@@ -66,7 +66,7 @@ API-versie 2018-07-01 geeft de volgende structuur van een uitgaande regel:
 
 ### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Uitgaand NAT schalen met meerdere IP-adressen
 
-Terwijl een regel voor uitgaande verbindingen met slechts één openbaar IP-adres kan worden gebruikt, wordt door uitgaande regels de configuratie belasting voor het schalen van uitgaande NAT vereenvoudigd. U kunt meerdere IP-adressen gebruiken om te plannen voor grootschalige scenario's en u kunt uitgaande regels gebruiken om te voor komen dat er gevoelige patronen voor de [uitputting van SNAT](load-balancer-outbound-connections.md#snatexhaust) zijn.  
+Terwijl een regel voor uitgaande verbindingen met slechts één openbaar IP-adres kan worden gebruikt, wordt door uitgaande regels de configuratie belasting voor het schalen van uitgaande NAT vereenvoudigd. U kunt meerdere IP-adressen gebruiken om te plannen voor grootschalige scenario's en u kunt uitgaande regels gebruiken om te voor komen dat er gevoelige patronen voor de [uitputting van SNAT](troubleshoot-outbound-connection.md#snatexhaust) zijn.  
 
 Elk extra IP-adres dat wordt geleverd door een front-end biedt 64.000 tijdelijke poorten voor Load Balancer die als SNAT-poorten kunnen worden gebruikt. Terwijl taak verdeling of binnenkomende NAT-regels één frontend hebben, breidt de uitgaande regel het front-end-principe uit en staat meerdere frontends per regel toe.  Met meerdere frontends per regel wordt het aantal beschik bare SNAT-poorten vermenigvuldigd met elk openbaar IP-adres en kunnen grote scenario's worden ondersteund.
 
@@ -95,7 +95,7 @@ Gebruik de volgende para meter om de uitgaande time-out voor inactiviteit in te 
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> TCP Reset inschakelen bij time-out inactiviteit
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>TCP Reset inschakelen bij time-out inactiviteit
 
 Het standaard gedrag van Load Balancer is om de stroom op de achtergrond neer te zetten wanneer de uitgaande time-out voor inactiviteit is bereikt.  Met de para meter enableTCPReset kunt u een meer voorspel bare toepassings gedrag inschakelen en bepalen of u een bidirectionele TCP Reset (TCP RST) wilt verzenden wanneer de uitgaande time-out voor inactiviteit is verlopen. 
 

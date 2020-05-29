@@ -1,20 +1,20 @@
 ---
-title: Poorten openen voor een VM met de Azure-portal
-description: Meer informatie over het openen van een poort / het maken van een eindpunt voor uw Windows-vm met behulp van de Azure Portal
+title: Poorten openen voor een virtuele machine met behulp van de Azure Portal
+description: Meer informatie over het openen van een poort/het maken van een eind punt naar uw Windows-VM met behulp van de Azure Portal
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865489"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170027"
 ---
-# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Poorten openen voor een virtuele machine met de Azure-portal
+# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Poorten openen voor een virtuele machine met de Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -23,60 +23,58 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-1. Zoek naar en selecteer de brongroep voor de VM, kies **Toevoegen,** zoek vervolgens naar en selecteer **netwerkbeveiligingsgroep**.
+1. Zoek en selecteer de resource groep voor de virtuele machine, klik op **toevoegen**, zoek naar en selecteer **netwerk beveiligings groep**.
 
-2. Selecteer **Maken**.
+1. Selecteer **Maken**.
 
-    Het **groepsvenster netwerkbeveiliging maken** wordt geopend.
+    Het venster **netwerk beveiligings groep maken** wordt geopend.
 
     ![Een netwerkbeveiligingsgroep maken](./media/nsg-quickstart-portal/create-nsg.png)
 
-2. Voer een naam in voor uw netwerkbeveiligingsgroep. 
+1. Voer een naam in voor de netwerk beveiligings groep. 
 
-3. Selecteer of maak een resourcegroep en selecteer vervolgens een locatie.
+1. Selecteer of maak een resource groep en selecteer vervolgens een locatie.
 
-4. Selecteer **Maken** om de netwerkbeveiligingsgroep te maken.
+1. Selecteer **maken** om de netwerk beveiligings groep te maken.
 
-## <a name="create-an-inbound-security-rule"></a>Een binnenkomende beveiligingsregel maken
+## <a name="create-an-inbound-security-rule"></a>Een regel voor binnenkomende beveiliging maken
 
-1. Selecteer uw nieuwe netwerkbeveiligingsgroep. 
+1. Selecteer de nieuwe netwerk beveiligings groep. 
 
-2. Selecteer **Binnenkomende beveiligingsregels**en selecteer **Toevoegen**.
+1. Selecteer **binnenkomende beveiligings regels** in het menu links en selecteer vervolgens **toevoegen**.
 
-    ![Inkomende regel toevoegen](./media/nsg-quickstart-portal/add-inbound-rule.png)
+    ![Scha kelen naar de pagina Geavanceerd](./media/nsg-quickstart-portal/advanced.png)
 
-3. Selecteer **Geavanceerd**. 
+1. Schakel op de pagina **een regel voor binnenkomende beveiliging toevoegen** de optie **Geavanceerd** van de **basis** aan de bovenkant van de pagina in. 
 
-4. Kies een algemene **service** in het vervolgkeuzemenu, zoals **HTTP**. U ook **Aangepast** selecteren als u een specifieke poort wilt opgeven om te gebruiken. 
+1. Kies een algemene **service** in de vervolg keuzelijst, zoals **http**. U kunt ook **aangepast** selecteren als u een specifieke poort wilt opgeven. 
 
-5. Wijzig **destijds** de prioriteit of **naam**. De prioriteit is van invloed op de volgorde waarin regels worden toegepast: hoe lager de numerieke waarde, hoe eerder de regel wordt toegepast.
+1. Desgewenst kunt u de **prioriteit** of **naam**wijzigen. De prioriteit is van invloed op de volg orde waarin regels worden toegepast: de lagere numerieke waarde, de eerdere regel wordt toegepast.
 
-6. Selecteer **Toevoegen** om de regel te maken.
+1. Selecteer **toevoegen** om de regel te maken.
 
-## <a name="associate-your-network-security-group-with-a-subnet"></a>Uw netwerkbeveiligingsgroep koppelen aan een subnet
+## <a name="associate-your-network-security-group-with-a-subnet"></a>Uw netwerk beveiligings groep koppelen aan een subnet
 
-De laatste stap bestaat uit het koppelen van uw netwerkbeveiligingsgroep aan een subnet of een specifieke netwerkinterface. In dit voorbeeld koppelen we de netwerkbeveiligingsgroep aan een subnet. 
+De laatste stap bestaat uit het koppelen van uw netwerkbeveiligingsgroep aan een subnet of een specifieke netwerkinterface. In dit voor beeld koppelen we de netwerk beveiligings groep aan een subnet. 
 
-1. Selecteer **Subnetten**en selecteer **Vervolgens Associate**.
+1. Selecteer **subnetten** in het menu links en selecteer vervolgens **koppelen**.
 
-    ![Een netwerkbeveiligingsgroep koppelen aan een subnet](./media/nsg-quickstart-portal/associate-subnet.png)
+1. Selecteer het virtuele netwerk en selecteer vervolgens het juiste subnet.
 
-2. Selecteer het virtuele netwerk en selecteer vervolgens het juiste subnet.
+    ![Een netwerk beveiligings groep koppelen aan een virtueel netwerk](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-    ![Een netwerkbeveiligingsgroep koppelen aan virtuele netwerken](./media/nsg-quickstart-portal/select-vnet-subnet.png)
-
-    Alle VM's die u met dat subnet verbindt, zijn nu bereikbaar op poort 80.
+1. Selecteer **OK** wanneer u klaar bent.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
-U de stappen in dit artikel ook [uitvoeren met Azure PowerShell](nsg-quickstart-powershell.md).
+U kunt [de stappen in dit artikel ook uitvoeren met behulp van Azure PowerShell](nsg-quickstart-powershell.md).
 
-Met de opdrachten die in dit artikel worden beschreven, u snel het verkeer naar uw VM laten stromen. Netwerkbeveiligingsgroepen bieden veel geweldige functies en granulariteit voor het beheren van de toegang tot uw bronnen. Zie [Netwerkverkeer filteren met een netwerkbeveiligingsgroep](../../virtual-network/tutorial-filter-network-traffic.md)voor meer informatie.
+Met de opdrachten die in dit artikel worden beschreven, kunt u snel verkeer ontvangen dat naar uw virtuele machine stroomt. Netwerk beveiligings groepen bieden veel fantastische functies en granulatie voor het beheren van de toegang tot uw resources. Zie [netwerk verkeer filteren met een netwerk beveiligings groep](../../virtual-network/tutorial-filter-network-traffic.md)voor meer informatie.
 
-Voor zeer beschikbare webtoepassingen u overwegen uw VM's achter een Azure-loadbalancer te plaatsen. De load balancer distribueert verkeer naar VM's, met een netwerkbeveiligingsgroep die verkeersfiltering biedt. Zie [Virtuele machines voor laadbalans windows in Azure voor](tutorial-load-balancer.md)meer informatie om een zeer beschikbare toepassing te maken.
+Voor Maxi maal beschik bare webtoepassingen kunt u overwegen uw Vm's achter een Azure-load balancer te plaatsen. De load balancer distribueert verkeer naar Vm's, met een netwerk beveiligings groep die verkeer filtering biedt. Zie [taak verdeling van virtuele Windows-machines in azure om een Maxi maal beschik bare toepassing te maken](tutorial-load-balancer.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een netwerkbeveiligingsgroep gemaakt, een inkomende regel gemaakt waarmee HTTP-verkeer op poort 80 wordt toegestaan en die regel vervolgens gekoppeld aan een subnet. 
+In dit artikel hebt u een netwerk beveiligings groep gemaakt, een regel voor binnenkomende verbindingen gemaakt waarmee HTTP-verkeer wordt toegestaan op poort 80, en die regel vervolgens aan een subnet is gekoppeld. 
 
 In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 - [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)

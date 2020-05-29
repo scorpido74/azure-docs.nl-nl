@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779211"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167788"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Verwijderde App Service-apps herstellen met PowerShell
 
@@ -66,7 +66,7 @@ De invoer voor opdracht is:
 - **Naam**: de naam voor de app moet wereld wijd uniek zijn.
 - **TargetAppServicePlanName**: app service plan dat aan de app is gekoppeld
 
-Standaard `Restore-AzDeletedWebApp` worden zowel uw app-configuratie als een inhoud hersteld. Als u alleen inhoud wilt herstellen, gebruikt u de `-RestoreContentOnly` vlag met deze commandlet.
+Standaard `Restore-AzDeletedWebApp` worden zowel de configuratie van uw app als alle inhoud hersteld. Als u alleen inhoud wilt herstellen, gebruikt u de `-RestoreContentOnly` vlag met deze commandlet.
 
 > [!NOTE]
 > Als de app is gehost op en vervolgens wordt verwijderd uit een App Service Environment, kan deze alleen worden hersteld als de bijbehorende App Service Environment nog bestaan.

@@ -2,13 +2,13 @@
 title: Een QnA Maker-service instellen-QnA Maker
 description: Voordat u QnA Maker Knowledge bases kunt maken, moet u eerst een QnA Maker service in azure instellen. Iedereen met een machtiging voor het maken van nieuwe resources in een abonnement kan een QnA Maker-service instellen.
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402988"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171171"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
@@ -58,6 +58,7 @@ Met deze procedure maakt u de Azure-resources die nodig zijn voor het beheren va
    ![Resource heeft een nieuwe QnA Maker service gemaakt](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     De resource met het _Cognitive Services_ type heeft uw _abonnements_ sleutels.
+
 
 ## <a name="find-subscription-keys-in-the-azure-portal"></a>Abonnements sleutels zoeken in de Azure Portal
 
@@ -145,7 +146,7 @@ Op dit moment kunt u geen in-place upgrade van de SKU voor Azure Search uitvoere
 
 De QnAMaker-runtime maakt deel uit van het Azure App Service-exemplaar dat wordt geïmplementeerd wanneer u [een QnAMaker-service](./set-up-qnamaker-service-azure.md) in de Azure Portal maakt. Er worden regel matig updates uitgevoerd voor de runtime. Het QnA Maker App Service-exemplaar bevindt zich in de modus automatisch bijwerken na de site-extensie release van april 2019 (versie 5 +). Deze update is ontworpen om te zorgen dat er geen downtime is tijdens de upgrade.
 
-U kunt uw huidige versie controleren op https://www.qnamaker.ai/UserSettings. Als uw versie ouder is dan versie 5. x, moet u App Service opnieuw opstarten om de meest recente updates toe te passen:
+U kunt uw huidige versie controleren op https://www.qnamaker.ai/UserSettings . Als uw versie ouder is dan versie 5. x, moet u App Service opnieuw opstarten om de meest recente updates toe te passen:
 
 1. Ga naar de QnAMaker-service (resource groep) in het [Azure Portal](https://portal.azure.com).
 
@@ -210,6 +211,29 @@ Als u de app voor Voorspellings eindpunt wilt laden, zelfs wanneer er geen verke
 
 Meer informatie over het configureren van de App Service [algemene instellingen](../../../app-service/configure-common.md#configure-general-settings).
 
+## <a name="business-continuity-with-traffic-manager"></a>Bedrijfs continuïteit met Traffic Manager
+
+Het hoofd doel van het plan voor bedrijfs continuïteit is het maken van een robuust eind punt van de Knowledge Base, waardoor er geen verdere tijd is voor de bot of de toepassing die deze gebruikt.
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker BCP-abonnement](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+Het idee op hoog niveau zoals hierboven wordt weer gegeven, is als volgt:
+
+1. Stel twee parallelle [QnA Maker Services](set-up-qnamaker-service-azure.md) in in [Azure gekoppelde regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+1. [Back-up maken](../../../app-service/manage-backup.md) van uw primaire QnA Maker app-service en deze [herstellen](../../../app-service/web-sites-restore.md) in de secundaire installatie. Dit zorgt ervoor dat beide instellingen werken met dezelfde hostnaam en sleutels.
+
+1. Zorg ervoor dat de primaire en secundaire Azure Search-indexen synchroon blijven. Gebruik het GitHub-voor beeld [hier](https://github.com/pchoudhari/QnAMakerBackupRestore) om te zien hoe u een back-up maakt van Azure-indexen.
+
+1. Maak een back-up van de Application Insights met [doorlopend exporteren](../../../application-insights/app-insights-export-telemetry.md).
+
+1. Zodra de primaire en secundaire Stacks zijn ingesteld, gebruikt u [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) om de twee eind punten te configureren en een routerings methode in te stellen.
+
+1. U moet een Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), maken van het certificaat voor uw Traffic Manager-eind punt. [BIND het TLS/SSL-certificaat](../../../app-service/configure-ssl-bindings.md) in uw app-Services.
+
+1. Ten slotte gebruikt u het Traffic Manager-eind punt in uw bot of app.
+
 ## <a name="delete-azure-resources"></a>Azure-resources verwijderen
 
 Als u een van de Azure-resources verwijdert die voor uw QnA Maker Knowledge bases worden gebruikt, werken de kennis bases niet meer. Voordat u een resource verwijdert, moet u de kennis bases exporteren vanaf de pagina **instellingen** .
@@ -219,4 +243,4 @@ Als u een van de Azure-resources verwijdert die voor uw QnA Maker Knowledge base
 Meer informatie over de [app service](../../../app-service/index.yml) en de [Zoek service](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Een knowledge base maken](../Quickstarts/create-publish-knowledge-base.md)
+> [Meer informatie over hoe u met anderen kunt ontwerpen](../how-to/collaborate-knowledge-base.md)

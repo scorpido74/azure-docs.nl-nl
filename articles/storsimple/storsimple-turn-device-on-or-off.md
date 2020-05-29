@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2906c947e24bf5053760e9b83429ae7c6ecd3f4
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254623"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170117"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Het StorSimple 8000 Series-apparaat in-of uitschakelen
 
@@ -86,12 +86,12 @@ Een stroom storing of-onderbreking kan een StorSimple-apparaat afsluiten. De str
 * [Apparaat met alleen primaire behuizing](#8100)
 * [Apparaat met EBOD Enclosure](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Apparaat met alleen primaire behuizing<a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>Apparaat met alleen primaire behuizing<a name="8100"></a>
 Het systeem kan de normale werking voortzetten als er sprake is van stroom storingen in een van de energie-eenheden. Als u echter een hoge Beschik baarheid van het apparaat wilt garanderen, moet u zo snel mogelijk de kracht van de voeding herstellen.
 
 Als er sprake is van een stroom storing of een stroom onderbreking voor beide voedingen, wordt het systeem op een ordelijk en gecontroleerde manier afgesloten. Wanneer de stroom wordt hersteld, wordt het systeem automatisch ingeschakeld.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Apparaat met EBOD Enclosure<a name="8600">
+### <a name="device-with-ebod-enclosure"></a>Apparaat met EBOD Enclosure<a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Energie verlies bij één voeding
 Het systeem kan de normale werking voortzetten als er sprake is van stroom uitval van een van de voedingen op de primaire behuizing of de EBOD-behuizing. Als u echter een hoge Beschik baarheid van het apparaat wilt garanderen, moet u zo snel mogelijk de stroom naar de voeding herstellen.
 
@@ -140,21 +140,21 @@ Een actief StorSimple-apparaat moet mogelijk worden afgesloten als het wordt ver
 * [Apparaat met primaire behuizing](#8100a)
 * [Apparaat met EBOD Enclosure](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Apparaat met primaire behuizing<a name="8100a">
+### <a name="device-with-primary-enclosure"></a>Apparaat met primaire behuizing<a name="8100a"></a>
 Als u het apparaat op een ordelijk en gecontroleerde manier wilt afsluiten, kunt u dit doen via de Azure Portal of via de Windows PowerShell voor StorSimple. 
 
 > [!IMPORTANT]
 > Sluit een actief apparaat niet af met behulp van de aan/uit-knop aan de achterkant van het apparaat.
 > 
-> Voordat u het apparaat afsluit, controleert u of alle onderdelen van het apparaat in orde zijn. Navigeer in het Azure Portal naar **apparaten** > **Monitor** > **Hardware-status**controleren en controleer of de status van alle onderdelen groen is. Dit geldt alleen voor een goed systeem. Als het systeem wordt afgesloten om een defect onderdeel te vervangen, ziet u de status mislukt (rood) of gedegradeerd (geel) voor het respectieve onderdeel in de **Hardware-status**.
+> Voordat u het apparaat afsluit, controleert u of alle onderdelen van het apparaat in orde zijn. Navigeer in het Azure Portal naar **apparaten**  >  **Monitor**  >  **Hardware-status**controleren en controleer of de status van alle onderdelen groen is. Dit geldt alleen voor een goed systeem. Als het systeem wordt afgesloten om een defect onderdeel te vervangen, ziet u de status mislukt (rood) of gedegradeerd (geel) voor het respectieve onderdeel in de **Hardware-status**.
 > 
 > 
 
 Nadat u toegang hebt tot de Windows PowerShell voor StorSimple of de Azure Portal, volgt u de stappen in [een StorSimple-apparaat afsluiten](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Apparaat met EBOD Enclosure<a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>Apparaat met EBOD Enclosure<a name="8600a"></a>
 > [!IMPORTANT]
-> Voordat u de primaire behuizing en de EBOD-behuizing afsluit, moet u ervoor zorgen dat alle onderdelen van het apparaat in orde zijn. Navigeer in het Azure Portal naar **apparaten** > **Monitor** > **Hardware-status**controleren en controleer of alle onderdelen in orde zijn.
+> Voordat u de primaire behuizing en de EBOD-behuizing afsluit, moet u ervoor zorgen dat alle onderdelen van het apparaat in orde zijn. Navigeer in het Azure Portal naar **apparaten**  >  **Monitor**  >  **Hardware-status**controleren en controleer of alle onderdelen in orde zijn.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Een actief apparaat afsluiten met EBOD Enclosure
