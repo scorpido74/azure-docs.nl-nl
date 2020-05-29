@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 254ff2906d2b80b6c34ba930daffbb2c65f2b22f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bcb457cd9c2e1bb829ddb90008cc5334db0def8b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117928"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167363"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Updatebeheer inschakelen vanaf een virtuele Azure-machine
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u een virtuele machine van Azure kunt gebrui
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="enable-update-management"></a>Updatebeheer inschakelen
+## <a name="enable-the-feature-for-deployment"></a>De functie voor implementatie inschakelen
 
 1. In de [Azure Portal](https://portal.azure.com)selecteert u **virtuele machines** of zoekt en selecteert u **virtuele machines** op de start pagina.
 
@@ -43,16 +43,9 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     ![Updatebeheer inschakelen](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
-
-Updatebeheer gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van updates. Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor meer informatie.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Updates en patches voor uw Azure-VM's beheren](automation-tutorial-update-management.md) voor het gebruiken van Updatebeheer voor VM's.
-* Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor Scope configuraties.
-* Als u de Log Analytics-werkruimte niet meer nodig hebt, raadpleegt u de instructies in [Werkruimte ontkoppelen van Automation-account voor Updatebeheer](automation-unlink-workspace-update-management.md).
-* Als u VM's uit Updatebeheer wilt verwijderen, raadpleegt u [VM's uit Updatebeheer verwijderen](automation-remove-vms-from-update-management.md).
 * Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.
 * Zie [Problemen met Windows-updateagent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van problemen met de Windows Update-agent.
 * Zie [problemen met Linux Update-agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux Update-agent.

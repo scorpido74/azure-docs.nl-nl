@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6c951d7875086658763243c7c1973f08233f96e0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749219"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170627"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -246,12 +246,15 @@ Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure
 Als u een replicatie beleid wilt verwijderen, verwijdert u het beleid van zowel het bron account als het doel account. Als u het beleid verwijdert, worden ook alle bijbehorende regels verwijderd.
 
 ```powershell
-Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
-    -StorageAccountName $destAccountName |
-    Remove-AzStorageObjectReplicationPolicy
-Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
-    -StorageAccountName $srcAccountName |
-    Remove-AzStorageObjectReplicationPolicy
+# Remove the policy from the destination account.
+Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $destAccountName `
+    -PolicyId $destPolicy.PolicyId
+
+# Remove the policy from the source account.
+Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName `
+    -PolicyId $destPolicy.PolicyId
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)

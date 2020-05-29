@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933425"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170083"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Uw StorSimple 8000 Series-apparaat bijwerken
 > [!NOTE]
@@ -84,22 +84,22 @@ Als u updates voor onderhouds modus wilt Toep assen, ontvangt u een waarschuwing
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Stap 1: verbinding maken met de seriële console<a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>Stap 1: verbinding maken met de seriële console<a name="step1"></a>
 Gebruik eerst een toepassing zoals PuTTy om toegang te krijgen tot de seriële console. In de volgende procedure wordt uitgelegd hoe u PuTTy gebruikt om verbinding te maken met de seriële console.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Stap 2: de onderhouds modus invoeren<a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>Stap 2: de onderhouds modus invoeren<a name="step2"></a>
 Nadat u verbinding hebt gemaakt met de-console, controleert u of er updates zijn om te installeren en voert u de onderhouds modus in om ze te installeren.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>Stap 3: updates installeren<a name="step3">
+### <a name="step-3-install-your-updates"></a>Stap 3: updates installeren<a name="step3"></a>
 Installeer vervolgens uw updates.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Stap 4: onderhouds modus afsluiten<a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>Stap 4: onderhouds modus afsluiten<a name="step4"></a>
 Ten slotte wordt de onderhouds modus afgesloten.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

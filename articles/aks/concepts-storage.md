@@ -4,12 +4,12 @@ description: Meer informatie over opslag in azure Kubernetes service (AKS), incl
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77595991"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171375"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opslag opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -55,12 +55,14 @@ Een PersistentVolume kan *statisch* worden gemaakt door een cluster beheerder of
 
 Als u verschillende opslag lagen wilt definiëren, zoals Premium en Standard, kunt u een *StorageClass*maken. De StorageClass definieert ook de *reclaimPolicy*. Deze reclaimPolicy bepaalt het gedrag van de onderliggende Azure Storage-Resource wanneer de Pod wordt verwijderd en het permanente volume mogelijk niet meer nodig is. De onderliggende opslag resource kan worden verwijderd of blijvend worden gebruikt met een toekomstige pod.
 
-In AKS worden twee initiële StorageClasses gemaakt:
+In AKS worden vier initiële StorageClasses gemaakt:
 
-- *standaard* : maakt gebruik van Azure Standard-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- *default* : maakt gebruik van Azure StandardSSD-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
 - *Managed-Premium* : maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- *azurefile* : maakt gebruik van Azure Standard-opslag om een Azure-bestands share te maken. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
+- *azurefile-Premium* : maakt gebruik van Azure Premium Storage om een Azure-bestands share te maken. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-bestands share wordt verwijderd wanneer het permanente volume dat wordt gebruikt, wordt verwijderd.
 
-Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met `kubectl`. In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
+Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met `kubectl` . In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
 
 ```yaml
 kind: StorageClass

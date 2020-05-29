@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984977"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168145"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
 
@@ -27,7 +27,7 @@ ms.locfileid: "80984977"
 |   |   |
 |---|---|
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Snelstartgids**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
+|**Snelstart**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
 |**Zelfstudie**|[Azure Cosmos DB: ontwikkelen met de tabel-API in .NET](tutorial-develop-table-dotnet.md)|
 |**Huidig ondersteund Framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -39,40 +39,40 @@ ms.locfileid: "80984977"
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
 * Opgeloste fouten
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
 * Opgeloste fouten
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Ondersteuning voor het schrijven van meerdere regio's toegevoegd
 * Afhankelijkheden voor NuGet-pakketten op micro soft. Azure. DocumentDB, micro soft. OData. core, micro soft. OData. EDM, micro soft. Spatial
 
-### <a name="113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * Afhankelijkheden voor NuGet-pakketten op micro soft. Azure. storage. common en micro soft. Azure. DocumentDB.
 * Fout oplossingen voor tabel-serialisatie wanneer JsonConvert. DefaultSettings worden geconfigureerd.
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * Validatie toegevoegd voor onjuiste ETAGs in directe modus.
 * Vaste LINQ-query fout in de gateway modus.
 * Synchrone Api's worden nu uitgevoerd in de thread groep met SynchronizationContext.
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism en TableQueryContinuationTokenLimitInKb toevoegen aan TableRequestOptions
 * Opgeloste fouten
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * Release van algemene Beschik baarheid
 
-### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0-Preview
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0-Preview
 
 * Eerste preview-release
 

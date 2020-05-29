@@ -2,13 +2,13 @@
 title: Evaluaties in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769924"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171001"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Evaluaties in Azure Migrate: Server evaluatie
 
@@ -110,7 +110,7 @@ Eigenschap | Details
 **Doel locatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, VS-Oost 2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US gov-Texas US gov-Virginia , West-Centraal VS, Europa-west, West-India, VS-West en VS-West 2.
 **Doel opslag schijf (in grootte)** | Het type schijf dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard-SSD beheerd of Standard-HDD beheerd.
 **Doel opslag schijf (grootte op basis van prestaties)** | Hiermee geeft u het type doel opslag schijf op als automatische, door een Standard-HDD beheerd of door Standard-SSD beheerd beheer.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven, wat de IOPS en door Voer is.<br/><br/>**Premium of Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM met één exemplaar van 99,9% wilt maken, kunt u overwegen om Premium-beheerde schijven te gebruiken. Dit gebruik zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate ondersteunt alleen beheerde schijven voor migratie beoordeling.
-**Azure Reserved Virtual Machine Instances** | Hiermee worden [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) opgegeven, zodat rekening wordt gehouden met kosten ramingen in de evaluatie.<br/><br/> Azure Migrate ondersteunt momenteel alleen Azure Reserved VM Instances voor aanbiedingen met betalen per gebruik.
+**Azure Reserved VM Instances** | Hiermee worden [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) opgegeven, zodat rekening wordt gehouden met kosten ramingen in de evaluatie.<br/><br/> Als gereserveerde instanties zijn geselecteerd, blijven de standaard instellingen in korting (%) en VM-uptime-eigenschappen.<br/><br/> Azure Migrate ondersteunt momenteel alleen Azure Reserved VM Instances voor aanbiedingen met betalen per gebruik.
 **Grootte criteria** | Wordt gebruikt voor het optimaliseren van de Azure-VM.<br/><br/> Gebruiken als is formaat of op basis van de prestaties.
 **Prestatiegeschiedenis** | Wordt gebruikt met een grootte op basis van prestaties. Met de prestatie geschiedenis wordt de duur opgegeven die wordt gebruikt wanneer prestatie gegevens worden geëvalueerd.
 **Percentiel gebruik** | Wordt gebruikt met een grootte op basis van prestaties. Percentiel gebruik geeft de percentiel waarde van het voor beeld van de prestaties die wordt gebruikt voor supportte.
@@ -121,6 +121,8 @@ Eigenschap | Details
 **Korting (%)** | Alle abonnements kortingen die u boven op de Azure-aanbieding ontvangt. De standaardinstelling is 0%.
 **VM tijd actief** | De duur in dagen per maand en uur per dag voor virtuele Azure-machines die niet continu worden uitgevoerd. Kosten ramingen zijn gebaseerd op die duur.<br/><br/> De standaard waarden zijn 31 dagen per maand en 24 uur per dag.
 **Azure Hybrid Benefit** | Hiermee geeft u op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als de instelling de standaard waarde Ja heeft, worden de Azure-prijzen voor andere besturings systemen dan Windows in aanmerking genomen voor Windows-Vm's.
+**EA-abonnement** | Hiermee geeft u op dat een Enterprise Agreement (EA)-abonnement wordt gebruikt voor de schatting van de kosten. Houdt rekening met de korting die van toepassing is op het abonnement. <br/><br/> Wijzig de instellingen voor gereserveerde instanties, discount (%) en VM-uptime-eigenschappen met de standaard instellingen.
+
 
 [Bekijk de aanbevolen procedures voor het](best-practices-assessment.md) maken van een evaluatie met server evaluatie.
 
@@ -143,7 +145,7 @@ Eigenschap | Details | Status van Azure-gereedheid
 --- | --- | ---
 **Opstart type** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is
 **Kernen** | Elke computer mag niet meer dan 128 kernen hebben. Dit is het maximum aantal dat door een Azure-VM wordt ondersteund.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, worden de gebruikte kernen Azure Migrate beschouwd als vergelijking. Als de evaluatie-instellingen een comfort factor opgeven, wordt het aantal gebruikte kernen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als het aantal kern geheugens binnen de limiet ligt
-**NODIG** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie&nbsp;Standard_M128m<sup>2</sup> VM ondersteunt. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
+**NODIG** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM ondersteunt. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
 **Opslag schijf** | De toegewezen grootte van een schijf mag niet groter zijn dan 32 TB. Azure biedt ondersteuning voor 64-TB schijven met Azure Ultra-SSD-schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf omvang, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, met inbegrip van de besturingssysteem schijf, moet 65 of minder zijn. | Gereed als de schijf grootte en het-nummer binnen de limieten vallen
 **Netwerken** | Aan een machine mogen niet meer dan 32 netwerk interfaces (Nic's) zijn gekoppeld. | Gereed als het aantal Nic's binnen de limiet ligt
 

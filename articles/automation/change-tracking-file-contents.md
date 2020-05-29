@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6afa3d4d2d62541a51c3bab85843d41b48397100
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118782"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170287"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
@@ -22,6 +22,10 @@ Voordat u de procedures in dit artikel gebruikt, moet u ervoor zorgen dat u Wijz
 * [Wijzigingen bijhouden en inventaris inschakelen door te bladeren door de Azure Portal](automation-enable-changes-from-browse.md)
 * [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)
 * [Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine](automation-enable-changes-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
+
+Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van wijzigingen. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
 ## <a name="track-files"></a>Bestanden bijhouden
 
@@ -165,5 +169,8 @@ We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Zie [limiet voor wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
 * Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md).
+* Als u klaar bent met implementaties, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account voor wijzigingen bijhouden en inventarisatie](automation-unlink-workspace-change-tracking.md).
+* Zie [Vm's verwijderen uit wijzigingen bijhouden en inventaris](automation-remove-vms-from-change-tracking.md)om uw vm's uit wijzigingen bijhouden en inventaris te verwijderen.
 * Zie [problemen met wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van functie fouten.

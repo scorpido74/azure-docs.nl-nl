@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a3b03c5999454e101640d931a0bef98aa642a8c7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9a6fab9b98029eeefdd4649b0949a1a61da8b0c1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021463"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168825"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -65,6 +65,7 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 | --- | --- |
 |Azure Virtual Machines Deployment-service|[Implementeer certificaten op vm's vanuit door de klant beheerde Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Implementatie service voor Azure Resource Manager-sjabloon|[Beveiligde waarden door geven tijdens de implementatie](../../azure-resource-manager/templates/key-vault-parameter.md).|
+|Azure-toepassing gateway v2 SKU|[TLS-beëindiging met Key Vault certificaten](/azure/application-gateway/key-vault-certs)|
 |Volume Encryption-service Azure Disk Encryption|Toegang tot de BitLocker-sleutel (Windows-VM) of DM-wachtwoordzin (Linux-VM) en sleutel versleutelings sleutel toestaan tijdens de implementatie van de virtuele machine. Hiermee maakt u [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)mogelijk.|
 |Azure Backup|Het maken van back-ups en het herstellen van relevante sleutels en geheimen tijdens Azure Virtual Machines backup toestaan met behulp van [Azure backup](../../backup/backup-introduction-to-azure-backup.md).|
 |Exchange Online & share point online|Toegang tot de klant sleutel toestaan voor de code ring van Azure Storage-service met de code van de [klant](/microsoft-365/compliance/customer-key-overview).|

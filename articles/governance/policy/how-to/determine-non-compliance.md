@@ -3,12 +3,12 @@ title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684241"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168553"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -188,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>Wijzigings overzicht (preview-versie)
+## <a name="change-history-preview"></a><a name="change-history"></a>Wijzigings overzicht (preview-versie)
 
 Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/templates/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de eigenschappen van de Resource Manager worden toegevoegd, verwijderd of gewijzigd.
 

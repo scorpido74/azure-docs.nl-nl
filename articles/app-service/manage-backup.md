@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535754"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170610"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -41,7 +41,7 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Vereisten en beperkingen
-* Voor de functie voor back-up en herstellen moet het App Service-abonnement zich in de laag **Standard** of **Premium** . Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het schalen van uw app service-abonnement voor het gebruik van een hogere laag. Met de **Premium** -laag kunt u een groter aantal dagelijkse back-ups maken dan met de **Standard** -laag.
+* De functie voor back-up en herstellen vereist dat het App Service plan in de **Standard**-, **Premium** -of **geïsoleerd** -laag is. Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het schalen van uw app service-abonnement voor het gebruik van een hogere laag. **Premium** -en **geïsoleerde** lagen bieden een groter aantal dagelijkse back-ups dan de **Standard** -laag.
 * U hebt een Azure-opslag account en een container nodig in hetzelfde abonnement als de app waarvan u een back-up wilt maken. Zie [overzicht van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over Azure Storage-accounts.
 * Back-ups kunnen Maxi maal 10 GB aan app-en Data Base-inhoud hebben. Als de back-upgrootte deze limiet overschrijdt, wordt er een fout bericht weer geven.
 * Back-ups van TLS ingeschakeld Azure Database for MySQL worden niet ondersteund. Als er een back-up is geconfigureerd, ontvangt u mislukte back-ups.
@@ -118,15 +118,15 @@ Met gedeeltelijke back-ups kunt u precies bepalen van welke bestanden u een back
 > Afzonderlijke data bases in de back-up kunnen 4 GB Maxi maal zijn, maar de totale maximale grootte van de back-up is 10 GB
 
 ### <a name="exclude-files-from-your-backup"></a>Bestanden uitsluiten van de back-up
-Stel dat u een app hebt die logboek bestanden en statische installatie kopieën bevat die één keer een back-up hebben en niet zullen worden gewijzigd. In dergelijke gevallen kunt u deze mappen en bestanden uitsluiten van opslag in uw toekomstige back-ups. Als u bestanden en mappen wilt uitsluiten van uw back-ups `_backup.filter` , maakt u `D:\home\site\wwwroot` een bestand in de map van uw app. Geef de lijst met bestanden en mappen op die u wilt uitsluiten van dit bestand. 
+Stel dat u een app hebt die logboek bestanden en statische installatie kopieën bevat die één keer een back-up hebben en niet zullen worden gewijzigd. In dergelijke gevallen kunt u deze mappen en bestanden uitsluiten van opslag in uw toekomstige back-ups. Als u bestanden en mappen wilt uitsluiten van uw back-ups, maakt u een `_backup.filter` bestand in de `D:\home\site\wwwroot` map van uw app. Geef de lijst met bestanden en mappen op die u wilt uitsluiten van dit bestand. 
 
-U kunt toegang krijgen tot uw bestanden door naar `https://<app-name>.scm.azurewebsites.net/DebugConsole`te navigeren. Meld u aan bij uw Azure-account als u hierom wordt gevraagd.
+U kunt toegang krijgen tot uw bestanden door naar te navigeren `https://<app-name>.scm.azurewebsites.net/DebugConsole` . Meld u aan bij uw Azure-account als u hierom wordt gevraagd.
 
 Bepaal de mappen die u wilt uitsluiten van uw back-ups. Stel dat u de gemarkeerde map en bestanden wilt filteren.
 
 ![Map afbeeldingen](./media/manage-backup/kudu-images.png)
 
-Maak een bestand met `_backup.filter` de naam en plaats de voor gaande lijst in het bestand `D:\home`, maar verwijder het. Eén map of bestand per regel weer geven. De inhoud van het bestand moet dus het volgende zijn:
+Maak een bestand met `_backup.filter` de naam en plaats de voor gaande lijst in het bestand, maar verwijder het `D:\home` . Eén map of bestand per regel weer geven. De inhoud van het bestand moet dus het volgende zijn:
 
  ```
 \site\wwwroot\Images\brand.png
@@ -134,9 +134,9 @@ Maak een bestand met `_backup.filter` de naam en plaats de voor gaande lijst in 
 \site\wwwroot\Images\2013
 ```
 
-Upload `_backup.filter` het bestand naar `D:\home\site\wwwroot\` de map van uw site met behulp van [FTP](deploy-ftp.md) of een andere methode. Als u wilt, kunt u het bestand rechtstreeks maken met behulp van kudu `DebugConsole` en de inhoud daar invoegen.
+Upload `_backup.filter` het bestand naar de `D:\home\site\wwwroot\` map van uw site met behulp van [FTP](deploy-ftp.md) of een andere methode. Als u wilt, kunt u het bestand rechtstreeks maken met behulp van kudu `DebugConsole` en de inhoud daar invoegen.
 
-Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#create-a-manual-backup) of [automatisch](#configure-automated-backups)uitvoert. Alle bestanden en mappen die zijn opgegeven in `_backup.filter` , worden nu uitgesloten van de toekomstige back-ups die zijn gepland of hand matig zijn gestart. 
+Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#create-a-manual-backup) of [automatisch](#configure-automated-backups)uitvoert. Alle bestanden en mappen die zijn opgegeven in, `_backup.filter` worden nu uitgesloten van de toekomstige back-ups die zijn gepland of hand matig zijn gestart. 
 
 > [!NOTE]
 > U kunt gedeeltelijke back-ups van uw site op dezelfde manier herstellen als [een gewone back-up](web-sites-restore.md). Het herstel proces heeft het recht.
@@ -148,7 +148,7 @@ Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#crea
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Hoe back-ups worden opgeslagen
-Nadat u een of meer back-ups voor uw app hebt gemaakt, zijn de back-ups zichtbaar op de pagina **containers** van uw opslag account en uw app. In het opslag account bestaat elke back-up uit`.zip` een bestand met de back-upgegevens `.xml` en een bestand dat een manifest van `.zip` de bestands inhoud bevat. U kunt deze bestanden uitpakken en door bladeren als u toegang wilt krijgen tot uw back-ups zonder een app te herstellen.
+Nadat u een of meer back-ups voor uw app hebt gemaakt, zijn de back-ups zichtbaar op de pagina **containers** van uw opslag account en uw app. In het opslag account bestaat elke back-up uit een `.zip` bestand met de back-upgegevens en een `.xml` bestand dat een manifest van de `.zip` Bestands inhoud bevat. U kunt deze bestanden uitpakken en door bladeren als u toegang wilt krijgen tot uw back-ups zonder een app te herstellen.
 
 De back-up van de Data Base voor de app wordt opgeslagen in de hoofdmap van het zip-bestand. Voor een SQL database is dit een BACPAC-bestand (geen bestands extensie) en kan het worden geïmporteerd. Als u een SQL database wilt maken op basis van de BACPAC-export, raadpleegt [u een BACPAC-bestand importeren om een nieuwe gebruikers database te maken](https://technet.microsoft.com/library/hh710052.aspx).
 

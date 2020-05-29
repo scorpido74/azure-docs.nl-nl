@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 23dfad844c17b0b8c8a35b6a94d6a96327afe19c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117455"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169451"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>VM's verwijderen uit Wijzigingen bijhouden en inventaris
 
 Wanneer u klaar bent met het implementeren van wijzigingen in de virtuele machines in uw omgeving, kunt u deze verwijderen uit de functie [Wijzigingen bijhouden en inventarisatie](change-tracking.md) .
+
+## <a name="to-remove-your-vms"></a>Uw Vm's verwijderen
 
 1. Selecteer in uw Automation-account **Wijzigingen bijhouden** of **inventaris** onder **configuratie beheer**.
 

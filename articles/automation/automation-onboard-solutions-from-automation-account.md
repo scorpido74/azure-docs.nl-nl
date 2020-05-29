@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c5fad03788ee11488748c22d60c150e3de7e516d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e38e9a66db9e775023ff5c7940fd892eb0926824
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117253"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170729"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Updatebeheer inschakelen vanaf een Automation-account
 
@@ -36,10 +36,6 @@ Meld u aan bij Azure op https://portal.azure.com .
 2. Kies de Log Analytics-werk ruimte en het Automation-account en klik op **inschakelen** om updatebeheer in te scha kelen. Het volt ooien van de installatie duurt Maxi maal 15 minuten.
 
     ![Updatebeheer inschakelen](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
-
-## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
-
-Updatebeheer gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van updates. Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor meer informatie.
 
 ## <a name="enable-azure-vms"></a>Virtuele Azure-machines inschakelen
 
@@ -73,16 +69,13 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 
 5. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie worden de opgeslagen Zoek opdrachten en Scope configuraties uit de werk ruimte verwijderd en wordt de functie geopend voor alle Azure-en niet-Azure-computers die rapporteren aan de werk ruimte. Als u deze actie selecteert, wordt de knop **machines beheren** permanent uitgeschakeld, omdat er nog geen scope configuratie is.
 
-6. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek opdrachten opnieuw toe te voegen. Zie [werken met Scope configuraties voor updatebeheer](automation-scope-configurations-update-management.md)voor meer informatie.
+6. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek opdrachten opnieuw toe te voegen. Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor meer informatie.
 
 7. Als u de functie wilt inschakelen voor een of meer computers, selecteert u **inschakelen op geselecteerde machines** en klikt u op **toevoegen** naast elke machine om in te scha kelen voor de functie. Met deze taak worden de geselecteerde computer namen toegevoegd aan de computer groep opgeslagen Zoek query voor de functie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Updates en patches voor uw Azure-VM's beheren](automation-tutorial-update-management.md) voor het gebruiken van Updatebeheer voor VM's.
-* Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor Scope configuraties.
-* Als u de Log Analytics-werkruimte niet meer nodig hebt, raadpleegt u de instructies in [Werkruimte ontkoppelen van Automation-account voor Updatebeheer](automation-unlink-workspace-update-management.md).
-* Als u VM's uit Updatebeheer wilt verwijderen, raadpleegt u [VM's uit Updatebeheer verwijderen](automation-remove-vms-from-update-management.md).
 * Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.
 * Zie [Problemen met Windows-updateagent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van problemen met de Windows Update-agent.
 * Zie [problemen met Linux Update-agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux Update-agent.

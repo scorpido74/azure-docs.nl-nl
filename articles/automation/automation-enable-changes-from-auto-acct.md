@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 31390d260f51bdc1e9858d21153aa96ea7c54405
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13f17ed9d165e368d2e9d9cde694408b600006cc
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116659"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171120"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account
 
@@ -36,10 +36,6 @@ Meld u aan bij Azure op https://portal.azure.com .
 2. Kies de Log Analytics werk ruimte en het Automation-account en klik op **inschakelen** om wijzigingen bijhouden en inventarisatie in te scha kelen. Het volt ooien van de installatie duurt Maxi maal 15 minuten.
 
     ![Wijzigingen bijhouden en Inventaris inschakelen](media/automation-enable-changes-from-auto-acct/onboardsolutions.png)
-
-## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
-
-Wijzigingen bijhouden en inventarisatie gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van wijzigingen. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
 ## <a name="enable-azure-vms"></a>Virtuele Azure-machines inschakelen
 
@@ -73,15 +69,11 @@ Hand matig geïnstalleerde computers of machines die al aan uw werk ruimte rappo
 
 4. Als u de functie wilt inschakelen voor alle beschik bare machines en toekomstige computers, selecteert u **inschakelen op alle beschik bare en toekomstige computers**. Met deze optie worden de opgeslagen Zoek opdrachten en Scope configuraties uit de werk ruimte verwijderd en wordt de functie geopend voor alle Azure-en niet-Azure-computers die rapporteren aan de werk ruimte. Als u deze actie selecteert, wordt de knop **machines beheren** permanent uitgeschakeld, omdat er nog geen scope configuratie is.
 
-5. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek opdrachten opnieuw toe te voegen. Zie [werken met Scope configuraties voor wijzigingen bijhouden en inventarisatie](automation-scope-configurations-change-tracking.md)voor meer informatie.
+5. Indien nodig kunt u de scope configuraties weer toevoegen door de oorspronkelijke opgeslagen Zoek opdrachten opnieuw toe te voegen. Zie [beperken wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie.
 
 6. Als u de functie wilt inschakelen voor een of meer computers, selecteert u **inschakelen op geselecteerde machines** en klikt u op **toevoegen** naast elke machine om in te scha kelen voor de functie. Met deze taak worden de geselecteerde computer namen toegevoegd aan de computer groep opgeslagen Zoek query voor de functie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over de functie.
-* Zie [limiet voor wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
-* Zie [ontdekken welke software is geïnstalleerd op uw virtuele machines](automation-tutorial-installed-software.md)voor meer informatie over het gebruik van de functie voor het identificeren van software die is geïnstalleerd in uw omgeving.
-* Als u uw Automation-account niet wilt integreren met een Log Analytics-werk ruimte wanneer u de functie inschakelt, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account](automation-unlink-workspace-change-tracking.md).
-* Wanneer u klaar bent met het implementeren van wijzigingen in Vm's, kunt u ze verwijderen zoals beschreven in [vm's uit wijzigingen bijhouden en inventaris verwijderen](automation-remove-vms-from-change-tracking.md).
+* Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)als u de functie wilt gebruiken.
 * Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met de functie.

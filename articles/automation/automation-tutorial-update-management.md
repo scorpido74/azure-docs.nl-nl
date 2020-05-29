@@ -6,174 +6,209 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829151"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170304"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw Azure-VM's beheren
 
-Dit artikel beschrijft hoe u de [Updatebeheer](automation-update-management.md)-functie van Azure Automation kunt gebruiken om updates en patches te beheren voor uw Azure-VM's. 
+Dit artikel beschrijft hoe u de [Updatebeheer](automation-update-management.md)-functie van Azure Automation kunt gebruiken om updates en patches te beheren voor uw Azure-VM's. Zie [Automation-prijzen voor updatebeheer](https://azure.microsoft.com/pricing/details/automation/) voor prijsinformatie.
 
-Zie [Automation-prijzen voor updatebeheer](https://azure.microsoft.com/pricing/details/automation/) voor prijsinformatie.
+> [!NOTE]
+> Updatebeheer ondersteunt de implementatie van updates voor de eerste partij en het vooraf downloaden van patches. Deze ondersteuning vereist wijzigingen op de systemen die worden bijgewerkt. Zie [Windows Update instellingen configureren voor Azure Automation updatebeheer](automation-configure-windows-update.md) voor meer informatie over het configureren van deze instellingen op uw systemen.
 
-## <a name="prerequisites"></a>Vereisten
+Voordat u de procedures in dit artikel gebruikt, moet u ervoor zorgen dat u Updatebeheer op uw Vm's hebt ingeschakeld met een van de volgende technieken:
 
-* De functie [Updatebeheer](automation-update-management.md) ingeschakeld op een of meer van uw VM's. 
-* Updatebeheer ingeschakeld op een [virtuele machine](../virtual-machines/windows/quick-create-portal.md).
+* [Updatebeheer inschakelen vanaf een Automation-account](automation-onboard-solutions-from-automation-account.md)
+* [Updatebeheer in te scha kelen door te bladeren door de Azure Portal](automation-onboard-solutions-from-browse.md)
+* [Updatebeheer inschakelen vanuit een runbook](automation-onboard-solutions.md)
+* [Updatebeheer inschakelen vanaf een virtuele Azure-machine](automation-onboard-solutions-from-vm.md)
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Het bereik voor de implementatie beperken
 
-Meld u aan bij Azure Portal op https://portal.azure.com.
+Updatebeheer gebruikt een scope configuratie in de werk ruimte om de computers te richten op het ontvangen van updates. Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor meer informatie.
 
 ## <a name="view-update-assessment"></a>Update-evaluatie bekijken
 
-Nadat u Updatebeheer hebt ingeschakeld, wordt de pagina Updatebeheer geopend. Als er ontbrekende updates worden geïdentificeerd, wordt een lijst met ontbrekende updates weergegeven op het tabblad **Ontbrekende updates**.
+Een update-evaluatie weer geven:
 
-Selecteer onder **Koppeling naar informatie** de koppeling naar de update om het ondersteuningsartikel voor de update te openen. Hier kunt u belangrijke informatie lezen over de update.
+1. Selecteer in uw Automation-account **Update beheer** onder **Update beheer**. 
 
-![Updatestatus bekijken](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+2. De updates voor uw omgeving worden vermeld op de pagina update beheer. Als er ontbrekende updates worden geïdentificeerd, wordt een lijst met ontbrekende updates weergegeven op het tabblad **Ontbrekende updates**.
 
-Klik ergens anders in de update om het deelvenster Zoeken in logboeken te openen voor de geselecteerde update. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U kunt deze query wijzigen of uw eigen query maken om gedetailleerde informatie over geïmplementeerde of ontbrekende updates in uw omgeving weer te geven.
+3. Selecteer onder **informatie koppeling**de koppeling voor een update om het ondersteunings artikel te openen waarmee u belang rijke informatie over de update krijgt.
 
-![Updatestatus bekijken](./media/automation-tutorial-update-management/logsearch.png)
+    ![Updatestatus bekijken](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+
+4. Klik ergens anders in de update om het deel venster zoeken in Logboeken te openen. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U kunt deze query wijzigen of uw eigen query maken om gedetailleerde informatie weer te geven.
+
+    ![Updatestatus bekijken](./media/automation-tutorial-update-management/logsearch.png)
 
 ## <a name="configure-alerts"></a>Waarschuwingen configureren
 
-In deze stap leert u een waarschuwing instellen zodat u de status van een update-implementatie kent.
+Volg de onderstaande stappen om waarschuwingen in te stellen om de status van een update-implementatie te kennen:
 
-### <a name="alert-conditions"></a>Meldingsvoorwaarden
+1. Ga in uw Automation-account onder **Bewaking** naar **Waarschuwingen** en klik op **Nieuwe waarschuwingsregel**.
 
-Ga in uw Automation-account onder **Bewaking** naar **Waarschuwingen** en klik op **Nieuwe waarschuwingsregel**.
+2. Op de pagina waarschuwings regel maken is uw Automation-account al geselecteerd als de resource. Als u deze wilt wijzigen, klikt u op **Resource bewerken**. 
 
-Uw Automation-account is al als resource geselecteerd. Als u dit wilt wijzigen, klikt u op **Selecteren**. Kies op de pagina Een resource selecteren **Automation-accounts** in het vervolgkeuzemenu **Filteren op resourcetype**. Selecteer uw Automation-account en klik op **Gereed**.
+3. Kies op de pagina Een resource selecteren **Automation-accounts** in het vervolgkeuzemenu **Filteren op resourcetype**. 
 
-Klik op **Voorwaarde toevoegen** om het signaal te selecteren dat geschikt is voor de update-implementatie. In de volgende tabel vindt u de details van de twee beschikbare signalen.
+4. Selecteer het Automation-account dat u wilt gebruiken en klik vervolgens op **gereed**.
 
-|Signaalnaam|Dimensies|Beschrijving|
-|---|---|---|
-|`Total Update Deployment Runs`|- Naam van update-implementatie<br>- Status|Dit signaal geeft een waarschuwing met de algemene status van een update-implementatie.|
-|`Total Update Deployment Machine Runs`|- Naam van update-implementatie</br>- Status</br>- Doelcomputer</br>- Uitvoerings-id van update-implementatie|Dit signaal geeft een waarschuwing met de status van een update-implementatie voor bepaalde computers.|
+5. Klik op **voor waarde toevoegen** om het signaal te selecteren dat geschikt is voor uw update-implementatie. In de volgende tabel vindt u de details van de twee beschikbare signalen.
 
-Selecteer een geldige waarde in de lijst voor een dimensie. Als de gewenste waarde niet in de lijst voorkomt, klikt u op het **\+** -teken naast de dimensie en typt u de aangepaste naam. Selecteer vervolgens de waarde waarnaar u wilt zoeken. Als u alle waarden van een dimensie wilt selecteren, klikt u op de knop **Selecteren\*** . Als u geen waarde voor een dimensie kiest, negeert Updatebeheer die dimensie.
+    |Signaalnaam|Dimensies|Beschrijving
+    |---|---|---|
+    |`Total Update Deployment Runs`|- Naam van update-implementatie<br>-Status    |Waarschuwingen over de algehele status van een update-implementatie.|
+    |`Total Update Deployment Machine Runs`|- Naam van update-implementatie</br>- Status</br>- Doelcomputer</br>- Uitvoerings-id van update-implementatie    |Waarschuwingen over de status van een update-implementatie gericht op specifieke computers.|
 
-![Signaallogica configureren](./media/automation-tutorial-update-management/signal-logic.png)
+6. Selecteer een geldige waarde in de lijst voor een dimensie. Als de gewenste waarde niet voor komt in de lijst, klikt u op **\+** naast de dimensie en typt u de aangepaste naam. Selecteer vervolgens de waarde waarnaar u wilt zoeken. Als u alle waarden van een dimensie wilt selecteren, klikt u op de knop **Selecteren\*** . Als u geen waarde voor een dimensie kiest, wordt die dimensie door Updatebeheer genegeerd.
 
-Voer onder **Waarschuwingslogica** voor **Drempelwaarde** in: **1**. Wanneer u klaar bent, selecteert u **Gereed**.
+    ![Signaallogica configureren](./media/automation-tutorial-update-management/signal-logic.png)
 
-### <a name="alert-details"></a>Meldingsdetails
+7. Voer onder **waarschuwings logica**waarden in de velden **tijd aggregatie** en **drempel waarde** in en klik vervolgens op **gereed**.
 
-Selecteer bij **2. Waarschuwingsdetails definiëren** een naam en beschrijving voor de waarschuwing. Stel **Ernst** in op **Ter informatie (ernst 2)** voor een geslaagde uitvoering of **Ter informatie (ernst 1)** voor een mislukte uitvoering.
+8. Voer in het volgende deel venster een naam en een beschrijving in voor de waarschuwing.
 
-![Signaallogica configureren](./media/automation-tutorial-update-management/define-alert-details.png)
+9. Stel het veld **Ernst** in op **Informational (Ernst 2)** voor een geslaagde uitvoering of **informatie (Ernst 1)** voor een mislukte uitvoering.
 
-Selecteer onder **Actiegroepen** de optie **Nieuwe maken**. Een actiegroep is een groep acties die u op meerdere waarschuwingen kunt toepassen. Deze acties kunnen e-mailmeldingen, runbooks, webhooks en nog veel meer zijn. Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
+    ![Signaallogica configureren](./media/automation-tutorial-update-management/define-alert-details.png)
 
-Voer in het veld **Naam van actiegroep** een naam in voor de waarschuwing en een korte naam. Updatebeheer gebruikt de korte naam in plaats van de volledige naam van een actiegroep bij het verzenden van meldingen met de opgegeven groep.
+10. Klik op **Ja** of **Nee**, afhankelijk van hoe u de waarschuwings regel wilt inschakelen.
 
-Voer onder **Acties** een naam in voor de actie, bijvoorbeeld **E-mailmelding**. Selecteer onder **Actietype** de optie **E-mail/sms/push/spraak**. Selecteer onder **Details** de optie **Details bewerken**.
+11. Als u geen waarschuwingen voor deze regel wilt hebben, selecteert u **waarschuwingen onderdrukken**.
 
-Voer in het deelvenster E-mail/sms/push/spraak een naam in. Selecteer het selectievakje **E-mail** en voer een geldig e-mailadres in.
+## <a name="configure-action-groups-for-your-alerts"></a>Actie groepen voor uw waarschuwingen configureren
 
-![Een e-mailactiegroep configureren](./media/automation-tutorial-update-management/configure-email-action-group.png)
+Zodra u uw waarschuwingen hebt geconfigureerd, kunt u een actie groep instellen. Dit is een groep acties die in meerdere waarschuwingen moet worden gebruikt. Deze acties kunnen e-mailmeldingen, runbooks, webhooks en nog veel meer zijn. Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
-Klik op **OK** in het deelvenster E-mail/sms/push/spraak. Klik op **OK** in het deelvenster Actiegroep toevoegen.
+1. Selecteer een waarschuwing en selecteer vervolgens **nieuwe maken** onder **actie groepen**. 
 
-Selecteer onder **Regel maken** bij **Acties aanpassen** de optie **E-mailonderwerp** als u het onderwerp van het waarschuwingsbericht wilt aanpassen. Wanneer u klaar bent, selecteert u **Waarschuwingsregel maken**. De waarschuwing laat u weten wanneer een update-implementatie is voltooid en op welke machines de update-implementatie is uitgevoerd.
+2. Voer een volledige naam en een korte naam in voor de actie groep. Updatebeheer maakt gebruik van de korte naam wanneer u meldingen verzendt met de opgegeven groep.
+
+3. Voer onder **acties**een naam in waarmee de actie wordt opgegeven, bijvoorbeeld **e-mail melding**. 
+
+4. Voor **actie type**selecteert u het juiste type, bijvoorbeeld **e-mail/SMS/push/Voice**. 
+
+5. Klik op **Details bewerken**.
+
+6. Vul het deel venster in voor uw actie type. Als u bijvoorbeeld **e-mail/SMS/push/Voice**gebruikt, voert u een actie naam in, selecteert u het selectie vakje **e-mail** , voert u een geldig e-mail adres in en klikt u vervolgens op **OK**.
+
+    ![Een e-mailactiegroep configureren](./media/automation-tutorial-update-management/configure-email-action-group.png)
+
+7. Klik op **OK** in het deelvenster Actiegroep toevoegen.
+
+8. Voor een waarschuwings-e-mail kunt u het onderwerp van de e-mail aanpassen. Selecteer **acties aanpassen** onder **regel maken**en selecteer vervolgens **e-mail onderwerp**. 
+
+9. Wanneer u klaar bent, klikt u op **waarschuwings regel maken**. 
 
 ## <a name="schedule-an-update-deployment"></a>Een update-implementatie plannen
 
-Plan een implementatie volgens uw releaseplanning en servicevenster om updates te installeren. U kunt de typen updates kiezen die moeten worden opgenomen in de implementatie. Zo kunt u belangrijke updates of beveiligingsupdates opnemen en updatepakketten uitsluiten.
+Bij het plannen van een update-implementatie wordt een [schema](shared-resources/schedules.md)resource gemaakt die is gekoppeld aan het**patch-MicrosoftOMSComputers**-runbook dat de update-implementatie op de doelcomputers afhandelt. U moet een implementatie plannen die volgt op de release planning en het service venster om updates te installeren. U kunt de typen updates kiezen die moeten worden opgenomen in de implementatie. Zo kunt u belangrijke updates of beveiligingsupdates opnemen en updatepakketten uitsluiten.
 
 >[!NOTE]
->Bij het plannen van een update-implementatie wordt een [schema](shared-resources/schedules.md)resource gemaakt die is gekoppeld aan het**patch-MicrosoftOMSComputers**-runbook dat de update-implementatie op de doelcomputers afhandelt. Als u na het maken van de implementatie de planningsresource verwijdert via de Azure-portal of met behulp van PowerShell, wordt de geplande update-implementatie door de verwijdering verbroken en wordt er een foutmelding weergegeven wanneer u probeert de planningsresource opnieuw te configureren vanuit de portal. U kunt de planningsresource alleen verwijderen door het bijbehorende implementatieschema te verwijderen.  
+>Als u na het maken van de implementatie de planningsresource verwijdert via de Azure-portal of met behulp van PowerShell, wordt de geplande update-implementatie door de verwijdering verbroken en wordt er een foutmelding weergegeven wanneer u probeert de planningsresource opnieuw te configureren vanuit de portal. U kunt de planningsresource alleen verwijderen door het bijbehorende implementatieschema te verwijderen.  
 
-Als u een nieuwe update-implementatie voor de VM wilt plannen, gaat u naar **Updatebeheer** en selecteert u vervolgens **Update-implementatie plannen**.
+Een nieuwe update-implementatie plannen:
 
-Geef onder **Nieuwe update-implementatie** de volgende informatie op:
+1. Ga in uw Automation-account naar **Update beheer** onder **Update beheer**en selecteer vervolgens **Update-implementatie plannen**.
 
-* **Naam**: voer een unieke naam in voor de update-implementatie.
+2. Gebruik onder **nieuwe update-implementatie**het veld **naam** om een unieke naam voor uw implementatie op te geven.
 
-* **Besturingssysteem**: selecteer het besturingssysteem dat het doel is voor de update-implementatie.
+3. Selecteer het besturings systeem dat u wilt instellen als doel voor de update-implementatie.
 
-* **Groepen om bij te werken (preview)** : definieer een query met een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. Zie [Dynamische groepen](automation-update-management-groups.md) voor meer informatie.
+4. In de regio **groepen die moeten worden bijgewerkt (preview-versie)** definieert u een query die het abonnement, de resource groepen, locaties en Tags combineert om een dynamische groep van virtuele Azure-machines samen te stellen die in uw implementatie moeten worden meegenomen. Zie voor meer informatie [dynamische groepen gebruiken met updatebeheer](automation-update-management-groups.md).
 
-* **Bij te werken computers**: selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies **Computers** in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van elke computer weergegeven in de kolom **Gereedheid voor update-agent**. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken.
+5. Selecteer in de regio **computers die u wilt bijwerken** een opgeslagen zoek opdracht, een geïmporteerde groep of kies **machines** in het vervolg keuzemenu en selecteer afzonderlijke machines. Met deze optie kunt u de gereedheid van de Log Analytics-agent voor elke machine bekijken. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken.
 
-* **Updateclassificatie**: Deselecteer voor elk product alle ondersteunde updateclassificaties behalve degene die u wilt opnemen in uw update-implementatie. Zie [Updateclassificaties](automation-view-update-assessments.md#work-with-update-classifications) voor een beschrijving van de classificatietypen.
+6. Gebruik de regio **Update classificaties** om [Update classificaties](automation-view-update-assessments.md#work-with-update-classifications) voor producten op te geven. Voor elk product deselecteert u alle ondersteunde update classificaties, maar ook voor de implementatie van de update.
 
-* **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, bevinden zich op afzonderlijke tabbladen door de KB-artikel-id-nummers op te geven. Wanneer u een of meer id-nummers opgeeft, moet u alle classificaties verwijderen of uitschakelen met de update-implementatie. Dit zorgt ervoor dat er geen andere updates worden opgenomen in uw updatepakket wanneer u update-id's opgeeft.
+7. Gebruik de regio **updates opnemen/uitsluiten** om specifieke updates voor implementatie te selecteren. Op de pagina opnemen/uitsluiten worden de updates weer gegeven op KB-artikel-ID-nummers die moeten worden opgenomen of uitgesloten. 
+    
+   > [!IMPORTANT]
+   > Houd er rekening mee dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van opgeeft `*` , updatebeheer sluit alle patches of pakketten van de installatie uit. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend op de computers. Als u op Linux-computers een pakket opneemt dat een afhankelijk pakket bevat dat is uitgesloten, installeert Updatebeheer het hoofdpakket niet.
 
-> [!NOTE]
-> Het is belangrijk te weten dat uitsluitingen insluitingen overschrijven. Als u bijvoorbeeld de uitsluitingsregel `*`definieert, installeert Updatebeheer geen patches of pakketten, omdat ze allemaal worden uitgesloten. Uitgesloten patches worden nog wel weergegeven als ontbrekend op de computer. Als u op Linux-computers een pakket opneemt dat een afhankelijk pakket bevat dat is uitgesloten, installeert Updatebeheer het hoofdpakket niet.
+   > [!NOTE]
+   > U kunt geen updates opgeven die in de update-implementatie zijn vervangen.
 
-> [!NOTE]
-> U kunt updates die zijn vervangen, niet opgeven om te worden opgenomen in de update-implementatie.
->
-* **Planningsinstellingen**: Het deelvenster Planningsinstellingen wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
+8. Selecteer **schema-instellingen**. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 
-   U kunt ook opgeven dat de implementatie eenmaal moet worden uitgevoerd, of u kunt een planning met meerdere implementaties instellen. Selecteer onder **Terugkeerpatroon** de optie **Eenmaal**. Laat de standaardwaarde op 1 dag staan en klik op **OK**. Deze vermeldingen stellen een terugkerende planning in.
+9. Gebruik het veld **recurrence** om op te geven of de implementatie één keer wordt uitgevoerd of een terugkerend schema gebruikt en klik vervolgens op **OK**.
 
-* **Voorafgaande scripts en navolgende scripts**: selecteer de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie[Manage Pre and Post scripts](pre-post-scripts.md) (Voorafgaande en navolgende scripts beheren) voor meer informatie.
+10. Selecteer in de regio **pre-scripts + post-scripts (preview)** de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie [pre-scripts en post scripts beheren](pre-post-scripts.md)voor meer informatie.
+    
+11. Gebruik het veld **onderhouds venster (minuten)** om de hoeveelheid tijd op te geven die is toegestaan voor het installeren van updates. Houd rekening met de volgende details wanneer u een onderhoudsvenster opgeeft:
 
-* **Onderhoudsvenster (minuten)** : Laat de standaardwaarde staan. Onderhoudsvensters bepalen de hoeveelheid tijd die is toegestaan voor het installeren van updates. Houd rekening met de volgende details wanneer u een onderhoudsvenster opgeeft:
+    * Onderhoudsvensters bepalen hoeveel updates worden geïnstalleerd.
+    * Updatebeheer stopt niet met het installeren van nieuwe updates als het einde van een onderhoudsvenster nadert.
+    * Updatebeheer wordt niet beëindigd als er updates worden uitgevoerd wanneer het onderhoudsvenster wordt overschreden.
+    * Als het onderhoudsvenster op Windows wordt overschreden, komt dat vaak doordat het installeren van een servicepack-update lang duurt.
 
-  * Onderhoudsvensters bepalen hoeveel updates worden geïnstalleerd.
-  * Updatebeheer stopt niet met het installeren van nieuwe updates als het einde van een onderhoudsvenster nadert.
-  * Updatebeheer wordt niet beëindigd als er updates worden uitgevoerd wanneer het onderhoudsvenster wordt overschreden.
-  * Als het onderhoudsvenster op Windows wordt overschreden, komt dat vaak doordat het installeren van een servicepack-update lang duurt.
+    > [!NOTE]
+    > Om te voor komen dat updates buiten een onderhouds venster op Ubuntu worden toegepast, `Unattended-Upgrade` moet u het pakket opnieuw configureren om automatische updates uit te scha kelen. Zie het [onderwerp automatische updates in de Ubuntu-Server handleiding](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)voor informatie over het configureren van het pakket.
 
-  > [!NOTE]
-  > Als u wilt voorkomen dat updates buiten een onderhoudsvenster in Ubuntu worden toegepast, moet u het pakket Unattended-Upgrade opnieuw configureren en automatische updates uitschakelen. Zie [het onderwerp Automatic Updates in de Engelstalige Ubuntu Server Guide](https://help.ubuntu.com/lts/serverguide/automatic-updates.html) voor informatie over het configureren van het pakket.
+12. Gebruik het veld **Opties voor opnieuw opstarten** om op te geven hoe opnieuw opstarten tijdens de implementatie moet worden afgehandeld. De volgende opties zijn beschikbaar: 
+    * Opnieuw opstarten indien nodig (standaard)
+    * Altijd opnieuw opstarten
+    * Nooit opnieuw opstarten
+    * Alleen opnieuw opstarten; met deze optie worden geen updates geïnstalleerd
 
-* **Opties voor opnieuw opstarten**: Gebruiken om opties op te geven voor het afhandelen van opnieuw opstarten. De volgende opties zijn beschikbaar:
-  * Opnieuw opstarten indien nodig (standaard)
-  * Altijd opnieuw opstarten
-  * Nooit opnieuw opstarten
-  * Alleen opnieuw opstarten: er worden geen updates geïnstalleerd
+    > [!NOTE]
+    > De registersleutels onder [Registry keys used to manage restart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) (registersleutels voor het beheren van opnieuw opstarten) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **Opties voor opnieuw opstarten** is ingesteld op **Nooit opnieuw opstarten**.
 
-> [!NOTE]
-> De registersleutels onder [Registry keys used to manage restart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) (registersleutels voor het beheren van opnieuw opstarten) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **Opties voor opnieuw opstarten** is ingesteld op **Nooit opnieuw opstarten**.
+13. Wanneer u klaar bent met het configureren van de implementatie planning, klikt u op **maken**.
 
-Als u klaar bent met het configureren van de planning, klikt u op **Maken**.
+    ![Deelvenster Planningsinstellingen bijwerken](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-![Deelvenster Planningsinstellingen bijwerken](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
+14. U keert nu terug naar het statusdashboard. Selecteer **geplande update-implementaties** om het implementatie schema weer te geven dat u hebt gemaakt.
 
-U keert nu terug naar het statusdashboard. Selecteer **Geplande update-implementaties** om de zojuist gemaakte implementatieplanning weer te geven.
+## <a name="schedule-an-update-deployment-programmatically"></a>Een update-implementatie via een programma plannen
 
-> [!NOTE]
-> Updatebeheer biedt ondersteuning voor het implementeren van de eerste partij-updates en het vooraf downloaden van patches. Deze ondersteuning vereist wijzigingen op de systemen die worden bijgewerkt. Zie [Ondersteuning voor eerste partij en vooraf downloaden](automation-configure-windows-update.md) voor informatie over het configureren van deze instellingen op uw systemen.
+Zie [Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create) (software-updateconfiguraties: maken) als u wilt leren hoe u een update-implementatie kunt maken met de REST-API. 
 
-U kunt ook programmatisch update-implementaties maken. Zie [Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create) (software-updateconfiguraties: maken) als u wilt leren hoe u een update-implementatie kunt maken met de REST-API. Er is ook een voorbeeldrunbook dat u kunt gebruiken om een wekelijkse update-implementatie te maken. Zie voor meer informatie over dit runbook [Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1) (een wekelijkse update-implementatie maken voor een of meer VM's in een resourcegroep).
+U kunt een voor beeld-runbook gebruiken om een wekelijkse update-implementatie te maken. Zie voor meer informatie over dit runbook [Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1) (een wekelijkse update-implementatie maken voor een of meer VM's in een resourcegroep).
 
-## <a name="view-results-of-an-update-deployment"></a>Resultaten van een update-implementatie weergeven
+## <a name="check-deployment-status"></a>Implementatie status controleren
 
-Nadat de geplande implementatie is gestart, ziet u de status van deze implementatie op het tabblad **Update-implementaties** onder **Updatebeheer**. Als de implementatie momenteel wordt uitgevoerd, is de status **Wordt uitgevoerd**. Als de implementatie correct is voltooid, verandert de status in **Geslaagd**. Als er fouten optreden met een of meer updates in de implementatie, verandert de status in **Gedeeltelijk mislukt**.
+Nadat de geplande implementatie is gestart, kunt u de status ervan weer geven op het tabblad **Update-implementaties** onder **Update beheer**. Als de implementatie momenteel wordt uitgevoerd, is de status **Wordt uitgevoerd**. Wanneer de implementatie is voltooid, verandert de status in **geslaagd**. Als er fouten optreden met een of meer updates in de implementatie, verandert de status in **Gedeeltelijk mislukt**.
 
-Selecteer de voltooide update-implementatie om het dashboard ervan weer te geven.
+## <a name="view-results-of-a-completed-update-deployment"></a>Resultaten van een voltooide update-implementatie weer geven
+
+Wanneer de implementatie is voltooid, kunt u deze selecteren om het dash board ervan weer te geven.
 
 ![Statusdashboard voor update-implementatie voor een specifieke implementatie](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
-Onder **Updateresultaten** ziet u een overzicht van het totale aantal updates en van de implementatieresultaten op de VM. In de tabel aan de rechterkant vindt u gedetailleerde informatie over elke update en het resultaat van de installatie.
+Onder **Update resultaten**bevat een samen vatting het totale aantal updates en de implementatie resultaten op de doel-vm's. In de tabel aan de rechter kant ziet u een gedetailleerde uitsplitsing van de updates en de installatie resultaten voor elke.
 
 De beschikbare waarden zijn:
 
-* **Niet geprobeerd**: De update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van het ingestelde onderhoudsvenster.
-* **Geslaagd**: De update is bijgewerkt.
-* **Mislukt**: De update is mislukt.
+* **Niet geprobeerd** : de update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van de gedefinieerde duur van het onderhouds venster.
+* **Niet geselecteerd** : de update is niet geselecteerd voor implementatie.
+* **Geslaagd** : de update is voltooid.
+* **Mislukt** : de update is mislukt.
 
 Selecteer **Alle logboeken** als u alle logboekvermeldingen wilt zien die tijdens de implementatie zijn gemaakt.
 
-Selecteer **Uitvoer** om de taakstroom te zien van het runbook dat verantwoordelijk is voor het beheer van de update-implementatie op de doel-VM.
+Selecteer **uitvoer** om de taak stroom te bekijken van het runbook dat verantwoordelijk is voor het beheren van de update-implementatie op de doel-vm's.
 
 Selecteer **Fouten** voor gedetailleerde informatie over fouten die zijn opgetreden tijdens de implementatie.
 
-Wanneer de update-implementatie is geslaagd, ontvangt u een e-mailbericht dat lijkt op het volgende:
+## <a name="view-the-deployment-alert"></a>De implementatie waarschuwing weer geven
+
+Wanneer de update-implementatie is voltooid, ontvangt u de waarschuwing die u tijdens de installatie hebt opgegeven voor de implementatie. Dit is bijvoorbeeld een e-mail bericht waarin een patch wordt bevestigd.
 
 ![E-mailactiegroep configureren](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg [Overzicht van Updatebeheer](automation-update-management.md) voor informatie over Updatebeheer.
+* Zie [limiet updatebeheer-implementatie bereik](automation-scope-configurations-update-management.md)voor meer informatie over Scope configuraties.
+* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md).
+* Als u klaar bent met implementaties, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account voor updatebeheer](automation-unlink-workspace-update-management.md).
+* Zie [Vm's verwijderen uit updatebeheer](automation-remove-vms-from-update-management.md)om uw vm's uit updatebeheer te verwijderen.
+* Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.
+* Zie [Problemen met Windows-updateagent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van problemen met de Windows Update-agent.
+* Zie [problemen met Linux Update-agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux Update-agent.

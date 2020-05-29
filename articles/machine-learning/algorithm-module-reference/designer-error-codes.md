@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833810"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167244"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
 
@@ -1106,7 +1106,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 
  Als er een gegenereerd SQL-bericht wordt gemeld door de module-uitzonde ring, actie ondernemen op basis van de gerapporteerde fout. De fout berichten bevatten bijvoorbeeld soms specifieke richt lijnen voor de waarschijnlijke fout:
 + Een *dergelijke kolom of ontbrekende data base*geeft aan dat u een ongeldige kolom naam hebt opgegeven. Als u zeker weet dat de naam van de kolom juist is, gebruikt u accolades of aanhalings tekens om de kolom-id op te sluiten.
-+ *SQL-logica fout in de buurt \< Het sleutel \> woord SQL*, waarmee wordt aangegeven dat er een syntaxis fout is opgetreden voor het opgegeven tref woord
++ *SQL Logic-fout \<SQL keyword\> *in de buurt geeft aan dat er een syntaxis fout is opgetreden voor het opgegeven tref woord
 
   
 |Uitzonderings berichten|
@@ -1500,7 +1500,7 @@ Oplossing:
 
 
 ## <a name="error-0159"></a>Fout 0159
- Uitzonde ring treedt op als door gegeven aan module model Directory ongeldig is. 
+ Uitzonde ring treedt op als de module-model Directory ongeldig is. 
 
 |Uitzonderings berichten|
 |------------------------------------------------------------|

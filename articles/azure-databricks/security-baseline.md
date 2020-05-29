@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016335"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170474"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure-beveiligings basislijn voor Azure Databricks
 
@@ -968,7 +968,7 @@ Scan vooraf bestanden die worden geüpload naar uw Azure Databricks cluster knoo
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
 
-**Hulp**: een back-up maken van een door de klant beheerde sleutels die betrekking hebben op uw Azure Databricks-implementaties binnen Azure Key Vault. U kunt ook REST API en CLI gebruiken om een dagelijkse back-up van Databricks-configuraties te maken. U kunt ook REST API/CLI gebruiken om een dagelijkse back-up van Databricks-configuraties te maken.
+**Hulp**: een back-up maken van een door de klant beheerde sleutels die betrekking hebben op uw Azure Databricks-implementaties binnen Azure Key Vault. U kunt ook REST API en/of CLI gebruiken om een dagelijkse back-up te maken van Databricks-configuraties.
 
 * [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

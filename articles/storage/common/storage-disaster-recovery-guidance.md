@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994694"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169216"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Herstel na nood geval en failover van het opslag account
 
@@ -102,6 +102,8 @@ De eigenschap **laatste synchronisatie tijd** geeft de meest recente tijd aan da
 
 Ontwerp uw toepassing als best practice, zodat u de laatste synchronisatie tijd kunt gebruiken om het verwachte verlies van gegevens te evalueren. Als u bijvoorbeeld alle schrijf bewerkingen registreert, kunt u de tijd van uw laatste schrijf bewerkingen vergelijken met de tijd van de laatste synchronisatie om te bepalen welke geschreven gegevens niet zijn gesynchroniseerd met de secundaire.
 
+Zie voor meer informatie over het controleren van de **laatste synchronisatie tijd** -eigenschap [de laatste synchronisatie tijd van een opslag account](last-sync-time-get.md).
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Wees voorzichtig bij het uitvoeren van een failback naar de oorspronkelijke primaire
 
 Nadat u een failover van de primaire naar de secundaire regio hebt uitgevoerd, is uw opslag account geconfigureerd om lokaal te worden redundant in de nieuwe primaire regio. U kunt het account vervolgens opnieuw configureren voor geo-redundantie. Wanneer het account na een failover is geconfigureerd voor geo-redundantie, begint de nieuwe primaire regio onmiddellijk met het kopiëren van gegevens naar de nieuwe secundaire regio, wat de primaire is vóór de oorspronkelijke failover. Het kan echter enige tijd duren voordat de bestaande gegevens in de primaire server volledig zijn gekopieerd naar de nieuwe secundaire.
@@ -173,4 +175,5 @@ In uitzonderlijke omstandigheden waarbij een regio door een belang rijke nood ge
 
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
 - [Een failover van account initiëren](storage-initiate-account-failover.md)
+- [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
 - [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md)

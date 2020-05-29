@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282508"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169199"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -27,10 +27,10 @@ U moet het volgende doen:
 - Een actief Azure-abonnement hebben dat kan worden gebruikt voor de import/export-service.
 - Ten minste één Azure Storage account hebben. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 - Voldoende aantal schijven van [ondersteunde typen](storage-import-export-requirements.md#supported-disks)hebben.
-- Een FedEx/DHL-account hebben. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box `adbops@microsoft.com`Operations-team op.
+- Een FedEx/DHL-account hebben. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op `adbops@microsoft.com` .
   - Het account moet geldig zijn, moet een saldo hebben en moet de retour verzendings mogelijkheden hebben.
   - Genereer een tracking nummer voor de export taak.
-  - Elke taak moet een afzonderlijk tracking nummer hebben. Meerdere taken met hetzelfde tracking nummer worden niet ondersteund.
+  - Elke taak moet een afzonderlijk traceringsnummer hebben. Meerdere taken met hetzelfde traceringsnummer worden niet ondersteund.
   - Als u geen draaggolf account hebt, gaat u naar:
     - [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of
     - [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -39,7 +39,7 @@ U moet het volgende doen:
 
 Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
 
-1. Meld u aan https://portal.azure.com/bij.
+1. Meld u aan bij https://portal.azure.com/ .
 2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar import/export-taken](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -83,7 +83,7 @@ Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
 
 6. In **retour verzendings gegevens**:
 
-    - Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box `adbops@microsoft.com` Operations-team met de informatie over de provider die u wilt gebruiken.
+    - Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com` met de informatie over de provider die u wilt gebruiken.
     - Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra de export taak is voltooid.
     - Geef een volledige en geldige naam op voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio.
 
@@ -129,7 +129,7 @@ Het exporteren is voltooid.
 
 Als u versie 1.4.0.300 van het WAImportExport-hulp programma gebruikt, gebruikt u de volgende opdracht om het station te ontgrendelen:
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
 Als u eerdere versies van het hulp programma gebruikt, gebruikt u het dialoog venster BitLocker om het station te ontgrendelen.
 
@@ -140,7 +140,7 @@ Op dit moment kunt u de taak verwijderen of laten staan. Taken worden na 90 dage
 Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereist is voor de export taak. Voer deze stap uit op een Windows-systeem met een [ondersteunde besturingssysteem versie](storage-import-export-requirements.md#supported-operating-systems).
 
 1. [Down load de WAImportExport-versie 1](https://www.microsoft.com/download/details.aspx?id=42659) op het Windows-systeem.
-2. Unzip naar de standaardmap `waimportexportv1`. Bijvoorbeeld `C:\WaImportExportV1`.
+2. Unzip naar de standaardmap `waimportexportv1` . Bijvoorbeeld `C:\WaImportExportV1`.
 3. Open een Power shell-of opdracht regel venster met Administrator bevoegdheden. Als u de map wilt wijzigen in de map ungezipte, voert u de volgende opdracht uit:
 
     `cd C:\WaImportExportV1`
@@ -157,7 +157,7 @@ Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereis
     |**SN**|Vereist. De naam van het opslag account voor de export taak.|  
     |**SK**|Alleen vereist als er geen container-SAS is opgegeven. De account sleutel voor het opslag account voor de export taak.|  
     |**/csas:**|Alleen vereist als er geen sleutel voor het opslag account is opgegeven. De container-SAS voor het weer geven van de blobs die in de export taak moeten worden geëxporteerd.|  
-    |**/ExportBlobListFile:**|Vereist. Het pad naar het XML-bestand met de lijst met Blob-paden of voor voegsels voor BLOB-pad voor de blobs die moeten worden geëxporteerd. De bestands indeling die wordt gebruikt `BlobListBlobPath` in het element in de [put-taak](/rest/api/storageimportexport/jobs) bewerking van de service Import/export-rest API.|  
+    |**/ExportBlobListFile:**|Vereist. Het pad naar het XML-bestand met de lijst met Blob-paden of voor voegsels voor BLOB-pad voor de blobs die moeten worden geëxporteerd. De bestands indeling die wordt gebruikt in het `BlobListBlobPath` element in de [put-taak](/rest/api/storageimportexport/jobs) bewerking van de service import/export-rest API.|  
     |**/DriveSize:**|Vereist. De grootte van stations die moeten worden gebruikt voor een export taak, *bijvoorbeeld*500 GB, 1,5 TB.|  
 
     Bekijk een [voor beeld van de opdracht PreviewExport](#example-of-previewexport-command).
@@ -166,7 +166,7 @@ Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereis
 
 ### <a name="example-of-previewexport-command"></a>Voorbeeld van de opdracht PreviewExport
 
-In het volgende voor beeld ziet `PreviewExport` u de opdracht:  
+In het volgende voor beeld ziet u de `PreviewExport` opdracht:  
 
 ```powershell
     WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB

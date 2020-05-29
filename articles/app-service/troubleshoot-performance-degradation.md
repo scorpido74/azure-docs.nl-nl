@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688305"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170763"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problemen met prestatie problemen met langzame apps in Azure App Service oplossen
 Dit artikel helpt u bij het oplossen van problemen met prestatie problemen met langzame apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -39,7 +39,7 @@ Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequ
 
 [App service](overview.md) biedt u verschillende opties bij elke stap.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. gedrag van de toepassing observeren en bewaken
 #### <a name="track-service-health"></a>Service status bijhouden
@@ -84,7 +84,7 @@ Elke App Service-app biedt een uitbreidbaar beheer eindpunt waarmee u een kracht
 
 [Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/) is een site-uitbrei ding voor prestatie bewaking die ook beschikbaar is. Als u Application Insights wilt gebruiken, bouwt u uw code opnieuw met een SDK. U kunt ook een extensie installeren die toegang biedt tot aanvullende gegevens. Met de SDK kunt u code schrijven om het gebruik en de prestaties van uw app in meer detail te bewaken. Zie [prestaties van webtoepassingen controleren](../azure-monitor/app/web-monitor-performance.md)voor meer informatie.
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. gegevens verzamelen
 App Service biedt diagnostische functionaliteit voor het vastleggen van logboek gegevens van zowel de webserver als de webtoepassing. De informatie wordt onderverdeeld in webserver diagnostiek en toepassings diagnoses.
@@ -114,7 +114,7 @@ Externe profile ring is handig als het CPU-gebruik van het proces hoog is en het
 Zie [ondersteuning voor externe profilering in azure app service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)voor meer informatie.
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Diagnostische traceringen hand matig instellen
-Als u toegang hebt tot de bron code van de webtoepassing, kunt u met Application Diagnostics gegevens vastleggen die zijn gemaakt door een webtoepassing. ASP.NET-toepassingen kunnen de `System.Diagnostics.Trace` -klasse gebruiken om informatie te registreren in het logboek voor toepassings diagnose. U moet echter de code wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd in een test omgeving.
+Als u toegang hebt tot de bron code van de webtoepassing, kunt u met Application Diagnostics gegevens vastleggen die zijn gemaakt door een webtoepassing. ASP.NET-toepassingen kunnen de- `System.Diagnostics.Trace` klasse gebruiken om informatie te registreren in het logboek voor toepassings diagnose. U moet echter de code wijzigen en uw toepassing opnieuw implementeren. Deze methode wordt aanbevolen als uw app wordt uitgevoerd in een test omgeving.
 
 Zie [Diagnostische logboek registratie inschakelen voor apps in azure app service](troubleshoot-diagnostic-logs.md)voor gedetailleerde instructies voor het configureren van uw toepassing voor logboek registratie.
 
@@ -126,7 +126,7 @@ Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App
 #### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
 App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Deze console wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam>. scm.azurewebsites.net/**.
+U kunt dit dash board openen door naar de koppeling te gaan **https:// &lt; uw app-naam>. scm.azurewebsites.net/**.
 
 Enkele van de dingen die kudu biedt:
 
@@ -139,7 +139,7 @@ Een andere handige functie van kudu is dat, als uw toepassing uitzonde ringen vo
 
 Zie [Azure DevOps-hulpprogram ma's waarover u moet weten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)voor meer informatie over de beschik bare functies in kudu.
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen

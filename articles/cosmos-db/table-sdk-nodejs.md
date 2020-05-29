@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76771300"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167975"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table-API voor node. js: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "76771300"
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Release van algemene Beschik baarheid
 
 ## <a name="release-and-retirement-dates"></a>Release-en pensioen datums

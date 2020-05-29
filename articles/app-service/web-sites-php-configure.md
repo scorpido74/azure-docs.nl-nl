@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0605249ea0602b33e144fce8d0a77439c2077a2f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272471"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170746"
 ---
 # <a name="configure-php-in-azure-app-service"></a>PHP configureren in Azure App Service
 
@@ -61,10 +61,10 @@ Als u de Azure-opdracht regel interface wilt gebruiken, moet u [de Azure cli](ht
 
 Voor elke ingebouwde PHP-runtime kunt u de configuratie opties wijzigen door de volgende stappen uit te voeren. (Zie de [lijst met PHP. ini]-instructies voor meer informatie over PHP. ini-instructies.)
 
-### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>Wijzigen van\_PHP\_ini User,\_PHP\_ini PERDIR,\_PHP\_ini alle configuratie-instellingen
+### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>Wijzigen van PHP \_ ini \_ User, PHP \_ ini \_ PERDIR, PHP \_ ini \_ alle configuratie-instellingen
 
 1. Voeg een [. User. ini] -bestand toe aan de hoofdmap.
-1. Voeg configuratie-instellingen toe `.user.ini` aan het bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de `display_errors` instelling wilt inschakelen en instellen `upload_max_filesize` op 10 miljoen, bevat het bestand de `.user.ini` volgende tekst:
+1. Voeg configuratie-instellingen toe aan het `.user.ini` bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de `display_errors` instelling wilt inschakelen en instellen `upload_max_filesize` op 10 miljoen, bevat het bestand de volgende `.user.ini` tekst:
 
         ; Example Settings
         display_errors=On
@@ -75,13 +75,13 @@ Voor elke ingebouwde PHP-runtime kunt u de configuratie opties wijzigen door de 
 2. Implementeer uw app.
 3. De app opnieuw starten. (Opnieuw opstarten is nood zakelijk omdat de frequentie waarmee PHP bestanden leest `.user.ini` , wordt bepaald door de `user_ini.cache_ttl` instelling, een systeem niveau-instelling en 300 seconden (5 minuten). Het opnieuw starten van de app dwingt PHP de nieuwe instellingen in het `.user.ini` bestand te lezen.)
 
-Als alternatief voor het gebruik van `.user.ini` een bestand kunt u de functie [ini_set ()] gebruiken in scripts voor het instellen van configuratie opties die geen instructies op systeem niveau zijn.
+Als alternatief voor `.user.ini` het gebruik van een bestand kunt u de functie [ini_set ()] gebruiken in scripts voor het instellen van configuratie opties die geen instructies op systeem niveau zijn.
 
-### <a name="changing-php_ini_system-configuration-settings"></a>Configuratie-\_instellingen\_voor PHP ini-systeem wijzigen
+### <a name="changing-php_ini_system-configuration-settings"></a>Configuratie- \_ instellingen voor PHP ini- \_ systeem wijzigen
 
-1. Een app-instelling toevoegen aan uw app met de `PHP_INI_SCAN_DIR` sleutel en waarde`d:\home\site\ini`
-1. Maak een `settings.ini` bestand met behulp van de&lt;Kudu-console&gt;(http://site-name `d:\home\site\ini` . scm.azurewebsite.net) in de Directory.
-1. Voeg configuratie-instellingen toe `settings.ini` aan het bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de instelling wilt laten wijzen naar `curl.cainfo` een `*.crt` bestand en de instelling ' wincache. MaxFileSize ' wilt instellen op 512 K, bevat `settings.ini` uw bestand deze tekst:
+1. Een app-instelling toevoegen aan uw app met de sleutel `PHP_INI_SCAN_DIR` en waarde`d:\home\site\ini`
+1. Maak een `settings.ini` bestand met behulp van de kudu-console (http:// &lt; site-name &gt; . scm.azurewebsite.net) in de `d:\home\site\ini` Directory.
+1. Voeg configuratie-instellingen toe aan het `settings.ini` bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de `curl.cainfo` instelling wilt laten wijzen naar een `*.crt` bestand en de instelling ' wincache. MaxFileSize ' wilt instellen op 512 K, `settings.ini` bevat uw bestand deze tekst:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -94,11 +94,11 @@ Zoals u in de vorige sectie hebt genoteerd, is de beste manier om de standaard P
 
 ### <a name="configure-via-ini-settings"></a>Configureren via ini-instellingen
 
-1. Voeg een `ext` map toe aan `d:\home\site` de Directory.
-1. Extensie `.dll` bestanden in de `ext` map plaatsen (bijvoorbeeld `php_xdebug.dll`). Zorg ervoor dat de uitbrei dingen compatibel zijn met de standaard versie van PHP en dat deze compatibel zijn met VC9 en niet-thread-safe (NTS).
-1. Een app-instelling toevoegen aan uw app met de `PHP_INI_SCAN_DIR` sleutel en waarde`d:\home\site\ini`
-1. Maak een `ini` bestand met `d:\home\site\ini` de `extensions.ini`naam.
-1. Voeg configuratie-instellingen toe `extensions.ini` aan het bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de uitbrei dingen MongoDB en XDebug wilt inschakelen, bevat het `extensions.ini` bestand deze tekst:
+1. Voeg een `ext` map toe aan de `d:\home\site` Directory.
+1. `.dll`Extensie bestanden in de `ext` map plaatsen (bijvoorbeeld `php_xdebug.dll` ). Zorg ervoor dat de uitbrei dingen compatibel zijn met de standaard versie van PHP en dat deze compatibel zijn met VC9 en niet-thread-safe (NTS).
+1. Een app-instelling toevoegen aan uw app met de sleutel `PHP_INI_SCAN_DIR` en waarde`d:\home\site\ini`
+1. Maak een `ini` bestand met de `d:\home\site\ini` naam `extensions.ini` .
+1. Voeg configuratie-instellingen toe aan het `extensions.ini` bestand met dezelfde syntaxis als in een `php.ini` bestand. Als u bijvoorbeeld de uitbrei dingen MongoDB en XDebug wilt inschakelen, bevat het `extensions.ini` bestand deze tekst:
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
@@ -108,41 +108,41 @@ Zoals u in de vorige sectie hebt genoteerd, is de beste manier om de standaard P
 ### <a name="configure-via-app-setting"></a>Configureren via app-instelling
 
 1. Voeg een `bin` map toe aan de hoofdmap.
-2. Extensie `.dll` bestanden in de `bin` map plaatsen (bijvoorbeeld `php_xdebug.dll`). Zorg ervoor dat de uitbrei dingen compatibel zijn met de standaard versie van PHP en dat deze compatibel zijn met VC9 en niet-thread-safe (NTS).
+2. `.dll`Extensie bestanden in de `bin` map plaatsen (bijvoorbeeld `php_xdebug.dll` ). Zorg ervoor dat de uitbrei dingen compatibel zijn met de standaard versie van PHP en dat deze compatibel zijn met VC9 en niet-thread-safe (NTS).
 3. Implementeer uw app.
 4. Blader naar uw app in de Azure Portal en klik op de **configuratie** onder **instellingen** hieronder.
 5. Selecteer **Toepassings instellingen**op de Blade **configuratie** .
 6. Klik in de sectie **Toepassings instellingen** op **+ nieuwe toepassings instelling** en maak een **php_extensions** sleutel. De waarde voor deze sleutel is een pad dat relatief is ten opzichte van de hoofdmap van de website: **bin\your-ext-file**.
 7. Klik op de knop **bijwerken** aan de onderkant en klik vervolgens op **Opslaan** boven het tabblad **Toepassings instellingen** .
 
-Zend uitbreidingen worden ook ondersteund met behulp van een **PHP_ZENDEXTENSIONS** sleutel. Als u meerdere uitbrei dingen wilt inschakelen, voegt u een `.dll` door komma's gescheiden lijst met bestanden toe voor de waarde van de app-instelling.
+Zend uitbreidingen worden ook ondersteund met behulp van een **PHP_ZENDEXTENSIONS** sleutel. Als u meerdere uitbrei dingen wilt inschakelen, voegt u een door komma's gescheiden lijst met `.dll` bestanden toe voor de waarde van de app-instelling.
 
 ## <a name="how-to-use-a-custom-php-runtime"></a>Procedure: een aangepaste PHP-runtime gebruiken
 
-In plaats van de standaard PHP-runtime kunt App Service een PHP-runtime gebruiken die u biedt om PHP-scripts uit te voeren. De runtime die u opgeeft, kan worden geconfigureerd door `php.ini` een bestand dat u ook opgeeft. Als u een aangepaste PHP-runtime met App Service wilt gebruiken, volgt u deze stappen.
+In plaats van de standaard PHP-runtime kunt App Service een PHP-runtime gebruiken die u biedt om PHP-scripts uit te voeren. De runtime die u opgeeft, kan worden geconfigureerd door een `php.ini` bestand dat u ook opgeeft. Als u een aangepaste PHP-runtime met App Service wilt gebruiken, volgt u deze stappen.
 
-1. Verkrijg een niet-thread-safe, VC9 of VC11 compatibele versie van PHP voor Windows. Recente releases van PHP voor Windows vindt u hier: [https://windows.php.net/download/]. Oudere releases vindt u in het archief hier: [https://windows.php.net/downloads/releases/archives/].
+1. Verkrijg een niet-thread-safe, VC9 of VC11 compatibele versie van PHP voor Windows. Recente releases van PHP voor Windows vindt u hier: [https://windows.php.net/download/] . Oudere releases vindt u in het archief hier: [https://windows.php.net/downloads/releases/archives/] .
 2. Wijzig het `php.ini` bestand voor uw runtime. Configuratie-instellingen die alleen op systeem niveau zijn ingesteld, worden door App Service genegeerd. (Zie de [lijst met PHP. ini-instructies]) voor informatie over de instructies op systeem niveau.
-3. Voeg eventueel uitbrei dingen toe aan uw PHP-runtime en schakel ze `php.ini` in het bestand in.
-4. Voeg een `bin` map toe aan uw hoofdmap en plaats de map met daarin uw PHP-runtime (bijvoorbeeld `bin\php`).
+3. Voeg eventueel uitbrei dingen toe aan uw PHP-runtime en schakel ze in het `php.ini` bestand in.
+4. Voeg een `bin` map toe aan uw hoofdmap en plaats de map met daarin uw PHP-runtime (bijvoorbeeld `bin\php` ).
 5. Implementeer uw app.
 6. Blader naar uw app in de Azure Portal en klik op de Blade **configuratie** .
 8. Selecteer **paden toewijzen**op de Blade **configuratie** . 
-9. Klik op **+ nieuwe handler** en `*.php` Voeg toe aan het veld extensie en voeg het pad `php-cgi.exe` naar het uitvoer bare bestand toe aan de **script processor**. Als u de PHP-runtime in de `bin` map in de hoofdmap van uw toepassing plaatst, is `D:\home\site\wwwroot\bin\php\php-cgi.exe`het pad.
+9. Klik op **+ nieuwe handler** en voeg toe `*.php` aan het veld extensie en voeg het pad naar het `php-cgi.exe` uitvoer bare bestand toe aan de **script processor**. Als u de PHP-runtime in de `bin` map in de hoofdmap van uw toepassing plaatst, is het pad `D:\home\site\wwwroot\bin\php\php-cgi.exe` .
 10. Klik onderaan op **bijwerken** om het toevoegen van de handlertoewijzing te volt ooien.
 11. Klik op **Opslaan** om de wijzigingen op te slaan.
 
-<a name="composer" />
+<a name="composer"></a>
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>Procedure: Composer automatisering in azure inschakelen
 
-App Service doen niets met Composer. json, als u er een hebt in uw PHP-project. Als u [Git-implementatie](deploy-local-git.md)gebruikt, kunt u Composer. json- `git push` verwerking inschakelen tijdens door de componist-extensie in te scha kelen.
+App Service doen niets met Composer. json, als u er een hebt in uw PHP-project. Als u [Git-implementatie](deploy-local-git.md)gebruikt, kunt u Composer. json-verwerking inschakelen tijdens `git push` door de componist-extensie in te scha kelen.
 
 > [!NOTE]
 > U kunt [stemmen voor de eerste klasse Composer ondersteuning in app service hier](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)!
 >
 
-1. Klik in de Blade van de PHP-app in het [Azure Portal](https://portal.azure.com)op **extra** > **extensies**.
+1. Klik in de Blade van de PHP-app in het [Azure Portal](https://portal.azure.com)op **extra**  >  **extensies**.
 
     ![Blade met Azure Portal instellingen voor het inschakelen van Composer Automation in azure](./media/web-sites-php-configure/composer-extension-settings.png)
 2. Klik op **toevoegen**en vervolgens op **Composer**.
@@ -152,7 +152,7 @@ App Service doen niets met Composer. json, als u er een hebt in uw PHP-project. 
 
     Op de Blade **geïnstalleerde extensies** wordt de componist extensie weer gegeven.
     ![Juridische voor waarden accepteren voor het inschakelen van Composer-automatisering in azure](./media/web-sites-php-configure/composer-extension-view.png)
-4. Nu kunt u in een Terminal venster op uw lokale computer, `git add`, `git commit`en `git push` voor uw app uitvoeren. U ziet dat componist afhankelijkheden installeert die zijn gedefinieerd in Composer. json.
+4. Nu kunt u in een Terminal venster op uw lokale computer, `git add` , `git commit` en `git push` voor uw app uitvoeren. U ziet dat componist afhankelijkheden installeert die zijn gedefinieerd in Composer. json.
 
     ![Git-implementatie met Composer Automation in azure](./media/web-sites-php-configure/composer-extension-success.png)
 
@@ -160,7 +160,7 @@ App Service doen niets met Composer. json, als u er een hebt in uw PHP-project. 
 
 Zie het [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/)voor meer informatie.
 
-[gratis proefversie]: https://www.windowsazure.com/pricing/free-trial/
+[gratis proef versie]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [Lijst met PHP. ini-instructies]: https://www.php.net/manual/en/ini.list.php

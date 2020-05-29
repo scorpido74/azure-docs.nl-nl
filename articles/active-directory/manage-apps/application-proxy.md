@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609949"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168723"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Externe toegang tot on-premises toepassingen via de toepassings proxy van Azure Active Directory
 
@@ -41,7 +41,7 @@ Toepassings proxy werkt met:
 * Webtoepassingen die gebruikmaken van op formulieren of [koptekst gebaseerde](application-proxy-configure-single-sign-on-with-ping-access.md) toegang
 * Web-Api's die u beschikbaar wilt maken voor uitgebreide toepassingen op verschillende apparaten
 * Toepassingen die worden gehost achter een [extern bureaublad-gateway](application-proxy-integrate-with-remote-desktop-services.md)
-* Uitgebreide client-apps die zijn geïntegreerd met de Active Directory Authentication Library (ADAL)
+* Uitgebreide client-apps die zijn geïntegreerd met de micro soft Authentication Library (MSAL)
 
 Toepassings proxy biedt ondersteuning voor eenmalige aanmelding. Zie voor meer informatie over ondersteunde methoden [één aanmeldings methode kiezen](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 

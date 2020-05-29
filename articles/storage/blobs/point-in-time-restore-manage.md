@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118207"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170100"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs inschakelen en beheren (preview-versie)
 
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Een herstel bewerking uitvoeren
 
-Als u een herstel bewerking wilt starten, roept u de opdracht Restore-AzStorageBlobRange aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt een of meer lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
+Als u een herstel bewerking wilt starten, roept u de opdracht Restore-AzStorageBlobRange aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
 
 Houd bij het opgeven van een aantal blobs dat moet worden hersteld de volgende regels in acht:
 
 - Het container patroon dat is opgegeven voor het begin bereik en het eind bereik moet mini maal drie tekens bevatten. De slash (/) die wordt gebruikt om een container naam te scheiden van een BLOB-naam, telt niet mee aan dit minimum.
-- Er kan slechts één bereik worden opgegeven per herstel bewerking.
+- Er kan Maxi maal 10 bereiken worden opgegeven per herstel bewerking.
 - Joker tekens worden niet ondersteund. Ze worden beschouwd als standaard tekens.
 - U kunt blobs in de `$root` containers herstellen `$web` door ze expliciet op te geven in een bereik dat is door gegeven aan een herstel bewerking. De `$root` `$web` containers en worden alleen hersteld als ze expliciet zijn opgegeven. Andere systeem containers kunnen niet worden hersteld.
+
+> [!IMPORTANT]
+> Wanneer u een herstel bewerking uitvoert, blokkeert Azure Storage gegevens bewerkingen op de blobs in de bereiken die worden teruggezet voor de duur van de bewerking. Lees-, schrijf-en verwijder bewerkingen worden geblokkeerd op de primaire locatie. Daarom kunnen bewerkingen, zoals het weer geven van containers in het Azure Portal, niet worden uitgevoerd zoals verwacht tijdens het terugzetten.
+>
+> Lees bewerkingen van de secundaire locatie kunnen door gaan tijdens de herstel bewerking als het opslag account geo-gerepliceerd is.
 
 ### <a name="restore-all-containers-in-the-account"></a>Alle containers in het account herstellen
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>Meerdere bereiken van blok-blobs herstellen
 
-Als u meerdere bereiken van blok-blobs wilt herstellen, geeft u een matrix met bereiken op voor de `-BlobRestoreRange` para meter. In het volgende voor beeld wordt de volledige inhoud van *container1* en *container4*hersteld:
+Als u meerdere bereiken van blok-blobs wilt herstellen, geeft u een matrix met bereiken op voor de `-BlobRestoreRange` para meter. Er worden Maxi maal tien bereiken ondersteund per herstel bewerking. In het volgende voor beeld wordt twee bereiken opgegeven voor het herstellen van de volledige inhoud van *container1* en *container4*:
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950225"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171222"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Hoe gegevens bronnen voor gegevens profielen in Azure Data Catalog
 
@@ -45,7 +45,7 @@ Met inbegrip van gegevens profielen bij het registreren van gegevensassets helpt
 > U kunt ook documentatie toevoegen aan een Asset om te beschrijven hoe gegevens in een toepassing kunnen worden geïntegreerd. Zie [gegevens bronnen documenteren](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Een gegevens profiel opnemen bij het registreren van een gegevens bron
 
@@ -57,7 +57,7 @@ Zie [gegevens bronnen registreren](data-catalog-how-to-register.md) en aan de [s
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filteren op gegevens assets met gegevens profielen
 
-Als u gegevensassets wilt detecteren die een gegevens profiel bevatten, `has:tableDataProfiles` kunt `has:columnsDataProfiles` u een van de zoek termen toevoegen.
+Als u gegevensassets wilt detecteren die een gegevens profiel bevatten, kunt u `has:tableDataProfiles` `has:columnsDataProfiles` een van de zoek termen toevoegen.
 
 > [!NOTE]
 > Als u **gegevens profiel opnemen** selecteert in het hulp programma voor registratie van gegevens bronnen, worden profiel gegevens op tabel en kolom niveau weer gegeven. Met de Data Catalog-API kunnen gegevens assets echter worden geregistreerd met slechts één set profiel gegevens.

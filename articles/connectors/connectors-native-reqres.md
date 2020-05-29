@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1e1a7f2e82ba2e90a641a6559062348f8d4d3aea
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142449"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171528"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -185,9 +185,9 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    Met deze stap wordt de URL gegenereerd die moet worden gebruikt voor het verzenden van de aanvraag die de logische app activeert. Als u deze URL wilt kopiëren, selecteert u het Kopieer pictogram naast de URL.
 
    ![URL die moet worden gebruikt om de logische app te activeren](./media/connectors-native-reqres/generated-url.png)
-   
+
    > [!NOTE]
-   > De URL maakt gebruik van het symbool ' at ' ( **@** ), maar niet het hash-symbool ( **#** ).
+   > Als u het hash-of hekje-symbool ( **#** ) in de URI wilt opnemen bij het aanroepen van de aanvraag trigger, gebruikt u in plaats daarvan deze gecodeerde versie:`%25%23`
 
 1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL.
 

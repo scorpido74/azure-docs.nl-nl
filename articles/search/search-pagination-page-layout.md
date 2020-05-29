@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801770"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167856"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
@@ -23,7 +23,7 @@ De structuur van een antwoord wordt bepaald door para meters in de query: [docum
 
 ## <a name="result-composition"></a>Resultaten samen stelling
 
-Hoewel een zoek document kan bestaan uit een groot aantal velden, zijn er meestal slechts enkele van de waarden nodig om elk document in de resultatenset aan te duiden. Voeg `$select=<field list>` op een query aanvraag toe om op te geven welke velden in het antwoord worden weer gegeven. Een veld moet worden toegeschreven als kan worden **opgehaald** in de index om in een resultaat te worden opgenomen. 
+Hoewel een zoek document kan bestaan uit een groot aantal velden, zijn er meestal slechts enkele van de waarden nodig om elk document in de resultatenset aan te duiden. Voeg op een query aanvraag `$select=<field list>` toe om op te geven welke velden in het antwoord worden weer gegeven. Een veld moet worden toegeschreven als kan worden **opgehaald** in de index om in een resultaat te worden opgenomen. 
 
 Voor velden die het beste werken zijn dit het contrast en het onderscheid tussen documenten, waardoor er voldoende informatie is om een klik-en-antwoord op het deel van de gebruiker uit te nodigen. Op een e-commerce-site kunnen het een product naam, beschrijving, merk, kleur, grootte, prijs en classificatie zijn. Voor de hotels-voor beeld-index ingebouwde steek proef zijn dit mogelijk velden in het volgende voor beeld:
 
@@ -45,11 +45,11 @@ Standaard retourneert de zoek machine tot de eerste 50 overeenkomsten, zoals wor
 
 Om een ander aantal overeenkomende documenten te retour neren, `$top` voegt `$skip` u para meters toe aan de query aanvraag. In de volgende lijst wordt de logica uitgelegd.
 
-+ Voeg `$count=true` toe om een telling van het totaal aantal overeenkomende documenten in een index op te halen.
++ Voeg toe `$count=true` om een telling van het totaal aantal overeenkomende documenten in een index op te halen.
 
 + De eerste set van 15 overeenkomende documenten plus een telling van het totaal aantal overeenkomsten retour neren:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Retourneert de tweede set, waarbij de eerste 15 wordt overgeslagen om de volgende `$top=15&$skip=15`15 te verkrijgen:. Doe hetzelfde voor de derde set van 15:`$top=15&$skip=30`
++ Retourneert de tweede set, waarbij de eerste 15 wordt overgeslagen om de volgende 15 te verkrijgen: `$top=15&$skip=15` . Doe hetzelfde voor de derde set van 15:`$top=15&$skip=30`
 
 De resultaten van gepagineerde query's zijn niet gegarandeerd stabiel als de onderliggende index wordt gewijzigd. Paginering wijzigt de waarde van `$skip` voor elke pagina, maar elke query is onafhankelijk en werkt op de huidige weer gave van de gegevens in de index op het moment van de query (met andere woorden, er is geen caching of moment opname van de resultaten, zoals de waarden in een Data Base voor algemeen gebruik).
  
@@ -60,12 +60,12 @@ Hieronder ziet u een voor beeld van hoe u dubbele waarden kunt krijgen. Aannemen
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-Stel nu dat er resultaten twee per keer worden geretourneerd, gesorteerd op waardering. U voert deze query uit om de eerste pagina met resultaten op te `$top=2&$skip=0&$orderby=rating desc`halen: de volgende resultaten worden geproduceerd:
+Stel nu dat er resultaten twee per keer worden geretourneerd, gesorteerd op waardering. U voert deze query uit om de eerste pagina met resultaten op te halen: `$top=2&$skip=0&$orderby=rating desc` de volgende resultaten worden geproduceerd:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-In de service wordt ervan uitgegaan dat er een vijfde document wordt toegevoegd aan de index in `{ "id": "5", "rating": 4 }`tussen query-aanroepen:.  Vervolgens voert u een query uit om de tweede pagina op te halen `$top=2&$skip=2&$orderby=rating desc`: en haalt u de volgende resultaten op:
+In de service wordt ervan uitgegaan dat er een vijfde document wordt toegevoegd aan de index in tussen query-aanroepen: `{ "id": "5", "rating": 4 }` .  Vervolgens voert u een query uit om de tweede pagina op te halen: `$top=2&$skip=2&$orderby=rating desc` en haalt u de volgende resultaten op:
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
@@ -94,11 +94,11 @@ Een andere optie is het gebruik van een [aangepast Score profiel](index-add-scor
 
 Treffer markeringen verwijst naar tekst opmaak (zoals vette of gele hooglichten) die wordt toegepast op overeenkomende termen in een resultaat, zodat u de overeenkomst eenvoudig kunt herkennen. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Als u het markeren van treffers `highlight=[comma-delimited list of string fields]` wilt inschakelen, voegt u in om op te geven welke velden markeringen zullen gebruiken. Markeren is handig voor meer inhouds velden, zoals een beschrijvings veld, waarbij de overeenkomst niet onmiddellijk duidelijk is. Alleen veld definities die als **doorzoekbaar** zijn gemarkeerd, komen in aanmerking voor treffer markeringen.
+Als u het markeren van treffers wilt inschakelen, voegt `highlight=[comma-delimited list of string fields]` u in om op te geven welke velden markeringen zullen gebruiken. Markeren is handig voor meer inhouds velden, zoals een beschrijvings veld, waarbij de overeenkomst niet onmiddellijk duidelijk is. Alleen veld definities die als **doorzoekbaar** zijn gemarkeerd, komen in aanmerking voor treffer markeringen.
 
-Azure Cognitive Search retourneert standaard Maxi maal vijf hooglichten per veld. U kunt dit nummer aanpassen door toe te voegen aan het veld een streepje gevolgd door een geheel getal. `highlight=Description-10` Retourneert bijvoorbeeld Maxi maal 10 hooglichten voor overeenkomende inhoud in het veld Beschrijving.
+Azure Cognitive Search retourneert standaard Maxi maal vijf hooglichten per veld. U kunt dit nummer aanpassen door toe te voegen aan het veld een streepje gevolgd door een geheel getal. `highlight=Description-10`Retourneert bijvoorbeeld Maxi maal 10 hooglichten voor overeenkomende inhoud in het veld Beschrijving.
 
-De opmaak wordt toegepast op volledige term query's. Het type opmaak wordt bepaald door tags `highlightPreTag` en `highlightPostTag`en uw code verwerkt het antwoord (bijvoorbeeld het Toep assen van een vet letter type of een gele achtergrond).
+De opmaak wordt toegepast op volledige term query's. Het type opmaak wordt bepaald door Tags en en `highlightPreTag` `highlightPostTag` uw code verwerkt het antwoord (bijvoorbeeld het Toep assen van een vet letter type of een gele achtergrond).
 
 In het volgende voor beeld zijn de termen "zand", "zand", "stranden", "strand" in het veld Beschrijving gemarkeerd voor markeren. Query's die query-uitbrei ding activeren in de-engine, zoals fuzzy en zoeken met Joker tekens, hebben beperkte ondersteuning voor het markeren van treffers.
 
@@ -126,8 +126,6 @@ Met het nieuwe gedrag:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   Houd er rekening mee dat de term *Bowlen van chips* geen markeringen heeft omdat deze niet overeenkomt met de volledige woord groep.
-  
-* Het is mogelijk om de fragment grootte op te geven die wordt geretourneerd voor de markering. Fragment grootte is opgegeven als aantal tekens (Maxi maal 1000 tekens).
 
 Wanneer u client code schrijft waarmee treffer markeringen worden geïmplementeerd, moet u rekening houden met deze wijziging. Houd er rekening mee dat dit geen invloed heeft op u tenzij u een volledig nieuwe zoek service maakt.
 

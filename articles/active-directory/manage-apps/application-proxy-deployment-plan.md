@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610136"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169505"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
 
@@ -228,13 +228,13 @@ Voor on-premises toepassingen die normaal gesp roken anoniem toegankelijk zijn e
 
 Als u deze optie instelt op Nee, hebben gebruikers geen toegang tot de on-premises toepassing via Azure AD-app proxy zonder machtigingen, dus wees voorzichtig.
 
-Zodra de toepassing is gepubliceerd, moet deze toegankelijk zijn door de externe URL in een browser of het bijbehorende pictogram in te [https://myapps.microsoft.com](https://myapps.microsoft.com/)typen.
+Zodra de toepassing is gepubliceerd, moet deze toegankelijk zijn door de externe URL in een browser of het bijbehorende pictogram in te typen [https://myapps.microsoft.com](https://myapps.microsoft.com/) .
 
 ### <a name="enable-pre-authentication"></a>Verificatie vooraf inschakelen
 
 Controleer of uw toepassing toegankelijk is via een toepassings proxy via de externe URL.
 
-1. Navigeer naar **Azure Active Directory** > **Enter prise-toepassingen** > **alle toepassingen** en kies de app die u wilt beheren.
+1. Navigeer naar **Azure Active Directory**  >  **Enter prise-toepassingen**  >  **alle toepassingen** en kies de app die u wilt beheren.
 
 2. Selecteer **toepassings proxy**.
 
@@ -254,7 +254,7 @@ Lees [eenmalige aanmelding bij toepassingen in azure AD](what-is-single-sign-on.
 
 ###  <a name="working-with-other-types-of-applications"></a>Werken met andere soorten toepassingen
 
-Azure AD-toepassingsproxy kan ook toepassingen ondersteunen die zijn ontwikkeld voor gebruik van onze Azure AD Authentication Library ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) of micro soft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Het ondersteunt native client-apps door Azure AD uitgegeven tokens te gebruiken die worden ontvangen in de header gegevens van de client aanvraag om verificatie vooraf namens de gebruikers uit te voeren.
+Azure AD-toepassingsproxy kan ook toepassingen ondersteunen die zijn ontwikkeld voor gebruik van de micro soft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Het ondersteunt native client-apps door Azure AD uitgegeven tokens te gebruiken die worden ontvangen in de header gegevens van de client aanvraag om verificatie vooraf namens de gebruikers uit te voeren.
 
 Lees de [publicatie van systeem eigen en mobiele client-apps](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) en [op claims gebaseerde toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) voor meer informatie over de beschik bare configuraties van de toepassings proxy.
 

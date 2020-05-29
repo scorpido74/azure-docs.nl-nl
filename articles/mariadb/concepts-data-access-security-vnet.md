@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532107"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170406"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MariaDB
 
@@ -24,7 +24,7 @@ Als u een regel voor een virtueel netwerk wilt maken, moet u eerst een [virtueel
 > [!NOTE]
 > Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for MariaDB wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminologie en beschrijving
 
@@ -44,7 +44,7 @@ Met een regel voor het virtuele netwerk krijgt uw Azure Database for MariaDB-ser
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Voor delen van een regel voor een virtueel netwerk
 
@@ -68,7 +68,7 @@ Als uw **micro soft. SQL** server een knoop punt in een subnet in het virtuele n
 
 Vanaf 2018 augustus is de Azure Database for MariaDB-service nog niet van de services die rechtstreeks aan een subnet kunnen worden toegewezen.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Details over regels voor virtuele netwerken
 
@@ -89,7 +89,7 @@ Elke regel voor het virtuele netwerk is van toepassing op uw hele Azure Database
 Er is een schei ding van beveiligings rollen in het beheer van Virtual Network Service-eind punten. Actie is vereist voor elk van de volgende rollen:
 
 - **Netwerk beheerder:** &nbsp; Schakel het eind punt in.
-- **Database beheerder:** &nbsp; werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de Azure database for MariaDB-server.
+- **Database beheerder:** &nbsp; Werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de Azure Database for MariaDB-server.
 
 *Alternatief voor RBAC:*
 

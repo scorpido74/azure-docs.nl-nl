@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 89e8907e4e134b621cd1c55bfcefeebde772df10
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780568"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167720"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -202,7 +202,7 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. Network/applicationSecurityGroups | listIpConfigurations |
 | Micro soft. notification hubs/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/namespaces/listkeys) |
 | Micro soft. notification hubs/naam ruimten/notification hubs/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Micro soft. OperationalInsights/werk ruimten | [list](/rest/api/loganalytics/workspaces/list) |
+| Micro soft. OperationalInsights/werk ruimten | [orderverzamellijst](/rest/api/loganalytics/workspaces/list) |
 | Micro soft. PolicyInsights/herstel bewerkingen | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Micro soft. relay/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/relay/namespaces/listkeys) |
 | Micro soft. relay/naam ruimten/disasterRecoveryConfigs/authorizationRules | listkeys ophalen |
@@ -228,15 +228,15 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | micro soft. Web/locaties | listwsdlinterfaces |
 | micro soft. Web/apimanagementaccounts/api's/Connections | listconnectionkeys |
 | micro soft. Web/apimanagementaccounts/api's/Connections | listsecrets |
-| micro soft. web/sites/back-ups | [list](/rest/api/appservice/webapps/listbackups) |
-| Micro soft. web/sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
+| micro soft. web/sites/back-ups | [orderverzamellijst](/rest/api/appservice/webapps/listbackups) |
+| Micro soft. web/sites/config | [orderverzamellijst](/rest/api/appservice/webapps/listconfigurations) |
 | micro soft. web/sites/functies | [listkeys ophalen](/rest/api/appservice/webapps/listfunctionkeys)
 | micro soft. web/sites/functies | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | micro soft. web/sites/hybridconnectionnamespaces/relays | [listkeys ophalen](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | micro soft. web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | micro soft. web/sites/sleuven/functies | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| micro soft. web/sites/sleuven/back-ups | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Micro soft. web/sites/sleuven/configuratie | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| micro soft. web/sites/sleuven/back-ups | [orderverzamellijst](/rest/api/appservice/webapps/listbackupsslot) |
+| Micro soft. web/sites/sleuven/configuratie | [orderverzamellijst](/rest/api/appservice/webapps/listconfigurationsslot) |
 | micro soft. web/sites/sleuven/functies | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Als u wilt bepalen welke resource typen een lijst bewerking hebben, hebt u de volgende opties:
@@ -495,7 +495,7 @@ De functie Reference kan alleen worden gebruikt in de eigenschappen van een reso
 
 U kunt de functie Reference niet gebruiken om de waarde van de `count` eigenschap in een copy-lus in te stellen. U kunt gebruiken om andere eigenschappen in de lus in te stellen. De verwijzing is geblokkeerd voor de eigenschap Count omdat die eigenschap moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
-U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](linked-templates.md#linked-template).
+Als u de functie Reference of een lijst * wilt gebruiken in het gedeelte outputs van een geneste sjabloon, moet u instellen dat de evaluatie van de ```expressionEvaluationOptions``` [binnenste Scope](linked-templates.md#expression-evaluation-scope-in-nested-templates) wordt gebruikt of dat u een gekoppeld gebruik maakt in plaats van een geneste sjabloon.
 
 Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er wordt een fout bericht weer geven als de **verwijzings** functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
 
@@ -889,7 +889,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer van het vorige voor beeld met de standaard waarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | sameRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

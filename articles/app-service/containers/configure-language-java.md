@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 63fee90be773f61bfef73e21a272192eea5f789c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889502"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167482"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux Java-app voor Azure App Service configureren
 
@@ -29,7 +29,7 @@ U kunt de [maven-invoeg toepassing voor Azure app service](/java/api/overview/az
 
 Anders is uw implementatie methode afhankelijk van het type archief:
 
-- Als u een WAR-bestand wilt implementeren in Tomcat `/api/wardeploy/` , gebruikt u het eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)voor meer informatie over deze API.
+- Als u een WAR-bestand wilt implementeren in Tomcat, gebruikt u het `/api/wardeploy/` eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)voor meer informatie over deze API.
 - Gebruik het `/api/zipdeploy/` eind punt van de kudu-site om jar-bestanden op de Java SE-installatie kopieën te implementeren. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)voor meer informatie over deze API.
 
 Implementeer uw War-of JAR-protocol niet met FTP. Het FTP-hulp programma is ontworpen voor het uploaden van opstart scripts, afhankelijkheden of andere runtime bestanden. Het is niet de beste keuze voor het implementeren van web-apps.
@@ -52,6 +52,9 @@ Zie [Stream-Logboeken in Cloud shell](../troubleshoot-diagnostic-logs.md#in-clou
 
 Schakel [toepassings logboeken](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows) in via de Azure portal of [Azure cli](/cli/azure/webapp/log#az-webapp-log-config) om app service te configureren voor het schrijven van de standaard console-uitvoer van de toepassing en de standaard console fout stromen naar het lokale bestands systeem of Azure Blob Storage. Logboek registratie naar het lokale App Service bestandssysteem exemplaar is uitgeschakeld 12 uur nadat het is geconfigureerd. Als u meer retentie nodig hebt, configureert u de toepassing voor het schrijven van uitvoer naar een BLOB storage-container. Uw Java-en tomcat-app-Logboeken kunt u vinden in de */Home/logfiles/Application/* -map.
 
+>[!NOTE]
+>Logboek registratie naar het lokale App Service bestands systeem wordt uitgeschakeld nadat 12 uur is toegepast op op Windows gebaseerde App Services. Azure Blob Storage-logboek registratie voor op Linux gebaseerde App Services kan alleen worden geconfigureerd met behulp van [Azure monitor (preview-versie)](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) 
+
 Als uw toepassing gebruikmaakt van [logback](https://logback.qos.ch/) of [Log4j](https://logging.apache.org/log4j) voor tracering, kunt u deze traceringen door sturen naar Azure-toepassing Insights met behulp van de configuratie-instructies voor logboek registratie in [Java-traceer Logboeken in Application Insights verkennen](/azure/application-insights/app-insights-java-trace-logs).
 
 ### <a name="troubleshooting-tools"></a>Hulpprogram ma's voor probleem oplossing
@@ -64,7 +67,7 @@ Voor alle Linux Java-installatie kopieën op App Service is Zulu-vlucht recorder
 
 #### <a name="timed-recording"></a>Getimede opname
 
-Om aan de slag te gaan, SSH in uw App Service `jcmd` en voer de opdracht uit om een lijst weer te geven van alle Java-processen die worden uitgevoerd. Naast jcmd wordt uw Java-toepassing met een proces-ID (PID) weer geven.
+Om aan de slag te gaan, SSH in uw App Service en voer de `jcmd` opdracht uit om een lijst weer te geven van alle Java-processen die worden uitgevoerd. Naast jcmd wordt uw Java-toepassing met een proces-ID (PID) weer geven.
 
 ```shell
 078990bbcd11:/home# jcmd
@@ -79,17 +82,17 @@ Voer de onderstaande opdracht uit om een 30-seconden-opname van de JVM te starte
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-Tijdens het interval van 30 seconden kunt u controleren of de registratie plaatsvindt door uit te `jcmd 116 JFR.check`voeren. Hiermee worden alle opnamen voor het gegeven Java-proces weer gegeven.
+Tijdens het interval van 30 seconden kunt u controleren of de registratie plaatsvindt door uit te voeren `jcmd 116 JFR.check` . Hiermee worden alle opnamen voor het gegeven Java-proces weer gegeven.
 
 #### <a name="continuous-recording"></a>Doorlopende opname
 
-U kunt Zulu Flight recorder gebruiken om uw Java-toepassing continu te profileren met minimale gevolgen voor de prestaties van runtime ([bron](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Als u dit wilt doen, voert u de volgende Azure CLI-opdracht uit om een app-instelling met de naam JAVA_OPTS te maken met de vereiste configuratie. De inhoud van de instelling van de JAVA_OPTS app wordt door `java` gegeven aan de opdracht wanneer uw app wordt gestart.
+U kunt Zulu Flight recorder gebruiken om uw Java-toepassing continu te profileren met minimale gevolgen voor de prestaties van runtime ([bron](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Als u dit wilt doen, voert u de volgende Azure CLI-opdracht uit om een app-instelling met de naam JAVA_OPTS te maken met de vereiste configuratie. De inhoud van de instelling van de JAVA_OPTS app wordt door gegeven aan de `java` opdracht wanneer uw app wordt gestart.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
 ```
 
-Zodra de opname is gestart, kunt u de huidige opname gegevens op elk gewenst moment dumpen `JFR.dump` met behulp van de opdracht.
+Zodra de opname is gestart, kunt u de huidige opname gegevens op elk gewenst moment dumpen met behulp van de `JFR.dump` opdracht.
 
 ```shell
 jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
@@ -113,9 +116,9 @@ Azure App Service voor Linux ondersteunt het afstemmen en aanpassen van het kade
 
 ### <a name="set-java-runtime-options"></a>Java runtime-opties instellen
 
-Als u toegewezen geheugen of andere JVM runtime opties wilt instellen in zowel de Tomcat-als Java-SE-omgeving, `JAVA_OPTS` maakt u een app- [instelling](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) met de naam met de opties. App Service Linux geeft deze instelling als een omgevings variabele door aan de Java-runtime wanneer deze wordt gestart.
+Als u toegewezen geheugen of andere JVM runtime opties wilt instellen in zowel de Tomcat-als Java-SE-omgeving, maakt u een [app-instelling](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) `JAVA_OPTS` met de naam met de opties. App Service Linux geeft deze instelling als een omgevings variabele door aan de Java-runtime wanneer deze wordt gestart.
 
-Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met `JAVA_OPTS` de naam die de aanvullende instellingen bevat, `-Xms512m -Xmx1204m`zoals.
+Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling `JAVA_OPTS` met de naam die de aanvullende instellingen bevat, zoals `-Xms512m -Xmx1204m` .
 
 Als u de app-instelling wilt configureren vanuit de Maven-invoeg toepassing, voegt u instellingen/waarde-tags toe in de sectie Azure-invoeg toepassing. In het volgende voor beeld wordt een specifieke minimale en maximale grootte voor Java-heap ingesteld:
 
@@ -157,7 +160,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Standaard teken codering instellen
 
-Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met `JAVA_OPTS` de naam `-Dfile.encoding=UTF-8`met waarde.
+Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met de naam `JAVA_OPTS` met waarde `-Dfile.encoding=UTF-8` .
 
 U kunt de app-instelling ook configureren met behulp van de App Service maven-invoeg toepassing. Voeg de instellingen naam en waarde tags toe aan de configuratie van de invoeg toepassing:
 
@@ -188,7 +191,7 @@ Stel app-verificatie in het Azure Portal in met de optie **verificatie en autori
 
 #### <a name="tomcat"></a>Tomcat
 
-Uw Tomcat-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code `request` is een exemplaar van. `HttpServletRequest`
+Uw Tomcat-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code `request` is een exemplaar van `HttpServletRequest` .
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -208,7 +211,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Als u gebruikers wilt afmelden, `/.auth/ext/logout` gebruikt u het pad. Raadpleeg de documentatie over [app service verificatie en autorisatie gebruik](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)om andere acties uit te voeren. Er is ook officiële documentatie over de Tomcat [HttpServletRequest-interface](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) en de bijbehorende methoden. De volgende servlet-methoden worden ook gehydrateerd op basis van uw App Service configuratie:
+Als u gebruikers wilt afmelden, gebruikt u het `/.auth/ext/logout` pad. Raadpleeg de documentatie over [app service verificatie en autorisatie gebruik](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)om andere acties uit te voeren. Er is ook officiële documentatie over de Tomcat [HttpServletRequest-interface](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) en de bijbehorende methoden. De volgende servlet-methoden worden ook gehydrateerd op basis van uw App Service configuratie:
 
 ```java
 public boolean isSecure()
@@ -218,11 +221,11 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Als u deze functie wilt uitschakelen, maakt u een `WEBSITE_AUTH_SKIP_PRINCIPAL` toepassings instelling met de `1`naam met een waarde van. Als u alle Servlet-filters die zijn toegevoegd door App Service wilt uitschakelen `WEBSITE_SKIP_FILTERS` , maakt u een `1`instelling met de naam met een waarde van.
+Als u deze functie wilt uitschakelen, maakt u een toepassings instelling `WEBSITE_AUTH_SKIP_PRINCIPAL` met de naam met een waarde van `1` . Als u alle Servlet-filters die zijn toegevoegd door App Service wilt uitschakelen, maakt u een instelling `WEBSITE_SKIP_FILTERS` met de naam met een waarde van `1` .
 
 #### <a name="spring-boot"></a>Spring Boot
 
-Spring boot-ontwikkel aars kunnen de [Azure Active Directory Spring boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) gebruiken om toepassingen te beveiligen met behulp van vertrouwde beveiligings aantekeningen en-api's. Zorg ervoor dat u de maximale header-grootte in het bestand *Application. Properties* verhoogt. We suggereren een waarde van `16384`.
+Spring boot-ontwikkel aars kunnen de [Azure Active Directory Spring boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) gebruiken om toepassingen te beveiligen met behulp van vertrouwde beveiligings aantekeningen en-api's. Zorg ervoor dat u de maximale header-grootte in het bestand *Application. Properties* verhoogt. We suggereren een waarde van `16384` .
 
 ### <a name="configure-tlsssl"></a>TLS/SSL configureren
 
@@ -234,11 +237,11 @@ Volg de instructies in het gedeelte [een aangepaste DNS-naam beveiligen met een 
 
 Volg eerst de instructies voor het [verlenen van toegang tot Key Vault van uw app](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) en het [maken van een verwijzing naar een sleutel kluis in een toepassings instelling](../app-service-key-vault-references.md#reference-syntax). U kunt controleren of de verwijzing naar het geheim wordt omgezet door de omgevings variabele af te drukken terwijl u extern toegang hebt tot de App Service Terminal.
 
-Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of het Tomcat, gebruikt`${MY_ENV_VAR}`u de syntaxis voor het injecteren van omgevings variabelen (). Raadpleeg deze documentatie over [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)voor lente configuratie bestanden.
+Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of het Tomcat, gebruikt u de syntaxis voor het injecteren van omgevings variabelen ( `${MY_ENV_VAR}` ). Raadpleeg deze documentatie over [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)voor lente configuratie bestanden.
 
 ### <a name="using-the-java-key-store"></a>Het Java-sleutel archief gebruiken
 
-Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in de respectieve Java-sleutel archieven wanneer de container wordt gestart. Nadat u het certificaat hebt geüpload, moet u de App Service opnieuw opstarten zodat het in het Java-sleutel archief wordt geladen. Open bare certificaten worden geladen in de sleutel opslagplaats `$JAVA_HOME/jre/lib/security/cacerts`op en persoonlijke certificaten worden opgeslagen in `$JAVA_HOME/lib/security/client.jks`.
+Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in de respectieve Java-sleutel archieven wanneer de container wordt gestart. Nadat u het certificaat hebt geüpload, moet u de App Service opnieuw opstarten zodat het in het Java-sleutel archief wordt geladen. Open bare certificaten worden geladen in de sleutel opslagplaats op `$JAVA_HOME/jre/lib/security/cacerts` en persoonlijke certificaten worden opgeslagen in `$JAVA_HOME/lib/security/client.jks` .
 
 Er is mogelijk extra configuratie nodig voor het versleutelen van uw JDBC-verbinding met certificaten in het Java-sleutel archief. Raadpleeg de documentatie voor het gekozen JDBC-stuur programma.
 
@@ -250,7 +253,7 @@ Er is mogelijk extra configuratie nodig voor het versleutelen van uw JDBC-verbin
 
 #### <a name="initializing-the-java-key-store"></a>Het Java-sleutel archief initialiseren
 
-Als u het `import java.security.KeyStore` object wilt initialiseren, laadt u het bestand met de opslag plaats met het wacht woord. Het standaard wachtwoord voor beide sleutel archieven is "changeit".
+Als u het object wilt initialiseren `import java.security.KeyStore` , laadt u het bestand met de opslag plaats met het wacht woord. Het standaard wachtwoord voor beide sleutel archieven is "changeit".
 
 ```java
 KeyStore keyStore = KeyStore.getInstance("jks");
@@ -266,9 +269,9 @@ keyStore.load(
 
 #### <a name="manually-load-the-key-store"></a>Het sleutel archief hand matig laden
 
-U kunt certificaten hand matig laden naar de sleutel opslag. Maak een app-instelling `SKIP_JAVA_KEYSTORE_LOAD`, met de waarde app service `1` uit te scha kelen, zodat de certificaten niet automatisch in het sleutel archief worden geladen. Alle open bare certificaten die zijn geüpload naar App Service via de Azure Portal `/var/ssl/certs/`worden opgeslagen onder. Persoonlijke certificaten worden opgeslagen onder `/var/ssl/private/`.
+U kunt certificaten hand matig laden naar de sleutel opslag. Maak een app-instelling, `SKIP_JAVA_KEYSTORE_LOAD` met de waarde `1` app service uit te scha kelen, zodat de certificaten niet automatisch in het sleutel archief worden geladen. Alle open bare certificaten die zijn geüpload naar App Service via de Azure Portal worden opgeslagen onder `/var/ssl/certs/` . Persoonlijke certificaten worden opgeslagen onder `/var/ssl/private/` .
 
-U kunt het Java-sleutel programma interactief gebruiken of fouten opsporen door [een SSH-verbinding](app-service-linux-ssh-support.md) met uw app service `keytool`te openen en de opdracht uit te voeren. Raadpleeg de [documentatie van het belang rijk hulp programma](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) voor een lijst met opdrachten. Raadpleeg [de officiële documentatie](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)voor meer informatie over de API voor de-opslag.
+U kunt het Java-sleutel programma interactief gebruiken of fouten opsporen door [een SSH-verbinding](app-service-linux-ssh-support.md) met uw app service te openen en de opdracht uit te voeren `keytool` . Raadpleeg de [documentatie van het belang rijk hulp programma](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) voor een lijst met opdrachten. Raadpleeg [de officiële documentatie](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)voor meer informatie over de API voor de-opslag.
 
 ## <a name="configure-apm-platforms"></a>APM-platforms configureren
 
@@ -283,8 +286,8 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic*zijn.
 6. Wijzig het YAML-bestand op */Home/site/wwwroot/apm/newrelic/newrelic.yml* en vervang de tijdelijke aanduiding voor de licentie waarde door uw eigen licentie code.
 7. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
-    - Als uw app **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`met de waarde.
-    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`met de waarde.
+    - Als uw app **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ### <a name="configure-appdynamics"></a>AppDynamics configureren
 
@@ -293,23 +296,23 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 3. [Ssh in uw app service-exemplaar](app-service-linux-ssh-support.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
 4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics*zijn.
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
-    - Als u **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` met `<app-name>` de waarde waar de naam van uw app service is.
-    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` met `<app-name>` de waarde waar de naam van uw app service is.
+    - Als u **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
+    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
 
 > [!NOTE]
-> Als u al een omgevings variabele voor `JAVA_OPTS` of `CATALINA_OPTS`hebt, voegt `-javaagent:/...` u de optie toe aan het einde van de huidige waarde.
+> Als u al een omgevings variabele voor `JAVA_OPTS` of hebt `CATALINA_OPTS` , voegt u de `-javaagent:/...` optie toe aan het einde van de huidige waarde.
 
 ## <a name="configure-jar-applications"></a>JAR-toepassingen configureren
 
 ### <a name="starting-jar-apps"></a>JAR-apps starten
 
-App Service verwacht dat uw JAR-toepassing standaard de naam *app. jar*heeft. Als het deze naam heeft, wordt deze automatisch uitgevoerd. Voor maven-gebruikers kunt u de JAR-naam instellen door `<finalName>app</finalName>` deze op `<build>` te nemen in het gedeelte van uw *pom. XML*. [U kunt hetzelfde doen in Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) door de `archiveFileName` eigenschap in te stellen.
+App Service verwacht dat uw JAR-toepassing standaard de naam *app. jar*heeft. Als het deze naam heeft, wordt deze automatisch uitgevoerd. Voor maven-gebruikers kunt u de JAR-naam instellen door deze op te nemen `<finalName>app</finalName>` in het `<build>` gedeelte van uw *pom. XML*. [U kunt hetzelfde doen in Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) door de eigenschap in te stellen `archiveFileName` .
 
-Als u een andere naam voor uw JAR wilt gebruiken, moet u ook de [opstart opdracht](app-service-linux-faq.md#built-in-images) opgeven waarmee het jar-bestand wordt uitgevoerd. Bijvoorbeeld `java -jar my-jar-app.jar`. U kunt de waarde voor de opstart opdracht in de Portal instellen, onder configuratie > algemene instellingen, of met een toepassings instelling met `STARTUP_COMMAND`de naam.
+Als u een andere naam voor uw JAR wilt gebruiken, moet u ook de [opstart opdracht](app-service-linux-faq.md#built-in-images) opgeven waarmee het jar-bestand wordt uitgevoerd. Bijvoorbeeld `java -jar my-jar-app.jar`. U kunt de waarde voor de opstart opdracht in de Portal instellen, onder configuratie > algemene instellingen, of met een toepassings instelling met de naam `STARTUP_COMMAND` .
 
 ### <a name="server-port"></a>Server poort
 
-App Service Linux stuurt binnenkomende aanvragen naar poort 80, dus uw toepassing moet ook op poort 80 worden geluisterd. U kunt dit doen in de configuratie van uw toepassing (zoals het bestand *toepassing. Properties* ) of in de opstart opdracht (bijvoorbeeld `java -jar spring-app.jar --server.port=80`). Raadpleeg de volgende documentatie voor algemene Java-frameworks:
+App Service Linux stuurt binnenkomende aanvragen naar poort 80, dus uw toepassing moet ook op poort 80 worden geluisterd. U kunt dit doen in de configuratie van uw toepassing (zoals het bestand *toepassing. Properties* ) of in de opstart opdracht (bijvoorbeeld `java -jar spring-app.jar --server.port=80` ). Raadpleeg de volgende documentatie voor algemene Java-frameworks:
 
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
@@ -330,7 +333,7 @@ Deze instructies zijn van toepassing op alle database verbindingen. U moet tijde
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Downloaden](https://dev.mysql.com/downloads/connector/j/) (Selecteer ' platform onafhankelijk ') |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Downloaden](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
-Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivity (JDBC) of de Java Persistence API ( `CATALINA_OPTS` JPA), moet u eerst de omgevings variabele aanpassen die in Tomcat wordt gelezen tijdens het opstarten. Stel deze waarden in via een app-instelling in de [maven-invoeg toepassing van app service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
+Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivity (JDBC) of de Java Persistence API (JPA), moet u eerst de `CATALINA_OPTS` omgevings variabele aanpassen die in Tomcat wordt gelezen tijdens het opstarten. Stel deze waarden in via een app-instelling in de [maven-invoeg toepassing van app service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings>
@@ -341,7 +344,7 @@ Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivi
 </appSettings>
 ```
 
-Of stel de omgevings variabelen in op de pagina **configuratie** > **Toepassings instellingen** in het Azure Portal.
+Of stel de omgevings variabelen in op de pagina **configuratie**  >  **Toepassings instellingen** in het Azure Portal.
 
 Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassing of voor alle toepassingen die worden uitgevoerd op de Tomcat-servlet.
 
@@ -375,9 +378,9 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 #### <a name="shared-server-level-resources"></a>Resources op gedeelde server niveau
 
-Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server. XML van Tomcat bewerken. Upload eerst een [opstart script](app-service-linux-faq.md#built-in-images) en stel het pad naar het script in de **Configuration** > **opstart opdracht**van de configuratie in. U kunt het opstart script uploaden met [FTP](../deploy-ftp.md).
+Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server. XML van Tomcat bewerken. Upload eerst een [opstart script](app-service-linux-faq.md#built-in-images) en stel het pad naar het script in de **Configuration**  >  **opstart opdracht**van de configuratie in. U kunt het opstart script uploaden met [FTP](../deploy-ftp.md).
 
-Met het opstart script maakt u een [XSL-trans formatie](https://www.w3schools.com/xml/xsl_intro.asp) naar het bestand server. XML en voert u het `/usr/local/tomcat/conf/server.xml`resulterende XML-bestand uit naar. Het opstart script moet libxslt installeren via APK. Het XSL-bestand en het opstart script kunnen worden geüpload via FTP. Hieronder ziet u een voor beeld van een opstart script.
+Met het opstart script maakt u een [XSL-trans formatie](https://www.w3schools.com/xml/xsl_intro.asp) naar het bestand server. XML en voert u het resulterende XML-bestand uit naar `/usr/local/tomcat/conf/server.xml` . Het opstart script moet libxslt installeren via APK. Het XSL-bestand en het opstart script kunnen worden geüpload via FTP. Hieronder ziet u een voor beeld van een opstart script.
 
 ```sh
 # Install libxslt. Also copy the transform file to /home/tomcat/conf/
@@ -471,7 +474,7 @@ Plaats tot slot de potten van het stuur programma in het Tomcat CLASSPATH en sta
 
     U kunt ook een FTP-client gebruiken om het JDBC-stuur programma te uploaden. Volg deze [instructies voor het ophalen van uw FTP-referenties](../deploy-configure-credentials.md?toc=/azure/app-service/containers/toc.json).
 
-2. Als u een gegevens bron op server niveau hebt gemaakt, start u de App Service Linux-toepassing opnieuw. Tomcat wordt opnieuw `CATALINA_BASE` ingesteld `/home/tomcat` op en gebruikt de bijgewerkte configuratie.
+2. Als u een gegevens bron op server niveau hebt gemaakt, start u de App Service Linux-toepassing opnieuw. Tomcat wordt opnieuw ingesteld `CATALINA_BASE` op `/home/tomcat` en gebruikt de bijgewerkte configuratie.
 
 ### <a name="spring-boot"></a>Spring Boot
 
@@ -479,7 +482,7 @@ Om verbinding te maken met gegevens bronnen in veer boot-toepassingen, wordt u g
 
 1. Stel in het gedeelte ' configuratie ' van de pagina App Service een naam in voor de teken reeks, plak uw JDBC-connection string in het waardeveld en stel het type in op aangepast. U kunt deze connection string eventueel instellen als sleuf instelling.
 
-    Deze connection string is toegankelijk voor onze toepassing als een omgevings variabele `CUSTOMCONNSTR_<your-string-name>`met de naam. De connection string die u hierboven hebt gemaakt, krijgen bijvoorbeeld de `CUSTOMCONNSTR_exampledb`naam.
+    Deze connection string is toegankelijk voor onze toepassing als een omgevings variabele met de naam `CUSTOMCONNSTR_<your-string-name>` . De connection string die u hierboven hebt gemaakt, krijgen bijvoorbeeld de naam `CUSTOMCONNSTR_exampledb` .
 
 2. In uw *toepassing. Properties* -bestand verwijst u naar deze Connection String met de naam van de omgevings variabele. In ons voor beeld gebruiken we het volgende.
 
@@ -495,7 +498,7 @@ U kunt Tomcat configureren voor het gebruik van een externe sessie opslag, zoals
 
 Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebruik van een [PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) -implementatie. In de volgende stappen wordt dit proces uitgelegd met behulp van [Pivot Session Manager: redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) als voor beeld.
 
-1. Open een bash-Terminal en `<variable>=<value>` gebruik deze om elk van de volgende omgevings variabelen in te stellen.
+1. Open een bash-Terminal en gebruik `<variable>=<value>` deze om elk van de volgende omgevings variabelen in te stellen.
 
     | Variabele                 | Waarde                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
