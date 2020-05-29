@@ -72,8 +72,6 @@
         - name: Resources beheren
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Een bedrijfscontinuïteitsplan maken
-          href: How-To/business-continuity-plan.md
         - name: Samenwerken
           href: How-To/collaborate-knowledge-base.md
         - name: Actief leren inschakelen
