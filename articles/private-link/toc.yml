@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: Een privé-eindpunt maken - Azure CLI
       href: create-private-endpoint-cli.md
+    - name: Een privé-eindpunt maken - ARM-sjabloon
+      href: create-private-endpoint-template.md
     - name: Een Private Link-service maken - Portal
       href: create-private-link-service-portal.md
     - name: Een Private Link-service maken - PowerShell

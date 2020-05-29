@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Interne load balancer - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: Problemen oplossen
-      items:
-        - name: Problemen met Azure Load Balancer oplossen
-          href: load-balancer-troubleshoot.md
-        - name: Veelvoorkomende implementatiefouten oplossen
-          href: load-balancer-common-deployment-errors.md
+- name: Problemen oplossen
+  items:
+    - name: Problemen met Azure Load Balancer oplossen
+      href: load-balancer-troubleshoot.md
+    - name: Veelvoorkomende implementatiefouten oplossen
+      href: load-balancer-common-deployment-errors.md
+    - name: Veelvoorkomende problemen met uitgaande verbindingen oplossen
+      href: troubleshoot-outbound-connection.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden

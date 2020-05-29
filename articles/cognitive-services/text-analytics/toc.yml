@@ -7,7 +7,7 @@
       href: overview.md
     - name: Voorbeeldgebruikerscenario's
       href: text-analytics-user-scenarios.md
-    - name: Wat is er nieuw
+    - name: Nieuwe functies
       href: whats-new.md
 - name: Snelstartgidsen
   expanded: true
@@ -54,6 +54,8 @@
       href: concepts/text-offsets.md
     - name: Gegevenslimieten
       href: concepts/data-limits.md
+    - name: Versiebeheer model
+      href: concepts/model-versioning.md
 - name: Instructiegidsen
   items:
     - name: De Tekstanalyse-API aanroepen
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes Service (AKS) gebruiken
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: Migreren naar versie 3 van de API
+      href: migration-guide.md
 - name: Naslaginformatie
   items:
     - name: Naslaginformatie over de CLI
@@ -112,7 +116,7 @@
               href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
             - name: Aan de slag
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
-- name: Bronnen
+- name: Resources
   items:
     - name: Externe en community-inhoud
       href: text-analytics-resource-external-community.md

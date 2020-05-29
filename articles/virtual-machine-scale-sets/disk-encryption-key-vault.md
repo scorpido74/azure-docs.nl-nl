@@ -1,40 +1,42 @@
 ---
 title: Een sleutelkluis voor Azure Disk Encryption maken en configureren
-description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutel kluis voor gebruik met Azure Disk Encryption
+description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption
+author: ju-shim
+ms.author: jushiman
+ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.custom: seodec18
-ms.openlocfilehash: 30fa6b910c0241621c2b2cdae9bb9a164f27cedb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 6350e85552a6c92592dbe2b1a9cf48a35f86a7be
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454540"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198451"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
-Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijf versleuteling te beheren en te beheren.  Zie [aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../key-vault/general/secure-your-key-vault.md)voor meer informatie over sleutel kluizen.
+Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijfversleuteling te beheren.  Zie [Aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) en [Uw sleutelkluis beveiligen](../key-vault/general/secure-your-key-vault.md) voor meer informatie over sleutelkluizen.
 
-Een sleutel kluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
+Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
 
-1. Een resource groep maken, indien nodig.
-2. Een sleutel kluis maken. 
-3. Geavanceerd toegangs beleid voor sleutel kluis instellen.
+1. Een resourcegroep maken, indien nodig.
+2. Een sleutelkluis maken. 
+3. Geavanceerd toegangsbeleid voor sleutelkluis instellen.
 
-Deze stappen worden geïllustreerd in de volgende Quick starts:
+Deze stappen worden geïllustreerd in de volgende quickstarts:
 
-U kunt eventueel ook een sleutel versleutelings sleutel genereren of importeren (KEK).
+U kunt eventueel ook een sleutelversleutelingssleutel genereren of importeren (KEK).
 
-## <a name="install-tools-and-connect-to-azure"></a>Hulpprogram ma's installeren en verbinding maken met Azure
+## <a name="install-tools-and-connect-to-azure"></a>Hulpprogramma's installeren en verbinding maken met Azure
 
-U kunt de stappen in dit artikel uitvoeren met de [Azure cli](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview)of de [Azure Portal](https://portal.azure.com).
+U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview) of de [Azure-portal](https://portal.azure.com).
 
 ### <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 
-Voordat u de Azure CLI of Azure PowerShell gebruikt, moet u eerst verbinding maken met uw Azure-abonnement. U doet dit door u aan te [melden met Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), u aan te [melden met Azure Power shell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)of uw referenties aan de Azure portal toe te voegen wanneer u hierom wordt gevraagd.
+Voordat u de Azure CLI of Azure PowerShell gebruikt, moet u eerst verbinding maken met uw Azure-abonnement. U doet dit door [u aan te melden met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [u aan te melden met Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)of uw referenties aan de Azure-portal op te geven wanneer u hierom wordt gevraagd.
 
 ```azurecli-interactive
 az login
@@ -49,5 +51,5 @@ Connect-AzAccount
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)
-- [Een schaalset voor virtuele machines versleutelen met behulp van Azure CLI](disk-encryption-cli.md)
-- [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure PowerShell](disk-encryption-powershell.md)
+- [ Een virtuele-machineschaalset versleutelen met de Azure CLI](disk-encryption-cli.md)
+- [Een virtuele-machineschaalset versleutelen met de Azure PowerShell](disk-encryption-powershell.md)

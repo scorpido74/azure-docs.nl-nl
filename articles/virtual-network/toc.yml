@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: IP-services
       items:
-        - name: IP-adressering
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Openbare IP-adressen
+          href: public-ip-addresses.md
+        - name: Privé IP-adressen
+          href: private-ip-addresses.md
         - name: Voorvoegsel voor het openbare IP-adres
           href: public-ip-address-prefix.md
         - name: IPv6 voor Azure-VNet

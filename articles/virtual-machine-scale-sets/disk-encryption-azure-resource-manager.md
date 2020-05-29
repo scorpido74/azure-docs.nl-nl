@@ -1,39 +1,42 @@
 ---
-title: Een Schaalset voor virtuele machines maken en versleutelen met Azure Resource Manager sjablonen
-description: In deze Snelstartgids leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om een Schaalset voor virtuele machines te maken en te versleutelen
-author: msmbaldwin
-ms.author: mbaldwin
+title: Een schaalset voor virtuele machines maken en versleutelen met Azure Resource Manager-sjablonen
+description: In deze quickstart leert u hoe u Azure Resource Manager-sjablonen kunt gebruiken om een schaalset voor virtuele machines te maken en te versleutelen
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72529998"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198431"
 ---
-# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Schaal sets voor virtuele machines versleutelen met Azure Resource Manager
+# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Schaalsets voor virtuele machines versleutelen met Azure Resource Manager
 
-U kunt schaal sets voor virtuele Linux-machines versleutelen of ontsleutelen met Azure Resource Manager sjablonen.
+U kunt schaalsets voor virtuele Linux-machines versleutelen of ontsleutelen met Azure Resource Manager-sjablonen.
 
 ## <a name="deploying-templates"></a>Sjablonen implementeren
 
 Selecteer eerst de sjabloon die past bij uw scenario.
 
-- [Schijf versleuteling inschakelen op een actieve Linux-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [Schijfversleuteling inschakelen op een actieve Linux-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Schijf versleuteling inschakelen op een actieve Windows-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [Schijfversleuteling inschakelen op een actieve Windows-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Een schaalset voor virtuele machines met Linux-machines implementeren met een JumpBox en versleuteling inschakelen op schaal sets voor virtuele Linux-machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Een virtuele-machineschaalset met Linux-VM’s implementeren met een jumpbox en versleuteling inschakelen voor virtuele-machineschaalsets van Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Een virtuele-machine-schaalset van Windows-Vm's implementeren met een JumpBox en versleuteling inschakelen voor virtuele Windows-machine schaal sets](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Een virtuele-machineschaalset van Windows-VM's implementeren met een jumpbox en versleuteling inschakelen voor virtuele-machineschaalsets van Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
-- [Schijf versleuteling uitschakelen voor een actieve Linux-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Schijfversleuteling uitschakelen op een actieve Linux-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
-- [Schijf versleuteling uitschakelen op een actieve Windows-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Schijfversleuteling uitschakelen op een actieve Windows-schaalset voor virtuele machines](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
-Volg nu deze stappen:
+Volg dan deze stappen:
 
      1. Click **Deploy to Azure**.
      2. Fill in the required fields then agree to the terms and conditions.
@@ -41,8 +44,8 @@ Volg nu deze stappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Disk Encryption voor schaal sets voor virtuele machines](disk-encryption-overview.md)
-- [Een schaalset voor virtuele machines versleutelen met behulp van Azure CLI](disk-encryption-cli.md)
-- [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure PowerShell](disk-encryption-powershell.md)
-- [Een sleutel kluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)
-- [Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines](disk-encryption-extension-sequencing.md)
+- [Azure Disk Encryption voor virtuele-machineschaalsets](disk-encryption-overview.md)
+- [ Een virtuele-machineschaalset versleutelen met de Azure CLI](disk-encryption-cli.md)
+- [Een virtuele-machineschaalset versleutelen met de Azure PowerShell](disk-encryption-powershell.md)
+- [Een sleutelkluis voor Azure Disk Encryption maken en configureren](disk-encryption-key-vault.md)
+- [Azure Disk Encryption gebruiken met extensiereeksen voor virtuele-machineschaalsets](disk-encryption-extension-sequencing.md)
