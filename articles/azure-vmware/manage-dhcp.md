@@ -1,14 +1,14 @@
 ---
 title: DHCP beheren
-description: In dit artikel wordt uitgelegd hoe u DHCP beheert in azure VMWare-oplossing (AVS)
+description: In dit artikel wordt uitgelegd hoe u DHCP beheert in azure VMware-oplossing (AVS)
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ccf28c94e1991681c238f51847fe228313abe29e
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 80791dd2041fb9d6fbc7c67f2d7d7b2d0b6c977e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740445"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148358"
 ---
 # <a name="how-to-manage-dhcp-in-azure-vmware-solution-avs-preview"></a>DHCP beheren in de preview-versie van Azure VMWare-oplossing (AVS)
 

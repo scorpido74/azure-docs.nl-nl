@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112572"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148120"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
@@ -50,13 +50,13 @@ In de toekomst hopen we meer gebeurtenissen toe, waaronder gebeurtenissen zoals 
 Voordat de evaluatie doorlopend wordt gedetecteerd, proberen clients altijd het toegangs token opnieuw af te spelen uit de cache zolang het niet is verlopen. Met CAE wordt een nieuw geval geïntroduceerd dat een resource provider een token kan afwijzen, zelfs wanneer het niet is verlopen. Om clients te informeren dat hun cache wordt omzeild, zelfs als de tokens in de cache niet zijn verlopen, introduceren we een mechanisme dat **claim Challenge**wordt genoemd. Voor CAE is een client update vereist om de claim Challenge te begrijpen. De meest recente versie van de volgende toepassingen ondersteunen claim Challenge:
 
 - Outlook voor Windows 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- Outlook voor iOS 
+- Outlook voor Android 
+- Outlook voor Mac 
 - Teams voor Windows
-- Teams iOS 
-- Teams Android 
-- Mac voor teams 
+- Teams voor iOS 
+- Teams voor Android 
+- Teams voor Mac 
 
 ## <a name="token-lifetime"></a>Levensduur van token
 

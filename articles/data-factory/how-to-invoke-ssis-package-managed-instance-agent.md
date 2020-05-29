@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 1a0015c12f942eebb0a26738f5d7144bbe28ef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe32d67dd5d15ccf2f889cf40b79d35c890d5313
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022287"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148290"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren met behulp van de Azure SQL Managed instance agent
 
@@ -108,8 +108,9 @@ Als u de uitvoering van het pakket wilt annuleren vanuit een agent taak voor een
 1. Zoek uw SQL Agent- **jobId** vanuit **msdb. dbo. sysjobs**.
 1. Zoek de overeenkomende SSIS- **executionid is vereist** op basis van de taak-id met behulp van deze query:
    ```sql
-   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
+   Als uw SSIS-pakketten zich in SSISDB bevinden, gebruikt u **SSISDB. internal. execution_parameter_values** als tabel voor het uitvoeren van taken. Als uw SSIS-pakketten zich in het bestands systeem bevinden, gebruikt u **ssisdb. internal. execution_parameter_values_noncatalog**.
 1. Klik met de rechter muisknop op de catalogus SSISDB en selecteer vervolgens **actieve bewerkingen**.
 
    ![Actieve bewerkingen in het snelmenu van de SSISDB-catalogus](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

@@ -2,13 +2,13 @@
 title: Azure Monitor voor containers inschakelen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt begrijpen hoe uw container presteert en welke prestatie problemen zijn geïdentificeerd.
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185928"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147899"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -66,7 +66,6 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -76,7 +75,6 @@ De informatie in de volgende tabel bevat de configuratie gegevens van de proxy e
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Gegevensopname |
 | *. oms.opinsights.azure.cn | 443 | OMS-onboarding |
-| microsoft.com | 80 | Wordt gebruikt voor de netwerk verbinding. Dit is alleen vereist als de versie van de agent installatie kopie ciprod09262019 of eerder is. |
 | dc.services.visualstudio.com | 443 | Voor agent-telemetrie met behulp van open bare Azure-Cloud Application Insights. |
 
 De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegevens voor de Amerikaanse overheid van Azure.
@@ -85,7 +83,6 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 |--------------|------|-------------|
 | *. ods.opinsights.azure.us | 443 | Gegevensopname |
 | *. oms.opinsights.azure.us | 443 | OMS-onboarding |
-| microsoft.com | 80 | Wordt gebruikt voor de netwerk verbinding. Dit is alleen vereist als de versie van de agent installatie kopie ciprod09262019 of eerder is. |
 | dc.services.visualstudio.com | 443 | Voor agent-telemetrie met behulp van open bare Azure-Cloud Application Insights. |
 
 ## <a name="components"></a>Onderdelen
@@ -99,7 +96,7 @@ Uw vermogen om de prestaties te bewaken, is afhankelijk van een container Log An
 Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt deze automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS). Zie [Release aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent als u de gepubliceerde versies wilt volgen.
 
 >[!NOTE]
->Als u al een AKS-cluster hebt geïmplementeerd, schakelt u de bewaking in met behulp van Azure CLI of een gegeven Azure Resource Manager sjabloon, zoals verderop in dit artikel wordt beschreven. U kunt niet `kubectl` gebruiken om de agent bij te werken, te verwijderen, opnieuw te implementeren of te implementeren.
+>Als u al een AKS-cluster hebt geïmplementeerd, schakelt u de bewaking in met behulp van Azure CLI of een gegeven Azure Resource Manager sjabloon, zoals verderop in dit artikel wordt beschreven. U kunt niet gebruiken `kubectl` om de agent bij te werken, te verwijderen, opnieuw te implementeren of te implementeren.
 >De sjabloon moet worden geïmplementeerd in dezelfde resource groep als het cluster.
 
 U schakelt Azure Monitor voor containers in met behulp van een van de volgende methoden die worden beschreven in de volgende tabel.

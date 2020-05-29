@@ -1,35 +1,33 @@
 ---
-title: Ondersteunde typen voor herkenning van benoemde entiteiten
+title: Ondersteunde categorieën voor herkenning van benoemde entiteiten
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de ondersteunde entiteits typen in de Text Analytics-API.
+description: Meer informatie over de ondersteunde entiteits categorieën vindt u in de Text Analytics-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 03/30/2020
 ms.author: aahi
-ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086909"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140914"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Ondersteunde typen voor de benoemde entiteit herkenning versie 3 (preview)
+# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>Ondersteunde entiteits categorieën in named entity Recognition v3
 
-De Text Analytics-API biedt de mogelijkheid om entiteiten te identificeren en te dubbel zinnigheid die in tekst zijn gevonden. [Herkenning van benoemde entiteiten](how-tos/text-analytics-how-to-entity-linking.md) (ner) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en deze te categoriseren in vooraf gedefinieerde klassen.
+In dit artikel vindt u informatie over de entiteits categorieën die kunnen worden geretourneerd door [named entity Recognition](how-tos/text-analytics-how-to-entity-linking.md) (ner). Er is ook een preview van NER v 3.1 beschikbaar, waaronder de mogelijkheid om persoonlijke ( `PII` ) en status gegevens te detecteren `PHI` .
 
-## <a name="entity-types"></a>Entiteitstypen
-
-De ondersteunde entiteits typen en subtypen (indien van toepassing) worden hieronder weer gegeven:
+## <a name="entity-categories"></a>Entiteits Categorieën
 
 #### <a name="general"></a>[Algemeen](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-information"></a>[Persoonlijke gegevens](#tab/personal)
+#### <a name="personal-and-health"></a>[Persoonlijk en status](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 

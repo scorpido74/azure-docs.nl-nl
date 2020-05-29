@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871379"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141888"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
@@ -49,7 +49,7 @@ U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het l
 
    Installeer docker op uw computer door de juiste instructies te volgen voor uw besturings systeem: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [MacOS](https://docs.docker.com/docker-for-mac/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
 1. Haal de voor beeld-container van het hulp programma op met de `docker pull` opdracht.
@@ -143,7 +143,8 @@ Vervolgens maakt u tags (labels) en past u deze toe op de tekst elementen die u 
     > * Label waarden zoals ze in het formulier worden weer gegeven. Probeer geen waarde te splitsen in twee delen met twee verschillende Tags. Een adres veld moet bijvoorbeeld worden gelabeld met één tag, zelfs als het meerdere regels omvat.
     > * Geen sleutels in uw gelabelde velden bevatten &mdash; alleen de waarden.
     > * Tabel gegevens moeten automatisch worden gedetecteerd en beschikbaar zijn in het uiteindelijke uitvoer-JSON-bestand. Als het model echter niet alle tabel gegevens detecteert, kunt u deze velden ook hand matig labelen. Elke cel in de tabel labelen met een ander label. Als uw formulieren tabellen met een wisselend aantal rijen bevatten, moet u ervoor zorgen dat u ten minste één formulier met de grootste mogelijke tabel labelt.
-    > * Als u een toegepaste tag wilt verwijderen, selecteert u de rechthoek in de document weergave en drukt u op de toets DELETE.
+    > * Gebruik de knoppen rechts van de **+** om uw tags te zoeken, een andere naam te geven, opnieuw in te delen en te verwijderen.
+    > * Als u een toegepaste tag wilt verwijderen zonder de tag zelf te verwijderen, selecteert u de gemarkeerde rechthoek in de document weergave en drukt u op de toets DELETE.
 
 ![Venster van de hoofd editor van het hulp programma voor het labelen van voor beelden](../media/label-tool/main-editor.png)
 

@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 35aaad31728f4a0cd73913ecf397d8123b3f909a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 20b796e2da7fe602a8987d3de98bd3a5d9fafb5c
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725093"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148171"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
 
@@ -48,7 +48,7 @@ De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met 
 
 ### <a name="azure-disks-limitations"></a>Beperkingen voor Azure-schijven
 
-Volumes die gebruikmaken van Azure Managed disks zijn momenteel geen zone-redundante bronnen. Volumes kunnen niet worden gekoppeld aan zones en moeten zich in dezelfde zone bevinden als een gegeven knoop punt dat als host fungeert voor de doel-pod.
+Volumes die gebruikmaken van Azure Managed disks zijn momenteel geen zone-redundante bronnen. Volumes kunnen niet worden gekoppeld aan zones en moeten zich in dezelfde zone bevinden als een bepaald knoop punt dat als host fungeert voor de doel-pod.
 
 Als u stateful werk belastingen moet uitvoeren, gebruikt u de taints van de knooppunt groep en verdragen in pod-specificaties om pod planning in dezelfde zone als uw schijven te groeperen. U kunt ook op het netwerk gebaseerde opslag gebruiken, zoals Azure Files die kan worden gekoppeld aan een van de verschillende zones.
 

@@ -7,12 +7,15 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een Databricks-werkruimte maken - Portal
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: Een Databricks-werkruimte maken - Resource Manager-sjabloon
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Een Databricks-werkruimte maken - virtueel netwerk
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: Een werkruimte maken
+      items:
+        - name: Portal
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM-sjabloon
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: Virtueel netwerk
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Zelfstudies
   items:
     - name: Query's uitvoeren op SQL Server in een Docker-container

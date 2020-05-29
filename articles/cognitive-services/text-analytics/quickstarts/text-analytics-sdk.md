@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/25/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b51dcc214e099ed573fa297d979cfc55ba1513b9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240132"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140705"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
 
@@ -32,7 +32,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * De nieuwste preview-versie van de Text Analytics-API `3.0-preview`is, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De laatste stabiele versie is `2.1`.
+> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 
@@ -43,7 +43,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Deze Quick start is alleen voor `3.0-preview` versie van de Text Analytics-client bibliotheek, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -53,7 +53,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * De nieuwste preview-versie van de Text Analytics-API `3.0-preview`is, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De laatste stabiele versie is `2.1`.
+> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 > * U kunt deze versie ook uitvoeren van de Text Analytics-client bibliotheek [in uw browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
@@ -65,7 +65,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * De nieuwste preview-versie van de Text Analytics-API `3.0-preview`is, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De laatste stabiele versie is `2.1`.
+> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
 
@@ -99,7 +99,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 > [Een oplossing verkennen](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 * [Overzicht van Text Analytics](../overview.md)
-* [Sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Sentiment analyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219245"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141807"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voor beelden van gebruikers scenario's voor de Text Analytics-API
 
@@ -50,6 +50,13 @@ Feedback van gebruikers producten op de Twitter-of Facebook-pagina van uw produc
 Gebruik benoemde entiteit herkenning om persoonlijke en gevoelige gegevens in documenten te identificeren. Gebruik de gegevens voor het classificeren van documenten of redactie ze zodanig dat ze veilig kunnen worden gedeeld.
 
 ![Een afbeelding waarin wordt beschreven hoe u NER kunt gebruiken om persoonlijke gegevens te detecteren en documenten te classificeren en te redigeren](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>Advies uit te voeren
+
+Groeps adviezen die betrekking hebben op specifieke aspecten van een product of service in enquêtes, feedback van klanten of op elke wille keurige plaats in de tekst van een aspect. Gebruik het om product lanceringen en verbeteringen te begeleiden, marketing inspanningen te bieden of te markeren hoe uw product of service wordt uitgevoerd. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="Voor beeld van meningen over een hotel.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

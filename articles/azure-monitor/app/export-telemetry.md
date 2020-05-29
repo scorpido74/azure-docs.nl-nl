@@ -3,12 +3,12 @@ title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017529"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147967"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
@@ -33,8 +33,6 @@ Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang m
 Continue export **biedt geen ondersteuning** voor de volgende functies/configuraties van Azure Storage:
 
 * Gebruik van [VNET/Azure Storage-firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in combi natie met Azure Blob Storage.
-
-* [Onveranderbare opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) voor Azure Blob Storage.
 
 * [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 

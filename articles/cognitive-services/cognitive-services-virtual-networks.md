@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588334"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148086"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
 
@@ -484,6 +484,68 @@ U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure 
 
 > [!IMPORTANT]
 > Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+
+## <a name="use-private-endpoints"></a>Privé-eindpunten gebruiken
+
+U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) voor uw Cognitive services-resources gebruiken om clients op een virtueel netwerk (VNet) toe te staan om veilig toegang te krijgen tot gegevens via een [privé-koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw Cognitive Services-resource. Netwerk verkeer tussen de clients in het VNet en de resource gaat over het VNet en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd.
+
+Met persoonlijke eind punten voor Cognitive Services resources kunt u het volgende doen:
+
+- Beveilig uw Cognitive Services bron door de firewall zodanig te configureren dat alle verbindingen op het open bare eind punt voor de Cognitive Services service worden geblokkeerd.
+- Verbeter de beveiliging van het VNet door u in staat te stellen exfiltration van gegevens van het VNet te blok keren.
+- Maak veilig verbinding met Cognitive Services bronnen vanuit on-premises netwerken die verbinding maken met het VNet met behulp van [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
+
+### <a name="conceptual-overview"></a>Conceptueel overzicht
+
+Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-service in uw [VNet](../virtual-network/virtual-networks-overview.md). Wanneer u een persoonlijk eind punt maakt voor uw Cognitive Services-resource, biedt het een beveiligde verbinding tussen clients in uw VNet en uw bron. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. De verbinding tussen het persoonlijke eind punt en de Cognitive Services-service maakt gebruik van een beveiligde persoonlijke koppeling.
+
+Toepassingen in het VNet kunnen naadloos verbinding maken met de service via het persoonlijke eind punt, met behulp van dezelfde verbindings reeksen en autorisatie mechanismen die ze anders zouden gebruiken. De uitzonde ring is de speech-service, waarvoor een afzonderlijk eind punt is vereist. Zie de sectie over [privé-eind punten met de spraak service](#private-endpoints-with-the-speech-service). Privé-eind punten kunnen worden gebruikt met alle protocollen die worden ondersteund door de Cognitive Services bron, inclusief REST.
+
+Privé-eind punten kunnen worden gemaakt in subnetten die gebruikmaken van [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md). Clients in een subnet kunnen verbinding maken met een Cognitive Services bron met behulp van een persoonlijk eind punt, terwijl service-eind punten worden gebruikt voor toegang tot anderen.
+
+Wanneer u een persoonlijk eind punt maakt voor een Cognitive Services resource in uw VNet, wordt een goedkeurings aanvraag voor goed keuring verzonden naar de eigenaar van de Cognitive Services resource. Als de gebruiker die het persoonlijke eind punt wil maken ook eigenaar van de resource is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
+
+Cognitive Services resource-eigen aren kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad*privé-eind punten*voor de Cognitive Services resource in de [Azure Portal](https://portal.azure.com).
+
+### <a name="private-endpoints"></a>Privé-eind punten
+
+Wanneer u het persoonlijke eind punt maakt, moet u de Cognitive Services resource opgeven waarmee verbinding wordt gemaakt. Raadpleeg de volgende artikelen voor meer informatie over het maken van een persoonlijk eind punt:
+
+- [Maak een persoonlijk eind punt met behulp van het privé koppelings centrum in de Azure Portal](../private-link/create-private-endpoint-portal.md)
+- [Een persoonlijk eind punt maken met behulp van Azure CLI](../private-link/create-private-endpoint-cli.md)
+- [Een persoonlijk eind punt maken met Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privé-eind punten
+
+Clients op een VNet met behulp van het privé-eind punt moeten hetzelfde connection string gebruiken voor de Cognitive Services resource als clients die verbinding maken met het open bare eind punt. De uitzonde ring is de speech-service, waarvoor een afzonderlijk eind punt is vereist. Zie de sectie over [privé-eind punten met de spraak service](#private-endpoints-with-the-speech-service). We vertrouwen op DNS-omzetting om de verbindingen van het VNet naar de Cognitive Services bron via een persoonlijke verbinding automatisch te routeren. De speech-service 
+
+Er wordt standaard een [privé-DNS-zone](../dns/private-dns-overview.md) gekoppeld aan het VNet met de vereiste updates voor de privé-eind punten. Als u echter uw eigen DNS-server gebruikt, moet u mogelijk aanvullende wijzigingen aanbrengen in uw DNS-configuratie. In de volgende sectie over [DNS-wijzigingen](#dns-changes-for-private-endpoints) worden de vereiste updates voor persoonlijke eind punten beschreven.
+
+### <a name="private-endpoints-with-the-speech-service"></a>Privé-eind punten met de speech-service
+
+Wanneer u privé-eind punten gebruikt met de speech-service, moet u een aangepast eind punt gebruiken om de Speech Service API aan te roepen. U kunt het globale eind punt niet gebruiken. U moet een eind punt van het formulier {account} gebruiken. {STT | TTS | Voice | DLS}. speech. micro soft. com.
+
+### <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
+
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor de Cognitive Services resource bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../dns/private-dns-overview.md), die overeenkomt met het subdomein '*privatelink*', met de DNS a-bron records voor de privé-eind punten.
+
+Wanneer u de eind punt-URL van buiten het VNet met het persoonlijke eind punt oplost, wordt deze omgezet in het open bare eind punt van de Cognitive Services resource. Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wordt de eind punt-URL omgezet naar het IP-adres van het privé-eind punt.
+
+Met deze aanpak is toegang tot de Cognitive Services resource mogelijk via dezelfde connection string voor clients in het VNet die als host fungeren voor de persoonlijke eind punten, evenals clients buiten het VNet.
+
+Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het Cognitive Services resource-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. U moet uw DNS-server zo configureren dat uw privé-koppelings subdomein wordt overgedragen aan de privé-DNS-zone voor het VNet.
+
+> [!TIP]
+> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u uw DNS-server zo configureren dat de Cognitive Services resource naam in het subdomein ' privatelink ' wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het subdomein ' privatelink ' te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
+
+Raadpleeg de volgende artikelen voor meer informatie over het configureren van uw eigen DNS-server voor de ondersteuning van persoonlijke eind punten:
+
+- [Naamomzetting voor resources in virtuele Azure-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS-configuratie voor privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>Prijzen
+
+Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
