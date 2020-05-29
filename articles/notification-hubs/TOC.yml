@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: Notification Hub maken - Azure CLI
       href: create-notification-hub-azure-cli.md
-    - name: Notification Hub maken - Azure Resource Manager-sjabloon
+    - name: Notification Hub maken - ARM-sjabloon
       href: create-notification-hub-template.md
     - name: Een Notification Hub configureren
       href: configure-notification-hub-portal-pns-settings.md

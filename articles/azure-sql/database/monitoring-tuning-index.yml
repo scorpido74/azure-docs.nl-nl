@@ -1,0 +1,121 @@
+### YamlMime:Landing
+title: Azure SQL Database- en Azure SQL Managed Instance-bewaking en -prestatieafstemming
+summary: Azure SQL Database en Azure SQL Managed Instance bieden de mogelijkheden om u te helpen metrische gegevens en diagnostische informatie te verzamelen om uw database te bewaken en de prestaties ervan te verbeteren.
+metadata:
+  title: Documentatie voor Azure SQL Database- en Azure SQL Managed Instance-bewaking en -afstemming
+  description: Meer informatie over de Azure SQL Database-hulpprogramma's voor bewaking en het afstemmen van prestaties, waarmee u metrische en diagnostische gegevens kunt verzamelen en databaseprestaties kunt verbeteren.
+  ms.service: sql-database
+  ms.subservice: performance
+  ms.custom: sqldbrb=2
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: d25dfaa9dc51fd781c2b8640f34cc5221f7990ec
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84117870"
+landingContent:
+- title: Aan de slag met bewaking en prestatieafstemming
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Prestaties bewaken en afstemmen
+      url: monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Playbook voor Microsoft Azure Database-bewaking
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Intelligente prestatieaanbevelingen van Azure SQL Database
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Afstemmingsaanbevelingen voor SQL Database Advisor
+      url: database-advisor-implement-performance-recommendations.md
+    - text: Automatisch instellen
+      url: automatic-tuning-enable.md
+    - text: Inzicht in queryprestaties
+      url: query-performance-insight-use.md
+  - linkListType: video
+    links:
+    - text: Automatisch instellen
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Resourcebeperkingen in Azure SQL Database en Azure SQL Managed Instance
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: vCore-resourcelimieten voor individuele databases
+      url: resource-limits-vcore-single-databases.md
+    - text: DTU-resourcelimieten voor individuele databases
+      url: resource-limits-dtu-single-databases.md
+    - text: vCore-resourcelimieten voor elastische pools
+      url: resource-limits-vcore-elastic-pools.md
+    - text: DTU-resourcelimieten voor elastische pools
+      url: resource-limits-dtu-elastic-pools.md
+    - text: Resourcebeperkingen in SQL Managed Instance
+      url: ../managed-instance/resource-limits.md
+    - text: Resourcebeperkingen in exemplaarpools
+      url: ../managed-instance/instance-pools-overview.md#resource-limitations
+- title: Intelligente prestatieanalyse voor Azure SQL Database en Azure SQL Managed Instance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Intelligent Insights met AI
+      url: intelligent-insights-overview.md
+  - linkListType: concept
+    links:
+    - text: Metrische gegevens en diagnoselogboeken
+      url: metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+    - text: Inzicht in diagnoselogboeken van prestaties
+      url: intelligent-insights-use-diagnostics-log.md
+    - text: Azure SQL-analyse
+      url: ../../azure-monitor/insights/azure-sql.md
+    - text: Detecteerbare prestatiepatronen
+      url: intelligent-insights-troubleshoot-performance.md
+    - text: Verwerking van intelligente query's
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+  - linkListType: video
+    links:
+    - text: Intelligent Insights
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+- title: Handmatige prestatieafstemming voor Azure SQL Database en Azure SQL Managed Instance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Queryprestatieproblemen identificeren
+      url: ../identify-query-performance-issues.md
+  - linkListType: concept
+    links:
+    - text: Bewaking met DMV's
+      url: monitoring-with-dmvs.md
+    - text: Afstemming van toepassing en database
+      url: performance-guidance.md
+    - text: Query Store gebruiken
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: Uitgebreide gebeurtenissen gebruiken
+      url: xevent-db-diff-from-svr.md
+    - text: Prestatiediagnoses hyperschalen
+      url: hyperscale-performance-diagnostics.md
+- title: Resources schalen in Azure SQL Database en Azure SQL Managed Instance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Resources dynamisch schalen
+      url: scale-resources.md
+  - linkListType: concept
+    links:
+    - text: Resources van individuele databases schalen
+      url: single-database-scale.md
+    - text: Resources voor elastische pools schalen
+      url: elastic-pool-scale.md
+    - text: Resources van beheerde exemplaren schalen
+      url: ../managed-instance/sql-managed-instance-paas-overview.md#management-operations
+    - text: Uitschalen voor leesbewerking
+      url: read-scale-out.md
+  - linkListType: video
+    links:
+    - text: Dynamische schaalbaarheid
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

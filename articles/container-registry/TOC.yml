@@ -17,6 +17,9 @@
           href: container-registry-get-started-portal.md
         - name: Een containerregister maken - PowerShell
           href: container-registry-get-started-powershell.md
+        - name: Een containerregister maken - ARM-sjabloon
+          displayName: Resource Manager
+          href: container-registry-get-started-geo-replication-template.md
         - name: Gebeurtenissen verzenden naar Event Grid - CLI
           href: container-registry-event-grid-quickstart.md
         - name: Java-installatiekopieën bouwen en pushen - CLI
@@ -107,6 +110,8 @@
                   href: container-registry-auth-service-principal.md
                 - name: Verifiëren met beheerde identiteit
                   href: container-registry-authentication-managed-identity.md
+                - name: Verifiëren met token (preview)
+                  href: container-registry-repository-scoped-permissions.md
                 - name: Verificatie via Azure Container Instances
                   href: container-registry-auth-aci.md
                 - name: Verifiëren vanaf Kubernetes met pullgeheim

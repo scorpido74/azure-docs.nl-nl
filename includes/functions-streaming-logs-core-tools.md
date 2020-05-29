@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68881332"
 ---
-#### <a name="built-in-log-streaming"></a>Ingebouwde logboek streaming
+#### <a name="built-in-log-streaming"></a>Ingebouwde logboekstreaming
 
-Gebruik de `logstream` optie om streaming-logboeken te ontvangen van een specifieke functie-app die wordt uitgevoerd in azure, zoals in het volgende voor beeld:
+Gebruik de optie `logstream` om streaminglogboeken te ontvangen van een specifieke functie-app die wordt uitgevoerd in Azure, zoals in het volgende voorbeeld:
 
 ```bash
 func azure functionapp logstream <FunctionAppName>
@@ -21,7 +21,7 @@ func azure functionapp logstream <FunctionAppName>
 
 #### <a name="live-metrics-stream"></a>Live Metrics Stream
 
-U kunt ook de [Live Metrics stream](../articles/azure-monitor/app/live-stream.md) voor uw functie-app in een nieuw browser venster weer geven door `--browser` de optie op te nemen, zoals in het volgende voor beeld:
+U kunt de [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) voor uw functie-app ook in een nieuw browservenster weergeven door de optie `--browser` op te nemen, zoals in het volgende voorbeeld:
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

@@ -236,8 +236,8 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
-        - name: Azure SQL Database Managed Instance
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Azure SQL Managed Instance
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure-tabelopslag
@@ -697,7 +697,7 @@
       items:
         - name: Overzicht SSIS-gegevensmigratie
           href: scenario-ssis-migration-overview.md
-        - name: Migratie van SSISDB naar een beheerd Azure SQL Database-exemplaar
+        - name: SSISDB-migratie naar Azure SQL Managed Instance
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Naslaginformatie
   items:

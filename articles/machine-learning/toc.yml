@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: ML-taken definiëren
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: Automatisch een prognosemodel trainen
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Featurization in geautomatiseerde ML (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: Automatische ML gebruiken in ML-pijplijnen (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
@@ -449,8 +452,6 @@
     - name: Naslaginformatie voor Designer-module
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: ML op schaal
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: Gegevens bewaken - referentie
       href: monitor-resource-reference.md
     - name: YAML-verwijzing voor machine learning-pijplijn

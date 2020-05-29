@@ -6,7 +6,7 @@
   href: override-hierarchical-state.md
 - name: Vertraagde fase van het project
   href: late-stage-reprojection.md
-- name: Verlichting
+- name: Afbeeldingsbelichting
   href: lights.md
 - name: PBR-materialen
   href: pbr-materials.md

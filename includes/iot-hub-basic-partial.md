@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: iot-hub
 author: kgremban
 ms.service: iot-hub
@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050307"
 ---
 >[!NOTE]
->Sommige van de functies die in dit artikel worden genoemd, zoals Cloud-naar-apparaat-berichten, apparaatdubbels en Apparaatbeheer, zijn alleen beschikbaar in de laag standaard van IoT Hub. Raadpleeg [How to choose the right IoT Hub tier](../articles/iot-hub/iot-hub-scaling.md) (De juiste IoT Hub-prijscategorie kiezen) voor meer informatie over de Basic- en Standard-prijscategorieën van IoT Hub.
+>Sommige van de functies die in dit artikel worden genoemd, zoals cloud-naar-apparaat-berichten, apparaatdubbels en apparaatbeheer, zijn alleen beschikbaar in de standaardlaag van IoT Hub. Raadpleeg [How to choose the right IoT Hub tier](../articles/iot-hub/iot-hub-scaling.md) (De juiste IoT Hub-prijscategorie kiezen) voor meer informatie over de Basic- en Standard-prijscategorieën van IoT Hub.

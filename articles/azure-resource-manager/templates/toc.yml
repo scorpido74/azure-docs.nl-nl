@@ -156,6 +156,8 @@
       href: templates-cloud-consistency.md
     - name: Implementatiemodi
       href: deployment-modes.md
+    - name: Verwijderingen in de implementatiegeschiedenis
+      href: deployment-history-deletions.md
     - name: Modus voor volledige verwijdering
       href: complete-mode-deletion.md
     - name: Configuratiebeheer

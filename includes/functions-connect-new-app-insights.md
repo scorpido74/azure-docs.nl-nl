@@ -15,25 +15,25 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83121529"
 ---
-Met functies kunt u eenvoudig Application Insights integratie toevoegen aan een functie-app vanuit de [Azure Portal].
+Met Functions kunt u vanuit de [Azure Portal] eenvoudig de Application Insights-integratie aan een functie-app toevoegen.
 
-1. Zoek in de [Azure Portal][Azure-Portal]naar en selecteer **functie-app**en kies vervolgens uw functie-app. 
+1. Zoek in de [Azure] [Portal] naar de **functie-app** en selecteer deze en kies vervolgens uw functie-app. 
 
-1. Selecteer de banner **Application Insights is niet geconfigureerd** aan de bovenkant van het venster. Als u deze banner niet ziet, is Application Insights al ingeschakeld voor uw app.
+1. Selecteer bovenaan het venster de banner **Application Insights is not configured** (Application Insights is niet geconfigureerd). Als u deze banner niet ziet staan, is Application Insights al ingeschakeld voor uw app.
 
-    :::image type="content" source="media/functions-connect-new-app-insights/enable-application-insights.png" alt-text="Application Insights inschakelen vanuit de portal":::
+    :::image type="content" source="media/functions-connect-new-app-insights/enable-application-insights.png" alt-text="Enable Application Insights from the portal"::: (Application Insights vanuit de portal inschakelen)
 
-1. Maak een Application Insights resource met behulp van de instellingen die zijn opgegeven in de tabel onder de afbeelding.
+1. Maak een Application Insights-resource met behulp van de instellingen die zijn opgegeven in de tabel onder de afbeelding.
 
-   :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="Een Application Insights-resource maken":::
+   :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="Create an Application Insights resource"::: (Een Application Insights-resource maken)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Naam** | Unieke app-naam | Het is het gemakkelijkst om dezelfde naam te gebruiken als uw functie-app, die uniek moet zijn in uw abonnement. | 
-    | **Locatie** | Europa -west | Gebruik, indien mogelijk, dezelfde [regio](https://azure.microsoft.com/regions/) als de functie-app, of een van de regio's die zich dicht bij die regio bevinden. |
+    | **Naam** | Unieke app-naam | Het is het gemakkelijkst om dezelfde naam als voor uw functie-app te gebruiken. Deze naam moet uniek zijn in uw abonnement. | 
+    | **Locatie** | Europa -west | Gebruik, indien mogelijk, dezelfde [regio](https://azure.microsoft.com/regions/) als uw functie-app, of een nabijgelegen regio. |
 
-1. Selecteer **Toepassen**. De Application Insights resource wordt gemaakt in dezelfde resource groep en hetzelfde abonnement als uw functie-app. Nadat de resource is gemaakt, sluit u het venster Application Insights.
+1. Selecteer **Toepassen**. De Application Insights-resource wordt gemaakt in dezelfde resourcegroep en hetzelfde abonnement als uw functie-app. Nadat de resource is gemaakt, sluit u het venster Application Insights.
 
-1. Ga terug naar de functie-app, selecteer **instellingen**  >  **configuratie**en selecteer vervolgens **Toepassings instellingen**. Als u een instelling ziet `APPINSIGHTS_INSTRUMENTATIONKEY` met de naam, wordt Application Insights integratie ingeschakeld voor uw functie-app die wordt uitgevoerd in Azure.
+1. Selecteer in uw functie-app **Instellingen** > **Configuratie** en vervolgens **Toepassingsinstellingen**. Als u een instelling met de naam `APPINSIGHTS_INSTRUMENTATIONKEY` ziet, wordt de Application Insights-integratie ingeschakeld voor de functie-app die in Azure wordt uitgevoerd.
 
-[Azure-Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

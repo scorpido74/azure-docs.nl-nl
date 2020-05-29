@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: Geïmporteerde inhoudstypen
           href: Concepts/content-types.md
-        - name: Vraag-en-antwoord-sets
+        - name: Vraag-en-antwoord-paren
           href: Concepts/question-answer-set.md
     - name: Levenscyclus van Knowledge base
       items:

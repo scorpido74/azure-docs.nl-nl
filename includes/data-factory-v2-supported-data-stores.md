@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: cfb4e0e563bc604b0f03dcc5fb128c87d9710430
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ae329ece6432444162f060be283e10d9088c23db
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696452"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124241"
 ---
 | Categorie | Gegevensarchief | Ondersteund als een bron | Ondersteund als een sink | Ondersteund door [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Ondersteund door [zelf-hostende IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **Azure** |[Azure Blob-opslag](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
+| **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cognitive Search-index](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
-| &nbsp; |[Azure Cosmos DB (SQL-API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB-API voor MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
@@ -29,10 +29,10 @@ ms.locfileid: "83696452"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure SQL Database Managed Instance](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure SQL Managed Instance](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure-tabel opslag](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
-| **Enddatabase** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
+| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |✓ | |✓ |✓  |
@@ -49,7 +49,7 @@ ms.locfileid: "83696452"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (preview)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse via open hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse via Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
 | &nbsp; |[SAP Business Warehouse via MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
 | &nbsp; |[SAP-tabel](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
@@ -61,8 +61,8 @@ ms.locfileid: "83696452"
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |✓ | |✓ |✓  |
 | &nbsp; |[Couchbase (preview)](../articles/data-factory/connector-couchbase.md) |✓ | |✓ |✓  |
 | &nbsp; |[MongoDB](../articles/data-factory/connector-mongodb.md) |✓ | |✓ |✓  |
-| **Bestand** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
-| &nbsp; |[Bestands systeem](../articles/data-factory/connector-file-system.md) |✓ |✓ |✓ |✓  |
+| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
+| &nbsp; |[Bestandssysteem](../articles/data-factory/connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |✓ | |✓ |✓  |
@@ -85,16 +85,16 @@ ms.locfileid: "83696452"
 | &nbsp; |[Office 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Eloqua (preview)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (preview)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
-| &nbsp; |[Oracle Service-Cloud (preview-versie)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
-| &nbsp; |[PayPal (preview-versie)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
+| &nbsp; |[Oracle Service Cloud (preview)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
+| &nbsp; |[Paypal (preview)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
 | &nbsp; |[QuickBooks (preview)](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[SalesForce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Salesforce Marketing Cloud](../articles/data-factory/connector-salesforce-marketing-cloud.md) |✓ | |✓ |✓  |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |✓ | |✓ |✓ |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
-|  |[Share point online-lijst](../articles/data-factory/connector-sharepoint-online-list.md) |✓ | |✓ |✓ |
+|  |[SharePoint Online-lijst](../articles/data-factory/connector-sharepoint-online-list.md) |✓ | |✓ |✓ |
 | &nbsp; |[Shopify (preview)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square (preview)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
 | &nbsp; |[Webtabel (HTML-tabel)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
@@ -102,4 +102,4 @@ ms.locfileid: "83696452"
 | &nbsp; |[Zoho (preview)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Als een connector is gemarkeerd als *Preview*, kunt u deze uitproberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/)als u een afhankelijkheid van de preview-connectors in uw oplossing wilt maken.
+> Als een connector is gemarkeerd met *preview*, kunt u deze proberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.

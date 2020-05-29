@@ -1,0 +1,183 @@
+### YamlMime:Landing
+title: Documentatie voor Azure SQL
+summary: 'Vind documentatie over de Azure SQL-productfamilie van SQL Server-database-engine in de Cloud: Azure SQL Database, Azure SQL Managed Instance en SQL Server in Azure VM. '
+metadata:
+  title: Documentatie voor Azure SQL
+  description: Azure SQL is een productfamilie van SQL Server-database-engines in de cloud, van een volledig beheerde database in Azure SQL Database en een volledig beheerd exemplaar in Azure SQL Managed Instance, tot SQL Server dat wordt geïnstalleerd in virtuele Azure-machines.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 449fa109712c3a92a48cc1e1997da3d2703bb1b2
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023684"
+landingContent:
+- title: Azure SQL Database
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is nieuw?
+      url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: Wat is SQL Database?
+      url: database/sql-database-paas-overview.md
+    - text: Wat zijn elastische pools?
+      url: database/elastic-pool-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL-database maken
+      url: database/single-database-create-quickstart.md
+    - text: Firewall configureren
+      url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migreren van SQL Server
+      url: database/migrate-to-database-from-sql-server.md
+    - text: Geavanceerde beveiliging
+      url: database/security-overview.md
+    - text: Bedrijfscontinuïteit
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Bewaking en afstemming
+      url: database/monitor-tune-overview.md
+    - text: T-SQL-verschillen met SQL Server
+      url: database/transact-sql-tsql-differences-sql-server.md
+- title: Azure SQL Managed Instance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is nieuw?
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Wat is SQL Managed Instance?
+      url: managed-instance/sql-managed-instance-paas-overview.md
+    - text: Wat zijn exemplaarpools?
+      url: managed-instance/instance-pools-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Door SQL beheerd exemplaar maken
+      url: managed-instance/instance-create-quickstart.md
+    - text: Virtuele machine configureren om verbinding te maken
+      url: managed-instance/connect-vm-instance-configure.md
+    - text: Voorbeelddatabase herstellen
+      url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migreren van SQL Server
+      url: managed-instance/migrate-to-instance-from-sql-server.md
+    - text: Geavanceerde beveiliging
+      url: database/security-overview.md
+    - text: Bedrijfscontinuïteit
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Bewaking en afstemming
+      url: database/monitor-tune-overview.md
+    - text: T-SQL-verschillen met SQL Server
+      url: managed-instance/transact-sql-tsql-differences-sql-server.md
+- title: SQL Server op virtuele Azure-machine
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is nieuw?
+      url: virtual-machines/windows/doc-changes-updates-release-notes.md
+    - text: Wat is SQL Server in Windows-VM?
+      url: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: Wat is SQL Server in Linux-VM?
+      url: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL maken in Azure-VM (Windows)
+      url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+    - text: SQL maken in Azure-VM (Linux)
+      url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migreren van SQL Server
+      url: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+    - text: Beveiligingsoverwegingen
+      url: virtual-machines/windows/security-considerations-best-practices.md
+    - text: Hoge beschikbaarheid en herstel na noodgevallen
+      url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: Prestatierichtlijnen
+      url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: Verbinding maken en query's uitvoeren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Overzicht
+      url: database/connect-query-content-reference-guide.md
+    - text: SQL Server Management Studio (SSMS)
+      url: database/connect-query-ssms.md
+    - text: Azure Data Studio
+      url: /azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fsql-database%2Ftoc.json
+    - text: Azure Portal
+      url: database/connect-query-portal.md
+    - text: Visual Studio (.NET)
+      url: database/connect-query-dotnet-visual-studio.md
+    - text: Visual Studio Code
+      url: database/connect-query-vscode.md
+    - text: .NET Core
+      url: database/connect-query-dotnet-core.md
+    - text: Python
+      url: database/connect-query-python.md
+- title: Ontwikkeling
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Toepassingen ontwikkelen
+      url: database/develop-overview.md
+    - text: App-ontwerp voor herstel na noodgevallen
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: Rolling upgrades beheren (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: Ontwikkelingsstrategieën (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: Tenancypatronen in SaaS-databases
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: Design first-database (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: Design first-database (C#)
+      url: database/design-first-database-csharp-tutorial.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Educatieve SQL-resources
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-voorbeelden
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell-voorbeelden
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Voorbeelden van ARM-sjablonen
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Migratiehandleiding
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/sql/

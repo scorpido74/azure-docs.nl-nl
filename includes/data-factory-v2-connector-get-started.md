@@ -14,12 +14,12 @@ ms.locfileid: "67048557"
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-U kunt een van de volgende hulpprogram ma's of Sdk's gebruiken om de Kopieer activiteit met een pijp lijn te gebruiken. Selecteer een koppeling voor stapsgewijze instructies:
+U kunt een van de volgende hulpprogramma's of SDK's gebruiken om de kopieeractiviteit met een pijplijn te gebruiken. Selecteer een link voor stapsgewijze instructies:
 
-- [Hulp programma voor kopiëren van gegevens](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
-- [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Hulpprogramma voor het kopiëren van gegevens](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
+- [Azure-portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
-- [Python-SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
+- [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
 - [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager-sjabloon](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
